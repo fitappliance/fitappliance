@@ -355,6 +355,9 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
     perHostConcurrency: policy.concurrency.perHost,
     mineruConcurrency: policy.concurrency.mineru,
     resolverTimeoutMs: policy.limits.resolverTimeoutMs,
+    reconciliationOptions: {
+      registryAxisPermutationToleranceMm: policy.reconciliation.registryAxisPermutationToleranceMm,
+    },
   };
 }
 

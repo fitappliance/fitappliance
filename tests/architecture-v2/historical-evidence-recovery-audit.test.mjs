@@ -200,13 +200,14 @@ function emptyRunFixture() {
   return { batch, results, state, objects: new Map() };
 }
 
-function runAudit(fixture, priorBundle = null, replayPriorObjects = false) {
+function runAudit(fixture, priorBundle = null, replayPriorObjects = false, policy = null) {
   return auditHistoricalEvidenceRecovery({
     mode: 'online',
     batch: fixture.batch,
     results: fixture.results,
     state: fixture.state,
     priorBundle,
+    policy,
     generatedAt: '2026-07-13T00:04:00.000Z',
     replayPriorObjects,
     readObject: async (path) => {
@@ -335,6 +336,55 @@ test('online audit replays reconciliation instead of trusting a hash-consistent 
   const audit = await runAudit(fixture);
   assert.equal(audit.status, 'failed');
   assert.match(audit.violations.join('\n'), /reconciliation replay/i);
+});
+
+test('online audit replays registry permutation tolerance from the hash-bound policy', async () => {
+  const fixture = acceptedFixture();
+  const policy = JSON.parse(await readFile(
+    'data/architecture-v2/policies/historical-evidence-recovery-policy.json',
+    'utf8',
+  ));
+  fixture.target.reconciliationContext.registryHints = [{
+    sourceId: 'energy-rating:fridge',
+    snapshotSha256: 'c'.repeat(64),
+    dimensionsMm: { width: 1795, height: 914, depth: 727 },
+  }];
+  fixture.results.outcomes[0].reconciliation = {
+    ...structuredClone(EMPTY_RECONCILIATION),
+    conflictHints: [{
+      sourceRole: 'registry_hint',
+      sourceId: 'energy-rating:fridge',
+      kind: 'axis_permutation_within_tolerance',
+      fields: ['depthMm', 'heightMm', 'widthMm'],
+      dimensionsMm: { widthMm: 1795, heightMm: 914, depthMm: 727 },
+      maximumDeltaMm: 5,
+    }],
+    axisPermutationResolution: 'exact_official_axis_proof_with_registry_tolerance',
+  };
+  fixture.results.outcomes[0].semanticOutcomeSha256 = recoveryOutcomeSemanticSha256(
+    fixture.results.outcomes[0],
+  );
+  fixture.results.semanticOutcomeSha256 = canonicalJsonSha256([{
+    targetId: fixture.results.outcomes[0].targetId,
+    semanticOutcomeSha256: fixture.results.outcomes[0].semanticOutcomeSha256,
+  }]);
+  fixture.batch.policy = {
+    version: policy.policyVersion,
+    sha256: canonicalJsonSha256(policy),
+  };
+  fixture.results.policySha256 = fixture.batch.policy.sha256;
+  fixture.results.batchSha256 = canonicalJsonSha256(fixture.batch);
+  fixture.state.input.policySha256 = fixture.batch.policy.sha256;
+  fixture.state.input.batchSha256 = fixture.results.batchSha256;
+  fixture.state.semanticOutcomeSha256 = fixture.results.semanticOutcomeSha256;
+
+  const withoutPolicy = await runAudit(fixture);
+  assert.equal(withoutPolicy.status, 'failed');
+  assert.match(withoutPolicy.violations.join('\n'), /reconciliation replay/i);
+
+  const withPolicy = await runAudit(fixture, null, false, policy);
+  assert.equal(withPolicy.status, 'passed');
+  assert.deepEqual(withPolicy.violations, []);
 });
 
 test('promotion requires a passing online audit and preserves all source receipts', async () => {

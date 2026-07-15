@@ -12,6 +12,7 @@ import {
   validateHistoricalEvidenceRecoveryAcceptanceBundle,
   validateHistoricalEvidenceRecoveryAudit,
   validateHistoricalEvidenceRecoveryBatch,
+  validateHistoricalEvidenceRecoveryPolicy,
   validateHistoricalEvidenceRecoveryResults,
 } from './historical-evidence-recovery-contract.mjs';
 import {
@@ -98,7 +99,7 @@ function validateInventoryForTarget(inventory, target, outcome) {
   }
 }
 
-function validateReconciliationReplay(target, outcome) {
+function validateReconciliationReplay(target, outcome, policy) {
   const inventory = outcome.candidateInventory;
   if (!inventory) return;
   const replayed = reconcileEvidenceClaims({
@@ -106,6 +107,7 @@ function validateReconciliationReplay(target, outcome) {
     model: target.model,
     category: target.category,
   }, inventory, {
+    registryAxisPermutationToleranceMm: policy?.reconciliation?.registryAxisPermutationToleranceMm ?? 0,
     requestedFields: target.requestedFields,
     lowerAuthorityHints: buildLowerAuthorityHints(target),
     verifyInventoryHash: true,
@@ -447,6 +449,7 @@ export async function auditHistoricalEvidenceRecovery({
   }
   if (policy !== null) {
     try {
+      validateHistoricalEvidenceRecoveryPolicy(policy);
       if (canonicalJsonSha256(policy) !== batch.policy.sha256) throw new Error('policy document SHA mismatch');
     } catch (error) {
       addViolation(violations, 'policy document', error);
@@ -483,7 +486,7 @@ export async function auditHistoricalEvidenceRecovery({
       else if (['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)) {
         throw new Error('accepted outcome candidate inventory missing');
       }
-      validateReconciliationReplay(target, outcome);
+      validateReconciliationReplay(target, outcome, policy);
       if (!['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)) {
         if (outcome.sources?.length || outcome.geometryProjection !== null) {
           throw new Error('non-accepted outcome carries releasable evidence');

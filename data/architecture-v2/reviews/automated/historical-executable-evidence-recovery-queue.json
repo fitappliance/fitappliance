@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-15T14:37:00.585Z",
-  "sourceAcquisitionQueueSha256": "bbef67985a6e0d502db7a4e3c13b4c746bb35cd8b1ee057a63df534b21141aac",
+  "generatedAt": "2026-07-15T15:08:33.574Z",
+  "sourceAcquisitionQueueSha256": "870c229c8d31a9b68c9e27a20d295ac0e5a437459983589553410d4d8880cbcf",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7972,
-    "fetchJobs": 18,
-    "targets": 7696,
+    "acquisitionRecords": 7968,
+    "fetchJobs": 12,
+    "targets": 7692,
     "resolverOnlyTargets": 7680,
-    "candidateEdges": 19,
-    "uniqueReferences": 7696,
+    "candidateEdges": 12,
+    "uniqueReferences": 7692,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 1954,
-      "CURRENT_RETAIL": 1188,
-      "REGISTRY_ONLY": 4554
+      "CATALOG_ARCHIVED": 1952,
+      "CURRENT_RETAIL": 1187,
+      "REGISTRY_ONLY": 4553
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 1015,
+      "P0_CURRENT_MISSING_DIMENSIONS": 1014,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1929,
       "P2_CURRENT_CONFIRMATION": 166,
-      "P3_HISTORICAL_CONFIRMATION": 4528,
+      "P3_HISTORICAL_CONFIRMATION": 4525,
       "P4_CONFLICT_RESOLUTION": 58
     },
     "excluded": {
@@ -40,17 +40,6 @@
       "priorityClass": "P3_HISTORICAL_CONFIRMATION",
       "targetIds": [
         "recovery_target_1ade4a1d7a54467759bc7b41"
-      ]
-    },
-    {
-      "jobId": "recovery_3229a6077c4c7e4d060412b3",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
-      "authorityBrand": "KELVINATOR",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_27861be001f7939d9478f669"
       ]
     },
     {
@@ -94,30 +83,7 @@
       "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
       "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
       "targetIds": [
-        "recovery_target_3dc96bc9ce548e8dcb1e1727",
-        "recovery_target_68e2929d124738859393d42d"
-      ]
-    },
-    {
-      "jobId": "recovery_5f98c4b53157f3eeef22322f",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
-      "authorityBrand": "KELVINATOR",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_ce94f197cea177d8ffe048ae"
-      ]
-    },
-    {
-      "jobId": "recovery_90970fae0e332c0dceeef3df",
-      "sourceUrl": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
-      "authorityBrand": "LG",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_308bac8cfe8d6b46c5102b6b"
+        "recovery_target_3dc96bc9ce548e8dcb1e1727"
       ]
     },
     {
@@ -162,39 +128,6 @@
       "priorityClass": "P2_CURRENT_CONFIRMATION",
       "targetIds": [
         "recovery_target_308bac8cfe8d6b46c5102b6b"
-      ]
-    },
-    {
-      "jobId": "recovery_cabf988e094423f2d5bc83d1",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/2/9/9f2929c8bccee4e2248681f816a1d189dddb5ac5_2026_Hisense_AU___Consumer_Spec__HWF3S8514X_.pdf",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_a322c67e53a71c89ee8ed646"
-      ]
-    },
-    {
-      "jobId": "recovery_d4dbe27314c1e57b5ba5baeb",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_06e6abe5778ec8a1a9f0deb2"
-      ]
-    },
-    {
-      "jobId": "recovery_e488aa07e2fc06d4780b1c30",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
-      "authorityBrand": "Samsung",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "targetIds": [
-        "recovery_target_91cdd0845f2fb9e5a9c1f065"
       ]
     },
     {
@@ -25199,10 +25132,9 @@
       "registryDimensionHints": [],
       "publicationEligible": false,
       "candidateJobIds": [
-        "recovery_e488aa07e2fc06d4780b1c30",
         "recovery_e689b90bed35732af664ff1d"
       ],
-      "primaryJobId": "recovery_e488aa07e2fc06d4780b1c30",
+      "primaryJobId": "recovery_e689b90bed35732af664ff1d",
       "repairExistingReceipt": false
     },
     {
@@ -37143,47 +37075,6 @@
         "pdf:d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b"
       ],
       "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [
-        "recovery_5d8f265a43463f5855342cf5"
-      ],
-      "primaryJobId": "recovery_5d8f265a43463f5855342cf5",
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_68e2929d124738859393d42d",
-      "referenceId": "fa_ref_7d2d3d7eaedf7b403717808b",
-      "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb944dgh",
-      "canonicalProductId": "fa_prod_4b4f877fcb6026f4e2ddd668",
-      "category": "washing_machine",
-      "brand": "Samsung",
-      "model": "WW12BB944DGH",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_2c64ce7645c14c001278a28d",
-        "legacy:data/pdf-evidence-raw/WW12BB944DGB.json",
-        "legacy:data/pdf-evidence-raw/WW12BB944DGH.json",
-        "pdf:d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
-        "source:doc_2c64ce7645c14c001278a28d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_2c64ce7645c14c001278a28d",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 695
-          }
-        }
-      ],
       "registryDimensionHints": [],
       "publicationEligible": false,
       "candidateJobIds": [
@@ -90472,10 +90363,9 @@
       ],
       "publicationEligible": false,
       "candidateJobIds": [
-        "recovery_90970fae0e332c0dceeef3df",
         "recovery_c5026312ccc47324099bca4b"
       ],
-      "primaryJobId": "recovery_90970fae0e332c0dceeef3df",
+      "primaryJobId": "recovery_c5026312ccc47324099bca4b",
       "repairExistingReceipt": false
     },
     {
@@ -91912,10 +91802,9 @@
       ],
       "publicationEligible": false,
       "candidateJobIds": [
-        "recovery_cabf988e094423f2d5bc83d1",
         "recovery_fc3fc67f3ac5cea33a9ddec4"
       ],
-      "primaryJobId": "recovery_cabf988e094423f2d5bc83d1",
+      "primaryJobId": "recovery_fc3fc67f3ac5cea33a9ddec4",
       "repairExistingReceipt": false
     },
     {
@@ -174778,44 +174667,6 @@
       "repairExistingReceipt": false
     },
     {
-      "targetId": "recovery_target_ce94f197cea177d8ffe048ae",
-      "referenceId": "fa_ref_86df98c1394de52ce6dafaf5",
-      "legacyRuntimeId": "historical-fa_ref_86df98c1394de52ce6dafaf5",
-      "canonicalProductId": null,
-      "category": "fridge",
-      "brand": "KELVINATOR",
-      "model": "KTM4602AC",
-      "lifecycleState": "REGISTRY_ONLY",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/KTM4602AC.json"
-      ],
-      "legacyHints": [],
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1725,
-            "height": 699,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "candidateJobIds": [
-        "recovery_5f98c4b53157f3eeef22322f"
-      ],
-      "primaryJobId": "recovery_5f98c4b53157f3eeef22322f",
-      "repairExistingReceipt": false
-    },
-    {
       "targetId": "recovery_target_60202a48217e401665940a77",
       "referenceId": "fa_ref_2d841f8e4e80ac45fa831c0a",
       "legacyRuntimeId": "fridge-arf2538",
@@ -174896,55 +174747,6 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_27861be001f7939d9478f669",
-      "referenceId": "fa_ref_c862e59879a04b1d07e8a1a0",
-      "legacyRuntimeId": "fridge-arf2540",
-      "canonicalProductId": "fa_prod_7cc4c9b9b2ec1a58aff2b234",
-      "category": "fridge",
-      "brand": "KELVINATOR",
-      "model": "KTM5402AC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_fdc3ebd9f2dbbf3f333a1e62",
-        "legacy:data/pdf-evidence-raw/KTM5402AC.json",
-        "source:doc_fdc3ebd9f2dbbf3f333a1e62"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_fdc3ebd9f2dbbf3f333a1e62",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1718,
-            "depth": 727
-          }
-        }
-      ],
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1725,
-            "height": 796,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "candidateJobIds": [
-        "recovery_3229a6077c4c7e4d060412b3"
-      ],
-      "primaryJobId": "recovery_3229a6077c4c7e4d060412b3",
       "repairExistingReceipt": false
     },
     {
@@ -219498,55 +219300,6 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_06e6abe5778ec8a1a9f0deb2",
-      "referenceId": "fa_ref_3c1d4d1e7e2323919eadc1e1",
-      "legacyRuntimeId": "fridge-arf2921",
-      "canonicalProductId": "fa_prod_71b3254e1760a97a131e2c97",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE5650BA",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_37f7132e73d6007322242413",
-        "legacy:data/pdf-evidence-raw/WQE5650BA.json",
-        "source:doc_37f7132e73d6007322242413"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_37f7132e73d6007322242413",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1795,
-            "depth": 726
-          }
-        }
-      ],
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1795,
-            "height": 896,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "candidateJobIds": [
-        "recovery_d4dbe27314c1e57b5ba5baeb"
-      ],
-      "primaryJobId": "recovery_d4dbe27314c1e57b5ba5baeb",
       "repairExistingReceipt": false
     },
     {

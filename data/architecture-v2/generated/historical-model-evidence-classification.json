@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T14:37:00.585Z",
+  "generatedAt": "2026-07-15T15:08:33.574Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "e0daa2746656d85ff944ad42828536f0fa18fec70320d36949de973014339caa",
+  "semanticClassificationSha256": "80967cd090b304da34f20096daab47c00a1558121e094bf79e60f14f5356943f",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4141,
+    "documentLinks": 4142,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,37 +21,37 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 123,
+      "COMPLETE_RECEIPT": 127,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
-      "OFFICIAL_REACQUIRE": 16,
+      "OFFICIAL_REACQUIRE": 12,
       "REFERENCE_REDISCOVERY": 1254
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6426,
-      "NO_ACTION": 123,
-      "REACQUIRE_OFFICIAL_SOURCE": 16,
+      "NO_ACTION": 127,
+      "REACQUIRE_OFFICIAL_SOURCE": 12,
       "REDISCOVER_OFFICIAL_SOURCE": 1254,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 193
     },
     "bySourceAuthority": {
-      "MIXED": 46,
+      "MIXED": 51,
       "NONE": 6679,
-      "OFFICIAL": 99,
+      "OFFICIAL": 94,
       "REFERENCE": 1271
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 237,
-      "EXACT_MODEL": 1533,
+      "AMBIGUOUS": 236,
+      "EXACT_MODEL": 1534,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 48,
-      "ALL_AXIS_SCALAR": 229,
+      "ALL_AXIS_SCALAR": 230,
       "NOT_PARSED": 7675,
-      "PARSER_GAP": 142,
+      "PARSER_GAP": 141,
       "PARTIAL_AXIS": 1
     },
     "byConflictState": {
@@ -61,8 +61,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 123,
-      "LEGACY_UNBOUND": 1647,
+      "CURRENT_VALID": 127,
+      "LEGACY_UNBOUND": 1643,
       "NONE": 6325
     }
   },
@@ -100,11 +100,11 @@
       "brands": 121,
       "documentLinks": 2248,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 40,
+        "COMPLETE_RECEIPT": 43,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 117,
         "OFFICIAL_DISCOVERY": 3410,
-        "OFFICIAL_REACQUIRE": 11,
+        "OFFICIAL_REACQUIRE": 8,
         "REFERENCE_REDISCOVERY": 710
       }
     },
@@ -112,13 +112,13 @@
       "category": "washing_machine",
       "records": 1497,
       "brands": 88,
-      "documentLinks": 648,
+      "documentLinks": 649,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 19,
+        "COMPLETE_RECEIPT": 20,
         "CONFLICT_QUARANTINE": 9,
         "IDENTITY_RESEARCH": 37,
         "OFFICIAL_DISCOVERY": 1240,
-        "OFFICIAL_REACQUIRE": 4,
+        "OFFICIAL_REACQUIRE": 3,
         "REFERENCE_REDISCOVERY": 188
       }
     }
@@ -12448,7 +12448,7 @@
       "groupType": "marketing_series",
       "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
-      "sourceAuthority": "OFFICIAL",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
@@ -12461,17 +12461,16 @@
         {
           "documentId": "legacy:data/pdf-evidence-raw/SMS6HCI02A.json",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/1/5/2/7/15273e93a3bea07384129cb182751dc40e1a0490_SMS6HCI02A_Bosch_Specifications_Sheet.pdf",
-          "evidenceObjectIds": [
-            "doc_34cd69ee43dadecec97391f3"
-          ],
+          "evidenceObjectIds": [],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "OFFICIAL",
+          "sourceAuthority": "REFERENCE",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -20459,17 +20458,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/DD60D2NB9.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3d89644a/QRG/AU/QRG-AU-82879.pdf",
           "evidenceObjectIds": [
-            "doc_98b760ff68ba7a508aa58e21",
-            "doc_fb865413cc26a73da9611f93"
+            "doc_98b760ff68ba7a508aa58e21"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -20745,17 +20744,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/DD60D2NX9.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwa14c70a9/QRG/AU/QRG-AU-82878.pdf",
           "evidenceObjectIds": [
-            "doc_0fce424149a9fddc7ce7d9da",
             "doc_ce50d8e9a045322d061817d8"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -20858,17 +20857,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/DD60D4NB9.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw53c8ef68/QRG/AU/QRG-AU-82881.pdf",
           "evidenceObjectIds": [
-            "doc_697c8d8b8afcdb6eed150bb3",
-            "doc_fe72813f63bc795d77016c54"
+            "doc_697c8d8b8afcdb6eed150bb3"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -21176,17 +21175,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/DD60D4NX9.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf9542760/QRG/AU/QRG-AU-82880.pdf",
           "evidenceObjectIds": [
-            "doc_7eabf7e2a4577e26597c0811",
-            "doc_9f7766e4b257f90d5ca421e0"
+            "doc_7eabf7e2a4577e26597c0811"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -22801,17 +22800,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/DD60SDFTX9.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw83e4ad94/QRG/AU/QRG-AU-82324.pdf",
           "evidenceObjectIds": [
-            "doc_68663660383ad758542f6374",
-            "doc_c1806a2c7d5186991ff80a0d"
+            "doc_68663660383ad758542f6374"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -23087,17 +23086,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/DD60SDFX9.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4ef414ad/QRG/AU/QRG-AU-82325.pdf",
           "evidenceObjectIds": [
-            "doc_9bf7ffb807444e7093ee5829",
             "doc_cddb0ed7d876e672d546fdf6"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -23664,17 +23663,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/DD60ST4NB9.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw96f408b1/QRG/AU/QRG-AU-82884.pdf",
           "evidenceObjectIds": [
-            "doc_2370097337ada280a356a5e4",
-            "doc_2372c06a8210863d0014de6b"
+            "doc_2370097337ada280a356a5e4"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -23965,17 +23964,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/DD60ST4NX9.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcae4c1ac/QRG/AU/QRG-AU-82883.pdf",
           "evidenceObjectIds": [
-            "doc_333e10329f9f8fe64e73fe72",
             "doc_78f99a5aad3a6ccc6bc37ba8"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -30742,7 +30741,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_e07d3543379f3feb",
       "bestCorpusState": "RECEIPT_BOUND",
-      "sourceAuthority": "OFFICIAL",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
@@ -30755,17 +30754,16 @@
         {
           "documentId": "legacy:data/pdf-evidence-raw/HDW15F2B1.json",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/e/f/5/c/ef5cbc3ae252f1842d259028f770cc993b6589b6_QRG_AU_61614.pdf",
-          "evidenceObjectIds": [
-            "doc_a405d785f64634753533ab1e"
-          ],
+          "evidenceObjectIds": [],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "OFFICIAL",
+          "sourceAuthority": "REFERENCE",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -36016,17 +36014,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/XD3A15BS.json",
           "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=irYywwLMKQrdaYb9RwmJA",
           "evidenceObjectIds": [
-            "doc_346b10f26eb7fa7bcd7686b7",
-            "doc_5b915b093a91f61dca175a5e"
+            "doc_346b10f26eb7fa7bcd7686b7"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "REFERENCE",
+          "sourceAuthority": "NONE",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -50593,7 +50591,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_380d583408d1560f",
       "bestCorpusState": "RECEIPT_BOUND",
-      "sourceAuthority": "OFFICIAL",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
@@ -50606,17 +50604,16 @@
         {
           "documentId": "legacy:data/pdf-evidence-raw/DWAU615DB3.json",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/a/f/7/5/af7523e8522b959fc92a01411a595f4c25e4a043_DWAU615DB3_Smeg_Specifications_Sheet.pdf",
-          "evidenceObjectIds": [
-            "doc_28fe3e436f08eaf2476b51dc"
-          ],
+          "evidenceObjectIds": [],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "OFFICIAL",
+          "sourceAuthority": "REFERENCE",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -73739,7 +73736,7 @@
           "extractionState": "ALL_AXIS_SCALAR",
           "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-          "grammarProfileId": "pdf_grammar_bf4902a9bcd6139b"
+          "grammarProfileId": "pdf_grammar_68c6a6913a230966"
         },
         {
           "documentId": "pdf:94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd",
@@ -73776,8 +73773,7 @@
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_68c6a6913a230966",
-        "pdf_grammar_bf4902a9bcd6139b"
+        "pdf_grammar_68c6a6913a230966"
       ]
     },
     {
@@ -73865,7 +73861,7 @@
           "extractionState": "ALL_AXIS_SCALAR",
           "receiptState": "NONE",
           "sourcePdfSha256": "521077b559417d620664ead6be32ee1738e575ae50a7ffb3734b3fc24458d462",
-          "grammarProfileId": "pdf_grammar_bf4902a9bcd6139b"
+          "grammarProfileId": "pdf_grammar_68c6a6913a230966"
         },
         {
           "documentId": "source:doc_2a3d1e108f7f3dd2cb1e2892",
@@ -73899,8 +73895,7 @@
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_68c6a6913a230966",
-        "pdf_grammar_bf4902a9bcd6139b"
+        "pdf_grammar_68c6a6913a230966"
       ]
     },
     {
@@ -74095,7 +74090,7 @@
           "extractionState": "ALL_AXIS_SCALAR",
           "receiptState": "NONE",
           "sourcePdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
-          "grammarProfileId": "pdf_grammar_bf4902a9bcd6139b"
+          "grammarProfileId": "pdf_grammar_68c6a6913a230966"
         },
         {
           "documentId": "pdf:6a7fd2ee006ac7e644522aba622fd2230548742316a584f364f1665309367709",
@@ -74132,8 +74127,7 @@
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_68c6a6913a230966",
-        "pdf_grammar_bf4902a9bcd6139b"
+        "pdf_grammar_68c6a6913a230966"
       ]
     },
     {
@@ -74264,10 +74258,10 @@
           "corpusState": "RECEIPT_BOUND",
           "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARTIAL_AXIS",
+          "extractionState": "ALL_AXIS_SCALAR",
           "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
-          "grammarProfileId": "pdf_grammar_bf4902a9bcd6139b"
+          "grammarProfileId": "pdf_grammar_68c6a6913a230966"
         },
         {
           "documentId": "source:doc_23f599dc01d68dd0eeff516e",
@@ -74301,8 +74295,7 @@
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_68c6a6913a230966",
-        "pdf_grammar_bf4902a9bcd6139b"
+        "pdf_grammar_68c6a6913a230966"
       ]
     },
     {
@@ -74363,10 +74356,10 @@
           "corpusState": "RECEIPT_BOUND",
           "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARTIAL_AXIS",
+          "extractionState": "ALL_AXIS_SCALAR",
           "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
-          "grammarProfileId": "pdf_grammar_bf4902a9bcd6139b"
+          "grammarProfileId": "pdf_grammar_68c6a6913a230966"
         },
         {
           "documentId": "pdf:f7996e0cb73733a0426a25ca825d5e0cde11fe6e6b8b056cce9b8b8b6302e014",
@@ -74418,8 +74411,7 @@
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_68c6a6913a230966",
-        "pdf_grammar_bf4902a9bcd6139b"
+        "pdf_grammar_68c6a6913a230966"
       ]
     },
     {
@@ -128644,17 +128636,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/RF522ADUSX5.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8b42e8ee/QRG/AU/QRG-AU-26404.pdf",
           "evidenceObjectIds": [
-            "doc_4fe6310c39957af167279d10",
-            "doc_fd3e4fe9c6250fed81eec3b2"
+            "doc_4fe6310c39957af167279d10"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -130784,16 +130776,16 @@
           "documentId": "legacy:data/pdf-evidence-raw/RF605QZUVB1.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
           "evidenceObjectIds": [
-            "doc_06e6f7a227e50660c2073cbd",
-            "doc_6aa6a68528e32daf5b740c50"
+            "doc_06e6f7a227e50660c2073cbd"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -131034,17 +131026,17 @@
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
           "evidenceObjectIds": [
             "doc_2e71d027b15be05635d72e3d",
-            "doc_64b38006796923980f844221",
-            "doc_ae1dd92cc6bba5de5587c6c7"
+            "doc_64b38006796923980f844221"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -131169,17 +131161,17 @@
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
           "evidenceObjectIds": [
             "doc_2e71d027b15be05635d72e3d",
-            "doc_3bfdcc999be5cd5fc4746b8d",
             "doc_64b38006796923980f844221"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -133791,17 +133783,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/RS6121FRJK1.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5ace47e8/QRG/AU/QRG-AU-26160.pdf",
           "evidenceObjectIds": [
-            "doc_b4e58f702bd8842ccdf3a296",
-            "doc_ba372a714a856648330da561"
+            "doc_b4e58f702bd8842ccdf3a296"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -135890,16 +135882,16 @@
           "documentId": "legacy:data/pdf-evidence-raw/RS9120WRU1.json",
           "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/9mpt78hhk37b6vp8j3pn4w/FP-PlanningGuide-RS9120WRU1-IntegratedFridgeFreezer-AU-90001400A.pdf",
           "evidenceObjectIds": [
-            "doc_a91a20585266e417435b293d",
             "doc_f6652f5739834a7b8ec76196"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "REFERENCE",
+          "sourceAuthority": "NONE",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -164455,15 +164447,15 @@
       "lifecycleState": "REGISTRY_ONLY",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b56ff9ab0cbbc9f2",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
-        "LEGACY_METADATA_ONLY": 1
+        "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1
       },
       "documentLinks": [
         {
@@ -164486,25 +164478,28 @@
         },
         {
           "documentId": "pdf:bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
           "evidenceObjectIds": [
             "mineru-index:bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac",
+            "receipt:64a58a2ff8a7f753ecf5cd9f172c95ea59dbd109d489f27b5123708c848a8cdc",
             "storage:evidence/web/sha256/ba/b4/bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "receiptState": "NONE",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac",
           "grammarProfileId": "pdf_grammar_b56ff9ab0cbbc9f2"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "KELVINATOR"
@@ -164649,15 +164644,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b56ff9ab0cbbc9f2",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -164681,19 +164676,22 @@
         },
         {
           "documentId": "pdf:32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
           "evidenceObjectIds": [
             "mineru-index:32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908",
+            "receipt:1af38a47670a398f491f70cf40e4b506a63d950dc762e70ecdb6933832fa5cc5",
             "storage:evidence/web/sha256/32/83/32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "receiptState": "NONE",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908",
           "grammarProfileId": "pdf_grammar_b56ff9ab0cbbc9f2"
         },
@@ -164713,8 +164711,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "KELVINATOR"
@@ -180003,7 +180001,7 @@
           "extractionState": "ALL_AXIS_SCALAR",
           "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
-          "grammarProfileId": "pdf_grammar_64e6b0d171b80b38"
+          "grammarProfileId": "pdf_grammar_bcb760da6029f33b"
         }
       ],
       "operationalClass": "COMPLETE_RECEIPT",
@@ -180022,7 +180020,6 @@
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_64e6b0d171b80b38",
         "pdf_grammar_bcb760da6029f33b"
       ]
     },
@@ -180491,17 +180488,17 @@
           "evidenceObjectIds": [
             "doc_369c27c27ee87a065a77ae17",
             "doc_77efaa150f128b66a114cb24",
-            "doc_9307fb0dcf5280ceb7a08d84",
             "doc_c88bead6b1642158ca8610ed"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "OFFICIAL",
+          "sourceAuthority": "NONE",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -184223,17 +184220,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/GT-279BPL.json",
           "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=TZeDKr8byA9LNdheupkg",
           "evidenceObjectIds": [
-            "doc_f94e1bed22531b3a7cbca2fc",
-            "doc_faecdb453d6b586d937d6381"
+            "doc_f94e1bed22531b3a7cbca2fc"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "REFERENCE",
+          "sourceAuthority": "NONE",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -201981,12 +201978,12 @@
           "documentId": "legacy:data/pdf-evidence-raw/SR269MW.json",
           "sourceUrl": "https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge",
           "evidenceObjectIds": [
-            "doc_e191a8490baaa50200b726c7",
             "doc_f65276954e92db60e7b6b3e4"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
@@ -202862,7 +202859,7 @@
       "groupType": "model_specific",
       "groupName": "SRF5300SD",
       "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "OFFICIAL",
+      "sourceAuthority": "MIXED",
       "identityScope": "AMBIGUOUS",
       "extractionState": "PARSER_GAP",
       "conflictState": "NONE",
@@ -202875,16 +202872,15 @@
         {
           "documentId": "legacy:data/pdf-evidence-raw/SRF5300SD.json",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
-          "evidenceObjectIds": [
-            "doc_eac67c5c9f171a9b0f170d01"
-          ],
+          "evidenceObjectIds": [],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "OFFICIAL",
+          "sourceAuthority": "REFERENCE",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -233074,15 +233070,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -233106,19 +233102,22 @@
         },
         {
           "documentId": "pdf:6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
           "evidenceObjectIds": [
             "mineru-index:6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
+            "receipt:52e21a291c1f5270be382670c9b4394c47bef582b47aea5314df3e7d0b527290",
             "storage:evidence/web/sha256/6c/23/6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "receiptState": "NONE",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
           "grammarProfileId": "pdf_grammar_100af9c8141cceb2"
         },
@@ -233138,8 +233137,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "Westinghouse",
@@ -256165,17 +256164,17 @@
           "documentId": "legacy:data/pdf-evidence-raw/WD8560F1.json",
           "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
           "evidenceObjectIds": [
-            "doc_d41081cf0eac9700467f0497",
             "doc_fa0eda54d4fcbd6f0ae647ba"
           ],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "MIXED",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -264697,7 +264696,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
       "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "OFFICIAL",
+      "sourceAuthority": "MIXED",
       "identityScope": "AMBIGUOUS",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
@@ -264710,17 +264709,16 @@
         {
           "documentId": "legacy:data/pdf-evidence-raw/HWF3S8514X.json",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/2/9/9f2929c8bccee4e2248681f816a1d189dddb5ac5_2026_Hisense_AU___Consumer_Spec__HWF3S8514X_.pdf",
-          "evidenceObjectIds": [
-            "doc_28d88ee63c0922bf42c78604"
-          ],
+          "evidenceObjectIds": [],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "OFFICIAL",
+          "sourceAuthority": "REFERENCE",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -265105,17 +265103,16 @@
         {
           "documentId": "legacy:data/pdf-evidence-raw/HWF8I1015B.json",
           "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF8i1015B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjcxMDd8YXBwbGljYXRpb24vcGRmfGFHTmhMMmc0WlM4NE9EQTNNRGM0TURBeU56RTRMMGhYUmpocE1UQXhOVUl0VTNCbFl5NXdaR1l8NzBhNjNiNjkwOGM3ZmFjZjdiNGQyZGEyNjgyZDExNWJlYjJlYjNmYWQwNjk0YzAzYzcwMWY0NDQyYWJhMzhiNw",
-          "evidenceObjectIds": [
-            "doc_783c1dbf4a19aa82e5455f27"
-          ],
+          "evidenceObjectIds": [],
           "reasonCodes": [
             "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
             "LEGACY_FIELDS_UNBOUND",
+            "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
             "LEGACY_SUMMARY_DISCOVERY_HINT",
             "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
           ],
           "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "OFFICIAL",
+          "sourceAuthority": "NONE",
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
@@ -271176,7 +271173,7 @@
           "extractionState": "ALL_AXIS_SCALAR",
           "receiptState": "NONE",
           "sourcePdfSha256": "736c5c97437df0ac5168dce2a213c2a552bc492e3b4407cd8297cdf9ca35cee1",
-          "grammarProfileId": "pdf_grammar_5a6fb6981a511ec4"
+          "grammarProfileId": "pdf_grammar_2e826f8230419796"
         },
         {
           "documentId": "source:doc_345f80bad5148d64bc380876",
@@ -271225,8 +271222,7 @@
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_2e826f8230419796",
-        "pdf_grammar_5a6fb6981a511ec4"
+        "pdf_grammar_2e826f8230419796"
       ]
     },
     {
@@ -273784,7 +273780,7 @@
           "extractionState": "PARSER_GAP",
           "receiptState": "NONE",
           "sourcePdfSha256": "b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4",
-          "grammarProfileId": "pdf_grammar_c16293ad1361ce1b"
+          "grammarProfileId": "pdf_grammar_658fb95d8446842a"
         },
         {
           "documentId": "source:doc_f1a35e697ea194dd5ba1368c",
@@ -273826,7 +273822,6 @@
       ],
       "grammarProfileIds": [
         "pdf_grammar_658fb95d8446842a",
-        "pdf_grammar_c16293ad1361ce1b",
         "pdf_grammar_cf02f858aff32168"
       ]
     },
@@ -275482,7 +275477,7 @@
           "extractionState": "PARTIAL_AXIS",
           "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
-          "grammarProfileId": "pdf_grammar_982e0761924cb008"
+          "grammarProfileId": "pdf_grammar_56dff8973bc69513"
         },
         {
           "documentId": "source:doc_e264c1a044464fe74b767d0a",
@@ -275516,8 +275511,7 @@
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_56dff8973bc69513",
-        "pdf_grammar_982e0761924cb008"
+        "pdf_grammar_56dff8973bc69513"
       ]
     },
     {
@@ -275581,7 +275575,7 @@
           "extractionState": "PARSER_GAP",
           "receiptState": "NONE",
           "sourcePdfSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
-          "grammarProfileId": "pdf_grammar_982e0761924cb008"
+          "grammarProfileId": "pdf_grammar_56dff8973bc69513"
         }
       ],
       "operationalClass": "OFFICIAL_REACQUIRE",
@@ -275600,8 +275594,7 @@
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_56dff8973bc69513",
-        "pdf_grammar_982e0761924cb008"
+        "pdf_grammar_56dff8973bc69513"
       ]
     },
     {
@@ -284992,15 +284985,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 22681a753f2f",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "CURRENT_MINERU": 2,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -285037,6 +285031,24 @@
           "extractionState": "PARSER_GAP",
           "receiptState": "NONE",
           "sourcePdfSha256": "22681a753f2fc0fc6ca2182effc35cdd0e9a9d1458cd334aac2783012330130a"
+        },
+        {
+          "documentId": "pdf:53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7",
+          "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/53/de/53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7.html",
+            "receipt:29a57b5c656410443aabc8703bbbdb1fd53ced6fd7436fc52a351d3f3573949d"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7"
         },
         {
           "documentId": "pdf:d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
@@ -285077,8 +285089,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Samsung"

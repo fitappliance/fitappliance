@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1553,
-    "fetchJobs": 1516,
-    "targets": 1549,
-    "candidateEdges": 1553,
+    "documents": 1550,
+    "fetchJobs": 1513,
+    "targets": 1546,
+    "candidateEdges": 1550,
     "multiCandidateTargets": 4,
-    "uniqueReferences": 1549,
+    "uniqueReferences": 1546,
     "byCurrentAction": {
-      "CONFIRM_REQUIRED": 451,
-      "MEASURE_REQUIRED": 1073,
+      "CONFIRM_REQUIRED": 449,
+      "MEASURE_REQUIRED": 1072,
       "QUARANTINED": 25
     },
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 287,
-      "CURRENT_RETAIL": 1262
+      "CATALOG_ARCHIVED": 285,
+      "CURRENT_RETAIL": 1261
     },
     "byCategory": {
       "dishwasher": 353,
       "dryer": 69,
-      "fridge": 895,
-      "washing_machine": 232
+      "fridge": 893,
+      "washing_machine": 231
     },
     "byAcquisitionRoute": {
       "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1204,
-      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 247,
-      "OFFICIAL_RECEIPT_REBUILD": 14,
+      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 246,
+      "OFFICIAL_RECEIPT_REBUILD": 12,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 54,
+      "ALREADY_AUTO_FILL": 57,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -171,32 +171,6 @@
       ],
       "targetIds": [
         "recovery_target_7da794ced804ec84a5a737ee"
-      ]
-    },
-    {
-      "jobId": "recovery_754356de50f432d208ca72a9",
-      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGH&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
-      "authorityBrand": "Samsung",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_68e2929d124738859393d42d"
       ]
     },
     {
@@ -33262,32 +33236,6 @@
       ]
     },
     {
-      "jobId": "recovery_c03e81bead9c7df14c899bd3",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
-      "authorityBrand": "KELVINATOR",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_27861be001f7939d9478f669"
-      ]
-    },
-    {
       "jobId": "recovery_edd553cbbf0b89846b794bc2",
       "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BC&brand=Westinghouse",
       "authorityBrand": "Westinghouse",
@@ -33363,32 +33311,6 @@
       ],
       "targetIds": [
         "recovery_target_42d212f53996bbf2b9a2c222"
-      ]
-    },
-    {
-      "jobId": "recovery_7fa6d8be06e085a7586f84f5",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_06e6abe5778ec8a1a9f0deb2"
       ]
     },
     {
@@ -73857,47 +73779,6 @@
       "primaryJobId": "recovery_17b0fa93202c165bcc36b81e"
     },
     {
-      "referenceId": "fa_ref_7d2d3d7eaedf7b403717808b",
-      "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb944dgh",
-      "canonicalProductId": "fa_prod_4b4f877fcb6026f4e2ddd668",
-      "category": "washing_machine",
-      "brand": "Samsung",
-      "model": "WW12BB944DGH",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 695
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_68e2929d124738859393d42d",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_2c64ce7645c14c001278a28d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_2c64ce7645c14c001278a28d",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 695
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_754356de50f432d208ca72a9"
-      ],
-      "primaryJobId": "recovery_754356de50f432d208ca72a9"
-    },
-    {
       "referenceId": "fa_ref_cc9d4a64bb861deb7382cf5d",
       "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb94adgh",
       "canonicalProductId": "fa_prod_a533021bccdc2fe750e64f1e",
@@ -101385,57 +101266,6 @@
       "primaryJobId": "recovery_97d3ce21c2bbeb34e5701275"
     },
     {
-      "referenceId": "fa_ref_c862e59879a04b1d07e8a1a0",
-      "legacyRuntimeId": "fridge-arf2540",
-      "canonicalProductId": "fa_prod_7cc4c9b9b2ec1a58aff2b234",
-      "category": "fridge",
-      "brand": "KELVINATOR",
-      "model": "KTM5402AC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 796,
-        "height": 1718,
-        "depth": 727
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1725,
-            "height": 796,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_27861be001f7939d9478f669",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_fdc3ebd9f2dbbf3f333a1e62"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_fdc3ebd9f2dbbf3f333a1e62",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1718,
-            "depth": 727
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_c03e81bead9c7df14c899bd3"
-      ],
-      "primaryJobId": "recovery_c03e81bead9c7df14c899bd3"
-    },
-    {
       "referenceId": "fa_ref_12c1d6beceef10d0bbf5f67c",
       "legacyRuntimeId": "fridge-arf3557",
       "canonicalProductId": "fa_prod_e42b44868ab7852a6d951a9d",
@@ -105616,57 +105446,6 @@
         "recovery_d296a42160a570f45f1fffb5"
       ],
       "primaryJobId": "recovery_d296a42160a570f45f1fffb5"
-    },
-    {
-      "referenceId": "fa_ref_3c1d4d1e7e2323919eadc1e1",
-      "legacyRuntimeId": "fridge-arf2921",
-      "canonicalProductId": "fa_prod_71b3254e1760a97a131e2c97",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE5650BA",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 896,
-        "height": 1795,
-        "depth": 726
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1795,
-            "height": 896,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_06e6abe5778ec8a1a9f0deb2",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_37f7132e73d6007322242413"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_37f7132e73d6007322242413",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1795,
-            "depth": 726
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_7fa6d8be06e085a7586f84f5"
-      ],
-      "primaryJobId": "recovery_7fa6d8be06e085a7586f84f5"
     },
     {
       "referenceId": "fa_ref_bcedaea1e05dfe26ac0a0b3d",

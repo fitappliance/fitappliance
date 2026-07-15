@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T14:37:00.585Z",
-  "semanticQueueSha256": "bbef67985a6e0d502db7a4e3c13b4c746bb35cd8b1ee057a63df534b21141aac",
-  "sourceClassificationSha256": "e0daa2746656d85ff944ad42828536f0fa18fec70320d36949de973014339caa",
+  "generatedAt": "2026-07-15T15:08:33.574Z",
+  "semanticQueueSha256": "870c229c8d31a9b68c9e27a20d295ac0e5a437459983589553410d4d8880cbcf",
+  "sourceClassificationSha256": "80967cd090b304da34f20096daab47c00a1558121e094bf79e60f14f5356943f",
   "records": [
     {
       "schemaVersion": 1,
@@ -4350,7 +4350,6 @@
       "executionReadiness": "BOUNDED_READY",
       "candidateSourceIds": [
         "historical_source_03c27c7a1584af192089200a",
-        "historical_source_3c854e1327b62c8be92569ee",
         "historical_source_5a87dd1c3a57931e9b52ce16"
       ],
       "resolverIds": [
@@ -6135,7 +6134,6 @@
       "route": "IDENTITY_CLOSURE",
       "executionReadiness": "RESEARCH_REQUIRED",
       "candidateSourceIds": [
-        "historical_source_5d4c2ffae52a7c966d646a3c",
         "historical_source_befe76ee263bd5e94424069c",
         "historical_source_d05b8b1b3e05c052b93ac9fc"
       ],
@@ -18928,8 +18926,7 @@
       "candidateSourceIds": [
         "historical_source_5bfa950a8224cbec334e57b4",
         "historical_source_63e9dea1bb4d724a2c3f0ce6",
-        "historical_source_99d5010c8dd946101841d3df",
-        "historical_source_f5a5721da9e945c6f345397b"
+        "historical_source_99d5010c8dd946101841d3df"
       ],
       "resolverIds": [
         "fisher-paykel-official-support"
@@ -25155,7 +25152,6 @@
       "route": "OFFICIAL_REACQUIRE",
       "executionReadiness": "BOUNDED_READY",
       "candidateSourceIds": [
-        "historical_source_75648183340d8d17deb2f939",
         "historical_source_7a9afc6bac1e4b9d88ca6eef",
         "historical_source_e18c1b66cd04e86e9f202186"
       ],
@@ -25280,8 +25276,7 @@
       "executionReadiness": "RESEARCH_REQUIRED",
       "candidateSourceIds": [
         "historical_source_89d31e1c26f6ab90bdc2da32",
-        "historical_source_c3aecfd7d374ccd5f1c936e7",
-        "historical_source_ca8b8f4408664d2fbf439a63"
+        "historical_source_c3aecfd7d374ccd5f1c936e7"
       ],
       "resolverIds": [
         "lg-official-support"
@@ -27541,7 +27536,7 @@
       "route": "OFFICIAL_REACQUIRE",
       "executionReadiness": "BOUNDED_READY",
       "candidateSourceIds": [
-        "historical_source_0220b75df518c731aadf720d",
+        "historical_source_1dfe8f25539b0013ce36a5bd",
         "historical_source_780afc6550ebab36f55cb56e"
       ],
       "resolverIds": [
@@ -35833,8 +35828,8 @@
       "route": "OFFICIAL_REACQUIRE",
       "executionReadiness": "BOUNDED_READY",
       "candidateSourceIds": [
-        "historical_source_2b213a2a8e9ec69439724031",
-        "historical_source_86297d49af24af34f01e742b"
+        "historical_source_86297d49af24af34f01e742b",
+        "historical_source_b365b8134957dd43fe49248f"
       ],
       "resolverIds": [
         "hisense-official-discovery"
@@ -38503,38 +38498,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_049da49dd1e75737e8e251bc"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f4049646d9d0dcec85ee0426",
-      "referenceId": "fa_ref_7d2d3d7eaedf7b403717808b",
-      "category": "washing_machine",
-      "brand": "Samsung",
-      "model": "WW12BB944DGH",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family 22681a753f2f",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_594ed909f91d54abeaa0a46b",
-        "historical_source_fb518494174ad7a579bdcb38"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_68e2929d124738859393d42d"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-samsung-ww12bb944dgh"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_4b4f877fcb6026f4e2ddd668"
       ],
       "offlineReplayOutcome": null
     },
@@ -64868,37 +64831,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_8b0b3e7519f3ae038247a839",
-      "referenceId": "fa_ref_c862e59879a04b1d07e8a1a0",
-      "category": "fridge",
-      "brand": "KELVINATOR",
-      "model": "KTM5402AC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_b56ff9ab0cbbc9f2",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_a8168a6b393d0c975c104159"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_27861be001f7939d9478f669"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2540"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_7cc4c9b9b2ec1a58aff2b234"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_ef3f7a7b2d23c42a26d95350",
       "referenceId": "fa_ref_609c003b43121d8dd0fba052",
       "category": "fridge",
@@ -82215,37 +82147,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_348bf3bec93a24623e9cb9ec"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_542588ede5d77f987d1fa4a2",
-      "referenceId": "fa_ref_3c1d4d1e7e2323919eadc1e1",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE5650BA",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_16b5b7e582116bfd1e634edb"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_06e6abe5778ec8a1a9f0deb2"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2921"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_71b3254e1760a97a131e2c97"
       ],
       "offlineReplayOutcome": null
     },
@@ -147651,31 +147552,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_35f472cb054367915f2cd693",
-      "referenceId": "fa_ref_86df98c1394de52ce6dafaf5",
-      "category": "fridge",
-      "brand": "KELVINATOR",
-      "model": "KTM4602AC",
-      "lifecycleState": "REGISTRY_ONLY",
-      "priority": "P2_REGISTRY_ONLY",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_b56ff9ab0cbbc9f2",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_93578fe2a9d46e65fa7abc8e"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [],
-      "canonicalProductIds": [],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_02bc93a095cbb413c795edb3",
       "referenceId": "fa_ref_ca02b87777a1005e23ed3329",
       "category": "fridge",
@@ -195557,7 +195433,6 @@
       "executionReadiness": "RESEARCH_REQUIRED",
       "candidateSourceIds": [
         "historical_source_21a3ad12aca8a59b7693517a",
-        "historical_source_587b8f17c2c467aa43adc0bf",
         "historical_source_bc6e2892decdd0b0d4988b7e"
       ],
       "resolverIds": [
@@ -197292,18 +197167,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_0220b75df518c731aadf720d",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SRF5300SD.json"
-      ],
-      "referenceIds": [
-        "fa_ref_988c48ab891f6400e4b6a637"
-      ]
-    },
-    {
       "sourceId": "historical_source_02a1e0e5da7de863b9a7b20d",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw227e58cc/QRG/AU/QRG-AU-92334.pdf",
       "sourceAuthority": "NONE",
@@ -197374,6 +197237,7 @@
       "sourceAuthority": "OFFICIAL",
       "receiptEligible": true,
       "documentIds": [
+        "legacy:data/pdf-evidence-raw/DD60SDFTX9.json",
         "source:doc_68663660383ad758542f6374"
       ],
       "referenceIds": [
@@ -198957,19 +198821,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_16b5b7e582116bfd1e634edb",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WQE5650BA.json",
-        "source:doc_37f7132e73d6007322242413"
-      ],
-      "referenceIds": [
-        "fa_ref_3c1d4d1e7e2323919eadc1e1"
-      ]
-    },
-    {
       "sourceId": "historical_source_16ce9a29efed9a2b7109d6ff",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/3/6/5/6/36568c18eaef32e4d1b02c39f699d002d2e1558a_QRG_AU_62256.pdf",
       "sourceAuthority": "REFERENCE",
@@ -199630,6 +199481,18 @@
       ]
     },
     {
+      "sourceId": "historical_source_1dfe8f25539b0013ce36a5bd",
+      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
+      "sourceAuthority": "REFERENCE",
+      "receiptEligible": false,
+      "documentIds": [
+        "legacy:data/pdf-evidence-raw/SRF5300SD.json"
+      ],
+      "referenceIds": [
+        "fa_ref_988c48ab891f6400e4b6a637"
+      ]
+    },
+    {
       "sourceId": "historical_source_1e14b8dabe2a75d5589e5e35",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/7/9/0/0/79005e422161143c07fde39e778aeba7fde774ab_CTM200NSS_SPEC.pdf",
       "sourceAuthority": "REFERENCE",
@@ -199908,6 +199771,7 @@
       "sourceAuthority": "NONE",
       "receiptEligible": false,
       "documentIds": [
+        "legacy:data/pdf-evidence-raw/RS9120WRU1.json",
         "source:doc_f6652f5739834a7b8ec76196"
       ],
       "referenceIds": [
@@ -200710,18 +200574,6 @@
       ],
       "referenceIds": [
         "fa_ref_ccd5e16cd4321866bdbf5583"
-      ]
-    },
-    {
-      "sourceId": "historical_source_2b213a2a8e9ec69439724031",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/2/9/9f2929c8bccee4e2248681f816a1d189dddb5ac5_2026_Hisense_AU___Consumer_Spec__HWF3S8514X_.pdf",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HWF3S8514X.json"
-      ],
-      "referenceIds": [
-        "fa_ref_1e1b951a2f2f4299ee79e889"
       ]
     },
     {
@@ -202180,18 +202032,6 @@
       ],
       "referenceIds": [
         "fa_ref_c542c3d141e61f8229dcd36f"
-      ]
-    },
-    {
-      "sourceId": "historical_source_3c854e1327b62c8be92569ee",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw83e4ad94/QRG/AU/QRG-AU-82324.pdf",
-      "sourceAuthority": "MIXED",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DD60SDFTX9.json"
-      ],
-      "referenceIds": [
-        "fa_ref_6e3ab48cc2e552dd15c677d7"
       ]
     },
     {
@@ -204514,18 +204354,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_587b8f17c2c467aa43adc0bf",
-      "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/9mpt78hhk37b6vp8j3pn4w/FP-PlanningGuide-RS9120WRU1-IntegratedFridgeFreezer-AU-90001400A.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/RS9120WRU1.json"
-      ],
-      "referenceIds": [
-        "fa_ref_bfa99ebed3ca97689466ac98"
-      ]
-    },
-    {
       "sourceId": "historical_source_58800dcb9c301c9343661e53",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/6/5/f/a65f222423f54af91250ca1688241e1164b7f07a_WD75M4453JW_Samsung_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -204620,19 +204448,6 @@
       ],
       "referenceIds": [
         "fa_ref_cb9179934e29a72cd095869c"
-      ]
-    },
-    {
-      "sourceId": "historical_source_594ed909f91d54abeaa0a46b",
-      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGH&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WW12BB944DGH.json",
-        "source:doc_2c64ce7645c14c001278a28d"
-      ],
-      "referenceIds": [
-        "fa_ref_7d2d3d7eaedf7b403717808b"
       ]
     },
     {
@@ -204874,6 +204689,7 @@
       "sourceAuthority": "OFFICIAL",
       "receiptEligible": true,
       "documentIds": [
+        "legacy:data/pdf-evidence-raw/RF610ADUQSX4.json",
         "pdf:b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8"
       ],
       "referenceIds": [
@@ -205020,18 +204836,6 @@
       ],
       "referenceIds": [
         "fa_ref_5627810f0b8d569b70d3f8de"
-      ]
-    },
-    {
-      "sourceId": "historical_source_5d4c2ffae52a7c966d646a3c",
-      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=irYywwLMKQrdaYb9RwmJA",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/XD3A15BS.json"
-      ],
-      "referenceIds": [
-        "fa_ref_948da1a7adcdd20a89f28170"
       ]
     },
     {
@@ -207049,18 +206853,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_75648183340d8d17deb2f939",
-      "sourceUrl": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/GF-V500MBLC.json"
-      ],
-      "referenceIds": [
-        "fa_ref_2210a276b84ee0439b0ff1f2"
-      ]
-    },
-    {
       "sourceId": "historical_source_7567118ff900a190977abbcb",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/7/b/b/7/7bb705d5aae235c814effe2fb4109c37214b835f_DWA4510X2_Smeg_Datasheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -207673,6 +207465,7 @@
       "sourceAuthority": "NONE",
       "receiptEligible": false,
       "documentIds": [
+        "legacy:data/pdf-evidence-raw/GF-V500MBLC.json",
         "source:doc_77efaa150f128b66a114cb24"
       ],
       "referenceIds": [
@@ -209887,18 +209680,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_93578fe2a9d46e65fa7abc8e",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KTM4602AC.json"
-      ],
-      "referenceIds": [
-        "fa_ref_86df98c1394de52ce6dafaf5"
-      ]
-    },
-    {
       "sourceId": "historical_source_93803807f45704f5fcc4ec24",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRSBS633BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMzk5ODV8YXBwbGljYXRpb24vcGRmfGFEaGhMMmhrTUM4NE9ESTJORGN5TkRZME5ERTBMMGhTVTBKVE5qTXpRbGN0VTNCbFl5NXdaR1l8OTljNDMzYTE4MmI5NWYyNzYxZjFjZTBmYWNjOWVhMmRjY2RhOTc1M2ExYTE1YWMwMjdkOWIyNWJhNGMxNDBiZA",
       "sourceAuthority": "NONE",
@@ -211453,19 +211234,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_a8168a6b393d0c975c104159",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KTM5402AC.json",
-        "source:doc_fdc3ebd9f2dbbf3f333a1e62"
-      ],
-      "referenceIds": [
-        "fa_ref_c862e59879a04b1d07e8a1a0"
-      ]
-    },
-    {
       "sourceId": "historical_source_a82f50870d694ac681b54a86",
       "sourceUrl": "https://media.miele.com/downloads/n-/ce/FS_11738280_OVE_OV-en-CE.pdf",
       "sourceAuthority": "NONE",
@@ -212420,6 +212188,18 @@
       ],
       "referenceIds": [
         "fa_ref_4935fa9cfbe6c884f1d38eb1"
+      ]
+    },
+    {
+      "sourceId": "historical_source_b365b8134957dd43fe49248f",
+      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/2/9/9f2929c8bccee4e2248681f816a1d189dddb5ac5_2026_Hisense_AU___Consumer_Spec__HWF3S8514X_.pdf",
+      "sourceAuthority": "REFERENCE",
+      "receiptEligible": false,
+      "documentIds": [
+        "legacy:data/pdf-evidence-raw/HWF3S8514X.json"
+      ],
+      "referenceIds": [
+        "fa_ref_1e1b951a2f2f4299ee79e889"
       ]
     },
     {
@@ -213763,6 +213543,7 @@
       "sourceAuthority": "NONE",
       "receiptEligible": false,
       "documentIds": [
+        "legacy:data/pdf-evidence-raw/GT-279BPL.json",
         "source:doc_f94e1bed22531b3a7cbca2fc"
       ],
       "referenceIds": [
@@ -214316,18 +214097,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_ca8b8f4408664d2fbf439a63",
-      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=TZeDKr8byA9LNdheupkg",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/GT-279BPL.json"
-      ],
-      "referenceIds": [
-        "fa_ref_77c7995b5d71ebbb408748be"
-      ]
-    },
-    {
       "sourceId": "historical_source_cab6686b638a40c0bfcb6842",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/b/c/d/1/bcd1e458175b4cc6fded9a875c2d1b7c5aa5e6d8_G7609_SCi_XXL_12531690.pdf",
       "sourceAuthority": "REFERENCE",
@@ -214842,6 +214611,7 @@
       "sourceAuthority": "NONE",
       "receiptEligible": false,
       "documentIds": [
+        "legacy:data/pdf-evidence-raw/XD3A15BS.json",
         "source:doc_346b10f26eb7fa7bcd7686b7"
       ],
       "referenceIds": [
@@ -217695,18 +217465,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_f5a5721da9e945c6f345397b",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
-      "sourceAuthority": "MIXED",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/RF610ADUQSX4.json"
-      ],
-      "referenceIds": [
-        "fa_ref_a7a6de0ae223d36eabaed392"
-      ]
-    },
-    {
       "sourceId": "historical_source_f5af199b3268ccddaa327ae4",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/1/3/c/113ceff477d3398b715c5b03ebeda4d9ea92d55e_Midea_MTW55_5.5kg_Top_Load_Washing_Machine_User_Manual.pdf",
       "sourceAuthority": "REFERENCE",
@@ -218132,7 +217890,6 @@
         "pdf:d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b"
       ],
       "referenceIds": [
-        "fa_ref_7d2d3d7eaedf7b403717808b",
         "fa_ref_bc1c9926720d683f4c4e0824"
       ]
     },
@@ -218487,49 +218244,49 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 123,
+    "COMPLETE_RECEIPT": 127,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7972,
-    "uniqueReferences": 7972,
-    "candidateSources": 1641,
-    "candidateEdges": 1677,
+    "queuedModels": 7968,
+    "uniqueReferences": 7968,
+    "candidateSources": 1631,
+    "candidateEdges": 1666,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2115,
-      "CURRENT_RETAIL": 1292,
-      "REGISTRY_ONLY": 4565
+      "CATALOG_ARCHIVED": 2113,
+      "CURRENT_RETAIL": 1291,
+      "REGISTRY_ONLY": 4564
     },
     "byCategory": {
       "dishwasher": 1378,
       "dryer": 820,
-      "fridge": 4296,
-      "washing_machine": 1478
+      "fridge": 4293,
+      "washing_machine": 1477
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
-      "OFFICIAL_REACQUIRE": 16,
+      "OFFICIAL_REACQUIRE": 12,
       "REFERENCE_REDISCOVERY": 1254
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 193,
       "OFFICIAL_DISCOVERY": 6426,
-      "OFFICIAL_REACQUIRE": 16,
+      "OFFICIAL_REACQUIRE": 12,
       "OFFICIAL_REDISCOVERY": 1254
     },
     "byExecutionReadiness": {
-      "BOUNDED_READY": 16,
+      "BOUNDED_READY": 12,
       "DISCOVERY_READY": 4598,
       "RESEARCH_REQUIRED": 276,
       "RESOLVER_GAP": 3082
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 123,
+      "COMPLETE_RECEIPT": 127,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

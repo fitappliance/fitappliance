@@ -191,6 +191,7 @@ test('committed recovery policy pins queue, receipt, claim, transport, lock and 
   assert.deepEqual(policy.supportedReceiptSchemaVersions, [2, 3]);
   assert.deepEqual(policy.supportedClaimSemanticsVersions, [1, 2]);
   assert.deepEqual(policy.requestedFields, FIELDS);
+  assert.equal(policy.reconciliation.registryAxisPermutationToleranceMm, 10);
   assert.ok(policy.limits.resolverTimeoutMs > policy.limits.timeoutMs);
   assert.throws(
     () => validateHistoricalEvidenceRecoveryPolicy({ ...policy, unexpected: true }),

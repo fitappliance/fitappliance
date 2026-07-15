@@ -135,6 +135,41 @@ test('one exact official source with explicit axis labels resolves an exact regi
   assert.equal(result.axisPermutationResolution, 'exact_official_axis_proof');
 });
 
+test('policy-bounded registry permutation tolerance resolves small registry transcription deltas', () => {
+  const accepted = source('a'.repeat(64), { widthMm: 796, heightMm: 1718, depthMm: 727 });
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([accepted]), {
+    verifyReceipt,
+    registryAxisPermutationToleranceMm: 10,
+    lowerAuthorityHints: [{
+      sourceRole: 'registry_hint',
+      sourceId: 'energy-rating',
+      dimensionsMm: { widthMm: 1725, heightMm: 796, depthMm: 723 },
+    }],
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.conflictHints[0].kind, 'axis_permutation_within_tolerance');
+  assert.equal(result.conflictHints[0].maximumDeltaMm, 7);
+  assert.equal(result.axisPermutationResolution, 'exact_official_axis_proof_with_registry_tolerance');
+});
+
+test('registry disagreement beyond the permutation tolerance remains quarantined', () => {
+  const accepted = source('a'.repeat(64), { widthMm: 699, heightMm: 1725, depthMm: 723 });
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([accepted]), {
+    verifyReceipt,
+    registryAxisPermutationToleranceMm: 10,
+    lowerAuthorityHints: [{
+      sourceRole: 'registry_hint',
+      sourceId: 'energy-rating',
+      dimensionsMm: { widthMm: 1725, heightMm: 699, depthMm: 769 },
+    }],
+  });
+
+  assert.equal(result.status, 'conflict_quarantined');
+  assert.equal(result.conflictHints[0].kind, 'lower_authority_disagreement');
+  assert.equal(result.axisPermutationResolution, undefined);
+});
+
 test('one official source with no coherent axis representation cannot resolve a registry permutation', () => {
   const accepted = source('a'.repeat(64), { widthMm: 913, heightMm: 1782, depthMm: 803 });
   accepted.claims = accepted.claims.map((claim) => ({

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T14:22:17.279Z",
-  "sourceBundleSha256": "1eaace93b978a9ec3494d91d5ca8a4a5d198db547829b07f306b6765ca74b990",
+  "generatedAt": "2026-07-15T15:07:24.863Z",
+  "sourceBundleSha256": "ca41cfbbbc281bf60acbd9801060a2bb648f1d5ce3ff407fb5c37fe2f6e2c8ff",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -112,6 +112,20 @@
       "contentSha256": "9ec95da728ee5b2059853a9bd0ef1c33a119d761d46d9047f1e2bb5d9a372872",
       "receiptBindingSha256": "6e788b77e0c082e84f72313f3048161157c7b88d6204b3b817f66ee0dd7e8292",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/df/ef/dfef11c59816a7142f34ed39279d23bcb9417d061aafff28d2fb673a7d11facb.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_06e6abe5778ec8a1a9f0deb2",
+      "referenceId": "fa_ref_3c1d4d1e7e2323919eadc1e1",
+      "brand": "Westinghouse",
+      "model": "WQE5650BA",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
+      "sourcePdfSha256": "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
+      "contentSha256": "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
+      "receiptBindingSha256": "52e21a291c1f5270be382670c9b4394c47bef582b47aea5314df3e7d0b527290",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/82/5d/825dc02fb2b7c72612ae6525261a73e7b7628ac518ab1b7bd646fee392465af0.json",
       "status": "passed",
       "failureCode": null
     },
@@ -252,6 +266,20 @@
       "contentSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
       "receiptBindingSha256": "c0a844bfb75c8e894ab3ff92a12e065c090be050a7db051f510c2dbea4e49375",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/6f/d8/6fd8127d5d45f75fb969fc7ccf1b778f5f771809c3fdd9188e37a1aa981b64c0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_27861be001f7939d9478f669",
+      "referenceId": "fa_ref_c862e59879a04b1d07e8a1a0",
+      "brand": "KELVINATOR",
+      "model": "KTM5402AC",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
+      "sourcePdfSha256": "32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908",
+      "contentSha256": "32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908",
+      "receiptBindingSha256": "1af38a47670a398f491f70cf40e4b506a63d950dc762e70ecdb6933832fa5cc5",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/a2/86/a28692f99d87e72ee4c02fb681d51e8ec07246993808b12fefbd19d777503f06.json",
       "status": "passed",
       "failureCode": null
     },
@@ -802,6 +830,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_68e2929d124738859393d42d",
+      "referenceId": "fa_ref_7d2d3d7eaedf7b403717808b",
+      "brand": "Samsung",
+      "model": "WW12BB944DGH",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7",
+      "receiptBindingSha256": "29a57b5c656410443aabc8703bbbdb1fd53ced6fd7436fc52a351d3f3573949d",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_6a8a5797078ea622d9a6edfe",
       "referenceId": "fa_ref_08091b520d2f35b4bdda4dd0",
       "brand": "Fisher & Paykel",
@@ -1334,6 +1376,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_ce94f197cea177d8ffe048ae",
+      "referenceId": "fa_ref_86df98c1394de52ce6dafaf5",
+      "brand": "KELVINATOR",
+      "model": "KTM4602AC",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
+      "sourcePdfSha256": "bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac",
+      "contentSha256": "bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac",
+      "receiptBindingSha256": "64a58a2ff8a7f753ecf5cd9f172c95ea59dbd109d489f27b5123708c848a8cdc",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/43/55/4355ee91b95f94986d09a9e76a51d8043d4d3d066be055613a7a91ec37e86653.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_cf7271d6f05da49811955422",
       "referenceId": "fa_ref_6031b18d314cb610323ab4c4",
       "brand": "Westinghouse",
@@ -1685,11 +1741,11 @@
     }
   ],
   "summary": {
-    "entries": 104,
-    "sources": 120,
-    "passed": 120,
+    "entries": 108,
+    "sources": 124,
+    "passed": 124,
     "failed": 0
   },
-  "checkedObjects": 262,
-  "semanticAuditSha256": "fb79f0bd77461ebc667512b06952e17b9243890777ed7624954ec721fededa48"
+  "checkedObjects": 271,
+  "semanticAuditSha256": "e9ae7af0d111a4ceecfc95b87bc12d74bcf18202642e20b3c1fd7a7a127c253d"
 }

@@ -180,7 +180,9 @@ function artifactSummary(job, state) {
 function needsIndependentOfficialCorroboration(reconciled, inventory) {
   if (reconciled?.status !== 'conflict_quarantined') return false;
   const requiresCorroboration = (reconciled.conflictHints ?? [])
-    .some((hint) => ['axis_permutation', 'lower_authority_disagreement'].includes(hint.kind));
+    .some((hint) => [
+      'axis_permutation', 'axis_permutation_within_tolerance', 'lower_authority_disagreement',
+    ].includes(hint.kind));
   if (!requiresCorroboration) return false;
   return (inventory?.candidates ?? []).some((candidate) => (
     candidate.authorityMode === 'official'
@@ -357,6 +359,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         model: target.model,
         category: target.category,
       }, inventory, {
+        ...(dependencies.reconciliationOptions ?? {}),
         requestedFields: target.requestedFields,
         lowerAuthorityHints: buildLowerAuthorityHints(target),
         verifyInventoryHash: true,
@@ -373,6 +376,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
           model: target.model,
           category: target.category,
         }, inventory, {
+          ...(dependencies.reconciliationOptions ?? {}),
           requestedFields: target.requestedFields,
           lowerAuthorityHints: buildLowerAuthorityHints(target),
           verifyInventoryHash: true,

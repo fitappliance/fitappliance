@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-14T19:40:27.898Z",
+  "generatedAt": "2026-07-15T14:53:39.566Z",
   "summary": {
     "physicalFiles": 637,
     "uniquePdfDocuments": 590,
@@ -14,11 +14,10 @@
     "sourceDocuments": 2005,
     "modelLinks": 386,
     "byRepairAction": {
-      "IDENTITY_RESEARCH": 361,
-      "NO_ACTION": 54,
-      "OFFLINE_PARSER_REPAIR": 2,
-      "OFFLINE_REPLAY": 11,
-      "REFERENCE_REDISCOVERY": 162
+      "IDENTITY_RESEARCH": 360,
+      "NO_ACTION": 67,
+      "OFFLINE_REPLAY": 7,
+      "REFERENCE_REDISCOVERY": 156
     }
   },
   "invalidPdfFiles": [],
@@ -575,7 +574,7 @@
         "evidence/web/sha256/08/a0/08a01ab0456e8303fe477f34323a2bdecd59606b52c6493c3214e66615e7fe6e.pdf"
       ],
       "sourceDocumentIds": [],
-      "sourceAuthority": "NONE",
+      "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
@@ -589,7 +588,7 @@
           "model": "WQE5660BA",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION"
         }
       ],
       "mineruIndex": {
@@ -598,10 +597,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_5d22087b44c6c430c28b06ba"
+      ],
       "legacyFieldState": "NONE",
       "issueCodes": [],
-      "repairAction": "REFERENCE_REDISCOVERY"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840",
@@ -2093,7 +2094,7 @@
         "evidence/web/sha256/1a/c9/1ac995bd56a0df20268d8fc77e5f32ee43aefd5620fc0fc8e28597984c575354.pdf"
       ],
       "sourceDocumentIds": [],
-      "sourceAuthority": "NONE",
+      "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
@@ -2107,7 +2108,7 @@
           "model": "KTB2802WB",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION"
         }
       ],
       "mineruIndex": {
@@ -2116,10 +2117,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_706e059a44b52ebbba68cd63"
+      ],
       "legacyFieldState": "NONE",
       "issueCodes": [],
-      "repairAction": "REFERENCE_REDISCOVERY"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "1ada38b86a24bf695238bf1d9fa209135b2de8cdcf0d5aa5210cca61ab44029d",
@@ -2800,9 +2803,9 @@
       ],
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARTIAL_AXIS",
+      "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
-        "pdf_grammar_bf4902a9bcd6139b"
+        "pdf_grammar_68c6a6913a230966"
       ],
       "modelLinks": [
         {
@@ -2811,8 +2814,8 @@
           "brand": "LG",
           "model": "DVH1-08WP",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARTIAL_AXIS",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
+          "extractionState": "ALL_AXIS_SCALAR",
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
         }
       ],
       "mineruIndex": {
@@ -2821,10 +2824,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_6252d12c8636ff82d87b836d"
+      ],
       "legacyFieldState": "LEGACY_UNBOUND",
       "issueCodes": [],
-      "repairAction": "OFFLINE_PARSER_REPAIR"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "22dfff4536e442b208a836a55eaf113032665b36b7fb47527d5c162af45a49c4",
@@ -3777,7 +3782,7 @@
         "evidence/web/sha256/2c/cd/2ccd37f0b081bdf4c86d1b2c82576e40912ea016e93f5e271272fd3592145b55.pdf"
       ],
       "sourceDocumentIds": [],
-      "sourceAuthority": "NONE",
+      "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
@@ -3791,7 +3796,7 @@
           "model": "KTB2502WB",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION"
         }
       ],
       "mineruIndex": {
@@ -3800,10 +3805,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_2efea98f2bd6ef9088d71fb9"
+      ],
       "legacyFieldState": "NONE",
       "issueCodes": [],
-      "repairAction": "REFERENCE_REDISCOVERY"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "2d0a3dd62dcf2bf982901cb735d661f2833b23cef20b767e28d813a6371cdbb1",
@@ -3852,7 +3859,7 @@
       "identityScope": "EXACT_MODEL",
       "extractionState": "PARTIAL_AXIS",
       "grammarProfileIds": [
-        "pdf_grammar_982e0761924cb008"
+        "pdf_grammar_56dff8973bc69513"
       ],
       "modelLinks": [
         {
@@ -4108,9 +4115,9 @@
       ],
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARTIAL_AXIS",
+      "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
-        "pdf_grammar_bf4902a9bcd6139b"
+        "pdf_grammar_68c6a6913a230966"
       ],
       "modelLinks": [
         {
@@ -4119,7 +4126,7 @@
           "brand": "LG",
           "model": "DVH5-08W",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARTIAL_AXIS",
+          "extractionState": "ALL_AXIS_SCALAR",
           "linkBasis": "MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
         },
         {
@@ -4128,7 +4135,7 @@
           "brand": "LG",
           "model": "DVH9-09B",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARTIAL_AXIS",
+          "extractionState": "ALL_AXIS_SCALAR",
           "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION"
         },
         {
@@ -4137,7 +4144,7 @@
           "brand": "LG",
           "model": "DVH9-09W",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARTIAL_AXIS",
+          "extractionState": "ALL_AXIS_SCALAR",
           "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION"
         }
       ],
@@ -6728,7 +6735,7 @@
           "model": "SMS6HCI02A",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
         }
       ],
       "mineruIndex": {
@@ -6737,10 +6744,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_c2de14d490b3777d78e1f53f"
+      ],
       "legacyFieldState": "LEGACY_UNBOUND",
       "issueCodes": [],
-      "repairAction": "OFFLINE_REPLAY"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0",
@@ -6960,9 +6969,9 @@
       "sourceDocumentIds": [],
       "sourceAuthority": "NONE",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARTIAL_AXIS",
+      "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
-        "pdf_grammar_bf4902a9bcd6139b"
+        "pdf_grammar_68c6a6913a230966"
       ],
       "modelLinks": [
         {
@@ -6971,7 +6980,7 @@
           "brand": "LG",
           "model": "DVH10-10B",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARTIAL_AXIS",
+          "extractionState": "ALL_AXIS_SCALAR",
           "linkBasis": "MINERU_GRAMMAR_OBSERVATION"
         }
       ],
@@ -8666,7 +8675,7 @@
         "evidence/web/sha256/68/df/68dfbb01cf980a54e8ec86382f356c571d0e368d5a129eb5d7c55bc2170512d6.pdf"
       ],
       "sourceDocumentIds": [],
-      "sourceAuthority": "NONE",
+      "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
@@ -8680,7 +8689,7 @@
           "model": "WBB3700WH",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION"
         }
       ],
       "mineruIndex": {
@@ -8689,10 +8698,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_5bba847f3ca2affe34329755"
+      ],
       "legacyFieldState": "NONE",
       "issueCodes": [],
-      "repairAction": "REFERENCE_REDISCOVERY"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "69de4d5d037f5d9af810c5b0f0963a718af43d293fe183b7436316eb01226229",
@@ -9472,9 +9483,9 @@
       "sourceDocumentIds": [],
       "sourceAuthority": "NONE",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARTIAL_AXIS",
+      "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
-        "pdf_grammar_5a6fb6981a511ec4"
+        "pdf_grammar_2e826f8230419796"
       ],
       "modelLinks": [
         {
@@ -9483,7 +9494,7 @@
           "brand": "LG",
           "model": "WD1275A1",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARTIAL_AXIS",
+          "extractionState": "ALL_AXIS_SCALAR",
           "linkBasis": "MINERU_GRAMMAR_OBSERVATION"
         }
       ],
@@ -9852,7 +9863,7 @@
           "model": "HRF510BHC",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
         }
       ],
       "mineruIndex": {
@@ -9861,10 +9872,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_1a597e6cf3cf9079af4ef3e1"
+      ],
       "legacyFieldState": "LEGACY_UNBOUND",
       "issueCodes": [],
-      "repairAction": "OFFLINE_REPLAY"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "77f0fd4a86eb2d4e214b077a80af06fd5521af019ba0d96a76e4c568c50efd98",
@@ -12031,7 +12044,7 @@
         "evidence/web/sha256/97/db/97dba1d61e8ecd12292958e0fdf4f250d5b1925262f43fa60c6aa910fbfcd95e.pdf"
       ],
       "sourceDocumentIds": [],
-      "sourceAuthority": "NONE",
+      "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
@@ -12045,7 +12058,7 @@
           "model": "KTB2302WB",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION"
         }
       ],
       "mineruIndex": {
@@ -12054,10 +12067,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_2f89dc1ab3bd7db68fb6b0e1"
+      ],
       "legacyFieldState": "NONE",
       "issueCodes": [],
-      "repairAction": "REFERENCE_REDISCOVERY"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "97e86bee93ec1cf430cf85962057c570fd8c5ff71fc37ed02ba04195ae370996",
@@ -12587,7 +12602,7 @@
           "model": "SMS4HVI01A",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
         }
       ],
       "mineruIndex": {
@@ -12596,10 +12611,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_db157acb2debd96f7800a602"
+      ],
       "legacyFieldState": "LEGACY_UNBOUND",
       "issueCodes": [],
-      "repairAction": "OFFLINE_REPLAY"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "9e15c9f31b13d6143053f558c7685f76230d260ac4cf328eda98ee6688aa790d",
@@ -13666,7 +13683,7 @@
           "model": "WQG235D8AU",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
         }
       ],
       "mineruIndex": {
@@ -13675,10 +13692,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_3abcd6f1596261bf1ef39a43"
+      ],
       "legacyFieldState": "LEGACY_UNBOUND",
       "issueCodes": [],
-      "repairAction": "OFFLINE_REPLAY"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "ae50220570b061547ab1366d4fcf10647dfb4435ca3704e9941039b0d19de2c1",
@@ -14907,7 +14926,7 @@
       "identityScope": "UNPROVEN",
       "extractionState": "PARSER_GAP",
       "grammarProfileIds": [
-        "pdf_grammar_c16293ad1361ce1b"
+        "pdf_grammar_658fb95d8446842a"
       ],
       "modelLinks": [
         {
@@ -16123,7 +16142,7 @@
         "evidence/web/sha256/c9/1c/c91cb34d06bc36b2e860013784cc4cf397b5b2c249760102af6cf437a890499f.pdf"
       ],
       "sourceDocumentIds": [],
-      "sourceAuthority": "NONE",
+      "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
@@ -16137,7 +16156,7 @@
           "model": "WQE6170BB",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION"
         }
       ],
       "mineruIndex": {
@@ -16146,10 +16165,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_aff68df053517392794eb79d"
+      ],
       "legacyFieldState": "NONE",
       "issueCodes": [],
-      "repairAction": "REFERENCE_REDISCOVERY"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "c93176a3fb186e29a1514ec86920aa602e53783a7d282d072de04504a09912c9",
@@ -18408,8 +18429,8 @@
         "evidence/web/sha256/e5/aa/e5aae97b862c6ac55a35fcf7c0bece8cb6ce6a2fe3d4be6dfa500db62e17425c.pdf"
       ],
       "sourceDocumentIds": [],
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
       "extractionState": "PARSER_GAP",
       "grammarProfileIds": [
         "pdf_grammar_1cb932102aaee1e6"
@@ -18420,9 +18441,9 @@
           "category": "fridge",
           "brand": "Westinghouse",
           "model": "WTB5400WC",
-          "identityScope": "UNPROVEN",
+          "identityScope": "EXACT_MODEL",
           "extractionState": "PARSER_GAP",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION"
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION"
         }
       ],
       "mineruIndex": {
@@ -18431,10 +18452,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_677e8e8f06fccd7fb91f1e50"
+      ],
       "legacyFieldState": "NONE",
       "issueCodes": [],
-      "repairAction": "IDENTITY_RESEARCH"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "e60c6d39e390cccfc9ba236b859bf1a095b156be1d596ff5080584138112357b",
@@ -18749,9 +18772,9 @@
       ],
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARTIAL_AXIS",
+      "extractionState": "ALL_AXIS_SCALAR",
       "grammarProfileIds": [
-        "pdf_grammar_64e6b0d171b80b38"
+        "pdf_grammar_bcb760da6029f33b"
       ],
       "modelLinks": [
         {
@@ -18760,8 +18783,8 @@
           "brand": "LG",
           "model": "GF-L700PL",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARTIAL_AXIS",
-          "linkBasis": "MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
+          "extractionState": "ALL_AXIS_SCALAR",
+          "linkBasis": "CURRENT_RECEIPT+MINERU_GRAMMAR_OBSERVATION+SOURCE_DOCUMENT_PRODUCT_LINK"
         }
       ],
       "mineruIndex": {
@@ -18770,10 +18793,12 @@
         "parserVersion": "3.4.4",
         "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
       },
-      "receiptTargetIds": [],
+      "receiptTargetIds": [
+        "recovery_target_a0281e53a45dcd4ad896734a"
+      ],
       "legacyFieldState": "LEGACY_UNBOUND",
       "issueCodes": [],
-      "repairAction": "OFFLINE_PARSER_REPAIR"
+      "repairAction": "NO_ACTION"
     },
     {
       "sourcePdfSha256": "e8ed3ee062d67ca5c62ac36d8680ea71c423f6b5e289ed58f22801cd30bc36c2",
@@ -24912,10 +24937,9 @@
       "modelKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D2NB9",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3d89644a/QRG/AU/QRG-AU-82879.pdf",
       "sourceDocumentIds": [
-        "doc_98b760ff68ba7a508aa58e21",
-        "doc_fb865413cc26a73da9611f93"
+        "doc_98b760ff68ba7a508aa58e21"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_bff29a8a6a6e257bb854e786"
       ],
@@ -24923,6 +24947,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -24935,10 +24960,9 @@
       "modelKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D2NX9",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwa14c70a9/QRG/AU/QRG-AU-82878.pdf",
       "sourceDocumentIds": [
-        "doc_0fce424149a9fddc7ce7d9da",
         "doc_ce50d8e9a045322d061817d8"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_9f93a5de01d06db7b9bc6f8f"
       ],
@@ -24946,6 +24970,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -24958,10 +24983,9 @@
       "modelKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D4NB9",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw53c8ef68/QRG/AU/QRG-AU-82881.pdf",
       "sourceDocumentIds": [
-        "doc_697c8d8b8afcdb6eed150bb3",
-        "doc_fe72813f63bc795d77016c54"
+        "doc_697c8d8b8afcdb6eed150bb3"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_b3c5fff0b169a8e2dac9bc25"
       ],
@@ -24969,6 +24993,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -24981,10 +25006,9 @@
       "modelKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D4NX9",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf9542760/QRG/AU/QRG-AU-82880.pdf",
       "sourceDocumentIds": [
-        "doc_7eabf7e2a4577e26597c0811",
-        "doc_9f7766e4b257f90d5ca421e0"
+        "doc_7eabf7e2a4577e26597c0811"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_566e36dba9cb7c9ee370e5e1"
       ],
@@ -24992,6 +25016,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -25158,10 +25183,9 @@
       "modelKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60SDFTX9",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw83e4ad94/QRG/AU/QRG-AU-82324.pdf",
       "sourceDocumentIds": [
-        "doc_68663660383ad758542f6374",
-        "doc_c1806a2c7d5186991ff80a0d"
+        "doc_68663660383ad758542f6374"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_6e3ab48cc2e552dd15c677d7"
       ],
@@ -25169,6 +25193,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -25181,10 +25206,9 @@
       "modelKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60SDFX9",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4ef414ad/QRG/AU/QRG-AU-82325.pdf",
       "sourceDocumentIds": [
-        "doc_9bf7ffb807444e7093ee5829",
         "doc_cddb0ed7d876e672d546fdf6"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_c47eaade2e638e8e62fe49d3"
       ],
@@ -25192,6 +25216,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -25226,10 +25251,9 @@
       "modelKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60ST4NB9",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw96f408b1/QRG/AU/QRG-AU-82884.pdf",
       "sourceDocumentIds": [
-        "doc_2370097337ada280a356a5e4",
-        "doc_2372c06a8210863d0014de6b"
+        "doc_2370097337ada280a356a5e4"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_61a6dd8f7fe4d41ee4d51bea"
       ],
@@ -25237,6 +25261,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -25249,10 +25274,9 @@
       "modelKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60ST4NX9",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcae4c1ac/QRG/AU/QRG-AU-82883.pdf",
       "sourceDocumentIds": [
-        "doc_333e10329f9f8fe64e73fe72",
         "doc_78f99a5aad3a6ccc6bc37ba8"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_56e05e7bf5832cc044fab0ab"
       ],
@@ -25260,6 +25284,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -28154,10 +28179,8 @@
       "model": "DWAU615DB3",
       "modelKey": "dishwasher\u0000SMEG\u0000DWAU615DB3",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/f/7/5/af7523e8522b959fc92a01411a595f4c25e4a043_DWAU615DB3_Smeg_Specifications_Sheet.pdf",
-      "sourceDocumentIds": [
-        "doc_28fe3e436f08eaf2476b51dc"
-      ],
-      "sourceAuthority": "OFFICIAL",
+      "sourceDocumentIds": [],
+      "sourceAuthority": "REFERENCE",
       "referenceIds": [
         "fa_ref_3e5c521a27340879d0163005"
       ],
@@ -28165,6 +28188,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -34364,7 +34388,6 @@
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=fedUnZXjQscQf6x6ynOeEQ",
       "sourceDocumentIds": [
         "doc_0a5da4426e04387e377c3ae0",
-        "doc_b5ed413bcfeff7e2046ab76d",
         "doc_bcf974ea2e1f91d76d6bf02c"
       ],
       "sourceAuthority": "NONE",
@@ -34373,6 +34396,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_SOURCE_IDENTITY_CONFLICT",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED",
         "UNMATCHED_LEGACY_SUMMARY"
@@ -34458,10 +34482,9 @@
       "sourceDocumentIds": [
         "doc_369c27c27ee87a065a77ae17",
         "doc_77efaa150f128b66a114cb24",
-        "doc_9307fb0dcf5280ceb7a08d84",
         "doc_c88bead6b1642158ca8610ed"
       ],
-      "sourceAuthority": "OFFICIAL",
+      "sourceAuthority": "NONE",
       "referenceIds": [
         "fa_ref_2210a276b84ee0439b0ff1f2"
       ],
@@ -34469,6 +34492,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -35310,10 +35334,9 @@
       "modelKey": "fridge\u0000LG\u0000GT279BPL",
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=TZeDKr8byA9LNdheupkg",
       "sourceDocumentIds": [
-        "doc_f94e1bed22531b3a7cbca2fc",
-        "doc_faecdb453d6b586d937d6381"
+        "doc_f94e1bed22531b3a7cbca2fc"
       ],
-      "sourceAuthority": "REFERENCE",
+      "sourceAuthority": "NONE",
       "referenceIds": [
         "fa_ref_77c7995b5d71ebbb408748be"
       ],
@@ -35321,6 +35344,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -36366,10 +36390,8 @@
       "model": "HDW15F2B1",
       "modelKey": "dishwasher\u0000HAIER\u0000HDW15F2B1",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/e/f/5/c/ef5cbc3ae252f1842d259028f770cc993b6589b6_QRG_AU_61614.pdf",
-      "sourceDocumentIds": [
-        "doc_a405d785f64634753533ab1e"
-      ],
-      "sourceAuthority": "OFFICIAL",
+      "sourceDocumentIds": [],
+      "sourceAuthority": "REFERENCE",
       "referenceIds": [
         "fa_ref_0a57f065095267779f5c4a25"
       ],
@@ -36377,6 +36399,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -41256,10 +41279,8 @@
       "model": "HWF3S8514X",
       "modelKey": "washing_machine\u0000HISENSE\u0000HWF3S8514X",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/2/9/9f2929c8bccee4e2248681f816a1d189dddb5ac5_2026_Hisense_AU___Consumer_Spec__HWF3S8514X_.pdf",
-      "sourceDocumentIds": [
-        "doc_28d88ee63c0922bf42c78604"
-      ],
-      "sourceAuthority": "OFFICIAL",
+      "sourceDocumentIds": [],
+      "sourceAuthority": "REFERENCE",
       "referenceIds": [
         "fa_ref_1e1b951a2f2f4299ee79e889"
       ],
@@ -41267,6 +41288,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -41454,10 +41476,8 @@
       "model": "HWF8I1015BX",
       "modelKey": "washing_machine\u0000HISENSE\u0000HWF8I1015BX",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF8i1015B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjcxMDd8YXBwbGljYXRpb24vcGRmfGFHTmhMMmc0WlM4NE9EQTNNRGM0TURBeU56RTRMMGhYUmpocE1UQXhOVUl0VTNCbFl5NXdaR1l8NzBhNjNiNjkwOGM3ZmFjZjdiNGQyZGEyNjgyZDExNWJlYjJlYjNmYWQwNjk0YzAzYzcwMWY0NDQyYWJhMzhiNw",
-      "sourceDocumentIds": [
-        "doc_783c1dbf4a19aa82e5455f27"
-      ],
-      "sourceAuthority": "OFFICIAL",
+      "sourceDocumentIds": [],
+      "sourceAuthority": "NONE",
       "referenceIds": [
         "fa_ref_42626b1ccba316dadd74c395"
       ],
@@ -41465,6 +41485,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -45757,10 +45778,9 @@
       "modelKey": "fridge\u0000FISHERANDPAYKEL\u0000RF522ADUSX5",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8b42e8ee/QRG/AU/QRG-AU-26404.pdf",
       "sourceDocumentIds": [
-        "doc_4fe6310c39957af167279d10",
-        "doc_fd3e4fe9c6250fed81eec3b2"
+        "doc_4fe6310c39957af167279d10"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_0383a4ad90b57f35640f623c"
       ],
@@ -45768,6 +45788,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -46246,17 +46267,17 @@
       "modelKey": "fridge\u0000FISHERANDPAYKEL\u0000RF605QZUVB1",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
       "sourceDocumentIds": [
-        "doc_06e6f7a227e50660c2073cbd",
-        "doc_6aa6a68528e32daf5b740c50"
+        "doc_06e6f7a227e50660c2073cbd"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_63338b5d1bf869db290d3467"
       ],
       "claimState": "LEGACY_UNBOUND",
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
-        "LEGACY_FIELDS_UNBOUND"
+        "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND"
       ]
     },
     {
@@ -46312,10 +46333,9 @@
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
       "sourceDocumentIds": [
         "doc_2e71d027b15be05635d72e3d",
-        "doc_64b38006796923980f844221",
-        "doc_ae1dd92cc6bba5de5587c6c7"
+        "doc_64b38006796923980f844221"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_a7a6de0ae223d36eabaed392"
       ],
@@ -46323,6 +46343,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -46336,10 +46357,9 @@
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
       "sourceDocumentIds": [
         "doc_2e71d027b15be05635d72e3d",
-        "doc_3bfdcc999be5cd5fc4746b8d",
         "doc_64b38006796923980f844221"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_611da55b1bcd9803cae54645"
       ],
@@ -46347,6 +46367,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -47097,10 +47118,9 @@
       "modelKey": "fridge\u0000FISHERANDPAYKEL\u0000RS6121FRJK1",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5ace47e8/QRG/AU/QRG-AU-26160.pdf",
       "sourceDocumentIds": [
-        "doc_b4e58f702bd8842ccdf3a296",
-        "doc_ba372a714a856648330da561"
+        "doc_b4e58f702bd8842ccdf3a296"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_bc9fd3b42de8b34854301a9d"
       ],
@@ -47108,6 +47128,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -47495,17 +47516,17 @@
       "modelKey": "fridge\u0000FISHERANDPAYKEL\u0000RS9120WRU1",
       "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/9mpt78hhk37b6vp8j3pn4w/FP-PlanningGuide-RS9120WRU1-IntegratedFridgeFreezer-AU-90001400A.pdf",
       "sourceDocumentIds": [
-        "doc_a91a20585266e417435b293d",
         "doc_f6652f5739834a7b8ec76196"
       ],
-      "sourceAuthority": "REFERENCE",
+      "sourceAuthority": "NONE",
       "referenceIds": [
         "fa_ref_bfa99ebed3ca97689466ac98"
       ],
       "claimState": "LEGACY_UNBOUND",
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
-        "LEGACY_FIELDS_UNBOUND"
+        "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND"
       ]
     },
     {
@@ -48944,10 +48965,8 @@
       "model": "SMS6HCI02A",
       "modelKey": "dishwasher\u0000BOSCH\u0000SMS6HCI02A",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/5/2/7/15273e93a3bea07384129cb182751dc40e1a0490_SMS6HCI02A_Bosch_Specifications_Sheet.pdf",
-      "sourceDocumentIds": [
-        "doc_34cd69ee43dadecec97391f3"
-      ],
-      "sourceAuthority": "OFFICIAL",
+      "sourceDocumentIds": [],
+      "sourceAuthority": "REFERENCE",
       "referenceIds": [
         "fa_ref_5d80bf5c6d9510aa761f02a0"
       ],
@@ -48955,6 +48974,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -49825,7 +49845,6 @@
       "modelKey": "fridge\u0000SAMSUNG\u0000SR269MW",
       "sourceUrl": "https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge",
       "sourceDocumentIds": [
-        "doc_e191a8490baaa50200b726c7",
         "doc_f65276954e92db60e7b6b3e4"
       ],
       "sourceAuthority": "REFERENCE",
@@ -49835,7 +49854,8 @@
       "claimState": "LEGACY_UNBOUND",
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
-        "LEGACY_FIELDS_UNBOUND"
+        "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND"
       ]
     },
     {
@@ -50152,17 +50172,16 @@
       "model": "SRF5300SD",
       "modelKey": "fridge\u0000SAMSUNG\u0000SRF5300SD",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
-      "sourceDocumentIds": [
-        "doc_eac67c5c9f171a9b0f170d01"
-      ],
-      "sourceAuthority": "OFFICIAL",
+      "sourceDocumentIds": [],
+      "sourceAuthority": "REFERENCE",
       "referenceIds": [
         "fa_ref_988c48ab891f6400e4b6a637"
       ],
       "claimState": "LEGACY_UNBOUND",
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
-        "LEGACY_FIELDS_UNBOUND"
+        "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND"
       ]
     },
     {
@@ -53738,10 +53757,9 @@
       "modelKey": "washing_machine\u0000FISHERANDPAYKEL\u0000WD8560F1",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
       "sourceDocumentIds": [
-        "doc_d41081cf0eac9700467f0497",
         "doc_fa0eda54d4fcbd6f0ae647ba"
       ],
-      "sourceAuthority": "MIXED",
+      "sourceAuthority": "OFFICIAL",
       "referenceIds": [
         "fa_ref_4b70ff0c230e18316b157fb0"
       ],
@@ -53749,6 +53767,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },
@@ -59994,10 +60013,9 @@
       "modelKey": "dishwasher\u0000LG\u0000XD3A15BS",
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=irYywwLMKQrdaYb9RwmJA",
       "sourceDocumentIds": [
-        "doc_346b10f26eb7fa7bcd7686b7",
-        "doc_5b915b093a91f61dca175a5e"
+        "doc_346b10f26eb7fa7bcd7686b7"
       ],
-      "sourceAuthority": "REFERENCE",
+      "sourceAuthority": "NONE",
       "referenceIds": [
         "fa_ref_948da1a7adcdd20a89f28170"
       ],
@@ -60005,6 +60023,7 @@
       "issueCodes": [
         "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
         "LEGACY_FIELDS_UNBOUND",
+        "LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND",
         "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
       ]
     },

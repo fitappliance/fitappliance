@@ -158,26 +158,71 @@ function scalarDimensions(matrix) {
   return dimensions;
 }
 
-function analyzeHints(hints, matrix) {
+const DIMENSION_KEYS = Object.freeze(['widthMm', 'heightMm', 'depthMm']);
+const NON_IDENTITY_AXIS_PERMUTATIONS = Object.freeze([
+  ['widthMm', 'depthMm', 'heightMm'],
+  ['heightMm', 'widthMm', 'depthMm'],
+  ['heightMm', 'depthMm', 'widthMm'],
+  ['depthMm', 'widthMm', 'heightMm'],
+  ['depthMm', 'heightMm', 'widthMm'],
+]);
+
+function registryAxisPermutationWithinTolerance(dimensions, official, toleranceMm) {
+  if (!Number.isInteger(toleranceMm) || toleranceMm < 0) {
+    throw new TypeError('registry axis permutation tolerance must be a non-negative integer');
+  }
+  if (toleranceMm === 0) return null;
+
+  const candidates = NON_IDENTITY_AXIS_PERMUTATIONS.flatMap((permutation) => {
+    const meaningfullyReordered = DIMENSION_KEYS.some((key, index) => (
+      key !== permutation[index]
+      && Math.abs(official[key] - official[permutation[index]]) > toleranceMm
+    ));
+    if (!meaningfullyReordered) return [];
+    const deltas = DIMENSION_KEYS.map((key, index) => (
+      Math.abs(dimensions[key] - official[permutation[index]])
+    ));
+    const maximumDeltaMm = Math.max(...deltas);
+    if (maximumDeltaMm > toleranceMm) return [];
+    return [{ permutation, maximumDeltaMm, totalDeltaMm: deltas.reduce((sum, value) => sum + value, 0) }];
+  }).sort((left, right) => left.maximumDeltaMm - right.maximumDeltaMm
+    || left.totalDeltaMm - right.totalDeltaMm
+    || left.permutation.join(',').localeCompare(right.permutation.join(',')));
+
+  return candidates[0] ?? null;
+}
+
+function analyzeHints(hints, matrix, options = {}) {
   const official = scalarDimensions(matrix);
   const conflictHints = [];
   for (const hint of hints ?? []) {
     const dimensions = hint?.dimensionsMm;
     if (!dimensions || typeof dimensions !== 'object') continue;
-    const keys = ['widthMm', 'heightMm', 'depthMm'];
-    const comparable = keys.every((key) => Number.isFinite(dimensions[key]) && Number.isFinite(official[key]));
+    const comparable = DIMENSION_KEYS.every((key) => Number.isFinite(dimensions[key]) && Number.isFinite(official[key]));
     if (!comparable) continue;
-    const disagreements = keys.filter((key) => dimensions[key] !== official[key]);
+    const disagreements = DIMENSION_KEYS.filter((key) => dimensions[key] !== official[key]);
     if (!disagreements.length) continue;
     const axisPermutation = String(hint.sourceRole) === 'registry_hint'
-      && [...keys.map((key) => dimensions[key])].sort((a, b) => a - b).join(',')
-        === [...keys.map((key) => official[key])].sort((a, b) => a - b).join(',');
+      && [...DIMENSION_KEYS.map((key) => dimensions[key])].sort((a, b) => a - b).join(',')
+        === [...DIMENSION_KEYS.map((key) => official[key])].sort((a, b) => a - b).join(',');
+    const toleratedPermutation = !axisPermutation && String(hint.sourceRole) === 'registry_hint'
+      ? registryAxisPermutationWithinTolerance(
+        dimensions,
+        official,
+        options.registryAxisPermutationToleranceMm ?? 0,
+      )
+      : null;
     conflictHints.push({
       sourceRole: String(hint.sourceRole ?? 'unknown_hint'),
       sourceId: String(hint.sourceId ?? 'unknown'),
-      kind: axisPermutation ? 'axis_permutation' : 'lower_authority_disagreement',
+      kind: axisPermutation
+        ? 'axis_permutation'
+        : toleratedPermutation
+          ? 'axis_permutation_within_tolerance'
+          : 'lower_authority_disagreement',
       fields: disagreements.sort(),
       dimensionsMm: structuredClone(dimensions),
+      ...(toleratedPermutation ? { maximumDeltaMm: toleratedPermutation.maximumDeltaMm } : {}),
     });
   }
   return conflictHints.sort((left, right) => left.sourceId.localeCompare(right.sourceId));
@@ -354,8 +399,11 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
       if (row.claim?.value?.kind === 'range' && claimV2GeometryValue(row.claim) === null) hasNonScalar = true;
     }
   }
-  const conflictHints = analyzeHints(options.lowerAuthorityHints ?? [], matrix);
-  const axisConflict = conflictHints.some((hint) => hint.kind === 'axis_permutation');
+  const conflictHints = analyzeHints(options.lowerAuthorityHints ?? [], matrix, options);
+  const axisConflict = conflictHints.some((hint) => (
+    ['axis_permutation', 'axis_permutation_within_tolerance'].includes(hint.kind)
+  ));
+  const toleratedAxisConflict = conflictHints.some((hint) => hint.kind === 'axis_permutation_within_tolerance');
   const independentAxisCorroboration = axisConflict && hasIndependentOfficialAxisCorroboration(matrix);
   const exactOfficialAxisProof = axisConflict && hasExactOfficialAxisProof(matrix);
   const axisCorroborated = independentAxisCorroboration || exactOfficialAxisProof;
@@ -404,8 +452,12 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
     ...(axisCorroborated
       ? {
         axisPermutationResolution: independentAxisCorroboration
-          ? 'independent_official_axis_corroboration'
-          : 'exact_official_axis_proof',
+          ? toleratedAxisConflict
+            ? 'independent_official_axis_corroboration_with_registry_tolerance'
+            : 'independent_official_axis_corroboration'
+          : toleratedAxisConflict
+            ? 'exact_official_axis_proof_with_registry_tolerance'
+            : 'exact_official_axis_proof',
       }
       : {}),
     ...(lowerAuthorityCorroborated

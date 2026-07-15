@@ -68,6 +68,7 @@ function policy() {
       maximumBytes: 20_971_520, maximumRedirects: 5,
     },
     lock: { heartbeatMs: 15_000, staleAfterMs: 90_000 },
+    reconciliation: { registryAxisPermutationToleranceMm: 10 },
     parser: {
       format: 'content_list_v2', name: 'MinerU', version: '3.4.4',
       modelRevision: 'e'.repeat(40), backend: 'pipeline', method: 'auto',

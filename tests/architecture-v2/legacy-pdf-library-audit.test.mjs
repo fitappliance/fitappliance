@@ -129,6 +129,34 @@ test('legacy audit does not infer official authority from a URL and detects dupl
   ]);
 });
 
+test('legacy summary authority stays bound to its retailer URL instead of borrowing a same-product official document', () => {
+  const audit = buildLegacyPdfLibraryAudit({
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    historicalRecords: historicalRecords(),
+    legacySummaries: [oldSummary({
+      data: {
+        ...oldSummary().data,
+        source_url: 'https://www.appliancesonline.com.au/manuals/EX100.pdf',
+      },
+    })],
+    sourceDocuments: [{
+      id: 'doc_official', sourceUrl: 'https://manufacturer.example/EX100.pdf', finalUrl: null,
+      authorType: 'manufacturer', transportHostType: 'manufacturer', sha256: HASH_A,
+      parserVersion: '3.4.4', identityOutcome: 'exact',
+      productLinks: [{ legacyRuntimeId: 'legacy-one', canonicalProductId: null }],
+      fields: [], state: 'approved',
+    }],
+    pdfInventory: { entries: [], invalidFiles: [] },
+    mineruIndexes: [], grammarDocuments: [], receiptEntries: [],
+  });
+
+  const legacy = audit.legacySummaries[0];
+  assert.equal(legacy.sourceAuthority, 'REFERENCE');
+  assert.deepEqual(legacy.sourceDocumentIds, []);
+  assert.ok(legacy.issueCodes.includes('LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND'));
+  assert.deepEqual(legacy.referenceIds, ['fa_ref_one']);
+});
+
 test('legacy audit routes stored but stale or missing MinerU objects without duplicate conversion', () => {
   const audit = buildLegacyPdfLibraryAudit({
     generatedAt: '2026-07-14T00:00:00.000Z', historicalRecords: historicalRecords(),

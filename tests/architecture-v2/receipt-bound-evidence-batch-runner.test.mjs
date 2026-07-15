@@ -195,6 +195,39 @@ test('one target with alternate jobs receives one inventory and exactly one term
   });
 });
 
+test('runner passes policy reconciliation options without allowing boundary options to be overridden', async () => {
+  const artifactJob = job('a'.repeat(32), 'https://official.example.com/primary.pdf', ['target-a']);
+  const input = batch({
+    jobs: [artifactJob],
+    targets: [target('target-a', 'EX100', [artifactJob.jobId])],
+  });
+  let seenOptions = null;
+  const result = await runReceiptBoundEvidenceBatch(input, dependencies({
+    reconciliationOptions: {
+      registryAxisPermutationToleranceMm: 10,
+      requestedFields: ['unsafe.override'],
+      verifyInventoryHash: false,
+    },
+    reconcileClaims: (_identity, inventory, options) => {
+      seenOptions = structuredClone(options);
+      return {
+        status: 'accepted',
+        failureCode: null,
+        candidateInventorySha256: inventory.candidateInventorySha256,
+        sources: [inventory.candidates[0].outcome.source],
+        conflictingFields: [],
+        conflictHints: [],
+        supersessionViolations: [],
+      };
+    },
+  }));
+
+  assert.equal(result.outcomes[0].status, 'accepted');
+  assert.equal(seenOptions.registryAxisPermutationToleranceMm, 10);
+  assert.deepEqual(seenOptions.requestedFields, FIELDS);
+  assert.equal(seenOptions.verifyInventoryHash, true);
+});
+
 test('outcomes persist the automatic reconciliation reason and bind it into the semantic digest', async () => {
   const artifactJob = job('a'.repeat(32), 'https://official.example.com/primary.pdf', ['target-a']);
   const input = batch({

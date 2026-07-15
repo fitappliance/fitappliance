@@ -147,7 +147,7 @@ export function validateHistoricalEvidenceRecoveryPolicy(value) {
     'schemaVersion', 'policyVersion', 'queueSchemaVersion',
     'supportedReceiptSchemaVersions', 'supportedClaimSemanticsVersions',
     'requestedFields', 'authorityModes', 'lifecycleStates', 'concurrency',
-    'retry', 'limits', 'lock', 'parser',
+    'retry', 'limits', 'lock', 'parser', 'reconciliation',
   ]);
   if (value.schemaVersion !== 1) throw new TypeError('recovery policy schemaVersion 1 required');
   text(value.policyVersion, 'recovery policy version');
@@ -197,6 +197,13 @@ export function validateHistoricalEvidenceRecoveryPolicy(value) {
   if (value.lock.staleAfterMs < value.lock.heartbeatMs * 3) {
     throw new TypeError('lock.staleAfterMs must allow at least three heartbeats');
   }
+
+  exactKeys(value.reconciliation, 'recovery policy reconciliation', ['registryAxisPermutationToleranceMm']);
+  integer(
+    value.reconciliation.registryAxisPermutationToleranceMm,
+    'reconciliation.registryAxisPermutationToleranceMm',
+    0,
+  );
 
   exactKeys(value.parser, 'recovery policy parser', [
     'format', 'name', 'version', 'modelRevision', 'backend', 'method',
@@ -404,17 +411,24 @@ function validateReconciliationDecision(value) {
   }
   if (!Array.isArray(value.conflictHints)) throw new TypeError('reconciliation conflictHints must be an array');
   for (const hint of value.conflictHints) {
+    const toleratedPermutation = hint.kind === 'axis_permutation_within_tolerance';
     exactKeys(hint, 'reconciliation conflict hint', [
       'sourceRole', 'sourceId', 'kind', 'fields', 'dimensionsMm',
+      ...(toleratedPermutation ? ['maximumDeltaMm'] : []),
     ]);
     text(hint.sourceRole, 'reconciliation conflict hint sourceRole');
     text(hint.sourceId, 'reconciliation conflict hint sourceId');
-    oneOf(hint.kind, ['axis_permutation', 'lower_authority_disagreement'], 'reconciliation conflict hint kind');
+    oneOf(hint.kind, [
+      'axis_permutation', 'axis_permutation_within_tolerance', 'lower_authority_disagreement',
+    ], 'reconciliation conflict hint kind');
     const fields = strings(hint.fields, 'reconciliation conflict hint fields', { nonEmpty: true });
     for (const field of fields) oneOf(field, ['widthMm', 'heightMm', 'depthMm'], 'reconciliation conflict hint field');
     exactKeys(hint.dimensionsMm, 'reconciliation conflict hint dimensions', ['widthMm', 'heightMm', 'depthMm']);
     for (const axis of ['widthMm', 'heightMm', 'depthMm']) {
       integer(hint.dimensionsMm[axis], `reconciliation conflict hint dimensions.${axis}`, 1);
+    }
+    if (toleratedPermutation) {
+      integer(hint.maximumDeltaMm, 'reconciliation conflict hint maximumDeltaMm', 1);
     }
   }
   if (!Array.isArray(value.supersessionViolations)) {
@@ -432,8 +446,12 @@ function validateReconciliationDecision(value) {
     oneOf(value.axisPermutationResolution, [
       'independent_official_axis_corroboration',
       'exact_official_axis_proof',
+      'independent_official_axis_corroboration_with_registry_tolerance',
+      'exact_official_axis_proof_with_registry_tolerance',
     ], 'axis permutation resolution');
-    if (!value.conflictHints.some((hint) => hint.kind === 'axis_permutation')) {
+    if (!value.conflictHints.some((hint) => (
+      ['axis_permutation', 'axis_permutation_within_tolerance'].includes(hint.kind)
+    ))) {
       throw new TypeError('axis permutation resolution requires an axis conflict hint');
     }
   }

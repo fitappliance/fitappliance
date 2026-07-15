@@ -1,4 +1,5 @@
 import { registryBrandKey, registryModelKey } from './energy-rating-registry.mjs';
+import { classifyTransportHost } from './source-provenance.mjs';
 
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const EXACT_SCOPES = new Set(['EXACT_MODEL', 'PAGE_SCOPED_EXACT']);
@@ -61,6 +62,13 @@ function aggregateAuthority(values) {
   if (set.has('OFFICIAL')) return 'OFFICIAL';
   if (set.has('REFERENCE')) return 'REFERENCE';
   return 'NONE';
+}
+
+function legacySummaryAuthority(sourceUrl, urlMatchedSources) {
+  if (urlMatchedSources.length > 0) {
+    return aggregateAuthority(urlMatchedSources.map(sourceDocumentAuthority));
+  }
+  return classifyTransportHost(sourceUrl) === 'retailer' ? 'REFERENCE' : 'NONE';
 }
 
 function aggregateIdentity(values) {
@@ -276,9 +284,12 @@ export function buildLegacyPdfLibraryAudit(input) {
     const direct = referencesByExactKey.get(exactKey(data.category, data.brand, data.model));
     const productReferences = referencesByCatalogId.get(data.product_id) ?? [];
     const productMatchedSourceIds = new Set((sourceByProductId.get(data.product_id) ?? []).map((entry) => entry.id));
+    const sourceUrl = normalizedUrl(data.source_url);
+    const urlMatchedSources = sourceByUrl.get(sourceUrl) ?? [];
+    const urlMatchedSourceIds = new Set(urlMatchedSources.map((entry) => entry.id));
     const matchedSources = sortedUnique([
       ...productMatchedSourceIds,
-      ...(sourceByUrl.get(normalizedUrl(data.source_url)) ?? []).map((entry) => entry.id),
+      ...urlMatchedSourceIds,
     ]).map((id) => sourceDocuments.find((entry) => entry.id === id));
     const summaryIdentityKey = exactKey(data.category, data.brand, data.model);
     const compatibleSourceLinks = matchedSources.flatMap((document) => (
@@ -295,6 +306,9 @@ export function buildLegacyPdfLibraryAudit(input) {
     const issueCodes = ['LEGACY_FIELDS_UNBOUND'];
     if (Object.values(clearances).some((value) => Number(value) === 0)) issueCodes.push('LEGACY_ZERO_CLEARANCE_UNTRUSTED');
     if (Object.values(flags).some((value) => typeof value === 'boolean')) issueCodes.push('LEGACY_BOOLEAN_FLAG_UNTRUSTED');
+    if ([...productMatchedSourceIds].some((id) => !urlMatchedSourceIds.has(id))) {
+      issueCodes.push('LEGACY_SOURCE_AUTHORITY_NOT_URL_BOUND');
+    }
     if (matchedSources.length > 0 && compatibleSourceLinks.length === 0
       && !direct && productReferences.length === 0) issueCodes.push('LEGACY_SOURCE_IDENTITY_CONFLICT');
     if (!referenceIds.length) issueCodes.push('UNMATCHED_LEGACY_SUMMARY');
@@ -305,9 +319,9 @@ export function buildLegacyPdfLibraryAudit(input) {
       brand: data.brand ?? null,
       model: data.model ?? null,
       modelKey: exactKey(data.category, data.brand, data.model),
-      sourceUrl: normalizedUrl(data.source_url),
-      sourceDocumentIds: sortedUnique(matchedSources.map((entry) => entry.id)),
-      sourceAuthority: aggregateAuthority(matchedSources.map(sourceDocumentAuthority)),
+      sourceUrl,
+      sourceDocumentIds: sortedUnique(urlMatchedSources.map((entry) => entry.id)),
+      sourceAuthority: legacySummaryAuthority(sourceUrl, urlMatchedSources),
       referenceIds,
       claimState: 'LEGACY_UNBOUND',
       issueCodes: sortedUnique(issueCodes),

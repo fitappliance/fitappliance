@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-15T14:22:17.279Z",
-  "policySha256": "34edad995a430f797a52969710b8fef165779bfed3f702cedf9e461d550008b8",
+  "generatedAt": "2026-07-15T15:07:24.863Z",
+  "policySha256": "8e237b04fdd3323ae7da48f4323276181014472b6d67e46d959d7d22713e41e0",
   "entries": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1781,6 +1781,266 @@
         "missingFields": [],
         "supersessionViolations": [],
         "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_06e6abe5778ec8a1a9f0deb2",
+      "referenceId": "fa_ref_3c1d4d1e7e2323919eadc1e1",
+      "legacyRuntimeId": "fridge-arf2921",
+      "canonicalProductId": "fa_prod_71b3254e1760a97a131e2c97",
+      "brand": "Westinghouse",
+      "model": "WQE5650BA",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-b8f9f631fb6de310afdaa191-slice-d8f3051c45bb",
+      "auditSha256": "0e084bf1ff7b68bc2fb155e550f2c94feae4d69a4d60629f6c3e5faa4d0ae4b6",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T15:04:19.409Z",
+          "contentSha256": "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
+          "objectPath": "evidence/web/sha256/6c/23/6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 4170261,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WQE5650BA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 896
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "a06645c7508f2f5ea5d338f87e4ae40f4cd94f1d83cfb16c6701cd0ccd9923e4",
+              "bbox": [
+                516,
+                229,
+                939,
+                858
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1795
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "a06645c7508f2f5ea5d338f87e4ae40f4cd94f1d83cfb16c6701cd0ccd9923e4",
+              "bbox": [
+                516,
+                229,
+                939,
+                858
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 726
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "a06645c7508f2f5ea5d338f87e4ae40f4cd94f1d83cfb16c6701cd0ccd9923e4",
+              "bbox": [
+                516,
+                229,
+                939,
+                858
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
+            "contentSha256": "825dc02fb2b7c72612ae6525261a73e7b7628ac518ab1b7bd646fee392465af0",
+            "objectPath": "evidence/derived/mineru-json/sha256/82/5d/825dc02fb2b7c72612ae6525261a73e7b7628ac518ab1b7bd646fee392465af0.json",
+            "byteSize": 50423,
+            "pageCount": 7
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE5650BA:page:1:66aabf8d14afd4292b529c164c8a106234fc0fd301500abf01d3c053bd6fb363"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE5650BA:page:2:1e8a1eb1f97b4f08e40d686c9a7b80811b87ca145648f844de914b647bd8e5ab"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE5650BA:page:3:62050925da9952e0b01513dc375646d4853bfa7b579e6fa9671d827beb5976ab"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE5650BA:page:4:2471287b59b67f38e8c77f62609592e223bff52a82be62edcfbc5a01f15e32f5"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE5650BA:page:5:175673d8fee7d4afe334d8acdaa43a4d559ef913785830fbf3b680cc98b0a73a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE5650BA:page:6:d75f4d1b238261a2ad8d20e20697cd2605bd3dcd52231c64e64820da30912d7a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE5650BA:page:7:ce96b61aba98b3d9ca56904e5aba77541aeaef78e55a4914b15112b221aa4e3d"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WQE5650BA:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-15.1",
+            "verifiedAt": "2026-07-15T15:04:19.409Z",
+            "bindingSha256": "52e21a291c1f5270be382670c9b4394c47bef582b47aea5314df3e7d0b527290"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 896,
+            "heightMm": {
+              "minimumMm": 1795,
+              "maximumMm": 1795
+            },
+            "depthMm": 726
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
+            "contentSha256": "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
+            "receiptBindingSha256": "52e21a291c1f5270be382670c9b4394c47bef582b47aea5314df3e7d0b527290",
+            "page": 4,
+            "fragmentSha256": "a06645c7508f2f5ea5d338f87e4ae40f4cd94f1d83cfb16c6701cd0ccd9923e4"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
+            "contentSha256": "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
+            "receiptBindingSha256": "52e21a291c1f5270be382670c9b4394c47bef582b47aea5314df3e7d0b527290",
+            "page": 4,
+            "fragmentSha256": "a06645c7508f2f5ea5d338f87e4ae40f4cd94f1d83cfb16c6701cd0ccd9923e4"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
+            "contentSha256": "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
+            "receiptBindingSha256": "52e21a291c1f5270be382670c9b4394c47bef582b47aea5314df3e7d0b527290",
+            "page": 4,
+            "fragmentSha256": "a06645c7508f2f5ea5d338f87e4ae40f4cd94f1d83cfb16c6701cd0ccd9923e4"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "registry_hint",
+            "sourceId": "energy-rating:fridge",
+            "kind": "axis_permutation_within_tolerance",
+            "fields": [
+              "depthMm",
+              "heightMm",
+              "widthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 1795,
+              "heightMm": 896,
+              "depthMm": 723
+            },
+            "maximumDeltaMm": 3
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": "exact_official_axis_proof_with_registry_tolerance",
         "lowerAuthorityResolution": null,
         "conflictReason": null
       }
@@ -3792,6 +4052,289 @@
         "missingFields": [],
         "supersessionViolations": [],
         "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_27861be001f7939d9478f669",
+      "referenceId": "fa_ref_c862e59879a04b1d07e8a1a0",
+      "legacyRuntimeId": "fridge-arf2540",
+      "canonicalProductId": "fa_prod_7cc4c9b9b2ec1a58aff2b234",
+      "brand": "KELVINATOR",
+      "model": "KTM5402AC",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-b8f9f631fb6de310afdaa191-slice-d8f3051c45bb",
+      "auditSha256": "0e084bf1ff7b68bc2fb155e550f2c94feae4d69a4d60629f6c3e5faa4d0ae4b6",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T15:04:23.689Z",
+          "contentSha256": "32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908",
+          "objectPath": "evidence/web/sha256/32/83/32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 834046,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "KELVINATOR",
+            "model": "KTM5402AC",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 796
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "cf7181c033b90d630aa9fe177dd5fab03a311b0f3f5155827ea3adb9daa4913c",
+              "bbox": [
+                516,
+                229,
+                939,
+                872
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1718
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "cf7181c033b90d630aa9fe177dd5fab03a311b0f3f5155827ea3adb9daa4913c",
+              "bbox": [
+                516,
+                229,
+                939,
+                872
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 727
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "cf7181c033b90d630aa9fe177dd5fab03a311b0f3f5155827ea3adb9daa4913c",
+              "bbox": [
+                516,
+                229,
+                939,
+                872
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908",
+            "contentSha256": "a28692f99d87e72ee4c02fb681d51e8ec07246993808b12fefbd19d777503f06",
+            "objectPath": "evidence/derived/mineru-json/sha256/a2/86/a28692f99d87e72ee4c02fb681d51e8ec07246993808b12fefbd19d777503f06.json",
+            "byteSize": 19633,
+            "pageCount": 7,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              6
+            ],
+            "sourcePageCount": 7,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "c235d9830b3d3e2157f5fd8cda51d9f0f8925642aaa77e05300832a4dad98434",
+              "objectPath": "evidence/derived/mineru-json/sha256/c2/35/c235d9830b3d3e2157f5fd8cda51d9f0f8925642aaa77e05300832a4dad98434.json",
+              "pages": [
+                6
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM5402AC:page:1:e4c6b49fbb8e9ccafc73f7b609b8f0c0ed563c9086d035a9e9685badb55e798c"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM5402AC:page:2:637e8fbb6453f8617985f992e221fc1616683a9bb0fd7a73d5d6bcd2d9a2150a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM5402AC:page:3:a98e9d8f491cbde1da98c4a13b22cd2b33ac784cef45fe4e50a4d44e060233fb"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM5402AC:page:4:8e4c2c035ab9b56405d92f58f115051481f46ca1aa1b312ef4be6c74760121c8"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM5402AC:page:5:e45ba325f7e7cd2de197c41e24063c2c227e01887dd41b49ce685f1f34c501b6"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM5402AC:page:6:8c1a0fdf3bf962602b408ce12e43124e4d24eb58828bc5c1a37e62bd14642376"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM5402AC:page:7:38b40c8adbd07c761a14d56e08fae28d4c6cda7db6f8553b88b8443144d63cfd"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "KTM5402AC:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_table_model",
+              "value": "KTM5402AC:page:6:0cd4366bb5bb13805f57b2ab255ca0668f7a1b903f287d8213a347c82d336183"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM5402AC:page:6:4a0386eddd0a349068caedf03fa97d3d474e7016d626f486ee62de8485d2bbee"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-15.1",
+            "verifiedAt": "2026-07-15T15:04:23.689Z",
+            "bindingSha256": "1af38a47670a398f491f70cf40e4b506a63d950dc762e70ecdb6933832fa5cc5"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 796,
+            "heightMm": {
+              "minimumMm": 1718,
+              "maximumMm": 1718
+            },
+            "depthMm": 727
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
+            "contentSha256": "32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908",
+            "receiptBindingSha256": "1af38a47670a398f491f70cf40e4b506a63d950dc762e70ecdb6933832fa5cc5",
+            "page": 3,
+            "fragmentSha256": "cf7181c033b90d630aa9fe177dd5fab03a311b0f3f5155827ea3adb9daa4913c"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
+            "contentSha256": "32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908",
+            "receiptBindingSha256": "1af38a47670a398f491f70cf40e4b506a63d950dc762e70ecdb6933832fa5cc5",
+            "page": 3,
+            "fragmentSha256": "cf7181c033b90d630aa9fe177dd5fab03a311b0f3f5155827ea3adb9daa4913c"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
+            "contentSha256": "32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908",
+            "receiptBindingSha256": "1af38a47670a398f491f70cf40e4b506a63d950dc762e70ecdb6933832fa5cc5",
+            "page": 3,
+            "fragmentSha256": "cf7181c033b90d630aa9fe177dd5fab03a311b0f3f5155827ea3adb9daa4913c"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "32837e1d40b4dba23100be15ddc49e826e78e90fda342885da26f8faf7395908"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "registry_hint",
+            "sourceId": "energy-rating:fridge",
+            "kind": "axis_permutation_within_tolerance",
+            "fields": [
+              "depthMm",
+              "heightMm",
+              "widthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 1725,
+              "heightMm": 796,
+              "depthMm": 723
+            },
+            "maximumDeltaMm": 7
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": "exact_official_axis_proof_with_registry_tolerance",
         "lowerAuthorityResolution": null,
         "conflictReason": null
       }
@@ -12619,6 +13162,219 @@
         "supersessionViolations": [],
         "axisPermutationResolution": "exact_official_axis_proof",
         "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_68e2929d124738859393d42d",
+      "referenceId": "fa_ref_7d2d3d7eaedf7b403717808b",
+      "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb944dgh",
+      "canonicalProductId": "fa_prod_4b4f877fcb6026f4e2ddd668",
+      "brand": "Samsung",
+      "model": "WW12BB944DGH",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-b8f9f631fb6de310afdaa191-slice-d8f3051c45bb",
+      "auditSha256": "0e084bf1ff7b68bc2fb155e550f2c94feae4d69a4d60629f6c3e5faa4d0ae4b6",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
+          "finalUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T15:04:42.972Z",
+          "contentSha256": "53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7",
+          "objectPath": "evidence/web/sha256/53/de/53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7.html",
+          "contentType": "text/html",
+          "byteSize": 873476,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Samsung",
+            "model": "WW12BB944DGH",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Product Dimension (WxHxD)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Product Dimension (WxHxD)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 725
+              },
+              "sourceLabel": "Product Dimension (WxHxD)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/"
+            },
+            {
+              "type": "canonical_regional_sku",
+              "value": "WW12BB944DGHSA"
+            },
+            {
+              "type": "product_model",
+              "value": "ww12bb944dgh"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-15.1",
+            "verifiedAt": "2026-07-15T15:04:42.972Z",
+            "bindingSha256": "29a57b5c656410443aabc8703bbbdb1fd53ced6fd7436fc52a351d3f3573949d"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 725
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
+            "contentSha256": "53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7",
+            "receiptBindingSha256": "29a57b5c656410443aabc8703bbbdb1fd53ced6fd7436fc52a351d3f3573949d",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
+            "contentSha256": "53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7",
+            "receiptBindingSha256": "29a57b5c656410443aabc8703bbbdb1fd53ced6fd7436fc52a351d3f3573949d",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
+            "contentSha256": "53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7",
+            "receiptBindingSha256": "29a57b5c656410443aabc8703bbbdb1fd53ced6fd7436fc52a351d3f3573949d",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_2c64ce7645c14c001278a28d",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 600,
+              "heightMm": 850,
+              "depthMm": 695
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
         "conflictReason": null
       }
     },
@@ -21596,6 +22352,289 @@
       }
     },
     {
+      "targetId": "recovery_target_ce94f197cea177d8ffe048ae",
+      "referenceId": "fa_ref_86df98c1394de52ce6dafaf5",
+      "legacyRuntimeId": "historical-fa_ref_86df98c1394de52ce6dafaf5",
+      "canonicalProductId": null,
+      "brand": "KELVINATOR",
+      "model": "KTM4602AC",
+      "category": "fridge",
+      "lifecycleState": "REGISTRY_ONLY",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-b8f9f631fb6de310afdaa191-slice-d8f3051c45bb",
+      "auditSha256": "0e084bf1ff7b68bc2fb155e550f2c94feae4d69a4d60629f6c3e5faa4d0ae4b6",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T15:04:41.835Z",
+          "contentSha256": "bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac",
+          "objectPath": "evidence/web/sha256/ba/b4/bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 823002,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "KELVINATOR",
+            "model": "KTM4602AC",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 699
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "9cd099a5dfff449840abe4d73cf52cadee3425569634ceabf66f3e0d13d98178",
+              "bbox": [
+                516,
+                229,
+                939,
+                872
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1718
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "9cd099a5dfff449840abe4d73cf52cadee3425569634ceabf66f3e0d13d98178",
+              "bbox": [
+                516,
+                229,
+                939,
+                872
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 730
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "9cd099a5dfff449840abe4d73cf52cadee3425569634ceabf66f3e0d13d98178",
+              "bbox": [
+                516,
+                229,
+                939,
+                872
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac",
+            "contentSha256": "4355ee91b95f94986d09a9e76a51d8043d4d3d066be055613a7a91ec37e86653",
+            "objectPath": "evidence/derived/mineru-json/sha256/43/55/4355ee91b95f94986d09a9e76a51d8043d4d3d066be055613a7a91ec37e86653.json",
+            "byteSize": 20053,
+            "pageCount": 7,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              6
+            ],
+            "sourcePageCount": 7,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "072e63e2f09882824ce2b476d3cd6420f2ed7a7d8b71d8792633d0d83cbdfcc9",
+              "objectPath": "evidence/derived/mineru-json/sha256/07/2e/072e63e2f09882824ce2b476d3cd6420f2ed7a7d8b71d8792633d0d83cbdfcc9.json",
+              "pages": [
+                6
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM4602AC:page:1:8821f60f8d4833d5295a947f8d1348fb3a8d68fac43a005ccff8aca6f4801a5e"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM4602AC:page:2:9371c5d69c725526bbdfde9e347f9149c70c8ed5793f2da6c70f9893b452283a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM4602AC:page:3:471d058a048d12b61ff72c31d53e4bdcbd8a85bbf0d909d9dbfb3a8289ea828e"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM4602AC:page:4:9a3758c671e32f7e883d7c8ae5b8c452d69a8f51610431932cea49220045e457"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM4602AC:page:5:7aee265fcb69b700aa09e11a7101b6df54ac7e9d3dc3d73a780dcdaa2b4d31c5"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM4602AC:page:6:3e26bbaebc7ec6d81ca1f857c192774b68155f839604049aa52db7574a9133e9"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM4602AC:page:7:acc9305a796d01f526ca1693062d3c3bb245b675c6712385b685222458333d6a"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "KTM4602AC:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_table_model",
+              "value": "KTM4602AC:page:6:3bf3b3f94a7dfed324710247f88e1e64a59bb4e1c372790ed4904fac6ca51242"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KTM4602AC:page:6:38a0168dabcbfdc260cc532085b7b5717e76b18bf350548dd9321b72dc154f6e"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-15.1",
+            "verifiedAt": "2026-07-15T15:04:41.835Z",
+            "bindingSha256": "64a58a2ff8a7f753ecf5cd9f172c95ea59dbd109d489f27b5123708c848a8cdc"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 699,
+            "heightMm": {
+              "minimumMm": 1718,
+              "maximumMm": 1718
+            },
+            "depthMm": 730
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
+            "contentSha256": "bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac",
+            "receiptBindingSha256": "64a58a2ff8a7f753ecf5cd9f172c95ea59dbd109d489f27b5123708c848a8cdc",
+            "page": 3,
+            "fragmentSha256": "9cd099a5dfff449840abe4d73cf52cadee3425569634ceabf66f3e0d13d98178"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
+            "contentSha256": "bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac",
+            "receiptBindingSha256": "64a58a2ff8a7f753ecf5cd9f172c95ea59dbd109d489f27b5123708c848a8cdc",
+            "page": 3,
+            "fragmentSha256": "9cd099a5dfff449840abe4d73cf52cadee3425569634ceabf66f3e0d13d98178"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
+            "contentSha256": "bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac",
+            "receiptBindingSha256": "64a58a2ff8a7f753ecf5cd9f172c95ea59dbd109d489f27b5123708c848a8cdc",
+            "page": 3,
+            "fragmentSha256": "9cd099a5dfff449840abe4d73cf52cadee3425569634ceabf66f3e0d13d98178"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "bab451dcca507196df6bc0caaf07dcba408080e74f4ddb62a887360c952cebac"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "registry_hint",
+            "sourceId": "energy-rating:fridge",
+            "kind": "axis_permutation_within_tolerance",
+            "fields": [
+              "depthMm",
+              "heightMm",
+              "widthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 1725,
+              "heightMm": 699,
+              "depthMm": 723
+            },
+            "maximumDeltaMm": 7
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": "exact_official_axis_proof_with_registry_tolerance",
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_cf7271d6f05da49811955422",
       "referenceId": "fa_ref_6031b18d314cb610323ab4c4",
       "legacyRuntimeId": "fridge-arf2432",
@@ -27264,6 +28303,13 @@
       "queueSha256": "f85ca39d465bbe27e9caf30b8c2107f94f60114509da2761c8a21645d72e49a5",
       "resultsSha256": "3afde84a96bf917d3cb7c9e7a11686df59f0a8bf216911166309fb721cb663e2",
       "auditSha256": "8f32d96058f9a38d94cefb180d8bfd8fea7eb037f9ff1196bf8fca438d27350f"
+    },
+    {
+      "batchId": "historical-recovery-b8f9f631fb6de310afdaa191-slice-d8f3051c45bb",
+      "batchSha256": "c6147a5ea61ef00436de2dd4b0be35cf94a57252ecb25e0360bf8ba1e96052f3",
+      "queueSha256": "bd3821732c965f01656de80a6966e95fd13384de27cf7686309e6028cfbad9a2",
+      "resultsSha256": "84c329744d29e7efaeac075274199f5f9afedfd71cf2e6a4f04df25429000df4",
+      "auditSha256": "0e084bf1ff7b68bc2fb155e550f2c94feae4d69a4d60629f6c3e5faa4d0ae4b6"
     },
     {
       "batchId": "historical-recovery-ba97adcd36582a566b55510c-slice-4e0503b4daf1",
