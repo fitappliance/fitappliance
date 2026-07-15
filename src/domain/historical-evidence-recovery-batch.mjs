@@ -179,7 +179,9 @@ function matchesSelection(target, jobsById, selection) {
   return true;
 }
 
-function materializeTarget(target, prior) {
+function materializeTarget(target, prior, policySha256) {
+  const priorAttemptSuppressions = (target.priorAttemptSuppressions ?? [])
+    .filter((entry) => entry.policySha256 === policySha256);
   return {
     targetId: target.targetId,
     referenceId: target.referenceId,
@@ -195,8 +197,8 @@ function materializeTarget(target, prior) {
     publicationEligible: false,
     reconciliationContext: {
       activeReceiptSources: target.repairExistingReceipt ? [] : prior.sourcesFor(target),
-      ...((target.priorAttemptSuppressions ?? []).length > 0 ? {
-        priorAttemptSuppressions: structuredClone(target.priorAttemptSuppressions),
+      ...(priorAttemptSuppressions.length > 0 ? {
+        priorAttemptSuppressions: structuredClone(priorAttemptSuppressions),
       } : {}),
       registryHints: (target.registryDimensionHints ?? []).map((hint) => ({
         sourceId: hint.sourceId,
@@ -248,9 +250,9 @@ export function buildHistoricalEvidenceRecoveryBatch({
       priorityClass: job.priorityClass,
       targetIds: job.targetIds.filter((targetId) => targetIds.has(targetId)),
     }));
-  const targets = selectedTargets.map((target) => materializeTarget(target, prior));
-  const queueSha256 = canonicalJsonSha256(queue);
   const policySha256 = canonicalJsonSha256(policy);
+  const targets = selectedTargets.map((target) => materializeTarget(target, prior, policySha256));
+  const queueSha256 = canonicalJsonSha256(queue);
   const semanticBatchSha256 = canonicalJsonSha256({
     queueSha256,
     policySha256,

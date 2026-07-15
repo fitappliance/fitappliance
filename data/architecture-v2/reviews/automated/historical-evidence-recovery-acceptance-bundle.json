@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-15T22:05:09.830Z",
-  "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc",
+  "generatedAt": "2026-07-15T22:47:48.840Z",
+  "policySha256": "ee50bf60d6d30b3ea8dc4e95b11ca372b28d1d2923d0b71f41ea48580441c171",
   "entries": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -5796,6 +5796,240 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_2a8f8a6fb106792d6693c76e",
+      "referenceId": "fa_ref_dfe5466d378a8a8761af724b",
+      "legacyRuntimeId": "ao-59810",
+      "canonicalProductId": "fa_prod_795c603d2cd33b841684714a",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4X1",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-c3c3409fb0dd830bf96a69d0-slice-14945d193451",
+      "auditSha256": "4b74f78ad92d0e677e619f8f9cc5d8176106e8f087996ef4f1a2e572e5a082bb",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
+          "finalUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T22:45:36.824Z",
+          "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+          "objectPath": "evidence/web/sha256/97/ef/97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 697174,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Fisher & Paykel",
+            "model": "DW60FC4X1",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 597
+              },
+              "sourceLabel": "Overall width of product",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f",
+              "bbox": [
+                583,
+                107,
+                970,
+                268
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 850,
+                "maxMm": 870
+              },
+              "sourceLabel": "Overall height of product with top panel in place",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f",
+              "bbox": [
+                583,
+                107,
+                970,
+                268
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Overall depth of product",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f",
+              "bbox": [
+                583,
+                107,
+                970,
+                268
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_support_api",
+            "market": "AU",
+            "sourceMarket": "NZ",
+            "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/freestanding-dishwasher--DW60FC4X1",
+            "requestedModel": "DW60FC4X1",
+            "matchedModel": "DW60FC4X1",
+            "artifactUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
+            "originalFileName": "FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf"
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "contentSha256": "eea0fdb64f782d514c0391fa4d33f975c7e368fc4932f06073f13e36de7ee081",
+            "objectPath": "evidence/derived/mineru-json/sha256/ee/a0/eea0fdb64f782d514c0391fa4d33f975c7e368fc4932f06073f13e36de7ee081.json",
+            "byteSize": 101305,
+            "pageCount": 12
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_fp_dw60_model_applicability",
+              "value": "DW60FC4X1:family:DW60FC4:page:3:c04b3057c9bd96e53dbc629af0fc15071d10e7e344011c0a504818b8f9cf4f35"
+            },
+            {
+              "type": "mineru_fp_dw60_exact_document_url",
+              "value": "DW60FC4X1:https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "discoveryPolicyVersion": "2026-07-15.1",
+            "verifiedAt": "2026-07-15T22:45:36.824Z",
+            "bindingSha256": "7faf1d692805476f9a2429ae5fbf1e27588bfbb50390d1a4d22bc3ba55dcea31"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 597,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 870
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
+            "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "receiptBindingSha256": "7faf1d692805476f9a2429ae5fbf1e27588bfbb50390d1a4d22bc3ba55dcea31",
+            "page": 4,
+            "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
+            "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "receiptBindingSha256": "7faf1d692805476f9a2429ae5fbf1e27588bfbb50390d1a4d22bc3ba55dcea31",
+            "page": 4,
+            "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
+            "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "receiptBindingSha256": "7faf1d692805476f9a2429ae5fbf1e27588bfbb50390d1a4d22bc3ba55dcea31",
+            "page": 4,
+            "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
         ]
       },
       "reconciliation": {
@@ -24719,6 +24953,240 @@
       }
     },
     {
+      "targetId": "recovery_target_a57c22dcfc2a4838a3d9391e",
+      "referenceId": "fa_ref_985bd11df50cc250fa22a55b",
+      "legacyRuntimeId": "ao-59809",
+      "canonicalProductId": "fa_prod_b57d6cc0a7a69649d6fb9e8a",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4W1",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-c3c3409fb0dd830bf96a69d0-slice-14945d193451",
+      "auditSha256": "4b74f78ad92d0e677e619f8f9cc5d8176106e8f087996ef4f1a2e572e5a082bb",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+          "finalUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T22:45:40.154Z",
+          "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+          "objectPath": "evidence/web/sha256/97/ef/97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 697174,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Fisher & Paykel",
+            "model": "DW60FC4W1",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 597
+              },
+              "sourceLabel": "Overall width of product",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f",
+              "bbox": [
+                583,
+                107,
+                970,
+                268
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 850,
+                "maxMm": 870
+              },
+              "sourceLabel": "Overall height of product with top panel in place",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f",
+              "bbox": [
+                583,
+                107,
+                970,
+                268
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Overall depth of product",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f",
+              "bbox": [
+                583,
+                107,
+                970,
+                268
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_support_api",
+            "market": "AU",
+            "sourceMarket": "NZ",
+            "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/freestanding-dishwasher--DW60FC4W1",
+            "requestedModel": "DW60FC4W1",
+            "matchedModel": "DW60FC4W1",
+            "artifactUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+            "originalFileName": "FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf"
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "contentSha256": "eea0fdb64f782d514c0391fa4d33f975c7e368fc4932f06073f13e36de7ee081",
+            "objectPath": "evidence/derived/mineru-json/sha256/ee/a0/eea0fdb64f782d514c0391fa4d33f975c7e368fc4932f06073f13e36de7ee081.json",
+            "byteSize": 101305,
+            "pageCount": 12
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_fp_dw60_model_applicability",
+              "value": "DW60FC4W1:family:DW60FC4:page:3:c04b3057c9bd96e53dbc629af0fc15071d10e7e344011c0a504818b8f9cf4f35"
+            },
+            {
+              "type": "mineru_fp_dw60_exact_document_url",
+              "value": "DW60FC4W1:https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "discoveryPolicyVersion": "2026-07-15.1",
+            "verifiedAt": "2026-07-15T22:45:40.154Z",
+            "bindingSha256": "8260be59d17219c3cc641aa4c74576fdb8fc645dc79d62a0921396dad6b5cbe2"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 597,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 870
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+            "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "receiptBindingSha256": "8260be59d17219c3cc641aa4c74576fdb8fc645dc79d62a0921396dad6b5cbe2",
+            "page": 4,
+            "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+            "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "receiptBindingSha256": "8260be59d17219c3cc641aa4c74576fdb8fc645dc79d62a0921396dad6b5cbe2",
+            "page": 4,
+            "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+            "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "receiptBindingSha256": "8260be59d17219c3cc641aa4c74576fdb8fc645dc79d62a0921396dad6b5cbe2",
+            "page": 4,
+            "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_a795fcf62f9906e81eb2e1dc",
       "referenceId": "fa_ref_941a067eedf55d9f81915bb6",
       "legacyRuntimeId": "ao-101978",
@@ -38845,6 +39313,13 @@
       "queueSha256": "49a59f770acdbb5cf2e5129be628198913b856f5fb246007ae9e2ebc8a062fd3",
       "resultsSha256": "5199619f68aff7982858da31efc3824dce85f96c05e2d12b263c917c0d88502e",
       "auditSha256": "4cf04541a9b4bdbbd49c8bce4a2e7fb828b7c9edd07a0683bcb99297903dd30b"
+    },
+    {
+      "batchId": "historical-recovery-c3c3409fb0dd830bf96a69d0-slice-14945d193451",
+      "batchSha256": "c8f836cff0431f2fa3cdfb81e83ae53b602fcb5fb2ea474cfafb798aacbcda4d",
+      "queueSha256": "03f61324fb8bb103313e9a9a9fbb8d8483a1d8245a7ee6ca398ef9f6e4ff791e",
+      "resultsSha256": "c6615cb347e8998d74b01992a8f48123556cb1552d482bedad112c8ecc61f59d",
+      "auditSha256": "4b74f78ad92d0e677e619f8f9cc5d8176106e8f087996ef4f1a2e572e5a082bb"
     },
     {
       "batchId": "historical-recovery-c7d365dfeb4a44b4be30f721",

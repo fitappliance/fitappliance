@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-535d87e16b4a3f2b707449ab",
-  "generatedAt": "2026-07-15T22:12:08.086Z",
+  "batchId": "historical-recovery-39112de8631bbab311cc3ac0",
+  "generatedAt": "2026-07-15T22:48:03.985Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "03f61324fb8bb103313e9a9a9fbb8d8483a1d8245a7ee6ca398ef9f6e4ff791e"
+    "sha256": "54d98dc0d40b9b8d8788649835df340607bd06922dc9d56cbe221f3435be011b"
   },
   "policy": {
-    "version": "2026-07-16.1",
-    "sha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+    "version": "2026-07-16.2",
+    "sha256": "ee50bf60d6d30b3ea8dc4e95b11ca372b28d1d2923d0b71f41ea48580441c171"
   },
   "selection": {
     "jobIds": [],
@@ -18,7 +18,30 @@
     "targetIds": [],
     "limit": null
   },
-  "artifactJobs": [],
+  "artifactJobs": [
+    {
+      "jobId": "recovery_4c18cc6ada281fe07419a95b",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+      "authorityBrand": "Fisher & Paykel",
+      "authorityMode": "official",
+      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "targetIds": [
+        "recovery_target_0c12b47e910a3e4e41119095"
+      ]
+    },
+    {
+      "jobId": "recovery_5d8f265a43463f5855342cf5",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+      "authorityBrand": "Samsung",
+      "authorityMode": "official",
+      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "targetIds": [
+        "recovery_target_3dc96bc9ce548e8dcb1e1727"
+      ]
+    }
+  ],
   "targets": [
     {
       "targetId": "recovery_target_15e7e38fc54dc77ebe0dbced",
@@ -3687,16 +3710,6 @@
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
-        "priorAttemptSuppressions": [
-          {
-            "attemptId": "historical_attempt_f7c36fdad3db8433b45f910e",
-            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QC5OMMA1&dpt=",
-            "contentSha256": "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          }
-        ],
         "registryHints": [],
         "legacyHints": [
           {
@@ -3705,122 +3718,6 @@
               "width": 598,
               "height": 820,
               "depth": 612
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_a57c22dcfc2a4838a3d9391e",
-      "referenceId": "fa_ref_985bd11df50cc250fa22a55b",
-      "legacyRuntimeId": "ao-59809",
-      "canonicalProductId": "fa_prod_b57d6cc0a7a69649d6fb9e8a",
-      "brand": "Fisher & Paykel",
-      "model": "DW60FC4W1",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "priorAttemptSuppressions": [
-          {
-            "attemptId": "historical_attempt_9459e84e38cee9749c7741e5",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
-            "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          },
-          {
-            "attemptId": "historical_attempt_933bb16ff80138ef9c1ad22b",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/6tt5frjqwhj3xgg9xzvknn/FP-QuickStartGuide-DW60FC4-Dishwasher-0-591227C-NZ-AU.pdf",
-            "contentSha256": "2baca8c12fc7ba9675466a252dc793f8ea675f0fdbc147e9fe83f25f9e39051c",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          },
-          {
-            "attemptId": "historical_attempt_de8868ce51ea3e4626116d35",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/tnpc7znrqvkmnpmtckng5rrf/FP-UserGuide-en-DW60FC-DW60UC-Dishwasher-0-591216E-NZ-AU.pdf",
-            "contentSha256": "12b4379f29ec337142dd66a724e0781d094e056ae6eb905734a7a292b58bf584",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          }
-        ],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_361cb46942a464940f38a0a8",
-            "dimensionsMm": {
-              "width": 597,
-              "height": 820,
-              "depth": 610
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_2a8f8a6fb106792d6693c76e",
-      "referenceId": "fa_ref_dfe5466d378a8a8761af724b",
-      "legacyRuntimeId": "ao-59810",
-      "canonicalProductId": "fa_prod_795c603d2cd33b841684714a",
-      "brand": "Fisher & Paykel",
-      "model": "DW60FC4X1",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "priorAttemptSuppressions": [
-          {
-            "attemptId": "historical_attempt_f65afefef4c4b2b8a4a856fb",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/6tt5frjqwhj3xgg9xzvknn/FP-QuickStartGuide-DW60FC4-Dishwasher-0-591227C-NZ-AU.pdf",
-            "contentSha256": "2baca8c12fc7ba9675466a252dc793f8ea675f0fdbc147e9fe83f25f9e39051c",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          },
-          {
-            "attemptId": "historical_attempt_407991f0dea8d0a3664d61f2",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
-            "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          },
-          {
-            "attemptId": "historical_attempt_926f73fffacf1c0835bf90bd",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/tnpc7znrqvkmnpmtckng5rrf/FP-UserGuide-en-DW60FC-DW60UC-Dishwasher-0-591216E-NZ-AU.pdf",
-            "contentSha256": "12b4379f29ec337142dd66a724e0781d094e056ae6eb905734a7a292b58bf584",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          }
-        ],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_85e630835a5f202ebd394028",
-            "dimensionsMm": {
-              "width": 597,
-              "height": 820,
-              "depth": 600
             }
           }
         ]
@@ -14693,24 +14590,6 @@
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
-        "priorAttemptSuppressions": [
-          {
-            "attemptId": "historical_attempt_df95fbd4c5a0b9b7c3d7bb23",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/brfvf8554mmwxs3cp6bjmmgn/FP-UserGuide-en-RF605QDU-RF605QN-RF605QZ-RF605QD-FridgeFreezer-0-867164D-NZ-AU-EU-UK-IE-SG.pdf",
-            "contentSha256": "281b6d23d315786de144b47b6e0b23df435c9d5240ba9eb307039f027aa6a7be",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          },
-          {
-            "attemptId": "historical_attempt_9ffc0452924bad316314b1ed",
-            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007o84nIAA&d=%2Fa%2FJw000000KCRd%2F4vqflmzSDMKWOkSgMdFwimBFMbaXDvWCEGDYdVqXs90&operationContext=DELIVERY&viewId=05HJw00000QC7d3MAD&dpt=",
-            "contentSha256": "5f193647228a2da24a8469512fe4df4352578a3d5af4db430b046aebbcc50e28",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          }
-        ],
         "registryHints": [],
         "legacyHints": [
           {
@@ -14834,29 +14713,13 @@
         "closedEnvelope.heightMm",
         "closedEnvelope.depthMm"
       ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
+      "primaryJobId": "recovery_4c18cc6ada281fe07419a95b",
+      "candidateJobIds": [
+        "recovery_4c18cc6ada281fe07419a95b"
+      ],
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
-        "priorAttemptSuppressions": [
-          {
-            "attemptId": "historical_attempt_1ca3bc920a761d88a58ef284",
-            "sourceUrl": "https://www.fisherpaykel.com/au/cooling/freestanding/569l-series-7-french-door-refrigerator-freezer-ice-and-water-rf610adub5-26493.html",
-            "contentSha256": "3f06a8c91bc74c50ed8cb404d4835f7e21841b1520c220ada7b3ed513d008107",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          },
-          {
-            "attemptId": "historical_attempt_24307fd252b1a8d3f7ef392b",
-            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
-            "contentSha256": "b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          }
-        ],
         "registryHints": [],
         "legacyHints": [
           {
@@ -31012,37 +30875,13 @@
         "closedEnvelope.heightMm",
         "closedEnvelope.depthMm"
       ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
+      "primaryJobId": "recovery_5d8f265a43463f5855342cf5",
+      "candidateJobIds": [
+        "recovery_5d8f265a43463f5855342cf5"
+      ],
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
-        "priorAttemptSuppressions": [
-          {
-            "attemptId": "historical_attempt_3fcacd3f5e9826188db82113",
-            "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
-            "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          },
-          {
-            "attemptId": "historical_attempt_4a582c626097b01ba47b571d",
-            "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=6558792&CDCttType=EM&VPath=EM%2F201607%2F20160725115923747%2FSmartControl_OneSheetGuide_EN_VN.pdf",
-            "contentSha256": "22681a753f2fc0fc6ca2182effc35cdd0e9a9d1458cd334aac2783012330130a",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          },
-          {
-            "attemptId": "historical_attempt_78bf4dd01e2813175ba45ce2",
-            "sourceUrl": "https://www.samsung.com/au/support/model/WW12BB944DGBSA/",
-            "contentSha256": "b3dfce8a46c3467b44423f4a93006e231ebd2c3239272f973baa063f05237613",
-            "status": "claims_incomplete",
-            "failureCode": "claim_semantics",
-            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
-          }
-        ],
         "registryHints": [],
         "legacyHints": []
       }
@@ -234369,9 +234208,9 @@
     }
   ],
   "summary": {
-    "artifactJobs": 0,
-    "targets": 7651,
-    "candidateEdges": 0,
+    "artifactJobs": 2,
+    "targets": 7649,
+    "candidateEdges": 2,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
   }

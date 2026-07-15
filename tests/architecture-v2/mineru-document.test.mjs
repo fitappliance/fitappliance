@@ -1466,6 +1466,69 @@ test('MinerU binds a shared product-dimension table only to explicitly listed fi
   }), /no exact-model MinerU evidence/i);
 });
 
+test('MinerU binds Fisher and Paykel DW60 installation dimensions through its model applicability matrix', () => {
+  const modelTable = tableFragment(`<table>
+    <tr><td></td><td>DW60FC1 models</td><td>DW60FC2DW60FC4DW60FC6 models</td></tr>
+    <tr><td>Capacity</td><td>14 place settings</td><td>15 place settings</td></tr>
+    <tr><td>Colour White Stainless Steel</td><td>DW60FC1W1DW60FC1X1</td><td>DW60FC2W1 DW60FC4W1DW60FC6W1 DW60FC2X1 DW60FC4X1DW60FC6X1</td></tr>
+  </table>`);
+  const productDimensions = tableFragment(`<table>
+    <tr><td>PRODUCT DIMENSIONS</td><td></td></tr>
+    <tr><td>A Overall height of product</td><td></td></tr>
+    <tr><td>with top panel in place with top panel removed*</td><td>850 - 870** 820 - 840**</td></tr>
+    <tr><td>B Overall width of product</td><td>597</td></tr>
+    <tr><td>C Overall depth of product</td><td>600</td></tr>
+    <tr><td>D Depth of open door (measured from front of kickstrip)</td><td>595</td></tr>
+  </table>`);
+  const cabinetryDimensions = tableFragment(`<table>
+    <tr><td>CABINETRY DIMENSIONS</td><td>MM</td></tr>
+    <tr><td>Inside height of cavity with top panel in place</td><td>855 - 875</td></tr>
+    <tr><td>Minimum inside width of cavity</td><td>600</td></tr>
+  </table>`);
+  const bytes = Buffer.from(JSON.stringify([
+    [{ type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'DW60 models' }] }, bbox: [450, 570, 550, 600] }],
+    [],
+    [modelTable],
+    [productDimensions, cabinetryDimensions],
+  ]));
+  const options = (model, sourceModel = model) => ({
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Fisher & Paykel', model, category: 'dishwasher' },
+    sourceUrls: [`https://dam.fisherpaykel.com/FP-InstallGuide-${sourceModel}-FreestandingDishwasher-AU-NZ.pdf`],
+    claimSemanticsVersion: 2,
+    fields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm',
+      'closedEnvelope.depthMm',
+    ],
+  });
+
+  for (const model of ['DW60FC4W1', 'DW60FC4X1']) {
+    const parsed = parseMineruContentListV2(bytes, options(model));
+    assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+      'closedEnvelope.widthMm': { kind: 'fixed', mm: 597 },
+      'closedEnvelope.heightMm': { kind: 'range', minMm: 850, maxMm: 870 },
+      'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+    });
+    assert.ok(parsed.identitySignals.some((signal) => (
+      signal.type === 'mineru_fp_dw60_model_applicability'
+    )));
+    assert.ok(parsed.claims.every((claim) => claim.page === 4));
+  }
+
+  assert.throws(
+    () => parseMineruContentListV2(bytes, options('DW60FC4B1')),
+    /identity|model/i,
+  );
+  assert.throws(
+    () => parseMineruContentListV2(bytes, options('DW60FC4W1', 'DW60FC4X1')),
+    /identity|model/i,
+  );
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    ...options('DW60FC4W1'),
+    fields: ['operation.doorOpenDepthMm'],
+  }), /no exact-model MinerU evidence/i);
+});
+
 test('MinerU reconnects a Bosch grouped dimension heading to an explicitly labelled next paragraph', () => {
   const bytes = Buffer.from(JSON.stringify([[
     pageHeader('Series 4 dishwasher SMS4HVI01A'),

@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "50e9842e4b0bd25fe220091453edae9ccb50c685560c5c5cdbb74ab822dc56c0"
+    "historical-recovery:historical-recovery-cumulative-v1": "f37c5a76cb092c7fcf3e56c4f05f2c3f514a9520af6bed62f7d560336127a281"
   },
   "records": [
     {
@@ -24464,6 +24464,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a57c22dcfc2a4838a3d9391e",
+          "snapshotSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -24473,7 +24480,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a57c22dcfc2a4838a3d9391e",
+          "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+          "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+          "receiptBindingSha256": "8260be59d17219c3cc641aa4c74576fdb8fc645dc79d62a0921396dad6b5cbe2",
+          "verifiedAt": "2026-07-15T22:45:40.154Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/97/ef/97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf.pdf"
+        }
       ]
     },
     {
@@ -24499,6 +24535,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2a8f8a6fb106792d6693c76e",
+          "snapshotSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -24508,7 +24551,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2a8f8a6fb106792d6693c76e",
+          "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
+          "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+          "receiptBindingSha256": "7faf1d692805476f9a2429ae5fbf1e27588bfbb50390d1a4d22bc3ba55dcea31",
+          "verifiedAt": "2026-07-15T22:45:36.824Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "af2a8e413e322670d4bb578be5ec4853361cbf8e0166f89b251c61ab8671150f"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/97/ef/97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf.pdf"
+        }
       ]
     },
     {

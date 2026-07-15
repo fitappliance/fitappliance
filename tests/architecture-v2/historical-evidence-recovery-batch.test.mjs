@@ -122,6 +122,7 @@ function fixturePolicy() {
       name: 'MinerU',
       version: '3.4.4',
       modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+      claimParserRevision: '2026-07-16.2',
       backend: 'pipeline',
       method: 'auto',
       tableEnabled: true,
@@ -208,6 +209,42 @@ test('batch snapshots non-authoritative registry and legacy hints plus active re
       dimensionsMm: { width: 600, height: 850, depth: 600 },
     }],
   });
+});
+
+test('batch drops terminal suppressions captured under an older recovery policy', () => {
+  const queue = fixtureQueue();
+  const policy = fixturePolicy();
+  const currentPolicySha256 = canonicalJsonSha256(policy);
+  queue.targets[0].priorAttemptSuppressions = [{
+    attemptId: 'historical_attempt_old_policy',
+    sourceUrl: 'https://example.com.au/old-policy.pdf',
+    contentSha256: SHA_A,
+    status: 'identity_rejected',
+    failureCode: 'identity',
+    policySha256: SHA_B,
+  }, {
+    attemptId: 'historical_attempt_current_policy',
+    sourceUrl: 'https://example.com.au/current-policy.pdf',
+    contentSha256: SHA_A,
+    status: 'identity_rejected',
+    failureCode: 'identity',
+    policySha256: currentPolicySha256,
+  }];
+
+  const batch = buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy,
+    selection: { targetIds: [queue.targets[0].targetId] },
+  });
+
+  assert.deepEqual(batch.targets[0].reconciliationContext.priorAttemptSuppressions, [{
+    attemptId: 'historical_attempt_current_policy',
+    sourceUrl: 'https://example.com.au/current-policy.pdf',
+    contentSha256: SHA_A,
+    status: 'identity_rejected',
+    failureCode: 'identity',
+    policySha256: currentPolicySha256,
+  }]);
 });
 
 test('accepted targets are excluded without deleting other cumulative entries', () => {

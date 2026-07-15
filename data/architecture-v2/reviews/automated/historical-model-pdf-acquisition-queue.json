@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T22:12:08.086Z",
-  "semanticQueueSha256": "83fbbd974655d615b3a50c73f459107a30a885fdd47e65a18182d24b40e9eb70",
-  "sourceClassificationSha256": "81d8b2fb1872d95cb3584bbff4db969192054b9a80b4f9313efe3238ada19d45",
+  "generatedAt": "2026-07-15T22:48:03.985Z",
+  "semanticQueueSha256": "84e38979c5774b3e0c8e24b6cbfddd2f7ba0bd7a44064807a5d09eb9e6d646f6",
+  "sourceClassificationSha256": "25c28110349e0f2b4341fc602a9daaf0939c05d0855ed3cd13141e07d4b60a36",
   "records": [
     {
       "schemaVersion": 1,
@@ -4321,68 +4321,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_4d17515a23ef121ed0828034"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_63dd93d15e9922b60900dfe3",
-      "referenceId": "fa_ref_985bd11df50cc250fa22a55b",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60FC4W1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family 12b4379f29ec",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_3266a8c5b40c7104081b3830"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a57c22dcfc2a4838a3d9391e"
-      ],
-      "legacyRuntimeIds": [
-        "ao-59809"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b57d6cc0a7a69649d6fb9e8a"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_5043c38229b00a0ec4cb2820",
-      "referenceId": "fa_ref_dfe5466d378a8a8761af724b",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60FC4X1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family 12b4379f29ec",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8d875057eab0e4f0759c26bd"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_2a8f8a6fb106792d6693c76e"
-      ],
-      "legacyRuntimeIds": [
-        "ao-59810"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_795c603d2cd33b841684714a"
       ],
       "offlineReplayOutcome": null
     },
@@ -200880,19 +200818,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_3266a8c5b40c7104081b3830",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/2/d/c/02dca5824c9fb8c88f71ed23a2acfc0754c80c4e_Fisher___Paykel_DW60FC4W1_C4_Freestanding_Dishwasher_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DW60FC4W1.json",
-        "source:doc_361cb46942a464940f38a0a8"
-      ],
-      "referenceIds": [
-        "fa_ref_985bd11df50cc250fa22a55b"
-      ]
-    },
-    {
       "sourceId": "historical_source_328956bfed713932edb6ae37",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/8/f/5/18f53189bcca17b38ee75a49d307f83be9c4110c_HRF328W2_Haier_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -208688,19 +208613,6 @@
       ],
       "referenceIds": [
         "fa_ref_dce0288323badb617bf10304"
-      ]
-    },
-    {
-      "sourceId": "historical_source_8d875057eab0e4f0759c26bd",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/e/3/5/9/e359a2073c07ff4bb1e6632cea1e8ca60db4d102_DW60FC4X1_Fisher___Paykel_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DW60FC4X1.json",
-        "source:doc_85e630835a5f202ebd394028"
-      ],
-      "referenceIds": [
-        "fa_ref_dfe5466d378a8a8761af724b"
       ]
     },
     {
@@ -217559,23 +217471,23 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 166,
+    "COMPLETE_RECEIPT": 168,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7929,
-    "uniqueReferences": 7929,
-    "candidateSources": 1590,
-    "candidateEdges": 1625,
+    "queuedModels": 7927,
+    "uniqueReferences": 7927,
+    "candidateSources": 1588,
+    "candidateEdges": 1623,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2109,
-      "CURRENT_RETAIL": 1257,
+      "CURRENT_RETAIL": 1255,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1372,
+      "dishwasher": 1370,
       "dryer": 815,
       "fridge": 4272,
       "washing_machine": 1470
@@ -217585,23 +217497,23 @@
       "IDENTITY_RESEARCH": 195,
       "OFFICIAL_DISCOVERY": 6422,
       "OFFICIAL_REACQUIRE": 2,
-      "REFERENCE_REDISCOVERY": 1227
+      "REFERENCE_REDISCOVERY": 1225
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 195,
       "OFFICIAL_DISCOVERY": 6422,
       "OFFICIAL_REACQUIRE": 2,
-      "OFFICIAL_REDISCOVERY": 1227
+      "OFFICIAL_REDISCOVERY": 1225
     },
     "byExecutionReadiness": {
       "BOUNDED_READY": 2,
-      "DISCOVERY_READY": 5067,
+      "DISCOVERY_READY": 5065,
       "RESEARCH_REQUIRED": 278,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 166,
+      "COMPLETE_RECEIPT": 168,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

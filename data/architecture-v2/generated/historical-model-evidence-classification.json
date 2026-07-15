@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T22:12:08.086Z",
+  "generatedAt": "2026-07-15T22:48:03.985Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "81d8b2fb1872d95cb3584bbff4db969192054b9a80b4f9313efe3238ada19d45",
+  "semanticClassificationSha256": "25c28110349e0f2b4341fc602a9daaf0939c05d0855ed3cd13141e07d4b60a36",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
@@ -21,26 +21,26 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 166,
+      "COMPLETE_RECEIPT": 168,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 195,
       "OFFICIAL_DISCOVERY": 6422,
       "OFFICIAL_REACQUIRE": 2,
-      "REFERENCE_REDISCOVERY": 1227
+      "REFERENCE_REDISCOVERY": 1225
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6422,
-      "NO_ACTION": 166,
+      "NO_ACTION": 168,
       "REACQUIRE_OFFICIAL_SOURCE": 2,
-      "REDISCOVER_OFFICIAL_SOURCE": 1227,
+      "REDISCOVER_OFFICIAL_SOURCE": 1225,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 195
     },
     "bySourceAuthority": {
-      "MIXED": 78,
+      "MIXED": 80,
       "NONE": 6675,
       "OFFICIAL": 98,
-      "REFERENCE": 1244
+      "REFERENCE": 1242
     },
     "byIdentityScope": {
       "AMBIGUOUS": 234,
@@ -48,10 +48,10 @@
       "UNPROVEN": 6325
     },
     "byExtractionState": {
-      "ALL_AXIS_RANGE": 49,
+      "ALL_AXIS_RANGE": 51,
       "ALL_AXIS_SCALAR": 261,
       "NOT_PARSED": 7649,
-      "PARSER_GAP": 136
+      "PARSER_GAP": 134
     },
     "byConflictState": {
       "INVALID_DIMENSIONS": 19,
@@ -60,8 +60,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 166,
-      "LEGACY_UNBOUND": 1604,
+      "CURRENT_VALID": 168,
+      "LEGACY_UNBOUND": 1602,
       "NONE": 6325
     }
   },
@@ -72,11 +72,11 @@
       "brands": 94,
       "documentLinks": 990,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 47,
+        "COMPLETE_RECEIPT": 49,
         "CONFLICT_QUARANTINE": 22,
         "IDENTITY_RESEARCH": 31,
         "OFFICIAL_DISCOVERY": 1030,
-        "REFERENCE_REDISCOVERY": 289
+        "REFERENCE_REDISCOVERY": 287
       }
     },
     {
@@ -26987,15 +26987,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 12b4379f29ec",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARSER_GAP",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 4,
+        "CURRENT_MINERU": 3,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -27053,19 +27054,22 @@
         },
         {
           "documentId": "pdf:97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+          "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
           "evidenceObjectIds": [
             "mineru-index:97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "receipt:8260be59d17219c3cc641aa4c74576fdb8fc645dc79d62a0921396dad6b5cbe2",
             "storage:evidence/web/sha256/97/ef/97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "UNPROVEN",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
         },
         {
@@ -27101,8 +27105,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Fisher & Paykel"
@@ -27140,15 +27144,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 12b4379f29ec",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARSER_GAP",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 4,
+        "CURRENT_MINERU": 3,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -27206,19 +27211,22 @@
         },
         {
           "documentId": "pdf:97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+          "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
           "evidenceObjectIds": [
             "mineru-index:97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "receipt:7faf1d692805476f9a2429ae5fbf1e27588bfbb50390d1a4d22bc3ba55dcea31",
             "storage:evidence/web/sha256/97/ef/97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "UNPROVEN",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
         },
         {
@@ -27254,8 +27262,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Fisher & Paykel"

@@ -97,6 +97,39 @@ test('transient transport failures remain retryable and suppressed candidates ar
   assert.equal(transport.disposition, 'RETRY_TRANSIENT');
 });
 
+test('a claim parser revision change invalidates same-policy terminal suppression', () => {
+  const input = fixture();
+  const firstPolicySha = canonicalJsonSha256({
+    parser: { claimParserRevision: '2026-07-16.1' },
+  });
+  input.batch.policy.sha256 = firstPolicySha;
+  input.results.policySha256 = firstPolicySha;
+  input.results.batchSha256 = canonicalJsonSha256(input.batch);
+  input.audit.batchSha256 = input.results.batchSha256;
+  input.audit.resultsSha256 = canonicalJsonSha256(input.results);
+
+  const ledger = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, priorLedger: null, generatedAt: '2026-07-16T01:01:00.000Z',
+  });
+  assert.equal(activeHistoricalAttemptSuppressions({
+    ledger,
+    targetId: 'target-fp',
+    referenceId: 'reference-fp',
+    policySha256: firstPolicySha,
+  }).length, 1);
+
+  const nextPolicySha = canonicalJsonSha256({
+    parser: { claimParserRevision: '2026-07-16.2' },
+  });
+  assert.notEqual(nextPolicySha, firstPolicySha);
+  assert.deepEqual(activeHistoricalAttemptSuppressions({
+    ledger,
+    targetId: 'target-fp',
+    referenceId: 'reference-fp',
+    policySha256: nextPolicySha,
+  }), []);
+});
+
 test('a later accepted replay appends a resolution and deactivates the prior suppression', () => {
   const input = fixture();
   const first = buildHistoricalEvidenceRecoveryAttemptLedger({

@@ -109,6 +109,7 @@ function policy() {
     parser: {
       format: 'content_list_v2', name: 'MinerU', version: '3.4.4',
       modelRevision: 'e'.repeat(40), backend: 'pipeline', method: 'auto',
+      claimParserRevision: '2026-07-16.2',
       tableEnabled: true, formulaEnabled: false,
     },
   };

@@ -206,7 +206,7 @@ export function validateHistoricalEvidenceRecoveryPolicy(value) {
   );
 
   exactKeys(value.parser, 'recovery policy parser', [
-    'format', 'name', 'version', 'modelRevision', 'backend', 'method',
+    'format', 'name', 'version', 'modelRevision', 'claimParserRevision', 'backend', 'method',
     'tableEnabled', 'formulaEnabled',
   ]);
   if (value.parser.format !== 'content_list_v2' || value.parser.name !== 'MinerU') {
@@ -214,6 +214,9 @@ export function validateHistoricalEvidenceRecoveryPolicy(value) {
   }
   text(value.parser.version, 'parser.version');
   if (!/^[a-f0-9]{40}$/.test(value.parser.modelRevision)) throw new TypeError('parser.modelRevision invalid');
+  if (!/^\d{4}-\d{2}-\d{2}\.\d+$/.test(value.parser.claimParserRevision)) {
+    throw new TypeError('parser.claimParserRevision invalid');
+  }
   if (value.parser.backend !== 'pipeline' || value.parser.method !== 'auto'
     || value.parser.tableEnabled !== true || value.parser.formulaEnabled !== false) {
     throw new TypeError('parser execution contract invalid');

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T22:16:30.182Z",
-  "sourceBundleSha256": "50e9842e4b0bd25fe220091453edae9ccb50c685560c5c5cdbb74ab822dc56c0",
+  "generatedAt": "2026-07-15T23:05:45.294Z",
+  "sourceBundleSha256": "f37c5a76cb092c7fcf3e56c4f05f2c3f514a9520af6bed62f7d560336127a281",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -364,6 +364,20 @@
       "contentSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
       "receiptBindingSha256": "b192f05c527e1d0e77fa37d5e425748f161d7250aa752cabaf238e75016a0e8c",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/1c/2f/1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_2a8f8a6fb106792d6693c76e",
+      "referenceId": "fa_ref_dfe5466d378a8a8761af724b",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4X1",
+      "category": "dishwasher",
+      "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
+      "sourcePdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+      "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+      "receiptBindingSha256": "7faf1d692805476f9a2429ae5fbf1e27588bfbb50390d1a4d22bc3ba55dcea31",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ee/a0/eea0fdb64f782d514c0391fa4d33f975c7e368fc4932f06073f13e36de7ee081.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1530,6 +1544,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_a57c22dcfc2a4838a3d9391e",
+      "referenceId": "fa_ref_985bd11df50cc250fa22a55b",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4W1",
+      "category": "dishwasher",
+      "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+      "sourcePdfSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+      "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+      "receiptBindingSha256": "8260be59d17219c3cc641aa4c74576fdb8fc645dc79d62a0921396dad6b5cbe2",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ee/a0/eea0fdb64f782d514c0391fa4d33f975c7e368fc4932f06073f13e36de7ee081.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_a795fcf62f9906e81eb2e1dc",
       "referenceId": "fa_ref_941a067eedf55d9f81915bb6",
       "brand": "Beko",
@@ -2371,11 +2399,11 @@
     }
   ],
   "summary": {
-    "entries": 147,
-    "sources": 169,
-    "passed": 169,
+    "entries": 149,
+    "sources": 171,
+    "passed": 171,
     "failed": 0
   },
-  "checkedObjects": 361,
-  "semanticAuditSha256": "fe80716ab530cf58d3801ffea3ea6c3a0bb8102d0bfcea2d6bba1f3cd430bee2"
+  "checkedObjects": 363,
+  "semanticAuditSha256": "0c4df3f462e3c5c6406e35a481c62d9d3d57f07114d403d608b436b9eacb5958"
 }

@@ -192,6 +192,7 @@ test('committed recovery policy pins queue, receipt, claim, transport, lock and 
   assert.deepEqual(policy.supportedClaimSemanticsVersions, [1, 2]);
   assert.deepEqual(policy.requestedFields, FIELDS);
   assert.equal(policy.reconciliation.registryAxisPermutationToleranceMm, 10);
+  assert.equal(policy.parser.claimParserRevision, '2026-07-16.2');
   assert.ok(policy.limits.resolverTimeoutMs > policy.limits.timeoutMs);
   assert.throws(
     () => validateHistoricalEvidenceRecoveryPolicy({ ...policy, unexpected: true }),
@@ -210,6 +211,13 @@ test('committed recovery policy pins queue, receipt, claim, transport, lock and 
       limits: { ...policy.limits, resolverTimeoutMs: policy.limits.timeoutMs },
     }),
     /resolverTimeoutMs/i,
+  );
+  assert.throws(
+    () => validateHistoricalEvidenceRecoveryPolicy({
+      ...policy,
+      parser: { ...policy.parser, claimParserRevision: 'latest' },
+    }),
+    /claimParserRevision/i,
   );
 });
 

@@ -1331,6 +1331,178 @@ function structuredFinishVariantDocumentScope(document, model) {
   };
 }
 
+function fixedWidthModelChunks(value, targetModel) {
+  const target = canonicalModel(targetModel);
+  if (target.length < 8 || target.length > 24) return [];
+  return normalizedText(value).toUpperCase().split(/[^A-Z0-9]+/)
+    .flatMap((token) => {
+      if (!token || token.length % target.length !== 0) return [];
+      const chunks = [];
+      for (let offset = 0; offset < token.length; offset += target.length) {
+        const chunk = token.slice(offset, offset + target.length);
+        if (!/^[A-Z]{2,}[A-Z0-9]*\d[A-Z0-9]*$/.test(chunk)
+          || commonPrefixLength(chunk, target) < Math.min(6, Math.floor(target.length / 2))) {
+          return [];
+        }
+        chunks.push(chunk);
+      }
+      return chunks;
+    });
+}
+
+function dimensionUnitFromPageTables(items) {
+  const units = new Set();
+  for (const item of items) {
+    if (item.type !== 'table') continue;
+    for (const cells of item.cells) {
+      const text = normalizedText(cells.join(' '));
+      const match = /\bdimensions?\b[^\n]{0,80}\b(mm|cm)\b/i.exec(text);
+      if (match) units.add(match[1].toLowerCase());
+    }
+  }
+  return units.size === 1 ? [...units][0] : null;
+}
+
+function fisherPaykelDw60InstallationRows(fragment, pageUnit) {
+  if (fragment.type !== 'table' || !pageUnit || !Array.isArray(fragment.cells)) return [];
+  const headerIndex = fragment.cells.findIndex((cells) => (
+    /^product\s+dimensions?$/i.test(normalizedText(cells.find(Boolean)))
+  ));
+  if (headerIndex < 0) return [];
+  const scalar = (value) => {
+    const match = /^(\d+(?:\.\d+)?)\s*\**$/i.exec(normalizedText(value));
+    return match ? match[1] : null;
+  };
+  const range = (value) => {
+    const matches = [...normalizedText(value).matchAll(/(\d+(?:\.\d+)?)\s*(?:-|–|—|\bto\b)\s*(\d+(?:\.\d+)?)/gi)];
+    return matches.map((match) => `${match[1]} - ${match[2]}`);
+  };
+  let height = null;
+  let width = null;
+  let depth = null;
+  const rows = fragment.cells.slice(headerIndex + 1);
+  for (let index = 0; index < rows.length; index += 1) {
+    const label = normalizedText(rows[index].slice(0, -1).join(' '));
+    const value = normalizedText(rows[index].at(-1));
+    if (/\boverall\s+height\s+of\s+product\b/i.test(label)) {
+      const directRanges = range(value);
+      if (directRanges.length === 1) height = directRanges[0];
+      const nextLabel = normalizedText(rows[index + 1]?.slice(0, -1).join(' '));
+      const nextRanges = range(rows[index + 1]?.at(-1));
+      if (!height && /\bwith\s+top\s+panel\s+in\s+place\b/i.test(nextLabel)) {
+        if (/\bwith\s+top\s+panel\s+removed\b/i.test(nextLabel)) {
+          if (nextRanges.length === 2) [height] = nextRanges;
+        } else if (nextRanges.length === 1) {
+          [height] = nextRanges;
+        }
+      }
+    } else if (/\boverall\s+width\s+of\s+product\b/i.test(label)) {
+      width = scalar(value);
+    } else if (/\boverall\s+depth\s+of\s+product\b/i.test(label)
+      && !/\b(?:open|opened)\b/i.test(label)) {
+      depth = scalar(value);
+    }
+  }
+  if (!height || !width || !depth) return [];
+  return [
+    {
+      label: 'Overall height of product with top panel in place',
+      value: `${height} ${pageUnit}`,
+      quote: `Overall height of product with top panel in place ${height} ${pageUnit}`,
+      semanticBasis: 'explicit_label_range',
+      axisOrder: ['height'],
+    },
+    {
+      label: 'Overall width of product',
+      value: `${width} ${pageUnit}`,
+      quote: `Overall width of product ${width} ${pageUnit}`,
+      semanticBasis: 'fisher_paykel_dw60_installation_matrix',
+      axisOrder: ['width'],
+    },
+    {
+      label: 'Overall depth of product',
+      value: `${depth} ${pageUnit}`,
+      quote: `Overall depth of product ${depth} ${pageUnit}`,
+      semanticBasis: 'fisher_paykel_dw60_installation_matrix',
+      axisOrder: ['depth'],
+    },
+  ];
+}
+
+function exactFisherPaykelDw60DocumentUrl(sourceUrls, model) {
+  const target = canonicalModel(model);
+  if (!Array.isArray(sourceUrls) || !target) return null;
+  const escaped = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const pattern = new RegExp(
+    `(?:^|[-_.])${escaped}[-_.]+FREESTANDING[-_.]*DISHWASHER`
+      + `(?:[-_.]+(?:AU|NZ)){1,3}(?:[-_.]+[A-Z0-9]{4,16})?$`,
+    'i',
+  );
+  return sourceUrls.find((value) => {
+    try {
+      const url = new URL(value);
+      if (url.hostname.toLowerCase() !== 'dam.fisherpaykel.com') return false;
+      const filename = decodeURIComponent(url.pathname.split('/').pop() ?? '');
+      return pattern.test(filename.replace(/\.pdf$/i, ''));
+    } catch {
+      return false;
+    }
+  }) ?? null;
+}
+
+function fisherPaykelDw60ApplicabilityScope(document, caseIdentity, sourceUrls) {
+  if (normalizedText(caseIdentity?.brand).toLowerCase() !== 'fisher & paykel'
+    || normalizedText(caseIdentity?.category) !== 'dishwasher') return null;
+  const target = canonicalModel(caseIdentity?.model);
+  const exactDocumentUrl = exactModelSourceUrl(sourceUrls, target)
+    ?? exactFisherPaykelDw60DocumentUrl(sourceUrls, target);
+  if (!/^DW60[A-Z0-9]{4,16}$/.test(target) || !exactDocumentUrl) return null;
+  const applicabilityTables = [];
+  document.pages.forEach((items, pageIndex) => {
+    for (const fragment of items) {
+      if (fragment.type !== 'table') continue;
+      const models = [...new Set(fragment.cells.flatMap((cells) => (
+        cells.flatMap((cell) => fixedWidthModelChunks(cell, target))
+      )))];
+      if (models.length < 2 || models.length > 12 || !models.includes(target)) continue;
+      const familyPrefixes = fragment.cells.flatMap((cells) => cells)
+        .filter((cell) => /\bmodels?\b/i.test(normalizedText(cell)))
+        .flatMap((cell) => {
+          const source = canonicalModel(normalizedText(cell).replace(/\bmodels?\b/gi, ''));
+          const matches = [];
+          for (let removed = 1; removed <= 4; removed += 1) {
+            const prefix = target.slice(0, -removed);
+            if (prefix.length >= 6 && /\d$/.test(prefix) && source.includes(prefix)) matches.push(prefix);
+          }
+          return matches;
+        });
+      const familyModel = familyPrefixes.sort((left, right) => right.length - left.length)[0];
+      if (!familyModel) continue;
+      applicabilityTables.push({ fragment, page: pageIndex + 1, familyModel, models });
+    }
+  });
+  if (applicabilityTables.length !== 1) return null;
+  const applicability = applicabilityTables[0];
+  const dimensions = [];
+  document.pages.forEach((items, pageIndex) => {
+    const page = pageIndex + 1;
+    if (page < applicability.page || page > applicability.page + 2) return;
+    const pageUnit = dimensionUnitFromPageTables(items);
+    for (const fragment of items) {
+      const rows = fisherPaykelDw60InstallationRows(fragment, pageUnit);
+      if (rows.length === 3) dimensions.push({ fragment, page, rows });
+    }
+  });
+  if (dimensions.length !== 1) return null;
+  return {
+    ...applicability,
+    exactDocumentUrl,
+    dimensionFragment: dimensions[0].fragment,
+    dimensionPage: dimensions[0].page,
+    dimensionRows: dimensions[0].rows,
+  };
+}
+
 function ocrShiftedDimensionSectionRows(fragment) {
   if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return [];
   const axisAliases = {
@@ -1377,6 +1549,17 @@ function ocrShiftedDimensionSectionRows(fragment) {
 }
 
 export const mineruGrammarProfiles = Object.freeze({
+  'fisher-paykel-dw60-install-applicability-v1': Object.freeze({
+    parserProfileId: 'fisher-paykel-dw60-install-applicability-v1',
+    grammarFamilyId: 'fisher_paykel_dw60_installation_v1',
+    grammarFamilyName: 'Fisher & Paykel DW60 installation applicability matrix',
+    variantName: 'Concatenated exact SKU matrix followed by shared product dimensions',
+    brand: 'Fisher & Paykel',
+    category: 'dishwasher',
+    documentType: 'installation_manual',
+    detectionSummary: 'An exact-model official document URL, one fixed-width SKU applicability matrix, one matching family header, and one adjacent product-dimensions table with an unambiguous page unit.',
+    semanticBoundary: 'The installed top-panel height range, overall width and closed depth are projected; top-panel-removed height, cavity dimensions and door-open depth are excluded.',
+  }),
   'hisense-au-washer-indexed-dimension-diagram-v1': Object.freeze({
     parserProfileId: 'hisense-au-washer-indexed-dimension-diagram-v1',
     grammarFamilyId: 'hisense_au_washer_dimension_diagram_v1',
@@ -1761,11 +1944,22 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       value: `${model}:family:${structuredFinishVariantScope.familyModel}:page:${structuredFinishVariantScope.page}:${structuredFinishVariantScope.fragment.fragmentSha256}`,
     },
   ] : [];
+  const fisherPaykelDw60Scope = claimSemanticsVersion === 2
+    ? fisherPaykelDw60ApplicabilityScope(document, caseIdentity, options.sourceUrls)
+    : null;
+  const fisherPaykelDw60Signals = fisherPaykelDw60Scope ? [{
+    type: 'mineru_fp_dw60_model_applicability',
+    value: `${model}:family:${fisherPaykelDw60Scope.familyModel}:page:${fisherPaykelDw60Scope.page}:${fisherPaykelDw60Scope.fragment.fragmentSha256}`,
+  }, {
+    type: 'mineru_fp_dw60_exact_document_url',
+    value: `${model}:${fisherPaykelDw60Scope.exactDocumentUrl}`,
+  }] : [];
   const boundFamilyDocumentScope = claimSemanticsVersion === 2
     && (boundFamilySignals.length === 1 || boundSeriesSignals.length === 1
       || boundExactCoverSignals.length === 1);
   const unresolvedFamily = claimSemanticsVersion === 2 && !boundFamilyDocumentScope
     && !structuredFinishVariantScope
+    && !fisherPaykelDw60Scope
     && (unresolvedFamilyScope(document, model) || contextUnresolvedFamily);
   const contextDocumentScope = claimSemanticsVersion === 2
     && contextSignals.length > 0
@@ -1787,6 +1981,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...boundSeriesSignals,
     ...boundExactCoverSignals,
     ...structuredFinishVariantSignals,
+    ...fisherPaykelDw60Signals,
   ].map((signal) => [`${signal.type}\0${signal.value}`, signal])).values()];
   if (!signals.length && documentUniqueScope) {
     signals = uniqueCoverFallbackSignals(document, model);
@@ -1803,6 +1998,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   }
   const candidates = new Map(fields.map((field) => [field, []]));
   const appliedGrammarProfiles = new Set();
+  if (fisherPaykelDw60Scope) {
+    appliedGrammarProfiles.add('fisher-paykel-dw60-install-applicability-v1');
+  }
   const sharedModelListPages = new Set();
   document.pages.forEach((items, pageIndex) => {
     const pageSignals = documentSignals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
@@ -1833,6 +2031,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const structuredFinishVariantPageScoped = items.includes(
       structuredFinishVariantScope?.dimensionFragment,
     );
+    const fisherPaykelDw60PageScoped = items.includes(
+      fisherPaykelDw60Scope?.dimensionFragment,
+    );
     const joinedParagraphRowsByFragment = new Map(items
       .map((item, index) => [item, joinedGroupedParagraphRow(items, index)])
       .filter(([, row]) => row));
@@ -1841,7 +2042,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       .filter(([, row]) => row));
     if (!pageScoped && !documentScoped && !bekoDocumentScoped
       && !sharedModelListScoped && !groupedColumnScoped
-      && !structuredFinishVariantPageScoped) return;
+      && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped) return;
     const bekoPageScoped = items.some((item) => (
       ['title', 'page_header'].includes(item.type)
         && containsExplicitModelExpression(item.text, model)
@@ -1880,6 +2081,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         || groupedColumnRowsByFragment.get(item)?.length === 3
         || containsExplicitModelExpression(item.identityText ?? item.text, model)
         || structuredFinishVariantScope?.dimensionFragment === item
+        || fisherPaykelDw60Scope?.dimensionFragment === item
         || (documentScoped && (
           documentScopedDimensionMatrixRows(item).length === 3
           || documentScopedExplicitAxisRows(item).length === 3
@@ -1916,6 +2118,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           ...(claimSemanticsVersion === 2 ? (groupedColumnRowsByFragment.get(fragment) ?? []) : []),
           ...(structuredFinishVariantScope?.dimensionFragment === fragment
             ? structuredFinishVariantScope.dimensionRows
+            : []),
+          ...(fisherPaykelDw60Scope?.dimensionFragment === fragment
+            ? fisherPaykelDw60Scope.dimensionRows
             : []),
           ...(documentScoped ? documentScopedDimensionMatrixRows(fragment) : []),
           ...(documentScoped ? documentScopedExplicitAxisRows(fragment) : []),

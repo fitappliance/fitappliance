@@ -1091,6 +1091,62 @@ test('a strict family heading and exact finish table independently bind shared p
   assert.ok(signalTypes.has('mineru_finish_variant_exact_model_table'));
 });
 
+test('an exact Fisher and Paykel DW60 support document binds its applicability matrix to shared dimensions', () => {
+  const identity = { brand: 'Fisher & Paykel', model: 'DW60FC4W1', category: 'dishwasher' };
+  const sourceUrl = 'https://dam.fisherpaykel.com/KZ3PKN00/at/example/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf';
+  const pdfBytes = Buffer.from('%PDF-1.7\nFisher Paykel DW60 installation guide');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [{ type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'DW60 models' }] }, bbox: [450, 570, 550, 600] }],
+    [],
+    [{
+      type: 'table',
+      content: { html: '<table><tr><td></td><td>DW60FC1 models</td><td>DW60FC2DW60FC4DW60FC6 models</td></tr><tr><td>Colour White Stainless Steel</td><td>DW60FC1W1DW60FC1X1</td><td>DW60FC2W1 DW60FC4W1DW60FC6W1 DW60FC2X1 DW60FC4X1DW60FC6X1</td></tr></table>' },
+      bbox: [530, 160, 950, 500],
+    }],
+    [{
+      type: 'table',
+      content: { html: '<table><tr><td>PRODUCT DIMENSIONS</td><td></td></tr><tr><td>A Overall height of product</td><td></td></tr><tr><td>with top panel in place with top panel removed*</td><td>850 - 870** 820 - 840**</td></tr><tr><td>B Overall width of product</td><td>597</td></tr><tr><td>C Overall depth of product</td><td>600</td></tr><tr><td>D Depth of open door</td><td>595</td></tr></table>' },
+      bbox: [580, 100, 970, 270],
+    }, {
+      type: 'table',
+      content: { html: '<table><tr><td>CABINETRY DIMENSIONS</td><td>MM</td></tr><tr><td>Minimum inside width of cavity</td><td>600</td></tr></table>' },
+      bbox: [580, 350, 970, 500],
+    }],
+  ]));
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: identity, sourceUrls: [sourceUrl], claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }).claims;
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const attested = verifyAndAttestResolutionArtifact({
+    source: {
+      authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+      sourceUrl, finalUrl: sourceUrl, redirectChain: [],
+      retrievedAt: '2026-07-16T01:00:00.000Z', contentSha256: pdfHash,
+      objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+      contentType: 'application/pdf', byteSize: pdfBytes.length,
+      discoveryProvenance: {
+        schemaVersion: 1, method: 'official_support_api', market: 'AU', sourceMarket: 'NZ',
+        discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/freestanding-dishwasher--DW60FC4W1',
+        requestedModel: 'DW60FC4W1', matchedModel: 'DW60FC4W1', artifactUrl: sourceUrl,
+        originalFileName: 'FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf',
+      },
+      identity: { ...identity, outcome: 'exact' }, claims, derivedArtifact,
+    },
+    caseIdentity: identity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    verifiedAt: '2026-07-16T01:01:00.000Z', claimSemanticsVersion: 2,
+  });
+
+  const signalTypes = new Set(attested.identitySignals.map((signal) => signal.type));
+  assert.ok(signalTypes.has('mineru_fp_dw60_model_applicability'));
+  assert.ok(signalTypes.has('mineru_fp_dw60_exact_document_url'));
+  assert.equal(attested.verificationReceipt.claimSemanticsVersion, 2);
+});
+
 test('a hash-bound official product page can independently bind a model-scoped PDF', () => {
   const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
   const pdfBytes = Buffer.from('%PDF-1.7\nproduct-page-bound artifact');
