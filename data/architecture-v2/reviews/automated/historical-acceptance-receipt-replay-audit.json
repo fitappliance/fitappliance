@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T11:18:19.205Z",
-  "sourceBundleSha256": "1a2008b98e13e8ce14d652dc87ef55c3120697cc6edea9555e6a0db8d13393a1",
+  "generatedAt": "2026-07-15T13:39:36.286Z",
+  "sourceBundleSha256": "e1b8398f69d3dc85245c36f92b412252d16c1169a5287707404480d716df2556",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -42,6 +42,20 @@
       "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
       "receiptBindingSha256": "96d2087cac8c268bb5f302b785bf0e96b032bbf8e862a34ff38f2b9bbc3de802",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/10/8b/108bd363434692a686ec87dac921631f906301cc47cd493341f317dba71892db.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_025ee43df594ba1db9fd1adb",
+      "referenceId": "fa_ref_b37a483d902f4f65f2653bff",
+      "brand": "LG",
+      "model": "XD2A25MB",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.lg.com/au/dishwashers/free-standing/xd2a25mb/",
+      "sourcePdfSha256": null,
+      "contentSha256": "e90dfb6e0562509220ca3c4b07ce36988d84f0463d1732655b80146694813bf9",
+      "receiptBindingSha256": "a26e1f55ccea973f2a77076cd77929c156994b75fed6264c2c496a87fb256a27",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -298,6 +312,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_2efea98f2bd6ef9088d71fb9",
+      "referenceId": "fa_ref_ef3d7661690aeb6863696b00",
+      "brand": "KELVINATOR",
+      "model": "KTB2502WB",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2502WB&brand=Kelvinator",
+      "sourcePdfSha256": "2ccd37f0b081bdf4c86d1b2c82576e40912ea016e93f5e271272fd3592145b55",
+      "contentSha256": "2ccd37f0b081bdf4c86d1b2c82576e40912ea016e93f5e271272fd3592145b55",
+      "receiptBindingSha256": "3b1f381e878f0c4f0a77ae42675dc11c519d91a32e8116f48566b02b3f486958",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ad/d6/add64baa5f325ddf8e1b3e953e52fb89980b34ec62fd03c4e3fc0f706507b80b.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_2f89dc1ab3bd7db68fb6b0e1",
+      "referenceId": "fa_ref_6dd236c8488ec982c0750927",
+      "brand": "KELVINATOR",
+      "model": "KTB2302WB",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2302WB&brand=Kelvinator",
+      "sourcePdfSha256": "97dba1d61e8ecd12292958e0fdf4f250d5b1925262f43fa60c6aa910fbfcd95e",
+      "contentSha256": "97dba1d61e8ecd12292958e0fdf4f250d5b1925262f43fa60c6aa910fbfcd95e",
+      "receiptBindingSha256": "c9553231bcdc46b953356ecc88413e1d3e49278073dc98bb23706558fe33c280",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/96/4a/964a6f36a2229ac4aa82967d84133bfe85cd9493231ee7bdde61524432d0e2e8.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_3097a18fb1c5c4a423983776",
       "referenceId": "fa_ref_edd4cf76166b059c1d516cc3",
       "brand": "Westinghouse",
@@ -322,6 +364,34 @@
       "contentSha256": "ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667",
       "receiptBindingSha256": "e99ec5c10a08151be2d08f50f7433b0f6f288384839dec2a8658648edcdf70aa",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/95/2c/952c5048d1b83d141263324390ac2bdb1ead63466ca67cc6aee8093c29583a03.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_37c47895e46c5848b0988578",
+      "referenceId": "fa_ref_bc875abc81c2707ab1408408",
+      "brand": "LG",
+      "model": "GF-LN500MBL",
+      "category": "fridge",
+      "sourceUrl": "https://www.lg.com/au/fridge-freezers/french-door/gf-ln500mbl/",
+      "sourcePdfSha256": null,
+      "contentSha256": "6b00b7a620ff17afdc6ce28a1bb403c01331f12ece7dcb6def56b6beb0e45d83",
+      "receiptBindingSha256": "02248e02c332e872684fcfae98f20d4f79081d17e77b58a4d35e55342027468d",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_3abcd6f1596261bf1ef39a43",
+      "referenceId": "fa_ref_22d30e11b3c02bc82ae65904",
+      "brand": "Bosch",
+      "model": "WQG235D8AU",
+      "category": "dryer",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235D8AU.pdf",
+      "sourcePdfSha256": "ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f",
+      "contentSha256": "ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f",
+      "receiptBindingSha256": "d12d199caa9edd5c44ce786972dd63345f50b2d58016978c1f45754329080ab4",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/5d/8d/5d8db69717b861c43d74943ba9654a32e541e42cfb85797e9629f604a14f513f.json",
       "status": "passed",
       "failureCode": null
     },
@@ -536,6 +606,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_59e36cd3408129c9930948ba",
+      "referenceId": "fa_ref_0d8b341d79a8284a52a83ce6",
+      "brand": "Samsung",
+      "model": "WW90DG6U3ALE",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000d-front-loading-smartthings-ai-energy-mode-a-10-percent-extra-energy-efficiency-9kg-white-ww90dg6u3alesa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "09d7a8e8a03e3d79661310a843d946e574975ad4c8e4fd686957fa30929994ac",
+      "receiptBindingSha256": "36dd8029172773058ed703e3366c5f8288715526ef4cb38b0bee72a25d47e8d2",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_5b485bcfdea32626ef3a405d",
       "referenceId": "fa_ref_bc9fd3b42de8b34854301a9d",
       "brand": "Fisher & Paykel",
@@ -546,6 +630,48 @@
       "contentSha256": "d5b9e1e5118780a576f1dae698f127936a2f06ccbce5e8bb0360415e0c0b324e",
       "receiptBindingSha256": "1d1ec43117959a62929500826836e7c5772781d331311ade3ae71797fb8119e9",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/ab/0b/ab0b8428cced157b5b8c8dd7a16f8d885f3e84a72d2fb5dc8d28b139f122e2cd.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_5bba847f3ca2affe34329755",
+      "referenceId": "fa_ref_c22c7840b29d710e5a07229c",
+      "brand": "Westinghouse",
+      "model": "WBB3700WH",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3700WH&brand=Westinghouse",
+      "sourcePdfSha256": "68dfbb01cf980a54e8ec86382f356c571d0e368d5a129eb5d7c55bc2170512d6",
+      "contentSha256": "68dfbb01cf980a54e8ec86382f356c571d0e368d5a129eb5d7c55bc2170512d6",
+      "receiptBindingSha256": "4daff19989fe067914a5bc72175e667cc0476032699df5197f892eeaa2edc882",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/98/d1/98d17e841cf58e80228f07da95087b3c1ff1e81eb68ae66ea73fa6b6dedf21ff.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_5d22087b44c6c430c28b06ba",
+      "referenceId": "fa_ref_379da4d1574a78de96379fa1",
+      "brand": "Westinghouse",
+      "model": "WQE5660BA",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5660BA&brand=Westinghouse",
+      "sourcePdfSha256": "08a01ab0456e8303fe477f34323a2bdecd59606b52c6493c3214e66615e7fe6e",
+      "contentSha256": "08a01ab0456e8303fe477f34323a2bdecd59606b52c6493c3214e66615e7fe6e",
+      "receiptBindingSha256": "f406717122a74c7a82b133a291fe604e99f0f9182b00ec76155228ddc5dcefb0",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/22/35/22357b1f9f2f359a5ea873a1e09e41d120412433cb434832fc6276961f582980.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_5f49a4591a099fd90b89902f",
+      "referenceId": "fa_ref_5eb7748103cd8267f3cd1f83",
+      "brand": "Samsung",
+      "model": "WW90DG6U3ALB",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000d-front-loading-smartthings-ai-energy-mode-a-10-percent-extra-energy-efficiency-9kg-black-ww90dg6u3albsa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "6b19a37c6c7e96d37c2dd197f9e4aadf93a97e86316003100308865a8720daf9",
+      "receiptBindingSha256": "c0bdd10045f4c64ffa6c5fab2ca584770c60d343d548bca41823ac28b778e3d7",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -620,6 +746,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_677e8e8f06fccd7fb91f1e50",
+      "referenceId": "fa_ref_a3750b30a7e7f711ae79ae77",
+      "brand": "Westinghouse",
+      "model": "WTB5400WC",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB5400WC&brand=Westinghouse",
+      "sourcePdfSha256": "e5aae97b862c6ac55a35fcf7c0bece8cb6ce6a2fe3d4be6dfa500db62e17425c",
+      "contentSha256": "e5aae97b862c6ac55a35fcf7c0bece8cb6ce6a2fe3d4be6dfa500db62e17425c",
+      "receiptBindingSha256": "0eb8d0e66150cd3ae0541a2bec1451a88a88213d073845c4742c7ad2658ca17f",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/21/a5/21a5c5ce7d1c9a218d028c915f9470523323c78f2df9aff1facf493907351796.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_6a8a5797078ea622d9a6edfe",
       "referenceId": "fa_ref_08091b520d2f35b4bdda4dd0",
       "brand": "Fisher & Paykel",
@@ -644,6 +784,20 @@
       "contentSha256": "aa5c1265d93d2807b303e94ae03541f0307096c9f1baf5d7031531158fc8d92c",
       "receiptBindingSha256": "b5e35126a4bc0c11e8566b6de721f0a7f4ff506e6b5679cd1a5fe8464d8b2a36",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/aa/87/aa87812b27d19634bee1b24eb7128a2f40310d1daa6bc06e808171f50a34e25a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_706e059a44b52ebbba68cd63",
+      "referenceId": "fa_ref_7855b3e2391896eaec8da8e2",
+      "brand": "KELVINATOR",
+      "model": "KTB2802WB",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2802WB&brand=Kelvinator",
+      "sourcePdfSha256": "1ac995bd56a0df20268d8fc77e5f32ee43aefd5620fc0fc8e28597984c575354",
+      "contentSha256": "1ac995bd56a0df20268d8fc77e5f32ee43aefd5620fc0fc8e28597984c575354",
+      "receiptBindingSha256": "039caf4894e491a5a7da3768ec9ea886f7756f679d7b006e67e4f6436e6401cf",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/05/d9/05d9471efcbf8743bf8d0f4d14b7a40637770e93395b31a5b046b86c880e14da.json",
       "status": "passed",
       "failureCode": null
     },
@@ -928,6 +1082,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_aff68df053517392794eb79d",
+      "referenceId": "fa_ref_c8514fc95f69f69afdd33075",
+      "brand": "Westinghouse",
+      "model": "WQE6170BB",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6170BB&brand=Westinghouse",
+      "sourcePdfSha256": "c91cb34d06bc36b2e860013784cc4cf397b5b2c249760102af6cf437a890499f",
+      "contentSha256": "c91cb34d06bc36b2e860013784cc4cf397b5b2c249760102af6cf437a890499f",
+      "receiptBindingSha256": "67e6fda23908e6da2ce3adca63ba09e6d6b3c08ac1cb0ee570e5083fe4729b59",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/09/33/0933879f794276d4604b9ccd1e42d85203d92167627203ff6bca6e9a69054bdf.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_b0a55962088d434197a25c0b",
       "referenceId": "fa_ref_1cec063fab40d12cdea73e1d",
       "brand": "Westinghouse",
@@ -994,6 +1162,20 @@
       "contentSha256": "2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8",
       "receiptBindingSha256": "f0ad935d47e326adfed178b36a6f553ecb3b436c94b2fef7170518a317e26eef",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/cc/3f/cc3fa545d9c7457fb3c4dfe2bc80df76a0f67aeb6c6664dce6d2e88ca0c28b41.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_c2de14d490b3777d78e1f53f",
+      "referenceId": "fa_ref_5d80bf5c6d9510aa761f02a0",
+      "brand": "Bosch",
+      "model": "SMS6HCI02A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI02A.pdf",
+      "sourcePdfSha256": "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
+      "contentSha256": "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
+      "receiptBindingSha256": "af723395f5c7e00a7600c98e318145d669cd8b6553cc5f2133634e7e1eceb9c2",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/02/07/020757c3909a18d280658e8c5346f6426af6a87800b0d8fbc5a3beee76086109.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1110,6 +1292,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_db157acb2debd96f7800a602",
+      "referenceId": "fa_ref_e8810797b0168bc5b851bc12",
+      "brand": "Bosch",
+      "model": "SMS4HVI01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf",
+      "sourcePdfSha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
+      "contentSha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
+      "receiptBindingSha256": "43225b6a19c787c51071f67264453eba40a1efaf01cd5dd0013c7233acb2303b",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/4b/52/4b52c676322e5387720774dea13b95364fc737e249f32bef28477155892fbfd9.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_db34fb04160ccb0e723bdd8a",
       "referenceId": "fa_ref_47325c57dc3a7f4174e70d2e",
       "brand": "ASKO",
@@ -1176,6 +1372,20 @@
       "contentSha256": "cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00",
       "receiptBindingSha256": "b2e4770b912ff95e9aa5bc47ce92617af965ca306ebe2c0d8b4712218679067e",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/17/a2/17a297171da4c9a2721bd7b89d51ea596bea1b605f8c65f7356fc6f44dc4f2c7.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_e481b7a7f66fc12825df1cc3",
+      "referenceId": "fa_ref_83bd985062196f48441767df",
+      "brand": "Samsung",
+      "model": "WW11CG60ADLB",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-black-ww11cg60adlbsa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "68dd32dc4fbd3e4f580c6bd39bd0fe487cdd679d362096e3cac2d9d8be2f2441",
+      "receiptBindingSha256": "0e498f2159bebeda136f1029c43286e651c6ba950e51b569a88fe4bb1c4be3d9",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -1307,11 +1517,11 @@
     }
   ],
   "summary": {
-    "entries": 77,
-    "sources": 93,
-    "passed": 93,
+    "entries": 92,
+    "sources": 108,
+    "passed": 108,
     "failed": 0
   },
-  "checkedObjects": 206,
-  "semanticAuditSha256": "4e411c65f1609daa9c5a90af1e8484163e834c49344c741ae06a3627ce14303b"
+  "checkedObjects": 236,
+  "semanticAuditSha256": "59cf045d49f97838f891757ec8c7cf69718eeff65fabb5cbe1b34b2ca68cc2a9"
 }

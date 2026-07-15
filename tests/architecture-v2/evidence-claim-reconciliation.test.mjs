@@ -119,7 +119,7 @@ test('cross-resource supersession claim cannot suppress a conflicting official s
   assert.equal(result.status, 'conflict_quarantined');
 });
 
-test('registry axis permutation is quarantined instead of silently overridden', () => {
+test('one exact official source with explicit axis labels resolves an exact registry permutation', () => {
   const accepted = source('a'.repeat(64), { widthMm: 913, heightMm: 1782, depthMm: 803 });
   const result = reconcileEvidenceClaims(IDENTITY, inventory([accepted]), {
     verifyReceipt,
@@ -130,9 +130,30 @@ test('registry axis permutation is quarantined instead of silently overridden', 
     }],
   });
 
-  assert.equal(result.status, 'conflict_quarantined');
-  assert.equal(result.failureCode, 'conflict');
+  assert.equal(result.status, 'accepted');
   assert.equal(result.conflictHints[0].kind, 'axis_permutation');
+  assert.equal(result.axisPermutationResolution, 'exact_official_axis_proof');
+});
+
+test('one official source with no coherent axis representation cannot resolve a registry permutation', () => {
+  const accepted = source('a'.repeat(64), { widthMm: 913, heightMm: 1782, depthMm: 803 });
+  accepted.claims = accepted.claims.map((claim) => ({
+    ...claim,
+    sourceAxisOrder: claim.field.endsWith('widthMm')
+      ? ['width', 'depth']
+      : claim.field.endsWith('heightMm') ? ['height', 'depth'] : ['depth', 'width'],
+  }));
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([accepted]), {
+    verifyReceipt,
+    lowerAuthorityHints: [{
+      sourceRole: 'registry_hint',
+      sourceId: 'energy-rating',
+      dimensionsMm: { widthMm: 1782, heightMm: 913, depthMm: 803 },
+    }],
+  });
+
+  assert.equal(result.status, 'conflict_quarantined');
+  assert.equal(result.axisPermutationResolution, undefined);
 });
 
 test('independent official axis representations can resolve a registry permutation', () => {
@@ -159,7 +180,7 @@ test('independent official axis representations can resolve a registry permutati
   assert.equal(result.axisPermutationResolution, 'independent_official_axis_corroboration');
 });
 
-test('two official documents using the same axis representation cannot resolve a registry permutation', () => {
+test('two official documents using the same explicit axis representation retain exact axis proof', () => {
   const dimensions = { widthMm: 913, heightMm: 1782, depthMm: 803 };
   const first = source('a'.repeat(64), dimensions);
   const second = source('b'.repeat(64), dimensions);
@@ -172,8 +193,8 @@ test('two official documents using the same axis representation cannot resolve a
     }],
   });
 
-  assert.equal(result.status, 'conflict_quarantined');
-  assert.equal(result.axisPermutationResolution, undefined);
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.axisPermutationResolution, 'exact_official_axis_proof');
 });
 
 test('partial official documents cannot be combined to resolve a registry permutation', () => {

@@ -249,6 +249,10 @@ function hasIndependentOfficialAxisCorroboration(matrix) {
   return false;
 }
 
+function hasExactOfficialAxisProof(matrix) {
+  return completeOfficialDimensionSources(matrix).length > 0;
+}
+
 function hasIndependentOfficialDimensionCorroboration(matrix) {
   const completeSources = completeOfficialDimensionSources(matrix);
   for (let left = 0; left < completeSources.length; left += 1) {
@@ -338,7 +342,9 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   }
   const conflictHints = analyzeHints(options.lowerAuthorityHints ?? [], matrix);
   const axisConflict = conflictHints.some((hint) => hint.kind === 'axis_permutation');
-  const axisCorroborated = axisConflict && hasIndependentOfficialAxisCorroboration(matrix);
+  const independentAxisCorroboration = axisConflict && hasIndependentOfficialAxisCorroboration(matrix);
+  const exactOfficialAxisProof = axisConflict && hasExactOfficialAxisProof(matrix);
+  const axisCorroborated = independentAxisCorroboration || exactOfficialAxisProof;
   const lowerAuthorityConflict = conflictHints.some((hint) => hint.kind === 'lower_authority_disagreement');
   const independentDimensionCorroboration = hasIndependentOfficialDimensionCorroboration(matrix);
   const marketApiDimensionCorroboration = hasReceiptBoundMarketApiDimensionCorroboration(matrix);
@@ -378,7 +384,11 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
     conflictHints,
     supersessionViolations: supersession.violations,
     ...(axisCorroborated
-      ? { axisPermutationResolution: 'independent_official_axis_corroboration' }
+      ? {
+        axisPermutationResolution: independentAxisCorroboration
+          ? 'independent_official_axis_corroboration'
+          : 'exact_official_axis_proof',
+      }
       : {}),
     ...(lowerAuthorityCorroborated
       ? {

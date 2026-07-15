@@ -333,3 +333,48 @@ test('attestation loads immutable product-page discovery evidence through the ob
   assert.deepEqual(reads, [discoveryObjectPath]);
   assert.equal(result.source.verificationReceipt.schemaVersion, 3);
 });
+
+test('HTML V2 attestation binds a verbatim grouped product label instead of a parser-synthesized label', async () => {
+  const model = 'XD2A25MB';
+  const artifactUrl = `https://www.lg.com/au/dishwashers/free-standing/${model.toLowerCase()}/`;
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>${model} dishwasher | LG Australia</title>
+    <link rel="canonical" href="${artifactUrl}">
+  </head><body data-pim-model-name="${model}"><ul>
+    <li><span>Product (WxHxD) (mm)</span><span>600 x 850 x 600</span></li>
+    <li><span>Packing (WxHxD) (mm)</span><span>680 x 890 x 665</span></li>
+  </ul></body></html>`);
+  const contentSha256 = createHash('sha256').update(bytes).digest('hex');
+  const result = await attestEvidenceArtifactForCase({
+    id: `case-${model}`,
+    brand: 'LG',
+    model,
+    category: 'dishwasher',
+    sources: [],
+  }, {
+    authorityMode: 'official',
+    authorityBrand: 'LG',
+    requestedUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    redirectChain: [],
+    contentType: 'text/html',
+    contentSha256,
+    objectPath: `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.html`,
+    byteSize: bytes.length,
+    bytes,
+  }, {
+    now: '2026-07-15T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    claimSemanticsVersion: 2,
+    requireRequestedFieldCoverage: true,
+  });
+
+  assert.deepEqual(result.source.claims.map((claim) => claim.sourceLabel), [
+    'Product (WxHxD) (mm)',
+    'Product (WxHxD) (mm)',
+    'Product (WxHxD) (mm)',
+  ]);
+  assert.equal(result.source.verificationReceipt.schemaVersion, 3);
+});

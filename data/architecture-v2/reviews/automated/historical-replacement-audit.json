@@ -20,18 +20,18 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4911,
-      "IDENTITY_ONLY": 3034,
+      "REGISTRY_CONSISTENT": 4902,
+      "IDENTITY_ONLY": 3028,
+      "MODEL_RECEIPT": 66,
       "INTERNAL_CONFLICT": 69,
-      "MODEL_RECEIPT": 51,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4911,
-      "MEASURE_REQUIRED": 3034,
-      "QUARANTINED": 88,
-      "AUTO_FILL": 62
+      "CONFIRM_REQUIRED": 4902,
+      "MEASURE_REQUIRED": 3028,
+      "AUTO_FILL": 77,
+      "QUARANTINED": 88
     },
     "issueCount": 0
   },

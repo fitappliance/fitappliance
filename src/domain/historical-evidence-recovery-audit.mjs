@@ -114,7 +114,7 @@ function validateReconciliationReplay(target, outcome) {
     throw new Error(`reconciliation replay mismatch: expected ${replayed.status}/${replayed.failureCode ?? 'none'}, recorded ${outcome.status}/${outcome.failureCode ?? 'none'}`);
   }
   if (!same(reconciliationDecisionSummary(replayed), outcome.reconciliation)) {
-    throw new Error('reconciliation decision summary mismatch');
+    throw new Error('reconciliation replay decision summary mismatch');
   }
   if (['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)) {
     const replayedHashes = (replayed.sources ?? []).map((source) => source.contentSha256).sort();

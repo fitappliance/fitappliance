@@ -380,7 +380,7 @@ function elementText($, element) {
 function groupedDimensionLabel(label) {
   const normalized = normalizedText(label);
   if (/\b(?:dimension|dimensions|size)\b/i.test(normalized)) return normalized;
-  if (/^(?:unit|product|appliance)\s*\(\s*[whd]\s*[x×/*]\s*[whd]\s*[x×/*]\s*[whd]\s*\)$/i.test(normalized)) {
+  if (/^(?:unit|product|appliance)\s*\(\s*[whd]\s*[x×/*]\s*[whd]\s*[x×/*]\s*[whd](?:\s*(?:mm|cm))?\s*\)(?:\s*\(\s*(?:mm|cm)\s*\))?$/i.test(normalized)) {
     return normalized.replace(/^([^()]+)(?=\s*\()/, '$1 dimensions');
   }
   return null;
@@ -412,7 +412,10 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
         const grouped = claimsFromExplicitDimensionSequence({
           label: dimensionLabel, value: groupedDimensionValue(value), quote,
         }, { category }, fields);
-        grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push(claim));
+        grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push({
+          ...claim,
+          verbatimLabel: label,
+        }));
       }
       for (const field of fields) {
         const rule = evidenceFieldRules[field];
@@ -441,7 +444,10 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
       const grouped = claimsFromExplicitDimensionSequence({
         label: dimensionLabel, value: groupedDimensionValue(value), quote,
       }, { category }, fields);
-      grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push(claim));
+      grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push({
+        ...claim,
+        verbatimLabel: label,
+      }));
     }
     for (const field of fields) {
       const rule = evidenceFieldRules[field];
@@ -461,6 +467,13 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
         /\bdoors?\s+closed\b|\bclosed\s+doors?\b/i.test(claim.label ?? '')
       ));
       if (explicitlyClosed.length) preferred = explicitlyClosed;
+      else {
+        const explicitAxisSequence = preferred.filter((claim) => claim.semanticBasis === 'explicit_axis_sequence');
+        if (explicitAxisSequence.length) preferred = explicitAxisSequence;
+      }
+    } else {
+      const explicitAxisSequence = preferred.filter((claim) => claim.semanticBasis === 'explicit_axis_sequence');
+      if (explicitAxisSequence.length) preferred = explicitAxisSequence;
     }
     const unique = new Map(preferred.map((claim) => [`${JSON.stringify(claim.value)}\0${claim.quote}`, claim]));
     const values = new Set([...unique.values()].map((claim) => JSON.stringify(claim.value)));

@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1568,
-    "fetchJobs": 1531,
-    "targets": 1564,
-    "candidateEdges": 1568,
+    "documents": 1562,
+    "fetchJobs": 1525,
+    "targets": 1558,
+    "candidateEdges": 1562,
     "multiCandidateTargets": 4,
-    "uniqueReferences": 1564,
+    "uniqueReferences": 1558,
     "byCurrentAction": {
-      "CONFIRM_REQUIRED": 455,
-      "MEASURE_REQUIRED": 1084,
+      "CONFIRM_REQUIRED": 451,
+      "MEASURE_REQUIRED": 1082,
       "QUARANTINED": 25
     },
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 290,
-      "CURRENT_RETAIL": 1274
+      "CATALOG_ARCHIVED": 287,
+      "CURRENT_RETAIL": 1271
     },
     "byCategory": {
       "dishwasher": 354,
       "dryer": 72,
-      "fridge": 901,
-      "washing_machine": 237
+      "fridge": 897,
+      "washing_machine": 235
     },
     "byAcquisitionRoute": {
       "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1213,
-      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 250,
-      "OFFICIAL_RECEIPT_REBUILD": 17,
+      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 247,
+      "OFFICIAL_RECEIPT_REBUILD": 14,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 39,
+      "ALREADY_AUTO_FILL": 45,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -148,32 +148,6 @@
       ]
     },
     {
-      "jobId": "recovery_776379ed0933cd95be170c1b",
-      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG60ADLB&CttFileID=11284915&CDCttType=UM&VPath=UM%2F202602%2F20260211103223036%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
-      "authorityBrand": "Samsung",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_e481b7a7f66fc12825df1cc3"
-      ]
-    },
-    {
       "jobId": "recovery_17b0fa93202c165bcc36b81e",
       "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CGC0ADAE&CttFileID=9832270&CDCttType=UM&VPath=UM%2F202408%2F20240805130241972%2FDC68-04493M-00_IB_B-PJT-B11_WASHER-MD_EN_240531.pdf",
       "authorityBrand": "Samsung",
@@ -275,32 +249,6 @@
       ],
       "targetIds": [
         "recovery_target_3135120534d09720de2843f6"
-      ]
-    },
-    {
-      "jobId": "recovery_42050c848cef9ddaac47c57b",
-      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U3ALB&CttFileID=11364936&CDCttType=UM&VPath=UM%2F202604%2F20260408143907954%2FWeb_IB_D-PJT_WASHER-MD_SimpleUX_EN_v1.pdf",
-      "authorityBrand": "Samsung",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_5f49a4591a099fd90b89902f"
       ]
     },
     {
@@ -28605,32 +28553,6 @@
       ]
     },
     {
-      "jobId": "recovery_8a67786e00abace5f74bbbbf",
-      "sourceUrl": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
-      "authorityBrand": "LG",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_37c47895e46c5848b0988578"
-      ]
-    },
-    {
       "jobId": "recovery_de89aaa6d031aa79cb950057",
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=irYywwLMKQrdaYb9RwmJA",
       "authorityBrand": "LG",
@@ -33704,58 +33626,6 @@
       ]
     },
     {
-      "jobId": "recovery_b2b0925e029a6605014c45ed",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5660BA&brand=Westinghouse",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_5d22087b44c6c430c28b06ba"
-      ]
-    },
-    {
-      "jobId": "recovery_2ee468213aac266618749734",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6170BB&brand=Westinghouse",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_aff68df053517392794eb79d"
-      ]
-    },
-    {
       "jobId": "recovery_207b9406bd2bcf6680a812b9",
       "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600SC&brand=Westinghouse",
       "authorityBrand": "Westinghouse",
@@ -33805,32 +33675,6 @@
       ],
       "targetIds": [
         "recovery_target_be040e31138e16accc76688d"
-      ]
-    },
-    {
-      "jobId": "recovery_20c128005bdcea00459ca590",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB5400WC&brand=Westinghouse",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_677e8e8f06fccd7fb91f1e50"
       ]
     },
     {
@@ -74534,47 +74378,6 @@
       "primaryJobId": "recovery_709a11c7b07e800b5f63f3ea"
     },
     {
-      "referenceId": "fa_ref_83bd985062196f48441767df",
-      "legacyRuntimeId": "discovery-washing-machine-samsung-ww11cg60adlb",
-      "canonicalProductId": "fa_prod_dd4c39650dcaf7c0d9b1e1d1",
-      "category": "washing_machine",
-      "brand": "Samsung",
-      "model": "WW11CG60ADLB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 600
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_e481b7a7f66fc12825df1cc3",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_309246ea3fae484677522609"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_309246ea3fae484677522609",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_776379ed0933cd95be170c1b"
-      ],
-      "primaryJobId": "recovery_776379ed0933cd95be170c1b"
-    },
-    {
       "referenceId": "fa_ref_89464f08d42a885b8024c184",
       "legacyRuntimeId": "discovery-washing-machine-samsung-ww11cgc0adae",
       "canonicalProductId": "fa_prod_afb829c199c02ba7668e16a4",
@@ -75065,47 +74868,6 @@
         "recovery_91304dd7bd607751dd8ff4b8"
       ],
       "primaryJobId": "recovery_91304dd7bd607751dd8ff4b8"
-    },
-    {
-      "referenceId": "fa_ref_5eb7748103cd8267f3cd1f83",
-      "legacyRuntimeId": "discovery-washing-machine-samsung-ww90dg6u3alb",
-      "canonicalProductId": "fa_prod_e7a368d65665d5287299048f",
-      "category": "washing_machine",
-      "brand": "Samsung",
-      "model": "WW90DG6U3ALB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 595
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_5f49a4591a099fd90b89902f",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e6ddb5e3aba195051f2b16fe"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e6ddb5e3aba195051f2b16fe",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 595
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_42050c848cef9ddaac47c57b"
-      ],
-      "primaryJobId": "recovery_42050c848cef9ddaac47c57b"
     },
     {
       "referenceId": "fa_ref_2c875215a2cfa8fe69a91b6a",
@@ -91516,57 +91278,6 @@
       "primaryJobId": "recovery_3101befe126d0382f92af685"
     },
     {
-      "referenceId": "fa_ref_bc875abc81c2707ab1408408",
-      "legacyRuntimeId": "fridge-arf3292",
-      "canonicalProductId": "fa_prod_da2f3742fbb7e0d4a1a4b99d",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GF-LN500MBL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 835,
-        "height": 1787,
-        "depth": 730
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 835,
-            "height": 1787,
-            "depth": 730
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_37c47895e46c5848b0988578",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c88bead6b1642158ca8610ed"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c88bead6b1642158ca8610ed",
-          "dimensionsMm": {
-            "width": 835,
-            "height": 1787,
-            "depth": 730
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_8a67786e00abace5f74bbbbf"
-      ],
-      "primaryJobId": "recovery_8a67786e00abace5f74bbbbf"
-    },
-    {
       "referenceId": "fa_ref_42633e3a0e381d885501a3a3",
       "legacyRuntimeId": "ao-149675",
       "canonicalProductId": "fa_prod_d93198fdace1cb67f68897f7",
@@ -106561,57 +106272,6 @@
       "primaryJobId": "recovery_7fa6d8be06e085a7586f84f5"
     },
     {
-      "referenceId": "fa_ref_379da4d1574a78de96379fa1",
-      "legacyRuntimeId": "fridge-arf2922",
-      "canonicalProductId": "fa_prod_0dd533452401acafb79da5c3",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE5660BA",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 896,
-        "height": 1795,
-        "depth": 723
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1795,
-            "height": 896,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_5d22087b44c6c430c28b06ba",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_85d9873e7e09024959dea2ed"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_85d9873e7e09024959dea2ed",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1795,
-            "depth": 723
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b2b0925e029a6605014c45ed"
-      ],
-      "primaryJobId": "recovery_b2b0925e029a6605014c45ed"
-    },
-    {
       "referenceId": "fa_ref_bcedaea1e05dfe26ac0a0b3d",
       "legacyRuntimeId": "fridge-arf3917",
       "canonicalProductId": "fa_prod_fc36c3fa6506000b346c449e",
@@ -106661,57 +106321,6 @@
         "recovery_b980dded5f9cbc8fb0c7dc99"
       ],
       "primaryJobId": "recovery_b980dded5f9cbc8fb0c7dc99"
-    },
-    {
-      "referenceId": "fa_ref_c8514fc95f69f69afdd33075",
-      "legacyRuntimeId": "fridge-arf3258",
-      "canonicalProductId": "fa_prod_9856d9d7293b2b85527178d5",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE6170BB",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 913,
-        "height": 1782,
-        "depth": 749
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1782,
-            "height": 913,
-            "depth": 749
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_aff68df053517392794eb79d",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_6e35f2599da6b22ab0d4fcfd"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_6e35f2599da6b22ab0d4fcfd",
-          "dimensionsMm": {
-            "width": 913,
-            "height": 1782,
-            "depth": 749
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_2ee468213aac266618749734"
-      ],
-      "primaryJobId": "recovery_2ee468213aac266618749734"
     },
     {
       "referenceId": "fa_ref_6b5cf28af762d779ec059fd6",
@@ -107528,57 +107137,6 @@
         "recovery_edc844b9881e0bf50f76ad71"
       ],
       "primaryJobId": "recovery_edc844b9881e0bf50f76ad71"
-    },
-    {
-      "referenceId": "fa_ref_a3750b30a7e7f711ae79ae77",
-      "legacyRuntimeId": "fridge-arf2443",
-      "canonicalProductId": "fa_prod_c44dc3c9114dcd96348559d3",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WTB5400WC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 796,
-        "height": 1725,
-        "depth": 723
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1725,
-            "height": 796,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_677e8e8f06fccd7fb91f1e50",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_8e8de0ad0c0a476bdbb99b1d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_8e8de0ad0c0a476bdbb99b1d",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1725,
-            "depth": 723
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_20c128005bdcea00459ca590"
-      ],
-      "primaryJobId": "recovery_20c128005bdcea00459ca590"
     },
     {
       "referenceId": "fa_ref_5ed012fac3893787991f03c8",

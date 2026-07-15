@@ -175,7 +175,7 @@ export function upgradeLegacyDimensionClaim(claim) {
   const field = requiredText(claim?.field, 'legacy claim field');
   const axis = FIELD_AXIS[field];
   if (!axis) throw new TypeError(`unsupported legacy claim field ${field}`);
-  const sourceLabel = requiredText(claim?.label, 'legacy claim label');
+  const sourceLabel = requiredText(claim?.verbatimLabel ?? claim?.label, 'legacy claim label');
   const value = Number.isFinite(claim.value)
     ? { kind: 'fixed', mm: Number(claim.value) }
     : {

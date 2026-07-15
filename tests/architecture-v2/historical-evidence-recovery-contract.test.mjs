@@ -292,6 +292,18 @@ test('results require one typed terminal or accepted outcome per target', () => 
   assert.deepEqual(validateHistoricalEvidenceRecoveryResults(results({
     outcomes: [{ ...results().outcomes[0], reconciliation: disagreement }],
   })).outcomes[0].reconciliation, disagreement);
+  const exactAxisProof = {
+    ...EMPTY_RECONCILIATION,
+    conflictHints: [{
+      sourceRole: 'registry_hint', sourceId: 'energy-rating:fridge',
+      kind: 'axis_permutation', fields: ['heightMm', 'widthMm'],
+      dimensionsMm: { widthMm: 1782, heightMm: 913, depthMm: 803 },
+    }],
+    axisPermutationResolution: 'exact_official_axis_proof',
+  };
+  assert.deepEqual(validateHistoricalEvidenceRecoveryResults(results({
+    outcomes: [{ ...results().outcomes[0], reconciliation: exactAxisProof }],
+  })).outcomes[0].reconciliation, exactAxisProof);
   assert.throws(
     () => validateHistoricalEvidenceRecoveryResults(results({
       outcomes: [results().outcomes[0], results().outcomes[0]],

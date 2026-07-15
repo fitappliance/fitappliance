@@ -481,6 +481,44 @@ test('HTML extractor maps LG Unit W x D x H rows and excludes packaging dimensio
   assert.ok(attested.identitySignals.some((signal) => signal.type === 'product_model'));
 });
 
+test('HTML extractor accepts LG product dimensions with a trailing unit group', () => {
+  const lg = Buffer.from(`<!doctype html><html><body><ul>
+    <li><span>Product (WxHxD) (mm)</span><span>600 x 850 x 600</span></li>
+    <li><span>Packing (WxHxD) (mm)</span><span>680 x 890 x 665</span></li>
+  </ul></body></html>`);
+  const claims = extractClaimsFromHtml(lg, {
+    category: 'dishwasher',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 600,
+    'closedEnvelope.heightMm': 850,
+    'closedEnvelope.depthMm': 600,
+  });
+});
+
+test('HTML extractor prefers a complete product tuple over component-only dimensions', () => {
+  const lg = Buffer.from(`<!doctype html><html><body><ul>
+    <li><span>DIMENSIONS &amp; WEIGHT - Product (WxHxD mm)</span><span>835 x 1787 x 730</span></li>
+    <li><span>Height (mm)</span><span>1753</span></li>
+    <li><span>Depth without door (mm)</span><span>619</span></li>
+    <li><span>Product (WxHxD mm)</span><span>835 x 1787 x 730</span></li>
+    <li><span>Packing (WxHxD) (mm)</span><span>885 x 1889 x 768</span></li>
+  </ul></body></html>`);
+  const claims = extractClaimsFromHtml(lg, {
+    category: 'fridge',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 835,
+    'closedEnvelope.heightMm': 1787,
+    'closedEnvelope.depthMm': 730,
+  });
+  assert.ok(claims.every((claim) => claim.semanticBasis === 'explicit_axis_sequence'));
+});
+
 test('HTML extractor prefers an explicitly labelled doors-closed depth over a generic product tuple', () => {
   const lg = Buffer.from(`<!doctype html><html><body><ul role="list">
     <li role="listitem"><p>Product Dimensions (WxHxD mm)</p><p>600 x 850 x 615</p></li>

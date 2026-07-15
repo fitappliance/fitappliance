@@ -429,7 +429,10 @@ function validateReconciliationDecision(value) {
     }
   }
   if (value.axisPermutationResolution !== null) {
-    oneOf(value.axisPermutationResolution, ['independent_official_axis_corroboration'], 'axis permutation resolution');
+    oneOf(value.axisPermutationResolution, [
+      'independent_official_axis_corroboration',
+      'exact_official_axis_proof',
+    ], 'axis permutation resolution');
     if (!value.conflictHints.some((hint) => hint.kind === 'axis_permutation')) {
       throw new TypeError('axis permutation resolution requires an axis conflict hint');
     }

@@ -89,6 +89,22 @@ function recoveryTargetsByReference(queue) {
   return result;
 }
 
+function catalogCanonicalIdsByRuntimeId(catalogProducts) {
+  if (!Array.isArray(catalogProducts)) throw new TypeError('catalog products required');
+  const result = new Map();
+  for (const product of catalogProducts) {
+    const runtimeId = String(product?.id ?? '').trim();
+    const canonicalProductId = String(product?.canonicalProductId ?? '').trim();
+    if (!runtimeId || !canonicalProductId) continue;
+    const existing = result.get(runtimeId);
+    if (existing && existing !== canonicalProductId) {
+      throw new Error(`catalog runtime ID maps to multiple canonical products: ${runtimeId}`);
+    }
+    result.set(runtimeId, canonicalProductId);
+  }
+  return result;
+}
+
 function readiness(route, candidateAuthorities, resolverIds) {
   if (route === 'PARSER_REPAIR' || route === 'PDF_RECONVERT') return 'OFFLINE_REPAIR';
   if (route === 'CONFLICT_CLOSURE' || route === 'IDENTITY_CLOSURE') return 'RESEARCH_REQUIRED';
@@ -100,6 +116,7 @@ function readiness(route, candidateAuthorities, resolverIds) {
 export function buildHistoricalModelPdfAcquisitionQueue({
   classification,
   historicalReference,
+  catalogProducts,
   recoveryQueue,
   offlineReplayQueue = null,
   offlineReplayResults = null,
@@ -114,6 +131,7 @@ export function buildHistoricalModelPdfAcquisitionQueue({
   const timestamp = new Date(generatedAt).toISOString();
   const references = new Map(historicalReference.records.map((record) => [record.referenceId, record]));
   if (references.size !== historicalReference.records.length) throw new Error('duplicate historical reference ID');
+  const canonicalByRuntimeId = catalogCanonicalIdsByRuntimeId(catalogProducts);
   const recoveryByReference = recoveryTargetsByReference(recoveryQueue);
   const replayOutcomes = offlineOutcomesByReference(offlineReplayQueue, offlineReplayResults);
   const sources = new Map();
@@ -162,8 +180,16 @@ export function buildHistoricalModelPdfAcquisitionQueue({
       ...(reference.catalogProductIds ?? []),
       ...legacyTargets.map((target) => target.legacyRuntimeId).filter(Boolean),
     ])].sort();
-    const canonicalProductIds = [...new Set(legacyTargets
-      .map((target) => target.canonicalProductId).filter(Boolean))].sort();
+    const canonicalProductIds = [...new Set([
+      ...legacyTargets.map((target) => target.canonicalProductId).filter(Boolean),
+      ...(reference.catalogProductIds ?? []).map((runtimeId) => canonicalByRuntimeId.get(runtimeId)).filter(Boolean),
+    ])].sort();
+    if (canonicalProductIds.length > 1) {
+      throw new Error(`historical reference maps to multiple canonical products: ${classified.referenceId}`);
+    }
+    if (classified.lifecycleState === 'CURRENT_RETAIL' && canonicalProductIds.length !== 1) {
+      throw new Error(`current historical reference missing canonical product: ${classified.referenceId}`);
+    }
     records.push({
       schemaVersion: 1,
       acquisitionId: id('historical_acquisition', classified.referenceId),

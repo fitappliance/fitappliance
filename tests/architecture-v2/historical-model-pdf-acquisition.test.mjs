@@ -24,6 +24,13 @@ function reference(referenceId) {
   return { referenceId, catalogProductIds: [`product-${referenceId}`] };
 }
 
+function catalogProducts(records) {
+  return records.map((record) => ({
+    id: `product-${record.referenceId}`,
+    canonicalProductId: `fa_prod_${record.referenceId}`,
+  }));
+}
+
 test('acquisition queue accounts for every nonterminal model exactly once', () => {
   const records = [
     classified('complete', 'COMPLETE_RECEIPT'),
@@ -34,6 +41,7 @@ test('acquisition queue accounts for every nonterminal model exactly once', () =
   const queue = buildHistoricalModelPdfAcquisitionQueue({
     classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records },
     historicalReference: { records: records.map((record) => reference(record.referenceId)) },
+    catalogProducts: catalogProducts(records),
     recoveryQueue: { targets: [] },
     resolverIdsByBrand: new Map([['example', ['example-resolver']]]),
     generatedAt: '2026-07-14T00:00:00.000Z',
@@ -43,6 +51,7 @@ test('acquisition queue accounts for every nonterminal model exactly once', () =
   assert.equal(queue.summary.queuedModels, 1);
   assert.equal(queue.records[0].referenceId, 'discover');
   assert.equal(queue.records[0].executionReadiness, 'DISCOVERY_READY');
+  assert.deepEqual(queue.records[0].canonicalProductIds, ['fa_prod_discover']);
   assert.deepEqual(queue.summary.excluded, {
     COMPLETE_RECEIPT: 1, OFFICIAL_HTML_ONLY: 1, NO_OFFICIAL_SOURCE: 1,
   });
@@ -58,6 +67,7 @@ test('shared source is deduplicated without losing model edges or explicit autho
   const queue = buildHistoricalModelPdfAcquisitionQueue({
     classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records },
     historicalReference: { records: records.map((record) => reference(record.referenceId)) },
+    catalogProducts: catalogProducts(records),
     recoveryQueue: { targets: [] },
     generatedAt: '2026-07-14T00:00:00.000Z',
   });
@@ -74,6 +84,7 @@ test('offline replay conflict is routed to corroboration instead of repeated rep
   const queue = buildHistoricalModelPdfAcquisitionQueue({
     classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records: [record] },
     historicalReference: { records: [reference('conflict')] },
+    catalogProducts: catalogProducts([record]),
     recoveryQueue: { targets: [] },
     offlineReplayQueue: { targets: [{ targetId: 'target-1', referenceId: 'conflict' }] },
     offlineReplayResults: { outcomes: [{
