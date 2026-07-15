@@ -20,6 +20,49 @@ function normalizedUrl(value) {
   return url.toString();
 }
 
+function artifactBinding(value) {
+  if (value == null) return null;
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('failed candidate artifact binding must be an object');
+  }
+  const contentSha256 = requiredText(value.contentSha256, 'failed candidate content SHA-256').toLowerCase();
+  if (!/^[a-f0-9]{64}$/.test(contentSha256)) {
+    throw new TypeError('failed candidate content SHA-256 invalid');
+  }
+  const byteSize = Number(value.byteSize);
+  if (!Number.isInteger(byteSize) || byteSize < 1) throw new TypeError('failed candidate byte size invalid');
+  return {
+    sourceUrl: normalizedUrl(value.sourceUrl),
+    finalUrl: normalizedUrl(value.finalUrl),
+    contentSha256,
+    objectPath: requiredText(value.objectPath, 'failed candidate object path'),
+    contentType: requiredText(value.contentType, 'failed candidate content type').toLowerCase(),
+    byteSize,
+  };
+}
+
+function suppressionIndex(values) {
+  if (!Array.isArray(values)) throw new TypeError('prior attempt suppressions must be an array');
+  const index = new Map();
+  for (const value of values) {
+    if (!value || typeof value !== 'object' || Array.isArray(value)) {
+      throw new TypeError('prior attempt suppression must be an object');
+    }
+    const sourceUrl = normalizedUrl(value.sourceUrl);
+    const current = index.get(sourceUrl);
+    const normalized = {
+      attemptId: requiredText(value.attemptId, 'prior attempt ID'),
+      sourceUrl,
+      contentSha256: value.contentSha256 == null ? null : requiredText(value.contentSha256, 'prior content SHA-256'),
+      status: requiredText(value.status, 'prior attempt status'),
+      failureCode: requiredText(value.failureCode, 'prior attempt failure code'),
+      policySha256: requiredText(value.policySha256, 'prior attempt policy SHA-256'),
+    };
+    if (!current || normalized.attemptId.localeCompare(current.attemptId) > 0) index.set(sourceUrl, normalized);
+  }
+  return index;
+}
+
 function candidateKey(candidate) {
   return `${candidate.authorityMode}\0${candidate.sourceUrl}`;
 }
@@ -190,6 +233,8 @@ function outcomeSemanticView(outcome) {
   return {
     status: outcome.status,
     failureCode: outcome.failureCode ?? null,
+    artifactBinding: outcome.artifactBinding ?? null,
+    priorAttemptId: outcome.priorAttemptId ?? null,
     source: sourceSemanticView(outcome.source),
   };
 }
@@ -266,7 +311,11 @@ export async function expandOptionalOfficialEvidenceCandidates(inventory, option
         source: structuredClone(acquired.source),
       };
     } catch (error) {
-      candidate.outcome = { ...classifyAcquisitionFailure(error), source: null };
+      candidate.outcome = {
+        ...classifyAcquisitionFailure(error),
+        ...(error?.artifactBinding ? { artifactBinding: artifactBinding(error.artifactBinding) } : {}),
+        source: null,
+      };
     }
   }
   expanded.candidateInventorySha256 = computeCandidateInventorySha256(expanded);
@@ -280,6 +329,7 @@ export async function collectEvidenceCandidates(caseRecord, options = {}) {
   const batchCandidateJobIds = [...new Set((options.batchCandidateJobIds ?? []).map((value) => requiredText(value, 'batch candidate job ID')))].sort();
   const activeReceiptSources = structuredClone(options.activeReceiptSources ?? []);
   if (!Array.isArray(activeReceiptSources)) throw new TypeError('active receipt sources must be an array');
+  const priorSuppressions = suppressionIndex(options.priorAttemptSuppressions ?? []);
 
   const descriptors = options.resolvers.map(resolverDescriptor);
   const scheduleResolver = options.scheduleResolver ?? ((task) => task());
@@ -351,6 +401,18 @@ export async function collectEvidenceCandidates(caseRecord, options = {}) {
       candidate.outcome = { status: 'not_attempted_optional', failureCode: null, source: null };
       continue;
     }
+    const prior = priorSuppressions.get(candidate.sourceUrl);
+    const discoveredContentSha256 = candidate.discoveryProvenance?.contentSha256 ?? null;
+    if (prior && (!discoveredContentSha256 || discoveredContentSha256 === prior.contentSha256)) {
+      candidate.outcome = {
+        status: 'previous_terminal_suppressed',
+        failureCode: prior.failureCode,
+        reason: 'prior_terminal_evidence_unchanged',
+        priorAttemptId: prior.attemptId,
+        source: null,
+      };
+      continue;
+    }
     try {
       const acquired = await options.acquireAndAttest(structuredClone(candidate), structuredClone(caseRecord));
       if (!acquired?.source) throw Object.assign(new Error('candidate returned no supported evidence source'), { code: 'claim_semantics' });
@@ -360,7 +422,11 @@ export async function collectEvidenceCandidates(caseRecord, options = {}) {
         source: structuredClone(acquired.source),
       };
     } catch (error) {
-      candidate.outcome = { ...classifyAcquisitionFailure(error), source: null };
+      candidate.outcome = {
+        ...classifyAcquisitionFailure(error),
+        ...(error?.artifactBinding ? { artifactBinding: artifactBinding(error.artifactBinding) } : {}),
+        source: null,
+      };
     }
   }
 

@@ -347,6 +347,19 @@ function hasReceiptBoundMarketApiDimensionCorroboration(matrix) {
   )));
 }
 
+function hasExactOfficialScopedDepthProof(matrix, conflictHints) {
+  if (!conflictHints.length || !conflictHints.every((hint) => (
+    hint.kind === 'lower_authority_disagreement'
+    && hint.sourceRole === 'registry_hint'
+    && hint.fields.length === 1
+    && hint.fields[0] === 'depthMm'
+  ))) return false;
+  if (!hasExactOfficialAxisProof(matrix)) return false;
+  return (matrix.get('closedEnvelope.depthMm') ?? []).some(({ claim }) => (
+    claim?.includesDoor === true || claim?.includesHandle === true
+  ));
+}
+
 export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   if (!inventory || typeof inventory !== 'object') throw new TypeError('candidate inventory required');
   if (options.verifyInventoryHash
@@ -437,8 +450,11 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
     && conflictHints.filter((hint) => hint.kind === 'lower_authority_disagreement')
       .every((hint) => hint.sourceRole === 'legacy_hint')
     && hasExactOfficialAxisProof(matrix);
+  const exactOfficialScopedDepthProof = lowerAuthorityConflict
+    && hasExactOfficialScopedDepthProof(matrix, conflictHints);
   const lowerAuthorityCorroborated = lowerAuthorityConflict
-    && (independentDimensionCorroboration || marketApiDimensionCorroboration || exactOfficialLegacyProof);
+    && (independentDimensionCorroboration || marketApiDimensionCorroboration
+      || exactOfficialLegacyProof || exactOfficialScopedDepthProof);
   if (conflictingFields.length || (axisConflict && !axisCorroborated)
     || (lowerAuthorityConflict && !lowerAuthorityCorroborated)
     || supersession.violations.some((entry) => entry.reason === 'supersession_cycle')) {
@@ -489,7 +505,9 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
           ? 'official_market_api_dimension_corroboration'
           : independentDimensionCorroboration
             ? 'independent_official_dimension_corroboration'
-            : 'exact_official_axis_proof_over_legacy_hint',
+            : exactOfficialLegacyProof
+              ? 'exact_official_axis_proof_over_legacy_hint'
+              : 'exact_official_scoped_depth_over_registry_hint',
       }
       : {}),
   };

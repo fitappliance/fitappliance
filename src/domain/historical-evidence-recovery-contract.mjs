@@ -251,7 +251,12 @@ function validateArtifactJob(value) {
 }
 
 function validateReconciliationContext(value) {
-  exactKeys(value, 'reconciliation context', ['activeReceiptSources', 'registryHints', 'legacyHints']);
+  exactKeys(
+    value,
+    'reconciliation context',
+    ['activeReceiptSources', 'registryHints', 'legacyHints'],
+    ['priorAttemptSuppressions'],
+  );
   if (!Array.isArray(value.activeReceiptSources) || !Array.isArray(value.registryHints) || !Array.isArray(value.legacyHints)) {
     throw new TypeError('reconciliation context arrays required');
   }
@@ -260,6 +265,20 @@ function validateReconciliationContext(value) {
     text(source.sourceUrl, 'active receipt source URL');
     sha256(source.contentSha256, 'active receipt content SHA');
     sha256(source.receiptBindingSha256, 'active receipt binding SHA');
+  }
+  for (const prior of value.priorAttemptSuppressions ?? []) {
+    exactKeys(prior, 'prior attempt suppression', [
+      'attemptId', 'sourceUrl', 'contentSha256', 'status', 'failureCode', 'policySha256',
+    ]);
+    text(prior.attemptId, 'prior attempt ID');
+    const url = new URL(text(prior.sourceUrl, 'prior attempt source URL'));
+    if (url.protocol !== 'https:' || url.username || url.password) {
+      throw new TypeError('prior attempt source URL must be trusted HTTPS');
+    }
+    if (prior.contentSha256 !== null) sha256(prior.contentSha256, 'prior attempt content SHA');
+    text(prior.status, 'prior attempt status');
+    text(prior.failureCode, 'prior attempt failure code');
+    sha256(prior.policySha256, 'prior attempt policy SHA');
   }
   for (const hint of value.registryHints) {
     exactKeys(hint, 'registry hint', ['sourceId', 'snapshotSha256', 'dimensionsMm']);
@@ -460,6 +479,7 @@ function validateReconciliationDecision(value) {
       'independent_official_dimension_corroboration',
       'official_market_api_dimension_corroboration',
       'exact_official_axis_proof_over_legacy_hint',
+      'exact_official_scoped_depth_over_registry_hint',
     ], 'lower authority resolution');
     if (!value.conflictHints.some((hint) => hint.kind === 'lower_authority_disagreement')) {
       throw new TypeError('lower authority resolution requires a disagreement hint');
@@ -631,7 +651,6 @@ export function rollbackHistoricalEvidenceRecoveryBundleBatch(bundle, options = 
   const lineageMatches = bundle.lineage.filter((row) => row.batchId === batchId);
   if (lineageMatches.length !== 1) throw new Error(`rollback lineage must exist exactly once: ${batchId}`);
   const removedEntries = bundle.entries.filter((entry) => entry.sourceBatchId === batchId);
-  if (removedEntries.length < 1) throw new Error(`rollback batch has no promoted entries: ${batchId}`);
   const next = {
     ...structuredClone(bundle),
     entries: bundle.entries.filter((entry) => entry.sourceBatchId !== batchId),

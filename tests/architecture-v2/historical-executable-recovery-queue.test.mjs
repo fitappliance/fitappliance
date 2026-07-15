@@ -171,3 +171,116 @@ test('materializes parser repair from the official PDF while preserving accepted
   assert.equal(queue.targets[0].repairExistingReceipt, true);
   assert.equal(queue.jobs[0].acquisitionRoute, 'OFFICIAL_RECEIPT_REBUILD');
 });
+
+test('same-policy terminal source becomes resolver-only but preserves alternative-source research', () => {
+  const sourceUrl = 'https://example.com/repointed-family.pdf';
+  const policySha256 = 'b'.repeat(64);
+  const queue = buildHistoricalExecutableRecoveryQueue({
+    acquisitionQueue: {
+      schemaVersion: 1,
+      generatedAt: '2026-07-14T00:00:00.000Z',
+      semanticQueueSha256: 'a'.repeat(64),
+      records: [acquisition('official', { candidateSourceIds: ['source-official'] })],
+      sources: [{
+        sourceId: 'source-official', sourceUrl, sourceAuthority: 'OFFICIAL', receiptEligible: true,
+        documentIds: ['pdf:family'], referenceIds: ['official'],
+      }],
+    },
+    historicalReference: { records: [reference('official')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+    recoveryPolicySha256: policySha256,
+    priorAttemptLedger: {
+      schemaVersion: 1,
+      entries: [{
+        attemptId: 'attempt-family', targetId: 'recovery_target_ignored',
+        referenceId: 'official', sourceUrl, contentSha256: 'c'.repeat(64),
+        status: 'identity_rejected', failureCode: 'identity', policySha256,
+        suppressesSamePolicySource: true,
+      }],
+    },
+  });
+
+  assert.equal(queue.jobs.length, 0);
+  assert.equal(queue.targets.length, 1);
+  assert.deepEqual(queue.targets[0].candidateJobIds, []);
+  assert.equal(queue.targets[0].priorAttemptSuppressions.length, 1);
+  assert.equal(queue.targets[0].priorAttemptSuppressions[0].sourceUrl, sourceUrl);
+  assert.equal(queue.summary.suppressedPriorTerminalEdges, 1);
+
+  const changedPolicy = buildHistoricalExecutableRecoveryQueue({
+    acquisitionQueue: {
+      schemaVersion: 1,
+      generatedAt: '2026-07-14T00:00:00.000Z',
+      semanticQueueSha256: 'a'.repeat(64),
+      records: [acquisition('official', { candidateSourceIds: ['source-official'] })],
+      sources: [{
+        sourceId: 'source-official', sourceUrl, sourceAuthority: 'OFFICIAL', receiptEligible: true,
+        documentIds: ['pdf:family'], referenceIds: ['official'],
+      }],
+    },
+    historicalReference: { records: [reference('official')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+    recoveryPolicySha256: 'd'.repeat(64),
+    priorAttemptLedger: {
+      schemaVersion: 1,
+      entries: [{
+        attemptId: 'attempt-family', targetId: 'recovery_target_ignored',
+        referenceId: 'official', sourceUrl, contentSha256: 'c'.repeat(64),
+        status: 'identity_rejected', failureCode: 'identity', policySha256,
+        suppressesSamePolicySource: true,
+      }],
+    },
+  });
+  assert.equal(changedPolicy.jobs.length, 1);
+  assert.equal(changedPolicy.targets[0].priorAttemptSuppressions, undefined);
+});
+
+test('same-policy accepted source is not fetched again while its conflicted target remains researchable', () => {
+  const sourceUrl = 'https://example.com/exact-model-manual.pdf';
+  const policySha256 = 'b'.repeat(64);
+  const input = {
+    acquisitionQueue: {
+      schemaVersion: 1,
+      generatedAt: '2026-07-14T00:00:00.000Z',
+      semanticQueueSha256: 'a'.repeat(64),
+      records: [acquisition('conflict', {
+        operationalClass: 'CONFLICT_QUARANTINE',
+        route: 'OFFICIAL_REACQUIRE',
+        executionReadiness: 'BOUNDED_READY',
+        candidateSourceIds: ['source-official'],
+      })],
+      sources: [{
+        sourceId: 'source-official', sourceUrl, sourceAuthority: 'OFFICIAL', receiptEligible: true,
+        documentIds: ['pdf:manual'], referenceIds: ['conflict'],
+      }],
+    },
+    historicalReference: { records: [reference('conflict')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+    priorAttemptLedger: {
+      schemaVersion: 1,
+      entries: [],
+      resolutions: [],
+      sourceAcceptances: [{
+        sourceAcceptanceId: 'source-acceptance-manual',
+        targetId: 'different-target-id', referenceId: 'conflict', sourceUrl,
+        contentSha256: 'c'.repeat(64), status: 'accepted', policySha256,
+      }],
+    },
+  };
+
+  const queue = buildHistoricalExecutableRecoveryQueue({
+    ...input, recoveryPolicySha256: policySha256,
+  });
+  assert.equal(queue.jobs.length, 0);
+  assert.equal(queue.targets.length, 1);
+  assert.deepEqual(queue.targets[0].candidateJobIds, []);
+  assert.equal(queue.targets[0].priorSourceAcceptances.length, 1);
+  assert.equal(queue.targets[0].priorSourceAcceptances[0].sourceUrl, sourceUrl);
+  assert.equal(queue.summary.suppressedPriorAcceptedSourceEdges, 1);
+
+  const changedPolicy = buildHistoricalExecutableRecoveryQueue({
+    ...input, recoveryPolicySha256: 'd'.repeat(64),
+  });
+  assert.equal(changedPolicy.jobs.length, 1);
+  assert.equal(changedPolicy.targets[0].priorSourceAcceptances, undefined);
+});

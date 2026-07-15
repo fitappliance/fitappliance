@@ -82,12 +82,13 @@ function nestedText(value) {
   if (typeof value === 'string') return value;
   if (Array.isArray(value)) return value.map(nestedText).filter(Boolean).join(' ');
   if (!value || typeof value !== 'object') return '';
-  if (typeof value.content === 'string') return value.content;
-  return Object.entries(value)
-    .filter(([key]) => !/^(?:path|image_source)$/i.test(key))
+  const directContent = value.content === undefined ? '' : nestedText(value.content);
+  const nested = Object.entries(value)
+    .filter(([key]) => !/^(?:type|content|path|image_source)$/i.test(key))
     .map(([, child]) => nestedText(child))
     .filter(Boolean)
     .join(' ');
+  return [directContent, nested].filter(Boolean).join(' ');
 }
 
 function structuredListEntries(content) {
@@ -1208,6 +1209,17 @@ function ocrShiftedDimensionSectionRows(fragment) {
 }
 
 export const mineruGrammarProfiles = Object.freeze({
+  'hisense-au-washer-indexed-dimension-diagram-v1': Object.freeze({
+    parserProfileId: 'hisense-au-washer-indexed-dimension-diagram-v1',
+    grammarFamilyId: 'hisense_au_washer_dimension_diagram_v1',
+    grammarFamilyName: 'Hisense AU washer indexed dimension diagram',
+    variantName: 'Sibling model table with A-F dimension index',
+    brand: 'Hisense',
+    category: 'washing_machine',
+    documentType: 'user_manual',
+    detectionSummary: 'One same-page sibling model row, one complete A-F millimetre table, and explicit E appliance-depth and F door-open labels.',
+    semanticBoundary: 'A is width, B is height, E is the closed appliance depth and F is the operational door-open depth; C and D are not projected.',
+  }),
   beko_au_dishwasher_product_spec_parallel_lists_v1: Object.freeze({
     parserProfileId: 'beko_au_dishwasher_product_spec_parallel_lists_v1',
     grammarFamilyId: 'beko_au_dishwasher_product_spec_v1',
@@ -1242,6 +1254,8 @@ export const mineruGrammarProfiles = Object.freeze({
     semanticBoundary: 'Unpackaged W/D are closed dimensions; base and maximum feet heights form a range; door-open depth is operational; packaged values are excluded.',
   }),
 });
+const HISENSE_AU_WASHER_INDEXED_DIAGRAM_GRAMMAR = mineruGrammarProfiles
+  ['hisense-au-washer-indexed-dimension-diagram-v1'].parserProfileId;
 const BEKO_AU_DISHWASHER_PARALLEL_GRAMMAR = mineruGrammarProfiles
   .beko_au_dishwasher_product_spec_parallel_lists_v1.parserProfileId;
 const BEKO_AU_DISHWASHER_INLINE_GRAMMAR = mineruGrammarProfiles
@@ -1260,6 +1274,63 @@ const BEKO_AU_SPEC_LABELS = Object.freeze([
   'Packaged Depth:',
   'Packaged Weight:',
 ]);
+
+function hisenseAuWasherIndexedDimensionDiagram(items, caseIdentity, pageUnit) {
+  if (canonicalModel(caseIdentity?.brand) !== 'HISENSE'
+    || caseIdentity?.category !== 'washing_machine' || pageUnit?.unit !== 'mm') return null;
+  const modelGroups = modelRowGroups(items);
+  if (modelGroups.length !== 1 || !modelGroups[0].groups.length) return null;
+  const tokens = modelGroups[0].groups.flatMap((group) => group.tokens);
+  if (tokens.length < 2 || tokens.length > 12
+    || tokens.some((token) => !validModelExpressionToken(token))) return null;
+  if (modelGroups[0].groups.filter((group) => (
+    group.tokens.some((token) => modelExpressionTokenMatches(token, caseIdentity.model))
+  )).length !== 1) return null;
+
+  const indexTables = items.filter((item) => {
+    if (item.type !== 'table' || item.cells.length !== 7) return false;
+    if (!/^index$/i.test(normalizedText(item.cells[0]?.[0]))
+      || !/^dimensions?\s*\(\s*mm\s*\)$/i.test(normalizedText(item.cells[0]?.[1]))) return false;
+    return item.cells.slice(1).every((cells, index) => (
+      normalizedText(cells[0]) === String.fromCharCode(65 + index)
+      && /^\d+(?:\.\d+)?$/.test(normalizedText(cells[1]))
+    ));
+  });
+  if (indexTables.length !== 1) return null;
+  const annotations = items.filter((item) => (
+    /\bE\s*=\s*appliance depth\b/i.test(item.text)
+    && /\bF\s*=\s*Depth with door open\b/i.test(item.text)
+  ));
+  if (annotations.length !== 1) return null;
+  const values = Object.fromEntries(indexTables[0].cells.slice(1).map((cells) => (
+    [normalizedText(cells[0]), normalizedText(cells[1])]
+  )));
+  const rows = [
+    { label: 'Width (diagram A)', value: `${values.A} mm`, quote: `A ${values.A} mm`, axisOrder: ['width'] },
+    { label: 'Height (diagram B)', value: `${values.B} mm`, quote: `B ${values.B} mm`, axisOrder: ['height'] },
+    { label: 'Appliance depth (diagram E)', value: `${values.E} mm`, quote: `E = appliance depth: ${values.E} mm`, axisOrder: ['depth'] },
+    { label: 'Depth with door open (diagram F)', value: `${values.F} mm`, quote: `F = Depth with door open: ${values.F} mm`, axisOrder: ['depth'] },
+  ];
+  const fragments = [items[modelGroups[0].itemIndex], indexTables[0], annotations[0]];
+  return {
+    grammarProfileId: HISENSE_AU_WASHER_INDEXED_DIAGRAM_GRAMMAR,
+    rows,
+    fragment: {
+      type: 'derived_hisense_dimension_diagram',
+      bbox: [
+        Math.min(...fragments.map((fragment) => fragment.bbox[0])),
+        Math.min(...fragments.map((fragment) => fragment.bbox[1])),
+        Math.max(...fragments.map((fragment) => fragment.bbox[2])),
+        Math.max(...fragments.map((fragment) => fragment.bbox[3])),
+      ],
+      fragmentSha256: sha256(JSON.stringify({
+        grammarProfileId: HISENSE_AU_WASHER_INDEXED_DIAGRAM_GRAMMAR,
+        sourceFragmentSha256s: fragments.map((fragment) => fragment.fragmentSha256),
+        rows,
+      })),
+    },
+  };
+}
 
 function bekoSpecResult(values, grammarProfileId, fragments) {
   const millimetres = values.map((value) => Number.parseFloat(value));
@@ -1540,10 +1611,13 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const pageScoped = pageSignals.length > 0;
     const modelTableScoped = exactModelTableScope(items, model);
     const pageDimensionUnit = explicitPageDimensionUnit(items);
+    const hisenseDiagram = claimSemanticsVersion === 2
+      ? hisenseAuWasherIndexedDimensionDiagram(items, caseIdentity, pageDimensionUnit)
+      : null;
     const sharedDimensionFragments = unresolvedFamily
       ? scopedSharedDimensionFragments(items, model, pageDimensionUnit)
       : new Set();
-    const sharedModelListScoped = sharedDimensionFragments.size > 0;
+    const sharedModelListScoped = sharedDimensionFragments.size > 0 || Boolean(hisenseDiagram);
     if (sharedModelListScoped) sharedModelListPages.add(pageIndex + 1);
     const documentScoped = !pageScoped
       && (documentUniqueScope || contextDocumentScope || boundFamilyDocumentScope);
@@ -1569,6 +1643,18 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const bekoSpec = bekoPageScoped || bekoDocumentScoped
       ? bekoAuDishwasherSpecRows(items, caseIdentity, true)
       : null;
+    if (hisenseDiagram) {
+      appliedGrammarProfiles.add(hisenseDiagram.grammarProfileId);
+      for (const row of hisenseDiagram.rows) {
+        const claims = [
+          ...dimensionClaims(row, hisenseDiagram.fragment, pageIndex + 1, fields, category),
+          ...directClaims(
+            row, hisenseDiagram.fragment, pageIndex + 1, fields, category, claimSemanticsVersion,
+          ),
+        ];
+        for (const claim of claims) candidates.get(claim.field)?.push(claim);
+      }
+    }
     if (bekoSpec) {
       appliedGrammarProfiles.add(bekoSpec.grammarProfileId);
       for (const row of bekoSpec.rows) {

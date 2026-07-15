@@ -8,6 +8,7 @@ import {
   buildMineruDerivedArtifact,
   findMineruImageOnlyDimensionPages,
 } from './mineru-document.mjs';
+import { attestMineruToolIdentity } from './mineru-tool-identity.mjs';
 import { evidenceSourcePolicy } from './evidence-source-verifier.mjs';
 
 const execFile = promisify(execFileCallback);
@@ -116,20 +117,6 @@ function validatePdfPayload(pdfBytes, maximumPdfBytes) {
     throw new RangeError(`PDF payload exceeds ${maximumPdfBytes} bytes`);
   }
   return bytes;
-}
-
-function parserVersion(stdout) {
-  const match = /\bversion\s+(\d+\.\d+\.\d+)\b/i.exec(String(stdout ?? ''));
-  if (!match) throw new Error('MinerU version output invalid');
-  return match[1];
-}
-
-function modelRevision(stdout, markerName = 'fitappliance-model-revision') {
-  const marker = new RegExp(`\\b${markerName}\\s+([a-f0-9]{40})\\b`, 'i')
-    .exec(String(stdout ?? ''))?.[1];
-  const revision = String(marker ?? '').toLowerCase();
-  if (!/^[a-f0-9]{40}$/.test(revision)) throw new Error('MinerU model revision is not attested');
-  return revision;
 }
 
 function sha256(bytes) {
@@ -354,16 +341,17 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
       timeout: options.timeoutMs ?? 600000,
       maxBuffer: 4 * 1024 * 1024,
     });
-    const version = parserVersion(versionResult?.stdout);
-    if (version !== expected.parserVersion) {
-      throw new Error(`MinerU version ${version} does not match policy ${expected.parserVersion}`);
-    }
-    const revision = modelRevision(
-      versionResult?.stdout,
-      expected.backend === 'hybrid-engine'
-        ? 'fitappliance-vlm-model-revision'
-        : 'fitappliance-model-revision',
-    );
+    const toolIdentity = await attestMineruToolIdentity({
+      stdout: versionResult?.stdout,
+      backend: expected.backend,
+      expectedVersion: expected.parserVersion,
+      configPath: options.mineruConfigPath
+        ?? options.env?.MINERU_TOOLS_CONFIG_JSON
+        ?? process.env.MINERU_TOOLS_CONFIG_JSON
+        ?? null,
+    });
+    const version = toolIdentity.version;
+    const revision = toolIdentity.modelRevision;
     if (revision !== expected.modelRevision) {
       throw new Error(`MinerU model revision ${revision} does not match policy ${expected.modelRevision}`);
     }

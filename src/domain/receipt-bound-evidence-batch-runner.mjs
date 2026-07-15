@@ -211,6 +211,19 @@ function persistedArtifactRecord(artifact) {
   return structuredClone(record);
 }
 
+function failedArtifactBinding(artifact) {
+  if (!artifact?.contentSha256 || !artifact?.objectPath || !artifact?.contentType
+    || !Number.isInteger(artifact?.byteSize)) return null;
+  return {
+    sourceUrl: artifact.sourceUrl,
+    finalUrl: artifact.finalUrl ?? artifact.sourceUrl,
+    contentSha256: artifact.contentSha256,
+    objectPath: artifact.objectPath,
+    contentType: artifact.contentType,
+    byteSize: artifact.byteSize,
+  };
+}
+
 export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
   validateHistoricalEvidenceRecoveryBatch(batch);
   const acquireArtifact = requiredFunction(dependencies.acquireArtifact, 'artifact acquisition function');
@@ -337,11 +350,18 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         if (state.status !== 'available') {
           throw Object.assign(new Error(state.reason), { code: state.failureCode });
         }
-        return attestTarget({
-          ...structuredClone(target),
-          id: target.targetId,
-          sources: structuredClone(activeReceiptSources),
-        }, state.artifact, structuredClone(job), structuredClone(candidate));
+        try {
+          return await attestTarget({
+            ...structuredClone(target),
+            id: target.targetId,
+            sources: structuredClone(activeReceiptSources),
+          }, state.artifact, structuredClone(job), structuredClone(candidate));
+        } catch (error) {
+          const failure = error instanceof Error ? error : new Error(String(error));
+          const binding = failedArtifactBinding(state.artifact);
+          if (binding) failure.artifactBinding = binding;
+          throw failure;
+        }
       };
       inventory = await collectCandidates(caseRecord, {
         batchCandidateJobIds: target.candidateJobIds,
@@ -352,6 +372,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
           task,
         ),
         acquireAndAttest,
+        priorAttemptSuppressions: target.reconciliationContext?.priorAttemptSuppressions ?? [],
         resolverTimeoutMs: dependencies.resolverTimeoutMs,
       });
       reconciled = await reconcileClaims({

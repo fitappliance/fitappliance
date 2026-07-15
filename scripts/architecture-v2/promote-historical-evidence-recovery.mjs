@@ -9,24 +9,28 @@ import {
   auditHistoricalAcceptanceReceipts,
   promoteHistoricalEvidenceRecovery,
 } from '../../src/domain/historical-evidence-recovery-audit.mjs';
+import {
+  buildHistoricalEvidenceRecoveryAttemptLedger,
+} from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 function parseArgs(argv) {
   const result = {
-    results: null, audit: null, bundle: null, receiptAudit: null, storageRoot: null,
+    results: null, audit: null, bundle: null, receiptAudit: null, attemptLedger: null, storageRoot: null,
   };
   for (let index = 0; index < argv.length; index += 1) {
     const raw = argv[index];
     const [flag, inline] = raw.includes('=') ? raw.split(/=(.*)/s, 2) : [raw, null];
-    if (!['--results', '--audit', '--bundle', '--receipt-audit', '--storage-root'].includes(flag)) {
+    if (!['--results', '--audit', '--bundle', '--receipt-audit', '--attempt-ledger', '--storage-root'].includes(flag)) {
       throw new TypeError(`unknown argument: ${raw}`);
     }
     const value = inline ?? argv[++index];
     if (!value) throw new TypeError(`${flag} requires a value`);
     result[{
       '--results': 'results', '--audit': 'audit', '--bundle': 'bundle',
-      '--receipt-audit': 'receiptAudit', '--storage-root': 'storageRoot',
+      '--receipt-audit': 'receiptAudit', '--attempt-ledger': 'attemptLedger',
+      '--storage-root': 'storageRoot',
     }[flag]] = value;
   }
   return result;
@@ -69,10 +73,13 @@ export async function runPromotionCli(options) {
   const receiptAuditPath = resolve(options.receiptAudit ?? join(
     repoRoot, 'data/architecture-v2/reviews/automated/historical-acceptance-receipt-replay-audit.json',
   ));
+  const attemptLedgerPath = resolve(options.attemptLedger ?? join(
+    repoRoot, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-attempt-ledger.json',
+  ));
   const storageRoot = resolve(options.storageRoot ?? process.env.FITAPPLIANCE_STORAGE_ROOT ?? '');
   if (!storageRoot || storageRoot === resolve('')) throw new Error('FITAPPLIANCE_STORAGE_ROOT required to locate the audited batch');
-  const [results, audit, priorBundle] = await Promise.all([
-    readJson(resultsPath), readJson(auditPath), readOptionalJson(bundlePath),
+  const [results, audit, priorBundle, priorAttemptLedger] = await Promise.all([
+    readJson(resultsPath), readJson(auditPath), readOptionalJson(bundlePath), readOptionalJson(attemptLedgerPath),
   ]);
   const batch = await readJson(join(
     storageRoot, 'runs/historical-evidence-recovery', results.runId, 'batch.json',
@@ -81,6 +88,9 @@ export async function runPromotionCli(options) {
   const bundle = promoteHistoricalEvidenceRecovery({
     batch, results, audit, priorBundle, generatedAt,
   });
+  const attemptLedger = buildHistoricalEvidenceRecoveryAttemptLedger({
+    batch, results, audit, priorLedger: priorAttemptLedger, generatedAt,
+  });
   const objectStore = createEvidenceObjectStore(storageRoot);
   const receiptAudit = await auditHistoricalAcceptanceReceipts({
     bundle,
@@ -88,9 +98,14 @@ export async function runPromotionCli(options) {
     readObject: objectStore.readObject,
   });
   await durableWrite(receiptAuditPath, receiptAudit);
+  await durableWrite(attemptLedgerPath, attemptLedger);
   await durableWrite(bundlePath, bundle);
   Object.defineProperty(bundle, 'receiptAuditSummary', {
     value: receiptAudit.summary,
+    enumerable: false,
+  });
+  Object.defineProperty(bundle, 'attemptLedgerSummary', {
+    value: attemptLedger.summary,
     enumerable: false,
   });
   return bundle;
@@ -108,5 +123,6 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     entries: bundle.entries.length,
     lineage: bundle.lineage.length,
     receiptReplay: bundle.receiptAuditSummary,
+    attempts: bundle.attemptLedgerSummary,
   }, null, 2)}\n`);
 }

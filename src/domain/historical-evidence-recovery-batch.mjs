@@ -187,6 +187,9 @@ function materializeTarget(target, prior) {
     publicationEligible: false,
     reconciliationContext: {
       activeReceiptSources: target.repairExistingReceipt ? [] : prior.sourcesFor(target),
+      ...((target.priorAttemptSuppressions ?? []).length > 0 ? {
+        priorAttemptSuppressions: structuredClone(target.priorAttemptSuppressions),
+      } : {}),
       registryHints: (target.registryDimensionHints ?? []).map((hint) => ({
         sourceId: hint.sourceId,
         snapshotSha256: hint.snapshotSha256,

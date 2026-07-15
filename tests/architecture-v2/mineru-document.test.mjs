@@ -6,6 +6,7 @@ import {
   buildMineruDerivedArtifact,
   findMineruImageOnlyDimensionPages,
   inspectMineruContentListV2,
+  mineruGrammarProfiles,
   parseMineruContentListV2,
 } from '../../src/domain/mineru-document.mjs';
 
@@ -897,6 +898,48 @@ test('MinerU scopes shared dimensions to a strict same-page sibling model list a
     ['closedEnvelope.widthMm', { kind: 'fixed', mm: 600 }],
     ['closedEnvelope.heightMm', { kind: 'fixed', mm: 850 }],
   ]);
+});
+
+test('MinerU applies the Hisense AU washer indexed dimension diagram to listed sibling models', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    tableFragment('<table><tr><td>Model</td><td>HWF3S7514X</td><td>HWF3S8514X</td></tr><tr><td>Maximum load</td><td>7.5kg</td><td>8.5kg</td></tr></table>'),
+    captionedTableFragment('<table><tr><td>Index</td><td>Dimensions (mm)</td></tr><tr><td>A</td><td>595</td></tr><tr><td>B</td><td>845</td></tr><tr><td>C</td><td>480</td></tr><tr><td>D</td><td>510</td></tr><tr><td>E</td><td>540</td></tr><tr><td>F</td><td>1020</td></tr></table>', 'DIMENSIONS (MM)'),
+    {
+      type: 'image',
+      content: {
+        image_source: { path: 'images/hisense-dimension-diagram.jpg' },
+        content: 'F E 135 degrees',
+        image_caption: [],
+        image_footnote: [
+          { type: 'text', content: 'E = appliance depth' },
+          { type: 'text', content: 'F = Depth with door open' },
+        ],
+      },
+      bbox: [240, 547, 500, 717],
+    },
+  ]]));
+
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Hisense', model: 'HWF3S8514X', category: 'washing_machine' },
+    claimSemanticsVersion: 2,
+    fields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+      'operation.doorOpenDepthMm',
+    ],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 595,
+    'closedEnvelope.heightMm': 845,
+    'closedEnvelope.depthMm': 540,
+    'operation.doorOpenDepthMm': 1020,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['hisense-au-washer-indexed-dimension-diagram-v1']);
+  assert.equal(
+    mineruGrammarProfiles[parsed.grammarProfileIds[0]].parserProfileId,
+    parsed.grammarProfileIds[0],
+  );
 });
 
 test('MinerU accepts only the unqualified primary depth from a dimension diagram with primed variants', () => {

@@ -1,5 +1,10 @@
 import { createHash } from 'node:crypto';
 
+import {
+  activeHistoricalAttemptSuppressions,
+  activeHistoricalSourceAcceptances,
+} from './historical-evidence-recovery-attempt-ledger.mjs';
+
 const REQUESTED_FIELDS = Object.freeze([
   'closedEnvelope.widthMm',
   'closedEnvelope.heightMm',
@@ -91,6 +96,8 @@ export function buildHistoricalExecutableRecoveryQueue({
   historicalReference,
   legacyRecoveryQueue,
   priorAcceptanceBundle = { entries: [] },
+  priorAttemptLedger = { entries: [] },
+  recoveryPolicySha256 = null,
 }) {
   if (acquisitionQueue?.schemaVersion !== 1 || !Array.isArray(acquisitionQueue.records)
     || !Array.isArray(acquisitionQueue.sources)) {
@@ -119,6 +126,8 @@ export function buildHistoricalExecutableRecoveryQueue({
   const jobs = new Map();
   const targets = [];
   const excluded = {};
+  let suppressedPriorTerminalEdges = 0;
+  let suppressedPriorAcceptedSourceEdges = 0;
 
   for (const record of acquisitionQueue.records) {
     if (!EXECUTABLE_ROUTES.has(record.route)) {
@@ -140,12 +149,38 @@ export function buildHistoricalExecutableRecoveryQueue({
       ?? id('recovery_target', `historical-acquisition-v1\0${record.referenceId}`);
     const priority = priorityClass(reference);
     const candidateJobIds = [];
+    const priorAttemptSuppressions = recoveryPolicySha256
+      ? activeHistoricalAttemptSuppressions({
+        ledger: priorAttemptLedger,
+        targetId,
+        referenceId: record.referenceId,
+        policySha256: recoveryPolicySha256,
+      })
+      : [];
+    const priorSourceAcceptances = recoveryPolicySha256
+      ? activeHistoricalSourceAcceptances({
+        ledger: priorAttemptLedger,
+        targetId,
+        referenceId: record.referenceId,
+        policySha256: recoveryPolicySha256,
+      })
+      : [];
+    const terminalUrls = new Set(priorAttemptSuppressions.map((entry) => entry.sourceUrl));
+    const acceptedUrls = new Set(priorSourceAcceptances.map((entry) => entry.sourceUrl));
     const sourceDocumentIds = new Set(legacy?.sourceDocumentIds ?? []);
     for (const sourceId of record.candidateSourceIds ?? []) {
       const source = sources.get(sourceId);
       if (!source) throw new Error(`acquisition source missing ${sourceId}`);
       for (const documentId of source.documentIds ?? []) sourceDocumentIds.add(documentId);
       if (source.sourceAuthority !== 'OFFICIAL' || source.receiptEligible !== true) continue;
+      if (acceptedUrls.has(source.sourceUrl)) {
+        suppressedPriorAcceptedSourceEdges += 1;
+        continue;
+      }
+      if (terminalUrls.has(source.sourceUrl)) {
+        suppressedPriorTerminalEdges += 1;
+        continue;
+      }
       const acquisitionRoute = RECOVERY_ROUTE[record.route];
       const jobId = id('recovery', [source.sourceUrl, record.brand, acquisitionRoute, priority].join('\0'));
       const job = jobs.get(jobId) ?? {
@@ -185,6 +220,8 @@ export function buildHistoricalExecutableRecoveryQueue({
       candidateJobIds,
       primaryJobId: candidateJobIds[0] ?? null,
       repairExistingReceipt: record.route === 'PARSER_REPAIR',
+      ...(priorAttemptSuppressions.length > 0 ? { priorAttemptSuppressions } : {}),
+      ...(priorSourceAcceptances.length > 0 ? { priorSourceAcceptances } : {}),
     });
   }
 
@@ -209,6 +246,8 @@ export function buildHistoricalExecutableRecoveryQueue({
       resolverOnlyTargets: targets.filter((target) => target.candidateJobIds.length === 0).length,
       candidateEdges: materializedJobs.reduce((sum, job) => sum + job.targetIds.length, 0),
       uniqueReferences: new Set(targets.map((target) => target.referenceId)).size,
+      suppressedPriorTerminalEdges,
+      suppressedPriorAcceptedSourceEdges,
       byLifecycle: countBy(targets, (target) => target.lifecycleState),
       byPriority: countBy(targets, (target) => target.priorityClass),
       excluded: Object.fromEntries(Object.entries(excluded).sort(([left], [right]) => left.localeCompare(right))),

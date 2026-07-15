@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T17:26:39.491Z",
+  "generatedAt": "2026-07-15T19:10:49.740Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "2074fb0a57063e2bc0eeb97865529ca5f9f68523131abe9b77839ee91738f488",
+  "semanticClassificationSha256": "2505323c1874b7d22df005ce5706f36716e25b158b7a235defb92726948dadba",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4159,
+    "documentLinks": 4161,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,17 +21,17 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 144,
+      "COMPLETE_RECEIPT": 146,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
-      "OFFICIAL_REACQUIRE": 6,
+      "OFFICIAL_REACQUIRE": 4,
       "REFERENCE_REDISCOVERY": 1243
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6426,
-      "NO_ACTION": 144,
-      "REACQUIRE_OFFICIAL_SOURCE": 6,
+      "NO_ACTION": 146,
+      "REACQUIRE_OFFICIAL_SOURCE": 4,
       "REDISCOVER_OFFICIAL_SOURCE": 1243,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 193
@@ -43,15 +43,15 @@
       "REFERENCE": 1260
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 236,
-      "EXACT_MODEL": 1534,
+      "AMBIGUOUS": 234,
+      "EXACT_MODEL": 1536,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 48,
-      "ALL_AXIS_SCALAR": 244,
+      "ALL_AXIS_SCALAR": 246,
       "NOT_PARSED": 7664,
-      "PARSER_GAP": 139
+      "PARSER_GAP": 137
     },
     "byConflictState": {
       "INVALID_DIMENSIONS": 19,
@@ -60,8 +60,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 144,
-      "LEGACY_UNBOUND": 1626,
+      "CURRENT_VALID": 146,
+      "LEGACY_UNBOUND": 1624,
       "NONE": 6325
     }
   },
@@ -96,13 +96,13 @@
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2264,
+      "documentLinks": 2265,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 59,
+        "COMPLETE_RECEIPT": 60,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 117,
         "OFFICIAL_DISCOVERY": 3410,
-        "OFFICIAL_REACQUIRE": 3,
+        "OFFICIAL_REACQUIRE": 2,
         "REFERENCE_REDISCOVERY": 699
       }
     },
@@ -110,13 +110,13 @@
       "category": "washing_machine",
       "records": 1497,
       "brands": 88,
-      "documentLinks": 649,
+      "documentLinks": 650,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 20,
+        "COMPLETE_RECEIPT": 21,
         "CONFLICT_QUARANTINE": 9,
         "IDENTITY_RESEARCH": 37,
         "OFFICIAL_DISCOVERY": 1240,
-        "OFFICIAL_REACQUIRE": 3,
+        "OFFICIAL_REACQUIRE": 2,
         "REFERENCE_REDISCOVERY": 188
       }
     }
@@ -9137,8 +9137,8 @@
       "canonicalBrand": "Bosch",
       "model": "SBI8EDS01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -9210,8 +9210,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_0a5af8c992c338c2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_0a5af8c992c338c2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -9410,8 +9420,8 @@
       "canonicalBrand": "Bosch",
       "model": "SBV8EDX01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -9483,8 +9493,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_0a5af8c992c338c2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_0a5af8c992c338c2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -54999,8 +55019,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WSF6606X",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -55072,8 +55092,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+          "grammarProfileIds": [
+            "pdf_grammar_8f60826f847a01df"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_8f60826f847a01df"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -61008,8 +61038,8 @@
       "canonicalBrand": "Bosch",
       "model": "WTX88MH0AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -61081,8 +61111,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_3bb3c56cf204e5c7"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_3bb3c56cf204e5c7"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -63056,8 +63096,8 @@
       "canonicalBrand": "Electrolux",
       "model": "EDV705HQWA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -63129,8 +63169,18 @@
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+          "grammarProfileIds": [
+            "pdf_grammar_8f60826f847a01df"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_8f60826f847a01df"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -70380,8 +70430,8 @@
       "canonicalBrand": "Haier",
       "model": "HDV60A1",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_939d2824fd13982a",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -70453,8 +70503,18 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_939d2824fd13982a",
+          "grammarProfileIds": [
+            "pdf_grammar_939d2824fd13982a"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_939d2824fd13982a"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -89856,8 +89916,8 @@
       "canonicalBrand": "Bosch",
       "model": "KFN96VPEAA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -89930,8 +89990,18 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 4",
+          "grammarProfileIds": [
+            "pdf_grammar_03c1b2409a545411"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_03c1b2409a545411"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -104565,8 +104635,8 @@
       "canonicalBrand": "Electrolux",
       "model": "EBE5307BB-L",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "EBE5307BB-L",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -104618,7 +104688,13 @@
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "EBE5307BB-L",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -176927,8 +177003,8 @@
       "canonicalBrand": "LG",
       "model": "GB-450UPLX",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "GB-450UPLX",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -176999,7 +177075,13 @@
       "rawBrandVariants": [
         "LG"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "GB-450UPLX",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -180496,15 +180578,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family c40bbeb07ba8",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -180528,6 +180611,24 @@
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
+        },
+        {
+          "documentId": "pdf:00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/french-door/gf-v500mblc/",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/00/c8/00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e.html",
+            "receipt:fa1c76e51ff2e74e1222bf8a42ed04fe46c06b57ad80b3850150507955bde53e"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e"
         },
         {
           "documentId": "pdf:c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e",
@@ -180567,8 +180668,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "LG"
@@ -226420,8 +226521,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WBB3700WG",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -226493,8 +226594,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -230517,8 +230628,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WHE5204BB",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -230590,8 +230701,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -230697,8 +230818,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WHE5204SB",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -230770,8 +230891,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -230858,8 +230989,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WHE5264SB",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -230931,8 +231062,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -231269,8 +231410,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WHE6000SA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -231342,8 +231483,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -231530,8 +231681,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WHE6060SA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -231603,8 +231754,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -233820,8 +233981,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WQE6000BA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -233893,8 +234054,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -233967,8 +234138,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WQE6000SA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -234040,8 +234211,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -234176,8 +234357,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WQE6060BA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -234249,8 +234430,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -234384,8 +234575,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WQE6060SA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -234457,8 +234648,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -235286,8 +235487,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WRB5004SA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -235359,8 +235560,18 @@
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "grammarProfileIds": [
+            "pdf_grammar_100af9c8141cceb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_100af9c8141cceb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -247476,8 +247687,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAW28620AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -247550,8 +247761,20 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_213ac6c7578293ed",
+            "pdf_grammar_7278fc1b8aebe013"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_213ac6c7578293ed",
+        "pdf_grammar_7278fc1b8aebe013"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -247906,11 +248129,13 @@
           "groupType": "marketing_series",
           "groupName": "Series 8",
           "grammarProfileIds": [
+            "pdf_grammar_213ac6c7578293ed",
             "pdf_grammar_7278fc1b8aebe013"
           ]
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_213ac6c7578293ed",
         "pdf_grammar_7278fc1b8aebe013"
       ]
     },
@@ -252024,8 +252249,8 @@
       "canonicalBrand": "Electrolux",
       "model": "EWF8524CDWA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -252097,8 +252322,18 @@
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+          "grammarProfileIds": [
+            "pdf_grammar_8f60826f847a01df"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_8f60826f847a01df"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -260252,8 +260487,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "WH8560P2",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_3eadbf6aab0d27da",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -260325,8 +260560,31 @@
       "rawBrandVariants": [
         "Fisher & Paykel"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WH8560P2",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_3eadbf6aab0d27da",
+          "grammarProfileIds": [
+            "pdf_grammar_3eadbf6aab0d27da"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_7b036055fd9947bf",
+          "grammarProfileIds": [
+            "pdf_grammar_7b036055fd9947bf"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_3eadbf6aab0d27da",
+        "pdf_grammar_7b036055fd9947bf"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -265039,7 +265297,7 @@
       "model": "HWF3S8514X",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
+      "groupName": "Hisense AU washer indexed dimension diagram",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "MIXED",
       "identityScope": "AMBIGUOUS",
@@ -265119,9 +265377,11 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "HWF3S8514X",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "Hisense AU washer indexed dimension diagram",
+          "grammarProfileIds": [
+            "hisense-au-washer-indexed-dimension-diagram-v1"
+          ]
         },
         {
           "groupType": "parser_family",
@@ -265132,6 +265392,7 @@
         }
       ],
       "grammarProfileIds": [
+        "hisense-au-washer-indexed-dimension-diagram-v1",
         "pdf_grammar_ceaa1c5c4d5fa4ff"
       ]
     },
@@ -275868,15 +276129,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 2d559286f86e",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "CURRENT_MINERU": 1,
-        "LEGACY_METADATA_ONLY": 1
+        "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1
       },
       "documentLinks": [
         {
@@ -275921,10 +276183,28 @@
           "receiptState": "NONE",
           "sourcePdfSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
           "grammarProfileId": "pdf_grammar_56dff8973bc69513"
+        },
+        {
+          "documentId": "pdf:c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe",
+          "sourceUrl": "https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412w/",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/c4/76/c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe.html",
+            "receipt:e5e16e8790a5659b07035b74e74eb329debd7202b81e027e5a2d04184c3d8433"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "LG"

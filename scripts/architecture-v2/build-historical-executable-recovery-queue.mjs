@@ -6,11 +6,21 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { buildHistoricalExecutableRecoveryQueue } from '../../src/domain/historical-executable-recovery-queue.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 async function readJson(key) {
   return JSON.parse(await readFile(resolveArchitectureV2Path(root, key), 'utf8'));
+}
+
+async function readOptionalJson(key, fallback) {
+  try {
+    return await readJson(key);
+  } catch (error) {
+    if (error?.code === 'ENOENT') return fallback;
+    throw error;
+  }
 }
 
 async function atomicJson(path, value) {
@@ -21,14 +31,22 @@ async function atomicJson(path, value) {
 }
 
 export async function runCli() {
-  const [acquisitionQueue, historicalReference, legacyRecoveryQueue, priorAcceptanceBundle] = await Promise.all([
+  const [acquisitionQueue, historicalReference, legacyRecoveryQueue, priorAcceptanceBundle,
+    priorAttemptLedger, recoveryPolicy] = await Promise.all([
     readJson('historicalModelPdfAcquisitionQueue'),
     readJson('historicalApplianceReference'),
     readJson('historicalEvidenceRecoveryQueue'),
     readJson('historicalEvidenceRecoveryAcceptanceBundle'),
+    readOptionalJson('historicalEvidenceRecoveryAttemptLedger', { schemaVersion: 1, entries: [] }),
+    readJson('historicalEvidenceRecoveryPolicy'),
   ]);
   const queue = buildHistoricalExecutableRecoveryQueue({
-    acquisitionQueue, historicalReference, legacyRecoveryQueue, priorAcceptanceBundle,
+    acquisitionQueue,
+    historicalReference,
+    legacyRecoveryQueue,
+    priorAcceptanceBundle,
+    priorAttemptLedger,
+    recoveryPolicySha256: canonicalJsonSha256(recoveryPolicy),
   });
   const output = resolveArchitectureV2Path(root, 'historicalExecutableEvidenceRecoveryQueue');
   await atomicJson(output, queue);

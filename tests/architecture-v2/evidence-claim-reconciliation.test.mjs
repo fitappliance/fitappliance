@@ -271,6 +271,31 @@ test('ordinary lower-authority disagreement requires independent official corrob
   assert.equal(result.conflictHints[0].kind, 'lower_authority_disagreement');
 });
 
+test('an exact official scoped depth can override a registry-only depth disagreement', () => {
+  const accepted = source('a'.repeat(64), { widthMm: 600, heightMm: 850, depthMm: 660 });
+  accepted.claims = accepted.claims.map((claim) => (
+    claim.field === 'closedEnvelope.depthMm'
+      ? {
+        ...claim,
+        sourceLabel: 'Product Depth with Doors Closed (D\' mm)',
+        sourceAxisOrder: ['depth'],
+        includesDoor: true,
+      }
+      : claim
+  ));
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([accepted]), {
+    verifyReceipt,
+    lowerAuthorityHints: [{
+      sourceRole: 'registry_hint',
+      sourceId: 'energy-rating',
+      dimensionsMm: { widthMm: 600, heightMm: 850, depthMm: 610 },
+    }],
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.lowerAuthorityResolution, 'exact_official_scoped_depth_over_registry_hint');
+});
+
 test('one complete exact official axis proof supersedes a disagreeing legacy catalog hint', () => {
   const accepted = source('a'.repeat(64), { widthMm: 905, heightMm: 1830, depthMm: 731 });
   const result = reconcileEvidenceClaims(IDENTITY, inventory([accepted]), {

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-15T17:26:20.007Z",
-  "policySha256": "8e237b04fdd3323ae7da48f4323276181014472b6d67e46d959d7d22713e41e0",
+  "generatedAt": "2026-07-15T19:15:52.388Z",
+  "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc",
   "entries": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -6583,6 +6583,216 @@
         "supersessionViolations": [],
         "axisPermutationResolution": "exact_official_axis_proof",
         "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_308bac8cfe8d6b46c5102b6b",
+      "referenceId": "fa_ref_2210a276b84ee0439b0ff1f2",
+      "legacyRuntimeId": "fridge-arf3177",
+      "canonicalProductId": "fa_prod_83c263d3a4d601a5e0df6a7d",
+      "brand": "LG",
+      "model": "GF-V500MBLC",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-572a1e42795d212221d3ce44-slice-b9139f93544e",
+      "auditSha256": "ce7bb5e2c15fffbaf75bcd11dbbb3ad46e269775c941362e478597c9859a6012",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/french-door/gf-v500mblc/",
+          "finalUrl": "https://www.lg.com/au/fridge-freezers/french-door/gf-v500mblc/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T18:36:04.356Z",
+          "contentSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e",
+          "objectPath": "evidence/web/sha256/00/c8/00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e.html",
+          "contentType": "text/html",
+          "byteSize": 3523915,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "LG",
+            "model": "GF-V500MBLC",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 835
+              },
+              "sourceLabel": "DIMENSIONS & WEIGHT - Product (WxHxD mm)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1787
+              },
+              "sourceLabel": "DIMENSIONS & WEIGHT - Product (WxHxD mm)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 721
+              },
+              "sourceLabel": "Depth with handle (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.lg.com/au/fridge-freezers/french-door/gf-v500mblc/"
+            },
+            {
+              "type": "document_title",
+              "value": "508L Slim French Door Fridge- InstaView® GF-V500MBLC | LG Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "GF-V500MBLC.AEPRGAP.EHAP.AU.C"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T18:36:04.356Z",
+            "bindingSha256": "fa1c76e51ff2e74e1222bf8a42ed04fe46c06b57ad80b3850150507955bde53e"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 835,
+            "heightMm": {
+              "minimumMm": 1787,
+              "maximumMm": 1787
+            },
+            "depthMm": 721
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/french-door/gf-v500mblc/",
+            "contentSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e",
+            "receiptBindingSha256": "fa1c76e51ff2e74e1222bf8a42ed04fe46c06b57ad80b3850150507955bde53e",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/french-door/gf-v500mblc/",
+            "contentSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e",
+            "receiptBindingSha256": "fa1c76e51ff2e74e1222bf8a42ed04fe46c06b57ad80b3850150507955bde53e",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/french-door/gf-v500mblc/",
+            "contentSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e",
+            "receiptBindingSha256": "fa1c76e51ff2e74e1222bf8a42ed04fe46c06b57ad80b3850150507955bde53e",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "registry_hint",
+            "sourceId": "energy-rating:fridge",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 835,
+              "heightMm": 1787,
+              "depthMm": 734
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_scoped_depth_over_registry_hint",
         "conflictReason": null
       }
     },
@@ -23377,6 +23587,217 @@
       }
     },
     {
+      "targetId": "recovery_target_aa00f2c8ad207d4ad0768869",
+      "referenceId": "fa_ref_4b9ea51ba47945c5ee8f95c3",
+      "legacyRuntimeId": "discovery-washing-machine-lg-wv9-1412w",
+      "canonicalProductId": "fa_prod_83f22d0c5c24cd044ae00974",
+      "brand": "LG",
+      "model": "WV9-1412W",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-572a1e42795d212221d3ce44-slice-b9139f93544e",
+      "auditSha256": "ce7bb5e2c15fffbaf75bcd11dbbb3ad46e269775c941362e478597c9859a6012",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412w/",
+          "finalUrl": "https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412w/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T18:36:19.894Z",
+          "contentSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe",
+          "objectPath": "evidence/web/sha256/c4/76/c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe.html",
+          "contentType": "text/html",
+          "byteSize": 3371057,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "LG",
+            "model": "WV9-1412W",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 660
+              },
+              "sourceLabel": "Product Depth with Doors Closed (D' mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412w/"
+            },
+            {
+              "type": "document_title",
+              "value": "12kg Series 9 Front Load Washing Machine - WV9-1412W | LG Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "WV9-1412W.ABWREAP.EHAP.AU.C"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T18:36:19.894Z",
+            "bindingSha256": "e5e16e8790a5659b07035b74e74eb329debd7202b81e027e5a2d04184c3d8433"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 660
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412w/",
+            "contentSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe",
+            "receiptBindingSha256": "e5e16e8790a5659b07035b74e74eb329debd7202b81e027e5a2d04184c3d8433",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412w/",
+            "contentSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe",
+            "receiptBindingSha256": "e5e16e8790a5659b07035b74e74eb329debd7202b81e027e5a2d04184c3d8433",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412w/",
+            "contentSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe",
+            "receiptBindingSha256": "e5e16e8790a5659b07035b74e74eb329debd7202b81e027e5a2d04184c3d8433",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "registry_hint",
+            "sourceId": "energy-rating:washing_machine",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 600,
+              "heightMm": 850,
+              "depthMm": 610
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_scoped_depth_over_registry_hint",
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_ab7d82289ce015c7c3e55a50",
       "referenceId": "fa_ref_3018aea4f60d6e0992fd8abe",
       "legacyRuntimeId": "fridge-arf3452",
@@ -33456,6 +33877,13 @@
       "auditSha256": "cbe6c493cdf1407f51c695cc679fe78eae12952cd1a775e747612174c1aa29a0"
     },
     {
+      "batchId": "historical-recovery-106ed84dbf31c2c156d41739-slice-67214a788fd1",
+      "batchSha256": "3fecb2dec490f2d96e07e8334d06f60ff2045888400495cd48aa7ccdfd1ea967",
+      "queueSha256": "edf53143980e53d06372951b28b2533f7d98b82ca3c60c12d55b1d3a9185387c",
+      "resultsSha256": "7c71fb1c9f79e48b74979178f883d0662f537e3ff7ec323772c9fa1b3bdbb84d",
+      "auditSha256": "340f9cf3d52c1536468420674b14f8594e37dac4313d46c3286b539774faf5fb"
+    },
+    {
       "batchId": "historical-recovery-248dccedbd31d232da98d8bc",
       "batchSha256": "4d769392375ec30178fadc3b63222a237e6a2c1d92f16793e07acc6de2b7a8ae",
       "queueSha256": "b7b1e3906e68d29c405543a4abcb400efa24570bdb4515e218c9850d73928885",
@@ -33484,6 +33912,20 @@
       "auditSha256": "2ac8d204a8e5369eb8fcb9aab988a75a74b75b263e786de7b1c95e031cf70ea7"
     },
     {
+      "batchId": "historical-recovery-3cc0c9d39e8a118ae157ff06-slice-ff059305b872",
+      "batchSha256": "d10b001caed09df0a1a5a7d99ae1737eeca7fb925af40333669dfb3e70f9fe7f",
+      "queueSha256": "45695b43f4e2e6ff8ef46a8fbcf88f31938fcabd9ebf473c4661151ed0c98e27",
+      "resultsSha256": "2482d031e6e1f255b594121462bdbf4b9c3e2954e401a2f43df8cba6ee9fe40b",
+      "auditSha256": "c54a43fa2d03294867d1730f0ca2a218fb8550108958011792070f111fd63fe8"
+    },
+    {
+      "batchId": "historical-recovery-572a1e42795d212221d3ce44-slice-b9139f93544e",
+      "batchSha256": "d1919ff5432d4223fba37647f34ed718ae7610af10d88fbba8931e6d45231a2e",
+      "queueSha256": "84cd8d69bd3022d32fd7a0c28f84e761e832d186a850994159dbca8f4b468b5f",
+      "resultsSha256": "7bad94fd1485a4aca2be2623c77f1b04907fb1a91b27baf9760577b9e1a60a2a",
+      "auditSha256": "ce7bb5e2c15fffbaf75bcd11dbbb3ad46e269775c941362e478597c9859a6012"
+    },
+    {
       "batchId": "historical-recovery-615091a0fa093d9ee58730e2",
       "batchSha256": "59eafac425b364f1ce32d1e5f5ccde2a98aba5f548d1235b700c25367b5aa605",
       "queueSha256": "cf75939e1bf0613de7c75684878d1d3b0f02e9e0f2ea0136314802435ef14669",
@@ -33510,6 +33952,13 @@
       "queueSha256": "f85ca39d465bbe27e9caf30b8c2107f94f60114509da2761c8a21645d72e49a5",
       "resultsSha256": "84b0aaffd3ba6a74a68970656f94e83034e608a0865291fc7bacd698a6c43c47",
       "auditSha256": "02e3e4bd8ff3a56b973fc0de6a34dff9724903fd519fdce1923e526a69021021"
+    },
+    {
+      "batchId": "historical-recovery-7a9a6102217bd3b716fe8bfc-slice-80a6a23a85c7",
+      "batchSha256": "a23af786be4b0e1fd76e50118ed453b577ec1d8f552d2d15ca37808661e87ab7",
+      "queueSha256": "ba27e354f7376bf82d804773524064fcdcb989b3c96e3fb9c7d22ee94fcd8e66",
+      "resultsSha256": "e50748d9ee4e9d84d7032e90d7db279c255be892d43324f1e4bbda9c597cdfd0",
+      "auditSha256": "2b68e2a22f5a27532a93a1afc9e5bd7758fb42fbc31b7faa0c197d64acf1e709"
     },
     {
       "batchId": "historical-recovery-7b2c065dfe78f0bcdc96676d-slice-a92f29a2522d",

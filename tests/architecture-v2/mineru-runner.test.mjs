@@ -47,6 +47,30 @@ test('MinerU runner produces one content-addressed content_list_v2 artifact with
   }
 });
 
+test('MinerU runner accepts a vanilla version response when the configured local model snapshot is attested', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-config-test-'));
+  const modelRoot = join(storageRoot, 'models', 'snapshots', 'ed6b654c018d742e65a17671e379c5e6ecc87ec9');
+  const configPath = join(storageRoot, 'mineru.json');
+  try {
+    await mkdir(modelRoot, { recursive: true });
+    await writeFile(configPath, JSON.stringify({ 'models-dir': { pipeline: modelRoot } }));
+    const result = await runMineruPdfToJson(Buffer.from('%PDF-1.7\nconfig-attestation'), {
+      storageRoot,
+      mineruConfigPath: configPath,
+      runCommand: async (_binary, args) => {
+        if (args[0] === '-v') return { stdout: 'mineru, version 3.4.4\n', stderr: '' };
+        const output = args[args.indexOf('-o') + 1];
+        await mkdir(join(output, 'source', 'auto'), { recursive: true });
+        await writeFile(join(output, 'source', 'auto', 'source_content_list_v2.json'), JSON.stringify(contentList));
+        return { stdout: 'done', stderr: '' };
+      },
+    });
+    assert.equal(result.derivedArtifact.modelRevision, 'ed6b654c018d742e65a17671e379c5e6ecc87ec9');
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
+});
+
 test('MinerU runner rejects parser drift and ambiguous output sets', async () => {
   const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-test-'));
   try {

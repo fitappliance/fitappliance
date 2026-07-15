@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-dea6ee323c3821323ba2dea9",
-  "generatedAt": "2026-07-15T17:26:39.491Z",
+  "batchId": "historical-recovery-462410298100cb6dd63a4797",
+  "generatedAt": "2026-07-15T19:10:49.740Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "edf53143980e53d06372951b28b2533f7d98b82ca3c60c12d55b1d3a9185387c"
+    "sha256": "7ae99675282a86efbe2cea1a1d5155cec1b41229b969eed5ada212a78c397867"
   },
   "policy": {
-    "version": "2026-07-15.1",
-    "sha256": "8e237b04fdd3323ae7da48f4323276181014472b6d67e46d959d7d22713e41e0"
+    "version": "2026-07-16.1",
+    "sha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
   },
   "selection": {
     "jobIds": [],
@@ -18,63 +18,7 @@
     "targetIds": [],
     "limit": null
   },
-  "artifactJobs": [
-    {
-      "jobId": "recovery_4c18cc6ada281fe07419a95b",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "targetIds": [
-        "recovery_target_0c12b47e910a3e4e41119095"
-      ]
-    },
-    {
-      "jobId": "recovery_5d8f265a43463f5855342cf5",
-      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
-      "authorityBrand": "Samsung",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "targetIds": [
-        "recovery_target_3dc96bc9ce548e8dcb1e1727"
-      ]
-    },
-    {
-      "jobId": "recovery_b0b1650cb757f9daa81ad826",
-      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g",
-      "authorityBrand": "LG",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_aa00f2c8ad207d4ad0768869"
-      ]
-    },
-    {
-      "jobId": "recovery_c5026312ccc47324099bca4b",
-      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
-      "authorityBrand": "LG",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_308bac8cfe8d6b46c5102b6b"
-      ]
-    },
-    {
-      "jobId": "recovery_fc3fc67f3ac5cea33a9ddec4",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_a322c67e53a71c89ee8ed646"
-      ]
-    }
-  ],
+  "artifactJobs": [],
   "targets": [
     {
       "targetId": "recovery_target_15e7e38fc54dc77ebe0dbced",
@@ -15258,13 +15202,29 @@
         "closedEnvelope.heightMm",
         "closedEnvelope.depthMm"
       ],
-      "primaryJobId": "recovery_4c18cc6ada281fe07419a95b",
-      "candidateJobIds": [
-        "recovery_4c18cc6ada281fe07419a95b"
-      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
+        "priorAttemptSuppressions": [
+          {
+            "attemptId": "historical_attempt_1ca3bc920a761d88a58ef284",
+            "sourceUrl": "https://www.fisherpaykel.com/au/cooling/freestanding/569l-series-7-french-door-refrigerator-freezer-ice-and-water-rf610adub5-26493.html",
+            "contentSha256": "3f06a8c91bc74c50ed8cb404d4835f7e21841b1520c220ada7b3ed513d008107",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          },
+          {
+            "attemptId": "historical_attempt_24307fd252b1a8d3f7ef392b",
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+            "contentSha256": "b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          }
+        ],
         "registryHints": [],
         "legacyHints": [
           {
@@ -31612,13 +31572,37 @@
         "closedEnvelope.heightMm",
         "closedEnvelope.depthMm"
       ],
-      "primaryJobId": "recovery_5d8f265a43463f5855342cf5",
-      "candidateJobIds": [
-        "recovery_5d8f265a43463f5855342cf5"
-      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
+        "priorAttemptSuppressions": [
+          {
+            "attemptId": "historical_attempt_3fcacd3f5e9826188db82113",
+            "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+            "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          },
+          {
+            "attemptId": "historical_attempt_4a582c626097b01ba47b571d",
+            "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=6558792&CDCttType=EM&VPath=EM%2F201607%2F20160725115923747%2FSmartControl_OneSheetGuide_EN_VN.pdf",
+            "contentSha256": "22681a753f2fc0fc6ca2182effc35cdd0e9a9d1458cd334aac2783012330130a",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          },
+          {
+            "attemptId": "historical_attempt_78bf4dd01e2813175ba45ce2",
+            "sourceUrl": "https://www.samsung.com/au/support/model/WW12BB944DGBSA/",
+            "contentSha256": "b3dfce8a46c3467b44423f4a93006e231ebd2c3239272f973baa063f05237613",
+            "status": "claims_incomplete",
+            "failureCode": "claim_semantics",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          }
+        ],
         "registryHints": [],
         "legacyHints": []
       }
@@ -82041,41 +82025,6 @@
       }
     },
     {
-      "targetId": "recovery_target_308bac8cfe8d6b46c5102b6b",
-      "referenceId": "fa_ref_2210a276b84ee0439b0ff1f2",
-      "legacyRuntimeId": "fridge-arf3177",
-      "canonicalProductId": "fa_prod_83c263d3a4d601a5e0df6a7d",
-      "brand": "LG",
-      "model": "GF-V500MBLC",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": "recovery_c5026312ccc47324099bca4b",
-      "candidateJobIds": [
-        "recovery_c5026312ccc47324099bca4b"
-      ],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 835,
-              "height": 1787,
-              "depth": 734
-            }
-          }
-        ],
-        "legacyHints": []
-      }
-    },
-    {
       "targetId": "recovery_target_dc4ae048f12fd2e141e1a28d",
       "referenceId": "fa_ref_42633e3a0e381d885501a3a3",
       "legacyRuntimeId": "ao-149675",
@@ -83340,10 +83289,8 @@
         "closedEnvelope.heightMm",
         "closedEnvelope.depthMm"
       ],
-      "primaryJobId": "recovery_fc3fc67f3ac5cea33a9ddec4",
-      "candidateJobIds": [
-        "recovery_fc3fc67f3ac5cea33a9ddec4"
-      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
@@ -83443,41 +83390,6 @@
             }
           }
         ]
-      }
-    },
-    {
-      "targetId": "recovery_target_aa00f2c8ad207d4ad0768869",
-      "referenceId": "fa_ref_4b9ea51ba47945c5ee8f95c3",
-      "legacyRuntimeId": "discovery-washing-machine-lg-wv9-1412w",
-      "canonicalProductId": "fa_prod_83f22d0c5c24cd044ae00974",
-      "brand": "LG",
-      "model": "WV9-1412W",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": "recovery_b0b1650cb757f9daa81ad826",
-      "candidateJobIds": [
-        "recovery_b0b1650cb757f9daa81ad826"
-      ],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:washing_machine",
-            "snapshotSha256": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 850,
-              "depth": 610
-            }
-          }
-        ],
-        "legacyHints": []
       }
     },
     {
@@ -235050,9 +234962,9 @@
     }
   ],
   "summary": {
-    "artifactJobs": 5,
-    "targets": 7674,
-    "candidateEdges": 5,
+    "artifactJobs": 0,
+    "targets": 7672,
+    "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 1,
     "excludedPriorCandidateJobs": 1
   }

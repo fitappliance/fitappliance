@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T17:26:39.491Z",
-  "semanticQueueSha256": "a68407263e8e5ae562b1698bcf3bee48d71ec8343dd720fe4731b9364edfe98b",
-  "sourceClassificationSha256": "2074fb0a57063e2bc0eeb97865529ca5f9f68523131abe9b77839ee91738f488",
+  "generatedAt": "2026-07-15T19:10:49.740Z",
+  "semanticQueueSha256": "a9abb473d2ce0a1850ca93eb511bee85a7c1ff45045169b5b77d624f79596801",
+  "sourceClassificationSha256": "2505323c1874b7d22df005ce5706f36716e25b158b7a235defb92726948dadba",
   "records": [
     {
       "schemaVersion": 1,
@@ -14948,37 +14948,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f86b7218b4e77f44bb25940c",
-      "referenceId": "fa_ref_00cc6e53a913629d8b005678",
-      "category": "fridge",
-      "brand": "Electrolux",
-      "model": "EBE5307BB-L",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d6bf110e98f341cd6c4b52c6"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_6a95c4426b450a22317c96dd"
-      ],
-      "legacyRuntimeIds": [
-        "ao-71184"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_843b353f370205b76eadfb11"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_76c1fab962cf9dc58a2b0615",
       "referenceId": "fa_ref_5993a7b8c439c409243401b9",
       "category": "fridge",
@@ -15439,6 +15408,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_fa1841899bd83f7ae17736fd"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_f86b7218b4e77f44bb25940c",
+      "referenceId": "fa_ref_00cc6e53a913629d8b005678",
+      "category": "fridge",
+      "brand": "Electrolux",
+      "model": "EBE5307BB-L",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "EBE5307BB-L",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_d6bf110e98f341cd6c4b52c6"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_6a95c4426b450a22317c96dd"
+      ],
+      "legacyRuntimeIds": [
+        "ao-71184"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_843b353f370205b76eadfb11"
       ],
       "offlineReplayOutcome": null
     },
@@ -25102,36 +25102,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_019c35aa55e5c6a9c06e6e19"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_cd41b1bfab995be354fd2bbc",
-      "referenceId": "fa_ref_2210a276b84ee0439b0ff1f2",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GF-V500MBLC",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family c40bbeb07ba8",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_7a9afc6bac1e4b9d88ca6eef",
-        "historical_source_e18c1b66cd04e86e9f202186"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "fridge-arf3177"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_83c263d3a4d601a5e0df6a7d"
       ],
       "offlineReplayOutcome": null
     },
@@ -35411,6 +35381,36 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_51bacf3210689c88a2bf5994",
+      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWF3S8514X",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "Hisense AU washer indexed dimension diagram",
+      "operationalClass": "OFFICIAL_REACQUIRE",
+      "route": "OFFICIAL_REACQUIRE",
+      "executionReadiness": "BOUNDED_READY",
+      "candidateSourceIds": [
+        "historical_source_86297d49af24af34f01e742b",
+        "historical_source_b365b8134957dd43fe49248f"
+      ],
+      "resolverIds": [
+        "hisense-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [],
+      "legacyRuntimeIds": [
+        "ao-178018"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_77299f50a5afccbd92f0551c"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_c183712005bb555b2ac9390e",
       "referenceId": "fa_ref_db0b9f6090d31125edee12b0",
       "category": "washing_machine",
@@ -35437,36 +35437,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_73374c1cd548ba724a612e2e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_51bacf3210689c88a2bf5994",
-      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
-      "category": "washing_machine",
-      "brand": "Hisense",
-      "model": "HWF3S8514X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_86297d49af24af34f01e742b",
-        "historical_source_b365b8134957dd43fe49248f"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "ao-178018"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_77299f50a5afccbd92f0551c"
       ],
       "offlineReplayOutcome": null
     },
@@ -36858,35 +36828,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_1be1d9852363f68e4cffc3bd"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_44f8710e27b41a91f61719a5",
-      "referenceId": "fa_ref_4b9ea51ba47945c5ee8f95c3",
-      "category": "washing_machine",
-      "brand": "LG",
-      "model": "WV9-1412W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family 2d559286f86e",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_d05515b8205015f092ac6238"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-lg-wv9-1412w"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_83f22d0c5c24cd044ae00974"
       ],
       "offlineReplayOutcome": null
     },
@@ -206783,19 +206724,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_7a9afc6bac1e4b9d88ca6eef",
-      "sourceUrl": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/GF-V500MBLC.json",
-        "source:doc_77efaa150f128b66a114cb24"
-      ],
-      "referenceIds": [
-        "fa_ref_2210a276b84ee0439b0ff1f2"
-      ]
-    },
-    {
       "sourceId": "historical_source_7acf077519844d1fbbe3db24",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/7/9/b/1/79b1395fa5a43ae46eeda2143d26470c39264ed9_Samsung_SR518WTC_525L_Top_Mount_Fridge_User_Manual.pdf",
       "sourceAuthority": "REFERENCE",
@@ -213839,19 +213767,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_d05515b8205015f092ac6238",
-      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WV9-1412W.json",
-        "pdf:2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b"
-      ],
-      "referenceIds": [
-        "fa_ref_4b9ea51ba47945c5ee8f95c3"
-      ]
-    },
-    {
       "sourceId": "historical_source_d05b8b1b3e05c052b93ac9fc",
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=irYywwLMKQrdaYb9RwmJA",
       "sourceAuthority": "NONE",
@@ -215323,18 +215238,6 @@
       ],
       "referenceIds": [
         "fa_ref_1b57c49fa3b17396b3f7230e"
-      ]
-    },
-    {
-      "sourceId": "historical_source_e18c1b66cd04e86e9f202186",
-      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "pdf:c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e"
-      ],
-      "referenceIds": [
-        "fa_ref_2210a276b84ee0439b0ff1f2"
       ]
     },
     {
@@ -217490,49 +217393,49 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 144,
+    "COMPLETE_RECEIPT": 146,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7951,
-    "uniqueReferences": 7951,
-    "candidateSources": 1613,
-    "candidateEdges": 1648,
+    "queuedModels": 7949,
+    "uniqueReferences": 7949,
+    "candidateSources": 1610,
+    "candidateEdges": 1645,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2109,
-      "CURRENT_RETAIL": 1279,
+      "CURRENT_RETAIL": 1277,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1377,
       "dryer": 820,
-      "fridge": 4277,
-      "washing_machine": 1477
+      "fridge": 4276,
+      "washing_machine": 1476
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
-      "OFFICIAL_REACQUIRE": 6,
+      "OFFICIAL_REACQUIRE": 4,
       "REFERENCE_REDISCOVERY": 1243
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 193,
       "OFFICIAL_DISCOVERY": 6426,
-      "OFFICIAL_REACQUIRE": 6,
+      "OFFICIAL_REACQUIRE": 4,
       "OFFICIAL_REDISCOVERY": 1243
     },
     "byExecutionReadiness": {
-      "BOUNDED_READY": 6,
+      "BOUNDED_READY": 4,
       "DISCOVERY_READY": 4587,
       "RESEARCH_REQUIRED": 276,
       "RESOLVER_GAP": 3082
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 144,
+      "COMPLETE_RECEIPT": 146,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T17:26:20.007Z",
-  "sourceBundleSha256": "e6f37763bbc77a8970a2ecbbd03ca362c159fff236ab10aca268b698b7e5d854",
+  "generatedAt": "2026-07-15T19:21:21.356Z",
+  "sourceBundleSha256": "b17d57a9cc0f66b3a173c2128c1dc31da86bdc19ff17fc3693125effa16b72cc",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -406,6 +406,20 @@
       "contentSha256": "97dba1d61e8ecd12292958e0fdf4f250d5b1925262f43fa60c6aa910fbfcd95e",
       "receiptBindingSha256": "c9553231bcdc46b953356ecc88413e1d3e49278073dc98bb23706558fe33c280",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/96/4a/964a6f36a2229ac4aa82967d84133bfe85cd9493231ee7bdde61524432d0e2e8.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_308bac8cfe8d6b46c5102b6b",
+      "referenceId": "fa_ref_2210a276b84ee0439b0ff1f2",
+      "brand": "LG",
+      "model": "GF-V500MBLC",
+      "category": "fridge",
+      "sourceUrl": "https://www.lg.com/au/fridge-freezers/french-door/gf-v500mblc/",
+      "sourcePdfSha256": null,
+      "contentSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e",
+      "receiptBindingSha256": "fa1c76e51ff2e74e1222bf8a42ed04fe46c06b57ad80b3850150507955bde53e",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -1446,6 +1460,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_aa00f2c8ad207d4ad0768869",
+      "referenceId": "fa_ref_4b9ea51ba47945c5ee8f95c3",
+      "brand": "LG",
+      "model": "WV9-1412W",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412w/",
+      "sourcePdfSha256": null,
+      "contentSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe",
+      "receiptBindingSha256": "e5e16e8790a5659b07035b74e74eb329debd7202b81e027e5a2d04184c3d8433",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_ab7d82289ce015c7c3e55a50",
       "referenceId": "fa_ref_3018aea4f60d6e0992fd8abe",
       "brand": "Westinghouse",
@@ -2063,11 +2091,11 @@
     }
   ],
   "summary": {
-    "entries": 125,
-    "sources": 147,
-    "passed": 147,
+    "entries": 127,
+    "sources": 149,
+    "passed": 149,
     "failed": 0
   },
-  "checkedObjects": 319,
-  "semanticAuditSha256": "198d6e39ddac0d09aabbbae7be2bddf5766cb7bc39411dd2fd69d540b6f8736a"
+  "checkedObjects": 321,
+  "semanticAuditSha256": "1e97a3acafab85cc7880d7401e321a6d32ff836bbd6f1dba135b2031543cc0b1"
 }

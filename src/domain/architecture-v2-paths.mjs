@@ -41,6 +41,7 @@ export const architectureV2Paths = Object.freeze({
   historicalEvidenceRecoveryBatch: `${base}/reviews/automated/historical-evidence-recovery-batch.json`,
   historicalEvidenceRecoveryResults: `${base}/reviews/automated/historical-evidence-recovery-results.json`,
   historicalEvidenceRecoveryAudit: `${base}/reviews/automated/historical-evidence-recovery-audit.json`,
+  historicalEvidenceRecoveryAttemptLedger: `${base}/reviews/automated/historical-evidence-recovery-attempt-ledger.json`,
   historicalAcceptanceReceiptReplayAudit: `${base}/reviews/automated/historical-acceptance-receipt-replay-audit.json`,
   historicalEvidenceRecoveryAcceptanceBundle: `${base}/reviews/automated/historical-evidence-recovery-acceptance-bundle.json`,
   historicalPdfOfflineReplayQueue: `${base}/reviews/automated/historical-pdf-offline-replay-queue.json`,
@@ -105,6 +106,7 @@ export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
   historicalEvidenceRecoveryBatch: Object.freeze(['historicalEvidenceRecoveryQueue']),
   historicalEvidenceRecoveryResults: Object.freeze(['historicalEvidenceRecoveryBatch']),
   historicalEvidenceRecoveryAudit: Object.freeze(['historicalEvidenceRecoveryResults']),
+  historicalEvidenceRecoveryAttemptLedger: Object.freeze(['historicalEvidenceRecoveryAudit']),
 });
 
 export const ARCHITECTURE_V2_BUILD_ORDER = Object.freeze(Object.keys(ARCHITECTURE_V2_BUILD_GRAPH));

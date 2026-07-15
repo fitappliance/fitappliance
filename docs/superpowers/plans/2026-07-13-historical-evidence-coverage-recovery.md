@@ -1585,6 +1585,33 @@ this task did not deploy them to the live site.
 publication, normal deployment is external-drive independent, and old runtime
 removal does not reduce discovery coverage.
 
+**Execution checkpoint (2026-07-16):** The cumulative audited bundle now has
+127 entries and 149 replay-valid source receipts. The rebuilt 8,095-model
+reference has 110 `AUTO_FILL`, 4,891 `REGISTRY_CONSISTENT`, 3,006
+`IDENTITY_ONLY` and 88 quarantined records. Evidence classification reports 146
+current-valid receipt targets; legacy receipt counts are not treated as current
+proof.
+
+The recovery policy advanced to `2026-07-16.1` after exact official scoped-depth
+reconciliation, MinerU tool attestation and the Hisense indexed-diagram grammar
+changed adjudication semantics. A full prior-object replay checked 321 objects
+before promotion. The append-only attempt ledger contains 19 failure events,
+two resolution events and three source-level acceptances. It can therefore
+remember that a source parsed successfully while leaving the product target in
+conflict quarantine.
+
+`HWF3S8514X` is the adversarial canary: its user manual proves appliance depth
+540 mm while its official 2026 specification PDF says 510 mm. The parser failure
+was resolved, but the product was not accepted. Same-policy source-success
+deduplication then removed the manual from the fetch queue without removing the
+target from future conflict research. After terminal, source-success and
+accepted-target gates, the next canonical batch contains zero artifact jobs.
+
+An attempted `--allow-all` run demonstrated that the flag also selects thousands
+of resolver-only targets. The run was stopped before treating it as evidence;
+future bounded runs must name explicit job IDs unless the entire batch has been
+inspected and is intentionally small.
+
 ---
 
 ## 9. Rollout Decision Gates

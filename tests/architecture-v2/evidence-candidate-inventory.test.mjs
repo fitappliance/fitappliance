@@ -1,7 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { collectEvidenceCandidates } from '../../src/domain/evidence-candidate-inventory.mjs';
+import {
+  collectEvidenceCandidates,
+  expandOptionalOfficialEvidenceCandidates,
+} from '../../src/domain/evidence-candidate-inventory.mjs';
 
 const TARGET = Object.freeze({
   id: 'target-westinghouse-whe6874ba',
@@ -237,4 +240,93 @@ test('inventory hash and ordering are deterministic under reversed resolver inpu
 
   assert.equal(first.candidateInventorySha256, second.candidateInventorySha256);
   assert.deepEqual(first, second);
+});
+
+test('failed attestation retains the immutable artifact binding for retry adjudication', async () => {
+  const url = 'https://www.westinghouse.com.au/manuals/wrong-family.pdf';
+  const artifactBinding = {
+    sourceUrl: url,
+    finalUrl: url,
+    contentSha256: 'f'.repeat(64),
+    objectPath: `evidence/web/sha256/ff/ff/${'f'.repeat(64)}.pdf`,
+    contentType: 'application/pdf',
+    byteSize: 1234,
+  };
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: ['job-family'],
+    activeReceiptSources: [],
+    resolvers: [resolver({ candidates: [candidate(url, { batchJobId: 'job-family' })] })],
+    acquireAndAttest: async () => {
+      throw Object.assign(new Error('structured exact-model identity signal required'), {
+        code: 'identity',
+        artifactBinding,
+      });
+    },
+  });
+
+  assert.equal(inventory.candidates[0].outcome.status, 'identity_rejected');
+  assert.deepEqual(inventory.candidates[0].outcome.artifactBinding, artifactBinding);
+});
+
+test('prior terminal source is suppressed while a newly discovered official source remains executable', async () => {
+  const oldUrl = 'https://www.westinghouse.com.au/manuals/family.pdf';
+  const newUrl = 'https://www.westinghouse.com.au/manuals/exact-model.pdf';
+  const calls = [];
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    priorAttemptSuppressions: [{
+      attemptId: 'attempt-old',
+      sourceUrl: oldUrl,
+      contentSha256: 'e'.repeat(64),
+      status: 'identity_rejected',
+      failureCode: 'identity',
+      policySha256: 'p'.repeat(64),
+    }],
+    resolvers: [resolver({ candidates: [candidate(oldUrl), candidate(newUrl)] })],
+    acquireAndAttest: async (entry) => {
+      calls.push(entry.sourceUrl);
+      return { source: source('d'.repeat(64), entry.sourceUrl) };
+    },
+  });
+
+  assert.deepEqual(calls, [newUrl]);
+  assert.equal(
+    inventory.candidates.find((entry) => entry.sourceUrl === oldUrl).outcome.status,
+    'previous_terminal_suppressed',
+  );
+  assert.equal(
+    inventory.candidates.find((entry) => entry.sourceUrl === newUrl).outcome.status,
+    'accepted',
+  );
+});
+
+test('optional product-page failure also retains its immutable artifact binding', async () => {
+  const url = 'https://www.samsung.com/au/support/model/WW12BB944DGBSA/';
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolvers: [resolver({ candidates: [candidate(url, {
+      sourceRole: 'manufacturer_product_page', requiredAttempt: false,
+    })] })],
+    acquireAndAttest: async () => assert.fail('optional source is not acquired in the initial pass'),
+  });
+  const artifact = {
+    sourceUrl: url,
+    finalUrl: url,
+    contentSha256: '9'.repeat(64),
+    objectPath: `evidence/web/sha256/99/99/${'9'.repeat(64)}.html`,
+    contentType: 'text/html',
+    byteSize: 2048,
+  };
+  const expanded = await expandOptionalOfficialEvidenceCandidates(inventory, {
+    acquireAndAttest: async () => {
+      throw Object.assign(new Error('exact page has no supported dimension claims'), {
+        code: 'claim_semantics', artifactBinding: artifact,
+      });
+    },
+  });
+
+  assert.equal(expanded.candidates[0].outcome.status, 'claims_incomplete');
+  assert.deepEqual(expanded.candidates[0].outcome.artifactBinding, artifact);
 });

@@ -112,10 +112,15 @@ function dependencies(overrides = {}) {
   return {
     acquireArtifact: async (artifactJob, context) => {
       await context.withMineru(async () => {});
+      const contentSha256 = artifactJob.jobId.padEnd(64, '0').slice(0, 64).replace(/[^a-f0-9]/g, 'a');
       return {
         jobId: artifactJob.jobId,
         sourceUrl: artifactJob.sourceUrl,
-        contentSha256: artifactJob.jobId.padEnd(64, '0').slice(0, 64).replace(/[^a-f0-9]/g, 'a'),
+        finalUrl: artifactJob.sourceUrl,
+        contentSha256,
+        objectPath: `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.pdf`,
+        contentType: 'application/pdf',
+        byteSize: 1024,
       };
     },
     attestTarget: async (targetRecord, artifact) => ({ source: attestedSource(targetRecord, artifact) }),
@@ -411,6 +416,11 @@ test('required PDF identity failure falls back to an exact official product page
     'not_attempted_optional',
   );
   assert.equal(outcome.sources[0].sourceType, 'official_exact_model_html');
+  assert.equal(
+    outcome.candidateInventory.candidates.find((candidate) => candidate.sourceUrl.endsWith('.pdf'))
+      .outcome.artifactBinding.contentSha256,
+    artifactJob.jobId.padEnd(64, '0').slice(0, 64).replace(/[^a-f0-9]/g, 'a'),
+  );
 });
 
 test('non-accepted reconciliation retains diagnostic candidates but exposes no releasable sources', async () => {

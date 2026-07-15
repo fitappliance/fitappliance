@@ -766,6 +766,49 @@ Operational commands, staged outcomes, resume rules, release ordering and
 rollback are canonical in
 [Historical Evidence Recovery Runbook](architecture-v2/historical-evidence-recovery-runbook.md).
 
+### 9.5 Automated evidence closure checkpoint (2026-07-16)
+
+Evidence recovery is a two-level state machine. Candidate-source success means
+that a specific official artifact, content hash, exact-model identity and set of
+field claims passed the current parser and policy. Product-target acceptance is
+a separate decision requiring all applicable exact-model sources to reconcile.
+The first state may be true while the second remains quarantined.
+
+The append-only attempt ledger is the durable control plane for that distinction.
+It retains failed attempts, appends audited resolutions, records source-level
+acceptances and suppresses redundant same-policy downloads. Failures are never
+deleted; a changed parser or policy hash can reopen them. A successful source
+does not make its product publishable, and an unresolved target continues to be
+available for alternative-source research.
+
+The production canary is Hisense `HWF3S8514X`. Its official user manual identifies
+the exact model and maps diagram `A/B/E/F` to `595/845/540/1020 mm`, where `E` is
+appliance depth and `F` is door-open depth. Its official 2026 specification PDF
+states net dimensions `595 x 845 x 510 mm`. The source-level parser failure is
+resolved, but the exact-model official conflict remains quarantined. No value is
+chosen by majority, recency or retailer agreement.
+
+The current tracked evidence state contains 127 cumulative accepted targets and
+149 replay-valid source receipts. The 8,095-model replacement reference contains
+110 `AUTO_FILL`, 4,891 `REGISTRY_CONSISTENT`, 3,006 `IDENTITY_ONLY` and 88
+quarantined rows. The dimension-expression corpus contains 638 MinerU indexes,
+637 valid source bindings, 902 observations, 158 parser profiles and 701 parser
+replays. These figures measure evidence processing, not Fit completeness.
+
+The locked publication rules are:
+
+- exact official depth may override a lower-authority registry hint only when
+  the source explicitly scopes depth to the closed product, door or handle;
+- official-versus-official disagreement remains quarantined until an exact-model
+  source explains the measurement scope or supersession;
+- successful W/H/D evidence cannot produce `VERIFIED_FIT`; installation,
+  operation, service and connection requirements remain independently required;
+- old-appliance replacement continues to compare external W/H/D directly and
+  remains separate from cavity Fit decisions;
+- broad online recovery must use explicit bounded selections. `--allow-all` is
+  prohibited for large resolver-only batches unless the entire run is an
+  intentional, reviewed scale operation.
+
 ## 10. Success Metrics
 
 Track coverage and truth separately:

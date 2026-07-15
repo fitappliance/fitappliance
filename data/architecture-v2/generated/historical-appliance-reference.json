@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "e6f37763bbc77a8970a2ecbbd03ca362c159fff236ab10aca268b698b7e5d854"
+    "historical-recovery:historical-recovery-cumulative-v1": "ac12cb37ce8f349dd6ce49b28315822521cc7c9df0c7aeaf25693f1cce745324"
   },
   "records": [
     {
@@ -189337,12 +189337,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 835,
         "height": 1787,
-        "depth": 734
+        "depth": 721
       },
       "sources": [
         {
@@ -189356,6 +189356,11 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_308bac8cfe8d6b46c5102b6b",
+          "snapshotSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e",
+          "sourceLines": []
         }
       ],
       "catalogProductIds": [
@@ -189363,8 +189368,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_308bac8cfe8d6b46c5102b6b",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/french-door/gf-v500mblc/",
+          "contentSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e",
+          "receiptBindingSha256": "fa1c76e51ff2e74e1222bf8a42ed04fe46c06b57ad80b3850150507955bde53e",
+          "verifiedAt": "2026-07-15T18:36:04.356Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/00/c8/00c8deba15ae826604354035351a2eae309bf4ee91398214d413ed594814cb6e.html"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -292401,12 +292433,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 600,
         "height": 850,
-        "depth": 610
+        "depth": 660
       },
       "sources": [
         {
@@ -292420,6 +292452,11 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_aa00f2c8ad207d4ad0768869",
+          "snapshotSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe",
+          "sourceLines": []
         }
       ],
       "catalogProductIds": [
@@ -292427,8 +292464,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_aa00f2c8ad207d4ad0768869",
+          "sourceUrl": "https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412w/",
+          "contentSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe",
+          "receiptBindingSha256": "e5e16e8790a5659b07035b74e74eb329debd7202b81e027e5a2d04184c3d8433",
+          "verifiedAt": "2026-07-15T18:36:19.894Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/c4/76/c47621f0e56a57cdceee24b93a4aa393256835e5d20f52220afee4dcf1e70dfe.html"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -316493,17 +316557,17 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4893,
+      "REGISTRY_CONSISTENT": 4891,
       "IDENTITY_ONLY": 3006,
-      "MODEL_RECEIPT": 97,
+      "MODEL_RECEIPT": 99,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4893,
+      "CONFIRM_REQUIRED": 4891,
       "MEASURE_REQUIRED": 3006,
-      "AUTO_FILL": 108,
+      "AUTO_FILL": 110,
       "QUARANTINED": 88
     }
   }

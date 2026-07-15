@@ -292,6 +292,8 @@ ordering error.
 Review all changed tracked artifacts together, including:
 
 - cumulative acceptance bundle;
+- append-only attempt ledger, source-level acceptances and failure resolutions;
+- acceptance receipt replay audit;
 - public catalogue projection and runtime category projections;
 - historical reference, four replacement-reference shards and metadata;
 - historical publication manifest and replacement audit;
@@ -359,3 +361,45 @@ receipts or write public data. The `*-official.js` finder modules are still live
 `architecture-v2-resolver-adapters.mjs` imports their discovery exports. Do not
 delete those finders until equivalent native resolvers have parity fixtures and
 repository search proves no production or Architecture V2 caller remains.
+
+## 11. Automated evidence closure checkpoint on 2026-07-16
+
+Policy `2026-07-16.1` closes the loop at two independent levels:
+
+1. a candidate source can move from a typed failure to a source-level accepted
+   fact without erasing the original attempt;
+2. the product target is promoted only when all accepted exact-model sources
+   reconcile. A source-level acceptance never overrides a target conflict.
+
+Promotion writes three bound artifacts as one operation: the cumulative
+acceptance bundle, the append-only attempt ledger and the acceptance-receipt
+replay audit. The ledger retains terminal and transient failures, appends
+audited resolutions, and records official candidates that parsed successfully
+even when the enclosing product remains quarantined. Same-policy terminal
+sources and same-policy accepted sources are removed from future fetch edges;
+the target remains resolver-only so alternative official evidence can still be
+researched. Changing the recovery policy hash deliberately reopens those edges.
+
+The real Hisense `HWF3S8514X` run proves the distinction. Its official user
+manual now parses page 11 as width `595`, height `845`, appliance depth `540`
+and door-open depth `1020`. The exact-model 2026 specification PDF states
+`595 x 845 x 510 mm`. Both sources are retained as successful evidence, but the
+target remains `conflict_quarantined`; it is not in the acceptance bundle and
+cannot issue a public dimension or Fit claim.
+
+Current measured state:
+
+- cumulative bundle: 127 entries and 149 source receipts, all 149 replayed;
+- attempt ledger: 19 failures, two resolution events, three source-level
+  acceptances, 12 active same-policy suppressions and six transient retries;
+- historical reference: 8,095 records, 110 `AUTO_FILL` and 88 quarantined;
+- dimension corpus: 638 MinerU indexes, 637 valid bindings, 902 observations,
+  158 parser profiles and 701 parser replays;
+- next canonical batch: zero artifact jobs after terminal, source-success and
+  prior-target deduplication.
+
+Do not use `--allow-all` on a batch containing thousands of resolver-only
+targets. It intentionally selects those targets and can launch broad online
+discovery. For a reviewed canary or policy replay, pass explicit `--job-id`
+values. Use `--allow-all` only when the materialized target and job counts are
+small, inspected and intentionally in scope.

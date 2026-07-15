@@ -26,6 +26,7 @@ import {
   validateHistoricalEvidenceRecoveryResults,
 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { runMineruPdfWithImageFallback } from '../../src/domain/mineru-runner.mjs';
+import { attestMineruToolIdentity } from '../../src/domain/mineru-tool-identity.mjs';
 import { fetchOfficialArtifactResilient } from '../../src/domain/official-artifact-transport.mjs';
 import { runReceiptBoundEvidenceBatch } from '../../src/domain/receipt-bound-evidence-batch-runner.mjs';
 import { buildArchitectureV2ResolverAdapters } from '../pdf-pipeline/architecture-v2-resolver-adapters.mjs';
@@ -269,8 +270,14 @@ export function manufacturerSourcePolicyIdentity(document) {
 async function defaultVerifyTools(policy) {
   const binary = process.env.FITAPPLIANCE_MINERU_BIN ?? 'mineru';
   const { stdout } = await execFile(binary, ['-v'], { timeout: 30_000, maxBuffer: 1024 * 1024 });
-  const version = /\bversion\s+(\d+\.\d+\.\d+)\b/i.exec(stdout)?.[1];
-  const revision = /\bfitappliance-model-revision\s+([a-f0-9]{40})\b/i.exec(stdout)?.[1];
+  const identity = await attestMineruToolIdentity({
+    stdout,
+    backend: policy.parser.backend,
+    expectedVersion: policy.parser.version,
+    configPath: process.env.MINERU_TOOLS_CONFIG_JSON ?? null,
+  });
+  const version = identity.version;
+  const revision = identity.modelRevision;
   if (version !== policy.parser.version || revision !== policy.parser.modelRevision) {
     throw new Error('MinerU tool identity does not match recovery policy');
   }
@@ -283,10 +290,11 @@ async function defaultVerifyTools(policy) {
     'data/architecture-v2/policies/manufacturer-source-policy.json',
   ), 'utf8'));
   return {
-    runnerVersion: '3',
+    runnerVersion: '4',
     nodeVersion: process.version,
     mineruVersion: version,
     modelRevision: revision,
+    modelRevisionSource: identity.modelRevisionSource,
     claimSemanticsVersion: 2,
     manufacturerDocumentStrategiesSha256: manufacturerDocumentStrategiesIdentity(manufacturerStrategies),
     manufacturerSourcePolicySha256: manufacturerSourcePolicyIdentity(manufacturerSourcePolicy),

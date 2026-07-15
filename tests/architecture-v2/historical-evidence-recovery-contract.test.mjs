@@ -394,3 +394,24 @@ test('bundle batch rollback is hash-bound and removes only one promoted lineage'
     expectedBundleSha256: canonicalJsonSha256(input),
   }), /lineage/i);
 });
+
+test('bundle batch rollback can remove a terminal-only lineage with no promoted entries', () => {
+  const input = bundle({
+    entries: [],
+    lineage: [{
+      batchId: 'historical-recovery-terminal-only',
+      batchSha256: SHA_A,
+      queueSha256: SHA_B,
+      resultsSha256: SHA_C,
+      auditSha256: 'd'.repeat(64),
+    }],
+  });
+  const result = rollbackHistoricalEvidenceRecoveryBundleBatch(input, {
+    batchId: 'historical-recovery-terminal-only',
+    expectedBundleSha256: canonicalJsonSha256(input),
+  });
+
+  assert.equal(result.removedEntries, 0);
+  assert.deepEqual(result.bundle.entries, []);
+  assert.deepEqual(result.bundle.lineage, []);
+});

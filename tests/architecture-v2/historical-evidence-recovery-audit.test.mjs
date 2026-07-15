@@ -427,6 +427,7 @@ test('promotion CLI receipt-audits the prospective cumulative bundle before publ
   const auditPath = join(storageRoot, 'audit.json');
   const bundlePath = join(storageRoot, 'bundle.json');
   const receiptAuditPath = join(storageRoot, 'receipt-audit.json');
+  const attemptLedgerPath = join(storageRoot, 'attempt-ledger.json');
   await writeFile(resultsPath, `${JSON.stringify(fixture.results)}\n`);
   await writeFile(auditPath, `${JSON.stringify(audit)}\n`);
 
@@ -435,14 +436,26 @@ test('promotion CLI receipt-audits the prospective cumulative bundle before publ
     audit: auditPath,
     bundle: bundlePath,
     receiptAudit: receiptAuditPath,
+    attemptLedger: attemptLedgerPath,
     storageRoot,
   });
   const persistedBundle = JSON.parse(await readFile(bundlePath, 'utf8'));
   const receiptAudit = JSON.parse(await readFile(receiptAuditPath, 'utf8'));
+  const attemptLedger = JSON.parse(await readFile(attemptLedgerPath, 'utf8'));
   assert.equal(bundle.entries.length, 1);
   assert.deepEqual(persistedBundle, bundle);
   assert.deepEqual(receiptAudit.summary, { entries: 1, sources: 1, passed: 1, failed: 0 });
   assert.equal(receiptAudit.sourceBundleSha256, canonicalJsonSha256(bundle));
+  assert.deepEqual(attemptLedger.summary, {
+    entries: 0,
+    resolutions: 0,
+    sourceAcceptances: 1,
+    suppressions: 0,
+    resolvedSuppressions: 0,
+    retryable: 0,
+    byStatus: {},
+    byDisposition: {},
+  });
 });
 
 test('full audit repairs a legacy misparse only from the identical immutable artifact', async () => {
