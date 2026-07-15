@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-bc5ea4511b4bded625928b82",
-  "generatedAt": "2026-07-16T00:00:00.000Z",
+  "batchId": "historical-recovery-535d87e16b4a3f2b707449ab",
+  "generatedAt": "2026-07-15T22:12:08.086Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "9b614fecb69378ee304970886cc5dde0da890107c38c6fa401203f7ed896dce1"
+    "sha256": "03f61324fb8bb103313e9a9a9fbb8d8483a1d8245a7ee6ca398ef9f6e4ff791e"
   },
   "policy": {
     "version": "2026-07-16.1",
@@ -3637,38 +3637,6 @@
       }
     },
     {
-      "targetId": "recovery_target_c93cbc13ad6270a27790745f",
-      "referenceId": "fa_ref_da8ad81fab1260fec2d8f8c4",
-      "legacyRuntimeId": "ao-644",
-      "canonicalProductId": "fa_prod_3c06815cada14c20b100d88c",
-      "brand": "Fisher & Paykel",
-      "model": "DW60CDW2",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_b9dfec7e36b4cf7185eb890e",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 850,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_16b918e68d48076bd93a0700",
       "referenceId": "fa_ref_a60f253b70404d2122cef804",
       "legacyRuntimeId": "ao-12329",
@@ -3719,6 +3687,16 @@
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
+        "priorAttemptSuppressions": [
+          {
+            "attemptId": "historical_attempt_f7c36fdad3db8433b45f910e",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QC5OMMA1&dpt=",
+            "contentSha256": "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          }
+        ],
         "registryHints": [],
         "legacyHints": [
           {
@@ -3751,6 +3729,32 @@
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
+        "priorAttemptSuppressions": [
+          {
+            "attemptId": "historical_attempt_9459e84e38cee9749c7741e5",
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
+            "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          },
+          {
+            "attemptId": "historical_attempt_933bb16ff80138ef9c1ad22b",
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/6tt5frjqwhj3xgg9xzvknn/FP-QuickStartGuide-DW60FC4-Dishwasher-0-591227C-NZ-AU.pdf",
+            "contentSha256": "2baca8c12fc7ba9675466a252dc793f8ea675f0fdbc147e9fe83f25f9e39051c",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          },
+          {
+            "attemptId": "historical_attempt_de8868ce51ea3e4626116d35",
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/tnpc7znrqvkmnpmtckng5rrf/FP-UserGuide-en-DW60FC-DW60UC-Dishwasher-0-591216E-NZ-AU.pdf",
+            "contentSha256": "12b4379f29ec337142dd66a724e0781d094e056ae6eb905734a7a292b58bf584",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          }
+        ],
         "registryHints": [],
         "legacyHints": [
           {
@@ -3783,6 +3787,32 @@
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
+        "priorAttemptSuppressions": [
+          {
+            "attemptId": "historical_attempt_f65afefef4c4b2b8a4a856fb",
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/6tt5frjqwhj3xgg9xzvknn/FP-QuickStartGuide-DW60FC4-Dishwasher-0-591227C-NZ-AU.pdf",
+            "contentSha256": "2baca8c12fc7ba9675466a252dc793f8ea675f0fdbc147e9fe83f25f9e39051c",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          },
+          {
+            "attemptId": "historical_attempt_407991f0dea8d0a3664d61f2",
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
+            "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          },
+          {
+            "attemptId": "historical_attempt_926f73fffacf1c0835bf90bd",
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/tnpc7znrqvkmnpmtckng5rrf/FP-UserGuide-en-DW60FC-DW60UC-Dishwasher-0-591216E-NZ-AU.pdf",
+            "contentSha256": "12b4379f29ec337142dd66a724e0781d094e056ae6eb905734a7a292b58bf584",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          }
+        ],
         "registryHints": [],
         "legacyHints": [
           {
@@ -8463,38 +8493,6 @@
               "width": 600,
               "height": 830,
               "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_986021baa3facd3fc3c412c6",
-      "referenceId": "fa_ref_cc1f292dc96cbc6df3c222d3",
-      "legacyRuntimeId": "discovery-dryer-fisher-paykel-de7060p2",
-      "canonicalProductId": "fa_prod_6b38e40353b20b2870b4ce04",
-      "brand": "Fisher & Paykel",
-      "model": "DE7060P2",
-      "category": "dryer",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_392e04ba64f8d6f3fcab41fa",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 830,
-              "depth": 580
             }
           }
         ]
@@ -14695,6 +14693,24 @@
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
+        "priorAttemptSuppressions": [
+          {
+            "attemptId": "historical_attempt_df95fbd4c5a0b9b7c3d7bb23",
+            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/brfvf8554mmwxs3cp6bjmmgn/FP-UserGuide-en-RF605QDU-RF605QN-RF605QZ-RF605QD-FridgeFreezer-0-867164D-NZ-AU-EU-UK-IE-SG.pdf",
+            "contentSha256": "281b6d23d315786de144b47b6e0b23df435c9d5240ba9eb307039f027aa6a7be",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          },
+          {
+            "attemptId": "historical_attempt_9ffc0452924bad316314b1ed",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007o84nIAA&d=%2Fa%2FJw000000KCRd%2F4vqflmzSDMKWOkSgMdFwimBFMbaXDvWCEGDYdVqXs90&operationContext=DELIVERY&viewId=05HJw00000QC7d3MAD&dpt=",
+            "contentSha256": "5f193647228a2da24a8469512fe4df4352578a3d5af4db430b046aebbcc50e28",
+            "status": "identity_rejected",
+            "failureCode": "identity",
+            "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc"
+          }
+        ],
         "registryHints": [],
         "legacyHints": [
           {
@@ -27879,70 +27895,6 @@
       }
     },
     {
-      "targetId": "recovery_target_e1a1fff25a367a8e5420f358",
-      "referenceId": "fa_ref_8a87ed1b3c9163181b73ae08",
-      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1060pg5",
-      "canonicalProductId": "fa_prod_3f74412f8e17a28ff2f33ab7",
-      "brand": "Fisher & Paykel",
-      "model": "WH1060PG5",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_dcc841af66a2622f52eb36cf",
-            "dimensionsMm": {
-              "width": 602,
-              "height": 850,
-              "depth": 593
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_83f0f6e20bccf3d250b69a52",
-      "referenceId": "fa_ref_c39413faf56e81ee697117cb",
-      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1260pg5",
-      "canonicalProductId": "fa_prod_4cd3e73c4763e88e496431f4",
-      "brand": "Fisher & Paykel",
-      "model": "WH1260PG5",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_5099a34b42d86127d3444a25",
-            "dimensionsMm": {
-              "width": 602,
-              "height": 850,
-              "depth": 661
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_5e422450051af459721bcaa8",
       "referenceId": "fa_ref_049a668e5394075407e1c504",
       "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1260r5",
@@ -28161,38 +28113,6 @@
               "width": 640,
               "height": 870,
               "depth": 645
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_70a48bd09d9ea485bbebacb3",
-      "referenceId": "fa_ref_1f4c35af57e37917cf0d0f3f",
-      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh9060pg5",
-      "canonicalProductId": "fa_prod_a6e16f69836e8157850d3062",
-      "brand": "Fisher & Paykel",
-      "model": "WH9060PG5",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_3d1113d469f1cc4f3f0b2d00",
-            "dimensionsMm": {
-              "width": 602,
-              "height": 850,
-              "depth": 593
             }
           }
         ]
@@ -234450,7 +234370,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7656,
+    "targets": 7651,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

@@ -133,12 +133,15 @@ function buildFisherPaykelSkuSearchVariants(sku) {
 
 function classifyResource(context, url) {
   const urlText = String(url || '');
+  const haystack = `${context || ''} ${urlText}`;
+  if (/Parts?\s+Manual|Spare\s+Parts?|fpa[-_/ ]parts|parts[-_/ ]dishwashers|exploded\s+(?:view|diagram)/i.test(haystack)) {
+    return 'parts_manual';
+  }
   if (/\/QRG\/|QRG[-_]?AU/i.test(urlText)) return 'quick_reference_guide';
   if (/EnergyLabel|Energy\s*Label/i.test(urlText)) return 'energy_label';
   if (/Install(?:ation)?|Install[-_ ]?Guide/i.test(urlText)) return 'installation_manual';
   if (/UserGuide|User[-_]?Manual/i.test(urlText)) return 'user_manual';
 
-  const haystack = `${context || ''} ${urlText}`;
   if (/QRG|Quick\s+Reference/i.test(haystack)) return 'quick_reference_guide';
   if (/Specification|Spec\s+Sheet|Data\s*Sheet/i.test(haystack)) return 'specification_sheet';
   if (/Install|Installation/i.test(haystack)) return 'installation_manual';
@@ -154,8 +157,56 @@ function scoreResource(resource) {
     installation_manual: 70,
     user_manual: 20,
     pdf: 10,
+    parts_manual: -30,
     energy_label: -20
   }[resource.type] ?? 0;
+}
+
+function visibleArticleText(value) {
+  return decodeHtml(String(value || ''))
+    .replace(/https?:\/\/[^\s"'<>]+/gi, ' ')
+    .replace(/<[^>]*>/g, ' ');
+}
+
+function modelLikeTokens(value) {
+  return visibleArticleText(value)
+    .match(/\b[A-Za-z]{2,}[A-Za-z0-9-]*\d[A-Za-z0-9-]*\b/g)
+    ?.map(normalizeSku) ?? [];
+}
+
+function isBoundedFamilyToken(token, targetSku) {
+  if (!token || token.length >= targetSku.length || token.length < 6) return false;
+  const familyStem = token.slice(0, -1);
+  const revision = token.at(-1);
+  return /\d/.test(revision)
+    && targetSku.startsWith(familyStem)
+    && targetSku.endsWith(revision);
+}
+
+function hasConflictingModelToken(value, sku) {
+  const targetSku = normalizeSku(sku);
+  if (!targetSku) return true;
+  const prefix = targetSku.match(/^[A-Z]{2,}/)?.[0] ?? targetSku.slice(0, 2);
+  return modelLikeTokens(value).some((token) => (
+    token !== targetSku
+      && token.startsWith(prefix)
+      && !isBoundedFamilyToken(token, targetSku)
+  ));
+}
+
+function isExplicitDimensionResourceType(type) {
+  return [
+    'quick_reference_guide',
+    'specification_sheet',
+    'installation_manual',
+    'user_manual'
+  ].includes(type);
+}
+
+function isDimensionCandidateResource(resource) {
+  return resource?.type !== 'parts_manual'
+    && resource?.type !== 'energy_label'
+    && Number(resource?.score) > 0;
 }
 
 function extractPdfResources(productHtml) {
@@ -317,17 +368,27 @@ function extractSupportProductResources(payload, sku) {
 
   for (const article of payload?.product?.articles || []) {
     const articleScope = [article.title, article.summary, article.articleBody].filter(Boolean).join(' ');
-    if (!containsExactSku(articleScope, targetSku)) continue;
     const context = [article.articleType, article.title].filter(Boolean).join(' ');
+    const type = classifyResource(context, '');
+    const exactModelArticle = containsExactSku(articleScope, targetSku);
+    if (type === 'parts_manual' && !exactModelArticle) continue;
+    if (!exactModelArticle && (
+      !isExplicitDimensionResourceType(type)
+      || hasConflictingModelToken(articleScope, targetSku)
+    )) continue;
     for (const url of extractDocumentUrls(article.articleBody)) {
-      const type = classifyResource(context, url);
+      const resolvedType = classifyResource(context, url);
       resources.push({
         url,
-        type,
-        score: scoreResource({ type }),
+        type: resolvedType,
+        score: scoreResource({ type: resolvedType }),
         articleId: article.id || null,
         articleUrlName: article.urlName || null,
-        evidenceScope: 'exact_model_article'
+        evidenceScope: resolvedType === 'parts_manual'
+          ? 'exact_model_identity_article'
+          : exactModelArticle
+            ? 'exact_model_article'
+            : 'exact_support_product_article'
       });
     }
   }
@@ -633,8 +694,9 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
       score: Math.max(existing.score ?? 0, resource.score ?? 0),
     });
   }
-  const resources = [...merged.values()];
-  const best = resources.find((resource) => resource.score > 0) || null;
+  const resources = [...merged.values()]
+    .sort((a, b) => (b.score ?? 0) - (a.score ?? 0) || a.url.localeCompare(b.url));
+  const best = resources.find(isDimensionCandidateResource) || null;
   if (best) {
     return {
       sku,
@@ -651,6 +713,7 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
         ? `fisher-paykel-official-support-${best.type}`
         : `fisher-paykel-official-${best.type}`,
       resourceType: best.type,
+      dimensionResourceCount: resources.filter(isDimensionCandidateResource).length,
       resources,
       failures: [...productFailures, ...support.failures]
     };
@@ -665,9 +728,14 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
     supportMarket: support.supportMarket,
     sourceUrl: null,
     source: 'fisher-paykel-official',
+    dimensionResourceCount: 0,
     resources,
     failures: [...productFailures, ...support.failures],
-    reason: productPageUrl ? 'pdf_resource_not_found' : 'product_page_not_found'
+    reason: resources.length || support.productPageUrl
+      ? 'dimension_resource_not_found'
+      : productPageUrl
+        ? 'pdf_resource_not_found'
+        : 'product_page_not_found'
   };
 }
 

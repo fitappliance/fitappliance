@@ -73,6 +73,7 @@ function hasLowerAuthorityDimensionConflict(caseRecord) {
 
 function normalizeDocumentType(value) {
   const text = String(value ?? '').toLowerCase().replace(/[\s-]+/g, '_');
+  if (/(?:^|_)parts?(?:_|$)|(?:^|_)spare(?:_|$)/.test(text)) return 'parts_manual';
   if (/family/.test(text)) return 'family_manual';
   if (/quick_reference|quick_start|\bqrg\b|\bqsg\b/.test(text)) return 'quick_reference_guide';
   if (/design_guide/.test(text)) return 'design_guide';
@@ -80,6 +81,12 @@ function normalizeDocumentType(value) {
   if (/fact|spec|data_sheet|technical|product_card/.test(text)) return 'specification_sheet';
   if (/owner|user|operat|instruction|manual/.test(text)) return 'user_manual';
   return 'family_manual';
+}
+
+function isFisherPaykelDimensionResource(resource) {
+  const type = normalizeDocumentType(resource?.type ?? resource?.documentType ?? resource?.resourceType);
+  return type !== 'parts_manual'
+    && !excludedDocument(resource, resourceUrl(resource));
 }
 
 function typedCandidate({
@@ -271,7 +278,7 @@ export function createFisherPaykelResolverAdapter(options = {}) {
   const finder = options.finder ?? findFisherPaykelOfficialPdf;
   return createEvidenceSourceResolverAdapter({
     resolverId: 'fisher-paykel-official-support',
-    version: '2',
+    version: '3',
     scope: 'exact_model_product_page_and_support_documents',
     required: true,
     async resolve(caseRecord) {
@@ -281,20 +288,17 @@ export function createFisherPaykelResolverAdapter(options = {}) {
       }
       try {
         const result = await finder(target, options.finderOptions ?? {});
-        if (!result?.sourceUrl) {
-          return { completion: 'complete', candidates: [], failures: [] };
-        }
         const modelHint = result.matchedSku || target.model;
         const listedResources = result.resources ?? [];
         const matchingPrimary = listedResources.find((resource) => resource?.url === result.sourceUrl);
         const resources = [
-          matchingPrimary ?? {
+          matchingPrimary ?? (result.sourceUrl ? {
             url: result.sourceUrl,
             type: result.resourceType,
             discoveryProvenance: result.discoveryProvenance,
-          },
+          } : null),
           ...listedResources,
-        ].filter((resource) => resource?.url && !/energy_label/i.test(resource.type ?? ''));
+        ].filter((resource) => resource?.url && isFisherPaykelDimensionResource(resource));
         const candidates = resources.map((resource) => typedCandidate({
           sourceUrl: resource.url,
           brand: target.brand,

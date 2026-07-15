@@ -1210,6 +1210,127 @@ function documentScopedExplicitAxisRows(fragment) {
     : [];
 }
 
+function indexedProductDimensionRows(fragment) {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return [];
+  const headerIndex = fragment.cells.findIndex((cells) => (
+    /^product\s+dimensions?\s*[([]\s*(mm|cm)\s*[)\]]\s*:?$/i
+      .test(normalizedText(cells.join(' ')))
+  ));
+  if (headerIndex < 0) return [];
+  const header = normalizedText(fragment.cells[headerIndex].join(' '));
+  const unit = /\bcm\b/i.test(header) ? 'cm' : 'mm';
+  const rows = new Map();
+  for (const cells of fragment.cells.slice(headerIndex + 1)) {
+    const joined = normalizedText(cells.join(' '));
+    if (/^(?:cabinetry|cabinet|cavity|cut[ -]?out|installation|pack(?:age|aged|aging)?|shipping)\s+dimensions?\b/i.test(joined)) {
+      break;
+    }
+    if (cells.length < 3) continue;
+    const label = normalizedText(cells.at(-2));
+    const value = normalizedText(cells.at(-1));
+    if (!/^\d+(?:\.\d+)?(?:\s*(?:mm|cm))?$/i.test(value)
+      || /\b(?:pack(?:age|aged|aging)?|shipping|carton|cavity|cabinet|cut[ -]?out)\b/i.test(label)) {
+      continue;
+    }
+    let field = null;
+    let axis = null;
+    if (/\b(?:overall|product|external|appliance)\b.*\bheight\b|\bheight\b.*\b(?:overall|product|external|appliance)\b/i.test(label)) {
+      field = 'closedEnvelope.heightMm'; axis = 'height';
+    } else if (/\b(?:overall|product|external|appliance)\b.*\bwidth\b|\bwidth\b.*\b(?:overall|product|external|appliance)\b/i.test(label)) {
+      field = 'closedEnvelope.widthMm'; axis = 'width';
+    } else if (/\b(?:overall|product|external|appliance)\b.*\bdepth\b|\bdepth\b.*\b(?:overall|product|external|appliance)\b/i.test(label)
+      && !/\b(?:open|opened)\b/i.test(label)) {
+      field = 'closedEnvelope.depthMm'; axis = 'depth';
+    }
+    if (!field) continue;
+    if (rows.has(field)) return [];
+    rows.set(field, {
+      label,
+      value: /\b(?:mm|cm)\b/i.test(value) ? value : `${value} ${unit}`,
+      quote: `${label} ${value} ${unit}`,
+      semanticBasis: 'explicit_indexed_product_dimension_section',
+      axisOrder: [axis],
+    });
+  }
+  const required = [
+    'closedEnvelope.widthMm',
+    'closedEnvelope.heightMm',
+    'closedEnvelope.depthMm',
+  ];
+  if (!required.every((field) => rows.has(field))) return [];
+  return required
+    .map((field) => rows.get(field))
+    .filter(Boolean);
+}
+
+function oneCharacterVariantFamily(models) {
+  const normalized = [...new Set(models.map(canonicalModel).filter(Boolean))];
+  if (normalized.length < 2 || normalized.length > 8
+    || new Set(normalized.map((model) => model.length)).size !== 1) return null;
+  const differingIndexes = [];
+  for (let index = 0; index < normalized[0].length; index += 1) {
+    if (new Set(normalized.map((model) => model[index])).size > 1) differingIndexes.push(index);
+  }
+  if (differingIndexes.length !== 1) return null;
+  const differingIndex = differingIndexes[0];
+  const familyModels = new Set(normalized.map((model) => (
+    model.slice(0, differingIndex) + model.slice(differingIndex + 1)
+  )));
+  if (familyModels.size !== 1) return null;
+  const familyModel = [...familyModels][0];
+  return familyModel.length >= 5 ? { familyModel, models: normalized, differingIndex } : null;
+}
+
+function structuredFinishVariantDocumentScope(document, model) {
+  const target = canonicalModel(model);
+  const candidateTables = [];
+  document.pages.forEach((items, pageIndex) => {
+    for (const fragment of items) {
+      if (fragment.type !== 'table') continue;
+      const cells = fragment.cells.flat().map(normalizedText).filter(Boolean);
+      const headingIndex = cells.findIndex((cell) => (
+        /^(?:available\s+)?(?:finish(?:es)?|colou?r(?:s)?)(?:\s+options?)?\s*:?$/i.test(cell)
+      ));
+      if (headingIndex < 0) continue;
+      const scopedText = normalizedText(cells.slice(headingIndex, headingIndex + 4).join(' '));
+      if (!/\b(?:available|offered)\b/i.test(scopedText)
+        || !/\b(?:finish|colou?r)\b/i.test(scopedText)
+        || !containsExplicitModelExpression(scopedText, model)) continue;
+      const modelTokens = [...new Set(
+        (scopedText.toUpperCase().match(/\b[A-Z][A-Z0-9.-]{3,}\d[A-Z0-9.-]*\b/g) ?? [])
+          .map(canonicalModel)
+          .filter((token) => token.length >= 5 && token.length <= 40),
+      )];
+      const variants = oneCharacterVariantFamily(modelTokens);
+      if (!variants || !variants.models.includes(target)) continue;
+      candidateTables.push({ fragment, page: pageIndex + 1, ...variants });
+    }
+  });
+  if (candidateTables.length !== 1) return null;
+  const candidate = candidateTables[0];
+  const familyHeadings = document.pages.flat().filter((fragment) => (
+    ['title', 'page_header'].includes(fragment.type)
+      && containsExplicitModelExpression(fragment.text, candidate.familyModel)
+  ));
+  if (!familyHeadings.length) return null;
+  const allowedModels = new Set([candidate.familyModel, ...candidate.models]);
+  if (siblingModelCandidates(document, model).some((sibling) => !allowedModels.has(sibling))) {
+    return null;
+  }
+  const dimensionFragments = document.pages.flat()
+    .map((fragment) => ({ fragment, rows: indexedProductDimensionRows(fragment) }))
+    .filter(({ rows }) => rows.length >= 3);
+  if (dimensionFragments.length !== 1) return null;
+  return {
+    ...candidate,
+    familyHeadingFragmentSha256s: familyHeadings
+      .map((fragment) => fragment.fragmentSha256)
+      .sort(),
+    dimensionFragment: dimensionFragments[0].fragment,
+    dimensionRows: dimensionFragments[0].rows,
+  };
+}
+
 function ocrShiftedDimensionSectionRows(fragment) {
   if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return [];
   const axisAliases = {
@@ -1623,10 +1744,28 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const contextUnresolvedFamily = identityContextDocument
     ? unresolvedFamilyScope(identityContextDocument, model)
     : false;
+  const structuredFinishVariantScope = claimSemanticsVersion === 2
+    ? structuredFinishVariantDocumentScope(document, model)
+    : null;
+  const structuredFinishVariantSignals = structuredFinishVariantScope ? [
+    {
+      type: 'mineru_finish_variant_family_heading',
+      value: `${structuredFinishVariantScope.familyModel}:${structuredFinishVariantScope.familyHeadingFragmentSha256s.join(',')}`,
+    },
+    {
+      type: 'mineru_finish_variant_exact_model_table',
+      value: `${model}:page:${structuredFinishVariantScope.page}:${structuredFinishVariantScope.fragment.fragmentSha256}`,
+    },
+    {
+      type: 'mineru_structured_finish_variant_model',
+      value: `${model}:family:${structuredFinishVariantScope.familyModel}:page:${structuredFinishVariantScope.page}:${structuredFinishVariantScope.fragment.fragmentSha256}`,
+    },
+  ] : [];
   const boundFamilyDocumentScope = claimSemanticsVersion === 2
     && (boundFamilySignals.length === 1 || boundSeriesSignals.length === 1
       || boundExactCoverSignals.length === 1);
   const unresolvedFamily = claimSemanticsVersion === 2 && !boundFamilyDocumentScope
+    && !structuredFinishVariantScope
     && (unresolvedFamilyScope(document, model) || contextUnresolvedFamily);
   const contextDocumentScope = claimSemanticsVersion === 2
     && contextSignals.length > 0
@@ -1647,6 +1786,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...boundFamilySignals,
     ...boundSeriesSignals,
     ...boundExactCoverSignals,
+    ...structuredFinishVariantSignals,
   ].map((signal) => [`${signal.type}\0${signal.value}`, signal])).values()];
   if (!signals.length && documentUniqueScope) {
     signals = uniqueCoverFallbackSignals(document, model);
@@ -1690,6 +1830,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       .filter((item) => item.type === 'table')
       .map((item) => [item, exactModelGroupedColumnRows(item, model, documentedModels)]));
     const groupedColumnScoped = [...groupedColumnRowsByFragment.values()].some((rows) => rows.length === 3);
+    const structuredFinishVariantPageScoped = items.includes(
+      structuredFinishVariantScope?.dimensionFragment,
+    );
     const joinedParagraphRowsByFragment = new Map(items
       .map((item, index) => [item, joinedGroupedParagraphRow(items, index)])
       .filter(([, row]) => row));
@@ -1697,7 +1840,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       .map((item, index) => [item, joinedAlignedScalarParagraphRow(items, index)])
       .filter(([, row]) => row));
     if (!pageScoped && !documentScoped && !bekoDocumentScoped
-      && !sharedModelListScoped && !groupedColumnScoped) return;
+      && !sharedModelListScoped && !groupedColumnScoped
+      && !structuredFinishVariantPageScoped) return;
     const bekoPageScoped = items.some((item) => (
       ['title', 'page_header'].includes(item.type)
         && containsExplicitModelExpression(item.text, model)
@@ -1735,6 +1879,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         || sharedDimensionFragments.has(item)
         || groupedColumnRowsByFragment.get(item)?.length === 3
         || containsExplicitModelExpression(item.identityText ?? item.text, model)
+        || structuredFinishVariantScope?.dimensionFragment === item
         || (documentScoped && (
           documentScopedDimensionMatrixRows(item).length === 3
           || documentScopedExplicitAxisRows(item).length === 3
@@ -1769,6 +1914,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
             : []),
           ...(claimSemanticsVersion === 2 ? exactModelMatrixRows(fragment, model, pageDimensionUnit) : []),
           ...(claimSemanticsVersion === 2 ? (groupedColumnRowsByFragment.get(fragment) ?? []) : []),
+          ...(structuredFinishVariantScope?.dimensionFragment === fragment
+            ? structuredFinishVariantScope.dimensionRows
+            : []),
           ...(documentScoped ? documentScopedDimensionMatrixRows(fragment) : []),
           ...(documentScoped ? documentScopedExplicitAxisRows(fragment) : []),
         ];

@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1519,
-    "fetchJobs": 1482,
-    "targets": 1516,
-    "candidateEdges": 1519,
+    "documents": 1514,
+    "fetchJobs": 1477,
+    "targets": 1511,
+    "candidateEdges": 1514,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1516,
+    "uniqueReferences": 1511,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 444,
-      "MEASURE_REQUIRED": 1047,
+      "MEASURE_REQUIRED": 1042,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 281,
-      "CURRENT_RETAIL": 1235
+      "CURRENT_RETAIL": 1230
     },
     "byCategory": {
-      "dishwasher": 349,
-      "dryer": 65,
+      "dishwasher": 348,
+      "dryer": 64,
       "fridge": 874,
-      "washing_machine": 228
+      "washing_machine": 225
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1178,
-      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 246,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1177,
+      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 242,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 88,
+      "ALREADY_AUTO_FILL": 93,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -278,58 +278,6 @@
       ]
     },
     {
-      "jobId": "recovery_fceeb9efead7ea981e07a6b9",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw19265157/QRG/AU/QRG-AU-93275.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_986021baa3facd3fc3c412c6"
-      ]
-    },
-    {
-      "jobId": "recovery_2dd6e714bf83d3fb6e7a144c",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw227e58cc/QRG/AU/QRG-AU-92334.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_e1a1fff25a367a8e5420f358"
-      ]
-    },
-    {
       "jobId": "recovery_fe80e87be63995cd4b783eeb",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4fd4ee55/QRG/AU/QRG-AU-93309.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -460,32 +408,6 @@
       ]
     },
     {
-      "jobId": "recovery_ece669fb57d2bbcf238fcfff",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw76c8e233/QRG/AU/QRG-AU-92308.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_70a48bd09d9ea485bbebacb3"
-      ]
-    },
-    {
       "jobId": "recovery_3a0b32c31a94c2ab193396b6",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8e7cf94d/QRG/AU/QRG-AU-93328.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -535,32 +457,6 @@
       ],
       "targetIds": [
         "recovery_target_7c019913330fc717686c0d76"
-      ]
-    },
-    {
-      "jobId": "recovery_090b67c015164018443f05ff",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwa0021509/QRG/AU/QRG-AU-92310.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_83f0f6e20bccf3d250b69a52"
       ]
     },
     {
@@ -5033,32 +4929,6 @@
       ],
       "targetIds": [
         "recovery_target_a7a1fad72f198ffda7434a27"
-      ]
-    },
-    {
-      "jobId": "recovery_6046a015658e9ee31db984d2",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/a/a/6/2aa601cbc7623b486519cfbbaff42a818a015728_dw60cdw2_user_guide.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_c93cbc13ad6270a27790745f"
       ]
     },
     {
@@ -52104,47 +51974,6 @@
       "primaryJobId": "recovery_2ee04b663834a533ce0c5d97"
     },
     {
-      "referenceId": "fa_ref_cc1f292dc96cbc6df3c222d3",
-      "legacyRuntimeId": "discovery-dryer-fisher-paykel-de7060p2",
-      "canonicalProductId": "fa_prod_6b38e40353b20b2870b4ce04",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DE7060P2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 830,
-        "depth": 580
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_986021baa3facd3fc3c412c6",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_392e04ba64f8d6f3fcab41fa"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_392e04ba64f8d6f3fcab41fa",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 830,
-            "depth": 580
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_fceeb9efead7ea981e07a6b9"
-      ],
-      "primaryJobId": "recovery_fceeb9efead7ea981e07a6b9"
-    },
-    {
       "referenceId": "fa_ref_a1437436089d1eb6007e814a",
       "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh1060rg5",
       "canonicalProductId": "fa_prod_4ff41f5060d84efa3bc07840",
@@ -52225,47 +52054,6 @@
         "recovery_032eeb86f427b9482900010b"
       ],
       "primaryJobId": "recovery_032eeb86f427b9482900010b"
-    },
-    {
-      "referenceId": "fa_ref_da8ad81fab1260fec2d8f8c4",
-      "legacyRuntimeId": "ao-644",
-      "canonicalProductId": "fa_prod_3c06815cada14c20b100d88c",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60CDW2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 600
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_c93cbc13ad6270a27790745f",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_b9dfec7e36b4cf7185eb890e"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_b9dfec7e36b4cf7185eb890e",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_6046a015658e9ee31db984d2"
-      ],
-      "primaryJobId": "recovery_6046a015658e9ee31db984d2"
     },
     {
       "referenceId": "fa_ref_a60f253b70404d2122cef804",
@@ -55261,47 +55049,6 @@
       "primaryJobId": "recovery_42dd6cd11ae3f5cfa9b982db"
     },
     {
-      "referenceId": "fa_ref_8a87ed1b3c9163181b73ae08",
-      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1060pg5",
-      "canonicalProductId": "fa_prod_3f74412f8e17a28ff2f33ab7",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH1060PG5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 602,
-        "height": 850,
-        "depth": 593
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_e1a1fff25a367a8e5420f358",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_dcc841af66a2622f52eb36cf"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_dcc841af66a2622f52eb36cf",
-          "dimensionsMm": {
-            "width": 602,
-            "height": 850,
-            "depth": 593
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_2dd6e714bf83d3fb6e7a144c"
-      ],
-      "primaryJobId": "recovery_2dd6e714bf83d3fb6e7a144c"
-    },
-    {
       "referenceId": "fa_ref_aa26a28711b9ee4316b830e3",
       "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1060sg1",
       "canonicalProductId": "fa_prod_7e1ed79251c3eaf2620ea2ac",
@@ -55505,47 +55252,6 @@
         "recovery_4e49b3ff22d7efb2abe7b0af"
       ],
       "primaryJobId": "recovery_4e49b3ff22d7efb2abe7b0af"
-    },
-    {
-      "referenceId": "fa_ref_c39413faf56e81ee697117cb",
-      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1260pg5",
-      "canonicalProductId": "fa_prod_4cd3e73c4763e88e496431f4",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH1260PG5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 602,
-        "height": 850,
-        "depth": 661
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_83f0f6e20bccf3d250b69a52",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_5099a34b42d86127d3444a25"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_5099a34b42d86127d3444a25",
-          "dimensionsMm": {
-            "width": 602,
-            "height": 850,
-            "depth": 661
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_090b67c015164018443f05ff"
-      ],
-      "primaryJobId": "recovery_090b67c015164018443f05ff"
     },
     {
       "referenceId": "fa_ref_049a668e5394075407e1c504",
@@ -56038,47 +55744,6 @@
         "recovery_1bad0a4a237bcf8f7e8c53d6"
       ],
       "primaryJobId": "recovery_1bad0a4a237bcf8f7e8c53d6"
-    },
-    {
-      "referenceId": "fa_ref_1f4c35af57e37917cf0d0f3f",
-      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh9060pg5",
-      "canonicalProductId": "fa_prod_a6e16f69836e8157850d3062",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH9060PG5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 602,
-        "height": 850,
-        "depth": 593
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_70a48bd09d9ea485bbebacb3",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_3d1113d469f1cc4f3f0b2d00"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_3d1113d469f1cc4f3f0b2d00",
-          "dimensionsMm": {
-            "width": 602,
-            "height": 850,
-            "depth": 593
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_ece669fb57d2bbcf238fcfff"
-      ],
-      "primaryJobId": "recovery_ece669fb57d2bbcf238fcfff"
     },
     {
       "referenceId": "fa_ref_0e837ae4fd1484c3889e2616",

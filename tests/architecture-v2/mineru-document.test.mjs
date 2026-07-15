@@ -1402,6 +1402,70 @@ test('MinerU binds concatenated colour variants to one exact model column using 
   }), /identity|model/i);
 });
 
+test('MinerU binds a shared product-dimension table only to explicitly listed finish variants', () => {
+  const title = {
+    type: 'title',
+    content: {
+      title_content: [{ type: 'text', content: 'dishwasher DW60CD2' }],
+      level: 1,
+    },
+    bbox: [245, 79, 754, 184],
+  };
+  const finishTable = tableFragment(`<table>
+    <tr><td>Finish:</td></tr>
+    <tr><td>Available in Brushed Stainless Steel (DW60CDX2) and White (DW60CDW2) finish</td></tr>
+  </table>`);
+  const dimensionsTable = tableFragment(`<table>
+    <tr><td colspan="3">Product Dimensions (mm):</td></tr>
+    <tr><td>A</td><td>Overall height of product</td><td>850</td></tr>
+    <tr><td>B</td><td>Overall width of product</td><td>600</td></tr>
+    <tr><td>C</td><td>Overall depth of product (without curvature)</td><td>600</td></tr>
+    <tr><td>D</td><td>Depth of open door</td><td>595</td></tr>
+    <tr><td colspan="3">Cabinetry Dimensions (mm):</td></tr>
+    <tr><td>F</td><td>Inside height of cavity</td><td>855</td></tr>
+  </table>`);
+  const bytes = Buffer.from(JSON.stringify([
+    [title, finishTable],
+    [dimensionsTable],
+    [tableFragment(`<table>
+      <tr><td>Product width</td><td>610 mm</td></tr>
+      <tr><td>Product height</td><td>860 mm</td></tr>
+      <tr><td>Product depth</td><td>620 mm</td></tr>
+    </table>`)],
+  ]));
+  const options = (model) => ({
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Fisher & Paykel', model, category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm',
+      'closedEnvelope.depthMm',
+    ],
+  });
+
+  for (const model of ['DW60CDW2', 'DW60CDX2']) {
+    const parsed = parseMineruContentListV2(bytes, options(model));
+    assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+      'closedEnvelope.widthMm': { kind: 'fixed', mm: 600 },
+      'closedEnvelope.heightMm': { kind: 'fixed', mm: 850 },
+      'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+    });
+    assert.ok(parsed.identitySignals.some((signal) => (
+      signal.type === 'mineru_structured_finish_variant_model'
+    )));
+    assert.ok(parsed.claims.every((claim) => claim.page === 2));
+  }
+
+  assert.throws(
+    () => parseMineruContentListV2(bytes, options('DW60CDB2')),
+    /structured exact-model identity|no exact-model MinerU evidence/i,
+  );
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    ...options('DW60CDW2'),
+    fields: ['operation.doorOpenDepthMm'],
+  }), /no exact-model MinerU evidence/i);
+});
+
 test('MinerU reconnects a Bosch grouped dimension heading to an explicitly labelled next paragraph', () => {
   const bytes = Buffer.from(JSON.stringify([[
     pageHeader('Series 4 dishwasher SMS4HVI01A'),

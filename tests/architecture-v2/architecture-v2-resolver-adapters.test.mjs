@@ -69,6 +69,30 @@ test('Fisher and Paykel adapter preserves exact archived support API provenance'
   assert.deepEqual(result.candidates[0].discoveryProvenance, discoveryProvenance);
 });
 
+test('Fisher and Paykel adapter excludes parts-only support resources from dimension discovery', async () => {
+  const partsUrl = 'https://content.fisherpaykel.com/CBW/service/fpa-dishwashers/fpa-parts-dishwashers/Dishwasher/80914-A-DW60CHW1.pdf';
+  const adapter = createFisherPaykelResolverAdapter({
+    finder: async () => ({
+      sourceUrl: partsUrl,
+      resourceType: 'parts_manual',
+      matchedSku: 'DW60CHW1',
+      resources: [{
+        url: partsUrl,
+        type: 'parts_manual',
+        evidenceScope: 'exact_model_identity_article',
+      }],
+    }),
+  });
+
+  const result = await adapter.resolve({
+    brand: 'Fisher & Paykel', model: 'DW60CHW1', category: 'dishwasher',
+  });
+
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.candidates, []);
+  assert.deepEqual(result.failures, []);
+});
+
 test('Fisher and Paykel adapter requires the exact product page when lower-authority dimensions conflict', async () => {
   const adapter = createFisherPaykelResolverAdapter({
     finder: async () => ({

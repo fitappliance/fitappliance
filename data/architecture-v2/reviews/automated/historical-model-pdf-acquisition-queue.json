@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T00:00:00.000Z",
-  "semanticQueueSha256": "1619236ac48292bb34f48a952a627b0b3571340349804c5cd5077377d1ad4a9a",
-  "sourceClassificationSha256": "4b6ab95aae78ea9a209d76d0d29a075a0aa8110076d85baf99c6c84e90011965",
+  "generatedAt": "2026-07-15T22:12:08.086Z",
+  "semanticQueueSha256": "83fbbd974655d615b3a50c73f459107a30a885fdd47e65a18182d24b40e9eb70",
+  "sourceClassificationSha256": "81d8b2fb1872d95cb3584bbff4db969192054b9a80b4f9313efe3238ada19d45",
   "records": [
     {
       "schemaVersion": 1,
@@ -4414,37 +4414,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_9e74951938c9359be394fe98"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_37c8c83befe98ee410c9b862",
-      "referenceId": "fa_ref_da8ad81fab1260fec2d8f8c4",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60CDW2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "model_specific",
-      "groupName": "DW60CDW2",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_41463a65fa0709a7be59c6a0"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c93cbc13ad6270a27790745f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-644"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_3c06815cada14c20b100d88c"
       ],
       "offlineReplayOutcome": null
     },
@@ -10702,37 +10671,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_8e5b2d9c982fea88ace6cf5c"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_fc5b8c784d4835b1cbafe701",
-      "referenceId": "fa_ref_cc1f292dc96cbc6df3c222d3",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DE7060P2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_141db546484647ca16e7fe80"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_986021baa3facd3fc3c412c6"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-dryer-fisher-paykel-de7060p2"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6b38e40353b20b2870b4ce04"
       ],
       "offlineReplayOutcome": null
     },
@@ -34093,68 +34031,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_851435edc96cf525290b0440",
-      "referenceId": "fa_ref_8a87ed1b3c9163181b73ae08",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH1060PG5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_3e0436a156fe0bd4",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_02a1e0e5da7de863b9a7b20d"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e1a1fff25a367a8e5420f358"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-fisher-paykel-wh1060pg5"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_3f74412f8e17a28ff2f33ab7"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e756582462e12899d3fd1a7c",
-      "referenceId": "fa_ref_1f4c35af57e37917cf0d0f3f",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH9060PG5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_3f632c3d532d5ad1",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_e56aefe22caa57495e66bba2"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_70a48bd09d9ea485bbebacb3"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-fisher-paykel-wh9060pg5"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_a6e16f69836e8157850d3062"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_1f2e76ce663379f7e738e7cf",
       "referenceId": "fa_ref_b55c3a81127c98f7db0988a0",
       "category": "washing_machine",
@@ -34460,37 +34336,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_678785a859c773936dd3f45c"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_16ff10f87e936d648ef3bdc0",
-      "referenceId": "fa_ref_c39413faf56e81ee697117cb",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH1260PG5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_a8ec637b6353aca3",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_946d2c18881ce1f78cdd0832"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_83f0f6e20bccf3d250b69a52"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-fisher-paykel-wh1260pg5"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_4cd3e73c4763e88e496431f4"
       ],
       "offlineReplayOutcome": null
     },
@@ -197167,19 +197012,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_02a1e0e5da7de863b9a7b20d",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw227e58cc/QRG/AU/QRG-AU-92334.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WH1060PG5.json",
-        "source:doc_dcc841af66a2622f52eb36cf"
-      ],
-      "referenceIds": [
-        "fa_ref_8a87ed1b3c9163181b73ae08"
-      ]
-    },
-    {
       "sourceId": "historical_source_02b1bbf0556de3d4e593e28d",
       "sourceUrl": "https://commercial.appliancesonline.com.au/manuals/ak/c/2/1/9/c2196990eaca36d9cc8beddf629cbcce69813aa9_Westinghouse_WBE4302WC_Factsheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -198513,19 +198345,6 @@
       ],
       "referenceIds": [
         "fa_ref_cea156d9a3d91d956d414617"
-      ]
-    },
-    {
-      "sourceId": "historical_source_141db546484647ca16e7fe80",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw19265157/QRG/AU/QRG-AU-93275.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DE7060P2.json",
-        "source:doc_392e04ba64f8d6f3fcab41fa"
-      ],
-      "referenceIds": [
-        "fa_ref_cc1f292dc96cbc6df3c222d3"
       ]
     },
     {
@@ -202263,19 +202082,6 @@
       ],
       "referenceIds": [
         "fa_ref_2b1045aa3dd89c08118251c1"
-      ]
-    },
-    {
-      "sourceId": "historical_source_41463a65fa0709a7be59c6a0",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/a/a/6/2aa601cbc7623b486519cfbbaff42a818a015728_dw60cdw2_user_guide.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DW60CDW2.json",
-        "source:doc_b9dfec7e36b4cf7185eb890e"
-      ],
-      "referenceIds": [
-        "fa_ref_da8ad81fab1260fec2d8f8c4"
       ]
     },
     {
@@ -209486,19 +209292,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_946d2c18881ce1f78cdd0832",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwa0021509/QRG/AU/QRG-AU-92310.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WH1260PG5.json",
-        "source:doc_5099a34b42d86127d3444a25"
-      ],
-      "referenceIds": [
-        "fa_ref_c39413faf56e81ee697117cb"
-      ]
-    },
-    {
       "sourceId": "historical_source_947ad4ba9375804b561ccaef",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/b/c/1/2/bc12415a358f03e74a700d79e0734035c258ed13_CSR102DW_CHiQ_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -215909,19 +215702,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_e56aefe22caa57495e66bba2",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw76c8e233/QRG/AU/QRG-AU-92308.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WH9060PG5.json",
-        "source:doc_3d1113d469f1cc4f3f0b2d00"
-      ],
-      "referenceIds": [
-        "fa_ref_1f4c35af57e37917cf0d0f3f"
-      ]
-    },
-    {
       "sourceId": "historical_source_e56af970fc0506a9b28a4838",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1215-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDZ8YXBwbGljYXRpb24vcGRmfGFERmpMMmhsTXk4NE9EazRNekk1T1RNMU9UQXlMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRJeE5Ta3VjR1JtfDI1YmYzMjZlMzY5OWIwOGMxZTJhNmI1ZDUxNjc4ZTU2OGVmZjI0NjUyZmJlNGYzYWRmZDhmMjhjYTVmY2YwODA",
       "sourceAuthority": "OFFICIAL",
@@ -217779,49 +217559,49 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 161,
+    "COMPLETE_RECEIPT": 166,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7934,
-    "uniqueReferences": 7934,
-    "candidateSources": 1595,
-    "candidateEdges": 1630,
+    "queuedModels": 7929,
+    "uniqueReferences": 7929,
+    "candidateSources": 1590,
+    "candidateEdges": 1625,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2109,
-      "CURRENT_RETAIL": 1262,
+      "CURRENT_RETAIL": 1257,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1373,
-      "dryer": 816,
+      "dishwasher": 1372,
+      "dryer": 815,
       "fridge": 4272,
-      "washing_machine": 1473
+      "washing_machine": 1470
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 195,
-      "OFFICIAL_DISCOVERY": 6426,
+      "OFFICIAL_DISCOVERY": 6422,
       "OFFICIAL_REACQUIRE": 2,
-      "REFERENCE_REDISCOVERY": 1228
+      "REFERENCE_REDISCOVERY": 1227
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 195,
-      "OFFICIAL_DISCOVERY": 6426,
+      "OFFICIAL_DISCOVERY": 6422,
       "OFFICIAL_REACQUIRE": 2,
-      "OFFICIAL_REDISCOVERY": 1228
+      "OFFICIAL_REDISCOVERY": 1227
     },
     "byExecutionReadiness": {
       "BOUNDED_READY": 2,
-      "DISCOVERY_READY": 5072,
+      "DISCOVERY_READY": 5067,
       "RESEARCH_REQUIRED": 278,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 161,
+      "COMPLETE_RECEIPT": 166,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

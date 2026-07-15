@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-16T00:00:00.000Z
+Generated: 2026-07-15T22:12:08.086Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -11,7 +11,7 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 989 |
+| dishwasher | 1419 | 94 | 990 |
 | dryer | 843 | 72 | 265 |
 | fridge | 4336 | 121 | 2269 |
 | washing_machine | 1497 | 88 | 653 |
@@ -20,12 +20,12 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 161 |
+| COMPLETE_RECEIPT | 166 |
 | CONFLICT_QUARANTINE | 83 |
 | IDENTITY_RESEARCH | 195 |
-| OFFICIAL_DISCOVERY | 6426 |
+| OFFICIAL_DISCOVERY | 6422 |
 | OFFICIAL_REACQUIRE | 2 |
-| REFERENCE_REDISCOVERY | 1228 |
+| REFERENCE_REDISCOVERY | 1227 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -102,11 +102,11 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | HELLER | OFFICIAL_DISCOVERY | 61 |
 | dryer | LG | OFFICIAL_DISCOVERY | 60 |
 | fridge | CHIQ | REFERENCE_REDISCOVERY | 60 |
-| washing_machine | Fisher & Paykel | OFFICIAL_DISCOVERY | 58 |
 | dishwasher | Artusi | OFFICIAL_DISCOVERY | 57 |
 | washing_machine | Haier | OFFICIAL_DISCOVERY | 57 |
 | fridge | Mykin | OFFICIAL_DISCOVERY | 55 |
 | fridge | TCL | OFFICIAL_DISCOVERY | 55 |
+| washing_machine | Fisher & Paykel | OFFICIAL_DISCOVERY | 55 |
 | fridge | LG | REFERENCE_REDISCOVERY | 53 |
 | dryer | Esatto | OFFICIAL_DISCOVERY | 52 |
 | fridge | Electrolux | OFFICIAL_DISCOVERY | 50 |
@@ -115,9 +115,9 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Husky | OFFICIAL_DISCOVERY | 47 |
 | washing_machine | Solt | OFFICIAL_DISCOVERY | 47 |
 | dishwasher | Kogan | OFFICIAL_DISCOVERY | 46 |
-| dryer | Fisher & Paykel | OFFICIAL_DISCOVERY | 46 |
 | fridge | Smeg | REFERENCE_REDISCOVERY | 46 |
 | dishwasher | Smeg | REFERENCE_REDISCOVERY | 45 |
+| dryer | Fisher & Paykel | OFFICIAL_DISCOVERY | 45 |
 | dryer | Miele | OFFICIAL_DISCOVERY | 45 |
 | fridge | Esatto | OFFICIAL_DISCOVERY | 45 |
 | washing_machine | LG | REFERENCE_REDISCOVERY | 45 |

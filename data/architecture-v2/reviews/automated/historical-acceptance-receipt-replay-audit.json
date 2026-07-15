@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T20:23:10.836Z",
-  "sourceBundleSha256": "348815dfc5ac740404701978d315550156c81fc4148063940795ecf616740e72",
+  "generatedAt": "2026-07-15T22:16:30.182Z",
+  "sourceBundleSha256": "50e9842e4b0bd25fe220091453edae9ccb50c685560c5c5cdbb74ab822dc56c0",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1166,6 +1166,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_70a48bd09d9ea485bbebacb3",
+      "referenceId": "fa_ref_1f4c35af57e37917cf0d0f3f",
+      "brand": "Fisher & Paykel",
+      "model": "WH9060PG5",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0e9e58ad/QRG/AU/QRG-AU-92308.pdf",
+      "sourcePdfSha256": "4dbafd64e12faa941ff5ac526c5611878084d3a4451fa9e0109414d2c7023807",
+      "contentSha256": "4dbafd64e12faa941ff5ac526c5611878084d3a4451fa9e0109414d2c7023807",
+      "receiptBindingSha256": "567d86d3911e722a285b9423e9dc2e8c5728d1411fb6605d787180c929df57c0",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/c0/3b/c03bd0db36ec7482a19af9e0aedd29d3082185d0d06a999734be6b8f1b9a4240.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_75c476b2807483e6b13d1a5a",
       "referenceId": "fa_ref_71ab3a93124599360e847fcc",
       "brand": "Westinghouse",
@@ -1204,6 +1218,20 @@
       "contentSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
       "receiptBindingSha256": "1886efd28626277e95cba66a7494fca5e100951c23ac530b565ada92c6ae7051",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/5a/19/5a19a3b04cc7389e53d5ae55efe22fd8c85f403e588fffd9885b9628897e8e4f.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_83f0f6e20bccf3d250b69a52",
+      "referenceId": "fa_ref_c39413faf56e81ee697117cb",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260PG5",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcd24174a/QRG/AU/QRG-AU-92310.pdf",
+      "sourcePdfSha256": "e9c4228618b9df2fdd3c7151f6fd449b49459dd2a8752fb86dcf44fd80434525",
+      "contentSha256": "e9c4228618b9df2fdd3c7151f6fd449b49459dd2a8752fb86dcf44fd80434525",
+      "receiptBindingSha256": "b03b293f9ce16282409157e94de5994917a8db2e338a2acb661d447bc922e703",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/7a/b4/7ab42aa1d2acb9c56602f1846a3c5eb58ca54f834f3904177965461d94e8de86.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1372,6 +1400,20 @@
       "contentSha256": "fabd150e7826a63eb9696447a6956cbe39c49878d3b479208c7fb22b130d8db7",
       "receiptBindingSha256": "4344994229fe838b61c2ae9c7e0d7f770b5d60a88c3008f53cea1b9aadccb787",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/68/cf/68cfa65889de30cb3cbd3e3a309a8a22875f2c4d7b6ab047d79b1ebd792fbf3d.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_986021baa3facd3fc3c412c6",
+      "referenceId": "fa_ref_cc1f292dc96cbc6df3c222d3",
+      "brand": "Fisher & Paykel",
+      "model": "DE7060P2",
+      "category": "dryer",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw19265157/QRG/AU/QRG-AU-93275.pdf",
+      "sourcePdfSha256": "75e03fc6624c94dc685ebc2d35fb88ce4ff4407882cef8d4ba202fa94a0018e3",
+      "contentSha256": "75e03fc6624c94dc685ebc2d35fb88ce4ff4407882cef8d4ba202fa94a0018e3",
+      "receiptBindingSha256": "e421a7daa4b8c5427c439d54ab1bd7c367151e1812f30f351bacc61cc6453cb0",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/35/72/3572c8f5ce8ad2428a894518ca16887ec8c85311eee122669bcd870eab8cfe0a.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1796,6 +1838,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c93cbc13ad6270a27790745f",
+      "referenceId": "fa_ref_da8ad81fab1260fec2d8f8c4",
+      "brand": "Fisher & Paykel",
+      "model": "DW60CDW2",
+      "category": "dishwasher",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000DLMXcIAP&d=%2Fa%2FJw0000011Iwn%2F3.DAdBeqN_bOCsH3NB..pbj2o6jbYQ_528a8u_JrZQs&operationContext=DELIVERY&viewId=05HJw00000QC7UzMAL&dpt=",
+      "sourcePdfSha256": "a41cd8cce6469668b7172cc82c09dd62fab735092fa287ddb9b2ef5670ecaa8c",
+      "contentSha256": "a41cd8cce6469668b7172cc82c09dd62fab735092fa287ddb9b2ef5670ecaa8c",
+      "receiptBindingSha256": "cf251547f19e96b2e68725495ea3132d593fb60bee28e339371d17ab01391186",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/1e/99/1e99f19dda69477b25ae18ecb15612b151b77ca177c9cb30f34007aa4125a5e7.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c9665681a8e07fb9f33889e6",
       "referenceId": "fa_ref_366ce5b1a82c376b983e138d",
       "brand": "Bosch",
@@ -2076,6 +2132,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_e1a1fff25a367a8e5420f358",
+      "referenceId": "fa_ref_8a87ed1b3c9163181b73ae08",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060PG5",
+      "category": "washing_machine",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw819a8534/QRG/AU/QRG-AU-92334.pdf",
+      "sourcePdfSha256": "a7bd7aad4d4d45b3aec869f062918d950286cc88e347c911adf69d856a62cb71",
+      "contentSha256": "a7bd7aad4d4d45b3aec869f062918d950286cc88e347c911adf69d856a62cb71",
+      "receiptBindingSha256": "5aa22a07fd3d14f39b92c508f0be0ae98a898cb72789d8e663b9a576facc4ecd",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/74/77/7477e7e979fb100d343322aa4e931a6908fef5f8121c52869c870e665c1a7b02.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_e481b7a7f66fc12825df1cc3",
       "referenceId": "fa_ref_83bd985062196f48441767df",
       "brand": "Samsung",
@@ -2301,11 +2371,11 @@
     }
   ],
   "summary": {
-    "entries": 142,
-    "sources": 164,
-    "passed": 164,
+    "entries": 147,
+    "sources": 169,
+    "passed": 169,
     "failed": 0
   },
-  "checkedObjects": 351,
-  "semanticAuditSha256": "e58c4e088a1bfa03b0751335f86526233425615b07bbec4ea256a2918395f963"
+  "checkedObjects": 361,
+  "semanticAuditSha256": "fe80716ab530cf58d3801ffea3ea6c3a0bb8102d0bfcea2d6bba1f3cd430bee2"
 }

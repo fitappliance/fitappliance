@@ -363,6 +363,66 @@ test('Fisher & Paykel support resources reject product and article sibling leaka
   );
 });
 
+test('Fisher & Paykel support resources retain dimension-capable articles attached to the exact product', () => {
+  const installUrl = 'https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000K2Gz/install-token';
+  const specUrl = 'https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw0000011Iwn/spec-token';
+  const siblingUrl = 'https://content.fisherpaykel.com/guides/DW60CHW2-install.pdf';
+  const resources = extractSupportProductResources({
+    product: {
+      modelNumber: 'DW60CHW1',
+      articles: [
+        {
+          id: 'install-attached',
+          title: 'Dishwasher Classic Handle - Installation Guide (2837)',
+          articleBody: `<p>Cavity preparation and required clearances.</p><a href="${installUrl}">Guide</a>`,
+          articleType: 'Installation Guide',
+        },
+        {
+          id: 'family-spec-attached',
+          title: 'DW60CH1 - Specification Sheet',
+          articleBody: `<p>Product dimensions and specifications.</p><a href="${specUrl}">Specification</a>`,
+          articleType: 'Troubleshooting',
+        },
+        {
+          id: 'sibling-explicit',
+          title: 'DW60CHW2 installation guide',
+          articleBody: `<p>Applies to DW60CHW2.</p><a href="${siblingUrl}">Guide</a>`,
+          articleType: 'Installation Guide',
+        },
+      ],
+    },
+  }, 'DW60CHW1');
+
+  assert.deepEqual(resources.map((resource) => [
+    resource.articleId,
+    resource.type,
+    resource.evidenceScope,
+  ]), [
+    ['family-spec-attached', 'specification_sheet', 'exact_support_product_article'],
+    ['install-attached', 'installation_manual', 'exact_support_product_article'],
+  ]);
+});
+
+test('Fisher & Paykel support resources retain parts manuals only as non-dimension diagnostics', () => {
+  const partsUrl = 'https://content.fisherpaykel.com/CBW/service/fpa-dishwashers/fpa-parts-dishwashers/Dishwasher/80914-A-DW60CHW1.pdf';
+  const resources = extractSupportProductResources({
+    product: {
+      modelNumber: 'DW60CHW1',
+      articles: [{
+        id: 'parts-exact',
+        title: 'Spare parts manual for 80914-A',
+        articleBody: `<p>Parts diagrams for model DW60CHW1.</p><a href="${partsUrl}">Parts</a>`,
+        articleType: 'Parts Manual',
+      }],
+    },
+  }, 'DW60CHW1');
+
+  assert.equal(resources.length, 1);
+  assert.equal(resources[0].type, 'parts_manual');
+  assert.equal(resources[0].evidenceScope, 'exact_model_identity_article');
+  assert.ok(resources[0].score <= 0);
+});
+
 test('Fisher & Paykel Salesforce distribution resolver returns an original PDF URL', async () => {
   const publicUrl = 'https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000004hSYD/content-token';
   const calls = [];

@@ -1040,6 +1040,57 @@ test('a model-scoped PDF header still needs an independent exact-model source UR
   assert.ok(attested.identitySignals.some((signal) => signal.type === 'pdf_source_url_model'));
 });
 
+test('a strict family heading and exact finish table independently bind shared product dimensions', () => {
+  const pdfIdentity = { brand: 'Fisher & Paykel', model: 'DW60CDW2', category: 'dishwasher' };
+  const pdfBytes = Buffer.from('%PDF-1.7\nFisher Paykel DW60CD2 specification');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [
+      {
+        type: 'title',
+        content: { title_content: [{ type: 'text', content: 'dishwasher DW60CD2' }], level: 1 },
+        bbox: [245, 79, 754, 184],
+      },
+      {
+        type: 'table',
+        content: { html: '<table><tr><td>Finish:</td></tr><tr><td>Available in Brushed Stainless Steel (DW60CDX2) and White (DW60CDW2) finish</td></tr></table>' },
+        bbox: [60, 200, 940, 430],
+      },
+    ],
+    [{
+      type: 'table',
+      content: { html: '<table><tr><td colspan="3">Product Dimensions (mm):</td></tr><tr><td>A</td><td>Overall height of product</td><td>850</td></tr><tr><td>B</td><td>Overall width of product</td><td>600</td></tr><tr><td>C</td><td>Overall depth of product (without curvature)</td><td>600</td></tr><tr><td>D</td><td>Depth of open door</td><td>595</td></tr></table>' },
+      bbox: [60, 120, 940, 620],
+    }],
+  ]));
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: pdfIdentity, claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }).claims;
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const artifactUrl = 'https://www.fisherpaykel.com/manuals/DW60CD2-specification.pdf';
+  const attested = verifyAndAttestResolutionArtifact({
+    source: {
+      authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+      sourceUrl: artifactUrl, finalUrl: artifactUrl, redirectChain: [],
+      retrievedAt: '2026-07-16T00:00:00.000Z', contentSha256: pdfHash,
+      objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+      contentType: 'application/pdf', byteSize: pdfBytes.length,
+      identity: { ...pdfIdentity, outcome: 'exact' },
+      claims, derivedArtifact,
+    },
+    caseIdentity: pdfIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    verifiedAt: '2026-07-16T00:01:00.000Z', claimSemanticsVersion: 2,
+  });
+
+  const signalTypes = new Set(attested.identitySignals.map((signal) => signal.type));
+  assert.ok(signalTypes.has('mineru_finish_variant_family_heading'));
+  assert.ok(signalTypes.has('mineru_finish_variant_exact_model_table'));
+});
+
 test('a hash-bound official product page can independently bind a model-scoped PDF', () => {
   const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
   const pdfBytes = Buffer.from('%PDF-1.7\nproduct-page-bound artifact');
