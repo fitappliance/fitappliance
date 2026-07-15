@@ -7,6 +7,7 @@ import {
 } from '../../src/domain/evidence-source-verifier.mjs';
 
 const require = createRequire(import.meta.url);
+const manufacturerDocumentStrategies = require('../../data/architecture-v2/policies/manufacturer-document-strategies.json');
 const { findFisherPaykelOfficialPdf } = require('./fisher-paykel-official.js');
 const { findLgOfficialPdf } = require('./lg-official.js');
 const { findElectroluxGroupFactsheet } = require('./electrolux-group-official.js');
@@ -441,6 +442,11 @@ function brandKey(value) {
   return String(value ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '');
 }
 
+function hasDeterministicModelTemplate(value) {
+  const templates = manufacturerDocumentStrategies.brands?.[brandKey(value)]?.templates ?? [];
+  return templates.some((template) => String(template?.url ?? '').includes('{model}'));
+}
+
 const LEGACY_RESOLVER_PROFILES = new Map([
   ['asko', { optionKey: 'asko', brandKey: 'asko', resolverId: 'asko-official-manuals-api', finder: findAskoOfficialPdf }],
   ['haier', { optionKey: 'haier', brandKey: 'haier', resolverId: 'haier-official-discovery', finder: findHaierOfficialPdf }],
@@ -471,7 +477,10 @@ export function resolverAdapterIdsForBrand(value) {
     return ['electrolux-group-official-factsheet'];
   }
   const profile = LEGACY_RESOLVER_PROFILES.get(brand);
-  return profile ? [profile.resolverId] : [];
+  if (profile) return [profile.resolverId];
+  return hasDeterministicModelTemplate(brand)
+    ? ['architecture-v2-core-official-discovery']
+    : [];
 }
 
 export function buildArchitectureV2ResolverAdapters(caseRecord, options = {}) {

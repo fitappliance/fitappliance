@@ -8,6 +8,7 @@ import {
   createFisherPaykelResolverAdapter,
   createLegacyFinderResolverAdapter,
   createLgResolverAdapter,
+  resolverAdapterIdsForBrand,
 } from '../../scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs';
 
 test('Fisher and Paykel adapter maps discovery metadata without parsed facts', async () => {
@@ -236,6 +237,12 @@ test('adapter router enables only compatible pilot brand discovery', () => {
     .map((row) => row.resolverId), ['samsung-official-discovery']);
   assert.deepEqual(buildArchitectureV2ResolverAdapters({ brand: 'ASKO', model: 'T408HD.W' })
     .map((row) => row.resolverId), ['asko-official-manuals-api']);
+});
+
+test('queue routing exposes core discovery only for brands with deterministic model templates', () => {
+  assert.deepEqual(resolverAdapterIdsForBrand('Bosch'), ['architecture-v2-core-official-discovery']);
+  assert.deepEqual(resolverAdapterIdsForBrand('Smeg'), ['architecture-v2-core-official-discovery']);
+  assert.deepEqual(resolverAdapterIdsForBrand('Unknown Brand'), []);
 });
 
 test('ASKO adapter preserves hash-bound exact-model Australian API provenance', async () => {
