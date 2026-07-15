@@ -459,10 +459,10 @@ The plan must remain fail closed in these scenarios:
 
 This checkpoint records measured state, not final completion:
 
-- All **8,095** historical models remain classified. **88** now have a current
-  receipt; the remaining **8,007** stay in typed acquisition/research classes.
-- The cumulative acceptance bundle contains **69** entries and **79** source
-  receipts. Full receipt replay passed **79 / 79**.
+- All **8,095** historical models remain classified. **96** now have a current
+  receipt; the remaining **7,999** stay in typed acquisition/research classes.
+- The cumulative acceptance bundle contains **77** entries and **93** source
+  receipts. Full receipt replay passed **93 / 93**.
 - The current public catalogue contains **77** receipt-bound dimension
   projections and **0** receipt-bound `VERIFIED_FIT` projections. Dimension
   evidence alone has not been promoted into an installation guarantee.
@@ -508,18 +508,38 @@ The ASKO canaries required three reusable workflow corrections:
    arbitrary product-code selection. Every exact detail must preserve the model
    and expose the same complete PIM W/H/D before its documents become
    candidates; PDF-level disagreement is still handled by normal reconciliation.
+6. **Operational single-page fallback:** a primary pipeline command failure may
+   transfer only the failed page to the pinned high-effort hybrid profile after
+   chunk bisection reaches one page. The primary artifact retains an empty,
+   hash-bound page gap and the trigger records
+   `operational_page_failure / MINERU_COMMAND_FAILED`; verifier replay rejects a
+   non-empty claimed gap. The full trigger semantics are part of the cache key,
+   so operational recovery cannot reuse a legacy image-signal cache.
 
-The current acquisition queue has **8,007** models: **31** bounded-ready,
-**4,613** discovery-ready, **3,087** resolver gaps, and **276** research-required
+The current acquisition queue has **7,999** models: **31** bounded-ready,
+**4,605** discovery-ready, **3,087** resolver gaps, and **276** research-required
 models excluded from automatic execution. Task 8 therefore remains in progress.
-The next safe expansion unit is one exact current dishwasher canary, followed
-by category-specific parser/grammar review before any larger ASKO cohort.
+The executable queue contains **7,723** targets; the next generated batch
+contains **7,722** after excluding one already accepted target. The next safe
+expansion unit remains a brand-bounded official cohort with zero retryable
+outcomes and a passing online replay before promotion.
+
+The first ASKO dishwasher cohort accepted **8 / 8** exact AU models from **14**
+official PDF candidates with **0** failed candidates. Seven models retain
+`W596 / H819-872 / D554`; `DBI766IQXXL.BS.AU` retains
+`W596 / H859-912 / D554`. `DBI766IQ.S.AU` now replays two independent PDF
+hashes after the operational page-39 fallback repair. All eight remain
+dimensions-only and ineligible for `VERIFIED_FIT`.
 
 Checkpoint verification:
 
-- Architecture/PDF/replacement tests: **1,024 passed, 0 failed**.
-- Offline cumulative bundle audit: **69 entries, 0 violations**.
+- Full repository tests: **2,274 passed, 0 failed**.
+- Offline cumulative bundle audit: **77 entries, 0 violations**.
+- Online ASKO cohort audit: **8 targets, 41 objects, 0 violations**.
+- Cumulative receipt replay: **93 passed, 0 failed**.
 - Historical replacement audit: **8,095 records, 0 issues**.
 - Adjustable-height audit: **3 ranges, 0 scalar coercions**.
 - Fit publication audit: **3,521 products, 77 receipt-bound dimensions,
   0 receipt-bound Verified Fit, 0 violations**.
+- Dimension grammar inventory: **611** MinerU indexes, **610** valid,
+  **866** observations, **153** parser profiles.

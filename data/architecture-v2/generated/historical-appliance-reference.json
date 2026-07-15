@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "b7a38818dc776d541fcaa8891779601de20369b59124f39cdbe10539ebc01fcb"
+    "historical-recovery:historical-recovery-cumulative-v1": "1a2008b98e13e8ce14d652dc87ef55c3120697cc6edea9555e6a0db8d13393a1"
   },
   "records": [
     {
@@ -4211,13 +4211,50 @@
           "sourceLines": [
             350
           ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6512f76a8057719249fd764b",
+          "snapshotSha256": "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0",
+          "sourceLines": [
+            40
+          ]
         }
       ],
       "catalogProductIds": [],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_6512f76a8057719249fd764b",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740000&jezik=en&tipVsebine=1&docName=874270en.pdf",
+          "contentSha256": "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0",
+          "receiptBindingSha256": "7d39e3828417bdbd6dfe82f93db8defcec04a41c8b1fcb0d6795f6b55aae8971",
+          "verifiedAt": "2026-07-15T10:07:28.809Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 40,
+              "fragmentSha256": "9d0c5aa9e1619fcbe557c9c5831421f7fb1f3cc4772751b258fea087c450bc5a"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 40,
+              "fragmentSha256": "9d0c5aa9e1619fcbe557c9c5831421f7fb1f3cc4772751b258fea087c450bc5a"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 40,
+              "fragmentSha256": "9d0c5aa9e1619fcbe557c9c5831421f7fb1f3cc4772751b258fea087c450bc5a"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/43/98/4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -4367,13 +4404,83 @@
             338,
             1211
           ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_0064c8b8e623d6b09a4805ac",
+          "snapshotSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+          "sourceLines": [
+            43
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_0064c8b8e623d6b09a4805ac",
+          "snapshotSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+          "sourceLines": [
+            43
+          ]
         }
       ],
       "catalogProductIds": [],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_0064c8b8e623d6b09a4805ac",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740003&jezik=en&tipVsebine=1&docName=874288en.pdf",
+          "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+          "receiptBindingSha256": "69252d22b6dd06565472c659d746bcce2e31b1774e71808ae506fc5b17cb2224",
+          "verifiedAt": "2026-07-15T10:08:24.709Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/38/ad/38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b.pdf"
+        },
+        {
+          "targetId": "recovery_target_0064c8b8e623d6b09a4805ac",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747676&jezik=en&tipVsebine=1&docName=965797en.pdf",
+          "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+          "receiptBindingSha256": "96d2087cac8c268bb5f302b785bf0e96b032bbf8e862a34ff38f2b9bbc3de802",
+          "verifiedAt": "2026-07-15T10:05:37.531Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/45/50/4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -4518,6 +4625,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_498bf440bf3a78e3a2b13640",
+          "snapshotSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+          "sourceLines": [
+            43
+          ]
         }
       ],
       "catalogProductIds": [
@@ -4526,7 +4640,37 @@
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_498bf440bf3a78e3a2b13640",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740001&jezik=en&tipVsebine=1&docName=874288en.pdf",
+          "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+          "receiptBindingSha256": "4e79c87ce930f6a934c2d5fff287d7da8d139a3bd64c1f4516ab96baa973e401",
+          "verifiedAt": "2026-07-15T10:06:53.822Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/38/ad/38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -4558,13 +4702,83 @@
             342,
             1215
           ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_dae6775aa8a110232e8bb2be",
+          "snapshotSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+          "sourceLines": [
+            50
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_dae6775aa8a110232e8bb2be",
+          "snapshotSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+          "sourceLines": [
+            50
+          ]
         }
       ],
       "catalogProductIds": [],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_dae6775aa8a110232e8bb2be",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747675&jezik=en&tipVsebine=1&docName=965890en.pdf",
+          "contentSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+          "receiptBindingSha256": "1ed64c132298155b6ae4023e4d7d7e2c376735f49f6d8b5d9ac175ba0fecb110",
+          "verifiedAt": "2026-07-15T10:09:12.995Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/46/81/468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4.pdf"
+        },
+        {
+          "targetId": "recovery_target_dae6775aa8a110232e8bb2be",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740017&jezik=en&tipVsebine=1&docName=874618en.pdf",
+          "contentSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+          "receiptBindingSha256": "1d58d7f4e54ead40cdfad68d02afac97d8d142f0528186bdb9447c605178b6a9",
+          "verifiedAt": "2026-07-15T10:07:37.198Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/80/73/8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -4596,13 +4810,83 @@
             341,
             1214
           ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_dc61156a5cb22ebfcccff4c7",
+          "snapshotSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+          "sourceLines": [
+            50
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_dc61156a5cb22ebfcccff4c7",
+          "snapshotSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+          "sourceLines": [
+            50
+          ]
         }
       ],
       "catalogProductIds": [],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_dc61156a5cb22ebfcccff4c7",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747674&jezik=en&tipVsebine=1&docName=965890en.pdf",
+          "contentSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+          "receiptBindingSha256": "8bb669a5d4e2759b8241bbd2c8403840d826d10709c5c0e26e54ea71ba6c8e04",
+          "verifiedAt": "2026-07-15T10:12:41.806Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/46/81/468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4.pdf"
+        },
+        {
+          "targetId": "recovery_target_dc61156a5cb22ebfcccff4c7",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740018&jezik=en&tipVsebine=1&docName=874618en.pdf",
+          "contentSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+          "receiptBindingSha256": "5ddea0c54d2ad03124488a3a652ef718a0c76232a2e2c46380d54fe6c8b53188",
+          "verifiedAt": "2026-07-15T10:08:19.749Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/80/73/8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -4634,13 +4918,83 @@
             340,
             1213
           ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2742ae4133a8b947baced9ef",
+          "snapshotSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+          "sourceLines": [
+            50
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2742ae4133a8b947baced9ef",
+          "snapshotSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+          "sourceLines": [
+            50
+          ]
         }
       ],
       "catalogProductIds": [],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2742ae4133a8b947baced9ef",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747672&jezik=en&tipVsebine=1&docName=965890en.pdf",
+          "contentSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+          "receiptBindingSha256": "93f39074ddaa59188d8a0f3ca23ac82119817a7f45c7fefad6d219da5d18a7e9",
+          "verifiedAt": "2026-07-15T10:09:02.442Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/46/81/468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4.pdf"
+        },
+        {
+          "targetId": "recovery_target_2742ae4133a8b947baced9ef",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740019&jezik=en&tipVsebine=1&docName=874618en.pdf",
+          "contentSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+          "receiptBindingSha256": "c0a844bfb75c8e894ab3ff92a12e065c090be050a7db051f510c2dbea4e49375",
+          "verifiedAt": "2026-07-15T10:06:13.378Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "c8a8e3f1a1e0b65d411a9afc6c7e3fd480c4d116d0d16261739eb9bcf5778475"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/80/73/8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -4976,13 +5330,83 @@
             343,
             1216
           ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3df3fc3110d85d65a320152a",
+          "snapshotSha256": "5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1",
+          "sourceLines": [
+            53
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3df3fc3110d85d65a320152a",
+          "snapshotSha256": "f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e",
+          "sourceLines": [
+            53
+          ]
         }
       ],
       "catalogProductIds": [],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3df3fc3110d85d65a320152a",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740016&jezik=en&tipVsebine=1&docName=875008en.pdf",
+          "contentSha256": "5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1",
+          "receiptBindingSha256": "0a98c32fc4b27a8b0d78740e2505e7769112e35e98d0d984d42690c6536db6f5",
+          "verifiedAt": "2026-07-15T10:09:08.562Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "ac60d351983683dd292b426b806f461e78dd92313344bbf82f816312ee644d2b"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "ac60d351983683dd292b426b806f461e78dd92313344bbf82f816312ee644d2b"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "ac60d351983683dd292b426b806f461e78dd92313344bbf82f816312ee644d2b"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/5a/6e/5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1.pdf"
+        },
+        {
+          "targetId": "recovery_target_3df3fc3110d85d65a320152a",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747659&jezik=en&tipVsebine=1&docName=966482en.pdf",
+          "contentSha256": "f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e",
+          "receiptBindingSha256": "8c61964310f8312fd9e1fcd76aa28d600e16176e6496a00df6b87229ce2bd110",
+          "verifiedAt": "2026-07-15T10:06:18.582Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "77d145ece6c29d508b3800461c72c787eedb8cd7e8e5aafc14b5167b20cab490"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "77d145ece6c29d508b3800461c72c787eedb8cd7e8e5aafc14b5167b20cab490"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "77d145ece6c29d508b3800461c72c787eedb8cd7e8e5aafc14b5167b20cab490"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/f2/b5/f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -5014,13 +5438,83 @@
             345,
             1217
           ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_db34fb04160ccb0e723bdd8a",
+          "snapshotSha256": "2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319",
+          "sourceLines": [
+            53
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_db34fb04160ccb0e723bdd8a",
+          "snapshotSha256": "9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d",
+          "sourceLines": [
+            53
+          ]
         }
       ],
       "catalogProductIds": [],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_db34fb04160ccb0e723bdd8a",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740015&jezik=en&tipVsebine=1&docName=875235en.pdf",
+          "contentSha256": "2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319",
+          "receiptBindingSha256": "2af45da4420d769d5f4e019f7b1ca34c5570dbbdc8eafdcd36e21f4791f49d76",
+          "verifiedAt": "2026-07-15T10:08:12.720Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "93d4313247d63262ac326cdfc69857fd5571e8aa5b8b5ca767a4365aadbcfd9b"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "93d4313247d63262ac326cdfc69857fd5571e8aa5b8b5ca767a4365aadbcfd9b"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "93d4313247d63262ac326cdfc69857fd5571e8aa5b8b5ca767a4365aadbcfd9b"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/29/80/2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319.pdf"
+        },
+        {
+          "targetId": "recovery_target_db34fb04160ccb0e723bdd8a",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747658&jezik=en&tipVsebine=1&docName=966330en.pdf",
+          "contentSha256": "9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d",
+          "receiptBindingSha256": "0b231647fc569bd2aef2c95e586ce52620c056e781b202fa6c6b64543d3da1ea",
+          "verifiedAt": "2026-07-15T10:12:34.279Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "97c8da4aaa459b2ff1d19f2ef056d6bddc75e3f8f6552b5020f0703863c27f78"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "97c8da4aaa459b2ff1d19f2ef056d6bddc75e3f8f6552b5020f0703863c27f78"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 53,
+              "fragmentSha256": "97c8da4aaa459b2ff1d19f2ef056d6bddc75e3f8f6552b5020f0703863c27f78"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/9a/3e/9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,

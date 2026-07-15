@@ -470,7 +470,6 @@ export function renderHistoricalModelEvidenceClassificationMarkdown(snapshot) {
       ['Category', 'Brand', 'Class', 'Models'],
       (snapshot.topGaps ?? []).map((entry) => [entry.category, entry.brand, entry.operationalClass, String(entry.models)]),
     ),
-    '',
   ];
   return `${lines.join('\n')}\n`;
 }

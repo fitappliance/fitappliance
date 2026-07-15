@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T01:27:11.262Z",
-  "semanticQueueSha256": "81369ccc927e7471991879f0f5af5bf41fa7bb139d2feb77c80c20b79a6e74ff",
-  "sourceClassificationSha256": "81b40d54a6cdefeef245c08e79581a9366876f718ecae135be7992222e5fc613",
+  "generatedAt": "2026-07-15T00:00:00.000Z",
+  "semanticQueueSha256": "d6f0790c2baee62180c1dc0724d77d591b14ad590ac861ca59ab5999fb1302d9",
+  "sourceClassificationSha256": "603fe9839cf26f0e44467c8575f70525e32b3b5a13d73669f525d32d703fe26a",
   "records": [
     {
       "schemaVersion": 1,
@@ -40276,31 +40276,6 @@
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
         "dishwasher-adw1075"
-      ],
-      "canonicalProductIds": [],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3f0ef3cbd0013001eb6802d9",
-      "referenceId": "fa_ref_baac6bfa3e68e8940c7465e6",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI364ID.W.AU",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "dishwasher-adw1002"
       ],
       "canonicalProductIds": [],
       "offlineReplayOutcome": null
@@ -92151,121 +92126,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d12f6fcb4260687d3c8567ab",
-      "referenceId": "fa_ref_a0d375c3bd70bf6d4685cadc",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI343ID.S.AU",
-      "lifecycleState": "REGISTRY_ONLY",
-      "priority": "P2_REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [],
-      "canonicalProductIds": [],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3d7ebe980b61304dd128a805",
-      "referenceId": "fa_ref_8d8db8dc2112b7fbf3aeffae",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI364ID.BS.AU",
-      "lifecycleState": "REGISTRY_ONLY",
-      "priority": "P2_REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [],
-      "canonicalProductIds": [],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_616aba1b20e3e466f1840ff1",
-      "referenceId": "fa_ref_15bd9138423891ee4d5596f9",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI565IK.BS.AU",
-      "lifecycleState": "REGISTRY_ONLY",
-      "priority": "P2_REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [],
-      "canonicalProductIds": [],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_67491ab985a045e61e8253a7",
-      "referenceId": "fa_ref_3eb3b6c986c9f883c8e13d66",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI565IK.S.AU",
-      "lifecycleState": "REGISTRY_ONLY",
-      "priority": "P2_REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [],
-      "canonicalProductIds": [],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_184766b4a21153ea1753bfca",
-      "referenceId": "fa_ref_d263a79967266ccfd7263922",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI565IK.W.AU",
-      "lifecycleState": "REGISTRY_ONLY",
-      "priority": "P2_REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [],
-      "canonicalProductIds": [],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_2fcc212dc82560e98320f690",
       "referenceId": "fa_ref_b46201d6dcb587ab4880cc60",
       "category": "dishwasher",
@@ -92317,52 +92177,6 @@
       "category": "dishwasher",
       "brand": "ASKO",
       "model": "DBI653IB.W.AU",
-      "lifecycleState": "REGISTRY_ONLY",
-      "priority": "P2_REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [],
-      "canonicalProductIds": [],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_70a7839d302c4ff3fe6e9435",
-      "referenceId": "fa_ref_576082da4c0d1237f7337f1e",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI766IQ.S.AU",
-      "lifecycleState": "REGISTRY_ONLY",
-      "priority": "P2_REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [],
-      "canonicalProductIds": [],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_b24dce010bd9c54834df16bf",
-      "referenceId": "fa_ref_47325c57dc3a7f4174e70d2e",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI766IQXXL.BS.AU",
       "lifecycleState": "REGISTRY_ONLY",
       "priority": "P2_REGISTRY_ONLY",
       "groupType": "unclassified",
@@ -216067,23 +215881,23 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 88,
+    "COMPLETE_RECEIPT": 96,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 8007,
-    "uniqueReferences": 8007,
+    "queuedModels": 7999,
+    "uniqueReferences": 7999,
     "candidateSources": 1669,
     "candidateEdges": 1708,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2119,
+      "CATALOG_ARCHIVED": 2118,
       "CURRENT_RETAIL": 1312,
-      "REGISTRY_ONLY": 4576
+      "REGISTRY_ONLY": 4569
     },
     "byCategory": {
-      "dishwasher": 1392,
+      "dishwasher": 1384,
       "dryer": 825,
       "fridge": 4306,
       "washing_machine": 1484
@@ -216091,25 +215905,25 @@
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
-      "OFFICIAL_DISCOVERY": 6434,
+      "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 31,
       "REFERENCE_REDISCOVERY": 1266
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 193,
-      "OFFICIAL_DISCOVERY": 6434,
+      "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 31,
       "OFFICIAL_REDISCOVERY": 1266
     },
     "byExecutionReadiness": {
       "BOUNDED_READY": 31,
-      "DISCOVERY_READY": 4613,
+      "DISCOVERY_READY": 4605,
       "RESEARCH_REQUIRED": 276,
       "RESOLVER_GAP": 3087
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 88,
+      "COMPLETE_RECEIPT": 96,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

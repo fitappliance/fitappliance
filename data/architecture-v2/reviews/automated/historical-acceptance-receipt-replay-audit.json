@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T01:28:04.199Z",
-  "sourceBundleSha256": "b7a38818dc776d541fcaa8891779601de20369b59124f39cdbe10539ebc01fcb",
+  "generatedAt": "2026-07-15T11:18:19.205Z",
+  "sourceBundleSha256": "1a2008b98e13e8ce14d652dc87ef55c3120697cc6edea9555e6a0db8d13393a1",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -14,6 +14,34 @@
       "contentSha256": "6b28ee2a4a8948655499dc4a871efc9dde59a6890c991dc521255f02a7126fb5",
       "receiptBindingSha256": "01c65d9da822453778a3ce85edececd058dd81ca70f22dc258ce3677debee42e",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_0064c8b8e623d6b09a4805ac",
+      "referenceId": "fa_ref_8d8db8dc2112b7fbf3aeffae",
+      "brand": "ASKO",
+      "model": "DBI364ID.BS.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740003&jezik=en&tipVsebine=1&docName=874288en.pdf",
+      "sourcePdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+      "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+      "receiptBindingSha256": "69252d22b6dd06565472c659d746bcce2e31b1774e71808ae506fc5b17cb2224",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/39/47/3947fd878dd48840e5826c8997c8acfa77c73c27419fc1409a3d0f146db5da00.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_0064c8b8e623d6b09a4805ac",
+      "referenceId": "fa_ref_8d8db8dc2112b7fbf3aeffae",
+      "brand": "ASKO",
+      "model": "DBI364ID.BS.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747676&jezik=en&tipVsebine=1&docName=965797en.pdf",
+      "sourcePdfSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+      "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+      "receiptBindingSha256": "96d2087cac8c268bb5f302b785bf0e96b032bbf8e862a34ff38f2b9bbc3de802",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/10/8b/108bd363434692a686ec87dac921631f906301cc47cd493341f317dba71892db.json",
       "status": "passed",
       "failureCode": null
     },
@@ -172,6 +200,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_2742ae4133a8b947baced9ef",
+      "referenceId": "fa_ref_d263a79967266ccfd7263922",
+      "brand": "ASKO",
+      "model": "DBI565IK.W.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747672&jezik=en&tipVsebine=1&docName=965890en.pdf",
+      "sourcePdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+      "contentSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+      "receiptBindingSha256": "93f39074ddaa59188d8a0f3ca23ac82119817a7f45c7fefad6d219da5d18a7e9",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/e5/e0/e5e0fc29afc8abdc2ef3fe57f9ecf85e5bce1d8d7822d6bf4eaadb2df73aa7e5.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_2742ae4133a8b947baced9ef",
+      "referenceId": "fa_ref_d263a79967266ccfd7263922",
+      "brand": "ASKO",
+      "model": "DBI565IK.W.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740019&jezik=en&tipVsebine=1&docName=874618en.pdf",
+      "sourcePdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+      "contentSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+      "receiptBindingSha256": "c0a844bfb75c8e894ab3ff92a12e065c090be050a7db051f510c2dbea4e49375",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/6f/d8/6fd8127d5d45f75fb969fc7ccf1b778f5f771809c3fdd9188e37a1aa981b64c0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_28562988936e58e291d5d741",
       "referenceId": "fa_ref_bd23104d694c57a5bf4b2a47",
       "brand": "Bosch",
@@ -284,6 +340,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_3df3fc3110d85d65a320152a",
+      "referenceId": "fa_ref_576082da4c0d1237f7337f1e",
+      "brand": "ASKO",
+      "model": "DBI766IQ.S.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740016&jezik=en&tipVsebine=1&docName=875008en.pdf",
+      "sourcePdfSha256": "5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1",
+      "contentSha256": "5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1",
+      "receiptBindingSha256": "0a98c32fc4b27a8b0d78740e2505e7769112e35e98d0d984d42690c6536db6f5",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/dc/62/dc6211294155e69942a1b7a56b3abea18b83411f98ba3da44520595ad1e8ae4f.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_3df3fc3110d85d65a320152a",
+      "referenceId": "fa_ref_576082da4c0d1237f7337f1e",
+      "brand": "ASKO",
+      "model": "DBI766IQ.S.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747659&jezik=en&tipVsebine=1&docName=966482en.pdf",
+      "sourcePdfSha256": "f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e",
+      "contentSha256": "f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e",
+      "receiptBindingSha256": "8c61964310f8312fd9e1fcd76aa28d600e16176e6496a00df6b87229ce2bd110",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/10/6c/106c504c89591279c44f4d38d5a8181151a5bfa2c6461fffc78d213ddb3345dc.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_3f1643a3e2eda1bc19fc4653",
       "referenceId": "fa_ref_1ff73a2eab82a5cba3400c5e",
       "brand": "Fisher & Paykel",
@@ -350,6 +434,20 @@
       "contentSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
       "receiptBindingSha256": "e1f0966a5ca590acca63a2e8ad1166e18a9138b428d3c936aedc387daa71835b",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/63/45/6345d4ee15d06fc55591670a0d916bae7d360ec8bd4b63528426d06ab09dd413.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_498bf440bf3a78e3a2b13640",
+      "referenceId": "fa_ref_baac6bfa3e68e8940c7465e6",
+      "brand": "ASKO",
+      "model": "DBI364ID.W.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740001&jezik=en&tipVsebine=1&docName=874288en.pdf",
+      "sourcePdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+      "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+      "receiptBindingSha256": "4e79c87ce930f6a934c2d5fff287d7da8d139a3bd64c1f4516ab96baa973e401",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/39/47/3947fd878dd48840e5826c8997c8acfa77c73c27419fc1409a3d0f146db5da00.json",
       "status": "passed",
       "failureCode": null
     },
@@ -504,6 +602,20 @@
       "contentSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd",
       "receiptBindingSha256": "8e7cec63fbc3fd1a4309359f59d37c22a5fd3be46d9a1df5a3c02d543367d23c",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_6512f76a8057719249fd764b",
+      "referenceId": "fa_ref_a0d375c3bd70bf6d4685cadc",
+      "brand": "ASKO",
+      "model": "DBI343ID.S.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740000&jezik=en&tipVsebine=1&docName=874270en.pdf",
+      "sourcePdfSha256": "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0",
+      "contentSha256": "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0",
+      "receiptBindingSha256": "7d39e3828417bdbd6dfe82f93db8defcec04a41c8b1fcb0d6795f6b55aae8971",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/89/0d/890d6672dbb885cb36dbe7844b9fdf81f4db941dd698f2031ee66945c62063d6.json",
       "status": "passed",
       "failureCode": null
     },
@@ -970,6 +1082,90 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_dae6775aa8a110232e8bb2be",
+      "referenceId": "fa_ref_15bd9138423891ee4d5596f9",
+      "brand": "ASKO",
+      "model": "DBI565IK.BS.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747675&jezik=en&tipVsebine=1&docName=965890en.pdf",
+      "sourcePdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+      "contentSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+      "receiptBindingSha256": "1ed64c132298155b6ae4023e4d7d7e2c376735f49f6d8b5d9ac175ba0fecb110",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/e5/e0/e5e0fc29afc8abdc2ef3fe57f9ecf85e5bce1d8d7822d6bf4eaadb2df73aa7e5.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_dae6775aa8a110232e8bb2be",
+      "referenceId": "fa_ref_15bd9138423891ee4d5596f9",
+      "brand": "ASKO",
+      "model": "DBI565IK.BS.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740017&jezik=en&tipVsebine=1&docName=874618en.pdf",
+      "sourcePdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+      "contentSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+      "receiptBindingSha256": "1d58d7f4e54ead40cdfad68d02afac97d8d142f0528186bdb9447c605178b6a9",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/6f/d8/6fd8127d5d45f75fb969fc7ccf1b778f5f771809c3fdd9188e37a1aa981b64c0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_db34fb04160ccb0e723bdd8a",
+      "referenceId": "fa_ref_47325c57dc3a7f4174e70d2e",
+      "brand": "ASKO",
+      "model": "DBI766IQXXL.BS.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740015&jezik=en&tipVsebine=1&docName=875235en.pdf",
+      "sourcePdfSha256": "2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319",
+      "contentSha256": "2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319",
+      "receiptBindingSha256": "2af45da4420d769d5f4e019f7b1ca34c5570dbbdc8eafdcd36e21f4791f49d76",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/bb/38/bb380d7ffda67ef5ef51e4116d69fe3c86fd8d664b65ade40d046b59795bd91e.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_db34fb04160ccb0e723bdd8a",
+      "referenceId": "fa_ref_47325c57dc3a7f4174e70d2e",
+      "brand": "ASKO",
+      "model": "DBI766IQXXL.BS.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747658&jezik=en&tipVsebine=1&docName=966330en.pdf",
+      "sourcePdfSha256": "9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d",
+      "contentSha256": "9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d",
+      "receiptBindingSha256": "0b231647fc569bd2aef2c95e586ce52620c056e781b202fa6c6b64543d3da1ea",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/99/52/9952720a4f071a371adb083dfc511eec5902731622a4ed99877dba631ca06dc3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_dc61156a5cb22ebfcccff4c7",
+      "referenceId": "fa_ref_3eb3b6c986c9f883c8e13d66",
+      "brand": "ASKO",
+      "model": "DBI565IK.S.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747674&jezik=en&tipVsebine=1&docName=965890en.pdf",
+      "sourcePdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+      "contentSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+      "receiptBindingSha256": "8bb669a5d4e2759b8241bbd2c8403840d826d10709c5c0e26e54ea71ba6c8e04",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/e5/e0/e5e0fc29afc8abdc2ef3fe57f9ecf85e5bce1d8d7822d6bf4eaadb2df73aa7e5.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_dc61156a5cb22ebfcccff4c7",
+      "referenceId": "fa_ref_3eb3b6c986c9f883c8e13d66",
+      "brand": "ASKO",
+      "model": "DBI565IK.S.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740018&jezik=en&tipVsebine=1&docName=874618en.pdf",
+      "sourcePdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+      "contentSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+      "receiptBindingSha256": "5ddea0c54d2ad03124488a3a652ef718a0c76232a2e2c46380d54fe6c8b53188",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/6f/d8/6fd8127d5d45f75fb969fc7ccf1b778f5f771809c3fdd9188e37a1aa981b64c0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_e064d2dd39b8d348e348b34c",
       "referenceId": "fa_ref_6d746dc359aefbbc5a22fd20",
       "brand": "Bosch",
@@ -1111,11 +1307,11 @@
     }
   ],
   "summary": {
-    "entries": 69,
-    "sources": 79,
-    "passed": 79,
+    "entries": 77,
+    "sources": 93,
+    "passed": 93,
     "failed": 0
   },
-  "checkedObjects": 174,
-  "semanticAuditSha256": "d35d8574c0d0df4a25396558b2e422bd23ab973a1c9e35a0cf65cf35a1b1c0b5"
+  "checkedObjects": 206,
+  "semanticAuditSha256": "4e411c65f1609daa9c5a90af1e8484163e834c49344c741ae06a3627ce14303b"
 }

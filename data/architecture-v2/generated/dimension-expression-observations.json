@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-07-14T00:00:00.000Z",
+  "generatedAt": "2026-07-15T00:00:00.000Z",
   "policy": {
     "categories": [
       "fridge",
@@ -17,17 +17,17 @@
     "historicalRecords": 8095,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 605,
-    "validMineruDocuments": 604,
+    "mineruDocuments": 611,
+    "validMineruDocuments": 610,
     "invalidMineruDocuments": 1,
     "documentsWithObservations": 325,
-    "documentsWithoutObservations": 279,
-    "mappedMineruDocuments": 570,
+    "documentsWithoutObservations": 285,
+    "mappedMineruDocuments": 576,
     "unmappedMineruDocuments": 34,
     "observations": 866,
-    "researchGaps": 704,
+    "researchGaps": 718,
     "parserProfiles": 153,
-    "parserReplays": 660,
+    "parserReplays": 674,
     "completeParserReplays": 231
   },
   "categories": [
@@ -53725,9 +53725,9 @@
             "ASKO"
           ],
           "modelCount": 67,
-          "observedMineruDocuments": 3,
+          "observedMineruDocuments": 9,
           "observedMarketingSeriesCount": 0,
-          "observedDocumentFamilyCount": 0,
+          "observedDocumentFamilyCount": 5,
           "observedParserProfileCount": 0,
           "completeParserReplayCount": 0,
           "seriesCountStatus": "UNKNOWN",
@@ -53735,20 +53735,100 @@
           "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION",
           "families": [
             {
-              "groupType": "model_specific",
-              "groupName": "DBI343ID.W.AU",
+              "groupType": "document_family",
+              "groupName": "Document family 38ad673e29cc",
               "models": [
+                "DBI364ID.BS.AU",
+                "DBI364ID.S.AU",
+                "DBI364ID.W.AU"
+              ],
+              "pdfSha256s": [
+                "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b"
+              ],
+              "sourceUrls": [
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740001&jezik=en&tipVsebine=1&docName=874288en.pdf",
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740003&jezik=en&tipVsebine=1&docName=874288en.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI364ID.BS.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                },
+                {
+                  "pdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI364ID.S.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                },
+                {
+                  "pdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI364ID.W.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+                  "contentSha256": "7b652d5697b10a20d4af87160688da5b2cf36dfaf7e52862c43d8eca35a822e6",
+                  "page": 36,
+                  "quote": "s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary."
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            },
+            {
+              "groupType": "document_family",
+              "groupName": "Document family 4398a8ff383c",
+              "models": [
+                "DBI343ID.S.AU",
                 "DBI343ID.W.AU"
               ],
               "pdfSha256s": [
                 "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0"
               ],
               "sourceUrls": [
-                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=739996&jezik=en&tipVsebine=1&docName=874270en.pdf"
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=739996&jezik=en&tipVsebine=1&docName=874270en.pdf",
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740000&jezik=en&tipVsebine=1&docName=874270en.pdf"
               ],
               "seriesEvidence": [],
               "parserProfiles": [],
               "parserReplays": [
+                {
+                  "pdfSha256": "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI343ID.S.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                },
                 {
                   "pdfSha256": "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0",
                   "category": "dishwasher",
@@ -53783,27 +53863,27 @@
               "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
             },
             {
-              "groupType": "model_specific",
-              "groupName": "DBI364ID.S.AU",
+              "groupType": "document_family",
+              "groupName": "Document family 4550293c7667",
               "models": [
+                "DBI364ID.BS.AU",
                 "DBI364ID.S.AU"
               ],
               "pdfSha256s": [
-                "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
                 "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8"
               ],
               "sourceUrls": [
-                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
-                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf"
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747676&jezik=en&tipVsebine=1&docName=965797en.pdf"
               ],
               "seriesEvidence": [],
               "parserProfiles": [],
               "parserReplays": [
                 {
-                  "pdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+                  "pdfSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
                   "category": "dishwasher",
                   "brand": "ASKO",
-                  "model": "DBI364ID.S.AU",
+                  "model": "DBI364ID.BS.AU",
                   "extractionState": "PARSER_GAP",
                   "identityScope": "UNPROVEN",
                   "claimFields": [],
@@ -53826,17 +53906,322 @@
               "researchGaps": [
                 {
                   "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
-                  "pdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
-                  "contentSha256": "7b652d5697b10a20d4af87160688da5b2cf36dfaf7e52862c43d8eca35a822e6",
-                  "page": 36,
-                  "quote": "s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary."
-                },
-                {
-                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
                   "pdfSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
                   "contentSha256": "33d1c0d083890a892acff0860478e3609a3fd85bf4834a6b9dc702cb42174e4e",
                   "page": 36,
                   "quote": "s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary."
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            },
+            {
+              "groupType": "document_family",
+              "groupName": "Document family 468182904268",
+              "models": [
+                "DBI565IK.BS.AU",
+                "DBI565IK.S.AU",
+                "DBI565IK.W.AU"
+              ],
+              "pdfSha256s": [
+                "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4"
+              ],
+              "sourceUrls": [
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747672&jezik=en&tipVsebine=1&docName=965890en.pdf",
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747674&jezik=en&tipVsebine=1&docName=965890en.pdf",
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747675&jezik=en&tipVsebine=1&docName=965890en.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI565IK.BS.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                },
+                {
+                  "pdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI565IK.S.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                },
+                {
+                  "pdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI565IK.W.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+                  "contentSha256": "035e5d93191672de4c8cf72c615129d7b072dac6bb6fd66712a4539c86c5edc4",
+                  "page": 42,
+                  "quote": "s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary."
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+                  "contentSha256": "035e5d93191672de4c8cf72c615129d7b072dac6bb6fd66712a4539c86c5edc4",
+                  "page": 50,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            },
+            {
+              "groupType": "document_family",
+              "groupName": "Document family 8073dfad036b",
+              "models": [
+                "DBI565IK.BS.AU",
+                "DBI565IK.S.AU",
+                "DBI565IK.W.AU"
+              ],
+              "pdfSha256s": [
+                "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287"
+              ],
+              "sourceUrls": [
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740017&jezik=en&tipVsebine=1&docName=874618en.pdf",
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740018&jezik=en&tipVsebine=1&docName=874618en.pdf",
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740019&jezik=en&tipVsebine=1&docName=874618en.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI565IK.BS.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                },
+                {
+                  "pdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI565IK.S.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                },
+                {
+                  "pdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI565IK.W.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+                  "contentSha256": "e2f7f117bec30e1721934a798fb7cebcd889a1515f05e93998a59649e9f3657e",
+                  "page": 42,
+                  "quote": "s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary."
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+                  "contentSha256": "e2f7f117bec30e1721934a798fb7cebcd889a1515f05e93998a59649e9f3657e",
+                  "page": 50,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            },
+            {
+              "groupType": "model_specific",
+              "groupName": "DBI766IQ.S.AU",
+              "models": [
+                "DBI766IQ.S.AU"
+              ],
+              "pdfSha256s": [
+                "5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1",
+                "f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e"
+              ],
+              "sourceUrls": [
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740016&jezik=en&tipVsebine=1&docName=875008en.pdf",
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747659&jezik=en&tipVsebine=1&docName=966482en.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI766IQ.S.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                },
+                {
+                  "pdfSha256": "f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI766IQ.S.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1",
+                  "contentSha256": "622b953b72605d822eda2ce5211518fa493463f7f8d3e310588577aad9a12b39",
+                  "page": 45,
+                  "quote": "s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary."
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e",
+                  "contentSha256": "3336f4b2239954f703a12aa6c1bd5ef40139381a2549b776510979a337921013",
+                  "page": 45,
+                  "quote": ""
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1",
+                  "contentSha256": "622b953b72605d822eda2ce5211518fa493463f7f8d3e310588577aad9a12b39",
+                  "page": 46,
+                  "quote": ""
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1",
+                  "contentSha256": "622b953b72605d822eda2ce5211518fa493463f7f8d3e310588577aad9a12b39",
+                  "page": 53,
+                  "quote": ""
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e",
+                  "contentSha256": "3336f4b2239954f703a12aa6c1bd5ef40139381a2549b776510979a337921013",
+                  "page": 53,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "IMAGE_ONLY_DIMENSION_DIAGRAM"
+            },
+            {
+              "groupType": "model_specific",
+              "groupName": "DBI766IQXXL.BS.AU",
+              "models": [
+                "DBI766IQXXL.BS.AU"
+              ],
+              "pdfSha256s": [
+                "2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319",
+                "9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d"
+              ],
+              "sourceUrls": [
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740015&jezik=en&tipVsebine=1&docName=875235en.pdf",
+                "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747658&jezik=en&tipVsebine=1&docName=966330en.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI766IQXXL.BS.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                },
+                {
+                  "pdfSha256": "9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d",
+                  "category": "dishwasher",
+                  "brand": "ASKO",
+                  "model": "DBI766IQXXL.BS.AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319",
+                  "contentSha256": "dd61c6914044d8097c0ce958194b05c249f0b4dcba39c82f396e2e87d55c5dfe",
+                  "page": 45,
+                  "quote": "s when installing in a recess measuring 860-861 mm. Nominal dimensions. Actual measurements may vary."
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d",
+                  "contentSha256": "6a73cbc4198f1fe5595f40b8654ccd3d537c11707459cc104902bfd159f26421",
+                  "page": 45,
+                  "quote": ""
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319",
+                  "contentSha256": "dd61c6914044d8097c0ce958194b05c249f0b4dcba39c82f396e2e87d55c5dfe",
+                  "page": 46,
+                  "quote": ""
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319",
+                  "contentSha256": "dd61c6914044d8097c0ce958194b05c249f0b4dcba39c82f396e2e87d55c5dfe",
+                  "page": 53,
+                  "quote": ""
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d",
+                  "contentSha256": "6a73cbc4198f1fe5595f40b8654ccd3d537c11707459cc104902bfd159f26421",
+                  "page": 53,
+                  "quote": ""
                 }
               ],
               "parserProfileIds": [],

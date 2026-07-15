@@ -219,8 +219,25 @@ function pdfIdentitySignals(
       throw new Error('MinerU fallback trigger artifact hash mismatch');
     }
     const detectedPages = [...findMineruImageOnlyDimensionPages(triggerBytes)];
-    if (JSON.stringify(detectedPages) !== JSON.stringify(derived.fallbackTrigger.pages)) {
-      throw new Error('MinerU fallback trigger pages do not replay');
+    const pageReasons = derived.fallbackTrigger.pageReasons ?? derived.fallbackTrigger.pages.map((page) => ({
+      page,
+      reason: 'image_dimension_signal',
+    }));
+    const imagePages = pageReasons
+      .filter((entry) => entry.reason === 'image_dimension_signal')
+      .map((entry) => entry.page);
+    if (JSON.stringify(detectedPages) !== JSON.stringify(imagePages)) {
+      throw new Error('MinerU image fallback trigger pages do not replay');
+    }
+    const operationalPages = pageReasons
+      .filter((entry) => entry.reason === 'operational_page_failure')
+      .map((entry) => entry.page);
+    if (operationalPages.length) {
+      const triggerPages = JSON.parse(triggerBytes.toString('utf8'));
+      if (operationalPages.some((page) => !Array.isArray(triggerPages[page - 1])
+        || triggerPages[page - 1].length !== 0)) {
+        throw new Error('MinerU operational fallback trigger page is not an empty primary gap');
+      }
     }
     const triggerInspection = inspectMineruContentListV2(triggerBytes);
     if (derived.sourcePageCount != null && triggerInspection.pageCount !== derived.sourcePageCount) {

@@ -797,6 +797,96 @@ test('PDF attestation binds a pinned hybrid image profile and rejects profile dr
   }), /profile|MinerU JSON derived artifact metadata/i);
 });
 
+test('PDF attestation accepts only an empty hash-bound primary gap for operational hybrid fallback', () => {
+  const caseIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
+  const pdfBytes = Buffer.from('%PDF-1.7\noperational hybrid fallback');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const primaryJsonBytes = Buffer.from(JSON.stringify([[]]));
+  const primaryHash = createHash('sha256').update(primaryJsonBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'page_header',
+      content: { page_header_content: [{ type: 'text', content: 'SPEC SHEET > HRCD640TBW' }] },
+      bbox: [40, 20, 500, 45],
+    },
+    {
+      type: 'table', content: {
+        html: '<table><tr><td>Width</td><td>914 mm</td></tr><tr><td>Height</td><td>1790 mm</td></tr><tr><td>Depth</td><td>730 mm</td></tr></table>',
+        table_caption: [], table_footnote: [], table_type: 'simple_table', table_nest_level: 1,
+      }, bbox: [80, 140, 800, 500],
+    },
+  ]]));
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_VLM_MODEL_REVISION,
+    caseIdentity, claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }).claims;
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash,
+    parserVersion: '3.4.4',
+    modelRevision: MINERU_VLM_MODEL_REVISION,
+    profile: {
+      profileId: 'hybrid-image-high-v1', backend: 'hybrid-engine', method: 'auto',
+      effort: 'high', imageAnalysis: true,
+    },
+    processedPages: [1],
+    sourcePageCount: 1,
+    fallbackTrigger: {
+      profileId: 'pipeline-auto-v1',
+      contentSha256: primaryHash,
+      objectPath: `evidence/derived/mineru-json/sha256/${primaryHash.slice(0, 2)}/${primaryHash.slice(2, 4)}/${primaryHash}.json`,
+      pages: [1],
+      pageReasons: [{
+        page: 1, reason: 'operational_page_failure', failureCode: 'MINERU_COMMAND_FAILED',
+      }],
+    },
+  });
+  const sourceUrl = 'https://dtc-aus-api.hisense.com/medias/HRCD640TBW-spec-sheet.pdf';
+  const source = {
+    authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+    sourceUrl, finalUrl: sourceUrl, redirectChain: [],
+    retrievedAt: '2026-07-15T10:00:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    identity: { brand: 'Hisense', model: 'HRCD640TBW', outcome: 'exact' },
+    claims, derivedArtifact,
+  };
+  assert.doesNotThrow(() => verifyAndAttestResolutionArtifact({
+    source, caseIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    fallbackTriggerArtifactBytes: primaryJsonBytes,
+    verifiedAt: '2026-07-15T10:05:00.000Z', claimSemanticsVersion: 2,
+  }));
+
+  const nonGapPrimary = Buffer.from(JSON.stringify([[{
+    type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'ordinary text' }] },
+    bbox: [1, 1, 10, 10],
+  }]]));
+  const nonGapHash = createHash('sha256').update(nonGapPrimary).digest('hex');
+  const invalidArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash,
+    parserVersion: '3.4.4', modelRevision: MINERU_VLM_MODEL_REVISION,
+    profile: {
+      profileId: 'hybrid-image-high-v1', backend: 'hybrid-engine', method: 'auto',
+      effort: 'high', imageAnalysis: true,
+    },
+    processedPages: [1], sourcePageCount: 1,
+    fallbackTrigger: {
+      profileId: 'pipeline-auto-v1', contentSha256: nonGapHash,
+      objectPath: `evidence/derived/mineru-json/sha256/${nonGapHash.slice(0, 2)}/${nonGapHash.slice(2, 4)}/${nonGapHash}.json`,
+      pages: [1],
+      pageReasons: [{
+        page: 1, reason: 'operational_page_failure', failureCode: 'MINERU_COMMAND_FAILED',
+      }],
+    },
+  });
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: { ...source, derivedArtifact: invalidArtifact },
+    caseIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    fallbackTriggerArtifactBytes: nonGapPrimary,
+    verifiedAt: '2026-07-15T10:05:00.000Z', claimSemanticsVersion: 2,
+  }), /not an empty primary gap/i);
+});
+
 test('a model-scoped PDF header still needs an independent exact-model source URL', () => {
   const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
   const pdfBytes = Buffer.from('%PDF-1.7\nheader-scoped artifact');

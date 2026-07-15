@@ -497,6 +497,8 @@ export function currentMineruEvidenceProfile(artifact) {
   if (profile.role === 'image_dimension_fallback') {
     const trigger = artifact.fallbackTrigger;
     const pages = [...new Set(trigger?.pages ?? [])].sort((left, right) => left - right);
+    const pageReasons = trigger?.pageReasons == null ? null : [...trigger.pageReasons]
+      .sort((left, right) => left.page - right.page);
     const hash = String(trigger?.contentSha256 ?? '');
     const expectedPath = `evidence/derived/mineru-json/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.json`;
     if (trigger?.profileId !== 'pipeline-auto-v1'
@@ -507,6 +509,14 @@ export function currentMineruEvidenceProfile(artifact) {
       || (artifact.processedPages != null
         && JSON.stringify(pages) !== JSON.stringify([...artifact.processedPages].sort((a, b) => a - b)))) {
       throw new TypeError('hash-bound primary MinerU fallback trigger required');
+    }
+    if (pageReasons && (pageReasons.length !== pages.length
+      || pageReasons.some((entry, index) => entry?.page !== pages[index]
+        || !['image_dimension_signal', 'operational_page_failure'].includes(entry?.reason)
+        || (entry.reason === 'operational_page_failure'
+          ? entry.failureCode !== 'MINERU_COMMAND_FAILED'
+          : entry.failureCode != null)))) {
+      throw new TypeError('bounded MinerU fallback page reasons required');
     }
   }
   return profile;
@@ -558,6 +568,9 @@ function normalizedDerivedArtifact(source) {
       contentSha256: artifact.fallbackTrigger.contentSha256,
       objectPath: artifact.fallbackTrigger.objectPath,
       pages: [...artifact.fallbackTrigger.pages],
+      ...(artifact.fallbackTrigger.pageReasons ? {
+        pageReasons: artifact.fallbackTrigger.pageReasons.map((entry) => ({ ...entry })),
+      } : {}),
     };
   }
   if (artifact.processedPages != null || artifact.sourcePageCount != null) {

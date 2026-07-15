@@ -1725,6 +1725,11 @@ export function buildMineruDerivedArtifact(jsonBytes, options = {}) {
   if (options.fallbackTrigger != null) {
     const trigger = options.fallbackTrigger;
     const triggerPages = [...new Set(trigger.pages ?? [])].sort((left, right) => left - right);
+    const pageReasons = trigger.pageReasons == null ? null : trigger.pageReasons.map((entry) => ({
+      page: entry?.page,
+      reason: entry?.reason,
+      ...(entry?.failureCode ? { failureCode: entry.failureCode } : {}),
+    })).sort((left, right) => left.page - right.page);
     if (trigger.profileId !== 'pipeline-auto-v1'
       || !/^[a-f0-9]{64}$/.test(String(trigger.contentSha256 ?? ''))
       || !Array.isArray(trigger.pages) || triggerPages.length !== trigger.pages.length
@@ -1734,11 +1739,23 @@ export function buildMineruDerivedArtifact(jsonBytes, options = {}) {
       || !trigger.objectPath.endsWith(`/${trigger.contentSha256}.json`)) {
       throw new TypeError('valid primary MinerU fallback trigger required');
     }
+    if (pageReasons && (!Array.isArray(trigger.pageReasons)
+      || pageReasons.length !== triggerPages.length
+      || pageReasons.some((entry, index) => entry.page !== triggerPages[index]
+        || !['image_dimension_signal', 'operational_page_failure'].includes(entry.reason)
+        || (entry.reason === 'operational_page_failure'
+          ? entry.failureCode !== 'MINERU_COMMAND_FAILED'
+          : entry.failureCode != null)))) {
+      throw new TypeError('valid primary MinerU fallback page reasons required');
+    }
     artifact.fallbackTrigger = Object.freeze({
       profileId: trigger.profileId,
       contentSha256: trigger.contentSha256,
       objectPath: trigger.objectPath,
       pages: Object.freeze(triggerPages),
+      ...(pageReasons ? {
+        pageReasons: Object.freeze(pageReasons.map((entry) => Object.freeze(entry))),
+      } : {}),
     });
   }
   return Object.freeze(artifact);

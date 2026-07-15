@@ -1,6 +1,6 @@
 # Appliance Dimension Expression Knowledge Base
 
-Generated: 2026-07-14T00:00:00.000Z
+Generated: 2026-07-15T00:00:00.000Z
 
 > This is a non-authoritative research sidecar. Brand, category, series and
 > document-family patterns must not authorise model claims, resolve ambiguous
@@ -13,16 +13,16 @@ Generated: 2026-07-14T00:00:00.000Z
 | Historical records | 8095 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 605 |
-| Valid MinerU documents | 604 |
+| MinerU documents | 611 |
+| Valid MinerU documents | 610 |
 | Invalid or orphaned MinerU documents | 1 |
 | Documents with recognised expressions | 325 |
-| Documents without recognised expressions | 279 |
-| Mapped MinerU documents | 570 |
+| Documents without recognised expressions | 285 |
+| Mapped MinerU documents | 576 |
 | Unmapped MinerU documents | 34 |
 | Dimension-expression observations | 866 |
 | Reusable PDF grammar profiles | 153 |
-| Research gaps | 704 |
+| Research gaps | 718 |
 
 A marketing-series count is a proven minimum, never an estimate of the
 manufacturer's complete range. `UNKNOWN` is intentional when official text
@@ -185,7 +185,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Anko | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | ARISTON | 9 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Artusi | 58 | 2 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
-| ASKO | 67 | 3 | 0 | 0 | `MINERU_SAMPLE_OBSERVED` |
+| ASKO | 67 | 9 | 0 | 0 | `MINERU_SAMPLE_OBSERVED` |
 | Astivita | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | AWARD | 9 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Baumatic | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -4610,18 +4610,31 @@ Research gaps:
 
 - Raw brand variants: `ASKO`
 - Inventory models: 67
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 3
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 9
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 0
 - Complete exact-model parser replays: 0
 
-#### DBI343ID.W.AU
+#### Document family 38ad673e29cc
 
-- Group type: `model_specific`
+- Group type: `document_family`
 - Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
-- Models observed: `DBI343ID.W.AU`
+- Models observed: `DBI364ID.BS.AU`, `DBI364ID.S.AU`, `DBI364ID.W.AU`
+- PDF SHA-256: `38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b`
+- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740001&jezik=en&tipVsebine=1&docName=874288en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740003&jezik=en&tipVsebine=1&docName=874288en.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 36: s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary.
+
+#### Document family 4398a8ff383c
+
+- Group type: `document_family`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `DBI343ID.S.AU`, `DBI343ID.W.AU`
 - PDF SHA-256: `4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0`
-- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=739996&jezik=en&tipVsebine=1&docName=874270en.pdf>
+- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=739996&jezik=en&tipVsebine=1&docName=874270en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740000&jezik=en&tipVsebine=1&docName=874270en.pdf>
 
 `NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
 
@@ -4629,19 +4642,80 @@ Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 33: s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary.
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 40
 
-#### DBI364ID.S.AU
+#### Document family 4550293c7667
 
-- Group type: `model_specific`
+- Group type: `document_family`
 - Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
-- Models observed: `DBI364ID.S.AU`
-- PDF SHA-256: `38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b`, `4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8`
-- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf>
+- Models observed: `DBI364ID.BS.AU`, `DBI364ID.S.AU`
+- PDF SHA-256: `4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8`
+- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747676&jezik=en&tipVsebine=1&docName=965797en.pdf>
 
 `NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
 
 Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 36: s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary.
-- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 36: s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary.
+
+#### Document family 468182904268
+
+- Group type: `document_family`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `DBI565IK.BS.AU`, `DBI565IK.S.AU`, `DBI565IK.W.AU`
+- PDF SHA-256: `468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4`
+- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747672&jezik=en&tipVsebine=1&docName=965890en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747674&jezik=en&tipVsebine=1&docName=965890en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747675&jezik=en&tipVsebine=1&docName=965890en.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 42: s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary.
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 50
+
+#### Document family 8073dfad036b
+
+- Group type: `document_family`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `DBI565IK.BS.AU`, `DBI565IK.S.AU`, `DBI565IK.W.AU`
+- PDF SHA-256: `8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287`
+- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740017&jezik=en&tipVsebine=1&docName=874618en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740018&jezik=en&tipVsebine=1&docName=874618en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740019&jezik=en&tipVsebine=1&docName=874618en.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 42: s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary.
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 50
+
+#### DBI766IQ.S.AU
+
+- Group type: `model_specific`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `DBI766IQ.S.AU`
+- PDF SHA-256: `5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1`, `f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e`
+- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740016&jezik=en&tipVsebine=1&docName=875008en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747659&jezik=en&tipVsebine=1&docName=966482en.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 45: s when installing in a recess measuring 820-821 mm. Nominal dimensions. Actual measurements may vary.
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 45
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 46
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 53
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 53
+
+#### DBI766IQXXL.BS.AU
+
+- Group type: `model_specific`
+- Expression coverage: `IMAGE_ONLY_DIMENSION_DIAGRAM`
+- Models observed: `DBI766IQXXL.BS.AU`
+- PDF SHA-256: `2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319`, `9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d`
+- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740015&jezik=en&tipVsebine=1&docName=875235en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747658&jezik=en&tipVsebine=1&docName=966330en.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 45: s when installing in a recess measuring 860-861 mm. Nominal dimensions. Actual measurements may vary.
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 45
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 46
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 53
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 53
 
 ### Astivita
 

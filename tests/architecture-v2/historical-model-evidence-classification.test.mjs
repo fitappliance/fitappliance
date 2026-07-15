@@ -296,7 +296,9 @@ test('full classification accounts for every model once and renders reconciled c
   assert.equal(snapshot.records.length, 2);
   assert.deepEqual(snapshot.summary.byOperationalClass, { COMPLETE_RECEIPT: 1, OFFICIAL_DISCOVERY: 1 });
   assert.equal(snapshot.records.find((entry) => entry.referenceId === 'fa_ref_one').groups[0].groupName, 'Series A');
-  assert.match(renderHistoricalModelEvidenceClassificationMarkdown(snapshot), /Historical Model Evidence Classification|2 \/ 2|Series A/i);
+  const markdown = renderHistoricalModelEvidenceClassificationMarkdown(snapshot);
+  assert.match(markdown, /Historical Model Evidence Classification|2 \/ 2|Series A/i);
+  assert.equal(markdown.endsWith('\n\n'), false);
   assert.throws(() => buildHistoricalModelEvidenceClassification({
     generatedAt: '2026-07-14T00:00:00.000Z', policy,
     historicalRecords: [reference(), reference()], linksByReference: {}, groupsByReference: {},

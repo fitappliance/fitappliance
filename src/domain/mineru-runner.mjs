@@ -59,7 +59,9 @@ function normalizedProcessing(value, pageCount) {
       sourcePageCount: pageCount,
     };
   }
-  if (processing.strategy !== 'page_ranges' || !Array.isArray(processing.ranges) || !processing.ranges.length) {
+  const hasOperationalFallback = processing.strategy === 'page_ranges_with_operational_fallback';
+  if (!['page_ranges', 'page_ranges_with_operational_fallback'].includes(processing.strategy)
+    || !Array.isArray(processing.ranges) || !processing.ranges.length) {
     throw new Error('MinerU cache integrity failure: processing strategy invalid');
   }
   let expectedStart = 0;
@@ -73,6 +75,15 @@ function normalizedProcessing(value, pageCount) {
     return [range[0], range[1]];
   });
   if (expectedStart !== pageCount) throw new Error('MinerU cache integrity failure: page ranges incomplete');
+  if (hasOperationalFallback) {
+    const fallbackPages = [...new Set(processing.fallbackPages ?? [])].sort((left, right) => left - right);
+    if (!Array.isArray(processing.fallbackPages) || !fallbackPages.length
+      || fallbackPages.length !== processing.fallbackPages.length
+      || fallbackPages.some((page) => !Number.isInteger(page) || page < 1 || page > pageCount)) {
+      throw new Error('MinerU cache integrity failure: operational fallback page map invalid');
+    }
+    return { strategy: processing.strategy, ranges, fallbackPages };
+  }
   return { strategy: 'page_ranges', ranges };
 }
 
@@ -177,7 +188,7 @@ function cacheIndexPath(storageRoot, pdfSha256, expected, selected) {
     profileId: expected.profileId,
     selectedPages: selected?.selectedPages ?? null,
     sourcePageCount: selected?.sourcePageCount ?? null,
-    fallbackTriggerSha256: expected.fallbackTrigger?.contentSha256 ?? null,
+    fallbackTrigger: expected.fallbackTrigger ?? null,
   })));
   return join(
     storageRoot,
@@ -263,6 +274,12 @@ async function inspectCache(storageRoot, pdfSha256, expected, selected = null) {
     throw new Error('MinerU cache integrity failure: artifact metadata mismatch');
   }
   const processing = normalizedProcessing(index.processing, replayed.pageCount);
+  if (processing.strategy === 'page_ranges_with_operational_fallback') {
+    const pages = JSON.parse(jsonBytes.toString('utf8'));
+    if (processing.fallbackPages.some((page) => !Array.isArray(pages[page - 1]) || pages[page - 1].length)) {
+      throw new Error('MinerU cache integrity failure: operational fallback page is not an empty primary gap');
+    }
+  }
   return {
     status: 'indexed',
     sourcePdfSha256: pdfSha256,
@@ -271,6 +288,7 @@ async function inspectCache(storageRoot, pdfSha256, expected, selected = null) {
     jsonBytes,
     derivedArtifact: replayed,
     processing,
+    ...(processing.fallbackPages ? { operationalFallbackPages: processing.fallbackPages } : {}),
   };
 }
 
@@ -281,6 +299,9 @@ async function readCache(storageRoot, pdfSha256, expected, selected = null) {
     jsonBytes: inspection.jsonBytes,
     derivedArtifact: inspection.derivedArtifact,
     processing: inspection.processing,
+    ...(inspection.operationalFallbackPages
+      ? { operationalFallbackPages: inspection.operationalFallbackPages }
+      : {}),
   };
 }
 
@@ -396,6 +417,7 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
 
     let jsonBytes;
     let processing;
+    const operationalFallbackPages = [];
     if (selected) {
       const pages = Array.from({ length: selected.sourcePageCount }, () => []);
       for (const range of selected.ranges) {
@@ -432,7 +454,13 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
           successfulRanges.push([start, end]);
           return JSON.parse(rangeBytes);
         } catch (rangeError) {
-          if (rangeError?.code !== 'MINERU_COMMAND_FAILED' || start === end) throw rangeError;
+          if (rangeError?.code !== 'MINERU_COMMAND_FAILED') throw rangeError;
+          if (start === end) {
+            if (options.operationalImageFallback !== true) throw rangeError;
+            operationalFallbackPages.push(start + 1);
+            successfulRanges.push([start, end]);
+            return [[]];
+          }
           const middle = Math.floor((start + end) / 2);
           return [
             ...await parseRange(start, middle),
@@ -447,14 +475,25 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
       if (pages.length !== pageCount) throw new Error('MinerU page-range fallback produced incomplete pages');
       successfulRanges.sort((left, right) => left[0] - right[0]);
       jsonBytes = Buffer.from(JSON.stringify(pages));
-      processing = normalizedProcessing({ strategy: 'page_ranges', ranges: successfulRanges }, pageCount);
+      processing = normalizedProcessing({
+        strategy: operationalFallbackPages.length
+          ? 'page_ranges_with_operational_fallback'
+          : 'page_ranges',
+        ranges: successfulRanges,
+        ...(operationalFallbackPages.length ? { fallbackPages: operationalFallbackPages } : {}),
+      }, pageCount);
     }
     const runtimeProfile = { ...expected, parserVersion: version, modelRevision: revision };
     const derivedArtifact = buildMineruDerivedArtifact(
       jsonBytes,
       artifactBuildOptions(pdfSha256, runtimeProfile, selected),
     );
-    const result = { jsonBytes, derivedArtifact, processing };
+    const result = {
+      jsonBytes,
+      derivedArtifact,
+      processing,
+      ...(operationalFallbackPages.length ? { operationalFallbackPages } : {}),
+    };
     if (options.cache !== false) await writeCache(storageRoot, result, expected, selected);
     return result;
   } finally {
@@ -482,16 +521,33 @@ export async function runMineruPdfWithImageFallback(pdfBytes, options = {}) {
     selectedPages: _selectedPages,
     sourcePageCount: _sourcePageCount,
     fallbackTrigger: _fallbackTrigger,
+    operationalImageFallback: _operationalImageFallback,
     ...baseOptions
   } = options;
-  const primary = await runMineruPdfToJson(pdfBytes, baseOptions);
-  const pages = [...findMineruImageOnlyDimensionPages(primary.jsonBytes)];
+  const primary = await runMineruPdfToJson(pdfBytes, {
+    ...baseOptions,
+    operationalImageFallback: true,
+  });
+  const imagePages = [...findMineruImageOnlyDimensionPages(primary.jsonBytes)];
+  const operationalPages = new Set(primary.operationalFallbackPages ?? []);
+  const pages = [...new Set([...imagePages, ...operationalPages])]
+    .sort((left, right) => left - right);
   if (!pages.length) return { ...primary, usedImageFallback: false };
   const fallbackTrigger = {
     profileId: 'pipeline-auto-v1',
     contentSha256: primary.derivedArtifact.contentSha256,
     objectPath: primary.derivedArtifact.objectPath,
     pages,
+    ...(operationalPages.size ? {
+      pageReasons: pages.map((page) => operationalPages.has(page) ? {
+        page,
+        reason: 'operational_page_failure',
+        failureCode: 'MINERU_COMMAND_FAILED',
+      } : {
+        page,
+        reason: 'image_dimension_signal',
+      }),
+    } : {}),
   };
   const hybrid = await runMineruPdfToJson(pdfBytes, {
     ...baseOptions,

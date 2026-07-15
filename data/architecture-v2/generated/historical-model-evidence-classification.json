@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T01:27:11.262Z",
+  "generatedAt": "2026-07-15T00:00:00.000Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "81b40d54a6cdefeef245c08e79581a9366876f718ecae135be7992222e5fc613",
+  "semanticClassificationSha256": "603fe9839cf26f0e44467c8575f70525e32b3b5a13d73669f525d32d703fe26a",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4110,
-    "modelsWithDocumentLinks": 1762,
-    "modelsWithoutDocumentLinks": 6333,
+    "documentLinks": 4124,
+    "modelsWithDocumentLinks": 1770,
+    "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
       "dishwasher": 1419,
       "dryer": 843,
@@ -21,16 +21,16 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 88,
+      "COMPLETE_RECEIPT": 96,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
-      "OFFICIAL_DISCOVERY": 6434,
+      "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 31,
       "REFERENCE_REDISCOVERY": 1266
     },
     "byNextAction": {
-      "DISCOVER_OFFICIAL_SOURCE": 6434,
-      "NO_ACTION": 88,
+      "DISCOVER_OFFICIAL_SOURCE": 6426,
+      "NO_ACTION": 96,
       "REACQUIRE_OFFICIAL_SOURCE": 31,
       "REDISCOVER_OFFICIAL_SOURCE": 1266,
       "RUN_CONFLICT_CLOSURE": 83,
@@ -38,19 +38,19 @@
     },
     "bySourceAuthority": {
       "MIXED": 34,
-      "NONE": 6687,
-      "OFFICIAL": 91,
+      "NONE": 6679,
+      "OFFICIAL": 99,
       "REFERENCE": 1283
     },
     "byIdentityScope": {
       "AMBIGUOUS": 245,
-      "EXACT_MODEL": 1517,
-      "UNPROVEN": 6333
+      "EXACT_MODEL": 1525,
+      "UNPROVEN": 6325
     },
     "byExtractionState": {
-      "ALL_AXIS_RANGE": 38,
+      "ALL_AXIS_RANGE": 46,
       "ALL_AXIS_SCALAR": 214,
-      "NOT_PARSED": 7694,
+      "NOT_PARSED": 7686,
       "PARSER_GAP": 148,
       "PARTIAL_AXIS": 1
     },
@@ -61,9 +61,9 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 88,
+      "CURRENT_VALID": 96,
       "LEGACY_UNBOUND": 1674,
-      "NONE": 6333
+      "NONE": 6325
     }
   },
   "categorySummaries": [
@@ -71,12 +71,12 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 966,
+      "documentLinks": 980,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 27,
+        "COMPLETE_RECEIPT": 35,
         "CONFLICT_QUARANTINE": 22,
         "IDENTITY_RESEARCH": 31,
-        "OFFICIAL_DISCOVERY": 1038,
+        "OFFICIAL_DISCOVERY": 1030,
         "OFFICIAL_REACQUIRE": 4,
         "REFERENCE_REDISCOVERY": 297
       }
@@ -402,12 +402,6 @@
       "models": 45
     },
     {
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "models": 44
-    },
-    {
       "category": "fridge",
       "brand": "Samsung",
       "operationalClass": "REFERENCE_REDISCOVERY",
@@ -422,6 +416,12 @@
     {
       "category": "washing_machine",
       "brand": "Electrolux",
+      "operationalClass": "OFFICIAL_DISCOVERY",
+      "models": 43
+    },
+    {
+      "category": "washing_machine",
+      "brand": "Midea",
       "operationalClass": "OFFICIAL_DISCOVERY",
       "models": 43
     }
@@ -3743,23 +3743,51 @@
       "canonicalBrand": "ASKO",
       "model": "DBI343ID.S.AU",
       "lifecycleState": "REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
+      "groupType": "document_family",
+      "groupName": "Document family 4398a8ff383c",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "receiptState": "CURRENT_VALID",
+      "corpusSummary": {
+        "RECEIPT_BOUND": 1
+      },
+      "documentLinks": [
+        {
+          "documentId": "pdf:4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740000&jezik=en&tipVsebine=1&docName=874270en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/89/0d/890d6672dbb885cb36dbe7844b9fdf81f4db941dd698f2031ee66945c62063d6.json",
+            "evidence/web/sha256/43/98/4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0.pdf",
+            "receipt:7d39e3828417bdbd6dfe82f93db8defcec04a41c8b1fcb0d6795f6b55aae8971"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0"
+        }
+      ],
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "ASKO"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 4398a8ff383c",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -3769,8 +3797,8 @@
       "canonicalBrand": "ASKO",
       "model": "DBI343ID.W.AU",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "DBI343ID.W.AU",
+      "groupType": "document_family",
+      "groupName": "Document family 4398a8ff383c",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -3809,8 +3837,8 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "DBI343ID.W.AU",
+          "groupType": "document_family",
+          "groupName": "Document family 4398a8ff383c",
           "grammarProfileIds": []
         }
       ],
@@ -3823,23 +3851,75 @@
       "canonicalBrand": "ASKO",
       "model": "DBI364ID.BS.AU",
       "lifecycleState": "REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
+      "groupType": "document_family",
+      "groupName": "Document family 38ad673e29cc",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "receiptState": "CURRENT_VALID",
+      "corpusSummary": {
+        "RECEIPT_BOUND": 2
+      },
+      "documentLinks": [
+        {
+          "documentId": "pdf:38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740003&jezik=en&tipVsebine=1&docName=874288en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/39/47/3947fd878dd48840e5826c8997c8acfa77c73c27419fc1409a3d0f146db5da00.json",
+            "evidence/web/sha256/38/ad/38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b.pdf",
+            "receipt:69252d22b6dd06565472c659d746bcce2e31b1774e71808ae506fc5b17cb2224"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b"
+        },
+        {
+          "documentId": "pdf:4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747676&jezik=en&tipVsebine=1&docName=965797en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/10/8b/108bd363434692a686ec87dac921631f906301cc47cd493341f317dba71892db.json",
+            "evidence/web/sha256/45/50/4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8.pdf",
+            "receipt:96d2087cac8c268bb5f302b785bf0e96b032bbf8e862a34ff38f2b9bbc3de802"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8"
+        }
+      ],
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "ASKO"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 38ad673e29cc",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 4550293c7667",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -3849,8 +3929,8 @@
       "canonicalBrand": "ASKO",
       "model": "DBI364ID.S.AU",
       "lifecycleState": "REGISTRY_ONLY",
-      "groupType": "model_specific",
-      "groupName": "DBI364ID.S.AU",
+      "groupType": "document_family",
+      "groupName": "Document family 38ad673e29cc",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -3908,8 +3988,13 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "DBI364ID.S.AU",
+          "groupType": "document_family",
+          "groupName": "Document family 38ad673e29cc",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 4550293c7667",
           "grammarProfileIds": []
         }
       ],
@@ -3922,23 +4007,51 @@
       "canonicalBrand": "ASKO",
       "model": "DBI364ID.W.AU",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
+      "groupType": "document_family",
+      "groupName": "Document family 38ad673e29cc",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "receiptState": "CURRENT_VALID",
+      "corpusSummary": {
+        "RECEIPT_BOUND": 1
+      },
+      "documentLinks": [
+        {
+          "documentId": "pdf:38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740001&jezik=en&tipVsebine=1&docName=874288en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/39/47/3947fd878dd48840e5826c8997c8acfa77c73c27419fc1409a3d0f146db5da00.json",
+            "evidence/web/sha256/38/ad/38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b.pdf",
+            "receipt:4e79c87ce930f6a934c2d5fff287d7da8d139a3bd64c1f4516ab96baa973e401"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b"
+        }
+      ],
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "ASKO"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 38ad673e29cc",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -3948,23 +4061,75 @@
       "canonicalBrand": "ASKO",
       "model": "DBI565IK.BS.AU",
       "lifecycleState": "REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
+      "groupType": "document_family",
+      "groupName": "Document family 468182904268",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "receiptState": "CURRENT_VALID",
+      "corpusSummary": {
+        "RECEIPT_BOUND": 2
+      },
+      "documentLinks": [
+        {
+          "documentId": "pdf:468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747675&jezik=en&tipVsebine=1&docName=965890en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/e5/e0/e5e0fc29afc8abdc2ef3fe57f9ecf85e5bce1d8d7822d6bf4eaadb2df73aa7e5.json",
+            "evidence/web/sha256/46/81/468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4.pdf",
+            "receipt:1ed64c132298155b6ae4023e4d7d7e2c376735f49f6d8b5d9ac175ba0fecb110"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4"
+        },
+        {
+          "documentId": "pdf:8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740017&jezik=en&tipVsebine=1&docName=874618en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/6f/d8/6fd8127d5d45f75fb969fc7ccf1b778f5f771809c3fdd9188e37a1aa981b64c0.json",
+            "evidence/web/sha256/80/73/8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287.pdf",
+            "receipt:1d58d7f4e54ead40cdfad68d02afac97d8d142f0528186bdb9447c605178b6a9"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287"
+        }
+      ],
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "ASKO"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 468182904268",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8073dfad036b",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -3974,23 +4139,75 @@
       "canonicalBrand": "ASKO",
       "model": "DBI565IK.S.AU",
       "lifecycleState": "REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
+      "groupType": "document_family",
+      "groupName": "Document family 468182904268",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "receiptState": "CURRENT_VALID",
+      "corpusSummary": {
+        "RECEIPT_BOUND": 2
+      },
+      "documentLinks": [
+        {
+          "documentId": "pdf:468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747674&jezik=en&tipVsebine=1&docName=965890en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/e5/e0/e5e0fc29afc8abdc2ef3fe57f9ecf85e5bce1d8d7822d6bf4eaadb2df73aa7e5.json",
+            "evidence/web/sha256/46/81/468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4.pdf",
+            "receipt:8bb669a5d4e2759b8241bbd2c8403840d826d10709c5c0e26e54ea71ba6c8e04"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4"
+        },
+        {
+          "documentId": "pdf:8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740018&jezik=en&tipVsebine=1&docName=874618en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/6f/d8/6fd8127d5d45f75fb969fc7ccf1b778f5f771809c3fdd9188e37a1aa981b64c0.json",
+            "evidence/web/sha256/80/73/8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287.pdf",
+            "receipt:5ddea0c54d2ad03124488a3a652ef718a0c76232a2e2c46380d54fe6c8b53188"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287"
+        }
+      ],
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "ASKO"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 468182904268",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8073dfad036b",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -4000,23 +4217,75 @@
       "canonicalBrand": "ASKO",
       "model": "DBI565IK.W.AU",
       "lifecycleState": "REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
+      "groupType": "document_family",
+      "groupName": "Document family 468182904268",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "receiptState": "CURRENT_VALID",
+      "corpusSummary": {
+        "RECEIPT_BOUND": 2
+      },
+      "documentLinks": [
+        {
+          "documentId": "pdf:468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747672&jezik=en&tipVsebine=1&docName=965890en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/e5/e0/e5e0fc29afc8abdc2ef3fe57f9ecf85e5bce1d8d7822d6bf4eaadb2df73aa7e5.json",
+            "evidence/web/sha256/46/81/468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4.pdf",
+            "receipt:93f39074ddaa59188d8a0f3ca23ac82119817a7f45c7fefad6d219da5d18a7e9"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "468182904268ecb5e181b958ace092d3f70957bd419aa5d65ed907e95be236b4"
+        },
+        {
+          "documentId": "pdf:8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740019&jezik=en&tipVsebine=1&docName=874618en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/6f/d8/6fd8127d5d45f75fb969fc7ccf1b778f5f771809c3fdd9188e37a1aa981b64c0.json",
+            "evidence/web/sha256/80/73/8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287.pdf",
+            "receipt:c0a844bfb75c8e894ab3ff92a12e065c090be050a7db051f510c2dbea4e49375"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287"
+        }
+      ],
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "ASKO"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 468182904268",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8073dfad036b",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -4455,23 +4724,70 @@
       "canonicalBrand": "ASKO",
       "model": "DBI766IQ.S.AU",
       "lifecycleState": "REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
+      "groupType": "model_specific",
+      "groupName": "DBI766IQ.S.AU",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "receiptState": "CURRENT_VALID",
+      "corpusSummary": {
+        "RECEIPT_BOUND": 2
+      },
+      "documentLinks": [
+        {
+          "documentId": "pdf:5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740016&jezik=en&tipVsebine=1&docName=875008en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/dc/62/dc6211294155e69942a1b7a56b3abea18b83411f98ba3da44520595ad1e8ae4f.json",
+            "evidence/web/sha256/5a/6e/5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1.pdf",
+            "receipt:0a98c32fc4b27a8b0d78740e2505e7769112e35e98d0d984d42690c6536db6f5"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "5a6e2ac3290da154f05cc4fbd77e5acc1c6fcc27e471271969dabf3b0408c7c1"
+        },
+        {
+          "documentId": "pdf:f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747659&jezik=en&tipVsebine=1&docName=966482en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/10/6c/106c504c89591279c44f4d38d5a8181151a5bfa2c6461fffc78d213ddb3345dc.json",
+            "evidence/web/sha256/f2/b5/f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e.pdf",
+            "receipt:8c61964310f8312fd9e1fcd76aa28d600e16176e6496a00df6b87229ce2bd110"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e"
+        }
+      ],
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "ASKO"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "DBI766IQ.S.AU",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -4481,23 +4797,70 @@
       "canonicalBrand": "ASKO",
       "model": "DBI766IQXXL.BS.AU",
       "lifecycleState": "REGISTRY_ONLY",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
+      "groupType": "model_specific",
+      "groupName": "DBI766IQXXL.BS.AU",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "receiptState": "CURRENT_VALID",
+      "corpusSummary": {
+        "RECEIPT_BOUND": 2
+      },
+      "documentLinks": [
+        {
+          "documentId": "pdf:2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740015&jezik=en&tipVsebine=1&docName=875235en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/bb/38/bb380d7ffda67ef5ef51e4116d69fe3c86fd8d664b65ade40d046b59795bd91e.json",
+            "evidence/web/sha256/29/80/2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319.pdf",
+            "receipt:2af45da4420d769d5f4e019f7b1ca34c5570dbbdc8eafdcd36e21f4791f49d76"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "2980543084fa5e6a68fb3cb2a16c31989193a4dbe77a24367f66cbb2397a6319"
+        },
+        {
+          "documentId": "pdf:9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747658&jezik=en&tipVsebine=1&docName=966330en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/99/52/9952720a4f071a371adb083dfc511eec5902731622a4ed99877dba631ca06dc3.json",
+            "evidence/web/sha256/9a/3e/9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d.pdf",
+            "receipt:0b231647fc569bd2aef2c95e586ce52620c056e781b202fa6c6b64543d3da1ea"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "9a3e598a624e344ae581435a69434a9874f2e2841f901e59f5bfac5dfca8e31d"
+        }
+      ],
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "ASKO"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "DBI766IQXXL.BS.AU",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {

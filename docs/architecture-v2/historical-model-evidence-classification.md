@@ -1,9 +1,9 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-15T01:27:11.262Z
+Generated: 2026-07-15T00:00:00.000Z
 
 Coverage: **8,095 / 8,095** unique historical models.
-Models with document links: **1,762**; without links: **6,333**.
+Models with document links: **1,770**; without links: **6,325**.
 
 This is a research and repair classification. It does not grant publication authority.
 
@@ -11,7 +11,7 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 966 |
+| dishwasher | 1419 | 94 | 980 |
 | dryer | 843 | 72 | 257 |
 | fridge | 4336 | 121 | 2245 |
 | washing_machine | 1497 | 88 | 642 |
@@ -20,10 +20,10 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 88 |
+| COMPLETE_RECEIPT | 96 |
 | CONFLICT_QUARANTINE | 83 |
 | IDENTITY_RESEARCH | 193 |
-| OFFICIAL_DISCOVERY | 6434 |
+| OFFICIAL_DISCOVERY | 6426 |
 | OFFICIAL_REACQUIRE | 31 |
 | REFERENCE_REDISCOVERY | 1266 |
 
@@ -53,6 +53,9 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | CHIQ | parser_family | PDF grammar pdf_grammar_944fcad8129c057a | 4 |
 | fridge | Electrolux | parser_family | PDF grammar pdf_grammar_fd6fd1396552b04a | 4 |
 | washing_machine | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_8c9e52242594826f | 4 |
+| dishwasher | ASKO | document_family | Document family 38ad673e29cc | 3 |
+| dishwasher | ASKO | document_family | Document family 468182904268 | 3 |
+| dishwasher | ASKO | document_family | Document family 8073dfad036b | 3 |
 | dishwasher | Fisher & Paykel | document_family | Document family 27fe801c2f33 | 3 |
 | dishwasher | Fisher & Paykel | document_family | Document family a1eabc7adffc | 3 |
 | dishwasher | Fisher & Paykel | document_family | Document family b3d638a1905c | 3 |
@@ -68,9 +71,6 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | LG | document_family | Document family 7ceaec7eb479 | 3 |
 | fridge | Westinghouse | document_family | Document family fa1629688c89 | 3 |
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_1d0ba4027a75b5ef | 3 |
-| fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_54c02d74452c542a | 3 |
-| dishwasher | Beko | document_family | Document family c2b8debcf586 | 2 |
-| dishwasher | Fisher & Paykel | document_family | Document family 12b4379f29ec | 2 |
 
 ## Highest-Impact Gaps
 
@@ -122,7 +122,7 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Esatto | OFFICIAL_DISCOVERY | 45 |
 | washing_machine | LG | REFERENCE_REDISCOVERY | 45 |
 | washing_machine | SAMSUNG ELECTRONICS | OFFICIAL_DISCOVERY | 45 |
-| dishwasher | ASKO | OFFICIAL_DISCOVERY | 44 |
 | fridge | Samsung | REFERENCE_REDISCOVERY | 44 |
 | washing_machine | Miele | OFFICIAL_DISCOVERY | 44 |
 | washing_machine | Electrolux | OFFICIAL_DISCOVERY | 43 |
+| washing_machine | Midea | OFFICIAL_DISCOVERY | 43 |
