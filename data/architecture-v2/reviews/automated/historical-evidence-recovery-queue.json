@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1420,
-    "fetchJobs": 1383,
-    "targets": 1417,
-    "candidateEdges": 1420,
+    "documents": 1416,
+    "fetchJobs": 1379,
+    "targets": 1413,
+    "candidateEdges": 1416,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1417,
+    "uniqueReferences": 1413,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 986,
+      "MEASURE_REQUIRED": 982,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1170
+      "CURRENT_RETAIL": 1166
     },
     "byCategory": {
-      "dishwasher": 307,
+      "dishwasher": 303,
       "dryer": 57,
       "fridge": 831,
       "washing_machine": 222
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1123,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1119,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 187,
+      "ALREADY_AUTO_FILL": 191,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -2303,32 +2303,6 @@
       ],
       "targetIds": [
         "recovery_target_1474ddeab220d7945bca6a7e"
-      ]
-    },
-    {
-      "jobId": "recovery_e89bb40b51789a68e48e99a2",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/3/3/7/133718c778f5a9fe9a0a197a314a16855e0c0a48_Bosch_SMI68M25AU_Semi_Integrated_Dishwasher_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_ae556bc6443c647e99c03085"
       ]
     },
     {
@@ -7139,32 +7113,6 @@
       ],
       "targetIds": [
         "recovery_target_2e31f251104cfdb8be5587d9"
-      ]
-    },
-    {
-      "jobId": "recovery_8d37374836541dcaa26b47f5",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/9/0/d/490d4f44c0476d9d41a16ea4c14a1b0754ed84c0_Bosch_SMS40E02AU_Serie_2_Freestanding_Dishwasher_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_ad9272f8c6d5f48ebcb280ff"
       ]
     },
     {
@@ -17152,32 +17100,6 @@
       ]
     },
     {
-      "jobId": "recovery_a6bb5711e50df474251dfc1e",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/5/3/aa53a75b13b030d87a4b69abc9f6c538d3320019_Bosch_SMP63M05AU_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_a78391e7ed7e4cc34b5bf36a"
-      ]
-    },
-    {
       "jobId": "recovery_1ebe7f1d6d1c7decebef8b99",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/8/7/aa8725075b39e145b4bbc0f45cda8cf5c8739093_Haier_HBM450HSA1_450L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
       "authorityBrand": "Haier",
@@ -22011,32 +21933,6 @@
       ],
       "targetIds": [
         "recovery_target_c9349db1a66a19ef82f842fa"
-      ]
-    },
-    {
-      "jobId": "recovery_523a6dbad6594e7949bb3724",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/e/0/1/3/e01309634120c2bde2fddeb30643c734064ec6b0_Bosch_SMI50M05AU_Serie_6_Semi_Integrated_Dishwasher_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_49c7019a23ad076014ce6ecb"
       ]
     },
     {
@@ -39854,88 +39750,6 @@
       "primaryJobId": "recovery_d14ff8ca904cafde939fd085"
     },
     {
-      "referenceId": "fa_ref_5311c845bb733803b9bf4e95",
-      "legacyRuntimeId": "ao-45237",
-      "canonicalProductId": "fa_prod_a6eb8d3e8150fba83c7dff43",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI50M05AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 815,
-        "depth": 573
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_49c7019a23ad076014ce6ecb",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_02831052f19b0455402c0a06"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_02831052f19b0455402c0a06",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_523a6dbad6594e7949bb3724"
-      ],
-      "primaryJobId": "recovery_523a6dbad6594e7949bb3724"
-    },
-    {
-      "referenceId": "fa_ref_4fea8c4e822a1a272a0c1f31",
-      "legacyRuntimeId": "ao-45238",
-      "canonicalProductId": "fa_prod_33958205c1fa6dcee412e432",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI68M25AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 815,
-        "depth": 573
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_ae556bc6443c647e99c03085",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_3a963bf5f960319973f83b6e"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_3a963bf5f960319973f83b6e",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e89bb40b51789a68e48e99a2"
-      ],
-      "primaryJobId": "recovery_e89bb40b51789a68e48e99a2"
-    },
-    {
       "referenceId": "fa_ref_f509b02ebf57485bfd3ecfbe",
       "legacyRuntimeId": "ao-102182",
       "canonicalProductId": "fa_prod_5a84ca3b168d4f76044963f4",
@@ -40016,47 +39830,6 @@
         "recovery_4f540d2c2d036638860a744a"
       ],
       "primaryJobId": "recovery_4f540d2c2d036638860a744a"
-    },
-    {
-      "referenceId": "fa_ref_ebe750c685d0d72c5874066d",
-      "legacyRuntimeId": "ao-45240",
-      "canonicalProductId": "fa_prod_d1b01b1624dce9ced226909e",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMP63M05AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 815,
-        "depth": 573
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_a78391e7ed7e4cc34b5bf36a",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_2005c003b21ed7549a3112a6"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_2005c003b21ed7549a3112a6",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_a6bb5711e50df474251dfc1e"
-      ],
-      "primaryJobId": "recovery_a6bb5711e50df474251dfc1e"
     },
     {
       "referenceId": "fa_ref_b0ba60c0c20324bf8fb917b1",
@@ -40262,47 +40035,6 @@
         "recovery_be6c3221a91030a505335f76"
       ],
       "primaryJobId": "recovery_be6c3221a91030a505335f76"
-    },
-    {
-      "referenceId": "fa_ref_34152dee9f4eb051876dc7ad",
-      "legacyRuntimeId": "ao-45333",
-      "canonicalProductId": "fa_prod_34d44491901c79d011786d4e",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS40E02AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 845,
-        "depth": 600
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_ad9272f8c6d5f48ebcb280ff",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_6d450dc88bd144a02963d368"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_6d450dc88bd144a02963d368",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 845,
-            "depth": 600
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_8d37374836541dcaa26b47f5"
-      ],
-      "primaryJobId": "recovery_8d37374836541dcaa26b47f5"
     },
     {
       "referenceId": "fa_ref_07d330f0460c5f8d0ccc40a0",

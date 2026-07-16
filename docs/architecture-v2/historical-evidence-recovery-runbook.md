@@ -901,3 +901,44 @@ rear service space remain unknown. After the release transaction,
 `COMPLETE_RECEIPT` is 298, historical `AUTO_FILL` is 230, the executable queue
 contains 7,702 targets and the current-retail missing-dimension P0 lane contains
 933 targets.
+
+## 24. Bosch legacy dishwasher product-page recovery
+
+Run `historical-bosch-legacy-dishwashers-20260716-e` selected four current Bosch
+Australia dishwashers that had not been attempted in the current policy and
+toolchain epoch:
+
+| Model | Width | Height | Depth |
+| --- | ---: | ---: | ---: |
+| `SMI50M05AU` | 598 | 815 | 573 |
+| `SMI68M25AU` | 598 | 815 | 573 |
+| `SMP63M05AU` | 598 | 815 | 573 |
+| `SMS40E02AU` | 600 | 845 | 600 |
+
+Each accepted source is the exact Bosch Australia product page. Its canonical
+URL, document title and structured product model bind the complete target
+identifier, while the structured specification states `Dimensions of the
+product (HxWxD)` with an explicit millimetre triple. The receipt therefore
+preserves the source order as height, width, depth instead of treating the
+legacy catalogue order as evidence.
+
+The product-page manifests also exposed official user and installation PDFs.
+Those documents were downloaded, converted to immutable MinerU
+`content_list_v2` objects and attempted, but did not contribute claims because
+their parsed bodies lacked the structured exact-model identity required by the
+current policy. Deterministic legacy specification URLs that returned 404 are
+typed transport attempts, not evidence gaps hidden by the accepted HTML source.
+
+The full online audit checked four targets and 604 cumulative objects with zero
+repairs and zero violations. Promotion increased the cumulative bundle to 283
+targets and 308 source receipts; all 308 receipts replay. Public receipt-bound
+dimensions increased from 229 to 233, while receipt-bound `VERIFIED_FIT`
+remains zero. All four products are dimensions-only with
+`verifiedFitEligible=false` and successful Fit outcome `INSUFFICIENT_DATA`.
+
+After the release transaction, `COMPLETE_RECEIPT` is 302, historical
+`AUTO_FILL` is 234, the executable queue contains 7,698 targets and the
+current-retail missing-dimension P0 lane contains 929 targets. All four target
+IDs are absent from the next-epoch executable queue and batch. The earlier ASKO
+run `historical-asko-legacy-dishwashers-20260716-d` remains a separate terminal
+run and must not be restarted under the same resolver and policy epoch.

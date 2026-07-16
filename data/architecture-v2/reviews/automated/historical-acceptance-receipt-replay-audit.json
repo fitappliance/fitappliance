@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T18:11:10.812Z",
-  "sourceBundleSha256": "4c291da2f902ebbf2ea2b9f461ce1fd320a3ca952fe6f9dcbe054ea7e92f9e83",
+  "generatedAt": "2026-07-16T18:20:11.347Z",
+  "sourceBundleSha256": "916c27cdeb5a5540b40b9116933384bdf1d301f57c22907bd456155065bc4660",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1176,6 +1176,20 @@
       "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
       "receiptBindingSha256": "4e79c87ce930f6a934c2d5fff287d7da8d139a3bd64c1f4516ab96baa973e401",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/39/47/3947fd878dd48840e5826c8997c8acfa77c73c27419fc1409a3d0f146db5da00.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_49c7019a23ad076014ce6ecb",
+      "referenceId": "fa_ref_5311c845bb733803b9bf4e95",
+      "brand": "Bosch",
+      "model": "SMI50M05AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMI50M05AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "279b4bb972e32743534f4ff67982ca8f5cdac247a65728b8f14ca82c47288177",
+      "receiptBindingSha256": "207611c3b360824823c94ac7236f7f09a2afe2b6878a355a0cf4f8369d9ce0fc",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -2860,6 +2874,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_a78391e7ed7e4cc34b5bf36a",
+      "referenceId": "fa_ref_ebe750c685d0d72c5874066d",
+      "brand": "Bosch",
+      "model": "SMP63M05AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMP63M05AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "2a3b502d6562df448874cd6fc2a63152c823c1a81f25af089b5312f90a428b3e",
+      "receiptBindingSha256": "57fa39da6485038d89c07f314526b0f4bfb16bac33b2e26288a3e8025ef50070",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_a795fcf62f9906e81eb2e1dc",
       "referenceId": "fa_ref_941a067eedf55d9f81915bb6",
       "brand": "Beko",
@@ -2986,6 +3014,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_ad9272f8c6d5f48ebcb280ff",
+      "referenceId": "fa_ref_34152dee9f4eb051876dc7ad",
+      "brand": "Bosch",
+      "model": "SMS40E02AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS40E02AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "60ced669f624722772747e8bed385bb007a31d2eea4e98efd49f946d9bf0580d",
+      "receiptBindingSha256": "27f7a9a964609d27fda29f7a30e53dfdebb6ac1816a977b4946bc19d70dd0dfe",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_ae3b33fd936ea12ce1f15efb",
       "referenceId": "fa_ref_01a0cb95bfabac64d891f237",
       "brand": "Electrolux",
@@ -2996,6 +3038,20 @@
       "contentSha256": "a4e5c7e4fac09d686457572088fa90477002b4faaf673362de432529818b77b6",
       "receiptBindingSha256": "47e85a6eb9cfc2227bb3aa43f7cf348be8c9e8cfa2695e75b850d00b00294e5f",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/f9/ca/f9ca3c5726ef1b2ed313be87b9a5eb36f2f9dfd80816d7596ddab53dff773bd7.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_ae556bc6443c647e99c03085",
+      "referenceId": "fa_ref_4fea8c4e822a1a272a0c1f31",
+      "brand": "Bosch",
+      "model": "SMI68M25AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMI68M25AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "b9b30bfa63db44c2c35477cf0df779caf64e819719b2038fbbf84b8984940ac4",
+      "receiptBindingSha256": "a60ef3c0cfedfacb4cf8c8f3facfb2aa17f905cde79373b710bc1ef594dcbf6b",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -4261,11 +4317,11 @@
     }
   ],
   "summary": {
-    "entries": 279,
-    "sources": 304,
-    "passed": 304,
+    "entries": 283,
+    "sources": 308,
+    "passed": 308,
     "failed": 0
   },
-  "checkedObjects": 600,
-  "semanticAuditSha256": "eb46216718d4b05cebf1e18bbf5898b6f1752be9b95b6c82d4c2bae4ab4aebf4"
+  "checkedObjects": 604,
+  "semanticAuditSha256": "212eb45fbbf4b3fd32e29be364279eed2b835133b8b1a4715cf26308bb0d2923"
 }
