@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T22:27:35.051Z",
-  "sourceBundleSha256": "60bd1fa018839da053050126c6729302fd13c81c92c9592ce08c01b2d8254e15",
+  "generatedAt": "2026-07-16T23:09:03.551Z",
+  "sourceBundleSha256": "27a5c5147321e34a915bf4c35a1c1029b0adacb410fc1061b5090993276a2587",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -340,6 +340,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_1211daabca5c92bfe426e1c7",
+      "referenceId": "fa_ref_0e837ae4fd1484c3889e2616",
+      "brand": "Haier",
+      "model": "HBM340SA1",
+      "category": "fridge",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+      "sourcePdfSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+      "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+      "receiptBindingSha256": "42a2cc242fcb5e4ccb67ab9786036c620124c87818a1f2ee8fb111bbc6eb2b22",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/29/55/2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_1271ff9d5bd9d9dfbd8b461f",
       "referenceId": "fa_ref_f3f80c54faf5806609da5ed2",
       "brand": "Bosch",
@@ -364,6 +378,20 @@
       "contentSha256": "7aaa0c80688257b0df5a4ab7b31aed5b5760aef304639d07191f03ad427be904",
       "receiptBindingSha256": "85c38b016db1542583d8bf507e51bf9be07008c30706c585b75ec87049656f62",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_18c3ef9d0e1f7d95628573c1",
+      "referenceId": "fa_ref_f761e2d06694086b27a96c14",
+      "brand": "Haier",
+      "model": "HBM340WH1",
+      "category": "fridge",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+      "sourcePdfSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+      "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+      "receiptBindingSha256": "2302f82f99cc4648e6c6c490ac3ea99fdb6c222a4528f17c1432fd3c193111dc",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/29/55/2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2146,6 +2174,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_6b158392b3e8178d1c242a69",
+      "referenceId": "fa_ref_04a345e880c854cbab89ab64",
+      "brand": "Haier",
+      "model": "HBM450WH1",
+      "category": "fridge",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+      "sourcePdfSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+      "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+      "receiptBindingSha256": "5ffda8891446fa4d81bac95da049db60d0df8ee9d875ee47a9f91b3fb6b382f1",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/eb/ef/ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_6b2b2e28008f23c582242725",
       "referenceId": "fa_ref_8a08c1cb1f7ddf4fb5c84ae1",
       "brand": "Bosch",
@@ -3896,6 +3938,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c548541cf5654d0373891613",
+      "referenceId": "fa_ref_f9ea8af12560e15c4d4880cc",
+      "brand": "Haier",
+      "model": "HBM450SA1",
+      "category": "fridge",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+      "sourcePdfSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+      "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+      "receiptBindingSha256": "1f5d7766aaceab50d64cc8632d3ab436aa02aa159dcb2f055fd627ec99da6d83",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/eb/ef/ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c56f5465356e085c199abbb7",
       "referenceId": "fa_ref_c70e360fa7196337f42789f3",
       "brand": "ASKO",
@@ -5087,11 +5143,11 @@
     }
   ],
   "summary": {
-    "entries": 338,
-    "sources": 363,
-    "passed": 363,
+    "entries": 342,
+    "sources": 367,
+    "passed": 367,
     "failed": 0
   },
-  "checkedObjects": 705,
-  "semanticAuditSha256": "c9b1703d59a852841a49f71356f55e3649730258d090704a7a07ee4f084d8128"
+  "checkedObjects": 711,
+  "semanticAuditSha256": "264f39226c58c38c4b929fccc08799d50c7a704a8aa1bb9e02ade866aab68936"
 }

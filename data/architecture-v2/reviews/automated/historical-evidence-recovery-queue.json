@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1380,
-    "fetchJobs": 1343,
-    "targets": 1377,
-    "candidateEdges": 1380,
+    "documents": 1376,
+    "fetchJobs": 1339,
+    "targets": 1373,
+    "candidateEdges": 1376,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1377,
+    "uniqueReferences": 1373,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 946,
+      "MEASURE_REQUIRED": 942,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1130
+      "CURRENT_RETAIL": 1126
     },
     "byCategory": {
       "dishwasher": 281,
       "dryer": 55,
-      "fridge": 825,
+      "fridge": 821,
       "washing_machine": 216
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1083,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1079,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 227,
+      "ALREADY_AUTO_FILL": 231,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -639,32 +639,6 @@
       ],
       "targetIds": [
         "recovery_target_c1e735fc6aa1d987224a4cdb"
-      ]
-    },
-    {
-      "jobId": "recovery_74e342f92058cd264ea8c586",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/0/e/d/00ed6b59f7022f00cf09f5c7bc992669d4579886_HBM450SA1_Haier_Specifications_Sheet.pdf",
-      "authorityBrand": "Haier",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_c548541cf5654d0373891613"
       ]
     },
     {
@@ -10132,32 +10106,6 @@
       ]
     },
     {
-      "jobId": "recovery_3d3ae9e7ae4c3879e40560f3",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/6/d/f/66dfd598f050cff71204712aa9ad86eade1204af_Haier_HBM450WH1_450L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
-      "authorityBrand": "Haier",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_6b158392b3e8178d1c242a69"
-      ]
-    },
-    {
       "jobId": "recovery_524e400f8b94ca94d51c533d",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/6/7/7/3/6773fbbc439d75cffb5991a291a62c0cdd20ea19_LG_Dishwasher_LD_1481W4_Specifications_Sheet.pdf",
       "authorityBrand": "LG",
@@ -14110,32 +14058,6 @@
       ]
     },
     {
-      "jobId": "recovery_3b74ab77cfa6c90ae4b1a3d9",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/e/9/d/8e9d64b2801a4549d9aa13aa1c1d44782b802096_HBM340WH1_User_Manual.pdf",
-      "authorityBrand": "Haier",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_18c3ef9d0e1f7d95628573c1"
-      ]
-    },
-    {
       "jobId": "recovery_3df771740db294a00d829c2b",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/8/e/c/3/8ec3296945644e247c80730d9d14692612e6b9b9_HRWC46_Specifications_Sheet.pdf",
       "authorityBrand": "Hisense",
@@ -14523,32 +14445,6 @@
       ],
       "targetIds": [
         "recovery_target_407fec6a355954f67a5470bc"
-      ]
-    },
-    {
-      "jobId": "recovery_bea5174573a46b4cd39e0c6b",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/4/7/2/94724a30e4d6020bc7327ca76c93da472ebb02a2_HBM340SA1_Haier_Specifications_Sheet.pdf",
-      "authorityBrand": "Haier",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_1211daabca5c92bfe426e1c7"
       ]
     },
     {
@@ -48818,88 +48714,6 @@
       "primaryJobId": "recovery_1bad0a4a237bcf8f7e8c53d6"
     },
     {
-      "referenceId": "fa_ref_0e837ae4fd1484c3889e2616",
-      "legacyRuntimeId": "ao-56332",
-      "canonicalProductId": "fa_prod_90116873f9369c22c75fab77",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HBM340SA1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 1702,
-        "depth": 642
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_1211daabca5c92bfe426e1c7",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c904e70e48f6e5a064c96836"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c904e70e48f6e5a064c96836",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 1702,
-            "depth": 642
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_bea5174573a46b4cd39e0c6b"
-      ],
-      "primaryJobId": "recovery_bea5174573a46b4cd39e0c6b"
-    },
-    {
-      "referenceId": "fa_ref_f761e2d06694086b27a96c14",
-      "legacyRuntimeId": "ao-56333",
-      "canonicalProductId": "fa_prod_b911c272b449ab5a815f372b",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HBM340WH1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 1700,
-        "depth": 642
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_18c3ef9d0e1f7d95628573c1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_afaf9e21a9582ce2e91ccfe8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_afaf9e21a9582ce2e91ccfe8",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 1700,
-            "depth": 642
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_3b74ab77cfa6c90ae4b1a3d9"
-      ],
-      "primaryJobId": "recovery_3b74ab77cfa6c90ae4b1a3d9"
-    },
-    {
       "referenceId": "fa_ref_0c1668d2f2c4f94674a38f7b",
       "legacyRuntimeId": "ao-52380",
       "canonicalProductId": "fa_prod_1390035517642e0abac9fc1b",
@@ -48939,88 +48753,6 @@
         "recovery_1ebe7f1d6d1c7decebef8b99"
       ],
       "primaryJobId": "recovery_1ebe7f1d6d1c7decebef8b99"
-    },
-    {
-      "referenceId": "fa_ref_f9ea8af12560e15c4d4880cc",
-      "legacyRuntimeId": "ao-49037",
-      "canonicalProductId": "fa_prod_62b7a9b92d8bc127bfed6107",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HBM450SA1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 700,
-        "height": 1725,
-        "depth": 676
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_c548541cf5654d0373891613",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_5cffd9c296d393dee4fa83f2"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_5cffd9c296d393dee4fa83f2",
-          "dimensionsMm": {
-            "width": 700,
-            "height": 1725,
-            "depth": 676
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_74e342f92058cd264ea8c586"
-      ],
-      "primaryJobId": "recovery_74e342f92058cd264ea8c586"
-    },
-    {
-      "referenceId": "fa_ref_04a345e880c854cbab89ab64",
-      "legacyRuntimeId": "ao-49038",
-      "canonicalProductId": "fa_prod_6e231d0e851342796f285339",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HBM450WH1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 700,
-        "height": 1725,
-        "depth": 676
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_6b158392b3e8178d1c242a69",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_1039105fb2729c5a61f56f44"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_1039105fb2729c5a61f56f44",
-          "dimensionsMm": {
-            "width": 700,
-            "height": 1725,
-            "depth": 676
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_3d3ae9e7ae4c3879e40560f3"
-      ],
-      "primaryJobId": "recovery_3d3ae9e7ae4c3879e40560f3"
     },
     {
       "referenceId": "fa_ref_764b03cc48c1dea2cab8a8ec",

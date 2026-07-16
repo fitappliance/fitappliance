@@ -2814,6 +2814,100 @@ test('Haier TFE3 grammar binds listed finish SKUs to one corroborated product en
   );
 });
 
+test('Haier HBM340 technical table binds each listed finish to its own model column', () => {
+  const technicalData = `<table>
+    <tr><td>Trade mark</td><td colspan="2">Haier</td></tr>
+    <tr><td>Model No.</td><td>HBM315WH1HBM315SA1</td><td>HBM340WH1HBM340SA1</td></tr>
+    <tr><td>Category of the model</td><td>Refrigerator</td><td>Refrigerator</td></tr>
+    <tr><td>Dimension (DxWxH)</td><td>642x595x1600mm</td><td>642x595x1700mm</td></tr>
+  </table>`;
+  const bytes = Buffer.from(JSON.stringify([[
+    titleFragment('TECHNICAL DATA'),
+    tableFragment(technicalData),
+  ]]));
+  const options = (model) => ({
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Haier', model, category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  for (const model of ['HBM340WH1', 'HBM340SA1']) {
+    const parsed = parseMineruContentListV2(bytes, options(model));
+    assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+      'closedEnvelope.depthMm': 642,
+      'closedEnvelope.heightMm': 1700,
+      'closedEnvelope.widthMm': 595,
+    });
+    assert.deepEqual(parsed.grammarProfileIds, ['haier-au-hbm-technical-data-family-v1']);
+    assert.ok(parsed.identitySignals.some((signal) => (
+      signal.type === 'mineru_haier_hbm_technical_family_model'
+    )));
+  }
+
+  assert.throws(
+    () => parseMineruContentListV2(bytes, options('HBM315WH1')),
+    /identity|family|model/i,
+  );
+  const unknownVariantBytes = Buffer.from(JSON.stringify([[
+    titleFragment('TECHNICAL DATA'),
+    tableFragment(technicalData.replace(
+      'HBM340WH1HBM340SA1',
+      'HBM340WH1HBM340SA1HBM340BSA1',
+    )),
+  ]]));
+  assert.throws(
+    () => parseMineruContentListV2(unknownVariantBytes, options('HBM340SA1')),
+    /identity|family|model/i,
+  );
+});
+
+test('Haier HBM450 technical list binds only the complete shared family tuple', () => {
+  const document = (overrides = {}) => Buffer.from(JSON.stringify([[
+    titleFragment('Technical Data'),
+    structuredListFragment([
+      'Trade mark Haier',
+      'HBM450WH1',
+      'HBM450SA1',
+      overrides.thirdModel ?? 'Model No. HBM450HSA1',
+      'Category of the model Refrigerator-freezer',
+      overrides.dimension ?? 'Dimension (DxWxH) 676x700x1725mm',
+    ], { type: 'index' }),
+    tableFragment('<table><tr><td>Model</td><td>Appliance width in mm</td><td>Appliance depth in mm</td></tr><tr><td>HBM450WH1 HBM450SA1 HBM450HSA1</td><td>1100</td><td>1323</td></tr></table>'),
+  ]]));
+  const options = (model) => ({
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Haier', model, category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  for (const model of ['HBM450WH1', 'HBM450SA1', 'HBM450HSA1']) {
+    const parsed = parseMineruContentListV2(document(), options(model));
+    assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+      'closedEnvelope.depthMm': 676,
+      'closedEnvelope.heightMm': 1725,
+      'closedEnvelope.widthMm': 700,
+    });
+    assert.deepEqual(parsed.grammarProfileIds, ['haier-au-hbm-technical-data-family-v1']);
+  }
+
+  assert.throws(
+    () => parseMineruContentListV2(document({ thirdModel: 'Model No. HBM450BSA1' }), options('HBM450SA1')),
+    /identity|family|model/i,
+  );
+  assert.throws(
+    () => parseMineruContentListV2(document({
+      thirdModel: 'Model No. HBM450HSA1 HBM450BSA1',
+    }), options('HBM450SA1')),
+    /identity|family|model/i,
+  );
+  assert.throws(
+    () => parseMineruContentListV2(document({ dimension: 'Dimension (WxDxH) 676x700x1725mm' }), options('HBM450SA1')),
+    /identity|dimension|evidence|axis/i,
+  );
+});
+
 test('MinerU keeps repeated exact-model page-header scope when a later matrix lists a colour sibling', () => {
   const bytes = Buffer.from(JSON.stringify([
     [

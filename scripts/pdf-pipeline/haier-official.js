@@ -136,12 +136,17 @@ function extractHaierSupportAttachments(html, baseUrl) {
   return urls;
 }
 
-function supportCategory(target = {}) {
+function supportProductPaths(target = {}) {
   const category = String(target.category || target.cat || target.product?.cat || '').toLowerCase();
-  if (category === 'dishwasher') return 'dishwashing';
-  if (category === 'fridge') return 'refrigeration';
-  if (category === 'dryer' || category === 'washing_machine') return 'laundry';
-  return null;
+  if (category === 'dishwasher') return ['dishwashing'];
+  if (category === 'fridge') {
+    return [
+      'refrigeration',
+      'refrigeration-and-freezers/fridges/top-fridge',
+    ];
+  }
+  if (category === 'dryer' || category === 'washing_machine') return ['laundry'];
+  return [];
 }
 
 function supportResourceType(articleUrl, html) {
@@ -277,24 +282,42 @@ async function findHaierSupportPdf(target, {
   salesforceResolver,
   writeObject,
 }) {
-  const category = supportCategory(target);
+  const productPaths = supportProductPaths(target);
   const requestedModel = String(target.sku || target.model || target.product?.model || '').trim().toUpperCase();
-  if (!category || !requestedModel || /[*?]/.test(requestedModel)) return null;
+  if (!productPaths.length || !requestedModel || /[*?]/.test(requestedModel)) return null;
 
-  const productUrl = `${HAIER_SUPPORT_BASE}/${category}/product?id=${encodeURIComponent(requestedModel)}`;
-  let productPage = await fetchHtmlDocument(productUrl, fetchImpl, HAIER_SUPPORT_HOST);
-  let articleUrls = extractHaierSupportArticleUrls(productPage.html, productPage.finalUrl);
-  if (!hasExactHaierModelMention(productPage.html, requestedModel) || !articleUrls.length) {
-    productPage = await fetchRenderedHtmlDocument(
-      productUrl,
-      renderedHtmlImpl,
-      HAIER_SUPPORT_HOST,
-      'a[href*="/s/help-and-support/article/"]',
-    );
-    articleUrls = extractHaierSupportArticleUrls(productPage.html, productPage.finalUrl);
+  const productErrors = [];
+  let productPage = null;
+  let articleUrls = [];
+  for (const productPath of productPaths) {
+    const productUrl = `${HAIER_SUPPORT_BASE}/${productPath}/product?id=${encodeURIComponent(requestedModel)}`;
+    try {
+      let candidatePage = await fetchHtmlDocument(productUrl, fetchImpl, HAIER_SUPPORT_HOST);
+      let candidateArticles = extractHaierSupportArticleUrls(candidatePage.html, candidatePage.finalUrl);
+      if (!hasExactHaierModelMention(candidatePage.html, requestedModel) || !candidateArticles.length) {
+        candidatePage = await fetchRenderedHtmlDocument(
+          productUrl,
+          renderedHtmlImpl,
+          HAIER_SUPPORT_HOST,
+          'a[href*="/s/help-and-support/article/"]',
+        );
+        candidateArticles = extractHaierSupportArticleUrls(candidatePage.html, candidatePage.finalUrl);
+      }
+      if (!hasExactHaierModelMention(candidatePage.html, requestedModel)) {
+        throw new Error(`Haier support product page does not prove exact model ${requestedModel}`);
+      }
+      if (!candidateArticles.length) {
+        throw new Error(`Haier support product page has no document articles for ${requestedModel}`);
+      }
+      productPage = candidatePage;
+      articleUrls = candidateArticles;
+      break;
+    } catch (error) {
+      productErrors.push(`${productUrl}: ${error.message}`);
+    }
   }
-  if (!hasExactHaierModelMention(productPage.html, requestedModel)) {
-    throw new Error(`Haier support product page does not prove exact model ${requestedModel}`);
+  if (!productPage) {
+    throw new Error(`Haier support product page not found for ${requestedModel}${productErrors.length ? `: ${productErrors[0]}` : ''}`);
   }
   const resources = [];
   const errors = [];

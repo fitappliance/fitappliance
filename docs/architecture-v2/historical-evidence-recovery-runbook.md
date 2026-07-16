@@ -1350,3 +1350,65 @@ but production recovery lanes must use a unique run ID and explicit
 `--target-id` filters. Accepted targets, complete exhausted inventories and
 interrupted runs must not be automatically restarted. A transient target such
 as `WAE22466AU` is eligible only after its separate backoff window.
+
+## 35. Haier HBM fridge lanes U through W and technical-table grammar
+
+The HBM recovery used three distinct run IDs and did not resume any completed
+run. Lane U recorded five zero-candidate outcomes under Haier resolver v4.
+Research then showed that archived refrigerators use the bounded support path
+`refrigeration-and-freezers/fridges/top-fridge`, while the resolver had only
+tried the legacy `refrigeration` path. Resolver v5 now tries both official
+taxonomies and continues only after a 404, support shell or missing exact-model
+signal. It does not weaken the Haier authority allowlist or exact-model checks.
+
+Lane V proved that the corrected discovery path could bind official product
+pages to Haier-hosted Salesforce PDFs for `HBM340SA1`, `HBM340WH1`,
+`HBM450SA1` and `HBM450WH1`. Those four targets still terminated because the
+MinerU parser did not yet understand the manuals' technical-data layout.
+`HBM450HSA1` produced no receipt-bound discovery candidate and therefore stayed
+outside the later acceptance run even though a family manual mentions it.
+Lane U and lane V are permanent attempt history and must not be resumed.
+
+Parser epoch `2026-07-16.17` adds the narrow
+`haier-au-hbm-technical-data-family-v1` grammar:
+
+- The HBM340 layout requires the `Technical Data` table, the explicit
+  `HBM340WH1/HBM340SA1` model column and `Dimension (DxWxH)` unit context on the
+  same page. It maps 642 x 595 x 1700 mm to closed D/W/H.
+- The HBM450 layout requires the complete explicit model trio
+  `HBM450WH1`, `HBM450SA1` and `HBM450HSA1`, the refrigerator-freezer category
+  and `Dimension (DxWxH)` in one technical-data fragment. It maps
+  676 x 700 x 1725 mm to closed D/W/H.
+- The grammar excludes HBM315, incomplete or unknown finish sets, alternate
+  axis labels, cavity dimensions, service clearances and door-operation
+  measurements. In particular, W1=1100, D1=700 and D2=1323 from the HBM450
+  operation diagram cannot replace the closed envelope.
+
+Post-lane review raised the current parser epoch to `2026-07-16.18`. HBM model
+tokens are now compared as a complete set, so a table containing all expected
+models plus an unknown HBM variant is rejected instead of silently ignoring the
+extra variant. This hardening does not rerun or rewrite lane W history.
+
+Lane W selected only the four targets with both valid discovery provenance and
+valid MinerU family identity. It accepted the following dimensions:
+
+| Model | Width | Height | Depth |
+| --- | ---: | ---: | ---: |
+| `HBM340SA1` | 595 | 1700 | 642 |
+| `HBM340WH1` | 595 | 1700 | 642 |
+| `HBM450SA1` | 700 | 1725 | 676 |
+| `HBM450WH1` | 700 | 1725 | 676 |
+
+The HBM340 legacy height hint of 1702 mm remains a lower-authority conflict
+hint; exact official axis proof supplies 1700 mm. The online lane W audit
+checked four targets and 711 immutable objects with zero repairs and zero
+violations. Promotion increased the cumulative bundle to 342 accepted entries
+and 367 source receipts; all 367 receipts replay. Historical classification
+now contains 361 complete receipts, public projection contains 292
+receipt-bound dimensions and receipt-bound `VERIFIED_FIT` remains zero.
+
+`HBM450HSA1` remains `IDENTITY_ONLY` with `MEASURE_REQUIRED`. Its dimensions
+must not be inherited from the family manual until an immutable exact-model
+discovery path binds that support product to the PDF artifact. A future fix
+requires a new resolver/discovery contract and a new run ID; the presence of a
+parseable family row alone is not execution permission.

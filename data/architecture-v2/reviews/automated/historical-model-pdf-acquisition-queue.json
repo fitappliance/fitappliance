@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T22:27:58.176Z",
-  "semanticQueueSha256": "981077fd6eda9c16c5da8ebdd8148d598ba45d74ec7ff198f46aad1dfb161b31",
-  "sourceClassificationSha256": "b6bde27a3dde0834f8a193801f9841c79af4c81eb4297c78ad4995e3b3091555",
+  "generatedAt": "2026-07-16T23:09:24.849Z",
+  "semanticQueueSha256": "684062e780e937aa27359a500f52db4b0b0f6ddd878ba6537657415a88364c2c",
+  "sourceClassificationSha256": "67d28ca9987dafd27e7f4b48aa9f9594d0db604d67cccce54fc7aad7e8189476",
   "records": [
     {
       "schemaVersion": 1,
@@ -15337,68 +15337,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f07b9780fd065c573de5beb9",
-      "referenceId": "fa_ref_0e837ae4fd1484c3889e2616",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HBM340SA1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_5aacc4e6c44d5bd3822b8e79"
-      ],
-      "resolverIds": [
-        "haier-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_1211daabca5c92bfe426e1c7"
-      ],
-      "legacyRuntimeIds": [
-        "ao-56332"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_90116873f9369c22c75fab77"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_c927c0710417b7b1109ee702",
-      "referenceId": "fa_ref_f761e2d06694086b27a96c14",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HBM340WH1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ebdf57b5434e40e0b8b165df"
-      ],
-      "resolverIds": [
-        "haier-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_18c3ef9d0e1f7d95628573c1"
-      ],
-      "legacyRuntimeIds": [
-        "ao-56333"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b911c272b449ab5a815f372b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_1f83bbc77867e5928a6267ec",
       "referenceId": "fa_ref_0c1668d2f2c4f94674a38f7b",
       "category": "fridge",
@@ -15425,68 +15363,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_1390035517642e0abac9fc1b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3c66cb3884d23c06dda419ad",
-      "referenceId": "fa_ref_f9ea8af12560e15c4d4880cc",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HBM450SA1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_7ad5f83ad60d5518e3a1cdd8"
-      ],
-      "resolverIds": [
-        "haier-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c548541cf5654d0373891613"
-      ],
-      "legacyRuntimeIds": [
-        "ao-49037"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_62b7a9b92d8bc127bfed6107"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_6f6438f9d429749240fa4fa7",
-      "referenceId": "fa_ref_04a345e880c854cbab89ab64",
-      "category": "fridge",
-      "brand": "Haier",
-      "model": "HBM450WH1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_2c49fbd6785a99dd63e0eccb"
-      ],
-      "resolverIds": [
-        "haier-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_6b158392b3e8178d1c242a69"
-      ],
-      "legacyRuntimeIds": [
-        "ao-49038"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6e231d0e851342796f285339"
       ],
       "offlineReplayOutcome": null
     },
@@ -194166,19 +194042,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_2c49fbd6785a99dd63e0eccb",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/6/d/f/66dfd598f050cff71204712aa9ad86eade1204af_Haier_HBM450WH1_450L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HBM450WH1.json",
-        "source:doc_1039105fb2729c5a61f56f44"
-      ],
-      "referenceIds": [
-        "fa_ref_04a345e880c854cbab89ab64"
-      ]
-    },
-    {
       "sourceId": "historical_source_2c4f2e4419eaedbc7712a79a",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/d/9/e/a/d9ea718499212f046973b8311d6c69faffc7c91d_Fisher___Paykel_E521TRT5_517L_Top_Mount_Fridge_User_Manual.pdf",
       "sourceAuthority": "REFERENCE",
@@ -197470,19 +197333,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_5aacc4e6c44d5bd3822b8e79",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/4/7/2/94724a30e4d6020bc7327ca76c93da472ebb02a2_HBM340SA1_Haier_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HBM340SA1.json",
-        "source:doc_c904e70e48f6e5a064c96836"
-      ],
-      "referenceIds": [
-        "fa_ref_0e837ae4fd1484c3889e2616"
-      ]
-    },
-    {
       "sourceId": "historical_source_5ac7ef04ff7b1f174e77bc31",
       "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM4502WC&brand=Kelvinator",
       "sourceAuthority": "OFFICIAL",
@@ -199947,19 +199797,6 @@
       ],
       "referenceIds": [
         "fa_ref_1729a1dabd1a861d4b7f80e5"
-      ]
-    },
-    {
-      "sourceId": "historical_source_7ad5f83ad60d5518e3a1cdd8",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/0/e/d/00ed6b59f7022f00cf09f5c7bc992669d4579886_HBM450SA1_Haier_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HBM450SA1.json",
-        "source:doc_5cffd9c296d393dee4fa83f2"
-      ],
-      "referenceIds": [
-        "fa_ref_f9ea8af12560e15c4d4880cc"
       ]
     },
     {
@@ -207833,19 +207670,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_ebdf57b5434e40e0b8b165df",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/e/9/d/8e9d64b2801a4549d9aa13aa1c1d44782b802096_HBM340WH1_User_Manual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HBM340WH1.json",
-        "source:doc_afaf9e21a9582ce2e91ccfe8"
-      ],
-      "referenceIds": [
-        "fa_ref_f761e2d06694086b27a96c14"
-      ]
-    },
-    {
       "sourceId": "historical_source_ec0aa43205cd2f75ec0dedde",
       "sourceUrl": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/1596067461_205594944_RHBFD78W_RHBFD78X_IM_v1_18_12_2019.pdf?v=1616404845",
       "sourceAuthority": "NONE",
@@ -209053,46 +208877,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 357,
+    "COMPLETE_RECEIPT": 361,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7738,
-    "uniqueReferences": 7738,
-    "candidateSources": 1387,
-    "candidateEdges": 1422,
+    "queuedModels": 7734,
+    "uniqueReferences": 7734,
+    "candidateSources": 1383,
+    "candidateEdges": 1418,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1100,
+      "CURRENT_RETAIL": 1096,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1265,
       "dryer": 805,
-      "fridge": 4220,
+      "fridge": 4216,
       "washing_machine": 1448
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1104
+      "REFERENCE_REDISCOVERY": 1100
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1104
+      "OFFICIAL_REDISCOVERY": 1100
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5073,
+      "DISCOVERY_READY": 5069,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 357,
+      "COMPLETE_RECEIPT": 361,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

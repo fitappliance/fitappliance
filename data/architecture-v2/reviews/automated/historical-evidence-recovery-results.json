@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "historical-haier-tfe3ss-20260716-t",
-  "batchId": "historical-recovery-bd348d9ce11657e4268377a4-slice-c8488f6c5873",
-  "batchSha256": "6c8ed8bdfc9380aa6a8ff841bf41afe3b33ca1d68b224236a149de6874aafa5c",
-  "queueSha256": "7a9cba9142cb2333f505b5d2557993aea741465950a8312a87c605b4fab7f379",
-  "policySha256": "b1299d31d05ec1c17328c7de3bd973c2020c9f21cf8b55dd63a9dfc4497fce55",
-  "startedAt": "2026-07-16T22:26:41.370Z",
-  "completedAt": "2026-07-16T22:27:03.619Z",
-  "semanticOutcomeSha256": "de49f936c65bcbbce505b4f7c43b13fcd3efb3a1aed8a12d057ad136828acbba",
+  "runId": "historical-haier-hbm-fridges-20260716-w",
+  "batchId": "historical-recovery-61a03bdcdba81dff1b3789c6-slice-25455c537f07",
+  "batchSha256": "703c8ba6685638af644ed7d20f2235592d0733ac3d17be33a68110308c1304db",
+  "queueSha256": "4756a9f21e941841f786753786484472a46bd537afea8bc0db7fac09c44cca5b",
+  "policySha256": "00179e8209cf91fa89ce29a1ee100f3cb1e505b750d73d920450880fb6bfbde4",
+  "startedAt": "2026-07-16T23:02:08.563Z",
+  "completedAt": "2026-07-16T23:03:51.177Z",
+  "semanticOutcomeSha256": "1bdc2b2a0800fab5cc4f67f5cc4490a2fd14b6543f847941e493f6972ad907c4",
   "outcomes": [
     {
-      "targetId": "recovery_target_7f92b1a3a98551f7581fb471",
+      "targetId": "recovery_target_1211daabca5c92bfe426e1c7",
       "status": "accepted",
       "failureCode": null,
-      "candidateInventorySha256": "9bf54c6c9b6711353de95f64fac62c7afbb0ef1f44ce02fa4fcb274f9e31e1d5",
+      "candidateInventorySha256": "e0e4dac1b0a33031ed5e844a6140a6c9b31db6a57b193ab19952da1e34c9b293",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_7f92b1a3a98551f7581fb471",
+        "targetId": "recovery_target_1211daabca5c92bfe426e1c7",
         "identity": {
           "brand": "Haier",
-          "model": "HDW9TFE3SS",
-          "category": "dishwasher"
+          "model": "HBM340SA1",
+          "category": "fridge"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -44,8 +44,8 @@
           },
           {
             "resolverId": "haier-official-discovery",
-            "version": "4",
-            "scope": "haier_au_target_ready_support_articles_resolved_pdf_and_current_product_pages",
+            "version": "5",
+            "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
             "required": true,
             "completion": "complete",
             "candidateCount": 3
@@ -54,196 +54,8 @@
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_7e840fbbd56f66d5d5b9d76d",
-            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3PyIAI&d=%2Fa%2FJw000000ZuKH%2FbvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4&operationContext=DELIVERY&viewId=05HJw00000QE9kPMAT&dpt=",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_product_page",
-              "market": "AU",
-              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Dishwasher-Installation-Guide-8875",
-              "requestedModel": "HDW9TFE3SS",
-              "matchedModel": "HDW9TFE3SS",
-              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3PyIAI&d=%2Fa%2FJw000000ZuKH%2FbvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4&operationContext=DELIVERY&viewId=05HJw00000QE9kPMAT&dpt=",
-              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuKH/bvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4",
-              "discoveryContentSha256": "7a406fa6d2c4507b7eac64cc40d3648798860a8ef1306e90c85c19d53b429d59",
-              "discoveryObjectPath": "evidence/web/sha256/7a/40/7a406fa6d2c4507b7eac64cc40d3648798860a8ef1306e90c85c19d53b429d59.html",
-              "discoveryByteSize": 510979
-            },
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "haier-official-discovery",
-                "version": "4",
-                "scope": "haier_au_target_ready_support_articles_resolved_pdf_and_current_product_pages",
-                "discoveryMethod": "haier_legacy_finder",
-                "sourceRole": "manufacturer_document",
-                "order": 0
-              }
-            ],
-            "outcome": {
-              "status": "accepted",
-              "failureCode": null,
-              "source": {
-                "authority": "manufacturer",
-                "sourceType": "official_exact_model_pdf",
-                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3PyIAI&d=%2Fa%2FJw000000ZuKH%2FbvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4&operationContext=DELIVERY&viewId=05HJw00000QE9kPMAT&dpt=",
-                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3PyIAI&d=%2Fa%2FJw000000ZuKH%2FbvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4&operationContext=DELIVERY&viewId=05HJw00000QE9kPMAT&dpt=",
-                "redirectChain": [],
-                "retrievedAt": "2026-07-16T22:27:01.744Z",
-                "contentSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
-                "objectPath": "evidence/web/sha256/b0/c0/b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9.pdf",
-                "contentType": "application/pdf",
-                "byteSize": 1694056,
-                "supersedesContentSha256": [],
-                "identity": {
-                  "brand": "Haier",
-                  "model": "HDW9TFE3SS",
-                  "outcome": "exact"
-                },
-                "claims": [
-                  {
-                    "field": "closedEnvelope.widthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 450
-                    },
-                    "sourceLabel": "overall width of product",
-                    "sourceAxisOrder": [
-                      "width"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": 6,
-                    "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f",
-                    "bbox": [
-                      84,
-                      529,
-                      868,
-                      843
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "range",
-                      "minMm": 850,
-                      "maxMm": 870
-                    },
-                    "sourceLabel": "Overall height of product with top panel in place",
-                    "sourceAxisOrder": [
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": 6,
-                    "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f",
-                    "bbox": [
-                      84,
-                      529,
-                      868,
-                      843
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 600
-                    },
-                    "sourceLabel": "overall depth of product",
-                    "sourceAxisOrder": [
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": 6,
-                    "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f",
-                    "bbox": [
-                      84,
-                      529,
-                      868,
-                      843
-                    ]
-                  }
-                ],
-                "discoveryProvenance": {
-                  "schemaVersion": 1,
-                  "method": "official_product_page",
-                  "market": "AU",
-                  "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Dishwasher-Installation-Guide-8875",
-                  "requestedModel": "HDW9TFE3SS",
-                  "matchedModel": "HDW9TFE3SS",
-                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3PyIAI&d=%2Fa%2FJw000000ZuKH%2FbvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4&operationContext=DELIVERY&viewId=05HJw00000QE9kPMAT&dpt=",
-                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuKH/bvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4",
-                  "discoveryContentSha256": "7a406fa6d2c4507b7eac64cc40d3648798860a8ef1306e90c85c19d53b429d59",
-                  "discoveryObjectPath": "evidence/web/sha256/7a/40/7a406fa6d2c4507b7eac64cc40d3648798860a8ef1306e90c85c19d53b429d59.html",
-                  "discoveryByteSize": 510979
-                },
-                "derivedArtifact": {
-                  "schemaVersion": 1,
-                  "format": "content_list_v2",
-                  "parserName": "MinerU",
-                  "parserVersion": "3.4.4",
-                  "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
-                  "backend": "hybrid-engine",
-                  "method": "auto",
-                  "tableEnabled": true,
-                  "formulaEnabled": false,
-                  "sourcePdfSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
-                  "contentSha256": "43ea6516d5e0cf8b82045adaa8c6a2420ac9e7e42653566475c84ebb7d58ce08",
-                  "objectPath": "evidence/derived/mineru-json/sha256/43/ea/43ea6516d5e0cf8b82045adaa8c6a2420ac9e7e42653566475c84ebb7d58ce08.json",
-                  "byteSize": 98042,
-                  "pageCount": 28,
-                  "profileId": "hybrid-image-high-v1",
-                  "effort": "high",
-                  "imageAnalysis": true,
-                  "processedPages": [
-                    6
-                  ],
-                  "sourcePageCount": 28,
-                  "fallbackTrigger": {
-                    "profileId": "pipeline-auto-v1",
-                    "contentSha256": "148a4c1c3130a349ad737705aec52483df194e096e6bcc31f8da7c224c0fdbb2",
-                    "objectPath": "evidence/derived/mineru-json/sha256/14/8a/148a4c1c3130a349ad737705aec52483df194e096e6bcc31f8da7c224c0fdbb2.json",
-                    "pages": [
-                      6
-                    ]
-                  }
-                },
-                "identitySignals": [
-                  {
-                    "type": "mineru_haier_tfe3_explicit_finish_model",
-                    "value": "HDW9TFE3SS:cover:e4602bd6ef69c8aaf56173e17aa3bde861ccbe74f6e2d94a200f286733d7dbb7:product-page:6:technical-page:28"
-                  },
-                  {
-                    "type": "official_product_page_artifact_relationship",
-                    "value": "7a406fa6d2c4507b7eac64cc40d3648798860a8ef1306e90c85c19d53b429d59:https://support.haier.com.au/s/help-and-support/article/Dishwasher-Installation-Guide-8875:https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuKH/bvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4"
-                  }
-                ],
-                "verificationReceipt": {
-                  "schemaVersion": 3,
-                  "claimSemanticsVersion": 2,
-                  "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-16.4",
-                  "discoveryPolicyVersion": "2026-07-16.6",
-                  "verifiedAt": "2026-07-16T22:27:01.744Z",
-                  "bindingSha256": "c35d4c2246293cad15981116da33fdd3f9d2d2cc2eaff9ecef6b87e25fb7c57f"
-                }
-              }
-            }
-          },
-          {
-            "candidateId": "candidate_9a6b6a3147c61875ed862ecc",
-            "sourceUrl": "https://support.haier.com.au/s/help-and-support/dishwashing/product?id=HDW9TFE3SS",
+            "candidateId": "candidate_229da8ff745689ec4516d977",
+            "sourceUrl": "https://support.haier.com.au/s/help-and-support/refrigeration-and-freezers/fridges/top-fridge/product?id=HBM340SA1",
             "authorityMode": "official",
             "sourceRole": "manufacturer_product_page",
             "requiredAttempt": false,
@@ -252,8 +64,8 @@
             "resolverRefs": [
               {
                 "resolverId": "haier-official-discovery",
-                "version": "4",
-                "scope": "haier_au_target_ready_support_articles_resolved_pdf_and_current_product_pages",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
                 "discoveryMethod": "haier_legacy_finder",
                 "sourceRole": "manufacturer_product_page",
                 "order": 2
@@ -266,8 +78,8 @@
             }
           },
           {
-            "candidateId": "candidate_e986580e740d61b0dfc95e5b",
-            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
+            "candidateId": "candidate_b06a19c083e1b5a7bce04cdd",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rC5uIAE&d=%2Fa%2FJw000000bvNV%2Fgk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780&operationContext=DELIVERY&viewId=05HJw00000QECrxMAH&dpt=",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
@@ -275,21 +87,21 @@
               "schemaVersion": 1,
               "method": "official_product_page",
               "market": "AU",
-              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Dishwasher-User-Care-Guide-8870",
-              "requestedModel": "HDW9TFE3SS",
-              "matchedModel": "HDW9TFE3SS",
-              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
-              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuH3/5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU",
-              "discoveryContentSha256": "cdaa61f22b50042d1ac9936616484c3bca298649ab5c9dfdd51511432319af46",
-              "discoveryObjectPath": "evidence/web/sha256/cd/aa/cdaa61f22b50042d1ac9936616484c3bca298649ab5c9dfdd51511432319af46.html",
-              "discoveryByteSize": 510933
+              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-User-Care-Guide-9380",
+              "requestedModel": "HBM340SA1",
+              "matchedModel": "HBM340SA1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rC5uIAE&d=%2Fa%2FJw000000bvNV%2Fgk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780&operationContext=DELIVERY&viewId=05HJw00000QECrxMAH&dpt=",
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvNV/gk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780",
+              "discoveryContentSha256": "be741c3a2ae58fad8c83e36e828a09a9c8584233b57ca06be3bca79f10e58edc",
+              "discoveryObjectPath": "evidence/web/sha256/be/74/be741c3a2ae58fad8c83e36e828a09a9c8584233b57ca06be3bca79f10e58edc.html",
+              "discoveryByteSize": 510940
             },
             "batchJobIds": [],
             "resolverRefs": [
               {
                 "resolverId": "haier-official-discovery",
-                "version": "4",
-                "scope": "haier_au_target_ready_support_articles_resolved_pdf_and_current_product_pages",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
                 "discoveryMethod": "haier_legacy_finder",
                 "sourceRole": "manufacturer_document",
                 "order": 1
@@ -301,18 +113,18 @@
               "source": {
                 "authority": "manufacturer",
                 "sourceType": "official_exact_model_pdf",
-                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
-                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rC5uIAE&d=%2Fa%2FJw000000bvNV%2Fgk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780&operationContext=DELIVERY&viewId=05HJw00000QECrxMAH&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rC5uIAE&d=%2Fa%2FJw000000bvNV%2Fgk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780&operationContext=DELIVERY&viewId=05HJw00000QECrxMAH&dpt=",
                 "redirectChain": [],
-                "retrievedAt": "2026-07-16T22:27:03.465Z",
-                "contentSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
-                "objectPath": "evidence/web/sha256/b0/c0/b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9.pdf",
+                "retrievedAt": "2026-07-16T23:02:28.078Z",
+                "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+                "objectPath": "evidence/web/sha256/cc/c9/ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c.pdf",
                 "contentType": "application/pdf",
-                "byteSize": 1694056,
+                "byteSize": 370256,
                 "supersedesContentSha256": [],
                 "identity": {
                   "brand": "Haier",
-                  "model": "HDW9TFE3SS",
+                  "model": "HBM340SA1",
                   "outcome": "exact"
                 },
                 "claims": [
@@ -320,70 +132,75 @@
                     "field": "closedEnvelope.widthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 450
+                      "mm": 595
                     },
-                    "sourceLabel": "overall width of product",
+                    "sourceLabel": "Dimension (DxWxH)",
                     "sourceAxisOrder": [
-                      "width"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": 6,
-                    "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f",
-                    "bbox": [
-                      84,
-                      529,
-                      868,
-                      843
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "range",
-                      "minMm": 850,
-                      "maxMm": 870
-                    },
-                    "sourceLabel": "Overall height of product with top panel in place",
-                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
                       "height"
                     ],
                     "sourceUnit": "mm",
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": 6,
-                    "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f",
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
                     "bbox": [
-                      84,
-                      529,
-                      868,
-                      843
+                      223,
+                      269,
+                      774,
+                      558
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 1700
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+                    "bbox": [
+                      223,
+                      269,
+                      774,
+                      558
                     ]
                   },
                   {
                     "field": "closedEnvelope.depthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 600
+                      "mm": 642
                     },
-                    "sourceLabel": "overall depth of product",
+                    "sourceLabel": "Dimension (DxWxH)",
                     "sourceAxisOrder": [
-                      "depth"
+                      "depth",
+                      "width",
+                      "height"
                     ],
                     "sourceUnit": "mm",
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": 6,
-                    "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f",
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
                     "bbox": [
-                      84,
-                      529,
-                      868,
-                      843
+                      223,
+                      269,
+                      774,
+                      558
                     ]
                   }
                 ],
@@ -391,54 +208,39 @@
                   "schemaVersion": 1,
                   "method": "official_product_page",
                   "market": "AU",
-                  "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Dishwasher-User-Care-Guide-8870",
-                  "requestedModel": "HDW9TFE3SS",
-                  "matchedModel": "HDW9TFE3SS",
-                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
-                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuH3/5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU",
-                  "discoveryContentSha256": "cdaa61f22b50042d1ac9936616484c3bca298649ab5c9dfdd51511432319af46",
-                  "discoveryObjectPath": "evidence/web/sha256/cd/aa/cdaa61f22b50042d1ac9936616484c3bca298649ab5c9dfdd51511432319af46.html",
-                  "discoveryByteSize": 510933
+                  "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-User-Care-Guide-9380",
+                  "requestedModel": "HBM340SA1",
+                  "matchedModel": "HBM340SA1",
+                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rC5uIAE&d=%2Fa%2FJw000000bvNV%2Fgk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780&operationContext=DELIVERY&viewId=05HJw00000QECrxMAH&dpt=",
+                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvNV/gk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780",
+                  "discoveryContentSha256": "be741c3a2ae58fad8c83e36e828a09a9c8584233b57ca06be3bca79f10e58edc",
+                  "discoveryObjectPath": "evidence/web/sha256/be/74/be741c3a2ae58fad8c83e36e828a09a9c8584233b57ca06be3bca79f10e58edc.html",
+                  "discoveryByteSize": 510940
                 },
                 "derivedArtifact": {
                   "schemaVersion": 1,
                   "format": "content_list_v2",
                   "parserName": "MinerU",
                   "parserVersion": "3.4.4",
-                  "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
-                  "backend": "hybrid-engine",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
                   "method": "auto",
                   "tableEnabled": true,
                   "formulaEnabled": false,
-                  "sourcePdfSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
-                  "contentSha256": "43ea6516d5e0cf8b82045adaa8c6a2420ac9e7e42653566475c84ebb7d58ce08",
-                  "objectPath": "evidence/derived/mineru-json/sha256/43/ea/43ea6516d5e0cf8b82045adaa8c6a2420ac9e7e42653566475c84ebb7d58ce08.json",
-                  "byteSize": 98042,
-                  "pageCount": 28,
-                  "profileId": "hybrid-image-high-v1",
-                  "effort": "high",
-                  "imageAnalysis": true,
-                  "processedPages": [
-                    6
-                  ],
-                  "sourcePageCount": 28,
-                  "fallbackTrigger": {
-                    "profileId": "pipeline-auto-v1",
-                    "contentSha256": "148a4c1c3130a349ad737705aec52483df194e096e6bcc31f8da7c224c0fdbb2",
-                    "objectPath": "evidence/derived/mineru-json/sha256/14/8a/148a4c1c3130a349ad737705aec52483df194e096e6bcc31f8da7c224c0fdbb2.json",
-                    "pages": [
-                      6
-                    ]
-                  }
+                  "sourcePdfSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+                  "contentSha256": "2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62",
+                  "objectPath": "evidence/derived/mineru-json/sha256/29/55/2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62.json",
+                  "byteSize": 127722,
+                  "pageCount": 16
                 },
                 "identitySignals": [
                   {
-                    "type": "mineru_haier_tfe3_explicit_finish_model",
-                    "value": "HDW9TFE3SS:cover:e4602bd6ef69c8aaf56173e17aa3bde861ccbe74f6e2d94a200f286733d7dbb7:product-page:6:technical-page:28"
+                    "type": "mineru_haier_hbm_technical_family_model",
+                    "value": "HBM340SA1:family:HBM340:variant:column_table:page:15:5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
                   },
                   {
-                    "type": "official_product_page_artifact_relationship",
-                    "value": "cdaa61f22b50042d1ac9936616484c3bca298649ab5c9dfdd51511432319af46:https://support.haier.com.au/s/help-and-support/article/Dishwasher-User-Care-Guide-8870:https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuH3/5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU"
+                    "type": "official_product_page_model",
+                    "value": "HBM340SA1:be741c3a2ae58fad8c83e36e828a09a9c8584233b57ca06be3bca79f10e58edc:https://support.haier.com.au/s/help-and-support/article/Refrigerator-User-Care-Guide-9380"
                   }
                 ],
                 "verificationReceipt": {
@@ -447,31 +249,209 @@
                   "policyVersion": "2026-07-13.1",
                   "manufacturerPolicyVersion": "2026-07-16.4",
                   "discoveryPolicyVersion": "2026-07-16.6",
-                  "verifiedAt": "2026-07-16T22:27:03.465Z",
-                  "bindingSha256": "014ef21017a8a0947c626737bedd035271850b4d45cbf0135a76abb6c3bcee3b"
+                  "verifiedAt": "2026-07-16T23:02:28.078Z",
+                  "bindingSha256": "7c41043b1c960ab612573818963755c5d739ca2f50012c0f80bc78a722e02dbb"
+                }
+              }
+            }
+          },
+          {
+            "candidateId": "candidate_b5ca9fb5e5238d5077a564c4",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-Installation-Guide-9379",
+              "requestedModel": "HBM340SA1",
+              "matchedModel": "HBM340SA1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvLt/2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0",
+              "discoveryContentSha256": "d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd",
+              "discoveryObjectPath": "evidence/web/sha256/d8/7e/d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd.html",
+              "discoveryByteSize": 510986
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-16T23:02:42.136Z",
+                "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+                "objectPath": "evidence/web/sha256/cc/c9/ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 370256,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "Haier",
+                  "model": "HBM340SA1",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 595
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+                    "bbox": [
+                      223,
+                      269,
+                      774,
+                      558
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 1700
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+                    "bbox": [
+                      223,
+                      269,
+                      774,
+                      558
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 642
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+                    "bbox": [
+                      223,
+                      269,
+                      774,
+                      558
+                    ]
+                  }
+                ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_product_page",
+                  "market": "AU",
+                  "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-Installation-Guide-9379",
+                  "requestedModel": "HBM340SA1",
+                  "matchedModel": "HBM340SA1",
+                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvLt/2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0",
+                  "discoveryContentSha256": "d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd",
+                  "discoveryObjectPath": "evidence/web/sha256/d8/7e/d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd.html",
+                  "discoveryByteSize": 510986
+                },
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+                  "contentSha256": "2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62",
+                  "objectPath": "evidence/derived/mineru-json/sha256/29/55/2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62.json",
+                  "byteSize": 127722,
+                  "pageCount": 16
+                },
+                "identitySignals": [
+                  {
+                    "type": "mineru_haier_hbm_technical_family_model",
+                    "value": "HBM340SA1:family:HBM340:variant:column_table:page:15:5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+                  },
+                  {
+                    "type": "official_product_page_model",
+                    "value": "HBM340SA1:d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd:https://support.haier.com.au/s/help-and-support/article/Refrigerator-Installation-Guide-9379"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-16.4",
+                  "discoveryPolicyVersion": "2026-07-16.6",
+                  "verifiedAt": "2026-07-16T23:02:42.136Z",
+                  "bindingSha256": "42a2cc242fcb5e4ccb67ab9786036c620124c87818a1f2ee8fb111bbc6eb2b22"
                 }
               }
             }
           }
         ],
-        "candidateInventorySha256": "9bf54c6c9b6711353de95f64fac62c7afbb0ef1f44ce02fa4fcb274f9e31e1d5"
+        "candidateInventorySha256": "e0e4dac1b0a33031ed5e844a6140a6c9b31db6a57b193ab19952da1e34c9b293"
       },
       "sources": [
         {
           "authority": "manufacturer",
           "sourceType": "official_exact_model_pdf",
-          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
-          "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+          "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
           "redirectChain": [],
-          "retrievedAt": "2026-07-16T22:27:03.465Z",
-          "contentSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
-          "objectPath": "evidence/web/sha256/b0/c0/b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9.pdf",
+          "retrievedAt": "2026-07-16T23:02:42.136Z",
+          "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+          "objectPath": "evidence/web/sha256/cc/c9/ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c.pdf",
           "contentType": "application/pdf",
-          "byteSize": 1694056,
+          "byteSize": 370256,
           "supersedesContentSha256": [],
           "identity": {
             "brand": "Haier",
-            "model": "HDW9TFE3SS",
+            "model": "HBM340SA1",
             "outcome": "exact"
           },
           "claims": [
@@ -479,70 +459,75 @@
               "field": "closedEnvelope.widthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 450
+                "mm": 595
               },
-              "sourceLabel": "overall width of product",
+              "sourceLabel": "Dimension (DxWxH)",
               "sourceAxisOrder": [
-                "width"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": 6,
-              "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f",
-              "bbox": [
-                84,
-                529,
-                868,
-                843
-              ]
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "range",
-                "minMm": 850,
-                "maxMm": 870
-              },
-              "sourceLabel": "Overall height of product with top panel in place",
-              "sourceAxisOrder": [
+                "depth",
+                "width",
                 "height"
               ],
               "sourceUnit": "mm",
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": 6,
-              "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f",
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
               "bbox": [
-                84,
-                529,
-                868,
-                843
+                223,
+                269,
+                774,
+                558
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1700
+              },
+              "sourceLabel": "Dimension (DxWxH)",
+              "sourceAxisOrder": [
+                "depth",
+                "width",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+              "bbox": [
+                223,
+                269,
+                774,
+                558
               ]
             },
             {
               "field": "closedEnvelope.depthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 600
+                "mm": 642
               },
-              "sourceLabel": "overall depth of product",
+              "sourceLabel": "Dimension (DxWxH)",
               "sourceAxisOrder": [
-                "depth"
+                "depth",
+                "width",
+                "height"
               ],
               "sourceUnit": "mm",
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": 6,
-              "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f",
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
               "bbox": [
-                84,
-                529,
-                868,
-                843
+                223,
+                269,
+                774,
+                558
               ]
             }
           ],
@@ -550,54 +535,39 @@
             "schemaVersion": 1,
             "method": "official_product_page",
             "market": "AU",
-            "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Dishwasher-User-Care-Guide-8870",
-            "requestedModel": "HDW9TFE3SS",
-            "matchedModel": "HDW9TFE3SS",
-            "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
-            "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuH3/5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU",
-            "discoveryContentSha256": "cdaa61f22b50042d1ac9936616484c3bca298649ab5c9dfdd51511432319af46",
-            "discoveryObjectPath": "evidence/web/sha256/cd/aa/cdaa61f22b50042d1ac9936616484c3bca298649ab5c9dfdd51511432319af46.html",
-            "discoveryByteSize": 510933
+            "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-Installation-Guide-9379",
+            "requestedModel": "HBM340SA1",
+            "matchedModel": "HBM340SA1",
+            "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+            "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvLt/2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0",
+            "discoveryContentSha256": "d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd",
+            "discoveryObjectPath": "evidence/web/sha256/d8/7e/d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd.html",
+            "discoveryByteSize": 510986
           },
           "derivedArtifact": {
             "schemaVersion": 1,
             "format": "content_list_v2",
             "parserName": "MinerU",
             "parserVersion": "3.4.4",
-            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
-            "backend": "hybrid-engine",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
             "method": "auto",
             "tableEnabled": true,
             "formulaEnabled": false,
-            "sourcePdfSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
-            "contentSha256": "43ea6516d5e0cf8b82045adaa8c6a2420ac9e7e42653566475c84ebb7d58ce08",
-            "objectPath": "evidence/derived/mineru-json/sha256/43/ea/43ea6516d5e0cf8b82045adaa8c6a2420ac9e7e42653566475c84ebb7d58ce08.json",
-            "byteSize": 98042,
-            "pageCount": 28,
-            "profileId": "hybrid-image-high-v1",
-            "effort": "high",
-            "imageAnalysis": true,
-            "processedPages": [
-              6
-            ],
-            "sourcePageCount": 28,
-            "fallbackTrigger": {
-              "profileId": "pipeline-auto-v1",
-              "contentSha256": "148a4c1c3130a349ad737705aec52483df194e096e6bcc31f8da7c224c0fdbb2",
-              "objectPath": "evidence/derived/mineru-json/sha256/14/8a/148a4c1c3130a349ad737705aec52483df194e096e6bcc31f8da7c224c0fdbb2.json",
-              "pages": [
-                6
-              ]
-            }
+            "sourcePdfSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+            "contentSha256": "2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62",
+            "objectPath": "evidence/derived/mineru-json/sha256/29/55/2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62.json",
+            "byteSize": 127722,
+            "pageCount": 16
           },
           "identitySignals": [
             {
-              "type": "mineru_haier_tfe3_explicit_finish_model",
-              "value": "HDW9TFE3SS:cover:e4602bd6ef69c8aaf56173e17aa3bde861ccbe74f6e2d94a200f286733d7dbb7:product-page:6:technical-page:28"
+              "type": "mineru_haier_hbm_technical_family_model",
+              "value": "HBM340SA1:family:HBM340:variant:column_table:page:15:5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
             },
             {
-              "type": "official_product_page_artifact_relationship",
-              "value": "cdaa61f22b50042d1ac9936616484c3bca298649ab5c9dfdd51511432319af46:https://support.haier.com.au/s/help-and-support/article/Dishwasher-User-Care-Guide-8870:https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuH3/5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU"
+              "type": "official_product_page_model",
+              "value": "HBM340SA1:d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd:https://support.haier.com.au/s/help-and-support/article/Refrigerator-Installation-Guide-9379"
             }
           ],
           "verificationReceipt": {
@@ -606,20 +576,20 @@
             "policyVersion": "2026-07-13.1",
             "manufacturerPolicyVersion": "2026-07-16.4",
             "discoveryPolicyVersion": "2026-07-16.6",
-            "verifiedAt": "2026-07-16T22:27:03.465Z",
-            "bindingSha256": "014ef21017a8a0947c626737bedd035271850b4d45cbf0135a76abb6c3bcee3b"
+            "verifiedAt": "2026-07-16T23:02:42.136Z",
+            "bindingSha256": "42a2cc242fcb5e4ccb67ab9786036c620124c87818a1f2ee8fb111bbc6eb2b22"
           }
         }
       ],
       "geometryProjection": {
         "geometry": {
           "closedEnvelope": {
-            "widthMm": 450,
+            "widthMm": 595,
             "heightMm": {
-              "minimumMm": 850,
-              "maximumMm": 870
+              "minimumMm": 1700,
+              "maximumMm": 1700
             },
-            "depthMm": 600
+            "depthMm": 642
           },
           "installation": {
             "leftMm": null,
@@ -638,7 +608,7 @@
             "heightMm": null,
             "depthMm": null
           },
-          "category": "dishwasher",
+          "category": "fridge",
           "formFactor": null,
           "service": {
             "plumbingRearMm": null,
@@ -648,25 +618,25 @@
         },
         "fieldEvidence": {
           "closedEnvelope.widthMm": {
-            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
-            "contentSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
-            "receiptBindingSha256": "014ef21017a8a0947c626737bedd035271850b4d45cbf0135a76abb6c3bcee3b",
-            "page": 6,
-            "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f"
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+            "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+            "receiptBindingSha256": "42a2cc242fcb5e4ccb67ab9786036c620124c87818a1f2ee8fb111bbc6eb2b22",
+            "page": 15,
+            "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
           },
           "closedEnvelope.heightMm": {
-            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
-            "contentSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
-            "receiptBindingSha256": "014ef21017a8a0947c626737bedd035271850b4d45cbf0135a76abb6c3bcee3b",
-            "page": 6,
-            "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f"
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+            "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+            "receiptBindingSha256": "42a2cc242fcb5e4ccb67ab9786036c620124c87818a1f2ee8fb111bbc6eb2b22",
+            "page": 15,
+            "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
           },
           "closedEnvelope.depthMm": {
-            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
-            "contentSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
-            "receiptBindingSha256": "014ef21017a8a0947c626737bedd035271850b4d45cbf0135a76abb6c3bcee3b",
-            "page": 6,
-            "fragmentSha256": "bb1e9f2026f543e98efb808ecdbc9b417473ecd2f8bd30a4ff85e301a20f835f"
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+            "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+            "receiptBindingSha256": "42a2cc242fcb5e4ccb67ab9786036c620124c87818a1f2ee8fb111bbc6eb2b22",
+            "page": 15,
+            "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
           }
         },
         "evidenceLevel": "dimensions",
@@ -675,14 +645,681 @@
           "installation.leftMm",
           "installation.rearMm",
           "installation.rightMm",
-          "installation.topMm",
-          "operation.doorOpenDepthMm",
-          "service.rearServicesMm"
+          "installation.topMm"
         ],
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9"
+          "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_c904e70e48f6e5a064c96836",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "heightMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 595,
+              "heightMm": 1702,
+              "depthMm": 642
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "e041c8b1c18de9e52ebe5150816dc69341d10e3c46e38691eaf15dc9c2397aa7"
+    },
+    {
+      "targetId": "recovery_target_18c3ef9d0e1f7d95628573c1",
+      "status": "accepted",
+      "failureCode": null,
+      "candidateInventorySha256": "92d4fb41ee0a68b0b7c8dccb78e0dd36556dd3aa7f2de7fc7ec2fc812f977716",
+      "candidateInventory": {
+        "schemaVersion": 1,
+        "targetId": "recovery_target_18c3ef9d0e1f7d95628573c1",
+        "identity": {
+          "brand": "Haier",
+          "model": "HBM340WH1",
+          "category": "fridge"
+        },
+        "completionStatus": "complete",
+        "incompleteResolvers": [],
+        "missingBatchCandidateJobIds": [],
+        "resolvers": [
+          {
+            "resolverId": "architecture-v2-core-official-discovery",
+            "version": "1",
+            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+            "required": false,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "batch-candidates",
+            "version": "1",
+            "scope": "recovery_batch_graph",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "haier-official-discovery",
+            "version": "5",
+            "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 3
+          }
+        ],
+        "activeReceiptSources": [],
+        "candidates": [
+          {
+            "candidateId": "candidate_4107367f664e3808a0fb7184",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-Installation-Guide-9379",
+              "requestedModel": "HBM340WH1",
+              "matchedModel": "HBM340WH1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvLt/2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0",
+              "discoveryContentSha256": "d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd",
+              "discoveryObjectPath": "evidence/web/sha256/d8/7e/d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd.html",
+              "discoveryByteSize": 510986
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-16T23:02:43.151Z",
+                "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+                "objectPath": "evidence/web/sha256/cc/c9/ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 370256,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "Haier",
+                  "model": "HBM340WH1",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 595
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+                    "bbox": [
+                      223,
+                      269,
+                      774,
+                      558
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 1700
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+                    "bbox": [
+                      223,
+                      269,
+                      774,
+                      558
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 642
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+                    "bbox": [
+                      223,
+                      269,
+                      774,
+                      558
+                    ]
+                  }
+                ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_product_page",
+                  "market": "AU",
+                  "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-Installation-Guide-9379",
+                  "requestedModel": "HBM340WH1",
+                  "matchedModel": "HBM340WH1",
+                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvLt/2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0",
+                  "discoveryContentSha256": "d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd",
+                  "discoveryObjectPath": "evidence/web/sha256/d8/7e/d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd.html",
+                  "discoveryByteSize": 510986
+                },
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+                  "contentSha256": "2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62",
+                  "objectPath": "evidence/derived/mineru-json/sha256/29/55/2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62.json",
+                  "byteSize": 127722,
+                  "pageCount": 16
+                },
+                "identitySignals": [
+                  {
+                    "type": "mineru_haier_hbm_technical_family_model",
+                    "value": "HBM340WH1:family:HBM340:variant:column_table:page:15:5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+                  },
+                  {
+                    "type": "official_product_page_model",
+                    "value": "HBM340WH1:d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd:https://support.haier.com.au/s/help-and-support/article/Refrigerator-Installation-Guide-9379"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-16.4",
+                  "discoveryPolicyVersion": "2026-07-16.6",
+                  "verifiedAt": "2026-07-16T23:02:43.151Z",
+                  "bindingSha256": "2302f82f99cc4648e6c6c490ac3ea99fdb6c222a4528f17c1432fd3c193111dc"
+                }
+              }
+            }
+          },
+          {
+            "candidateId": "candidate_a6e558c5350e1237bce3c56d",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rC5uIAE&d=%2Fa%2FJw000000bvNV%2Fgk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780&operationContext=DELIVERY&viewId=05HJw00000QECokMAH&dpt=",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-User-Care-Guide-9380",
+              "requestedModel": "HBM340WH1",
+              "matchedModel": "HBM340WH1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rC5uIAE&d=%2Fa%2FJw000000bvNV%2Fgk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780&operationContext=DELIVERY&viewId=05HJw00000QECokMAH&dpt=",
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvNV/gk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780",
+              "discoveryContentSha256": "be741c3a2ae58fad8c83e36e828a09a9c8584233b57ca06be3bca79f10e58edc",
+              "discoveryObjectPath": "evidence/web/sha256/be/74/be741c3a2ae58fad8c83e36e828a09a9c8584233b57ca06be3bca79f10e58edc.html",
+              "discoveryByteSize": 510940
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 1
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rC5uIAE&d=%2Fa%2FJw000000bvNV%2Fgk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780&operationContext=DELIVERY&viewId=05HJw00000QECokMAH&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rC5uIAE&d=%2Fa%2FJw000000bvNV%2Fgk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780&operationContext=DELIVERY&viewId=05HJw00000QECokMAH&dpt=",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-16T23:03:03.955Z",
+                "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+                "objectPath": "evidence/web/sha256/cc/c9/ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 370256,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "Haier",
+                  "model": "HBM340WH1",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 595
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+                    "bbox": [
+                      223,
+                      269,
+                      774,
+                      558
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 1700
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+                    "bbox": [
+                      223,
+                      269,
+                      774,
+                      558
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 642
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 15,
+                    "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+                    "bbox": [
+                      223,
+                      269,
+                      774,
+                      558
+                    ]
+                  }
+                ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_product_page",
+                  "market": "AU",
+                  "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-User-Care-Guide-9380",
+                  "requestedModel": "HBM340WH1",
+                  "matchedModel": "HBM340WH1",
+                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rC5uIAE&d=%2Fa%2FJw000000bvNV%2Fgk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780&operationContext=DELIVERY&viewId=05HJw00000QECokMAH&dpt=",
+                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvNV/gk6FGx.Rif8xcdt3LB5AjJ5qydz2kLZE8LAHRN1k780",
+                  "discoveryContentSha256": "be741c3a2ae58fad8c83e36e828a09a9c8584233b57ca06be3bca79f10e58edc",
+                  "discoveryObjectPath": "evidence/web/sha256/be/74/be741c3a2ae58fad8c83e36e828a09a9c8584233b57ca06be3bca79f10e58edc.html",
+                  "discoveryByteSize": 510940
+                },
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+                  "contentSha256": "2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62",
+                  "objectPath": "evidence/derived/mineru-json/sha256/29/55/2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62.json",
+                  "byteSize": 127722,
+                  "pageCount": 16
+                },
+                "identitySignals": [
+                  {
+                    "type": "mineru_haier_hbm_technical_family_model",
+                    "value": "HBM340WH1:family:HBM340:variant:column_table:page:15:5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+                  },
+                  {
+                    "type": "official_product_page_model",
+                    "value": "HBM340WH1:be741c3a2ae58fad8c83e36e828a09a9c8584233b57ca06be3bca79f10e58edc:https://support.haier.com.au/s/help-and-support/article/Refrigerator-User-Care-Guide-9380"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-16.4",
+                  "discoveryPolicyVersion": "2026-07-16.6",
+                  "verifiedAt": "2026-07-16T23:03:03.955Z",
+                  "bindingSha256": "2ff69acd2216f231f258119148ddd0f128bcdf8d2b7529c23983c432e482b85e"
+                }
+              }
+            }
+          },
+          {
+            "candidateId": "candidate_c35e17b01903a7a487cf9f62",
+            "sourceUrl": "https://support.haier.com.au/s/help-and-support/refrigeration-and-freezers/fridges/top-fridge/product?id=HBM340WH1",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_product_page",
+            "requiredAttempt": false,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_product_page",
+                "order": 2
+              }
+            ],
+            "outcome": {
+              "status": "not_attempted_optional",
+              "failureCode": null,
+              "source": null
+            }
+          }
+        ],
+        "candidateInventorySha256": "92d4fb41ee0a68b0b7c8dccb78e0dd36556dd3aa7f2de7fc7ec2fc812f977716"
+      },
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+          "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T23:02:43.151Z",
+          "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+          "objectPath": "evidence/web/sha256/cc/c9/ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 370256,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Haier",
+            "model": "HBM340WH1",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Dimension (DxWxH)",
+              "sourceAxisOrder": [
+                "depth",
+                "width",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+              "bbox": [
+                223,
+                269,
+                774,
+                558
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1700
+              },
+              "sourceLabel": "Dimension (DxWxH)",
+              "sourceAxisOrder": [
+                "depth",
+                "width",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+              "bbox": [
+                223,
+                269,
+                774,
+                558
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 642
+              },
+              "sourceLabel": "Dimension (DxWxH)",
+              "sourceAxisOrder": [
+                "depth",
+                "width",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e",
+              "bbox": [
+                223,
+                269,
+                774,
+                558
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_page",
+            "market": "AU",
+            "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-Installation-Guide-9379",
+            "requestedModel": "HBM340WH1",
+            "matchedModel": "HBM340WH1",
+            "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+            "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvLt/2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0",
+            "discoveryContentSha256": "d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd",
+            "discoveryObjectPath": "evidence/web/sha256/d8/7e/d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd.html",
+            "discoveryByteSize": 510986
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+            "contentSha256": "2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62",
+            "objectPath": "evidence/derived/mineru-json/sha256/29/55/2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62.json",
+            "byteSize": 127722,
+            "pageCount": 16
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_haier_hbm_technical_family_model",
+              "value": "HBM340WH1:family:HBM340:variant:column_table:page:15:5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+            },
+            {
+              "type": "official_product_page_model",
+              "value": "HBM340WH1:d87ef366934c8a34c3abc08218bc17a7ffeb623d7d08486d7f1673992e6964fd:https://support.haier.com.au/s/help-and-support/article/Refrigerator-Installation-Guide-9379"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.6",
+            "verifiedAt": "2026-07-16T23:02:43.151Z",
+            "bindingSha256": "2302f82f99cc4648e6c6c490ac3ea99fdb6c222a4528f17c1432fd3c193111dc"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 1700,
+              "maximumMm": 1700
+            },
+            "depthMm": 642
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+            "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+            "receiptBindingSha256": "2302f82f99cc4648e6c6c490ac3ea99fdb6c222a4528f17c1432fd3c193111dc",
+            "page": 15,
+            "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+            "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+            "receiptBindingSha256": "2302f82f99cc4648e6c6c490ac3ea99fdb6c222a4528f17c1432fd3c193111dc",
+            "page": 15,
+            "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+            "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+            "receiptBindingSha256": "2302f82f99cc4648e6c6c490ac3ea99fdb6c222a4528f17c1432fd3c193111dc",
+            "page": 15,
+            "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c"
         ]
       },
       "reconciliation": {
@@ -694,12 +1331,1274 @@
         "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "6c8922336bcf15dd86e480d4bb5ab5e1af7870aba21c7b5301a2c8cd682a4674"
+      "semanticOutcomeSha256": "12c17cb10bf658f3aea9cc83f7ea1028efcaf1ae29443c8311b9cd4fbba3baa3"
+    },
+    {
+      "targetId": "recovery_target_6b158392b3e8178d1c242a69",
+      "status": "accepted",
+      "failureCode": null,
+      "candidateInventorySha256": "19353c2bc966f9bbf19afbc3b5881384256d25cfc5ac712aabdf7474ce266df3",
+      "candidateInventory": {
+        "schemaVersion": 1,
+        "targetId": "recovery_target_6b158392b3e8178d1c242a69",
+        "identity": {
+          "brand": "Haier",
+          "model": "HBM450WH1",
+          "category": "fridge"
+        },
+        "completionStatus": "complete",
+        "incompleteResolvers": [],
+        "missingBatchCandidateJobIds": [],
+        "resolvers": [
+          {
+            "resolverId": "architecture-v2-core-official-discovery",
+            "version": "1",
+            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+            "required": false,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "batch-candidates",
+            "version": "1",
+            "scope": "recovery_batch_graph",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "haier-official-discovery",
+            "version": "5",
+            "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 4
+          }
+        ],
+        "activeReceiptSources": [],
+        "candidates": [
+          {
+            "candidateId": "candidate_3a50031097220dea73a325cf",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/450L-Bottom-Mount-Freezer-Installation-Guide-9381",
+              "requestedModel": "HBM450WH1",
+              "matchedModel": "HBM450WH1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvVZ/qGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ",
+              "discoveryContentSha256": "66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce",
+              "discoveryObjectPath": "evidence/web/sha256/66/c1/66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce.html",
+              "discoveryByteSize": 511059
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-16T23:03:17.575Z",
+                "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+                "objectPath": "evidence/web/sha256/42/ec/42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 13766471,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "Haier",
+                  "model": "HBM450WH1",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 700
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 4,
+                    "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+                    "bbox": [
+                      548,
+                      184,
+                      958,
+                      684
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 1725
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 4,
+                    "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+                    "bbox": [
+                      548,
+                      184,
+                      958,
+                      684
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 676
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 4,
+                    "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+                    "bbox": [
+                      548,
+                      184,
+                      958,
+                      684
+                    ]
+                  }
+                ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_product_page",
+                  "market": "AU",
+                  "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/450L-Bottom-Mount-Freezer-Installation-Guide-9381",
+                  "requestedModel": "HBM450WH1",
+                  "matchedModel": "HBM450WH1",
+                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvVZ/qGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ",
+                  "discoveryContentSha256": "66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce",
+                  "discoveryObjectPath": "evidence/web/sha256/66/c1/66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce.html",
+                  "discoveryByteSize": 511059
+                },
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+                  "contentSha256": "ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407",
+                  "objectPath": "evidence/derived/mineru-json/sha256/eb/ef/ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407.json",
+                  "byteSize": 289090,
+                  "pageCount": 18
+                },
+                "identitySignals": [
+                  {
+                    "type": "mineru_table_model",
+                    "value": "HBM450WH1:page:12:fc180e279be15a9b2c0ab345fea235f4e0b6afb5ed30a18448f42543163c52e8"
+                  },
+                  {
+                    "type": "mineru_table_model",
+                    "value": "HBM450WH1:page:8:cd273b6a92fe208cb576111a0590c3cd9e0e85c29b8f8e82336db1f6fd0d9b8c"
+                  },
+                  {
+                    "type": "mineru_haier_hbm_technical_family_model",
+                    "value": "HBM450WH1:family:HBM450:variant:shared_list:page:4:97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+                  },
+                  {
+                    "type": "official_product_page_model",
+                    "value": "HBM450WH1:66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce:https://support.haier.com.au/s/help-and-support/article/450L-Bottom-Mount-Freezer-Installation-Guide-9381"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-16.4",
+                  "discoveryPolicyVersion": "2026-07-16.6",
+                  "verifiedAt": "2026-07-16T23:03:17.575Z",
+                  "bindingSha256": "5ffda8891446fa4d81bac95da049db60d0df8ee9d875ee47a9f91b3fb6b382f1"
+                }
+              }
+            }
+          },
+          {
+            "candidateId": "candidate_694ecf6f09ee275bb79f87ed",
+            "sourceUrl": "https://support.haier.com.au/s/help-and-support/refrigeration-and-freezers/fridges/top-fridge/product?id=HBM450WH1",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_product_page",
+            "requiredAttempt": false,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_product_page",
+                "order": 3
+              }
+            ],
+            "outcome": {
+              "status": "not_attempted_optional",
+              "failureCode": null,
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_b59a2e71c2f6543cae8b4d1e",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009v2JGIAY&d=%2Fa%2FJw000000cQ37%2FMuxrO0t9sL5_F7RgctFHyGBqW99wBCuXMVC4o.8qcWY&operationContext=DELIVERY&viewId=05HJw00000QECwnMAH&dpt=",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigeration-Freezers-User-Care-Guide-9528",
+              "requestedModel": "HBM450WH1",
+              "matchedModel": "HBM450WH1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009v2JGIAY&d=%2Fa%2FJw000000cQ37%2FMuxrO0t9sL5_F7RgctFHyGBqW99wBCuXMVC4o.8qcWY&operationContext=DELIVERY&viewId=05HJw00000QECwnMAH&dpt=",
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000cQ37/MuxrO0t9sL5_F7RgctFHyGBqW99wBCuXMVC4o.8qcWY",
+              "discoveryContentSha256": "61ab97e9e4cdad6d1f734aa05502e1085ddc9b6b6a7a63b149777938c0253dc6",
+              "discoveryObjectPath": "evidence/web/sha256/61/ab/61ab97e9e4cdad6d1f734aa05502e1085ddc9b6b6a7a63b149777938c0253dc6.html",
+              "discoveryByteSize": 510961
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 2
+              }
+            ],
+            "outcome": {
+              "status": "identity_rejected",
+              "failureCode": "identity",
+              "reason": "unresolved family manual or multiple models in identity scope",
+              "artifactBinding": {
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009v2JGIAY&d=%2Fa%2FJw000000cQ37%2FMuxrO0t9sL5_F7RgctFHyGBqW99wBCuXMVC4o.8qcWY&operationContext=DELIVERY&viewId=05HJw00000QECwnMAH&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009v2JGIAY&d=%2Fa%2FJw000000cQ37%2FMuxrO0t9sL5_F7RgctFHyGBqW99wBCuXMVC4o.8qcWY&operationContext=DELIVERY&viewId=05HJw00000QECwnMAH&dpt=",
+                "contentSha256": "8cd361e1a23e30e4e5f79a4a5a0b7604bb9c6bbee499a4df86c62ca6ec3d79b0",
+                "objectPath": "evidence/web/sha256/8c/d3/8cd361e1a23e30e4e5f79a4a5a0b7604bb9c6bbee499a4df86c62ca6ec3d79b0.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 2098789
+              },
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_f07040b0c7785f3d60752e87",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAP8IAM&d=%2Fa%2FJw000000bvXB%2Fq8WYQazHBH8cn__9wPOQz_h6dsM4WysvdD8SCl3We3Y&operationContext=DELIVERY&viewId=05HJw00000QECAQMA5&dpt=",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-User-Care-Guide-9382",
+              "requestedModel": "HBM450WH1",
+              "matchedModel": "HBM450WH1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAP8IAM&d=%2Fa%2FJw000000bvXB%2Fq8WYQazHBH8cn__9wPOQz_h6dsM4WysvdD8SCl3We3Y&operationContext=DELIVERY&viewId=05HJw00000QECAQMA5&dpt=",
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvXB/q8WYQazHBH8cn__9wPOQz_h6dsM4WysvdD8SCl3We3Y",
+              "discoveryContentSha256": "ac5712a9558ac6084bfa90f27b7bcfa4286a4c524c5de68aee5b19e1021ca53a",
+              "discoveryObjectPath": "evidence/web/sha256/ac/57/ac5712a9558ac6084bfa90f27b7bcfa4286a4c524c5de68aee5b19e1021ca53a.html",
+              "discoveryByteSize": 510942
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 1
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAP8IAM&d=%2Fa%2FJw000000bvXB%2Fq8WYQazHBH8cn__9wPOQz_h6dsM4WysvdD8SCl3We3Y&operationContext=DELIVERY&viewId=05HJw00000QECAQMA5&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAP8IAM&d=%2Fa%2FJw000000bvXB%2Fq8WYQazHBH8cn__9wPOQz_h6dsM4WysvdD8SCl3We3Y&operationContext=DELIVERY&viewId=05HJw00000QECAQMA5&dpt=",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-16T23:03:49.538Z",
+                "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+                "objectPath": "evidence/web/sha256/42/ec/42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 13766471,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "Haier",
+                  "model": "HBM450WH1",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 700
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 4,
+                    "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+                    "bbox": [
+                      548,
+                      184,
+                      958,
+                      684
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 1725
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 4,
+                    "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+                    "bbox": [
+                      548,
+                      184,
+                      958,
+                      684
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 676
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 4,
+                    "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+                    "bbox": [
+                      548,
+                      184,
+                      958,
+                      684
+                    ]
+                  }
+                ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_product_page",
+                  "market": "AU",
+                  "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/Refrigerator-User-Care-Guide-9382",
+                  "requestedModel": "HBM450WH1",
+                  "matchedModel": "HBM450WH1",
+                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAP8IAM&d=%2Fa%2FJw000000bvXB%2Fq8WYQazHBH8cn__9wPOQz_h6dsM4WysvdD8SCl3We3Y&operationContext=DELIVERY&viewId=05HJw00000QECAQMA5&dpt=",
+                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvXB/q8WYQazHBH8cn__9wPOQz_h6dsM4WysvdD8SCl3We3Y",
+                  "discoveryContentSha256": "ac5712a9558ac6084bfa90f27b7bcfa4286a4c524c5de68aee5b19e1021ca53a",
+                  "discoveryObjectPath": "evidence/web/sha256/ac/57/ac5712a9558ac6084bfa90f27b7bcfa4286a4c524c5de68aee5b19e1021ca53a.html",
+                  "discoveryByteSize": 510942
+                },
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+                  "contentSha256": "ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407",
+                  "objectPath": "evidence/derived/mineru-json/sha256/eb/ef/ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407.json",
+                  "byteSize": 289090,
+                  "pageCount": 18
+                },
+                "identitySignals": [
+                  {
+                    "type": "mineru_table_model",
+                    "value": "HBM450WH1:page:12:fc180e279be15a9b2c0ab345fea235f4e0b6afb5ed30a18448f42543163c52e8"
+                  },
+                  {
+                    "type": "mineru_table_model",
+                    "value": "HBM450WH1:page:8:cd273b6a92fe208cb576111a0590c3cd9e0e85c29b8f8e82336db1f6fd0d9b8c"
+                  },
+                  {
+                    "type": "mineru_haier_hbm_technical_family_model",
+                    "value": "HBM450WH1:family:HBM450:variant:shared_list:page:4:97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+                  },
+                  {
+                    "type": "official_product_page_model",
+                    "value": "HBM450WH1:ac5712a9558ac6084bfa90f27b7bcfa4286a4c524c5de68aee5b19e1021ca53a:https://support.haier.com.au/s/help-and-support/article/Refrigerator-User-Care-Guide-9382"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-16.4",
+                  "discoveryPolicyVersion": "2026-07-16.6",
+                  "verifiedAt": "2026-07-16T23:03:49.538Z",
+                  "bindingSha256": "cf322dbcae9876f3a7a3b008a25e7a3aca886e4c26a3d8537ddb0f891567f08f"
+                }
+              }
+            }
+          }
+        ],
+        "candidateInventorySha256": "19353c2bc966f9bbf19afbc3b5881384256d25cfc5ac712aabdf7474ce266df3"
+      },
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+          "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T23:03:17.575Z",
+          "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+          "objectPath": "evidence/web/sha256/42/ec/42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 13766471,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Haier",
+            "model": "HBM450WH1",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 700
+              },
+              "sourceLabel": "Dimension (DxWxH)",
+              "sourceAxisOrder": [
+                "depth",
+                "width",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+              "bbox": [
+                548,
+                184,
+                958,
+                684
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Dimension (DxWxH)",
+              "sourceAxisOrder": [
+                "depth",
+                "width",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+              "bbox": [
+                548,
+                184,
+                958,
+                684
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 676
+              },
+              "sourceLabel": "Dimension (DxWxH)",
+              "sourceAxisOrder": [
+                "depth",
+                "width",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+              "bbox": [
+                548,
+                184,
+                958,
+                684
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_page",
+            "market": "AU",
+            "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/450L-Bottom-Mount-Freezer-Installation-Guide-9381",
+            "requestedModel": "HBM450WH1",
+            "matchedModel": "HBM450WH1",
+            "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+            "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvVZ/qGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ",
+            "discoveryContentSha256": "66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce",
+            "discoveryObjectPath": "evidence/web/sha256/66/c1/66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce.html",
+            "discoveryByteSize": 511059
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+            "contentSha256": "ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407",
+            "objectPath": "evidence/derived/mineru-json/sha256/eb/ef/ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407.json",
+            "byteSize": 289090,
+            "pageCount": 18
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_table_model",
+              "value": "HBM450WH1:page:12:fc180e279be15a9b2c0ab345fea235f4e0b6afb5ed30a18448f42543163c52e8"
+            },
+            {
+              "type": "mineru_table_model",
+              "value": "HBM450WH1:page:8:cd273b6a92fe208cb576111a0590c3cd9e0e85c29b8f8e82336db1f6fd0d9b8c"
+            },
+            {
+              "type": "mineru_haier_hbm_technical_family_model",
+              "value": "HBM450WH1:family:HBM450:variant:shared_list:page:4:97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+            },
+            {
+              "type": "official_product_page_model",
+              "value": "HBM450WH1:66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce:https://support.haier.com.au/s/help-and-support/article/450L-Bottom-Mount-Freezer-Installation-Guide-9381"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.6",
+            "verifiedAt": "2026-07-16T23:03:17.575Z",
+            "bindingSha256": "5ffda8891446fa4d81bac95da049db60d0df8ee9d875ee47a9f91b3fb6b382f1"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 700,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 676
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+            "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+            "receiptBindingSha256": "5ffda8891446fa4d81bac95da049db60d0df8ee9d875ee47a9f91b3fb6b382f1",
+            "page": 4,
+            "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+            "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+            "receiptBindingSha256": "5ffda8891446fa4d81bac95da049db60d0df8ee9d875ee47a9f91b3fb6b382f1",
+            "page": 4,
+            "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+            "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+            "receiptBindingSha256": "5ffda8891446fa4d81bac95da049db60d0df8ee9d875ee47a9f91b3fb6b382f1",
+            "page": 4,
+            "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "9633867968c36497a5d8db7f09b1d1da722bc1606745e802bd643a6a537ec194"
+    },
+    {
+      "targetId": "recovery_target_c548541cf5654d0373891613",
+      "status": "accepted",
+      "failureCode": null,
+      "candidateInventorySha256": "6e33036c4c10295ad73dd7a15734c31013d11532f1e32162a9dfe013ccf2b571",
+      "candidateInventory": {
+        "schemaVersion": 1,
+        "targetId": "recovery_target_c548541cf5654d0373891613",
+        "identity": {
+          "brand": "Haier",
+          "model": "HBM450SA1",
+          "category": "fridge"
+        },
+        "completionStatus": "complete",
+        "incompleteResolvers": [],
+        "missingBatchCandidateJobIds": [],
+        "resolvers": [
+          {
+            "resolverId": "architecture-v2-core-official-discovery",
+            "version": "1",
+            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+            "required": false,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "batch-candidates",
+            "version": "1",
+            "scope": "recovery_batch_graph",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "haier-official-discovery",
+            "version": "5",
+            "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 3
+          }
+        ],
+        "activeReceiptSources": [],
+        "candidates": [
+          {
+            "candidateId": "candidate_3659df37efc37ada93f22cd8",
+            "sourceUrl": "https://support.haier.com.au/s/help-and-support/refrigeration-and-freezers/fridges/top-fridge/product?id=HBM450SA1",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_product_page",
+            "requiredAttempt": false,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_product_page",
+                "order": 2
+              }
+            ],
+            "outcome": {
+              "status": "not_attempted_optional",
+              "failureCode": null,
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_ad59b031ae840bdc87aadc12",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/450L-Bottom-Mount-Freezer-Installation-Guide-9381",
+              "requestedModel": "HBM450SA1",
+              "matchedModel": "HBM450SA1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvVZ/qGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ",
+              "discoveryContentSha256": "66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce",
+              "discoveryObjectPath": "evidence/web/sha256/66/c1/66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce.html",
+              "discoveryByteSize": 511059
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-16T23:03:36.567Z",
+                "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+                "objectPath": "evidence/web/sha256/42/ec/42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 13766471,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "Haier",
+                  "model": "HBM450SA1",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 700
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 4,
+                    "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+                    "bbox": [
+                      548,
+                      184,
+                      958,
+                      684
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 1725
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 4,
+                    "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+                    "bbox": [
+                      548,
+                      184,
+                      958,
+                      684
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 676
+                    },
+                    "sourceLabel": "Dimension (DxWxH)",
+                    "sourceAxisOrder": [
+                      "depth",
+                      "width",
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 4,
+                    "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+                    "bbox": [
+                      548,
+                      184,
+                      958,
+                      684
+                    ]
+                  }
+                ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_product_page",
+                  "market": "AU",
+                  "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/450L-Bottom-Mount-Freezer-Installation-Guide-9381",
+                  "requestedModel": "HBM450SA1",
+                  "matchedModel": "HBM450SA1",
+                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvVZ/qGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ",
+                  "discoveryContentSha256": "66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce",
+                  "discoveryObjectPath": "evidence/web/sha256/66/c1/66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce.html",
+                  "discoveryByteSize": 511059
+                },
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+                  "contentSha256": "ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407",
+                  "objectPath": "evidence/derived/mineru-json/sha256/eb/ef/ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407.json",
+                  "byteSize": 289090,
+                  "pageCount": 18
+                },
+                "identitySignals": [
+                  {
+                    "type": "mineru_table_model",
+                    "value": "HBM450SA1:page:12:fc180e279be15a9b2c0ab345fea235f4e0b6afb5ed30a18448f42543163c52e8"
+                  },
+                  {
+                    "type": "mineru_table_model",
+                    "value": "HBM450SA1:page:8:cd273b6a92fe208cb576111a0590c3cd9e0e85c29b8f8e82336db1f6fd0d9b8c"
+                  },
+                  {
+                    "type": "mineru_haier_hbm_technical_family_model",
+                    "value": "HBM450SA1:family:HBM450:variant:shared_list:page:4:97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+                  },
+                  {
+                    "type": "official_product_page_model",
+                    "value": "HBM450SA1:66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce:https://support.haier.com.au/s/help-and-support/article/450L-Bottom-Mount-Freezer-Installation-Guide-9381"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-16.4",
+                  "discoveryPolicyVersion": "2026-07-16.6",
+                  "verifiedAt": "2026-07-16T23:03:36.567Z",
+                  "bindingSha256": "1f5d7766aaceab50d64cc8632d3ab436aa02aa159dcb2f055fd627ec99da6d83"
+                }
+              }
+            }
+          },
+          {
+            "candidateId": "candidate_f5bd0b6aed2c5e3f74842c06",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r8DiIAI&d=%2Fa%2FJw000000bvYn%2FbVAj04S0exHJ7PlPM94DbwekOCr.OBomR_gA1VjmMyM&operationContext=DELIVERY&viewId=05HJw00000QED01MAH&dpt=",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/HBM450SA1",
+              "requestedModel": "HBM450SA1",
+              "matchedModel": "HBM450SA1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r8DiIAI&d=%2Fa%2FJw000000bvYn%2FbVAj04S0exHJ7PlPM94DbwekOCr.OBomR_gA1VjmMyM&operationContext=DELIVERY&viewId=05HJw00000QED01MAH&dpt=",
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvYn/bVAj04S0exHJ7PlPM94DbwekOCr.OBomR_gA1VjmMyM",
+              "discoveryContentSha256": "14f380d5e3ba7f00bbf219323acf333da78aef0f3c80692d0e4d053e52369008",
+              "discoveryObjectPath": "evidence/web/sha256/14/f3/14f380d5e3ba7f00bbf219323acf333da78aef0f3c80692d0e4d053e52369008.html",
+              "discoveryByteSize": 510940
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "haier-official-discovery",
+                "version": "5",
+                "scope": "haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages",
+                "discoveryMethod": "haier_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 1
+              }
+            ],
+            "outcome": {
+              "status": "mineru_failure",
+              "failureCode": "mineru",
+              "reason": "no exact-model MinerU evidence with explicit axes extracted",
+              "artifactBinding": {
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r8DiIAI&d=%2Fa%2FJw000000bvYn%2FbVAj04S0exHJ7PlPM94DbwekOCr.OBomR_gA1VjmMyM&operationContext=DELIVERY&viewId=05HJw00000QED01MAH&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r8DiIAI&d=%2Fa%2FJw000000bvYn%2FbVAj04S0exHJ7PlPM94DbwekOCr.OBomR_gA1VjmMyM&operationContext=DELIVERY&viewId=05HJw00000QED01MAH&dpt=",
+                "contentSha256": "d821f41b7bc4a173d4209c80fcfd89d166d6bcc230416658d29918c0dee2ecd0",
+                "objectPath": "evidence/web/sha256/d8/21/d821f41b7bc4a173d4209c80fcfd89d166d6bcc230416658d29918c0dee2ecd0.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 605591
+              },
+              "source": null
+            }
+          }
+        ],
+        "candidateInventorySha256": "6e33036c4c10295ad73dd7a15734c31013d11532f1e32162a9dfe013ccf2b571"
+      },
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+          "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T23:03:36.567Z",
+          "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+          "objectPath": "evidence/web/sha256/42/ec/42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 13766471,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Haier",
+            "model": "HBM450SA1",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 700
+              },
+              "sourceLabel": "Dimension (DxWxH)",
+              "sourceAxisOrder": [
+                "depth",
+                "width",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+              "bbox": [
+                548,
+                184,
+                958,
+                684
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Dimension (DxWxH)",
+              "sourceAxisOrder": [
+                "depth",
+                "width",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+              "bbox": [
+                548,
+                184,
+                958,
+                684
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 676
+              },
+              "sourceLabel": "Dimension (DxWxH)",
+              "sourceAxisOrder": [
+                "depth",
+                "width",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93",
+              "bbox": [
+                548,
+                184,
+                958,
+                684
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_page",
+            "market": "AU",
+            "discoveryUrl": "https://support.haier.com.au/s/help-and-support/article/450L-Bottom-Mount-Freezer-Installation-Guide-9381",
+            "requestedModel": "HBM450SA1",
+            "matchedModel": "HBM450SA1",
+            "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+            "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000bvVZ/qGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ",
+            "discoveryContentSha256": "66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce",
+            "discoveryObjectPath": "evidence/web/sha256/66/c1/66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce.html",
+            "discoveryByteSize": 511059
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+            "contentSha256": "ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407",
+            "objectPath": "evidence/derived/mineru-json/sha256/eb/ef/ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407.json",
+            "byteSize": 289090,
+            "pageCount": 18
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_table_model",
+              "value": "HBM450SA1:page:12:fc180e279be15a9b2c0ab345fea235f4e0b6afb5ed30a18448f42543163c52e8"
+            },
+            {
+              "type": "mineru_table_model",
+              "value": "HBM450SA1:page:8:cd273b6a92fe208cb576111a0590c3cd9e0e85c29b8f8e82336db1f6fd0d9b8c"
+            },
+            {
+              "type": "mineru_haier_hbm_technical_family_model",
+              "value": "HBM450SA1:family:HBM450:variant:shared_list:page:4:97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+            },
+            {
+              "type": "official_product_page_model",
+              "value": "HBM450SA1:66c1843ff615dd42ecc93b8530c71a5403360c1e83ff2609d0082980b65a95ce:https://support.haier.com.au/s/help-and-support/article/450L-Bottom-Mount-Freezer-Installation-Guide-9381"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.6",
+            "verifiedAt": "2026-07-16T23:03:36.567Z",
+            "bindingSha256": "1f5d7766aaceab50d64cc8632d3ab436aa02aa159dcb2f055fd627ec99da6d83"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 700,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 676
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+            "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+            "receiptBindingSha256": "1f5d7766aaceab50d64cc8632d3ab436aa02aa159dcb2f055fd627ec99da6d83",
+            "page": 4,
+            "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+            "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+            "receiptBindingSha256": "1f5d7766aaceab50d64cc8632d3ab436aa02aa159dcb2f055fd627ec99da6d83",
+            "page": 4,
+            "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+            "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+            "receiptBindingSha256": "1f5d7766aaceab50d64cc8632d3ab436aa02aa159dcb2f055fd627ec99da6d83",
+            "page": 4,
+            "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "d65237f01873ec72f1859ccd336c116cb65a442375a0eb1a454894933eec3834"
     }
   ],
   "summary": {
-    "targets": 1,
-    "accepted": 1,
+    "targets": 4,
+    "accepted": 4,
     "nonScalar": 0,
     "retryable": 0,
     "terminal": 0

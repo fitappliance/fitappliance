@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "60bd1fa018839da053050126c6729302fd13c81c92c9592ce08c01b2d8254e15"
+    "historical-recovery:historical-recovery-cumulative-v1": "27a5c5147321e34a915bf4c35a1c1029b0adacb410fc1061b5090993276a2587"
   },
   "records": [
     {
@@ -148609,14 +148609,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 595,
+        "height": 1700,
+        "depth": 642
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_1211daabca5c92bfe426e1c7",
+          "snapshotSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+          "sourceLines": [
+            15
+          ]
         }
       ],
       "catalogProductIds": [
@@ -148625,8 +148636,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_1211daabca5c92bfe426e1c7",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+          "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+          "receiptBindingSha256": "42a2cc242fcb5e4ccb67ab9786036c620124c87818a1f2ee8fb111bbc6eb2b22",
+          "verifiedAt": "2026-07-16T23:02:42.136Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/cc/c9/ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c.pdf"
+        }
       ]
     },
     {
@@ -148644,14 +148681,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 595,
+        "height": 1700,
+        "depth": 642
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_18c3ef9d0e1f7d95628573c1",
+          "snapshotSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+          "sourceLines": [
+            15
+          ]
         }
       ],
       "catalogProductIds": [
@@ -148660,8 +148708,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_18c3ef9d0e1f7d95628573c1",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+          "contentSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+          "receiptBindingSha256": "2302f82f99cc4648e6c6c490ac3ea99fdb6c222a4528f17c1432fd3c193111dc",
+          "verifiedAt": "2026-07-16T23:02:43.151Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 15,
+              "fragmentSha256": "5ce42a59eb1dc03bd6ee3f5d595b8ead17913d0ac332fc09059209901ae2317e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/cc/c9/ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c.pdf"
+        }
       ]
     },
     {
@@ -148714,14 +148788,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 700,
+        "height": 1725,
+        "depth": 676
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c548541cf5654d0373891613",
+          "snapshotSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -148730,8 +148815,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c548541cf5654d0373891613",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+          "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+          "receiptBindingSha256": "1f5d7766aaceab50d64cc8632d3ab436aa02aa159dcb2f055fd627ec99da6d83",
+          "verifiedAt": "2026-07-16T23:03:36.567Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/42/ec/42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592.pdf"
+        }
       ]
     },
     {
@@ -148749,14 +148860,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 700,
+        "height": 1725,
+        "depth": 676
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6b158392b3e8178d1c242a69",
+          "snapshotSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -148765,8 +148887,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_6b158392b3e8178d1c242a69",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+          "contentSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+          "receiptBindingSha256": "5ffda8891446fa4d81bac95da049db60d0df8ee9d875ee47a9f91b3fb6b382f1",
+          "verifiedAt": "2026-07-16T23:03:17.575Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "97f2226dddc9890cb45063fe35732e506954314b721c91845468aaa5c5f04a93"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/42/ec/42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592.pdf"
+        }
       ]
     },
     {
@@ -324042,16 +324190,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2874,
-      "MODEL_RECEIPT": 270,
+      "IDENTITY_ONLY": 2870,
+      "MODEL_RECEIPT": 274,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2874,
-      "AUTO_FILL": 281,
+      "MEASURE_REQUIRED": 2870,
+      "AUTO_FILL": 285,
       "QUARANTINED": 88
     }
   }

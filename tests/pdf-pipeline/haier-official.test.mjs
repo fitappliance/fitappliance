@@ -148,6 +148,48 @@ test('Haier finder resolves archived AU support articles and binds attachment pr
   assert.equal(writes[0][1].toString('utf8'), articlePage);
 });
 
+test('Haier finder falls through to the archived refrigerator support taxonomy', async () => {
+  const legacyProductUrl = 'https://support.haier.com.au/s/help-and-support/refrigeration/product?id=HBM450HSA1';
+  const archivedProductUrl = 'https://support.haier.com.au/s/help-and-support/refrigeration-and-freezers/fridges/top-fridge/product?id=HBM450HSA1';
+  const articleUrl = 'https://support.haier.com.au/s/help-and-support/article/HBM450-Refrigerator-User-Guide';
+  const artifactLinkUrl = 'https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000Fridge/token';
+  const artifactUrl = 'https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000000003&d=%2Fa%2FJw000000Fridge%2Ftoken&operationContext=DELIVERY&viewId=05HJw0000000003&dpt=';
+  const fetched = [];
+  const fetchImpl = async (url) => {
+    fetched.push(String(url));
+    if (String(url) === archivedProductUrl) {
+      return {
+        ok: true,
+        status: 200,
+        url: archivedProductUrl,
+        text: async () => `<title>HBM450HSA1</title><a href="${articleUrl}">User guide</a>`,
+      };
+    }
+    if (String(url) === articleUrl) {
+      return {
+        ok: true,
+        status: 200,
+        url: articleUrl,
+        text: async () => `<meta name="description" content="Guide for HBM450HSA1"><a href="${artifactLinkUrl}">Download</a>`,
+      };
+    }
+    return { ok: false, status: 404, url: String(url), text: async () => '' };
+  };
+
+  const result = await findHaierOfficialPdf({
+    brand: 'Haier', sku: 'HBM450HSA1', category: 'fridge',
+  }, {
+    fetchImpl,
+    salesforceResolver: async () => ({ url: artifactUrl, sourceUrl: artifactLinkUrl }),
+    sitemapIndexUrl: 'https://example.test/missing-sitemap.xml',
+    writeObject: async () => {},
+  });
+
+  assert.deepEqual(fetched.slice(0, 3), [legacyProductUrl, archivedProductUrl, articleUrl]);
+  assert.equal(result.productUrl, archivedProductUrl);
+  assert.equal(result.sourceUrl, artifactUrl);
+});
+
 test('Haier finder does not bind a support article that only names a sibling model', async () => {
   const productUrl = 'https://support.haier.com.au/s/help-and-support/dishwashing/product?id=HDW15V2S1';
   const articleUrl = 'https://support.haier.com.au/s/help-and-support/article/Dishwasher-Installation-Guide-sibling';

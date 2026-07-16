@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-36e2b662bc9a756c1da5d29e",
-  "generatedAt": "2026-07-16T22:27:58.176Z",
+  "batchId": "historical-recovery-37d1b183b2b85159e6f4cf8f",
+  "generatedAt": "2026-07-16T23:09:24.849Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "80b69dcef61efd8d9b1024c2a239647401e19aece58d29731c48d6212cd83505"
+    "sha256": "31d73636b6cca5d111ea6bc2ed2f6bfdbd3a3f994067483f62b2282d20ed3ee3"
   },
   "policy": {
-    "version": "2026-07-16.16",
-    "sha256": "b1299d31d05ec1c17328c7de3bd973c2020c9f21cf8b55dd63a9dfc4497fce55"
+    "version": "2026-07-16.18",
+    "sha256": "bf0d0337a799beeb1d67e605aeb04fe93a006c65c749cc28157ad696ecbe5982"
   },
   "selection": {
     "jobIds": [],
@@ -11610,70 +11610,6 @@
       }
     },
     {
-      "targetId": "recovery_target_1211daabca5c92bfe426e1c7",
-      "referenceId": "fa_ref_0e837ae4fd1484c3889e2616",
-      "legacyRuntimeId": "ao-56332",
-      "canonicalProductId": "fa_prod_90116873f9369c22c75fab77",
-      "brand": "Haier",
-      "model": "HBM340SA1",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_c904e70e48f6e5a064c96836",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 1702,
-              "depth": 642
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_18c3ef9d0e1f7d95628573c1",
-      "referenceId": "fa_ref_f761e2d06694086b27a96c14",
-      "legacyRuntimeId": "ao-56333",
-      "canonicalProductId": "fa_prod_b911c272b449ab5a815f372b",
-      "brand": "Haier",
-      "model": "HBM340WH1",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_afaf9e21a9582ce2e91ccfe8",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 1700,
-              "depth": 642
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_2401eebdd45580e01cd65c1d",
       "referenceId": "fa_ref_0c1668d2f2c4f94674a38f7b",
       "legacyRuntimeId": "ao-52380",
@@ -11696,70 +11632,6 @@
         "legacyHints": [
           {
             "sourceDocumentId": "doc_da2d4a61eb536952fdfab136",
-            "dimensionsMm": {
-              "width": 700,
-              "height": 1725,
-              "depth": 676
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_c548541cf5654d0373891613",
-      "referenceId": "fa_ref_f9ea8af12560e15c4d4880cc",
-      "legacyRuntimeId": "ao-49037",
-      "canonicalProductId": "fa_prod_62b7a9b92d8bc127bfed6107",
-      "brand": "Haier",
-      "model": "HBM450SA1",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_5cffd9c296d393dee4fa83f2",
-            "dimensionsMm": {
-              "width": 700,
-              "height": 1725,
-              "depth": 676
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_6b158392b3e8178d1c242a69",
-      "referenceId": "fa_ref_04a345e880c854cbab89ab64",
-      "legacyRuntimeId": "ao-49038",
-      "canonicalProductId": "fa_prod_6e231d0e851342796f285339",
-      "brand": "Haier",
-      "model": "HBM450WH1",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_1039105fb2729c5a61f56f44",
             "dimensionsMm": {
               "width": 700,
               "height": 1725,
@@ -235125,7 +234997,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7655,
+    "targets": 7651,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

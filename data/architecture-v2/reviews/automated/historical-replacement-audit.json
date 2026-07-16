@@ -21,16 +21,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2874,
-      "MODEL_RECEIPT": 270,
+      "IDENTITY_ONLY": 2870,
+      "MODEL_RECEIPT": 274,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2874,
-      "AUTO_FILL": 281,
+      "MEASURE_REQUIRED": 2870,
+      "AUTO_FILL": 285,
       "QUARANTINED": 88
     },
     "issueCount": 0

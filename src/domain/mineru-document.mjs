@@ -310,7 +310,12 @@ function dimensionClaims(row, fragment, page, fields, category) {
     page,
     bbox: [...fragment.bbox],
     fragmentSha256: fragment.fragmentSha256,
-  });
+  }).map((claim) => ({
+    ...claim,
+    ...(row.semanticBasis ? { semanticBasis: row.semanticBasis } : {}),
+    ...(row.axisOrder ? { axisOrder: [...row.axisOrder] } : {}),
+    ...(row.grammarProfileId ? { grammarProfileId: row.grammarProfileId } : {}),
+  }));
 }
 
 function clearanceClaims(row, fragment, page, fields) {
@@ -597,6 +602,8 @@ const HAIER_AU_EXACT_SPEC_VERTICAL_AXIS_GRAMMAR =
   'haier-au-exact-spec-vertical-axis-values-v1';
 const HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR =
   'haier-au-tfe3-finish-family-product-dimensions-v1';
+const HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR =
+  'haier-au-hbm-technical-data-family-v1';
 
 function explicitDimensionRowsWithInheritedUnit(text, {
   requireShorthand = false,
@@ -1049,6 +1056,111 @@ function haierAuTfe3FinishFamilyScope(document, caseIdentity) {
     technicalFragment: technical.fragment,
     technicalPage: technical.page,
   };
+}
+
+const HAIER_HBM_TECHNICAL_FAMILIES = Object.freeze([
+  Object.freeze({
+    family: 'HBM340',
+    models: Object.freeze(['HBM340SA1', 'HBM340WH1']),
+    variant: 'column_table',
+  }),
+  Object.freeze({
+    family: 'HBM450',
+    models: Object.freeze(['HBM450HSA1', 'HBM450SA1', 'HBM450WH1']),
+    variant: 'shared_list',
+  }),
+]);
+
+function haierHbmModels(text) {
+  return [...new Set((String(text ?? '').toUpperCase().match(
+    /HBM[0-9A-Z]+?(?=HBM|[^0-9A-Z]|$)/g,
+  ) ?? []).map(canonicalModel))];
+}
+
+function sameModelSet(actual, expected) {
+  const actualSet = new Set(actual);
+  return actualSet.size === expected.length
+    && expected.every((model) => actualSet.has(model));
+}
+
+function haierHbmDimensionRows(label, value) {
+  if (!/^dimensions?\s*\(\s*d\s*[x×*]\s*w\s*[x×*]\s*h\s*\)\s*$/i
+    .test(normalizedText(label))) return null;
+  const measure = measurements(value, 3);
+  if (!measure || measure.valuesMm.some((number) => number <= 0)) return null;
+  const quote = normalizedText(`${label} ${value}`);
+  return [{
+    label: normalizedText(label),
+    value: normalizedText(value),
+    quote,
+    semanticBasis: 'explicit_axis_sequence',
+    axisOrder: ['depth', 'width', 'height'],
+    grammarProfileId: HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR,
+  }];
+}
+
+function haierHbmTableTechnicalScope(fragment, family) {
+  if (family.variant !== 'column_table' || fragment.type !== 'table'
+    || !Array.isArray(fragment.cells)) return null;
+  const rows = new Map(fragment.cells.map((cells) => [
+    normalizedText(cells[0]).toLowerCase(),
+    cells,
+  ]));
+  const modelCells = rows.get('model no.');
+  const categoryCells = rows.get('category of the model');
+  const dimensionCells = [...rows.entries()].find(([label]) => /^dimensions?\s*\(/i.test(label))?.[1];
+  if (!modelCells || !categoryCells || !dimensionCells
+    || !/\btrade\s+mark\s+haier\b/i.test(fragment.text)) return null;
+  const matchingColumns = modelCells.map((cell, index) => ({
+    index,
+    models: haierHbmModels(cell),
+  })).filter(({ index, models }) => index > 0 && sameModelSet(models, family.models));
+  if (matchingColumns.length !== 1) return null;
+  const column = matchingColumns[0].index;
+  if (!/^refrigerator$/i.test(normalizedText(categoryCells[column]))) return null;
+  const dimensionLabel = normalizedText(dimensionCells[0]);
+  const dimensionValue = normalizedText(dimensionCells[column]);
+  const dimensionRows = haierHbmDimensionRows(dimensionLabel, dimensionValue);
+  return dimensionRows ? { rows: dimensionRows, column } : null;
+}
+
+function haierHbmListTechnicalScope(fragment, family) {
+  if (family.variant !== 'shared_list' || !['list', 'index'].includes(fragment.type)
+    || !Array.isArray(fragment.listEntries)) return null;
+  if (!sameModelSet(haierHbmModels(fragment.listEntries.join(' ')), family.models)
+    || !fragment.listEntries.some((entry) => /^trade\s+mark\s+haier$/i.test(entry))
+    || !fragment.listEntries.some((entry) => (
+      /^category\s+of\s+the\s+model\s+refrigerator(?:-freezer)?$/i.test(entry)
+    ))) return null;
+  const dimensions = fragment.listEntries.map((entry) => (
+    /^(dimensions?\s*\([^)]*\))\s+(.+)$/i.exec(entry)
+  )).filter(Boolean);
+  if (dimensions.length !== 1) return null;
+  const rows = haierHbmDimensionRows(dimensions[0][1], dimensions[0][2]);
+  return rows ? { rows } : null;
+}
+
+function haierAuHbmTechnicalFamilyScope(document, caseIdentity) {
+  if (canonicalModel(caseIdentity?.brand) !== 'HAIER'
+    || normalizedText(caseIdentity?.category) !== 'fridge') return null;
+  const model = canonicalModel(caseIdentity?.model);
+  const family = HAIER_HBM_TECHNICAL_FAMILIES.find((candidate) => (
+    candidate.models.includes(model)
+  ));
+  if (!family) return null;
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    if (!items.some((fragment) => (
+      fragment.type === 'title' && /^technical\s+data$/i.test(fragment.text)
+    ))) return;
+    for (const fragment of items) {
+      const scope = family.variant === 'column_table'
+        ? haierHbmTableTechnicalScope(fragment, family)
+        : haierHbmListTechnicalScope(fragment, family);
+      if (scope) matches.push({ ...scope, fragment, page: pageIndex + 1, family });
+    }
+  });
+  return matches.length === 1 ? matches[0] : null;
 }
 
 function sectionDimensionUnit(cells, sectionIndex) {
@@ -2821,6 +2933,17 @@ function lgDryerExactModelSizeScope(document, caseIdentity) {
 }
 
 export const mineruGrammarProfiles = Object.freeze({
+  [HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR]: Object.freeze({
+    parserProfileId: HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR,
+    grammarFamilyId: 'haier_au_hbm_technical_data_family_v1',
+    grammarFamilyName: 'Haier Australia HBM refrigerator technical data',
+    variantName: 'Column-bound HBM340 or complete shared HBM450 model family',
+    brand: 'Haier',
+    category: 'fridge',
+    documentType: 'user_manual',
+    detectionSummary: 'A Technical Data page must bind either the exact HBM340 finish pair to one model column and its same-column D/W/H tuple, or the complete HBM450 finish trio to one shared D/W/H tuple. The refrigerator category and Haier trade mark must be explicit.',
+    semanticBoundary: 'Only the closed product D/W/H tuple is projected. HBM315 columns, incomplete or unknown finish sets, alternative axis orders, cavity values, appliance door-swing width/depth, installation clearances and service requirements are excluded.',
+  }),
   [HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR]: Object.freeze({
     parserProfileId: HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR,
     grammarFamilyId: 'haier_au_tfe3_finish_family_product_dimensions_v1',
@@ -3430,6 +3553,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const haierTfe3Scope = claimSemanticsVersion === 2
     ? haierAuTfe3FinishFamilyScope(document, caseIdentity)
     : null;
+  const haierHbmScope = claimSemanticsVersion === 2
+    ? haierAuHbmTechnicalFamilyScope(document, caseIdentity)
+    : null;
   const structuredFinishVariantSignals = structuredFinishVariantScope ? [
     {
       type: 'mineru_finish_variant_family_heading',
@@ -3447,6 +3573,10 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const haierTfe3Signals = haierTfe3Scope ? [{
     type: 'mineru_haier_tfe3_explicit_finish_model',
     value: `${model}:cover:${haierTfe3Scope.coverFragment.fragmentSha256}:product-page:${haierTfe3Scope.page}:technical-page:${haierTfe3Scope.technicalPage}`,
+  }] : [];
+  const haierHbmSignals = haierHbmScope ? [{
+    type: 'mineru_haier_hbm_technical_family_model',
+    value: `${model}:family:${haierHbmScope.family.family}:variant:${haierHbmScope.family.variant}:page:${haierHbmScope.page}:${haierHbmScope.fragment.fragmentSha256}`,
   }] : [];
   const chiqSpecScope = claimSemanticsVersion === 2
     ? chiqOfficialSpecScope(document, caseIdentity, options.sourceUrls)
@@ -3559,6 +3689,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     && !structuredFinishVariantScope
     && !haierExactSpecScope
     && !haierTfe3Scope
+    && !haierHbmScope
     && !chiqSpecScope
     && !hisenseLegacySpecScope
     && !hisenseNetPackageScope
@@ -3590,6 +3721,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...boundExactCoverSignals,
     ...structuredFinishVariantSignals,
     ...haierTfe3Signals,
+    ...haierHbmSignals,
     ...chiqSpecSignals,
     ...hisenseLegacySpecSignals,
     ...hisenseNetPackageSignals,
@@ -3651,6 +3783,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   if (haierTfe3Scope) {
     appliedGrammarProfiles.add(HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR);
   }
+  if (haierHbmScope) {
+    appliedGrammarProfiles.add(HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR);
+  }
   const sharedModelListPages = new Set();
   document.pages.forEach((items, pageIndex) => {
     const pageSignals = documentSignals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
@@ -3683,6 +3818,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       structuredFinishVariantScope?.dimensionFragment,
     );
     const haierTfe3PageScoped = items.includes(haierTfe3Scope?.fragment);
+    const haierHbmPageScoped = items.includes(haierHbmScope?.fragment);
     const chiqSpecPageScoped = items.includes(chiqSpecScope?.fragment);
     const hisenseLegacySpecPageScoped = hisenseLegacySpecScope?.page === pageIndex + 1;
     const hisenseNetPackagePageScoped = hisenseNetPackageScope?.page === pageIndex + 1;
@@ -3722,16 +3858,22 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         ? haierExactSpecScope.entries.map((entry) => [entry.fragment, [entry.row]])
         : [],
     );
+    const haierHbmRowsByFragment = new Map(
+      haierHbmScope?.page === pageIndex + 1
+        ? [[haierHbmScope.fragment, haierHbmScope.rows]]
+        : [],
+    );
     if (!pageScoped && !documentScoped && !bekoDocumentScoped
       && !sharedModelListScoped && !groupedColumnScoped
       && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped
-      && !haierTfe3PageScoped
+      && !haierTfe3PageScoped && !haierHbmPageScoped
       && !chiqSpecPageScoped && !samsungWasherWildcardPageScoped
       && !fisherPaykelRf610PageScoped && !fisherPaykelDw60ChSupportPageScoped
       && !fisherPaykelWa60SupportPageScoped
       && !hisenseLegacySpecPageScoped
       && !hisenseNetPackagePageScoped && !boschDimensionSectionScope
-      && !askoProductSheetRowsByFragment.size && !haierExactSpecRowsByFragment.size) return;
+      && !askoProductSheetRowsByFragment.size && !haierExactSpecRowsByFragment.size
+      && !haierHbmRowsByFragment.size) return;
     const bekoPageScoped = items.some((item) => (
       ['title', 'page_header'].includes(item.type)
         && containsExplicitModelExpression(item.text, model)
@@ -3783,6 +3925,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         || containsExplicitModelExpression(item.identityText ?? item.text, model)
         || structuredFinishVariantScope?.dimensionFragment === item
         || haierTfe3Scope?.fragment === item
+        || haierHbmScope?.fragment === item
         || chiqSpecScope?.fragment === item
         || fisherPaykelDw60Scope?.dimensionFragment === item
         || samsungWasherWildcardScope?.fragment === item
@@ -3812,6 +3955,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       || documentDimensionSectionRowsByFragment.has(item)
       || askoProductSheetRowsByFragment.has(item)
       || haierExactSpecRowsByFragment.has(item)
+      || haierHbmRowsByFragment.has(item)
     ))) {
       if (chiqSpecScope && fragment !== chiqSpecScope.fragment) continue;
       if (hisenseLegacySpecScope?.sourceFragments.includes(fragment)
@@ -3845,6 +3989,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
             : []),
           ...(haierTfe3Scope?.fragment === fragment
             ? haierTfe3Scope.rows
+            : []),
+          ...(haierHbmScope?.fragment === fragment
+            ? haierHbmScope.rows
             : []),
           ...(chiqSpecScope?.fragment === fragment
             ? chiqSpecScope.rows
@@ -3883,7 +4030,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
             : []),
         ];
       } else if (['list', 'index'].includes(fragment.type)) {
-        rows = fragment.listEntries.flatMap((entry) => paragraphRows(entry));
+        rows = haierHbmRowsByFragment.has(fragment)
+          ? haierHbmRowsByFragment.get(fragment)
+          : fragment.listEntries.flatMap((entry) => paragraphRows(entry));
       } else {
         rows = haierExactSpecRowsByFragment.has(fragment)
           ? haierExactSpecRowsByFragment.get(fragment)

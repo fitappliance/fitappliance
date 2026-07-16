@@ -617,7 +617,7 @@ test('generic adapter accepts object product-page entries without fabricating UR
   assert.equal(result.candidates[0].documentType, 'product_page');
 });
 
-test('Haier resolver v4 reopens target-ready support articles with resolved PDF provenance', async () => {
+test('Haier resolver v5 binds target-ready and archived-taxonomy support provenance', async () => {
   const artifactLinkUrl = 'https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuKH/bvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4';
   const artifactUrl = 'https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000000001&d=%2Fa%2FJw000000ZuKH%2FbvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4&operationContext=DELIVERY&viewId=05HJw0000000001&dpt=';
   const discoveryUrl = 'https://support.haier.com.au/s/help-and-support/article/Dishwasher-Installation-Guide-8875';
@@ -650,10 +650,10 @@ test('Haier resolver v4 reopens target-ready support articles with resolved PDF 
   );
   const result = await adapter.resolve({ brand: 'Haier', model: 'HDW9TFE3SS', category: 'dishwasher' });
 
-  assert.equal(result.version, '4');
-  assert.equal(result.scope, 'haier_au_target_ready_support_articles_resolved_pdf_and_current_product_pages');
+  assert.equal(result.version, '5');
+  assert.equal(result.scope, 'haier_au_target_ready_and_archived_taxonomy_support_articles_resolved_pdf_and_current_product_pages');
   assert.equal(result.candidates[0].authorityMode, 'official');
-  assert.equal(result.candidates[0].resolverVersion, '4');
+  assert.equal(result.candidates[0].resolverVersion, '5');
   assert.deepEqual(result.candidates[0].discoveryProvenance.artifactUrl, artifactUrl);
 });
 

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T22:27:58.176Z",
+  "generatedAt": "2026-07-16T23:09:24.849Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "b6bde27a3dde0834f8a193801f9841c79af4c81eb4297c78ad4995e3b3091555",
+  "semanticClassificationSha256": "67d28ca9987dafd27e7f4b48aa9f9594d0db604d67cccce54fc7aad7e8189476",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4340,
+    "documentLinks": 4344,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 357,
+      "COMPLETE_RECEIPT": 361,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1104
+      "REFERENCE_REDISCOVERY": 1100
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 357,
-      "REDISCOVER_OFFICIAL_SOURCE": 1104,
+      "NO_ACTION": 361,
+      "REDISCOVER_OFFICIAL_SOURCE": 1100,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 135
     },
     "bySourceAuthority": {
-      "MIXED": 201,
+      "MIXED": 205,
       "NONE": 6611,
       "OFFICIAL": 162,
-      "REFERENCE": 1121
+      "REFERENCE": 1117
     },
     "byIdentityScope": {
       "AMBIGUOUS": 172,
@@ -47,8 +47,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 86,
-      "ALL_AXIS_SCALAR": 408,
-      "NOT_PARSED": 7507,
+      "ALL_AXIS_SCALAR": 412,
+      "NOT_PARSED": 7503,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 357,
-      "LEGACY_UNBOUND": 1413,
+      "CURRENT_VALID": 361,
+      "LEGACY_UNBOUND": 1409,
       "NONE": 6325
     }
   },
@@ -94,13 +94,13 @@
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2300,
+      "documentLinks": 2304,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 116,
+        "COMPLETE_RECEIPT": 120,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 84,
         "OFFICIAL_DISCOVERY": 3405,
-        "REFERENCE_REDISCOVERY": 683
+        "REFERENCE_REDISCOVERY": 679
       }
     },
     {
@@ -188,7 +188,7 @@
       "category": "fridge",
       "brand": "Haier",
       "operationalClass": "REFERENCE_REDISCOVERY",
-      "models": 96
+      "models": 92
     },
     {
       "category": "fridge",
@@ -140975,14 +140975,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -141005,6 +141006,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECqLMAX&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/29/55/2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62.json",
+            "evidence/web/sha256/cc/c9/ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c.pdf",
+            "receipt:42a2cc242fcb5e4ccb67ab9786036c620124c87818a1f2ee8fb111bbc6eb2b22"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c"
+        },
+        {
           "documentId": "source:doc_c904e70e48f6e5a064c96836",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/9/4/7/2/94724a30e4d6020bc7327ca76c93da472ebb02a2_HBM340SA1_Haier_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -141020,8 +141040,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Haier"
@@ -141038,14 +141058,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -141067,6 +141088,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009r93GIAQ&d=%2Fa%2FJw000000bvLt%2F2hg18YTje6ul6WwBsdKHvvFMCJpVU59ZRAQnZU4UxN0&operationContext=DELIVERY&viewId=05HJw00000QECtZMAX&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/29/55/2955d6074dfa53446f45ac96cb852234c06a61fe817b3084e0473ec2040abb62.json",
+            "evidence/web/sha256/cc/c9/ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c.pdf",
+            "receipt:2302f82f99cc4648e6c6c490ac3ea99fdb6c222a4528f17c1432fd3c193111dc"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "ccc90bf3cb7e0ea9233e01bbe9096738f783a9170899922cf18b48cfa6a4b10c"
+        },
+        {
           "documentId": "source:doc_afaf9e21a9582ce2e91ccfe8",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/8/e/9/d/8e9d64b2801a4549d9aa13aa1c1d44782b802096_HBM340WH1_User_Manual.pdf",
           "evidenceObjectIds": [
@@ -141082,8 +141122,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Haier"
@@ -141163,14 +141203,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -141193,6 +141234,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE7NeMAL&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/eb/ef/ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407.json",
+            "evidence/web/sha256/42/ec/42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592.pdf",
+            "receipt:1f5d7766aaceab50d64cc8632d3ab436aa02aa159dcb2f055fd627ec99da6d83"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592"
+        },
+        {
           "documentId": "source:doc_5cffd9c296d393dee4fa83f2",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/0/0/e/d/00ed6b59f7022f00cf09f5c7bc992669d4579886_HBM450SA1_Haier_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -141208,8 +141268,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Haier"
@@ -141226,14 +141286,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -141256,6 +141317,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009rAgtIAE&d=%2Fa%2FJw000000bvVZ%2FqGAQpylcXLnSi0KpSgVCJfy2OlpisGLvGKdoGvyjsuQ&operationContext=DELIVERY&viewId=05HJw00000QE29UMAT&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/eb/ef/ebefe3bd71ea0d6f9f8f59734d68f1aeff39e26e2099f27fe6463557ca8f8407.json",
+            "evidence/web/sha256/42/ec/42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592.pdf",
+            "receipt:5ffda8891446fa4d81bac95da049db60d0df8ee9d875ee47a9f91b3fb6b382f1"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "42ecd2ff1bd06e470dfb269706cb6409906128c05d56fa41c675c3c195c2a592"
+        },
+        {
           "documentId": "source:doc_1039105fb2729c5a61f56f44",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/6/d/f/66dfd598f050cff71204712aa9ad86eade1204af_Haier_HBM450WH1_450L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -141271,8 +141351,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Haier"
