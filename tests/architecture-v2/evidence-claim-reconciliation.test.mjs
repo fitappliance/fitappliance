@@ -565,6 +565,73 @@ test('strict HTML variant cannot establish target identity without an exact sour
   assert.equal(result.failureCode, 'identity');
 });
 
+test('receipt-bound official AU model-variant PDF can establish dimensions without an exact source anchor', () => {
+  const variantIdentity = { brand: 'ASKO', model: 'W4104C.W', category: 'washing_machine' };
+  const variant = source('c'.repeat(64), { widthMm: 595, heightMm: 850, depthMm: 700 }, {
+    sourceType: 'official_model_variant_pdf',
+    contentType: 'application/pdf',
+    sourceUrl: 'https://asko.hgecdn.net/medias/productSheet-W4104C-W-AU.pdf',
+    finalUrl: 'https://asko.hgecdn.net/medias/productSheet-W4104C-W-AU.pdf',
+    identity: {
+      ...variantIdentity,
+      outcome: 'official_marketing_alias',
+      sourceModel: 'W4104C.W.AU',
+    },
+    identitySignals: [
+      { type: 'mineru_bound_exact_cover_model', value: `W4104C.W.AU:exact-cover:W4104C.W.AU:page:1:${'e'.repeat(64)}` },
+      { type: 'canonical_source_model', value: 'W4104C.W.AU' },
+      { type: 'official_market_api_model', value: `W4104C.W:${'d'.repeat(64)}:https://api-storefront.asko.com/` },
+      { type: 'official_market_api_dimensions', value: `W4104C.W:595x850x700:${'d'.repeat(64)}` },
+      { type: 'official_market_api_variant_binding', value: 'W4104C.W -> W4104C.W.AU (AU)' },
+    ],
+    discoveryProvenance: {
+      method: 'official_market_api',
+      requestedModel: 'W4104C.W',
+      matchedModel: 'W4104C.W.AU',
+      discoveryUrl: 'https://api-storefront.asko.com/',
+      discoveryContentSha256: 'd'.repeat(64),
+    },
+  });
+  const result = reconcileEvidenceClaims(variantIdentity, inventory([variant], {
+    identity: variantIdentity,
+  }), { verifyReceipt });
+
+  assert.equal(result.status, 'accepted');
+  assert.deepEqual(result.sources, [variant]);
+});
+
+test('official model-variant PDF stays identity-rejected when any independent binding signal is absent', () => {
+  const variantIdentity = { brand: 'ASKO', model: 'W4104C.W', category: 'washing_machine' };
+  const variant = source('c'.repeat(64), { widthMm: 595, heightMm: 850, depthMm: 700 }, {
+    sourceType: 'official_model_variant_pdf',
+    contentType: 'application/pdf',
+    identity: {
+      ...variantIdentity,
+      outcome: 'official_marketing_alias',
+      sourceModel: 'W4104C.W.AU',
+    },
+    identitySignals: [
+      { type: 'mineru_bound_exact_cover_model', value: `W4104C.W.AU:exact-cover:W4104C.W.AU:page:1:${'e'.repeat(64)}` },
+      { type: 'canonical_source_model', value: 'W4104C.W.AU' },
+      { type: 'official_market_api_model', value: 'W4104C.W:hash:url' },
+      { type: 'official_market_api_dimensions', value: 'W4104C.W:595x850x700:hash' },
+    ],
+    discoveryProvenance: {
+      method: 'official_market_api',
+      requestedModel: 'W4104C.W',
+      matchedModel: 'W4104C.W.AU',
+      discoveryUrl: 'https://api-storefront.asko.com/',
+      discoveryContentSha256: 'd'.repeat(64),
+    },
+  });
+  const result = reconcileEvidenceClaims(variantIdentity, inventory([variant], {
+    identity: variantIdentity,
+  }), { verifyReceipt });
+
+  assert.equal(result.status, 'identity_rejected');
+  assert.equal(result.failureCode, 'identity');
+});
+
 test('strict HTML variant disagreement with its exact source anchor remains quarantined', () => {
   const variantIdentity = { brand: 'Westinghouse', model: 'WTB4600SC', category: 'fridge' };
   const pdf = source('a'.repeat(64), { widthMm: 699, heightMm: 1725, depthMm: 723 }, {

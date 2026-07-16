@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1445,
-    "fetchJobs": 1408,
-    "targets": 1442,
-    "candidateEdges": 1445,
+    "documents": 1441,
+    "fetchJobs": 1404,
+    "targets": 1438,
+    "candidateEdges": 1441,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1442,
+    "uniqueReferences": 1438,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 410,
-      "MEASURE_REQUIRED": 1007,
+      "MEASURE_REQUIRED": 1003,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1195
+      "CURRENT_RETAIL": 1191
     },
     "byCategory": {
       "dishwasher": 320,
-      "dryer": 62,
+      "dryer": 61,
       "fridge": 835,
-      "washing_machine": 225
+      "washing_machine": 222
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1145,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1141,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 205,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 162,
+      "ALREADY_AUTO_FILL": 166,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -1133,32 +1133,6 @@
       ],
       "targetIds": [
         "recovery_target_7700b5a219447beb84eff1c8"
-      ]
-    },
-    {
-      "jobId": "recovery_f5783eb82be214a05a5a0032",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/3/e/b/03eb248f1e9f64bb7c3ebe77d3c0cbd226012192_productSheet_000000000000592099_bs_asko_au_en_AU.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_2b41665b5259820780729108"
       ]
     },
     {
@@ -6986,32 +6960,6 @@
       ]
     },
     {
-      "jobId": "recovery_9ff6383f3bdfc74c1a84454a",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/3/e/c/43ec78a960ece66d404dd914ac55ecb0f4748337_W4104C.W_Asko_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_46e7344ab330094d00faf933"
-      ]
-    },
-    {
       "jobId": "recovery_e2992996fa660dc0b17413dd",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/4/4/5/d/445d97eb1f9484b237c95a66d746599e417c6127_Hisense_HR6TFF600SD_593L_Top_Mount_Fridge_Specifications_Sheet.pdf",
       "authorityBrand": "Hisense",
@@ -11692,32 +11640,6 @@
       ]
     },
     {
-      "jobId": "recovery_e1e87ec24e95fc76b5ac3fc8",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/f/4/8/6f48881c7cd4c95e49599b31d0b54f0bea3cc303_W4086C.W_Asko_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_555229b6c82dd888bfb84296"
-      ]
-    },
-    {
       "jobId": "recovery_5a98c011c519d07f85467944",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/6/f/5/2/6f52fc0b7c826df118b2427181d000dd627db9c3_SBI8EDS01A_Bosch_Specifications_Sheet.pdf",
       "authorityBrand": "Bosch",
@@ -15173,32 +15095,6 @@
       ],
       "targetIds": [
         "recovery_target_f7fa13f31e1aa9f1c6cd29ed"
-      ]
-    },
-    {
-      "jobId": "recovery_046111ef006f1c601e1bcef8",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/0/5/e/905e78eea8c5f5b7850823fdb801c4ebbb80476c_Asko_T410HD.W_10kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_07379007e8685c82942b641b"
       ]
     },
     {
@@ -37304,170 +37200,6 @@
         "recovery_b77cc3c661b27730259c77dd"
       ],
       "primaryJobId": "recovery_b77cc3c661b27730259c77dd"
-    },
-    {
-      "referenceId": "fa_ref_03275e6c7b751743089e8a9d",
-      "legacyRuntimeId": "ao-64002",
-      "canonicalProductId": "fa_prod_9c595a3e4cfdcfd52cf4c0a7",
-      "category": "dryer",
-      "brand": "ASKO",
-      "model": "T410HD.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 850,
-        "depth": 755
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_07379007e8685c82942b641b",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a113881861492cf826a7ba5f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a113881861492cf826a7ba5f",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 755
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_046111ef006f1c601e1bcef8"
-      ],
-      "primaryJobId": "recovery_046111ef006f1c601e1bcef8"
-    },
-    {
-      "referenceId": "fa_ref_7017a73aa6952837bd428255",
-      "legacyRuntimeId": "ao-64005",
-      "canonicalProductId": "fa_prod_fbcd005a26df52798b85faa6",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "model": "W2084C.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 850,
-        "depth": 585
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_2b41665b5259820780729108",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_9ade0f75c4dbdf927730f468"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_9ade0f75c4dbdf927730f468",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 585
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_f5783eb82be214a05a5a0032"
-      ],
-      "primaryJobId": "recovery_f5783eb82be214a05a5a0032"
-    },
-    {
-      "referenceId": "fa_ref_6e75cda6315744e9163d7a30",
-      "legacyRuntimeId": "ao-64006",
-      "canonicalProductId": "fa_prod_2c73d7b74231c0d61af811a2",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "model": "W4086C.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 850,
-        "depth": 580
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_555229b6c82dd888bfb84296",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_fd5e7ec7ef0e9d38aaf1e740"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_fd5e7ec7ef0e9d38aaf1e740",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 580
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e1e87ec24e95fc76b5ac3fc8"
-      ],
-      "primaryJobId": "recovery_e1e87ec24e95fc76b5ac3fc8"
-    },
-    {
-      "referenceId": "fa_ref_15c8a9eec96879f78c9d601a",
-      "legacyRuntimeId": "ao-64008",
-      "canonicalProductId": "fa_prod_6c7260ae42e101b1a6428176",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "model": "W4104C.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 850,
-        "depth": 700
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_46e7344ab330094d00faf933",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_6814602a290fb910372079f8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_6814602a290fb910372079f8",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 700
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_9ff6383f3bdfc74c1a84454a"
-      ],
-      "primaryJobId": "recovery_9ff6383f3bdfc74c1a84454a"
     },
     {
       "referenceId": "fa_ref_5a5354c0c62786ffb8a333ce",

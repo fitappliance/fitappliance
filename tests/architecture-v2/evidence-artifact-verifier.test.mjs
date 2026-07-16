@@ -23,6 +23,22 @@ const identity = { brand: 'Westinghouse', model: 'WHE6874BA', category: 'fridge'
 const MINERU_MODEL_REVISION = 'ed6b654c018d742e65a17671e379c5e6ecc87ec9';
 const MINERU_VLM_MODEL_REVISION = 'bff20d4ae2bf202df9f45284b4d43681555a97ed';
 
+function mineruParagraph(content, bbox = [80, 120, 760, 180]) {
+  return {
+    type: 'paragraph',
+    content: { paragraph_content: [{ type: 'text', content }] },
+    bbox,
+  };
+}
+
+function mineruTitle(content, bbox = [80, 80, 500, 120]) {
+  return {
+    type: 'title',
+    content: { title_content: [{ type: 'text', content }], level: 2 },
+    bbox,
+  };
+}
+
 function html(model = 'WHE6874BA') {
   return Buffer.from(`<!doctype html><html><head>
     <title>609L refrigerator - ${model} | Westinghouse Australia</title>
@@ -1531,7 +1547,7 @@ test('a hash-bound official AU market API can independently bind an exact ASKO m
     caseIdentity: pdfIdentity, bytes: pdfBytes,
     derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: siblingBytes,
     verifiedAt: '2026-07-15T00:01:00.000Z', claimSemanticsVersion: 2,
-  }), /does not prove the exact model/i);
+  }), /does not prove (?:the exact|the declared) model/i);
 });
 
 test('an exact ASKO API may bind a series-placeholder manual only when all PDF dimensions match PIM', () => {
@@ -1630,6 +1646,102 @@ test('an exact ASKO API may bind a series-placeholder manual only when all PDF d
     caseIdentity: pdfIdentity, bytes: pdfBytes,
     derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: mismatchedBytes,
     verifiedAt: '2026-07-15T00:01:00.000Z', claimSemanticsVersion: 2,
+  }), /PIM dimensions/i);
+});
+
+test('ASKO AU API binds a regional technical-model PDF to base-model dimensions only', () => {
+  const targetIdentity = { brand: 'ASKO', model: 'W4104C.W', category: 'washing_machine' };
+  const sourceIdentity = { ...targetIdentity, model: 'W4104C.W.AU' };
+  const pdfBytes = Buffer.from('%PDF-1.7\nasko regional product sheet');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const artifactUrl = 'https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf';
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [mineruParagraph('W4104C.W.AU')],
+    [
+      mineruTitle('Dimensions'),
+      mineruParagraph('Width: 595 mm'),
+      mineruParagraph('Height: 850 mm'),
+      mineruParagraph('Depth: 700 mm'),
+      mineruParagraph('Depth with door open: 1057 mm'),
+      mineruTitle('Logistic information'),
+      mineruParagraph('Packaging width: 640 mm'),
+      mineruParagraph('Packaging height: 920 mm'),
+      mineruParagraph('Packaging depth: 776 mm'),
+    ],
+  ]));
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: sourceIdentity, claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    boundExactCoverModel: sourceIdentity.model,
+  }).claims;
+  const discoveryPayload = {
+    code: '000000000000592078', modelMark: sourceIdentity.model,
+    documents: [{ desc: 'Product sheet', url: artifactUrl }],
+    classifications: [{ features: [
+      { name: 'Width', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '595' }] },
+      { name: 'Height', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '850' }] },
+      { name: 'Depth', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '700' }] },
+    ] }],
+  };
+  const discoveryBytes = Buffer.from(JSON.stringify(discoveryPayload));
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1, method: 'official_market_api', market: 'AU',
+    discoveryUrl: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592078?fields=FULL&lang=en_AU&curr=AUD',
+    requestedModel: targetIdentity.model, matchedModel: sourceIdentity.model, artifactUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.json`,
+    discoveryByteSize: discoveryBytes.length,
+  };
+  const pdfSource = {
+    authority: 'manufacturer', sourceType: 'official_model_variant_pdf',
+    sourceUrl: artifactUrl, finalUrl: artifactUrl, redirectChain: [],
+    retrievedAt: '2026-07-16T00:00:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    identity: { ...targetIdentity, outcome: 'exact' },
+    claims, derivedArtifact, discoveryProvenance,
+  };
+
+  const attested = verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity: targetIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+    verifiedAt: '2026-07-16T00:01:00.000Z', claimSemanticsVersion: 2,
+  });
+  assert.deepEqual(attested.identity, {
+    brand: 'ASKO', model: 'W4104C.W', category: 'washing_machine',
+    outcome: 'official_marketing_alias', sourceModel: 'W4104C.W.AU',
+  });
+  assert.deepEqual(new Set(attested.identitySignals.map((signal) => signal.type)), new Set([
+    'canonical_source_model',
+    'mineru_bound_exact_cover_model',
+    'official_market_api_dimensions',
+    'official_market_api_model',
+    'official_market_api_variant_binding',
+  ]));
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested, caseIdentity: targetIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+  }), true);
+
+  const mismatchedPayload = structuredClone(discoveryPayload);
+  mismatchedPayload.classifications[0].features
+    .find((feature) => feature.name === 'Depth').featureValues[0].value = '701';
+  const mismatchedBytes = Buffer.from(JSON.stringify(mismatchedPayload));
+  const mismatchedHash = createHash('sha256').update(mismatchedBytes).digest('hex');
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: { ...pdfSource, discoveryProvenance: {
+      ...discoveryProvenance, discoveryContentSha256: mismatchedHash,
+      discoveryObjectPath: `evidence/web/sha256/${mismatchedHash.slice(0, 2)}/${mismatchedHash.slice(2, 4)}/${mismatchedHash}.json`,
+      discoveryByteSize: mismatchedBytes.length,
+    } },
+    caseIdentity: targetIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: mismatchedBytes,
+    verifiedAt: '2026-07-16T00:01:00.000Z', claimSemanticsVersion: 2,
   }), /PIM dimensions/i);
 });
 

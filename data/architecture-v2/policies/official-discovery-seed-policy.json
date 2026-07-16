@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-16.3",
+  "policyVersion": "2026-07-16.4",
   "supportedReceiptPolicyVersions": [
     "2026-07-13.2",
     "2026-07-14.1",
@@ -8,14 +8,16 @@
     "2026-07-15.1",
     "2026-07-16.1",
     "2026-07-16.2",
-    "2026-07-16.3"
+    "2026-07-16.3",
+    "2026-07-16.4"
   ],
   "market": "AU",
   "brandGlobalArtifactHosts": {
     "asko": [
       "static18.asko.com",
       "partners.gorenje.com",
-      "atag.hgecdn.net"
+      "atag.hgecdn.net",
+      "asko.hgecdn.net"
     ],
     "fisherpaykel": [
       "fisherpaykel.my.salesforce.com",

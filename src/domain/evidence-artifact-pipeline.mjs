@@ -7,6 +7,7 @@ import {
   officialMarketApiBoundExactCoverModel,
   officialMarketApiBoundFamilyModel,
   officialMarketApiBoundSeriesModel,
+  officialMarketApiBoundVariantModel,
 } from './official-market-api-discovery-evidence.mjs';
 import { officialSupportApiBoundFamilyModel } from './official-support-api-discovery-evidence.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
@@ -283,6 +284,7 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
   }
 
   let claims;
+  let boundVariantModel = null;
   if (artifact.contentType === 'application/pdf') {
     if (!artifact.derivedArtifact || !artifact.derivedArtifactBytes) {
       throw new Error('MinerU JSON derived artifact required for PDF attestation');
@@ -305,23 +307,38 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       discoveryArtifactBytes,
       artifact.derivedArtifactBytes,
     );
+    boundVariantModel = officialMarketApiBoundVariantModel(
+      discoveryProvenance,
+      identity,
+      discoveryArtifactBytes,
+      artifact.derivedArtifactBytes,
+    );
     const boundSupportFamilyModel = officialSupportApiBoundFamilyModel(
       discoveryProvenance,
       identity,
       discoveryArtifactBytes,
     );
-    const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel ? null : boundFamilyModel;
+    const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel || boundVariantModel
+      ? null
+      : boundFamilyModel;
+    if (boundVariantModel && requestedFields.some((field) => ![
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ].includes(field))) {
+      throw new Error('official model variant PDF is dimensions only');
+    }
     claims = parseMineruContentListV2(artifact.derivedArtifactBytes, {
       pdfSha256: artifact.contentSha256,
       parserVersion: artifact.derivedArtifact.parserVersion,
       modelRevision: artifact.derivedArtifact.modelRevision,
-      caseIdentity: identity,
+      caseIdentity: boundVariantModel ? { ...identity, model: boundVariantModel } : identity,
       fields: requestedFields,
       claimSemanticsVersion,
       sourceUrls: [artifact.requestedUrl, artifact.finalUrl].filter(Boolean),
       ...(selectedBoundFamilyModel ? { boundFamilyModel: selectedBoundFamilyModel } : {}),
       ...(boundSeriesModel ? { boundSeriesModel } : {}),
-      ...(boundExactCoverModel ? { boundExactCoverModel } : {}),
+      ...((boundVariantModel || boundExactCoverModel) ? {
+        boundExactCoverModel: boundVariantModel || boundExactCoverModel,
+      } : {}),
       ...(boundSupportFamilyModel ? { boundSupportFamilyModel } : {}),
       ...(artifact.derivedArtifact.fallbackTrigger ? {
         identityContextJsonBytes: artifact.fallbackTriggerArtifactBytes,
@@ -348,7 +365,9 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
   const source = {
     authority: 'manufacturer',
     sourceType: artifact.contentType === 'application/pdf'
-      ? 'official_exact_model_pdf'
+      ? (boundVariantModel
+        ? 'official_model_variant_pdf'
+        : 'official_exact_model_pdf')
       : 'official_exact_model_product_page',
     sourceUrl: artifact.requestedUrl,
     finalUrl: artifact.finalUrl,

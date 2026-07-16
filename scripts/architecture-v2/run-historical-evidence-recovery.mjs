@@ -314,19 +314,28 @@ async function durableOutputWrite(fs, path, value) {
   await fs.rename(temporary, path);
 }
 
+export function officialArtifactFetchOptions(policy, artifactContext = {}) {
+  return {
+    timeoutMs: policy.limits.timeoutMs,
+    maximumBytes: policy.limits.maximumBytes,
+    maximumRedirects: policy.limits.maximumRedirects,
+    allowCurlFallback: true,
+    allowScraplingFallback: true,
+    expectedModel: artifactContext.expectedModel,
+    expectedCategory: artifactContext.expectedCategory,
+    discoveryProvenance: artifactContext.discoveryProvenance,
+  };
+}
+
 async function fetchWithRetry(url, brand, policy, artifactContext = {}) {
   let lastError;
   for (let attempt = 1; attempt <= policy.retry.fetchAttempts; attempt += 1) {
     try {
-      return await fetchOfficialArtifactResilient(url, brand, {
-        timeoutMs: policy.limits.timeoutMs,
-        maximumBytes: policy.limits.maximumBytes,
-        maximumRedirects: policy.limits.maximumRedirects,
-        allowCurlFallback: true,
-        allowScraplingFallback: true,
-        expectedModel: artifactContext.expectedModel,
-        discoveryProvenance: artifactContext.discoveryProvenance,
-      });
+      return await fetchOfficialArtifactResilient(
+        url,
+        brand,
+        officialArtifactFetchOptions(policy, artifactContext),
+      );
     } catch (error) {
       lastError = error;
       if (attempt < policy.retry.fetchAttempts && policy.retry.baseDelayMs > 0) {
@@ -357,6 +366,7 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
         writeObject: objectStore.writeObject,
         fetchArtifact: (url, brand) => fetchWithRetry(url, brand, policy, {
           expectedModel: job.targetModel,
+          expectedCategory: job.targetCategory,
           discoveryProvenance: job.discoveryProvenance,
         }),
         processPdf: (bytes) => context.withMineru(() => runMineruPdfWithImageFallback(bytes, {

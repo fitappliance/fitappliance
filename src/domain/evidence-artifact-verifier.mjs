@@ -14,6 +14,7 @@ import {
   createVerificationReceipt,
   currentMineruEvidenceProfile,
   officialHtmlModelVariant,
+  officialMarketApiModelVariant,
   verificationReceiptDiscoveryPolicyVersion,
   verificationReceiptManufacturerPolicyVersion,
   verifyVerificationReceipt,
@@ -29,6 +30,7 @@ import {
   officialMarketApiBoundExactCoverModel,
   officialMarketApiBoundFamilyModel,
   officialMarketApiBoundSeriesModel,
+  officialMarketApiBoundVariantModel,
   officialMarketApiDimensions,
   verifyOfficialMarketApiDiscoveryEvidence,
 } from './official-market-api-discovery-evidence.mjs';
@@ -368,33 +370,50 @@ function pdfIdentitySignals(
     discoveryArtifactBytes,
     bytes,
   );
+  const boundVariantModel = officialMarketApiBoundVariantModel(
+    source?.discoveryProvenance,
+    caseIdentity,
+    discoveryArtifactBytes,
+    bytes,
+  );
   const boundSupportFamilyModel = officialSupportApiBoundFamilyModel(
     source?.discoveryProvenance,
     caseIdentity,
     discoveryArtifactBytes,
   );
-  const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel ? null : boundFamilyModel;
+  const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel || boundVariantModel
+    ? null
+    : boundFamilyModel;
+  const parserIdentity = boundVariantModel
+    ? { ...caseIdentity, model: boundVariantModel }
+    : caseIdentity;
   const parsed = parseMineruContentListV2(bytes, {
     pdfSha256: source.contentSha256,
     parserVersion: derived.parserVersion,
     modelRevision: derived.modelRevision,
-    caseIdentity,
+    caseIdentity: parserIdentity,
     claimSemanticsVersion,
     fields: (source.claims ?? []).map((claim) => claim.field),
     ...(claimSemanticsVersion === 2 ? { expectedClaims: source.claims } : {}),
     sourceUrls: [source.sourceUrl, source.finalUrl].filter(Boolean),
     ...(selectedBoundFamilyModel ? { boundFamilyModel: selectedBoundFamilyModel } : {}),
     ...(boundSeriesModel ? { boundSeriesModel } : {}),
-    ...(boundExactCoverModel ? { boundExactCoverModel } : {}),
+    ...((boundVariantModel || boundExactCoverModel) ? {
+      boundExactCoverModel: boundVariantModel || boundExactCoverModel,
+    } : {}),
     ...(boundSupportFamilyModel ? { boundSupportFamilyModel } : {}),
     ...(derived.fallbackTrigger ? {
       identityContextJsonBytes: fallbackTriggerArtifactBytes,
       identityContextContentSha256: derived.fallbackTrigger.contentSha256,
     } : {}),
   });
-  if (boundSeriesModel || boundExactCoverModel) {
+  if (boundSeriesModel || boundExactCoverModel || boundVariantModel) {
     const payload = JSON.parse(Buffer.from(discoveryArtifactBytes).toString('utf8'));
-    const pim = officialMarketApiDimensions(payload, caseIdentity);
+    const pim = officialMarketApiDimensions(
+      payload,
+      caseIdentity,
+      source?.discoveryProvenance,
+    );
     const fields = new Map(parsed.claims.map((claim) => [claim.field, claim.value]));
     const expected = new Map([
       ['closedEnvelope.widthMm', pim.widthMm],
@@ -415,14 +434,28 @@ function pdfIdentitySignals(
   if (JSON.stringify(canonicalize(parsed.claims)) !== JSON.stringify(canonicalize(source.claims))) {
     throw new Error('source claims do not match replayed MinerU JSON claims');
   }
-  const signals = [...new Map([
+  let signals = [...new Map([
     ...parsed.identitySignals,
     ...fallbackIdentitySignals,
   ].map((signal) => [`${signal.type}\0${signal.value}`, signal])).values()];
+  if (boundVariantModel) {
+    signals = signals.filter((signal) => signal.type === 'mineru_bound_exact_cover_model');
+    signals.push({ type: 'canonical_source_model', value: boundVariantModel });
+  }
   const exactModelUrl = [...new Set([source.sourceUrl, source.finalUrl])]
     .find((value) => containsExactModelDocumentUrl(value, caseIdentity.model));
   if (exactModelUrl) signals.push({ type: 'pdf_source_url_model', value: exactModelUrl });
-  return { signals, text: parsed.documentText };
+  return {
+    signals,
+    text: parsed.documentText,
+    ...(boundVariantModel ? { identity: {
+      brand: caseIdentity.brand,
+      model: caseIdentity.model,
+      category: caseIdentity.category,
+      outcome: 'official_marketing_alias',
+      sourceModel: boundVariantModel,
+    } } : {}),
+  };
 }
 
 function officialProductPageIdentitySignal(source, caseIdentity, discoveryArtifactBytes) {
@@ -444,10 +477,15 @@ function officialMarketApiIdentitySignals(source, caseIdentity, discoveryArtifac
     value: `${caseIdentity.model}:${provenance.discoveryContentSha256}:${provenance.discoveryUrl}`,
   }];
   const payload = JSON.parse(Buffer.from(discoveryArtifactBytes).toString('utf8'));
-  const dimensions = officialMarketApiDimensions(payload, caseIdentity);
+  const dimensions = officialMarketApiDimensions(payload, caseIdentity, provenance);
   if (dimensions) signals.push({
     type: 'official_market_api_dimensions',
     value: `${caseIdentity.model}:${dimensions.widthMm}x${dimensions.heightMm}x${dimensions.depthMm}:${provenance.discoveryContentSha256}`,
+  });
+  const variant = officialMarketApiModelVariant(caseIdentity, provenance.matchedModel);
+  if (variant) signals.push({
+    type: 'official_market_api_variant_binding',
+    value: `${caseIdentity.model} -> ${variant.sourceModel} (${variant.market})`,
   });
   return signals;
 }

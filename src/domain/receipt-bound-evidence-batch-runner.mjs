@@ -326,6 +326,8 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
             sourceUrl: candidate.sourceUrl,
             authorityBrand: target.brand,
             authorityMode: candidate.authorityMode,
+            targetModel: target.model,
+            targetCategory: target.category,
             acquisitionRoute: 'OFFICIAL_SOURCE_DISCOVERY_REQUIRED',
             priorityClass: 'P2_CURRENT_CONFIRMATION',
             targetIds: [target.targetId],
@@ -347,6 +349,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
           job = {
             ...job,
             targetModel: target.model,
+            targetCategory: target.category,
             discoveryProvenance: structuredClone(candidate.discoveryProvenance),
           };
         }

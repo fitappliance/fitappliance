@@ -2,6 +2,7 @@ import { claimV2GeometryValue, validateDimensionEvidenceClaimV2 } from './dimens
 import { computeCandidateInventorySha256 } from './evidence-candidate-inventory.mjs';
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
+import { isStrictOfficialModelVariantPdfSource } from './official-model-variant-policy.mjs';
 
 const DEFAULT_FIELDS = Object.freeze([
   'closedEnvelope.widthMm',
@@ -458,7 +459,11 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   const supplied = [...(inventory.activeReceiptSources ?? []), ...candidateSources];
   const exact = supplied.filter((source) => source.authority === 'manufacturer' && exactIdentity(source, identity));
   const aliases = supplied.filter((source) => source.authority === 'manufacturer' && aliasIdentity(source, identity));
-  if (!exact.length) {
+  const standaloneVariantAliases = aliases.filter((source) => (
+    isStrictOfficialModelVariantPdfSource(source, identity)
+  ));
+  const identityAnchors = exact.length ? exact : standaloneVariantAliases;
+  if (!identityAnchors.length) {
     const hadIdentityRejection = (inventory.candidates ?? []).some((candidate) => candidate.outcome?.status === 'identity_rejected');
     return failure(
       hadIdentityRejection || aliases.length ? 'identity_rejected' : 'claims_incomplete',
@@ -469,20 +474,25 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
 
   const verifyReceipt = options.verifyReceipt ?? verifyVerificationReceipt;
   try {
-    for (const source of exact) {
+    for (const source of identityAnchors) {
       verifyReceipt(source, identity, { asOf: source?.verificationReceipt?.verifiedAt });
     }
   } catch (error) {
     return failure('terminal_failure', 'receipt', inventory, { receiptError: String(error?.message ?? error) });
   }
 
-  const exactDeduplicated = deduplicateSources(exact);
+  const exactDeduplicated = deduplicateSources(identityAnchors);
   if (exactDeduplicated.conflict) {
     return failure('conflict_quarantined', 'conflict', inventory, { conflictReason: exactDeduplicated.conflict });
   }
   const exactSupersession = applyAttestedSupersession(exactDeduplicated.sources);
   const exactMatrix = claimMatrix(exactSupersession.active, DEFAULT_FIELDS);
-  const eligibleAliases = hasExactOfficialAxisProof(exactMatrix) ? aliases : [];
+  const eligibleAliases = exact.length ? [
+    ...standaloneVariantAliases,
+    ...(hasExactOfficialAxisProof(exactMatrix)
+      ? aliases.filter((source) => !standaloneVariantAliases.includes(source))
+      : []),
+  ] : [];
   try {
     for (const source of eligibleAliases) {
       verifyReceipt(source, identity, { asOf: source?.verificationReceipt?.verifiedAt });
@@ -491,7 +501,7 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
     return failure('terminal_failure', 'receipt', inventory, { receiptError: String(error?.message ?? error) });
   }
 
-  const deduplicated = deduplicateSources([...exact, ...eligibleAliases]);
+  const deduplicated = deduplicateSources([...identityAnchors, ...eligibleAliases]);
   if (deduplicated.conflict) {
     return failure('conflict_quarantined', 'conflict', inventory, { conflictReason: deduplicated.conflict });
   }

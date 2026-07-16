@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T06:44:04.501Z",
-  "sourceBundleSha256": "7491a1e456ed5d0be4ed073791f91b4aec1f52bf92d1c666ec22d34bcf58ea8f",
+  "generatedAt": "2026-07-16T08:09:56.002Z",
+  "sourceBundleSha256": "96fc83098034467b308a675d4c0baf11248c0079fbceeb3fd8fe8daff865af86",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -182,6 +182,20 @@
       "contentSha256": "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
       "receiptBindingSha256": "52e21a291c1f5270be382670c9b4394c47bef582b47aea5314df3e7d0b527290",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/82/5d/825dc02fb2b7c72612ae6525261a73e7b7628ac518ab1b7bd646fee392465af0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_07379007e8685c82942b641b",
+      "referenceId": "fa_ref_03275e6c7b751743089e8a9d",
+      "brand": "ASKO",
+      "model": "T410HD.W",
+      "category": "dryer",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf",
+      "sourcePdfSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+      "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+      "receiptBindingSha256": "b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b5/95/b5952210881d7f33f661b7bfa067a19cba48843e4e4a7090c2c35db75ac82434.json",
       "status": "passed",
       "failureCode": null
     },
@@ -532,6 +546,34 @@
       "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
       "receiptBindingSha256": "7faf1d692805476f9a2429ae5fbf1e27588bfbb50390d1a4d22bc3ba55dcea31",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/ee/a0/eea0fdb64f782d514c0391fa4d33f975c7e368fc4932f06073f13e36de7ee081.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_2b41665b5259820780729108",
+      "referenceId": "fa_ref_7017a73aa6952837bd428255",
+      "brand": "ASKO",
+      "model": "W2084C.W",
+      "category": "washing_machine",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf",
+      "sourcePdfSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+      "contentSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+      "receiptBindingSha256": "a09a37944b16bab8a41a378634a1f7384b6be0f7ea290282ce6656d13e3dc92e",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/6d/9c/6d9ccb129d8d87c7c67859b500ff509c45fb17f42cbb3452231e37b07e933c46.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_2b41665b5259820780729108",
+      "referenceId": "fa_ref_7017a73aa6952837bd428255",
+      "brand": "ASKO",
+      "model": "W2084C.W",
+      "category": "washing_machine",
+      "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE",
+      "sourcePdfSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+      "contentSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+      "receiptBindingSha256": "7951c36ba1448b93d4c5093aace71098944e8c340b61b0139c97362849168ba9",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ea/24/ea240dc0e556584ec0d78adfc54461a3f3ba78c5e7be44d31af7d632632d0fad.json",
       "status": "passed",
       "failureCode": null
     },
@@ -984,6 +1026,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_46e7344ab330094d00faf933",
+      "referenceId": "fa_ref_15c8a9eec96879f78c9d601a",
+      "brand": "ASKO",
+      "model": "W4104C.W",
+      "category": "washing_machine",
+      "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk",
+      "sourcePdfSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+      "contentSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+      "receiptBindingSha256": "91e1b1730ade1d0bb2b7d64e99272d1dbd7525c0d664b9b6a7ced1689e575caf",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/eb/0a/eb0a4f6a792a014890c84fbec82736e0d16a318e147877b08c61bffd682ba2c6.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_4734ccbde39c6d8c181f3e30",
       "referenceId": "fa_ref_ad3518ea28d30ebac8769833",
       "brand": "Bosch",
@@ -1176,6 +1232,34 @@
       "contentSha256": "2476d2c729d36d89c186cf2294a89d486680784b1a6099d7ff4bf692ede22d08",
       "receiptBindingSha256": "00d66ce05d812aafcb2a62617d174fdb47023fdab549a6b660b6ecd2422f4ca7",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/16/bd/16bd9c30c3b89ccaf47ccd482d4ef9b861fc1046e485858d51e2b694fb852211.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_555229b6c82dd888bfb84296",
+      "referenceId": "fa_ref_6e75cda6315744e9163d7a30",
+      "brand": "ASKO",
+      "model": "W4086C.W",
+      "category": "washing_machine",
+      "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI",
+      "sourcePdfSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+      "contentSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+      "receiptBindingSha256": "c5c5399b94e77ca4bc424b220230dcd61bb4824845ba2412a823c4c97b3e4538",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/39/26/39269cb036fadd244f8d53fa8e89f49e899f5839d04f23682af6c50d91dad247.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_555229b6c82dd888bfb84296",
+      "referenceId": "fa_ref_6e75cda6315744e9163d7a30",
+      "brand": "ASKO",
+      "model": "W4086C.W",
+      "category": "washing_machine",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf",
+      "sourcePdfSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+      "contentSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+      "receiptBindingSha256": "41c95de57aaf1d4c84374f902ae1f5e088c31167d328269ac5892128905aad57",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/a5/b6/a5b6946e0a49c090a3c96d865d6b76a783767bc0bc4a52dd89a5202c0908a4a1.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3645,11 +3729,11 @@
     }
   ],
   "summary": {
-    "entries": 237,
-    "sources": 260,
-    "passed": 260,
+    "entries": 241,
+    "sources": 266,
+    "passed": 266,
     "failed": 0
   },
-  "checkedObjects": 518,
-  "semanticAuditSha256": "047b8053b48e01db18bcecb3b294ce1e4bc6f191de4d2b22ac3511f97d09deeb"
+  "checkedObjects": 534,
+  "semanticAuditSha256": "b0d5073e857ef9687fd653a3f7d3685b0638c4bb6dc7b03a7ed89c058289c522"
 }

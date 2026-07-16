@@ -5,6 +5,7 @@ import {
   hasMineruBoundFamilyIdentity,
   hasMineruBoundSeriesIdentity,
 } from './mineru-document.mjs';
+import { officialMarketApiModelVariant } from './official-model-variant-policy.mjs';
 
 function requiredText(value, label) {
   const result = String(value ?? '').trim();
@@ -32,14 +33,38 @@ function exactProducts(payload, targetModel) {
   return payload && exactModel(payload.modelMark, targetModel) ? [payload] : [];
 }
 
+function boundProductSelection(payload, caseIdentity, provenance = null) {
+  const targetModel = requiredText(caseIdentity?.model, 'target model');
+  const requestedModel = provenance?.requestedModel == null
+    ? targetModel
+    : requiredText(provenance.requestedModel, 'API requested model');
+  if (!exactModel(requestedModel, targetModel)) {
+    throw new Error('official market API requested model does not match target model');
+  }
+  const matchedModel = provenance?.matchedModel == null
+    ? targetModel
+    : requiredText(provenance.matchedModel, 'API matched model');
+  const variant = exactModel(matchedModel, targetModel)
+    ? null
+    : officialMarketApiModelVariant(caseIdentity, matchedModel);
+  if (!exactModel(matchedModel, targetModel) && !variant) {
+    throw new Error('official market API model relation is not policy approved');
+  }
+  return {
+    targetModel,
+    matchedModel,
+    variant,
+    products: exactProducts(payload, matchedModel),
+  };
+}
+
 function productDocuments(product) {
   if (Array.isArray(product?.manuals)) return product.manuals;
   return Array.isArray(product?.documents) ? product.documents : [];
 }
 
-export function officialMarketApiDimensions(payload, caseIdentity) {
-  const targetModel = requiredText(caseIdentity?.model, 'dimension target model');
-  const products = exactProducts(payload, targetModel);
+export function officialMarketApiDimensions(payload, caseIdentity, provenance = null) {
+  const { products } = boundProductSelection(payload, caseIdentity, provenance);
   if (products.length !== 1) return null;
   const axes = new Map();
   for (const classification of products[0].classifications ?? []) {
@@ -77,17 +102,34 @@ export function verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentit
   try { payload = JSON.parse(buffer.toString('utf8')); } catch {
     throw new Error('official market API discovery artifact is invalid JSON');
   }
-  const targetModel = requiredText(caseIdentity?.model, 'discovery target model');
   const artifactUrl = canonicalUrl(provenance.artifactUrl, 'discovered artifact URL');
-  const matchedProducts = exactProducts(payload, targetModel);
-  if (!matchedProducts.length) throw new Error('official market API does not prove the exact model');
+  const matchedProducts = boundProductSelection(payload, caseIdentity, provenance).products;
+  if (!matchedProducts.length) throw new Error('official market API does not prove the declared model');
   const linked = matchedProducts.some((product) => (
     productDocuments(product).some((manual) => {
       try { return canonicalUrl(manual?.url, 'API artifact URL') === artifactUrl; } catch { return false; }
     })
   ));
-  if (!linked) throw new Error('official market API exact model is missing the declared artifact link');
+  if (!linked) throw new Error('official market API model is missing the declared artifact link');
   return true;
+}
+
+export function officialMarketApiBoundVariantModel(
+  provenance,
+  caseIdentity,
+  discoveryBytes,
+  mineruJsonBytes,
+) {
+  if (provenance?.method !== 'official_market_api' || !provenance.discoveryContentSha256) return null;
+  if (requiredText(caseIdentity?.brand, 'target brand').toUpperCase() !== 'ASKO') return null;
+  verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, discoveryBytes);
+  const variant = officialMarketApiModelVariant(caseIdentity, provenance.matchedModel);
+  if (!variant) return null;
+  const payload = JSON.parse(Buffer.from(discoveryBytes).toString('utf8'));
+  if (!officialMarketApiDimensions(payload, caseIdentity, provenance)) return null;
+  return hasMineruBoundExactCoverIdentity(mineruJsonBytes, variant.sourceModel)
+    ? variant.sourceModel
+    : null;
 }
 
 export function officialMarketApiBoundFamilyModel(
@@ -97,6 +139,7 @@ export function officialMarketApiBoundFamilyModel(
   mineruJsonBytes,
 ) {
   if (provenance?.method !== 'official_market_api' || !provenance.discoveryContentSha256) return null;
+  if (officialMarketApiModelVariant(caseIdentity, provenance.matchedModel)) return null;
   verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, discoveryBytes);
   const targetModel = requiredText(caseIdentity?.model, 'target model').toUpperCase();
   const match = /^(.{5,})[._/-]([A-Z0-9]{1,4})$/.exec(targetModel);
@@ -113,6 +156,7 @@ export function officialMarketApiBoundSeriesModel(
 ) {
   if (provenance?.method !== 'official_market_api' || !provenance.discoveryContentSha256) return null;
   if (requiredText(caseIdentity?.brand, 'target brand').toUpperCase() !== 'ASKO') return null;
+  if (officialMarketApiModelVariant(caseIdentity, provenance.matchedModel)) return null;
   verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, discoveryBytes);
   const payload = JSON.parse(Buffer.from(discoveryBytes).toString('utf8'));
   if (!officialMarketApiDimensions(payload, caseIdentity)) return null;
@@ -130,6 +174,7 @@ export function officialMarketApiBoundExactCoverModel(
 ) {
   if (provenance?.method !== 'official_market_api' || !provenance.discoveryContentSha256) return null;
   if (requiredText(caseIdentity?.brand, 'target brand').toUpperCase() !== 'ASKO') return null;
+  if (officialMarketApiModelVariant(caseIdentity, provenance.matchedModel)) return null;
   verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, discoveryBytes);
   const payload = JSON.parse(Buffer.from(discoveryBytes).toString('utf8'));
   if (!officialMarketApiDimensions(payload, caseIdentity)) return null;

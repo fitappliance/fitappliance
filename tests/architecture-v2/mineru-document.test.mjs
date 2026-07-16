@@ -2949,3 +2949,36 @@ test('official exact-cover binding scopes a shared ASKO dishwasher technical tab
   });
   assert.ok(parsed.identitySignals.some((signal) => signal.type === 'mineru_bound_exact_cover_model'));
 });
+
+test('official exact-cover binding scopes ASKO product-sheet dimension paragraphs without door or package leakage', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [paragraph('W4104C.W.AU')],
+    [
+      titleFragment('Dimensions'),
+      paragraph('Width: 595 mm'),
+      paragraph('Height: 850 mm'),
+      paragraph('Depth: 700 mm'),
+      paragraph('Depth with door open: 1057 mm'),
+      titleFragment('Logistic information'),
+      paragraph('Packaging width: 640 mm'),
+      paragraph('Packaging height: 920 mm'),
+      paragraph('Packaging depth: 776 mm'),
+    ],
+  ]));
+  const options = {
+    pdfSha256,
+    parserVersion: '3.4.4',
+    modelRevision,
+    caseIdentity: { brand: 'ASKO', model: 'W4104C.W.AU', category: 'washing_machine' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    boundExactCoverModel: 'W4104C.W.AU',
+  };
+  const parsed = parseMineruContentListV2(bytes, options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 700 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 850 },
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 595 },
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['asko-au-product-sheet-dimension-section-v1']);
+});

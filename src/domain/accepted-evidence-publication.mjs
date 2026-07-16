@@ -1,4 +1,5 @@
 import { projectEvidenceGeometry } from './evidence-geometry-projector.mjs';
+import { isStrictOfficialModelVariantPdfSource } from './official-model-variant-policy.mjs';
 
 function text(value) {
   return String(value ?? '').trim();
@@ -85,10 +86,14 @@ export function buildReceiptBoundAcceptanceProjection(input, options = {}) {
       throw new Error(`accepted evidence identity outcome drift: ${id}`);
     }
     if (identityOutcome === 'official_marketing_alias') {
-      if (outcome.source.contentType !== 'text/html'
-        || !text(outcome.source.identity?.sourceModel)
-        || !(outcome.source.claims ?? []).every((claim) => ALIAS_DIMENSION_FIELDS.has(claim.field))) {
-        throw new Error(`strict official marketing alias must be HTML dimensions only: ${id}`);
+      const htmlAlias = outcome.source.contentType === 'text/html'
+        && text(outcome.source.identity?.sourceModel)
+        && (outcome.source.claims ?? []).every((claim) => ALIAS_DIMENSION_FIELDS.has(claim.field));
+      const pdfVariant = isStrictOfficialModelVariantPdfSource(outcome.source, {
+        brand: entry.brand, model: entry.model, category: entry.category,
+      });
+      if (!htmlAlias && !pdfVariant) {
+        throw new Error(`official model-variant PDF requires complete binding signals or strict HTML dimensions only: ${id}`);
       }
     }
     const projected = projectEvidenceGeometry({

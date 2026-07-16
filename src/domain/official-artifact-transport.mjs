@@ -200,6 +200,7 @@ export function buildCurlArguments(requestedUrl, options, bodyPath, headersPath)
 function validateTransportResult(result, requestedUrl, brand, options) {
   const hostContext = {
     model: options.expectedModel,
+    category: options.expectedCategory,
     artifactUrl: requestedUrl,
     discoveryProvenance: options.discoveryProvenance,
   };
@@ -224,6 +225,7 @@ function validateTransportResult(result, requestedUrl, brand, options) {
 export async function fetchOfficialArtifactResilient(requestedUrl, brand, options = {}) {
   if (!isOfficialBrandArtifactUrl(requestedUrl, brand, {
     model: options.expectedModel,
+    category: options.expectedCategory,
     discoveryProvenance: options.discoveryProvenance,
   })) {
     throw new TypeError('requested URL is not an official brand URL with valid market discovery provenance');

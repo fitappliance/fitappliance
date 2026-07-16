@@ -314,6 +314,47 @@ test('resolver case records retain reconciliation hints for conflict-driven disc
   assert.deepEqual(resolverCase.reconciliationContext, targetRecord.reconciliationContext);
 });
 
+test('dynamically discovered artifact jobs preserve target model and category', async () => {
+  const artifactJob = job('a'.repeat(32), 'https://official.example.com/primary.pdf', ['target-a']);
+  artifactJob.authorityBrand = 'ASKO';
+  const targetRecord = target('target-a', 'W4104C.W', [artifactJob.jobId]);
+  targetRecord.brand = 'ASKO';
+  targetRecord.category = 'washing_machine';
+  let discoveredJob = null;
+  await runReceiptBoundEvidenceBatch(batch({ jobs: [artifactJob], targets: [targetRecord] }), dependencies({
+    acquireArtifact: async (input) => {
+      if (input.sourceUrl.includes('variant.pdf')) discoveredJob = structuredClone(input);
+      return {
+        jobId: input.jobId,
+        sourceUrl: input.sourceUrl,
+        finalUrl: input.sourceUrl,
+        contentSha256: 'a'.repeat(64),
+        objectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.pdf`,
+        contentType: 'application/pdf',
+        byteSize: 1024,
+      };
+    },
+    candidateResolversForTarget: () => [{
+      resolverId: 'asko-variant', version: '1', scope: 'variant', required: true,
+      async resolve() {
+        return {
+          resolverId: 'asko-variant', version: '1', scope: 'variant', required: true,
+          completion: 'complete',
+          candidates: [{
+            sourceUrl: 'https://official.example.com/variant.pdf',
+            authorityMode: 'official', sourceRole: 'manufacturer_document', requiredAttempt: true,
+            discoveryMethod: 'official_market_api',
+            discoveryProvenance: { method: 'official_market_api', requestedModel: 'W4104C.W' },
+          }],
+        };
+      },
+    }],
+  }));
+
+  assert.equal(discoveredJob.targetModel, 'W4104C.W');
+  assert.equal(discoveredJob.targetCategory, 'washing_machine');
+});
+
 test('lower-authority disagreement triggers a second pass over optional official corroboration', async () => {
   const artifactJob = job('a'.repeat(32), 'https://official.example.com/model.pdf', ['target-a']);
   const targetRecord = target('target-a', 'EX100', [artifactJob.jobId]);

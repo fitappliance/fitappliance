@@ -73,22 +73,53 @@ test('ASKO finder binds exact-model PDFs to immutable AU API discovery JSON', as
   assert.equal(result.resources.some((resource) => resource.url === siblingPdf), false);
 });
 
-test('ASKO finder does not treat an AU suffix variant as an exact target', async () => {
+test('ASKO finder permits only the official AU suffix variant and preserves both model identities', async () => {
+  const code = '000000000000592077';
+  const pdf = 'https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf';
+  const search = { products: [
+    { code: `ggProductCatalog/Online/${code}`, modelMark: 'W4086C.W.AU' },
+    { code: 'ggProductCatalog/Online/000000000000738297', modelMark: 'W4086C.W.P' },
+    { code: 'ggProductCatalog/Online/000000000000738298', modelMark: 'W4086C.W/1' },
+  ] };
+  const detail = {
+    code,
+    modelMark: 'W4086C.W.AU',
+    documents: [{ desc: 'Product sheet', url: pdf }],
+    classifications: [{ features: [
+      { name: 'Width', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '595' }] },
+      { name: 'Height', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '850' }] },
+      { name: 'Depth', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '585' }] },
+    ] }],
+  };
+  const writes = [];
   const result = await findAskoOfficialPdf(
-    { brand: 'ASKO', sku: 'W4086C.W', model: 'W4086C.W' },
+    { brand: 'ASKO', sku: 'W4086C.W', model: 'W4086C.W', category: 'washing_machine' },
     {
-      fetchImpl: async () => response({ products: [{
-        code: 'ggProductCatalog/Online/000000000000592077',
-        modelMark: 'W4086C.W.AU',
-        manuals: [{
-          desc: 'Product sheet',
-          url: 'https://atag.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf',
-        }],
-      }] }),
-      writeObject: async () => assert.fail('non-exact API results must not be persisted as target evidence'),
+      fetchImpl: async (url) => response(url.includes('/manuals/search') ? search : detail),
+      writeObject: async (path, bytes) => writes.push({ path, bytes: Buffer.from(bytes) }),
     },
   );
-  assert.equal(result, null);
+
+  assert.equal(result.matchedSku, 'W4086C.W.AU');
+  assert.equal(result.resources.length, 1);
+  assert.equal(result.resources[0].url, pdf);
+  assert.equal(result.resources[0].matchedSku, 'W4086C.W.AU');
+  assert.equal(result.resources[0].discoveryProvenance.requestedModel, 'W4086C.W');
+  assert.equal(result.resources[0].discoveryProvenance.matchedModel, 'W4086C.W.AU');
+  assert.equal(writes.length, 1);
+
+  for (const modelMark of ['W4086C.W.P', 'W4086C.W/1']) {
+    const rejected = await findAskoOfficialPdf(
+      { brand: 'ASKO', sku: 'W4086C.W', model: 'W4086C.W', category: 'washing_machine' },
+      {
+        fetchImpl: async () => response({ products: [{
+          code: 'ggProductCatalog/Online/000000000000738297', modelMark,
+        }] }),
+        writeObject: async () => assert.fail('non-AU variants must not be persisted'),
+      },
+    );
+    assert.equal(rejected, null);
+  }
 });
 
 test('ASKO finder retains multiple exact product revisions only when every PIM dimension set agrees', async () => {

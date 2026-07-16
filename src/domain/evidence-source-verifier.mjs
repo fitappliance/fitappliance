@@ -7,6 +7,13 @@ import {
 } from './official-product-page-discovery-evidence.mjs';
 import { verifyOfficialMarketApiDiscoveryEvidence } from './official-market-api-discovery-evidence.mjs';
 import { verifyOfficialSupportApiDiscoveryEvidence } from './official-support-api-discovery-evidence.mjs';
+import {
+  isStrictOfficialModelVariantPdfSource,
+  officialMarketApiModelVariant,
+  strictOfficialModelVariantPdfFailure,
+} from './official-model-variant-policy.mjs';
+
+export { officialMarketApiModelVariant } from './official-model-variant-policy.mjs';
 
 const manufacturerPolicy = JSON.parse(readFileSync(
   new URL('../../data/architecture-v2/policies/manufacturer-source-policy.json', import.meta.url),
@@ -140,6 +147,7 @@ export function isOfficialBrandArtifactHostUrl(value, brand, context = {}) {
     normalizeOfficialArtifactDiscoveryProvenance(context.discoveryProvenance, {
       brand,
       model: context.model,
+      category: context.category,
       artifactUrl: context.artifactUrl,
     });
     return true;
@@ -258,8 +266,16 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
       ? officialProductPageUrl(value.discoveryUrl, brand)
       : officialSupportApiUrl(value.discoveryUrl, brand, sourceMarket);
   const expectedKey = modelKey(expectedModel, 'discovery target model');
-  if (modelKey(value.requestedModel, 'discovery requested model') !== expectedKey
-    || modelKey(value.matchedModel, 'discovery matched model') !== expectedKey) {
+  const requestedMatches = modelKey(value.requestedModel, 'discovery requested model') === expectedKey;
+  const matchedMatches = modelKey(value.matchedModel, 'discovery matched model') === expectedKey;
+  const approvedMarketVariant = method === 'official_market_api'
+    ? officialMarketApiModelVariant({
+      brand,
+      model: expectedModel,
+      category: context.category,
+    }, value.matchedModel)
+    : null;
+  if (!requestedMatches || (!matchedMatches && !approvedMarketVariant)) {
     throw new TypeError('official artifact discovery model does not match target model');
   }
   const result = {
@@ -372,6 +388,7 @@ export function isOfficialBrandArtifactUrl(value, brand, context = {}) {
     normalizeOfficialArtifactDiscoveryProvenance(context.discoveryProvenance, {
       brand,
       model: context.model,
+      category: context.category,
       artifactUrl: value,
     });
     return true;
@@ -386,6 +403,7 @@ function trustedArtifactUrl(value, identity, discoveryProvenance) {
     normalizeOfficialArtifactDiscoveryProvenance(discoveryProvenance, {
       brand: identity.brand,
       model: identity.model,
+      category: identity.category,
       artifactUrl: value,
     });
     return new URL(value).toString();
@@ -402,6 +420,7 @@ function trustedArtifactHopUrl(value, identity, sourceUrl, discoveryProvenance, 
   if (isOfficialBrandHostUrl(normalized, identity.brand)) return normalized;
   if (!isOfficialBrandArtifactHostUrl(normalized, identity.brand, {
     model: identity.model,
+    category: identity.category,
     artifactUrl: sourceUrl,
     discoveryProvenance,
   })) {
@@ -444,7 +463,6 @@ function normalizedSourceIdentity(source, caseIdentity, contentType) {
   const outcome = requiredText(sourceIdentity?.outcome, 'source identity outcome');
   if (outcome === 'exact') return { ...identity, outcome: 'exact' };
   if (outcome !== 'official_marketing_alias') throw new TypeError('unsupported source identity outcome');
-  if (contentType !== 'text/html') throw new TypeError('official marketing alias requires HTML evidence');
   const sourceModel = requiredText(sourceIdentity?.sourceModel, 'alias source model');
   if (sourceModel.toUpperCase().replace(/[^A-Z0-9]+/g, '')
     === identity.model.toUpperCase().replace(/[^A-Z0-9]+/g, '')) {
@@ -454,6 +472,13 @@ function normalizedSourceIdentity(source, caseIdentity, contentType) {
     throw new TypeError('official marketing alias is dimensions only');
   }
   const signalTypes = new Set((source?.identitySignals ?? []).map((signal) => signal?.type));
+  if (contentType === 'application/pdf') {
+    if (!isStrictOfficialModelVariantPdfSource(source, identity)) {
+      throw new TypeError(`official model variant PDF binding invalid: ${strictOfficialModelVariantPdfFailure(source, identity)}`);
+    }
+    return { ...identity, outcome, sourceModel };
+  }
+  if (contentType !== 'text/html') throw new TypeError('official marketing alias requires HTML or bound PDF evidence');
   for (const required of ['document_title', 'canonical_source_model']) {
     if (!signalTypes.has(required)) throw new TypeError(`official marketing alias missing ${required}`);
   }
@@ -767,6 +792,7 @@ function receiptPayload(
         discoveryProvenance: normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
           brand: identity.brand,
           model: identity.model,
+          category: identity.category,
           artifactUrl: source.sourceUrl,
         }),
       } : {}),
@@ -846,6 +872,7 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
     const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
       brand: caseIdentity?.brand,
       model: caseIdentity?.model,
+      category: caseIdentity?.category,
       artifactUrl: source?.sourceUrl,
     });
     verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
@@ -855,6 +882,7 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
     const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
       brand: caseIdentity?.brand,
       model: caseIdentity?.model,
+      category: caseIdentity?.category,
       artifactUrl: source?.sourceUrl,
     });
     verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
@@ -864,6 +892,7 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
     const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
       brand: caseIdentity?.brand,
       model: caseIdentity?.model,
+      category: caseIdentity?.category,
       artifactUrl: source?.sourceUrl,
     });
     verifyOfficialSupportApiDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
@@ -978,6 +1007,7 @@ export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
     const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
       brand: caseIdentity?.brand,
       model: caseIdentity?.model,
+      category: caseIdentity?.category,
       artifactUrl: source?.sourceUrl,
     });
     verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
@@ -988,6 +1018,7 @@ export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
     const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
       brand: caseIdentity?.brand,
       model: caseIdentity?.model,
+      category: caseIdentity?.category,
       artifactUrl: source?.sourceUrl,
     });
     verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
@@ -998,6 +1029,7 @@ export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
     const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
       brand: caseIdentity?.brand,
       model: caseIdentity?.model,
+      category: caseIdentity?.category,
       artifactUrl: source?.sourceUrl,
     });
     verifyOfficialSupportApiDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);

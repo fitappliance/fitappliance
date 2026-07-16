@@ -223,6 +223,41 @@ test('declared slow official hosts receive only their bounded transport timeout 
   assert.equal(result.contentType, 'application/pdf');
 });
 
+test('ASKO AU technical-model artifact transport preserves target category for variant policy', async () => {
+  const sourceUrl = 'https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf';
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_market_api',
+    market: 'AU',
+    discoveryUrl: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592078?fields=FULL&lang=en_AU&curr=AUD',
+    requestedModel: 'W4104C.W',
+    matchedModel: 'W4104C.W.AU',
+    artifactUrl: sourceUrl,
+    discoveryContentSha256: 'a'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.json`,
+    discoveryByteSize: 123,
+  };
+  await assert.rejects(() => fetchOfficialArtifactResilient(sourceUrl, 'ASKO', {
+    expectedModel: 'W4104C.W',
+    discoveryProvenance,
+  }), /official brand URL|provenance/i);
+  const result = await fetchOfficialArtifactResilient(sourceUrl, 'ASKO', {
+    expectedModel: 'W4104C.W',
+    expectedCategory: 'washing_machine',
+    discoveryProvenance,
+    allowCurlFallback: true,
+    fetchImpl: async () => { throw new DOMException('timed out', 'TimeoutError'); },
+    curlImpl: async () => ({
+      finalUrl: sourceUrl,
+      redirectChain: [],
+      contentType: 'application/pdf',
+      bytes: PDF,
+    }),
+  });
+
+  assert.equal(result.contentType, 'application/pdf');
+});
+
 test('Electrolux resource transport preserves curl default user agent', () => {
   const args = buildCurlArguments(
     'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse',

@@ -591,6 +591,8 @@ const BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR =
   'bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1';
 const BOSCH_AU_DISHWASHER_DIMENSION_SECTION_GRAMMAR =
   'bosch-au-dishwasher-dimensions-section-explicit-axes-v1';
+const ASKO_AU_PRODUCT_SHEET_DIMENSION_SECTION_GRAMMAR =
+  'asko-au-product-sheet-dimension-section-v1';
 
 function explicitDimensionRowsWithInheritedUnit(text, {
   requireShorthand = false,
@@ -749,6 +751,48 @@ function documentScopedDimensionSectionRows(items, fragmentIndex) {
   return explicitDimensionRowsWithInheritedUnit(fragment.text, {
     grammarProfileId: BOSCH_AU_DISHWASHER_DIMENSION_SECTION_GRAMMAR,
   });
+}
+
+function askoAuProductSheetDimensionScope(document, caseIdentity, boundExactCoverModel) {
+  if (canonicalModel(caseIdentity?.brand) !== 'ASKO'
+    || !boundExactCoverModel
+    || boundExactCoverModel.toUpperCase() !== normalizedText(caseIdentity?.model).toUpperCase()) {
+    return null;
+  }
+  const sections = [];
+  document.pages.forEach((items, pageIndex) => {
+    items.forEach((heading, headingIndex) => {
+      if (!['title', 'paragraph', 'text'].includes(heading.type)
+        || !/^dimensions\s*:?$/i.test(heading.text)) return;
+      const entries = [];
+      for (const fragment of items.slice(headingIndex + 1)) {
+        if (fragment.type === 'title') break;
+        if (!['paragraph', 'text'].includes(fragment.type)) continue;
+        const match = /^[\s•*-]*(width|height|depth)\s*:\s*(\d+)\s*mm\s*$/i.exec(fragment.text);
+        if (!match) continue;
+        const axis = match[1].toLowerCase();
+        entries.push({
+          fragment,
+          row: {
+            label: axis[0].toUpperCase() + axis.slice(1),
+            value: `${match[2]} mm`,
+            quote: normalizedText(fragment.text),
+            semanticBasis: 'asko_product_sheet_dimension_section',
+            axisOrder: [axis],
+            grammarProfileId: ASKO_AU_PRODUCT_SHEET_DIMENSION_SECTION_GRAMMAR,
+          },
+        });
+      }
+      if (entries.length === 3
+        && entries.map((entry) => entry.row.axisOrder[0]).join(',') === 'width,height,depth') {
+        sections.push({ page: pageIndex + 1, heading, entries });
+      }
+    });
+  });
+  return sections.length === 1 ? {
+    ...sections[0],
+    grammarProfileId: ASKO_AU_PRODUCT_SHEET_DIMENSION_SECTION_GRAMMAR,
+  } : null;
 }
 
 function normalizedDimensionValue(value) {
@@ -2927,6 +2971,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const boschDimensionSectionScope = claimSemanticsVersion === 2
     ? boschDishwasherDimensionSectionDocumentScope(document, caseIdentity, options.sourceUrls)
     : null;
+  const askoProductSheetDimensionScope = claimSemanticsVersion === 2
+    ? askoAuProductSheetDimensionScope(document, caseIdentity, boundExactCoverModel)
+    : null;
   const boschDimensionSectionSignals = boschDimensionSectionScope ? [{
     type: 'mineru_bosch_dimension_section_exact_model',
     value: `${model}:titles:${boschDimensionSectionScope.titlePages.join(',')}:url:${boschDimensionSectionScope.exactDocumentUrl}`,
@@ -3051,6 +3098,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   if (lgDryerSizeScope) {
     appliedGrammarProfiles.add(lgDryerSizeScope.grammarProfileId);
   }
+  if (askoProductSheetDimensionScope) {
+    appliedGrammarProfiles.add(askoProductSheetDimensionScope.grammarProfileId);
+  }
   const sharedModelListPages = new Set();
   document.pages.forEach((items, pageIndex) => {
     const pageSignals = documentSignals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
@@ -3105,12 +3155,18 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         .map((item, index) => [item, documentScopedDimensionSectionRows(items, index)])
         .filter(([, rows]) => rows?.length === 3))
       : new Map();
+    const askoProductSheetRowsByFragment = new Map(
+      askoProductSheetDimensionScope?.page === pageIndex + 1
+        ? askoProductSheetDimensionScope.entries.map((entry) => [entry.fragment, [entry.row]])
+        : [],
+    );
     if (!pageScoped && !documentScoped && !bekoDocumentScoped
       && !sharedModelListScoped && !groupedColumnScoped
       && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped
       && !chiqSpecPageScoped && !samsungWasherWildcardPageScoped
       && !fisherPaykelRf610PageScoped && !hisenseLegacySpecPageScoped
-      && !hisenseNetPackagePageScoped && !boschDimensionSectionScope) return;
+      && !hisenseNetPackagePageScoped && !boschDimensionSectionScope
+      && !askoProductSheetRowsByFragment.size) return;
     const bekoPageScoped = items.some((item) => (
       ['title', 'page_header'].includes(item.type)
         && containsExplicitModelExpression(item.text, model)
@@ -3186,6 +3242,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       || joinedParagraphRowsByFragment.has(item)
       || joinedScalarRowsByFragment.has(item)
       || documentDimensionSectionRowsByFragment.has(item)
+      || askoProductSheetRowsByFragment.has(item)
     ))) {
       if (chiqSpecScope && fragment !== chiqSpecScope.fragment) continue;
       if (hisenseLegacySpecScope?.sourceFragments.includes(fragment)
@@ -3252,6 +3309,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           ? [joinedParagraphRowsByFragment.get(fragment)]
           : joinedScalarRowsByFragment.has(fragment)
             ? [joinedScalarRowsByFragment.get(fragment)]
+            : askoProductSheetRowsByFragment.has(fragment)
+              ? askoProductSheetRowsByFragment.get(fragment)
             : documentDimensionSectionRowsByFragment.has(fragment)
               ? documentDimensionSectionRowsByFragment.get(fragment)
           : paragraphRows(fragment.text);

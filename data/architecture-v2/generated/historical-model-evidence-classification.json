@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T06:45:02.870Z",
+  "generatedAt": "2026-07-16T08:10:11.530Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "d4dbd7005dc5b3410deeeebd97f86eeef7df865396a1e5549e06fcab6e23f610",
+  "semanticClassificationSha256": "7fb45349deb79cc4686f9b5fc5ecf9fbc43855befab6d43d647c0e4d7e3e6c0a",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4243,
+    "documentLinks": 4249,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 256,
+      "COMPLETE_RECEIPT": 260,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 154,
       "OFFICIAL_DISCOVERY": 6417,
-      "REFERENCE_REDISCOVERY": 1185
+      "REFERENCE_REDISCOVERY": 1181
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6417,
-      "NO_ACTION": 256,
-      "REDISCOVER_OFFICIAL_SOURCE": 1185,
+      "NO_ACTION": 260,
+      "REDISCOVER_OFFICIAL_SOURCE": 1181,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 154
     },
     "bySourceAuthority": {
-      "MIXED": 120,
+      "MIXED": 124,
       "NONE": 6630,
       "OFFICIAL": 143,
-      "REFERENCE": 1202
+      "REFERENCE": 1198
     },
     "byIdentityScope": {
       "AMBIGUOUS": 191,
@@ -47,8 +47,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 64,
-      "ALL_AXIS_SCALAR": 335,
-      "NOT_PARSED": 7600,
+      "ALL_AXIS_SCALAR": 339,
+      "NOT_PARSED": 7596,
       "PARSER_GAP": 96
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 256,
-      "LEGACY_UNBOUND": 1514,
+      "CURRENT_VALID": 260,
+      "LEGACY_UNBOUND": 1510,
       "NONE": 6325
     }
   },
@@ -81,13 +81,13 @@
       "category": "dryer",
       "records": 843,
       "brands": 72,
-      "documentLinks": 267,
+      "documentLinks": 268,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 30,
+        "COMPLETE_RECEIPT": 31,
         "CONFLICT_QUARANTINE": 4,
         "IDENTITY_RESEARCH": 8,
         "OFFICIAL_DISCOVERY": 745,
-        "REFERENCE_REDISCOVERY": 56
+        "REFERENCE_REDISCOVERY": 55
       }
     },
     {
@@ -107,13 +107,13 @@
       "category": "washing_machine",
       "records": 1497,
       "brands": 88,
-      "documentLinks": 654,
+      "documentLinks": 659,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 29,
+        "COMPLETE_RECEIPT": 32,
         "CONFLICT_QUARANTINE": 9,
         "IDENTITY_RESEARCH": 37,
         "OFFICIAL_DISCOVERY": 1237,
-        "REFERENCE_REDISCOVERY": 185
+        "REFERENCE_REDISCOVERY": 182
       }
     }
   ],
@@ -60137,14 +60137,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 2,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -60185,6 +60186,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/b5/95/b5952210881d7f33f661b7bfa067a19cba48843e4e4a7090c2c35db75ac82434.json",
+            "evidence/web/sha256/1f/0b/1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1.pdf",
+            "receipt:b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1"
+        },
+        {
           "documentId": "source:doc_a113881861492cf826a7ba5f",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/9/0/5/e/905e78eea8c5f5b7850823fdb801c4ebbb80476c_Asko_T410HD.W_10kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -60200,8 +60220,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "ASKO"
@@ -246600,14 +246620,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 2,
+        "RECEIPT_BOUND": 2,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -246648,6 +246669,44 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/6d/9c/6d9ccb129d8d87c7c67859b500ff509c45fb17f42cbb3452231e37b07e933c46.json",
+            "evidence/web/sha256/8e/58/8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a.pdf",
+            "receipt:a09a37944b16bab8a41a378634a1f7384b6be0f7ea290282ce6656d13e3dc92e"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a"
+        },
+        {
+          "documentId": "pdf:b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+          "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/ea/24/ea240dc0e556584ec0d78adfc54461a3f3ba78c5e7be44d31af7d632632d0fad.json",
+            "evidence/web/sha256/b9/35/b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444.pdf",
+            "receipt:7951c36ba1448b93d4c5093aace71098944e8c340b61b0139c97362849168ba9"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444"
+        },
+        {
           "documentId": "source:doc_9ade0f75c4dbdf927730f468",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/0/3/e/b/03eb248f1e9f64bb7c3ebe77d3c0cbd226012192_productSheet_000000000000592099_bs_asko_au_en_AU.pdf",
           "evidenceObjectIds": [
@@ -246663,8 +246722,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "ASKO"
@@ -246733,14 +246792,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 2,
+        "RECEIPT_BOUND": 2,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -246781,6 +246841,44 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+          "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/39/26/39269cb036fadd244f8d53fa8e89f49e899f5839d04f23682af6c50d91dad247.json",
+            "evidence/web/sha256/6b/0c/6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e.pdf",
+            "receipt:c5c5399b94e77ca4bc424b220230dcd61bb4824845ba2412a823c4c97b3e4538"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e"
+        },
+        {
+          "documentId": "pdf:d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/a5/b6/a5b6946e0a49c090a3c96d865d6b76a783767bc0bc4a52dd89a5202c0908a4a1.json",
+            "evidence/web/sha256/d5/15/d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b.pdf",
+            "receipt:41c95de57aaf1d4c84374f902ae1f5e088c31167d328269ac5892128905aad57"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b"
+        },
+        {
           "documentId": "source:doc_fd5e7ec7ef0e9d38aaf1e740",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/f/4/8/6f48881c7cd4c95e49599b31d0b54f0bea3cc303_W4086C.W_Asko_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -246796,8 +246894,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "ASKO"
@@ -247055,14 +247153,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 2,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -247103,6 +247202,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+          "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/eb/0a/eb0a4f6a792a014890c84fbec82736e0d16a318e147877b08c61bffd682ba2c6.json",
+            "evidence/web/sha256/92/46/92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b.pdf",
+            "receipt:91e1b1730ade1d0bb2b7d64e99272d1dbd7525c0d664b9b6a7ced1689e575caf"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b"
+        },
+        {
           "documentId": "source:doc_6814602a290fb910372079f8",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/4/3/e/c/43ec78a960ece66d404dd914ac55ecb0f4748337_W4104C.W_Asko_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -247118,8 +247236,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "ASKO"

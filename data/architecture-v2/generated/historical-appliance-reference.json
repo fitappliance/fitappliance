@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "7491a1e456ed5d0be4ed073791f91b4aec1f52bf92d1c666ec22d34bcf58ea8f"
+    "historical-recovery:historical-recovery-cumulative-v1": "96fc83098034467b308a675d4c0baf11248c0079fbceeb3fd8fe8daff865af86"
   },
   "records": [
     {
@@ -60307,14 +60307,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 595,
+        "height": 850,
+        "depth": 769
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_07379007e8685c82942b641b",
+          "snapshotSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+          "sourceLines": [
+            43
+          ]
         }
       ],
       "catalogProductIds": [
@@ -60323,8 +60334,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_07379007e8685c82942b641b",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf",
+          "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+          "receiptBindingSha256": "b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d",
+          "verifiedAt": "2026-07-16T08:02:31.188Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "ce4d4b9367fda2f6ac5e143faa3be7e708112606489847fc98bf9e461c595868"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "ce4d4b9367fda2f6ac5e143faa3be7e708112606489847fc98bf9e461c595868"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "ce4d4b9367fda2f6ac5e143faa3be7e708112606489847fc98bf9e461c595868"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/1f/0b/1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1.pdf"
+        }
       ]
     },
     {
@@ -263806,14 +263843,32 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 595,
+        "height": 850,
+        "depth": 585
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2b41665b5259820780729108",
+          "snapshotSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+          "sourceLines": [
+            45
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2b41665b5259820780729108",
+          "snapshotSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -263822,8 +263877,60 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2b41665b5259820780729108",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf",
+          "contentSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+          "receiptBindingSha256": "a09a37944b16bab8a41a378634a1f7384b6be0f7ea290282ce6656d13e3dc92e",
+          "verifiedAt": "2026-07-16T07:59:19.609Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 45,
+              "fragmentSha256": "0f64aabf49988268a77244a540a2e1f35470aae3862ddcc33a9580775f139e0f"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 45,
+              "fragmentSha256": "0f64aabf49988268a77244a540a2e1f35470aae3862ddcc33a9580775f139e0f"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 45,
+              "fragmentSha256": "0f64aabf49988268a77244a540a2e1f35470aae3862ddcc33a9580775f139e0f"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/8e/58/8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a.pdf"
+        },
+        {
+          "targetId": "recovery_target_2b41665b5259820780729108",
+          "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE",
+          "contentSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+          "receiptBindingSha256": "7951c36ba1448b93d4c5093aace71098944e8c340b61b0139c97362849168ba9",
+          "verifiedAt": "2026-07-16T07:59:34.539Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "45268aca78e7b946af00054d71e22b5e681fb00535822dcd06f2fe25c67f2b5c"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "a44b9b4d3c7d43ce307665799fdfce2ade92db76b61817968d4bb5b456d7f772"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "1346983cd29f0520eb1dd1d6c08edcdb7d6184c23c0aa370e961e0a51d947ff1"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/b9/35/b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444.pdf"
+        }
       ]
     },
     {
@@ -263911,14 +264018,32 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 595,
+        "height": 850,
+        "depth": 585
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_555229b6c82dd888bfb84296",
+          "snapshotSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+          "sourceLines": [
+            2
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_555229b6c82dd888bfb84296",
+          "snapshotSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+          "sourceLines": [
+            46
+          ]
         }
       ],
       "catalogProductIds": [
@@ -263927,8 +264052,60 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_555229b6c82dd888bfb84296",
+          "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI",
+          "contentSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+          "receiptBindingSha256": "c5c5399b94e77ca4bc424b220230dcd61bb4824845ba2412a823c4c97b3e4538",
+          "verifiedAt": "2026-07-16T08:06:11.892Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "70648c371af5eba95739a7ddb01d933d571b1688efb1daa4e6449a5fa30ac521"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "1732f8fdd2c968b4feecebbd7169fad479fc3c20e0ec559381c6bf7ea3b9bb9a"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "2008d524d99bd76d9acd8f05c434a2337fbf687c078d34d5f5627af7500b3c5a"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/6b/0c/6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e.pdf"
+        },
+        {
+          "targetId": "recovery_target_555229b6c82dd888bfb84296",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf",
+          "contentSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+          "receiptBindingSha256": "41c95de57aaf1d4c84374f902ae1f5e088c31167d328269ac5892128905aad57",
+          "verifiedAt": "2026-07-16T08:05:56.797Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 46,
+              "fragmentSha256": "69ea0fd34d6a131d2fa4beddefe6fa068d3c8141fc5f5f464eab6ea67b24d6e8"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 46,
+              "fragmentSha256": "69ea0fd34d6a131d2fa4beddefe6fa068d3c8141fc5f5f464eab6ea67b24d6e8"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 46,
+              "fragmentSha256": "69ea0fd34d6a131d2fa4beddefe6fa068d3c8141fc5f5f464eab6ea67b24d6e8"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d5/15/d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b.pdf"
+        }
       ]
     },
     {
@@ -264224,14 +264401,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 595,
+        "height": 850,
+        "depth": 700
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_46e7344ab330094d00faf933",
+          "snapshotSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -264240,8 +264428,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_46e7344ab330094d00faf933",
+          "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk",
+          "contentSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+          "receiptBindingSha256": "91e1b1730ade1d0bb2b7d64e99272d1dbd7525c0d664b9b6a7ced1689e575caf",
+          "verifiedAt": "2026-07-16T07:57:16.857Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "70648c371af5eba95739a7ddb01d933d571b1688efb1daa4e6449a5fa30ac521"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "1732f8fdd2c968b4feecebbd7169fad479fc3c20e0ec559381c6bf7ea3b9bb9a"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "c3431630cf369f8d9fa3e26891a16eea23fc9508c2c7344efa8fff1ae386be20"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/92/46/92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b.pdf"
+        }
       ]
     },
     {
@@ -320447,16 +320661,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4856,
-      "IDENTITY_ONLY": 2947,
-      "MODEL_RECEIPT": 193,
+      "IDENTITY_ONLY": 2943,
+      "MODEL_RECEIPT": 197,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4856,
-      "MEASURE_REQUIRED": 2947,
-      "AUTO_FILL": 204,
+      "MEASURE_REQUIRED": 2943,
+      "AUTO_FILL": 208,
       "QUARANTINED": 88
     }
   }

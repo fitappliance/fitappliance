@@ -87,10 +87,36 @@ async function findAskoOfficialPdf(target, options = {}) {
   try { payload = JSON.parse(bytes.toString('utf8')); } catch {
     throw new Error('ASKO manuals API returned invalid JSON');
   }
-  const products = (Array.isArray(payload?.products) ? payload.products : [])
-    .filter((product) => exactModel(product?.modelMark, model));
+  const candidates = Array.isArray(payload?.products) ? payload.products : [];
+  const exactProducts = candidates.filter((product) => exactModel(product?.modelMark, model));
+  let products = exactProducts;
+  if (!products.length) {
+    const { officialMarketApiModelVariant } = await import(
+      '../../src/domain/official-model-variant-policy.mjs'
+    );
+    const identity = {
+      brand: target?.brand ?? 'ASKO',
+      model,
+      category: target?.category,
+    };
+    products = candidates.filter((product) => (
+      officialMarketApiModelVariant(identity, product?.modelMark) != null
+    ));
+  }
   if (!products.length) return null;
-  const productCodes = [...new Set(products.map((product) => text(product.code).split('/').at(-1)).filter(Boolean))];
+  const selectedModelsByCode = new Map();
+  for (const product of products) {
+    const productCode = text(product.code).split('/').at(-1);
+    const matchedModel = text(product.modelMark);
+    if (!productCode || !matchedModel) continue;
+    const previous = selectedModelsByCode.get(productCode);
+    if (previous && !exactModel(previous, matchedModel)) {
+      throw new Error('ASKO manuals API product code maps to conflicting models');
+    }
+    selectedModelsByCode.set(productCode, matchedModel);
+  }
+  const productCodes = [...selectedModelsByCode.keys()];
+  if (!productCodes.length) return null;
   const details = [];
   for (const productCode of productCodes) {
     const detailUrl = new URL(productCode, PRODUCT_API_BASE);
@@ -113,8 +139,9 @@ async function findAskoOfficialPdf(target, options = {}) {
     try { detail = JSON.parse(detailBytes.toString('utf8')); } catch {
       throw new Error('ASKO product API returned invalid JSON');
     }
-    if (!exactModel(detail?.modelMark, model) || text(detail?.code) !== productCode) {
-      throw new Error('ASKO product API did not preserve exact model and product code');
+    const selectedModel = selectedModelsByCode.get(productCode);
+    if (!exactModel(detail?.modelMark, selectedModel) || text(detail?.code) !== productCode) {
+      throw new Error('ASKO product API did not preserve selected model and product code');
     }
     details.push({ detail, detailBytes, detailUrl, productCode, dimensions: pimDimensions(detail) });
   }
@@ -153,7 +180,7 @@ async function findAskoOfficialPdf(target, options = {}) {
   bound.sort((left, right) => score(right) - score(left) || left.url.localeCompare(right.url));
   return {
     sourceUrl: bound[0].url,
-    matchedSku: model,
+    matchedSku: bound[0].matchedSku,
     resourceType: bound[0].resourceType,
     discoveryProvenance: bound[0].discoveryProvenance,
     resources: bound,

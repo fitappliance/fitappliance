@@ -9,6 +9,7 @@ import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recove
 import {
   manufacturerDocumentStrategiesIdentity,
   manufacturerSourcePolicyIdentity,
+  officialArtifactFetchOptions,
   parseHistoricalEvidenceRecoveryRunArgs,
   recoveryCandidateResolversForTarget,
   resolveHistoricalEvidenceRecoveryIoPaths,
@@ -18,6 +19,19 @@ import {
 const SHA_A = 'a'.repeat(64);
 const SHA_B = 'b'.repeat(64);
 const FIELDS = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+
+test('recovery fetch options preserve model, category and discovery provenance end to end', () => {
+  const discoveryProvenance = { method: 'official_market_api', matchedModel: 'W4104C.W.AU' };
+  const options = officialArtifactFetchOptions(policy(), {
+    expectedModel: 'W4104C.W',
+    expectedCategory: 'washing_machine',
+    discoveryProvenance,
+  });
+
+  assert.equal(options.expectedModel, 'W4104C.W');
+  assert.equal(options.expectedCategory, 'washing_machine');
+  assert.equal(options.discoveryProvenance, discoveryProvenance);
+});
 
 test('recovery toolchain identity binds the complete manufacturer document strategy policy', () => {
   const first = manufacturerDocumentStrategiesIdentity({

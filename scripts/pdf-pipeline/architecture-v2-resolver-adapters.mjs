@@ -36,12 +36,13 @@ function exactTarget(caseRecord) {
   const brand = String(caseRecord?.brand ?? '').trim();
   const model = String(caseRecord?.model ?? caseRecord?.sku ?? '').trim();
   if (!brand || !model) throw new TypeError('resolver target requires exact brand and model');
-  return { brand, model, sku: model };
+  const category = String(caseRecord?.category ?? '').trim();
+  return { brand, model, sku: model, ...(category ? { category } : {}) };
 }
 
-function authorityForUrl(sourceUrl, brand, model, discoveryProvenance) {
+function authorityForUrl(sourceUrl, brand, model, category, discoveryProvenance) {
   const official = discoveryProvenance
-    ? isOfficialBrandArtifactUrl(sourceUrl, brand, { model, discoveryProvenance })
+    ? isOfficialBrandArtifactUrl(sourceUrl, brand, { model, category, discoveryProvenance })
     : isOfficialBrandMarketUrl(sourceUrl, brand);
   return official ? 'official' : 'reference';
 }
@@ -98,10 +99,17 @@ function typedCandidate({
   documentType,
   sourceModelHint,
   targetModel = sourceModelHint,
+  category = null,
   discoveryProvenance = null,
   requiredAttempt = true,
 }) {
-  const authorityMode = authorityForUrl(sourceUrl, brand, targetModel, discoveryProvenance);
+  const authorityMode = authorityForUrl(
+    sourceUrl,
+    brand,
+    targetModel,
+    category,
+    discoveryProvenance,
+  );
   return {
     sourceUrl,
     discoveryMethod,
@@ -221,6 +229,7 @@ export function createLegacyFinderResolverAdapter({
             documentType: requestedType,
             sourceModelHint,
             targetModel: target.model,
+            category: target.category,
             discoveryProvenance,
             requiredAttempt: resource?.requiredAttempt ?? requestedType !== 'product_page',
           }));

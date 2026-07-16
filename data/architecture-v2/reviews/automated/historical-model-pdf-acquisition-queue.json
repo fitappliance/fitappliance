@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T06:45:02.870Z",
-  "semanticQueueSha256": "8c7b93c8d4b02d9ed52630d0d07245d6e904a0bd8c74e4dfd60e8b7cfb893b67",
-  "sourceClassificationSha256": "d4dbd7005dc5b3410deeeebd97f86eeef7df865396a1e5549e06fcab6e23f610",
+  "generatedAt": "2026-07-16T08:10:11.530Z",
+  "semanticQueueSha256": "0e063051a680d966532e6ac6187e0eed9f80a8db21c2b3ebe9c25489aed89523",
+  "sourceClassificationSha256": "7fb45349deb79cc4686f9b5fc5ecf9fbc43855befab6d43d647c0e4d7e3e6c0a",
   "records": [
     {
       "schemaVersion": 1,
@@ -8183,38 +8183,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_685bd49894f8c994de684d80"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_be839afaff34f7fe11c0dbc8",
-      "referenceId": "fa_ref_03275e6c7b751743089e8a9d",
-      "category": "dryer",
-      "brand": "ASKO",
-      "model": "T410HD.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_a903fb9f2219f221c67fa704",
-        "historical_source_e3dc4acb064fd1056581c16f"
-      ],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_07379007e8685c82942b641b"
-      ],
-      "legacyRuntimeIds": [
-        "ao-64002"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9c595a3e4cfdcfd52cf4c0a7"
       ],
       "offlineReplayOutcome": null
     },
@@ -29905,102 +29873,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_aca7fd1b6a6a98550d2d74c9"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3a3feb2de16cbfe8981d7b13",
-      "referenceId": "fa_ref_7017a73aa6952837bd428255",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "model": "W2084C.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_26e00a64a1e516653a1b7632",
-        "historical_source_c42d674e03140ed6363654aa"
-      ],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_2b41665b5259820780729108"
-      ],
-      "legacyRuntimeIds": [
-        "ao-64005"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_fbcd005a26df52798b85faa6"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a70f196b01fdfab79ced3393",
-      "referenceId": "fa_ref_6e75cda6315744e9163d7a30",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "model": "W4086C.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_0ef99f4f4a7ffc1dd28f94f3",
-        "historical_source_56642723ba4280edcbf60831"
-      ],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_555229b6c82dd888bfb84296"
-      ],
-      "legacyRuntimeIds": [
-        "ao-64006"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_2c73d7b74231c0d61af811a2"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f2736632075baeb242365a04",
-      "referenceId": "fa_ref_15c8a9eec96879f78c9d601a",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "model": "W4104C.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_6cc3cc8604f3b72a960dcce6",
-        "historical_source_a0535cdf9a849a1318dbdfcb"
-      ],
-      "resolverIds": [
-        "asko-official-manuals-api"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_46e7344ab330094d00faf933"
-      ],
-      "legacyRuntimeIds": [
-        "ao-64008"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6c7260ae42e101b1a6428176"
       ],
       "offlineReplayOutcome": null
     },
@@ -195097,19 +194969,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_0ef99f4f4a7ffc1dd28f94f3",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/f/4/8/6f48881c7cd4c95e49599b31d0b54f0bea3cc303_W4086C.W_Asko_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/W4086C.W.json",
-        "source:doc_fd5e7ec7ef0e9d38aaf1e740"
-      ],
-      "referenceIds": [
-        "fa_ref_6e75cda6315744e9163d7a30"
-      ]
-    },
-    {
       "sourceId": "historical_source_0f1711b6c2ad82e546f17892",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/d/1/5/b/d15b0278a76a734c018f06c75f327de07e495e87_Fisher___Paykel_RF610ADJX5_614L_French_Door_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -197038,18 +196897,6 @@
       ],
       "referenceIds": [
         "fa_ref_dd9eb61493723369788f7a7e"
-      ]
-    },
-    {
-      "sourceId": "historical_source_26e00a64a1e516653a1b7632",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/1/2/3/412382cebeae43207822bbf3ccefbc17f9d790bf_W2084CW_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/W2084CW.json"
-      ],
-      "referenceIds": [
-        "fa_ref_7017a73aa6952837bd428255"
       ]
     },
     {
@@ -200649,18 +200496,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_56642723ba4280edcbf60831",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/5/1/3/4513e2735045be38db0fa14d7938e7a7b05c3a69_W4086CW_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/W4086CW.json"
-      ],
-      "referenceIds": [
-        "fa_ref_6e75cda6315744e9163d7a30"
-      ]
-    },
-    {
       "sourceId": "historical_source_56a01411763796b17334d339",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/b/f/6/abf6cd45679c89545df8968db56a99e337eeea5b_Beko_DN151130X_510L_Top_Mount_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -202615,19 +202450,6 @@
       ],
       "referenceIds": [
         "fa_ref_95e402f8fd68938e2e415c25"
-      ]
-    },
-    {
-      "sourceId": "historical_source_6cc3cc8604f3b72a960dcce6",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/3/e/c/43ec78a960ece66d404dd914ac55ecb0f4748337_W4104C.W_Asko_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/W4104C.W.json",
-        "source:doc_6814602a290fb910372079f8"
-      ],
-      "referenceIds": [
-        "fa_ref_15c8a9eec96879f78c9d601a"
       ]
     },
     {
@@ -206701,18 +206523,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_a0535cdf9a849a1318dbdfcb",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/b/1/3/3b13d5f14a1be853d439ea95ced4544d0c257c47_W4104CW_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/W4104CW.json"
-      ],
-      "referenceIds": [
-        "fa_ref_15c8a9eec96879f78c9d601a"
-      ]
-    },
-    {
       "sourceId": "historical_source_a076ced926bbd98a5f6e7713",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/0/e/6/a/0e6a82ea04007fe771893e368f63f74be92435c6_EDW7W_Esatto_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -207295,18 +207105,6 @@
       ],
       "referenceIds": [
         "fa_ref_7b74ab39141d6d754ed55be4"
-      ]
-    },
-    {
-      "sourceId": "historical_source_a903fb9f2219f221c67fa704",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/c/3/7/0c376f84a83e297263b775a26c3c633fc142d030_T410HDW_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/T410HDW.json"
-      ],
-      "referenceIds": [
-        "fa_ref_03275e6c7b751743089e8a9d"
       ]
     },
     {
@@ -209405,19 +209203,6 @@
       ],
       "referenceIds": [
         "fa_ref_4edb72a4be8d0d41b15888d6"
-      ]
-    },
-    {
-      "sourceId": "historical_source_c42d674e03140ed6363654aa",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/3/e/b/03eb248f1e9f64bb7c3ebe77d3c0cbd226012192_productSheet_000000000000592099_bs_asko_au_en_AU.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/W2084C.W.json",
-        "source:doc_9ade0f75c4dbdf927730f468"
-      ],
-      "referenceIds": [
-        "fa_ref_7017a73aa6952837bd428255"
       ]
     },
     {
@@ -211702,19 +211487,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_e3dc4acb064fd1056581c16f",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/0/5/e/905e78eea8c5f5b7850823fdb801c4ebbb80476c_Asko_T410HD.W_10kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/T410HD.W.json",
-        "source:doc_a113881861492cf826a7ba5f"
-      ],
-      "referenceIds": [
-        "fa_ref_03275e6c7b751743089e8a9d"
-      ]
-    },
-    {
       "sourceId": "historical_source_e3ff63bb55babb4007a44119",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/f/e/0/5/fe05499e25fe4ae0b70e7c0cd293ff61f05b8574_HCF201_Haier_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -213583,46 +213355,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 256,
+    "COMPLETE_RECEIPT": 260,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7839,
-    "uniqueReferences": 7839,
-    "candidateSources": 1497,
-    "candidateEdges": 1532,
+    "queuedModels": 7835,
+    "uniqueReferences": 7835,
+    "candidateSources": 1489,
+    "candidateEdges": 1524,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1201,
+      "CURRENT_RETAIL": 1197,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1325,
-      "dryer": 813,
+      "dryer": 812,
       "fridge": 4233,
-      "washing_machine": 1468
+      "washing_machine": 1465
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 154,
       "OFFICIAL_DISCOVERY": 6417,
-      "REFERENCE_REDISCOVERY": 1185
+      "REFERENCE_REDISCOVERY": 1181
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 154,
       "OFFICIAL_DISCOVERY": 6417,
-      "OFFICIAL_REDISCOVERY": 1185
+      "OFFICIAL_REDISCOVERY": 1181
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5174,
+      "DISCOVERY_READY": 5170,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 256,
+      "COMPLETE_RECEIPT": 260,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

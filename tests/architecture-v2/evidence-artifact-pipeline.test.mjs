@@ -334,6 +334,98 @@ test('attestation loads immutable product-page discovery evidence through the ob
   assert.equal(result.source.verificationReceipt.schemaVersion, 3);
 });
 
+test('ASKO AU API variant attestation parses the source model and emits a dimensions-only model-variant PDF', async () => {
+  const targetModel = 'W4104C.W';
+  const sourceModel = 'W4104C.W.AU';
+  const artifactUrl = 'https://asko.hgecdn.net/medias/productSheet-W4104C-W-AU.pdf';
+  const pdfBytes = Buffer.from('%PDF-1.7\nASKO W4104C.W.AU product sheet');
+  const pdfSha256 = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [{
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: sourceModel }] },
+      bbox: [40, 40, 400, 80],
+    }],
+    [
+      { type: 'title', content: { title_content: [{ type: 'text', content: 'Dimensions' }] }, bbox: [40, 40, 300, 80] },
+      { type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Width: 595 mm' }] }, bbox: [40, 100, 300, 125] },
+      { type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Height: 850 mm' }] }, bbox: [40, 130, 300, 155] },
+      { type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Depth: 700 mm' }] }, bbox: [40, 160, 300, 185] },
+      { type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Depth with door open: 1057 mm' }] }, bbox: [40, 190, 400, 215] },
+      { type: 'title', content: { title_content: [{ type: 'text', content: 'Logistic information' }] }, bbox: [40, 230, 300, 260] },
+      { type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Packaging depth: 776 mm' }] }, bbox: [40, 270, 300, 295] },
+    ],
+  ]));
+  const discoveryPayload = {
+    code: '000000000000592078',
+    modelMark: sourceModel,
+    documents: [{ url: artifactUrl, name: 'Product sheet' }],
+    classifications: [{ features: [
+      { name: 'Width', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '595' }] },
+      { name: 'Height', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '850' }] },
+      { name: 'Depth', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '700' }] },
+    ] }],
+  };
+  const discoveryBytes = Buffer.from(JSON.stringify(discoveryPayload));
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryObjectPath = `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.json`;
+  const artifact = {
+    authorityMode: 'official',
+    authorityBrand: 'ASKO',
+    requestedUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    redirectChain: [],
+    contentType: 'application/pdf',
+    contentSha256: pdfSha256,
+    objectPath: `evidence/web/sha256/${pdfSha256.slice(0, 2)}/${pdfSha256.slice(2, 4)}/${pdfSha256}.pdf`,
+    byteSize: pdfBytes.length,
+    bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes,
+    derivedArtifact: buildMineruDerivedArtifact(jsonBytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision: MODEL_REVISION,
+    }),
+  };
+  const result = await attestEvidenceArtifactForCase({
+    id: `case-${targetModel}`,
+    brand: 'ASKO',
+    model: targetModel,
+    category: 'washing_machine',
+    sources: [],
+  }, artifact, {
+    now: '2026-07-16T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    requireRequestedFieldCoverage: true,
+    claimSemanticsVersion: 2,
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_market_api',
+      market: 'AU',
+      discoveryUrl: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592078?fields=FULL&lang=en_AU&curr=AUD',
+      requestedModel: targetModel,
+      matchedModel: sourceModel,
+      artifactUrl,
+      discoveryContentSha256: discoveryHash,
+      discoveryObjectPath,
+      discoveryByteSize: discoveryBytes.length,
+    },
+    readObject: async (path) => {
+      assert.equal(path, discoveryObjectPath);
+      return discoveryBytes;
+    },
+  });
+
+  assert.equal(result.source.sourceType, 'official_model_variant_pdf');
+  assert.deepEqual(result.source.identity, {
+    brand: 'ASKO', model: targetModel, category: 'washing_machine',
+    outcome: 'official_marketing_alias', sourceModel,
+  });
+  assert.deepEqual(result.source.claims.map((claim) => claim.field).sort(), [
+    'closedEnvelope.depthMm', 'closedEnvelope.heightMm', 'closedEnvelope.widthMm',
+  ]);
+});
+
 test('HTML V2 attestation binds a verbatim grouped product label instead of a parser-synthesized label', async () => {
   const model = 'XD2A25MB';
   const artifactUrl = `https://www.lg.com/au/dishwashers/free-standing/${model.toLowerCase()}/`;

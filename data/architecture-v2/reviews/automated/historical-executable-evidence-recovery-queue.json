@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T06:45:02.870Z",
-  "sourceAcquisitionQueueSha256": "8c7b93c8d4b02d9ed52630d0d07245d6e904a0bd8c74e4dfd60e8b7cfb893b67",
+  "generatedAt": "2026-07-16T08:10:11.530Z",
+  "sourceAcquisitionQueueSha256": "0e063051a680d966532e6ac6187e0eed9f80a8db21c2b3ebe9c25489aed89523",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7839,
+    "acquisitionRecords": 7835,
     "fetchJobs": 1,
-    "targets": 7756,
-    "resolverOnlyTargets": 7755,
+    "targets": 7752,
+    "resolverOnlyTargets": 7751,
     "candidateEdges": 1,
-    "uniqueReferences": 7756,
+    "uniqueReferences": 7752,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1182,
+      "CURRENT_RETAIL": 1178,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 981,
+      "P0_CURRENT_MISSING_DIMENSIONS": 977,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 188,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -7323,44 +7323,6 @@
             "width": 598,
             "height": 820,
             "depth": 555
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_07379007e8685c82942b641b",
-      "referenceId": "fa_ref_03275e6c7b751743089e8a9d",
-      "legacyRuntimeId": "ao-64002",
-      "canonicalProductId": "fa_prod_9c595a3e4cfdcfd52cf4c0a7",
-      "category": "dryer",
-      "brand": "ASKO",
-      "model": "T410HD.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a113881861492cf826a7ba5f",
-        "legacy:data/pdf-evidence-raw/T410HD.W.json",
-        "legacy:data/pdf-evidence-raw/T410HDW.json",
-        "source:doc_a113881861492cf826a7ba5f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a113881861492cf826a7ba5f",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 755
           }
         }
       ],
@@ -28831,120 +28793,6 @@
             "width": 909,
             "height": 1874,
             "depth": 698
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_2b41665b5259820780729108",
-      "referenceId": "fa_ref_7017a73aa6952837bd428255",
-      "legacyRuntimeId": "ao-64005",
-      "canonicalProductId": "fa_prod_fbcd005a26df52798b85faa6",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "model": "W2084C.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_9ade0f75c4dbdf927730f468",
-        "legacy:data/pdf-evidence-raw/W2084C.W.json",
-        "legacy:data/pdf-evidence-raw/W2084CW.json",
-        "source:doc_9ade0f75c4dbdf927730f468"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_9ade0f75c4dbdf927730f468",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 585
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_555229b6c82dd888bfb84296",
-      "referenceId": "fa_ref_6e75cda6315744e9163d7a30",
-      "legacyRuntimeId": "ao-64006",
-      "canonicalProductId": "fa_prod_2c73d7b74231c0d61af811a2",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "model": "W4086C.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_fd5e7ec7ef0e9d38aaf1e740",
-        "legacy:data/pdf-evidence-raw/W4086C.W.json",
-        "legacy:data/pdf-evidence-raw/W4086CW.json",
-        "source:doc_fd5e7ec7ef0e9d38aaf1e740"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_fd5e7ec7ef0e9d38aaf1e740",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 580
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_46e7344ab330094d00faf933",
-      "referenceId": "fa_ref_15c8a9eec96879f78c9d601a",
-      "legacyRuntimeId": "ao-64008",
-      "canonicalProductId": "fa_prod_6c7260ae42e101b1a6428176",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "model": "W4104C.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_6814602a290fb910372079f8",
-        "legacy:data/pdf-evidence-raw/W4104C.W.json",
-        "legacy:data/pdf-evidence-raw/W4104CW.json",
-        "source:doc_6814602a290fb910372079f8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_6814602a290fb910372079f8",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 700
           }
         }
       ],

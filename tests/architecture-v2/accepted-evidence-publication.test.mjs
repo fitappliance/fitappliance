@@ -8,6 +8,7 @@ import {
   mergeReceiptBoundAcceptanceProjections,
 } from '../../src/domain/accepted-evidence-publication.mjs';
 import { classifyGeometryPublication } from '../../src/domain/geometry-publication.mjs';
+import { projectEvidenceGeometry } from '../../src/domain/evidence-geometry-projector.mjs';
 
 const batch = JSON.parse(readFileSync(
   new URL('../../data/architecture-v2/reviews/automated/pdf-brand-acceptance-batch.json', import.meta.url),
@@ -106,6 +107,92 @@ test('recovery receipts publish exact identities and strict official marketing a
   assert.equal(publishedHisense.flags.requires_plumbing, null);
   assert.equal(publishedHisense.flags.ventilation_required, null);
   assert.equal(accepted.has('discovery-washing-machine-samsung-ww12bb944dgb'), false);
+});
+
+test('official model-variant PDF publishes only dimensions when every receipt-bound identity signal is present', () => {
+  const model = 'W4104C.W';
+  const sourceModel = `${model}.AU`;
+  const source = structuredClone(
+    recoveryResults.outcomes.find((outcome) => outcome.identity === 'official_marketing_alias').source,
+  );
+  source.contentType = 'application/pdf';
+  source.sourceType = 'official_model_variant_pdf';
+  source.identity = {
+    brand: 'ASKO', model, category: 'washing_machine',
+    outcome: 'official_marketing_alias', sourceModel,
+  };
+  source.identitySignals = [
+    { type: 'mineru_bound_exact_cover_model', value: `${sourceModel}:exact-cover:${sourceModel}:page:1:${'b'.repeat(64)}` },
+    { type: 'canonical_source_model', value: sourceModel },
+    { type: 'official_market_api_model', value: `${model}:${'a'.repeat(64)}:https://api-storefront.asko.com/` },
+    { type: 'official_market_api_dimensions', value: `${model}:817x1776x715:${'a'.repeat(64)}` },
+    { type: 'official_market_api_variant_binding', value: `${model} -> ${sourceModel} (AU)` },
+  ];
+  source.discoveryProvenance = {
+    method: 'official_market_api',
+    requestedModel: model,
+    matchedModel: sourceModel,
+    discoveryUrl: 'https://api-storefront.asko.com/',
+    discoveryContentSha256: 'a'.repeat(64),
+  };
+  source.claims = [
+    ['closedEnvelope.depthMm', 715, 'depth'],
+    ['closedEnvelope.heightMm', 1776, 'height'],
+    ['closedEnvelope.widthMm', 817, 'width'],
+  ].map(([field, mm, axis]) => ({
+    field,
+    value: { kind: 'fixed', mm },
+    sourceLabel: axis[0].toUpperCase() + axis.slice(1),
+    sourceAxisOrder: [axis],
+    sourceUnit: 'mm',
+    measurementScope: 'product_closed_external',
+    includesDoor: null,
+    includesHandle: null,
+    page: 2,
+    fragmentSha256: 'c'.repeat(64),
+    bbox: [0, 0, 100, 20],
+  }));
+  const geometryProjection = projectEvidenceGeometry({
+    brand: 'ASKO', model, category: 'washing_machine', sources: [source],
+  }, { verifyReceipt: () => true });
+  const variantBatch = {
+    batchId: 'asko-variant-publication',
+    entries: [{
+      id: 'asko-w4104c-w', legacyRuntimeId: 'washing-machine-asko-w4104c-w',
+      brand: 'ASKO', model, category: 'washing_machine',
+    }],
+  };
+  const variantResults = {
+    batchId: variantBatch.batchId,
+    outcomes: [{
+      id: 'asko-w4104c-w', brand: 'ASKO', model, category: 'washing_machine',
+      legacyRuntimeId: 'washing-machine-asko-w4104c-w', outcome: 'accepted',
+      identity: 'official_marketing_alias', artifactType: 'PDF_FRAGMENT', source,
+      geometryProjection,
+    }],
+  };
+  const products = [{
+    id: 'washing-machine-asko-w4104c-w', brand: 'ASKO', model,
+    category: 'washing_machine', cat: 'washing_machine',
+  }];
+  const accepted = buildReceiptBoundAcceptanceProjection({
+    batch: variantBatch,
+    results: variantResults,
+    products,
+  }, { verifyReceipt: () => true });
+  const published = accepted.get('washing-machine-asko-w4104c-w');
+
+  assert.equal(published.sourceType, 'official_model_variant_pdf');
+  assert.equal(published.geometry_v2_provenance.evidenceLevel, 'dimensions');
+  assert.equal(published.geometry_v2_provenance.verifiedFitEligible, false);
+
+  const weak = structuredClone(variantResults);
+  weak.outcomes[0].source.identitySignals.pop();
+  assert.throws(() => buildReceiptBoundAcceptanceProjection({
+    batch: variantBatch,
+    results: weak,
+    products,
+  }, { verifyReceipt: () => true }), /model-variant PDF.*binding signals/i);
 });
 
 test('independent acceptance batches merge without silently overwriting a product', () => {

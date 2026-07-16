@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T06:44:04.501Z",
+  "generatedAt": "2026-07-16T08:09:11.102Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -2614,6 +2614,35 @@
       "attemptedAt": "2026-07-15T18:36:35.428Z"
     },
     {
+      "attemptId": "historical_attempt_b725a53a77112b67e79a7f77",
+      "targetId": "recovery_target_07379007e8685c82942b641b",
+      "referenceId": "fa_ref_03275e6c7b751743089e8a9d",
+      "legacyRuntimeId": "ao-64002",
+      "canonicalProductId": "fa_prod_9c595a3e4cfdcfd52cf4c0a7",
+      "brand": "ASKO",
+      "model": "T410HD.W",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000594943-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8MTEwNDIzM3xhcHBsaWNhdGlvbi9wZGZ8YUdFeEwyaGlZaTh4TlRrM05UVTJNekF6TkRZMU5DOXdjbTlrZFdOMFUyaGxaWFJmTURBd01EQXdNREF3TURBd05UazBPVFF6WDJKekxXRnphMjh0WVhWZlpXNWZRVlV1Y0dSbXwyYmZlMTYwMDAzNzFjMTc5NGViYmU2NGI3ODkwNTUzZDBiNjhkNTg2YWFmODJiNWIzMTFjZTEyZGE3M2U4NWJi",
+      "finalUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000594943-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8MTEwNDIzM3xhcHBsaWNhdGlvbi9wZGZ8YUdFeEwyaGlZaTh4TlRrM05UVTJNekF6TkRZMU5DOXdjbTlrZFdOMFUyaGxaWFJmTURBd01EQXdNREF3TURBd05UazBPVFF6WDJKekxXRnphMjh0WVhWZlpXNWZRVlV1Y0dSbXwyYmZlMTYwMDAzNzFjMTc5NGViYmU2NGI3ODkwNTUzZDBiNjhkNTg2YWFmODJiNWIzMTFjZTEyZGE3M2U4NWJi",
+      "contentSha256": "935d74b3b4811a89f93465692d612dddebf275b7176bb925d58919606dd15c21",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "f6457aa2cbb9389cb55d415b7a3111dcd94dc9bc7b46723dc3068853e14d7522",
+      "semanticOutcomeSha256": "8aa123273c97a3ce491e7349be53604fc564ee0e6a4bf13f3e560be27ff21123",
+      "batchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "batchSha256": "3716c998999e28952e7aecf622d7f2883422be996b2ad35c05d4fbe2b96ac87c",
+      "runId": "asko-au-variant-v4-20260716",
+      "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
+      "auditSha256": "e5aea60354ca44b4a12946af6807b4c8276bae79e0b10fbfe1250fddd5e42cfb",
+      "attemptedAt": "2026-07-16T08:06:11.921Z"
+    },
+    {
       "attemptId": "historical_attempt_bb709d74a539f51f70d441b4",
       "targetId": "recovery_target_4cfffebb1360ecc5b8963150",
       "referenceId": "fa_ref_7ffc86b916589fd528d59b04",
@@ -4266,6 +4295,23 @@
       "acceptedAt": "2026-07-16T01:01:19.499Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_13b40a56af75ffb120cf736e",
+      "targetId": "recovery_target_2b41665b5259820780729108",
+      "referenceId": "fa_ref_7017a73aa6952837bd428255",
+      "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE",
+      "contentSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "7fa1bb92657ef3689994214eb06d808ea6164e5e42ca4668364e9865860c3df6",
+      "semanticOutcomeSha256": "86a900240c2d9c4c761acb42bab746d0081b1f91d28568b3998039a361899157",
+      "batchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "batchSha256": "3716c998999e28952e7aecf622d7f2883422be996b2ad35c05d4fbe2b96ac87c",
+      "runId": "asko-au-variant-v4-20260716",
+      "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
+      "auditSha256": "e5aea60354ca44b4a12946af6807b4c8276bae79e0b10fbfe1250fddd5e42cfb",
+      "acceptedAt": "2026-07-16T08:06:11.921Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_16318912c02b259f98a0ee09",
       "targetId": "recovery_target_53359de03c2b344afa662d38",
       "referenceId": "fa_ref_e1f23a09d2586332925c09c0",
@@ -5490,6 +5536,23 @@
       "acceptedAt": "2026-07-16T05:00:25.867Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_8f8356ac38b8232d13659a7e",
+      "targetId": "recovery_target_555229b6c82dd888bfb84296",
+      "referenceId": "fa_ref_6e75cda6315744e9163d7a30",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf",
+      "contentSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "a25d6fbb7e175b4ecedcc3ab08a12b5104f331f4598fb6488b39a6610f03c58e",
+      "semanticOutcomeSha256": "1a7f193a77a03f7a9e23abbe8c750565d616405725622820038494f524298fad",
+      "batchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "batchSha256": "3716c998999e28952e7aecf622d7f2883422be996b2ad35c05d4fbe2b96ac87c",
+      "runId": "asko-au-variant-v4-20260716",
+      "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
+      "auditSha256": "e5aea60354ca44b4a12946af6807b4c8276bae79e0b10fbfe1250fddd5e42cfb",
+      "acceptedAt": "2026-07-16T08:06:11.921Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_908f6f22d9bbbf1acaa636a2",
       "targetId": "recovery_target_f707686e8148716a51d35920",
       "referenceId": "fa_ref_0dd7df103229ad7727cd7a55",
@@ -5830,6 +5893,23 @@
       "acceptedAt": "2026-07-15T21:59:56.489Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_b85c21ed97e00755aacc6269",
+      "targetId": "recovery_target_07379007e8685c82942b641b",
+      "referenceId": "fa_ref_03275e6c7b751743089e8a9d",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf",
+      "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "f6457aa2cbb9389cb55d415b7a3111dcd94dc9bc7b46723dc3068853e14d7522",
+      "semanticOutcomeSha256": "8aa123273c97a3ce491e7349be53604fc564ee0e6a4bf13f3e560be27ff21123",
+      "batchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "batchSha256": "3716c998999e28952e7aecf622d7f2883422be996b2ad35c05d4fbe2b96ac87c",
+      "runId": "asko-au-variant-v4-20260716",
+      "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
+      "auditSha256": "e5aea60354ca44b4a12946af6807b4c8276bae79e0b10fbfe1250fddd5e42cfb",
+      "acceptedAt": "2026-07-16T08:06:11.921Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_b88796aad05af5ecfd86346a",
       "targetId": "recovery_target_dbe0b2f10886e0c28970be9f",
       "referenceId": "fa_ref_7198199abeeaeebacf326915",
@@ -5913,6 +5993,23 @@
       "resultsSha256": "eb394a462304d163e61389c71985aa5042b29ace3add3b442501c10bc38ac337",
       "auditSha256": "6aca866e3e8c3c058e80346ae18bb3b7154b4c0f05517b258d3737a9521a1a19",
       "acceptedAt": "2026-07-16T05:00:25.867Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_bc9d1450003f7f560c7c9844",
+      "targetId": "recovery_target_555229b6c82dd888bfb84296",
+      "referenceId": "fa_ref_6e75cda6315744e9163d7a30",
+      "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI",
+      "contentSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "a25d6fbb7e175b4ecedcc3ab08a12b5104f331f4598fb6488b39a6610f03c58e",
+      "semanticOutcomeSha256": "1a7f193a77a03f7a9e23abbe8c750565d616405725622820038494f524298fad",
+      "batchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "batchSha256": "3716c998999e28952e7aecf622d7f2883422be996b2ad35c05d4fbe2b96ac87c",
+      "runId": "asko-au-variant-v4-20260716",
+      "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
+      "auditSha256": "e5aea60354ca44b4a12946af6807b4c8276bae79e0b10fbfe1250fddd5e42cfb",
+      "acceptedAt": "2026-07-16T08:06:11.921Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_c125d179583a4ff13a7195d4",
@@ -6153,6 +6250,23 @@
       "acceptedAt": "2026-07-16T01:01:19.499Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_d505c0b7460b61ec1b8bd16e",
+      "targetId": "recovery_target_46e7344ab330094d00faf933",
+      "referenceId": "fa_ref_15c8a9eec96879f78c9d601a",
+      "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk",
+      "contentSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "4f8fe0256590fe437257e0130679fd9951b0bf008b008f4e89c4156dff95a259",
+      "semanticOutcomeSha256": "6ce84e5383d4ac48ae706babd5f03980baab362243a786863c2b84a17bd74e7c",
+      "batchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "batchSha256": "3716c998999e28952e7aecf622d7f2883422be996b2ad35c05d4fbe2b96ac87c",
+      "runId": "asko-au-variant-v4-20260716",
+      "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
+      "auditSha256": "e5aea60354ca44b4a12946af6807b4c8276bae79e0b10fbfe1250fddd5e42cfb",
+      "acceptedAt": "2026-07-16T08:06:11.921Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_d9133bd301a2fb94b6e459d3",
       "targetId": "recovery_target_9bfb000a5e99d8a9b2c294e6",
       "referenceId": "fa_ref_23f704b0999359577a4dee24",
@@ -6391,6 +6505,23 @@
       "acceptedAt": "2026-07-15T22:04:32.763Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_febe862ac32913f22af4fd70",
+      "targetId": "recovery_target_2b41665b5259820780729108",
+      "referenceId": "fa_ref_7017a73aa6952837bd428255",
+      "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf",
+      "contentSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "7fa1bb92657ef3689994214eb06d808ea6164e5e42ca4668364e9865860c3df6",
+      "semanticOutcomeSha256": "86a900240c2d9c4c761acb42bab746d0081b1f91d28568b3998039a361899157",
+      "batchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "batchSha256": "3716c998999e28952e7aecf622d7f2883422be996b2ad35c05d4fbe2b96ac87c",
+      "runId": "asko-au-variant-v4-20260716",
+      "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
+      "auditSha256": "e5aea60354ca44b4a12946af6807b4c8276bae79e0b10fbfe1250fddd5e42cfb",
+      "acceptedAt": "2026-07-16T08:06:11.921Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_ff93e6837e866be223416312",
       "targetId": "recovery_target_1271ff9d5bd9d9dfbd8b461f",
       "referenceId": "fa_ref_f3f80c54faf5806609da5ed2",
@@ -6409,22 +6540,22 @@
     }
   ],
   "summary": {
-    "entries": 131,
+    "entries": 132,
     "resolutions": 17,
-    "sourceAcceptances": 135,
-    "suppressions": 75,
+    "sourceAcceptances": 141,
+    "suppressions": 76,
     "resolvedSuppressions": 14,
     "retryable": 42,
     "byStatus": {
       "claims_incomplete": 8,
-      "identity_rejected": 50,
+      "identity_rejected": 51,
       "mineru_failure": 31,
       "transport_failure": 42
     },
     "byDisposition": {
       "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 31,
       "RETRY_TRANSIENT": 42,
-      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 50,
+      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 51,
       "SEEK_EXACT_MODEL_FIELD_SOURCE": 8
     }
   }

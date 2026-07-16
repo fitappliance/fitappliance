@@ -1,16 +1,25 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-16.2",
+  "policyVersion": "2026-07-16.3",
   "supportedReceiptPolicyVersions": [
     "2026-07-12.1",
     "2026-07-14.1",
     "2026-07-15.1",
     "2026-07-16.1",
-    "2026-07-16.2"
+    "2026-07-16.2",
+    "2026-07-16.3"
   ],
   "officialHtmlModelVariantSuffixes": {
     "westinghouse": {
       "fridge": ["L", "R"]
+    }
+  },
+  "officialMarketApiModelVariantSuffixes": {
+    "asko": {
+      "fridge": [".AU"],
+      "dishwasher": [".AU"],
+      "dryer": [".AU"],
+      "washing_machine": [".AU"]
     }
   },
   "maxEvidenceAgeDays": 400,

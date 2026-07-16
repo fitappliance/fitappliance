@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T06:44:04.501Z",
+  "generatedAt": "2026-07-16T08:09:11.102Z",
   "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
   "entries": [
     {
@@ -2918,6 +2918,269 @@
         "supersessionViolations": [],
         "axisPermutationResolution": "exact_official_axis_proof_with_registry_tolerance",
         "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_07379007e8685c82942b641b",
+      "referenceId": "fa_ref_03275e6c7b751743089e8a9d",
+      "legacyRuntimeId": "ao-64002",
+      "canonicalProductId": "fa_prod_9c595a3e4cfdcfd52cf4c0a7",
+      "brand": "ASKO",
+      "model": "T410HD.W",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "auditSha256": "561096e1e5b183266eb8969c19697980e1f597c2482c061b6e67ebf4549d054f",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_pdf",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf",
+          "finalUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T08:02:31.188Z",
+          "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+          "objectPath": "evidence/web/sha256/1f/0b/1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 10487601,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "T410HD.W",
+            "category": "dryer",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "T410HD.W.AU"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 43,
+              "fragmentSha256": "ce4d4b9367fda2f6ac5e143faa3be7e708112606489847fc98bf9e461c595868",
+              "bbox": [
+                94,
+                349,
+                904,
+                585
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 43,
+              "fragmentSha256": "ce4d4b9367fda2f6ac5e143faa3be7e708112606489847fc98bf9e461c595868",
+              "bbox": [
+                94,
+                349,
+                904,
+                585
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 769
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 43,
+              "fragmentSha256": "ce4d4b9367fda2f6ac5e143faa3be7e708112606489847fc98bf9e461c595868",
+              "bbox": [
+                94,
+                349,
+                904,
+                585
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000594943?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "T410HD.W",
+            "matchedModel": "T410HD.W.AU",
+            "artifactUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf",
+            "documentId": "000000000000594943",
+            "discoveryContentSha256": "4fdbdd1038c51276094a81ce916c020db7b115c9d14edaed8a67a85cb22df9b4",
+            "discoveryObjectPath": "evidence/web/sha256/4f/db/4fdbdd1038c51276094a81ce916c020db7b115c9d14edaed8a67a85cb22df9b4.json",
+            "discoveryByteSize": 134724
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+            "contentSha256": "b5952210881d7f33f661b7bfa067a19cba48843e4e4a7090c2c35db75ac82434",
+            "objectPath": "evidence/derived/mineru-json/sha256/b5/95/b5952210881d7f33f661b7bfa067a19cba48843e4e4a7090c2c35db75ac82434.json",
+            "byteSize": 160069,
+            "pageCount": 48
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_bound_exact_cover_model",
+              "value": "T410HD.W.AU:exact-cover:T410HD.W.AU:page:1:4dc90696592ae053a4d33c5f64a7d15333198e6e7cff5ba31a20a9d54d2c9159"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "T410HD.W.AU"
+            },
+            {
+              "type": "official_market_api_model",
+              "value": "T410HD.W:4fdbdd1038c51276094a81ce916c020db7b115c9d14edaed8a67a85cb22df9b4:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000594943?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "T410HD.W:595x850x769:4fdbdd1038c51276094a81ce916c020db7b115c9d14edaed8a67a85cb22df9b4"
+            },
+            {
+              "type": "official_market_api_variant_binding",
+              "value": "T410HD.W -> T410HD.W.AU (AU)"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.3",
+            "discoveryPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T08:02:31.188Z",
+            "bindingSha256": "b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 769
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf",
+            "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+            "receiptBindingSha256": "b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d",
+            "page": 43,
+            "fragmentSha256": "ce4d4b9367fda2f6ac5e143faa3be7e708112606489847fc98bf9e461c595868"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf",
+            "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+            "receiptBindingSha256": "b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d",
+            "page": 43,
+            "fragmentSha256": "ce4d4b9367fda2f6ac5e143faa3be7e708112606489847fc98bf9e461c595868"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf",
+            "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
+            "receiptBindingSha256": "b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d",
+            "page": 43,
+            "fragmentSha256": "ce4d4b9367fda2f6ac5e143faa3be7e708112606489847fc98bf9e461c595868"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_a113881861492cf826a7ba5f",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 595,
+              "heightMm": 850,
+              "depthMm": 755
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "official_market_api_dimension_corroboration",
         "conflictReason": null
       }
     },
@@ -8435,6 +8698,433 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_2b41665b5259820780729108",
+      "referenceId": "fa_ref_7017a73aa6952837bd428255",
+      "legacyRuntimeId": "ao-64005",
+      "canonicalProductId": "fa_prod_fbcd005a26df52798b85faa6",
+      "brand": "ASKO",
+      "model": "W2084C.W",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "auditSha256": "561096e1e5b183266eb8969c19697980e1f597c2482c061b6e67ebf4549d054f",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_pdf",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf",
+          "finalUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T07:59:19.609Z",
+          "contentSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+          "objectPath": "evidence/web/sha256/8e/58/8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 11041539,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "W2084C.W",
+            "category": "washing_machine",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "W2084C.W.AU"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 45,
+              "fragmentSha256": "0f64aabf49988268a77244a540a2e1f35470aae3862ddcc33a9580775f139e0f",
+              "bbox": [
+                92,
+                151,
+                902,
+                456
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 45,
+              "fragmentSha256": "0f64aabf49988268a77244a540a2e1f35470aae3862ddcc33a9580775f139e0f",
+              "bbox": [
+                92,
+                151,
+                902,
+                456
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 585
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 45,
+              "fragmentSha256": "0f64aabf49988268a77244a540a2e1f35470aae3862ddcc33a9580775f139e0f",
+              "bbox": [
+                92,
+                151,
+                902,
+                456
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592099?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "W2084C.W",
+            "matchedModel": "W2084C.W.AU",
+            "artifactUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf",
+            "documentId": "000000000000592099",
+            "discoveryContentSha256": "5bd608c9ca95958e968dea8f9afd7e19a91efc3b2135621a2ae2895e7255f10d",
+            "discoveryObjectPath": "evidence/web/sha256/5b/d6/5bd608c9ca95958e968dea8f9afd7e19a91efc3b2135621a2ae2895e7255f10d.json",
+            "discoveryByteSize": 186978
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+            "contentSha256": "6d9ccb129d8d87c7c67859b500ff509c45fb17f42cbb3452231e37b07e933c46",
+            "objectPath": "evidence/derived/mineru-json/sha256/6d/9c/6d9ccb129d8d87c7c67859b500ff509c45fb17f42cbb3452231e37b07e933c46.json",
+            "byteSize": 373419,
+            "pageCount": 52
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_bound_exact_cover_model",
+              "value": "W2084C.W.AU:exact-cover:W2084C.W.AU:page:1:03e0b72d9be418d530ececf7c08241d904304d27f2ac2e91d5d2d2d121095381"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "W2084C.W.AU"
+            },
+            {
+              "type": "official_market_api_model",
+              "value": "W2084C.W:5bd608c9ca95958e968dea8f9afd7e19a91efc3b2135621a2ae2895e7255f10d:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592099?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "W2084C.W:595x850x585:5bd608c9ca95958e968dea8f9afd7e19a91efc3b2135621a2ae2895e7255f10d"
+            },
+            {
+              "type": "official_market_api_variant_binding",
+              "value": "W2084C.W -> W2084C.W.AU (AU)"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.3",
+            "discoveryPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T07:59:19.609Z",
+            "bindingSha256": "a09a37944b16bab8a41a378634a1f7384b6be0f7ea290282ce6656d13e3dc92e"
+          }
+        },
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_pdf",
+          "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE",
+          "finalUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T07:59:34.539Z",
+          "contentSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+          "objectPath": "evidence/web/sha256/b9/35/b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 547309,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "W2084C.W",
+            "category": "washing_machine",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "W2084C.W.AU"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "45268aca78e7b946af00054d71e22b5e681fb00535822dcd06f2fe25c67f2b5c",
+              "bbox": [
+                468,
+                539,
+                579,
+                552
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "a44b9b4d3c7d43ce307665799fdfce2ade92db76b61817968d4bb5b456d7f772",
+              "bbox": [
+                468,
+                551,
+                583,
+                563
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 585
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "1346983cd29f0520eb1dd1d6c08edcdb7d6184c23c0aa370e961e0a51d947ff1",
+              "bbox": [
+                468,
+                562,
+                581,
+                575
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592099?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "W2084C.W",
+            "matchedModel": "W2084C.W.AU",
+            "artifactUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE",
+            "documentId": "000000000000592099",
+            "discoveryContentSha256": "5bd608c9ca95958e968dea8f9afd7e19a91efc3b2135621a2ae2895e7255f10d",
+            "discoveryObjectPath": "evidence/web/sha256/5b/d6/5bd608c9ca95958e968dea8f9afd7e19a91efc3b2135621a2ae2895e7255f10d.json",
+            "discoveryByteSize": 186978
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+            "contentSha256": "ea240dc0e556584ec0d78adfc54461a3f3ba78c5e7be44d31af7d632632d0fad",
+            "objectPath": "evidence/derived/mineru-json/sha256/ea/24/ea240dc0e556584ec0d78adfc54461a3f3ba78c5e7be44d31af7d632632d0fad.json",
+            "byteSize": 42980,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_bound_exact_cover_model",
+              "value": "W2084C.W.AU:exact-cover:W2084C.W.AU:page:1:a6dbc32e4e5ac59f6eb12b2fedd7b56484238b6586d2dbb60ec720fb6e74f0cd"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "W2084C.W.AU"
+            },
+            {
+              "type": "official_market_api_model",
+              "value": "W2084C.W:5bd608c9ca95958e968dea8f9afd7e19a91efc3b2135621a2ae2895e7255f10d:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592099?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "W2084C.W:595x850x585:5bd608c9ca95958e968dea8f9afd7e19a91efc3b2135621a2ae2895e7255f10d"
+            },
+            {
+              "type": "official_market_api_variant_binding",
+              "value": "W2084C.W -> W2084C.W.AU (AU)"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.3",
+            "discoveryPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T07:59:34.539Z",
+            "bindingSha256": "7951c36ba1448b93d4c5093aace71098944e8c340b61b0139c97362849168ba9"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 585
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf",
+            "contentSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+            "receiptBindingSha256": "a09a37944b16bab8a41a378634a1f7384b6be0f7ea290282ce6656d13e3dc92e",
+            "page": 45,
+            "fragmentSha256": "0f64aabf49988268a77244a540a2e1f35470aae3862ddcc33a9580775f139e0f",
+            "corroborating": [
+              {
+                "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE",
+                "contentSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+                "receiptBindingSha256": "7951c36ba1448b93d4c5093aace71098944e8c340b61b0139c97362849168ba9",
+                "page": 2,
+                "fragmentSha256": "45268aca78e7b946af00054d71e22b5e681fb00535822dcd06f2fe25c67f2b5c"
+              }
+            ]
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf",
+            "contentSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+            "receiptBindingSha256": "a09a37944b16bab8a41a378634a1f7384b6be0f7ea290282ce6656d13e3dc92e",
+            "page": 45,
+            "fragmentSha256": "0f64aabf49988268a77244a540a2e1f35470aae3862ddcc33a9580775f139e0f",
+            "corroborating": [
+              {
+                "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE",
+                "contentSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+                "receiptBindingSha256": "7951c36ba1448b93d4c5093aace71098944e8c340b61b0139c97362849168ba9",
+                "page": 2,
+                "fragmentSha256": "a44b9b4d3c7d43ce307665799fdfce2ade92db76b61817968d4bb5b456d7f772"
+              }
+            ]
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf",
+            "contentSha256": "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+            "receiptBindingSha256": "a09a37944b16bab8a41a378634a1f7384b6be0f7ea290282ce6656d13e3dc92e",
+            "page": 45,
+            "fragmentSha256": "0f64aabf49988268a77244a540a2e1f35470aae3862ddcc33a9580775f139e0f",
+            "corroborating": [
+              {
+                "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE",
+                "contentSha256": "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444",
+                "receiptBindingSha256": "7951c36ba1448b93d4c5093aace71098944e8c340b61b0139c97362849168ba9",
+                "page": 2,
+                "fragmentSha256": "1346983cd29f0520eb1dd1d6c08edcdb7d6184c23c0aa370e961e0a51d947ff1"
+              }
+            ]
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a",
+          "b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444"
         ]
       },
       "reconciliation": {
@@ -15479,6 +16169,254 @@
       }
     },
     {
+      "targetId": "recovery_target_46e7344ab330094d00faf933",
+      "referenceId": "fa_ref_15c8a9eec96879f78c9d601a",
+      "legacyRuntimeId": "ao-64008",
+      "canonicalProductId": "fa_prod_6c7260ae42e101b1a6428176",
+      "brand": "ASKO",
+      "model": "W4104C.W",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "auditSha256": "561096e1e5b183266eb8969c19697980e1f597c2482c061b6e67ebf4549d054f",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_pdf",
+          "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk",
+          "finalUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T07:57:16.857Z",
+          "contentSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+          "objectPath": "evidence/web/sha256/92/46/92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 560459,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "W4104C.W",
+            "category": "washing_machine",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "W4104C.W.AU"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "70648c371af5eba95739a7ddb01d933d571b1688efb1daa4e6449a5fa30ac521",
+              "bbox": [
+                468,
+                581,
+                579,
+                593
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "1732f8fdd2c968b4feecebbd7169fad479fc3c20e0ec559381c6bf7ea3b9bb9a",
+              "bbox": [
+                468,
+                592,
+                583,
+                605
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 700
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "c3431630cf369f8d9fa3e26891a16eea23fc9508c2c7344efa8fff1ae386be20",
+              "bbox": [
+                468,
+                605,
+                581,
+                617
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592078?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "W4104C.W",
+            "matchedModel": "W4104C.W.AU",
+            "artifactUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk",
+            "documentId": "000000000000592078",
+            "discoveryContentSha256": "5b72a946298524c847a9755eefa2945288e5a7d6f6844c3d97ae5b70146117a4",
+            "discoveryObjectPath": "evidence/web/sha256/5b/72/5b72a946298524c847a9755eefa2945288e5a7d6f6844c3d97ae5b70146117a4.json",
+            "discoveryByteSize": 225671
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+            "contentSha256": "eb0a4f6a792a014890c84fbec82736e0d16a318e147877b08c61bffd682ba2c6",
+            "objectPath": "evidence/derived/mineru-json/sha256/eb/0a/eb0a4f6a792a014890c84fbec82736e0d16a318e147877b08c61bffd682ba2c6.json",
+            "byteSize": 42797,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_bound_exact_cover_model",
+              "value": "W4104C.W.AU:exact-cover:W4104C.W.AU:page:1:54c87a9b9e432d0c317a7913813503d6a2ee8c84178244087987085862ac584e"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "W4104C.W.AU"
+            },
+            {
+              "type": "official_market_api_model",
+              "value": "W4104C.W:5b72a946298524c847a9755eefa2945288e5a7d6f6844c3d97ae5b70146117a4:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592078?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "W4104C.W:595x850x700:5b72a946298524c847a9755eefa2945288e5a7d6f6844c3d97ae5b70146117a4"
+            },
+            {
+              "type": "official_market_api_variant_binding",
+              "value": "W4104C.W -> W4104C.W.AU (AU)"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.3",
+            "discoveryPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T07:57:16.857Z",
+            "bindingSha256": "91e1b1730ade1d0bb2b7d64e99272d1dbd7525c0d664b9b6a7ced1689e575caf"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 700
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk",
+            "contentSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+            "receiptBindingSha256": "91e1b1730ade1d0bb2b7d64e99272d1dbd7525c0d664b9b6a7ced1689e575caf",
+            "page": 2,
+            "fragmentSha256": "70648c371af5eba95739a7ddb01d933d571b1688efb1daa4e6449a5fa30ac521"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk",
+            "contentSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+            "receiptBindingSha256": "91e1b1730ade1d0bb2b7d64e99272d1dbd7525c0d664b9b6a7ced1689e575caf",
+            "page": 2,
+            "fragmentSha256": "1732f8fdd2c968b4feecebbd7169fad479fc3c20e0ec559381c6bf7ea3b9bb9a"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk",
+            "contentSha256": "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b",
+            "receiptBindingSha256": "91e1b1730ade1d0bb2b7d64e99272d1dbd7525c0d664b9b6a7ced1689e575caf",
+            "page": 2,
+            "fragmentSha256": "c3431630cf369f8d9fa3e26891a16eea23fc9508c2c7344efa8fff1ae386be20"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_4734ccbde39c6d8c181f3e30",
       "referenceId": "fa_ref_ad3518ea28d30ebac8769833",
       "legacyRuntimeId": "ao-79196",
@@ -18630,6 +19568,447 @@
               "widthMm": 595,
               "heightMm": 850,
               "depthMm": 640
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "official_market_api_dimension_corroboration",
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_555229b6c82dd888bfb84296",
+      "referenceId": "fa_ref_6e75cda6315744e9163d7a30",
+      "legacyRuntimeId": "ao-64006",
+      "canonicalProductId": "fa_prod_2c73d7b74231c0d61af811a2",
+      "brand": "ASKO",
+      "model": "W4086C.W",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "auditSha256": "561096e1e5b183266eb8969c19697980e1f597c2482c061b6e67ebf4549d054f",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_pdf",
+          "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI",
+          "finalUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T08:06:11.892Z",
+          "contentSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+          "objectPath": "evidence/web/sha256/6b/0c/6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 561582,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "W4086C.W",
+            "category": "washing_machine",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "W4086C.W.AU"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "70648c371af5eba95739a7ddb01d933d571b1688efb1daa4e6449a5fa30ac521",
+              "bbox": [
+                468,
+                581,
+                579,
+                593
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "1732f8fdd2c968b4feecebbd7169fad479fc3c20e0ec559381c6bf7ea3b9bb9a",
+              "bbox": [
+                468,
+                592,
+                583,
+                605
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 585
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "2008d524d99bd76d9acd8f05c434a2337fbf687c078d34d5f5627af7500b3c5a",
+              "bbox": [
+                468,
+                605,
+                581,
+                617
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592077?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "W4086C.W",
+            "matchedModel": "W4086C.W.AU",
+            "artifactUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI",
+            "documentId": "000000000000592077",
+            "discoveryContentSha256": "7d293e00bbeec77809f6d07394d52b0e8672e4faf17eff56164dabdb5f4cdd60",
+            "discoveryObjectPath": "evidence/web/sha256/7d/29/7d293e00bbeec77809f6d07394d52b0e8672e4faf17eff56164dabdb5f4cdd60.json",
+            "discoveryByteSize": 227239
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+            "contentSha256": "39269cb036fadd244f8d53fa8e89f49e899f5839d04f23682af6c50d91dad247",
+            "objectPath": "evidence/derived/mineru-json/sha256/39/26/39269cb036fadd244f8d53fa8e89f49e899f5839d04f23682af6c50d91dad247.json",
+            "byteSize": 42793,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_bound_exact_cover_model",
+              "value": "W4086C.W.AU:exact-cover:W4086C.W.AU:page:1:e9d9bd6cb97b71ca72b9a67a15a9d80ca66a5fbc0029157ca8eba78ea6044153"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "W4086C.W.AU"
+            },
+            {
+              "type": "official_market_api_model",
+              "value": "W4086C.W:7d293e00bbeec77809f6d07394d52b0e8672e4faf17eff56164dabdb5f4cdd60:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592077?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "W4086C.W:595x850x585:7d293e00bbeec77809f6d07394d52b0e8672e4faf17eff56164dabdb5f4cdd60"
+            },
+            {
+              "type": "official_market_api_variant_binding",
+              "value": "W4086C.W -> W4086C.W.AU (AU)"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.3",
+            "discoveryPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T08:06:11.892Z",
+            "bindingSha256": "c5c5399b94e77ca4bc424b220230dcd61bb4824845ba2412a823c4c97b3e4538"
+          }
+        },
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_pdf",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf",
+          "finalUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T08:05:56.797Z",
+          "contentSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+          "objectPath": "evidence/web/sha256/d5/15/d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 12242607,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "W4086C.W",
+            "category": "washing_machine",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "W4086C.W.AU"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 46,
+              "fragmentSha256": "69ea0fd34d6a131d2fa4beddefe6fa068d3c8141fc5f5f464eab6ea67b24d6e8",
+              "bbox": [
+                92,
+                151,
+                902,
+                456
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 46,
+              "fragmentSha256": "69ea0fd34d6a131d2fa4beddefe6fa068d3c8141fc5f5f464eab6ea67b24d6e8",
+              "bbox": [
+                92,
+                151,
+                902,
+                456
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 585
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 46,
+              "fragmentSha256": "69ea0fd34d6a131d2fa4beddefe6fa068d3c8141fc5f5f464eab6ea67b24d6e8",
+              "bbox": [
+                92,
+                151,
+                902,
+                456
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592077?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "W4086C.W",
+            "matchedModel": "W4086C.W.AU",
+            "artifactUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf",
+            "documentId": "000000000000592077",
+            "discoveryContentSha256": "7d293e00bbeec77809f6d07394d52b0e8672e4faf17eff56164dabdb5f4cdd60",
+            "discoveryObjectPath": "evidence/web/sha256/7d/29/7d293e00bbeec77809f6d07394d52b0e8672e4faf17eff56164dabdb5f4cdd60.json",
+            "discoveryByteSize": 227239
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+            "contentSha256": "a5b6946e0a49c090a3c96d865d6b76a783767bc0bc4a52dd89a5202c0908a4a1",
+            "objectPath": "evidence/derived/mineru-json/sha256/a5/b6/a5b6946e0a49c090a3c96d865d6b76a783767bc0bc4a52dd89a5202c0908a4a1.json",
+            "byteSize": 191027,
+            "pageCount": 56
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_bound_exact_cover_model",
+              "value": "W4086C.W.AU:exact-cover:W4086C.W.AU:page:1:421637603bdb6b17efa3948b276cebccf9113546c64a17c9e02d27a8401ea188"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "W4086C.W.AU"
+            },
+            {
+              "type": "official_market_api_model",
+              "value": "W4086C.W:7d293e00bbeec77809f6d07394d52b0e8672e4faf17eff56164dabdb5f4cdd60:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000592077?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "W4086C.W:595x850x585:7d293e00bbeec77809f6d07394d52b0e8672e4faf17eff56164dabdb5f4cdd60"
+            },
+            {
+              "type": "official_market_api_variant_binding",
+              "value": "W4086C.W -> W4086C.W.AU (AU)"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.3",
+            "discoveryPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T08:05:56.797Z",
+            "bindingSha256": "41c95de57aaf1d4c84374f902ae1f5e088c31167d328269ac5892128905aad57"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 585
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI",
+            "contentSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+            "receiptBindingSha256": "c5c5399b94e77ca4bc424b220230dcd61bb4824845ba2412a823c4c97b3e4538",
+            "page": 2,
+            "fragmentSha256": "70648c371af5eba95739a7ddb01d933d571b1688efb1daa4e6449a5fa30ac521",
+            "corroborating": [
+              {
+                "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf",
+                "contentSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+                "receiptBindingSha256": "41c95de57aaf1d4c84374f902ae1f5e088c31167d328269ac5892128905aad57",
+                "page": 46,
+                "fragmentSha256": "69ea0fd34d6a131d2fa4beddefe6fa068d3c8141fc5f5f464eab6ea67b24d6e8"
+              }
+            ]
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI",
+            "contentSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+            "receiptBindingSha256": "c5c5399b94e77ca4bc424b220230dcd61bb4824845ba2412a823c4c97b3e4538",
+            "page": 2,
+            "fragmentSha256": "1732f8fdd2c968b4feecebbd7169fad479fc3c20e0ec559381c6bf7ea3b9bb9a",
+            "corroborating": [
+              {
+                "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf",
+                "contentSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+                "receiptBindingSha256": "41c95de57aaf1d4c84374f902ae1f5e088c31167d328269ac5892128905aad57",
+                "page": 46,
+                "fragmentSha256": "69ea0fd34d6a131d2fa4beddefe6fa068d3c8141fc5f5f464eab6ea67b24d6e8"
+              }
+            ]
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI",
+            "contentSha256": "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+            "receiptBindingSha256": "c5c5399b94e77ca4bc424b220230dcd61bb4824845ba2412a823c4c97b3e4538",
+            "page": 2,
+            "fragmentSha256": "2008d524d99bd76d9acd8f05c434a2337fbf687c078d34d5f5627af7500b3c5a",
+            "corroborating": [
+              {
+                "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf",
+                "contentSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
+                "receiptBindingSha256": "41c95de57aaf1d4c84374f902ae1f5e088c31167d328269ac5892128905aad57",
+                "page": 46,
+                "fragmentSha256": "69ea0fd34d6a131d2fa4beddefe6fa068d3c8141fc5f5f464eab6ea67b24d6e8"
+              }
+            ]
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e",
+          "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_fd5e7ec7ef0e9d38aaf1e740",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 595,
+              "heightMm": 850,
+              "depthMm": 580
             }
           }
         ],
@@ -59450,6 +60829,13 @@
       "queueSha256": "84cd8d69bd3022d32fd7a0c28f84e761e832d186a850994159dbca8f4b468b5f",
       "resultsSha256": "7bad94fd1485a4aca2be2623c77f1b04907fb1a91b27baf9760577b9e1a60a2a",
       "auditSha256": "ce7bb5e2c15fffbaf75bcd11dbbb3ad46e269775c941362e478597c9859a6012"
+    },
+    {
+      "batchId": "historical-recovery-5829ce8b346709e6e88ac78c-slice-8e8881274365",
+      "batchSha256": "3716c998999e28952e7aecf622d7f2883422be996b2ad35c05d4fbe2b96ac87c",
+      "queueSha256": "daf9d9e68db25ee056fc05a46c66be9a63d4b676c202f0baffca67614305cffd",
+      "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
+      "auditSha256": "561096e1e5b183266eb8969c19697980e1f597c2482c061b6e67ebf4549d054f"
     },
     {
       "batchId": "historical-recovery-615091a0fa093d9ee58730e2",

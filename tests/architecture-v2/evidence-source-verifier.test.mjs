@@ -12,6 +12,7 @@ import {
   isSourceFresh,
   normalizeOfficialArtifactDiscoveryProvenance,
   officialHtmlModelVariant,
+  officialMarketApiModelVariant,
   validateTrustedSourceMetadata,
   verifyVerificationReceipt,
 } from '../../src/domain/evidence-source-verifier.mjs';
@@ -38,6 +39,19 @@ test('official HTML model variants are limited to policy-approved brand, categor
   assert.equal(officialHtmlModelVariant({
     brand: 'Westinghouse', model: 'WTB4600SC', category: 'fridge',
   }, 'WTB4600SCR'), null);
+});
+
+test('official market API model variants permit only ASKO AU technical suffixes', () => {
+  const identity = { brand: 'ASKO', model: 'W4086C.W', category: 'washing_machine' };
+  assert.deepEqual(officialMarketApiModelVariant(identity, 'W4086C.W.AU'), {
+    sourceModel: 'W4086C.W.AU', suffix: '.AU', market: 'AU',
+  });
+  for (const sourceModel of ['W4086C.W.P', 'W4086C.W/1', 'W4086C.W.CN', 'W4086C.WAU']) {
+    assert.equal(officialMarketApiModelVariant(identity, sourceModel), null);
+  }
+  assert.equal(officialMarketApiModelVariant({
+    ...identity, brand: 'LG',
+  }, 'W4086C.W.AU'), null);
 });
 
 function source(overrides = {}) {
@@ -218,7 +232,7 @@ test('global official artifact is trusted only with receipt-bound Australian dis
   input.verificationReceipt = createVerificationReceipt(input, identity, {
     verifiedAt: '2026-07-11T14:35:00.000Z',
   });
-  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.3');
+  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.4');
   assert.equal(verifyVerificationReceipt(input, identity, {
     asOf: input.verificationReceipt.verifiedAt,
   }), true);
@@ -610,9 +624,9 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.deepEqual(input.verificationReceipt, {
     schemaVersion: 2,
     policyVersion: '2026-07-12.2',
-    manufacturerPolicyVersion: '2026-07-16.2',
+    manufacturerPolicyVersion: '2026-07-16.3',
     verifiedAt: '2026-07-11T14:35:00.000Z',
-    bindingSha256: '83422c5988d7a8c5842db915343e347d90ffbe1fa06b9882a8ccbe74bab63a83',
+    bindingSha256: '11bc3be9287f76e99bab2a1bd74c56cadd3609fdac95390ebeef8076fc79a6c0',
   });
 
   assert.equal(verifyVerificationReceipt(input, caseIdentity, {

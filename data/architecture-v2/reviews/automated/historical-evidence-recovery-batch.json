@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-5829ce8b346709e6e88ac78c",
-  "generatedAt": "2026-07-16T06:45:02.870Z",
+  "batchId": "historical-recovery-03eead0e045bd975475df877",
+  "generatedAt": "2026-07-16T08:10:11.530Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "daf9d9e68db25ee056fc05a46c66be9a63d4b676c202f0baffca67614305cffd"
+    "sha256": "3a7e7be2c8c92e8a6a58c54e6bbeb71c0e3db6439b3d171960ac9f45539caf19"
   },
   "policy": {
     "version": "2026-07-16.13",
@@ -6327,38 +6327,6 @@
               "width": 598,
               "height": 820,
               "depth": 555
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_07379007e8685c82942b641b",
-      "referenceId": "fa_ref_03275e6c7b751743089e8a9d",
-      "legacyRuntimeId": "ao-64002",
-      "canonicalProductId": "fa_prod_9c595a3e4cfdcfd52cf4c0a7",
-      "brand": "ASKO",
-      "model": "T410HD.W",
-      "category": "dryer",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_a113881861492cf826a7ba5f",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 850,
-              "depth": 755
             }
           }
         ]
@@ -24928,102 +24896,6 @@
               "width": 909,
               "height": 1874,
               "depth": 698
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_2b41665b5259820780729108",
-      "referenceId": "fa_ref_7017a73aa6952837bd428255",
-      "legacyRuntimeId": "ao-64005",
-      "canonicalProductId": "fa_prod_fbcd005a26df52798b85faa6",
-      "brand": "ASKO",
-      "model": "W2084C.W",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_9ade0f75c4dbdf927730f468",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 850,
-              "depth": 585
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_555229b6c82dd888bfb84296",
-      "referenceId": "fa_ref_6e75cda6315744e9163d7a30",
-      "legacyRuntimeId": "ao-64006",
-      "canonicalProductId": "fa_prod_2c73d7b74231c0d61af811a2",
-      "brand": "ASKO",
-      "model": "W4086C.W",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_fd5e7ec7ef0e9d38aaf1e740",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 850,
-              "depth": 580
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_46e7344ab330094d00faf933",
-      "referenceId": "fa_ref_15c8a9eec96879f78c9d601a",
-      "legacyRuntimeId": "ao-64008",
-      "canonicalProductId": "fa_prod_6c7260ae42e101b1a6428176",
-      "brand": "ASKO",
-      "model": "W4104C.W",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_6814602a290fb910372079f8",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 850,
-              "depth": 700
             }
           }
         ]
@@ -238282,7 +238154,7 @@
   ],
   "summary": {
     "artifactJobs": 1,
-    "targets": 7756,
+    "targets": 7752,
     "candidateEdges": 1,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
