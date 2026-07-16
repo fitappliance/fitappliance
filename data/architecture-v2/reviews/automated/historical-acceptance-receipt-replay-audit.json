@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T16:41:58.851Z",
-  "sourceBundleSha256": "3c4a2abcc5c090ccd09a9c5d67f78bab53213d31a7e0f66c3ae13cfbb0166912",
+  "generatedAt": "2026-07-16T17:01:41.770Z",
+  "sourceBundleSha256": "97cfba95ab352bb3039cc234b8437620ad0590041ac0cf99b13fc53628f6c718",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1740,6 +1740,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_67dfa1bfdf0b16b4e798bbd7",
+      "referenceId": "fa_ref_536bd189d68f36fa349d167c",
+      "brand": "Bosch",
+      "model": "SMU4HVS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU4HVS01A.pdf",
+      "sourcePdfSha256": "c0419346fbb69335b51c3380080066efe66800e3e64d06465aa2e5f4729d511e",
+      "contentSha256": "c0419346fbb69335b51c3380080066efe66800e3e64d06465aa2e5f4729d511e",
+      "receiptBindingSha256": "533f616d8622d4181a006a33f5c355f51aa2b33069cf98fd3557695ff6aa44e8",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/cf/31/cf316c78914ba5938669240798f6d9ea44ec325c3691280c44352d0f7ccebed3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_682c770da6707bb55c873a24",
       "referenceId": "fa_ref_d8a5c8b84d5db6b0eced3a4f",
       "brand": "Westinghouse",
@@ -2366,6 +2380,20 @@
       "contentSha256": "40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db",
       "receiptBindingSha256": "9987899d4e224e8e6fc7e45b9df60731f68e409f850f7049cc04188a8954168e",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/58/42/5842639fcf19f838b2d10a80bf9336545450dccdc59fbeb2debeddf1ce62533b.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_96f768d4ef230a2c43de9053",
+      "referenceId": "fa_ref_2e67cb7ae20abdd380079383",
+      "brand": "Bosch",
+      "model": "SMV4HTX01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV4HTX01A.pdf",
+      "sourcePdfSha256": "229598a50bec9dae6558f0e64a165a0169539be4ce0c49c192fc080ff5825875",
+      "contentSha256": "229598a50bec9dae6558f0e64a165a0169539be4ce0c49c192fc080ff5825875",
+      "receiptBindingSha256": "0d287e3ab31f61c621d057f961a847940a1f8fbaf5f0673dfa49612a23fcf1b2",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/74/b7/74b7842d77dbbb8be2a61ec6971734d2784d00f90aaec34006cd915ed16b8f0b.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4134,6 +4162,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_ff54df6819afa4601d360986",
+      "referenceId": "fa_ref_fcc3a4f2af8d14c8c43f1d26",
+      "brand": "Bosch",
+      "model": "SMU4HTS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU4HTS01A.pdf",
+      "sourcePdfSha256": "44c028a960eca6baa7394e591b80cecca8017a300a04372e577fcf460be3593d",
+      "contentSha256": "44c028a960eca6baa7394e591b80cecca8017a300a04372e577fcf460be3593d",
+      "receiptBindingSha256": "87395194c6be0460da7c8446b0db479788bcd3f9504cabb532973015dc5a5e08",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/e1/1e/e11e3f9e59063c0e402597edf99c880c7e6d4a979876e25c8bb3831e6af03142.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_ffb69939957753f902774ff0",
       "referenceId": "fa_ref_d08c8849ae04f3afe954c184",
       "brand": "Bosch",
@@ -4149,11 +4191,11 @@
     }
   ],
   "summary": {
-    "entries": 271,
-    "sources": 296,
-    "passed": 296,
+    "entries": 274,
+    "sources": 299,
+    "passed": 299,
     "failed": 0
   },
-  "checkedObjects": 587,
-  "semanticAuditSha256": "ba80a4ce7de17af8ca17fdc43e80fb1403f6b52d6c809dd92de0c27c9d5e5bb2"
+  "checkedObjects": 593,
+  "semanticAuditSha256": "44ff8d7322cbd3e6570a18ff77942c7ae0fd561878616bd5d7b747bceef87b6d"
 }

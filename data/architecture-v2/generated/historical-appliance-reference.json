@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "3c4a2abcc5c090ccd09a9c5d67f78bab53213d31a7e0f66c3ae13cfbb0166912"
+    "historical-recovery:historical-recovery-cumulative-v1": "97cfba95ab352bb3039cc234b8437620ad0590041ac0cf99b13fc53628f6c718"
   },
   "records": [
     {
@@ -15610,6 +15610,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ff54df6819afa4601d360986",
+          "snapshotSha256": "44c028a960eca6baa7394e591b80cecca8017a300a04372e577fcf460be3593d",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -15619,7 +15626,36 @@
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "MISSING_DIMENSIONS",
       "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR",
         "REGISTRY_DIMENSIONS_MISSING"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ff54df6819afa4601d360986",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU4HTS01A.pdf",
+          "contentSha256": "44c028a960eca6baa7394e591b80cecca8017a300a04372e577fcf460be3593d",
+          "receiptBindingSha256": "87395194c6be0460da7c8446b0db479788bcd3f9504cabb532973015dc5a5e08",
+          "verifiedAt": "2026-07-16T16:54:55.607Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "13bdde9306b6fd5cb2fe06ca2d8295d7976d253b73b8cbbb0dd6f5812cbe6b63"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "13bdde9306b6fd5cb2fe06ca2d8295d7976d253b73b8cbbb0dd6f5812cbe6b63"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "13bdde9306b6fd5cb2fe06ca2d8295d7976d253b73b8cbbb0dd6f5812cbe6b63"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/44/c0/44c028a960eca6baa7394e591b80cecca8017a300a04372e577fcf460be3593d.pdf"
+        }
       ]
     },
     {
@@ -15656,6 +15692,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_67dfa1bfdf0b16b4e798bbd7",
+          "snapshotSha256": "c0419346fbb69335b51c3380080066efe66800e3e64d06465aa2e5f4729d511e",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -15665,7 +15708,36 @@
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "MISSING_DIMENSIONS",
       "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR",
         "REGISTRY_DIMENSIONS_MISSING"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_67dfa1bfdf0b16b4e798bbd7",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU4HVS01A.pdf",
+          "contentSha256": "c0419346fbb69335b51c3380080066efe66800e3e64d06465aa2e5f4729d511e",
+          "receiptBindingSha256": "533f616d8622d4181a006a33f5c355f51aa2b33069cf98fd3557695ff6aa44e8",
+          "verifiedAt": "2026-07-16T16:48:01.159Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "400af25cc7c0b74c0fe77d5aea20e94a2f9612686ac5a524452c2bbc6195cef9"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "400af25cc7c0b74c0fe77d5aea20e94a2f9612686ac5a524452c2bbc6195cef9"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "400af25cc7c0b74c0fe77d5aea20e94a2f9612686ac5a524452c2bbc6195cef9"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/c0/41/c0419346fbb69335b51c3380080066efe66800e3e64d06465aa2e5f4729d511e.pdf"
+        }
       ]
     },
     {
@@ -16626,6 +16698,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_96f768d4ef230a2c43de9053",
+          "snapshotSha256": "229598a50bec9dae6558f0e64a165a0169539be4ce0c49c192fc080ff5825875",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -16635,7 +16714,36 @@
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "MISSING_DIMENSIONS",
       "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR",
         "REGISTRY_DIMENSIONS_MISSING"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_96f768d4ef230a2c43de9053",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV4HTX01A.pdf",
+          "contentSha256": "229598a50bec9dae6558f0e64a165a0169539be4ce0c49c192fc080ff5825875",
+          "receiptBindingSha256": "0d287e3ab31f61c621d057f961a847940a1f8fbaf5f0673dfa49612a23fcf1b2",
+          "verifiedAt": "2026-07-16T16:50:20.313Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "ded5300424789cee0a6d8f3bff33d0a8049cb5971598a9fecfe88dd746f81f27"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "ded5300424789cee0a6d8f3bff33d0a8049cb5971598a9fecfe88dd746f81f27"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "ded5300424789cee0a6d8f3bff33d0a8049cb5971598a9fecfe88dd746f81f27"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/22/95/229598a50bec9dae6558f0e64a165a0169539be4ce0c49c192fc080ff5825875.pdf"
+        }
       ]
     },
     {

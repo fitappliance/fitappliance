@@ -768,3 +768,35 @@ P0 missing-dimension targets decreased from 948 to 945. `COMPLETE_RECEIPT`
 increased to 290 and `ALL_AXIS_RANGE` to 74, while historical `AUTO_FILL`
 remains 226 because the replacement-reference schema cannot safely flatten an
 adjustable height range.
+
+## 21. Bosch Series 4 dishwasher specification evidence
+
+Run `historical-bosch-series4-dishwashers-20260716-a` selected three current
+Bosch Australia dishwashers. The accepted exact-model dimensions are:
+
+| Model | Installation type | Width | Adjustable height | Depth |
+| --- | --- | ---: | ---: | ---: |
+| `SMU4HTS01A` | built-under | 598 | 815-875 | 573 |
+| `SMU4HVS01A` | built-under | 598 | 815-875 | 573 |
+| `SMV4HTX01A` | fully integrated | 598 | 815-875 | 550 |
+
+Every claim comes from page 2 of an exact-model Bosch Australia specification
+sheet. Each page explicitly states `Product Dimensions (H x W x D)`, and
+visual inspection matched the MinerU axis order, range and fixed values. The
+official product-page manifests and associated user manuals were also retained
+with hash-bound discovery provenance. Bounded MinerU fallback processed only
+selected page ranges when a long manual needed another pass; non-contributing
+manual outcomes remain typed attempts and cannot replace the spec-sheet claims.
+
+The full online audit checked three targets and 593 cumulative objects with no
+repair or violation. Cumulative receipt replay passes all 299 sources. Public
+receipt-bound dimensions increased from 221 to 224; receipt-bound
+`VERIFIED_FIT` remains zero. Installation clearances, door-open depth and rear
+service space are still unknown, so all three Fit outcomes remain
+`INSUFFICIENT_DATA`.
+
+The executable queue decreased from 7,714 to 7,711 and current-retail P0
+missing-dimension targets decreased from 945 to 942. `COMPLETE_RECEIPT`
+increased to 293 and `ALL_AXIS_RANGE` to 77. Historical `AUTO_FILL` remains
+226 because the adjustable height cannot be flattened into the scalar
+replacement-reference schema.
