@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-b27815dda7edcd2229c34f28",
-  "generatedAt": "2026-07-16T18:56:40.395Z",
+  "batchId": "historical-recovery-5e49fc13221ec4594404618e",
+  "generatedAt": "2026-07-16T19:13:24.637Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "049d24725c046f307d9effa2e8f54720fbaeda349654175aaf5379ef481237dd"
+    "sha256": "bc50216369574834a13106cf377756e4f3aea6a9c796306582e93ace056944fa"
   },
   "policy": {
     "version": "2026-07-16.15",
@@ -207,198 +207,6 @@
               "width": 596,
               "height": 819,
               "depth": 559
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_cc7e4e321a6f3e55a498846b",
-      "referenceId": "fa_ref_966382e8e19ed5e3cfa366e5",
-      "legacyRuntimeId": "ao-62214",
-      "canonicalProductId": "fa_prod_ad8a0f43ad7aef7e357857d4",
-      "brand": "Bosch",
-      "model": "SMV66MX01A",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_bc45118aa4affbc576f8f698",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 815,
-              "depth": 550
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_2d8920247a3ab65929bc8ebf",
-      "referenceId": "fa_ref_e1029b4f322e8d3050149ab6",
-      "legacyRuntimeId": "ao-45255",
-      "canonicalProductId": "fa_prod_24ea5488e487e7325eefd553",
-      "brand": "Bosch",
-      "model": "SMV88TX01A",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_b815871f37248c8ee599dfba",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 815,
-              "depth": 550
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_d70f4dad25da51dba9694232",
-      "referenceId": "fa_ref_f93d54a1a91cdb3b846a8810",
-      "legacyRuntimeId": "ao-61055",
-      "canonicalProductId": "fa_prod_fff7bf48ef5a940c8ed73680",
-      "brand": "Bosch",
-      "model": "SMV88TX02A",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_158c47c3403683db72121985",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 815,
-              "depth": 550
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_02b178ab2271f7f74de2c8dd",
-      "referenceId": "fa_ref_7a84a040ddf68ab0d3c2e89d",
-      "legacyRuntimeId": "ao-38564",
-      "canonicalProductId": "fa_prod_405d1208000d696fed75c6b8",
-      "brand": "Bosch",
-      "model": "SPS60M08AU",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_52346ee3829aabc52d5be0fa",
-            "dimensionsMm": {
-              "width": 450,
-              "height": 845,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_4755890c73b23e99664bed51",
-      "referenceId": "fa_ref_20206e910331934b9635fb92",
-      "legacyRuntimeId": "ao-104793",
-      "canonicalProductId": "fa_prod_abf1d19f9882753cc6f0f251",
-      "brand": "Bosch",
-      "model": "SPS6IKI01A",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_f8593955d8368f9867600d8e",
-            "dimensionsMm": {
-              "width": 450,
-              "height": 845,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_4c5e20f3a2c9a8c38b22dbc7",
-      "referenceId": "fa_ref_846698d8022c28857251597c",
-      "legacyRuntimeId": "ao-102298",
-      "canonicalProductId": "fa_prod_7c1260710557931492a06eba",
-      "brand": "Bosch",
-      "model": "SPU6IMS01A",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_2d3c555b41d1a30d1b8edd71",
-            "dimensionsMm": {
-              "width": 448,
-              "height": 815,
-              "depth": 573
             }
           }
         ]
@@ -235762,7 +235570,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7678,
+    "targets": 7672,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

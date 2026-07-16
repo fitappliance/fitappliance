@@ -1056,3 +1056,41 @@ contains 7,678 targets and the current-retail P0 missing-dimension lane contains
 909 targets. Public receipt-bound dimensions are 253 and receipt-bound
 `VERIFIED_FIT` remains zero. All eight target IDs are absent from the next-epoch
 executable queue and batch.
+
+## 28. Bosch SMV, SPS and SPU dishwasher lane completion
+
+Run `historical-bosch-legacy-dishwashers-20260716-i` selected the final six
+zero-attempt Bosch dishwasher targets in the current-retail P0 lane:
+
+| Model | Accepted source | Width | Height | Depth |
+| --- | --- | ---: | ---: | ---: |
+| `SMV66MX01A` | exact-model PDF | 598 | 815-875 | 550 |
+| `SMV88TX01A` | exact product page | 598 | 815 | 550 |
+| `SMV88TX02A` | exact-model PDF | 598 | 815 | 550 |
+| `SPS60M08AU` | exact-model PDF | 450 | 845 | 600 |
+| `SPS6IKI01A` | exact-model PDF | 450 | 845 | 600 |
+| `SPU6IMS01A` | exact-model PDF | 448 | 815-875 | 573 |
+
+All five PDF sources are exact-model Bosch Australia specification sheets and
+were converted to MinerU `content_list_v2` before claims were evaluated. Their
+receipts retain the PDF and JSON hashes, exact-model identity signals, page and
+fragment bindings and explicit dimension axes. `SMV88TX01A` instead uses an
+exact Bosch Australia product page with canonical URL, title, structured model
+and explicit H/W/D specification evidence. Other discovered manuals remain
+typed non-contributing attempts when identity or field coverage is incomplete.
+
+The adjustable heights for `SMV66MX01A` and `SPU6IMS01A` remain ranges and are
+not flattened into historical replacement-reference scalars. The other four
+fixed envelopes may use `AUTO_FILL`. No source supplies the complete
+installation, operation and rear-service envelope, so all six remain
+dimensions-only with `verifiedFitEligible=false` and `INSUFFICIENT_DATA`.
+
+The full online audit checked six targets and 642 cumulative objects with zero
+repairs and zero violations. Promotion increased the cumulative bundle to 309
+targets and 334 source receipts; all 334 receipts replay. After the release
+transaction, `COMPLETE_RECEIPT` is 328, `ALL_AXIS_RANGE` is 84,
+`ALL_AXIS_SCALAR` is 381, historical `AUTO_FILL` is 254, the executable queue
+contains 7,672 targets and the current-retail P0 missing-dimension lane contains
+903 targets. Public receipt-bound dimensions are 259 and receipt-bound
+`VERIFIED_FIT` remains zero. All six target IDs are absent from the next-epoch
+queue and batch, and no Bosch dishwasher remains in the current-retail P0 lane.

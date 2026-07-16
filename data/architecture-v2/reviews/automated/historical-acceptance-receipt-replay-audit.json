@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T18:56:04.319Z",
-  "sourceBundleSha256": "853244e23fc44da8b9a6a3b03894c0b2b276fecf0b4bde7a3c9ed97deb99ce5f",
+  "generatedAt": "2026-07-16T19:12:54.418Z",
+  "sourceBundleSha256": "63d1ac4fc0f35c52b74d314cd6374ac2b735a7185a0260260ba1ca16b7e21a2e",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -98,6 +98,20 @@
       "contentSha256": "e90dfb6e0562509220ca3c4b07ce36988d84f0463d1732655b80146694813bf9",
       "receiptBindingSha256": "a26e1f55ccea973f2a77076cd77929c156994b75fed6264c2c496a87fb256a27",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_02b178ab2271f7f74de2c8dd",
+      "referenceId": "fa_ref_7a84a040ddf68ab0d3c2e89d",
+      "brand": "Bosch",
+      "model": "SPS60M08AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SPS60M08AU.pdf",
+      "sourcePdfSha256": "26493453053ff8367bfbd2b9bd8d7d604d968448ddf996db07e696ed205b1dad",
+      "contentSha256": "26493453053ff8367bfbd2b9bd8d7d604d968448ddf996db07e696ed205b1dad",
+      "receiptBindingSha256": "f84889fa483b7e46805c563a8075808342f520916fca52ca4c2ba71668b4459d",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/0f/62/0f624cbad3eaf1dfb60c095c0382b7525aa5d62554202b09fadec86cba307a70.json",
       "status": "passed",
       "failureCode": null
     },
@@ -746,6 +760,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_2d8920247a3ab65929bc8ebf",
+      "referenceId": "fa_ref_e1029b4f322e8d3050149ab6",
+      "brand": "Bosch",
+      "model": "SMV88TX01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMV88TX01A",
+      "sourcePdfSha256": null,
+      "contentSha256": "9bc640ba47529f5996a8b2fa7431c9b22f0330027fdc3a0fe8451c0fbfa9b743",
+      "receiptBindingSha256": "97c73c2bef4f4a237b26d3efcd0127123a79e7b1d66486fc56c702c1ef44cec8",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_2e4c5abb8feb90a0e5da61db",
       "referenceId": "fa_ref_ae05134bb1eaf3c0b5f8c9a6",
       "brand": "Hisense",
@@ -1236,6 +1264,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_4755890c73b23e99664bed51",
+      "referenceId": "fa_ref_20206e910331934b9635fb92",
+      "brand": "Bosch",
+      "model": "SPS6IKI01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SPS6IKI01A.pdf",
+      "sourcePdfSha256": "bba28973f5fe9f1912cb563dad356f133fe4dc7048cb52bb3766edf7cb4251cb",
+      "contentSha256": "bba28973f5fe9f1912cb563dad356f133fe4dc7048cb52bb3766edf7cb4251cb",
+      "receiptBindingSha256": "44b517769b19308935325202e509b534c42616ec2baae25fb27ffcc56ad7c92f",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/d8/51/d851b13f372ba9d46a70563004d9f54b7c71eb7059add462a75390a6a88724b0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_47c7effb30ca1c3f6ce687ae",
       "referenceId": "fa_ref_c8140287c8195005e28fcfec",
       "brand": "Fisher & Paykel",
@@ -1316,6 +1358,20 @@
       "contentSha256": "eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1",
       "receiptBindingSha256": "04b6f9bca8511d18335994c276bdeb08f681d4abc7cc27c7a00bb364e69b7418",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/19/00/190093e66b50124a7aeb6baf010f4656cceb89f6f710a39b860484acb715a597.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_4c5e20f3a2c9a8c38b22dbc7",
+      "referenceId": "fa_ref_846698d8022c28857251597c",
+      "brand": "Bosch",
+      "model": "SPU6IMS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SPU6IMS01A.pdf",
+      "sourcePdfSha256": "cb643b608f251e56a23d2e6b6365be7bacdbdaea71c23d188e0b49e62936ed52",
+      "contentSha256": "cb643b608f251e56a23d2e6b6365be7bacdbdaea71c23d188e0b49e62936ed52",
+      "receiptBindingSha256": "338d7491f9ad5a3184aa15c031babee16d8d3267a6a02bab2061f57381173d3f",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/d5/03/d503f5753fdb02b6c54b2c64eadb04d4354c9b10ac0977665ed804351ca565e3.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3714,6 +3770,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_cc7e4e321a6f3e55a498846b",
+      "referenceId": "fa_ref_966382e8e19ed5e3cfa366e5",
+      "brand": "Bosch",
+      "model": "SMV66MX01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV66MX01A.pdf",
+      "sourcePdfSha256": "81cfcf4997a888f3f69b056f21045b8d0ff4a6e4b4d5a6959b2bd414cc677f71",
+      "contentSha256": "81cfcf4997a888f3f69b056f21045b8d0ff4a6e4b4d5a6959b2bd414cc677f71",
+      "receiptBindingSha256": "b3de10a1889b58b0a03ca0b87aa6f9f5d757a4d3dd8f6afe8db4136908793817",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/c7/d8/c7d8966d01dbad2e5ce4b687cb547dc635a92c35276bea1d61110ede2929041d.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_ccf85a32347850ef5539411e",
       "referenceId": "fa_ref_9e27a5123836852a17b39d47",
       "brand": "ASKO",
@@ -3850,6 +3920,20 @@
       "contentSha256": "d2616deb29f721c392732b581dbd7af72b3a4ec5351ac36aaef2f75d458add14",
       "receiptBindingSha256": "69b3252bd4451d1a5a5faa49896bf34d7301e98f6c54c5d07513d44dd509ea8e",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/25/2f/252f466366c6cf328f419334b31e8fd714d3091e9189154e93b86acd30583fc2.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_d70f4dad25da51dba9694232",
+      "referenceId": "fa_ref_f93d54a1a91cdb3b846a8810",
+      "brand": "Bosch",
+      "model": "SMV88TX02A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV88TX02A.pdf",
+      "sourcePdfSha256": "63d6b068d7ac0aa852debd709acc288439295794f736501088f0e4bafb51c5e4",
+      "contentSha256": "63d6b068d7ac0aa852debd709acc288439295794f736501088f0e4bafb51c5e4",
+      "receiptBindingSha256": "7f9dd1a2dbeaeff38664c9a0f646d600ee0ebf07154aea6b90578dde464b55fd",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/10/fc/10fc9ef2bd9df6b00d40876004fa3183e8bfe1265789e7824cc7a3cfc4c4fd24.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4597,11 +4681,11 @@
     }
   ],
   "summary": {
-    "entries": 303,
-    "sources": 328,
-    "passed": 328,
+    "entries": 309,
+    "sources": 334,
+    "passed": 334,
     "failed": 0
   },
-  "checkedObjects": 631,
-  "semanticAuditSha256": "8f2583437c8982e7aefd6ec492abe799eb4990af9dbaee4cfa73641762bcc5b4"
+  "checkedObjects": 642,
+  "semanticAuditSha256": "c39c02a376e20b954b1486a8686cd0416feda3b6e70ace72881b2316a20597a3"
 }
