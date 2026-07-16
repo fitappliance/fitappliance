@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "0365268eed18285b3b79dcf84973652650fb6850b4d249b4527af30a17dd9feb"
+    "historical-recovery:historical-recovery-cumulative-v1": "9be7b99e8d4764b93afa5a42183f7c8062f8562ccffdd4dc00ecdc8a22f18839"
   },
   "records": [
     {
@@ -271465,9 +271465,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 636
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -271480,6 +271484,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_d0f4fe5fbdf35edb409a200c",
+          "snapshotSha256": "a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -271487,9 +271498,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_d0f4fe5fbdf35edb409a200c",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A1AU.pdf",
+          "contentSha256": "a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed",
+          "receiptBindingSha256": "1295e3f3a345a431f668cb20afb883b0083e86d829ddef9c1be97b8754f67d91",
+          "verifiedAt": "2026-07-16T20:20:08.843Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "47890a51c63f42583f4dfd9ed413541eade53921d407edbd7bdefdfc3f393d94"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "47890a51c63f42583f4dfd9ed413541eade53921d407edbd7bdefdfc3f393d94"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "47890a51c63f42583f4dfd9ed413541eade53921d407edbd7bdefdfc3f393d94"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/a8/7c/a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed.pdf"
+        }
       ]
     },
     {
@@ -271546,9 +271583,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 636
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -271561,6 +271602,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_4cfe9afebff7346cde317d22",
+          "snapshotSha256": "46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -271568,9 +271616,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_4cfe9afebff7346cde317d22",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244ARAU.pdf",
+          "contentSha256": "46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59",
+          "receiptBindingSha256": "d9ca471d440ea505da3b15d65e3fd22a2fd625ade640ac6aa1cb6564f7cc0591",
+          "verifiedAt": "2026-07-16T20:18:40.120Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "76011c4555a3252378ac65bf4d4d78c0ce7fb5096f6b6c4de36d4af39a057b72"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "76011c4555a3252378ac65bf4d4d78c0ce7fb5096f6b6c4de36d4af39a057b72"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "76011c4555a3252378ac65bf4d4d78c0ce7fb5096f6b6c4de36d4af39a057b72"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/46/fb/46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59.pdf"
+        }
       ]
     },
     {
@@ -323822,16 +323896,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2878,
-      "MODEL_RECEIPT": 266,
+      "IDENTITY_ONLY": 2876,
+      "MODEL_RECEIPT": 268,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2878,
-      "AUTO_FILL": 277,
+      "MEASURE_REQUIRED": 2876,
+      "AUTO_FILL": 279,
       "QUARANTINED": 88
     }
   }

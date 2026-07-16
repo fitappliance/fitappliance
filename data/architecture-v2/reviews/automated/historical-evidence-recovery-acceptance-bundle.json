@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T20:13:05.933Z",
+  "generatedAt": "2026-07-16T20:29:08.115Z",
   "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
   "entries": [
     {
@@ -22960,6 +22960,242 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "cb643b608f251e56a23d2e6b6365be7bacdbdaea71c23d188e0b49e62936ed52"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_4cfe9afebff7346cde317d22",
+      "referenceId": "fa_ref_e8a9dd51253a5829b8256a13",
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wgg244arau",
+      "canonicalProductId": "fa_prod_1c6c12fba6b1f8cf33c885bc",
+      "brand": "Bosch",
+      "model": "WGG244ARAU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-3e0eaf7e99badc181279755b-slice-941a1ef169fd",
+      "auditSha256": "ac5e74388cfa47005b963871b2ae7cf9907ef20d6dee9656ea804ac45f811466",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244ARAU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244ARAU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T20:18:40.120Z",
+          "contentSha256": "46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59",
+          "objectPath": "evidence/web/sha256/46/fb/46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1374151,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WGG244ARAU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "76011c4555a3252378ac65bf4d4d78c0ce7fb5096f6b6c4de36d4af39a057b72",
+              "bbox": [
+                500,
+                613,
+                880,
+                634
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 848
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "76011c4555a3252378ac65bf4d4d78c0ce7fb5096f6b6c4de36d4af39a057b72",
+              "bbox": [
+                500,
+                613,
+                880,
+                634
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 636
+              },
+              "sourceLabel": "Overall depth including door handle",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "76011c4555a3252378ac65bf4d4d78c0ce7fb5096f6b6c4de36d4af39a057b72",
+              "bbox": [
+                500,
+                613,
+                880,
+                634
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59",
+            "contentSha256": "327f0d44d4bd1b9936887b642d95cfb8a050c9cc7b2bd34efec7e94eff3fd4c2",
+            "objectPath": "evidence/derived/mineru-json/sha256/32/7f/327f0d44d4bd1b9936887b642d95cfb8a050c9cc7b2bd34efec7e94eff3fd4c2.json",
+            "byteSize": 50744,
+            "pageCount": 4
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WGG244ARAU:page:4:e3d35cc4abf4f53befdd0d92d3c8e68602b49b101db733f1bf70509adfc41c14"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WGG244ARAU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WGG244ARAU:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WGG244ARAU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244ARAU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244ARAU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T20:18:40.120Z",
+            "bindingSha256": "d9ca471d440ea505da3b15d65e3fd22a2fd625ade640ac6aa1cb6564f7cc0591"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 848,
+              "maximumMm": 848
+            },
+            "depthMm": 636
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244ARAU.pdf",
+            "contentSha256": "46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59",
+            "receiptBindingSha256": "d9ca471d440ea505da3b15d65e3fd22a2fd625ade640ac6aa1cb6564f7cc0591",
+            "page": 2,
+            "fragmentSha256": "76011c4555a3252378ac65bf4d4d78c0ce7fb5096f6b6c4de36d4af39a057b72"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244ARAU.pdf",
+            "contentSha256": "46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59",
+            "receiptBindingSha256": "d9ca471d440ea505da3b15d65e3fd22a2fd625ade640ac6aa1cb6564f7cc0591",
+            "page": 2,
+            "fragmentSha256": "76011c4555a3252378ac65bf4d4d78c0ce7fb5096f6b6c4de36d4af39a057b72"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244ARAU.pdf",
+            "contentSha256": "46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59",
+            "receiptBindingSha256": "d9ca471d440ea505da3b15d65e3fd22a2fd625ade640ac6aa1cb6564f7cc0591",
+            "page": 2,
+            "fragmentSha256": "76011c4555a3252378ac65bf4d4d78c0ce7fb5096f6b6c4de36d4af39a057b72"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59"
         ]
       },
       "reconciliation": {
@@ -66305,6 +66541,238 @@
       }
     },
     {
+      "targetId": "recovery_target_d0f4fe5fbdf35edb409a200c",
+      "referenceId": "fa_ref_261e15b924e4f3e4d4a1e7c7",
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wgg244a1au",
+      "canonicalProductId": "fa_prod_cbc4ad7a507f60ca228f1b50",
+      "brand": "Bosch",
+      "model": "WGG244A1AU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-3e0eaf7e99badc181279755b-slice-941a1ef169fd",
+      "auditSha256": "ac5e74388cfa47005b963871b2ae7cf9907ef20d6dee9656ea804ac45f811466",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A1AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A1AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T20:20:08.843Z",
+          "contentSha256": "a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed",
+          "objectPath": "evidence/web/sha256/a8/7c/a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1223816,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WGG244A1AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "47890a51c63f42583f4dfd9ed413541eade53921d407edbd7bdefdfc3f393d94",
+              "bbox": [
+                500,
+                626,
+                880,
+                648
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 848
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "47890a51c63f42583f4dfd9ed413541eade53921d407edbd7bdefdfc3f393d94",
+              "bbox": [
+                500,
+                626,
+                880,
+                648
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 636
+              },
+              "sourceLabel": "Overall depth including door handle",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "47890a51c63f42583f4dfd9ed413541eade53921d407edbd7bdefdfc3f393d94",
+              "bbox": [
+                500,
+                626,
+                880,
+                648
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed",
+            "contentSha256": "6fd6d77474995ef0ae2880e6fb956fa5ebde8956de68726911e2bd9441798926",
+            "objectPath": "evidence/derived/mineru-json/sha256/6f/d6/6fd6d77474995ef0ae2880e6fb956fa5ebde8956de68726911e2bd9441798926.json",
+            "byteSize": 39913,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_title_model",
+              "value": "WGG244A1AU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WGG244A1AU:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WGG244A1AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A1AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A1AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T20:20:08.843Z",
+            "bindingSha256": "1295e3f3a345a431f668cb20afb883b0083e86d829ddef9c1be97b8754f67d91"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 848,
+              "maximumMm": 848
+            },
+            "depthMm": 636
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A1AU.pdf",
+            "contentSha256": "a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed",
+            "receiptBindingSha256": "1295e3f3a345a431f668cb20afb883b0083e86d829ddef9c1be97b8754f67d91",
+            "page": 2,
+            "fragmentSha256": "47890a51c63f42583f4dfd9ed413541eade53921d407edbd7bdefdfc3f393d94"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A1AU.pdf",
+            "contentSha256": "a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed",
+            "receiptBindingSha256": "1295e3f3a345a431f668cb20afb883b0083e86d829ddef9c1be97b8754f67d91",
+            "page": 2,
+            "fragmentSha256": "47890a51c63f42583f4dfd9ed413541eade53921d407edbd7bdefdfc3f393d94"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A1AU.pdf",
+            "contentSha256": "a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed",
+            "receiptBindingSha256": "1295e3f3a345a431f668cb20afb883b0083e86d829ddef9c1be97b8754f67d91",
+            "page": 2,
+            "fragmentSha256": "47890a51c63f42583f4dfd9ed413541eade53921d407edbd7bdefdfc3f393d94"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_d19630ac9ee715b25e7187e2",
       "referenceId": "fa_ref_3bc782fb8c9df8640a08a22b",
       "legacyRuntimeId": "fridge-arf3159",
@@ -81315,6 +81783,13 @@
       "queueSha256": "45695b43f4e2e6ff8ef46a8fbcf88f31938fcabd9ebf473c4661151ed0c98e27",
       "resultsSha256": "2482d031e6e1f255b594121462bdbf4b9c3e2954e401a2f43df8cba6ee9fe40b",
       "auditSha256": "c54a43fa2d03294867d1730f0ca2a218fb8550108958011792070f111fd63fe8"
+    },
+    {
+      "batchId": "historical-recovery-3e0eaf7e99badc181279755b-slice-941a1ef169fd",
+      "batchSha256": "b01e6a0f943912f0280672f77c54c34c9375589593e63f7459387391775a386e",
+      "queueSha256": "ed875a160b6d8990dec938431eb7833c317cf740ec148cdbbcd1eb6061c21d16",
+      "resultsSha256": "d921be78d782bc1335d0a8c771c1972ebc0513fd0899d84055d3fa31349557e4",
+      "auditSha256": "ac5e74388cfa47005b963871b2ae7cf9907ef20d6dee9656ea804ac45f811466"
     },
     {
       "batchId": "historical-recovery-3e7afba6e67287c58cd4b750-slice-0af13902cfb0",

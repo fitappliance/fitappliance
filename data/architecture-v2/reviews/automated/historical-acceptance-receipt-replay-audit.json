@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T20:13:05.933Z",
-  "sourceBundleSha256": "0365268eed18285b3b79dcf84973652650fb6850b4d249b4527af30a17dd9feb",
+  "generatedAt": "2026-07-16T20:29:08.115Z",
+  "sourceBundleSha256": "9be7b99e8d4764b93afa5a42183f7c8062f8562ccffdd4dc00ecdc8a22f18839",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1442,6 +1442,20 @@
       "contentSha256": "cb643b608f251e56a23d2e6b6365be7bacdbdaea71c23d188e0b49e62936ed52",
       "receiptBindingSha256": "338d7491f9ad5a3184aa15c031babee16d8d3267a6a02bab2061f57381173d3f",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/d5/03/d503f5753fdb02b6c54b2c64eadb04d4354c9b10ac0977665ed804351ca565e3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_4cfe9afebff7346cde317d22",
+      "referenceId": "fa_ref_e8a9dd51253a5829b8256a13",
+      "brand": "Bosch",
+      "model": "WGG244ARAU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244ARAU.pdf",
+      "sourcePdfSha256": "46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59",
+      "contentSha256": "46fba1159d7391f5cd0e8b83b51c2608beca81ca254a8741bc733dc6468f0f59",
+      "receiptBindingSha256": "d9ca471d440ea505da3b15d65e3fd22a2fd625ade640ac6aa1cb6564f7cc0591",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/32/7f/327f0d44d4bd1b9936887b642d95cfb8a050c9cc7b2bd34efec7e94eff3fd4c2.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4092,6 +4106,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_d0f4fe5fbdf35edb409a200c",
+      "referenceId": "fa_ref_261e15b924e4f3e4d4a1e7c7",
+      "brand": "Bosch",
+      "model": "WGG244A1AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A1AU.pdf",
+      "sourcePdfSha256": "a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed",
+      "contentSha256": "a87c6589351477e5981af9315c955965dd86a97372642ff81940d8c9fb270bed",
+      "receiptBindingSha256": "1295e3f3a345a431f668cb20afb883b0083e86d829ddef9c1be97b8754f67d91",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/6f/d6/6fd6d77474995ef0ae2880e6fb956fa5ebde8956de68726911e2bd9441798926.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_d19630ac9ee715b25e7187e2",
       "referenceId": "fa_ref_3bc782fb8c9df8640a08a22b",
       "brand": "CHIQ",
@@ -5003,11 +5031,11 @@
     }
   ],
   "summary": {
-    "entries": 332,
-    "sources": 357,
-    "passed": 357,
+    "entries": 334,
+    "sources": 359,
+    "passed": 359,
     "failed": 0
   },
-  "checkedObjects": 688,
-  "semanticAuditSha256": "12d485f35f3afb0eb3678ab8b6fd09b8a1987c3fd2cf09511086064bce434019"
+  "checkedObjects": 692,
+  "semanticAuditSha256": "4fa4b6fc4bc04cdd5009d1e5fe8b1740093e6518fb6f878add9a66e8778e4841"
 }

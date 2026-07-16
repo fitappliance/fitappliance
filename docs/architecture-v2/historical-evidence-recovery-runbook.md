@@ -1248,3 +1248,43 @@ replay. After the release transaction, `COMPLETE_RECEIPT` is 351,
 277, the executable queue contains 7,646 targets and the current-retail P0
 missing-dimension lane contains 877 targets. Public receipt-bound dimensions
 are 282 and receipt-bound `VERIFIED_FIT` remains zero.
+
+## 33. Bosch washer lane N and zero-attempt lane closure
+
+Run `historical-bosch-washers-20260716-n` selected the final five zero-attempt
+current-retail Bosch washing machines after rebuilding the released queue.
+Two exact-model Bosch Australia specification PDFs produced accepted fixed
+closed envelopes:
+
+| Model | Width | Height | Depth |
+| --- | ---: | ---: | ---: |
+| `WGG244A1AU` | 598 | 848 | 636 |
+| `WGG244ARAU` | 598 | 848 | 636 |
+
+Both PDFs were processed through MinerU `content_list_v2`. Their receipts bind
+the exact model, explicit `H x W x D` axes, page and fragment, source PDF hash
+and derived JSON hash. The 636 mm depth is the sheet's explicit overall depth
+including the door handle. No complete installation, plumbing, operation or
+rear-service evidence was present, so both remain dimensions-only with
+`verifiedFitEligible=false` and `INSUFFICIENT_DATA`.
+
+`WVG28420AU` and `WVH28441AU` completed their current candidate inventories but
+failed exact-model identity or explicit-axis extraction. `WVH28490AU` completed
+the same bounded search but supplied no source with all required claims. All
+three are target-level suppressed until a resolver, parser or policy epoch
+changes; no sibling or series dimension was substituted.
+
+The full online audit checked five targets and 692 cumulative objects with zero
+repairs and zero violations. Promotion added two accepted targets, increasing
+the cumulative bundle to 334 targets and 359 source receipts; all 359 receipts
+replay. After the release transaction, `COMPLETE_RECEIPT` is 353,
+`ALL_AXIS_RANGE` is 84, `ALL_AXIS_SCALAR` is 406, historical `AUTO_FILL` is
+279, the executable queue contains 7,641 targets and the current-retail P0
+missing-dimension lane contains 872 targets. Public receipt-bound dimensions
+are 284 and receipt-bound `VERIFIED_FIT` remains zero.
+
+No zero-attempt Bosch current-retail washing machine remains. `WAE22466AU` is
+the only Bosch washer still visible in the executable queue because one prior
+candidate ended in a transient transport failure. It stays outside immediate
+selection and may be retried only in a later backoff-controlled recovery
+window, never as an automatic continuation of lanes L through N.

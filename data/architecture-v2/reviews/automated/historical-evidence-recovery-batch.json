@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-3e0eaf7e99badc181279755b",
-  "generatedAt": "2026-07-16T20:13:57.538Z",
+  "batchId": "historical-recovery-211805a57595b7ee9af95930",
+  "generatedAt": "2026-07-16T20:29:49.439Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "ed875a160b6d8990dec938431eb7833c317cf740ec148cdbbcd1eb6061c21d16"
+    "sha256": "266d9b5a32d8ee040e37ba67a6ce6b9387785d583829791ed31e3df7f6f98a71"
   },
   "policy": {
     "version": "2026-07-16.15",
@@ -22851,148 +22851,6 @@
             "sourceDocumentId": "doc_e6146d4a750e7595fff93a7b",
             "dimensionsMm": {
               "width": 600,
-              "height": 848,
-              "depth": 590
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_d0f4fe5fbdf35edb409a200c",
-      "referenceId": "fa_ref_261e15b924e4f3e4d4a1e7c7",
-      "legacyRuntimeId": "discovery-washing-machine-bosch-wgg244a1au",
-      "canonicalProductId": "fa_prod_cbc4ad7a507f60ca228f1b50",
-      "brand": "Bosch",
-      "model": "WGG244A1AU",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": []
-      }
-    },
-    {
-      "targetId": "recovery_target_4cfe9afebff7346cde317d22",
-      "referenceId": "fa_ref_e8a9dd51253a5829b8256a13",
-      "legacyRuntimeId": "discovery-washing-machine-bosch-wgg244arau",
-      "canonicalProductId": "fa_prod_1c6c12fba6b1f8cf33c885bc",
-      "brand": "Bosch",
-      "model": "WGG244ARAU",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": []
-      }
-    },
-    {
-      "targetId": "recovery_target_dffc4ed4e05924c97b54bade",
-      "referenceId": "fa_ref_1cb2e322795f94f6c50a5831",
-      "legacyRuntimeId": "ao-67576",
-      "canonicalProductId": "fa_prod_d1e4988dd079ffba61bab26f",
-      "brand": "Bosch",
-      "model": "WVG28420AU",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_a076edff9c8a6b95d9f17304",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 845,
-              "depth": 590
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_124b54dbc7532381c9dab1d2",
-      "referenceId": "fa_ref_e34071b813b2eb7954945af6",
-      "legacyRuntimeId": "ao-37603",
-      "canonicalProductId": "fa_prod_bcdba918a4e03b9b1cb35582",
-      "brand": "Bosch",
-      "model": "WVH28441AU",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_25308dbc90cdeb5a466545eb",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 845,
-              "depth": 590
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_60bd9467faf9d7a70434231c",
-      "referenceId": "fa_ref_9e43516fe23c04d53e8503c3",
-      "legacyRuntimeId": "ao-55658",
-      "canonicalProductId": "fa_prod_b893f5bb660e347143481639",
-      "brand": "Bosch",
-      "model": "WVH28490AU",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_39afc2fdf88a6cf288de4cbb",
-            "dimensionsMm": {
-              "width": 598,
               "height": 848,
               "depth": 590
             }
@@ -234845,7 +234703,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7646,
+    "targets": 7641,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
