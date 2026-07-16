@@ -1498,6 +1498,103 @@ test('a hash-bound exact Fisher & Paykel support product binds the DW60CH AU/NZ 
   }
 });
 
+test('a hash-bound Fisher Paykel support resource binds only its explicit WA60 base model and scoped table', () => {
+  const washerIdentity = {
+    brand: 'Fisher & Paykel', model: 'WA7560E1', category: 'washing_machine',
+  };
+  const sourceUrl = 'https://dam.fisherpaykel.com/KZ3PKN00/at/install/FP-Washsmart-installation-guide-WA60-models.pdf';
+  const pdfBytes = Buffer.from('%PDF-1.7\nFisher Paykel WA60 family installation manual');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [
+      mineruParagraph('WA1060E, WA8560E, WA7560E, WA1060G, WA9060G, WA8560G, WA7060G & WA7060M models'),
+      mineruParagraph('INSTALLATION GUIDE / USER GUIDE NZ AU SG ROW', [260, 820, 720, 910]),
+    ],
+    [
+      mineruTitle('Product and minimum clearance dimensions'),
+      {
+        type: 'table',
+        content: {
+          table_caption: [{ type: 'text', content: 'WA**60*' }],
+          table_footnote: [{ type: 'text', content: '#Applies either side.' }],
+          html: '<table><tr><td>PRODUCT DIMENSIONS</td><td>MM</td></tr><tr><td>A Overall height of product (to highest point on console)</td><td>1045 - 1075</td></tr><tr><td>B Overall width of product</td><td>600</td></tr><tr><td>C Overall depth of product</td><td>600</td></tr><tr><td>D Height of product lid closed</td><td>950 - 980</td></tr><tr><td>E Height of product lid open</td><td>1350 - 1385</td></tr><tr><td>Standpipe height</td><td>min. 850 - 1200</td></tr><tr><td>MINIMUM CLEARANCES</td><td>MM</td></tr><tr><td>F Minimum cavity width</td><td>640</td></tr><tr><td>G Minimum depth clearance (incl. inlet hoses, drain hose and bowed front)</td><td>660</td></tr><tr><td>H Minimum clearance to either side, wall or adjacent product</td><td>20</td></tr><tr><td>I Minimum clearance at the rear of the product</td><td>50</td></tr></table>',
+        },
+        bbox: [57, 482, 942, 863],
+      },
+    ],
+  ]));
+  const discoveryPayload = {
+    product: { modelNumber: washerIdentity.model, articles: [] },
+    documentResources: [{
+      url: sourceUrl,
+      name: 'FP-Washsmart-installation-guide-WA60-models.pdf',
+      subType: 'Installation',
+      resourceTitle: 'Installation Guide (English)',
+    }],
+  };
+  const discoveryBytes = Buffer.from(JSON.stringify(discoveryPayload));
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1, method: 'official_support_api', market: 'AU', sourceMarket: 'AU',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/au/api/support/products/75kg-series-7-top-loader-washer--WA7560E1',
+    requestedModel: washerIdentity.model, matchedModel: washerIdentity.model,
+    artifactUrl: sourceUrl, artifactLinkUrl: sourceUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.json`,
+    discoveryByteSize: discoveryBytes.length,
+    discoveryRecordType: 'support_document_resource',
+    documentId: 'documentResources:0',
+    documentTitleKey: 'Installation|Installation Guide (English)',
+    originalFileName: 'FP-Washsmart-installation-guide-WA60-models.pdf',
+  };
+  const fields = [
+    'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    'installation.leftMm', 'installation.rightMm', 'installation.rearMm',
+  ];
+  const parsed = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: washerIdentity, claimSemanticsVersion: 2,
+    boundSupportFamilyModel: 'WA7560E', fields,
+  });
+  const values = Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value]));
+  assert.deepEqual(values, {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 600 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 1045, maxMm: 1075 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+    'installation.leftMm': { kind: 'fixed', mm: 20 },
+    'installation.rightMm': { kind: 'fixed', mm: 20 },
+    'installation.rearMm': { kind: 'fixed', mm: 50 },
+  });
+  assert.equal(parsed.claims.some((claim) => (
+    claim.field === 'installation.rearMm' && claim.value.mm === 60
+  )), false);
+
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const attested = verifyAndAttestResolutionArtifact({
+    source: {
+      authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+      sourceUrl, finalUrl: sourceUrl, redirectChain: [],
+      retrievedAt: '2026-07-16T09:00:00.000Z', contentSha256: pdfHash,
+      objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+      contentType: 'application/pdf', byteSize: pdfBytes.length,
+      discoveryProvenance, identity: { ...washerIdentity, outcome: 'exact' },
+      claims: parsed.claims, derivedArtifact,
+    },
+    caseIdentity: washerIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+    verifiedAt: '2026-07-16T09:01:00.000Z', claimSemanticsVersion: 2,
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'mineru_fp_wa60_support_family'));
+
+  assert.throws(() => parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: { ...washerIdentity, model: 'WA8060P1' }, claimSemanticsVersion: 2,
+    boundSupportFamilyModel: 'WA8060P', fields: fields.slice(0, 3),
+  }), /support family|grammar/i);
+});
+
 test('a hash-bound official product page can independently bind a model-scoped PDF', () => {
   const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
   const pdfBytes = Buffer.from('%PDF-1.7\nproduct-page-bound artifact');

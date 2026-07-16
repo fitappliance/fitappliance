@@ -585,3 +585,53 @@ official URL still creates a job. The next executable epoch therefore contains
 permanent brand exclusion: the queue binds the stored attempt to the actual
 resolver contract, so a resolver version/scope change, policy revision or new
 official candidate must reopen it.
+
+## 17. Fisher & Paykel WA60 top-loader family evidence
+
+The WA60 recovery uses two separate document grammars and must not collapse
+them into one fuzzy family rule. `WA7560E1` is bound by an exact Australian
+support API product response whose indexed `documentResources` record preserves
+the document index, title key, original filename, API-response hash and direct
+artifact URL. The current manual requires one AU/NZ cover expression containing
+the target model without its final generation digit and one hybrid-confirmed
+`WA**60*` Product Dimensions table. The primary MinerU parse lost that table
+caption because the page combines diagrams and a complex table; automatic
+fallback therefore reparses page 7 only with `hybrid-image-high-v1` and binds
+the merged JSON to both the primary trigger hash and processed-page map.
+
+`WA7060E1` and `WA7060G1` use the older installation manual. Their exact
+support API products each bind the same installation article; a generic support
+search result or sibling product is insufficient. The legacy grammar requires
+all of the following in one immutable MinerU document: the exact base model on
+the AU/NZ cover, one `WA⁺'60` dimensions table, and one same-page capacity table
+containing the numeric family wildcard `WA7060*`. The capacity-table fragment
+hash is part of the identity signal. This allows the shared physical table to
+serve the explicitly listed E and G variants without allowing an unlisted
+suffix or another WA family to inherit values.
+
+Both grammars prove width `600`, adjustable overall height `1045-1075` and
+closed depth `600` millimetres. The current grammar may accept `20` millimetres
+per side only when the independent cavity equation `600 + 20 + 20 = 640`
+reconciles, and may accept rear clearance only from an explicit rear row. The
+legacy receipt publishes dimensions only. Never reinterpret its compound
+`660` millimetre allowance as a `60` millimetre rear clearance, and never
+project lid-open height, standpipe values, plumbing or service space from these
+dimension receipts.
+
+The immutable diagnostic run `historical-fpa-wa-washers-20260716-a` remains a
+failed pre-fix record. Run `historical-fpa-wa60-washers-20260716-b` accepted
+`WA7560E1` after the direct-resource and hybrid fixes; the two legacy targets
+remained identity-rejected and were recorded before promotion. After a new
+resolver/parser/policy epoch, run
+`historical-fpa-wa60-legacy-washers-20260716-c` accepted only `WA7060E1` and
+`WA7060G1`. The two full online audits replayed 571 and 575 cumulative objects
+respectively with zero repairs or violations; cumulative receipt replay passes
+all 290 sources.
+
+These three products remain dimensions-only with `verifiedFitEligible=false`
+and successful Fit outcome `INSUFFICIENT_DATA`. The historical replacement
+reference intentionally records `MODEL_RECEIPT_NON_SCALAR`: its current public
+schema requires a fixed W/H/D triple, so an adjustable-height receipt completes
+PDF research but does not become `AUTO_FILL`. Do not flatten the range to its
+minimum, maximum or midpoint. A later range-aware replacement design must ask
+for the installed height or preserve the range explicitly.

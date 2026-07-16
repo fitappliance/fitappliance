@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "historical-asko-current-au-dishwashers-20260716-b",
-  "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-324db49275fe",
-  "batchSha256": "52557525f01abc42af57bbf09da52eaa4e75b4abf0ba6770bdbe6240620b9c60",
-  "queueSha256": "c45dc5c297802b5377f559db5313541b625a75612b3041c848ab860f54aec4e5",
-  "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
-  "startedAt": "2026-07-16T12:11:40.938Z",
-  "completedAt": "2026-07-16T12:11:45.186Z",
-  "semanticOutcomeSha256": "abab1cb1079a5ab1189e52912aa6273247f8556d0f1d29c3043a6ef2fc17b373",
+  "runId": "historical-fpa-wa60-legacy-washers-20260716-c",
+  "batchId": "historical-recovery-9038f8594f1a2f7d15738c5d-slice-8b30f216e6d1",
+  "batchSha256": "5a69add3d55695158a456a7d1389c9fea3c72992aa0ef291e509becf63a973e3",
+  "queueSha256": "0144431ceb5da8c3f9852fbff95fed508038f4fe63cd38d269a5f525f7d6b730",
+  "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+  "startedAt": "2026-07-16T13:37:17.921Z",
+  "completedAt": "2026-07-16T13:37:34.436Z",
+  "semanticOutcomeSha256": "bf5cd5c33c10e21c37d019ecdaf04b57af15190739e68ca0b4c9b9fe419a14d4",
   "outcomes": [
     {
-      "targetId": "recovery_target_1b1075b7d5e65ee40679ce07",
+      "targetId": "recovery_target_7d66f8bccd4ca53effd0cfaf",
       "status": "accepted",
       "failureCode": null,
-      "candidateInventorySha256": "96c20ed53e6713f0e16834b19f3ba6dab150a6704a5fdf2097cb7d519313620f",
+      "candidateInventorySha256": "acef56aeccb5f8708723e27e37ebebc24b56af9de9826d71631a357fabfe8742",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_1b1075b7d5e65ee40679ce07",
+        "targetId": "recovery_target_7d66f8bccd4ca53effd0cfaf",
         "identity": {
-          "brand": "ASKO",
-          "model": "DFI666GXXL.AU",
-          "category": "dishwasher"
+          "brand": "Fisher & Paykel",
+          "model": "WA7060G1",
+          "category": "washing_machine"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -35,51 +35,54 @@
             "candidateCount": 0
           },
           {
-            "resolverId": "asko-official-manuals-api",
-            "version": "1",
-            "scope": "asko_legacy_discovery_only",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 1
-          },
-          {
             "resolverId": "batch-candidates",
             "version": "1",
             "scope": "recovery_batch_graph",
             "required": true,
             "completion": "complete",
             "candidateCount": 0
+          },
+          {
+            "resolverId": "fisher-paykel-official-support",
+            "version": "6",
+            "scope": "exact_model_product_page_and_support_documents",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 2
           }
         ],
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_01b45ebd238c356d0900682d",
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+            "candidateId": "candidate_3723d4c8c924e57896b3cfe1",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
             "authorityMode": "official",
-            "sourceRole": "manufacturer_structured_data",
+            "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
             "discoveryProvenance": {
               "schemaVersion": 1,
-              "method": "official_market_api",
+              "method": "official_support_api",
               "market": "AU",
-              "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-              "requestedModel": "DFI666GXXL.AU",
-              "matchedModel": "DFI666GXXL.AU",
-              "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-              "documentId": "000000000000729065",
-              "discoveryContentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
-              "discoveryObjectPath": "evidence/web/sha256/04/16/0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790.json",
-              "discoveryByteSize": 316787
+              "sourceMarket": "NZ",
+              "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060g1-fp-aa--WA7060G1",
+              "requestedModel": "WA7060G1",
+              "matchedModel": "WA7060G1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+              "documentId": "ka0Jw0000001S0fIAE",
+              "originalFileName": "429337B_Top Loaders_User Install_NZAUSGROW 10/9/2023",
+              "discoveryContentSha256": "3f8f32fa1bed21bd50eb9e60f113eea4950055f897894b6c48c19242d135db77",
+              "discoveryObjectPath": "evidence/web/sha256/3f/8f/3f8f32fa1bed21bd50eb9e60f113eea4950055f897894b6c48c19242d135db77.json",
+              "discoveryByteSize": 12193,
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000LxzZ/MaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk"
             },
             "batchJobIds": [],
             "resolverRefs": [
               {
-                "resolverId": "asko-official-manuals-api",
-                "version": "1",
-                "scope": "asko_legacy_discovery_only",
-                "discoveryMethod": "asko_legacy_finder",
-                "sourceRole": "manufacturer_structured_data",
+                "resolverId": "fisher-paykel-official-support",
+                "version": "6",
+                "scope": "exact_model_product_page_and_support_documents",
+                "discoveryMethod": "fisher_paykel_product_page_resource",
+                "sourceRole": "manufacturer_document",
                 "order": 0
               }
             ],
@@ -88,19 +91,19 @@
               "failureCode": null,
               "source": {
                 "authority": "manufacturer",
-                "sourceType": "official_exact_model_api",
-                "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-                "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
                 "redirectChain": [],
-                "retrievedAt": "2026-07-16T12:11:42.796Z",
-                "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
-                "objectPath": "evidence/web/sha256/04/16/0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790.json",
-                "contentType": "application/json",
-                "byteSize": 316787,
+                "retrievedAt": "2026-07-16T13:37:28.961Z",
+                "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+                "objectPath": "evidence/web/sha256/58/1b/581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 8264612,
                 "supersedesContentSha256": [],
                 "identity": {
-                  "brand": "ASKO",
-                  "model": "DFI666GXXL.AU",
+                  "brand": "Fisher & Paykel",
+                  "model": "WA7060G1",
                   "outcome": "exact"
                 },
                 "claims": [
@@ -108,9 +111,9 @@
                     "field": "closedEnvelope.widthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 596
+                      "mm": 600
                     },
-                    "sourceLabel": "Official PIM width",
+                    "sourceLabel": "Overall width of product",
                     "sourceAxisOrder": [
                       "width"
                     ],
@@ -118,17 +121,23 @@
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
+                    "page": 7,
+                    "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+                    "bbox": [
+                      57,
+                      450,
+                      940,
+                      757
+                    ]
                   },
                   {
                     "field": "closedEnvelope.heightMm",
                     "value": {
-                      "kind": "fixed",
-                      "mm": 859
+                      "kind": "range",
+                      "minMm": 1045,
+                      "maxMm": 1075
                     },
-                    "sourceLabel": "Official PIM height",
+                    "sourceLabel": "Overall height of product",
                     "sourceAxisOrder": [
                       "height"
                     ],
@@ -136,17 +145,22 @@
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
+                    "page": 7,
+                    "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+                    "bbox": [
+                      57,
+                      450,
+                      940,
+                      757
+                    ]
                   },
                   {
                     "field": "closedEnvelope.depthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 574
+                      "mm": 600
                     },
-                    "sourceLabel": "Official PIM depth",
+                    "sourceLabel": "Overall depth of product",
                     "sourceAxisOrder": [
                       "depth"
                     ],
@@ -154,32 +168,56 @@
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
+                    "page": 7,
+                    "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+                    "bbox": [
+                      57,
+                      450,
+                      940,
+                      757
+                    ]
                   }
                 ],
                 "discoveryProvenance": {
                   "schemaVersion": 1,
-                  "method": "official_market_api",
+                  "method": "official_support_api",
                   "market": "AU",
-                  "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-                  "requestedModel": "DFI666GXXL.AU",
-                  "matchedModel": "DFI666GXXL.AU",
-                  "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-                  "documentId": "000000000000729065",
-                  "discoveryContentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
-                  "discoveryObjectPath": "evidence/web/sha256/04/16/0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790.json",
-                  "discoveryByteSize": 316787
+                  "sourceMarket": "NZ",
+                  "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060g1-fp-aa--WA7060G1",
+                  "requestedModel": "WA7060G1",
+                  "matchedModel": "WA7060G1",
+                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+                  "documentId": "ka0Jw0000001S0fIAE",
+                  "originalFileName": "429337B_Top Loaders_User Install_NZAUSGROW 10/9/2023",
+                  "discoveryContentSha256": "3f8f32fa1bed21bd50eb9e60f113eea4950055f897894b6c48c19242d135db77",
+                  "discoveryObjectPath": "evidence/web/sha256/3f/8f/3f8f32fa1bed21bd50eb9e60f113eea4950055f897894b6c48c19242d135db77.json",
+                  "discoveryByteSize": 12193,
+                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000LxzZ/MaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk"
+                },
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+                  "contentSha256": "30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9",
+                  "objectPath": "evidence/derived/mineru-json/sha256/30/b0/30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9.json",
+                  "byteSize": 197386,
+                  "pageCount": 56
                 },
                 "identitySignals": [
                   {
-                    "type": "official_market_api_model",
-                    "value": "DFI666GXXL.AU:0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD"
+                    "type": "mineru_fp_wa60_support_family",
+                    "value": "WA7060G1:family:WA7060G:cover:1a301262c6526e8ecf342f43e7eb8a1a8a82d34ff739f5f2df1bbf4ea476bf6a:market:5e91dacc4b203039de90d573ebab7827cd907c255468211cd518672161374db1:page:7:451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa:capacity:d6f4431524b0f2c00b04741614688cb2aad069fc3131cedf8d4acec215dda2ef"
                   },
                   {
-                    "type": "official_market_api_dimensions",
-                    "value": "DFI666GXXL.AU:596x859x574:0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790"
+                    "type": "official_support_api_model",
+                    "value": "WA7060G1:3f8f32fa1bed21bd50eb9e60f113eea4950055f897894b6c48c19242d135db77:https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060g1-fp-aa--WA7060G1"
                   }
                 ],
                 "verificationReceipt": {
@@ -188,31 +226,55 @@
                   "policyVersion": "2026-07-13.1",
                   "manufacturerPolicyVersion": "2026-07-16.4",
                   "discoveryPolicyVersion": "2026-07-16.5",
-                  "verifiedAt": "2026-07-16T12:11:42.796Z",
-                  "bindingSha256": "103b4704a328913262c1c89b3a2ace76a117dd5d5b47655abecf7780add57634"
+                  "verifiedAt": "2026-07-16T13:37:28.961Z",
+                  "bindingSha256": "05113275ccb716684bd47696ab348cda81286608085ce3a9f2cd453153a3a5f1"
                 }
               }
             }
+          },
+          {
+            "candidateId": "candidate_e83dba6e59493260a3795a57",
+            "sourceUrl": "https://www.fisherpaykel.com/nz/support/products/washer-wa7060g1-fp-aa--WA7060G1",
+            "authorityMode": "reference",
+            "sourceRole": "retailer_reference",
+            "requiredAttempt": false,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "fisher-paykel-official-support",
+                "version": "6",
+                "scope": "exact_model_product_page_and_support_documents",
+                "discoveryMethod": "fisher_paykel_product_page",
+                "sourceRole": "retailer_reference",
+                "order": 1
+              }
+            ],
+            "outcome": {
+              "status": "reference_only",
+              "failureCode": "source_authority",
+              "source": null
+            }
           }
         ],
-        "candidateInventorySha256": "96c20ed53e6713f0e16834b19f3ba6dab150a6704a5fdf2097cb7d519313620f"
+        "candidateInventorySha256": "acef56aeccb5f8708723e27e37ebebc24b56af9de9826d71631a357fabfe8742"
       },
       "sources": [
         {
           "authority": "manufacturer",
-          "sourceType": "official_exact_model_api",
-          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+          "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
           "redirectChain": [],
-          "retrievedAt": "2026-07-16T12:11:42.796Z",
-          "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
-          "objectPath": "evidence/web/sha256/04/16/0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790.json",
-          "contentType": "application/json",
-          "byteSize": 316787,
+          "retrievedAt": "2026-07-16T13:37:28.961Z",
+          "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+          "objectPath": "evidence/web/sha256/58/1b/581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 8264612,
           "supersedesContentSha256": [],
           "identity": {
-            "brand": "ASKO",
-            "model": "DFI666GXXL.AU",
+            "brand": "Fisher & Paykel",
+            "model": "WA7060G1",
             "outcome": "exact"
           },
           "claims": [
@@ -220,9 +282,9 @@
               "field": "closedEnvelope.widthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 596
+                "mm": 600
               },
-              "sourceLabel": "Official PIM width",
+              "sourceLabel": "Overall width of product",
               "sourceAxisOrder": [
                 "width"
               ],
@@ -230,17 +292,23 @@
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+              "bbox": [
+                57,
+                450,
+                940,
+                757
+              ]
             },
             {
               "field": "closedEnvelope.heightMm",
               "value": {
-                "kind": "fixed",
-                "mm": 859
+                "kind": "range",
+                "minMm": 1045,
+                "maxMm": 1075
               },
-              "sourceLabel": "Official PIM height",
+              "sourceLabel": "Overall height of product",
               "sourceAxisOrder": [
                 "height"
               ],
@@ -248,17 +316,22 @@
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+              "bbox": [
+                57,
+                450,
+                940,
+                757
+              ]
             },
             {
               "field": "closedEnvelope.depthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 574
+                "mm": 600
               },
-              "sourceLabel": "Official PIM depth",
+              "sourceLabel": "Overall depth of product",
               "sourceAxisOrder": [
                 "depth"
               ],
@@ -266,32 +339,56 @@
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+              "bbox": [
+                57,
+                450,
+                940,
+                757
+              ]
             }
           ],
           "discoveryProvenance": {
             "schemaVersion": 1,
-            "method": "official_market_api",
+            "method": "official_support_api",
             "market": "AU",
-            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-            "requestedModel": "DFI666GXXL.AU",
-            "matchedModel": "DFI666GXXL.AU",
-            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-            "documentId": "000000000000729065",
-            "discoveryContentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
-            "discoveryObjectPath": "evidence/web/sha256/04/16/0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790.json",
-            "discoveryByteSize": 316787
+            "sourceMarket": "NZ",
+            "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060g1-fp-aa--WA7060G1",
+            "requestedModel": "WA7060G1",
+            "matchedModel": "WA7060G1",
+            "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+            "documentId": "ka0Jw0000001S0fIAE",
+            "originalFileName": "429337B_Top Loaders_User Install_NZAUSGROW 10/9/2023",
+            "discoveryContentSha256": "3f8f32fa1bed21bd50eb9e60f113eea4950055f897894b6c48c19242d135db77",
+            "discoveryObjectPath": "evidence/web/sha256/3f/8f/3f8f32fa1bed21bd50eb9e60f113eea4950055f897894b6c48c19242d135db77.json",
+            "discoveryByteSize": 12193,
+            "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000LxzZ/MaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk"
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+            "contentSha256": "30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9",
+            "objectPath": "evidence/derived/mineru-json/sha256/30/b0/30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9.json",
+            "byteSize": 197386,
+            "pageCount": 56
           },
           "identitySignals": [
             {
-              "type": "official_market_api_model",
-              "value": "DFI666GXXL.AU:0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD"
+              "type": "mineru_fp_wa60_support_family",
+              "value": "WA7060G1:family:WA7060G:cover:1a301262c6526e8ecf342f43e7eb8a1a8a82d34ff739f5f2df1bbf4ea476bf6a:market:5e91dacc4b203039de90d573ebab7827cd907c255468211cd518672161374db1:page:7:451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa:capacity:d6f4431524b0f2c00b04741614688cb2aad069fc3131cedf8d4acec215dda2ef"
             },
             {
-              "type": "official_market_api_dimensions",
-              "value": "DFI666GXXL.AU:596x859x574:0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790"
+              "type": "official_support_api_model",
+              "value": "WA7060G1:3f8f32fa1bed21bd50eb9e60f113eea4950055f897894b6c48c19242d135db77:https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060g1-fp-aa--WA7060G1"
             }
           ],
           "verificationReceipt": {
@@ -300,20 +397,20 @@
             "policyVersion": "2026-07-13.1",
             "manufacturerPolicyVersion": "2026-07-16.4",
             "discoveryPolicyVersion": "2026-07-16.5",
-            "verifiedAt": "2026-07-16T12:11:42.796Z",
-            "bindingSha256": "103b4704a328913262c1c89b3a2ace76a117dd5d5b47655abecf7780add57634"
+            "verifiedAt": "2026-07-16T13:37:28.961Z",
+            "bindingSha256": "05113275ccb716684bd47696ab348cda81286608085ce3a9f2cd453153a3a5f1"
           }
         }
       ],
       "geometryProjection": {
         "geometry": {
           "closedEnvelope": {
-            "widthMm": 596,
+            "widthMm": 600,
             "heightMm": {
-              "minimumMm": 859,
-              "maximumMm": 859
+              "minimumMm": 1045,
+              "maximumMm": 1075
             },
-            "depthMm": 574
+            "depthMm": 600
           },
           "installation": {
             "leftMm": null,
@@ -332,7 +429,7 @@
             "heightMm": null,
             "depthMm": null
           },
-          "category": "dishwasher",
+          "category": "washing_machine",
           "formFactor": null,
           "service": {
             "plumbingRearMm": null,
@@ -342,25 +439,25 @@
         },
         "fieldEvidence": {
           "closedEnvelope.widthMm": {
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-            "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
-            "receiptBindingSha256": "103b4704a328913262c1c89b3a2ace76a117dd5d5b47655abecf7780add57634",
-            "page": null,
-            "fragmentSha256": null
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+            "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+            "receiptBindingSha256": "05113275ccb716684bd47696ab348cda81286608085ce3a9f2cd453153a3a5f1",
+            "page": 7,
+            "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
           },
           "closedEnvelope.heightMm": {
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-            "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
-            "receiptBindingSha256": "103b4704a328913262c1c89b3a2ace76a117dd5d5b47655abecf7780add57634",
-            "page": null,
-            "fragmentSha256": null
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+            "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+            "receiptBindingSha256": "05113275ccb716684bd47696ab348cda81286608085ce3a9f2cd453153a3a5f1",
+            "page": 7,
+            "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
           },
           "closedEnvelope.depthMm": {
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
-            "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
-            "receiptBindingSha256": "103b4704a328913262c1c89b3a2ace76a117dd5d5b47655abecf7780add57634",
-            "page": null,
-            "fragmentSha256": null
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+            "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+            "receiptBindingSha256": "05113275ccb716684bd47696ab348cda81286608085ce3a9f2cd453153a3a5f1",
+            "page": 7,
+            "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
           }
         },
         "evidenceLevel": "dimensions",
@@ -370,13 +467,12 @@
           "installation.rearMm",
           "installation.rightMm",
           "installation.topMm",
-          "operation.doorOpenDepthMm",
           "service.rearServicesMm"
         ],
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790"
+          "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7"
         ]
       },
       "reconciliation": {
@@ -388,20 +484,20 @@
         "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "76f18dd67d0be13d822879edd2b832ac364960eca127ab5f04140c51e155c4d3"
+      "semanticOutcomeSha256": "d2926b57b091773c8978738eb6ff022c3460f16ae3360163b83ecffb17c1dc3f"
     },
     {
-      "targetId": "recovery_target_7fba257723c3a800957c59bc",
+      "targetId": "recovery_target_93cffe642afb3946aca62a13",
       "status": "accepted",
       "failureCode": null,
-      "candidateInventorySha256": "0c72ba2376d75f4424fab78b9c64d1c8931d8f3d30d258ed1f3ffb55f9722310",
+      "candidateInventorySha256": "8ae6b86dbf68be9c697a5499252deb1375af8c57b7d9186973edba98372fe50b",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_7fba257723c3a800957c59bc",
+        "targetId": "recovery_target_93cffe642afb3946aca62a13",
         "identity": {
-          "brand": "ASKO",
-          "model": "DBI654IBXXL.S.AU",
-          "category": "dishwasher"
+          "brand": "Fisher & Paykel",
+          "model": "WA7060E1",
+          "category": "washing_machine"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -416,51 +512,78 @@
             "candidateCount": 0
           },
           {
-            "resolverId": "asko-official-manuals-api",
-            "version": "1",
-            "scope": "asko_legacy_discovery_only",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 1
-          },
-          {
             "resolverId": "batch-candidates",
             "version": "1",
             "scope": "recovery_batch_graph",
             "required": true,
             "completion": "complete",
             "candidateCount": 0
+          },
+          {
+            "resolverId": "fisher-paykel-official-support",
+            "version": "6",
+            "scope": "exact_model_product_page_and_support_documents",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 2
           }
         ],
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_5cc4dc4499c93662b70df7c5",
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+            "candidateId": "candidate_350e1fd12c4084ab24589f1d",
+            "sourceUrl": "https://www.fisherpaykel.com/nz/support/products/washer-wa7060e1-fp-aa--WA7060E1",
+            "authorityMode": "reference",
+            "sourceRole": "retailer_reference",
+            "requiredAttempt": false,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "fisher-paykel-official-support",
+                "version": "6",
+                "scope": "exact_model_product_page_and_support_documents",
+                "discoveryMethod": "fisher_paykel_product_page",
+                "sourceRole": "retailer_reference",
+                "order": 1
+              }
+            ],
+            "outcome": {
+              "status": "reference_only",
+              "failureCode": "source_authority",
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_49f72998384e7ffc85320ddc",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
             "authorityMode": "official",
-            "sourceRole": "manufacturer_structured_data",
+            "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
             "discoveryProvenance": {
               "schemaVersion": 1,
-              "method": "official_market_api",
+              "method": "official_support_api",
               "market": "AU",
-              "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-              "requestedModel": "DBI654IBXXL.S.AU",
-              "matchedModel": "DBI654IBXXL.S.AU",
-              "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-              "documentId": "000000000000729068",
-              "discoveryContentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
-              "discoveryObjectPath": "evidence/web/sha256/d6/ba/d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b.json",
-              "discoveryByteSize": 260246
+              "sourceMarket": "NZ",
+              "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060e1-fp-aa--WA7060E1",
+              "requestedModel": "WA7060E1",
+              "matchedModel": "WA7060E1",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+              "documentId": "ka0Jw0000001S0fIAE",
+              "originalFileName": "429337B_Top Loaders_User Install_NZAUSGROW 10/9/2023",
+              "discoveryContentSha256": "7dbf2b954a31568c6624c27de1d8fec9cc6411dc8e8065ea146c9abe8ee27a16",
+              "discoveryObjectPath": "evidence/web/sha256/7d/bf/7dbf2b954a31568c6624c27de1d8fec9cc6411dc8e8065ea146c9abe8ee27a16.json",
+              "discoveryByteSize": 16463,
+              "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000LxzZ/MaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk"
             },
             "batchJobIds": [],
             "resolverRefs": [
               {
-                "resolverId": "asko-official-manuals-api",
-                "version": "1",
-                "scope": "asko_legacy_discovery_only",
-                "discoveryMethod": "asko_legacy_finder",
-                "sourceRole": "manufacturer_structured_data",
+                "resolverId": "fisher-paykel-official-support",
+                "version": "6",
+                "scope": "exact_model_product_page_and_support_documents",
+                "discoveryMethod": "fisher_paykel_product_page_resource",
+                "sourceRole": "manufacturer_document",
                 "order": 0
               }
             ],
@@ -469,19 +592,19 @@
               "failureCode": null,
               "source": {
                 "authority": "manufacturer",
-                "sourceType": "official_exact_model_api",
-                "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-                "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
                 "redirectChain": [],
-                "retrievedAt": "2026-07-16T12:11:44.051Z",
-                "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
-                "objectPath": "evidence/web/sha256/d6/ba/d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b.json",
-                "contentType": "application/json",
-                "byteSize": 260246,
+                "retrievedAt": "2026-07-16T13:37:34.330Z",
+                "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+                "objectPath": "evidence/web/sha256/58/1b/581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 8264612,
                 "supersedesContentSha256": [],
                 "identity": {
-                  "brand": "ASKO",
-                  "model": "DBI654IBXXL.S.AU",
+                  "brand": "Fisher & Paykel",
+                  "model": "WA7060E1",
                   "outcome": "exact"
                 },
                 "claims": [
@@ -489,9 +612,9 @@
                     "field": "closedEnvelope.widthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 596
+                      "mm": 600
                     },
-                    "sourceLabel": "Official PIM width",
+                    "sourceLabel": "Overall width of product",
                     "sourceAxisOrder": [
                       "width"
                     ],
@@ -499,17 +622,23 @@
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
+                    "page": 7,
+                    "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+                    "bbox": [
+                      57,
+                      450,
+                      940,
+                      757
+                    ]
                   },
                   {
                     "field": "closedEnvelope.heightMm",
                     "value": {
-                      "kind": "fixed",
-                      "mm": 859
+                      "kind": "range",
+                      "minMm": 1045,
+                      "maxMm": 1075
                     },
-                    "sourceLabel": "Official PIM height",
+                    "sourceLabel": "Overall height of product",
                     "sourceAxisOrder": [
                       "height"
                     ],
@@ -517,17 +646,22 @@
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
+                    "page": 7,
+                    "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+                    "bbox": [
+                      57,
+                      450,
+                      940,
+                      757
+                    ]
                   },
                   {
                     "field": "closedEnvelope.depthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 559
+                      "mm": 600
                     },
-                    "sourceLabel": "Official PIM depth",
+                    "sourceLabel": "Overall depth of product",
                     "sourceAxisOrder": [
                       "depth"
                     ],
@@ -535,32 +669,56 @@
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
+                    "page": 7,
+                    "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+                    "bbox": [
+                      57,
+                      450,
+                      940,
+                      757
+                    ]
                   }
                 ],
                 "discoveryProvenance": {
                   "schemaVersion": 1,
-                  "method": "official_market_api",
+                  "method": "official_support_api",
                   "market": "AU",
-                  "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-                  "requestedModel": "DBI654IBXXL.S.AU",
-                  "matchedModel": "DBI654IBXXL.S.AU",
-                  "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-                  "documentId": "000000000000729068",
-                  "discoveryContentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
-                  "discoveryObjectPath": "evidence/web/sha256/d6/ba/d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b.json",
-                  "discoveryByteSize": 260246
+                  "sourceMarket": "NZ",
+                  "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060e1-fp-aa--WA7060E1",
+                  "requestedModel": "WA7060E1",
+                  "matchedModel": "WA7060E1",
+                  "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+                  "documentId": "ka0Jw0000001S0fIAE",
+                  "originalFileName": "429337B_Top Loaders_User Install_NZAUSGROW 10/9/2023",
+                  "discoveryContentSha256": "7dbf2b954a31568c6624c27de1d8fec9cc6411dc8e8065ea146c9abe8ee27a16",
+                  "discoveryObjectPath": "evidence/web/sha256/7d/bf/7dbf2b954a31568c6624c27de1d8fec9cc6411dc8e8065ea146c9abe8ee27a16.json",
+                  "discoveryByteSize": 16463,
+                  "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000LxzZ/MaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk"
+                },
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+                  "contentSha256": "30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9",
+                  "objectPath": "evidence/derived/mineru-json/sha256/30/b0/30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9.json",
+                  "byteSize": 197386,
+                  "pageCount": 56
                 },
                 "identitySignals": [
                   {
-                    "type": "official_market_api_model",
-                    "value": "DBI654IBXXL.S.AU:d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD"
+                    "type": "mineru_fp_wa60_support_family",
+                    "value": "WA7060E1:family:WA7060E:cover:1a301262c6526e8ecf342f43e7eb8a1a8a82d34ff739f5f2df1bbf4ea476bf6a:market:5e91dacc4b203039de90d573ebab7827cd907c255468211cd518672161374db1:page:7:451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa:capacity:d6f4431524b0f2c00b04741614688cb2aad069fc3131cedf8d4acec215dda2ef"
                   },
                   {
-                    "type": "official_market_api_dimensions",
-                    "value": "DBI654IBXXL.S.AU:596x859x559:d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b"
+                    "type": "official_support_api_model",
+                    "value": "WA7060E1:7dbf2b954a31568c6624c27de1d8fec9cc6411dc8e8065ea146c9abe8ee27a16:https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060e1-fp-aa--WA7060E1"
                   }
                 ],
                 "verificationReceipt": {
@@ -569,31 +727,31 @@
                   "policyVersion": "2026-07-13.1",
                   "manufacturerPolicyVersion": "2026-07-16.4",
                   "discoveryPolicyVersion": "2026-07-16.5",
-                  "verifiedAt": "2026-07-16T12:11:44.051Z",
-                  "bindingSha256": "6f5e47cc5776946d5895124b3f0f12d253db8d0fc5f419c5c069559627e28582"
+                  "verifiedAt": "2026-07-16T13:37:34.330Z",
+                  "bindingSha256": "b4cfa04b06950726fed4385ec8638ad30b05f9c818d179acdbf728abe00cbf33"
                 }
               }
             }
           }
         ],
-        "candidateInventorySha256": "0c72ba2376d75f4424fab78b9c64d1c8931d8f3d30d258ed1f3ffb55f9722310"
+        "candidateInventorySha256": "8ae6b86dbf68be9c697a5499252deb1375af8c57b7d9186973edba98372fe50b"
       },
       "sources": [
         {
           "authority": "manufacturer",
-          "sourceType": "official_exact_model_api",
-          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+          "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
           "redirectChain": [],
-          "retrievedAt": "2026-07-16T12:11:44.051Z",
-          "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
-          "objectPath": "evidence/web/sha256/d6/ba/d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b.json",
-          "contentType": "application/json",
-          "byteSize": 260246,
+          "retrievedAt": "2026-07-16T13:37:34.330Z",
+          "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+          "objectPath": "evidence/web/sha256/58/1b/581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 8264612,
           "supersedesContentSha256": [],
           "identity": {
-            "brand": "ASKO",
-            "model": "DBI654IBXXL.S.AU",
+            "brand": "Fisher & Paykel",
+            "model": "WA7060E1",
             "outcome": "exact"
           },
           "claims": [
@@ -601,9 +759,9 @@
               "field": "closedEnvelope.widthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 596
+                "mm": 600
               },
-              "sourceLabel": "Official PIM width",
+              "sourceLabel": "Overall width of product",
               "sourceAxisOrder": [
                 "width"
               ],
@@ -611,17 +769,23 @@
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+              "bbox": [
+                57,
+                450,
+                940,
+                757
+              ]
             },
             {
               "field": "closedEnvelope.heightMm",
               "value": {
-                "kind": "fixed",
-                "mm": 859
+                "kind": "range",
+                "minMm": 1045,
+                "maxMm": 1075
               },
-              "sourceLabel": "Official PIM height",
+              "sourceLabel": "Overall height of product",
               "sourceAxisOrder": [
                 "height"
               ],
@@ -629,17 +793,22 @@
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+              "bbox": [
+                57,
+                450,
+                940,
+                757
+              ]
             },
             {
               "field": "closedEnvelope.depthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 559
+                "mm": 600
               },
-              "sourceLabel": "Official PIM depth",
+              "sourceLabel": "Overall depth of product",
               "sourceAxisOrder": [
                 "depth"
               ],
@@ -647,32 +816,56 @@
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa",
+              "bbox": [
+                57,
+                450,
+                940,
+                757
+              ]
             }
           ],
           "discoveryProvenance": {
             "schemaVersion": 1,
-            "method": "official_market_api",
+            "method": "official_support_api",
             "market": "AU",
-            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-            "requestedModel": "DBI654IBXXL.S.AU",
-            "matchedModel": "DBI654IBXXL.S.AU",
-            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-            "documentId": "000000000000729068",
-            "discoveryContentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
-            "discoveryObjectPath": "evidence/web/sha256/d6/ba/d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b.json",
-            "discoveryByteSize": 260246
+            "sourceMarket": "NZ",
+            "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060e1-fp-aa--WA7060E1",
+            "requestedModel": "WA7060E1",
+            "matchedModel": "WA7060E1",
+            "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+            "documentId": "ka0Jw0000001S0fIAE",
+            "originalFileName": "429337B_Top Loaders_User Install_NZAUSGROW 10/9/2023",
+            "discoveryContentSha256": "7dbf2b954a31568c6624c27de1d8fec9cc6411dc8e8065ea146c9abe8ee27a16",
+            "discoveryObjectPath": "evidence/web/sha256/7d/bf/7dbf2b954a31568c6624c27de1d8fec9cc6411dc8e8065ea146c9abe8ee27a16.json",
+            "discoveryByteSize": 16463,
+            "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000LxzZ/MaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk"
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+            "contentSha256": "30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9",
+            "objectPath": "evidence/derived/mineru-json/sha256/30/b0/30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9.json",
+            "byteSize": 197386,
+            "pageCount": 56
           },
           "identitySignals": [
             {
-              "type": "official_market_api_model",
-              "value": "DBI654IBXXL.S.AU:d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD"
+              "type": "mineru_fp_wa60_support_family",
+              "value": "WA7060E1:family:WA7060E:cover:1a301262c6526e8ecf342f43e7eb8a1a8a82d34ff739f5f2df1bbf4ea476bf6a:market:5e91dacc4b203039de90d573ebab7827cd907c255468211cd518672161374db1:page:7:451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa:capacity:d6f4431524b0f2c00b04741614688cb2aad069fc3131cedf8d4acec215dda2ef"
             },
             {
-              "type": "official_market_api_dimensions",
-              "value": "DBI654IBXXL.S.AU:596x859x559:d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b"
+              "type": "official_support_api_model",
+              "value": "WA7060E1:7dbf2b954a31568c6624c27de1d8fec9cc6411dc8e8065ea146c9abe8ee27a16:https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060e1-fp-aa--WA7060E1"
             }
           ],
           "verificationReceipt": {
@@ -681,20 +874,20 @@
             "policyVersion": "2026-07-13.1",
             "manufacturerPolicyVersion": "2026-07-16.4",
             "discoveryPolicyVersion": "2026-07-16.5",
-            "verifiedAt": "2026-07-16T12:11:44.051Z",
-            "bindingSha256": "6f5e47cc5776946d5895124b3f0f12d253db8d0fc5f419c5c069559627e28582"
+            "verifiedAt": "2026-07-16T13:37:34.330Z",
+            "bindingSha256": "b4cfa04b06950726fed4385ec8638ad30b05f9c818d179acdbf728abe00cbf33"
           }
         }
       ],
       "geometryProjection": {
         "geometry": {
           "closedEnvelope": {
-            "widthMm": 596,
+            "widthMm": 600,
             "heightMm": {
-              "minimumMm": 859,
-              "maximumMm": 859
+              "minimumMm": 1045,
+              "maximumMm": 1075
             },
-            "depthMm": 559
+            "depthMm": 600
           },
           "installation": {
             "leftMm": null,
@@ -713,7 +906,7 @@
             "heightMm": null,
             "depthMm": null
           },
-          "category": "dishwasher",
+          "category": "washing_machine",
           "formFactor": null,
           "service": {
             "plumbingRearMm": null,
@@ -723,25 +916,25 @@
         },
         "fieldEvidence": {
           "closedEnvelope.widthMm": {
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-            "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
-            "receiptBindingSha256": "6f5e47cc5776946d5895124b3f0f12d253db8d0fc5f419c5c069559627e28582",
-            "page": null,
-            "fragmentSha256": null
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+            "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+            "receiptBindingSha256": "b4cfa04b06950726fed4385ec8638ad30b05f9c818d179acdbf728abe00cbf33",
+            "page": 7,
+            "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
           },
           "closedEnvelope.heightMm": {
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-            "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
-            "receiptBindingSha256": "6f5e47cc5776946d5895124b3f0f12d253db8d0fc5f419c5c069559627e28582",
-            "page": null,
-            "fragmentSha256": null
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+            "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+            "receiptBindingSha256": "b4cfa04b06950726fed4385ec8638ad30b05f9c818d179acdbf728abe00cbf33",
+            "page": 7,
+            "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
           },
           "closedEnvelope.depthMm": {
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
-            "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
-            "receiptBindingSha256": "6f5e47cc5776946d5895124b3f0f12d253db8d0fc5f419c5c069559627e28582",
-            "page": null,
-            "fragmentSha256": null
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+            "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+            "receiptBindingSha256": "b4cfa04b06950726fed4385ec8638ad30b05f9c818d179acdbf728abe00cbf33",
+            "page": 7,
+            "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
           }
         },
         "evidenceLevel": "dimensions",
@@ -751,439 +944,29 @@
           "installation.rearMm",
           "installation.rightMm",
           "installation.topMm",
-          "operation.doorOpenDepthMm",
           "service.rearServicesMm"
         ],
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b"
+          "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7"
         ]
       },
       "reconciliation": {
         "conflictingFields": [],
-        "conflictHints": [
-          {
-            "sourceRole": "registry_hint",
-            "sourceId": "energy-rating:dishwasher",
-            "kind": "lower_authority_disagreement",
-            "fields": [
-              "depthMm"
-            ],
-            "dimensionsMm": {
-              "widthMm": 596,
-              "heightMm": 859,
-              "depthMm": 574
-            }
-          }
-        ],
+        "conflictHints": [],
         "missingFields": [],
         "supersessionViolations": [],
         "axisPermutationResolution": null,
-        "lowerAuthorityResolution": "official_market_api_dimension_corroboration",
+        "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "c1584837e1640d16c5fb32025517c653fb7ab09fea90144b7fd626c3da4335b8"
-    },
-    {
-      "targetId": "recovery_target_ccf85a32347850ef5539411e",
-      "status": "accepted",
-      "failureCode": null,
-      "candidateInventorySha256": "3b3ce30f931370d8ae4d314d8dbef2d37236018ad5380e0c91a5e8470515fdff",
-      "candidateInventory": {
-        "schemaVersion": 1,
-        "targetId": "recovery_target_ccf85a32347850ef5539411e",
-        "identity": {
-          "brand": "ASKO",
-          "model": "DFI654BXXL.AU",
-          "category": "dishwasher"
-        },
-        "completionStatus": "complete",
-        "incompleteResolvers": [],
-        "missingBatchCandidateJobIds": [],
-        "resolvers": [
-          {
-            "resolverId": "architecture-v2-core-official-discovery",
-            "version": "1",
-            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": false,
-            "completion": "complete",
-            "candidateCount": 0
-          },
-          {
-            "resolverId": "asko-official-manuals-api",
-            "version": "1",
-            "scope": "asko_legacy_discovery_only",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 1
-          },
-          {
-            "resolverId": "batch-candidates",
-            "version": "1",
-            "scope": "recovery_batch_graph",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 0
-          }
-        ],
-        "activeReceiptSources": [],
-        "candidates": [
-          {
-            "candidateId": "candidate_ca94439747f9d8db4063dec0",
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_structured_data",
-            "requiredAttempt": true,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_market_api",
-              "market": "AU",
-              "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-              "requestedModel": "DFI654BXXL.AU",
-              "matchedModel": "DFI654BXXL.AU",
-              "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-              "documentId": "000000000000729064",
-              "discoveryContentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
-              "discoveryObjectPath": "evidence/web/sha256/05/0a/050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d.json",
-              "discoveryByteSize": 251135
-            },
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "asko-official-manuals-api",
-                "version": "1",
-                "scope": "asko_legacy_discovery_only",
-                "discoveryMethod": "asko_legacy_finder",
-                "sourceRole": "manufacturer_structured_data",
-                "order": 0
-              }
-            ],
-            "outcome": {
-              "status": "accepted",
-              "failureCode": null,
-              "source": {
-                "authority": "manufacturer",
-                "sourceType": "official_exact_model_api",
-                "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-                "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-                "redirectChain": [],
-                "retrievedAt": "2026-07-16T12:11:45.143Z",
-                "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
-                "objectPath": "evidence/web/sha256/05/0a/050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d.json",
-                "contentType": "application/json",
-                "byteSize": 251135,
-                "supersedesContentSha256": [],
-                "identity": {
-                  "brand": "ASKO",
-                  "model": "DFI654BXXL.AU",
-                  "outcome": "exact"
-                },
-                "claims": [
-                  {
-                    "field": "closedEnvelope.widthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 596
-                    },
-                    "sourceLabel": "Official PIM width",
-                    "sourceAxisOrder": [
-                      "width"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 859
-                    },
-                    "sourceLabel": "Official PIM height",
-                    "sourceAxisOrder": [
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 559
-                    },
-                    "sourceLabel": "Official PIM depth",
-                    "sourceAxisOrder": [
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  }
-                ],
-                "discoveryProvenance": {
-                  "schemaVersion": 1,
-                  "method": "official_market_api",
-                  "market": "AU",
-                  "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-                  "requestedModel": "DFI654BXXL.AU",
-                  "matchedModel": "DFI654BXXL.AU",
-                  "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-                  "documentId": "000000000000729064",
-                  "discoveryContentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
-                  "discoveryObjectPath": "evidence/web/sha256/05/0a/050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d.json",
-                  "discoveryByteSize": 251135
-                },
-                "identitySignals": [
-                  {
-                    "type": "official_market_api_model",
-                    "value": "DFI654BXXL.AU:050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD"
-                  },
-                  {
-                    "type": "official_market_api_dimensions",
-                    "value": "DFI654BXXL.AU:596x859x559:050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d"
-                  }
-                ],
-                "verificationReceipt": {
-                  "schemaVersion": 3,
-                  "claimSemanticsVersion": 2,
-                  "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-16.4",
-                  "discoveryPolicyVersion": "2026-07-16.5",
-                  "verifiedAt": "2026-07-16T12:11:45.143Z",
-                  "bindingSha256": "bcbfb373b637e7da18bee43ccf6a8de4d36956e1d6af1ee9fc2da8fa7fb76386"
-                }
-              }
-            }
-          }
-        ],
-        "candidateInventorySha256": "3b3ce30f931370d8ae4d314d8dbef2d37236018ad5380e0c91a5e8470515fdff"
-      },
-      "sources": [
-        {
-          "authority": "manufacturer",
-          "sourceType": "official_exact_model_api",
-          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-          "redirectChain": [],
-          "retrievedAt": "2026-07-16T12:11:45.143Z",
-          "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
-          "objectPath": "evidence/web/sha256/05/0a/050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d.json",
-          "contentType": "application/json",
-          "byteSize": 251135,
-          "supersedesContentSha256": [],
-          "identity": {
-            "brand": "ASKO",
-            "model": "DFI654BXXL.AU",
-            "outcome": "exact"
-          },
-          "claims": [
-            {
-              "field": "closedEnvelope.widthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 596
-              },
-              "sourceLabel": "Official PIM width",
-              "sourceAxisOrder": [
-                "width"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 859
-              },
-              "sourceLabel": "Official PIM height",
-              "sourceAxisOrder": [
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.depthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 559
-              },
-              "sourceLabel": "Official PIM depth",
-              "sourceAxisOrder": [
-                "depth"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            }
-          ],
-          "discoveryProvenance": {
-            "schemaVersion": 1,
-            "method": "official_market_api",
-            "market": "AU",
-            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-            "requestedModel": "DFI654BXXL.AU",
-            "matchedModel": "DFI654BXXL.AU",
-            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-            "documentId": "000000000000729064",
-            "discoveryContentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
-            "discoveryObjectPath": "evidence/web/sha256/05/0a/050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d.json",
-            "discoveryByteSize": 251135
-          },
-          "identitySignals": [
-            {
-              "type": "official_market_api_model",
-              "value": "DFI654BXXL.AU:050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD"
-            },
-            {
-              "type": "official_market_api_dimensions",
-              "value": "DFI654BXXL.AU:596x859x559:050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d"
-            }
-          ],
-          "verificationReceipt": {
-            "schemaVersion": 3,
-            "claimSemanticsVersion": 2,
-            "policyVersion": "2026-07-13.1",
-            "manufacturerPolicyVersion": "2026-07-16.4",
-            "discoveryPolicyVersion": "2026-07-16.5",
-            "verifiedAt": "2026-07-16T12:11:45.143Z",
-            "bindingSha256": "bcbfb373b637e7da18bee43ccf6a8de4d36956e1d6af1ee9fc2da8fa7fb76386"
-          }
-        }
-      ],
-      "geometryProjection": {
-        "geometry": {
-          "closedEnvelope": {
-            "widthMm": 596,
-            "heightMm": {
-              "minimumMm": 859,
-              "maximumMm": 859
-            },
-            "depthMm": 559
-          },
-          "installation": {
-            "leftMm": null,
-            "rightMm": null,
-            "topMm": null,
-            "rearMm": null,
-            "frontMm": null
-          },
-          "operation": {
-            "doorOpenDepthMm": null,
-            "hingeSideSpaceMm": null,
-            "lidOpenHeightMm": null
-          },
-          "delivery": {
-            "widthMm": null,
-            "heightMm": null,
-            "depthMm": null
-          },
-          "category": "dishwasher",
-          "formFactor": null,
-          "service": {
-            "plumbingRearMm": null,
-            "rearServicesMm": null,
-            "rearVentilationMm": null
-          }
-        },
-        "fieldEvidence": {
-          "closedEnvelope.widthMm": {
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-            "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
-            "receiptBindingSha256": "bcbfb373b637e7da18bee43ccf6a8de4d36956e1d6af1ee9fc2da8fa7fb76386",
-            "page": null,
-            "fragmentSha256": null
-          },
-          "closedEnvelope.heightMm": {
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-            "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
-            "receiptBindingSha256": "bcbfb373b637e7da18bee43ccf6a8de4d36956e1d6af1ee9fc2da8fa7fb76386",
-            "page": null,
-            "fragmentSha256": null
-          },
-          "closedEnvelope.depthMm": {
-            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
-            "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
-            "receiptBindingSha256": "bcbfb373b637e7da18bee43ccf6a8de4d36956e1d6af1ee9fc2da8fa7fb76386",
-            "page": null,
-            "fragmentSha256": null
-          }
-        },
-        "evidenceLevel": "dimensions",
-        "requiredInstallationEnvelope": null,
-        "missingForVerifiedFit": [
-          "installation.leftMm",
-          "installation.rearMm",
-          "installation.rightMm",
-          "installation.topMm",
-          "operation.doorOpenDepthMm",
-          "service.rearServicesMm"
-        ],
-        "verifiedFitEligible": false,
-        "successfulFitOutcome": "INSUFFICIENT_DATA",
-        "activeSourceHashes": [
-          "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d"
-        ]
-      },
-      "reconciliation": {
-        "conflictingFields": [],
-        "conflictHints": [
-          {
-            "sourceRole": "registry_hint",
-            "sourceId": "energy-rating:dishwasher",
-            "kind": "lower_authority_disagreement",
-            "fields": [
-              "depthMm"
-            ],
-            "dimensionsMm": {
-              "widthMm": 596,
-              "heightMm": 859,
-              "depthMm": 574
-            }
-          }
-        ],
-        "missingFields": [],
-        "supersessionViolations": [],
-        "axisPermutationResolution": null,
-        "lowerAuthorityResolution": "official_market_api_dimension_corroboration",
-        "conflictReason": null
-      },
-      "semanticOutcomeSha256": "c987270bce83425327ff52d49b5b3793a1e7667cc07f6e0a48114f1169c11679"
+      "semanticOutcomeSha256": "a9d02bfc657e21c8f8b99a4a5b95d32809630c1becc9d5b985ad98fb8d891feb"
     }
   ],
   "summary": {
-    "targets": 3,
-    "accepted": 3,
+    "targets": 2,
+    "accepted": 2,
     "nonScalar": 0,
     "retryable": 0,
     "terminal": 0

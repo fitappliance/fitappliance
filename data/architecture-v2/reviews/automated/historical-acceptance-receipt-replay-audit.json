@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T12:50:46.468Z",
-  "sourceBundleSha256": "7fcfc8cbe58c0f4eeb60118399d9226e244f47beb5a3713cb423f56d0b3ed4fb",
+  "generatedAt": "2026-07-16T13:38:25.923Z",
+  "sourceBundleSha256": "b57739d5dec2ae1c9d66d6af5393e288a65112ad5e2db679cbb2441bb5adf41a",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -938,6 +938,20 @@
       "contentSha256": "96632e9cce215604acee7e2e262668f841a8885791ff17fcb1ae20db99fd6265",
       "receiptBindingSha256": "77bbc4b863ce07efc256032fec76a730a9add56c385616a882321ce03abc5c77",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_3f5fc57f7e84cdb1c55edf2f",
+      "referenceId": "fa_ref_6ed7c32d14d3dcf9a9a6e7b5",
+      "brand": "Fisher & Paykel",
+      "model": "WA7560E1",
+      "category": "washing_machine",
+      "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/3mcr9pbnrs992cxtp7fxcjk/FP-Washsmart-user-guide-WA60-models-429598C.pdf",
+      "sourcePdfSha256": "5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934",
+      "contentSha256": "5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934",
+      "receiptBindingSha256": "3c382d38a0138186da70ba827d5b2f141177a456d57efc0063717a3846e754d9",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/46/94/4694b887342ac36a785881aef2fa228a4996a766552235389a8bd50e2647c623.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1936,6 +1950,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_7d66f8bccd4ca53effd0cfaf",
+      "referenceId": "fa_ref_f03ada3dfd37608719dccc3e",
+      "brand": "Fisher & Paykel",
+      "model": "WA7060G1",
+      "category": "washing_machine",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+      "sourcePdfSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+      "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+      "receiptBindingSha256": "05113275ccb716684bd47696ab348cda81286608085ce3a9f2cd453153a3a5f1",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/30/b0/30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_7fba257723c3a800957c59bc",
       "referenceId": "fa_ref_637fa56e4ea92ec4e6971d8b",
       "brand": "ASKO",
@@ -2184,6 +2212,20 @@
       "contentSha256": "464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806",
       "receiptBindingSha256": "9f2463ebdff0d302c83e2f282d3c21ad92549a4e694596dd34d5e70c36aa6900",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/1c/9f/1c9fef982345611c118b963bb7db8feeb05cc5d030fc667ddb7fed29921b7083.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_93cffe642afb3946aca62a13",
+      "referenceId": "fa_ref_dcea22d144f023a1f3a1a559",
+      "brand": "Fisher & Paykel",
+      "model": "WA7060E1",
+      "category": "washing_machine",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+      "sourcePdfSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+      "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+      "receiptBindingSha256": "b4cfa04b06950726fed4385ec8638ad30b05f9c818d179acdbf728abe00cbf33",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/30/b0/30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4023,11 +4065,11 @@
     }
   ],
   "summary": {
-    "entries": 262,
-    "sources": 287,
-    "passed": 287,
+    "entries": 265,
+    "sources": 290,
+    "passed": 290,
     "failed": 0
   },
-  "checkedObjects": 567,
-  "semanticAuditSha256": "bc9d14e633a78fcecca0dea82fdb1d1c4c081570479523789e064077b0586b3d"
+  "checkedObjects": 575,
+  "semanticAuditSha256": "c17d628341f134d7bfb4b2a3396291adbd307d5af2bf2e994e6261d452abd73c"
 }

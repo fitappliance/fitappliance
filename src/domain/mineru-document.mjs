@@ -1991,6 +1991,135 @@ function fisherPaykelDw60ChSupportFamilyScope(document, caseIdentity, boundSuppo
   };
 }
 
+function fisherPaykelWa60SupportRows(fragment, variant = 'current') {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return null;
+  const legacy = variant === 'legacy';
+  if (legacy) {
+    if (normalizedText(fragment.cells[0]?.[0]) !== ''
+      || normalizedText(fragment.cells[0]?.[1]) !== "WA⁺'60") return null;
+  } else if (!/^WA\*{2}60\*$/i.test(normalizedText(fragment.captionText))) return null;
+  const grammarProfileId = legacy
+    ? 'fisher-paykel-wa60-legacy-support-family-v1'
+    : 'fisher-paykel-wa60-support-family-v1';
+  const headerIndex = fragment.cells.findIndex((cells) => (
+    /^product\s+dimensions?$/i.test(normalizedText(cells[0]))
+      && /^mm$/i.test(normalizedText(cells[1]))
+  ));
+  const clearanceIndex = fragment.cells.findIndex((cells, index) => (
+    index > headerIndex
+      && /^minimum\s+clearances?$/i.test(normalizedText(cells[0]))
+      && /^mm$/i.test(normalizedText(cells[1]))
+  ));
+  if (headerIndex < 0 || clearanceIndex < 0) return null;
+  const cleanLabel = (value) => normalizedText(value)
+    .replace(/^(?:[A-I]|©)\s*/i, '')
+    .replace(/\bproduct†\b/i, 'product');
+  const scalar = (value) => /^\d+(?:\.\d+)?$/.test(normalizedText(value))
+    ? normalizedText(value)
+    : null;
+  const range = (value) => {
+    const match = /^(\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*(\d+(?:\.\d+)?)$/i
+      .exec(normalizedText(value));
+    return match && Number(match[1]) <= Number(match[2]) ? `${match[1]} - ${match[2]}` : null;
+  };
+  const product = fragment.cells.slice(headerIndex + 1, clearanceIndex);
+  const clearances = fragment.cells.slice(clearanceIndex + 1);
+  const one = (rows, pattern) => rows.filter((cells) => pattern.test(cleanLabel(cells[0])));
+  const heightRows = one(product, /^overall\s+height\s+of\s+product\b/i);
+  const widthRows = one(product, /^overall\s+width\s+of\s+product$/i);
+  const depthRows = one(product, legacy
+    ? /^(?:overall\s+)?depth\s+of\s+product$/i
+    : /^overall\s+depth\s+of\s+product$/i);
+  const cavityRows = one(clearances, /^minimum\s+cavity\s+width$/i);
+  const sideRows = one(clearances, /^minimum\s+clearance\s+to\s+either\s+side\b/i);
+  const rearRows = one(clearances, /^minimum\s+clearance\s+at\s+the\s+rear\s+of\s+the\s+product$/i);
+  if ([heightRows, widthRows, depthRows, cavityRows, sideRows].some((rows) => rows.length !== 1)
+    || rearRows.length > 1) return null;
+  const height = range(heightRows[0][1]);
+  const width = scalar(widthRows[0][1]);
+  const depth = scalar(depthRows[0][1]);
+  const cavity = scalar(cavityRows[0][1]);
+  const side = scalar(sideRows[0][1]);
+  const rear = rearRows.length ? scalar(rearRows[0][1]) : null;
+  if (!height || !width || !depth || !cavity || !side
+    || Number(cavity) !== Number(width) + (2 * Number(side))
+    || (rearRows.length && !rear)) return null;
+  const row = (label, value, sourceLabel, semanticBasis, axisOrder = null) => ({
+    label,
+    value: `${value} mm`,
+    quote: `${sourceLabel} ${value} mm`,
+    semanticBasis,
+    ...(axisOrder ? { axisOrder } : {}),
+    grammarProfileId,
+  });
+  return [
+    row('Overall height of product', height, cleanLabel(heightRows[0][0]), 'explicit_label_range', ['height']),
+    row('Overall width of product', width, cleanLabel(widthRows[0][0]), 'fisher_paykel_wa60_support_family', ['width']),
+    row('Overall depth of product', depth, cleanLabel(depthRows[0][0]), 'fisher_paykel_wa60_support_family', ['depth']),
+    row('Minimum clearance to each side', side, cleanLabel(sideRows[0][0]), 'fisher_paykel_wa60_corroborated_side_clearance'),
+    ...(rear ? [row(
+      'Minimum clearance at the rear of the product', rear, cleanLabel(rearRows[0][0]),
+      'fisher_paykel_wa60_explicit_rear_clearance', ['rear'],
+    )] : []),
+  ];
+}
+
+function fisherPaykelWa60SupportFamilyScope(document, caseIdentity, boundSupportFamilyModel) {
+  if (canonicalModel(caseIdentity?.brand) !== 'FISHERPAYKEL'
+    || normalizedText(caseIdentity?.category) !== 'washing_machine') return null;
+  const target = canonicalModel(caseIdentity?.model);
+  const family = canonicalModel(boundSupportFamilyModel);
+  if (!/^WA\d{4}[A-Z]\d$/.test(target) || family !== target.slice(0, -1)) return null;
+  const coverFragments = (document.pages[0] ?? []).filter((fragment) => (
+    ['paragraph', 'text', 'list'].includes(fragment.type)
+      && containsExplicitModelExpression(fragment.identityText ?? fragment.text, family)
+  ));
+  const marketFragments = (document.pages[0] ?? []).filter((fragment) => (
+    /(?:NZ[\s,/&-]+AU|AU[\s,/&-]+NZ)/i.test(fragment.text)
+  ));
+  if (coverFragments.length !== 1 || marketFragments.length !== 1) return null;
+  const currentTables = [];
+  const legacyTables = [];
+  const legacyCapacityTables = [];
+  const familyStem = target.match(/^(WA\d{4})[A-Z]\d$/)?.[1];
+  document.pages.forEach((items, pageIndex) => {
+    for (const fragment of items) {
+      const currentRows = fisherPaykelWa60SupportRows(fragment);
+      if (currentRows) currentTables.push({ fragment, page: pageIndex + 1, rows: currentRows });
+      const legacyRows = fisherPaykelWa60SupportRows(fragment, 'legacy');
+      if (legacyRows) legacyTables.push({ fragment, page: pageIndex + 1, rows: legacyRows });
+      if (fragment.type === 'table' && Array.isArray(fragment.cells)
+        && fragment.cells.length === 2
+        && normalizedText(fragment.cells[0]?.[0]) === ''
+        && fragment.cells[0].some((cell) => normalizedText(cell) === `${familyStem}*`)
+        && /^maximum\s+capacity\s*\(kg\)$/i.test(normalizedText(fragment.cells[1]?.[0]))) {
+        legacyCapacityTables.push({ fragment, page: pageIndex + 1 });
+      }
+    }
+  });
+  let table;
+  let grammarProfileId;
+  let capacityFragment = null;
+  if (currentTables.length === 1 && legacyTables.length === 0) {
+    [table] = currentTables;
+    grammarProfileId = 'fisher-paykel-wa60-support-family-v1';
+  } else if (currentTables.length === 0 && legacyTables.length === 1
+    && legacyCapacityTables.length === 1
+    && legacyCapacityTables[0].page === legacyTables[0].page) {
+    [table] = legacyTables;
+    grammarProfileId = 'fisher-paykel-wa60-legacy-support-family-v1';
+    capacityFragment = legacyCapacityTables[0].fragment;
+  } else return null;
+  return {
+    familyModel: family,
+    coverFragment: coverFragments[0],
+    marketFragment: marketFragments[0],
+    grammarProfileId,
+    ...(capacityFragment ? { capacityFragment } : {}),
+    ...table,
+  };
+}
+
 function ocrShiftedDimensionSectionRows(fragment) {
   if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return [];
   const axisAliases = {
@@ -2535,6 +2664,28 @@ export const mineruGrammarProfiles = Object.freeze({
     documentType: 'installation_manual',
     detectionSummary: 'A hash-bound exact support product, an installation article, one AU/NZ cover listing DW60CH, DW60CHP and DW60CK model families, and one shared Product Dimensions table.',
     semanticBoundary: 'Only the top-panel-installed product height range, overall width and closed depth are projected; top-panel-removed height, cavity dimensions, open-door depth, plumbing and electrical requirements remain excluded.',
+  }),
+  'fisher-paykel-wa60-support-family-v1': Object.freeze({
+    parserProfileId: 'fisher-paykel-wa60-support-family-v1',
+    grammarFamilyId: 'fisher_paykel_wa60_support_family_v1',
+    grammarFamilyName: 'Fisher & Paykel WA60 top-loader support-family geometry',
+    variantName: 'Exact support API resource with explicit cover base model and WA**60* table',
+    brand: 'Fisher & Paykel',
+    category: 'washing_machine',
+    documentType: 'installation_manual',
+    detectionSummary: 'A hash-bound exact support product resource, one first-page list containing the target model without its final generation digit, AU market text, and one hybrid-confirmed WA**60* Product Dimensions table.',
+    semanticBoundary: 'Overall width, adjustable console height and closed depth are projected. A 20 mm each-side clearance is accepted only when the 640 mm cavity width independently reconciles with the 600 mm product width. An explicit rear row may be projected; the compound 660 mm depth allowance, lid ranges and standpipe values are not reinterpreted.',
+  }),
+  'fisher-paykel-wa60-legacy-support-family-v1': Object.freeze({
+    parserProfileId: 'fisher-paykel-wa60-legacy-support-family-v1',
+    grammarFamilyId: 'fisher_paykel_wa60_legacy_support_family_v1',
+    grammarFamilyName: 'Fisher & Paykel legacy WA60 top-loader support-family geometry',
+    variantName: 'Exact support installation article with explicit cover base model, WA legacy table and capacity family column',
+    brand: 'Fisher & Paykel',
+    category: 'washing_machine',
+    documentType: 'installation_manual',
+    detectionSummary: "A hash-bound exact support product installation article, an AU/NZ cover listing the target base model, one WA⁺'60 Product Dimensions table, and one same-page capacity table containing the target numeric family wildcard.",
+    semanticBoundary: 'Only overall width, adjustable console height and closed depth are projected. The 660 mm compound installation depth, lid-open height, standpipe values and narrative rear clearance remain excluded from this grammar.',
   }),
   'samsung-au-washer-wildcard-specification-v1': Object.freeze({
     parserProfileId: 'samsung-au-washer-wildcard-specification-v1',
@@ -3084,7 +3235,11 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const fisherPaykelDw60ChSupportScope = claimSemanticsVersion === 2
     ? fisherPaykelDw60ChSupportFamilyScope(document, caseIdentity, boundSupportFamilyModel)
     : null;
-  if (boundSupportFamilyModel && !fisherPaykelRf610Scope && !fisherPaykelDw60ChSupportScope) {
+  const fisherPaykelWa60SupportScope = claimSemanticsVersion === 2
+    ? fisherPaykelWa60SupportFamilyScope(document, caseIdentity, boundSupportFamilyModel)
+    : null;
+  if (boundSupportFamilyModel && !fisherPaykelRf610Scope && !fisherPaykelDw60ChSupportScope
+    && !fisherPaykelWa60SupportScope) {
     throw new Error('bound support family is not proven by the MinerU document grammar');
   }
   const fisherPaykelRf610Signals = fisherPaykelRf610Scope ? [{
@@ -3094,6 +3249,10 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const fisherPaykelDw60ChSupportSignals = fisherPaykelDw60ChSupportScope ? [{
     type: 'mineru_fp_dw60ch_support_family',
     value: `${model}:family:${fisherPaykelDw60ChSupportScope.familyModel}:cover:${fisherPaykelDw60ChSupportScope.coverFragment.fragmentSha256}:market:${fisherPaykelDw60ChSupportScope.marketFragment.fragmentSha256}:page:${fisherPaykelDw60ChSupportScope.page}:${fisherPaykelDw60ChSupportScope.fragment.fragmentSha256}`,
+  }] : [];
+  const fisherPaykelWa60SupportSignals = fisherPaykelWa60SupportScope ? [{
+    type: 'mineru_fp_wa60_support_family',
+    value: `${model}:family:${fisherPaykelWa60SupportScope.familyModel}:cover:${fisherPaykelWa60SupportScope.coverFragment.fragmentSha256}:market:${fisherPaykelWa60SupportScope.marketFragment.fragmentSha256}:page:${fisherPaykelWa60SupportScope.page}:${fisherPaykelWa60SupportScope.fragment.fragmentSha256}${fisherPaykelWa60SupportScope.capacityFragment ? `:capacity:${fisherPaykelWa60SupportScope.capacityFragment.fragmentSha256}` : ''}`,
   }] : [];
   const boundFamilyDocumentScope = claimSemanticsVersion === 2
     && (boundFamilySignals.length === 1 || boundSeriesSignals.length === 1
@@ -3108,6 +3267,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     && !samsungWasherWildcardScope
     && !fisherPaykelRf610Scope
     && !fisherPaykelDw60ChSupportScope
+    && !fisherPaykelWa60SupportScope
     && (unresolvedFamilyScope(document, model) || contextUnresolvedFamily);
   const contextDocumentScope = claimSemanticsVersion === 2
     && contextSignals.length > 0
@@ -3137,6 +3297,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...samsungWasherWildcardSignals,
     ...fisherPaykelRf610Signals,
     ...fisherPaykelDw60ChSupportSignals,
+    ...fisherPaykelWa60SupportSignals,
   ].map((signal) => [`${signal.type}\0${signal.value}`, signal])).values()];
   if (!signals.length && documentUniqueScope) {
     signals = uniqueCoverFallbackSignals(document, model);
@@ -3173,6 +3334,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   }
   if (fisherPaykelDw60ChSupportScope) {
     appliedGrammarProfiles.add('fisher-paykel-dw60ch-support-family-v1');
+  }
+  if (fisherPaykelWa60SupportScope) {
+    appliedGrammarProfiles.add(fisherPaykelWa60SupportScope.grammarProfileId);
   }
   if (lgDryerSizeScope) {
     appliedGrammarProfiles.add(lgDryerSizeScope.grammarProfileId);
@@ -3226,6 +3390,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const fisherPaykelDw60ChSupportPageScoped = items.includes(
       fisherPaykelDw60ChSupportScope?.fragment,
     );
+    const fisherPaykelWa60SupportPageScoped = items.includes(
+      fisherPaykelWa60SupportScope?.fragment,
+    );
     const joinedParagraphRowsByFragment = new Map(items
       .map((item, index) => [item, joinedGroupedParagraphRow(items, index)])
       .filter(([, row]) => row));
@@ -3247,6 +3414,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped
       && !chiqSpecPageScoped && !samsungWasherWildcardPageScoped
       && !fisherPaykelRf610PageScoped && !fisherPaykelDw60ChSupportPageScoped
+      && !fisherPaykelWa60SupportPageScoped
       && !hisenseLegacySpecPageScoped
       && !hisenseNetPackagePageScoped && !boschDimensionSectionScope
       && !askoProductSheetRowsByFragment.size) return;
@@ -3305,6 +3473,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         || samsungWasherWildcardScope?.fragment === item
         || fisherPaykelRf610Scope?.fragment === item
         || fisherPaykelDw60ChSupportScope?.fragment === item
+        || fisherPaykelWa60SupportScope?.fragment === item
         || (documentScoped && (
           documentScopedDimensionMatrixRows(item).length === 3
           || documentScopedExplicitAxisRows(item).length === 3
@@ -3342,6 +3511,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           ...(samsungWasherWildcardScope?.fragment === fragment
             || fisherPaykelRf610Scope?.fragment === fragment
             || fisherPaykelDw60ChSupportScope?.fragment === fragment
+            || fisherPaykelWa60SupportScope?.fragment === fragment
             || (canonicalModel(caseIdentity?.brand) === 'CHIQ' && category === 'fridge'
               && chiqOfficialSpecLikeFragment(fragment))
             || shiftedRows.length === 3 || (unresolvedFamily && !repeatedHeaderPageScoped) || documentScoped
@@ -3371,6 +3541,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
             : []),
           ...(fisherPaykelDw60ChSupportScope?.fragment === fragment
             ? fisherPaykelDw60ChSupportScope.rows
+            : []),
+          ...(fisherPaykelWa60SupportScope?.fragment === fragment
+            ? fisherPaykelWa60SupportScope.rows
             : []),
           ...(documentScoped ? documentScopedDimensionMatrixRows(fragment) : []),
           ...(documentScoped ? documentScopedExplicitAxisRows(fragment) : []),
@@ -3552,6 +3725,15 @@ export function findMineruImageOnlyDimensionPages(jsonBytes) {
       && /\bnet\b/i.test(text)
       && /\b(?:box|pack(?:age|aged)?)\b/i.test(text)
       && /\bweight\b/i.test(text);
+    const fisherPaykelWaGridMissingFamilyCaption = items.some((item) => (
+      item.type === 'table'
+        && !/^WA\*{2}60\*$/i.test(item.captionText)
+        && /\bPRODUCT\s+DIMENSIONS?\b/i.test(item.text)
+        && /\bhighest\s+point\s+on\s+console\b/i.test(item.text)
+        && /\b(?:[A-I]\s*)?height\s+of\s+product\s+lid\s+open\b/i.test(item.text)
+        && /\bstandpipe\s+height\b/i.test(item.text)
+        && /\bminimum\s+cavity\s+width\b/i.test(item.text)
+    )) && items.some((item) => item.type === 'image');
     const unitBeforeValueAxes = new Set([...text.matchAll(explicitAxisUnitBeforeValue)]
       .map((match) => ({
         width: 'width', wide: 'width', height: 'height', high: 'height',
@@ -3559,9 +3741,10 @@ export function findMineruImageOnlyDimensionPages(jsonBytes) {
       })[match[1].toLowerCase()]));
     const completeUnitBeforeValueAxes = ['width', 'height', 'depth']
       .every((axis) => unitBeforeValueAxes.has(axis));
-    if ((imageDimensionSignal || titledDimensionImage || malformedDimensionStructure || orphanedDimensionGrid)
-      && !explicitAxisValue.test(text) && !explicitTriple.test(text)
-      && !completeUnitBeforeValueAxes) pages.push(index + 1);
+    if (fisherPaykelWaGridMissingFamilyCaption
+      || ((imageDimensionSignal || titledDimensionImage || malformedDimensionStructure || orphanedDimensionGrid)
+        && !explicitAxisValue.test(text) && !explicitTriple.test(text)
+        && !completeUnitBeforeValueAxes)) pages.push(index + 1);
   });
   return Object.freeze(pages);
 }

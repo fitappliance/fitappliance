@@ -286,6 +286,31 @@ test('committed historical reference contains every cumulative recovery receipt 
   }
 });
 
+test('current Fisher and Paykel WA60 receipts publish adjustable height without promoting Fit', () => {
+  const publicCatalog = JSON.parse(readFileSync(new URL(
+    '../../data/architecture-v2/generated/public-catalog-projection.json', import.meta.url,
+  ), 'utf8'));
+  const expectedModels = new Set(['WA7060E1', 'WA7060G1', 'WA7560E1']);
+  const products = publicCatalog.products.filter((product) => expectedModels.has(product.model));
+
+  assert.equal(products.length, expectedModels.size);
+  for (const product of products) {
+    assert.deepEqual(product.geometry_v2.closedEnvelope, {
+      widthMm: 600,
+      heightMm: { minimumMm: 1045, maximumMm: 1075 },
+      depthMm: 600,
+    });
+    assert.equal(product.h, 1075);
+    assert.equal(product.geometry_v2_provenance.evidenceLevel, 'dimensions');
+    assert.equal(product.geometry_v2_provenance.verifiedFitEligible, false);
+    assert.equal(product.geometry_v2_provenance.successfulFitOutcome, 'INSUFFICIENT_DATA');
+    assert.equal(product.evidence.trust_level, 'dimensions_verified');
+    assert.equal(product.evidence.clearance_verified, false);
+    assert.equal(product.clearance_rear, null);
+    assert.equal(product.requires_plumbing, null);
+  }
+});
+
 test('receipt replay failures remain quarantined from current and historical projections', () => {
   const outcomes = structuredClone(receiptReplayAudit.outcomes);
   outcomes[0] = { ...outcomes[0], status: 'failed', failureCode: 'test_replay_failure' };

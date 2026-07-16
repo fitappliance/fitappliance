@@ -31,6 +31,40 @@ function articleLinks(article) {
   return links;
 }
 
+function supportDocumentTitleKey(record) {
+  return [record?.subType, record?.resourceTitle ?? record?.resource_title ?? record?.title]
+    .map((value) => String(value ?? '').trim())
+    .filter(Boolean)
+    .join('|');
+}
+
+function supportDocumentResource(payload, provenance) {
+  const match = /^documentResources:(0|[1-9]\d*)$/.exec(
+    requiredText(provenance.documentId, 'support document resource ID'),
+  );
+  if (!match) throw new Error('support API document resource ID is invalid');
+  const resources = Array.isArray(payload?.documentResources) ? payload.documentResources : [];
+  const record = resources[Number(match[1])];
+  if (!record || typeof record !== 'object' || Array.isArray(record)) {
+    throw new Error('support API document resource is missing');
+  }
+  const artifactLinkUrl = canonicalUrl(provenance.artifactLinkUrl, 'support API artifact link URL');
+  const recordUrl = canonicalUrl(record.url, 'support API document resource URL');
+  const matchingUrls = resources.filter((candidate) => {
+    try { return canonicalUrl(candidate?.url, 'support API document resource URL') === recordUrl; } catch { return false; }
+  });
+  if (matchingUrls.length !== 1 || recordUrl !== artifactLinkUrl) {
+    throw new Error('support API document resource does not match the declared artifact link');
+  }
+  if (requiredText(record.name, 'support API document resource filename')
+      !== requiredText(provenance.originalFileName, 'support API discovery filename')
+    || supportDocumentTitleKey(record)
+      !== requiredText(provenance.documentTitleKey, 'support API document title key')) {
+    throw new Error('support API document resource metadata does not match the declared document');
+  }
+  return record;
+}
+
 function singleQueryValue(url, name) {
   const values = url.searchParams.getAll(name);
   if (values.length !== 1 || values[0] === '') {
@@ -97,17 +131,21 @@ export function verifyOfficialSupportApiDiscoveryEvidence(provenance, caseIdenti
   if (modelKey(payload?.product?.modelNumber, 'support API model') !== targetModel) {
     throw new Error('official support API does not prove the exact model');
   }
-  const documentId = requiredText(provenance.documentId, 'support API document ID');
-  const articles = (Array.isArray(payload?.product?.articles) ? payload.product.articles : [])
-    .filter((article) => String(article?.id ?? '').trim() === documentId);
-  if (articles.length !== 1) {
-    throw new Error('official support API does not prove one exact document ID');
+  if (provenance.discoveryRecordType === 'support_document_resource') {
+    supportDocumentResource(payload, provenance);
+  } else {
+    const documentId = requiredText(provenance.documentId, 'support API document ID');
+    const articles = (Array.isArray(payload?.product?.articles) ? payload.product.articles : [])
+      .filter((article) => String(article?.id ?? '').trim() === documentId);
+    if (articles.length !== 1) {
+      throw new Error('official support API does not prove one exact document ID');
+    }
+    const artifactLinkUrl = canonicalUrl(provenance.artifactLinkUrl, 'support API artifact link URL');
+    if (!articleLinks(articles[0]).has(artifactLinkUrl)) {
+      throw new Error('official support API exact document is missing the declared artifact link');
+    }
   }
-  const artifactLinkUrl = canonicalUrl(provenance.artifactLinkUrl, 'support API artifact link URL');
-  if (!articleLinks(articles[0]).has(artifactLinkUrl)) {
-    throw new Error('official support API exact document is missing the declared artifact link');
-  }
-  validateArtifactRelationship(artifactLinkUrl, provenance.artifactUrl);
+  validateArtifactRelationship(provenance.artifactLinkUrl, provenance.artifactUrl);
   return true;
 }
 
@@ -123,6 +161,8 @@ export function officialSupportApiBoundFamilyModel(provenance, caseIdentity, dis
     if (/^DW60CHP[WX]\d+$/.test(targetModel)) familyModel = 'DW60CHP';
     else if (/^DW60CH[WX]\d+$/.test(targetModel)) familyModel = 'DW60CH';
     else if (/^DW60CK[WX]\d+$/.test(targetModel)) familyModel = 'DW60CK';
+  } else if (category === 'washing_machine' && /^WA\d{4}[A-Z]\d$/.test(targetModel)) {
+    familyModel = targetModel.slice(0, -1);
   }
   if (!familyModel) return null;
   verifyOfficialSupportApiDiscoveryEvidence(provenance, caseIdentity, discoveryBytes);
@@ -132,6 +172,17 @@ export function officialSupportApiBoundFamilyModel(provenance, caseIdentity, dis
       .find((entry) => String(entry?.id ?? '').trim() === String(provenance.documentId).trim());
     const articleScope = `${requiredText(article?.title, 'support article title')} ${String(article?.articleType ?? '')}`;
     if (!/\binstallation\b/i.test(articleScope)) return null;
+  } else if (category === 'washing_machine') {
+    if (provenance.discoveryRecordType === 'support_document_resource') {
+      if (!/\b(?:installation|user)\b/i.test(String(provenance.documentTitleKey ?? ''))) return null;
+    } else {
+      const payload = JSON.parse(Buffer.from(discoveryBytes).toString('utf8'));
+      const articles = (Array.isArray(payload?.product?.articles) ? payload.product.articles : [])
+        .filter((entry) => String(entry?.id ?? '').trim() === String(provenance.documentId).trim());
+      if (articles.length !== 1) return null;
+      const articleScope = `${requiredText(articles[0]?.title, 'support article title')} ${String(articles[0]?.articleType ?? '')}`;
+      if (!/\binstallation\b/i.test(articleScope)) return null;
+    }
   }
   return familyModel;
 }

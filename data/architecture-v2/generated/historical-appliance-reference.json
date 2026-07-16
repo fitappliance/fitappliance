@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "7fcfc8cbe58c0f4eeb60118399d9226e244f47beb5a3713cb423f56d0b3ed4fb"
+    "historical-recovery:historical-recovery-cumulative-v1": "b57739d5dec2ae1c9d66d6af5393e288a65112ad5e2db679cbb2441bb5adf41a"
   },
   "records": [
     {
@@ -277654,6 +277654,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_93cffe642afb3946aca62a13",
+          "snapshotSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+          "sourceLines": [
+            7
+          ]
         }
       ],
       "catalogProductIds": [
@@ -277663,7 +277670,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_93cffe642afb3946aca62a13",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+          "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+          "receiptBindingSha256": "b4cfa04b06950726fed4385ec8638ad30b05f9c818d179acdbf728abe00cbf33",
+          "verifiedAt": "2026-07-16T13:37:34.330Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/58/1b/581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7.pdf"
+        }
       ]
     },
     {
@@ -277689,6 +277725,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_7d66f8bccd4ca53effd0cfaf",
+          "snapshotSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+          "sourceLines": [
+            7
+          ]
         }
       ],
       "catalogProductIds": [
@@ -277698,7 +277741,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_7d66f8bccd4ca53effd0cfaf",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+          "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+          "receiptBindingSha256": "05113275ccb716684bd47696ab348cda81286608085ce3a9f2cd453153a3a5f1",
+          "verifiedAt": "2026-07-16T13:37:28.961Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 7,
+              "fragmentSha256": "451af31af5800ace25303c0e515c31ce5d0444c76960879d4b315e02367d10aa"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/58/1b/581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7.pdf"
+        }
       ]
     },
     {
@@ -277794,6 +277866,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3f5fc57f7e84cdb1c55edf2f",
+          "snapshotSha256": "5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934",
+          "sourceLines": [
+            7
+          ]
         }
       ],
       "catalogProductIds": [
@@ -277803,7 +277882,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3f5fc57f7e84cdb1c55edf2f",
+          "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/3mcr9pbnrs992cxtp7fxcjk/FP-Washsmart-user-guide-WA60-models-429598C.pdf",
+          "contentSha256": "5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934",
+          "receiptBindingSha256": "3c382d38a0138186da70ba827d5b2f141177a456d57efc0063717a3846e754d9",
+          "verifiedAt": "2026-07-16T13:30:37.356Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 7,
+              "fragmentSha256": "5ad3f0b5b0b0be1aa4bcdda063d4787be074543c16f6201e22010ab0a0becb1b"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 7,
+              "fragmentSha256": "5ad3f0b5b0b0be1aa4bcdda063d4787be074543c16f6201e22010ab0a0becb1b"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 7,
+              "fragmentSha256": "5ad3f0b5b0b0be1aa4bcdda063d4787be074543c16f6201e22010ab0a0becb1b"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/51/33/5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934.pdf"
+        }
       ]
     },
     {

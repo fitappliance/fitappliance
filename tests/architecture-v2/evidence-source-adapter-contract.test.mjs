@@ -27,6 +27,40 @@ test('typed source candidates bind discovery provenance and canonical HTTPS URL'
   });
 });
 
+test('typed source candidates preserve complete hash-bound support document resource provenance', () => {
+  const hash = 'a'.repeat(64);
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_support_api',
+    market: 'AU',
+    sourceMarket: 'AU',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/au/api/support/products/WA7560E1',
+    requestedModel: 'WA7560E1',
+    matchedModel: 'WA7560E1',
+    artifactUrl: 'https://dam.fisherpaykel.com/install/WA60.pdf',
+    artifactLinkUrl: 'https://dam.fisherpaykel.com/install/WA60.pdf',
+    discoveryContentSha256: hash,
+    discoveryObjectPath: `evidence/web/sha256/aa/aa/${hash}.json`,
+    discoveryByteSize: 123,
+    discoveryRecordType: 'support_document_resource',
+    documentId: 'documentResources:0',
+    documentTitleKey: 'Installation|Installation Guide (English)',
+    originalFileName: 'WA60.pdf',
+  };
+  assert.deepEqual(validateEvidenceSourceCandidate({
+    ...candidate,
+    sourceUrl: discoveryProvenance.artifactUrl,
+    sourceModelHint: 'WA7560E1',
+    discoveryProvenance,
+  }).discoveryProvenance, discoveryProvenance);
+  assert.throws(() => validateEvidenceSourceCandidate({
+    ...candidate,
+    sourceUrl: discoveryProvenance.artifactUrl,
+    sourceModelHint: 'WA7560E1',
+    discoveryProvenance: { ...discoveryProvenance, documentTitleKey: undefined },
+  }), /title key/i);
+});
+
 test('source candidate contract rejects parsed appliance facts and unknown fields', () => {
   for (const forbidden of [
     { widthMm: 600 },

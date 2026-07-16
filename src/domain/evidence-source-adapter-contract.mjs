@@ -131,8 +131,19 @@ function optionalDiscoveryProvenance(value) {
         artifactLinkUrl: canonicalHttpsUrl(value.artifactLinkUrl, 'candidate discovery artifact link URL'),
       } : {}),
     });
+    if (result.method === 'official_support_api' && value.discoveryRecordType != null) {
+      if (value.discoveryRecordType !== 'support_document_resource') {
+        throw new TypeError('candidate support API discovery record type invalid');
+      }
+      Object.assign(result, {
+        discoveryRecordType: value.discoveryRecordType,
+        documentId: requiredText(value.documentId, 'candidate discovery document ID'),
+        documentTitleKey: requiredText(value.documentTitleKey, 'candidate discovery document title key'),
+        originalFileName: requiredText(value.originalFileName, 'candidate discovery filename'),
+      });
+    }
   }
-  if (result.method !== 'official_product_page'
+  if (!['official_product_page', 'official_support_api'].includes(result.method)
     && (value.discoveryRecordType != null || value.documentTitleKey != null)) {
     throw new TypeError('candidate serialized manifest record requires product-page discovery');
   }

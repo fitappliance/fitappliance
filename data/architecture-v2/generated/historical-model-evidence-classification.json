@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T12:50:57.551Z",
+  "generatedAt": "2026-07-16T13:38:52.539Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "3b7e334e1f706a753fb73001ec4025dea4cfb94582b7d34a7b98ac0df5c058d1",
+  "semanticClassificationSha256": "94fe4d129f1fa343f5aabdf8ee784cf4d337cc968a344fb0fdcdd41671f2d3e1",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4264,
+    "documentLinks": 4267,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 281,
+      "COMPLETE_RECEIPT": 284,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 149,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1166
+      "REFERENCE_REDISCOVERY": 1163
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 281,
-      "REDISCOVER_OFFICIAL_SOURCE": 1166,
+      "NO_ACTION": 284,
+      "REDISCOVER_OFFICIAL_SOURCE": 1163,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 149
     },
     "bySourceAuthority": {
-      "MIXED": 139,
+      "MIXED": 142,
       "NONE": 6625,
       "OFFICIAL": 148,
-      "REFERENCE": 1183
+      "REFERENCE": 1180
     },
     "byIdentityScope": {
       "AMBIGUOUS": 186,
@@ -46,9 +46,9 @@
       "UNPROVEN": 6325
     },
     "byExtractionState": {
-      "ALL_AXIS_RANGE": 65,
+      "ALL_AXIS_RANGE": 68,
       "ALL_AXIS_SCALAR": 353,
-      "NOT_PARSED": 7583,
+      "NOT_PARSED": 7580,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 281,
-      "LEGACY_UNBOUND": 1489,
+      "CURRENT_VALID": 284,
+      "LEGACY_UNBOUND": 1486,
       "NONE": 6325
     }
   },
@@ -107,13 +107,13 @@
       "category": "washing_machine",
       "records": 1497,
       "brands": 88,
-      "documentLinks": 659,
+      "documentLinks": 662,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 32,
+        "COMPLETE_RECEIPT": 35,
         "CONFLICT_QUARANTINE": 9,
         "IDENTITY_RESEARCH": 37,
         "OFFICIAL_DISCOVERY": 1237,
-        "REFERENCE_REDISCOVERY": 182
+        "REFERENCE_REDISCOVERY": 179
       }
     }
   ],
@@ -259010,14 +259010,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -259040,6 +259041,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/30/b0/30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9.json",
+            "evidence/web/sha256/58/1b/581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7.pdf",
+            "receipt:b4cfa04b06950726fed4385ec8638ad30b05f9c818d179acdbf728abe00cbf33"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7"
+        },
+        {
           "documentId": "source:doc_0e60ed2689dd0ad7b6894f50",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/d/2/d/1/d2d159451a2ab81bb9289860347e582e09ecdc5d_Fisher___Paykel_WA7060E1_WashSmart__Eco_7kg_Top_Load_Washing_Machine_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -259055,8 +259075,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Fisher & Paykel"
@@ -259073,14 +259093,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -259103,6 +259124,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/30/b0/30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9.json",
+            "evidence/web/sha256/58/1b/581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7.pdf",
+            "receipt:05113275ccb716684bd47696ab348cda81286608085ce3a9f2cd453153a3a5f1"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7"
+        },
+        {
           "documentId": "source:doc_bdcdbfaf62f0311bce15341e",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/c/c/3/8/cc381bc63ad4dd2cc0d5e47116c45fbe82dfb7d6_Fisher___Paykel_WA7060G1_7kg_Top_Load_Washing_Machine_User_Manual.pdf",
           "evidenceObjectIds": [
@@ -259118,8 +259158,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Fisher & Paykel"
@@ -259225,14 +259265,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -259255,6 +259296,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934",
+          "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/3mcr9pbnrs992cxtp7fxcjk/FP-Washsmart-user-guide-WA60-models-429598C.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/46/94/4694b887342ac36a785881aef2fa228a4996a766552235389a8bd50e2647c623.json",
+            "evidence/web/sha256/51/33/5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934.pdf",
+            "receipt:3c382d38a0138186da70ba827d5b2f141177a456d57efc0063717a3846e754d9"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934"
+        },
+        {
           "documentId": "source:doc_3a8862e0987670abce3ea412",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/b/5/1/8/b51832a99d44b1e68b4432a8737dd7c02ad78a5d_WA7560E1_Quick_Guide.pdf",
           "evidenceObjectIds": [
@@ -259270,8 +259330,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Fisher & Paykel"

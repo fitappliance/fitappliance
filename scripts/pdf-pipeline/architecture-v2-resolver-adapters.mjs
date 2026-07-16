@@ -291,7 +291,7 @@ export function createFisherPaykelResolverAdapter(options = {}) {
   const finder = options.finder ?? findFisherPaykelOfficialPdf;
   return createEvidenceSourceResolverAdapter({
     resolverId: 'fisher-paykel-official-support',
-    version: '4',
+    version: '6',
     scope: 'exact_model_product_page_and_support_documents',
     required: true,
     async resolve(caseRecord) {

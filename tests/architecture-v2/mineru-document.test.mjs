@@ -2165,6 +2165,62 @@ test('MinerU binds a DW60CH support family only through the shared AU/NZ cover a
   }
 });
 
+test('MinerU binds a legacy WA60 family only through its cover, market, main table and capacity table', () => {
+  const identity = { brand: 'Fisher & Paykel', model: 'WA7060G1', category: 'washing_machine' };
+  const cover = paragraph('WA1060E, WA8560E, WA8060E, WA7560E, WA7060E, WA1060G, WA9060G, WA8560G, WA8060G, WA7060G and WA7060M Models');
+  const market = paragraph('INSTALLATION GUIDE / USER GUIDE NZ AU SG ROW', [260, 820, 720, 910]);
+  const dimensions = tableFragment(`<table>
+    <tr><td></td><td>WA⁺'60</td></tr>
+    <tr><td>PRODUCT DIMENSIONS</td><td>mm</td></tr>
+    <tr><td>A Overall height of product† (to highest point on console)</td><td>1045 - 1075</td></tr>
+    <tr><td>B Overall width of product</td><td>600</td></tr>
+    <tr><td>© Depth of product</td><td>600</td></tr>
+    <tr><td>D Height of product to top of lid† (closed)</td><td>950 - 980</td></tr>
+    <tr><td>E Height of lid open† (measured from bottom of product)</td><td>1350 - 1385</td></tr>
+    <tr><td>Standpipe height</td><td>min. 850 - 1200</td></tr>
+    <tr><td>MINIMUM CLEARANCES</td><td>mm</td></tr>
+    <tr><td>F Minimum cavity width</td><td>640</td></tr>
+    <tr><td>G Minimum depth clearance (including inlet hoses, drain hose and bowed front)</td><td>660</td></tr>
+    <tr><td>H Minimum clearance to either side or wall</td><td>20</td></tr>
+  </table>`);
+  const capacity = tableFragment(`<table>
+    <tr><td></td><td>WA7060*</td><td>WA7560*</td><td>WA8060*</td><td>WA8560*</td><td>WA9060G</td><td>WA1060*</td></tr>
+    <tr><td>Maximum capacity (kg)</td><td>7.0</td><td>7.5</td><td>8.0</td><td>8.5</td><td>9.0</td><td>10.0</td></tr>
+  </table>`);
+  const pages = [[cover, market], [], [], [], [], [], [dimensions, capacity]];
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: identity, claimSemanticsVersion: 2,
+    boundSupportFamilyModel: 'WA7060G',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+  const parsed = parseMineruContentListV2(Buffer.from(JSON.stringify(pages)), options);
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 600 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 1045, maxMm: 1075 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+  });
+  assert.ok(parsed.grammarProfileIds.includes('fisher-paykel-wa60-legacy-support-family-v1'));
+  assert.ok(parsed.identitySignals.some((signal) => signal.type === 'mineru_fp_wa60_support_family'));
+
+  for (const [label, candidatePages, candidateOptions = {}] of [
+    ['missing cover', [[market], [], [], [], [], [], [dimensions, capacity]]],
+    ['missing market', [[cover], [], [], [], [], [], [dimensions, capacity]]],
+    ['missing capacity table', [[cover, market], [], [], [], [], [], [dimensions]]],
+    ['duplicate dimensions table', [[cover, market], [], [], [], [], [], [dimensions, dimensions, capacity]]],
+    ['wrong table family marker', [[cover, market], [], [], [], [], [], [{
+      ...dimensions,
+      content: { ...dimensions.content, html: dimensions.content.html.replace("WA⁺'60", 'WA70') },
+    }, capacity]]],
+    ['sibling not on cover', pages, { caseIdentity: { ...identity, model: 'WA8060P1' }, boundSupportFamilyModel: 'WA8060P' }],
+  ]) {
+    assert.throws(() => parseMineruContentListV2(Buffer.from(JSON.stringify(candidatePages)), {
+      ...options, ...candidateOptions,
+    }), /bound support family|identity signal/i, label);
+  }
+});
+
 test('MinerU reconnects a Bosch grouped dimension heading to an explicitly labelled next paragraph', () => {
   const bytes = Buffer.from(JSON.stringify([[
     pageHeader('Series 4 dishwasher SMS4HVI01A'),
@@ -2853,6 +2909,31 @@ test('image-only dimension detection selects only pages needing bounded hybrid p
     ],
   ]));
   assert.deepEqual(findMineruImageOnlyDimensionPages(bytes), [1, 5]);
+});
+
+test('Fisher Paykel WA dimension grid requests hybrid parsing when the primary table loses its family caption', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'Product and minimum clearance dimensions' }] },
+      bbox: [50, 70, 510, 100],
+    },
+    {
+      type: 'image',
+      content: { image_source: { path: 'images/front-view.jpg' }, image_caption: [], image_footnote: [] },
+      bbox: [100, 120, 420, 440],
+    },
+    {
+      type: 'table',
+      content: {
+        html: '<table><tr><td>PRODUCT DIMENSIONS</td><td>MM</td></tr><tr><td>AOverall height of product (to highest point on console)</td><td>1045 - 1075</td></tr><tr><td>BOverall width of product</td><td>600</td></tr><tr><td>©Overall depth of product</td><td>600</td></tr><tr><td>EHeight of product lid open</td><td>1350 - 1385</td></tr><tr><td>Standpipe height</td><td>min. 850 - 1200</td></tr><tr><td>MINIMUM CLEARANCES</td><td>MM</td></tr><tr><td>Minimum cavity width</td><td>640</td></tr></table>',
+        table_caption: [], table_footnote: [],
+      },
+      bbox: [55, 480, 945, 860],
+    },
+  ]]));
+
+  assert.deepEqual(findMineruImageOnlyDimensionPages(bytes), [1]);
 });
 
 test('image fallback detects a dimension grid whose value columns disappeared from the primary parse', () => {

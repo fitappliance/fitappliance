@@ -111,6 +111,114 @@ test('hash-bound Fisher & Paykel support API binds an exact DW60CH variant to it
   }, dishwasherIdentity, nonInstallationBytes), null);
 });
 
+test('hash-bound Fisher & Paykel support document resource binds one WA top-loader base model', () => {
+  const washerIdentity = {
+    brand: 'Fisher & Paykel', model: 'WA7560E1', category: 'washing_machine',
+  };
+  const washerArtifactUrl = 'https://dam.fisherpaykel.com/KZ3PKN00/at/install/FP-Washsmart-installation-guide-WA60-models.pdf';
+  const payload = {
+    product: { modelNumber: washerIdentity.model, articles: [] },
+    documentResources: [{
+      url: washerArtifactUrl,
+      name: 'FP-Washsmart-installation-guide-WA60-models.pdf',
+      subType: 'Installation',
+      resourceTitle: 'Installation Guide (English)',
+    }],
+  };
+  const bytes = Buffer.from(JSON.stringify(payload));
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_support_api',
+    market: 'AU',
+    sourceMarket: 'AU',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/au/api/support/products/75kg-series-7-top-loader-washer--WA7560E1',
+    requestedModel: washerIdentity.model,
+    matchedModel: washerIdentity.model,
+    artifactUrl: washerArtifactUrl,
+    artifactLinkUrl: washerArtifactUrl,
+    discoveryContentSha256: hash,
+    discoveryObjectPath: `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.json`,
+    discoveryByteSize: bytes.length,
+    discoveryRecordType: 'support_document_resource',
+    documentId: 'documentResources:0',
+    documentTitleKey: 'Installation|Installation Guide (English)',
+    originalFileName: 'FP-Washsmart-installation-guide-WA60-models.pdf',
+  };
+
+  assert.equal(verifyOfficialSupportApiDiscoveryEvidence(provenance, washerIdentity, bytes), true);
+  assert.equal(officialSupportApiBoundFamilyModel(provenance, washerIdentity, bytes), 'WA7560E');
+  assert.equal(officialSupportApiBoundFamilyModel(
+    provenance, { ...washerIdentity, model: 'WA7560E11' }, bytes,
+  ), null);
+
+  const tamperedBytes = Buffer.from(JSON.stringify({
+    ...payload,
+    documentResources: [{
+      ...payload.documentResources[0],
+      url: 'https://dam.fisherpaykel.com/KZ3PKN00/at/sibling/sibling.pdf',
+    }],
+  }));
+  const tamperedHash = createHash('sha256').update(tamperedBytes).digest('hex');
+  assert.throws(() => verifyOfficialSupportApiDiscoveryEvidence({
+    ...provenance,
+    discoveryContentSha256: tamperedHash,
+    discoveryObjectPath: `evidence/web/sha256/${tamperedHash.slice(0, 2)}/${tamperedHash.slice(2, 4)}/${tamperedHash}.json`,
+    discoveryByteSize: tamperedBytes.length,
+  }, washerIdentity, tamperedBytes), /document resource/i);
+});
+
+test('hash-bound Fisher & Paykel installation article binds one legacy WA top-loader base model', () => {
+  const washerIdentity = {
+    brand: 'Fisher & Paykel', model: 'WA7060G1', category: 'washing_machine',
+  };
+  const payload = {
+    product: {
+      modelNumber: washerIdentity.model,
+      articles: [{
+        id: 'ka0-wa70-install',
+        title: 'Top Loader Washing Machine 7kg - Installation Guide',
+        articleType: 'Installation Guide',
+        articleBody: `<a href="${publicUrl}">Installation guide</a>`,
+      }],
+    },
+  };
+  const bytes = Buffer.from(JSON.stringify(payload));
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  const provenance = {
+    schemaVersion: 1, method: 'official_support_api', market: 'AU', sourceMarket: 'NZ',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/washer-wa7060g1-fp-aa--WA7060G1',
+    requestedModel: washerIdentity.model, matchedModel: washerIdentity.model,
+    artifactUrl, artifactLinkUrl: publicUrl,
+    discoveryContentSha256: hash,
+    discoveryObjectPath: `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.json`,
+    discoveryByteSize: bytes.length,
+    documentId: 'ka0-wa70-install',
+    originalFileName: 'Top Loaders User Install NZAUSGROW',
+  };
+
+  assert.equal(verifyOfficialSupportApiDiscoveryEvidence(provenance, washerIdentity, bytes), true);
+  assert.equal(officialSupportApiBoundFamilyModel(provenance, washerIdentity, bytes), 'WA7060G');
+
+  const userBytes = Buffer.from(JSON.stringify({
+    product: {
+      modelNumber: washerIdentity.model,
+      articles: [{
+        ...payload.product.articles[0],
+        title: 'Top Loader Washing Machine 7kg - User Guide',
+        articleType: 'User/Care Guide',
+      }],
+    },
+  }));
+  const userHash = createHash('sha256').update(userBytes).digest('hex');
+  assert.equal(officialSupportApiBoundFamilyModel({
+    ...provenance,
+    discoveryContentSha256: userHash,
+    discoveryObjectPath: `evidence/web/sha256/${userHash.slice(0, 2)}/${userHash.slice(2, 4)}/${userHash}.json`,
+    discoveryByteSize: userBytes.length,
+  }, washerIdentity, userBytes), null);
+});
+
 test('support API evidence rejects sibling models and links outside the declared article', () => {
   const sibling = fixture({ payload: {
     product: {

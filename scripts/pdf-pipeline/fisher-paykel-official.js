@@ -376,14 +376,28 @@ function extractSupportProductResources(payload, sku) {
   if (!targetSku || normalizeSku(payload?.product?.modelNumber) !== targetSku) return [];
 
   const resources = [];
-  for (const item of collectStructuredDocumentResources(payload?.documentResources)) {
-    const type = classifyResource(item.context, item.url);
-    resources.push({
-      url: item.url,
-      type,
-      score: scoreResource({ type }),
-      evidenceScope: 'exact_support_product'
-    });
+  const documentResources = Array.isArray(payload?.documentResources) ? payload.documentResources : [];
+  for (const [index, record] of documentResources.entries()) {
+    const documentTitleKey = [
+      record?.subType,
+      record?.resourceTitle || record?.resource_title || record?.title,
+    ].filter(Boolean).join('|');
+    const originalFileName = String(record?.name ?? '').trim();
+    const bindableRecord = documentTitleKey && originalFileName;
+    for (const item of collectStructuredDocumentResources(record)) {
+      const type = classifyResource(item.context, item.url);
+      resources.push({
+        url: item.url,
+        type,
+        score: scoreResource({ type }),
+        evidenceScope: 'exact_support_product',
+        ...(bindableRecord ? {
+          supportDocumentId: `documentResources:${index}`,
+          supportDocumentTitleKey: documentTitleKey,
+          supportOriginalFileName: originalFileName,
+        } : {}),
+      });
+    }
   }
 
   for (const article of payload?.product?.articles || []) {
@@ -629,15 +643,20 @@ async function findFisherPaykelSupportProduct(sku, opts = {}) {
           requestedModel: exactSku,
           matchedModel: exactSku,
           artifactUrl: resource.url,
-          ...(discoveryFields && resource.articleId ? {
+          ...(discoveryFields && (resource.articleId || resource.supportDocumentId) ? {
             artifactLinkUrl: resource.distributionUrl || resource.url,
             ...discoveryFields,
           } : {}),
-          ...(resource.articleId || resource.distributionVersionId ? {
-            documentId: resource.articleId || resource.distributionVersionId
+          ...(resource.supportDocumentId ? {
+            discoveryRecordType: 'support_document_resource',
+            documentId: resource.supportDocumentId,
+            documentTitleKey: resource.supportDocumentTitleKey,
+          } : resource.articleId || resource.distributionVersionId ? {
+            documentId: resource.articleId || resource.distributionVersionId,
           } : {}),
-          ...((resource.distributionName || documentFileName(resource.url)) ? {
-            originalFileName: resource.distributionName || documentFileName(resource.url)
+          ...((resource.supportOriginalFileName || resource.distributionName || documentFileName(resource.url)) ? {
+            originalFileName: resource.supportOriginalFileName
+              || resource.distributionName || documentFileName(resource.url)
           } : {})
         }
       }));

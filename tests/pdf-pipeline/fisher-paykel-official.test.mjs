@@ -364,6 +364,93 @@ test('Fisher & Paykel support discovery persists the exact product API response 
   });
 });
 
+test('Fisher & Paykel support discovery hash-binds direct document resources', async () => {
+  const sourceUrl = 'https://dam.fisherpaykel.com/KZ3PKN00/at/install/FP-Washsmart-installation-guide-WA60-models.pdf';
+  const productPayload = {
+    canonicalPath: '/au/support/laundry/washing-machines/75kg-series-7-top-loader-washer--WA7560E1',
+    product: { modelNumber: 'WA7560E1', articles: [] },
+    documentResources: [{
+      url: sourceUrl,
+      name: 'FP-Washsmart-installation-guide-WA60-models.pdf',
+      subType: 'Installation',
+      resourceTitle: 'Installation Guide (English)',
+    }],
+  };
+  const productBytes = Buffer.from(JSON.stringify(productPayload));
+  const productHash = createHash('sha256').update(productBytes).digest('hex');
+  const result = await findFisherPaykelOfficialPdf({ sku: 'WA7560E1' }, {
+    supportMarkets: ['AU'],
+    writeObject: async () => {},
+    fetchImpl: async (url) => {
+      const href = String(url);
+      if (href.includes('/au/search/')) return new Response('<p>No product page</p>', { status: 200 });
+      if (href.includes('/api/search')) {
+        return new Response(JSON.stringify({
+          hits: [{ document: { model_no: 'WA7560E1', name: 'Exact', sku: '92244' } }],
+        }), { status: 200, headers: { 'content-type': 'application/json' } });
+      }
+      if (href.endsWith('/au/api/support/products/WA7560E1')) {
+        return new Response(productBytes, { status: 200, headers: { 'content-type': 'application/json' } });
+      }
+      throw new Error(`Unexpected request: ${href}`);
+    },
+  });
+
+  assert.deepEqual(result.resources[0].discoveryProvenance, {
+    schemaVersion: 1,
+    method: 'official_support_api',
+    market: 'AU',
+    sourceMarket: 'AU',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/au/api/support/products/WA7560E1',
+    requestedModel: 'WA7560E1',
+    matchedModel: 'WA7560E1',
+    artifactUrl: sourceUrl,
+    artifactLinkUrl: sourceUrl,
+    discoveryContentSha256: productHash,
+    discoveryObjectPath: `evidence/web/sha256/${productHash.slice(0, 2)}/${productHash.slice(2, 4)}/${productHash}.json`,
+    discoveryByteSize: productBytes.length,
+    discoveryRecordType: 'support_document_resource',
+    documentId: 'documentResources:0',
+    documentTitleKey: 'Installation|Installation Guide (English)',
+    originalFileName: 'FP-Washsmart-installation-guide-WA60-models.pdf',
+  });
+});
+
+test('Fisher & Paykel support discovery does not hash-bind incomplete direct document metadata', async () => {
+  const sourceUrl = 'https://dam.fisherpaykel.com/KZ3PKN00/at/install/unnamed.pdf';
+  const productBytes = Buffer.from(JSON.stringify({
+    canonicalPath: '/au/support/laundry/washing-machines/75kg-series-7-top-loader-washer--WA7560E1',
+    product: { modelNumber: 'WA7560E1', articles: [] },
+    documentResources: [{ url: sourceUrl }],
+  }));
+  const result = await findFisherPaykelOfficialPdf({ sku: 'WA7560E1' }, {
+    supportMarkets: ['AU'],
+    writeObject: async () => {},
+    fetchImpl: async (url) => {
+      const href = String(url);
+      if (href.includes('/au/search/')) return new Response('<p>No product page</p>', { status: 200 });
+      if (href.includes('/api/search')) {
+        return new Response(JSON.stringify({
+          hits: [{ document: { model_no: 'WA7560E1', name: 'Exact', sku: '92244' } }],
+        }), { status: 200, headers: { 'content-type': 'application/json' } });
+      }
+      if (href.endsWith('/au/api/support/products/WA7560E1')) {
+        return new Response(productBytes, { status: 200, headers: { 'content-type': 'application/json' } });
+      }
+      throw new Error(`Unexpected request: ${href}`);
+    },
+  });
+
+  assert.equal(result.resources[0].discoveryProvenance.artifactUrl, sourceUrl);
+  for (const field of [
+    'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath', 'discoveryByteSize',
+    'discoveryRecordType', 'documentId', 'documentTitleKey',
+  ]) {
+    assert.equal(result.resources[0].discoveryProvenance[field], undefined);
+  }
+  assert.equal(result.resources[0].discoveryProvenance.originalFileName, 'unnamed.pdf');
+});
+
 test('Fisher & Paykel exact support evidence outranks a sibling page found through a broad search variant', async () => {
   const siblingPage = 'https://www.fisherpaykel.com/au/cooling/freestanding/rf610adub5-26493.html';
   const siblingQrg = 'https://www.fisherpaykel.com/on/demandware.static/QRG/AU/QRG-AU-26493.pdf';

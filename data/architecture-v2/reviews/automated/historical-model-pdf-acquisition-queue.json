@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T12:50:57.551Z",
-  "semanticQueueSha256": "e64bb4933d02ef17213552e812a6736cb6058a1c84dd2924f81097de3d5f7c4c",
-  "sourceClassificationSha256": "3b7e334e1f706a753fb73001ec4025dea4cfb94582b7d34a7b98ac0df5c058d1",
+  "generatedAt": "2026-07-16T13:38:52.539Z",
+  "semanticQueueSha256": "8182590f9b98d6ddf6a099f2e7aca43ff609fd16764359e6dd7e299ccda1ca92",
+  "sourceClassificationSha256": "94fe4d129f1fa343f5aabdf8ee784cf4d337cc968a344fb0fdcdd41671f2d3e1",
   "records": [
     {
       "schemaVersion": 1,
@@ -31159,68 +31159,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_c2ab616602b8efcb5a34e82a",
-      "referenceId": "fa_ref_dcea22d144f023a1f3a1a559",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WA7060E1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_e4a5aea32fa7c00ce3f993e1"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_93cffe642afb3946aca62a13"
-      ],
-      "legacyRuntimeIds": [
-        "ao-47677"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_0b8b370df8096d4d2b1173f4"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_75a21b63ca2071ef008f890b",
-      "referenceId": "fa_ref_f03ada3dfd37608719dccc3e",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WA7060G1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_5cf5b4c21f0ce60d071f5405"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_7d66f8bccd4ca53effd0cfaf"
-      ],
-      "legacyRuntimeIds": [
-        "ao-47678"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_3a82c059ba7871b54ee1e9f6"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_730ebdaadd0390a245a6096b",
       "referenceId": "fa_ref_febc15017a48d8e7d6a2d01b",
       "category": "washing_machine",
@@ -31247,37 +31185,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_870bade16b5e290a249c1438"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ebfb70aee0230f150ccd9a9f",
-      "referenceId": "fa_ref_6ed7c32d14d3dcf9a9a6e7b5",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WA7560E1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8cd0c1483e408ad828c492cb"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_3f5fc57f7e84cdb1c55edf2f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-56033"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_aba370c6dffef925d7c622eb"
       ],
       "offlineReplayOutcome": null
     },
@@ -200357,19 +200264,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_5cf5b4c21f0ce60d071f5405",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/c/c/3/8/cc381bc63ad4dd2cc0d5e47116c45fbe82dfb7d6_Fisher___Paykel_WA7060G1_7kg_Top_Load_Washing_Machine_User_Manual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WA7060G1.json",
-        "source:doc_bdcdbfaf62f0311bce15341e"
-      ],
-      "referenceIds": [
-        "fa_ref_f03ada3dfd37608719dccc3e"
-      ]
-    },
-    {
       "sourceId": "historical_source_5cfac8700fb420b805667e97",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/d/c/b/5dcb829c00147195fb03bc3759ba7b4d294eb6d3_Fisher___Paykel_E522BLX5_519L_Bottom_Mount_Fridge_User_Manual.pdf",
       "sourceAuthority": "REFERENCE",
@@ -204233,19 +204127,6 @@
       ],
       "referenceIds": [
         "fa_ref_8182be116b9cddcd1f4dbf15"
-      ]
-    },
-    {
-      "sourceId": "historical_source_8cd0c1483e408ad828c492cb",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/b/5/1/8/b51832a99d44b1e68b4432a8737dd7c02ad78a5d_WA7560E1_Quick_Guide.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WA7560E1.json",
-        "source:doc_3a8862e0987670abce3ea412"
-      ],
-      "referenceIds": [
-        "fa_ref_6ed7c32d14d3dcf9a9a6e7b5"
       ]
     },
     {
@@ -210566,19 +210447,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_e4a5aea32fa7c00ce3f993e1",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/d/2/d/1/d2d159451a2ab81bb9289860347e582e09ecdc5d_Fisher___Paykel_WA7060E1_WashSmart__Eco_7kg_Top_Load_Washing_Machine_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WA7060E1.json",
-        "source:doc_0e60ed2689dd0ad7b6894f50"
-      ],
-      "referenceIds": [
-        "fa_ref_dcea22d144f023a1f3a1a559"
-      ]
-    },
-    {
       "sourceId": "historical_source_e4b4c1e58e80ad18bb802612",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/b/4/5/c/b45c946bdacd74893a8ffd51582ced34515252e2_P221TMW_TCL_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -212369,46 +212237,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 281,
+    "COMPLETE_RECEIPT": 284,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7814,
-    "uniqueReferences": 7814,
-    "candidateSources": 1463,
-    "candidateEdges": 1498,
+    "queuedModels": 7811,
+    "uniqueReferences": 7811,
+    "candidateSources": 1460,
+    "candidateEdges": 1495,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1176,
+      "CURRENT_RETAIL": 1173,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1309,
       "dryer": 808,
       "fridge": 4232,
-      "washing_machine": 1465
+      "washing_machine": 1462
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 149,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1166
+      "REFERENCE_REDISCOVERY": 1163
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 149,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1166
+      "OFFICIAL_REDISCOVERY": 1163
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5149,
+      "DISCOVERY_READY": 5146,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 281,
+      "COMPLETE_RECEIPT": 284,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

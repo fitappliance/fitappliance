@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T12:50:46.468Z",
+  "generatedAt": "2026-07-16T13:38:25.923Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -2933,6 +2933,35 @@
       "attemptedAt": "2026-07-15T22:45:40.228Z"
     },
     {
+      "attemptId": "historical_attempt_be90007a28212cccae26cd14",
+      "targetId": "recovery_target_7d66f8bccd4ca53effd0cfaf",
+      "referenceId": "fa_ref_f03ada3dfd37608719dccc3e",
+      "legacyRuntimeId": "ao-47678",
+      "canonicalProductId": "fa_prod_3a82c059ba7871b54ee1e9f6",
+      "brand": "Fisher & Paykel",
+      "model": "WA7060G1",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD0EXMA1&dpt=",
+      "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD0EXMA1&dpt=",
+      "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "e60a994682c2f3de8d9700c4a3bdb05e80594a1cfeb56dfd91bb47b4f75ac856",
+      "candidateInventorySha256": "3d4ad4edaa00619237ef55ca79fd38ecec50231bb926909e8bb71813f73a7bd9",
+      "semanticOutcomeSha256": "a936b9768b35cabd88461746df8c13d9e023f6aaf6a9420b4125b592aad96684",
+      "batchId": "historical-recovery-052d2daaa71097e2a06b4780-slice-ed599e4e5dba",
+      "batchSha256": "06f0df47ae8eb15f0f1f9986712df31b40fd10dc6937e640144aacac1f6c42a4",
+      "runId": "historical-fpa-wa60-washers-20260716-b",
+      "resultsSha256": "fcc7602deaa8e2460c3d698f914acda1e1db355b2ba583bdddffa5c67c839c99",
+      "auditSha256": "6d05955a6d59ce64dd6719f750cb00bc61de06a43ebfe227bd90b45518ba1661",
+      "attemptedAt": "2026-07-16T13:30:49.342Z"
+    },
+    {
       "attemptId": "historical_attempt_bf669678ebf79290059ed46e",
       "targetId": "recovery_target_f68dfeecc03719c8b6255172",
       "referenceId": "fa_ref_7b74ab39141d6d754ed55be4",
@@ -3192,6 +3221,35 @@
       "resultsSha256": "7e4bed8a856470354b895532192b873e96d85823695580d608179939a2e2bc4f",
       "auditSha256": "a78dc92e231818d7b19c8c191c637c58c94b434dac905607a967146584b6b30b",
       "attemptedAt": "2026-07-16T05:28:02.966Z"
+    },
+    {
+      "attemptId": "historical_attempt_cd1413c478e0c9b5e501dc66",
+      "targetId": "recovery_target_93cffe642afb3946aca62a13",
+      "referenceId": "fa_ref_dcea22d144f023a1f3a1a559",
+      "legacyRuntimeId": "ao-47677",
+      "canonicalProductId": "fa_prod_0b8b370df8096d4d2b1173f4",
+      "brand": "Fisher & Paykel",
+      "model": "WA7060E1",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCzIUMA1&dpt=",
+      "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCzIUMA1&dpt=",
+      "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "e60a994682c2f3de8d9700c4a3bdb05e80594a1cfeb56dfd91bb47b4f75ac856",
+      "candidateInventorySha256": "b379678718593be1dc182158db2d0ab2a06c3b4c182a296168e30345776e4291",
+      "semanticOutcomeSha256": "c6e76787e4dd4488580c3a905d7989d16c00c5f0e8bd5c6149a555aa1dd388fb",
+      "batchId": "historical-recovery-052d2daaa71097e2a06b4780-slice-ed599e4e5dba",
+      "batchSha256": "06f0df47ae8eb15f0f1f9986712df31b40fd10dc6937e640144aacac1f6c42a4",
+      "runId": "historical-fpa-wa60-washers-20260716-b",
+      "resultsSha256": "fcc7602deaa8e2460c3d698f914acda1e1db355b2ba583bdddffa5c67c839c99",
+      "auditSha256": "6d05955a6d59ce64dd6719f750cb00bc61de06a43ebfe227bd90b45518ba1661",
+      "attemptedAt": "2026-07-16T13:30:49.342Z"
     },
     {
       "attemptId": "historical_attempt_cd34dbad4f85b926a6c051a7",
@@ -4650,6 +4708,23 @@
       "acceptedAt": "2026-07-16T05:00:25.867Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_0877fbd1e1bfbe65c55f1a4c",
+      "targetId": "recovery_target_93cffe642afb3946aca62a13",
+      "referenceId": "fa_ref_dcea22d144f023a1f3a1a559",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=",
+      "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+      "status": "accepted",
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "8ae6b86dbf68be9c697a5499252deb1375af8c57b7d9186973edba98372fe50b",
+      "semanticOutcomeSha256": "a9d02bfc657e21c8f8b99a4a5b95d32809630c1becc9d5b985ad98fb8d891feb",
+      "batchId": "historical-recovery-9038f8594f1a2f7d15738c5d-slice-8b30f216e6d1",
+      "batchSha256": "5a69add3d55695158a456a7d1389c9fea3c72992aa0ef291e509becf63a973e3",
+      "runId": "historical-fpa-wa60-legacy-washers-20260716-c",
+      "resultsSha256": "78e2972814f381a940c038e4cde4e443511ee944112acb550e2b8cb88f780b61",
+      "auditSha256": "26e29abaddcd7ba5e1e32e81baeeb6b67aa47089ffe302ea2efe29e87d700e2a",
+      "acceptedAt": "2026-07-16T13:37:34.436Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_08a4e9c9a73601a290c88984",
       "targetId": "recovery_target_5abb6135f727b05fe4988d64",
       "referenceId": "fa_ref_9f6dd26876c93e793810e4d4",
@@ -5364,6 +5439,23 @@
       "acceptedAt": "2026-07-16T01:01:19.499Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_4aa74b0bb175cfe92104bb99",
+      "targetId": "recovery_target_3f5fc57f7e84cdb1c55edf2f",
+      "referenceId": "fa_ref_6ed7c32d14d3dcf9a9a6e7b5",
+      "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/3mcr9pbnrs992cxtp7fxcjk/FP-Washsmart-user-guide-WA60-models-429598C.pdf",
+      "contentSha256": "5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934",
+      "status": "accepted",
+      "policySha256": "e60a994682c2f3de8d9700c4a3bdb05e80594a1cfeb56dfd91bb47b4f75ac856",
+      "candidateInventorySha256": "7f530bdc60da7b3ebb22aca031555fd381fd84bf8b62f83642763793e1ab099b",
+      "semanticOutcomeSha256": "b8036d18f39c4569b9d6f10cfc683e4f6c15f09e99e436a61a6ac503c6b90d93",
+      "batchId": "historical-recovery-052d2daaa71097e2a06b4780-slice-ed599e4e5dba",
+      "batchSha256": "06f0df47ae8eb15f0f1f9986712df31b40fd10dc6937e640144aacac1f6c42a4",
+      "runId": "historical-fpa-wa60-washers-20260716-b",
+      "resultsSha256": "fcc7602deaa8e2460c3d698f914acda1e1db355b2ba583bdddffa5c67c839c99",
+      "auditSha256": "6d05955a6d59ce64dd6719f750cb00bc61de06a43ebfe227bd90b45518ba1661",
+      "acceptedAt": "2026-07-16T13:30:49.342Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_4b1ac16f9d4a5b7f41591d99",
       "targetId": "recovery_target_ca994d4b2d365c5c5393aca6",
       "referenceId": "fa_ref_7f6351cce1bd410e26cccb76",
@@ -5379,6 +5471,23 @@
       "resultsSha256": "ad624f5e97a842db6e6001621316e427608878ddd8c0ea3c7e6db74c12cd1aa4",
       "auditSha256": "8a3eae23682b4d102c6288e04974f2268e3b4b761a8e06cd4fc2e57768dea2ce",
       "acceptedAt": "2026-07-15T19:36:07.297Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_4b7873574390d038402bdcde",
+      "targetId": "recovery_target_7d66f8bccd4ca53effd0cfaf",
+      "referenceId": "fa_ref_f03ada3dfd37608719dccc3e",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=",
+      "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
+      "status": "accepted",
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "acef56aeccb5f8708723e27e37ebebc24b56af9de9826d71631a357fabfe8742",
+      "semanticOutcomeSha256": "d2926b57b091773c8978738eb6ff022c3460f16ae3360163b83ecffb17c1dc3f",
+      "batchId": "historical-recovery-9038f8594f1a2f7d15738c5d-slice-8b30f216e6d1",
+      "batchSha256": "5a69add3d55695158a456a7d1389c9fea3c72992aa0ef291e509becf63a973e3",
+      "runId": "historical-fpa-wa60-legacy-washers-20260716-c",
+      "resultsSha256": "78e2972814f381a940c038e4cde4e443511ee944112acb550e2b8cb88f780b61",
+      "auditSha256": "26e29abaddcd7ba5e1e32e81baeeb6b67aa47089ffe302ea2efe29e87d700e2a",
+      "acceptedAt": "2026-07-16T13:37:34.436Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_4c408bfea7d8ba465dbf1202",
@@ -5430,6 +5539,23 @@
       "resultsSha256": "0daf8b332951e443d7f70575f38b2e427b3aa809c02738e3d2d5af1a0bf547c9",
       "auditSha256": "7ae02fee3d653c2ecb30bd1a1eaa77c6ccf487c4394d6300b2af3ed192445239",
       "acceptedAt": "2026-07-15T19:54:13.777Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_53a01433b4005e317d5bfa9b",
+      "targetId": "recovery_target_3f5fc57f7e84cdb1c55edf2f",
+      "referenceId": "fa_ref_6ed7c32d14d3dcf9a9a6e7b5",
+      "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/f3jhj7stmqbbpcwztnxpmh2s/FP-Washsmart-installation-guide-WA60-models-429598C.pdf",
+      "contentSha256": "5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934",
+      "status": "accepted",
+      "policySha256": "e60a994682c2f3de8d9700c4a3bdb05e80594a1cfeb56dfd91bb47b4f75ac856",
+      "candidateInventorySha256": "7f530bdc60da7b3ebb22aca031555fd381fd84bf8b62f83642763793e1ab099b",
+      "semanticOutcomeSha256": "b8036d18f39c4569b9d6f10cfc683e4f6c15f09e99e436a61a6ac503c6b90d93",
+      "batchId": "historical-recovery-052d2daaa71097e2a06b4780-slice-ed599e4e5dba",
+      "batchSha256": "06f0df47ae8eb15f0f1f9986712df31b40fd10dc6937e640144aacac1f6c42a4",
+      "runId": "historical-fpa-wa60-washers-20260716-b",
+      "resultsSha256": "fcc7602deaa8e2460c3d698f914acda1e1db355b2ba583bdddffa5c67c839c99",
+      "auditSha256": "6d05955a6d59ce64dd6719f750cb00bc61de06a43ebfe227bd90b45518ba1661",
+      "acceptedAt": "2026-07-16T13:30:49.342Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_55599b0aada98c4765c4c809",
@@ -8137,24 +8263,24 @@
     }
   ],
   "summary": {
-    "entries": 146,
+    "entries": 148,
     "resolutions": 17,
-    "sourceAcceptances": 162,
-    "suppressions": 90,
+    "sourceAcceptances": 166,
+    "suppressions": 92,
     "resolvedSuppressions": 14,
     "retryable": 42,
     "targetAttempts": 16,
     "resolverOnlySuppressions": 16,
     "byStatus": {
       "claims_incomplete": 9,
-      "identity_rejected": 62,
+      "identity_rejected": 64,
       "mineru_failure": 33,
       "transport_failure": 42
     },
     "byDisposition": {
       "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 33,
       "RETRY_TRANSIENT": 42,
-      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 62,
+      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 64,
       "SEEK_EXACT_MODEL_FIELD_SOURCE": 9
     }
   }

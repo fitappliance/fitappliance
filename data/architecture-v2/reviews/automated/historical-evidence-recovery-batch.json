@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-0e9ab05ee45869401c82b60e",
-  "generatedAt": "2026-07-16T12:50:57.551Z",
+  "batchId": "historical-recovery-abf97a25530b78f6c7be029e",
+  "generatedAt": "2026-07-16T13:38:52.539Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "892f58b1047e3a390edb2e779cb04b6c058a07a94d513f1fff1c4a63f59b21d7"
+    "sha256": "449c9fa426c2940e22583d78c5bcfaa5fcf75f9b1b2d44dc66da598542022460"
   },
   "policy": {
-    "version": "2026-07-16.13",
-    "sha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2"
+    "version": "2026-07-16.15",
+    "sha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a"
   },
   "selection": {
     "jobIds": [],
@@ -20,6 +20,198 @@
   },
   "artifactJobs": [],
   "targets": [
+    {
+      "targetId": "recovery_target_15e7e38fc54dc77ebe0dbced",
+      "referenceId": "fa_ref_08caaddd803b84b6860236e5",
+      "legacyRuntimeId": "ao-11970",
+      "canonicalProductId": "fa_prod_b7eca7d7d78809ac7f0ec0ce",
+      "brand": "ASKO",
+      "model": "D5424SS",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_e57466a4f471e4ed1585115d",
+            "dimensionsMm": {
+              "width": 596,
+              "height": 820,
+              "depth": 559
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_97381d6cbf479dddedf9e15c",
+      "referenceId": "fa_ref_cbfc23e2108db02b31e1a53f",
+      "legacyRuntimeId": "ao-45538",
+      "canonicalProductId": "fa_prod_e8e5b81fdcabdc7a5714f555",
+      "brand": "ASKO",
+      "model": "D5436SS",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_52697184062ec8f6ccf6962e",
+            "dimensionsMm": {
+              "width": 596,
+              "height": 820,
+              "depth": 550
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_bd099b0aab1a3af4f4820621",
+      "referenceId": "fa_ref_7a3dfa8a87f157a207b3020d",
+      "legacyRuntimeId": "ao-45901",
+      "canonicalProductId": "fa_prod_3fd0ee138532877556516303",
+      "brand": "ASKO",
+      "model": "D5436SSXXL",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_c433b020402d3fdcb0d056d9",
+            "dimensionsMm": {
+              "width": 596,
+              "height": 860,
+              "depth": 550
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_fe4b691f79d62b5f8dcfa45f",
+      "referenceId": "fa_ref_96755e418ee9132916be8d1e",
+      "legacyRuntimeId": "ao-45028",
+      "canonicalProductId": "fa_prod_9f7900efac1b783ddd24a538",
+      "brand": "ASKO",
+      "model": "D5436WH",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_dd8ceed31b68663009338bc1",
+            "dimensionsMm": {
+              "width": 596,
+              "height": 820,
+              "depth": 550
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_d5c609744c11c25f0e6273d2",
+      "referenceId": "fa_ref_eceec9dff3ed4df46d65078d",
+      "legacyRuntimeId": "ao-45904",
+      "canonicalProductId": "fa_prod_6d571270d2501e60604fead5",
+      "brand": "ASKO",
+      "model": "D5646SSXXL",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_195b2ad88783ce4549de040a",
+            "dimensionsMm": {
+              "width": 596,
+              "height": 860,
+              "depth": 550
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_32697fdaf3cfb4aac2bbc51a",
+      "referenceId": "fa_ref_984bc5e6e13c5ab7cb475ee9",
+      "legacyRuntimeId": "ao-79173",
+      "canonicalProductId": "fa_prod_c3e1b8db4d7f20f37b2f3264",
+      "brand": "ASKO",
+      "model": "DWCBI241",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_5b68e6b6702aa52df94c8213",
+            "dimensionsMm": {
+              "width": 596,
+              "height": 819,
+              "depth": 559
+            }
+          }
+        ]
+      }
+    },
     {
       "targetId": "recovery_target_a51071b353eb97c9d1a9b80a",
       "referenceId": "fa_ref_b41745d0c8c444d15908b6f0",
@@ -2100,6 +2292,166 @@
               "width": 595,
               "height": 850,
               "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_182fad898d1f99f9d6565274",
+      "referenceId": "fa_ref_8ead47f977cba248d33481a4",
+      "legacyRuntimeId": "ao-41155",
+      "canonicalProductId": "fa_prod_2f84de0da1b41649002f3db8",
+      "brand": "Haier",
+      "model": "HDW12-TFE3WH",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_a0d26c3429d5f969e71d5c8d",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 850,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_fd6de1ba2244a357b9cbba29",
+      "referenceId": "fa_ref_e53b0ed067e5d724e8eafddd",
+      "legacyRuntimeId": "ao-56600",
+      "canonicalProductId": "fa_prod_8e35dd7a5e99a44a8d25f293",
+      "brand": "Haier",
+      "model": "HDW13G1W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_30e99133009d557293b4a1d3",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 850,
+              "depth": 598
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_ec9afe6f559c39e03ab59b54",
+      "referenceId": "fa_ref_c4a937317857bdacd7f7451c",
+      "legacyRuntimeId": "ao-56601",
+      "canonicalProductId": "fa_prod_b441a657cd8f4df33610f925",
+      "brand": "Haier",
+      "model": "HDW13G1X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_58ec35d55b723e72c93bcf6f",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 850,
+              "depth": 598
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_42e16e5bbc52cc8925f07cbc",
+      "referenceId": "fa_ref_c7a765f2985a363e0a3420d2",
+      "legacyRuntimeId": "ao-53417",
+      "canonicalProductId": "fa_prod_cfde767ef7dbb222c2d34152",
+      "brand": "Haier",
+      "model": "HDW14G2W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_e00d575bc33304eddd0bcb59",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 850,
+              "depth": 598
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_310a198b724fb038d0c16cab",
+      "referenceId": "fa_ref_2b0e1185f9455aa39fdf263e",
+      "legacyRuntimeId": "ao-53418",
+      "canonicalProductId": "fa_prod_1e9e8b960b3fcf6ceef3298a",
+      "brand": "Haier",
+      "model": "HDW14G2X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_b786bbb1509825fb1f2f8734",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 850,
+              "depth": 598
             }
           }
         ]
@@ -6399,6 +6751,70 @@
       }
     },
     {
+      "targetId": "recovery_target_d75155b3cc3791874b1a84fa",
+      "referenceId": "fa_ref_1352dd450a3e79ebc766ab66",
+      "legacyRuntimeId": "ao-65230",
+      "canonicalProductId": "fa_prod_45984ddaac9a3a63a4931aa2",
+      "brand": "Fisher & Paykel",
+      "model": "DE4560M1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_6a4b226112ef9a9ecbab2e17",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 830,
+              "depth": 495
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_63056f7123a67ac680645904",
+      "referenceId": "fa_ref_02bd36e7bd51c6ef10c622ed",
+      "legacyRuntimeId": "ao-51541",
+      "canonicalProductId": "fa_prod_640d41b70e564dc6d5fce08e",
+      "brand": "Fisher & Paykel",
+      "model": "DE5060M1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_053bcce7c72bf045726b47c7",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 830,
+              "depth": 572
+            }
+          }
+        ]
+      }
+    },
+    {
       "targetId": "recovery_target_0736519a3d2c00fbad9270a6",
       "referenceId": "fa_ref_3e35ea38977e077a9bc0cc56",
       "legacyRuntimeId": "ao-48364",
@@ -6417,24 +6833,6 @@
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
-        "priorAttemptSuppressions": [
-          {
-            "attemptId": "historical_attempt_4ac466073f44af5247bc019e",
-            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007yolyIAA&d=%2Fa%2FJw000000Lazl%2F8qTSr66NuCEDDhZCj5LMMEkBQwKYfewkE5RsYDAMv9M&operationContext=DELIVERY&viewId=05HJw00000QCtxpMAD&dpt=",
-            "contentSha256": "ca9db6fcbd81bd4cd4adc6f3085f072567762299a7a78a4122eca625e70a7159",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2"
-          },
-          {
-            "attemptId": "historical_attempt_f91f95beaf4cf968a39deab5",
-            "sourceUrl": "https://www.fisherpaykel.com/au/support/products/dryer-de6060g1-fp-sg--DE6060G1",
-            "contentSha256": "28c763e92524f01ff1cb5c5924eb89d25b3aa8e700150488949141272f76526a",
-            "status": "claims_incomplete",
-            "failureCode": "claim_semantics",
-            "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2"
-          }
-        ],
         "registryHints": [],
         "legacyHints": [
           {
@@ -6443,6 +6841,38 @@
               "width": 600,
               "height": 830,
               "depth": 572
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_658c78230b15a34b4af8b76c",
+      "referenceId": "fa_ref_06196fb6913c5b5f0f362781",
+      "legacyRuntimeId": "ao-65231",
+      "canonicalProductId": "fa_prod_f9ced2b807429bb9aa1aabf9",
+      "brand": "Fisher & Paykel",
+      "model": "DE6060M1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_bf8cacd52756d49caf30d453",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 830,
+              "depth": 600
             }
           }
         ]
@@ -6467,16 +6897,6 @@
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
-        "priorAttemptSuppressions": [
-          {
-            "attemptId": "historical_attempt_81027975ca9b7bd3b333b6d1",
-            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007yolyIAA&d=%2Fa%2FJw000000Lazl%2F8qTSr66NuCEDDhZCj5LMMEkBQwKYfewkE5RsYDAMv9M&operationContext=DELIVERY&viewId=05HJw00000QCugzMAD&dpt=",
-            "contentSha256": "ca9db6fcbd81bd4cd4adc6f3085f072567762299a7a78a4122eca625e70a7159",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2"
-          }
-        ],
         "registryHints": [],
         "legacyHints": [
           {
@@ -6485,6 +6905,70 @@
               "width": 600,
               "height": 830,
               "depth": 585
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_dd15acd5438ff9da0b0393e2",
+      "referenceId": "fa_ref_a6ea0d463ae5d6a0d6ced1c2",
+      "legacyRuntimeId": "ao-65232",
+      "canonicalProductId": "fa_prod_90fd64630ba29f8647741c72",
+      "brand": "Fisher & Paykel",
+      "model": "DE7060G1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_bae6b0c1322278ea4bf8dd89",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 830,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_5e0910dd4123a9f01375949b",
+      "referenceId": "fa_ref_82257bc1b950e487508d7afb",
+      "legacyRuntimeId": "ao-65233",
+      "canonicalProductId": "fa_prod_9b5712f3263aa4751058819a",
+      "brand": "Fisher & Paykel",
+      "model": "DE7060P1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_3060c32e8588fa01e94759a0",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 830,
+              "depth": 600
             }
           }
         ]
@@ -25711,70 +26195,6 @@
       }
     },
     {
-      "targetId": "recovery_target_93cffe642afb3946aca62a13",
-      "referenceId": "fa_ref_dcea22d144f023a1f3a1a559",
-      "legacyRuntimeId": "ao-47677",
-      "canonicalProductId": "fa_prod_0b8b370df8096d4d2b1173f4",
-      "brand": "Fisher & Paykel",
-      "model": "WA7060E1",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_0e60ed2689dd0ad7b6894f50",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 1060,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_7d66f8bccd4ca53effd0cfaf",
-      "referenceId": "fa_ref_f03ada3dfd37608719dccc3e",
-      "legacyRuntimeId": "ao-47678",
-      "canonicalProductId": "fa_prod_3a82c059ba7871b54ee1e9f6",
-      "brand": "Fisher & Paykel",
-      "model": "WA7060G1",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_bdcdbfaf62f0311bce15341e",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 1045,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_8f2e244aa7f24c56d4797b49",
       "referenceId": "fa_ref_febc15017a48d8e7d6a2d01b",
       "legacyRuntimeId": "ao-56032",
@@ -25800,38 +26220,6 @@
             "dimensionsMm": {
               "width": 600,
               "height": 1050,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_3f5fc57f7e84cdb1c55edf2f",
-      "referenceId": "fa_ref_6ed7c32d14d3dcf9a9a6e7b5",
-      "legacyRuntimeId": "ao-56033",
-      "canonicalProductId": "fa_prod_aba370c6dffef925d7c622eb",
-      "brand": "Fisher & Paykel",
-      "model": "WA7560E1",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_3a8862e0987670abce3ea412",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 1045,
               "depth": 600
             }
           }
@@ -236947,7 +237335,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7715,
+    "targets": 7728,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

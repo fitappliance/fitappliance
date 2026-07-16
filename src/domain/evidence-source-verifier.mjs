@@ -374,6 +374,16 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
       discoveryByteSize: value.discoveryByteSize,
       documentId: requiredText(value.documentId, 'discovery document ID'),
     });
+    if (value.discoveryRecordType != null) {
+      if (value.discoveryRecordType !== 'support_document_resource') {
+        throw new TypeError('unsupported support API discovery record type');
+      }
+      Object.assign(result, {
+        discoveryRecordType: value.discoveryRecordType,
+        documentTitleKey: requiredText(value.documentTitleKey, 'discovery document title key'),
+        originalFileName: requiredText(value.originalFileName, 'discovery original filename'),
+      });
+    }
   } else if (method === 'official_support_api'
     && productPageFields.some((field) => value[field] != null)) {
     throw new TypeError('support API discovery evidence is incomplete');
