@@ -800,3 +800,58 @@ missing-dimension targets decreased from 945 to 942. `COMPLETE_RECEIPT`
 increased to 293 and `ALL_AXIS_RANGE` to 77. Historical `AUTO_FILL` remains
 226 because the adjustable height cannot be flattened into the scalar
 replacement-reference schema.
+
+## 22. Beko minimum-height grammar and parser-epoch replay
+
+Run `historical-beko-38450-dishwashers-20260716-a` selected `DDN38450`,
+`DFN38450W`, `DFN38450X`, `DIN38450` and `DSN28435X`. The first four targets
+completed all required resolvers with zero official candidates. Their
+target-level attempts are retained as complete source-discovery exhaustion and
+must not be run again under the same resolver and source-policy epoch.
+
+`DSN28435X` exposed a parser gap rather than missing evidence. Page 1 of the
+exact Beko Australia product PDF explicitly separates the unpackaged dimensions
+from a later packaged block:
+
+| Field | Accepted value |
+| --- | ---: |
+| Unpackaged width | 598 mm |
+| Unpackaged height | 850-865 mm |
+| Unpackaged depth | 600 mm |
+
+The strict grammar
+`beko_au_dishwasher_product_spec_min_height_inline_pairs_v1` requires the
+unique exact-model page header, one `Dimensions & Weights` heading, the complete
+minimum-height / maximum-feet-height / width / depth paragraph, and the complete
+separate packaged paragraph. The packaged block proves envelope separation but
+does not contribute values. The adjacent `570 mm without top lid` note is not
+the closed product depth, and no door-open, installation, plumbing or service
+claim is inferred.
+
+The original five-target run passed a full online audit over 593 cumulative
+objects and records the four zero-candidate outcomes. After the grammar change,
+the unique run `historical-beko-dsn28435x-parser-replay-20260716-b` reopened only
+the parser terminal and accepted the exact PDF. Its full online audit replayed
+596 cumulative objects with zero repairs or violations. Promotion increased the
+cumulative bundle to 275 targets and 300 source receipts; all 300 receipts
+replay. The product remains dimensions-only with
+`verifiedFitEligible=false` and successful Fit outcome `INSUFFICIENT_DATA`.
+After the release transaction, `COMPLETE_RECEIPT` is 294,
+`ALL_AXIS_RANGE` is 78, the executable queue contains 7,706 targets and the
+current-retail missing-dimension P0 lane contains 937 targets. Historical
+`AUTO_FILL` remains 226 because this adjustable range is not flattened.
+
+Fresh-run toolchain identity now binds the explicit claim-parser revision and a
+content hash over the claim parsing, identity verification, reconciliation and
+geometry implementation files. A parser implementation change therefore opens
+a new parser epoch even before commit, while complete zero-candidate source
+discovery remains suppressed. A blocked dry run creates no state and must not be
+blindly retried; fix or intentionally change the bound epoch first.
+
+The regenerated dimension-expression corpus contains 755 MinerU indexes. Eleven
+are deliberately excluded as `ORPHANED_SOURCE_PDF`: ten are unbound ASKO
+single-page diagnostic cache entries and one predates this recovery batch. They
+have no content-addressed source PDF, source URL or run-state identity and cannot
+become parser observations, receipts or publication inputs. Diagnostic parsing
+must use an isolated profile/cache or `cache: false`; only source-bound indexes
+belong in the durable evidence corpus.

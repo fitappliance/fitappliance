@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { execFile as execFileCallback } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { hostname } from 'node:os';
 import * as defaultFs from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
@@ -37,6 +38,20 @@ import { buildArchitectureV2ResolverAdapters } from '../pdf-pipeline/architectur
 
 const execFile = promisify(execFileCallback);
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
+const CLAIM_PARSER_IMPLEMENTATION_PATHS = Object.freeze([
+  'src/domain/category-geometry.mjs',
+  'src/domain/dimension-evidence-claim.mjs',
+  'src/domain/evidence-artifact-pipeline.mjs',
+  'src/domain/evidence-artifact-verifier.mjs',
+  'src/domain/evidence-claim-reconciliation.mjs',
+  'src/domain/evidence-claim-semantics.mjs',
+  'src/domain/evidence-geometry-projector.mjs',
+  'src/domain/evidence-source-verifier.mjs',
+  'src/domain/mineru-document.mjs',
+  'src/domain/official-market-api-discovery-evidence.mjs',
+  'src/domain/official-model-variant-policy.mjs',
+  'src/domain/official-support-api-discovery-evidence.mjs',
+]);
 
 function requiredText(value, label) {
   const normalized = String(value ?? '').trim();
@@ -271,6 +286,22 @@ export function manufacturerSourcePolicyIdentity(document) {
   return canonicalJsonSha256(document);
 }
 
+export function claimParserImplementationIdentity(files) {
+  if (!(files instanceof Map) || files.size === 0) {
+    throw new TypeError('claim parser implementation files required');
+  }
+  const manifest = [...files.entries()]
+    .map(([path, bytes]) => ({
+      path: requiredText(path, 'claim parser implementation path'),
+      sha256: createHash('sha256').update(Buffer.from(bytes)).digest('hex'),
+    }))
+    .sort((left, right) => left.path.localeCompare(right.path));
+  if (new Set(manifest.map(({ path }) => path)).size !== manifest.length) {
+    throw new TypeError('claim parser implementation paths must be unique');
+  }
+  return canonicalJsonSha256(manifest);
+}
+
 async function defaultVerifyTools(policy) {
   const binary = process.env.FITAPPLIANCE_MINERU_BIN ?? 'mineru';
   const { stdout } = await execFile(binary, ['-v'], { timeout: 30_000, maxBuffer: 1024 * 1024 });
@@ -293,6 +324,10 @@ async function defaultVerifyTools(policy) {
     repoRoot,
     'data/architecture-v2/policies/manufacturer-source-policy.json',
   ), 'utf8'));
+  const claimParserFiles = new Map(await Promise.all(CLAIM_PARSER_IMPLEMENTATION_PATHS.map(async (path) => [
+    path,
+    await defaultFs.readFile(resolve(repoRoot, path)),
+  ])));
   return {
     runnerVersion: '4',
     nodeVersion: process.version,
@@ -300,6 +335,8 @@ async function defaultVerifyTools(policy) {
     modelRevision: revision,
     modelRevisionSource: identity.modelRevisionSource,
     claimSemanticsVersion: 2,
+    claimParserRevision: policy.parser.claimParserRevision,
+    claimParserImplementationSha256: claimParserImplementationIdentity(claimParserFiles),
     manufacturerDocumentStrategiesSha256: manufacturerDocumentStrategiesIdentity(manufacturerStrategies),
     manufacturerSourcePolicySha256: manufacturerSourcePolicyIdentity(manufacturerSourcePolicy),
   };

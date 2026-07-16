@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T17:01:58.609Z",
-  "semanticQueueSha256": "82f3f0b2dfca535e83715bc159652e16ebc1d3f17e9d55f4e0c1d01648049829",
-  "sourceClassificationSha256": "3fb4566286eeda89b687fad129a267104c16a14158eecdcff5e9c713b7f63cd4",
+  "generatedAt": "2026-07-16T17:19:43.321Z",
+  "semanticQueueSha256": "bd774a89c5d16e16e8ef06319541cb5cd0c6696755aafa80cb6924516fe087aa",
+  "sourceClassificationSha256": "42a25be6a998c19e5b89d3e1673aa6dd3b01c9fe300b0eab0746a226501cbc1a",
   "records": [
     {
       "schemaVersion": 1,
@@ -590,37 +590,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_24bcd07a081e313203e932f8"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3d14a2aa8795edebf38ca760",
-      "referenceId": "fa_ref_ca88fca893338073d7401111",
-      "category": "dishwasher",
-      "brand": "Beko",
-      "model": "DSN28435X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_3bd7c8ba859a475fa45aa035"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e7468affba99431313cf8056"
-      ],
-      "legacyRuntimeIds": [
-        "ao-59221"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_bb71b7652146af33a44495e3"
       ],
       "offlineReplayOutcome": null
     },
@@ -197483,19 +197452,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_3bd7c8ba859a475fa45aa035",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/e/b/5/4/eb54d3d40904c8b323dcdb84ab45bb3197907fe5_DSN28435X_Beko_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DSN28435X.json",
-        "source:doc_eccc1ca02ac11f043ee33709"
-      ],
-      "referenceIds": [
-        "fa_ref_ca88fca893338073d7401111"
-      ]
-    },
-    {
       "sourceId": "historical_source_3bf3751613c28544841ffc6f",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/7/a/0/57a0c5b10274d642886ff7d1a77623285ad76aac_LG_GF_D613PL_613L_French_Door_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -211847,23 +211803,23 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 293,
+    "COMPLETE_RECEIPT": 294,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7802,
-    "uniqueReferences": 7802,
-    "candidateSources": 1451,
-    "candidateEdges": 1486,
+    "queuedModels": 7801,
+    "uniqueReferences": 7801,
+    "candidateSources": 1450,
+    "candidateEdges": 1485,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1164,
+      "CURRENT_RETAIL": 1163,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1300,
+      "dishwasher": 1299,
       "dryer": 808,
       "fridge": 4232,
       "washing_machine": 1462
@@ -211872,21 +211828,21 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 146,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1157
+      "REFERENCE_REDISCOVERY": 1156
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 146,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1157
+      "OFFICIAL_REDISCOVERY": 1156
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5137,
+      "DISCOVERY_READY": 5136,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 293,
+      "COMPLETE_RECEIPT": 294,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

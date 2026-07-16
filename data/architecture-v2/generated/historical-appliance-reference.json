@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "97cfba95ab352bb3039cc234b8437620ad0590041ac0cf99b13fc53628f6c718"
+    "historical-recovery:historical-recovery-cumulative-v1": "6ea1d9b62fa0006e8b2fb2090f3326868b6210505d60be69aee9605828c60365"
   },
   "records": [
     {
@@ -9017,6 +9017,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_e7468affba99431313cf8056",
+          "snapshotSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -9026,7 +9033,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_e7468affba99431313cf8056",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf",
+          "contentSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
+          "receiptBindingSha256": "4d81a957ce113a64ccd289aa2f108b14c7d1cc68553f434b62b2a7a25c11f3c6",
+          "verifiedAt": "2026-07-16T17:17:50.630Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "a949b54f4ba001b77da248d627a0cd1f06293d73910b344d3877cf4466576895"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "a949b54f4ba001b77da248d627a0cd1f06293d73910b344d3877cf4466576895"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "a949b54f4ba001b77da248d627a0cd1f06293d73910b344d3877cf4466576895"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/7c/29/7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc.pdf"
+        }
       ]
     },
     {

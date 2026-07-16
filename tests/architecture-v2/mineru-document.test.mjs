@@ -916,6 +916,49 @@ test('MinerU replays the Beko AU dishwasher inline-pairs variant as the same env
   ]);
 });
 
+test('MinerU replays the Beko min-height inline specification without inventing door-open depth', () => {
+  const document = (packagedText) => Buffer.from(JSON.stringify([[
+    pageHeader('DSN28435X 60 cm Semi Integrated Stainless Steel Dishwasher'),
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'Dimensions & Weights' }] },
+      bbox: [536, 669, 719, 686],
+    },
+    paragraph(
+      'Unpackaged Height (min): 850 mm Height (max - feet adjustment): 865 mm '
+      + 'Unpackaged Width: 598 mm Unpackaged Depth: 600 mm',
+      [534, 687, 838, 759],
+    ),
+    paragraph(packagedText, [534, 776, 840, 870]),
+  ]]));
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Beko', model: 'DSN28435X', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm',
+      'closedEnvelope.depthMm', 'operation.doorOpenDepthMm',
+    ],
+  };
+  const packaged = 'Unpackaged Weight: 45 kg Packaged Height: 889 mm '
+    + 'Packaged Width: 644 mm Packaged Depth: 661 mm Packaged Weight: 48 kg';
+
+  const parsed = parseMineruContentListV2(document(packaged), options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 850, maxMm: 865 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+  });
+  assert.deepEqual(parsed.grammarProfileIds, [
+    'beko_au_dishwasher_product_spec_min_height_inline_pairs_v1',
+  ]);
+  const incomplete = parseMineruContentListV2(document('Packaged Height: 889 mm'), options);
+  assert.equal(incomplete.grammarProfileIds.includes(
+    'beko_au_dishwasher_product_spec_min_height_inline_pairs_v1',
+  ), false);
+  assert.equal(incomplete.claims.some((claim) => claim.field === 'closedEnvelope.heightMm'), false);
+});
+
 test('Beko spec grammar can use a unique structured exact-model identity on another page', () => {
   const dimensions = [
     'Unpackaged Height: 850 mm',

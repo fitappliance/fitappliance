@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T17:01:41.770Z",
-  "sourceBundleSha256": "97cfba95ab352bb3039cc234b8437620ad0590041ac0cf99b13fc53628f6c718",
+  "generatedAt": "2026-07-16T17:18:25.731Z",
+  "sourceBundleSha256": "6ea1d9b62fa0006e8b2fb2090f3326868b6210505d60be69aee9605828c60365",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -3840,6 +3840,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_e7468affba99431313cf8056",
+      "referenceId": "fa_ref_ca88fca893338073d7401111",
+      "brand": "Beko",
+      "model": "DSN28435X",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf",
+      "sourcePdfSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
+      "contentSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
+      "receiptBindingSha256": "4d81a957ce113a64ccd289aa2f108b14c7d1cc68553f434b62b2a7a25c11f3c6",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/6e/47/6e47cc645b2b84d4e7270451da2d4eed4a0e24c3cdd38a68623472d1dea14cf3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_e9736486c9dda34e4a4b1082",
       "referenceId": "fa_ref_1007383838c55161f7d2bc37",
       "brand": "Hisense",
@@ -4191,11 +4205,11 @@
     }
   ],
   "summary": {
-    "entries": 274,
-    "sources": 299,
-    "passed": 299,
+    "entries": 275,
+    "sources": 300,
+    "passed": 300,
     "failed": 0
   },
-  "checkedObjects": 593,
-  "semanticAuditSha256": "44ff8d7322cbd3e6570a18ff77942c7ae0fd561878616bd5d7b747bceef87b6d"
+  "checkedObjects": 596,
+  "semanticAuditSha256": "a98783285b221711bc7533da85e1c76bceb27c62e99bf023b73583cbf6e6a8d7"
 }

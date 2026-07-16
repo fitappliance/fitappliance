@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T17:01:58.609Z",
-  "sourceAcquisitionQueueSha256": "82f3f0b2dfca535e83715bc159652e16ebc1d3f17e9d55f4e0c1d01648049829",
+  "generatedAt": "2026-07-16T17:19:43.321Z",
+  "sourceAcquisitionQueueSha256": "bd774a89c5d16e16e8ef06319541cb5cd0c6696755aafa80cb6924516fe087aa",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7802,
+    "acquisitionRecords": 7801,
     "fetchJobs": 0,
-    "targets": 7711,
-    "resolverOnlyTargets": 7711,
+    "targets": 7706,
+    "resolverOnlyTargets": 7706,
     "candidateEdges": 0,
-    "uniqueReferences": 7711,
+    "uniqueReferences": 7706,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
-    "suppressedPriorResolverOnlyTargets": 8,
+    "suppressedPriorResolverOnlyTargets": 12,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1137,
+      "CURRENT_RETAIL": 1132,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 942,
+      "P0_CURRENT_MISSING_DIMENSIONS": 937,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -248,191 +248,6 @@
             "width": 596,
             "height": 819,
             "depth": 559
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_a51071b353eb97c9d1a9b80a",
-      "referenceId": "fa_ref_b41745d0c8c444d15908b6f0",
-      "legacyRuntimeId": "ao-59208",
-      "canonicalProductId": "fa_prod_248d6f4b8ba174cb26cdd4ff",
-      "category": "dishwasher",
-      "brand": "Beko",
-      "model": "DDN38450",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_27dd177eb86442c949ed7cee",
-        "legacy:data/pdf-evidence-raw/DDN38450.json",
-        "source:doc_27dd177eb86442c949ed7cee"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_27dd177eb86442c949ed7cee",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 570
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_3ac12bd627ca1d59bf6961e8",
-      "referenceId": "fa_ref_6c1d6b504ce6affbf66390e1",
-      "legacyRuntimeId": "ao-59213",
-      "canonicalProductId": "fa_prod_f7c604e963ba2f85ee38859a",
-      "category": "dishwasher",
-      "brand": "Beko",
-      "model": "DFN38450W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_8a2d21d26be8c2e02305a918",
-        "legacy:data/pdf-evidence-raw/DFN38450W.json",
-        "source:doc_8a2d21d26be8c2e02305a918"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_8a2d21d26be8c2e02305a918",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_fd9b8c36edadef72db339efd",
-      "referenceId": "fa_ref_faf78196530989b5e9cc40d3",
-      "legacyRuntimeId": "ao-59214",
-      "canonicalProductId": "fa_prod_a6cc7f0a394f57a8f04304ab",
-      "category": "dishwasher",
-      "brand": "Beko",
-      "model": "DFN38450X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_2d934cc4fa263d3213a18754",
-        "legacy:data/pdf-evidence-raw/DFN38450X.json",
-        "source:doc_2d934cc4fa263d3213a18754"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_2d934cc4fa263d3213a18754",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_937fb26218b0282add42237c",
-      "referenceId": "fa_ref_04ec3dc94a7b6d1fef63508e",
-      "legacyRuntimeId": "ao-59215",
-      "canonicalProductId": "fa_prod_24bcd07a081e313203e932f8",
-      "category": "dishwasher",
-      "brand": "Beko",
-      "model": "DIN38450",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_974b620b302c95f26ea61908",
-        "legacy:data/pdf-evidence-raw/DIN38450.json",
-        "source:doc_974b620b302c95f26ea61908"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_974b620b302c95f26ea61908",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 818,
-            "depth": 550
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_e7468affba99431313cf8056",
-      "referenceId": "fa_ref_ca88fca893338073d7401111",
-      "legacyRuntimeId": "ao-59221",
-      "canonicalProductId": "fa_prod_bb71b7652146af33a44495e3",
-      "category": "dishwasher",
-      "brand": "Beko",
-      "model": "DSN28435X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_eccc1ca02ac11f043ee33709",
-        "legacy:data/pdf-evidence-raw/DSN28435X.json",
-        "source:doc_eccc1ca02ac11f043ee33709"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_eccc1ca02ac11f043ee33709",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 600
           }
         }
       ],

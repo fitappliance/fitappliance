@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T17:01:41.770Z",
+  "generatedAt": "2026-07-16T17:18:25.731Z",
   "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
   "entries": [
     {
@@ -62538,6 +62538,250 @@
       }
     },
     {
+      "targetId": "recovery_target_e7468affba99431313cf8056",
+      "referenceId": "fa_ref_ca88fca893338073d7401111",
+      "legacyRuntimeId": "ao-59221",
+      "canonicalProductId": "fa_prod_bb71b7652146af33a44495e3",
+      "brand": "Beko",
+      "model": "DSN28435X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-0342fc42925f32a701fcc4fa-slice-ca37e1544327",
+      "auditSha256": "480bef5fc599aa87bb2d4e27783d592a5a73594bad143f1e65758ec1502b790b",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf",
+          "finalUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T17:17:50.630Z",
+          "contentSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
+          "objectPath": "evidence/web/sha256/7c/29/7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 822910,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Beko",
+            "model": "DSN28435X",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Unpackaged Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "a949b54f4ba001b77da248d627a0cd1f06293d73910b344d3877cf4466576895",
+              "bbox": [
+                534,
+                669,
+                840,
+                870
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 850,
+                "maxMm": 865
+              },
+              "sourceLabel": "Unpackaged Height (minimum to maximum feet adjustment)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "a949b54f4ba001b77da248d627a0cd1f06293d73910b344d3877cf4466576895",
+              "bbox": [
+                534,
+                669,
+                840,
+                870
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Unpackaged Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "a949b54f4ba001b77da248d627a0cd1f06293d73910b344d3877cf4466576895",
+              "bbox": [
+                534,
+                669,
+                840,
+                870
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_page",
+            "market": "AU",
+            "discoveryUrl": "https://www.beko.com/au-en/home-appliances/integrated-dishwasher/integrated-dishwasher-14-place-settings-full-size-dsn28435x",
+            "requestedModel": "DSN28435X",
+            "matchedModel": "DSN28435X",
+            "artifactUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf",
+            "artifactLinkUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf",
+            "discoveryContentSha256": "5dca1c19a194d42b49d0bfe5435a7831f0fb06987b2b9891c6b184ec81ad18a3",
+            "discoveryObjectPath": "evidence/web/sha256/5d/ca/5dca1c19a194d42b49d0bfe5435a7831f0fb06987b2b9891c6b184ec81ad18a3.html",
+            "discoveryByteSize": 790675
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
+            "contentSha256": "6e47cc645b2b84d4e7270451da2d4eed4a0e24c3cdd38a68623472d1dea14cf3",
+            "objectPath": "evidence/derived/mineru-json/sha256/6e/47/6e47cc645b2b84d4e7270451da2d4eed4a0e24c3cdd38a68623472d1dea14cf3.json",
+            "byteSize": 29515,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "DSN28435X:page:1:85f40164d2874c09f7cba97382d954971e42616ca7d23be32f3d18180cc6e9ee"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "DSN28435X:page:2:3085d8098a49bc59bfbfe79cced27df0e358b68e1c7faade2b5a6fca833b8c12"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "DSN28435X:document:repeated-page-header"
+            },
+            {
+              "type": "official_product_page_model",
+              "value": "DSN28435X:5dca1c19a194d42b49d0bfe5435a7831f0fb06987b2b9891c6b184ec81ad18a3:https://www.beko.com/au-en/home-appliances/integrated-dishwasher/integrated-dishwasher-14-place-settings-full-size-dsn28435x"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.5",
+            "verifiedAt": "2026-07-16T17:17:50.630Z",
+            "bindingSha256": "4d81a957ce113a64ccd289aa2f108b14c7d1cc68553f434b62b2a7a25c11f3c6"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 865
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf",
+            "contentSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
+            "receiptBindingSha256": "4d81a957ce113a64ccd289aa2f108b14c7d1cc68553f434b62b2a7a25c11f3c6",
+            "page": 1,
+            "fragmentSha256": "a949b54f4ba001b77da248d627a0cd1f06293d73910b344d3877cf4466576895"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf",
+            "contentSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
+            "receiptBindingSha256": "4d81a957ce113a64ccd289aa2f108b14c7d1cc68553f434b62b2a7a25c11f3c6",
+            "page": 1,
+            "fragmentSha256": "a949b54f4ba001b77da248d627a0cd1f06293d73910b344d3877cf4466576895"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf",
+            "contentSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
+            "receiptBindingSha256": "4d81a957ce113a64ccd289aa2f108b14c7d1cc68553f434b62b2a7a25c11f3c6",
+            "page": 1,
+            "fragmentSha256": "a949b54f4ba001b77da248d627a0cd1f06293d73910b344d3877cf4466576895"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_e9736486c9dda34e4a4b1082",
       "referenceId": "fa_ref_1007383838c55161f7d2bc37",
       "legacyRuntimeId": "fridge-arf3199",
@@ -68222,6 +68466,20 @@
     }
   ],
   "lineage": [
+    {
+      "batchId": "historical-recovery-0342fc42925f32a701fcc4fa-slice-b8611ca9c139",
+      "batchSha256": "1375ab68c73b435ff0d79010da9f23975fc83d04c2422739353c4a74aa3bb33e",
+      "queueSha256": "46955e528f31b94bc2b7e05d22deff0c9cc9906d5ef8985fb5f5191bd0cc67a2",
+      "resultsSha256": "87f51766dc704b68c94d2f9d274251c97dde3c3fb29361df531bb6abc70281e0",
+      "auditSha256": "964a0dd2edf7a0ff5331ac9911851cd23ca960f788b30666df4e9a9094cdfd86"
+    },
+    {
+      "batchId": "historical-recovery-0342fc42925f32a701fcc4fa-slice-ca37e1544327",
+      "batchSha256": "81c41e20a2254869346364246de8c6aab62f0338d33821ddfbab75fc46d44474",
+      "queueSha256": "46955e528f31b94bc2b7e05d22deff0c9cc9906d5ef8985fb5f5191bd0cc67a2",
+      "resultsSha256": "0e0fa90ecc1dd9e4e319eb28842e6e0310b4bdda17a08aab211fe8e67e18b700",
+      "auditSha256": "480bef5fc599aa87bb2d4e27783d592a5a73594bad143f1e65758ec1502b790b"
+    },
     {
       "batchId": "historical-recovery-0377869c50f121e22de3bd3e",
       "batchSha256": "1f6235c74dffb2add84902cc9d286785deeee9b9fb8350acea9779ac29df9a42",

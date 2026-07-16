@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T17:01:41.770Z",
+  "generatedAt": "2026-07-16T17:18:25.731Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -2467,6 +2467,35 @@
       "resultsSha256": "76550275cffb2744cc271a4420252d195ab648c3e8669f98ec89935e192161cd",
       "auditSha256": "652f66146fb4a7b8e69bd44cb2cbf988a8576224d6dd3c23a3a94f869e134a46",
       "attemptedAt": "2026-07-16T03:57:52.474Z"
+    },
+    {
+      "attemptId": "historical_attempt_9057ab1c582cea8eba3aaa18",
+      "targetId": "recovery_target_e7468affba99431313cf8056",
+      "referenceId": "fa_ref_ca88fca893338073d7401111",
+      "legacyRuntimeId": "ao-59221",
+      "canonicalProductId": "fa_prod_bb71b7652146af33a44495e3",
+      "brand": "Beko",
+      "model": "DSN28435X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/integrated-dishwasher/integrated-dishwasher-14-place-settings-full-size-dsn28435x",
+      "finalUrl": "https://www.beko.com/au-en/home-appliances/integrated-dishwasher/integrated-dishwasher-14-place-settings-full-size-dsn28435x",
+      "contentSha256": "8b04ee3341db398568144ddbb0c5490d74730e1d3c300ea4ad1714931efe0719",
+      "status": "claims_incomplete",
+      "failureCode": "claim_semantics",
+      "reason": "no supported evidence claims extracted",
+      "reasonSha256": "73a28731d21277cb33f9ce09d2954d2b2e0cb63ee30787f1c94e11e568a10140",
+      "disposition": "SEEK_EXACT_MODEL_FIELD_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "b80cc3348222585d3e09d4b9f55e166b0816fc25ff5da0c20bbe659d8864f220",
+      "semanticOutcomeSha256": "6dec825a4b1155e48a056ae3135bc1f510f601f12e85d168f510ea80ba9d14a6",
+      "batchId": "historical-recovery-0342fc42925f32a701fcc4fa-slice-b8611ca9c139",
+      "batchSha256": "1375ab68c73b435ff0d79010da9f23975fc83d04c2422739353c4a74aa3bb33e",
+      "runId": "historical-beko-38450-dishwashers-20260716-a",
+      "resultsSha256": "87f51766dc704b68c94d2f9d274251c97dde3c3fb29361df531bb6abc70281e0",
+      "auditSha256": "21346a595b8e88983fe474d65cc270e8591e6441db19bf7ebcc18f61342504da",
+      "attemptedAt": "2026-07-16T17:06:03.282Z"
     },
     {
       "attemptId": "historical_attempt_914886d08dea06755d5f5f87",
@@ -5223,6 +5252,23 @@
       "resultsSha256": "55cc20283328f3ba44693843052baa5e6f8b1ddcd0af7b8fa3d60278c4118448",
       "auditSha256": "9c7bd3f06a03656fc6cffca85fd8b3be6cbc805985a8f7a74c251de105b3968e",
       "acceptedAt": "2026-07-16T16:39:17.231Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_04722ba6eb059f761ec443f9",
+      "targetId": "recovery_target_e7468affba99431313cf8056",
+      "referenceId": "fa_ref_ca88fca893338073d7401111",
+      "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf",
+      "contentSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
+      "status": "accepted",
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "b80cc3348222585d3e09d4b9f55e166b0816fc25ff5da0c20bbe659d8864f220",
+      "semanticOutcomeSha256": "6dec825a4b1155e48a056ae3135bc1f510f601f12e85d168f510ea80ba9d14a6",
+      "batchId": "historical-recovery-0342fc42925f32a701fcc4fa-slice-b8611ca9c139",
+      "batchSha256": "1375ab68c73b435ff0d79010da9f23975fc83d04c2422739353c4a74aa3bb33e",
+      "runId": "historical-beko-38450-dishwashers-20260716-a",
+      "resultsSha256": "87f51766dc704b68c94d2f9d274251c97dde3c3fb29361df531bb6abc70281e0",
+      "auditSha256": "21346a595b8e88983fe474d65cc270e8591e6441db19bf7ebcc18f61342504da",
+      "acceptedAt": "2026-07-16T17:06:03.282Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_053d20d1a165e2aad54c5757",
@@ -8966,6 +9012,58 @@
       "attemptedAt": "2026-07-16T12:16:49.118Z"
     },
     {
+      "targetAttemptId": "historical_target_attempt_715d28a2269325b985d8be0f",
+      "targetId": "recovery_target_fd9b8c36edadef72db339efd",
+      "referenceId": "fa_ref_faf78196530989b5e9cc40d3",
+      "legacyRuntimeId": "ao-59214",
+      "canonicalProductId": "fa_prod_a6cc7f0a394f57a8f04304ab",
+      "brand": "Beko",
+      "model": "DFN38450X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "11495db393df571a93981f622c318b037e5a583ddf926a05981d7711ebe74714",
+      "semanticOutcomeSha256": "cc0385e9fe2f9262cdbe03da5ece13bb9b020dc0acd5ad9efe211e4ab37182b9",
+      "batchId": "historical-recovery-0342fc42925f32a701fcc4fa-slice-b8611ca9c139",
+      "batchSha256": "1375ab68c73b435ff0d79010da9f23975fc83d04c2422739353c4a74aa3bb33e",
+      "runId": "historical-beko-38450-dishwashers-20260716-a",
+      "resultsSha256": "87f51766dc704b68c94d2f9d274251c97dde3c3fb29361df531bb6abc70281e0",
+      "auditSha256": "21346a595b8e88983fe474d65cc270e8591e6441db19bf7ebcc18f61342504da",
+      "attemptedAt": "2026-07-16T17:06:03.282Z"
+    },
+    {
       "targetAttemptId": "historical_target_attempt_8a1483372591d8783a3811e5",
       "targetId": "recovery_target_0e896409b4904aef0dd67595",
       "referenceId": "fa_ref_ef5ffb9baaba39ddec7ad502",
@@ -9016,6 +9114,162 @@
       "resultsSha256": "17b6ee743b1c8c62108cb59dc18d22ea40eefda8dc39eb4b743e99950c95baa8",
       "auditSha256": "5a05a83c288e09d9a8da5be117f23307be44209eca233190352221ea9be8ceec",
       "attemptedAt": "2026-07-16T13:47:46.805Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_939495f19d5efc02ad71689d",
+      "targetId": "recovery_target_3ac12bd627ca1d59bf6961e8",
+      "referenceId": "fa_ref_6c1d6b504ce6affbf66390e1",
+      "legacyRuntimeId": "ao-59213",
+      "canonicalProductId": "fa_prod_f7c604e963ba2f85ee38859a",
+      "brand": "Beko",
+      "model": "DFN38450W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "85315249044fa2a72674c9ecdc42931013914fa3515ce2b6cd1ac67e11662eee",
+      "semanticOutcomeSha256": "61f4b36939b1b7b8737bd05081164cd58f35ee446f93385b06d23432cb9766c4",
+      "batchId": "historical-recovery-0342fc42925f32a701fcc4fa-slice-b8611ca9c139",
+      "batchSha256": "1375ab68c73b435ff0d79010da9f23975fc83d04c2422739353c4a74aa3bb33e",
+      "runId": "historical-beko-38450-dishwashers-20260716-a",
+      "resultsSha256": "87f51766dc704b68c94d2f9d274251c97dde3c3fb29361df531bb6abc70281e0",
+      "auditSha256": "21346a595b8e88983fe474d65cc270e8591e6441db19bf7ebcc18f61342504da",
+      "attemptedAt": "2026-07-16T17:06:03.282Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_9459b624034cba29d9926f7d",
+      "targetId": "recovery_target_a51071b353eb97c9d1a9b80a",
+      "referenceId": "fa_ref_b41745d0c8c444d15908b6f0",
+      "legacyRuntimeId": "ao-59208",
+      "canonicalProductId": "fa_prod_248d6f4b8ba174cb26cdd4ff",
+      "brand": "Beko",
+      "model": "DDN38450",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "f925e87ebb5097dfce456738e8d4e95ac1da00c5dc74b22ef24aecd9bb495738",
+      "semanticOutcomeSha256": "085363f839e08986eed5034bf65b7edce436f66cf178301afce3e5b1b08ac100",
+      "batchId": "historical-recovery-0342fc42925f32a701fcc4fa-slice-b8611ca9c139",
+      "batchSha256": "1375ab68c73b435ff0d79010da9f23975fc83d04c2422739353c4a74aa3bb33e",
+      "runId": "historical-beko-38450-dishwashers-20260716-a",
+      "resultsSha256": "87f51766dc704b68c94d2f9d274251c97dde3c3fb29361df531bb6abc70281e0",
+      "auditSha256": "21346a595b8e88983fe474d65cc270e8591e6441db19bf7ebcc18f61342504da",
+      "attemptedAt": "2026-07-16T17:06:03.282Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_961766184b84d4e4e5fcbc68",
+      "targetId": "recovery_target_937fb26218b0282add42237c",
+      "referenceId": "fa_ref_04ec3dc94a7b6d1fef63508e",
+      "legacyRuntimeId": "ao-59215",
+      "canonicalProductId": "fa_prod_24bcd07a081e313203e932f8",
+      "brand": "Beko",
+      "model": "DIN38450",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "3ec8fe9759142e0563b6c0b7cbede553b67f92bdce3ec7c6e3c90f1dcf6160c2",
+      "semanticOutcomeSha256": "3b74a8cad7d8d439868ee36d4d24112949069aa0b28fb3082712a0425661fa0f",
+      "batchId": "historical-recovery-0342fc42925f32a701fcc4fa-slice-b8611ca9c139",
+      "batchSha256": "1375ab68c73b435ff0d79010da9f23975fc83d04c2422739353c4a74aa3bb33e",
+      "runId": "historical-beko-38450-dishwashers-20260716-a",
+      "resultsSha256": "87f51766dc704b68c94d2f9d274251c97dde3c3fb29361df531bb6abc70281e0",
+      "auditSha256": "21346a595b8e88983fe474d65cc270e8591e6441db19bf7ebcc18f61342504da",
+      "attemptedAt": "2026-07-16T17:06:03.282Z"
     },
     {
       "targetAttemptId": "historical_target_attempt_9dbfe6e2fb44212a69954c46",
@@ -9383,16 +9637,16 @@
     }
   ],
   "summary": {
-    "entries": 167,
+    "entries": 168,
     "resolutions": 17,
-    "sourceAcceptances": 175,
-    "suppressions": 111,
+    "sourceAcceptances": 176,
+    "suppressions": 112,
     "resolvedSuppressions": 14,
     "retryable": 42,
-    "targetAttempts": 24,
-    "resolverOnlySuppressions": 24,
+    "targetAttempts": 28,
+    "resolverOnlySuppressions": 28,
     "byStatus": {
-      "claims_incomplete": 10,
+      "claims_incomplete": 11,
       "identity_rejected": 73,
       "mineru_failure": 42,
       "transport_failure": 42
@@ -9401,7 +9655,7 @@
       "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 42,
       "RETRY_TRANSIENT": 42,
       "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 73,
-      "SEEK_EXACT_MODEL_FIELD_SOURCE": 10
+      "SEEK_EXACT_MODEL_FIELD_SOURCE": 11
     }
   }
 }

@@ -7,6 +7,7 @@ import { tmpdir } from 'node:os';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
 import {
+  claimParserImplementationIdentity,
   manufacturerDocumentStrategiesIdentity,
   manufacturerSourcePolicyIdentity,
   officialArtifactFetchOptions,
@@ -66,6 +67,24 @@ test('recovery toolchain identity binds the manufacturer source policy', () => {
 
   assert.match(first, /^[a-f0-9]{64}$/);
   assert.notEqual(first, second);
+});
+
+test('recovery toolchain identity changes when claim parser implementation changes', () => {
+  const first = claimParserImplementationIdentity(new Map([
+    ['src/domain/mineru-document.mjs', Buffer.from('grammar-v1')],
+    ['src/domain/evidence-claim-semantics.mjs', Buffer.from('semantics-v1')],
+  ]));
+  const second = claimParserImplementationIdentity(new Map([
+    ['src/domain/mineru-document.mjs', Buffer.from('grammar-v2')],
+    ['src/domain/evidence-claim-semantics.mjs', Buffer.from('semantics-v1')],
+  ]));
+
+  assert.match(first, /^[a-f0-9]{64}$/);
+  assert.notEqual(first, second);
+  assert.equal(claimParserImplementationIdentity(new Map([
+    ['src/domain/evidence-claim-semantics.mjs', Buffer.from('semantics-v1')],
+    ['src/domain/mineru-document.mjs', Buffer.from('grammar-v1')],
+  ])), first);
 });
 
 function batch(targetCount = 1) {

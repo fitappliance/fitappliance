@@ -13,16 +13,16 @@ Generated: 2026-07-16T00:00:00.000Z
 | Historical records | 8095 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 703 |
-| Valid MinerU documents | 702 |
-| Invalid or orphaned MinerU documents | 1 |
-| Documents with recognised expressions | 390 |
-| Documents without recognised expressions | 312 |
-| Mapped MinerU documents | 668 |
-| Unmapped MinerU documents | 34 |
-| Dimension-expression observations | 974 |
-| Reusable PDF grammar profiles | 177 |
-| Research gaps | 818 |
+| MinerU documents | 755 |
+| Valid MinerU documents | 744 |
+| Invalid or orphaned MinerU documents | 11 |
+| Documents with recognised expressions | 407 |
+| Documents without recognised expressions | 337 |
+| Mapped MinerU documents | 711 |
+| Unmapped MinerU documents | 33 |
+| Dimension-expression observations | 1012 |
+| Reusable PDF grammar profiles | 180 |
+| Research gaps | 860 |
 
 A marketing-series count is a proven minimum, never an estimate of the
 manufacturer's complete range. `UNKNOWN` is intentional when official text
@@ -189,14 +189,14 @@ and every extracted value still requires exact-model identity and receipt checks
 | Astivita | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | AWARD | 9 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Baumatic | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Beko | 35 | 8 | 0 | 3 | `MINERU_SAMPLE_OBSERVED` |
+| Beko | 35 | 9 | 0 | 4 | `MINERU_SAMPLE_OBSERVED` |
 | Belling | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Bellini | 26 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Bellissimo | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Bertazzoni | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BLANCO | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Blaupunkt | 6 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Bosch | 112 | 46 | 4 | 13 | `MINERU_SAMPLE_OBSERVED` |
+| Bosch | 112 | 77 | 4 | 13 | `MINERU_SAMPLE_OBSERVED` |
 | CASA | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Comfee | 9 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | De Dietrich | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -214,7 +214,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Eurotech | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Everdure | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | EVOKE | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Fisher & Paykel | 98 | 132 | 1 | 26 | `MINERU_SAMPLE_OBSERVED` |
+| Fisher & Paykel | 98 | 133 | 1 | 26 | `MINERU_SAMPLE_OBSERVED` |
 | FOTILE | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Franke | 6 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | FUJIYAMA | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -284,7 +284,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Anko | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | ARISTON | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Artusi | 6 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| ASKO | 24 | 1 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
+| ASKO | 24 | 6 | 0 | 3 | `MINERU_SAMPLE_OBSERVED` |
 | AWARD | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BEKO | 41 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BL | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -303,7 +303,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Everdure | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | EVOKE | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Finch Australia | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Fisher & Paykel | 98 | 74 | 1 | 22 | `MINERU_SAMPLE_OBSERVED` |
+| Fisher & Paykel | 98 | 76 | 1 | 22 | `MINERU_SAMPLE_OBSERVED` |
 | GAGGENAU | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Germanica | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Hafele | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -371,7 +371,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Anko | 7 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | ARISTON | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Artusi | 8 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| ASKO | 24 | 2 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
+| ASKO | 24 | 4 | 0 | 3 | `MINERU_SAMPLE_OBSERVED` |
 | AWARD | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BEKO | 31 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Bosch | 25 | 9 | 3 | 4 | `MINERU_SAMPLE_OBSERVED` |
@@ -385,7 +385,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Euromaid | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Eurotech | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | EVOKE | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Fisher & Paykel | 69 | 41 | 1 | 14 | `MINERU_SAMPLE_OBSERVED` |
+| Fisher & Paykel | 69 | 42 | 1 | 14 | `MINERU_SAMPLE_OBSERVED` |
 | FUJIYAMA | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | GAGGENAU | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Germanica | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -444,8 +444,8 @@ and every extracted value still requires exact-model identity and receipt checks
 | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | 13 | Explicit three-axis sequence plus a qualified alternative depth. |
 | `HIERARCHICAL_DEPTH_VARIANTS` | 1 | A Depth parent row followed by explicitly qualified product-depth variants. |
 | `INDIVIDUAL_LABELLED_AXIS` | 199 | One named axis/value pair; combine only through independently proven model scope. |
-| `INDIVIDUALLY_LABELLED_AXES` | 282 | Two or more dimensions expressed as separate named axis/value pairs. |
-| `INLINE_LABELLED_AXES` | 101 | Observed parser research pattern. |
+| `INDIVIDUALLY_LABELLED_AXES` | 286 | Two or more dimensions expressed as separate named axis/value pairs. |
+| `INLINE_LABELLED_AXES` | 135 | Observed parser research pattern. |
 | `INLINE_VALUE_LABELLED_AXIS_SEQUENCE` | 6 | Each value carries its own explicit W, H, or D label and unit. |
 | `LETTERED_EXPLICIT_AXIS_LIST` | 6 | Diagram letters explicitly map to axis names and values. |
 | `MODEL_COLUMN_DIMENSION_MATRIX` | 1 | Models occupy columns and dimension axes occupy rows. |
@@ -459,11 +459,11 @@ and every extracted value still requires exact-model identity and receipt checks
 | `REJECTED_NON_PRODUCT_SCOPE` | 121 |
 | `RESEARCH_DOCUMENT_UNIQUE_SCOPE_REQUIRED` | 1 |
 | `RESEARCH_MODEL_ROW_BINDING_REQUIRED` | 163 |
-| `RESEARCH_MODEL_SCOPE_REQUIRED` | 34 |
+| `RESEARCH_MODEL_SCOPE_REQUIRED` | 35 |
 | `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | 11 |
-| `RESEARCH_UNIT_MISSING` | 49 |
+| `RESEARCH_UNIT_MISSING` | 52 |
 | `RESEARCH_UNLABELLED_AXIS_ORDER` | 5 |
-| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | 59 |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | 67 |
 | `SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS` | 6 |
 | `SUPPORTED_EXACT_MODEL_COLUMN_MATRIX` | 1 |
 | `SUPPORTED_EXACT_MODEL_ROW_MATRIX` | 22 |
@@ -471,7 +471,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | 10 |
 | `SUPPORTED_EXPLICIT_HANDLE_INCLUSIVE_DEPTH` | 1 |
 | `SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE` | 6 |
-| `SUPPORTED_EXPLICIT_LABELS` | 393 |
+| `SUPPORTED_EXPLICIT_LABELS` | 419 |
 | `SUPPORTED_EXPLICIT_NET_SECTION` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_AXIS_COLUMNS` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | 1 |
@@ -4708,9 +4708,9 @@ Research gaps:
 
 - Raw brand variants: `BEKO`, `Beko`
 - Inventory models: 35
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 8
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 9
 - Proven marketing series: 0; total series count: `UNKNOWN`
-- PDF grammar profiles: 3
+- PDF grammar profiles: 4
 - Complete exact-model parser replays: 1
 
 #### Document family c2b8debcf586
@@ -4756,24 +4756,29 @@ Research gaps:
 
 - Group type: `parser_family`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `BDF1620W`, `BDF1620X`, `BDF1630X`, `BDF1640AX`, `BDF1640DX`
-- PDF SHA-256: `27a868ca43b0a2fd8b4f1beb05d93b6a33e86e988c9486b999e7ca4927f20d55`, `5f7f0a7694f4a933c9797cfa487711e1fe8c71ecc593a8d250bf665bb8c87337`, `62c682deee63d8d3a3f98b5d5f99f97c1d06c99a5ef2c236ede5677d14295db7`, `634815415f8da43b3fbf0a572712d4f92362ab70e433c6666e515334b8b52c0b`, `fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283`
-- PDF grammar profiles: `beko_au_dishwasher_product_spec_inline_pairs_v1`, `beko_au_dishwasher_product_spec_parallel_lists_v1`, `beko_au_dishwasher_product_spec_split_title_parallel_lists_v1`
+- Models observed: `BDF1620W`, `BDF1620X`, `BDF1630X`, `BDF1640AX`, `BDF1640DX`, `DSN28435X`
+- PDF SHA-256: `27a868ca43b0a2fd8b4f1beb05d93b6a33e86e988c9486b999e7ca4927f20d55`, `5f7f0a7694f4a933c9797cfa487711e1fe8c71ecc593a8d250bf665bb8c87337`, `62c682deee63d8d3a3f98b5d5f99f97c1d06c99a5ef2c236ede5677d14295db7`, `634815415f8da43b3fbf0a572712d4f92362ab70e433c6666e515334b8b52c0b`, `7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc`, `fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283`
+- PDF grammar profiles: `beko_au_dishwasher_product_spec_inline_pairs_v1`, `beko_au_dishwasher_product_spec_min_height_inline_pairs_v1`, `beko_au_dishwasher_product_spec_parallel_lists_v1`, `beko_au_dishwasher_product_spec_split_title_parallel_lists_v1`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
 - Grammar variant: Inline labelled pairs
 - Detection: Unique structured exact-model title or page header in the document, no sibling model, plus the complete ordered Dimensions & Weights inline field sequence.
 - Semantic boundary: Unpackaged W/D are closed dimensions; base and maximum feet heights form a range; door-open depth is operational; packaged values are excluded.
+- Grammar variant: Minimum-height inline closed dimensions with a separate packaged block
+- Detection: Unique structured exact-model title or page header in the document, no sibling model, one Dimensions & Weights title, one complete min-height/max-height/W/D paragraph and one complete separate unpackaged-weight plus packaged-dimensions paragraph.
+- Semantic boundary: Only unpackaged W/D and the explicit minimum-to-maximum feet-adjustment height range are projected; the separate packaged values are required for envelope separation but excluded, and no door-open claim is inferred.
 - Grammar variant: Parallel label and value lists
 - Detection: Unique structured exact-model title or page header in the document, no sibling model, plus complete Dimensions & Weights label and value lists.
 - Semantic boundary: Unpackaged W/D are closed dimensions; base and maximum feet heights form a range; door-open depth is operational; packaged values are excluded.
 - Grammar variant: Split title, label list and value list
 - Detection: Unique structured exact-model title or page header in the document, no sibling model, followed by a Dimensions & Weights title and complete aligned label and value lists.
 - Semantic boundary: Unpackaged W/D are closed dimensions; base and maximum feet heights form a range; door-open depth is operational; packaged values are excluded.
-- Official/source URLs: <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7610669077.pdf>, <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7610769077.pdf>, <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7628609077.pdf>, <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7631969077.pdf>, <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7679159077.pdf>
+- Official/source URLs: <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7610669077.pdf>, <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7610769077.pdf>, <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7624059042.pdf>, <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7628609077.pdf>, <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7631969077.pdf>, <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7679159077.pdf>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth -> height -> width -> depth | none | `product_closed_candidate` | Height 850 mm \| Width 598 mm \| Depth 600 mm \| Height 897 mm \| Width 657 mm \| Depth 674 mm | p.1, `996448eb349a` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 889 mm \| Width 644 mm \| Depth 661 mm | p.1, `685d0365e776` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | width -> depth | width, depth | `product_closed_candidate` | Width 598 mm \| Depth 600 mm | p.1, `0b38640071f2` |
 | `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> height -> width -> depth | none | `product_closed_candidate` | Height 850 mm \| Width 598 mm \| Depth 600 mm \| Height 897 mm \| Width 657 mm \| Depth 674 mm | p.1, `e5b2a21b073a` |
 | `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> height -> width -> depth | none | `product_closed_candidate` | Height 850 mm \| Width 598 mm \| Depth 600 mm \| Height 897 mm \| Width 657 mm \| Depth 674 mm | p.1, `d50b72b72658` |
 
@@ -4851,10 +4856,88 @@ Research gaps:
 
 - Raw brand variants: `BOSCH`, `Bosch`
 - Inventory models: 112
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 46
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 77
 - Proven marketing series: 4; total series count: `PROVEN_MINIMUM_ONLY`
 - PDF grammar profiles: 13
 - Complete exact-model parser replays: 12
+
+#### Document family 2dc618f4e502
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMS50M22AU`, `SMS50M28AU`
+- PDF SHA-256: `2dc618f4e502eca7edfedbd8429f814e33206d00130a28d9a26cfb4c7553ba60`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001074370_B.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 35
+
+#### Document family 563aa92915c3
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMS50M22AU`, `SMS50M28AU`, `SMS63M18AU`, `SMS68M32AU`, `SMS68M38AU`, `SMS69T18AU`, `SMS69T28AU`, `SMS88TI04A`
+- PDF SHA-256: `563aa92915c390a5014df62b7b7e62f942f54500fc0b1884ccf3726bdf704d5a`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9000521334_L.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### Document family 5855954e3384
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMU6HAS01A`, `SMU6HCS01A`, `SMU8ECS01A`
+- PDF SHA-256: `5855954e3384d7a151bfc0fc3300691f9678c41adcc61299c39e28391cfbd879`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001902334_B.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### Document family 5ab48d9a2642
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMS68M32AU`, `SMS68M38AU`
+- PDF SHA-256: `5ab48d9a264225b43b746635244851ef2e4b23f22d42c0454f5c6239ccc64b7e`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001069073_D.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 36
+
+#### Document family 8d6a2403875c
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMU8EDS01A`, `SMU8ZCS01A`
+- PDF SHA-256: `8d6a2403875c8d9fdb9b1d3bc3fed76b99050a0c083cb2c2e35ef2ff0896d695`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001902333_B.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### Document family 985c7b1c459d
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMU4HTS01A`, `SMU4HVS01A`
+- PDF SHA-256: `985c7b1c459d75911b155b5eff9932f2bed14f44ec72d92226865d61ed76c0d2`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001881846_C.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 
 #### Series 2
 
@@ -4885,21 +4968,27 @@ Research gaps:
 
 - Group type: `marketing_series`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `SMI4HTS01A`, `SMS4HTI01A`, `SMS4HVB01A`, `SMS4HVI01A`
-- PDF SHA-256: `464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806`, `9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0`, `acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb`, `d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99`
+- Models observed: `SMI4HTS01A`, `SMS4HTI01A`, `SMS4HVB01A`, `SMS4HVI01A`, `SMU4HTS01A`, `SMU4HVS01A`, `SMV4HTX01A`
+- PDF SHA-256: `229598a50bec9dae6558f0e64a165a0169539be4ce0c49c192fc080ff5825875`, `44c028a960eca6baa7394e591b80cecca8017a300a04372e577fcf460be3593d`, `464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806`, `9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0`, `acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb`, `c0419346fbb69335b51c3380080066efe66800e3e64d06465aa2e5f4729d511e`, `d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99`
 - PDF grammar profiles: `pdf_grammar_2cd42a3705740fb2`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HTI01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVB01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf>
-- Series evidence: page 1, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HTI01A`; page 2, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HTI01A`; page 3, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HTI01A`; page 1, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 2, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 3, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 1, `Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A`; page 2, `Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A`; page 3, `Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A`; page 1, `text_list unordered text Series 4, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS4HVB01A`; page 2, `Series 4, free-standing dishwasher, 60 cm, Brushed black steel anti-fingerprint SMS4HVB01A`; page 3, `text_list unordered text Series 4, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS4HVB01A`
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HTI01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVB01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU4HTS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU4HVS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV4HTX01A.pdf>
+- Series evidence: page 1, `Series 4, fully-integrated dishwasher, 60 cm SMV4HTX01A`; page 3, `Series 4, fully-integrated dishwasher, 60 cm SMV4HTX01A`; page 1, `Series 4, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU4HTS01A`; page 2, `Series 4, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU4HTS01A`; page 3, `Series 4, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU4HTS01A`; page 1, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HTI01A`; page 2, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HTI01A`; page 3, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HTI01A`; page 1, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 2, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 3, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 1, `Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A`; page 2, `Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A`; page 3, `Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A`; page 1, `Series 4, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU4HVS01A`; page 2, `Series 4, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU4HVS01A`; page 3, `Series 4, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU4HVS01A`; page 1, `text_list unordered text Series 4, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS4HVB01A`; page 2, `Series 4, free-standing dishwasher, 60 cm, Brushed black steel anti-fingerprint SMS4HVB01A`; page 3, `text_list unordered text Series 4, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS4HVB01A`
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 573 mm | p.2, `400af25cc7c0` |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 550 mm | p.2, `ded530042478` |
 | `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 573 mm | p.2, `524acfd89506` |
 
 Research gaps:
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: Product Dimensions (H x W x D)
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: Product Dimensions (H x W x D)
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: Product Dimensions (H x W x D)
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: Product Dimensions (H x W x D)
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
@@ -4909,18 +4998,21 @@ Research gaps:
 
 - Group type: `marketing_series`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `SMI6HCS01A`, `SMP66MX05A`, `SMP6HCB01A`, `SMP6HCS01A`, `SMS6HAI02A`, `SMS6HCB01A`, `SMS6HCB02A`, `SMS6HCI01A`, `SMS6HCI02A`, `SMS6HCW01A`
-- PDF SHA-256: `11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe`, `1621313bdefc101259eb6f3aaa1934631186e611b0933025503f5be7c7e96604`, `490bddb2a47e077025789e7b28780d82e1ed7e48f27fbc52da5bbd32a565cf08`, `4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9`, `4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575`, `781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798`, `7b11fe8e4bd5d13059929d7e429b7ae95853eecd81e54ad5cc32554529e3af33`, `9482d048c4831ce9c8e7d134a63e61ad926447172559652c0cfbe7bd8fa60e3f`, `a8e00015ffca6c5c6d38ace6f46337f69bcb67e6af3fe6827d273e41b36c31e3`, `c1454fc67b01d16d7eb1e9589244f61faf08d501a1dc98f88592cf08e57b2a5e`
+- Models observed: `SMI6HCS01A`, `SMP66MX05A`, `SMP6HCB01A`, `SMP6HCS01A`, `SMS6HAI02A`, `SMS6HCB01A`, `SMS6HCB02A`, `SMS6HCI01A`, `SMS6HCI02A`, `SMS6HCW01A`, `SMU6HAS01A`, `SMU6HCS01A`, `SMV6HCX01A`
+- PDF SHA-256: `11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe`, `1621313bdefc101259eb6f3aaa1934631186e611b0933025503f5be7c7e96604`, `4134cfd75aa03b893ba2454fac95ed80c36389f24760d0bbce7c603be2bfd0e0`, `490bddb2a47e077025789e7b28780d82e1ed7e48f27fbc52da5bbd32a565cf08`, `4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9`, `4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575`, `5c3b6c9206fd07c7e45055f420299e0798b767e6af920f8a94bda60b94ee3e23`, `781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798`, `7b11fe8e4bd5d13059929d7e429b7ae95853eecd81e54ad5cc32554529e3af33`, `9482d048c4831ce9c8e7d134a63e61ad926447172559652c0cfbe7bd8fa60e3f`, `a8e00015ffca6c5c6d38ace6f46337f69bcb67e6af3fe6827d273e41b36c31e3`, `c1454fc67b01d16d7eb1e9589244f61faf08d501a1dc98f88592cf08e57b2a5e`, `cbb2a27f5760f141eddb454d6b7dac0bd0ace3526758eca634532578874816d3`
 - PDF grammar profiles: `pdf_grammar_2cd42a3705740fb2`, `pdf_grammar_a2b008d9dd159831`, `pdf_grammar_cf52905eae731e58`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI6HCS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX05A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP6HCB01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP6HCS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HAI02A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCB01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCB02A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI02A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCW01A.pdf>
-- Series evidence: page 1, `Series 6, built-under dishwasher, 60 cm, Black inox SMP66MX05A`; page 2, `Series 6, built-under dishwasher, 60 cm, Black inox SMP66MX05A`; page 3, `text_list unordered text Series 6, built-under dishwasher, 60 text cm, Black inox text SMP66MX05A`; page 1, `text_list unordered text Series 6, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS6HCB02A`; page 2, `Series 6, free-standing dishwasher, 60 cm, Brushed black steel anti-fingerprint SMS6HCB02A`; page 3, `text_list unordered text Series 6, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS6HCB02A`; page 1, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HAI02A`; page 2, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HAI02A`; page 3, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HAI02A`; page 1, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMP6HCS01A`; page 2, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMP6HCS01A`; page 3, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMP6HCS01A`; page 1, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HCI02A`; page 2, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HCI02A`; page 3, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HCI02A`; page 1, `text_list unordered text Series 6, built-under dishwasher, 60 text cm, Brushed black steel text anti-fingerprint text SMP6HCB01A text SGZ...`; page 2, `Series 6, built-under dishwasher, 60 cm, Brushed black steel anti-fingerprint SMP6HCB01A`; page 3, `text_list unordered text Series 6, built-under dishwasher, 60 text cm, Brushed black steel text anti-fingerprint text SMP6HCB01A`; page 1, `Series 6, free-standing dishwasher, 60 cm, Brushed black steel anti-fingerprint SMS6HCB01A`; page 2, `Series 6, free-standing dishwasher, 60 cm, Brushed black steel anti-fingerprint SMS6HCB01A`; page 3, `text_list unordered text Series 6, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS6HCB01A`; page 1, `Series 6, semi-integrated dishwasher, 60 cm, Brushed steel SMI6HCS01A`; page 2, `Series 6, semi-integrated dishwasher, 60 cm, Brushed steel SMI6HCS01A`; page 3, `Series 6, semi-integrated dishwasher, 60 cm, Brushed steel SMI6HCS01A`; page 1, `Series 6, free-standing dishwasher, 60 cm, silver inox SMS6HCI01A`; page 2, `Series 6, free-standing dishwasher, 60 cm, silver inox SMS6HCI01A`; page 3, `Series 6, free-standing dishwasher, 60 cm, silver inox SMS6HCI01A`; page 1, `Series 6, free-standing dishwasher, 60 cm, White SMS6HCW01A`; page 2, `Series 6, free-standing dishwasher, 60 cm, White SMS6HCW01A`; page 3, `Series 6, free-standing dishwasher, 60 cm, White SMS6HCW01A`
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI6HCS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX05A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP6HCB01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP6HCS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HAI02A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCB01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCB02A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI02A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCW01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU6HAS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU6HCS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV6HCX01A.pdf>
+- Series evidence: page 1, `Series 6, built-under dishwasher, 60 cm, Black inox SMP66MX05A`; page 2, `Series 6, built-under dishwasher, 60 cm, Black inox SMP66MX05A`; page 3, `text_list unordered text Series 6, built-under dishwasher, 60 text cm, Black inox text SMP66MX05A`; page 1, `text_list unordered text Series 6, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS6HCB02A`; page 2, `Series 6, free-standing dishwasher, 60 cm, Brushed black steel anti-fingerprint SMS6HCB02A`; page 3, `text_list unordered text Series 6, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS6HCB02A`; page 1, `Series 6, fully-integrated dishwasher, 60 cm SMV6HCX01A`; page 3, `Series 6, fully-integrated dishwasher, 60 cm SMV6HCX01A`; page 1, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HAI02A`; page 2, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HAI02A`; page 3, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HAI02A`; page 1, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMP6HCS01A`; page 2, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMP6HCS01A`; page 3, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMP6HCS01A`; page 1, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HCI02A`; page 2, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HCI02A`; page 3, `Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HCI02A`; page 1, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU6HAS01A`; page 2, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU6HAS01A`; page 3, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU6HAS01A`; page 1, `text_list unordered text Series 6, built-under dishwasher, 60 text cm, Brushed black steel text anti-fingerprint text SMP6HCB01A text SGZ...`; page 2, `Series 6, built-under dishwasher, 60 cm, Brushed black steel anti-fingerprint SMP6HCB01A`; page 3, `text_list unordered text Series 6, built-under dishwasher, 60 text cm, Brushed black steel text anti-fingerprint text SMP6HCB01A`; page 1, `Series 6, free-standing dishwasher, 60 cm, Brushed black steel anti-fingerprint SMS6HCB01A`; page 2, `Series 6, free-standing dishwasher, 60 cm, Brushed black steel anti-fingerprint SMS6HCB01A`; page 3, `text_list unordered text Series 6, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS6HCB01A`; page 1, `Series 6, semi-integrated dishwasher, 60 cm, Brushed steel SMI6HCS01A`; page 2, `Series 6, semi-integrated dishwasher, 60 cm, Brushed steel SMI6HCS01A`; page 3, `Series 6, semi-integrated dishwasher, 60 cm, Brushed steel SMI6HCS01A`; page 1, `Series 6, free-standing dishwasher, 60 cm, silver inox SMS6HCI01A`; page 2, `Series 6, free-standing dishwasher, 60 cm, silver inox SMS6HCI01A`; page 3, `Series 6, free-standing dishwasher, 60 cm, silver inox SMS6HCI01A`; page 1, `Series 6, free-standing dishwasher, 60 cm, White SMS6HCW01A`; page 2, `Series 6, free-standing dishwasher, 60 cm, White SMS6HCW01A`; page 3, `Series 6, free-standing dishwasher, 60 cm, White SMS6HCW01A`; page 1, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU6HCS01A`; page 2, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU6HCS01A`; page 3, `Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU6HCS01A`
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE` | `INLINE_VALUE_LABELLED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | - H: 845 mm x W: 600 mm x D: 600 mm | p.2, `ae7513057964` |
 | `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 573 mm | p.2, `11775809c4f3` |
 | `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 573 mm | p.2, `0baac6656ebb` |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 573 mm | p.2, `4a97ca13af6c` |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 550 mm | p.2, `6c2b9cb71b1d` |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 573 mm | p.2, `48b20269f185` |
 
 Research gaps:
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: .. .Built-in text Height of removable worktop: ..0 mm text Dimensions of the product (HxWxD): . ..815 x 598 x 573 mm text Min. required niche size for instal...
@@ -4942,26 +5034,33 @@ Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 
 #### Series 8
 
 - Group type: `marketing_series`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `SBI8ECS01A`, `SBI8EDS01A`, `SBT8ZC801A`, `SBV8ECX01A`, `SBV8EDX01A`, `SMS8EDI01A`, `SMT8ZC801A`
-- PDF SHA-256: `44d117e3f25f24016d5dd193cfa9337a402cc328a586bf4b51e69157bcff243d`, `856c7c1a8b35e7a2f1cb6d2c5eb57077ae2e73433e8e945b2ad31e4f208f3055`, `bb57b853485b050a729b5e6f167de5837278491eb9c57e0d0821fba0a4b5d8ed`, `c36995b1a3dcc1493d8f37fafc9c5c6d7c217d5b86fb8044f5ba0d8184c8f694`, `d2616deb29f721c392732b581dbd7af72b3a4ec5351ac36aaef2f75d458add14`, `d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0`, `d8bf0d3a2b263913b0262d861222978d2820b973b6f40c28d9096992d890cac3`
-- PDF grammar profiles: `pdf_grammar_0a5af8c992c338c2`
+- Models observed: `SBI8ECS01A`, `SBI8EDS01A`, `SBT8ZC801A`, `SBV8ECX01A`, `SBV8EDX01A`, `SMS8EDI01A`, `SMT8ZC801A`, `SMU8ECS01A`, `SMU8EDS01A`, `SMU8ZCS01A`
+- PDF SHA-256: `44d117e3f25f24016d5dd193cfa9337a402cc328a586bf4b51e69157bcff243d`, `856c7c1a8b35e7a2f1cb6d2c5eb57077ae2e73433e8e945b2ad31e4f208f3055`, `8ab2a489021bf8558f401c08c196ba212ba9bb3063ed762f447b453bfecc4e1b`, `8f00a740da4a86084b25d961be6bf13297862ecdb4f278f7747e991ce829a49e`, `9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a`, `bb57b853485b050a729b5e6f167de5837278491eb9c57e0d0821fba0a4b5d8ed`, `c36995b1a3dcc1493d8f37fafc9c5c6d7c217d5b86fb8044f5ba0d8184c8f694`, `d2616deb29f721c392732b581dbd7af72b3a4ec5351ac36aaef2f75d458add14`, `d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0`, `d8bf0d3a2b263913b0262d861222978d2820b973b6f40c28d9096992d890cac3`
+- PDF grammar profiles: `pdf_grammar_0a5af8c992c338c2`, `pdf_grammar_2cd42a3705740fb2`, `pdf_grammar_a2b008d9dd159831`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8EDS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBT8ZC801A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV8ECX01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV8EDX01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS8EDI01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMT8ZC801A.pdf>
-- Series evidence: page 1, `Series 8, semi-integrated dishwasher, 60 cm, Brushed steel, Tall Tub SBI8EDS01A`; page 2, `text_list unordered text Series 8, semi-integrated text dishwasher, 60 cm, Brushed steel, text Tall Tub text SBI8EDS01A`; page 3, `text_list unordered text Series 8, semi-integrated text dishwasher, 60 cm, Brushed steel, text Tall Tub text SBI8EDS01A`; page 1, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8ECX01A`; page 2, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8ECX01A`; page 3, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8ECX01A`; page 1, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub, variohinge SBT8ZC801A`; page 2, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub, variohinge SBT8ZC801A`; page 3, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub, variohinge SBT8ZC801A`; page 1, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8EDX01A`; page 2, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8EDX01A`; page 3, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8EDX01A`; page 1, `Series 8, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS8EDI01A`; page 2, `Series 8, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS8EDI01A`; page 3, `Series 8, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS8EDI01A`; page 1, `Series 8, semi-integrated dishwasher, 60 cm, Brushed steel, Tall Tub SBI8ECS01A`; page 2, `Series 8, semi-integrated dishwasher, 60 cm, Brushed steel, Tall Tub SBI8ECS01A`; page 3, `text_list unordered text Series 8, semi-integrated text dishwasher, 60 cm, Brushed steel, text Tall Tub text SBI8ECS01A`; page 1, `Series 8, fully-integrated dishwasher, 60 cm, variohinge SMT8ZC801A`; page 2, `Series 8, fully-integrated dishwasher, 60 cm, variohinge SMT8ZC801A`; page 3, `text_list unordered text Series 8, fully-integrated dishwasher, text 60 cm, variohinge text SMT8ZC801A`
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8EDS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBT8ZC801A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV8ECX01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV8EDX01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS8EDI01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMT8ZC801A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8EDS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf>
+- Series evidence: page 1, `Series 8, semi-integrated dishwasher, 60 cm, Brushed steel, Tall Tub SBI8EDS01A`; page 2, `text_list unordered text Series 8, semi-integrated text dishwasher, 60 cm, Brushed steel, text Tall Tub text SBI8EDS01A`; page 3, `text_list unordered text Series 8, semi-integrated text dishwasher, 60 cm, Brushed steel, text Tall Tub text SBI8EDS01A`; page 1, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8ECX01A`; page 2, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8ECX01A`; page 3, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8ECX01A`; page 1, `Series 8, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU8ECS01A`; page 2, `Series 8, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU8ECS01A`; page 3, `Series 8, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU8ECS01A`; page 1, `Series 8, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU8ZCS01A`; page 2, `Series 8, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU8ZCS01A`; page 3, `Series 8, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU8ZCS01A`; page 1, `Series 8, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU8EDS01A`; page 2, `Series 8, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU8EDS01A`; page 3, `Series 8, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMU8EDS01A`; page 1, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub, variohinge SBT8ZC801A`; page 2, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub, variohinge SBT8ZC801A`; page 3, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub, variohinge SBT8ZC801A`; page 1, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8EDX01A`; page 2, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8EDX01A`; page 3, `Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8EDX01A`; page 1, `Series 8, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS8EDI01A`; page 2, `Series 8, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS8EDI01A`; page 3, `Series 8, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS8EDI01A`; page 1, `Series 8, semi-integrated dishwasher, 60 cm, Brushed steel, Tall Tub SBI8ECS01A`; page 2, `Series 8, semi-integrated dishwasher, 60 cm, Brushed steel, Tall Tub SBI8ECS01A`; page 3, `text_list unordered text Series 8, semi-integrated text dishwasher, 60 cm, Brushed steel, text Tall Tub text SBI8ECS01A`; page 1, `Series 8, fully-integrated dishwasher, 60 cm, variohinge SMT8ZC801A`; page 2, `Series 8, fully-integrated dishwasher, 60 cm, variohinge SMT8ZC801A`; page 3, `text_list unordered text Series 8, fully-integrated dishwasher, text 60 cm, variohinge text SMT8ZC801A`
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | width -> depth | width, depth | `product_closed_candidate` | Width 598 mm \| Depth 573 mm | p.2, `15b0a0e36fb0` |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 573 mm | p.2, `657da8cdfe20` |
 | `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | width -> depth | width, depth | `product_closed_candidate` | Width 598 mm \| Depth 573 mm | p.2, `5fc652753179` |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 573 mm | p.2, `5f94bce4891f` |
 | `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | width -> depth | width, depth | `product_closed_candidate` | Width 598 mm \| Depth 550 mm | p.2, `b252975acfe7` |
 | `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | width -> depth | width, depth | `product_closed_candidate` | Width 598 mm \| Depth 550 mm | p.2, `1a936c513d89` |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 573 mm | p.2, `d100ef1690c2` |
 
 Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: ng: .Built-in text Height of removable worktop: ..0 mm text Dimensions of the product (HxWxD): ..815 x 598 x 573 mm text Required niche size for installation...
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: Product Dimensions (H x W x D)
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: Product Dimensions (H x W x D)
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: Product Dimensions (H x W x D)
@@ -4972,6 +5071,181 @@ Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+
+#### SMS63M18AU
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMS63M18AU`
+- PDF SHA-256: `0809619ba485f8376032a3c8c866d32973a14fee8ae33517a5deea653f33396a`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9000840772_B.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 31
+
+#### SMS69T18AU
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMS69T18AU`
+- PDF SHA-256: `6fb96cb67c4e2f2e3c9dd708d9230a09baf3372419998ce0b6b554f74c0e7806`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9000837004_B.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 33
+
+#### SMS69T28AU
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMS69T28AU`
+- PDF SHA-256: `6d6a17064eb7e54cf67b68c22a07f5027b3c564dc67614cbb15548b15886db15`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9000840893_B.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 35
+
+#### SMS88TI04A
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMS88TI04A`
+- PDF SHA-256: `8e8d196ff904ede9ca790e18f7e456a6c5854b4da44a848047771c7da93eec8b`, `b757f1b2a0f5a4156f16216c5727c9ffeff5e6e85e1a97290bceffe7b2ee7088`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001244194_C.pdf>, <https://media3.bsh-group.com/Documents/9001371653_B.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 45
+
+#### SMU4HTS01A
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMU4HTS01A`
+- PDF SHA-256: `9a1bd28d9cf99aac339042dbc469dd0704a53f8fb1726dd08d83a16bc6da7c1f`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9002017411_A.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### SMU4HVS01A
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMU4HVS01A`
+- PDF SHA-256: `62f15053d4d8364001a555a4d37345b9eb4915b25ef5177866926335bc5bd6cd`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9002017414_A.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### SMU6HAS01A
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMU6HAS01A`
+- PDF SHA-256: `6b9ac238f07def543b41c93d66af83d8d0297796751ebd1fa66fb76dd7431142`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9002017273_A.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### SMU6HCS01A
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMU6HCS01A`
+- PDF SHA-256: `9d0e1ce15bd8c4c6cf566788160f30e5352b959f9ee301ae8194aedeecfa0d72`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9002017277_A.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### SMU8ECS01A
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMU8ECS01A`
+- PDF SHA-256: `55ce9879fffa97c8f4f8cb3626f0dbc78d2189b74be9db2377d2ecd2e5defb28`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001901072_C.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### SMU8EDS01A
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMU8EDS01A`
+- PDF SHA-256: `a452f4456b02ea947be620115b135a972ab02a66cc485376cc0a1a8c37fc093b`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001720343_B.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### SMU8ZCS01A
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMU8ZCS01A`
+- PDF SHA-256: `d880fb9f299ed4d9776a30cbb36e765117e40fadec1d3b2e9e200ac25ab61d90`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9002017281_A.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### SMV4HTX01A
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMV4HTX01A`
+- PDF SHA-256: `e6c577677bd1d01157cfb853989b52dd5b12153ca6c10e05270ef2a61250dcf3`, `f507986a14e432d68fc03fdb613b7ff27cabd61bffd5478a8baa9a0ea2aa86f0`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001999341_A.pdf>, <https://media3.bsh-group.com/Documents/9002017417_A.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### SMV6HCX01A
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `SMV6HCX01A`
+- PDF SHA-256: `8cfad8f8543b60f8c06a7844ae558033c4a676c6014c8613a079711652b08182`, `a378da5495e7221d9161d4aa8f47791210b5ab88de19419dd749b302a4bdf54e`
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001999365_A.pdf>, <https://media3.bsh-group.com/Documents/9002017285_A.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 
 #### Bosch Australia dishwasher product specification
 
@@ -5360,7 +5634,7 @@ Research gaps:
 
 - Raw brand variants: `Fisher & Paykel`
 - Inventory models: 98
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 132
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 133
 - Proven marketing series: 1; total series count: `PROVEN_MINIMUM_ONLY`
 - PDF grammar profiles: 26
 - Complete exact-model parser replays: 23
@@ -5377,6 +5651,22 @@ Research gaps:
 
 Research gaps:
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### Document family 1906813b3c97
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `DW60UN4B2`, `DW60UN4X2`
+- PDF SHA-256: `1906813b3c97172954a9c3e6fb84bb44df1e38ef66d863612e7302e106921d05`
+- Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/gvckbrgggwq24x45c74mzvz/FP-InstallGuide-en-DW60UC4X2-DW60UN4X2-DW60UN4B2-DW60UC2X2-DW60UN2X2-DW60UN2B2-BuiltUnderDishwasher-0-431060B-AU-NZ.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 6: Product Dimensions mm Overall height of product* 820 - 880 BOverall width of product 597 ©Overall depth of product 570 Height of chassis 820 E Depth of chass...
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 7: Product Dimensions mm Overall height of product* 820 - 880 ⑥Overall width of product 597 ©Overall depth of product (incl. panel and hose support) 570 Height ...
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 8: CABINETRY DIMENSIONS MM Minimum inside height* 820 BMinimum inside width 600 ©Minimum overall depth** 580 DRecommended height of adjacent cabinetry 713-794 E...
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 9: SERVICE DIMENSION LEFT SIDE RIGHT SIDE MM MM ALength of drain hose 1980 1650 BLength of power cord* 950 1450 ©Length of inlet hose 1450 1300 DDistance from f...
 
 #### Document family 1bcc673af605
 
@@ -5542,11 +5832,24 @@ Research gaps:
 Research gaps:
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 
+#### Document family b4860a689546
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `DW60UC2X`, `DW60UN4B2`, `DW60UN4X2`
+- PDF SHA-256: `b4860a689546e8c561d8d9cb8a496da4f174f4f258870576927605c6c0bcba23`
+- Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/89r9wkn3g8jb7jw8n9f7f/FP-WashProgramDataASNZS-en-DW60-DishWasher-0-592890A-NZ-AU.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
 #### Document family b5a036b18078
 
 - Group type: `document_family`
 - Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
-- Models observed: `DD60D2NB9`, `DD60D4NB9`, `DD60SDFTX9`, `DD60ST4NB9`, `DD60ST4NX9`, `DW60FC2X3`
+- Models observed: `DD60D2NB9`, `DD60D4NB9`, `DD60SDFTX9`, `DD60ST4NB9`, `DD60ST4NX9`, `DW60FC2X3`, `DW60UN4B2`, `DW60UN4X2`
 - PDF SHA-256: `b5a036b18078a267010b61d3071fe91081fa2833384c7605acb86395b2128a3e`
 - Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/4k9bh6qpnsgmfsjjt5rgsn87/FP-InstallSheet-en-DW60-DD60-DishdrawerDishwasher-0-433749A-NZ-AU.pdf>
 
@@ -5562,6 +5865,19 @@ Research gaps:
 - Models observed: `DD60DI9`, `DD60SI9`, `DD60STI9`
 - PDF SHA-256: `e7adc05013ac240671f02d0876cb17735fb527dc771ef427d43cf586a9465edc`
 - Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/bj87mrck695v88s6gm768r/FP-QuickStartGuide-DD60STI9-IntegratedSingleDishDrawer-AU-NZ-591379B.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/cxgqrr3vm82x5kctx8pmqmb6/FP-QuickStartGuide-DD60DI9-IntegratedDoubleDishDrawer-AU-NZ-591379B.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/fkmhzwpvf3csjv3vtts8xh/FP-QuickStartGuide-DD60SI9-IntegratedSingleDishDrawer-AU-NZ-591379B.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### Document family ec7a5bf28b75
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `DW60FC4B2`, `DW60UN4B2`, `DW60UN4X2`
+- PDF SHA-256: `ec7a5bf28b75684045117e71bf8ce618fd6a3454ddc19144fe3a5c16fa06e5db`
+- Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/xmgr3g4rfbjftm76hhshv6/FP-UserGuide-en-DW60FC4X2-DW60UC4X2-DW60UN4X2-DW60FC4X3-DW60FC4B2-DW60UN4B2-Dishwasher-0-431199D-NZ-AU-SG.pdf>
 
 `NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
 
@@ -5961,7 +6277,7 @@ Research gaps:
 - Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - Models observed: `DW60CHW1`
 - PDF SHA-256: `0454c743b544eb844c0c78c7d0b5db926a2018907f1c43b77635b03c9aa6c3e9`, `0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748`
-- Official/source URLs: <https://content.fisherpaykel.com/CBW/service/fpa-dishwashers/fpa-parts-dishwashers/Dishwasher/80914-A%20DW60CHW1%20FP%20AA.pdf>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QC5OMMA1&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QC5WQMA1&dpt=>
+- Official/source URLs: <https://content.fisherpaykel.com/CBW/service/fpa-dishwashers/fpa-parts-dishwashers/Dishwasher/80914-A%20DW60CHW1%20FP%20AA.pdf>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QC5OMMA1&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QC5WQMA1&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QCkkrMAD&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QClsDMAT&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QCm6jMAD&dpt=>
 
 `NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
 
@@ -6069,13 +6385,12 @@ Research gaps:
 - Group type: `model_specific`
 - Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - Models observed: `DW60FC4B2`
-- PDF SHA-256: `b7f6b8bb37df358aaf60211c4db5cb0306e445d7cb6f8237fe9042239683c325`, `d2a7a9c49f7d71f53be56cafeeeb9701fd9d20d450ba4dfe68fd29de883373e4`, `ec7a5bf28b75684045117e71bf8ce618fd6a3454ddc19144fe3a5c16fa06e5db`
-- Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/24wphh3zjvbwx7qxf6xbhf6k/FP-DataSheet-en-DW60FC4B2-DW60FC2B2-DW60FC1B2-Dishwasher-0-90003411A-AU-NZ-SG.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/65hxc4356tnk9zx9gb2vswq/FP-EnergyWater-en-DW60FC4X3-DW60U4I2-DW60UT4I2-DW60FC4X2-DW60FC4B2-Dishwasher-0-431353B-NZ-AU.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/xmgr3g4rfbjftm76hhshv6/FP-UserGuide-en-DW60FC4X2-DW60UC4X2-DW60UN4X2-DW60FC4X3-DW60FC4B2-DW60UN4B2-Dishwasher-0-431199D-NZ-AU-SG.pdf>
+- PDF SHA-256: `b7f6b8bb37df358aaf60211c4db5cb0306e445d7cb6f8237fe9042239683c325`, `d2a7a9c49f7d71f53be56cafeeeb9701fd9d20d450ba4dfe68fd29de883373e4`
+- Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/24wphh3zjvbwx7qxf6xbhf6k/FP-DataSheet-en-DW60FC4B2-DW60FC2B2-DW60FC1B2-Dishwasher-0-90003411A-AU-NZ-SG.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/65hxc4356tnk9zx9gb2vswq/FP-EnergyWater-en-DW60FC4X3-DW60U4I2-DW60UT4I2-DW60FC4X2-DW60FC4B2-Dishwasher-0-431353B-NZ-AU.pdf>
 
 `NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
 
 Research gaps:
-- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: Product Dimensions mm Overall height of product* (incl. top panel) 850 - 895 BOverall width of product 597 ©Overall depth of product (incl. top panel) 600 De...
 
@@ -6125,13 +6440,12 @@ Research gaps:
 - Group type: `model_specific`
 - Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - Models observed: `DW60UC2X`
-- PDF SHA-256: `2331c85c7ed202e018a0dc6593b9d4f01377a67a28da7b2f46e77e7b9de5ebb8`, `5b17b0f46694764ecea97e1dca3dfb0800ae0d0ec7e05c73b2f88d42fa726e88`, `b4860a689546e8c561d8d9cb8a496da4f174f4f258870576927605c6c0bcba23`
-- Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/89r9wkn3g8jb7jw8n9f7f/FP-WashProgramDataASNZS-en-DW60-DishWasher-0-592890A-NZ-AU.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/s8b64p3kb4rnhcnrg5fqxwv/FP-UserGuide-en-DW60FC2X2-DW60UC2X2-DW60UN2X2-DW60UN4B2-DW60FC2X3-DW60FC2B2-Dishwasher-0-431200C-AU-NZ.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/x82zwspc659vx3w369xw3w3m/FP-DataSheet-en-DW60UC4X2-DW60UC2X2-Dishwasher-0-90002985A-NZ-AU.pdf>
+- PDF SHA-256: `2331c85c7ed202e018a0dc6593b9d4f01377a67a28da7b2f46e77e7b9de5ebb8`, `5b17b0f46694764ecea97e1dca3dfb0800ae0d0ec7e05c73b2f88d42fa726e88`
+- Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/s8b64p3kb4rnhcnrg5fqxwv/FP-UserGuide-en-DW60FC2X2-DW60UC2X2-DW60UN2X2-DW60UN4B2-DW60FC2X3-DW60FC2B2-Dishwasher-0-431200C-AU-NZ.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/x82zwspc659vx3w369xw3w3m/FP-DataSheet-en-DW60UC4X2-DW60UC2X2-Dishwasher-0-90002985A-NZ-AU.pdf>
 
 `NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
 
 Research gaps:
-- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: Model nos:DW60UC4X2DW60UC2X2 Product Dimensions mm Overall height of product* 820 - 880 ⑥Overall width of product 597 ©Overall depth of product 570 Height of...
 
@@ -7590,9 +7904,9 @@ Inventory: 1497 models across 83 category-brand groups.
 
 - Raw brand variants: `ASKO`
 - Inventory models: 24
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 1
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 6
 - Proven marketing series: 0; total series count: `UNKNOWN`
-- PDF grammar profiles: 1
+- PDF grammar profiles: 3
 - Complete exact-model parser replays: 0
 
 #### PDF grammar pdf_grammar_44da855f9fc7ab7c
@@ -7617,6 +7931,60 @@ Research gaps:
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 48: Parameter Value Parameter Value Rated capacity (a) (kg) 9,0 Dimensions in cm Height 85,0 Width 59,5 Depth 58,5 EEIw(a) 57,9 Energy efficiency class (a) [A/B/...
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 49: Parameter Value Parameter Value Rated capacity (a) (kg) 9,0 Dimensions in cm Height 85,0 Width 59,5 Depth 58,5 EEIw(a) 51,8 Energy efficiency class (a) [A/B/...
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 9
+
+#### PDF grammar pdf_grammar_8cdd223e96c1e64c
+
+- Group type: `parser_family`
+- Expression coverage: `OBSERVED_WITH_RESEARCH_GAPS`
+- Models observed: `W2084C.W`, `W4086C.W`
+- PDF SHA-256: `8e587e8d8ea4e999af9ba3482149e3a473aa8d9cfc8f7438423fb85301422d4a`, `d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b`
+- PDF grammar profiles: `pdf_grammar_8cdd223e96c1e64c`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592077&jezik=en&tipVsebine=1&docName=562594en.pdf>, <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=592099&jezik=en&tipVsebine=1&docName=562593en.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `RESEARCH_UNIT_MISSING` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth | none | `product_closed_candidate` | Height 850 \| Width 595 \| Depth 585 | p.46, `69ea0fd34d6a` |
+| `RESEARCH_UNIT_MISSING` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth | none | `product_closed_candidate` | Height 850 \| Width 595 \| Depth 585 | p.45, `20b478aa3cd1` |
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 10
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 10
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 12
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 12
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 9
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 9
+
+#### PDF grammar pdf_grammar_d4b23eb44a06a21f
+
+- Group type: `parser_family`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Models observed: `W2084C.W`, `W4086C.W`, `W4104C.W`
+- PDF SHA-256: `6b0cb9430fe453ab86109d2e9843d1e662b45af4ad482efe83d551431baf4c6e`, `92464f327d40fec970a344eb9a7dcd3086eeb9c651b3822b42cf0d70521d733b`, `b93577bde857bd9a4d95b88c776bcf8d95d3462b30f7da4ba6c274f2454d8444`
+- PDF grammar profiles: `pdf_grammar_d4b23eb44a06a21f`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://asko.hgecdn.net/medias/productSheet-000000000000592077-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYxNTgyfGFwcGxpY2F0aW9uL3BkZnxhRGd4TDJnNU5pOHhOVGMxTXpZMU56a3dPVEkzT0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzNYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGI0NGRhMDk3MWJiNmY4MDQ4NzE4ZWFlNzUwYTQ3NDM0Mjk2N2ExNmRiN2FkNTJmNDA1NjA5MDkyN2ZmMDc5ZGI>, <https://asko.hgecdn.net/medias/productSheet-000000000000592078-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTYwNDU5fGFwcGxpY2F0aW9uL3BkZnxhRGszTDJnMFlTOHhOVGMxTXpZMk9ERTJOVFkyTWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EYzRYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDc1NWYwZjUzZGI0YjZmMzkwY2Q3OGU1MzFiNGJmNGY0Mzk3OTE1OGVkZTk3ZTdmZjQ3Y2RhNGQwNDcxMjUxYjk>, <https://asko.hgecdn.net/medias/productSheet-000000000000592099-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8NTQ3MzA5fGFwcGxpY2F0aW9uL3BkZnxhREV6TDJnNE9DOHhOVGN4TlRBM01EUTNOak14T0M5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TlRreU1EazVYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGIzYmJkODMxNjM3YWNjYzM0NjNmMGIzNTJhNmQyNzFlNzY1YjlkMTIxMzI5M2Q0OGQ5ZjNkMGUwMjAwMGZkMzE>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | depth | depth | `product_closed_candidate` | depth 661 mm | p.2, `8ef079fb343d` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | Width 595 mm | p.2, `70648c371af5` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | Width 595 mm | p.2, `70648c371af5` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | depth | depth | `product_closed_candidate` | depth 661 mm | p.2, `4fc5bedea949` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height | height | `product_closed_candidate` | Height 850 mm | p.2, `1732f8fdd2c9` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height | height | `product_closed_candidate` | height 920 mm | p.2, `bd1159b5be11` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | Width 595 mm | p.2, `45268aca78e7` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 640 mm | p.2, `58aecb340150` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Depth 585 mm | p.2, `1346983cd29f` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | depth | depth | `product_closed_candidate` | depth 776 mm | p.2, `572ce95193aa` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 640 mm | p.2, `0b384772e77d` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height | height | `product_closed_candidate` | height 920 mm | p.2, `8ee3ed6dd721` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Depth 700 mm | p.2, `c3431630cf36` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height | height | `product_closed_candidate` | Height 850 mm | p.2, `1732f8fdd2c9` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height | height | `product_closed_candidate` | Height 850 mm | p.2, `a44b9b4d3c7d` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 640 mm | p.2, `58aecb340150` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height | height | `product_closed_candidate` | height 920 mm | p.2, `bd1159b5be11` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Depth 585 mm | p.2, `2008d524d99b` |
 
 ### AWARD
 
@@ -7935,10 +8303,23 @@ Research gaps:
 
 - Raw brand variants: `Fisher & Paykel`
 - Inventory models: 98
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 74
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 76
 - Proven marketing series: 1; total series count: `PROVEN_MINIMUM_ONLY`
 - PDF grammar profiles: 22
 - Complete exact-model parser replays: 13
+
+#### Document family 581b8d72ae72
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `WA7060E1`, `WA7060G1`
+- PDF SHA-256: `581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7`
+- Official/source URLs: <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCsQhMAL&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCuIpMAL&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCw7iMAD&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QCzIUMA1&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD0EXMA1&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000082XjJIAU&d=%2Fa%2FJw000000LxzZ%2FMaA0qtOpWeuIn4lbSDKBduObFBT333gTDAczBEnU3Nk&operationContext=DELIVERY&viewId=05HJw00000QD1CDMA1&dpt=>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 7: WA⁺'60 PRODUCT DIMENSIONS mm A Overall height of product† (to highest point on console) 1045 - 1075 B Overall width of product 600 © Depth of product 600 D H...
 
 #### Series 7
 
@@ -7975,6 +8356,19 @@ Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 29
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 8
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 9: yer, White DH1060RG5 10kg Heat Pump Dryer, Graphite Product Dimensions H 850mm W 60 2mm D 682mm Electrical Supply 220-240 V, 50 Hz Service 10 A Connection 3-...
+
+#### WA7560E1
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `WA7560E1`
+- PDF SHA-256: `5133ce98fa0ac90aab38b44910e4f573e88647e2c3de90c14944a283bf3f5934`
+- Official/source URLs: <https://dam.fisherpaykel.com/KZ3PKN00/at/3mcr9pbnrs992cxtp7fxcjk/FP-Washsmart-user-guide-WA60-models-429598C.pdf>, <https://dam.fisherpaykel.com/KZ3PKN00/at/f3jhj7stmqbbpcwztnxpmh2s/FP-Washsmart-installation-guide-WA60-models-429598C.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 7: PRODUCT DIMENSIONS MM AOverall height of product† (to highest point on console) 1045 - 1075 BOverall width of product 600 ©Overall depth of product 600 DHeig...
 
 #### WD8560F1
 
@@ -9685,9 +10079,9 @@ Inventory: 843 models across 68 category-brand groups.
 
 - Raw brand variants: `ASKO`
 - Inventory models: 24
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 2
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 4
 - Proven marketing series: 0; total series count: `UNKNOWN`
-- PDF grammar profiles: 1
+- PDF grammar profiles: 3
 - Complete exact-model parser replays: 0
 
 #### PDF grammar pdf_grammar_44da855f9fc7ab7c
@@ -9710,6 +10104,42 @@ Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 14
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 43: Parameter Value Parameter Value Rated capacity (b) (kg) X,X Dimensions (ª),(º) in cm Height x Width x Depth X Energy Efficiency Index(EEI) (b) X,X Energy eff...
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 43: Parameter Value Parameter Value Rated capacity (b) (kg) X,X Dimensions (a),(º) in cm Height x Width x Depth X Energy Efficiency Index(EEI) (b) X,X Energy eff...
+
+#### PDF grammar pdf_grammar_8cdd223e96c1e64c
+
+- Group type: `parser_family`
+- Expression coverage: `OBSERVED_WITH_RESEARCH_GAPS`
+- Models observed: `T410HD.W`
+- PDF SHA-256: `1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1`
+- PDF grammar profiles: `pdf_grammar_8cdd223e96c1e64c`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=594943&jezik=en&tipVsebine=1&docName=579608en.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `RESEARCH_UNIT_MISSING` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth | none | `product_closed_candidate` | Height 850 \| Width 595 \| Depth 769 | p.43, `ce4d4b9367fd` |
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 14
+
+#### PDF grammar pdf_grammar_d4b23eb44a06a21f
+
+- Group type: `parser_family`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Models observed: `T410HD.W`
+- PDF SHA-256: `935d74b3b4811a89f93465692d612dddebf275b7176bb925d58919606dd15c21`
+- PDF grammar profiles: `pdf_grammar_d4b23eb44a06a21f`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://asko.hgecdn.net/medias/productSheet-000000000000594943-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8MTEwNDIzM3xhcHBsaWNhdGlvbi9wZGZ8YUdFeEwyaGlZaTh4TlRrM05UVTJNekF6TkRZMU5DOXdjbTlrZFdOMFUyaGxaWFJmTURBd01EQXdNREF3TURBd05UazBPVFF6WDJKekxXRnphMjh0WVhWZlpXNWZRVlV1Y0dSbXwyYmZlMTYwMDAzNzFjMTc5NGViYmU2NGI3ODkwNTUzZDBiNjhkNTg2YWFmODJiNWIzMTFjZTEyZGE3M2U4NWJi>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 640 mm | p.2, `b72719ebfef2` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Depth 769 mm | p.2, `139ff8584d11` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height | height | `product_closed_candidate` | Height 850 mm | p.2, `90d33602c74a` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | Width 595 mm | p.2, `bcd7f9aa4b16` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height | height | `product_closed_candidate` | height 920 mm | p.2, `be7f81e78a7c` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | depth | depth | `product_closed_candidate` | depth 838 mm | p.2, `a791ead1700f` |
 
 ### AWARD
 
@@ -9962,7 +10392,7 @@ Research gaps:
 
 - Raw brand variants: `Fisher & Paykel`
 - Inventory models: 69
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 41
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 42
 - Proven marketing series: 1; total series count: `PROVEN_MINIMUM_ONLY`
 - PDF grammar profiles: 14
 - Complete exact-model parser replays: 10
@@ -10019,6 +10449,34 @@ Research gaps:
 
 Research gaps:
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### Document family ca9db6fcbd81
+
+- Group type: `document_family`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Models observed: `DE5060G1`, `DE6060G1`, `DE6060P1`
+- PDF SHA-256: `ca9db6fcbd81bd4cd4adc6f3085f072567762299a7a78a4122eca625e70a7159`
+- PDF grammar profiles: `pdf_grammar_65858e1594a8f17d`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007yZrlIAE&d=%2Fa%2FJw000000Lay9%2FFspTIf_Unz_vUGS89Or_D_Bq3HYBiXhXdz7b6QFAKPA&operationContext=DELIVERY&viewId=05HJw00000QCsvKMAT&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007yolyIAA&d=%2Fa%2FJw000000Lazl%2F8qTSr66NuCEDDhZCj5LMMEkBQwKYfewkE5RsYDAMv9M&operationContext=DELIVERY&viewId=05HJw00000QCtxpMAD&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007yolyIAA&d=%2Fa%2FJw000000Lazl%2F8qTSr66NuCEDDhZCj5LMMEkBQwKYfewkE5RsYDAMv9M&operationContext=DELIVERY&viewId=05HJw00000QCugzMAD&dpt=>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `RESEARCH_MODEL_SCOPE_REQUIRED` | `INDIVIDUALLY_LABELLED_AXES` | `DOCUMENT_IDENTITY_ONLY` | width -> depth -> height | none | `product_closed_candidate` | Width 600 \| Depth 571 \| Height 825 | p.17, `014584429ac7` |
+
+#### Document family cfde3664c065
+
+- Group type: `document_family`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Models observed: `DE7060G2`, `DE7060P2`
+- PDF SHA-256: `cfde3664c065cc0df5de2954fea0808ab9780c3cf59657715c29368db5422a93`
+- PDF grammar profiles: `pdf_grammar_65858e1594a8f17d`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007ym91IAA&d=%2Fa%2FJw000000Lbnl%2FUeISE2RBWoJz3Ai5vnMD7Tp2I3gdg3pqRD3GLvnRSUI&operationContext=DELIVERY&viewId=05HJw00000QC7bRMAT&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007ym91IAA&d=%2Fa%2FJw000000Lbnl%2FUeISE2RBWoJz3Ai5vnMD7Tp2I3gdg3pqRD3GLvnRSUI&operationContext=DELIVERY&viewId=05HJw00000QCulpMAD&dpt=>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `RESEARCH_MODEL_SCOPE_REQUIRED` | `INDIVIDUALLY_LABELLED_AXES` | `DOCUMENT_IDENTITY_ONLY` | width -> depth -> height | none | `product_closed_candidate` | Width 600 \| Depth 571 \| Height 825 | p.17, `9573fba9035c` |
 
 #### Document family e0ee3c93f477
 
@@ -10284,7 +10742,7 @@ Research gaps:
 - PDF SHA-256: `28c0145cb530ceaef60b50cbe74272560ba57087de132f1140d480e6039ce6e7`
 - PDF grammar profiles: `pdf_grammar_4332be9d29dd8815`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000094ibbIAA&d=%2Fa%2FJw000000VRK5%2FWVh29_lpKmz_dS8deuEuro5Ttjv2olLxRAQ5rP0ADhI&operationContext=DELIVERY&viewId=05HJw00000Q9NXuMAN&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000094ibbIAA&d=%2Fa%2FJw000000VRK5%2FWVh29_lpKmz_dS8deuEuro5Ttjv2olLxRAQ5rP0ADhI&operationContext=DELIVERY&viewId=05HJw00000Q9OybMAF&dpt=>
+- Official/source URLs: <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000094ibbIAA&d=%2Fa%2FJw000000VRK5%2FWVh29_lpKmz_dS8deuEuro5Ttjv2olLxRAQ5rP0ADhI&operationContext=DELIVERY&viewId=05HJw00000Q9NXuMAN&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000094ibbIAA&d=%2Fa%2FJw000000VRK5%2FWVh29_lpKmz_dS8deuEuro5Ttjv2olLxRAQ5rP0ADhI&operationContext=DELIVERY&viewId=05HJw00000Q9OybMAF&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000094ibbIAA&d=%2Fa%2FJw000000VRK5%2FWVh29_lpKmz_dS8deuEuro5Ttjv2olLxRAQ5rP0ADhI&operationContext=DELIVERY&viewId=05HJw00000QCu2fMAD&dpt=>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -10294,15 +10752,14 @@ Research gaps:
 
 - Group type: `parser_family`
 - Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
-- Models observed: `DE4060M1`, `DE7060P2`
-- PDF SHA-256: `3e1827893d395d76fed5d3acba66cf76ca41bd0bfd30bcf353861b6150c9b10d`, `cfde3664c065cc0df5de2954fea0808ab9780c3cf59657715c29368db5422a93`
+- Models observed: `DE4060M1`
+- PDF SHA-256: `3e1827893d395d76fed5d3acba66cf76ca41bd0bfd30bcf353861b6150c9b10d`
 - PDF grammar profiles: `pdf_grammar_65858e1594a8f17d`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007ym91IAA&d=%2Fa%2FJw000000Lbnl%2FUeISE2RBWoJz3Ai5vnMD7Tp2I3gdg3pqRD3GLvnRSUI&operationContext=DELIVERY&viewId=05HJw00000QC7bRMAT&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007ysuOIAQ&d=%2Fa%2FJw000000Lc77%2FKjSMpIP2Y7n3uKCNEbwKCipPdtvmR.zS9d1l5qBsPEE&operationContext=DELIVERY&viewId=05HJw00000QCVFZMA5&dpt=>
+- Official/source URLs: <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007ysuOIAQ&d=%2Fa%2FJw000000Lc77%2FKjSMpIP2Y7n3uKCNEbwKCipPdtvmR.zS9d1l5qBsPEE&operationContext=DELIVERY&viewId=05HJw00000QCVFZMA5&dpt=>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `RESEARCH_MODEL_SCOPE_REQUIRED` | `INDIVIDUALLY_LABELLED_AXES` | `DOCUMENT_IDENTITY_ONLY` | width -> depth -> height | none | `product_closed_candidate` | Width 600 \| Depth 571 \| Height 825 | p.17, `9573fba9035c` |
 | `RESEARCH_MODEL_SCOPE_REQUIRED` | `INDIVIDUALLY_LABELLED_AXES` | `DOCUMENT_IDENTITY_ONLY` | width -> depth -> height | none | `product_closed_candidate` | Width 600 \| Depth 481 \| Height 825 | p.17, `8b6b825bb273` |
 
 #### PDF grammar pdf_grammar_6ab607f729ee61e9
@@ -11088,7 +11545,6 @@ These documents remain in coverage accounting but cannot be assigned to a brand,
 | `03e6db15c683c5b77ca97ba583b6de8be89e5d7c10233ee0b07f10a2dc7e56c8` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `08e1ef3e70672ef999091b29d380c3b17f8d5928c9736807a7dbc97071cae83a` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `168e04da5d8a57f73cef4d864c2025f5aec351d73c46d07f26431cbc0d91437b` | `UNMAPPED_SOURCE_PDF` | unknown |
-| `1906813b3c97172954a9c3e6fb84bb44df1e38ef66d863612e7302e106921d05` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `1dac9c99f44c58ed69201c9ab5d214a339887dbf884e2e7bc9c063d9c96b9857` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `21ff130ee8811d8b9b475b0687b9e636140fb1a1f007a110211647a43d273da3` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `27ab7d8f999a700d3339530e5ff5f3b4a2151fe1f58acadec5f48fdeb2a40eda` | `UNMAPPED_SOURCE_PDF` | unknown |
@@ -11126,4 +11582,14 @@ These indexes remain in total coverage accounting but their derived content is e
 | PDF SHA-256 | Reason | Mapping | Intended identities | Sources |
 | --- | --- | --- | --- | --- |
 | `0c4a4d7124ff9c41a18fc538a0a65c2cc5ef68bea37effab0def3993ee41cbfe` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
+| `1906e24cb6a647f8aea77a847b9f69b9948fa1b3b721c0bbfa23fba1afc546e0` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
+| `3c5406c2075dc4cba3b75b4641a495c659dbb98a11cee3987244333332145940` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
+| `40cdfd400bbb004bd809df5d9dc5b44277ff152cb10873d33ac77dc176d9fed8` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
+| `588a66a4ac09e0b86192bca22cb6478d0a071366084fe1511a0b5cf555ac3ae5` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
+| `59f81eafa4275adcd69dcffdffb86de57b696941cf9a03902f5b974a33ab5cfc` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
+| `71c27b2e27da942b685bdd809ebf3c161ba5959cf8fa9f2900f8c5a16f200ca7` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
+| `8fed333ab5cb45ce00b8142499f5c7761feacf0750711a790c0d0061e7efbb7a` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
+| `b3310144edd6b9e11e4299260e57a9ac3e2b456a1916c17a4d03309fcb2b7f43` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
+| `f3d62fe020ed532f9f8107437d0a56868b7d4e8b8bfe72fa0b0272492f16b762` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
+| `f803c5e9682c749b1be27eb89280d6547a6a1673d6677bca634efee4660f52dd` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
 

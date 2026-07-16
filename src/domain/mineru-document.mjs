@@ -2808,6 +2808,17 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'Unique structured exact-model title or page header in the document, no sibling model, followed by a Dimensions & Weights title and complete aligned label and value lists.',
     semanticBoundary: 'Unpackaged W/D are closed dimensions; base and maximum feet heights form a range; door-open depth is operational; packaged values are excluded.',
   }),
+  beko_au_dishwasher_product_spec_min_height_inline_pairs_v1: Object.freeze({
+    parserProfileId: 'beko_au_dishwasher_product_spec_min_height_inline_pairs_v1',
+    grammarFamilyId: 'beko_au_dishwasher_product_spec_v1',
+    grammarFamilyName: 'Beko AU dishwasher product specification',
+    variantName: 'Minimum-height inline closed dimensions with a separate packaged block',
+    brand: 'Beko',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'Unique structured exact-model title or page header in the document, no sibling model, one Dimensions & Weights title, one complete min-height/max-height/W/D paragraph and one complete separate unpackaged-weight plus packaged-dimensions paragraph.',
+    semanticBoundary: 'Only unpackaged W/D and the explicit minimum-to-maximum feet-adjustment height range are projected; the separate packaged values are required for envelope separation but excluded, and no door-open claim is inferred.',
+  }),
 });
 const HISENSE_AU_WASHER_INDEXED_DIAGRAM_GRAMMAR = mineruGrammarProfiles
   ['hisense-au-washer-indexed-dimension-diagram-v1'].parserProfileId;
@@ -2817,6 +2828,8 @@ const BEKO_AU_DISHWASHER_INLINE_GRAMMAR = mineruGrammarProfiles
   .beko_au_dishwasher_product_spec_inline_pairs_v1.parserProfileId;
 const BEKO_AU_DISHWASHER_SPLIT_TITLE_GRAMMAR = mineruGrammarProfiles
   .beko_au_dishwasher_product_spec_split_title_parallel_lists_v1.parserProfileId;
+const BEKO_AU_DISHWASHER_MIN_HEIGHT_INLINE_GRAMMAR = mineruGrammarProfiles
+  .beko_au_dishwasher_product_spec_min_height_inline_pairs_v1.parserProfileId;
 const BEKO_AU_SPEC_LABELS = Object.freeze([
   'Unpackaged Height:',
   'Height (max - feet adjustment):',
@@ -3010,6 +3023,69 @@ function bekoInlineSpecResult(items) {
   );
 }
 
+function bekoMinHeightInlineSpecResult(items) {
+  const headings = items.filter((item) => (
+    item.type === 'title' && item.text === 'Dimensions & Weights'
+  ));
+  if (headings.length !== 1) return null;
+  const closedExpression = /^Unpackaged Height \(min\):\s*(\d+(?:\.\d+)?\s*mm)\s+Height \(max - feet adjustment\):\s*(\d+(?:\.\d+)?\s*mm)\s+Unpackaged Width:\s*(\d+(?:\.\d+)?\s*mm)\s+Unpackaged Depth:\s*(\d+(?:\.\d+)?\s*mm)$/i;
+  const packagedExpression = /^Unpackaged Weight:\s*\d+(?:\.\d+)?\s*kg\s+Packaged Height:\s*\d+(?:\.\d+)?\s*mm\s+Packaged Width:\s*\d+(?:\.\d+)?\s*mm\s+Packaged Depth:\s*\d+(?:\.\d+)?\s*mm\s+Packaged Weight:\s*\d+(?:\.\d+)?\s*kg$/i;
+  const closedCandidates = items.map((item) => ({ item, match: closedExpression.exec(item.text) }))
+    .filter(({ item, match }) => item.type === 'paragraph' && match);
+  const packagedCandidates = items.filter((item) => (
+    item.type === 'paragraph' && packagedExpression.test(item.text)
+  ));
+  if (closedCandidates.length !== 1 || packagedCandidates.length !== 1) return null;
+  const { item: closed, match } = closedCandidates[0];
+  const packaged = packagedCandidates[0];
+  if (closed.bbox[1] < headings[0].bbox[3]
+    || closed.bbox[1] - headings[0].bbox[3] > 100
+    || Math.abs(closed.bbox[0] - headings[0].bbox[0]) > 100
+    || packaged.bbox[1] < closed.bbox[3]
+    || packaged.bbox[1] - closed.bbox[3] > 100
+    || Math.abs(packaged.bbox[0] - closed.bbox[0]) > 100) return null;
+  const values = match.slice(1).map((value) => Number.parseFloat(value));
+  if (values.some((value) => !Number.isInteger(value)) || values[0] > values[1]) return null;
+  const rows = [
+    {
+      label: 'Unpackaged Height (minimum to maximum feet adjustment)',
+      value: `${values[0]} - ${values[1]} mm`,
+      quote: `Unpackaged Height (min): ${match[1]} | Height (max - feet adjustment): ${match[2]}`,
+      semanticBasis: 'explicit_label_range',
+      axisOrder: ['height'],
+    },
+    {
+      label: 'Unpackaged Width', value: match[3],
+      quote: `Unpackaged Width: ${match[3]}`,
+      axisOrder: ['width'],
+    },
+    {
+      label: 'Unpackaged Depth', value: match[4],
+      quote: `Unpackaged Depth: ${match[4]}`,
+      axisOrder: ['depth'],
+    },
+  ];
+  const fragments = [headings[0], closed, packaged];
+  return {
+    grammarProfileId: BEKO_AU_DISHWASHER_MIN_HEIGHT_INLINE_GRAMMAR,
+    rows,
+    fragment: {
+      type: 'derived_beko_spec',
+      bbox: [
+        Math.min(...fragments.map((fragment) => fragment.bbox[0])),
+        Math.min(...fragments.map((fragment) => fragment.bbox[1])),
+        Math.max(...fragments.map((fragment) => fragment.bbox[2])),
+        Math.max(...fragments.map((fragment) => fragment.bbox[3])),
+      ],
+      fragmentSha256: sha256(JSON.stringify({
+        grammarProfileId: BEKO_AU_DISHWASHER_MIN_HEIGHT_INLINE_GRAMMAR,
+        sourceFragmentSha256s: fragments.map((fragment) => fragment.fragmentSha256),
+        rows,
+      })),
+    },
+  };
+}
+
 function bekoAuDishwasherSpecRows(items, caseIdentity, identityScoped) {
   if (normalizedText(caseIdentity?.brand).toLowerCase() !== 'beko'
     || normalizedText(caseIdentity?.category) !== 'dishwasher') return null;
@@ -3018,6 +3094,7 @@ function bekoAuDishwasherSpecRows(items, caseIdentity, identityScoped) {
     bekoParallelSpecResult(items),
     bekoInlineSpecResult(items),
     bekoSplitTitleParallelSpecResult(items),
+    bekoMinHeightInlineSpecResult(items),
   ].filter(Boolean);
   return matches.length === 1 ? matches[0] : null;
 }
