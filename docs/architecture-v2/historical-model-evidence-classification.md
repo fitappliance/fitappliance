@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-16T04:02:47.117Z
+Generated: 2026-07-16T04:19:01.386Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -11,7 +11,7 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 991 |
+| dishwasher | 1419 | 94 | 999 |
 | dryer | 843 | 72 | 267 |
 | fridge | 4336 | 121 | 2287 |
 | washing_machine | 1497 | 88 | 654 |
@@ -20,11 +20,11 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 212 |
+| COMPLETE_RECEIPT | 220 |
 | CONFLICT_QUARANTINE | 83 |
-| IDENTITY_RESEARCH | 162 |
+| IDENTITY_RESEARCH | 160 |
 | OFFICIAL_DISCOVERY | 6417 |
-| REFERENCE_REDISCOVERY | 1221 |
+| REFERENCE_REDISCOVERY | 1215 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -91,11 +91,11 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | MITSUBISHI ELECTRIC | OFFICIAL_DISCOVERY | 90 |
 | fridge | Fisher & Paykel | REFERENCE_REDISCOVERY | 85 |
 | dishwasher | Smeg | OFFICIAL_DISCOVERY | 78 |
-| dishwasher | Bosch | REFERENCE_REDISCOVERY | 72 |
 | fridge | Hisense | OFFICIAL_DISCOVERY | 69 |
 | fridge | Hisense | REFERENCE_REDISCOVERY | 69 |
 | dryer | Kogan | OFFICIAL_DISCOVERY | 68 |
 | fridge | Liebherr | OFFICIAL_DISCOVERY | 67 |
+| dishwasher | Bosch | REFERENCE_REDISCOVERY | 66 |
 | dishwasher | Miele | OFFICIAL_DISCOVERY | 65 |
 | fridge | TECO | OFFICIAL_DISCOVERY | 65 |
 | fridge | HELLER | OFFICIAL_DISCOVERY | 61 |

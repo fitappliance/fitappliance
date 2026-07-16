@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T03:58:20.247Z",
+  "generatedAt": "2026-07-16T04:18:42.173Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -495,6 +495,35 @@
       "resultsSha256": "75b1213fb4de5ad027017596a88eb8b671dfb27cdb15aca2b1ed3032d7e81b3d",
       "auditSha256": "dfd1175015c0f831d36a2c5beda465ef5da6943cf20d7842d6a093b4408ffef0",
       "attemptedAt": "2026-07-16T01:01:19.499Z"
+    },
+    {
+      "attemptId": "historical_attempt_33b5376da00304781c40539e",
+      "targetId": "recovery_target_ae556bc6443c647e99c03085",
+      "referenceId": "fa_ref_4fea8c4e822a1a272a0c1f31",
+      "legacyRuntimeId": "ao-45238",
+      "canonicalProductId": "fa_prod_33958205c1fa6dcee412e432",
+      "brand": "Bosch",
+      "model": "SMI68M25AU",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI68M25AU.pdf",
+      "finalUrl": null,
+      "contentSha256": null,
+      "status": "transport_failure",
+      "failureCode": "transport",
+      "reason": "http_404",
+      "reasonSha256": "b74f919881973b39094abaa6fa85dfa75b9ac37ea1b2c8298ba4a12618e22476",
+      "disposition": "RETRY_TRANSIENT",
+      "suppressesSamePolicySource": false,
+      "policySha256": "111c1f5411207672370c150bbe7e9ab17f9601e71a7411449a0efaba747049e3",
+      "candidateInventorySha256": "e63afeb3e37ee2eec19bcdb89cb32c7adbb7eea019108bbebaef94697e5c9948",
+      "semanticOutcomeSha256": "4c6ba6473ba9ff03ab2cdeaab71bf68666c8bd4fd074c3f31555fd6b63807103",
+      "batchId": "historical-recovery-d58f1867322874ea2b6829ff-slice-4ba2b4b4d5a2",
+      "batchSha256": "a887616858f401bbe3f67308ff52886a122e4a14aa28c234f3ed11d3bbf99f44",
+      "runId": "bosch-p0-batch-01-r2-20260716",
+      "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
+      "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
+      "attemptedAt": "2026-07-16T04:18:18.504Z"
     },
     {
       "attemptId": "historical_attempt_38066b342871bcdf7c084af8",
@@ -2063,6 +2092,35 @@
       "attemptedAt": "2026-07-16T03:21:30.583Z"
     },
     {
+      "attemptId": "historical_attempt_c4bc24dcae50bb30f0edfcef",
+      "targetId": "recovery_target_49c7019a23ad076014ce6ecb",
+      "referenceId": "fa_ref_5311c845bb733803b9bf4e95",
+      "legacyRuntimeId": "ao-45237",
+      "canonicalProductId": "fa_prod_a6eb8d3e8150fba83c7dff43",
+      "brand": "Bosch",
+      "model": "SMI50M05AU",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI50M05AU.pdf",
+      "finalUrl": null,
+      "contentSha256": null,
+      "status": "transport_failure",
+      "failureCode": "transport",
+      "reason": "http_404",
+      "reasonSha256": "b74f919881973b39094abaa6fa85dfa75b9ac37ea1b2c8298ba4a12618e22476",
+      "disposition": "RETRY_TRANSIENT",
+      "suppressesSamePolicySource": false,
+      "policySha256": "111c1f5411207672370c150bbe7e9ab17f9601e71a7411449a0efaba747049e3",
+      "candidateInventorySha256": "61db5742ef7c35345abca394bfdcbc7b67e1ba8db7d3eb9e30b32e9709365d1b",
+      "semanticOutcomeSha256": "307a3bbf1812e7546b1e0a58fb8cf8053b5d5d0a248263068905b0048ed989a2",
+      "batchId": "historical-recovery-d58f1867322874ea2b6829ff-slice-4ba2b4b4d5a2",
+      "batchSha256": "a887616858f401bbe3f67308ff52886a122e4a14aa28c234f3ed11d3bbf99f44",
+      "runId": "bosch-p0-batch-01-r2-20260716",
+      "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
+      "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
+      "attemptedAt": "2026-07-16T04:18:18.504Z"
+    },
+    {
       "attemptId": "historical_attempt_c632a1f4940ea70dd0e1b325",
       "targetId": "recovery_target_986021baa3facd3fc3c412c6",
       "referenceId": "fa_ref_cc1f292dc96cbc6df3c222d3",
@@ -3129,6 +3187,23 @@
       "acceptedAt": "2026-07-16T00:46:29.094Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_1afc45f62b5ef6acff38bb35",
+      "targetId": "recovery_target_9adb9f84388bf084b52b0726",
+      "referenceId": "fa_ref_bd0875b99a41030266259bae",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI46GS01A.pdf",
+      "contentSha256": "c71b7c284e38fab350fed66f5bcd1dd3c254f1a5e431e8fb3eb4289e0268d62f",
+      "status": "accepted",
+      "policySha256": "111c1f5411207672370c150bbe7e9ab17f9601e71a7411449a0efaba747049e3",
+      "candidateInventorySha256": "ec88875a8c98d6acd1bcdcf218acb4cb0f12e1426643a49eaa0675fcff9c2d09",
+      "semanticOutcomeSha256": "b4c34bfccfb9722a746ed977c0fcd63d32610c47dc202b1c6b58ba1f57b579f4",
+      "batchId": "historical-recovery-d58f1867322874ea2b6829ff-slice-4ba2b4b4d5a2",
+      "batchSha256": "a887616858f401bbe3f67308ff52886a122e4a14aa28c234f3ed11d3bbf99f44",
+      "runId": "bosch-p0-batch-01-r2-20260716",
+      "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
+      "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
+      "acceptedAt": "2026-07-16T04:18:18.504Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_1ebd7a9a51db4c67a1d041ea",
       "targetId": "recovery_target_0659f995ff29d2b5f37d1c55",
       "referenceId": "fa_ref_3081a6936c014ebb6089517d",
@@ -3161,6 +3236,23 @@
       "resultsSha256": "0daf8b332951e443d7f70575f38b2e427b3aa809c02738e3d2d5af1a0bf547c9",
       "auditSha256": "7ae02fee3d653c2ecb30bd1a1eaa77c6ccf487c4394d6300b2af3ed192445239",
       "acceptedAt": "2026-07-15T19:54:13.777Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_2459b1ee8cbc31c6f27a1187",
+      "targetId": "recovery_target_5eecd87b1bf0332f50174da7",
+      "referenceId": "fa_ref_1e029fc89edcae974abdb6dd",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI50D05AU.pdf",
+      "contentSha256": "ddc73a715bc8857b1058ba8acf431e9f5c1168b72b32da1ac6fd6fa0f1a9c284",
+      "status": "accepted",
+      "policySha256": "111c1f5411207672370c150bbe7e9ab17f9601e71a7411449a0efaba747049e3",
+      "candidateInventorySha256": "1e0ae353ec0d876e8a44693b9559bccefbfced02b2f400cb90ee66836b27c754",
+      "semanticOutcomeSha256": "ce1d5833ec77a8496d432c77161705fe198881fa21d75f6fa287d8f8a9278e91",
+      "batchId": "historical-recovery-d58f1867322874ea2b6829ff-slice-4ba2b4b4d5a2",
+      "batchSha256": "a887616858f401bbe3f67308ff52886a122e4a14aa28c234f3ed11d3bbf99f44",
+      "runId": "bosch-p0-batch-01-r2-20260716",
+      "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
+      "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
+      "acceptedAt": "2026-07-16T04:18:18.504Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_2587a191fd1977d32d573527",
@@ -3246,6 +3338,23 @@
       "resultsSha256": "0daf8b332951e443d7f70575f38b2e427b3aa809c02738e3d2d5af1a0bf547c9",
       "auditSha256": "7ae02fee3d653c2ecb30bd1a1eaa77c6ccf487c4394d6300b2af3ed192445239",
       "acceptedAt": "2026-07-15T19:54:13.777Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_388e112360c2b0b995503d00",
+      "targetId": "recovery_target_1271ff9d5bd9d9dfbd8b461f",
+      "referenceId": "fa_ref_f3f80c54faf5806609da5ed2",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI88TS02A.pdf",
+      "contentSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
+      "status": "accepted",
+      "policySha256": "111c1f5411207672370c150bbe7e9ab17f9601e71a7411449a0efaba747049e3",
+      "candidateInventorySha256": "92c152c1396cb850b3816a6e29e7acd07660183a92842d1460da0a4fe4132362",
+      "semanticOutcomeSha256": "0577ef5ff9fd4ad9f65a17b21f0e92aad16fee3caa4b69433a539742adb5e1f3",
+      "batchId": "historical-recovery-d58f1867322874ea2b6829ff-slice-4ba2b4b4d5a2",
+      "batchSha256": "a887616858f401bbe3f67308ff52886a122e4a14aa28c234f3ed11d3bbf99f44",
+      "runId": "bosch-p0-batch-01-r2-20260716",
+      "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
+      "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
+      "acceptedAt": "2026-07-16T04:18:18.504Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_39246c9db5acfa6cd8929368",
@@ -3503,6 +3612,23 @@
       "acceptedAt": "2026-07-16T01:01:19.499Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_64064fb089023171841d0e59",
+      "targetId": "recovery_target_46d9da3fd3a27f8dda8bb845",
+      "referenceId": "fa_ref_f509b02ebf57485bfd3ecfbe",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI6HCS01A.pdf",
+      "contentSha256": "9482d048c4831ce9c8e7d134a63e61ad926447172559652c0cfbe7bd8fa60e3f",
+      "status": "accepted",
+      "policySha256": "111c1f5411207672370c150bbe7e9ab17f9601e71a7411449a0efaba747049e3",
+      "candidateInventorySha256": "bbd7d67880becdbc87c634b1206ae73a9315dc83a23ceac030280bedd834c2fb",
+      "semanticOutcomeSha256": "e32c6d6efab24369dfa617b2e5e4301d453bab0291a56bf30c6031f8b37c2a15",
+      "batchId": "historical-recovery-d58f1867322874ea2b6829ff-slice-4ba2b4b4d5a2",
+      "batchSha256": "a887616858f401bbe3f67308ff52886a122e4a14aa28c234f3ed11d3bbf99f44",
+      "runId": "bosch-p0-batch-01-r2-20260716",
+      "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
+      "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
+      "acceptedAt": "2026-07-16T04:18:18.504Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_6711ca2d68bbc198de2ae601",
       "targetId": "recovery_target_9a42a918265183879346a9b8",
       "referenceId": "fa_ref_6c8ae342f014bf24fb267e5b",
@@ -3654,6 +3780,23 @@
       "resultsSha256": "1cecefd531e0442caa919a04b971150b6af98149eb41bc571a01121a12b72aa6",
       "auditSha256": "621b21f8752460a7978f194d2e030639aa93b5cef22f1cc597a3b06e759b24a9",
       "acceptedAt": "2026-07-15T19:58:12.739Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_6ebd81014f9bfd87bde18c96",
+      "targetId": "recovery_target_e51709b6784d6f570593b272",
+      "referenceId": "fa_ref_97d43450fc6c43f21057f0ba",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI66MS01A.pdf",
+      "contentSha256": "803b17b58f7d7321307647dc2d7ad67cdaafacb0609b2279b4d52048d2268fb1",
+      "status": "accepted",
+      "policySha256": "111c1f5411207672370c150bbe7e9ab17f9601e71a7411449a0efaba747049e3",
+      "candidateInventorySha256": "7b046a7cd29b960203b7e17ebdac2c2d6ed764490a1dfa9df0ba49cf5857cf39",
+      "semanticOutcomeSha256": "89a277b6c3259fd092321da6987719f5241a64bfb60fa6a46d0693a54b1a9518",
+      "batchId": "historical-recovery-d58f1867322874ea2b6829ff-slice-4ba2b4b4d5a2",
+      "batchSha256": "a887616858f401bbe3f67308ff52886a122e4a14aa28c234f3ed11d3bbf99f44",
+      "runId": "bosch-p0-batch-01-r2-20260716",
+      "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
+      "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
+      "acceptedAt": "2026-07-16T04:18:18.504Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_73758fcfc80d10e5299c7961",
@@ -4030,6 +4173,23 @@
       "acceptedAt": "2026-07-16T01:01:19.499Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_c8cc306f1e19bc96a3434bf3",
+      "targetId": "recovery_target_6e216388435951b5d5ff495d",
+      "referenceId": "fa_ref_5c056404d2d38bf124e9077b",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI66JS01A.pdf",
+      "contentSha256": "c1eb36482a577bec4af1c09f6e13faee60fccf66a109a0a598335163590fa542",
+      "status": "accepted",
+      "policySha256": "111c1f5411207672370c150bbe7e9ab17f9601e71a7411449a0efaba747049e3",
+      "candidateInventorySha256": "d9a8b62f8603b88199afcf5e1df6d3df7273d02101afbbf7617db7199acd7700",
+      "semanticOutcomeSha256": "8c74390f753a8650cb5d5727aff40663e4db1a13ccc137a63df713d41a09f759",
+      "batchId": "historical-recovery-d58f1867322874ea2b6829ff-slice-4ba2b4b4d5a2",
+      "batchSha256": "a887616858f401bbe3f67308ff52886a122e4a14aa28c234f3ed11d3bbf99f44",
+      "runId": "bosch-p0-batch-01-r2-20260716",
+      "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
+      "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
+      "acceptedAt": "2026-07-16T04:18:18.504Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_c9bbff537bfd0f42cb8722a9",
       "targetId": "recovery_target_80e0025c3c7514692ec7afdd",
       "referenceId": "fa_ref_fc9cb54d89ad2373efd37b74",
@@ -4079,6 +4239,23 @@
       "resultsSha256": "e911bd1fb0d5de42319261a65727ab22321f4d5dda4855df401aa655e294ee6f",
       "auditSha256": "840cc2b187fc2a17d3d376df5aae92885b4cc18ea491d43d478d1238cf21d27d",
       "acceptedAt": "2026-07-16T01:46:53.769Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_cc3e0861e684669018b8ea69",
+      "targetId": "recovery_target_925ddfc632cb32ff1a95f893",
+      "referenceId": "fa_ref_dacaa9a2b99e0255c641ee69",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV8ECX01A.pdf",
+      "contentSha256": "856c7c1a8b35e7a2f1cb6d2c5eb57077ae2e73433e8e945b2ad31e4f208f3055",
+      "status": "accepted",
+      "policySha256": "111c1f5411207672370c150bbe7e9ab17f9601e71a7411449a0efaba747049e3",
+      "candidateInventorySha256": "6b7c5c5d3c54a6a417a910a436798c6f5911d908fde05d301357217b34f8bdde",
+      "semanticOutcomeSha256": "103bf17ca32eb630b33874cc1ea4faafff67f71f1e6d0e856d89d53406979534",
+      "batchId": "historical-recovery-d58f1867322874ea2b6829ff-slice-4ba2b4b4d5a2",
+      "batchSha256": "a887616858f401bbe3f67308ff52886a122e4a14aa28c234f3ed11d3bbf99f44",
+      "runId": "bosch-p0-batch-01-r2-20260716",
+      "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
+      "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
+      "acceptedAt": "2026-07-16T04:18:18.504Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_d125a308c71b9f9980038002",
@@ -4200,6 +4377,23 @@
       "acceptedAt": "2026-07-15T19:15:34.741Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_e904e59fc177e2e9a3ad1401",
+      "targetId": "recovery_target_9c31e16a65865dbfa135adaf",
+      "referenceId": "fa_ref_44a60c8ac3dbda0c427ed8fa",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBT8ZC801A.pdf",
+      "contentSha256": "bb57b853485b050a729b5e6f167de5837278491eb9c57e0d0821fba0a4b5d8ed",
+      "status": "accepted",
+      "policySha256": "111c1f5411207672370c150bbe7e9ab17f9601e71a7411449a0efaba747049e3",
+      "candidateInventorySha256": "866010bc9e80beb6cb859a7bc8d6d0addbfd7387787dc401e8a4000a952cb46b",
+      "semanticOutcomeSha256": "8e2365fa99993ba6f4f26f0e3658c31c4cae9df050b655eb53bf28baa0437232",
+      "batchId": "historical-recovery-d58f1867322874ea2b6829ff-slice-4ba2b4b4d5a2",
+      "batchSha256": "a887616858f401bbe3f67308ff52886a122e4a14aa28c234f3ed11d3bbf99f44",
+      "runId": "bosch-p0-batch-01-r2-20260716",
+      "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
+      "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
+      "acceptedAt": "2026-07-16T04:18:18.504Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_e98ffd0ed3f1a062ba38b4c2",
       "targetId": "recovery_target_9934dd7bd98107668f572021",
       "referenceId": "fa_ref_85029e0f7ab2a94dac133ce9",
@@ -4303,21 +4497,21 @@
     }
   ],
   "summary": {
-    "entries": 93,
+    "entries": 95,
     "resolutions": 16,
-    "sourceAcceptances": 77,
+    "sourceAcceptances": 85,
     "suppressions": 57,
     "resolvedSuppressions": 14,
-    "retryable": 22,
+    "retryable": 24,
     "byStatus": {
       "claims_incomplete": 8,
       "identity_rejected": 33,
       "mineru_failure": 30,
-      "transport_failure": 22
+      "transport_failure": 24
     },
     "byDisposition": {
       "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 30,
-      "RETRY_TRANSIENT": 22,
+      "RETRY_TRANSIENT": 24,
       "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 33,
       "SEEK_EXACT_MODEL_FIELD_SOURCE": 8
     }

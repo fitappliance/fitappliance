@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1473,
-    "fetchJobs": 1436,
-    "targets": 1470,
-    "candidateEdges": 1473,
+    "documents": 1469,
+    "fetchJobs": 1432,
+    "targets": 1466,
+    "candidateEdges": 1469,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1470,
+    "uniqueReferences": 1466,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 410,
-      "MEASURE_REQUIRED": 1035,
+      "MEASURE_REQUIRED": 1031,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1223
+      "CURRENT_RETAIL": 1219
     },
     "byCategory": {
-      "dishwasher": 348,
+      "dishwasher": 344,
       "dryer": 62,
       "fridge": 835,
       "washing_machine": 225
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1173,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1169,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 205,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 134,
+      "ALREADY_AUTO_FILL": 138,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -3632,32 +3632,6 @@
       ]
     },
     {
-      "jobId": "recovery_0ff7b999e0b911d3e80bc1f0",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/c/6/6/1c6620dcba6dcd85e4e2af8cda61092cb4d4b949_SMI46GS01A_Bosch_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_9adb9f84388bf084b52b0726"
-      ]
-    },
-    {
       "jobId": "recovery_96e4e9158e930555c7b73626",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/c/6/a/1c6ad238fde3fbe32f18b24bc86981b1fa18d4c8_WTB5404SALH_Westinghouse_Specifications_Sheet.pdf",
       "authorityBrand": "Westinghouse",
@@ -7009,32 +6983,6 @@
       ],
       "targetIds": [
         "recovery_target_2d84ecab3735209624a7ae28"
-      ]
-    },
-    {
-      "jobId": "recovery_62e5574fbe7bdde1daecc59e",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/0/a/7/40a7f3909bf6740e28a15b4b8abe3e07c3f54ccb_SMI66MS01A_Bosch_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_e51709b6784d6f570593b272"
       ]
     },
     {
@@ -16398,32 +16346,6 @@
       ]
     },
     {
-      "jobId": "recovery_e16fbb7391976877261ca3a8",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/9/5/2/99525f8b34f6d5c2e6fe83ede7a0fa4aa306dc09_SMI66JS01A_Bosch_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_6e216388435951b5d5ff495d"
-      ]
-    },
-    {
       "jobId": "recovery_d076e655f33fe63b9e56bb0b",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/9/e/3/99e3186cc76bb2c6777969f545171bcf21f710db_SRF630BFH2_Sampford_IXL_User_Manual.pdf",
       "authorityBrand": "Samsung",
@@ -17409,32 +17331,6 @@
       ],
       "targetIds": [
         "recovery_target_00f137ebae24e1defb15433e"
-      ]
-    },
-    {
-      "jobId": "recovery_4f540d2c2d036638860a744a",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/4/8/b/a48bce343d877f319ae98c0ad76f35bc97fd2a80_SMI88TS02A_Bosch_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_1271ff9d5bd9d9dfbd8b461f"
       ]
     },
     {
@@ -41683,47 +41579,6 @@
       "primaryJobId": "recovery_9a8de6ba023841d17b135e64"
     },
     {
-      "referenceId": "fa_ref_bd0875b99a41030266259bae",
-      "legacyRuntimeId": "ao-61041",
-      "canonicalProductId": "fa_prod_3ff7c2179e271e81ee5bf0a1",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI46GS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 815,
-        "depth": 573
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_9adb9f84388bf084b52b0726",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_6a976d32f9264587ded98736"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_6a976d32f9264587ded98736",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_0ff7b999e0b911d3e80bc1f0"
-      ],
-      "primaryJobId": "recovery_0ff7b999e0b911d3e80bc1f0"
-    },
-    {
       "referenceId": "fa_ref_65d7375cbcbcd7450d5b8de3",
       "legacyRuntimeId": "ao-103524",
       "canonicalProductId": "fa_prod_c10836872988f234eac38f4c",
@@ -41847,88 +41702,6 @@
       "primaryJobId": "recovery_523a6dbad6594e7949bb3724"
     },
     {
-      "referenceId": "fa_ref_5c056404d2d38bf124e9077b",
-      "legacyRuntimeId": "ao-70866",
-      "canonicalProductId": "fa_prod_4b0e7e711e4d0b152f7ff4fc",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI66JS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 815,
-        "depth": 573
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_6e216388435951b5d5ff495d",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_7c1e05a3146cb5fd6cfc2a75"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_7c1e05a3146cb5fd6cfc2a75",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e16fbb7391976877261ca3a8"
-      ],
-      "primaryJobId": "recovery_e16fbb7391976877261ca3a8"
-    },
-    {
-      "referenceId": "fa_ref_97d43450fc6c43f21057f0ba",
-      "legacyRuntimeId": "ao-63359",
-      "canonicalProductId": "fa_prod_5c8dc0ccac494e3e28e64a01",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI66MS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 815,
-        "depth": 573
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_e51709b6784d6f570593b272",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_b27e00008ebf3ed6382ea3b6"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_b27e00008ebf3ed6382ea3b6",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_62e5574fbe7bdde1daecc59e"
-      ],
-      "primaryJobId": "recovery_62e5574fbe7bdde1daecc59e"
-    },
-    {
       "referenceId": "fa_ref_4fea8c4e822a1a272a0c1f31",
       "legacyRuntimeId": "ao-45238",
       "canonicalProductId": "fa_prod_33958205c1fa6dcee412e432",
@@ -42009,47 +41782,6 @@
         "recovery_682237c4ab699d624339e05c"
       ],
       "primaryJobId": "recovery_682237c4ab699d624339e05c"
-    },
-    {
-      "referenceId": "fa_ref_f3f80c54faf5806609da5ed2",
-      "legacyRuntimeId": "ao-61042",
-      "canonicalProductId": "fa_prod_6dc1ec6a17da10e30593f4e5",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI88TS02A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 815,
-        "depth": 573
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_1271ff9d5bd9d9dfbd8b461f",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_52b73babb2258cab48790434"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_52b73babb2258cab48790434",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_4f540d2c2d036638860a744a"
-      ],
-      "primaryJobId": "recovery_4f540d2c2d036638860a744a"
     },
     {
       "referenceId": "fa_ref_ebe750c685d0d72c5874066d",

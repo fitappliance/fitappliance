@@ -585,11 +585,63 @@ function explicitInlineDimensionRow(text) {
   };
 }
 
+const BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR =
+  'bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1';
+
+function explicitShorthandDimensionRowsWithInheritedUnit(text) {
+  const source = String(text ?? '');
+  if (/\b(?:pack(?:ed|ing|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate|cabinet|cavity|niche|opening|installation)\b|cut[ -]?out/i.test(source)) {
+    return null;
+  }
+  const matches = [...source.matchAll(
+    /\b(w|width|wide|h|height|high|d|depth|deep)\b\s*:\s*(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(mm|cm)?/gi,
+  )];
+  if (matches.length !== 3 || !matches.some((match) => match[1].length === 1)) return null;
+  const aliases = {
+    w: 'width', width: 'width', wide: 'width',
+    h: 'height', height: 'height', high: 'height',
+    d: 'depth', depth: 'depth', deep: 'depth',
+  };
+  const axes = matches.map((match) => aliases[match[1].toLowerCase()]);
+  if (new Set(axes).size !== 3
+    || !['width', 'height', 'depth'].every((axis) => axes.includes(axis))) return null;
+  const prefix = source.slice(0, matches[0].index).replace(/^\s*[-•●]\s*/, '').trim();
+  if (prefix && !/^(?:(?:product|overall|external)\s+)?(?:dimensions?|size)\s*:?\s*[-–—]?$/i.test(prefix)) {
+    return null;
+  }
+  for (let index = 0; index < matches.length - 1; index += 1) {
+    const between = source.slice(matches[index].index + matches[index][0].length, matches[index + 1].index);
+    if (!/^\s*[x×*]\s*$/i.test(between)) return null;
+  }
+  const suffix = source.slice(matches.at(-1).index + matches.at(-1)[0].length);
+  if (!/^\s*[.,;]?\s*$/.test(suffix)) return null;
+  const units = [...new Set(matches.map((match) => match[3]?.toLowerCase()).filter(Boolean))];
+  if (units.length !== 1) return null;
+  const axisLabels = { width: 'Width', height: 'Height', depth: 'Depth' };
+  const rows = [];
+  for (let index = 0; index < matches.length; index += 1) {
+    const range = [...matches[index][2].matchAll(/\d+(?:\.\d+)?/g)].map((match) => Number(match[0]));
+    if (!range.length || range.some((value) => !Number.isFinite(value))) return null;
+    if (range.length === 2 && (axes[index] !== 'height' || range[0] > range[1])) return null;
+    if (range.length > 2) return null;
+    const label = axisLabels[axes[index]];
+    rows.push({
+      label,
+      value: `${matches[index][2]} ${matches[index][3]?.toLowerCase() ?? units[0]}`,
+      quote: normalizedText(`${label} ${matches[index][2]} ${matches[index][3]?.toLowerCase() ?? units[0]}`),
+      grammarProfileId: BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR,
+    });
+  }
+  return rows;
+}
+
 function paragraphRows(text) {
   const strict = /^([A-Za-z][A-Za-z ()/+.-]{0,80})\s+((?:\d+(?:\.\d+)?)(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?))$/i.exec(text);
   if (strict) return [{ label: normalizedText(strict[1]), value: normalizedText(strict[2]) }];
   const explicitInline = explicitInlineDimensionRow(text);
   if (explicitInline) return [explicitInline];
+  const inheritedShorthand = explicitShorthandDimensionRowsWithInheritedUnit(text);
+  if (inheritedShorthand) return inheritedShorthand;
   if (!/\b(?:pack(?:ed|ing|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate)\b/i.test(text)) {
     const axisMatches = [...String(text).matchAll(/\b(width|wide|height|high|depth|deep)\b\s*:?\s*(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)];
     const axis = { width: 'width', wide: 'width', height: 'height', high: 'height', depth: 'depth', deep: 'depth' };
@@ -2350,6 +2402,17 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'Exactly one table contains one exact target Model row and one Size row whose three values each carry the same explicit unit plus a unique W, D or H axis label.',
     semanticBoundary: 'Only the three Size values are projected in their written W/D/H order; unitless tuples, packaged or installation sizes, conflicting label orders and tables with multiple matching model or size rows are excluded.',
   }),
+  [BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR]: Object.freeze({
+    parserProfileId: BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR,
+    grammarFamilyId: 'bosch_au_dishwasher_product_dimensions_v1',
+    grammarFamilyName: 'Bosch Australia dishwasher product specification',
+    variantName: 'Shorthand H/W/D labels with inherited millimetre unit and adjustable height',
+    brand: 'Bosch',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model scoped Bosch dishwasher page contains one complete H/W/D inline sequence, unique axes, strict x separators and one consistent explicit unit inherited only by unitless values.',
+    semanticBoundary: 'Only closed product H/W/D is projected; a range is accepted only for height. Niche, cavity, installation, opening, packaging, mixed-unit, duplicate-axis and partial sequences are excluded.',
+  }),
   beko_au_dishwasher_product_spec_parallel_lists_v1: Object.freeze({
     parserProfileId: 'beko_au_dishwasher_product_spec_parallel_lists_v1',
     grammarFamilyId: 'beko_au_dishwasher_product_spec_v1',
@@ -3070,6 +3133,10 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           : joinedScalarRowsByFragment.has(fragment)
             ? [joinedScalarRowsByFragment.get(fragment)]
           : paragraphRows(fragment.text);
+      }
+      if (canonicalModel(caseIdentity?.brand) === 'BOSCH' && category === 'dishwasher'
+        && rows.some((row) => row.grammarProfileId === BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR)) {
+        appliedGrammarProfiles.add(BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR);
       }
       if (unresolvedFamily && !sharedModelListScoped && fragment.type !== 'table') continue;
       for (const row of rows) {

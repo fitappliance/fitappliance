@@ -2126,6 +2126,49 @@ test('MinerU reconnects a Bosch grouped dimension heading to an explicitly label
   assert.ok(parsed.claims.every((claim) => claim.sourceAxisOrder.join(',') === 'height,width,depth'));
 });
 
+test('MinerU preserves a Bosch Tall Tub height range from shorthand H W D labels with inherited units', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    pageHeader('Series 8, fully-integrated dishwasher, 60 cm, Tall Tub SBV8ECX01A'),
+    paragraph('Product Dimensions (H x W x D)', [80, 120, 420, 150]),
+    paragraph('- H: 865-925 x W: 598 mm x D: 550 mm', [80, 155, 520, 185]),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'SBV8ECX01A', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 865, maxMm: 925 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 550 },
+  });
+  assert.ok(parsed.grammarProfileIds.includes(
+    'bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1',
+  ));
+});
+
+test('MinerU rejects inherited-unit shorthand triples with incomplete, duplicate, mixed, or contextual axes', () => {
+  for (const value of [
+    '- H: 865-925 x W: 598 mm',
+    '- H: 865-925 x W: 598 mm x H: 550 mm',
+    '- H: 865-925 x W: 59.8 cm x D: 550 mm',
+    'Required niche H: 865-925 x W: 600 mm x D: 550 mm',
+  ]) {
+    const bytes = Buffer.from(JSON.stringify([[
+      pageHeader('Series 8 dishwasher SBV8ECX01A'),
+      paragraph('Product Dimensions (H x W x D)'),
+      paragraph(value),
+    ]]));
+    assert.throws(() => parseMineruContentListV2(bytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision,
+      caseIdentity: { brand: 'Bosch', model: 'SBV8ECX01A', category: 'dishwasher' },
+      claimSemanticsVersion: 2,
+      fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    }), /no exact-model MinerU evidence/i, value);
+  }
+});
+
 test('MinerU parses Bosch standalone per-value H W D labels without trusting a malformed grouped label', () => {
   const bytes = Buffer.from(JSON.stringify([
     [
