@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "runId": "hisense-strict-grammar-v2-20260716",
-  "batchId": "historical-recovery-8a05eebceb8ffab6dcc7063c",
-  "batchSha256": "de43d8d55eaef487ba1eb8278090895853bc0e09ad12ced42d15a37b92c07c57",
-  "queueSha256": "f6442a9046b2142e344dcefb5becc4100ecabf5c29ac229ae8980f50a050cce0",
-  "policySha256": "4a4be4707385d0dba6d618f6c7ef1dd2949dbf83871bad57fd8d12d81868d469",
-  "startedAt": "2026-07-16T01:46:52.452Z",
-  "completedAt": "2026-07-16T01:46:53.769Z",
-  "semanticOutcomeSha256": "9de28ac44f983d4a05251d507793241aebe88cdbef6d7279d337d3ebff4daa38",
+  "runId": "hisense-image-grid-v1-20260716",
+  "batchId": "historical-recovery-ba09e4b85d0891a307a1d4e2-slice-f98d0af5d972",
+  "batchSha256": "2fd43d81df7b569485efd7b110c707fe871eaa5098dbe4365ac22e8155491a51",
+  "queueSha256": "d85262fb27ef8fa4fbf187fe44413521c29f78ca46488989c6735550a638f184",
+  "policySha256": "8e4c7231047fa1d471396b2ab819954968cdb8b3e5c2e2ffafa2d6f027506395",
+  "startedAt": "2026-07-16T02:19:44.342Z",
+  "completedAt": "2026-07-16T02:19:45.124Z",
+  "semanticOutcomeSha256": "c5472d480886f582966bc419ad1bd658ad2ac066297c369c402da006b1b3fe89",
   "outcomes": [
     {
-      "targetId": "recovery_target_821b4cf1def899be41f812c1",
+      "targetId": "recovery_target_667f135663cac363ca3da3a4",
       "status": "accepted",
       "failureCode": null,
-      "candidateInventorySha256": "d832f3d34477e1d20cd09b2b5b52916e98fff05f0da8e1a321e6550ab7370275",
+      "candidateInventorySha256": "1093f212826edfd0a731f9cd08be083c67e09e8e8b8fba55087f901a7c48a59b",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_821b4cf1def899be41f812c1",
+        "targetId": "recovery_target_667f135663cac363ca3da3a4",
         "identity": {
           "brand": "Hisense",
-          "model": "HRCF300",
+          "model": "HRCD610TS",
           "category": "fridge"
         },
         "completionStatus": "complete",
@@ -54,8 +54,8 @@
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_116c5e2a6db5c90c38696e48",
-            "sourceUrl": "https://hisense.com.au/product/HRCF300/chest-freezer-300l",
+            "candidateId": "candidate_35c476d1d1b49414a0f58552",
+            "sourceUrl": "https://hisense.com.au/product/HRCD610TS/pureflat-french-door-stainless-steel-609l",
             "authorityMode": "official",
             "sourceRole": "manufacturer_product_page",
             "requiredAttempt": false,
@@ -78,8 +78,8 @@
             }
           },
           {
-            "candidateId": "candidate_93ad5fb9c3b69c8e38c5321b",
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
+            "candidateId": "candidate_e9cb4d3515d49914e1436fc8",
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
@@ -101,459 +101,18 @@
               "source": {
                 "authority": "manufacturer",
                 "sourceType": "official_exact_model_pdf",
-                "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
-                "finalUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
+                "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+                "finalUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
                 "redirectChain": [],
-                "retrievedAt": "2026-07-16T01:46:53.074Z",
-                "contentSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
-                "objectPath": "evidence/web/sha256/77/b8/77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc.pdf",
+                "retrievedAt": "2026-07-16T02:19:45.076Z",
+                "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+                "objectPath": "evidence/web/sha256/89/a1/89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7.pdf",
                 "contentType": "application/pdf",
-                "byteSize": 198976,
+                "byteSize": 85435,
                 "supersedesContentSha256": [],
                 "identity": {
                   "brand": "Hisense",
-                  "model": "HRCF300",
-                  "outcome": "exact"
-                },
-                "claims": [
-                  {
-                    "field": "closedEnvelope.widthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 1114
-                    },
-                    "sourceLabel": "Width (Net With handle dimensions)",
-                    "sourceAxisOrder": [
-                      "width",
-                      "depth",
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": true,
-                    "page": 1,
-                    "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e",
-                    "bbox": [
-                      129,
-                      753,
-                      643,
-                      847
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 847
-                    },
-                    "sourceLabel": "Height (Net With handle dimensions)",
-                    "sourceAxisOrder": [
-                      "width",
-                      "depth",
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": true,
-                    "page": 1,
-                    "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e",
-                    "bbox": [
-                      129,
-                      753,
-                      643,
-                      847
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 630
-                    },
-                    "sourceLabel": "Depth (Net With handle dimensions)",
-                    "sourceAxisOrder": [
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": true,
-                    "page": 1,
-                    "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e",
-                    "bbox": [
-                      129,
-                      753,
-                      643,
-                      847
-                    ]
-                  }
-                ],
-                "derivedArtifact": {
-                  "schemaVersion": 1,
-                  "format": "content_list_v2",
-                  "parserName": "MinerU",
-                  "parserVersion": "3.4.4",
-                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-                  "backend": "pipeline",
-                  "method": "auto",
-                  "tableEnabled": true,
-                  "formulaEnabled": false,
-                  "sourcePdfSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
-                  "contentSha256": "904ab687ec8a4289429fcec49796d27e8f278aaacbbe3d95bbfbc7d8666ea943",
-                  "objectPath": "evidence/derived/mineru-json/sha256/90/4a/904ab687ec8a4289429fcec49796d27e8f278aaacbbe3d95bbfbc7d8666ea943.json",
-                  "byteSize": 18054,
-                  "pageCount": 1
-                },
-                "identitySignals": [
-                  {
-                    "type": "mineru_body_model",
-                    "value": "HRCF300:page:1:07fafac86f8f4bb77072ed3983838b1504b688de0eb42da109642efdf8d7948a"
-                  },
-                  {
-                    "type": "mineru_hisense_exact_spec_document_url",
-                    "value": "HRCF300:https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0"
-                  },
-                  {
-                    "type": "mineru_hisense_exact_spec_identity",
-                    "value": "HRCF300:07fafac86f8f4bb77072ed3983838b1504b688de0eb42da109642efdf8d7948a"
-                  },
-                  {
-                    "type": "mineru_hisense_legacy_net_box_dimensions",
-                    "value": "HRCF300:page:1:d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e"
-                  },
-                  {
-                    "type": "source_url_exact_model",
-                    "value": "HRCF300:https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0"
-                  },
-                  {
-                    "type": "pdf_source_url_model",
-                    "value": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0"
-                  }
-                ],
-                "verificationReceipt": {
-                  "schemaVersion": 3,
-                  "claimSemanticsVersion": 2,
-                  "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-16.1",
-                  "verifiedAt": "2026-07-16T01:46:53.074Z",
-                  "bindingSha256": "4a4cb7687cdf213bbd8604419f601e6b5dc4a3e3be901daf791a599885079734"
-                }
-              }
-            }
-          }
-        ],
-        "candidateInventorySha256": "d832f3d34477e1d20cd09b2b5b52916e98fff05f0da8e1a321e6550ab7370275"
-      },
-      "sources": [
-        {
-          "authority": "manufacturer",
-          "sourceType": "official_exact_model_pdf",
-          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
-          "finalUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
-          "redirectChain": [],
-          "retrievedAt": "2026-07-16T01:46:53.074Z",
-          "contentSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
-          "objectPath": "evidence/web/sha256/77/b8/77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc.pdf",
-          "contentType": "application/pdf",
-          "byteSize": 198976,
-          "supersedesContentSha256": [],
-          "identity": {
-            "brand": "Hisense",
-            "model": "HRCF300",
-            "outcome": "exact"
-          },
-          "claims": [
-            {
-              "field": "closedEnvelope.widthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 1114
-              },
-              "sourceLabel": "Width (Net With handle dimensions)",
-              "sourceAxisOrder": [
-                "width",
-                "depth",
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": true,
-              "page": 1,
-              "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e",
-              "bbox": [
-                129,
-                753,
-                643,
-                847
-              ]
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 847
-              },
-              "sourceLabel": "Height (Net With handle dimensions)",
-              "sourceAxisOrder": [
-                "width",
-                "depth",
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": true,
-              "page": 1,
-              "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e",
-              "bbox": [
-                129,
-                753,
-                643,
-                847
-              ]
-            },
-            {
-              "field": "closedEnvelope.depthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 630
-              },
-              "sourceLabel": "Depth (Net With handle dimensions)",
-              "sourceAxisOrder": [
-                "depth"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": true,
-              "page": 1,
-              "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e",
-              "bbox": [
-                129,
-                753,
-                643,
-                847
-              ]
-            }
-          ],
-          "derivedArtifact": {
-            "schemaVersion": 1,
-            "format": "content_list_v2",
-            "parserName": "MinerU",
-            "parserVersion": "3.4.4",
-            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-            "backend": "pipeline",
-            "method": "auto",
-            "tableEnabled": true,
-            "formulaEnabled": false,
-            "sourcePdfSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
-            "contentSha256": "904ab687ec8a4289429fcec49796d27e8f278aaacbbe3d95bbfbc7d8666ea943",
-            "objectPath": "evidence/derived/mineru-json/sha256/90/4a/904ab687ec8a4289429fcec49796d27e8f278aaacbbe3d95bbfbc7d8666ea943.json",
-            "byteSize": 18054,
-            "pageCount": 1
-          },
-          "identitySignals": [
-            {
-              "type": "mineru_body_model",
-              "value": "HRCF300:page:1:07fafac86f8f4bb77072ed3983838b1504b688de0eb42da109642efdf8d7948a"
-            },
-            {
-              "type": "mineru_hisense_exact_spec_document_url",
-              "value": "HRCF300:https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0"
-            },
-            {
-              "type": "mineru_hisense_exact_spec_identity",
-              "value": "HRCF300:07fafac86f8f4bb77072ed3983838b1504b688de0eb42da109642efdf8d7948a"
-            },
-            {
-              "type": "mineru_hisense_legacy_net_box_dimensions",
-              "value": "HRCF300:page:1:d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e"
-            },
-            {
-              "type": "source_url_exact_model",
-              "value": "HRCF300:https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0"
-            },
-            {
-              "type": "pdf_source_url_model",
-              "value": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0"
-            }
-          ],
-          "verificationReceipt": {
-            "schemaVersion": 3,
-            "claimSemanticsVersion": 2,
-            "policyVersion": "2026-07-13.1",
-            "manufacturerPolicyVersion": "2026-07-16.1",
-            "verifiedAt": "2026-07-16T01:46:53.074Z",
-            "bindingSha256": "4a4cb7687cdf213bbd8604419f601e6b5dc4a3e3be901daf791a599885079734"
-          }
-        }
-      ],
-      "geometryProjection": {
-        "geometry": {
-          "closedEnvelope": {
-            "widthMm": 1114,
-            "heightMm": {
-              "minimumMm": 847,
-              "maximumMm": 847
-            },
-            "depthMm": 630
-          },
-          "installation": {
-            "leftMm": null,
-            "rightMm": null,
-            "topMm": null,
-            "rearMm": null,
-            "frontMm": null
-          },
-          "operation": {
-            "doorOpenDepthMm": null,
-            "hingeSideSpaceMm": null,
-            "lidOpenHeightMm": null
-          },
-          "delivery": {
-            "widthMm": null,
-            "heightMm": null,
-            "depthMm": null
-          },
-          "category": "fridge",
-          "formFactor": null,
-          "service": {
-            "plumbingRearMm": null,
-            "rearServicesMm": null,
-            "rearVentilationMm": null
-          }
-        },
-        "fieldEvidence": {
-          "closedEnvelope.widthMm": {
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
-            "contentSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
-            "receiptBindingSha256": "4a4cb7687cdf213bbd8604419f601e6b5dc4a3e3be901daf791a599885079734",
-            "page": 1,
-            "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e"
-          },
-          "closedEnvelope.heightMm": {
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
-            "contentSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
-            "receiptBindingSha256": "4a4cb7687cdf213bbd8604419f601e6b5dc4a3e3be901daf791a599885079734",
-            "page": 1,
-            "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e"
-          },
-          "closedEnvelope.depthMm": {
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
-            "contentSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
-            "receiptBindingSha256": "4a4cb7687cdf213bbd8604419f601e6b5dc4a3e3be901daf791a599885079734",
-            "page": 1,
-            "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e"
-          }
-        },
-        "evidenceLevel": "dimensions",
-        "requiredInstallationEnvelope": null,
-        "missingForVerifiedFit": [
-          "installation.leftMm",
-          "installation.rearMm",
-          "installation.rightMm",
-          "installation.topMm"
-        ],
-        "verifiedFitEligible": false,
-        "successfulFitOutcome": "INSUFFICIENT_DATA",
-        "activeSourceHashes": [
-          "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc"
-        ]
-      },
-      "reconciliation": {
-        "conflictingFields": [],
-        "conflictHints": [],
-        "missingFields": [],
-        "supersessionViolations": [],
-        "axisPermutationResolution": null,
-        "lowerAuthorityResolution": null,
-        "conflictReason": null
-      },
-      "semanticOutcomeSha256": "09ed892780d18d26a09ce1ca7cf7296ee7fd167c33665378e9cba0c15634ee72"
-    },
-    {
-      "targetId": "recovery_target_990b53da26472cb0b6d689dd",
-      "status": "accepted",
-      "failureCode": null,
-      "candidateInventorySha256": "2c458a5e1d0b1ad3061895485e898141292e3475a68c1805155145de92749ef9",
-      "candidateInventory": {
-        "schemaVersion": 1,
-        "targetId": "recovery_target_990b53da26472cb0b6d689dd",
-        "identity": {
-          "brand": "Hisense",
-          "model": "HRCD585BWB",
-          "category": "fridge"
-        },
-        "completionStatus": "complete",
-        "incompleteResolvers": [],
-        "missingBatchCandidateJobIds": [],
-        "resolvers": [
-          {
-            "resolverId": "architecture-v2-core-official-discovery",
-            "version": "1",
-            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": false,
-            "completion": "complete",
-            "candidateCount": 0
-          },
-          {
-            "resolverId": "batch-candidates",
-            "version": "1",
-            "scope": "recovery_batch_graph",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 0
-          },
-          {
-            "resolverId": "hisense-official-discovery",
-            "version": "1",
-            "scope": "hisense_legacy_discovery_only",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 2
-          }
-        ],
-        "activeReceiptSources": [],
-        "candidates": [
-          {
-            "candidateId": "candidate_387f83ce60235bbab6a74b32",
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": null,
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "hisense-official-discovery",
-                "version": "1",
-                "scope": "hisense_legacy_discovery_only",
-                "discoveryMethod": "hisense_legacy_finder",
-                "sourceRole": "manufacturer_document",
-                "order": 0
-              }
-            ],
-            "outcome": {
-              "status": "accepted",
-              "failureCode": null,
-              "source": {
-                "authority": "manufacturer",
-                "sourceType": "official_exact_model_pdf",
-                "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
-                "finalUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
-                "redirectChain": [],
-                "retrievedAt": "2026-07-16T01:46:53.481Z",
-                "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
-                "objectPath": "evidence/web/sha256/16/de/16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0.pdf",
-                "contentType": "application/pdf",
-                "byteSize": 180111,
-                "supersedesContentSha256": [],
-                "identity": {
-                  "brand": "Hisense",
-                  "model": "HRCD585BWB",
+                  "model": "HRCD610TS",
                   "outcome": "exact"
                 },
                 "claims": [
@@ -574,12 +133,12 @@
                     "includesDoor": null,
                     "includesHandle": true,
                     "page": 2,
-                    "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77",
+                    "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e",
                     "bbox": [
                       80,
-                      59,
-                      880,
-                      461
+                      84,
+                      872,
+                      649
                     ]
                   },
                   {
@@ -599,12 +158,12 @@
                     "includesDoor": null,
                     "includesHandle": true,
                     "page": 2,
-                    "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77",
+                    "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e",
                     "bbox": [
                       80,
-                      59,
-                      880,
-                      461
+                      84,
+                      872,
+                      649
                     ]
                   },
                   {
@@ -622,12 +181,12 @@
                     "includesDoor": null,
                     "includesHandle": true,
                     "page": 2,
-                    "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77",
+                    "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e",
                     "bbox": [
                       80,
-                      59,
-                      880,
-                      461
+                      84,
+                      872,
+                      649
                     ]
                   }
                 ],
@@ -636,41 +195,52 @@
                   "format": "content_list_v2",
                   "parserName": "MinerU",
                   "parserVersion": "3.4.4",
-                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-                  "backend": "pipeline",
+                  "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+                  "backend": "hybrid-engine",
                   "method": "auto",
                   "tableEnabled": true,
                   "formulaEnabled": false,
-                  "sourcePdfSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
-                  "contentSha256": "5c4797c758b5c53ead8f7b6d32d0689a259e23773da719ba324fedda00f4f328",
-                  "objectPath": "evidence/derived/mineru-json/sha256/5c/47/5c4797c758b5c53ead8f7b6d32d0689a259e23773da719ba324fedda00f4f328.json",
-                  "byteSize": 17083,
-                  "pageCount": 2
+                  "sourcePdfSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+                  "contentSha256": "19389a860f415b2c8f973377bf66332e16da48d8944efee857a1d5d3ee7567f0",
+                  "objectPath": "evidence/derived/mineru-json/sha256/19/38/19389a860f415b2c8f973377bf66332e16da48d8944efee857a1d5d3ee7567f0.json",
+                  "byteSize": 7449,
+                  "pageCount": 2,
+                  "profileId": "hybrid-image-high-v1",
+                  "effort": "high",
+                  "imageAnalysis": true,
+                  "processedPages": [
+                    2
+                  ],
+                  "sourcePageCount": 2,
+                  "fallbackTrigger": {
+                    "profileId": "pipeline-auto-v1",
+                    "contentSha256": "02e569e27ff52ba6ca42b4612640d3f1eed2fe4f9cfe8fb2b22d45e7337ccc42",
+                    "objectPath": "evidence/derived/mineru-json/sha256/02/e5/02e569e27ff52ba6ca42b4612640d3f1eed2fe4f9cfe8fb2b22d45e7337ccc42.json",
+                    "pages": [
+                      2
+                    ]
+                  }
                 },
                 "identitySignals": [
                   {
-                    "type": "mineru_hisense_exact_spec_document_url",
-                    "value": "HRCD585BWB:https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA"
-                  },
-                  {
-                    "type": "mineru_hisense_exact_spec_identity",
-                    "value": "HRCD585BWB:74ea9c08cd260dc461426fae9295c67b2a534a298bb1914866848b9227113295"
+                    "type": "mineru_list_model",
+                    "value": "HRCD610TS:page:1:3bf4e5babbf3c774daa1d8a770348a21176d425df60e9935a72d0d3d8369318e"
                   },
                   {
                     "type": "mineru_hisense_legacy_net_box_dimensions",
-                    "value": "HRCD585BWB:page:2:314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77"
+                    "value": "HRCD610TS:page:2:6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
                   },
                   {
-                    "type": "mineru_title_model",
-                    "value": "HRCD585BWB:page:1"
+                    "type": "mineru_hisense_exact_spec_document_url",
+                    "value": "HRCD610TS:https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk"
                   },
                   {
-                    "type": "source_url_exact_model",
-                    "value": "HRCD585BWB:https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA"
+                    "type": "mineru_hisense_exact_spec_identity",
+                    "value": "HRCD610TS:3bf4e5babbf3c774daa1d8a770348a21176d425df60e9935a72d0d3d8369318e,87c933ee43c43cd587519f026308dd5fa6147e9ca4b4dcdc79f9a31afc3fd6dd"
                   },
                   {
                     "type": "pdf_source_url_model",
-                    "value": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA"
+                    "value": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk"
                   }
                 ],
                 "verificationReceipt": {
@@ -678,55 +248,31 @@
                   "claimSemanticsVersion": 2,
                   "policyVersion": "2026-07-13.1",
                   "manufacturerPolicyVersion": "2026-07-16.1",
-                  "verifiedAt": "2026-07-16T01:46:53.481Z",
-                  "bindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f"
+                  "verifiedAt": "2026-07-16T02:19:45.076Z",
+                  "bindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190"
                 }
               }
             }
-          },
-          {
-            "candidateId": "candidate_ef1446e980acd416b00bb73d",
-            "sourceUrl": "https://hisense.com.au/product/HRCD585BWB/french-door-pureflat-eclipse-black-steel-585l",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_product_page",
-            "requiredAttempt": false,
-            "discoveryProvenance": null,
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "hisense-official-discovery",
-                "version": "1",
-                "scope": "hisense_legacy_discovery_only",
-                "discoveryMethod": "hisense_legacy_finder",
-                "sourceRole": "manufacturer_product_page",
-                "order": 1
-              }
-            ],
-            "outcome": {
-              "status": "not_attempted_optional",
-              "failureCode": null,
-              "source": null
-            }
           }
         ],
-        "candidateInventorySha256": "2c458a5e1d0b1ad3061895485e898141292e3475a68c1805155145de92749ef9"
+        "candidateInventorySha256": "1093f212826edfd0a731f9cd08be083c67e09e8e8b8fba55087f901a7c48a59b"
       },
       "sources": [
         {
           "authority": "manufacturer",
           "sourceType": "official_exact_model_pdf",
-          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
-          "finalUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+          "finalUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
           "redirectChain": [],
-          "retrievedAt": "2026-07-16T01:46:53.481Z",
-          "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
-          "objectPath": "evidence/web/sha256/16/de/16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0.pdf",
+          "retrievedAt": "2026-07-16T02:19:45.076Z",
+          "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+          "objectPath": "evidence/web/sha256/89/a1/89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7.pdf",
           "contentType": "application/pdf",
-          "byteSize": 180111,
+          "byteSize": 85435,
           "supersedesContentSha256": [],
           "identity": {
             "brand": "Hisense",
-            "model": "HRCD585BWB",
+            "model": "HRCD610TS",
             "outcome": "exact"
           },
           "claims": [
@@ -747,12 +293,12 @@
               "includesDoor": null,
               "includesHandle": true,
               "page": 2,
-              "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77",
+              "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e",
               "bbox": [
                 80,
-                59,
-                880,
-                461
+                84,
+                872,
+                649
               ]
             },
             {
@@ -772,12 +318,12 @@
               "includesDoor": null,
               "includesHandle": true,
               "page": 2,
-              "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77",
+              "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e",
               "bbox": [
                 80,
-                59,
-                880,
-                461
+                84,
+                872,
+                649
               ]
             },
             {
@@ -795,12 +341,12 @@
               "includesDoor": null,
               "includesHandle": true,
               "page": 2,
-              "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77",
+              "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e",
               "bbox": [
                 80,
-                59,
-                880,
-                461
+                84,
+                872,
+                649
               ]
             }
           ],
@@ -809,41 +355,52 @@
             "format": "content_list_v2",
             "parserName": "MinerU",
             "parserVersion": "3.4.4",
-            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-            "backend": "pipeline",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
             "method": "auto",
             "tableEnabled": true,
             "formulaEnabled": false,
-            "sourcePdfSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
-            "contentSha256": "5c4797c758b5c53ead8f7b6d32d0689a259e23773da719ba324fedda00f4f328",
-            "objectPath": "evidence/derived/mineru-json/sha256/5c/47/5c4797c758b5c53ead8f7b6d32d0689a259e23773da719ba324fedda00f4f328.json",
-            "byteSize": 17083,
-            "pageCount": 2
+            "sourcePdfSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+            "contentSha256": "19389a860f415b2c8f973377bf66332e16da48d8944efee857a1d5d3ee7567f0",
+            "objectPath": "evidence/derived/mineru-json/sha256/19/38/19389a860f415b2c8f973377bf66332e16da48d8944efee857a1d5d3ee7567f0.json",
+            "byteSize": 7449,
+            "pageCount": 2,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              2
+            ],
+            "sourcePageCount": 2,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "02e569e27ff52ba6ca42b4612640d3f1eed2fe4f9cfe8fb2b22d45e7337ccc42",
+              "objectPath": "evidence/derived/mineru-json/sha256/02/e5/02e569e27ff52ba6ca42b4612640d3f1eed2fe4f9cfe8fb2b22d45e7337ccc42.json",
+              "pages": [
+                2
+              ]
+            }
           },
           "identitySignals": [
             {
-              "type": "mineru_hisense_exact_spec_document_url",
-              "value": "HRCD585BWB:https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA"
-            },
-            {
-              "type": "mineru_hisense_exact_spec_identity",
-              "value": "HRCD585BWB:74ea9c08cd260dc461426fae9295c67b2a534a298bb1914866848b9227113295"
+              "type": "mineru_list_model",
+              "value": "HRCD610TS:page:1:3bf4e5babbf3c774daa1d8a770348a21176d425df60e9935a72d0d3d8369318e"
             },
             {
               "type": "mineru_hisense_legacy_net_box_dimensions",
-              "value": "HRCD585BWB:page:2:314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77"
+              "value": "HRCD610TS:page:2:6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
             },
             {
-              "type": "mineru_title_model",
-              "value": "HRCD585BWB:page:1"
+              "type": "mineru_hisense_exact_spec_document_url",
+              "value": "HRCD610TS:https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk"
             },
             {
-              "type": "source_url_exact_model",
-              "value": "HRCD585BWB:https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA"
+              "type": "mineru_hisense_exact_spec_identity",
+              "value": "HRCD610TS:3bf4e5babbf3c774daa1d8a770348a21176d425df60e9935a72d0d3d8369318e,87c933ee43c43cd587519f026308dd5fa6147e9ca4b4dcdc79f9a31afc3fd6dd"
             },
             {
               "type": "pdf_source_url_model",
-              "value": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA"
+              "value": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk"
             }
           ],
           "verificationReceipt": {
@@ -851,8 +408,8 @@
             "claimSemanticsVersion": 2,
             "policyVersion": "2026-07-13.1",
             "manufacturerPolicyVersion": "2026-07-16.1",
-            "verifiedAt": "2026-07-16T01:46:53.481Z",
-            "bindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f"
+            "verifiedAt": "2026-07-16T02:19:45.076Z",
+            "bindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190"
           }
         }
       ],
@@ -893,25 +450,25 @@
         },
         "fieldEvidence": {
           "closedEnvelope.widthMm": {
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
-            "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
-            "receiptBindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f",
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+            "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+            "receiptBindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190",
             "page": 2,
-            "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77"
+            "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
           },
           "closedEnvelope.heightMm": {
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
-            "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
-            "receiptBindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f",
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+            "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+            "receiptBindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190",
             "page": 2,
-            "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77"
+            "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
           },
           "closedEnvelope.depthMm": {
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
-            "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
-            "receiptBindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f",
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+            "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+            "receiptBindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190",
             "page": 2,
-            "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77"
+            "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
           }
         },
         "evidenceLevel": "dimensions",
@@ -925,7 +482,7 @@
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0"
+          "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7"
         ]
       },
       "reconciliation": {
@@ -937,491 +494,12 @@
         "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "44c312e312b1753b629defe062a7c0ddbb898f0c2cb6e15d74ddad29b9b653b3"
-    },
-    {
-      "targetId": "recovery_target_ff2a7ec908dd16cfd3730fee",
-      "status": "accepted",
-      "failureCode": null,
-      "candidateInventorySha256": "5ed2d6b5a2e26323dd0ae94cc5650eb713ac89eae677eaa025653659254bf912",
-      "candidateInventory": {
-        "schemaVersion": 1,
-        "targetId": "recovery_target_ff2a7ec908dd16cfd3730fee",
-        "identity": {
-          "brand": "Hisense",
-          "model": "HRBC140",
-          "category": "fridge"
-        },
-        "completionStatus": "complete",
-        "incompleteResolvers": [],
-        "missingBatchCandidateJobIds": [],
-        "resolvers": [
-          {
-            "resolverId": "architecture-v2-core-official-discovery",
-            "version": "1",
-            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": false,
-            "completion": "complete",
-            "candidateCount": 0
-          },
-          {
-            "resolverId": "batch-candidates",
-            "version": "1",
-            "scope": "recovery_batch_graph",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 0
-          },
-          {
-            "resolverId": "hisense-official-discovery",
-            "version": "1",
-            "scope": "hisense_legacy_discovery_only",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 2
-          }
-        ],
-        "activeReceiptSources": [],
-        "candidates": [
-          {
-            "candidateId": "candidate_3f0a6778bed5257f6f2d0926",
-            "sourceUrl": "https://hisense.com.au/product/HRBC140/140-can-beverage-chiller",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_product_page",
-            "requiredAttempt": false,
-            "discoveryProvenance": null,
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "hisense-official-discovery",
-                "version": "1",
-                "scope": "hisense_legacy_discovery_only",
-                "discoveryMethod": "hisense_legacy_finder",
-                "sourceRole": "manufacturer_product_page",
-                "order": 1
-              }
-            ],
-            "outcome": {
-              "status": "not_attempted_optional",
-              "failureCode": null,
-              "source": null
-            }
-          },
-          {
-            "candidateId": "candidate_61cb5df8e14df819c5e736d8",
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": null,
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "hisense-official-discovery",
-                "version": "1",
-                "scope": "hisense_legacy_discovery_only",
-                "discoveryMethod": "hisense_legacy_finder",
-                "sourceRole": "manufacturer_document",
-                "order": 0
-              }
-            ],
-            "outcome": {
-              "status": "accepted",
-              "failureCode": null,
-              "source": {
-                "authority": "manufacturer",
-                "sourceType": "official_exact_model_pdf",
-                "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
-                "finalUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
-                "redirectChain": [],
-                "retrievedAt": "2026-07-16T01:46:53.740Z",
-                "contentSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
-                "objectPath": "evidence/web/sha256/11/94/11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed.pdf",
-                "contentType": "application/pdf",
-                "byteSize": 204368,
-                "supersedesContentSha256": [],
-                "identity": {
-                  "brand": "Hisense",
-                  "model": "HRBC140",
-                  "outcome": "exact"
-                },
-                "claims": [
-                  {
-                    "field": "closedEnvelope.widthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 595
-                    },
-                    "sourceLabel": "Width (Net With handle dimensions)",
-                    "sourceAxisOrder": [
-                      "width",
-                      "depth",
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": true,
-                    "page": 1,
-                    "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c",
-                    "bbox": [
-                      136,
-                      815,
-                      650,
-                      921
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 862
-                    },
-                    "sourceLabel": "Height (Net With handle dimensions)",
-                    "sourceAxisOrder": [
-                      "width",
-                      "depth",
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": true,
-                    "page": 1,
-                    "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c",
-                    "bbox": [
-                      136,
-                      815,
-                      650,
-                      921
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 647
-                    },
-                    "sourceLabel": "Depth (Net With handle dimensions)",
-                    "sourceAxisOrder": [
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": true,
-                    "page": 1,
-                    "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c",
-                    "bbox": [
-                      136,
-                      815,
-                      650,
-                      921
-                    ]
-                  }
-                ],
-                "derivedArtifact": {
-                  "schemaVersion": 1,
-                  "format": "content_list_v2",
-                  "parserName": "MinerU",
-                  "parserVersion": "3.4.4",
-                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-                  "backend": "pipeline",
-                  "method": "auto",
-                  "tableEnabled": true,
-                  "formulaEnabled": false,
-                  "sourcePdfSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
-                  "contentSha256": "7eaf80802a8dc6416c249a0def0011926875fe8e217b04117bd00f74c9ae244b",
-                  "objectPath": "evidence/derived/mineru-json/sha256/7e/af/7eaf80802a8dc6416c249a0def0011926875fe8e217b04117bd00f74c9ae244b.json",
-                  "byteSize": 19807,
-                  "pageCount": 1
-                },
-                "identitySignals": [
-                  {
-                    "type": "mineru_body_model",
-                    "value": "HRBC140:page:1:d967f14808c01a6602cb5b72102a5c122e6d3c419e1faa9ffbfe2bdc040c8263"
-                  },
-                  {
-                    "type": "mineru_hisense_exact_spec_document_url",
-                    "value": "HRBC140:https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5"
-                  },
-                  {
-                    "type": "mineru_hisense_exact_spec_identity",
-                    "value": "HRBC140:d967f14808c01a6602cb5b72102a5c122e6d3c419e1faa9ffbfe2bdc040c8263"
-                  },
-                  {
-                    "type": "mineru_hisense_legacy_net_box_dimensions",
-                    "value": "HRBC140:page:1:a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c"
-                  },
-                  {
-                    "type": "source_url_exact_model",
-                    "value": "HRBC140:https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5"
-                  },
-                  {
-                    "type": "pdf_source_url_model",
-                    "value": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5"
-                  }
-                ],
-                "verificationReceipt": {
-                  "schemaVersion": 3,
-                  "claimSemanticsVersion": 2,
-                  "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-16.1",
-                  "verifiedAt": "2026-07-16T01:46:53.740Z",
-                  "bindingSha256": "8c61adb3858814da3b67c5e46e95fe32d8cf042cd5fe36af6c1b68a81b0dfef9"
-                }
-              }
-            }
-          }
-        ],
-        "candidateInventorySha256": "5ed2d6b5a2e26323dd0ae94cc5650eb713ac89eae677eaa025653659254bf912"
-      },
-      "sources": [
-        {
-          "authority": "manufacturer",
-          "sourceType": "official_exact_model_pdf",
-          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
-          "finalUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
-          "redirectChain": [],
-          "retrievedAt": "2026-07-16T01:46:53.740Z",
-          "contentSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
-          "objectPath": "evidence/web/sha256/11/94/11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed.pdf",
-          "contentType": "application/pdf",
-          "byteSize": 204368,
-          "supersedesContentSha256": [],
-          "identity": {
-            "brand": "Hisense",
-            "model": "HRBC140",
-            "outcome": "exact"
-          },
-          "claims": [
-            {
-              "field": "closedEnvelope.widthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 595
-              },
-              "sourceLabel": "Width (Net With handle dimensions)",
-              "sourceAxisOrder": [
-                "width",
-                "depth",
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": true,
-              "page": 1,
-              "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c",
-              "bbox": [
-                136,
-                815,
-                650,
-                921
-              ]
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 862
-              },
-              "sourceLabel": "Height (Net With handle dimensions)",
-              "sourceAxisOrder": [
-                "width",
-                "depth",
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": true,
-              "page": 1,
-              "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c",
-              "bbox": [
-                136,
-                815,
-                650,
-                921
-              ]
-            },
-            {
-              "field": "closedEnvelope.depthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 647
-              },
-              "sourceLabel": "Depth (Net With handle dimensions)",
-              "sourceAxisOrder": [
-                "depth"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": true,
-              "page": 1,
-              "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c",
-              "bbox": [
-                136,
-                815,
-                650,
-                921
-              ]
-            }
-          ],
-          "derivedArtifact": {
-            "schemaVersion": 1,
-            "format": "content_list_v2",
-            "parserName": "MinerU",
-            "parserVersion": "3.4.4",
-            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-            "backend": "pipeline",
-            "method": "auto",
-            "tableEnabled": true,
-            "formulaEnabled": false,
-            "sourcePdfSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
-            "contentSha256": "7eaf80802a8dc6416c249a0def0011926875fe8e217b04117bd00f74c9ae244b",
-            "objectPath": "evidence/derived/mineru-json/sha256/7e/af/7eaf80802a8dc6416c249a0def0011926875fe8e217b04117bd00f74c9ae244b.json",
-            "byteSize": 19807,
-            "pageCount": 1
-          },
-          "identitySignals": [
-            {
-              "type": "mineru_body_model",
-              "value": "HRBC140:page:1:d967f14808c01a6602cb5b72102a5c122e6d3c419e1faa9ffbfe2bdc040c8263"
-            },
-            {
-              "type": "mineru_hisense_exact_spec_document_url",
-              "value": "HRBC140:https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5"
-            },
-            {
-              "type": "mineru_hisense_exact_spec_identity",
-              "value": "HRBC140:d967f14808c01a6602cb5b72102a5c122e6d3c419e1faa9ffbfe2bdc040c8263"
-            },
-            {
-              "type": "mineru_hisense_legacy_net_box_dimensions",
-              "value": "HRBC140:page:1:a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c"
-            },
-            {
-              "type": "source_url_exact_model",
-              "value": "HRBC140:https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5"
-            },
-            {
-              "type": "pdf_source_url_model",
-              "value": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5"
-            }
-          ],
-          "verificationReceipt": {
-            "schemaVersion": 3,
-            "claimSemanticsVersion": 2,
-            "policyVersion": "2026-07-13.1",
-            "manufacturerPolicyVersion": "2026-07-16.1",
-            "verifiedAt": "2026-07-16T01:46:53.740Z",
-            "bindingSha256": "8c61adb3858814da3b67c5e46e95fe32d8cf042cd5fe36af6c1b68a81b0dfef9"
-          }
-        }
-      ],
-      "geometryProjection": {
-        "geometry": {
-          "closedEnvelope": {
-            "widthMm": 595,
-            "heightMm": {
-              "minimumMm": 862,
-              "maximumMm": 862
-            },
-            "depthMm": 647
-          },
-          "installation": {
-            "leftMm": null,
-            "rightMm": null,
-            "topMm": null,
-            "rearMm": null,
-            "frontMm": null
-          },
-          "operation": {
-            "doorOpenDepthMm": null,
-            "hingeSideSpaceMm": null,
-            "lidOpenHeightMm": null
-          },
-          "delivery": {
-            "widthMm": null,
-            "heightMm": null,
-            "depthMm": null
-          },
-          "category": "fridge",
-          "formFactor": null,
-          "service": {
-            "plumbingRearMm": null,
-            "rearServicesMm": null,
-            "rearVentilationMm": null
-          }
-        },
-        "fieldEvidence": {
-          "closedEnvelope.widthMm": {
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
-            "contentSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
-            "receiptBindingSha256": "8c61adb3858814da3b67c5e46e95fe32d8cf042cd5fe36af6c1b68a81b0dfef9",
-            "page": 1,
-            "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c"
-          },
-          "closedEnvelope.heightMm": {
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
-            "contentSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
-            "receiptBindingSha256": "8c61adb3858814da3b67c5e46e95fe32d8cf042cd5fe36af6c1b68a81b0dfef9",
-            "page": 1,
-            "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c"
-          },
-          "closedEnvelope.depthMm": {
-            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
-            "contentSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
-            "receiptBindingSha256": "8c61adb3858814da3b67c5e46e95fe32d8cf042cd5fe36af6c1b68a81b0dfef9",
-            "page": 1,
-            "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c"
-          }
-        },
-        "evidenceLevel": "dimensions",
-        "requiredInstallationEnvelope": null,
-        "missingForVerifiedFit": [
-          "installation.leftMm",
-          "installation.rearMm",
-          "installation.rightMm",
-          "installation.topMm"
-        ],
-        "verifiedFitEligible": false,
-        "successfulFitOutcome": "INSUFFICIENT_DATA",
-        "activeSourceHashes": [
-          "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed"
-        ]
-      },
-      "reconciliation": {
-        "conflictingFields": [],
-        "conflictHints": [
-          {
-            "sourceRole": "registry_hint",
-            "sourceId": "energy-rating:fridge",
-            "kind": "lower_authority_disagreement",
-            "fields": [
-              "depthMm"
-            ],
-            "dimensionsMm": {
-              "widthMm": 595,
-              "heightMm": 862,
-              "depthMm": 600
-            }
-          }
-        ],
-        "missingFields": [],
-        "supersessionViolations": [],
-        "axisPermutationResolution": null,
-        "lowerAuthorityResolution": "exact_official_scoped_depth_over_registry_hint",
-        "conflictReason": null
-      },
-      "semanticOutcomeSha256": "e9d8d855c11ec0da100b4f47280d2149d50690c27a7c2bb4d1282974af289dca"
+      "semanticOutcomeSha256": "3528a1b6145aaf34c1ff9f5cc4cf054d059d1945ca0beccfe8e4b319ba4d7164"
     }
   ],
   "summary": {
-    "targets": 3,
-    "accepted": 3,
+    "targets": 1,
+    "accepted": 1,
     "nonScalar": 0,
     "retryable": 0,
     "terminal": 0

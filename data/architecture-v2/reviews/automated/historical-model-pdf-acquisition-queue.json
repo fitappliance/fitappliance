@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T01:51:22.474Z",
-  "semanticQueueSha256": "1a17296fbaf89c4dee8be1cb9735676ae9134bd6da6e862fac8e0bada3373af4",
-  "sourceClassificationSha256": "b87ed27c85c5c83c564cb4682ea47c7feb775eddb15f4f6652adc1ed7068a36e",
+  "generatedAt": "2026-07-16T02:38:22.910Z",
+  "semanticQueueSha256": "eedcb68b956a315a4efaf2a9ecdc356147308266b47645c44db828a90e80fa98",
+  "sourceClassificationSha256": "7b890c54e6dd965bb4160a113af934d542ba01480f93bba3372df9498442d7f1",
   "records": [
     {
       "schemaVersion": 1,
@@ -60507,37 +60507,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_e2a76b42542ce70c392cdf45"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_40e8247622d0691e8400eb7b",
-      "referenceId": "fa_ref_7f1ccb53d67541cf7a0fe03f",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD610TS",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCD610TS",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d7c20f8c56c70c53d3a5522d"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_667f135663cac363ca3da3a4"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3141"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_154f8b88ceee54f24d13e5c6"
       ],
       "offlineReplayOutcome": null
     },
@@ -213007,19 +212976,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_d7c20f8c56c70c53d3a5522d",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCD610TS.json",
-        "source:doc_c05c7143ebda6042eda05f5f"
-      ],
-      "referenceIds": [
-        "fa_ref_7f1ccb53d67541cf7a0fe03f"
-      ]
-    },
-    {
       "sourceId": "historical_source_d7d19a0bdbcb3ef488690b37",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/6/0/2/e/602e3e9771b703f127b0fb89896d2ade86ffa1aa_SRF825BFH4_Samsung_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -215819,46 +215775,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 205,
+    "COMPLETE_RECEIPT": 206,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7890,
-    "uniqueReferences": 7890,
-    "candidateSources": 1549,
-    "candidateEdges": 1584,
+    "queuedModels": 7889,
+    "uniqueReferences": 7889,
+    "candidateSources": 1548,
+    "candidateEdges": 1583,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2076,
+      "CATALOG_ARCHIVED": 2075,
       "CURRENT_RETAIL": 1251,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1370,
       "dryer": 815,
-      "fridge": 4236,
+      "fridge": 4235,
       "washing_machine": 1469
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 165,
+      "IDENTITY_RESEARCH": 164,
       "OFFICIAL_DISCOVERY": 6417,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 165,
+      "IDENTITY_CLOSURE": 164,
       "OFFICIAL_DISCOVERY": 6417,
       "OFFICIAL_REDISCOVERY": 1225
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5225,
+      "DISCOVERY_READY": 5224,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 205,
+      "COMPLETE_RECEIPT": 206,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

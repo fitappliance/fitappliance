@@ -1821,10 +1821,27 @@ function hisenseExactSpecIdentity(document, caseIdentity, sourceUrls, categories
   if (!/^[A-Z]{2,}[A-Z0-9]{3,}$/.test(target)) return null;
   const exactDocumentUrl = exactHisenseAuSpecUrl(sourceUrls, target);
   if (!exactDocumentUrl || siblingModelCandidates(document, target).length) return null;
-  const identityFragments = document.pages.flat().filter((fragment) => (
+  const directIdentityFragments = document.pages.flat().filter((fragment) => (
     ['title', 'page_header', 'paragraph', 'table'].includes(fragment.type)
       && containsExplicitModelExpression(fragment.identityText ?? fragment.text, target)
   ));
+  const pairedIdentityFragments = document.pages.flatMap((items) => {
+    const labels = items.filter((fragment) => (
+      ['paragraph', 'text', 'table'].includes(fragment.type)
+        && /\bmanufacturer\s+model\b/i.test(fragment.identityText ?? fragment.text)
+        && /\bdescription\b/i.test(fragment.identityText ?? fragment.text)
+    ));
+    const values = items.filter((fragment) => (
+      ['list', 'index'].includes(fragment.type)
+        && fragment.listEntries.length >= 2
+        && canonicalModel(fragment.listEntries[0]) === target
+    ));
+    return labels.length === 1 && values.length === 1 ? [labels[0], values[0]] : [];
+  });
+  const identityFragments = [...new Map([
+    ...directIdentityFragments,
+    ...pairedIdentityFragments,
+  ].map((fragment) => [fragment.fragmentSha256, fragment])).values()];
   if (!identityFragments.length) return null;
   return {
     target,
@@ -1832,6 +1849,19 @@ function hisenseExactSpecIdentity(document, caseIdentity, sourceUrls, categories
     identityFragmentSha256s: identityFragments
       .map((fragment) => fragment.fragmentSha256).sort(),
   };
+}
+
+function hisenseLegacyCandidateFragments(document, caseIdentity, sourceUrls) {
+  const identity = hisenseExactSpecIdentity(document, caseIdentity, sourceUrls, ['fridge']);
+  if (!identity) return new Set();
+  return new Set(document.pages.flat().filter((fragment) => {
+    if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return false;
+    const cellText = normalizedText(fragment.cells.flat().join(' '));
+    return /\bdimensions?\b/i.test(cellText)
+      && /\bnet\s+with\s+handle\b/i.test(cellText)
+      && /\bbox\b/i.test(cellText)
+      && /\bweight\b/i.test(cellText);
+  }));
 }
 
 const HISENSE_LEGACY_AXIS_ORDER = Object.freeze(['width', 'depth', 'height']);
@@ -1914,18 +1944,136 @@ function hisenseLegacyCollapsedTableRows(fragment) {
   ]);
 }
 
+function hisenseLegacyStructuredNetBoxRows(fragment) {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return [];
+  const sectionIndexes = fragment.cells.flatMap((cells, index) => (
+    /^dimensions$/i.test(normalizedText(cells.join(' '))) ? [index] : []
+  ));
+  if (sectionIndexes.length !== 1) return [];
+  const sectionIndex = sectionIndexes[0];
+  const rows = fragment.cells.slice(sectionIndex + 1, sectionIndex + 8);
+  if (rows.length !== 7) return [];
+
+  const parseAxis = (cells, scope = null) => {
+    const offset = scope == null ? 0 : 1;
+    if (cells.length !== 3 + offset
+      || (scope != null && !scope.test(normalizedText(cells[0])))) return null;
+    const axis = /^(Width|Depth|Height)$/i.exec(normalizedText(cells[offset]));
+    const unit = /^mm$/i.test(normalizedText(cells[offset + 1]));
+    const value = /^(\d+)$/.exec(normalizedText(cells[offset + 2]));
+    return axis && unit && value ? {
+      axis: axis[1].toLowerCase(),
+      sourceAxis: axis[1][0].toUpperCase() + axis[1].slice(1).toLowerCase(),
+      value: value[1],
+    } : null;
+  };
+  const net = [
+    parseAxis(rows[0], /^net\s+with\s+handle$/i),
+    parseAxis(rows[1]),
+    parseAxis(rows[2]),
+  ];
+  const box = [
+    parseAxis(rows[3], /^box$/i),
+    parseAxis(rows[4]),
+    parseAxis(rows[5]),
+  ];
+  const weight = rows[6];
+  if (net.some((entry) => !entry) || box.some((entry) => !entry)
+    || !net.every((entry, index) => entry.axis === HISENSE_LEGACY_AXIS_ORDER[index])
+    || !box.every((entry, index) => entry.axis === HISENSE_LEGACY_AXIS_ORDER[index])
+    || box.some((entry, index) => Number(entry.value) < Number(net[index].value))
+    || weight.length !== 4
+    || !/^weight$/i.test(normalizedText(weight[0]))
+    || !/^net\s*\/\s*gross$/i.test(normalizedText(weight[1]))
+    || !/^kg$/i.test(normalizedText(weight[2]))
+    || !/^\d+(?:\.\d+)?\s*\/\s*\d+(?:\.\d+)?$/.test(normalizedText(weight[3]))) {
+    return [];
+  }
+  return hisenseLegacyNetRows(net);
+}
+
+function hisenseLegacySplitAxisValueRows(fragment) {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return [];
+  const sectionIndexes = fragment.cells.flatMap((cells, index) => (
+    /^dimensions$/i.test(normalizedText(cells.join(' '))) ? [index] : []
+  ));
+  if (sectionIndexes.length !== 1) return [];
+  const rows = fragment.cells.slice(sectionIndexes[0] + 1, sectionIndexes[0] + 9);
+  if (rows.length !== 8) return [];
+  const [netStart, netTail, separator, boxWidth, boxStart, boxDepth, boxHeight, weight] = rows;
+  const width = netStart.length === 4
+    && /^net\s+with\s+handle$/i.test(normalizedText(netStart[0]))
+    && /^width\s+depth$/i.test(normalizedText(netStart[1]))
+    && /^mm$/i.test(normalizedText(netStart[2]))
+    ? /^(\d+)$/.exec(normalizedText(netStart[3]))
+    : null;
+  const depthHeight = netTail.length === 4
+    && normalizedText(netTail[0]) === ''
+    && /^height$/i.test(normalizedText(netTail[1]))
+    && /^mm\s+mm$/i.test(normalizedText(netTail[2]))
+    ? /^(\d+)\s+(\d+)$/.exec(normalizedText(netTail[3]))
+    : null;
+  const packagedWidth = boxWidth.length === 3
+    && /^width$/i.test(normalizedText(boxWidth[0]))
+    && /^mm$/i.test(normalizedText(boxWidth[1]))
+    ? /^(\d+)$/.exec(normalizedText(boxWidth[2]))
+    : null;
+  const packagedDepth = boxStart.length === 4
+    && /^box$/i.test(normalizedText(boxStart[0]))
+    && /^depth$/i.test(normalizedText(boxStart[1]))
+    && normalizedText(boxStart[2]) === ''
+    && normalizedText(boxStart[3]) === ''
+    && boxDepth.length === 3
+    && /^height$/i.test(normalizedText(boxDepth[0]))
+    && /^mm$/i.test(normalizedText(boxDepth[1]))
+    ? /^(\d+)$/.exec(normalizedText(boxDepth[2]))
+    : null;
+  const packagedHeight = boxHeight.length === 3
+    && normalizedText(boxHeight[0]) === ''
+    && /^mm$/i.test(normalizedText(boxHeight[1]))
+    ? /^(\d+)$/.exec(normalizedText(boxHeight[2]))
+    : null;
+  if (!separator.every((cell) => normalizedText(cell) === '')
+    || !width || !depthHeight || !packagedWidth || !packagedDepth || !packagedHeight
+    || weight.length !== 4
+    || !/^weight$/i.test(normalizedText(weight[0]))
+    || !/^net\s*\/\s*gross$/i.test(normalizedText(weight[1]))
+    || !/^kg$/i.test(normalizedText(weight[2]))
+    || !/^\d+(?:\.\d+)?\s*\/\s*\d+(?:\.\d+)?$/.test(normalizedText(weight[3]))) {
+    return [];
+  }
+  const net = [Number(width[1]), Number(depthHeight[1]), Number(depthHeight[2])];
+  const packaged = [
+    Number(packagedWidth[1]), Number(packagedDepth[1]), Number(packagedHeight[1]),
+  ];
+  if (packaged.some((value, index) => value < net[index])) return [];
+  return hisenseLegacyNetRows([
+    { axis: 'width', sourceAxis: 'Width', value: String(net[0]) },
+    { axis: 'depth', sourceAxis: 'Depth', value: String(net[1]) },
+    { axis: 'height', sourceAxis: 'Height', value: String(net[2]) },
+  ]);
+}
+
 function hisenseLegacyPageDimensions(items) {
-  const collapsed = items.flatMap((fragment) => {
-    const rows = hisenseLegacyCollapsedTableRows(fragment);
-    return rows.length === 3 ? [{ rows, sourceFragments: [fragment] }] : [];
-  });
-  if (collapsed.length > 1) return null;
+  const tableMatches = [];
+  for (const fragment of items) {
+    const variants = [
+      { rows: hisenseLegacyCollapsedTableRows(fragment), preserveSourceFragment: false },
+      { rows: hisenseLegacyStructuredNetBoxRows(fragment), preserveSourceFragment: false },
+      { rows: hisenseLegacySplitAxisValueRows(fragment), preserveSourceFragment: true },
+    ].filter(({ rows }) => rows.length === 3);
+    if (variants.length > 1) return null;
+    if (variants.length === 1) {
+      tableMatches.push({ ...variants[0], sourceFragments: [fragment] });
+    }
+  }
+  if (tableMatches.length > 1) return null;
 
   const dimensionTitles = items.filter((fragment) => (
     ['title', 'paragraph', 'text'].includes(fragment.type)
       && /^dimensions$/i.test(fragment.text)
   ));
-  if (dimensionTitles.length !== 1) return collapsed[0] ?? null;
+  if (dimensionTitles.length !== 1) return tableMatches[0] ?? null;
   const dimensionTitle = dimensionTitles[0];
   const boxLabels = items.filter((fragment) => (
     ['paragraph', 'text'].includes(fragment.type)
@@ -1943,7 +2091,7 @@ function hisenseLegacyPageDimensions(items) {
   const splitNetLabel = netLabels.length === 2
     && netLabels.some((fragment) => /^net$/i.test(fragment.text))
     && netLabels.some((fragment) => /^with\s+handle$/i.test(fragment.text));
-  if (boxLabels.length !== 1 || (!combinedNetLabel && !splitNetLabel)) return collapsed[0] ?? null;
+  if (boxLabels.length !== 1 || (!combinedNetLabel && !splitNetLabel)) return tableMatches[0] ?? null;
 
   const axisLists = items.flatMap((fragment) => {
     if (!['list', 'index'].includes(fragment.type)) return [];
@@ -1998,7 +2146,7 @@ function hisenseLegacyPageDimensions(items) {
     rows,
     sourceFragments: [dimensionTitle, ...netLabels, boxLabels[0], ...dimensionFragments],
   } : null;
-  const matches = [...collapsed, ...(result ? [result] : [])];
+  const matches = [...tableMatches, ...(result ? [result] : [])];
   return matches.length === 1 ? matches[0] : null;
 }
 
@@ -2014,12 +2162,14 @@ function hisenseLegacyExactSpecScope(document, caseIdentity, sourceUrls) {
   return {
     ...identity,
     ...match,
-    fragment: hisenseDerivedFragment(
-      'hisense-au-legacy-spec-net-box-axes-v1',
-      match.sourceFragments,
-      match.rows,
-      'derived_hisense_legacy_net_box_dimensions',
-    ),
+    fragment: match.preserveSourceFragment
+      ? match.sourceFragments[0]
+      : hisenseDerivedFragment(
+        'hisense-au-legacy-spec-net-box-axes-v1',
+        match.sourceFragments,
+        match.rows,
+        'derived_hisense_legacy_net_box_dimensions',
+      ),
   };
 }
 
@@ -2136,7 +2286,7 @@ export const mineruGrammarProfiles = Object.freeze({
     brand: 'Hisense',
     category: 'fridge',
     documentType: 'product_specification',
-    detectionSummary: 'An exact-model Hisense Australia specification PDF URL, exact model in the MinerU body, no sibling model, and exactly one Dimensions section separating a complete Net With handle W/D/H triple from a complete Box triple. Proven list, aligned paragraph and collapsed-table MinerU variants are supported.',
+    detectionSummary: 'An exact-model Hisense Australia specification PDF URL, exact model in the MinerU body or a same-page Manufacturer Model label/value-list pair, no sibling model, and exactly one Dimensions section separating a complete Net With handle W/D/H triple from a complete Box triple. Proven list, aligned paragraph, split-axis/value table, collapsed-table and high-resolution recovered rowspan-table MinerU variants are supported.',
     semanticBoundary: 'Only the integer Net With handle W/D/H triple is projected as the closed appliance envelope; Box, weight, clearance and decimal values are excluded.',
   }),
   'hisense-au-exact-spec-net-package-whd-v1': Object.freeze({
@@ -2541,7 +2691,11 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const hisenseLegacySpecScope = claimSemanticsVersion === 2
     ? hisenseLegacyExactSpecScope(document, caseIdentity, options.sourceUrls)
     : null;
-  const hisenseLegacySpecSignals = hisenseLegacySpecScope ? [{
+  const hisenseLegacySpecCandidates = claimSemanticsVersion === 2
+    ? hisenseLegacyCandidateFragments(document, caseIdentity, options.sourceUrls)
+    : new Set();
+  const hisenseLegacySpecSignals = hisenseLegacySpecScope
+    && !hisenseLegacySpecScope.preserveSourceFragment ? [{
     type: 'mineru_hisense_legacy_net_box_dimensions',
     value: `${model}:page:${hisenseLegacySpecScope.page}:${hisenseLegacySpecScope.fragment.fragmentSha256}`,
   }, {
@@ -2797,6 +2951,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       if (chiqSpecScope && fragment !== chiqSpecScope.fragment) continue;
       if (hisenseLegacySpecScope?.sourceFragments.includes(fragment)
         || hisenseNetPackageScope?.fragment === fragment) continue;
+      if (hisenseLegacySpecCandidates.has(fragment)) continue;
       let rows;
       if (fragment.type === 'table') {
         const shiftedRows = claimSemanticsVersion === 2
@@ -2991,6 +3146,11 @@ export function findMineruImageOnlyDimensionPages(jsonBytes) {
       && items.some((item) => ['index', 'list', 'table'].includes(item.type)
         && /^(?:text_list(?:\s+unordered)?)?$/i.test(normalizedText(item.text))
         && (item.bbox[2] - item.bbox[0]) * (item.bbox[3] - item.bbox[1]) >= 20_000);
+    const orphanedDimensionGrid = items.some((item) => ['title', 'paragraph', 'text'].includes(item.type)
+      && dimensionHeading.test(normalizedText(item.text)))
+      && /\bnet\b/i.test(text)
+      && /\b(?:box|pack(?:age|aged)?)\b/i.test(text)
+      && /\bweight\b/i.test(text);
     const unitBeforeValueAxes = new Set([...text.matchAll(explicitAxisUnitBeforeValue)]
       .map((match) => ({
         width: 'width', wide: 'width', height: 'height', high: 'height',
@@ -2998,7 +3158,7 @@ export function findMineruImageOnlyDimensionPages(jsonBytes) {
       })[match[1].toLowerCase()]));
     const completeUnitBeforeValueAxes = ['width', 'height', 'depth']
       .every((axis) => unitBeforeValueAxes.has(axis));
-    if ((imageDimensionSignal || titledDimensionImage || malformedDimensionStructure)
+    if ((imageDimensionSignal || titledDimensionImage || malformedDimensionStructure || orphanedDimensionGrid)
       && !explicitAxisValue.test(text) && !explicitTriple.test(text)
       && !completeUnitBeforeValueAxes) pages.push(index + 1);
   });

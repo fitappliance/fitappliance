@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T01:47:58.031Z",
+  "generatedAt": "2026-07-16T02:37:51.587Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -2518,6 +2518,24 @@
       "resultsSha256": "1cecefd531e0442caa919a04b971150b6af98149eb41bc571a01121a12b72aa6",
       "auditSha256": "621b21f8752460a7978f194d2e030639aa93b5cef22f1cc597a3b06e759b24a9",
       "resolvedAt": "2026-07-15T19:58:12.739Z"
+    },
+    {
+      "resolutionId": "historical_resolution_f9c982fc1313e63349f91fd5",
+      "attemptId": "historical_attempt_8ac45b91cac1b8bd81470357",
+      "targetId": "recovery_target_667f135663cac363ca3da3a4",
+      "referenceId": "fa_ref_7f1ccb53d67541cf7a0fe03f",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+      "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+      "status": "accepted",
+      "policySha256": "8e4c7231047fa1d471396b2ab819954968cdb8b3e5c2e2ffafa2d6f027506395",
+      "candidateInventorySha256": "1093f212826edfd0a731f9cd08be083c67e09e8e8b8fba55087f901a7c48a59b",
+      "semanticOutcomeSha256": "3528a1b6145aaf34c1ff9f5cc4cf054d059d1945ca0beccfe8e4b319ba4d7164",
+      "batchId": "historical-recovery-ba09e4b85d0891a307a1d4e2-slice-f98d0af5d972",
+      "batchSha256": "2fd43d81df7b569485efd7b110c707fe871eaa5098dbe4365ac22e8155491a51",
+      "runId": "hisense-image-grid-v1-20260716",
+      "resultsSha256": "0f37e089e989c1e7af1359a0372b1ca93724026575a6d5675980393fdaa48e0d",
+      "auditSha256": "86870bdcc661d14bd6f3a9d3481133e326bad02312189d5fd292caec76729314",
+      "resolvedAt": "2026-07-16T02:19:45.124Z"
     }
   ],
   "sourceAcceptances": [
@@ -3287,6 +3305,23 @@
       "acceptedAt": "2026-07-16T00:46:29.094Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_a8c8002b7d5857a6e1574238",
+      "targetId": "recovery_target_667f135663cac363ca3da3a4",
+      "referenceId": "fa_ref_7f1ccb53d67541cf7a0fe03f",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+      "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+      "status": "accepted",
+      "policySha256": "8e4c7231047fa1d471396b2ab819954968cdb8b3e5c2e2ffafa2d6f027506395",
+      "candidateInventorySha256": "1093f212826edfd0a731f9cd08be083c67e09e8e8b8fba55087f901a7c48a59b",
+      "semanticOutcomeSha256": "3528a1b6145aaf34c1ff9f5cc4cf054d059d1945ca0beccfe8e4b319ba4d7164",
+      "batchId": "historical-recovery-ba09e4b85d0891a307a1d4e2-slice-f98d0af5d972",
+      "batchSha256": "2fd43d81df7b569485efd7b110c707fe871eaa5098dbe4365ac22e8155491a51",
+      "runId": "hisense-image-grid-v1-20260716",
+      "resultsSha256": "0f37e089e989c1e7af1359a0372b1ca93724026575a6d5675980393fdaa48e0d",
+      "auditSha256": "86870bdcc661d14bd6f3a9d3481133e326bad02312189d5fd292caec76729314",
+      "acceptedAt": "2026-07-16T02:19:45.124Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_b12741686e658e4a4da8a8b8",
       "targetId": "recovery_target_dc9ebcee1753e90803fb239e",
       "referenceId": "fa_ref_6d7fbc5b457f6ab6a30f8f74",
@@ -3680,10 +3715,10 @@
   ],
   "summary": {
     "entries": 78,
-    "resolutions": 14,
-    "sourceAcceptances": 68,
-    "suppressions": 55,
-    "resolvedSuppressions": 13,
+    "resolutions": 15,
+    "sourceAcceptances": 69,
+    "suppressions": 54,
+    "resolvedSuppressions": 14,
     "retryable": 10,
     "byStatus": {
       "claims_incomplete": 8,

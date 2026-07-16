@@ -1,23 +1,23 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T01:51:22.474Z",
-  "sourceAcquisitionQueueSha256": "1a17296fbaf89c4dee8be1cb9735676ae9134bd6da6e862fac8e0bada3373af4",
+  "generatedAt": "2026-07-16T02:38:22.910Z",
+  "sourceAcquisitionQueueSha256": "eedcb68b956a315a4efaf2a9ecdc356147308266b47645c44db828a90e80fa98",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7890,
+    "acquisitionRecords": 7889,
     "fetchJobs": 2,
-    "targets": 7807,
-    "resolverOnlyTargets": 7805,
+    "targets": 7806,
+    "resolverOnlyTargets": 7804,
     "candidateEdges": 2,
-    "uniqueReferences": 7807,
+    "uniqueReferences": 7806,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2023,
+      "CATALOG_ARCHIVED": 2022,
       "CURRENT_RETAIL": 1232,
       "REGISTRY_ONLY": 4552
     },
@@ -25,7 +25,7 @@
       "P0_CURRENT_MISSING_DIMENSIONS": 1030,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 189,
-      "P3_HISTORICAL_CONFIRMATION": 4584,
+      "P3_HISTORICAL_CONFIRMATION": 4583,
       "P4_CONFLICT_RESOLUTION": 68
     },
     "excluded": {
@@ -170526,53 +170526,6 @@
       ],
       "sourceDocumentIds": [],
       "legacyHints": [],
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 912,
-            "height": 1785,
-            "depth": 725
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_667f135663cac363ca3da3a4",
-      "referenceId": "fa_ref_7f1ccb53d67541cf7a0fe03f",
-      "legacyRuntimeId": "fridge-arf3141",
-      "canonicalProductId": "fa_prod_154f8b88ceee54f24d13e5c6",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD610TS",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c05c7143ebda6042eda05f5f",
-        "legacy:data/pdf-evidence-raw/HRCD610TS.json",
-        "source:doc_c05c7143ebda6042eda05f5f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c05c7143ebda6042eda05f5f",
-          "dimensionsMm": {
-            "width": 912,
-            "height": 1785,
-            "depth": 725
-          }
-        }
-      ],
       "registryDimensionHints": [
         {
           "sourceId": "energy-rating:fridge",

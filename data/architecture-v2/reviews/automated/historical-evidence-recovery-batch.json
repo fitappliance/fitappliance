@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-7e4ba09735a4ce76c9bf4dbc",
-  "generatedAt": "2026-07-16T01:51:22.474Z",
+  "batchId": "historical-recovery-a71e9fcf967ae647cf61d8bf",
+  "generatedAt": "2026-07-16T02:38:22.910Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "d85262fb27ef8fa4fbf187fe44413521c29f78ca46488989c6735550a638f184"
+    "sha256": "863a968b92d3df25aed37a01b9465c5babfa701b32a7bac7a98d92d3d4f5b2eb"
   },
   "policy": {
-    "version": "2026-07-16.6",
-    "sha256": "4a4be4707385d0dba6d618f6c7ef1dd2949dbf83871bad57fd8d12d81868d469"
+    "version": "2026-07-16.7",
+    "sha256": "8e4c7231047fa1d471396b2ab819954968cdb8b3e5c2e2ffafa2d6f027506395"
   },
   "selection": {
     "jobIds": [],
@@ -159766,48 +159766,6 @@
       }
     },
     {
-      "targetId": "recovery_target_667f135663cac363ca3da3a4",
-      "referenceId": "fa_ref_7f1ccb53d67541cf7a0fe03f",
-      "legacyRuntimeId": "fridge-arf3141",
-      "canonicalProductId": "fa_prod_154f8b88ceee54f24d13e5c6",
-      "brand": "Hisense",
-      "model": "HRCD610TS",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 912,
-              "height": 1785,
-              "depth": 725
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_c05c7143ebda6042eda05f5f",
-            "dimensionsMm": {
-              "width": 912,
-              "height": 1785,
-              "depth": 725
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_66f801abfecea8c03ea3af0d",
       "referenceId": "fa_ref_595710231ede7a8cdb3602ce",
       "legacyRuntimeId": "fridge-arf3666",
@@ -239857,7 +239815,7 @@
   ],
   "summary": {
     "artifactJobs": 2,
-    "targets": 7807,
+    "targets": 7806,
     "candidateEdges": 2,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T01:47:58.031Z",
-  "policySha256": "4a4be4707385d0dba6d618f6c7ef1dd2949dbf83871bad57fd8d12d81868d469",
+  "generatedAt": "2026-07-16T02:37:51.587Z",
+  "policySha256": "8e4c7231047fa1d471396b2ab819954968cdb8b3e5c2e2ffafa2d6f027506395",
   "entries": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -19963,6 +19963,256 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_667f135663cac363ca3da3a4",
+      "referenceId": "fa_ref_7f1ccb53d67541cf7a0fe03f",
+      "legacyRuntimeId": "fridge-arf3141",
+      "canonicalProductId": "fa_prod_154f8b88ceee54f24d13e5c6",
+      "brand": "Hisense",
+      "model": "HRCD610TS",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-ba09e4b85d0891a307a1d4e2-slice-f98d0af5d972",
+      "auditSha256": "ea329eeee8784a35699a7b13b1c6680e31f67501c53cbc06dddc36e328bc0f90",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+          "finalUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T02:19:45.076Z",
+          "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+          "objectPath": "evidence/web/sha256/89/a1/89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 85435,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCD610TS",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 912
+              },
+              "sourceLabel": "Width (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e",
+              "bbox": [
+                80,
+                84,
+                872,
+                649
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1785
+              },
+              "sourceLabel": "Height (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e",
+              "bbox": [
+                80,
+                84,
+                872,
+                649
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 725
+              },
+              "sourceLabel": "Depth (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e",
+              "bbox": [
+                80,
+                84,
+                872,
+                649
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+            "contentSha256": "19389a860f415b2c8f973377bf66332e16da48d8944efee857a1d5d3ee7567f0",
+            "objectPath": "evidence/derived/mineru-json/sha256/19/38/19389a860f415b2c8f973377bf66332e16da48d8944efee857a1d5d3ee7567f0.json",
+            "byteSize": 7449,
+            "pageCount": 2,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              2
+            ],
+            "sourcePageCount": 2,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "02e569e27ff52ba6ca42b4612640d3f1eed2fe4f9cfe8fb2b22d45e7337ccc42",
+              "objectPath": "evidence/derived/mineru-json/sha256/02/e5/02e569e27ff52ba6ca42b4612640d3f1eed2fe4f9cfe8fb2b22d45e7337ccc42.json",
+              "pages": [
+                2
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_list_model",
+              "value": "HRCD610TS:page:1:3bf4e5babbf3c774daa1d8a770348a21176d425df60e9935a72d0d3d8369318e"
+            },
+            {
+              "type": "mineru_hisense_legacy_net_box_dimensions",
+              "value": "HRCD610TS:page:2:6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
+            },
+            {
+              "type": "mineru_hisense_exact_spec_document_url",
+              "value": "HRCD610TS:https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk"
+            },
+            {
+              "type": "mineru_hisense_exact_spec_identity",
+              "value": "HRCD610TS:3bf4e5babbf3c774daa1d8a770348a21176d425df60e9935a72d0d3d8369318e,87c933ee43c43cd587519f026308dd5fa6147e9ca4b4dcdc79f9a31afc3fd6dd"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T02:19:45.076Z",
+            "bindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 912,
+            "heightMm": {
+              "minimumMm": 1785,
+              "maximumMm": 1785
+            },
+            "depthMm": 725
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+            "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+            "receiptBindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190",
+            "page": 2,
+            "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+            "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+            "receiptBindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190",
+            "page": 2,
+            "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+            "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+            "receiptBindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190",
+            "page": 2,
+            "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7"
         ]
       },
       "reconciliation": {
@@ -47597,6 +47847,13 @@
       "queueSha256": "bd3821732c965f01656de80a6966e95fd13384de27cf7686309e6028cfbad9a2",
       "resultsSha256": "84c329744d29e7efaeac075274199f5f9afedfd71cf2e6a4f04df25429000df4",
       "auditSha256": "0e084bf1ff7b68bc2fb155e550f2c94feae4d69a4d60629f6c3e5faa4d0ae4b6"
+    },
+    {
+      "batchId": "historical-recovery-ba09e4b85d0891a307a1d4e2-slice-f98d0af5d972",
+      "batchSha256": "2fd43d81df7b569485efd7b110c707fe871eaa5098dbe4365ac22e8155491a51",
+      "queueSha256": "d85262fb27ef8fa4fbf187fe44413521c29f78ca46488989c6735550a638f184",
+      "resultsSha256": "0f37e089e989c1e7af1359a0372b1ca93724026575a6d5675980393fdaa48e0d",
+      "auditSha256": "ea329eeee8784a35699a7b13b1c6680e31f67501c53cbc06dddc36e328bc0f90"
     },
     {
       "batchId": "historical-recovery-ba97adcd36582a566b55510c-slice-4e0503b4daf1",

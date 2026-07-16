@@ -1580,10 +1580,11 @@ test('MinerU reconstructs a Hisense net-with-handle table split across axis and 
       <tr><td>Net With handle</td><td>Width Depth</td><td>mm</td><td>550</td></tr>
       <tr><td></td><td>Height</td><td>mm mm</td><td>542 1434</td></tr>
       <tr><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td>Width</td><td>mm</td><td>580</td></tr>
+      <tr><td>Width</td><td>mm</td><td>580</td></tr>
       <tr><td>Box</td><td>Depth</td><td></td><td></td></tr>
-      <tr><td></td><td>Height</td><td>mm</td><td>566</td></tr>
-      <tr><td></td><td></td><td>mm</td><td>1482</td></tr>
+      <tr><td>Height</td><td>mm</td><td>566</td></tr>
+      <tr><td></td><td>mm</td><td>1482</td></tr>
+      <tr><td>Weight</td><td>Net / Gross</td><td>kg</td><td>38/41</td></tr>
     </table>`)],
   ]));
   const parsed = parseMineruContentListV2(bytes, {
@@ -1598,7 +1599,12 @@ test('MinerU reconstructs a Hisense net-with-handle table split across axis and 
     'closedEnvelope.heightMm': 1434,
     'closedEnvelope.depthMm': 542,
   });
+  assert.deepEqual(parsed.grammarProfileIds, ['hisense-au-legacy-spec-net-box-axes-v1']);
   assert.ok(parsed.claims.every((claim) => /net with handle/i.test(claim.sourceLabel)));
+  const sourceTableHash = inspectMineruContentListV2(bytes).pages[1].fragments
+    .find((fragment) => fragment.type === 'table').fragmentSha256;
+  assert.ok(parsed.claims.every((claim) => claim.fragmentSha256 === sourceTableHash));
+  assert.ok(parsed.identitySignals.every((signal) => !signal.type.startsWith('mineru_hisense_')));
 });
 
 test('MinerU applies the exact Hisense legacy Net and Box grammar to one combined axis list', () => {
@@ -1686,6 +1692,42 @@ test('MinerU applies the exact Hisense legacy grammar to a collapsed Net and Box
   assert.deepEqual(parsed.grammarProfileIds, ['hisense-au-legacy-spec-net-box-axes-v1']);
 });
 
+test('MinerU applies the exact Hisense legacy grammar to a recovered Net and Box rowspan table', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [
+      paragraph('Manufacturer Model Description Warranty Period'),
+      structuredListFragment([
+        'HRCD610TS', 'French Door refrigerator/freezer', '3 years',
+      ]),
+    ],
+    [tableFragment(`<table>
+      <tr><td colspan="4">Dimensions</td></tr>
+      <tr><td rowspan="3">Net With handle</td><td>Width</td><td>mm</td><td>912</td></tr>
+      <tr><td>Depth</td><td>mm</td><td>725</td></tr>
+      <tr><td>Height</td><td>mm</td><td>1785</td></tr>
+      <tr><td rowspan="3">Box</td><td>Width</td><td>mm</td><td>968</td></tr>
+      <tr><td>Depth</td><td>mm</td><td>778</td></tr>
+      <tr><td>Height</td><td>mm</td><td>1901</td></tr>
+      <tr><td>Weight</td><td>Net / Gross</td><td>kg</td><td>118.5/127.5</td></tr>
+    </table>`)],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf'],
+    caseIdentity: { brand: 'Hisense', model: 'HRCD610TS', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 912,
+    'closedEnvelope.heightMm': 1785,
+    'closedEnvelope.depthMm': 725,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['hisense-au-legacy-spec-net-box-axes-v1']);
+  assert.ok(parsed.claims.every((claim) => /net with handle/i.test(claim.sourceLabel)));
+  assert.ok(parsed.claims.every((claim) => ![968, 778, 1901].includes(claim.value.mm)));
+});
+
 test('MinerU binds a cross-page exact Hisense Net and Packaged WHD table', () => {
   const bytes = Buffer.from(JSON.stringify([
     [
@@ -1760,6 +1802,31 @@ test('MinerU rejects unsafe Hisense exact-spec variants instead of inferring dim
     caseIdentity: { brand: 'Hisense', model: 'HWF5S1214', category: 'washing_machine' },
     claimSemanticsVersion: 2, fields,
   }), /evidence/i);
+
+  const structuredNetBoxTable = ({ netWidthUnit = 'mm', boxWidth = 968 } = {}) => tableFragment(`<table>
+    <tr><td colspan="4">Dimensions</td></tr>
+    <tr><td rowspan="3">Net With handle</td><td>Width</td><td>${netWidthUnit}</td><td>912</td></tr>
+    <tr><td>Depth</td><td>mm</td><td>725</td></tr>
+    <tr><td>Height</td><td>mm</td><td>1785</td></tr>
+    <tr><td rowspan="3">Box</td><td>Width</td><td>mm</td><td>${boxWidth}</td></tr>
+    <tr><td>Depth</td><td>mm</td><td>778</td></tr>
+    <tr><td>Height</td><td>mm</td><td>1901</td></tr>
+    <tr><td>Weight</td><td>Net / Gross</td><td>kg</td><td>118.5/127.5</td></tr>
+  </table>`);
+  const parseStructured = (tables) => parseMineruContentListV2(Buffer.from(JSON.stringify([
+    [paragraph('Manufacturer Model HRCD610TS French Door refrigerator/freezer')],
+    tables,
+  ])), {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf'],
+    caseIdentity: { brand: 'Hisense', model: 'HRCD610TS', category: 'fridge' },
+    claimSemanticsVersion: 2, fields,
+  });
+  assert.throws(() => parseStructured([structuredNetBoxTable({ netWidthUnit: '' })]), /evidence/i);
+  assert.throws(() => parseStructured([structuredNetBoxTable({ boxWidth: 900 })]), /evidence/i);
+  assert.throws(() => parseStructured([
+    structuredNetBoxTable(), structuredNetBoxTable(),
+  ]), /evidence/i);
 });
 
 test('MinerU binds concatenated colour variants to one exact model column using an explicit model list', () => {
@@ -2504,6 +2571,32 @@ test('image-only dimension detection selects only pages needing bounded hybrid p
     ],
   ]));
   assert.deepEqual(findMineruImageOnlyDimensionPages(bytes), [1, 5]);
+});
+
+test('image fallback detects a dimension grid whose value columns disappeared from the primary parse', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'Dimensions' }] },
+      bbox: [100, 500, 240, 540],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Net With handle' }] },
+      bbox: [150, 545, 240, 575],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Box' }] },
+      bbox: [180, 595, 240, 620],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Weight' }] },
+      bbox: [175, 635, 240, 660],
+    },
+  ]]));
+  assert.deepEqual(findMineruImageOnlyDimensionPages(bytes), [1]);
 });
 
 test('hybrid derived artifact records the pinned profile and original page map', () => {

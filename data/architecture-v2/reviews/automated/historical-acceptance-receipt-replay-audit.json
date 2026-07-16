@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T01:57:11.554Z",
-  "sourceBundleSha256": "2065974b19fa0172aa22c9a0d97017d2611731e2dac09e671ac015034ba1b612",
+  "generatedAt": "2026-07-16T02:38:08.077Z",
+  "sourceBundleSha256": "15b74aa25174ee5d3982fe4f76db299c53f97dc35533904a76196ceb76431092",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1260,6 +1260,20 @@
       "contentSha256": "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0",
       "receiptBindingSha256": "7d39e3828417bdbd6dfe82f93db8defcec04a41c8b1fcb0d6795f6b55aae8971",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/89/0d/890d6672dbb885cb36dbe7844b9fdf81f4db941dd698f2031ee66945c62063d6.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_667f135663cac363ca3da3a4",
+      "referenceId": "fa_ref_7f1ccb53d67541cf7a0fe03f",
+      "brand": "Hisense",
+      "model": "HRCD610TS",
+      "category": "fridge",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+      "sourcePdfSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+      "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+      "receiptBindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/19/38/19389a860f415b2c8f973377bf66332e16da48d8944efee857a1d5d3ee7567f0.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2917,11 +2931,11 @@
     }
   ],
   "summary": {
-    "entries": 186,
-    "sources": 208,
-    "passed": 208,
+    "entries": 187,
+    "sources": 209,
+    "passed": 209,
     "failed": 0
   },
-  "checkedObjects": 423,
-  "semanticAuditSha256": "50270f621f07745da0a578032d506714eb56bfd8ab5ab144155a731b34f105d6"
+  "checkedObjects": 426,
+  "semanticAuditSha256": "20b5463b0557428949d84844e9ba44c54f17c4e62b9bf0afe9e72a7f9f6fec8a"
 }

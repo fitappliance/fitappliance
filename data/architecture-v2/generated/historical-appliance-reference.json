@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "2065974b19fa0172aa22c9a0d97017d2611731e2dac09e671ac015034ba1b612"
+    "historical-recovery:historical-recovery-cumulative-v1": "15b74aa25174ee5d3982fe4f76db299c53f97dc35533904a76196ceb76431092"
   },
   "records": [
     {
@@ -160029,8 +160029,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 912,
         "height": 1785,
@@ -160048,6 +160048,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_667f135663cac363ca3da3a4",
+          "snapshotSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -160055,8 +160062,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_667f135663cac363ca3da3a4",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+          "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+          "receiptBindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190",
+          "verifiedAt": "2026-07-16T02:19:45.076Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "6ee9110bf2cb31fadffa1ad453bde19046c82859997225f04a92ea505974e51e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/89/a1/89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -318598,17 +318633,17 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4858,
+      "REGISTRY_CONSISTENT": 4857,
       "IDENTITY_ONLY": 2983,
-      "MODEL_RECEIPT": 155,
+      "MODEL_RECEIPT": 156,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4858,
+      "CONFIRM_REQUIRED": 4857,
       "MEASURE_REQUIRED": 2983,
-      "AUTO_FILL": 166,
+      "AUTO_FILL": 167,
       "QUARANTINED": 88
     }
   }

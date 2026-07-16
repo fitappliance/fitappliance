@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T01:51:22.474Z",
+  "generatedAt": "2026-07-16T02:38:22.910Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "b87ed27c85c5c83c564cb4682ea47c7feb775eddb15f4f6652adc1ed7068a36e",
+  "semanticClassificationSha256": "7b890c54e6dd965bb4160a113af934d542ba01480f93bba3372df9498442d7f1",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
@@ -21,35 +21,35 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 205,
+      "COMPLETE_RECEIPT": 206,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 165,
+      "IDENTITY_RESEARCH": 164,
       "OFFICIAL_DISCOVERY": 6417,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6417,
-      "NO_ACTION": 205,
+      "NO_ACTION": 206,
       "REDISCOVER_OFFICIAL_SOURCE": 1225,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 165
+      "RUN_IDENTITY_CLOSURE": 164
     },
     "bySourceAuthority": {
       "MIXED": 80,
-      "NONE": 6640,
-      "OFFICIAL": 133,
+      "NONE": 6639,
+      "OFFICIAL": 134,
       "REFERENCE": 1242
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 202,
-      "EXACT_MODEL": 1568,
+      "AMBIGUOUS": 201,
+      "EXACT_MODEL": 1569,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 51,
-      "ALL_AXIS_SCALAR": 298,
+      "ALL_AXIS_SCALAR": 299,
       "NOT_PARSED": 7649,
-      "PARSER_GAP": 97
+      "PARSER_GAP": 96
     },
     "byConflictState": {
       "INVALID_DIMENSIONS": 19,
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 205,
-      "LEGACY_UNBOUND": 1565,
+      "CURRENT_VALID": 206,
+      "LEGACY_UNBOUND": 1564,
       "NONE": 6325
     }
   },
@@ -96,9 +96,9 @@
       "brands": 121,
       "documentLinks": 2285,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 100,
+        "COMPLETE_RECEIPT": 101,
         "CONFLICT_QUARANTINE": 48,
-        "IDENTITY_RESEARCH": 88,
+        "IDENTITY_RESEARCH": 87,
         "OFFICIAL_DISCOVERY": 3405,
         "REFERENCE_REDISCOVERY": 695
       }
@@ -155097,15 +155097,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "model_specific",
       "groupName": "HRCD610TS",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -155128,22 +155128,22 @@
         },
         {
           "documentId": "pdf:89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
-            "mineru-primary:02e569e27ff52ba6ca42b4612640d3f1eed2fe4f9cfe8fb2b22d45e7337ccc42",
+            "receipt:29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190",
             "storage:evidence/web/sha256/89/a1/89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7"
         },
         {
@@ -155162,8 +155162,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "Hisense",

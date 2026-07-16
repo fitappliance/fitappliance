@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1478,
-    "fetchJobs": 1441,
-    "targets": 1475,
-    "candidateEdges": 1478,
+    "documents": 1477,
+    "fetchJobs": 1440,
+    "targets": 1474,
+    "candidateEdges": 1477,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1475,
+    "uniqueReferences": 1474,
     "byCurrentAction": {
-      "CONFIRM_REQUIRED": 411,
+      "CONFIRM_REQUIRED": 410,
       "MEASURE_REQUIRED": 1039,
       "QUARANTINED": 25
     },
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 248,
+      "CATALOG_ARCHIVED": 247,
       "CURRENT_RETAIL": 1227
     },
     "byCategory": {
       "dishwasher": 348,
       "dryer": 64,
-      "fridge": 838,
+      "fridge": 837,
       "washing_machine": 225
     },
     "byAcquisitionRoute": {
       "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1177,
-      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 206,
+      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 205,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 129,
+      "ALREADY_AUTO_FILL": 130,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -33181,32 +33181,6 @@
       ],
       "targetIds": [
         "recovery_target_7b4b7cae9b0026f9d7fbe67a"
-      ]
-    },
-    {
-      "jobId": "recovery_4be953984d8a03439bccce7d",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_667f135663cac363ca3da3a4"
       ]
     },
     {
@@ -95224,57 +95198,6 @@
         "recovery_221c59dec05f0eb3652baeec"
       ],
       "primaryJobId": "recovery_221c59dec05f0eb3652baeec"
-    },
-    {
-      "referenceId": "fa_ref_7f1ccb53d67541cf7a0fe03f",
-      "legacyRuntimeId": "fridge-arf3141",
-      "canonicalProductId": "fa_prod_154f8b88ceee54f24d13e5c6",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD610TS",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 912,
-        "height": 1785,
-        "depth": 725
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 912,
-            "height": 1785,
-            "depth": 725
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_667f135663cac363ca3da3a4",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c05c7143ebda6042eda05f5f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c05c7143ebda6042eda05f5f",
-          "dimensionsMm": {
-            "width": 912,
-            "height": 1785,
-            "depth": 725
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_4be953984d8a03439bccce7d"
-      ],
-      "primaryJobId": "recovery_4be953984d8a03439bccce7d"
     },
     {
       "referenceId": "fa_ref_95e3b44b273ad188a37e5088",
