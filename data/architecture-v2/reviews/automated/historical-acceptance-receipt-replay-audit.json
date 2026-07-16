@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T18:31:31.825Z",
-  "sourceBundleSha256": "f37b1e2ff3226445fa977c3bd774dcefdc9954b3122a7c6ab9fa3042fac5db92",
+  "generatedAt": "2026-07-16T18:40:58.829Z",
+  "sourceBundleSha256": "0be50e1f321251a052eb65d3c715cea08e7a892b6518e5397b73353a0eedf422",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -69,6 +69,20 @@
       "sourcePdfSha256": null,
       "contentSha256": "bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b",
       "receiptBindingSha256": "828fedd9e30cd010f05c9a20903efcd9f45fbb48cd0135f3ae54188857825c5b",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_016f00e3aaeb2cc84ab60d76",
+      "referenceId": "fa_ref_607fe1d41a3f7e653f3d4540",
+      "brand": "Bosch",
+      "model": "SMU50L05AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50L05AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "ed492bf7600635018fdfe340b4bda3361dfbdc448ae54c6073c59dad28c262ea",
+      "receiptBindingSha256": "915ce45d551ce558b4817deb6573031ff469e47377a6d64d69041fd1901f7b63",
       "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
@@ -196,6 +210,20 @@
       "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
       "receiptBindingSha256": "b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b5/95/b5952210881d7f33f661b7bfa067a19cba48843e4e4a7090c2c35db75ac82434.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_0a0ee4a4446a75b2f1844dee",
+      "referenceId": "fa_ref_0d773f825e1643f34d3e8141",
+      "brand": "Bosch",
+      "model": "SMU66JS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU66JS01A.pdf",
+      "sourcePdfSha256": "a66a14e316a8b1967696884d4f5479a1c02da1ad52ea2e8b46db70530c180b5f",
+      "contentSha256": "a66a14e316a8b1967696884d4f5479a1c02da1ad52ea2e8b46db70530c180b5f",
+      "receiptBindingSha256": "342b744c6c7c3aaca7c9ca31d29e40cc3b05f594b72a27f9e01679ca28b214c9",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/6f/6d/6f6dd2bc019b39f17c22a4b6619fc87cf69aca96b959d2360b324c5cfd65df75.json",
       "status": "passed",
       "failureCode": null
     },
@@ -802,6 +830,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_3509e0d612176316f5384e52",
+      "referenceId": "fa_ref_d84e1cae36156cb1c584b2a5",
+      "brand": "Bosch",
+      "model": "SMU50M15AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50M15AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "4cfa64487ebf42fa518da73163a68bc710e5502fb6c9b7766f4abf8308347b40",
+      "receiptBindingSha256": "0730e333d9777e6b946bb5bd6954a1d588ab04711fb938b6cbe78e0dd506ea38",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_351865ac4d2b57830b854a9f",
+      "referenceId": "fa_ref_8a1dba5262b338c28b0d95be",
+      "brand": "Bosch",
+      "model": "SMU50E05AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50E05AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "e28153dd80c9dfd621bf3b3f4eb76a9ff60f49f2f2972ae4bef6b306c35b1a99",
+      "receiptBindingSha256": "51574aebd3f703b105c9e1fc686a02453bf3023f8854a128a64c40d4f805b0a0",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_3641547be7cf869a61db6140",
       "referenceId": "fa_ref_70a486d5df7caa827a726723",
       "brand": "LG",
@@ -938,6 +994,20 @@
       "contentSha256": "f2b5a7675deebc16ba282b9bb5c7ccc14f5fb05e4534010140bc54f2ba71389e",
       "receiptBindingSha256": "8c61964310f8312fd9e1fcd76aa28d600e16176e6496a00df6b87229ce2bd110",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/10/6c/106c504c89591279c44f4d38d5a8181151a5bfa2c6461fffc78d213ddb3345dc.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_3eb90a5b93d6a6fd7827e89e",
+      "referenceId": "fa_ref_178dedb8b2ad0bf29c003c37",
+      "brand": "Bosch",
+      "model": "SMU50M05AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50M05AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "ae6c5b48f5702e4bee78b20301d0135ac36877376187d1868d553b376885b23f",
+      "receiptBindingSha256": "77a82aee7a52ea43cd17783c5de9ac70c40b2093cc5b338d9ab4e14a58ef807c",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -2258,6 +2328,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_8ec41e3de9c53abc99695377",
+      "referenceId": "fa_ref_896b1b4f2f378be69c7f677c",
+      "brand": "Bosch",
+      "model": "SMU66MS02A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU66MS02A.pdf",
+      "sourcePdfSha256": "67b24ad23d047bb50533bb1a9d0150f18b50548384f6df91f39b1d90e925d5be",
+      "contentSha256": "67b24ad23d047bb50533bb1a9d0150f18b50548384f6df91f39b1d90e925d5be",
+      "receiptBindingSha256": "2ef6080dac12dfc760925b6491bb5c4c505cd99e57e3243d77b7dc2213acacf0",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/a7/b6/a7b67d761ff33ae61e801592d8e207f9ba817cc80aea6176646805bf4f0e375f.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_90b338b366512ddcbe460921",
       "referenceId": "fa_ref_c72bdeee73eafc3695793544",
       "brand": "Westinghouse",
@@ -3098,6 +3182,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_af4a93acb17946d74bb04001",
+      "referenceId": "fa_ref_1fe4383e8b16d5825367b72f",
+      "brand": "Bosch",
+      "model": "SMU50E65AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50E65AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "b179c6d1dcf11555b4e705d362112287a598bfb810a87011b08dfeede5c5cb01",
+      "receiptBindingSha256": "5251636d66ec13e6dd8e96a7690b2a559f07902220e6770416d720ccc9d2ea0f",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_aff68df053517392794eb79d",
       "referenceId": "fa_ref_c8514fc95f69f69afdd33075",
       "brand": "Westinghouse",
@@ -3122,6 +3220,20 @@
       "contentSha256": "5b63a45d72f8a8b0789205016238cbd6d743f1561c20ea661e3fd342cb068485",
       "receiptBindingSha256": "44dbcc4c1780d774983118fbdc4950caea142760a0ec7f70179c489a972a265a",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/c1/f5/c1f581a2f3d20759d0d0bae0beed9643dd2d024c8d20b298c5b8599ebc14e492.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_b0be7750c6b3abf786bc8033",
+      "referenceId": "fa_ref_59e25e03ea2a7946fd10b78c",
+      "brand": "Bosch",
+      "model": "SMU50E75AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU50E75AU.pdf",
+      "sourcePdfSha256": "9c66dd660c8986e89803a717724b93bd25ad98f388803016e835b3ae12f6a919",
+      "contentSha256": "9c66dd660c8986e89803a717724b93bd25ad98f388803016e835b3ae12f6a919",
+      "receiptBindingSha256": "487b66b812a1e8a6159508d091f93cf156dfdeb95d8fbdd1d7a1a1dc8131b49c",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/a8/db/a8db535d55a9cbdd88b4a8b9423b0e5f9a0dc12a0010fed6700d54e49442b73b.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4373,11 +4485,11 @@
     }
   ],
   "summary": {
-    "entries": 287,
-    "sources": 312,
-    "passed": 312,
+    "entries": 295,
+    "sources": 320,
+    "passed": 320,
     "failed": 0
   },
-  "checkedObjects": 609,
-  "semanticAuditSha256": "434394d23f2b49bd9435454aa950ec2dd66f865fc9e528d09785dd4287ae157b"
+  "checkedObjects": 620,
+  "semanticAuditSha256": "2cc0d4a8111134ebae1960a912d96d279bc28b12e2c73b62dd3a8006f794e605"
 }

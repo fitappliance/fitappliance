@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T18:31:51.917Z",
+  "generatedAt": "2026-07-16T18:41:25.886Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "8c220293ab2048f7420911b934a31c3a62cf9ed4277e9d4d2798a269f7ed6df8",
+  "semanticClassificationSha256": "a1e39f119b4b383b7a37bbd303153a4904ba6be02342dafc3691b8fa8444a0d4",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4289,
+    "documentLinks": 4297,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 306,
+      "COMPLETE_RECEIPT": 314,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 146,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1144
+      "REFERENCE_REDISCOVERY": 1136
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 306,
-      "REDISCOVER_OFFICIAL_SOURCE": 1144,
+      "NO_ACTION": 314,
+      "REDISCOVER_OFFICIAL_SOURCE": 1136,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 146
     },
     "bySourceAuthority": {
-      "MIXED": 161,
+      "MIXED": 169,
       "NONE": 6622,
       "OFFICIAL": 151,
-      "REFERENCE": 1161
+      "REFERENCE": 1153
     },
     "byIdentityScope": {
       "AMBIGUOUS": 183,
@@ -46,9 +46,9 @@
       "UNPROVEN": 6325
     },
     "byExtractionState": {
-      "ALL_AXIS_RANGE": 78,
-      "ALL_AXIS_SCALAR": 365,
-      "NOT_PARSED": 7558,
+      "ALL_AXIS_RANGE": 79,
+      "ALL_AXIS_SCALAR": 372,
+      "NOT_PARSED": 7550,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 306,
-      "LEGACY_UNBOUND": 1464,
+      "CURRENT_VALID": 314,
+      "LEGACY_UNBOUND": 1456,
       "NONE": 6325
     }
   },
@@ -68,13 +68,13 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 1067,
+      "documentLinks": 1075,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 128,
+        "COMPLETE_RECEIPT": 136,
         "CONFLICT_QUARANTINE": 22,
         "IDENTITY_RESEARCH": 18,
         "OFFICIAL_DISCOVERY": 1029,
-        "REFERENCE_REDISCOVERY": 222
+        "REFERENCE_REDISCOVERY": 214
       }
     },
     {
@@ -15252,14 +15252,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -15282,6 +15283,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:e28153dd80c9dfd621bf3b3f4eb76a9ff60f49f2f2972ae4bef6b306c35b1a99",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50E05AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/e2/81/e28153dd80c9dfd621bf3b3f4eb76a9ff60f49f2f2972ae4bef6b306c35b1a99.html",
+            "receipt:51574aebd3f703b105c9e1fc686a02453bf3023f8854a128a64c40d4f805b0a0"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "e28153dd80c9dfd621bf3b3f4eb76a9ff60f49f2f2972ae4bef6b306c35b1a99"
+        },
+        {
           "documentId": "source:doc_c67ca6cd491cb4d9fa844ac0",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/5/3/a/653ab3c5cc117731dedef176a58dc13e40767499_SMU50E05AU_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -15297,8 +15316,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -15315,14 +15334,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -15345,6 +15365,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:b179c6d1dcf11555b4e705d362112287a598bfb810a87011b08dfeede5c5cb01",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50E65AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/b1/79/b179c6d1dcf11555b4e705d362112287a598bfb810a87011b08dfeede5c5cb01.html",
+            "receipt:5251636d66ec13e6dd8e96a7690b2a559f07902220e6770416d720ccc9d2ea0f"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "b179c6d1dcf11555b4e705d362112287a598bfb810a87011b08dfeede5c5cb01"
+        },
+        {
           "documentId": "source:doc_b64f4aae8bcb7f2eff4f9825",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/e/9/3/6e93700545962efa3699b0bb4a942e24e16e9b37_smu50e65au_installationinstructions.pdf",
           "evidenceObjectIds": [
@@ -15360,8 +15398,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -15378,14 +15416,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -15408,6 +15447,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:9c66dd660c8986e89803a717724b93bd25ad98f388803016e835b3ae12f6a919",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU50E75AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/a8/db/a8db535d55a9cbdd88b4a8b9423b0e5f9a0dc12a0010fed6700d54e49442b73b.json",
+            "evidence/web/sha256/9c/66/9c66dd660c8986e89803a717724b93bd25ad98f388803016e835b3ae12f6a919.pdf",
+            "receipt:487b66b812a1e8a6159508d091f93cf156dfdeb95d8fbdd1d7a1a1dc8131b49c"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "9c66dd660c8986e89803a717724b93bd25ad98f388803016e835b3ae12f6a919"
+        },
+        {
           "documentId": "source:doc_4cd5713b76988076d612492b",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/e/e/7/a/ee7ac5360992080f7cf2468539628f3121fb40fd_Bosch_SMU50E75AU_60cm_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -15423,8 +15481,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -15442,14 +15500,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -15472,6 +15531,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:ed492bf7600635018fdfe340b4bda3361dfbdc448ae54c6073c59dad28c262ea",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50L05AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/ed/49/ed492bf7600635018fdfe340b4bda3361dfbdc448ae54c6073c59dad28c262ea.html",
+            "receipt:915ce45d551ce558b4817deb6573031ff469e47377a6d64d69041fd1901f7b63"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "ed492bf7600635018fdfe340b4bda3361dfbdc448ae54c6073c59dad28c262ea"
+        },
+        {
           "documentId": "source:doc_91e40370bae9fc29cdaee628",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/a/2/5/8/a258d8c1556fbeb10b6dcbed0accffeaea89de2d_Bosch_SMU50L05AU_Under_Bench_Dishwasher_User_Manual.pdf",
           "evidenceObjectIds": [
@@ -15487,8 +15564,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -15505,14 +15582,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -15535,6 +15613,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:ae6c5b48f5702e4bee78b20301d0135ac36877376187d1868d553b376885b23f",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50M05AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/ae/6c/ae6c5b48f5702e4bee78b20301d0135ac36877376187d1868d553b376885b23f.html",
+            "receipt:77a82aee7a52ea43cd17783c5de9ac70c40b2093cc5b338d9ab4e14a58ef807c"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "ae6c5b48f5702e4bee78b20301d0135ac36877376187d1868d553b376885b23f"
+        },
+        {
           "documentId": "source:doc_1f6fd727591db107db91cded",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/0/d/9/8/0d989d612edebef68120a6d1acd74700dddd6e1f_Bosch_Dishwasher_SMU50M05AU_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -15550,8 +15646,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -15568,14 +15664,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -15598,6 +15695,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:4cfa64487ebf42fa518da73163a68bc710e5502fb6c9b7766f4abf8308347b40",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50M15AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/4c/fa/4cfa64487ebf42fa518da73163a68bc710e5502fb6c9b7766f4abf8308347b40.html",
+            "receipt:0730e333d9777e6b946bb5bd6954a1d588ab04711fb938b6cbe78e0dd506ea38"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "4cfa64487ebf42fa518da73163a68bc710e5502fb6c9b7766f4abf8308347b40"
+        },
+        {
           "documentId": "source:doc_e2f950a8638f36c1a92b109c",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/f/5/5/d/f55da90a0672f61c054b5a21519729e25a5b0c1c_Bosch_SMU50M15AU_Serie_6_Built_Under_Dishwasher_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -15613,8 +15728,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -15631,14 +15746,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -15661,6 +15777,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:a66a14e316a8b1967696884d4f5479a1c02da1ad52ea2e8b46db70530c180b5f",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU66JS01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/6f/6d/6f6dd2bc019b39f17c22a4b6619fc87cf69aca96b959d2360b324c5cfd65df75.json",
+            "evidence/web/sha256/a6/6a/a66a14e316a8b1967696884d4f5479a1c02da1ad52ea2e8b46db70530c180b5f.pdf",
+            "receipt:342b744c6c7c3aaca7c9ca31d29e40cc3b05f594b72a27f9e01679ca28b214c9"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "a66a14e316a8b1967696884d4f5479a1c02da1ad52ea2e8b46db70530c180b5f"
+        },
+        {
           "documentId": "source:doc_6d05a0af45ceb5531d733f66",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/1/4/4/8/1448c39dc4b36481b628b1e6a91072b94ab6b1b0_SMU66JS01A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -15676,8 +15811,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -15694,14 +15829,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -15724,6 +15860,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:67b24ad23d047bb50533bb1a9d0150f18b50548384f6df91f39b1d90e925d5be",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU66MS02A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/a7/b6/a7b67d761ff33ae61e801592d8e207f9ba817cc80aea6176646805bf4f0e375f.json",
+            "evidence/web/sha256/67/b2/67b24ad23d047bb50533bb1a9d0150f18b50548384f6df91f39b1d90e925d5be.pdf",
+            "receipt:2ef6080dac12dfc760925b6491bb5c4c505cd99e57e3243d77b7dc2213acacf0"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "67b24ad23d047bb50533bb1a9d0150f18b50548384f6df91f39b1d90e925d5be"
+        },
+        {
           "documentId": "source:doc_ab8454e0273511e752dd8422",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/9/2/9/5/9295063bcc7e74620c5e9e8512897e02b5bafa06_SMU66MS02A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -15739,8 +15894,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"

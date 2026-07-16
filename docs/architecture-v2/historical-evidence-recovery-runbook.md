@@ -980,3 +980,36 @@ transaction, public receipt-bound dimensions are 237, receipt-bound
 is 238, the executable queue contains 7,694 targets and the current-retail P0
 missing-dimension lane contains 925 targets. All four target IDs are absent from
 the next-epoch executable queue and batch.
+
+## 26. Bosch SMU legacy dishwasher range preservation
+
+Run `historical-bosch-legacy-dishwashers-20260716-g` selected eight additional
+current Bosch Australia dishwashers with zero prior attempts. Seven models have
+fixed `598 x 815 x 573 mm` W/H/D envelopes:
+
+- product-page receipts: `SMU50E05AU`, `SMU50E65AU`, `SMU50L05AU`,
+  `SMU50M05AU` and `SMU50M15AU`;
+- exact-model PDF receipts: `SMU66JS01A` and `SMU66MS02A`.
+
+`SMU50E75AU` has an exact-model PDF receipt for width 598 mm, adjustable height
+815-875 mm and depth 573 mm. The public V2 projection preserves that range.
+The scalar historical replacement-reference lane deliberately does not count
+it as `AUTO_FILL`; an old-appliance lookup must not silently replace a height
+range with one endpoint.
+
+All exact PDFs passed through MinerU `content_list_v2` and retain source URL,
+PDF and JSON hashes, page/bounding-box evidence, fragment hash, explicit H/W/D
+order and exact-model scope. Product-page receipts retain exact canonical URL,
+title and structured-model signals. Non-contributing manuals and 404 legacy
+templates remain typed attempts. No source contributes installation clearance,
+door-open depth or rear service space, so every projection remains
+dimensions-only, `verifiedFitEligible=false` and `INSUFFICIENT_DATA`.
+
+The full online audit checked eight targets and 620 cumulative objects with zero
+repairs and zero violations. Promotion increased the cumulative bundle to 295
+targets and 320 source receipts; all 320 receipts replay. After the release
+transaction, public receipt-bound dimensions are 245, receipt-bound
+`VERIFIED_FIT` remains zero, `COMPLETE_RECEIPT` is 314, `ALL_AXIS_RANGE` is 79,
+historical `AUTO_FILL` is 245, the executable queue contains 7,686 targets and
+the current-retail P0 missing-dimension lane contains 917 targets. All eight
+target IDs are absent from the next-epoch executable queue and batch.
