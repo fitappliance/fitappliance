@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T19:12:54.418Z",
+  "generatedAt": "2026-07-16T19:22:16.669Z",
   "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
   "entries": [
     {
@@ -21097,6 +21097,257 @@
       }
     },
     {
+      "targetId": "recovery_target_4a1eed6cce5a48ce08fad321",
+      "referenceId": "fa_ref_d0f2a6295328c543cc54d10a",
+      "legacyRuntimeId": "ao-74226",
+      "canonicalProductId": "fa_prod_6343b9b0f30075f4dd44a906",
+      "brand": "Bosch",
+      "model": "WTW87564AU",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-5e49fc13221ec4594404618e-slice-5ba69d7d21d1",
+      "auditSha256": "b4b137f8f2002c05b75d549ed4a4d3740321e5d655a0c82e1c6b794fcd53fc68",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T19:17:39.900Z",
+          "contentSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+          "objectPath": "evidence/web/sha256/af/c9/afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 2109095,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WTW87564AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "6a57d4b4807bf3e07737e98e6c2126990509d87d28a0f3131fb62d789dcdd84e",
+              "bbox": [
+                499,
+                297,
+                907,
+                491
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 842
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "6a57d4b4807bf3e07737e98e6c2126990509d87d28a0f3131fb62d789dcdd84e",
+              "bbox": [
+                499,
+                297,
+                907,
+                491
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 665
+              },
+              "sourceLabel": "Overall depth including door handle",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "29f30f2e87f097a93e33a85c3c7175b6998f3abe44618d28d1cefdf2aa23ec2e",
+              "bbox": [
+                500,
+                548,
+                878,
+                570
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+            "contentSha256": "b976692764b169f4180b51ebb5dac45866711b9239ce42e5d34d92e0d45a8acc",
+            "objectPath": "evidence/derived/mineru-json/sha256/b9/76/b976692764b169f4180b51ebb5dac45866711b9239ce42e5d34d92e0d45a8acc.json",
+            "byteSize": 40987,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_list_model",
+              "value": "WTW87564AU:page:3:6196d1518d83a07b58d462f2444db59bc9d6416cf5c2bc16f357df16a620e386"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WTW87564AU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WTW87564AU:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WTW87564AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T19:17:39.900Z",
+            "bindingSha256": "70de8a48ea85c280cbedc811b287e94aa1a9e9b2c6cdd2782be75154a4924b08"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 842,
+              "maximumMm": 842
+            },
+            "depthMm": 665
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf",
+            "contentSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+            "receiptBindingSha256": "70de8a48ea85c280cbedc811b287e94aa1a9e9b2c6cdd2782be75154a4924b08",
+            "page": 1,
+            "fragmentSha256": "6a57d4b4807bf3e07737e98e6c2126990509d87d28a0f3131fb62d789dcdd84e"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf",
+            "contentSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+            "receiptBindingSha256": "70de8a48ea85c280cbedc811b287e94aa1a9e9b2c6cdd2782be75154a4924b08",
+            "page": 1,
+            "fragmentSha256": "6a57d4b4807bf3e07737e98e6c2126990509d87d28a0f3131fb62d789dcdd84e"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf",
+            "contentSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+            "receiptBindingSha256": "70de8a48ea85c280cbedc811b287e94aa1a9e9b2c6cdd2782be75154a4924b08",
+            "page": 2,
+            "fragmentSha256": "29f30f2e87f097a93e33a85c3c7175b6998f3abe44618d28d1cefdf2aa23ec2e"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_e002670e10212c71c965051f",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 598,
+              "heightMm": 842,
+              "depthMm": 613
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_4a85f8720fa94ab3d6239fe5",
       "referenceId": "fa_ref_3f4fd8513122db0e7a41495e",
       "legacyRuntimeId": "ao-77094",
@@ -22183,6 +22434,253 @@
               "widthMm": 598,
               "heightMm": 845,
               "depthMm": 600
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_4eadcda3e2e72f10324e3fd2",
+      "referenceId": "fa_ref_93a20f6bd080cc75e7512b8b",
+      "legacyRuntimeId": "ao-45642",
+      "canonicalProductId": "fa_prod_533844801afc74005aa42b75",
+      "brand": "Bosch",
+      "model": "WTY88701AU",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-5e49fc13221ec4594404618e-slice-5ba69d7d21d1",
+      "auditSha256": "b4b137f8f2002c05b75d549ed4a4d3740321e5d655a0c82e1c6b794fcd53fc68",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T19:21:33.750Z",
+          "contentSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+          "objectPath": "evidence/web/sha256/65/2e/652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 572567,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WTY88701AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "34aaa10543ceb1d6422dfffed0e148756fd4876af539dc9101c77f1cefa0608b",
+              "bbox": [
+                500,
+                223,
+                907,
+                418
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 842
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "34aaa10543ceb1d6422dfffed0e148756fd4876af539dc9101c77f1cefa0608b",
+              "bbox": [
+                500,
+                223,
+                907,
+                418
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 634
+              },
+              "sourceLabel": "Overall depth including door handle",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "cf21e8bd3c37b6bd3a722f03798e1b8188db60b290b5dadedd65862b9c85db38",
+              "bbox": [
+                67,
+                696,
+                445,
+                719
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+            "contentSha256": "b03f6d5f16bfe78348b81ac6c04ad254d49de0453a9762cc2712b40efc1dea67",
+            "objectPath": "evidence/derived/mineru-json/sha256/b0/3f/b03f6d5f16bfe78348b81ac6c04ad254d49de0453a9762cc2712b40efc1dea67.json",
+            "byteSize": 22634,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_title_model",
+              "value": "WTY88701AU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WTY88701AU:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WTY88701AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T19:21:33.750Z",
+            "bindingSha256": "b47cf5f665b991fc1b1ea7afe9cdbff88ec967d4bf1a23bdf573c95118b91e9d"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 842,
+              "maximumMm": 842
+            },
+            "depthMm": 634
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf",
+            "contentSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+            "receiptBindingSha256": "b47cf5f665b991fc1b1ea7afe9cdbff88ec967d4bf1a23bdf573c95118b91e9d",
+            "page": 1,
+            "fragmentSha256": "34aaa10543ceb1d6422dfffed0e148756fd4876af539dc9101c77f1cefa0608b"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf",
+            "contentSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+            "receiptBindingSha256": "b47cf5f665b991fc1b1ea7afe9cdbff88ec967d4bf1a23bdf573c95118b91e9d",
+            "page": 1,
+            "fragmentSha256": "34aaa10543ceb1d6422dfffed0e148756fd4876af539dc9101c77f1cefa0608b"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf",
+            "contentSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+            "receiptBindingSha256": "b47cf5f665b991fc1b1ea7afe9cdbff88ec967d4bf1a23bdf573c95118b91e9d",
+            "page": 2,
+            "fragmentSha256": "cf21e8bd3c37b6bd3a722f03798e1b8188db60b290b5dadedd65862b9c85db38"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_68a5964e537cdf6be107341e",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 598,
+              "heightMm": 842,
+              "depthMm": 599
             }
           }
         ],
@@ -31977,6 +32475,235 @@
         "activeSourceHashes": [
           "b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_6b2b2e28008f23c582242725",
+      "referenceId": "fa_ref_8a08c1cb1f7ddf4fb5c84ae1",
+      "legacyRuntimeId": "discovery-dryer-bosch-wth83002au",
+      "canonicalProductId": "fa_prod_a460095592b57264c14a6556",
+      "brand": "Bosch",
+      "model": "WTH83002AU",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-5e49fc13221ec4594404618e-slice-5ba69d7d21d1",
+      "auditSha256": "b4b137f8f2002c05b75d549ed4a4d3740321e5d655a0c82e1c6b794fcd53fc68",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T19:19:27.085Z",
+          "contentSha256": "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc",
+          "objectPath": "evidence/web/sha256/5e/97/5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 932136,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WTH83002AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "3fd75a895e5841081a344a25ca3260894f5c44687a549df03814d017ef4e6133",
+              "bbox": [
+                499,
+                297,
+                907,
+                479
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 842
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "3fd75a895e5841081a344a25ca3260894f5c44687a549df03814d017ef4e6133",
+              "bbox": [
+                499,
+                297,
+                907,
+                479
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 654
+              },
+              "sourceLabel": "Overall depth including door handle",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "8a50ec41fea011e65a6c40d5b2b638410692e18400262d50d6b575771fa6bb6e",
+              "bbox": [
+                500,
+                214,
+                880,
+                236
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc",
+            "contentSha256": "486a2021aca36db4c5edf1bdd2ed3d9a3038ab67e60c73618b5e1e71153315a9",
+            "objectPath": "evidence/derived/mineru-json/sha256/48/6a/486a2021aca36db4c5edf1bdd2ed3d9a3038ab67e60c73618b5e1e71153315a9.json",
+            "byteSize": 34852,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_title_model",
+              "value": "WTH83002AU:page:1"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WTH83002AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T19:19:27.085Z",
+            "bindingSha256": "4ee56ca0425fb4361d76bbe4894e56677cf1af5f64d4ac197103aa9ff60b04a1"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 842,
+              "maximumMm": 842
+            },
+            "depthMm": 654
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
+            "contentSha256": "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc",
+            "receiptBindingSha256": "4ee56ca0425fb4361d76bbe4894e56677cf1af5f64d4ac197103aa9ff60b04a1",
+            "page": 1,
+            "fragmentSha256": "3fd75a895e5841081a344a25ca3260894f5c44687a549df03814d017ef4e6133"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
+            "contentSha256": "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc",
+            "receiptBindingSha256": "4ee56ca0425fb4361d76bbe4894e56677cf1af5f64d4ac197103aa9ff60b04a1",
+            "page": 1,
+            "fragmentSha256": "3fd75a895e5841081a344a25ca3260894f5c44687a549df03814d017ef4e6133"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
+            "contentSha256": "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc",
+            "receiptBindingSha256": "4ee56ca0425fb4361d76bbe4894e56677cf1af5f64d4ac197103aa9ff60b04a1",
+            "page": 2,
+            "fragmentSha256": "8a50ec41fea011e65a6c40d5b2b638410692e18400262d50d6b575771fa6bb6e"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -75941,6 +76668,13 @@
       "queueSha256": "daf9d9e68db25ee056fc05a46c66be9a63d4b676c202f0baffca67614305cffd",
       "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
       "auditSha256": "561096e1e5b183266eb8969c19697980e1f597c2482c061b6e67ebf4549d054f"
+    },
+    {
+      "batchId": "historical-recovery-5e49fc13221ec4594404618e-slice-5ba69d7d21d1",
+      "batchSha256": "e3ee37f1c0d08e55a8903d6ac02b48677b299ed75babff89078014af242cafc0",
+      "queueSha256": "bc50216369574834a13106cf377756e4f3aea6a9c796306582e93ace056944fa",
+      "resultsSha256": "36722556c9b37fd7c462123893dc9ff894e5da1bb75291c8ed4f20ffa5151f4f",
+      "auditSha256": "b4b137f8f2002c05b75d549ed4a4d3740321e5d655a0c82e1c6b794fcd53fc68"
     },
     {
       "batchId": "historical-recovery-615091a0fa093d9ee58730e2",

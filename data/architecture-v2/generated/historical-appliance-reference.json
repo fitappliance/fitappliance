@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "63d1ac4fc0f35c52b74d314cd6374ac2b735a7185a0260260ba1ca16b7e21a2e"
+    "historical-recovery:historical-recovery-cumulative-v1": "d30f76d7a36aaea6a1ff1267cbf2b50ebb831b340d54c4ee9bc1a1dcbdac7f9a"
   },
   "records": [
     {
@@ -64788,9 +64788,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 842,
+        "depth": 654
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dryer",
@@ -64803,6 +64807,14 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6b2b2e28008f23c582242725",
+          "snapshotSha256": "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc",
+          "sourceLines": [
+            1,
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -64810,9 +64822,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_6b2b2e28008f23c582242725",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
+          "contentSha256": "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc",
+          "receiptBindingSha256": "4ee56ca0425fb4361d76bbe4894e56677cf1af5f64d4ac197103aa9ff60b04a1",
+          "verifiedAt": "2026-07-16T19:19:27.085Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3fd75a895e5841081a344a25ca3260894f5c44687a549df03814d017ef4e6133"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3fd75a895e5841081a344a25ca3260894f5c44687a549df03814d017ef4e6133"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "8a50ec41fea011e65a6c40d5b2b638410692e18400262d50d6b575771fa6bb6e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/5e/97/5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc.pdf"
+        }
       ]
     },
     {
@@ -64972,14 +65010,26 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 842,
+        "depth": 665
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_4a1eed6cce5a48ce08fad321",
+          "snapshotSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+          "sourceLines": [
+            1,
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -64988,8 +65038,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_4a1eed6cce5a48ce08fad321",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf",
+          "contentSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+          "receiptBindingSha256": "70de8a48ea85c280cbedc811b287e94aa1a9e9b2c6cdd2782be75154a4924b08",
+          "verifiedAt": "2026-07-16T19:17:39.900Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "6a57d4b4807bf3e07737e98e6c2126990509d87d28a0f3131fb62d789dcdd84e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "6a57d4b4807bf3e07737e98e6c2126990509d87d28a0f3131fb62d789dcdd84e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "29f30f2e87f097a93e33a85c3c7175b6998f3abe44618d28d1cefdf2aa23ec2e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/af/c9/afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3.pdf"
+        }
       ]
     },
     {
@@ -65186,14 +65262,26 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 842,
+        "depth": 634
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_4eadcda3e2e72f10324e3fd2",
+          "snapshotSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+          "sourceLines": [
+            1,
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -65202,8 +65290,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_4eadcda3e2e72f10324e3fd2",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf",
+          "contentSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+          "receiptBindingSha256": "b47cf5f665b991fc1b1ea7afe9cdbff88ec967d4bf1a23bdf573c95118b91e9d",
+          "verifiedAt": "2026-07-16T19:21:33.750Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "34aaa10543ceb1d6422dfffed0e148756fd4876af539dc9101c77f1cefa0608b"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "34aaa10543ceb1d6422dfffed0e148756fd4876af539dc9101c77f1cefa0608b"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "cf21e8bd3c37b6bd3a722f03798e1b8188db60b290b5dadedd65862b9c85db38"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/65/2e/652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2.pdf"
+        }
       ]
     },
     {
@@ -322973,16 +323087,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2901,
-      "MODEL_RECEIPT": 243,
+      "IDENTITY_ONLY": 2898,
+      "MODEL_RECEIPT": 246,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2901,
-      "AUTO_FILL": 254,
+      "MEASURE_REQUIRED": 2898,
+      "AUTO_FILL": 257,
       "QUARANTINED": 88
     }
   }

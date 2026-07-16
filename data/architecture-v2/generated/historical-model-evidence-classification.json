@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T19:13:24.637Z",
+  "generatedAt": "2026-07-16T19:22:44.955Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "8a668b8a500a939806c8b44287fbf670635b5df3c6c12c5a209b94e77ed072c1",
+  "semanticClassificationSha256": "fb06bc7531d3254f00c0e0274acaea5f3cb61676475b3985386b6741c46291d2",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4311,
+    "documentLinks": 4314,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,34 +21,34 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 328,
+      "COMPLETE_RECEIPT": 331,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 146,
+      "IDENTITY_RESEARCH": 145,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1122
+      "REFERENCE_REDISCOVERY": 1120
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 328,
-      "REDISCOVER_OFFICIAL_SOURCE": 1122,
+      "NO_ACTION": 331,
+      "REDISCOVER_OFFICIAL_SOURCE": 1120,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 146
+      "RUN_IDENTITY_CLOSURE": 145
     },
     "bySourceAuthority": {
-      "MIXED": 183,
-      "NONE": 6622,
-      "OFFICIAL": 151,
-      "REFERENCE": 1139
+      "MIXED": 185,
+      "NONE": 6621,
+      "OFFICIAL": 152,
+      "REFERENCE": 1137
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 183,
-      "EXACT_MODEL": 1587,
+      "AMBIGUOUS": 182,
+      "EXACT_MODEL": 1588,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 84,
-      "ALL_AXIS_SCALAR": 381,
-      "NOT_PARSED": 7536,
+      "ALL_AXIS_SCALAR": 384,
+      "NOT_PARSED": 7533,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 328,
-      "LEGACY_UNBOUND": 1442,
+      "CURRENT_VALID": 331,
+      "LEGACY_UNBOUND": 1439,
       "NONE": 6325
     }
   },
@@ -81,13 +81,13 @@
       "category": "dryer",
       "records": 843,
       "brands": 72,
-      "documentLinks": 268,
+      "documentLinks": 271,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 35,
+        "COMPLETE_RECEIPT": 38,
         "CONFLICT_QUARANTINE": 4,
-        "IDENTITY_RESEARCH": 5,
+        "IDENTITY_RESEARCH": 4,
         "OFFICIAL_DISCOVERY": 745,
-        "REFERENCE_REDISCOVERY": 54
+        "REFERENCE_REDISCOVERY": 52
       }
     },
     {
@@ -63851,14 +63851,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -63881,6 +63882,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/48/6a/486a2021aca36db4c5edf1bdd2ed3d9a3038ab67e60c73618b5e1e71153315a9.json",
+            "evidence/web/sha256/5e/97/5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc.pdf",
+            "receipt:4ee56ca0425fb4361d76bbe4894e56677cf1af5f64d4ac197103aa9ff60b04a1"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc"
+        },
+        {
           "documentId": "source:doc_6acb8a2709af891cd612a510",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
           "evidenceObjectIds": [
@@ -63896,8 +63916,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -64036,14 +64056,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -64066,6 +64087,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/b9/76/b976692764b169f4180b51ebb5dac45866711b9239ce42e5d34d92e0d45a8acc.json",
+            "evidence/web/sha256/af/c9/afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3.pdf",
+            "receipt:70de8a48ea85c280cbedc811b287e94aa1a9e9b2c6cdd2782be75154a4924b08"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3"
+        },
+        {
           "documentId": "source:doc_e002670e10212c71c965051f",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/c/6/9/2/c692e662738e1f7249773ca9080b3567d6fc7bd2_WTW87564AU_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -64081,8 +64121,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -64285,14 +64325,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -64315,6 +64356,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/b0/3f/b03f6d5f16bfe78348b81ac6c04ad254d49de0453a9762cc2712b40efc1dea67.json",
+            "evidence/web/sha256/65/2e/652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2.pdf",
+            "receipt:b47cf5f665b991fc1b1ea7afe9cdbff88ec967d4bf1a23bdf573c95118b91e9d"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2"
+        },
+        {
           "documentId": "source:doc_68a5964e537cdf6be107341e",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/1/1/4/e/114ecc9f099009bfdeb18bc8ab3ec6b3338a4f58_Bosch_WTY88701AU_9kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -64330,8 +64390,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T19:13:24.637Z",
-  "semanticQueueSha256": "9cad2b1988a816700efd876ce54721b0b9fa76d38c743308c85bbf383e5550a4",
-  "sourceClassificationSha256": "8a668b8a500a939806c8b44287fbf670635b5df3c6c12c5a209b94e77ed072c1",
+  "generatedAt": "2026-07-16T19:22:44.955Z",
+  "semanticQueueSha256": "24b4c2aa9ab1d35ff95e4a6ca3ef434c55c61d73433b7f677aad0e0990083fc8",
+  "sourceClassificationSha256": "fb06bc7531d3254f00c0e0274acaea5f3cb61676475b3985386b6741c46291d2",
   "records": [
     {
       "schemaVersion": 1,
@@ -6821,97 +6821,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_b7f0a5f35ac3ec7037a49485"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e3b971c85c89729bba1b8e99",
-      "referenceId": "fa_ref_8a08c1cb1f7ddf4fb5c84ae1",
-      "category": "dryer",
-      "brand": "Bosch",
-      "model": "WTH83002AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_cc79e6c2ca5178cb91dc2d83"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-dryer-bosch-wth83002au"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_a460095592b57264c14a6556"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_24edfd4d48e6507479a5cdd2",
-      "referenceId": "fa_ref_d0f2a6295328c543cc54d10a",
-      "category": "dryer",
-      "brand": "Bosch",
-      "model": "WTW87564AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_87afcfb63f5edcad16d2a934"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_4a1eed6cce5a48ce08fad321"
-      ],
-      "legacyRuntimeIds": [
-        "ao-74226"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6343b9b0f30075f4dd44a906"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_44517c25107b48ff8f60311f",
-      "referenceId": "fa_ref_93a20f6bd080cc75e7512b8b",
-      "category": "dryer",
-      "brand": "Bosch",
-      "model": "WTY88701AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_9149b7a3b30ad73a315a7226"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_4eadcda3e2e72f10324e3fd2"
-      ],
-      "legacyRuntimeIds": [
-        "ao-45642"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_533844801afc74005aa42b75"
       ],
       "offlineReplayOutcome": null
     },
@@ -201981,19 +201890,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_87afcfb63f5edcad16d2a934",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/c/6/9/2/c692e662738e1f7249773ca9080b3567d6fc7bd2_WTW87564AU_Bosch_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WTW87564AU.json",
-        "source:doc_e002670e10212c71c965051f"
-      ],
-      "referenceIds": [
-        "fa_ref_d0f2a6295328c543cc54d10a"
-      ]
-    },
-    {
       "sourceId": "historical_source_87c6fa048d5f112c1a23c849",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/c/4/f/1/c4f1fe517190889dbfc2a777815cd27f30984512_WTB4604SBR_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -202733,19 +202629,6 @@
       ],
       "referenceIds": [
         "fa_ref_0a5adc4c0a6ba78ee43af9b1"
-      ]
-    },
-    {
-      "sourceId": "historical_source_9149b7a3b30ad73a315a7226",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/1/4/e/114ecc9f099009bfdeb18bc8ab3ec6b3338a4f58_Bosch_WTY88701AU_9kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WTY88701AU.json",
-        "source:doc_68a5964e537cdf6be107341e"
-      ],
-      "referenceIds": [
-        "fa_ref_93a20f6bd080cc75e7512b8b"
       ]
     },
     {
@@ -206901,19 +206784,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_cc79e6c2ca5178cb91dc2d83",
-      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WTH83002AU.json",
-        "source:doc_6acb8a2709af891cd612a510"
-      ],
-      "referenceIds": [
-        "fa_ref_8a08c1cb1f7ddf4fb5c84ae1"
-      ]
-    },
-    {
       "sourceId": "historical_source_cd01988b141aafc1c771e7e7",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/4/6/9/0/4690cbe0e7b1d3697f34eaf44ef98704bd42f31c_WBE5300SARH_Westinghouse_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -210307,46 +210177,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 328,
+    "COMPLETE_RECEIPT": 331,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7767,
-    "uniqueReferences": 7767,
-    "candidateSources": 1416,
-    "candidateEdges": 1451,
+    "queuedModels": 7764,
+    "uniqueReferences": 7764,
+    "candidateSources": 1413,
+    "candidateEdges": 1448,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1129,
+      "CURRENT_RETAIL": 1126,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1269,
-      "dryer": 808,
+      "dryer": 805,
       "fridge": 4228,
       "washing_machine": 1462
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 146,
+      "IDENTITY_RESEARCH": 145,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1122
+      "REFERENCE_REDISCOVERY": 1120
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 146,
+      "IDENTITY_CLOSURE": 145,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1122
+      "OFFICIAL_REDISCOVERY": 1120
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5102,
+      "DISCOVERY_READY": 5099,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 328,
+      "COMPLETE_RECEIPT": 331,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

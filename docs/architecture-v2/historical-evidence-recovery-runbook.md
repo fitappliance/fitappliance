@@ -1094,3 +1094,36 @@ contains 7,672 targets and the current-retail P0 missing-dimension lane contains
 903 targets. Public receipt-bound dimensions are 259 and receipt-bound
 `VERIFIED_FIT` remains zero. All six target IDs are absent from the next-epoch
 queue and batch, and no Bosch dishwasher remains in the current-retail P0 lane.
+
+## 29. Bosch dryer P0 lane completion
+
+Run `historical-bosch-dryers-20260716-j` selected the three zero-attempt Bosch
+dryers remaining in the current-retail P0 lane:
+
+| Model | Accepted source | Width | Height | Depth |
+| --- | --- | ---: | ---: | ---: |
+| `WTH83002AU` | exact-model PDF | 598 | 842 | 654 |
+| `WTW87564AU` | exact-model PDF | 598 | 842 | 665 |
+| `WTY88701AU` | exact-model PDF | 598 | 842 | 634 |
+
+Each source is an exact-model Bosch Australia specification PDF processed into
+MinerU `content_list_v2`. The receipts preserve explicit axes, page/fragment
+bindings and the source PDF and derived JSON hashes. The different depth values
+are retained per model; no series-level dimension sharing occurs. Manuals that
+lack exact-model identity or explicit dimension coverage remain typed failed
+candidates and cannot contribute claims.
+
+All three closed envelopes are fixed scalars and may populate historical
+replacement-reference dimensions. They do not contain a complete installation,
+ventilation, door-operation or rear-service envelope, so they remain
+dimensions-only with `verifiedFitEligible=false` and `INSUFFICIENT_DATA`.
+
+The full online audit checked three targets and 648 cumulative objects with zero
+repairs and zero violations. Promotion increased the cumulative bundle to 312
+targets and 337 source receipts; all 337 receipts replay. After the release
+transaction, `COMPLETE_RECEIPT` is 331, `ALL_AXIS_RANGE` is 84,
+`ALL_AXIS_SCALAR` is 384, historical `AUTO_FILL` is 257, the executable queue
+contains 7,669 targets and the current-retail P0 missing-dimension lane contains
+900 targets. Public receipt-bound dimensions are 262 and receipt-bound
+`VERIFIED_FIT` remains zero. All three target IDs are absent from the next-epoch
+queue and batch, and no Bosch dryer remains in the current-retail P0 lane.

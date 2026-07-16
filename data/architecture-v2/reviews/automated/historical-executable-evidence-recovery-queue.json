@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T19:13:24.637Z",
-  "sourceAcquisitionQueueSha256": "9cad2b1988a816700efd876ce54721b0b9fa76d38c743308c85bbf383e5550a4",
+  "generatedAt": "2026-07-16T19:22:44.955Z",
+  "sourceAcquisitionQueueSha256": "24b4c2aa9ab1d35ff95e4a6ca3ef434c55c61d73433b7f677aad0e0990083fc8",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7767,
+    "acquisitionRecords": 7764,
     "fetchJobs": 0,
-    "targets": 7672,
-    "resolverOnlyTargets": 7672,
+    "targets": 7669,
+    "resolverOnlyTargets": 7669,
     "candidateEdges": 0,
-    "uniqueReferences": 7672,
+    "uniqueReferences": 7669,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 12,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1098,
+      "CURRENT_RETAIL": 1095,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 903,
+      "P0_CURRENT_MISSING_DIMENSIONS": 900,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -5640,107 +5640,6 @@
             "width": 595,
             "height": 850,
             "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_6b2b2e28008f23c582242725",
-      "referenceId": "fa_ref_8a08c1cb1f7ddf4fb5c84ae1",
-      "legacyRuntimeId": "discovery-dryer-bosch-wth83002au",
-      "canonicalProductId": "fa_prod_a460095592b57264c14a6556",
-      "category": "dryer",
-      "brand": "Bosch",
-      "model": "WTH83002AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/WTH83002AU.json",
-        "source:doc_6acb8a2709af891cd612a510"
-      ],
-      "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_4a1eed6cce5a48ce08fad321",
-      "referenceId": "fa_ref_d0f2a6295328c543cc54d10a",
-      "legacyRuntimeId": "ao-74226",
-      "canonicalProductId": "fa_prod_6343b9b0f30075f4dd44a906",
-      "category": "dryer",
-      "brand": "Bosch",
-      "model": "WTW87564AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e002670e10212c71c965051f",
-        "legacy:data/pdf-evidence-raw/WTW87564AU.json",
-        "source:doc_e002670e10212c71c965051f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e002670e10212c71c965051f",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 842,
-            "depth": 613
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_4eadcda3e2e72f10324e3fd2",
-      "referenceId": "fa_ref_93a20f6bd080cc75e7512b8b",
-      "legacyRuntimeId": "ao-45642",
-      "canonicalProductId": "fa_prod_533844801afc74005aa42b75",
-      "category": "dryer",
-      "brand": "Bosch",
-      "model": "WTY88701AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_68a5964e537cdf6be107341e",
-        "legacy:data/pdf-evidence-raw/WTY88701AU.json",
-        "source:doc_68a5964e537cdf6be107341e"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_68a5964e537cdf6be107341e",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 842,
-            "depth": 599
           }
         }
       ],

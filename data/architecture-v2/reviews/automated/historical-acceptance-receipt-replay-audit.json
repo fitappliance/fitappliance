@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T19:12:54.418Z",
-  "sourceBundleSha256": "63d1ac4fc0f35c52b74d314cd6374ac2b735a7185a0260260ba1ca16b7e21a2e",
+  "generatedAt": "2026-07-16T19:22:16.669Z",
+  "sourceBundleSha256": "d30f76d7a36aaea6a1ff1267cbf2b50ebb831b340d54c4ee9bc1a1dcbdac7f9a",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1334,6 +1334,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_4a1eed6cce5a48ce08fad321",
+      "referenceId": "fa_ref_d0f2a6295328c543cc54d10a",
+      "brand": "Bosch",
+      "model": "WTW87564AU",
+      "category": "dryer",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTW87564AU.pdf",
+      "sourcePdfSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+      "contentSha256": "afc9d833f216165de026f9e5a1265044fdf26332203e98e931face9cf3ec5ee3",
+      "receiptBindingSha256": "70de8a48ea85c280cbedc811b287e94aa1a9e9b2c6cdd2782be75154a4924b08",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b9/76/b976692764b169f4180b51ebb5dac45866711b9239ce42e5d34d92e0d45a8acc.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_4a85f8720fa94ab3d6239fe5",
       "referenceId": "fa_ref_3f4fd8513122db0e7a41495e",
       "brand": "Westinghouse",
@@ -1400,6 +1414,20 @@
       "contentSha256": "5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea",
       "receiptBindingSha256": "36d9b2b701e26704a355ea80d1e0bf17e7eb15b59077b3fda9e91257ad3333bf",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_4eadcda3e2e72f10324e3fd2",
+      "referenceId": "fa_ref_93a20f6bd080cc75e7512b8b",
+      "brand": "Bosch",
+      "model": "WTY88701AU",
+      "category": "dryer",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY88701AU.pdf",
+      "sourcePdfSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+      "contentSha256": "652e44e8407ca0f8ac9f38f60aca7ccf7b40f3cb61e1ec7e63ab1511624464d2",
+      "receiptBindingSha256": "b47cf5f665b991fc1b1ea7afe9cdbff88ec967d4bf1a23bdf573c95118b91e9d",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b0/3f/b03f6d5f16bfe78348b81ac6c04ad254d49de0453a9762cc2712b40efc1dea67.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2002,6 +2030,20 @@
       "contentSha256": "b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8",
       "receiptBindingSha256": "4a645710757b9e44f41cd7a4fb0ef797c3a4d9b9c517a86794ed0bd03a79cd4d",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/79/15/7915f5a34d7c681b93447a378249d7aeb29bd4b32821d9c9f5f3a7c8d52233e3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_6b2b2e28008f23c582242725",
+      "referenceId": "fa_ref_8a08c1cb1f7ddf4fb5c84ae1",
+      "brand": "Bosch",
+      "model": "WTH83002AU",
+      "category": "dryer",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
+      "sourcePdfSha256": "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc",
+      "contentSha256": "5e975967e7471d70ec4e6705a3e3da3f27cf05e8a47cd5e0db2afd22df4e8ffc",
+      "receiptBindingSha256": "4ee56ca0425fb4361d76bbe4894e56677cf1af5f64d4ac197103aa9ff60b04a1",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/48/6a/486a2021aca36db4c5edf1bdd2ed3d9a3038ab67e60c73618b5e1e71153315a9.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4681,11 +4723,11 @@
     }
   ],
   "summary": {
-    "entries": 309,
-    "sources": 334,
-    "passed": 334,
+    "entries": 312,
+    "sources": 337,
+    "passed": 337,
     "failed": 0
   },
-  "checkedObjects": 642,
-  "semanticAuditSha256": "c39c02a376e20b954b1486a8686cd0416feda3b6e70ace72881b2316a20597a3"
+  "checkedObjects": 648,
+  "semanticAuditSha256": "3802fcd7262832d986a36a0d64c261232f5e9e0718dc567c42950856cf2af6f1"
 }
