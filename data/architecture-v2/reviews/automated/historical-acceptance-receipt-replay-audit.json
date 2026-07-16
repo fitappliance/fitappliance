@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T16:20:28.031Z",
-  "sourceBundleSha256": "ad1963e008b7c1d9ca5fe15219a9f1e1db2b390eb293c464220bb709665d7106",
+  "generatedAt": "2026-07-16T16:41:58.851Z",
+  "sourceBundleSha256": "3c4a2abcc5c090ccd09a9c5d67f78bab53213d31a7e0f66c3ae13cfbb0166912",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -2566,6 +2566,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_9ef314eabbf2d2285a4cfd4c",
+      "referenceId": "fa_ref_20475b29286170d65bbffb00",
+      "brand": "Bosch",
+      "model": "SMU8ECS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf",
+      "sourcePdfSha256": "8ab2a489021bf8558f401c08c196ba212ba9bb3063ed762f447b453bfecc4e1b",
+      "contentSha256": "8ab2a489021bf8558f401c08c196ba212ba9bb3063ed762f447b453bfecc4e1b",
+      "receiptBindingSha256": "861462c6fed2bf930719cf5dc5ec88da6269d20e2966820b6d72e54d6c5b1c1a",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/2b/4f/2b4f617d1fd837832a833c035b7578e35a8d5aeb7e2a48b5d481156c4a9c8885.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_a0281e53a45dcd4ad896734a",
       "referenceId": "fa_ref_11ffa98746c515ba2ca419ca",
       "brand": "LG",
@@ -3434,6 +3448,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_d272363a8cb7b923ba497c41",
+      "referenceId": "fa_ref_4c754346beea4e9252692342",
+      "brand": "Bosch",
+      "model": "SMU8EDS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8EDS01A.pdf",
+      "sourcePdfSha256": "9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a",
+      "contentSha256": "9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a",
+      "receiptBindingSha256": "c72de78fedd0dbd0845576cebfcd6c9d4c948289b69368636f275304b7c6e3a5",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/d8/03/d8033f9df9be6b0a76107d13b2ff27d056318e81b18dacbdbc882dcc8e3fedbb.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_d467320cd885c606ee003a57",
       "referenceId": "fa_ref_9774b2c4a1d1d8d4a5fc1449",
       "brand": "Bosch",
@@ -3570,6 +3598,20 @@
       "contentSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
       "receiptBindingSha256": "9378d78d0c966a688eb0889cc77f134678458e919c16ea8d7cd33513b3c952f3",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/dc/a0/dca0b8d7a0b891fc301bda8dc363bf00e380c2bb196717476d48c884106c1ab8.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_dc5c84183ef45d12f70bf552",
+      "referenceId": "fa_ref_4406a85cc9ac3d0eb2ce5b7e",
+      "brand": "Bosch",
+      "model": "SMU8ZCS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf",
+      "sourcePdfSha256": "8f00a740da4a86084b25d961be6bf13297862ecdb4f278f7747e991ce829a49e",
+      "contentSha256": "8f00a740da4a86084b25d961be6bf13297862ecdb4f278f7747e991ce829a49e",
+      "receiptBindingSha256": "5d9de0cdf3bdb919d80efa151851da719c7bd71a4a1544f4bae6ebe5195f8fa3",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b2/5f/b25f1a2c5591424ef3b1e1355ee476dc5a230ebc7e02d6e93dd04136da7da4a3.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4107,11 +4149,11 @@
     }
   ],
   "summary": {
-    "entries": 268,
-    "sources": 293,
-    "passed": 293,
+    "entries": 271,
+    "sources": 296,
+    "passed": 296,
     "failed": 0
   },
-  "checkedObjects": 581,
-  "semanticAuditSha256": "b30153eab9fe383eb930c723dc2d0688c211bbb7b46b51cdabad97d3ed0bddd4"
+  "checkedObjects": 587,
+  "semanticAuditSha256": "ba80a4ce7de17af8ca17fdc43e80fb1403f6b52d6c809dd92de0c27c9d5e5bb2"
 }

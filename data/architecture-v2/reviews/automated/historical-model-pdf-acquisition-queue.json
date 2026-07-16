@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T16:20:45.455Z",
-  "semanticQueueSha256": "58b73cb73a956f0a5cd71914065e2e5c3defd56a978b2d07ff44d212ecf43f30",
-  "sourceClassificationSha256": "4ea1f985221533263f5d063b800bacd881ac5ff6f22595148b6d6a2b80e9a528",
+  "generatedAt": "2026-07-16T16:42:15.699Z",
+  "semanticQueueSha256": "f06343a9ee53894f44f07c379bed78b60b77fddcc21efacae80863faf3380a26",
+  "sourceClassificationSha256": "52f6514ae44f21e841f7010f20a0363b49fc9489bc59c84887eaa3cc14b4ad4c",
   "records": [
     {
       "schemaVersion": 1,
@@ -1303,95 +1303,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_1ebf3c94b57f6ab24b8f7693"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_6d6ffb581c48d5a59e1208a2",
-      "referenceId": "fa_ref_20475b29286170d65bbffb00",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU8ECS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_70605487df5b7f95ed8d386b"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-dishwasher-bosch-smu8ecs01a"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d01c197b1ead43e9b12c072f"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_accc74a06be4d0f49c02b647",
-      "referenceId": "fa_ref_4c754346beea4e9252692342",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU8EDS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_52ee784816f3937e25e2654c"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_d272363a8cb7b923ba497c41"
-      ],
-      "legacyRuntimeIds": [
-        "ao-103494"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_8b32330f31d1ec6a551bf6c9"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_6e203e8c5c4f9515ca8ab612",
-      "referenceId": "fa_ref_4406a85cc9ac3d0eb2ce5b7e",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU8ZCS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8b539dcd9965657b12fd05e5"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-dishwasher-bosch-smu8zcs01a"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d20cc8cece83a4f95a6f8db5"
       ],
       "offlineReplayOutcome": null
     },
@@ -199291,19 +199202,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_52ee784816f3937e25e2654c",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/7/c/6/47c6eca8d764bf688402c270261c4ac8f8c98246_SMU8EDS01A_Bosch_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMU8EDS01A.json",
-        "source:doc_d5ac1cb8e6671d7af6a713fd"
-      ],
-      "referenceIds": [
-        "fa_ref_4c754346beea4e9252692342"
-      ]
-    },
-    {
       "sourceId": "historical_source_5355e70428d82758420d0c8e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/2/5/2/5252b6baab1bcffc4a42ec12afd0ac034c49ed69_TWIN171611C_LG_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -201719,19 +201617,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_70605487df5b7f95ed8d386b",
-      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMU8ECS01A.json",
-        "source:doc_0590e3138654b630d6138465"
-      ],
-      "referenceIds": [
-        "fa_ref_20475b29286170d65bbffb00"
-      ]
-    },
-    {
       "sourceId": "historical_source_70d7093e2eff1ccfaede3cb8",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/c/a/b/1/cab10417a9003bc492ec0c3ddcc21c30fdc21e30_QRG_AU_62248.pdf",
       "sourceAuthority": "REFERENCE",
@@ -203865,19 +203750,6 @@
       ],
       "referenceIds": [
         "fa_ref_203c0d309beb73538180251f"
-      ]
-    },
-    {
-      "sourceId": "historical_source_8b539dcd9965657b12fd05e5",
-      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMU8ZCS01A.json",
-        "source:doc_797f1a7eb701712befd664c1"
-      ],
-      "referenceIds": [
-        "fa_ref_4406a85cc9ac3d0eb2ce5b7e"
       ]
     },
     {
@@ -212105,46 +211977,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 287,
+    "COMPLETE_RECEIPT": 290,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7808,
-    "uniqueReferences": 7808,
-    "candidateSources": 1457,
-    "candidateEdges": 1492,
+    "queuedModels": 7805,
+    "uniqueReferences": 7805,
+    "candidateSources": 1454,
+    "candidateEdges": 1489,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1170,
+      "CURRENT_RETAIL": 1167,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1306,
+      "dishwasher": 1303,
       "dryer": 808,
       "fridge": 4232,
       "washing_machine": 1462
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 149,
+      "IDENTITY_RESEARCH": 147,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1160
+      "REFERENCE_REDISCOVERY": 1159
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 149,
+      "IDENTITY_CLOSURE": 147,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1160
+      "OFFICIAL_REDISCOVERY": 1159
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5143,
+      "DISCOVERY_READY": 5140,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 287,
+      "COMPLETE_RECEIPT": 290,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

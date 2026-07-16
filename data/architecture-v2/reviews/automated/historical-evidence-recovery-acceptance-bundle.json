@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T16:20:28.031Z",
+  "generatedAt": "2026-07-16T16:41:58.851Z",
   "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
   "entries": [
     {
@@ -41491,6 +41491,244 @@
       }
     },
     {
+      "targetId": "recovery_target_9ef314eabbf2d2285a4cfd4c",
+      "referenceId": "fa_ref_20475b29286170d65bbffb00",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-smu8ecs01a",
+      "canonicalProductId": "fa_prod_d01c197b1ead43e9b12c072f",
+      "brand": "Bosch",
+      "model": "SMU8ECS01A",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-76287b5df11339bf5416eed3-slice-e3a808d6b80b",
+      "auditSha256": "8cad3336798291d42f51b5eca94f848adfe50c902992673e45bebb890ce6efd2",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T16:28:55.498Z",
+          "contentSha256": "8ab2a489021bf8558f401c08c196ba212ba9bb3063ed762f447b453bfecc4e1b",
+          "objectPath": "evidence/web/sha256/8a/b2/8ab2a489021bf8558f401c08c196ba212ba9bb3063ed762f447b453bfecc4e1b.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1464478,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SMU8ECS01A",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5f94bce4891f118e9f10f6b3d59c0b249bdcd60a6c82ef099f8c4167beb7f374",
+              "bbox": [
+                500,
+                608,
+                825,
+                620
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 815,
+                "maxMm": 875
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5f94bce4891f118e9f10f6b3d59c0b249bdcd60a6c82ef099f8c4167beb7f374",
+              "bbox": [
+                500,
+                608,
+                825,
+                620
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 573
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5f94bce4891f118e9f10f6b3d59c0b249bdcd60a6c82ef099f8c4167beb7f374",
+              "bbox": [
+                500,
+                608,
+                825,
+                620
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "8ab2a489021bf8558f401c08c196ba212ba9bb3063ed762f447b453bfecc4e1b",
+            "contentSha256": "2b4f617d1fd837832a833c035b7578e35a8d5aeb7e2a48b5d481156c4a9c8885",
+            "objectPath": "evidence/derived/mineru-json/sha256/2b/4f/2b4f617d1fd837832a833c035b7578e35a8d5aeb7e2a48b5d481156c4a9c8885.json",
+            "byteSize": 45672,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "SMU8ECS01A:page:3:d2eec2618b8100a7b6e6501f20d23542ba92b6863ea255f7a57069f5484f3467"
+            },
+            {
+              "type": "mineru_bosch_dimension_section_exact_model",
+              "value": "SMU8ECS01A:titles:1,2:url:https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SMU8ECS01A:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SMU8ECS01A:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "SMU8ECS01A:https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T16:28:55.498Z",
+            "bindingSha256": "861462c6fed2bf930719cf5dc5ec88da6269d20e2966820b6d72e54d6c5b1c1a"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 815,
+              "maximumMm": 875
+            },
+            "depthMm": 573
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf",
+            "contentSha256": "8ab2a489021bf8558f401c08c196ba212ba9bb3063ed762f447b453bfecc4e1b",
+            "receiptBindingSha256": "861462c6fed2bf930719cf5dc5ec88da6269d20e2966820b6d72e54d6c5b1c1a",
+            "page": 2,
+            "fragmentSha256": "5f94bce4891f118e9f10f6b3d59c0b249bdcd60a6c82ef099f8c4167beb7f374"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf",
+            "contentSha256": "8ab2a489021bf8558f401c08c196ba212ba9bb3063ed762f447b453bfecc4e1b",
+            "receiptBindingSha256": "861462c6fed2bf930719cf5dc5ec88da6269d20e2966820b6d72e54d6c5b1c1a",
+            "page": 2,
+            "fragmentSha256": "5f94bce4891f118e9f10f6b3d59c0b249bdcd60a6c82ef099f8c4167beb7f374"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf",
+            "contentSha256": "8ab2a489021bf8558f401c08c196ba212ba9bb3063ed762f447b453bfecc4e1b",
+            "receiptBindingSha256": "861462c6fed2bf930719cf5dc5ec88da6269d20e2966820b6d72e54d6c5b1c1a",
+            "page": 2,
+            "fragmentSha256": "5f94bce4891f118e9f10f6b3d59c0b249bdcd60a6c82ef099f8c4167beb7f374"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "8ab2a489021bf8558f401c08c196ba212ba9bb3063ed762f447b453bfecc4e1b"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_a0281e53a45dcd4ad896734a",
       "referenceId": "fa_ref_11ffa98746c515ba2ca419ca",
       "legacyRuntimeId": "fridge-arf3094",
@@ -55814,6 +56052,244 @@
       }
     },
     {
+      "targetId": "recovery_target_d272363a8cb7b923ba497c41",
+      "referenceId": "fa_ref_4c754346beea4e9252692342",
+      "legacyRuntimeId": "ao-103494",
+      "canonicalProductId": "fa_prod_8b32330f31d1ec6a551bf6c9",
+      "brand": "Bosch",
+      "model": "SMU8EDS01A",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-76287b5df11339bf5416eed3-slice-e3a808d6b80b",
+      "auditSha256": "8cad3336798291d42f51b5eca94f848adfe50c902992673e45bebb890ce6efd2",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8EDS01A.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8EDS01A.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T16:33:41.582Z",
+          "contentSha256": "9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a",
+          "objectPath": "evidence/web/sha256/9c/57/9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1145858,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SMU8EDS01A",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "d100ef1690c2240fc390bc39c438291ad3de7d838f0e57b8e275d9c993d7a4f4",
+              "bbox": [
+                499,
+                656,
+                825,
+                668
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 815,
+                "maxMm": 875
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "d100ef1690c2240fc390bc39c438291ad3de7d838f0e57b8e275d9c993d7a4f4",
+              "bbox": [
+                499,
+                656,
+                825,
+                668
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 573
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "d100ef1690c2240fc390bc39c438291ad3de7d838f0e57b8e275d9c993d7a4f4",
+              "bbox": [
+                499,
+                656,
+                825,
+                668
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a",
+            "contentSha256": "d8033f9df9be6b0a76107d13b2ff27d056318e81b18dacbdbc882dcc8e3fedbb",
+            "objectPath": "evidence/derived/mineru-json/sha256/d8/03/d8033f9df9be6b0a76107d13b2ff27d056318e81b18dacbdbc882dcc8e3fedbb.json",
+            "byteSize": 45928,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "SMU8EDS01A:page:3:ee2918e4b9d7e58d4efc3c3be1a4cd74cb4df2e9444ee99f0999a7292997bdb4"
+            },
+            {
+              "type": "mineru_bosch_dimension_section_exact_model",
+              "value": "SMU8EDS01A:titles:1,2:url:https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8EDS01A.pdf"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SMU8EDS01A:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SMU8EDS01A:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "SMU8EDS01A:https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8EDS01A.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8EDS01A.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T16:33:41.582Z",
+            "bindingSha256": "c72de78fedd0dbd0845576cebfcd6c9d4c948289b69368636f275304b7c6e3a5"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 815,
+              "maximumMm": 875
+            },
+            "depthMm": 573
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8EDS01A.pdf",
+            "contentSha256": "9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a",
+            "receiptBindingSha256": "c72de78fedd0dbd0845576cebfcd6c9d4c948289b69368636f275304b7c6e3a5",
+            "page": 2,
+            "fragmentSha256": "d100ef1690c2240fc390bc39c438291ad3de7d838f0e57b8e275d9c993d7a4f4"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8EDS01A.pdf",
+            "contentSha256": "9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a",
+            "receiptBindingSha256": "c72de78fedd0dbd0845576cebfcd6c9d4c948289b69368636f275304b7c6e3a5",
+            "page": 2,
+            "fragmentSha256": "d100ef1690c2240fc390bc39c438291ad3de7d838f0e57b8e275d9c993d7a4f4"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8EDS01A.pdf",
+            "contentSha256": "9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a",
+            "receiptBindingSha256": "c72de78fedd0dbd0845576cebfcd6c9d4c948289b69368636f275304b7c6e3a5",
+            "page": 2,
+            "fragmentSha256": "d100ef1690c2240fc390bc39c438291ad3de7d838f0e57b8e275d9c993d7a4f4"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_d467320cd885c606ee003a57",
       "referenceId": "fa_ref_9774b2c4a1d1d8d4a5fc1449",
       "legacyRuntimeId": "ao-44795",
@@ -58127,6 +58603,244 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_dc5c84183ef45d12f70bf552",
+      "referenceId": "fa_ref_4406a85cc9ac3d0eb2ce5b7e",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-smu8zcs01a",
+      "canonicalProductId": "fa_prod_d20cc8cece83a4f95a6f8db5",
+      "brand": "Bosch",
+      "model": "SMU8ZCS01A",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-76287b5df11339bf5416eed3-slice-e3a808d6b80b",
+      "auditSha256": "8cad3336798291d42f51b5eca94f848adfe50c902992673e45bebb890ce6efd2",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T16:34:12.915Z",
+          "contentSha256": "8f00a740da4a86084b25d961be6bf13297862ecdb4f278f7747e991ce829a49e",
+          "objectPath": "evidence/web/sha256/8f/00/8f00a740da4a86084b25d961be6bf13297862ecdb4f278f7747e991ce829a49e.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1679750,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SMU8ZCS01A",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "657da8cdfe205781fe4a61d7ebe35122b8fe7930a607258793558adc722e56ce",
+              "bbox": [
+                500,
+                663,
+                825,
+                676
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 815,
+                "maxMm": 875
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "657da8cdfe205781fe4a61d7ebe35122b8fe7930a607258793558adc722e56ce",
+              "bbox": [
+                500,
+                663,
+                825,
+                676
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 573
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "657da8cdfe205781fe4a61d7ebe35122b8fe7930a607258793558adc722e56ce",
+              "bbox": [
+                500,
+                663,
+                825,
+                676
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "8f00a740da4a86084b25d961be6bf13297862ecdb4f278f7747e991ce829a49e",
+            "contentSha256": "b25f1a2c5591424ef3b1e1355ee476dc5a230ebc7e02d6e93dd04136da7da4a3",
+            "objectPath": "evidence/derived/mineru-json/sha256/b2/5f/b25f1a2c5591424ef3b1e1355ee476dc5a230ebc7e02d6e93dd04136da7da4a3.json",
+            "byteSize": 44860,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "SMU8ZCS01A:page:3:daefdc3113bb52c0342cd7da2835a7fad35e281a0f00d60986d8ec3c398d71e6"
+            },
+            {
+              "type": "mineru_bosch_dimension_section_exact_model",
+              "value": "SMU8ZCS01A:titles:1,2:url:https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SMU8ZCS01A:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SMU8ZCS01A:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "SMU8ZCS01A:https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T16:34:12.915Z",
+            "bindingSha256": "5d9de0cdf3bdb919d80efa151851da719c7bd71a4a1544f4bae6ebe5195f8fa3"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 815,
+              "maximumMm": 875
+            },
+            "depthMm": 573
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf",
+            "contentSha256": "8f00a740da4a86084b25d961be6bf13297862ecdb4f278f7747e991ce829a49e",
+            "receiptBindingSha256": "5d9de0cdf3bdb919d80efa151851da719c7bd71a4a1544f4bae6ebe5195f8fa3",
+            "page": 2,
+            "fragmentSha256": "657da8cdfe205781fe4a61d7ebe35122b8fe7930a607258793558adc722e56ce"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf",
+            "contentSha256": "8f00a740da4a86084b25d961be6bf13297862ecdb4f278f7747e991ce829a49e",
+            "receiptBindingSha256": "5d9de0cdf3bdb919d80efa151851da719c7bd71a4a1544f4bae6ebe5195f8fa3",
+            "page": 2,
+            "fragmentSha256": "657da8cdfe205781fe4a61d7ebe35122b8fe7930a607258793558adc722e56ce"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf",
+            "contentSha256": "8f00a740da4a86084b25d961be6bf13297862ecdb4f278f7747e991ce829a49e",
+            "receiptBindingSha256": "5d9de0cdf3bdb919d80efa151851da719c7bd71a4a1544f4bae6ebe5195f8fa3",
+            "page": 2,
+            "fragmentSha256": "657da8cdfe205781fe4a61d7ebe35122b8fe7930a607258793558adc722e56ce"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "8f00a740da4a86084b25d961be6bf13297862ecdb4f278f7747e991ce829a49e"
         ]
       },
       "reconciliation": {
@@ -67087,6 +67801,13 @@
       "queueSha256": "9b614fecb69378ee304970886cc5dde0da890107c38c6fa401203f7ed896dce1",
       "resultsSha256": "ef5bf190f3e52060de1bbd863e36faecd77cc662b2f1c0d61ddf0c3f0aa1b6b3",
       "auditSha256": "a813db59911294d1526528c3d54e642dcb85da0277acdf9a91e6cc003b84b513"
+    },
+    {
+      "batchId": "historical-recovery-76287b5df11339bf5416eed3-slice-e3a808d6b80b",
+      "batchSha256": "da6b20bc6a36e6b194e8e5b3e4c6a25e04880e144d7c3daa143f88a3fca87601",
+      "queueSha256": "f16e757d27073509666ce580146555de0dee8c3efe7f225c7ea392502c62b2ba",
+      "resultsSha256": "55cc20283328f3ba44693843052baa5e6f8b1ddcd0af7b8fa3d60278c4118448",
+      "auditSha256": "8cad3336798291d42f51b5eca94f848adfe50c902992673e45bebb890ce6efd2"
     },
     {
       "batchId": "historical-recovery-7a9a6102217bd3b716fe8bfc-slice-80a6a23a85c7",

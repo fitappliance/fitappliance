@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T16:20:45.455Z",
-  "sourceAcquisitionQueueSha256": "58b73cb73a956f0a5cd71914065e2e5c3defd56a978b2d07ff44d212ecf43f30",
+  "generatedAt": "2026-07-16T16:42:15.699Z",
+  "sourceAcquisitionQueueSha256": "f06343a9ee53894f44f07c379bed78b60b77fddcc21efacae80863faf3380a26",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7808,
+    "acquisitionRecords": 7805,
     "fetchJobs": 0,
-    "targets": 7717,
-    "resolverOnlyTargets": 7717,
+    "targets": 7714,
+    "resolverOnlyTargets": 7714,
     "candidateEdges": 0,
-    "uniqueReferences": 7717,
+    "uniqueReferences": 7714,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 8,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1143,
+      "CURRENT_RETAIL": 1140,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 948,
+      "P0_CURRENT_MISSING_DIMENSIONS": 945,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -1250,97 +1250,6 @@
           }
         }
       ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_9ef314eabbf2d2285a4cfd4c",
-      "referenceId": "fa_ref_20475b29286170d65bbffb00",
-      "legacyRuntimeId": "discovery-dishwasher-bosch-smu8ecs01a",
-      "canonicalProductId": "fa_prod_d01c197b1ead43e9b12c072f",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU8ECS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/SMU8ECS01A.json",
-        "source:doc_0590e3138654b630d6138465"
-      ],
-      "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_d272363a8cb7b923ba497c41",
-      "referenceId": "fa_ref_4c754346beea4e9252692342",
-      "legacyRuntimeId": "ao-103494",
-      "canonicalProductId": "fa_prod_8b32330f31d1ec6a551bf6c9",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU8EDS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d5ac1cb8e6671d7af6a713fd",
-        "legacy:data/pdf-evidence-raw/SMU8EDS01A.json",
-        "source:doc_d5ac1cb8e6671d7af6a713fd"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d5ac1cb8e6671d7af6a713fd",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_dc5c84183ef45d12f70bf552",
-      "referenceId": "fa_ref_4406a85cc9ac3d0eb2ce5b7e",
-      "legacyRuntimeId": "discovery-dishwasher-bosch-smu8zcs01a",
-      "canonicalProductId": "fa_prod_d20cc8cece83a4f95a6f8db5",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU8ZCS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/SMU8ZCS01A.json",
-        "source:doc_797f1a7eb701712befd664c1"
-      ],
-      "legacyHints": [],
       "registryDimensionHints": [],
       "publicationEligible": false,
       "candidateJobIds": [],

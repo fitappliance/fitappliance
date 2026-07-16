@@ -730,3 +730,41 @@ These adjustable-height receipts increase `COMPLETE_RECEIPT` classification to
 schema still requires a scalar W/H/D triple. Do not flatten `815-875` to a
 minimum, maximum or midpoint; preserve it until the replacement mode becomes
 range-aware or asks for the installed height.
+
+## 20. Bosch Series 8 dishwasher specification evidence
+
+Run `historical-bosch-series8-dishwashers-20260716-a` selected three current
+Bosch Australia built-under dishwasher models. The accepted dimensions are:
+
+| Model | Width | Adjustable height | Depth |
+| --- | ---: | ---: | ---: |
+| `SMU8ECS01A` | 598 | 815-875 | 573 |
+| `SMU8EDS01A` | 598 | 815-875 | 573 |
+| `SMU8ZCS01A` | 598 | 815-875 | 573 |
+
+Every value comes from page 2 of an exact-model `en-AU` Bosch specification
+sheet. The page heading states `Product Dimensions (H x W x D)` and the source
+line states `Height 815-875 mm x Width 598 mm x Depth 573 mm`. Visual rendering
+of all three pages matched the MinerU `content_list_v2` claims and their
+receipt-bound projections. The model identifier, source URL, axis order, unit,
+page, bounding box, fragment hash and original PDF hash remain independently
+bound in each receipt.
+
+The product-page manifests also exposed user and installation documents. Those
+artifacts were attempted and their typed failures remain in the immutable run
+history, but they did not contribute claims because they did not prove both
+exact-model identity and explicit axes under the current policy. Feature text
+such as `AutoDoor` is not evidence of a door-open envelope.
+
+The full online audit checked three targets and 587 cumulative objects with no
+repair or violation. Cumulative receipt replay passes all 296 sources. Public
+receipt-bound dimensions increased from 218 to 221; receipt-bound
+`VERIFIED_FIT` remains zero. Installation clearances, door-open depth and rear
+service space remain unknown, so all three Fit outcomes are
+`INSUFFICIENT_DATA`.
+
+The executable queue decreased from 7,717 to 7,714 targets and current-retail
+P0 missing-dimension targets decreased from 948 to 945. `COMPLETE_RECEIPT`
+increased to 290 and `ALL_AXIS_RANGE` to 74, while historical `AUTO_FILL`
+remains 226 because the replacement-reference schema cannot safely flatten an
+adjustable height range.
