@@ -942,3 +942,41 @@ current-retail missing-dimension P0 lane contains 929 targets. All four target
 IDs are absent from the next-epoch executable queue and batch. The earlier ASKO
 run `historical-asko-legacy-dishwashers-20260716-d` remains a separate terminal
 run and must not be restarted under the same resolver and policy epoch.
+
+## 25. Bosch legacy dishwasher PDF and product-page recovery
+
+Run `historical-bosch-legacy-dishwashers-20260716-f` selected four additional
+current Bosch Australia dishwashers with zero prior attempts:
+
+| Model | Accepted source | Width | Height | Depth |
+| --- | --- | ---: | ---: | ---: |
+| `SMS50D08AU` | exact product page | 600 | 845 | 600 |
+| `SMS50E38AU` | exact product page | 600 | 845 | 600 |
+| `SMU46KS01A` | exact-model PDF | 598 | 815 | 573 |
+| `SMU50D05AU` | exact product page | 598 | 815 | 573 |
+
+The three product-page receipts use the same exact canonical URL, title,
+structured model and explicit `Dimensions of the product (HxWxD)` boundary as
+the preceding Bosch batch. `SMU46KS01A` instead uses the official `en-AU`
+specification PDF. Its dimension fragment is on page 1 and states H/W/D in
+millimetres; exact-model titles on pages 2 and 3, the exact-model PDF URL and
+the source PDF hash establish document scope. The receipt keeps the page-1
+bounding box, fragment hash and source axis order. The parser does not require
+the model token to be duplicated inside the same dimension fragment when those
+independent document-level signals are complete.
+
+Other official manuals and deterministic legacy URLs remain typed attempts.
+They cannot contribute claims when identity or field coverage is incomplete,
+and 404 templates cannot weaken the accepted exact source. All four projections
+remain dimensions-only with unknown clearance, door-open and rear-service
+fields, `verifiedFitEligible=false` and successful Fit outcome
+`INSUFFICIENT_DATA`.
+
+The full online audit checked four targets and 609 cumulative objects with zero
+repairs and zero violations. Promotion increased the cumulative bundle to 287
+targets and 312 source receipts; all 312 receipts replay. After the release
+transaction, public receipt-bound dimensions are 237, receipt-bound
+`VERIFIED_FIT` remains zero, `COMPLETE_RECEIPT` is 306, historical `AUTO_FILL`
+is 238, the executable queue contains 7,694 targets and the current-retail P0
+missing-dimension lane contains 925 targets. All four target IDs are absent from
+the next-epoch executable queue and batch.

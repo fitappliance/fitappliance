@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T18:20:57.095Z",
-  "sourceAcquisitionQueueSha256": "d0a588a034ac9641172f471f0442c1c1b8b662ce295ab579a64ad45e175ef926",
+  "generatedAt": "2026-07-16T18:31:51.917Z",
+  "sourceAcquisitionQueueSha256": "0c4c400e4407a3ee2ba930528db0c112645ccf9c59dcbe19888ec4d5f2969f95",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7793,
+    "acquisitionRecords": 7789,
     "fetchJobs": 0,
-    "targets": 7698,
-    "resolverOnlyTargets": 7698,
+    "targets": 7694,
+    "resolverOnlyTargets": 7694,
     "candidateEdges": 0,
-    "uniqueReferences": 7698,
+    "uniqueReferences": 7694,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 12,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1124,
+      "CURRENT_RETAIL": 1120,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 929,
+      "P0_CURRENT_MISSING_DIMENSIONS": 925,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -248,154 +248,6 @@
             "width": 596,
             "height": 819,
             "depth": 559
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_a5504a00a5c1a8c6163e5e3f",
-      "referenceId": "fa_ref_07d330f0460c5f8d0ccc40a0",
-      "legacyRuntimeId": "ao-33697",
-      "canonicalProductId": "fa_prod_8b81255809f5828426000f36",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS50D08AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_42f75999316a9a071f59aa58",
-        "legacy:data/pdf-evidence-raw/SMS50D08AU.json",
-        "source:doc_42f75999316a9a071f59aa58"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_42f75999316a9a071f59aa58",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 845,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_af453e41a6b0cd61ee1ea4f7",
-      "referenceId": "fa_ref_267e40f28e7a5e15629ae96a",
-      "legacyRuntimeId": "ao-37515",
-      "canonicalProductId": "fa_prod_af864cd017ab227ef624af6d",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS50E38AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_be98766b24ac6459fd907a8a",
-        "legacy:data/pdf-evidence-raw/SMS50E38AU.json",
-        "source:doc_be98766b24ac6459fd907a8a"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_be98766b24ac6459fd907a8a",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 845,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_c4984627e9787f3875b42de3",
-      "referenceId": "fa_ref_6177cf18546829ce380370c9",
-      "legacyRuntimeId": "ao-61051",
-      "canonicalProductId": "fa_prod_4b3ded2e3bfd951e8fcae643",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU46KS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c94c6bd0b98361d163ad8b30",
-        "legacy:data/pdf-evidence-raw/SMU46KS01A.json",
-        "source:doc_c94c6bd0b98361d163ad8b30"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c94c6bd0b98361d163ad8b30",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_8dbd133f5eab994514fc24bb",
-      "referenceId": "fa_ref_203c0d309beb73538180251f",
-      "legacyRuntimeId": "ao-45334",
-      "canonicalProductId": "fa_prod_9ecfd614c2e60bd491b8672f",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU50D05AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_021f482fe6834fa33fe28b43",
-        "legacy:data/pdf-evidence-raw/SMU50D05AU.json",
-        "source:doc_021f482fe6834fa33fe28b43"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_021f482fe6834fa33fe28b43",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
           }
         }
       ],

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T18:20:11.347Z",
-  "sourceBundleSha256": "916c27cdeb5a5540b40b9116933384bdf1d301f57c22907bd456155065bc4660",
+  "generatedAt": "2026-07-16T18:31:31.825Z",
+  "sourceBundleSha256": "f37b1e2ff3226445fa977c3bd774dcefdc9954b3122a7c6ab9fa3042fac5db92",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -2230,6 +2230,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_8dbd133f5eab994514fc24bb",
+      "referenceId": "fa_ref_203c0d309beb73538180251f",
+      "brand": "Bosch",
+      "model": "SMU50D05AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50D05AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f",
+      "receiptBindingSha256": "f2b87b041da764e3e64db8704fca4417a93206afddd44d7bcb6d73b5b811662e",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_8eac8024c3ab11d976ecd1c8",
       "referenceId": "fa_ref_a44efad7072f178be39aeafd",
       "brand": "CHIQ",
@@ -2832,6 +2846,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_a5504a00a5c1a8c6163e5e3f",
+      "referenceId": "fa_ref_07d330f0460c5f8d0ccc40a0",
+      "brand": "Bosch",
+      "model": "SMS50D08AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50D08AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92",
+      "receiptBindingSha256": "a3169eaaa6cddaa85635cf22515c5b4c73c5b774e97c92af5ddc379a30200526",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_a57c22dcfc2a4838a3d9391e",
       "referenceId": "fa_ref_985bd11df50cc250fa22a55b",
       "brand": "Fisher & Paykel",
@@ -3051,6 +3079,20 @@
       "sourcePdfSha256": null,
       "contentSha256": "b9b30bfa63db44c2c35477cf0df779caf64e819719b2038fbbf84b8984940ac4",
       "receiptBindingSha256": "a60ef3c0cfedfacb4cf8c8f3facfb2aa17f905cde79373b710bc1ef594dcbf6b",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_af453e41a6b0cd61ee1ea4f7",
+      "referenceId": "fa_ref_267e40f28e7a5e15629ae96a",
+      "brand": "Bosch",
+      "model": "SMS50E38AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50E38AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5",
+      "receiptBindingSha256": "0cb351aefe1729f7f07f399386d3bc0d4e144bfe06742546b9927116d4181cc7",
       "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
@@ -3318,6 +3360,20 @@
       "contentSha256": "a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463",
       "receiptBindingSha256": "bc27f7e80888cf27abd1ac9a2c04e5032d564eeed9275b2e8927197946fda03c",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/85/41/8541e8870e3ce5cdeed263b104e728ebb3d9ac1fdb30a3a97460bef15664c8ad.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_c4984627e9787f3875b42de3",
+      "referenceId": "fa_ref_6177cf18546829ce380370c9",
+      "brand": "Bosch",
+      "model": "SMU46KS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46KS01A.pdf",
+      "sourcePdfSha256": "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
+      "contentSha256": "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
+      "receiptBindingSha256": "98ffa769230b6c7bdd6097f64170d2debee7f2a5e07961294fa0566358675a1d",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/8a/cd/8acd9883c3256fa2d7b3f0b1db5bbc12e1117e4b154d5b58bbd490c5ed344f32.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4317,11 +4373,11 @@
     }
   ],
   "summary": {
-    "entries": 283,
-    "sources": 308,
-    "passed": 308,
+    "entries": 287,
+    "sources": 312,
+    "passed": 312,
     "failed": 0
   },
-  "checkedObjects": 604,
-  "semanticAuditSha256": "212eb45fbbf4b3fd32e29be364279eed2b835133b8b1a4715cf26308bb0d2923"
+  "checkedObjects": 609,
+  "semanticAuditSha256": "434394d23f2b49bd9435454aa950ec2dd66f865fc9e528d09785dd4287ae157b"
 }

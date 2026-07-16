@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T18:20:11.347Z",
+  "generatedAt": "2026-07-16T18:31:31.825Z",
   "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
   "entries": [
     {
@@ -35907,6 +35907,206 @@
       }
     },
     {
+      "targetId": "recovery_target_8dbd133f5eab994514fc24bb",
+      "referenceId": "fa_ref_203c0d309beb73538180251f",
+      "legacyRuntimeId": "ao-45334",
+      "canonicalProductId": "fa_prod_9ecfd614c2e60bd491b8672f",
+      "brand": "Bosch",
+      "model": "SMU50D05AU",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-d81154a123d05abd43865056-slice-97c02127279e",
+      "auditSha256": "3048ffc4ee1f24d6e879595922e26ef1d2662a32150d59f7b9811e5eca8c0e69",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50D05AU",
+          "finalUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50D05AU",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T18:29:35.022Z",
+          "contentSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f",
+          "objectPath": "evidence/web/sha256/ad/0b/ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f.html",
+          "contentType": "text/html",
+          "byteSize": 573308,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SMU50D05AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 815
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 573
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.bosch-home.com.au/en/mkt-product/SMU50D05AU"
+            },
+            {
+              "type": "document_title",
+              "value": "SMU50D05AU built-under dishwasher | Bosch Home Appliances"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "SMU50D05AU"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T18:29:35.022Z",
+            "bindingSha256": "f2b87b041da764e3e64db8704fca4417a93206afddd44d7bcb6d73b5b811662e"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 815,
+              "maximumMm": 815
+            },
+            "depthMm": 573
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50D05AU",
+            "contentSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f",
+            "receiptBindingSha256": "f2b87b041da764e3e64db8704fca4417a93206afddd44d7bcb6d73b5b811662e",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50D05AU",
+            "contentSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f",
+            "receiptBindingSha256": "f2b87b041da764e3e64db8704fca4417a93206afddd44d7bcb6d73b5b811662e",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50D05AU",
+            "contentSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f",
+            "receiptBindingSha256": "f2b87b041da764e3e64db8704fca4417a93206afddd44d7bcb6d73b5b811662e",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_8eac8024c3ab11d976ecd1c8",
       "referenceId": "fa_ref_a44efad7072f178be39aeafd",
       "legacyRuntimeId": "fridge-arf3214",
@@ -45776,6 +45976,206 @@
       }
     },
     {
+      "targetId": "recovery_target_a5504a00a5c1a8c6163e5e3f",
+      "referenceId": "fa_ref_07d330f0460c5f8d0ccc40a0",
+      "legacyRuntimeId": "ao-33697",
+      "canonicalProductId": "fa_prod_8b81255809f5828426000f36",
+      "brand": "Bosch",
+      "model": "SMS50D08AU",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-d81154a123d05abd43865056-slice-97c02127279e",
+      "auditSha256": "3048ffc4ee1f24d6e879595922e26ef1d2662a32150d59f7b9811e5eca8c0e69",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50D08AU",
+          "finalUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50D08AU",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T18:29:12.824Z",
+          "contentSha256": "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92",
+          "objectPath": "evidence/web/sha256/f1/e3/f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92.html",
+          "contentType": "text/html",
+          "byteSize": 575405,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SMS50D08AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 845
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.bosch-home.com.au/en/mkt-product/SMS50D08AU"
+            },
+            {
+              "type": "document_title",
+              "value": "SMS50D08AU free-standing dishwasher | Bosch Home Appliances"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "SMS50D08AU"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T18:29:12.824Z",
+            "bindingSha256": "a3169eaaa6cddaa85635cf22515c5b4c73c5b774e97c92af5ddc379a30200526"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 845,
+              "maximumMm": 845
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50D08AU",
+            "contentSha256": "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92",
+            "receiptBindingSha256": "a3169eaaa6cddaa85635cf22515c5b4c73c5b774e97c92af5ddc379a30200526",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50D08AU",
+            "contentSha256": "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92",
+            "receiptBindingSha256": "a3169eaaa6cddaa85635cf22515c5b4c73c5b774e97c92af5ddc379a30200526",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50D08AU",
+            "contentSha256": "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92",
+            "receiptBindingSha256": "a3169eaaa6cddaa85635cf22515c5b4c73c5b774e97c92af5ddc379a30200526",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_a57c22dcfc2a4838a3d9391e",
       "referenceId": "fa_ref_985bd11df50cc250fa22a55b",
       "legacyRuntimeId": "ao-59809",
@@ -49459,6 +49859,206 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "b9b30bfa63db44c2c35477cf0df779caf64e819719b2038fbbf84b8984940ac4"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_af453e41a6b0cd61ee1ea4f7",
+      "referenceId": "fa_ref_267e40f28e7a5e15629ae96a",
+      "legacyRuntimeId": "ao-37515",
+      "canonicalProductId": "fa_prod_af864cd017ab227ef624af6d",
+      "brand": "Bosch",
+      "model": "SMS50E38AU",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-d81154a123d05abd43865056-slice-97c02127279e",
+      "auditSha256": "3048ffc4ee1f24d6e879595922e26ef1d2662a32150d59f7b9811e5eca8c0e69",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50E38AU",
+          "finalUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50E38AU",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T18:28:56.735Z",
+          "contentSha256": "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5",
+          "objectPath": "evidence/web/sha256/a2/cf/a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5.html",
+          "contentType": "text/html",
+          "byteSize": 575587,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SMS50E38AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 845
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.bosch-home.com.au/en/mkt-product/SMS50E38AU"
+            },
+            {
+              "type": "document_title",
+              "value": "SMS50E38AU free-standing dishwasher | Bosch Home Appliances"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "SMS50E38AU"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T18:28:56.735Z",
+            "bindingSha256": "0cb351aefe1729f7f07f399386d3bc0d4e144bfe06742546b9927116d4181cc7"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 845,
+              "maximumMm": 845
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50E38AU",
+            "contentSha256": "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5",
+            "receiptBindingSha256": "0cb351aefe1729f7f07f399386d3bc0d4e144bfe06742546b9927116d4181cc7",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50E38AU",
+            "contentSha256": "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5",
+            "receiptBindingSha256": "0cb351aefe1729f7f07f399386d3bc0d4e144bfe06742546b9927116d4181cc7",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50E38AU",
+            "contentSha256": "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5",
+            "receiptBindingSha256": "0cb351aefe1729f7f07f399386d3bc0d4e144bfe06742546b9927116d4181cc7",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5"
         ]
       },
       "reconciliation": {
@@ -53779,6 +54379,241 @@
         "activeSourceHashes": [
           "a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_c4984627e9787f3875b42de3",
+      "referenceId": "fa_ref_6177cf18546829ce380370c9",
+      "legacyRuntimeId": "ao-61051",
+      "canonicalProductId": "fa_prod_4b3ded2e3bfd951e8fcae643",
+      "brand": "Bosch",
+      "model": "SMU46KS01A",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-d81154a123d05abd43865056-slice-97c02127279e",
+      "auditSha256": "3048ffc4ee1f24d6e879595922e26ef1d2662a32150d59f7b9811e5eca8c0e69",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46KS01A.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46KS01A.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T18:30:54.334Z",
+          "contentSha256": "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
+          "objectPath": "evidence/web/sha256/4e/b7/4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 404786,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SMU46KS01A",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468",
+              "bbox": [
+                507,
+                339,
+                877,
+                353
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 815
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468",
+              "bbox": [
+                507,
+                339,
+                877,
+                353
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 573
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468",
+              "bbox": [
+                507,
+                339,
+                877,
+                353
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
+            "contentSha256": "8acd9883c3256fa2d7b3f0b1db5bbc12e1117e4b154d5b58bbd490c5ed344f32",
+            "objectPath": "evidence/derived/mineru-json/sha256/8a/cd/8acd9883c3256fa2d7b3f0b1db5bbc12e1117e4b154d5b58bbd490c5ed344f32.json",
+            "byteSize": 49027,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_title_model",
+              "value": "SMU46KS01A:page:2"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SMU46KS01A:page:3"
+            },
+            {
+              "type": "mineru_bosch_dimension_section_exact_model",
+              "value": "SMU46KS01A:titles:2,3:url:https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46KS01A.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46KS01A.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T18:30:54.334Z",
+            "bindingSha256": "98ffa769230b6c7bdd6097f64170d2debee7f2a5e07961294fa0566358675a1d"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 815,
+              "maximumMm": 815
+            },
+            "depthMm": 573
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46KS01A.pdf",
+            "contentSha256": "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
+            "receiptBindingSha256": "98ffa769230b6c7bdd6097f64170d2debee7f2a5e07961294fa0566358675a1d",
+            "page": 1,
+            "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46KS01A.pdf",
+            "contentSha256": "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
+            "receiptBindingSha256": "98ffa769230b6c7bdd6097f64170d2debee7f2a5e07961294fa0566358675a1d",
+            "page": 1,
+            "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46KS01A.pdf",
+            "contentSha256": "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
+            "receiptBindingSha256": "98ffa769230b6c7bdd6097f64170d2debee7f2a5e07961294fa0566358675a1d",
+            "page": 1,
+            "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -70537,6 +71372,13 @@
       "queueSha256": "0f1003f1014aa1456c224a4d92a441f02591176d54ece5686bb1940ec132703f",
       "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
       "auditSha256": "51c9bc5f9a0aefead065a56df2efe88d2086d0a16269072992028015d329f7d3"
+    },
+    {
+      "batchId": "historical-recovery-d81154a123d05abd43865056-slice-97c02127279e",
+      "batchSha256": "7807bb19a4b9eb5e1d550ae575d048215020db39b8d9df67b9dc01c790e028aa",
+      "queueSha256": "dd9847bd53f228430d70717f552686054da9454ee3e4f0149af40cb9b01eb9b7",
+      "resultsSha256": "9a0cd9e91c1d6636e21437411fe006f4eb2d10afe4c7f86c0e235055da1c9e47",
+      "auditSha256": "3048ffc4ee1f24d6e879595922e26ef1d2662a32150d59f7b9811e5eca8c0e69"
     },
     {
       "batchId": "historical-recovery-dd35fdc8662e45bb9fa6e49a-slice-4d29d871b5bf",

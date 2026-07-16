@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "916c27cdeb5a5540b40b9116933384bdf1d301f57c22907bd456155065bc4660"
+    "historical-recovery:historical-recovery-cumulative-v1": "f37b1e2ff3226445fa977c3bd774dcefdc9954b3122a7c6ab9fa3042fac5db92"
   },
   "records": [
     {
@@ -13913,13 +13913,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a5504a00a5c1a8c6163e5e3f",
+          "snapshotSha256": "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92",
           "sourceLines": []
         }
       ],
@@ -13929,8 +13938,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a5504a00a5c1a8c6163e5e3f",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50D08AU",
+          "contentSha256": "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92",
+          "receiptBindingSha256": "a3169eaaa6cddaa85635cf22515c5b4c73c5b774e97c92af5ddc379a30200526",
+          "verifiedAt": "2026-07-16T18:29:12.824Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/f1/e3/f1e3409ce6992cd3cd29715e7a77641a8837f9ef7e448d187f339931ceb9ba92.html"
+        }
       ]
     },
     {
@@ -14020,13 +14052,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_af453e41a6b0cd61ee1ea4f7",
+          "snapshotSha256": "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5",
           "sourceLines": []
         }
       ],
@@ -14036,8 +14077,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_af453e41a6b0cd61ee1ea4f7",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50E38AU",
+          "contentSha256": "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5",
+          "receiptBindingSha256": "0cb351aefe1729f7f07f399386d3bc0d4e144bfe06742546b9927116d4181cc7",
+          "verifiedAt": "2026-07-16T18:28:56.735Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/a2/cf/a2cf672a3dc2634991bc4c91b8817d1413c41dccd6fe038f0cd81243b37df7d5.html"
+        }
       ]
     },
     {
@@ -15720,14 +15784,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 573
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c4984627e9787f3875b42de3",
+          "snapshotSha256": "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -15736,8 +15811,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c4984627e9787f3875b42de3",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46KS01A.pdf",
+          "contentSha256": "4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327",
+          "receiptBindingSha256": "98ffa769230b6c7bdd6097f64170d2debee7f2a5e07961294fa0566358675a1d",
+          "verifiedAt": "2026-07-16T18:30:54.334Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/4e/b7/4eb75f5beda2338e6f44b43c77b79ef72df48f85868dc31f60a051703430f327.pdf"
+        }
       ]
     },
     {
@@ -15919,13 +16020,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 573
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_8dbd133f5eab994514fc24bb",
+          "snapshotSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f",
           "sourceLines": []
         }
       ],
@@ -15935,8 +16045,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_8dbd133f5eab994514fc24bb",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU50D05AU",
+          "contentSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f",
+          "receiptBindingSha256": "f2b87b041da764e3e64db8704fca4417a93206afddd44d7bcb6d73b5b811662e",
+          "verifiedAt": "2026-07-16T18:29:35.022Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/ad/0b/ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f.html"
+        }
       ]
     },
     {
@@ -322087,16 +322220,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2921,
-      "MODEL_RECEIPT": 223,
+      "IDENTITY_ONLY": 2917,
+      "MODEL_RECEIPT": 227,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2921,
-      "AUTO_FILL": 234,
+      "MEASURE_REQUIRED": 2917,
+      "AUTO_FILL": 238,
       "QUARANTINED": 88
     }
   }
