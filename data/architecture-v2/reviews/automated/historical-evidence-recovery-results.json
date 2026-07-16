@@ -1,31 +1,535 @@
 {
   "schemaVersion": 1,
-  "runId": "samsung-srf5300sd-replay-20260716",
-  "batchId": "historical-recovery-9856771217a1df07bfdddb35-slice-ff4bdc2961a3",
-  "batchSha256": "47c70007e95241825c0864c3908b34775ec9272b9298ec60d4e1f4a5d10ea2ce",
-  "queueSha256": "863a968b92d3df25aed37a01b9465c5babfa701b32a7bac7a98d92d3d4f5b2eb",
-  "policySha256": "c1b1303dcc5ab9eeb411b26309a03cba0901fb075087a7572d012465b547b972",
-  "startedAt": "2026-07-16T03:06:43.092Z",
-  "completedAt": "2026-07-16T03:06:46.223Z",
-  "semanticOutcomeSha256": "c6fd49774b655a33759ae168c73c878adc79448fd845cc39a16daaaf0c3ce9d0",
+  "runId": "lg-gb-310rpl-replay-20260716",
+  "batchId": "historical-recovery-6dbbc3514e4ae983e59f3650-slice-c5777295363a",
+  "batchSha256": "0cb0dd628f817fefeb36f236dd0781c42ae5cc36c7431201011389e50ff258d7",
+  "queueSha256": "a90cb561659cffca250d7f6717bb060cd7144ebd2617ccfa226e684ff676baf0",
+  "policySha256": "5676178a6590a0f59e5e4fbefa4a09efcc6652705fa93b119c5199f961f7454c",
+  "startedAt": "2026-07-16T03:57:25.376Z",
+  "completedAt": "2026-07-16T03:57:52.474Z",
+  "semanticOutcomeSha256": "ff31bd453adbc3162f4a571bbf092ab02828db490c177651cb15d7b2635e5f07",
   "outcomes": [
     {
-      "targetId": "recovery_target_91cdd0845f2fb9e5a9c1f065",
-      "status": "terminal_failure",
-      "failureCode": "receipt",
-      "candidateInventorySha256": "cea26a8fecf8e8086585471bbcd9d275dc18aefd1b7c1b0d7b83e29f9ba4f5c5",
-      "candidateInventory": null,
-      "sources": [],
-      "geometryProjection": null,
-      "reconciliation": null,
-      "semanticOutcomeSha256": "ec12e171bebb052dc5a884ed8de34a8f316d0e9490d690ee2f289710267ee1ee"
+      "targetId": "recovery_target_76cfbf9f468ea1412fbb39a1",
+      "status": "accepted",
+      "failureCode": null,
+      "candidateInventorySha256": "1bec8b0e58acb81468aa48dab9103afdd7cde1276eb21e285506a3f53b401b3c",
+      "candidateInventory": {
+        "schemaVersion": 1,
+        "targetId": "recovery_target_76cfbf9f468ea1412fbb39a1",
+        "identity": {
+          "brand": "LG",
+          "model": "GB-310RPL",
+          "category": "fridge"
+        },
+        "completionStatus": "complete",
+        "incompleteResolvers": [],
+        "missingBatchCandidateJobIds": [],
+        "resolvers": [
+          {
+            "resolverId": "architecture-v2-core-official-discovery",
+            "version": "1",
+            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+            "required": false,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "batch-candidates",
+            "version": "1",
+            "scope": "recovery_batch_graph",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "lg-official-support",
+            "version": "2",
+            "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 7
+          }
+        ],
+        "activeReceiptSources": [],
+        "candidates": [
+          {
+            "candidateId": "candidate_44861015eaa238f90b5ae0fe",
+            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5hIsNr5kWaXfQ7gMXl5j1g",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_market_api",
+              "market": "AU",
+              "discoveryUrl": "https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU",
+              "requestedModel": "GB-310RPL",
+              "matchedModel": "GB-310RPL",
+              "artifactUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5hIsNr5kWaXfQ7gMXl5j1g",
+              "documentId": "20151635682917",
+              "originalFileName": "REF_BF_Neptune_MFL62883377_GAP_200402.pdf"
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "lg-official-support",
+                "version": "2",
+                "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
+                "discoveryMethod": "lg_au_support_api",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "identity_rejected",
+              "failureCode": "identity",
+              "reason": "structured exact-model identity signal required in MinerU JSON",
+              "artifactBinding": {
+                "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5hIsNr5kWaXfQ7gMXl5j1g",
+                "finalUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5hIsNr5kWaXfQ7gMXl5j1g",
+                "contentSha256": "336e9a71a2a431ac0cb89902487a832b268463725f58312c03261f55f10df73c",
+                "objectPath": "evidence/web/sha256/33/6e/336e9a71a2a431ac0cb89902487a832b268463725f58312c03261f55f10df73c.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 11387390
+              },
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_4bfd90901f04ad91705c758b",
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/gb-310rpl/",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_product_page",
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "lg-official-support",
+                "version": "2",
+                "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
+                "discoveryMethod": "lg_au_exact_model_product_page_template",
+                "sourceRole": "manufacturer_product_page",
+                "order": 2
+              }
+            ],
+            "outcome": {
+              "status": "transport_failure",
+              "failureCode": "transport",
+              "reason": "http_404",
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_56ac5aeac8d111d6ae0d02c3",
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/french-door/gb-310rpl/",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_product_page",
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "lg-official-support",
+                "version": "2",
+                "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
+                "discoveryMethod": "lg_au_exact_model_product_page_template",
+                "sourceRole": "manufacturer_product_page",
+                "order": 3
+              }
+            ],
+            "outcome": {
+              "status": "transport_failure",
+              "failureCode": "transport",
+              "reason": "http_404",
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_5b8330243b1f130463723785",
+            "sourceUrl": "https://www.lg.com/au/fridges/gb-310rpl/",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_product_page",
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "lg-official-support",
+                "version": "2",
+                "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
+                "discoveryMethod": "lg_au_exact_model_product_page_template",
+                "sourceRole": "manufacturer_product_page",
+                "order": 1
+              }
+            ],
+            "outcome": {
+              "status": "transport_failure",
+              "failureCode": "transport",
+              "reason": "http_404",
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_64846638dc6dbdd478e83316",
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/side-by-side/gb-310rpl/",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_product_page",
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "lg-official-support",
+                "version": "2",
+                "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
+                "discoveryMethod": "lg_au_exact_model_product_page_template",
+                "sourceRole": "manufacturer_product_page",
+                "order": 6
+              }
+            ],
+            "outcome": {
+              "status": "transport_failure",
+              "failureCode": "transport",
+              "reason": "http_404",
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_75b046e2a2d7f99416fda021",
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_product_page",
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "lg-official-support",
+                "version": "2",
+                "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
+                "discoveryMethod": "lg_au_exact_model_product_page_template",
+                "sourceRole": "manufacturer_product_page",
+                "order": 4
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_product_page",
+                "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+                "finalUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-16T03:57:47.045Z",
+                "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+                "objectPath": "evidence/web/sha256/7b/b7/7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7.html",
+                "contentType": "text/html",
+                "byteSize": 2817078,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "LG",
+                  "model": "GB-310RPL",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 600
+                    },
+                    "sourceLabel": "Width (mm)",
+                    "sourceAxisOrder": [
+                      "width"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": null,
+                    "fragmentSha256": null,
+                    "bbox": null
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 1737
+                    },
+                    "sourceLabel": "Height (mm)",
+                    "sourceAxisOrder": [
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": null,
+                    "fragmentSha256": null,
+                    "bbox": null
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 645
+                    },
+                    "sourceLabel": "Depth - With Door & Handle (mm)",
+                    "sourceAxisOrder": [
+                      "depth"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": true,
+                    "includesHandle": true,
+                    "page": null,
+                    "fragmentSha256": null,
+                    "bbox": null
+                  }
+                ],
+                "identitySignals": [
+                  {
+                    "type": "canonical_url",
+                    "value": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/"
+                  },
+                  {
+                    "type": "document_title",
+                    "value": "310L Anti-fingerprint Shiny Steel Bottom Mount Fridge - GB-310RPL | LG Australia"
+                  },
+                  {
+                    "type": "product_model",
+                    "value": "GB-310RPL.APZRGAP.EHAP.AU.C"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-16.1",
+                  "verifiedAt": "2026-07-16T03:57:47.045Z",
+                  "bindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8"
+                }
+              }
+            }
+          },
+          {
+            "candidateId": "candidate_835c635570b993ea5f9d665d",
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/top-mount/gb-310rpl/",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_product_page",
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "lg-official-support",
+                "version": "2",
+                "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
+                "discoveryMethod": "lg_au_exact_model_product_page_template",
+                "sourceRole": "manufacturer_product_page",
+                "order": 5
+              }
+            ],
+            "outcome": {
+              "status": "transport_failure",
+              "failureCode": "transport",
+              "reason": "http_404",
+              "source": null
+            }
+          }
+        ],
+        "candidateInventorySha256": "1bec8b0e58acb81468aa48dab9103afdd7cde1276eb21e285506a3f53b401b3c"
+      },
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+          "finalUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T03:57:47.045Z",
+          "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+          "objectPath": "evidence/web/sha256/7b/b7/7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7.html",
+          "contentType": "text/html",
+          "byteSize": 2817078,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "LG",
+            "model": "GB-310RPL",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1737
+              },
+              "sourceLabel": "Height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 645
+              },
+              "sourceLabel": "Depth - With Door & Handle (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/"
+            },
+            {
+              "type": "document_title",
+              "value": "310L Anti-fingerprint Shiny Steel Bottom Mount Fridge - GB-310RPL | LG Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "GB-310RPL.APZRGAP.EHAP.AU.C"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T03:57:47.045Z",
+            "bindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 1737,
+              "maximumMm": 1737
+            },
+            "depthMm": 645
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+            "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+            "receiptBindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+            "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+            "receiptBindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+            "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+            "receiptBindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "0a283ffc8dd6eea9a37b644635f1d07197aa66eaa05a16584be60e211e739a06"
     }
   ],
   "summary": {
     "targets": 1,
-    "accepted": 0,
+    "accepted": 1,
     "nonScalar": 0,
     "retryable": 0,
-    "terminal": 1
+    "terminal": 0
   }
 }

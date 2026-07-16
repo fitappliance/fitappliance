@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T03:11:47.567Z",
-  "sourceBundleSha256": "55d67613c8941058d20b215cf66be7392241ffabd85dbcf5c7742fa549e7b739",
+  "generatedAt": "2026-07-16T04:03:19.085Z",
+  "sourceBundleSha256": "bed7f138460a5be4bb82d558708bce4762e7e1e6ad25034086b85e06babdd6a0",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -634,6 +634,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_3641547be7cf869a61db6140",
+      "referenceId": "fa_ref_70a486d5df7caa827a726723",
+      "brand": "LG",
+      "model": "GB-310NWL",
+      "category": "fridge",
+      "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310nwl/",
+      "sourcePdfSha256": null,
+      "contentSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f",
+      "receiptBindingSha256": "0b4872c79df0e79ca419e3cdfd887ec3d7e1cbfda59274dc14da18cfd85dd41f",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_37c47895e46c5848b0988578",
       "referenceId": "fa_ref_bc875abc81c2707ab1408408",
       "brand": "LG",
@@ -1152,6 +1166,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_60d1860bb15193d65fa6a611",
+      "referenceId": "fa_ref_46de0c84084926584c2d7b99",
+      "brand": "Bosch",
+      "model": "SBI8ECS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
+      "sourcePdfSha256": "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0",
+      "contentSha256": "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0",
+      "receiptBindingSha256": "a8b1f60272788ef177310a083ecdc3f2b44d0036e45647439d6d297beca9d1d0",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f6/21/f6211f7512b37f9a2a015749ddd667275b572a95744da6b5c0ea4675bbe05da0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_6205c51822147c1d24e3e3cf",
       "referenceId": "fa_ref_f85f24d6ec037db752f6666d",
       "brand": "Hisense",
@@ -1274,6 +1302,20 @@
       "contentSha256": "89a1969c69a438fd30d4cf526e1651e14df6c63717810c9768c70a8b135bd9c7",
       "receiptBindingSha256": "29db4cbdc36008d4ba2f794129c5fdd0881013ea92757eeee32267e22ea1a190",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/19/38/19389a860f415b2c8f973377bf66332e16da48d8944efee857a1d5d3ee7567f0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_670a635e3f9e46ee7eaed608",
+      "referenceId": "fa_ref_4137710ed346deda073c0b87",
+      "brand": "LG",
+      "model": "TD-H802SJW",
+      "category": "dryer",
+      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=H2d0gg0L08zG8vn7G7g",
+      "sourcePdfSha256": "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026",
+      "contentSha256": "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026",
+      "receiptBindingSha256": "92a2869a4be7e055205686da5a251c0fed244e680d3fd83b831d5c3c704e2b0e",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/3e/a9/3ea978e157d9a683f70b9cd4c73f0120ef2de28a92bc531e9e103c795999a1e4.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1414,6 +1456,20 @@
       "contentSha256": "36ad2fa97f1890466cc82241b5695a2ff6cfa385d05963da95764015fe99a6fc",
       "receiptBindingSha256": "9537194cd31acef3e5f71309e378a36a0cbbbc684e14bc5b21fe87683b6c93b3",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/8d/17/8d1737fd199a5d8418e0c70e603b4258aadc46708d5b74816aaa6b9d090f1e26.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_76cfbf9f468ea1412fbb39a1",
+      "referenceId": "fa_ref_e3059bd4d6cc548c743848f6",
+      "brand": "LG",
+      "model": "GB-310RPL",
+      "category": "fridge",
+      "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+      "sourcePdfSha256": null,
+      "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+      "receiptBindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -1708,6 +1764,20 @@
       "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
       "receiptBindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/5c/47/5c4797c758b5c53ead8f7b6d32d0689a259e23773da719ba324fedda00f4f328.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_9934dd7bd98107668f572021",
+      "referenceId": "fa_ref_85029e0f7ab2a94dac133ce9",
+      "brand": "LG",
+      "model": "TD-H901MW",
+      "category": "dryer",
+      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=IR9X5SkR5RMTmE8DLyobaw",
+      "sourcePdfSha256": "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a",
+      "contentSha256": "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a",
+      "receiptBindingSha256": "5da85f09482a4c80bd9207670d6d0cecb2c72cbd913e70685a2fd9e890eaddce",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/0a/86/0a865c2e3d1f2ef6d454454d48b0d823ac6f83a4a57e3b98a05b1397171c34c7.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2959,11 +3029,11 @@
     }
   ],
   "summary": {
-    "entries": 188,
-    "sources": 211,
-    "passed": 211,
+    "entries": 193,
+    "sources": 216,
+    "passed": 216,
     "failed": 0
   },
-  "checkedObjects": 430,
-  "semanticAuditSha256": "00a6733f60ef9e29b6530d636a52864d55cd07942ef951da9fc16ca6ea49ee97"
+  "checkedObjects": 438,
+  "semanticAuditSha256": "175eb9e854b42e5f14a2af76d99d52122b21f1e1ec134044dadf5411e7d69a6f"
 }

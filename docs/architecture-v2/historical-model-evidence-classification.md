@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-16T03:10:25.501Z
+Generated: 2026-07-16T04:02:47.117Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -11,32 +11,33 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 990 |
-| dryer | 843 | 72 | 265 |
-| fridge | 4336 | 121 | 2285 |
+| dishwasher | 1419 | 94 | 991 |
+| dryer | 843 | 72 | 267 |
+| fridge | 4336 | 121 | 2287 |
 | washing_machine | 1497 | 88 | 654 |
 
 ## Operational Classes
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 207 |
+| COMPLETE_RECEIPT | 212 |
 | CONFLICT_QUARANTINE | 83 |
-| IDENTITY_RESEARCH | 163 |
+| IDENTITY_RESEARCH | 162 |
 | OFFICIAL_DISCOVERY | 6417 |
-| REFERENCE_REDISCOVERY | 1225 |
+| REFERENCE_REDISCOVERY | 1221 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
 | Category | Brand | Group type | Group | Models |
 | --- | --- | --- | --- | --- |
+| fridge | CHIQ | parser_family | CHIQ Australia exact-model specification sheet | 24 |
 | fridge | Hisense | parser_family | PDF grammar pdf_grammar_f96902bad0e838aa | 21 |
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_100af9c8141cceb2 | 16 |
-| fridge | CHIQ | parser_family | PDF grammar pdf_grammar_1527a999293b656a | 10 |
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_1cb932102aaee1e6 | 10 |
 | fridge | KELVINATOR | parser_family | PDF grammar pdf_grammar_b56ff9ab0cbbc9f2 | 9 |
 | washing_machine | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_fa4e96e9408d0085 | 8 |
 | dishwasher | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_766c1f4c547cb6cf | 7 |
+| fridge | Hisense | parser_family | Hisense Australia legacy exact-model specification sheet | 7 |
 | fridge | Westinghouse | document_family | Document family b93c83bd4afe | 7 |
 | fridge | Westinghouse | document_family | Document family fd329081b852 | 7 |
 | dishwasher | Fisher & Paykel | document_family | Document family 40d415ddb0ed | 6 |
@@ -49,12 +50,12 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_0b598fa8b30e9c42 | 5 |
 | dishwasher | Fisher & Paykel | document_family | Document family 24cc9cefd1e2 | 4 |
 | dishwasher | Fisher & Paykel | document_family | Document family 4c6a3e96a150 | 4 |
-| fridge | CHIQ | parser_family | PDF grammar pdf_grammar_944fcad8129c057a | 4 |
 | fridge | Electrolux | parser_family | PDF grammar pdf_grammar_fd6fd1396552b04a | 4 |
 | washing_machine | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_8c9e52242594826f | 4 |
 | dishwasher | ASKO | document_family | Document family 38ad673e29cc | 3 |
 | dishwasher | ASKO | document_family | Document family 468182904268 | 3 |
 | dishwasher | ASKO | document_family | Document family 8073dfad036b | 3 |
+| dishwasher | Bosch | marketing_series | Series 8 | 3 |
 | dishwasher | Fisher & Paykel | document_family | Document family 27fe801c2f33 | 3 |
 | dishwasher | Fisher & Paykel | document_family | Document family a1eabc7adffc | 3 |
 | dishwasher | Fisher & Paykel | document_family | Document family b3d638a1905c | 3 |
@@ -69,7 +70,6 @@ This is a research and repair classification. It does not grant publication auth
 | dryer | Fisher & Paykel | document_family | Document family fbe70d9dc8bb | 3 |
 | dryer | LG | document_family | Document family 2fe3cc8c8972 | 3 |
 | fridge | Bosch | marketing_series | Series 4 | 3 |
-| fridge | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_2358d2487e9939bc | 3 |
 
 ## Highest-Impact Gaps
 
@@ -106,8 +106,8 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Mykin | OFFICIAL_DISCOVERY | 55 |
 | fridge | TCL | OFFICIAL_DISCOVERY | 55 |
 | washing_machine | Fisher & Paykel | OFFICIAL_DISCOVERY | 55 |
-| fridge | LG | REFERENCE_REDISCOVERY | 53 |
 | dryer | Esatto | OFFICIAL_DISCOVERY | 52 |
+| fridge | LG | REFERENCE_REDISCOVERY | 51 |
 | fridge | Electrolux | OFFICIAL_DISCOVERY | 50 |
 | washing_machine | Inalto | OFFICIAL_DISCOVERY | 50 |
 | dishwasher | Fisher & Paykel | OFFICIAL_DISCOVERY | 49 |

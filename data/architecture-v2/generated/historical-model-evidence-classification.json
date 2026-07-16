@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T03:10:25.501Z",
+  "generatedAt": "2026-07-16T04:02:47.117Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "aa9cb90f2d3d8f193e78ce0546e3b0a6a22fe6b49e619933008b90e4cd7da397",
+  "semanticClassificationSha256": "9b637066aee17ba91fd1f4c01496fcf7633fc0618064129703de76c6c199209f",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4194,
+    "documentLinks": 4199,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,34 +21,34 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 207,
+      "COMPLETE_RECEIPT": 212,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 163,
+      "IDENTITY_RESEARCH": 162,
       "OFFICIAL_DISCOVERY": 6417,
-      "REFERENCE_REDISCOVERY": 1225
+      "REFERENCE_REDISCOVERY": 1221
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6417,
-      "NO_ACTION": 207,
-      "REDISCOVER_OFFICIAL_SOURCE": 1225,
+      "NO_ACTION": 212,
+      "REDISCOVER_OFFICIAL_SOURCE": 1221,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 163
+      "RUN_IDENTITY_CLOSURE": 162
     },
     "bySourceAuthority": {
-      "MIXED": 80,
-      "NONE": 6639,
-      "OFFICIAL": 134,
-      "REFERENCE": 1242
+      "MIXED": 84,
+      "NONE": 6638,
+      "OFFICIAL": 135,
+      "REFERENCE": 1238
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 200,
-      "EXACT_MODEL": 1570,
+      "AMBIGUOUS": 199,
+      "EXACT_MODEL": 1571,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
-      "ALL_AXIS_RANGE": 51,
-      "ALL_AXIS_SCALAR": 299,
-      "NOT_PARSED": 7649,
+      "ALL_AXIS_RANGE": 52,
+      "ALL_AXIS_SCALAR": 303,
+      "NOT_PARSED": 7644,
       "PARSER_GAP": 96
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 207,
-      "LEGACY_UNBOUND": 1563,
+      "CURRENT_VALID": 212,
+      "LEGACY_UNBOUND": 1558,
       "NONE": 6325
     }
   },
@@ -68,11 +68,11 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 990,
+      "documentLinks": 991,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 49,
+        "COMPLETE_RECEIPT": 50,
         "CONFLICT_QUARANTINE": 22,
-        "IDENTITY_RESEARCH": 31,
+        "IDENTITY_RESEARCH": 30,
         "OFFICIAL_DISCOVERY": 1030,
         "REFERENCE_REDISCOVERY": 287
       }
@@ -81,26 +81,26 @@
       "category": "dryer",
       "records": 843,
       "brands": 72,
-      "documentLinks": 265,
+      "documentLinks": 267,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 28,
+        "COMPLETE_RECEIPT": 30,
         "CONFLICT_QUARANTINE": 4,
         "IDENTITY_RESEARCH": 8,
         "OFFICIAL_DISCOVERY": 745,
-        "REFERENCE_REDISCOVERY": 58
+        "REFERENCE_REDISCOVERY": 56
       }
     },
     {
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2285,
+      "documentLinks": 2287,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 101,
+        "COMPLETE_RECEIPT": 103,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 87,
         "OFFICIAL_DISCOVERY": 3405,
-        "REFERENCE_REDISCOVERY": 695
+        "REFERENCE_REDISCOVERY": 693
       }
     },
     {
@@ -305,16 +305,16 @@
       "models": 55
     },
     {
-      "category": "fridge",
-      "brand": "LG",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "models": 53
-    },
-    {
       "category": "dryer",
       "brand": "Esatto",
       "operationalClass": "OFFICIAL_DISCOVERY",
       "models": 52
+    },
+    {
+      "category": "fridge",
+      "brand": "LG",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "models": 51
     },
     {
       "category": "fridge",
@@ -9070,16 +9070,17 @@
       "canonicalBrand": "Bosch",
       "model": "SBI8ECS01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -9102,6 +9103,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/f6/21/f6211f7512b37f9a2a015749ddd667275b572a95744da6b5c0ea4675bbe05da0.json",
+            "evidence/web/sha256/d4/61/d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0.pdf",
+            "receipt:a8b1f60272788ef177310a083ecdc3f2b44d0036e45647439d6d297beca9d1d0"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0"
+        },
+        {
           "documentId": "source:doc_867fe3f2dc14d8a889b5fe2b",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
           "evidenceObjectIds": [
@@ -9117,14 +9137,24 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_0a5af8c992c338c2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_0a5af8c992c338c2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -27119,17 +27149,21 @@
           "grammarProfileIds": []
         },
         {
-          "groupType": "document_family",
-          "groupName": "Document family 97eff8a3208f",
-          "grammarProfileIds": []
-        },
-        {
           "groupType": "model_specific",
           "groupName": "DW60FC4W1",
           "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "Fisher & Paykel DW60 installation applicability matrix",
+          "grammarProfileIds": [
+            "fisher-paykel-dw60-install-applicability-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "fisher-paykel-dw60-install-applicability-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -27276,17 +27310,21 @@
           "grammarProfileIds": []
         },
         {
-          "groupType": "document_family",
-          "groupName": "Document family 97eff8a3208f",
-          "grammarProfileIds": []
-        },
-        {
           "groupType": "model_specific",
           "groupName": "DW60FC4X1",
           "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "Fisher & Paykel DW60 installation applicability matrix",
+          "grammarProfileIds": [
+            "fisher-paykel-dw60-install-applicability-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "fisher-paykel-dw60-install-applicability-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -35648,8 +35686,8 @@
       "canonicalBrand": "LG",
       "model": "LD-1481S4",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family c0c60740729b",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -35701,7 +35739,13 @@
       "rawBrandVariants": [
         "LG"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family c0c60740729b",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -35711,8 +35755,8 @@
       "canonicalBrand": "LG",
       "model": "LD-1481W4",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family c0c60740729b",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -35764,7 +35808,13 @@
       "rawBrandVariants": [
         "LG"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family c0c60740729b",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -65866,8 +65916,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "DE4060M1",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "model_specific",
-      "groupName": "DE4060M1",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_65858e1594a8f17d",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -65942,9 +65992,18 @@
           "groupType": "model_specific",
           "groupName": "DE4060M1",
           "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_65858e1594a8f17d",
+          "grammarProfileIds": [
+            "pdf_grammar_65858e1594a8f17d"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "pdf_grammar_65858e1594a8f17d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -66728,8 +66787,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "DE7060G2",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_402a90fdb3f4b2e4",
+      "groupType": "document_family",
+      "groupName": "Document family 946474b05d94",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -66827,17 +66886,17 @@
       ],
       "groups": [
         {
-          "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_402a90fdb3f4b2e4",
+          "groupType": "document_family",
+          "groupName": "Document family 946474b05d94",
           "grammarProfileIds": [
-            "pdf_grammar_402a90fdb3f4b2e4"
+            "pdf_grammar_65858e1594a8f17d"
           ]
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_65858e1594a8f17d",
+          "groupName": "PDF grammar pdf_grammar_402a90fdb3f4b2e4",
           "grammarProfileIds": [
-            "pdf_grammar_65858e1594a8f17d"
+            "pdf_grammar_402a90fdb3f4b2e4"
           ]
         }
       ],
@@ -66917,8 +66976,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "DE7060P2",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
+      "groupType": "document_family",
+      "groupName": "Document family 946474b05d94",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -66995,15 +67054,30 @@
       ],
       "groups": [
         {
+          "groupType": "document_family",
+          "groupName": "Document family 946474b05d94",
+          "grammarProfileIds": [
+            "pdf_grammar_65858e1594a8f17d"
+          ]
+        },
+        {
           "groupType": "parser_family",
           "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
           "grammarProfileIds": [
             "pdf_grammar_2358d2487e9939bc"
           ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_65858e1594a8f17d",
+          "grammarProfileIds": [
+            "pdf_grammar_65858e1594a8f17d"
+          ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_2358d2487e9939bc"
+        "pdf_grammar_2358d2487e9939bc",
+        "pdf_grammar_65858e1594a8f17d"
       ]
     },
     {
@@ -75093,8 +75167,8 @@
       "canonicalBrand": "LG",
       "model": "TD-C80NPW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 6804ebfc6e4d",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -75146,7 +75220,13 @@
       "rawBrandVariants": [
         "LG"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 6804ebfc6e4d",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -75156,8 +75236,8 @@
       "canonicalBrand": "LG",
       "model": "TD-C90NPE",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 6804ebfc6e4d",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -75209,7 +75289,13 @@
       "rawBrandVariants": [
         "LG"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 6804ebfc6e4d",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -75219,16 +75305,17 @@
       "canonicalBrand": "LG",
       "model": "TD-H802SJW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "parser_family",
+      "groupName": "LG Australia dryer exact-model specification table",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -75251,6 +75338,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=H2d0gg0L08zG8vn7G7g",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/3e/a9/3ea978e157d9a683f70b9cd4c73f0120ef2de28a92bc531e9e103c795999a1e4.json",
+            "evidence/web/sha256/41/9c/419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026.pdf",
+            "receipt:92a2869a4be7e055205686da5a251c0fed244e680d3fd83b831d5c3c704e2b0e"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026"
+        },
+        {
           "documentId": "source:doc_c2385abed524d2df43e77a64",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/1/8/7/8/18783523c9621f92618d50264f981b5ff42567d1_TD_H802SJW_LG_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -75266,14 +75372,24 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "LG"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "LG Australia dryer exact-model specification table",
+          "grammarProfileIds": [
+            "lg-au-dryer-exact-model-size-wdh-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "lg-au-dryer-exact-model-size-wdh-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -75334,16 +75450,17 @@
       "canonicalBrand": "LG",
       "model": "TD-H901MW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "parser_family",
+      "groupName": "LG Australia dryer exact-model specification table",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -75366,6 +75483,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=IR9X5SkR5RMTmE8DLyobaw",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/0a/86/0a865c2e3d1f2ef6d454454d48b0d823ac6f83a4a57e3b98a05b1397171c34c7.json",
+            "evidence/web/sha256/79/26/7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a.pdf",
+            "receipt:5da85f09482a4c80bd9207670d6d0cecb2c72cbd913e70685a2fd9e890eaddce"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a"
+        },
+        {
           "documentId": "source:doc_9bf5ab50794feb61a0ebf2e2",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/b/3/8/7/b387257d1abaab5b1c596d21163d82d7c30a64ee_TD_H901MW_LG_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -75381,14 +75517,24 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "LG"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "LG Australia dryer exact-model specification table",
+          "grammarProfileIds": [
+            "lg-au-dryer-exact-model-size-wdh-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "lg-au-dryer-exact-model-size-wdh-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -91756,7 +91902,7 @@
       "model": "CBC064BG",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "EXACT_MODEL",
@@ -91833,13 +91979,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_1527a999293b656a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_1527a999293b656a"
       ]
     },
@@ -91903,7 +92050,7 @@
       "model": "CBC094BG",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -91980,13 +92127,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_1527a999293b656a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_1527a999293b656a"
       ]
     },
@@ -92050,7 +92198,7 @@
       "model": "CBC233BG",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "EXACT_MODEL",
@@ -92127,13 +92275,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_1527a999293b656a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_1527a999293b656a"
       ]
     },
@@ -93240,7 +93389,7 @@
       "model": "CCD499NWS",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -93317,13 +93466,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_1527a999293b656a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_1527a999293b656a"
       ]
     },
@@ -93976,8 +94126,8 @@
       "canonicalBrand": "CHIQ",
       "model": "CCF142WE",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CCF142WE",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -94052,12 +94202,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "CCF142WE",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "CHIQ Australia exact-model specification sheet",
+          "grammarProfileIds": [
+            "chiq-au-exact-spec-product-whd-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -94233,8 +94387,8 @@
       "canonicalBrand": "CHIQ",
       "model": "CCF199WE",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CCF199WE",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -94309,12 +94463,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "CCF199WE",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "CHIQ Australia exact-model specification sheet",
+          "grammarProfileIds": [
+            "chiq-au-exact-spec-product-whd-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -94491,7 +94649,7 @@
       "model": "CCF299WE",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_b43e7538fc63e19b",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -94568,13 +94726,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_b43e7538fc63e19b",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_b43e7538fc63e19b"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_b43e7538fc63e19b"
       ]
     },
@@ -94663,8 +94822,8 @@
       "canonicalBrand": "CHIQ",
       "model": "CCF500W5E",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CCF500W5E",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -94739,12 +94898,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "CCF500W5E",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "CHIQ Australia exact-model specification sheet",
+          "grammarProfileIds": [
+            "chiq-au-exact-spec-product-whd-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -94753,8 +94916,8 @@
       "canonicalBrand": "CHIQ",
       "model": "CCF500WE",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CCF500WE",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -94829,12 +94992,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "CCF500WE",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "CHIQ Australia exact-model specification sheet",
+          "grammarProfileIds": [
+            "chiq-au-exact-spec-product-whd-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -94870,7 +95037,7 @@
       "model": "CCF700WE",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -94947,13 +95114,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_944fcad8129c057a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_944fcad8129c057a"
       ]
     },
@@ -95796,7 +95964,7 @@
       "model": "CRSR125DB",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -95873,13 +96041,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_1527a999293b656a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_1527a999293b656a"
       ]
     },
@@ -96838,8 +97007,8 @@
       "canonicalBrand": "CHIQ",
       "model": "CSH121NBS",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CSH121NBS",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -96914,12 +97083,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "CSH121NBS",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "CHIQ Australia exact-model specification sheet",
+          "grammarProfileIds": [
+            "chiq-au-exact-spec-product-whd-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -97101,8 +97274,8 @@
       "canonicalBrand": "CHIQ",
       "model": "CSH164NBS",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CSH164NBS",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -97177,12 +97350,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "CSH164NBS",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "CHIQ Australia exact-model specification sheet",
+          "grammarProfileIds": [
+            "chiq-au-exact-spec-product-whd-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -97322,7 +97499,7 @@
       "model": "CSH206NW",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -97399,13 +97576,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_944fcad8129c057a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_944fcad8129c057a"
       ]
     },
@@ -98540,7 +98718,7 @@
       "model": "CSR124DBS",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -98617,13 +98795,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_1527a999293b656a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_1527a999293b656a"
       ]
     },
@@ -99196,7 +99375,7 @@
       "model": "CSS556NBD4E",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "EXACT_MODEL",
@@ -99273,13 +99452,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_1527a999293b656a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_1527a999293b656a"
       ]
     },
@@ -99714,7 +99894,7 @@
       "model": "CTM086DW",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -99791,13 +99971,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_1527a999293b656a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_1527a999293b656a"
       ]
     },
@@ -99809,7 +99990,7 @@
       "model": "CTM118DW",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "EXACT_MODEL",
@@ -99886,13 +100067,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_1527a999293b656a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_1527a999293b656a"
       ]
     },
@@ -100082,7 +100264,7 @@
       "model": "CTM200NSS5E",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_24ab514920303947",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -100159,13 +100341,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_24ab514920303947",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_24ab514920303947"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_24ab514920303947"
       ]
     },
@@ -100782,7 +100965,7 @@
       "model": "CTM255NW5E",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -100859,13 +101042,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_944fcad8129c057a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_944fcad8129c057a"
       ]
     },
@@ -101069,8 +101253,8 @@
       "canonicalBrand": "CHIQ",
       "model": "CTM347NB5E",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CTM347NB5E",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -101145,12 +101329,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "CTM347NB5E",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "CHIQ Australia exact-model specification sheet",
+          "grammarProfileIds": [
+            "chiq-au-exact-spec-product-whd-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -101479,7 +101667,7 @@
       "model": "CTM407NB4",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -101556,13 +101744,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
+          "groupName": "CHIQ Australia exact-model specification sheet",
           "grammarProfileIds": [
-            "pdf_grammar_944fcad8129c057a"
+            "chiq-au-exact-spec-product-whd-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1",
         "pdf_grammar_944fcad8129c057a"
       ]
     },
@@ -101573,8 +101762,8 @@
       "canonicalBrand": "CHIQ",
       "model": "CTM408NSS5E",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CTM408NSS5E",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -101649,12 +101838,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "CTM408NSS5E",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "CHIQ Australia exact-model specification sheet",
+          "grammarProfileIds": [
+            "chiq-au-exact-spec-product-whd-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -101956,8 +102149,8 @@
       "canonicalBrand": "CHIQ",
       "model": "CTM512NSS5E",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CTM512NSS5E",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -102032,12 +102225,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "CTM512NSS5E",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "CHIQ Australia exact-model specification sheet",
+          "grammarProfileIds": [
+            "chiq-au-exact-spec-product-whd-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "chiq-au-exact-spec-product-whd-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -130469,8 +130666,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF605QDUVB1",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 281b6d23d315",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -130521,7 +130718,18 @@
       "rawBrandVariants": [
         "Fisher & Paykel"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 281b6d23d315",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "RF605QDUVB1",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -130808,8 +131016,8 @@
       "canonicalBrand": "Fisher & Paykel",
       "model": "RF605QDVB2",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_deb4d0840e067a13",
+      "groupType": "document_family",
+      "groupName": "Document family 281b6d23d315",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -130924,6 +131132,11 @@
         "FISHER & PAYKEL"
       ],
       "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 281b6d23d315",
+          "grammarProfileIds": []
+        },
         {
           "groupType": "model_specific",
           "groupName": "RF605QDVB2",
@@ -151729,8 +151942,8 @@
       "canonicalBrand": "Hisense",
       "model": "HRAF242",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "model_specific",
-      "groupName": "HRAF242",
+      "groupType": "parser_family",
+      "groupName": "Hisense Australia legacy exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -151804,12 +152017,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "HRAF242",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "Hisense Australia legacy exact-model specification sheet",
+          "grammarProfileIds": [
+            "hisense-au-legacy-spec-net-box-axes-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "hisense-au-legacy-spec-net-box-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -152022,8 +152239,8 @@
       "canonicalBrand": "Hisense",
       "model": "HRBC140",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRBC140",
+      "groupType": "parser_family",
+      "groupName": "Hisense Australia legacy exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -152098,12 +152315,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "HRBC140",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "Hisense Australia legacy exact-model specification sheet",
+          "grammarProfileIds": [
+            "hisense-au-legacy-spec-net-box-axes-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "hisense-au-legacy-spec-net-box-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -152589,8 +152810,8 @@
       "canonicalBrand": "Hisense",
       "model": "HRBF179B",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRBF179B",
+      "groupType": "parser_family",
+      "groupName": "Hisense Australia legacy exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -152685,12 +152906,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "HRBF179B",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "Hisense Australia legacy exact-model specification sheet",
+          "grammarProfileIds": [
+            "hisense-au-legacy-spec-net-box-axes-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "hisense-au-legacy-spec-net-box-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -154693,8 +154918,8 @@
       "canonicalBrand": "Hisense",
       "model": "HRCD585BWB",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCD585BWB",
+      "groupType": "parser_family",
+      "groupName": "Hisense Australia legacy exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -154769,12 +154994,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "HRCD585BWB",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "Hisense Australia legacy exact-model specification sheet",
+          "grammarProfileIds": [
+            "hisense-au-legacy-spec-net-box-axes-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "hisense-au-legacy-spec-net-box-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -156047,8 +156276,8 @@
       "canonicalBrand": "Hisense",
       "model": "HRCF297",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCF297",
+      "groupType": "parser_family",
+      "groupName": "Hisense Australia legacy exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -156142,12 +156371,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "HRCF297",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "Hisense Australia legacy exact-model specification sheet",
+          "grammarProfileIds": [
+            "hisense-au-legacy-spec-net-box-axes-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "hisense-au-legacy-spec-net-box-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -156156,8 +156389,8 @@
       "canonicalBrand": "Hisense",
       "model": "HRCF300",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCF300",
+      "groupType": "parser_family",
+      "groupName": "Hisense Australia legacy exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -156231,12 +156464,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "HRCF300",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "Hisense Australia legacy exact-model specification sheet",
+          "grammarProfileIds": [
+            "hisense-au-legacy-spec-net-box-axes-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "hisense-au-legacy-spec-net-box-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -156453,8 +156690,8 @@
       "canonicalBrand": "Hisense",
       "model": "HRCF500",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCF500",
+      "groupType": "parser_family",
+      "groupName": "Hisense Australia legacy exact-model specification sheet",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -156548,12 +156785,16 @@
       ],
       "groups": [
         {
-          "groupType": "model_specific",
-          "groupName": "HRCF500",
-          "grammarProfileIds": []
+          "groupType": "parser_family",
+          "groupName": "Hisense Australia legacy exact-model specification sheet",
+          "grammarProfileIds": [
+            "hisense-au-legacy-spec-net-box-axes-v1"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "hisense-au-legacy-spec-net-box-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -177268,16 +177509,17 @@
       "canonicalBrand": "LG",
       "model": "GB-310NWL",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "model_specific",
+      "groupName": "GB-310NWL",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -177300,6 +177542,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310nwl/",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/b5/a9/b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f.html",
+            "receipt:0b4872c79df0e79ca419e3cdfd887ec3d7e1cbfda59274dc14da18cfd85dd41f"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f"
+        },
+        {
           "documentId": "source:doc_6b321f269a43e21c5cd5c25f",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/e/0/e/4/e0e4b6a69139ab239f7e7ee4f3d7398eb1485686_LG_GB_310NWL_310L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -177315,13 +177575,19 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "LG"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "GB-310NWL",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -177331,16 +177597,17 @@
       "canonicalBrand": "LG",
       "model": "GB-310RPL",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "model_specific",
+      "groupName": "GB-310RPL",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -177363,6 +177630,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/7b/b7/7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7.html",
+            "receipt:2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7"
+        },
+        {
           "documentId": "source:doc_95bf944dbad71826fdeca4dd",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/a/f/e/4/afe4aceb06bc259c3c52f4304365342ef0215bcc_GB_310RPL_LG_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -177378,13 +177663,19 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "LG"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "GB-310RPL",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -286420,15 +286711,16 @@
           "grammarProfileIds": []
         },
         {
-          "groupType": "document_family",
-          "groupName": "Document family d075eefb8152",
+          "groupType": "parser_family",
+          "groupName": "Samsung AU washer wildcard specification table",
           "grammarProfileIds": [
-            "pdf_grammar_d9ff4d7551b11ed0"
+            "samsung-au-washer-wildcard-specification-v1"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_d9ff4d7551b11ed0"
+        "pdf_grammar_d9ff4d7551b11ed0",
+        "samsung-au-washer-wildcard-specification-v1"
       ]
     },
     {
@@ -286557,15 +286849,16 @@
           "grammarProfileIds": []
         },
         {
-          "groupType": "document_family",
-          "groupName": "Document family d075eefb8152",
+          "groupType": "parser_family",
+          "groupName": "Samsung AU washer wildcard specification table",
           "grammarProfileIds": [
-            "pdf_grammar_d9ff4d7551b11ed0"
+            "samsung-au-washer-wildcard-specification-v1"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_d9ff4d7551b11ed0"
+        "pdf_grammar_d9ff4d7551b11ed0",
+        "samsung-au-washer-wildcard-specification-v1"
       ]
     },
     {
@@ -286628,7 +286921,7 @@
       "model": "WW12BB94ADGH",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_d9ff4d7551b11ed0",
+      "groupName": "Samsung AU washer wildcard specification table",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -286704,14 +286997,15 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_d9ff4d7551b11ed0",
+          "groupName": "Samsung AU washer wildcard specification table",
           "grammarProfileIds": [
-            "pdf_grammar_d9ff4d7551b11ed0"
+            "samsung-au-washer-wildcard-specification-v1"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_d9ff4d7551b11ed0"
+        "pdf_grammar_d9ff4d7551b11ed0",
+        "samsung-au-washer-wildcard-specification-v1"
       ]
     },
     {

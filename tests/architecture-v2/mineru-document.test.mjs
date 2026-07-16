@@ -432,6 +432,65 @@ test('MinerU grouped dimensions accept an explicit H*W*D axis order', () => {
   ]);
 });
 
+test('MinerU accepts an exact-model table whose Size values carry the W D H axis order', () => {
+  const bytes = mineruJson(`<table>
+    <tr><td>Model</td><td>TD-H802SJW</td></tr>
+    <tr><td>Power supply</td><td>220 - 240 V, 50 Hz</td></tr>
+    <tr><td>Size</td><td>600 mm (W) X 690 mm (D) X 850 mm(H)</td></tr>
+    <tr><td>Product weight</td><td>54 - 57 kg</td></tr>
+  </table>`, 'LG Dryer Owner Manual');
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'LG', model: 'TD-H802SJW', category: 'dryer' },
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    claimSemanticsVersion: 2,
+  });
+
+  assert.deepEqual(parsed.claims.map((claim) => [
+    claim.field, claim.value, claim.sourceAxisOrder,
+  ]), [
+    ['closedEnvelope.widthMm', { kind: 'fixed', mm: 600 }, ['width', 'depth', 'height']],
+    ['closedEnvelope.heightMm', { kind: 'fixed', mm: 850 }, ['width', 'depth', 'height']],
+    ['closedEnvelope.depthMm', { kind: 'fixed', mm: 690 }, ['width', 'depth', 'height']],
+  ]);
+  assert.ok(parsed.claims.every((claim) => claim.page === 1));
+  assert.ok(parsed.claims.every((claim) => claim.sourceLabel === 'Size'));
+  assert.deepEqual(parsed.grammarProfileIds, [
+    'lg-au-dryer-exact-model-size-wdh-v1',
+  ]);
+});
+
+test('MinerU rejects Size values without three axes, packaging scope, or conflicting label order', () => {
+  const parse = (label, value) => parseMineruContentListV2(mineruJson(`<table>
+    <tr><td>Model</td><td>TD-H802SJW</td></tr>
+    <tr><td>${label}</td><td>${value}</td></tr>
+  </table>`, 'LG Dryer Owner Manual'), {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'LG', model: 'TD-H802SJW', category: 'dryer' },
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    claimSemanticsVersion: 2,
+  });
+
+  assert.throws(() => parse('Size', '600 x 690 x 850 mm'), /no exact-model MinerU evidence/i);
+  assert.throws(() => parse('Pack Size', '600 mm (W) x 690 mm (D) x 850 mm (H)'), /no exact-model MinerU evidence/i);
+  assert.throws(() => parse(
+    'Size (W x H x D)',
+    '600 mm (W) x 690 mm (D) x 850 mm (H)',
+  ), /no exact-model MinerU evidence/i);
+});
+
+test('LG exact-model Size grammar does not classify a shared sibling-model row as exact', () => {
+  assert.throws(() => parseMineruContentListV2(mineruJson(`<table>
+      <tr><td>Model</td><td>TD-H802SJW / TD-H901MW</td></tr>
+      <tr><td>Size</td><td>600 mm (W) x 690 mm (D) x 850 mm (H)</td></tr>
+    </table>`, 'LG Dryer Owner Manual'), {
+      pdfSha256, parserVersion: '3.4.4', modelRevision,
+      caseIdentity: { brand: 'LG', model: 'TD-H802SJW', category: 'dryer' },
+      fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+      claimSemanticsVersion: 2,
+    }), /unresolved family manual|multiple models/i);
+});
+
 test('MinerU excludes Pack Dimension rows from primary product dimensions', () => {
   const bytes = mineruJson(`<table>
     <tr><td>Model</td><td>HRCD640TBW</td></tr>

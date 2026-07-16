@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T03:10:25.501Z",
-  "semanticQueueSha256": "086d45dd49b12c8510b14c6e04edb2195902252d0479ad05eaf9cba078127c3d",
-  "sourceClassificationSha256": "aa9cb90f2d3d8f193e78ce0546e3b0a6a22fe6b49e619933008b90e4cd7da397",
+  "generatedAt": "2026-07-16T04:02:47.117Z",
+  "semanticQueueSha256": "6c53de9d9f9bc7cd26114e54aefadab900dd73c8262b2c5138bcacf9c288e468",
+  "sourceClassificationSha256": "9b637066aee17ba91fd1f4c01496fcf7633fc0618064129703de76c6c199209f",
   "records": [
     {
       "schemaVersion": 1,
@@ -1028,35 +1028,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_bb71b7652146af33a44495e3"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ba3acb75eda874b0bffbb042",
-      "referenceId": "fa_ref_46de0c84084926584c2d7b99",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SBI8ECS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ed8dd5fbc99acece8577a2d0"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-dishwasher-bosch-sbi8ecs01a"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_23e982600e8a5108ac9c8db9"
       ],
       "offlineReplayOutcome": null
     },
@@ -5521,68 +5492,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f46aafca9e61b5a4a367a349",
-      "referenceId": "fa_ref_60a114a60f61881596d3cac2",
-      "category": "dishwasher",
-      "brand": "LG",
-      "model": "LD-1481S4",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_b708587a934134661252cb8c"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_b1064a520d56c0f6b64e3dc9"
-      ],
-      "legacyRuntimeIds": [
-        "ao-42682"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b1473385bd1a977a4beb30ef"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_9f1c96478e385f737a665048",
-      "referenceId": "fa_ref_0a40601f1777fe6319132f91",
-      "category": "dishwasher",
-      "brand": "LG",
-      "model": "LD-1481W4",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_82d2dd228c7bd1d6539a8a88"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_91d308352ff165c81e418ba9"
-      ],
-      "legacyRuntimeIds": [
-        "ao-42683"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9e944c02d2cee62c584a8243"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_11bcc304b7b1a115da07d1d1",
       "referenceId": "fa_ref_213e1031e4bc66748bb7d644",
       "category": "dishwasher",
@@ -6075,6 +5984,68 @@
       ],
       "canonicalProductIds": [
         "fa_prod_37ccb0a408d25f4743076411"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_f46aafca9e61b5a4a367a349",
+      "referenceId": "fa_ref_60a114a60f61881596d3cac2",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "LD-1481S4",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family c0c60740729b",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_b708587a934134661252cb8c"
+      ],
+      "resolverIds": [
+        "lg-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_b1064a520d56c0f6b64e3dc9"
+      ],
+      "legacyRuntimeIds": [
+        "ao-42682"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_b1473385bd1a977a4beb30ef"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_9f1c96478e385f737a665048",
+      "referenceId": "fa_ref_0a40601f1777fe6319132f91",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "LD-1481W4",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family c0c60740729b",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_82d2dd228c7bd1d6539a8a88"
+      ],
+      "resolverIds": [
+        "lg-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_91d308352ff165c81e418ba9"
+      ],
+      "legacyRuntimeIds": [
+        "ao-42683"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_9e944c02d2cee62c584a8243"
       ],
       "offlineReplayOutcome": null
     },
@@ -10583,37 +10554,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_258b90e03e3ec319eac22a17",
-      "referenceId": "fa_ref_65a617ffe2d6e16da569b98e",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DE4060M1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "model_specific",
-      "groupName": "DE4060M1",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_0ca6c76fe3f0da1f607d9051"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_8bb6f9f5b2e877e3f122686a"
-      ],
-      "legacyRuntimeIds": [
-        "ao-51983"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_8e5b2d9c982fea88ace6cf5c"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_d866edbe98e055937ba4ef0d",
       "referenceId": "fa_ref_fe571d1690658ccf55c12d64",
       "category": "dryer",
@@ -10621,8 +10561,8 @@
       "model": "DE7060G2",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_402a90fdb3f4b2e4",
+      "groupType": "document_family",
+      "groupName": "Document family 946474b05d94",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
       "executionReadiness": "DISCOVERY_READY",
@@ -10671,6 +10611,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_5c87550741e99198ef21e364"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_258b90e03e3ec319eac22a17",
+      "referenceId": "fa_ref_65a617ffe2d6e16da569b98e",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE4060M1",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_65858e1594a8f17d",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_0ca6c76fe3f0da1f607d9051"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_8bb6f9f5b2e877e3f122686a"
+      ],
+      "legacyRuntimeIds": [
+        "ao-51983"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_8e5b2d9c982fea88ace6cf5c"
       ],
       "offlineReplayOutcome": null
     },
@@ -10900,8 +10871,8 @@
       "model": "TD-C80NPW",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 6804ebfc6e4d",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -10931,8 +10902,8 @@
       "model": "TD-C90NPE",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 6804ebfc6e4d",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -10950,68 +10921,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_d77eb1ea8ba69635bfac7258"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_5ad4ca6e26b3d77bd1dd77a4",
-      "referenceId": "fa_ref_4137710ed346deda073c0b87",
-      "category": "dryer",
-      "brand": "LG",
-      "model": "TD-H802SJW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_af1e845646ceb910d560136d"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_670a635e3f9e46ee7eaed608"
-      ],
-      "legacyRuntimeIds": [
-        "ao-65345"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_7565a50dda9bc008534bc610"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_8b3b841f052bb2ffecb79e94",
-      "referenceId": "fa_ref_85029e0f7ab2a94dac133ce9",
-      "category": "dryer",
-      "brand": "LG",
-      "model": "TD-H901MW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_533f7fdc9c54cacc1048b67e"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_9934dd7bd98107668f572021"
-      ],
-      "legacyRuntimeIds": [
-        "ao-65346"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b087600284b6cf22fefe05c1"
       ],
       "offlineReplayOutcome": null
     },
@@ -17982,37 +17891,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ed59f114ecbcbac7568866fc",
-      "referenceId": "fa_ref_c61ccfc83ac23a64701404e1",
-      "category": "fridge",
-      "brand": "Fisher & Paykel",
-      "model": "RF605QDUVB1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_840bc8fccd334655dd678957"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_9ad01f90cfaa2133d01bcd50"
-      ],
-      "legacyRuntimeIds": [
-        "ao-79449"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_fbf5314714143b6c9ff84ce8"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_5b39721adc9cf3f7e8e39885",
       "referenceId": "fa_ref_97ae9612b2588222c75267b6",
       "category": "fridge",
@@ -18660,6 +18538,68 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_ed59f114ecbcbac7568866fc",
+      "referenceId": "fa_ref_c61ccfc83ac23a64701404e1",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QDUVB1",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family 281b6d23d315",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_840bc8fccd334655dd678957"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_9ad01f90cfaa2133d01bcd50"
+      ],
+      "legacyRuntimeIds": [
+        "ao-79449"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_fbf5314714143b6c9ff84ce8"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_b129e92f045638baa35cf13d",
+      "referenceId": "fa_ref_87ec0af347cc4274aaa56522",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QDVB2",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family 281b6d23d315",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_624deedb961e8b1d7cf75117"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_8320c94cf351c77247cf6529"
+      ],
+      "legacyRuntimeIds": [
+        "discovery-fridge-fisher-paykel-rf605qdvb2"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_71d51868b1d29e94aaaaf24d"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_3b91b7b78c71911e83088054",
       "referenceId": "fa_ref_0fc3d66e9834ea3110807766",
       "category": "fridge",
@@ -18996,37 +18936,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_8f186b7bfdc3b0de58ab5f0d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_b129e92f045638baa35cf13d",
-      "referenceId": "fa_ref_87ec0af347cc4274aaa56522",
-      "category": "fridge",
-      "brand": "Fisher & Paykel",
-      "model": "RF605QDVB2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_deb4d0840e067a13",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_624deedb961e8b1d7cf75117"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_8320c94cf351c77247cf6529"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-fridge-fisher-paykel-rf605qdvb2"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_71d51868b1d29e94aaaaf24d"
       ],
       "offlineReplayOutcome": null
     },
@@ -23455,68 +23364,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_3728b33d4f05dd9fd2281ab1"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f28f6711291bbd13a8411ba1",
-      "referenceId": "fa_ref_70a486d5df7caa827a726723",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GB-310NWL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d5d88043bdf0a6f9d630c20a"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_3641547be7cf869a61db6140"
-      ],
-      "legacyRuntimeIds": [
-        "ao-50172"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6dee164ec9d77fcf46d2aecd"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e57fe426935165dd4d216f62",
-      "referenceId": "fa_ref_e3059bd4d6cc548c743848f6",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GB-310RPL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ba76892b8c1c641cf9f7cb06"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_76cfbf9f468ea1412fbb39a1"
-      ],
-      "legacyRuntimeIds": [
-        "ao-63116"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b1a179f1c4aa2087facbc851"
       ],
       "offlineReplayOutcome": null
     },
@@ -37745,37 +37592,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_80a199e5a14ff8e5f624f3de",
-      "referenceId": "fa_ref_cc9d4a64bb861deb7382cf5d",
-      "category": "washing_machine",
-      "brand": "Samsung",
-      "model": "WW12BB94ADGH",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_d9ff4d7551b11ed0",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_bbd7b8c284d9dfbb892f4f3d"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_18859b5f92714c18ccbd7221"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-samsung-ww12bb94adgh"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_a533021bccdc2fe750e64f1e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_84524a5001ac39025178805c",
       "referenceId": "fa_ref_f7822ddaafe53c5a16873670",
       "category": "washing_machine",
@@ -37802,6 +37618,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_84d9823ba10d67d8d532c37d"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_80a199e5a14ff8e5f624f3de",
+      "referenceId": "fa_ref_cc9d4a64bb861deb7382cf5d",
+      "category": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW12BB94ADGH",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "Samsung AU washer wildcard specification table",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_bbd7b8c284d9dfbb892f4f3d"
+      ],
+      "resolverIds": [
+        "samsung-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_18859b5f92714c18ccbd7221"
+      ],
+      "legacyRuntimeIds": [
+        "discovery-washing-machine-samsung-ww12bb94adgh"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_a533021bccdc2fe750e64f1e"
       ],
       "offlineReplayOutcome": null
     },
@@ -51704,37 +51551,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f3388433260c36884d806ec1",
-      "referenceId": "fa_ref_66694e7f8ddacd680a798ff8",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CSH164NBS",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CSH164NBS",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_67bae942e73fcef777e7c461"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_9af397c1d3d9c9af8240d6f6"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3397"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9f4fd26903325b50c8dd22c9"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_c75c1c47cd679b7103bf357a",
       "referenceId": "fa_ref_695309cd791559128e19941d",
       "category": "fridge",
@@ -51743,7 +51559,7 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "priority": "P1_CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "operationalClass": "OFFICIAL_DISCOVERY",
       "route": "OFFICIAL_DISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -51774,7 +51590,7 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "priority": "P1_CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
       "executionReadiness": "DISCOVERY_READY",
@@ -51805,7 +51621,7 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "priority": "P1_CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
+      "groupName": "CHIQ Australia exact-model specification sheet",
       "operationalClass": "OFFICIAL_DISCOVERY",
       "route": "OFFICIAL_DISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -51823,6 +51639,161 @@
       ],
       "canonicalProductIds": [
         "fa_prod_608314b34c44fbe087ae9446"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_f3388433260c36884d806ec1",
+      "referenceId": "fa_ref_66694e7f8ddacd680a798ff8",
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CSH164NBS",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P1_CATALOG_ARCHIVED",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_67bae942e73fcef777e7c461"
+      ],
+      "resolverIds": [
+        "chiq-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_9af397c1d3d9c9af8240d6f6"
+      ],
+      "legacyRuntimeIds": [
+        "fridge-arf3397"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_9f4fd26903325b50c8dd22c9"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_77ecf89e889507b8eb11433e",
+      "referenceId": "fa_ref_f5efa08448820ba028229fab",
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CSH206NW",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P1_CATALOG_ARCHIVED",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_a5ca701bacb40c851b0af7c3"
+      ],
+      "resolverIds": [
+        "chiq-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_9d192ab84734b95baac11974"
+      ],
+      "legacyRuntimeIds": [
+        "fridge-arf3400"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_047841286cbdde999a889742"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_35f7573370f493f5d5bfdca1",
+      "referenceId": "fa_ref_5faac75847cea56c0fca8133",
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CSS556NBD4E",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P1_CATALOG_ARCHIVED",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
+      "operationalClass": "OFFICIAL_DISCOVERY",
+      "route": "OFFICIAL_DISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_9ab69ee317d6c2f3b5b9905f"
+      ],
+      "resolverIds": [
+        "chiq-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_304888926d24afcd04da6ce1"
+      ],
+      "legacyRuntimeIds": [
+        "fridge-arf3387"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_b10f72d5832bef842199c1d2"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_70f3f491cfc15fc94bacb3bf",
+      "referenceId": "fa_ref_019801202ddb3b74ec6ddd2e",
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CTM086DW",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P1_CATALOG_ARCHIVED",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_4ca2e9b5dcef8a00eed03d98"
+      ],
+      "resolverIds": [
+        "chiq-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_39c43dbf60d2c823c54aa133"
+      ],
+      "legacyRuntimeIds": [
+        "fridge-arf3200"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_a00ff4ec4cbf3f1eb9088f02"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_311f3028a6b750bcfc0b16f6",
+      "referenceId": "fa_ref_1e206f5a331a51f3b4111d20",
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CTM118DW",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P1_CATALOG_ARCHIVED",
+      "groupType": "parser_family",
+      "groupName": "CHIQ Australia exact-model specification sheet",
+      "operationalClass": "OFFICIAL_DISCOVERY",
+      "route": "OFFICIAL_DISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_7016d568d79841363276e285"
+      ],
+      "resolverIds": [
+        "chiq-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_c4aa83684c366193bef1c7b6"
+      ],
+      "legacyRuntimeIds": [
+        "fridge-arf2473"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_ea6c2ec4724b883e5ddf695c"
       ],
       "offlineReplayOutcome": null
     },
@@ -51854,130 +51825,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_c4d91fde90656f8b298778bf"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_35f7573370f493f5d5bfdca1",
-      "referenceId": "fa_ref_5faac75847cea56c0fca8133",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CSS556NBD4E",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_9ab69ee317d6c2f3b5b9905f"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_304888926d24afcd04da6ce1"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3387"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b10f72d5832bef842199c1d2"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_70f3f491cfc15fc94bacb3bf",
-      "referenceId": "fa_ref_019801202ddb3b74ec6ddd2e",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CTM086DW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_4ca2e9b5dcef8a00eed03d98"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_39c43dbf60d2c823c54aa133"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3200"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_a00ff4ec4cbf3f1eb9088f02"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_311f3028a6b750bcfc0b16f6",
-      "referenceId": "fa_ref_1e206f5a331a51f3b4111d20",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CTM118DW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_7016d568d79841363276e285"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c4aa83684c366193bef1c7b6"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2473"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_ea6c2ec4724b883e5ddf695c"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_77ecf89e889507b8eb11433e",
-      "referenceId": "fa_ref_f5efa08448820ba028229fab",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CSH206NW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_a5ca701bacb40c851b0af7c3"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_9d192ab84734b95baac11974"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3400"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_047841286cbdde999a889742"
       ],
       "offlineReplayOutcome": null
     },
@@ -202082,19 +201929,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_533f7fdc9c54cacc1048b67e",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/b/3/8/7/b387257d1abaab5b1c596d21163d82d7c30a64ee_TD_H901MW_LG_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/TD-H901MW.json",
-        "source:doc_9bf5ab50794feb61a0ebf2e2"
-      ],
-      "referenceIds": [
-        "fa_ref_85029e0f7ab2a94dac133ce9"
-      ]
-    },
-    {
       "sourceId": "historical_source_5355e70428d82758420d0c8e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/2/5/2/5252b6baab1bcffc4a42ec12afd0ac034c49ed69_TWIN171611C_LG_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -209643,19 +209477,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_af1e845646ceb910d560136d",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/8/7/8/18783523c9621f92618d50264f981b5ff42567d1_TD_H802SJW_LG_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/TD-H802SJW.json",
-        "source:doc_c2385abed524d2df43e77a64"
-      ],
-      "referenceIds": [
-        "fa_ref_4137710ed346deda073c0b87"
-      ]
-    },
-    {
       "sourceId": "historical_source_af26e9b5cd7faa8618d3ddba",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/9/f/d/19fd0d4e1177e9c8962432d47cc96134cc93ff2d_SPS60M08AU_Bosch_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -210555,19 +210376,6 @@
       ],
       "referenceIds": [
         "fa_ref_11cbe69b0af1423b1befcc08"
-      ]
-    },
-    {
-      "sourceId": "historical_source_ba76892b8c1c641cf9f7cb06",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/f/e/4/afe4aceb06bc259c3c52f4304365342ef0215bcc_GB_310RPL_LG_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/GB-310RPL.json",
-        "source:doc_95bf944dbad71826fdeca4dd"
-      ],
-      "referenceIds": [
-        "fa_ref_e3059bd4d6cc548c743848f6"
       ]
     },
     {
@@ -212714,19 +212522,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_d5d88043bdf0a6f9d630c20a",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/e/0/e/4/e0e4b6a69139ab239f7e7ee4f3d7398eb1485686_LG_GB_310NWL_310L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/GB-310NWL.json",
-        "source:doc_6b321f269a43e21c5cd5c25f"
-      ],
-      "referenceIds": [
-        "fa_ref_70a486d5df7caa827a726723"
-      ]
-    },
-    {
       "sourceId": "historical_source_d67abb6cab41e5dd73859fdc",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/4/3/9/5439a9cfd2fa5ab8655e7a9a4a94d086334f34a4_SRF9400BFH_Spec_Sheet_FINAL_V2_080424.pdf",
       "sourceAuthority": "REFERENCE",
@@ -214501,19 +214296,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_ed8dd5fbc99acece8577a2d0",
-      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SBI8ECS01A.json",
-        "source:doc_867fe3f2dc14d8a889b5fe2b"
-      ],
-      "referenceIds": [
-        "fa_ref_46de0c84084926584c2d7b99"
-      ]
-    },
-    {
       "sourceId": "historical_source_eeab48502cfccce0815ad298",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/9/4/7/594717e6c33cd2191be9521a4a2bee481ec73ed7_Omega_PL403A_Semi_Integrated_Dishwasher_User_Manual.pdf",
       "sourceAuthority": "REFERENCE",
@@ -215721,46 +215503,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 207,
+    "COMPLETE_RECEIPT": 212,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7888,
-    "uniqueReferences": 7888,
-    "candidateSources": 1546,
-    "candidateEdges": 1581,
+    "queuedModels": 7883,
+    "uniqueReferences": 7883,
+    "candidateSources": 1541,
+    "candidateEdges": 1576,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1250,
+      "CURRENT_RETAIL": 1245,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1370,
-      "dryer": 815,
-      "fridge": 4235,
+      "dishwasher": 1369,
+      "dryer": 813,
+      "fridge": 4233,
       "washing_machine": 1468
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 163,
+      "IDENTITY_RESEARCH": 162,
       "OFFICIAL_DISCOVERY": 6417,
-      "REFERENCE_REDISCOVERY": 1225
+      "REFERENCE_REDISCOVERY": 1221
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 163,
+      "IDENTITY_CLOSURE": 162,
       "OFFICIAL_DISCOVERY": 6417,
-      "OFFICIAL_REDISCOVERY": 1225
+      "OFFICIAL_REDISCOVERY": 1221
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5223,
+      "DISCOVERY_READY": 5218,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 207,
+      "COMPLETE_RECEIPT": 212,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

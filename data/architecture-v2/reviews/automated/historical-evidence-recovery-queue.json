@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1477,
-    "fetchJobs": 1440,
-    "targets": 1474,
-    "candidateEdges": 1477,
+    "documents": 1473,
+    "fetchJobs": 1436,
+    "targets": 1470,
+    "candidateEdges": 1473,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1474,
+    "uniqueReferences": 1470,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 410,
-      "MEASURE_REQUIRED": 1039,
+      "MEASURE_REQUIRED": 1035,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1227
+      "CURRENT_RETAIL": 1223
     },
     "byCategory": {
       "dishwasher": 348,
-      "dryer": 64,
-      "fridge": 837,
+      "dryer": 62,
+      "fridge": 835,
       "washing_machine": 225
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1177,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1173,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 205,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 130,
+      "ALREADY_AUTO_FILL": 134,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -3057,32 +3057,6 @@
       ],
       "targetIds": [
         "recovery_target_4a6ae6ecc6730f032d46a5bd"
-      ]
-    },
-    {
-      "jobId": "recovery_f79819e5e89e6964fee04429",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/8/7/8/18783523c9621f92618d50264f981b5ff42567d1_TD_H802SJW_LG_Specifications_Sheet.pdf",
-      "authorityBrand": "LG",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_670a635e3f9e46ee7eaed608"
       ]
     },
     {
@@ -18660,32 +18634,6 @@
       ]
     },
     {
-      "jobId": "recovery_05ea3ca2ba9c08c55b22c9a9",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/f/e/4/afe4aceb06bc259c3c52f4304365342ef0215bcc_GB_310RPL_LG_Specifications_Sheet.pdf",
-      "authorityBrand": "LG",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_76cfbf9f468ea1412fbb39a1"
-      ]
-    },
-    {
       "jobId": "recovery_b74b4d65dd1a441866835df1",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/b/0/4/d/b04dffec6883d466179a3898033a0a99b7a3436e_Midea_MTM215W_215L_Top_Mount_Fridge_Specifications_Sheet.pdf",
       "authorityBrand": "Midea",
@@ -19073,32 +19021,6 @@
       ],
       "targetIds": [
         "recovery_target_ae7c8aadd93b058cc0038a2a"
-      ]
-    },
-    {
-      "jobId": "recovery_91170a6ad2f20b829503e3bd",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/b/3/8/7/b387257d1abaab5b1c596d21163d82d7c30a64ee_TD_H901MW_LG_Specifications_Sheet.pdf",
-      "authorityBrand": "LG",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_9934dd7bd98107668f572021"
       ]
     },
     {
@@ -23337,32 +23259,6 @@
       ],
       "targetIds": [
         "recovery_target_ebd12293698c7dcf24e71ada"
-      ]
-    },
-    {
-      "jobId": "recovery_e9c4dcbf22c2249d289ceb46",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/e/0/e/4/e0e4b6a69139ab239f7e7ee4f3d7398eb1485686_LG_GB_310NWL_310L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
-      "authorityBrand": "LG",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_3641547be7cf869a61db6140"
       ]
     },
     {
@@ -61467,88 +61363,6 @@
       "primaryJobId": "recovery_2a76f3eb43180caaa3bf3179"
     },
     {
-      "referenceId": "fa_ref_70a486d5df7caa827a726723",
-      "legacyRuntimeId": "ao-50172",
-      "canonicalProductId": "fa_prod_6dee164ec9d77fcf46d2aecd",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GB-310NWL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 1737,
-        "depth": 643
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_3641547be7cf869a61db6140",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_6b321f269a43e21c5cd5c25f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_6b321f269a43e21c5cd5c25f",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 1737,
-            "depth": 643
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e9c4dcbf22c2249d289ceb46"
-      ],
-      "primaryJobId": "recovery_e9c4dcbf22c2249d289ceb46"
-    },
-    {
-      "referenceId": "fa_ref_e3059bd4d6cc548c743848f6",
-      "legacyRuntimeId": "ao-63116",
-      "canonicalProductId": "fa_prod_b1a179f1c4aa2087facbc851",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GB-310RPL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 1737,
-        "depth": 645
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_76cfbf9f468ea1412fbb39a1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_95bf944dbad71826fdeca4dd"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_95bf944dbad71826fdeca4dd",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 1737,
-            "depth": 645
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_05ea3ca2ba9c08c55b22c9a9"
-      ],
-      "primaryJobId": "recovery_05ea3ca2ba9c08c55b22c9a9"
-    },
-    {
       "referenceId": "fa_ref_6a0d2fdb035d479cc51ddf1b",
       "legacyRuntimeId": "ao-57713",
       "canonicalProductId": "fa_prod_921a028a65942005ea258e6c",
@@ -63187,88 +63001,6 @@
         "recovery_74a7858612eb1192ec34dc49"
       ],
       "primaryJobId": "recovery_74a7858612eb1192ec34dc49"
-    },
-    {
-      "referenceId": "fa_ref_4137710ed346deda073c0b87",
-      "legacyRuntimeId": "ao-65345",
-      "canonicalProductId": "fa_prod_7565a50dda9bc008534bc610",
-      "category": "dryer",
-      "brand": "LG",
-      "model": "TD-H802SJW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 670
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_670a635e3f9e46ee7eaed608",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c2385abed524d2df43e77a64"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c2385abed524d2df43e77a64",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 670
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_f79819e5e89e6964fee04429"
-      ],
-      "primaryJobId": "recovery_f79819e5e89e6964fee04429"
-    },
-    {
-      "referenceId": "fa_ref_85029e0f7ab2a94dac133ce9",
-      "legacyRuntimeId": "ao-65346",
-      "canonicalProductId": "fa_prod_b087600284b6cf22fefe05c1",
-      "category": "dryer",
-      "brand": "LG",
-      "model": "TD-H901MW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 705
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_9934dd7bd98107668f572021",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_9bf5ab50794feb61a0ebf2e2"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_9bf5ab50794feb61a0ebf2e2",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 705
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_91170a6ad2f20b829503e3bd"
-      ],
-      "primaryJobId": "recovery_91170a6ad2f20b829503e3bd"
     },
     {
       "referenceId": "fa_ref_3e70c61b66d59da78111cd1a",

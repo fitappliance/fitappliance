@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T03:10:25.501Z",
-  "sourceAcquisitionQueueSha256": "086d45dd49b12c8510b14c6e04edb2195902252d0479ad05eaf9cba078127c3d",
+  "generatedAt": "2026-07-16T04:02:47.117Z",
+  "sourceAcquisitionQueueSha256": "6c53de9d9f9bc7cd26114e54aefadab900dd73c8262b2c5138bcacf9c288e468",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7888,
+    "acquisitionRecords": 7883,
     "fetchJobs": 1,
-    "targets": 7805,
-    "resolverOnlyTargets": 7804,
+    "targets": 7800,
+    "resolverOnlyTargets": 7799,
     "candidateEdges": 1,
-    "uniqueReferences": 7805,
+    "uniqueReferences": 7800,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1231,
+      "CURRENT_RETAIL": 1226,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 1030,
+      "P0_CURRENT_MISSING_DIMENSIONS": 1025,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 188,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -928,33 +928,6 @@
           }
         }
       ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_60d1860bb15193d65fa6a611",
-      "referenceId": "fa_ref_46de0c84084926584c2d7b99",
-      "legacyRuntimeId": "discovery-dishwasher-bosch-sbi8ecs01a",
-      "canonicalProductId": "fa_prod_23e982600e8a5108ac9c8db9",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SBI8ECS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/SBI8ECS01A.json",
-        "source:doc_867fe3f2dc14d8a889b5fe2b"
-      ],
-      "legacyHints": [],
       "registryDimensionHints": [],
       "publicationEligible": false,
       "candidateJobIds": [],
@@ -10396,80 +10369,6 @@
             "width": 600,
             "height": 850,
             "depth": 680
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_670a635e3f9e46ee7eaed608",
-      "referenceId": "fa_ref_4137710ed346deda073c0b87",
-      "legacyRuntimeId": "ao-65345",
-      "canonicalProductId": "fa_prod_7565a50dda9bc008534bc610",
-      "category": "dryer",
-      "brand": "LG",
-      "model": "TD-H802SJW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c2385abed524d2df43e77a64",
-        "legacy:data/pdf-evidence-raw/TD-H802SJW.json",
-        "source:doc_c2385abed524d2df43e77a64"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c2385abed524d2df43e77a64",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 670
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_9934dd7bd98107668f572021",
-      "referenceId": "fa_ref_85029e0f7ab2a94dac133ce9",
-      "legacyRuntimeId": "ao-65346",
-      "canonicalProductId": "fa_prod_b087600284b6cf22fefe05c1",
-      "category": "dryer",
-      "brand": "LG",
-      "model": "TD-H901MW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_9bf5ab50794feb61a0ebf2e2",
-        "legacy:data/pdf-evidence-raw/TD-H901MW.json",
-        "source:doc_9bf5ab50794feb61a0ebf2e2"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_9bf5ab50794feb61a0ebf2e2",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 705
           }
         }
       ],
@@ -22208,80 +22107,6 @@
             "width": 540,
             "height": 1848,
             "depth": 540
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_3641547be7cf869a61db6140",
-      "referenceId": "fa_ref_70a486d5df7caa827a726723",
-      "legacyRuntimeId": "ao-50172",
-      "canonicalProductId": "fa_prod_6dee164ec9d77fcf46d2aecd",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GB-310NWL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_6b321f269a43e21c5cd5c25f",
-        "legacy:data/pdf-evidence-raw/GB-310NWL.json",
-        "source:doc_6b321f269a43e21c5cd5c25f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_6b321f269a43e21c5cd5c25f",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 1737,
-            "depth": 643
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_76cfbf9f468ea1412fbb39a1",
-      "referenceId": "fa_ref_e3059bd4d6cc548c743848f6",
-      "legacyRuntimeId": "ao-63116",
-      "canonicalProductId": "fa_prod_b1a179f1c4aa2087facbc851",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GB-310RPL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_95bf944dbad71826fdeca4dd",
-        "legacy:data/pdf-evidence-raw/GB-310RPL.json",
-        "source:doc_95bf944dbad71826fdeca4dd"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_95bf944dbad71826fdeca4dd",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 1737,
-            "depth": 645
           }
         }
       ],

@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "55d67613c8941058d20b215cf66be7392241ffabd85dbcf5c7742fa549e7b739"
+    "historical-recovery:historical-recovery-cumulative-v1": "bed7f138460a5be4bb82d558708bce4762e7e1e6ad25034086b85e06babdd6a0"
   },
   "records": [
     {
@@ -10679,6 +10679,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_60d1860bb15193d65fa6a611",
+          "snapshotSha256": "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -10688,7 +10695,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_60d1860bb15193d65fa6a611",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
+          "contentSha256": "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0",
+          "receiptBindingSha256": "a8b1f60272788ef177310a083ecdc3f2b44d0036e45647439d6d297beca9d1d0",
+          "verifiedAt": "2026-07-16T03:19:25.179Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5fc652753179a1efaf58c0d84b3de342734cd11ce027d487c81b93d32d49bd1f"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5fc652753179a1efaf58c0d84b3de342734cd11ce027d487c81b93d32d49bd1f"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5fc652753179a1efaf58c0d84b3de342734cd11ce027d487c81b93d32d49bd1f"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d4/61/d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0.pdf"
+        }
       ]
     },
     {
@@ -76711,14 +76747,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 690
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_670a635e3f9e46ee7eaed608",
+          "snapshotSha256": "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026",
+          "sourceLines": [
+            10
+          ]
         }
       ],
       "catalogProductIds": [
@@ -76727,8 +76774,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_670a635e3f9e46ee7eaed608",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=H2d0gg0L08zG8vn7G7g",
+          "contentSha256": "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026",
+          "receiptBindingSha256": "92a2869a4be7e055205686da5a251c0fed244e680d3fd83b831d5c3c704e2b0e",
+          "verifiedAt": "2026-07-16T03:43:45.369Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "307102915bfebaf836e735ba1c979fcb1f5a9729fd05bdd14a244f6570a8f08b"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "307102915bfebaf836e735ba1c979fcb1f5a9729fd05bdd14a244f6570a8f08b"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "307102915bfebaf836e735ba1c979fcb1f5a9729fd05bdd14a244f6570a8f08b"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/41/9c/419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026.pdf"
+        }
       ]
     },
     {
@@ -76820,14 +76893,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 690
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_9934dd7bd98107668f572021",
+          "snapshotSha256": "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a",
+          "sourceLines": [
+            10
+          ]
         }
       ],
       "catalogProductIds": [
@@ -76836,8 +76920,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_9934dd7bd98107668f572021",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=IR9X5SkR5RMTmE8DLyobaw",
+          "contentSha256": "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a",
+          "receiptBindingSha256": "5da85f09482a4c80bd9207670d6d0cecb2c72cbd913e70685a2fd9e890eaddce",
+          "verifiedAt": "2026-07-16T03:43:50.153Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "e4a7596aa44be0edf72eda15f139bfe43d24bbe2f34e5dd29f764299998d1ec5"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "e4a7596aa44be0edf72eda15f139bfe43d24bbe2f34e5dd29f764299998d1ec5"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "e4a7596aa44be0edf72eda15f139bfe43d24bbe2f34e5dd29f764299998d1ec5"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/79/26/7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a.pdf"
+        }
       ]
     },
     {
@@ -188153,13 +188263,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 1737,
+        "depth": 645
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3641547be7cf869a61db6140",
+          "snapshotSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f",
           "sourceLines": []
         }
       ],
@@ -188169,8 +188288,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3641547be7cf869a61db6140",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310nwl/",
+          "contentSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f",
+          "receiptBindingSha256": "0b4872c79df0e79ca419e3cdfd887ec3d7e1cbfda59274dc14da18cfd85dd41f",
+          "verifiedAt": "2026-07-16T03:19:40.552Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/b5/a9/b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f.html"
+        }
       ]
     },
     {
@@ -188188,13 +188330,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 1737,
+        "depth": 645
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_76cfbf9f468ea1412fbb39a1",
+          "snapshotSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
           "sourceLines": []
         }
       ],
@@ -188204,8 +188355,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_76cfbf9f468ea1412fbb39a1",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+          "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+          "receiptBindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8",
+          "verifiedAt": "2026-07-16T03:57:47.045Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/7b/b7/7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7.html"
+        }
       ]
     },
     {
@@ -318697,16 +318871,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4856,
-      "IDENTITY_ONLY": 2983,
-      "MODEL_RECEIPT": 157,
+      "IDENTITY_ONLY": 2979,
+      "MODEL_RECEIPT": 161,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4856,
-      "MEASURE_REQUIRED": 2983,
-      "AUTO_FILL": 168,
+      "MEASURE_REQUIRED": 2979,
+      "AUTO_FILL": 172,
       "QUARANTINED": 88
     }
   }

@@ -2222,6 +2222,45 @@ function hisenseExactNetPackageScope(document, caseIdentity, sourceUrls) {
   return matches.length === 1 ? { ...identity, ...matches[0] } : null;
 }
 
+function lgDryerExactModelSizeScope(document, caseIdentity) {
+  if (canonicalModel(caseIdentity?.brand) !== 'LG'
+    || normalizedText(caseIdentity?.category) !== 'dryer') return null;
+  const model = normalizedText(caseIdentity?.model);
+  if (!model) return null;
+  const fields = [
+    'closedEnvelope.widthMm',
+    'closedEnvelope.heightMm',
+    'closedEnvelope.depthMm',
+  ];
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    for (const fragment of items.filter((item) => item.type === 'table')) {
+      const modelRows = fragment.cells.filter((cells) => (
+        /^model$/i.test(normalizedText(cells[0]))
+        && (() => {
+          const tokens = cells.slice(1).flatMap((cell) => modelExpressionTokens(cell));
+          return tokens.length === 1
+            && !tokens[0].includes('*')
+            && canonicalModel(tokens[0]) === canonicalModel(model);
+        })()
+      ));
+      const sizeRows = fragment.rows.filter((row) => (
+        /^size$/i.test(normalizedText(row.label))
+        && claimsFromExplicitDimensionSequence(row, { category: 'dryer' }, fields).length === 3
+      ));
+      if (modelRows.length === 1 && sizeRows.length === 1) {
+        matches.push({
+          fragment,
+          page: pageIndex + 1,
+          rows: sizeRows,
+          grammarProfileId: 'lg-au-dryer-exact-model-size-wdh-v1',
+        });
+      }
+    }
+  });
+  return matches.length === 1 ? matches[0] : null;
+}
+
 export const mineruGrammarProfiles = Object.freeze({
   'chiq-au-exact-spec-product-whd-v1': Object.freeze({
     parserProfileId: 'chiq-au-exact-spec-product-whd-v1',
@@ -2299,6 +2338,17 @@ export const mineruGrammarProfiles = Object.freeze({
     documentType: 'product_specification',
     detectionSummary: 'An exact-model Hisense Australia specification PDF URL, exact model in the MinerU body, no sibling model, and exactly one table containing separate integer Dimensions (Net) and Dimensions (Packaged) W x H x D rows with explicit millimetre units.',
     semanticBoundary: 'Only the Net W/H/D tuple is projected as the closed appliance envelope; packaged values and unitless tuples are excluded.',
+  }),
+  'lg-au-dryer-exact-model-size-wdh-v1': Object.freeze({
+    parserProfileId: 'lg-au-dryer-exact-model-size-wdh-v1',
+    grammarFamilyId: 'lg_au_dryer_exact_model_size_wdh_v1',
+    grammarFamilyName: 'LG Australia dryer exact-model specification table',
+    variantName: 'Same-table Model row and Size values with per-value W/D/H labels',
+    brand: 'LG',
+    category: 'dryer',
+    documentType: 'user_manual',
+    detectionSummary: 'Exactly one table contains one exact target Model row and one Size row whose three values each carry the same explicit unit plus a unique W, D or H axis label.',
+    semanticBoundary: 'Only the three Size values are projected in their written W/D/H order; unitless tuples, packaged or installation sizes, conflicting label orders and tables with multiple matching model or size rows are excluded.',
   }),
   beko_au_dishwasher_product_spec_parallel_lists_v1: Object.freeze({
     parserProfileId: 'beko_au_dishwasher_product_spec_parallel_lists_v1',
@@ -2708,6 +2758,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const hisenseNetPackageScope = claimSemanticsVersion === 2
     ? hisenseExactNetPackageScope(document, caseIdentity, options.sourceUrls)
     : null;
+  const lgDryerSizeScope = claimSemanticsVersion === 2
+    ? lgDryerExactModelSizeScope(document, caseIdentity)
+    : null;
   const hisenseNetPackageSignals = hisenseNetPackageScope ? [{
     type: 'mineru_hisense_net_package_dimensions',
     value: `${model}:page:${hisenseNetPackageScope.page}:${hisenseNetPackageScope.fragment.fragmentSha256}`,
@@ -2822,6 +2875,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   }
   if (fisherPaykelRf610Scope) {
     appliedGrammarProfiles.add('fisher-paykel-rf610a-support-family-v1');
+  }
+  if (lgDryerSizeScope) {
+    appliedGrammarProfiles.add(lgDryerSizeScope.grammarProfileId);
   }
   const sharedModelListPages = new Set();
   document.pages.forEach((items, pageIndex) => {

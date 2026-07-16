@@ -150,6 +150,31 @@ function explicitDimensionSequence(label) {
   return new Set(sequence).size === 3 ? sequence : null;
 }
 
+function explicitDimensionValueSequence(value) {
+  const text = String(value ?? '').replace(/\s+/g, ' ').trim();
+  const matches = [...text.matchAll(
+    /(\d+(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\s*\(\s*(w|width|wide|h|height|high|d|depth|deep)\s*\)/gi,
+  )];
+  if (matches.length !== 3) return null;
+  const prefix = text.slice(0, matches[0].index);
+  const suffix = text.slice(matches.at(-1).index + matches.at(-1)[0].length);
+  if (prefix.trim() || suffix.trim()) return null;
+  for (let index = 0; index < matches.length - 1; index += 1) {
+    const between = text.slice(matches[index].index + matches[index][0].length, matches[index + 1].index);
+    if (!/^\s*[x×*]\s*$/i.test(between)) return null;
+  }
+  const axisOrder = matches.map((match) => DIMENSION_AXIS_ALIASES[match[3].toLowerCase()]);
+  if (new Set(axisOrder).size !== 3
+    || !['width', 'height', 'depth'].every((axis) => axisOrder.includes(axis))) return null;
+  const sourceUnits = matches.map((match) => match[2].toLowerCase().startsWith('c') ? 'cm' : 'mm');
+  if (new Set(sourceUnits).size !== 1) return null;
+  return {
+    axisOrder,
+    sourceUnit: sourceUnits[0],
+    sourceValues: matches.map((match) => Number(match[1])),
+  };
+}
+
 export function claimsFromExplicitDimensionSequence(fragment, context, requestedFields, extras = {}) {
   if (!Array.isArray(requestedFields)) throw new TypeError('requested evidence fields required');
   const label = String(fragment?.label ?? '').replace(/\s+/g, ' ').trim();
@@ -157,14 +182,19 @@ export function claimsFromExplicitDimensionSequence(fragment, context, requested
   if (!label || !valueText) return [];
   if (!/\b(?:dimension|dimensions|size)\b/i.test(label)
     || /\b(?:pack(?:ed|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate|cabinet|cavity|niche|opening|installation)\b|cut[ -]?out|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)|lid\s*open/i.test(label)) return [];
-  const axisOrder = explicitDimensionSequence(label);
+  const labelAxisOrder = explicitDimensionSequence(label);
+  const valueSequence = explicitDimensionValueSequence(valueText);
+  if (labelAxisOrder && valueSequence
+    && labelAxisOrder.some((axis, index) => axis !== valueSequence.axisOrder[index])) return [];
+  const axisOrder = labelAxisOrder ?? valueSequence?.axisOrder;
   if (!axisOrder) return [];
-  const sourceValues = (valueText.match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
+  const sourceValues = valueSequence?.sourceValues
+    ?? (valueText.match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
   if (sourceValues.length !== 3 || sourceValues.some((value) => !Number.isFinite(value))) return [];
   const units = [...`${label} ${valueText}`.matchAll(/(?<![A-Za-z])(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)]
     .map((match) => match[1].toLowerCase().startsWith('c') ? 'cm' : 'mm');
   if (!units.length || new Set(units).size !== 1) return [];
-  const sourceUnit = units[0];
+  const sourceUnit = valueSequence?.sourceUnit ?? units[0];
   const sourceValuesMm = sourceValues.map((value) => value * (sourceUnit === 'cm' ? 10 : 1));
   if (sourceValuesMm.some((value) => !Number.isInteger(value))) return [];
   const fieldsByAxis = {
@@ -237,8 +267,16 @@ function assertGroupedClaim(claim, context, rule, combined) {
   const compactDimensionPattern = dimensionSequence
     ? new RegExp(`(?:^|[^a-z0-9])${axisOrder.map((axis) => axis[0]).join('\\s*[x×/*]\\s*')}(?:$|[^a-z0-9])`, 'i')
     : null;
+  const quoteValueSequence = dimensionSequence
+    ? explicitDimensionValueSequence(String(claim.quote).replace(claim.label, ' ').trim())
+    : null;
+  const valueCarriesSequence = quoteValueSequence
+    && quoteValueSequence.sourceUnit === sourceUnit
+    && quoteValueSequence.axisOrder.every((axis, index) => axis === axisOrder[index])
+    && quoteValueSequence.sourceValues.every((value, index) => value === sourceValues[index]);
   if (!(new RegExp(sequencePattern, 'i').test(claim.label)
-      || compactDimensionPattern?.test(claim.label))
+      || compactDimensionPattern?.test(claim.label)
+      || valueCarriesSequence)
     || (dimensionSequence && !/\b(?:dimension|dimensions|size)\b/i.test(claim.label))
     || (namedSequence && !/\b(?:clearance|clearances|space|gap)\b/i.test(claim.label))) {
     throw new TypeError(`explicit grouped label does not prove ${claim.field}`);

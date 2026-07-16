@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T03:09:56.817Z",
-  "policySha256": "c1b1303dcc5ab9eeb411b26309a03cba0901fb075087a7572d012465b547b972",
+  "generatedAt": "2026-07-16T03:58:20.247Z",
+  "policySha256": "5676178a6590a0f59e5e4fbefa4a09efcc6652705fa93b119c5199f961f7454c",
   "entries": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -10042,6 +10042,213 @@
       }
     },
     {
+      "targetId": "recovery_target_3641547be7cf869a61db6140",
+      "referenceId": "fa_ref_70a486d5df7caa827a726723",
+      "legacyRuntimeId": "ao-50172",
+      "canonicalProductId": "fa_prod_6dee164ec9d77fcf46d2aecd",
+      "brand": "LG",
+      "model": "GB-310NWL",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-27ae30ab0626e42c5d653d1b-slice-e7fc58ef5ecd",
+      "auditSha256": "14194e3d7718c41267f2494caf6d2ecdde595179e5467224129a9028bb0bed9b",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310nwl/",
+          "finalUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310nwl/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T03:19:40.552Z",
+          "contentSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f",
+          "objectPath": "evidence/web/sha256/b5/a9/b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f.html",
+          "contentType": "text/html",
+          "byteSize": 2392882,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "LG",
+            "model": "GB-310NWL",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1737
+              },
+              "sourceLabel": "Height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 645
+              },
+              "sourceLabel": "Depth - With Door & Handle (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310nwl/"
+            },
+            {
+              "type": "document_title",
+              "value": "310L Bottom Mount Fridge with 4 Star Energy Rating - GB-310NWL | LG Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "GB-310NWL.ASWRGAP.EHAP.AU.C"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T03:19:40.552Z",
+            "bindingSha256": "0b4872c79df0e79ca419e3cdfd887ec3d7e1cbfda59274dc14da18cfd85dd41f"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 1737,
+              "maximumMm": 1737
+            },
+            "depthMm": 645
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310nwl/",
+            "contentSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f",
+            "receiptBindingSha256": "0b4872c79df0e79ca419e3cdfd887ec3d7e1cbfda59274dc14da18cfd85dd41f",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310nwl/",
+            "contentSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f",
+            "receiptBindingSha256": "0b4872c79df0e79ca419e3cdfd887ec3d7e1cbfda59274dc14da18cfd85dd41f",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310nwl/",
+            "contentSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f",
+            "receiptBindingSha256": "0b4872c79df0e79ca419e3cdfd887ec3d7e1cbfda59274dc14da18cfd85dd41f",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_6b321f269a43e21c5cd5c25f",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm",
+              "widthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 595,
+              "heightMm": 1737,
+              "depthMm": 643
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_37c47895e46c5848b0988578",
       "referenceId": "fa_ref_bc875abc81c2707ab1408408",
       "legacyRuntimeId": "fridge-arf3292",
@@ -18311,6 +18518,232 @@
       }
     },
     {
+      "targetId": "recovery_target_60d1860bb15193d65fa6a611",
+      "referenceId": "fa_ref_46de0c84084926584c2d7b99",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sbi8ecs01a",
+      "canonicalProductId": "fa_prod_23e982600e8a5108ac9c8db9",
+      "brand": "Bosch",
+      "model": "SBI8ECS01A",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-27ae30ab0626e42c5d653d1b-slice-e7fc58ef5ecd",
+      "auditSha256": "14194e3d7718c41267f2494caf6d2ecdde595179e5467224129a9028bb0bed9b",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T03:19:25.179Z",
+          "contentSha256": "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0",
+          "objectPath": "evidence/web/sha256/d4/61/d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1288235,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SBI8ECS01A",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5fc652753179a1efaf58c0d84b3de342734cd11ce027d487c81b93d32d49bd1f",
+              "bbox": [
+                500,
+                612,
+                800,
+                625
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 865,
+                "maxMm": 925
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5fc652753179a1efaf58c0d84b3de342734cd11ce027d487c81b93d32d49bd1f",
+              "bbox": [
+                500,
+                612,
+                800,
+                625
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 573
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5fc652753179a1efaf58c0d84b3de342734cd11ce027d487c81b93d32d49bd1f",
+              "bbox": [
+                500,
+                612,
+                800,
+                625
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0",
+            "contentSha256": "f6211f7512b37f9a2a015749ddd667275b572a95744da6b5c0ea4675bbe05da0",
+            "objectPath": "evidence/derived/mineru-json/sha256/f6/21/f6211f7512b37f9a2a015749ddd667275b572a95744da6b5c0ea4675bbe05da0.json",
+            "byteSize": 45775,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_list_model",
+              "value": "SBI8ECS01A:page:3:e4ceb93b6e8ee148889f7fa77c0475f9a83770f5abeedaa08c5b605a1b4774dd"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SBI8ECS01A:page:2"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T03:19:25.179Z",
+            "bindingSha256": "a8b1f60272788ef177310a083ecdc3f2b44d0036e45647439d6d297beca9d1d0"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 865,
+              "maximumMm": 925
+            },
+            "depthMm": 573
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
+            "contentSha256": "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0",
+            "receiptBindingSha256": "a8b1f60272788ef177310a083ecdc3f2b44d0036e45647439d6d297beca9d1d0",
+            "page": 2,
+            "fragmentSha256": "5fc652753179a1efaf58c0d84b3de342734cd11ce027d487c81b93d32d49bd1f"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
+            "contentSha256": "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0",
+            "receiptBindingSha256": "a8b1f60272788ef177310a083ecdc3f2b44d0036e45647439d6d297beca9d1d0",
+            "page": 2,
+            "fragmentSha256": "5fc652753179a1efaf58c0d84b3de342734cd11ce027d487c81b93d32d49bd1f"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
+            "contentSha256": "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0",
+            "receiptBindingSha256": "a8b1f60272788ef177310a083ecdc3f2b44d0036e45647439d6d297beca9d1d0",
+            "page": 2,
+            "fragmentSha256": "5fc652753179a1efaf58c0d84b3de342734cd11ce027d487c81b93d32d49bd1f"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "d461d6abd3f84e7cca969e3293faf5296d602a08c0db6efe075ebdc3f3a0bae0"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_6205c51822147c1d24e3e3cf",
       "referenceId": "fa_ref_f85f24d6ec037db752f6666d",
       "legacyRuntimeId": "washing_machine-acw1319",
@@ -20222,6 +20655,259 @@
         "supersessionViolations": [],
         "axisPermutationResolution": null,
         "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_670a635e3f9e46ee7eaed608",
+      "referenceId": "fa_ref_4137710ed346deda073c0b87",
+      "legacyRuntimeId": "ao-65345",
+      "canonicalProductId": "fa_prod_7565a50dda9bc008534bc610",
+      "brand": "LG",
+      "model": "TD-H802SJW",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-d01ec36b2cd9d5c0faf3321d-slice-45da35cec619",
+      "auditSha256": "1c68c474365a6989faf1137903e0e07407e40a652a9fa08bcd36b1a89dd37182",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=H2d0gg0L08zG8vn7G7g",
+          "finalUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=H2d0gg0L08zG8vn7G7g",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T03:43:45.369Z",
+          "contentSha256": "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026",
+          "objectPath": "evidence/web/sha256/41/9c/419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 3768725,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "LG",
+            "model": "TD-H802SJW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Size",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 10,
+              "fragmentSha256": "307102915bfebaf836e735ba1c979fcb1f5a9729fd05bdd14a244f6570a8f08b",
+              "bbox": [
+                82,
+                506,
+                917,
+                635
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Size",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 10,
+              "fragmentSha256": "307102915bfebaf836e735ba1c979fcb1f5a9729fd05bdd14a244f6570a8f08b",
+              "bbox": [
+                82,
+                506,
+                917,
+                635
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 690
+              },
+              "sourceLabel": "Size",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 10,
+              "fragmentSha256": "307102915bfebaf836e735ba1c979fcb1f5a9729fd05bdd14a244f6570a8f08b",
+              "bbox": [
+                82,
+                506,
+                917,
+                635
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU",
+            "requestedModel": "TD-H802SJW",
+            "matchedModel": "TD-H802SJW",
+            "artifactUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=H2d0gg0L08zG8vn7G7g",
+            "documentId": "20150411942248",
+            "originalFileName": "DR_AU_MFL68721086_02_170822_WEB.pdf"
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026",
+            "contentSha256": "3ea978e157d9a683f70b9cd4c73f0120ef2de28a92bc531e9e103c795999a1e4",
+            "objectPath": "evidence/derived/mineru-json/sha256/3e/a9/3ea978e157d9a683f70b9cd4c73f0120ef2de28a92bc531e9e103c795999a1e4.json",
+            "byteSize": 292113,
+            "pageCount": 36
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "TD-H802SJW:page:1:c37fe33aac751fde023138da576965475154f7be34c76b515a16f7173846aca9"
+            },
+            {
+              "type": "mineru_table_model",
+              "value": "TD-H802SJW:page:10:307102915bfebaf836e735ba1c979fcb1f5a9729fd05bdd14a244f6570a8f08b"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "discoveryPolicyVersion": "2026-07-16.2",
+            "verifiedAt": "2026-07-16T03:43:45.369Z",
+            "bindingSha256": "92a2869a4be7e055205686da5a251c0fed244e680d3fd83b831d5c3c704e2b0e"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 690
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=H2d0gg0L08zG8vn7G7g",
+            "contentSha256": "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026",
+            "receiptBindingSha256": "92a2869a4be7e055205686da5a251c0fed244e680d3fd83b831d5c3c704e2b0e",
+            "page": 10,
+            "fragmentSha256": "307102915bfebaf836e735ba1c979fcb1f5a9729fd05bdd14a244f6570a8f08b"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=H2d0gg0L08zG8vn7G7g",
+            "contentSha256": "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026",
+            "receiptBindingSha256": "92a2869a4be7e055205686da5a251c0fed244e680d3fd83b831d5c3c704e2b0e",
+            "page": 10,
+            "fragmentSha256": "307102915bfebaf836e735ba1c979fcb1f5a9729fd05bdd14a244f6570a8f08b"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=H2d0gg0L08zG8vn7G7g",
+            "contentSha256": "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026",
+            "receiptBindingSha256": "92a2869a4be7e055205686da5a251c0fed244e680d3fd83b831d5c3c704e2b0e",
+            "page": 10,
+            "fragmentSha256": "307102915bfebaf836e735ba1c979fcb1f5a9729fd05bdd14a244f6570a8f08b"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "419ca73affe4d44ac301b9d3ba61b02b18316ed031490f3b7e842ad42863b026"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_c2385abed524d2df43e77a64",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 600,
+              "heightMm": 850,
+              "depthMm": 670
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
         "conflictReason": null
       }
     },
@@ -22767,6 +23453,198 @@
         "activeSourceHashes": [
           "36ad2fa97f1890466cc82241b5695a2ff6cfa385d05963da95764015fe99a6fc"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_76cfbf9f468ea1412fbb39a1",
+      "referenceId": "fa_ref_e3059bd4d6cc548c743848f6",
+      "legacyRuntimeId": "ao-63116",
+      "canonicalProductId": "fa_prod_b1a179f1c4aa2087facbc851",
+      "brand": "LG",
+      "model": "GB-310RPL",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-6dbbc3514e4ae983e59f3650-slice-c5777295363a",
+      "auditSha256": "2c817d99148ee8095aec2b71a8058beee1b9da02c85cf5501423424736302457",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+          "finalUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T03:57:47.045Z",
+          "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+          "objectPath": "evidence/web/sha256/7b/b7/7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7.html",
+          "contentType": "text/html",
+          "byteSize": 2817078,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "LG",
+            "model": "GB-310RPL",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1737
+              },
+              "sourceLabel": "Height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 645
+              },
+              "sourceLabel": "Depth - With Door & Handle (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/"
+            },
+            {
+              "type": "document_title",
+              "value": "310L Anti-fingerprint Shiny Steel Bottom Mount Fridge - GB-310RPL | LG Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "GB-310RPL.APZRGAP.EHAP.AU.C"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T03:57:47.045Z",
+            "bindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 1737,
+              "maximumMm": 1737
+            },
+            "depthMm": 645
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+            "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+            "receiptBindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+            "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+            "receiptBindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-310rpl/",
+            "contentSha256": "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7",
+            "receiptBindingSha256": "2ed13c9a3cd5a95bc1d9271e5a0f2d6debe702657f0e3b93089835ee68719ee8",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "7bb71852456f9d63e03414cb0e7049f55f17d7a5260cb018d2c6ae4bcf1530f7"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -27526,6 +28404,259 @@
         "supersessionViolations": [],
         "axisPermutationResolution": null,
         "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_9934dd7bd98107668f572021",
+      "referenceId": "fa_ref_85029e0f7ab2a94dac133ce9",
+      "legacyRuntimeId": "ao-65346",
+      "canonicalProductId": "fa_prod_b087600284b6cf22fefe05c1",
+      "brand": "LG",
+      "model": "TD-H901MW",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-d01ec36b2cd9d5c0faf3321d-slice-45da35cec619",
+      "auditSha256": "1c68c474365a6989faf1137903e0e07407e40a652a9fa08bcd36b1a89dd37182",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=IR9X5SkR5RMTmE8DLyobaw",
+          "finalUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=IR9X5SkR5RMTmE8DLyobaw",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T03:43:50.153Z",
+          "contentSha256": "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a",
+          "objectPath": "evidence/web/sha256/79/26/7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 4305591,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "LG",
+            "model": "TD-H901MW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Size",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 10,
+              "fragmentSha256": "e4a7596aa44be0edf72eda15f139bfe43d24bbe2f34e5dd29f764299998d1ec5",
+              "bbox": [
+                82,
+                506,
+                917,
+                635
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Size",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 10,
+              "fragmentSha256": "e4a7596aa44be0edf72eda15f139bfe43d24bbe2f34e5dd29f764299998d1ec5",
+              "bbox": [
+                82,
+                506,
+                917,
+                635
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 690
+              },
+              "sourceLabel": "Size",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 10,
+              "fragmentSha256": "e4a7596aa44be0edf72eda15f139bfe43d24bbe2f34e5dd29f764299998d1ec5",
+              "bbox": [
+                82,
+                506,
+                917,
+                635
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU",
+            "requestedModel": "TD-H901MW",
+            "matchedModel": "TD-H901MW",
+            "artifactUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=IR9X5SkR5RMTmE8DLyobaw",
+            "documentId": "20150436032610",
+            "originalFileName": "DR_AU_MFL68721085_02_170822_WEB.pdf"
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a",
+            "contentSha256": "0a865c2e3d1f2ef6d454454d48b0d823ac6f83a4a57e3b98a05b1397171c34c7",
+            "objectPath": "evidence/derived/mineru-json/sha256/0a/86/0a865c2e3d1f2ef6d454454d48b0d823ac6f83a4a57e3b98a05b1397171c34c7.json",
+            "byteSize": 300864,
+            "pageCount": 40
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "TD-H901MW:page:1:5a7ccf9552ba5b70904605c1cd93cd88dbbff7647b5545318a8d04d6eb51319f"
+            },
+            {
+              "type": "mineru_table_model",
+              "value": "TD-H901MW:page:10:e4a7596aa44be0edf72eda15f139bfe43d24bbe2f34e5dd29f764299998d1ec5"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "discoveryPolicyVersion": "2026-07-16.2",
+            "verifiedAt": "2026-07-16T03:43:50.153Z",
+            "bindingSha256": "5da85f09482a4c80bd9207670d6d0cecb2c72cbd913e70685a2fd9e890eaddce"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 690
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=IR9X5SkR5RMTmE8DLyobaw",
+            "contentSha256": "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a",
+            "receiptBindingSha256": "5da85f09482a4c80bd9207670d6d0cecb2c72cbd913e70685a2fd9e890eaddce",
+            "page": 10,
+            "fragmentSha256": "e4a7596aa44be0edf72eda15f139bfe43d24bbe2f34e5dd29f764299998d1ec5"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=IR9X5SkR5RMTmE8DLyobaw",
+            "contentSha256": "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a",
+            "receiptBindingSha256": "5da85f09482a4c80bd9207670d6d0cecb2c72cbd913e70685a2fd9e890eaddce",
+            "page": 10,
+            "fragmentSha256": "e4a7596aa44be0edf72eda15f139bfe43d24bbe2f34e5dd29f764299998d1ec5"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=IR9X5SkR5RMTmE8DLyobaw",
+            "contentSha256": "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a",
+            "receiptBindingSha256": "5da85f09482a4c80bd9207670d6d0cecb2c72cbd913e70685a2fd9e890eaddce",
+            "page": 10,
+            "fragmentSha256": "e4a7596aa44be0edf72eda15f139bfe43d24bbe2f34e5dd29f764299998d1ec5"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "7926c76dc8ecec13292d32f3c4fc9a78c9d5dd86f3bb5d6845f8de4c5706028a"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_9bf5ab50794feb61a0ebf2e2",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 600,
+              "heightMm": 850,
+              "depthMm": 705
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
         "conflictReason": null
       }
     },
@@ -48055,6 +49186,13 @@
       "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8"
     },
     {
+      "batchId": "historical-recovery-27ae30ab0626e42c5d653d1b-slice-e7fc58ef5ecd",
+      "batchSha256": "a67d3df5a25d738e071a27939205d0cb6ded5a430f054624037fad78e3a4a159",
+      "queueSha256": "15c14518c7caaefa6e5920c0a07f8a14585ac5009d760cb0b12f57483eab8c24",
+      "resultsSha256": "e58ca6be09ab90f0ca77bae2f2287624f23e1760cc53afc8dbc7f8e7ef19046a",
+      "auditSha256": "14194e3d7718c41267f2494caf6d2ecdde595179e5467224129a9028bb0bed9b"
+    },
+    {
       "batchId": "historical-recovery-295a0b43a0a3006bcbcdaac0-slice-12ae5cee9699",
       "batchSha256": "57f3ee2f33b484a6465a6c48ea6f9bc372beac93f475dc1e680e94a3dd8abedc",
       "queueSha256": "3b618f4b4b2c8cad920ad3fc37029b83eb517679b8afb34d123e50fc6865e832",
@@ -48123,6 +49261,13 @@
       "queueSha256": "a07b50728890ce3b0e0d25be3a0a649b083744b87e5ab29e72e47d17524f14a0",
       "resultsSha256": "93c479bb94d19638f05d7d9384c57431c510669f20436becce8d50d0eab8865d",
       "auditSha256": "6889896640434946706b1c1121390a498106067f5023952ca9fe2042d06d4446"
+    },
+    {
+      "batchId": "historical-recovery-6dbbc3514e4ae983e59f3650-slice-c5777295363a",
+      "batchSha256": "0cb0dd628f817fefeb36f236dd0781c42ae5cc36c7431201011389e50ff258d7",
+      "queueSha256": "a90cb561659cffca250d7f6717bb060cd7144ebd2617ccfa226e684ff676baf0",
+      "resultsSha256": "76550275cffb2744cc271a4420252d195ab648c3e8669f98ec89935e192161cd",
+      "auditSha256": "2c817d99148ee8095aec2b71a8058beee1b9da02c85cf5501423424736302457"
     },
     {
       "batchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-235bd982a76d",
@@ -48270,6 +49415,13 @@
       "queueSha256": "d2adf67613b0ca03282c4080e2f9ffe1d189955ec16f91175b1e624dce7723e2",
       "resultsSha256": "041f29a38bdcc96e5a9501e4176dd74801317814bb017f4ccfd4534ed7d71efa",
       "auditSha256": "562365cae1bb33f43db2cb752a9c2ee51bdcf019300e7de0916eb2a6aef680ab"
+    },
+    {
+      "batchId": "historical-recovery-d01ec36b2cd9d5c0faf3321d-slice-45da35cec619",
+      "batchSha256": "53e915b90c59f1339d784e3730d7ad6b4fdf46f059c427cc016e5b0be87cd73c",
+      "queueSha256": "09b59c78a54dea2fa38544522c90dfbf0d67051aa34bf4eeaf552c2efd03db61",
+      "resultsSha256": "8c479ed79445553e7ac746e51b1e3cce927ddc6c69898c908dbb67b408cb6ce2",
+      "auditSha256": "1c68c474365a6989faf1137903e0e07407e40a652a9fa08bcd36b1a89dd37182"
     },
     {
       "batchId": "historical-recovery-d17f2b5eab97c52a79b3f969",
