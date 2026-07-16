@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-963a60262e7296442af1fa85",
-  "generatedAt": "2026-07-16T15:56:07.776Z",
+  "batchId": "historical-recovery-76287b5df11339bf5416eed3",
+  "generatedAt": "2026-07-16T16:20:45.455Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "c4bd4a28920ef19be434d8a58721c81f2378d275b7fa3a99c6ec820bd53142c0"
+    "sha256": "f16e757d27073509666ce580146555de0dee8c3efe7f225c7ea392502c62b2ba"
   },
   "policy": {
     "version": "2026-07-16.15",
@@ -981,70 +981,6 @@
       }
     },
     {
-      "targetId": "recovery_target_0bce49ea1d5ed7f33a36d2db",
-      "referenceId": "fa_ref_7c0173090146f9dee997ffc4",
-      "legacyRuntimeId": "ao-104572",
-      "canonicalProductId": "fa_prod_3f4b117571f0dc4482cef2d5",
-      "brand": "Bosch",
-      "model": "SMU6HAS01A",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_ad69c28c033c8d55b2938370",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 815,
-              "depth": 573
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_7e07da792e8ef3ab3a0934a4",
-      "referenceId": "fa_ref_bf3696c88e5aec6d5404284e",
-      "legacyRuntimeId": "ao-102999",
-      "canonicalProductId": "fa_prod_4076bfeec9fe64e40d799c30",
-      "brand": "Bosch",
-      "model": "SMU6HCS01A",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_7871f62a8f5674941ec6edd2",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 815,
-              "depth": 573
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_5f03b7f484de5aa8e95a408e",
       "referenceId": "fa_ref_763861a2f422467dbe45ef2d",
       "legacyRuntimeId": "ao-82876",
@@ -1392,38 +1328,6 @@
         "legacyHints": [
           {
             "sourceDocumentId": "doc_bc45118aa4affbc576f8f698",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 815,
-              "depth": 550
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_3b3066377d2d32dda17fbd57",
-      "referenceId": "fa_ref_0d19aabcb0dad7d1dcf4d671",
-      "legacyRuntimeId": "ao-102167",
-      "canonicalProductId": "fa_prod_25122cc5980dc4db54d98a8d",
-      "brand": "Bosch",
-      "model": "SMV6HCX01A",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_b55d21dd54e3b85b59f689e8",
             "dimensionsMm": {
               "width": 598,
               "height": 815,
@@ -237079,7 +236983,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7720,
+    "targets": 7717,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T15:54:40.788Z",
-  "sourceBundleSha256": "a7f8db9c6b3b64fceb345b3a390bead8e416a48eac70f3f7bf89ad3ed40b7890",
+  "generatedAt": "2026-07-16T16:20:28.031Z",
+  "sourceBundleSha256": "ad1963e008b7c1d9ca5fe15219a9f1e1db2b390eb293c464220bb709665d7106",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -196,6 +196,20 @@
       "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
       "receiptBindingSha256": "b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b5/95/b5952210881d7f33f661b7bfa067a19cba48843e4e4a7090c2c35db75ac82434.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_0bce49ea1d5ed7f33a36d2db",
+      "referenceId": "fa_ref_7c0173090146f9dee997ffc4",
+      "brand": "Bosch",
+      "model": "SMU6HAS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU6HAS01A.pdf",
+      "sourcePdfSha256": "5c3b6c9206fd07c7e45055f420299e0798b767e6af920f8a94bda60b94ee3e23",
+      "contentSha256": "5c3b6c9206fd07c7e45055f420299e0798b767e6af920f8a94bda60b94ee3e23",
+      "receiptBindingSha256": "5935a895a797a79baf2fd17b0adc7f89ffe20b7a963bd1c2752c8cc808c7c95e",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/0e/9c/0e9c894ad28e1efad38bd06bd066e84e5efb11c97cba4db9e9d72dd70e51ff73.json",
       "status": "passed",
       "failureCode": null
     },
@@ -812,6 +826,20 @@
       "contentSha256": "ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f",
       "receiptBindingSha256": "d12d199caa9edd5c44ce786972dd63345f50b2d58016978c1f45754329080ab4",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/5d/8d/5d8db69717b861c43d74943ba9654a32e541e42cfb85797e9629f604a14f513f.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_3b3066377d2d32dda17fbd57",
+      "referenceId": "fa_ref_0d19aabcb0dad7d1dcf4d671",
+      "brand": "Bosch",
+      "model": "SMV6HCX01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV6HCX01A.pdf",
+      "sourcePdfSha256": "4134cfd75aa03b893ba2454fac95ed80c36389f24760d0bbce7c603be2bfd0e0",
+      "contentSha256": "4134cfd75aa03b893ba2454fac95ed80c36389f24760d0bbce7c603be2bfd0e0",
+      "receiptBindingSha256": "54548cc8f2ad5c3b07379ae995de3a23f16c49770861a4bb43d0140b896d9ed1",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/18/2f/182f22b301fdeb984b808feba4b588593723430c4d3c650fb12d8b17fa2312c3.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1960,6 +1988,20 @@
       "contentSha256": "581b8d72ae72d7cd5b83cbaa8a2e702f318edb1d33b1750056388072e25383d7",
       "receiptBindingSha256": "05113275ccb716684bd47696ab348cda81286608085ce3a9f2cd453153a3a5f1",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/30/b0/30b03f20b6a38c577d9e44eeeac1e2213d19c8a4d1b7fa9a2c776b0cd96a46f9.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_7e07da792e8ef3ab3a0934a4",
+      "referenceId": "fa_ref_bf3696c88e5aec6d5404284e",
+      "brand": "Bosch",
+      "model": "SMU6HCS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU6HCS01A.pdf",
+      "sourcePdfSha256": "cbb2a27f5760f141eddb454d6b7dac0bd0ace3526758eca634532578874816d3",
+      "contentSha256": "cbb2a27f5760f141eddb454d6b7dac0bd0ace3526758eca634532578874816d3",
+      "receiptBindingSha256": "c4fb93ec60350d8a25dc5046c82f728c22362668f30d68c0a88a1a6a5b35aff3",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/12/7e/127e49f98931fb372c385ccba7f3f825ebf0a8c0b789dfa6522097518c8ba08a.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4065,11 +4107,11 @@
     }
   ],
   "summary": {
-    "entries": 265,
-    "sources": 290,
-    "passed": 290,
+    "entries": 268,
+    "sources": 293,
+    "passed": 293,
     "failed": 0
   },
-  "checkedObjects": 575,
-  "semanticAuditSha256": "6a4f4edb89d025345701416237eb5264ae419ac272b537216c3703b05e52b95d"
+  "checkedObjects": 581,
+  "semanticAuditSha256": "b30153eab9fe383eb930c723dc2d0688c211bbb7b46b51cdabad97d3ed0bddd4"
 }

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T15:56:07.776Z",
+  "generatedAt": "2026-07-16T16:20:45.455Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "94fe4d129f1fa343f5aabdf8ee784cf4d337cc968a344fb0fdcdd41671f2d3e1",
+  "semanticClassificationSha256": "4ea1f985221533263f5d063b800bacd881ac5ff6f22595148b6d6a2b80e9a528",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4267,
+    "documentLinks": 4270,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 284,
+      "COMPLETE_RECEIPT": 287,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 149,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1163
+      "REFERENCE_REDISCOVERY": 1160
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 284,
-      "REDISCOVER_OFFICIAL_SOURCE": 1163,
+      "NO_ACTION": 287,
+      "REDISCOVER_OFFICIAL_SOURCE": 1160,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 149
     },
     "bySourceAuthority": {
-      "MIXED": 142,
+      "MIXED": 145,
       "NONE": 6625,
       "OFFICIAL": 148,
-      "REFERENCE": 1180
+      "REFERENCE": 1177
     },
     "byIdentityScope": {
       "AMBIGUOUS": 186,
@@ -46,9 +46,9 @@
       "UNPROVEN": 6325
     },
     "byExtractionState": {
-      "ALL_AXIS_RANGE": 68,
+      "ALL_AXIS_RANGE": 71,
       "ALL_AXIS_SCALAR": 353,
-      "NOT_PARSED": 7580,
+      "NOT_PARSED": 7577,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 284,
-      "LEGACY_UNBOUND": 1486,
+      "CURRENT_VALID": 287,
+      "LEGACY_UNBOUND": 1483,
       "NONE": 6325
     }
   },
@@ -68,13 +68,13 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 1049,
+      "documentLinks": 1052,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 110,
+        "COMPLETE_RECEIPT": 113,
         "CONFLICT_QUARANTINE": 22,
         "IDENTITY_RESEARCH": 21,
         "OFFICIAL_DISCOVERY": 1029,
-        "REFERENCE_REDISCOVERY": 237
+        "REFERENCE_REDISCOVERY": 234
       }
     },
     {
@@ -15426,14 +15426,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -15456,6 +15457,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:5c3b6c9206fd07c7e45055f420299e0798b767e6af920f8a94bda60b94ee3e23",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU6HAS01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/0e/9c/0e9c894ad28e1efad38bd06bd066e84e5efb11c97cba4db9e9d72dd70e51ff73.json",
+            "evidence/web/sha256/5c/3b/5c3b6c9206fd07c7e45055f420299e0798b767e6af920f8a94bda60b94ee3e23.pdf",
+            "receipt:5935a895a797a79baf2fd17b0adc7f89ffe20b7a963bd1c2752c8cc808c7c95e"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "5c3b6c9206fd07c7e45055f420299e0798b767e6af920f8a94bda60b94ee3e23"
+        },
+        {
           "documentId": "source:doc_ad69c28c033c8d55b2938370",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/b/9/2/5/b92533aad860351fcf0ccd70a1b3c65f605c3835_SMU6HAS01A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -15471,8 +15491,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -15490,14 +15510,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -15520,6 +15541,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:cbb2a27f5760f141eddb454d6b7dac0bd0ace3526758eca634532578874816d3",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU6HCS01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/12/7e/127e49f98931fb372c385ccba7f3f825ebf0a8c0b789dfa6522097518c8ba08a.json",
+            "evidence/web/sha256/cb/b2/cbb2a27f5760f141eddb454d6b7dac0bd0ace3526758eca634532578874816d3.pdf",
+            "receipt:c4fb93ec60350d8a25dc5046c82f728c22362668f30d68c0a88a1a6a5b35aff3"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "cbb2a27f5760f141eddb454d6b7dac0bd0ace3526758eca634532578874816d3"
+        },
+        {
           "documentId": "source:doc_7871f62a8f5674941ec6edd2",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/8/e/f/5/8ef5dbc91d057e30e47859c41929510c7abfd191_SMU6HCS01A.pdf",
           "evidenceObjectIds": [
@@ -15535,8 +15575,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -16312,14 +16352,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -16342,6 +16383,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:4134cfd75aa03b893ba2454fac95ed80c36389f24760d0bbce7c603be2bfd0e0",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV6HCX01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/18/2f/182f22b301fdeb984b808feba4b588593723430c4d3c650fb12d8b17fa2312c3.json",
+            "evidence/web/sha256/41/34/4134cfd75aa03b893ba2454fac95ed80c36389f24760d0bbce7c603be2bfd0e0.pdf",
+            "receipt:54548cc8f2ad5c3b07379ae995de3a23f16c49770861a4bb43d0140b896d9ed1"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "4134cfd75aa03b893ba2454fac95ed80c36389f24760d0bbce7c603be2bfd0e0"
+        },
+        {
           "documentId": "source:doc_b55d21dd54e3b85b59f689e8",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/5/9/7/b/597b279d46d7aff5b5bc28ab6defa8172e817574_SMV6HCX01A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -16357,8 +16417,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",

@@ -696,3 +696,37 @@ blocked before network or run-state creation with reason
 `completed_exhausted_source_discovery`. Unit and runner-level tests assert the
 same behavior. This guard is not a permanent model blacklist: policy, resolver
 contract and, for parser terminals, toolchain identity define the rerun epoch.
+
+## 19. Bosch Series 6 dishwasher specification evidence
+
+Run `historical-bosch-series6-dishwashers-20260716-a` selected three current
+Bosch Australia dishwasher models. The Bosch adapter bound each exact AU
+product page and serialized technical-document manifest before acquiring the
+manufacturer spec sheet. The accepted dimensions are:
+
+| Model | Installation type | Width | Adjustable height | Depth |
+| --- | --- | ---: | ---: | ---: |
+| `SMU6HAS01A` | built-under | 598 | 815-875 | 573 |
+| `SMU6HCS01A` | built-under | 598 | 815-875 | 573 |
+| `SMV6HCX01A` | fully integrated | 598 | 815-875 | 550 |
+
+Every value comes from page 2 of an exact-model `en-AU` Bosch spec sheet whose
+heading states `Product Dimensions (H x W x D)`. MinerU retained the axis order,
+millimetre unit, range, page, bounding box and fragment hash. Visual rendering
+of all three evidence pages matched the receipt projections. The associated
+60-page user manuals were processed and retained for provenance, but the spec
+sheets alone supplied the accepted dimension claims; typed terminal outcomes
+from non-contributing sources remain in the attempt ledger.
+
+The full online audit checked three targets and 581 cumulative objects with no
+repair or violation. Cumulative receipt replay passes all 293 sources. Public
+receipt-bound dimensions increased from 215 to 218, while receipt-bound
+`VERIFIED_FIT` remained zero. The installation, door-open and rear-service
+requirements are unknown, so all three successful Fit outcomes remain
+`INSUFFICIENT_DATA`.
+
+These adjustable-height receipts increase `COMPLETE_RECEIPT` classification to
+287 but do not increase historical `AUTO_FILL`. The replacement-reference
+schema still requires a scalar W/H/D triple. Do not flatten `815-875` to a
+minimum, maximum or midpoint; preserve it until the replacement mode becomes
+range-aware or asks for the installed height.
