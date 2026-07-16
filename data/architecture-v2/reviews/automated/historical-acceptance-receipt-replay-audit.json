@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T19:22:16.669Z",
-  "sourceBundleSha256": "d30f76d7a36aaea6a1ff1267cbf2b50ebb831b340d54c4ee9bc1a1dcbdac7f9a",
+  "generatedAt": "2026-07-16T19:37:38.523Z",
+  "sourceBundleSha256": "e2164e6d5d419dda393a1147aeab8a85eb4b9acab8ad56278a4f065ba046bc9e",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -364,6 +364,20 @@
       "contentSha256": "d8bf0d3a2b263913b0262d861222978d2820b973b6f40c28d9096992d890cac3",
       "receiptBindingSha256": "1ad7855ba4b6596c209d5f394897f7859fcb7b675371532b5bb5b796c888e094",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/0b/a1/0ba1a5edb5b8de976278118991a8cd60b13bee78386322b1fb23ea9c7e281600.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_1a253f5b1f839e30a19c7c3b",
+      "referenceId": "fa_ref_5391b51966db793fe5e0e851",
+      "brand": "Bosch",
+      "model": "KFI96AXEAA",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFI96AXEAA.pdf",
+      "sourcePdfSha256": "16af6d13ea775b7ad4b35747584b46922ee16385ddea3d4eda1847d55655caa0",
+      "contentSha256": "16af6d13ea775b7ad4b35747584b46922ee16385ddea3d4eda1847d55655caa0",
+      "receiptBindingSha256": "cecb449f6edd5af36696a4f16770ce98d95c5b9a928e2672c696b495a94d9a47",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/21/ed/21ed9b7586b765052c188adb28c7377b8ac9f0b164e296c4c6e28cd01db4f32f.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1054,6 +1068,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_3e783fcdaa90a51fb9300c8c",
+      "referenceId": "fa_ref_93bd174e2c3a420282ef5180",
+      "brand": "Bosch",
+      "model": "KIR81AD30A",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KIR81AD30A.pdf",
+      "sourcePdfSha256": "3ba61d6ed8e069cf81d1f8bbaa4370851fac60d4ab80c3fbb568437c3ae0a87c",
+      "contentSha256": "3ba61d6ed8e069cf81d1f8bbaa4370851fac60d4ab80c3fbb568437c3ae0a87c",
+      "receiptBindingSha256": "1cbe3ac012953f7b94c9d6429f25730701395d28c11474770ff943414e2e2d52",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ca/5b/ca5bf94f09cd3710ac4f8c777528ca2acb3d28afdd1d8b9f4244e9ddb818660c.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_3eb90a5b93d6a6fd7827e89e",
       "referenceId": "fa_ref_178dedb8b2ad0bf29c003c37",
       "brand": "Bosch",
@@ -1568,6 +1596,20 @@
       "contentSha256": "d51515f33d937651fde20c8b242651f4865a166b2a0c7b1ad85636ef7d62c17b",
       "receiptBindingSha256": "41c95de57aaf1d4c84374f902ae1f5e088c31167d328269ac5892128905aad57",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/a5/b6/a5b6946e0a49c090a3c96d865d6b76a783767bc0bc4a52dd89a5202c0908a4a1.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_561ac6459dd65fd72286e57a",
+      "referenceId": "fa_ref_ba1d5bd7aff12c05e0afc8ef",
+      "brand": "Bosch",
+      "model": "KIN86AD30A",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KIN86AD30A.pdf",
+      "sourcePdfSha256": "39eabd0522004b1fe10e62611483400d24a51d341d5ad4cf2a11b6aeb6b9c39a",
+      "contentSha256": "39eabd0522004b1fe10e62611483400d24a51d341d5ad4cf2a11b6aeb6b9c39a",
+      "receiptBindingSha256": "b1d9725859852030a68721dc750de0cea41799e24bb7c0d597b6a170a963c238",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/62/60/6260a28b105b198d04102533ba54c8d16571bfd3d1cf950284a6d561d80364da.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2156,6 +2198,20 @@
       "contentSha256": "4dbafd64e12faa941ff5ac526c5611878084d3a4451fa9e0109414d2c7023807",
       "receiptBindingSha256": "567d86d3911e722a285b9423e9dc2e8c5728d1411fb6605d787180c929df57c0",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/c0/3b/c03bd0db36ec7482a19af9e0aedd29d3082185d0d06a999734be6b8f1b9a4240.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_729708bf7ebb32b63c60440c",
+      "referenceId": "fa_ref_4ee62b645f126e68acb597e5",
+      "brand": "Bosch",
+      "model": "KIN34P60AU",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KIN34P60AU.pdf",
+      "sourcePdfSha256": "44d746bdb59201c465f13ad9dd73b94c1a82e0ab9923daffedb2d548020bf69f",
+      "contentSha256": "44d746bdb59201c465f13ad9dd73b94c1a82e0ab9923daffedb2d548020bf69f",
+      "receiptBindingSha256": "aaade14cc62244e7b31cae07747d4aca22977fff7e582c72d2f304e709018952",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/3d/0f/3d0fbbcde8f61f376a2eeca85c18b3f359e90e5e71e0c6927372395c4e1b0454.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3238,6 +3294,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_aa37ec26435197fc5b6d4b94",
+      "referenceId": "fa_ref_d92c861c9dad5d633c612981",
+      "brand": "Bosch",
+      "model": "KFN96AXEAA",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96AXEAA.pdf",
+      "sourcePdfSha256": "fc11d265602131034a04454410d104625f12e069c5bd89e8449aa0997fd1175e",
+      "contentSha256": "fc11d265602131034a04454410d104625f12e069c5bd89e8449aa0997fd1175e",
+      "receiptBindingSha256": "81dad5b50d36be971b6a9af282a9492bac5ca44dfda4e183c12006bc13149cc0",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f6/61/f661914ebcd26c9809d7b38f530e4c898e02b46a2c63a21a49272f066b7f07bc.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_ab7d82289ce015c7c3e55a50",
       "referenceId": "fa_ref_3018aea4f60d6e0992fd8abe",
       "brand": "Westinghouse",
@@ -3812,6 +3882,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_cb6fcb92c442eb8289833b2c",
+      "referenceId": "fa_ref_aad7cf956d452ba0de28d0a8",
+      "brand": "Bosch",
+      "model": "KDN53VL30A",
+      "category": "fridge",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/KDN53VL30A",
+      "sourcePdfSha256": null,
+      "contentSha256": "98053062b25085ca85653a7d46c6bbe46f8330207d47339a778516f2bf20b21f",
+      "receiptBindingSha256": "c7676ee98a41e9dcf238f9aa7f2c49c0059288f2eb6fc1ff7d07485098615c9c",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_cc7e4e321a6f3e55a498846b",
       "referenceId": "fa_ref_966382e8e19ed5e3cfa366e5",
       "brand": "Bosch",
@@ -4162,6 +4246,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_ddb0b49e66f500d82f6a07a7",
+      "referenceId": "fa_ref_04631c6cfcfd31ae8fac5f0d",
+      "brand": "Bosch",
+      "model": "KGN53XI25A",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN53XI25A.pdf",
+      "sourcePdfSha256": "146f56e705a37da89560fab8bf446c8291ae953027d3eb13510bed3156cce1ef",
+      "contentSha256": "146f56e705a37da89560fab8bf446c8291ae953027d3eb13510bed3156cce1ef",
+      "receiptBindingSha256": "38ba02024c8d072ec1f7d2fc8977a0d5eda9c78939865d3cb42e4b97d333f505",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/0b/9f/0b9f26194a90a144e237c7d3af455cda66761a9a3050f9a7d605db733ac9038a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_dee1ebcf9291c1efc719e6ad",
       "referenceId": "fa_ref_c8b7dc8d1b771874a3b7c399",
       "brand": "Bosch",
@@ -4340,6 +4438,20 @@
       "contentSha256": "7c291990d5a582145f37407d7d5dc949dbb659902e7f8594ad9e3d97738848cc",
       "receiptBindingSha256": "4d81a957ce113a64ccd289aa2f108b14c7d1cc68553f434b62b2a7a25c11f3c6",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/6e/47/6e47cc645b2b84d4e7270451da2d4eed4a0e24c3cdd38a68623472d1dea14cf3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_e8bf737ce94d6a8254d3bed1",
+      "referenceId": "fa_ref_700f681364afd12f4848293c",
+      "brand": "Bosch",
+      "model": "GSN33VI3A",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/GSN33VI3A.pdf",
+      "sourcePdfSha256": "d590e678d628c286aa32e0f10ef8a552e637305d8227891814c76b4ba0c95cef",
+      "contentSha256": "d590e678d628c286aa32e0f10ef8a552e637305d8227891814c76b4ba0c95cef",
+      "receiptBindingSha256": "7605dd85065926b512224ba4bfbbeb53cc13e5691394814c34e3114d3678db4b",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/8c/80/8c806d36402aad6ca7fdd9f3eb2b1fddf20cdbb8d4adddb8349afe1e480dc89d.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4723,11 +4835,11 @@
     }
   ],
   "summary": {
-    "entries": 312,
-    "sources": 337,
-    "passed": 337,
+    "entries": 320,
+    "sources": 345,
+    "passed": 345,
     "failed": 0
   },
-  "checkedObjects": 648,
-  "semanticAuditSha256": "3802fcd7262832d986a36a0d64c261232f5e9e0718dc567c42950856cf2af6f1"
+  "checkedObjects": 664,
+  "semanticAuditSha256": "50975e57eb6127062c1d334c0a2b1b52fc260821e489a0f8e8efcc68f9f022b7"
 }

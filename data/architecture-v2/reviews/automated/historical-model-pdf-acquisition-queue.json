@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T19:22:44.955Z",
-  "semanticQueueSha256": "24b4c2aa9ab1d35ff95e4a6ca3ef434c55c61d73433b7f677aad0e0990083fc8",
-  "sourceClassificationSha256": "fb06bc7531d3254f00c0e0274acaea5f3cb61676475b3985386b6741c46291d2",
+  "generatedAt": "2026-07-16T19:38:04.406Z",
+  "semanticQueueSha256": "19350b2b503733ef35fa1e2820c18d23fff545be86513c69b96e0b3147b61f46",
+  "sourceClassificationSha256": "52223a561080c71f948cab6e65d90e2c102398d3ab45e98c107bb956467071d7",
   "records": [
     {
       "schemaVersion": 1,
@@ -9326,250 +9326,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_d2cc72d2b1a0ac12f236b2f4"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_c665b352d5ebf850d948f8c0",
-      "referenceId": "fa_ref_700f681364afd12f4848293c",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "GSN33VI3A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_a88620a26f052cf64a08ad91"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e8bf737ce94d6a8254d3bed1"
-      ],
-      "legacyRuntimeIds": [
-        "ao-88757"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b94f7433afaf395020a23878"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_9a393b1662e7c778350c5762",
-      "referenceId": "fa_ref_aad7cf956d452ba0de28d0a8",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KDN53VL30A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_7696e84004d1bacb6f6822f6"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_cb6fcb92c442eb8289833b2c"
-      ],
-      "legacyRuntimeIds": [
-        "ao-31625"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_85e4ab17ffc98adfb4f7f851"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a347f6b890e0f659097adcac",
-      "referenceId": "fa_ref_5391b51966db793fe5e0e851",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KFI96AXEAA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_2cfc682074b06abfb3a01186"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-fridge-bosch-kfi96axeaa"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_3c96e77bd392defbdefd50c3"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d6e5771a2c4b7e715d926513",
-      "referenceId": "fa_ref_d92c861c9dad5d633c612981",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KFN96AXEAA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_645ab61637f6b800000b0c90"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-fridge-bosch-kfn96axeaa"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_347e6559ebd5547d55661b22"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_6491506825e371b3f64e1485",
-      "referenceId": "fa_ref_04631c6cfcfd31ae8fac5f0d",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KGN53XI25A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_75832c5116003e47d4d0d0de"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_ddb0b49e66f500d82f6a07a7"
-      ],
-      "legacyRuntimeIds": [
-        "ao-32728"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_0ce78324404934afca8cd094"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e7c640c327871f1285621393",
-      "referenceId": "fa_ref_4ee62b645f126e68acb597e5",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KIN34P60AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_e62a133d62e9a2f948c751ce"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_729708bf7ebb32b63c60440c"
-      ],
-      "legacyRuntimeIds": [
-        "ao-49950"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_c7bc4e1d8eaf58cffb06017b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a04435071d8b8d8824ada2e5",
-      "referenceId": "fa_ref_ba1d5bd7aff12c05e0afc8ef",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KIN86AD30A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_63c4d31964c7ac0298327389"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_561ac6459dd65fd72286e57a"
-      ],
-      "legacyRuntimeIds": [
-        "ao-83777"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d689662ee4f182fdebefbe2e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_089f2acffd82a0611b3a2513",
-      "referenceId": "fa_ref_93bd174e2c3a420282ef5180",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KIR81AD30A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_13cd994a304d9da901a3fed4"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_3e783fcdaa90a51fb9300c8c"
-      ],
-      "legacyRuntimeIds": [
-        "ao-99495"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_da0621a95212d5997d7b7d42"
       ],
       "offlineReplayOutcome": null
     },
@@ -193084,19 +192840,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_13cd994a304d9da901a3fed4",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/c/4/3/a/c43a82d1c64f63d07c23ef79af500959b11a7abb_KIR81AD30A_Bosch_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KIR81AD30A.json",
-        "source:doc_0c36b981438fb6067fcacf1c"
-      ],
-      "referenceIds": [
-        "fa_ref_93bd174e2c3a420282ef5180"
-      ]
-    },
-    {
       "sourceId": "historical_source_13e7f052db4d699833e88dac",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/8/3/7/2/8372f841b03b7d6324b2ec006c09e4c25ab38f70_WD1611SMW2_LG_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -195118,19 +194861,6 @@
       ],
       "referenceIds": [
         "fa_ref_46c3f9a37a48032a0d8a4d20"
-      ]
-    },
-    {
-      "sourceId": "historical_source_2cfc682074b06abfb3a01186",
-      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFI96AXEAA.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KFI96AXEAA.json",
-        "source:doc_71f2dd10008b03ac5f696be6"
-      ],
-      "referenceIds": [
-        "fa_ref_5391b51966db793fe5e0e851"
       ]
     },
     {
@@ -199192,19 +198922,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_63c4d31964c7ac0298327389",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/5/6/4/8/564833ab78a6d83feed6532153a00a52aa4e8821_KIN86AD30A_Bosch_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KIN86AD30A.json",
-        "source:doc_ce6f1fbea028a362400803e8"
-      ],
-      "referenceIds": [
-        "fa_ref_ba1d5bd7aff12c05e0afc8ef"
-      ]
-    },
-    {
       "sourceId": "historical_source_63d67120be596c6dae053547",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwd9364a5d/QRG/AU/QRG-AU-92307.pdf",
       "sourceAuthority": "NONE",
@@ -199267,19 +198984,6 @@
       ],
       "referenceIds": [
         "fa_ref_21853f69447b6a385f415f03"
-      ]
-    },
-    {
-      "sourceId": "historical_source_645ab61637f6b800000b0c90",
-      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96AXEAA.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KFN96AXEAA.json",
-        "source:doc_096458d00f0446c375bcc2a0"
-      ],
-      "referenceIds": [
-        "fa_ref_d92c861c9dad5d633c612981"
       ]
     },
     {
@@ -200375,19 +200079,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_75832c5116003e47d4d0d0de",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/f/0/3/4f0338707be45f753378ea6c41e2645a017114a0_Bosch_KGN53XI25A_452L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KGN53XI25A.json",
-        "source:doc_878c40e11445ea24cacba85f"
-      ],
-      "referenceIds": [
-        "fa_ref_04631c6cfcfd31ae8fac5f0d"
-      ]
-    },
-    {
       "sourceId": "historical_source_75a0229a84dcc602545e9c36",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/d/6/b/f/d6bf58469b9fc241b86aa9ae770c9a914119441c_FAB38RCRAU_Smeg_Datasheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -200489,19 +200180,6 @@
       ],
       "referenceIds": [
         "fa_ref_b3ca8a6badff86775035d5db"
-      ]
-    },
-    {
-      "sourceId": "historical_source_7696e84004d1bacb6f6822f6",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/c/8/e/d/c8edb2d73cca6a522713cded384334605481704f_Bosch_KDN53VL30A_454L_Fridge_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KDN53VL30A.json",
-        "source:doc_90fbec54b62473e3f8bb1fc7"
-      ],
-      "referenceIds": [
-        "fa_ref_aad7cf956d452ba0de28d0a8"
       ]
     },
     {
@@ -204147,19 +203825,6 @@
       ],
       "referenceIds": [
         "fa_ref_4a5de9a260fabfefab5e8a09"
-      ]
-    },
-    {
-      "sourceId": "historical_source_a88620a26f052cf64a08ad91",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/5/5/7/2/5572fe622fa32b0c59250f3a5b4d57af95212146_GSN33VI3A_Bosch_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/GSN33VI3A.json",
-        "source:doc_cc4dfe3acfd7b98037e5758a"
-      ],
-      "referenceIds": [
-        "fa_ref_700f681364afd12f4848293c"
       ]
     },
     {
@@ -208527,19 +208192,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_e62a133d62e9a2f948c751ce",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/f/f/2/7ff26c695849728f7159b485f8ade6a7395c6f60_Bosch_KIN34P60AU_287L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KIN34P60AU.json",
-        "source:doc_e157d74054346ccf2154f5ed"
-      ],
-      "referenceIds": [
-        "fa_ref_4ee62b645f126e68acb597e5"
-      ]
-    },
-    {
       "sourceId": "historical_source_e64a0271a56285821009f06f",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/7/a/f/6/7af608b5f20882c91712f521fd3049bdfb6a8451_Beko_BBM335PX_335L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -210177,46 +209829,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 331,
+    "COMPLETE_RECEIPT": 339,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7764,
-    "uniqueReferences": 7764,
-    "candidateSources": 1413,
-    "candidateEdges": 1448,
+    "queuedModels": 7756,
+    "uniqueReferences": 7756,
+    "candidateSources": 1405,
+    "candidateEdges": 1440,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1126,
+      "CURRENT_RETAIL": 1118,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1269,
       "dryer": 805,
-      "fridge": 4228,
+      "fridge": 4220,
       "washing_machine": 1462
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 145,
+      "IDENTITY_RESEARCH": 143,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1120
+      "REFERENCE_REDISCOVERY": 1114
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 145,
+      "IDENTITY_CLOSURE": 143,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1120
+      "OFFICIAL_REDISCOVERY": 1114
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5099,
+      "DISCOVERY_READY": 5091,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 331,
+      "COMPLETE_RECEIPT": 339,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

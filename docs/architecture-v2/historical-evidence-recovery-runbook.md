@@ -1127,3 +1127,43 @@ contains 7,669 targets and the current-retail P0 missing-dimension lane contains
 900 targets. Public receipt-bound dimensions are 262 and receipt-bound
 `VERIFIED_FIT` remains zero. All three target IDs are absent from the next-epoch
 queue and batch, and no Bosch dryer remains in the current-retail P0 lane.
+
+## 30. Bosch fridge P0 lane completion
+
+Run `historical-bosch-fridges-20260716-k` selected the eight zero-attempt Bosch
+fridges remaining in the current-retail P0 lane:
+
+| Model | Accepted source | Width | Height | Depth |
+| --- | --- | ---: | ---: | ---: |
+| `GSN33VI3A` | exact-model PDF | 600 | 1760 | 650 |
+| `KDN53VL30A` | exact product page | 700 | 1710 | 740 |
+| `KFI96AXEAA` | exact-model PDF | 905 | 1830 | 731 |
+| `KFN96AXEAA` | exact-model PDF | 905 | 1830 | 731 |
+| `KGN53XI25A` | exact-model PDF | 700 | 1700 | 770 |
+| `KIN34P60AU` | exact-model PDF | 556 | 1772 | 545 |
+| `KIN86AD30A` | exact-model PDF | 558 | 1772 | 545 |
+| `KIR81AD30A` | exact-model PDF | 558 | 1772 | 545 |
+
+The seven PDF receipts use exact-model Bosch Australia specification sheets
+processed through MinerU `content_list_v2`. The `KDN53VL30A` receipt instead
+uses the exact Bosch Australia product page with canonical URL, title,
+structured model and explicit H/W/D evidence. Page, fragment, source PDF and
+derived JSON hashes remain bound to every PDF claim. Similar series dimensions
+are not shared: the 556 mm width of `KIN34P60AU` remains distinct from the 558
+mm widths of `KIN86AD30A` and `KIR81AD30A`.
+
+All eight closed envelopes are fixed scalars and may populate historical
+replacement-reference dimensions. Door-open geometry, hinge-side space,
+ventilation, installation clearance and rear services remain unknown, so the
+products are dimensions-only with `verifiedFitEligible=false` and
+`INSUFFICIENT_DATA`.
+
+The full online audit checked eight targets and 664 cumulative objects with zero
+repairs and zero violations. Promotion increased the cumulative bundle to 320
+targets and 345 source receipts; all 345 receipts replay. After the release
+transaction, `COMPLETE_RECEIPT` is 339, `ALL_AXIS_RANGE` is 84,
+`ALL_AXIS_SCALAR` is 392, historical `AUTO_FILL` is 265, the executable queue
+contains 7,661 targets and the current-retail P0 missing-dimension lane contains
+892 targets. Public receipt-bound dimensions are 270 and receipt-bound
+`VERIFIED_FIT` remains zero. All eight target IDs are absent from the next-epoch
+queue and batch, and no Bosch fridge remains in the current-retail P0 lane.

@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "d30f76d7a36aaea6a1ff1267cbf2b50ebb831b340d54c4ee9bc1a1dcbdac7f9a"
+    "historical-recovery:historical-recovery-cumulative-v1": "e2164e6d5d419dda393a1147aeab8a85eb4b9acab8ad56278a4f065ba046bc9e"
   },
   "records": [
     {
@@ -97986,9 +97986,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 1760,
+        "depth": 650
+      },
       "sources": [
         {
           "sourceId": "energy-rating:fridge",
@@ -98001,6 +98005,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_e8bf737ce94d6a8254d3bed1",
+          "snapshotSha256": "d590e678d628c286aa32e0f10ef8a552e637305d8227891814c76b4ba0c95cef",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -98008,9 +98019,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_e8bf737ce94d6a8254d3bed1",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/GSN33VI3A.pdf",
+          "contentSha256": "d590e678d628c286aa32e0f10ef8a552e637305d8227891814c76b4ba0c95cef",
+          "receiptBindingSha256": "7605dd85065926b512224ba4bfbbeb53cc13e5691394814c34e3114d3678db4b",
+          "verifiedAt": "2026-07-16T19:33:43.924Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "6ec75381d2f20c15c106030d339ad7fb4e5862e845a3a44e257c1c22e0f3dabf"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "6ec75381d2f20c15c106030d339ad7fb4e5862e845a3a44e257c1c22e0f3dabf"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "6ec75381d2f20c15c106030d339ad7fb4e5862e845a3a44e257c1c22e0f3dabf"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d5/90/d590e678d628c286aa32e0f10ef8a552e637305d8227891814c76b4ba0c95cef.pdf"
+        }
       ]
     },
     {
@@ -98183,13 +98220,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 700,
+        "height": 1710,
+        "depth": 740
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_cb6fcb92c442eb8289833b2c",
+          "snapshotSha256": "98053062b25085ca85653a7d46c6bbe46f8330207d47339a778516f2bf20b21f",
           "sourceLines": []
         }
       ],
@@ -98199,8 +98245,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_cb6fcb92c442eb8289833b2c",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/KDN53VL30A",
+          "contentSha256": "98053062b25085ca85653a7d46c6bbe46f8330207d47339a778516f2bf20b21f",
+          "receiptBindingSha256": "c7676ee98a41e9dcf238f9aa7f2c49c0059288f2eb6fc1ff7d07485098615c9c",
+          "verifiedAt": "2026-07-16T19:35:04.499Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "98053062b25085ca85653a7d46c6bbe46f8330207d47339a778516f2bf20b21f"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "98053062b25085ca85653a7d46c6bbe46f8330207d47339a778516f2bf20b21f"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "98053062b25085ca85653a7d46c6bbe46f8330207d47339a778516f2bf20b21f"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/98/05/98053062b25085ca85653a7d46c6bbe46f8330207d47339a778516f2bf20b21f.html"
+        }
       ]
     },
     {
@@ -98305,9 +98374,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 905,
+        "height": 1830,
+        "depth": 731
+      },
       "sources": [
         {
           "sourceId": "energy-rating:fridge",
@@ -98321,6 +98394,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_1a253f5b1f839e30a19c7c3b",
+          "snapshotSha256": "16af6d13ea775b7ad4b35747584b46922ee16385ddea3d4eda1847d55655caa0",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -98328,9 +98408,35 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "MIXED_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_1a253f5b1f839e30a19c7c3b",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFI96AXEAA.pdf",
+          "contentSha256": "16af6d13ea775b7ad4b35747584b46922ee16385ddea3d4eda1847d55655caa0",
+          "receiptBindingSha256": "cecb449f6edd5af36696a4f16770ce98d95c5b9a928e2672c696b495a94d9a47",
+          "verifiedAt": "2026-07-16T19:28:36.463Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "f7dbd590045adba7beeb0b737d5a9af99ede8b63051949f895e412f24340b18e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "f7dbd590045adba7beeb0b737d5a9af99ede8b63051949f895e412f24340b18e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "f7dbd590045adba7beeb0b737d5a9af99ede8b63051949f895e412f24340b18e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/16/af/16af6d13ea775b7ad4b35747584b46922ee16385ddea3d4eda1847d55655caa0.pdf"
+        }
       ]
     },
     {
@@ -98422,9 +98528,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 905,
+        "height": 1830,
+        "depth": 731
+      },
       "sources": [
         {
           "sourceId": "energy-rating:fridge",
@@ -98437,6 +98547,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_aa37ec26435197fc5b6d4b94",
+          "snapshotSha256": "fc11d265602131034a04454410d104625f12e069c5bd89e8449aa0997fd1175e",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -98444,9 +98561,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_aa37ec26435197fc5b6d4b94",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96AXEAA.pdf",
+          "contentSha256": "fc11d265602131034a04454410d104625f12e069c5bd89e8449aa0997fd1175e",
+          "receiptBindingSha256": "81dad5b50d36be971b6a9af282a9492bac5ca44dfda4e183c12006bc13149cc0",
+          "verifiedAt": "2026-07-16T19:31:15.059Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "ac2f6a8ecb2213761305564d17e8c287faf16d9be2b670570e4e452dfd910cd0"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "ac2f6a8ecb2213761305564d17e8c287faf16d9be2b670570e4e452dfd910cd0"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "ac2f6a8ecb2213761305564d17e8c287faf16d9be2b670570e4e452dfd910cd0"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/fc/11/fc11d265602131034a04454410d104625f12e069c5bd89e8449aa0997fd1175e.pdf"
+        }
       ]
     },
     {
@@ -98700,14 +98843,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 700,
+        "height": 1700,
+        "depth": 770
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ddb0b49e66f500d82f6a07a7",
+          "snapshotSha256": "146f56e705a37da89560fab8bf446c8291ae953027d3eb13510bed3156cce1ef",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -98716,8 +98870,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ddb0b49e66f500d82f6a07a7",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN53XI25A.pdf",
+          "contentSha256": "146f56e705a37da89560fab8bf446c8291ae953027d3eb13510bed3156cce1ef",
+          "receiptBindingSha256": "38ba02024c8d072ec1f7d2fc8977a0d5eda9c78939865d3cb42e4b97d333f505",
+          "verifiedAt": "2026-07-16T19:27:34.698Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3911c8d16da1fbc8d4c344c41b58f8366bf3eb7e8c210f9fa80bf5e25eef3192"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3911c8d16da1fbc8d4c344c41b58f8366bf3eb7e8c210f9fa80bf5e25eef3192"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3911c8d16da1fbc8d4c344c41b58f8366bf3eb7e8c210f9fa80bf5e25eef3192"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/14/6f/146f56e705a37da89560fab8bf446c8291ae953027d3eb13510bed3156cce1ef.pdf"
+        }
       ]
     },
     {
@@ -98735,14 +98915,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 556,
+        "height": 1772,
+        "depth": 545
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_729708bf7ebb32b63c60440c",
+          "snapshotSha256": "44d746bdb59201c465f13ad9dd73b94c1a82e0ab9923daffedb2d548020bf69f",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -98751,8 +98942,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_729708bf7ebb32b63c60440c",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KIN34P60AU.pdf",
+          "contentSha256": "44d746bdb59201c465f13ad9dd73b94c1a82e0ab9923daffedb2d548020bf69f",
+          "receiptBindingSha256": "aaade14cc62244e7b31cae07747d4aca22977fff7e582c72d2f304e709018952",
+          "verifiedAt": "2026-07-16T19:30:06.268Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "aa949ae4c60763fdd5094520a1ddceb659a40be3c0d33e11b802138d745e0333"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "aa949ae4c60763fdd5094520a1ddceb659a40be3c0d33e11b802138d745e0333"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "aa949ae4c60763fdd5094520a1ddceb659a40be3c0d33e11b802138d745e0333"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/44/d7/44d746bdb59201c465f13ad9dd73b94c1a82e0ab9923daffedb2d548020bf69f.pdf"
+        }
       ]
     },
     {
@@ -98774,9 +98991,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 558,
+        "height": 1772,
+        "depth": 545
+      },
       "sources": [
         {
           "sourceId": "energy-rating:fridge",
@@ -98789,6 +99010,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_561ac6459dd65fd72286e57a",
+          "snapshotSha256": "39eabd0522004b1fe10e62611483400d24a51d341d5ad4cf2a11b6aeb6b9c39a",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -98796,9 +99024,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_561ac6459dd65fd72286e57a",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KIN86AD30A.pdf",
+          "contentSha256": "39eabd0522004b1fe10e62611483400d24a51d341d5ad4cf2a11b6aeb6b9c39a",
+          "receiptBindingSha256": "b1d9725859852030a68721dc750de0cea41799e24bb7c0d597b6a170a963c238",
+          "verifiedAt": "2026-07-16T19:25:47.192Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "2b0dc2b544e36827e2a878fe6aeb2bc73172754e0aa6ab54e1d24bf0478a1ee7"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "2b0dc2b544e36827e2a878fe6aeb2bc73172754e0aa6ab54e1d24bf0478a1ee7"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "2b0dc2b544e36827e2a878fe6aeb2bc73172754e0aa6ab54e1d24bf0478a1ee7"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/39/ea/39eabd0522004b1fe10e62611483400d24a51d341d5ad4cf2a11b6aeb6b9c39a.pdf"
+        }
       ]
     },
     {
@@ -98820,9 +99074,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 558,
+        "height": 1772,
+        "depth": 545
+      },
       "sources": [
         {
           "sourceId": "energy-rating:fridge",
@@ -98835,6 +99093,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3e783fcdaa90a51fb9300c8c",
+          "snapshotSha256": "3ba61d6ed8e069cf81d1f8bbaa4370851fac60d4ab80c3fbb568437c3ae0a87c",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -98842,9 +99107,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3e783fcdaa90a51fb9300c8c",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KIR81AD30A.pdf",
+          "contentSha256": "3ba61d6ed8e069cf81d1f8bbaa4370851fac60d4ab80c3fbb568437c3ae0a87c",
+          "receiptBindingSha256": "1cbe3ac012953f7b94c9d6429f25730701395d28c11474770ff943414e2e2d52",
+          "verifiedAt": "2026-07-16T19:36:47.322Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0516b99cc45280a45810f8e762a9d20a227e74186a470ff534a5da45c0bc0c27"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0516b99cc45280a45810f8e762a9d20a227e74186a470ff534a5da45c0bc0c27"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0516b99cc45280a45810f8e762a9d20a227e74186a470ff534a5da45c0bc0c27"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/3b/a6/3ba61d6ed8e069cf81d1f8bbaa4370851fac60d4ab80c3fbb568437c3ae0a87c.pdf"
+        }
       ]
     },
     {
@@ -323087,16 +323378,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2898,
-      "MODEL_RECEIPT": 246,
+      "IDENTITY_ONLY": 2890,
+      "MODEL_RECEIPT": 254,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2898,
-      "AUTO_FILL": 257,
+      "MEASURE_REQUIRED": 2890,
+      "AUTO_FILL": 265,
       "QUARANTINED": 88
     }
   }

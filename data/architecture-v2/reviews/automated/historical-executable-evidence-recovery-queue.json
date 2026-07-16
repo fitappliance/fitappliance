@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T19:22:44.955Z",
-  "sourceAcquisitionQueueSha256": "24b4c2aa9ab1d35ff95e4a6ca3ef434c55c61d73433b7f677aad0e0990083fc8",
+  "generatedAt": "2026-07-16T19:38:04.406Z",
+  "sourceAcquisitionQueueSha256": "19350b2b503733ef35fa1e2820c18d23fff545be86513c69b96e0b3147b61f46",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7764,
+    "acquisitionRecords": 7756,
     "fetchJobs": 0,
-    "targets": 7669,
-    "resolverOnlyTargets": 7669,
+    "targets": 7661,
+    "resolverOnlyTargets": 7661,
     "candidateEdges": 0,
-    "uniqueReferences": 7669,
+    "uniqueReferences": 7661,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 12,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1095,
+      "CURRENT_RETAIL": 1087,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 900,
+      "P0_CURRENT_MISSING_DIMENSIONS": 892,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -8368,282 +8368,6 @@
             "width": 470,
             "height": 850,
             "depth": 460
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_e8bf737ce94d6a8254d3bed1",
-      "referenceId": "fa_ref_700f681364afd12f4848293c",
-      "legacyRuntimeId": "ao-88757",
-      "canonicalProductId": "fa_prod_b94f7433afaf395020a23878",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "GSN33VI3A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_cc4dfe3acfd7b98037e5758a",
-        "legacy:data/pdf-evidence-raw/GSN33VI3A.json",
-        "source:doc_cc4dfe3acfd7b98037e5758a"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_cc4dfe3acfd7b98037e5758a",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 1760,
-            "depth": 650
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_cb6fcb92c442eb8289833b2c",
-      "referenceId": "fa_ref_aad7cf956d452ba0de28d0a8",
-      "legacyRuntimeId": "ao-31625",
-      "canonicalProductId": "fa_prod_85e4ab17ffc98adfb4f7f851",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KDN53VL30A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_90fbec54b62473e3f8bb1fc7",
-        "legacy:data/pdf-evidence-raw/KDN53VL30A.json",
-        "source:doc_90fbec54b62473e3f8bb1fc7"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_90fbec54b62473e3f8bb1fc7",
-          "dimensionsMm": {
-            "width": 700,
-            "height": 1700,
-            "depth": 740
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_1a253f5b1f839e30a19c7c3b",
-      "referenceId": "fa_ref_5391b51966db793fe5e0e851",
-      "legacyRuntimeId": "discovery-fridge-bosch-kfi96axeaa",
-      "canonicalProductId": "fa_prod_3c96e77bd392defbdefd50c3",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KFI96AXEAA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/KFI96AXEAA.json",
-        "source:doc_71f2dd10008b03ac5f696be6"
-      ],
-      "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_aa37ec26435197fc5b6d4b94",
-      "referenceId": "fa_ref_d92c861c9dad5d633c612981",
-      "legacyRuntimeId": "discovery-fridge-bosch-kfn96axeaa",
-      "canonicalProductId": "fa_prod_347e6559ebd5547d55661b22",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KFN96AXEAA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/KFN96AXEAA.json",
-        "source:doc_096458d00f0446c375bcc2a0"
-      ],
-      "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_ddb0b49e66f500d82f6a07a7",
-      "referenceId": "fa_ref_04631c6cfcfd31ae8fac5f0d",
-      "legacyRuntimeId": "ao-32728",
-      "canonicalProductId": "fa_prod_0ce78324404934afca8cd094",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KGN53XI25A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_878c40e11445ea24cacba85f",
-        "legacy:data/pdf-evidence-raw/KGN53XI25A.json",
-        "source:doc_878c40e11445ea24cacba85f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_878c40e11445ea24cacba85f",
-          "dimensionsMm": {
-            "width": 700,
-            "height": 1700,
-            "depth": 770
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_729708bf7ebb32b63c60440c",
-      "referenceId": "fa_ref_4ee62b645f126e68acb597e5",
-      "legacyRuntimeId": "ao-49950",
-      "canonicalProductId": "fa_prod_c7bc4e1d8eaf58cffb06017b",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KIN34P60AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e157d74054346ccf2154f5ed",
-        "legacy:data/pdf-evidence-raw/KIN34P60AU.json",
-        "source:doc_e157d74054346ccf2154f5ed"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e157d74054346ccf2154f5ed",
-          "dimensionsMm": {
-            "width": 556,
-            "height": 1772,
-            "depth": 545
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_561ac6459dd65fd72286e57a",
-      "referenceId": "fa_ref_ba1d5bd7aff12c05e0afc8ef",
-      "legacyRuntimeId": "ao-83777",
-      "canonicalProductId": "fa_prod_d689662ee4f182fdebefbe2e",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KIN86AD30A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_ce6f1fbea028a362400803e8",
-        "legacy:data/pdf-evidence-raw/KIN86AD30A.json",
-        "source:doc_ce6f1fbea028a362400803e8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_ce6f1fbea028a362400803e8",
-          "dimensionsMm": {
-            "width": 558,
-            "height": 1772,
-            "depth": 545
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_3e783fcdaa90a51fb9300c8c",
-      "referenceId": "fa_ref_93bd174e2c3a420282ef5180",
-      "legacyRuntimeId": "ao-99495",
-      "canonicalProductId": "fa_prod_da0621a95212d5997d7b7d42",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KIR81AD30A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_0c36b981438fb6067fcacf1c",
-        "legacy:data/pdf-evidence-raw/KIR81AD30A.json",
-        "source:doc_0c36b981438fb6067fcacf1c"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_0c36b981438fb6067fcacf1c",
-          "dimensionsMm": {
-            "width": 558,
-            "height": 1772,
-            "depth": 545
           }
         }
       ],

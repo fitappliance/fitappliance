@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T19:22:44.955Z",
+  "generatedAt": "2026-07-16T19:38:04.406Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "fb06bc7531d3254f00c0e0274acaea5f3cb61676475b3985386b6741c46291d2",
+  "semanticClassificationSha256": "52223a561080c71f948cab6e65d90e2c102398d3ab45e98c107bb956467071d7",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4314,
+    "documentLinks": 4322,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,34 +21,34 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 331,
+      "COMPLETE_RECEIPT": 339,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 145,
+      "IDENTITY_RESEARCH": 143,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1120
+      "REFERENCE_REDISCOVERY": 1114
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 331,
-      "REDISCOVER_OFFICIAL_SOURCE": 1120,
+      "NO_ACTION": 339,
+      "REDISCOVER_OFFICIAL_SOURCE": 1114,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 145
+      "RUN_IDENTITY_CLOSURE": 143
     },
     "bySourceAuthority": {
-      "MIXED": 185,
-      "NONE": 6621,
-      "OFFICIAL": 152,
-      "REFERENCE": 1137
+      "MIXED": 191,
+      "NONE": 6619,
+      "OFFICIAL": 154,
+      "REFERENCE": 1131
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 182,
-      "EXACT_MODEL": 1588,
+      "AMBIGUOUS": 180,
+      "EXACT_MODEL": 1590,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 84,
-      "ALL_AXIS_SCALAR": 384,
-      "NOT_PARSED": 7533,
+      "ALL_AXIS_SCALAR": 392,
+      "NOT_PARSED": 7525,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 331,
-      "LEGACY_UNBOUND": 1439,
+      "CURRENT_VALID": 339,
+      "LEGACY_UNBOUND": 1431,
       "NONE": 6325
     }
   },
@@ -94,13 +94,13 @@
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2292,
+      "documentLinks": 2300,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 108,
+        "COMPLETE_RECEIPT": 116,
         "CONFLICT_QUARANTINE": 48,
-        "IDENTITY_RESEARCH": 86,
+        "IDENTITY_RESEARCH": 84,
         "OFFICIAL_DISCOVERY": 3405,
-        "REFERENCE_REDISCOVERY": 689
+        "REFERENCE_REDISCOVERY": 683
       }
     },
     {
@@ -92774,14 +92774,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -92804,6 +92805,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:d590e678d628c286aa32e0f10ef8a552e637305d8227891814c76b4ba0c95cef",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/GSN33VI3A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/8c/80/8c806d36402aad6ca7fdd9f3eb2b1fddf20cdbb8d4adddb8349afe1e480dc89d.json",
+            "evidence/web/sha256/d5/90/d590e678d628c286aa32e0f10ef8a552e637305d8227891814c76b4ba0c95cef.pdf",
+            "receipt:7605dd85065926b512224ba4bfbbeb53cc13e5691394814c34e3114d3678db4b"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "d590e678d628c286aa32e0f10ef8a552e637305d8227891814c76b4ba0c95cef"
+        },
+        {
           "documentId": "source:doc_cc4dfe3acfd7b98037e5758a",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/5/5/7/2/5572fe622fa32b0c59250f3a5b4d57af95212146_GSN33VI3A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -92819,8 +92839,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -93029,14 +93049,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -93059,6 +93080,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:98053062b25085ca85653a7d46c6bbe46f8330207d47339a778516f2bf20b21f",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/KDN53VL30A",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/98/05/98053062b25085ca85653a7d46c6bbe46f8330207d47339a778516f2bf20b21f.html",
+            "receipt:c7676ee98a41e9dcf238f9aa7f2c49c0059288f2eb6fc1ff7d07485098615c9c"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "98053062b25085ca85653a7d46c6bbe46f8330207d47339a778516f2bf20b21f"
+        },
+        {
           "documentId": "source:doc_90fbec54b62473e3f8bb1fc7",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/c/8/e/d/c8edb2d73cca6a522713cded384334605481704f_Bosch_KDN53VL30A_454L_Fridge_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -93074,8 +93113,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -93175,14 +93214,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -93205,6 +93245,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:16af6d13ea775b7ad4b35747584b46922ee16385ddea3d4eda1847d55655caa0",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFI96AXEAA.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/21/ed/21ed9b7586b765052c188adb28c7377b8ac9f0b164e296c4c6e28cd01db4f32f.json",
+            "evidence/web/sha256/16/af/16af6d13ea775b7ad4b35747584b46922ee16385ddea3d4eda1847d55655caa0.pdf",
+            "receipt:cecb449f6edd5af36696a4f16770ce98d95c5b9a928e2672c696b495a94d9a47"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "16af6d13ea775b7ad4b35747584b46922ee16385ddea3d4eda1847d55655caa0"
+        },
+        {
           "documentId": "source:doc_71f2dd10008b03ac5f696be6",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFI96AXEAA.pdf",
           "evidenceObjectIds": [
@@ -93220,8 +93279,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -93239,14 +93298,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -93269,6 +93329,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:fc11d265602131034a04454410d104625f12e069c5bd89e8449aa0997fd1175e",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96AXEAA.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/f6/61/f661914ebcd26c9809d7b38f530e4c898e02b46a2c63a21a49272f066b7f07bc.json",
+            "evidence/web/sha256/fc/11/fc11d265602131034a04454410d104625f12e069c5bd89e8449aa0997fd1175e.pdf",
+            "receipt:81dad5b50d36be971b6a9af282a9492bac5ca44dfda4e183c12006bc13149cc0"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "fc11d265602131034a04454410d104625f12e069c5bd89e8449aa0997fd1175e"
+        },
+        {
           "documentId": "source:doc_096458d00f0446c375bcc2a0",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96AXEAA.pdf",
           "evidenceObjectIds": [
@@ -93284,8 +93363,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -93525,14 +93604,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -93555,6 +93635,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:146f56e705a37da89560fab8bf446c8291ae953027d3eb13510bed3156cce1ef",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN53XI25A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/0b/9f/0b9f26194a90a144e237c7d3af455cda66761a9a3050f9a7d605db733ac9038a.json",
+            "evidence/web/sha256/14/6f/146f56e705a37da89560fab8bf446c8291ae953027d3eb13510bed3156cce1ef.pdf",
+            "receipt:38ba02024c8d072ec1f7d2fc8977a0d5eda9c78939865d3cb42e4b97d333f505"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "146f56e705a37da89560fab8bf446c8291ae953027d3eb13510bed3156cce1ef"
+        },
+        {
           "documentId": "source:doc_878c40e11445ea24cacba85f",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/4/f/0/3/4f0338707be45f753378ea6c41e2645a017114a0_Bosch_KGN53XI25A_452L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -93570,8 +93669,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -93588,14 +93687,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -93617,6 +93717,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:44d746bdb59201c465f13ad9dd73b94c1a82e0ab9923daffedb2d548020bf69f",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KIN34P60AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/3d/0f/3d0fbbcde8f61f376a2eeca85c18b3f359e90e5e71e0c6927372395c4e1b0454.json",
+            "evidence/web/sha256/44/d7/44d746bdb59201c465f13ad9dd73b94c1a82e0ab9923daffedb2d548020bf69f.pdf",
+            "receipt:aaade14cc62244e7b31cae07747d4aca22977fff7e582c72d2f304e709018952"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "44d746bdb59201c465f13ad9dd73b94c1a82e0ab9923daffedb2d548020bf69f"
+        },
+        {
           "documentId": "source:doc_e157d74054346ccf2154f5ed",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/7/f/f/2/7ff26c695849728f7159b485f8ade6a7395c6f60_Bosch_KIN34P60AU_287L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -93632,8 +93751,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -93650,14 +93769,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -93679,6 +93799,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:39eabd0522004b1fe10e62611483400d24a51d341d5ad4cf2a11b6aeb6b9c39a",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KIN86AD30A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/62/60/6260a28b105b198d04102533ba54c8d16571bfd3d1cf950284a6d561d80364da.json",
+            "evidence/web/sha256/39/ea/39eabd0522004b1fe10e62611483400d24a51d341d5ad4cf2a11b6aeb6b9c39a.pdf",
+            "receipt:b1d9725859852030a68721dc750de0cea41799e24bb7c0d597b6a170a963c238"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "39eabd0522004b1fe10e62611483400d24a51d341d5ad4cf2a11b6aeb6b9c39a"
+        },
+        {
           "documentId": "source:doc_ce6f1fbea028a362400803e8",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/5/6/4/8/564833ab78a6d83feed6532153a00a52aa4e8821_KIN86AD30A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -93694,8 +93833,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -93713,14 +93852,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -93742,6 +93882,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:3ba61d6ed8e069cf81d1f8bbaa4370851fac60d4ab80c3fbb568437c3ae0a87c",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KIR81AD30A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/ca/5b/ca5bf94f09cd3710ac4f8c777528ca2acb3d28afdd1d8b9f4244e9ddb818660c.json",
+            "evidence/web/sha256/3b/a6/3ba61d6ed8e069cf81d1f8bbaa4370851fac60d4ab80c3fbb568437c3ae0a87c.pdf",
+            "receipt:1cbe3ac012953f7b94c9d6429f25730701395d28c11474770ff943414e2e2d52"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "3ba61d6ed8e069cf81d1f8bbaa4370851fac60d4ab80c3fbb568437c3ae0a87c"
+        },
+        {
           "documentId": "source:doc_0c36b981438fb6067fcacf1c",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/c/4/3/a/c43a82d1c64f63d07c23ef79af500959b11a7abb_KIR81AD30A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -93757,8 +93916,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
