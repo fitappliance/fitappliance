@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T02:37:51.587Z",
+  "generatedAt": "2026-07-16T03:09:56.817Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -2304,6 +2304,24 @@
       "resolvedAt": "2026-07-15T22:45:40.228Z"
     },
     {
+      "resolutionId": "historical_resolution_28fa5f58339f45b586a32b00",
+      "attemptId": "historical_attempt_fb1ab18135a939069bc58899",
+      "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
+      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
+      "contentSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+      "status": "accepted",
+      "policySha256": "c1b1303dcc5ab9eeb411b26309a03cba0901fb075087a7572d012465b547b972",
+      "candidateInventorySha256": "b73ef2c5bba201953ef6c1c7325136e111c6fbaae7b41f7dd50921f6c650943f",
+      "semanticOutcomeSha256": "bdb6ddbceab69a8679004bbfab122633b9f7d1e392d76101158c81d02e6620fc",
+      "batchId": "historical-recovery-9856771217a1df07bfdddb35-slice-697847ec9d5a",
+      "batchSha256": "d547031cdc2b7908272be8051a7a4a6136faea7e375f8640efb5f6f65ba538e8",
+      "runId": "hisense-hwf3s8514x-semantic-depth-20260716",
+      "resultsSha256": "2fc232de6e3030ce699ce8ecf3768284f9bfceed827f8287c4028705cd7ecb39",
+      "auditSha256": "730ac21a642ae8fa5a9c13366c5f675ed8504c087c2674c6f1f1180084bbeb47",
+      "resolvedAt": "2026-07-16T03:04:02.208Z"
+    },
+    {
       "resolutionId": "historical_resolution_2e39742c48b9347e375f5ac2",
       "attemptId": "historical_attempt_e398e0435317f51040626774",
       "targetId": "recovery_target_990b53da26472cb0b6d689dd",
@@ -2591,6 +2609,23 @@
       "acceptedAt": "2026-07-16T01:01:19.499Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_0914b386c0f5da2b6a3dd7bc",
+      "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
+      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
+      "contentSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+      "status": "accepted",
+      "policySha256": "c1b1303dcc5ab9eeb411b26309a03cba0901fb075087a7572d012465b547b972",
+      "candidateInventorySha256": "b73ef2c5bba201953ef6c1c7325136e111c6fbaae7b41f7dd50921f6c650943f",
+      "semanticOutcomeSha256": "bdb6ddbceab69a8679004bbfab122633b9f7d1e392d76101158c81d02e6620fc",
+      "batchId": "historical-recovery-9856771217a1df07bfdddb35-slice-697847ec9d5a",
+      "batchSha256": "d547031cdc2b7908272be8051a7a4a6136faea7e375f8640efb5f6f65ba538e8",
+      "runId": "hisense-hwf3s8514x-semantic-depth-20260716",
+      "resultsSha256": "2fc232de6e3030ce699ce8ecf3768284f9bfceed827f8287c4028705cd7ecb39",
+      "auditSha256": "730ac21a642ae8fa5a9c13366c5f675ed8504c087c2674c6f1f1180084bbeb47",
+      "acceptedAt": "2026-07-16T03:04:02.208Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_093a527844e2b31bae8faae0",
       "targetId": "recovery_target_3f4aff3df1d907a481afbc36",
       "referenceId": "fa_ref_cd8df7c7abb3301cea66c9d7",
@@ -2606,6 +2641,23 @@
       "resultsSha256": "75b1213fb4de5ad027017596a88eb8b671dfb27cdb15aca2b1ed3032d7e81b3d",
       "auditSha256": "dfd1175015c0f831d36a2c5beda465ef5da6943cf20d7842d6a093b4408ffef0",
       "acceptedAt": "2026-07-16T01:01:19.499Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_116118cb0bb1a3f4306bb2a4",
+      "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
+      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF3S8514X-.pdf?context=bWFzdGVyfE1hbnVhbHwxNTY5ODV8YXBwbGljYXRpb24vcGRmfGFEaGxMMmcxTUM4NE9EazRNek01T0RNeE9ETTRMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSak5UT0RVeE5GZ3BMbkJrWmd8MmJkMjg1ZTJhODZlZTQwNDUyYTM3NGVlMjNiZGUxN2NlODAxOWEzODhlNGE1NWQ4ZDFhNzE3MjJjNWJmNzg3MA",
+      "contentSha256": "cb84db8a4d42398a25be0cadd50dbe7b590083ce6facbf349438fa15448b727e",
+      "status": "accepted",
+      "policySha256": "c1b1303dcc5ab9eeb411b26309a03cba0901fb075087a7572d012465b547b972",
+      "candidateInventorySha256": "b73ef2c5bba201953ef6c1c7325136e111c6fbaae7b41f7dd50921f6c650943f",
+      "semanticOutcomeSha256": "bdb6ddbceab69a8679004bbfab122633b9f7d1e392d76101158c81d02e6620fc",
+      "batchId": "historical-recovery-9856771217a1df07bfdddb35-slice-697847ec9d5a",
+      "batchSha256": "d547031cdc2b7908272be8051a7a4a6136faea7e375f8640efb5f6f65ba538e8",
+      "runId": "hisense-hwf3s8514x-semantic-depth-20260716",
+      "resultsSha256": "2fc232de6e3030ce699ce8ecf3768284f9bfceed827f8287c4028705cd7ecb39",
+      "auditSha256": "730ac21a642ae8fa5a9c13366c5f675ed8504c087c2674c6f1f1180084bbeb47",
+      "acceptedAt": "2026-07-16T03:04:02.208Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_118aeb22a18551df4f6eb655",
@@ -3271,6 +3323,23 @@
       "acceptedAt": "2026-07-16T00:46:29.094Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_a3668e2a4e5285450e5e8415",
+      "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
+      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
+      "sourceUrl": "https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer",
+      "contentSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894",
+      "status": "accepted",
+      "policySha256": "c1b1303dcc5ab9eeb411b26309a03cba0901fb075087a7572d012465b547b972",
+      "candidateInventorySha256": "b73ef2c5bba201953ef6c1c7325136e111c6fbaae7b41f7dd50921f6c650943f",
+      "semanticOutcomeSha256": "bdb6ddbceab69a8679004bbfab122633b9f7d1e392d76101158c81d02e6620fc",
+      "batchId": "historical-recovery-9856771217a1df07bfdddb35-slice-697847ec9d5a",
+      "batchSha256": "d547031cdc2b7908272be8051a7a4a6136faea7e375f8640efb5f6f65ba538e8",
+      "runId": "hisense-hwf3s8514x-semantic-depth-20260716",
+      "resultsSha256": "2fc232de6e3030ce699ce8ecf3768284f9bfceed827f8287c4028705cd7ecb39",
+      "auditSha256": "730ac21a642ae8fa5a9c13366c5f675ed8504c087c2674c6f1f1180084bbeb47",
+      "acceptedAt": "2026-07-16T03:04:02.208Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_a3af1cf1dc6036e8bce61d46",
       "targetId": "recovery_target_1b5062c9517dd3f7d50f7400",
       "referenceId": "fa_ref_186b07f656753e473f00fc23",
@@ -3715,8 +3784,8 @@
   ],
   "summary": {
     "entries": 78,
-    "resolutions": 15,
-    "sourceAcceptances": 69,
+    "resolutions": 16,
+    "sourceAcceptances": 72,
     "suppressions": 54,
     "resolvedSuppressions": 14,
     "retryable": 10,

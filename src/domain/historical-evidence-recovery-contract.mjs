@@ -198,12 +198,17 @@ export function validateHistoricalEvidenceRecoveryPolicy(value) {
     throw new TypeError('lock.staleAfterMs must allow at least three heartbeats');
   }
 
-  exactKeys(value.reconciliation, 'recovery policy reconciliation', ['registryAxisPermutationToleranceMm']);
+  exactKeys(value.reconciliation, 'recovery policy reconciliation', [
+    'registryAxisPermutationToleranceMm', 'officialSemanticResolutionVersion',
+  ]);
   integer(
     value.reconciliation.registryAxisPermutationToleranceMm,
     'reconciliation.registryAxisPermutationToleranceMm',
     0,
   );
+  if (value.reconciliation.officialSemanticResolutionVersion !== 1) {
+    throw new TypeError('reconciliation.officialSemanticResolutionVersion 1 required');
+  }
 
   exactKeys(value.parser, 'recovery policy parser', [
     'format', 'name', 'version', 'modelRevision', 'claimParserRevision', 'backend', 'method',
@@ -425,7 +430,7 @@ function validateReconciliationDecision(value) {
   exactKeys(value, 'reconciliation decision', [
     'conflictingFields', 'conflictHints', 'missingFields', 'supersessionViolations',
     'axisPermutationResolution', 'lowerAuthorityResolution', 'conflictReason',
-  ]);
+  ], ['officialSemanticResolution']);
   const conflictingFields = strings(value.conflictingFields, 'reconciliation conflictingFields');
   const missingFields = strings(value.missingFields, 'reconciliation missingFields');
   for (const field of [...conflictingFields, ...missingFields]) {
@@ -486,6 +491,14 @@ function validateReconciliationDecision(value) {
     ], 'lower authority resolution');
     if (!value.conflictHints.some((hint) => hint.kind === 'lower_authority_disagreement')) {
       throw new TypeError('lower authority resolution requires a disagreement hint');
+    }
+  }
+  if (value.officialSemanticResolution !== undefined) {
+    oneOf(value.officialSemanticResolution, [
+      'explicit_appliance_depth_with_exact_product_page_corroboration',
+    ], 'official semantic resolution');
+    if (conflictingFields.length) {
+      throw new TypeError('official semantic resolution cannot retain conflicting fields');
     }
   }
   if (value.conflictReason !== null) text(value.conflictReason, 'reconciliation conflictReason');

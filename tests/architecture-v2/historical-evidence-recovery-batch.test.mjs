@@ -116,7 +116,7 @@ function fixturePolicy() {
       maximumBytes: 20_971_520, maximumRedirects: 5,
     },
     lock: { heartbeatMs: 15_000, staleAfterMs: 90_000 },
-    reconciliation: { registryAxisPermutationToleranceMm: 10 },
+    reconciliation: { registryAxisPermutationToleranceMm: 10, officialSemanticResolutionVersion: 1 },
     parser: {
       format: 'content_list_v2',
       name: 'MinerU',

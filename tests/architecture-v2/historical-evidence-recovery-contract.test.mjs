@@ -192,6 +192,7 @@ test('committed recovery policy pins queue, receipt, claim, transport, lock and 
   assert.deepEqual(policy.supportedClaimSemanticsVersions, [1, 2]);
   assert.deepEqual(policy.requestedFields, FIELDS);
   assert.equal(policy.reconciliation.registryAxisPermutationToleranceMm, 10);
+  assert.equal(policy.reconciliation.officialSemanticResolutionVersion, 1);
   assert.equal(policy.parser.claimParserRevision, '2026-07-16.7');
   assert.ok(policy.limits.resolverTimeoutMs > policy.limits.timeoutMs);
   assert.throws(
@@ -325,6 +326,13 @@ test('results require one typed terminal or accepted outcome per target', () => 
   assert.deepEqual(validateHistoricalEvidenceRecoveryResults(results({
     outcomes: [{ ...results().outcomes[0], reconciliation: exactLegacyProof }],
   })).outcomes[0].reconciliation, exactLegacyProof);
+  const officialSemanticProof = {
+    ...EMPTY_RECONCILIATION,
+    officialSemanticResolution: 'explicit_appliance_depth_with_exact_product_page_corroboration',
+  };
+  assert.deepEqual(validateHistoricalEvidenceRecoveryResults(results({
+    outcomes: [{ ...results().outcomes[0], reconciliation: officialSemanticProof }],
+  })).outcomes[0].reconciliation, officialSemanticProof);
   assert.throws(
     () => validateHistoricalEvidenceRecoveryResults(results({
       outcomes: [results().outcomes[0], results().outcomes[0]],

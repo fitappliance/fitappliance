@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "15b74aa25174ee5d3982fe4f76db299c53f97dc35533904a76196ceb76431092"
+    "historical-recovery:historical-recovery-cumulative-v1": "55d67613c8941058d20b215cf66be7392241ffabd85dbcf5c7742fa549e7b739"
   },
   "records": [
     {
@@ -282339,8 +282339,8 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 595,
         "height": 845,
@@ -282358,6 +282358,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a322c67e53a71c89ee8ed646",
+          "snapshotSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a322c67e53a71c89ee8ed646",
+          "snapshotSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+          "sourceLines": [
+            11
+          ]
         }
       ],
       "catalogProductIds": [
@@ -282365,8 +282377,59 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
+          "sourceUrl": "https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer",
+          "contentSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894",
+          "receiptBindingSha256": "461ea1a51deb010cf99a87da73cb94f56fd3c611ba759dcb1d31b40e5b65fac1",
+          "verifiedAt": "2026-07-16T03:04:02.019Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/40/43/4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894.html"
+        },
+        {
+          "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
+          "contentSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+          "receiptBindingSha256": "999a011574bae4d9a6d279104908ae6421812304c40aa941c987cb061ecc47c9",
+          "verifiedAt": "2026-07-16T03:04:01.558Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 11,
+              "fragmentSha256": "e86a68b78391e2263ae3a8c709201cfd04d86743d686cad58af69a4fb26a7def"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 11,
+              "fragmentSha256": "e86a68b78391e2263ae3a8c709201cfd04d86743d686cad58af69a4fb26a7def"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 11,
+              "fragmentSha256": "e86a68b78391e2263ae3a8c709201cfd04d86743d686cad58af69a4fb26a7def"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/f0/47/f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -318633,17 +318696,17 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4857,
+      "REGISTRY_CONSISTENT": 4856,
       "IDENTITY_ONLY": 2983,
-      "MODEL_RECEIPT": 156,
+      "MODEL_RECEIPT": 157,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4857,
+      "CONFIRM_REQUIRED": 4856,
       "MEASURE_REQUIRED": 2983,
-      "AUTO_FILL": 167,
+      "AUTO_FILL": 168,
       "QUARANTINED": 88
     }
   }

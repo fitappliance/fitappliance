@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T02:38:22.910Z",
-  "semanticQueueSha256": "eedcb68b956a315a4efaf2a9ecdc356147308266b47645c44db828a90e80fa98",
-  "sourceClassificationSha256": "7b890c54e6dd965bb4160a113af934d542ba01480f93bba3372df9498442d7f1",
+  "generatedAt": "2026-07-16T03:10:25.501Z",
+  "semanticQueueSha256": "086d45dd49b12c8510b14c6e04edb2195902252d0479ad05eaf9cba078127c3d",
+  "sourceClassificationSha256": "aa9cb90f2d3d8f193e78ce0546e3b0a6a22fe6b49e619933008b90e4cd7da397",
   "records": [
     {
       "schemaVersion": 1,
@@ -35047,36 +35047,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_1e192ecc31cf59745e2b9d3e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_51bacf3210689c88a2bf5994",
-      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
-      "category": "washing_machine",
-      "brand": "Hisense",
-      "model": "HWF3S8514X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "Hisense AU washer indexed dimension diagram",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_86297d49af24af34f01e742b",
-        "historical_source_b365b8134957dd43fe49248f"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "ao-178018"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_77299f50a5afccbd92f0551c"
       ],
       "offlineReplayOutcome": null
     },
@@ -206429,18 +206399,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_86297d49af24af34f01e742b",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "pdf:f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c"
-      ],
-      "referenceIds": [
-        "fa_ref_1e1b951a2f2f4299ee79e889"
-      ]
-    },
-    {
       "sourceId": "historical_source_8632f98c187f32ff5c3e6e27",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/f/b/7/9/fb79edb09335ce952b9efa023a45056ea5d73bc5_QRG_AU_62284.pdf",
       "sourceAuthority": "REFERENCE",
@@ -210042,18 +210000,6 @@
       ],
       "referenceIds": [
         "fa_ref_4935fa9cfbe6c884f1d38eb1"
-      ]
-    },
-    {
-      "sourceId": "historical_source_b365b8134957dd43fe49248f",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/2/9/9f2929c8bccee4e2248681f816a1d189dddb5ac5_2026_Hisense_AU___Consumer_Spec__HWF3S8514X_.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HWF3S8514X.json"
-      ],
-      "referenceIds": [
-        "fa_ref_1e1b951a2f2f4299ee79e889"
       ]
     },
     {
@@ -215775,46 +215721,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 206,
+    "COMPLETE_RECEIPT": 207,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7889,
-    "uniqueReferences": 7889,
-    "candidateSources": 1548,
-    "candidateEdges": 1583,
+    "queuedModels": 7888,
+    "uniqueReferences": 7888,
+    "candidateSources": 1546,
+    "candidateEdges": 1581,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1251,
+      "CURRENT_RETAIL": 1250,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1370,
       "dryer": 815,
       "fridge": 4235,
-      "washing_machine": 1469
+      "washing_machine": 1468
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 164,
+      "IDENTITY_RESEARCH": 163,
       "OFFICIAL_DISCOVERY": 6417,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 164,
+      "IDENTITY_CLOSURE": 163,
       "OFFICIAL_DISCOVERY": 6417,
       "OFFICIAL_REDISCOVERY": 1225
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5224,
+      "DISCOVERY_READY": 5223,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 206,
+      "COMPLETE_RECEIPT": 207,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

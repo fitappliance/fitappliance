@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T02:38:22.910Z",
-  "sourceAcquisitionQueueSha256": "eedcb68b956a315a4efaf2a9ecdc356147308266b47645c44db828a90e80fa98",
+  "generatedAt": "2026-07-16T03:10:25.501Z",
+  "sourceAcquisitionQueueSha256": "086d45dd49b12c8510b14c6e04edb2195902252d0479ad05eaf9cba078127c3d",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7889,
-    "fetchJobs": 2,
-    "targets": 7806,
+    "acquisitionRecords": 7888,
+    "fetchJobs": 1,
+    "targets": 7805,
     "resolverOnlyTargets": 7804,
-    "candidateEdges": 2,
-    "uniqueReferences": 7806,
+    "candidateEdges": 1,
+    "uniqueReferences": 7805,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1232,
+      "CURRENT_RETAIL": 1231,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
       "P0_CURRENT_MISSING_DIMENSIONS": 1030,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
-      "P2_CURRENT_CONFIRMATION": 189,
+      "P2_CURRENT_CONFIRMATION": 188,
       "P3_HISTORICAL_CONFIRMATION": 4583,
       "P4_CONFLICT_RESOLUTION": 68
     },
@@ -33,17 +33,6 @@
     }
   },
   "jobs": [
-    {
-      "jobId": "recovery_15b0818904b8646c47b02032",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_a322c67e53a71c89ee8ed646"
-      ]
-    },
     {
       "jobId": "recovery_2dae861b4375a69282749583",
       "sourceUrl": "https://downloadcenter.samsung.com/content/UM/202605/20260518184516600/DA68-04132R-02_FDR_RF5000A_EN_260414.pdf",
@@ -93170,45 +93159,6 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
-      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
-      "legacyRuntimeId": "ao-178018",
-      "canonicalProductId": "fa_prod_77299f50a5afccbd92f0551c",
-      "category": "washing_machine",
-      "brand": "Hisense",
-      "model": "HWF3S8514X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/HWF3S8514X.json",
-        "pdf:f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c"
-      ],
-      "legacyHints": [],
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:washing_machine",
-          "snapshotSha256": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 845,
-            "depth": 540
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "candidateJobIds": [
-        "recovery_15b0818904b8646c47b02032"
-      ],
-      "primaryJobId": "recovery_15b0818904b8646c47b02032",
       "repairExistingReceipt": false
     },
     {

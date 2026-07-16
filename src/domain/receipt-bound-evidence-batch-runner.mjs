@@ -107,7 +107,7 @@ function sortedRecords(values) {
 
 export function reconciliationDecisionSummary(reconciled) {
   if (!reconciled || typeof reconciled !== 'object') return null;
-  return {
+  const summary = {
     conflictingFields: sortedStrings(reconciled.conflictingFields),
     conflictHints: sortedRecords(reconciled.conflictHints),
     missingFields: sortedStrings(reconciled.missingFields),
@@ -116,6 +116,10 @@ export function reconciliationDecisionSummary(reconciled) {
     lowerAuthorityResolution: reconciled.lowerAuthorityResolution ?? null,
     conflictReason: reconciled.conflictReason ?? null,
   };
+  if (reconciled.officialSemanticResolution) {
+    summary.officialSemanticResolution = reconciled.officialSemanticResolution;
+  }
+  return summary;
 }
 
 async function hydrateActiveReceiptSources(target, loadActiveReceiptSource) {

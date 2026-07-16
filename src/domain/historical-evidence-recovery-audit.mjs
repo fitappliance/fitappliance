@@ -108,6 +108,7 @@ function validateReconciliationReplay(target, outcome, policy) {
     category: target.category,
   }, inventory, {
     registryAxisPermutationToleranceMm: policy?.reconciliation?.registryAxisPermutationToleranceMm ?? 0,
+    officialSemanticResolutionVersion: policy?.reconciliation?.officialSemanticResolutionVersion ?? 0,
     requestedFields: target.requestedFields,
     lowerAuthorityHints: buildLowerAuthorityHints(target),
     verifyInventoryHash: true,

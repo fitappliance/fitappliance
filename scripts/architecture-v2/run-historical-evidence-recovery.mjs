@@ -390,6 +390,7 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
     resolverTimeoutMs: policy.limits.resolverTimeoutMs,
     reconciliationOptions: {
       registryAxisPermutationToleranceMm: policy.reconciliation.registryAxisPermutationToleranceMm,
+      officialSemanticResolutionVersion: policy.reconciliation.officialSemanticResolutionVersion,
     },
   };
 }

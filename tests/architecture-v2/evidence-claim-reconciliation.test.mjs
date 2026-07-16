@@ -96,6 +96,138 @@ test('conflicting active exact official sources are quarantined', () => {
   assert.equal(result.sources.length, 2);
 });
 
+test('explicit appliance depth plus an exact product page excludes a conflicting generic net-depth source', () => {
+  const identity = { brand: 'Hisense', model: 'HWF3S8514X', category: 'washing_machine' };
+  const applianceDepth = source('a'.repeat(64), { widthMm: 595, heightMm: 845, depthMm: 540 }, {
+    identity: { ...identity, outcome: 'exact' },
+  });
+  applianceDepth.claims = applianceDepth.claims.map((entry) => (
+    entry.field === 'closedEnvelope.depthMm'
+      ? {
+        ...entry,
+        sourceLabel: 'Appliance depth (diagram E)',
+        sourceAxisOrder: ['depth'],
+        page: 11,
+        fragmentSha256: '1'.repeat(64),
+        bbox: [0, 0, 100, 100],
+      }
+      : entry
+  ));
+  const productPage = source('b'.repeat(64), { widthMm: 595, heightMm: 845, depthMm: 540 }, {
+    sourceType: 'official_exact_model_product_page',
+    contentType: 'text/html',
+    finalUrl: 'https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer',
+    identity: { ...identity, outcome: 'exact' },
+  });
+  productPage.claims = productPage.claims.map((entry) => ({
+    ...entry,
+    sourceLabel: 'Dimensions (H*W*D) Unit: mm',
+    sourceAxisOrder: ['height', 'width', 'depth'],
+  }));
+  const genericNet = source('c'.repeat(64), { widthMm: 595, heightMm: 845, depthMm: 510 }, {
+    identity: { ...identity, outcome: 'exact' },
+  });
+  genericNet.claims = genericNet.claims.map((entry) => ({
+    ...entry,
+    sourceLabel: 'Net dimensions(W x H x D) (mm)',
+    sourceAxisOrder: ['width', 'height', 'depth'],
+    page: 1,
+    fragmentSha256: '2'.repeat(64),
+    bbox: [0, 0, 100, 100],
+  }));
+
+  const result = reconcileEvidenceClaims(identity, inventory(
+    [applianceDepth, productPage, genericNet],
+    { identity, targetId: 'target-hisense-hwf3s8514x' },
+  ), { verifyReceipt, officialSemanticResolutionVersion: 1 });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(
+    result.officialSemanticResolution,
+    'explicit_appliance_depth_with_exact_product_page_corroboration',
+  );
+  assert.deepEqual(
+    result.sources.map((entry) => entry.contentSha256).sort(),
+    [applianceDepth.contentSha256, productPage.contentSha256].sort(),
+  );
+});
+
+test('explicit appliance depth cannot suppress a generic net-depth conflict without product-page corroboration', () => {
+  const identity = { brand: 'Hisense', model: 'HWF3S8514X', category: 'washing_machine' };
+  const applianceDepth = source('a'.repeat(64), { widthMm: 595, heightMm: 845, depthMm: 540 }, {
+    identity: { ...identity, outcome: 'exact' },
+  });
+  applianceDepth.claims = applianceDepth.claims.map((entry) => (
+    entry.field === 'closedEnvelope.depthMm'
+      ? {
+        ...entry,
+        sourceLabel: 'Appliance depth (diagram E)',
+        sourceAxisOrder: ['depth'],
+        page: 11,
+        fragmentSha256: '1'.repeat(64),
+        bbox: [0, 0, 100, 100],
+      }
+      : entry
+  ));
+  const genericNet = source('c'.repeat(64), { widthMm: 595, heightMm: 845, depthMm: 510 }, {
+    identity: { ...identity, outcome: 'exact' },
+  });
+  genericNet.claims = genericNet.claims.map((entry) => ({
+    ...entry,
+    sourceLabel: 'Net dimensions(W x H x D) (mm)',
+    sourceAxisOrder: ['width', 'height', 'depth'],
+  }));
+
+  const result = reconcileEvidenceClaims(identity, inventory(
+    [applianceDepth, genericNet],
+    { identity, targetId: 'target-hisense-hwf3s8514x' },
+  ), { verifyReceipt });
+
+  assert.equal(result.status, 'conflict_quarantined');
+  assert.deepEqual(result.conflictingFields, ['closedEnvelope.depthMm']);
+  assert.equal(result.officialSemanticResolution, undefined);
+});
+
+test('an explicit overall-depth conflict is never discarded as a generic net-dimensions source', () => {
+  const identity = { brand: 'Hisense', model: 'HWF3S8514X', category: 'washing_machine' };
+  const applianceDepth = source('a'.repeat(64), { widthMm: 595, heightMm: 845, depthMm: 540 }, {
+    identity: { ...identity, outcome: 'exact' },
+  });
+  applianceDepth.claims = applianceDepth.claims.map((entry) => (
+    entry.field === 'closedEnvelope.depthMm'
+      ? {
+        ...entry,
+        sourceLabel: 'Appliance depth (diagram E)',
+        sourceAxisOrder: ['depth'],
+        page: 11,
+        fragmentSha256: '1'.repeat(64),
+        bbox: [0, 0, 100, 100],
+      }
+      : entry
+  ));
+  const productPage = source('b'.repeat(64), { widthMm: 595, heightMm: 845, depthMm: 540 }, {
+    sourceType: 'official_exact_model_product_page',
+    contentType: 'text/html',
+    identity: { ...identity, outcome: 'exact' },
+  });
+  const explicitConflict = source('c'.repeat(64), { widthMm: 595, heightMm: 845, depthMm: 510 }, {
+    identity: { ...identity, outcome: 'exact' },
+  });
+  explicitConflict.claims = explicitConflict.claims.map((entry) => (
+    entry.field === 'closedEnvelope.depthMm'
+      ? { ...entry, sourceLabel: 'Overall appliance depth', sourceAxisOrder: ['depth'] }
+      : entry
+  ));
+
+  const result = reconcileEvidenceClaims(identity, inventory(
+    [applianceDepth, productPage, explicitConflict],
+    { identity, targetId: 'target-hisense-hwf3s8514x' },
+  ), { verifyReceipt });
+
+  assert.equal(result.status, 'conflict_quarantined');
+  assert.deepEqual(result.conflictingFields, ['closedEnvelope.depthMm']);
+});
+
 test('same-resource attested supersession removes an older conflicting source', () => {
   const url = 'https://www.westinghouse.com.au/manuals/WHE6874BA.pdf';
   const oldSource = source('a'.repeat(64), { widthMm: 913, heightMm: 1782, depthMm: 723 }, { finalUrl: url });

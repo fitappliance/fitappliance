@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-a71e9fcf967ae647cf61d8bf",
-  "generatedAt": "2026-07-16T02:38:22.910Z",
+  "batchId": "historical-recovery-27ae30ab0626e42c5d653d1b",
+  "generatedAt": "2026-07-16T03:10:25.501Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "863a968b92d3df25aed37a01b9465c5babfa701b32a7bac7a98d92d3d4f5b2eb"
+    "sha256": "15c14518c7caaefa6e5920c0a07f8a14585ac5009d760cb0b12f57483eab8c24"
   },
   "policy": {
-    "version": "2026-07-16.7",
-    "sha256": "8e4c7231047fa1d471396b2ab819954968cdb8b3e5c2e2ffafa2d6f027506395"
+    "version": "2026-07-16.8",
+    "sha256": "c1b1303dcc5ab9eeb411b26309a03cba0901fb075087a7572d012465b547b972"
   },
   "selection": {
     "jobIds": [],
@@ -19,17 +19,6 @@
     "limit": null
   },
   "artifactJobs": [
-    {
-      "jobId": "recovery_15b0818904b8646c47b02032",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_a322c67e53a71c89ee8ed646"
-      ]
-    },
     {
       "jobId": "recovery_2dae861b4375a69282749583",
       "sourceUrl": "https://downloadcenter.samsung.com/content/UM/202605/20260518184516600/DA68-04132R-02_FDR_RF5000A_EN_260414.pdf",
@@ -85031,41 +85020,6 @@
             }
           }
         ]
-      }
-    },
-    {
-      "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
-      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
-      "legacyRuntimeId": "ao-178018",
-      "canonicalProductId": "fa_prod_77299f50a5afccbd92f0551c",
-      "brand": "Hisense",
-      "model": "HWF3S8514X",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": "recovery_15b0818904b8646c47b02032",
-      "candidateJobIds": [
-        "recovery_15b0818904b8646c47b02032"
-      ],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:washing_machine",
-            "snapshotSha256": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 845,
-              "depth": 540
-            }
-          }
-        ],
-        "legacyHints": []
       }
     },
     {
@@ -239814,9 +239768,9 @@
     }
   ],
   "summary": {
-    "artifactJobs": 2,
-    "targets": 7806,
-    "candidateEdges": 2,
+    "artifactJobs": 1,
+    "targets": 7805,
+    "candidateEdges": 1,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
   }

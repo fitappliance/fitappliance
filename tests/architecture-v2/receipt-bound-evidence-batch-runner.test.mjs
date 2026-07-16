@@ -6,9 +6,21 @@ import { reconcileEvidenceClaims } from '../../src/domain/evidence-claim-reconci
 import {
   createBoundedSemaphore,
   createNetworkSemaphore,
+  reconciliationDecisionSummary,
   recoveryOutcomeSemanticSha256,
   runReceiptBoundEvidenceBatch,
 } from '../../src/domain/receipt-bound-evidence-batch-runner.mjs';
+
+test('reconciliation summary preserves an official semantic resolution trace', () => {
+  assert.deepEqual(reconciliationDecisionSummary({
+    conflictingFields: [], conflictHints: [], missingFields: [], supersessionViolations: [],
+    officialSemanticResolution: 'explicit_appliance_depth_with_exact_product_page_corroboration',
+  }), {
+    conflictingFields: [], conflictHints: [], missingFields: [], supersessionViolations: [],
+    axisPermutationResolution: null, lowerAuthorityResolution: null, conflictReason: null,
+    officialSemanticResolution: 'explicit_appliance_depth_with_exact_product_page_corroboration',
+  });
+});
 
 const SHA = 'a'.repeat(64);
 const FIELDS = [

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T02:38:08.077Z",
-  "sourceBundleSha256": "15b74aa25174ee5d3982fe4f76db299c53f97dc35533904a76196ceb76431092",
+  "generatedAt": "2026-07-16T03:11:47.567Z",
+  "sourceBundleSha256": "55d67613c8941058d20b215cf66be7392241ffabd85dbcf5c7742fa549e7b739",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1838,6 +1838,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
+      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
+      "brand": "Hisense",
+      "model": "HWF3S8514X",
+      "category": "washing_machine",
+      "sourceUrl": "https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer",
+      "sourcePdfSha256": null,
+      "contentSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894",
+      "receiptBindingSha256": "461ea1a51deb010cf99a87da73cb94f56fd3c611ba759dcb1d31b40e5b65fac1",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
+      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
+      "brand": "Hisense",
+      "model": "HWF3S8514X",
+      "category": "washing_machine",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
+      "sourcePdfSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+      "contentSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+      "receiptBindingSha256": "999a011574bae4d9a6d279104908ae6421812304c40aa941c987cb061ecc47c9",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/a9/1c/a91c23d34fc094b54671cbf66e2f726abcb98894e2e904d603ff4c4eb56e2cb7.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_a3678b2b686b0ac01d27b178",
       "referenceId": "fa_ref_8d16b7dc119f06637225bbe8",
       "brand": "Beko",
@@ -2931,11 +2959,11 @@
     }
   ],
   "summary": {
-    "entries": 187,
-    "sources": 209,
-    "passed": 209,
+    "entries": 188,
+    "sources": 211,
+    "passed": 211,
     "failed": 0
   },
-  "checkedObjects": 426,
-  "semanticAuditSha256": "20b5463b0557428949d84844e9ba44c54f17c4e62b9bf0afe9e72a7f9f6fec8a"
+  "checkedObjects": 430,
+  "semanticAuditSha256": "00a6733f60ef9e29b6530d636a52864d55cd07942ef951da9fc16ca6ea49ee97"
 }

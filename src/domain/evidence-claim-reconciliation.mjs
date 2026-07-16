@@ -360,6 +360,83 @@ function hasExactOfficialScopedDepthProof(matrix, conflictHints) {
   ));
 }
 
+function completeFixedDimensionsForSource(source) {
+  const byField = new Map((source?.claims ?? [])
+    .filter((claim) => DEFAULT_FIELDS.includes(claim.field))
+    .map((claim) => [claim.field, normalizedClaimValue(claim)]));
+  if (!DEFAULT_FIELDS.every((field) => byField.get(field)?.kind === 'fixed')) return null;
+  return Object.fromEntries(DEFAULT_FIELDS.map((field) => [field, byField.get(field).mm]));
+}
+
+function sameDimensions(left, right) {
+  return DEFAULT_FIELDS.every((field) => left?.[field] === right?.[field]);
+}
+
+function explicitApplianceDepthSource(source) {
+  if (source?.sourceType !== 'official_exact_model_pdf') return false;
+  const dimensions = completeFixedDimensionsForSource(source);
+  if (!dimensions) return false;
+  const depth = (source.claims ?? []).find((claim) => claim.field === 'closedEnvelope.depthMm');
+  return depth?.measurementScope === 'product_closed_external'
+    && Array.isArray(depth.sourceAxisOrder)
+    && depth.sourceAxisOrder.length === 1
+    && depth.sourceAxisOrder[0] === 'depth'
+    && /^appliance depth(?:\s*\([^)]*\))?$/i.test(String(depth.sourceLabel ?? '').trim())
+    && Number.isInteger(depth.page)
+    && /^[a-f0-9]{64}$/.test(String(depth.fragmentSha256 ?? ''));
+}
+
+function exactProductPageDimensions(source, dimensions) {
+  return source?.sourceType === 'official_exact_model_product_page'
+    && /^text\/html\b/i.test(String(source.contentType ?? ''))
+    && sameDimensions(completeFixedDimensionsForSource(source), dimensions);
+}
+
+function genericNetDimensionsConflict(source, winnerDimensions) {
+  const dimensions = completeFixedDimensionsForSource(source);
+  if (!dimensions
+    || dimensions['closedEnvelope.widthMm'] !== winnerDimensions['closedEnvelope.widthMm']
+    || dimensions['closedEnvelope.heightMm'] !== winnerDimensions['closedEnvelope.heightMm']
+    || dimensions['closedEnvelope.depthMm'] === winnerDimensions['closedEnvelope.depthMm']) return false;
+  const claims = DEFAULT_FIELDS.map((field) => (source.claims ?? []).find((claim) => claim.field === field));
+  if (claims.some((claim) => !claim)) return false;
+  const commonOrder = claims[0].sourceAxisOrder;
+  return Array.isArray(commonOrder)
+    && commonOrder.length === 3
+    && new Set(commonOrder).size === 3
+    && ['width', 'height', 'depth'].every((axis) => commonOrder.includes(axis))
+    && claims.every((claim) => JSON.stringify(claim.sourceAxisOrder) === JSON.stringify(commonOrder))
+    && claims.every((claim) => /^net dimensions\b/i.test(String(claim.sourceLabel ?? '').trim()))
+    && claims.every((claim) => claim.includesDoor === null && claim.includesHandle === null);
+}
+
+function resolveOfficialSemanticDepthConflict(sources, conflictingFields) {
+  if (conflictingFields.length !== 1 || conflictingFields[0] !== 'closedEnvelope.depthMm') return null;
+  const explicitSources = sources.filter(explicitApplianceDepthSource);
+  if (explicitSources.length !== 1) return null;
+  const winner = explicitSources[0];
+  const winnerDimensions = completeFixedDimensionsForSource(winner);
+  const corroboratingProductPages = sources.filter((source) => (
+    source.contentSha256 !== winner.contentSha256
+    && exactProductPageDimensions(source, winnerDimensions)
+  ));
+  if (!corroboratingProductPages.length) return null;
+
+  const matching = sources.filter((source) => sameDimensions(
+    completeFixedDimensionsForSource(source),
+    winnerDimensions,
+  ));
+  const conflicting = sources.filter((source) => !matching.includes(source));
+  if (!conflicting.length || !conflicting.every((source) => (
+    genericNetDimensionsConflict(source, winnerDimensions)
+  ))) return null;
+
+  return {
+    sources: matching.sort((left, right) => left.contentSha256.localeCompare(right.contentSha256)),
+    officialSemanticResolution: 'explicit_appliance_depth_with_exact_product_page_corroboration',
+  };
+}
+
 export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   if (!inventory || typeof inventory !== 'object') throw new TypeError('candidate inventory required');
   if (options.verifyInventoryHash
@@ -420,20 +497,33 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   }
   const supersession = applyAttestedSupersession(deduplicated.sources);
   const requestedFields = options.requestedFields ?? DEFAULT_FIELDS;
-  const matrix = claimMatrix(supersession.active, requestedFields);
-  const conflictingFields = [];
-  const missingFields = [];
-  let hasNonScalar = false;
-  for (const [field, rows] of matrix) {
-    if (!rows.length) {
-      missingFields.push(field);
-      continue;
+  let activeSources = supersession.active;
+  let matrix = claimMatrix(activeSources, requestedFields);
+  const matrixState = (value) => {
+    const conflictingFields = [];
+    const missingFields = [];
+    let hasNonScalar = false;
+    for (const [field, rows] of value) {
+      if (!rows.length) {
+        missingFields.push(field);
+        continue;
+      }
+      const values = new Set(rows.map((row) => JSON.stringify(row.value)));
+      if (values.size > 1) conflictingFields.push(field);
+      for (const row of rows) {
+        if (row.claim?.value?.kind === 'range' && claimV2GeometryValue(row.claim) === null) hasNonScalar = true;
+      }
     }
-    const values = new Set(rows.map((row) => JSON.stringify(row.value)));
-    if (values.size > 1) conflictingFields.push(field);
-    for (const row of rows) {
-      if (row.claim?.value?.kind === 'range' && claimV2GeometryValue(row.claim) === null) hasNonScalar = true;
-    }
+    return { conflictingFields, missingFields, hasNonScalar };
+  };
+  let { conflictingFields, missingFields, hasNonScalar } = matrixState(matrix);
+  const officialSemanticResolution = options.officialSemanticResolutionVersion === 1
+    ? resolveOfficialSemanticDepthConflict(activeSources, conflictingFields)
+    : null;
+  if (officialSemanticResolution) {
+    activeSources = officialSemanticResolution.sources;
+    matrix = claimMatrix(activeSources, requestedFields);
+    ({ conflictingFields, missingFields, hasNonScalar } = matrixState(matrix));
   }
   const conflictHints = analyzeHints(options.lowerAuthorityHints ?? [], matrix, options);
   const axisConflict = conflictHints.some((hint) => (
@@ -462,7 +552,7 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
       status: 'conflict_quarantined',
       failureCode: 'conflict',
       candidateInventorySha256: inventory.candidateInventorySha256,
-      sources: supersession.active,
+      sources: activeSources,
       conflictingFields: conflictingFields.sort(),
       conflictHints,
       supersessionViolations: supersession.violations,
@@ -473,7 +563,7 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
       status: 'claims_incomplete',
       failureCode: 'claim_semantics',
       candidateInventorySha256: inventory.candidateInventorySha256,
-      sources: supersession.active,
+      sources: activeSources,
       conflictingFields: [],
       conflictHints,
       missingFields: missingFields.sort(),
@@ -484,7 +574,7 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
     status: hasNonScalar ? 'receipt_accepted_non_scalar' : 'accepted',
     failureCode: null,
     candidateInventorySha256: inventory.candidateInventorySha256,
-    sources: supersession.active,
+    sources: activeSources,
     conflictingFields: [],
     conflictHints,
     supersessionViolations: supersession.violations,
@@ -509,6 +599,9 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
               ? 'exact_official_axis_proof_over_legacy_hint'
               : 'exact_official_scoped_depth_over_registry_hint',
       }
+      : {}),
+    ...(officialSemanticResolution
+      ? { officialSemanticResolution: officialSemanticResolution.officialSemanticResolution }
       : {}),
   };
 }

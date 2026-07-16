@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-16.7",
+  "policyVersion": "2026-07-16.8",
   "queueSchemaVersion": 2,
   "supportedReceiptSchemaVersions": [2, 3],
   "supportedClaimSemanticsVersions": [1, 2],
@@ -32,7 +32,8 @@
     "staleAfterMs": 90000
   },
   "reconciliation": {
-    "registryAxisPermutationToleranceMm": 10
+    "registryAxisPermutationToleranceMm": 10,
+    "officialSemanticResolutionVersion": 1
   },
   "parser": {
     "format": "content_list_v2",

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T02:38:22.910Z",
+  "generatedAt": "2026-07-16T03:10:25.501Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "7b890c54e6dd965bb4160a113af934d542ba01480f93bba3372df9498442d7f1",
+  "semanticClassificationSha256": "aa9cb90f2d3d8f193e78ce0546e3b0a6a22fe6b49e619933008b90e4cd7da397",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4193,
+    "documentLinks": 4194,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,18 +21,18 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 206,
+      "COMPLETE_RECEIPT": 207,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 164,
+      "IDENTITY_RESEARCH": 163,
       "OFFICIAL_DISCOVERY": 6417,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6417,
-      "NO_ACTION": 206,
+      "NO_ACTION": 207,
       "REDISCOVER_OFFICIAL_SOURCE": 1225,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 164
+      "RUN_IDENTITY_CLOSURE": 163
     },
     "bySourceAuthority": {
       "MIXED": 80,
@@ -41,8 +41,8 @@
       "REFERENCE": 1242
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 201,
-      "EXACT_MODEL": 1569,
+      "AMBIGUOUS": 200,
+      "EXACT_MODEL": 1570,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 206,
-      "LEGACY_UNBOUND": 1564,
+      "CURRENT_VALID": 207,
+      "LEGACY_UNBOUND": 1563,
       "NONE": 6325
     }
   },
@@ -107,11 +107,11 @@
       "category": "washing_machine",
       "records": 1497,
       "brands": 88,
-      "documentLinks": 653,
+      "documentLinks": 654,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 28,
+        "COMPLETE_RECEIPT": 29,
         "CONFLICT_QUARANTINE": 9,
-        "IDENTITY_RESEARCH": 38,
+        "IDENTITY_RESEARCH": 37,
         "OFFICIAL_DISCOVERY": 1237,
         "REFERENCE_REDISCOVERY": 185
       }
@@ -266111,15 +266111,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
       "groupName": "Hisense AU washer indexed dimension diagram",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
-      "identityScope": "AMBIGUOUS",
+      "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 2,
-        "LEGACY_METADATA_ONLY": 1
+        "CURRENT_MINERU": 1,
+        "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 2
       },
       "documentLinks": [
         {
@@ -266138,6 +266139,24 @@
           "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
+        },
+        {
+          "documentId": "pdf:4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894",
+          "sourceUrl": "https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/40/43/4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894.html",
+            "receipt:461ea1a51deb010cf99a87da73cb94f56fd3c611ba759dcb1d31b40e5b65fac1"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894"
         },
         {
           "documentId": "pdf:cb84db8a4d42398a25be0cadd50dbe7b590083ce6facbf349438fa15448b727e",
@@ -266161,28 +266180,26 @@
           "documentId": "pdf:f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
           "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
-            "mineru-hybrid:9baf6359fd179c45b445320ace4202a22b84f1b19902cb7f34ee834c84527a27",
             "mineru-index:f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
-            "mineru-primary:a310d8475cd078058998375d71cad227f4fcb81af6709677fc8566c08ea3e1b5",
+            "receipt:999a011574bae4d9a6d279104908ae6421812304c40aa941c987cb061ecc47c9",
             "storage:evidence/objects/sha256/f0/f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c.pdf",
             "storage:evidence/web/sha256/f0/47/f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
+          "corpusState": "RECEIPT_BOUND",
           "sourceAuthority": "OFFICIAL",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Hisense",

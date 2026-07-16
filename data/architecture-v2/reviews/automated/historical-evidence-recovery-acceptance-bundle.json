@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T02:37:51.587Z",
-  "policySha256": "8e4c7231047fa1d471396b2ab819954968cdb8b3e5c2e2ffafa2d6f027506395",
+  "generatedAt": "2026-07-16T03:09:56.817Z",
+  "policySha256": "c1b1303dcc5ab9eeb411b26309a03cba0901fb075087a7572d012465b547b972",
   "entries": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -29638,6 +29638,380 @@
       }
     },
     {
+      "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
+      "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
+      "legacyRuntimeId": "ao-178018",
+      "canonicalProductId": "fa_prod_77299f50a5afccbd92f0551c",
+      "brand": "Hisense",
+      "model": "HWF3S8514X",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-9856771217a1df07bfdddb35-slice-697847ec9d5a",
+      "auditSha256": "6e2cc7d92e2d7d8bd315f491e6f2ee98842c115ebc0746d88aa152cbef6e5891",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer",
+          "finalUrl": "https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T03:04:02.019Z",
+          "contentSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894",
+          "objectPath": "evidence/web/sha256/40/43/4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894.html",
+          "contentType": "text/html",
+          "byteSize": 407628,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HWF3S8514X",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Dimensions (H*W*D) Unit: mm",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 845
+              },
+              "sourceLabel": "Dimensions (H*W*D) Unit: mm",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 540
+              },
+              "sourceLabel": "Dimensions (H*W*D) Unit: mm",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HWF3S8514X"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T03:04:02.019Z",
+            "bindingSha256": "461ea1a51deb010cf99a87da73cb94f56fd3c611ba759dcb1d31b40e5b65fac1"
+          }
+        },
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
+          "finalUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T03:04:01.558Z",
+          "contentSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+          "objectPath": "evidence/web/sha256/f0/47/f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 15577638,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HWF3S8514X",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Width (diagram A)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 11,
+              "fragmentSha256": "e86a68b78391e2263ae3a8c709201cfd04d86743d686cad58af69a4fb26a7def",
+              "bbox": [
+                76,
+                142,
+                918,
+                554
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 845
+              },
+              "sourceLabel": "Height (diagram B)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 11,
+              "fragmentSha256": "e86a68b78391e2263ae3a8c709201cfd04d86743d686cad58af69a4fb26a7def",
+              "bbox": [
+                76,
+                142,
+                918,
+                554
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 540
+              },
+              "sourceLabel": "Appliance depth (diagram E)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 11,
+              "fragmentSha256": "e86a68b78391e2263ae3a8c709201cfd04d86743d686cad58af69a4fb26a7def",
+              "bbox": [
+                76,
+                142,
+                918,
+                554
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+            "contentSha256": "a91c23d34fc094b54671cbf66e2f726abcb98894e2e904d603ff4c4eb56e2cb7",
+            "objectPath": "evidence/derived/mineru-json/sha256/a9/1c/a91c23d34fc094b54671cbf66e2f726abcb98894e2e904d603ff4c4eb56e2cb7.json",
+            "byteSize": 160859,
+            "pageCount": 48,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              11
+            ],
+            "sourcePageCount": 48,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "a310d8475cd078058998375d71cad227f4fcb81af6709677fc8566c08ea3e1b5",
+              "objectPath": "evidence/derived/mineru-json/sha256/a3/10/a310d8475cd078058998375d71cad227f4fcb81af6709677fc8566c08ea3e1b5.json",
+              "pages": [
+                11
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "HWF3S8514X:page:1:e60942b20faf40f35bfaab2cafd319ded49cbeb0cf36d09697d41c82573d5545"
+            },
+            {
+              "type": "mineru_table_model",
+              "value": "HWF3S8514X:page:11:06218782fe4e5896185a9b74bebe103e875d0ce7366a2816729cea583c6619b7"
+            },
+            {
+              "type": "mineru_table_model",
+              "value": "HWF3S8514X:page:5:de53b5c18dbc30b995a57877c660b4ed4590d9083ee62b84369fd2398ac3b0e3"
+            },
+            {
+              "type": "mineru_table_model",
+              "value": "HWF3S8514X:page:11:3abf4f958d3f1829185d3f4e9e950293658f03224b5326885cdf07c4b305fa3a"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T03:04:01.558Z",
+            "bindingSha256": "999a011574bae4d9a6d279104908ae6421812304c40aa941c987cb061ecc47c9"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 845,
+              "maximumMm": 845
+            },
+            "depthMm": 540
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer",
+            "contentSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894",
+            "receiptBindingSha256": "461ea1a51deb010cf99a87da73cb94f56fd3c611ba759dcb1d31b40e5b65fac1",
+            "page": null,
+            "fragmentSha256": null,
+            "corroborating": [
+              {
+                "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
+                "contentSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+                "receiptBindingSha256": "999a011574bae4d9a6d279104908ae6421812304c40aa941c987cb061ecc47c9",
+                "page": 11,
+                "fragmentSha256": "e86a68b78391e2263ae3a8c709201cfd04d86743d686cad58af69a4fb26a7def"
+              }
+            ]
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer",
+            "contentSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894",
+            "receiptBindingSha256": "461ea1a51deb010cf99a87da73cb94f56fd3c611ba759dcb1d31b40e5b65fac1",
+            "page": null,
+            "fragmentSha256": null,
+            "corroborating": [
+              {
+                "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
+                "contentSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+                "receiptBindingSha256": "999a011574bae4d9a6d279104908ae6421812304c40aa941c987cb061ecc47c9",
+                "page": 11,
+                "fragmentSha256": "e86a68b78391e2263ae3a8c709201cfd04d86743d686cad58af69a4fb26a7def"
+              }
+            ]
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer",
+            "contentSha256": "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894",
+            "receiptBindingSha256": "461ea1a51deb010cf99a87da73cb94f56fd3c611ba759dcb1d31b40e5b65fac1",
+            "page": null,
+            "fragmentSha256": null,
+            "corroborating": [
+              {
+                "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4",
+                "contentSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+                "receiptBindingSha256": "999a011574bae4d9a6d279104908ae6421812304c40aa941c987cb061ecc47c9",
+                "page": 11,
+                "fragmentSha256": "e86a68b78391e2263ae3a8c709201cfd04d86743d686cad58af69a4fb26a7def"
+              }
+            ]
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "4043a2191f28f245afaccf983553010218d635866a07dc5b3e95e88395411894",
+          "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null,
+        "officialSemanticResolution": "explicit_appliance_depth_with_exact_product_page_corroboration"
+      }
+    },
+    {
       "targetId": "recovery_target_a3678b2b686b0ac01d27b178",
       "referenceId": "fa_ref_8d16b7dc119f06637225bbe8",
       "legacyRuntimeId": "ao-72965",
@@ -47805,6 +48179,20 @@
       "queueSha256": "78f19f8f386b52b38897126557cb9b13c51d4a53e3b84609b09c20feaa687b51",
       "resultsSha256": "459e6f5088c3214d43cdc6559d0c466c906373fd61ce80442b88f0d28afa7a75",
       "auditSha256": "b4acb18331e55fdafe60d45c33fd6951cf1e153578a12f4c7a0988c0f6ce56c7"
+    },
+    {
+      "batchId": "historical-recovery-9856771217a1df07bfdddb35-slice-697847ec9d5a",
+      "batchSha256": "d547031cdc2b7908272be8051a7a4a6136faea7e375f8640efb5f6f65ba538e8",
+      "queueSha256": "863a968b92d3df25aed37a01b9465c5babfa701b32a7bac7a98d92d3d4f5b2eb",
+      "resultsSha256": "2fc232de6e3030ce699ce8ecf3768284f9bfceed827f8287c4028705cd7ecb39",
+      "auditSha256": "6e2cc7d92e2d7d8bd315f491e6f2ee98842c115ebc0746d88aa152cbef6e5891"
+    },
+    {
+      "batchId": "historical-recovery-9856771217a1df07bfdddb35-slice-ff4bdc2961a3",
+      "batchSha256": "47c70007e95241825c0864c3908b34775ec9272b9298ec60d4e1f4a5d10ea2ce",
+      "queueSha256": "863a968b92d3df25aed37a01b9465c5babfa701b32a7bac7a98d92d3d4f5b2eb",
+      "resultsSha256": "4be7bbfdd4067c0953e35a388294b0feaa26b6c139afadcd7a693bb32cc1df87",
+      "auditSha256": "6d70e3b73b3b709a502dfef94d276e67c85ff0899c1dafdc34679c683b05edf2"
     },
     {
       "batchId": "historical-recovery-9ebf3110bb2873fb419a6ee4-slice-90e9197896a0",
