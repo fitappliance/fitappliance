@@ -1192,6 +1192,86 @@ test('an exact Samsung AU download binds one explicitly defined washer wildcard 
   assert.equal(attested.verificationReceipt.claimSemanticsVersion, 2);
 });
 
+test('a hash-bound exact Fisher & Paykel support product binds the RF610A family manual column', () => {
+  const identity = { brand: 'Fisher & Paykel', model: 'RF610ADUQSX4', category: 'fridge' };
+  const sourceUrl = 'https://content.fisherpaykel.com/guides/RF610ADUQSX4-install.pdf';
+  const pdfBytes = Buffer.from('%PDF-1.7\nFisher Paykel RF610A support family manual');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [{
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Ice & Water and Non-Ice & Water E372B, E402B, E406B, E442B, E522B, RF522W, RF522A, RF610A & RF540A models' }] },
+      bbox: [88, 828, 384, 902],
+    }],
+    [],
+    [{
+      type: 'table',
+      content: { html: '<table><tr><td>Product dimensions (mm)</td><td>RF522W</td><td>RF522A</td><td>RF610/RF540A</td></tr><tr><td>A overall height of product</td><td>1715</td><td>1715</td><td>1790</td></tr><tr><td>B overall width of product</td><td>790</td><td>790</td><td>900</td></tr><tr><td>C overall depth of product (excludes handle, includes evaporator)</td><td>695</td><td>695</td><td>695</td></tr><tr><td>Cabinetry dimensions (mm)</td><td></td><td></td><td></td></tr></table>' },
+      bbox: [57, 131, 940, 833],
+    }],
+  ]));
+  const discoveryBytes = Buffer.from(JSON.stringify({
+    product: {
+      modelNumber: identity.model,
+      articles: [{ id: 'ka0-rf610-install', articleBody: `<a href="${sourceUrl}">Installation guide</a>` }],
+    },
+  }));
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1, method: 'official_support_api', market: 'AU', sourceMarket: 'NZ',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/refrig-rf610aduqsx4-fp-aa--RF610ADUQSX4',
+    requestedModel: identity.model, matchedModel: identity.model,
+    artifactUrl: sourceUrl, artifactLinkUrl: sourceUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.json`,
+    discoveryByteSize: discoveryBytes.length,
+    documentId: 'ka0-rf610-install',
+  };
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: identity, claimSemanticsVersion: 2, boundSupportFamilyModel: 'RF610A',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }).claims;
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const source = {
+    authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+    sourceUrl, finalUrl: sourceUrl, redirectChain: [],
+    retrievedAt: '2026-07-16T06:00:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    discoveryProvenance,
+    identity: { ...identity, outcome: 'exact' }, claims, derivedArtifact,
+  };
+  const attested = verifyAndAttestResolutionArtifact({
+    source, caseIdentity: identity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    discoveryArtifactBytes: discoveryBytes,
+    verifiedAt: '2026-07-16T06:01:00.000Z', claimSemanticsVersion: 2,
+  });
+
+  const signalTypes = new Set(attested.identitySignals.map((signal) => signal.type));
+  assert.ok(signalTypes.has('official_support_api_model'));
+  assert.ok(signalTypes.has('mineru_fp_rf610a_support_family'));
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested, caseIdentity: identity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+  }), true);
+
+  const siblingBytes = Buffer.from(discoveryBytes.toString('utf8').replaceAll(identity.model, 'RF610ADUB5'));
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: { ...source, discoveryProvenance: {
+      ...discoveryProvenance,
+      discoveryContentSha256: createHash('sha256').update(siblingBytes).digest('hex'),
+      discoveryObjectPath: `evidence/web/sha256/${createHash('sha256').update(siblingBytes).digest('hex').slice(0, 2)}/${createHash('sha256').update(siblingBytes).digest('hex').slice(2, 4)}/${createHash('sha256').update(siblingBytes).digest('hex')}.json`,
+      discoveryByteSize: siblingBytes.length,
+    } },
+    caseIdentity: identity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    discoveryArtifactBytes: siblingBytes,
+    verifiedAt: '2026-07-16T06:01:00.000Z', claimSemanticsVersion: 2,
+  }), /exact model/i);
+});
+
 test('a hash-bound official product page can independently bind a model-scoped PDF', () => {
   const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
   const pdfBytes = Buffer.from('%PDF-1.7\nproduct-page-bound artifact');

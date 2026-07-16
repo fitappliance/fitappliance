@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-15T23:35:52.844Z",
-  "sourceAcquisitionQueueSha256": "0ce306093c4e37c3dda78b7ca9c3b0043ba5f4cfccb77d3f3f855625e046a382",
+  "generatedAt": "2026-07-16T00:01:44.638Z",
+  "sourceAcquisitionQueueSha256": "2052c853efec2628ca02038b7f0f51d3adcc8eb0b04ef8980513bffb465a8b6f",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7926,
-    "fetchJobs": 1,
-    "targets": 7648,
+    "acquisitionRecords": 7925,
+    "fetchJobs": 0,
+    "targets": 7647,
     "resolverOnlyTargets": 7647,
-    "candidateEdges": 1,
-    "uniqueReferences": 7648,
+    "candidateEdges": 0,
+    "uniqueReferences": 7647,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 1948,
-      "CURRENT_RETAIL": 1148,
+      "CURRENT_RETAIL": 1147,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 979,
+      "P0_CURRENT_MISSING_DIMENSIONS": 978,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1929,
       "P2_CURRENT_CONFIRMATION": 162,
       "P3_HISTORICAL_CONFIRMATION": 4520,
@@ -32,19 +32,7 @@
       "RESEARCH_REQUIRED": 278
     }
   },
-  "jobs": [
-    {
-      "jobId": "recovery_4c18cc6ada281fe07419a95b",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "targetIds": [
-        "recovery_target_0c12b47e910a3e4e41119095"
-      ]
-    }
-  ],
+  "jobs": [],
   "targets": [
     {
       "targetId": "recovery_target_15e7e38fc54dc77ebe0dbced",
@@ -16991,47 +16979,6 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_0c12b47e910a3e4e41119095",
-      "referenceId": "fa_ref_a7a6de0ae223d36eabaed392",
-      "legacyRuntimeId": "ao-42035",
-      "canonicalProductId": "fa_prod_650c22974436f1c0a4a80791",
-      "category": "fridge",
-      "brand": "Fisher & Paykel",
-      "model": "RF610ADUQSX4",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_64b38006796923980f844221",
-        "legacy:data/pdf-evidence-raw/RF610ADUQSX4.json",
-        "pdf:b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
-        "source:doc_64b38006796923980f844221",
-        "source:doc_ae1dd92cc6bba5de5587c6c7"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_64b38006796923980f844221",
-          "dimensionsMm": {
-            "width": 900,
-            "height": 1790,
-            "depth": 695
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [
-        "recovery_4c18cc6ada281fe07419a95b"
-      ],
-      "primaryJobId": "recovery_4c18cc6ada281fe07419a95b",
       "repairExistingReceipt": false
     },
     {

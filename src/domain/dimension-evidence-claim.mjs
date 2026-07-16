@@ -167,7 +167,7 @@ function inferredFlag(label, noun) {
   }
   const qualifier = noun === 'handle' ? '(?:door\\s+)?' : '';
   if (new RegExp(`(?:including|with)\\s+(?:the\\s+)?${qualifier}${noun}s?`).test(normalized)) return true;
-  if (new RegExp(`(?:excluding|without)\\s+(?:the\\s+)?${qualifier}${noun}s?`).test(normalized)) return false;
+  if (new RegExp(`(?:exclud(?:es|ing)|without)\\s+(?:the\\s+)?${qualifier}${noun}s?`).test(normalized)) return false;
   return null;
 }
 

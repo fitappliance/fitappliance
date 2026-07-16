@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1514,
-    "fetchJobs": 1477,
-    "targets": 1511,
-    "candidateEdges": 1514,
+    "documents": 1513,
+    "fetchJobs": 1476,
+    "targets": 1510,
+    "candidateEdges": 1513,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1511,
+    "uniqueReferences": 1510,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 444,
-      "MEASURE_REQUIRED": 1042,
+      "MEASURE_REQUIRED": 1041,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 281,
-      "CURRENT_RETAIL": 1230
+      "CURRENT_RETAIL": 1229
     },
     "byCategory": {
       "dishwasher": 348,
       "dryer": 64,
-      "fridge": 874,
+      "fridge": 873,
       "washing_machine": 225
     },
     "byAcquisitionRoute": {
       "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1177,
-      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 242,
+      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 241,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 93,
+      "ALREADY_AUTO_FILL": 94,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -223,32 +223,6 @@
       ],
       "targetIds": [
         "recovery_target_3135120534d09720de2843f6"
-      ]
-    },
-    {
-      "jobId": "recovery_d75ca49bf08976dc268c12c7",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_0c12b47e910a3e4e41119095"
       ]
     },
     {
@@ -54555,47 +54529,6 @@
         "recovery_af2372a9c933113f9fa02bed"
       ],
       "primaryJobId": "recovery_af2372a9c933113f9fa02bed"
-    },
-    {
-      "referenceId": "fa_ref_a7a6de0ae223d36eabaed392",
-      "legacyRuntimeId": "ao-42035",
-      "canonicalProductId": "fa_prod_650c22974436f1c0a4a80791",
-      "category": "fridge",
-      "brand": "Fisher & Paykel",
-      "model": "RF610ADUQSX4",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 900,
-        "height": 1790,
-        "depth": 695
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_0c12b47e910a3e4e41119095",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_64b38006796923980f844221"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_64b38006796923980f844221",
-          "dimensionsMm": {
-            "width": 900,
-            "height": 1790,
-            "depth": 695
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_d75ca49bf08976dc268c12c7"
-      ],
-      "primaryJobId": "recovery_d75ca49bf08976dc268c12c7"
     },
     {
       "referenceId": "fa_ref_bf54ab8d78d7e2b6f57cf437",

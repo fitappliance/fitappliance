@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-16.3",
+  "policyVersion": "2026-07-16.4",
   "queueSchemaVersion": 2,
   "supportedReceiptSchemaVersions": [2, 3],
   "supportedClaimSemanticsVersions": [1, 2],
@@ -39,7 +39,7 @@
     "name": "MinerU",
     "version": "3.4.4",
     "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-    "claimParserRevision": "2026-07-16.3",
+    "claimParserRevision": "2026-07-16.4",
     "backend": "pipeline",
     "method": "auto",
     "tableEnabled": true,

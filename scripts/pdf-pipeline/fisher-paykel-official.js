@@ -1,9 +1,12 @@
 require('dotenv').config({ quiet: true });
 
+const { createHash } = require('node:crypto');
+
 const FP_BASE_URL = 'https://www.fisherpaykel.com';
 const FP_SUPPORT_BASE_URL = 'https://mf-support.mfe.fisherpaykel.com';
 const DEFAULT_USER_AGENT = 'FitApplianceBot/1.0 (+https://www.fitappliance.com.au/about)';
 const DEFAULT_TIMEOUT_MS = 20_000;
+const MAXIMUM_SUPPORT_API_BYTES = 8 * 1024 * 1024;
 
 function normalizeSku(value) {
   return String(value || '')
@@ -63,7 +66,19 @@ async function fetchHtml(url, opts = {}) {
   return await response.text();
 }
 
-async function fetchJson(url, opts = {}, init = {}) {
+async function jsonResponseWithBytes(response, maximumBytes = MAXIMUM_SUPPORT_API_BYTES) {
+  const bytes = Buffer.from(await response.arrayBuffer());
+  if (!bytes.length || bytes.length > maximumBytes) {
+    throw new Error('Fisher & Paykel JSON response size outside limits');
+  }
+  let payload;
+  try { payload = JSON.parse(bytes.toString('utf8')); } catch {
+    throw new Error('Fisher & Paykel API returned invalid JSON');
+  }
+  return { payload, bytes };
+}
+
+async function fetchJsonWithBytes(url, opts = {}, init = {}) {
   const response = await fetchResponse(url, opts, {
     ...init,
     headers: {
@@ -74,7 +89,11 @@ async function fetchJson(url, opts = {}, init = {}) {
   if (!response.ok) {
     throw new Error(`Fisher & Paykel fetch failed with HTTP ${response.status}`);
   }
-  return await response.json();
+  return jsonResponseWithBytes(response, opts.maximumSupportApiBytes);
+}
+
+async function fetchJson(url, opts = {}, init = {}) {
+  return (await fetchJsonWithBytes(url, opts, init)).payload;
 }
 
 function extractProductPageUrls(searchHtml, sku) {
@@ -525,10 +544,16 @@ async function findFisherPaykelSupportProduct(sku, opts = {}) {
     }
 
     let productPayload;
+    let productBytes;
+    let productApiUrl;
     let supportSlug;
     if (lookupResponse.ok) {
-      productPayload = await lookupResponse.json();
+      ({ payload: productPayload, bytes: productBytes } = await jsonResponseWithBytes(
+        lookupResponse,
+        opts.maximumSupportApiBytes,
+      ));
       supportSlug = String(productPayload?.canonicalPath || '').split('/').filter(Boolean).at(-1) || exactSku;
+      productApiUrl = lookupUrl;
     } else if (lookupResponse.status >= 300 && lookupResponse.status < 400) {
       const location = lookupResponse.headers.get('location');
       supportSlug = String(location || '').split('?')[0].split('/').filter(Boolean).at(-1);
@@ -536,9 +561,9 @@ async function findFisherPaykelSupportProduct(sku, opts = {}) {
         failures.push({ market, stage: 'product_redirect', message: 'missing support product location' });
         continue;
       }
-      const productApiUrl = `${FP_SUPPORT_BASE_URL}/${marketPath}/api/support/products/${encodeURIComponent(supportSlug)}`;
+      productApiUrl = `${FP_SUPPORT_BASE_URL}/${marketPath}/api/support/products/${encodeURIComponent(supportSlug)}`;
       try {
-        productPayload = await fetchJson(productApiUrl, opts);
+        ({ payload: productPayload, bytes: productBytes } = await fetchJsonWithBytes(productApiUrl, opts));
       } catch (error) {
         failures.push({ market, stage: 'product', message: error.message });
         continue;
@@ -579,7 +604,18 @@ async function findFisherPaykelSupportProduct(sku, opts = {}) {
       const existing = deduped.get(resource.url);
       if (!existing || resource.score > existing.score) deduped.set(resource.url, resource);
     }
-    const supportApiUrl = `${FP_SUPPORT_BASE_URL}/${marketPath}/api/support/products/${encodeURIComponent(supportSlug)}`;
+    const supportApiUrl = productApiUrl;
+    let discoveryFields = null;
+    if (deduped.size && typeof opts.writeObject === 'function') {
+      const discoveryContentSha256 = createHash('sha256').update(productBytes).digest('hex');
+      const discoveryObjectPath = `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.json`;
+      await opts.writeObject(discoveryObjectPath, productBytes);
+      discoveryFields = {
+        discoveryContentSha256,
+        discoveryObjectPath,
+        discoveryByteSize: productBytes.length,
+      };
+    }
     const resources = [...deduped.values()]
       .sort((a, b) => b.score - a.score || a.url.localeCompare(b.url))
       .map((resource) => ({
@@ -593,6 +629,10 @@ async function findFisherPaykelSupportProduct(sku, opts = {}) {
           requestedModel: exactSku,
           matchedModel: exactSku,
           artifactUrl: resource.url,
+          ...(discoveryFields && resource.articleId ? {
+            artifactLinkUrl: resource.distributionUrl || resource.url,
+            ...discoveryFields,
+          } : {}),
           ...(resource.articleId || resource.distributionVersionId ? {
             documentId: resource.articleId || resource.distributionVersionId
           } : {}),

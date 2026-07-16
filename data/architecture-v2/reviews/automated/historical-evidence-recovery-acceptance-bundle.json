@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-15T23:15:38.545Z",
-  "policySha256": "a083f2c5f6dbb68e0d3b9b9ef9b0bc350daf9e55fb252ddcf41f112db727d412",
+  "generatedAt": "2026-07-16T00:01:26.915Z",
+  "policySha256": "241e36670ac9adf3890e5562592724ae9dcd19e65eb238c0ade48093ae9015d5",
   "entries": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -2525,6 +2525,242 @@
         "missingFields": [],
         "supersessionViolations": [],
         "axisPermutationResolution": "exact_official_axis_proof_with_registry_tolerance",
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_0c12b47e910a3e4e41119095",
+      "referenceId": "fa_ref_a7a6de0ae223d36eabaed392",
+      "legacyRuntimeId": "ao-42035",
+      "canonicalProductId": "fa_prod_650c22974436f1c0a4a80791",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ADUQSX4",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-ecf00bbfdeb38f28fe9205e4-slice-dcc2d6c09f48",
+      "auditSha256": "8a446a9123aaa3ae3618c0829a7d008d3f0ba94ce5f9d2b0e575e324e1d1b304",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCIJxMAP&dpt=",
+          "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCIJxMAP&dpt=",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T23:59:54.219Z",
+          "contentSha256": "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58",
+          "objectPath": "evidence/web/sha256/67/4b/674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 8891482,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Fisher & Paykel",
+            "model": "RF610ADUQSX4",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 900
+              },
+              "sourceLabel": "B overall width of product",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 13,
+              "fragmentSha256": "26d8ac722929902a2063f44646677ea0ed836b82dfa88c1146f0566721af8da6",
+              "bbox": [
+                57,
+                131,
+                940,
+                833
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1790
+              },
+              "sourceLabel": "A overall height of product",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 13,
+              "fragmentSha256": "26d8ac722929902a2063f44646677ea0ed836b82dfa88c1146f0566721af8da6",
+              "bbox": [
+                57,
+                131,
+                940,
+                833
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 695
+              },
+              "sourceLabel": "overall depth of product (excludes handle, includesCevaporator)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": false,
+              "page": 13,
+              "fragmentSha256": "26d8ac722929902a2063f44646677ea0ed836b82dfa88c1146f0566721af8da6",
+              "bbox": [
+                57,
+                131,
+                940,
+                833
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_support_api",
+            "market": "AU",
+            "sourceMarket": "NZ",
+            "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/refrig-rf610aduqsx4-fp-aa--RF610ADUQSX4",
+            "requestedModel": "RF610ADUQSX4",
+            "matchedModel": "RF610ADUQSX4",
+            "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCIJxMAP&dpt=",
+            "documentId": "ka0Jw0000006g4bIAA",
+            "originalFileName": "839456A_NZ_AUS_ROW_Combined Refrig_U2_UG_LR 11/12/2023",
+            "discoveryContentSha256": "f552862a9b41455ed94b593a17de774b72dbce11efeb65168cdff8d2f4d700db",
+            "discoveryObjectPath": "evidence/web/sha256/f5/52/f552862a9b41455ed94b593a17de774b72dbce11efeb65168cdff8d2f4d700db.json",
+            "discoveryByteSize": 16043,
+            "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ttVJ/RZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ"
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58",
+            "contentSha256": "77d959a51cbb8ef510cb1312f1ca4da9f9cd5c2ff3621357870857738494c7ff",
+            "objectPath": "evidence/derived/mineru-json/sha256/77/d9/77d959a51cbb8ef510cb1312f1ca4da9f9cd5c2ff3621357870857738494c7ff.json",
+            "byteSize": 211075,
+            "pageCount": 60
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_fp_rf610a_support_family",
+              "value": "RF610ADUQSX4:family:RF610A:cover:394a1fee245c226afc4146b8f934ab0692437114cc23f4447d0806fdaa74d73a:page:13:26d8ac722929902a2063f44646677ea0ed836b82dfa88c1146f0566721af8da6"
+            },
+            {
+              "type": "official_support_api_model",
+              "value": "RF610ADUQSX4:f552862a9b41455ed94b593a17de774b72dbce11efeb65168cdff8d2f4d700db:https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/refrig-rf610aduqsx4-fp-aa--RF610ADUQSX4"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "discoveryPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T23:59:54.219Z",
+            "bindingSha256": "ab80eab532e0960966de957bdeb4288cf4ff9e09eb5b3704688f9babd6e605df"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 900,
+            "heightMm": {
+              "minimumMm": 1790,
+              "maximumMm": 1790
+            },
+            "depthMm": 695
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCIJxMAP&dpt=",
+            "contentSha256": "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58",
+            "receiptBindingSha256": "ab80eab532e0960966de957bdeb4288cf4ff9e09eb5b3704688f9babd6e605df",
+            "page": 13,
+            "fragmentSha256": "26d8ac722929902a2063f44646677ea0ed836b82dfa88c1146f0566721af8da6"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCIJxMAP&dpt=",
+            "contentSha256": "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58",
+            "receiptBindingSha256": "ab80eab532e0960966de957bdeb4288cf4ff9e09eb5b3704688f9babd6e605df",
+            "page": 13,
+            "fragmentSha256": "26d8ac722929902a2063f44646677ea0ed836b82dfa88c1146f0566721af8da6"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCIJxMAP&dpt=",
+            "contentSha256": "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58",
+            "receiptBindingSha256": "ab80eab532e0960966de957bdeb4288cf4ff9e09eb5b3704688f9babd6e605df",
+            "page": 13,
+            "fragmentSha256": "26d8ac722929902a2063f44646677ea0ed836b82dfa88c1146f0566721af8da6"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
         "lowerAuthorityResolution": null,
         "conflictReason": null
       }
@@ -39602,6 +39838,13 @@
       "queueSha256": "5b75ca3cd594af33319ee49bf5af46b1b5534905e4f6ac490cee86907dbf5ec2",
       "resultsSha256": "1ff33c5c8075389c70514cea288d9b7568804a042441ef96f5fa7c3488a703c3",
       "auditSha256": "ed15a34863709201af390dc23adc64d64769b1621610c2b33b58a7862e7eb075"
+    },
+    {
+      "batchId": "historical-recovery-ecf00bbfdeb38f28fe9205e4-slice-dcc2d6c09f48",
+      "batchSha256": "fe4c5716e5cd1ae18b06d8b4c7a7e7cd79eabaffb4dceafba72c5b60647f4224",
+      "queueSha256": "1716d32dbe891e1a84f25b2daf154ad8789c88c3dd7fa2bbcd6c31a143f771d6",
+      "resultsSha256": "6f72fa5f1bdab00d703285a11697527991d9e445356246e4fa45efe290eb7b5c",
+      "auditSha256": "8a446a9123aaa3ae3618c0829a7d008d3f0ba94ce5f9d2b0e575e324e1d1b304"
     },
     {
       "batchId": "historical-recovery-ed19c38d6b9cfceafe49b200-slice-aced5f800fe0",

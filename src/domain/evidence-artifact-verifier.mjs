@@ -32,6 +32,10 @@ import {
   officialMarketApiDimensions,
   verifyOfficialMarketApiDiscoveryEvidence,
 } from './official-market-api-discovery-evidence.mjs';
+import {
+  officialSupportApiBoundFamilyModel,
+  verifyOfficialSupportApiDiscoveryEvidence,
+} from './official-support-api-discovery-evidence.mjs';
 
 function normalizedText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
@@ -302,6 +306,11 @@ function pdfIdentitySignals(
     discoveryArtifactBytes,
     bytes,
   );
+  const boundSupportFamilyModel = officialSupportApiBoundFamilyModel(
+    source?.discoveryProvenance,
+    caseIdentity,
+    discoveryArtifactBytes,
+  );
   const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel ? null : boundFamilyModel;
   const parsed = parseMineruContentListV2(bytes, {
     pdfSha256: source.contentSha256,
@@ -315,6 +324,7 @@ function pdfIdentitySignals(
     ...(selectedBoundFamilyModel ? { boundFamilyModel: selectedBoundFamilyModel } : {}),
     ...(boundSeriesModel ? { boundSeriesModel } : {}),
     ...(boundExactCoverModel ? { boundExactCoverModel } : {}),
+    ...(boundSupportFamilyModel ? { boundSupportFamilyModel } : {}),
     ...(derived.fallbackTrigger ? {
       identityContextJsonBytes: fallbackTriggerArtifactBytes,
       identityContextContentSha256: derived.fallbackTrigger.contentSha256,
@@ -378,6 +388,16 @@ function officialMarketApiIdentitySignals(source, caseIdentity, discoveryArtifac
     value: `${caseIdentity.model}:${dimensions.widthMm}x${dimensions.heightMm}x${dimensions.depthMm}:${provenance.discoveryContentSha256}`,
   });
   return signals;
+}
+
+function officialSupportApiIdentitySignals(source, caseIdentity, discoveryArtifactBytes) {
+  const provenance = source?.discoveryProvenance;
+  if (provenance?.method !== 'official_support_api' || !provenance.discoveryContentSha256) return [];
+  verifyOfficialSupportApiDiscoveryEvidence(provenance, caseIdentity, discoveryArtifactBytes);
+  return [{
+    type: 'official_support_api_model',
+    value: `${caseIdentity.model}:${provenance.discoveryContentSha256}:${provenance.discoveryUrl}`,
+  }];
 }
 
 function verifyQuotes(source, text) {
@@ -558,6 +578,7 @@ export function verifyAndAttestResolutionArtifact({
   manufacturerPolicyVersion = undefined,
   includeOfficialProductPageIdentitySignal = true,
   includeOfficialMarketApiIdentitySignal = true,
+  includeOfficialSupportApiIdentitySignal = true,
 }) {
   const buffer = verifyBytes(source, bytes);
   let identityProof;
@@ -588,6 +609,15 @@ export function verifyAndAttestResolutionArtifact({
       identityProof = {
         ...identityProof,
         signals: [...identityProof.signals, ...marketApiSignals],
+      };
+    }
+    const supportApiSignals = includeOfficialSupportApiIdentitySignal
+      ? officialSupportApiIdentitySignals(source, caseIdentity, discoveryArtifactBytes)
+      : [];
+    if (supportApiSignals.length) {
+      identityProof = {
+        ...identityProof,
+        signals: [...identityProof.signals, ...supportApiSignals],
       };
     }
   } else {
@@ -640,6 +670,8 @@ export function verifyAttestedResolutionArtifact({
       .some((signal) => signal?.type === 'official_product_page_model'),
     includeOfficialMarketApiIdentitySignal: (source.identitySignals ?? [])
       .some((signal) => signal?.type === 'official_market_api_model'),
+    includeOfficialSupportApiIdentitySignal: (source.identitySignals ?? [])
+      .some((signal) => signal?.type === 'official_support_api_model'),
   });
   if (rebuilt.verificationReceipt.bindingSha256 !== source?.verificationReceipt?.bindingSha256) {
     throw new Error('artifact attestation receipt mismatch');

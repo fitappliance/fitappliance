@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T23:35:52.844Z",
-  "semanticQueueSha256": "0ce306093c4e37c3dda78b7ca9c3b0043ba5f4cfccb77d3f3f855625e046a382",
-  "sourceClassificationSha256": "e0e08f227641bf128b2dcf1625bc1a24e546c6d8c1ad841c4c550b9761f17d09",
+  "generatedAt": "2026-07-16T00:01:44.638Z",
+  "semanticQueueSha256": "2052c853efec2628ca02038b7f0f51d3adcc8eb0b04ef8980513bffb465a8b6f",
+  "sourceClassificationSha256": "ec881e067db0b5b1668bcdbb29e2ac0c851cfc249ff788756b959757a1f55a1e",
   "records": [
     {
       "schemaVersion": 1,
@@ -18686,39 +18686,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_1301dc62d7ccb1af15ad0831"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_9c7dcf1b2be6ff560c5caa85",
-      "referenceId": "fa_ref_a7a6de0ae223d36eabaed392",
-      "category": "fridge",
-      "brand": "Fisher & Paykel",
-      "model": "RF610ADUQSX4",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family b5ff35773bed",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_5bfa950a8224cbec334e57b4",
-        "historical_source_63e9dea1bb4d724a2c3f0ce6",
-        "historical_source_99d5010c8dd946101841d3df"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_0c12b47e910a3e4e41119095"
-      ],
-      "legacyRuntimeIds": [
-        "ao-42035"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_650c22974436f1c0a4a80791"
       ],
       "offlineReplayOutcome": null
     },
@@ -204166,19 +204133,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_5bfa950a8224cbec334e57b4",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/RF610ADUQSX4.json",
-        "pdf:b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8"
-      ],
-      "referenceIds": [
-        "fa_ref_a7a6de0ae223d36eabaed392"
-      ]
-    },
-    {
       "sourceId": "historical_source_5bfbf1436df4461ae7a8b7d6",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/3/5/a/8/35a85c0c36f6b28230dff1e66604d15b3345cb0d_WDC1215HSVE_LG_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -204982,18 +204936,6 @@
       ],
       "referenceIds": [
         "fa_ref_dae0d6eaef8645eab79f97ba"
-      ]
-    },
-    {
-      "sourceId": "historical_source_63e9dea1bb4d724a2c3f0ce6",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/2/9/0/92909ecf7825890a9ee9a600149ab69a45fd872e_Fisher___Paykel_RF610ADUQSX4_614L_French_Door_Fridge_Installation_Guide.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "source:doc_ae1dd92cc6bba5de5587c6c7"
-      ],
-      "referenceIds": [
-        "fa_ref_a7a6de0ae223d36eabaed392"
       ]
     },
     {
@@ -209599,18 +209541,6 @@
       ],
       "referenceIds": [
         "fa_ref_2c875215a2cfa8fe69a91b6a"
-      ]
-    },
-    {
-      "sourceId": "historical_source_99d5010c8dd946101841d3df",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "source:doc_64b38006796923980f844221"
-      ],
-      "referenceIds": [
-        "fa_ref_a7a6de0ae223d36eabaed392"
       ]
     },
     {
@@ -217429,49 +217359,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 169,
+    "COMPLETE_RECEIPT": 170,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7926,
-    "uniqueReferences": 7926,
-    "candidateSources": 1587,
-    "candidateEdges": 1622,
+    "queuedModels": 7925,
+    "uniqueReferences": 7925,
+    "candidateSources": 1584,
+    "candidateEdges": 1619,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2109,
-      "CURRENT_RETAIL": 1254,
+      "CURRENT_RETAIL": 1253,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1370,
       "dryer": 815,
-      "fridge": 4272,
+      "fridge": 4271,
       "washing_machine": 1469
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 195,
       "OFFICIAL_DISCOVERY": 6422,
-      "OFFICIAL_REACQUIRE": 1,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 195,
       "OFFICIAL_DISCOVERY": 6422,
-      "OFFICIAL_REACQUIRE": 1,
       "OFFICIAL_REDISCOVERY": 1225
     },
     "byExecutionReadiness": {
-      "BOUNDED_READY": 1,
       "DISCOVERY_READY": 5065,
       "RESEARCH_REQUIRED": 278,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 169,
+      "COMPLETE_RECEIPT": 170,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

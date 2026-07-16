@@ -8,6 +8,7 @@ import {
   officialMarketApiBoundFamilyModel,
   officialMarketApiBoundSeriesModel,
 } from './official-market-api-discovery-evidence.mjs';
+import { officialSupportApiBoundFamilyModel } from './official-support-api-discovery-evidence.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -304,6 +305,11 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       discoveryArtifactBytes,
       artifact.derivedArtifactBytes,
     );
+    const boundSupportFamilyModel = officialSupportApiBoundFamilyModel(
+      discoveryProvenance,
+      identity,
+      discoveryArtifactBytes,
+    );
     const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel ? null : boundFamilyModel;
     claims = parseMineruContentListV2(artifact.derivedArtifactBytes, {
       pdfSha256: artifact.contentSha256,
@@ -316,6 +322,7 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       ...(selectedBoundFamilyModel ? { boundFamilyModel: selectedBoundFamilyModel } : {}),
       ...(boundSeriesModel ? { boundSeriesModel } : {}),
       ...(boundExactCoverModel ? { boundExactCoverModel } : {}),
+      ...(boundSupportFamilyModel ? { boundSupportFamilyModel } : {}),
       ...(artifact.derivedArtifact.fallbackTrigger ? {
         identityContextJsonBytes: artifact.fallbackTriggerArtifactBytes,
         identityContextContentSha256: artifact.derivedArtifact.fallbackTrigger.contentSha256,

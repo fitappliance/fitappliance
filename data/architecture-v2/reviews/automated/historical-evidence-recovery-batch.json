@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-26b9803004b1ba30ace64a08",
-  "generatedAt": "2026-07-15T23:35:52.844Z",
+  "batchId": "historical-recovery-54e32494bd92e246f639afcc",
+  "generatedAt": "2026-07-16T00:01:44.638Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "1a18e870ce571ca8beabd52bd5551907be13f6c209912bb53d99ed872e6cc9b7"
+    "sha256": "f7b228e6ecbab5a7a7fb14aa6f3d28bda740a88c1c1a0d05d23b7ccc6e975636"
   },
   "policy": {
-    "version": "2026-07-16.3",
-    "sha256": "a083f2c5f6dbb68e0d3b9b9ef9b0bc350daf9e55fb252ddcf41f112db727d412"
+    "version": "2026-07-16.4",
+    "sha256": "241e36670ac9adf3890e5562592724ae9dcd19e65eb238c0ade48093ae9015d5"
   },
   "selection": {
     "jobIds": [],
@@ -18,19 +18,7 @@
     "targetIds": [],
     "limit": null
   },
-  "artifactJobs": [
-    {
-      "jobId": "recovery_4c18cc6ada281fe07419a95b",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "targetIds": [
-        "recovery_target_0c12b47e910a3e4e41119095"
-      ]
-    }
-  ],
+  "artifactJobs": [],
   "targets": [
     {
       "targetId": "recovery_target_15e7e38fc54dc77ebe0dbced",
@@ -14679,40 +14667,6 @@
         "legacyHints": [
           {
             "sourceDocumentId": "doc_c29e5b7db2fa490d40168007",
-            "dimensionsMm": {
-              "width": 900,
-              "height": 1790,
-              "depth": 695
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_0c12b47e910a3e4e41119095",
-      "referenceId": "fa_ref_a7a6de0ae223d36eabaed392",
-      "legacyRuntimeId": "ao-42035",
-      "canonicalProductId": "fa_prod_650c22974436f1c0a4a80791",
-      "brand": "Fisher & Paykel",
-      "model": "RF610ADUQSX4",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": "recovery_4c18cc6ada281fe07419a95b",
-      "candidateJobIds": [
-        "recovery_4c18cc6ada281fe07419a95b"
-      ],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_64b38006796923980f844221",
             "dimensionsMm": {
               "width": 900,
               "height": 1790,
@@ -234172,9 +234126,9 @@
     }
   ],
   "summary": {
-    "artifactJobs": 1,
-    "targets": 7648,
-    "candidateEdges": 1,
+    "artifactJobs": 0,
+    "targets": 7647,
+    "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
   }

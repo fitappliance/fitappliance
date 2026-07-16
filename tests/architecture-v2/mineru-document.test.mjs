@@ -1585,6 +1585,59 @@ test('MinerU binds Fisher and Paykel DW60 installation dimensions through its mo
   }), /no exact-model MinerU evidence/i);
 });
 
+test('MinerU binds the RF610A support family only to its explicit RF610/RF540A product column', () => {
+  const identity = { brand: 'Fisher & Paykel', model: 'RF610ADUQSX4', category: 'fridge' };
+  const cover = {
+    type: 'paragraph',
+    content: { paragraph_content: [{ type: 'text', content: 'Ice & Water and Non-Ice & Water E372B, E402B, E406B, E442B, E522B, RF522W, RF522A, RF610A & RF540A models' }] },
+    bbox: [88, 828, 384, 902],
+  };
+  const dimensions = {
+    type: 'table',
+    content: { html: '<table><tr><td>Product dimensions (mm)</td><td>RF522W</td><td>RF522A</td><td>RF610/RF540A</td></tr><tr><td>A overall height of product</td><td>1715</td><td>1715</td><td>1790</td></tr><tr><td>B overall width of product</td><td>790</td><td>790</td><td>900</td></tr><tr><td>overall depth of product (excludes handle, includes evaporator)</td><td>695</td><td>695</td><td>695</td></tr><tr><td>Cabinetry dimensions (mm)</td><td></td><td></td><td></td></tr><tr><td>D inside height of cavity</td><td>1735</td><td>1735</td><td>1810</td></tr></table>' },
+    bbox: [57, 131, 940, 833],
+  };
+  const bytes = Buffer.from(JSON.stringify([[cover], [], [dimensions]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: identity, claimSemanticsVersion: 2, boundSupportFamilyModel: 'RF610A',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.heightMm': 1790,
+    'closedEnvelope.widthMm': 900,
+    'closedEnvelope.depthMm': 695,
+  });
+  assert.ok(parsed.grammarProfileIds.includes('fisher-paykel-rf610a-support-family-v1'));
+  assert.ok(parsed.identitySignals.some((signal) => signal.type === 'mineru_fp_rf610a_support_family'));
+  assert.equal(
+    parsed.claims.find((claim) => claim.field === 'closedEnvelope.depthMm').includesHandle,
+    false,
+  );
+
+  for (const [label, pages, options = {}] of [
+    ['missing cover', [[], [], [dimensions]]],
+    ['wrong table heading', [[cover], [], [{ ...dimensions, content: { html: dimensions.content.html.replace('RF610/RF540A', 'RF610/RF540') } }]]],
+    ['duplicate table', [[cover], [], [dimensions, dimensions]]],
+    ['missing depth axis', [[cover], [], [{ ...dimensions, content: { html: dimensions.content.html.replace(/<tr><td>overall depth[\s\S]*?<\/tr>/, '') } }]]],
+  ]) {
+    assert.throws(() => parseMineruContentListV2(Buffer.from(JSON.stringify(pages)), {
+      pdfSha256, parserVersion: '3.4.4', modelRevision,
+      caseIdentity: identity, claimSemanticsVersion: 2, boundSupportFamilyModel: 'RF610A',
+      fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+      ...options,
+    }), /bound support family|identity signal/i, label);
+  }
+
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { ...identity, model: 'RF605QNUVB1' }, claimSemanticsVersion: 2,
+    boundSupportFamilyModel: 'RF610A',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }), /bound support family|identity signal/i);
+});
+
 test('MinerU reconnects a Bosch grouped dimension heading to an explicitly labelled next paragraph', () => {
   const bytes = Buffer.from(JSON.stringify([[
     pageHeader('Series 4 dishwasher SMS4HVI01A'),

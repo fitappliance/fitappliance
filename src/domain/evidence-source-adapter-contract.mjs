@@ -102,7 +102,8 @@ function optionalDiscoveryProvenance(value) {
       discoveryObjectPath: objectPath,
       discoveryByteSize: value.discoveryByteSize,
     });
-  } else if (result.method === 'official_market_api' && value.discoveryContentSha256) {
+  } else if (['official_market_api', 'official_support_api'].includes(result.method)
+    && value.discoveryContentSha256) {
     const hash = requiredText(value.discoveryContentSha256, 'candidate discovery content SHA-256');
     if (!/^[a-f0-9]{64}$/.test(hash)) throw new TypeError('candidate discovery content SHA-256 invalid');
     const objectPath = requiredText(value.discoveryObjectPath, 'candidate discovery object path');
@@ -115,6 +116,9 @@ function optionalDiscoveryProvenance(value) {
       discoveryContentSha256: hash,
       discoveryObjectPath: objectPath,
       discoveryByteSize: value.discoveryByteSize,
+      ...(result.method === 'official_support_api' ? {
+        artifactLinkUrl: canonicalHttpsUrl(value.artifactLinkUrl, 'candidate discovery artifact link URL'),
+      } : {}),
     });
   }
   return result;

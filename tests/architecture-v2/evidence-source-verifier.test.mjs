@@ -218,7 +218,7 @@ test('global official artifact is trusted only with receipt-bound Australian dis
   input.verificationReceipt = createVerificationReceipt(input, identity, {
     verifiedAt: '2026-07-11T14:35:00.000Z',
   });
-  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-15.1');
+  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.2');
   assert.equal(verifyVerificationReceipt(input, identity, {
     asOf: input.verificationReceipt.verifiedAt,
   }), true);
@@ -450,6 +450,62 @@ test('Fisher & Paykel archived support API provenance stays bound to exact model
   }, {
     brand: 'Fisher & Paykel', model: 'DW60CDW2', artifactUrl,
   }), /official host|approved.*support API|discovery URL/i);
+});
+
+test('new Fisher & Paykel support API receipts verify their hash-bound exact article response', () => {
+  const identity = { brand: 'Fisher & Paykel', model: 'RF610ADUQSX4', category: 'fridge' };
+  const artifactUrl = 'https://content.fisherpaykel.com/guides/RF610ADUQSX4-install.pdf';
+  const discoveryBytes = Buffer.from(JSON.stringify({
+    product: {
+      modelNumber: 'RF610ADUQSX4',
+      articles: [{
+        id: 'ka0-rf610-install',
+        articleBody: `<a href="${artifactUrl}">Installation guide</a>`,
+      }],
+    },
+  }));
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_support_api',
+    market: 'AU',
+    sourceMarket: 'NZ',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/refrig-rf610aduqsx4-fp-aa--RF610ADUQSX4',
+    requestedModel: 'RF610ADUQSX4',
+    matchedModel: 'RF610ADUQSX4',
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.json`,
+    discoveryByteSize: discoveryBytes.length,
+    documentId: 'ka0-rf610-install',
+  };
+  const input = pdfSource({
+    sourceUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    identity: { ...identity, outcome: 'exact' },
+    identitySignals: [
+      { type: 'mineru_title_model', value: 'RF610ADUQSX4:page:1' },
+      { type: 'official_support_api_model', value: `RF610ADUQSX4:${discoveryHash}:${discoveryProvenance.discoveryUrl}` },
+    ],
+    discoveryProvenance,
+  });
+
+  assert.throws(() => createVerificationReceipt(input, identity, {
+    verifiedAt: '2026-07-16T05:00:00.000Z',
+  }), /discovery artifact bytes required/i);
+  input.verificationReceipt = createVerificationReceipt(input, identity, {
+    verifiedAt: '2026-07-16T05:00:00.000Z',
+    discoveryArtifactBytes: discoveryBytes,
+  });
+  assert.equal(verifyVerificationReceipt(input, identity, {
+    asOf: input.verificationReceipt.verifiedAt,
+    discoveryArtifactBytes: discoveryBytes,
+  }), true);
+  assert.throws(() => normalizeOfficialArtifactDiscoveryProvenance({
+    ...discoveryProvenance,
+    discoveryObjectPath: undefined,
+  }, { brand: identity.brand, model: identity.model, artifactUrl }), /object path/i);
 });
 
 test('retrieval time must be real, non-future, and inside freshness policy', () => {

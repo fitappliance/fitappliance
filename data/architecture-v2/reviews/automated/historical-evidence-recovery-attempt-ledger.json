@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-15T23:15:38.545Z",
+  "generatedAt": "2026-07-16T00:01:26.915Z",
   "entries": [
     {
       "attemptId": "historical_attempt_1ca3bc920a761d88a58ef284",
@@ -31,6 +31,35 @@
       "resultsSha256": "2482d031e6e1f255b594121462bdbf4b9c3e2954e401a2f43df8cba6ee9fe40b",
       "auditSha256": "e939929a6c31ea10c7f5b122fa71e56633337e52a6a1acb81a7b245a56153f48",
       "attemptedAt": "2026-07-15T19:07:38.366Z"
+    },
+    {
+      "attemptId": "historical_attempt_1fd76426b412158e3f6f1e20",
+      "targetId": "recovery_target_0c12b47e910a3e4e41119095",
+      "referenceId": "fa_ref_a7a6de0ae223d36eabaed392",
+      "legacyRuntimeId": "ao-42035",
+      "canonicalProductId": "fa_prod_650c22974436f1c0a4a80791",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ADUQSX4",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+      "finalUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+      "contentSha256": "b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "241e36670ac9adf3890e5562592724ae9dcd19e65eb238c0ade48093ae9015d5",
+      "candidateInventorySha256": "60632fc33e99f9c6d08cceb4c04ae274a8d9ba19db2932a8beaec5d683f54fff",
+      "semanticOutcomeSha256": "d29a21b34abeb356384cb2e25481c92a58d5f65dabe00a74c435a201e8c25992",
+      "batchId": "historical-recovery-ecf00bbfdeb38f28fe9205e4-slice-dcc2d6c09f48",
+      "batchSha256": "fe4c5716e5cd1ae18b06d8b4c7a7e7cd79eabaffb4dceafba72c5b60647f4224",
+      "runId": "fp-rf610aduqsx4-support-api-bound-v2",
+      "resultsSha256": "6f72fa5f1bdab00d703285a11697527991d9e445356246e4fa45efe290eb7b5c",
+      "auditSha256": "4b9861af105edecc67c7d0cd9b8d88d7cb19ee077c29b883ae18e89762a976d4",
+      "attemptedAt": "2026-07-15T23:59:54.290Z"
     },
     {
       "attemptId": "historical_attempt_2159fa664fa72a9a1208e316",
@@ -1764,6 +1793,23 @@
       "acceptedAt": "2026-07-15T19:54:13.777Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_d125a308c71b9f9980038002",
+      "targetId": "recovery_target_0c12b47e910a3e4e41119095",
+      "referenceId": "fa_ref_a7a6de0ae223d36eabaed392",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCIJxMAP&dpt=",
+      "contentSha256": "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58",
+      "status": "accepted",
+      "policySha256": "241e36670ac9adf3890e5562592724ae9dcd19e65eb238c0ade48093ae9015d5",
+      "candidateInventorySha256": "60632fc33e99f9c6d08cceb4c04ae274a8d9ba19db2932a8beaec5d683f54fff",
+      "semanticOutcomeSha256": "d29a21b34abeb356384cb2e25481c92a58d5f65dabe00a74c435a201e8c25992",
+      "batchId": "historical-recovery-ecf00bbfdeb38f28fe9205e4-slice-dcc2d6c09f48",
+      "batchSha256": "fe4c5716e5cd1ae18b06d8b4c7a7e7cd79eabaffb4dceafba72c5b60647f4224",
+      "runId": "fp-rf610aduqsx4-support-api-bound-v2",
+      "resultsSha256": "6f72fa5f1bdab00d703285a11697527991d9e445356246e4fa45efe290eb7b5c",
+      "auditSha256": "4b9861af105edecc67c7d0cd9b8d88d7cb19ee077c29b883ae18e89762a976d4",
+      "acceptedAt": "2026-07-15T23:59:54.290Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_d21d7bc1d0ac6ed0778a1196",
       "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
       "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
@@ -1867,22 +1913,22 @@
     }
   ],
   "summary": {
-    "entries": 42,
+    "entries": 43,
     "resolutions": 11,
-    "sourceAcceptances": 26,
-    "suppressions": 25,
+    "sourceAcceptances": 27,
+    "suppressions": 26,
     "resolvedSuppressions": 10,
     "retryable": 7,
     "byStatus": {
       "claims_incomplete": 2,
-      "identity_rejected": 27,
+      "identity_rejected": 28,
       "mineru_failure": 6,
       "transport_failure": 7
     },
     "byDisposition": {
       "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 6,
       "RETRY_TRANSIENT": 7,
-      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 27,
+      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 28,
       "SEEK_EXACT_MODEL_FIELD_SOURCE": 2
     }
   }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T23:44:11.930Z",
-  "sourceBundleSha256": "623c73b82e403501f3bfe65aa1c8729a83a8b524c6b2ec79ac0f31675284feff",
+  "generatedAt": "2026-07-16T00:14:30.155Z",
+  "sourceBundleSha256": "554898e6dd8f3c5b942f3015dea62e4854229653f43079e4c6de483f54ef9e9f",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -154,6 +154,20 @@
       "contentSha256": "6c23901e31eb4424d193e76b7716229d0ba9c0847d2c4e151c9d28d139971fc8",
       "receiptBindingSha256": "52e21a291c1f5270be382670c9b4394c47bef582b47aea5314df3e7d0b527290",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/82/5d/825dc02fb2b7c72612ae6525261a73e7b7628ac518ab1b7bd646fee392465af0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_0c12b47e910a3e4e41119095",
+      "referenceId": "fa_ref_a7a6de0ae223d36eabaed392",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ADUQSX4",
+      "category": "fridge",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCIJxMAP&dpt=",
+      "sourcePdfSha256": "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58",
+      "contentSha256": "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58",
+      "receiptBindingSha256": "ab80eab532e0960966de957bdeb4288cf4ff9e09eb5b3704688f9babd6e605df",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/77/d9/77d959a51cbb8ef510cb1312f1ca4da9f9cd5c2ff3621357870857738494c7ff.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2413,11 +2427,11 @@
     }
   ],
   "summary": {
-    "entries": 150,
-    "sources": 172,
-    "passed": 172,
+    "entries": 151,
+    "sources": 173,
+    "passed": 173,
     "failed": 0
   },
-  "checkedObjects": 365,
-  "semanticAuditSha256": "3bcfd6347587322bed7150a0d6ae5adf6dc4e025ba9c1b8a3bf5705a793882a2"
+  "checkedObjects": 368,
+  "semanticAuditSha256": "465539d93bd8f28ccc23854f0ca767ffdff6c1bd6157fcd5a4233046abc7d427"
 }

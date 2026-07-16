@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 
 import {
   buildFisherPaykelSkuSearchVariants,
@@ -304,6 +305,63 @@ test('Fisher & Paykel official finder augments product-page PDFs with support AP
   assert.equal(supportResource.discoveryProvenance.method, 'official_support_api');
   assert.equal(supportResource.discoveryProvenance.sourceMarket, 'AU');
   assert.equal(supportResource.discoveryProvenance.matchedModel, 'DH9060HG1');
+});
+
+test('Fisher & Paykel support discovery persists the exact product API response as bound JSON evidence', async () => {
+  const sourceUrl = 'https://content.fisherpaykel.com/guides/RF610ADUQSX4-install.pdf';
+  const productPayload = {
+    canonicalPath: '/nz/support/products/refrig-rf610aduqsx4-fp-aa--RF610ADUQSX4',
+    product: {
+      modelNumber: 'RF610ADUQSX4',
+      articles: [{
+        id: 'ka0-rf610-install',
+        title: 'RF610ADUQSX4 installation guide',
+        articleBody: `<p>RF610ADUQSX4</p><a href="${sourceUrl}">Installation guide</a>`,
+        articleType: 'Installation Guide',
+      }],
+    },
+    documentResources: [],
+  };
+  const productBytes = Buffer.from(JSON.stringify(productPayload));
+  const productHash = createHash('sha256').update(productBytes).digest('hex');
+  const writes = [];
+  const result = await findFisherPaykelOfficialPdf({ sku: 'RF610ADUQSX4' }, {
+    supportMarkets: ['NZ'],
+    writeObject: async (path, bytes) => writes.push({ path, bytes: Buffer.from(bytes) }),
+    fetchImpl: async (url) => {
+      const href = String(url);
+      if (href.includes('/au/search/')) return new Response('<p>No product page</p>', { status: 200 });
+      if (href.includes('/api/search')) {
+        return new Response(JSON.stringify({
+          hits: [{ document: { model_no: 'RF610ADUQSX4', name: 'Exact', sku: '24314' } }],
+        }), { status: 200, headers: { 'content-type': 'application/json' } });
+      }
+      if (href.endsWith('/nz/api/support/products/RF610ADUQSX4')) {
+        return new Response(productBytes, { status: 200, headers: { 'content-type': 'application/json' } });
+      }
+      throw new Error(`Unexpected request: ${href}`);
+    },
+  });
+
+  assert.equal(writes.length, 1);
+  assert.equal(writes[0].path, `evidence/web/sha256/${productHash.slice(0, 2)}/${productHash.slice(2, 4)}/${productHash}.json`);
+  assert.deepEqual(writes[0].bytes, productBytes);
+  assert.deepEqual(result.resources[0].discoveryProvenance, {
+    schemaVersion: 1,
+    method: 'official_support_api',
+    market: 'AU',
+    sourceMarket: 'NZ',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/RF610ADUQSX4',
+    requestedModel: 'RF610ADUQSX4',
+    matchedModel: 'RF610ADUQSX4',
+    artifactUrl: sourceUrl,
+    artifactLinkUrl: sourceUrl,
+    discoveryContentSha256: productHash,
+    discoveryObjectPath: writes[0].path,
+    discoveryByteSize: productBytes.length,
+    documentId: 'ka0-rf610-install',
+    originalFileName: 'RF610ADUQSX4-install.pdf',
+  });
 });
 
 test('Fisher & Paykel exact support evidence outranks a sibling page found through a broad search variant', async () => {

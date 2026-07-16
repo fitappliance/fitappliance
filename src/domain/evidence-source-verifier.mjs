@@ -6,6 +6,7 @@ import {
   verifyOfficialProductPageDiscoveryEvidence,
 } from './official-product-page-discovery-evidence.mjs';
 import { verifyOfficialMarketApiDiscoveryEvidence } from './official-market-api-discovery-evidence.mjs';
+import { verifyOfficialSupportApiDiscoveryEvidence } from './official-support-api-discovery-evidence.mjs';
 
 const manufacturerPolicy = JSON.parse(readFileSync(
   new URL('../../data/architecture-v2/policies/manufacturer-source-policy.json', import.meta.url),
@@ -319,6 +320,33 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
       discoveryObjectPath,
       discoveryByteSize: value.discoveryByteSize,
     });
+  } else if (method === 'official_support_api' && value.discoveryContentSha256) {
+    const artifactLinkUrl = canonicalHttpsUrl(value.artifactLinkUrl, 'discovery artifact link URL');
+    if (!isOfficialBrandHostUrl(artifactLinkUrl, brand) && !isApprovedGlobalArtifactHost(artifactLinkUrl, brand)) {
+      throw new TypeError(`discovery artifact link URL is not an approved official artifact host for ${brand}`);
+    }
+    const discoveryContentSha256 = requiredText(value.discoveryContentSha256, 'discovery content SHA-256');
+    if (!/^[a-f0-9]{64}$/.test(discoveryContentSha256)) {
+      throw new TypeError('discovery content SHA-256 invalid');
+    }
+    const discoveryObjectPath = requiredText(value.discoveryObjectPath, 'discovery object path');
+    const expectedPath = `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.json`;
+    if (discoveryObjectPath !== expectedPath) {
+      throw new TypeError('content-addressed discovery object path required');
+    }
+    if (!Number.isInteger(value.discoveryByteSize) || value.discoveryByteSize <= 0) {
+      throw new TypeError('positive discovery byte size required');
+    }
+    Object.assign(result, {
+      artifactLinkUrl,
+      discoveryContentSha256,
+      discoveryObjectPath,
+      discoveryByteSize: value.discoveryByteSize,
+      documentId: requiredText(value.documentId, 'discovery document ID'),
+    });
+  } else if (method === 'official_support_api'
+    && productPageFields.some((field) => value[field] != null)) {
+    throw new TypeError('support API discovery evidence is incomplete');
   } else if (productPageFields.some((field) => value[field] != null)) {
     throw new TypeError('product-page discovery evidence is invalid for API provenance');
   }
@@ -819,6 +847,15 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
     });
     verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
   }
+  if (source?.discoveryProvenance?.method === 'official_support_api'
+    && source.discoveryProvenance.discoveryContentSha256) {
+    const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
+      brand: caseIdentity?.brand,
+      model: caseIdentity?.model,
+      artifactUrl: source?.sourceUrl,
+    });
+    verifyOfficialSupportApiDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
+  }
   if (verifiedMilliseconds < parseTime(source.retrievedAt, 'retrieval time')) {
     throw new TypeError('verification time precedes retrieval time');
   }
@@ -942,6 +979,16 @@ export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
       artifactUrl: source?.sourceUrl,
     });
     verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
+  }
+  if (source?.discoveryProvenance?.method === 'official_support_api'
+    && source.discoveryProvenance.discoveryContentSha256
+    && options.discoveryArtifactBytes != null) {
+    const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
+      brand: caseIdentity?.brand,
+      model: caseIdentity?.model,
+      artifactUrl: source?.sourceUrl,
+    });
+    verifyOfficialSupportApiDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
   }
   verificationReceiptDiscoveryPolicyVersion(source, caseIdentity);
   return true;

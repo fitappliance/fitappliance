@@ -379,6 +379,7 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
         beko: { finderOptions: { writeObject: objectStore.writeObject } },
         asko: { finderOptions: { writeObject: objectStore.writeObject } },
         esatto: { finderOptions: { writeObject: objectStore.writeObject } },
+        fisherPaykel: { finderOptions: { writeObject: objectStore.writeObject } },
       },
     }),
     reconcileClaims: reconcileEvidenceClaims,

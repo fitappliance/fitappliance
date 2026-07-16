@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T23:35:52.844Z",
+  "generatedAt": "2026-07-16T00:01:44.638Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "e0e08f227641bf128b2dcf1625bc1a24e546c6d8c1ad841c4c550b9761f17d09",
+  "semanticClassificationSha256": "ec881e067db0b5b1668bcdbb29e2ac0c851cfc249ff788756b959757a1f55a1e",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4177,
+    "documentLinks": 4178,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,17 +21,15 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 169,
+      "COMPLETE_RECEIPT": 170,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 195,
       "OFFICIAL_DISCOVERY": 6422,
-      "OFFICIAL_REACQUIRE": 1,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6422,
-      "NO_ACTION": 169,
-      "REACQUIRE_OFFICIAL_SOURCE": 1,
+      "NO_ACTION": 170,
       "REDISCOVER_OFFICIAL_SOURCE": 1225,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 195
@@ -43,15 +41,15 @@
       "REFERENCE": 1242
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 233,
-      "EXACT_MODEL": 1537,
+      "AMBIGUOUS": 232,
+      "EXACT_MODEL": 1538,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 51,
-      "ALL_AXIS_SCALAR": 262,
+      "ALL_AXIS_SCALAR": 263,
       "NOT_PARSED": 7649,
-      "PARSER_GAP": 133
+      "PARSER_GAP": 132
     },
     "byConflictState": {
       "INVALID_DIMENSIONS": 19,
@@ -60,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 169,
-      "LEGACY_UNBOUND": 1601,
+      "CURRENT_VALID": 170,
+      "LEGACY_UNBOUND": 1600,
       "NONE": 6325
     }
   },
@@ -96,13 +94,12 @@
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2269,
+      "documentLinks": 2270,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 64,
+        "COMPLETE_RECEIPT": 65,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 118,
         "OFFICIAL_DISCOVERY": 3410,
-        "OFFICIAL_REACQUIRE": 1,
         "REFERENCE_REDISCOVERY": 695
       }
     },
@@ -131524,15 +131521,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family b5ff35773bed",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "CURRENT_MINERU": 2,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 2
       },
       "documentLinks": [
@@ -131575,6 +131573,25 @@
           "extractionState": "PARSER_GAP",
           "receiptState": "NONE",
           "sourcePdfSha256": "4f79dcc3b01fcc50c0bbea0ccc49dc348494828ee623018fdaa55d5a9fe438f9"
+        },
+        {
+          "documentId": "pdf:674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCIJxMAP&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/77/d9/77d959a51cbb8ef510cb1312f1ca4da9f9cd5c2ff3621357870857738494c7ff.json",
+            "evidence/web/sha256/67/4b/674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58.pdf",
+            "receipt:ab80eab532e0960966de957bdeb4288cf4ff9e09eb5b3704688f9babd6e605df"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58"
         },
         {
           "documentId": "pdf:b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
@@ -131629,8 +131646,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Fisher & Paykel"
