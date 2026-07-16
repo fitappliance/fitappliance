@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "e2164e6d5d419dda393a1147aeab8a85eb4b9acab8ad56278a4f065ba046bc9e"
+    "historical-recovery:historical-recovery-cumulative-v1": "f96690f83463101659fb9113b0ca01bca064b7f66568d77cd9ca5e8c8a8c9431"
   },
   "records": [
     {
@@ -269519,14 +269519,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_d23a4aff8671fa32c138bdfc",
+          "snapshotSha256": "7f725c5d4f2a74279c8b7bb7db6479807159e94c2e2c2dd7353eced9f546d3d7",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -269535,8 +269546,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_d23a4aff8671fa32c138bdfc",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAK24161AU.pdf",
+          "contentSha256": "7f725c5d4f2a74279c8b7bb7db6479807159e94c2e2c2dd7353eced9f546d3d7",
+          "receiptBindingSha256": "90fef6ce8c3a6517ed03fa03ed4f8c903c742ce78eebde55a3c4b2aa9ac47b92",
+          "verifiedAt": "2026-07-16T19:44:51.527Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3c7d3d9e3f00aa3990bf29c70a19cb86638b170161eb5813504a597b5e4cf133"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3c7d3d9e3f00aa3990bf29c70a19cb86638b170161eb5813504a597b5e4cf133"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3c7d3d9e3f00aa3990bf29c70a19cb86638b170161eb5813504a597b5e4cf133"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/7f/72/7f725c5d4f2a74279c8b7bb7db6479807159e94c2e2c2dd7353eced9f546d3d7.pdf"
+        }
       ]
     },
     {
@@ -269589,14 +269626,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c9f3ccd5447cfe1610b86797",
+          "snapshotSha256": "376f1406ca9735afa20511bea670c04766ef2d7dc8d1d7bdd61d0bf6ade31f7d",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -269605,8 +269653,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c9f3ccd5447cfe1610b86797",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24121AU.pdf",
+          "contentSha256": "376f1406ca9735afa20511bea670c04766ef2d7dc8d1d7bdd61d0bf6ade31f7d",
+          "receiptBindingSha256": "c94ebf92574d0dc024a7bcd45423e172f2673d5c4c0c22f714564db6f4246c9d",
+          "verifiedAt": "2026-07-16T19:47:50.881Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b8598552cc1acd2d5a3d936f24c4e2f7bfa2ae1c2f3e8ee90f8decc197cb4c06"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b8598552cc1acd2d5a3d936f24c4e2f7bfa2ae1c2f3e8ee90f8decc197cb4c06"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b8598552cc1acd2d5a3d936f24c4e2f7bfa2ae1c2f3e8ee90f8decc197cb4c06"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/37/6f/376f1406ca9735afa20511bea670c04766ef2d7dc8d1d7bdd61d0bf6ade31f7d.pdf"
+        }
       ]
     },
     {
@@ -269853,9 +269927,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 845,
+        "depth": 632
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -269868,6 +269946,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ddcc56e59e90a40c99ab05a9",
+          "snapshotSha256": "e2970672b0d67427f9e2efd8354b62c866c357dca97343bf515edf425e3e065a",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -269875,9 +269960,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ddcc56e59e90a40c99ab05a9",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN28288AU.pdf",
+          "contentSha256": "e2970672b0d67427f9e2efd8354b62c866c357dca97343bf515edf425e3e065a",
+          "receiptBindingSha256": "d5c37bdff233f0395911c1076ad1da065193df113e5e8b9a80e2dc8d38678d08",
+          "verifiedAt": "2026-07-16T19:46:46.241Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "96a55eea8412a0c84c5130c73c8b025c7bd01d000cfcedf8388ea38bb581bd07"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "96a55eea8412a0c84c5130c73c8b025c7bd01d000cfcedf8388ea38bb581bd07"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "96a55eea8412a0c84c5130c73c8b025c7bd01d000cfcedf8388ea38bb581bd07"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/e2/97/e2970672b0d67427f9e2efd8354b62c866c357dca97343bf515edf425e3e065a.pdf"
+        }
       ]
     },
     {
@@ -270002,14 +270113,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 590
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_5bebb59033744ceaedf76d99",
+          "snapshotSha256": "0e6b5b4a8718996a642ae2fc218f811800dc5ffdecefe2aa1ac3df65f6e4833d",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -270018,8 +270140,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_5bebb59033744ceaedf76d99",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24440AU.pdf",
+          "contentSha256": "0e6b5b4a8718996a642ae2fc218f811800dc5ffdecefe2aa1ac3df65f6e4833d",
+          "receiptBindingSha256": "85412fb0d481cdda76707d23f75afaa3e322d254ac0ae035159b527969505b8f",
+          "verifiedAt": "2026-07-16T19:41:14.125Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4690f2cbd55d862a329782ad1b39957e97fb8fc5f4bf60bf7a4822f974948da4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4690f2cbd55d862a329782ad1b39957e97fb8fc5f4bf60bf7a4822f974948da4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4690f2cbd55d862a329782ad1b39957e97fb8fc5f4bf60bf7a4822f974948da4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/0e/6b/0e6b5b4a8718996a642ae2fc218f811800dc5ffdecefe2aa1ac3df65f6e4833d.pdf"
+        }
       ]
     },
     {
@@ -270107,14 +270255,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 590
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c137ea8b2d4b5b0bbf651dc3",
+          "snapshotSha256": "3c29932f2aec46c3bab94444c22c74b0bea6072993c71dc75e1b39b1f4d9d8bd",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -270123,8 +270282,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c137ea8b2d4b5b0bbf651dc3",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAW28460AU.pdf",
+          "contentSha256": "3c29932f2aec46c3bab94444c22c74b0bea6072993c71dc75e1b39b1f4d9d8bd",
+          "receiptBindingSha256": "3a02434506cebc3331cd64a376f9fc32ed291bce2ce31d390e696ac56bf66194",
+          "verifiedAt": "2026-07-16T19:43:37.745Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0f6f77d1077d79939481d7cf052f9f6b6db9435032b86a9f8ae13bfcea6a3396"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0f6f77d1077d79939481d7cf052f9f6b6db9435032b86a9f8ae13bfcea6a3396"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0f6f77d1077d79939481d7cf052f9f6b6db9435032b86a9f8ae13bfcea6a3396"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/3c/29/3c29932f2aec46c3bab94444c22c74b0bea6072993c71dc75e1b39b1f4d9d8bd.pdf"
+        }
       ]
     },
     {
@@ -323378,16 +323563,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2890,
-      "MODEL_RECEIPT": 254,
+      "IDENTITY_ONLY": 2885,
+      "MODEL_RECEIPT": 259,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2890,
-      "AUTO_FILL": 265,
+      "MEASURE_REQUIRED": 2885,
+      "AUTO_FILL": 270,
       "QUARANTINED": 88
     }
   }

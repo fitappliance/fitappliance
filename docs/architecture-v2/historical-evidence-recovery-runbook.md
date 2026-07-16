@@ -1167,3 +1167,44 @@ contains 7,661 targets and the current-retail P0 missing-dimension lane contains
 892 targets. Public receipt-bound dimensions are 270 and receipt-bound
 `VERIFIED_FIT` remains zero. All eight target IDs are absent from the next-epoch
 queue and batch, and no Bosch fridge remains in the current-retail P0 lane.
+
+## 31. Bosch washer lane L and transient retry isolation
+
+Run `historical-bosch-washers-20260716-l` selected eight zero-attempt Bosch
+washing machines. Five exact-model specification PDFs produced accepted fixed
+closed envelopes:
+
+| Model | Width | Height | Depth |
+| --- | ---: | ---: | ---: |
+| `WAK24161AU` | 600 | 850 | 600 |
+| `WAN24121AU` | 598 | 848 | 600 |
+| `WAN28288AU` | 598 | 845 | 632 |
+| `WAT24440AU` | 598 | 848 | 590 |
+| `WAW28460AU` | 598 | 848 | 590 |
+
+The PDFs were processed through MinerU `content_list_v2`; their receipts bind
+exact-model identity, explicit axes, page/fragment evidence and source/derived
+hashes. The differing product depths remain model-specific. No accepted source
+supplies complete installation, plumbing, operation or rear-service geometry,
+so all five remain dimensions-only with `verifiedFitEligible=false` and
+`INSUFFICIENT_DATA`.
+
+`WAK24162AU` and `WAP28380AU` exhausted their complete current resolver sets
+without a source that had both exact identity and complete dimensions. They are
+target-level suppressed until the resolver or policy epoch changes.
+`WAE22466AU` also lacked an acceptable exact-model source, but one candidate had
+a transient transport failure. It therefore remains visible in the executable
+queue for a future backoff-controlled retry; it must not be selected again in
+the immediately following batch. Interactive batch selection must exclude the
+union of target IDs in attempt-ledger `entries`, `targetAttempts` and accepted
+bundle entries for the current work window, not only `targetAttempts`.
+
+The full online audit checked eight targets and 674 cumulative objects with zero
+repairs and zero violations. Promotion added only the five accepted targets,
+increasing the cumulative bundle to 325 targets and 350 source receipts; all
+350 receipts replay. The three rejected targets contribute attempt history only.
+After the release transaction, `COMPLETE_RECEIPT` is 344,
+`ALL_AXIS_RANGE` is 84, `ALL_AXIS_SCALAR` is 397, historical `AUTO_FILL` is
+270, the executable queue contains 7,654 targets and the current-retail P0
+missing-dimension lane contains 885 targets. Public receipt-bound dimensions
+are 275 and receipt-bound `VERIFIED_FIT` remains zero.

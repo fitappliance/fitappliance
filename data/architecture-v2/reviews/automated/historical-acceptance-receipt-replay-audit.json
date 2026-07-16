@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T19:37:38.523Z",
-  "sourceBundleSha256": "e2164e6d5d419dda393a1147aeab8a85eb4b9acab8ad56278a4f065ba046bc9e",
+  "generatedAt": "2026-07-16T19:50:59.418Z",
+  "sourceBundleSha256": "f96690f83463101659fb9113b0ca01bca064b7f66568d77cd9ca5e8c8a8c9431",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1694,6 +1694,20 @@
       "contentSha256": "68dfbb01cf980a54e8ec86382f356c571d0e368d5a129eb5d7c55bc2170512d6",
       "receiptBindingSha256": "4daff19989fe067914a5bc72175e667cc0476032699df5197f892eeaa2edc882",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/98/d1/98d17e841cf58e80228f07da95087b3c1ff1e81eb68ae66ea73fa6b6dedf21ff.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_5bebb59033744ceaedf76d99",
+      "referenceId": "fa_ref_0266db6892944de9fa5e0c59",
+      "brand": "Bosch",
+      "model": "WAT24440AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24440AU.pdf",
+      "sourcePdfSha256": "0e6b5b4a8718996a642ae2fc218f811800dc5ffdecefe2aa1ac3df65f6e4833d",
+      "contentSha256": "0e6b5b4a8718996a642ae2fc218f811800dc5ffdecefe2aa1ac3df65f6e4833d",
+      "receiptBindingSha256": "85412fb0d481cdda76707d23f75afaa3e322d254ac0ae035159b527969505b8f",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/58/6e/586e6421b4d85c66321af76f1bfd47caede8ad5f46ed0e82e8286dc15546bbc3.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3644,6 +3658,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c137ea8b2d4b5b0bbf651dc3",
+      "referenceId": "fa_ref_80c2c47fd9de25446cb4d8cf",
+      "brand": "Bosch",
+      "model": "WAW28460AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAW28460AU.pdf",
+      "sourcePdfSha256": "3c29932f2aec46c3bab94444c22c74b0bea6072993c71dc75e1b39b1f4d9d8bd",
+      "contentSha256": "3c29932f2aec46c3bab94444c22c74b0bea6072993c71dc75e1b39b1f4d9d8bd",
+      "receiptBindingSha256": "3a02434506cebc3331cd64a376f9fc32ed291bce2ce31d390e696ac56bf66194",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f7/06/f7063c13b8d14253f786ecfef20e814e607cde0b3300ea90f22b192dc0575acc.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c2de14d490b3777d78e1f53f",
       "referenceId": "fa_ref_5d80bf5c6d9510aa761f02a0",
       "brand": "Bosch",
@@ -3868,6 +3896,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c9f3ccd5447cfe1610b86797",
+      "referenceId": "fa_ref_de71b268ed7d86c1acda82b0",
+      "brand": "Bosch",
+      "model": "WAN24121AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24121AU.pdf",
+      "sourcePdfSha256": "376f1406ca9735afa20511bea670c04766ef2d7dc8d1d7bdd61d0bf6ade31f7d",
+      "contentSha256": "376f1406ca9735afa20511bea670c04766ef2d7dc8d1d7bdd61d0bf6ade31f7d",
+      "receiptBindingSha256": "c94ebf92574d0dc024a7bcd45423e172f2673d5c4c0c22f714564db6f4246c9d",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/cc/2a/cc2a1521805e54bdb296c4e378d79bd9741e19c0d54e9f5247b24adc00f5c137.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_ca994d4b2d365c5c5393aca6",
       "referenceId": "fa_ref_7f6351cce1bd410e26cccb76",
       "brand": "Bosch",
@@ -4004,6 +4046,20 @@
       "contentSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
       "receiptBindingSha256": "662ed018caa73a3ae4e7bbc3325260b528094d0b581dc3efef99530ed964a8d1",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b2/38/b238dcf18f3b989bfad77c24d40a02f8fffad6ce769aaa0e3c15a265cd15a569.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_d23a4aff8671fa32c138bdfc",
+      "referenceId": "fa_ref_95a69efe96d8303c433efd2f",
+      "brand": "Bosch",
+      "model": "WAK24161AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAK24161AU.pdf",
+      "sourcePdfSha256": "7f725c5d4f2a74279c8b7bb7db6479807159e94c2e2c2dd7353eced9f546d3d7",
+      "contentSha256": "7f725c5d4f2a74279c8b7bb7db6479807159e94c2e2c2dd7353eced9f546d3d7",
+      "receiptBindingSha256": "90fef6ce8c3a6517ed03fa03ed4f8c903c742ce78eebde55a3c4b2aa9ac47b92",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/c4/0f/c40fee7b350ce2a36d7e089030ebdc9dd6ff30d5f2d7f143a3902d8c5fa904e0.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4256,6 +4312,20 @@
       "contentSha256": "146f56e705a37da89560fab8bf446c8291ae953027d3eb13510bed3156cce1ef",
       "receiptBindingSha256": "38ba02024c8d072ec1f7d2fc8977a0d5eda9c78939865d3cb42e4b97d333f505",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/0b/9f/0b9f26194a90a144e237c7d3af455cda66761a9a3050f9a7d605db733ac9038a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_ddcc56e59e90a40c99ab05a9",
+      "referenceId": "fa_ref_7e2dd65af9e61749792759f6",
+      "brand": "Bosch",
+      "model": "WAN28288AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN28288AU.pdf",
+      "sourcePdfSha256": "e2970672b0d67427f9e2efd8354b62c866c357dca97343bf515edf425e3e065a",
+      "contentSha256": "e2970672b0d67427f9e2efd8354b62c866c357dca97343bf515edf425e3e065a",
+      "receiptBindingSha256": "d5c37bdff233f0395911c1076ad1da065193df113e5e8b9a80e2dc8d38678d08",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/a2/e1/a2e1e434b615fe8107b2955c2dae4d25faa71856cea87b30a23ffcf0f15aee32.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4835,11 +4905,11 @@
     }
   ],
   "summary": {
-    "entries": 320,
-    "sources": 345,
-    "passed": 345,
+    "entries": 325,
+    "sources": 350,
+    "passed": 350,
     "failed": 0
   },
-  "checkedObjects": 664,
-  "semanticAuditSha256": "50975e57eb6127062c1d334c0a2b1b52fc260821e489a0f8e8efcc68f9f022b7"
+  "checkedObjects": 674,
+  "semanticAuditSha256": "92984e063cab58eb1276436ef26be1d9ceb0f6d1ae2aacf23caf1ca953a71de6"
 }
