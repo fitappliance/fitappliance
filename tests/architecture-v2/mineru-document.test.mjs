@@ -146,6 +146,162 @@ test('MinerU accepts exact-model same-page labelled axes with compact mm units',
   });
 });
 
+function chiqOfficialSpecJson({
+  model = 'CTM200NSS5E',
+  tableHtml = `<table>
+    <tr><td>Packing Dimensions (WHD)mm</td><td>580 x 1510 x 630</td><td>Shipping</td></tr>
+    <tr><td>Product Dimensions (WHD)mm</td><td>545 x 1465 x 590</td><td>Refrigerator</td></tr>
+  </table>`,
+} = {}) {
+  return Buffer.from(JSON.stringify([
+    [
+      { type: 'title', content: { title_content: [{ type: 'text', content: 'TOP MOUNT FRIDGE' }], level: 2 }, bbox: [80, 60, 600, 110] },
+      paragraph(model, [80, 120, 400, 160]),
+    ],
+    [
+      pageHeader(model),
+      tableFragment(tableHtml),
+    ],
+  ]));
+}
+
+const chiqFields = [
+  'closedEnvelope.widthMm',
+  'closedEnvelope.heightMm',
+  'closedEnvelope.depthMm',
+];
+const missingChiqEvidence = /no exact-model MinerU evidence|requested MinerU evidence fields missing/i;
+
+function parseChiqOfficialSpec(bytes, overrides = {}) {
+  return parseMineruContentListV2(bytes, {
+    pdfSha256,
+    parserVersion: '3.4.4',
+    modelRevision,
+    caseIdentity: { brand: 'CHIQ', model: 'CTM200NSS5E', category: 'fridge' },
+    fields: chiqFields,
+    sourceUrls: ['https://chiq.com.au/cdn/shop/files/CTM200NSS5E_SPEC.pdf'],
+    claimSemanticsVersion: 2,
+    ...overrides,
+  });
+}
+
+test('MinerU maps CHIQ exact-model official Product Dimensions WHD without consuming packing values', () => {
+  const parsed = parseChiqOfficialSpec(chiqOfficialSpecJson());
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 545 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 1465 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 590 },
+  });
+  assert.deepEqual(parsed.claims.map((claim) => claim.sourceLabel), [
+    'Product Width', 'Product Height', 'Product Depth',
+  ]);
+  assert.ok(parsed.claims.every((claim) => !/packing/i.test(claim.sourceLabel)));
+  assert.ok(parsed.claims.every((claim) => (
+    JSON.stringify(claim.sourceAxisOrder) === JSON.stringify(['width', 'height', 'depth'])
+  )));
+  assert.deepEqual(parsed.grammarProfileIds, ['chiq-au-exact-spec-product-whd-v1']);
+  assert.equal(
+    mineruGrammarProfiles[parsed.grammarProfileIds[0]].parserProfileId,
+    parsed.grammarProfileIds[0],
+  );
+});
+
+test('MinerU maps CHIQ Product Dimensions without a repeated WHD suffix when the packing row proves WHD millimetres', () => {
+  const bytes = chiqOfficialSpecJson({
+    tableHtml: `<table>
+      <tr><td>Packing Dimensions (WHD)mm</td><td>745 x 1740 x 735</td></tr>
+      <tr><td>Product Dimensions</td><td>700 x 1680 × 700</td><td>FREEZER COMPARTMENT</td></tr>
+    </table>`,
+  });
+  const parsed = parseChiqOfficialSpec(bytes);
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 700 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 1680 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 700 },
+  });
+});
+
+test('MinerU accepts CHIQ product-explicit WHD when OCR leaves the separate packing value cell empty', () => {
+  const bytes = chiqOfficialSpecJson({
+    tableHtml: `<table>
+      <tr><td>Finish</td><td>1685 x 890 x 780</td><td>WARRANTY</td></tr>
+      <tr><td>Packing Dimensions (WHD)mm</td><td></td><td>Freezer</td></tr>
+      <tr><td>Product Dimensions (WHD)mm</td><td>1650 x 835 x 735</td><td>Compressor</td></tr>
+    </table>`,
+  });
+  const parsed = parseChiqOfficialSpec(bytes);
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 1650 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 835 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 735 },
+  });
+});
+
+test('MinerU accepts explicitly ordered CHIQ chest-freezer widths above the old upright-fridge limit', () => {
+  const bytes = chiqOfficialSpecJson({
+    model: 'CCF700WE',
+    tableHtml: `<table>
+      <tr><td>Packing Dimensions (WHD)mm</td><td>1910 x 1045 x 780</td></tr>
+      <tr><td>Product Dimensions (WHD)mm</td><td>1880 x 945 x 735</td></tr>
+    </table>`,
+  });
+  const parsed = parseChiqOfficialSpec(bytes, {
+    caseIdentity: { brand: 'CHIQ', model: 'CCF700WE', category: 'fridge' },
+    sourceUrls: ['https://chiq.com.au/cdn/shop/files/CCF700WE_SPEC.pdf'],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 1880 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 945 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 735 },
+  });
+});
+
+test('MinerU rejects unsafe CHIQ spec-table variants instead of guessing product dimensions', () => {
+  const cases = [
+    {
+      name: 'packing row only',
+      html: '<table><tr><td>Packing Dimensions (WHD)mm</td><td>580 x 1510 x 630</td></tr></table>',
+    },
+    {
+      name: 'duplicate product rows',
+      html: '<table><tr><td>Packing Dimensions (WHD)mm</td><td>580 x 1510 x 630</td></tr><tr><td>Product Dimensions (WHD)mm</td><td>545 x 1465 x 590</td></tr><tr><td>Product Dimensions (WHD)mm</td><td>546 x 1465 x 590</td></tr></table>',
+    },
+    {
+      name: 'merged packing and product OCR row',
+      html: '<table><tr><td>Packing Dimensions (WHD)mm Product Dimensions</td><td>515 x 1020 x 615 475 × 977 x 565</td></tr></table>',
+    },
+    {
+      name: 'extra text in product value cell',
+      html: '<table><tr><td>Packing Dimensions (WHD)mm</td><td>580 x 1510 x 630</td></tr><tr><td>Product Dimensions (WHD)mm</td><td>545 x 1465 x 590 including handle</td></tr></table>',
+    },
+    {
+      name: 'missing explicit WHD and unit context',
+      html: '<table><tr><td>Packing Dimensions</td><td>580 x 1510 x 630</td></tr><tr><td>Product Dimensions</td><td>545 x 1465 x 590</td></tr></table>',
+    },
+  ];
+
+  for (const fixture of cases) {
+    assert.throws(
+      () => parseChiqOfficialSpec(chiqOfficialSpecJson({ tableHtml: fixture.html })),
+      missingChiqEvidence,
+      fixture.name,
+    );
+  }
+});
+
+test('MinerU rejects CHIQ spec grammar when the source URL or document identity is not exact', () => {
+  assert.throws(() => parseChiqOfficialSpec(chiqOfficialSpecJson(), {
+    sourceUrls: ['https://chiq.com.au/cdn/shop/files/CTM200NSS5E_and_CTM255NW5E_SPEC.pdf'],
+  }), missingChiqEvidence);
+
+  assert.throws(() => parseChiqOfficialSpec(chiqOfficialSpecJson({ model: 'CTM255NW5E' })),
+    /structured exact-model identity signal required|no exact-model MinerU evidence|requested MinerU evidence fields missing/i);
+});
+
 test('MinerU maps Midea W x D x H product rows with compact units and rejects package rows', () => {
   const bytes = Buffer.from(JSON.stringify([
     [pageHeader('MDRC284FZE01APE 198L Chest Freezer | Hybrid | White')],

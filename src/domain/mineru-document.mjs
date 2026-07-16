@@ -1263,6 +1263,87 @@ function indexedProductDimensionRows(fragment) {
     .filter(Boolean);
 }
 
+function exactChiqAuSpecUrl(sourceUrls, model) {
+  if (!Array.isArray(sourceUrls)) return null;
+  const target = canonicalModel(model);
+  if (!target) return null;
+  return sourceUrls.find((value) => {
+    try {
+      const url = new URL(value);
+      if (url.protocol !== 'https:' || url.hostname.toLowerCase() !== 'chiq.com.au'
+        || !url.pathname.toLowerCase().startsWith('/cdn/shop/files/')) return false;
+      const filename = decodeURIComponent(url.pathname.split('/').pop() ?? '');
+      const match = /^(.+?)_(?:spec|specifications_sheet)\.pdf$/i.exec(filename);
+      return Boolean(match && canonicalModel(match[1]) === target);
+    } catch {
+      return false;
+    }
+  }) ?? null;
+}
+
+function chiqOfficialSpecLikeFragment(fragment) {
+  return fragment?.type === 'table' && fragment.cells.some((cells) => (
+    cells.some((cell) => /^(?:packing|product)\s+dimensions?(?:\s*\(\s*WHD\s*\)\s*mm)?$/i
+      .test(normalizedText(cell)))
+  ));
+}
+
+function chiqOfficialSpecDimensionRows(fragment) {
+  if (fragment?.type !== 'table' || !Array.isArray(fragment.cells)) return [];
+  const packingRows = fragment.cells.filter((cells) => (
+    /^packing\s+dimensions?\s*\(\s*WHD\s*\)\s*mm$/i.test(normalizedText(cells[0]))
+  ));
+  const productRows = fragment.cells.filter((cells) => (
+    /^product\s+dimensions?(?:\s*\(\s*WHD\s*\)\s*mm)?$/i.test(normalizedText(cells[0]))
+  ));
+  if (packingRows.length !== 1 || productRows.length !== 1) return [];
+  const tuple = (value) => {
+    const match = /^(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)$/i
+      .exec(normalizedText(value));
+    return match ? match.slice(1).map(Number) : null;
+  };
+  const productHasExplicitContext = /^product\s+dimensions?\s*\(\s*WHD\s*\)\s*mm$/i
+    .test(normalizedText(productRows[0][0]));
+  if (!productHasExplicitContext && !tuple(packingRows[0][1])) return [];
+  const product = tuple(productRows[0][1]);
+  if (!product || product.some((value) => !Number.isFinite(value) || value <= 0)) return [];
+  const axes = ['width', 'height', 'depth'];
+  return axes.map((axis, index) => ({
+    label: `Product ${axis[0].toUpperCase()}${axis.slice(1)}`,
+    value: `${product[index]} mm`,
+    quote: `${normalizedText(productRows[0][0])}: product ${axis} ${product[index]} mm`,
+    semanticBasis: 'chiq_official_spec_product_whd',
+    axisOrder: axes,
+  }));
+}
+
+function chiqOfficialSpecScope(document, caseIdentity, sourceUrls) {
+  if (canonicalModel(caseIdentity?.brand) !== 'CHIQ'
+    || normalizedText(caseIdentity?.category) !== 'fridge') return null;
+  const target = canonicalModel(caseIdentity?.model);
+  if (!/^[A-Z]{2,}[A-Z0-9]{3,}$/.test(target)) return null;
+  const exactDocumentUrl = exactChiqAuSpecUrl(sourceUrls, target);
+  if (!exactDocumentUrl) return null;
+  const firstPageIdentity = (document.pages[0] ?? []).filter((fragment) => (
+    ['title', 'page_header', 'paragraph'].includes(fragment.type)
+      && containsExplicitModelExpression(fragment.text, target)
+  ));
+  if (firstPageIdentity.length !== 1 || siblingModelCandidates(document, target).length) return null;
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    for (const fragment of items) {
+      const rows = chiqOfficialSpecDimensionRows(fragment);
+      if (rows.length === 3) matches.push({ fragment, rows, page: pageIndex + 1 });
+    }
+  });
+  if (matches.length !== 1) return null;
+  return {
+    ...matches[0],
+    exactDocumentUrl,
+    identityFragmentSha256: firstPageIdentity[0].fragmentSha256,
+  };
+}
+
 function oneCharacterVariantFamily(models) {
   const normalized = [...new Set(models.map(canonicalModel).filter(Boolean))];
   if (normalized.length < 2 || normalized.length > 8
@@ -1715,6 +1796,17 @@ function ocrShiftedDimensionSectionRows(fragment) {
 }
 
 export const mineruGrammarProfiles = Object.freeze({
+  'chiq-au-exact-spec-product-whd-v1': Object.freeze({
+    parserProfileId: 'chiq-au-exact-spec-product-whd-v1',
+    grammarFamilyId: 'chiq_au_exact_spec_product_whd_v1',
+    grammarFamilyName: 'CHIQ Australia exact-model specification sheet',
+    variantName: 'Separate packing and product WHD table rows',
+    brand: 'CHIQ',
+    category: 'fridge',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model CHIQ Australia CDN URL, one first-page exact model identity, no sibling model, and exactly one table with separate Packing Dimensions (WHD)mm and Product Dimensions rows. The product second cell is a strict tuple; a product row without its own WHD/mm suffix additionally requires a strict packing tuple to establish order and unit.',
+    semanticBoundary: 'Only the Product Dimensions tuple is projected as closed width, height and depth in W/H/D order; packing dimensions, unrelated columns, merged OCR rows and installation requirements are excluded.',
+  }),
   'fisher-paykel-rf610a-support-family-v1': Object.freeze({
     parserProfileId: 'fisher-paykel-rf610a-support-family-v1',
     grammarFamilyId: 'fisher_paykel_rf610a_support_family_v1',
@@ -2134,6 +2226,19 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       value: `${model}:family:${structuredFinishVariantScope.familyModel}:page:${structuredFinishVariantScope.page}:${structuredFinishVariantScope.fragment.fragmentSha256}`,
     },
   ] : [];
+  const chiqSpecScope = claimSemanticsVersion === 2
+    ? chiqOfficialSpecScope(document, caseIdentity, options.sourceUrls)
+    : null;
+  const chiqSpecSignals = chiqSpecScope ? [{
+    type: 'mineru_chiq_exact_spec_product_dimensions',
+    value: `${model}:page:${chiqSpecScope.page}:${chiqSpecScope.fragment.fragmentSha256}`,
+  }, {
+    type: 'mineru_chiq_exact_document_url',
+    value: `${model}:${chiqSpecScope.exactDocumentUrl}`,
+  }, {
+    type: 'mineru_chiq_first_page_identity',
+    value: `${model}:${chiqSpecScope.identityFragmentSha256}`,
+  }] : [];
   const fisherPaykelDw60Scope = claimSemanticsVersion === 2
     ? fisherPaykelDw60ApplicabilityScope(document, caseIdentity, options.sourceUrls)
     : null;
@@ -2172,6 +2277,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       || boundExactCoverSignals.length === 1);
   const unresolvedFamily = claimSemanticsVersion === 2 && !boundFamilyDocumentScope
     && !structuredFinishVariantScope
+    && !chiqSpecScope
     && !fisherPaykelDw60Scope
     && !samsungWasherWildcardScope
     && !fisherPaykelRf610Scope
@@ -2196,6 +2302,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...boundSeriesSignals,
     ...boundExactCoverSignals,
     ...structuredFinishVariantSignals,
+    ...chiqSpecSignals,
     ...fisherPaykelDw60Signals,
     ...samsungWasherWildcardSignals,
     ...fisherPaykelRf610Signals,
@@ -2217,6 +2324,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const appliedGrammarProfiles = new Set();
   if (fisherPaykelDw60Scope) {
     appliedGrammarProfiles.add('fisher-paykel-dw60-install-applicability-v1');
+  }
+  if (chiqSpecScope) {
+    appliedGrammarProfiles.add('chiq-au-exact-spec-product-whd-v1');
   }
   if (samsungWasherWildcardScope) {
     appliedGrammarProfiles.add('samsung-au-washer-wildcard-specification-v1');
@@ -2254,6 +2364,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const structuredFinishVariantPageScoped = items.includes(
       structuredFinishVariantScope?.dimensionFragment,
     );
+    const chiqSpecPageScoped = items.includes(chiqSpecScope?.fragment);
     const fisherPaykelDw60PageScoped = items.includes(
       fisherPaykelDw60Scope?.dimensionFragment,
     );
@@ -2272,7 +2383,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     if (!pageScoped && !documentScoped && !bekoDocumentScoped
       && !sharedModelListScoped && !groupedColumnScoped
       && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped
-      && !samsungWasherWildcardPageScoped && !fisherPaykelRf610PageScoped) return;
+      && !chiqSpecPageScoped && !samsungWasherWildcardPageScoped
+      && !fisherPaykelRf610PageScoped) return;
     const bekoPageScoped = items.some((item) => (
       ['title', 'page_header'].includes(item.type)
         && containsExplicitModelExpression(item.text, model)
@@ -2311,6 +2423,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         || groupedColumnRowsByFragment.get(item)?.length === 3
         || containsExplicitModelExpression(item.identityText ?? item.text, model)
         || structuredFinishVariantScope?.dimensionFragment === item
+        || chiqSpecScope?.fragment === item
         || fisherPaykelDw60Scope?.dimensionFragment === item
         || samsungWasherWildcardScope?.fragment === item
         || fisherPaykelRf610Scope?.fragment === item
@@ -2331,6 +2444,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       || joinedParagraphRowsByFragment.has(item)
       || joinedScalarRowsByFragment.has(item)
     ))) {
+      if (chiqSpecScope && fragment !== chiqSpecScope.fragment) continue;
       let rows;
       if (fragment.type === 'table') {
         const shiftedRows = claimSemanticsVersion === 2
@@ -2340,6 +2454,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           ...shiftedRows,
           ...(samsungWasherWildcardScope?.fragment === fragment
             || fisherPaykelRf610Scope?.fragment === fragment
+            || (canonicalModel(caseIdentity?.brand) === 'CHIQ' && category === 'fridge'
+              && chiqOfficialSpecLikeFragment(fragment))
             || shiftedRows.length === 3 || (unresolvedFamily && !repeatedHeaderPageScoped) || documentScoped
             ? []
             : fragment.rows),
@@ -2352,6 +2468,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           ...(claimSemanticsVersion === 2 ? (groupedColumnRowsByFragment.get(fragment) ?? []) : []),
           ...(structuredFinishVariantScope?.dimensionFragment === fragment
             ? structuredFinishVariantScope.dimensionRows
+            : []),
+          ...(chiqSpecScope?.fragment === fragment
+            ? chiqSpecScope.rows
             : []),
           ...(fisherPaykelDw60Scope?.dimensionFragment === fragment
             ? fisherPaykelDw60Scope.dimensionRows

@@ -98,6 +98,29 @@ test('offline replay conflict is routed to corroboration instead of repeated rep
   assert.equal(queue.records[0].executionReadiness, 'RESEARCH_REQUIRED');
 });
 
+test('identity closure is discovery-ready only with a brand resolver while conflicts stay research-only', () => {
+  const records = [
+    classified('identity-resolved', 'IDENTITY_RESEARCH'),
+    classified('identity-unresolved', 'IDENTITY_RESEARCH', { canonicalBrand: 'No Resolver' }),
+    classified('conflict-resolved', 'CONFLICT_QUARANTINE'),
+  ];
+  const queue = buildHistoricalModelPdfAcquisitionQueue({
+    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records },
+    historicalReference: { records: records.map((record) => reference(record.referenceId)) },
+    catalogProducts: catalogProducts(records),
+    recoveryQueue: { targets: [] },
+    resolverIdsByBrand: new Map([['example', ['example-resolver']]]),
+    generatedAt: '2026-07-14T00:00:00.000Z',
+  });
+
+  const byReference = new Map(queue.records.map((record) => [record.referenceId, record]));
+  assert.equal(byReference.get('identity-resolved').route, 'IDENTITY_CLOSURE');
+  assert.equal(byReference.get('identity-resolved').executionReadiness, 'DISCOVERY_READY');
+  assert.equal(byReference.get('identity-unresolved').executionReadiness, 'RESEARCH_REQUIRED');
+  assert.equal(byReference.get('conflict-resolved').route, 'CONFLICT_CLOSURE');
+  assert.equal(byReference.get('conflict-resolved').executionReadiness, 'RESEARCH_REQUIRED');
+});
+
 test('committed acquisition queue excludes every complete receipt classification', async () => {
   const [classification, queue] = await Promise.all([
     readFile('data/architecture-v2/generated/historical-model-evidence-classification.json', 'utf8').then(JSON.parse),

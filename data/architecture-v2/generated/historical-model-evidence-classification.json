@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T00:01:44.638Z",
+  "generatedAt": "2026-07-16T00:50:34.223Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "ec881e067db0b5b1668bcdbb29e2ac0c851cfc249ff788756b959757a1f55a1e",
+  "semanticClassificationSha256": "b830a17abacf7c491ba2265b63747a4bdfda3a79a2587c80e74dc835f8f0e339",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
@@ -21,35 +21,35 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 170,
+      "COMPLETE_RECEIPT": 186,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 195,
-      "OFFICIAL_DISCOVERY": 6422,
+      "IDENTITY_RESEARCH": 182,
+      "OFFICIAL_DISCOVERY": 6419,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byNextAction": {
-      "DISCOVER_OFFICIAL_SOURCE": 6422,
-      "NO_ACTION": 170,
+      "DISCOVER_OFFICIAL_SOURCE": 6419,
+      "NO_ACTION": 186,
       "REDISCOVER_OFFICIAL_SOURCE": 1225,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 195
+      "RUN_IDENTITY_CLOSURE": 182
     },
     "bySourceAuthority": {
       "MIXED": 80,
-      "NONE": 6675,
-      "OFFICIAL": 98,
+      "NONE": 6659,
+      "OFFICIAL": 114,
       "REFERENCE": 1242
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 232,
-      "EXACT_MODEL": 1538,
+      "AMBIGUOUS": 219,
+      "EXACT_MODEL": 1551,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 51,
-      "ALL_AXIS_SCALAR": 263,
+      "ALL_AXIS_SCALAR": 279,
       "NOT_PARSED": 7649,
-      "PARSER_GAP": 132
+      "PARSER_GAP": 116
     },
     "byConflictState": {
       "INVALID_DIMENSIONS": 19,
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 170,
-      "LEGACY_UNBOUND": 1600,
+      "CURRENT_VALID": 186,
+      "LEGACY_UNBOUND": 1584,
       "NONE": 6325
     }
   },
@@ -96,10 +96,10 @@
       "brands": 121,
       "documentLinks": 2270,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 65,
+        "COMPLETE_RECEIPT": 81,
         "CONFLICT_QUARANTINE": 48,
-        "IDENTITY_RESEARCH": 118,
-        "OFFICIAL_DISCOVERY": 3410,
+        "IDENTITY_RESEARCH": 105,
+        "OFFICIAL_DISCOVERY": 3407,
         "REFERENCE_REDISCOVERY": 695
       }
     },
@@ -134,7 +134,7 @@
       "category": "fridge",
       "brand": "CHIQ",
       "operationalClass": "OFFICIAL_DISCOVERY",
-      "models": 171
+      "models": 168
     },
     {
       "category": "fridge",
@@ -93241,15 +93241,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -93273,22 +93273,22 @@
         },
         {
           "documentId": "pdf:5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCD499NWS_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6",
-            "mineru-primary:b766abd9eb0bce23597ab98a5f72d700f83cc32a2283a535b73eeafe4f8cdaeb",
+            "receipt:d2bcdc1f7b63641457546c134284e69e36878d811b1f2ba86797cad78efdc4eb",
             "storage:evidence/web/sha256/5e/2f/5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6",
           "grammarProfileId": "pdf_grammar_1527a999293b656a"
         },
@@ -93308,8 +93308,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -93978,15 +93978,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "model_specific",
       "groupName": "CCF142WE",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -94010,22 +94010,22 @@
         },
         {
           "documentId": "pdf:d82a82458da86d88f5f18b4c0d41caa1515f19cb9d43283da484df8f6fe524a3",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF142WE_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:d82a82458da86d88f5f18b4c0d41caa1515f19cb9d43283da484df8f6fe524a3",
-            "mineru-primary:4e9c2578a2354bcc0b9510d6a2d7958f0e945da57a7817636861071914a9cdaf",
+            "receipt:50cdaede316d8f58dac310b310de378a549063ca0f49fa769d114d7616e85152",
             "storage:evidence/web/sha256/d8/2a/d82a82458da86d88f5f18b4c0d41caa1515f19cb9d43283da484df8f6fe524a3.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "d82a82458da86d88f5f18b4c0d41caa1515f19cb9d43283da484df8f6fe524a3"
         },
         {
@@ -94044,8 +94044,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -94235,15 +94235,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "model_specific",
       "groupName": "CCF199WE",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -94267,22 +94267,22 @@
         },
         {
           "documentId": "pdf:ecaebaf9461605a18d083029bef06a9aae30ba322aed6595de4357b77e426c00",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF199WE_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:ecaebaf9461605a18d083029bef06a9aae30ba322aed6595de4357b77e426c00",
-            "mineru-primary:fba2308e7129896dcb60d3c6b5c746c01d25530bed0b82269cf36bcf30ad8fe8",
+            "receipt:ec104a34521289167e859432367d886bb37f928cd93faa29bc2130fcf58e9923",
             "storage:evidence/web/sha256/ec/ae/ecaebaf9461605a18d083029bef06a9aae30ba322aed6595de4357b77e426c00.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "ecaebaf9461605a18d083029bef06a9aae30ba322aed6595de4357b77e426c00"
         },
         {
@@ -94301,8 +94301,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -94492,15 +94492,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b43e7538fc63e19b",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -94524,22 +94524,22 @@
         },
         {
           "documentId": "pdf:dc148ede1a0ee91d6c9fb4b7d757d1efeeb6602bd318bacd74d6a10a42db51a9",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF299WE_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:dc148ede1a0ee91d6c9fb4b7d757d1efeeb6602bd318bacd74d6a10a42db51a9",
-            "mineru-primary:237fa6472f893ad2cc9ab03c4de6c792ff47dd46c28551b582ecd81b4945e9ff",
+            "receipt:66ac3e4a25b31b930f9fdf010f9d06dd2c7d22fe5186832cd3676b9d1a95eba1",
             "storage:evidence/web/sha256/dc/14/dc148ede1a0ee91d6c9fb4b7d757d1efeeb6602bd318bacd74d6a10a42db51a9.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "dc148ede1a0ee91d6c9fb4b7d757d1efeeb6602bd318bacd74d6a10a42db51a9",
           "grammarProfileId": "pdf_grammar_b43e7538fc63e19b"
         },
@@ -94559,8 +94559,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -94665,15 +94665,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "model_specific",
       "groupName": "CCF500W5E",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -94697,22 +94697,22 @@
         },
         {
           "documentId": "pdf:375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF500W5E_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0",
-            "mineru-primary:b565c2e835ddd97647fcdbfb71157d33427bfe9a0275a4f5fbf7720e287c1c4a",
+            "receipt:ae0ebd875d6af915fd3b606e3bd389fb5e24195a82276684221ff950a2fa4542",
             "storage:evidence/web/sha256/37/5d/375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0"
         },
         {
@@ -94731,8 +94731,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -94755,15 +94755,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "model_specific",
       "groupName": "CCF500WE",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -94787,22 +94787,22 @@
         },
         {
           "documentId": "pdf:ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF500WE_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6",
-            "mineru-primary:486271c6f950b00dcbab782a9b3817d0d742ab2355692b2dad0d75e4a8f05e5c",
+            "receipt:b0bc5252049e2ae03c81db2fbdd0fb608a5aa87b0d80d8e28176f2e5ea052588",
             "storage:evidence/web/sha256/ec/af/ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6"
         },
         {
@@ -94821,8 +94821,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -94871,15 +94871,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARSER_GAP",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -94903,22 +94903,22 @@
         },
         {
           "documentId": "pdf:96550b4165789518bb823bffb99aebf4e4b4650c3e9523d7c108bdd3740f861f",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF700WE_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:96550b4165789518bb823bffb99aebf4e4b4650c3e9523d7c108bdd3740f861f",
-            "mineru-primary:d6156d8830405ef83923fe4f65ee4bb2bdbe510eb7312da3bf71f49a36162ec7",
+            "receipt:801ede37088f23504d5e9172cde06a0dcc1050e2db529739ea4587d0723ca63c",
             "storage:evidence/web/sha256/96/55/96550b4165789518bb823bffb99aebf4e4b4650c3e9523d7c108bdd3740f861f.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_NO_USABLE_DIMENSION_CLAIMS",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "96550b4165789518bb823bffb99aebf4e4b4650c3e9523d7c108bdd3740f861f",
           "grammarProfileId": "pdf_grammar_944fcad8129c057a"
         },
@@ -94938,8 +94938,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -95797,15 +95797,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -95829,22 +95829,22 @@
         },
         {
           "documentId": "pdf:44669176ff8d0354fd56927c6f9e674c45e7463b9bbda969db2ad125c4809b61",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CRSR125DB_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:44669176ff8d0354fd56927c6f9e674c45e7463b9bbda969db2ad125c4809b61",
-            "mineru-primary:aa8031f2b99c3182813ef091831ed035ed6ffa740302fb14d3f64016fa76a49b",
+            "receipt:cb18b92e01084e2ee52d2d141f759b0b95ba8e4f0228095f129671d3280fe4d6",
             "storage:evidence/web/sha256/44/66/44669176ff8d0354fd56927c6f9e674c45e7463b9bbda969db2ad125c4809b61.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "44669176ff8d0354fd56927c6f9e674c45e7463b9bbda969db2ad125c4809b61",
           "grammarProfileId": "pdf_grammar_1527a999293b656a"
         },
@@ -95864,8 +95864,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -96840,15 +96840,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "model_specific",
       "groupName": "CSH121NBS",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -96872,22 +96872,22 @@
         },
         {
           "documentId": "pdf:8d8b77699b2e36dfaf8465457676b21534d44eb56078cba098387b9a9c216480",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSH121NBS_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:8d8b77699b2e36dfaf8465457676b21534d44eb56078cba098387b9a9c216480",
-            "mineru-primary:b19f2452439bffe60eee92ec3515d6c470433fc16f8b0074e07f13654ad025c9",
+            "receipt:697427d5a67e4dd7d4374476e4bad96e86115e0b8a83c3e1cf0dc52dd6dd4b76",
             "storage:evidence/web/sha256/8d/8b/8d8b77699b2e36dfaf8465457676b21534d44eb56078cba098387b9a9c216480.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "8d8b77699b2e36dfaf8465457676b21534d44eb56078cba098387b9a9c216480"
         },
         {
@@ -96906,8 +96906,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -98541,15 +98541,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -98573,22 +98573,22 @@
         },
         {
           "documentId": "pdf:47a86fb1ded86e5092ca0a113b5baafad615fa054aec2b89b45a850c9fbcfda3",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSR124DBS_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:47a86fb1ded86e5092ca0a113b5baafad615fa054aec2b89b45a850c9fbcfda3",
-            "mineru-primary:ea6e9a4c2589af05efeedb161b65c7d7ee8fa849cc1cf470cdb29d6fa30eee4a",
+            "receipt:718b278651ed2508f25e6416dee5c3471b9325a95619e99e27be9ef7c847f079",
             "storage:evidence/web/sha256/47/a8/47a86fb1ded86e5092ca0a113b5baafad615fa054aec2b89b45a850c9fbcfda3.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "47a86fb1ded86e5092ca0a113b5baafad615fa054aec2b89b45a850c9fbcfda3",
           "grammarProfileId": "pdf_grammar_1527a999293b656a"
         },
@@ -98608,8 +98608,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -100083,15 +100083,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_24ab514920303947",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARSER_GAP",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -100115,22 +100115,22 @@
         },
         {
           "documentId": "pdf:a18fa4a0562d07615c8228a97c2d87c1c9c0ab68753bf95fe8553dfdc521d613",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM200NSS5E_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:a18fa4a0562d07615c8228a97c2d87c1c9c0ab68753bf95fe8553dfdc521d613",
-            "mineru-primary:bcaa78e1eef998522024cf08bf767609cca4171b125197cf62a7017808934cde",
+            "receipt:88cbcdfe5a2eb6c24c0777a1b01038826cb2bc8c424c72f6af3c14df6e762788",
             "storage:evidence/web/sha256/a1/8f/a18fa4a0562d07615c8228a97c2d87c1c9c0ab68753bf95fe8553dfdc521d613.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_NO_USABLE_DIMENSION_CLAIMS",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "a18fa4a0562d07615c8228a97c2d87c1c9c0ab68753bf95fe8553dfdc521d613",
           "grammarProfileId": "pdf_grammar_24ab514920303947"
         },
@@ -100150,8 +100150,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "CHIQ"
@@ -100783,15 +100783,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARSER_GAP",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -100815,22 +100815,22 @@
         },
         {
           "documentId": "pdf:783e444dcc5a0297c9cad3b14ae081ac712a5af4e224697806d61120d096781b",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM255NW5E_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:783e444dcc5a0297c9cad3b14ae081ac712a5af4e224697806d61120d096781b",
-            "mineru-primary:e502412b8c46659dd11d081cf5567d718b06b918203d5f1c250b68ecf2056c62",
+            "receipt:84b2bac0aec75ad046e11fafb39cafc5fa0cd405429120c89ced238af2cfcab8",
             "storage:evidence/web/sha256/78/3e/783e444dcc5a0297c9cad3b14ae081ac712a5af4e224697806d61120d096781b.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_NO_USABLE_DIMENSION_CLAIMS",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "783e444dcc5a0297c9cad3b14ae081ac712a5af4e224697806d61120d096781b",
           "grammarProfileId": "pdf_grammar_944fcad8129c057a"
         },
@@ -100850,8 +100850,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -101071,15 +101071,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "model_specific",
       "groupName": "CTM347NB5E",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -101103,22 +101103,22 @@
         },
         {
           "documentId": "pdf:b052f810a56fd10f9392239bd92a7db034cd5e5fc4dda752a343e31c0fa19d06",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM347NB5E_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:b052f810a56fd10f9392239bd92a7db034cd5e5fc4dda752a343e31c0fa19d06",
-            "mineru-primary:b87f17d92e8f1401b35b974629f49022bcbe9cdb5d454f79b15c37d16fc23c09",
+            "receipt:9078ff6453493e0ed170a95840a42979ed3b0d5336f5d6facbb34b178872eec4",
             "storage:evidence/web/sha256/b0/52/b052f810a56fd10f9392239bd92a7db034cd5e5fc4dda752a343e31c0fa19d06.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "b052f810a56fd10f9392239bd92a7db034cd5e5fc4dda752a343e31c0fa19d06"
         },
         {
@@ -101137,8 +101137,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -101480,15 +101480,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -101512,22 +101512,22 @@
         },
         {
           "documentId": "pdf:2fab0be5bf64aabbca94d8317e876e5aa0bc0900c00daa18b915f7c83d012680",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM407NB4_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:2fab0be5bf64aabbca94d8317e876e5aa0bc0900c00daa18b915f7c83d012680",
-            "mineru-primary:519d09e274dd68300aa682b4d96106cb41d7fecbc26f0b486ad952b4d079c0f8",
+            "receipt:1debe5590983b357487389fb34638ac8381bc0789c73caf0e84bcdfef018fb27",
             "storage:evidence/web/sha256/2f/ab/2fab0be5bf64aabbca94d8317e876e5aa0bc0900c00daa18b915f7c83d012680.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "2fab0be5bf64aabbca94d8317e876e5aa0bc0900c00daa18b915f7c83d012680",
           "grammarProfileId": "pdf_grammar_944fcad8129c057a"
         },
@@ -101547,8 +101547,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -101575,15 +101575,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "model_specific",
       "groupName": "CTM408NSS5E",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -101607,22 +101607,22 @@
         },
         {
           "documentId": "pdf:c5bf0483ca089eb269ea073f6ffcf5520964eb591f12ce05aa6faa9ec13f84c6",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM408NSS5E_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:c5bf0483ca089eb269ea073f6ffcf5520964eb591f12ce05aa6faa9ec13f84c6",
-            "mineru-primary:218c127c12bd43a2f4b1039201446f67baeb916e5971c4f8f4cc28aae2cef25b",
+            "receipt:e822782bd432919cb11e780cc088594d61c6aeb115e46e3e25ddabf1dd9864de",
             "storage:evidence/web/sha256/c5/bf/c5bf0483ca089eb269ea073f6ffcf5520964eb591f12ce05aa6faa9ec13f84c6.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "c5bf0483ca089eb269ea073f6ffcf5520964eb591f12ce05aa6faa9ec13f84c6"
         },
         {
@@ -101641,8 +101641,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"
@@ -101958,15 +101958,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "model_specific",
       "groupName": "CTM512NSS5E",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -101990,22 +101990,22 @@
         },
         {
           "documentId": "pdf:85e1a6867403bcb37777fc051a41f467e0ddd219eef8f84c605ecbc73349ecfb",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM512NSS5E_SPEC.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:85e1a6867403bcb37777fc051a41f467e0ddd219eef8f84c605ecbc73349ecfb",
-            "mineru-primary:f4be363e1edc5394b9bcacad8fc3e1c6503de9ac2f79cddf6dfabcbb74f00f0e",
+            "receipt:9173b7df098f8803b44e9b28a607a8e2ef688305bf8c35762bae184b3facd37e",
             "storage:evidence/web/sha256/85/e1/85e1a6867403bcb37777fc051a41f467e0ddd219eef8f84c605ecbc73349ecfb.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "85e1a6867403bcb37777fc051a41f467e0ddd219eef8f84c605ecbc73349ecfb"
         },
         {
@@ -102024,8 +102024,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "CHIQ"

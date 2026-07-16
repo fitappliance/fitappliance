@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T00:14:30.155Z",
-  "sourceBundleSha256": "554898e6dd8f3c5b942f3015dea62e4854229653f43079e4c6de483f54ef9e9f",
+  "generatedAt": "2026-07-16T00:48:24.635Z",
+  "sourceBundleSha256": "d5ec82378bb8fbcfbaebd6cf8ab0a68d6e273bdd96c3b96dd7fd4ef42f2a53d8",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -224,6 +224,20 @@
       "contentSha256": "9b653d7288f7f61ca01fe9724acf77c6308b38697d665d09d3eb01b5f825aed1",
       "receiptBindingSha256": "04f11831f4db2cdff93a689b743729023681d061c55c18012578f00f1386ffb9",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/2f/f7/2ff70406b1e91618cc9722b417d050048b6d1ac950e80e028ca260454489d341.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_1bda59f26425adb4db35d758",
+      "referenceId": "fa_ref_1c4d6922bf20eb92d1de792a",
+      "brand": "CHIQ",
+      "model": "CCF500WE",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF500WE_SPEC.pdf",
+      "sourcePdfSha256": "ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6",
+      "contentSha256": "ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6",
+      "receiptBindingSha256": "b0bc5252049e2ae03c81db2fbdd0fb608a5aa87b0d80d8e28176f2e5ea052588",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/48/62/486271c6f950b00dcbab782a9b3817d0d742ab2355692b2dad0d75e4a8f05e5c.json",
       "status": "passed",
       "failureCode": null
     },
@@ -760,6 +774,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_483d8a71b7c29a0b43630521",
+      "referenceId": "fa_ref_b46c4e91c87317929c23963f",
+      "brand": "CHIQ",
+      "model": "CCF142WE",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF142WE_SPEC.pdf",
+      "sourcePdfSha256": "d82a82458da86d88f5f18b4c0d41caa1515f19cb9d43283da484df8f6fe524a3",
+      "contentSha256": "d82a82458da86d88f5f18b4c0d41caa1515f19cb9d43283da484df8f6fe524a3",
+      "receiptBindingSha256": "50cdaede316d8f58dac310b310de378a549063ca0f49fa769d114d7616e85152",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/4e/9c/4e9c2578a2354bcc0b9510d6a2d7958f0e945da57a7817636861071914a9cdaf.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_498bf440bf3a78e3a2b13640",
       "referenceId": "fa_ref_baac6bfa3e68e8940c7465e6",
       "brand": "ASKO",
@@ -840,6 +868,34 @@
       "contentSha256": "c464998926e4822596e0758060e2958942e18900735817e45fcfdc27aac530f9",
       "receiptBindingSha256": "5e3de3b1b8c2f52265bbea6990f204085c5c53804bb21e7e95e23d99700afdd7",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_53359de03c2b344afa662d38",
+      "referenceId": "fa_ref_e1f23a09d2586332925c09c0",
+      "brand": "CHIQ",
+      "model": "CCF500W5E",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF500W5E_SPEC.pdf",
+      "sourcePdfSha256": "375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0",
+      "contentSha256": "375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0",
+      "receiptBindingSha256": "ae0ebd875d6af915fd3b606e3bd389fb5e24195a82276684221ff950a2fa4542",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b5/65/b565c2e835ddd97647fcdbfb71157d33427bfe9a0275a4f5fbf7720e287c1c4a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_546ca77bb2b9e44c821c6aa4",
+      "referenceId": "fa_ref_2c9d6c19b7cf96eae38c5609",
+      "brand": "CHIQ",
+      "model": "CSR124DBS",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSR124DBS_SPEC.pdf",
+      "sourcePdfSha256": "47a86fb1ded86e5092ca0a113b5baafad615fa054aec2b89b45a850c9fbcfda3",
+      "contentSha256": "47a86fb1ded86e5092ca0a113b5baafad615fa054aec2b89b45a850c9fbcfda3",
+      "receiptBindingSha256": "718b278651ed2508f25e6416dee5c3471b9325a95619e99e27be9ef7c847f079",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ea/6e/ea6e9a4c2589af05efeedb161b65c7d7ee8fa849cc1cf470cdb29d6fa30eee4a.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1008,6 +1064,20 @@
       "contentSha256": "1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605",
       "receiptBindingSha256": "51036febe679aa0f3a1e8d09629eaad944fcc60c7edf0d5ba740acf7e622b452",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/c6/98/c6986e95650bf62ee2028f9c8c9ecf3bcc72538f3c756190737390f4afff4492.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_62249a14064392d44ab1cd5c",
+      "referenceId": "fa_ref_97da15590c2569c14e1fee8e",
+      "brand": "CHIQ",
+      "model": "CRSR125DB",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CRSR125DB_SPEC.pdf",
+      "sourcePdfSha256": "44669176ff8d0354fd56927c6f9e674c45e7463b9bbda969db2ad125c4809b61",
+      "contentSha256": "44669176ff8d0354fd56927c6f9e674c45e7463b9bbda969db2ad125c4809b61",
+      "receiptBindingSha256": "cb18b92e01084e2ee52d2d141f759b0b95ba8e4f0228095f129671d3280fe4d6",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/aa/80/aa8031f2b99c3182813ef091831ed035ed6ffa740302fb14d3f64016fa76a49b.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1264,6 +1334,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_80ff6f73ce9e51d76fe2ffc2",
+      "referenceId": "fa_ref_5ebfb63a6f07507e526701e3",
+      "brand": "CHIQ",
+      "model": "CCD499NWS",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCD499NWS_SPEC.pdf",
+      "sourcePdfSha256": "5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6",
+      "contentSha256": "5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6",
+      "receiptBindingSha256": "d2bcdc1f7b63641457546c134284e69e36878d811b1f2ba86797cad78efdc4eb",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b7/66/b766abd9eb0bce23597ab98a5f72d700f83cc32a2283a535b73eeafe4f8cdaeb.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_83f0f6e20bccf3d250b69a52",
       "referenceId": "fa_ref_c39413faf56e81ee697117cb",
       "brand": "Fisher & Paykel",
@@ -1302,6 +1386,20 @@
       "contentSha256": "908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920",
       "receiptBindingSha256": "15e1c4dd59db7460dca2d92f9896c1ea7202658be93eb1acc07b01525c63f0d8",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/76/4e/764eba628db8284f28d47f0576b1d125e35aadbb56f65e014a59bfa6c5726755.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_8eac8024c3ab11d976ecd1c8",
+      "referenceId": "fa_ref_a44efad7072f178be39aeafd",
+      "brand": "CHIQ",
+      "model": "CTM255NW5E",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM255NW5E_SPEC.pdf",
+      "sourcePdfSha256": "783e444dcc5a0297c9cad3b14ae081ac712a5af4e224697806d61120d096781b",
+      "contentSha256": "783e444dcc5a0297c9cad3b14ae081ac712a5af4e224697806d61120d096781b",
+      "receiptBindingSha256": "84b2bac0aec75ad046e11fafb39cafc5fa0cd405429120c89ced238af2cfcab8",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/e5/02/e502412b8c46659dd11d081cf5567d718b06b918203d5f1c250b68ecf2056c62.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1474,6 +1572,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_9a42a918265183879346a9b8",
+      "referenceId": "fa_ref_6c8ae342f014bf24fb267e5b",
+      "brand": "CHIQ",
+      "model": "CCF700WE",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF700WE_SPEC.pdf",
+      "sourcePdfSha256": "96550b4165789518bb823bffb99aebf4e4b4650c3e9523d7c108bdd3740f861f",
+      "contentSha256": "96550b4165789518bb823bffb99aebf4e4b4650c3e9523d7c108bdd3740f861f",
+      "receiptBindingSha256": "801ede37088f23504d5e9172cde06a0dcc1050e2db529739ea4587d0723ca63c",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/d6/15/d6156d8830405ef83923fe4f65ee4bb2bdbe510eb7312da3bf71f49a36162ec7.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_9c49190ecfe0b14b0243eb02",
       "referenceId": "fa_ref_74619f76a94becad9e9993d0",
       "brand": "Bosch",
@@ -1516,6 +1628,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_a16446d8ef2a925bfd1024e8",
+      "referenceId": "fa_ref_e2fa34f04bc9146e488b0389",
+      "brand": "CHIQ",
+      "model": "CTM200NSS5E",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM200NSS5E_SPEC.pdf",
+      "sourcePdfSha256": "a18fa4a0562d07615c8228a97c2d87c1c9c0ab68753bf95fe8553dfdc521d613",
+      "contentSha256": "a18fa4a0562d07615c8228a97c2d87c1c9c0ab68753bf95fe8553dfdc521d613",
+      "receiptBindingSha256": "88cbcdfe5a2eb6c24c0777a1b01038826cb2bc8c424c72f6af3c14df6e762788",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/bc/aa/bcaa78e1eef998522024cf08bf767609cca4171b125197cf62a7017808934cde.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_a176c9162842080a746da1e5",
       "referenceId": "fa_ref_27bf4237647be10cb6fc16f1",
       "brand": "Bosch",
@@ -1526,6 +1652,20 @@
       "contentSha256": "c36995b1a3dcc1493d8f37fafc9c5c6d7c217d5b86fb8044f5ba0d8184c8f694",
       "receiptBindingSha256": "2ac5d0afc785e1f1efb14a77ab2346759f3517a4dcdf83a876fbf6cf7ca4ef39",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/e9/32/e932ef53336d46baca1d2160b51efd8c531898a771fd26e3c1dac29b8f76d0c3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_a185e38b0b9596ac404dfc62",
+      "referenceId": "fa_ref_996b56d5849b3c38bbb89b5f",
+      "brand": "CHIQ",
+      "model": "CTM407NB4",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM407NB4_SPEC.pdf",
+      "sourcePdfSha256": "2fab0be5bf64aabbca94d8317e876e5aa0bc0900c00daa18b915f7c83d012680",
+      "contentSha256": "2fab0be5bf64aabbca94d8317e876e5aa0bc0900c00daa18b915f7c83d012680",
+      "receiptBindingSha256": "1debe5590983b357487389fb34638ac8381bc0789c73caf0e84bcdfef018fb27",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/51/9d/519d09e274dd68300aa682b4d96106cb41d7fecbc26f0b486ad952b4d079c0f8.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1568,6 +1708,20 @@
       "contentSha256": "54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512",
       "receiptBindingSha256": "836fe821da2ea0f4fe137fb564ddc6638b228f6089a1b56d5ad7910ea5ea92e9",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/6b/1a/6b1a7ab873c11e941be1d6434b1ea566275b054a7c664278ad45b49b254c4c68.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_a53ffc44471da2f46e9487f8",
+      "referenceId": "fa_ref_0b56ecc3c7db223cdadbc4ee",
+      "brand": "CHIQ",
+      "model": "CTM512NSS5E",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM512NSS5E_SPEC.pdf",
+      "sourcePdfSha256": "85e1a6867403bcb37777fc051a41f467e0ddd219eef8f84c605ecbc73349ecfb",
+      "contentSha256": "85e1a6867403bcb37777fc051a41f467e0ddd219eef8f84c605ecbc73349ecfb",
+      "receiptBindingSha256": "9173b7df098f8803b44e9b28a607a8e2ef688305bf8c35762bae184b3facd37e",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f4/be/f4be363e1edc5394b9bcacad8fc3e1c6503de9ac2f79cddf6dfabcbb74f00f0e.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1642,6 +1796,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_a9f66d668dd2455eada4dddc",
+      "referenceId": "fa_ref_5280ac45d114b410dffda8f9",
+      "brand": "CHIQ",
+      "model": "CSH121NBS",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSH121NBS_SPEC.pdf",
+      "sourcePdfSha256": "8d8b77699b2e36dfaf8465457676b21534d44eb56078cba098387b9a9c216480",
+      "contentSha256": "8d8b77699b2e36dfaf8465457676b21534d44eb56078cba098387b9a9c216480",
+      "receiptBindingSha256": "697427d5a67e4dd7d4374476e4bad96e86115e0b8a83c3e1cf0dc52dd6dd4b76",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b1/9f/b19f2452439bffe60eee92ec3515d6c470433fc16f8b0074e07f13654ad025c9.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_aa00f2c8ad207d4ad0768869",
       "referenceId": "fa_ref_4b9ea51ba47945c5ee8f95c3",
       "brand": "LG",
@@ -1666,6 +1834,20 @@
       "contentSha256": "56b407cd1a481c606bf5726fe9760ce40706abe884fad0eadf8cb87a52df37d6",
       "receiptBindingSha256": "cf9155ad4c024ef9c260d97ae5c5cb7581b6321c31ce662b6da89e6f373ab505",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/63/1c/631c94c995443cde628ac08fd00d28870e536cc64579278d9c47c55a12fe0904.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_ac40ec9e99d4ddc027ea2060",
+      "referenceId": "fa_ref_e4f078932e4bff0389ad1ff4",
+      "brand": "CHIQ",
+      "model": "CCF299WE",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF299WE_SPEC.pdf",
+      "sourcePdfSha256": "dc148ede1a0ee91d6c9fb4b7d757d1efeeb6602bd318bacd74d6a10a42db51a9",
+      "contentSha256": "dc148ede1a0ee91d6c9fb4b7d757d1efeeb6602bd318bacd74d6a10a42db51a9",
+      "receiptBindingSha256": "66ac3e4a25b31b930f9fdf010f9d06dd2c7d22fe5186832cd3676b9d1a95eba1",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/23/7f/237fa6472f893ad2cc9ab03c4de6c792ff47dd46c28551b582ecd81b4945e9ff.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1838,6 +2020,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_bf141f6f53f5b216d2a42872",
+      "referenceId": "fa_ref_39a3bd3678b8b056f96109a5",
+      "brand": "CHIQ",
+      "model": "CTM408NSS5E",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM408NSS5E_SPEC.pdf",
+      "sourcePdfSha256": "c5bf0483ca089eb269ea073f6ffcf5520964eb591f12ce05aa6faa9ec13f84c6",
+      "contentSha256": "c5bf0483ca089eb269ea073f6ffcf5520964eb591f12ce05aa6faa9ec13f84c6",
+      "receiptBindingSha256": "e822782bd432919cb11e780cc088594d61c6aeb115e46e3e25ddabf1dd9864de",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/21/8c/218c127c12bd43a2f4b1039201446f67baeb916e5971c4f8f4cc28aae2cef25b.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c2de14d490b3777d78e1f53f",
       "referenceId": "fa_ref_5d80bf5c6d9510aa761f02a0",
       "brand": "Bosch",
@@ -1974,6 +2170,20 @@
       "contentSha256": "79bf89513b6c3b302ce50ffd3e7a85eaf23219791954e200d1e20112a66f4676",
       "receiptBindingSha256": "a13279978b563a8efabffb173c16a9c5ee6e888e09c4e1fb7f393bff1230a6b6",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/c6/45/c64534a054e8ef79bd91aaae6765f639820af439b776fab8d38a273e9d48ace7.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_d19630ac9ee715b25e7187e2",
+      "referenceId": "fa_ref_3bc782fb8c9df8640a08a22b",
+      "brand": "CHIQ",
+      "model": "CCF199WE",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF199WE_SPEC.pdf",
+      "sourcePdfSha256": "ecaebaf9461605a18d083029bef06a9aae30ba322aed6595de4357b77e426c00",
+      "contentSha256": "ecaebaf9461605a18d083029bef06a9aae30ba322aed6595de4357b77e426c00",
+      "receiptBindingSha256": "ec104a34521289167e859432367d886bb37f928cd93faa29bc2130fcf58e9923",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/fb/a2/fba2308e7129896dcb60d3c6b5c746c01d25530bed0b82269cf36bcf30ad8fe8.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2128,6 +2338,20 @@
       "contentSha256": "8073dfad036b37f0c39b22c59ebad688bbf23db244bc5ded48582a9351c78287",
       "receiptBindingSha256": "5ddea0c54d2ad03124488a3a652ef718a0c76232a2e2c46380d54fe6c8b53188",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/6f/d8/6fd8127d5d45f75fb969fc7ccf1b778f5f771809c3fdd9188e37a1aa981b64c0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_dc9ebcee1753e90803fb239e",
+      "referenceId": "fa_ref_6d7fbc5b457f6ab6a30f8f74",
+      "brand": "CHIQ",
+      "model": "CTM347NB5E",
+      "category": "fridge",
+      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM347NB5E_SPEC.pdf",
+      "sourcePdfSha256": "b052f810a56fd10f9392239bd92a7db034cd5e5fc4dda752a343e31c0fa19d06",
+      "contentSha256": "b052f810a56fd10f9392239bd92a7db034cd5e5fc4dda752a343e31c0fa19d06",
+      "receiptBindingSha256": "9078ff6453493e0ed170a95840a42979ed3b0d5336f5d6facbb34b178872eec4",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b8/7f/b87f17d92e8f1401b35b974629f49022bcbe9cdb5d454f79b15c37d16fc23c09.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2427,11 +2651,11 @@
     }
   ],
   "summary": {
-    "entries": 151,
-    "sources": 173,
-    "passed": 173,
+    "entries": 167,
+    "sources": 189,
+    "passed": 189,
     "failed": 0
   },
-  "checkedObjects": 368,
-  "semanticAuditSha256": "465539d93bd8f28ccc23854f0ca767ffdff6c1bd6157fcd5a4233046abc7d427"
+  "checkedObjects": 400,
+  "semanticAuditSha256": "59e2c76daccbc694194507d3809e8388f3fbc505a9347d21ea0f4643bb2c247a"
 }

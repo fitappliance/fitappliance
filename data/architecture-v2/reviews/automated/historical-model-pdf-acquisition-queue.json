@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T00:01:44.638Z",
-  "semanticQueueSha256": "2052c853efec2628ca02038b7f0f51d3adcc8eb0b04ef8980513bffb465a8b6f",
-  "sourceClassificationSha256": "ec881e067db0b5b1668bcdbb29e2ac0c851cfc249ff788756b959757a1f55a1e",
+  "generatedAt": "2026-07-16T00:50:34.223Z",
+  "semanticQueueSha256": "4e583aaaa0b5a129d8bb9b545a2fa27f6126afb5efbfa43c48b95a9ede1480d0",
+  "sourceClassificationSha256": "b830a17abacf7c491ba2265b63747a4bdfda3a79a2587c80e74dc835f8f0e339",
   "records": [
     {
       "schemaVersion": 1,
@@ -1044,7 +1044,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ed8dd5fbc99acece8577a2d0"
       ],
@@ -1073,7 +1073,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_20b4a998309eeeaae2e9a579"
       ],
@@ -1102,7 +1102,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_83f9652a0e9987b431953e37"
       ],
@@ -1534,7 +1534,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_d564d4f347a68413caba44bc"
       ],
@@ -1594,7 +1594,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_169f79451352e22f1f8359f4"
       ],
@@ -1623,7 +1623,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_cade201ecbb32888c216244a"
       ],
@@ -1652,7 +1652,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_c8abae46205c03bd14e20232"
       ],
@@ -2518,7 +2518,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_bf8a305aa60b312348dfcca0"
       ],
@@ -2547,7 +2547,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ef6953eaa1c104422f05a637"
       ],
@@ -3165,7 +3165,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_70605487df5b7f95ed8d386b"
       ],
@@ -3225,7 +3225,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8b539dcd9965657b12fd05e5"
       ],
@@ -3285,7 +3285,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_66f124cec33453f4922a37cb"
       ],
@@ -4337,7 +4337,7 @@
       "groupName": "Document family 3031e527077f",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_f138b6f57ddfd1cfd4f9a080"
       ],
@@ -4430,7 +4430,7 @@
       "groupName": "PDF grammar pdf_grammar_210afe7ab962ee3e",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_22b2c964484a65ef0664621f"
       ],
@@ -4461,7 +4461,7 @@
       "groupName": "PDF grammar pdf_grammar_766c1f4c547cb6cf",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8c8ce58f73dabe1d82e79346"
       ],
@@ -4492,7 +4492,7 @@
       "groupName": "PDF grammar pdf_grammar_89d466ea29c76191",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_df041ff8eb8fe0909f3875d5"
       ],
@@ -4523,7 +4523,7 @@
       "groupName": "PDF grammar pdf_grammar_e07d3543379f3feb",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_5d87e6aee5f895cd5ac7b3c7"
       ],
@@ -4585,7 +4585,7 @@
       "groupName": "PDF grammar pdf_grammar_ef8d3798c7ba8e77",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_d3d6e04190641db3311d5374"
       ],
@@ -5298,7 +5298,7 @@
       "groupName": "Series 5",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_370b61238b47f1c9114c9804"
       ],
@@ -5935,7 +5935,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_dee52acd42f1a1374ace1e39"
       ],
@@ -6059,7 +6059,7 @@
       "groupName": "Document family 425da1b10d07",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_befe76ee263bd5e94424069c",
         "historical_source_d05b8b1b3e05c052b93ac9fc"
@@ -9253,7 +9253,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_a5eb82ce6376726d9c109cce"
       ],
@@ -9980,7 +9980,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_cc79e6c2ca5178cb91dc2d83"
       ],
@@ -10195,7 +10195,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_f12a273b3d00b31097441235"
       ],
@@ -10565,7 +10565,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_88c0e8a855d9af3619025702"
       ],
@@ -10625,7 +10625,7 @@
       "groupName": "PDF grammar pdf_grammar_402a90fdb3f4b2e4",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9e9c1b37ca0360687ee45081"
       ],
@@ -10687,7 +10687,7 @@
       "groupName": "PDF grammar pdf_grammar_6ab607f729ee61e9",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_5c227b1693d68bdc0788b356"
       ],
@@ -10718,7 +10718,7 @@
       "groupName": "PDF grammar pdf_grammar_77d337e9deb5d131",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_e72acbed2d33c3d7c429904f"
       ],
@@ -10749,7 +10749,7 @@
       "groupName": "Series 5",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_d0864ff1bb4041196dc5d2d0"
       ],
@@ -12824,7 +12824,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_2cfc682074b06abfb3a01186"
       ],
@@ -12853,7 +12853,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_645ab61637f6b800000b0c90"
       ],
@@ -13130,7 +13130,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ca457c9a7f71771a70c832a6",
         "historical_source_ddd5bd4cc14ba35a1326d9b9"
@@ -14307,7 +14307,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_6bedfcabfd98cc48769c02b7",
         "historical_source_8070ff12986a3340508d695c"
@@ -14662,37 +14662,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_47080b27fc00a9ac3b6cad2e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f7ba3ce28c1ec58650b8c8d8",
-      "referenceId": "fa_ref_e2fa34f04bc9146e488b0389",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CTM200NSS5E",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_24ab514920303947",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8ed5e7dcc0073a08f1978814"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a16446d8ef2a925bfd1024e8"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3396"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9865ecf64e3a24ffcf0584f4"
       ],
       "offlineReplayOutcome": null
     },
@@ -17747,7 +17716,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_a2ea351f4bb76026973f340f"
       ],
@@ -18117,7 +18086,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_431b91eb23109d47a83dccd9"
       ],
@@ -18363,7 +18332,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ac3c24fa182d2fe11340a9c1"
       ],
@@ -18702,7 +18671,7 @@
       "groupName": "Document family e2bb5c28d7c6",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_d5915132ee22e3e14842c800"
       ],
@@ -18733,7 +18702,7 @@
       "groupName": "Document family e2bb5c28d7c6",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_cf8b706ab05721627e8273f4"
       ],
@@ -18764,7 +18733,7 @@
       "groupName": "PDF grammar pdf_grammar_17e6d228ea6a23b6",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_6245c328a915aa52b19c3c8e"
       ],
@@ -18826,7 +18795,7 @@
       "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_2cb06f9fca569bbb6928b53e"
       ],
@@ -18950,7 +18919,7 @@
       "groupName": "PDF grammar pdf_grammar_8d500b3f80c31fe9",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_1920829d2b132390f83b9c5d"
       ],
@@ -18981,7 +18950,7 @@
       "groupName": "PDF grammar pdf_grammar_939d2824fd13982a",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9929f38cce3c2daddca1cb87"
       ],
@@ -19043,7 +19012,7 @@
       "groupName": "PDF grammar pdf_grammar_deb4d0840e067a13",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_624deedb961e8b1d7cf75117"
       ],
@@ -19074,7 +19043,7 @@
       "groupName": "PDF grammar pdf_grammar_df874584410165d3",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_385cf545c4712f43d8806931"
       ],
@@ -19105,7 +19074,7 @@
       "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_152202435cd3e1bf5f3a459a"
       ],
@@ -19136,7 +19105,7 @@
       "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_b8f6e7e41d5ba3571d154cf1"
       ],
@@ -21555,7 +21524,7 @@
       "groupName": "PDF grammar pdf_grammar_58d08a7f3d6f1923",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_93358fbab8eccf0a93f61749"
       ],
@@ -23384,7 +23353,7 @@
       "groupName": "HRVF240",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9ef570459d133675f2374ed6"
       ],
@@ -23415,7 +23384,7 @@
       "groupName": "HRVF384S",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ce6f1202942b939ccd721f5a"
       ],
@@ -24897,7 +24866,7 @@
       "groupName": "GF-B505BB",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_7f4760ebd7a219bfde97be8c"
       ],
@@ -24959,7 +24928,7 @@
       "groupName": "GS-B655PL",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9b38682e1b97fe2f38344457"
       ],
@@ -24990,7 +24959,7 @@
       "groupName": "GT-279BPL",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_89d31e1c26f6ab90bdc2da32",
         "historical_source_c3aecfd7d374ccd5f1c936e7"
@@ -25888,7 +25857,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_436fd9fa1e5e92a53cbadf97",
         "historical_source_c9a4f8920209c89dd11104bf"
@@ -27251,7 +27220,7 @@
       "groupName": "SRF5300SD",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_1dfe8f25539b0013ce36a5bd",
         "historical_source_780afc6550ebab36f55cb56e"
@@ -32014,7 +31983,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_940044463f8bcfe4a4385e59"
       ],
@@ -32043,7 +32012,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_378d9c5c70b9a4e476203e6d"
       ],
@@ -32289,7 +32258,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ea366577734e2a42ef9a8e8e"
       ],
@@ -32318,7 +32287,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_a9bc7c81730bf9f23c172aad"
       ],
@@ -32347,7 +32316,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8ef14e674da2dea8f6faa153"
       ],
@@ -32376,7 +32345,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_48404725dab869991c796010"
       ],
@@ -32405,7 +32374,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_7557632c47cece659fd004c5"
       ],
@@ -32434,7 +32403,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_f0394b345b6e1960fa6f128b"
       ],
@@ -33887,7 +33856,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_78370b00a73a5e5b7f965a84"
       ],
@@ -33916,7 +33885,7 @@
       "groupName": "PDF grammar pdf_grammar_1f676258dbfe930d",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_82a14e0be2073b1a92f2fa39"
       ],
@@ -33947,7 +33916,7 @@
       "groupName": "PDF grammar pdf_grammar_4134bce35c24bce3",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8fbddfecd5a3be9121595217"
       ],
@@ -33978,7 +33947,7 @@
       "groupName": "PDF grammar pdf_grammar_43e089d3d7017530",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_683a13562dc3b0fb21ed5fa7"
       ],
@@ -34009,7 +33978,7 @@
       "groupName": "PDF grammar pdf_grammar_58d08a7f3d6f1923",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_72425d6c045da69661d84d2b"
       ],
@@ -34040,7 +34009,7 @@
       "groupName": "PDF grammar pdf_grammar_69bdef4b32e8dbfe",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_0aa4a22bd0877f7afbf9ae75"
       ],
@@ -34071,7 +34040,7 @@
       "groupName": "PDF grammar pdf_grammar_6ab607f729ee61e9",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9ce3e8bcabb901944895a49b"
       ],
@@ -34102,7 +34071,7 @@
       "groupName": "PDF grammar pdf_grammar_6c24f0329d3740aa",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_63d67120be596c6dae053547"
       ],
@@ -34195,7 +34164,7 @@
       "groupName": "PDF grammar pdf_grammar_8c9e52242594826f",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_baee0c7f1b103a8111f2fb71"
       ],
@@ -34226,7 +34195,7 @@
       "groupName": "PDF grammar pdf_grammar_a8ec637b6353aca3",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_f0a2bd035c0fbfcfbf8b1680"
       ],
@@ -34257,7 +34226,7 @@
       "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8733d1ee1aefc0aff7164db8"
       ],
@@ -34288,7 +34257,7 @@
       "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_a2d12981107856b2b25743fb"
       ],
@@ -34319,7 +34288,7 @@
       "groupName": "PDF grammar pdf_grammar_fa4e96e9408d0085",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_e04232bf08d9e8ef78430dc2"
       ],
@@ -34350,7 +34319,7 @@
       "groupName": "Series 7",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9c7b07661cc653c24ed310b6"
       ],
@@ -35125,7 +35094,7 @@
       "groupName": "Hisense AU washer indexed dimension diagram",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_86297d49af24af34f01e742b",
         "historical_source_b365b8134957dd43fe49248f"
@@ -35155,7 +35124,7 @@
       "groupName": "PDF grammar pdf_grammar_7fbb3482f967fc40",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_c8137f11a9c9e4484b7b3f5c"
       ],
@@ -35186,7 +35155,7 @@
       "groupName": "Series 5",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_d226b82fdcbd5046fe05a21c"
       ],
@@ -36302,7 +36271,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8ede823512df46adbefc8a10"
       ],
@@ -36548,7 +36517,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_346f86b751d876aff1c152d3"
       ],
@@ -36577,7 +36546,7 @@
       "groupName": "PDF grammar pdf_grammar_2e826f8230419796",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_c94b5a5bac0d5dede1609a9c"
       ],
@@ -36608,7 +36577,7 @@
       "groupName": "PDF grammar pdf_grammar_658fb95d8446842a",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_aca10a4ca3f90378b714fad5"
       ],
@@ -37786,7 +37755,7 @@
       "groupName": "PDF grammar pdf_grammar_59e49410096f0fd2",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_1e642c43b7d3a4b06b31f568"
       ],
@@ -37817,7 +37786,7 @@
       "groupName": "PDF grammar pdf_grammar_59e49410096f0fd2",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_c2259c3ebfd05aba2e79cdaf"
       ],
@@ -37848,7 +37817,7 @@
       "groupName": "PDF grammar pdf_grammar_d9ff4d7551b11ed0",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_bbd7b8c284d9dfbb892f4f3d"
       ],
@@ -37879,7 +37848,7 @@
       "groupName": "PDF grammar pdf_grammar_ed20989e61d1cca9",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_86f5999a263c22ae2baedc2f"
       ],
@@ -39015,7 +38984,7 @@
       "groupName": "PDF grammar pdf_grammar_86d30e2b33f39e6d",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_05696d8bb920949c82004f4d"
       ],
@@ -42181,7 +42150,7 @@
       "groupName": "Document family 24cc9cefd1e2",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_09df59410e4b414d90b9171b"
       ],
@@ -42212,7 +42181,7 @@
       "groupName": "Document family 27fe801c2f33",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_6a67b18502328a68404ff37d"
       ],
@@ -42243,7 +42212,7 @@
       "groupName": "Document family 6f18ecc77054",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_0f53fccfdb96bde176d45e68"
       ],
@@ -42274,7 +42243,7 @@
       "groupName": "Document family e7adc05013ac",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_49ed761d81fcd60c5c41fce4"
       ],
@@ -42305,7 +42274,7 @@
       "groupName": "Document family e7adc05013ac",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_71aaca1ea7fb019331e21ff0"
       ],
@@ -42336,7 +42305,7 @@
       "groupName": "PDF grammar pdf_grammar_a177edb17bdf9d08",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_bea2c6e21138e4a3c54d5115"
       ],
@@ -42367,7 +42336,7 @@
       "groupName": "PDF grammar pdf_grammar_bdf94f4bbba7d673",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ba29a402db45de69449e44f8"
       ],
@@ -43740,7 +43709,7 @@
       "groupName": "PDF grammar pdf_grammar_d5866f311c5d2318",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_7f417352909d3f1cfea7480e"
       ],
@@ -48045,7 +48014,7 @@
       "groupName": "PDF grammar pdf_grammar_ec48d57eb32176c4",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_1b1472281251840a36a6320c"
       ],
@@ -51796,161 +51765,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_34b3aa63de54d89730d1cf64",
-      "referenceId": "fa_ref_b46c4e91c87317929c23963f",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CCF142WE",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CCF142WE",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_a1e8eb8e825b3b5296342c93"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_483d8a71b7c29a0b43630521"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3164"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_96fc70bd29d9ab5a0e70e9b1"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_bb51ce23a195f898d246818a",
-      "referenceId": "fa_ref_3bc782fb8c9df8640a08a22b",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CCF199WE",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CCF199WE",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_0b1e8a7f5b5091f61bb74f51"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_d19630ac9ee715b25e7187e2"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3159"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6cfd48577928f3d2fa9c64de"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_26f9ee3ec6f5e4b13fe10a20",
-      "referenceId": "fa_ref_e1f23a09d2586332925c09c0",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CCF500W5E",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CCF500W5E",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_091350c15ef32127edef4b94"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_53359de03c2b344afa662d38"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3555"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_0151c1ee18531b199e7e624a"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_04b91f89a73aec09e8861f71",
-      "referenceId": "fa_ref_1c4d6922bf20eb92d1de792a",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CCF500WE",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CCF500WE",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_4e981006a138d74eac69ccdb"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_1bda59f26425adb4db35d758"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3554"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_1b37549ba59229302c1df738"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_49921ab9567198f82e214e01",
-      "referenceId": "fa_ref_5280ac45d114b410dffda8f9",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CSH121NBS",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CSH121NBS",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_0dff7324c2a123f76eafb94b"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a9f66d668dd2455eada4dddc"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3376"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_3baad1ce3d216f31b9d90bf5"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_f3388433260c36884d806ec1",
       "referenceId": "fa_ref_66694e7f8ddacd680a798ff8",
       "category": "fridge",
@@ -51962,7 +51776,7 @@
       "groupName": "CSH164NBS",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_67bae942e73fcef777e7c461"
       ],
@@ -51977,99 +51791,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_9f4fd26903325b50c8dd22c9"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_6e48f1469dde9a61c2410a20",
-      "referenceId": "fa_ref_6d7fbc5b457f6ab6a30f8f74",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CTM347NB5E",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CTM347NB5E",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_7ee8c82a075be625f4b34f06"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_dc9ebcee1753e90803fb239e"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3117"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_cddd3ad3d0df765ee85edbb4"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a62c8bf0970994985036ac9d",
-      "referenceId": "fa_ref_39a3bd3678b8b056f96109a5",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CTM408NSS5E",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CTM408NSS5E",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_75b26f9ecb4b3c5dc17319ae"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_bf141f6f53f5b216d2a42872"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3384"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_4caa27b92ade672c81282e01"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_852c02ed996ddb9b63507c16",
-      "referenceId": "fa_ref_0b56ecc3c7db223cdadbc4ee",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CTM512NSS5E",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "CTM512NSS5E",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_c777fb900f2bdee5db2bd2c7"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a53ffc44471da2f46e9487f8"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3386"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d10e7dc8037aa76bdaa045f6"
       ],
       "offlineReplayOutcome": null
     },
@@ -52117,7 +51838,7 @@
       "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9a90ae2ece3642dc2d185dc3"
       ],
@@ -52168,68 +51889,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_97b19e6a3a504f467a9293d6",
-      "referenceId": "fa_ref_5ebfb63a6f07507e526701e3",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CCD499NWS",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_78ae119588c44ad4238d23ce"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_80ff6f73ce9e51d76fe2ffc2"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3209"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_aee12b47c419f25cac856581"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_9f3f1f21dbbc9193daf74d5d",
-      "referenceId": "fa_ref_97da15590c2569c14e1fee8e",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CRSR125DB",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_eee974e9eba71555c2454a61"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_62249a14064392d44ab1cd5c"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3184"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_72d78a6ecb11873f35a3cad6"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_d73928ff8e1edf3aa773e739",
       "referenceId": "fa_ref_1911e253ba257a5a7c32a429",
       "category": "fridge",
@@ -52256,37 +51915,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_c4d91fde90656f8b298778bf"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_db0ce09d1ef26ac80f0c4ebb",
-      "referenceId": "fa_ref_2c9d6c19b7cf96eae38c5609",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CSR124DBS",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_5f5cf6d6927bade5fc2433ac"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_546ca77bb2b9e44c821c6aa4"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2526"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_bbd6366d52ceea02a440ae42"
       ],
       "offlineReplayOutcome": null
     },
@@ -52334,7 +51962,7 @@
       "groupName": "PDF grammar pdf_grammar_1527a999293b656a",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_4ca2e9b5dcef8a00eed03d98"
       ],
@@ -52385,37 +52013,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_71b407da74bf2ab5154b1f04",
-      "referenceId": "fa_ref_6c8ae342f014bf24fb267e5b",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CCF700WE",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_4d4716d0c9f6c33bd6a8e5f3"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_9a42a918265183879346a9b8"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2954"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_4e56fd6b0008d265c3aae8a2"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_77ecf89e889507b8eb11433e",
       "referenceId": "fa_ref_f5efa08448820ba028229fab",
       "category": "fridge",
@@ -52427,7 +52024,7 @@
       "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_a5ca701bacb40c851b0af7c3"
       ],
@@ -52447,99 +52044,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_85c30bac924efadc77421299",
-      "referenceId": "fa_ref_a44efad7072f178be39aeafd",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CTM255NW5E",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_cac4f8bc0c05fa9778f839c4"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_8eac8024c3ab11d976ecd1c8"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3214"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_2d081d95394a90ef73c9cf06"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ff3122b2ebb7eddbbc19e3de",
-      "referenceId": "fa_ref_996b56d5849b3c38bbb89b5f",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CTM407NB4",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_944fcad8129c057a",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_65ac507bda8508613e332e5e"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a185e38b0b9596ac404dfc62"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3720"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_1aa9e4e1d4ff30a4ff65e459"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_98ea2bbb00c86ad12503aa3c",
-      "referenceId": "fa_ref_e4f078932e4bff0389ad1ff4",
-      "category": "fridge",
-      "brand": "CHIQ",
-      "model": "CCF299WE",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_b43e7538fc63e19b",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_d7278c0fcf6682ef6433623d"
-      ],
-      "resolverIds": [
-        "chiq-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_ac40ec9e99d4ddc027ea2060"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3079"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_5a90bd0bcd91849d2e0137c3"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_da09d6b5f6a8b44316b5637a",
       "referenceId": "fa_ref_cc2ef3855998da42a11fa74f",
       "category": "fridge",
@@ -52551,7 +52055,7 @@
       "groupName": "PDF grammar pdf_grammar_b43e7538fc63e19b",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_053f94b81e0b50de424339ba"
       ],
@@ -53850,7 +53354,7 @@
       "groupName": "PDF grammar pdf_grammar_f2196c80f14b773b",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_97e92e34edfbf0b32c29647c"
       ],
@@ -53881,7 +53385,7 @@
       "groupName": "PDF grammar pdf_grammar_fd6fd1396552b04a",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8db43262c7ed18b0d85fa8d1"
       ],
@@ -57498,7 +57002,7 @@
       "groupName": "PDF grammar pdf_grammar_0488b1402df6bbba",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_b7634d045fe6c52a586d94af"
       ],
@@ -57560,7 +57064,7 @@
       "groupName": "PDF grammar pdf_grammar_7a89e99ea6eb7bbe",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_25be282c891da148c6c9a29f"
       ],
@@ -57591,7 +57095,7 @@
       "groupName": "PDF grammar pdf_grammar_98abe7d57717aa88",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_f28a47767ca4a3b68e85d6aa"
       ],
@@ -60988,7 +60492,7 @@
       "groupName": "HRBC140",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_c899a52e997fbf759d811f56"
       ],
@@ -61019,7 +60523,7 @@
       "groupName": "HRBF125",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_a09c0c7339018fe6f1712a7b"
       ],
@@ -61050,7 +60554,7 @@
       "groupName": "HRBF179B",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ae84e497d5207cf81c46d29a"
       ],
@@ -61112,7 +60616,7 @@
       "groupName": "HRBM482SW",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_a901d27b24fd38d98f56597d"
       ],
@@ -61143,7 +60647,7 @@
       "groupName": "HRCD454BW",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_88d366b1c4aa6c0dfa964ab1"
       ],
@@ -61174,7 +60678,7 @@
       "groupName": "HRCD483TBW",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_71de552926098c0e6295c82b"
       ],
@@ -61205,7 +60709,7 @@
       "groupName": "HRCD585BWB",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_c3c4024c3168506c6f846de7"
       ],
@@ -61236,7 +60740,7 @@
       "groupName": "HRCD586TBWB",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ef63b82f9c980e137afa958f"
       ],
@@ -61267,7 +60771,7 @@
       "groupName": "HRCD609B",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_969c6b1c3f801506f45ce359"
       ],
@@ -61298,7 +60802,7 @@
       "groupName": "HRCD610TS",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_d7c20f8c56c70c53d3a5522d"
       ],
@@ -61329,7 +60833,7 @@
       "groupName": "HRCF144",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_c3de2b81ab04ef6f6f115d1b"
       ],
@@ -61360,7 +60864,7 @@
       "groupName": "HRCF199",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_b6738b409bda1f594cdee845"
       ],
@@ -61391,7 +60895,7 @@
       "groupName": "HRCF297",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_6f080dad7033d4cb589232ec"
       ],
@@ -61422,7 +60926,7 @@
       "groupName": "HRCF300",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8de1f1779bf8124c030180ee"
       ],
@@ -61453,7 +60957,7 @@
       "groupName": "HRCF500",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8765c063779707ab6515d720"
       ],
@@ -61484,7 +60988,7 @@
       "groupName": "HRFD634BW",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_83545a0ea69091ad440bacb9"
       ],
@@ -61515,7 +61019,7 @@
       "groupName": "HRTF205S",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_791bdf49e3be087c159e3fe3"
       ],
@@ -61608,7 +61112,7 @@
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_acb29548dd6fa355702416d0"
       ],
@@ -61825,7 +61329,7 @@
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_568fabd6a32338be01090e35"
       ],
@@ -61949,7 +61453,7 @@
       "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_d108e7c55cb3425750c80043"
       ],
@@ -65432,7 +64936,7 @@
       "groupName": "PDF grammar pdf_grammar_49ff76df90a9122a",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_6d2ccbe943100e361b730f45"
       ],
@@ -65463,7 +64967,7 @@
       "groupName": "PDF grammar pdf_grammar_a90dbefa9352a2ea",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_e26471c80c3da7452e74bd51"
       ],
@@ -66684,7 +66188,7 @@
       "groupName": "Document family 1c4c1e1db1f0",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_556bd87b6a422a395c8fccfa"
       ],
@@ -66715,7 +66219,7 @@
       "groupName": "Document family 1c4c1e1db1f0",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_556bd87b6a422a395c8fccfa"
       ],
@@ -66746,7 +66250,7 @@
       "groupName": "Document family 5ceaeaaafb54",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_589909d35e1be9b74f08e4b6"
       ],
@@ -66777,7 +66281,7 @@
       "groupName": "Document family 5ceaeaaafb54",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_589909d35e1be9b74f08e4b6"
       ],
@@ -66808,7 +66312,7 @@
       "groupName": "Document family 5ceaeaaafb54",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_589909d35e1be9b74f08e4b6"
       ],
@@ -66839,7 +66343,7 @@
       "groupName": "Document family 6260a2216a20",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8e9c968a4715480736a56d2d"
       ],
@@ -66870,7 +66374,7 @@
       "groupName": "Document family 6260a2216a20",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8e9c968a4715480736a56d2d"
       ],
@@ -66901,7 +66405,7 @@
       "groupName": "Document family 6fc98bd5e3ad",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_26764af1be570231efafb3a1"
       ],
@@ -66932,7 +66436,7 @@
       "groupName": "Document family 6fc98bd5e3ad",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_26764af1be570231efafb3a1"
       ],
@@ -66963,7 +66467,7 @@
       "groupName": "Document family 7ceaec7eb479",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9fb4b99a48f9c06f360489f1"
       ],
@@ -66994,7 +66498,7 @@
       "groupName": "Document family 7ceaec7eb479",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9fb4b99a48f9c06f360489f1"
       ],
@@ -67025,7 +66529,7 @@
       "groupName": "Document family 7ceaec7eb479",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9fb4b99a48f9c06f360489f1"
       ],
@@ -67056,7 +66560,7 @@
       "groupName": "Document family 84e5aa785d44",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_cbf6bf092c986079006570b4"
       ],
@@ -67087,7 +66591,7 @@
       "groupName": "Document family 84e5aa785d44",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_cbf6bf092c986079006570b4"
       ],
@@ -67118,7 +66622,7 @@
       "groupName": "Document family b86d8eebd403",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_418da31f37bf4002d69b43aa"
       ],
@@ -67149,7 +66653,7 @@
       "groupName": "Document family b86d8eebd403",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_418da31f37bf4002d69b43aa"
       ],
@@ -67180,7 +66684,7 @@
       "groupName": "Document family e36b816dec61",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_3353139254eca0b61cec2582"
       ],
@@ -67211,7 +66715,7 @@
       "groupName": "Document family e36b816dec61",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_3353139254eca0b61cec2582"
       ],
@@ -67242,7 +66746,7 @@
       "groupName": "Document family e60c6d39e390",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_5f16079613b5e8cb7eca3759"
       ],
@@ -67273,7 +66777,7 @@
       "groupName": "Document family e60c6d39e390",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_5f16079613b5e8cb7eca3759"
       ],
@@ -67304,7 +66808,7 @@
       "groupName": "Document family e7df61b3ff54",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_7bfa416552c2c8a50a5b9d84"
       ],
@@ -67335,7 +66839,7 @@
       "groupName": "Document family e7df61b3ff54",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_7bfa416552c2c8a50a5b9d84"
       ],
@@ -67366,7 +66870,7 @@
       "groupName": "GB-V300MBL",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ba7268f52f7dabdedaba85fd"
       ],
@@ -67397,7 +66901,7 @@
       "groupName": "GF-V706MBLC",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_b55278bcfc575d22a6869d68"
       ],
@@ -67428,7 +66932,7 @@
       "groupName": "GF-V910MBL",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_21fe603b8223c20e035b0a70"
       ],
@@ -67459,7 +66963,7 @@
       "groupName": "GF-V910MBLC",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ffd5f6b3cc362438c8fc04a5"
       ],
@@ -67490,7 +66994,7 @@
       "groupName": "GS-B500MB",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_691ccc12bba5a0120f45f1f3"
       ],
@@ -67521,7 +67025,7 @@
       "groupName": "GS-B599PL",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_521d7541d03a409580391a73"
       ],
@@ -67552,7 +67056,7 @@
       "groupName": "GS-B599PLB",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_88f7d57e4b7871a37973f34a"
       ],
@@ -70258,7 +69762,7 @@
       "groupName": "MDRC499FZF01AP",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_47b2570b98e97f4d5197ef45"
       ],
@@ -70289,7 +69793,7 @@
       "groupName": "PDF grammar pdf_grammar_8845460999cf8135",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ebac0f9dce21b57bfd248635"
       ],
@@ -74911,7 +74415,7 @@
       "groupName": null,
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_1f8bcb764cbe25a2d430bdcb"
       ],
@@ -77385,7 +76889,7 @@
       "groupName": "PDF grammar pdf_grammar_380d583408d1560f",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_b1649b760953bbcff9984d7e"
       ],
@@ -77416,7 +76920,7 @@
       "groupName": "PDF grammar pdf_grammar_b6dfa4c93dc0b9e7",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_ae8ef40f70112d6948c669de"
       ],
@@ -77447,7 +76951,7 @@
       "groupName": "PDF grammar pdf_grammar_b6dfa4c93dc0b9e7",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_37796595045dc9fe15192b43"
       ],
@@ -77478,7 +76982,7 @@
       "groupName": "PDF grammar pdf_grammar_b6dfa4c93dc0b9e7",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_5077ef8fe2dab17118693c49"
       ],
@@ -77509,7 +77013,7 @@
       "groupName": "PDF grammar pdf_grammar_b6dfa4c93dc0b9e7",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_9036fdb49e845368abf694d8"
       ],
@@ -77540,7 +77044,7 @@
       "groupName": "PDF grammar pdf_grammar_b6dfa4c93dc0b9e7",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_8a1b33c0d840f8c5b1f331ce"
       ],
@@ -77571,7 +77075,7 @@
       "groupName": "PDF grammar pdf_grammar_b6dfa4c93dc0b9e7",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_6365edba51e7a6986ed14d91"
       ],
@@ -78775,7 +78279,7 @@
       "groupName": "PDF grammar pdf_grammar_4292fef22850d0bc",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_c6b0b7dbe9ce0e6e0394578e"
       ],
@@ -78806,7 +78310,7 @@
       "groupName": "PDF grammar pdf_grammar_4292fef22850d0bc",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_308dc3c60a1f0f633c2d6633"
       ],
@@ -81198,7 +80702,7 @@
       "groupName": "Document family b93c83bd4afe",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_a0390fa4798889140d7c7dad"
       ],
@@ -81229,7 +80733,7 @@
       "groupName": "Document family b93c83bd4afe",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_a0390fa4798889140d7c7dad"
       ],
@@ -81260,7 +80764,7 @@
       "groupName": "Document family e316fc226e4d",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_e7294580c11cad727ee980fc"
       ],
@@ -81291,7 +80795,7 @@
       "groupName": "Document family e316fc226e4d",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_e7294580c11cad727ee980fc"
       ],
@@ -81384,7 +80888,7 @@
       "groupName": "Document family fd329081b852",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_676eee3cb447bcf0dbf03daa"
       ],
@@ -81415,7 +80919,7 @@
       "groupName": "PDF grammar pdf_grammar_1cb932102aaee1e6",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_2003cedeab44d03012147d1a"
       ],
@@ -81446,7 +80950,7 @@
       "groupName": "PDF grammar pdf_grammar_cbeebbb22544f144",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_21887b8e144ca749c76adbcd"
       ],
@@ -86362,7 +85866,7 @@
       "groupName": "KAMFWASH80A",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_65ff34278d84bcb0a727c8e1"
       ],
@@ -86393,7 +85897,7 @@
       "groupName": "KAMFWASH90A",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_aeaf72d98097dcbc2309c06a"
       ],
@@ -86424,7 +85928,7 @@
       "groupName": "KATFWASH11A",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_a6f93dc1fde3594ea9e4abe3"
       ],
@@ -87703,7 +87207,7 @@
       "groupName": "WD1216HTE",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_b0423fceca327114eab0f717"
       ],
@@ -87734,7 +87238,7 @@
       "groupName": "WD1610NSW",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [
         "historical_source_90aa81ddccc6cc1ac81cedc6"
       ],
@@ -197369,19 +196873,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_091350c15ef32127edef4b94",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF500W5E_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CCF500W5E.json",
-        "source:doc_fbafed2144e33e854ff8cbe2"
-      ],
-      "referenceIds": [
-        "fa_ref_e1f23a09d2586332925c09c0"
-      ]
-    },
-    {
       "sourceId": "historical_source_091924983dbfb34482e2e70c",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/f/9/4/d/f94d7ca20e9014fe323903284623fb78ad954303_SRF5500S_Samsung_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -197577,19 +197068,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_0b1e8a7f5b5091f61bb74f51",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF199WE_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CCF199WE.json",
-        "source:doc_c5daa9c006359a577aafae71"
-      ],
-      "referenceIds": [
-        "fa_ref_3bc782fb8c9df8640a08a22b"
-      ]
-    },
-    {
       "sourceId": "historical_source_0b4ce8a1645ddb61bcd96fb1",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/f/6/9/6/f696dd987ff6cd6bcd17b351ba9be24c08f852fd_Bosch_SMV88TX01A_Serie_8_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -197715,19 +197193,6 @@
       ],
       "referenceIds": [
         "fa_ref_3d88c95b91dcb7c7c2309ff4"
-      ]
-    },
-    {
-      "sourceId": "historical_source_0dff7324c2a123f76eafb94b",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSH121NBS_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CSH121NBS.json",
-        "source:doc_4b0dc0d4c438753327688da8"
-      ],
-      "referenceIds": [
-        "fa_ref_5280ac45d114b410dffda8f9"
       ]
     },
     {
@@ -202779,19 +202244,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_4d4716d0c9f6c33bd6a8e5f3",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF700WE_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CCF700WE.json",
-        "source:doc_fc2bad6d2605432413764396"
-      ],
-      "referenceIds": [
-        "fa_ref_6c8ae342f014bf24fb267e5b"
-      ]
-    },
-    {
       "sourceId": "historical_source_4d49708401396983f63c201e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/2/d/6/9/2d69970709ee90bb9d08a242960795be1da0ba16_HRZ113SS_Haier_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -202867,19 +202319,6 @@
       ],
       "referenceIds": [
         "fa_ref_c81f5e5b550f5da707f38d0c"
-      ]
-    },
-    {
-      "sourceId": "historical_source_4e981006a138d74eac69ccdb",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF500WE_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CCF500WE.json",
-        "source:doc_d68bebaafea4da5a669f48d7"
-      ],
-      "referenceIds": [
-        "fa_ref_1c4d6922bf20eb92d1de792a"
       ]
     },
     {
@@ -204472,19 +203911,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_5f5cf6d6927bade5fc2433ac",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSR124DBS_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CSR124DBS.json",
-        "source:doc_fbd31797cf7eb1015d5538bd"
-      ],
-      "referenceIds": [
-        "fa_ref_2c9d6c19b7cf96eae38c5609"
-      ]
-    },
-    {
       "sourceId": "historical_source_5f9247cf8a8e064cc43ed49d",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/8/c/0/6/8c069dfa45a1ea0f5ec18f45effdefacd06a66fd_CSH430B_CHiQ_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -205131,19 +204557,6 @@
       ],
       "referenceIds": [
         "fa_ref_edb112682a974efaeaab507d"
-      ]
-    },
-    {
-      "sourceId": "historical_source_65ac507bda8508613e332e5e",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM407NB4_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CTM407NB4.json",
-        "source:doc_8698913ec66d301ede6c0cde"
-      ],
-      "referenceIds": [
-        "fa_ref_996b56d5849b3c38bbb89b5f"
       ]
     },
     {
@@ -206303,19 +205716,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_75b26f9ecb4b3c5dc17319ae",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM408NSS5E_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CTM408NSS5E.json",
-        "source:doc_e111c45fa67d4928b3a7cc29"
-      ],
-      "referenceIds": [
-        "fa_ref_39a3bd3678b8b056f96109a5"
-      ]
-    },
-    {
       "sourceId": "historical_source_75e284ae997bef2586477cae",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/8/0/2/f/802f6fd4f43c1702ca09abd7fb17505c423e90d5_Midea_MSS580S_580L_Side_by_Side_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -206634,19 +206034,6 @@
       ],
       "referenceIds": [
         "fa_ref_99d641481d22e0e2b4c7fe32"
-      ]
-    },
-    {
-      "sourceId": "historical_source_78ae119588c44ad4238d23ce",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCD499NWS_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CCD499NWS.json",
-        "source:doc_1830439c79c74afa692fdb0d"
-      ],
-      "referenceIds": [
-        "fa_ref_5ebfb63a6f07507e526701e3"
       ]
     },
     {
@@ -207116,19 +206503,6 @@
       ],
       "referenceIds": [
         "fa_ref_0070996c3c0a63eee2b7d3a0"
-      ]
-    },
-    {
-      "sourceId": "historical_source_7ee8c82a075be625f4b34f06",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM347NB5E_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CTM347NB5E.json",
-        "source:doc_b0ad322b04b8a1a6fa2cac57"
-      ],
-      "referenceIds": [
-        "fa_ref_6d7fbc5b457f6ab6a30f8f74"
       ]
     },
     {
@@ -208675,19 +208049,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_8ed5e7dcc0073a08f1978814",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM200NSS5E_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CTM200NSS5E.json",
-        "source:doc_70c812eb7169a6b0a159b2b4"
-      ],
-      "referenceIds": [
-        "fa_ref_e2fa34f04bc9146e488b0389"
-      ]
-    },
-    {
       "sourceId": "historical_source_8ede823512df46adbefc8a10",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/8/8/c/5/88c5d11d3cd98d54bf54296e1c01b22a277c2194_WTP20Y_LG_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -210097,19 +209458,6 @@
       ],
       "referenceIds": [
         "fa_ref_2f1cc2827fcb4bee663eb2c8"
-      ]
-    },
-    {
-      "sourceId": "historical_source_a1e8eb8e825b3b5296342c93",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF142WE_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CCF142WE.json",
-        "source:doc_4b924dc1da95aeb2e74cdac7"
-      ],
-      "referenceIds": [
-        "fa_ref_b46c4e91c87317929c23963f"
       ]
     },
     {
@@ -213080,19 +212428,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_c777fb900f2bdee5db2bd2c7",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM512NSS5E_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CTM512NSS5E.json",
-        "source:doc_25f957e9dbc3b882cd490aac"
-      ],
-      "referenceIds": [
-        "fa_ref_0b56ecc3c7db223cdadbc4ee"
-      ]
-    },
-    {
       "sourceId": "historical_source_c7796a402c5f255e7c2435b7",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/9/2/9/a929a49b2287bd30fc125391cbe6adb4588e9242_Fisher___Paykel_RF442BRGW6_442L_Bottom_Mount_Fridge_Quick_Guide.pdf",
       "sourceAuthority": "REFERENCE",
@@ -213377,19 +212712,6 @@
       ],
       "referenceIds": [
         "fa_ref_30bd8f12a48823b879ec8c68"
-      ]
-    },
-    {
-      "sourceId": "historical_source_cac4f8bc0c05fa9778f839c4",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM255NW5E_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CTM255NW5E.json",
-        "source:doc_39b28b414c02f80bffed74f5"
-      ],
-      "referenceIds": [
-        "fa_ref_a44efad7072f178be39aeafd"
       ]
     },
     {
@@ -214401,19 +213723,6 @@
       ],
       "referenceIds": [
         "fa_ref_cbfc23e2108db02b31e1a53f"
-      ]
-    },
-    {
-      "sourceId": "historical_source_d7278c0fcf6682ef6433623d",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF299WE_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CCF299WE.json",
-        "source:doc_88d299dda8e72b408cf7b453"
-      ],
-      "referenceIds": [
-        "fa_ref_e4f078932e4bff0389ad1ff4"
       ]
     },
     {
@@ -216165,19 +215474,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_eee974e9eba71555c2454a61",
-      "sourceUrl": "https://chiq.com.au/cdn/shop/files/CRSR125DB_SPEC.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/CRSR125DB.json",
-        "source:doc_29d5723c75b7b2df768a180a"
-      ],
-      "referenceIds": [
-        "fa_ref_97da15590c2569c14e1fee8e"
-      ]
-    },
-    {
       "sourceId": "historical_source_ef29b9c82a2a859fa89ab08c",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/4/4/d/a44df1f73af524069a0587ed4f1aec694b0d78a8_Fisher_and_Paykel___RS7621FRJK1__Specifications_Sheet_UPDATED_2025.pdf",
       "sourceAuthority": "REFERENCE",
@@ -217359,46 +216655,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 170,
+    "COMPLETE_RECEIPT": 186,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7925,
-    "uniqueReferences": 7925,
-    "candidateSources": 1584,
-    "candidateEdges": 1619,
+    "queuedModels": 7909,
+    "uniqueReferences": 7909,
+    "candidateSources": 1568,
+    "candidateEdges": 1603,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2109,
-      "CURRENT_RETAIL": 1253,
+      "CATALOG_ARCHIVED": 2094,
+      "CURRENT_RETAIL": 1252,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1370,
       "dryer": 815,
-      "fridge": 4271,
+      "fridge": 4255,
       "washing_machine": 1469
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 195,
-      "OFFICIAL_DISCOVERY": 6422,
+      "IDENTITY_RESEARCH": 182,
+      "OFFICIAL_DISCOVERY": 6419,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 195,
-      "OFFICIAL_DISCOVERY": 6422,
+      "IDENTITY_CLOSURE": 182,
+      "OFFICIAL_DISCOVERY": 6419,
       "OFFICIAL_REDISCOVERY": 1225
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5065,
-      "RESEARCH_REQUIRED": 278,
+      "DISCOVERY_READY": 5244,
+      "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 170,
+      "COMPLETE_RECEIPT": 186,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

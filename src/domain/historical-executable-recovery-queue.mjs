@@ -15,12 +15,14 @@ const EXECUTABLE_ROUTES = new Set([
   'OFFICIAL_REACQUIRE',
   'OFFICIAL_REDISCOVERY',
   'OFFICIAL_DISCOVERY',
+  'IDENTITY_CLOSURE',
 ]);
 const RECOVERY_ROUTE = Object.freeze({
   PARSER_REPAIR: 'OFFICIAL_RECEIPT_REBUILD',
   OFFICIAL_REACQUIRE: 'OFFICIAL_RECEIPT_REBUILD',
   OFFICIAL_REDISCOVERY: 'MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY',
   OFFICIAL_DISCOVERY: 'OFFICIAL_SOURCE_DISCOVERY_REQUIRED',
+  IDENTITY_CLOSURE: 'OFFICIAL_SOURCE_DISCOVERY_REQUIRED',
 });
 const PRIORITY_ORDER = Object.freeze({
   P0_CURRENT_MISSING_DIMENSIONS: 0,
@@ -130,7 +132,9 @@ export function buildHistoricalExecutableRecoveryQueue({
   let suppressedPriorAcceptedSourceEdges = 0;
 
   for (const record of acquisitionQueue.records) {
-    if (!EXECUTABLE_ROUTES.has(record.route)) {
+    const executableIdentityClosure = record.route !== 'IDENTITY_CLOSURE'
+      || record.executionReadiness === 'DISCOVERY_READY';
+    if (!EXECUTABLE_ROUTES.has(record.route) || !executableIdentityClosure) {
       const reason = record.executionReadiness ?? record.route;
       excluded[reason] = (excluded[reason] ?? 0) + 1;
       continue;

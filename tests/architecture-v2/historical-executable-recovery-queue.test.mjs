@@ -96,6 +96,41 @@ test('materializes official and resolver-only targets without fabricating source
   assert.equal(queue.summary.excluded.RESEARCH_REQUIRED, 1);
 });
 
+test('materializes resolver-backed identity closure but keeps unresolved identity research excluded', () => {
+  const records = [
+    acquisition('identity-resolved', {
+      operationalClass: 'IDENTITY_RESEARCH',
+      route: 'IDENTITY_CLOSURE',
+      executionReadiness: 'DISCOVERY_READY',
+      resolverIds: ['example-resolver'],
+    }),
+    acquisition('identity-unresolved', {
+      operationalClass: 'IDENTITY_RESEARCH',
+      route: 'IDENTITY_CLOSURE',
+      executionReadiness: 'RESEARCH_REQUIRED',
+      resolverIds: [],
+    }),
+  ];
+  const queue = buildHistoricalExecutableRecoveryQueue({
+    acquisitionQueue: {
+      schemaVersion: 1,
+      generatedAt: '2026-07-14T00:00:00.000Z',
+      semanticQueueSha256: 'a'.repeat(64),
+      records,
+      sources: [],
+    },
+    historicalReference: {
+      records: [reference('identity-resolved'), reference('identity-unresolved')],
+    },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+  });
+
+  assert.equal(queue.targets.length, 1);
+  assert.equal(queue.targets[0].referenceId, 'identity-resolved');
+  assert.equal(queue.targets[0].primaryJobId, null);
+  assert.equal(queue.summary.excluded.RESEARCH_REQUIRED, 1);
+});
+
 test('reuses legacy reconciliation hints but not stale legacy candidate edges', () => {
   const legacyTarget = {
     targetId: 'legacy-target',

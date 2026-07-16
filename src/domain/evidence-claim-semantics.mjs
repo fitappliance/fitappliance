@@ -17,8 +17,8 @@ const FIELD_RULES = Object.freeze({
 });
 
 const CATEGORY_RANGES = Object.freeze({
-  fridge: Object.freeze({ width: [300, 1800], height: [400, 2500], depth: [300, 1400] }),
-  freezer: Object.freeze({ width: [300, 1800], height: [400, 2500], depth: [300, 1400] }),
+  fridge: Object.freeze({ width: [300, 2500], height: [400, 2500], depth: [300, 1400] }),
+  freezer: Object.freeze({ width: [300, 2500], height: [400, 2500], depth: [300, 1400] }),
   dishwasher: Object.freeze({ width: [300, 1000], height: [400, 1200], depth: [300, 1000] }),
   washing_machine: Object.freeze({ width: [300, 1200], height: [500, 1600], depth: [300, 1300] }),
   dryer: Object.freeze({ width: [300, 1200], height: [500, 1600], depth: [300, 1300] }),

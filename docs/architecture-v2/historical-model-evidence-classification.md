@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-16T00:01:44.638Z
+Generated: 2026-07-16T00:50:34.223Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -20,10 +20,10 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 170 |
+| COMPLETE_RECEIPT | 186 |
 | CONFLICT_QUARANTINE | 83 |
-| IDENTITY_RESEARCH | 195 |
-| OFFICIAL_DISCOVERY | 6422 |
+| IDENTITY_RESEARCH | 182 |
+| OFFICIAL_DISCOVERY | 6419 |
 | REFERENCE_REDISCOVERY | 1225 |
 
 ## Observed Brand / Series / PDF Grammar Groups
@@ -77,7 +77,7 @@ This is a research and repair classification. It does not grant publication auth
 | --- | --- | --- | --- |
 | fridge | Kogan | OFFICIAL_DISCOVERY | 407 |
 | fridge | Fhiaba | OFFICIAL_DISCOVERY | 365 |
-| fridge | CHIQ | OFFICIAL_DISCOVERY | 171 |
+| fridge | CHIQ | OFFICIAL_DISCOVERY | 168 |
 | fridge | Fisher & Paykel | OFFICIAL_DISCOVERY | 147 |
 | fridge | Smeg | OFFICIAL_DISCOVERY | 145 |
 | fridge | Westinghouse | OFFICIAL_DISCOVERY | 138 |

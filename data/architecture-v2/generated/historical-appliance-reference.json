@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "554898e6dd8f3c5b942f3015dea62e4854229653f43079e4c6de483f54ef9e9f"
+    "historical-recovery:historical-recovery-cumulative-v1": "d5ec82378bb8fbcfbaebd6cf8ab0a68d6e273bdd96c3b96dd7fd4ef42f2a53d8"
   },
   "records": [
     {
@@ -97736,8 +97736,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 853,
         "height": 1775,
@@ -97755,6 +97755,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_80ff6f73ce9e51d76fe2ffc2",
+          "snapshotSha256": "5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -97762,8 +97769,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_80ff6f73ce9e51d76fe2ffc2",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCD499NWS_SPEC.pdf",
+          "contentSha256": "5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6",
+          "receiptBindingSha256": "d2bcdc1f7b63641457546c134284e69e36878d811b1f2ba86797cad78efdc4eb",
+          "verifiedAt": "2026-07-16T00:46:28.390Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4584f5970b4a166b02c338c178a2aaa5235f1a6ceeff24f23d0ec8a2f11e21e3"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4584f5970b4a166b02c338c178a2aaa5235f1a6ceeff24f23d0ec8a2f11e21e3"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4584f5970b4a166b02c338c178a2aaa5235f1a6ceeff24f23d0ec8a2f11e21e3"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/5e/2f/5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -98494,8 +98529,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 635,
         "height": 835,
@@ -98514,6 +98549,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_483d8a71b7c29a0b43630521",
+          "snapshotSha256": "d82a82458da86d88f5f18b4c0d41caa1515f19cb9d43283da484df8f6fe524a3",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -98521,8 +98563,36 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_483d8a71b7c29a0b43630521",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF142WE_SPEC.pdf",
+          "contentSha256": "d82a82458da86d88f5f18b4c0d41caa1515f19cb9d43283da484df8f6fe524a3",
+          "receiptBindingSha256": "50cdaede316d8f58dac310b310de378a549063ca0f49fa769d114d7616e85152",
+          "verifiedAt": "2026-07-16T00:46:28.002Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "895a908afe440b090678b5f95f680e60c92250a7eed2e2e4320449a34cec4610"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "895a908afe440b090678b5f95f680e60c92250a7eed2e2e4320449a34cec4610"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "895a908afe440b090678b5f95f680e60c92250a7eed2e2e4320449a34cec4610"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d8/2a/d82a82458da86d88f5f18b4c0d41caa1515f19cb9d43283da484df8f6fe524a3.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -98728,8 +98798,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 823,
         "height": 835,
@@ -98748,6 +98818,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_d19630ac9ee715b25e7187e2",
+          "snapshotSha256": "ecaebaf9461605a18d083029bef06a9aae30ba322aed6595de4357b77e426c00",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -98755,8 +98832,36 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_d19630ac9ee715b25e7187e2",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF199WE_SPEC.pdf",
+          "contentSha256": "ecaebaf9461605a18d083029bef06a9aae30ba322aed6595de4357b77e426c00",
+          "receiptBindingSha256": "ec104a34521289167e859432367d886bb37f928cd93faa29bc2130fcf58e9923",
+          "verifiedAt": "2026-07-16T00:46:29.027Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "efcb5146a572140b5c33d4bfc1ff34b9daaf630750dcd189e39c9211afe7ebc0"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "efcb5146a572140b5c33d4bfc1ff34b9daaf630750dcd189e39c9211afe7ebc0"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "efcb5146a572140b5c33d4bfc1ff34b9daaf630750dcd189e39c9211afe7ebc0"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/ec/ae/ecaebaf9461605a18d083029bef06a9aae30ba322aed6595de4357b77e426c00.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -98970,8 +99075,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 1125,
         "height": 835,
@@ -98990,6 +99095,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ac40ec9e99d4ddc027ea2060",
+          "snapshotSha256": "dc148ede1a0ee91d6c9fb4b7d757d1efeeb6602bd318bacd74d6a10a42db51a9",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -98997,8 +99109,36 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ac40ec9e99d4ddc027ea2060",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF299WE_SPEC.pdf",
+          "contentSha256": "dc148ede1a0ee91d6c9fb4b7d757d1efeeb6602bd318bacd74d6a10a42db51a9",
+          "receiptBindingSha256": "66ac3e4a25b31b930f9fdf010f9d06dd2c7d22fe5186832cd3676b9d1a95eba1",
+          "verifiedAt": "2026-07-16T00:46:28.905Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5dd86c2cfb44d31f662d1389db3aea5f5aed75790e58562a292ab83dccc7b351"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5dd86c2cfb44d31f662d1389db3aea5f5aed75790e58562a292ab83dccc7b351"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5dd86c2cfb44d31f662d1389db3aea5f5aed75790e58562a292ab83dccc7b351"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/dc/14/dc148ede1a0ee91d6c9fb4b7d757d1efeeb6602bd318bacd74d6a10a42db51a9.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -99135,8 +99275,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 1650,
         "height": 835,
@@ -99155,6 +99295,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_53359de03c2b344afa662d38",
+          "snapshotSha256": "375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -99162,8 +99309,36 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_53359de03c2b344afa662d38",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF500W5E_SPEC.pdf",
+          "contentSha256": "375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0",
+          "receiptBindingSha256": "ae0ebd875d6af915fd3b606e3bd389fb5e24195a82276684221ff950a2fa4542",
+          "verifiedAt": "2026-07-16T00:46:28.168Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "132e027077d5cf1c00e6ac57e0e6d868188e7a91c3240d1df600b9647ab57d9e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "132e027077d5cf1c00e6ac57e0e6d868188e7a91c3240d1df600b9647ab57d9e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "132e027077d5cf1c00e6ac57e0e6d868188e7a91c3240d1df600b9647ab57d9e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/37/5d/375d609cf27303e5a2b5b3e249207695bbde3c70ddf478de38031aca84f57da0.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -99180,8 +99355,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 1650,
         "height": 835,
@@ -99200,6 +99375,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_1bda59f26425adb4db35d758",
+          "snapshotSha256": "ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -99207,8 +99389,36 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_1bda59f26425adb4db35d758",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF500WE_SPEC.pdf",
+          "contentSha256": "ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6",
+          "receiptBindingSha256": "b0bc5252049e2ae03c81db2fbdd0fb608a5aa87b0d80d8e28176f2e5ea052588",
+          "verifiedAt": "2026-07-16T00:46:27.846Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "845406526afe88bd9976a6fa928b8212cb931a29a97e69c1d1cf4dd562487816"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "845406526afe88bd9976a6fa928b8212cb931a29a97e69c1d1cf4dd562487816"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "845406526afe88bd9976a6fa928b8212cb931a29a97e69c1d1cf4dd562487816"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/ec/af/ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -99263,8 +99473,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 1880,
         "height": 945,
@@ -99283,6 +99493,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_9a42a918265183879346a9b8",
+          "snapshotSha256": "96550b4165789518bb823bffb99aebf4e4b4650c3e9523d7c108bdd3740f861f",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -99290,8 +99507,36 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_9a42a918265183879346a9b8",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CCF700WE_SPEC.pdf",
+          "contentSha256": "96550b4165789518bb823bffb99aebf4e4b4650c3e9523d7c108bdd3740f861f",
+          "receiptBindingSha256": "801ede37088f23504d5e9172cde06a0dcc1050e2db529739ea4587d0723ca63c",
+          "verifiedAt": "2026-07-16T00:46:28.525Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5cebb6109c9e5931adbeb07c384cc6c989b617245870a5bbcfeca0d19e1e1e20"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5cebb6109c9e5931adbeb07c384cc6c989b617245870a5bbcfeca0d19e1e1e20"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5cebb6109c9e5931adbeb07c384cc6c989b617245870a5bbcfeca0d19e1e1e20"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/96/55/96550b4165789518bb823bffb99aebf4e4b4650c3e9523d7c108bdd3740f861f.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -100186,8 +100431,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 494,
         "height": 847,
@@ -100205,6 +100450,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_62249a14064392d44ab1cd5c",
+          "snapshotSha256": "44669176ff8d0354fd56927c6f9e674c45e7463b9bbda969db2ad125c4809b61",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -100212,8 +100464,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_62249a14064392d44ab1cd5c",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CRSR125DB_SPEC.pdf",
+          "contentSha256": "44669176ff8d0354fd56927c6f9e674c45e7463b9bbda969db2ad125c4809b61",
+          "receiptBindingSha256": "cb18b92e01084e2ee52d2d141f759b0b95ba8e4f0228095f129671d3280fe4d6",
+          "verifiedAt": "2026-07-16T00:46:28.331Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "a50c03aa71d487f1274e51467705dd6ae1a99c1d3a401fadfe1056459fd29d64"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "a50c03aa71d487f1274e51467705dd6ae1a99c1d3a401fadfe1056459fd29d64"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "a50c03aa71d487f1274e51467705dd6ae1a99c1d3a401fadfe1056459fd29d64"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/44/66/44669176ff8d0354fd56927c6f9e674c45e7463b9bbda969db2ad125c4809b61.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -101098,8 +101378,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 475,
         "height": 1155,
@@ -101118,6 +101398,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a9f66d668dd2455eada4dddc",
+          "snapshotSha256": "8d8b77699b2e36dfaf8465457676b21534d44eb56078cba098387b9a9c216480",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -101125,8 +101412,36 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a9f66d668dd2455eada4dddc",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSH121NBS_SPEC.pdf",
+          "contentSha256": "8d8b77699b2e36dfaf8465457676b21534d44eb56078cba098387b9a9c216480",
+          "receiptBindingSha256": "697427d5a67e4dd7d4374476e4bad96e86115e0b8a83c3e1cf0dc52dd6dd4b76",
+          "verifiedAt": "2026-07-16T00:46:28.832Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "cd2177a24e566252c63be897043a18f56eb4efbd3edb6e84751f1e5218514774"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "cd2177a24e566252c63be897043a18f56eb4efbd3edb6e84751f1e5218514774"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "cd2177a24e566252c63be897043a18f56eb4efbd3edb6e84751f1e5218514774"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/8d/8b/8d8b77699b2e36dfaf8465457676b21534d44eb56078cba098387b9a9c216480.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -102889,14 +103204,25 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 494,
+        "height": 847,
+        "depth": 551
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_546ca77bb2b9e44c821c6aa4",
+          "snapshotSha256": "47a86fb1ded86e5092ca0a113b5baafad615fa054aec2b89b45a850c9fbcfda3",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -102905,8 +103231,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_546ca77bb2b9e44c821c6aa4",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSR124DBS_SPEC.pdf",
+          "contentSha256": "47a86fb1ded86e5092ca0a113b5baafad615fa054aec2b89b45a850c9fbcfda3",
+          "receiptBindingSha256": "718b278651ed2508f25e6416dee5c3471b9325a95619e99e27be9ef7c847f079",
+          "verifiedAt": "2026-07-16T00:46:28.250Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "bff36f7ee25e180a71364d88f21599a030bf0db64d3a869ad7710630d42baec3"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "bff36f7ee25e180a71364d88f21599a030bf0db64d3a869ad7710630d42baec3"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "bff36f7ee25e180a71364d88f21599a030bf0db64d3a869ad7710630d42baec3"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/47/a8/47a86fb1ded86e5092ca0a113b5baafad615fa054aec2b89b45a850c9fbcfda3.pdf"
+        }
       ]
     },
     {
@@ -104153,8 +104505,8 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 545,
         "height": 1465,
@@ -104172,6 +104524,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a16446d8ef2a925bfd1024e8",
+          "snapshotSha256": "a18fa4a0562d07615c8228a97c2d87c1c9c0ab68753bf95fe8553dfdc521d613",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -104179,8 +104538,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a16446d8ef2a925bfd1024e8",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM200NSS5E_SPEC.pdf",
+          "contentSha256": "a18fa4a0562d07615c8228a97c2d87c1c9c0ab68753bf95fe8553dfdc521d613",
+          "receiptBindingSha256": "88cbcdfe5a2eb6c24c0777a1b01038826cb2bc8c424c72f6af3c14df6e762788",
+          "verifiedAt": "2026-07-16T00:35:27.063Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0ae8a369ad9b90901b8c3d1b52b1984ca76637d911b3983929af6c76cb0b8159"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0ae8a369ad9b90901b8c3d1b52b1984ca76637d911b3983929af6c76cb0b8159"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0ae8a369ad9b90901b8c3d1b52b1984ca76637d911b3983929af6c76cb0b8159"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/a1/8f/a18fa4a0562d07615c8228a97c2d87c1c9c0ab68753bf95fe8553dfdc521d613.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -104737,8 +105124,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 545,
         "height": 1700,
@@ -104756,6 +105143,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_8eac8024c3ab11d976ecd1c8",
+          "snapshotSha256": "783e444dcc5a0297c9cad3b14ae081ac712a5af4e224697806d61120d096781b",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -104763,8 +105157,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_8eac8024c3ab11d976ecd1c8",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM255NW5E_SPEC.pdf",
+          "contentSha256": "783e444dcc5a0297c9cad3b14ae081ac712a5af4e224697806d61120d096781b",
+          "receiptBindingSha256": "84b2bac0aec75ad046e11fafb39cafc5fa0cd405429120c89ced238af2cfcab8",
+          "verifiedAt": "2026-07-16T00:46:28.450Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "15f0069104b1e9661f28c3506b704e18dc1803396a973ff965306609ae289c80"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "15f0069104b1e9661f28c3506b704e18dc1803396a973ff965306609ae289c80"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "15f0069104b1e9661f28c3506b704e18dc1803396a973ff965306609ae289c80"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/78/3e/783e444dcc5a0297c9cad3b14ae081ac712a5af4e224697806d61120d096781b.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -105004,8 +105426,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 595,
         "height": 1700,
@@ -105023,6 +105445,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_dc9ebcee1753e90803fb239e",
+          "snapshotSha256": "b052f810a56fd10f9392239bd92a7db034cd5e5fc4dda752a343e31c0fa19d06",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -105030,8 +105459,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_dc9ebcee1753e90803fb239e",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM347NB5E_SPEC.pdf",
+          "contentSha256": "b052f810a56fd10f9392239bd92a7db034cd5e5fc4dda752a343e31c0fa19d06",
+          "receiptBindingSha256": "9078ff6453493e0ed170a95840a42979ed3b0d5336f5d6facbb34b178872eec4",
+          "verifiedAt": "2026-07-16T00:46:29.071Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0e575c2538c07e25bf875f456d3ad50bc9dc3b261495ada5a3b07609bff70db5"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0e575c2538c07e25bf875f456d3ad50bc9dc3b261495ada5a3b07609bff70db5"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0e575c2538c07e25bf875f456d3ad50bc9dc3b261495ada5a3b07609bff70db5"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/b0/52/b052f810a56fd10f9392239bd92a7db034cd5e5fc4dda752a343e31c0fa19d06.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -105352,8 +105809,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 700,
         "height": 1680,
@@ -105371,6 +105828,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a185e38b0b9596ac404dfc62",
+          "snapshotSha256": "2fab0be5bf64aabbca94d8317e876e5aa0bc0900c00daa18b915f7c83d012680",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -105378,8 +105842,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a185e38b0b9596ac404dfc62",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM407NB4_SPEC.pdf",
+          "contentSha256": "2fab0be5bf64aabbca94d8317e876e5aa0bc0900c00daa18b915f7c83d012680",
+          "receiptBindingSha256": "1debe5590983b357487389fb34638ac8381bc0789c73caf0e84bcdfef018fb27",
+          "verifiedAt": "2026-07-16T00:46:28.703Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "809a8fe7751e626ab061662bdd9bdc176fd8c472162de3f202b73c8a75063e49"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "809a8fe7751e626ab061662bdd9bdc176fd8c472162de3f202b73c8a75063e49"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "809a8fe7751e626ab061662bdd9bdc176fd8c472162de3f202b73c8a75063e49"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/2f/ab/2fab0be5bf64aabbca94d8317e876e5aa0bc0900c00daa18b915f7c83d012680.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -105396,8 +105888,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 700,
         "height": 1680,
@@ -105416,6 +105908,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_bf141f6f53f5b216d2a42872",
+          "snapshotSha256": "c5bf0483ca089eb269ea073f6ffcf5520964eb591f12ce05aa6faa9ec13f84c6",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -105423,8 +105922,36 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_bf141f6f53f5b216d2a42872",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM408NSS5E_SPEC.pdf",
+          "contentSha256": "c5bf0483ca089eb269ea073f6ffcf5520964eb591f12ce05aa6faa9ec13f84c6",
+          "receiptBindingSha256": "e822782bd432919cb11e780cc088594d61c6aeb115e46e3e25ddabf1dd9864de",
+          "verifiedAt": "2026-07-16T00:46:28.965Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3131836babfc0894ad1ca544465f53a0402d5bf7a324ffa24e9d93ed36db5f69"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3131836babfc0894ad1ca544465f53a0402d5bf7a324ffa24e9d93ed36db5f69"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3131836babfc0894ad1ca544465f53a0402d5bf7a324ffa24e9d93ed36db5f69"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/c5/bf/c5bf0483ca089eb269ea073f6ffcf5520964eb591f12ce05aa6faa9ec13f84c6.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -105695,8 +106222,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 750,
         "height": 1680,
@@ -105714,6 +106241,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a53ffc44471da2f46e9487f8",
+          "snapshotSha256": "85e1a6867403bcb37777fc051a41f467e0ddd219eef8f84c605ecbc73349ecfb",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -105721,8 +106255,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a53ffc44471da2f46e9487f8",
+          "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM512NSS5E_SPEC.pdf",
+          "contentSha256": "85e1a6867403bcb37777fc051a41f467e0ddd219eef8f84c605ecbc73349ecfb",
+          "receiptBindingSha256": "9173b7df098f8803b44e9b28a607a8e2ef688305bf8c35762bae184b3facd37e",
+          "verifiedAt": "2026-07-16T00:46:28.769Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "26b2d1ff943ef3fe1ac983dd5cb358c4cbe3d908581b58810aa28813f5761e04"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "26b2d1ff943ef3fe1ac983dd5cb358c4cbe3d908581b58810aa28813f5761e04"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "26b2d1ff943ef3fe1ac983dd5cb358c4cbe3d908581b58810aa28813f5761e04"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/85/e1/85e1a6867403bcb37777fc051a41f467e0ddd219eef8f84c605ecbc73349ecfb.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -317442,17 +318004,17 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4891,
-      "IDENTITY_ONLY": 2985,
-      "MODEL_RECEIPT": 120,
+      "REGISTRY_CONSISTENT": 4876,
+      "IDENTITY_ONLY": 2984,
+      "MODEL_RECEIPT": 136,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4891,
-      "MEASURE_REQUIRED": 2985,
-      "AUTO_FILL": 131,
+      "CONFIRM_REQUIRED": 4876,
+      "MEASURE_REQUIRED": 2984,
+      "AUTO_FILL": 147,
       "QUARANTINED": 88
     }
   }
