@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T12:39:07.325Z",
-  "semanticQueueSha256": "040643107fd3dbb81d65d3695a112bae3b67a093174da2e233de67ba94c50930",
-  "sourceClassificationSha256": "5786c33d83e14b225d4d0bf0b37906a0ebdb221aed1e107e552046c2a93f0baa",
+  "generatedAt": "2026-07-16T12:45:49.624Z",
+  "semanticQueueSha256": "d740632e12b4c9846e2decc8a8e4e0e5766b3f587c6d70ed48d30cc3f2539744",
+  "sourceClassificationSha256": "b9290f2ab6294a69f149435afe51f03610edd336dc23431bb7fc4aea2c358fbd",
   "records": [
     {
       "schemaVersion": 1,
@@ -8700,37 +8700,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_be94836104397d54af1feb6b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d97caac57fef49edcbf0b7e2",
-      "referenceId": "fa_ref_f6bb6f5ff518c83502a946d9",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DE5060G1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_4332be9d29dd8815",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_34cbb7c517afa9095f6a5e95"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_b0f95c8a17cfdaefea82a96d"
-      ],
-      "legacyRuntimeIds": [
-        "ao-51926"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_5c87550741e99198ef21e364"
       ],
       "offlineReplayOutcome": null
     },
@@ -197494,19 +197463,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_34cbb7c517afa9095f6a5e95",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/d/1/5/2d15cde7a00c990828aad3c4f31213b426693315_DE5060G1_User_Manual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DE5060G1.json",
-        "source:doc_bac460603ef521bc628e8337"
-      ],
-      "referenceIds": [
-        "fa_ref_f6bb6f5ff518c83502a946d9"
-      ]
-    },
-    {
       "sourceId": "historical_source_34d7c76f404310c7c54a2e83",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/6/a/7/4/6a7414a6998886529e130e3a9780017da52cbfd2_RF605QDUVX1_Fisher___Paykel_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -212545,24 +212501,24 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 277,
+    "COMPLETE_RECEIPT": 278,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7818,
-    "uniqueReferences": 7818,
-    "candidateSources": 1467,
-    "candidateEdges": 1502,
+    "queuedModels": 7817,
+    "uniqueReferences": 7817,
+    "candidateSources": 1466,
+    "candidateEdges": 1501,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1180,
+      "CURRENT_RETAIL": 1179,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1309,
-      "dryer": 812,
+      "dryer": 811,
       "fridge": 4232,
       "washing_machine": 1465
     },
@@ -212570,21 +212526,21 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 152,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1167
+      "REFERENCE_REDISCOVERY": 1166
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 152,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1167
+      "OFFICIAL_REDISCOVERY": 1166
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5153,
+      "DISCOVERY_READY": 5152,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 277,
+      "COMPLETE_RECEIPT": 278,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

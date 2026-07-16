@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-16T12:39:07.325Z
+Generated: 2026-07-16T12:45:49.624Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -20,11 +20,11 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 277 |
+| COMPLETE_RECEIPT | 278 |
 | CONFLICT_QUARANTINE | 83 |
 | IDENTITY_RESEARCH | 152 |
 | OFFICIAL_DISCOVERY | 6416 |
-| REFERENCE_REDISCOVERY | 1167 |
+| REFERENCE_REDISCOVERY | 1166 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 

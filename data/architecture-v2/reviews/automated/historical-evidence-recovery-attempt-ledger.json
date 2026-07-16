@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T12:37:55.878Z",
+  "generatedAt": "2026-07-16T12:45:38.388Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -1104,6 +1104,35 @@
       "resultsSha256": "75b1213fb4de5ad027017596a88eb8b671dfb27cdb15aca2b1ed3032d7e81b3d",
       "auditSha256": "dfd1175015c0f831d36a2c5beda465ef5da6943cf20d7842d6a093b4408ffef0",
       "attemptedAt": "2026-07-16T01:01:19.499Z"
+    },
+    {
+      "attemptId": "historical_attempt_4ac466073f44af5247bc019e",
+      "targetId": "recovery_target_0736519a3d2c00fbad9270a6",
+      "referenceId": "fa_ref_3e35ea38977e077a9bc0cc56",
+      "legacyRuntimeId": "ao-48364",
+      "canonicalProductId": "fa_prod_5df05be3bf0162f23b94540e",
+      "brand": "Fisher & Paykel",
+      "model": "DE6060G1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007yolyIAA&d=%2Fa%2FJw000000Lazl%2F8qTSr66NuCEDDhZCj5LMMEkBQwKYfewkE5RsYDAMv9M&operationContext=DELIVERY&viewId=05HJw00000QCtxpMAD&dpt=",
+      "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007yolyIAA&d=%2Fa%2FJw000000Lazl%2F8qTSr66NuCEDDhZCj5LMMEkBQwKYfewkE5RsYDAMv9M&operationContext=DELIVERY&viewId=05HJw00000QCtxpMAD&dpt=",
+      "contentSha256": "ca9db6fcbd81bd4cd4adc6f3085f072567762299a7a78a4122eca625e70a7159",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "74b164ce538bb9341c5a78168f5ab8affc964e8ea9740f51f0a2131e2f635948",
+      "semanticOutcomeSha256": "d566b86549dcd060c5d2a4c4b77afac7cd9ed5920e18624cfdd5c6da610566b6",
+      "batchId": "historical-recovery-8b8002273745721f725c70c4-slice-9c290ae74150",
+      "batchSha256": "c64d518a068f5fcf9f3eed72b15750c98bda2652708f5c830eca0f1bb5f7087e",
+      "runId": "historical-fpa-dryers-20260716-a",
+      "resultsSha256": "6f5a1301d2dda1fe9313c78b5ba1cf8dc1d82ddd5b3ba0c047eb1ae6ca6d97f0",
+      "auditSha256": "a50b3c2b5af105b69b69995ae53b2cb3c19919e6280622db4f91369c3022f1c8",
+      "attemptedAt": "2026-07-16T12:43:54.447Z"
     },
     {
       "attemptId": "historical_attempt_4cb8379113b13efda4ead002",
@@ -2585,6 +2614,35 @@
       "attemptedAt": "2026-07-16T06:38:00.019Z"
     },
     {
+      "attemptId": "historical_attempt_abb49b44103060243034e2b7",
+      "targetId": "recovery_target_b0f95c8a17cfdaefea82a96d",
+      "referenceId": "fa_ref_f6bb6f5ff518c83502a946d9",
+      "legacyRuntimeId": "ao-51926",
+      "canonicalProductId": "fa_prod_5c87550741e99198ef21e364",
+      "brand": "Fisher & Paykel",
+      "model": "DE5060G1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007yZrlIAE&d=%2Fa%2FJw000000Lay9%2FFspTIf_Unz_vUGS89Or_D_Bq3HYBiXhXdz7b6QFAKPA&operationContext=DELIVERY&viewId=05HJw00000QCsvKMAT&dpt=",
+      "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007yZrlIAE&d=%2Fa%2FJw000000Lay9%2FFspTIf_Unz_vUGS89Or_D_Bq3HYBiXhXdz7b6QFAKPA&operationContext=DELIVERY&viewId=05HJw00000QCsvKMAT&dpt=",
+      "contentSha256": "ca9db6fcbd81bd4cd4adc6f3085f072567762299a7a78a4122eca625e70a7159",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "01aa779d13f34059cf1918d9547eb6b9736b21f7a2775113fb81376615d48f43",
+      "semanticOutcomeSha256": "4da6d7fc26d85c31ca15544c54e12992dcf186d4ba8fb5d0deb0cc15d6e5a55e",
+      "batchId": "historical-recovery-8b8002273745721f725c70c4-slice-9c290ae74150",
+      "batchSha256": "c64d518a068f5fcf9f3eed72b15750c98bda2652708f5c830eca0f1bb5f7087e",
+      "runId": "historical-fpa-dryers-20260716-a",
+      "resultsSha256": "6f5a1301d2dda1fe9313c78b5ba1cf8dc1d82ddd5b3ba0c047eb1ae6ca6d97f0",
+      "auditSha256": "a50b3c2b5af105b69b69995ae53b2cb3c19919e6280622db4f91369c3022f1c8",
+      "attemptedAt": "2026-07-16T12:43:54.447Z"
+    },
+    {
       "attemptId": "historical_attempt_acf6e0cf9de8de2103d608ca",
       "targetId": "recovery_target_96e21a478498cf542a6be80f",
       "referenceId": "fa_ref_b6841e9f51c0d64e75dcec0a",
@@ -3946,6 +4004,35 @@
       "resultsSha256": "ef5bf190f3e52060de1bbd863e36faecd77cc662b2f1c0d61ddf0c3f0aa1b6b3",
       "auditSha256": "124c1f4df1721d147b8a3e72b956dd4ca36e0bb0084dc46ec0350dd214ed7f87",
       "attemptedAt": "2026-07-15T21:59:56.489Z"
+    },
+    {
+      "attemptId": "historical_attempt_f91f95beaf4cf968a39deab5",
+      "targetId": "recovery_target_0736519a3d2c00fbad9270a6",
+      "referenceId": "fa_ref_3e35ea38977e077a9bc0cc56",
+      "legacyRuntimeId": "ao-48364",
+      "canonicalProductId": "fa_prod_5df05be3bf0162f23b94540e",
+      "brand": "Fisher & Paykel",
+      "model": "DE6060G1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.fisherpaykel.com/au/support/products/dryer-de6060g1-fp-sg--DE6060G1",
+      "finalUrl": "https://www.fisherpaykel.com/au/support/products/dryer-de6060g1-fp-sg--DE6060G1/",
+      "contentSha256": "28c763e92524f01ff1cb5c5924eb89d25b3aa8e700150488949141272f76526a",
+      "status": "claims_incomplete",
+      "failureCode": "claim_semantics",
+      "reason": "no supported evidence claims extracted",
+      "reasonSha256": "73a28731d21277cb33f9ce09d2954d2b2e0cb63ee30787f1c94e11e568a10140",
+      "disposition": "SEEK_EXACT_MODEL_FIELD_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "74b164ce538bb9341c5a78168f5ab8affc964e8ea9740f51f0a2131e2f635948",
+      "semanticOutcomeSha256": "d566b86549dcd060c5d2a4c4b77afac7cd9ed5920e18624cfdd5c6da610566b6",
+      "batchId": "historical-recovery-8b8002273745721f725c70c4-slice-9c290ae74150",
+      "batchSha256": "c64d518a068f5fcf9f3eed72b15750c98bda2652708f5c830eca0f1bb5f7087e",
+      "runId": "historical-fpa-dryers-20260716-a",
+      "resultsSha256": "6f5a1301d2dda1fe9313c78b5ba1cf8dc1d82ddd5b3ba0c047eb1ae6ca6d97f0",
+      "auditSha256": "a50b3c2b5af105b69b69995ae53b2cb3c19919e6280622db4f91369c3022f1c8",
+      "attemptedAt": "2026-07-16T12:43:54.447Z"
     },
     {
       "attemptId": "historical_attempt_f92b1d8d38887c11ddbad3fe",
@@ -5426,6 +5513,23 @@
       "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
       "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
       "acceptedAt": "2026-07-16T04:18:18.504Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_64bd1646c085be376b4c5cb5",
+      "targetId": "recovery_target_b0f95c8a17cfdaefea82a96d",
+      "referenceId": "fa_ref_f6bb6f5ff518c83502a946d9",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000094ibbIAA&d=%2Fa%2FJw000000VRK5%2FWVh29_lpKmz_dS8deuEuro5Ttjv2olLxRAQ5rP0ADhI&operationContext=DELIVERY&viewId=05HJw00000QCu2fMAD&dpt=",
+      "contentSha256": "28c0145cb530ceaef60b50cbe74272560ba57087de132f1140d480e6039ce6e7",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "01aa779d13f34059cf1918d9547eb6b9736b21f7a2775113fb81376615d48f43",
+      "semanticOutcomeSha256": "4da6d7fc26d85c31ca15544c54e12992dcf186d4ba8fb5d0deb0cc15d6e5a55e",
+      "batchId": "historical-recovery-8b8002273745721f725c70c4-slice-9c290ae74150",
+      "batchSha256": "c64d518a068f5fcf9f3eed72b15750c98bda2652708f5c830eca0f1bb5f7087e",
+      "runId": "historical-fpa-dryers-20260716-a",
+      "resultsSha256": "6f5a1301d2dda1fe9313c78b5ba1cf8dc1d82ddd5b3ba0c047eb1ae6ca6d97f0",
+      "auditSha256": "a50b3c2b5af105b69b69995ae53b2cb3c19919e6280622db4f91369c3022f1c8",
+      "acceptedAt": "2026-07-16T12:43:54.447Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_65776603f408991e58cee19e",
@@ -7114,6 +7218,58 @@
       "attemptedAt": "2026-07-16T12:16:49.118Z"
     },
     {
+      "targetAttemptId": "historical_target_attempt_0a36518e234593040a2a098d",
+      "targetId": "recovery_target_d75155b3cc3791874b1a84fa",
+      "referenceId": "fa_ref_1352dd450a3e79ebc766ab66",
+      "legacyRuntimeId": "ao-65230",
+      "canonicalProductId": "fa_prod_45984ddaac9a3a63a4931aa2",
+      "brand": "Fisher & Paykel",
+      "model": "DE4560M1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "97de87c77ad32ce6ae8b3fedc43d9d25483e6eea06a4b08fa5e912343ece97f5",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "fisher-paykel-official-support",
+          "version": "4",
+          "scope": "exact_model_product_page_and_support_documents",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "f43b77241f2b388b5e573430d2bca865a649b68b73bf5a5cecb00934bd803019",
+      "semanticOutcomeSha256": "2b6d768cf22307557b04c3efdf1a3a50478cb33fd965c0a6029fcafaccf0c6cb",
+      "batchId": "historical-recovery-8b8002273745721f725c70c4-slice-9c290ae74150",
+      "batchSha256": "c64d518a068f5fcf9f3eed72b15750c98bda2652708f5c830eca0f1bb5f7087e",
+      "runId": "historical-fpa-dryers-20260716-a",
+      "resultsSha256": "6f5a1301d2dda1fe9313c78b5ba1cf8dc1d82ddd5b3ba0c047eb1ae6ca6d97f0",
+      "auditSha256": "a50b3c2b5af105b69b69995ae53b2cb3c19919e6280622db4f91369c3022f1c8",
+      "attemptedAt": "2026-07-16T12:43:54.447Z"
+    },
+    {
       "targetAttemptId": "historical_target_attempt_1261e43fa6410a9086ea5541",
       "targetId": "recovery_target_fe4b691f79d62b5f8dcfa45f",
       "referenceId": "fa_ref_96755e418ee9132916be8d1e",
@@ -7164,6 +7320,58 @@
       "resultsSha256": "458df2ce93813b690f899242c8a5477fb9d49f61a1eed41af767942766d56be2",
       "auditSha256": "32f9b003c42bde8586a06d30b7ba8f6347f2170620994e644471d68ea2d03805",
       "attemptedAt": "2026-07-16T12:16:49.118Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_255e8086b764900b7283aabc",
+      "targetId": "recovery_target_658c78230b15a34b4af8b76c",
+      "referenceId": "fa_ref_06196fb6913c5b5f0f362781",
+      "legacyRuntimeId": "ao-65231",
+      "canonicalProductId": "fa_prod_f9ced2b807429bb9aa1aabf9",
+      "brand": "Fisher & Paykel",
+      "model": "DE6060M1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "97de87c77ad32ce6ae8b3fedc43d9d25483e6eea06a4b08fa5e912343ece97f5",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "fisher-paykel-official-support",
+          "version": "4",
+          "scope": "exact_model_product_page_and_support_documents",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "be0d47d4f752038a9d94207a1cf13c2a29327299edb0f66ae5d5d570630e0173",
+      "semanticOutcomeSha256": "16c7529e5053951cb6a1f9d59da565be51fb0831070255dafd8a543e8d4dbd2e",
+      "batchId": "historical-recovery-8b8002273745721f725c70c4-slice-9c290ae74150",
+      "batchSha256": "c64d518a068f5fcf9f3eed72b15750c98bda2652708f5c830eca0f1bb5f7087e",
+      "runId": "historical-fpa-dryers-20260716-a",
+      "resultsSha256": "6f5a1301d2dda1fe9313c78b5ba1cf8dc1d82ddd5b3ba0c047eb1ae6ca6d97f0",
+      "auditSha256": "a50b3c2b5af105b69b69995ae53b2cb3c19919e6280622db4f91369c3022f1c8",
+      "attemptedAt": "2026-07-16T12:43:54.447Z"
     },
     {
       "targetAttemptId": "historical_target_attempt_2757b0d2c611694c8bb62ac2",
@@ -7582,6 +7790,58 @@
       "attemptedAt": "2026-07-16T12:36:46.872Z"
     },
     {
+      "targetAttemptId": "historical_target_attempt_d3147acccf85d596340f8e97",
+      "targetId": "recovery_target_63056f7123a67ac680645904",
+      "referenceId": "fa_ref_02bd36e7bd51c6ef10c622ed",
+      "legacyRuntimeId": "ao-51541",
+      "canonicalProductId": "fa_prod_640d41b70e564dc6d5fce08e",
+      "brand": "Fisher & Paykel",
+      "model": "DE5060M1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "97de87c77ad32ce6ae8b3fedc43d9d25483e6eea06a4b08fa5e912343ece97f5",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "fisher-paykel-official-support",
+          "version": "4",
+          "scope": "exact_model_product_page_and_support_documents",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "57a4a2246e625f23408f7c478e8fb62f2ddd28dc0f397c5864cd4d0a6bd86cf5",
+      "semanticOutcomeSha256": "4c3f1b517e962fd28d2f2e0bb36994d8f056fa51b9d5fb1414f7c33f8e720a0d",
+      "batchId": "historical-recovery-8b8002273745721f725c70c4-slice-9c290ae74150",
+      "batchSha256": "c64d518a068f5fcf9f3eed72b15750c98bda2652708f5c830eca0f1bb5f7087e",
+      "runId": "historical-fpa-dryers-20260716-a",
+      "resultsSha256": "6f5a1301d2dda1fe9313c78b5ba1cf8dc1d82ddd5b3ba0c047eb1ae6ca6d97f0",
+      "auditSha256": "a50b3c2b5af105b69b69995ae53b2cb3c19919e6280622db4f91369c3022f1c8",
+      "attemptedAt": "2026-07-16T12:43:54.447Z"
+    },
+    {
       "targetAttemptId": "historical_target_attempt_dca86e86792fcae35819c714",
       "targetId": "recovery_target_ec9afe6f559c39e03ab59b54",
       "referenceId": "fa_ref_c4a937317857bdacd7f7451c",
@@ -7635,25 +7895,25 @@
     }
   ],
   "summary": {
-    "entries": 140,
+    "entries": 143,
     "resolutions": 17,
-    "sourceAcceptances": 158,
-    "suppressions": 84,
+    "sourceAcceptances": 159,
+    "suppressions": 87,
     "resolvedSuppressions": 14,
     "retryable": 42,
-    "targetAttempts": 11,
-    "resolverOnlySuppressions": 11,
+    "targetAttempts": 14,
+    "resolverOnlySuppressions": 14,
     "byStatus": {
-      "claims_incomplete": 8,
-      "identity_rejected": 57,
+      "claims_incomplete": 9,
+      "identity_rejected": 59,
       "mineru_failure": 33,
       "transport_failure": 42
     },
     "byDisposition": {
       "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 33,
       "RETRY_TRANSIENT": 42,
-      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 57,
-      "SEEK_EXACT_MODEL_FIELD_SOURCE": 8
+      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 59,
+      "SEEK_EXACT_MODEL_FIELD_SOURCE": 9
     }
   }
 }

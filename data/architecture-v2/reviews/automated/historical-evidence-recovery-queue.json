@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1428,
-    "fetchJobs": 1391,
-    "targets": 1425,
-    "candidateEdges": 1428,
+    "documents": 1427,
+    "fetchJobs": 1390,
+    "targets": 1424,
+    "candidateEdges": 1427,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1425,
+    "uniqueReferences": 1424,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 994,
+      "MEASURE_REQUIRED": 993,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1178
+      "CURRENT_RETAIL": 1177
     },
     "byCategory": {
       "dishwasher": 307,
-      "dryer": 61,
+      "dryer": 60,
       "fridge": 835,
       "washing_machine": 222
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1128,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1127,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 205,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 179,
+      "ALREADY_AUTO_FILL": 180,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -4825,32 +4825,6 @@
       ],
       "targetIds": [
         "recovery_target_a07a4888daadd09bd63dd997"
-      ]
-    },
-    {
-      "jobId": "recovery_1db8bbe1d24267eebab53dda",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/d/1/5/2d15cde7a00c990828aad3c4f31213b426693315_DE5060G1_User_Manual.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_b0f95c8a17cfdaefea82a96d"
       ]
     },
     {
@@ -47727,47 +47701,6 @@
         "recovery_d78cdf0a94062d53734f1724"
       ],
       "primaryJobId": "recovery_d78cdf0a94062d53734f1724"
-    },
-    {
-      "referenceId": "fa_ref_f6bb6f5ff518c83502a946d9",
-      "legacyRuntimeId": "ao-51926",
-      "canonicalProductId": "fa_prod_5c87550741e99198ef21e364",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DE5060G1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 830,
-        "depth": 585
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_b0f95c8a17cfdaefea82a96d",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_bac460603ef521bc628e8337"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_bac460603ef521bc628e8337",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 830,
-            "depth": 585
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_1db8bbe1d24267eebab53dda"
-      ],
-      "primaryJobId": "recovery_1db8bbe1d24267eebab53dda"
     },
     {
       "referenceId": "fa_ref_02bd36e7bd51c6ef10c622ed",
