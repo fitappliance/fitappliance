@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T12:45:49.624Z",
-  "semanticQueueSha256": "d740632e12b4c9846e2decc8a8e4e0e5766b3f587c6d70ed48d30cc3f2539744",
-  "sourceClassificationSha256": "b9290f2ab6294a69f149435afe51f03610edd336dc23431bb7fc4aea2c358fbd",
+  "generatedAt": "2026-07-16T12:50:57.551Z",
+  "semanticQueueSha256": "e64bb4933d02ef17213552e812a6736cb6058a1c84dd2924f81097de3d5f7c4c",
+  "sourceClassificationSha256": "3b7e334e1f706a753fb73001ec4025dea4cfb94582b7d34a7b98ac0df5c058d1",
   "records": [
     {
       "schemaVersion": 1,
@@ -8674,37 +8674,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d866edbe98e055937ba4ef0d",
-      "referenceId": "fa_ref_fe571d1690658ccf55c12d64",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DE7060G2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family 946474b05d94",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_9e9c1b37ca0360687ee45081"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_54d4e6dc10182e78bc2c1ef3"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-dryer-fisher-paykel-de7060g2"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_be94836104397d54af1feb6b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_258b90e03e3ec319eac22a17",
       "referenceId": "fa_ref_65a617ffe2d6e16da569b98e",
       "category": "dryer",
@@ -8736,37 +8705,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_012db355d79bf004ad5f446e",
-      "referenceId": "fa_ref_a1437436089d1eb6007e814a",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DH1060RG5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_6ab607f729ee61e9",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_5c227b1693d68bdc0788b356"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e68e799240a030765858d23d"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-dryer-fisher-paykel-dh1060rg5"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_4ff41f5060d84efa3bc07840"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_cd0348917be0727a2b192f87",
       "referenceId": "fa_ref_bb0840a5b36e7ca00cd9fc54",
       "category": "dryer",
@@ -8793,37 +8731,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_5a49bed039787d3859724b55"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f0e239c6c3e58fa376beba85",
-      "referenceId": "fa_ref_34601f00c17825bfd5a8ca86",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DH8060J5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "marketing_series",
-      "groupName": "Series 5",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d0864ff1bb4041196dc5d2d0"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_895a1be60e3fa96e85e3015e"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-dryer-fisher-paykel-dh8060j5"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_13d3b550e62c1882ae2cefbb"
       ],
       "offlineReplayOutcome": null
     },
@@ -200385,19 +200292,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_5c227b1693d68bdc0788b356",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4fd4ee55/QRG/AU/QRG-AU-93309.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DH1060RG5.json",
-        "source:doc_58147c6ef723948f4fbb9800"
-      ],
-      "referenceIds": [
-        "fa_ref_a1437436089d1eb6007e814a"
-      ]
-    },
-    {
       "sourceId": "historical_source_5c5e69872c9a044b75f03f6a",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/1/c/1/51c1d1e19d98e5837a4f0798e9b95db2ea6fba19_Beko_DNE25020S_253L_Top_Mount_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -205644,19 +205538,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_9e9c1b37ca0360687ee45081",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcee94f3f/QRG/AU/QRG-AU-92278.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DE7060G2.json",
-        "source:doc_e74c3ab2695a4ecff8ecfdee"
-      ],
-      "referenceIds": [
-        "fa_ref_fe571d1690658ccf55c12d64"
-      ]
-    },
-    {
       "sourceId": "historical_source_9ef09fe35d5bbc9c01cde8a4",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/2/c/a/8/2ca8bd3933bdec97b5a58e5e0b41136df1304419_EBE5307SB_L_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -209277,19 +209158,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_d0864ff1bb4041196dc5d2d0",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5f84806d/QRG/AU/QRG-AU-93302.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DH8060J5.json",
-        "source:doc_03ea991d8dfd2723df83f2bb"
-      ],
-      "referenceIds": [
-        "fa_ref_34601f00c17825bfd5a8ca86"
-      ]
-    },
-    {
       "sourceId": "historical_source_d090b8043263dc32d64b8fd3",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/8/2/c/6/82c679030df0dc316c9d6078076c838bac524f0c_TD_C80NPW_LG_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -212501,46 +212369,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 278,
+    "COMPLETE_RECEIPT": 281,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7817,
-    "uniqueReferences": 7817,
-    "candidateSources": 1466,
-    "candidateEdges": 1501,
+    "queuedModels": 7814,
+    "uniqueReferences": 7814,
+    "candidateSources": 1463,
+    "candidateEdges": 1498,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1179,
+      "CURRENT_RETAIL": 1176,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1309,
-      "dryer": 811,
+      "dryer": 808,
       "fridge": 4232,
       "washing_machine": 1465
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 152,
+      "IDENTITY_RESEARCH": 149,
       "OFFICIAL_DISCOVERY": 6416,
       "REFERENCE_REDISCOVERY": 1166
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 152,
+      "IDENTITY_CLOSURE": 149,
       "OFFICIAL_DISCOVERY": 6416,
       "OFFICIAL_REDISCOVERY": 1166
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5152,
+      "DISCOVERY_READY": 5149,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 278,
+      "COMPLETE_RECEIPT": 281,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

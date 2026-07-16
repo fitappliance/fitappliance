@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1427,
-    "fetchJobs": 1390,
-    "targets": 1424,
-    "candidateEdges": 1427,
+    "documents": 1424,
+    "fetchJobs": 1387,
+    "targets": 1421,
+    "candidateEdges": 1424,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1424,
+    "uniqueReferences": 1421,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 993,
+      "MEASURE_REQUIRED": 990,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1177
+      "CURRENT_RETAIL": 1174
     },
     "byCategory": {
       "dishwasher": 307,
-      "dryer": 60,
+      "dryer": 57,
       "fridge": 835,
       "washing_machine": 222
     },
     "byAcquisitionRoute": {
       "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1127,
-      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 205,
+      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 180,
+      "ALREADY_AUTO_FILL": 183,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -252,32 +252,6 @@
       ]
     },
     {
-      "jobId": "recovery_fe80e87be63995cd4b783eeb",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4fd4ee55/QRG/AU/QRG-AU-93309.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_e68e799240a030765858d23d"
-      ]
-    },
-    {
       "jobId": "recovery_e0f22aa2ea4661b2ab39d759",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw59beffbb/QRG/AU/QRG-AU-92315.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -327,32 +301,6 @@
       ],
       "targetIds": [
         "recovery_target_33d0871ba542a4f138760e5f"
-      ]
-    },
-    {
-      "jobId": "recovery_032eeb86f427b9482900010b",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5f84806d/QRG/AU/QRG-AU-93302.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_895a1be60e3fa96e85e3015e"
       ]
     },
     {
@@ -483,32 +431,6 @@
       ],
       "targetIds": [
         "recovery_target_a1bc5c3013aba098630d67ff"
-      ]
-    },
-    {
-      "jobId": "recovery_51ca60c8ca9c6935358935d2",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcee94f3f/QRG/AU/QRG-AU-92278.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_54d4e6dc10182e78bc2c1ef3"
       ]
     },
     {
@@ -47908,47 +47830,6 @@
       "primaryJobId": "recovery_d22f68113c1006ff46d70ea6"
     },
     {
-      "referenceId": "fa_ref_fe571d1690658ccf55c12d64",
-      "legacyRuntimeId": "discovery-dryer-fisher-paykel-de7060g2",
-      "canonicalProductId": "fa_prod_be94836104397d54af1feb6b",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DE7060G2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 830,
-        "depth": 575
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_54d4e6dc10182e78bc2c1ef3",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e74c3ab2695a4ecff8ecfdee"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e74c3ab2695a4ecff8ecfdee",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 830,
-            "depth": 575
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_51ca60c8ca9c6935358935d2"
-      ],
-      "primaryJobId": "recovery_51ca60c8ca9c6935358935d2"
-    },
-    {
       "referenceId": "fa_ref_82257bc1b950e487508d7afb",
       "legacyRuntimeId": "ao-65233",
       "canonicalProductId": "fa_prod_9b5712f3263aa4751058819a",
@@ -47988,88 +47869,6 @@
         "recovery_2ee04b663834a533ce0c5d97"
       ],
       "primaryJobId": "recovery_2ee04b663834a533ce0c5d97"
-    },
-    {
-      "referenceId": "fa_ref_a1437436089d1eb6007e814a",
-      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh1060rg5",
-      "canonicalProductId": "fa_prod_4ff41f5060d84efa3bc07840",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DH1060RG5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 602,
-        "height": 850,
-        "depth": 682
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_e68e799240a030765858d23d",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_58147c6ef723948f4fbb9800"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_58147c6ef723948f4fbb9800",
-          "dimensionsMm": {
-            "width": 602,
-            "height": 850,
-            "depth": 682
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_fe80e87be63995cd4b783eeb"
-      ],
-      "primaryJobId": "recovery_fe80e87be63995cd4b783eeb"
-    },
-    {
-      "referenceId": "fa_ref_34601f00c17825bfd5a8ca86",
-      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh8060j5",
-      "canonicalProductId": "fa_prod_13d3b550e62c1882ae2cefbb",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DH8060J5",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 602,
-        "height": 850,
-        "depth": 682
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_895a1be60e3fa96e85e3015e",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_03ea991d8dfd2723df83f2bb"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_03ea991d8dfd2723df83f2bb",
-          "dimensionsMm": {
-            "width": 602,
-            "height": 850,
-            "depth": 682
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_032eeb86f427b9482900010b"
-      ],
-      "primaryJobId": "recovery_032eeb86f427b9482900010b"
     },
     {
       "referenceId": "fa_ref_a60f253b70404d2122cef804",

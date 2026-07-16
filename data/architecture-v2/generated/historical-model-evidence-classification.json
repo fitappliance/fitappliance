@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T12:45:49.624Z",
+  "generatedAt": "2026-07-16T12:50:57.551Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "b9290f2ab6294a69f149435afe51f03610edd336dc23431bb7fc4aea2c358fbd",
+  "semanticClassificationSha256": "3b7e334e1f706a753fb73001ec4025dea4cfb94582b7d34a7b98ac0df5c058d1",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
@@ -21,28 +21,28 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 278,
+      "COMPLETE_RECEIPT": 281,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 152,
+      "IDENTITY_RESEARCH": 149,
       "OFFICIAL_DISCOVERY": 6416,
       "REFERENCE_REDISCOVERY": 1166
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 278,
+      "NO_ACTION": 281,
       "REDISCOVER_OFFICIAL_SOURCE": 1166,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 152
+      "RUN_IDENTITY_CLOSURE": 149
     },
     "bySourceAuthority": {
       "MIXED": 139,
-      "NONE": 6628,
-      "OFFICIAL": 145,
+      "NONE": 6625,
+      "OFFICIAL": 148,
       "REFERENCE": 1183
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 189,
-      "EXACT_MODEL": 1581,
+      "AMBIGUOUS": 186,
+      "EXACT_MODEL": 1584,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 278,
-      "LEGACY_UNBOUND": 1492,
+      "CURRENT_VALID": 281,
+      "LEGACY_UNBOUND": 1489,
       "NONE": 6325
     }
   },
@@ -83,9 +83,9 @@
       "brands": 72,
       "documentLinks": 268,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 32,
+        "COMPLETE_RECEIPT": 35,
         "CONFLICT_QUARANTINE": 4,
-        "IDENTITY_RESEARCH": 8,
+        "IDENTITY_RESEARCH": 5,
         "OFFICIAL_DISCOVERY": 745,
         "REFERENCE_REDISCOVERY": 54
       }
@@ -68367,15 +68367,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 946474b05d94",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 2,
+        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -68420,22 +68421,22 @@
         },
         {
           "documentId": "pdf:d669580695342bc85672ec86387c464744f7dfc696489ce367f516746ea0f8fe",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcee94f3f/QRG/AU/QRG-AU-92278.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:d669580695342bc85672ec86387c464744f7dfc696489ce367f516746ea0f8fe",
-            "mineru-primary:af0407137e78f75a7167f4febc32f16a33558e8e8f1846b6f03bd5b6aad06d5e",
+            "receipt:69999f059837290472df34302bd0d83565efed1f0252172e9d3a3fc5988d564a",
             "storage:evidence/web/sha256/d6/69/d669580695342bc85672ec86387c464744f7dfc696489ce367f516746ea0f8fe.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_OFFICIAL_PROVENANCE_REDISCOVERY_REQUIRED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "receiptState": "NONE",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "d669580695342bc85672ec86387c464744f7dfc696489ce367f516746ea0f8fe",
           "grammarProfileId": "pdf_grammar_402a90fdb3f4b2e4"
         },
@@ -68455,8 +68456,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Fisher & Paykel",
@@ -69164,15 +69165,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_6ab607f729ee61e9",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 4,
+        "CURRENT_MINERU": 3,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -69216,22 +69218,22 @@
         },
         {
           "documentId": "pdf:6b2b1ce975bdcc87c3e1e4383dd7181ffed51ca0caac9ae26a979c569ac4f4c1",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwb178c40f/QRG/AU/QRG-AU-93309.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:6b2b1ce975bdcc87c3e1e4383dd7181ffed51ca0caac9ae26a979c569ac4f4c1",
-            "mineru-primary:0b6f3825d7a15f2f365f107db4fc8619b5bafafe25738fe9b0b28d91121599ca",
+            "receipt:75637c97b51834148eba08ea5bfc7634f17b50694720da5265b6817d2a6f41bf",
             "storage:evidence/web/sha256/6b/2b/6b2b1ce975bdcc87c3e1e4383dd7181ffed51ca0caac9ae26a979c569ac4f4c1.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_OFFICIAL_PROVENANCE_REDISCOVERY_REQUIRED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "receiptState": "NONE",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "6b2b1ce975bdcc87c3e1e4383dd7181ffed51ca0caac9ae26a979c569ac4f4c1",
           "grammarProfileId": "pdf_grammar_6ab607f729ee61e9"
         },
@@ -69291,8 +69293,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Fisher & Paykel",
@@ -69481,15 +69483,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "marketing_series",
       "groupName": "Series 5",
-      "bestCorpusState": "CURRENT_MINERU",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 4,
+        "CURRENT_MINERU": 3,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -69574,22 +69577,22 @@
         },
         {
           "documentId": "pdf:ee04c28502ccadb1dba097f69a2223ccee11985af89904ff117c47211644eedb",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc96a5614/QRG/AU/QRG-AU-93302.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:ee04c28502ccadb1dba097f69a2223ccee11985af89904ff117c47211644eedb",
-            "mineru-primary:e185c2668b85a596bbce28f0fa0fc9c53cec12a555a165f1b0907d2914a9740d",
+            "receipt:3c0284dd9e15249cb9d0a3eda56cede612c6f4741eea21338bb05cd1a3b8c974",
             "storage:evidence/web/sha256/ee/04/ee04c28502ccadb1dba097f69a2223ccee11985af89904ff117c47211644eedb.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_OFFICIAL_PROVENANCE_REDISCOVERY_REQUIRED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "receiptState": "NONE",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "ee04c28502ccadb1dba097f69a2223ccee11985af89904ff117c47211644eedb",
           "grammarProfileId": "pdf_grammar_6ab607f729ee61e9"
         },
@@ -69609,8 +69612,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Fisher & Paykel",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T12:45:38.388Z",
-  "sourceBundleSha256": "9e93af5591ae50f38dfe2563333684c88be08fc4fe30bce2c6d77992f3a5f196",
+  "generatedAt": "2026-07-16T12:50:46.468Z",
+  "sourceBundleSha256": "7fcfc8cbe58c0f4eeb60118399d9226e244f47beb5a3713cb423f56d0b3ed4fb",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1264,6 +1264,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_54d4e6dc10182e78bc2c1ef3",
+      "referenceId": "fa_ref_fe571d1690658ccf55c12d64",
+      "brand": "Fisher & Paykel",
+      "model": "DE7060G2",
+      "category": "dryer",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcee94f3f/QRG/AU/QRG-AU-92278.pdf",
+      "sourcePdfSha256": "d669580695342bc85672ec86387c464744f7dfc696489ce367f516746ea0f8fe",
+      "contentSha256": "d669580695342bc85672ec86387c464744f7dfc696489ce367f516746ea0f8fe",
+      "receiptBindingSha256": "69999f059837290472df34302bd0d83565efed1f0252172e9d3a3fc5988d564a",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/af/04/af0407137e78f75a7167f4febc32f16a33558e8e8f1846b6f03bd5b6aad06d5e.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_5530106b3719e7a18793b3e1",
       "referenceId": "fa_ref_bef91297ea3d15a34ff7e04c",
       "brand": "ASKO",
@@ -2030,6 +2044,20 @@
       "contentSha256": "b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a",
       "receiptBindingSha256": "c38cb73263c1bedafddb2c30695ff328f27cb626f5fcfa2cb19f3dfdc797c2ca",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/f1/96/f19656a02bdd6bbaf7ca4eb53bc42b6496d62c9049bdd681089111e811c76fee.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_895a1be60e3fa96e85e3015e",
+      "referenceId": "fa_ref_34601f00c17825bfd5a8ca86",
+      "brand": "Fisher & Paykel",
+      "model": "DH8060J5",
+      "category": "dryer",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc96a5614/QRG/AU/QRG-AU-93302.pdf",
+      "sourcePdfSha256": "ee04c28502ccadb1dba097f69a2223ccee11985af89904ff117c47211644eedb",
+      "contentSha256": "ee04c28502ccadb1dba097f69a2223ccee11985af89904ff117c47211644eedb",
+      "receiptBindingSha256": "3c0284dd9e15249cb9d0a3eda56cede612c6f4741eea21338bb05cd1a3b8c974",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/e1/85/e185c2668b85a596bbce28f0fa0fc9c53cec12a555a165f1b0907d2914a9740d.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3630,6 +3658,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_e68e799240a030765858d23d",
+      "referenceId": "fa_ref_a1437436089d1eb6007e814a",
+      "brand": "Fisher & Paykel",
+      "model": "DH1060RG5",
+      "category": "dryer",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwb178c40f/QRG/AU/QRG-AU-93309.pdf",
+      "sourcePdfSha256": "6b2b1ce975bdcc87c3e1e4383dd7181ffed51ca0caac9ae26a979c569ac4f4c1",
+      "contentSha256": "6b2b1ce975bdcc87c3e1e4383dd7181ffed51ca0caac9ae26a979c569ac4f4c1",
+      "receiptBindingSha256": "75637c97b51834148eba08ea5bfc7634f17b50694720da5265b6817d2a6f41bf",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/0b/6f/0b6f3825d7a15f2f365f107db4fc8619b5bafafe25738fe9b0b28d91121599ca.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_e6cc35e4124fdc96f7ea95c4",
       "referenceId": "fa_ref_0e6a635cbea4fb2b1f9c23d4",
       "brand": "Bosch",
@@ -3981,11 +4023,11 @@
     }
   ],
   "summary": {
-    "entries": 259,
-    "sources": 284,
-    "passed": 284,
+    "entries": 262,
+    "sources": 287,
+    "passed": 287,
     "failed": 0
   },
-  "checkedObjects": 561,
-  "semanticAuditSha256": "140fe472c49ff0ed12a076a5ff9ced6889ebc68a9265fd5e59aa6744f1a9366d"
+  "checkedObjects": 567,
+  "semanticAuditSha256": "bc9d14e633a78fcecca0dea82fdb1d1c4c081570479523789e064077b0586b3d"
 }
