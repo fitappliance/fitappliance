@@ -2106,6 +2106,65 @@ test('MinerU binds the RF610A support family only to its explicit RF610/RF540A p
   }), /bound support family|identity signal/i);
 });
 
+test('MinerU binds a DW60CH support family only through the shared AU/NZ cover and product table', () => {
+  const identity = { brand: 'Fisher & Paykel', model: 'DW60CHW1', category: 'dishwasher' };
+  const cover = paragraph('DW60CH, DW60CHP and DW60CK models');
+  const market = paragraph('NZ AU', [420, 650, 560, 690]);
+  const dimensions = tableFragment(`<table>
+    <tr><td colspan="2">Product Dimensions</td><td>mm</td></tr>
+    <tr><td>A</td><td>Overall height of productwith top panel in placewith top panel removed*</td><td>850 (min) -870 (max)**820 (min) -840 (max)**</td></tr>
+    <tr><td>B</td><td>Overall width of product</td><td>598</td></tr>
+    <tr><td>C</td><td>Overall depth of product</td><td>612</td></tr>
+    <tr><td>D</td><td>Depth of open door(measured from front of kickstrip)</td><td>595</td></tr>
+    <tr><td colspan="3">Cabinetry Dimensions</td></tr>
+    <tr><td>F</td><td>min. inside width of cavity</td><td>600</td></tr>
+  </table>`);
+  const bytes = Buffer.from(JSON.stringify([
+    [cover, market], [], [], [], [], [], [], [], [], [dimensions],
+  ]));
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: identity, claimSemanticsVersion: 2,
+    boundSupportFamilyModel: 'DW60CH',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+  const parsed = parseMineruContentListV2(bytes, options);
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 850, maxMm: 870 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 612 },
+  });
+  assert.ok(parsed.grammarProfileIds.includes('fisher-paykel-dw60ch-support-family-v1'));
+  assert.ok(parsed.identitySignals.some((signal) => (
+    signal.type === 'mineru_fp_dw60ch_support_family'
+  )));
+  assert.ok(parsed.claims.every((claim) => claim.page === 10));
+
+  for (const [label, pages, family = 'DW60CH'] of [
+    ['missing AU/NZ market', [[cover], [], [], [], [], [], [], [], [], [dimensions]]],
+    ['missing cover', [[], [], [], [], [], [], [], [], [], [dimensions]]],
+    ['duplicate dimensions', [[cover, market], [], [], [], [], [], [], [], [], [dimensions, dimensions]]],
+    ['sibling family', [[cover, market], [], [], [], [], [], [], [], [], [dimensions]], 'DW60CK'],
+    ['two height ranges without removed-panel semantics', [[cover, market], [], [], [], [], [], [], [], [], [{
+      ...dimensions,
+      content: { html: dimensions.content.html.replace('placewith top panel removed*', 'place*') },
+    }]]],
+    ['two height ranges without in-place semantics', [[cover, market], [], [], [], [], [], [], [], [], [{
+      ...dimensions,
+      content: { html: dimensions.content.html.replace('with top panel in placewith top panel removed*', 'with top panel removed*') },
+    }]]],
+    ['two height ranges with reversed panel semantics', [[cover, market], [], [], [], [], [], [], [], [], [{
+      ...dimensions,
+      content: { html: dimensions.content.html.replace('with top panel in placewith top panel removed*', 'with top panel removed with top panel in place*') },
+    }]]],
+  ]) {
+    assert.throws(() => parseMineruContentListV2(Buffer.from(JSON.stringify(pages)), {
+      ...options, boundSupportFamilyModel: family,
+    }), /bound support family|identity signal/i, label);
+  }
+});
+
 test('MinerU reconnects a Bosch grouped dimension heading to an explicitly labelled next paragraph', () => {
   const bytes = Buffer.from(JSON.stringify([[
     pageHeader('Series 4 dishwasher SMS4HVI01A'),

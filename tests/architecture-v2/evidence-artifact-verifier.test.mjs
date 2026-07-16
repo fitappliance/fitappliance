@@ -1382,6 +1382,122 @@ test('a hash-bound exact Fisher & Paykel support product binds the RF610A family
   }), /exact model/i);
 });
 
+test('a hash-bound exact Fisher & Paykel support product binds the DW60CH AU/NZ installation family', () => {
+  const dishwasherIdentity = {
+    brand: 'Fisher & Paykel', model: 'DW60CHW1', category: 'dishwasher',
+  };
+  const artifactLinkUrl = 'https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000004hSYD/content-token-1234';
+  const artifactUrl = 'https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2Fcontent-token-1234&operationContext=DELIVERY&viewId=05HJw00000QCIJxMAP&dpt=';
+  const pdfBytes = Buffer.from('%PDF-1.7\nFisher Paykel DW60CH AU NZ installation manual');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [
+      mineruParagraph('DW60CH, DW60CHP and DW60CK models'),
+      mineruParagraph('NZ AU', [420, 650, 560, 690]),
+    ],
+    [], [], [], [], [], [], [], [],
+    [{
+      type: 'table',
+      content: { html: '<table><tr><td colspan="2">Product Dimensions</td><td>mm</td></tr><tr><td>A</td><td>Overall height of productwith top panel in placewith top panel removed*</td><td>850 (min) -870 (max)**820 (min) -840 (max)**</td></tr><tr><td>B</td><td>Overall width of product</td><td>598</td></tr><tr><td>C</td><td>Overall depth of product</td><td>612</td></tr><tr><td>D</td><td>Depth of open door(measured from front of kickstrip)</td><td>595</td></tr><tr><td colspan="3">Cabinetry Dimensions</td></tr><tr><td>F</td><td>min. inside width of cavity</td><td>600</td></tr></table>' },
+      bbox: [100, 120, 900, 760],
+    }],
+  ]));
+  const discoveryPayload = {
+    product: {
+      modelNumber: dishwasherIdentity.model,
+      articles: [{
+        id: 'ka0-dw60ch-install',
+        title: 'Dishwasher Classic Handle - Installation Guide',
+        articleType: 'Installation Guide',
+        articleBody: `<a href="${artifactLinkUrl}">Installation guide</a>`,
+      }],
+    },
+  };
+  const discoveryBytes = Buffer.from(JSON.stringify(discoveryPayload));
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1, method: 'official_support_api', market: 'AU', sourceMarket: 'NZ',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/dishwasher-dw60chw1-fp-aa--DW60CHW1',
+    requestedModel: dishwasherIdentity.model, matchedModel: dishwasherIdentity.model,
+    artifactUrl, artifactLinkUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.json`,
+    discoveryByteSize: discoveryBytes.length,
+    documentId: 'ka0-dw60ch-install',
+  };
+  const parsed = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: dishwasherIdentity, claimSemanticsVersion: 2,
+    boundSupportFamilyModel: 'DW60CH',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const source = {
+    authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+    sourceUrl: artifactUrl, finalUrl: artifactUrl, redirectChain: [],
+    retrievedAt: '2026-07-16T07:00:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    discoveryProvenance,
+    identity: { ...dishwasherIdentity, outcome: 'exact' },
+    claims: parsed.claims, derivedArtifact,
+  };
+  const attested = verifyAndAttestResolutionArtifact({
+    source, caseIdentity: dishwasherIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+    verifiedAt: '2026-07-16T07:01:00.000Z', claimSemanticsVersion: 2,
+  });
+
+  assert.deepEqual(Object.fromEntries(attested.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 850, maxMm: 870 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 612 },
+  });
+  const signalTypes = new Set(attested.identitySignals.map((signal) => signal.type));
+  assert.ok(signalTypes.has('official_support_api_model'));
+  assert.ok(signalTypes.has('mineru_fp_dw60ch_support_family'));
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested, caseIdentity: dishwasherIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+  }), true);
+
+  for (const [label, payload, pattern] of [
+    ['sibling model', {
+      ...discoveryPayload,
+      product: { ...discoveryPayload.product, modelNumber: 'DW60CHX1' },
+    }, /exact model/i],
+    ['non-installation article', {
+      ...discoveryPayload,
+      product: {
+        ...discoveryPayload.product,
+        articles: [{
+          ...discoveryPayload.product.articles[0],
+          title: 'Dishwasher user guide', articleType: 'User/Care Guide',
+        }],
+      },
+    }, /support family|identity signal/i],
+  ]) {
+    const tamperedBytes = Buffer.from(JSON.stringify(payload));
+    const tamperedHash = createHash('sha256').update(tamperedBytes).digest('hex');
+    assert.throws(() => verifyAndAttestResolutionArtifact({
+      source: {
+        ...source,
+        discoveryProvenance: {
+          ...discoveryProvenance,
+          discoveryContentSha256: tamperedHash,
+          discoveryObjectPath: `evidence/web/sha256/${tamperedHash.slice(0, 2)}/${tamperedHash.slice(2, 4)}/${tamperedHash}.json`,
+          discoveryByteSize: tamperedBytes.length,
+        },
+      },
+      caseIdentity: dishwasherIdentity, bytes: pdfBytes,
+      derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: tamperedBytes,
+      verifiedAt: '2026-07-16T07:02:00.000Z', claimSemanticsVersion: 2,
+    }), pattern, label);
+  }
+});
+
 test('a hash-bound official product page can independently bind a model-scoped PDF', () => {
   const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
   const pdfBytes = Buffer.from('%PDF-1.7\nproduct-page-bound artifact');

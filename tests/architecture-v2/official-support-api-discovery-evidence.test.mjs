@@ -51,6 +51,66 @@ test('hash-bound Fisher & Paykel support API proves an exact product article and
   assert.equal(officialSupportApiBoundFamilyModel(provenance, identity, bytes), 'RF610A');
 });
 
+test('hash-bound Fisher & Paykel support API binds an exact DW60CH variant to its installation family', () => {
+  const dishwasherIdentity = {
+    brand: 'Fisher & Paykel', model: 'DW60CHW1', category: 'dishwasher',
+  };
+  const payload = {
+    product: {
+      modelNumber: dishwasherIdentity.model,
+      articles: [{
+        id: 'ka0-dw60ch-install',
+        title: 'Dishwasher Classic Handle - Installation Guide',
+        articleType: 'Installation Guide',
+        articleBody: `<a href="${publicUrl}">Installation guide</a>`,
+      }],
+    },
+  };
+  const bytes = Buffer.from(JSON.stringify(payload));
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_support_api',
+    market: 'AU',
+    sourceMarket: 'NZ',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/dishwasher-dw60chw1-fp-aa--DW60CHW1',
+    requestedModel: dishwasherIdentity.model,
+    matchedModel: dishwasherIdentity.model,
+    artifactUrl,
+    artifactLinkUrl: publicUrl,
+    discoveryContentSha256: hash,
+    discoveryObjectPath: `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.json`,
+    discoveryByteSize: bytes.length,
+    documentId: 'ka0-dw60ch-install',
+  };
+
+  assert.equal(officialSupportApiBoundFamilyModel(
+    provenance, dishwasherIdentity, bytes,
+  ), 'DW60CH');
+  assert.equal(officialSupportApiBoundFamilyModel(
+    provenance, { ...dishwasherIdentity, model: 'DW60CEW1' }, bytes,
+  ), null);
+
+  const nonInstallationBytes = Buffer.from(JSON.stringify({
+    product: {
+      modelNumber: dishwasherIdentity.model,
+      articles: [{
+        id: 'ka0-dw60ch-install',
+        title: 'Dishwasher user guide',
+        articleType: 'User/Care Guide',
+        articleBody: `<a href="${publicUrl}">User guide</a>`,
+      }],
+    },
+  }));
+  const nonInstallationHash = createHash('sha256').update(nonInstallationBytes).digest('hex');
+  assert.equal(officialSupportApiBoundFamilyModel({
+    ...provenance,
+    discoveryContentSha256: nonInstallationHash,
+    discoveryObjectPath: `evidence/web/sha256/${nonInstallationHash.slice(0, 2)}/${nonInstallationHash.slice(2, 4)}/${nonInstallationHash}.json`,
+    discoveryByteSize: nonInstallationBytes.length,
+  }, dishwasherIdentity, nonInstallationBytes), null);
+});
+
 test('support API evidence rejects sibling models and links outside the declared article', () => {
   const sibling = fixture({ payload: {
     product: {

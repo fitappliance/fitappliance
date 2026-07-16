@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T09:50:35.142Z",
-  "sourceAcquisitionQueueSha256": "36970c969fa39d338ab5ea990fc13573fde82885cda5344d64bc91a2c78bf591",
+  "generatedAt": "2026-07-16T10:31:37.305Z",
+  "sourceAcquisitionQueueSha256": "0c2987dbf5d700db5211d74c2f9e4e713fe0da08acc364ef32108884f83306ba",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7823,
+    "acquisitionRecords": 7822,
     "fetchJobs": 1,
-    "targets": 7740,
-    "resolverOnlyTargets": 7739,
+    "targets": 7739,
+    "resolverOnlyTargets": 7738,
     "candidateEdges": 1,
-    "uniqueReferences": 7740,
+    "uniqueReferences": 7739,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1166,
+      "CURRENT_RETAIL": 1165,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 968,
+      "P0_CURRENT_MISSING_DIMENSIONS": 967,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 187,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -2671,43 +2671,6 @@
             "width": 595,
             "height": 850,
             "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_a0fdf2dc9d38787a46b9a57f",
-      "referenceId": "fa_ref_619922b29f5c1471aed43305",
-      "legacyRuntimeId": "ao-42537",
-      "canonicalProductId": "fa_prod_f8ae6b8d734e7c07a45358d5",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60CHW1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_24a98e3400f16357d2cf9cbb",
-        "legacy:data/pdf-evidence-raw/DW60CHW1.json",
-        "source:doc_24a98e3400f16357d2cf9cbb"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_24a98e3400f16357d2cf9cbb",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 820,
-            "depth": 612
           }
         }
       ],

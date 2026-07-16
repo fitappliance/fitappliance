@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-0e7c25ce0c75280b02940d96",
-  "generatedAt": "2026-07-16T09:50:35.142Z",
+  "batchId": "historical-recovery-c40b317f8be542c3bac603ba",
+  "generatedAt": "2026-07-16T10:31:37.305Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "da4f4f57ba2bd9ab9ffcbe2c82543da73def107ced6309883cb27f37fa14aef0"
+    "sha256": "c11ee61599e5a908db229281015b0d87e8bfa5633b8151cf7ec6e054973d6354"
   },
   "policy": {
     "version": "2026-07-16.13",
@@ -2304,38 +2304,6 @@
               "width": 595,
               "height": 850,
               "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_a0fdf2dc9d38787a46b9a57f",
-      "referenceId": "fa_ref_619922b29f5c1471aed43305",
-      "legacyRuntimeId": "ao-42537",
-      "canonicalProductId": "fa_prod_f8ae6b8d734e7c07a45358d5",
-      "brand": "Fisher & Paykel",
-      "model": "DW60CHW1",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_24a98e3400f16357d2cf9cbb",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 820,
-              "depth": 612
             }
           }
         ]
@@ -237760,7 +237728,7 @@
   ],
   "summary": {
     "artifactJobs": 1,
-    "targets": 7740,
+    "targets": 7739,
     "candidateEdges": 1,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

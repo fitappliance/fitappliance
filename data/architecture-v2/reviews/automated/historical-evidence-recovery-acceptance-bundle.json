@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T09:49:59.571Z",
+  "generatedAt": "2026-07-16T10:30:50.823Z",
   "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
   "entries": [
     {
@@ -39190,6 +39190,260 @@
       }
     },
     {
+      "targetId": "recovery_target_a0fdf2dc9d38787a46b9a57f",
+      "referenceId": "fa_ref_619922b29f5c1471aed43305",
+      "legacyRuntimeId": "ao-42537",
+      "canonicalProductId": "fa_prod_f8ae6b8d734e7c07a45358d5",
+      "brand": "Fisher & Paykel",
+      "model": "DW60CHW1",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-0e7c25ce0c75280b02940d96-slice-7d410515b036",
+      "auditSha256": "5aaff4c4bfb0cc9b837d63fa47f3756c0ae0bd71ccc7a3cb876fe2d8def48749",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QCm6jMAD&dpt=",
+          "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QCm6jMAD&dpt=",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T10:29:12.359Z",
+          "contentSha256": "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748",
+          "objectPath": "evidence/web/sha256/0a/ac/0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 18480593,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Fisher & Paykel",
+            "model": "DW60CHW1",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Overall width of product",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 10,
+              "fragmentSha256": "d62b017f61eacae4871a96d8a5af4d0edbad4c676171085fd4929da2e989093b",
+              "bbox": [
+                57,
+                608,
+                940,
+                919
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 850,
+                "maxMm": 870
+              },
+              "sourceLabel": "Overall height of product with top panel in place",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 10,
+              "fragmentSha256": "d62b017f61eacae4871a96d8a5af4d0edbad4c676171085fd4929da2e989093b",
+              "bbox": [
+                57,
+                608,
+                940,
+                919
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 612
+              },
+              "sourceLabel": "Overall depth of product",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 10,
+              "fragmentSha256": "d62b017f61eacae4871a96d8a5af4d0edbad4c676171085fd4929da2e989093b",
+              "bbox": [
+                57,
+                608,
+                940,
+                919
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_support_api",
+            "market": "AU",
+            "sourceMarket": "NZ",
+            "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/dishwasher-dw60chw1-fp-aa--DW60CHW1",
+            "requestedModel": "DW60CHW1",
+            "matchedModel": "DW60CHW1",
+            "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QCm6jMAD&dpt=",
+            "documentId": "ka0Jw0000001C7BIAU",
+            "originalFileName": "590719B DW60CH,CHP,CK userinstall NZAUw 3/09/2023",
+            "discoveryContentSha256": "e58b67ba56d2bffd7c45bf1af363ee973fc6b189116ff62c4dca0d5f39c27335",
+            "discoveryObjectPath": "evidence/web/sha256/e5/8b/e58b67ba56d2bffd7c45bf1af363ee973fc6b189116ff62c4dca0d5f39c27335.json",
+            "discoveryByteSize": 30985,
+            "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000K2Gz/6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo"
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748",
+            "contentSha256": "2e1b4b96ea5b1f01f74e1d497919b57d4aad262082cde0e4edae99ab446c7769",
+            "objectPath": "evidence/derived/mineru-json/sha256/2e/1b/2e1b4b96ea5b1f01f74e1d497919b57d4aad262082cde0e4edae99ab446c7769.json",
+            "byteSize": 161364,
+            "pageCount": 56,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              10
+            ],
+            "sourcePageCount": 56,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "b82bf5993613c08d5c074470ebc22b5fd4283d5c90ab0294c8527a4c210ba2c2",
+              "objectPath": "evidence/derived/mineru-json/sha256/b8/2b/b82bf5993613c08d5c074470ebc22b5fd4283d5c90ab0294c8527a4c210ba2c2.json",
+              "pages": [
+                10
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_fp_dw60ch_support_family",
+              "value": "DW60CHW1:family:DW60CH:cover:29d9efe056f64be18786c381b64c9ef056118911cce6239e18c2c26af0ffd976:market:77be3f38298d58e15908399bae6965c9257eb6722471c93805b3c8109447e1cf:page:10:d62b017f61eacae4871a96d8a5af4d0edbad4c676171085fd4929da2e989093b"
+            },
+            {
+              "type": "official_support_api_model",
+              "value": "DW60CHW1:e58b67ba56d2bffd7c45bf1af363ee973fc6b189116ff62c4dca0d5f39c27335:https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/dishwasher-dw60chw1-fp-aa--DW60CHW1"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.5",
+            "verifiedAt": "2026-07-16T10:29:12.359Z",
+            "bindingSha256": "ec980683580ccd8009e7d9a0a5087e9e4e632aa230b4b537bec18fb32b3342ec"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 870
+            },
+            "depthMm": 612
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QCm6jMAD&dpt=",
+            "contentSha256": "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748",
+            "receiptBindingSha256": "ec980683580ccd8009e7d9a0a5087e9e4e632aa230b4b537bec18fb32b3342ec",
+            "page": 10,
+            "fragmentSha256": "d62b017f61eacae4871a96d8a5af4d0edbad4c676171085fd4929da2e989093b"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QCm6jMAD&dpt=",
+            "contentSha256": "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748",
+            "receiptBindingSha256": "ec980683580ccd8009e7d9a0a5087e9e4e632aa230b4b537bec18fb32b3342ec",
+            "page": 10,
+            "fragmentSha256": "d62b017f61eacae4871a96d8a5af4d0edbad4c676171085fd4929da2e989093b"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QCm6jMAD&dpt=",
+            "contentSha256": "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748",
+            "receiptBindingSha256": "ec980683580ccd8009e7d9a0a5087e9e4e632aa230b4b537bec18fb32b3342ec",
+            "page": 10,
+            "fragmentSha256": "d62b017f61eacae4871a96d8a5af4d0edbad4c676171085fd4929da2e989093b"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_a16446d8ef2a925bfd1024e8",
       "referenceId": "fa_ref_e2fa34f04bc9146e488b0389",
       "legacyRuntimeId": "fridge-arf3396",
@@ -63371,6 +63625,13 @@
       "queueSha256": "d5c912d377bb3fdb06dbd69385aee84ce61c3512eb34e2081f97fe39b750f5bb",
       "resultsSha256": "35a8e87a94357aa0ad7839deb753afb727eb88f10a283a64ce4d96e58b929041",
       "auditSha256": "986e7830757f5d0cdcecdde8ffa5810267e6dd6933ad6570f36aca9ddd6da2ca"
+    },
+    {
+      "batchId": "historical-recovery-0e7c25ce0c75280b02940d96-slice-7d410515b036",
+      "batchSha256": "14249297b3261e5503c10241e40632ca18b5a58ef2e6b8d0f9a08b348911b644",
+      "queueSha256": "da4f4f57ba2bd9ab9ffcbe2c82543da73def107ced6309883cb27f37fa14aef0",
+      "resultsSha256": "f7023a4b0b5bc10163baa0bb9d3da939b62b1c9f9c891f639b3975a090b6e8f1",
+      "auditSha256": "5aaff4c4bfb0cc9b837d63fa47f3756c0ae0bd71ccc7a3cb876fe2d8def48749"
     },
     {
       "batchId": "historical-recovery-0f7027a26c6087c56b2931d4-slice-5425534d092e",

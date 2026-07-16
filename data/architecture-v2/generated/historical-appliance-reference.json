@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "be87339d087903ab3cc1d7a3b248d6a1309d2f9d73068d5efce674b570b06105"
+    "historical-recovery:historical-recovery-cumulative-v1": "1e2253718991fa4adf3ed649a3bf045e9f60c95bb7f0ab9b8ae4694be39c5872"
   },
   "records": [
     {
@@ -25469,6 +25469,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a0fdf2dc9d38787a46b9a57f",
+          "snapshotSha256": "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748",
+          "sourceLines": [
+            10
+          ]
         }
       ],
       "catalogProductIds": [
@@ -25478,7 +25485,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a0fdf2dc9d38787a46b9a57f",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QCm6jMAD&dpt=",
+          "contentSha256": "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748",
+          "receiptBindingSha256": "ec980683580ccd8009e7d9a0a5087e9e4e632aa230b4b537bec18fb32b3342ec",
+          "verifiedAt": "2026-07-16T10:29:12.359Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "d62b017f61eacae4871a96d8a5af4d0edbad4c676171085fd4929da2e989093b"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "d62b017f61eacae4871a96d8a5af4d0edbad4c676171085fd4929da2e989093b"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "d62b017f61eacae4871a96d8a5af4d0edbad4c676171085fd4929da2e989093b"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/0a/ac/0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748.pdf"
+        }
       ]
     },
     {

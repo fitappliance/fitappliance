@@ -113,10 +113,25 @@ export function verifyOfficialSupportApiDiscoveryEvidence(provenance, caseIdenti
 
 export function officialSupportApiBoundFamilyModel(provenance, caseIdentity, discoveryBytes) {
   if (provenance?.method !== 'official_support_api' || !provenance.discoveryContentSha256) return null;
-  if (modelKey(caseIdentity?.brand, 'target brand') !== 'FISHERPAYKEL'
-    || requiredText(caseIdentity?.category, 'target category') !== 'fridge') return null;
+  if (modelKey(caseIdentity?.brand, 'target brand') !== 'FISHERPAYKEL') return null;
+  const category = requiredText(caseIdentity?.category, 'target category');
   const targetModel = modelKey(caseIdentity?.model, 'target model');
-  if (!/^RF610A[A-Z0-9]{3,12}$/.test(targetModel)) return null;
+  let familyModel = null;
+  if (category === 'fridge' && /^RF610A[A-Z0-9]{3,12}$/.test(targetModel)) {
+    familyModel = 'RF610A';
+  } else if (category === 'dishwasher') {
+    if (/^DW60CHP[WX]\d+$/.test(targetModel)) familyModel = 'DW60CHP';
+    else if (/^DW60CH[WX]\d+$/.test(targetModel)) familyModel = 'DW60CH';
+    else if (/^DW60CK[WX]\d+$/.test(targetModel)) familyModel = 'DW60CK';
+  }
+  if (!familyModel) return null;
   verifyOfficialSupportApiDiscoveryEvidence(provenance, caseIdentity, discoveryBytes);
-  return 'RF610A';
+  if (category === 'dishwasher') {
+    const payload = JSON.parse(Buffer.from(discoveryBytes).toString('utf8'));
+    const article = (Array.isArray(payload?.product?.articles) ? payload.product.articles : [])
+      .find((entry) => String(entry?.id ?? '').trim() === String(provenance.documentId).trim());
+    const articleScope = `${requiredText(article?.title, 'support article title')} ${String(article?.articleType ?? '')}`;
+    if (!/\binstallation\b/i.test(articleScope)) return null;
+  }
+  return familyModel;
 }

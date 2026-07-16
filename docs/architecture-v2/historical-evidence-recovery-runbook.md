@@ -389,18 +389,18 @@ cannot issue a public dimension or Fit claim.
 
 Current measured state:
 
-- cumulative bundle: 253 accepted targets and 278 source receipts, all 278
+- cumulative bundle: 254 accepted targets and 279 source receipts, all 279
   replayed from the external evidence store with zero failures;
-- attempt ledger: 140 failure entries, 17 resolution events, 153 source-level
+- attempt ledger: 140 failure entries, 17 resolution events, 154 source-level
   acceptances, 84 active same-policy suppressions and 42 transient retries;
 - historical reference: 8,095 records, 218 `AUTO_FILL` and 88 quarantined;
-- evidence classification: 272 `COMPLETE_RECEIPT`, 6,416
-  `OFFICIAL_DISCOVERY`, 1,171 `REFERENCE_REDISCOVERY`, 153
+- evidence classification: 273 `COMPLETE_RECEIPT`, 6,416
+  `OFFICIAL_DISCOVERY`, 1,170 `REFERENCE_REDISCOVERY`, 153
   `IDENTITY_RESEARCH` and 83 `CONFLICT_QUARANTINE`;
 - dimension corpus: 703 MinerU indexes, 702 valid bindings, 974 observations,
   177 parser profiles and 770 parser replays;
-- next acquisition epoch: 7,823 queued models, of which 272 complete receipts
-  are excluded. The executable view contains 7,740 targets, 7,739 of them
+- next acquisition epoch: 7,822 queued models, of which 273 complete receipts
+  are excluded. The executable view contains 7,739 targets, 7,738 of them
   resolver-only, so future runs must remain explicitly bounded.
 
 Do not use `--allow-all` on a batch containing thousands of resolver-only
@@ -464,3 +464,34 @@ rejected those guides, so they cannot donate clearance or service claims. Treat
 that as a separate exact-scope research canary: prove the target model's scope
 and field applicability from the stored document before changing identity
 policy. Do not infer installation fields from the accepted QRG dimensions.
+
+## 14. Fisher & Paykel DW60CH support-family evidence
+
+`DW60CHW1` is the first accepted target from the Fisher & Paykel AU/NZ
+`DW60CH`, `DW60CHP` and `DW60CK` installation family. The family document is
+eligible only when a hash-bound official support API response proves the exact
+product, links the stored installation article, and the document itself has one
+AU/NZ cover scope plus one Product Dimensions table. A filename or sibling
+model match is insufficient.
+
+The real MinerU table collapses the height labels and values into one row. The
+parser may repair only the observed local joins `productwith` and `placewith`.
+It accepts the first of two height ranges only when the row explicitly orders
+`with top panel in place` before `with top panel removed`; missing, reversed or
+duplicated semantics fail closed. The accepted closed envelope is width `598`,
+installed height `850-870` and depth `612` millimetres. The removed-panel
+height, open-door depth, cavity dimensions and water or electrical fields are
+not projected from this receipt.
+
+The bounded run `historical-fp-dw60chw1-20260716-c` accepted one target. Its
+full online audit checked 554 cumulative objects with zero repairs or
+violations, and cumulative receipt replay passed all 279 sources. Public
+receipt-bound dimensions increased to 205, while receipt-bound
+`VERIFIED_FIT` remained zero. The product remains `INSUFFICIENT_DATA` for a
+successful Fit conclusion because installation, operation and service-space
+requirements are unknown.
+
+`DW60CEW1` did not expose an exact official document under the same discovery
+path. It remains `REFERENCE_REDISCOVERY`, stays in the executable queue without
+a candidate fetch job, and is not publication eligible. Do not widen the
+DW60CH family policy to absorb it.

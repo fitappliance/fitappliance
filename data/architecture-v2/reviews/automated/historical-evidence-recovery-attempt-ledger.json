@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T09:49:59.571Z",
+  "generatedAt": "2026-07-16T10:30:50.823Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -6091,6 +6091,23 @@
       "acceptedAt": "2026-07-16T02:19:45.124Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_aa1b55f8759bfed79eb4db00",
+      "targetId": "recovery_target_a0fdf2dc9d38787a46b9a57f",
+      "referenceId": "fa_ref_619922b29f5c1471aed43305",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000007jNajIAE&d=%2Fa%2FJw000000K2Gz%2F6SwBXxpF5xTc578t27q2.N6pJliY5G95BgVf4Gs6gGo&operationContext=DELIVERY&viewId=05HJw00000QCm6jMAD&dpt=",
+      "contentSha256": "0aac2047d5d8abe6133035aa86888dde134230ed19cad43a3864fe42069da748",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "68050c966621f2000d73501df8f52cd485bfeb471106be6ab13dfdd6197d53da",
+      "semanticOutcomeSha256": "39b3fdff622681da8c4fd3f4f7be144a1854c2e785be33c1babb797a4b5a8b4e",
+      "batchId": "historical-recovery-0e7c25ce0c75280b02940d96-slice-7d410515b036",
+      "batchSha256": "14249297b3261e5503c10241e40632ca18b5a58ef2e6b8d0f9a08b348911b644",
+      "runId": "historical-fp-dw60chw1-20260716-c",
+      "resultsSha256": "f7023a4b0b5bc10163baa0bb9d3da939b62b1c9f9c891f639b3975a090b6e8f1",
+      "auditSha256": "bcb319d23b1b3ed21de5fd7da07d569efbce26c7cc8d3bd8e84f4cfe62edefa0",
+      "acceptedAt": "2026-07-16T10:29:12.520Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_ac7e031b6947477af3d369c0",
       "targetId": "recovery_target_4734ccbde39c6d8c181f3e30",
       "referenceId": "fa_ref_ad3518ea28d30ebac8769833",
@@ -6978,7 +6995,7 @@
   "summary": {
     "entries": 140,
     "resolutions": 17,
-    "sourceAcceptances": 153,
+    "sourceAcceptances": 154,
     "suppressions": 84,
     "resolvedSuppressions": 14,
     "retryable": 42,

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T09:50:35.142Z",
-  "semanticQueueSha256": "36970c969fa39d338ab5ea990fc13573fde82885cda5344d64bc91a2c78bf591",
-  "sourceClassificationSha256": "a5f278fb60d0526d3fe7cbf20ce2ac418830bd96cb1a332b5f8c5a8e18bc55ff",
+  "generatedAt": "2026-07-16T10:31:37.305Z",
+  "semanticQueueSha256": "0c2987dbf5d700db5211d74c2f9e4e713fe0da08acc364ef32108884f83306ba",
+  "sourceClassificationSha256": "0490f16553f42673817c31113be00dc146d51591edfbd5fc4f0ae024732f389b",
   "records": [
     {
       "schemaVersion": 1,
@@ -2695,37 +2695,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_2a9b696d487ff0aaf5191770"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_c7ccf062a0d15ed602d78f17",
-      "referenceId": "fa_ref_619922b29f5c1471aed43305",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60CHW1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "model_specific",
-      "groupName": "DW60CHW1",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_91ecd1e0a5e5e5e7775a34f2"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a0fdf2dc9d38787a46b9a57f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-42537"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_f8ae6b8d734e7c07a45358d5"
       ],
       "offlineReplayOutcome": null
     },
@@ -205075,19 +205044,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_91ecd1e0a5e5e5e7775a34f2",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/0/c/c/80cca6daef1f9baf4ab6de202081d50dc0dd89c9_Fisher___Paykel_DW60CHW1_Freestanding_Dishwasher_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DW60CHW1.json",
-        "source:doc_24a98e3400f16357d2cf9cbb"
-      ],
-      "referenceIds": [
-        "fa_ref_619922b29f5c1471aed43305"
-      ]
-    },
-    {
       "sourceId": "historical_source_921fa8e9ff177da024962cdd",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/7/6/7/0/7670c10ba7020ad18240bfabe50c6fafff30d97e_P454TMW_TCL_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -212814,23 +212770,23 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 272,
+    "COMPLETE_RECEIPT": 273,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7823,
-    "uniqueReferences": 7823,
-    "candidateSources": 1476,
-    "candidateEdges": 1511,
+    "queuedModels": 7822,
+    "uniqueReferences": 7822,
+    "candidateSources": 1475,
+    "candidateEdges": 1510,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1185,
+      "CURRENT_RETAIL": 1184,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1313,
+      "dishwasher": 1312,
       "dryer": 812,
       "fridge": 4233,
       "washing_machine": 1465
@@ -212839,21 +212795,21 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 153,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1171
+      "REFERENCE_REDISCOVERY": 1170
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 153,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1171
+      "OFFICIAL_REDISCOVERY": 1170
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5158,
+      "DISCOVERY_READY": 5157,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 272,
+      "COMPLETE_RECEIPT": 273,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }
