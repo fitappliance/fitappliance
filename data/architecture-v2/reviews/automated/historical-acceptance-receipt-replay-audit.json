@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T19:50:59.418Z",
-  "sourceBundleSha256": "f96690f83463101659fb9113b0ca01bca064b7f66568d77cd9ca5e8c8a8c9431",
+  "generatedAt": "2026-07-16T20:13:05.933Z",
+  "sourceBundleSha256": "0365268eed18285b3b79dcf84973652650fb6850b4d249b4527af30a17dd9feb",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -690,6 +690,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_2ae55439bd3b6a7c91f216ad",
+      "referenceId": "fa_ref_135d961a7689550d811a2896",
+      "brand": "Bosch",
+      "model": "WGG2441RAU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2441RAU.pdf",
+      "sourcePdfSha256": "53bdd14328cad847ed6d61bf1698502f56597cc3bcb911c20a355d58c94a4de4",
+      "contentSha256": "53bdd14328cad847ed6d61bf1698502f56597cc3bcb911c20a355d58c94a4de4",
+      "receiptBindingSha256": "91ceb449fb1957b9b57ccb789acdd11f64cab623496fce5bb7cefe9508105ab2",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/a5/78/a57894203f4e8df3ee26823d14f7de3a9aeddedfd712bdcaffc3c48e30b3d695.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_2b41665b5259820780729108",
       "referenceId": "fa_ref_7017a73aa6952837bd428255",
       "brand": "ASKO",
@@ -938,6 +952,20 @@
       "contentSha256": "b5a994c1ba0891dd471da85ab4d49b34b1c30f3ee91bf40eb962d46b3bd74f6f",
       "receiptBindingSha256": "0b4872c79df0e79ca419e3cdfd887ec3d7e1cbfda59274dc14da18cfd85dd41f",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_36e31bbe76251354ab0681a3",
+      "referenceId": "fa_ref_3c4c7c7d6248d2bce195c450",
+      "brand": "Bosch",
+      "model": "WAY32891AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAY32891AU.pdf",
+      "sourcePdfSha256": "c130f09d40a471795a1cf4f21ab62b79625b016d3c59f5b103dd92597feed3a6",
+      "contentSha256": "c130f09d40a471795a1cf4f21ab62b79625b016d3c59f5b103dd92597feed3a6",
+      "receiptBindingSha256": "40b62fca1579556cf0e51d761409a6392a7bd2e9a2c8f8adfaaad937c65021b9",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/a7/c2/a7c20c3f64030090cb67a18968b8062dc391fd51503a643873ffb4b6c7e945b4.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2258,6 +2286,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_762cc423ea970c484a28c36a",
+      "referenceId": "fa_ref_5357493e9011356828162f2c",
+      "brand": "Bosch",
+      "model": "WGG24409AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24409AU.pdf",
+      "sourcePdfSha256": "d2bb16a0f24456b50582ff764c647a8f1935c352ba541ecfbd6618f5df2163c7",
+      "contentSha256": "d2bb16a0f24456b50582ff764c647a8f1935c352ba541ecfbd6618f5df2163c7",
+      "receiptBindingSha256": "34c2e604d667b999c0ef84ab7fc9815bb1d50e86589b22878d17f7745caca533",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/1b/ee/1bee0b1af3db46035cf62dd9b29f4ed5a764a3c7e8eee51e830f0de8378379ed.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_76cfbf9f468ea1412fbb39a1",
       "referenceId": "fa_ref_e3059bd4d6cc548c743848f6",
       "brand": "LG",
@@ -2594,6 +2636,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_918b7ce01bdd52355a6e2688",
+      "referenceId": "fa_ref_2b33eab14b5ba801450a6ac9",
+      "brand": "Bosch",
+      "model": "WGG24403AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24403AU.pdf",
+      "sourcePdfSha256": "da6c9cc75ddfcf0e665897c595d38d202713b38c1543b6649a2a1daafb576486",
+      "contentSha256": "da6c9cc75ddfcf0e665897c595d38d202713b38c1543b6649a2a1daafb576486",
+      "receiptBindingSha256": "e93f80d1c86feef7d0b17d80d14f5180ad0a4db204f46656dcb7ba3ed7924739",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/af/5c/af5c86b0798ea325da2b6fff745f8c278e31639ecc9a6fe17f111ca05b7664b7.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_91cdd0845f2fb9e5a9c1f065",
       "referenceId": "fa_ref_988c48ab891f6400e4b6a637",
       "brand": "Samsung",
@@ -2660,6 +2716,20 @@
       "contentSha256": "a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628",
       "receiptBindingSha256": "da5a4451e8a8f4d055692cde15ad557af4c516be61035324960b9048d4a35e86",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/4b/95/4b95beba2c2a6fa99bf08c00005823166ac691d69c54bc1245d3cd91179725d3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_94ceb454e4a729b1024a91f1",
+      "referenceId": "fa_ref_06dc5747b7da584d2471cb03",
+      "brand": "Bosch",
+      "model": "WGG244A0AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A0AU.pdf",
+      "sourcePdfSha256": "e2cea5154144d6bd1e29bce8db687defc082ec56e507ebc59782349977eb4f01",
+      "contentSha256": "e2cea5154144d6bd1e29bce8db687defc082ec56e507ebc59782349977eb4f01",
+      "receiptBindingSha256": "907cc51e12b8573e9eb8084701db1a27a535cda1237177aa94e1d7cf73ade2de",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/49/8b/498b0e2e13c6550e5f575a2ea34980573df5a8264e6a4c0236b0b64f7bdefefa.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3812,6 +3882,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c8179547d5bc884d0ca4e074",
+      "referenceId": "fa_ref_eb551bbb7335333e145c20c0",
+      "brand": "Bosch",
+      "model": "WAW32640AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAW32640AU.pdf",
+      "sourcePdfSha256": "29db4cb257fbe0559fe5daefc0cf5356e840b19adb1243bdc59662a3c8e33f46",
+      "contentSha256": "29db4cb257fbe0559fe5daefc0cf5356e840b19adb1243bdc59662a3c8e33f46",
+      "receiptBindingSha256": "c0860420db1da35d6791ee996e85ab20dd67f21bf7383c818a4d6cb56c383ab2",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/c4/72/c4720d4836e274e9dde6958452fe2601dce9d2cef2e84d453f8e426329afaf6d.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c90dad04d7f16b9a8adf1b81",
       "referenceId": "fa_ref_d9d497c3cc2291e3e179b336",
       "brand": "Bosch",
@@ -4372,6 +4456,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_e09030ac78aeca752b0f566b",
+      "referenceId": "fa_ref_ac20e5e87de2a14f3fd830a1",
+      "brand": "Bosch",
+      "model": "WGG24401AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24401AU.pdf",
+      "sourcePdfSha256": "ebe56006e80d1b275d131096ea5a2c2ef777c03b832875424a1a6ecb1af8d1bc",
+      "contentSha256": "ebe56006e80d1b275d131096ea5a2c2ef777c03b832875424a1a6ecb1af8d1bc",
+      "receiptBindingSha256": "656394d634033e83992b148adad1739ade44e706980334c822502e4b8dc317ab",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/13/1a/131ac394fa2ef3fee9d41816081ec9198acacf86e97b0aeae633fb7ee6c03a5c.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_e0a653dcb8f779ed20bc0ff1",
       "referenceId": "fa_ref_0b6b6a1a2b9d26e8a18ba93f",
       "brand": "Westinghouse",
@@ -4905,11 +5003,11 @@
     }
   ],
   "summary": {
-    "entries": 325,
-    "sources": 350,
-    "passed": 350,
+    "entries": 332,
+    "sources": 357,
+    "passed": 357,
     "failed": 0
   },
-  "checkedObjects": 674,
-  "semanticAuditSha256": "92984e063cab58eb1276436ef26be1d9ceb0f6d1ae2aacf23caf1ca953a71de6"
+  "checkedObjects": 688,
+  "semanticAuditSha256": "12d485f35f3afb0eb3678ab8b6fd09b8a1987c3fd2cf09511086064bce434019"
 }

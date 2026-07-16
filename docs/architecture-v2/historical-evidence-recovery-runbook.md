@@ -1208,3 +1208,43 @@ After the release transaction, `COMPLETE_RECEIPT` is 344,
 270, the executable queue contains 7,654 targets and the current-retail P0
 missing-dimension lane contains 885 targets. Public receipt-bound dimensions
 are 275 and receipt-bound `VERIFIED_FIT` remains zero.
+
+## 32. Bosch washer lane M and parser-epoch suppression
+
+Run `historical-bosch-washers-20260716-m` selected eight previously unattempted
+current-retail Bosch washing machines after excluding the union of cumulative
+source attempts, target-level attempts and accepted targets. Seven exact-model
+Bosch Australia specification PDFs produced accepted fixed closed envelopes:
+
+| Model | Width | Height | Depth |
+| --- | ---: | ---: | ---: |
+| `WAW32640AU` | 598 | 848 | 590 |
+| `WAY32891AU` | 598 | 848 | 590 |
+| `WGG24401AU` | 598 | 848 | 636 |
+| `WGG24403AU` | 598 | 848 | 636 |
+| `WGG24409AU` | 598 | 848 | 636 |
+| `WGG2441RAU` | 598 | 845 | 636 |
+| `WGG244A0AU` | 598 | 848 | 636 |
+
+Every accepted source was processed through MinerU `content_list_v2` and binds
+exact-model identity, explicit `H x W x D` axes, source page and fragment, raw
+PDF hash and derived JSON hash. Where the specification sheet explicitly names
+overall depth including the handle, that scoped depth is retained instead of a
+smaller body-depth value. The receipts remain dimensions-only: installation,
+plumbing, operation and rear-service requirements are unknown, so
+`verifiedFitEligible=false` and the Fit outcome is `INSUFFICIENT_DATA`.
+
+`WAW28640AU` completed all current resolvers but neither its official product
+page nor either official PDF yielded a receipt with exact identity and all
+three explicit axes. It is recorded as `claims_incomplete` with a MinerU parser
+failure and target-level suppressed until the resolver, parser or policy epoch
+changes. It must not be retried merely because it remains commercially useful.
+
+The full online audit checked eight targets and 688 cumulative objects with zero
+repairs and zero violations. Promotion added seven accepted targets, increasing
+the cumulative bundle to 332 targets and 357 source receipts; all 357 receipts
+replay. After the release transaction, `COMPLETE_RECEIPT` is 351,
+`ALL_AXIS_RANGE` is 84, `ALL_AXIS_SCALAR` is 404, historical `AUTO_FILL` is
+277, the executable queue contains 7,646 targets and the current-retail P0
+missing-dimension lane contains 877 targets. Public receipt-bound dimensions
+are 282 and receipt-bound `VERIFIED_FIT` remains zero.

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T19:51:23.554Z",
+  "generatedAt": "2026-07-16T20:13:57.538Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "4c215d9f850ee9ddf0fb369d739c78e896a7887e27bd65d9a955cb86166a7c4f",
+  "semanticClassificationSha256": "bde319de10cc5abbe4b6f5f93901d150dc15e37dbdfa02baab229a9439d2587d",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4327,
+    "documentLinks": 4334,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,34 +21,34 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 344,
+      "COMPLETE_RECEIPT": 351,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 141,
+      "IDENTITY_RESEARCH": 137,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1111
+      "REFERENCE_REDISCOVERY": 1108
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 344,
-      "REDISCOVER_OFFICIAL_SOURCE": 1111,
+      "NO_ACTION": 351,
+      "REDISCOVER_OFFICIAL_SOURCE": 1108,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 141
+      "RUN_IDENTITY_CLOSURE": 137
     },
     "bySourceAuthority": {
-      "MIXED": 194,
-      "NONE": 6617,
-      "OFFICIAL": 156,
-      "REFERENCE": 1128
+      "MIXED": 197,
+      "NONE": 6613,
+      "OFFICIAL": 160,
+      "REFERENCE": 1125
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 178,
-      "EXACT_MODEL": 1592,
+      "AMBIGUOUS": 174,
+      "EXACT_MODEL": 1596,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 84,
-      "ALL_AXIS_SCALAR": 397,
-      "NOT_PARSED": 7520,
+      "ALL_AXIS_SCALAR": 404,
+      "NOT_PARSED": 7513,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 344,
-      "LEGACY_UNBOUND": 1426,
+      "CURRENT_VALID": 351,
+      "LEGACY_UNBOUND": 1419,
       "NONE": 6325
     }
   },
@@ -107,13 +107,13 @@
       "category": "washing_machine",
       "records": 1497,
       "brands": 88,
-      "documentLinks": 667,
+      "documentLinks": 674,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 40,
+        "COMPLETE_RECEIPT": 47,
         "CONFLICT_QUARANTINE": 9,
-        "IDENTITY_RESEARCH": 35,
+        "IDENTITY_RESEARCH": 31,
         "OFFICIAL_DISCOVERY": 1237,
-        "REFERENCE_REDISCOVERY": 176
+        "REFERENCE_REDISCOVERY": 173
       }
     }
   ],
@@ -252252,14 +252252,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -252282,6 +252283,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:29db4cb257fbe0559fe5daefc0cf5356e840b19adb1243bdc59662a3c8e33f46",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAW32640AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/c4/72/c4720d4836e274e9dde6958452fe2601dce9d2cef2e84d453f8e426329afaf6d.json",
+            "evidence/web/sha256/29/db/29db4cb257fbe0559fe5daefc0cf5356e840b19adb1243bdc59662a3c8e33f46.pdf",
+            "receipt:c0860420db1da35d6791ee996e85ab20dd67f21bf7383c818a4d6cb56c383ab2"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "29db4cb257fbe0559fe5daefc0cf5356e840b19adb1243bdc59662a3c8e33f46"
+        },
+        {
           "documentId": "source:doc_083f677ef4b3febfb17afd88",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/d/1/a/e/d1aefe20e27b512b3aa96b9325175b677ee6c9e9_Bosch_WAW32640AU_8.5kg_Front_Load_I_DOS_Washing_Machine_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -252297,8 +252317,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -252341,14 +252361,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -252371,6 +252392,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:c130f09d40a471795a1cf4f21ab62b79625b016d3c59f5b103dd92597feed3a6",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAY32891AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/a7/c2/a7c20c3f64030090cb67a18968b8062dc391fd51503a643873ffb4b6c7e945b4.json",
+            "evidence/web/sha256/c1/30/c130f09d40a471795a1cf4f21ab62b79625b016d3c59f5b103dd92597feed3a6.pdf",
+            "receipt:40b62fca1579556cf0e51d761409a6392a7bd2e9a2c8f8adfaaad937c65021b9"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "c130f09d40a471795a1cf4f21ab62b79625b016d3c59f5b103dd92597feed3a6"
+        },
+        {
           "documentId": "source:doc_25e0445b16013cb871f76808",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/9/7/5/d/975df7ccde4864a801b0c709356656707d53f8e5_WAY32891AU_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -252386,8 +252426,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -252404,14 +252444,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -252434,6 +252475,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:ebe56006e80d1b275d131096ea5a2c2ef777c03b832875424a1a6ecb1af8d1bc",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24401AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/13/1a/131ac394fa2ef3fee9d41816081ec9198acacf86e97b0aeae633fb7ee6c03a5c.json",
+            "evidence/web/sha256/eb/e5/ebe56006e80d1b275d131096ea5a2c2ef777c03b832875424a1a6ecb1af8d1bc.pdf",
+            "receipt:656394d634033e83992b148adad1739ade44e706980334c822502e4b8dc317ab"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "ebe56006e80d1b275d131096ea5a2c2ef777c03b832875424a1a6ecb1af8d1bc"
+        },
+        {
           "documentId": "source:doc_ec18ef69da1d6ae9f3505d53",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/3/2/1/f/321f4559b668bb82b0f2e9d71237e4c6e776a476_WGG24401AU.pdf",
           "evidenceObjectIds": [
@@ -252449,8 +252509,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -252551,14 +252611,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -252581,6 +252642,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:da6c9cc75ddfcf0e665897c595d38d202713b38c1543b6649a2a1daafb576486",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24403AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/af/5c/af5c86b0798ea325da2b6fff745f8c278e31639ecc9a6fe17f111ca05b7664b7.json",
+            "evidence/web/sha256/da/6c/da6c9cc75ddfcf0e665897c595d38d202713b38c1543b6649a2a1daafb576486.pdf",
+            "receipt:e93f80d1c86feef7d0b17d80d14f5180ad0a4db204f46656dcb7ba3ed7924739"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "da6c9cc75ddfcf0e665897c595d38d202713b38c1543b6649a2a1daafb576486"
+        },
+        {
           "documentId": "source:doc_b4338c0f5f316ff5defa897b",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24403AU.pdf",
           "evidenceObjectIds": [
@@ -252596,8 +252676,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -252615,14 +252695,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -252645,6 +252726,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:d2bb16a0f24456b50582ff764c647a8f1935c352ba541ecfbd6618f5df2163c7",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24409AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/1b/ee/1bee0b1af3db46035cf62dd9b29f4ed5a764a3c7e8eee51e830f0de8378379ed.json",
+            "evidence/web/sha256/d2/bb/d2bb16a0f24456b50582ff764c647a8f1935c352ba541ecfbd6618f5df2163c7.pdf",
+            "receipt:34c2e604d667b999c0ef84ab7fc9815bb1d50e86589b22878d17f7745caca533"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "d2bb16a0f24456b50582ff764c647a8f1935c352ba541ecfbd6618f5df2163c7"
+        },
+        {
           "documentId": "source:doc_03327b62fee53eaef4eab52e",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24409AU.pdf",
           "evidenceObjectIds": [
@@ -252660,8 +252760,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -252679,14 +252779,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -252709,6 +252810,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:53bdd14328cad847ed6d61bf1698502f56597cc3bcb911c20a355d58c94a4de4",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2441RAU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/a5/78/a57894203f4e8df3ee26823d14f7de3a9aeddedfd712bdcaffc3c48e30b3d695.json",
+            "evidence/web/sha256/53/bd/53bdd14328cad847ed6d61bf1698502f56597cc3bcb911c20a355d58c94a4de4.pdf",
+            "receipt:91ceb449fb1957b9b57ccb789acdd11f64cab623496fce5bb7cefe9508105ab2"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "53bdd14328cad847ed6d61bf1698502f56597cc3bcb911c20a355d58c94a4de4"
+        },
+        {
           "documentId": "source:doc_75e0d477e9ea240ddd7fa6da",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2441RAU.pdf",
           "evidenceObjectIds": [
@@ -252724,8 +252844,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -252837,14 +252957,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -252867,6 +252988,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:e2cea5154144d6bd1e29bce8db687defc082ec56e507ebc59782349977eb4f01",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A0AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/49/8b/498b0e2e13c6550e5f575a2ea34980573df5a8264e6a4c0236b0b64f7bdefefa.json",
+            "evidence/web/sha256/e2/ce/e2cea5154144d6bd1e29bce8db687defc082ec56e507ebc59782349977eb4f01.pdf",
+            "receipt:907cc51e12b8573e9eb8084701db1a27a535cda1237177aa94e1d7cf73ade2de"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "e2cea5154144d6bd1e29bce8db687defc082ec56e507ebc59782349977eb4f01"
+        },
+        {
           "documentId": "source:doc_59ffdf248234098478dfcd03",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A0AU.pdf",
           "evidenceObjectIds": [
@@ -252882,8 +253022,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",

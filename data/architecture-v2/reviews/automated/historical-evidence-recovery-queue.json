@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1385,
-    "fetchJobs": 1348,
-    "targets": 1382,
-    "candidateEdges": 1385,
+    "documents": 1382,
+    "fetchJobs": 1345,
+    "targets": 1379,
+    "candidateEdges": 1382,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1382,
+    "uniqueReferences": 1379,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 951,
+      "MEASURE_REQUIRED": 948,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1135
+      "CURRENT_RETAIL": 1132
     },
     "byCategory": {
       "dishwasher": 283,
       "dryer": 55,
       "fridge": 825,
-      "washing_machine": 219
+      "washing_machine": 216
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1088,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1085,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 222,
+      "ALREADY_AUTO_FILL": 225,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -5007,32 +5007,6 @@
       ],
       "targetIds": [
         "recovery_target_57eaf97614fc33674c30cfd2"
-      ]
-    },
-    {
-      "jobId": "recovery_fb25ea719f360e7b28b60502",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/2/1/f/321f4559b668bb82b0f2e9d71237e4c6e776a476_WGG24401AU.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_e09030ac78aeca752b0f566b"
       ]
     },
     {
@@ -14812,32 +14786,6 @@
       ]
     },
     {
-      "jobId": "recovery_4e2ae647d2ddeb6027dc89ae",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/7/5/d/975df7ccde4864a801b0c709356656707d53f8e5_WAY32891AU_Bosch_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_36e31bbe76251354ab0681a3"
-      ]
-    },
-    {
       "jobId": "recovery_78d540da6f67b05c44e5058e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/7/b/2/97b2c5a420830098850784201742752df04547d8_Samsung_SR318LSTC_318L_Top_Mount_Fridge_Specifications_Sheet.pdf",
       "authorityBrand": "Samsung",
@@ -19957,32 +19905,6 @@
       ],
       "targetIds": [
         "recovery_target_816f3f27a2bd833a0a221a99"
-      ]
-    },
-    {
-      "jobId": "recovery_c87ede9b745d6f7ba110b467",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/d/1/a/e/d1aefe20e27b512b3aa96b9325175b677ee6c9e9_Bosch_WAW32640AU_8.5kg_Front_Load_I_DOS_Washing_Machine_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_c8179547d5bc884d0ca4e074"
       ]
     },
     {
@@ -39639,129 +39561,6 @@
         "recovery_736a07ad7fe698bea673b358"
       ],
       "primaryJobId": "recovery_736a07ad7fe698bea673b358"
-    },
-    {
-      "referenceId": "fa_ref_eb551bbb7335333e145c20c0",
-      "legacyRuntimeId": "ao-46466",
-      "canonicalProductId": "fa_prod_77d1446e37eed233e96c12d1",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAW32640AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 848,
-        "depth": 590
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_c8179547d5bc884d0ca4e074",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_083f677ef4b3febfb17afd88"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_083f677ef4b3febfb17afd88",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 848,
-            "depth": 590
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_c87ede9b745d6f7ba110b467"
-      ],
-      "primaryJobId": "recovery_c87ede9b745d6f7ba110b467"
-    },
-    {
-      "referenceId": "fa_ref_3c4c7c7d6248d2bce195c450",
-      "legacyRuntimeId": "ao-64631",
-      "canonicalProductId": "fa_prod_d0ea57d1f55a5819cd10c029",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAY32891AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 848,
-        "depth": 590
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_36e31bbe76251354ab0681a3",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_25e0445b16013cb871f76808"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_25e0445b16013cb871f76808",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 848,
-            "depth": 590
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_4e2ae647d2ddeb6027dc89ae"
-      ],
-      "primaryJobId": "recovery_4e2ae647d2ddeb6027dc89ae"
-    },
-    {
-      "referenceId": "fa_ref_ac20e5e87de2a14f3fd830a1",
-      "legacyRuntimeId": "ao-153173",
-      "canonicalProductId": "fa_prod_422cf4bd552a04e0c95eab72",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WGG24401AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 848,
-        "depth": 590
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_e09030ac78aeca752b0f566b",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_ec18ef69da1d6ae9f3505d53"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_ec18ef69da1d6ae9f3505d53",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 848,
-            "depth": 590
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_fb25ea719f360e7b28b60502"
-      ],
-      "primaryJobId": "recovery_fb25ea719f360e7b28b60502"
     },
     {
       "referenceId": "fa_ref_1cb2e322795f94f6c50a5831",

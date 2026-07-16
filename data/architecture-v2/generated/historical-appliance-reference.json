@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "f96690f83463101659fb9113b0ca01bca064b7f66568d77cd9ca5e8c8a8c9431"
+    "historical-recovery:historical-recovery-cumulative-v1": "0365268eed18285b3b79dcf84973652650fb6850b4d249b4527af30a17dd9feb"
   },
   "records": [
     {
@@ -270491,14 +270491,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 590
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c8179547d5bc884d0ca4e074",
+          "snapshotSha256": "29db4cb257fbe0559fe5daefc0cf5356e840b19adb1243bdc59662a3c8e33f46",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -270507,8 +270518,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c8179547d5bc884d0ca4e074",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAW32640AU.pdf",
+          "contentSha256": "29db4cb257fbe0559fe5daefc0cf5356e840b19adb1243bdc59662a3c8e33f46",
+          "receiptBindingSha256": "c0860420db1da35d6791ee996e85ab20dd67f21bf7383c818a4d6cb56c383ab2",
+          "verifiedAt": "2026-07-16T20:07:59.924Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "7fcf16748dd38277df1537f3693f6408cfc1d6476e339539940dd26957272281"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "7fcf16748dd38277df1537f3693f6408cfc1d6476e339539940dd26957272281"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "7fcf16748dd38277df1537f3693f6408cfc1d6476e339539940dd26957272281"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/29/db/29db4cb257fbe0559fe5daefc0cf5356e840b19adb1243bdc59662a3c8e33f46.pdf"
+        }
       ]
     },
     {
@@ -270561,14 +270598,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 590
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_36e31bbe76251354ab0681a3",
+          "snapshotSha256": "c130f09d40a471795a1cf4f21ab62b79625b016d3c59f5b103dd92597feed3a6",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -270577,8 +270625,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_36e31bbe76251354ab0681a3",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAY32891AU.pdf",
+          "contentSha256": "c130f09d40a471795a1cf4f21ab62b79625b016d3c59f5b103dd92597feed3a6",
+          "receiptBindingSha256": "40b62fca1579556cf0e51d761409a6392a7bd2e9a2c8f8adfaaad937c65021b9",
+          "verifiedAt": "2026-07-16T20:01:02.985Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "14ed8d54bc4400a89b805d17e6083fbec6c92b8a5f8d720e76b207df96b9459f"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "14ed8d54bc4400a89b805d17e6083fbec6c92b8a5f8d720e76b207df96b9459f"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "14ed8d54bc4400a89b805d17e6083fbec6c92b8a5f8d720e76b207df96b9459f"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/c1/30/c130f09d40a471795a1cf4f21ab62b79625b016d3c59f5b103dd92597feed3a6.pdf"
+        }
       ]
     },
     {
@@ -270810,9 +270884,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 636
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -270825,6 +270903,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_e09030ac78aeca752b0f566b",
+          "snapshotSha256": "ebe56006e80d1b275d131096ea5a2c2ef777c03b832875424a1a6ecb1af8d1bc",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -270832,9 +270917,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_e09030ac78aeca752b0f566b",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24401AU.pdf",
+          "contentSha256": "ebe56006e80d1b275d131096ea5a2c2ef777c03b832875424a1a6ecb1af8d1bc",
+          "receiptBindingSha256": "656394d634033e83992b148adad1739ade44e706980334c822502e4b8dc317ab",
+          "verifiedAt": "2026-07-16T20:09:48.682Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b05b7b2eb218b1490d937934c2ee6c8809da3846f99e752875deb929eaeabfc6"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b05b7b2eb218b1490d937934c2ee6c8809da3846f99e752875deb929eaeabfc6"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b05b7b2eb218b1490d937934c2ee6c8809da3846f99e752875deb929eaeabfc6"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/eb/e5/ebe56006e80d1b275d131096ea5a2c2ef777c03b832875424a1a6ecb1af8d1bc.pdf"
+        }
       ]
     },
     {
@@ -270939,9 +271050,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 636
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -270954,6 +271069,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_918b7ce01bdd52355a6e2688",
+          "snapshotSha256": "da6c9cc75ddfcf0e665897c595d38d202713b38c1543b6649a2a1daafb576486",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -270961,9 +271083,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_918b7ce01bdd52355a6e2688",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24403AU.pdf",
+          "contentSha256": "da6c9cc75ddfcf0e665897c595d38d202713b38c1543b6649a2a1daafb576486",
+          "receiptBindingSha256": "e93f80d1c86feef7d0b17d80d14f5180ad0a4db204f46656dcb7ba3ed7924739",
+          "verifiedAt": "2026-07-16T20:06:14.840Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "7d2243b61689d02b3c55f9941bb27dbb6d0a9419880151d65492aaae24bf989f"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "7d2243b61689d02b3c55f9941bb27dbb6d0a9419880151d65492aaae24bf989f"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "7d2243b61689d02b3c55f9941bb27dbb6d0a9419880151d65492aaae24bf989f"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/da/6c/da6c9cc75ddfcf0e665897c595d38d202713b38c1543b6649a2a1daafb576486.pdf"
+        }
       ]
     },
     {
@@ -270985,9 +271133,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 636
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -271000,6 +271152,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_762cc423ea970c484a28c36a",
+          "snapshotSha256": "d2bb16a0f24456b50582ff764c647a8f1935c352ba541ecfbd6618f5df2163c7",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -271007,9 +271166,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_762cc423ea970c484a28c36a",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24409AU.pdf",
+          "contentSha256": "d2bb16a0f24456b50582ff764c647a8f1935c352ba541ecfbd6618f5df2163c7",
+          "receiptBindingSha256": "34c2e604d667b999c0ef84ab7fc9815bb1d50e86589b22878d17f7745caca533",
+          "verifiedAt": "2026-07-16T20:04:26.779Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "cfe728a486d42748e1b53e277864ddcfe350cdebec22d6eebe542d625a993d60"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "cfe728a486d42748e1b53e277864ddcfe350cdebec22d6eebe542d625a993d60"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "cfe728a486d42748e1b53e277864ddcfe350cdebec22d6eebe542d625a993d60"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d2/bb/d2bb16a0f24456b50582ff764c647a8f1935c352ba541ecfbd6618f5df2163c7.pdf"
+        }
       ]
     },
     {
@@ -271031,9 +271216,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 845,
+        "depth": 636
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -271046,6 +271235,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2ae55439bd3b6a7c91f216ad",
+          "snapshotSha256": "53bdd14328cad847ed6d61bf1698502f56597cc3bcb911c20a355d58c94a4de4",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -271053,9 +271249,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2ae55439bd3b6a7c91f216ad",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2441RAU.pdf",
+          "contentSha256": "53bdd14328cad847ed6d61bf1698502f56597cc3bcb911c20a355d58c94a4de4",
+          "receiptBindingSha256": "91ceb449fb1957b9b57ccb789acdd11f64cab623496fce5bb7cefe9508105ab2",
+          "verifiedAt": "2026-07-16T19:57:21.294Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "2f848e6886d6f34e8b4b079aac36bbf593e1430dd671387af37c4fc3d7d6d9c4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "2f848e6886d6f34e8b4b079aac36bbf593e1430dd671387af37c4fc3d7d6d9c4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "2f848e6886d6f34e8b4b079aac36bbf593e1430dd671387af37c4fc3d7d6d9c4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/53/bd/53bdd14328cad847ed6d61bf1698502f56597cc3bcb911c20a355d58c94a4de4.pdf"
+        }
       ]
     },
     {
@@ -271160,9 +271382,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 636
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -271175,6 +271401,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_94ceb454e4a729b1024a91f1",
+          "snapshotSha256": "e2cea5154144d6bd1e29bce8db687defc082ec56e507ebc59782349977eb4f01",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -271182,9 +271415,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_94ceb454e4a729b1024a91f1",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A0AU.pdf",
+          "contentSha256": "e2cea5154144d6bd1e29bce8db687defc082ec56e507ebc59782349977eb4f01",
+          "receiptBindingSha256": "907cc51e12b8573e9eb8084701db1a27a535cda1237177aa94e1d7cf73ade2de",
+          "verifiedAt": "2026-07-16T19:59:17.269Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "38d0ec214d8b42c953f0cd3baf71fc5929185246917abfd1be224182d236bfc9"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "38d0ec214d8b42c953f0cd3baf71fc5929185246917abfd1be224182d236bfc9"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "38d0ec214d8b42c953f0cd3baf71fc5929185246917abfd1be224182d236bfc9"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/e2/ce/e2cea5154144d6bd1e29bce8db687defc082ec56e507ebc59782349977eb4f01.pdf"
+        }
       ]
     },
     {
@@ -323563,16 +323822,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2885,
-      "MODEL_RECEIPT": 259,
+      "IDENTITY_ONLY": 2878,
+      "MODEL_RECEIPT": 266,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2885,
-      "AUTO_FILL": 270,
+      "MEASURE_REQUIRED": 2878,
+      "AUTO_FILL": 277,
       "QUARANTINED": 88
     }
   }

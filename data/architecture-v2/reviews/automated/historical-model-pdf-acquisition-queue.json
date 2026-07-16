@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T19:51:23.554Z",
-  "semanticQueueSha256": "2b426254c2c4679c1780c313aaed1bc9e8a57d229b2aae235d24e2d6487c0308",
-  "sourceClassificationSha256": "4c215d9f850ee9ddf0fb369d739c78e896a7887e27bd65d9a955cb86166a7c4f",
+  "generatedAt": "2026-07-16T20:13:57.538Z",
+  "semanticQueueSha256": "9a53ccb651bb7b499ddd4cdfa7e42e74667ef059fb2bba6120470930c937ff22",
+  "sourceClassificationSha256": "bde319de10cc5abbe4b6f5f93901d150dc15e37dbdfa02baab229a9439d2587d",
   "records": [
     {
       "schemaVersion": 1,
@@ -27991,215 +27991,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_ffb0888bb9c56577ae083acc"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_aedf0785d6d28952aabab296",
-      "referenceId": "fa_ref_eb551bbb7335333e145c20c0",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAW32640AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_265224bda455cbb084288ccf"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c8179547d5bc884d0ca4e074"
-      ],
-      "legacyRuntimeIds": [
-        "ao-46466"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_77d1446e37eed233e96c12d1"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_67847baaec57442f15030154",
-      "referenceId": "fa_ref_3c4c7c7d6248d2bce195c450",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAY32891AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_195fd6dc663d59972db28a1d"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_36e31bbe76251354ab0681a3"
-      ],
-      "legacyRuntimeIds": [
-        "ao-64631"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d0ea57d1f55a5819cd10c029"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_def2da834c97892561e718ef",
-      "referenceId": "fa_ref_ac20e5e87de2a14f3fd830a1",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WGG24401AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_1067d2e21dcab8b956192701"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e09030ac78aeca752b0f566b"
-      ],
-      "legacyRuntimeIds": [
-        "ao-153173"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_422cf4bd552a04e0c95eab72"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_321252ce30210bb2aa95183d",
-      "referenceId": "fa_ref_2b33eab14b5ba801450a6ac9",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WGG24403AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ea366577734e2a42ef9a8e8e"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-bosch-wgg24403au"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d1252ea773b0908c6ff2fc25"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_25b29760939839d838b6ec4f",
-      "referenceId": "fa_ref_5357493e9011356828162f2c",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WGG24409AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_a9bc7c81730bf9f23c172aad"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-bosch-wgg24409au"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_f085012846431d05125c52a6"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d20ebe578f6c5052777b8dc3",
-      "referenceId": "fa_ref_135d961a7689550d811a2896",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WGG2441RAU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8ef14e674da2dea8f6faa153"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-bosch-wgg2441rau"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_43e8ac3cc10c6b9cc64446de"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_2d20a0a016ff750d7ff28eb9",
-      "referenceId": "fa_ref_06dc5747b7da584d2471cb03",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WGG244A0AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_48404725dab869991c796010"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-bosch-wgg244a0au"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_56b24b1e2ec999831a774780"
       ],
       "offlineReplayOutcome": null
     },
@@ -192443,19 +192234,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_1067d2e21dcab8b956192701",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/2/1/f/321f4559b668bb82b0f2e9d71237e4c6e776a476_WGG24401AU.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WGG24401AU.json",
-        "source:doc_ec18ef69da1d6ae9f3505d53"
-      ],
-      "referenceIds": [
-        "fa_ref_ac20e5e87de2a14f3fd830a1"
-      ]
-    },
-    {
       "sourceId": "historical_source_10c0fe9b25e5a572b5e2c519",
       "sourceUrl": "https://media.miele.com/downloads/n-/ce/FS_11738320_OVE_OV-en-CE.pdf",
       "sourceAuthority": "NONE",
@@ -193093,19 +192871,6 @@
       ],
       "referenceIds": [
         "fa_ref_a271fd10d0c26c9ae341dfd3"
-      ]
-    },
-    {
-      "sourceId": "historical_source_195fd6dc663d59972db28a1d",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/7/5/d/975df7ccde4864a801b0c709356656707d53f8e5_WAY32891AU_Bosch_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WAY32891AU.json",
-        "source:doc_25e0445b16013cb871f76808"
-      ],
-      "referenceIds": [
-        "fa_ref_3c4c7c7d6248d2bce195c450"
       ]
     },
     {
@@ -194122,19 +193887,6 @@
       ],
       "referenceIds": [
         "fa_ref_8cabf78a30332c5cf4c67039"
-      ]
-    },
-    {
-      "sourceId": "historical_source_265224bda455cbb084288ccf",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/d/1/a/e/d1aefe20e27b512b3aa96b9325175b677ee6c9e9_Bosch_WAW32640AU_8.5kg_Front_Load_I_DOS_Washing_Machine_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WAW32640AU.json",
-        "source:doc_083f677ef4b3febfb17afd88"
-      ],
-      "referenceIds": [
-        "fa_ref_eb551bbb7335333e145c20c0"
       ]
     },
     {
@@ -196568,19 +196320,6 @@
       ],
       "referenceIds": [
         "fa_ref_6dd47068c5308f5e22d76dc3"
-      ]
-    },
-    {
-      "sourceId": "historical_source_48404725dab869991c796010",
-      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A0AU.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WGG244A0AU.json",
-        "source:doc_59ffdf248234098478dfcd03"
-      ],
-      "referenceIds": [
-        "fa_ref_06dc5747b7da584d2471cb03"
       ]
     },
     {
@@ -201977,19 +201716,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_8ef14e674da2dea8f6faa153",
-      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2441RAU.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WGG2441RAU.json",
-        "source:doc_75e0d477e9ea240ddd7fa6da"
-      ],
-      "referenceIds": [
-        "fa_ref_135d961a7689550d811a2896"
-      ]
-    },
-    {
       "sourceId": "historical_source_8f1a836b08bd116057ce63c2",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/7/3/7/d/737d1fc03fde01e27a91844b6a122790c9090eaa_2026_Hisense_AU___Consumer_Spec__HWF5I1015_.pdf",
       "sourceAuthority": "REFERENCE",
@@ -203700,19 +203426,6 @@
       ],
       "referenceIds": [
         "fa_ref_ec788ea48397c444cb61c7e0"
-      ]
-    },
-    {
-      "sourceId": "historical_source_a9bc7c81730bf9f23c172aad",
-      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24409AU.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WGG24409AU.json",
-        "source:doc_03327b62fee53eaef4eab52e"
-      ],
-      "referenceIds": [
-        "fa_ref_5357493e9011356828162f2c"
       ]
     },
     {
@@ -208237,19 +207950,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_ea366577734e2a42ef9a8e8e",
-      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24403AU.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WGG24403AU.json",
-        "source:doc_b4338c0f5f316ff5defa897b"
-      ],
-      "referenceIds": [
-        "fa_ref_2b33eab14b5ba801450a6ac9"
-      ]
-    },
-    {
       "sourceId": "historical_source_ea549644add42e0c0e432cb5",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/7/1/d/f/71df1ff984ea3bf864617c79a3d5fe2b03740a12_REF_GAP_MFL72093738_00_240820_00_OM_WEB.pdf",
       "sourceAuthority": "REFERENCE",
@@ -209613,46 +209313,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 344,
+    "COMPLETE_RECEIPT": 351,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7751,
-    "uniqueReferences": 7751,
-    "candidateSources": 1400,
-    "candidateEdges": 1435,
+    "queuedModels": 7744,
+    "uniqueReferences": 7744,
+    "candidateSources": 1393,
+    "candidateEdges": 1428,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1113,
+      "CURRENT_RETAIL": 1106,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1269,
       "dryer": 805,
       "fridge": 4220,
-      "washing_machine": 1457
+      "washing_machine": 1450
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 141,
+      "IDENTITY_RESEARCH": 137,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1111
+      "REFERENCE_REDISCOVERY": 1108
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 141,
+      "IDENTITY_CLOSURE": 137,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1111
+      "OFFICIAL_REDISCOVERY": 1108
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5086,
+      "DISCOVERY_READY": 5079,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 344,
+      "COMPLETE_RECEIPT": 351,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }
