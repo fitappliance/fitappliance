@@ -893,7 +893,16 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
       category: caseIdentity?.category,
       artifactUrl: source?.sourceUrl,
     });
-    verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
+    const relationshipOnly = options.allowOfficialProductPageArtifactRelationship === true
+      && (source.identitySignals ?? []).some((signal) => (
+        signal?.type === 'official_product_page_artifact_relationship'
+      ));
+    verifyOfficialProductPageDiscoveryEvidence(
+      provenance,
+      caseIdentity,
+      options.discoveryArtifactBytes,
+      { requireExactModel: !relationshipOnly },
+    );
   }
   if (source?.discoveryProvenance?.method === 'official_market_api'
     && source.discoveryProvenance.discoveryContentSha256) {
@@ -1028,7 +1037,15 @@ export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
       category: caseIdentity?.category,
       artifactUrl: source?.sourceUrl,
     });
-    verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
+    const relationshipOnly = (source.identitySignals ?? []).some((signal) => (
+      signal?.type === 'official_product_page_artifact_relationship'
+    ));
+    verifyOfficialProductPageDiscoveryEvidence(
+      provenance,
+      caseIdentity,
+      options.discoveryArtifactBytes,
+      { requireExactModel: !relationshipOnly },
+    );
   }
   if (source?.discoveryProvenance?.method === 'official_market_api'
     && source.discoveryProvenance.discoveryContentSha256

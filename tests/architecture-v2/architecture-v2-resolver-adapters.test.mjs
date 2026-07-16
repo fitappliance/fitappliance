@@ -617,6 +617,46 @@ test('generic adapter accepts object product-page entries without fabricating UR
   assert.equal(result.candidates[0].documentType, 'product_page');
 });
 
+test('Haier resolver v4 reopens target-ready support articles with resolved PDF provenance', async () => {
+  const artifactLinkUrl = 'https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000000ZuKH/bvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4';
+  const artifactUrl = 'https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000000001&d=%2Fa%2FJw000000ZuKH%2FbvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4&operationContext=DELIVERY&viewId=05HJw0000000001&dpt=';
+  const discoveryUrl = 'https://support.haier.com.au/s/help-and-support/article/Dishwasher-Installation-Guide-8875';
+  const hash = 'a'.repeat(64);
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl,
+    requestedModel: 'HDW9TFE3SS',
+    matchedModel: 'HDW9TFE3SS',
+    artifactUrl,
+    artifactLinkUrl,
+    discoveryContentSha256: hash,
+    discoveryObjectPath: `evidence/web/sha256/aa/aa/${hash}.html`,
+    discoveryByteSize: 100,
+  };
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'Haier', model: 'HDW9TFE3SS', category: 'dishwasher' },
+    { haier: { finder: async () => ({
+      sourceUrl: artifactUrl,
+      resourceType: 'installation_guide',
+      discoveryProvenance,
+      resources: [{
+        url: artifactUrl,
+        resourceType: 'installation_guide',
+        discoveryProvenance,
+      }],
+    }) } },
+  );
+  const result = await adapter.resolve({ brand: 'Haier', model: 'HDW9TFE3SS', category: 'dishwasher' });
+
+  assert.equal(result.version, '4');
+  assert.equal(result.scope, 'haier_au_target_ready_support_articles_resolved_pdf_and_current_product_pages');
+  assert.equal(result.candidates[0].authorityMode, 'official');
+  assert.equal(result.candidates[0].resolverVersion, '4');
+  assert.deepEqual(result.candidates[0].discoveryProvenance.artifactUrl, artifactUrl);
+});
+
 test('generic adapter converts malformed legacy URLs into a typed resolver failure', async () => {
   const adapter = createLegacyFinderResolverAdapter({
     brandKey: 'haier', resolverId: 'haier-invalid-url',

@@ -445,6 +445,7 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
       resolverOptions: {
         bosch: { finderOptions: { writeObject: objectStore.writeObject } },
         beko: { finderOptions: { writeObject: objectStore.writeObject } },
+        haier: { finderOptions: { writeObject: objectStore.writeObject } },
         asko: { finderOptions: { writeObject: objectStore.writeObject } },
         esatto: { finderOptions: { writeObject: objectStore.writeObject } },
         fisherPaykel: { finderOptions: { writeObject: objectStore.writeObject } },

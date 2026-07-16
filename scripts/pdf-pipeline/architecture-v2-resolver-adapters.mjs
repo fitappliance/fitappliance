@@ -165,6 +165,8 @@ function productPageResources(result) {
 export function createLegacyFinderResolverAdapter({
   brandKey: resolverBrandKey,
   resolverId,
+  version = '1',
+  scope = `${resolverBrandKey}_legacy_discovery_only`,
   finder,
   finderOptions = {},
   maximumCandidates = 16,
@@ -175,8 +177,8 @@ export function createLegacyFinderResolverAdapter({
   }
   return createEvidenceSourceResolverAdapter({
     resolverId,
-    version: '1',
-    scope: `${resolverBrandKey}_legacy_discovery_only`,
+    version,
+    scope,
     required: true,
     async resolve(caseRecord) {
       const target = exactTarget(caseRecord);
@@ -520,7 +522,14 @@ function hasDeterministicModelTemplate(value) {
 
 const LEGACY_RESOLVER_PROFILES = new Map([
   ['asko', { optionKey: 'asko', brandKey: 'asko', resolverId: 'asko-official-manuals-api', finder: findAskoOfficialPdf }],
-  ['haier', { optionKey: 'haier', brandKey: 'haier', resolverId: 'haier-official-discovery', finder: findHaierOfficialPdf }],
+  ['haier', {
+    optionKey: 'haier',
+    brandKey: 'haier',
+    resolverId: 'haier-official-discovery',
+    version: '4',
+    scope: 'haier_au_target_ready_support_articles_resolved_pdf_and_current_product_pages',
+    finder: findHaierOfficialPdf,
+  }],
   ['samsung', { optionKey: 'samsung', brandKey: 'samsung', resolverId: 'samsung-official-discovery', finder: findSamsungOfficialPdf }],
   ['beko', { optionKey: 'beko', brandKey: 'beko', resolverId: 'beko-official-discovery', finder: findBekoOfficialPdf }],
   ['hisense', { optionKey: 'hisense', brandKey: 'hisense', resolverId: 'hisense-official-discovery', finder: findHisenseOfficialPdf }],

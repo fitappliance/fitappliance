@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-211805a57595b7ee9af95930",
-  "generatedAt": "2026-07-16T20:29:49.439Z",
+  "batchId": "historical-recovery-36e2b662bc9a756c1da5d29e",
+  "generatedAt": "2026-07-16T22:27:58.176Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "266d9b5a32d8ee040e37ba67a6ce6b9387785d583829791ed31e3df7f6f98a71"
+    "sha256": "80b69dcef61efd8d9b1024c2a239647401e19aece58d29731c48d6212cd83505"
   },
   "policy": {
-    "version": "2026-07-16.15",
-    "sha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a"
+    "version": "2026-07-16.16",
+    "sha256": "b1299d31d05ec1c17328c7de3bd973c2020c9f21cf8b55dd63a9dfc4497fce55"
   },
   "selection": {
     "jobIds": [],
@@ -207,6 +207,262 @@
               "width": 596,
               "height": 819,
               "depth": 559
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_a51071b353eb97c9d1a9b80a",
+      "referenceId": "fa_ref_b41745d0c8c444d15908b6f0",
+      "legacyRuntimeId": "ao-59208",
+      "canonicalProductId": "fa_prod_248d6f4b8ba174cb26cdd4ff",
+      "brand": "Beko",
+      "model": "DDN38450",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_27dd177eb86442c949ed7cee",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 815,
+              "depth": 570
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_21675be17f10ef5c0ebf9416",
+      "referenceId": "fa_ref_6ad0f3f209e0a37a4b03b9f1",
+      "legacyRuntimeId": "ao-59209",
+      "canonicalProductId": "fa_prod_d0e82bbb11455b914b8bfea4",
+      "brand": "Beko",
+      "model": "DFN16420W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_dd98d707b71c0431ee031962",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 865,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_7e53ff40af9a76dd65789a6e",
+      "referenceId": "fa_ref_e80a9a079d38cf3055fd4667",
+      "legacyRuntimeId": "ao-59210",
+      "canonicalProductId": "fa_prod_e8bc93606ea0be46ac6454f3",
+      "brand": "Beko",
+      "model": "DFN16420X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_d4fdd26a187c343a552b2151",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 865,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_caecc6714ab08173aeb8509a",
+      "referenceId": "fa_ref_21853f69447b6a385f415f03",
+      "legacyRuntimeId": "ao-59211",
+      "canonicalProductId": "fa_prod_366f847d6623a13ba2b2860d",
+      "brand": "Beko",
+      "model": "DFN28430W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_aabcb09bc7807fd1cb327804",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 850,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_d16d41db898242a476949457",
+      "referenceId": "fa_ref_ce58c94299784b5673756ed8",
+      "legacyRuntimeId": "ao-59212",
+      "canonicalProductId": "fa_prod_b004bbdebee0d562e10baa9f",
+      "brand": "Beko",
+      "model": "DFN28430X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_fbad1c5ad824641493bfe992",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 850,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_3ac12bd627ca1d59bf6961e8",
+      "referenceId": "fa_ref_6c1d6b504ce6affbf66390e1",
+      "legacyRuntimeId": "ao-59213",
+      "canonicalProductId": "fa_prod_f7c604e963ba2f85ee38859a",
+      "brand": "Beko",
+      "model": "DFN38450W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_8a2d21d26be8c2e02305a918",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 850,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_fd9b8c36edadef72db339efd",
+      "referenceId": "fa_ref_faf78196530989b5e9cc40d3",
+      "legacyRuntimeId": "ao-59214",
+      "canonicalProductId": "fa_prod_a6cc7f0a394f57a8f04304ab",
+      "brand": "Beko",
+      "model": "DFN38450X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_2d934cc4fa263d3213a18754",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 850,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_937fb26218b0282add42237c",
+      "referenceId": "fa_ref_04ec3dc94a7b6d1fef63508e",
+      "legacyRuntimeId": "ao-59215",
+      "canonicalProductId": "fa_prod_24bcd07a081e313203e932f8",
+      "brand": "Beko",
+      "model": "DIN38450",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_974b620b302c95f26ea61908",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 818,
+              "depth": 550
             }
           }
         ]
@@ -949,70 +1205,6 @@
       }
     },
     {
-      "targetId": "recovery_target_08bedeba7612804e2ac94fd6",
-      "referenceId": "fa_ref_f5d0b05f449b892711be2903",
-      "legacyRuntimeId": "ao-56602",
-      "canonicalProductId": "fa_prod_00732e26277822b76b97a9ff",
-      "brand": "Haier",
-      "model": "HDW15G3W",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_6ad18ac88ada1c9bef8a12d5",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 850,
-              "depth": 598
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_af31f7484919152d2f3c736c",
-      "referenceId": "fa_ref_12a63ed5b8b7777b2bb31a14",
-      "legacyRuntimeId": "ao-56603",
-      "canonicalProductId": "fa_prod_e6111d9f5976a0cf89e3fb3d",
-      "brand": "Haier",
-      "model": "HDW15G3X",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_780174dffd5ec10d2b2fda0f",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 850,
-              "depth": 598
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_99d4790be8e820f7a364f763",
       "referenceId": "fa_ref_0ccc7329b46fa7813e29d8ba",
       "legacyRuntimeId": "ao-79127",
@@ -1071,70 +1263,6 @@
               "width": 598,
               "height": 850,
               "depth": 598
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_7f92b1a3a98551f7581fb471",
-      "referenceId": "fa_ref_279bb2ff9098c91cd22d5dec",
-      "legacyRuntimeId": "ao-40197",
-      "canonicalProductId": "fa_prod_9819cd0ad4f025614011e32b",
-      "brand": "Haier",
-      "model": "HDW9TFE3SS",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_c06f20c3fb2fe62112656d00",
-            "dimensionsMm": {
-              "width": 450,
-              "height": 850,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_6c095206665705c5a15848a8",
-      "referenceId": "fa_ref_bc1c8ae5d3f840c4264e3d92",
-      "legacyRuntimeId": "ao-37928",
-      "canonicalProductId": "fa_prod_84e6c435be72e3bab309c71d",
-      "brand": "Haier",
-      "model": "HDW9TFE3WH",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_661a2589d5b47b0273bf7b00",
-            "dimensionsMm": {
-              "width": 450,
-              "height": 850,
-              "depth": 600
             }
           }
         ]
@@ -22819,38 +22947,204 @@
       "publicationEligible": false,
       "reconciliationContext": {
         "activeReceiptSources": [],
-        "priorAttemptSuppressions": [
-          {
-            "attemptId": "historical_attempt_8afdba1241949f26105f25f2",
-            "sourceUrl": "https://media3.bsh-group.com/Documents/9000440474_C.pdf",
-            "contentSha256": "6372defe3d2077891fe06ef896d158d78b78ca80e83f14cf696c37bb9e32dcb8",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a"
-          },
-          {
-            "attemptId": "historical_attempt_3e6f21c6233c276c857fcac1",
-            "sourceUrl": "https://media3.bsh-group.com/Documents/9000904994_B.pdf",
-            "contentSha256": "122beab467a4aa9556a2beb30b6d15bfffaab71fc94cbe33e02cc3e195902906",
-            "status": "identity_rejected",
-            "failureCode": "identity",
-            "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a"
-          },
-          {
-            "attemptId": "historical_attempt_a8b160cb44ad3f9e6deb770b",
-            "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/WAE22466AU",
-            "contentSha256": "3ebe91b201083d2b5e39c1b3d545ba7317d52faa94952af886912fc76ff750d4",
-            "status": "claims_incomplete",
-            "failureCode": "claim_semantics",
-            "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a"
-          }
-        ],
         "registryHints": [],
         "legacyHints": [
           {
             "sourceDocumentId": "doc_e6146d4a750e7595fff93a7b",
             "dimensionsMm": {
               "width": 600,
+              "height": 848,
+              "depth": 590
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_e8006986e32a3f77656f2a87",
+      "referenceId": "fa_ref_1fb831e6b538f8b70b823166",
+      "legacyRuntimeId": "ao-58893",
+      "canonicalProductId": "fa_prod_418201ab63dacc2a94b195f0",
+      "brand": "Bosch",
+      "model": "WAK24162AU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_37a612d7c7a122a209908319",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 850,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_96a67c07a4f5930ea7a0fd31",
+      "referenceId": "fa_ref_375f29f4f91e3890a0def5ce",
+      "legacyRuntimeId": "ao-47452",
+      "canonicalProductId": "fa_prod_9ca88e06e6c4a2ab7671aa8f",
+      "brand": "Bosch",
+      "model": "WAP28380AU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_c31220a485b7f30c852b0e7b",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 850,
+              "depth": 590
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_f26116765c287fa662075523",
+      "referenceId": "fa_ref_89c81e01f803afa5e94914c7",
+      "legacyRuntimeId": "ao-63684",
+      "canonicalProductId": "fa_prod_ffb0888bb9c56577ae083acc",
+      "brand": "Bosch",
+      "model": "WAW28640AU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_465c77fbe1549c9fc3216e05",
+            "dimensionsMm": {
+              "width": 598,
+              "height": 848,
+              "depth": 590
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_dffc4ed4e05924c97b54bade",
+      "referenceId": "fa_ref_1cb2e322795f94f6c50a5831",
+      "legacyRuntimeId": "ao-67576",
+      "canonicalProductId": "fa_prod_d1e4988dd079ffba61bab26f",
+      "brand": "Bosch",
+      "model": "WVG28420AU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_a076edff9c8a6b95d9f17304",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 845,
+              "depth": 590
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_124b54dbc7532381c9dab1d2",
+      "referenceId": "fa_ref_e34071b813b2eb7954945af6",
+      "legacyRuntimeId": "ao-37603",
+      "canonicalProductId": "fa_prod_bcdba918a4e03b9b1cb35582",
+      "brand": "Bosch",
+      "model": "WVH28441AU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_25308dbc90cdeb5a466545eb",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 845,
+              "depth": 590
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_60bd9467faf9d7a70434231c",
+      "referenceId": "fa_ref_9e43516fe23c04d53e8503c3",
+      "legacyRuntimeId": "ao-55658",
+      "canonicalProductId": "fa_prod_b893f5bb660e347143481639",
+      "brand": "Bosch",
+      "model": "WVH28490AU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_39afc2fdf88a6cf288de4cbb",
+            "dimensionsMm": {
+              "width": 598,
               "height": 848,
               "depth": 590
             }
@@ -23685,6 +23979,134 @@
               "width": 685,
               "height": 1075,
               "depth": 700
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_8f2e244aa7f24c56d4797b49",
+      "referenceId": "fa_ref_febc15017a48d8e7d6a2d01b",
+      "legacyRuntimeId": "ao-56032",
+      "canonicalProductId": "fa_prod_870bade16b5e290a249c1438",
+      "brand": "Fisher & Paykel",
+      "model": "WA7060G2",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_e6a1b99d9d943bdd5a54b5cb",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 1050,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_8d8d3f4375f97c820376a298",
+      "referenceId": "fa_ref_3e0f9700be8a6ab5e1771b4b",
+      "legacyRuntimeId": "ao-47679",
+      "canonicalProductId": "fa_prod_c4729faed90130cc1cff618a",
+      "brand": "Fisher & Paykel",
+      "model": "WA8060E1",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_f32d65bc8537cfad859c3f9a",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 1045,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_33cd11834c21827003c3bc73",
+      "referenceId": "fa_ref_f56fa3ff4dd28874d49c2ed0",
+      "legacyRuntimeId": "ao-47680",
+      "canonicalProductId": "fa_prod_d5614ff620c7c8d06391c2e6",
+      "brand": "Fisher & Paykel",
+      "model": "WA8060G1",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_5ffdf06ec1e67990f42cf6ed",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 1075,
+              "depth": 600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "targetId": "recovery_target_0e896409b4904aef0dd67595",
+      "referenceId": "fa_ref_ef5ffb9baaba39ddec7ad502",
+      "legacyRuntimeId": "ao-47681",
+      "canonicalProductId": "fa_prod_55ceafec2759020cf3f11f5f",
+      "brand": "Fisher & Paykel",
+      "model": "WA8060P1",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "primaryJobId": null,
+      "candidateJobIds": [],
+      "publicationEligible": false,
+      "reconciliationContext": {
+        "activeReceiptSources": [],
+        "registryHints": [],
+        "legacyHints": [
+          {
+            "sourceDocumentId": "doc_fe8746795d2698dd3b6defd0",
+            "dimensionsMm": {
+              "width": 600,
+              "height": 1075,
+              "depth": 600
             }
           }
         ]
@@ -234703,7 +235125,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7641,
+    "targets": 7655,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

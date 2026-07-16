@@ -476,10 +476,32 @@ function pdfIdentitySignals(
   };
 }
 
-function officialProductPageIdentitySignal(source, caseIdentity, discoveryArtifactBytes) {
+function officialProductPageIdentitySignal(
+  source,
+  caseIdentity,
+  discoveryArtifactBytes,
+  pdfIdentitySignals,
+) {
   const provenance = source?.discoveryProvenance;
   if (provenance?.method !== 'official_product_page') return null;
-  verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, discoveryArtifactBytes);
+  const discovery = verifyOfficialProductPageDiscoveryEvidence(
+    provenance,
+    caseIdentity,
+    discoveryArtifactBytes,
+    { requireExactModel: false },
+  );
+  if (!discovery.exactModelMatched) {
+    const hasExplicitTfe3FinishModel = pdfIdentitySignals.some((signal) => (
+      signal?.type === 'mineru_haier_tfe3_explicit_finish_model'
+    ));
+    if (!hasExplicitTfe3FinishModel) {
+      throw new Error('official discovery page does not prove the exact model');
+    }
+    return {
+      type: 'official_product_page_artifact_relationship',
+      value: `${provenance.discoveryContentSha256}:${provenance.discoveryUrl}:${provenance.artifactLinkUrl}`,
+    };
+  }
   return {
     type: 'official_product_page_model',
     value: `${caseIdentity.model}:${provenance.discoveryContentSha256}:${provenance.discoveryUrl}`,
@@ -752,7 +774,12 @@ export function verifyAndAttestResolutionArtifact({
       discoveryArtifactBytes,
     );
     const discoverySignal = includeOfficialProductPageIdentitySignal
-      ? officialProductPageIdentitySignal(source, caseIdentity, discoveryArtifactBytes)
+      ? officialProductPageIdentitySignal(
+        source,
+        caseIdentity,
+        discoveryArtifactBytes,
+        identityProof.signals,
+      )
       : null;
     if (discoverySignal) {
       identityProof = {
@@ -805,6 +832,9 @@ export function verifyAndAttestResolutionArtifact({
     discoveryArtifactBytes,
     discoveryPolicyVersion,
     manufacturerPolicyVersion,
+    allowOfficialProductPageArtifactRelationship: attested.identitySignals.some((signal) => (
+      signal?.type === 'official_product_page_artifact_relationship'
+    )),
   });
   return attested;
 }
@@ -832,7 +862,10 @@ export function verifyAttestedResolutionArtifact({
     discoveryPolicyVersion: discoveryPolicyVersion ?? undefined,
     manufacturerPolicyVersion,
     includeOfficialProductPageIdentitySignal: (source.identitySignals ?? [])
-      .some((signal) => signal?.type === 'official_product_page_model'),
+      .some((signal) => [
+        'official_product_page_model',
+        'official_product_page_artifact_relationship',
+      ].includes(signal?.type)),
     includeOfficialMarketApiIdentitySignal: (source.identitySignals ?? [])
       .some((signal) => signal?.type === 'official_market_api_model'),
     includeOfficialSupportApiIdentitySignal: (source.identitySignals ?? [])

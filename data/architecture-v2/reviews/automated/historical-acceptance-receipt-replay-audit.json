@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T20:29:08.115Z",
-  "sourceBundleSha256": "9be7b99e8d4764b93afa5a42183f7c8062f8562ccffdd4dc00ecdc8a22f18839",
+  "generatedAt": "2026-07-16T22:27:35.051Z",
+  "sourceBundleSha256": "60bd1fa018839da053050126c6729302fd13c81c92c9592ce08c01b2d8254e15",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -224,6 +224,20 @@
       "contentSha256": "1f0b82550d8e12ea0ea6791130dd59f38c381ad619d833cc3b23915e6bc5eaa1",
       "receiptBindingSha256": "b4c396016d22da807c14a01f83dbe7af8cbffc32968597ef2d348c9cb54a8a1d",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b5/95/b5952210881d7f33f661b7bfa067a19cba48843e4e4a7090c2c35db75ac82434.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_08bedeba7612804e2ac94fd6",
+      "referenceId": "fa_ref_f5d0b05f449b892711be2903",
+      "brand": "Haier",
+      "model": "HDW15G3W",
+      "category": "dishwasher",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009eckZIAQ&d=%2Fa%2FJw000000aQK9%2FkGoSNCspRkFkSFLdj7sDSO.k4GhwtaZSnC7_WIDxX_Y&operationContext=DELIVERY&viewId=05HJw00000QE8oLMAT&dpt=",
+      "sourcePdfSha256": "f114a9b0d81b68d9992fb06721bd9b4cb06052146c5b465cbcc96f055b2a5a1a",
+      "contentSha256": "f114a9b0d81b68d9992fb06721bd9b4cb06052146c5b465cbcc96f055b2a5a1a",
+      "receiptBindingSha256": "c2e729cf1f5b450879f9838ae2364d4488c01c64f542d9b858685f2a45db7fd2",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/70/10/7010430d8570f3c8ae0dc59905e36958d025f5edcecb2bde639466b742001d5a.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2160,6 +2174,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_6c095206665705c5a15848a8",
+      "referenceId": "fa_ref_bc1c8ae5d3f840c4264e3d92",
+      "brand": "Haier",
+      "model": "HDW9TFE3WH",
+      "category": "dishwasher",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3PyIAI&d=%2Fa%2FJw000000ZuKH%2FbvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4&operationContext=DELIVERY&viewId=05HJw00000QE3aBMAT&dpt=",
+      "sourcePdfSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
+      "contentSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
+      "receiptBindingSha256": "5e01937d72c86fdb6c0d48f72a6b9e929e7172bc36d26aefd4e656e3889b001c",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/43/ea/43ea6516d5e0cf8b82045adaa8c6a2420ac9e7e42653566475c84ebb7d58ce08.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_6de2c5a7ba4994b08699a478",
       "referenceId": "fa_ref_7d285e9c168e13cd0922c846",
       "brand": "Bosch",
@@ -2408,6 +2436,20 @@
       "contentSha256": "cbb2a27f5760f141eddb454d6b7dac0bd0ace3526758eca634532578874816d3",
       "receiptBindingSha256": "c4fb93ec60350d8a25dc5046c82f728c22362668f30d68c0a88a1a6a5b35aff3",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/12/7e/127e49f98931fb372c385ccba7f3f825ebf0a8c0b789dfa6522097518c8ba08a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_7f92b1a3a98551f7581fb471",
+      "referenceId": "fa_ref_279bb2ff9098c91cd22d5dec",
+      "brand": "Haier",
+      "model": "HDW9TFE3SS",
+      "category": "dishwasher",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
+      "sourcePdfSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
+      "contentSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
+      "receiptBindingSha256": "014ef21017a8a0947c626737bedd035271850b4d45cbf0135a76abb6c3bcee3b",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/43/ea/43ea6516d5e0cf8b82045adaa8c6a2420ac9e7e42653566475c84ebb7d58ce08.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3472,6 +3514,20 @@
       "contentSha256": "b9b30bfa63db44c2c35477cf0df779caf64e819719b2038fbbf84b8984940ac4",
       "receiptBindingSha256": "a60ef3c0cfedfacb4cf8c8f3facfb2aa17f905cde79373b710bc1ef594dcbf6b",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_af31f7484919152d2f3c736c",
+      "referenceId": "fa_ref_12a63ed5b8b7777b2bb31a14",
+      "brand": "Haier",
+      "model": "HDW15G3X",
+      "category": "dishwasher",
+      "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009ejpHIAQ&d=%2Fa%2FJw000000aQSD%2FXZcuXwZhUNexPMIOrcXSBhYo2n9KqpjnV.BuqZNkeuI&operationContext=DELIVERY&viewId=05HJw00000QE9KbMAL&dpt=",
+      "sourcePdfSha256": "7fdb9e5ac689e37766c53877f8ae81b43de770c1409feaf2a51d6ec86652c1ea",
+      "contentSha256": "7fdb9e5ac689e37766c53877f8ae81b43de770c1409feaf2a51d6ec86652c1ea",
+      "receiptBindingSha256": "7ec7d8e496ae45d1cae6c0c6acd27a766af65977a8b1b1b5254e3ce15a3938a4",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f6/7d/f67db3c488ea3372a664dfc08db2f8d0abaa3f6e40bf9f8d8de39ba36da10c73.json",
       "status": "passed",
       "failureCode": null
     },
@@ -5031,11 +5087,11 @@
     }
   ],
   "summary": {
-    "entries": 334,
-    "sources": 359,
-    "passed": 359,
+    "entries": 338,
+    "sources": 363,
+    "passed": 363,
     "failed": 0
   },
-  "checkedObjects": 692,
-  "semanticAuditSha256": "4fa4b6fc4bc04cdd5009d1e5fe8b1740093e6518fb6f878add9a66e8778e4841"
+  "checkedObjects": 705,
+  "semanticAuditSha256": "c9b1703d59a852841a49f71356f55e3649730258d090704a7a07ee4f084d8128"
 }

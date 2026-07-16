@@ -2702,6 +2702,118 @@ test('MinerU joins an exact axis label and value split into aligned paragraph fr
   });
 });
 
+test('MinerU joins unit-bearing axis labels to vertically aligned scalar values', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    paragraph('HDW15G3W', [27, 82, 130, 98]),
+    titleFragment('Dimensions', [500, 558, 594, 571]),
+    paragraph('Height(mm)', [32, 217, 114, 233]),
+    paragraph('850', [34, 239, 78, 258]),
+    paragraph('Width(mm)', [32, 286, 109, 301]),
+    paragraph('598', [35, 309, 78, 328]),
+    paragraph('Depth (mm)', [32, 356, 114, 371]),
+    paragraph('598', [35, 378, 78, 397]),
+    paragraph('The product dimensions and specifications in this page apply to the specific product and model.', [26, 862, 962, 895]),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Haier', model: 'HDW15G3W', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 598,
+    'closedEnvelope.heightMm': 850,
+    'closedEnvelope.depthMm': 598,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['haier-au-exact-spec-vertical-axis-values-v1']);
+});
+
+test('Haier vertical axis grammar rejects packaging scope and missing model-specific disclaimer', () => {
+  const parse = (heading, disclaimer = null) => parseMineruContentListV2(Buffer.from(JSON.stringify([[
+    paragraph('HDW15G3W', [27, 82, 130, 98]),
+    titleFragment(heading, [500, 558, 700, 571]),
+    paragraph('Height(mm)', [32, 217, 114, 233]), paragraph('850', [34, 239, 78, 258]),
+    paragraph('Width(mm)', [32, 286, 109, 301]), paragraph('598', [35, 309, 78, 328]),
+    paragraph('Depth (mm)', [32, 356, 114, 371]), paragraph('598', [35, 378, 78, 397]),
+    ...(disclaimer ? [paragraph(disclaimer, [26, 862, 962, 895])] : []),
+  ]])), {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Haier', model: 'HDW15G3W', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  const disclaimer = 'The product dimensions and specifications in this page apply to the specific product and model.';
+
+  assert.throws(() => parse('Packaging Dimensions', disclaimer), /no exact-model MinerU evidence/i);
+  assert.throws(() => parse('Dimensions'), /no exact-model MinerU evidence/i);
+});
+
+test('Haier TFE3 grammar binds listed finish SKUs to one corroborated product envelope', () => {
+  const productDimensions = `<table>
+    <tr><td></td><td colspan="2">Product dimensions(mm)</td></tr>
+    <tr><td>A</td><td>overall height of productwith top panel in placewith top panel removed*</td><td>850 (min) - 870 (max)** 820 (min) - 840 (max)**</td></tr>
+    <tr><td>B</td><td>overall width of product</td><td>450</td></tr>
+    <tr><td>C</td><td>overall depth of product</td><td>600</td></tr>
+    <tr><td>D</td><td>depth of open door (measured from front of kickstrip)</td><td>595</td></tr>
+    <tr><td></td><td>Cabinetry dimensions(mm)</td><td></td></tr>
+    <tr><td>E</td><td>inside height of cavity</td><td>855 - 875</td></tr>
+    <tr><td>F</td><td>inside width of cavity</td><td>455</td></tr>
+    <tr><td>G</td><td>inside depth of cavity</td><td>605</td></tr>
+  </table>`;
+  const technicalData = `<table>
+    <tr><td>Width 450 mm</td></tr>
+    <tr><td>Depth 600 mm</td></tr>
+    <tr><td>Height 850 mm</td></tr>
+  </table>`;
+  const document = (overrides = {}) => Buffer.from(JSON.stringify([
+    [
+      titleFragment('TFE3 Series Instructions for Use'),
+      paragraph(overrides.cover ?? 'HDW9-TFE3WH HDW9-TFE3SS'),
+    ],
+    [tableFragment(overrides.productDimensions ?? productDimensions)],
+    [titleFragment('Technical data'), tableFragment(overrides.technicalData ?? technicalData)],
+  ]));
+  const options = (model) => ({
+    pdfSha256,
+    parserVersion: '3.4.4',
+    modelRevision,
+    caseIdentity: { brand: 'Haier', model, category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  for (const model of ['HDW9TFE3WH', 'HDW9TFE3SS']) {
+    const parsed = parseMineruContentListV2(document(), options(model));
+    assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+      'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+      'closedEnvelope.heightMm': { kind: 'range', minMm: 850, maxMm: 870 },
+      'closedEnvelope.widthMm': { kind: 'fixed', mm: 450 },
+    });
+    assert.deepEqual(parsed.grammarProfileIds, ['haier-au-tfe3-finish-family-product-dimensions-v1']);
+    assert.ok(parsed.identitySignals.some((signal) => (
+      signal.type === 'mineru_haier_tfe3_explicit_finish_model'
+    )));
+  }
+
+  assert.throws(
+    () => parseMineruContentListV2(document(), options('HDW9TFE3BK')),
+    /identity|model|family/i,
+  );
+  assert.throws(
+    () => parseMineruContentListV2(document({
+      technicalData: technicalData.replace('Width 450 mm', 'Width 460 mm'),
+    }), options('HDW9TFE3WH')),
+    /identity|evidence|corroborat|dimension/i,
+  );
+  assert.throws(
+    () => parseMineruContentListV2(document({
+      productDimensions: productDimensions.replace('with top panel in place', 'adjustable height'),
+    }), options('HDW9TFE3WH')),
+    /identity|evidence|height|dimension/i,
+  );
+});
+
 test('MinerU keeps repeated exact-model page-header scope when a later matrix lists a colour sibling', () => {
   const bytes = Buffer.from(JSON.stringify([
     [
@@ -3002,6 +3114,31 @@ test('image fallback detects a dimension grid whose value columns disappeared fr
       bbox: [175, 635, 240, 660],
     },
   ]]));
+  assert.deepEqual(findMineruImageOnlyDimensionPages(bytes), [1]);
+});
+
+test('image fallback detects an installation recess figure whose dimensions remain in the image', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'Installation under Worktop' }] },
+      bbox: [100, 100, 360, 140],
+    },
+    {
+      type: 'image',
+      content: { image_source: { path: 'images/recess.jpg' }, image_caption: [], image_footnote: [] },
+      bbox: [100, 150, 420, 520],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{
+        type: 'text',
+        content: 'The dimensions of the recess should at least agree with the dimensions in the figure.',
+      }] },
+      bbox: [450, 150, 800, 220],
+    },
+  ]]));
+
   assert.deepEqual(findMineruImageOnlyDimensionPages(bytes), [1]);
 });
 

@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1382,
-    "fetchJobs": 1345,
-    "targets": 1379,
-    "candidateEdges": 1382,
+    "documents": 1380,
+    "fetchJobs": 1343,
+    "targets": 1377,
+    "candidateEdges": 1380,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1379,
+    "uniqueReferences": 1377,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 948,
+      "MEASURE_REQUIRED": 946,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1132
+      "CURRENT_RETAIL": 1130
     },
     "byCategory": {
-      "dishwasher": 283,
+      "dishwasher": 281,
       "dryer": 55,
       "fridge": 825,
       "washing_machine": 216
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1085,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1083,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 225,
+      "ALREADY_AUTO_FILL": 227,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -4331,32 +4331,6 @@
       ],
       "targetIds": [
         "recovery_target_9cff53a8dbf2441f8a914bc9"
-      ]
-    },
-    {
-      "jobId": "recovery_f2b2c37738ba90116147c6e9",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/c/6/b/2c6ba1e2b41712f4d587cfe2b35b5c89d5a33f11_Haier_HDW15G3X_Freestanding_Dishwasher_Specifications_Sheet.pdf",
-      "authorityBrand": "Haier",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_af31f7484919152d2f3c736c"
       ]
     },
     {
@@ -20139,32 +20113,6 @@
       ],
       "targetIds": [
         "recovery_target_5b62a7117f1cf87def870c18"
-      ]
-    },
-    {
-      "jobId": "recovery_273c1185902299fcf474a4f8",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/d/4/5/c/d45c6d8897ad664df28e6f336736d231e0da67d3_Haier_HDW15G3W_Freestanding_Dishwasher_Specifications_Sheet.pdf",
-      "authorityBrand": "Haier",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_08bedeba7612804e2ac94fd6"
       ]
     },
     {
@@ -49811,88 +49759,6 @@
         "recovery_e6784d23a08798abc4dcf221"
       ],
       "primaryJobId": "recovery_e6784d23a08798abc4dcf221"
-    },
-    {
-      "referenceId": "fa_ref_f5d0b05f449b892711be2903",
-      "legacyRuntimeId": "ao-56602",
-      "canonicalProductId": "fa_prod_00732e26277822b76b97a9ff",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW15G3W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 850,
-        "depth": 598
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_08bedeba7612804e2ac94fd6",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_6ad18ac88ada1c9bef8a12d5"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_6ad18ac88ada1c9bef8a12d5",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 598
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_273c1185902299fcf474a4f8"
-      ],
-      "primaryJobId": "recovery_273c1185902299fcf474a4f8"
-    },
-    {
-      "referenceId": "fa_ref_12a63ed5b8b7777b2bb31a14",
-      "legacyRuntimeId": "ao-56603",
-      "canonicalProductId": "fa_prod_e6111d9f5976a0cf89e3fb3d",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW15G3X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 850,
-        "depth": 598
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_af31f7484919152d2f3c736c",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_780174dffd5ec10d2b2fda0f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_780174dffd5ec10d2b2fda0f",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 598
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_f2b2c37738ba90116147c6e9"
-      ],
-      "primaryJobId": "recovery_f2b2c37738ba90116147c6e9"
     },
     {
       "referenceId": "fa_ref_0ccc7329b46fa7813e29d8ba",

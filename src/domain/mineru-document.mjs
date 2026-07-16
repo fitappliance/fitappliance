@@ -593,6 +593,10 @@ const BOSCH_AU_DISHWASHER_DIMENSION_SECTION_GRAMMAR =
   'bosch-au-dishwasher-dimensions-section-explicit-axes-v1';
 const ASKO_AU_PRODUCT_SHEET_DIMENSION_SECTION_GRAMMAR =
   'asko-au-product-sheet-dimension-section-v1';
+const HAIER_AU_EXACT_SPEC_VERTICAL_AXIS_GRAMMAR =
+  'haier-au-exact-spec-vertical-axis-values-v1';
+const HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR =
+  'haier-au-tfe3-finish-family-product-dimensions-v1';
 
 function explicitDimensionRowsWithInheritedUnit(text, {
   requireShorthand = false,
@@ -859,6 +863,191 @@ function joinedAlignedScalarParagraphRow(items, fragmentIndex) {
     value: normalizedText(`${value[1]} ${value[2]}`),
     quote: normalizedText(`${fragment.text} ${next.text}`),
     semanticBasis: 'explicit_aligned_label_value',
+  };
+}
+
+function joinedVerticalScalarParagraphRow(items, fragmentIndex) {
+  const fragment = items[fragmentIndex];
+  const next = items[fragmentIndex + 1];
+  if (!fragment || !next
+    || !['paragraph', 'text'].includes(fragment.type)
+    || !['paragraph', 'text'].includes(next.type)) return null;
+  const label = /^(?:(?:total|overall|external|product)\s+)?(width|wide|height|high|depth|deep)\s*\(\s*(mm|cm)\s*\)\s*:?$/i
+    .exec(fragment.text);
+  const value = /^(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?)$/i.exec(next.text);
+  if (!label || !value) return null;
+  const verticalGap = next.bbox[1] - fragment.bbox[3];
+  if (verticalGap < -2 || verticalGap > 40
+    || Math.abs(next.bbox[0] - fragment.bbox[0]) > 40
+    || next.bbox[2] > fragment.bbox[2] + 60) return null;
+  return {
+    label: label[1],
+    value: normalizedText(`${value[1]} ${label[2]}`),
+    quote: normalizedText(`${fragment.text} ${next.text}`),
+    semanticBasis: 'explicit_vertical_label_value',
+  };
+}
+
+function haierAuExactSpecVerticalScope(document, caseIdentity) {
+  if (canonicalModel(caseIdentity?.brand) !== 'HAIER'
+    || normalizedText(caseIdentity?.category) !== 'dishwasher'
+    || document.pages.length !== 1) return null;
+  const model = canonicalModel(caseIdentity?.model);
+  const items = document.pages[0];
+  const exactModels = items.filter((item) => (
+    ['title', 'paragraph', 'text', 'page_header'].includes(item.type)
+      && containsExplicitModelExpression(item.text, model)
+  ));
+  if (exactModels.length !== 1 || siblingModelCandidates(document, model).length) return null;
+  const headings = items.filter((item) => item.type === 'title');
+  if (headings.filter((item) => /^Dimensions$/i.test(normalizedText(item.text))).length !== 1
+    || headings.some((item) => /\b(?:pack(?:ag(?:e|ed|ing))?|box|carton|shipping)\b/i.test(item.text))) {
+    return null;
+  }
+  const disclaimers = items.filter((item) => (
+    ['paragraph', 'text'].includes(item.type)
+      && /\bproduct dimensions and specifications in this page apply to the specific product and model\b/i
+        .test(item.text)
+  ));
+  if (disclaimers.length !== 1) return null;
+  const entries = items.map((fragment, index) => ({
+    fragment,
+    row: joinedVerticalScalarParagraphRow(items, index),
+  })).filter((entry) => entry.row);
+  const axis = (label) => ({
+    width: 'width', wide: 'width', height: 'height', high: 'height', depth: 'depth', deep: 'depth',
+  })[normalizedText(label).toLowerCase()];
+  if (entries.length !== 3 || new Set(entries.map((entry) => axis(entry.row.label))).size !== 3
+    || entries.some((entry) => !axis(entry.row.label))) return null;
+  return {
+    page: 1,
+    entries: entries.map((entry) => ({
+      fragment: entry.fragment,
+      row: { ...entry.row, grammarProfileId: HAIER_AU_EXACT_SPEC_VERTICAL_AXIS_GRAMMAR },
+    })),
+    identityFragmentSha256: exactModels[0].fragmentSha256,
+    disclaimerFragmentSha256: disclaimers[0].fragmentSha256,
+  };
+}
+
+function haierTfe3ProductDimensionRows(fragment) {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return null;
+  const headerIndex = fragment.cells.findIndex((cells) => (
+    /^product\s+dimensions?\s*\(\s*mm\s*\)$/i.test(normalizedText(cells.join(' ')))
+  ));
+  if (headerIndex < 0) return null;
+  const rows = new Map();
+  for (const cells of fragment.cells.slice(headerIndex + 1)) {
+    const joined = normalizedText(cells.join(' '));
+    if (/^(?:cabinetry|cabinet|cavity|cut[ -]?out|installation)\s+dimensions?\b/i.test(joined)) break;
+    if (cells.length < 3) continue;
+    const index = normalizedText(cells[0]).toUpperCase();
+    const label = normalizedText(cells.at(-2));
+    const value = normalizedText(cells.at(-1));
+    if (index === 'A'
+      && /\boverall\s+height\s+of\s+product(?=\s|with\b)/i.test(label)
+      && /with\s+top\s+panel\s+in\s+place(?=\s|with\b)/i.test(label)
+      && /with\s+top\s+panel\s+removed\b/i.test(label)) {
+      const values = (value.match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
+      if (values.length !== 4 || values.some((item) => !Number.isInteger(item))
+        || values[0] > values[1] || values[2] > values[3] || values[3] > values[0]) return null;
+      rows.set('height', {
+        label: 'Overall height of product with top panel in place',
+        value: `${values[0]} - ${values[1]} mm`,
+        quote: `overall height of product with top panel in place ${values[0]} - ${values[1]} mm`,
+        semanticBasis: 'explicit_label_range',
+        axisOrder: ['height'],
+        grammarProfileId: HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR,
+      });
+    } else if (index === 'B' && /^overall\s+width\s+of\s+product$/i.test(label)
+      && /^\d+(?:\.\d+)?$/.test(value)) {
+      rows.set('width', {
+        label,
+        value: `${value} mm`,
+        quote: `${label} ${value} mm`,
+        semanticBasis: 'haier_tfe3_indexed_product_dimension',
+        axisOrder: ['width'],
+        grammarProfileId: HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR,
+      });
+    } else if (index === 'C' && /^overall\s+depth\s+of\s+product$/i.test(label)
+      && /^\d+(?:\.\d+)?$/.test(value)) {
+      rows.set('depth', {
+        label,
+        value: `${value} mm`,
+        quote: `${label} ${value} mm`,
+        semanticBasis: 'haier_tfe3_indexed_product_dimension',
+        axisOrder: ['depth'],
+        grammarProfileId: HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR,
+      });
+    }
+  }
+  return ['width', 'height', 'depth'].every((axis) => rows.has(axis))
+    ? ['width', 'height', 'depth'].map((axis) => rows.get(axis))
+    : null;
+}
+
+function haierTfe3TechnicalDimensions(fragment) {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return null;
+  const values = new Map();
+  for (const cells of fragment.cells) {
+    const match = /^(width|height|depth)\s+(\d+(?:\.\d+)?)\s*mm$/i
+      .exec(normalizedText(cells.join(' ')));
+    if (!match) continue;
+    const axis = match[1].toLowerCase();
+    if (values.has(axis)) return null;
+    values.set(axis, Number(match[2]));
+  }
+  return ['width', 'height', 'depth'].every((axis) => values.has(axis)) ? values : null;
+}
+
+function haierAuTfe3FinishFamilyScope(document, caseIdentity) {
+  if (canonicalModel(caseIdentity?.brand) !== 'HAIER'
+    || normalizedText(caseIdentity?.category) !== 'dishwasher') return null;
+  const model = canonicalModel(caseIdentity?.model);
+  const allowedModels = new Set(['HDW9TFE3SS', 'HDW9TFE3WH']);
+  if (!allowedModels.has(model)) return null;
+  const firstPage = document.pages[0] ?? [];
+  if (!firstPage.some((fragment) => (
+    ['title', 'paragraph', 'text'].includes(fragment.type)
+      && /\bTFE3\s+Series\b/i.test(fragment.text)
+  ))) return null;
+  const coverFragments = firstPage.filter((fragment) => {
+    if (!['title', 'paragraph', 'text', 'page_footer'].includes(fragment.type)) return false;
+    const models = new Set((fragment.text.toUpperCase().match(/\bHDW9[-_.\s]*TFE3(?:SS|WH)\b/g) ?? [])
+      .map(canonicalModel));
+    return models.size === allowedModels.size
+      && [...allowedModels].every((candidate) => models.has(candidate));
+  });
+  if (coverFragments.length !== 1) return null;
+  const relatedModels = new Set(document.pages.flat().flatMap((fragment) => (
+    fragment.text.toUpperCase().match(/\bHDW9[-_.\s]*TFE3[A-Z0-9]{1,4}\b/g) ?? []
+  )).map(canonicalModel));
+  if ([...relatedModels].some((candidate) => !allowedModels.has(candidate))) return null;
+
+  const productMatches = [];
+  const technicalMatches = [];
+  document.pages.forEach((items, pageIndex) => {
+    for (const fragment of items) {
+      const rows = haierTfe3ProductDimensionRows(fragment);
+      if (rows) productMatches.push({ fragment, rows, page: pageIndex + 1 });
+      const dimensions = haierTfe3TechnicalDimensions(fragment);
+      if (dimensions) technicalMatches.push({ fragment, dimensions, page: pageIndex + 1 });
+    }
+  });
+  if (productMatches.length !== 1 || technicalMatches.length !== 1) return null;
+  const product = productMatches[0];
+  const technical = technicalMatches[0];
+  const rowValues = Object.fromEntries(product.rows.map((row) => [row.axisOrder[0], (
+    row.value.match(/\d+(?:\.\d+)?/g) ?? []
+  ).map(Number)]));
+  if (technical.dimensions.get('width') !== rowValues.width[0]
+    || technical.dimensions.get('depth') !== rowValues.depth[0]
+    || technical.dimensions.get('height') !== rowValues.height[0]) return null;
+  return {
+    ...product,
+    coverFragment: coverFragments[0],
+    technicalFragment: technical.fragment,
+    technicalPage: technical.page,
   };
 }
 
@@ -2632,6 +2821,28 @@ function lgDryerExactModelSizeScope(document, caseIdentity) {
 }
 
 export const mineruGrammarProfiles = Object.freeze({
+  [HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR]: Object.freeze({
+    parserProfileId: HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR,
+    grammarFamilyId: 'haier_au_tfe3_finish_family_product_dimensions_v1',
+    grammarFamilyName: 'Haier Australia TFE3 finish-family instructions',
+    variantName: 'Explicit finish SKUs with indexed product dimensions and technical-data corroboration',
+    brand: 'Haier',
+    category: 'dishwasher',
+    documentType: 'installation_and_user_manual',
+    detectionSummary: 'The TFE3 cover must list exactly HDW9-TFE3SS and HDW9-TFE3WH, one Product dimensions(mm) table must provide indexed overall dimensions, and one Technical data table must independently match width, depth, and minimum installed height.',
+    semanticBoundary: 'The top-panel-in-place height range, overall width, and overall depth are projected. Top-panel-removed height, cabinetry dimensions, open-door depth, unlisted finish variants, and conflicting technical data are excluded.',
+  }),
+  [HAIER_AU_EXACT_SPEC_VERTICAL_AXIS_GRAMMAR]: Object.freeze({
+    parserProfileId: HAIER_AU_EXACT_SPEC_VERTICAL_AXIS_GRAMMAR,
+    grammarFamilyId: 'haier_au_exact_spec_vertical_axis_values_v1',
+    grammarFamilyName: 'Haier Australia exact-model product specification',
+    variantName: 'Unit-bearing vertical axis labels with aligned scalar values',
+    brand: 'Haier',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'One-page exact-model Haier AU specification with one Dimensions heading, the model-specific product-dimensions disclaimer, and unique Height(mm), Width(mm), and Depth(mm) labels vertically aligned to scalar values.',
+    semanticBoundary: 'Only the three closed product dimensions are projected. Packaging, cavity, installation, unitless, duplicate-axis, multi-model and disclaimer-free layouts are excluded.',
+  }),
   'chiq-au-exact-spec-product-whd-v1': Object.freeze({
     parserProfileId: 'chiq-au-exact-spec-product-whd-v1',
     grammarFamilyId: 'chiq_au_exact_spec_product_whd_v1',
@@ -3213,6 +3424,12 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const structuredFinishVariantScope = claimSemanticsVersion === 2
     ? structuredFinishVariantDocumentScope(document, model)
     : null;
+  const haierExactSpecScope = claimSemanticsVersion === 2
+    ? haierAuExactSpecVerticalScope(document, caseIdentity)
+    : null;
+  const haierTfe3Scope = claimSemanticsVersion === 2
+    ? haierAuTfe3FinishFamilyScope(document, caseIdentity)
+    : null;
   const structuredFinishVariantSignals = structuredFinishVariantScope ? [
     {
       type: 'mineru_finish_variant_family_heading',
@@ -3227,6 +3444,10 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       value: `${model}:family:${structuredFinishVariantScope.familyModel}:page:${structuredFinishVariantScope.page}:${structuredFinishVariantScope.fragment.fragmentSha256}`,
     },
   ] : [];
+  const haierTfe3Signals = haierTfe3Scope ? [{
+    type: 'mineru_haier_tfe3_explicit_finish_model',
+    value: `${model}:cover:${haierTfe3Scope.coverFragment.fragmentSha256}:product-page:${haierTfe3Scope.page}:technical-page:${haierTfe3Scope.technicalPage}`,
+  }] : [];
   const chiqSpecScope = claimSemanticsVersion === 2
     ? chiqOfficialSpecScope(document, caseIdentity, options.sourceUrls)
     : null;
@@ -3336,6 +3557,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       || boundExactCoverSignals.length === 1);
   const unresolvedFamily = claimSemanticsVersion === 2 && !boundFamilyDocumentScope
     && !structuredFinishVariantScope
+    && !haierExactSpecScope
+    && !haierTfe3Scope
     && !chiqSpecScope
     && !hisenseLegacySpecScope
     && !hisenseNetPackageScope
@@ -3366,6 +3589,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...boundSeriesSignals,
     ...boundExactCoverSignals,
     ...structuredFinishVariantSignals,
+    ...haierTfe3Signals,
     ...chiqSpecSignals,
     ...hisenseLegacySpecSignals,
     ...hisenseNetPackageSignals,
@@ -3421,6 +3645,12 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   if (askoProductSheetDimensionScope) {
     appliedGrammarProfiles.add(askoProductSheetDimensionScope.grammarProfileId);
   }
+  if (haierExactSpecScope) {
+    appliedGrammarProfiles.add(HAIER_AU_EXACT_SPEC_VERTICAL_AXIS_GRAMMAR);
+  }
+  if (haierTfe3Scope) {
+    appliedGrammarProfiles.add(HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR);
+  }
   const sharedModelListPages = new Set();
   document.pages.forEach((items, pageIndex) => {
     const pageSignals = documentSignals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
@@ -3452,6 +3682,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const structuredFinishVariantPageScoped = items.includes(
       structuredFinishVariantScope?.dimensionFragment,
     );
+    const haierTfe3PageScoped = items.includes(haierTfe3Scope?.fragment);
     const chiqSpecPageScoped = items.includes(chiqSpecScope?.fragment);
     const hisenseLegacySpecPageScoped = hisenseLegacySpecScope?.page === pageIndex + 1;
     const hisenseNetPackagePageScoped = hisenseNetPackageScope?.page === pageIndex + 1;
@@ -3486,15 +3717,21 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         ? askoProductSheetDimensionScope.entries.map((entry) => [entry.fragment, [entry.row]])
         : [],
     );
+    const haierExactSpecRowsByFragment = new Map(
+      haierExactSpecScope?.page === pageIndex + 1
+        ? haierExactSpecScope.entries.map((entry) => [entry.fragment, [entry.row]])
+        : [],
+    );
     if (!pageScoped && !documentScoped && !bekoDocumentScoped
       && !sharedModelListScoped && !groupedColumnScoped
       && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped
+      && !haierTfe3PageScoped
       && !chiqSpecPageScoped && !samsungWasherWildcardPageScoped
       && !fisherPaykelRf610PageScoped && !fisherPaykelDw60ChSupportPageScoped
       && !fisherPaykelWa60SupportPageScoped
       && !hisenseLegacySpecPageScoped
       && !hisenseNetPackagePageScoped && !boschDimensionSectionScope
-      && !askoProductSheetRowsByFragment.size) return;
+      && !askoProductSheetRowsByFragment.size && !haierExactSpecRowsByFragment.size) return;
     const bekoPageScoped = items.some((item) => (
       ['title', 'page_header'].includes(item.type)
         && containsExplicitModelExpression(item.text, model)
@@ -3545,6 +3782,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         || groupedColumnRowsByFragment.get(item)?.length === 3
         || containsExplicitModelExpression(item.identityText ?? item.text, model)
         || structuredFinishVariantScope?.dimensionFragment === item
+        || haierTfe3Scope?.fragment === item
         || chiqSpecScope?.fragment === item
         || fisherPaykelDw60Scope?.dimensionFragment === item
         || samsungWasherWildcardScope?.fragment === item
@@ -3573,6 +3811,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       || joinedScalarRowsByFragment.has(item)
       || documentDimensionSectionRowsByFragment.has(item)
       || askoProductSheetRowsByFragment.has(item)
+      || haierExactSpecRowsByFragment.has(item)
     ))) {
       if (chiqSpecScope && fragment !== chiqSpecScope.fragment) continue;
       if (hisenseLegacySpecScope?.sourceFragments.includes(fragment)
@@ -3603,6 +3842,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           ...(claimSemanticsVersion === 2 ? (groupedColumnRowsByFragment.get(fragment) ?? []) : []),
           ...(structuredFinishVariantScope?.dimensionFragment === fragment
             ? structuredFinishVariantScope.dimensionRows
+            : []),
+          ...(haierTfe3Scope?.fragment === fragment
+            ? haierTfe3Scope.rows
             : []),
           ...(chiqSpecScope?.fragment === fragment
             ? chiqSpecScope.rows
@@ -3643,7 +3885,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       } else if (['list', 'index'].includes(fragment.type)) {
         rows = fragment.listEntries.flatMap((entry) => paragraphRows(entry));
       } else {
-        rows = joinedParagraphRowsByFragment.has(fragment)
+        rows = haierExactSpecRowsByFragment.has(fragment)
+          ? haierExactSpecRowsByFragment.get(fragment)
+          : joinedParagraphRowsByFragment.has(fragment)
           ? [joinedParagraphRowsByFragment.get(fragment)]
           : joinedScalarRowsByFragment.has(fragment)
             ? [joinedScalarRowsByFragment.get(fragment)]
@@ -3802,6 +4046,9 @@ export function findMineruImageOnlyDimensionPages(jsonBytes) {
       && /\bnet\b/i.test(text)
       && /\b(?:box|pack(?:age|aged)?)\b/i.test(text)
       && /\bweight\b/i.test(text);
+    const installationRecessFigure = items.some((item) => item.type === 'image')
+      && /\bdimensions?\s+of\s+the\s+recess\b/i.test(text)
+      && /\bdimensions?\s+in\s+the\s+figure\b/i.test(text);
     const fisherPaykelWaGridMissingFamilyCaption = items.some((item) => (
       item.type === 'table'
         && !/^WA\*{2}60\*$/i.test(item.captionText)
@@ -3819,7 +4066,8 @@ export function findMineruImageOnlyDimensionPages(jsonBytes) {
     const completeUnitBeforeValueAxes = ['width', 'height', 'depth']
       .every((axis) => unitBeforeValueAxes.has(axis));
     if (fisherPaykelWaGridMissingFamilyCaption
-      || ((imageDimensionSignal || titledDimensionImage || malformedDimensionStructure || orphanedDimensionGrid)
+      || ((imageDimensionSignal || titledDimensionImage || malformedDimensionStructure
+        || orphanedDimensionGrid || installationRecessFigure)
         && !explicitAxisValue.test(text) && !explicitTriple.test(text)
         && !completeUnitBeforeValueAxes)) pages.push(index + 1);
   });

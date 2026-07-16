@@ -1665,6 +1665,121 @@ test('a hash-bound official product page can independently bind a model-scoped P
     derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: tamperedDiscoveryBytes,
     verifiedAt: '2026-07-15T00:01:00.000Z',
   }), /discovery artifact hash mismatch/i);
+
+  const genericDiscoveryBytes = Buffer.from(`<!doctype html><html><head>
+    <title>Refrigerator support | Hisense Australia</title>
+  </head><body><a href="${artifactUrl}">Download product specification</a></body></html>`);
+  const genericDiscoveryHash = createHash('sha256').update(genericDiscoveryBytes).digest('hex');
+  const genericDiscoveryProvenance = {
+    ...discoveryProvenance,
+    discoveryContentSha256: genericDiscoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${genericDiscoveryHash.slice(0, 2)}/${genericDiscoveryHash.slice(2, 4)}/${genericDiscoveryHash}.html`,
+    discoveryByteSize: genericDiscoveryBytes.length,
+  };
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: { ...pdfSource, discoveryProvenance: genericDiscoveryProvenance },
+    caseIdentity: pdfIdentity,
+    bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes,
+    discoveryArtifactBytes: genericDiscoveryBytes,
+    verifiedAt: '2026-07-15T00:01:00.000Z',
+  }), /official discovery page does not prove the exact model/i);
+});
+
+test('an official discovery page may bind a Haier TFE3 manual when the PDF cover names the exact finish SKU', () => {
+  const pdfIdentity = { brand: 'Haier', model: 'HDW9TFE3SS', category: 'dishwasher' };
+  const pdfBytes = Buffer.from('%PDF-1.7\nhaier-tfe3-finish-family artifact');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const artifactUrl = 'https://assets.haier.com.au/manuals/tfe3-user-guide.pdf';
+  const table = (html, bbox) => ({ type: 'table', content: { html }, bbox });
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [
+      mineruTitle('TFE3 Series Instructions for Use'),
+      mineruParagraph('HDW9-TFE3WH HDW9-TFE3SS'),
+    ],
+    [table(`<table>
+      <tr><td></td><td colspan="2">Product dimensions(mm)</td></tr>
+      <tr><td>A</td><td>overall height of productwith top panel in placewith top panel removed*</td><td>850 (min) - 870 (max)** 820 (min) - 840 (max)**</td></tr>
+      <tr><td>B</td><td>overall width of product</td><td>450</td></tr>
+      <tr><td>C</td><td>overall depth of product</td><td>600</td></tr>
+      <tr><td>D</td><td>depth of open door</td><td>595</td></tr>
+      <tr><td></td><td>Cabinetry dimensions(mm)</td><td></td></tr>
+      <tr><td>E</td><td>inside height of cavity</td><td>855 - 875</td></tr>
+    </table>`, [20, 80, 940, 720])],
+    [
+      mineruTitle('Technical data'),
+      table('<table><tr><td>Width 450 mm</td></tr><tr><td>Depth 600 mm</td></tr><tr><td>Height 850 mm</td></tr></table>', [20, 120, 940, 420]),
+    ],
+  ]));
+  const parsed = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash,
+    parserVersion: '3.4.4',
+    modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: pdfIdentity,
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash,
+    parserVersion: '3.4.4',
+    modelRevision: MINERU_MODEL_REVISION,
+  });
+  const discoveryBytes = Buffer.from(`<!doctype html><html><head>
+    <title>TFE3 dishwasher installation guide | Haier Australia</title>
+  </head><body><a href="${artifactUrl}">Download installation guide</a></body></html>`);
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://support.haier.com.au/s/help-and-support/article/tfe3-installation-guide',
+    requestedModel: pdfIdentity.model,
+    matchedModel: pdfIdentity.model,
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.html`,
+    discoveryByteSize: discoveryBytes.length,
+  };
+  const source = {
+    authority: 'manufacturer',
+    sourceType: 'official_exact_model_pdf',
+    sourceUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    redirectChain: [],
+    retrievedAt: '2026-07-16T22:20:00.000Z',
+    contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf',
+    byteSize: pdfBytes.length,
+    identity: { ...pdfIdentity, outcome: 'exact' },
+    claims: parsed.claims,
+    derivedArtifact,
+    discoveryProvenance,
+  };
+
+  const attested = verifyAndAttestResolutionArtifact({
+    source,
+    caseIdentity: pdfIdentity,
+    bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes,
+    discoveryArtifactBytes: discoveryBytes,
+    verifiedAt: '2026-07-16T22:21:00.000Z',
+    claimSemanticsVersion: 2,
+  });
+  assert.ok(attested.identitySignals.some((signal) => (
+    signal.type === 'official_product_page_artifact_relationship'
+  )));
+  assert.equal(attested.identitySignals.some((signal) => (
+    signal.type === 'official_product_page_model'
+  )), false);
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested,
+    caseIdentity: pdfIdentity,
+    bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes,
+    discoveryArtifactBytes: discoveryBytes,
+  }), true);
 });
 
 test('a hash-bound official AU market API can independently bind an exact ASKO model PDF', () => {

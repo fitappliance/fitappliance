@@ -81,7 +81,7 @@ export function validateOfficialProductPageArtifactRelationship(artifactLinkUrl,
   return true;
 }
 
-export function verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, bytes) {
+export function verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, bytes, options = {}) {
   if (provenance?.method !== 'official_product_page') return true;
   if (!Buffer.isBuffer(bytes) && !(bytes instanceof Uint8Array)) {
     throw new TypeError('discovery artifact bytes required');
@@ -106,7 +106,11 @@ export function verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdent
     $('body').text(),
     $('meta[content]').map((_, element) => $(element).attr('content')).get().join(' '),
   ].join(' ');
-  if (!containsExactModel(pageText, requiredText(caseIdentity?.model, 'discovery target model'))) {
+  const exactModelMatched = containsExactModel(
+    pageText,
+    requiredText(caseIdentity?.model, 'discovery target model'),
+  );
+  if (!exactModelMatched && options.requireExactModel !== false) {
     throw new Error('official discovery page does not prove the exact model');
   }
 
@@ -148,5 +152,5 @@ export function verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdent
       throw new Error('official discovery manifest record does not match declared document');
     }
   }
-  return true;
+  return { exactModelMatched };
 }

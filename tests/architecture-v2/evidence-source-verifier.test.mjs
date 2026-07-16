@@ -171,6 +171,43 @@ test('official source policy accepts only explicitly qualified Australian brand 
   ), false);
 });
 
+test('receipt creation cannot trust a caller-forged product-page relationship signal', () => {
+  const identity = { brand: 'Haier', model: 'HDW9TFE3SS', category: 'dishwasher' };
+  const artifactUrl = 'https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3PyIAI&d=%2Fa%2FJw000000ZuKH%2Ffixture&operationContext=DELIVERY&viewId=05HJw00000QE99JMAT';
+  const discoveryBytes = Buffer.from(`<!doctype html><html><head>
+    <title>TFE3 dishwasher guide | Haier Australia</title>
+  </head><body><a href="${artifactUrl}">Download guide</a></body></html>`);
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://support.haier.com.au/s/help-and-support/article/tfe3-guide',
+    requestedModel: identity.model,
+    matchedModel: identity.model,
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.html`,
+    discoveryByteSize: discoveryBytes.length,
+  };
+  const forged = pdfSource({
+    sourceUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    identity: { ...identity, outcome: 'exact' },
+    identitySignals: [
+      { type: 'mineru_haier_tfe3_explicit_finish_model', value: `${identity.model}:forged` },
+      { type: 'official_product_page_artifact_relationship', value: 'forged' },
+    ],
+    discoveryProvenance,
+  });
+
+  assert.throws(() => createVerificationReceipt(forged, identity, {
+    verifiedAt: '2026-07-16T22:21:00.000Z',
+    discoveryArtifactBytes: discoveryBytes,
+  }), /official discovery page does not prove the exact model/i);
+});
+
 test('Esatto CDN redirects require product-page-bound discovery provenance', () => {
   const artifactUrl = 'https://esatto.house/s/Esatto_UserManual_ETM207-239-268_0518.pdf';
   const provenance = {
@@ -241,7 +278,7 @@ test('global official artifact is trusted only with receipt-bound Australian dis
   input.verificationReceipt = createVerificationReceipt(input, identity, {
     verifiedAt: '2026-07-11T14:35:00.000Z',
   });
-  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.5');
+  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.6');
   assert.equal(verifyVerificationReceipt(input, identity, {
     asOf: input.verificationReceipt.verifiedAt,
   }), true);

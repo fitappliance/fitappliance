@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-16.5",
+  "policyVersion": "2026-07-16.6",
   "supportedReceiptPolicyVersions": [
     "2026-07-13.2",
     "2026-07-14.1",
@@ -10,7 +10,8 @@
     "2026-07-16.2",
     "2026-07-16.3",
     "2026-07-16.4",
-    "2026-07-16.5"
+    "2026-07-16.5",
+    "2026-07-16.6"
   ],
   "market": "AU",
   "brandGlobalArtifactHosts": {
@@ -23,6 +24,9 @@
     "fisherpaykel": [
       "fisherpaykel.my.salesforce.com",
       "content.fisherpaykel.com"
+    ],
+    "haier": [
+      "fisherpaykel.my.salesforce.com"
     ],
     "lg": [
       "gscs-b2c.lge.com"

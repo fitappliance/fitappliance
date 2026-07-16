@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T20:29:49.439Z",
+  "generatedAt": "2026-07-16T22:27:58.176Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "a31f6c7e584feb88a28634b48b33d9073c374f431f3de8c4598a8c143e41d5ff",
+  "semanticClassificationSha256": "b6bde27a3dde0834f8a193801f9841c79af4c81eb4297c78ad4995e3b3091555",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4336,
+    "documentLinks": 4340,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 353,
+      "COMPLETE_RECEIPT": 357,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1108
+      "REFERENCE_REDISCOVERY": 1104
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 353,
-      "REDISCOVER_OFFICIAL_SOURCE": 1108,
+      "NO_ACTION": 357,
+      "REDISCOVER_OFFICIAL_SOURCE": 1104,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 135
     },
     "bySourceAuthority": {
-      "MIXED": 197,
+      "MIXED": 201,
       "NONE": 6611,
       "OFFICIAL": 162,
-      "REFERENCE": 1125
+      "REFERENCE": 1121
     },
     "byIdentityScope": {
       "AMBIGUOUS": 172,
@@ -46,9 +46,9 @@
       "UNPROVEN": 6325
     },
     "byExtractionState": {
-      "ALL_AXIS_RANGE": 84,
-      "ALL_AXIS_SCALAR": 406,
-      "NOT_PARSED": 7511,
+      "ALL_AXIS_RANGE": 86,
+      "ALL_AXIS_SCALAR": 408,
+      "NOT_PARSED": 7507,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 353,
-      "LEGACY_UNBOUND": 1417,
+      "CURRENT_VALID": 357,
+      "LEGACY_UNBOUND": 1413,
       "NONE": 6325
     }
   },
@@ -68,13 +68,13 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 1089,
+      "documentLinks": 1093,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 150,
+        "COMPLETE_RECEIPT": 154,
         "CONFLICT_QUARANTINE": 22,
         "IDENTITY_RESEARCH": 18,
         "OFFICIAL_DISCOVERY": 1029,
-        "REFERENCE_REDISCOVERY": 200
+        "REFERENCE_REDISCOVERY": 196
       }
     },
     {
@@ -34130,14 +34130,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -34160,6 +34161,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:f114a9b0d81b68d9992fb06721bd9b4cb06052146c5b465cbcc96f055b2a5a1a",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009eckZIAQ&d=%2Fa%2FJw000000aQK9%2FkGoSNCspRkFkSFLdj7sDSO.k4GhwtaZSnC7_WIDxX_Y&operationContext=DELIVERY&viewId=05HJw00000QE8oLMAT&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/70/10/7010430d8570f3c8ae0dc59905e36958d025f5edcecb2bde639466b742001d5a.json",
+            "evidence/web/sha256/f1/14/f114a9b0d81b68d9992fb06721bd9b4cb06052146c5b465cbcc96f055b2a5a1a.pdf",
+            "receipt:c2e729cf1f5b450879f9838ae2364d4488c01c64f542d9b858685f2a45db7fd2"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "f114a9b0d81b68d9992fb06721bd9b4cb06052146c5b465cbcc96f055b2a5a1a"
+        },
+        {
           "documentId": "source:doc_6ad18ac88ada1c9bef8a12d5",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/d/4/5/c/d45c6d8897ad664df28e6f336736d231e0da67d3_Haier_HDW15G3W_Freestanding_Dishwasher_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -34175,8 +34195,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Haier"
@@ -34193,14 +34213,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -34223,6 +34244,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:7fdb9e5ac689e37766c53877f8ae81b43de770c1409feaf2a51d6ec86652c1ea",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009ejpHIAQ&d=%2Fa%2FJw000000aQSD%2FXZcuXwZhUNexPMIOrcXSBhYo2n9KqpjnV.BuqZNkeuI&operationContext=DELIVERY&viewId=05HJw00000QE9KbMAL&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/f6/7d/f67db3c488ea3372a664dfc08db2f8d0abaa3f6e40bf9f8d8de39ba36da10c73.json",
+            "evidence/web/sha256/7f/db/7fdb9e5ac689e37766c53877f8ae81b43de770c1409feaf2a51d6ec86652c1ea.pdf",
+            "receipt:7ec7d8e496ae45d1cae6c0c6acd27a766af65977a8b1b1b5254e3ce15a3938a4"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "7fdb9e5ac689e37766c53877f8ae81b43de770c1409feaf2a51d6ec86652c1ea"
+        },
+        {
           "documentId": "source:doc_780174dffd5ec10d2b2fda0f",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/2/c/6/b/2c6ba1e2b41712f4d587cfe2b35b5c89d5a33f11_Haier_HDW15G3X_Freestanding_Dishwasher_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -34238,8 +34278,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Haier"
@@ -34761,14 +34801,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -34791,6 +34832,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3csIAA&d=%2Fa%2FJw000000ZuH3%2F5mrPwnYuUQxIg54Lil2otNo8YJnaNJ0ZepI.CqZ0lIU&operationContext=DELIVERY&viewId=05HJw00000QE9m1MAD&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/43/ea/43ea6516d5e0cf8b82045adaa8c6a2420ac9e7e42653566475c84ebb7d58ce08.json",
+            "evidence/web/sha256/b0/c0/b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9.pdf",
+            "receipt:014ef21017a8a0947c626737bedd035271850b4d45cbf0135a76abb6c3bcee3b"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9"
+        },
+        {
           "documentId": "source:doc_c06f20c3fb2fe62112656d00",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/2/d/4/7/2d47c219db145d5bbb0a588c48a87072b203f32a_Haier_Compact_Dishwasher_HDW9TFE3SS_User_Manual.pdf",
           "evidenceObjectIds": [
@@ -34806,8 +34866,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Haier"
@@ -34850,14 +34910,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -34880,6 +34941,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw000009b3PyIAI&d=%2Fa%2FJw000000ZuKH%2FbvotDdcSLfdw.htXZGovkodua2Mar.7lUf1eqIawLh4&operationContext=DELIVERY&viewId=05HJw00000QE3aBMAT&dpt=",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/43/ea/43ea6516d5e0cf8b82045adaa8c6a2420ac9e7e42653566475c84ebb7d58ce08.json",
+            "evidence/web/sha256/b0/c0/b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9.pdf",
+            "receipt:5e01937d72c86fdb6c0d48f72a6b9e929e7172bc36d26aefd4e656e3889b001c"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "b0c0874da58206c7b89421ee864cdf3f5a942ae2b7dcfa0253d8222749ce84d9"
+        },
+        {
           "documentId": "source:doc_661a2589d5b47b0273bf7b00",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/7/5/e/3/75e3d158a6e48e9af016caa66dcc034297f122f3_HDW9TFE3WH_Haier_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -34895,8 +34975,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Haier"

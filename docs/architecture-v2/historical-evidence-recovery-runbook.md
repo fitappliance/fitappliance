@@ -1288,3 +1288,65 @@ the only Bosch washer still visible in the executable queue because one prior
 candidate ended in a transient transport failure. It stays outside immediate
 selection and may be retried only in a later backoff-controlled recovery
 window, never as an automatic continuation of lanes L through N.
+
+## 34. Haier dishwasher lanes O through T and bounded family-document recovery
+
+The Haier dishwasher investigation used unique runs and never resumed a
+completed or exhausted run. Lane O recorded the legacy zero-candidate outcome.
+Lane P exposed HTML wrappers and discovery timeouts. Lane Q was interrupted
+after the Salesforce support page waited indefinitely for network idle and was
+not resumed or promoted. Lane R proved the bounded dynamic-page fix but stayed
+diagnostic because its parser still rejected valid family documents. Lane S
+was the first releasable six-target pass. Lane T contained only the one TFE3
+finish target whose parser defect had just been repaired.
+
+Haier support articles render document links dynamically and the final PDF is
+served from `fisherpaykel.my.salesforce.com`. Discovery now waits for bounded
+document selectors instead of global network idle, preserves the official
+article HTML as a hash-bound object, validates the article-to-Salesforce link,
+and then validates PDF magic bytes before MinerU processing.
+
+Two strict document grammars were added:
+
+- Exact G3 specification sheets bind vertical `Height`, `Width` and `Depth`
+  labels only when the same page names the exact model and carries the
+  model-specific product-dimension disclaimer. `HDW15G3W` and `HDW15G3X` both
+  resolve to 598 x 850 x 598 mm.
+- The TFE3 family grammar accepts only the cover-listed `HDW9TFE3WH` and
+  `HDW9TFE3SS` finish SKUs. It requires the product-dimension table, preserves
+  the installed top-panel height range of 850-870 mm, excludes the 820-840 mm
+  top-removed range and cavity dimensions, and requires a separate technical
+  table to corroborate width 450 mm, depth 600 mm and height 850 mm.
+
+The TFE3 `SS` defect was in discovery attestation, not dimension extraction.
+The official article named the `WH` finish while the linked PDF cover named
+both `WH` and `SS`. The verifier now emits
+`official_product_page_artifact_relationship` only when the PDF has already
+produced the narrow `mineru_haier_tfe3_explicit_finish_model` signal. A generic
+PDF still fails when the discovery page does not prove the exact model. The
+immutable `SS` PDF, MinerU JSON, primary fallback object and discovery HTML all
+replayed before lane T was run.
+
+`HDW15V2S1` and `HDW15V3S1` remain unresolved. The official Haier family manual
+names both models but exposes an installation recess rather than a closed
+product envelope. Haier-authored exact-model specification sheets exist on a
+retailer mirror and report 598 x 850 x 598 mm, but reference hosting is not
+promoted as official evidence. Recess dimensions must never populate closed
+width, height or depth. These targets require either an official exact-model
+field source or a separately audited manufacturer-authored-mirror authority
+tier.
+
+Lane S promoted three accepted dimensions-only targets and three terminal
+outcomes after an online audit replayed 704 objects with zero violations. Lane
+T then promoted `HDW9TFE3SS` after replaying 705 objects with zero violations.
+The cumulative bundle now contains 338 accepted entries and 363 source
+receipts; all receipts replay. Historical classification contains 357 complete
+receipts, public projection contains 288 receipt-bound dimensions and
+receipt-bound `VERIFIED_FIT` remains zero.
+
+The canonical executable queue is inventory, not permission to execute every
+target. A parser-policy epoch may make many old targets visible for evaluation,
+but production recovery lanes must use a unique run ID and explicit
+`--target-id` filters. Accepted targets, complete exhausted inventories and
+interrupted runs must not be automatically restarted. A transient target such
+as `WAE22466AU` is eligible only after its separate backoff window.
