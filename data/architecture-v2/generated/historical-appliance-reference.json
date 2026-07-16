@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "2e4aa6ad26da8967d3c9259d51122213e3e9d6fbf660cd5fb3b3942904fdd093"
+    "historical-recovery:historical-recovery-cumulative-v1": "7491a1e456ed5d0be4ed073791f91b4aec1f52bf92d1c666ec22d34bcf58ea8f"
   },
   "records": [
     {
@@ -13477,13 +13477,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_96e21a478498cf542a6be80f",
+          "snapshotSha256": "d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4",
           "sourceLines": []
         }
       ],
@@ -13493,8 +13502,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_96e21a478498cf542a6be80f",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50M22AU",
+          "contentSha256": "d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4",
+          "receiptBindingSha256": "f4d77966024d669dc6504a2493dd453b1133f2ab0b2c3d70ef4c37d25ea1f694",
+          "verifiedAt": "2026-07-16T06:37:41.368Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/d7/e3/d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4.html"
+        }
       ]
     },
     {
@@ -13512,13 +13544,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_d467320cd885c606ee003a57",
+          "snapshotSha256": "c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60",
           "sourceLines": []
         }
       ],
@@ -13528,8 +13569,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_d467320cd885c606ee003a57",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50M28AU",
+          "contentSha256": "c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60",
+          "receiptBindingSha256": "caa65974cc7d607dd1dafd992d71e77c2637e7e7829c6cfc205bbe210ae30c9b",
+          "verifiedAt": "2026-07-16T06:37:53.810Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/c3/00/c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60.html"
+        }
       ]
     },
     {
@@ -13547,13 +13611,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_9d9a6795f6cf84ae562766bf",
+          "snapshotSha256": "31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0",
           "sourceLines": []
         }
       ],
@@ -13563,8 +13636,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_9d9a6795f6cf84ae562766bf",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS63M18AU",
+          "contentSha256": "31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0",
+          "receiptBindingSha256": "2d201c99f936c4ac8c5e1997460183d0f8c2d16adabebfe76fee4a0cf0152040",
+          "verifiedAt": "2026-07-16T06:37:48.456Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/31/f4/31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0.html"
+        }
       ]
     },
     {
@@ -13798,13 +13894,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_fa91a8c4bb8f5e3280f2b837",
+          "snapshotSha256": "88c8fd8490906c88e52f26f91b367667dd81dffc7b193900fa01ca6beec1cdc0",
           "sourceLines": []
         }
       ],
@@ -13814,8 +13919,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_fa91a8c4bb8f5e3280f2b837",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS68M32AU",
+          "contentSha256": "88c8fd8490906c88e52f26f91b367667dd81dffc7b193900fa01ca6beec1cdc0",
+          "receiptBindingSha256": "2f214f1cc7bba1f9045df6eac99ba647d74ca8d77edef3edf131cfa86e9cc0c1",
+          "verifiedAt": "2026-07-16T06:37:59.921Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "88c8fd8490906c88e52f26f91b367667dd81dffc7b193900fa01ca6beec1cdc0"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "88c8fd8490906c88e52f26f91b367667dd81dffc7b193900fa01ca6beec1cdc0"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "88c8fd8490906c88e52f26f91b367667dd81dffc7b193900fa01ca6beec1cdc0"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/88/c8/88c8fd8490906c88e52f26f91b367667dd81dffc7b193900fa01ca6beec1cdc0.html"
+        }
       ]
     },
     {
@@ -13833,13 +13961,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_010660fb4c2073671b3d6a2b",
+          "snapshotSha256": "bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b",
           "sourceLines": []
         }
       ],
@@ -13849,8 +13986,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_010660fb4c2073671b3d6a2b",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS68M38AU",
+          "contentSha256": "bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b",
+          "receiptBindingSha256": "828fedd9e30cd010f05c9a20903efcd9f45fbb48cd0135f3ae54188857825c5b",
+          "verifiedAt": "2026-07-16T06:37:21.680Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/bd/03/bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b.html"
+        }
       ]
     },
     {
@@ -13868,13 +14028,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_90ffd8dfc218153529d3d851",
+          "snapshotSha256": "6ec815af5f605f414d63ba82761f6cb416bfefa5627bfa61724fcb245119c9d2",
           "sourceLines": []
         }
       ],
@@ -13884,8 +14053,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_90ffd8dfc218153529d3d851",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS69T18AU",
+          "contentSha256": "6ec815af5f605f414d63ba82761f6cb416bfefa5627bfa61724fcb245119c9d2",
+          "receiptBindingSha256": "6da169c59fad44ddc270d526c60e34de9632a8ac3e2c92efa66cbff38ca480a8",
+          "verifiedAt": "2026-07-16T06:37:32.803Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "6ec815af5f605f414d63ba82761f6cb416bfefa5627bfa61724fcb245119c9d2"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "6ec815af5f605f414d63ba82761f6cb416bfefa5627bfa61724fcb245119c9d2"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "6ec815af5f605f414d63ba82761f6cb416bfefa5627bfa61724fcb245119c9d2"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/6e/c8/6ec815af5f605f414d63ba82761f6cb416bfefa5627bfa61724fcb245119c9d2.html"
+        }
       ]
     },
     {
@@ -13903,13 +14095,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_4cfffebb1360ecc5b8963150",
+          "snapshotSha256": "5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea",
           "sourceLines": []
         }
       ],
@@ -13919,8 +14120,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_4cfffebb1360ecc5b8963150",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS69T28AU",
+          "contentSha256": "5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea",
+          "receiptBindingSha256": "36d9b2b701e26704a355ea80d1e0bf17e7eb15b59077b3fda9e91257ad3333bf",
+          "verifiedAt": "2026-07-16T06:37:27.002Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/57/17/5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea.html"
+        }
       ]
     },
     {
@@ -14590,13 +14814,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_8272109004d22e80b7303333",
+          "snapshotSha256": "cb161d103041931a79ac8b12b47791bbbe576b6b1b6b458cf24800340afeaedf",
           "sourceLines": []
         }
       ],
@@ -14606,8 +14839,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_8272109004d22e80b7303333",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS88TI04A",
+          "contentSha256": "cb161d103041931a79ac8b12b47791bbbe576b6b1b6b458cf24800340afeaedf",
+          "receiptBindingSha256": "148e5b528ad634f17f25689a1d45411d44f8a11eadd6b87b4bc5be92048cf57a",
+          "verifiedAt": "2026-07-16T06:37:15.258Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "cb161d103041931a79ac8b12b47791bbbe576b6b1b6b458cf24800340afeaedf"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "cb161d103041931a79ac8b12b47791bbbe576b6b1b6b458cf24800340afeaedf"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "cb161d103041931a79ac8b12b47791bbbe576b6b1b6b458cf24800340afeaedf"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/cb/16/cb161d103041931a79ac8b12b47791bbbe576b6b1b6b458cf24800340afeaedf.html"
+        }
       ]
     },
     {
@@ -320191,16 +320447,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4856,
-      "IDENTITY_ONLY": 2955,
-      "MODEL_RECEIPT": 185,
+      "IDENTITY_ONLY": 2947,
+      "MODEL_RECEIPT": 193,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4856,
-      "MEASURE_REQUIRED": 2955,
-      "AUTO_FILL": 196,
+      "MEASURE_REQUIRED": 2947,
+      "AUTO_FILL": 204,
       "QUARANTINED": 88
     }
   }

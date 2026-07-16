@@ -1,11 +1,12 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-16.1",
+  "policyVersion": "2026-07-16.2",
   "supportedReceiptPolicyVersions": [
     "2026-07-12.1",
     "2026-07-14.1",
     "2026-07-15.1",
-    "2026-07-16.1"
+    "2026-07-16.1",
+    "2026-07-16.2"
   ],
   "officialHtmlModelVariantSuffixes": {
     "westinghouse": {
@@ -26,7 +27,7 @@
     "artusi": ["artusi.com.au"],
     "asko": ["asko.com"],
     "beko": ["beko.com"],
-    "bosch": ["bosch-home.com"],
+    "bosch": ["bosch-home.com", "bosch-home.com.au"],
     "chiq": ["chiq.com.au"],
     "electrolux": ["electrolux.com.au", "resource.electrolux.com.au"],
     "esatto": ["esatto.house", "residentia.group"],

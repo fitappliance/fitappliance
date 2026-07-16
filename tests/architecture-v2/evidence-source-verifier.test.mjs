@@ -218,7 +218,7 @@ test('global official artifact is trusted only with receipt-bound Australian dis
   input.verificationReceipt = createVerificationReceipt(input, identity, {
     verifiedAt: '2026-07-11T14:35:00.000Z',
   });
-  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.2');
+  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.3');
   assert.equal(verifyVerificationReceipt(input, identity, {
     asOf: input.verificationReceipt.verifiedAt,
   }), true);
@@ -242,6 +242,87 @@ test('global official artifact is trusted only with receipt-bound Australian dis
     ...input,
     discoveryProvenance: { ...discoveryProvenance, matchedModel: 'WD1275A2' },
   }, identity, { asOf: input.verificationReceipt.verifiedAt }), /model|receipt|provenance/i);
+});
+
+test('Bosch receipt verifies an exact PDF URL embedded in the official product-page manifest', () => {
+  const identity = { brand: 'Bosch', model: 'SMS68M38AU', category: 'dishwasher' };
+  const artifactUrl = 'https://media3.bsh-group.com/Documents/9001069073_D.pdf';
+  const discoveryUrl = 'https://www.bosch-home.com.au/en/mkt-product/SMS68M38AU';
+  const manifest = JSON.stringify({ technicalDocuments: [{
+    id: 'user-1', titleKey: 'user-manuals', filename: '9001069073_D.pdf', url: artifactUrl,
+  }] }).replaceAll('"', '\\"');
+  const discoveryBytes = Buffer.from(`<!doctype html><html><head>
+    <title>SMS68M38AU free-standing dishwasher | Bosch Home Appliances</title>
+    <meta name="description" content="BOSCH SMS68M38AU Series 6 free-standing dishwasher">
+  </head><body><script>self.__next_f.push([1,"${manifest}"])</script></body></html>`);
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl,
+    requestedModel: identity.model,
+    matchedModel: identity.model,
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.html`,
+    discoveryByteSize: discoveryBytes.length,
+    discoveryRecordType: 'serialized_technical_document_manifest',
+    documentId: 'user-1',
+    documentTitleKey: 'user-manuals',
+    originalFileName: '9001069073_D.pdf',
+  };
+  const input = pdfSource({
+    sourceUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    identity: { ...identity, outcome: 'exact' },
+    identitySignals: [
+      { type: 'mineru_title_model', value: 'SMS68M38AU:page:1' },
+      { type: 'mineru_table_model', value: `SMS68M38AU:page:1:${'c'.repeat(64)}` },
+    ],
+    discoveryProvenance,
+  });
+
+  input.verificationReceipt = createVerificationReceipt(input, identity, {
+    verifiedAt: '2026-07-16T06:00:00.000Z',
+    discoveryArtifactBytes: discoveryBytes,
+  });
+  assert.equal(verifyVerificationReceipt(input, identity, {
+    asOf: input.verificationReceipt.verifiedAt,
+    discoveryArtifactBytes: discoveryBytes,
+  }), true);
+
+  const otherArtifactUrl = artifactUrl.replace('9001069073_D', '9001069074_D');
+  assert.throws(() => createVerificationReceipt({
+    ...input,
+    verificationReceipt: undefined,
+    sourceUrl: otherArtifactUrl,
+    finalUrl: otherArtifactUrl,
+    discoveryProvenance: {
+      ...discoveryProvenance,
+      artifactUrl: otherArtifactUrl,
+      artifactLinkUrl: otherArtifactUrl,
+    },
+  }, identity, {
+    verifiedAt: '2026-07-16T06:00:00.000Z',
+    discoveryArtifactBytes: discoveryBytes,
+  }), /artifact link/i);
+
+  for (const changed of [
+    { documentId: 'user-2' },
+    { documentTitleKey: 'installation-instruction' },
+    { originalFileName: '9001069074_D.pdf' },
+  ]) {
+    assert.throws(() => createVerificationReceipt({
+      ...input,
+      verificationReceipt: undefined,
+      discoveryProvenance: { ...discoveryProvenance, ...changed },
+    }, identity, {
+      verifiedAt: '2026-07-16T06:00:00.000Z',
+      discoveryArtifactBytes: discoveryBytes,
+    }), /manifest record/i);
+  }
 });
 
 test('ASKO AU API provenance requires hash-bound exact-model JSON and an artifact link', () => {
@@ -529,9 +610,9 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.deepEqual(input.verificationReceipt, {
     schemaVersion: 2,
     policyVersion: '2026-07-12.2',
-    manufacturerPolicyVersion: '2026-07-16.1',
+    manufacturerPolicyVersion: '2026-07-16.2',
     verifiedAt: '2026-07-11T14:35:00.000Z',
-    bindingSha256: '141e648500f9f7feb487eef01dd895fc10b6c629a61e6e037316763bf8e8b31f',
+    bindingSha256: '83422c5988d7a8c5842db915343e347d90ffbe1fa06b9882a8ccbe74bab63a83',
   });
 
   assert.equal(verifyVerificationReceipt(input, caseIdentity, {

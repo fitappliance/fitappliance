@@ -30,6 +30,7 @@ const { findRobinhoodOfficialPdf } = require('./robinhood-official.js');
 const { findSubZeroOfficialPdf } = require('./sub-zero-official.js');
 const { findTecoOfficialPdf } = require('./teco-official.js');
 const { findVogueOfficialPdf } = require('./vogue-official.js');
+const { findBoschOfficialPdf } = require('./bosch-official.js');
 
 function exactTarget(caseRecord) {
   const brand = String(caseRecord?.brand ?? '').trim();
@@ -445,6 +446,49 @@ export function createElectroluxGroupResolverAdapter(options = {}) {
   });
 }
 
+export function createBoschResolverAdapter(options = {}) {
+  const finder = options.finder ?? findBoschOfficialPdf;
+  return createEvidenceSourceResolverAdapter({
+    resolverId: 'bosch-official-product-documents',
+    version: '1',
+    scope: 'exact_model_au_product_page_technical_document_manifest',
+    required: true,
+    async resolve(caseRecord) {
+      const target = exactTarget(caseRecord);
+      if (/[*?]/.test(target.model)) {
+        return { completion: 'complete', candidates: [], failures: [] };
+      }
+      try {
+        const result = await finder(target, options.finderOptions ?? {});
+        const candidates = (result?.resources ?? []).map((resource) => typedCandidate({
+          sourceUrl: resource.url,
+          brand: target.brand,
+          discoveryMethod: 'bosch_au_product_page_manifest',
+          documentType: normalizeDocumentType(resource.resourceType ?? resource.titleKey),
+          sourceModelHint: target.model,
+          targetModel: target.model,
+          discoveryProvenance: resource.discoveryProvenance ?? null,
+          requiredAttempt: resource.requiredAttempt !== false,
+        }));
+        if (result?.productPageUrl) {
+          candidates.push(typedCandidate({
+            sourceUrl: result.productPageUrl,
+            brand: target.brand,
+            discoveryMethod: 'bosch_au_exact_model_product_page',
+            documentType: 'product_page',
+            sourceModelHint: target.model,
+            targetModel: target.model,
+            requiredAttempt: false,
+          }));
+        }
+        return { completion: 'complete', candidates: uniqueCandidates(candidates), failures: [] };
+      } catch (error) {
+        return completionFromError(error);
+      }
+    },
+  });
+}
+
 function brandKey(value) {
   return String(value ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '');
 }
@@ -478,6 +522,7 @@ const LEGACY_RESOLVER_PROFILES = new Map([
 
 export function resolverAdapterIdsForBrand(value) {
   const brand = brandKey(value);
+  if (brand === 'bosch') return ['bosch-official-product-documents'];
   if (brand === 'fisherpaykel') return ['fisher-paykel-official-support'];
   if (brand === 'lg') return ['lg-official-support'];
   if (['electrolux', 'westinghouse', 'kelvinator'].includes(brand)) {
@@ -492,6 +537,7 @@ export function resolverAdapterIdsForBrand(value) {
 
 export function buildArchitectureV2ResolverAdapters(caseRecord, options = {}) {
   const brand = brandKey(caseRecord?.brand);
+  if (brand === 'bosch') return [createBoschResolverAdapter(options.bosch)];
   if (brand === 'fisherpaykel') return [createFisherPaykelResolverAdapter(options.fisherPaykel)];
   if (brand === 'lg') return [createLgResolverAdapter(options.lg)];
   if (['electrolux', 'westinghouse', 'kelvinator'].includes(brand)) {

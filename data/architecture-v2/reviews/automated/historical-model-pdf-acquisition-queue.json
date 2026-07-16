@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T05:29:07.010Z",
-  "semanticQueueSha256": "648cdd82533f73bce227980af7f198f865b978775f046349ca581be186c7aff5",
-  "sourceClassificationSha256": "00c6c0e03e00867961a5461d7bf3a2bb6b85f34febdabd62f65692744cbf9d5e",
+  "generatedAt": "2026-07-16T06:45:02.870Z",
+  "semanticQueueSha256": "8c7b93c8d4b02d9ed52630d0d07245d6e904a0bd8c74e4dfd60e8b7cfb893b67",
+  "sourceClassificationSha256": "d4dbd7005dc5b3410deeeebd97f86eeef7df865396a1e5549e06fcab6e23f610",
   "records": [
     {
       "schemaVersion": 1,
@@ -1049,7 +1049,7 @@
         "historical_source_19011099e3f5e142ccc55685"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_49c7019a23ad076014ce6ecb"
@@ -1080,7 +1080,7 @@
         "historical_source_947fa25ccfffce7cb5b33afc"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_ae556bc6443c647e99c03085"
@@ -1111,7 +1111,7 @@
         "historical_source_2682c5157f8b62e63565c0c2"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_a78391e7ed7e4cc34b5bf36a"
@@ -1142,7 +1142,7 @@
         "historical_source_6d22336f4f63334dd5e96d99"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_ad9272f8c6d5f48ebcb280ff"
@@ -1173,7 +1173,7 @@
         "historical_source_98b66bf061a672121ebb2f5a"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_a5504a00a5c1a8c6163e5e3f"
@@ -1204,7 +1204,7 @@
         "historical_source_810b42abd253ff6c5af61e99"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_af453e41a6b0cd61ee1ea4f7"
@@ -1214,254 +1214,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_af864cd017ab227ef624af6d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_0a43bbc8c79319e999ed863d",
-      "referenceId": "fa_ref_b6841e9f51c0d64e75dcec0a",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS50M22AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_124071cd2dfd6254fc392b59"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_96e21a478498cf542a6be80f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-45081"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_68cd9ad2c9f32ab9f2fbe1e8"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_009c622c206fa9757ad661ff",
-      "referenceId": "fa_ref_9774b2c4a1d1d8d4a5fc1449",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS50M28AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_0e206f7fb0581a242102ae3c"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_d467320cd885c606ee003a57"
-      ],
-      "legacyRuntimeIds": [
-        "ao-44795"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_30e539f0d4fe82499298fac9"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a1c0bff276637a5cf286c19d",
-      "referenceId": "fa_ref_f146f4be05637a92ab43278f",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS63M18AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_f611280266fbe2368d02473a"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_9d9a6795f6cf84ae562766bf"
-      ],
-      "legacyRuntimeIds": [
-        "ao-30576"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_ebd47c37d12ee1da3125d0ec"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_36e85c822c11c774335a02f3",
-      "referenceId": "fa_ref_58d6644d988c7bd0e844c80d",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS68M32AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_4153ab7f14aa729064aa1348"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_fa91a8c4bb8f5e3280f2b837"
-      ],
-      "legacyRuntimeIds": [
-        "ao-45245"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_8b67932e1b5fd090a5a64b6e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_825f43a7f7d0875f0f78f9ab",
-      "referenceId": "fa_ref_4628f542995cf20d2cf875ec",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS68M38AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8668e9487dfd685764d5e8ed"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_010660fb4c2073671b3d6a2b"
-      ],
-      "legacyRuntimeIds": [
-        "ao-45246"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_c40c937e30c5dea4126bfcd2"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f8f34b54b1d8b46c78488816",
-      "referenceId": "fa_ref_742a58c687d70880227dd5ae",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS69T18AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d81030cf96f4595bb703dae2"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_90ffd8dfc218153529d3d851"
-      ],
-      "legacyRuntimeIds": [
-        "ao-31083"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6f1254be6d6f907f4d47cbeb"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_252843397b50bf8a8ab88a1b",
-      "referenceId": "fa_ref_7ffc86b916589fd528d59b04",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS69T28AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8065286e6d9f38d7239b13b3"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_4cfffebb1360ecc5b8963150"
-      ],
-      "legacyRuntimeIds": [
-        "ao-31084"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_7cc9ae89d964bb374e727600"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_1893231fec3421a41ef800d9",
-      "referenceId": "fa_ref_72674c9aac920e4b91c89a7d",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS88TI04A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_502740e38015c71aa496c671"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_8272109004d22e80b7303333"
-      ],
-      "legacyRuntimeIds": [
-        "ao-61049"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_38c0039d21c32e0141fb2298"
       ],
       "offlineReplayOutcome": null
     },
@@ -1483,7 +1235,7 @@
         "historical_source_407b2293c833d66e87ddb311"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_c4984627e9787f3875b42de3"
@@ -1514,7 +1266,7 @@
         "historical_source_ed7376586a75a4c2f915336b"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_ff54df6819afa4601d360986"
@@ -1545,7 +1297,7 @@
         "historical_source_0730feb510dee3762b36fb5e"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_67dfa1bfdf0b16b4e798bbd7"
@@ -1576,7 +1328,7 @@
         "historical_source_8b02918544251fdc314a3b62"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_8dbd133f5eab994514fc24bb"
@@ -1607,7 +1359,7 @@
         "historical_source_d98749692e799fdd7a69744d"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_351865ac4d2b57830b854a9f"
@@ -1638,7 +1390,7 @@
         "historical_source_48ec3114f9e2c8b3c223bf26"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_af4a93acb17946d74bb04001"
@@ -1669,7 +1421,7 @@
         "historical_source_77a1175c53aa79d335a2e867"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_b0be7750c6b3abf786bc8033"
@@ -1700,7 +1452,7 @@
         "historical_source_c43c4c664e0ea701cea47789"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_016f00e3aaeb2cc84ab60d76"
@@ -1731,7 +1483,7 @@
         "historical_source_dfac9cc6455ceba7722b1e00"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_3eb90a5b93d6a6fd7827e89e"
@@ -1762,7 +1514,7 @@
         "historical_source_c81237e7058038059246b2b7"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_3509e0d612176316f5384e52"
@@ -1793,7 +1545,7 @@
         "historical_source_25cf56fce66006bf96a9dcc6"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_0a0ee4a4446a75b2f1844dee"
@@ -1824,7 +1576,7 @@
         "historical_source_46c168c0e2beca5e6682537a"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_8ec41e3de9c53abc99695377"
@@ -1855,7 +1607,7 @@
         "historical_source_89dd3766cb66cfe2edd423cc"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_b80de9b6012026336c804f06"
@@ -1886,7 +1638,7 @@
         "historical_source_3a729e4f2a618e5573e5e6fc"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_0bce49ea1d5ed7f33a36d2db"
@@ -1917,7 +1669,7 @@
         "historical_source_fdbf658c96913338d6288b2e"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_7e07da792e8ef3ab3a0934a4"
@@ -1948,7 +1700,7 @@
         "historical_source_5717f7cee67caf48965a9d12"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_5f03b7f484de5aa8e95a408e"
@@ -1979,7 +1731,7 @@
         "historical_source_3fcb1e65b8e676629de9f724"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_c62552be11afb8e6d85b26c9"
@@ -2010,7 +1762,7 @@
         "historical_source_38e52e4eb0b29f2091844411"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_db3f7bb57affc4a02f48b722"
@@ -2041,7 +1793,7 @@
         "historical_source_70605487df5b7f95ed8d386b"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -2070,7 +1822,7 @@
         "historical_source_52ee784816f3937e25e2654c"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_d272363a8cb7b923ba497c41"
@@ -2101,7 +1853,7 @@
         "historical_source_8b539dcd9965657b12fd05e5"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -2130,7 +1882,7 @@
         "historical_source_d76c1d056dc3ce11014faea2"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_27e5354a82342644c72fc129"
@@ -2161,7 +1913,7 @@
         "historical_source_66f124cec33453f4922a37cb"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -2190,7 +1942,7 @@
         "historical_source_b89c1044274aa7bace68c769"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_fabeec97c56474223f796ad1"
@@ -2221,7 +1973,7 @@
         "historical_source_511d8e8e49423ed66a91e291"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_119ead6e957f5575057295dd"
@@ -2252,7 +2004,7 @@
         "historical_source_1d2e9ee659d69f6362c130d1"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_e94e89012d526ec01cae9b19"
@@ -2283,7 +2035,7 @@
         "historical_source_6e383814a4f81d9a2b391cfb"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_cc7e4e321a6f3e55a498846b"
@@ -2314,7 +2066,7 @@
         "historical_source_1a4425af892f59046c594b6f"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_3b3066377d2d32dda17fbd57"
@@ -2345,7 +2097,7 @@
         "historical_source_0b4ce8a1645ddb61bcd96fb1"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_2d8920247a3ab65929bc8ebf"
@@ -2376,7 +2128,7 @@
         "historical_source_4043bc9ac527bdca5ffbb760"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_d70f4dad25da51dba9694232"
@@ -2407,7 +2159,7 @@
         "historical_source_af26e9b5cd7faa8618d3ddba"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_02b178ab2271f7f74de2c8dd"
@@ -2438,7 +2190,7 @@
         "historical_source_03556d81c31cde21336b960d"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_4755890c73b23e99664bed51"
@@ -2469,7 +2221,7 @@
         "historical_source_54d54633522522c5c21be14f"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_4c5e20f3a2c9a8c38b22dbc7"
@@ -8856,7 +8608,7 @@
         "historical_source_cc79e6c2ca5178cb91dc2d83"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -8885,7 +8637,7 @@
         "historical_source_87afcfb63f5edcad16d2a934"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_4a1eed6cce5a48ce08fad321"
@@ -8916,7 +8668,7 @@
         "historical_source_9149b7a3b30ad73a315a7226"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_4eadcda3e2e72f10324e3fd2"
@@ -11576,7 +11328,7 @@
         "historical_source_a88620a26f052cf64a08ad91"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_e8bf737ce94d6a8254d3bed1"
@@ -11607,7 +11359,7 @@
         "historical_source_7696e84004d1bacb6f6822f6"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_cb6fcb92c442eb8289833b2c"
@@ -11638,7 +11390,7 @@
         "historical_source_2cfc682074b06abfb3a01186"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -11667,7 +11419,7 @@
         "historical_source_645ab61637f6b800000b0c90"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -11696,7 +11448,7 @@
         "historical_source_75832c5116003e47d4d0d0de"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_ddb0b49e66f500d82f6a07a7"
@@ -11727,7 +11479,7 @@
         "historical_source_e62a133d62e9a2f948c751ce"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_729708bf7ebb32b63c60440c"
@@ -11758,7 +11510,7 @@
         "historical_source_63c4d31964c7ac0298327389"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_561ac6459dd65fd72286e57a"
@@ -11789,7 +11541,7 @@
         "historical_source_13cd994a304d9da901a3fed4"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_3e783fcdaa90a51fb9300c8c"
@@ -30611,7 +30363,7 @@
         "historical_source_1682b8efda65d4e0e1b05dd1"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_3dd723bd8abaeee8a5cb3bfe"
@@ -30642,7 +30394,7 @@
         "historical_source_d32148e550c73f469f0f361a"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_d23a4aff8671fa32c138bdfc"
@@ -30673,7 +30425,7 @@
         "historical_source_332f4648f0f583b97b4a1b7c"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_e8006986e32a3f77656f2a87"
@@ -30704,7 +30456,7 @@
         "historical_source_940044463f8bcfe4a4385e59"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -30733,7 +30485,7 @@
         "historical_source_378d9c5c70b9a4e476203e6d"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -30762,7 +30514,7 @@
         "historical_source_ead1b772642ccf2e0cd2e2c4"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_96a67c07a4f5930ea7a0fd31"
@@ -30793,7 +30545,7 @@
         "historical_source_f961c8c9214b3a4e2677dd2b"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_5bebb59033744ceaedf76d99"
@@ -30824,7 +30576,7 @@
         "historical_source_398e954f04b7260360db2a51"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_c137ea8b2d4b5b0bbf651dc3"
@@ -30855,7 +30607,7 @@
         "historical_source_f54f6fd62d514482e7bac589"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_f26116765c287fa662075523"
@@ -30886,7 +30638,7 @@
         "historical_source_265224bda455cbb084288ccf"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_c8179547d5bc884d0ca4e074"
@@ -30917,7 +30669,7 @@
         "historical_source_195fd6dc663d59972db28a1d"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_36e31bbe76251354ab0681a3"
@@ -30948,7 +30700,7 @@
         "historical_source_1067d2e21dcab8b956192701"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_e09030ac78aeca752b0f566b"
@@ -30979,7 +30731,7 @@
         "historical_source_ea366577734e2a42ef9a8e8e"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -31008,7 +30760,7 @@
         "historical_source_a9bc7c81730bf9f23c172aad"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -31037,7 +30789,7 @@
         "historical_source_8ef14e674da2dea8f6faa153"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -31066,7 +30818,7 @@
         "historical_source_48404725dab869991c796010"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -31095,7 +30847,7 @@
         "historical_source_7557632c47cece659fd004c5"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -31124,7 +30876,7 @@
         "historical_source_f0394b345b6e1960fa6f128b"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -31153,7 +30905,7 @@
         "historical_source_601b3ccc4c87854fe810e8c1"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_dffc4ed4e05924c97b54bade"
@@ -31184,7 +30936,7 @@
         "historical_source_0e402d2971180e0cc4337eeb"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_124b54dbc7532381c9dab1d2"
@@ -31215,7 +30967,7 @@
         "historical_source_2d5bcf7aae1054874570d977"
       ],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [
         "recovery_target_60bd9467faf9d7a70434231c"
@@ -38888,7 +38640,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -46048,7 +45800,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -49053,7 +48805,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -80763,7 +80515,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [
@@ -93156,7 +92908,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93179,7 +92931,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93202,7 +92954,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93225,7 +92977,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93248,7 +93000,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93271,7 +93023,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93294,7 +93046,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93317,7 +93069,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93340,7 +93092,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93363,7 +93115,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93386,7 +93138,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93409,7 +93161,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93432,7 +93184,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93455,7 +93207,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93478,7 +93230,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93501,7 +93253,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93524,7 +93276,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93547,7 +93299,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -93570,7 +93322,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107604,7 +107356,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107627,7 +107379,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107650,7 +107402,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107673,7 +107425,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107696,7 +107448,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107719,7 +107471,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107742,7 +107494,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107765,7 +107517,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107788,7 +107540,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107811,7 +107563,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107834,7 +107586,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -107857,7 +107609,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -121896,7 +121648,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -121919,7 +121671,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -121942,7 +121694,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -121965,7 +121717,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174495,7 +174247,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174518,7 +174270,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174541,7 +174293,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174564,7 +174316,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174587,7 +174339,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174610,7 +174362,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174633,7 +174385,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174656,7 +174408,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174679,7 +174431,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174702,7 +174454,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174725,7 +174477,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174748,7 +174500,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174771,7 +174523,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174794,7 +174546,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174817,7 +174569,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174840,7 +174592,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174863,7 +174615,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174886,7 +174638,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174909,7 +174661,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174932,7 +174684,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174955,7 +174707,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -174978,7 +174730,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -175001,7 +174753,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -175024,7 +174776,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -175047,7 +174799,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -175070,7 +174822,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -175093,7 +174845,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -175116,7 +174868,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -175139,7 +174891,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -175162,7 +174914,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -175185,7 +174937,7 @@
       "executionReadiness": "DISCOVERY_READY",
       "candidateSourceIds": [],
       "resolverIds": [
-        "architecture-v2-core-official-discovery"
+        "bosch-official-product-documents"
       ],
       "legacyRecoveryTargetIds": [],
       "legacyRuntimeIds": [],
@@ -195280,19 +195032,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_0e206f7fb0581a242102ae3c",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/2/9/3/7293baf08c7e9764b9ee0044cb4b045720541f70_Bosch_Dishwasher_SMS50M28AU_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMS50M28AU.json",
-        "source:doc_c9a9c6156b2de8bfa0bb02e8"
-      ],
-      "referenceIds": [
-        "fa_ref_9774b2c4a1d1d8d4a5fc1449"
-      ]
-    },
-    {
       "sourceId": "historical_source_0e3736f5412910d725593f9d",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw15716aa1/QRG/AU/QRG-AU-26951.pdf",
       "sourceAuthority": "NONE",
@@ -195576,19 +195315,6 @@
       ],
       "referenceIds": [
         "fa_ref_b1405a1058d599fae4ec1327"
-      ]
-    },
-    {
-      "sourceId": "historical_source_124071cd2dfd6254fc392b59",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/1/0/4/21041fbceecce4894bd0cf662e72639b63428f72_Bosch_Dishwasher_SMS50M22AU_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMS50M22AU.json",
-        "source:doc_4e0b930ac0c04fb63a066a4d"
-      ],
-      "referenceIds": [
-        "fa_ref_b6841e9f51c0d64e75dcec0a"
       ]
     },
     {
@@ -199432,19 +199158,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_4153ab7f14aa729064aa1348",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/a/2/5/4a2528e937dfe06840058f53857c3596bb0315f4_Bosch_SMS68M32AU_Serie_6_Freestanding_Dishwasher_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMS68M32AU.json",
-        "source:doc_e8fea08d4795d22c52c61a0d"
-      ],
-      "referenceIds": [
-        "fa_ref_58d6644d988c7bd0e844c80d"
-      ]
-    },
-    {
       "sourceId": "historical_source_418da31f37bf4002d69b43aa",
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=S9KtCjoQL26KeRDXtNn2w",
       "sourceAuthority": "NONE",
@@ -200465,19 +200178,6 @@
       ],
       "referenceIds": [
         "fa_ref_41ef8521c589378dcbd72916"
-      ]
-    },
-    {
-      "sourceId": "historical_source_502740e38015c71aa496c671",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/f/6/2/a/f62ac2633f3e6c0f6dde4904be88dfb6a09d4e0e_Bosch_SMS88TI04A_Serie_8_Freestanding_Dishwasher_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMS88TI04A.json",
-        "source:doc_9ee898770f620a691e361a3e"
-      ],
-      "referenceIds": [
-        "fa_ref_72674c9aac920e4b91c89a7d"
       ]
     },
     {
@@ -204408,19 +204108,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_8065286e6d9f38d7239b13b3",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/1/2/d/012d434c58a44e47a0dd5dffd253de3925bdc610_Bosch_Dishwasher_SMS69T28AU_Installation_and_Operation_Guide.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMS69T28AU.json",
-        "source:doc_66f6bfee2d1a5c3c5a6caf80"
-      ],
-      "referenceIds": [
-        "fa_ref_7ffc86b916589fd528d59b04"
-      ]
-    },
-    {
       "sourceId": "historical_source_8070ff12986a3340508d695c",
       "sourceUrl": "https://chiq.com.au/cdn/shop/files/CTM202NW3_SPEC.pdf",
       "sourceAuthority": "NONE",
@@ -204935,19 +204622,6 @@
       ],
       "referenceIds": [
         "fa_ref_a12e6af9be9a652f7ea4a764"
-      ]
-    },
-    {
-      "sourceId": "historical_source_8668e9487dfd685764d5e8ed",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/c/7/9/6c798176c64c0465949ca618b40980b15347a297_Bosch_SMS68M38AU_Serie_6_Freestanding_Dishwasher_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMS68M38AU.json",
-        "source:doc_c498cc651852665b231daa60"
-      ],
-      "referenceIds": [
-        "fa_ref_4628f542995cf20d2cf875ec"
       ]
     },
     {
@@ -211214,19 +210888,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_d81030cf96f4595bb703dae2",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/c/3/a/3c3a2ce5af53c25c0261e7face751a71ed3840b0_sms69t18au_installationinstructions.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMS69T18AU.json",
-        "source:doc_5db775c7d65ac78ef5b85ac9"
-      ],
-      "referenceIds": [
-        "fa_ref_742a58c687d70880227dd5ae"
-      ]
-    },
-    {
       "sourceId": "historical_source_d827a854540cba138e105286",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/4/6/1/94619c64215d69f540ead67552744072cf02a4a8_BDFB1410W_Beko_Specification_Sheet___Energy_Update_2025.pdf",
       "sourceAuthority": "REFERENCE",
@@ -213195,19 +212856,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_f611280266fbe2368d02473a",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/c/1/4/9/c1499db5748b495fa410578db40f2073ba36f913_sms63m18au_installationinstructions.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SMS63M18AU.json",
-        "source:doc_5f0c036f3b85a3e6ff8a8aa4"
-      ],
-      "referenceIds": [
-        "fa_ref_f146f4be05637a92ab43278f"
-      ]
-    },
-    {
       "sourceId": "historical_source_f61ebdf6ef171f4c62d70ec0",
       "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw31058f38/QRG/AU/QRG-AU-62401.pdf",
       "sourceAuthority": "NONE",
@@ -213935,23 +213583,23 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 248,
+    "COMPLETE_RECEIPT": 256,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7847,
-    "uniqueReferences": 7847,
-    "candidateSources": 1505,
-    "candidateEdges": 1540,
+    "queuedModels": 7839,
+    "uniqueReferences": 7839,
+    "candidateSources": 1497,
+    "candidateEdges": 1532,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1209,
+      "CURRENT_RETAIL": 1201,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1333,
+      "dishwasher": 1325,
       "dryer": 813,
       "fridge": 4233,
       "washing_machine": 1468
@@ -213960,21 +213608,21 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 154,
       "OFFICIAL_DISCOVERY": 6417,
-      "REFERENCE_REDISCOVERY": 1193
+      "REFERENCE_REDISCOVERY": 1185
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 154,
       "OFFICIAL_DISCOVERY": 6417,
-      "OFFICIAL_REDISCOVERY": 1193
+      "OFFICIAL_REDISCOVERY": 1185
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5182,
+      "DISCOVERY_READY": 5174,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 248,
+      "COMPLETE_RECEIPT": 256,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

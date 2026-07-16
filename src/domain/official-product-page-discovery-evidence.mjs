@@ -28,6 +28,40 @@ function salesforceDocumentPath(value) {
   }
 }
 
+function serializedScriptArtifactUrls(value) {
+  const decoded = String(value ?? '')
+    .replace(/\\"/g, '"')
+    .replace(/\\\//g, '/')
+    .replace(/\\u0026/gi, '&')
+    .replace(/&amp;/gi, '&');
+  const urls = [];
+  const pattern = /"(?:url|href|downloadUrl)"\s*:\s*"(https:\/\/[^"\\\s<>]+)"/g;
+  for (const match of decoded.matchAll(pattern)) urls.push(match[1]);
+  return urls;
+}
+
+function serializedTechnicalDocumentRecords(value) {
+  const decoded = String(value ?? '')
+    .replace(/\\"/g, '"')
+    .replace(/\\\//g, '/')
+    .replace(/\\u0026/gi, '&')
+    .replace(/&amp;/gi, '&');
+  const records = [];
+  for (const match of decoded.matchAll(/\{[^{}]{1,8192}\}/g)) {
+    let record;
+    try { record = JSON.parse(match[0]); } catch { continue; }
+    if (!record || typeof record !== 'object' || Array.isArray(record)) continue;
+    const id = String(record.id ?? '').trim();
+    const titleKey = String(record.titleKey ?? '').trim();
+    const filename = String(record.filename ?? '').trim();
+    if (!id || !titleKey || !filename || !record.url) continue;
+    let url;
+    try { url = canonicalUrl(record.url); } catch { continue; }
+    records.push({ id, titleKey, filename, url });
+  }
+  return records;
+}
+
 export function validateOfficialProductPageArtifactRelationship(artifactLinkUrl, artifactUrl) {
   const linked = new URL(canonicalUrl(artifactLinkUrl));
   const artifact = new URL(canonicalUrl(artifactUrl));
@@ -82,8 +116,37 @@ export function verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdent
     if (!value) return;
     try { linkedUrls.add(canonicalUrl(value, provenance.discoveryUrl)); } catch { /* Ignore malformed page links. */ }
   });
+  $('script').each((_, element) => {
+    for (const value of serializedScriptArtifactUrls($(element).text())) {
+      try { linkedUrls.add(canonicalUrl(value, provenance.discoveryUrl)); } catch { /* Ignore malformed script URLs. */ }
+    }
+  });
   if (!linkedUrls.has(canonicalUrl(provenance.artifactLinkUrl))) {
     throw new Error('official discovery page is missing the declared artifact link');
+  }
+  if (provenance.discoveryRecordType === 'serialized_technical_document_manifest') {
+    const expected = {
+      id: requiredText(provenance.documentId, 'discovery document ID'),
+      titleKey: requiredText(provenance.documentTitleKey, 'discovery document title key'),
+      filename: requiredText(provenance.originalFileName, 'discovery original filename'),
+      url: canonicalUrl(provenance.artifactLinkUrl),
+    };
+    const records = [];
+    $('script').each((_, element) => {
+      records.push(...serializedTechnicalDocumentRecords($(element).text()));
+    });
+    const matchingId = records.filter((record) => record.id === expected.id);
+    const distinctRows = new Set(matchingId.map((record) => JSON.stringify(record)));
+    if (distinctRows.size > 1) {
+      throw new Error('official discovery manifest record is conflicting');
+    }
+    if (!matchingId.some((record) => (
+      record.titleKey === expected.titleKey
+        && record.filename === expected.filename
+        && record.url === expected.url
+    ))) {
+      throw new Error('official discovery manifest record does not match declared document');
+    }
   }
   return true;
 }

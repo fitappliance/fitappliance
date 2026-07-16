@@ -649,6 +649,100 @@ test('HTML grouped dimensions fail closed when structured product rows conflict'
   }), /ambiguous extracted values/i);
 });
 
+test('HTML extractor maps a canonical Product JSON-LD HxWxD tuple and ignores packed dimensions', () => {
+  const boschIdentity = { brand: 'Bosch', model: 'SMS68M38AU', category: 'dishwasher' };
+  const canonical = 'https://www.bosch-home.com.au/en/mkt-product/SMS68M38AU';
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>Bosch dishwasher SMS68M38AU</title>
+    <link rel="canonical" href="${canonical}">
+  </head><body>
+    <script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': canonical,
+    mpn: 'SMS68M38AU',
+    additionalProperty: [
+      {
+        '@type': 'PropertyValue',
+        name: 'Dimensions of the product (HxWxD)',
+        value: '845 x 600 x 600',
+        unitText: 'mm',
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Dimensions of the packed product (HxWxD)',
+        value: '880 x 660 x 680',
+        unitText: 'mm',
+      },
+    ],
+  })}</script>
+  </body></html>`);
+  const fields = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+  const claims = extractClaimsFromHtml(bytes, { category: 'dishwasher', fields });
+
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 600,
+    'closedEnvelope.heightMm': 845,
+    'closedEnvelope.depthMm': 600,
+  });
+  assert.ok(claims.every((claim) => claim.semanticBasis === 'explicit_axis_sequence'));
+  assert.ok(claims.every((claim) => claim.label === 'Dimensions of the product (HxWxD)'));
+  const attested = verifyAndAttestResolutionArtifact({
+    source: source(bytes, {
+      sourceUrl: canonical,
+      finalUrl: canonical,
+      identity: { ...boschIdentity, outcome: 'exact' },
+      claims,
+    }),
+    caseIdentity: boschIdentity,
+    bytes,
+    verifiedAt: '2026-07-16T12:00:00.000Z',
+  });
+  assert.equal(verifyAttestedResolutionArtifact({ source: attested, caseIdentity: boschIdentity, bytes }), true);
+});
+
+test('HTML extractor rejects incomplete or conflicting canonical Product JSON-LD dimensions', () => {
+  const canonical = 'https://www.bosch-home.com.au/en/mkt-product/SMS68M38AU';
+  const fields = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+  const page = (additionalProperty) => Buffer.from(`<!doctype html><html><head>
+    <link rel="canonical" href="${canonical}">
+  </head><body><script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': canonical,
+    additionalProperty,
+  })}</script></body></html>`);
+
+  assert.deepEqual(extractClaimsFromHtml(page([
+    {
+      '@type': 'PropertyValue',
+      name: 'Dimensions of the packed product (HxWxD)',
+      value: '880 x 660 x 680',
+      unitText: 'mm',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Dimensions of the product (HxWxD)',
+      value: '845 x 600 x 600',
+    },
+  ]), { category: 'dishwasher', fields }), []);
+
+  assert.throws(() => extractClaimsFromHtml(page([
+    {
+      '@type': 'PropertyValue',
+      name: 'Dimensions of the product (HxWxD)',
+      value: '845 x 600 x 600',
+      unitText: 'mm',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Dimensions of the product (HxWxD)',
+      value: '815 x 598 x 573',
+      unitText: 'mm',
+    },
+  ]), { category: 'dishwasher', fields }), /ambiguous extracted values/i);
+});
+
 test('PDF approval requires hash-bound MinerU JSON and replays claims from that JSON', () => {
   const pdfBytes = Buffer.from('%PDF-1.7\nimmutable test artifact');
   const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');

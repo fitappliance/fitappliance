@@ -225,7 +225,7 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
   const allowed = new Set([
     'schemaVersion', 'method', 'market', 'sourceMarket', 'discoveryUrl', 'requestedModel', 'matchedModel',
     'artifactUrl', 'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath',
-    'discoveryByteSize', 'documentId', 'originalFileName',
+    'discoveryByteSize', 'discoveryRecordType', 'documentId', 'documentTitleKey', 'originalFileName',
   ]);
   const unknown = Object.keys(value).filter((key) => !allowed.has(key));
   if (unknown.length) throw new TypeError(`official artifact discovery provenance contains unknown fields: ${unknown.sort().join(', ')}`);
@@ -276,6 +276,7 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
   };
   const productPageFields = [
     'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath', 'discoveryByteSize',
+    'discoveryRecordType', 'documentTitleKey',
   ];
   if (method === 'official_product_page') {
     const artifactLinkUrl = canonicalHttpsUrl(value.artifactLinkUrl, 'discovery artifact link URL');
@@ -301,6 +302,17 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
       discoveryObjectPath,
       discoveryByteSize: value.discoveryByteSize,
     });
+    if (value.discoveryRecordType != null || value.documentTitleKey != null) {
+      if (value.discoveryRecordType !== 'serialized_technical_document_manifest') {
+        throw new TypeError('unsupported product-page discovery record type');
+      }
+      Object.assign(result, {
+        discoveryRecordType: value.discoveryRecordType,
+        documentId: requiredText(value.documentId, 'discovery document ID'),
+        documentTitleKey: requiredText(value.documentTitleKey, 'discovery document title key'),
+        originalFileName: requiredText(value.originalFileName, 'discovery original filename'),
+      });
+    }
   } else if (method === 'official_market_api'
     && officialMarketApiConfiguration(value.discoveryUrl, brand).endpoint.requiresBoundResponse === true) {
     const discoveryContentSha256 = requiredText(value.discoveryContentSha256, 'discovery content SHA-256');

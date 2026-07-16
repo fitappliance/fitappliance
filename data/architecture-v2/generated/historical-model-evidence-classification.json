@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T05:29:07.010Z",
+  "generatedAt": "2026-07-16T06:45:02.870Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "00c6c0e03e00867961a5461d7bf3a2bb6b85f34febdabd62f65692744cbf9d5e",
+  "semanticClassificationSha256": "d4dbd7005dc5b3410deeeebd97f86eeef7df865396a1e5549e06fcab6e23f610",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4235,
+    "documentLinks": 4243,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 248,
+      "COMPLETE_RECEIPT": 256,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 154,
       "OFFICIAL_DISCOVERY": 6417,
-      "REFERENCE_REDISCOVERY": 1193
+      "REFERENCE_REDISCOVERY": 1185
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6417,
-      "NO_ACTION": 248,
-      "REDISCOVER_OFFICIAL_SOURCE": 1193,
+      "NO_ACTION": 256,
+      "REDISCOVER_OFFICIAL_SOURCE": 1185,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 154
     },
     "bySourceAuthority": {
-      "MIXED": 112,
+      "MIXED": 120,
       "NONE": 6630,
       "OFFICIAL": 143,
-      "REFERENCE": 1210
+      "REFERENCE": 1202
     },
     "byIdentityScope": {
       "AMBIGUOUS": 191,
@@ -47,8 +47,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 64,
-      "ALL_AXIS_SCALAR": 327,
-      "NOT_PARSED": 7608,
+      "ALL_AXIS_SCALAR": 335,
+      "NOT_PARSED": 7600,
       "PARSER_GAP": 96
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 248,
-      "LEGACY_UNBOUND": 1522,
+      "CURRENT_VALID": 256,
+      "LEGACY_UNBOUND": 1514,
       "NONE": 6325
     }
   },
@@ -68,13 +68,13 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 1027,
+      "documentLinks": 1035,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 86,
+        "COMPLETE_RECEIPT": 94,
         "CONFLICT_QUARANTINE": 22,
         "IDENTITY_RESEARCH": 22,
         "OFFICIAL_DISCOVERY": 1030,
-        "REFERENCE_REDISCOVERY": 259
+        "REFERENCE_REDISCOVERY": 251
       }
     },
     {
@@ -389,12 +389,6 @@
       "models": 45
     },
     {
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "models": 44
-    },
-    {
       "category": "fridge",
       "brand": "Samsung",
       "operationalClass": "REFERENCE_REDISCOVERY",
@@ -417,6 +411,12 @@
       "brand": "Midea",
       "operationalClass": "OFFICIAL_DISCOVERY",
       "models": 43
+    },
+    {
+      "category": "fridge",
+      "brand": "SAMSUNG ELECTRONICS",
+      "operationalClass": "OFFICIAL_DISCOVERY",
+      "models": 42
     }
   ],
   "records": [
@@ -10487,13 +10487,15 @@
           "groupName": "Series 6",
           "grammarProfileIds": [
             "pdf_grammar_2cd42a3705740fb2",
-            "pdf_grammar_a2b008d9dd159831"
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_2cd42a3705740fb2",
-        "pdf_grammar_a2b008d9dd159831"
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
       ]
     },
     {
@@ -11017,13 +11019,15 @@
           "groupName": "Series 6",
           "grammarProfileIds": [
             "pdf_grammar_2cd42a3705740fb2",
-            "pdf_grammar_a2b008d9dd159831"
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_2cd42a3705740fb2",
-        "pdf_grammar_a2b008d9dd159831"
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
       ]
     },
     {
@@ -11113,13 +11117,15 @@
           "groupName": "Series 6",
           "grammarProfileIds": [
             "pdf_grammar_2cd42a3705740fb2",
-            "pdf_grammar_a2b008d9dd159831"
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_2cd42a3705740fb2",
-        "pdf_grammar_a2b008d9dd159831"
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
       ]
     },
     {
@@ -11209,13 +11215,15 @@
           "groupName": "Series 6",
           "grammarProfileIds": [
             "pdf_grammar_2cd42a3705740fb2",
-            "pdf_grammar_a2b008d9dd159831"
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_2cd42a3705740fb2",
-        "pdf_grammar_a2b008d9dd159831"
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
       ]
     },
     {
@@ -12432,14 +12440,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -12462,6 +12471,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50M22AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/d7/e3/d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4.html",
+            "receipt:f4d77966024d669dc6504a2493dd453b1133f2ab0b2c3d70ef4c37d25ea1f694"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4"
+        },
+        {
           "documentId": "source:doc_4e0b930ac0c04fb63a066a4d",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/2/1/0/4/21041fbceecce4894bd0cf662e72639b63428f72_Bosch_Dishwasher_SMS50M22AU_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -12477,8 +12504,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -12495,14 +12522,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -12525,6 +12553,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50M28AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/c3/00/c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60.html",
+            "receipt:caa65974cc7d607dd1dafd992d71e77c2637e7e7829c6cfc205bbe210ae30c9b"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60"
+        },
+        {
           "documentId": "source:doc_c9a9c6156b2de8bfa0bb02e8",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/7/2/9/3/7293baf08c7e9764b9ee0044cb4b045720541f70_Bosch_Dishwasher_SMS50M28AU_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -12540,8 +12586,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -12558,14 +12604,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -12588,6 +12635,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS63M18AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/31/f4/31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0.html",
+            "receipt:2d201c99f936c4ac8c5e1997460183d0f8c2d16adabebfe76fee4a0cf0152040"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0"
+        },
+        {
           "documentId": "source:doc_5f0c036f3b85a3e6ff8a8aa4",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/c/1/4/9/c1499db5748b495fa410578db40f2073ba36f913_sms63m18au_installationinstructions.pdf",
           "evidenceObjectIds": [
@@ -12603,8 +12668,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -12619,8 +12684,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS66JI01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -12692,8 +12757,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
+          "grammarProfileIds": [
+            "pdf_grammar_2a3308cabe6ee132"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2a3308cabe6ee132"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -12702,8 +12777,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS66MI02A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -12775,8 +12850,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
+          "grammarProfileIds": [
+            "pdf_grammar_2a3308cabe6ee132"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2a3308cabe6ee132"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -12785,8 +12870,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS66MW01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -12858,8 +12943,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
+          "grammarProfileIds": [
+            "pdf_grammar_2a3308cabe6ee132"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2a3308cabe6ee132"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -12870,14 +12965,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -12900,6 +12996,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:88c8fd8490906c88e52f26f91b367667dd81dffc7b193900fa01ca6beec1cdc0",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS68M32AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/88/c8/88c8fd8490906c88e52f26f91b367667dd81dffc7b193900fa01ca6beec1cdc0.html",
+            "receipt:2f214f1cc7bba1f9045df6eac99ba647d74ca8d77edef3edf131cfa86e9cc0c1"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "88c8fd8490906c88e52f26f91b367667dd81dffc7b193900fa01ca6beec1cdc0"
+        },
+        {
           "documentId": "source:doc_e8fea08d4795d22c52c61a0d",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/4/a/2/5/4a2528e937dfe06840058f53857c3596bb0315f4_Bosch_SMS68M32AU_Serie_6_Freestanding_Dishwasher_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -12915,8 +13029,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -12933,14 +13047,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -12963,6 +13078,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS68M38AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/bd/03/bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b.html",
+            "receipt:828fedd9e30cd010f05c9a20903efcd9f45fbb48cd0135f3ae54188857825c5b"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b"
+        },
+        {
           "documentId": "source:doc_c498cc651852665b231daa60",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/c/7/9/6c798176c64c0465949ca618b40980b15347a297_Bosch_SMS68M38AU_Serie_6_Freestanding_Dishwasher_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -12978,8 +13111,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -12996,14 +13129,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -13025,6 +13159,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:6ec815af5f605f414d63ba82761f6cb416bfefa5627bfa61724fcb245119c9d2",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS69T18AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/6e/c8/6ec815af5f605f414d63ba82761f6cb416bfefa5627bfa61724fcb245119c9d2.html",
+            "receipt:6da169c59fad44ddc270d526c60e34de9632a8ac3e2c92efa66cbff38ca480a8"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "6ec815af5f605f414d63ba82761f6cb416bfefa5627bfa61724fcb245119c9d2"
+        },
+        {
           "documentId": "source:doc_5db775c7d65ac78ef5b85ac9",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/3/c/3/a/3c3a2ce5af53c25c0261e7face751a71ed3840b0_sms69t18au_installationinstructions.pdf",
           "evidenceObjectIds": [
@@ -13040,8 +13192,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -13058,14 +13210,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -13088,6 +13241,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS69T28AU",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/57/17/5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea.html",
+            "receipt:36d9b2b701e26704a355ea80d1e0bf17e7eb15b59077b3fda9e91257ad3333bf"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea"
+        },
+        {
           "documentId": "source:doc_66f6bfee2d1a5c3c5a6caf80",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/0/1/2/d/012d434c58a44e47a0dd5dffd253de3925bdc610_Bosch_Dishwasher_SMS69T28AU_Installation_and_Operation_Guide.pdf",
           "evidenceObjectIds": [
@@ -13103,8 +13274,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -13145,8 +13316,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS6HAI02A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -13219,8 +13390,22 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_2cd42a3705740fb2",
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2cd42a3705740fb2",
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -13229,8 +13414,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS6HCB01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -13303,8 +13488,22 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_2cd42a3705740fb2",
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2cd42a3705740fb2",
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -13313,8 +13512,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS6HCB02A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -13387,8 +13586,22 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_2cd42a3705740fb2",
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2cd42a3705740fb2",
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -13397,8 +13610,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS6HCI01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -13471,8 +13684,22 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_2cd42a3705740fb2",
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2cd42a3705740fb2",
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -13546,13 +13773,15 @@
           "groupName": "Series 6",
           "grammarProfileIds": [
             "pdf_grammar_2cd42a3705740fb2",
-            "pdf_grammar_a2b008d9dd159831"
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_2cd42a3705740fb2",
-        "pdf_grammar_a2b008d9dd159831"
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
       ]
     },
     {
@@ -13562,8 +13791,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS6HCW01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -13636,8 +13865,22 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_2cd42a3705740fb2",
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2cd42a3705740fb2",
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -13646,8 +13889,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS88TI01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "Bosch Australia dishwasher product specification",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -13720,8 +13963,18 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "Bosch Australia dishwasher product specification",
+          "grammarProfileIds": [
+            "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -13730,16 +13983,17 @@
       "canonicalBrand": "Bosch",
       "model": "SMS88TI04A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_bcf89084114e25c7",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -13762,6 +14016,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:cb161d103041931a79ac8b12b47791bbbe576b6b1b6b458cf24800340afeaedf",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS88TI04A",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/cb/16/cb161d103041931a79ac8b12b47791bbbe576b6b1b6b458cf24800340afeaedf.html",
+            "receipt:148e5b528ad634f17f25689a1d45411d44f8a11eadd6b87b4bc5be92048cf57a"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "cb161d103041931a79ac8b12b47791bbbe576b6b1b6b458cf24800340afeaedf"
+        },
+        {
           "documentId": "source:doc_9ee898770f620a691e361a3e",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/f/6/2/a/f62ac2633f3e6c0f6dde4904be88dfb6a09d4e0e_Bosch_SMS88TI04A_Serie_8_Freestanding_Dishwasher_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -13777,14 +14049,24 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_bcf89084114e25c7",
+          "grammarProfileIds": [
+            "pdf_grammar_bcf89084114e25c7"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_bcf89084114e25c7"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -13793,8 +14075,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS8EDI01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -13867,8 +14149,18 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_0a5af8c992c338c2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_0a5af8c992c338c2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -13877,8 +14169,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMT8ZC801A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -13950,8 +14242,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_0a5af8c992c338c2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_0a5af8c992c338c2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -13960,8 +14262,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU46GS01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d0a7cfc9cb0c3200",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -14033,8 +14335,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d0a7cfc9cb0c3200",
+          "grammarProfileIds": [
+            "pdf_grammar_d0a7cfc9cb0c3200"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d0a7cfc9cb0c3200"
+      ]
     },
     {
       "schemaVersion": 1,

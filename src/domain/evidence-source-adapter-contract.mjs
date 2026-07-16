@@ -69,7 +69,7 @@ function optionalDiscoveryProvenance(value) {
   const keys = new Set([
     'schemaVersion', 'method', 'market', 'sourceMarket', 'discoveryUrl', 'requestedModel', 'matchedModel',
     'artifactUrl', 'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath',
-    'discoveryByteSize', 'documentId', 'originalFileName',
+    'discoveryByteSize', 'discoveryRecordType', 'documentId', 'documentTitleKey', 'originalFileName',
   ]);
   rejectUnknownKeys(value, keys, 'candidate discovery provenance');
   if (value.schemaVersion !== 1) throw new TypeError('candidate discovery provenance schema invalid');
@@ -102,6 +102,17 @@ function optionalDiscoveryProvenance(value) {
       discoveryObjectPath: objectPath,
       discoveryByteSize: value.discoveryByteSize,
     });
+    if (value.discoveryRecordType != null || value.documentTitleKey != null) {
+      if (value.discoveryRecordType !== 'serialized_technical_document_manifest') {
+        throw new TypeError('candidate product-page discovery record type invalid');
+      }
+      Object.assign(result, {
+        discoveryRecordType: value.discoveryRecordType,
+        documentId: requiredText(value.documentId, 'candidate discovery document ID'),
+        documentTitleKey: requiredText(value.documentTitleKey, 'candidate discovery document title key'),
+        originalFileName: requiredText(value.originalFileName, 'candidate discovery filename'),
+      });
+    }
   } else if (['official_market_api', 'official_support_api'].includes(result.method)
     && value.discoveryContentSha256) {
     const hash = requiredText(value.discoveryContentSha256, 'candidate discovery content SHA-256');
@@ -120,6 +131,10 @@ function optionalDiscoveryProvenance(value) {
         artifactLinkUrl: canonicalHttpsUrl(value.artifactLinkUrl, 'candidate discovery artifact link URL'),
       } : {}),
     });
+  }
+  if (result.method !== 'official_product_page'
+    && (value.discoveryRecordType != null || value.documentTitleKey != null)) {
+    throw new TypeError('candidate serialized manifest record requires product-page discovery');
   }
   return result;
 }

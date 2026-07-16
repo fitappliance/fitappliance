@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T05:30:08.323Z",
-  "sourceBundleSha256": "2e4aa6ad26da8967d3c9259d51122213e3e9d6fbf660cd5fb3b3942904fdd093",
+  "generatedAt": "2026-07-16T06:44:04.501Z",
+  "sourceBundleSha256": "7491a1e456ed5d0be4ed073791f91b4aec1f52bf92d1c666ec22d34bcf58ea8f",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -56,6 +56,20 @@
       "contentSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
       "receiptBindingSha256": "adf7ceb5e87d78b72ed8356e8304e0093afcfe9dd5bba756d653922fa789371d",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/cc/60/cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_010660fb4c2073671b3d6a2b",
+      "referenceId": "fa_ref_4628f542995cf20d2cf875ec",
+      "brand": "Bosch",
+      "model": "SMS68M38AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS68M38AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "bd0302ffe43748d7c23df2e5ab3500ca6eb68eb46adba0c99383572db9aa975b",
+      "receiptBindingSha256": "828fedd9e30cd010f05c9a20903efcd9f45fbb48cd0135f3ae54188857825c5b",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -1054,6 +1068,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_4cfffebb1360ecc5b8963150",
+      "referenceId": "fa_ref_7ffc86b916589fd528d59b04",
+      "brand": "Bosch",
+      "model": "SMS69T28AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS69T28AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "5717b6660f189c94b3b0bb7aca90d8c2e64daad3225b4164053a94ba7a5437ea",
+      "receiptBindingSha256": "36d9b2b701e26704a355ea80d1e0bf17e7eb15b59077b3fda9e91257ad3333bf",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_4fce123d116933f253653b5f",
       "referenceId": "fa_ref_1049fe7fa7baad83d6b0a1a2",
       "brand": "Westinghouse",
@@ -1782,6 +1810,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_8272109004d22e80b7303333",
+      "referenceId": "fa_ref_72674c9aac920e4b91c89a7d",
+      "brand": "Bosch",
+      "model": "SMS88TI04A",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS88TI04A",
+      "sourcePdfSha256": null,
+      "contentSha256": "cb161d103041931a79ac8b12b47791bbbe576b6b1b6b458cf24800340afeaedf",
+      "receiptBindingSha256": "148e5b528ad634f17f25689a1d45411d44f8a11eadd6b87b4bc5be92048cf57a",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_83f0f6e20bccf3d250b69a52",
       "referenceId": "fa_ref_c39413faf56e81ee697117cb",
       "brand": "Fisher & Paykel",
@@ -1862,6 +1904,20 @@
       "contentSha256": "b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be",
       "receiptBindingSha256": "1f55887b45b8df32d26e2231b9d436a4199ff64a93d2ec9ab4d832d44139d499",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/82/27/82279b862df78b63477da129bf1b3db09318ee78b9d8da224264ed6f6130881a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_90ffd8dfc218153529d3d851",
+      "referenceId": "fa_ref_742a58c687d70880227dd5ae",
+      "brand": "Bosch",
+      "model": "SMS69T18AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS69T18AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "6ec815af5f605f414d63ba82761f6cb416bfefa5627bfa61724fcb245119c9d2",
+      "receiptBindingSha256": "6da169c59fad44ddc270d526c60e34de9632a8ac3e2c92efa66cbff38ca480a8",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -1974,6 +2030,20 @@
       "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
       "receiptBindingSha256": "fdc90185319e7da9ec00a4017f38ee69eb230506833c2803441ec832c31587a3",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/10/8b/108bd363434692a686ec87dac921631f906301cc47cd493341f317dba71892db.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_96e21a478498cf542a6be80f",
+      "referenceId": "fa_ref_b6841e9f51c0d64e75dcec0a",
+      "brand": "Bosch",
+      "model": "SMS50M22AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50M22AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4",
+      "receiptBindingSha256": "f4d77966024d669dc6504a2493dd453b1133f2ab0b2c3d70ef4c37d25ea1f694",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -2142,6 +2212,20 @@
       "contentSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
       "receiptBindingSha256": "d058194c692c93254d9a44a7b9dcdd8cf05b0521dc59b6de8217f2a191ed8f1c",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/cd/4c/cd4cdd55586884ec8c0c83fefe87e7c6217d007a3731d805f5cb8adf9d3a0ada.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_9d9a6795f6cf84ae562766bf",
+      "referenceId": "fa_ref_f146f4be05637a92ab43278f",
+      "brand": "Bosch",
+      "model": "SMS63M18AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS63M18AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0",
+      "receiptBindingSha256": "2d201c99f936c4ac8c5e1997460183d0f8c2d16adabebfe76fee4a0cf0152040",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -2916,6 +3000,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_d467320cd885c606ee003a57",
+      "referenceId": "fa_ref_9774b2c4a1d1d8d4a5fc1449",
+      "brand": "Bosch",
+      "model": "SMS50M28AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50M28AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "c300bfcf47a83b514edbc7de28235763e655d4e1dd44ddf9941b694e36bd2b60",
+      "receiptBindingSha256": "caa65974cc7d607dd1dafd992d71e77c2637e7e7829c6cfc205bbe210ae30c9b",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_d52c87a7a85f2deaaaec0dec",
       "referenceId": "fa_ref_6392b2feb1a2e0e4acb21394",
       "brand": "Bosch",
@@ -3462,6 +3560,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_fa91a8c4bb8f5e3280f2b837",
+      "referenceId": "fa_ref_58d6644d988c7bd0e844c80d",
+      "brand": "Bosch",
+      "model": "SMS68M32AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS68M32AU",
+      "sourcePdfSha256": null,
+      "contentSha256": "88c8fd8490906c88e52f26f91b367667dd81dffc7b193900fa01ca6beec1cdc0",
+      "receiptBindingSha256": "2f214f1cc7bba1f9045df6eac99ba647d74ca8d77edef3edf131cfa86e9cc0c1",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_fb75150e641413542e65e68f",
       "referenceId": "fa_ref_bd00665155bb863ad09d5c39",
       "brand": "Beko",
@@ -3533,11 +3645,11 @@
     }
   ],
   "summary": {
-    "entries": 229,
-    "sources": 252,
-    "passed": 252,
+    "entries": 237,
+    "sources": 260,
+    "passed": 260,
     "failed": 0
   },
-  "checkedObjects": 510,
-  "semanticAuditSha256": "636f366ef069da72d5c584a423311c92f60f5e95d7667b17ab7da28d09655e81"
+  "checkedObjects": 518,
+  "semanticAuditSha256": "047b8053b48e01db18bcecb3b294ce1e4bc6f191de4d2b22ac3511f97d09deeb"
 }

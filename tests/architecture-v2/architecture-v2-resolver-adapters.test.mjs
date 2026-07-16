@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 import {
   buildArchitectureV2ResolverAdapters,
+  createBoschResolverAdapter,
   createElectroluxGroupResolverAdapter,
   createFisherPaykelResolverAdapter,
   createLegacyFinderResolverAdapter,
@@ -311,12 +312,57 @@ test('adapter router enables only compatible pilot brand discovery', () => {
     .map((row) => row.resolverId), ['samsung-official-discovery']);
   assert.deepEqual(buildArchitectureV2ResolverAdapters({ brand: 'ASKO', model: 'T408HD.W' })
     .map((row) => row.resolverId), ['asko-official-manuals-api']);
+  assert.deepEqual(buildArchitectureV2ResolverAdapters({ brand: 'Bosch', model: 'SMS68M38AU' })
+    .map((row) => row.resolverId), ['bosch-official-product-documents']);
 });
 
-test('queue routing exposes core discovery only for brands with deterministic model templates', () => {
-  assert.deepEqual(resolverAdapterIdsForBrand('Bosch'), ['architecture-v2-core-official-discovery']);
+test('queue routing exposes specialized Bosch discovery and core discovery for remaining deterministic templates', () => {
+  assert.deepEqual(resolverAdapterIdsForBrand('Bosch'), ['bosch-official-product-documents']);
   assert.deepEqual(resolverAdapterIdsForBrand('Smeg'), ['architecture-v2-core-official-discovery']);
   assert.deepEqual(resolverAdapterIdsForBrand('Unknown Brand'), []);
+});
+
+test('Bosch adapter preserves exact product-page provenance for every technical document', async () => {
+  const model = 'SMS68M38AU';
+  const productPageUrl = `https://www.bosch-home.com.au/en/mkt-product/${model}`;
+  const artifactUrl = 'https://media3.bsh-group.com/Documents/9001069073_D.pdf';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: productPageUrl,
+    requestedModel: model,
+    matchedModel: model,
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: 'd'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/dd/dd/${'d'.repeat(64)}.html`,
+    discoveryByteSize: 1234,
+    discoveryRecordType: 'serialized_technical_document_manifest',
+    documentId: 'user-1',
+    documentTitleKey: 'user-manuals',
+    originalFileName: '9001069073_D.pdf',
+  };
+  const adapter = createBoschResolverAdapter({
+    finder: async () => ({
+      sourceUrl: artifactUrl,
+      productPageUrl,
+      resources: [{
+        url: artifactUrl,
+        resourceType: 'user_manual',
+        requiredAttempt: true,
+        discoveryProvenance: provenance,
+      }],
+    }),
+  });
+  const result = await adapter.resolve({ brand: 'Bosch', model, category: 'dishwasher' });
+
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.candidates.map((row) => [row.documentType, row.authorityMode, row.requiredAttempt]), [
+    ['user_manual', 'official', true],
+    ['product_page', 'official', false],
+  ]);
+  assert.deepEqual(result.candidates[0].discoveryProvenance, provenance);
 });
 
 test('ASKO adapter preserves hash-bound exact-model Australian API provenance', async () => {
@@ -355,7 +401,7 @@ test('all migration brands route through typed discovery-only adapters', () => {
     'Fisher & Paykel', 'Haier', 'Electrolux', 'Westinghouse', 'LG', 'Samsung',
     'Beko', 'Hisense', 'Miele', 'Liebherr', 'Midea', 'CHiQ',
     'ASKO', 'Artusi', 'Esatto', 'Euromaid', 'InAlto', 'Kogan', 'Omega', 'Robinhood',
-    'Sub-Zero', 'Teco', 'Vogue',
+    'Sub-Zero', 'Teco', 'Vogue', 'Bosch',
   ];
   for (const brand of brands) {
     assert.equal(buildArchitectureV2ResolverAdapters({ brand, model: 'MODEL100' }).length, 1, brand);

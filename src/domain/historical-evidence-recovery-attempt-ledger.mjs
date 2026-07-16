@@ -77,6 +77,7 @@ function attemptEntry({ target, candidate, outcome, batch, results, audit, bindi
   if (contentSha256 !== null) sha256(contentSha256, 'candidate content SHA-256');
   const reason = text(outcome.reason ?? `${outcome.status}:${failureCode}`, 'candidate failure reason');
   const seed = {
+    runId: results.runId,
     targetId: target.targetId,
     sourceUrl: normalizedSourceUrl,
     contentSha256,

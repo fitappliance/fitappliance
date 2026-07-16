@@ -72,6 +72,29 @@ test('audited terminal candidate is appended once with immutable source and run 
   assert.equal(second.summary.entries, 1);
 });
 
+test('the same candidate failure in a later run appends a distinct immutable attempt', () => {
+  const input = fixture();
+  const first = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, priorLedger: null, generatedAt: '2026-07-16T01:01:00.000Z',
+  });
+  const replayed = structuredClone(input);
+  replayed.results.runId = 'run-fp-replayed';
+  replayed.results.completedAt = '2026-07-16T02:00:00.000Z';
+  replayed.audit.resultsSha256 = canonicalJsonSha256(replayed.results);
+  replayed.audit.semanticAuditSha256 = SHA('9');
+
+  const second = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...replayed, priorLedger: first, generatedAt: '2026-07-16T02:01:00.000Z',
+  });
+
+  assert.equal(second.entries.length, 2);
+  assert.equal(new Set(second.entries.map((entry) => entry.attemptId)).size, 2);
+  assert.deepEqual(
+    new Set(second.entries.map((entry) => entry.runId)),
+    new Set(['run-fp', 'run-fp-replayed']),
+  );
+});
+
 test('transient transport failures remain retryable and suppressed candidates are not re-recorded', () => {
   const input = fixture();
   input.results.outcomes[0].candidateInventory.candidates.push({

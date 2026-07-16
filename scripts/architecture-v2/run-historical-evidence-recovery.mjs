@@ -376,6 +376,7 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
     collectCandidates: collectEvidenceCandidates,
     candidateResolversForTarget: (target) => recoveryCandidateResolversForTarget(target, {
       resolverOptions: {
+        bosch: { finderOptions: { writeObject: objectStore.writeObject } },
         beko: { finderOptions: { writeObject: objectStore.writeObject } },
         asko: { finderOptions: { writeObject: objectStore.writeObject } },
         esatto: { finderOptions: { writeObject: objectStore.writeObject } },

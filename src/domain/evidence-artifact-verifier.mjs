@@ -72,6 +72,62 @@ function urlHasExactModelSegment(value, model, base = undefined) {
   }
 }
 
+function schemaTypeIncludes(value, expected) {
+  const values = Array.isArray(value) ? value : [value];
+  return values.some((candidate) => {
+    const normalized = normalizedText(candidate).toLowerCase();
+    return normalized.split(/[\/#]/).at(-1) === expected.toLowerCase();
+  });
+}
+
+function canonicalProductPropertyValues($) {
+  const canonical = $('link[rel="canonical"]').first().attr('href');
+  if (!canonical) return [];
+  let canonicalKey;
+  try { canonicalKey = resourceKey(canonical); } catch { return []; }
+  const properties = [];
+  $('script[type="application/ld+json"]').each((_, element) => {
+    const raw = String($(element).html() ?? '').trim();
+    if (!raw || raw.length > 5_000_000 || !/^[{[]/.test(raw)) return;
+    let parsed;
+    try { parsed = JSON.parse(raw); } catch { return; }
+    const queue = [{ value: parsed, depth: 0 }];
+    let visited = 0;
+    while (queue.length && visited < 100_000) {
+      const { value, depth } = queue.shift();
+      visited += 1;
+      if (!value || typeof value !== 'object' || depth > 20) continue;
+      if (!Array.isArray(value)) {
+        const productUrl = [value['@id'], value.url].find((candidate) => {
+          try { return resourceKey(candidate) === canonicalKey; } catch { return false; }
+        });
+        if (schemaTypeIncludes(value['@type'], 'Product') && productUrl) {
+          const additionalProperties = Array.isArray(value.additionalProperty)
+            ? value.additionalProperty
+            : [value.additionalProperty];
+          for (const property of additionalProperties) {
+            if (!property || typeof property !== 'object'
+              || !schemaTypeIncludes(property['@type'], 'PropertyValue')) continue;
+            const name = normalizedText(property.name);
+            const propertyValue = normalizedText(property.value);
+            const unitText = normalizedText(property.unitText);
+            if (!name || !propertyValue
+              || !/^(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)$/i.test(unitText)) continue;
+            properties.push({ name, value: propertyValue, unitText });
+          }
+        }
+      }
+      for (const child of Object.values(value)) {
+        if (child && typeof child === 'object') queue.push({ value: child, depth: depth + 1 });
+      }
+    }
+  });
+  return [...new Map(properties.map((property) => [
+    `${property.name}\0${property.value}\0${property.unitText}`,
+    property,
+  ])).values()];
+}
+
 function structuredProductModel($, model, canonical) {
   const target = identifier(model);
   let matched = null;
@@ -88,7 +144,9 @@ function structuredProductModel($, model, canonical) {
       visited += 1;
       if (!value || typeof value !== 'object' || depth > 20) continue;
       if (!Array.isArray(value)) {
-        const modelValue = ['code', 'model', 'modelCode', 'productCode', 'sku']
+        const modelKeys = ['code', 'model', 'modelCode', 'productCode', 'sku'];
+        if (schemaTypeIncludes(value['@type'], 'Product')) modelKeys.push('mpn');
+        const modelValue = modelKeys
           .map((key) => value[key]).find((candidate) => identifier(candidate) === target);
         const productUrl = ['url', '@id', 'canonicalUrl']
           .map((key) => value[key]).find((candidate) => urlHasExactModelSegment(candidate, model, canonical));
@@ -169,6 +227,10 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
     .get()
     .filter(Boolean)
     .join(' ');
+  const structuredPropertyText = canonicalProductPropertyValues($)
+    .map((property) => `${property.name} ${property.value} ${property.unitText}`)
+    .join(' ');
+  const evidenceText = normalizedText(`${text} ${structuredPropertyText}`);
   const titleBoundVariants = [...officialVariants.values()]
     .filter((variant) => containsExactModel(title, variant.sourceModel));
   if (titleBoundVariants.length === 1) {
@@ -180,7 +242,7 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
       value: `${caseIdentity.model} -> ${variant.sourceModel} (${variant.suffix})`,
     });
     signals.push({ type: 'product_model', value: variant.sourceModel });
-    return { signals, text: normalizedText(text), identity: {
+    return { signals, text: evidenceText, identity: {
       brand: caseIdentity.brand,
       model: caseIdentity.model,
       outcome: 'official_marketing_alias',
@@ -192,7 +254,7 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
     if (productModel) signals.push({ type: 'product_model', value: productModel });
     if (structuredModel) signals.push({ type: 'structured_product_model', value: structuredModel });
     if (!productModel && !structuredModel) throw new Error('exact product model identity signal missing');
-    return { signals, text: normalizedText(text), identity: {
+    return { signals, text: evidenceText, identity: {
       brand: caseIdentity.brand, model: caseIdentity.model, outcome: 'exact',
     } };
   }
@@ -209,7 +271,7 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
     if (binding) {
       signals.push({ type: 'canonical_source_model', value: sourceModel });
       signals.push({ type: 'official_alias_binding', value: binding });
-      return { signals, text: normalizedText(text), identity: {
+      return { signals, text: evidenceText, identity: {
         brand: caseIdentity.brand,
         model: caseIdentity.model,
         outcome: 'official_marketing_alias',
@@ -466,6 +528,15 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
   const $ = load(Buffer.from(bytes).toString('utf8'));
   const candidates = new Map(fields.map((field) => [field, []]));
   const structuredCandidates = new Map(fields.map((field) => [field, []]));
+  for (const property of canonicalProductPropertyValues($)) {
+    const quote = `${property.name} ${property.value} ${property.unitText}`;
+    const grouped = claimsFromExplicitDimensionSequence({
+      label: property.name,
+      value: `${property.value} ${property.unitText}`,
+      quote,
+    }, { category }, fields);
+    grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push(claim));
+  }
   $('body li, body [role="listitem"], body tr').each((_, row) => {
     if ($(row).closest('[hidden],[aria-hidden="true"],script,style,noscript,template').length) return;
     const rowText = elementText($, row);
