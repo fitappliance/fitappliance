@@ -4,6 +4,10 @@ const TRANSIENT_FAILURES = new Set(['transport', 'discovery', 'discovery_incompl
 const SKIPPED_STATUSES = new Set([
   'accepted', 'unchanged', 'not_attempted_optional', 'reference_only', 'previous_terminal_suppressed',
 ]);
+const EXHAUSTED_CANDIDATE_STATUSES = new Set([
+  'claims_incomplete', 'identity_rejected', 'mineru_failure',
+  'previous_terminal_suppressed', 'reference_only',
+]);
 
 function text(value, label) {
   const normalized = String(value ?? '').replace(/\s+/g, ' ').trim();
@@ -50,6 +54,15 @@ function countBy(entries, key) {
 
 function sameSourceFact(left, right, keys) {
   return keys.every((key) => left[key] === right[key]);
+}
+
+function sameReauditedFact(left, right) {
+  const withoutAuditReceipt = (value) => {
+    const { auditSha256: _auditSha256, ...fact } = value;
+    return fact;
+  };
+  return canonicalJsonSha256(withoutAuditReceipt(left))
+    === canonicalJsonSha256(withoutAuditReceipt(right));
 }
 
 export function historicalResolverContractSha256(resolvers) {
@@ -222,10 +235,19 @@ function sourceAcceptanceEntry({ target, candidate, outcome, batch, results, aud
 
 function targetAttemptEntry({ target, result, batch, results, audit, bindings }) {
   const inventory = result.candidateInventory;
-  if (result.status !== 'claims_incomplete'
-    || result.failureCode !== 'source_authority'
+  const candidates = inventory?.candidates ?? [];
+  const terminalResult = ![
+    'accepted', 'receipt_accepted_non_scalar', 'retryable_failure', 'unchanged',
+  ].includes(result.status) && !TRANSIENT_FAILURES.has(result.failureCode);
+  const exhaustedCandidates = candidates.every((candidate) => (
+    candidate?.outcome
+      && EXHAUSTED_CANDIDATE_STATUSES.has(candidate.outcome.status)
+      && (candidate.authorityMode !== 'reference'
+        || candidate.outcome.status === 'reference_only')
+  ));
+  if (!terminalResult
     || inventory?.completionStatus !== 'complete'
-    || (inventory.candidates ?? []).length !== 0
+    || !exhaustedCandidates
     || (inventory.incompleteResolvers ?? []).length !== 0
     || (inventory.missingBatchCandidateJobIds ?? []).length !== 0) return null;
   const resolvers = (inventory.resolvers ?? []).map((resolver) => ({
@@ -239,7 +261,7 @@ function targetAttemptEntry({ target, result, batch, results, audit, bindings })
   if (!resolvers.length || resolvers.some((resolver) => (
     resolver.completion !== 'complete'
       || !Number.isInteger(resolver.candidateCount)
-      || resolver.candidateCount !== 0
+      || resolver.candidateCount < 0
   ))) return null;
   const resolverSetSha256 = canonicalJsonSha256(resolvers);
   const seed = {
@@ -262,7 +284,9 @@ function targetAttemptEntry({ target, result, batch, results, audit, bindings })
     lifecycleState: target.lifecycleState,
     status: result.status,
     failureCode: result.failureCode,
-    reason: 'complete_zero_candidate_inventory',
+    reason: candidates.length === 0
+      ? 'complete_zero_candidate_inventory'
+      : 'complete_exhausted_candidate_inventory',
     disposition: 'AWAIT_RESOLVER_OR_POLICY_CHANGE',
     suppressesSamePolicyResolverOnly: true,
     resolverSetSha256,
@@ -307,10 +331,10 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
     const targetAttempt = targetAttemptEntry({ target, result, batch, results, audit, bindings });
     if (targetAttempt) {
       const existing = targetAttempts.get(targetAttempt.targetAttemptId);
-      if (existing && canonicalJsonSha256(existing) !== canonicalJsonSha256(targetAttempt)) {
+      if (existing && !sameReauditedFact(existing, targetAttempt)) {
         throw new Error(`conflicting target attempt ledger entry: ${targetAttempt.targetAttemptId}`);
       }
-      targetAttempts.set(targetAttempt.targetAttemptId, targetAttempt);
+      if (!existing) targetAttempts.set(targetAttempt.targetAttemptId, targetAttempt);
     }
     for (const candidate of result.candidateInventory?.candidates ?? []) {
       const outcome = candidate.outcome;
@@ -353,10 +377,10 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
       if (SKIPPED_STATUSES.has(outcome.status)) continue;
       const entry = attemptEntry({ target, candidate, outcome, batch, results, audit, bindings });
       const existing = entries.get(entry.attemptId);
-      if (existing && canonicalJsonSha256(existing) !== canonicalJsonSha256(entry)) {
+      if (existing && !sameReauditedFact(existing, entry)) {
         throw new Error(`conflicting attempt ledger entry: ${entry.attemptId}`);
       }
-      entries.set(entry.attemptId, entry);
+      if (!existing) entries.set(entry.attemptId, entry);
     }
   }
   const materialized = [...entries.values()].sort((left, right) => left.attemptId.localeCompare(right.attemptId));

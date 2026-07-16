@@ -68,7 +68,10 @@ test('audited terminal candidate is appended once with immutable source and run 
   assert.equal(first.entries[0].suppressesSamePolicySource, true);
 
   const second = buildHistoricalEvidenceRecoveryAttemptLedger({
-    ...input, priorLedger: first, generatedAt: '2026-07-16T01:02:00.000Z',
+    ...input,
+    audit: { ...input.audit, semanticAuditSha256: SHA('9') },
+    priorLedger: first,
+    generatedAt: '2026-07-16T01:02:00.000Z',
   });
   assert.deepEqual(second.entries, first.entries);
   assert.equal(second.summary.entries, 1);
@@ -120,6 +123,7 @@ test('transient transport failures remain retryable and suppressed candidates ar
   const transport = ledger.entries.find((entry) => entry.failureCode === 'transport');
   assert.equal(transport.suppressesSamePolicySource, false);
   assert.equal(transport.disposition, 'RETRY_TRANSIENT');
+  assert.deepEqual(ledger.targetAttempts, []);
 });
 
 test('a complete zero-candidate resolver pass creates one policy-bound target suppression', () => {
@@ -153,7 +157,10 @@ test('a complete zero-candidate resolver pass creates one policy-bound target su
   }).length, 1);
 
   const second = buildHistoricalEvidenceRecoveryAttemptLedger({
-    ...input, priorLedger: first, generatedAt: '2026-07-16T01:02:00.000Z',
+    ...input,
+    audit: { ...input.audit, semanticAuditSha256: SHA('9') },
+    priorLedger: first,
+    generatedAt: '2026-07-16T01:02:00.000Z',
   });
   assert.deepEqual(second.targetAttempts, first.targetAttempts);
   assert.deepEqual(activeHistoricalResolverSuppressions({
@@ -172,6 +179,38 @@ test('a complete zero-candidate resolver pass creates one policy-bound target su
       ...result.candidateInventory.resolvers[0], version: '2',
     }]),
   }), []);
+});
+
+test('a complete exhausted inventory of reference and terminal candidates suppresses resolver-only reruns', () => {
+  const input = fixture();
+  const result = input.results.outcomes[0];
+  result.status = 'claims_incomplete';
+  result.failureCode = 'source_authority';
+  result.candidateInventory.candidates.push({
+    sourceUrl: 'https://www.fisherpaykel.com/nz/support/products/reference-only',
+    authorityMode: 'reference', requiredAttempt: false, batchJobIds: [],
+    outcome: {
+      status: 'reference_only', failureCode: 'source_authority',
+      reason: 'outside Australian publication policy', source: null,
+    },
+  });
+  result.candidateInventory.completionStatus = 'complete';
+  result.candidateInventory.incompleteResolvers = [];
+  result.candidateInventory.missingBatchCandidateJobIds = [];
+  result.candidateInventory.resolvers = [{
+    resolverId: 'fisher-paykel-official-support', version: '6', required: true,
+    scope: 'exact_model_product_page_and_support_documents', completion: 'complete', candidateCount: 2,
+  }];
+  input.audit.resultsSha256 = canonicalJsonSha256(input.results);
+
+  const ledger = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, priorLedger: null, generatedAt: '2026-07-16T01:01:00.000Z',
+  });
+
+  assert.equal(ledger.targetAttempts.length, 1);
+  assert.equal(ledger.targetAttempts[0].reason, 'complete_exhausted_candidate_inventory');
+  assert.equal(ledger.targetAttempts[0].suppressesSamePolicyResolverOnly, true);
+  assert.equal(ledger.summary.resolverOnlySuppressions, 1);
 });
 
 test('an incomplete zero-candidate resolver pass remains retryable', () => {

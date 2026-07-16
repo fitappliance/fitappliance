@@ -635,3 +635,20 @@ schema requires a fixed W/H/D triple, so an adjustable-height receipt completes
 PDF research but does not become `AUTO_FILL`. Do not flatten the range to its
 minimum, maximum or midpoint. A later range-aware replacement design must ask
 for the installed height or preserve the range explicitly.
+
+Run `historical-fpa-wa60-followup-20260716-d` is also immutable and must not be
+rerun. It found only New Zealand reference pages for `WA7060G2`, `WA8060E1`
+and `WA8060P1`; `WA8060G1` had an exact Australian support route, but the
+captured page was a generic shell with no supported dimension claims or bound
+document resource. All four outcomes were terminal, with no retryable failure.
+
+The attempt ledger treats a complete resolver inventory as exhausted when it
+contains no accepted or retryable source and every discovered candidate is
+either `reference_only` or has a typed terminal outcome. Such a result creates
+a target-level suppression bound to the policy hash and resolver contract. It
+prevents a resolver-only target from being selected again under the identical
+epoch. A changed policy, resolver version/scope, or newly materialized official
+source reopens the target; incomplete discovery and transport failures never
+create this suppression. Re-auditing the same immutable results is idempotent:
+the first valid audit receipt is retained unless a bound source or semantic
+fact actually changes.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T13:38:52.539Z",
+  "generatedAt": "2026-07-16T13:53:57.819Z",
   "sourceAcquisitionQueueSha256": "8182590f9b98d6ddf6a099f2e7aca43ff609fd16764359e6dd7e299ccda1ca92",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
@@ -10,20 +10,20 @@
   "summary": {
     "acquisitionRecords": 7811,
     "fetchJobs": 0,
-    "targets": 7728,
-    "resolverOnlyTargets": 7728,
+    "targets": 7724,
+    "resolverOnlyTargets": 7724,
     "candidateEdges": 0,
-    "uniqueReferences": 7728,
+    "uniqueReferences": 7724,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
-    "suppressedPriorResolverOnlyTargets": 0,
+    "suppressedPriorResolverOnlyTargets": 4,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1154,
+      "CURRENT_RETAIL": 1150,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 959,
+      "P0_CURRENT_MISSING_DIMENSIONS": 955,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -30301,154 +30301,6 @@
             "width": 685,
             "height": 1075,
             "depth": 700
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_8f2e244aa7f24c56d4797b49",
-      "referenceId": "fa_ref_febc15017a48d8e7d6a2d01b",
-      "legacyRuntimeId": "ao-56032",
-      "canonicalProductId": "fa_prod_870bade16b5e290a249c1438",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WA7060G2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e6a1b99d9d943bdd5a54b5cb",
-        "legacy:data/pdf-evidence-raw/WA7060G2.json",
-        "source:doc_e6a1b99d9d943bdd5a54b5cb"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e6a1b99d9d943bdd5a54b5cb",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 1050,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_8d8d3f4375f97c820376a298",
-      "referenceId": "fa_ref_3e0f9700be8a6ab5e1771b4b",
-      "legacyRuntimeId": "ao-47679",
-      "canonicalProductId": "fa_prod_c4729faed90130cc1cff618a",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WA8060E1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_f32d65bc8537cfad859c3f9a",
-        "legacy:data/pdf-evidence-raw/WA8060E1.json",
-        "source:doc_f32d65bc8537cfad859c3f9a"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_f32d65bc8537cfad859c3f9a",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 1045,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_33cd11834c21827003c3bc73",
-      "referenceId": "fa_ref_f56fa3ff4dd28874d49c2ed0",
-      "legacyRuntimeId": "ao-47680",
-      "canonicalProductId": "fa_prod_d5614ff620c7c8d06391c2e6",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WA8060G1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_5ffdf06ec1e67990f42cf6ed",
-        "legacy:data/pdf-evidence-raw/WA8060G1.json",
-        "source:doc_5ffdf06ec1e67990f42cf6ed"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_5ffdf06ec1e67990f42cf6ed",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 1075,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_0e896409b4904aef0dd67595",
-      "referenceId": "fa_ref_ef5ffb9baaba39ddec7ad502",
-      "legacyRuntimeId": "ao-47681",
-      "canonicalProductId": "fa_prod_55ceafec2759020cf3f11f5f",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WA8060P1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_fe8746795d2698dd3b6defd0",
-        "legacy:data/pdf-evidence-raw/WA8060P1.json",
-        "source:doc_fe8746795d2698dd3b6defd0"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_fe8746795d2698dd3b6defd0",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 1075,
-            "depth": 600
           }
         }
       ],

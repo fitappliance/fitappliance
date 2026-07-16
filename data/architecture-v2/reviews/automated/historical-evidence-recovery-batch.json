@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-abf97a25530b78f6c7be029e",
-  "generatedAt": "2026-07-16T13:38:52.539Z",
+  "batchId": "historical-recovery-14d43449e237fd16fae85453",
+  "generatedAt": "2026-07-16T13:53:57.819Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "449c9fa426c2940e22583d78c5bcfaa5fcf75f9b1b2d44dc66da598542022460"
+    "sha256": "96bcc48c7101aa47c66b3ca3558c860fe840b21cdf49d22a05d298793ffff12b"
   },
   "policy": {
     "version": "2026-07-16.15",
@@ -26189,134 +26189,6 @@
               "width": 685,
               "height": 1075,
               "depth": 700
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_8f2e244aa7f24c56d4797b49",
-      "referenceId": "fa_ref_febc15017a48d8e7d6a2d01b",
-      "legacyRuntimeId": "ao-56032",
-      "canonicalProductId": "fa_prod_870bade16b5e290a249c1438",
-      "brand": "Fisher & Paykel",
-      "model": "WA7060G2",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_e6a1b99d9d943bdd5a54b5cb",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 1050,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_8d8d3f4375f97c820376a298",
-      "referenceId": "fa_ref_3e0f9700be8a6ab5e1771b4b",
-      "legacyRuntimeId": "ao-47679",
-      "canonicalProductId": "fa_prod_c4729faed90130cc1cff618a",
-      "brand": "Fisher & Paykel",
-      "model": "WA8060E1",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_f32d65bc8537cfad859c3f9a",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 1045,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_33cd11834c21827003c3bc73",
-      "referenceId": "fa_ref_f56fa3ff4dd28874d49c2ed0",
-      "legacyRuntimeId": "ao-47680",
-      "canonicalProductId": "fa_prod_d5614ff620c7c8d06391c2e6",
-      "brand": "Fisher & Paykel",
-      "model": "WA8060G1",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_5ffdf06ec1e67990f42cf6ed",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 1075,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_0e896409b4904aef0dd67595",
-      "referenceId": "fa_ref_ef5ffb9baaba39ddec7ad502",
-      "legacyRuntimeId": "ao-47681",
-      "canonicalProductId": "fa_prod_55ceafec2759020cf3f11f5f",
-      "brand": "Fisher & Paykel",
-      "model": "WA8060P1",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_fe8746795d2698dd3b6defd0",
-            "dimensionsMm": {
-              "width": 600,
-              "height": 1075,
-              "depth": 600
             }
           }
         ]
@@ -237335,7 +237207,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7728,
+    "targets": 7724,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
