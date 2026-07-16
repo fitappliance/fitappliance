@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "0be50e1f321251a052eb65d3c715cea08e7a892b6518e5397b73353a0eedf422"
+    "historical-recovery:historical-recovery-cumulative-v1": "853244e23fc44da8b9a6a3b03894c0b2b276fecf0b4bde7a3c9ed97deb99ce5f"
   },
   "records": [
     {
@@ -16648,13 +16648,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 573
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_b80de9b6012026336c804f06",
+          "snapshotSha256": "1789e169ddfd468251e5a88401789c8e6b343d7f07bf0324d70c053a46cf8966",
           "sourceLines": []
         }
       ],
@@ -16664,8 +16673,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_b80de9b6012026336c804f06",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU68M25AU",
+          "contentSha256": "1789e169ddfd468251e5a88401789c8e6b343d7f07bf0324d70c053a46cf8966",
+          "receiptBindingSha256": "ee7302a713351a4c258a6c8617f52731f8f8c0b86fd953c2deaa1fbae6c26caf",
+          "verifiedAt": "2026-07-16T18:48:01.453Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "1789e169ddfd468251e5a88401789c8e6b343d7f07bf0324d70c053a46cf8966"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "1789e169ddfd468251e5a88401789c8e6b343d7f07bf0324d70c053a46cf8966"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "1789e169ddfd468251e5a88401789c8e6b343d7f07bf0324d70c053a46cf8966"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/17/89/1789e169ddfd468251e5a88401789c8e6b343d7f07bf0324d70c053a46cf8966.html"
+        }
       ]
     },
     {
@@ -16882,13 +16914,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 573
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_5f03b7f484de5aa8e95a408e",
+          "snapshotSha256": "4643e99bb5963365b7a8a94aac181640c17aebc943b4053bba3f52d10e564b51",
           "sourceLines": []
         }
       ],
@@ -16898,8 +16939,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_5f03b7f484de5aa8e95a408e",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU88TS02A",
+          "contentSha256": "4643e99bb5963365b7a8a94aac181640c17aebc943b4053bba3f52d10e564b51",
+          "receiptBindingSha256": "aaa9c6c52a958b63270240a3d65d2f82b75280ecc682cfb651333e50cdbd58b8",
+          "verifiedAt": "2026-07-16T18:48:06.495Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "4643e99bb5963365b7a8a94aac181640c17aebc943b4053bba3f52d10e564b51"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "4643e99bb5963365b7a8a94aac181640c17aebc943b4053bba3f52d10e564b51"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "4643e99bb5963365b7a8a94aac181640c17aebc943b4053bba3f52d10e564b51"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/46/43/4643e99bb5963365b7a8a94aac181640c17aebc943b4053bba3f52d10e564b51.html"
+        }
       ]
     },
     {
@@ -16917,13 +16981,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 573
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c62552be11afb8e6d85b26c9",
+          "snapshotSha256": "7b2de1a42d9c9228ec193d4682abe991b619c01b5376fcdea3e481bdaa098cdd",
           "sourceLines": []
         }
       ],
@@ -16933,8 +17006,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c62552be11afb8e6d85b26c9",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU88TS03A",
+          "contentSha256": "7b2de1a42d9c9228ec193d4682abe991b619c01b5376fcdea3e481bdaa098cdd",
+          "receiptBindingSha256": "b839079ea5b91437796dba7ae872f169e008337f70d855ffb1ffcd552fbf4a5f",
+          "verifiedAt": "2026-07-16T18:51:45.030Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "7b2de1a42d9c9228ec193d4682abe991b619c01b5376fcdea3e481bdaa098cdd"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "7b2de1a42d9c9228ec193d4682abe991b619c01b5376fcdea3e481bdaa098cdd"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "7b2de1a42d9c9228ec193d4682abe991b619c01b5376fcdea3e481bdaa098cdd"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/7b/2d/7b2de1a42d9c9228ec193d4682abe991b619c01b5376fcdea3e481bdaa098cdd.html"
+        }
       ]
     },
     {
@@ -16952,13 +17048,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 573
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_db3f7bb57affc4a02f48b722",
+          "snapshotSha256": "686951d6a4999c0b30b1a7efc89c698f16db8da4f9d7a2f577eb1d59e7427203",
           "sourceLines": []
         }
       ],
@@ -16968,8 +17073,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_db3f7bb57affc4a02f48b722",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMU88TS04A",
+          "contentSha256": "686951d6a4999c0b30b1a7efc89c698f16db8da4f9d7a2f577eb1d59e7427203",
+          "receiptBindingSha256": "8642eaf90c7709b7f0bc25ea19236b19ef95d066f7e930d8dc53d7ea5f20b670",
+          "verifiedAt": "2026-07-16T18:53:19.872Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "686951d6a4999c0b30b1a7efc89c698f16db8da4f9d7a2f577eb1d59e7427203"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "686951d6a4999c0b30b1a7efc89c698f16db8da4f9d7a2f577eb1d59e7427203"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "686951d6a4999c0b30b1a7efc89c698f16db8da4f9d7a2f577eb1d59e7427203"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/68/69/686951d6a4999c0b30b1a7efc89c698f16db8da4f9d7a2f577eb1d59e7427203.html"
+        }
       ]
     },
     {
@@ -17219,6 +17347,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_27e5354a82342644c72fc129",
+          "snapshotSha256": "c5a2a1ddc38b7030e448423e26aba69ed08d80126bb8a98546c76971fdf1b369",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -17228,7 +17363,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_27e5354a82342644c72fc129",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV46GX01A.pdf",
+          "contentSha256": "c5a2a1ddc38b7030e448423e26aba69ed08d80126bb8a98546c76971fdf1b369",
+          "receiptBindingSha256": "fde3a627d49acae7075083a5110eae6ba412aa1591a34ff2135621c086fd75ed",
+          "verifiedAt": "2026-07-16T18:47:11.760Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0616dacfd7cb8a21ac0cc26c874f9ec4c7d212caca106926cb79fb956ae45a09"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0616dacfd7cb8a21ac0cc26c874f9ec4c7d212caca106926cb79fb956ae45a09"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "0616dacfd7cb8a21ac0cc26c874f9ec4c7d212caca106926cb79fb956ae45a09"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/c5/a2/c5a2a1ddc38b7030e448423e26aba69ed08d80126bb8a98546c76971fdf1b369.pdf"
+        }
       ]
     },
     {
@@ -17336,6 +17500,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_fabeec97c56474223f796ad1",
+          "snapshotSha256": "a91e9cdbad39b29b5a5be04fafd6fad604483f11eff5d53d1caf3fac8801dfa3",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -17345,7 +17516,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_fabeec97c56474223f796ad1",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV50D00AU.pdf",
+          "contentSha256": "a91e9cdbad39b29b5a5be04fafd6fad604483f11eff5d53d1caf3fac8801dfa3",
+          "receiptBindingSha256": "d91c42cb8450bf04d48f914fbb27140e7b7b0d36953ad74b2265db9f97e4f385",
+          "verifiedAt": "2026-07-16T18:47:52.997Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "53cf56566fe1948e5280a2c0da73c695b6a8ab0d86d26eb3c3615e7ad84f5723"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "53cf56566fe1948e5280a2c0da73c695b6a8ab0d86d26eb3c3615e7ad84f5723"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "53cf56566fe1948e5280a2c0da73c695b6a8ab0d86d26eb3c3615e7ad84f5723"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/a9/1e/a91e9cdbad39b29b5a5be04fafd6fad604483f11eff5d53d1caf3fac8801dfa3.pdf"
+        }
       ]
     },
     {
@@ -17363,13 +17563,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 550
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_119ead6e957f5575057295dd",
+          "snapshotSha256": "743ad9173b60e7c3b93d0a9da1e390807892ad28fe79cb8e1f9ecad906397b3b",
           "sourceLines": []
         }
       ],
@@ -17379,8 +17588,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_119ead6e957f5575057295dd",
+          "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMV63M10AU",
+          "contentSha256": "743ad9173b60e7c3b93d0a9da1e390807892ad28fe79cb8e1f9ecad906397b3b",
+          "receiptBindingSha256": "c55d20085a4a895faa23989344fde3fd940483e07ddd0342b478dd8e97b4e566",
+          "verifiedAt": "2026-07-16T18:47:53.212Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "743ad9173b60e7c3b93d0a9da1e390807892ad28fe79cb8e1f9ecad906397b3b"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "743ad9173b60e7c3b93d0a9da1e390807892ad28fe79cb8e1f9ecad906397b3b"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "743ad9173b60e7c3b93d0a9da1e390807892ad28fe79cb8e1f9ecad906397b3b"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/74/3a/743ad9173b60e7c3b93d0a9da1e390807892ad28fe79cb8e1f9ecad906397b3b.html"
+        }
       ]
     },
     {
@@ -17406,6 +17638,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_e94e89012d526ec01cae9b19",
+          "snapshotSha256": "8b7ef065ba7e733f8ffa916b4e1d40b894ca14f1d422506e550919971547979b",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -17415,7 +17654,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_e94e89012d526ec01cae9b19",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV66JX01A.pdf",
+          "contentSha256": "8b7ef065ba7e733f8ffa916b4e1d40b894ca14f1d422506e550919971547979b",
+          "receiptBindingSha256": "0296d4582cd28722eab00dd04b7983412e3e8a5a5c39b25498e50202e2106203",
+          "verifiedAt": "2026-07-16T18:49:31.091Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "64166a99685859fae0fc1f0aa8fa260fade65c58f404342da60118961c7ca3f4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "64166a99685859fae0fc1f0aa8fa260fade65c58f404342da60118961c7ca3f4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "64166a99685859fae0fc1f0aa8fa260fade65c58f404342da60118961c7ca3f4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/8b/7e/8b7ef065ba7e733f8ffa916b4e1d40b894ca14f1d422506e550919971547979b.pdf"
+        }
       ]
     },
     {
@@ -322490,16 +322758,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2910,
-      "MODEL_RECEIPT": 234,
+      "IDENTITY_ONLY": 2905,
+      "MODEL_RECEIPT": 239,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2910,
-      "AUTO_FILL": 245,
+      "MEASURE_REQUIRED": 2905,
+      "AUTO_FILL": 250,
       "QUARANTINED": 88
     }
   }

@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T18:41:25.886Z",
-  "sourceAcquisitionQueueSha256": "d704bed4e2ac1f5e9fb988c330a9dd7b533a7b8e736269b11f0ec714167f4d51",
+  "generatedAt": "2026-07-16T18:56:40.395Z",
+  "sourceAcquisitionQueueSha256": "6d5ee7737d565901d4a9df05b54d976a4ac9a84fcdb5d3455519c2d3da0861cf",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7781,
+    "acquisitionRecords": 7773,
     "fetchJobs": 0,
-    "targets": 7686,
-    "resolverOnlyTargets": 7686,
+    "targets": 7678,
+    "resolverOnlyTargets": 7678,
     "candidateEdges": 0,
-    "uniqueReferences": 7686,
+    "uniqueReferences": 7678,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 12,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1112,
+      "CURRENT_RETAIL": 1104,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 917,
+      "P0_CURRENT_MISSING_DIMENSIONS": 909,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -248,302 +248,6 @@
             "width": 596,
             "height": 819,
             "depth": 559
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_b80de9b6012026336c804f06",
-      "referenceId": "fa_ref_87c6bf87488e4eec2a4830c2",
-      "legacyRuntimeId": "ao-45251",
-      "canonicalProductId": "fa_prod_72e4fcc6c33f0ff4ee181dcd",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU68M25AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a0c437972709b3b7c095c789",
-        "legacy:data/pdf-evidence-raw/SMU68M25AU.json",
-        "source:doc_a0c437972709b3b7c095c789"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a0c437972709b3b7c095c789",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_5f03b7f484de5aa8e95a408e",
-      "referenceId": "fa_ref_763861a2f422467dbe45ef2d",
-      "legacyRuntimeId": "ao-82876",
-      "canonicalProductId": "fa_prod_e849c6c9e573555109dff4ad",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU88TS02A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c2bac949a69815505cd962d7",
-        "legacy:data/pdf-evidence-raw/SMU88TS02A.json",
-        "source:doc_c2bac949a69815505cd962d7"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c2bac949a69815505cd962d7",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_c62552be11afb8e6d85b26c9",
-      "referenceId": "fa_ref_0c202461364c1186db20bccb",
-      "legacyRuntimeId": "ao-45253",
-      "canonicalProductId": "fa_prod_f02759d7e91a0857ad9bb177",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU88TS03A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_117e4a74b33daf48ee45551b",
-        "legacy:data/pdf-evidence-raw/SMU88TS03A.json",
-        "source:doc_117e4a74b33daf48ee45551b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_117e4a74b33daf48ee45551b",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_db3f7bb57affc4a02f48b722",
-      "referenceId": "fa_ref_7a8c19f214387d7f14b2897b",
-      "legacyRuntimeId": "ao-61053",
-      "canonicalProductId": "fa_prod_1ebf3c94b57f6ab24b8f7693",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMU88TS04A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a737da855e78e4759663f1e1",
-        "legacy:data/pdf-evidence-raw/SMU88TS04A.json",
-        "source:doc_a737da855e78e4759663f1e1"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a737da855e78e4759663f1e1",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 573
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_27e5354a82342644c72fc129",
-      "referenceId": "fa_ref_7878748c04caef395faf230c",
-      "legacyRuntimeId": "ao-61054",
-      "canonicalProductId": "fa_prod_eeb84545b24b26f384bcda21",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMV46GX01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c3b768acdbaa7df4acb77a00",
-        "legacy:data/pdf-evidence-raw/SMV46GX01A.json",
-        "source:doc_c3b768acdbaa7df4acb77a00"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c3b768acdbaa7df4acb77a00",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 550
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_fabeec97c56474223f796ad1",
-      "referenceId": "fa_ref_a19365d9731914d84b893566",
-      "legacyRuntimeId": "ao-31719",
-      "canonicalProductId": "fa_prod_0a85ce559764908a256e50ed",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMV50D00AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_4bb6268b0eeca94aee3ef549",
-        "legacy:data/pdf-evidence-raw/SMV50D00AU.json",
-        "source:doc_4bb6268b0eeca94aee3ef549"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_4bb6268b0eeca94aee3ef549",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 550
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_119ead6e957f5575057295dd",
-      "referenceId": "fa_ref_d3fae0a782e69d5351dc2dec",
-      "legacyRuntimeId": "ao-45254",
-      "canonicalProductId": "fa_prod_bb53bef9b3b6fc8068055f93",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMV63M10AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_91473dcb20ef8a88eb391702",
-        "legacy:data/pdf-evidence-raw/SMV63M10AU.json",
-        "source:doc_91473dcb20ef8a88eb391702"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_91473dcb20ef8a88eb391702",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 550
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_e94e89012d526ec01cae9b19",
-      "referenceId": "fa_ref_bc30fdb11e479ea9fb64f1bb",
-      "legacyRuntimeId": "ao-70867",
-      "canonicalProductId": "fa_prod_21fb135d933a972c6fe86ae4",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMV66JX01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_0161589312dd06392202da95",
-        "legacy:data/pdf-evidence-raw/SMV66JX01A.json",
-        "source:doc_0161589312dd06392202da95"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_0161589312dd06392202da95",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 815,
-            "depth": 550
           }
         }
       ],

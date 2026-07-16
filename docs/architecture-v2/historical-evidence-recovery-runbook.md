@@ -1013,3 +1013,46 @@ transaction, public receipt-bound dimensions are 245, receipt-bound
 historical `AUTO_FILL` is 245, the executable queue contains 7,686 targets and
 the current-retail P0 missing-dimension lane contains 917 targets. All eight
 target IDs are absent from the next-epoch executable queue and batch.
+
+## 27. Bosch SMV and SMU fully integrated dishwasher recovery
+
+Run `historical-bosch-legacy-dishwashers-20260716-h` selected eight more Bosch
+Australia dishwashers with zero prior target attempts. The dry-run used a
+separate preflight ID, and the completed run recorded exactly one attempt for
+each target:
+
+| Model | Accepted source | Width | Height | Depth |
+| --- | --- | ---: | ---: | ---: |
+| `SMU68M25AU` | exact product page | 598 | 815 | 573 |
+| `SMU88TS02A` | exact product page | 598 | 815 | 573 |
+| `SMU88TS03A` | exact product page | 598 | 815 | 573 |
+| `SMU88TS04A` | exact product page | 598 | 815 | 573 |
+| `SMV46GX01A` | exact-model PDF | 598 | 815-875 | 550 |
+| `SMV50D00AU` | exact-model PDF | 598 | 815-875 | 550 |
+| `SMV63M10AU` | exact product page | 598 | 815 | 550 |
+| `SMV66JX01A` | exact-model PDF | 598 | 815-875 | 550 |
+
+The three PDF receipts are Bosch Australia specification sheets. MinerU
+`content_list_v2` preserves the page-2 dimension fragment, bounding box,
+fragment hash, source PDF and JSON hashes, explicit axis labels and exact-model
+scope. The five HTML receipts require an exact canonical URL, document title,
+structured product model and the explicit `Dimensions of the product (HxWxD)`
+label. Downloaded manuals that lack exact-model identity remain typed rejected
+attempts and cannot contribute claims.
+
+The 815-875 mm adjustable height is retained as a range in the public V2
+projection. Those three records are intentionally excluded from scalar
+historical `AUTO_FILL`; only the five fixed envelopes can auto-fill old-
+appliance dimensions. All eight remain dimensions-only because installation,
+door-open and rear-service evidence is absent, so `verifiedFitEligible=false`
+and the successful Fit outcome is `INSUFFICIENT_DATA`.
+
+The full online audit checked eight targets and 631 cumulative objects with zero
+repairs and zero violations. Promotion increased the cumulative bundle to 303
+targets and 328 source receipts; all 328 receipts replay. After the release
+transaction, `COMPLETE_RECEIPT` is 322, `ALL_AXIS_RANGE` is 82,
+`ALL_AXIS_SCALAR` is 377, historical `AUTO_FILL` is 250, the executable queue
+contains 7,678 targets and the current-retail P0 missing-dimension lane contains
+909 targets. Public receipt-bound dimensions are 253 and receipt-bound
+`VERIFIED_FIT` remains zero. All eight target IDs are absent from the next-epoch
+executable queue and batch.
