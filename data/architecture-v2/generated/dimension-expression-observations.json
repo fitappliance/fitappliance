@@ -17,18 +17,18 @@
     "historicalRecords": 8095,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 674,
-    "validMineruDocuments": 673,
+    "mineruDocuments": 690,
+    "validMineruDocuments": 689,
     "invalidMineruDocuments": 1,
-    "documentsWithObservations": 374,
-    "documentsWithoutObservations": 299,
-    "mappedMineruDocuments": 639,
+    "documentsWithObservations": 383,
+    "documentsWithoutObservations": 306,
+    "mappedMineruDocuments": 655,
     "unmappedMineruDocuments": 34,
-    "observations": 943,
-    "researchGaps": 774,
-    "parserProfiles": 171,
-    "parserReplays": 741,
-    "completeParserReplays": 327
+    "observations": 962,
+    "researchGaps": 797,
+    "parserProfiles": 175,
+    "parserReplays": 757,
+    "completeParserReplays": 343
   },
   "categories": [
     {
@@ -57817,33 +57817,434 @@
             "Bosch"
           ],
           "modelCount": 112,
-          "observedMineruDocuments": 17,
-          "observedMarketingSeriesCount": 3,
+          "observedMineruDocuments": 33,
+          "observedMarketingSeriesCount": 4,
           "observedDocumentFamilyCount": 0,
-          "observedParserProfileCount": 7,
-          "completeParserReplayCount": 8,
+          "observedParserProfileCount": 11,
+          "completeParserReplayCount": 11,
           "seriesCountStatus": "PROVEN_MINIMUM_ONLY",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
           "families": [
             {
               "groupType": "marketing_series",
+              "groupName": "Series 2",
+              "models": [
+                "SMS24AI01A",
+                "SMS2ITI02A",
+                "SMS2ITW01A",
+                "SMS40E08AU"
+              ],
+              "pdfSha256s": [
+                "53c6d39cd7b41e95d9e9028525c86b48c886b393c5772e2ff1e3df98604e8aab",
+                "88c9964ab6d2fb13d5ada3bd4d233c79df202979b2b8a3bbeb2fd3daa2c77bc8",
+                "9f5432b9fc312985b3e69ed213c75f4a5b6f5f59af8de43abcb050caab2580c0",
+                "a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056"
+              ],
+              "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS24AI01A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS2ITI02A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS2ITW01A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS40E08AU.pdf"
+              ],
+              "seriesEvidence": [
+                {
+                  "brand": "Bosch",
+                  "model": "SMS24AI01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "53c6d39cd7b41e95d9e9028525c86b48c886b393c5772e2ff1e3df98604e8aab",
+                  "page": 1,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS24AI01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS24AI01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "53c6d39cd7b41e95d9e9028525c86b48c886b393c5772e2ff1e3df98604e8aab",
+                  "page": 2,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS24AI01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS24AI01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "53c6d39cd7b41e95d9e9028525c86b48c886b393c5772e2ff1e3df98604e8aab",
+                  "page": 3,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS24AI01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS2ITI02A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "88c9964ab6d2fb13d5ada3bd4d233c79df202979b2b8a3bbeb2fd3daa2c77bc8",
+                  "page": 1,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS2ITI02A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS2ITI02A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "88c9964ab6d2fb13d5ada3bd4d233c79df202979b2b8a3bbeb2fd3daa2c77bc8",
+                  "page": 2,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS2ITI02A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS2ITI02A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "88c9964ab6d2fb13d5ada3bd4d233c79df202979b2b8a3bbeb2fd3daa2c77bc8",
+                  "page": 3,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS2ITI02A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS2ITW01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "9f5432b9fc312985b3e69ed213c75f4a5b6f5f59af8de43abcb050caab2580c0",
+                  "page": 1,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, White SMS2ITW01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS2ITW01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "9f5432b9fc312985b3e69ed213c75f4a5b6f5f59af8de43abcb050caab2580c0",
+                  "page": 2,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, White SMS2ITW01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS2ITW01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "9f5432b9fc312985b3e69ed213c75f4a5b6f5f59af8de43abcb050caab2580c0",
+                  "page": 3,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, White SMS2ITW01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS40E08AU",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056",
+                  "page": 1,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS40E08AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS40E08AU",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056",
+                  "page": 2,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS40E08AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS40E08AU",
+                  "category": "dishwasher",
+                  "seriesName": "Series 2",
+                  "pdfSha256": "a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056",
+                  "page": 3,
+                  "quote": "Series 2, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS40E08AU"
+                }
+              ],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_cf52905eae731e58",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
+                      "sourceLabel": "dimensions (h x w x d)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+                  ]
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "53c6d39cd7b41e95d9e9028525c86b48c886b393c5772e2ff1e3df98604e8aab",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMS24AI01A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "88c9964ab6d2fb13d5ada3bd4d233c79df202979b2b8a3bbeb2fd3daa2c77bc8",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMS2ITI02A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "9f5432b9fc312985b3e69ed213c75f4a5b6f5f59af8de43abcb050caab2580c0",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMS2ITW01A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMS40E08AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_829747c11bf71e2e4e1cd03e",
+                  "pdfSha256": "a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056",
+                  "contentSha256": "4636f26cee29fac193b7526e960a79946649330bd93af3c0e0d255dda2a1313d",
+                  "page": 2,
+                  "bbox": [
+                    500,
+                    372,
+                    734,
+                    384
+                  ],
+                  "fragmentSha256": "02706dbb8f31e4b0f9770ca4a3b9753e28f617d756660566daf1507965a58605",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS40E08AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMS40E08AU",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMS40E08AU"
+                  ],
+                  "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (H x W x D)",
+                  "sourceValue": "845 mm x 600 mm x 600 mm",
+                  "sourceQuote": "- H: 845 mm x W: 600 mm x D: 600 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "H",
+                      "value": "845 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "W",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056",
+                  "contentSha256": "4636f26cee29fac193b7526e960a79946649330bd93af3c0e0d255dda2a1313d",
+                  "page": 1,
+                  "quote": "Free-standing text Height of removable worktop: .30 mm text Dimensions of the product (HxWxD): ..845 x 600 x 600 mm text Depth with open door 90 degree: 1155 mm text Adjustable feet: Yes - all text Maximum adjustability feet: 20 mm text Adjustable plinth: .Adjustable plinth text Net weight: .. .43.9 kg text Gross weigh"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "53c6d39cd7b41e95d9e9028525c86b48c886b393c5772e2ff1e3df98604e8aab",
+                  "contentSha256": "73841e57a9e023c694a948a3ca6952748ddb2fb89b0093d4010258500e15c6e5",
+                  "page": 2,
+                  "quote": "Product Dimensions (H x W x D)"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "88c9964ab6d2fb13d5ada3bd4d233c79df202979b2b8a3bbeb2fd3daa2c77bc8",
+                  "contentSha256": "47923018183d91126219181f75253f94c2e0b4bb2c6bf0aa4695d062c8d3cf2f",
+                  "page": 2,
+                  "quote": "Product Dimensions (H x W x D)"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "9f5432b9fc312985b3e69ed213c75f4a5b6f5f59af8de43abcb050caab2580c0",
+                  "contentSha256": "9b89c709beb38b421327c240211ee7413bc60c70b7810519c65ca4e7c826bae2",
+                  "page": 2,
+                  "quote": "Product Dimensions (H x W x D)"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "53c6d39cd7b41e95d9e9028525c86b48c886b393c5772e2ff1e3df98604e8aab",
+                  "contentSha256": "73841e57a9e023c694a948a3ca6952748ddb2fb89b0093d4010258500e15c6e5",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "88c9964ab6d2fb13d5ada3bd4d233c79df202979b2b8a3bbeb2fd3daa2c77bc8",
+                  "contentSha256": "47923018183d91126219181f75253f94c2e0b4bb2c6bf0aa4695d062c8d3cf2f",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "9f5432b9fc312985b3e69ed213c75f4a5b6f5f59af8de43abcb050caab2580c0",
+                  "contentSha256": "9b89c709beb38b421327c240211ee7413bc60c70b7810519c65ca4e7c826bae2",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056",
+                  "contentSha256": "4636f26cee29fac193b7526e960a79946649330bd93af3c0e0d255dda2a1313d",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                }
+              ],
+              "parserProfileIds": [
+                "pdf_grammar_cf52905eae731e58"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "marketing_series",
               "groupName": "Series 4",
               "models": [
                 "SMI4HTS01A",
+                "SMS4HTI01A",
+                "SMS4HVB01A",
                 "SMS4HVI01A"
               ],
               "pdfSha256s": [
+                "464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806",
                 "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
-                "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb"
+                "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+                "d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99"
               ],
               "sourceUrls": [
                 "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HTI01A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVB01A.pdf",
                 "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf"
               ],
               "seriesEvidence": [
                 {
                   "brand": "Bosch",
+                  "model": "SMS4HTI01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806",
+                  "page": 1,
+                  "quote": "Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HTI01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS4HTI01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806",
+                  "page": 2,
+                  "quote": "Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HTI01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS4HTI01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806",
+                  "page": 3,
+                  "quote": "Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HTI01A"
+                },
+                {
+                  "brand": "Bosch",
                   "model": "SMS4HVI01A",
                   "category": "dishwasher",
                   "seriesName": "Series 4",
@@ -57895,6 +58296,33 @@
                   "pdfSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
                   "page": 3,
                   "quote": "Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS4HVB01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99",
+                  "page": 1,
+                  "quote": "text_list unordered text Series 4, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS4HVB01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS4HVB01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99",
+                  "page": 2,
+                  "quote": "Series 4, free-standing dishwasher, 60 cm, Brushed black steel anti-fingerprint SMS4HVB01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMS4HVB01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99",
+                  "page": 3,
+                  "quote": "text_list unordered text Series 4, free-standing dishwasher, text 60 cm, Brushed black steel text anti-fingerprint text SMS4HVB01A"
                 }
               ],
               "parserProfiles": [
@@ -57933,6 +58361,23 @@
               ],
               "parserReplays": [
                 {
+                  "pdfSha256": "464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMS4HTI01A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
                   "pdfSha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
                   "category": "dishwasher",
                   "brand": "Bosch",
@@ -57962,6 +58407,23 @@
                     "closedEnvelope.widthMm"
                   ],
                   "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMS4HVB01A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1"
+                  ],
                   "reasonCode": "PARSED_COMPLETE"
                 }
               ],
@@ -58037,10 +58499,31 @@
               "researchGaps": [
                 {
                   "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806",
+                  "contentSha256": "1c9fef982345611c118b963bb7db8feeb05cc5d030fc667ddb7fed29921b7083",
+                  "page": 2,
+                  "quote": "Product Dimensions (H x W x D)"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
                   "pdfSha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
                   "contentSha256": "4b52c676322e5387720774dea13b95364fc737e249f32bef28477155892fbfd9",
                   "page": 2,
                   "quote": "Product Dimensions (H x W x D)"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99",
+                  "contentSha256": "4f600564084fdda36ab130cb78e49c3484c84f6e1b502b7b60f4aff8cd6b1f8b",
+                  "page": 2,
+                  "quote": "Product Dimensions (H x W x D)"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806",
+                  "contentSha256": "1c9fef982345611c118b963bb7db8feeb05cc5d030fc667ddb7fed29921b7083",
+                  "page": 3,
+                  "quote": "measurements in mm"
                 },
                 {
                   "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
@@ -58053,6 +58536,13 @@
                   "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
                   "pdfSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
                   "contentSha256": "0f0dfb8e17ca79372a707cc692eb6587d94dc6b11dc26dcd863bba2febe64d9c",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99",
+                  "contentSha256": "4f600564084fdda36ab130cb78e49c3484c84f6e1b502b7b60f4aff8cd6b1f8b",
                   "page": 3,
                   "quote": "measurements in mm"
                 }
@@ -58068,17 +58558,80 @@
               "groupName": "Series 6",
               "models": [
                 "SMI6HCS01A",
+                "SMP66MX05A",
+                "SMP6HCB01A",
+                "SMP6HCS01A",
                 "SMS6HCI02A"
               ],
               "pdfSha256s": [
+                "11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe",
+                "4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9",
                 "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
+                "781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798",
                 "9482d048c4831ce9c8e7d134a63e61ad926447172559652c0cfbe7bd8fa60e3f"
               ],
               "sourceUrls": [
                 "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI6HCS01A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX05A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP6HCB01A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP6HCS01A.pdf",
                 "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI02A.pdf"
               ],
               "seriesEvidence": [
+                {
+                  "brand": "Bosch",
+                  "model": "SMP66MX05A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe",
+                  "page": 1,
+                  "quote": "Series 6, built-under dishwasher, 60 cm, Black inox SMP66MX05A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMP66MX05A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe",
+                  "page": 2,
+                  "quote": "Series 6, built-under dishwasher, 60 cm, Black inox SMP66MX05A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMP66MX05A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe",
+                  "page": 3,
+                  "quote": "text_list unordered text Series 6, built-under dishwasher, 60 text cm, Black inox text SMP66MX05A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMP6HCS01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9",
+                  "page": 1,
+                  "quote": "Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMP6HCS01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMP6HCS01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9",
+                  "page": 2,
+                  "quote": "Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMP6HCS01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMP6HCS01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9",
+                  "page": 3,
+                  "quote": "Series 6, built-under dishwasher, 60 cm, Brushed steel anti-fingerprint SMP6HCS01A"
+                },
                 {
                   "brand": "Bosch",
                   "model": "SMS6HCI02A",
@@ -58105,6 +58658,33 @@
                   "pdfSha256": "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
                   "page": 3,
                   "quote": "Series 6, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS6HCI02A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMP6HCB01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798",
+                  "page": 1,
+                  "quote": "text_list unordered text Series 6, built-under dishwasher, 60 text cm, Brushed black steel text anti-fingerprint text SMP6HCB01A text SGZ0BI01 decorative strips stainless steel 81,5cm text SGZ0CL01 door lock mechancial, straight text SGZ0ICO0 Small Item Clip for upper rack text SGZ1010 inlet and outlet hose extention text SGZ6BH00 Bottle Holder grey text SMZ2014 Rack insert for stemware dishwasher text SMZ5000 Dishwashing aid set text SMZ5002 Silver polishing cassette text SMZ5150AU Kick panel stainless steel text SMZ5300 GlassSecure Tray"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMP6HCB01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798",
+                  "page": 2,
+                  "quote": "Series 6, built-under dishwasher, 60 cm, Brushed black steel anti-fingerprint SMP6HCB01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMP6HCB01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798",
+                  "page": 3,
+                  "quote": "text_list unordered text Series 6, built-under dishwasher, 60 text cm, Brushed black steel text anti-fingerprint text SMP6HCB01A"
                 },
                 {
                   "brand": "Bosch",
@@ -58166,15 +58746,97 @@
                   "researchGapTypes": [
                     "IMAGE_ONLY_DIMENSION_DIAGRAM"
                   ]
+                },
+                {
+                  "parserProfileId": "pdf_grammar_a2b008d9dd159831",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "INLINE_LABELLED_AXES",
+                      "syntaxDecision": "SUPPORTED_ADJUSTABLE_HEIGHT_RANGE",
+                      "sourceLabel": "height | width | depth",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "range",
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+                  ]
                 }
               ],
               "parserReplays": [
+                {
+                  "pdfSha256": "11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMP66MX05A",
+                  "extractionState": "ALL_AXIS_RANGE",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMP6HCS01A",
+                  "extractionState": "ALL_AXIS_RANGE",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
                 {
                   "pdfSha256": "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
                   "category": "dishwasher",
                   "brand": "Bosch",
                   "model": "SMS6HCI02A",
                   "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMP6HCB01A",
+                  "extractionState": "ALL_AXIS_RANGE",
                   "identityScope": "EXACT_MODEL",
                   "claimFields": [
                     "closedEnvelope.depthMm",
@@ -58203,6 +58865,73 @@
                 }
               ],
               "expressions": [
+                {
+                  "observationId": "dimension_expression_41e8b4194114a22cfd1d4081",
+                  "pdfSha256": "11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe",
+                  "contentSha256": "1227e16eda3cf0f7eaf071a47d459dd8828613ec4abe7351497a2b5d72ad4776",
+                  "page": 2,
+                  "bbox": [
+                    499,
+                    460,
+                    825,
+                    473
+                  ],
+                  "fragmentSha256": "11775809c4f370ae405fb31529581f5736ff4961e18721949bb788ddc98a92cd",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX05A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMP66MX05A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMP66MX05A"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "Height | Width | Depth",
+                  "sourceValue": "815-875 mm | 598 mm | 573 mm",
+                  "sourceQuote": "Height 815-875 mm | Width 598 mm | Depth 573 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Height",
+                      "value": "815-875 mm",
+                      "valueShape": "range"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth",
+                      "value": "573 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_ADJUSTABLE_HEIGHT_RANGE",
+                  "semanticInterpretation": "1:height(range), 2:width(scalar), 3:depth(scalar), range:height"
+                },
                 {
                   "observationId": "dimension_expression_5c387d8dab5d575aaf9b7806",
                   "pdfSha256": "9482d048c4831ce9c8e7d134a63e61ad926447172559652c0cfbe7bd8fa60e3f",
@@ -58274,15 +59003,57 @@
               "researchGaps": [
                 {
                   "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe",
+                  "contentSha256": "1227e16eda3cf0f7eaf071a47d459dd8828613ec4abe7351497a2b5d72ad4776",
+                  "page": 1,
+                  "quote": " .. .Built-in text Height of removable worktop: ..0 mm text Dimensions of the product (HxWxD): . ..815 x 598 x 573 mm text Min. required niche size for installation (HxWxD): ....815-875 x 600 x text 550 mm text Depth with open door 90 degree: 1150 mm text Adjustable feet: . . Yes - all from front text Maximum adjustabi"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9",
+                  "contentSha256": "6475cebcda6b42299338326d5bae801f07c7514d1daf755b9ea23ab0174cb0ee",
+                  "page": 2,
+                  "quote": "Product Dimensions (H x W x D)"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
                   "pdfSha256": "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
                   "contentSha256": "020757c3909a18d280658e8c5346f6426af6a87800b0d8fbc5a3beee76086109",
                   "page": 2,
                   "quote": "Product Dimensions (H x W x D)"
                 },
                 {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798",
+                  "contentSha256": "2f566f5a19c210039d84c01bec4869dcdb4c4cee1fa9abb938f477aa3e725812",
+                  "page": 2,
+                  "quote": "Product Dimensions (H x W x D)"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe",
+                  "contentSha256": "1227e16eda3cf0f7eaf071a47d459dd8828613ec4abe7351497a2b5d72ad4776",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9",
+                  "contentSha256": "6475cebcda6b42299338326d5bae801f07c7514d1daf755b9ea23ab0174cb0ee",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
                   "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
                   "pdfSha256": "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
                   "contentSha256": "020757c3909a18d280658e8c5346f6426af6a87800b0d8fbc5a3beee76086109",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798",
+                  "contentSha256": "2f566f5a19c210039d84c01bec4869dcdb4c4cee1fa9abb938f477aa3e725812",
                   "page": 3,
                   "quote": "measurements in mm"
                 },
@@ -58295,7 +59066,8 @@
                 }
               ],
               "parserProfileIds": [
-                "pdf_grammar_2cd42a3705740fb2"
+                "pdf_grammar_2cd42a3705740fb2",
+                "pdf_grammar_a2b008d9dd159831"
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
@@ -58861,18 +59633,1045 @@
             },
             {
               "groupType": "parser_family",
+              "groupName": "Bosch Australia dishwasher product specification",
+              "models": [
+                "SCE53M05AU",
+                "SKE53M05AU",
+                "SMI88TS02A",
+                "SMP66MX01A",
+                "SMP66MX02A",
+                "SMP66MX03A"
+              ],
+              "pdfSha256s": [
+                "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                "92fa635624f2e7de531146cdafc5b725f8e3ec6fb2dd3854f2d60659f4791f10",
+                "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+                "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
+                "b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88",
+                "f1b479413af7cef17f1d9d2a2f8fe99d87465b59825d35ad6218e63fe9928387"
+              ],
+              "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI88TS02A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX01A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX02A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX03A.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "bosch-au-dishwasher-dimensions-section-explicit-axes-v1",
+                  "grammarFamilyId": "bosch_au_dishwasher_product_dimensions_v1",
+                  "grammarFamilyName": "Bosch Australia dishwasher product specification",
+                  "variantName": "Document-scoped Dimensions heading followed by explicit H/W/D axes",
+                  "brand": "Bosch",
+                  "category": "dishwasher",
+                  "documentType": "product_specification",
+                  "detectionSummary": "An exact official PDF URL plus either a unique exact-model cover or repeated structured exact-model titles on at least two pages document-scope one plain product Dimensions heading immediately followed by a complete H/W/D x-separated paragraph with one consistent inherited unit.",
+                  "semanticBoundary": "Only closed product H/W/D is projected and a range is accepted only for height; contextual headings, sibling-model documents, partial or duplicate axes, mixed units, packaging, cavity, niche and installation dimensions are excluded.",
+                  "profileKind": "declared_brand_category_grammar",
+                  "signatureVersion": 1,
+                  "expressionShapes": [],
+                  "researchGapTypes": []
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SCE53M05AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "92fa635624f2e7de531146cdafc5b725f8e3ec6fb2dd3854f2d60659f4791f10",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMP66MX01A",
+                  "extractionState": "ALL_AXIS_RANGE",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SKE53M05AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMI88TS02A",
+                  "extractionState": "ALL_AXIS_RANGE",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMP66MX03A",
+                  "extractionState": "ALL_AXIS_RANGE",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "f1b479413af7cef17f1d9d2a2f8fe99d87465b59825d35ad6218e63fe9928387",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMP66MX02A",
+                  "extractionState": "ALL_AXIS_RANGE",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_3b3c877903587251b2e1277b",
+                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+                  "contentSha256": "1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f",
+                  "page": 2,
+                  "bbox": [
+                    502,
+                    588,
+                    752,
+                    602
+                  ],
+                  "fragmentSha256": "e24bd395c647f6789b86d3cec5a1b18ac502ba3ef795f4cb45920d60b57d54d2",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SKE53M05AU",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SKE53M05AU"
+                  ],
+                  "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (H x W x D)",
+                  "sourceValue": "454 mm x 595 mm x 500 mm",
+                  "sourceQuote": "- H: 454 mm x W: 595 mm x D: 500 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "H",
+                      "value": "454 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "W",
+                      "value": "595 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D",
+                      "value": "500 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_5aefdeb8726ac83ef0dbf5fc",
+                  "pdfSha256": "b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88",
+                  "contentSha256": "197c76fb40061f7ca744940b339207528b6c9b253d4388d917968c4fab38eb95",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    341,
+                    877,
+                    354
+                  ],
+                  "fragmentSha256": "632e196f95c232a4a683b124502eba332305d4bc450559b624fecdbe893d8165",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX03A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMP66MX03A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMP66MX03A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions of the product (HxWxD)",
+                  "sourceValue": "815 x 598 x 573 mm",
+                  "sourceQuote": "Dimensions of the product (HxWxD) 815 x 598 x 573 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "815 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "573 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_73bd99b2c7fc93f2d1ba7d47",
+                  "pdfSha256": "b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88",
+                  "contentSha256": "197c76fb40061f7ca744940b339207528b6c9b253d4388d917968c4fab38eb95",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    380,
+                    786,
+                    392
+                  ],
+                  "fragmentSha256": "402d8f25fc4637b9712a6fefdb5dd3768562f59e4253483c03d07505fc144911",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX03A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMP66MX03A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMP66MX03A"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Depth with open door 90 degree :",
+                  "sourceValue": "1150 mm",
+                  "sourceQuote": "Depth with open door 90 degree : 1150 mm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Depth with open door 90 degree :",
+                      "value": "1150 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_787dd9e791f7a66a15610d72",
+                  "pdfSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
+                  "contentSha256": "4ee3991fb2c5b4ef3a355bd672f9a2a1122da9bd96386cd76aca8f366730df33",
+                  "page": 3,
+                  "bbox": [
+                    87,
+                    266,
+                    435,
+                    279
+                  ],
+                  "fragmentSha256": "99c8c7f0cf59e9ca4df049cb12dacba6790406f8223b8d58227447ede9a6eeb4",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI88TS02A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMI88TS02A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "SMI88TS02A"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "Height | Width | Depth",
+                  "sourceValue": "815-875 mm | 598 mm | 573 mm",
+                  "sourceQuote": "Height 815-875 mm | Width 598 mm | Depth 573 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Height",
+                      "value": "815-875 mm",
+                      "valueShape": "range"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth",
+                      "value": "573 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_ADJUSTABLE_HEIGHT_RANGE",
+                  "semanticInterpretation": "1:height(range), 2:width(scalar), 3:depth(scalar), range:height"
+                },
+                {
+                  "observationId": "dimension_expression_861b9e1fff617dea540cc613",
+                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                  "contentSha256": "cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14",
+                  "page": 2,
+                  "bbox": [
+                    502,
+                    759,
+                    752,
+                    774
+                  ],
+                  "fragmentSha256": "5d1b9086c2ce914d0f2e827b3aedc43ddf7b7755504ab43fb77e626fd0f114c1",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SCE53M05AU",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SCE53M05AU"
+                  ],
+                  "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (H x W x D)",
+                  "sourceValue": "595 mm x 595 mm x 500 mm",
+                  "sourceQuote": "- H: 595 mm x W: 595 mm x D: 500 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "H",
+                      "value": "595 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "W",
+                      "value": "595 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D",
+                      "value": "500 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_918e2c29db85b0705968f829",
+                  "pdfSha256": "92fa635624f2e7de531146cdafc5b725f8e3ec6fb2dd3854f2d60659f4791f10",
+                  "contentSha256": "31af4aaae9f5b38dd28a15cb230b686e048543052daee2418a9ca29ddabd14ae",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    380,
+                    786,
+                    392
+                  ],
+                  "fragmentSha256": "402d8f25fc4637b9712a6fefdb5dd3768562f59e4253483c03d07505fc144911",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMP66MX01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMP66MX01A"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Depth with open door 90 degree :",
+                  "sourceValue": "1150 mm",
+                  "sourceQuote": "Depth with open door 90 degree : 1150 mm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Depth with open door 90 degree :",
+                      "value": "1150 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_a0a693534f9ee93e30548eb0",
+                  "pdfSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
+                  "contentSha256": "4ee3991fb2c5b4ef3a355bd672f9a2a1122da9bd96386cd76aca8f366730df33",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    382,
+                    877,
+                    394
+                  ],
+                  "fragmentSha256": "9e6cbd346451233f22993abf774d6df5ffbb628aa14ee51ed9456e65d942adef",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI88TS02A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMI88TS02A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMI88TS02A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions of the product (HxWxD)",
+                  "sourceValue": "815 x 598 x 573 mm",
+                  "sourceQuote": "Dimensions of the product (HxWxD) 815 x 598 x 573 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "815 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "573 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_ad61fc2b82faefbee410ccc0",
+                  "pdfSha256": "92fa635624f2e7de531146cdafc5b725f8e3ec6fb2dd3854f2d60659f4791f10",
+                  "contentSha256": "31af4aaae9f5b38dd28a15cb230b686e048543052daee2418a9ca29ddabd14ae",
+                  "page": 3,
+                  "bbox": [
+                    87,
+                    193,
+                    435,
+                    205
+                  ],
+                  "fragmentSha256": "d14c4ca71f720587f132ffc9f53b863e86b7ae1e2bb5f6d590ccb97368ee387b",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMP66MX01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "SMP66MX01A"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "Height | Width | Depth",
+                  "sourceValue": "815-875 mm | 598 mm | 573 mm",
+                  "sourceQuote": "Height 815-875 mm | Width 598 mm | Depth 573 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Height",
+                      "value": "815-875 mm",
+                      "valueShape": "range"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth",
+                      "value": "573 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_ADJUSTABLE_HEIGHT_RANGE",
+                  "semanticInterpretation": "1:height(range), 2:width(scalar), 3:depth(scalar), range:height"
+                },
+                {
+                  "observationId": "dimension_expression_bd91bcc3c7a8993e996f879a",
+                  "pdfSha256": "b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88",
+                  "contentSha256": "197c76fb40061f7ca744940b339207528b6c9b253d4388d917968c4fab38eb95",
+                  "page": 3,
+                  "bbox": [
+                    85,
+                    151,
+                    435,
+                    161
+                  ],
+                  "fragmentSha256": "01e524b4f139359cb1cbd198f7b898977554cb02085f05d802337ed562454d03",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX03A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMP66MX03A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "SMP66MX03A"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "Height | Width | Depth",
+                  "sourceValue": "815-875 mm | 598 mm | 573 mm",
+                  "sourceQuote": "Height 815-875 mm | Width 598 mm | Depth 573 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Height",
+                      "value": "815-875 mm",
+                      "valueShape": "range"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth",
+                      "value": "573 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_ADJUSTABLE_HEIGHT_RANGE",
+                  "semanticInterpretation": "1:height(range), 2:width(scalar), 3:depth(scalar), range:height"
+                },
+                {
+                  "observationId": "dimension_expression_c8412adb0b3a15545ac20adc",
+                  "pdfSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
+                  "contentSha256": "4ee3991fb2c5b4ef3a355bd672f9a2a1122da9bd96386cd76aca8f366730df33",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    420,
+                    788,
+                    433
+                  ],
+                  "fragmentSha256": "4ddc807d4f7882cc586761ff227fe76670c39246f7244431314d7fe760272ac7",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI88TS02A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMI88TS02A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMI88TS02A"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Depth with open door 90 degree :",
+                  "sourceValue": "1150 mm",
+                  "sourceQuote": "Depth with open door 90 degree : 1150 mm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Depth with open door 90 degree :",
+                      "value": "1150 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_d510f3bda8e160e19a4ea321",
+                  "pdfSha256": "f1b479413af7cef17f1d9d2a2f8fe99d87465b59825d35ad6218e63fe9928387",
+                  "contentSha256": "9054a139dbb1d833522eacc99558c1e425b08eeae1c8741f77a10142b46d2236",
+                  "page": 3,
+                  "bbox": [
+                    85,
+                    151,
+                    435,
+                    161
+                  ],
+                  "fragmentSha256": "01e524b4f139359cb1cbd198f7b898977554cb02085f05d802337ed562454d03",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX02A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMP66MX02A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "SMP66MX02A"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "Height | Width | Depth",
+                  "sourceValue": "815-875 mm | 598 mm | 573 mm",
+                  "sourceQuote": "Height 815-875 mm | Width 598 mm | Depth 573 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Height",
+                      "value": "815-875 mm",
+                      "valueShape": "range"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth",
+                      "value": "573 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_ADJUSTABLE_HEIGHT_RANGE",
+                  "semanticInterpretation": "1:height(range), 2:width(scalar), 3:depth(scalar), range:height"
+                },
+                {
+                  "observationId": "dimension_expression_e8002dfda9e638ebcef5cbec",
+                  "pdfSha256": "f1b479413af7cef17f1d9d2a2f8fe99d87465b59825d35ad6218e63fe9928387",
+                  "contentSha256": "9054a139dbb1d833522eacc99558c1e425b08eeae1c8741f77a10142b46d2236",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    315,
+                    917,
+                    380
+                  ],
+                  "fragmentSha256": "cf138d9a12a68c22d469cc69f27e121640c8a9645042e89ffc1aedfd2c0a666f",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX02A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMP66MX02A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMP66MX02A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions of the product (HxWxD)",
+                  "sourceValue": "815 x 598 x 573",
+                  "sourceQuote": "Dimensions of the product (HxWxD) 815 x 598 x 573",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": null,
+                  "unitPlacement": "absent",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "815",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "598",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "573",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_UNIT_MISSING",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_ebba0e0042f68b3fb9605db4",
+                  "pdfSha256": "92fa635624f2e7de531146cdafc5b725f8e3ec6fb2dd3854f2d60659f4791f10",
+                  "contentSha256": "31af4aaae9f5b38dd28a15cb230b686e048543052daee2418a9ca29ddabd14ae",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    341,
+                    877,
+                    354
+                  ],
+                  "fragmentSha256": "632e196f95c232a4a683b124502eba332305d4bc450559b624fecdbe893d8165",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMP66MX01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMP66MX01A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions of the product (HxWxD)",
+                  "sourceValue": "815 x 598 x 573 mm",
+                  "sourceQuote": "Dimensions of the product (HxWxD) 815 x 598 x 573 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "815 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "573 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                  "contentSha256": "cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14",
+                  "page": 1,
+                  "quote": "g : Built-in text Height of removable worktop (mm) : 0 text Dimensions of the product (width x depth) : 595 x 595 x 500 text Depth with open door 90 degree (mm) : 995 text Adjustable feet : No text Net weight (kg) : 26.450 text Gross weight (kg) : 29.0 text Connection Rating (W) : 2400 text Current (A) : 10 text Voltag"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+                  "contentSha256": "1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f",
+                  "page": 1,
+                  "quote": "g : Built-in text Height of removable worktop (mm) : 0 text Dimensions of the product (width x depth) : 454 x 595 x 500 text Depth with open door 90 degree (mm) : 845 text Adjustable feet : No text Net weight (kg) : 22.202 text Gross weight (kg) : 24.6 text Connection Rating (W) : 2400 text Current (A) : 10 text Voltag"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                  "contentSha256": "cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+                  "contentSha256": "1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "92fa635624f2e7de531146cdafc5b725f8e3ec6fb2dd3854f2d60659f4791f10",
+                  "contentSha256": "31af4aaae9f5b38dd28a15cb230b686e048543052daee2418a9ca29ddabd14ae",
+                  "page": 4,
+                  "quote": ""
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88",
+                  "contentSha256": "197c76fb40061f7ca744940b339207528b6c9b253d4388d917968c4fab38eb95",
+                  "page": 4,
+                  "quote": ""
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "f1b479413af7cef17f1d9d2a2f8fe99d87465b59825d35ad6218e63fe9928387",
+                  "contentSha256": "9054a139dbb1d833522eacc99558c1e425b08eeae1c8741f77a10142b46d2236",
+                  "page": 4,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [
+                "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "parser_family",
               "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
               "models": [
                 "SMI66JS01A",
-                "SMI66MS01A"
+                "SMI66MS01A",
+                "SMS46GI01A",
+                "SMS46KI01A"
               ],
               "pdfSha256s": [
+                "350c5e3fa5726645f316e588f25dce48c433322aa17249e9fc4d105f9c028c99",
                 "803b17b58f7d7321307647dc2d7ad67cdaafacb0609b2279b4d52048d2268fb1",
-                "c1eb36482a577bec4af1c09f6e13faee60fccf66a109a0a598335163590fa542"
+                "c1eb36482a577bec4af1c09f6e13faee60fccf66a109a0a598335163590fa542",
+                "cfcd46018c2482666fda55e20c7727b4a71deba9a292b382c5f027c47fb07a5d"
               ],
               "sourceUrls": [
                 "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI66JS01A.pdf",
-                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI66MS01A.pdf"
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI66MS01A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46GI01A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46KI01A.pdf"
               ],
               "seriesEvidence": [],
               "parserProfiles": [
@@ -58926,6 +60725,21 @@
               ],
               "parserReplays": [
                 {
+                  "pdfSha256": "350c5e3fa5726645f316e588f25dce48c433322aa17249e9fc4d105f9c028c99",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMS46GI01A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
                   "pdfSha256": "803b17b58f7d7321307647dc2d7ad67cdaafacb0609b2279b4d52048d2268fb1",
                   "category": "dishwasher",
                   "brand": "Bosch",
@@ -58954,9 +60768,91 @@
                   ],
                   "grammarProfileIds": [],
                   "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "cfcd46018c2482666fda55e20c7727b4a71deba9a292b382c5f027c47fb07a5d",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMS46KI01A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
+                {
+                  "observationId": "dimension_expression_431b067943e67fc5e21e5065",
+                  "pdfSha256": "cfcd46018c2482666fda55e20c7727b4a71deba9a292b382c5f027c47fb07a5d",
+                  "contentSha256": "83e9328e72e1eac158979867404535f5d4e758965cf02a3b9adb29dfc8d6fd6a",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    340,
+                    877,
+                    353
+                  ],
+                  "fragmentSha256": "b16364392a89f1ea5b92e664d900d4b1b3b481ea3392f07df132bc2e642a85e2",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46KI01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMS46KI01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMS46KI01A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions of the product (HxWxD)",
+                  "sourceValue": "845 x 600 x 600 mm",
+                  "sourceQuote": "Dimensions of the product (HxWxD) 845 x 600 x 600 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "845 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
                 {
                   "observationId": "dimension_expression_6392d8a2d6307eaf23df3d06",
                   "pdfSha256": "c1eb36482a577bec4af1c09f6e13faee60fccf66a109a0a598335163590fa542",
@@ -59023,6 +60919,55 @@
                   ],
                   "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
                   "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_63e9bbc898592211781105b1",
+                  "pdfSha256": "350c5e3fa5726645f316e588f25dce48c433322aa17249e9fc4d105f9c028c99",
+                  "contentSha256": "498483565b902b70af59d2fe5954b2058a1fb685ea7e7ad7b8fc6ca42f5a9fb8",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    353,
+                    788,
+                    365
+                  ],
+                  "fragmentSha256": "e7baae6232035d17f4fa99d30b65c65bd9f6fe98a3f8fe645188b1f63afd87f4",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46GI01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMS46GI01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMS46GI01A"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Depth with open door 90 degree :",
+                  "sourceValue": "1155 mm",
+                  "sourceQuote": "Depth with open door 90 degree : 1155 mm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Depth with open door 90 degree :",
+                      "value": "1155 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
                 },
                 {
                   "observationId": "dimension_expression_84eadb3de62a5986c25c4dea",
@@ -59141,6 +61086,122 @@
                   "semanticInterpretation": "1:depth(scalar)"
                 },
                 {
+                  "observationId": "dimension_expression_9c6b573f71942fc549ab9b1d",
+                  "pdfSha256": "350c5e3fa5726645f316e588f25dce48c433322aa17249e9fc4d105f9c028c99",
+                  "contentSha256": "498483565b902b70af59d2fe5954b2058a1fb685ea7e7ad7b8fc6ca42f5a9fb8",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    339,
+                    877,
+                    353
+                  ],
+                  "fragmentSha256": "b05c70fe77aa6d688c2bf5f9567eae131542fb13eac4382daf5cd9d8de769c7c",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46GI01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMS46GI01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMS46GI01A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions of the product (HxWxD)",
+                  "sourceValue": "845 x 600 x 600 mm",
+                  "sourceQuote": "Dimensions of the product (HxWxD) 845 x 600 x 600 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "845 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_a8452d688cf6dce254dd79ac",
+                  "pdfSha256": "cfcd46018c2482666fda55e20c7727b4a71deba9a292b382c5f027c47fb07a5d",
+                  "contentSha256": "83e9328e72e1eac158979867404535f5d4e758965cf02a3b9adb29dfc8d6fd6a",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    353,
+                    788,
+                    365
+                  ],
+                  "fragmentSha256": "e7baae6232035d17f4fa99d30b65c65bd9f6fe98a3f8fe645188b1f63afd87f4",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46KI01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMS46KI01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMS46KI01A"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Depth with open door 90 degree :",
+                  "sourceValue": "1155 mm",
+                  "sourceQuote": "Depth with open door 90 degree : 1155 mm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Depth with open door 90 degree :",
+                      "value": "1155 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
                   "observationId": "dimension_expression_aded6b98e4e1a8c003747151",
                   "pdfSha256": "803b17b58f7d7321307647dc2d7ad67cdaafacb0609b2279b4d52048d2268fb1",
                   "contentSha256": "fa75f422589a467959f65d5e27ffb31a2b497503d9ac0186aecc7106fc32ce62",
@@ -59193,8 +61254,22 @@
               "researchGaps": [
                 {
                   "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "350c5e3fa5726645f316e588f25dce48c433322aa17249e9fc4d105f9c028c99",
+                  "contentSha256": "498483565b902b70af59d2fe5954b2058a1fb685ea7e7ad7b8fc6ca42f5a9fb8",
+                  "page": 2,
+                  "quote": ""
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
                   "pdfSha256": "c1eb36482a577bec4af1c09f6e13faee60fccf66a109a0a598335163590fa542",
                   "contentSha256": "15242ebf4639b6d6c0735dbb376308cadbfb4d4f2ae2b6900646d4d518e08402",
+                  "page": 2,
+                  "quote": ""
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "cfcd46018c2482666fda55e20c7727b4a71deba9a292b382c5f027c47fb07a5d",
+                  "contentSha256": "83e9328e72e1eac158979867404535f5d4e758965cf02a3b9adb29dfc8d6fd6a",
                   "page": 2,
                   "quote": ""
                 },
@@ -59216,16 +61291,13 @@
               "groupType": "parser_family",
               "groupName": "PDF grammar pdf_grammar_469f807ed436b799",
               "models": [
-                "SMI50D05AU",
-                "SMI88TS02A"
+                "SMI50D05AU"
               ],
               "pdfSha256s": [
-                "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
                 "ddc73a715bc8857b1058ba8acf431e9f5c1168b72b32da1ac6fd6fa0f1a9c284"
               ],
               "sourceUrls": [
-                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI50D05AU.pdf",
-                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI88TS02A.pdf"
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI50D05AU.pdf"
               ],
               "seriesEvidence": [],
               "parserProfiles": [
@@ -59299,21 +61371,6 @@
                 }
               ],
               "parserReplays": [
-                {
-                  "pdfSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
-                  "category": "dishwasher",
-                  "brand": "Bosch",
-                  "model": "SMI88TS02A",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
-                  "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
-                },
                 {
                   "pdfSha256": "ddc73a715bc8857b1058ba8acf431e9f5c1168b72b32da1ac6fd6fa0f1a9c284",
                   "category": "dishwasher",
@@ -59446,189 +61503,6 @@
                   ],
                   "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
                   "semanticInterpretation": "1:height, 2:width, 3:depth"
-                },
-                {
-                  "observationId": "dimension_expression_787dd9e791f7a66a15610d72",
-                  "pdfSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
-                  "contentSha256": "4ee3991fb2c5b4ef3a355bd672f9a2a1122da9bd96386cd76aca8f366730df33",
-                  "page": 3,
-                  "bbox": [
-                    87,
-                    266,
-                    435,
-                    279
-                  ],
-                  "fragmentSha256": "99c8c7f0cf59e9ca4df049cb12dacba6790406f8223b8d58227447ede9a6eeb4",
-                  "sourceUrls": [
-                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI88TS02A.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "SMI88TS02A",
-                      "category": "dishwasher"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "SMI88TS02A"
-                  ],
-                  "patternKind": "INLINE_LABELLED_AXES",
-                  "sourceLabel": "Height | Width | Depth",
-                  "sourceValue": "815-875 mm | 598 mm | 573 mm",
-                  "sourceQuote": "Height 815-875 mm | Width 598 mm | Depth 573 mm",
-                  "axisOrder": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "unit": "mm",
-                  "unitPlacement": "value",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "height",
-                      "label": "Height",
-                      "value": "815-875 mm",
-                      "valueShape": "range"
-                    },
-                    {
-                      "axis": "width",
-                      "label": "Width",
-                      "value": "598 mm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Depth",
-                      "value": "573 mm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "SUPPORTED_ADJUSTABLE_HEIGHT_RANGE",
-                  "semanticInterpretation": "1:height(range), 2:width(scalar), 3:depth(scalar), range:height"
-                },
-                {
-                  "observationId": "dimension_expression_a0a693534f9ee93e30548eb0",
-                  "pdfSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
-                  "contentSha256": "4ee3991fb2c5b4ef3a355bd672f9a2a1122da9bd96386cd76aca8f366730df33",
-                  "page": 1,
-                  "bbox": [
-                    507,
-                    382,
-                    877,
-                    394
-                  ],
-                  "fragmentSha256": "9e6cbd346451233f22993abf774d6df5ffbb628aa14ee51ed9456e65d942adef",
-                  "sourceUrls": [
-                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI88TS02A.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "SMI88TS02A",
-                      "category": "dishwasher"
-                    }
-                  ],
-                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
-                  "boundModels": [
-                    "SMI88TS02A"
-                  ],
-                  "patternKind": "GROUPED_AXIS_SEQUENCE",
-                  "sourceLabel": "Dimensions of the product (HxWxD)",
-                  "sourceValue": "815 x 598 x 573 mm",
-                  "sourceQuote": "Dimensions of the product (HxWxD) 815 x 598 x 573 mm",
-                  "axisOrder": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "unit": "mm",
-                  "unitPlacement": "value",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "height",
-                      "label": "height",
-                      "value": "815 mm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "width",
-                      "label": "width",
-                      "value": "598 mm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "depth",
-                      "value": "573 mm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
-                  "semanticInterpretation": "1:height, 2:width, 3:depth"
-                },
-                {
-                  "observationId": "dimension_expression_c8412adb0b3a15545ac20adc",
-                  "pdfSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
-                  "contentSha256": "4ee3991fb2c5b4ef3a355bd672f9a2a1122da9bd96386cd76aca8f366730df33",
-                  "page": 1,
-                  "bbox": [
-                    507,
-                    420,
-                    788,
-                    433
-                  ],
-                  "fragmentSha256": "4ddc807d4f7882cc586761ff227fe76670c39246f7244431314d7fe760272ac7",
-                  "sourceUrls": [
-                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI88TS02A.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "SMI88TS02A",
-                      "category": "dishwasher"
-                    }
-                  ],
-                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
-                  "boundModels": [
-                    "SMI88TS02A"
-                  ],
-                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
-                  "sourceLabel": "Depth with open door 90 degree :",
-                  "sourceValue": "1150 mm",
-                  "sourceQuote": "Depth with open door 90 degree : 1150 mm",
-                  "axisOrder": [
-                    "depth"
-                  ],
-                  "safeAxes": [],
-                  "unit": "mm",
-                  "unitPlacement": "value",
-                  "scope": "operation_envelope",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "depth",
-                      "label": "Depth with open door 90 degree :",
-                      "value": "1150 mm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                  "semanticInterpretation": "1:depth(scalar)"
                 },
                 {
                   "observationId": "dimension_expression_d70980e1a796ae9a546bd39a",
@@ -59851,6 +61725,297 @@
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_9d36d84250a5daa8",
+              "models": [
+                "SMS46GW01A"
+              ],
+              "pdfSha256s": [
+                "da9e2b822d22949870761d9fb982becf374631fdb31e838d1c4feda28075914d"
+              ],
+              "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46GW01A.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_9d36d84250a5daa8",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                      "sourceLabel": "dimensions of the product (hxwxd)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                      "sourceLabel": "depth with open door <number> degree :",
+                      "axisOrder": [
+                        "depth"
+                      ],
+                      "safeAxes": [],
+                      "scope": "operation_envelope",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
+                      "sourceLabel": "dimensions (h x w x d)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": []
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "da9e2b822d22949870761d9fb982becf374631fdb31e838d1c4feda28075914d",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMS46GW01A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_5819a8e67ae4d505f2824003",
+                  "pdfSha256": "da9e2b822d22949870761d9fb982becf374631fdb31e838d1c4feda28075914d",
+                  "contentSha256": "06178ff4eed7f41e703c1805a002856a8b9a4dd5f4e5a0594ebf75595493c0f6",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    315,
+                    877,
+                    326
+                  ],
+                  "fragmentSha256": "6216183ee12d124a1e6b11234cd408b475ac6f87ee96f3abddd2656f45c7d674",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46GW01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMS46GW01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMS46GW01A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions of the product (HxWxD)",
+                  "sourceValue": "845 x 600 x 600 mm",
+                  "sourceQuote": "Dimensions of the product (HxWxD) 845 x 600 x 600 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "845 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_f2c57f292275d9cb3c89fbd5",
+                  "pdfSha256": "da9e2b822d22949870761d9fb982becf374631fdb31e838d1c4feda28075914d",
+                  "contentSha256": "06178ff4eed7f41e703c1805a002856a8b9a4dd5f4e5a0594ebf75595493c0f6",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    327,
+                    788,
+                    339
+                  ],
+                  "fragmentSha256": "ab415fbefc01cdc5fb5cd557e16484a9d8ac2db1d8169123f67a64b3018815d5",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46GW01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMS46GW01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMS46GW01A"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Depth with open door 90 degree :",
+                  "sourceValue": "1155 mm",
+                  "sourceQuote": "Depth with open door 90 degree : 1155 mm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Depth with open door 90 degree :",
+                      "value": "1155 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_fa056263f617f4ea82311907",
+                  "pdfSha256": "da9e2b822d22949870761d9fb982becf374631fdb31e838d1c4feda28075914d",
+                  "contentSha256": "06178ff4eed7f41e703c1805a002856a8b9a4dd5f4e5a0594ebf75595493c0f6",
+                  "page": 2,
+                  "bbox": [
+                    502,
+                    859,
+                    754,
+                    872
+                  ],
+                  "fragmentSha256": "aa2d41ae2eaa23ac7fa8dc96be92a58e0e9a1e2d5cf2e515ec69174219d54ad1",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46GW01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMS46GW01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMS46GW01A"
+                  ],
+                  "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (H x W x D)",
+                  "sourceValue": "845 mm x 600 mm x 600 mm",
+                  "sourceQuote": "- H: 845 mm x W: 600 mm x D: 600 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "H",
+                      "value": "845 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "W",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                }
+              ],
+              "researchGaps": [],
+              "parserProfileIds": [
+                "pdf_grammar_9d36d84250a5daa8"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
             },
             {
               "groupType": "parser_family",
@@ -60145,25 +62310,38 @@
             },
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_cf52905eae731e58",
+              "groupName": "PDF grammar pdf_grammar_a5c8b8b120f3672e",
               "models": [
-                "SCE53M05AU",
-                "SKE53M05AU"
+                "SMS50E32AU"
               ],
               "pdfSha256s": [
-                "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
-                "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701"
+                "63476e421592173b841aa4e743929de77687697a0b84c897d00063ee97640cfd"
               ],
               "sourceUrls": [
-                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf",
-                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf"
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS50E32AU.pdf"
               ],
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_cf52905eae731e58",
+                  "parserProfileId": "pdf_grammar_a5c8b8b120f3672e",
                   "signatureVersion": 1,
                   "expressionShapes": [
+                    {
+                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                      "sourceLabel": "depth with open door <number> degree (<unit>) :",
+                      "axisOrder": [
+                        "depth"
+                      ],
+                      "safeAxes": [],
+                      "scope": "operation_envelope",
+                      "unit": "mm",
+                      "unitPlacement": "label",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
                     {
                       "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
                       "syntaxDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
@@ -60187,33 +62365,15 @@
                       "depthVariantLabels": []
                     }
                   ],
-                  "researchGapTypes": [
-                    "IMAGE_ONLY_DIMENSION_DIAGRAM",
-                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-                  ]
+                  "researchGapTypes": []
                 }
               ],
               "parserReplays": [
                 {
-                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                  "pdfSha256": "63476e421592173b841aa4e743929de77687697a0b84c897d00063ee97640cfd",
                   "category": "dishwasher",
                   "brand": "Bosch",
-                  "model": "SCE53M05AU",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
-                  "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
-                },
-                {
-                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
-                  "category": "dishwasher",
-                  "brand": "Bosch",
-                  "model": "SKE53M05AU",
+                  "model": "SMS50E32AU",
                   "extractionState": "ALL_AXIS_SCALAR",
                   "identityScope": "EXACT_MODEL",
                   "claimFields": [
@@ -60227,35 +62387,84 @@
               ],
               "expressions": [
                 {
-                  "observationId": "dimension_expression_3b3c877903587251b2e1277b",
-                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
-                  "contentSha256": "1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f",
-                  "page": 2,
+                  "observationId": "dimension_expression_941ef32855c448a1cbb7928e",
+                  "pdfSha256": "63476e421592173b841aa4e743929de77687697a0b84c897d00063ee97640cfd",
+                  "contentSha256": "12e335fc254bbc7a02e99f2f056d352c79b6d07b48791c9c9d1b8cbca5812c13",
+                  "page": 1,
                   "bbox": [
-                    502,
-                    588,
-                    752,
-                    602
+                    505,
+                    234,
+                    919,
+                    543
                   ],
-                  "fragmentSha256": "e24bd395c647f6789b86d3cec5a1b18ac502ba3ef795f4cb45920d60b57d54d2",
+                  "fragmentSha256": "f993764160951e4875d8fb26ff3bfc35a968acf50670fd0f16d16bed7207322a",
                   "sourceUrls": [
-                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf"
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS50E32AU.pdf"
                   ],
                   "identities": [
                     {
                       "brand": "Bosch",
-                      "model": "SKE53M05AU",
+                      "model": "SMS50E32AU",
                       "category": "dishwasher"
                     }
                   ],
                   "modelBinding": "SAME_PAGE_EXACT_MODEL",
                   "boundModels": [
-                    "SKE53M05AU"
+                    "SMS50E32AU"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Depth with open door 90 degree (mm) :",
+                  "sourceValue": "1155",
+                  "sourceQuote": "Depth with open door 90 degree (mm) : 1155",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Depth with open door 90 degree (mm) :",
+                      "value": "1155",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_d6c4bee2f19663d61f4f121f",
+                  "pdfSha256": "63476e421592173b841aa4e743929de77687697a0b84c897d00063ee97640cfd",
+                  "contentSha256": "12e335fc254bbc7a02e99f2f056d352c79b6d07b48791c9c9d1b8cbca5812c13",
+                  "page": 2,
+                  "bbox": [
+                    502,
+                    474,
+                    754,
+                    487
+                  ],
+                  "fragmentSha256": "455d06113a5a66820a49e9316276b8493f832bf6cb5826f865979aa1e9fc6db4",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS50E32AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMS50E32AU",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMS50E32AU"
                   ],
                   "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
                   "sourceLabel": "Dimensions (H x W x D)",
-                  "sourceValue": "454 mm x 595 mm x 500 mm",
-                  "sourceQuote": "- H: 454 mm x W: 595 mm x D: 500 mm",
+                  "sourceValue": "845 mm x 600 mm x 600 mm",
+                  "sourceQuote": "- H: 845 mm x W: 600 mm x D: 600 mm",
                   "axisOrder": [
                     "height",
                     "width",
@@ -60274,86 +62483,19 @@
                     {
                       "axis": "height",
                       "label": "H",
-                      "value": "454 mm",
+                      "value": "845 mm",
                       "valueShape": "scalar"
                     },
                     {
                       "axis": "width",
                       "label": "W",
-                      "value": "595 mm",
+                      "value": "600 mm",
                       "valueShape": "scalar"
                     },
                     {
                       "axis": "depth",
                       "label": "D",
-                      "value": "500 mm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
-                  "semanticInterpretation": "1:height, 2:width, 3:depth"
-                },
-                {
-                  "observationId": "dimension_expression_861b9e1fff617dea540cc613",
-                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
-                  "contentSha256": "cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14",
-                  "page": 2,
-                  "bbox": [
-                    502,
-                    759,
-                    752,
-                    774
-                  ],
-                  "fragmentSha256": "5d1b9086c2ce914d0f2e827b3aedc43ddf7b7755504ab43fb77e626fd0f114c1",
-                  "sourceUrls": [
-                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "SCE53M05AU",
-                      "category": "dishwasher"
-                    }
-                  ],
-                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
-                  "boundModels": [
-                    "SCE53M05AU"
-                  ],
-                  "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
-                  "sourceLabel": "Dimensions (H x W x D)",
-                  "sourceValue": "595 mm x 595 mm x 500 mm",
-                  "sourceQuote": "- H: 595 mm x W: 595 mm x D: 500 mm",
-                  "axisOrder": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "unit": "mm",
-                  "unitPlacement": "per_value",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "height",
-                      "label": "H",
-                      "value": "595 mm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "width",
-                      "label": "W",
-                      "value": "595 mm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "D",
-                      "value": "500 mm",
+                      "value": "600 mm",
                       "valueShape": "scalar"
                     }
                   ],
@@ -60361,41 +62503,12 @@
                   "semanticInterpretation": "1:height, 2:width, 3:depth"
                 }
               ],
-              "researchGaps": [
-                {
-                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
-                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
-                  "contentSha256": "cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14",
-                  "page": 1,
-                  "quote": "g : Built-in text Height of removable worktop (mm) : 0 text Dimensions of the product (width x depth) : 595 x 595 x 500 text Depth with open door 90 degree (mm) : 995 text Adjustable feet : No text Net weight (kg) : 26.450 text Gross weight (kg) : 29.0 text Connection Rating (W) : 2400 text Current (A) : 10 text Voltag"
-                },
-                {
-                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
-                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
-                  "contentSha256": "1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f",
-                  "page": 1,
-                  "quote": "g : Built-in text Height of removable worktop (mm) : 0 text Dimensions of the product (width x depth) : 454 x 595 x 500 text Depth with open door 90 degree (mm) : 845 text Adjustable feet : No text Net weight (kg) : 22.202 text Gross weight (kg) : 24.6 text Connection Rating (W) : 2400 text Current (A) : 10 text Voltag"
-                },
-                {
-                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
-                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
-                  "contentSha256": "cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14",
-                  "page": 3,
-                  "quote": "measurements in mm"
-                },
-                {
-                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
-                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
-                  "contentSha256": "1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f",
-                  "page": 3,
-                  "quote": "measurements in mm"
-                }
-              ],
+              "researchGaps": [],
               "parserProfileIds": [
-                "pdf_grammar_cf52905eae731e58"
+                "pdf_grammar_a5c8b8b120f3672e"
               ],
               "completeParserReplay": true,
-              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
             }
           ]
         },

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T04:19:01.386Z",
+  "generatedAt": "2026-07-16T05:02:44.158Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "ef1de6b52e3998bf4d0cc9539e9275c08948f8dbf0babf9ec17625f0d0221beb",
+  "semanticClassificationSha256": "5439a8c51e7702bb91c81c56c61ca7100b212f7593aaf28b422e7c65e658e760",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4207,
+    "documentLinks": 4223,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,34 +21,34 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 220,
+      "COMPLETE_RECEIPT": 236,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 160,
+      "IDENTITY_RESEARCH": 156,
       "OFFICIAL_DISCOVERY": 6417,
-      "REFERENCE_REDISCOVERY": 1215
+      "REFERENCE_REDISCOVERY": 1203
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6417,
-      "NO_ACTION": 220,
-      "REDISCOVER_OFFICIAL_SOURCE": 1215,
+      "NO_ACTION": 236,
+      "REDISCOVER_OFFICIAL_SOURCE": 1203,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 160
+      "RUN_IDENTITY_CLOSURE": 156
     },
     "bySourceAuthority": {
-      "MIXED": 90,
-      "NONE": 6636,
-      "OFFICIAL": 137,
-      "REFERENCE": 1232
+      "MIXED": 102,
+      "NONE": 6632,
+      "OFFICIAL": 141,
+      "REFERENCE": 1220
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 197,
-      "EXACT_MODEL": 1573,
+      "AMBIGUOUS": 193,
+      "EXACT_MODEL": 1577,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
-      "ALL_AXIS_RANGE": 56,
-      "ALL_AXIS_SCALAR": 307,
-      "NOT_PARSED": 7636,
+      "ALL_AXIS_RANGE": 63,
+      "ALL_AXIS_SCALAR": 316,
+      "NOT_PARSED": 7620,
       "PARSER_GAP": 96
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 220,
-      "LEGACY_UNBOUND": 1550,
+      "CURRENT_VALID": 236,
+      "LEGACY_UNBOUND": 1534,
       "NONE": 6325
     }
   },
@@ -68,13 +68,13 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 999,
+      "documentLinks": 1015,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 58,
+        "COMPLETE_RECEIPT": 74,
         "CONFLICT_QUARANTINE": 22,
-        "IDENTITY_RESEARCH": 28,
+        "IDENTITY_RESEARCH": 24,
         "OFFICIAL_DISCOVERY": 1030,
-        "REFERENCE_REDISCOVERY": 281
+        "REFERENCE_REDISCOVERY": 269
       }
     },
     {
@@ -240,12 +240,6 @@
     },
     {
       "category": "dishwasher",
-      "brand": "Bosch",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "models": 66
-    },
-    {
-      "category": "dishwasher",
       "brand": "Miele",
       "operationalClass": "OFFICIAL_DISCOVERY",
       "models": 65
@@ -303,6 +297,12 @@
       "brand": "Fisher & Paykel",
       "operationalClass": "OFFICIAL_DISCOVERY",
       "models": 55
+    },
+    {
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "models": 54
     },
     {
       "category": "dryer",
@@ -9256,8 +9256,8 @@
       "canonicalBrand": "Bosch",
       "model": "SBT8ZC801A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -9294,7 +9294,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/72/1d/721dcfd6b6f3fa684e850e47a4aa9de1b8b55630de48268f169222fac7d5f664.json",
             "evidence/web/sha256/bb/57/bb57b853485b050a729b5e6f167de5837278491eb9c57e0d0821fba0a4b5d8ed.pdf",
-            "receipt:45671f258c602b3a45f57b44bc831e65b0f2f4d09746ed8d3eb8c3751a4cd136"
+            "receipt:7538fa0e0c114ab2ecf8d2b201fa8fc4ada46e15d08996e80ed0fcd0fd73ea1b"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -9330,8 +9330,18 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_0a5af8c992c338c2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_0a5af8c992c338c2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -9378,7 +9388,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/dc/a0/dca0b8d7a0b891fc301bda8dc363bf00e380c2bb196717476d48c884106c1ab8.json",
             "evidence/web/sha256/11/05/1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518.pdf",
-            "receipt:585137ad56d0ab6e8beba98077d00761f3ae46c71ec0e56ba3e4c78080806503"
+            "receipt:9378d78d0c966a688eb0889cc77f134678458e919c16ea8d7cd33513b3c952f3"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -9433,8 +9443,8 @@
       "canonicalBrand": "Bosch",
       "model": "SBV8ECX01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -9471,7 +9481,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/b1/c0/b1c09a56503ea0a7f0a67595ac7675e0422cfd6463b3a81e6cd1796ff17caf07.json",
             "evidence/web/sha256/85/6c/856c7c1a8b35e7a2f1cb6d2c5eb57077ae2e73433e8e945b2ad31e4f208f3055.pdf",
-            "receipt:1229f3fca7f6ee47d95a616d3e815db781b953559b040722995d6e780283c0aa"
+            "receipt:7f3cd03f902bb1e1073bde25f5829623176dafe6fec686b7a4c46f0ded39fd59"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -9506,8 +9516,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_0a5af8c992c338c2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_0a5af8c992c338c2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -9554,7 +9574,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/e9/32/e932ef53336d46baca1d2160b51efd8c531898a771fd26e3c1dac29b8f76d0c3.json",
             "evidence/web/sha256/c3/69/c36995b1a3dcc1493d8f37fafc9c5c6d7c217d5b86fb8044f5ba0d8184c8f694.pdf",
-            "receipt:2ac5d0afc785e1f1efb14a77ab2346759f3517a4dcdf83a876fbf6cf7ca4ef39"
+            "receipt:1df8b1d2416172d45cc47a903dc80918f668ba9c3d6cc1d198e9322eb01a3c3d"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -9647,7 +9667,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/cc/60/cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14.json",
             "evidence/web/sha256/4c/f9/4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858.pdf",
-            "receipt:c41908dd50521e46a93482ab5ca1d950afd935258e42d9a2baf5ed239a7ad591"
+            "receipt:adf7ceb5e87d78b72ed8356e8304e0093afcfe9dd5bba756d653922fa789371d"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -9740,7 +9760,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/1c/2f/1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f.json",
             "evidence/web/sha256/99/13/99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701.pdf",
-            "receipt:b192f05c527e1d0e77fa37d5e425748f161d7250aa752cabaf238e75016a0e8c"
+            "receipt:90255b47a5c6dc7254879f30f7ecdb754b27954ac870a26418485057d2183533"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -9795,8 +9815,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMI46GS01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_689f5b47b8cf6252",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -9833,7 +9853,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/fa/e9/fae93d55b0d09e499ecc5e091cdd41b406cf93238930bae34db2ddbbe057e9c9.json",
             "evidence/web/sha256/c7/1b/c71b7c284e38fab350fed66f5bcd1dd3c254f1a5e431e8fb3eb4289e0268d62f.pdf",
-            "receipt:56179336fc7311ab78fb729a5779b6ca1f7d1f73d4a46bc899f4ea63a7f03406"
+            "receipt:3094e44d4bf5a44b4774d7f9281a68e3a50cd298931d14893360ffeff2629cca"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -9868,8 +9888,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_689f5b47b8cf6252",
+          "grammarProfileIds": [
+            "pdf_grammar_689f5b47b8cf6252"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_689f5b47b8cf6252"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -9916,7 +9946,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/0f/0d/0f0dfb8e17ca79372a707cc692eb6587d94dc6b11dc26dcd863bba2febe64d9c.json",
             "evidence/web/sha256/ac/ad/acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb.pdf",
-            "receipt:078431b7d55224ba8ae65e7d6f2f00dbdfb888425e16a35ada1f433cd2158208"
+            "receipt:0f9a4593fe5d6e0e5509fd84db4b057ffed01b1b4cef86a7c24b2a2df361b963"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -9972,8 +10002,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMI50D05AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_469f807ed436b799",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -10045,8 +10075,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_469f807ed436b799",
+          "grammarProfileIds": [
+            "pdf_grammar_469f807ed436b799"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_469f807ed436b799"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -10118,8 +10158,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMI66JS01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -10156,7 +10196,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/15/24/15242ebf4639b6d6c0735dbb376308cadbfb4d4f2ae2b6900646d4d518e08402.json",
             "evidence/web/sha256/c1/eb/c1eb36482a577bec4af1c09f6e13faee60fccf66a109a0a598335163590fa542.pdf",
-            "receipt:8eec14bb481b99a7576ab3dbceaa78f89aa95adb8c262d93c468d005295a94cd"
+            "receipt:0fc7d40d723d135416ea596e72a5c956b6883ac7cda4c7ee05fd59bb26ceea76"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -10191,8 +10231,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
+          "grammarProfileIds": [
+            "pdf_grammar_2a3308cabe6ee132"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2a3308cabe6ee132"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -10201,8 +10251,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMI66MS01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -10239,7 +10289,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/fa/75/fa75f422589a467959f65d5e27ffb31a2b497503d9ac0186aecc7106fc32ce62.json",
             "evidence/web/sha256/80/3b/803b17b58f7d7321307647dc2d7ad67cdaafacb0609b2279b4d52048d2268fb1.pdf",
-            "receipt:d99632e000379fdb3919da2e194a3b70851178fddacab1c748ef0a16bd9181cd"
+            "receipt:3a72603366b2f5a650a44a332744201eea4b1a83de48c34031c3ca09db094b63"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -10274,8 +10324,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_2a3308cabe6ee132",
+          "grammarProfileIds": [
+            "pdf_grammar_2a3308cabe6ee132"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2a3308cabe6ee132"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -10347,8 +10407,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMI6HCS01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -10385,7 +10445,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/8e/47/8e47d7fb92a559178e0463552938203c7912431146cec21de364bbbbf70faa75.json",
             "evidence/web/sha256/94/82/9482d048c4831ce9c8e7d134a63e61ad926447172559652c0cfbe7bd8fa60e3f.pdf",
-            "receipt:47eb9510be28fc39e2b085e226f4b76c4c2fdfe9100f37f23c2258d9b8a785c4"
+            "receipt:5ab7451ca7ec8d80952cb8ec06321fb14a581094ccf9776bb6936a48d42bd9c5"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -10421,8 +10481,18 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_2cd42a3705740fb2"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2cd42a3705740fb2"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -10431,12 +10501,12 @@
       "canonicalBrand": "Bosch",
       "model": "SMI88TS02A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_469f807ed436b799",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "ALL_AXIS_SCALAR",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
       "receiptState": "CURRENT_VALID",
       "corpusSummary": {
@@ -10469,7 +10539,7 @@
           "evidenceObjectIds": [
             "evidence/derived/mineru-json/sha256/4e/e3/4ee3991fb2c5b4ef3a355bd672f9a2a1122da9bd96386cd76aca8f366730df33.json",
             "evidence/web/sha256/ae/ec/aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367.pdf",
-            "receipt:58eba50acd8e8d5ef30e2c15af2ac6f1d314aa01541a68df3cf5314ce704a674"
+            "receipt:b87b4bd2ebd48338e41b02fae6cdc16b47e90b2de6e54c22ae3b64305d386023"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
@@ -10478,7 +10548,7 @@
           "corpusState": "RECEIPT_BOUND",
           "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "ALL_AXIS_SCALAR",
+          "extractionState": "ALL_AXIS_RANGE",
           "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367"
         },
@@ -10504,8 +10574,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_469f807ed436b799",
+          "grammarProfileIds": [
+            "pdf_grammar_469f807ed436b799"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_469f807ed436b799"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -10579,14 +10659,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -10609,6 +10690,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:92fa635624f2e7de531146cdafc5b725f8e3ec6fb2dd3854f2d60659f4791f10",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/31/af/31af4aaae9f5b38dd28a15cb230b686e048543052daee2418a9ca29ddabd14ae.json",
+            "evidence/web/sha256/92/fa/92fa635624f2e7de531146cdafc5b725f8e3ec6fb2dd3854f2d60659f4791f10.pdf",
+            "receipt:65bd64a8ef1aefdb420b4414cde14e5954e8f2669fc82d7a47d94a11040ea7dd"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "92fa635624f2e7de531146cdafc5b725f8e3ec6fb2dd3854f2d60659f4791f10"
+        },
+        {
           "documentId": "source:doc_d4471d570a721ca5160c277d",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/2/e/e/1/2ee15a2a7f797bb74e6e711c4673869fea3684b9_SMP66MX01A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -10624,8 +10724,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -10642,14 +10742,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -10672,6 +10773,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:f1b479413af7cef17f1d9d2a2f8fe99d87465b59825d35ad6218e63fe9928387",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX02A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/90/54/9054a139dbb1d833522eacc99558c1e425b08eeae1c8741f77a10142b46d2236.json",
+            "evidence/web/sha256/f1/b4/f1b479413af7cef17f1d9d2a2f8fe99d87465b59825d35ad6218e63fe9928387.pdf",
+            "receipt:d1c4362c3359605d6e6fcf2374867b5840ca700e64b8d58044d898dd205db11c"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "f1b479413af7cef17f1d9d2a2f8fe99d87465b59825d35ad6218e63fe9928387"
+        },
+        {
           "documentId": "source:doc_37b2afdf0c3743fffc19c6c2",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/e/8/1/0/e8109f90ca65401337ac855a7b2ebd9b1efc71f7_SMP66MX02A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -10687,8 +10807,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -10705,14 +10825,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -10735,6 +10856,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX03A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/19/7c/197c76fb40061f7ca744940b339207528b6c9b253d4388d917968c4fab38eb95.json",
+            "evidence/web/sha256/b6/f8/b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88.pdf",
+            "receipt:f4bacd6e5c0e4679b048c4c31f87119fd626db763bbfd1d3aceeb1d8944131e0"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88"
+        },
+        {
           "documentId": "source:doc_d118dc4b505faf040af36844",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/4/2/4/5/4245647b7e5460a45b62dadb36f965ae92c1f1d7_SMP66MX03A_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -10750,8 +10890,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -10768,14 +10908,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -10798,6 +10939,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX05A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/12/27/1227e16eda3cf0f7eaf071a47d459dd8828613ec4abe7351497a2b5d72ad4776.json",
+            "evidence/web/sha256/11/98/11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe.pdf",
+            "receipt:4959061248b98853aedfca585f363ff001e0613c0af91d6529637db4d80f9f31"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "11982db6adc8193dafb3628e9a45843c3f3bf371d68414d3d399effc201885fe"
+        },
+        {
           "documentId": "source:doc_9a1d7a2d9a718dae6eac7aa9",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/b/d/a/5/bda5de081ab7f489741a9772eee8cf4df63dcebf_SMP66MX05A_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -10813,8 +10973,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -10831,14 +10991,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -10861,6 +11022,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP6HCB01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/2f/56/2f566f5a19c210039d84c01bec4869dcdb4c4cee1fa9abb938f477aa3e725812.json",
+            "evidence/web/sha256/78/1a/781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798.pdf",
+            "receipt:f37c296e8194113ff0c07c6db3b4866a518aee7c34ee7adcd14627a44ed66985"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "781a3b5e87f4b8991ac354dfec0d7c24b851700241794e027d6d48560589d798"
+        },
+        {
           "documentId": "source:doc_9771d1efe356d2e9688962a9",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP6HCB01A.pdf",
           "evidenceObjectIds": [
@@ -10876,8 +11056,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -10895,14 +11075,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -10925,6 +11106,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP6HCS01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/64/75/6475cebcda6b42299338326d5bae801f07c7514d1daf755b9ea23ab0174cb0ee.json",
+            "evidence/web/sha256/49/63/4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9.pdf",
+            "receipt:793bced092d7cee5b058f4a32547d7b6ab255e3405c61e829138fc21499d24e1"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "4963fc109eb042c92e0129a2e6f0e2c65e9cca654e7bf72036b7928551cd72d9"
+        },
+        {
           "documentId": "source:doc_0b3e548d67ead2d2860b5d77",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/1/5/c/4/15c4fa5c6e32890a95f9215004a0c7f8bd797197_SMP6HCS01A_Bosch_Spec_Sheet.pdf",
           "evidenceObjectIds": [
@@ -10940,8 +11140,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -10959,14 +11159,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -10989,6 +11190,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:53c6d39cd7b41e95d9e9028525c86b48c886b393c5772e2ff1e3df98604e8aab",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS24AI01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/73/84/73841e57a9e023c694a948a3ca6952748ddb2fb89b0093d4010258500e15c6e5.json",
+            "evidence/web/sha256/53/c6/53c6d39cd7b41e95d9e9028525c86b48c886b393c5772e2ff1e3df98604e8aab.pdf",
+            "receipt:fec6d9877cddb35ae57d835a889661c8d2b2964afc84073cdf8926535b3d902d"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "53c6d39cd7b41e95d9e9028525c86b48c886b393c5772e2ff1e3df98604e8aab"
+        },
+        {
           "documentId": "source:doc_13497afab0b37bf930b774cf",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS24AI01A.pdf",
           "evidenceObjectIds": [
@@ -11004,8 +11224,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -11023,14 +11243,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -11053,6 +11274,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:88c9964ab6d2fb13d5ada3bd4d233c79df202979b2b8a3bbeb2fd3daa2c77bc8",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS2ITI02A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/47/92/47923018183d91126219181f75253f94c2e0b4bb2c6bf0aa4695d062c8d3cf2f.json",
+            "evidence/web/sha256/88/c9/88c9964ab6d2fb13d5ada3bd4d233c79df202979b2b8a3bbeb2fd3daa2c77bc8.pdf",
+            "receipt:8fde37e997446dc6f1d37bf3f9d48904e67ca70d2c3b839338a7a0ee5a630a9b"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "88c9964ab6d2fb13d5ada3bd4d233c79df202979b2b8a3bbeb2fd3daa2c77bc8"
+        },
+        {
           "documentId": "source:doc_86b35585b071e0b5447e9d70",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS2ITI02A.pdf",
           "evidenceObjectIds": [
@@ -11068,8 +11308,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -11087,14 +11327,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "NONE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "OFFICIAL",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -11117,6 +11358,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:9f5432b9fc312985b3e69ed213c75f4a5b6f5f59af8de43abcb050caab2580c0",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS2ITW01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/9b/89/9b89c709beb38b421327c240211ee7413bc60c70b7810519c65ca4e7c826bae2.json",
+            "evidence/web/sha256/9f/54/9f5432b9fc312985b3e69ed213c75f4a5b6f5f59af8de43abcb050caab2580c0.pdf",
+            "receipt:378afb6fdafa3cd6b32671136e65f41993c8af0d20569a67da79de6f885b657b"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "9f5432b9fc312985b3e69ed213c75f4a5b6f5f59af8de43abcb050caab2580c0"
+        },
+        {
           "documentId": "source:doc_ff547fd317f7055cb6364b6e",
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS2ITW01A.pdf",
           "evidenceObjectIds": [
@@ -11132,8 +11392,8 @@
           "receiptState": "NONE"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -11214,14 +11474,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -11244,6 +11505,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS40E08AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/46/36/4636f26cee29fac193b7526e960a79946649330bd93af3c0e0d255dda2a1313d.json",
+            "evidence/web/sha256/a7/c4/a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056.pdf",
+            "receipt:4f77cdc1e4e20fe4504fdbd42e53d6dc35f560ea83bb94dd22155ecc3d5369fd"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056"
+        },
+        {
           "documentId": "source:doc_77d9781f31a0effac1c599a3",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/1/5/4/1/154149a327a1563d6865b81d50caf002ae5b2664_SMS40E08AU_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -11259,8 +11539,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -11278,14 +11558,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -11308,6 +11589,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:350c5e3fa5726645f316e588f25dce48c433322aa17249e9fc4d105f9c028c99",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46GI01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/49/84/498483565b902b70af59d2fe5954b2058a1fb685ea7e7ad7b8fc6ca42f5a9fb8.json",
+            "evidence/web/sha256/35/0c/350c5e3fa5726645f316e588f25dce48c433322aa17249e9fc4d105f9c028c99.pdf",
+            "receipt:79b6e2b1573d1842aa705a165b8aee8fb0a141e1d63360bb1f87bd92b268b387"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "350c5e3fa5726645f316e588f25dce48c433322aa17249e9fc4d105f9c028c99"
+        },
+        {
           "documentId": "source:doc_13e8cf81a3dcd9fce8ef71a5",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/a/e/5/8/ae58581370c22b91cdcd1ebb2e896793408b2526_SMS46GI01A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -11323,8 +11623,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -11341,14 +11641,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -11371,6 +11672,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:da9e2b822d22949870761d9fb982becf374631fdb31e838d1c4feda28075914d",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46GW01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/06/17/06178ff4eed7f41e703c1805a002856a8b9a4dd5f4e5a0594ebf75595493c0f6.json",
+            "evidence/web/sha256/da/9e/da9e2b822d22949870761d9fb982becf374631fdb31e838d1c4feda28075914d.pdf",
+            "receipt:43effa4ddb5af56eff3306b7fd5a233f85e43d2f726667531dd921d9dfe419d9"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "da9e2b822d22949870761d9fb982becf374631fdb31e838d1c4feda28075914d"
+        },
+        {
           "documentId": "source:doc_3dbdd305c4e88ef66f9e4fd9",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/e/6/f/c/e6fccd92f0285286ed039287e6f5abf9f723b04d_SMS46GW01A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -11386,8 +11706,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -11404,14 +11724,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -11434,6 +11755,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:cfcd46018c2482666fda55e20c7727b4a71deba9a292b382c5f027c47fb07a5d",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS46KI01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/83/e9/83e9328e72e1eac158979867404535f5d4e758965cf02a3b9adb29dfc8d6fd6a.json",
+            "evidence/web/sha256/cf/cd/cfcd46018c2482666fda55e20c7727b4a71deba9a292b382c5f027c47fb07a5d.pdf",
+            "receipt:7e096efa6d5b2ccbf035456fa25c104913a893d0881aeba799a4fea46618ce2f"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "cfcd46018c2482666fda55e20c7727b4a71deba9a292b382c5f027c47fb07a5d"
+        },
+        {
           "documentId": "source:doc_e3655c770fd0cc003767ddd3",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/d/1/c/a/d1ca9ded46d33fa58dd852c06ccd71e18b836aae_SMS46KI01A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -11449,8 +11789,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -11467,14 +11807,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -11497,6 +11838,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HTI01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/1c/9f/1c9fef982345611c118b963bb7db8feeb05cc5d030fc667ddb7fed29921b7083.json",
+            "evidence/web/sha256/46/49/464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806.pdf",
+            "receipt:9f2463ebdff0d302c83e2f282d3c21ad92549a4e694596dd34d5e70c36aa6900"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "464934b9a047fff7ae504edfa4f20d9c16e4e5127f4c0eb70800f948b38a6806"
+        },
+        {
           "documentId": "source:doc_5b3ec0871b116ad5e60f9314",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/7/8/6/c/786cd234ef26bdc3e9330a770b22842212792d2d_Bosch_New_Specification_Sheet_SMS4HTI01A_.pdf",
           "evidenceObjectIds": [
@@ -11512,8 +11872,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -11531,14 +11891,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -11561,6 +11922,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVB01A.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/4f/60/4f600564084fdda36ab130cb78e49c3484c84f6e1b502b7b60f4aff8cd6b1f8b.json",
+            "evidence/web/sha256/d9/2a/d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99.pdf",
+            "receipt:3b327666492da5f35178727bfe88aa0b716242f5756c909c47c13bd40f2483f5"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "d92abc52d01c14d7d0ec9a4befa279f3686048a272fa8fb3c5248c8533af3a99"
+        },
+        {
           "documentId": "source:doc_c296776d0ca3ebf42fbf2987",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/5/2/a/2/52a2ff468b08cdccf2544916fad66dfcae5f7af4_SMS4HVB01A_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -11576,8 +11956,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch",
@@ -11629,7 +12009,7 @@
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf",
           "evidenceObjectIds": [
             "mineru-index:9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
-            "receipt:43225b6a19c787c51071f67264453eba40a1efaf01cd5dd0013c7233acb2303b",
+            "receipt:3a024097305a5ec4a1b249d7dc4a9efdf673ff57b4b383b35242e92dd1f47fcb",
             "storage:evidence/objects/sha256/9d/9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0.pdf",
             "storage:evidence/web/sha256/9d/dc/9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0.pdf"
           ],
@@ -11738,14 +12118,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -11768,6 +12149,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:63476e421592173b841aa4e743929de77687697a0b84c897d00063ee97640cfd",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS50E32AU.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/12/e3/12e335fc254bbc7a02e99f2f056d352c79b6d07b48791c9c9d1b8cbca5812c13.json",
+            "evidence/web/sha256/63/47/63476e421592173b841aa4e743929de77687697a0b84c897d00063ee97640cfd.pdf",
+            "receipt:dea9ed6015578fa186863d61ed950c1eeb3457cb75c21c2a4b02222663746ddd"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "63476e421592173b841aa4e743929de77687697a0b84c897d00063ee97640cfd"
+        },
+        {
           "documentId": "source:doc_f318ad9ac06e165c0abad22b",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/b/6/4/d/b64d54c641f8666705ce4b23a12bf058dc83a22e_SMS50E32AU_Bosch_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -11783,8 +12183,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Bosch"
@@ -12808,7 +13208,7 @@
           "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI02A.pdf",
           "evidenceObjectIds": [
             "mineru-index:4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
-            "receipt:af723395f5c7e00a7600c98e318145d669cd8b6553cc5f2133634e7e1eceb9c2",
+            "receipt:d4e2cf028159bb5157db508c335ce777701a341b8a13ccbd1b90ac9c73edfc2d",
             "storage:evidence/objects/sha256/4d/4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575.pdf",
             "storage:evidence/web/sha256/4d/c4/4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575.pdf"
           ],
@@ -12836,10 +13236,14 @@
         {
           "groupType": "marketing_series",
           "groupName": "Series 6",
-          "grammarProfileIds": []
+          "grammarProfileIds": [
+            "pdf_grammar_2cd42a3705740fb2"
+          ]
         }
       ],
-      "grammarProfileIds": []
+      "grammarProfileIds": [
+        "pdf_grammar_2cd42a3705740fb2"
+      ]
     },
     {
       "schemaVersion": 1,

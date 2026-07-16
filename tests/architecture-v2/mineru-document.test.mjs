@@ -2148,6 +2148,103 @@ test('MinerU preserves a Bosch Tall Tub height range from shorthand H W D labels
   ));
 });
 
+test('MinerU scopes a Bosch Dimensions section through repeated exact titles and an exact official PDF URL', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [],
+    [titleFragment('Serie | 6, built-under dishwasher, 60 cm, White SMP66MX02A')],
+    [
+      titleFragment('Dimensions'),
+      paragraph('- Height 815-875 mm x Width 598 mm x Depth 573 mm'),
+    ],
+    [titleFragment('Serie | 6, built-under dishwasher, 60 cm, White SMP66MX02A')],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'SMP66MX02A', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    sourceUrls: ['https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX02A.pdf'],
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 815, maxMm: 875 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 573 },
+  });
+  assert.ok(parsed.claims.every((claim) => claim.page === 3));
+  assert.ok(parsed.grammarProfileIds.includes(
+    'bosch-au-dishwasher-dimensions-section-explicit-axes-v1',
+  ));
+});
+
+test('MinerU prefers a Bosch adjustable height range when the product height is its exact lower endpoint', () => {
+  const identity = { brand: 'Bosch', model: 'SMP66MX01A', category: 'dishwasher' };
+  const bytes = Buffer.from(JSON.stringify([
+    [
+      titleFragment('Serie | 6, built-under dishwasher, 60 cm, Stainless steel SMP66MX01A'),
+      paragraph('Dimensions of the product (HxWxD) : 815 x 598 x 573 mm'),
+    ],
+    [],
+    [
+      titleFragment('Dimensions'),
+      paragraph('- Height 815-875 mm x Width 598 mm x Depth 573 mm'),
+    ],
+    [titleFragment('Serie | 6, built-under dishwasher, 60 cm, Stainless steel SMP66MX01A')],
+  ]));
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: identity,
+    claimSemanticsVersion: 2,
+    sourceUrls: ['https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX01A.pdf'],
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+
+  const parsed = parseMineruContentListV2(bytes, options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 815, maxMm: 875 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 573 },
+  });
+  assert.ok(parsed.claims.every((claim) => claim.page === 3));
+
+  const conflicting = Buffer.from(JSON.stringify([
+    [
+      titleFragment('Serie | 6, built-under dishwasher, 60 cm, Stainless steel SMP66MX01A'),
+      paragraph('Dimensions of the product (HxWxD) : 815 x 598 x 573 mm'),
+    ],
+    [],
+    [
+      titleFragment('Dimensions'),
+      paragraph('- Height 820-875 mm x Width 598 mm x Depth 573 mm'),
+    ],
+    [titleFragment('Serie | 6, built-under dishwasher, 60 cm, Stainless steel SMP66MX01A')],
+  ]));
+  assert.throws(() => parseMineruContentListV2(conflicting, options), /ambiguous MinerU values/i);
+});
+
+test('MinerU does not document-scope contextual or unbound Bosch dimension sections', () => {
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'SMP66MX02A', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    sourceUrls: ['https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP66MX02A.pdf'],
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+  for (const [label, heading, sourceUrls = options.sourceUrls] of [
+    ['niche', 'Required niche dimensions'],
+    ['packaging', 'Packaging dimensions'],
+    ['unbound URL', 'Dimensions', []],
+  ]) {
+    const bytes = Buffer.from(JSON.stringify([
+      [titleFragment('Serie | 6 dishwasher SMP66MX02A')],
+      [],
+      [titleFragment(heading), paragraph('- Height 815-875 mm x Width 598 mm x Depth 573 mm')],
+    ]));
+    assert.throws(() => parseMineruContentListV2(bytes, {
+      ...options, sourceUrls,
+    }), /no exact-model MinerU evidence|identity signal/i, label);
+  }
+});
+
 test('MinerU rejects inherited-unit shorthand triples with incomplete, duplicate, mixed, or contextual axes', () => {
   for (const value of [
     '- H: 865-925 x W: 598 mm',

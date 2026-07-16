@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-16T04:19:01.386Z
+Generated: 2026-07-16T05:02:44.158Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -11,7 +11,7 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 999 |
+| dishwasher | 1419 | 94 | 1015 |
 | dryer | 843 | 72 | 267 |
 | fridge | 4336 | 121 | 2287 |
 | washing_machine | 1497 | 88 | 654 |
@@ -20,11 +20,11 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 220 |
+| COMPLETE_RECEIPT | 236 |
 | CONFLICT_QUARANTINE | 83 |
-| IDENTITY_RESEARCH | 160 |
+| IDENTITY_RESEARCH | 156 |
 | OFFICIAL_DISCOVERY | 6417 |
-| REFERENCE_REDISCOVERY | 1215 |
+| REFERENCE_REDISCOVERY | 1203 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -45,6 +45,7 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Sub-Zero | parser_family | PDF grammar pdf_grammar_b6dfa4c93dc0b9e7 | 6 |
 | fridge | Westinghouse | document_family | Document family e316fc226e4d | 6 |
 | dishwasher | Beko | parser_family | Beko AU dishwasher product specification | 5 |
+| dishwasher | Bosch | marketing_series | Series 8 | 5 |
 | dishwasher | Fisher & Paykel | document_family | Document family 3031e527077f | 5 |
 | fridge | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_fa4e96e9408d0085 | 5 |
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_0b598fa8b30e9c42 | 5 |
@@ -55,7 +56,6 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | ASKO | document_family | Document family 38ad673e29cc | 3 |
 | dishwasher | ASKO | document_family | Document family 468182904268 | 3 |
 | dishwasher | ASKO | document_family | Document family 8073dfad036b | 3 |
-| dishwasher | Bosch | marketing_series | Series 8 | 3 |
 | dishwasher | Fisher & Paykel | document_family | Document family 27fe801c2f33 | 3 |
 | dishwasher | Fisher & Paykel | document_family | Document family a1eabc7adffc | 3 |
 | dishwasher | Fisher & Paykel | document_family | Document family b3d638a1905c | 3 |
@@ -95,7 +95,6 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Hisense | REFERENCE_REDISCOVERY | 69 |
 | dryer | Kogan | OFFICIAL_DISCOVERY | 68 |
 | fridge | Liebherr | OFFICIAL_DISCOVERY | 67 |
-| dishwasher | Bosch | REFERENCE_REDISCOVERY | 66 |
 | dishwasher | Miele | OFFICIAL_DISCOVERY | 65 |
 | fridge | TECO | OFFICIAL_DISCOVERY | 65 |
 | fridge | HELLER | OFFICIAL_DISCOVERY | 61 |
@@ -106,6 +105,7 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Mykin | OFFICIAL_DISCOVERY | 55 |
 | fridge | TCL | OFFICIAL_DISCOVERY | 55 |
 | washing_machine | Fisher & Paykel | OFFICIAL_DISCOVERY | 55 |
+| dishwasher | Bosch | REFERENCE_REDISCOVERY | 54 |
 | dryer | Esatto | OFFICIAL_DISCOVERY | 52 |
 | fridge | LG | REFERENCE_REDISCOVERY | 51 |
 | fridge | Electrolux | OFFICIAL_DISCOVERY | 50 |

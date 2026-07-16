@@ -410,6 +410,7 @@ function directClaims(row, fragment, page, fields, category, claimSemanticsVersi
             fragmentSha256: fragment.fragmentSha256,
             semanticBasis: row.semanticBasis ?? 'explicit_label_range',
             ...(row.axisOrder ? { axisOrder: [...row.axisOrder] } : {}),
+            ...(row.grammarProfileId ? { grammarProfileId: row.grammarProfileId } : {}),
             sourceUnit,
             sourceValues: values,
             sourceValuesMm,
@@ -431,6 +432,7 @@ function directClaims(row, fragment, page, fields, category, claimSemanticsVersi
             : 'explicit_label_value'
         ),
         ...(row.axisOrder ? { axisOrder: [...row.axisOrder] } : {}),
+        ...(row.grammarProfileId ? { grammarProfileId: row.grammarProfileId } : {}),
       });
     } catch {
       // A row that cannot prove one unambiguous value is not evidence.
@@ -587,16 +589,25 @@ function explicitInlineDimensionRow(text) {
 
 const BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR =
   'bosch-au-dishwasher-shorthand-hwd-inherited-unit-v1';
+const BOSCH_AU_DISHWASHER_DIMENSION_SECTION_GRAMMAR =
+  'bosch-au-dishwasher-dimensions-section-explicit-axes-v1';
 
-function explicitShorthandDimensionRowsWithInheritedUnit(text) {
+function explicitDimensionRowsWithInheritedUnit(text, {
+  requireShorthand = false,
+  grammarProfileId,
+} = {}) {
   const source = String(text ?? '');
   if (/\b(?:pack(?:ed|ing|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate|cabinet|cavity|niche|opening|installation)\b|cut[ -]?out/i.test(source)) {
     return null;
   }
   const matches = [...source.matchAll(
-    /\b(w|width|wide|h|height|high|d|depth|deep)\b\s*:\s*(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(mm|cm)?/gi,
+    /\b(w|width|wide|h|height|high|d|depth|deep)\b\s*:?\s*(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(mm|cm)?/gi,
   )];
-  if (matches.length !== 3 || !matches.some((match) => match[1].length === 1)) return null;
+  if (matches.length !== 3
+    || (requireShorthand && !matches.some((match) => match[1].length === 1))) return null;
+  if (matches.some((match) => match[1].length === 1 && !/^\s*[whd]\s*:/i.test(match[0]))) {
+    return null;
+  }
   const aliases = {
     w: 'width', width: 'width', wide: 'width',
     h: 'height', height: 'height', high: 'height',
@@ -629,10 +640,17 @@ function explicitShorthandDimensionRowsWithInheritedUnit(text) {
       label,
       value: `${matches[index][2]} ${matches[index][3]?.toLowerCase() ?? units[0]}`,
       quote: normalizedText(`${label} ${matches[index][2]} ${matches[index][3]?.toLowerCase() ?? units[0]}`),
-      grammarProfileId: BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR,
+      ...(grammarProfileId ? { grammarProfileId } : {}),
     });
   }
   return rows;
+}
+
+function explicitShorthandDimensionRowsWithInheritedUnit(text) {
+  return explicitDimensionRowsWithInheritedUnit(text, {
+    requireShorthand: true,
+    grammarProfileId: BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR,
+  });
 }
 
 function paragraphRows(text) {
@@ -717,6 +735,61 @@ function joinedGroupedParagraphRow(items, fragmentIndex) {
     value: `${matches.map((match) => match[2]).join(' x ')} ${units[0]}`,
     quote: normalizedText(`${fragment.text} ${next.text}`),
   };
+}
+
+function documentScopedDimensionSectionRows(items, fragmentIndex) {
+  const fragment = items[fragmentIndex];
+  const heading = items[fragmentIndex - 1];
+  if (!fragment || !heading
+    || !['paragraph', 'text'].includes(fragment.type)
+    || !['title', 'paragraph', 'text'].includes(heading.type)
+    || !/^(?:(?:product|overall|external)\s+)?dimensions?\s*:?$/i.test(heading.text)) {
+    return null;
+  }
+  return explicitDimensionRowsWithInheritedUnit(fragment.text, {
+    grammarProfileId: BOSCH_AU_DISHWASHER_DIMENSION_SECTION_GRAMMAR,
+  });
+}
+
+function normalizedDimensionValue(value) {
+  if (Number.isFinite(value)) return { kind: 'fixed', mm: value };
+  if (!value || typeof value !== 'object') return null;
+  if (value.kind === 'fixed' && Number.isFinite(value.mm)) {
+    return { kind: 'fixed', mm: value.mm };
+  }
+  const minMm = value.kind === 'range' ? value.minMm : value.minimumMm;
+  const maxMm = value.kind === 'range' ? value.maxMm : value.maximumMm;
+  if (Number.isFinite(minMm) && Number.isFinite(maxMm) && minMm <= maxMm) {
+    return { kind: 'range', minMm, maxMm };
+  }
+  return null;
+}
+
+function compatibleWithScopedDimensionValue(candidateValue, scopedValue) {
+  const candidate = normalizedDimensionValue(candidateValue);
+  const scoped = normalizedDimensionValue(scopedValue);
+  if (!candidate || !scoped) return false;
+  if (candidate.kind === scoped.kind) {
+    return candidate.kind === 'fixed'
+      ? candidate.mm === scoped.mm
+      : candidate.minMm === scoped.minMm && candidate.maxMm === scoped.maxMm;
+  }
+  return scoped.kind === 'range'
+    && candidate.kind === 'fixed'
+    && [scoped.minMm, scoped.maxMm].includes(candidate.mm);
+}
+
+function preferCompatibleBoschDimensionSection(fieldCandidates) {
+  const scoped = fieldCandidates.filter((claim) => (
+    claim.grammarProfileId === BOSCH_AU_DISHWASHER_DIMENSION_SECTION_GRAMMAR
+  ));
+  if (!scoped.length) return fieldCandidates;
+  const scopedValues = new Map(scoped.map((claim) => [JSON.stringify(claim.value), claim.value]));
+  if (scopedValues.size !== 1) return fieldCandidates;
+  const scopedValue = [...scopedValues.values()][0];
+  return fieldCandidates.every((claim) => (
+    compatibleWithScopedDimensionValue(claim.value, scopedValue)
+  )) ? scoped : fieldCandidates;
 }
 
 function joinedAlignedScalarParagraphRow(items, fragmentIndex) {
@@ -1207,6 +1280,22 @@ function uniqueCoverIdentityScope(document, model, sourceUrls) {
     && exactModelSourceUrl(sourceUrls, model)
     && siblingModelCandidates(document, model).length === 0,
   );
+}
+
+function boschDishwasherDimensionSectionDocumentScope(document, caseIdentity, sourceUrls) {
+  if (canonicalModel(caseIdentity?.brand) !== 'BOSCH'
+    || caseIdentity?.category !== 'dishwasher') return null;
+  const model = normalizedText(caseIdentity?.model);
+  const exactDocumentUrl = exactModelSourceUrl(sourceUrls, model);
+  if (!exactDocumentUrl || siblingModelCandidates(document, model).length) return null;
+  const titlePages = [...new Set(document.pages.flatMap((items, pageIndex) => (
+    items.some((item) => item.type === 'title'
+      && containsExplicitModelExpression(item.identityText ?? item.text, model))
+      ? [pageIndex + 1]
+      : []
+  )))];
+  if (!uniqueCoverIdentityScope(document, model, sourceUrls) && titlePages.length < 2) return null;
+  return { exactDocumentUrl, titlePages };
 }
 
 function uniqueCoverFallbackSignals(document, model) {
@@ -2413,6 +2502,17 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'An exact-model scoped Bosch dishwasher page contains one complete H/W/D inline sequence, unique axes, strict x separators and one consistent explicit unit inherited only by unitless values.',
     semanticBoundary: 'Only closed product H/W/D is projected; a range is accepted only for height. Niche, cavity, installation, opening, packaging, mixed-unit, duplicate-axis and partial sequences are excluded.',
   }),
+  [BOSCH_AU_DISHWASHER_DIMENSION_SECTION_GRAMMAR]: Object.freeze({
+    parserProfileId: BOSCH_AU_DISHWASHER_DIMENSION_SECTION_GRAMMAR,
+    grammarFamilyId: 'bosch_au_dishwasher_product_dimensions_v1',
+    grammarFamilyName: 'Bosch Australia dishwasher product specification',
+    variantName: 'Document-scoped Dimensions heading followed by explicit H/W/D axes',
+    brand: 'Bosch',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact official PDF URL plus either a unique exact-model cover or repeated structured exact-model titles on at least two pages document-scope one plain product Dimensions heading immediately followed by a complete H/W/D x-separated paragraph with one consistent inherited unit.',
+    semanticBoundary: 'Only closed product H/W/D is projected and a range is accepted only for height; contextual headings, sibling-model documents, partial or duplicate axes, mixed units, packaging, cavity, niche and installation dimensions are excluded.',
+  }),
   beko_au_dishwasher_product_spec_parallel_lists_v1: Object.freeze({
     parserProfileId: 'beko_au_dishwasher_product_spec_parallel_lists_v1',
     grammarFamilyId: 'beko_au_dishwasher_product_spec_v1',
@@ -2824,6 +2924,13 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const lgDryerSizeScope = claimSemanticsVersion === 2
     ? lgDryerExactModelSizeScope(document, caseIdentity)
     : null;
+  const boschDimensionSectionScope = claimSemanticsVersion === 2
+    ? boschDishwasherDimensionSectionDocumentScope(document, caseIdentity, options.sourceUrls)
+    : null;
+  const boschDimensionSectionSignals = boschDimensionSectionScope ? [{
+    type: 'mineru_bosch_dimension_section_exact_model',
+    value: `${model}:titles:${boschDimensionSectionScope.titlePages.join(',')}:url:${boschDimensionSectionScope.exactDocumentUrl}`,
+  }] : [];
   const hisenseNetPackageSignals = hisenseNetPackageScope ? [{
     type: 'mineru_hisense_net_package_dimensions',
     value: `${model}:page:${hisenseNetPackageScope.page}:${hisenseNetPackageScope.fragment.fragmentSha256}`,
@@ -2875,6 +2982,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     && !chiqSpecScope
     && !hisenseLegacySpecScope
     && !hisenseNetPackageScope
+    && !boschDimensionSectionScope
     && !fisherPaykelDw60Scope
     && !samsungWasherWildcardScope
     && !fisherPaykelRf610Scope
@@ -2902,6 +3010,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...chiqSpecSignals,
     ...hisenseLegacySpecSignals,
     ...hisenseNetPackageSignals,
+    ...boschDimensionSectionSignals,
     ...fisherPaykelDw60Signals,
     ...samsungWasherWildcardSignals,
     ...fisherPaykelRf610Signals,
@@ -2990,12 +3099,17 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const joinedScalarRowsByFragment = new Map(items
       .map((item, index) => [item, joinedAlignedScalarParagraphRow(items, index)])
       .filter(([, row]) => row));
+    const documentDimensionSectionRowsByFragment = boschDimensionSectionScope
+      ? new Map(items
+        .map((item, index) => [item, documentScopedDimensionSectionRows(items, index)])
+        .filter(([, rows]) => rows?.length === 3))
+      : new Map();
     if (!pageScoped && !documentScoped && !bekoDocumentScoped
       && !sharedModelListScoped && !groupedColumnScoped
       && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped
       && !chiqSpecPageScoped && !samsungWasherWildcardPageScoped
       && !fisherPaykelRf610PageScoped && !hisenseLegacySpecPageScoped
-      && !hisenseNetPackagePageScoped) return;
+      && !hisenseNetPackagePageScoped && !boschDimensionSectionScope) return;
     const bekoPageScoped = items.some((item) => (
       ['title', 'page_header'].includes(item.type)
         && containsExplicitModelExpression(item.text, model)
@@ -3066,6 +3180,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         )))
       || joinedParagraphRowsByFragment.has(item)
       || joinedScalarRowsByFragment.has(item)
+      || documentDimensionSectionRowsByFragment.has(item)
     ))) {
       if (chiqSpecScope && fragment !== chiqSpecScope.fragment) continue;
       if (hisenseLegacySpecScope?.sourceFragments.includes(fragment)
@@ -3132,11 +3247,19 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           ? [joinedParagraphRowsByFragment.get(fragment)]
           : joinedScalarRowsByFragment.has(fragment)
             ? [joinedScalarRowsByFragment.get(fragment)]
+            : documentDimensionSectionRowsByFragment.has(fragment)
+              ? documentDimensionSectionRowsByFragment.get(fragment)
           : paragraphRows(fragment.text);
       }
-      if (canonicalModel(caseIdentity?.brand) === 'BOSCH' && category === 'dishwasher'
-        && rows.some((row) => row.grammarProfileId === BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR)) {
-        appliedGrammarProfiles.add(BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR);
+      if (canonicalModel(caseIdentity?.brand) === 'BOSCH' && category === 'dishwasher') {
+        for (const profileId of [
+          BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR,
+          BOSCH_AU_DISHWASHER_DIMENSION_SECTION_GRAMMAR,
+        ]) {
+          if (rows.some((row) => row.grammarProfileId === profileId)) {
+            appliedGrammarProfiles.add(profileId);
+          }
+        }
       }
       if (unresolvedFamily && !sharedModelListScoped && fragment.type !== 'table') continue;
       for (const row of rows) {
@@ -3155,6 +3278,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     if (claimSemanticsVersion === 2 && field === 'closedEnvelope.depthMm'
       && fieldCandidates.some((claim) => claim.semanticBasis === 'explicit_including_handle')) {
       fieldCandidates = fieldCandidates.filter((claim) => claim.semanticBasis === 'explicit_including_handle');
+    }
+    if (claimSemanticsVersion === 2) {
+      fieldCandidates = preferCompatibleBoschDimensionSection(fieldCandidates);
     }
     const candidateValues = new Set(fieldCandidates.map((claim) => JSON.stringify(claim.value)));
     if (claimSemanticsVersion === 2 && candidateValues.size === 1) {
