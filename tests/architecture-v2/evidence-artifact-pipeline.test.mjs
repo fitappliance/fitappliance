@@ -470,3 +470,67 @@ test('HTML V2 attestation binds a verbatim grouped product label instead of a pa
   ]);
   assert.equal(result.source.verificationReceipt.schemaVersion, 3);
 });
+
+test('official ASKO AU product JSON attests only receipt-bound closed-envelope dimensions for a mechanical model variant', async () => {
+  const targetModel = 'DBI243IBS';
+  const sourceModel = 'DBI243IB.S.AU';
+  const sourceUrl = 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD';
+  const bytes = Buffer.from(JSON.stringify({
+    code: '000000000000732485',
+    modelMark: sourceModel,
+    classifications: [{ features: [
+      { name: 'Width', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '596' }] },
+      { name: 'Height', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '819' }] },
+      { name: 'Depth', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '559' }] },
+    ] }],
+  }));
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  const objectPath = `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.json`;
+  const discoveryProvenance = {
+    schemaVersion: 1, method: 'official_market_api', market: 'AU',
+    discoveryUrl: sourceUrl, requestedModel: targetModel, matchedModel: sourceModel,
+    artifactUrl: sourceUrl, discoveryContentSha256: hash, discoveryObjectPath: objectPath,
+    discoveryByteSize: bytes.length,
+  };
+  const artifact = {
+    authorityMode: 'official', authorityBrand: 'ASKO', requestedUrl: sourceUrl,
+    finalUrl: sourceUrl, redirectChain: [], contentType: 'application/json',
+    contentSha256: hash, objectPath, byteSize: bytes.length, bytes,
+    derivedArtifact: null, derivedArtifactBytes: null,
+  };
+  const caseValue = {
+    id: `case-${targetModel}`, brand: 'ASKO', model: targetModel,
+    category: 'dishwasher', sources: [],
+  };
+  const options = {
+    now: '2026-07-16T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    requireRequestedFieldCoverage: true,
+    claimSemanticsVersion: 2,
+    discoveryProvenance,
+    readObject: async (path) => {
+      assert.equal(path, objectPath);
+      return bytes;
+    },
+  };
+  const result = await attestEvidenceArtifactForCase(caseValue, artifact, options);
+
+  assert.equal(result.source.sourceType, 'official_model_variant_api');
+  assert.deepEqual(result.source.identity, {
+    brand: 'ASKO', model: targetModel, category: 'dishwasher',
+    outcome: 'official_marketing_alias', sourceModel,
+  });
+  assert.deepEqual(result.source.claims.map((claim) => [claim.field, claim.value.mm]), [
+    ['closedEnvelope.widthMm', 596],
+    ['closedEnvelope.heightMm', 819],
+    ['closedEnvelope.depthMm', 559],
+  ]);
+  assert.equal(result.source.derivedArtifact, undefined);
+
+  await assert.rejects(() => attestEvidenceArtifactForCase(caseValue, artifact, {
+    ...options,
+    requestedFields: ['closedEnvelope.widthMm', 'installation.rearMm'],
+  }), /dimensions only/i);
+});

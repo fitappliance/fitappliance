@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T08:10:11.530Z",
+  "generatedAt": "2026-07-16T08:47:06.274Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "7fb45349deb79cc4686f9b5fc5ecf9fbc43855befab6d43d647c0e4d7e3e6c0a",
+  "semanticClassificationSha256": "335fac0f8181d22aecf52c5e3c1467a8ea141d4e5868b0394ab263a8a7b30116",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4249,
+    "documentLinks": 4254,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 260,
+      "COMPLETE_RECEIPT": 265,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 154,
       "OFFICIAL_DISCOVERY": 6417,
-      "REFERENCE_REDISCOVERY": 1181
+      "REFERENCE_REDISCOVERY": 1176
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6417,
-      "NO_ACTION": 260,
-      "REDISCOVER_OFFICIAL_SOURCE": 1181,
+      "NO_ACTION": 265,
+      "REDISCOVER_OFFICIAL_SOURCE": 1176,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 154
     },
     "bySourceAuthority": {
-      "MIXED": 124,
+      "MIXED": 129,
       "NONE": 6630,
       "OFFICIAL": 143,
-      "REFERENCE": 1198
+      "REFERENCE": 1193
     },
     "byIdentityScope": {
       "AMBIGUOUS": 191,
@@ -47,8 +47,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 64,
-      "ALL_AXIS_SCALAR": 339,
-      "NOT_PARSED": 7596,
+      "ALL_AXIS_SCALAR": 344,
+      "NOT_PARSED": 7591,
       "PARSER_GAP": 96
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 260,
-      "LEGACY_UNBOUND": 1510,
+      "CURRENT_VALID": 265,
+      "LEGACY_UNBOUND": 1505,
       "NONE": 6325
     }
   },
@@ -68,13 +68,13 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 1035,
+      "documentLinks": 1040,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 94,
+        "COMPLETE_RECEIPT": 99,
         "CONFLICT_QUARANTINE": 22,
         "IDENTITY_RESEARCH": 22,
         "OFFICIAL_DISCOVERY": 1030,
-        "REFERENCE_REDISCOVERY": 251
+        "REFERENCE_REDISCOVERY": 246
       }
     },
     {
@@ -3063,14 +3063,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -3093,6 +3094,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/18/40/1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f.json",
+            "receipt:59a2fce2472951cfa952c787457a0aa8544a4922fe06f771ba125ed34573ae39"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f"
+        },
+        {
           "documentId": "source:doc_db478dc3d8b9025072d26ae3",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/e/1/b/5/e1b50bb171c4cd8f934221e8f92ea507f5afd7a4_Asko_Dishwasher_D5456SS_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -3108,8 +3127,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "ASKO"
@@ -3293,14 +3312,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -3323,6 +3343,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/f4/d7/f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a.json",
+            "receipt:b16ebd24371226e53dd9c02937b95032880ea9393f8da5c7f10dbc69fb57aca2"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a"
+        },
+        {
           "documentId": "source:doc_51927d72c69b02b5ad30da53",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/c/8/5/0/c850907129f9040c02d59865c4db72f83b28cfd7_DBI243IBS_ASKO_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -3338,8 +3376,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "ASKO"
@@ -3356,14 +3394,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -3386,6 +3425,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/28/90/2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa.json",
+            "receipt:951c869f213a77cf4eee94e3525d1eb3509a42dd52d253da47376a6782697869"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa"
+        },
+        {
           "documentId": "source:doc_1b7d442ba3459df5420b5fb7",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/d/7/b/6d7ba06be39acff86651cab3a780b0f5b772d50f_DBI243IBW_ASKO_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -3401,8 +3458,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "ASKO"
@@ -3497,14 +3554,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -3527,6 +3585,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/12/a4/12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7.json",
+            "receipt:3c51515871dacbe025978c445e91b47ffb36077d9aa7ab90f66d10c2190cddb3"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7"
+        },
+        {
           "documentId": "source:doc_7206fcb3c1bad547f0380eea",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/b/8/9/e/b89ead4239828bb4334e699d355d8e1d9a893e89_DBI253IBBS_ASKO_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -3542,8 +3618,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "ASKO"
@@ -3560,14 +3636,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -3590,6 +3667,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/a4/0d/a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2.json",
+            "receipt:60319171f2339c45809d394f419ba5deb188556d020186bc7ffe8f6cf1bc5af3"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2"
+        },
+        {
           "documentId": "source:doc_dc46cfb702789e223eec35b7",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/6/b/6/66b6e74cdf52d022db6541732b7b1833d1a26a59_DBI253IBS_ASKO_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -3605,8 +3700,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "ASKO"

@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "96fc83098034467b308a675d4c0baf11248c0079fbceeb3fd8fe8daff865af86"
+    "historical-recovery:historical-recovery-cumulative-v1": "1a180557ff012424d714ab6efba288cb6655f46cdc9890884981d5b0a48c8877"
   },
   "records": [
     {
@@ -3642,13 +3642,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 820,
+        "depth": 559
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c56f5465356e085c199abbb7",
+          "snapshotSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f",
           "sourceLines": []
         }
       ],
@@ -3658,8 +3667,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c56f5465356e085c199abbb7",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
+          "contentSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f",
+          "receiptBindingSha256": "59a2fce2472951cfa952c787457a0aa8544a4922fe06f771ba125ed34573ae39",
+          "verifiedAt": "2026-07-16T08:41:50.142Z",
+          "fields": {
+            "width": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f"
+            },
+            "height": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f"
+            },
+            "depth": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f"
+            }
+          },
+          "contentType": "application/json",
+          "objectPath": "evidence/web/sha256/18/40/1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f.json"
+        }
       ]
     },
     {
@@ -3786,13 +3818,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 819,
+        "depth": 559
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c79c00b56045f7d42574d263",
+          "snapshotSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a",
           "sourceLines": []
         }
       ],
@@ -3802,8 +3843,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c79c00b56045f7d42574d263",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD",
+          "contentSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a",
+          "receiptBindingSha256": "b16ebd24371226e53dd9c02937b95032880ea9393f8da5c7f10dbc69fb57aca2",
+          "verifiedAt": "2026-07-16T08:41:52.030Z",
+          "fields": {
+            "width": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a"
+            },
+            "height": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a"
+            },
+            "depth": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a"
+            }
+          },
+          "contentType": "application/json",
+          "objectPath": "evidence/web/sha256/f4/d7/f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a.json"
+        }
       ]
     },
     {
@@ -3858,13 +3922,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 819,
+        "depth": 559
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_f929bc9b2bb362ef10a68768",
+          "snapshotSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa",
           "sourceLines": []
         }
       ],
@@ -3874,8 +3947,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_f929bc9b2bb362ef10a68768",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD",
+          "contentSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa",
+          "receiptBindingSha256": "951c869f213a77cf4eee94e3525d1eb3509a42dd52d253da47376a6782697869",
+          "verifiedAt": "2026-07-16T08:41:56.844Z",
+          "fields": {
+            "width": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa"
+            },
+            "height": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa"
+            },
+            "depth": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa"
+            }
+          },
+          "contentType": "application/json",
+          "objectPath": "evidence/web/sha256/28/90/2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa.json"
+        }
       ]
     },
     {
@@ -3937,13 +4033,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 819,
+        "depth": 559
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c9b5bfeb64a7420f7519c10e",
+          "snapshotSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7",
           "sourceLines": []
         }
       ],
@@ -3953,8 +4058,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c9b5bfeb64a7420f7519c10e",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
+          "contentSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7",
+          "receiptBindingSha256": "3c51515871dacbe025978c445e91b47ffb36077d9aa7ab90f66d10c2190cddb3",
+          "verifiedAt": "2026-07-16T08:41:53.636Z",
+          "fields": {
+            "width": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7"
+            },
+            "height": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7"
+            },
+            "depth": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7"
+            }
+          },
+          "contentType": "application/json",
+          "objectPath": "evidence/web/sha256/12/a4/12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7.json"
+        }
       ]
     },
     {
@@ -4009,13 +4137,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 819,
+        "depth": 559
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_5abb6135f727b05fe4988d64",
+          "snapshotSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2",
           "sourceLines": []
         }
       ],
@@ -4025,8 +4162,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_5abb6135f727b05fe4988d64",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD",
+          "contentSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2",
+          "receiptBindingSha256": "60319171f2339c45809d394f419ba5deb188556d020186bc7ffe8f6cf1bc5af3",
+          "verifiedAt": "2026-07-16T08:41:45.788Z",
+          "fields": {
+            "width": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2"
+            },
+            "height": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2"
+            },
+            "depth": {
+              "locatorKind": "JSON_ARTIFACT",
+              "artifactSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2"
+            }
+          },
+          "contentType": "application/json",
+          "objectPath": "evidence/web/sha256/a4/0d/a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2.json"
+        }
       ]
     },
     {
@@ -320661,16 +320821,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4856,
-      "IDENTITY_ONLY": 2943,
-      "MODEL_RECEIPT": 197,
+      "IDENTITY_ONLY": 2938,
+      "MODEL_RECEIPT": 202,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4856,
-      "MEASURE_REQUIRED": 2943,
-      "AUTO_FILL": 208,
+      "MEASURE_REQUIRED": 2938,
+      "AUTO_FILL": 213,
       "QUARANTINED": 88
     }
   }

@@ -788,12 +788,15 @@ states net dimensions `595 x 845 x 510 mm`. The source-level parser failure is
 resolved, but the exact-model official conflict remains quarantined. No value is
 chosen by majority, recency or retailer agreement.
 
-The current tracked evidence state contains 127 cumulative accepted targets and
-149 replay-valid source receipts. The 8,095-model replacement reference contains
-110 `AUTO_FILL`, 4,891 `REGISTRY_CONSISTENT`, 3,006 `IDENTITY_ONLY` and 88
-quarantined rows. The dimension-expression corpus contains 638 MinerU indexes,
-637 valid source bindings, 902 observations, 158 parser profiles and 701 parser
-replays. These figures measure evidence processing, not Fit completeness.
+The current tracked evidence state contains 246 cumulative accepted targets and
+271 replay-valid source receipts. The 8,095-model replacement reference contains
+213 `AUTO_FILL`, 4,856 `REGISTRY_CONSISTENT`, 2,938 `IDENTITY_ONLY` and 88
+quarantined rows. The evidence classifier contains 265 `COMPLETE_RECEIPT`, 6,417
+`OFFICIAL_DISCOVERY`, 1,176 `REFERENCE_REDISCOVERY`, 154 `IDENTITY_RESEARCH` and
+83 `CONFLICT_QUARANTINE` records. The dimension-expression corpus contains 703
+MinerU indexes, 702 valid source bindings, 974 observations, 177 parser profiles
+and 770 parser replays. These figures measure evidence processing, not Fit
+completeness.
 
 The locked publication rules are:
 
@@ -803,6 +806,11 @@ The locked publication rules are:
   source explains the measurement scope or supersession;
 - successful W/H/D evidence cannot produce `VERIFIED_FIT`; installation,
   operation, service and connection requirements remain independently required;
+- an official manufacturer product-detail API may supply dimensions-only
+  evidence when one Australian-market record, immutable JSON bytes, exact or
+  policy-bounded punctuation-only model identity, complete W/H/D and receipt
+  replay all agree. Search-list JSON, family records and sibling variants are
+  not eligible, and API evidence cannot populate clearance or service fields;
 - old-appliance replacement continues to compare external W/H/D directly and
   remains separate from cavity Fit decisions;
 - broad online recovery must use explicit bounded selections. `--allow-all` is
@@ -842,6 +850,9 @@ product-success metrics.
 - preserve the existing evidence and Architecture V2 investment;
 - use a multi-source evidence broker;
 - retain PDF -> MinerU structured JSON for new PDF evidence;
+- permit exact manufacturer product-detail JSON as a separate receipt-bound
+  dimensions source; keep it manufacturer-specific, content-addressed and
+  dimensions-only rather than treating it as a PDF substitute;
 - use government and structured provider data as candidates subject to quality
   and rights gates;
 - keep installation truth exact-model and field-scoped;

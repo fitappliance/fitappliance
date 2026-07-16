@@ -2,7 +2,7 @@ import { claimV2GeometryValue, validateDimensionEvidenceClaimV2 } from './dimens
 import { computeCandidateInventorySha256 } from './evidence-candidate-inventory.mjs';
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
-import { isStrictOfficialModelVariantPdfSource } from './official-model-variant-policy.mjs';
+import { isStrictOfficialModelVariantSource } from './official-model-variant-policy.mjs';
 
 const DEFAULT_FIELDS = Object.freeze([
   'closedEnvelope.widthMm',
@@ -460,7 +460,7 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   const exact = supplied.filter((source) => source.authority === 'manufacturer' && exactIdentity(source, identity));
   const aliases = supplied.filter((source) => source.authority === 'manufacturer' && aliasIdentity(source, identity));
   const standaloneVariantAliases = aliases.filter((source) => (
-    isStrictOfficialModelVariantPdfSource(source, identity)
+    isStrictOfficialModelVariantSource(source, identity)
   ));
   const identityAnchors = exact.length ? exact : standaloneVariantAliases;
   if (!identityAnchors.length) {

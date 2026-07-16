@@ -155,6 +155,33 @@ test('HTML model receipts bind axes to the immutable artifact without a fake PDF
   assert.equal(result.records[0].modelReceipts[0].objectPath.endsWith('.html'), true);
 });
 
+test('JSON model receipts bind axes to the immutable structured artifact without a fake page locator', () => {
+  const projection = recoveryProjection({
+    modelReceipts: [{
+      targetId: 'recovery_target_example',
+      sourceUrl: 'https://api-storefront.asko.com/product/1',
+      contentType: 'application/json',
+      objectPath: `evidence/web/sha256/${'7'.repeat(2)}/${'7'.repeat(2)}/${'7'.repeat(64)}.json`,
+      contentSha256: '7'.repeat(64),
+      receiptBindingSha256: '8'.repeat(64),
+      verifiedAt: '2026-07-16T00:00:00.000Z',
+      fields: {
+        width: { locatorKind: 'JSON_ARTIFACT', artifactSha256: '7'.repeat(64) },
+        height: { locatorKind: 'JSON_ARTIFACT', artifactSha256: '7'.repeat(64) },
+        depth: { locatorKind: 'JSON_ARTIFACT', artifactSha256: '7'.repeat(64) },
+      },
+    }],
+  });
+  const result = buildHistoricalApplianceReference({
+    observations: [], catalogProducts: [], historicalEvidenceProjection: projection,
+    catalogSnapshotSha256: 'd'.repeat(64), generatedAt: '2026-07-16T00:00:00.000Z',
+  });
+  const receipt = result.records[0].modelReceipts[0];
+  assert.equal(receipt.fields.depth.locatorKind, 'JSON_ARTIFACT');
+  assert.equal(receipt.fields.depth.artifactSha256, '7'.repeat(64));
+  assert.equal(receipt.objectPath.endsWith('.json'), true);
+});
+
 test('PDF model receipts cannot weaken page-fragment replay binding', () => {
   const projection = recoveryProjection({
     modelReceipts: [{

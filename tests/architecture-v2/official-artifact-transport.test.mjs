@@ -7,6 +7,11 @@ import {
 } from '../../src/domain/official-artifact-transport.mjs';
 
 const PDF = Buffer.from('%PDF-1.4\ntransport fixture');
+const ASKO_JSON = Buffer.from(JSON.stringify({
+  code: '000000000000732485',
+  modelMark: 'DBI243IB.S.AU',
+  classifications: [],
+}));
 
 const LG_DISCOVERY = Object.freeze({
   schemaVersion: 1,
@@ -256,6 +261,40 @@ test('ASKO AU technical-model artifact transport preserves target category for v
   });
 
   assert.equal(result.contentType, 'application/pdf');
+});
+
+test('ASKO AU product API may transport valid JSON only when receipt-bound to the same official detail URL', async () => {
+  const sourceUrl = 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_market_api',
+    market: 'AU',
+    discoveryUrl: sourceUrl,
+    requestedModel: 'DBI243IBS',
+    matchedModel: 'DBI243IB.S.AU',
+    artifactUrl: sourceUrl,
+    discoveryContentSha256: 'a'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.json`,
+    discoveryByteSize: ASKO_JSON.length,
+  };
+  const result = await fetchOfficialArtifactResilient(sourceUrl, 'ASKO', {
+    expectedModel: 'DBI243IBS',
+    expectedCategory: 'dishwasher',
+    discoveryProvenance: provenance,
+    fetchImpl: async () => new Response(ASKO_JSON, {
+      status: 200,
+      headers: { 'content-type': 'application/json; charset=utf-8' },
+    }),
+  });
+  assert.equal(result.contentType, 'application/json');
+  assert.deepEqual(result.bytes, ASKO_JSON);
+
+  await assert.rejects(() => fetchOfficialArtifactResilient(sourceUrl, 'ASKO', {
+    expectedModel: 'DBI243IBS', expectedCategory: 'dishwasher', discoveryProvenance: provenance,
+    fetchImpl: async () => new Response('{invalid', {
+      status: 200, headers: { 'content-type': 'application/json' },
+    }),
+  }), /invalid JSON|payload/i);
 });
 
 test('Electrolux resource transport preserves curl default user agent', () => {

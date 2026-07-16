@@ -38,7 +38,12 @@ function validatePayload(contentType, input, maximumBytes) {
   if (contentType === 'text/html' && !htmlPrefix.startsWith('<!doctype') && !htmlPrefix.startsWith('<html')) {
     throw new Error('HTML content type does not match payload');
   }
-  if (!['application/pdf', 'text/html'].includes(contentType)) {
+  if (contentType === 'application/json') {
+    try { JSON.parse(bytes.toString('utf8')); } catch {
+      throw new Error('JSON payload is invalid');
+    }
+  }
+  if (!['application/pdf', 'text/html', 'application/json'].includes(contentType)) {
     throw new TypeError(`unsupported evidence content type ${contentType || 'missing'}`);
   }
   return { bytes, contentType };
@@ -89,7 +94,7 @@ async function fetchTransport(requestedUrl, brand, options) {
         signal: options.signal ?? AbortSignal.timeout(options.timeoutMs ?? 30000),
         headers: {
           'user-agent': USER_AGENT,
-          accept: 'text/html,application/pdf;q=0.9',
+          accept: 'application/json,text/html;q=0.9,application/pdf;q=0.8',
           ...requestHeadersForUrl(current),
         },
       });
@@ -104,6 +109,7 @@ async function fetchTransport(requestedUrl, brand, options) {
       const next = new URL(location, current).toString();
       if (!isOfficialBrandArtifactHostUrl(next, brand, {
         model: options.expectedModel,
+        category: options.expectedCategory,
         artifactUrl: requestedUrl,
         discoveryProvenance: options.discoveryProvenance,
       })) throw new Error('redirect escaped official brand hosts or lacks provenance');
@@ -188,7 +194,7 @@ export function buildCurlArguments(requestedUrl, options, bodyPath, headersPath)
     args.push('--header', `${name[0].toUpperCase()}${name.slice(1)}: ${value}`);
   }
   args.push(
-    '--header', 'Accept: text/html,application/pdf;q=0.9',
+    '--header', 'Accept: application/json,text/html;q=0.9,application/pdf;q=0.8',
     '--dump-header', headersPath,
     '--output', bodyPath,
     '--write-out', '%{url_effective}\n%{content_type}\n',

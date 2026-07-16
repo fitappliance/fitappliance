@@ -57,6 +57,13 @@ function projectedSources(entry) {
   }));
 }
 
+function artifactTypeForContentType(contentType) {
+  if (contentType === 'application/pdf') return 'pdf';
+  if (contentType === 'text/html') return 'html';
+  if (contentType === 'application/json') return 'json';
+  throw new TypeError(`unsupported historical evidence content type: ${contentType}`);
+}
+
 function modelReceipts(entry) {
   const evidence = entry.geometryProjection?.fieldEvidence ?? {};
   return entry.sources.map((source) => {
@@ -69,16 +76,25 @@ function modelReceipts(entry) {
         && candidate?.receiptBindingSha256 === source.verificationReceipt.bindingSha256
       ));
       if (!locator) continue;
-      fields[axis] = source.contentType === 'application/pdf'
-        ? {
+      if (source.contentType === 'application/pdf') {
+        fields[axis] = {
           locatorKind: 'PDF_FRAGMENT',
           page: locator.page ?? null,
           fragmentSha256: locator.fragmentSha256 ?? null,
-        }
-        : {
+        };
+      } else if (source.contentType === 'text/html') {
+        fields[axis] = {
           locatorKind: 'HTML_ARTIFACT',
           artifactSha256: source.contentSha256,
         };
+      } else if (source.contentType === 'application/json') {
+        fields[axis] = {
+          locatorKind: 'JSON_ARTIFACT',
+          artifactSha256: source.contentSha256,
+        };
+      } else {
+        throw new TypeError(`unsupported historical evidence content type: ${source.contentType}`);
+      }
     }
     return {
       targetId: entry.targetId,
@@ -102,7 +118,7 @@ function currentAcceptance(entry) {
   const primary = sources[0];
   const contentTypes = [...new Set(sources.map((source) => source.contentType))];
   const artifactType = contentTypes.length === 1
-    ? contentTypes[0] === 'application/pdf' ? 'pdf' : 'html'
+    ? artifactTypeForContentType(contentTypes[0])
     : 'mixed';
   const projection = entry.geometryProjection;
   return Object.freeze({

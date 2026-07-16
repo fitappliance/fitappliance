@@ -150,6 +150,65 @@ test('technical SEO: receipt-bound adjustable height remains a range in schema, 
   assert.doesNotMatch(html, /<tr><th>Required height<\/th><td>850mm<\/td><\/tr>/);
 });
 
+test('technical SEO: receipt-bound manufacturer API dimensions never claim PDF or retailer evidence', () => {
+  const product = receiptBoundProduct({
+    id: 'dishwasher-asko-dbi253ibs',
+    cat: 'dishwasher',
+    brand: 'ASKO',
+    model: 'DBI253IBS',
+    displayName: 'ASKO DBI253IBS Dishwasher',
+    w: 596,
+    h: 819,
+    d: 559,
+    dimensions: { width_mm: 596, height_mm: 819, depth_mm: 559 },
+    clearance_requirements: { left_mm: null, right_mm: null, top_mm: null, rear_mm: null },
+    evidence: {
+      has_pdf_evidence: false,
+      has_official_evidence: true,
+      source_url: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/732487',
+      source_type: 'official_model_variant_api',
+      verified_at: '2026-07-16',
+      trust_level: 'dimensions_verified',
+      clearance_verified: false,
+      acceptance: { artifact_type: 'json' },
+    },
+    data_source: 'official_api_receipt_bound',
+  }, 'dimensions');
+
+  const html = buildProductPageHtml(product);
+  const schema = buildProductJsonLd(product);
+  const sourceProperty = schema.additionalProperty.find((row) => row.name === 'Evidence source');
+
+  assert.match(html, /manufacturer product-data dimensions/i);
+  assert.match(html, /data-source="manufacturer-api-evidence"/);
+  assert.match(sourceProperty.value, /manufacturer product-data dimensions/i);
+  assert.doesNotMatch(html, /PDF-backed|from PDF evidence|retailer-sourced/i);
+  assert.equal(
+    schema.additionalProperty.find((row) => row.name === 'Data source').value,
+    'official_api_receipt_bound',
+  );
+});
+
+test('technical SEO: manufacturer API evidence fails closed on Fit or space claims', () => {
+  const apiEvidence = {
+    has_pdf_evidence: false,
+    has_official_evidence: true,
+    source_url: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/732487',
+    source_type: 'official_exact_model_api',
+    verified_at: '2026-07-16',
+    trust_level: 'dimensions_verified',
+    acceptance: { artifact_type: 'json' },
+  };
+  const verified = receiptBoundProduct({ evidence: apiEvidence, data_source: 'official_api_receipt_bound' });
+  const spaceClaim = receiptBoundProduct({ evidence: apiEvidence, data_source: 'official_api_receipt_bound' }, 'dimensions');
+  spaceClaim.geometry_v2_provenance.fieldEvidence['installation.leftMm'] = {
+    contentSha256: 'a'.repeat(64), receiptBindingSha256: 'b'.repeat(64),
+  };
+
+  assert.throws(() => buildProductPageHtml(verified), /cannot publish Fit or space-requirement claims/);
+  assert.throws(() => buildProductPageHtml(spaceClaim), /cannot publish Fit or space-requirement claims/);
+});
+
 test('technical SEO: machine-resolved pages omit unknown clearance instead of inventing zero', () => {
   const product = makeProduct({
     cat: 'fridge', brand: 'Westinghouse', model: 'WHE6874BA',
@@ -490,12 +549,27 @@ test('technical SEO: product page separates approved installation and operation 
   assert.doesNotMatch(html, />Verified Fit</);
 });
 
-test('technical SEO: generated product pages include only PDF-verified SKUs', async () => {
+test('technical SEO: generated product pages include only receipt-bound PDF or manufacturer API SKUs', async () => {
   const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'fitappliance-product-pages-'));
   await fs.mkdir(path.join(rootDir, 'data', 'architecture-v2', 'generated'), { recursive: true });
+  const apiProduct = receiptBoundProduct({
+    id: 'dishwasher-asko-api',
+    cat: 'dishwasher',
+    brand: 'ASKO',
+    model: 'DBI253IBS',
+    evidence: {
+      has_pdf_evidence: false,
+      has_official_evidence: true,
+      source_type: 'official_model_variant_api',
+      trust_level: 'dimensions_verified',
+      acceptance: { artifact_type: 'json' },
+    },
+    data_source: 'official_api_receipt_bound',
+  }, 'dimensions');
   await fs.writeFile(path.join(rootDir, 'data', 'architecture-v2', 'generated', 'public-catalog-projection.json'), `${JSON.stringify({
     products: [
       makeProduct(),
+      apiProduct,
       makeProduct({
         id: 'fridge-unverified',
         cat: 'fridge',
@@ -510,14 +584,17 @@ test('technical SEO: generated product pages include only PDF-verified SKUs', as
   const indexText = await fs.readFile(path.join(rootDir, 'pages', 'products', 'index.json'), 'utf8');
   const index = JSON.parse(indexText);
 
-  assert.equal(result.count, 1);
-  assert.equal(index.length, 1);
-  assert.equal(index[0].slug, slugifyProduct(makeProduct()));
+  assert.equal(result.count, 2);
+  assert.equal(index.length, 2);
+  assert.deepEqual(index.map((row) => row.slug), [
+    slugifyProduct(apiProduct),
+    slugifyProduct(makeProduct()),
+  ]);
   assert.match(
     await fs.readFile(path.join(rootDir, 'pages', 'products.html'), 'utf8'),
     new RegExp(`href="/products/${slugifyProduct(makeProduct())}"`)
   );
-  assert.equal(selectVerifiedProducts([makeProduct(), makeProduct({ evidence: null })]).length, 1);
+  assert.equal(selectVerifiedProducts([makeProduct(), apiProduct, makeProduct({ evidence: null })]).length, 2);
 });
 
 test('technical SEO: product index links generated product pages for crawl discovery', () => {

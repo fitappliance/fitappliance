@@ -85,6 +85,28 @@ export function officialMarketApiDimensions(payload, caseIdentity, provenance = 
   } : null;
 }
 
+export function officialMarketApiDimensionClaims(payload, caseIdentity, provenance = null) {
+  const dimensions = officialMarketApiDimensions(payload, caseIdentity, provenance);
+  if (!dimensions) return null;
+  return [
+    ['closedEnvelope.widthMm', 'width', dimensions.widthMm],
+    ['closedEnvelope.heightMm', 'height', dimensions.heightMm],
+    ['closedEnvelope.depthMm', 'depth', dimensions.depthMm],
+  ].map(([field, axis, mm]) => ({
+    field,
+    value: { kind: 'fixed', mm },
+    sourceLabel: `Official PIM ${axis}`,
+    sourceAxisOrder: [axis],
+    sourceUnit: 'mm',
+    measurementScope: 'product_closed_external',
+    includesDoor: null,
+    includesHandle: null,
+    page: null,
+    fragmentSha256: null,
+    bbox: null,
+  }));
+}
+
 export function verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, bytes) {
   if (provenance?.method !== 'official_market_api' || !provenance.discoveryContentSha256) return true;
   if (!Buffer.isBuffer(bytes) && !(bytes instanceof Uint8Array)) {
@@ -103,8 +125,16 @@ export function verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentit
     throw new Error('official market API discovery artifact is invalid JSON');
   }
   const artifactUrl = canonicalUrl(provenance.artifactUrl, 'discovered artifact URL');
-  const matchedProducts = boundProductSelection(payload, caseIdentity, provenance).products;
+  const selection = boundProductSelection(payload, caseIdentity, provenance);
+  const matchedProducts = selection.products;
   if (!matchedProducts.length) throw new Error('official market API does not prove the declared model');
+  const discoveryUrl = canonicalUrl(provenance.discoveryUrl, 'official market API discovery URL');
+  if (artifactUrl === discoveryUrl) {
+    if (matchedProducts.length !== 1 || !officialMarketApiDimensions(payload, caseIdentity, provenance)) {
+      throw new Error('official market API self-source lacks one complete declared-model dimension set');
+    }
+    return true;
+  }
   const linked = matchedProducts.some((product) => (
     productDocuments(product).some((manual) => {
       try { return canonicalUrl(manual?.url, 'API artifact URL') === artifactUrl; } catch { return false; }

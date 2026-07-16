@@ -152,3 +152,57 @@ test('ASKO finder retains multiple exact product revisions only when every PIM d
     writeObject: async () => assert.fail('conflicting revisions must not be persisted'),
   }), /multiple product codes.*dimensions/i);
 });
+
+test('ASKO finder uses a bounded punctuation-aware AU lookup and exposes exact PIM JSON as dimensions-only evidence', async () => {
+  const code = '000000000000732485';
+  const sourceModel = 'DBI243IB.S.AU';
+  const detail = {
+    code,
+    modelMark: sourceModel,
+    documents: [{ desc: 'Product dimensions', url: 'https://asko.hgecdn.net/medias/DBI243IB-S-AU.jpg' }],
+    classifications: [{ features: [
+      { name: 'Width', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '596' }] },
+      { name: 'Height', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '819' }] },
+      { name: 'Depth', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '559' }] },
+    ] }],
+  };
+  const queries = [];
+  const writes = [];
+  const result = await findAskoOfficialPdf(
+    { brand: 'ASKO', model: 'DBI243IBS', category: 'dishwasher' },
+    {
+      fetchImpl: async (url) => {
+        const parsed = new URL(url);
+        if (parsed.pathname.endsWith('/manuals/search')) {
+          queries.push(parsed.searchParams.get('query'));
+          return response(parsed.searchParams.get('query') === sourceModel
+            ? { products: [{ code: `ggProductCatalog/Online/${code}`, modelMark: sourceModel }] }
+            : { products: [] });
+        }
+        return response(detail);
+      },
+      writeObject: async (path, bytes) => writes.push({ path, bytes: Buffer.from(bytes) }),
+    },
+  );
+
+  assert.deepEqual(queries, ['DBI243IBS', 'DBI243IBS.AU', 'DBI243IB.S.AU']);
+  assert.equal(result.resources.length, 1);
+  assert.equal(result.resources[0].resourceType, 'structured_product_data');
+  assert.equal(result.resources[0].url, result.resources[0].discoveryProvenance.discoveryUrl);
+  assert.equal(result.resources[0].discoveryProvenance.artifactUrl, result.resources[0].url);
+  assert.equal(result.resources[0].matchedSku, sourceModel);
+  assert.equal(writes.length, 1);
+});
+
+test('ASKO finder does not infer an AU relation when normalized model characters differ', async () => {
+  const result = await findAskoOfficialPdf(
+    { brand: 'ASKO', model: 'D5424SS', category: 'dishwasher' },
+    {
+      fetchImpl: async (url) => response(url.includes('/manuals/search')
+        ? { products: [{ code: 'ggProductCatalog/Online/000000000000484444', modelMark: 'D5424S' }] }
+        : assert.fail('unapproved sibling must not reach product detail')),
+      writeObject: async () => assert.fail('unapproved sibling must not be persisted'),
+    },
+  );
+  assert.equal(result, null);
+});

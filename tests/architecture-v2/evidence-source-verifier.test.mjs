@@ -52,6 +52,15 @@ test('official market API model variants permit only ASKO AU technical suffixes'
   assert.equal(officialMarketApiModelVariant({
     ...identity, brand: 'LG',
   }, 'W4086C.W.AU'), null);
+
+  assert.deepEqual(officialMarketApiModelVariant({
+    brand: 'ASKO', model: 'DBI243IBS', category: 'dishwasher',
+  }, 'DBI243IB.S.AU'), {
+    sourceModel: 'DBI243IB.S.AU', suffix: '.AU', market: 'AU',
+  });
+  assert.equal(officialMarketApiModelVariant({
+    brand: 'ASKO', model: 'D5424SS', category: 'dishwasher',
+  }, 'D5424S.AU'), null);
 });
 
 function source(overrides = {}) {
@@ -232,7 +241,7 @@ test('global official artifact is trusted only with receipt-bound Australian dis
   input.verificationReceipt = createVerificationReceipt(input, identity, {
     verifiedAt: '2026-07-11T14:35:00.000Z',
   });
-  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.4');
+  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.5');
   assert.equal(verifyVerificationReceipt(input, identity, {
     asOf: input.verificationReceipt.verifiedAt,
   }), true);
@@ -624,9 +633,9 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.deepEqual(input.verificationReceipt, {
     schemaVersion: 2,
     policyVersion: '2026-07-12.2',
-    manufacturerPolicyVersion: '2026-07-16.3',
+    manufacturerPolicyVersion: '2026-07-16.4',
     verifiedAt: '2026-07-11T14:35:00.000Z',
-    bindingSha256: '11bc3be9287f76e99bab2a1bd74c56cadd3609fdac95390ebeef8076fc79a6c0',
+    bindingSha256: '449036797f0f511e2e1c556fc68aa1a0308be59cfc062f767034ab0373e3e8a6',
   });
 
   assert.equal(verifyVerificationReceipt(input, caseIdentity, {

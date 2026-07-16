@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T08:09:11.102Z",
+  "generatedAt": "2026-07-16T08:43:17.560Z",
   "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
   "entries": [
     {
@@ -20419,6 +20419,220 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "09d7a8e8a03e3d79661310a843d946e574975ad4c8e4fd686957fa30929994ac"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_5abb6135f727b05fe4988d64",
+      "referenceId": "fa_ref_9f6dd26876c93e793810e4d4",
+      "legacyRuntimeId": "ao-84580",
+      "canonicalProductId": "fa_prod_1c84e2901884ecaf1d1b8bed",
+      "brand": "ASKO",
+      "model": "DBI253IBS",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "auditSha256": "4fc966025c464b7c86b5fa0b329147ed260ca8ce90b09adac617b817348252bf",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_api",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD",
+          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T08:41:45.788Z",
+          "contentSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2",
+          "objectPath": "evidence/web/sha256/a4/0d/a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2.json",
+          "contentType": "application/json",
+          "byteSize": 222103,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "DBI253IBS",
+            "category": "dishwasher",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "DBI253IB.S.AU"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Official PIM width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 819
+              },
+              "sourceLabel": "Official PIM height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 559
+              },
+              "sourceLabel": "Official PIM depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "DBI253IBS",
+            "matchedModel": "DBI253IB.S.AU",
+            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD",
+            "documentId": "000000000000732487",
+            "discoveryContentSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2",
+            "discoveryObjectPath": "evidence/web/sha256/a4/0d/a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2.json",
+            "discoveryByteSize": 222103
+          },
+          "identitySignals": [
+            {
+              "type": "official_market_api_model",
+              "value": "DBI253IBS:a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "DBI253IBS:596x819x559:a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2"
+            },
+            {
+              "type": "official_market_api_variant_binding",
+              "value": "DBI253IBS -> DBI253IB.S.AU (AU)"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "DBI253IB.S.AU"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.5",
+            "verifiedAt": "2026-07-16T08:41:45.788Z",
+            "bindingSha256": "60319171f2339c45809d394f419ba5deb188556d020186bc7ffe8f6cf1bc5af3"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 819,
+              "maximumMm": 819
+            },
+            "depthMm": 559
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2",
+            "receiptBindingSha256": "60319171f2339c45809d394f419ba5deb188556d020186bc7ffe8f6cf1bc5af3",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2",
+            "receiptBindingSha256": "60319171f2339c45809d394f419ba5deb188556d020186bc7ffe8f6cf1bc5af3",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2",
+            "receiptBindingSha256": "60319171f2339c45809d394f419ba5deb188556d020186bc7ffe8f6cf1bc5af3",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2"
         ]
       },
       "reconciliation": {
@@ -47378,6 +47592,224 @@
       }
     },
     {
+      "targetId": "recovery_target_c56f5465356e085c199abbb7",
+      "referenceId": "fa_ref_c70e360fa7196337f42789f3",
+      "legacyRuntimeId": "ao-45539",
+      "canonicalProductId": "fa_prod_adbe441dfa7c10e5f998cce8",
+      "brand": "ASKO",
+      "model": "D5456SS",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "auditSha256": "4fc966025c464b7c86b5fa0b329147ed260ca8ce90b09adac617b817348252bf",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_api",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
+          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T08:41:50.142Z",
+          "contentSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f",
+          "objectPath": "evidence/web/sha256/18/40/1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f.json",
+          "contentType": "application/json",
+          "byteSize": 178087,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "D5456SS",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Official PIM width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 820
+              },
+              "sourceLabel": "Official PIM height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 559
+              },
+              "sourceLabel": "Official PIM depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "D5456SS",
+            "matchedModel": "D5456SS",
+            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
+            "documentId": "000000000000733293",
+            "discoveryContentSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f",
+            "discoveryObjectPath": "evidence/web/sha256/18/40/1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f.json",
+            "discoveryByteSize": 178087
+          },
+          "identitySignals": [
+            {
+              "type": "official_market_api_model",
+              "value": "D5456SS:1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "D5456SS:596x820x559:1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.5",
+            "verifiedAt": "2026-07-16T08:41:50.142Z",
+            "bindingSha256": "59a2fce2472951cfa952c787457a0aa8544a4922fe06f771ba125ed34573ae39"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 820,
+              "maximumMm": 820
+            },
+            "depthMm": 559
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f",
+            "receiptBindingSha256": "59a2fce2472951cfa952c787457a0aa8544a4922fe06f771ba125ed34573ae39",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f",
+            "receiptBindingSha256": "59a2fce2472951cfa952c787457a0aa8544a4922fe06f771ba125ed34573ae39",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f",
+            "receiptBindingSha256": "59a2fce2472951cfa952c787457a0aa8544a4922fe06f771ba125ed34573ae39",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_db478dc3d8b9025072d26ae3",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 596,
+              "heightMm": 820,
+              "depthMm": 550
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "official_market_api_dimension_corroboration",
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_c6c769cdd7908e7b87fb9268",
       "referenceId": "fa_ref_920a86081bf8db74137980d1",
       "legacyRuntimeId": "ao-61044",
@@ -47608,6 +48040,220 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "350c5e3fa5726645f316e588f25dce48c433322aa17249e9fc4d105f9c028c99"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_c79c00b56045f7d42574d263",
+      "referenceId": "fa_ref_84f96b678a3b9cd52c483c00",
+      "legacyRuntimeId": "ao-84577",
+      "canonicalProductId": "fa_prod_3ec3175958868e10a7bdee0b",
+      "brand": "ASKO",
+      "model": "DBI243IBS",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "auditSha256": "4fc966025c464b7c86b5fa0b329147ed260ca8ce90b09adac617b817348252bf",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_api",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD",
+          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T08:41:52.030Z",
+          "contentSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a",
+          "objectPath": "evidence/web/sha256/f4/d7/f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a.json",
+          "contentType": "application/json",
+          "byteSize": 211009,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "DBI243IBS",
+            "category": "dishwasher",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "DBI243IB.S.AU"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Official PIM width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 819
+              },
+              "sourceLabel": "Official PIM height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 559
+              },
+              "sourceLabel": "Official PIM depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "DBI243IBS",
+            "matchedModel": "DBI243IB.S.AU",
+            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD",
+            "documentId": "000000000000732485",
+            "discoveryContentSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a",
+            "discoveryObjectPath": "evidence/web/sha256/f4/d7/f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a.json",
+            "discoveryByteSize": 211009
+          },
+          "identitySignals": [
+            {
+              "type": "official_market_api_model",
+              "value": "DBI243IBS:f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "DBI243IBS:596x819x559:f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a"
+            },
+            {
+              "type": "official_market_api_variant_binding",
+              "value": "DBI243IBS -> DBI243IB.S.AU (AU)"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "DBI243IB.S.AU"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.5",
+            "verifiedAt": "2026-07-16T08:41:52.030Z",
+            "bindingSha256": "b16ebd24371226e53dd9c02937b95032880ea9393f8da5c7f10dbc69fb57aca2"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 819,
+              "maximumMm": 819
+            },
+            "depthMm": 559
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a",
+            "receiptBindingSha256": "b16ebd24371226e53dd9c02937b95032880ea9393f8da5c7f10dbc69fb57aca2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a",
+            "receiptBindingSha256": "b16ebd24371226e53dd9c02937b95032880ea9393f8da5c7f10dbc69fb57aca2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a",
+            "receiptBindingSha256": "b16ebd24371226e53dd9c02937b95032880ea9393f8da5c7f10dbc69fb57aca2",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a"
         ]
       },
       "reconciliation": {
@@ -48578,6 +49224,220 @@
         "supersessionViolations": [],
         "axisPermutationResolution": null,
         "lowerAuthorityResolution": "official_market_api_dimension_corroboration",
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_c9b5bfeb64a7420f7519c10e",
+      "referenceId": "fa_ref_011443e29c4bd4a0be0dcfd5",
+      "legacyRuntimeId": "ao-84579",
+      "canonicalProductId": "fa_prod_0296f02eef45ddce82ea05f8",
+      "brand": "ASKO",
+      "model": "DBI253IBBS",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "auditSha256": "4fc966025c464b7c86b5fa0b329147ed260ca8ce90b09adac617b817348252bf",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_api",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
+          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T08:41:53.636Z",
+          "contentSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7",
+          "objectPath": "evidence/web/sha256/12/a4/12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7.json",
+          "contentType": "application/json",
+          "byteSize": 222054,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "DBI253IBBS",
+            "category": "dishwasher",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "DBI253IB.BS.AU"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Official PIM width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 819
+              },
+              "sourceLabel": "Official PIM height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 559
+              },
+              "sourceLabel": "Official PIM depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "DBI253IBBS",
+            "matchedModel": "DBI253IB.BS.AU",
+            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
+            "documentId": "000000000000732488",
+            "discoveryContentSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7",
+            "discoveryObjectPath": "evidence/web/sha256/12/a4/12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7.json",
+            "discoveryByteSize": 222054
+          },
+          "identitySignals": [
+            {
+              "type": "official_market_api_model",
+              "value": "DBI253IBBS:12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "DBI253IBBS:596x819x559:12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7"
+            },
+            {
+              "type": "official_market_api_variant_binding",
+              "value": "DBI253IBBS -> DBI253IB.BS.AU (AU)"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "DBI253IB.BS.AU"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.5",
+            "verifiedAt": "2026-07-16T08:41:53.636Z",
+            "bindingSha256": "3c51515871dacbe025978c445e91b47ffb36077d9aa7ab90f66d10c2190cddb3"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 819,
+              "maximumMm": 819
+            },
+            "depthMm": 559
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7",
+            "receiptBindingSha256": "3c51515871dacbe025978c445e91b47ffb36077d9aa7ab90f66d10c2190cddb3",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7",
+            "receiptBindingSha256": "3c51515871dacbe025978c445e91b47ffb36077d9aa7ab90f66d10c2190cddb3",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7",
+            "receiptBindingSha256": "3c51515871dacbe025978c445e91b47ffb36077d9aa7ab90f66d10c2190cddb3",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
         "conflictReason": null
       }
     },
@@ -59038,6 +59898,220 @@
       }
     },
     {
+      "targetId": "recovery_target_f929bc9b2bb362ef10a68768",
+      "referenceId": "fa_ref_21a2939bf471f0777fab8db1",
+      "legacyRuntimeId": "ao-84578",
+      "canonicalProductId": "fa_prod_e4250cf7f38a4c768a400d5b",
+      "brand": "ASKO",
+      "model": "DBI243IBW",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "auditSha256": "4fc966025c464b7c86b5fa0b329147ed260ca8ce90b09adac617b817348252bf",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_api",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD",
+          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T08:41:56.844Z",
+          "contentSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa",
+          "objectPath": "evidence/web/sha256/28/90/2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa.json",
+          "contentType": "application/json",
+          "byteSize": 208899,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "DBI243IBW",
+            "category": "dishwasher",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "DBI243IB.W.AU"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Official PIM width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 819
+              },
+              "sourceLabel": "Official PIM height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 559
+              },
+              "sourceLabel": "Official PIM depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "DBI243IBW",
+            "matchedModel": "DBI243IB.W.AU",
+            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD",
+            "documentId": "000000000000732484",
+            "discoveryContentSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa",
+            "discoveryObjectPath": "evidence/web/sha256/28/90/2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa.json",
+            "discoveryByteSize": 208899
+          },
+          "identitySignals": [
+            {
+              "type": "official_market_api_model",
+              "value": "DBI243IBW:2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "DBI243IBW:596x819x559:2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa"
+            },
+            {
+              "type": "official_market_api_variant_binding",
+              "value": "DBI243IBW -> DBI243IB.W.AU (AU)"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "DBI243IB.W.AU"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.5",
+            "verifiedAt": "2026-07-16T08:41:56.844Z",
+            "bindingSha256": "951c869f213a77cf4eee94e3525d1eb3509a42dd52d253da47376a6782697869"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 819,
+              "maximumMm": 819
+            },
+            "depthMm": 559
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa",
+            "receiptBindingSha256": "951c869f213a77cf4eee94e3525d1eb3509a42dd52d253da47376a6782697869",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa",
+            "receiptBindingSha256": "951c869f213a77cf4eee94e3525d1eb3509a42dd52d253da47376a6782697869",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa",
+            "receiptBindingSha256": "951c869f213a77cf4eee94e3525d1eb3509a42dd52d253da47376a6782697869",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_f9b7e242fed29718d638d5c0",
       "referenceId": "fa_ref_b715bbb784b4c85a50814ab9",
       "legacyRuntimeId": "ao-55657",
@@ -60668,6 +61742,13 @@
       "queueSha256": "d20bf077029e6f054dc38091f6cd040786bb8d9e7819cddcfccbdd5c664b8e0e",
       "resultsSha256": "d903bb75e24a727a89957595f842d085095eb581fc0f181ac47061a70aceb692",
       "auditSha256": "7929440fbc891652a35cb6884446c1eedae82cac11c8aca47da72351ce330917"
+    },
+    {
+      "batchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "batchSha256": "2145dfba9b80c9fac9b442fbab4355f99143fed24b6660e9e52ca3c54f738466",
+      "queueSha256": "3a7e7be2c8c92e8a6a58c54e6bbeb71c0e3db6439b3d171960ac9f45539caf19",
+      "resultsSha256": "a7f6d26ee678f00ee1a4c9c04b3040e20b5a96edcd35be13085137c831c11038",
+      "auditSha256": "4fc966025c464b7c86b5fa0b329147ed260ca8ce90b09adac617b817348252bf"
     },
     {
       "batchId": "historical-recovery-04d0c9ced4686c2d89e25349-slice-093b53813e08",

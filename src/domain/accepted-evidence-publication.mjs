@@ -1,5 +1,5 @@
 import { projectEvidenceGeometry } from './evidence-geometry-projector.mjs';
-import { isStrictOfficialModelVariantPdfSource } from './official-model-variant-policy.mjs';
+import { isStrictOfficialModelVariantSource } from './official-model-variant-policy.mjs';
 
 function text(value) {
   return String(value ?? '').trim();
@@ -89,11 +89,11 @@ export function buildReceiptBoundAcceptanceProjection(input, options = {}) {
       const htmlAlias = outcome.source.contentType === 'text/html'
         && text(outcome.source.identity?.sourceModel)
         && (outcome.source.claims ?? []).every((claim) => ALIAS_DIMENSION_FIELDS.has(claim.field));
-      const pdfVariant = isStrictOfficialModelVariantPdfSource(outcome.source, {
+      const boundVariant = isStrictOfficialModelVariantSource(outcome.source, {
         brand: entry.brand, model: entry.model, category: entry.category,
       });
-      if (!htmlAlias && !pdfVariant) {
-        throw new Error(`official model-variant PDF requires complete binding signals or strict HTML dimensions only: ${id}`);
+      if (!htmlAlias && !boundVariant) {
+        throw new Error(`official model variant requires complete PDF/API binding signals or strict HTML dimensions only: ${id}`);
       }
     }
     const projected = projectEvidenceGeometry({
@@ -222,7 +222,9 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
       ? 'official_pdf_receipt_bound'
       : acceptance.artifactType === 'html'
         ? 'official_html_receipt_bound'
-        : 'official_mixed_receipt_bound',
+        : acceptance.artifactType === 'json'
+          ? 'official_api_receipt_bound'
+          : 'official_mixed_receipt_bound',
     evidence: {
       ...retainedEvidence,
       source_url: acceptance.sourceUrl,

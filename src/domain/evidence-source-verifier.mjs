@@ -8,8 +8,10 @@ import {
 import { verifyOfficialMarketApiDiscoveryEvidence } from './official-market-api-discovery-evidence.mjs';
 import { verifyOfficialSupportApiDiscoveryEvidence } from './official-support-api-discovery-evidence.mjs';
 import {
+  isStrictOfficialModelVariantApiSource,
   isStrictOfficialModelVariantPdfSource,
   officialMarketApiModelVariant,
+  strictOfficialModelVariantApiFailure,
   strictOfficialModelVariantPdfFailure,
 } from './official-model-variant-policy.mjs';
 
@@ -478,7 +480,13 @@ function normalizedSourceIdentity(source, caseIdentity, contentType) {
     }
     return { ...identity, outcome, sourceModel };
   }
-  if (contentType !== 'text/html') throw new TypeError('official marketing alias requires HTML or bound PDF evidence');
+  if (contentType === 'application/json') {
+    if (!isStrictOfficialModelVariantApiSource(source, identity)) {
+      throw new TypeError(`official model variant API binding invalid: ${strictOfficialModelVariantApiFailure(source, identity)}`);
+    }
+    return { ...identity, outcome, sourceModel };
+  }
+  if (contentType !== 'text/html') throw new TypeError('official marketing alias requires HTML, bound PDF, or bound API evidence');
   for (const required of ['document_title', 'canonical_source_model']) {
     if (!signalTypes.has(required)) throw new TypeError(`official marketing alias missing ${required}`);
   }
@@ -838,7 +846,7 @@ export function validateTrustedSourceMetadata(source, caseIdentity, options = {}
     throw new TypeError('source cannot supersede itself');
   }
   const contentType = requiredText(source?.contentType, 'content type').toLowerCase();
-  if (!['text/html', 'application/pdf'].includes(contentType)) {
+  if (!['text/html', 'application/pdf', 'application/json'].includes(contentType)) {
     throw new TypeError('unsupported content type');
   }
   normalizedSourceIdentity(source, identity, contentType);

@@ -31,6 +31,7 @@ import {
   officialMarketApiBoundFamilyModel,
   officialMarketApiBoundSeriesModel,
   officialMarketApiBoundVariantModel,
+  officialMarketApiDimensionClaims,
   officialMarketApiDimensions,
   verifyOfficialMarketApiDiscoveryEvidence,
 } from './official-market-api-discovery-evidence.mjs';
@@ -490,6 +491,37 @@ function officialMarketApiIdentitySignals(source, caseIdentity, discoveryArtifac
   return signals;
 }
 
+function officialMarketApiJsonIdentityProof(source, caseIdentity, bytes, discoveryArtifactBytes) {
+  const provenance = source?.discoveryProvenance;
+  if (provenance?.method !== 'official_market_api' || !provenance.discoveryContentSha256) {
+    throw new TypeError('official market API JSON provenance required');
+  }
+  const discoveryBytes = Buffer.from(discoveryArtifactBytes ?? []);
+  if (!discoveryBytes.length || !Buffer.from(bytes).equals(discoveryBytes)) {
+    throw new Error('official market API JSON must equal its discovery artifact');
+  }
+  verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, discoveryBytes);
+  const payload = JSON.parse(discoveryBytes.toString('utf8'));
+  const claims = officialMarketApiDimensionClaims(payload, caseIdentity, provenance);
+  if (!claims || JSON.stringify(canonicalize(claims)) !== JSON.stringify(canonicalize(source.claims))) {
+    throw new Error('source claims do not match replayed official market API dimensions');
+  }
+  const variant = officialMarketApiModelVariant(caseIdentity, provenance.matchedModel);
+  const signals = officialMarketApiIdentitySignals(source, caseIdentity, discoveryBytes);
+  if (variant) signals.push({ type: 'canonical_source_model', value: variant.sourceModel });
+  return {
+    signals,
+    text: '',
+    ...(variant ? { identity: {
+      brand: caseIdentity.brand,
+      model: caseIdentity.model,
+      category: caseIdentity.category,
+      outcome: 'official_marketing_alias',
+      sourceModel: variant.sourceModel,
+    } } : {}),
+  };
+}
+
 function officialSupportApiIdentitySignals(source, caseIdentity, discoveryArtifactBytes) {
   const provenance = source?.discoveryProvenance;
   if (provenance?.method !== 'official_support_api' || !provenance.discoveryContentSha256) return [];
@@ -729,11 +761,18 @@ export function verifyAndAttestResolutionArtifact({
         signals: [...identityProof.signals, ...supportApiSignals],
       };
     }
+  } else if (source.contentType === 'application/json') {
+    identityProof = officialMarketApiJsonIdentityProof(
+      source,
+      caseIdentity,
+      buffer,
+      discoveryArtifactBytes,
+    );
   } else {
     throw new TypeError('unsupported artifact content type');
   }
   // V2 PDF claims are reproduced from hash-bound MinerU fragments; sourceLabel is semantic, not verbatim text.
-  if (!(source.contentType === 'application/pdf' && claimSemanticsVersion === 2)) {
+  if (!(['application/pdf', 'application/json'].includes(source.contentType) && claimSemanticsVersion === 2)) {
     verifyQuotes(source, identityProof.text);
   }
   if (claimSemanticsVersion === 2) validateDimensionEvidenceClaimsV2(source.claims);

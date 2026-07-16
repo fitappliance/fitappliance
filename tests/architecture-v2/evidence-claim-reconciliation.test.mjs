@@ -600,6 +600,32 @@ test('receipt-bound official AU model-variant PDF can establish dimensions witho
   assert.deepEqual(result.sources, [variant]);
 });
 
+test('receipt-bound official AU model-variant API can establish dimensions without an exact source anchor', () => {
+  const variantIdentity = { brand: 'ASKO', model: 'DBI243IBS', category: 'dishwasher' };
+  const hash = 'd'.repeat(64);
+  const url = 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD';
+  const variant = source(hash, { widthMm: 596, heightMm: 819, depthMm: 559 }, {
+    sourceType: 'official_model_variant_api', contentType: 'application/json',
+    sourceUrl: url, finalUrl: url,
+    identity: { ...variantIdentity, outcome: 'official_marketing_alias', sourceModel: 'DBI243IB.S.AU' },
+    identitySignals: [
+      { type: 'canonical_source_model', value: 'DBI243IB.S.AU' },
+      { type: 'official_market_api_model', value: `DBI243IBS:${hash}:${url}` },
+      { type: 'official_market_api_dimensions', value: `DBI243IBS:596x819x559:${hash}` },
+      { type: 'official_market_api_variant_binding', value: 'DBI243IBS -> DBI243IB.S.AU (AU)' },
+    ],
+    discoveryProvenance: {
+      method: 'official_market_api', requestedModel: 'DBI243IBS', matchedModel: 'DBI243IB.S.AU',
+      discoveryUrl: url, artifactUrl: url, discoveryContentSha256: hash,
+    },
+  });
+  const result = reconcileEvidenceClaims(variantIdentity, inventory([variant], {
+    identity: variantIdentity,
+  }), { verifyReceipt });
+  assert.equal(result.status, 'accepted');
+  assert.deepEqual(result.sources, [variant]);
+});
+
 test('official model-variant PDF stays identity-rejected when any independent binding signal is absent', () => {
   const variantIdentity = { brand: 'ASKO', model: 'W4104C.W', category: 'washing_machine' };
   const variant = source('c'.repeat(64), { widthMm: 595, heightMm: 850, depthMm: 700 }, {

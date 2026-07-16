@@ -364,11 +364,27 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
         readArtifactRecord: (transportKey) => store.findArtifactRecord(transportKey),
         readObject: objectStore.readObject,
         writeObject: objectStore.writeObject,
-        fetchArtifact: (url, brand) => fetchWithRetry(url, brand, policy, {
-          expectedModel: job.targetModel,
-          expectedCategory: job.targetCategory,
-          discoveryProvenance: job.discoveryProvenance,
-        }),
+        fetchArtifact: async (url, brand) => {
+          const provenance = job.discoveryProvenance;
+          if (provenance?.method === 'official_market_api'
+            && provenance.discoveryUrl === provenance.artifactUrl
+            && provenance.discoveryUrl === url
+            && provenance.discoveryObjectPath) {
+            return {
+              requestedUrl: url,
+              finalUrl: url,
+              redirectChain: [],
+              contentType: 'application/json',
+              bytes: await objectStore.readObject(provenance.discoveryObjectPath),
+              transport: 'content_addressed_discovery_object',
+            };
+          }
+          return fetchWithRetry(url, brand, policy, {
+            expectedModel: job.targetModel,
+            expectedCategory: job.targetCategory,
+            discoveryProvenance: job.discoveryProvenance,
+          });
+        },
         processPdf: (bytes) => context.withMineru(() => runMineruPdfWithImageFallback(bytes, {
           storageRoot: storageIdentity.root,
           maximumPdfBytes: policy.limits.maximumBytes,

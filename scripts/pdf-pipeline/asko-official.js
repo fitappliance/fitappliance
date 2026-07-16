@@ -21,6 +21,7 @@ function documentType(description, url) {
 }
 
 function score(resource) {
+  if (resource.resourceType === 'structured_product_data') return 400;
   if (resource.resourceType === 'installation_guide') return 300;
   if (resource.resourceType === 'specification_sheet') return 250;
   if (resource.resourceType === 'user_manual') return 150;
@@ -64,44 +65,47 @@ function pimDimensions(product) {
 async function findAskoOfficialPdf(target, options = {}) {
   const model = text(target?.sku ?? target?.model);
   if (!model || /[*?]/.test(model)) return null;
-  const discoveryUrl = new URL(API_BASE);
-  discoveryUrl.searchParams.set('query', model);
-  discoveryUrl.searchParams.set('lang', 'en_AU');
-  discoveryUrl.searchParams.set('curr', 'AUD');
   const fetchImpl = options.fetchImpl ?? globalThis.fetch;
   if (typeof fetchImpl !== 'function') throw new TypeError('ASKO official finder requires fetch');
-  const response = await fetchImpl(discoveryUrl.toString(), {
-    headers: { accept: 'application/json' },
-    signal: options.signal,
-  });
-  if (!response?.ok) {
-    const error = new Error(`ASKO manuals API returned HTTP ${response?.status ?? 'unknown'}`);
-    error.status = response?.status;
-    throw error;
-  }
-  const bytes = Buffer.from(await response.arrayBuffer());
-  if (!bytes.length || bytes.length > (options.maximumBytes ?? MAXIMUM_RESPONSE_BYTES)) {
-    throw new Error('ASKO manuals API response size outside limits');
-  }
-  let payload;
-  try { payload = JSON.parse(bytes.toString('utf8')); } catch {
-    throw new Error('ASKO manuals API returned invalid JSON');
-  }
-  const candidates = Array.isArray(payload?.products) ? payload.products : [];
-  const exactProducts = candidates.filter((product) => exactModel(product?.modelMark, model));
-  let products = exactProducts;
-  if (!products.length) {
-    const { officialMarketApiModelVariant } = await import(
-      '../../src/domain/official-model-variant-policy.mjs'
-    );
-    const identity = {
-      brand: target?.brand ?? 'ASKO',
-      model,
-      category: target?.category,
-    };
-    products = candidates.filter((product) => (
-      officialMarketApiModelVariant(identity, product?.modelMark) != null
-    ));
+  const { officialMarketApiModelVariant, officialMarketApiSearchModels } = await import(
+    '../../src/domain/official-model-variant-policy.mjs'
+  );
+  const identity = {
+    brand: target?.brand ?? 'ASKO',
+    model,
+    category: target?.category,
+  };
+  let products = [];
+  for (const queryModel of officialMarketApiSearchModels(identity)) {
+    const discoveryUrl = new URL(API_BASE);
+    discoveryUrl.searchParams.set('query', queryModel);
+    discoveryUrl.searchParams.set('lang', 'en_AU');
+    discoveryUrl.searchParams.set('curr', 'AUD');
+    const response = await fetchImpl(discoveryUrl.toString(), {
+      headers: { accept: 'application/json' },
+      signal: options.signal,
+    });
+    if (!response?.ok) {
+      const error = new Error(`ASKO manuals API returned HTTP ${response?.status ?? 'unknown'}`);
+      error.status = response?.status;
+      throw error;
+    }
+    const bytes = Buffer.from(await response.arrayBuffer());
+    if (!bytes.length || bytes.length > (options.maximumBytes ?? MAXIMUM_RESPONSE_BYTES)) {
+      throw new Error('ASKO manuals API response size outside limits');
+    }
+    let payload;
+    try { payload = JSON.parse(bytes.toString('utf8')); } catch {
+      throw new Error('ASKO manuals API returned invalid JSON');
+    }
+    const candidates = Array.isArray(payload?.products) ? payload.products : [];
+    products = candidates.filter((product) => exactModel(product?.modelMark, model));
+    if (!products.length) {
+      products = candidates.filter((product) => (
+        officialMarketApiModelVariant(identity, product?.modelMark) != null
+      ));
+    }
+    if (products.length) break;
   }
   if (!products.length) return null;
   const selectedModelsByCode = new Map();
@@ -163,6 +167,13 @@ async function findAskoOfficialPdf(target, options = {}) {
         description: text(manual.desc), matchedSku: text(entry.detail.modelMark),
         productCode: entry.productCode,
       }));
+    if (!resources.length && entry.dimensions) resources.push({
+      url: entry.detailUrl.toString(),
+      resourceType: 'structured_product_data',
+      description: 'Official product dimensions',
+      matchedSku: text(entry.detail.modelMark),
+      productCode: entry.productCode,
+    });
     if (!resources.length) continue;
     await options.writeObject(objectPath, entry.detailBytes);
     bound.push(...resources.map((resource) => ({

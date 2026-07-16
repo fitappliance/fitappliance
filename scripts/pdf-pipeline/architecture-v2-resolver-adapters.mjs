@@ -49,6 +49,7 @@ function authorityForUrl(sourceUrl, brand, model, category, discoveryProvenance)
 
 function sourceRole(authorityMode, documentType) {
   if (documentType === 'product_page' && authorityMode === 'official') return 'manufacturer_product_page';
+  if (documentType === 'structured_product_data' && authorityMode === 'official') return 'manufacturer_structured_data';
   return authorityMode === 'official' ? 'manufacturer_document' : 'retailer_reference';
 }
 
@@ -75,6 +76,7 @@ function hasLowerAuthorityDimensionConflict(caseRecord) {
 
 function normalizeDocumentType(value) {
   const text = String(value ?? '').toLowerCase().replace(/[\s-]+/g, '_');
+  if (/structured_product_data|product_api|pim_data/.test(text)) return 'structured_product_data';
   if (/(?:^|_)parts?(?:_|$)|(?:^|_)spare(?:_|$)/.test(text)) return 'parts_manual';
   if (/family/.test(text)) return 'family_manual';
   if (/quick_reference|quick_start|\bqrg\b|\bqsg\b/.test(text)) return 'quick_reference_guide';

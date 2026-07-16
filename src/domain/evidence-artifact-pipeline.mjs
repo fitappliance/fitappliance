@@ -4,11 +4,14 @@ import { extractClaimsFromHtml, verifyAndAttestResolutionArtifact } from './evid
 import { upgradeLegacyDimensionClaim } from './dimension-evidence-claim.mjs';
 import { parseMineruContentListV2 } from './mineru-document.mjs';
 import {
+  officialMarketApiDimensionClaims,
   officialMarketApiBoundExactCoverModel,
   officialMarketApiBoundFamilyModel,
   officialMarketApiBoundSeriesModel,
   officialMarketApiBoundVariantModel,
+  verifyOfficialMarketApiDiscoveryEvidence,
 } from './official-market-api-discovery-evidence.mjs';
+import { officialMarketApiModelVariant } from './official-model-variant-policy.mjs';
 import { officialSupportApiBoundFamilyModel } from './official-support-api-discovery-evidence.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 
@@ -40,6 +43,7 @@ function sha256(bytes) {
 function extension(contentType) {
   if (contentType === 'application/pdf') return 'pdf';
   if (contentType === 'text/html') return 'html';
+  if (contentType === 'application/json') return 'json';
   throw new TypeError(`unsupported evidence content type ${contentType ?? 'missing'}`);
 }
 
@@ -353,6 +357,26 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
     claims = claimSemanticsVersion === 2
       ? extracted.map(upgradeLegacyDimensionClaim)
       : extracted;
+  } else if (artifact.contentType === 'application/json') {
+    const dimensionFields = [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ];
+    if (claimSemanticsVersion !== 2
+      || requestedFields.some((field) => !dimensionFields.includes(field))) {
+      throw new Error('official market API JSON is dimensions only');
+    }
+    if (discoveryProvenance?.method !== 'official_market_api'
+      || artifact.contentSha256 !== discoveryProvenance.discoveryContentSha256
+      || artifact.requestedUrl !== discoveryProvenance.discoveryUrl
+      || artifact.finalUrl !== discoveryProvenance.discoveryUrl
+      || discoveryProvenance.artifactUrl !== discoveryProvenance.discoveryUrl) {
+      throw new Error('official market API JSON must be the hash-bound discovery self-source');
+    }
+    verifyOfficialMarketApiDiscoveryEvidence(discoveryProvenance, identity, discoveryArtifactBytes);
+    const payload = JSON.parse(Buffer.from(artifact.bytes).toString('utf8'));
+    claims = officialMarketApiDimensionClaims(payload, identity, discoveryProvenance);
+    if (!claims) throw new Error('official market API JSON lacks complete W/H/D dimensions');
+    boundVariantModel = officialMarketApiModelVariant(identity, discoveryProvenance.matchedModel)?.sourceModel ?? null;
   } else {
     throw new TypeError('unsupported artifact content type');
   }
@@ -368,7 +392,9 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       ? (boundVariantModel
         ? 'official_model_variant_pdf'
         : 'official_exact_model_pdf')
-      : 'official_exact_model_product_page',
+      : artifact.contentType === 'application/json'
+        ? (boundVariantModel ? 'official_model_variant_api' : 'official_exact_model_api')
+        : 'official_exact_model_product_page',
     sourceUrl: artifact.requestedUrl,
     finalUrl: artifact.finalUrl,
     redirectChain: [...artifact.redirectChain],

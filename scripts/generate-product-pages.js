@@ -236,9 +236,17 @@ function hasManufacturerHtmlEvidence(product) {
       .includes(product?.evidence?.source_type);
 }
 
+function hasManufacturerApiEvidence(product) {
+  return product?.evidence?.acceptance?.artifact_type === 'json'
+    || product?.data_source === 'official_api_receipt_bound'
+    || ['official_exact_model_api', 'official_model_variant_api']
+      .includes(product?.evidence?.source_type);
+}
+
 function evidenceDataSource(product) {
   if (product?.evidence?.v2_resolution?.status === 'resolved') return 'evidence';
   if (hasManufacturerHtmlEvidence(product)) return 'manufacturer-evidence';
+  if (hasManufacturerApiEvidence(product)) return 'manufacturer-api-evidence';
   if (product?.evidence?.has_pdf_evidence === true
     || String(product?.data_source ?? '').includes('pdf')) return 'pdf-evidence';
   return 'retailer-evidence';
@@ -247,6 +255,7 @@ function evidenceDataSource(product) {
 function getEvidenceTrustCopy(product) {
   const trustLevel = getEvidenceTrustLevel(product);
   const manufacturerHtml = hasManufacturerHtmlEvidence(product);
+  const manufacturerApi = hasManufacturerApiEvidence(product);
   if (trustLevel === 'evidence_pending') {
     return {
       label: 'Evidence Pending',
@@ -257,6 +266,25 @@ function getEvidenceTrustCopy(product) {
       faqVerification: 'Not yet. A source has been captured, but FitAppliance has not promoted its fields into the receipt-backed geometry used for fit decisions.',
       cavityAnswerSuffix: 'after confirming the model manual and installation requirements.'
     };
+  }
+  if (manufacturerApi) {
+    const hasApprovedSpace = [...reviewedFields(product)].some((field) => (
+      field.startsWith('installation.') || field.startsWith('operation.') || field.startsWith('service.')
+    ));
+    if (trustLevel === 'verified_fit' || hasApprovedSpace) {
+      throw new Error('manufacturer API evidence cannot publish Fit or space-requirement claims');
+    }
+    if (trustLevel === 'dimensions_verified') {
+      return {
+        label: 'Dimensions Verified',
+        titleSuffix: 'Exact Dimensions & Clearance Pending',
+        descriptionVerb: 'Manufacturer product-data dimensions; installation clearance remains unknown',
+        sourceProperty: 'Official manufacturer product-data dimensions captured by FitAppliance; clearance remains unknown until explicit installation evidence is captured',
+        sourceLabel: 'Official manufacturer product data',
+        faqVerification: 'Partially. FitAppliance has verified the physical dimensions from manufacturer product-data evidence, but installation clearance remains unknown until explicit evidence is captured.',
+        cavityAnswerSuffix: 'after confirming the model-specific installation clearance.'
+      };
+    }
   }
   if (!manufacturerHtml) {
     if (trustLevel === 'verified_fit') {

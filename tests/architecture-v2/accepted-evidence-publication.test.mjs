@@ -192,7 +192,62 @@ test('official model-variant PDF publishes only dimensions when every receipt-bo
     batch: variantBatch,
     results: weak,
     products,
-  }, { verifyReceipt: () => true }), /model-variant PDF.*binding signals/i);
+  }, { verifyReceipt: () => true }), /model variant.*binding signals/i);
+});
+
+test('official model-variant API publishes only dimensions when self-source and binding signals are complete', () => {
+  const model = 'DBI243IBS';
+  const sourceModel = 'DBI243IB.S.AU';
+  const hash = 'd'.repeat(64);
+  const sourceUrl = 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD';
+  const source = structuredClone(recoveryResults.outcomes[0].source);
+  source.contentSha256 = hash;
+  source.contentType = 'application/json';
+  source.sourceType = 'official_model_variant_api';
+  source.sourceUrl = sourceUrl;
+  source.finalUrl = sourceUrl;
+  source.identity = { brand: 'ASKO', model, category: 'dishwasher', outcome: 'official_marketing_alias', sourceModel };
+  source.identitySignals = [
+    { type: 'canonical_source_model', value: sourceModel },
+    { type: 'official_market_api_model', value: `${model}:${hash}:${sourceUrl}` },
+    { type: 'official_market_api_dimensions', value: `${model}:596x819x559:${hash}` },
+    { type: 'official_market_api_variant_binding', value: `${model} -> ${sourceModel} (AU)` },
+  ];
+  source.discoveryProvenance = {
+    method: 'official_market_api', requestedModel: model, matchedModel: sourceModel,
+    discoveryUrl: sourceUrl, artifactUrl: sourceUrl, discoveryContentSha256: hash,
+  };
+  source.claims = [
+    ['closedEnvelope.widthMm', 596, 'width'],
+    ['closedEnvelope.heightMm', 819, 'height'],
+    ['closedEnvelope.depthMm', 559, 'depth'],
+  ].map(([field, mm, axis]) => ({
+    field, value: { kind: 'fixed', mm }, sourceLabel: `Official PIM ${axis}`,
+    sourceAxisOrder: [axis], sourceUnit: 'mm', measurementScope: 'product_closed_external',
+    includesDoor: null, includesHandle: null, page: null, fragmentSha256: null, bbox: null,
+  }));
+  const geometryProjection = projectEvidenceGeometry({
+    brand: 'ASKO', model, category: 'dishwasher', sources: [source],
+  }, { verifyReceipt: () => true });
+  const apiBatch = { batchId: 'asko-api-publication', entries: [{
+    id: 'asko-dbi243ibs', legacyRuntimeId: 'dishwasher-asko-dbi243ibs',
+    brand: 'ASKO', model, category: 'dishwasher',
+  }] };
+  const apiResults = { batchId: apiBatch.batchId, outcomes: [{
+    ...apiBatch.entries[0], outcome: 'accepted', identity: 'official_marketing_alias',
+    artifactType: 'STRUCTURED_PRODUCT_DATA', source, geometryProjection,
+  }] };
+  const products = [{
+    id: 'dishwasher-asko-dbi243ibs', brand: 'ASKO', model,
+    category: 'dishwasher', cat: 'dishwasher',
+  }];
+  const accepted = buildReceiptBoundAcceptanceProjection({ batch: apiBatch, results: apiResults, products }, {
+    verifyReceipt: () => true,
+  });
+  const published = accepted.get('dishwasher-asko-dbi243ibs');
+  assert.equal(published.sourceType, 'official_model_variant_api');
+  assert.equal(published.geometry_v2_provenance.evidenceLevel, 'dimensions');
+  assert.equal(published.geometry_v2_provenance.verifiedFitEligible, false);
 });
 
 test('independent acceptance batches merge without silently overwriting a product', () => {

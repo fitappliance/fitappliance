@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T08:09:11.102Z",
+  "generatedAt": "2026-07-16T08:43:17.560Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -4227,6 +4227,23 @@
       "acceptedAt": "2026-07-16T05:00:25.867Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_08a4e9c9a73601a290c88984",
+      "targetId": "recovery_target_5abb6135f727b05fe4988d64",
+      "referenceId": "fa_ref_9f6dd26876c93e793810e4d4",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732487?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "a40db53e77fb1e6068d903e889730ecfce3992d1740f26e71e949943f06ad1c2",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "6fed8053bbfb5dc107d4013286e5b4e4d649d13647fa546f357396254d460079",
+      "semanticOutcomeSha256": "84c518f72aed8993ecf0950d5e497376e710c489fed47dcf8c8564b0e01969b9",
+      "batchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "batchSha256": "2145dfba9b80c9fac9b442fbab4355f99143fed24b6660e9e52ca3c54f738466",
+      "runId": "asko-dishwasher-p0-v2-20260716",
+      "resultsSha256": "a7f6d26ee678f00ee1a4c9c04b3040e20b5a96edcd35be13085137c831c11038",
+      "auditSha256": "05f1819e6af0a6119726f95b77917db47c69ae501173d5c0242d743be471788a",
+      "acceptedAt": "2026-07-16T08:41:58.415Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_0914b386c0f5da2b6a3dd7bc",
       "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
       "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
@@ -4310,6 +4327,23 @@
       "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
       "auditSha256": "e5aea60354ca44b4a12946af6807b4c8276bae79e0b10fbfe1250fddd5e42cfb",
       "acceptedAt": "2026-07-16T08:06:11.921Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_150dbb7dc1010f48a29b4f3a",
+      "targetId": "recovery_target_c56f5465356e085c199abbb7",
+      "referenceId": "fa_ref_c70e360fa7196337f42789f3",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000733293?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "1840de3f4275110f33d07ab0bedc54b463e561c8c33bda47cf2c7f59e7b3d47f",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "0088e24650bf5cab4fd9babcf5633bf30bc3b139e40e7a9a0a2dc94e656dbc21",
+      "semanticOutcomeSha256": "1e3a87b8eba9739be971ae515061fa0ee53c8c207d34cc6d022de4cfd79604e1",
+      "batchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "batchSha256": "2145dfba9b80c9fac9b442fbab4355f99143fed24b6660e9e52ca3c54f738466",
+      "runId": "asko-dishwasher-p0-v2-20260716",
+      "resultsSha256": "a7f6d26ee678f00ee1a4c9c04b3040e20b5a96edcd35be13085137c831c11038",
+      "auditSha256": "05f1819e6af0a6119726f95b77917db47c69ae501173d5c0242d743be471788a",
+      "acceptedAt": "2026-07-16T08:41:58.415Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_16318912c02b259f98a0ee09",
@@ -4633,6 +4667,23 @@
       "resultsSha256": "0daf8b332951e443d7f70575f38b2e427b3aa809c02738e3d2d5af1a0bf547c9",
       "auditSha256": "7ae02fee3d653c2ecb30bd1a1eaa77c6ccf487c4394d6300b2af3ed192445239",
       "acceptedAt": "2026-07-15T19:54:13.777Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_3828655b93ee905443377e2d",
+      "targetId": "recovery_target_c9b5bfeb64a7420f7519c10e",
+      "referenceId": "fa_ref_011443e29c4bd4a0be0dcfd5",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732488?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "12a439633f93222a3b05237ea04bc47e720ec246f78c212359680c15ac54a3a7",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "ee888c93c0bcb97ebc57d6ab9db387bf3095b54cc7bf2b83b111c394318ea6e9",
+      "semanticOutcomeSha256": "497b68fb87aefa2c63224a70c21508a21e97e06d817f06c04e9554d9428c84c5",
+      "batchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "batchSha256": "2145dfba9b80c9fac9b442fbab4355f99143fed24b6660e9e52ca3c54f738466",
+      "runId": "asko-dishwasher-p0-v2-20260716",
+      "resultsSha256": "a7f6d26ee678f00ee1a4c9c04b3040e20b5a96edcd35be13085137c831c11038",
+      "auditSha256": "05f1819e6af0a6119726f95b77917db47c69ae501173d5c0242d743be471788a",
+      "acceptedAt": "2026-07-16T08:41:58.415Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_388e112360c2b0b995503d00",
@@ -5587,6 +5638,23 @@
       "acceptedAt": "2026-07-16T00:46:29.094Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_956b6e64fbf34973406846f3",
+      "targetId": "recovery_target_f929bc9b2bb362ef10a68768",
+      "referenceId": "fa_ref_21a2939bf471f0777fab8db1",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732484?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "2890b09c46744354025c977af134b4a0ded6f0b715c388c8b51ec115acfe67aa",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "b3b4762520e4a9041f8ecb30ddba726a9c123bca6c12fa96d53087e7a1634519",
+      "semanticOutcomeSha256": "77d97ce724f842b474a818237180879a93cd625a5c9a936474149cd25d9d416e",
+      "batchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "batchSha256": "2145dfba9b80c9fac9b442fbab4355f99143fed24b6660e9e52ca3c54f738466",
+      "runId": "asko-dishwasher-p0-v2-20260716",
+      "resultsSha256": "a7f6d26ee678f00ee1a4c9c04b3040e20b5a96edcd35be13085137c831c11038",
+      "auditSha256": "05f1819e6af0a6119726f95b77917db47c69ae501173d5c0242d743be471788a",
+      "acceptedAt": "2026-07-16T08:41:58.415Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_9771a27efd1ba6682694f9fd",
       "targetId": "recovery_target_0ca99ea2e3ca520266c62f80",
       "referenceId": "fa_ref_a28f5b6b48765d57d2e5dd1a",
@@ -5857,6 +5925,23 @@
       "resultsSha256": "eb394a462304d163e61389c71985aa5042b29ace3add3b442501c10bc38ac337",
       "auditSha256": "6aca866e3e8c3c058e80346ae18bb3b7154b4c0f05517b258d3737a9521a1a19",
       "acceptedAt": "2026-07-16T05:00:25.867Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_b75d652ae7a5a083b5195802",
+      "targetId": "recovery_target_c79c00b56045f7d42574d263",
+      "referenceId": "fa_ref_84f96b678a3b9cd52c483c00",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "f4d7efadce5e79a389c7cc8c0db9490552f7395c4448fbfe05cbda2c8607f15a",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "fc48c8121252d16b279e97f2ae35d0fd557672f764795f5aa09c8389f3fe85e9",
+      "semanticOutcomeSha256": "f325ba7685fa10d66a115ca588a1efce5916ca29b9fed391bfbedf2d289804ea",
+      "batchId": "historical-recovery-03eead0e045bd975475df877-slice-29cfb6f76436",
+      "batchSha256": "2145dfba9b80c9fac9b442fbab4355f99143fed24b6660e9e52ca3c54f738466",
+      "runId": "asko-dishwasher-p0-v2-20260716",
+      "resultsSha256": "a7f6d26ee678f00ee1a4c9c04b3040e20b5a96edcd35be13085137c831c11038",
+      "auditSha256": "05f1819e6af0a6119726f95b77917db47c69ae501173d5c0242d743be471788a",
+      "acceptedAt": "2026-07-16T08:41:58.415Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_b78c783ac20b96966b730fa9",
@@ -6542,7 +6627,7 @@
   "summary": {
     "entries": 132,
     "resolutions": 17,
-    "sourceAcceptances": 141,
+    "sourceAcceptances": 146,
     "suppressions": 76,
     "resolvedSuppressions": 14,
     "retryable": 42,

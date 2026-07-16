@@ -249,7 +249,7 @@ function normalizeModelReceipt(receipt) {
   if (Number.isNaN(Date.parse(verifiedAt))) throw new TypeError('model receipt verifiedAt must be an ISO timestamp');
   const explicitContentType = String(receipt.contentType ?? '').trim().toLowerCase();
   const contentType = explicitContentType || null;
-  if (contentType !== null && !['application/pdf', 'text/html'].includes(contentType)) {
+  if (contentType !== null && !['application/pdf', 'text/html', 'application/json'].includes(contentType)) {
     throw new TypeError(`unsupported model receipt content type: ${contentType}`);
   }
   const objectPath = receipt.objectPath === undefined
@@ -286,6 +286,15 @@ function normalizeModelReceipt(receipt) {
       if (objectPath === null) throw new TypeError('HTML model receipt objectPath required');
       if (String(locator?.artifactSha256 ?? '').toLowerCase() !== contentSha256) {
         throw new TypeError('HTML model receipt artifact hash must match source content');
+      }
+      fields[axis] = { locatorKind, artifactSha256: contentSha256 };
+      continue;
+    }
+    if (locatorKind === 'JSON_ARTIFACT') {
+      if (contentType !== 'application/json') throw new TypeError('JSON artifact locator requires application/json content type');
+      if (objectPath === null) throw new TypeError('JSON model receipt objectPath required');
+      if (String(locator?.artifactSha256 ?? '').toLowerCase() !== contentSha256) {
+        throw new TypeError('JSON model receipt artifact hash must match source content');
       }
       fields[axis] = { locatorKind, artifactSha256: contentSha256 };
       continue;

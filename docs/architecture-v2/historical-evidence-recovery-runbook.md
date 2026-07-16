@@ -389,17 +389,54 @@ cannot issue a public dimension or Fit claim.
 
 Current measured state:
 
-- cumulative bundle: 127 entries and 149 source receipts, all 149 replayed;
-- attempt ledger: 19 failures, two resolution events, three source-level
-  acceptances, 12 active same-policy suppressions and six transient retries;
-- historical reference: 8,095 records, 110 `AUTO_FILL` and 88 quarantined;
-- dimension corpus: 638 MinerU indexes, 637 valid bindings, 902 observations,
-  158 parser profiles and 701 parser replays;
-- next canonical batch: zero artifact jobs after terminal, source-success and
-  prior-target deduplication.
+- cumulative bundle: 246 accepted targets and 271 source receipts, all 271
+  replayed from the external evidence store with zero failures;
+- attempt ledger: 132 failure entries, 17 resolution events, 146 source-level
+  acceptances, 76 active same-policy suppressions and 42 transient retries;
+- historical reference: 8,095 records, 213 `AUTO_FILL` and 88 quarantined;
+- evidence classification: 265 `COMPLETE_RECEIPT`, 6,417
+  `OFFICIAL_DISCOVERY`, 1,176 `REFERENCE_REDISCOVERY`, 154
+  `IDENTITY_RESEARCH` and 83 `CONFLICT_QUARANTINE`;
+- dimension corpus: 703 MinerU indexes, 702 valid bindings, 974 observations,
+  177 parser profiles and 770 parser replays;
+- next acquisition epoch: 7,830 queued models, of which 265 complete receipts
+  are excluded. The executable view contains 7,747 targets, 7,746 of them
+  resolver-only, so future runs must remain explicitly bounded.
 
 Do not use `--allow-all` on a batch containing thousands of resolver-only
 targets. It intentionally selects those targets and can launch broad online
 discovery. For a reviewed canary or policy replay, pass explicit `--job-id`
 values. Use `--allow-all` only when the materialized target and job counts are
 small, inspected and intentionally in scope.
+
+## 12. Official structured product API evidence
+
+Manufacturer product APIs may issue a dimensions-only receipt without a PDF,
+but only when the stored JSON itself is the immutable source artifact. This is
+not a generic permission to trust API or product-feed dimensions.
+
+The source is eligible only when all of these checks pass:
+
+1. the URL belongs to the policy-approved Australian manufacturer API host and
+   resolves to one exact product-detail record rather than a search list;
+2. the discovery bytes are reused as the source artifact, stored by SHA-256 and
+   replayed as valid `application/json`; a second mutable fetch cannot replace
+   the bytes used for discovery;
+3. the record provides one model identity and a complete explicit width,
+   height and depth triple in millimetres;
+4. exact identity passes, or the configured market-suffix policy proves a
+   punctuation-only spelling variant with identical alphanumeric characters;
+5. replay derives the same three claims and identity signals from the stored
+   JSON before the receipt is accepted;
+6. the projection contains only approved W/H/D. Clearance, door operation,
+   plumbing, ventilation and service fields remain unknown and
+   `verifiedFitEligible` remains false.
+
+The ASKO Australia canary exercised ten dishwasher targets. One exact API model
+and four punctuation-only `.AU` variants were accepted; five older or sibling
+forms remained typed `claims_incomplete` or `source_authority` outcomes. The
+five accepted records increased current receipt-bound dimension publication
+from 192 to 197 without creating a `VERIFIED_FIT` product or publication-audit
+violation. This route must stay manufacturer-specific and test-backed; do not
+generalize its spelling policy to another brand without a new canary and policy
+epoch.

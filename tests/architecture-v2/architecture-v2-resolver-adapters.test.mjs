@@ -396,6 +396,27 @@ test('ASKO adapter preserves hash-bound exact-model Australian API provenance', 
   assert.deepEqual(result.candidates[0].discoveryProvenance, discoveryProvenance);
 });
 
+test('ASKO adapter keeps official PIM JSON typed as structured manufacturer data', async () => {
+  const sourceUrl = 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732485?fields=FULL&lang=en_AU&curr=AUD';
+  const discoveryProvenance = {
+    schemaVersion: 1, method: 'official_market_api', market: 'AU', discoveryUrl: sourceUrl,
+    requestedModel: 'DBI243IBS', matchedModel: 'DBI243IB.S.AU', artifactUrl: sourceUrl,
+    discoveryContentSha256: 'a'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.json`, discoveryByteSize: 123,
+  };
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'ASKO', model: 'DBI243IBS', category: 'dishwasher' },
+    { asko: { finder: async () => ({
+      sourceUrl, matchedSku: 'DBI243IB.S.AU', resourceType: 'structured_product_data',
+      discoveryProvenance,
+    }) } },
+  );
+  const result = await adapter.resolve({ brand: 'ASKO', model: 'DBI243IBS', category: 'dishwasher' });
+  assert.equal(result.candidates[0].documentType, 'structured_product_data');
+  assert.equal(result.candidates[0].sourceRole, 'manufacturer_structured_data');
+  assert.equal(result.candidates[0].authorityMode, 'official');
+});
+
 test('all migration brands route through typed discovery-only adapters', () => {
   const brands = [
     'Fisher & Paykel', 'Haier', 'Electrolux', 'Westinghouse', 'LG', 'Samsung',

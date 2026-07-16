@@ -80,6 +80,20 @@ test('mixed HTML and PDF evidence publishes only contributing sources with typed
   assert.ok(Object.keys(pdf.fields).length > 0);
 });
 
+test('official structured product data publishes a JSON artifact locator without fake HTML or PDF provenance', () => {
+  const apiBundle = bundleFor('DBI253IBS');
+  const product = structuredClone(catalog.products.find((candidate) => candidate.model === 'DBI253IBS'));
+  const publication = buildHistoricalEvidencePublication({ bundle: apiBundle, products: [product] });
+  const current = publication.currentAcceptanceByLegacyId.get(product.id);
+  const [receipt] = publication.historicalEvidenceProjection.records[0].modelReceipts;
+
+  assert.equal(current.artifactType, 'json');
+  assert.equal(receipt.contentType, 'application/json');
+  assert.equal(receipt.fields.width.locatorKind, 'JSON_ARTIFACT');
+  assert.equal(receipt.fields.width.artifactSha256, receipt.contentSha256);
+  assert.equal(receipt.fields.width.page, undefined);
+});
+
 test('archived recovery evidence remains historical-only and cannot update a current product', () => {
   const archivedBundle = structuredClone(currentBundle);
   archivedBundle.entries[0].lifecycleState = 'CATALOG_ARCHIVED';
