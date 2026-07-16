@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T00:47:55.376Z",
-  "policySha256": "9f655739c358d44d84b0411eb36a10e0a3c64f02fd7ff6396b01ee21b1de6c7b",
+  "generatedAt": "2026-07-16T01:47:58.031Z",
+  "policySha256": "4a4be4707385d0dba6d618f6c7ef1dd2949dbf83871bad57fd8d12d81868d469",
   "entries": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1524,6 +1524,200 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "ed789eb7b9e8234d75733d7dae518e44803108c00c919cc1796b9848add855a6"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_0559733e484d45dbaa45b81f",
+      "referenceId": "fa_ref_a6ce7d6da8c03860f80e9554",
+      "legacyRuntimeId": "fridge-arf2946",
+      "canonicalProductId": "fa_prod_340d22f84c74f0acb3b07b17",
+      "brand": "Hisense",
+      "model": "HRVF240",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRVF240/240l-single-door-hybrid-fridge-freezer-white",
+          "finalUrl": "https://hisense.com.au/product/HRVF240/240l-single-door-hybrid-fridge-freezer-white",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T00:58:02.764Z",
+          "contentSha256": "77884c63b5b212d72ece3ecba3f2ca5f61da893e46c92d547ff8f17c30b2ec8d",
+          "objectPath": "evidence/web/sha256/77/88/77884c63b5b212d72ece3ecba3f2ca5f61da893e46c92d547ff8f17c30b2ec8d.html",
+          "contentType": "text/html",
+          "byteSize": 481210,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRVF240",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1720
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 590
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRVF240/240l-single-door-hybrid-fridge-freezer-white"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRVF240"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T00:58:02.764Z",
+            "bindingSha256": "725def29c7092af95aa689242e985aa5169c7a2a21e9712c0fe8707f6c4797e0"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 1720,
+              "maximumMm": 1720
+            },
+            "depthMm": 590
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRVF240/240l-single-door-hybrid-fridge-freezer-white",
+            "contentSha256": "77884c63b5b212d72ece3ecba3f2ca5f61da893e46c92d547ff8f17c30b2ec8d",
+            "receiptBindingSha256": "725def29c7092af95aa689242e985aa5169c7a2a21e9712c0fe8707f6c4797e0",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRVF240/240l-single-door-hybrid-fridge-freezer-white",
+            "contentSha256": "77884c63b5b212d72ece3ecba3f2ca5f61da893e46c92d547ff8f17c30b2ec8d",
+            "receiptBindingSha256": "725def29c7092af95aa689242e985aa5169c7a2a21e9712c0fe8707f6c4797e0",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRVF240/240l-single-door-hybrid-fridge-freezer-white",
+            "contentSha256": "77884c63b5b212d72ece3ecba3f2ca5f61da893e46c92d547ff8f17c30b2ec8d",
+            "receiptBindingSha256": "725def29c7092af95aa689242e985aa5169c7a2a21e9712c0fe8707f6c4797e0",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "77884c63b5b212d72ece3ecba3f2ca5f61da893e46c92d547ff8f17c30b2ec8d"
         ]
       },
       "reconciliation": {
@@ -3601,6 +3795,200 @@
       }
     },
     {
+      "targetId": "recovery_target_1b5062c9517dd3f7d50f7400",
+      "referenceId": "fa_ref_186b07f656753e473f00fc23",
+      "legacyRuntimeId": "fridge-arf2844",
+      "canonicalProductId": "fa_prod_53d5d6072b19023ebc44daa8",
+      "brand": "Hisense",
+      "model": "HRCF199",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRCF199/chest-freezer-200l",
+          "finalUrl": "https://hisense.com.au/product/HRCF199/chest-freezer-200l",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T00:58:03.043Z",
+          "contentSha256": "1cd7951c4444d957ef7c28d531a7e92da49f5da3ad4431f7d8910fdb23b1956d",
+          "objectPath": "evidence/web/sha256/1c/d7/1cd7951c4444d957ef7c28d531a7e92da49f5da3ad4431f7d8910fdb23b1956d.html",
+          "contentType": "text/html",
+          "byteSize": 372808,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCF199",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 802
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 854
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 559
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRCF199/chest-freezer-200l"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRCF199"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T00:58:03.043Z",
+            "bindingSha256": "d02a36fc048ade29b274c162c29769862170131b01eb1d81f02001ba1efdcff5"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 802,
+            "heightMm": {
+              "minimumMm": 854,
+              "maximumMm": 854
+            },
+            "depthMm": 559
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF199/chest-freezer-200l",
+            "contentSha256": "1cd7951c4444d957ef7c28d531a7e92da49f5da3ad4431f7d8910fdb23b1956d",
+            "receiptBindingSha256": "d02a36fc048ade29b274c162c29769862170131b01eb1d81f02001ba1efdcff5",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF199/chest-freezer-200l",
+            "contentSha256": "1cd7951c4444d957ef7c28d531a7e92da49f5da3ad4431f7d8910fdb23b1956d",
+            "receiptBindingSha256": "d02a36fc048ade29b274c162c29769862170131b01eb1d81f02001ba1efdcff5",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF199/chest-freezer-200l",
+            "contentSha256": "1cd7951c4444d957ef7c28d531a7e92da49f5da3ad4431f7d8910fdb23b1956d",
+            "receiptBindingSha256": "d02a36fc048ade29b274c162c29769862170131b01eb1d81f02001ba1efdcff5",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "1cd7951c4444d957ef7c28d531a7e92da49f5da3ad4431f7d8910fdb23b1956d"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_1bda59f26425adb4db35d758",
       "referenceId": "fa_ref_1c4d6922bf20eb92d1de792a",
       "legacyRuntimeId": "fridge-arf3554",
@@ -3833,6 +4221,200 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_1de1b2062f99a004665951ca",
+      "referenceId": "fa_ref_17033117dd8dab27a7ed952e",
+      "legacyRuntimeId": "fridge-arf3563",
+      "canonicalProductId": "fa_prod_2c33667f31c83b3e3e3f272a",
+      "brand": "Hisense",
+      "model": "HRTF497SW",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-4968df08919c",
+      "auditSha256": "4a181083b61cb8b5c1f954784ebefbc14c4e68d262a80c176551393b2200347b",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRTF497SW/496l-silver-top-mount-fridge",
+          "finalUrl": "https://hisense.com.au/product/HRTF497SW/496l-silver-top-mount-fridge",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T00:56:54.547Z",
+          "contentSha256": "fe64ca39c6dff04cbd223ad80bec9ebac6582a4729964d207326f6494f7ccaf2",
+          "objectPath": "evidence/web/sha256/fe/64/fe64ca39c6dff04cbd223ad80bec9ebac6582a4729964d207326f6494f7ccaf2.html",
+          "contentType": "text/html",
+          "byteSize": 533651,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRTF497SW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 794
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1720
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 685
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRTF497SW/496l-silver-top-mount-fridge"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRTF497SW"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T00:56:54.547Z",
+            "bindingSha256": "e6f96bb02a47483c3e4ac7fd299f4436db377709012106d9a80c6e6656d09ae7"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 794,
+            "heightMm": {
+              "minimumMm": 1720,
+              "maximumMm": 1720
+            },
+            "depthMm": 685
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRTF497SW/496l-silver-top-mount-fridge",
+            "contentSha256": "fe64ca39c6dff04cbd223ad80bec9ebac6582a4729964d207326f6494f7ccaf2",
+            "receiptBindingSha256": "e6f96bb02a47483c3e4ac7fd299f4436db377709012106d9a80c6e6656d09ae7",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRTF497SW/496l-silver-top-mount-fridge",
+            "contentSha256": "fe64ca39c6dff04cbd223ad80bec9ebac6582a4729964d207326f6494f7ccaf2",
+            "receiptBindingSha256": "e6f96bb02a47483c3e4ac7fd299f4436db377709012106d9a80c6e6656d09ae7",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRTF497SW/496l-silver-top-mount-fridge",
+            "contentSha256": "fe64ca39c6dff04cbd223ad80bec9ebac6582a4729964d207326f6494f7ccaf2",
+            "receiptBindingSha256": "e6f96bb02a47483c3e4ac7fd299f4436db377709012106d9a80c6e6656d09ae7",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "fe64ca39c6dff04cbd223ad80bec9ebac6582a4729964d207326f6494f7ccaf2"
         ]
       },
       "reconciliation": {
@@ -5824,6 +6406,200 @@
       }
     },
     {
+      "targetId": "recovery_target_288621fe7e39f4e8d7ef9cff",
+      "referenceId": "fa_ref_92e0fb04cedc250ae2ee2f14",
+      "legacyRuntimeId": "fridge-arf2635",
+      "canonicalProductId": "fa_prod_50868b5552a1fc7ac0df0f2c",
+      "brand": "Hisense",
+      "model": "HRCD454BW",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRCD454BW/french-door-pureflat-black-steel-454l",
+          "finalUrl": "https://hisense.com.au/product/HRCD454BW/french-door-pureflat-black-steel-454l",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T00:58:03.246Z",
+          "contentSha256": "deed4c148c0ff252327e95932107aca46bce8f99a256f841a343d33943d3062e",
+          "objectPath": "evidence/web/sha256/de/ed/deed4c148c0ff252327e95932107aca46bce8f99a256f841a343d33943d3062e.html",
+          "contentType": "text/html",
+          "byteSize": 385602,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCD454BW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 794
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1817
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 706
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRCD454BW/french-door-pureflat-black-steel-454l"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRCD454BW"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T00:58:03.246Z",
+            "bindingSha256": "3d65e8742d0b90bdc56fc2daed7af41512a204da6c6e7fa95347282bee6138d2"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 794,
+            "heightMm": {
+              "minimumMm": 1817,
+              "maximumMm": 1817
+            },
+            "depthMm": 706
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCD454BW/french-door-pureflat-black-steel-454l",
+            "contentSha256": "deed4c148c0ff252327e95932107aca46bce8f99a256f841a343d33943d3062e",
+            "receiptBindingSha256": "3d65e8742d0b90bdc56fc2daed7af41512a204da6c6e7fa95347282bee6138d2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCD454BW/french-door-pureflat-black-steel-454l",
+            "contentSha256": "deed4c148c0ff252327e95932107aca46bce8f99a256f841a343d33943d3062e",
+            "receiptBindingSha256": "3d65e8742d0b90bdc56fc2daed7af41512a204da6c6e7fa95347282bee6138d2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCD454BW/french-door-pureflat-black-steel-454l",
+            "contentSha256": "deed4c148c0ff252327e95932107aca46bce8f99a256f841a343d33943d3062e",
+            "receiptBindingSha256": "3d65e8742d0b90bdc56fc2daed7af41512a204da6c6e7fa95347282bee6138d2",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "deed4c148c0ff252327e95932107aca46bce8f99a256f841a343d33943d3062e"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_28a9b3256f927505a543f326",
       "referenceId": "fa_ref_6c80d8adbba8ba64a93d41de",
       "legacyRuntimeId": "discovery-washing-machine-bosch-wan28227au",
@@ -7444,6 +8220,200 @@
         "activeSourceHashes": [
           "f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_2e4c5abb8feb90a0e5da61db",
+      "referenceId": "fa_ref_ae05134bb1eaf3c0b5f8c9a6",
+      "legacyRuntimeId": "fridge-arf3435",
+      "canonicalProductId": "fa_prod_01cc5f01e112b37dbec98a6b",
+      "brand": "Hisense",
+      "model": "HRBM418S",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRBM418S/417l-bottom-mount-fridge-stainless-steel",
+          "finalUrl": "https://hisense.com.au/product/HRBM418S/417l-bottom-mount-fridge-stainless-steel",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T00:58:05.958Z",
+          "contentSha256": "631dfea517b11912d9d0d0ff0a7064efc6779f97d72c1d2df498ab721536b291",
+          "objectPath": "evidence/web/sha256/63/1d/631dfea517b11912d9d0d0ff0a7064efc6779f97d72c1d2df498ab721536b291.html",
+          "contentType": "text/html",
+          "byteSize": 506976,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRBM418S",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 704
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1720
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 694
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRBM418S/417l-bottom-mount-fridge-stainless-steel"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRBM418S"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T00:58:05.958Z",
+            "bindingSha256": "3f4cef920b6b96de58130f460f825aa0e48d4b409e270f2cb42613dd787b46fe"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 704,
+            "heightMm": {
+              "minimumMm": 1720,
+              "maximumMm": 1720
+            },
+            "depthMm": 694
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBM418S/417l-bottom-mount-fridge-stainless-steel",
+            "contentSha256": "631dfea517b11912d9d0d0ff0a7064efc6779f97d72c1d2df498ab721536b291",
+            "receiptBindingSha256": "3f4cef920b6b96de58130f460f825aa0e48d4b409e270f2cb42613dd787b46fe",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBM418S/417l-bottom-mount-fridge-stainless-steel",
+            "contentSha256": "631dfea517b11912d9d0d0ff0a7064efc6779f97d72c1d2df498ab721536b291",
+            "receiptBindingSha256": "3f4cef920b6b96de58130f460f825aa0e48d4b409e270f2cb42613dd787b46fe",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBM418S/417l-bottom-mount-fridge-stainless-steel",
+            "contentSha256": "631dfea517b11912d9d0d0ff0a7064efc6779f97d72c1d2df498ab721536b291",
+            "receiptBindingSha256": "3f4cef920b6b96de58130f460f825aa0e48d4b409e270f2cb42613dd787b46fe",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "631dfea517b11912d9d0d0ff0a7064efc6779f97d72c1d2df498ab721536b291"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -11051,6 +12021,200 @@
       }
     },
     {
+      "targetId": "recovery_target_3f4aff3df1d907a481afbc36",
+      "referenceId": "fa_ref_cd8df7c7abb3301cea66c9d7",
+      "legacyRuntimeId": "fridge-arf2734",
+      "canonicalProductId": "fa_prod_07c5125ce35673f7d06fb201",
+      "brand": "Hisense",
+      "model": "HRBF179B",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRBF179B/black-179l-bar-fridge",
+          "finalUrl": "https://hisense.com.au/product/HRBF179B/black-179l-bar-fridge",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T00:58:44.496Z",
+          "contentSha256": "96632e9cce215604acee7e2e262668f841a8885791ff17fcb1ae20db99fd6265",
+          "objectPath": "evidence/web/sha256/96/63/96632e9cce215604acee7e2e262668f841a8885791ff17fcb1ae20db99fd6265.html",
+          "contentType": "text/html",
+          "byteSize": 482488,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRBF179B",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 515
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1229
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 514
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRBF179B/black-179l-bar-fridge"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRBF179B"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T00:58:44.496Z",
+            "bindingSha256": "77bbc4b863ce07efc256032fec76a730a9add56c385616a882321ce03abc5c77"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 515,
+            "heightMm": {
+              "minimumMm": 1229,
+              "maximumMm": 1229
+            },
+            "depthMm": 514
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBF179B/black-179l-bar-fridge",
+            "contentSha256": "96632e9cce215604acee7e2e262668f841a8885791ff17fcb1ae20db99fd6265",
+            "receiptBindingSha256": "77bbc4b863ce07efc256032fec76a730a9add56c385616a882321ce03abc5c77",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBF179B/black-179l-bar-fridge",
+            "contentSha256": "96632e9cce215604acee7e2e262668f841a8885791ff17fcb1ae20db99fd6265",
+            "receiptBindingSha256": "77bbc4b863ce07efc256032fec76a730a9add56c385616a882321ce03abc5c77",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBF179B/black-179l-bar-fridge",
+            "contentSha256": "96632e9cce215604acee7e2e262668f841a8885791ff17fcb1ae20db99fd6265",
+            "receiptBindingSha256": "77bbc4b863ce07efc256032fec76a730a9add56c385616a882321ce03abc5c77",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "96632e9cce215604acee7e2e262668f841a8885791ff17fcb1ae20db99fd6265"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_42d212f53996bbf2b9a2c222",
       "referenceId": "fa_ref_efe40b27d389481fc3b0d451",
       "legacyRuntimeId": "fridge-arf2461",
@@ -13196,6 +14360,200 @@
         "activeSourceHashes": [
           "eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_4cffb47a334b277b5963731c",
+      "referenceId": "fa_ref_9fcf4a23ebba51201847a634",
+      "legacyRuntimeId": "fridge-arf2839",
+      "canonicalProductId": "fa_prod_475939e8ae09e68fb3898ffd",
+      "brand": "Hisense",
+      "model": "HRCF500",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRCF500/chest-freezer-500l",
+          "finalUrl": "https://hisense.com.au/product/HRCF500/chest-freezer-500l",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T00:58:47.156Z",
+          "contentSha256": "1e486aaf63eb6a5076163d062368a947b720392bb27e2c0de5f9164fd3df0f98",
+          "objectPath": "evidence/web/sha256/1e/48/1e486aaf63eb6a5076163d062368a947b720392bb27e2c0de5f9164fd3df0f98.html",
+          "contentType": "text/html",
+          "byteSize": 370423,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCF500",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1646
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 847
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 717
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRCF500/chest-freezer-500l"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRCF500"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T00:58:47.156Z",
+            "bindingSha256": "b3005da0942bfa38e9df4e120a007c345e78b9a31ad2fe3f83fb28e1bf1fa926"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 1646,
+            "heightMm": {
+              "minimumMm": 847,
+              "maximumMm": 847
+            },
+            "depthMm": 717
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF500/chest-freezer-500l",
+            "contentSha256": "1e486aaf63eb6a5076163d062368a947b720392bb27e2c0de5f9164fd3df0f98",
+            "receiptBindingSha256": "b3005da0942bfa38e9df4e120a007c345e78b9a31ad2fe3f83fb28e1bf1fa926",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF500/chest-freezer-500l",
+            "contentSha256": "1e486aaf63eb6a5076163d062368a947b720392bb27e2c0de5f9164fd3df0f98",
+            "receiptBindingSha256": "b3005da0942bfa38e9df4e120a007c345e78b9a31ad2fe3f83fb28e1bf1fa926",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF500/chest-freezer-500l",
+            "contentSha256": "1e486aaf63eb6a5076163d062368a947b720392bb27e2c0de5f9164fd3df0f98",
+            "receiptBindingSha256": "b3005da0942bfa38e9df4e120a007c345e78b9a31ad2fe3f83fb28e1bf1fa926",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "1e486aaf63eb6a5076163d062368a947b720392bb27e2c0de5f9164fd3df0f98"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -21383,6 +22741,200 @@
       }
     },
     {
+      "targetId": "recovery_target_78ab89ac26fd4170af35366b",
+      "referenceId": "fa_ref_8af779f194238702757f10fa",
+      "legacyRuntimeId": "fridge-arf2793",
+      "canonicalProductId": "fa_prod_5651b0a9f7167978b945a154",
+      "brand": "Hisense",
+      "model": "HRBF125",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRBF125/white-125l-bar-fridge",
+          "finalUrl": "https://hisense.com.au/product/HRBF125/white-125l-bar-fridge",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T00:59:37.741Z",
+          "contentSha256": "cc9a8e7b4eaeafda32c03215612f4a0d00c6f13b8104b39dcd4dc2144e6ac6be",
+          "objectPath": "evidence/web/sha256/cc/9a/cc9a8e7b4eaeafda32c03215612f4a0d00c6f13b8104b39dcd4dc2144e6ac6be.html",
+          "contentType": "text/html",
+          "byteSize": 384579,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRBF125",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 475
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 840
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 556
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRBF125/white-125l-bar-fridge"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRBF125"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T00:59:37.741Z",
+            "bindingSha256": "7e89abdfce675dd0c7ae1e8a29aaeec7e755d128a53364c886e2ee9ede27262d"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 475,
+            "heightMm": {
+              "minimumMm": 840,
+              "maximumMm": 840
+            },
+            "depthMm": 556
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBF125/white-125l-bar-fridge",
+            "contentSha256": "cc9a8e7b4eaeafda32c03215612f4a0d00c6f13b8104b39dcd4dc2144e6ac6be",
+            "receiptBindingSha256": "7e89abdfce675dd0c7ae1e8a29aaeec7e755d128a53364c886e2ee9ede27262d",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBF125/white-125l-bar-fridge",
+            "contentSha256": "cc9a8e7b4eaeafda32c03215612f4a0d00c6f13b8104b39dcd4dc2144e6ac6be",
+            "receiptBindingSha256": "7e89abdfce675dd0c7ae1e8a29aaeec7e755d128a53364c886e2ee9ede27262d",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBF125/white-125l-bar-fridge",
+            "contentSha256": "cc9a8e7b4eaeafda32c03215612f4a0d00c6f13b8104b39dcd4dc2144e6ac6be",
+            "receiptBindingSha256": "7e89abdfce675dd0c7ae1e8a29aaeec7e755d128a53364c886e2ee9ede27262d",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "cc9a8e7b4eaeafda32c03215612f4a0d00c6f13b8104b39dcd4dc2144e6ac6be"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_80e0025c3c7514692ec7afdd",
       "referenceId": "fa_ref_fc9cb54d89ad2373efd37b74",
       "legacyRuntimeId": "ao-101150",
@@ -21869,6 +23421,245 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_821b4cf1def899be41f812c1",
+      "referenceId": "fa_ref_78d4fc27221035811883a51c",
+      "legacyRuntimeId": "fridge-arf2348",
+      "canonicalProductId": "fa_prod_68fe1bb650cccadae2b6001c",
+      "brand": "Hisense",
+      "model": "HRCF300",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-8a05eebceb8ffab6dcc7063c",
+      "auditSha256": "9666687c65eeaff63708ea4b4246eba570c0e0ac969a3f8fad00035263cf1e75",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
+          "finalUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:46:53.074Z",
+          "contentSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
+          "objectPath": "evidence/web/sha256/77/b8/77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 198976,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCF300",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1114
+              },
+              "sourceLabel": "Width (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 1,
+              "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e",
+              "bbox": [
+                129,
+                753,
+                643,
+                847
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 847
+              },
+              "sourceLabel": "Height (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 1,
+              "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e",
+              "bbox": [
+                129,
+                753,
+                643,
+                847
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 630
+              },
+              "sourceLabel": "Depth (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 1,
+              "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e",
+              "bbox": [
+                129,
+                753,
+                643,
+                847
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
+            "contentSha256": "904ab687ec8a4289429fcec49796d27e8f278aaacbbe3d95bbfbc7d8666ea943",
+            "objectPath": "evidence/derived/mineru-json/sha256/90/4a/904ab687ec8a4289429fcec49796d27e8f278aaacbbe3d95bbfbc7d8666ea943.json",
+            "byteSize": 18054,
+            "pageCount": 1
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "HRCF300:page:1:07fafac86f8f4bb77072ed3983838b1504b688de0eb42da109642efdf8d7948a"
+            },
+            {
+              "type": "mineru_hisense_exact_spec_document_url",
+              "value": "HRCF300:https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0"
+            },
+            {
+              "type": "mineru_hisense_exact_spec_identity",
+              "value": "HRCF300:07fafac86f8f4bb77072ed3983838b1504b688de0eb42da109642efdf8d7948a"
+            },
+            {
+              "type": "mineru_hisense_legacy_net_box_dimensions",
+              "value": "HRCF300:page:1:d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "HRCF300:https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:46:53.074Z",
+            "bindingSha256": "4a4cb7687cdf213bbd8604419f601e6b5dc4a3e3be901daf791a599885079734"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 1114,
+            "heightMm": {
+              "minimumMm": 847,
+              "maximumMm": 847
+            },
+            "depthMm": 630
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
+            "contentSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
+            "receiptBindingSha256": "4a4cb7687cdf213bbd8604419f601e6b5dc4a3e3be901daf791a599885079734",
+            "page": 1,
+            "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
+            "contentSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
+            "receiptBindingSha256": "4a4cb7687cdf213bbd8604419f601e6b5dc4a3e3be901daf791a599885079734",
+            "page": 1,
+            "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
+            "contentSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
+            "receiptBindingSha256": "4a4cb7687cdf213bbd8604419f601e6b5dc4a3e3be901daf791a599885079734",
+            "page": 1,
+            "fragmentSha256": "d4def7ab18dc8ad0c1c6a270989deb497c3f2d45369bbcf23ab4a10e018f8f4e"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc"
         ]
       },
       "reconciliation": {
@@ -25250,6 +27041,245 @@
       }
     },
     {
+      "targetId": "recovery_target_990b53da26472cb0b6d689dd",
+      "referenceId": "fa_ref_20240ff4053c000edbb5dfb0",
+      "legacyRuntimeId": "fridge-arf2871",
+      "canonicalProductId": "fa_prod_6f2c10c99eb0171bbaee4ad7",
+      "brand": "Hisense",
+      "model": "HRCD585BWB",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-8a05eebceb8ffab6dcc7063c",
+      "auditSha256": "9666687c65eeaff63708ea4b4246eba570c0e0ac969a3f8fad00035263cf1e75",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
+          "finalUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:46:53.481Z",
+          "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
+          "objectPath": "evidence/web/sha256/16/de/16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 180111,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCD585BWB",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 912
+              },
+              "sourceLabel": "Width (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77",
+              "bbox": [
+                80,
+                59,
+                880,
+                461
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1785
+              },
+              "sourceLabel": "Height (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77",
+              "bbox": [
+                80,
+                59,
+                880,
+                461
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 725
+              },
+              "sourceLabel": "Depth (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77",
+              "bbox": [
+                80,
+                59,
+                880,
+                461
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
+            "contentSha256": "5c4797c758b5c53ead8f7b6d32d0689a259e23773da719ba324fedda00f4f328",
+            "objectPath": "evidence/derived/mineru-json/sha256/5c/47/5c4797c758b5c53ead8f7b6d32d0689a259e23773da719ba324fedda00f4f328.json",
+            "byteSize": 17083,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_hisense_exact_spec_document_url",
+              "value": "HRCD585BWB:https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA"
+            },
+            {
+              "type": "mineru_hisense_exact_spec_identity",
+              "value": "HRCD585BWB:74ea9c08cd260dc461426fae9295c67b2a534a298bb1914866848b9227113295"
+            },
+            {
+              "type": "mineru_hisense_legacy_net_box_dimensions",
+              "value": "HRCD585BWB:page:2:314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "HRCD585BWB:page:1"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "HRCD585BWB:https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:46:53.481Z",
+            "bindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 912,
+            "heightMm": {
+              "minimumMm": 1785,
+              "maximumMm": 1785
+            },
+            "depthMm": 725
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
+            "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
+            "receiptBindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f",
+            "page": 2,
+            "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
+            "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
+            "receiptBindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f",
+            "page": 2,
+            "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
+            "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
+            "receiptBindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f",
+            "page": 2,
+            "fragmentSha256": "314e4ec16325cf0f7f6e4e1fdf855323af22d73961a01b46dbddad7839e87e77"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_9a010a641a1dd84d8b79cb07",
       "referenceId": "fa_ref_6700a70e9c4deb1706d2f4fc",
       "legacyRuntimeId": "ao-56933",
@@ -26179,6 +28209,239 @@
         "activeSourceHashes": [
           "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_9dbd1ed2d124c09199f3a802",
+      "referenceId": "fa_ref_3387664f1c430e7fb57d9967",
+      "legacyRuntimeId": "fridge-arf3539",
+      "canonicalProductId": "fa_prod_b72e5c2bc48d49082f3ed2ce",
+      "brand": "Hisense",
+      "model": "HRCF702",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
+          "finalUrl": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:00:28.616Z",
+          "contentSha256": "119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b",
+          "objectPath": "evidence/web/sha256/11/9c/119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 96496,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCF702",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 2145
+              },
+              "sourceLabel": "Dimensions (Net) (W X H X D)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "58e10e4b63ca8a5c68ee0ef7ff12b8165b43b8f26f33291ad5dbc8ab68f3ea25",
+              "bbox": [
+                80,
+                243,
+                816,
+                927
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 826
+              },
+              "sourceLabel": "Dimensions (Net) (W X H X D)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "58e10e4b63ca8a5c68ee0ef7ff12b8165b43b8f26f33291ad5dbc8ab68f3ea25",
+              "bbox": [
+                80,
+                243,
+                816,
+                927
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 758
+              },
+              "sourceLabel": "Dimensions (Net) (W X H X D)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "58e10e4b63ca8a5c68ee0ef7ff12b8165b43b8f26f33291ad5dbc8ab68f3ea25",
+              "bbox": [
+                80,
+                243,
+                816,
+                927
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b",
+            "contentSha256": "30542db84e8d23af09356159219598fd5ba0451b9f3a7264ddeb502271d04da5",
+            "objectPath": "evidence/derived/mineru-json/sha256/30/54/30542db84e8d23af09356159219598fd5ba0451b9f3a7264ddeb502271d04da5.json",
+            "byteSize": 4662,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_table_model",
+              "value": "HRCF702:page:1:58e10e4b63ca8a5c68ee0ef7ff12b8165b43b8f26f33291ad5dbc8ab68f3ea25"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "HRCF702:page:1"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "HRCF702:https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:00:28.616Z",
+            "bindingSha256": "bc6eb4bb9b78aa2eb20c6aa74b5ad1b28bc83feb9bd1c1fd1563f31932b87cec"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 2145,
+            "heightMm": {
+              "minimumMm": 826,
+              "maximumMm": 826
+            },
+            "depthMm": 758
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
+            "contentSha256": "119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b",
+            "receiptBindingSha256": "bc6eb4bb9b78aa2eb20c6aa74b5ad1b28bc83feb9bd1c1fd1563f31932b87cec",
+            "page": 1,
+            "fragmentSha256": "58e10e4b63ca8a5c68ee0ef7ff12b8165b43b8f26f33291ad5dbc8ab68f3ea25"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
+            "contentSha256": "119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b",
+            "receiptBindingSha256": "bc6eb4bb9b78aa2eb20c6aa74b5ad1b28bc83feb9bd1c1fd1563f31932b87cec",
+            "page": 1,
+            "fragmentSha256": "58e10e4b63ca8a5c68ee0ef7ff12b8165b43b8f26f33291ad5dbc8ab68f3ea25"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
+            "contentSha256": "119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b",
+            "receiptBindingSha256": "bc6eb4bb9b78aa2eb20c6aa74b5ad1b28bc83feb9bd1c1fd1563f31932b87cec",
+            "page": 1,
+            "fragmentSha256": "58e10e4b63ca8a5c68ee0ef7ff12b8165b43b8f26f33291ad5dbc8ab68f3ea25"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -28331,6 +30594,200 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_a76887cdab49b0e267ef7447",
+      "referenceId": "fa_ref_ec0dc31aec66ad48372e6000",
+      "legacyRuntimeId": "fridge-arf2843",
+      "canonicalProductId": "fa_prod_655388ea1240a00c183237af",
+      "brand": "Hisense",
+      "model": "HRCF297",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRCF297/chest-freezer-300l",
+          "finalUrl": "https://hisense.com.au/product/HRCF297/chest-freezer-300l",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:00:33.835Z",
+          "contentSha256": "eb34a45d55793dc6cd817e4e03ae36928675fa3967c19998d095c2a078c16731",
+          "objectPath": "evidence/web/sha256/eb/34/eb34a45d55793dc6cd817e4e03ae36928675fa3967c19998d095c2a078c16731.html",
+          "contentType": "text/html",
+          "byteSize": 374892,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCF297",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1114
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 847
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 630
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRCF297/chest-freezer-300l"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRCF297"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:00:33.835Z",
+            "bindingSha256": "af798222b2e80a021fae1856ec7aaaf28581356732519149c59903ab1f6d2227"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 1114,
+            "heightMm": {
+              "minimumMm": 847,
+              "maximumMm": 847
+            },
+            "depthMm": 630
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF297/chest-freezer-300l",
+            "contentSha256": "eb34a45d55793dc6cd817e4e03ae36928675fa3967c19998d095c2a078c16731",
+            "receiptBindingSha256": "af798222b2e80a021fae1856ec7aaaf28581356732519149c59903ab1f6d2227",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF297/chest-freezer-300l",
+            "contentSha256": "eb34a45d55793dc6cd817e4e03ae36928675fa3967c19998d095c2a078c16731",
+            "receiptBindingSha256": "af798222b2e80a021fae1856ec7aaaf28581356732519149c59903ab1f6d2227",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF297/chest-freezer-300l",
+            "contentSha256": "eb34a45d55793dc6cd817e4e03ae36928675fa3967c19998d095c2a078c16731",
+            "receiptBindingSha256": "af798222b2e80a021fae1856ec7aaaf28581356732519149c59903ab1f6d2227",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "eb34a45d55793dc6cd817e4e03ae36928675fa3967c19998d095c2a078c16731"
         ]
       },
       "reconciliation": {
@@ -32465,6 +34922,200 @@
       }
     },
     {
+      "targetId": "recovery_target_bc47b8ee09bb51e2a16c297c",
+      "referenceId": "fa_ref_400c55d0b2eba10373b521ae",
+      "legacyRuntimeId": "fridge-arf3558",
+      "canonicalProductId": "fa_prod_b7301474779113f2e5bee1ce",
+      "brand": "Hisense",
+      "model": "HRCF439",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRCF439/440l-hybrid-chest-freezer",
+          "finalUrl": "https://hisense.com.au/product/HRCF439/440l-hybrid-chest-freezer",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:00:37.685Z",
+          "contentSha256": "da13ea0ff3282da54319aa34b53bf2907812775a339fd1d3ca4750843f1df530",
+          "objectPath": "evidence/web/sha256/da/13/da13ea0ff3282da54319aa34b53bf2907812775a339fd1d3ca4750843f1df530.html",
+          "contentType": "text/html",
+          "byteSize": 497504,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCF439",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1429
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 858
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 746
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRCF439/440l-hybrid-chest-freezer"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRCF439"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:00:37.685Z",
+            "bindingSha256": "2b59af02378ccd30ed24f611fdfb803f2e92d014e6276fca71c8adedbe2de51d"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 1429,
+            "heightMm": {
+              "minimumMm": 858,
+              "maximumMm": 858
+            },
+            "depthMm": 746
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF439/440l-hybrid-chest-freezer",
+            "contentSha256": "da13ea0ff3282da54319aa34b53bf2907812775a339fd1d3ca4750843f1df530",
+            "receiptBindingSha256": "2b59af02378ccd30ed24f611fdfb803f2e92d014e6276fca71c8adedbe2de51d",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF439/440l-hybrid-chest-freezer",
+            "contentSha256": "da13ea0ff3282da54319aa34b53bf2907812775a339fd1d3ca4750843f1df530",
+            "receiptBindingSha256": "2b59af02378ccd30ed24f611fdfb803f2e92d014e6276fca71c8adedbe2de51d",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF439/440l-hybrid-chest-freezer",
+            "contentSha256": "da13ea0ff3282da54319aa34b53bf2907812775a339fd1d3ca4750843f1df530",
+            "receiptBindingSha256": "2b59af02378ccd30ed24f611fdfb803f2e92d014e6276fca71c8adedbe2de51d",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "da13ea0ff3282da54319aa34b53bf2907812775a339fd1d3ca4750843f1df530"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_be040e31138e16accc76688d",
       "referenceId": "fa_ref_eb8c80dbac9425af4a678d96",
       "legacyRuntimeId": "fridge-arf2439",
@@ -33759,6 +36410,200 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_c481a71f3bc936ee49898221",
+      "referenceId": "fa_ref_af8c2d9b071081cb6f109e3d",
+      "legacyRuntimeId": "fridge-arf3162",
+      "canonicalProductId": "fa_prod_7b343fd329aff22dcd02c85e",
+      "brand": "Hisense",
+      "model": "HRCD586TBWB",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRCD586TBWB/pureflat-eclipse-dark-steel-585l",
+          "finalUrl": "https://hisense.com.au/product/HRCD586TBWB/pureflat-eclipse-dark-steel-585l",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:00:37.947Z",
+          "contentSha256": "44495e5034e638260865155a521aea0b09f47d75bbe1c741e12884af3885146e",
+          "objectPath": "evidence/web/sha256/44/49/44495e5034e638260865155a521aea0b09f47d75bbe1c741e12884af3885146e.html",
+          "contentType": "text/html",
+          "byteSize": 506127,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCD586TBWB",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 912
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1785
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 725
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRCD586TBWB/pureflat-eclipse-dark-steel-585l"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRCD586TBWB"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:00:37.947Z",
+            "bindingSha256": "7fe7f63621fe09684cef4abacb4c7592c1a45e860b9af7205d55132277bcad3a"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 912,
+            "heightMm": {
+              "minimumMm": 1785,
+              "maximumMm": 1785
+            },
+            "depthMm": 725
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCD586TBWB/pureflat-eclipse-dark-steel-585l",
+            "contentSha256": "44495e5034e638260865155a521aea0b09f47d75bbe1c741e12884af3885146e",
+            "receiptBindingSha256": "7fe7f63621fe09684cef4abacb4c7592c1a45e860b9af7205d55132277bcad3a",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCD586TBWB/pureflat-eclipse-dark-steel-585l",
+            "contentSha256": "44495e5034e638260865155a521aea0b09f47d75bbe1c741e12884af3885146e",
+            "receiptBindingSha256": "7fe7f63621fe09684cef4abacb4c7592c1a45e860b9af7205d55132277bcad3a",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCD586TBWB/pureflat-eclipse-dark-steel-585l",
+            "contentSha256": "44495e5034e638260865155a521aea0b09f47d75bbe1c741e12884af3885146e",
+            "receiptBindingSha256": "7fe7f63621fe09684cef4abacb4c7592c1a45e860b9af7205d55132277bcad3a",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "44495e5034e638260865155a521aea0b09f47d75bbe1c741e12884af3885146e"
         ]
       },
       "reconciliation": {
@@ -35220,6 +38065,200 @@
         "supersessionViolations": [],
         "axisPermutationResolution": null,
         "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_cd6a731478fc9a9763a249c4",
+      "referenceId": "fa_ref_c540a956ee574610850b7567",
+      "legacyRuntimeId": "fridge-arf2650",
+      "canonicalProductId": "fa_prod_a91acccf34bd7edc7f61134f",
+      "brand": "Hisense",
+      "model": "HRBM417C",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRBM417C/bottom-mount-black-417l",
+          "finalUrl": "https://hisense.com.au/product/HRBM417C/bottom-mount-black-417l",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:00:41.236Z",
+          "contentSha256": "0709cb21550dd2c7d362da357817cf2dd1499547051649230419b0d9df12a60e",
+          "objectPath": "evidence/web/sha256/07/09/0709cb21550dd2c7d362da357817cf2dd1499547051649230419b0d9df12a60e.html",
+          "contentType": "text/html",
+          "byteSize": 489182,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRBM417C",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 704
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1720
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 694
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRBM417C/bottom-mount-black-417l"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRBM417C"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:00:41.236Z",
+            "bindingSha256": "03913b256316980d53c4620573101ed4e8809e40911f9358c4a042259407fe3e"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 704,
+            "heightMm": {
+              "minimumMm": 1720,
+              "maximumMm": 1720
+            },
+            "depthMm": 694
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBM417C/bottom-mount-black-417l",
+            "contentSha256": "0709cb21550dd2c7d362da357817cf2dd1499547051649230419b0d9df12a60e",
+            "receiptBindingSha256": "03913b256316980d53c4620573101ed4e8809e40911f9358c4a042259407fe3e",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBM417C/bottom-mount-black-417l",
+            "contentSha256": "0709cb21550dd2c7d362da357817cf2dd1499547051649230419b0d9df12a60e",
+            "receiptBindingSha256": "03913b256316980d53c4620573101ed4e8809e40911f9358c4a042259407fe3e",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRBM417C/bottom-mount-black-417l",
+            "contentSha256": "0709cb21550dd2c7d362da357817cf2dd1499547051649230419b0d9df12a60e",
+            "receiptBindingSha256": "03913b256316980d53c4620573101ed4e8809e40911f9358c4a042259407fe3e",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "0709cb21550dd2c7d362da357817cf2dd1499547051649230419b0d9df12a60e"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
         "conflictReason": null
       }
     },
@@ -40427,6 +43466,200 @@
       }
     },
     {
+      "targetId": "recovery_target_e9736486c9dda34e4a4b1082",
+      "referenceId": "fa_ref_1007383838c55161f7d2bc37",
+      "legacyRuntimeId": "fridge-arf3199",
+      "canonicalProductId": "fa_prod_6c023e78c7b16a10d8653a7e",
+      "brand": "Hisense",
+      "model": "HRCD483TBW",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRCD483TBW/pureflat-slim-french-door-483l-dark-steel",
+          "finalUrl": "https://hisense.com.au/product/HRCD483TBW/pureflat-slim-french-door-483l-dark-steel",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:00:41.411Z",
+          "contentSha256": "d504beb485b59dc79ad101974030aed94805eca6078a6d17db769318b6e4929e",
+          "objectPath": "evidence/web/sha256/d5/04/d504beb485b59dc79ad101974030aed94805eca6078a6d17db769318b6e4929e.html",
+          "contentType": "text/html",
+          "byteSize": 524854,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCD483TBW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 794
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1785
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 698
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRCD483TBW/pureflat-slim-french-door-483l-dark-steel"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRCD483TBW"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:00:41.411Z",
+            "bindingSha256": "7f388e3c59641a5ef9045c1e284c982c484d2d1aefc9e40071a5f2f054ab795a"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 794,
+            "heightMm": {
+              "minimumMm": 1785,
+              "maximumMm": 1785
+            },
+            "depthMm": 698
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCD483TBW/pureflat-slim-french-door-483l-dark-steel",
+            "contentSha256": "d504beb485b59dc79ad101974030aed94805eca6078a6d17db769318b6e4929e",
+            "receiptBindingSha256": "7f388e3c59641a5ef9045c1e284c982c484d2d1aefc9e40071a5f2f054ab795a",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCD483TBW/pureflat-slim-french-door-483l-dark-steel",
+            "contentSha256": "d504beb485b59dc79ad101974030aed94805eca6078a6d17db769318b6e4929e",
+            "receiptBindingSha256": "7f388e3c59641a5ef9045c1e284c982c484d2d1aefc9e40071a5f2f054ab795a",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCD483TBW/pureflat-slim-french-door-483l-dark-steel",
+            "contentSha256": "d504beb485b59dc79ad101974030aed94805eca6078a6d17db769318b6e4929e",
+            "receiptBindingSha256": "7f388e3c59641a5ef9045c1e284c982c484d2d1aefc9e40071a5f2f054ab795a",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "d504beb485b59dc79ad101974030aed94805eca6078a6d17db769318b6e4929e"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_eb58b54c30decadc6bf2560d",
       "referenceId": "fa_ref_55aa979380310a84995d90b1",
       "legacyRuntimeId": "fridge-arf3450",
@@ -42008,6 +45241,200 @@
       }
     },
     {
+      "targetId": "recovery_target_f707686e8148716a51d35920",
+      "referenceId": "fa_ref_0dd7df103229ad7727cd7a55",
+      "legacyRuntimeId": "fridge-arf3116",
+      "canonicalProductId": "fa_prod_b446d54ce92f3b94ff73e616",
+      "brand": "Hisense",
+      "model": "HRFD634BW",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRFD634BW/pureflat-french-door-dark-steel-634l",
+          "finalUrl": "https://hisense.com.au/product/HRFD634BW/pureflat-french-door-dark-steel-634l",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:00:43.393Z",
+          "contentSha256": "81945b6a4ca05a9ad8f9d93eceba12c9b957e41842c662ecc1a2a1113fd67d77",
+          "objectPath": "evidence/web/sha256/81/94/81945b6a4ca05a9ad8f9d93eceba12c9b957e41842c662ecc1a2a1113fd67d77.html",
+          "contentType": "text/html",
+          "byteSize": 504945,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRFD634BW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 914
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1785
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 730
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRFD634BW/pureflat-french-door-dark-steel-634l"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRFD634BW"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:00:43.393Z",
+            "bindingSha256": "a913e0bafc281660317864ac6fbf166c8f1002ca59525a1100ef64cbeced548c"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 914,
+            "heightMm": {
+              "minimumMm": 1785,
+              "maximumMm": 1785
+            },
+            "depthMm": 730
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRFD634BW/pureflat-french-door-dark-steel-634l",
+            "contentSha256": "81945b6a4ca05a9ad8f9d93eceba12c9b957e41842c662ecc1a2a1113fd67d77",
+            "receiptBindingSha256": "a913e0bafc281660317864ac6fbf166c8f1002ca59525a1100ef64cbeced548c",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRFD634BW/pureflat-french-door-dark-steel-634l",
+            "contentSha256": "81945b6a4ca05a9ad8f9d93eceba12c9b957e41842c662ecc1a2a1113fd67d77",
+            "receiptBindingSha256": "a913e0bafc281660317864ac6fbf166c8f1002ca59525a1100ef64cbeced548c",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRFD634BW/pureflat-french-door-dark-steel-634l",
+            "contentSha256": "81945b6a4ca05a9ad8f9d93eceba12c9b957e41842c662ecc1a2a1113fd67d77",
+            "receiptBindingSha256": "a913e0bafc281660317864ac6fbf166c8f1002ca59525a1100ef64cbeced548c",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "81945b6a4ca05a9ad8f9d93eceba12c9b957e41842c662ecc1a2a1113fd67d77"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_f8259b57fbeaf925ef6595c5",
       "referenceId": "fa_ref_2d93ac8f6476007052a6cc88",
       "legacyRuntimeId": "ao-50911",
@@ -43216,6 +46643,453 @@
       }
     },
     {
+      "targetId": "recovery_target_febed644196de24737ec7447",
+      "referenceId": "fa_ref_45c31380fcf2ecfad8feac5b",
+      "legacyRuntimeId": "fridge-arf2845",
+      "canonicalProductId": "fa_prod_eac5dd27d5de5016566f43c1",
+      "brand": "Hisense",
+      "model": "HRCF144",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://hisense.com.au/product/HRCF144/chest-freezer-145l",
+          "finalUrl": "https://hisense.com.au/product/HRCF144/chest-freezer-145l",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:00:50.939Z",
+          "contentSha256": "85e439ea121938bc891c1f9bafed7dc8ee76ee51c5dde7985c69b45f19421987",
+          "objectPath": "evidence/web/sha256/85/e4/85e439ea121938bc891c1f9bafed7dc8ee76ee51c5dde7985c69b45f19421987.html",
+          "contentType": "text/html",
+          "byteSize": 374727,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRCF144",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 625
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 854
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 559
+              },
+              "sourceLabel": "Product Dimensions (W*H*D) Unit: mm",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://hisense.com.au/product/HRCF144/chest-freezer-145l"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "HRCF144"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:00:50.939Z",
+            "bindingSha256": "67e0b6be63e33b0d1d087d03de4c7fbb377ec5e0f1aed3b9eb4a81f43beb8b95"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 625,
+            "heightMm": {
+              "minimumMm": 854,
+              "maximumMm": 854
+            },
+            "depthMm": 559
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF144/chest-freezer-145l",
+            "contentSha256": "85e439ea121938bc891c1f9bafed7dc8ee76ee51c5dde7985c69b45f19421987",
+            "receiptBindingSha256": "67e0b6be63e33b0d1d087d03de4c7fbb377ec5e0f1aed3b9eb4a81f43beb8b95",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF144/chest-freezer-145l",
+            "contentSha256": "85e439ea121938bc891c1f9bafed7dc8ee76ee51c5dde7985c69b45f19421987",
+            "receiptBindingSha256": "67e0b6be63e33b0d1d087d03de4c7fbb377ec5e0f1aed3b9eb4a81f43beb8b95",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://hisense.com.au/product/HRCF144/chest-freezer-145l",
+            "contentSha256": "85e439ea121938bc891c1f9bafed7dc8ee76ee51c5dde7985c69b45f19421987",
+            "receiptBindingSha256": "67e0b6be63e33b0d1d087d03de4c7fbb377ec5e0f1aed3b9eb4a81f43beb8b95",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "85e439ea121938bc891c1f9bafed7dc8ee76ee51c5dde7985c69b45f19421987"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_ff2a7ec908dd16cfd3730fee",
+      "referenceId": "fa_ref_ddfd483f90bc3bb1f63d68dd",
+      "legacyRuntimeId": "fridge-arf3237",
+      "canonicalProductId": "fa_prod_2d208116f154e4073f606851",
+      "brand": "Hisense",
+      "model": "HRBC140",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-8a05eebceb8ffab6dcc7063c",
+      "auditSha256": "9666687c65eeaff63708ea4b4246eba570c0e0ac969a3f8fad00035263cf1e75",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
+          "finalUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T01:46:53.740Z",
+          "contentSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
+          "objectPath": "evidence/web/sha256/11/94/11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 204368,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Hisense",
+            "model": "HRBC140",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Width (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 1,
+              "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c",
+              "bbox": [
+                136,
+                815,
+                650,
+                921
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 862
+              },
+              "sourceLabel": "Height (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 1,
+              "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c",
+              "bbox": [
+                136,
+                815,
+                650,
+                921
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 647
+              },
+              "sourceLabel": "Depth (Net With handle dimensions)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": 1,
+              "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c",
+              "bbox": [
+                136,
+                815,
+                650,
+                921
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
+            "contentSha256": "7eaf80802a8dc6416c249a0def0011926875fe8e217b04117bd00f74c9ae244b",
+            "objectPath": "evidence/derived/mineru-json/sha256/7e/af/7eaf80802a8dc6416c249a0def0011926875fe8e217b04117bd00f74c9ae244b.json",
+            "byteSize": 19807,
+            "pageCount": 1
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "HRBC140:page:1:d967f14808c01a6602cb5b72102a5c122e6d3c419e1faa9ffbfe2bdc040c8263"
+            },
+            {
+              "type": "mineru_hisense_exact_spec_document_url",
+              "value": "HRBC140:https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5"
+            },
+            {
+              "type": "mineru_hisense_exact_spec_identity",
+              "value": "HRBC140:d967f14808c01a6602cb5b72102a5c122e6d3c419e1faa9ffbfe2bdc040c8263"
+            },
+            {
+              "type": "mineru_hisense_legacy_net_box_dimensions",
+              "value": "HRBC140:page:1:a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "HRBC140:https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-16T01:46:53.740Z",
+            "bindingSha256": "8c61adb3858814da3b67c5e46e95fe32d8cf042cd5fe36af6c1b68a81b0dfef9"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 862,
+              "maximumMm": 862
+            },
+            "depthMm": 647
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
+            "contentSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
+            "receiptBindingSha256": "8c61adb3858814da3b67c5e46e95fe32d8cf042cd5fe36af6c1b68a81b0dfef9",
+            "page": 1,
+            "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
+            "contentSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
+            "receiptBindingSha256": "8c61adb3858814da3b67c5e46e95fe32d8cf042cd5fe36af6c1b68a81b0dfef9",
+            "page": 1,
+            "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
+            "contentSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
+            "receiptBindingSha256": "8c61adb3858814da3b67c5e46e95fe32d8cf042cd5fe36af6c1b68a81b0dfef9",
+            "page": 1,
+            "fragmentSha256": "a719477fb468d58aef6ef4e979be05f49be6ca073d466a317c5050c231208d8c"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "registry_hint",
+            "sourceId": "energy-rating:fridge",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 595,
+              "heightMm": 862,
+              "depthMm": 600
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_scoped_depth_over_registry_hint",
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_ffb69939957753f902774ff0",
       "referenceId": "fa_ref_d08c8849ae04f3afe954c184",
       "legacyRuntimeId": "ao-56912",
@@ -43564,6 +47438,20 @@
       "auditSha256": "2ac8d204a8e5369eb8fcb9aab988a75a74b75b263e786de7b1c95e031cf70ea7"
     },
     {
+      "batchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-132b8fad694b",
+      "batchSha256": "11a03e906bb937c20538860d6d932e62c9fa95f64b44ec4b10cf4edaf9ff8146",
+      "queueSha256": "73eff2f4b9584fec82d78d3057b753b0ce39ee8cfb32ef5b7f3e6730168a40e0",
+      "resultsSha256": "75b1213fb4de5ad027017596a88eb8b671dfb27cdb15aca2b1ed3032d7e81b3d",
+      "auditSha256": "54996d8e1caef58599d09acc71aafac4b3bd21fe7ffdaf89b93f801a9a3f7d24"
+    },
+    {
+      "batchId": "historical-recovery-35f95533da61f2f02ca8f6ec-slice-4968df08919c",
+      "batchSha256": "3550c8beac93225a457c94b833e672cecea2c8e3f1217318bf6f9359032892e4",
+      "queueSha256": "73eff2f4b9584fec82d78d3057b753b0ce39ee8cfb32ef5b7f3e6730168a40e0",
+      "resultsSha256": "c5a8819e736f5b153dc077b2b139a8171b3bba4993b2e157073d6509d29fee96",
+      "auditSha256": "4a181083b61cb8b5c1f954784ebefbc14c4e68d262a80c176551393b2200347b"
+    },
+    {
       "batchId": "historical-recovery-3cc0c9d39e8a118ae157ff06-slice-ff059305b872",
       "batchSha256": "d10b001caed09df0a1a5a7d99ae1737eeca7fb925af40333669dfb3e70f9fe7f",
       "queueSha256": "45695b43f4e2e6ff8ef46a8fbcf88f31938fcabd9ebf473c4661151ed0c98e27",
@@ -43653,6 +47541,13 @@
       "queueSha256": "9d2e9db7b4564a372f7f97301d3fc46e6c200da0772cfb4735095f3d4ba34680",
       "resultsSha256": "b4b4479cbad7d8224b7e2182f736cdaad30c5440c3f2342afbd7595c8846b058",
       "auditSha256": "277e0317c56893a2221520f45ec4f846d474f0023b26e10d364d7b64a44d5bf6"
+    },
+    {
+      "batchId": "historical-recovery-8a05eebceb8ffab6dcc7063c",
+      "batchSha256": "de43d8d55eaef487ba1eb8278090895853bc0e09ad12ced42d15a37b92c07c57",
+      "queueSha256": "f6442a9046b2142e344dcefb5becc4100ecabf5c29ac229ae8980f50a050cce0",
+      "resultsSha256": "e911bd1fb0d5de42319261a65727ab22321f4d5dda4855df401aa655e294ee6f",
+      "auditSha256": "9666687c65eeaff63708ea4b4246eba570c0e0ac969a3f8fad00035263cf1e75"
     },
     {
       "batchId": "historical-recovery-8a9672e3ed091460805add80-slice-1770b588d7a0",

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T00:50:34.223Z",
-  "semanticQueueSha256": "4e583aaaa0b5a129d8bb9b545a2fa27f6126afb5efbfa43c48b95a9ede1480d0",
-  "sourceClassificationSha256": "b830a17abacf7c491ba2265b63747a4bdfda3a79a2587c80e74dc835f8f0e339",
+  "generatedAt": "2026-07-16T01:51:22.474Z",
+  "semanticQueueSha256": "1a17296fbaf89c4dee8be1cb9735676ae9134bd6da6e862fac8e0bada3373af4",
+  "sourceClassificationSha256": "b87ed27c85c5c83c564cb4682ea47c7feb775eddb15f4f6652adc1ed7068a36e",
   "records": [
     {
       "schemaVersion": 1,
@@ -23337,37 +23337,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_b3f5c50f47933965369ab1b3"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_5394f8b9b7835a2f329e222d",
-      "referenceId": "fa_ref_a6ce7d6da8c03860f80e9554",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRVF240",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "model_specific",
-      "groupName": "HRVF240",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_9ef570459d133675f2374ed6"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_0559733e484d45dbaa45b81f"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2946"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_340d22f84c74f0acb3b07b17"
       ],
       "offlineReplayOutcome": null
     },
@@ -60481,130 +60450,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f45b3ee03583b11b7f5f1c0b",
-      "referenceId": "fa_ref_ddfd483f90bc3bb1f63d68dd",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRBC140",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRBC140",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_c899a52e997fbf759d811f56"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_ff2a7ec908dd16cfd3730fee"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3237"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_2d208116f154e4073f606851"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_23ff9388f0485d11db45a3ea",
-      "referenceId": "fa_ref_8af779f194238702757f10fa",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRBF125",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRBF125",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_a09c0c7339018fe6f1712a7b"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_78ab89ac26fd4170af35366b"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2793"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_5651b0a9f7167978b945a154"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_edf5e65a2c8fb47ba2cfa8ef",
-      "referenceId": "fa_ref_cd8df7c7abb3301cea66c9d7",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRBF179B",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRBF179B",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ae84e497d5207cf81c46d29a"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_3f4aff3df1d907a481afbc36"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2734"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_07c5125ce35673f7d06fb201"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3e073e00b36530af707d8f6a",
-      "referenceId": "fa_ref_c540a956ee574610850b7567",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRBM417C",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRBM417C",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_1b189589ea78d0d39eaf488b"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_cd6a731478fc9a9763a249c4"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2650"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_a91acccf34bd7edc7f61134f"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_7ab55f530f7afc033fad298c",
       "referenceId": "fa_ref_7b74ab39141d6d754ed55be4",
       "category": "fridge",
@@ -60631,130 +60476,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_477e7cb4aa13048f4eab9cc6"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d9fff66b59ed766aa82ae86a",
-      "referenceId": "fa_ref_92e0fb04cedc250ae2ee2f14",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD454BW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCD454BW",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_88d366b1c4aa6c0dfa964ab1"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_288621fe7e39f4e8d7ef9cff"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2635"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_50868b5552a1fc7ac0df0f2c"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_1b9884c513876d032a979b9c",
-      "referenceId": "fa_ref_1007383838c55161f7d2bc37",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD483TBW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCD483TBW",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_71de552926098c0e6295c82b"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e9736486c9dda34e4a4b1082"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3199"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6c023e78c7b16a10d8653a7e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_da105ee9014b7fecaea1edcc",
-      "referenceId": "fa_ref_20240ff4053c000edbb5dfb0",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD585BWB",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCD585BWB",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_c3c4024c3168506c6f846de7"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_990b53da26472cb0b6d689dd"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2871"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6f2c10c99eb0171bbaee4ad7"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d911b93f10ef3592a7e806ef",
-      "referenceId": "fa_ref_af8c2d9b071081cb6f109e3d",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD586TBWB",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCD586TBWB",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ef63b82f9c980e137afa958f"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c481a71f3bc936ee49898221"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3162"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_7b343fd329aff22dcd02c85e"
       ],
       "offlineReplayOutcome": null
     },
@@ -60817,192 +60538,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_154f8b88ceee54f24d13e5c6"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a590ebbf67c6692959d1a4fa",
-      "referenceId": "fa_ref_45c31380fcf2ecfad8feac5b",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF144",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCF144",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_c3de2b81ab04ef6f6f115d1b"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_febed644196de24737ec7447"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2845"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_eac5dd27d5de5016566f43c1"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f1ef174fe0147314edf9bb98",
-      "referenceId": "fa_ref_186b07f656753e473f00fc23",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF199",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCF199",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_b6738b409bda1f594cdee845"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_1b5062c9517dd3f7d50f7400"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2844"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_53d5d6072b19023ebc44daa8"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a30284797181651b5f8e5d7d",
-      "referenceId": "fa_ref_ec0dc31aec66ad48372e6000",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF297",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCF297",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_6f080dad7033d4cb589232ec"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a76887cdab49b0e267ef7447"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2843"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_655388ea1240a00c183237af"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_8b056ccde8870fe4b7d525a2",
-      "referenceId": "fa_ref_78d4fc27221035811883a51c",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF300",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCF300",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8de1f1779bf8124c030180ee"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_821b4cf1def899be41f812c1"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2348"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_68fe1bb650cccadae2b6001c"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_bb4ff534ae320ca48ecf9fca",
-      "referenceId": "fa_ref_9fcf4a23ebba51201847a634",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF500",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRCF500",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8765c063779707ab6515d720"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_4cffb47a334b277b5963731c"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2839"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_475939e8ae09e68fb3898ffd"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_21408a6cb29b944ea8f24dfe",
-      "referenceId": "fa_ref_0dd7df103229ad7727cd7a55",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRFD634BW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "model_specific",
-      "groupName": "HRFD634BW",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_83545a0ea69091ad440bacb9"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_f707686e8148716a51d35920"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3116"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b446d54ce92f3b94ff73e616"
       ],
       "offlineReplayOutcome": null
     },
@@ -61096,37 +60631,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_0c2677c6fb29f1f03b8b9fc4"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3e9dd324ae4eebc60d8665d6",
-      "referenceId": "fa_ref_ae05134bb1eaf3c0b5f8c9a6",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRBM418S",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_acb29548dd6fa355702416d0"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_2e4c5abb8feb90a0e5da61db"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3435"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_01cc5f01e112b37dbec98a6b"
       ],
       "offlineReplayOutcome": null
     },
@@ -61318,37 +60822,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_37b614c7ffb373eb09f648a4",
-      "referenceId": "fa_ref_400c55d0b2eba10373b521ae",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF439",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_568fabd6a32338be01090e35"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_bc47b8ee09bb51e2a16c297c"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3558"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b7301474779113f2e5bee1ce"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_46dcaaba44e13fe10c4a36a2",
       "referenceId": "fa_ref_dbc0bc1a79cba52e583f72f5",
       "category": "fridge",
@@ -61380,37 +60853,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_bb05387d463b7c2e897c5992",
-      "referenceId": "fa_ref_3387664f1c430e7fb57d9967",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF702",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_eac4b8ae7e7530d8e41b41f4"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_9dbd1ed2d124c09199f3a802"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3539"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b72e5c2bc48d49082f3ed2ce"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_bd3086dff64d5f0828cbed67",
       "referenceId": "fa_ref_81e02f58dc44dfa5293c5c10",
       "category": "fridge",
@@ -61437,37 +60879,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_d46f27f7255fa2e105ff702b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_b86c3c8d71bd936276a496d1",
-      "referenceId": "fa_ref_17033117dd8dab27a7ed952e",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRTF497SW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_f96902bad0e838aa",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d108e7c55cb3425750c80043"
-      ],
-      "resolverIds": [
-        "hisense-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_1de1b2062f99a004665951ca"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf3563"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_2c33667f31c83b3e3e3f272a"
       ],
       "offlineReplayOutcome": null
     },
@@ -198356,19 +197767,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_1b189589ea78d0d39eaf488b",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBM417C-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2ODcyNXxhcHBsaWNhdGlvbi9wZGZ8YUdRMUwyZzRZUzg0T0RBME1UQXhNekkwT0RNd0wwaFNRazAwTVRkRExWTndaV011Y0dSbXxjYmM4ZDhiYmE5ZjU5ZjNiM2JiNWMwOTM0ZmU5OGU1N2M4MzUxNTM5MWNkMjQ5MjIwZGYxODI3YmI5ZGE4ZGYz",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRBM417C.json",
-        "source:doc_c845e74c403f3fdd3db7ac24"
-      ],
-      "referenceIds": [
-        "fa_ref_c540a956ee574610850b7567"
-      ]
-    },
-    {
       "sourceId": "historical_source_1b19eaea97b0c7dbc94eb9c4",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/4/2/0/6/4206a7de2467870300455c898c1e50763644ca12_Beko_WMA8168LB1_8kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -203033,19 +202431,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_568fabd6a32338be01090e35",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF439-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0NzA0NnxhcHBsaWNhdGlvbi9wZGZ8YUdVMEwyZ3hOaTg0T0RFNU1UY3hPREU1TlRVd0wwaFNRMFkwTXprdFUzQmxZeTV3WkdZfDBhMGIwNTVmMWQxYjdkNTMyNjRiOTcwZTJjOTI5ZjJjZmZlYTg4MmM2OTg5MWNjYzMyZmFlNzcxZjJiNzgxNzU",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCF439.json",
-        "source:doc_29a0c9fcd63775dfce1bfd4b"
-      ],
-      "referenceIds": [
-        "fa_ref_400c55d0b2eba10373b521ae"
-      ]
-    },
-    {
       "sourceId": "historical_source_56a01411763796b17334d339",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/b/f/6/abf6cd45679c89545df8968db56a99e337eeea5b_Beko_DN151130X_510L_Top_Mount_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -205224,19 +204609,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_6f080dad7033d4cb589232ec",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF297-Spec-0105update.pdf?context=bWFzdGVyfG1hbnVhbHwxOTEzODh8YXBwbGljYXRpb24vcGRmfGFHVTBMMmhsTUM4NE9ERTBNalEyTlRreU5UUXlMMGhTUTBZeU9UY3RVM0JsWXkwd01UQTFkWEJrWVhSbExuQmtaZ3xkMTE1ZjZjNDU2Mzg5NGRhMjVhOTI5OGUxOGMzOTI0ZjQzYTcyMWU1Mzc1YzdmOTY2OTcxZDY3ZDA4YTEwNTA1",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCF297.json",
-        "source:doc_05f68a51c39b7328a913cbff"
-      ],
-      "referenceIds": [
-        "fa_ref_ec0dc31aec66ad48372e6000"
-      ]
-    },
-    {
       "sourceId": "historical_source_6f68d91636d79ad6d96654a7",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/e/7/2/f/e72f0957eb92244ac873f165c32985646a4f8d31_Samsung_WW75K5210WW_AddWash_7.5_kg_Front_Load_Washing_Machine_User_Manual.pdf",
       "sourceAuthority": "REFERENCE",
@@ -205402,19 +204774,6 @@
       ],
       "referenceIds": [
         "fa_ref_e834f5ee04a195a69b927b9f"
-      ]
-    },
-    {
-      "sourceId": "historical_source_71de552926098c0e6295c82b",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD483TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMDIwMDR8YXBwbGljYXRpb24vcGRmfGFEQTJMMmd4Tnk4NE9EQTBNVEF5TmpBeU56Z3lMMGhTUTBRME9ETlVRbGN0VTNCbFl5NXdaR1l8NTNhY2MyMTk4MDBjZjY3NTdhNWVjY2ZhZDRhMGQzMTQ0NmY3MDgwMTA2NGQ3MGE1N2NjYzNiM2EzNGQyYmFjZg",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCD483TBW.json",
-        "source:doc_7b8e8d783cf92e8e745bf2ac"
-      ],
-      "referenceIds": [
-        "fa_ref_1007383838c55161f7d2bc37"
       ]
     },
     {
@@ -206881,19 +206240,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_83545a0ea69091ad440bacb9",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRFD634BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTg4OHxhcHBsaWNhdGlvbi9wZGZ8YUdFMEwyZzNPQzg0T0RBME1Ea3pOalUzTVRFNEwwaFNSa1EyTXpSQ1Z5MVRjR1ZqTG5Ca1pnfGNiMjc4YTBkZjllZmVmM2QxMzU3NmYzZDc3YWNkY2I1ZWQ3MDFiNzEyZmY2Mzc1MDI1YWZjOTMxMjg0NGRhZTU",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRFD634BW.json",
-        "source:doc_d29954c8f8c6835bd5ebeeac"
-      ],
-      "referenceIds": [
-        "fa_ref_0dd7df103229ad7727cd7a55"
-      ]
-    },
-    {
       "sourceId": "historical_source_8369c28753f737395183c510",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/2/0/8/a2087679f7aad47733ccaee9c96b9fefff9525b4_LG_GS_B680PL_687L_Side_by_Side_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -207307,19 +206653,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_8765c063779707ab6515d720",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF500-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTQzMTF8YXBwbGljYXRpb24vcGRmfGFHRmtMMmc0TWk4NE9EQTBNRGs0TkRReE1qUTJMMGhTUTBZMU1EQXRVM0JsWXk1d1pHWXw5YzQ0NjRiNzRhOWJjZTIyNDQzNmIxN2VkOTQ1OTBmMmJmMDcyODRkMjgxMjlkNmY3M2E3OTEzNTVhYTc5NzZh",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCF500.json",
-        "source:doc_cf9fb3ff25c1993e066094a3"
-      ],
-      "referenceIds": [
-        "fa_ref_9fcf4a23ebba51201847a634"
-      ]
-    },
-    {
       "sourceId": "historical_source_877cc581e7942165bae0f631",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/f/9/e/2/f9e29b60311dd8619eefa1f6fd1da55a5d009b6b_Smeg_SAHP86_8kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -207420,19 +206753,6 @@
       ],
       "referenceIds": [
         "fa_ref_84a73493fdc336aa28ea7463"
-      ]
-    },
-    {
-      "sourceId": "historical_source_88d366b1c4aa6c0dfa964ab1",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD454BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDcwNTh8YXBwbGljYXRpb24vcGRmfGFEazJMMmhrT0M4NE9EQTBNVEE1T1RjMU5UZ3lMMGhTUTBRME5UUkNWeTFUY0dWakxuQmtaZ3xiMjVkNWE0YjkxNWMyNWZlNTg0NTcxMDliNzViYWY5OGViYjM0YjQ2MWJkMGMzNzk2MWZjODdjYWY1YTUyYjFi",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCD454BW.json",
-        "source:doc_7f2c7e53feb7a638512434dc"
-      ],
-      "referenceIds": [
-        "fa_ref_92e0fb04cedc250ae2ee2f14"
       ]
     },
     {
@@ -207952,19 +207272,6 @@
       ],
       "referenceIds": [
         "fa_ref_ad3518ea28d30ebac8769833"
-      ]
-    },
-    {
-      "sourceId": "historical_source_8de1f1779bf8124c030180ee",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCF300.json",
-        "source:doc_b8fffa8454d59b02d4c9844f"
-      ],
-      "referenceIds": [
-        "fa_ref_78d4fc27221035811883a51c"
       ]
     },
     {
@@ -209256,19 +208563,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_9ef570459d133675f2374ed6",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRVF240-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2MjQ4OXxhcHBsaWNhdGlvbi9wZGZ8YUdKaUwyZzBaaTg0T0RBME1URXhOamM1TlRFNEwwaFNWa1l5TkRBdFUzQmxZeTV3WkdZfGU2MmY1MjQ4NzM5YTE3Y2FiMDcwYzNhYTc5OTBjYjE0OTVhNTA3MjhmOGIzNTYxNDRiMzRlOTE5NDg3OTFlNzc",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRVF240.json",
-        "source:doc_0e0d03172e020fa19aa3968b"
-      ],
-      "referenceIds": [
-        "fa_ref_a6ce7d6da8c03860f80e9554"
-      ]
-    },
-    {
       "sourceId": "historical_source_9f6649b665076dd0237741ec",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/9/e/3/99e3186cc76bb2c6777969f545171bcf21f710db_SRF630BFH2_Sampford_IXL_User_Manual.pdf",
       "sourceAuthority": "REFERENCE",
@@ -209406,19 +208700,6 @@
       ],
       "referenceIds": [
         "fa_ref_b44ef3fb4bb633701f45d629"
-      ]
-    },
-    {
-      "sourceId": "historical_source_a09c0c7339018fe6f1712a7b",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBF125-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjU1ODh8YXBwbGljYXRpb24vcGRmfGFHSTRMMmd3WXk4NE9EQTBNVEEzTkRFNU5qYzRMMGhTUWtZeE1qVXRVM0JsWXk1d1pHWXwxMWIxOGE4YjA5ZGZkNjQ5MGE2YmNlYzcyZGRjNTkyYmYyM2NjY2JhZDhhMDkwNmU2ZDZkMDQzZjk4ZjNkZDc2",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRBF125.json",
-        "source:doc_cd5a610c4a297a762c92c7b8"
-      ],
-      "referenceIds": [
-        "fa_ref_8af779f194238702757f10fa"
       ]
     },
     {
@@ -210189,19 +209470,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_acb29548dd6fa355702416d0",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBM418S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0OTY5NjJ8YXBwbGljYXRpb24vcGRmfGFHVXpMMmhsTVM4NE9EQTBNRGswTmpBM016a3dMMGhTUWswME1UaFRMVk53WldNdWNHUm18MjUzZjE0NjQwNGViNjkzMzMxYTZiYWViMzQ3NjkxZTBiMzI0NzllOGQyMWQyZDA2YjQ2NmI4NmE4YzFjZGFiNA",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRBM418S.json",
-        "source:doc_61a91b8f3b595e385ab62fdb"
-      ],
-      "referenceIds": [
-        "fa_ref_ae05134bb1eaf3c0b5f8c9a6"
-      ]
-    },
-    {
       "sourceId": "historical_source_ace31d185b42d6e24a97e7bd",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/d/7/8/4/d78447af4cf0f5d602f1b16ae54796f4b4731c3c_DWA615DB3_Smeg_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -210367,19 +209635,6 @@
       ],
       "referenceIds": [
         "fa_ref_61c56b941f00f29713cde015"
-      ]
-    },
-    {
-      "sourceId": "historical_source_ae84e497d5207cf81c46d29a",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBF179B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzI1NTl8YXBwbGljYXRpb24vcGRmfGFHSmpMMmhqTVM4NE9EQTBNRGsxTWpJNU9UZ3lMMGhTUWtZeE56bENMVk53WldNdWNHUm18Njc3YzdlOWU0MjUzNGMzNDU2NmIzOTFjYTMxMmUyNDIxYWU3Nzc5ZjUyODRkYTBjNWRhNjlkZjA2ZTVhMWE1OA",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRBF179B.json",
-        "source:doc_269c007ca96abc364663ccc2"
-      ],
-      "referenceIds": [
-        "fa_ref_cd8df7c7abb3301cea66c9d7"
       ]
     },
     {
@@ -211037,19 +210292,6 @@
       ],
       "referenceIds": [
         "fa_ref_b38f032201128c5580db1c9b"
-      ]
-    },
-    {
-      "sourceId": "historical_source_b6738b409bda1f594cdee845",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF199-Spec-0105update.pdf?context=bWFzdGVyfG1hbnVhbHwxNzc0NzF8YXBwbGljYXRpb24vcGRmfGFHRTFMMmhsTVM4NE9ERTBNalEyTlRJM01EQTJMMGhTUTBZeE9Ua3RVM0JsWXkwd01UQTFkWEJrWVhSbExuQmtaZ3xjMTZiODNiOTIwMTdiMGNiZjBjOWJkZWJiYmMxMjVkZTNlMThiM2QwZjFhNjkzOTE0Y2EzNmEyYzg1NTE2ZWJk",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCF199.json",
-        "source:doc_bd5e0518f1e24a8711dc7fa1"
-      ],
-      "referenceIds": [
-        "fa_ref_186b07f656753e473f00fc23"
       ]
     },
     {
@@ -212155,19 +211397,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_c3c4024c3168506c6f846de7",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCD585BWB.json",
-        "source:doc_05819fb772392eb34bac9699"
-      ],
-      "referenceIds": [
-        "fa_ref_20240ff4053c000edbb5dfb0"
-      ]
-    },
-    {
       "sourceId": "historical_source_c3cbba2d5c64afad0ff00fb1",
       "sourceUrl": "https://media.miele.com/downloads/n-/ce/FS_11738290_OVE_OV-en-CE.pdf",
       "sourceAuthority": "NONE",
@@ -212204,19 +211433,6 @@
       ],
       "referenceIds": [
         "fa_ref_63bda39bd4744a4c300d76a9"
-      ]
-    },
-    {
-      "sourceId": "historical_source_c3de2b81ab04ef6f6f115d1b",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF144-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODMwNDd8YXBwbGljYXRpb24vcGRmfGFHVTJMMmhrWmk4NE9EQTBNVEExTkRVek5UazRMMGhTUTBZeE5EUXRVM0JsWXk1d1pHWXw3YTA5MzZhNzU5NzM5OGZmODhlZWJiOWQyYTJhYzUwOWZhNzZlMmQzNDQ2NzIxNGQ5YTMwMDAwYmExM2Y2YTQ2",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCF144.json",
-        "source:doc_ba335e24841de731cd468752"
-      ],
-      "referenceIds": [
-        "fa_ref_45c31380fcf2ecfad8feac5b"
       ]
     },
     {
@@ -212490,19 +211706,6 @@
       ],
       "referenceIds": [
         "fa_ref_2e5a6fd65d68ea8c19e2c373"
-      ]
-    },
-    {
-      "sourceId": "historical_source_c899a52e997fbf759d811f56",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRBC140.json",
-        "source:doc_d963b5a8bc6705ea8d5a6e7f"
-      ],
-      "referenceIds": [
-        "fa_ref_ddfd483f90bc3bb1f63d68dd"
       ]
     },
     {
@@ -213208,19 +212411,6 @@
       ],
       "referenceIds": [
         "fa_ref_c06a536b0f61653013aebb5f"
-      ]
-    },
-    {
-      "sourceId": "historical_source_d108e7c55cb3425750c80043",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRTF497SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw1MzA2NDF8YXBwbGljYXRpb24vcGRmfGFEVmlMMmcxWmk4NE9ETXpPREV5TXpNeU5UYzBMMGhTVkVZME9UZFRWeTFUY0dWakxuQmtaZ3w1MDdiNDMyYjRhNTkyMjkyNDY3ZjBmMzU2NTRjMjQzMjkwYWMxN2RlOTY3MmE5MmM0ZmExOTYzYWYyMzZlNWNl",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRTF497SW.json",
-        "source:doc_7ae0ebb7b7cf4436afd06be1"
-      ],
-      "referenceIds": [
-        "fa_ref_17033117dd8dab27a7ed952e"
       ]
     },
     {
@@ -215201,19 +214391,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_eac4b8ae7e7530d8e41b41f4",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCF702.json",
-        "source:doc_9974d79134a43002e9f97538"
-      ],
-      "referenceIds": [
-        "fa_ref_3387664f1c430e7fb57d9967"
-      ]
-    },
-    {
       "sourceId": "historical_source_ead1b772642ccf2e0cd2e2c4",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/3/7/7/5377baf067172c5d6a954cd5f518b294fa4e1e8a_Bosch_WAP28380AU_8kg_Front_Load_Washing_Machine_User_Manual.pdf",
       "sourceAuthority": "REFERENCE",
@@ -215497,19 +214674,6 @@
       ],
       "referenceIds": [
         "fa_ref_9348767de68293e8b5262547"
-      ]
-    },
-    {
-      "sourceId": "historical_source_ef63b82f9c980e137afa958f",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD586TBWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw1MjcxNnxhcHBsaWNhdGlvbi9wZGZ8YURWbUwyZ3daaTg0T0RBME1UQTNNemcyT1RFd0wwaFNRMFExT0RaVVFsZENMVk53WldNdWNHUm18NzQ0NDA1YzQ2YzQ4MmRiNGNkY2RhMTcxMDgyZjA3N2EyNmYxZGIzNTE4ZjkwMDdjODM5OTNjNTg3Yjk1YmQ4MQ",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HRCD586TBWB.json",
-        "source:doc_061436fd9215521f1180cf8c"
-      ],
-      "referenceIds": [
-        "fa_ref_af8c2d9b071081cb6f109e3d"
       ]
     },
     {
@@ -216655,46 +215819,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 186,
+    "COMPLETE_RECEIPT": 205,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7909,
-    "uniqueReferences": 7909,
-    "candidateSources": 1568,
-    "candidateEdges": 1603,
+    "queuedModels": 7890,
+    "uniqueReferences": 7890,
+    "candidateSources": 1549,
+    "candidateEdges": 1584,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2094,
-      "CURRENT_RETAIL": 1252,
+      "CATALOG_ARCHIVED": 2076,
+      "CURRENT_RETAIL": 1251,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1370,
       "dryer": 815,
-      "fridge": 4255,
+      "fridge": 4236,
       "washing_machine": 1469
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 182,
-      "OFFICIAL_DISCOVERY": 6419,
+      "IDENTITY_RESEARCH": 165,
+      "OFFICIAL_DISCOVERY": 6417,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 182,
-      "OFFICIAL_DISCOVERY": 6419,
+      "IDENTITY_CLOSURE": 165,
+      "OFFICIAL_DISCOVERY": 6417,
       "OFFICIAL_REDISCOVERY": 1225
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5244,
+      "DISCOVERY_READY": 5225,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 186,
+      "COMPLETE_RECEIPT": 205,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

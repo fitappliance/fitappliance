@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-35f95533da61f2f02ca8f6ec",
-  "generatedAt": "2026-07-16T00:50:34.223Z",
+  "batchId": "historical-recovery-7e4ba09735a4ce76c9bf4dbc",
+  "generatedAt": "2026-07-16T01:51:22.474Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "73eff2f4b9584fec82d78d3057b753b0ce39ee8cfb32ef5b7f3e6730168a40e0"
+    "sha256": "d85262fb27ef8fa4fbf187fe44413521c29f78ca46488989c6735550a638f184"
   },
   "policy": {
-    "version": "2026-07-16.5",
-    "sha256": "9f655739c358d44d84b0411eb36a10e0a3c64f02fd7ff6396b01ee21b1de6c7b"
+    "version": "2026-07-16.6",
+    "sha256": "4a4be4707385d0dba6d618f6c7ef1dd2949dbf83871bad57fd8d12d81868d469"
   },
   "selection": {
     "jobIds": [],
@@ -52561,38 +52561,6 @@
       }
     },
     {
-      "targetId": "recovery_target_821b4cf1def899be41f812c1",
-      "referenceId": "fa_ref_78d4fc27221035811883a51c",
-      "legacyRuntimeId": "fridge-arf2348",
-      "canonicalProductId": "fa_prod_68fe1bb650cccadae2b6001c",
-      "brand": "Hisense",
-      "model": "HRCF300",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_b8fffa8454d59b02d4c9844f",
-            "dimensionsMm": {
-              "width": 1114,
-              "height": 847,
-              "depth": 630
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_d9664656a976b75831e6f3d1",
       "referenceId": "fa_ref_51890274a8cb6ee3782fbe2a",
       "legacyRuntimeId": "fridge-arf2390",
@@ -83398,48 +83366,6 @@
               "width": 550,
               "height": 1456,
               "depth": 562
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_0559733e484d45dbaa45b81f",
-      "referenceId": "fa_ref_a6ce7d6da8c03860f80e9554",
-      "legacyRuntimeId": "fridge-arf2946",
-      "canonicalProductId": "fa_prod_340d22f84c74f0acb3b07b17",
-      "brand": "Hisense",
-      "model": "HRVF240",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 1720,
-              "depth": 590
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_0e0d03172e020fa19aa3968b",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 1720,
-              "depth": 590
             }
           }
         ]
@@ -158538,48 +158464,6 @@
       }
     },
     {
-      "targetId": "recovery_target_ff2a7ec908dd16cfd3730fee",
-      "referenceId": "fa_ref_ddfd483f90bc3bb1f63d68dd",
-      "legacyRuntimeId": "fridge-arf3237",
-      "canonicalProductId": "fa_prod_2d208116f154e4073f606851",
-      "brand": "Hisense",
-      "model": "HRBC140",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 862,
-              "depth": 600
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_d963b5a8bc6705ea8d5a6e7f",
-            "dimensionsMm": {
-              "width": 595,
-              "height": 862,
-              "depth": 647
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_5d517f9c6e59086d4b9afc3d",
       "referenceId": "fa_ref_47bf99a094be2b80e5a8fe37",
       "legacyRuntimeId": "historical-fa_ref_47bf99a094be2b80e5a8fe37",
@@ -158709,48 +158593,6 @@
           }
         ],
         "legacyHints": []
-      }
-    },
-    {
-      "targetId": "recovery_target_78ab89ac26fd4170af35366b",
-      "referenceId": "fa_ref_8af779f194238702757f10fa",
-      "legacyRuntimeId": "fridge-arf2793",
-      "canonicalProductId": "fa_prod_5651b0a9f7167978b945a154",
-      "brand": "Hisense",
-      "model": "HRBF125",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 475,
-              "height": 840,
-              "depth": 556
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_cd5a610c4a297a762c92c7b8",
-            "dimensionsMm": {
-              "width": 475,
-              "height": 840,
-              "depth": 556
-            }
-          }
-        ]
       }
     },
     {
@@ -158985,48 +158827,6 @@
       }
     },
     {
-      "targetId": "recovery_target_3f4aff3df1d907a481afbc36",
-      "referenceId": "fa_ref_cd8df7c7abb3301cea66c9d7",
-      "legacyRuntimeId": "fridge-arf2734",
-      "canonicalProductId": "fa_prod_07c5125ce35673f7d06fb201",
-      "brand": "Hisense",
-      "model": "HRBF179B",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 515,
-              "height": 1229,
-              "depth": 514
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_269c007ca96abc364663ccc2",
-            "dimensionsMm": {
-              "width": 515,
-              "height": 1229,
-              "depth": 514
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_9ea41d26cb01d20b6a449821",
       "referenceId": "fa_ref_248242a199a603ac82da3605",
       "legacyRuntimeId": "historical-fa_ref_248242a199a603ac82da3605",
@@ -159210,48 +159010,6 @@
       }
     },
     {
-      "targetId": "recovery_target_cd6a731478fc9a9763a249c4",
-      "referenceId": "fa_ref_c540a956ee574610850b7567",
-      "legacyRuntimeId": "fridge-arf2650",
-      "canonicalProductId": "fa_prod_a91acccf34bd7edc7f61134f",
-      "brand": "Hisense",
-      "model": "HRBM417C",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 704,
-              "height": 1720,
-              "depth": 694
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_c845e74c403f3fdd3db7ac24",
-            "dimensionsMm": {
-              "width": 704,
-              "height": 1720,
-              "depth": 694
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_7d91789dc19cb65b609ed2f0",
       "referenceId": "fa_ref_df2317c7b137f5871831b46d",
       "legacyRuntimeId": "fridge-arf3433",
@@ -159357,48 +159115,6 @@
           }
         ],
         "legacyHints": []
-      }
-    },
-    {
-      "targetId": "recovery_target_2e4c5abb8feb90a0e5da61db",
-      "referenceId": "fa_ref_ae05134bb1eaf3c0b5f8c9a6",
-      "legacyRuntimeId": "fridge-arf3435",
-      "canonicalProductId": "fa_prod_01cc5f01e112b37dbec98a6b",
-      "brand": "Hisense",
-      "model": "HRBM418S",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 704,
-              "height": 1720,
-              "depth": 694
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_61a91b8f3b595e385ab62fdb",
-            "dimensionsMm": {
-              "width": 704,
-              "height": 1720,
-              "depth": 694
-            }
-          }
-        ]
       }
     },
     {
@@ -159759,48 +159475,6 @@
       }
     },
     {
-      "targetId": "recovery_target_288621fe7e39f4e8d7ef9cff",
-      "referenceId": "fa_ref_92e0fb04cedc250ae2ee2f14",
-      "legacyRuntimeId": "fridge-arf2635",
-      "canonicalProductId": "fa_prod_50868b5552a1fc7ac0df0f2c",
-      "brand": "Hisense",
-      "model": "HRCD454BW",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 794,
-              "height": 1817,
-              "depth": 706
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_7f2c7e53feb7a638512434dc",
-            "dimensionsMm": {
-              "width": 794,
-              "height": 1817,
-              "depth": 706
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_0ac960fef5431125a3eea814",
       "referenceId": "fa_ref_b6bd7fba68e7b7ae12eb7f04",
       "legacyRuntimeId": "historical-fa_ref_b6bd7fba68e7b7ae12eb7f04",
@@ -159951,48 +159625,6 @@
       }
     },
     {
-      "targetId": "recovery_target_e9736486c9dda34e4a4b1082",
-      "referenceId": "fa_ref_1007383838c55161f7d2bc37",
-      "legacyRuntimeId": "fridge-arf3199",
-      "canonicalProductId": "fa_prod_6c023e78c7b16a10d8653a7e",
-      "brand": "Hisense",
-      "model": "HRCD483TBW",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 794,
-              "height": 1785,
-              "depth": 698
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_7b8e8d783cf92e8e745bf2ac",
-            "dimensionsMm": {
-              "width": 794,
-              "height": 1785,
-              "depth": 698
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_402afba185b8f4749fec110f",
       "referenceId": "fa_ref_0830b5c0615fb64473cf2956",
       "legacyRuntimeId": "historical-fa_ref_0830b5c0615fb64473cf2956",
@@ -160062,90 +159694,6 @@
               "width": 794,
               "height": 1785,
               "depth": 698
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_990b53da26472cb0b6d689dd",
-      "referenceId": "fa_ref_20240ff4053c000edbb5dfb0",
-      "legacyRuntimeId": "fridge-arf2871",
-      "canonicalProductId": "fa_prod_6f2c10c99eb0171bbaee4ad7",
-      "brand": "Hisense",
-      "model": "HRCD585BWB",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 912,
-              "height": 1785,
-              "depth": 725
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_05819fb772392eb34bac9699",
-            "dimensionsMm": {
-              "width": 912,
-              "height": 1785,
-              "depth": 725
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_c481a71f3bc936ee49898221",
-      "referenceId": "fa_ref_af8c2d9b071081cb6f109e3d",
-      "legacyRuntimeId": "fridge-arf3162",
-      "canonicalProductId": "fa_prod_7b343fd329aff22dcd02c85e",
-      "brand": "Hisense",
-      "model": "HRCD586TBWB",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 912,
-              "height": 1785,
-              "depth": 725
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_061436fd9215521f1180cf8c",
-            "dimensionsMm": {
-              "width": 912,
-              "height": 1785,
-              "depth": 725
             }
           }
         ]
@@ -160401,48 +159949,6 @@
       }
     },
     {
-      "targetId": "recovery_target_febed644196de24737ec7447",
-      "referenceId": "fa_ref_45c31380fcf2ecfad8feac5b",
-      "legacyRuntimeId": "fridge-arf2845",
-      "canonicalProductId": "fa_prod_eac5dd27d5de5016566f43c1",
-      "brand": "Hisense",
-      "model": "HRCF144",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 625,
-              "height": 854,
-              "depth": 559
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_ba335e24841de731cd468752",
-            "dimensionsMm": {
-              "width": 625,
-              "height": 854,
-              "depth": 559
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_b1b08989c57ccdc7056306e6",
       "referenceId": "fa_ref_704f272f231b39fc473bf023",
       "legacyRuntimeId": "fridge-arf2583",
@@ -160510,48 +160016,6 @@
             "sourceDocumentId": "doc_92e6fc0afc982a97f64f6d51",
             "dimensionsMm": {
               "width": 625,
-              "height": 854,
-              "depth": 559
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_1b5062c9517dd3f7d50f7400",
-      "referenceId": "fa_ref_186b07f656753e473f00fc23",
-      "legacyRuntimeId": "fridge-arf2844",
-      "canonicalProductId": "fa_prod_53d5d6072b19023ebc44daa8",
-      "brand": "Hisense",
-      "model": "HRCF199",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 802,
-              "height": 854,
-              "depth": 559
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_bd5e0518f1e24a8711dc7fa1",
-            "dimensionsMm": {
-              "width": 802,
               "height": 854,
               "depth": 559
             }
@@ -160635,48 +160099,6 @@
       }
     },
     {
-      "targetId": "recovery_target_a76887cdab49b0e267ef7447",
-      "referenceId": "fa_ref_ec0dc31aec66ad48372e6000",
-      "legacyRuntimeId": "fridge-arf2843",
-      "canonicalProductId": "fa_prod_655388ea1240a00c183237af",
-      "brand": "Hisense",
-      "model": "HRCF297",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 1114,
-              "height": 847,
-              "depth": 630
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_05f68a51c39b7328a913cbff",
-            "dimensionsMm": {
-              "width": 1114,
-              "height": 847,
-              "depth": 630
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_84ddd6f6b64cc60192038bfb",
       "referenceId": "fa_ref_f2afbcd9c8711cc31807affa",
       "legacyRuntimeId": "fridge-arf3330",
@@ -160719,90 +160141,6 @@
       }
     },
     {
-      "targetId": "recovery_target_bc47b8ee09bb51e2a16c297c",
-      "referenceId": "fa_ref_400c55d0b2eba10373b521ae",
-      "legacyRuntimeId": "fridge-arf3558",
-      "canonicalProductId": "fa_prod_b7301474779113f2e5bee1ce",
-      "brand": "Hisense",
-      "model": "HRCF439",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 1429,
-              "height": 858,
-              "depth": 746
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_29a0c9fcd63775dfce1bfd4b",
-            "dimensionsMm": {
-              "width": 1429,
-              "height": 858,
-              "depth": 746
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_4cffb47a334b277b5963731c",
-      "referenceId": "fa_ref_9fcf4a23ebba51201847a634",
-      "legacyRuntimeId": "fridge-arf2839",
-      "canonicalProductId": "fa_prod_475939e8ae09e68fb3898ffd",
-      "brand": "Hisense",
-      "model": "HRCF500",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 1646,
-              "height": 847,
-              "depth": 717
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_cf9fb3ff25c1993e066094a3",
-            "dimensionsMm": {
-              "width": 1646,
-              "height": 847,
-              "depth": 717
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_299f70eeff2f7f592cb53a9d",
       "referenceId": "fa_ref_93b5a1be53eea1368323d802",
       "legacyRuntimeId": "fridge-arf2638",
@@ -160833,48 +160171,6 @@
           }
         ],
         "legacyHints": []
-      }
-    },
-    {
-      "targetId": "recovery_target_9dbd1ed2d124c09199f3a802",
-      "referenceId": "fa_ref_3387664f1c430e7fb57d9967",
-      "legacyRuntimeId": "fridge-arf3539",
-      "canonicalProductId": "fa_prod_b72e5c2bc48d49082f3ed2ce",
-      "brand": "Hisense",
-      "model": "HRCF702",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 2145,
-              "height": 826,
-              "depth": 758
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_9974d79134a43002e9f97538",
-            "dimensionsMm": {
-              "width": 2145,
-              "height": 826,
-              "depth": 758
-            }
-          }
-        ]
       }
     },
     {
@@ -161073,48 +160369,6 @@
           }
         ],
         "legacyHints": []
-      }
-    },
-    {
-      "targetId": "recovery_target_f707686e8148716a51d35920",
-      "referenceId": "fa_ref_0dd7df103229ad7727cd7a55",
-      "legacyRuntimeId": "fridge-arf3116",
-      "canonicalProductId": "fa_prod_b446d54ce92f3b94ff73e616",
-      "brand": "Hisense",
-      "model": "HRFD634BW",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 914,
-              "height": 1785,
-              "depth": 730
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_d29954c8f8c6835bd5ebeeac",
-            "dimensionsMm": {
-              "width": 914,
-              "height": 1785,
-              "depth": 730
-            }
-          }
-        ]
       }
     },
     {
@@ -161855,48 +161109,6 @@
         "legacyHints": [
           {
             "sourceDocumentId": "doc_69d8cf31d6702ce5a133423c",
-            "dimensionsMm": {
-              "width": 794,
-              "height": 1720,
-              "depth": 685
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_1de1b2062f99a004665951ca",
-      "referenceId": "fa_ref_17033117dd8dab27a7ed952e",
-      "legacyRuntimeId": "fridge-arf3563",
-      "canonicalProductId": "fa_prod_2c33667f31c83b3e3e3f272a",
-      "brand": "Hisense",
-      "model": "HRTF497SW",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 794,
-              "height": 1720,
-              "depth": 685
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_7ae0ebb7b7cf4436afd06be1",
             "dimensionsMm": {
               "width": 794,
               "height": 1720,
@@ -240645,7 +239857,7 @@
   ],
   "summary": {
     "artifactJobs": 2,
-    "targets": 7826,
+    "targets": 7807,
     "candidateEdges": 2,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

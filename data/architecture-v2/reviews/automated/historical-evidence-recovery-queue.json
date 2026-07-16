@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1497,
-    "fetchJobs": 1460,
-    "targets": 1494,
-    "candidateEdges": 1497,
+    "documents": 1478,
+    "fetchJobs": 1441,
+    "targets": 1475,
+    "candidateEdges": 1478,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1494,
+    "uniqueReferences": 1475,
     "byCurrentAction": {
-      "CONFIRM_REQUIRED": 429,
-      "MEASURE_REQUIRED": 1040,
+      "CONFIRM_REQUIRED": 411,
+      "MEASURE_REQUIRED": 1039,
       "QUARANTINED": 25
     },
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 266,
-      "CURRENT_RETAIL": 1228
+      "CATALOG_ARCHIVED": 248,
+      "CURRENT_RETAIL": 1227
     },
     "byCategory": {
       "dishwasher": 348,
       "dryer": 64,
-      "fridge": 857,
+      "fridge": 838,
       "washing_machine": 225
     },
     "byAcquisitionRoute": {
       "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1177,
-      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 225,
+      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 206,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 110,
+      "ALREADY_AUTO_FILL": 129,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -26460,32 +26460,6 @@
       ]
     },
     {
-      "jobId": "recovery_79d9a1260395665869e98760",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_821b4cf1def899be41f812c1"
-      ]
-    },
-    {
       "jobId": "recovery_5b8b68cbcac5c88efc2787ee",
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=fedUnZXjQscQf6x6ynOeEQ",
       "authorityBrand": "LG",
@@ -27172,32 +27146,6 @@
       ],
       "targetIds": [
         "recovery_target_8c9a7a103ebf1f04a0df2f60"
-      ]
-    },
-    {
-      "jobId": "recovery_fcdad6dea6f4491e143b5502",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRVF240-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2MjQ4OXxhcHBsaWNhdGlvbi9wZGZ8YUdKaUwyZzBaaTg0T0RBME1URXhOamM1TlRFNEwwaFNWa1l5TkRBdFUzQmxZeTV3WkdZfGU2MmY1MjQ4NzM5YTE3Y2FiMDcwYzNhYTc5OTBjYjE0OTVhNTA3MjhmOGIzNTYxNDRiMzRlOTE5NDg3OTFlNzc",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_0559733e484d45dbaa45b81f"
       ]
     },
     {
@@ -33106,110 +33054,6 @@
       ]
     },
     {
-      "jobId": "recovery_138ca01ae30f3d413ab98305",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_ff2a7ec908dd16cfd3730fee"
-      ]
-    },
-    {
-      "jobId": "recovery_153fdd9f581d2af6d9c5c03f",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBF125-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjU1ODh8YXBwbGljYXRpb24vcGRmfGFHSTRMMmd3WXk4NE9EQTBNVEEzTkRFNU5qYzRMMGhTUWtZeE1qVXRVM0JsWXk1d1pHWXwxMWIxOGE4YjA5ZGZkNjQ5MGE2YmNlYzcyZGRjNTkyYmYyM2NjY2JhZDhhMDkwNmU2ZDZkMDQzZjk4ZjNkZDc2",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_78ab89ac26fd4170af35366b"
-      ]
-    },
-    {
-      "jobId": "recovery_e1a1eb1c64fbe7cf0e07e2da",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBF179B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzI1NTl8YXBwbGljYXRpb24vcGRmfGFHSmpMMmhqTVM4NE9EQTBNRGsxTWpJNU9UZ3lMMGhTUWtZeE56bENMVk53WldNdWNHUm18Njc3YzdlOWU0MjUzNGMzNDU2NmIzOTFjYTMxMmUyNDIxYWU3Nzc5ZjUyODRkYTBjNWRhNjlkZjA2ZTVhMWE1OA",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_3f4aff3df1d907a481afbc36"
-      ]
-    },
-    {
-      "jobId": "recovery_147f5bbb2e713c6676b172eb",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBM417C-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2ODcyNXxhcHBsaWNhdGlvbi9wZGZ8YUdRMUwyZzRZUzg0T0RBME1UQXhNekkwT0RNd0wwaFNRazAwTVRkRExWTndaV011Y0dSbXxjYmM4ZDhiYmE5ZjU5ZjNiM2JiNWMwOTM0ZmU5OGU1N2M4MzUxNTM5MWNkMjQ5MjIwZGYxODI3YmI5ZGE4ZGYz",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_cd6a731478fc9a9763a249c4"
-      ]
-    },
-    {
       "jobId": "recovery_c1c7a7ac1bbe64b3fccd492e",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBM418B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzEzMjd8YXBwbGljYXRpb24vcGRmfGFHTmpMMmd4TXk4NE9EQTBNVEV3T0RJM05UVXdMMGhTUWswME1UaENMVk53WldNdWNHUm18NzE3MGFhNGFmYzQxZTI4OTYzYzU5MTFiMWVkNzhjMTM5ZWRmZmRmMzc1NDcxMjYxYTYyZDVhNjBlNTg1YmJiYg",
       "authorityBrand": "Hisense",
@@ -33236,32 +33080,6 @@
       ]
     },
     {
-      "jobId": "recovery_a966ebc93664381ae8f4c968",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBM418S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0OTY5NjJ8YXBwbGljYXRpb24vcGRmfGFHVXpMMmhsTVM4NE9EQTBNRGswTmpBM016a3dMMGhTUWswME1UaFRMVk53WldNdWNHUm18MjUzZjE0NjQwNGViNjkzMzMxYTZiYWViMzQ3NjkxZTBiMzI0NzllOGQyMWQyZDA2YjQ2NmI4NmE4YzFjZGFiNA",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_2e4c5abb8feb90a0e5da61db"
-      ]
-    },
-    {
       "jobId": "recovery_693745d357b739e6a7cb3f97",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBM419B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODIxOTF8YXBwbGljYXRpb24vcGRmfGFHWTFMMmd6TUM4NE9URTJNVFkzTURZMU5qTXdMMGhTUWswME1UbENMVk53WldNdWNHUm18MjY3NTQyMGVhNWFmYjZmNGU4Yzg5MzZkY2UwYjRhZDMwNTg4NWNiNDEyZDg2Y2EyNzlkY2FkZWM3MzczODY4Nw",
       "authorityBrand": "Hisense",
@@ -33285,32 +33103,6 @@
       ],
       "targetIds": [
         "recovery_target_e5107e3d18edc0c3e72eeba1"
-      ]
-    },
-    {
-      "jobId": "recovery_defb6d275f84957fe3574cb3",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD454BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDcwNTh8YXBwbGljYXRpb24vcGRmfGFEazJMMmhrT0M4NE9EQTBNVEE1T1RjMU5UZ3lMMGhTUTBRME5UUkNWeTFUY0dWakxuQmtaZ3xiMjVkNWE0YjkxNWMyNWZlNTg0NTcxMDliNzViYWY5OGViYjM0YjQ2MWJkMGMzNzk2MWZjODdjYWY1YTUyYjFi",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_288621fe7e39f4e8d7ef9cff"
       ]
     },
     {
@@ -33366,32 +33158,6 @@
       ]
     },
     {
-      "jobId": "recovery_4424b10dc874cdc548fd207d",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD483TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMDIwMDR8YXBwbGljYXRpb24vcGRmfGFEQTJMMmd4Tnk4NE9EQTBNVEF5TmpBeU56Z3lMMGhTUTBRME9ETlVRbGN0VTNCbFl5NXdaR1l8NTNhY2MyMTk4MDBjZjY3NTdhNWVjY2ZhZDRhMGQzMTQ0NmY3MDgwMTA2NGQ3MGE1N2NjYzNiM2EzNGQyYmFjZg",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_e9736486c9dda34e4a4b1082"
-      ]
-    },
-    {
       "jobId": "recovery_221c59dec05f0eb3652baeec",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD483TSW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyODI5NDB8YXBwbGljYXRpb24vcGRmfGFHWmhMMmczT0M4NE9EQTBNRGt6TmpnNU9EZzJMMGhTUTBRME9ETlVVMWN0VTNCbFl5NXdaR1l8Mzk5ZDBmZDUwMTgwZjFkMzU5N2U0NWI5OGEyMjNmNDEyNzAzMTY3MzAwNzlkOGFjMWVmNTcxMWYxNGM4OGU5Nw",
       "authorityBrand": "Hisense",
@@ -33415,32 +33181,6 @@
       ],
       "targetIds": [
         "recovery_target_7b4b7cae9b0026f9d7fbe67a"
-      ]
-    },
-    {
-      "jobId": "recovery_05b2befc183bb0020fb6d0bd",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD586TBWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw1MjcxNnxhcHBsaWNhdGlvbi9wZGZ8YURWbUwyZ3daaTg0T0RBME1UQTNNemcyT1RFd0wwaFNRMFExT0RaVVFsZENMVk53WldNdWNHUm18NzQ0NDA1YzQ2YzQ4MmRiNGNkY2RhMTcxMDgyZjA3N2EyNmYxZGIzNTE4ZjkwMDdjODM5OTNjNTg3Yjk1YmQ4MQ",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_c481a71f3bc936ee49898221"
       ]
     },
     {
@@ -33470,32 +33210,6 @@
       ]
     },
     {
-      "jobId": "recovery_b90cd9e90e1ef722d0f20148",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF144-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODMwNDd8YXBwbGljYXRpb24vcGRmfGFHVTJMMmhrWmk4NE9EQTBNVEExTkRVek5UazRMMGhTUTBZeE5EUXRVM0JsWXk1d1pHWXw3YTA5MzZhNzU5NzM5OGZmODhlZWJiOWQyYTJhYzUwOWZhNzZlMmQzNDQ2NzIxNGQ5YTMwMDAwYmExM2Y2YTQ2",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_febed644196de24737ec7447"
-      ]
-    },
-    {
       "jobId": "recovery_6d987ba3655b2f772a7c908e",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF146-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY2NDF8YXBwbGljYXRpb24vcGRmfGFEUmlMMmd3WlM4NE9EQTBNRGt5TmpBNE5UUXlMMGhTUTBZeE5EWXRVM0JsWXk1d1pHWXxmYzE3MWViNmNkZGNhYjhiNGM0YzA2NzEzNDBhNjU1MjIxNTk2MDhiZDdiZWE1MWRlNzk3NTMwYjA5MGUzM2Nh",
       "authorityBrand": "Hisense",
@@ -33519,32 +33233,6 @@
       ],
       "targetIds": [
         "recovery_target_c2201e2b97d105a7c38b22c6"
-      ]
-    },
-    {
-      "jobId": "recovery_c5616201ff4667ba16e6b7f6",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF199-Spec-0105update.pdf?context=bWFzdGVyfG1hbnVhbHwxNzc0NzF8YXBwbGljYXRpb24vcGRmfGFHRTFMMmhsTVM4NE9ERTBNalEyTlRJM01EQTJMMGhTUTBZeE9Ua3RVM0JsWXkwd01UQTFkWEJrWVhSbExuQmtaZ3xjMTZiODNiOTIwMTdiMGNiZjBjOWJkZWJiYmMxMjVkZTNlMThiM2QwZjFhNjkzOTE0Y2EzNmEyYzg1NTE2ZWJk",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_1b5062c9517dd3f7d50f7400"
       ]
     },
     {
@@ -33574,32 +33262,6 @@
       ]
     },
     {
-      "jobId": "recovery_bc5ce009b79588fec5a97dab",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF297-Spec-0105update.pdf?context=bWFzdGVyfG1hbnVhbHwxOTEzODh8YXBwbGljYXRpb24vcGRmfGFHVTBMMmhsTUM4NE9ERTBNalEyTlRreU5UUXlMMGhTUTBZeU9UY3RVM0JsWXkwd01UQTFkWEJrWVhSbExuQmtaZ3xkMTE1ZjZjNDU2Mzg5NGRhMjVhOTI5OGUxOGMzOTI0ZjQzYTcyMWU1Mzc1YzdmOTY2OTcxZDY3ZDA4YTEwNTA1",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_a76887cdab49b0e267ef7447"
-      ]
-    },
-    {
       "jobId": "recovery_ccc781640050e4c6f5313327",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF301-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY1MTR8YXBwbGljYXRpb24vcGRmfGFEVTNMMmd4Tmk4NE9EQTBNVEF5TmpZNE16RTRMMGhTUTBZek1ERXRVM0JsWXk1d1pHWXwwMTJmNjgyYzFiNjc0ZTY4MmQyMzJkM2I0NjNiNzJiN2I5OWE5ZmQ5NTlmNWRiNmZlZDY1OTAzODYzNzYxN2M2",
       "authorityBrand": "Hisense",
@@ -33623,110 +33285,6 @@
       ],
       "targetIds": [
         "recovery_target_84ddd6f6b64cc60192038bfb"
-      ]
-    },
-    {
-      "jobId": "recovery_d348aefcea65c9663931b354",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF439-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0NzA0NnxhcHBsaWNhdGlvbi9wZGZ8YUdVMEwyZ3hOaTg0T0RFNU1UY3hPREU1TlRVd0wwaFNRMFkwTXprdFUzQmxZeTV3WkdZfDBhMGIwNTVmMWQxYjdkNTMyNjRiOTcwZTJjOTI5ZjJjZmZlYTg4MmM2OTg5MWNjYzMyZmFlNzcxZjJiNzgxNzU",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_bc47b8ee09bb51e2a16c297c"
-      ]
-    },
-    {
-      "jobId": "recovery_e9557f697166f540babec788",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF500-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTQzMTF8YXBwbGljYXRpb24vcGRmfGFHRmtMMmc0TWk4NE9EQTBNRGs0TkRReE1qUTJMMGhTUTBZMU1EQXRVM0JsWXk1d1pHWXw5YzQ0NjRiNzRhOWJjZTIyNDQzNmIxN2VkOTQ1OTBmMmJmMDcyODRkMjgxMjlkNmY3M2E3OTEzNTVhYTc5NzZh",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_4cffb47a334b277b5963731c"
-      ]
-    },
-    {
-      "jobId": "recovery_28f9d2e2dbea576945da6180",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_9dbd1ed2d124c09199f3a802"
-      ]
-    },
-    {
-      "jobId": "recovery_7765ff81809dbda82b56e1a9",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRFD634BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTg4OHxhcHBsaWNhdGlvbi9wZGZ8YUdFMEwyZzNPQzg0T0RBME1Ea3pOalUzTVRFNEwwaFNSa1EyTXpSQ1Z5MVRjR1ZqTG5Ca1pnfGNiMjc4YTBkZjllZmVmM2QxMzU3NmYzZDc3YWNkY2I1ZWQ3MDFiNzEyZmY2Mzc1MDI1YWZjOTMxMjg0NGRhZTU",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_f707686e8148716a51d35920"
       ]
     },
     {
@@ -33782,32 +33340,6 @@
       ]
     },
     {
-      "jobId": "recovery_a8be0c62a047127e014949d0",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRTF497SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw1MzA2NDF8YXBwbGljYXRpb24vcGRmfGFEVmlMMmcxWmk4NE9ETXpPREV5TXpNeU5UYzBMMGhTVkVZME9UZFRWeTFUY0dWakxuQmtaZ3w1MDdiNDMyYjRhNTkyMjkyNDY3ZjBmMzU2NTRjMjQzMjkwYWMxN2RlOTY3MmE5MmM0ZmExOTYzYWYyMzZlNWNl",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_1de1b2062f99a004665951ca"
-      ]
-    },
-    {
       "jobId": "recovery_88f5bdd9fb18ee9f654345c7",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRBM482SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzQ0OTl8YXBwbGljYXRpb24vcGRmfGFEWXhMMmc0WkM4NE56azRPRGszTnpZMk5ETXdMMGhTUWswME9ESlRWeTFUY0dWakxuQmtaZ3w5Y2U5OTgwMmYwZmMwYzA2ZDM5YWNjMTY1YTgxMDZlYTNjM2ViNTI5NDk0NWM2OTIwZTMwMmViODRiNmQxM2Zl",
       "authorityBrand": "Hisense",
@@ -33831,32 +33363,6 @@
       ],
       "targetIds": [
         "recovery_target_f68dfeecc03719c8b6255172"
-      ]
-    },
-    {
-      "jobId": "recovery_64d5ee1b49ca063c6b2fbbc2",
-      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
-      "authorityBrand": "Hisense",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_990b53da26472cb0b6d689dd"
       ]
     },
     {
@@ -79945,47 +79451,6 @@
       "primaryJobId": "recovery_1869d7e552b1efb4118a2252"
     },
     {
-      "referenceId": "fa_ref_78d4fc27221035811883a51c",
-      "legacyRuntimeId": "fridge-arf2348",
-      "canonicalProductId": "fa_prod_68fe1bb650cccadae2b6001c",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF300",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 1114,
-        "height": 847,
-        "depth": 630
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_821b4cf1def899be41f812c1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_b8fffa8454d59b02d4c9844f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_b8fffa8454d59b02d4c9844f",
-          "dimensionsMm": {
-            "width": 1114,
-            "height": 847,
-            "depth": 630
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_79d9a1260395665869e98760"
-      ],
-      "primaryJobId": "recovery_79d9a1260395665869e98760"
-    },
-    {
       "referenceId": "fa_ref_51890274a8cb6ee3782fbe2a",
       "legacyRuntimeId": "fridge-arf2390",
       "canonicalProductId": "fa_prod_e473c261fb045e14fbe50c28",
@@ -86834,57 +86299,6 @@
         "recovery_9804aeedba4ae42ebdb629b1"
       ],
       "primaryJobId": "recovery_9804aeedba4ae42ebdb629b1"
-    },
-    {
-      "referenceId": "fa_ref_a6ce7d6da8c03860f80e9554",
-      "legacyRuntimeId": "fridge-arf2946",
-      "canonicalProductId": "fa_prod_340d22f84c74f0acb3b07b17",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRVF240",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 1720,
-        "depth": 590
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 1720,
-            "depth": 590
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_0559733e484d45dbaa45b81f",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_0e0d03172e020fa19aa3968b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_0e0d03172e020fa19aa3968b",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 1720,
-            "depth": 590
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_fcdad6dea6f4491e143b5502"
-      ],
-      "primaryJobId": "recovery_fcdad6dea6f4491e143b5502"
     },
     {
       "referenceId": "fa_ref_e55892be38f349e39314cbf2",
@@ -95353,159 +94767,6 @@
       "primaryJobId": "recovery_1afcb5214cbaa07fe76420e3"
     },
     {
-      "referenceId": "fa_ref_ddfd483f90bc3bb1f63d68dd",
-      "legacyRuntimeId": "fridge-arf3237",
-      "canonicalProductId": "fa_prod_2d208116f154e4073f606851",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRBC140",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 862,
-        "depth": 647
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 862,
-            "depth": 600
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_ff2a7ec908dd16cfd3730fee",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d963b5a8bc6705ea8d5a6e7f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d963b5a8bc6705ea8d5a6e7f",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 862,
-            "depth": 647
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_138ca01ae30f3d413ab98305"
-      ],
-      "primaryJobId": "recovery_138ca01ae30f3d413ab98305"
-    },
-    {
-      "referenceId": "fa_ref_8af779f194238702757f10fa",
-      "legacyRuntimeId": "fridge-arf2793",
-      "canonicalProductId": "fa_prod_5651b0a9f7167978b945a154",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRBF125",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 475,
-        "height": 840,
-        "depth": 556
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 475,
-            "height": 840,
-            "depth": 556
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_78ab89ac26fd4170af35366b",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_cd5a610c4a297a762c92c7b8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_cd5a610c4a297a762c92c7b8",
-          "dimensionsMm": {
-            "width": 475,
-            "height": 840,
-            "depth": 556
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_153fdd9f581d2af6d9c5c03f"
-      ],
-      "primaryJobId": "recovery_153fdd9f581d2af6d9c5c03f"
-    },
-    {
-      "referenceId": "fa_ref_cd8df7c7abb3301cea66c9d7",
-      "legacyRuntimeId": "fridge-arf2734",
-      "canonicalProductId": "fa_prod_07c5125ce35673f7d06fb201",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRBF179B",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 515,
-        "height": 1229,
-        "depth": 514
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 515,
-            "height": 1229,
-            "depth": 514
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_3f4aff3df1d907a481afbc36",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_269c007ca96abc364663ccc2"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_269c007ca96abc364663ccc2",
-          "dimensionsMm": {
-            "width": 515,
-            "height": 1229,
-            "depth": 514
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e1a1eb1c64fbe7cf0e07e2da"
-      ],
-      "primaryJobId": "recovery_e1a1eb1c64fbe7cf0e07e2da"
-    },
-    {
       "referenceId": "fa_ref_3598a927ccfcf7520ec2970b",
       "legacyRuntimeId": "fridge-arf2786",
       "canonicalProductId": "fa_prod_12e9d2d69b9baab65438e799",
@@ -95608,57 +94869,6 @@
       "primaryJobId": "recovery_168e2afbc9eca0d04279f3f6"
     },
     {
-      "referenceId": "fa_ref_c540a956ee574610850b7567",
-      "legacyRuntimeId": "fridge-arf2650",
-      "canonicalProductId": "fa_prod_a91acccf34bd7edc7f61134f",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRBM417C",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 704,
-        "height": 1720,
-        "depth": 694
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 704,
-            "height": 1720,
-            "depth": 694
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_cd6a731478fc9a9763a249c4",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c845e74c403f3fdd3db7ac24"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c845e74c403f3fdd3db7ac24",
-          "dimensionsMm": {
-            "width": 704,
-            "height": 1720,
-            "depth": 694
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_147f5bbb2e713c6676b172eb"
-      ],
-      "primaryJobId": "recovery_147f5bbb2e713c6676b172eb"
-    },
-    {
       "referenceId": "fa_ref_df2317c7b137f5871831b46d",
       "legacyRuntimeId": "fridge-arf3433",
       "canonicalProductId": "fa_prod_0c2677c6fb29f1f03b8b9fc4",
@@ -95708,57 +94918,6 @@
         "recovery_c1c7a7ac1bbe64b3fccd492e"
       ],
       "primaryJobId": "recovery_c1c7a7ac1bbe64b3fccd492e"
-    },
-    {
-      "referenceId": "fa_ref_ae05134bb1eaf3c0b5f8c9a6",
-      "legacyRuntimeId": "fridge-arf3435",
-      "canonicalProductId": "fa_prod_01cc5f01e112b37dbec98a6b",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRBM418S",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 704,
-        "height": 1720,
-        "depth": 694
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 704,
-            "height": 1720,
-            "depth": 694
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_2e4c5abb8feb90a0e5da61db",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_61a91b8f3b595e385ab62fdb"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_61a91b8f3b595e385ab62fdb",
-          "dimensionsMm": {
-            "width": 704,
-            "height": 1720,
-            "depth": 694
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_a966ebc93664381ae8f4c968"
-      ],
-      "primaryJobId": "recovery_a966ebc93664381ae8f4c968"
     },
     {
       "referenceId": "fa_ref_93a4b95d728680229d8cd855",
@@ -95914,57 +95073,6 @@
       "primaryJobId": "recovery_118309998fa2366db01f806c"
     },
     {
-      "referenceId": "fa_ref_92e0fb04cedc250ae2ee2f14",
-      "legacyRuntimeId": "fridge-arf2635",
-      "canonicalProductId": "fa_prod_50868b5552a1fc7ac0df0f2c",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD454BW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 794,
-        "height": 1817,
-        "depth": 706
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 794,
-            "height": 1817,
-            "depth": 706
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_288621fe7e39f4e8d7ef9cff",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_7f2c7e53feb7a638512434dc"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_7f2c7e53feb7a638512434dc",
-          "dimensionsMm": {
-            "width": 794,
-            "height": 1817,
-            "depth": 706
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_defb6d275f84957fe3574cb3"
-      ],
-      "primaryJobId": "recovery_defb6d275f84957fe3574cb3"
-    },
-    {
       "referenceId": "fa_ref_aa9347d2cf3ead30b639907c",
       "legacyRuntimeId": "fridge-arf3272",
       "canonicalProductId": "fa_prod_76e278c253e97fad6ce424c6",
@@ -96067,57 +95175,6 @@
       "primaryJobId": "recovery_7f784dd040833fdf28c45a22"
     },
     {
-      "referenceId": "fa_ref_1007383838c55161f7d2bc37",
-      "legacyRuntimeId": "fridge-arf3199",
-      "canonicalProductId": "fa_prod_6c023e78c7b16a10d8653a7e",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD483TBW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 794,
-        "height": 1785,
-        "depth": 698
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 794,
-            "height": 1785,
-            "depth": 698
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_e9736486c9dda34e4a4b1082",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_7b8e8d783cf92e8e745bf2ac"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_7b8e8d783cf92e8e745bf2ac",
-          "dimensionsMm": {
-            "width": 794,
-            "height": 1785,
-            "depth": 698
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_4424b10dc874cdc548fd207d"
-      ],
-      "primaryJobId": "recovery_4424b10dc874cdc548fd207d"
-    },
-    {
       "referenceId": "fa_ref_353cb059d1f1779b6ceae322",
       "legacyRuntimeId": "fridge-arf3442",
       "canonicalProductId": "fa_prod_96d4548b2ab18ff7e8d82a2d",
@@ -96167,108 +95224,6 @@
         "recovery_221c59dec05f0eb3652baeec"
       ],
       "primaryJobId": "recovery_221c59dec05f0eb3652baeec"
-    },
-    {
-      "referenceId": "fa_ref_20240ff4053c000edbb5dfb0",
-      "legacyRuntimeId": "fridge-arf2871",
-      "canonicalProductId": "fa_prod_6f2c10c99eb0171bbaee4ad7",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD585BWB",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 912,
-        "height": 1785,
-        "depth": 725
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 912,
-            "height": 1785,
-            "depth": 725
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_990b53da26472cb0b6d689dd",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_05819fb772392eb34bac9699"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_05819fb772392eb34bac9699",
-          "dimensionsMm": {
-            "width": 912,
-            "height": 1785,
-            "depth": 725
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_64d5ee1b49ca063c6b2fbbc2"
-      ],
-      "primaryJobId": "recovery_64d5ee1b49ca063c6b2fbbc2"
-    },
-    {
-      "referenceId": "fa_ref_af8c2d9b071081cb6f109e3d",
-      "legacyRuntimeId": "fridge-arf3162",
-      "canonicalProductId": "fa_prod_7b343fd329aff22dcd02c85e",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCD586TBWB",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 912,
-        "height": 1785,
-        "depth": 725
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 912,
-            "height": 1785,
-            "depth": 725
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_c481a71f3bc936ee49898221",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_061436fd9215521f1180cf8c"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_061436fd9215521f1180cf8c",
-          "dimensionsMm": {
-            "width": 912,
-            "height": 1785,
-            "depth": 725
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_05b2befc183bb0020fb6d0bd"
-      ],
-      "primaryJobId": "recovery_05b2befc183bb0020fb6d0bd"
     },
     {
       "referenceId": "fa_ref_7f1ccb53d67541cf7a0fe03f",
@@ -96424,57 +95379,6 @@
       "primaryJobId": "recovery_597c522871f4fe3f22fcdc68"
     },
     {
-      "referenceId": "fa_ref_45c31380fcf2ecfad8feac5b",
-      "legacyRuntimeId": "fridge-arf2845",
-      "canonicalProductId": "fa_prod_eac5dd27d5de5016566f43c1",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF144",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 625,
-        "height": 854,
-        "depth": 559
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 625,
-            "height": 854,
-            "depth": 559
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_febed644196de24737ec7447",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_ba335e24841de731cd468752"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_ba335e24841de731cd468752",
-          "dimensionsMm": {
-            "width": 625,
-            "height": 854,
-            "depth": 559
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b90cd9e90e1ef722d0f20148"
-      ],
-      "primaryJobId": "recovery_b90cd9e90e1ef722d0f20148"
-    },
-    {
       "referenceId": "fa_ref_5d54ede45517cc8219a0915e",
       "legacyRuntimeId": "fridge-arf3339",
       "canonicalProductId": "fa_prod_0a7277ea6b7a34709962a165",
@@ -96524,57 +95428,6 @@
         "recovery_6d987ba3655b2f772a7c908e"
       ],
       "primaryJobId": "recovery_6d987ba3655b2f772a7c908e"
-    },
-    {
-      "referenceId": "fa_ref_186b07f656753e473f00fc23",
-      "legacyRuntimeId": "fridge-arf2844",
-      "canonicalProductId": "fa_prod_53d5d6072b19023ebc44daa8",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF199",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 802,
-        "height": 854,
-        "depth": 559
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 802,
-            "height": 854,
-            "depth": 559
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_1b5062c9517dd3f7d50f7400",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_bd5e0518f1e24a8711dc7fa1"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_bd5e0518f1e24a8711dc7fa1",
-          "dimensionsMm": {
-            "width": 802,
-            "height": 854,
-            "depth": 559
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_c5616201ff4667ba16e6b7f6"
-      ],
-      "primaryJobId": "recovery_c5616201ff4667ba16e6b7f6"
     },
     {
       "referenceId": "fa_ref_83dbad0d8a112084ac93127d",
@@ -96628,57 +95481,6 @@
       "primaryJobId": "recovery_649fb3dcd5ce6ec210bfa633"
     },
     {
-      "referenceId": "fa_ref_ec0dc31aec66ad48372e6000",
-      "legacyRuntimeId": "fridge-arf2843",
-      "canonicalProductId": "fa_prod_655388ea1240a00c183237af",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF297",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 1114,
-        "height": 847,
-        "depth": 630
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1114,
-            "height": 847,
-            "depth": 630
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_a76887cdab49b0e267ef7447",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_05f68a51c39b7328a913cbff"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_05f68a51c39b7328a913cbff",
-          "dimensionsMm": {
-            "width": 1114,
-            "height": 847,
-            "depth": 630
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_bc5ce009b79588fec5a97dab"
-      ],
-      "primaryJobId": "recovery_bc5ce009b79588fec5a97dab"
-    },
-    {
       "referenceId": "fa_ref_f2afbcd9c8711cc31807affa",
       "legacyRuntimeId": "fridge-arf3330",
       "canonicalProductId": "fa_prod_7c98aa5adabb54049b654262",
@@ -96728,210 +95530,6 @@
         "recovery_ccc781640050e4c6f5313327"
       ],
       "primaryJobId": "recovery_ccc781640050e4c6f5313327"
-    },
-    {
-      "referenceId": "fa_ref_400c55d0b2eba10373b521ae",
-      "legacyRuntimeId": "fridge-arf3558",
-      "canonicalProductId": "fa_prod_b7301474779113f2e5bee1ce",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF439",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 1429,
-        "height": 858,
-        "depth": 746
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1429,
-            "height": 858,
-            "depth": 746
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_bc47b8ee09bb51e2a16c297c",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_29a0c9fcd63775dfce1bfd4b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_29a0c9fcd63775dfce1bfd4b",
-          "dimensionsMm": {
-            "width": 1429,
-            "height": 858,
-            "depth": 746
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_d348aefcea65c9663931b354"
-      ],
-      "primaryJobId": "recovery_d348aefcea65c9663931b354"
-    },
-    {
-      "referenceId": "fa_ref_9fcf4a23ebba51201847a634",
-      "legacyRuntimeId": "fridge-arf2839",
-      "canonicalProductId": "fa_prod_475939e8ae09e68fb3898ffd",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF500",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 1646,
-        "height": 847,
-        "depth": 717
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1646,
-            "height": 847,
-            "depth": 717
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_4cffb47a334b277b5963731c",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_cf9fb3ff25c1993e066094a3"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_cf9fb3ff25c1993e066094a3",
-          "dimensionsMm": {
-            "width": 1646,
-            "height": 847,
-            "depth": 717
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e9557f697166f540babec788"
-      ],
-      "primaryJobId": "recovery_e9557f697166f540babec788"
-    },
-    {
-      "referenceId": "fa_ref_3387664f1c430e7fb57d9967",
-      "legacyRuntimeId": "fridge-arf3539",
-      "canonicalProductId": "fa_prod_b72e5c2bc48d49082f3ed2ce",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRCF702",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 2145,
-        "height": 826,
-        "depth": 758
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 2145,
-            "height": 826,
-            "depth": 758
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_9dbd1ed2d124c09199f3a802",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_9974d79134a43002e9f97538"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_9974d79134a43002e9f97538",
-          "dimensionsMm": {
-            "width": 2145,
-            "height": 826,
-            "depth": 758
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_28f9d2e2dbea576945da6180"
-      ],
-      "primaryJobId": "recovery_28f9d2e2dbea576945da6180"
-    },
-    {
-      "referenceId": "fa_ref_0dd7df103229ad7727cd7a55",
-      "legacyRuntimeId": "fridge-arf3116",
-      "canonicalProductId": "fa_prod_b446d54ce92f3b94ff73e616",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRFD634BW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 914,
-        "height": 1785,
-        "depth": 730
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 914,
-            "height": 1785,
-            "depth": 730
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_f707686e8148716a51d35920",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d29954c8f8c6835bd5ebeeac"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d29954c8f8c6835bd5ebeeac",
-          "dimensionsMm": {
-            "width": 914,
-            "height": 1785,
-            "depth": 730
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_7765ff81809dbda82b56e1a9"
-      ],
-      "primaryJobId": "recovery_7765ff81809dbda82b56e1a9"
     },
     {
       "referenceId": "fa_ref_81e02f58dc44dfa5293c5c10",
@@ -97238,57 +95836,6 @@
         "recovery_a735881a31569a8168b8519c"
       ],
       "primaryJobId": "recovery_a735881a31569a8168b8519c"
-    },
-    {
-      "referenceId": "fa_ref_17033117dd8dab27a7ed952e",
-      "legacyRuntimeId": "fridge-arf3563",
-      "canonicalProductId": "fa_prod_2c33667f31c83b3e3e3f272a",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRTF497SW",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 794,
-        "height": 1720,
-        "depth": 685
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 794,
-            "height": 1720,
-            "depth": 685
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_1de1b2062f99a004665951ca",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_7ae0ebb7b7cf4436afd06be1"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_7ae0ebb7b7cf4436afd06be1",
-          "dimensionsMm": {
-            "width": 794,
-            "height": 1720,
-            "depth": 685
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_a8be0c62a047127e014949d0"
-      ],
-      "primaryJobId": "recovery_a8be0c62a047127e014949d0"
     },
     {
       "referenceId": "fa_ref_12edb2b60923c93be338c4b0",

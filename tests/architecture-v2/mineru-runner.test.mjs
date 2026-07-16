@@ -397,6 +397,63 @@ test('image fallback binds the primary parse trigger and runs only detected sour
   }
 });
 
+test('complete unit-before-value axes keep the primary MinerU artifact without image fallback', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-primary-axes-'));
+  const pdf = Buffer.from('%PDF-1.7\nunit-before-value-primary-fixture');
+  const primaryContent = [[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'Dimensions' }] },
+      bbox: [40, 60, 220, 90],
+    },
+    {
+      type: 'image',
+      content: { image_caption: ['Product photograph'], image_footnote: [] },
+      bbox: [40, 100, 320, 500],
+    },
+    {
+      type: 'index',
+      content: {
+        list_type: 'text_list',
+        list_items: ['Width mm 1114', 'Depth mm 630', 'Height mm 847'].map((content) => ({
+          item_type: 'text',
+          item_content: [{ type: 'text', content }],
+        })),
+      },
+      bbox: [400, 120, 700, 260],
+    },
+  ]];
+  const parseBackends = [];
+  try {
+    const result = await runMineruPdfWithImageFallback(pdf, {
+      storageRoot,
+      runCommand: async (_binary, args) => {
+        if (args[0] === '-v') return { stdout: [
+          'mineru, version 3.4.4',
+          'fitappliance-model-revision ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+          `fitappliance-vlm-model-revision ${VLM_MODEL_REVISION}`,
+          '',
+        ].join('\n') };
+        const backend = args[args.indexOf('-b') + 1];
+        parseBackends.push(backend);
+        const output = args[args.indexOf('-o') + 1];
+        await mkdir(join(output, 'source', 'auto'), { recursive: true });
+        await writeFile(
+          join(output, 'source', 'auto', 'source_content_list_v2.json'),
+          JSON.stringify(primaryContent),
+        );
+        return { stdout: 'done' };
+      },
+    });
+    assert.deepEqual(parseBackends, ['pipeline']);
+    assert.equal(result.usedImageFallback, false);
+  assert.equal(result.derivedArtifact.backend, 'pipeline');
+    assert.deepEqual(JSON.parse(result.jsonBytes), primaryContent);
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
+});
+
 test('image fallback recovers a bounded primary command failure without hiding the primary gap', async () => {
   const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-operational-fallback-'));
   const pdf = Buffer.from('%PDF-1.7\noperational-page-fallback-fixture');

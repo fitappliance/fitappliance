@@ -55,6 +55,14 @@ function pageHeader(content) {
   };
 }
 
+function titleFragment(content, bbox = [80, 80, 500, 120]) {
+  return {
+    type: 'title',
+    content: { title_content: [{ type: 'text', content }], level: 2 },
+    bbox,
+  };
+}
+
 function tableFragment(html) {
   return {
     type: 'table',
@@ -63,6 +71,23 @@ function tableFragment(html) {
       table_type: 'simple_table', table_nest_level: 1,
     },
     bbox: [80, 220, 900, 760],
+  };
+}
+
+function structuredListFragment(entries, {
+  type = 'list',
+  bbox = [410, 760, 700, 900],
+} = {}) {
+  return {
+    type,
+    content: {
+      list_type: 'text_list',
+      list_items: entries.map((entry) => ({
+        item_type: 'text',
+        item_content: [{ type: 'text', content: entry }],
+      })),
+    },
+    bbox,
   };
 }
 
@@ -1576,6 +1601,167 @@ test('MinerU reconstructs a Hisense net-with-handle table split across axis and 
   assert.ok(parsed.claims.every((claim) => /net with handle/i.test(claim.sourceLabel)));
 });
 
+test('MinerU applies the exact Hisense legacy Net and Box grammar to one combined axis list', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    paragraph('HRBC140 Beverage Cabinet', [590, 220, 800, 260]),
+    titleFragment('Dimensions', [130, 810, 250, 840]),
+    paragraph('Net With handle', [175, 840, 260, 870]),
+    paragraph('Box', [200, 880, 260, 905]),
+    structuredListFragment([
+      'Width mm 595', 'Depth mm 647', 'Height mm 862',
+      'Width mm 640', 'Depth mm 696', 'Height mm 947',
+      'Net / Gross kg 44.5 / 48',
+    ], { bbox: [410, 835, 650, 925] }),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf'],
+    caseIdentity: { brand: 'Hisense', model: 'HRBC140', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 595,
+    'closedEnvelope.heightMm': 862,
+    'closedEnvelope.depthMm': 647,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['hisense-au-legacy-spec-net-box-axes-v1']);
+  assert.ok(parsed.claims.every((claim) => /net with handle/i.test(claim.sourceLabel)));
+});
+
+test('MinerU applies the exact Hisense legacy Net and Box grammar to separate indexed triples', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    paragraph('Manufacturer model HRCF300 Description Chest Freezer', [390, 245, 710, 285]),
+    titleFragment('Dimensions', [125, 745, 240, 775]),
+    paragraph('Net With handle', [165, 775, 250, 805]),
+    structuredListFragment([
+      'Width mm 1114', 'Depth mm 630', 'Height mm 847',
+    ], { type: 'index', bbox: [470, 770, 650, 808] }),
+    paragraph('Box', [195, 815, 250, 842]),
+    structuredListFragment([
+      'Width mm 1145', 'Depth mm 647', 'Height mm 880',
+    ], { type: 'index', bbox: [470, 812, 650, 850] }),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://dtc-aus-api.hisense.com/medias/HRCF300-Spec.pdf'],
+    caseIdentity: { brand: 'Hisense', model: 'HRCF300', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 1114,
+    'closedEnvelope.heightMm': 847,
+    'closedEnvelope.depthMm': 630,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['hisense-au-legacy-spec-net-box-axes-v1']);
+});
+
+test('MinerU applies the exact Hisense legacy grammar to a collapsed Net and Box table', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [titleFragment('HRCD585BWB', [640, 230, 800, 260])],
+    [tableFragment(`<table>
+      <tr><td>Dimensions Net</td><td></td><td></td><td></td></tr>
+      <tr><td>With handle</td><td>Width Depth</td><td>mm mm</td><td>912 725</td></tr>
+      <tr><td rowspan="4">Box</td><td>Height</td><td>mm</td><td>1785</td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td>Width</td><td></td><td></td></tr>
+      <tr><td>Depth</td><td>mm</td><td>968</td></tr>
+      <tr><td></td><td>Height</td><td>mm</td><td>778</td></tr>
+      <tr><td>Weight</td><td>Net / Gross</td><td>mm</td><td>1901</td></tr>
+    </table>`)],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://dtc-aus-api.hisense.com/medias/HRCD585BWB-Spec.pdf'],
+    caseIdentity: { brand: 'Hisense', model: 'HRCD585BWB', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 912,
+    'closedEnvelope.heightMm': 1785,
+    'closedEnvelope.depthMm': 725,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['hisense-au-legacy-spec-net-box-axes-v1']);
+});
+
+test('MinerU binds a cross-page exact Hisense Net and Packaged WHD table', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [
+      pageHeader('Hisense HSBE15FS'),
+      tableFragment('<table><tr><td>Model Number</td><td>HSBE15FS</td></tr></table>'),
+    ],
+    [tableFragment(`<table>
+      <tr><td>Dimensions</td><td></td></tr>
+      <tr><td>Dimensions (Packaged) (W X H X D)</td><td>680x890x656 (mm)</td></tr>
+      <tr><td>Dimensions (Net) (W X H X D)</td><td>600x845x596 (mm)</td></tr>
+    </table>`)],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://dtc-aus-api.hisense.com/medias/HSBE15FS-Spec.pdf'],
+    caseIdentity: { brand: 'Hisense', model: 'HSBE15FS', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 600,
+    'closedEnvelope.heightMm': 845,
+    'closedEnvelope.depthMm': 596,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['hisense-au-exact-spec-net-package-whd-v1']);
+  assert.ok(parsed.claims.every((claim) => /net/i.test(claim.sourceLabel)));
+  assert.ok(parsed.claims.every((claim) => ![680, 890, 656].includes(claim.value.mm)));
+});
+
+test('MinerU rejects unsafe Hisense exact-spec variants instead of inferring dimensions', () => {
+  const fields = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+  const parseLegacy = (bytes, overrides = {}) => parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf'],
+    caseIdentity: { brand: 'Hisense', model: 'HRBC140', category: 'fridge' },
+    claimSemanticsVersion: 2, fields, ...overrides,
+  });
+  const legacyPage = (identityText, netEntries, boxEntries = [
+    'Width mm 640', 'Depth mm 696', 'Height mm 947',
+  ]) => Buffer.from(JSON.stringify([[
+    paragraph(identityText, [590, 220, 850, 260]),
+    titleFragment('Dimensions', [130, 810, 250, 840]),
+    paragraph('Net With handle', [175, 840, 260, 870]),
+    structuredListFragment(netEntries, { type: 'index', bbox: [410, 835, 650, 875] }),
+    paragraph('Box', [200, 880, 260, 905]),
+    structuredListFragment(boxEntries, { type: 'index', bbox: [410, 880, 650, 925] }),
+  ]]));
+
+  assert.throws(() => parseLegacy(legacyPage('HRBC140 Beverage Cabinet', [
+    'Width mm 595', 'Depth mm 647', 'Height mm 862',
+  ]), { sourceUrls: ['https://example.com/HRBC140-Spec.pdf'] }), /evidence|identity/i);
+  assert.throws(() => parseLegacy(legacyPage('HRBC140 HRBC141 Beverage Cabinets', [
+    'Width mm 595', 'Depth mm 647', 'Height mm 862',
+  ])), /family|multiple models|scope|evidence/i);
+  assert.throws(() => parseLegacy(legacyPage('HRBC140 Beverage Cabinet', [
+    'Width mm 595', 'Depth mm 647.5', 'Height mm 862',
+  ])), /evidence/i);
+
+  const unitlessWasher = Buffer.from(JSON.stringify([
+    [pageHeader('Hisense HWF5S1214'), tableFragment('<table><tr><td>Model Number</td><td>HWF5S1214</td></tr></table>')],
+    [
+      titleFragment('Packaging'),
+      paragraph('Net dimensions(W x H x D)', [90, 115, 310, 131]),
+      paragraph('595*845*640', [413, 115, 522, 131]),
+      paragraph('Package dimensions(W x H x D)', [90, 131, 347, 149]),
+      paragraph('650*890*720', [413, 131, 522, 148]),
+    ],
+  ]));
+  assert.throws(() => parseMineruContentListV2(unitlessWasher, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://dtc-aus-api.hisense.com/medias/HWF5S1214-Spec.pdf'],
+    caseIdentity: { brand: 'Hisense', model: 'HWF5S1214', category: 'washing_machine' },
+    claimSemanticsVersion: 2, fields,
+  }), /evidence/i);
+});
+
 test('MinerU binds concatenated colour variants to one exact model column using an explicit model list', () => {
   const specificationTable = `<table>
     <tr><td colspan="2">Model</td><td>ETM207XETM207W</td><td>ETM239XETM239W</td><td>ETM268XETM268W</td></tr>
@@ -2300,6 +2486,21 @@ test('image-only dimension detection selects only pages needing bounded hybrid p
         },
         bbox: [357, 300, 637, 368],
       },
+    ],
+    [
+      {
+        type: 'title',
+        content: { title_content: [{ type: 'text', content: 'Dimensions' }] },
+        bbox: [40, 60, 220, 90],
+      },
+      {
+        type: 'image',
+        content: { image_caption: ['Product photograph'], image_footnote: [] },
+        bbox: [40, 100, 320, 500],
+      },
+      structuredListFragment([
+        'Width mm 1114', 'Depth mm 630', 'Height mm 847',
+      ], { type: 'index', bbox: [400, 120, 700, 260] }),
     ],
   ]));
   assert.deepEqual(findMineruImageOnlyDimensionPages(bytes), [1, 5]);

@@ -1795,6 +1795,283 @@ function ocrShiftedDimensionSectionRows(fragment) {
   return [];
 }
 
+function exactHisenseAuSpecUrl(sourceUrls, model) {
+  const target = canonicalModel(model);
+  if (!Array.isArray(sourceUrls) || !target) return null;
+  const modelPattern = new RegExp(`(?:^|[-_.])${escapeRegExp(target)}(?=$|[-_.])`, 'i');
+  return sourceUrls.find((value) => {
+    try {
+      const url = new URL(value);
+      if (url.hostname.toLowerCase() !== 'dtc-aus-api.hisense.com') return false;
+      const filename = decodeURIComponent(url.pathname.split('/').pop() ?? '');
+      const stem = filename.replace(/\.pdf$/i, '');
+      return /\.pdf$/i.test(filename)
+        && modelPattern.test(stem)
+        && /(?:^|[-_.])spec(?:$|[-_.])/i.test(stem);
+    } catch {
+      return false;
+    }
+  }) ?? null;
+}
+
+function hisenseExactSpecIdentity(document, caseIdentity, sourceUrls, categories) {
+  if (canonicalModel(caseIdentity?.brand) !== 'HISENSE'
+    || !categories.includes(normalizedText(caseIdentity?.category))) return null;
+  const target = canonicalModel(caseIdentity?.model);
+  if (!/^[A-Z]{2,}[A-Z0-9]{3,}$/.test(target)) return null;
+  const exactDocumentUrl = exactHisenseAuSpecUrl(sourceUrls, target);
+  if (!exactDocumentUrl || siblingModelCandidates(document, target).length) return null;
+  const identityFragments = document.pages.flat().filter((fragment) => (
+    ['title', 'page_header', 'paragraph', 'table'].includes(fragment.type)
+      && containsExplicitModelExpression(fragment.identityText ?? fragment.text, target)
+  ));
+  if (!identityFragments.length) return null;
+  return {
+    target,
+    exactDocumentUrl,
+    identityFragmentSha256s: identityFragments
+      .map((fragment) => fragment.fragmentSha256).sort(),
+  };
+}
+
+const HISENSE_LEGACY_AXIS_ORDER = Object.freeze(['width', 'depth', 'height']);
+
+function hisenseLegacyAxisEntries(entries) {
+  const rows = entries.map((entry) => {
+    const match = /^(Width|Depth|Height)\s+mm\s+(\d+(?:\.\d+)?)$/i.exec(normalizedText(entry));
+    return match ? {
+      axis: match[1].toLowerCase(),
+      sourceAxis: match[1][0].toUpperCase() + match[1].slice(1).toLowerCase(),
+      value: match[2],
+    } : null;
+  });
+  return rows.every(Boolean) ? rows : [];
+}
+
+function hisenseLegacyNetRows(netEntries) {
+  if (netEntries.length !== 3
+    || netEntries.some((entry) => !Number.isInteger(Number(entry.value)))
+    || netEntries.some((entry, index) => entry.axis !== HISENSE_LEGACY_AXIS_ORDER[index])) {
+    return [];
+  }
+  return netEntries.map((entry) => ({
+    label: `${entry.sourceAxis} (Net With handle dimensions)`,
+    value: `${entry.value} mm`,
+    quote: `${entry.sourceAxis} mm ${entry.value} (Net With handle dimensions section)`,
+    semanticBasis: 'hisense_legacy_exact_spec_net_with_handle',
+    axisOrder: [...HISENSE_LEGACY_AXIS_ORDER],
+  }));
+}
+
+function hisenseDerivedFragment(grammarProfileId, fragments, rows, type) {
+  return {
+    type,
+    bbox: [
+      Math.min(...fragments.map((fragment) => fragment.bbox[0])),
+      Math.min(...fragments.map((fragment) => fragment.bbox[1])),
+      Math.max(...fragments.map((fragment) => fragment.bbox[2])),
+      Math.max(...fragments.map((fragment) => fragment.bbox[3])),
+    ],
+    fragmentSha256: sha256(JSON.stringify({
+      grammarProfileId,
+      sourceFragmentSha256s: fragments.map((fragment) => fragment.fragmentSha256),
+      rows,
+    })),
+  };
+}
+
+function hisenseLegacyCollapsedTableRows(fragment) {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return [];
+  const sectionIndex = fragment.cells.findIndex((cells) => (
+    /^dimensions\s+net$/i.test(normalizedText(cells.join(' ')))
+  ));
+  if (sectionIndex < 0) return [];
+  const netWidthDepth = fragment.cells[sectionIndex + 1] ?? [];
+  const netHeight = fragment.cells[sectionIndex + 2] ?? [];
+  if (!/^with\s+handle$/i.test(normalizedText(netWidthDepth[0]))
+    || normalizedText(netWidthDepth[1]).toLowerCase() !== 'width depth'
+    || normalizedText(netWidthDepth[2]).toLowerCase() !== 'mm mm') return [];
+  const widthDepthValues = normalizedText(netWidthDepth[3]).match(/^([0-9]+)\s+([0-9]+)$/);
+  const heightValue = /^box$/i.test(normalizedText(netHeight[0]))
+    && /^height$/i.test(normalizedText(netHeight[1]))
+    && /^mm$/i.test(normalizedText(netHeight[2]))
+    ? /^([0-9]+)$/.exec(normalizedText(netHeight[3]))
+    : null;
+  if (!widthDepthValues || !heightValue) return [];
+
+  const tail = fragment.cells.slice(sectionIndex + 3).map((cells) => normalizedText(cells.join(' ')));
+  const boxWidth = tail.flatMap((text) => /^depth\s+mm\s+([0-9]+)$/i.exec(text) ?? []).at(1);
+  const boxDepth = tail.flatMap((text) => /^height\s+mm\s+([0-9]+)$/i.exec(text) ?? []).at(1);
+  const boxHeight = tail.flatMap((text) => /^weight\s+net\s*\/\s*gross\s+mm\s+([0-9]+)$/i.exec(text) ?? []).at(1);
+  if (![boxWidth, boxDepth, boxHeight].every(Boolean)
+    || Number(boxWidth) < Number(widthDepthValues[1])
+    || Number(boxDepth) < Number(widthDepthValues[2])
+    || Number(boxHeight) < Number(heightValue[1])) return [];
+  return hisenseLegacyNetRows([
+    { axis: 'width', sourceAxis: 'Width', value: widthDepthValues[1] },
+    { axis: 'depth', sourceAxis: 'Depth', value: widthDepthValues[2] },
+    { axis: 'height', sourceAxis: 'Height', value: heightValue[1] },
+  ]);
+}
+
+function hisenseLegacyPageDimensions(items) {
+  const collapsed = items.flatMap((fragment) => {
+    const rows = hisenseLegacyCollapsedTableRows(fragment);
+    return rows.length === 3 ? [{ rows, sourceFragments: [fragment] }] : [];
+  });
+  if (collapsed.length > 1) return null;
+
+  const dimensionTitles = items.filter((fragment) => (
+    ['title', 'paragraph', 'text'].includes(fragment.type)
+      && /^dimensions$/i.test(fragment.text)
+  ));
+  if (dimensionTitles.length !== 1) return collapsed[0] ?? null;
+  const dimensionTitle = dimensionTitles[0];
+  const boxLabels = items.filter((fragment) => (
+    ['paragraph', 'text'].includes(fragment.type)
+      && /^box$/i.test(fragment.text)
+      && fragment.bbox[1] >= dimensionTitle.bbox[1]
+      && fragment.bbox[1] - dimensionTitle.bbox[1] <= 250
+  ));
+  const netLabels = items.filter((fragment) => (
+    ['paragraph', 'text'].includes(fragment.type)
+      && /^(?:net(?:\s+with\s+handle)?|with\s+handle)$/i.test(fragment.text)
+      && fragment.bbox[1] >= dimensionTitle.bbox[1]
+      && fragment.bbox[1] - dimensionTitle.bbox[1] <= 200
+  ));
+  const combinedNetLabel = netLabels.length === 1 && /^net\s+with\s+handle$/i.test(netLabels[0].text);
+  const splitNetLabel = netLabels.length === 2
+    && netLabels.some((fragment) => /^net$/i.test(fragment.text))
+    && netLabels.some((fragment) => /^with\s+handle$/i.test(fragment.text));
+  if (boxLabels.length !== 1 || (!combinedNetLabel && !splitNetLabel)) return collapsed[0] ?? null;
+
+  const axisLists = items.flatMap((fragment) => {
+    if (!['list', 'index'].includes(fragment.type)) return [];
+    const leadingAxisEntries = [];
+    for (const entry of fragment.listEntries) {
+      const [parsed] = hisenseLegacyAxisEntries([entry]);
+      if (!parsed) break;
+      leadingAxisEntries.push(parsed);
+    }
+    return [3, 6].includes(leadingAxisEntries.length)
+      ? [{ fragment, entries: leadingAxisEntries }]
+      : [];
+  }).sort((left, right) => left.fragment.bbox[1] - right.fragment.bbox[1]);
+
+  let netEntries = null;
+  let dimensionFragments = [];
+  if (axisLists.length === 1 && axisLists[0].entries.length === 6) {
+    const [net, box] = [axisLists[0].entries.slice(0, 3), axisLists[0].entries.slice(3)];
+    if (box.every((entry, index) => entry.axis === HISENSE_LEGACY_AXIS_ORDER[index])) {
+      netEntries = net;
+      dimensionFragments = [axisLists[0].fragment];
+    }
+  } else if (axisLists.length === 2 && axisLists.every(({ entries }) => entries.length === 3)) {
+    if (axisLists[1].entries.every((entry, index) => (
+      entry.axis === HISENSE_LEGACY_AXIS_ORDER[index]
+    ))) {
+      netEntries = axisLists[0].entries;
+      dimensionFragments = axisLists.map(({ fragment }) => fragment);
+    }
+  }
+
+  if (!netEntries) {
+    const scalarAxes = items.flatMap((fragment) => {
+      if (!['paragraph', 'text'].includes(fragment.type)) return [];
+      const [entry] = hisenseLegacyAxisEntries([fragment.text]);
+      return entry ? [{ fragment, entry }] : [];
+    }).sort((left, right) => (
+      left.fragment.bbox[1] - right.fragment.bbox[1]
+      || left.fragment.bbox[0] - right.fragment.bbox[0]
+    ));
+    if (scalarAxes.length === 6
+      && scalarAxes.slice(3).every(({ entry }, index) => (
+        entry.axis === HISENSE_LEGACY_AXIS_ORDER[index]
+      ))) {
+      netEntries = scalarAxes.slice(0, 3).map(({ entry }) => entry);
+      dimensionFragments = scalarAxes.map(({ fragment }) => fragment);
+    }
+  }
+
+  const rows = netEntries ? hisenseLegacyNetRows(netEntries) : [];
+  const result = rows.length === 3 ? {
+    rows,
+    sourceFragments: [dimensionTitle, ...netLabels, boxLabels[0], ...dimensionFragments],
+  } : null;
+  const matches = [...collapsed, ...(result ? [result] : [])];
+  return matches.length === 1 ? matches[0] : null;
+}
+
+function hisenseLegacyExactSpecScope(document, caseIdentity, sourceUrls) {
+  const identity = hisenseExactSpecIdentity(document, caseIdentity, sourceUrls, ['fridge']);
+  if (!identity) return null;
+  const matches = document.pages.flatMap((items, pageIndex) => {
+    const dimensions = hisenseLegacyPageDimensions(items);
+    return dimensions ? [{ ...dimensions, page: pageIndex + 1 }] : [];
+  });
+  if (matches.length !== 1) return null;
+  const match = matches[0];
+  return {
+    ...identity,
+    ...match,
+    fragment: hisenseDerivedFragment(
+      'hisense-au-legacy-spec-net-box-axes-v1',
+      match.sourceFragments,
+      match.rows,
+      'derived_hisense_legacy_net_box_dimensions',
+    ),
+  };
+}
+
+function hisenseNetPackageRows(fragment) {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return [];
+  const tuple = (value) => {
+    const match = /^(\d+)\s*[x×]\s*(\d+)\s*[x×]\s*(\d+)\s*\(\s*mm\s*\)$/i
+      .exec(normalizedText(value));
+    return match ? match.slice(1).map(Number) : null;
+  };
+  const packaged = fragment.cells.flatMap((cells) => (
+    /^dimensions\s*\(\s*packaged\s*\)\s*\(\s*w\s*x\s*h\s*x\s*d\s*\)$/i
+      .test(normalizedText(cells[0]))
+      ? [tuple(cells[1])]
+      : []
+  )).filter(Boolean);
+  const net = fragment.cells.flatMap((cells) => (
+    /^dimensions\s*\(\s*net\s*\)\s*\(\s*w\s*x\s*h\s*x\s*d\s*\)$/i
+      .test(normalizedText(cells[0]))
+      ? [tuple(cells[1])]
+      : []
+  )).filter(Boolean);
+  if (packaged.length !== 1 || net.length !== 1
+    || packaged[0].some((value, index) => value < net[0][index])) return [];
+  const axes = ['width', 'height', 'depth'];
+  return axes.map((axis, index) => ({
+    label: `${axis[0].toUpperCase()}${axis.slice(1)} (Dimensions (Net) W X H X D)`,
+    value: `${net[0][index]} mm`,
+    quote: `${axis[0].toUpperCase()}${axis.slice(1)} ${net[0][index]} mm from Dimensions (Net) W X H X D`,
+    semanticBasis: 'hisense_exact_spec_net_package_whd',
+    axisOrder: [...axes],
+  }));
+}
+
+function hisenseExactNetPackageScope(document, caseIdentity, sourceUrls) {
+  const identity = hisenseExactSpecIdentity(
+    document,
+    caseIdentity,
+    sourceUrls,
+    ['fridge', 'dishwasher', 'washing_machine', 'dryer'],
+  );
+  if (!identity) return null;
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    for (const fragment of items) {
+      const rows = hisenseNetPackageRows(fragment);
+      if (rows.length === 3) matches.push({ fragment, rows, page: pageIndex + 1 });
+    }
+  });
+  return matches.length === 1 ? { ...identity, ...matches[0] } : null;
+}
+
 export const mineruGrammarProfiles = Object.freeze({
   'chiq-au-exact-spec-product-whd-v1': Object.freeze({
     parserProfileId: 'chiq-au-exact-spec-product-whd-v1',
@@ -1850,6 +2127,28 @@ export const mineruGrammarProfiles = Object.freeze({
     documentType: 'user_manual',
     detectionSummary: 'One same-page sibling model row, one complete A-F millimetre table, and explicit E appliance-depth and F door-open labels.',
     semanticBoundary: 'A is width, B is height, E is the closed appliance depth and F is the operational door-open depth; C and D are not projected.',
+  }),
+  'hisense-au-legacy-spec-net-box-axes-v1': Object.freeze({
+    parserProfileId: 'hisense-au-legacy-spec-net-box-axes-v1',
+    grammarFamilyId: 'hisense_au_legacy_exact_spec_net_box_axes_v1',
+    grammarFamilyName: 'Hisense Australia legacy exact-model specification sheet',
+    variantName: 'Net With handle and Box axis sections',
+    brand: 'Hisense',
+    category: 'fridge',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model Hisense Australia specification PDF URL, exact model in the MinerU body, no sibling model, and exactly one Dimensions section separating a complete Net With handle W/D/H triple from a complete Box triple. Proven list, aligned paragraph and collapsed-table MinerU variants are supported.',
+    semanticBoundary: 'Only the integer Net With handle W/D/H triple is projected as the closed appliance envelope; Box, weight, clearance and decimal values are excluded.',
+  }),
+  'hisense-au-exact-spec-net-package-whd-v1': Object.freeze({
+    parserProfileId: 'hisense-au-exact-spec-net-package-whd-v1',
+    grammarFamilyId: 'hisense_au_exact_spec_net_package_whd_v1',
+    grammarFamilyName: 'Hisense Australia exact-model specification table',
+    variantName: 'Explicit Net and Packaged W x H x D millimetre rows',
+    brand: 'Hisense',
+    category: 'multi_category',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model Hisense Australia specification PDF URL, exact model in the MinerU body, no sibling model, and exactly one table containing separate integer Dimensions (Net) and Dimensions (Packaged) W x H x D rows with explicit millimetre units.',
+    semanticBoundary: 'Only the Net W/H/D tuple is projected as the closed appliance envelope; packaged values and unitless tuples are excluded.',
   }),
   beko_au_dishwasher_product_spec_parallel_lists_v1: Object.freeze({
     parserProfileId: 'beko_au_dishwasher_product_spec_parallel_lists_v1',
@@ -2239,6 +2538,32 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     type: 'mineru_chiq_first_page_identity',
     value: `${model}:${chiqSpecScope.identityFragmentSha256}`,
   }] : [];
+  const hisenseLegacySpecScope = claimSemanticsVersion === 2
+    ? hisenseLegacyExactSpecScope(document, caseIdentity, options.sourceUrls)
+    : null;
+  const hisenseLegacySpecSignals = hisenseLegacySpecScope ? [{
+    type: 'mineru_hisense_legacy_net_box_dimensions',
+    value: `${model}:page:${hisenseLegacySpecScope.page}:${hisenseLegacySpecScope.fragment.fragmentSha256}`,
+  }, {
+    type: 'mineru_hisense_exact_spec_document_url',
+    value: `${model}:${hisenseLegacySpecScope.exactDocumentUrl}`,
+  }, {
+    type: 'mineru_hisense_exact_spec_identity',
+    value: `${model}:${hisenseLegacySpecScope.identityFragmentSha256s.join(',')}`,
+  }] : [];
+  const hisenseNetPackageScope = claimSemanticsVersion === 2
+    ? hisenseExactNetPackageScope(document, caseIdentity, options.sourceUrls)
+    : null;
+  const hisenseNetPackageSignals = hisenseNetPackageScope ? [{
+    type: 'mineru_hisense_net_package_dimensions',
+    value: `${model}:page:${hisenseNetPackageScope.page}:${hisenseNetPackageScope.fragment.fragmentSha256}`,
+  }, {
+    type: 'mineru_hisense_exact_spec_document_url',
+    value: `${model}:${hisenseNetPackageScope.exactDocumentUrl}`,
+  }, {
+    type: 'mineru_hisense_exact_spec_identity',
+    value: `${model}:${hisenseNetPackageScope.identityFragmentSha256s.join(',')}`,
+  }] : [];
   const fisherPaykelDw60Scope = claimSemanticsVersion === 2
     ? fisherPaykelDw60ApplicabilityScope(document, caseIdentity, options.sourceUrls)
     : null;
@@ -2278,6 +2603,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const unresolvedFamily = claimSemanticsVersion === 2 && !boundFamilyDocumentScope
     && !structuredFinishVariantScope
     && !chiqSpecScope
+    && !hisenseLegacySpecScope
+    && !hisenseNetPackageScope
     && !fisherPaykelDw60Scope
     && !samsungWasherWildcardScope
     && !fisherPaykelRf610Scope
@@ -2303,6 +2630,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...boundExactCoverSignals,
     ...structuredFinishVariantSignals,
     ...chiqSpecSignals,
+    ...hisenseLegacySpecSignals,
+    ...hisenseNetPackageSignals,
     ...fisherPaykelDw60Signals,
     ...samsungWasherWildcardSignals,
     ...fisherPaykelRf610Signals,
@@ -2327,6 +2656,12 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   }
   if (chiqSpecScope) {
     appliedGrammarProfiles.add('chiq-au-exact-spec-product-whd-v1');
+  }
+  if (hisenseLegacySpecScope) {
+    appliedGrammarProfiles.add('hisense-au-legacy-spec-net-box-axes-v1');
+  }
+  if (hisenseNetPackageScope) {
+    appliedGrammarProfiles.add('hisense-au-exact-spec-net-package-whd-v1');
   }
   if (samsungWasherWildcardScope) {
     appliedGrammarProfiles.add('samsung-au-washer-wildcard-specification-v1');
@@ -2365,6 +2700,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       structuredFinishVariantScope?.dimensionFragment,
     );
     const chiqSpecPageScoped = items.includes(chiqSpecScope?.fragment);
+    const hisenseLegacySpecPageScoped = hisenseLegacySpecScope?.page === pageIndex + 1;
+    const hisenseNetPackagePageScoped = hisenseNetPackageScope?.page === pageIndex + 1;
     const fisherPaykelDw60PageScoped = items.includes(
       fisherPaykelDw60Scope?.dimensionFragment,
     );
@@ -2384,7 +2721,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       && !sharedModelListScoped && !groupedColumnScoped
       && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped
       && !chiqSpecPageScoped && !samsungWasherWildcardPageScoped
-      && !fisherPaykelRf610PageScoped) return;
+      && !fisherPaykelRf610PageScoped && !hisenseLegacySpecPageScoped
+      && !hisenseNetPackagePageScoped) return;
     const bekoPageScoped = items.some((item) => (
       ['title', 'page_header'].includes(item.type)
         && containsExplicitModelExpression(item.text, model)
@@ -2392,6 +2730,18 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const bekoSpec = bekoPageScoped || bekoDocumentScoped
       ? bekoAuDishwasherSpecRows(items, caseIdentity, true)
       : null;
+    for (const scope of [hisenseLegacySpecScope, hisenseNetPackageScope]) {
+      if (!scope || scope.page !== pageIndex + 1) continue;
+      for (const row of scope.rows) {
+        const claims = [
+          ...dimensionClaims(row, scope.fragment, pageIndex + 1, fields, category),
+          ...directClaims(
+            row, scope.fragment, pageIndex + 1, fields, category, claimSemanticsVersion,
+          ),
+        ];
+        for (const claim of claims) candidates.get(claim.field)?.push(claim);
+      }
+    }
     if (hisenseDiagram) {
       appliedGrammarProfiles.add(hisenseDiagram.grammarProfileId);
       for (const row of hisenseDiagram.rows) {
@@ -2445,6 +2795,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       || joinedScalarRowsByFragment.has(item)
     ))) {
       if (chiqSpecScope && fragment !== chiqSpecScope.fragment) continue;
+      if (hisenseLegacySpecScope?.sourceFragments.includes(fragment)
+        || hisenseNetPackageScope?.fragment === fragment) continue;
       let rows;
       if (fragment.type === 'table') {
         const shiftedRows = claimSemanticsVersion === 2
@@ -2625,6 +2977,7 @@ export function findMineruImageOnlyDimensionPages(jsonBytes) {
   const modelScopedDimensionDisclaimer = /\bproduct dimensions and specifications in this page apply to the specific product and model\b/i;
   const exactModelQrgHeader = /\bquick reference guide\s*>\s*[a-z0-9][a-z0-9-]{3,}\b/i;
   const explicitAxisValue = /\b(?:width|wide|height|high|depth|deep)\b[^\d]{0,20}\d+(?:\.\d+)?(?:\s*(?:-|–|—|to)\s*\d+(?:\.\d+)?)?\s*(?:mm|cm)\b/i;
+  const explicitAxisUnitBeforeValue = /\b(width|wide|height|high|depth|deep)\b\s*(?:mm|cm)\s*\d+(?:\.\d+)?\b/gi;
   const explicitTriple = /\d+(?:\.\d+)?\s*(?:mm|cm)?\s*[x×*]\s*\d+(?:\.\d+)?\s*(?:mm|cm)?\s*[x×*]\s*\d+(?:\.\d+)?\s*(?:mm|cm)\b/i;
   const pages = [];
   document.pages.forEach((items, index) => {
@@ -2638,8 +2991,16 @@ export function findMineruImageOnlyDimensionPages(jsonBytes) {
       && items.some((item) => ['index', 'list', 'table'].includes(item.type)
         && /^(?:text_list(?:\s+unordered)?)?$/i.test(normalizedText(item.text))
         && (item.bbox[2] - item.bbox[0]) * (item.bbox[3] - item.bbox[1]) >= 20_000);
+    const unitBeforeValueAxes = new Set([...text.matchAll(explicitAxisUnitBeforeValue)]
+      .map((match) => ({
+        width: 'width', wide: 'width', height: 'height', high: 'height',
+        depth: 'depth', deep: 'depth',
+      })[match[1].toLowerCase()]));
+    const completeUnitBeforeValueAxes = ['width', 'height', 'depth']
+      .every((axis) => unitBeforeValueAxes.has(axis));
     if ((imageDimensionSignal || titledDimensionImage || malformedDimensionStructure)
-      && !explicitAxisValue.test(text) && !explicitTriple.test(text)) pages.push(index + 1);
+      && !explicitAxisValue.test(text) && !explicitTriple.test(text)
+      && !completeUnitBeforeValueAxes) pages.push(index + 1);
   });
   return Object.freeze(pages);
 }

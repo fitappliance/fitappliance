@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T00:48:24.635Z",
-  "sourceBundleSha256": "d5ec82378bb8fbcfbaebd6cf8ab0a68d6e273bdd96c3b96dd7fd4ef42f2a53d8",
+  "generatedAt": "2026-07-16T01:57:11.554Z",
+  "sourceBundleSha256": "2065974b19fa0172aa22c9a0d97017d2611731e2dac09e671ac015034ba1b612",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -98,6 +98,20 @@
       "contentSha256": "ed789eb7b9e8234d75733d7dae518e44803108c00c919cc1796b9848add855a6",
       "receiptBindingSha256": "4156243f4bbae30b071b0a0c5d21cf9f88ff9af6d7315c90a2f25dcf71e64868",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/88/82/8882c4d4897cd5bb2610bb209dd342e178a944abb2a35ecde91bdbdce25076c4.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_0559733e484d45dbaa45b81f",
+      "referenceId": "fa_ref_a6ce7d6da8c03860f80e9554",
+      "brand": "Hisense",
+      "model": "HRVF240",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRVF240/240l-single-door-hybrid-fridge-freezer-white",
+      "sourcePdfSha256": null,
+      "contentSha256": "77884c63b5b212d72ece3ecba3f2ca5f61da893e46c92d547ff8f17c30b2ec8d",
+      "receiptBindingSha256": "725def29c7092af95aa689242e985aa5169c7a2a21e9712c0fe8707f6c4797e0",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -228,6 +242,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_1b5062c9517dd3f7d50f7400",
+      "referenceId": "fa_ref_186b07f656753e473f00fc23",
+      "brand": "Hisense",
+      "model": "HRCF199",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRCF199/chest-freezer-200l",
+      "sourcePdfSha256": null,
+      "contentSha256": "1cd7951c4444d957ef7c28d531a7e92da49f5da3ad4431f7d8910fdb23b1956d",
+      "receiptBindingSha256": "d02a36fc048ade29b274c162c29769862170131b01eb1d81f02001ba1efdcff5",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_1bda59f26425adb4db35d758",
       "referenceId": "fa_ref_1c4d6922bf20eb92d1de792a",
       "brand": "CHIQ",
@@ -238,6 +266,20 @@
       "contentSha256": "ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6",
       "receiptBindingSha256": "b0bc5252049e2ae03c81db2fbdd0fb608a5aa87b0d80d8e28176f2e5ea052588",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/48/62/486271c6f950b00dcbab782a9b3817d0d742ab2355692b2dad0d75e4a8f05e5c.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_1de1b2062f99a004665951ca",
+      "referenceId": "fa_ref_17033117dd8dab27a7ed952e",
+      "brand": "Hisense",
+      "model": "HRTF497SW",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRTF497SW/496l-silver-top-mount-fridge",
+      "sourcePdfSha256": null,
+      "contentSha256": "fe64ca39c6dff04cbd223ad80bec9ebac6582a4729964d207326f6494f7ccaf2",
+      "receiptBindingSha256": "e6f96bb02a47483c3e4ac7fd299f4436db377709012106d9a80c6e6656d09ae7",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -368,6 +410,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_288621fe7e39f4e8d7ef9cff",
+      "referenceId": "fa_ref_92e0fb04cedc250ae2ee2f14",
+      "brand": "Hisense",
+      "model": "HRCD454BW",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRCD454BW/french-door-pureflat-black-steel-454l",
+      "sourcePdfSha256": null,
+      "contentSha256": "deed4c148c0ff252327e95932107aca46bce8f99a256f841a343d33943d3062e",
+      "receiptBindingSha256": "3d65e8742d0b90bdc56fc2daed7af41512a204da6c6e7fa95347282bee6138d2",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_28a9b3256f927505a543f326",
       "referenceId": "fa_ref_6c80d8adbba8ba64a93d41de",
       "brand": "Bosch",
@@ -462,6 +518,20 @@
       "contentSha256": "f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb",
       "receiptBindingSha256": "b660cea993c1c4cddc049fb67a6c017ff1cd5172525b6d0294aba879d2f8d80f",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/2e/74/2e741039c221af4767419dcf4972aa3067463c21a0f5c3c6989123e392daa023.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_2e4c5abb8feb90a0e5da61db",
+      "referenceId": "fa_ref_ae05134bb1eaf3c0b5f8c9a6",
+      "brand": "Hisense",
+      "model": "HRBM418S",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRBM418S/417l-bottom-mount-fridge-stainless-steel",
+      "sourcePdfSha256": null,
+      "contentSha256": "631dfea517b11912d9d0d0ff0a7064efc6779f97d72c1d2df498ab721536b291",
+      "receiptBindingSha256": "3f4cef920b6b96de58130f460f825aa0e48d4b409e270f2cb42613dd787b46fe",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -690,6 +760,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_3f4aff3df1d907a481afbc36",
+      "referenceId": "fa_ref_cd8df7c7abb3301cea66c9d7",
+      "brand": "Hisense",
+      "model": "HRBF179B",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRBF179B/black-179l-bar-fridge",
+      "sourcePdfSha256": null,
+      "contentSha256": "96632e9cce215604acee7e2e262668f841a8885791ff17fcb1ae20db99fd6265",
+      "receiptBindingSha256": "77bbc4b863ce07efc256032fec76a730a9add56c385616a882321ce03abc5c77",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_42d212f53996bbf2b9a2c222",
       "referenceId": "fa_ref_efe40b27d389481fc3b0d451",
       "brand": "Westinghouse",
@@ -826,6 +910,20 @@
       "contentSha256": "eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1",
       "receiptBindingSha256": "04b6f9bca8511d18335994c276bdeb08f681d4abc7cc27c7a00bb364e69b7418",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/19/00/190093e66b50124a7aeb6baf010f4656cceb89f6f710a39b860484acb715a597.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_4cffb47a334b277b5963731c",
+      "referenceId": "fa_ref_9fcf4a23ebba51201847a634",
+      "brand": "Hisense",
+      "model": "HRCF500",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRCF500/chest-freezer-500l",
+      "sourcePdfSha256": null,
+      "contentSha256": "1e486aaf63eb6a5076163d062368a947b720392bb27e2c0de5f9164fd3df0f98",
+      "receiptBindingSha256": "b3005da0942bfa38e9df4e120a007c345e78b9a31ad2fe3f83fb28e1bf1fa926",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -1320,6 +1418,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_78ab89ac26fd4170af35366b",
+      "referenceId": "fa_ref_8af779f194238702757f10fa",
+      "brand": "Hisense",
+      "model": "HRBF125",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRBF125/white-125l-bar-fridge",
+      "sourcePdfSha256": null,
+      "contentSha256": "cc9a8e7b4eaeafda32c03215612f4a0d00c6f13b8104b39dcd4dc2144e6ac6be",
+      "receiptBindingSha256": "7e89abdfce675dd0c7ae1e8a29aaeec7e755d128a53364c886e2ee9ede27262d",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_80e0025c3c7514692ec7afdd",
       "referenceId": "fa_ref_fc9cb54d89ad2373efd37b74",
       "brand": "Bosch",
@@ -1344,6 +1456,20 @@
       "contentSha256": "5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6",
       "receiptBindingSha256": "d2bcdc1f7b63641457546c134284e69e36878d811b1f2ba86797cad78efdc4eb",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b7/66/b766abd9eb0bce23597ab98a5f72d700f83cc32a2283a535b73eeafe4f8cdaeb.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_821b4cf1def899be41f812c1",
+      "referenceId": "fa_ref_78d4fc27221035811883a51c",
+      "brand": "Hisense",
+      "model": "HRCF300",
+      "category": "fridge",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
+      "sourcePdfSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
+      "contentSha256": "77b856e688cc7c2ff7cfc2132ba1bb7283cb01ee5f25620ac913f8f2e44115dc",
+      "receiptBindingSha256": "4a4cb7687cdf213bbd8604419f601e6b5dc4a3e3be901daf791a599885079734",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/90/4a/904ab687ec8a4289429fcec49796d27e8f278aaacbbe3d95bbfbc7d8666ea943.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1558,6 +1684,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_990b53da26472cb0b6d689dd",
+      "referenceId": "fa_ref_20240ff4053c000edbb5dfb0",
+      "brand": "Hisense",
+      "model": "HRCD585BWB",
+      "category": "fridge",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
+      "sourcePdfSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
+      "contentSha256": "16de3b8f24d928fb45f4df71f524eea20b7a02e3d9723f925dca5feb7ced42d0",
+      "receiptBindingSha256": "38b3258836003fb75da51e5fe77f0f40f2708c96b249de3f759201b15008b61f",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/5c/47/5c4797c758b5c53ead8f7b6d32d0689a259e23773da719ba324fedda00f4f328.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_9a010a641a1dd84d8b79cb07",
       "referenceId": "fa_ref_6700a70e9c4deb1706d2f4fc",
       "brand": "Haier",
@@ -1610,6 +1750,20 @@
       "contentSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
       "receiptBindingSha256": "d058194c692c93254d9a44a7b9dcdd8cf05b0521dc59b6de8217f2a191ed8f1c",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/cd/4c/cd4cdd55586884ec8c0c83fefe87e7c6217d007a3731d805f5cb8adf9d3a0ada.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_9dbd1ed2d124c09199f3a802",
+      "referenceId": "fa_ref_3387664f1c430e7fb57d9967",
+      "brand": "Hisense",
+      "model": "HRCF702",
+      "category": "fridge",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
+      "sourcePdfSha256": "119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b",
+      "contentSha256": "119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b",
+      "receiptBindingSha256": "bc6eb4bb9b78aa2eb20c6aa74b5ad1b28bc83feb9bd1c1fd1563f31932b87cec",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/30/54/30542db84e8d23af09356159219598fd5ba0451b9f3a7264ddeb502271d04da5.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1736,6 +1890,20 @@
       "contentSha256": "97eff8a3208f5c6da8ec29d625cc8ce5210e260efe1035d4c4446d9b994446bf",
       "receiptBindingSha256": "8260be59d17219c3cc641aa4c74576fdb8fc645dc79d62a0921396dad6b5cbe2",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/ee/a0/eea0fdb64f782d514c0391fa4d33f975c7e368fc4932f06073f13e36de7ee081.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_a76887cdab49b0e267ef7447",
+      "referenceId": "fa_ref_ec0dc31aec66ad48372e6000",
+      "brand": "Hisense",
+      "model": "HRCF297",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRCF297/chest-freezer-300l",
+      "sourcePdfSha256": null,
+      "contentSha256": "eb34a45d55793dc6cd817e4e03ae36928675fa3967c19998d095c2a078c16731",
+      "receiptBindingSha256": "af798222b2e80a021fae1856ec7aaaf28581356732519149c59903ab1f6d2227",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -1978,6 +2146,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_bc47b8ee09bb51e2a16c297c",
+      "referenceId": "fa_ref_400c55d0b2eba10373b521ae",
+      "brand": "Hisense",
+      "model": "HRCF439",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRCF439/440l-hybrid-chest-freezer",
+      "sourcePdfSha256": null,
+      "contentSha256": "da13ea0ff3282da54319aa34b53bf2907812775a339fd1d3ca4750843f1df530",
+      "receiptBindingSha256": "2b59af02378ccd30ed24f611fdfb803f2e92d014e6276fca71c8adedbe2de51d",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_be040e31138e16accc76688d",
       "referenceId": "fa_ref_eb8c80dbac9425af4a678d96",
       "brand": "Westinghouse",
@@ -2062,6 +2244,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c481a71f3bc936ee49898221",
+      "referenceId": "fa_ref_af8c2d9b071081cb6f109e3d",
+      "brand": "Hisense",
+      "model": "HRCD586TBWB",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRCD586TBWB/pureflat-eclipse-dark-steel-585l",
+      "sourcePdfSha256": null,
+      "contentSha256": "44495e5034e638260865155a521aea0b09f47d75bbe1c741e12884af3885146e",
+      "receiptBindingSha256": "7fe7f63621fe09684cef4abacb4c7592c1a45e860b9af7205d55132277bcad3a",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c498391ec39287ef729be054",
       "referenceId": "fa_ref_8799d0d763798612cece5cf0",
       "brand": "Haier",
@@ -2142,6 +2338,20 @@
       "contentSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
       "receiptBindingSha256": "2d7d585efd620048c5a3259d0437230aecde62d3f721756e05d9d55427b1320c",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/2e/95/2e95122ef0fb2a34fb7fb007a81d4ddc67590b479194f09b205bcbd396991e0e.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_cd6a731478fc9a9763a249c4",
+      "referenceId": "fa_ref_c540a956ee574610850b7567",
+      "brand": "Hisense",
+      "model": "HRBM417C",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRBM417C/bottom-mount-black-417l",
+      "sourcePdfSha256": null,
+      "contentSha256": "0709cb21550dd2c7d362da357817cf2dd1499547051649230419b0d9df12a60e",
+      "receiptBindingSha256": "03913b256316980d53c4620573101ed4e8809e40911f9358c4a042259407fe3e",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -2468,6 +2678,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_e9736486c9dda34e4a4b1082",
+      "referenceId": "fa_ref_1007383838c55161f7d2bc37",
+      "brand": "Hisense",
+      "model": "HRCD483TBW",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRCD483TBW/pureflat-slim-french-door-483l-dark-steel",
+      "sourcePdfSha256": null,
+      "contentSha256": "d504beb485b59dc79ad101974030aed94805eca6078a6d17db769318b6e4929e",
+      "receiptBindingSha256": "7f388e3c59641a5ef9045c1e284c982c484d2d1aefc9e40071a5f2f054ab795a",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_eb58b54c30decadc6bf2560d",
       "referenceId": "fa_ref_55aa979380310a84995d90b1",
       "brand": "Westinghouse",
@@ -2566,6 +2790,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_f707686e8148716a51d35920",
+      "referenceId": "fa_ref_0dd7df103229ad7727cd7a55",
+      "brand": "Hisense",
+      "model": "HRFD634BW",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRFD634BW/pureflat-french-door-dark-steel-634l",
+      "sourcePdfSha256": null,
+      "contentSha256": "81945b6a4ca05a9ad8f9d93eceba12c9b957e41842c662ecc1a2a1113fd67d77",
+      "receiptBindingSha256": "a913e0bafc281660317864ac6fbf166c8f1002ca59525a1100ef64cbeced548c",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_f8259b57fbeaf925ef6595c5",
       "referenceId": "fa_ref_2d93ac8f6476007052a6cc88",
       "brand": "Fisher & Paykel",
@@ -2636,6 +2874,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_febed644196de24737ec7447",
+      "referenceId": "fa_ref_45c31380fcf2ecfad8feac5b",
+      "brand": "Hisense",
+      "model": "HRCF144",
+      "category": "fridge",
+      "sourceUrl": "https://hisense.com.au/product/HRCF144/chest-freezer-145l",
+      "sourcePdfSha256": null,
+      "contentSha256": "85e439ea121938bc891c1f9bafed7dc8ee76ee51c5dde7985c69b45f19421987",
+      "receiptBindingSha256": "67e0b6be63e33b0d1d087d03de4c7fbb377ec5e0f1aed3b9eb4a81f43beb8b95",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_ff2a7ec908dd16cfd3730fee",
+      "referenceId": "fa_ref_ddfd483f90bc3bb1f63d68dd",
+      "brand": "Hisense",
+      "model": "HRBC140",
+      "category": "fridge",
+      "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
+      "sourcePdfSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
+      "contentSha256": "11946b5097cb6459fb44e3658498ec5003c8546b13104456222e2f60dd4adaed",
+      "receiptBindingSha256": "8c61adb3858814da3b67c5e46e95fe32d8cf042cd5fe36af6c1b68a81b0dfef9",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/7e/af/7eaf80802a8dc6416c249a0def0011926875fe8e217b04117bd00f74c9ae244b.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_ffb69939957753f902774ff0",
       "referenceId": "fa_ref_d08c8849ae04f3afe954c184",
       "brand": "Bosch",
@@ -2651,11 +2917,11 @@
     }
   ],
   "summary": {
-    "entries": 167,
-    "sources": 189,
-    "passed": 189,
+    "entries": 186,
+    "sources": 208,
+    "passed": 208,
     "failed": 0
   },
-  "checkedObjects": 400,
-  "semanticAuditSha256": "59e2c76daccbc694194507d3809e8388f3fbc505a9347d21ea0f4643bb2c247a"
+  "checkedObjects": 423,
+  "semanticAuditSha256": "50270f621f07745da0a578032d506714eb56bfd8ab5ab144155a731b34f105d6"
 }
