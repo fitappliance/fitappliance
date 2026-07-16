@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T09:24:30.862Z",
-  "sourceBundleSha256": "1a180557ff012424d714ab6efba288cb6655f46cdc9890884981d5b0a48c8877",
+  "generatedAt": "2026-07-16T09:42:35.942Z",
+  "sourceBundleSha256": "4281d2877310d214202b0d7fbe8cd2dd309b3167b3228535056218073f6c535b",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -266,6 +266,20 @@
       "contentSha256": "aeec632a0bbf8028e1741984b5d88655bcf93b391a06595c6be4df039e386367",
       "receiptBindingSha256": "b87b4bd2ebd48338e41b02fae6cdc16b47e90b2de6e54c22ae3b64305d386023",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/4e/e3/4ee3991fb2c5b4ef3a355bd672f9a2a1122da9bd96386cd76aca8f366730df33.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_16dbb87245a533dacb255f65",
+      "referenceId": "fa_ref_258b0f8b71f2daf986855d5e",
+      "brand": "ASKO",
+      "model": "DBI654IB.S.AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729066?fields=FULL&lang=en_AU&curr=AUD",
+      "sourcePdfSha256": null,
+      "contentSha256": "7aaa0c80688257b0df5a4ab7b31aed5b5760aef304639d07191f03ad427be904",
+      "receiptBindingSha256": "85c38b016db1542583d8bf507e51bf9be07008c30706c585b75ec87049656f62",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -1852,6 +1866,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_7a488368d5b9aba66f642971",
+      "referenceId": "fa_ref_ba76280a1171cb568f94bcfe",
+      "brand": "ASKO",
+      "model": "DBI653IBBS",
+      "category": "dishwasher",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732368?fields=FULL&lang=en_AU&curr=AUD",
+      "sourcePdfSha256": null,
+      "contentSha256": "93e6a1cf6b970a160a844129f721cb6ded378424fbcfd3948dd609ffb24d0bba",
+      "receiptBindingSha256": "df1b6c2b61a1009bf47c60b43ced13fed1384781aa8b886bb782bb1492805f55",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_7cf633a42176ba695f6b7a64",
       "referenceId": "fa_ref_61cdbd9ad61d0e70c8660439",
       "brand": "Bosch",
@@ -1890,6 +1918,20 @@
       "contentSha256": "5e2f588a8b7ae5fe869dfd7686b3f6581f85cd414020dc2a41294acc0a136be6",
       "receiptBindingSha256": "d2bcdc1f7b63641457546c134284e69e36878d811b1f2ba86797cad78efdc4eb",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b7/66/b766abd9eb0bce23597ab98a5f72d700f83cc32a2283a535b73eeafe4f8cdaeb.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_81c2320b099b853b9181b255",
+      "referenceId": "fa_ref_e40f387ef46ed394b086fe05",
+      "brand": "ASKO",
+      "model": "DBI253IBW",
+      "category": "dishwasher",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732486?fields=FULL&lang=en_AU&curr=AUD",
+      "sourcePdfSha256": null,
+      "contentSha256": "a20220ab9f4631c24c6ec8a486304478a2e68793932ecb24a47dcb60d2943832",
+      "receiptBindingSha256": "4924a0f012e095b75ee1a4d2d353c2da4623654893e6c97d9d312672d4995bc4",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -2156,6 +2198,20 @@
       "contentSha256": "40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db",
       "receiptBindingSha256": "9987899d4e224e8e6fc7e45b9df60731f68e409f850f7049cc04188a8954168e",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/58/42/5842639fcf19f838b2d10a80bf9336545450dccdc59fbeb2debeddf1ce62533b.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_9710d33004a038f02bab307c",
+      "referenceId": "fa_ref_5d131b47f7673772c629eba4",
+      "brand": "ASKO",
+      "model": "DBI653IBW",
+      "category": "dishwasher",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732366?fields=FULL&lang=en_AU&curr=AUD",
+      "sourcePdfSha256": null,
+      "contentSha256": "7568ae30ac714ec84896e11433102321f9618ef1e3587e6fb9b0bf9d9620ad28",
+      "receiptBindingSha256": "fa405cef3ee0911b7318c14afcfefdecef5b53f34821cae073fde628cf74e348",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -2548,6 +2604,20 @@
       "contentSha256": "634815415f8da43b3fbf0a572712d4f92362ab70e433c6666e515334b8b52c0b",
       "receiptBindingSha256": "5669099283c1eb1f20184108571b92b5ae219756ee4bf54abe9875444d8b6129",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/68/97/68976f01efaa1c6d5e1d714513d9dad81bfba15d151f9ac1820f57a46e2c4198.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_a7a1fad72f198ffda7434a27",
+      "referenceId": "fa_ref_65b3877e897f3a49441140c2",
+      "brand": "ASKO",
+      "model": "DBI653IBS",
+      "category": "dishwasher",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732367?fields=FULL&lang=en_AU&curr=AUD",
+      "sourcePdfSha256": null,
+      "contentSha256": "faf6b50f88102366e5d784bbfdad14bccc7320fa5cde143c8f7b4dec616c7700",
+      "receiptBindingSha256": "7c9ba4e7b1819b9bcf78ff33db4a975ec3dd421bc9f9f2a8b75454580d05d4be",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -3799,11 +3869,11 @@
     }
   ],
   "summary": {
-    "entries": 246,
-    "sources": 271,
-    "passed": 271,
+    "entries": 251,
+    "sources": 276,
+    "passed": 276,
     "failed": 0
   },
-  "checkedObjects": 539,
-  "semanticAuditSha256": "5a598ed2ce45981cc49a18d88169d1487b3b5f1a28c7a96460d9bca19f6b9594"
+  "checkedObjects": 544,
+  "semanticAuditSha256": "12fe254741cab25802ec97b3c69973d6873ff3e60bab29f8c3acce9b5e1aacbc"
 }

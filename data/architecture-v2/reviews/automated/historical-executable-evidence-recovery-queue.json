@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T08:47:06.274Z",
-  "sourceAcquisitionQueueSha256": "77e2dbca116b6a82e1ba9ccbcd1bcd152090b72c2bfa6d091feb0aae271ccad2",
+  "generatedAt": "2026-07-16T09:42:07.285Z",
+  "sourceAcquisitionQueueSha256": "c268a318b81dbbf732bcc90fab6f94381535570d80a686de0dc78e5cd7dec6db",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7830,
+    "acquisitionRecords": 7825,
     "fetchJobs": 1,
-    "targets": 7747,
-    "resolverOnlyTargets": 7746,
+    "targets": 7742,
+    "resolverOnlyTargets": 7741,
     "candidateEdges": 1,
-    "uniqueReferences": 7747,
+    "uniqueReferences": 7742,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1173,
+      "CURRENT_RETAIL": 1168,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 972,
+      "P0_CURRENT_MISSING_DIMENSIONS": 968,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
-      "P2_CURRENT_CONFIRMATION": 188,
+      "P2_CURRENT_CONFIRMATION": 187,
       "P3_HISTORICAL_CONFIRMATION": 4583,
       "P4_CONFLICT_RESOLUTION": 68
     },
@@ -222,154 +222,6 @@
             "width": 596,
             "height": 860,
             "depth": 550
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_81c2320b099b853b9181b255",
-      "referenceId": "fa_ref_e40f387ef46ed394b086fe05",
-      "legacyRuntimeId": "ao-84581",
-      "canonicalProductId": "fa_prod_08c68c9c180bc0aedf4d38b0",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI253IBW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_5e72e3c852cbb5a371c47050",
-        "legacy:data/pdf-evidence-raw/DBI253IBW.json",
-        "source:doc_5e72e3c852cbb5a371c47050"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_5e72e3c852cbb5a371c47050",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 819,
-            "depth": 559
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_7a488368d5b9aba66f642971",
-      "referenceId": "fa_ref_ba76280a1171cb568f94bcfe",
-      "legacyRuntimeId": "ao-73220",
-      "canonicalProductId": "fa_prod_6634daf578d1ec1f6e7a6455",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI653IBBS",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_0c9ad9d28584f6b92a1035bc",
-        "legacy:data/pdf-evidence-raw/DBI653IBBS.json",
-        "source:doc_0c9ad9d28584f6b92a1035bc"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_0c9ad9d28584f6b92a1035bc",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 819,
-            "depth": 559
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_a7a1fad72f198ffda7434a27",
-      "referenceId": "fa_ref_65b3877e897f3a49441140c2",
-      "legacyRuntimeId": "ao-73221",
-      "canonicalProductId": "fa_prod_6c7aa7b3d20386836ff2229c",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI653IBS",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_9137ac2d2ced8f78a5a92f62",
-        "legacy:data/pdf-evidence-raw/DBI653IBS.json",
-        "source:doc_9137ac2d2ced8f78a5a92f62"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_9137ac2d2ced8f78a5a92f62",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 819,
-            "depth": 559
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_9710d33004a038f02bab307c",
-      "referenceId": "fa_ref_5d131b47f7673772c629eba4",
-      "legacyRuntimeId": "ao-73222",
-      "canonicalProductId": "fa_prod_a59b8f5716daf0fb5c621576",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI653IBW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_9a8cc9294eb2e97a5f8a3a32",
-        "legacy:data/pdf-evidence-raw/DBI653IBW.json",
-        "source:doc_9a8cc9294eb2e97a5f8a3a32"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_9a8cc9294eb2e97a5f8a3a32",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 819,
-            "depth": 559
           }
         }
       ],
@@ -82646,54 +82498,6 @@
       "sourceDocumentIds": [],
       "legacyHints": [],
       "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_16dbb87245a533dacb255f65",
-      "referenceId": "fa_ref_258b0f8b71f2daf986855d5e",
-      "legacyRuntimeId": "ao-63966",
-      "canonicalProductId": "fa_prod_9ea4dbd3dbd6c88d51482378",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI654IB.S.AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a06fd608acf0b83c34b7f3b3",
-        "legacy:data/pdf-evidence-raw/DBI654IB.S.AU.json",
-        "legacy:data/pdf-evidence-raw/DBI654IBSAU.json",
-        "source:doc_a06fd608acf0b83c34b7f3b3"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a06fd608acf0b83c34b7f3b3",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 819,
-            "depth": 559
-          }
-        }
-      ],
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 859,
-            "depth": 574
-          }
-        }
-      ],
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-03849129cd2de8e2eea1c1a0",
-  "generatedAt": "2026-07-16T08:47:06.274Z",
+  "batchId": "historical-recovery-63ce277829830eafa5026e34",
+  "generatedAt": "2026-07-16T09:42:07.285Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "9325317c1c4fc21c591fca5687fc2a917171f91a4f127c018ba27f3fd655f5e3"
+    "sha256": "376dcaea2c9bb5ad76e90085340b0625106b6ecb8f9f5051744d12bf3bb6c932"
   },
   "policy": {
     "version": "2026-07-16.13",
@@ -187,134 +187,6 @@
               "width": 596,
               "height": 860,
               "depth": 550
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_81c2320b099b853b9181b255",
-      "referenceId": "fa_ref_e40f387ef46ed394b086fe05",
-      "legacyRuntimeId": "ao-84581",
-      "canonicalProductId": "fa_prod_08c68c9c180bc0aedf4d38b0",
-      "brand": "ASKO",
-      "model": "DBI253IBW",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_5e72e3c852cbb5a371c47050",
-            "dimensionsMm": {
-              "width": 596,
-              "height": 819,
-              "depth": 559
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_7a488368d5b9aba66f642971",
-      "referenceId": "fa_ref_ba76280a1171cb568f94bcfe",
-      "legacyRuntimeId": "ao-73220",
-      "canonicalProductId": "fa_prod_6634daf578d1ec1f6e7a6455",
-      "brand": "ASKO",
-      "model": "DBI653IBBS",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_0c9ad9d28584f6b92a1035bc",
-            "dimensionsMm": {
-              "width": 596,
-              "height": 819,
-              "depth": 559
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_a7a1fad72f198ffda7434a27",
-      "referenceId": "fa_ref_65b3877e897f3a49441140c2",
-      "legacyRuntimeId": "ao-73221",
-      "canonicalProductId": "fa_prod_6c7aa7b3d20386836ff2229c",
-      "brand": "ASKO",
-      "model": "DBI653IBS",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_9137ac2d2ced8f78a5a92f62",
-            "dimensionsMm": {
-              "width": 596,
-              "height": 819,
-              "depth": 559
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_9710d33004a038f02bab307c",
-      "referenceId": "fa_ref_5d131b47f7673772c629eba4",
-      "legacyRuntimeId": "ao-73222",
-      "canonicalProductId": "fa_prod_a59b8f5716daf0fb5c621576",
-      "brand": "ASKO",
-      "model": "DBI653IBW",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_9a8cc9294eb2e97a5f8a3a32",
-            "dimensionsMm": {
-              "width": 596,
-              "height": 819,
-              "depth": 559
             }
           }
         ]
@@ -75706,48 +75578,6 @@
         "activeReceiptSources": [],
         "registryHints": [],
         "legacyHints": []
-      }
-    },
-    {
-      "targetId": "recovery_target_16dbb87245a533dacb255f65",
-      "referenceId": "fa_ref_258b0f8b71f2daf986855d5e",
-      "legacyRuntimeId": "ao-63966",
-      "canonicalProductId": "fa_prod_9ea4dbd3dbd6c88d51482378",
-      "brand": "ASKO",
-      "model": "DBI654IB.S.AU",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:dishwasher",
-            "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-            "dimensionsMm": {
-              "width": 596,
-              "height": 859,
-              "depth": 574
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_a06fd608acf0b83c34b7f3b3",
-            "dimensionsMm": {
-              "width": 596,
-              "height": 819,
-              "depth": 559
-            }
-          }
-        ]
       }
     },
     {
@@ -237994,7 +237824,7 @@
   ],
   "summary": {
     "artifactJobs": 1,
-    "targets": 7747,
+    "targets": 7742,
     "candidateEdges": 1,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1436,
-    "fetchJobs": 1399,
-    "targets": 1433,
-    "candidateEdges": 1436,
+    "documents": 1431,
+    "fetchJobs": 1394,
+    "targets": 1428,
+    "candidateEdges": 1431,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1433,
+    "uniqueReferences": 1428,
     "byCurrentAction": {
-      "CONFIRM_REQUIRED": 410,
-      "MEASURE_REQUIRED": 998,
+      "CONFIRM_REQUIRED": 409,
+      "MEASURE_REQUIRED": 994,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1186
+      "CURRENT_RETAIL": 1181
     },
     "byCategory": {
-      "dishwasher": 315,
+      "dishwasher": 310,
       "dryer": 61,
       "fridge": 835,
       "washing_machine": 222
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1136,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1131,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 205,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 171,
+      "ALREADY_AUTO_FILL": 176,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -1159,32 +1159,6 @@
       ],
       "targetIds": [
         "recovery_target_6ffd832426730889b602a4a7"
-      ]
-    },
-    {
-      "jobId": "recovery_619b274229794f62882d3caa",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/4/8/d/048df6f5af5f2b7ebeebc6c71ea6d549a9cb8363_DBI653IBBS_ASKO_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_7a488368d5b9aba66f642971"
       ]
     },
     {
@@ -4643,32 +4617,6 @@
       ],
       "targetIds": [
         "recovery_target_171ef8d94217770a05aa6848"
-      ]
-    },
-    {
-      "jobId": "recovery_a187dffd0fd1793a66dbcec0",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/9/4/e/294ed17800a5d49b8aeb9504851d304e6b0c6806_DBI653IBS_ASKO_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_a7a1fad72f198ffda7434a27"
       ]
     },
     {
@@ -10623,32 +10571,6 @@
       ],
       "targetIds": [
         "recovery_target_fb75150e641413542e65e68f"
-      ]
-    },
-    {
-      "jobId": "recovery_8e31c5a3e007f3f3f9a43f6f",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/5/d/a/65da79d0752f579355d0a7118693dfc459147b55_DBI653IBW_ASKO_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_9710d33004a038f02bab307c"
       ]
     },
     {
@@ -18085,32 +18007,6 @@
       ],
       "targetIds": [
         "recovery_target_140f4cf59ee2a98b85bf902f"
-      ]
-    },
-    {
-      "jobId": "recovery_5922de4395154ad069899b62",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/b/1/0/f/b10fb0f78d10b021184f44b3cb32a914b69f6d07_DBI253IBW_ASKO_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_81c2320b099b853b9181b255"
       ]
     },
     {
@@ -28556,32 +28452,6 @@
       ]
     },
     {
-      "jobId": "recovery_67c7e4af1a48b60b13d4cc31",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/c/d/7/4cd72296457a5f5b8541cefda52bf0083476bf15_Asko_DBI654IB.S.AU_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_16dbb87245a533dacb255f65"
-      ]
-    },
-    {
       "jobId": "recovery_fe4e24ef5910fa26eec6972e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/4/d/8/4/4d844c1839fe8e33c76056b317c43d01c484c080_IVFSD10X_ILVE_Specifications_Sheet.pdf",
       "authorityBrand": "Ilve",
@@ -36660,170 +36530,6 @@
         "recovery_5db6bb35aeec2dd74150de0e"
       ],
       "primaryJobId": "recovery_5db6bb35aeec2dd74150de0e"
-    },
-    {
-      "referenceId": "fa_ref_e40f387ef46ed394b086fe05",
-      "legacyRuntimeId": "ao-84581",
-      "canonicalProductId": "fa_prod_08c68c9c180bc0aedf4d38b0",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI253IBW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 819,
-        "depth": 559
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_81c2320b099b853b9181b255",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_5e72e3c852cbb5a371c47050"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_5e72e3c852cbb5a371c47050",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 819,
-            "depth": 559
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_5922de4395154ad069899b62"
-      ],
-      "primaryJobId": "recovery_5922de4395154ad069899b62"
-    },
-    {
-      "referenceId": "fa_ref_ba76280a1171cb568f94bcfe",
-      "legacyRuntimeId": "ao-73220",
-      "canonicalProductId": "fa_prod_6634daf578d1ec1f6e7a6455",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI653IBBS",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 819,
-        "depth": 559
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_7a488368d5b9aba66f642971",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_0c9ad9d28584f6b92a1035bc"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_0c9ad9d28584f6b92a1035bc",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 819,
-            "depth": 559
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_619b274229794f62882d3caa"
-      ],
-      "primaryJobId": "recovery_619b274229794f62882d3caa"
-    },
-    {
-      "referenceId": "fa_ref_65b3877e897f3a49441140c2",
-      "legacyRuntimeId": "ao-73221",
-      "canonicalProductId": "fa_prod_6c7aa7b3d20386836ff2229c",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI653IBS",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 819,
-        "depth": 559
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_a7a1fad72f198ffda7434a27",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_9137ac2d2ced8f78a5a92f62"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_9137ac2d2ced8f78a5a92f62",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 819,
-            "depth": 559
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_a187dffd0fd1793a66dbcec0"
-      ],
-      "primaryJobId": "recovery_a187dffd0fd1793a66dbcec0"
-    },
-    {
-      "referenceId": "fa_ref_5d131b47f7673772c629eba4",
-      "legacyRuntimeId": "ao-73222",
-      "canonicalProductId": "fa_prod_a59b8f5716daf0fb5c621576",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI653IBW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 819,
-        "depth": 559
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_9710d33004a038f02bab307c",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_9a8cc9294eb2e97a5f8a3a32"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_9a8cc9294eb2e97a5f8a3a32",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 819,
-            "depth": 559
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_8e31c5a3e007f3f3f9a43f6f"
-      ],
-      "primaryJobId": "recovery_8e31c5a3e007f3f3f9a43f6f"
     },
     {
       "referenceId": "fa_ref_984bc5e6e13c5ab7cb475ee9",
@@ -77373,57 +77079,6 @@
         "recovery_c7b2607143927f52941508e1"
       ],
       "primaryJobId": "recovery_c7b2607143927f52941508e1"
-    },
-    {
-      "referenceId": "fa_ref_258b0f8b71f2daf986855d5e",
-      "legacyRuntimeId": "ao-63966",
-      "canonicalProductId": "fa_prod_9ea4dbd3dbd6c88d51482378",
-      "category": "dishwasher",
-      "brand": "ASKO",
-      "model": "DBI654IB.S.AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 819,
-        "depth": 559
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 859,
-            "depth": 574
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_16dbb87245a533dacb255f65",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a06fd608acf0b83c34b7f3b3"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a06fd608acf0b83c34b7f3b3",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 819,
-            "depth": 559
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_67c7e4af1a48b60b13d4cc31"
-      ],
-      "primaryJobId": "recovery_67c7e4af1a48b60b13d4cc31"
     },
     {
       "referenceId": "fa_ref_637fa56e4ea92ec4e6971d8b",

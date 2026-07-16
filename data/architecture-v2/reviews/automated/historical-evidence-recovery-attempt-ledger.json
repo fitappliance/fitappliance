@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T08:43:17.560Z",
+  "generatedAt": "2026-07-16T09:40:54.270Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -4159,6 +4159,23 @@
       "acceptedAt": "2026-07-16T00:46:29.094Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_010616b0a303881a8f8a9139",
+      "targetId": "recovery_target_16dbb87245a533dacb255f65",
+      "referenceId": "fa_ref_258b0f8b71f2daf986855d5e",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729066?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "7aaa0c80688257b0df5a4ab7b31aed5b5760aef304639d07191f03ad427be904",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "0255983b19d013377ab3528a90196cf7d98256fb689a2c4947e7a4c279cfa360",
+      "semanticOutcomeSha256": "a5136a79ffbe600cb5d6803de1474ea4994d6f5d7f239a2f1af3a2a480db698c",
+      "batchId": "historical-recovery-03849129cd2de8e2eea1c1a0-slice-f8f0b8516c09",
+      "batchSha256": "57e4f9185a49f4d291e69e411573393aa060574c01e0cb1fcea9247a7e66c921",
+      "runId": "historical-asko-dbi-canary-20260716-a",
+      "resultsSha256": "49771289e892291c2c59e0c702172fc0113f53223ecbbe4bc61a8a9cc26efbd0",
+      "auditSha256": "82cbd5e7864764dd710dde0b76bbf6a8107881b86bf4e612baa2ae78f2037ab8",
+      "acceptedAt": "2026-07-16T09:39:30.075Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_053d20d1a165e2aad54c5757",
       "targetId": "recovery_target_96e21a478498cf542a6be80f",
       "referenceId": "fa_ref_b6841e9f51c0d64e75dcec0a",
@@ -6182,6 +6199,40 @@
       "acceptedAt": "2026-07-16T01:01:19.499Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_c4e1c34709d7fbc2c7cbbba0",
+      "targetId": "recovery_target_7a488368d5b9aba66f642971",
+      "referenceId": "fa_ref_ba76280a1171cb568f94bcfe",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732368?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "93e6a1cf6b970a160a844129f721cb6ded378424fbcfd3948dd609ffb24d0bba",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "b6f60f9565c766dea6651af0a73febd706f864d64aeb99de00a618387194d668",
+      "semanticOutcomeSha256": "b370ef96986926e70da64eb2fe91ef117cd626013e4731f59025d3127b8aad25",
+      "batchId": "historical-recovery-03849129cd2de8e2eea1c1a0-slice-f8f0b8516c09",
+      "batchSha256": "57e4f9185a49f4d291e69e411573393aa060574c01e0cb1fcea9247a7e66c921",
+      "runId": "historical-asko-dbi-canary-20260716-a",
+      "resultsSha256": "49771289e892291c2c59e0c702172fc0113f53223ecbbe4bc61a8a9cc26efbd0",
+      "auditSha256": "82cbd5e7864764dd710dde0b76bbf6a8107881b86bf4e612baa2ae78f2037ab8",
+      "acceptedAt": "2026-07-16T09:39:30.075Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_c54eed178f25f3ab47fba82d",
+      "targetId": "recovery_target_81c2320b099b853b9181b255",
+      "referenceId": "fa_ref_e40f387ef46ed394b086fe05",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732486?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "a20220ab9f4631c24c6ec8a486304478a2e68793932ecb24a47dcb60d2943832",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "936a89a7b573438b283da779364c7e9993812515e23e34cbeada7b1776b86c58",
+      "semanticOutcomeSha256": "7c7c4cbd0037d1014c216196254b9fe0acb3975edd4ed777e2d71b313e643a6f",
+      "batchId": "historical-recovery-03849129cd2de8e2eea1c1a0-slice-f8f0b8516c09",
+      "batchSha256": "57e4f9185a49f4d291e69e411573393aa060574c01e0cb1fcea9247a7e66c921",
+      "runId": "historical-asko-dbi-canary-20260716-a",
+      "resultsSha256": "49771289e892291c2c59e0c702172fc0113f53223ecbbe4bc61a8a9cc26efbd0",
+      "auditSha256": "82cbd5e7864764dd710dde0b76bbf6a8107881b86bf4e612baa2ae78f2037ab8",
+      "acceptedAt": "2026-07-16T09:39:30.075Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_c8cc306f1e19bc96a3434bf3",
       "targetId": "recovery_target_6e216388435951b5d5ff495d",
       "referenceId": "fa_ref_5c056404d2d38bf124e9077b",
@@ -6420,6 +6471,23 @@
       "acceptedAt": "2026-07-15T19:15:34.741Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_e23c24fd3a086d5da65f617a",
+      "targetId": "recovery_target_9710d33004a038f02bab307c",
+      "referenceId": "fa_ref_5d131b47f7673772c629eba4",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732366?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "7568ae30ac714ec84896e11433102321f9618ef1e3587e6fb9b0bf9d9620ad28",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "f09e1b38db93d44c3e2331bbef1b718a6862b3f3d113c6c1743b30c2d943e8e7",
+      "semanticOutcomeSha256": "7486434bdc81b51b93e066430fe40c1828424219ee7939ca688e08aa685873d7",
+      "batchId": "historical-recovery-03849129cd2de8e2eea1c1a0-slice-f8f0b8516c09",
+      "batchSha256": "57e4f9185a49f4d291e69e411573393aa060574c01e0cb1fcea9247a7e66c921",
+      "runId": "historical-asko-dbi-canary-20260716-a",
+      "resultsSha256": "49771289e892291c2c59e0c702172fc0113f53223ecbbe4bc61a8a9cc26efbd0",
+      "auditSha256": "82cbd5e7864764dd710dde0b76bbf6a8107881b86bf4e612baa2ae78f2037ab8",
+      "acceptedAt": "2026-07-16T09:39:30.075Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_e3a2814f2d4ecf5183087321",
       "targetId": "recovery_target_ea8cb258068ac2f97b2b01c9",
       "referenceId": "fa_ref_3914e43d5850da9ee761dd3c",
@@ -6503,6 +6571,23 @@
       "resultsSha256": "99e85e776562a75f62d2fe446d015518a35e86d24c0c68e4837634898410b695",
       "auditSha256": "d1fb2add0ea9770d5265db19eb9234eb1782457166dfcce9af59808fabaca9e8",
       "acceptedAt": "2026-07-15T22:04:32.763Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_f19fdfce5446bfebbb4860c6",
+      "targetId": "recovery_target_a7a1fad72f198ffda7434a27",
+      "referenceId": "fa_ref_65b3877e897f3a49441140c2",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000732367?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "faf6b50f88102366e5d784bbfdad14bccc7320fa5cde143c8f7b4dec616c7700",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "b8008345d789522b01c0b0bd5521f370d43577f015c1fefe2118829c6ecebf45",
+      "semanticOutcomeSha256": "b907f450d10a4e3d39af2efbb12e7d30eeeb2387a4a8e76927aaf3dfb5eb7417",
+      "batchId": "historical-recovery-03849129cd2de8e2eea1c1a0-slice-f8f0b8516c09",
+      "batchSha256": "57e4f9185a49f4d291e69e411573393aa060574c01e0cb1fcea9247a7e66c921",
+      "runId": "historical-asko-dbi-canary-20260716-a",
+      "resultsSha256": "49771289e892291c2c59e0c702172fc0113f53223ecbbe4bc61a8a9cc26efbd0",
+      "auditSha256": "82cbd5e7864764dd710dde0b76bbf6a8107881b86bf4e612baa2ae78f2037ab8",
+      "acceptedAt": "2026-07-16T09:39:30.075Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_f434bceca786a0efe8c85cd2",
@@ -6627,7 +6712,7 @@
   "summary": {
     "entries": 132,
     "resolutions": 17,
-    "sourceAcceptances": 146,
+    "sourceAcceptances": 151,
     "suppressions": 76,
     "resolvedSuppressions": 14,
     "retryable": 42,
