@@ -3070,7 +3070,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const sharedModelListScoped = sharedDimensionFragments.size > 0 || Boolean(hisenseDiagram);
     if (sharedModelListScoped) sharedModelListPages.add(pageIndex + 1);
     const documentScoped = !pageScoped
-      && (documentUniqueScope || contextDocumentScope || boundFamilyDocumentScope);
+      && (documentUniqueScope || contextDocumentScope || boundFamilyDocumentScope
+        || boschDimensionSectionScope);
     const sectionRowsByFragment = new Map(items
       .filter((item) => item.type === 'table')
       .map((item) => [item, netDimensionSectionRows(item)]));
@@ -3173,10 +3174,14 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       || (pageScoped && ['paragraph', 'text', 'list', 'index'].includes(item.type))
       || (documentScoped && ['paragraph', 'text'].includes(item.type)
         && paragraphRows(item.text).some((row) => (
-          /\b(?:dimensions?|size)\b/i.test(row.label)
-          && explicitSequence(row.label, {
-            w: 'width', width: 'width', h: 'height', height: 'height', d: 'depth', depth: 'depth',
-          }, 3)
+          /\b(?:dimensions?|size)\b/i.test(row.label) && (
+            explicitSequence(row.label, {
+              w: 'width', width: 'width', h: 'height', height: 'height', d: 'depth', depth: 'depth',
+            }, 3)
+            || (boschDimensionSectionScope && dimensionClaims(
+              row, item, pageIndex + 1, fields, category,
+            ).length > 0)
+          )
         )))
       || joinedParagraphRowsByFragment.has(item)
       || joinedScalarRowsByFragment.has(item)

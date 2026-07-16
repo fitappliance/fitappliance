@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "6c341fdd58996dc199053c95dc17c6467222e178d94f0229b6876d5d08fff21d"
+    "historical-recovery:historical-recovery-cumulative-v1": "2e4aa6ad26da8967d3c9259d51122213e3e9d6fbf660cd5fb3b3942904fdd093"
   },
   "records": [
     {
@@ -13582,14 +13582,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_dbe0b2f10886e0c28970be9f",
+          "snapshotSha256": "af01499b5540ab63fcbb542c2497b8afd4a6dda9c28c1b33c40a5b7f5c5ab815",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -13598,8 +13609,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_dbe0b2f10886e0c28970be9f",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS66JI01A.pdf",
+          "contentSha256": "af01499b5540ab63fcbb542c2497b8afd4a6dda9c28c1b33c40a5b7f5c5ab815",
+          "receiptBindingSha256": "7d38ee76e85541aa078171ead056b9de9fef3cfc843ec56295f6aad3e167bd75",
+          "verifiedAt": "2026-07-16T05:27:56.865Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3b76af9e9238b36e920b0e1b6d56cd1987aa8d0a96dca59b0f54103ddb76c958"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3b76af9e9238b36e920b0e1b6d56cd1987aa8d0a96dca59b0f54103ddb76c958"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3b76af9e9238b36e920b0e1b6d56cd1987aa8d0a96dca59b0f54103ddb76c958"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/af/01/af01499b5540ab63fcbb542c2497b8afd4a6dda9c28c1b33c40a5b7f5c5ab815.pdf"
+        }
       ]
     },
     {
@@ -13617,14 +13654,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_dee1ebcf9291c1efc719e6ad",
+          "snapshotSha256": "aeeea213d01858e6c0d0aef8a8f382df176996d13acb4cfa171570cf6e9777b6",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -13633,8 +13681,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_dee1ebcf9291c1efc719e6ad",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS66MI02A.pdf",
+          "contentSha256": "aeeea213d01858e6c0d0aef8a8f382df176996d13acb4cfa171570cf6e9777b6",
+          "receiptBindingSha256": "42a80bc7b11b77b14d397818e5f83cf246c14c9b6ac7895f1ec6eeb66cc5c939",
+          "verifiedAt": "2026-07-16T05:27:57.031Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3b76af9e9238b36e920b0e1b6d56cd1987aa8d0a96dca59b0f54103ddb76c958"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3b76af9e9238b36e920b0e1b6d56cd1987aa8d0a96dca59b0f54103ddb76c958"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3b76af9e9238b36e920b0e1b6d56cd1987aa8d0a96dca59b0f54103ddb76c958"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/ae/ee/aeeea213d01858e6c0d0aef8a8f382df176996d13acb4cfa171570cf6e9777b6.pdf"
+        }
       ]
     },
     {
@@ -13652,14 +13726,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_50b3bc7ccfbca4ea68309100",
+          "snapshotSha256": "9c8729216d6f89f3fb56b3465eaefe9b18473341c1cdb410b094622c7570f466",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -13668,8 +13753,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_50b3bc7ccfbca4ea68309100",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS66MW01A.pdf",
+          "contentSha256": "9c8729216d6f89f3fb56b3465eaefe9b18473341c1cdb410b094622c7570f466",
+          "receiptBindingSha256": "38fbe38fcf5ac6f35cd0b1ba834b38ab84b422daf001432f8720f09db166d101",
+          "verifiedAt": "2026-07-16T05:27:32.402Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "e018f1e4a58cb29e6d041209e18d25f0254a9d216db12c656775b72a5d6c99e7"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "e018f1e4a58cb29e6d041209e18d25f0254a9d216db12c656775b72a5d6c99e7"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "e018f1e4a58cb29e6d041209e18d25f0254a9d216db12c656775b72a5d6c99e7"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/9c/87/9c8729216d6f89f3fb56b3465eaefe9b18473341c1cdb410b094622c7570f466.pdf"
+        }
       ]
     },
     {
@@ -13901,9 +14012,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dishwasher",
@@ -13917,6 +14032,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6de2c5a7ba4994b08699a478",
+          "snapshotSha256": "490bddb2a47e077025789e7b28780d82e1ed7e48f27fbc52da5bbd32a565cf08",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -13924,9 +14046,35 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_6de2c5a7ba4994b08699a478",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HAI02A.pdf",
+          "contentSha256": "490bddb2a47e077025789e7b28780d82e1ed7e48f27fbc52da5bbd32a565cf08",
+          "receiptBindingSha256": "dbe91873480b434d2fb5a51d612837b90f939e5ca6b559d61e6313c484be242c",
+          "verifiedAt": "2026-07-16T05:27:32.564Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "f786ebb764ee57e8fd45c6f91d59031d6bc9d6f7d071c83b6c810e84ae592cff"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "f786ebb764ee57e8fd45c6f91d59031d6bc9d6f7d071c83b6c810e84ae592cff"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "f786ebb764ee57e8fd45c6f91d59031d6bc9d6f7d071c83b6c810e84ae592cff"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/49/0b/490bddb2a47e077025789e7b28780d82e1ed7e48f27fbc52da5bbd32a565cf08.pdf"
+        }
       ]
     },
     {
@@ -13948,9 +14096,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dishwasher",
@@ -13963,6 +14115,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ed6a9b4aec7598ba982b3dc9",
+          "snapshotSha256": "7b11fe8e4bd5d13059929d7e429b7ae95853eecd81e54ad5cc32554529e3af33",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -13970,9 +14129,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ed6a9b4aec7598ba982b3dc9",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCB01A.pdf",
+          "contentSha256": "7b11fe8e4bd5d13059929d7e429b7ae95853eecd81e54ad5cc32554529e3af33",
+          "receiptBindingSha256": "c1d0803235cdcc31f7be16007a70d640ef40aeb275d042db8bbbc482109d814f",
+          "verifiedAt": "2026-07-16T05:27:57.310Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b2ede124505b81bbf1e5243398eff1cd322d15255195e032e1b49e150c89c1d9"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b2ede124505b81bbf1e5243398eff1cd322d15255195e032e1b49e150c89c1d9"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b2ede124505b81bbf1e5243398eff1cd322d15255195e032e1b49e150c89c1d9"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/7b/11/7b11fe8e4bd5d13059929d7e429b7ae95853eecd81e54ad5cc32554529e3af33.pdf"
+        }
       ]
     },
     {
@@ -13994,9 +14179,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dishwasher",
@@ -14009,6 +14198,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a2975dd4b69f3b8cdda31410",
+          "snapshotSha256": "1621313bdefc101259eb6f3aaa1934631186e611b0933025503f5be7c7e96604",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -14016,9 +14212,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a2975dd4b69f3b8cdda31410",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCB02A.pdf",
+          "contentSha256": "1621313bdefc101259eb6f3aaa1934631186e611b0933025503f5be7c7e96604",
+          "receiptBindingSha256": "fa9aa29642944aec0f0278e7da872a4e7fb1d090a5a9d0eade43ab5ec3631240",
+          "verifiedAt": "2026-07-16T05:27:51.218Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3850c7bb48854fe85e8062096473610dc3a404c110e98aeab2d599b9d90bad8f"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3850c7bb48854fe85e8062096473610dc3a404c110e98aeab2d599b9d90bad8f"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "3850c7bb48854fe85e8062096473610dc3a404c110e98aeab2d599b9d90bad8f"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/16/21/1621313bdefc101259eb6f3aaa1934631186e611b0933025503f5be7c7e96604.pdf"
+        }
       ]
     },
     {
@@ -14040,9 +14262,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dishwasher",
@@ -14055,6 +14281,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ea8cb258068ac2f97b2b01c9",
+          "snapshotSha256": "a8e00015ffca6c5c6d38ace6f46337f69bcb67e6af3fe6827d273e41b36c31e3",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -14062,9 +14295,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ea8cb258068ac2f97b2b01c9",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI01A.pdf",
+          "contentSha256": "a8e00015ffca6c5c6d38ace6f46337f69bcb67e6af3fe6827d273e41b36c31e3",
+          "receiptBindingSha256": "2c47dac21261f91a48f356bf63d0e908a478f4ad54fb878e398eb3a40d425c2e",
+          "verifiedAt": "2026-07-16T05:27:57.127Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "200d3fc2c31b66790df398d77cb0d37e55c37d0220ceb8cd5bfee9cc80d5ef73"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "200d3fc2c31b66790df398d77cb0d37e55c37d0220ceb8cd5bfee9cc80d5ef73"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "200d3fc2c31b66790df398d77cb0d37e55c37d0220ceb8cd5bfee9cc80d5ef73"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/a8/e0/a8e00015ffca6c5c6d38ace6f46337f69bcb67e6af3fe6827d273e41b36c31e3.pdf"
+        }
       ]
     },
     {
@@ -14169,9 +14428,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dishwasher",
@@ -14184,6 +14447,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_5cfa3dd047c27b61ca5afaf3",
+          "snapshotSha256": "c1454fc67b01d16d7eb1e9589244f61faf08d501a1dc98f88592cf08e57b2a5e",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -14191,9 +14461,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_5cfa3dd047c27b61ca5afaf3",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCW01A.pdf",
+          "contentSha256": "c1454fc67b01d16d7eb1e9589244f61faf08d501a1dc98f88592cf08e57b2a5e",
+          "receiptBindingSha256": "b15bc321a435dc4d181b91714d9aef2c0412b22d63c721ac4f83aa9925d2845c",
+          "verifiedAt": "2026-07-16T05:27:32.463Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "eef7a442f6b3338267700da91117b78431c18147d924143dbc999c610bee962b"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "eef7a442f6b3338267700da91117b78431c18147d924143dbc999c610bee962b"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "eef7a442f6b3338267700da91117b78431c18147d924143dbc999c610bee962b"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/c1/45/c1454fc67b01d16d7eb1e9589244f61faf08d501a1dc98f88592cf08e57b2a5e.pdf"
+        }
       ]
     },
     {
@@ -14215,9 +14511,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dishwasher",
@@ -14230,6 +14530,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ebb3c0b2501c9bd0e937cb3e",
+          "snapshotSha256": "d1602df6a9e8af0d4826bac409bdaeee48889f6be39ab1bba4fa98af688cdc16",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -14237,9 +14544,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ebb3c0b2501c9bd0e937cb3e",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS88TI01A.pdf",
+          "contentSha256": "d1602df6a9e8af0d4826bac409bdaeee48889f6be39ab1bba4fa98af688cdc16",
+          "receiptBindingSha256": "4861115777953c877dc86561b634c03d8dd19ef9ec96f7271a535191e08ccc96",
+          "verifiedAt": "2026-07-16T05:27:57.203Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "051d47d05e72f6072e2a88e8a33aa0d7b4aa41a1cf63d32bf54075edaf25870e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "051d47d05e72f6072e2a88e8a33aa0d7b4aa41a1cf63d32bf54075edaf25870e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "051d47d05e72f6072e2a88e8a33aa0d7b4aa41a1cf63d32bf54075edaf25870e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d1/60/d1602df6a9e8af0d4826bac409bdaeee48889f6be39ab1bba4fa98af688cdc16.pdf"
+        }
       ]
     },
     {
@@ -14296,9 +14629,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dishwasher",
@@ -14311,6 +14648,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_d52c87a7a85f2deaaaec0dec",
+          "snapshotSha256": "d2616deb29f721c392732b581dbd7af72b3a4ec5351ac36aaef2f75d458add14",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -14318,9 +14662,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_d52c87a7a85f2deaaaec0dec",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS8EDI01A.pdf",
+          "contentSha256": "d2616deb29f721c392732b581dbd7af72b3a4ec5351ac36aaef2f75d458add14",
+          "receiptBindingSha256": "69b3252bd4451d1a5a5faa49896bf34d7301e98f6c54c5d07513d44dd509ea8e",
+          "verifiedAt": "2026-07-16T05:27:56.785Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "d3f227f5c3a42fa237b36d295a042c9b93a611b28925938892326ba931a71e2c"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "d3f227f5c3a42fa237b36d295a042c9b93a611b28925938892326ba931a71e2c"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "d3f227f5c3a42fa237b36d295a042c9b93a611b28925938892326ba931a71e2c"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d2/61/d2616deb29f721c392732b581dbd7af72b3a4ec5351ac36aaef2f75d458add14.pdf"
+        }
       ]
     },
     {
@@ -14346,6 +14716,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_18f26b60743e0cc028538c3d",
+          "snapshotSha256": "d8bf0d3a2b263913b0262d861222978d2820b973b6f40c28d9096992d890cac3",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -14355,7 +14732,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_18f26b60743e0cc028538c3d",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMT8ZC801A.pdf",
+          "contentSha256": "d8bf0d3a2b263913b0262d861222978d2820b973b6f40c28d9096992d890cac3",
+          "receiptBindingSha256": "1ad7855ba4b6596c209d5f394897f7859fcb7b675371532b5bb5b796c888e094",
+          "verifiedAt": "2026-07-16T05:27:26.551Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4eccd623a1d9a70f51e8571512a26668a38c984510660a2d517ae18cd5609f49"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4eccd623a1d9a70f51e8571512a26668a38c984510660a2d517ae18cd5609f49"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4eccd623a1d9a70f51e8571512a26668a38c984510660a2d517ae18cd5609f49"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d8/bf/d8bf0d3a2b263913b0262d861222978d2820b973b6f40c28d9096992d890cac3.pdf"
+        }
       ]
     },
     {
@@ -14408,14 +14814,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 573
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_7cf633a42176ba695f6b7a64",
+          "snapshotSha256": "b8d58bcbfdc5537077bd8a45f8a4066733b7e019be7b89209b5b1de74bca379e",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -14424,8 +14841,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_7cf633a42176ba695f6b7a64",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU46GS01A.pdf",
+          "contentSha256": "b8d58bcbfdc5537077bd8a45f8a4066733b7e019be7b89209b5b1de74bca379e",
+          "receiptBindingSha256": "ebf1c7171daef99af99bbaf820051ca232111f33f2da2992dff4db646cd3681a",
+          "verifiedAt": "2026-07-16T05:27:32.642Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8021d26e06dc73726034bdbbe41deb06b7bf1b2a1a0292e00154d32f19d86468"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/b8/d5/b8d58bcbfdc5537077bd8a45f8a4066733b7e019be7b89209b5b1de74bca379e.pdf"
+        }
       ]
     },
     {
@@ -319748,16 +320191,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4856,
-      "IDENTITY_ONLY": 2966,
-      "MODEL_RECEIPT": 174,
+      "IDENTITY_ONLY": 2955,
+      "MODEL_RECEIPT": 185,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4856,
-      "MEASURE_REQUIRED": 2966,
-      "AUTO_FILL": 185,
+      "MEASURE_REQUIRED": 2955,
+      "AUTO_FILL": 196,
       "QUARANTINED": 88
     }
   }

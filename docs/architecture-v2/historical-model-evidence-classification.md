@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-16T05:02:44.158Z
+Generated: 2026-07-16T05:29:07.010Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -11,7 +11,7 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 1015 |
+| dishwasher | 1419 | 94 | 1027 |
 | dryer | 843 | 72 | 267 |
 | fridge | 4336 | 121 | 2287 |
 | washing_machine | 1497 | 88 | 654 |
@@ -20,11 +20,11 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 236 |
+| COMPLETE_RECEIPT | 248 |
 | CONFLICT_QUARANTINE | 83 |
-| IDENTITY_RESEARCH | 156 |
+| IDENTITY_RESEARCH | 154 |
 | OFFICIAL_DISCOVERY | 6417 |
-| REFERENCE_REDISCOVERY | 1203 |
+| REFERENCE_REDISCOVERY | 1193 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -40,15 +40,20 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Hisense | parser_family | Hisense Australia legacy exact-model specification sheet | 7 |
 | fridge | Westinghouse | document_family | Document family b93c83bd4afe | 7 |
 | fridge | Westinghouse | document_family | Document family fd329081b852 | 7 |
+| dishwasher | Bosch | parser_family | Bosch Australia dishwasher product specification | 6 |
 | dishwasher | Fisher & Paykel | document_family | Document family 40d415ddb0ed | 6 |
 | dishwasher | Fisher & Paykel | document_family | Document family b5a036b18078 | 6 |
 | fridge | Sub-Zero | parser_family | PDF grammar pdf_grammar_b6dfa4c93dc0b9e7 | 6 |
 | fridge | Westinghouse | document_family | Document family e316fc226e4d | 6 |
 | dishwasher | Beko | parser_family | Beko AU dishwasher product specification | 5 |
+| dishwasher | Bosch | marketing_series | Series 6 | 5 |
 | dishwasher | Bosch | marketing_series | Series 8 | 5 |
 | dishwasher | Fisher & Paykel | document_family | Document family 3031e527077f | 5 |
 | fridge | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_fa4e96e9408d0085 | 5 |
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_0b598fa8b30e9c42 | 5 |
+| dishwasher | Bosch | marketing_series | Series 2 | 4 |
+| dishwasher | Bosch | marketing_series | Series 4 | 4 |
+| dishwasher | Bosch | parser_family | PDF grammar pdf_grammar_2a3308cabe6ee132 | 4 |
 | dishwasher | Fisher & Paykel | document_family | Document family 24cc9cefd1e2 | 4 |
 | dishwasher | Fisher & Paykel | document_family | Document family 4c6a3e96a150 | 4 |
 | fridge | Electrolux | parser_family | PDF grammar pdf_grammar_fd6fd1396552b04a | 4 |
@@ -65,11 +70,6 @@ This is a research and repair classification. It does not grant publication auth
 | dryer | Bosch | marketing_series | Series 6 | 3 |
 | dryer | Bosch | marketing_series | Series 8 | 3 |
 | dryer | Electrolux | parser_family | PDF grammar pdf_grammar_8f60826f847a01df | 3 |
-| dryer | Fisher & Paykel | document_family | Document family 55aa96e39e2b | 3 |
-| dryer | Fisher & Paykel | document_family | Document family e0ee3c93f477 | 3 |
-| dryer | Fisher & Paykel | document_family | Document family fbe70d9dc8bb | 3 |
-| dryer | LG | document_family | Document family 2fe3cc8c8972 | 3 |
-| fridge | Bosch | marketing_series | Series 4 | 3 |
 
 ## Highest-Impact Gaps
 
@@ -105,7 +105,6 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Mykin | OFFICIAL_DISCOVERY | 55 |
 | fridge | TCL | OFFICIAL_DISCOVERY | 55 |
 | washing_machine | Fisher & Paykel | OFFICIAL_DISCOVERY | 55 |
-| dishwasher | Bosch | REFERENCE_REDISCOVERY | 54 |
 | dryer | Esatto | OFFICIAL_DISCOVERY | 52 |
 | fridge | LG | REFERENCE_REDISCOVERY | 51 |
 | fridge | Electrolux | OFFICIAL_DISCOVERY | 50 |
@@ -121,6 +120,7 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Esatto | OFFICIAL_DISCOVERY | 45 |
 | washing_machine | LG | REFERENCE_REDISCOVERY | 45 |
 | washing_machine | SAMSUNG ELECTRONICS | OFFICIAL_DISCOVERY | 45 |
+| dishwasher | Bosch | REFERENCE_REDISCOVERY | 44 |
 | fridge | Samsung | REFERENCE_REDISCOVERY | 44 |
 | washing_machine | Miele | OFFICIAL_DISCOVERY | 44 |
 | washing_machine | Electrolux | OFFICIAL_DISCOVERY | 43 |

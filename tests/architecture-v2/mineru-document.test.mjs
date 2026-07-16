@@ -2176,6 +2176,30 @@ test('MinerU scopes a Bosch Dimensions section through repeated exact titles and
   ));
 });
 
+test('MinerU document-scopes an explicit Bosch product HxWxD row through repeated exact titles', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [paragraph('Dimensions of the product (HxWxD) : 845 x 600 x 600 mm')],
+    [
+      titleFragment('Serie | 6, free-standing dishwasher, 60 cm, White'),
+      titleFragment('SMS66MW01A'),
+    ],
+    [titleFragment('Serie | 6, free-standing dishwasher, 60 cm, White SMS66MW01A')],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'SMS66MW01A', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    sourceUrls: ['https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS66MW01A.pdf'],
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 600 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 845 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+  });
+  assert.ok(parsed.claims.every((claim) => claim.page === 1));
+});
+
 test('MinerU prefers a Bosch adjustable height range when the product height is its exact lower endpoint', () => {
   const identity = { brand: 'Bosch', model: 'SMP66MX01A', category: 'dishwasher' };
   const bytes = Buffer.from(JSON.stringify([
