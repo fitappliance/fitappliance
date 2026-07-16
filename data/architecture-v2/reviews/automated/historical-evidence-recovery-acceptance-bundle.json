@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T17:18:25.731Z",
+  "generatedAt": "2026-07-16T18:01:06.220Z",
   "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
   "entries": [
     {
@@ -7026,6 +7026,198 @@
         "activeSourceHashes": [
           "4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_269b2c672b0f0a57114940cf",
+      "referenceId": "fa_ref_cb6a8f7e8fb8e5998bd2ee03",
+      "legacyRuntimeId": "ao-77079",
+      "canonicalProductId": "fa_prod_3eedcdf07268b0531d202ee0",
+      "brand": "Westinghouse",
+      "model": "WBE4504SBR",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-1276a0867158e1900325f1e6-slice-9c03b84f7a50",
+      "auditSha256": "a62ce92aaffa81237cb70a96c02cede14815b19bcad117cceed064b1b6bf855d",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-r/",
+          "finalUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-r/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T17:51:55.927Z",
+          "contentSha256": "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502",
+          "objectPath": "evidence/web/sha256/52/a7/52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502.html",
+          "contentType": "text/html",
+          "byteSize": 416837,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WBE4504SBR",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 699
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 769
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-r/"
+            },
+            {
+              "type": "document_title",
+              "value": "453L Stainless steel bottom mount fridge - WBE4504SB-R | Westinghouse Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "WBE4504SB-R"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T17:51:55.927Z",
+            "bindingSha256": "cdfc837afbc5758f02341872be0867e3b6396393186d40b3eda713fdd9e0c3dc"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 699,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 769
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-r/",
+            "contentSha256": "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502",
+            "receiptBindingSha256": "cdfc837afbc5758f02341872be0867e3b6396393186d40b3eda713fdd9e0c3dc",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-r/",
+            "contentSha256": "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502",
+            "receiptBindingSha256": "cdfc837afbc5758f02341872be0867e3b6396393186d40b3eda713fdd9e0c3dc",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-r/",
+            "contentSha256": "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502",
+            "receiptBindingSha256": "cdfc837afbc5758f02341872be0867e3b6396393186d40b3eda713fdd9e0c3dc",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -21648,6 +21840,198 @@
       }
     },
     {
+      "targetId": "recovery_target_58181138d28a980d9a994173",
+      "referenceId": "fa_ref_ab312ba2e91b93ef24cea956",
+      "legacyRuntimeId": "ao-77077",
+      "canonicalProductId": "fa_prod_42494ead5491eabb939e1091",
+      "brand": "Westinghouse",
+      "model": "WBE4504BBR",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-1276a0867158e1900325f1e6-slice-9c03b84f7a50",
+      "auditSha256": "a62ce92aaffa81237cb70a96c02cede14815b19bcad117cceed064b1b6bf855d",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-r/",
+          "finalUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-r/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T17:53:29.960Z",
+          "contentSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712",
+          "objectPath": "evidence/web/sha256/20/5c/205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712.html",
+          "contentType": "text/html",
+          "byteSize": 416375,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WBE4504BBR",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 699
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 769
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-r/"
+            },
+            {
+              "type": "document_title",
+              "value": "453L Dark Stainless bottom mount fridge - WBE4504BB-R | Westinghouse Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "WBE4504BB-R"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T17:53:29.960Z",
+            "bindingSha256": "4569778aa1c93a93dd80b7e8895fd7c79fc99bb749a12374798647fe9b50fc79"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 699,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 769
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-r/",
+            "contentSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712",
+            "receiptBindingSha256": "4569778aa1c93a93dd80b7e8895fd7c79fc99bb749a12374798647fe9b50fc79",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-r/",
+            "contentSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712",
+            "receiptBindingSha256": "4569778aa1c93a93dd80b7e8895fd7c79fc99bb749a12374798647fe9b50fc79",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-r/",
+            "contentSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712",
+            "receiptBindingSha256": "4569778aa1c93a93dd80b7e8895fd7c79fc99bb749a12374798647fe9b50fc79",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_588c9dabf62a9ca373a78642",
       "referenceId": "fa_ref_0a57f065095267779f5c4a25",
       "legacyRuntimeId": "ao-132904",
@@ -29812,6 +30196,198 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_702f349f835297f54af4ae52",
+      "referenceId": "fa_ref_a7bceee2a35a43668aabe576",
+      "legacyRuntimeId": "ao-77076",
+      "canonicalProductId": "fa_prod_7a07f6493607391e4d6c63e9",
+      "brand": "Westinghouse",
+      "model": "WBE4504BBL",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-1276a0867158e1900325f1e6-slice-9c03b84f7a50",
+      "auditSha256": "a62ce92aaffa81237cb70a96c02cede14815b19bcad117cceed064b1b6bf855d",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-l/",
+          "finalUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-l/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T17:55:05.616Z",
+          "contentSha256": "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff",
+          "objectPath": "evidence/web/sha256/90/59/9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff.html",
+          "contentType": "text/html",
+          "byteSize": 416375,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WBE4504BBL",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 699
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 769
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-l/"
+            },
+            {
+              "type": "document_title",
+              "value": "453L Dark Stainless bottom mount fridge - WBE4504BB-L | Westinghouse Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "WBE4504BB-L"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T17:55:05.616Z",
+            "bindingSha256": "df8e7669793066b789a6673b29e1827c0015304bdabc9b00e89715f38d8a2fe8"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 699,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 769
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-l/",
+            "contentSha256": "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff",
+            "receiptBindingSha256": "df8e7669793066b789a6673b29e1827c0015304bdabc9b00e89715f38d8a2fe8",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-l/",
+            "contentSha256": "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff",
+            "receiptBindingSha256": "df8e7669793066b789a6673b29e1827c0015304bdabc9b00e89715f38d8a2fe8",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-l/",
+            "contentSha256": "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff",
+            "receiptBindingSha256": "df8e7669793066b789a6673b29e1827c0015304bdabc9b00e89715f38d8a2fe8",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff"
         ]
       },
       "reconciliation": {
@@ -61387,6 +61963,198 @@
       }
     },
     {
+      "targetId": "recovery_target_e1e29b2d24802fd8aebc346a",
+      "referenceId": "fa_ref_84dea0453f6b62afcdfc8f0c",
+      "legacyRuntimeId": "ao-77078",
+      "canonicalProductId": "fa_prod_5509d7927d4494ff870b78d5",
+      "brand": "Westinghouse",
+      "model": "WBE4504SBL",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-1276a0867158e1900325f1e6-slice-9c03b84f7a50",
+      "auditSha256": "a62ce92aaffa81237cb70a96c02cede14815b19bcad117cceed064b1b6bf855d",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-l/",
+          "finalUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-l/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T17:56:40.801Z",
+          "contentSha256": "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3",
+          "objectPath": "evidence/web/sha256/2f/01/2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3.html",
+          "contentType": "text/html",
+          "byteSize": 416837,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WBE4504SBL",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 699
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 769
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-l/"
+            },
+            {
+              "type": "document_title",
+              "value": "453L Stainless steel bottom mount fridge - WBE4504SB-L | Westinghouse Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "WBE4504SB-L"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T17:56:40.801Z",
+            "bindingSha256": "48719221fef7da384361335d0820d4778ef155bc8c2e8bcc49ac124d4b709cf7"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 699,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 769
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-l/",
+            "contentSha256": "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3",
+            "receiptBindingSha256": "48719221fef7da384361335d0820d4778ef155bc8c2e8bcc49ac124d4b709cf7",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-l/",
+            "contentSha256": "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3",
+            "receiptBindingSha256": "48719221fef7da384361335d0820d4778ef155bc8c2e8bcc49ac124d4b709cf7",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-l/",
+            "contentSha256": "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3",
+            "receiptBindingSha256": "48719221fef7da384361335d0820d4778ef155bc8c2e8bcc49ac124d4b709cf7",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_e481b7a7f66fc12825df1cc3",
       "referenceId": "fa_ref_83bd985062196f48441767df",
       "legacyRuntimeId": "discovery-washing-machine-samsung-ww11cg60adlb",
@@ -68577,6 +69345,13 @@
       "queueSha256": "f097c38b087d89ed9339f0e8ce6bcfd73031fed181756422392608c92fe7fe79",
       "resultsSha256": "e63d5154a0f3d62d881ca4d9907581cad9ff7724b6940a5b4fcc7547e0638b5d",
       "auditSha256": "8278b3c7a2e5564ea7afc28656d1dcd0d84bad1a604070cddcf1e797406d779d"
+    },
+    {
+      "batchId": "historical-recovery-1276a0867158e1900325f1e6-slice-9c03b84f7a50",
+      "batchSha256": "f44ab460e72de05a2e667ddb1ac4b783f7636610470391f0b851fbef4dfbbb0b",
+      "queueSha256": "e006d4be31b04102851035be7c79e0126602f28a6a6fe9a9bd620c60d5648a6f",
+      "resultsSha256": "c5b27b96109cef7363211bc61fcefd00d575c53fd83176776c3a3b281a581e2c",
+      "auditSha256": "a62ce92aaffa81237cb70a96c02cede14815b19bcad117cceed064b1b6bf855d"
     },
     {
       "batchId": "historical-recovery-14d43449e237fd16fae85453-slice-912b9c45b656",

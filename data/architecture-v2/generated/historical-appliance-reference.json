@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "6ea1d9b62fa0006e8b2fb2090f3326868b6210505d60be69aee9605828c60365"
+    "historical-recovery:historical-recovery-cumulative-v1": "4c291da2f902ebbf2ea2b9f461ce1fd320a3ca952fe6f9dcbe054ea7e92f9e83"
   },
   "records": [
     {
@@ -250014,13 +250014,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 699,
+        "height": 1725,
+        "depth": 769
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_702f349f835297f54af4ae52",
+          "snapshotSha256": "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff",
           "sourceLines": []
         }
       ],
@@ -250030,8 +250039,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_702f349f835297f54af4ae52",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-l/",
+          "contentSha256": "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff",
+          "receiptBindingSha256": "df8e7669793066b789a6673b29e1827c0015304bdabc9b00e89715f38d8a2fe8",
+          "verifiedAt": "2026-07-16T17:55:05.616Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/90/59/9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff.html"
+        }
       ]
     },
     {
@@ -250049,13 +250081,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 699,
+        "height": 1725,
+        "depth": 769
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_58181138d28a980d9a994173",
+          "snapshotSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712",
           "sourceLines": []
         }
       ],
@@ -250065,8 +250106,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_58181138d28a980d9a994173",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-r/",
+          "contentSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712",
+          "receiptBindingSha256": "4569778aa1c93a93dd80b7e8895fd7c79fc99bb749a12374798647fe9b50fc79",
+          "verifiedAt": "2026-07-16T17:53:29.960Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/20/5c/205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712.html"
+        }
       ]
     },
     {
@@ -250121,13 +250185,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 699,
+        "height": 1725,
+        "depth": 769
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_e1e29b2d24802fd8aebc346a",
+          "snapshotSha256": "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3",
           "sourceLines": []
         }
       ],
@@ -250137,8 +250210,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_e1e29b2d24802fd8aebc346a",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-l/",
+          "contentSha256": "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3",
+          "receiptBindingSha256": "48719221fef7da384361335d0820d4778ef155bc8c2e8bcc49ac124d4b709cf7",
+          "verifiedAt": "2026-07-16T17:56:40.801Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/2f/01/2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3.html"
+        }
       ]
     },
     {
@@ -250156,13 +250252,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 699,
+        "height": 1725,
+        "depth": 769
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_269b2c672b0f0a57114940cf",
+          "snapshotSha256": "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502",
           "sourceLines": []
         }
       ],
@@ -250172,8 +250277,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_269b2c672b0f0a57114940cf",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-r/",
+          "contentSha256": "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502",
+          "receiptBindingSha256": "cdfc837afbc5758f02341872be0867e3b6396393186d40b3eda713fdd9e0c3dc",
+          "verifiedAt": "2026-07-16T17:51:55.927Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/52/a7/52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502.html"
+        }
       ]
     },
     {
@@ -321831,16 +321959,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2929,
-      "MODEL_RECEIPT": 215,
+      "IDENTITY_ONLY": 2925,
+      "MODEL_RECEIPT": 219,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2929,
-      "AUTO_FILL": 226,
+      "MEASURE_REQUIRED": 2925,
+      "AUTO_FILL": 230,
       "QUARANTINED": 88
     }
   }

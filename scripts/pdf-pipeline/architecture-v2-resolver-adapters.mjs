@@ -415,7 +415,7 @@ export function createElectroluxGroupResolverAdapter(options = {}) {
   const finder = options.finder ?? findElectroluxGroupFactsheet;
   return createEvidenceSourceResolverAdapter({
     resolverId: 'electrolux-group-official-factsheet',
-    version: '1',
+    version: '2',
     scope: 'exact_model_au_factsheet_endpoint',
     required: true,
     async resolve(caseRecord) {
@@ -424,16 +424,25 @@ export function createElectroluxGroupResolverAdapter(options = {}) {
         return { completion: 'complete', candidates: [], failures: [] };
       }
       const normalizedCategory = String(caseRecord?.category ?? '').trim().toLowerCase();
+      const compactHinge = /^WBE4504(?:BB|SB)[LR]$/i.test(target.model)
+        ? { base: target.model.slice(0, -1), side: target.model.slice(-1).toUpperCase() }
+        : null;
+      const productPageModels = compactHinge
+        ? [`${compactHinge.base}-${compactHinge.side}`, target.model]
+        : [target.model, `${target.model}-L`, `${target.model}-R`];
       const productPageCandidates = brandKey(target.brand) === 'westinghouse' && normalizedCategory === 'fridge'
-        ? ['', '-l', '-r'].map((suffix) => typedCandidate({
-          sourceUrl: `https://www.westinghouse.com.au/fridges-and-freezers/fridges/${encodeURIComponent(target.model.toLowerCase())}${suffix}/`,
+        ? productPageModels.map((pageModel) => typedCandidate({
+          sourceUrl: `https://www.westinghouse.com.au/fridges-and-freezers/fridges/${encodeURIComponent(pageModel.toLowerCase())}/`,
           brand: target.brand,
           discoveryMethod: 'westinghouse_au_exact_model_product_page_template',
           documentType: 'product_page',
-          sourceModelHint: suffix ? `${target.model}${suffix.toUpperCase()}` : target.model,
-          requiredAttempt: hasLowerAuthorityDimensionConflict(caseRecord),
+          sourceModelHint: pageModel,
+          requiredAttempt: Boolean(compactHinge) || hasLowerAuthorityDimensionConflict(caseRecord),
         }))
         : [];
+      if (compactHinge && productPageCandidates.length) {
+        return { completion: 'complete', candidates: uniqueCandidates(productPageCandidates), failures: [] };
+      }
       try {
         const result = await finder(target, options.finderOptions ?? {});
         return {

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T17:18:25.731Z",
-  "sourceBundleSha256": "6ea1d9b62fa0006e8b2fb2090f3326868b6210505d60be69aee9605828c60365",
+  "generatedAt": "2026-07-16T18:11:10.812Z",
+  "sourceBundleSha256": "4c291da2f902ebbf2ea2b9f461ce1fd320a3ca952fe6f9dcbe054ea7e92f9e83",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -448,6 +448,20 @@
       "contentSha256": "4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0",
       "receiptBindingSha256": "62b09aaaa461e409be49a03bc6251d469e45ca6d79788f21e0e2bcdeeb240da5",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/ec/5d/ec5d59cd5997dd03d84801cd5e4edfe1b8c98ebc76b0d4d5287f7e5b04be9bf6.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_269b2c672b0f0a57114940cf",
+      "referenceId": "fa_ref_cb6a8f7e8fb8e5998bd2ee03",
+      "brand": "Westinghouse",
+      "model": "WBE4504SBR",
+      "category": "fridge",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-r/",
+      "sourcePdfSha256": null,
+      "contentSha256": "52a7ee385eed89c364617353dab3824fc98041824d9c2aba27105eef35fe7502",
+      "receiptBindingSha256": "cdfc837afbc5758f02341872be0867e3b6396393186d40b3eda713fdd9e0c3dc",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -1362,6 +1376,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_58181138d28a980d9a994173",
+      "referenceId": "fa_ref_ab312ba2e91b93ef24cea956",
+      "brand": "Westinghouse",
+      "model": "WBE4504BBR",
+      "category": "fridge",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-r/",
+      "sourcePdfSha256": null,
+      "contentSha256": "205c83e9082e08c7ca515fcb0d10dfabc183d2fb892cfad8125ef81ea3ba9712",
+      "receiptBindingSha256": "4569778aa1c93a93dd80b7e8895fd7c79fc99bb749a12374798647fe9b50fc79",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_588c9dabf62a9ca373a78642",
       "referenceId": "fa_ref_0a57f065095267779f5c4a25",
       "brand": "Haier",
@@ -1848,6 +1876,20 @@
       "contentSha256": "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98",
       "receiptBindingSha256": "9cea50928a8b32f1c9c5ac758420528979480ee06afadbef56f1b9b76a0a3be5",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/5c/51/5c51d8cded8861ea5554de32fe434a4aee54d62d306e4b0ee7ae9820c3fbda38.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_702f349f835297f54af4ae52",
+      "referenceId": "fa_ref_a7bceee2a35a43668aabe576",
+      "brand": "Westinghouse",
+      "model": "WBE4504BBL",
+      "category": "fridge",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-l/",
+      "sourcePdfSha256": null,
+      "contentSha256": "9059b678e9627cb0ae5ff0580132e5f0e737e8af3ffad8cd845a61116c04d3ff",
+      "receiptBindingSha256": "df8e7669793066b789a6673b29e1827c0015304bdabc9b00e89715f38d8a2fe8",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -3770,6 +3812,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_e1e29b2d24802fd8aebc346a",
+      "referenceId": "fa_ref_84dea0453f6b62afcdfc8f0c",
+      "brand": "Westinghouse",
+      "model": "WBE4504SBL",
+      "category": "fridge",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504sb-l/",
+      "sourcePdfSha256": null,
+      "contentSha256": "2f016fbe9904645476d47154523f247f5c84e4c8087ae790b0c5f45f55c87da3",
+      "receiptBindingSha256": "48719221fef7da384361335d0820d4778ef155bc8c2e8bcc49ac124d4b709cf7",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_e481b7a7f66fc12825df1cc3",
       "referenceId": "fa_ref_83bd985062196f48441767df",
       "brand": "Samsung",
@@ -4205,11 +4261,11 @@
     }
   ],
   "summary": {
-    "entries": 275,
-    "sources": 300,
-    "passed": 300,
+    "entries": 279,
+    "sources": 304,
+    "passed": 304,
     "failed": 0
   },
-  "checkedObjects": 596,
-  "semanticAuditSha256": "a98783285b221711bc7533da85e1c76bceb27c62e99bf023b73583cbf6e6a8d7"
+  "checkedObjects": 600,
+  "semanticAuditSha256": "eb46216718d4b05cebf1e18bbf5898b6f1752be9b95b6c82d4c2bae4ab4aebf4"
 }

@@ -56,6 +56,17 @@ function identifier(value) {
   return normalizedText(value).toUpperCase().replace(/[^A-Z0-9]+/g, '');
 }
 
+function supportsCosmeticExactModel(model) {
+  return /^WBE4504(?:BB|SB)[LR]$/.test(identifier(model));
+}
+
+function containsCosmeticExactModel(value, model) {
+  const target = identifier(model);
+  if (!target || !supportsCosmeticExactModel(model)) return false;
+  const tokens = String(value ?? '').match(/[A-Z0-9]+(?:[-_/.][A-Z0-9]+)*/gi) ?? [];
+  return tokens.some((token) => /[-_/.]/.test(token) && identifier(token) === target);
+}
+
 function modelWithNumericProductId(value, model) {
   const parts = normalizedText(model).toUpperCase().split(/[^A-Z0-9]+/).filter(Boolean);
   if (!parts.length) return false;
@@ -68,7 +79,9 @@ function urlHasExactModelSegment(value, model, base = undefined) {
   try {
     return new URL(value, base).pathname.split('/').filter(Boolean).some((segment) => {
       const decoded = decodeURIComponent(segment).replace(/\.(?:pdf|html?)$/i, '');
-      return containsExactModel(decoded, model) || modelWithNumericProductId(decoded, model);
+      return containsExactModel(decoded, model)
+        || (supportsCosmeticExactModel(model) && identifier(decoded) === identifier(model))
+        || modelWithNumericProductId(decoded, model);
     });
   } catch {
     return false;
@@ -183,7 +196,9 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
   }
   const signals = [{ type: 'canonical_url', value: canonical }];
   const title = normalizedText($('title').first().text());
-  if (containsExactModel(title, caseIdentity.model)) signals.push({ type: 'document_title', value: title });
+  if (containsExactModel(title, caseIdentity.model) || containsCosmeticExactModel(title, caseIdentity.model)) {
+    signals.push({ type: 'document_title', value: title });
+  }
   const attributes = [
     'data-item-model', 'data-product-model', 'data-product-id', 'data-ga4-product-id',
     'datalayer-product-id', 'datalayer-origin-productmodelid',
@@ -195,7 +210,9 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
   for (const attribute of attributes) {
     $(`[${attribute}]`).each((_, element) => {
       const value = $(element).attr(attribute);
-      if (!productModel && containsExactModel(value, caseIdentity.model)) productModel = value;
+      if (!productModel && (containsExactModel(value, caseIdentity.model)
+        || (supportsCosmeticExactModel(caseIdentity.model)
+          && identifier(value) === identifier(caseIdentity.model)))) productModel = value;
     });
   }
   const structuredModel = structuredProductModel($, caseIdentity.model, canonical);

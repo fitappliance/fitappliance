@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-1276a0867158e1900325f1e6",
-  "generatedAt": "2026-07-16T17:19:43.321Z",
+  "batchId": "historical-recovery-f3b1cf0b274624611402695f",
+  "generatedAt": "2026-07-16T18:02:01.862Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "e006d4be31b04102851035be7c79e0126602f28a6a6fe9a9bd620c60d5648a6f"
+    "sha256": "b5abab4c395da8fee9e9c00511c0e9d40f600c469710e833490e24008d91092d"
   },
   "policy": {
     "version": "2026-07-16.15",
@@ -21744,134 +21744,6 @@
               "width": 699,
               "height": 1725,
               "depth": 723
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_702f349f835297f54af4ae52",
-      "referenceId": "fa_ref_a7bceee2a35a43668aabe576",
-      "legacyRuntimeId": "ao-77076",
-      "canonicalProductId": "fa_prod_7a07f6493607391e4d6c63e9",
-      "brand": "Westinghouse",
-      "model": "WBE4504BBL",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_78af3f7e9624f46c260d0cd8",
-            "dimensionsMm": {
-              "width": 699,
-              "height": 1725,
-              "depth": 769
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_58181138d28a980d9a994173",
-      "referenceId": "fa_ref_ab312ba2e91b93ef24cea956",
-      "legacyRuntimeId": "ao-77077",
-      "canonicalProductId": "fa_prod_42494ead5491eabb939e1091",
-      "brand": "Westinghouse",
-      "model": "WBE4504BBR",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_c7fd7d6663bf1ebe351d03a2",
-            "dimensionsMm": {
-              "width": 699,
-              "height": 1725,
-              "depth": 769
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_e1e29b2d24802fd8aebc346a",
-      "referenceId": "fa_ref_84dea0453f6b62afcdfc8f0c",
-      "legacyRuntimeId": "ao-77078",
-      "canonicalProductId": "fa_prod_5509d7927d4494ff870b78d5",
-      "brand": "Westinghouse",
-      "model": "WBE4504SBL",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_07a54fa2142372de287db291",
-            "dimensionsMm": {
-              "width": 699,
-              "height": 1725,
-              "depth": 769
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_269b2c672b0f0a57114940cf",
-      "referenceId": "fa_ref_cb6a8f7e8fb8e5998bd2ee03",
-      "legacyRuntimeId": "ao-77079",
-      "canonicalProductId": "fa_prod_3eedcdf07268b0531d202ee0",
-      "brand": "Westinghouse",
-      "model": "WBE4504SBR",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_1d79220199b5b0bd9ff1cd7f",
-            "dimensionsMm": {
-              "width": 699,
-              "height": 1725,
-              "depth": 769
             }
           }
         ]
@@ -236658,7 +236530,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7706,
+    "targets": 7702,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

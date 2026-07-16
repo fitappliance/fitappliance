@@ -855,3 +855,49 @@ have no content-addressed source PDF, source URL or run-state identity and canno
 become parser observations, receipts or publication inputs. Diagnostic parsing
 must use an isolated profile/cache or `cache: false`; only source-bound indexes
 belong in the durable evidence corpus.
+
+## 23. Westinghouse compact hinge models and cosmetic exact identity
+
+The archived catalogue stores four bottom-mount fridge variants without the
+separator used by Westinghouse Australia:
+
+| Catalogue model | Official page model | Width | Height | Depth |
+| --- | --- | ---: | ---: | ---: |
+| `WBE4504BBL` | `WBE4504BB-L` | 699 | 1725 | 769 |
+| `WBE4504BBR` | `WBE4504BB-R` | 699 | 1725 | 769 |
+| `WBE4504SBL` | `WBE4504SB-L` | 699 | 1725 | 769 |
+| `WBE4504SBR` | `WBE4504SB-R` | 699 | 1725 | 769 |
+
+The resolver may reconstruct the final hinge separator only for the researched
+Westinghouse `WBE4504BB` and `WBE4504SB` fridge series when the compact identifier
+ends in `L` or `R`. It emits the explicit `base-L` or `base-R` product page and
+the compact product-page fallback, marks both as required, and skips the compact-
+model factsheet lookup that is known to return 404. Unknown series retain the
+factsheet lane. This rule does not create a base-model PDF alias.
+
+HTML identity treats punctuation as cosmetic only when one complete model token,
+after removing `-`, `_`, `/` and `.`, equals the complete target identifier.
+It must not accept a prefix. For example, `WBE4504BB-L` is exact for
+`WBE4504BBL`, while `WTB4600SC-R` remains a field-limited official marketing
+alias for `WTB4600SC`. The first full replay exposed this boundary by rejecting
+two existing WTB receipts after an over-broad implementation added duplicate
+identity signals. The token-exact rule restored both historical receipts before
+promotion; no audit exception or receipt rewrite was used.
+
+Runs `historical-westinghouse-wbe4504-fridges-20260716-a` and
+`historical-westinghouse-wbe4504-hinge-replay-20260716-b` are diagnostic terminal
+runs from before URL reconstruction and cosmetic exact identity respectively.
+They must not be promoted or restarted. The unique final run
+`historical-westinghouse-wbe4504-cosmetic-replay-20260716-c` accepted all four
+models. Its full online audit checked four targets and 600 cumulative objects
+with zero repairs and zero violations.
+
+Promotion increased the cumulative bundle to 279 targets and 304 source
+receipts; all 304 receipts replay. Public receipt-bound dimensions increased
+from 225 to 229, while receipt-bound `VERIFIED_FIT` remains zero. The four
+products remain dimensions-only with `verifiedFitEligible=false` and successful
+Fit outcome `INSUFFICIENT_DATA`; installation clearances, door-open depth and
+rear service space remain unknown. After the release transaction,
+`COMPLETE_RECEIPT` is 298, historical `AUTO_FILL` is 230, the executable queue
+contains 7,702 targets and the current-retail missing-dimension P0 lane contains
+933 targets.

@@ -289,6 +289,54 @@ test('Electrolux group adapter adds bounded Westinghouse product pages for confl
   ]);
 });
 
+test('Electrolux group adapter reconstructs compact Westinghouse fridge hinge models', async () => {
+  let finderCalls = 0;
+  const adapter = createElectroluxGroupResolverAdapter({
+    finder: async () => {
+      finderCalls += 1;
+      throw new Error('Official factsheet returned HTTP 404 for WBE4504BBL');
+    },
+  });
+  const result = await adapter.resolve({
+    brand: 'Westinghouse',
+    model: 'WBE4504BBL',
+    category: 'fridge',
+  });
+
+  assert.equal(result.completion, 'complete');
+  assert.equal(finderCalls, 0);
+  assert.deepEqual(result.candidates.map((candidate) => [
+    candidate.sourceUrl,
+    candidate.documentType,
+  ]), [
+    ['https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bb-l/', 'product_page'],
+    ['https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4504bbl/', 'product_page'],
+  ]);
+});
+
+test('Electrolux group adapter does not generalize compact hinge reconstruction to unknown series', async () => {
+  let finderCalls = 0;
+  const adapter = createElectroluxGroupResolverAdapter({
+    finder: async (target) => {
+      finderCalls += 1;
+      return {
+        sourceUrl: `https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=${target.model}&brand=Westinghouse`,
+        resourceType: 'fact_sheet',
+        verifiedAlias: target.model,
+      };
+    },
+  });
+  const result = await adapter.resolve({
+    brand: 'Westinghouse',
+    model: 'WBE9999XXR',
+    category: 'fridge',
+  });
+
+  assert.equal(finderCalls, 1);
+  assert.equal(result.candidates[0].documentType, 'specification_sheet');
+  assert.match(result.candidates[0].sourceUrl, /modelNumber=WBE9999XXR/);
+});
+
 test('Electrolux group adapter does not request wildcard family tokens as exact models', async () => {
   let calls = 0;
   const adapter = createElectroluxGroupResolverAdapter({

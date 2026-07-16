@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T17:19:43.321Z",
-  "sourceAcquisitionQueueSha256": "bd774a89c5d16e16e8ef06319541cb5cd0c6696755aafa80cb6924516fe087aa",
+  "generatedAt": "2026-07-16T18:02:01.862Z",
+  "sourceAcquisitionQueueSha256": "79e6e90d425f95df0426d30953572a630c7bb101e52ac3b6e6cd50f572cf70ab",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7801,
+    "acquisitionRecords": 7797,
     "fetchJobs": 0,
-    "targets": 7706,
-    "resolverOnlyTargets": 7706,
+    "targets": 7702,
+    "resolverOnlyTargets": 7702,
     "candidateEdges": 0,
-    "uniqueReferences": 7706,
+    "uniqueReferences": 7702,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 12,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1132,
+      "CURRENT_RETAIL": 1128,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 937,
+      "P0_CURRENT_MISSING_DIMENSIONS": 933,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -25157,154 +25157,6 @@
             "width": 699,
             "height": 1725,
             "depth": 723
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_702f349f835297f54af4ae52",
-      "referenceId": "fa_ref_a7bceee2a35a43668aabe576",
-      "legacyRuntimeId": "ao-77076",
-      "canonicalProductId": "fa_prod_7a07f6493607391e4d6c63e9",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE4504BBL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_78af3f7e9624f46c260d0cd8",
-        "legacy:data/pdf-evidence-raw/WBE4504BBL.json",
-        "source:doc_78af3f7e9624f46c260d0cd8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_78af3f7e9624f46c260d0cd8",
-          "dimensionsMm": {
-            "width": 699,
-            "height": 1725,
-            "depth": 769
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_58181138d28a980d9a994173",
-      "referenceId": "fa_ref_ab312ba2e91b93ef24cea956",
-      "legacyRuntimeId": "ao-77077",
-      "canonicalProductId": "fa_prod_42494ead5491eabb939e1091",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE4504BBR",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c7fd7d6663bf1ebe351d03a2",
-        "legacy:data/pdf-evidence-raw/WBE4504BBR.json",
-        "source:doc_c7fd7d6663bf1ebe351d03a2"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c7fd7d6663bf1ebe351d03a2",
-          "dimensionsMm": {
-            "width": 699,
-            "height": 1725,
-            "depth": 769
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_e1e29b2d24802fd8aebc346a",
-      "referenceId": "fa_ref_84dea0453f6b62afcdfc8f0c",
-      "legacyRuntimeId": "ao-77078",
-      "canonicalProductId": "fa_prod_5509d7927d4494ff870b78d5",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE4504SBL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_07a54fa2142372de287db291",
-        "legacy:data/pdf-evidence-raw/WBE4504SBL.json",
-        "source:doc_07a54fa2142372de287db291"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_07a54fa2142372de287db291",
-          "dimensionsMm": {
-            "width": 699,
-            "height": 1725,
-            "depth": 769
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_269b2c672b0f0a57114940cf",
-      "referenceId": "fa_ref_cb6a8f7e8fb8e5998bd2ee03",
-      "legacyRuntimeId": "ao-77079",
-      "canonicalProductId": "fa_prod_3eedcdf07268b0531d202ee0",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE4504SBR",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_1d79220199b5b0bd9ff1cd7f",
-        "legacy:data/pdf-evidence-raw/WBE4504SBR.json",
-        "source:doc_1d79220199b5b0bd9ff1cd7f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_1d79220199b5b0bd9ff1cd7f",
-          "dimensionsMm": {
-            "width": 699,
-            "height": 1725,
-            "depth": 769
           }
         }
       ],

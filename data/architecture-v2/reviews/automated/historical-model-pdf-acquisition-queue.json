@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T17:19:43.321Z",
-  "semanticQueueSha256": "bd774a89c5d16e16e8ef06319541cb5cd0c6696755aafa80cb6924516fe087aa",
-  "sourceClassificationSha256": "42a25be6a998c19e5b89d3e1673aa6dd3b01c9fe300b0eab0746a226501cbc1a",
+  "generatedAt": "2026-07-16T18:02:01.862Z",
+  "semanticQueueSha256": "79e6e90d425f95df0426d30953572a630c7bb101e52ac3b6e6cd50f572cf70ab",
+  "sourceClassificationSha256": "f2b0848cb2e123d4f8e8d729ac476a6e10e5ac73c29ee53482a870f7208068b2",
   "records": [
     {
       "schemaVersion": 1,
@@ -2269,6 +2269,37 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_12e917b23f2d9892f97fdaed",
+      "referenceId": "fa_ref_5c0c2f3483d83ab97532a7ce",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4B2",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family ec7a5bf28b75",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_5d87e6aee5f895cd5ac7b3c7"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_7a4a321dd04b9e80c08bfcc2"
+      ],
+      "legacyRuntimeIds": [
+        "discovery-dishwasher-fisher-paykel-dw60fc4b2"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_9344c42e10d2bba566bb1770"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_e8a1e661114e60a32a3d68d9",
       "referenceId": "fa_ref_a60f253b70404d2122cef804",
       "category": "dishwasher",
@@ -2388,37 +2419,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_1e22efa5bb243f387f279af7"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_12e917b23f2d9892f97fdaed",
-      "referenceId": "fa_ref_5c0c2f3483d83ab97532a7ce",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60FC4B2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_e07d3543379f3feb",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_5d87e6aee5f895cd5ac7b3c7"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_7a4a321dd04b9e80c08bfcc2"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-dishwasher-fisher-paykel-dw60fc4b2"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9344c42e10d2bba566bb1770"
       ],
       "offlineReplayOutcome": null
     },
@@ -8186,37 +8186,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e22327a7fb1c7370cf56d40a",
-      "referenceId": "fa_ref_3e35ea38977e077a9bc0cc56",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DE6060G1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_44c5f64920b86bd2542bc79e"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_0736519a3d2c00fbad9270a6"
-      ],
-      "legacyRuntimeIds": [
-        "ao-48364"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_5df05be3bf0162f23b94540e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_7fdf32aa80ff4fdf94e60ab5",
       "referenceId": "fa_ref_06196fb6913c5b5f0f362781",
       "category": "dryer",
@@ -8243,37 +8212,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_f9ced2b807429bb9aa1aabf9"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_06f804a3e7a57ed4a9731dd2",
-      "referenceId": "fa_ref_2d855f282b5af74e7627e553",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DE6060P1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_c1e55b31be808fa8072649a6"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_10441885a1081512d621e56b"
-      ],
-      "legacyRuntimeIds": [
-        "ao-48365"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6d8242cb99218c0ec70354d1"
       ],
       "offlineReplayOutcome": null
     },
@@ -8365,6 +8303,68 @@
       ],
       "canonicalProductIds": [
         "fa_prod_fbdb765c96d1b397543d1e9e"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_e22327a7fb1c7370cf56d40a",
+      "referenceId": "fa_ref_3e35ea38977e077a9bc0cc56",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE6060G1",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family ca9db6fcbd81",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_44c5f64920b86bd2542bc79e"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_0736519a3d2c00fbad9270a6"
+      ],
+      "legacyRuntimeIds": [
+        "ao-48364"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_5df05be3bf0162f23b94540e"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_06f804a3e7a57ed4a9731dd2",
+      "referenceId": "fa_ref_2d855f282b5af74e7627e553",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE6060P1",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family ca9db6fcbd81",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_c1e55b31be808fa8072649a6"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_10441885a1081512d621e56b"
+      ],
+      "legacyRuntimeIds": [
+        "ao-48365"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_6d8242cb99218c0ec70354d1"
       ],
       "offlineReplayOutcome": null
     },
@@ -26599,130 +26599,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_30a214eec82f1b545ffc23f4",
-      "referenceId": "fa_ref_a7bceee2a35a43668aabe576",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE4504BBL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_cf25207e6f7230364ce01e26"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_702f349f835297f54af4ae52"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77076"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_7a07f6493607391e4d6c63e9"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_1a3a5b32e27dd7d29bb93011",
-      "referenceId": "fa_ref_ab312ba2e91b93ef24cea956",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE4504BBR",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_91ad4b898c0485204c16122c"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_58181138d28a980d9a994173"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77077"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_42494ead5491eabb939e1091"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_8f5ba97b5bce33ad289e7764",
-      "referenceId": "fa_ref_84dea0453f6b62afcdfc8f0c",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE4504SBL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d73ef735abbca1e4d57515de"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e1e29b2d24802fd8aebc346a"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77078"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_5509d7927d4494ff870b78d5"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_4aebea9f8cb47c58667afb2f",
-      "referenceId": "fa_ref_cb6a8f7e8fb8e5998bd2ee03",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE4504SBR",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8b778cfd994999bec54eeb0e"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_269b2c672b0f0a57114940cf"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77079"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_3eedcdf07268b0531d202ee0"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_d7263e9afa7cdb2274bd4f9c",
       "referenceId": "fa_ref_c70338866bb13163e957eb61",
       "category": "fridge",
@@ -39491,6 +39367,37 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_0e1742d29ed0018133b874b4",
+      "referenceId": "fa_ref_9bab6b65b61c46b2910df798",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UC2X",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "priority": "P1_CATALOG_ARCHIVED",
+      "groupType": "document_family",
+      "groupName": "Document family b4860a689546",
+      "operationalClass": "IDENTITY_RESEARCH",
+      "route": "IDENTITY_CLOSURE",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_ba29a402db45de69449e44f8"
+      ],
+      "resolverIds": [
+        "fisher-paykel-official-support"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_0167ec568eb0cf8b59913a46"
+      ],
+      "legacyRuntimeIds": [
+        "dishwasher-adw0915"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_d8b0a8fb3066838c8b264db3"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_4796ab4689eae52c3f19cc56",
       "referenceId": "fa_ref_8adf1afdb4033a49ee4f54ad",
       "category": "dishwasher",
@@ -39579,37 +39486,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_083b07c4735f2506329c80f0"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_0e1742d29ed0018133b874b4",
-      "referenceId": "fa_ref_9bab6b65b61c46b2910df798",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60UC2X",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_bdf94f4bbba7d673",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ba29a402db45de69449e44f8"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_0167ec568eb0cf8b59913a46"
-      ],
-      "legacyRuntimeIds": [
-        "dishwasher-adw0915"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d8b0a8fb3066838c8b264db3"
       ],
       "offlineReplayOutcome": null
     },
@@ -203644,19 +203520,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_8b778cfd994999bec54eeb0e",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/b/3/d/ab3d5b01078a6ebb7bf048b9d2e44100d093819c_WBE4504SBR_Westinghouse_Datasheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WBE4504SBR.json",
-        "source:doc_1d79220199b5b0bd9ff1cd7f"
-      ],
-      "referenceIds": [
-        "fa_ref_cb6a8f7e8fb8e5998bd2ee03"
-      ]
-    },
-    {
       "sourceId": "historical_source_8b8c0104194ad0198e9ad03e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/f/8/3/1f832519f7c0ffb16af8f883c88b8a82f51a19bb_BVF404W_Beko_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -204112,19 +203975,6 @@
       ],
       "referenceIds": [
         "fa_ref_1876e885bfea023ce1c65c3a"
-      ]
-    },
-    {
-      "sourceId": "historical_source_91ad4b898c0485204c16122c",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/5/d/6/d/5d6d19b8c03061e8e12b5bfde87861971defb6c4_WBE4504BBR_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WBE4504BBR.json",
-        "source:doc_c7fd7d6663bf1ebe351d03a2"
-      ],
-      "referenceIds": [
-        "fa_ref_ab312ba2e91b93ef24cea956"
       ]
     },
     {
@@ -208500,19 +208350,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_cf25207e6f7230364ce01e26",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/2/4/8/0248ee610e9ee67e1f7354e799389ccf801a7cf4_WBE4504BBL_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WBE4504BBL.json",
-        "source:doc_78af3f7e9624f46c260d0cd8"
-      ],
-      "referenceIds": [
-        "fa_ref_a7bceee2a35a43668aabe576"
-      ]
-    },
-    {
       "sourceId": "historical_source_cf6fa1a9931e7e9bcee62404",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/8/d/d/a8ddff8d7005a4d065afc1c9068cc3d47011f66b_ECF146W_Esatto_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -209091,19 +208928,6 @@
       ],
       "referenceIds": [
         "fa_ref_cbfc23e2108db02b31e1a53f"
-      ]
-    },
-    {
-      "sourceId": "historical_source_d73ef735abbca1e4d57515de",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/7/0/a/270aef9568b56e1d7c7717f548d7ae2de47cbd06_WBE4504SBL_Westinghouse_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WBE4504SBL.json",
-        "source:doc_07a54fa2142372de287db291"
-      ],
-      "referenceIds": [
-        "fa_ref_84dea0453f6b62afcdfc8f0c"
       ]
     },
     {
@@ -211803,46 +211627,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 294,
+    "COMPLETE_RECEIPT": 298,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7801,
-    "uniqueReferences": 7801,
-    "candidateSources": 1450,
-    "candidateEdges": 1485,
+    "queuedModels": 7797,
+    "uniqueReferences": 7797,
+    "candidateSources": 1446,
+    "candidateEdges": 1481,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1163,
+      "CURRENT_RETAIL": 1159,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1299,
       "dryer": 808,
-      "fridge": 4232,
+      "fridge": 4228,
       "washing_machine": 1462
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 146,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1156
+      "REFERENCE_REDISCOVERY": 1152
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 146,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1156
+      "OFFICIAL_REDISCOVERY": 1152
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5136,
+      "DISCOVERY_READY": 5132,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 294,
+      "COMPLETE_RECEIPT": 298,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

@@ -471,6 +471,84 @@ test('HTML V2 attestation binds a verbatim grouped product label instead of a pa
   assert.equal(result.source.verificationReceipt.schemaVersion, 3);
 });
 
+test('official HTML attestation treats punctuation-only Westinghouse hinge formatting as exact identity', async () => {
+  const targetModel = 'WBE4504BBL';
+  const sourceModel = 'WBE4504BB-L';
+  const artifactUrl = `https://www.westinghouse.com.au/fridges-and-freezers/fridges/${sourceModel.toLowerCase()}/`;
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>453L bottom mount fridge - ${sourceModel} | Westinghouse Australia</title>
+    <link rel="canonical" href="${artifactUrl}">
+  </head><body data-product-model="${sourceModel}"><dl>
+    <dt>Total width (mm)</dt><dd>699 mm</dd>
+  </dl></body></html>`);
+  const contentSha256 = createHash('sha256').update(bytes).digest('hex');
+  const result = await attestEvidenceArtifactForCase({
+    id: `case-${targetModel}`,
+    brand: 'Westinghouse',
+    model: targetModel,
+    category: 'fridge',
+    sources: [],
+  }, {
+    authorityMode: 'official',
+    authorityBrand: 'Westinghouse',
+    requestedUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    redirectChain: [],
+    contentType: 'text/html',
+    contentSha256,
+    objectPath: `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.html`,
+    byteSize: bytes.length,
+    bytes,
+  }, {
+    now: '2026-07-16T00:00:00.000Z',
+    requestedFields: ['closedEnvelope.widthMm'],
+    claimSemanticsVersion: 2,
+    requireRequestedFieldCoverage: true,
+  });
+
+  assert.deepEqual(result.source.identity, {
+    brand: 'Westinghouse', model: targetModel, outcome: 'exact',
+  });
+  assert.equal(result.source.claims[0].value.mm, 699);
+});
+
+test('official HTML attestation rejects punctuation-only identity outside the approved Westinghouse series', async () => {
+  const targetModel = 'WBE9999XXR';
+  const sourceModel = 'WBE9999XX-R';
+  const artifactUrl = `https://www.westinghouse.com.au/fridges-and-freezers/fridges/${sourceModel.toLowerCase()}/`;
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>Bottom mount fridge - ${sourceModel} | Westinghouse Australia</title>
+    <link rel="canonical" href="${artifactUrl}">
+  </head><body data-product-model="${sourceModel}"><dl>
+    <dt>Total width (mm)</dt><dd>699 mm</dd>
+  </dl></body></html>`);
+  const contentSha256 = createHash('sha256').update(bytes).digest('hex');
+
+  await assert.rejects(attestEvidenceArtifactForCase({
+    id: `case-${targetModel}`,
+    brand: 'Westinghouse',
+    model: targetModel,
+    category: 'fridge',
+    sources: [],
+  }, {
+    authorityMode: 'official',
+    authorityBrand: 'Westinghouse',
+    requestedUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    redirectChain: [],
+    contentType: 'text/html',
+    contentSha256,
+    objectPath: `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.html`,
+    byteSize: bytes.length,
+    bytes,
+  }, {
+    now: '2026-07-16T00:00:00.000Z',
+    requestedFields: ['closedEnvelope.widthMm'],
+    claimSemanticsVersion: 2,
+    requireRequestedFieldCoverage: true,
+  }), /canonical URL does not prove exact model/i);
+});
+
 test('official ASKO AU product JSON attests only receipt-bound closed-envelope dimensions for a mechanical model variant', async () => {
   const targetModel = 'DBI243IBS';
   const sourceModel = 'DBI243IB.S.AU';
