@@ -109,6 +109,24 @@ test('recovery receipts publish exact identities and strict official marketing a
   assert.equal(accepted.has('discovery-washing-machine-samsung-ww12bb944dgb'), false);
 });
 
+test('HTML marketing aliases cannot publish without every explicit alias-binding signal', () => {
+  const weakResults = structuredClone(recoveryResults);
+  const alias = weakResults.outcomes.find((outcome) => (
+    outcome.identity === 'official_marketing_alias'
+      && outcome.source?.contentType === 'text/html'
+  ));
+  assert.ok(alias);
+  alias.source.identitySignals = alias.source.identitySignals.filter(
+    (signal) => signal.type !== 'official_alias_binding',
+  );
+
+  assert.throws(() => buildReceiptBoundAcceptanceProjection({
+    batch: recoveryBatch,
+    results: weakResults,
+    products: catalog.products,
+  }, { verifyReceipt: () => true }), /HTML marketing alias.*binding signals/i);
+});
+
 test('official model-variant PDF publishes only dimensions when every receipt-bound identity signal is present', () => {
   const model = 'W4104C.W';
   const sourceModel = `${model}.AU`;
@@ -258,6 +276,59 @@ test('independent acceptance batches merge without silently overwriting a produc
   const merged = mergeReceiptBoundAcceptanceProjections(original, recovery);
   assert.equal(merged.size, 20);
   assert.throws(() => mergeReceiptBoundAcceptanceProjections(original, original), /duplicate.*product/i);
+});
+
+test('a newer receipt may replace an older lane only when publication semantics are equivalent', () => {
+  const original = buildReceiptBoundAcceptanceProjection({
+    batch: recoveryBatch, results: recoveryResults, products: catalog.products,
+  }).get('ao-97642');
+  const refreshed = structuredClone(original);
+  refreshed.acceptanceId = 'historical-samsung-srf5300sd';
+  refreshed.sourceModel = 'RF44A5202SL/SA';
+  refreshed.artifactType = 'html';
+  refreshed.contentSha256 = 'e'.repeat(64);
+  refreshed.receiptBindingSha256 = 'f'.repeat(64);
+  refreshed.verifiedAt = '2026-07-16T00:00:00.000Z';
+
+  const merged = mergeReceiptBoundAcceptanceProjections(
+    new Map([['ao-97642', original]]),
+    new Map([['ao-97642', refreshed]]),
+  );
+
+  assert.equal(merged.get('ao-97642').acceptanceId, refreshed.acceptanceId);
+  assert.equal(merged.get('ao-97642').receiptBindingSha256, refreshed.receiptBindingSha256);
+});
+
+test('receipt refresh rejects geometry drift and stale or same-age replacements', () => {
+  const original = buildReceiptBoundAcceptanceProjection({
+    batch: recoveryBatch, results: recoveryResults, products: catalog.products,
+  }).get('ao-97642');
+  const refreshed = structuredClone(original);
+  refreshed.acceptanceId = 'historical-samsung-srf5300sd';
+  refreshed.sourceModel = 'RF44A5202SL/SA';
+  refreshed.contentSha256 = 'e'.repeat(64);
+  refreshed.receiptBindingSha256 = 'f'.repeat(64);
+  refreshed.verifiedAt = '2026-07-16T00:00:00.000Z';
+
+  const changedGeometry = structuredClone(refreshed);
+  changedGeometry.geometry_v2.closedEnvelope.widthMm += 1;
+  assert.throws(
+    () => mergeReceiptBoundAcceptanceProjections(
+      new Map([['ao-97642', original]]),
+      new Map([['ao-97642', changedGeometry]]),
+    ),
+    /duplicate.*semantic|geometry/i,
+  );
+
+  const stale = structuredClone(refreshed);
+  stale.verifiedAt = original.verifiedAt;
+  assert.throws(
+    () => mergeReceiptBoundAcceptanceProjections(
+      new Map([['ao-97642', original]]),
+      new Map([['ao-97642', stale]]),
+    ),
+    /duplicate.*newer|timestamp/i,
+  );
 });
 
 test('accepted evidence requires exact batch, outcome, and catalog identity', () => {

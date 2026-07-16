@@ -52,16 +52,38 @@ function normalizeSelection(selection = {}) {
   };
 }
 
-function sourceBinding(source) {
+function sourceSnapshot(source) {
+  const hasReceiptReference = source?.verificationReceipt !== undefined
+    || source?.receiptBindingSha256 !== undefined;
   const receiptBindingSha256 = source?.verificationReceipt?.bindingSha256
     ?? source?.receiptBindingSha256;
-  if (!source?.sourceUrl || !/^[a-f0-9]{64}$/.test(String(source?.contentSha256 ?? ''))
-    || !/^[a-f0-9]{64}$/.test(String(receiptBindingSha256 ?? ''))) return null;
-  return {
-    sourceUrl: source.sourceUrl,
-    contentSha256: source.contentSha256,
-    receiptBindingSha256,
-  };
+  const hasBinding = /^[a-f0-9]{64}$/.test(String(receiptBindingSha256 ?? ''));
+  if (!hasReceiptReference && !hasBinding) return null;
+
+  const validContentHash = /^[a-f0-9]{64}$/.test(String(source?.contentSha256 ?? ''));
+  let trustedUrl = false;
+  try {
+    const url = new URL(String(source?.sourceUrl ?? ''));
+    trustedUrl = url.protocol === 'https:' && !url.username && !url.password;
+  } catch {
+    trustedUrl = false;
+  }
+  const replayable = trustedUrl
+    && validContentHash
+    && hasBinding
+    && source?.identity
+    && typeof source.identity === 'object'
+    && !Array.isArray(source.identity)
+    && Array.isArray(source?.claims)
+    && source.claims.length > 0
+    && source?.verificationReceipt
+    && typeof source.verificationReceipt === 'object'
+    && !Array.isArray(source.verificationReceipt)
+    && source.verificationReceipt.bindingSha256 === receiptBindingSha256;
+  if (!replayable) {
+    throw new TypeError('active receipt source must be a complete replayable source snapshot');
+  }
+  return structuredClone(source);
 }
 
 function outcomeIdentity(outcome) {
@@ -86,14 +108,14 @@ function indexPriorAcceptance(existingAcceptanceBundles) {
   const sourcesByIdentity = new Map();
 
   function addSource(row, source) {
-    const binding = sourceBinding(source);
-    if (!binding) return;
+    const snapshot = sourceSnapshot(source);
+    if (!snapshot) return;
     const targetId = row?.targetId ? String(row.targetId) : null;
     const identity = identityKey(row);
     for (const [key, map] of [[targetId, sourcesByTargetId], [identity, sourcesByIdentity]]) {
       if (!key) continue;
       const values = map.get(key) ?? [];
-      values.push(binding);
+      values.push(snapshot);
       map.set(key, values);
     }
   }
@@ -128,7 +150,7 @@ function indexPriorAcceptance(existingAcceptanceBundles) {
       ...(sourcesByIdentity.get(identityKey(target)) ?? []),
     ];
     return [...new Map(combined.map((source) => [
-      `${source.contentSha256}\0${source.receiptBindingSha256}\0${source.sourceUrl}`,
+      `${source.contentSha256}\0${source.verificationReceipt.bindingSha256}\0${source.sourceUrl}`,
       source,
     ])).values()].sort((left, right) => (
       left.contentSha256.localeCompare(right.contentSha256)

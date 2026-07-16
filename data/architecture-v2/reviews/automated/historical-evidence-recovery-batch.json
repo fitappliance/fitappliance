@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-c40b317f8be542c3bac603ba",
-  "generatedAt": "2026-07-16T10:31:37.305Z",
+  "batchId": "historical-recovery-fb355ad65e354c456fcb9766",
+  "generatedAt": "2026-07-16T11:51:23.764Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "c11ee61599e5a908db229281015b0d87e8bfa5633b8151cf7ec6e054973d6354"
+    "sha256": "c45dc5c297802b5377f559db5313541b625a75612b3041c848ab860f54aec4e5"
   },
   "policy": {
     "version": "2026-07-16.13",
@@ -18,19 +18,7 @@
     "targetIds": [],
     "limit": null
   },
-  "artifactJobs": [
-    {
-      "jobId": "recovery_2dae861b4375a69282749583",
-      "sourceUrl": "https://downloadcenter.samsung.com/content/UM/202605/20260518184516600/DA68-04132R-02_FDR_RF5000A_EN_260414.pdf",
-      "authorityBrand": "Samsung",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "targetIds": [
-        "recovery_target_91cdd0845f2fb9e5a9c1f065"
-      ]
-    }
-  ],
+  "artifactJobs": [],
   "targets": [
     {
       "targetId": "recovery_target_15e7e38fc54dc77ebe0dbced",
@@ -19812,37 +19800,6 @@
             }
           }
         ]
-      }
-    },
-    {
-      "targetId": "recovery_target_91cdd0845f2fb9e5a9c1f065",
-      "referenceId": "fa_ref_988c48ab891f6400e4b6a637",
-      "legacyRuntimeId": "ao-97642",
-      "canonicalProductId": "fa_prod_b3ff5e116c2b87ffdb717ce8",
-      "brand": "Samsung",
-      "model": "SRF5300SD",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": "recovery_2dae861b4375a69282749583",
-      "candidateJobIds": [
-        "recovery_2dae861b4375a69282749583"
-      ],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [
-          {
-            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
-            "contentSha256": "cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a",
-            "receiptBindingSha256": "5baa99bcb583f1b76557f5a49b6f4e5c3b73e2ea5cc426eb352696e9b25c5c0e"
-          }
-        ],
-        "registryHints": [],
-        "legacyHints": []
       }
     },
     {
@@ -237727,9 +237684,9 @@
     }
   ],
   "summary": {
-    "artifactJobs": 1,
-    "targets": 7739,
-    "candidateEdges": 1,
+    "artifactJobs": 0,
+    "targets": 7738,
+    "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
   }

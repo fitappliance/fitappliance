@@ -131,6 +131,38 @@ function fixturePolicy() {
   };
 }
 
+function receiptSource({
+  sourceUrl = 'https://example.com.au/prior.pdf',
+  contentSha256 = SHA_A,
+  bindingSha256 = SHA_B,
+  model = 'EX100',
+  identityOutcome = 'exact',
+} = {}) {
+  return {
+    authority: 'manufacturer',
+    sourceType: sourceUrl.endsWith('.pdf') ? 'official_exact_model_pdf' : 'official_exact_model_html',
+    sourceUrl,
+    finalUrl: sourceUrl,
+    contentType: sourceUrl.endsWith('.pdf') ? 'application/pdf' : 'text/html',
+    contentSha256,
+    supersedesContentSha256: [],
+    identity: {
+      brand: 'Example', model, category: 'dishwasher', outcome: identityOutcome,
+    },
+    claims: [{
+      field: 'closedEnvelope.widthMm',
+      value: { kind: 'fixed', mm: 600 },
+      sourceLabel: 'Width 600 mm',
+    }],
+    verificationReceipt: {
+      schemaVersion: 3,
+      bindingSha256,
+      policyVersion: '2026-07-13.1',
+      verifiedAt: '2026-07-13T00:00:00.000Z',
+    },
+  };
+}
+
 test('batch deterministically selects targets and preserves every alternate candidate edge', () => {
   const queue = fixtureQueue();
   const input = {
@@ -170,8 +202,9 @@ test('batch summary accounts for targets already covered by cumulative acceptanc
   assert.ok(batch.targets.every((target) => target.targetId !== queue.targets[0].targetId));
 });
 
-test('batch snapshots non-authoritative registry and legacy hints plus active receipt bindings', () => {
+test('batch snapshots non-authoritative hints plus complete replayable active receipt sources', () => {
   const queue = fixtureQueue();
+  const priorSource = receiptSource();
   const batch = buildHistoricalEvidenceRecoveryBatch({
     queue,
     policy: fixturePolicy(),
@@ -183,22 +216,14 @@ test('batch snapshots non-authoritative registry and legacy hints plus active re
         category: 'dishwasher',
         outcome: 'quarantined',
         receipt: 'passed',
-        source: {
-          sourceUrl: 'https://example.com.au/prior.pdf',
-          contentSha256: SHA_A,
-          verificationReceipt: { bindingSha256: SHA_B },
-        },
+        source: priorSource,
       }],
     }],
     selection: { brands: ['example'], limit: 1 },
   });
 
   assert.deepEqual(batch.targets[0].reconciliationContext, {
-    activeReceiptSources: [{
-      sourceUrl: 'https://example.com.au/prior.pdf',
-      contentSha256: SHA_A,
-      receiptBindingSha256: SHA_B,
-    }],
+    activeReceiptSources: [priorSource],
     registryHints: [{
       sourceId: 'energy-rating:dishwasher',
       snapshotSha256: SHA_A,
@@ -277,6 +302,10 @@ test('accepted targets are excluded without deleting other cumulative entries', 
 
 test('legacy marketing-alias acceptance remains recoverable until exact identity is proved', () => {
   const queue = fixtureQueue();
+  const priorSource = receiptSource({
+    sourceUrl: 'https://example.com.au/alias-product-page',
+    identityOutcome: 'official_marketing_alias',
+  });
   const batch = buildHistoricalEvidenceRecoveryBatch({
     queue,
     policy: fixturePolicy(),
@@ -284,24 +313,36 @@ test('legacy marketing-alias acceptance remains recoverable until exact identity
       outcomes: [{
         brand: 'Example', model: 'EX100', category: 'dishwasher',
         outcome: 'accepted', receipt: 'passed', identity: 'official_marketing_alias',
-        source: {
-          sourceUrl: 'https://example.com.au/alias-product-page',
-          contentSha256: SHA_A,
-          identity: { brand: 'Example', model: 'EX100', outcome: 'official_marketing_alias' },
-          verificationReceipt: { bindingSha256: SHA_B },
-        },
+        source: priorSource,
       }],
     }],
     selection: { targetIds: [queue.targets[0].targetId] },
   });
 
   assert.deepEqual(batch.targets.map((row) => row.model), ['EX100']);
-  assert.deepEqual(batch.targets[0].reconciliationContext.activeReceiptSources, [{
-    sourceUrl: 'https://example.com.au/alias-product-page',
-    contentSha256: SHA_A,
-    receiptBindingSha256: SHA_B,
-  }]);
+  assert.deepEqual(batch.targets[0].reconciliationContext.activeReceiptSources, [priorSource]);
   assert.equal(batch.summary.excludedPriorAcceptedTargets, 0);
+});
+
+test('batch fails closed when prior acceptance contains only a compact receipt reference', () => {
+  const queue = fixtureQueue();
+  assert.throws(() => buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [{
+      outcomes: [{
+        targetId: queue.targets[0].targetId,
+        brand: 'Example', model: 'EX100', category: 'dishwasher',
+        outcome: 'quarantined', receipt: 'passed',
+        source: {
+          sourceUrl: 'https://example.com.au/prior.pdf',
+          contentSha256: SHA_A,
+          receiptBindingSha256: SHA_B,
+        },
+      }],
+    }],
+    selection: { targetIds: [queue.targets[0].targetId] },
+  }), /active receipt source.*replayable/i);
 });
 
 test('explicit parser repair reopens one accepted target without hydrating its invalid receipt', () => {
@@ -315,10 +356,7 @@ test('explicit parser repair reopens one accepted target without hydrating its i
         targetId: queue.targets[0].targetId,
         brand: 'Example', model: 'EX100', category: 'dishwasher',
         acceptanceStatus: 'accepted',
-        sources: [{
-          sourceUrl: 'https://example.com.au/old.pdf', contentSha256: SHA_A,
-          verificationReceipt: { bindingSha256: SHA_B },
-        }],
+        sources: [receiptSource({ sourceUrl: 'https://example.com.au/old.pdf' })],
       }],
     }],
     selection: { targetIds: [queue.targets[0].targetId] },

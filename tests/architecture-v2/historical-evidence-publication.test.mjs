@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 import {
+  assertHistoricalPublicationEvidenceCeiling,
   buildHistoricalEvidencePublication,
   scalarHistoricalDimensions,
 } from '../../src/domain/historical-evidence-publication.mjs';
@@ -57,6 +58,45 @@ test('current recovery evidence projects to both current and historical lanes', 
   assert.equal(historical.lifecycleState, 'CURRENT_RETAIL');
   assert.deepEqual(historical.dimensionsMm, { width: 600, height: 850, depth: 645 });
   assert.equal(historical.modelReceipts[0].fields.height.page, 1);
+});
+
+test('current publication restores explicit catalog form factor before calculating Fit requirements', () => {
+  const samsungBundle = bundleFor('SRF5300SD');
+  const samsungProduct = structuredClone(catalog.products.find((product) => product.id === 'ao-97642'));
+  assert.equal(samsungBundle.entries[0].geometryProjection.geometry.formFactor, null);
+
+  const publication = buildHistoricalEvidencePublication({
+    bundle: samsungBundle,
+    products: [samsungProduct],
+  });
+  const current = publication.currentAcceptanceByLegacyId.get('ao-97642');
+
+  assert.equal(current.geometry_v2.formFactor, 'upright');
+  assert.ok(current.geometry_v2_provenance.missingForVerifiedFit.includes('operation.doorOpenDepthMm'));
+  assert.equal(current.geometry_v2_provenance.verifiedFitEligible, false);
+  assert.equal(current.geometry_v2_provenance.successfulFitOutcome, 'INSUFFICIENT_DATA');
+});
+
+test('form-factor safety projection cannot promote a stored dimensions receipt to Verified Fit', () => {
+  const stored = {
+    evidenceLevel: 'dimensions',
+    verifiedFitEligible: false,
+    successfulFitOutcome: 'LIKELY_FIT_ESTIMATED',
+  };
+  const projected = {
+    evidenceLevel: 'verified',
+    verifiedFitEligible: true,
+    successfulFitOutcome: 'VERIFIED_FIT',
+  };
+
+  assert.throws(
+    () => assertHistoricalPublicationEvidenceCeiling(stored, projected, 'fixture-target'),
+    /form-factor restoration cannot promote Fit.*fixture-target/i,
+  );
+  assert.equal(
+    assertHistoricalPublicationEvidenceCeiling(stored, { ...stored }, 'fixture-target').evidenceLevel,
+    'dimensions',
+  );
 });
 
 test('mixed HTML and PDF evidence publishes only contributing sources with typed locators', () => {

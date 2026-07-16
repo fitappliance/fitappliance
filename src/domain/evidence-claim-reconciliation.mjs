@@ -51,6 +51,18 @@ function aliasIdentity(source, identity) {
     && String(source.identity.category ?? identity.category) === String(identity.category);
 }
 
+export function isStandaloneOfficialHtmlMarketingAlias(source) {
+  if (source?.contentType !== 'text/html') return false;
+  const signals = new Set((source.identitySignals ?? []).map((signal) => signal?.type));
+  if (!signals.has('document_title')
+    || !signals.has('canonical_source_model')
+    || !signals.has('official_alias_binding')) return false;
+  const claims = source.claims ?? [];
+  return claims.length === DEFAULT_FIELDS.length
+    && new Set(claims.map((claim) => claim?.field)).size === DEFAULT_FIELDS.length
+    && claims.every((claim) => DEFAULT_FIELDS.includes(claim?.field));
+}
+
 function sameResource(left, right) {
   try {
     const a = new URL(left); const b = new URL(right);
@@ -462,7 +474,14 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   const standaloneVariantAliases = aliases.filter((source) => (
     isStrictOfficialModelVariantSource(source, identity)
   ));
-  const identityAnchors = exact.length ? exact : standaloneVariantAliases;
+  const standaloneMarketingAliases = aliases.filter(isStandaloneOfficialHtmlMarketingAlias);
+  const standaloneAliases = [...new Set([
+    ...standaloneVariantAliases,
+    ...standaloneMarketingAliases,
+  ])];
+  const identityAnchors = exact.length
+    ? [...exact, ...standaloneMarketingAliases]
+    : standaloneAliases;
   if (!identityAnchors.length) {
     const hadIdentityRejection = (inventory.candidates ?? []).some((candidate) => candidate.outcome?.status === 'identity_rejected');
     return failure(
@@ -490,7 +509,7 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   const eligibleAliases = exact.length ? [
     ...standaloneVariantAliases,
     ...(hasExactOfficialAxisProof(exactMatrix)
-      ? aliases.filter((source) => !standaloneVariantAliases.includes(source))
+      ? aliases.filter((source) => !standaloneAliases.includes(source))
       : []),
   ] : [];
   try {

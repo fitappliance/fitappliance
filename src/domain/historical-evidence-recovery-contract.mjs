@@ -258,6 +258,43 @@ function validateArtifactJob(value) {
   strings(value.targetIds, 'artifact targetIds', { nonEmpty: true });
 }
 
+function validateActiveReceiptSource(value) {
+  object(value, 'active receipt source');
+  const sourceUrl = new URL(text(value.sourceUrl, 'active receipt source URL'));
+  if (sourceUrl.protocol !== 'https:' || sourceUrl.username || sourceUrl.password) {
+    throw new TypeError('active receipt source URL must be trusted HTTPS');
+  }
+  sha256(value.contentSha256, 'active receipt content SHA');
+
+  object(value.identity, 'active receipt source identity');
+  text(value.identity.brand, 'active receipt source identity brand');
+  text(value.identity.model, 'active receipt source identity model');
+  text(value.identity.outcome, 'active receipt source identity outcome');
+  if (value.identity.category !== undefined) {
+    oneOf(value.identity.category, CATEGORIES, 'active receipt source identity category');
+  }
+  if (value.identity.sourceModel !== undefined) {
+    text(value.identity.sourceModel, 'active receipt source identity sourceModel');
+  }
+
+  if (!Array.isArray(value.claims) || value.claims.length === 0) {
+    throw new TypeError('active receipt source must contain replayable claims');
+  }
+  for (const [index, claim] of value.claims.entries()) {
+    object(claim, `active receipt source claim[${index}]`);
+    text(claim.field, `active receipt source claim[${index}].field`);
+    if (!Object.hasOwn(claim, 'value')) {
+      throw new TypeError(`active receipt source claim[${index}].value required`);
+    }
+  }
+
+  object(value.verificationReceipt, 'active receipt verification receipt');
+  integer(value.verificationReceipt.schemaVersion, 'active receipt schemaVersion', 1);
+  sha256(value.verificationReceipt.bindingSha256, 'active receipt binding SHA');
+  text(value.verificationReceipt.policyVersion, 'active receipt policyVersion');
+  timestamp(value.verificationReceipt.verifiedAt, 'active receipt verifiedAt');
+}
+
 function validateReconciliationContext(value) {
   exactKeys(
     value,
@@ -269,10 +306,7 @@ function validateReconciliationContext(value) {
     throw new TypeError('reconciliation context arrays required');
   }
   for (const source of value.activeReceiptSources) {
-    exactKeys(source, 'active receipt source', ['sourceUrl', 'contentSha256', 'receiptBindingSha256']);
-    text(source.sourceUrl, 'active receipt source URL');
-    sha256(source.contentSha256, 'active receipt content SHA');
-    sha256(source.receiptBindingSha256, 'active receipt binding SHA');
+    validateActiveReceiptSource(source);
   }
   for (const prior of value.priorAttemptSuppressions ?? []) {
     exactKeys(prior, 'prior attempt suppression', [

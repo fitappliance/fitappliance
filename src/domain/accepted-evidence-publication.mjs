@@ -1,4 +1,5 @@
 import { projectEvidenceGeometry } from './evidence-geometry-projector.mjs';
+import { isStandaloneOfficialHtmlMarketingAlias } from './evidence-claim-reconciliation.mjs';
 import { isStrictOfficialModelVariantSource } from './official-model-variant-policy.mjs';
 
 function text(value) {
@@ -15,6 +16,63 @@ function stable(value) {
 
 function same(left, right) {
   return JSON.stringify(stable(left)) === JSON.stringify(stable(right));
+}
+
+function modelKey(value) {
+  return text(value).toUpperCase().replace(/[^A-Z0-9]+/g, '');
+}
+
+function sourceUrlKey(value) {
+  const url = new URL(text(value));
+  if (url.protocol !== 'https:' || url.username || url.password) {
+    throw new TypeError('receipt-bound acceptance source URL must be trusted HTTPS');
+  }
+  url.hash = '';
+  url.hostname = url.hostname.toLowerCase();
+  return url.toString();
+}
+
+function artifactClass(value) {
+  const normalized = text(value).toLowerCase();
+  if (normalized.includes('pdf')) return 'pdf';
+  if (normalized.includes('html')) return 'html';
+  if (normalized.includes('json') || normalized.includes('api') || normalized.includes('structured')) return 'json';
+  if (normalized === 'mixed') return 'mixed';
+  return normalized;
+}
+
+function publicationSemantics(acceptance) {
+  const provenance = acceptance?.geometry_v2_provenance ?? {};
+  return {
+    identityOutcome: acceptance?.identityOutcome,
+    sourceModel: modelKey(acceptance?.sourceModel),
+    artifactType: artifactClass(acceptance?.artifactType),
+    sourceType: acceptance?.sourceType,
+    sourceUrl: sourceUrlKey(acceptance?.sourceUrl),
+    geometry_v2: acceptance?.geometry_v2,
+    provenance: {
+      evidenceLevel: provenance.evidenceLevel,
+      missingForVerifiedFit: [...(provenance.missingForVerifiedFit ?? [])].sort(),
+      verifiedFitEligible: provenance.verifiedFitEligible,
+      successfulFitOutcome: provenance.successfulFitOutcome,
+    },
+  };
+}
+
+function replaceEquivalentReceiptRefresh(legacyRuntimeId, previous, next) {
+  if (!same(publicationSemantics(previous), publicationSemantics(next))) {
+    throw new Error(`duplicate receipt-bound acceptance product semantic conflict: ${legacyRuntimeId}`);
+  }
+  const previousAt = Date.parse(previous?.verifiedAt);
+  const nextAt = Date.parse(next?.verifiedAt);
+  if (!Number.isFinite(previousAt) || !Number.isFinite(nextAt) || nextAt <= previousAt) {
+    throw new Error(`duplicate receipt-bound acceptance product requires a strictly newer receipt timestamp: ${legacyRuntimeId}`);
+  }
+  if (previous.contentSha256 === next.contentSha256
+    && previous.receiptBindingSha256 === next.receiptBindingSha256) {
+    throw new Error(`duplicate receipt-bound acceptance product requires a new receipt binding: ${legacyRuntimeId}`);
+  }
+  return next;
 }
 
 function uniqueMap(rows, key, label) {
@@ -41,12 +99,6 @@ function completeClosedEnvelope(geometry) {
     && geometry?.closedEnvelope?.heightMm !== null
     && geometry?.closedEnvelope?.depthMm !== null;
 }
-
-const ALIAS_DIMENSION_FIELDS = new Set([
-  'closedEnvelope.widthMm',
-  'closedEnvelope.heightMm',
-  'closedEnvelope.depthMm',
-]);
 
 export function buildReceiptBoundAcceptanceProjection(input, options = {}) {
   const batch = input?.batch;
@@ -86,14 +138,13 @@ export function buildReceiptBoundAcceptanceProjection(input, options = {}) {
       throw new Error(`accepted evidence identity outcome drift: ${id}`);
     }
     if (identityOutcome === 'official_marketing_alias') {
-      const htmlAlias = outcome.source.contentType === 'text/html'
-        && text(outcome.source.identity?.sourceModel)
-        && (outcome.source.claims ?? []).every((claim) => ALIAS_DIMENSION_FIELDS.has(claim.field));
+      const htmlAlias = text(outcome.source.identity?.sourceModel)
+        && isStandaloneOfficialHtmlMarketingAlias(outcome.source);
       const boundVariant = isStrictOfficialModelVariantSource(outcome.source, {
         brand: entry.brand, model: entry.model, category: entry.category,
       });
       if (!htmlAlias && !boundVariant) {
-        throw new Error(`official model variant requires complete PDF/API binding signals or strict HTML dimensions only: ${id}`);
+        throw new Error(`HTML marketing alias requires complete binding signals, or model variant requires complete PDF/API binding signals: ${id}`);
       }
     }
     const projected = projectEvidenceGeometry({
@@ -141,7 +192,12 @@ export function mergeReceiptBoundAcceptanceProjections(...projections) {
     if (!(projection instanceof Map)) throw new TypeError('receipt-bound acceptance projection map required');
     for (const [legacyRuntimeId, acceptance] of projection) {
       if (merged.has(legacyRuntimeId)) {
-        throw new Error(`duplicate receipt-bound acceptance product: ${legacyRuntimeId}`);
+        merged.set(legacyRuntimeId, replaceEquivalentReceiptRefresh(
+          legacyRuntimeId,
+          merged.get(legacyRuntimeId),
+          acceptance,
+        ));
+        continue;
       }
       merged.set(legacyRuntimeId, acceptance);
     }

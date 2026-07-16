@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T10:30:50.823Z",
+  "generatedAt": "2026-07-16T11:40:20.317Z",
   "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
   "entries": [
     {
@@ -33748,6 +33748,205 @@
       }
     },
     {
+      "targetId": "recovery_target_91cdd0845f2fb9e5a9c1f065",
+      "referenceId": "fa_ref_988c48ab891f6400e4b6a637",
+      "legacyRuntimeId": "ao-97642",
+      "canonicalProductId": "fa_prod_b3ff5e116c2b87ffdb717ce8",
+      "brand": "Samsung",
+      "model": "SRF5300SD",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-3e7afba6e67287c58cd4b750-slice-0af13902cfb0",
+      "auditSha256": "3165d903cb88b576bb14d7d39e7eb6a564a05b0e20d6c22e8f7eca4495339aea",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+          "finalUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T11:39:08.095Z",
+          "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
+          "objectPath": "evidence/web/sha256/b5/55/b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0.html",
+          "contentType": "text/html",
+          "byteSize": 3169060,
+          "supersedesContentSha256": [
+            "cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a"
+          ],
+          "identity": {
+            "brand": "Samsung",
+            "model": "SRF5300SD",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "RF44A5202SL/SA"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 817
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1776
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 715
+              },
+              "sourceLabel": "Depth with Handle",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": true,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/"
+            },
+            {
+              "type": "document_title",
+              "value": "495L French Door Fridge Non Plumbed SRF5300SD | Samsung AU"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "RF44A5202SL/SA"
+            },
+            {
+              "type": "official_alias_binding",
+              "value": "Purchase SRF5300SD 495L French Door refrigerator RF44A5202SL/SA with with Big Crisper, Twin Cooling Plus™ and Non-Plumbed Built-in Water Dispenser. Find out its price and reviews at Samsung Australia."
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T11:39:08.095Z",
+            "bindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 817,
+            "heightMm": {
+              "minimumMm": 1776,
+              "maximumMm": 1776
+            },
+            "depthMm": 715
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+            "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
+            "receiptBindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+            "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
+            "receiptBindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+            "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
+            "receiptBindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_925ddfc632cb32ff1a95f893",
       "referenceId": "fa_ref_dacaa9a2b99e0255c641ee69",
       "legacyRuntimeId": "discovery-dishwasher-bosch-sbv8ecx01a",
@@ -63723,6 +63922,13 @@
       "queueSha256": "45695b43f4e2e6ff8ef46a8fbcf88f31938fcabd9ebf473c4661151ed0c98e27",
       "resultsSha256": "2482d031e6e1f255b594121462bdbf4b9c3e2954e401a2f43df8cba6ee9fe40b",
       "auditSha256": "c54a43fa2d03294867d1730f0ca2a218fb8550108958011792070f111fd63fe8"
+    },
+    {
+      "batchId": "historical-recovery-3e7afba6e67287c58cd4b750-slice-0af13902cfb0",
+      "batchSha256": "3118dcd24c28f0fc0965c584c402d1fe46fd3697593941c02ecbc1dea3c38fd0",
+      "queueSha256": "8b73c68eb42b7fb9a63be0010789cff15210007068ecd627169b4ab39e47648f",
+      "resultsSha256": "59bf63a6cd2b9f9d676a0f15d703010285a9be99794c4aca0bc33e0742a822df",
+      "auditSha256": "3165d903cb88b576bb14d7d39e7eb6a564a05b0e20d6c22e8f7eca4495339aea"
     },
     {
       "batchId": "historical-recovery-449973b3bf58102620f0e1c7-slice-6d2a9c4a4264",

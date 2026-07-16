@@ -116,7 +116,12 @@ function attestedSource(targetRecord, artifact, hash = artifact.contentSha256) {
       dimensionClaim(FIELDS[1], 845),
       dimensionClaim(FIELDS[2], 600),
     ],
-    verificationReceipt: { bindingSha256: hash },
+    verificationReceipt: {
+      schemaVersion: 3,
+      bindingSha256: hash,
+      policyVersion: '2026-07-13.1',
+      verifiedAt: '2026-07-13T00:00:00.000Z',
+    },
   };
 }
 
@@ -210,6 +215,33 @@ test('one target with alternate jobs receives one inventory and exactly one term
     lowerAuthorityResolution: null,
     conflictReason: null,
   });
+});
+
+test('complete inline active receipts replay without a loader and reconcile with a fresh candidate', async () => {
+  const artifactJob = job('a'.repeat(32), 'https://official.example.com/current.pdf', ['target-a']);
+  const targetRecord = target('target-a', 'EX100', [artifactJob.jobId]);
+  const priorHash = 'c'.repeat(64);
+  targetRecord.reconciliationContext.activeReceiptSources = [attestedSource(targetRecord, {
+    sourceUrl: 'https://official.example.com/prior.pdf',
+    contentSha256: priorHash,
+  }, priorHash)];
+
+  const result = await runReceiptBoundEvidenceBatch(
+    batch({ jobs: [artifactJob], targets: [targetRecord] }),
+    dependencies({
+      loadActiveReceiptSource: async () => {
+        throw new Error('inline source must not require an external loader');
+      },
+    }),
+  );
+
+  assert.equal(result.outcomes[0].status, 'accepted');
+  assert.equal(result.outcomes[0].sources.length, 2);
+  assert.deepEqual(
+    result.outcomes[0].sources.map((source) => source.contentSha256).sort(),
+    [priorHash, `${'a'.repeat(32)}${'0'.repeat(32)}`].sort(),
+  );
+  assert.equal(result.outcomes[0].candidateInventory.activeReceiptSources.length, 1);
 });
 
 test('runner passes policy reconciliation options without allowing boundary options to be overridden', async () => {

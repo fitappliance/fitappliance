@@ -6,6 +6,10 @@ import {
   validateHistoricalEvidenceRecoveryAcceptanceBundle,
 } from './historical-evidence-recovery-contract.mjs';
 import { isCurrentRetailProduct } from './historical-appliance-reference.mjs';
+import { inferApplianceFormFactor } from './appliance-form-factor.mjs';
+import { isStandaloneOfficialHtmlMarketingAlias } from './evidence-claim-reconciliation.mjs';
+import { projectEvidenceGeometry } from './evidence-geometry-projector.mjs';
+import { isStrictOfficialModelVariantSource } from './official-model-variant-policy.mjs';
 
 const AXIS_FIELDS = Object.freeze({
   width: 'closedEnvelope.widthMm',
@@ -109,18 +113,63 @@ function modelReceipts(entry) {
   }).filter((receipt) => Object.keys(receipt.fields).length > 0);
 }
 
-function currentAcceptance(entry) {
+function currentProjection(entry, product) {
+  const stored = entry.geometryProjection;
+  const storedFormFactor = stored?.geometry?.formFactor ?? null;
+  const inferredFormFactor = inferApplianceFormFactor(product);
+  if (storedFormFactor && inferredFormFactor && storedFormFactor !== inferredFormFactor) {
+    throw new Error(`historical recovery form factor conflict for ${entry.targetId}`);
+  }
+  const formFactor = storedFormFactor ?? inferredFormFactor;
+  if (!formFactor || formFactor === storedFormFactor) return stored;
+  const projected = projectEvidenceGeometry({
+    brand: entry.brand,
+    model: entry.model,
+    category: entry.category,
+    formFactor,
+    sources: entry.sources,
+  });
+  return assertHistoricalPublicationEvidenceCeiling(stored, projected, entry.targetId);
+}
+
+export function assertHistoricalPublicationEvidenceCeiling(stored, projected, targetId) {
+  const promotesVerified = stored?.evidenceLevel !== 'verified'
+    && projected?.evidenceLevel === 'verified';
+  const promotesEligibility = stored?.verifiedFitEligible !== true
+    && projected?.verifiedFitEligible === true;
+  const promotesOutcome = stored?.successfulFitOutcome !== 'VERIFIED_FIT'
+    && projected?.successfulFitOutcome === 'VERIFIED_FIT';
+  if (promotesVerified || promotesEligibility || promotesOutcome) {
+    throw new Error(`form-factor restoration cannot promote Fit for ${targetId}`);
+  }
+  return projected;
+}
+
+function assertCurrentAliasPublicationSafe(entry) {
+  const identity = { brand: entry.brand, model: entry.model, category: entry.category };
+  for (const source of entry.sources) {
+    if (source.identity?.outcome !== 'official_marketing_alias') continue;
+    if (isStandaloneOfficialHtmlMarketingAlias(source)
+      || isStrictOfficialModelVariantSource(source, identity)) continue;
+    throw new Error(`current official marketing alias lacks strict publication binding: ${entry.targetId}`);
+  }
+}
+
+function currentAcceptance(entry, product) {
   const sources = projectedSources(entry);
   const identityOutcomes = [...new Set(entry.sources.map((source) => source.identity.outcome))];
   if (identityOutcomes.length !== 1) {
     throw new Error(`mixed source identity outcomes for ${entry.targetId}`);
+  }
+  if (identityOutcomes[0] === 'official_marketing_alias') {
+    assertCurrentAliasPublicationSafe(entry);
   }
   const primary = sources[0];
   const contentTypes = [...new Set(sources.map((source) => source.contentType))];
   const artifactType = contentTypes.length === 1
     ? artifactTypeForContentType(contentTypes[0])
     : 'mixed';
-  const projection = entry.geometryProjection;
+  const projection = currentProjection(entry, product);
   return Object.freeze({
     acceptanceId: entry.targetId,
     identityOutcome: identityOutcomes[0],
@@ -187,7 +236,7 @@ export function buildHistoricalEvidencePublication({ bundle, products }) {
         if (currentAcceptanceByLegacyId.has(entry.legacyRuntimeId)) {
           throw new Error(`duplicate current recovery product ${entry.legacyRuntimeId}`);
         }
-        currentAcceptanceByLegacyId.set(entry.legacyRuntimeId, currentAcceptance(entry));
+        currentAcceptanceByLegacyId.set(entry.legacyRuntimeId, currentAcceptance(entry, product));
       }
     } else if (entry.lifecycleState === 'CATALOG_ARCHIVED') {
       if (product && isCurrentRetailProduct(product)) {

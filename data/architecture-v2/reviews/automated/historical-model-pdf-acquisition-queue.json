@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T10:31:37.305Z",
-  "semanticQueueSha256": "0c2987dbf5d700db5211d74c2f9e4e713fe0da08acc364ef32108884f83306ba",
-  "sourceClassificationSha256": "0490f16553f42673817c31113be00dc146d51591edfbd5fc4f0ae024732f389b",
+  "generatedAt": "2026-07-16T11:51:23.764Z",
+  "semanticQueueSha256": "b012fb06fa3d83d925dd8670643f41e18e4480295376ad3d014bcec84d3be2b8",
+  "sourceClassificationSha256": "7a92c5d4e81b427f3b408dbbfd6b039819761893591f6f683c2631ac934fbcbb",
   "records": [
     {
       "schemaVersion": 1,
@@ -25236,36 +25236,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_9c729e0f5614bed1c762ee72"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_004b5f42c198b491b2f8df6f",
-      "referenceId": "fa_ref_988c48ab891f6400e4b6a637",
-      "category": "fridge",
-      "brand": "Samsung",
-      "model": "SRF5300SD",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "model_specific",
-      "groupName": "SRF5300SD",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_1dfe8f25539b0013ce36a5bd",
-        "historical_source_780afc6550ebab36f55cb56e"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "ao-97642"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b3ff5e116c2b87ffdb717ce8"
       ],
       "offlineReplayOutcome": null
     },
@@ -195802,18 +195772,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_1dfe8f25539b0013ce36a5bd",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SRF5300SD.json"
-      ],
-      "referenceIds": [
-        "fa_ref_988c48ab891f6400e4b6a637"
-      ]
-    },
-    {
       "sourceId": "historical_source_1e14b8dabe2a75d5589e5e35",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/7/9/0/0/79005e422161143c07fde39e778aeba7fde774ab_CTM200NSS_SPEC.pdf",
       "sourceAuthority": "REFERENCE",
@@ -202913,18 +202871,6 @@
       ],
       "referenceIds": [
         "fa_ref_e38190c9cbf1ffec7a1eb49e"
-      ]
-    },
-    {
-      "sourceId": "historical_source_780afc6550ebab36f55cb56e",
-      "sourceUrl": "https://downloadcenter.samsung.com/content/UM/202605/20260518184516600/DA68-04132R-02_FDR_RF5000A_EN_260414.pdf",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "pdf:2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae"
-      ],
-      "referenceIds": [
-        "fa_ref_988c48ab891f6400e4b6a637"
       ]
     },
     {
@@ -212770,46 +212716,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 273,
+    "COMPLETE_RECEIPT": 274,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7822,
-    "uniqueReferences": 7822,
-    "candidateSources": 1475,
-    "candidateEdges": 1510,
+    "queuedModels": 7821,
+    "uniqueReferences": 7821,
+    "candidateSources": 1473,
+    "candidateEdges": 1508,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1184,
+      "CURRENT_RETAIL": 1183,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1312,
       "dryer": 812,
-      "fridge": 4233,
+      "fridge": 4232,
       "washing_machine": 1465
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 153,
+      "IDENTITY_RESEARCH": 152,
       "OFFICIAL_DISCOVERY": 6416,
       "REFERENCE_REDISCOVERY": 1170
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 153,
+      "IDENTITY_CLOSURE": 152,
       "OFFICIAL_DISCOVERY": 6416,
       "OFFICIAL_REDISCOVERY": 1170
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5157,
+      "DISCOVERY_READY": 5156,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 273,
+      "COMPLETE_RECEIPT": 274,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

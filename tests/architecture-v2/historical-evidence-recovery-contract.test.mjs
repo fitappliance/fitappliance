@@ -67,6 +67,33 @@ function target(overrides = {}) {
   };
 }
 
+function activeReceiptSource(overrides = {}) {
+  return {
+    authority: 'manufacturer',
+    sourceType: 'official_exact_model_pdf',
+    sourceUrl: 'https://example.com.au/prior.pdf',
+    finalUrl: 'https://example.com.au/prior.pdf',
+    contentType: 'application/pdf',
+    contentSha256: SHA_A,
+    supersedesContentSha256: [],
+    identity: {
+      brand: 'Example', model: 'EX100', category: 'dishwasher', outcome: 'exact',
+    },
+    claims: [{
+      field: 'closedEnvelope.widthMm',
+      value: { kind: 'fixed', mm: 600 },
+      sourceLabel: 'Width 600 mm',
+    }],
+    verificationReceipt: {
+      schemaVersion: 3,
+      bindingSha256: SHA_B,
+      policyVersion: '2026-07-13.1',
+      verifiedAt: '2026-07-13T00:00:00.000Z',
+    },
+    ...overrides,
+  };
+}
+
 function batch(overrides = {}) {
   return {
     schemaVersion: 1,
@@ -264,6 +291,29 @@ test('batch contract validates both sides of the artifact-target graph', () => {
       },
     })),
     /authority mode/i,
+  );
+});
+
+test('batch contract accepts complete inline receipt sources and rejects compact-only references', () => {
+  const source = activeReceiptSource();
+  const withInlineSource = batch({
+    targets: [target({
+      reconciliationContext: {
+        activeReceiptSources: [source], registryHints: [], legacyHints: [],
+      },
+    })],
+  });
+  assert.equal(validateHistoricalEvidenceRecoveryBatch(withInlineSource), withInlineSource);
+
+  const withCompactReference = structuredClone(withInlineSource);
+  withCompactReference.targets[0].reconciliationContext.activeReceiptSources = [{
+    sourceUrl: source.sourceUrl,
+    contentSha256: source.contentSha256,
+    receiptBindingSha256: source.verificationReceipt.bindingSha256,
+  }];
+  assert.throws(
+    () => validateHistoricalEvidenceRecoveryBatch(withCompactReference),
+    /active receipt source.*identity|active receipt source.*replayable/i,
   );
 });
 

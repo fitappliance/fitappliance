@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
+import { isOfficialBrandArtifactUrl } from './evidence-source-verifier.mjs';
 
 const TERMINAL_CLASSES = new Set(['COMPLETE_RECEIPT', 'OFFICIAL_HTML_ONLY', 'NO_OFFICIAL_SOURCE']);
 const ROUTE_BY_CLASS = Object.freeze({
@@ -19,6 +20,11 @@ const PRIORITY_ORDER = Object.freeze({
   P2_REGISTRY_ONLY: 2,
   P3_CONFLICT: 3,
 });
+const IDENTITY_DISCOVERY_FIELDS = new Set([
+  'closedEnvelope.widthMm',
+  'closedEnvelope.heightMm',
+  'closedEnvelope.depthMm',
+]);
 
 function text(value, label) {
   const normalized = String(value ?? '').trim();
@@ -105,6 +111,54 @@ function catalogCanonicalIdsByRuntimeId(catalogProducts) {
   return result;
 }
 
+function normalizedIdentity(value) {
+  return String(value ?? '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function autonomousIdentityDiscoveryCases(identityResearchQueue, references, canonicalByRuntimeId) {
+  if (identityResearchQueue == null) return new Map();
+  if (identityResearchQueue.schemaVersion !== 1 || !Array.isArray(identityResearchQueue.cases)) {
+    throw new TypeError('identity research queue schema v1 required');
+  }
+  const referenceByRuntimeId = new Map();
+  const referenceByCanonicalId = new Map();
+  for (const reference of references.values()) {
+    for (const runtimeId of reference.catalogProductIds ?? []) {
+      if (referenceByRuntimeId.has(runtimeId)) throw new Error(`duplicate catalog runtime identity: ${runtimeId}`);
+      referenceByRuntimeId.set(runtimeId, reference.referenceId);
+      const canonicalProductId = canonicalByRuntimeId.get(runtimeId);
+      if (!canonicalProductId) continue;
+      const existing = referenceByCanonicalId.get(canonicalProductId);
+      if (existing && existing !== reference.referenceId) {
+        throw new Error(`canonical product maps to multiple historical references: ${canonicalProductId}`);
+      }
+      referenceByCanonicalId.set(canonicalProductId, reference.referenceId);
+    }
+  }
+  const result = new Map();
+  for (const identityCase of identityResearchQueue.cases) {
+    const fields = identityCase?.approvedFields ?? [];
+    const resolution = identityCase?.resolution ?? null;
+    if (identityCase?.status !== 'resolved' || identityCase.requiresHumanReview !== false
+      || identityCase?.publication?.release !== true
+      || !['exact', 'official_marketing_alias'].includes(resolution?.identityOutcome)
+      || !/^[a-f0-9]{64}$/.test(String(resolution?.receiptBindingSha256 ?? ''))
+      || !fields.length || fields.some((field) => !IDENTITY_DISCOVERY_FIELDS.has(field))) continue;
+    const sourceUrl = normalizeHttpsUrl(resolution?.sourceUrl);
+    if (!sourceUrl) continue;
+    const matchedReferences = new Set([
+      referenceByRuntimeId.get(String(identityCase.legacyRuntimeId ?? '').trim()),
+      referenceByCanonicalId.get(String(identityCase.canonicalProductId ?? '').trim()),
+    ].filter(Boolean));
+    if (matchedReferences.size !== 1) continue;
+    const referenceId = [...matchedReferences][0];
+    const cases = result.get(referenceId) ?? [];
+    cases.push({ ...identityCase, sourceUrl });
+    result.set(referenceId, cases);
+  }
+  return result;
+}
+
 function readiness(route, candidateAuthorities, resolverIds) {
   if (route === 'PARSER_REPAIR' || route === 'PDF_RECONVERT') return 'OFFLINE_REPAIR';
   if (route === 'CONFLICT_CLOSURE') return 'RESEARCH_REQUIRED';
@@ -123,6 +177,7 @@ export function buildHistoricalModelPdfAcquisitionQueue({
   recoveryQueue,
   offlineReplayQueue = null,
   offlineReplayResults = null,
+  identityResearchQueue = null,
   resolverIdsByBrand = new Map(),
   generatedAt,
 }) {
@@ -135,6 +190,9 @@ export function buildHistoricalModelPdfAcquisitionQueue({
   const references = new Map(historicalReference.records.map((record) => [record.referenceId, record]));
   if (references.size !== historicalReference.records.length) throw new Error('duplicate historical reference ID');
   const canonicalByRuntimeId = catalogCanonicalIdsByRuntimeId(catalogProducts);
+  const identityDiscoveryByReference = autonomousIdentityDiscoveryCases(
+    identityResearchQueue, references, canonicalByRuntimeId,
+  );
   const recoveryByReference = recoveryTargetsByReference(recoveryQueue);
   const replayOutcomes = offlineOutcomesByReference(offlineReplayQueue, offlineReplayResults);
   const sources = new Map();
@@ -163,15 +221,41 @@ export function buildHistoricalModelPdfAcquisitionQueue({
       const sourceId = id('historical_source', `${authority}\0${sourceUrl}`);
       candidateSourceIds.push(sourceId);
       candidateAuthorities.add(authority);
+      const receiptEligible = authority === 'OFFICIAL' && isOfficialBrandArtifactUrl(
+        sourceUrl, classified.canonicalBrand, {
+          model: classified.model,
+          category: classified.category,
+        },
+      );
       const existing = sources.get(sourceId) ?? {
         sourceId,
         sourceUrl,
         sourceAuthority: authority,
-        receiptEligible: authority === 'OFFICIAL',
+        receiptEligible,
         documentIds: new Set(),
         referenceIds: new Set(),
       };
       existing.documentIds.add(link.documentId);
+      existing.referenceIds.add(classified.referenceId);
+      sources.set(sourceId, existing);
+    }
+    for (const identityCase of identityDiscoveryByReference.get(classified.referenceId) ?? []) {
+      if (normalizedIdentity(identityCase.brand) !== normalizedIdentity(classified.canonicalBrand)
+        || normalizedIdentity(identityCase.category) !== normalizedIdentity(classified.category)
+        || normalizedIdentity(identityCase.targetModel) !== normalizedIdentity(classified.model)) continue;
+      const authority = 'OFFICIAL';
+      const sourceId = id('historical_source', `${authority}\0${identityCase.sourceUrl}`);
+      candidateSourceIds.push(sourceId);
+      candidateAuthorities.add(authority);
+      const existing = sources.get(sourceId) ?? {
+        sourceId,
+        sourceUrl: identityCase.sourceUrl,
+        sourceAuthority: authority,
+        receiptEligible: true,
+        documentIds: new Set(),
+        referenceIds: new Set(),
+      };
+      existing.documentIds.add(`identity-research:${identityCase.id}`);
       existing.referenceIds.add(classified.referenceId);
       sources.set(sourceId, existing);
     }

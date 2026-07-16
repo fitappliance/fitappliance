@@ -565,6 +565,55 @@ test('strict HTML variant cannot establish target identity without an exact sour
   assert.equal(result.failureCode, 'identity');
 });
 
+test('receipt-bound official HTML marketing alias can establish dimensions without an exact source anchor', () => {
+  const aliasIdentity = { brand: 'Samsung', model: 'SRF5300SD', category: 'fridge' };
+  const productPage = source('b'.repeat(64), { widthMm: 817, heightMm: 1776, depthMm: 715 }, {
+    sourceType: 'official_exact_model_product_page',
+    contentType: 'text/html',
+    sourceUrl: 'https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/',
+    finalUrl: 'https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/',
+    identity: {
+      ...aliasIdentity,
+      outcome: 'official_marketing_alias',
+      sourceModel: 'RF44A5202SL/SA',
+    },
+    identitySignals: [
+      { type: 'document_title', value: '495L French Door Fridge Non Plumbed SRF5300SD | Samsung AU' },
+      { type: 'canonical_source_model', value: 'RF44A5202SL/SA' },
+      { type: 'official_alias_binding', value: 'SRF5300SD refrigerator RF44A5202SL/SA' },
+    ],
+  });
+  const result = reconcileEvidenceClaims(aliasIdentity, inventory([productPage], {
+    identity: aliasIdentity,
+  }), { verifyReceipt });
+
+  assert.equal(result.status, 'accepted');
+  assert.deepEqual(result.sources, [productPage]);
+});
+
+test('official HTML alias without an explicit marketing-model binding stays identity-rejected', () => {
+  const aliasIdentity = { brand: 'Samsung', model: 'SRF5300SD', category: 'fridge' };
+  const productPage = source('b'.repeat(64), { widthMm: 817, heightMm: 1776, depthMm: 715 }, {
+    sourceType: 'official_exact_model_product_page',
+    contentType: 'text/html',
+    identity: {
+      ...aliasIdentity,
+      outcome: 'official_marketing_alias',
+      sourceModel: 'RF44A5202SL/SA',
+    },
+    identitySignals: [
+      { type: 'document_title', value: '495L French Door Fridge Non Plumbed SRF5300SD | Samsung AU' },
+      { type: 'canonical_source_model', value: 'RF44A5202SL/SA' },
+    ],
+  });
+  const result = reconcileEvidenceClaims(aliasIdentity, inventory([productPage], {
+    identity: aliasIdentity,
+  }), { verifyReceipt });
+
+  assert.equal(result.status, 'identity_rejected');
+  assert.equal(result.failureCode, 'identity');
+});
+
 test('receipt-bound official AU model-variant PDF can establish dimensions without an exact source anchor', () => {
   const variantIdentity = { brand: 'ASKO', model: 'W4104C.W', category: 'washing_machine' };
   const variant = source('c'.repeat(64), { widthMm: 595, heightMm: 850, depthMm: 700 }, {

@@ -1,0 +1,33 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+
+import { inferApplianceFormFactor } from '../../src/domain/appliance-form-factor.mjs';
+
+test('infers only explicit category-specific appliance form factors', () => {
+  assert.equal(inferApplianceFormFactor({
+    cat: 'fridge', displayName: 'Samsung 498L French Door Refrigerator',
+  }), 'upright');
+  assert.equal(inferApplianceFormFactor({
+    cat: 'fridge', displayName: 'Example 300L Chest Freezer',
+  }), 'chest');
+  assert.equal(inferApplianceFormFactor({
+    cat: 'washing_machine', displayName: 'Example 9kg Front Load Washing Machine',
+  }), 'front_loader');
+  assert.equal(inferApplianceFormFactor({
+    cat: 'washing_machine', displayName: 'Example 10kg Top Loader',
+  }), 'top_loader');
+  assert.equal(inferApplianceFormFactor({
+    cat: 'washing_machine', displayName: 'Example 10kg Smart Laundry Appliance',
+  }), null);
+  assert.equal(inferApplianceFormFactor({
+    cat: 'dishwasher', displayName: 'Example Front Load Dishwasher',
+  }), null);
+});
+
+test('preserves an existing receipt-bound form factor before reading display text', () => {
+  assert.equal(inferApplianceFormFactor({
+    cat: 'fridge',
+    displayName: 'Ambiguous cooling appliance',
+    geometry_v2: { formFactor: 'upright' },
+  }), 'upright');
+});

@@ -1,3 +1,5 @@
+import { inferApplianceFormFactor } from './appliance-form-factor.mjs';
+
 const STRATA = Object.freeze({
   clean: new Set(['EXACT_CONSISTENT']),
   conflict: new Set(['AXIS_SUSPECT', 'EXACT_DIMENSION_CONFLICT', 'REGISTRY_INTERNAL_CONFLICT']),
@@ -35,16 +37,6 @@ function rank(left, right) {
 
 function stratumFor(state) {
   return Object.entries(STRATA).find(([, states]) => states.has(state))?.[0] ?? 'recovery';
-}
-
-function inferFormFactor(product) {
-  if (typeof product.geometry_v2?.formFactor === 'string' && product.geometry_v2.formFactor) return product.geometry_v2.formFactor;
-  const text = [product.displayName, product.readableSpec, ...(product.features ?? [])].filter(Boolean).join(' ');
-  if (product.cat === 'fridge') {
-    if (/\bchest\b/i.test(text)) return 'chest';
-    if (/\b(?:upright|french\s+door|side[- ]by[- ]side|bottom\s+mount|top\s+mount|integrated|refrigerator|fridge)\b/i.test(text)) return 'upright';
-  }
-  return null;
 }
 
 function targetsFor(total) {
@@ -95,7 +87,7 @@ export function selectInstallationKnowledgePilot({
         category,
         brand: item.product.brand,
         model: item.product.model,
-        formFactor: inferFormFactor(item.product),
+        formFactor: inferApplianceFormFactor(item.product),
         reconciliationState: item.reconciliation.state,
         reasonCodes: [...(item.reconciliation.reasonCodes ?? [])].sort(),
         requestedStratum,

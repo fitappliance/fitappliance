@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T10:31:37.305Z",
-  "sourceAcquisitionQueueSha256": "0c2987dbf5d700db5211d74c2f9e4e713fe0da08acc364ef32108884f83306ba",
+  "generatedAt": "2026-07-16T11:51:23.764Z",
+  "sourceAcquisitionQueueSha256": "b012fb06fa3d83d925dd8670643f41e18e4480295376ad3d014bcec84d3be2b8",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7822,
-    "fetchJobs": 1,
-    "targets": 7739,
+    "acquisitionRecords": 7821,
+    "fetchJobs": 0,
+    "targets": 7738,
     "resolverOnlyTargets": 7738,
-    "candidateEdges": 1,
-    "uniqueReferences": 7739,
+    "candidateEdges": 0,
+    "uniqueReferences": 7738,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1165,
+      "CURRENT_RETAIL": 1164,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 967,
+      "P0_CURRENT_MISSING_DIMENSIONS": 966,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 187,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -32,19 +32,7 @@
       "RESEARCH_REQUIRED": 83
     }
   },
-  "jobs": [
-    {
-      "jobId": "recovery_2dae861b4375a69282749583",
-      "sourceUrl": "https://downloadcenter.samsung.com/content/UM/202605/20260518184516600/DA68-04132R-02_FDR_RF5000A_EN_260414.pdf",
-      "authorityBrand": "Samsung",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "targetIds": [
-        "recovery_target_91cdd0845f2fb9e5a9c1f065"
-      ]
-    }
-  ],
+  "jobs": [],
   "targets": [
     {
       "targetId": "recovery_target_15e7e38fc54dc77ebe0dbced",
@@ -22925,35 +22913,6 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_91cdd0845f2fb9e5a9c1f065",
-      "referenceId": "fa_ref_988c48ab891f6400e4b6a637",
-      "legacyRuntimeId": "ao-97642",
-      "canonicalProductId": "fa_prod_b3ff5e116c2b87ffdb717ce8",
-      "category": "fridge",
-      "brand": "Samsung",
-      "model": "SRF5300SD",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/SRF5300SD.json",
-        "pdf:2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae"
-      ],
-      "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [
-        "recovery_2dae861b4375a69282749583"
-      ],
-      "primaryJobId": "recovery_2dae861b4375a69282749583",
       "repairExistingReceipt": false
     },
     {

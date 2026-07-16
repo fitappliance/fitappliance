@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "1e2253718991fa4adf3ed649a3bf045e9f60c95bb7f0ab9b8ae4694be39c5872"
+    "historical-recovery:historical-recovery-cumulative-v1": "375a45057bf309519cbe636750b18af5810fffee956a1966528c9fe6d9ea18ae"
   },
   "records": [
     {
@@ -220598,13 +220598,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 817,
+        "height": 1776,
+        "depth": 715
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_91cdd0845f2fb9e5a9c1f065",
+          "snapshotSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
           "sourceLines": []
         }
       ],
@@ -220614,8 +220623,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_91cdd0845f2fb9e5a9c1f065",
+          "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+          "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
+          "receiptBindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2",
+          "verifiedAt": "2026-07-16T11:39:08.095Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/b5/55/b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0.html"
+        }
       ]
     },
     {
@@ -321089,16 +321121,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4855,
-      "IDENTITY_ONLY": 2934,
-      "MODEL_RECEIPT": 207,
+      "IDENTITY_ONLY": 2933,
+      "MODEL_RECEIPT": 208,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4855,
-      "MEASURE_REQUIRED": 2934,
-      "AUTO_FILL": 218,
+      "MEASURE_REQUIRED": 2933,
+      "AUTO_FILL": 219,
       "QUARANTINED": 88
     }
   }

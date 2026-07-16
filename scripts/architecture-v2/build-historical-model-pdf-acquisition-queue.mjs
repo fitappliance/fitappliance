@@ -23,13 +23,14 @@ async function atomicJson(path, value) {
 
 export async function runCli() {
   const [classification, historicalReference, recoveryQueue, offlineReplayQueue,
-    offlineReplayResults, publicProjection] = await Promise.all([
+    offlineReplayResults, publicProjection, identityResearchQueue] = await Promise.all([
     readJson('historicalModelEvidenceClassification'),
     readJson('historicalApplianceReference'),
     readJson('historicalEvidenceRecoveryQueue'),
     readJson('historicalPdfOfflineReplayQueue'),
     readJson('historicalPdfOfflineReplayResults'),
     readJson('publicProjection'),
+    readJson('identityResearchQueue'),
   ]);
   const brands = [...new Set(classification.records.map((record) => record.canonicalBrand))];
   const resolverIdsByBrand = new Map(brands.map((brand) => [
@@ -43,6 +44,7 @@ export async function runCli() {
     recoveryQueue,
     offlineReplayQueue,
     offlineReplayResults,
+    identityResearchQueue,
     resolverIdsByBrand,
     generatedAt: classification.generatedAt,
   });

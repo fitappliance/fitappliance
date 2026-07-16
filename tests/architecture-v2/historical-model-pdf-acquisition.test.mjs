@@ -79,6 +79,33 @@ test('shared source is deduplicated without losing model edges or explicit autho
   assert.equal(queue.sources[0].receiptEligible, false);
 });
 
+test('official classification does not make an unscoped global artifact receipt eligible', () => {
+  const record = classified('samsung', 'IDENTITY_RESEARCH', {
+    canonicalBrand: 'Samsung', model: 'SRF5300SD', category: 'fridge',
+    documentLinks: [{
+      documentId: 'pdf:family',
+      sourceUrl: 'https://downloadcenter.samsung.com/content/UM/family-manual.pdf',
+      sourceAuthority: 'OFFICIAL',
+    }, {
+      documentId: 'html:product',
+      sourceUrl: 'https://www.samsung.com/au/refrigerators/french-door/example/',
+      sourceAuthority: 'OFFICIAL',
+    }],
+  });
+  const queue = buildHistoricalModelPdfAcquisitionQueue({
+    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records: [record] },
+    historicalReference: { records: [reference('samsung')] },
+    catalogProducts: catalogProducts([record]),
+    recoveryQueue: { targets: [] },
+    generatedAt: '2026-07-14T00:00:00.000Z',
+  });
+  const byUrl = new Map(queue.sources.map((source) => [source.sourceUrl, source]));
+
+  assert.equal(byUrl.get('https://downloadcenter.samsung.com/content/UM/family-manual.pdf').sourceAuthority, 'OFFICIAL');
+  assert.equal(byUrl.get('https://downloadcenter.samsung.com/content/UM/family-manual.pdf').receiptEligible, false);
+  assert.equal(byUrl.get('https://www.samsung.com/au/refrigerators/french-door/example/').receiptEligible, true);
+});
+
 test('offline replay conflict is routed to corroboration instead of repeated replay', () => {
   const record = classified('conflict', 'OFFLINE_REPLAY');
   const queue = buildHistoricalModelPdfAcquisitionQueue({
@@ -119,6 +146,88 @@ test('identity closure is discovery-ready only with a brand resolver while confl
   assert.equal(byReference.get('identity-unresolved').executionReadiness, 'RESEARCH_REQUIRED');
   assert.equal(byReference.get('conflict-resolved').route, 'CONFLICT_CLOSURE');
   assert.equal(byReference.get('conflict-resolved').executionReadiness, 'RESEARCH_REQUIRED');
+});
+
+test('resolved autonomous identity research contributes only a replayable official URL hint', () => {
+  const record = classified('identity-alias', 'IDENTITY_RESEARCH', {
+    canonicalBrand: 'Samsung', model: 'SRF5300SD', category: 'fridge',
+  });
+  const productUrl = 'https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/';
+  const queue = buildHistoricalModelPdfAcquisitionQueue({
+    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records: [record] },
+    historicalReference: { records: [reference('identity-alias')] },
+    catalogProducts: catalogProducts([record]),
+    recoveryQueue: { targets: [] },
+    identityResearchQueue: {
+      schemaVersion: 1,
+      cases: [{
+        id: 'identity-samsung-srf5300sd',
+        legacyRuntimeId: 'product-identity-alias',
+        canonicalProductId: 'fa_prod_identity-alias',
+        brand: 'Samsung', category: 'fridge', targetModel: 'SRF5300SD',
+        status: 'resolved', requiresHumanReview: false,
+        approvedFields: [
+          'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+        ],
+        publication: { release: true },
+        resolution: {
+          identityOutcome: 'official_marketing_alias', sourceUrl: productUrl,
+          receiptBindingSha256: 'b'.repeat(64),
+        },
+      }],
+    },
+    resolverIdsByBrand: new Map([['samsung', ['samsung-official-discovery']]]),
+    generatedAt: '2026-07-14T00:00:00.000Z',
+  });
+
+  assert.equal(queue.sources.length, 1);
+  assert.equal(queue.sources[0].sourceUrl, productUrl);
+  assert.equal(queue.sources[0].sourceAuthority, 'OFFICIAL');
+  assert.equal(queue.sources[0].receiptEligible, true);
+  assert.deepEqual(queue.sources[0].documentIds, ['identity-research:identity-samsung-srf5300sd']);
+  assert.deepEqual(queue.records[0].candidateSourceIds, [queue.sources[0].sourceId]);
+  assert.equal(queue.records[0].route, 'IDENTITY_CLOSURE');
+});
+
+test('identity research hints fail closed on unresolved, human, field, receipt, or identity drift', () => {
+  const record = classified('identity-alias', 'IDENTITY_RESEARCH', {
+    canonicalBrand: 'Samsung', model: 'SRF5300SD', category: 'fridge',
+  });
+  const base = {
+    legacyRuntimeId: 'product-identity-alias',
+    canonicalProductId: 'fa_prod_identity-alias',
+    brand: 'Samsung', category: 'fridge', targetModel: 'SRF5300SD',
+    status: 'resolved', requiresHumanReview: false,
+    approvedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    publication: { release: true },
+    resolution: {
+      identityOutcome: 'official_marketing_alias',
+      sourceUrl: 'https://www.samsung.com/au/refrigerators/french-door/example/',
+      receiptBindingSha256: 'b'.repeat(64),
+    },
+  };
+  const cases = [
+    { ...base, id: 'unresolved', status: 'needs_research' },
+    { ...base, id: 'human', requiresHumanReview: true },
+    { ...base, id: 'held', publication: { release: false } },
+    { ...base, id: 'bad-receipt', resolution: { ...base.resolution, receiptBindingSha256: 'bad' } },
+    { ...base, id: 'field-drift', approvedFields: ['installation.rearMm'] },
+    { ...base, id: 'model-drift', targetModel: 'SRF5300BD' },
+  ];
+  const queue = buildHistoricalModelPdfAcquisitionQueue({
+    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records: [record] },
+    historicalReference: { records: [reference('identity-alias')] },
+    catalogProducts: catalogProducts([record]),
+    recoveryQueue: { targets: [] },
+    identityResearchQueue: { schemaVersion: 1, cases },
+    resolverIdsByBrand: new Map([['samsung', ['samsung-official-discovery']]]),
+    generatedAt: '2026-07-14T00:00:00.000Z',
+  });
+
+  assert.deepEqual(queue.sources, []);
+  assert.deepEqual(queue.records[0].candidateSourceIds, []);
 });
 
 test('committed acquisition queue excludes every complete receipt classification', async () => {

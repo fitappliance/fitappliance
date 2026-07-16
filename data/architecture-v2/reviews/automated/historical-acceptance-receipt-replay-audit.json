@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T10:38:54.734Z",
-  "sourceBundleSha256": "1e2253718991fa4adf3ed649a3bf045e9f60c95bb7f0ab9b8ae4694be39c5872",
+  "generatedAt": "2026-07-16T11:51:39.048Z",
+  "sourceBundleSha256": "375a45057bf309519cbe636750b18af5810fffee956a1966528c9fe6d9ea18ae",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -2090,6 +2090,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_91cdd0845f2fb9e5a9c1f065",
+      "referenceId": "fa_ref_988c48ab891f6400e4b6a637",
+      "brand": "Samsung",
+      "model": "SRF5300SD",
+      "category": "fridge",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
+      "receiptBindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_925ddfc632cb32ff1a95f893",
       "referenceId": "fa_ref_dacaa9a2b99e0255c641ee69",
       "brand": "Bosch",
@@ -3911,11 +3925,11 @@
     }
   ],
   "summary": {
-    "entries": 254,
-    "sources": 279,
-    "passed": 279,
+    "entries": 255,
+    "sources": 280,
+    "passed": 280,
     "failed": 0
   },
-  "checkedObjects": 554,
-  "semanticAuditSha256": "1f62d081370af9ab128d6ab7b6ad514a7fdf2a38301e8fff9f3799887b4e0482"
+  "checkedObjects": 555,
+  "semanticAuditSha256": "b880cd39f6c5fd3712c8a0f910ba62ec78f64d72863a19d45b93020d846aa38b"
 }

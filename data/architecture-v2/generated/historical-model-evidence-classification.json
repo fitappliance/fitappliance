@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T10:31:37.305Z",
+  "generatedAt": "2026-07-16T11:51:23.764Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "0490f16553f42673817c31113be00dc146d51591edfbd5fc4f0ae024732f389b",
+  "semanticClassificationSha256": "7a92c5d4e81b427f3b408dbbfd6b039819761893591f6f683c2631ac934fbcbb",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4260,
+    "documentLinks": 4261,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,18 +21,18 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 273,
+      "COMPLETE_RECEIPT": 274,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 153,
+      "IDENTITY_RESEARCH": 152,
       "OFFICIAL_DISCOVERY": 6416,
       "REFERENCE_REDISCOVERY": 1170
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 273,
+      "NO_ACTION": 274,
       "REDISCOVER_OFFICIAL_SOURCE": 1170,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 153
+      "RUN_IDENTITY_CLOSURE": 152
     },
     "bySourceAuthority": {
       "MIXED": 135,
@@ -41,15 +41,15 @@
       "REFERENCE": 1187
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 190,
-      "EXACT_MODEL": 1580,
+      "AMBIGUOUS": 189,
+      "EXACT_MODEL": 1581,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 65,
-      "ALL_AXIS_SCALAR": 349,
+      "ALL_AXIS_SCALAR": 350,
       "NOT_PARSED": 7586,
-      "PARSER_GAP": 95
+      "PARSER_GAP": 94
     },
     "byConflictState": {
       "INVALID_DIMENSIONS": 19,
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 273,
-      "LEGACY_UNBOUND": 1497,
+      "CURRENT_VALID": 274,
+      "LEGACY_UNBOUND": 1496,
       "NONE": 6325
     }
   },
@@ -94,11 +94,11 @@
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2287,
+      "documentLinks": 2288,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 103,
+        "COMPLETE_RECEIPT": 104,
         "CONFLICT_QUARANTINE": 48,
-        "IDENTITY_RESEARCH": 87,
+        "IDENTITY_RESEARCH": 86,
         "OFFICIAL_DISCOVERY": 3405,
         "REFERENCE_REDISCOVERY": 693
       }
@@ -205516,15 +205516,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "model_specific",
       "groupName": "SRF5300SD",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "CURRENT_MINERU": 1,
-        "LEGACY_METADATA_ONLY": 1
+        "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1
       },
       "documentLinks": [
         {
@@ -205564,10 +205565,28 @@
           "extractionState": "PARSER_GAP",
           "receiptState": "NONE",
           "sourcePdfSha256": "2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae"
+        },
+        {
+          "documentId": "pdf:b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
+          "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/b5/55/b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0.html",
+            "receipt:c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Samsung"

@@ -1,7 +1,7 @@
 # Historical Evidence Recovery Runbook
 
 Status: canonical operations guide
-Last verified: 2026-07-13
+Last verified: 2026-07-16
 Owner: FitAppliance data and evidence pipeline
 
 This runbook operates the only supported path from a historical document
@@ -31,6 +31,18 @@ before changing evidence semantics.
 8. The release transaction is one reviewed Git commit containing the cumulative
    acceptance bundle and every projection, reference, shard, manifest and
    audit rebuilt from it.
+9. An active receipt source embedded in a new batch must be the complete,
+   replayable source snapshot: identity, claims, source URL, content hash and
+   verification receipt. A compact hash reference is not an executable source.
+10. An explicit manufacturer HTML marketing alias may anchor dimensions only
+    when the stored page binds the marketing model to one canonical source
+    model. Ordinary colour, hinge, suffix or sibling variants still require an
+    exact-model anchor and cannot independently publish.
+11. A product duplicated across a legacy acceptance lane and the cumulative
+    lane may migrate only as a strictly newer equivalent receipt: normalized
+    source model, source URL/type, geometry and Fit requirements must match.
+    Geometry drift, weaker requirements, an equal timestamp or a reused receipt
+    binding stops the build.
 
 ## 2. Storage and tool preflight
 
@@ -389,19 +401,19 @@ cannot issue a public dimension or Fit claim.
 
 Current measured state:
 
-- cumulative bundle: 254 accepted targets and 279 source receipts, all 279
+- cumulative bundle: 255 accepted targets and 280 source receipts, all 280
   replayed from the external evidence store with zero failures;
-- attempt ledger: 140 failure entries, 17 resolution events, 154 source-level
+- attempt ledger: 140 failure entries, 17 resolution events, 155 source-level
   acceptances, 84 active same-policy suppressions and 42 transient retries;
-- historical reference: 8,095 records, 218 `AUTO_FILL` and 88 quarantined;
-- evidence classification: 273 `COMPLETE_RECEIPT`, 6,416
-  `OFFICIAL_DISCOVERY`, 1,170 `REFERENCE_REDISCOVERY`, 153
+- historical reference: 8,095 records, 219 `AUTO_FILL` and 88 quarantined;
+- evidence classification: 274 `COMPLETE_RECEIPT`, 6,416
+  `OFFICIAL_DISCOVERY`, 1,170 `REFERENCE_REDISCOVERY`, 152
   `IDENTITY_RESEARCH` and 83 `CONFLICT_QUARANTINE`;
 - dimension corpus: 703 MinerU indexes, 702 valid bindings, 974 observations,
   177 parser profiles and 770 parser replays;
-- next acquisition epoch: 7,822 queued models, of which 273 complete receipts
-  are excluded. The executable view contains 7,739 targets, 7,738 of them
-  resolver-only, so future runs must remain explicitly bounded.
+- next acquisition epoch: 7,821 queued models, of which 274 complete receipts
+  are excluded. The executable view contains 7,738 resolver-only targets and
+  no materialized fetch edge, so future runs must remain explicitly bounded.
 
 Do not use `--allow-all` on a batch containing thousands of resolver-only
 targets. It intentionally selects those targets and can launch broad online
@@ -495,3 +507,40 @@ requirements are unknown.
 path. It remains `REFERENCE_REDISCOVERY`, stays in the executable queue without
 a candidate fetch job, and is not publication eligible. Do not widen the
 DW60CH family policy to absorb it.
+
+## 15. Samsung SRF5300SD marketing-model migration
+
+The Samsung Australia product page for `SRF5300SD` explicitly binds that
+marketing model to technical model `RF44A5202SL/SA` and states width `817`,
+height `1776` and depth `715` millimetres. The global family manual remains a
+reference candidate only because it lacks Australian discovery provenance.
+The exact AU HTML page is the sole executable source for this acceptance.
+
+The bounded run `historical-samsung-srf5300sd-20260716-e` accepted one target
+as `official_marketing_alias`. Its full audit replayed all prior objects without
+a violation, and cumulative replay now passes 280 of 280 source receipts. The
+receipt supersedes the older identity-range HTML receipt only at publication:
+the source URL, normalized technical model, dimensions, form factor and Fit
+requirements are equivalent, while the content hash, receipt binding and
+verification timestamp are newer.
+
+The release-level Fit audit reports 205 dimensions-only receipt-bound
+products: 204 carry an acceptance projection and one earlier Westinghouse
+`WHE6874BA` row carries direct receipt-bound manufacturer geometry. These are
+two publication provenance paths under the same geometry classifier, not a
+missing Samsung projection. Aggregate checks must use
+`auditPublicFitProjection()` rather than counting `evidence.acceptance` rows.
+
+Current publication also restores form factor from explicit catalogue wording
+before calculating Fit requirements. `French Door` makes this product
+`upright`, so missing door-open depth remains a mandatory Fit gap. Across the
+release this safety projection affected 37 fridges and 14 washing machines:
+W/H/D, clearance, retailer data and flags were unchanged; missing requirements
+only increased, no product gained `VERIFIED_FIT`, and the Fit publication audit
+reported zero violations. Do not infer a form factor from brand or dimensions
+alone. Unrecognized wording must remain unknown. This re-projection is a
+requirements safety correction only: it must fail the build if it would raise
+the stored evidence level, make `verifiedFitEligible` true, or produce a
+`VERIFIED_FIT` outcome. HTML marketing aliases likewise require all three
+explicit `document_title`, `canonical_source_model`, and
+`official_alias_binding` signals again at the publication boundary.

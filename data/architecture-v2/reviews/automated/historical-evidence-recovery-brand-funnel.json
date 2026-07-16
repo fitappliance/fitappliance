@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T10:12:42.585Z",
+  "generatedAt": "2026-07-16T11:39:13.882Z",
   "run": {
-    "runId": "historical-asko-dbi-cohort-20260715-final-v1",
-    "batchId": "historical-recovery-0997c9fb46570ee41a5651e4-slice-082b06940833",
-    "semanticOutcomeSha256": "b4be9c8b56e2858077544aba28f814bbace3e1fd81ed19f3d8acfb13bf96f362",
-    "batchSha256": "266dc6a814556ba888aec8489329504ba7d030b3d372142c6101b0815072438d",
-    "queueSha256": "d5c912d377bb3fdb06dbd69385aee84ce61c3512eb34e2081f97fe39b750f5bb",
-    "policySha256": "34edad995a430f797a52969710b8fef165779bfed3f702cedf9e461d550008b8",
-    "toolchainSha256": "32a80872ee6631d7db19e34b24b66804a19e75508207a4df4b07917d5821ffad"
+    "runId": "historical-samsung-srf5300sd-20260716-e",
+    "batchId": "historical-recovery-3e7afba6e67287c58cd4b750-slice-0af13902cfb0",
+    "semanticOutcomeSha256": "72964ca71160628ec1c319df8155cbdc671c91e1e7406bc222b919c9f3b2209f",
+    "batchSha256": "3118dcd24c28f0fc0965c584c402d1fe46fd3697593941c02ecbc1dea3c38fd0",
+    "queueSha256": "8b73c68eb42b7fb9a63be0010789cff15210007068ecd627169b4ab39e47648f",
+    "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+    "toolchainSha256": "62242c2ca5a3e225d7ed4876db8ee8cea2a8c607150478db7870512f47be1209"
   },
   "definitions": {
     "fetched": "Official candidate reached payload or parser processing; transport failures and optional product pages are excluded.",
@@ -20,14 +20,14 @@
   },
   "summary": {
     "brands": 1,
-    "targets": 8,
-    "completedTargets": 8,
-    "targetsWithOfficialCandidate": 8,
-    "officialCandidatesFetched": 14,
-    "officialCandidatesParsed": 14,
-    "identityAccepted": 8,
-    "allAxisAccepted": 8,
-    "receiptAccepted": 8
+    "targets": 1,
+    "completedTargets": 1,
+    "targetsWithOfficialCandidate": 1,
+    "officialCandidatesFetched": 1,
+    "officialCandidatesParsed": 1,
+    "identityAccepted": 1,
+    "allAxisAccepted": 1,
+    "receiptAccepted": 1
   },
   "safety": {
     "referenceCandidatesAccepted": 0,
@@ -36,34 +36,34 @@
   },
   "brands": [
     {
-      "brandKey": "asko",
-      "brand": "ASKO",
-      "targets": 8,
-      "completedTargets": 8,
+      "brandKey": "samsung",
+      "brand": "Samsung",
+      "targets": 1,
+      "completedTargets": 1,
       "targetStatuses": {
-        "accepted": 8
+        "accepted": 1
       },
       "candidateCounts": {
-        "total": 28,
-        "official": 14,
-        "reference": 14,
-        "fromBatch": 0,
-        "fromCoreDiscovery": 0,
-        "fromBrandAdapter": 28,
-        "brandAdapterOfficial": 14,
-        "brandAdapterReference": 14
+        "total": 2,
+        "official": 2,
+        "reference": 0,
+        "fromBatch": 1,
+        "fromCoreDiscovery": 1,
+        "fromBrandAdapter": 1,
+        "brandAdapterOfficial": 1,
+        "brandAdapterReference": 0
       },
       "candidateOutcomes": {
-        "accepted": 14,
-        "reference_only": 14
+        "accepted": 1,
+        "not_attempted_optional": 1
       },
       "funnel": {
-        "targetsWithOfficialCandidate": 8,
-        "officialCandidatesFetched": 14,
-        "officialCandidatesParsed": 14,
-        "identityAccepted": 8,
-        "allAxisAccepted": 8,
-        "receiptAccepted": 8
+        "targetsWithOfficialCandidate": 1,
+        "officialCandidatesFetched": 1,
+        "officialCandidatesParsed": 1,
+        "identityAccepted": 1,
+        "allAxisAccepted": 1,
+        "receiptAccepted": 1
       },
       "quarantinedByReason": {},
       "officialHostCoverage": 1

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T10:30:50.823Z",
+  "generatedAt": "2026-07-16T11:40:20.317Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -6669,6 +6669,23 @@
       "acceptedAt": "2026-07-16T01:01:19.499Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_d30e1bcd6d9cf614aa653bc5",
+      "targetId": "recovery_target_91cdd0845f2fb9e5a9c1f065",
+      "referenceId": "fa_ref_988c48ab891f6400e4b6a637",
+      "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+      "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "6a8fa8de95cb3f2fbbc2c65797a5dfdd4db86e124799c24e0c8e47e152726ed9",
+      "semanticOutcomeSha256": "191f9b462ee191ab07ed1a36ec4490127d02256e8a711f6bdac2926149124e6e",
+      "batchId": "historical-recovery-3e7afba6e67287c58cd4b750-slice-0af13902cfb0",
+      "batchSha256": "3118dcd24c28f0fc0965c584c402d1fe46fd3697593941c02ecbc1dea3c38fd0",
+      "runId": "historical-samsung-srf5300sd-20260716-e",
+      "resultsSha256": "59bf63a6cd2b9f9d676a0f15d703010285a9be99794c4aca0bc33e0742a822df",
+      "auditSha256": "08189156a6e7f33561a679ffa1010fde8327cb7e44718775c28a163c7db00cf8",
+      "acceptedAt": "2026-07-16T11:39:13.882Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_d505c0b7460b61ec1b8bd16e",
       "targetId": "recovery_target_46e7344ab330094d00faf933",
       "referenceId": "fa_ref_15c8a9eec96879f78c9d601a",
@@ -6995,7 +7012,7 @@
   "summary": {
     "entries": 140,
     "resolutions": 17,
-    "sourceAcceptances": 154,
+    "sourceAcceptances": 155,
     "suppressions": 84,
     "resolvedSuppressions": 14,
     "retryable": 42,
