@@ -393,6 +393,37 @@ test('dry-run validates environment and graph without network, run state, or tra
   await assert.rejects(() => fs.access(join(f.root, 'runs/historical-evidence-recovery/run-dry')), /ENOENT/);
 });
 
+test('fresh run blocks completed history before graph, run state, or tracked output', async (t) => {
+  const f = await fixture();
+  t.after(() => fs.rm(f.root, { recursive: true, force: true }));
+  let scannedTargetIds = [];
+  let graphInvoked = false;
+  const deps = dependencies(f, {
+    scanRunHistory: async ({ selectedBatch }) => {
+      scannedTargetIds = selectedBatch.targets.map((target) => target.targetId);
+      return [{
+        targetId: 'target-a', priorRunId: 'prior-run', priorStatus: 'claims_incomplete',
+        priorFailureCode: 'source_authority', reason: 'completed_exhausted_source_discovery',
+        brand: 'Example', model: 'EX100',
+      }];
+    },
+    graphRunner: async () => { graphInvoked = true; },
+  });
+
+  await assert.rejects(() => runHistoricalEvidenceRecovery({
+    input: f.inputPath, output: f.outputPath, policy: f.policyPath, queue: null,
+    storageRoot: f.root, runId: 'run-history-blocked', resume: false, dryRun: false,
+    jobIds: [], routes: [], limit: null, networkConcurrency: 2, mineruConcurrency: 1,
+  }, deps), /completed run history blocks repeated targets.*prior-run.*completed_exhausted_source_discovery/i);
+
+  assert.deepEqual(scannedTargetIds, ['target-a']);
+  assert.equal(graphInvoked, false);
+  await assert.rejects(() => fs.access(f.outputPath), /ENOENT/);
+  await assert.rejects(() => fs.access(join(
+    f.root, 'runs/historical-evidence-recovery/run-history-blocked',
+  )), /ENOENT/);
+});
+
 test('interrupted run resumes only pending work and matches uninterrupted semantic digest', async (t) => {
   const f = await fixture({ targetCount: 2 });
   t.after(() => fs.rm(f.root, { recursive: true, force: true }));

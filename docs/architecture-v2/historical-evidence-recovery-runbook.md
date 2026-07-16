@@ -48,6 +48,13 @@ before changing evidence semantics.
     version, scope and required flag). An incomplete resolver remains retryable;
     a policy change, resolver-contract change or new explicit official candidate
     job reopens the target automatically.
+13. Every fresh run, including a dry-run, scans completed run state before it
+    creates a run directory or invokes discovery. An unpromoted acceptance or
+    complete zero-candidate inventory blocks the same policy and resolver
+    contract; another terminal outcome additionally requires the same toolchain
+    epoch. Resume is exempt because it continues the immutable run. A malformed
+    historical state fails closed. Audit and promote an eligible prior run
+    instead of rerunning it.
 
 ## 2. Storage and tool preflight
 
@@ -86,7 +93,8 @@ The CLI is selection-required by default. `--require-selection` makes that
 operator intent visible in recorded commands; omitting all `--job-id`, `--route`
 and `--limit` values still fails. A future owner-approved all-batch operation
 must use explicit `--allow-all`, which cannot be combined with any selection.
-The current 1,556-job graph must not use that override.
+The production graph contains thousands of targets and must not use that
+override.
 
 ## 3. Build and inspect the execution graph
 
@@ -652,3 +660,39 @@ source reopens the target; incomplete discovery and transport failures never
 create this suppression. Re-auditing the same immutable results is idempotent:
 the first valid audit receipt is retained unless a bound source or semantic
 fact actually changes.
+
+## 18. Beko DFN range evidence boundary and repeated-run guard
+
+Run `historical-beko-dfn-20260716-a` selected `DFN16420W`, `DFN16420X`,
+`DFN28430W` and `DFN28430X`. The batch resolver, generic official discovery
+and Beko official resolver all completed with zero official candidates. The
+full online audit checked four targets and 575 cumulative objects with zero
+repairs or violations; promotion recorded four target-level
+`complete_zero_candidate_inventory` attempts. The refreshed executable queue
+contains 7,720 targets, with eight prior resolver-only targets suppressed.
+
+Australian retailer mirrors contain Beko-authored specification pages for all
+four models and express width `598`, depth `600` and adjustable height
+`850-865` millimetres. They remain reference-only because their delivery host
+and discovery path do not establish current manufacturer authority. The old
+catalogue flattened the range inconsistently to either `850` or `865`; neither
+scalar may be treated as the closed-envelope height. Expired WELS registrations
+prove that the exact model identities existed in Australia, but WELS does not
+prove dimensions or current availability. No Energy Rating active exact match
+was found in the bound registry snapshot.
+
+The existing Beko MinerU grammar correctly preserves the adjustable range and
+rejects packaged dimensions. Do not weaken source authority merely because the
+parser is ready. Reopen these targets only when a policy-approved exact official
+artifact is materialized, the Beko resolver contract changes, or a reviewed
+policy epoch explicitly admits a new source class. Retailer mirrors may guide
+discovery and parser tests but cannot create a receipt or public geometry.
+
+This run also exposed an operational hole: a completed but not yet promoted run
+could previously be selected again because only the cumulative attempt ledger
+was consulted. Fresh-run preflight now scans every immutable `state.json` under
+`runs/historical-evidence-recovery`. A real canary against `DFN16420W` was
+blocked before network or run-state creation with reason
+`completed_exhausted_source_discovery`. Unit and runner-level tests assert the
+same behavior. This guard is not a permanent model blacklist: policy, resolver
+contract and, for parser terminals, toolchain identity define the rerun epoch.

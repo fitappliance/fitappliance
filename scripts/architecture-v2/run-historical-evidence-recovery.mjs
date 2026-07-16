@@ -25,6 +25,7 @@ import {
   validateHistoricalEvidenceRecoveryPolicy,
   validateHistoricalEvidenceRecoveryResults,
 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
+import { scanHistoricalEvidenceRunHistory } from '../../src/domain/historical-evidence-run-history.mjs';
 import { runMineruPdfWithImageFallback } from '../../src/domain/mineru-runner.mjs';
 import { attestMineruToolIdentity } from '../../src/domain/mineru-tool-identity.mjs';
 import { fetchOfficialArtifactResilient } from '../../src/domain/official-artifact-transport.mjs';
@@ -453,6 +454,17 @@ export function recoveryResolverContractForTarget(target, options = {}) {
   }));
 }
 
+function repeatedRunHistoryError(conflicts) {
+  const details = conflicts.slice(0, 8).map((conflict) => (
+    `${conflict.brand} ${conflict.model} (${conflict.targetId}) in ${conflict.priorRunId}: ${conflict.reason}`
+  )).join('; ');
+  const remainder = conflicts.length > 8 ? `; plus ${conflicts.length - 8} more` : '';
+  return new Error(
+    `completed run history blocks repeated targets: ${details}${remainder}. `
+      + 'Audit/promote the prior run, or change the bound policy, resolver contract or toolchain epoch.',
+  );
+}
+
 function resultsFromOutcomes(batch, state, outcomes, completedAt) {
   const sorted = [...outcomes].sort((left, right) => left.targetId.localeCompare(right.targetId));
   const semanticOutcomeSha256 = canonicalJsonSha256(sorted.map((outcome) => ({
@@ -501,6 +513,19 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
   const verifyTools = dependencies.verifyTools ?? defaultVerifyTools;
   const toolchain = await verifyTools(policy);
   const runId = options.runId ?? `${options.dryRun ? 'dry' : 'run'}-${batch.batchId}-${now().replace(/[^0-9]/g, '').slice(0, 14)}`;
+  if (!options.resume) {
+    const scanRunHistory = dependencies.scanRunHistory ?? scanHistoricalEvidenceRunHistory;
+    const conflicts = await scanRunHistory({
+      storageRoot: storageIdentity.root,
+      selectedBatch: batch,
+      currentPolicySha256: batch.policy.sha256,
+      currentToolchainSha256: canonicalJsonSha256(toolchain),
+      resolverContractForTarget: recoveryResolverContractForTarget,
+      excludeRunId: runId,
+      fs,
+    });
+    if (conflicts.length) throw repeatedRunHistoryError(conflicts);
+  }
   const processIdentity = dependencies.processIdentity ?? await defaultProcessIdentity();
   const createStore = dependencies.stateStoreFactory ?? createEvidenceRecoveryStateStore;
   const store = createStore({

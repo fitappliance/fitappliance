@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T13:53:47.279Z",
+  "generatedAt": "2026-07-16T15:54:40.788Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -7927,6 +7927,58 @@
       "attemptedAt": "2026-07-16T12:48:31.690Z"
     },
     {
+      "targetAttemptId": "historical_target_attempt_3d2f5f0ac07c840bc701b60f",
+      "targetId": "recovery_target_caecc6714ab08173aeb8509a",
+      "referenceId": "fa_ref_21853f69447b6a385f415f03",
+      "legacyRuntimeId": "ao-59211",
+      "canonicalProductId": "fa_prod_366f847d6623a13ba2b2860d",
+      "brand": "Beko",
+      "model": "DFN28430W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "7d9346e9c3513133db29778884a5133dd411f02327762157fb62f984a2bc204e",
+      "semanticOutcomeSha256": "88a31f1f949faef81b32b379002ee2c58c9c50e00beb04ed7cfe1b9c7621ef5a",
+      "batchId": "historical-recovery-14d43449e237fd16fae85453-slice-912b9c45b656",
+      "batchSha256": "f2fde1ae6de361cd76353fbebc0e31b6797c88d6cb44c996840527ee35ba203d",
+      "runId": "historical-beko-dfn-20260716-a",
+      "resultsSha256": "13dd60f48d69d57a08e1380fd6f63289cc5e88b90258998b8987e50185e5f1f0",
+      "auditSha256": "c3295f275a0b9e8af745d6618d864c9badd7491d7a791ec22ff5c9e0714e5f45",
+      "attemptedAt": "2026-07-16T15:42:28.065Z"
+    },
+    {
       "targetAttemptId": "historical_target_attempt_46a03ef671bc3084ab2e98c0",
       "targetId": "recovery_target_42e16e5bbc52cc8925f07cbc",
       "referenceId": "fa_ref_c7a765f2985a363e0a3420d2",
@@ -7977,6 +8029,58 @@
       "resultsSha256": "9365aefb3c0ed25cf3357b30309e2280a84e1503f3b2c4cbb48fcc55f7553969",
       "auditSha256": "7ed0a8dcf9af55dadfc1dd9b8105755b22ad02a2981bc17357096cf9fcb33a10",
       "attemptedAt": "2026-07-16T12:36:46.872Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_50b4056de10dedd884151291",
+      "targetId": "recovery_target_21675be17f10ef5c0ebf9416",
+      "referenceId": "fa_ref_6ad0f3f209e0a37a4b03b9f1",
+      "legacyRuntimeId": "ao-59209",
+      "canonicalProductId": "fa_prod_d0e82bbb11455b914b8bfea4",
+      "brand": "Beko",
+      "model": "DFN16420W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "6cffac4633d4a0b4d174939fadad2c0e1723a07d649874df4ba0a3f2a6ab327b",
+      "semanticOutcomeSha256": "8929e5a77cfc2786fdd8c1743c2e3b03cbed7878fdac57730df3b137022ae7f6",
+      "batchId": "historical-recovery-14d43449e237fd16fae85453-slice-912b9c45b656",
+      "batchSha256": "f2fde1ae6de361cd76353fbebc0e31b6797c88d6cb44c996840527ee35ba203d",
+      "runId": "historical-beko-dfn-20260716-a",
+      "resultsSha256": "13dd60f48d69d57a08e1380fd6f63289cc5e88b90258998b8987e50185e5f1f0",
+      "auditSha256": "c3295f275a0b9e8af745d6618d864c9badd7491d7a791ec22ff5c9e0714e5f45",
+      "attemptedAt": "2026-07-16T15:42:28.065Z"
     },
     {
       "targetAttemptId": "historical_target_attempt_577022c9b9f78b185ab00c2a",
@@ -8081,6 +8185,58 @@
       "resultsSha256": "458df2ce93813b690f899242c8a5477fb9d49f61a1eed41af767942766d56be2",
       "auditSha256": "32f9b003c42bde8586a06d30b7ba8f6347f2170620994e644471d68ea2d03805",
       "attemptedAt": "2026-07-16T12:16:49.118Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_6d27f72347f8ea77abea7342",
+      "targetId": "recovery_target_7e53ff40af9a76dd65789a6e",
+      "referenceId": "fa_ref_e80a9a079d38cf3055fd4667",
+      "legacyRuntimeId": "ao-59210",
+      "canonicalProductId": "fa_prod_e8bc93606ea0be46ac6454f3",
+      "brand": "Beko",
+      "model": "DFN16420X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "ef4a1eb7e9bc811a2b926b042f1563c4d9e669f9ebea3f8d751dbb381f8b733e",
+      "semanticOutcomeSha256": "8a69860362333f6bebc4a4446b695ad75487a3ed10aba6d26b1f82aece5cbf8a",
+      "batchId": "historical-recovery-14d43449e237fd16fae85453-slice-912b9c45b656",
+      "batchSha256": "f2fde1ae6de361cd76353fbebc0e31b6797c88d6cb44c996840527ee35ba203d",
+      "runId": "historical-beko-dfn-20260716-a",
+      "resultsSha256": "13dd60f48d69d57a08e1380fd6f63289cc5e88b90258998b8987e50185e5f1f0",
+      "auditSha256": "c3295f275a0b9e8af745d6618d864c9badd7491d7a791ec22ff5c9e0714e5f45",
+      "attemptedAt": "2026-07-16T15:42:28.065Z"
     },
     {
       "targetAttemptId": "historical_target_attempt_6e6c5f09007e9d6b5ba71d9b",
@@ -8497,6 +8653,58 @@
       "resultsSha256": "9365aefb3c0ed25cf3357b30309e2280a84e1503f3b2c4cbb48fcc55f7553969",
       "auditSha256": "7ed0a8dcf9af55dadfc1dd9b8105755b22ad02a2981bc17357096cf9fcb33a10",
       "attemptedAt": "2026-07-16T12:36:46.872Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_e53879a75218408c1fd078fb",
+      "targetId": "recovery_target_d16d41db898242a476949457",
+      "referenceId": "fa_ref_ce58c94299784b5673756ed8",
+      "legacyRuntimeId": "ao-59212",
+      "canonicalProductId": "fa_prod_b004bbdebee0d562e10baa9f",
+      "brand": "Beko",
+      "model": "DFN28430X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "e25928d7472806ef5ba993447441ba27bb7cda00fce4e2a9f45d7c8dac29963a",
+      "candidateInventorySha256": "ab5cb6bbe3389072a4d7219130448a19baa2022a0e4ae83e21dadb3b0720119f",
+      "semanticOutcomeSha256": "909163766e958a7577ca782288130416ff507630ce2cfb9e3506c608162bb8a0",
+      "batchId": "historical-recovery-14d43449e237fd16fae85453-slice-912b9c45b656",
+      "batchSha256": "f2fde1ae6de361cd76353fbebc0e31b6797c88d6cb44c996840527ee35ba203d",
+      "runId": "historical-beko-dfn-20260716-a",
+      "resultsSha256": "13dd60f48d69d57a08e1380fd6f63289cc5e88b90258998b8987e50185e5f1f0",
+      "auditSha256": "c3295f275a0b9e8af745d6618d864c9badd7491d7a791ec22ff5c9e0714e5f45",
+      "attemptedAt": "2026-07-16T15:42:28.065Z"
     }
   ],
   "summary": {
@@ -8506,8 +8714,8 @@
     "suppressions": 93,
     "resolvedSuppressions": 14,
     "retryable": 42,
-    "targetAttempts": 20,
-    "resolverOnlySuppressions": 20,
+    "targetAttempts": 24,
+    "resolverOnlySuppressions": 24,
     "byStatus": {
       "claims_incomplete": 10,
       "identity_rejected": 64,

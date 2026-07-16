@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-14d43449e237fd16fae85453",
-  "generatedAt": "2026-07-16T13:53:57.819Z",
+  "batchId": "historical-recovery-963a60262e7296442af1fa85",
+  "generatedAt": "2026-07-16T15:56:07.776Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "96bcc48c7101aa47c66b3ca3558c860fe840b21cdf49d22a05d298793ffff12b"
+    "sha256": "c4bd4a28920ef19be434d8a58721c81f2378d275b7fa3a99c6ec820bd53142c0"
   },
   "policy": {
     "version": "2026-07-16.15",
@@ -239,134 +239,6 @@
               "width": 598,
               "height": 815,
               "depth": 570
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_21675be17f10ef5c0ebf9416",
-      "referenceId": "fa_ref_6ad0f3f209e0a37a4b03b9f1",
-      "legacyRuntimeId": "ao-59209",
-      "canonicalProductId": "fa_prod_d0e82bbb11455b914b8bfea4",
-      "brand": "Beko",
-      "model": "DFN16420W",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_dd98d707b71c0431ee031962",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 865,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_7e53ff40af9a76dd65789a6e",
-      "referenceId": "fa_ref_e80a9a079d38cf3055fd4667",
-      "legacyRuntimeId": "ao-59210",
-      "canonicalProductId": "fa_prod_e8bc93606ea0be46ac6454f3",
-      "brand": "Beko",
-      "model": "DFN16420X",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_d4fdd26a187c343a552b2151",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 865,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_caecc6714ab08173aeb8509a",
-      "referenceId": "fa_ref_21853f69447b6a385f415f03",
-      "legacyRuntimeId": "ao-59211",
-      "canonicalProductId": "fa_prod_366f847d6623a13ba2b2860d",
-      "brand": "Beko",
-      "model": "DFN28430W",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_aabcb09bc7807fd1cb327804",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 850,
-              "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_d16d41db898242a476949457",
-      "referenceId": "fa_ref_ce58c94299784b5673756ed8",
-      "legacyRuntimeId": "ao-59212",
-      "canonicalProductId": "fa_prod_b004bbdebee0d562e10baa9f",
-      "brand": "Beko",
-      "model": "DFN28430X",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_fbad1c5ad824641493bfe992",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 850,
-              "depth": 600
             }
           }
         ]
@@ -237207,7 +237079,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7724,
+    "targets": 7720,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
