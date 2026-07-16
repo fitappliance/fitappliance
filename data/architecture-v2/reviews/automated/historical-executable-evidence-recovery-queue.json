@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T12:18:07.792Z",
+  "generatedAt": "2026-07-16T12:39:07.325Z",
   "sourceAcquisitionQueueSha256": "040643107fd3dbb81d65d3695a112bae3b67a093174da2e233de67ba94c50930",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
@@ -10,20 +10,20 @@
   "summary": {
     "acquisitionRecords": 7818,
     "fetchJobs": 0,
-    "targets": 7729,
-    "resolverOnlyTargets": 7729,
+    "targets": 7724,
+    "resolverOnlyTargets": 7724,
     "candidateEdges": 0,
-    "uniqueReferences": 7729,
+    "uniqueReferences": 7724,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
-    "suppressedPriorResolverOnlyTargets": 6,
+    "suppressedPriorResolverOnlyTargets": 11,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1155,
+      "CURRENT_RETAIL": 1150,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 960,
+      "P0_CURRENT_MISSING_DIMENSIONS": 955,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -2438,191 +2438,6 @@
             "width": 595,
             "height": 850,
             "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_182fad898d1f99f9d6565274",
-      "referenceId": "fa_ref_8ead47f977cba248d33481a4",
-      "legacyRuntimeId": "ao-41155",
-      "canonicalProductId": "fa_prod_2f84de0da1b41649002f3db8",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW12-TFE3WH",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a0d26c3429d5f969e71d5c8d",
-        "legacy:data/pdf-evidence-raw/HDW12-TFE3WH.json",
-        "source:doc_a0d26c3429d5f969e71d5c8d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a0d26c3429d5f969e71d5c8d",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_fd6de1ba2244a357b9cbba29",
-      "referenceId": "fa_ref_e53b0ed067e5d724e8eafddd",
-      "legacyRuntimeId": "ao-56600",
-      "canonicalProductId": "fa_prod_8e35dd7a5e99a44a8d25f293",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW13G1W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_30e99133009d557293b4a1d3",
-        "legacy:data/pdf-evidence-raw/HDW13G1W.json",
-        "source:doc_30e99133009d557293b4a1d3"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_30e99133009d557293b4a1d3",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 598
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_ec9afe6f559c39e03ab59b54",
-      "referenceId": "fa_ref_c4a937317857bdacd7f7451c",
-      "legacyRuntimeId": "ao-56601",
-      "canonicalProductId": "fa_prod_b441a657cd8f4df33610f925",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW13G1X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_58ec35d55b723e72c93bcf6f",
-        "legacy:data/pdf-evidence-raw/HDW13G1X.json",
-        "source:doc_58ec35d55b723e72c93bcf6f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_58ec35d55b723e72c93bcf6f",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 598
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_42e16e5bbc52cc8925f07cbc",
-      "referenceId": "fa_ref_c7a765f2985a363e0a3420d2",
-      "legacyRuntimeId": "ao-53417",
-      "canonicalProductId": "fa_prod_cfde767ef7dbb222c2d34152",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW14G2W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e00d575bc33304eddd0bcb59",
-        "legacy:data/pdf-evidence-raw/HDW14G2W.json",
-        "source:doc_e00d575bc33304eddd0bcb59"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e00d575bc33304eddd0bcb59",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 598
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_310a198b724fb038d0c16cab",
-      "referenceId": "fa_ref_2b0e1185f9455aa39fdf263e",
-      "legacyRuntimeId": "ao-53418",
-      "canonicalProductId": "fa_prod_1e9e8b960b3fcf6ceef3298a",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW14G2X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_b786bbb1509825fb1f2f8734",
-        "legacy:data/pdf-evidence-raw/HDW14G2X.json",
-        "source:doc_b786bbb1509825fb1f2f8734"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_b786bbb1509825fb1f2f8734",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 598
           }
         }
       ],

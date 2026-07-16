@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T12:17:19.771Z",
+  "generatedAt": "2026-07-16T12:37:55.878Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -7166,6 +7166,110 @@
       "attemptedAt": "2026-07-16T12:16:49.118Z"
     },
     {
+      "targetAttemptId": "historical_target_attempt_2757b0d2c611694c8bb62ac2",
+      "targetId": "recovery_target_182fad898d1f99f9d6565274",
+      "referenceId": "fa_ref_8ead47f977cba248d33481a4",
+      "legacyRuntimeId": "ao-41155",
+      "canonicalProductId": "fa_prod_2f84de0da1b41649002f3db8",
+      "brand": "Haier",
+      "model": "HDW12-TFE3WH",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "e1a2330df076cdc1ed6bed01fa871bd015567549222dbd7d3306b2af0c45c045",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "haier-official-discovery",
+          "version": "1",
+          "scope": "haier_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "a37ce5e7c1bf81191c83c63dd53956136a50002e9d0dfa8d1dc0c6766fe19aba",
+      "semanticOutcomeSha256": "72734617cb555032c6fff0fa337a9aef9830670d91cfc302d3fd866e3ec4f6a9",
+      "batchId": "historical-recovery-3210f3ea24ec687f87ae1a01-slice-54521d25f7b1",
+      "batchSha256": "e65cd44fb779c5136970e9aeebe8e58af819294e5d1e1de7cde0cd64d1165dd1",
+      "runId": "historical-haier-legacy-dishwashers-20260716-a",
+      "resultsSha256": "9365aefb3c0ed25cf3357b30309e2280a84e1503f3b2c4cbb48fcc55f7553969",
+      "auditSha256": "7ed0a8dcf9af55dadfc1dd9b8105755b22ad02a2981bc17357096cf9fcb33a10",
+      "attemptedAt": "2026-07-16T12:36:46.872Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_46a03ef671bc3084ab2e98c0",
+      "targetId": "recovery_target_42e16e5bbc52cc8925f07cbc",
+      "referenceId": "fa_ref_c7a765f2985a363e0a3420d2",
+      "legacyRuntimeId": "ao-53417",
+      "canonicalProductId": "fa_prod_cfde767ef7dbb222c2d34152",
+      "brand": "Haier",
+      "model": "HDW14G2W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "e1a2330df076cdc1ed6bed01fa871bd015567549222dbd7d3306b2af0c45c045",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "haier-official-discovery",
+          "version": "1",
+          "scope": "haier_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "c19da17c4028b57f9007c74425aa083746af5ed398fe6f876010f5950f752288",
+      "semanticOutcomeSha256": "66ff732e1f592d83acf30a42c014a2c2ac6f947416c6bc96463b9790d9da8700",
+      "batchId": "historical-recovery-3210f3ea24ec687f87ae1a01-slice-54521d25f7b1",
+      "batchSha256": "e65cd44fb779c5136970e9aeebe8e58af819294e5d1e1de7cde0cd64d1165dd1",
+      "runId": "historical-haier-legacy-dishwashers-20260716-a",
+      "resultsSha256": "9365aefb3c0ed25cf3357b30309e2280a84e1503f3b2c4cbb48fcc55f7553969",
+      "auditSha256": "7ed0a8dcf9af55dadfc1dd9b8105755b22ad02a2981bc17357096cf9fcb33a10",
+      "attemptedAt": "2026-07-16T12:36:46.872Z"
+    },
+    {
       "targetAttemptId": "historical_target_attempt_577022c9b9f78b185ab00c2a",
       "targetId": "recovery_target_32697fdaf3cfb4aac2bbc51a",
       "referenceId": "fa_ref_984bc5e6e13c5ab7cb475ee9",
@@ -7372,6 +7476,162 @@
       "resultsSha256": "458df2ce93813b690f899242c8a5477fb9d49f61a1eed41af767942766d56be2",
       "auditSha256": "32f9b003c42bde8586a06d30b7ba8f6347f2170620994e644471d68ea2d03805",
       "attemptedAt": "2026-07-16T12:16:49.118Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_c1ace01835eae92163c323ed",
+      "targetId": "recovery_target_fd6de1ba2244a357b9cbba29",
+      "referenceId": "fa_ref_e53b0ed067e5d724e8eafddd",
+      "legacyRuntimeId": "ao-56600",
+      "canonicalProductId": "fa_prod_8e35dd7a5e99a44a8d25f293",
+      "brand": "Haier",
+      "model": "HDW13G1W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "e1a2330df076cdc1ed6bed01fa871bd015567549222dbd7d3306b2af0c45c045",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "haier-official-discovery",
+          "version": "1",
+          "scope": "haier_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "2fc92b6a031fe84946a8089be38a461e877808c91042d358f4a4d474179e29e1",
+      "semanticOutcomeSha256": "fc0e26772a68ebe8b2b9691d36e39914db807a9a1a665268fa74d9eb37547842",
+      "batchId": "historical-recovery-3210f3ea24ec687f87ae1a01-slice-54521d25f7b1",
+      "batchSha256": "e65cd44fb779c5136970e9aeebe8e58af819294e5d1e1de7cde0cd64d1165dd1",
+      "runId": "historical-haier-legacy-dishwashers-20260716-a",
+      "resultsSha256": "9365aefb3c0ed25cf3357b30309e2280a84e1503f3b2c4cbb48fcc55f7553969",
+      "auditSha256": "7ed0a8dcf9af55dadfc1dd9b8105755b22ad02a2981bc17357096cf9fcb33a10",
+      "attemptedAt": "2026-07-16T12:36:46.872Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_c6bf123e263abffa18d3ded7",
+      "targetId": "recovery_target_310a198b724fb038d0c16cab",
+      "referenceId": "fa_ref_2b0e1185f9455aa39fdf263e",
+      "legacyRuntimeId": "ao-53418",
+      "canonicalProductId": "fa_prod_1e9e8b960b3fcf6ceef3298a",
+      "brand": "Haier",
+      "model": "HDW14G2X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "e1a2330df076cdc1ed6bed01fa871bd015567549222dbd7d3306b2af0c45c045",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "haier-official-discovery",
+          "version": "1",
+          "scope": "haier_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "bc7a061deb29eee53204722089a6cd9dc3194c6bb5ae6e28a16f852947b7dea2",
+      "semanticOutcomeSha256": "14a3e8825e0a9d1306a33a0b9ba3fa3a090cd29d724cd9dba1acf77d12c4b3c3",
+      "batchId": "historical-recovery-3210f3ea24ec687f87ae1a01-slice-54521d25f7b1",
+      "batchSha256": "e65cd44fb779c5136970e9aeebe8e58af819294e5d1e1de7cde0cd64d1165dd1",
+      "runId": "historical-haier-legacy-dishwashers-20260716-a",
+      "resultsSha256": "9365aefb3c0ed25cf3357b30309e2280a84e1503f3b2c4cbb48fcc55f7553969",
+      "auditSha256": "7ed0a8dcf9af55dadfc1dd9b8105755b22ad02a2981bc17357096cf9fcb33a10",
+      "attemptedAt": "2026-07-16T12:36:46.872Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_dca86e86792fcae35819c714",
+      "targetId": "recovery_target_ec9afe6f559c39e03ab59b54",
+      "referenceId": "fa_ref_c4a937317857bdacd7f7451c",
+      "legacyRuntimeId": "ao-56601",
+      "canonicalProductId": "fa_prod_b441a657cd8f4df33610f925",
+      "brand": "Haier",
+      "model": "HDW13G1X",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "e1a2330df076cdc1ed6bed01fa871bd015567549222dbd7d3306b2af0c45c045",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "haier-official-discovery",
+          "version": "1",
+          "scope": "haier_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "a4cd52b15c3e5a0902cdea68b57c9132f5051c807e1c71e1ae59e088e08c46cb",
+      "semanticOutcomeSha256": "78dbc1c515474d9931da63928fd962dd8dd5b1f1252be7a60180398b360e6f1d",
+      "batchId": "historical-recovery-3210f3ea24ec687f87ae1a01-slice-54521d25f7b1",
+      "batchSha256": "e65cd44fb779c5136970e9aeebe8e58af819294e5d1e1de7cde0cd64d1165dd1",
+      "runId": "historical-haier-legacy-dishwashers-20260716-a",
+      "resultsSha256": "9365aefb3c0ed25cf3357b30309e2280a84e1503f3b2c4cbb48fcc55f7553969",
+      "auditSha256": "7ed0a8dcf9af55dadfc1dd9b8105755b22ad02a2981bc17357096cf9fcb33a10",
+      "attemptedAt": "2026-07-16T12:36:46.872Z"
     }
   ],
   "summary": {
@@ -7381,8 +7641,8 @@
     "suppressions": 84,
     "resolvedSuppressions": 14,
     "retryable": 42,
-    "targetAttempts": 6,
-    "resolverOnlySuppressions": 6,
+    "targetAttempts": 11,
+    "resolverOnlySuppressions": 11,
     "byStatus": {
       "claims_incomplete": 8,
       "identity_rejected": 57,
