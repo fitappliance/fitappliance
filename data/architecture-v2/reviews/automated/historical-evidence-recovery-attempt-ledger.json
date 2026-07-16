@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T11:40:20.317Z",
+  "generatedAt": "2026-07-16T12:17:19.771Z",
   "entries": [
     {
       "attemptId": "historical_attempt_0297c70416354695cdd86855",
@@ -5071,6 +5071,23 @@
       "acceptedAt": "2026-07-16T05:28:02.966Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_42510b5b8e27489f7cc0f2dd",
+      "targetId": "recovery_target_1b1075b7d5e65ee40679ce07",
+      "referenceId": "fa_ref_85ed2c175ab651eb67c52c4d",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "96c20ed53e6713f0e16834b19f3ba6dab150a6704a5fdf2097cb7d519313620f",
+      "semanticOutcomeSha256": "76f18dd67d0be13d822879edd2b832ac364960eca127ab5f04140c51e155c4d3",
+      "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-324db49275fe",
+      "batchSha256": "52557525f01abc42af57bbf09da52eaa4e75b4abf0ba6770bdbe6240620b9c60",
+      "runId": "historical-asko-current-au-dishwashers-20260716-b",
+      "resultsSha256": "11a0799e205a59ba848621413914d925a6013b291c4a1989d024271615c17311",
+      "auditSha256": "fd7adee2c0b5958fb92229c7acbca8689ab1097a2c313c61ebb25d0ef535ad7a",
+      "acceptedAt": "2026-07-16T12:11:45.186Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_42a7de3d46f4f151c298d04b",
       "targetId": "recovery_target_5ef325ba798f430e5a88070b",
       "referenceId": "fa_ref_778d660a2ada75ab06ff75aa",
@@ -5360,6 +5377,23 @@
       "acceptedAt": "2026-07-16T05:00:25.867Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_62272bc31de36712cba47038",
+      "targetId": "recovery_target_ccf85a32347850ef5539411e",
+      "referenceId": "fa_ref_9e27a5123836852a17b39d47",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "3b3ce30f931370d8ae4d314d8dbef2d37236018ad5380e0c91a5e8470515fdff",
+      "semanticOutcomeSha256": "c987270bce83425327ff52d49b5b3793a1e7667cc07f6e0a48114f1169c11679",
+      "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-324db49275fe",
+      "batchSha256": "52557525f01abc42af57bbf09da52eaa4e75b4abf0ba6770bdbe6240620b9c60",
+      "runId": "historical-asko-current-au-dishwashers-20260716-b",
+      "resultsSha256": "11a0799e205a59ba848621413914d925a6013b291c4a1989d024271615c17311",
+      "auditSha256": "fd7adee2c0b5958fb92229c7acbca8689ab1097a2c313c61ebb25d0ef535ad7a",
+      "acceptedAt": "2026-07-16T12:11:45.186Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_63a523d42dcdeb50d131c016",
       "targetId": "recovery_target_78ab89ac26fd4170af35366b",
       "referenceId": "fa_ref_8af779f194238702757f10fa",
@@ -5494,6 +5528,23 @@
       "resultsSha256": "459e6f5088c3214d43cdc6559d0c466c906373fd61ce80442b88f0d28afa7a75",
       "auditSha256": "9d8fd55c7c4d3f131bd5a252eb4716bc1934a12e459739e97eec942592f11257",
       "acceptedAt": "2026-07-16T00:46:29.094Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_6b036f731b0a44abc4c20402",
+      "targetId": "recovery_target_7fba257723c3a800957c59bc",
+      "referenceId": "fa_ref_637fa56e4ea92ec4e6971d8b",
+      "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+      "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
+      "status": "accepted",
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "0c72ba2376d75f4424fab78b9c64d1c8931d8f3d30d258ed1f3ffb55f9722310",
+      "semanticOutcomeSha256": "c1584837e1640d16c5fb32025517c653fb7ab09fea90144b7fd626c3da4335b8",
+      "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-324db49275fe",
+      "batchSha256": "52557525f01abc42af57bbf09da52eaa4e75b4abf0ba6770bdbe6240620b9c60",
+      "runId": "historical-asko-current-au-dishwashers-20260716-b",
+      "resultsSha256": "11a0799e205a59ba848621413914d925a6013b291c4a1989d024271615c17311",
+      "auditSha256": "fd7adee2c0b5958fb92229c7acbca8689ab1097a2c313c61ebb25d0ef535ad7a",
+      "acceptedAt": "2026-07-16T12:11:45.186Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_6b9ce395e7b55c4619f90027",
@@ -7009,13 +7060,329 @@
       "acceptedAt": "2026-07-16T05:00:25.867Z"
     }
   ],
+  "targetAttempts": [
+    {
+      "targetAttemptId": "historical_target_attempt_0137854c2d47182fa96622e2",
+      "targetId": "recovery_target_bd099b0aab1a3af4f4820621",
+      "referenceId": "fa_ref_7a3dfa8a87f157a207b3020d",
+      "legacyRuntimeId": "ao-45901",
+      "canonicalProductId": "fa_prod_3fd0ee138532877556516303",
+      "brand": "ASKO",
+      "model": "D5436SSXXL",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "b56e2a35a49872e1c5d17e746e656bfb1e28664e2562e1c09280ef0d4aa79e16",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "asko-official-manuals-api",
+          "version": "1",
+          "scope": "asko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "b1bb4226716b655a8c7566294217000f90eacf2b40a1b9d339e3bdba35b335b8",
+      "semanticOutcomeSha256": "c6bc57895be27ffec2d5b0aa068e012b15740ece65d2ca2b91346115b27656a9",
+      "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-a136f6778b8e",
+      "batchSha256": "939bf198f14994f7a5c8ac96b448623dbba329fe4092848d2705b81843e0030b",
+      "runId": "historical-asko-legacy-dishwashers-20260716-d",
+      "resultsSha256": "458df2ce93813b690f899242c8a5477fb9d49f61a1eed41af767942766d56be2",
+      "auditSha256": "32f9b003c42bde8586a06d30b7ba8f6347f2170620994e644471d68ea2d03805",
+      "attemptedAt": "2026-07-16T12:16:49.118Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_1261e43fa6410a9086ea5541",
+      "targetId": "recovery_target_fe4b691f79d62b5f8dcfa45f",
+      "referenceId": "fa_ref_96755e418ee9132916be8d1e",
+      "legacyRuntimeId": "ao-45028",
+      "canonicalProductId": "fa_prod_9f7900efac1b783ddd24a538",
+      "brand": "ASKO",
+      "model": "D5436WH",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "b56e2a35a49872e1c5d17e746e656bfb1e28664e2562e1c09280ef0d4aa79e16",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "asko-official-manuals-api",
+          "version": "1",
+          "scope": "asko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "9ba7e69c8ac185d5353c6f6490d005cc47a1a92d8108c6b8081e1649a2086889",
+      "semanticOutcomeSha256": "433eaeaf4541e7d191895d12b7094f05bfe80ab548706a26a9a82ddfdb8de14a",
+      "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-a136f6778b8e",
+      "batchSha256": "939bf198f14994f7a5c8ac96b448623dbba329fe4092848d2705b81843e0030b",
+      "runId": "historical-asko-legacy-dishwashers-20260716-d",
+      "resultsSha256": "458df2ce93813b690f899242c8a5477fb9d49f61a1eed41af767942766d56be2",
+      "auditSha256": "32f9b003c42bde8586a06d30b7ba8f6347f2170620994e644471d68ea2d03805",
+      "attemptedAt": "2026-07-16T12:16:49.118Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_577022c9b9f78b185ab00c2a",
+      "targetId": "recovery_target_32697fdaf3cfb4aac2bbc51a",
+      "referenceId": "fa_ref_984bc5e6e13c5ab7cb475ee9",
+      "legacyRuntimeId": "ao-79173",
+      "canonicalProductId": "fa_prod_c3e1b8db4d7f20f37b2f3264",
+      "brand": "ASKO",
+      "model": "DWCBI241",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "b56e2a35a49872e1c5d17e746e656bfb1e28664e2562e1c09280ef0d4aa79e16",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "asko-official-manuals-api",
+          "version": "1",
+          "scope": "asko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "3338680a0ab7c3c28a5122d66a78accfdb7a370a12312c2d509f47965d0e975a",
+      "semanticOutcomeSha256": "5d2399ce795209abc64b37e7144afa6aed3eaf547b8e1c0d05dc5de2181ba0de",
+      "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-a136f6778b8e",
+      "batchSha256": "939bf198f14994f7a5c8ac96b448623dbba329fe4092848d2705b81843e0030b",
+      "runId": "historical-asko-legacy-dishwashers-20260716-d",
+      "resultsSha256": "458df2ce93813b690f899242c8a5477fb9d49f61a1eed41af767942766d56be2",
+      "auditSha256": "32f9b003c42bde8586a06d30b7ba8f6347f2170620994e644471d68ea2d03805",
+      "attemptedAt": "2026-07-16T12:16:49.118Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_60667f8220bcc7bd933e2ea2",
+      "targetId": "recovery_target_97381d6cbf479dddedf9e15c",
+      "referenceId": "fa_ref_cbfc23e2108db02b31e1a53f",
+      "legacyRuntimeId": "ao-45538",
+      "canonicalProductId": "fa_prod_e8e5b81fdcabdc7a5714f555",
+      "brand": "ASKO",
+      "model": "D5436SS",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "b56e2a35a49872e1c5d17e746e656bfb1e28664e2562e1c09280ef0d4aa79e16",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "asko-official-manuals-api",
+          "version": "1",
+          "scope": "asko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "8652b1f2a0dbd3ee9a5246e0b57a241898441c9f6938d4dc86bff73c6711caa1",
+      "semanticOutcomeSha256": "38fff1c40718b218e3ab5f42aa680a315c87dd5825ddfa65e8622972c5691a3b",
+      "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-a136f6778b8e",
+      "batchSha256": "939bf198f14994f7a5c8ac96b448623dbba329fe4092848d2705b81843e0030b",
+      "runId": "historical-asko-legacy-dishwashers-20260716-d",
+      "resultsSha256": "458df2ce93813b690f899242c8a5477fb9d49f61a1eed41af767942766d56be2",
+      "auditSha256": "32f9b003c42bde8586a06d30b7ba8f6347f2170620994e644471d68ea2d03805",
+      "attemptedAt": "2026-07-16T12:16:49.118Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_6e6c5f09007e9d6b5ba71d9b",
+      "targetId": "recovery_target_15e7e38fc54dc77ebe0dbced",
+      "referenceId": "fa_ref_08caaddd803b84b6860236e5",
+      "legacyRuntimeId": "ao-11970",
+      "canonicalProductId": "fa_prod_b7eca7d7d78809ac7f0ec0ce",
+      "brand": "ASKO",
+      "model": "D5424SS",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "b56e2a35a49872e1c5d17e746e656bfb1e28664e2562e1c09280ef0d4aa79e16",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "asko-official-manuals-api",
+          "version": "1",
+          "scope": "asko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "6f698064f597234638740fab8eb38d95485198acf6b5a1d50d8f1a14db13e2e8",
+      "semanticOutcomeSha256": "84ae17dc131643328eac836b35086018000405741ceb6fd4da1fbe1fb9c4d394",
+      "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-a136f6778b8e",
+      "batchSha256": "939bf198f14994f7a5c8ac96b448623dbba329fe4092848d2705b81843e0030b",
+      "runId": "historical-asko-legacy-dishwashers-20260716-d",
+      "resultsSha256": "458df2ce93813b690f899242c8a5477fb9d49f61a1eed41af767942766d56be2",
+      "auditSha256": "32f9b003c42bde8586a06d30b7ba8f6347f2170620994e644471d68ea2d03805",
+      "attemptedAt": "2026-07-16T12:16:49.118Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_9dbfe6e2fb44212a69954c46",
+      "targetId": "recovery_target_d5c609744c11c25f0e6273d2",
+      "referenceId": "fa_ref_eceec9dff3ed4df46d65078d",
+      "legacyRuntimeId": "ao-45904",
+      "canonicalProductId": "fa_prod_6d571270d2501e60604fead5",
+      "brand": "ASKO",
+      "model": "D5646SSXXL",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "b56e2a35a49872e1c5d17e746e656bfb1e28664e2562e1c09280ef0d4aa79e16",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "asko-official-manuals-api",
+          "version": "1",
+          "scope": "asko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+      "candidateInventorySha256": "1f7db83e7a3ac9fcb8a0cba4ca91c123965f2b76e1281cea0ac51f38a849e7e6",
+      "semanticOutcomeSha256": "8153e2041ced5fd1c65adc0885e49a92c34cabd9ea0296bd3fc699544e917973",
+      "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-a136f6778b8e",
+      "batchSha256": "939bf198f14994f7a5c8ac96b448623dbba329fe4092848d2705b81843e0030b",
+      "runId": "historical-asko-legacy-dishwashers-20260716-d",
+      "resultsSha256": "458df2ce93813b690f899242c8a5477fb9d49f61a1eed41af767942766d56be2",
+      "auditSha256": "32f9b003c42bde8586a06d30b7ba8f6347f2170620994e644471d68ea2d03805",
+      "attemptedAt": "2026-07-16T12:16:49.118Z"
+    }
+  ],
   "summary": {
     "entries": 140,
     "resolutions": 17,
-    "sourceAcceptances": 155,
+    "sourceAcceptances": 158,
     "suppressions": 84,
     "resolvedSuppressions": 14,
     "retryable": 42,
+    "targetAttempts": 6,
+    "resolverOnlySuppressions": 6,
     "byStatus": {
       "claims_incomplete": 8,
       "identity_rejected": 57,

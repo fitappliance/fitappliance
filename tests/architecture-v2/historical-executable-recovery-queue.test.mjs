@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import { buildHistoricalExecutableRecoveryQueue } from '../../src/domain/historical-executable-recovery-queue.mjs';
+import { historicalResolverContractSha256 } from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
 
 const fields = [
   'closedEnvelope.widthMm',
@@ -268,6 +269,76 @@ test('same-policy terminal source becomes resolver-only but preserves alternativ
   });
   assert.equal(changedPolicy.jobs.length, 1);
   assert.equal(changedPolicy.targets[0].priorAttemptSuppressions, undefined);
+});
+
+test('same-policy complete zero-candidate discovery suppresses only resolver-only targets', () => {
+  const policySha256 = 'b'.repeat(64);
+  const targetAttempt = {
+    targetAttemptId: 'target-attempt-official',
+    targetId: 'recovery_target_ignored',
+    referenceId: 'official',
+    status: 'claims_incomplete',
+    failureCode: 'source_authority',
+    policySha256,
+    suppressesSamePolicyResolverOnly: true,
+    resolvers: [{
+      resolverId: 'official-resolver', version: '1', scope: 'exact-model', required: true,
+    }],
+  };
+  const currentResolverContractSha256 = historicalResolverContractSha256(targetAttempt.resolvers);
+  const base = {
+    acquisitionQueue: {
+      schemaVersion: 1,
+      generatedAt: '2026-07-14T00:00:00.000Z',
+      semanticQueueSha256: 'a'.repeat(64),
+      records: [acquisition('official')],
+      sources: [],
+    },
+    historicalReference: { records: [reference('official')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+    priorAttemptLedger: { schemaVersion: 1, entries: [], targetAttempts: [targetAttempt] },
+  };
+
+  const suppressed = buildHistoricalExecutableRecoveryQueue({
+    ...base,
+    recoveryPolicySha256: policySha256,
+    resolverContractSha256ForTarget: () => currentResolverContractSha256,
+  });
+  assert.equal(suppressed.targets.length, 0);
+  assert.equal(suppressed.summary.suppressedPriorResolverOnlyTargets, 1);
+
+  const changedPolicy = buildHistoricalExecutableRecoveryQueue({
+    ...base,
+    recoveryPolicySha256: 'd'.repeat(64),
+    resolverContractSha256ForTarget: () => currentResolverContractSha256,
+  });
+  assert.equal(changedPolicy.targets.length, 1);
+  assert.deepEqual(changedPolicy.targets[0].candidateJobIds, []);
+
+  const changedResolver = buildHistoricalExecutableRecoveryQueue({
+    ...base,
+    recoveryPolicySha256: policySha256,
+    resolverContractSha256ForTarget: () => historicalResolverContractSha256([{
+      ...targetAttempt.resolvers[0], version: '2',
+    }]),
+  });
+  assert.equal(changedResolver.targets.length, 1);
+  assert.deepEqual(changedResolver.targets[0].candidateJobIds, []);
+
+  const explicitSource = structuredClone(base);
+  explicitSource.acquisitionQueue.records[0].candidateSourceIds = ['source-official'];
+  explicitSource.acquisitionQueue.sources = [{
+    sourceId: 'source-official', sourceUrl: 'https://example.com/new-official.pdf',
+    sourceAuthority: 'OFFICIAL', receiptEligible: true,
+    documentIds: ['pdf:new'], referenceIds: ['official'],
+  }];
+  const reopened = buildHistoricalExecutableRecoveryQueue({
+    ...explicitSource,
+    recoveryPolicySha256: policySha256,
+    resolverContractSha256ForTarget: () => currentResolverContractSha256,
+  });
+  assert.equal(reopened.targets.length, 1);
+  assert.equal(reopened.jobs.length, 1);
 });
 
 test('same-policy accepted source is not fetched again while its conflicted target remains researchable', () => {

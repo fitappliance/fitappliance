@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "historical-samsung-srf5300sd-20260716-e",
-  "batchId": "historical-recovery-3e7afba6e67287c58cd4b750-slice-0af13902cfb0",
-  "batchSha256": "3118dcd24c28f0fc0965c584c402d1fe46fd3697593941c02ecbc1dea3c38fd0",
-  "queueSha256": "8b73c68eb42b7fb9a63be0010789cff15210007068ecd627169b4ab39e47648f",
+  "runId": "historical-asko-current-au-dishwashers-20260716-b",
+  "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-324db49275fe",
+  "batchSha256": "52557525f01abc42af57bbf09da52eaa4e75b4abf0ba6770bdbe6240620b9c60",
+  "queueSha256": "c45dc5c297802b5377f559db5313541b625a75612b3041c848ab860f54aec4e5",
   "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
-  "startedAt": "2026-07-16T11:39:06.352Z",
-  "completedAt": "2026-07-16T11:39:13.882Z",
-  "semanticOutcomeSha256": "72964ca71160628ec1c319df8155cbdc671c91e1e7406bc222b919c9f3b2209f",
+  "startedAt": "2026-07-16T12:11:40.938Z",
+  "completedAt": "2026-07-16T12:11:45.186Z",
+  "semanticOutcomeSha256": "abab1cb1079a5ab1189e52912aa6273247f8556d0f1d29c3043a6ef2fc17b373",
   "outcomes": [
     {
-      "targetId": "recovery_target_91cdd0845f2fb9e5a9c1f065",
+      "targetId": "recovery_target_1b1075b7d5e65ee40679ce07",
       "status": "accepted",
       "failureCode": null,
-      "candidateInventorySha256": "6a8fa8de95cb3f2fbbc2c65797a5dfdd4db86e124799c24e0c8e47e152726ed9",
+      "candidateInventorySha256": "96c20ed53e6713f0e16834b19f3ba6dab150a6704a5fdf2097cb7d519313620f",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_91cdd0845f2fb9e5a9c1f065",
+        "targetId": "recovery_target_1b1075b7d5e65ee40679ce07",
         "identity": {
-          "brand": "Samsung",
-          "model": "SRF5300SD",
-          "category": "fridge"
+          "brand": "ASKO",
+          "model": "DFI666GXXL.AU",
+          "category": "dishwasher"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -32,6 +32,14 @@
             "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
             "required": false,
             "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "asko-official-manuals-api",
+            "version": "1",
+            "scope": "asko_legacy_discovery_only",
+            "required": true,
+            "completion": "complete",
             "candidateCount": 1
           },
           {
@@ -40,136 +48,38 @@
             "scope": "recovery_batch_graph",
             "required": true,
             "completion": "complete",
-            "candidateCount": 1
-          },
-          {
-            "resolverId": "samsung-official-discovery",
-            "version": "1",
-            "scope": "samsung_legacy_discovery_only",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 1
+            "candidateCount": 0
           }
         ],
-        "activeReceiptSources": [
-          {
-            "authority": "manufacturer",
-            "sourceType": "official_exact_model_product_page",
-            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
-            "finalUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
-            "redirectChain": [],
-            "retrievedAt": "2026-07-12T04:00:00.000Z",
-            "contentSha256": "cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a",
-            "objectPath": "evidence/web/sha256/cc/75/cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a.html",
-            "contentType": "text/html",
-            "byteSize": 850604,
-            "supersedesContentSha256": [],
-            "identity": {
-              "brand": "Samsung",
-              "model": "SRF5300SD",
-              "outcome": "official_marketing_alias",
-              "sourceModel": "RF44A5202SL_SA"
-            },
-            "claims": [
-              {
-                "field": "closedEnvelope.depthMm",
-                "value": 715,
-                "unit": "mm",
-                "label": "Depth",
-                "quote": "Depth 715 mm"
-              },
-              {
-                "field": "closedEnvelope.heightMm",
-                "value": 1776,
-                "unit": "mm",
-                "label": "Height",
-                "quote": "Height 1776 mm"
-              },
-              {
-                "field": "closedEnvelope.widthMm",
-                "value": 817,
-                "unit": "mm",
-                "label": "Width",
-                "quote": "Width 817 mm"
-              }
-            ],
-            "identitySignals": [
-              {
-                "type": "canonical_url",
-                "value": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/"
-              },
-              {
-                "type": "document_title",
-                "value": "495L French Door Fridge Non Plumbed SRF5300SD | Samsung AU"
-              },
-              {
-                "type": "canonical_source_model",
-                "value": "RF44A5202SL_SA"
-              },
-              {
-                "type": "official_alias_binding",
-                "value": "Purchase SRF5300SD 495L French Door refrigerator RF44A5202SL/SA with with Big Crisper, Twin Cooling Plus™ and Non-Plumbed Built-in Water Dispenser. Find out its price and reviews at Samsung Australia."
-              }
-            ],
-            "verificationReceipt": {
-              "schemaVersion": 2,
-              "policyVersion": "2026-07-12.2",
-              "manufacturerPolicyVersion": "2026-07-12.1",
-              "verifiedAt": "2026-07-12T04:00:00.000Z",
-              "bindingSha256": "5baa99bcb583f1b76557f5a49b6f4e5c3b73e2ea5cc426eb352696e9b25c5c0e"
-            }
-          }
-        ],
+        "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_507be2349211b96f0750d4da",
-            "sourceUrl": "https://www.samsung.com/au/support/model/SRF5300SDSA/",
+            "candidateId": "candidate_01b45ebd238c356d0900682d",
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
             "authorityMode": "official",
-            "sourceRole": "manufacturer_product_page",
-            "requiredAttempt": false,
-            "discoveryProvenance": null,
+            "sourceRole": "manufacturer_structured_data",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_market_api",
+              "market": "AU",
+              "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+              "requestedModel": "DFI666GXXL.AU",
+              "matchedModel": "DFI666GXXL.AU",
+              "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+              "documentId": "000000000000729065",
+              "discoveryContentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
+              "discoveryObjectPath": "evidence/web/sha256/04/16/0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790.json",
+              "discoveryByteSize": 316787
+            },
             "batchJobIds": [],
             "resolverRefs": [
               {
-                "resolverId": "samsung-official-discovery",
+                "resolverId": "asko-official-manuals-api",
                 "version": "1",
-                "scope": "samsung_legacy_discovery_only",
-                "discoveryMethod": "samsung_legacy_finder",
-                "sourceRole": "manufacturer_product_page",
-                "order": 0
-              }
-            ],
-            "outcome": {
-              "status": "not_attempted_optional",
-              "failureCode": null,
-              "source": null
-            }
-          },
-          {
-            "candidateId": "candidate_adcbef020702cbb3c882aeca",
-            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": null,
-            "batchJobIds": [
-              "recovery_0f651fb88c786729f13fbe27"
-            ],
-            "resolverRefs": [
-              {
-                "resolverId": "architecture-v2-core-official-discovery",
-                "version": "1",
-                "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-                "discoveryMethod": "explicit_registry",
-                "sourceRole": "manufacturer_document",
-                "order": 0
-              },
-              {
-                "resolverId": "batch-candidates",
-                "version": "1",
-                "scope": "recovery_batch_graph",
-                "discoveryMethod": "recovery_batch",
-                "sourceRole": "manufacturer_document",
+                "scope": "asko_legacy_discovery_only",
+                "discoveryMethod": "asko_legacy_finder",
+                "sourceRole": "manufacturer_structured_data",
                 "order": 0
               }
             ],
@@ -178,32 +88,29 @@
               "failureCode": null,
               "source": {
                 "authority": "manufacturer",
-                "sourceType": "official_exact_model_product_page",
-                "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
-                "finalUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+                "sourceType": "official_exact_model_api",
+                "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+                "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
                 "redirectChain": [],
-                "retrievedAt": "2026-07-16T11:39:08.095Z",
-                "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
-                "objectPath": "evidence/web/sha256/b5/55/b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0.html",
-                "contentType": "text/html",
-                "byteSize": 3169060,
-                "supersedesContentSha256": [
-                  "cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a"
-                ],
+                "retrievedAt": "2026-07-16T12:11:42.796Z",
+                "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
+                "objectPath": "evidence/web/sha256/04/16/0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790.json",
+                "contentType": "application/json",
+                "byteSize": 316787,
+                "supersedesContentSha256": [],
                 "identity": {
-                  "brand": "Samsung",
-                  "model": "SRF5300SD",
-                  "outcome": "official_marketing_alias",
-                  "sourceModel": "RF44A5202SL/SA"
+                  "brand": "ASKO",
+                  "model": "DFI666GXXL.AU",
+                  "outcome": "exact"
                 },
                 "claims": [
                   {
                     "field": "closedEnvelope.widthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 817
+                      "mm": 596
                     },
-                    "sourceLabel": "Width",
+                    "sourceLabel": "Official PIM width",
                     "sourceAxisOrder": [
                       "width"
                     ],
@@ -219,9 +126,9 @@
                     "field": "closedEnvelope.heightMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 1776
+                      "mm": 859
                     },
-                    "sourceLabel": "Height",
+                    "sourceLabel": "Official PIM height",
                     "sourceAxisOrder": [
                       "height"
                     ],
@@ -237,37 +144,42 @@
                     "field": "closedEnvelope.depthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 715
+                      "mm": 574
                     },
-                    "sourceLabel": "Depth with Handle",
+                    "sourceLabel": "Official PIM depth",
                     "sourceAxisOrder": [
                       "depth"
                     ],
                     "sourceUnit": "mm",
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
-                    "includesHandle": true,
+                    "includesHandle": null,
                     "page": null,
                     "fragmentSha256": null,
                     "bbox": null
                   }
                 ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_market_api",
+                  "market": "AU",
+                  "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+                  "requestedModel": "DFI666GXXL.AU",
+                  "matchedModel": "DFI666GXXL.AU",
+                  "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+                  "documentId": "000000000000729065",
+                  "discoveryContentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
+                  "discoveryObjectPath": "evidence/web/sha256/04/16/0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790.json",
+                  "discoveryByteSize": 316787
+                },
                 "identitySignals": [
                   {
-                    "type": "canonical_url",
-                    "value": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/"
+                    "type": "official_market_api_model",
+                    "value": "DFI666GXXL.AU:0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD"
                   },
                   {
-                    "type": "document_title",
-                    "value": "495L French Door Fridge Non Plumbed SRF5300SD | Samsung AU"
-                  },
-                  {
-                    "type": "canonical_source_model",
-                    "value": "RF44A5202SL/SA"
-                  },
-                  {
-                    "type": "official_alias_binding",
-                    "value": "Purchase SRF5300SD 495L French Door refrigerator RF44A5202SL/SA with with Big Crisper, Twin Cooling Plus™ and Non-Plumbed Built-in Water Dispenser. Find out its price and reviews at Samsung Australia."
+                    "type": "official_market_api_dimensions",
+                    "value": "DFI666GXXL.AU:596x859x574:0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790"
                   }
                 ],
                 "verificationReceipt": {
@@ -275,44 +187,42 @@
                   "claimSemanticsVersion": 2,
                   "policyVersion": "2026-07-13.1",
                   "manufacturerPolicyVersion": "2026-07-16.4",
-                  "verifiedAt": "2026-07-16T11:39:08.095Z",
-                  "bindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2"
+                  "discoveryPolicyVersion": "2026-07-16.5",
+                  "verifiedAt": "2026-07-16T12:11:42.796Z",
+                  "bindingSha256": "103b4704a328913262c1c89b3a2ace76a117dd5d5b47655abecf7780add57634"
                 }
               }
             }
           }
         ],
-        "candidateInventorySha256": "6a8fa8de95cb3f2fbbc2c65797a5dfdd4db86e124799c24e0c8e47e152726ed9"
+        "candidateInventorySha256": "96c20ed53e6713f0e16834b19f3ba6dab150a6704a5fdf2097cb7d519313620f"
       },
       "sources": [
         {
           "authority": "manufacturer",
-          "sourceType": "official_exact_model_product_page",
-          "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
-          "finalUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+          "sourceType": "official_exact_model_api",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
           "redirectChain": [],
-          "retrievedAt": "2026-07-16T11:39:08.095Z",
-          "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
-          "objectPath": "evidence/web/sha256/b5/55/b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0.html",
-          "contentType": "text/html",
-          "byteSize": 3169060,
-          "supersedesContentSha256": [
-            "cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a"
-          ],
+          "retrievedAt": "2026-07-16T12:11:42.796Z",
+          "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
+          "objectPath": "evidence/web/sha256/04/16/0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790.json",
+          "contentType": "application/json",
+          "byteSize": 316787,
+          "supersedesContentSha256": [],
           "identity": {
-            "brand": "Samsung",
-            "model": "SRF5300SD",
-            "outcome": "official_marketing_alias",
-            "sourceModel": "RF44A5202SL/SA"
+            "brand": "ASKO",
+            "model": "DFI666GXXL.AU",
+            "outcome": "exact"
           },
           "claims": [
             {
               "field": "closedEnvelope.widthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 817
+                "mm": 596
               },
-              "sourceLabel": "Width",
+              "sourceLabel": "Official PIM width",
               "sourceAxisOrder": [
                 "width"
               ],
@@ -328,9 +238,9 @@
               "field": "closedEnvelope.heightMm",
               "value": {
                 "kind": "fixed",
-                "mm": 1776
+                "mm": 859
               },
-              "sourceLabel": "Height",
+              "sourceLabel": "Official PIM height",
               "sourceAxisOrder": [
                 "height"
               ],
@@ -346,37 +256,42 @@
               "field": "closedEnvelope.depthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 715
+                "mm": 574
               },
-              "sourceLabel": "Depth with Handle",
+              "sourceLabel": "Official PIM depth",
               "sourceAxisOrder": [
                 "depth"
               ],
               "sourceUnit": "mm",
               "measurementScope": "product_closed_external",
               "includesDoor": null,
-              "includesHandle": true,
+              "includesHandle": null,
               "page": null,
               "fragmentSha256": null,
               "bbox": null
             }
           ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "DFI666GXXL.AU",
+            "matchedModel": "DFI666GXXL.AU",
+            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+            "documentId": "000000000000729065",
+            "discoveryContentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
+            "discoveryObjectPath": "evidence/web/sha256/04/16/0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790.json",
+            "discoveryByteSize": 316787
+          },
           "identitySignals": [
             {
-              "type": "canonical_url",
-              "value": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/"
+              "type": "official_market_api_model",
+              "value": "DFI666GXXL.AU:0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD"
             },
             {
-              "type": "document_title",
-              "value": "495L French Door Fridge Non Plumbed SRF5300SD | Samsung AU"
-            },
-            {
-              "type": "canonical_source_model",
-              "value": "RF44A5202SL/SA"
-            },
-            {
-              "type": "official_alias_binding",
-              "value": "Purchase SRF5300SD 495L French Door refrigerator RF44A5202SL/SA with with Big Crisper, Twin Cooling Plus™ and Non-Plumbed Built-in Water Dispenser. Find out its price and reviews at Samsung Australia."
+              "type": "official_market_api_dimensions",
+              "value": "DFI666GXXL.AU:596x859x574:0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790"
             }
           ],
           "verificationReceipt": {
@@ -384,20 +299,21 @@
             "claimSemanticsVersion": 2,
             "policyVersion": "2026-07-13.1",
             "manufacturerPolicyVersion": "2026-07-16.4",
-            "verifiedAt": "2026-07-16T11:39:08.095Z",
-            "bindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2"
+            "discoveryPolicyVersion": "2026-07-16.5",
+            "verifiedAt": "2026-07-16T12:11:42.796Z",
+            "bindingSha256": "103b4704a328913262c1c89b3a2ace76a117dd5d5b47655abecf7780add57634"
           }
         }
       ],
       "geometryProjection": {
         "geometry": {
           "closedEnvelope": {
-            "widthMm": 817,
+            "widthMm": 596,
             "heightMm": {
-              "minimumMm": 1776,
-              "maximumMm": 1776
+              "minimumMm": 859,
+              "maximumMm": 859
             },
-            "depthMm": 715
+            "depthMm": 574
           },
           "installation": {
             "leftMm": null,
@@ -416,7 +332,7 @@
             "heightMm": null,
             "depthMm": null
           },
-          "category": "fridge",
+          "category": "dishwasher",
           "formFactor": null,
           "service": {
             "plumbingRearMm": null,
@@ -426,23 +342,23 @@
         },
         "fieldEvidence": {
           "closedEnvelope.widthMm": {
-            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
-            "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
-            "receiptBindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2",
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
+            "receiptBindingSha256": "103b4704a328913262c1c89b3a2ace76a117dd5d5b47655abecf7780add57634",
             "page": null,
             "fragmentSha256": null
           },
           "closedEnvelope.heightMm": {
-            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
-            "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
-            "receiptBindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2",
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
+            "receiptBindingSha256": "103b4704a328913262c1c89b3a2ace76a117dd5d5b47655abecf7780add57634",
             "page": null,
             "fragmentSha256": null
           },
           "closedEnvelope.depthMm": {
-            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
-            "contentSha256": "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0",
-            "receiptBindingSha256": "c033373f3d20026f587e28f5b601e26e7659eb10758dd0f31c55a097476a7de2",
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729065?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790",
+            "receiptBindingSha256": "103b4704a328913262c1c89b3a2ace76a117dd5d5b47655abecf7780add57634",
             "page": null,
             "fragmentSha256": null
           }
@@ -453,12 +369,14 @@
           "installation.leftMm",
           "installation.rearMm",
           "installation.rightMm",
-          "installation.topMm"
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
         ],
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "b555c87375581244fa4793cc922340725f97fb0c22f363b25bc105c3ea3f34f0"
+          "0416a7291444f481e932de649b60ece086235f445a53ace598f4d6b62d1ac790"
         ]
       },
       "reconciliation": {
@@ -470,12 +388,802 @@
         "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "191f9b462ee191ab07ed1a36ec4490127d02256e8a711f6bdac2926149124e6e"
+      "semanticOutcomeSha256": "76f18dd67d0be13d822879edd2b832ac364960eca127ab5f04140c51e155c4d3"
+    },
+    {
+      "targetId": "recovery_target_7fba257723c3a800957c59bc",
+      "status": "accepted",
+      "failureCode": null,
+      "candidateInventorySha256": "0c72ba2376d75f4424fab78b9c64d1c8931d8f3d30d258ed1f3ffb55f9722310",
+      "candidateInventory": {
+        "schemaVersion": 1,
+        "targetId": "recovery_target_7fba257723c3a800957c59bc",
+        "identity": {
+          "brand": "ASKO",
+          "model": "DBI654IBXXL.S.AU",
+          "category": "dishwasher"
+        },
+        "completionStatus": "complete",
+        "incompleteResolvers": [],
+        "missingBatchCandidateJobIds": [],
+        "resolvers": [
+          {
+            "resolverId": "architecture-v2-core-official-discovery",
+            "version": "1",
+            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+            "required": false,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "asko-official-manuals-api",
+            "version": "1",
+            "scope": "asko_legacy_discovery_only",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 1
+          },
+          {
+            "resolverId": "batch-candidates",
+            "version": "1",
+            "scope": "recovery_batch_graph",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 0
+          }
+        ],
+        "activeReceiptSources": [],
+        "candidates": [
+          {
+            "candidateId": "candidate_5cc4dc4499c93662b70df7c5",
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_structured_data",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_market_api",
+              "market": "AU",
+              "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+              "requestedModel": "DBI654IBXXL.S.AU",
+              "matchedModel": "DBI654IBXXL.S.AU",
+              "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+              "documentId": "000000000000729068",
+              "discoveryContentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
+              "discoveryObjectPath": "evidence/web/sha256/d6/ba/d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b.json",
+              "discoveryByteSize": 260246
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "asko-official-manuals-api",
+                "version": "1",
+                "scope": "asko_legacy_discovery_only",
+                "discoveryMethod": "asko_legacy_finder",
+                "sourceRole": "manufacturer_structured_data",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_api",
+                "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+                "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-16T12:11:44.051Z",
+                "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
+                "objectPath": "evidence/web/sha256/d6/ba/d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b.json",
+                "contentType": "application/json",
+                "byteSize": 260246,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "ASKO",
+                  "model": "DBI654IBXXL.S.AU",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 596
+                    },
+                    "sourceLabel": "Official PIM width",
+                    "sourceAxisOrder": [
+                      "width"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": null,
+                    "fragmentSha256": null,
+                    "bbox": null
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 859
+                    },
+                    "sourceLabel": "Official PIM height",
+                    "sourceAxisOrder": [
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": null,
+                    "fragmentSha256": null,
+                    "bbox": null
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 559
+                    },
+                    "sourceLabel": "Official PIM depth",
+                    "sourceAxisOrder": [
+                      "depth"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": null,
+                    "fragmentSha256": null,
+                    "bbox": null
+                  }
+                ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_market_api",
+                  "market": "AU",
+                  "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+                  "requestedModel": "DBI654IBXXL.S.AU",
+                  "matchedModel": "DBI654IBXXL.S.AU",
+                  "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+                  "documentId": "000000000000729068",
+                  "discoveryContentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
+                  "discoveryObjectPath": "evidence/web/sha256/d6/ba/d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b.json",
+                  "discoveryByteSize": 260246
+                },
+                "identitySignals": [
+                  {
+                    "type": "official_market_api_model",
+                    "value": "DBI654IBXXL.S.AU:d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD"
+                  },
+                  {
+                    "type": "official_market_api_dimensions",
+                    "value": "DBI654IBXXL.S.AU:596x859x559:d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-16.4",
+                  "discoveryPolicyVersion": "2026-07-16.5",
+                  "verifiedAt": "2026-07-16T12:11:44.051Z",
+                  "bindingSha256": "6f5e47cc5776946d5895124b3f0f12d253db8d0fc5f419c5c069559627e28582"
+                }
+              }
+            }
+          }
+        ],
+        "candidateInventorySha256": "0c72ba2376d75f4424fab78b9c64d1c8931d8f3d30d258ed1f3ffb55f9722310"
+      },
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_api",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T12:11:44.051Z",
+          "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
+          "objectPath": "evidence/web/sha256/d6/ba/d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b.json",
+          "contentType": "application/json",
+          "byteSize": 260246,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "DBI654IBXXL.S.AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Official PIM width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 859
+              },
+              "sourceLabel": "Official PIM height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 559
+              },
+              "sourceLabel": "Official PIM depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "DBI654IBXXL.S.AU",
+            "matchedModel": "DBI654IBXXL.S.AU",
+            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+            "documentId": "000000000000729068",
+            "discoveryContentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
+            "discoveryObjectPath": "evidence/web/sha256/d6/ba/d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b.json",
+            "discoveryByteSize": 260246
+          },
+          "identitySignals": [
+            {
+              "type": "official_market_api_model",
+              "value": "DBI654IBXXL.S.AU:d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "DBI654IBXXL.S.AU:596x859x559:d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.5",
+            "verifiedAt": "2026-07-16T12:11:44.051Z",
+            "bindingSha256": "6f5e47cc5776946d5895124b3f0f12d253db8d0fc5f419c5c069559627e28582"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 859,
+              "maximumMm": 859
+            },
+            "depthMm": 559
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
+            "receiptBindingSha256": "6f5e47cc5776946d5895124b3f0f12d253db8d0fc5f419c5c069559627e28582",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
+            "receiptBindingSha256": "6f5e47cc5776946d5895124b3f0f12d253db8d0fc5f419c5c069559627e28582",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729068?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b",
+            "receiptBindingSha256": "6f5e47cc5776946d5895124b3f0f12d253db8d0fc5f419c5c069559627e28582",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "d6bac3a8471f8049db050d71fae9c1d74a0e7685eb52a874b736effe0ed1ca7b"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "registry_hint",
+            "sourceId": "energy-rating:dishwasher",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 596,
+              "heightMm": 859,
+              "depthMm": 574
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "official_market_api_dimension_corroboration",
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "c1584837e1640d16c5fb32025517c653fb7ab09fea90144b7fd626c3da4335b8"
+    },
+    {
+      "targetId": "recovery_target_ccf85a32347850ef5539411e",
+      "status": "accepted",
+      "failureCode": null,
+      "candidateInventorySha256": "3b3ce30f931370d8ae4d314d8dbef2d37236018ad5380e0c91a5e8470515fdff",
+      "candidateInventory": {
+        "schemaVersion": 1,
+        "targetId": "recovery_target_ccf85a32347850ef5539411e",
+        "identity": {
+          "brand": "ASKO",
+          "model": "DFI654BXXL.AU",
+          "category": "dishwasher"
+        },
+        "completionStatus": "complete",
+        "incompleteResolvers": [],
+        "missingBatchCandidateJobIds": [],
+        "resolvers": [
+          {
+            "resolverId": "architecture-v2-core-official-discovery",
+            "version": "1",
+            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+            "required": false,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "asko-official-manuals-api",
+            "version": "1",
+            "scope": "asko_legacy_discovery_only",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 1
+          },
+          {
+            "resolverId": "batch-candidates",
+            "version": "1",
+            "scope": "recovery_batch_graph",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 0
+          }
+        ],
+        "activeReceiptSources": [],
+        "candidates": [
+          {
+            "candidateId": "candidate_ca94439747f9d8db4063dec0",
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_structured_data",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_market_api",
+              "market": "AU",
+              "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+              "requestedModel": "DFI654BXXL.AU",
+              "matchedModel": "DFI654BXXL.AU",
+              "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+              "documentId": "000000000000729064",
+              "discoveryContentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
+              "discoveryObjectPath": "evidence/web/sha256/05/0a/050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d.json",
+              "discoveryByteSize": 251135
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "asko-official-manuals-api",
+                "version": "1",
+                "scope": "asko_legacy_discovery_only",
+                "discoveryMethod": "asko_legacy_finder",
+                "sourceRole": "manufacturer_structured_data",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_api",
+                "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+                "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-16T12:11:45.143Z",
+                "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
+                "objectPath": "evidence/web/sha256/05/0a/050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d.json",
+                "contentType": "application/json",
+                "byteSize": 251135,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "ASKO",
+                  "model": "DFI654BXXL.AU",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 596
+                    },
+                    "sourceLabel": "Official PIM width",
+                    "sourceAxisOrder": [
+                      "width"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": null,
+                    "fragmentSha256": null,
+                    "bbox": null
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 859
+                    },
+                    "sourceLabel": "Official PIM height",
+                    "sourceAxisOrder": [
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": null,
+                    "fragmentSha256": null,
+                    "bbox": null
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 559
+                    },
+                    "sourceLabel": "Official PIM depth",
+                    "sourceAxisOrder": [
+                      "depth"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": null,
+                    "fragmentSha256": null,
+                    "bbox": null
+                  }
+                ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_market_api",
+                  "market": "AU",
+                  "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+                  "requestedModel": "DFI654BXXL.AU",
+                  "matchedModel": "DFI654BXXL.AU",
+                  "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+                  "documentId": "000000000000729064",
+                  "discoveryContentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
+                  "discoveryObjectPath": "evidence/web/sha256/05/0a/050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d.json",
+                  "discoveryByteSize": 251135
+                },
+                "identitySignals": [
+                  {
+                    "type": "official_market_api_model",
+                    "value": "DFI654BXXL.AU:050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD"
+                  },
+                  {
+                    "type": "official_market_api_dimensions",
+                    "value": "DFI654BXXL.AU:596x859x559:050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-16.4",
+                  "discoveryPolicyVersion": "2026-07-16.5",
+                  "verifiedAt": "2026-07-16T12:11:45.143Z",
+                  "bindingSha256": "bcbfb373b637e7da18bee43ccf6a8de4d36956e1d6af1ee9fc2da8fa7fb76386"
+                }
+              }
+            }
+          }
+        ],
+        "candidateInventorySha256": "3b3ce30f931370d8ae4d314d8dbef2d37236018ad5380e0c91a5e8470515fdff"
+      },
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_api",
+          "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+          "finalUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T12:11:45.143Z",
+          "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
+          "objectPath": "evidence/web/sha256/05/0a/050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d.json",
+          "contentType": "application/json",
+          "byteSize": 251135,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "DFI654BXXL.AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Official PIM width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 859
+              },
+              "sourceLabel": "Official PIM height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 559
+              },
+              "sourceLabel": "Official PIM depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "DFI654BXXL.AU",
+            "matchedModel": "DFI654BXXL.AU",
+            "artifactUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+            "documentId": "000000000000729064",
+            "discoveryContentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
+            "discoveryObjectPath": "evidence/web/sha256/05/0a/050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d.json",
+            "discoveryByteSize": 251135
+          },
+          "identitySignals": [
+            {
+              "type": "official_market_api_model",
+              "value": "DFI654BXXL.AU:050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "DFI654BXXL.AU:596x859x559:050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.5",
+            "verifiedAt": "2026-07-16T12:11:45.143Z",
+            "bindingSha256": "bcbfb373b637e7da18bee43ccf6a8de4d36956e1d6af1ee9fc2da8fa7fb76386"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 859,
+              "maximumMm": 859
+            },
+            "depthMm": 559
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
+            "receiptBindingSha256": "bcbfb373b637e7da18bee43ccf6a8de4d36956e1d6af1ee9fc2da8fa7fb76386",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
+            "receiptBindingSha256": "bcbfb373b637e7da18bee43ccf6a8de4d36956e1d6af1ee9fc2da8fa7fb76386",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000729064?fields=FULL&lang=en_AU&curr=AUD",
+            "contentSha256": "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d",
+            "receiptBindingSha256": "bcbfb373b637e7da18bee43ccf6a8de4d36956e1d6af1ee9fc2da8fa7fb76386",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "050aaa64b4c37908135e92dc8c72e17edb6b1780c63a54670091970c13bb2e7d"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "registry_hint",
+            "sourceId": "energy-rating:dishwasher",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 596,
+              "heightMm": 859,
+              "depthMm": 574
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "official_market_api_dimension_corroboration",
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "c987270bce83425327ff52d49b5b3793a1e7667cc07f6e0a48114f1169c11679"
     }
   ],
   "summary": {
-    "targets": 1,
-    "accepted": 1,
+    "targets": 3,
+    "accepted": 3,
     "nonScalar": 0,
     "retryable": 0,
     "terminal": 0

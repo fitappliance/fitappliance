@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T11:39:13.882Z",
+  "generatedAt": "2026-07-16T12:11:45.186Z",
   "run": {
-    "runId": "historical-samsung-srf5300sd-20260716-e",
-    "batchId": "historical-recovery-3e7afba6e67287c58cd4b750-slice-0af13902cfb0",
-    "semanticOutcomeSha256": "72964ca71160628ec1c319df8155cbdc671c91e1e7406bc222b919c9f3b2209f",
-    "batchSha256": "3118dcd24c28f0fc0965c584c402d1fe46fd3697593941c02ecbc1dea3c38fd0",
-    "queueSha256": "8b73c68eb42b7fb9a63be0010789cff15210007068ecd627169b4ab39e47648f",
+    "runId": "historical-asko-current-au-dishwashers-20260716-b",
+    "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-324db49275fe",
+    "semanticOutcomeSha256": "abab1cb1079a5ab1189e52912aa6273247f8556d0f1d29c3043a6ef2fc17b373",
+    "batchSha256": "52557525f01abc42af57bbf09da52eaa4e75b4abf0ba6770bdbe6240620b9c60",
+    "queueSha256": "c45dc5c297802b5377f559db5313541b625a75612b3041c848ab860f54aec4e5",
     "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
     "toolchainSha256": "62242c2ca5a3e225d7ed4876db8ee8cea2a8c607150478db7870512f47be1209"
   },
@@ -20,14 +20,14 @@
   },
   "summary": {
     "brands": 1,
-    "targets": 1,
-    "completedTargets": 1,
-    "targetsWithOfficialCandidate": 1,
-    "officialCandidatesFetched": 1,
-    "officialCandidatesParsed": 1,
-    "identityAccepted": 1,
-    "allAxisAccepted": 1,
-    "receiptAccepted": 1
+    "targets": 3,
+    "completedTargets": 3,
+    "targetsWithOfficialCandidate": 3,
+    "officialCandidatesFetched": 3,
+    "officialCandidatesParsed": 3,
+    "identityAccepted": 3,
+    "allAxisAccepted": 3,
+    "receiptAccepted": 3
   },
   "safety": {
     "referenceCandidatesAccepted": 0,
@@ -36,34 +36,33 @@
   },
   "brands": [
     {
-      "brandKey": "samsung",
-      "brand": "Samsung",
-      "targets": 1,
-      "completedTargets": 1,
+      "brandKey": "asko",
+      "brand": "ASKO",
+      "targets": 3,
+      "completedTargets": 3,
       "targetStatuses": {
-        "accepted": 1
+        "accepted": 3
       },
       "candidateCounts": {
-        "total": 2,
-        "official": 2,
+        "total": 3,
+        "official": 3,
         "reference": 0,
-        "fromBatch": 1,
-        "fromCoreDiscovery": 1,
-        "fromBrandAdapter": 1,
-        "brandAdapterOfficial": 1,
+        "fromBatch": 0,
+        "fromCoreDiscovery": 0,
+        "fromBrandAdapter": 3,
+        "brandAdapterOfficial": 3,
         "brandAdapterReference": 0
       },
       "candidateOutcomes": {
-        "accepted": 1,
-        "not_attempted_optional": 1
+        "accepted": 3
       },
       "funnel": {
-        "targetsWithOfficialCandidate": 1,
-        "officialCandidatesFetched": 1,
-        "officialCandidatesParsed": 1,
-        "identityAccepted": 1,
-        "allAxisAccepted": 1,
-        "receiptAccepted": 1
+        "targetsWithOfficialCandidate": 3,
+        "officialCandidatesFetched": 3,
+        "officialCandidatesParsed": 3,
+        "identityAccepted": 3,
+        "allAxisAccepted": 3,
+        "receiptAccepted": 3
       },
       "quarantinedByReason": {},
       "officialHostCoverage": 1

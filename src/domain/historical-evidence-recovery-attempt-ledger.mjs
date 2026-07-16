@@ -52,6 +52,22 @@ function sameSourceFact(left, right, keys) {
   return keys.every((key) => left[key] === right[key]);
 }
 
+export function historicalResolverContractSha256(resolvers) {
+  if (!Array.isArray(resolvers) || resolvers.length === 0) {
+    throw new TypeError('resolver contract requires at least one resolver');
+  }
+  const normalized = resolvers.map((resolver) => ({
+    resolverId: text(resolver.resolverId, 'resolver contract ID'),
+    version: text(resolver.version, 'resolver contract version'),
+    scope: text(resolver.scope, 'resolver contract scope'),
+    required: resolver.required === true,
+  })).sort((left, right) => left.resolverId.localeCompare(right.resolverId));
+  if (new Set(normalized.map((resolver) => resolver.resolverId)).size !== normalized.length) {
+    throw new TypeError('resolver contract contains duplicate resolver IDs');
+  }
+  return canonicalJsonSha256(normalized);
+}
+
 function validateRunBindings(batch, results, audit) {
   if (audit?.mode !== 'online' || audit?.status !== 'passed') {
     throw new Error('attempt ledger requires a passing online audit');
@@ -204,6 +220,71 @@ function sourceAcceptanceEntry({ target, candidate, outcome, batch, results, aud
   };
 }
 
+function targetAttemptEntry({ target, result, batch, results, audit, bindings }) {
+  const inventory = result.candidateInventory;
+  if (result.status !== 'claims_incomplete'
+    || result.failureCode !== 'source_authority'
+    || inventory?.completionStatus !== 'complete'
+    || (inventory.candidates ?? []).length !== 0
+    || (inventory.incompleteResolvers ?? []).length !== 0
+    || (inventory.missingBatchCandidateJobIds ?? []).length !== 0) return null;
+  const resolvers = (inventory.resolvers ?? []).map((resolver) => ({
+    resolverId: text(resolver.resolverId, 'resolver ID'),
+    version: text(resolver.version, 'resolver version'),
+    scope: text(resolver.scope, 'resolver scope'),
+    required: resolver.required === true,
+    completion: text(resolver.completion, 'resolver completion'),
+    candidateCount: Number(resolver.candidateCount),
+  })).sort((left, right) => left.resolverId.localeCompare(right.resolverId));
+  if (!resolvers.length || resolvers.some((resolver) => (
+    resolver.completion !== 'complete'
+      || !Number.isInteger(resolver.candidateCount)
+      || resolver.candidateCount !== 0
+  ))) return null;
+  const resolverSetSha256 = canonicalJsonSha256(resolvers);
+  const seed = {
+    runId: results.runId,
+    targetId: target.targetId,
+    policySha256: results.policySha256,
+    resolverSetSha256,
+    candidateInventorySha256: result.candidateInventorySha256,
+    semanticOutcomeSha256: result.semanticOutcomeSha256,
+  };
+  return {
+    targetAttemptId: `historical_target_attempt_${canonicalJsonSha256(seed).slice(0, 24)}`,
+    targetId: target.targetId,
+    referenceId: target.referenceId,
+    legacyRuntimeId: target.legacyRuntimeId,
+    canonicalProductId: target.canonicalProductId ?? null,
+    brand: target.brand,
+    model: target.model,
+    category: target.category,
+    lifecycleState: target.lifecycleState,
+    status: result.status,
+    failureCode: result.failureCode,
+    reason: 'complete_zero_candidate_inventory',
+    disposition: 'AWAIT_RESOLVER_OR_POLICY_CHANGE',
+    suppressesSamePolicyResolverOnly: true,
+    resolverSetSha256,
+    resolvers,
+    policySha256: results.policySha256,
+    candidateInventorySha256: sha256(
+      result.candidateInventorySha256,
+      'target candidate inventory SHA-256',
+    ),
+    semanticOutcomeSha256: sha256(
+      result.semanticOutcomeSha256,
+      'target semantic outcome SHA-256',
+    ),
+    batchId: batch.batchId,
+    batchSha256: bindings.batchSha256,
+    runId: results.runId,
+    resultsSha256: bindings.resultsSha256,
+    auditSha256: sha256(audit.semanticAuditSha256, 'target audit SHA-256'),
+    attemptedAt: timestamp(results.completedAt, 'target attempt completion time'),
+  };
+}
+
 export function buildHistoricalEvidenceRecoveryAttemptLedger({
   batch,
   results,
@@ -218,9 +299,19 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
     .map((entry) => [entry.resolutionId, structuredClone(entry)]));
   const sourceAcceptances = new Map((priorLedger?.sourceAcceptances ?? [])
     .map((entry) => [entry.sourceAcceptanceId, structuredClone(entry)]));
+  const targetAttempts = new Map((priorLedger?.targetAttempts ?? [])
+    .map((entry) => [entry.targetAttemptId, structuredClone(entry)]));
   for (const result of results.outcomes ?? []) {
     const target = targets.get(result.targetId);
     if (!target) throw new Error(`attempt target missing: ${result.targetId}`);
+    const targetAttempt = targetAttemptEntry({ target, result, batch, results, audit, bindings });
+    if (targetAttempt) {
+      const existing = targetAttempts.get(targetAttempt.targetAttemptId);
+      if (existing && canonicalJsonSha256(existing) !== canonicalJsonSha256(targetAttempt)) {
+        throw new Error(`conflicting target attempt ledger entry: ${targetAttempt.targetAttemptId}`);
+      }
+      targetAttempts.set(targetAttempt.targetAttemptId, targetAttempt);
+    }
     for (const candidate of result.candidateInventory?.candidates ?? []) {
       const outcome = candidate.outcome;
       if (!outcome || candidate.authorityMode !== 'official') continue;
@@ -273,6 +364,8 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
     .sort((left, right) => left.resolutionId.localeCompare(right.resolutionId));
   const materializedSourceAcceptances = [...sourceAcceptances.values()]
     .sort((left, right) => left.sourceAcceptanceId.localeCompare(right.sourceAcceptanceId));
+  const materializedTargetAttempts = [...targetAttempts.values()]
+    .sort((left, right) => left.targetAttemptId.localeCompare(right.targetAttemptId));
   const resolvedAttemptIds = new Set(materializedResolutions.map((entry) => entry.attemptId));
   const activeSuppressions = materialized.filter((entry) => (
     entry.suppressesSamePolicySource && !resolvedAttemptIds.has(entry.attemptId)
@@ -284,6 +377,7 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
     entries: materialized,
     resolutions: materializedResolutions,
     sourceAcceptances: materializedSourceAcceptances,
+    targetAttempts: materializedTargetAttempts,
     summary: {
       entries: materialized.length,
       resolutions: materializedResolutions.length,
@@ -293,10 +387,31 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
         entry.suppressesSamePolicySource && resolvedAttemptIds.has(entry.attemptId)
       )).length,
       retryable: materialized.filter((entry) => !entry.suppressesSamePolicySource).length,
+      targetAttempts: materializedTargetAttempts.length,
+      resolverOnlySuppressions: materializedTargetAttempts.filter(
+        (entry) => entry.suppressesSamePolicyResolverOnly,
+      ).length,
       byStatus: countBy(materialized, 'status'),
       byDisposition: countBy(materialized, 'disposition'),
     },
   };
+}
+
+export function activeHistoricalResolverSuppressions({
+  ledger,
+  targetId,
+  referenceId,
+  policySha256,
+  resolverContractSha256,
+}) {
+  if (!ledger?.targetAttempts || !/^[a-f0-9]{64}$/.test(String(resolverContractSha256 ?? ''))) return [];
+  if (activeHistoricalSourceAcceptances({ ledger, targetId, referenceId, policySha256 }).length) return [];
+  return ledger.targetAttempts.filter((entry) => (
+    entry.suppressesSamePolicyResolverOnly === true
+      && entry.policySha256 === policySha256
+      && historicalResolverContractSha256(entry.resolvers) === resolverContractSha256
+      && (entry.targetId === targetId || entry.referenceId === referenceId)
+  ));
 }
 
 export function activeHistoricalSourceAcceptances({

@@ -43,6 +43,11 @@ before changing evidence semantics.
     source model, source URL/type, geometry and Fit requirements must match.
     Geometry drift, weaker requirements, an equal timestamp or a reused receipt
     binding stops the build.
+12. A complete zero-candidate resolver pass may suppress only a resolver-only
+    target under the same recovery policy and the same resolver contract (ID,
+    version, scope and required flag). An incomplete resolver remains retryable;
+    a policy change, resolver-contract change or new explicit official candidate
+    job reopens the target automatically.
 
 ## 2. Storage and tool preflight
 
@@ -544,3 +549,39 @@ the stored evidence level, make `verifiedFitEligible` true, or produce a
 `VERIFIED_FIT` outcome. HTML marketing aliases likewise require all three
 explicit `document_title`, `canonical_source_model`, and
 `official_alias_binding` signals again at the publication boundary.
+
+## 16. ASKO current API boundary and zero-candidate closure
+
+The bounded run `historical-asko-current-au-dishwashers-20260716-b` tested the
+remaining current ASKO dishwasher models already expressed as exact Australian
+technical SKUs. The official ASKO PIM returned one exact record per target and
+the run accepted all three as dimensions-only evidence:
+
+| Model | Width | Height | Depth |
+| --- | ---: | ---: | ---: |
+| `DBI654IBXXL.S.AU` | 596 | 859 | 559 |
+| `DFI654BXXL.AU` | 596 | 859 | 559 |
+| `DFI666GXXL.AU` | 596 | 859 | 574 |
+
+The full online audit replayed 558 cumulative objects with no repairs or
+violations. Cumulative receipt replay now passes 283 of 283 sources. Historical
+`MODEL_RECEIPT` is 211, `AUTO_FILL` is 222 and the public Fit audit reports 208
+dimensions-only receipt-bound products, zero `VERIFIED_FIT` products and zero
+violations. Installation, door-open and rear-service requirements remain
+unknown for all three models.
+
+The same adapter returned a complete zero-candidate inventory for `D5424SS`,
+`D5436SS`, `D5436SSXXL`, `D5436WH`, `D5646SSXXL` and `DWCBI241`. The official
+manuals/PIM resolver, core discovery and batch resolver all completed; no URL
+was fetched and MinerU was never invoked. Treat this as an official historical
+coverage gap, not a parser failure and not permission to promote the existing
+retailer PDF hints.
+
+Run `historical-asko-legacy-dishwashers-20260716-d` records those six outcomes
+as target-level resolver attempts. Under the same policy they are omitted only
+when they would otherwise be resolver-only; a newly discovered explicit
+official URL still creates a job. The next executable epoch therefore contains
+7,729 targets, with six prior resolver-only targets suppressed. Do not encode a
+permanent brand exclusion: the queue binds the stored attempt to the actual
+resolver contract, so a resolver version/scope change, policy revision or new
+official candidate must reopen it.

@@ -448,9 +448,11 @@ test('promotion CLI receipt-audits the prospective cumulative bundle before publ
   assert.equal(receiptAudit.sourceBundleSha256, canonicalJsonSha256(bundle));
   assert.deepEqual(attemptLedger.summary, {
     entries: 0,
+    targetAttempts: 0,
     resolutions: 0,
     sourceAcceptances: 1,
     suppressions: 0,
+    resolverOnlySuppressions: 0,
     resolvedSuppressions: 0,
     retryable: 0,
     byStatus: {},

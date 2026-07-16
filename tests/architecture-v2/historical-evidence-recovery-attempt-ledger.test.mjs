@@ -3,8 +3,10 @@ import test from 'node:test';
 
 import {
   activeHistoricalAttemptSuppressions,
+  activeHistoricalResolverSuppressions,
   activeHistoricalSourceAcceptances,
   buildHistoricalEvidenceRecoveryAttemptLedger,
+  historicalResolverContractSha256,
 } from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
@@ -118,6 +120,79 @@ test('transient transport failures remain retryable and suppressed candidates ar
   const transport = ledger.entries.find((entry) => entry.failureCode === 'transport');
   assert.equal(transport.suppressesSamePolicySource, false);
   assert.equal(transport.disposition, 'RETRY_TRANSIENT');
+});
+
+test('a complete zero-candidate resolver pass creates one policy-bound target suppression', () => {
+  const input = fixture();
+  const result = input.results.outcomes[0];
+  result.status = 'claims_incomplete';
+  result.failureCode = 'source_authority';
+  result.candidateInventory.candidates = [];
+  result.candidateInventory.completionStatus = 'complete';
+  result.candidateInventory.incompleteResolvers = [];
+  result.candidateInventory.missingBatchCandidateJobIds = [];
+  result.candidateInventory.resolvers = [{
+    resolverId: 'asko-official-manuals-api', version: '1', required: true,
+    scope: 'asko_legacy_discovery_only', completion: 'complete', candidateCount: 0,
+  }];
+  input.audit.resultsSha256 = canonicalJsonSha256(input.results);
+
+  const first = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, priorLedger: null, generatedAt: '2026-07-16T01:01:00.000Z',
+  });
+  assert.equal(first.targetAttempts.length, 1);
+  assert.equal(first.targetAttempts[0].suppressesSamePolicyResolverOnly, true);
+  assert.equal(first.targetAttempts[0].disposition, 'AWAIT_RESOLVER_OR_POLICY_CHANGE');
+  assert.equal(first.summary.resolverOnlySuppressions, 1);
+  assert.equal(activeHistoricalResolverSuppressions({
+    ledger: first,
+    targetId: 'target-fp',
+    referenceId: 'reference-fp',
+    policySha256: SHA('b'),
+    resolverContractSha256: historicalResolverContractSha256(result.candidateInventory.resolvers),
+  }).length, 1);
+
+  const second = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, priorLedger: first, generatedAt: '2026-07-16T01:02:00.000Z',
+  });
+  assert.deepEqual(second.targetAttempts, first.targetAttempts);
+  assert.deepEqual(activeHistoricalResolverSuppressions({
+    ledger: second,
+    targetId: 'target-fp',
+    referenceId: 'reference-fp',
+    policySha256: SHA('9'),
+    resolverContractSha256: historicalResolverContractSha256(result.candidateInventory.resolvers),
+  }), []);
+  assert.deepEqual(activeHistoricalResolverSuppressions({
+    ledger: second,
+    targetId: 'target-fp',
+    referenceId: 'reference-fp',
+    policySha256: SHA('b'),
+    resolverContractSha256: historicalResolverContractSha256([{
+      ...result.candidateInventory.resolvers[0], version: '2',
+    }]),
+  }), []);
+});
+
+test('an incomplete zero-candidate resolver pass remains retryable', () => {
+  const input = fixture();
+  const result = input.results.outcomes[0];
+  result.status = 'retryable_failure';
+  result.failureCode = 'discovery_incomplete';
+  result.candidateInventory.candidates = [];
+  result.candidateInventory.completionStatus = 'incomplete';
+  result.candidateInventory.incompleteResolvers = ['asko-official-manuals-api'];
+  result.candidateInventory.resolvers = [{
+    resolverId: 'asko-official-manuals-api', version: '1', required: true,
+    scope: 'asko_legacy_discovery_only', completion: 'incomplete', candidateCount: 0,
+  }];
+  input.audit.resultsSha256 = canonicalJsonSha256(input.results);
+
+  const ledger = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, priorLedger: null, generatedAt: '2026-07-16T01:01:00.000Z',
+  });
+  assert.deepEqual(ledger.targetAttempts, []);
+  assert.equal(ledger.summary.resolverOnlySuppressions, 0);
 });
 
 test('a claim parser revision change invalidates same-policy terminal suppression', () => {

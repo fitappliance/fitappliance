@@ -28,7 +28,10 @@ import {
 import { runMineruPdfWithImageFallback } from '../../src/domain/mineru-runner.mjs';
 import { attestMineruToolIdentity } from '../../src/domain/mineru-tool-identity.mjs';
 import { fetchOfficialArtifactResilient } from '../../src/domain/official-artifact-transport.mjs';
-import { runReceiptBoundEvidenceBatch } from '../../src/domain/receipt-bound-evidence-batch-runner.mjs';
+import {
+  BATCH_CANDIDATE_RESOLVER_CONTRACT,
+  runReceiptBoundEvidenceBatch,
+} from '../../src/domain/receipt-bound-evidence-batch-runner.mjs';
 import { buildArchitectureV2ResolverAdapters } from '../pdf-pipeline/architecture-v2-resolver-adapters.mjs';
 
 const execFile = promisify(execFileCallback);
@@ -436,6 +439,18 @@ export function recoveryCandidateResolversForTarget(target, options = {}) {
         required: coreRequired,
       }),
     }, ...specialized];
+}
+
+export function recoveryResolverContractForTarget(target, options = {}) {
+  return [
+    BATCH_CANDIDATE_RESOLVER_CONTRACT,
+    ...recoveryCandidateResolversForTarget(target, options),
+  ].map(({ resolverId, version, scope, required }) => ({
+    resolverId,
+    version,
+    scope,
+    required,
+  }));
 }
 
 function resultsFromOutcomes(batch, state, outcomes, completedAt) {

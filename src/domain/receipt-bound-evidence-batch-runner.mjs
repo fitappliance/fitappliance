@@ -143,12 +143,16 @@ async function hydrateActiveReceiptSources(target, loadActiveReceiptSource) {
   return hydrated;
 }
 
+export const BATCH_CANDIDATE_RESOLVER_CONTRACT = Object.freeze({
+  resolverId: 'batch-candidates',
+  version: '1',
+  scope: 'recovery_batch_graph',
+  required: true,
+});
+
 function batchResolver(jobs) {
   const resolver = {
-    resolverId: 'batch-candidates',
-    version: '1',
-    scope: 'recovery_batch_graph',
-    required: true,
+    ...BATCH_CANDIDATE_RESOLVER_CONTRACT,
     async resolve() {
       return {
         resolverId: resolver.resolverId,

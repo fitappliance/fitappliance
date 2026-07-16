@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 
 import {
   activeHistoricalAttemptSuppressions,
+  activeHistoricalResolverSuppressions,
   activeHistoricalSourceAcceptances,
 } from './historical-evidence-recovery-attempt-ledger.mjs';
 
@@ -100,6 +101,7 @@ export function buildHistoricalExecutableRecoveryQueue({
   priorAcceptanceBundle = { entries: [] },
   priorAttemptLedger = { entries: [] },
   recoveryPolicySha256 = null,
+  resolverContractSha256ForTarget = null,
 }) {
   if (acquisitionQueue?.schemaVersion !== 1 || !Array.isArray(acquisitionQueue.records)
     || !Array.isArray(acquisitionQueue.sources)) {
@@ -130,6 +132,7 @@ export function buildHistoricalExecutableRecoveryQueue({
   const excluded = {};
   let suppressedPriorTerminalEdges = 0;
   let suppressedPriorAcceptedSourceEdges = 0;
+  let suppressedPriorResolverOnlyTargets = 0;
 
   for (const record of acquisitionQueue.records) {
     const executableIdentityClosure = record.route !== 'IDENTITY_CLOSURE'
@@ -151,6 +154,15 @@ export function buildHistoricalExecutableRecoveryQueue({
     const targetId = accepted?.targetId
       ?? legacy?.targetId
       ?? id('recovery_target', `historical-acquisition-v1\0${record.referenceId}`);
+    const resolverContractSha256 = typeof resolverContractSha256ForTarget === 'function'
+      ? resolverContractSha256ForTarget({
+        targetId,
+        referenceId: record.referenceId,
+        brand: record.brand,
+        model: record.model,
+        category: record.category,
+      })
+      : null;
     const priority = priorityClass(reference);
     const candidateJobIds = [];
     const priorAttemptSuppressions = recoveryPolicySha256
@@ -167,6 +179,15 @@ export function buildHistoricalExecutableRecoveryQueue({
         targetId,
         referenceId: record.referenceId,
         policySha256: recoveryPolicySha256,
+      })
+      : [];
+    const priorResolverSuppressions = recoveryPolicySha256
+      ? activeHistoricalResolverSuppressions({
+        ledger: priorAttemptLedger,
+        targetId,
+        referenceId: record.referenceId,
+        policySha256: recoveryPolicySha256,
+        resolverContractSha256,
       })
       : [];
     const terminalUrls = new Set(priorAttemptSuppressions.map((entry) => entry.sourceUrl));
@@ -201,6 +222,10 @@ export function buildHistoricalExecutableRecoveryQueue({
       candidateJobIds.push(jobId);
     }
     candidateJobIds.sort();
+    if (candidateJobIds.length === 0 && priorResolverSuppressions.length > 0) {
+      suppressedPriorResolverOnlyTargets += 1;
+      continue;
+    }
     const legacyRuntimeId = accepted?.legacyRuntimeId
       ?? record.legacyRuntimeIds?.[0]
       ?? reference.catalogProductIds?.[0]
@@ -252,6 +277,7 @@ export function buildHistoricalExecutableRecoveryQueue({
       uniqueReferences: new Set(targets.map((target) => target.referenceId)).size,
       suppressedPriorTerminalEdges,
       suppressedPriorAcceptedSourceEdges,
+      suppressedPriorResolverOnlyTargets,
       byLifecycle: countBy(targets, (target) => target.lifecycleState),
       byPriority: countBy(targets, (target) => target.priorityClass),
       excluded: Object.fromEntries(Object.entries(excluded).sort(([left], [right]) => left.localeCompare(right))),

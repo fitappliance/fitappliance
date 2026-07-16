@@ -5,8 +5,10 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { historicalResolverContractSha256 } from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
 import { buildHistoricalExecutableRecoveryQueue } from '../../src/domain/historical-executable-recovery-queue.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
+import { recoveryResolverContractForTarget } from './run-historical-evidence-recovery.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -47,6 +49,9 @@ export async function runCli() {
     priorAcceptanceBundle,
     priorAttemptLedger,
     recoveryPolicySha256: canonicalJsonSha256(recoveryPolicy),
+    resolverContractSha256ForTarget: (target) => historicalResolverContractSha256(
+      recoveryResolverContractForTarget(target),
+    ),
   });
   const output = resolveArchitectureV2Path(root, 'historicalExecutableEvidenceRecoveryQueue');
   await atomicJson(output, queue);
