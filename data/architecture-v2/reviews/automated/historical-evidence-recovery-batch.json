@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-37d1b183b2b85159e6f4cf8f",
-  "generatedAt": "2026-07-16T23:09:24.849Z",
+  "batchId": "historical-recovery-0646110307cb419ede121c88",
+  "generatedAt": "2026-07-16T23:22:29.356Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "31d73636b6cca5d111ea6bc2ed2f6bfdbd3a3f994067483f62b2282d20ed3ee3"
+    "sha256": "ee26ab5f054cc7ad7af3f3126c0c26ace27ad21076c4307ddbfc1c9004309ca1"
   },
   "policy": {
-    "version": "2026-07-16.18",
-    "sha256": "bf0d0337a799beeb1d67e605aeb04fe93a006c65c749cc28157ad696ecbe5982"
+    "version": "2026-07-16.19",
+    "sha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
   },
   "selection": {
     "jobIds": [],
@@ -4678,70 +4678,6 @@
               "width": 597,
               "height": 846,
               "depth": 558
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_7638b53459b92a54af9a6109",
-      "referenceId": "fa_ref_93e2c24cce69162020cd76f1",
-      "legacyRuntimeId": "ao-86774",
-      "canonicalProductId": "fa_prod_5fa0e9d93b2bd1d9c0240b57",
-      "brand": "Beko",
-      "model": "BDP810W",
-      "category": "dryer",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_45c5d8c2ae34fa82105abe3f",
-            "dimensionsMm": {
-              "width": 597,
-              "height": 846,
-              "depth": 589
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_349ecea633e083fd1fe9f63b",
-      "referenceId": "fa_ref_e0ffbff72560015a393c1e99",
-      "legacyRuntimeId": "ao-65542",
-      "canonicalProductId": "fa_prod_fc457aa036cb5c622b9c07d1",
-      "brand": "Beko",
-      "model": "BDP83HW",
-      "category": "dryer",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_1e4b9b8c736097ef2856f3ca",
-            "dimensionsMm": {
-              "width": 597,
-              "height": 846,
-              "depth": 654
             }
           }
         ]
@@ -234997,7 +234933,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7651,
+    "targets": 7649,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

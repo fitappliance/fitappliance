@@ -1412,3 +1412,51 @@ must not be inherited from the family manual until an immutable exact-model
 discovery path binds that support product to the PDF artifact. A future fix
 requires a new resolver/discovery contract and a new run ID; the presence of a
 parseable family row alone is not execution permission.
+
+## 36. Beko dryer lanes X and Y and parallel-list product sheets
+
+Lane X selected six previously unattempted current-retail Beko dryers with a
+single unique run ID. It was not resumed or repeated. The bounded Beko
+resolver found no official candidate for `BDC830W`, `BDP710MG`, `BDV60W` or
+`BDV70W`; those four discovery-gap targets were promoted as terminal attempt
+history and remain suppressed until a resolver or source-authority epoch
+changes. Their legacy catalog dimensions remain unbound hints and do not
+create `geometry_v2`.
+
+`BDP810W` and `BDP83HW` resolved to exact Australian Beko product pages and
+Beko-hosted PDF specification sheets, but lane X exposed a parser gap. On page
+1 each PDF presents `Dimensions & Weights` as one ordered label paragraph and
+a separate aligned list of eight values. A second-page product diagram reports
+the cabinet/body depth, which is smaller than the explicitly labelled
+unpacked depth and must not replace the closed product envelope.
+
+Parser epoch `2026-07-16.19` adds the narrow
+`beko_au_dryer_product_spec_parallel_lists_v1` grammar. It requires the exact
+dryer model, the unique `Dimensions & Weights` heading, the complete ordered
+label sequence, one aligned eight-value list and the expected mm/kg unit
+positions. It projects only unpacked height, width and depth; packed values,
+operation dimensions and the second-page body diagram are excluded. Missing
+values, changed labels, misaligned lists, wrong units, sibling models and other
+categories are rejected.
+
+Lane Y contained only the two targets whose immutable PDFs replayed under that
+grammar. It accepted:
+
+| Model | Width | Height | Depth |
+| --- | ---: | ---: | ---: |
+| `BDP810W` | 597 | 846 | 589 |
+| `BDP83HW` | 597 | 846 | 654 |
+
+Both receipts are dimensions-only. Installation, ventilation, plumbing and
+operation requirements remain unknown, and receipt-bound `VERIFIED_FIT` is
+not permitted. The full online lane Y audit checked two targets and 717
+cumulative objects with zero repairs and zero violations. Promotion increased
+the cumulative bundle to 344 accepted entries and 369 source receipts; all 369
+receipts replay under parser epoch `.19`. Historical classification now
+contains 363 complete receipts, public projection contains 294 receipt-bound
+dimensions and receipt-bound `VERIFIED_FIT` remains zero.
+
+Lanes X and Y are closed. Neither may be rerun merely because the four
+discovery-gap models remain useful. A future attempt requires a changed
+resolver/source-authority epoch and a new run ID; a parser-policy change alone
+does not justify repeating a target that never produced an official artifact.

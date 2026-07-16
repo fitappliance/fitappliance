@@ -1057,6 +1057,63 @@ test('MinerU rejects incomplete or cross-brand lookalikes of the Beko parallel-l
   }), /no exact-model MinerU evidence/i);
 });
 
+test('MinerU binds Beko AU dryer unpacked dimensions from an exact aligned label-value block', () => {
+  const labels = 'Unpacked Height: Unpacked Width: Unpacked Depth: Unpacked Weight: '
+    + 'Packed Height: Packed Width: Packed Depth: Packed Weight:';
+  const values = [
+    '846 mm', '597 mm', '589 mm', '45 kg',
+    '885 mm', '650 mm', '600 mm', '46.5 kg',
+  ];
+  const document = ({
+    header = 'BDP810W 8 kg Sensor Controlled Heat Pump Tumble Dryer',
+    labelText = labels,
+    valueEntries = values,
+    valueBbox = [763, 625, 830, 770],
+  } = {}) => Buffer.from(JSON.stringify([[
+    pageHeader(header),
+    titleFragment('Dimensions & Weights', [526, 607, 709, 625]),
+    paragraph(labelText, [526, 626, 658, 770]),
+    structuredListFragment(valueEntries, { type: 'index', bbox: valueBbox }),
+    captionedTableFragment(
+      '<table><tr><td>W</td><td>D</td><td>H</td><td>C</td><td>Unit</td></tr>'
+        + '<tr><td>597</td><td>568</td><td>846</td><td>31</td><td>mm</td></tr></table>',
+      'Dimensions',
+    ),
+  ]]));
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Beko', model: 'BDP810W', category: 'dryer' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+
+  const parsed = parseMineruContentListV2(document(), options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 597 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 846 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 589 },
+  });
+  assert.deepEqual(parsed.grammarProfileIds, [
+    'beko_au_dryer_product_spec_parallel_lists_v1',
+  ]);
+  assert.equal(parsed.claims.some((claim) => claim.value?.mm === 568), false);
+
+  for (const unsafe of [
+    { valueEntries: values.slice(0, -1) },
+    { labelText: labels.replace('Unpacked Depth:', 'Packed Depth:') },
+    { valueEntries: values.with(2, '589 kg') },
+    { valueBbox: [100, 850, 200, 995] },
+    { header: 'BDP810W / BDP83HW Heat Pump Tumble Dryers' },
+  ]) {
+    assert.throws(() => parseMineruContentListV2(document(unsafe), options),
+      /identity|family|model|evidence/i);
+  }
+  assert.throws(() => parseMineruContentListV2(document(), {
+    ...options,
+    caseIdentity: { brand: 'Beko', model: 'BDP810W', category: 'dishwasher' },
+  }), /identity|model|evidence/i);
+});
+
 test('MinerU parses grouped dimension paragraphs and mixed compact separators', () => {
   const bytes = Buffer.from(JSON.stringify([[
     { type: 'title', content: { title_content: [{ type: 'text', content: 'DWAU615DB3 dishwasher' }], level: 1 }, bbox: [10, 10, 300, 40] },

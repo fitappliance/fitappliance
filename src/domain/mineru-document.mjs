@@ -3153,6 +3153,17 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'Unique structured exact-model title or page header in the document, no sibling model, one Dimensions & Weights title, one complete min-height/max-height/W/D paragraph and one complete separate unpackaged-weight plus packaged-dimensions paragraph.',
     semanticBoundary: 'Only unpackaged W/D and the explicit minimum-to-maximum feet-adjustment height range are projected; the separate packaged values are required for envelope separation but excluded, and no door-open claim is inferred.',
   }),
+  beko_au_dryer_product_spec_parallel_lists_v1: Object.freeze({
+    parserProfileId: 'beko_au_dryer_product_spec_parallel_lists_v1',
+    grammarFamilyId: 'beko_au_dryer_product_spec_v1',
+    grammarFamilyName: 'Beko AU dryer product specification',
+    variantName: 'Aligned unpacked and packed label-value blocks',
+    brand: 'Beko',
+    category: 'dryer',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model scoped Beko AU dryer page contains one Dimensions & Weights title, the complete ordered unpacked and packed label paragraph, and one vertically aligned eight-value list with explicit mm and kg units.',
+    semanticBoundary: 'Only unpacked height, width and depth are projected as the closed envelope. Packed values and the separate W/D/H operation diagram are excluded.',
+  }),
 });
 const HISENSE_AU_WASHER_INDEXED_DIAGRAM_GRAMMAR = mineruGrammarProfiles
   ['hisense-au-washer-indexed-dimension-diagram-v1'].parserProfileId;
@@ -3164,6 +3175,8 @@ const BEKO_AU_DISHWASHER_SPLIT_TITLE_GRAMMAR = mineruGrammarProfiles
   .beko_au_dishwasher_product_spec_split_title_parallel_lists_v1.parserProfileId;
 const BEKO_AU_DISHWASHER_MIN_HEIGHT_INLINE_GRAMMAR = mineruGrammarProfiles
   .beko_au_dishwasher_product_spec_min_height_inline_pairs_v1.parserProfileId;
+const BEKO_AU_DRYER_PARALLEL_GRAMMAR = mineruGrammarProfiles
+  .beko_au_dryer_product_spec_parallel_lists_v1.parserProfileId;
 const BEKO_AU_SPEC_LABELS = Object.freeze([
   'Unpackaged Height:',
   'Height (max - feet adjustment):',
@@ -3445,6 +3458,104 @@ function bekoUniqueStructuredDocumentScope(document, caseIdentity) {
   ));
 }
 
+const BEKO_AU_DRYER_SPEC_LABELS = Object.freeze([
+  'Unpacked Height:',
+  'Unpacked Width:',
+  'Unpacked Depth:',
+  'Unpacked Weight:',
+  'Packed Height:',
+  'Packed Width:',
+  'Packed Depth:',
+  'Packed Weight:',
+]);
+
+function bekoAuDryerSpecRows(items, caseIdentity, identityScoped) {
+  if (normalizedText(caseIdentity?.brand).toLowerCase() !== 'beko'
+    || normalizedText(caseIdentity?.category) !== 'dryer' || !identityScoped) return null;
+  const headings = items.filter((item) => (
+    item.type === 'title' && item.text === 'Dimensions & Weights'
+  ));
+  if (headings.length !== 1) return null;
+  const expectedLabels = BEKO_AU_DRYER_SPEC_LABELS.join(' ');
+  const labelCandidates = items.filter((item) => (
+    item.type === 'paragraph'
+    && normalizedText(item.text) === expectedLabels
+    && item.bbox[1] >= headings[0].bbox[3]
+    && item.bbox[1] - headings[0].bbox[3] <= 50
+    && Math.abs(item.bbox[0] - headings[0].bbox[0]) <= 50
+  ));
+  if (labelCandidates.length !== 1) return null;
+  const labelFragment = labelCandidates[0];
+  const valueCandidates = items.filter((item) => (
+    ['index', 'list'].includes(item.type)
+    && item.listEntries.length === BEKO_AU_DRYER_SPEC_LABELS.length
+    && item.bbox[0] >= labelFragment.bbox[2]
+    && item.bbox[0] - labelFragment.bbox[2] <= 200
+    && Math.abs(item.bbox[1] - labelFragment.bbox[1]) <= 25
+    && Math.abs(item.bbox[3] - labelFragment.bbox[3]) <= 25
+    && item.listEntries.every((value, index) => (
+      [3, 7].includes(index)
+        ? /^\d+(?:\.\d+)?\s*kg$/i.test(value)
+        : /^\d+(?:\.\d+)?\s*mm$/i.test(value)
+    ))
+  ));
+  if (valueCandidates.length !== 1) return null;
+  const valueFragment = valueCandidates[0];
+  const dimensions = valueFragment.listEntries.slice(0, 3).map(Number.parseFloat);
+  if (dimensions.some((value) => !Number.isInteger(value) || value <= 0)) return null;
+  const rows = [
+    {
+      label: 'Unpacked Height', value: valueFragment.listEntries[0],
+      quote: `Unpacked Height: ${valueFragment.listEntries[0]}`,
+      semanticBasis: 'explicit_label', axisOrder: ['height'],
+      grammarProfileId: BEKO_AU_DRYER_PARALLEL_GRAMMAR,
+    },
+    {
+      label: 'Unpacked Width', value: valueFragment.listEntries[1],
+      quote: `Unpacked Width: ${valueFragment.listEntries[1]}`,
+      semanticBasis: 'explicit_label', axisOrder: ['width'],
+      grammarProfileId: BEKO_AU_DRYER_PARALLEL_GRAMMAR,
+    },
+    {
+      label: 'Unpacked Depth', value: valueFragment.listEntries[2],
+      quote: `Unpacked Depth: ${valueFragment.listEntries[2]}`,
+      semanticBasis: 'explicit_label', axisOrder: ['depth'],
+      grammarProfileId: BEKO_AU_DRYER_PARALLEL_GRAMMAR,
+    },
+  ];
+  const fragments = [headings[0], labelFragment, valueFragment];
+  return {
+    grammarProfileId: BEKO_AU_DRYER_PARALLEL_GRAMMAR,
+    rows,
+    fragment: {
+      type: 'derived_beko_dryer_spec',
+      bbox: [
+        Math.min(...fragments.map((fragment) => fragment.bbox[0])),
+        Math.min(...fragments.map((fragment) => fragment.bbox[1])),
+        Math.max(...fragments.map((fragment) => fragment.bbox[2])),
+        Math.max(...fragments.map((fragment) => fragment.bbox[3])),
+      ],
+      fragmentSha256: sha256(JSON.stringify({
+        grammarProfileId: BEKO_AU_DRYER_PARALLEL_GRAMMAR,
+        sourceFragmentSha256s: fragments.map((fragment) => fragment.fragmentSha256),
+        rows,
+      })),
+    },
+  };
+}
+
+function bekoUniqueStructuredDryerScope(document, caseIdentity) {
+  if (normalizedText(caseIdentity?.brand).toLowerCase() !== 'beko'
+    || normalizedText(caseIdentity?.category) !== 'dryer') return false;
+  const model = normalizedText(caseIdentity?.model);
+  if (!model || unresolvedFamilyScope(document, model)
+    || siblingModelCandidates(document, model).length > 0) return false;
+  return document.pages.flat().some((item) => (
+    ['title', 'page_header'].includes(item.type)
+      && containsExplicitModelExpression(item.text, model)
+  ));
+}
+
 export function parseMineruContentListV2(jsonBytes, options = {}) {
   const pdfSha256 = requiredHash(options.pdfSha256, 'source PDF');
   const parserVersion = requiredParserVersion(options.parserVersion);
@@ -3713,6 +3824,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     : new Set();
   const bekoDocumentScoped = claimSemanticsVersion === 2
     && bekoUniqueStructuredDocumentScope(document, caseIdentity);
+  const bekoDryerDocumentScoped = claimSemanticsVersion === 2
+    && bekoUniqueStructuredDryerScope(document, caseIdentity);
   let signals = [...new Map([
     ...documentSignals,
     ...contextSignals,
@@ -3863,7 +3976,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         ? [[haierHbmScope.fragment, haierHbmScope.rows]]
         : [],
     );
-    if (!pageScoped && !documentScoped && !bekoDocumentScoped
+    if (!pageScoped && !documentScoped && !bekoDocumentScoped && !bekoDryerDocumentScoped
       && !sharedModelListScoped && !groupedColumnScoped
       && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped
       && !haierTfe3PageScoped && !haierHbmPageScoped
@@ -3878,8 +3991,11 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       ['title', 'page_header'].includes(item.type)
         && containsExplicitModelExpression(item.text, model)
     ));
-    const bekoSpec = bekoPageScoped || bekoDocumentScoped
-      ? bekoAuDishwasherSpecRows(items, caseIdentity, true)
+    const bekoIdentityScoped = !unresolvedFamily
+      && (bekoPageScoped || bekoDocumentScoped || bekoDryerDocumentScoped);
+    const bekoSpec = bekoIdentityScoped
+      ? (bekoAuDishwasherSpecRows(items, caseIdentity, true)
+        ?? bekoAuDryerSpecRows(items, caseIdentity, true))
       : null;
     for (const scope of [hisenseLegacySpecScope, hisenseNetPackageScope]) {
       if (!scope || scope.page !== pageIndex + 1) continue;

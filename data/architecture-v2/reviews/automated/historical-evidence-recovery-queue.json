@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1376,
-    "fetchJobs": 1339,
-    "targets": 1373,
-    "candidateEdges": 1376,
+    "documents": 1374,
+    "fetchJobs": 1337,
+    "targets": 1371,
+    "candidateEdges": 1374,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1373,
+    "uniqueReferences": 1371,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 942,
+      "MEASURE_REQUIRED": 940,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1126
+      "CURRENT_RETAIL": 1124
     },
     "byCategory": {
       "dishwasher": 281,
-      "dryer": 55,
+      "dryer": 53,
       "fridge": 821,
       "washing_machine": 216
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1079,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1077,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 231,
+      "ALREADY_AUTO_FILL": 233,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -7165,32 +7165,6 @@
       ],
       "targetIds": [
         "recovery_target_395145dc2298a4ef2f65a89c"
-      ]
-    },
-    {
-      "jobId": "recovery_d713e47b1866ce49e8f6bdea",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/c/1/7/4c17ad716e5806e907f3ad6d1efc7aba8c7f79cc_BDP810W_Beko_Specifications_Sheet.pdf",
-      "authorityBrand": "Beko",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_7638b53459b92a54af9a6109"
       ]
     },
     {
@@ -21205,32 +21179,6 @@
       ],
       "targetIds": [
         "recovery_target_262a69c8fa796df1ebf98895"
-      ]
-    },
-    {
-      "jobId": "recovery_61491cc26bdb3c619a3922fd",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/e/2/e/0/e2e022b840e55a6e0a242ce67f8321d9971e63dc_BDP83HW_Beko_Specifications_Sheet.pdf",
-      "authorityBrand": "Beko",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_349ecea633e083fd1fe9f63b"
       ]
     },
     {
@@ -35756,88 +35704,6 @@
         "recovery_a0bffe684f8118b6b7ccc1af"
       ],
       "primaryJobId": "recovery_a0bffe684f8118b6b7ccc1af"
-    },
-    {
-      "referenceId": "fa_ref_93e2c24cce69162020cd76f1",
-      "legacyRuntimeId": "ao-86774",
-      "canonicalProductId": "fa_prod_5fa0e9d93b2bd1d9c0240b57",
-      "category": "dryer",
-      "brand": "Beko",
-      "model": "BDP810W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 597,
-        "height": 846,
-        "depth": 589
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_7638b53459b92a54af9a6109",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_45c5d8c2ae34fa82105abe3f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_45c5d8c2ae34fa82105abe3f",
-          "dimensionsMm": {
-            "width": 597,
-            "height": 846,
-            "depth": 589
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_d713e47b1866ce49e8f6bdea"
-      ],
-      "primaryJobId": "recovery_d713e47b1866ce49e8f6bdea"
-    },
-    {
-      "referenceId": "fa_ref_e0ffbff72560015a393c1e99",
-      "legacyRuntimeId": "ao-65542",
-      "canonicalProductId": "fa_prod_fc457aa036cb5c622b9c07d1",
-      "category": "dryer",
-      "brand": "Beko",
-      "model": "BDP83HW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 597,
-        "height": 846,
-        "depth": 654
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_349ecea633e083fd1fe9f63b",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_1e4b9b8c736097ef2856f3ca"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_1e4b9b8c736097ef2856f3ca",
-          "dimensionsMm": {
-            "width": 597,
-            "height": 846,
-            "depth": 654
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_61491cc26bdb3c619a3922fd"
-      ],
-      "primaryJobId": "recovery_61491cc26bdb3c619a3922fd"
     },
     {
       "referenceId": "fa_ref_60b31d39e8b6ee1ed7171bdf",

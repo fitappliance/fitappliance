@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "27a5c5147321e34a915bf4c35a1c1029b0adacb410fc1061b5090993276a2587"
+    "historical-recovery:historical-recovery-cumulative-v1": "450822ebea7faaab963ef64a7d8ae899e2f2c5c399720f1e0fd3f0e09c4b40ba"
   },
   "records": [
     {
@@ -63088,14 +63088,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 597,
+        "height": 846,
+        "depth": 589
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_7638b53459b92a54af9a6109",
+          "snapshotSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -63104,8 +63115,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_7638b53459b92a54af9a6109",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188231280.pdf",
+          "contentSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "receiptBindingSha256": "11c0720e713155efc469822137dbe2037d1c707705576fdfe21781be5540bead",
+          "verifiedAt": "2026-07-16T23:19:43.261Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "e130cea7f1790059a81e0b30e3b0ce6a4dc148af77252602d3fbbfde156310e8"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "e130cea7f1790059a81e0b30e3b0ce6a4dc148af77252602d3fbbfde156310e8"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "e130cea7f1790059a81e0b30e3b0ce6a4dc148af77252602d3fbbfde156310e8"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/bf/ef/bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6.pdf"
+        }
       ]
     },
     {
@@ -63123,14 +63160,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 597,
+        "height": 846,
+        "depth": 654
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_349ecea633e083fd1fe9f63b",
+          "snapshotSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -63139,8 +63187,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_349ecea633e083fd1fe9f63b",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+          "contentSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+          "receiptBindingSha256": "bb2dd6119b3015a1232485fa4fac73c2c3fccdbc4006b528389787cd16ce62db",
+          "verifiedAt": "2026-07-16T23:19:41.979Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8d05b63580455bfa41c6479d0b0c9e477202df4af2b8de3e2e9588bcc125320d"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8d05b63580455bfa41c6479d0b0c9e477202df4af2b8de3e2e9588bcc125320d"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8d05b63580455bfa41c6479d0b0c9e477202df4af2b8de3e2e9588bcc125320d"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/5e/c3/5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d.pdf"
+        }
       ]
     },
     {
@@ -324190,16 +324264,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2870,
-      "MODEL_RECEIPT": 274,
+      "IDENTITY_ONLY": 2868,
+      "MODEL_RECEIPT": 276,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2870,
-      "AUTO_FILL": 285,
+      "MEASURE_REQUIRED": 2868,
+      "AUTO_FILL": 287,
       "QUARANTINED": 88
     }
   }

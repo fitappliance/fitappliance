@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T23:09:03.551Z",
-  "sourceBundleSha256": "27a5c5147321e34a915bf4c35a1c1029b0adacb410fc1061b5090993276a2587",
+  "generatedAt": "2026-07-16T23:22:08.958Z",
+  "sourceBundleSha256": "450822ebea7faaab963ef64a7d8ae899e2f2c5c399720f1e0fd3f0e09c4b40ba",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -952,6 +952,20 @@
       "contentSha256": "ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667",
       "receiptBindingSha256": "e99ec5c10a08151be2d08f50f7433b0f6f288384839dec2a8658648edcdf70aa",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/95/2c/952c5048d1b83d141263324390ac2bdb1ead63466ca67cc6aee8093c29583a03.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_349ecea633e083fd1fe9f63b",
+      "referenceId": "fa_ref_e0ffbff72560015a393c1e99",
+      "brand": "Beko",
+      "model": "BDP83HW",
+      "category": "dryer",
+      "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+      "sourcePdfSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+      "contentSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+      "receiptBindingSha256": "bb2dd6119b3015a1232485fa4fac73c2c3fccdbc4006b528389787cd16ce62db",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/c9/e0/c9e04cb21a57ef46e33089a3d8f3550a99854e73e9e98bb4295239802d463478.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2380,6 +2394,20 @@
       "contentSha256": "d2bb16a0f24456b50582ff764c647a8f1935c352ba541ecfbd6618f5df2163c7",
       "receiptBindingSha256": "34c2e604d667b999c0ef84ab7fc9815bb1d50e86589b22878d17f7745caca533",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/1b/ee/1bee0b1af3db46035cf62dd9b29f4ed5a764a3c7e8eee51e830f0de8378379ed.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_7638b53459b92a54af9a6109",
+      "referenceId": "fa_ref_93e2c24cce69162020cd76f1",
+      "brand": "Beko",
+      "model": "BDP810W",
+      "category": "dryer",
+      "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188231280.pdf",
+      "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+      "contentSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+      "receiptBindingSha256": "11c0720e713155efc469822137dbe2037d1c707705576fdfe21781be5540bead",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/39/47/3947274f218015c9d56093f20b58b3942b902c1ac8cdb2c3ef4f15caa2f9fd1f.json",
       "status": "passed",
       "failureCode": null
     },
@@ -5143,11 +5171,11 @@
     }
   ],
   "summary": {
-    "entries": 342,
-    "sources": 367,
-    "passed": 367,
+    "entries": 344,
+    "sources": 369,
+    "passed": 369,
     "failed": 0
   },
-  "checkedObjects": 711,
-  "semanticAuditSha256": "264f39226c58c38c4b929fccc08799d50c7a704a8aa1bb9e02ade866aab68936"
+  "checkedObjects": 717,
+  "semanticAuditSha256": "15f757d8a00f93caaff564d1cbc92037977355b5c08541f1f26bfacae3ae93e3"
 }

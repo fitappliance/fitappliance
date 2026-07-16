@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T23:09:24.849Z",
+  "generatedAt": "2026-07-16T23:22:29.356Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "67d28ca9987dafd27e7f4b48aa9f9594d0db604d67cccce54fc7aad7e8189476",
+  "semanticClassificationSha256": "fb8cec10158f740b4e82b40d7785d10d48c7bbfe5ed2af2e071a656eec6505ac",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4344,
+    "documentLinks": 4346,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 361,
+      "COMPLETE_RECEIPT": 363,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1100
+      "REFERENCE_REDISCOVERY": 1098
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 361,
-      "REDISCOVER_OFFICIAL_SOURCE": 1100,
+      "NO_ACTION": 363,
+      "REDISCOVER_OFFICIAL_SOURCE": 1098,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 135
     },
     "bySourceAuthority": {
-      "MIXED": 205,
+      "MIXED": 207,
       "NONE": 6611,
       "OFFICIAL": 162,
-      "REFERENCE": 1117
+      "REFERENCE": 1115
     },
     "byIdentityScope": {
       "AMBIGUOUS": 172,
@@ -47,8 +47,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 86,
-      "ALL_AXIS_SCALAR": 412,
-      "NOT_PARSED": 7503,
+      "ALL_AXIS_SCALAR": 414,
+      "NOT_PARSED": 7501,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 361,
-      "LEGACY_UNBOUND": 1409,
+      "CURRENT_VALID": 363,
+      "LEGACY_UNBOUND": 1407,
       "NONE": 6325
     }
   },
@@ -81,13 +81,13 @@
       "category": "dryer",
       "records": 843,
       "brands": 72,
-      "documentLinks": 271,
+      "documentLinks": 273,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 38,
+        "COMPLETE_RECEIPT": 40,
         "CONFLICT_QUARANTINE": 4,
         "IDENTITY_RESEARCH": 4,
         "OFFICIAL_DISCOVERY": 745,
-        "REFERENCE_REDISCOVERY": 52
+        "REFERENCE_REDISCOVERY": 50
       }
     },
     {
@@ -62287,14 +62287,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -62317,6 +62318,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188231280.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/39/47/3947274f218015c9d56093f20b58b3942b902c1ac8cdb2c3ef4f15caa2f9fd1f.json",
+            "evidence/web/sha256/bf/ef/bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6.pdf",
+            "receipt:11c0720e713155efc469822137dbe2037d1c707705576fdfe21781be5540bead"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
+        },
+        {
           "documentId": "source:doc_45c5d8c2ae34fa82105abe3f",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/4/c/1/7/4c17ad716e5806e907f3ad6d1efc7aba8c7f79cc_BDP810W_Beko_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -62332,8 +62352,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Beko"
@@ -62350,14 +62370,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -62380,6 +62401,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/c9/e0/c9e04cb21a57ef46e33089a3d8f3550a99854e73e9e98bb4295239802d463478.json",
+            "evidence/web/sha256/5e/c3/5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d.pdf",
+            "receipt:bb2dd6119b3015a1232485fa4fac73c2c3fccdbc4006b528389787cd16ce62db"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d"
+        },
+        {
           "documentId": "source:doc_1e4b9b8c736097ef2856f3ca",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/e/2/e/0/e2e022b840e55a6e0a242ce67f8321d9971e63dc_BDP83HW_Beko_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -62395,8 +62435,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Beko"

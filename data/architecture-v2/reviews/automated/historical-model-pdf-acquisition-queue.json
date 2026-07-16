@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T23:09:24.849Z",
-  "semanticQueueSha256": "684062e780e937aa27359a500f52db4b0b0f6ddd878ba6537657415a88364c2c",
-  "sourceClassificationSha256": "67d28ca9987dafd27e7f4b48aa9f9594d0db604d67cccce54fc7aad7e8189476",
+  "generatedAt": "2026-07-16T23:22:29.356Z",
+  "semanticQueueSha256": "194bcbe795e9883448bc9c81ae7ab84b8a5808f299e7562725dbbcf29d7d1b9b",
+  "sourceClassificationSha256": "fb8cec10158f740b4e82b40d7785d10d48c7bbfe5ed2af2e071a656eec6505ac",
   "records": [
     {
       "schemaVersion": 1,
@@ -6387,68 +6387,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_ad852fad2230df84e0b2754e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_80ec69b50ea9b66ec1c0776b",
-      "referenceId": "fa_ref_93e2c24cce69162020cd76f1",
-      "category": "dryer",
-      "brand": "Beko",
-      "model": "BDP810W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_181bf5e3d982b2f555bb0a19"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_7638b53459b92a54af9a6109"
-      ],
-      "legacyRuntimeIds": [
-        "ao-86774"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_5fa0e9d93b2bd1d9c0240b57"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_c11715f32b23948ad7034472",
-      "referenceId": "fa_ref_e0ffbff72560015a393c1e99",
-      "category": "dryer",
-      "brand": "Beko",
-      "model": "BDP83HW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_cb038cc8a68fee7d2a780a93"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_349ecea633e083fd1fe9f63b"
-      ],
-      "legacyRuntimeIds": [
-        "ao-65542"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_fc457aa036cb5c622b9c07d1"
       ],
       "offlineReplayOutcome": null
     },
@@ -192479,19 +192417,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_181bf5e3d982b2f555bb0a19",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/c/1/7/4c17ad716e5806e907f3ad6d1efc7aba8c7f79cc_BDP810W_Beko_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/BDP810W.json",
-        "source:doc_45c5d8c2ae34fa82105abe3f"
-      ],
-      "referenceIds": [
-        "fa_ref_93e2c24cce69162020cd76f1"
-      ]
-    },
-    {
       "sourceId": "historical_source_18280a24dcffdc787f76bdb0",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/0/3/9/9/039967b5c2fe6101498284550f8296ee66f4370f_Fisher___Paykel_MW513_QuickSmart__5.5kg_Top_Load_Washing_Machine_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -205507,19 +205432,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_cb038cc8a68fee7d2a780a93",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/e/2/e/0/e2e022b840e55a6e0a242ce67f8321d9971e63dc_BDP83HW_Beko_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/BDP83HW.json",
-        "source:doc_1e4b9b8c736097ef2856f3ca"
-      ],
-      "referenceIds": [
-        "fa_ref_e0ffbff72560015a393c1e99"
-      ]
-    },
-    {
       "sourceId": "historical_source_cb2991209787371ed376b4b6",
       "sourceUrl": "https://esatto.house/s/EUF172W_EUF172S_UserManual_V20.pdf",
       "sourceAuthority": "NONE",
@@ -208877,24 +208789,24 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 361,
+    "COMPLETE_RECEIPT": 363,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7734,
-    "uniqueReferences": 7734,
-    "candidateSources": 1383,
-    "candidateEdges": 1418,
+    "queuedModels": 7732,
+    "uniqueReferences": 7732,
+    "candidateSources": 1381,
+    "candidateEdges": 1416,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1096,
+      "CURRENT_RETAIL": 1094,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1265,
-      "dryer": 805,
+      "dryer": 803,
       "fridge": 4216,
       "washing_machine": 1448
     },
@@ -208902,21 +208814,21 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1100
+      "REFERENCE_REDISCOVERY": 1098
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1100
+      "OFFICIAL_REDISCOVERY": 1098
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5069,
+      "DISCOVERY_READY": 5067,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 361,
+      "COMPLETE_RECEIPT": 363,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

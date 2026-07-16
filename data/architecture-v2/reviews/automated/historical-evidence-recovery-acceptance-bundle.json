@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T23:04:28.455Z",
-  "policySha256": "00179e8209cf91fa89ce29a1ee100f3cb1e505b750d73d920450880fb6bfbde4",
+  "generatedAt": "2026-07-16T23:21:49.683Z",
+  "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
   "entries": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -15255,6 +15255,249 @@
         "activeSourceHashes": [
           "ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_349ecea633e083fd1fe9f63b",
+      "referenceId": "fa_ref_e0ffbff72560015a393c1e99",
+      "legacyRuntimeId": "ao-65542",
+      "canonicalProductId": "fa_prod_fc457aa036cb5c622b9c07d1",
+      "brand": "Beko",
+      "model": "BDP83HW",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-3af2ed394150fdb40ffa0e32-slice-4988d44f6353",
+      "auditSha256": "693d79696efef4909de775b06f4c8fd3a837c2d57d27f031bf7830d1fc2635ca",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+          "finalUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T23:19:41.979Z",
+          "contentSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+          "objectPath": "evidence/web/sha256/5e/c3/5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 586702,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Beko",
+            "model": "BDP83HW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 597
+              },
+              "sourceLabel": "Unpacked Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "8d05b63580455bfa41c6479d0b0c9e477202df4af2b8de3e2e9588bcc125320d",
+              "bbox": [
+                526,
+                590,
+                830,
+                752
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 846
+              },
+              "sourceLabel": "Unpacked Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "8d05b63580455bfa41c6479d0b0c9e477202df4af2b8de3e2e9588bcc125320d",
+              "bbox": [
+                526,
+                590,
+                830,
+                752
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 654
+              },
+              "sourceLabel": "Unpacked Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "8d05b63580455bfa41c6479d0b0c9e477202df4af2b8de3e2e9588bcc125320d",
+              "bbox": [
+                526,
+                590,
+                830,
+                752
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_page",
+            "market": "AU",
+            "discoveryUrl": "https://www.beko.com/au-en/home-appliances/tumble-dryer/tumble-dryer-hybrid-8-kg-bdp83hw",
+            "requestedModel": "BDP83HW",
+            "matchedModel": "BDP83HW",
+            "artifactUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+            "artifactLinkUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+            "discoveryContentSha256": "c32b878d55b8e4b19690393214021a5e53f7a23014cf5078ee68242b11cfb0bb",
+            "discoveryObjectPath": "evidence/web/sha256/c3/2b/c32b878d55b8e4b19690393214021a5e53f7a23014cf5078ee68242b11cfb0bb.html",
+            "discoveryByteSize": 786093
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+            "contentSha256": "c9e04cb21a57ef46e33089a3d8f3550a99854e73e9e98bb4295239802d463478",
+            "objectPath": "evidence/derived/mineru-json/sha256/c9/e0/c9e04cb21a57ef46e33089a3d8f3550a99854e73e9e98bb4295239802d463478.json",
+            "byteSize": 43738,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "BDP83HW:page:1:944421d5c27a900c5d3cd09f886a5dfe977dc24723f69bd7cc21330e41fbc5e3"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "BDP83HW:page:2:1d4a488d538d6c97a84638fd27b3872e08fd86dd9a6d79bed95e5c3aafc86b5d"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "BDP83HW:document:repeated-page-header"
+            },
+            {
+              "type": "official_product_page_model",
+              "value": "BDP83HW:c32b878d55b8e4b19690393214021a5e53f7a23014cf5078ee68242b11cfb0bb:https://www.beko.com/au-en/home-appliances/tumble-dryer/tumble-dryer-hybrid-8-kg-bdp83hw"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.6",
+            "verifiedAt": "2026-07-16T23:19:41.979Z",
+            "bindingSha256": "bb2dd6119b3015a1232485fa4fac73c2c3fccdbc4006b528389787cd16ce62db"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 597,
+            "heightMm": {
+              "minimumMm": 846,
+              "maximumMm": 846
+            },
+            "depthMm": 654
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+            "contentSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+            "receiptBindingSha256": "bb2dd6119b3015a1232485fa4fac73c2c3fccdbc4006b528389787cd16ce62db",
+            "page": 1,
+            "fragmentSha256": "8d05b63580455bfa41c6479d0b0c9e477202df4af2b8de3e2e9588bcc125320d"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+            "contentSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+            "receiptBindingSha256": "bb2dd6119b3015a1232485fa4fac73c2c3fccdbc4006b528389787cd16ce62db",
+            "page": 1,
+            "fragmentSha256": "8d05b63580455bfa41c6479d0b0c9e477202df4af2b8de3e2e9588bcc125320d"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188285540.pdf",
+            "contentSha256": "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d",
+            "receiptBindingSha256": "bb2dd6119b3015a1232485fa4fac73c2c3fccdbc4006b528389787cd16ce62db",
+            "page": 1,
+            "fragmentSha256": "8d05b63580455bfa41c6479d0b0c9e477202df4af2b8de3e2e9588bcc125320d"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "5ec3edb71d42d6f192e81d5bf5d55c00e88c2b1ae207836abf22a20cf99e855d"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -38539,6 +38782,249 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "d2bb16a0f24456b50582ff764c647a8f1935c352ba541ecfbd6618f5df2163c7"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_7638b53459b92a54af9a6109",
+      "referenceId": "fa_ref_93e2c24cce69162020cd76f1",
+      "legacyRuntimeId": "ao-86774",
+      "canonicalProductId": "fa_prod_5fa0e9d93b2bd1d9c0240b57",
+      "brand": "Beko",
+      "model": "BDP810W",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-3af2ed394150fdb40ffa0e32-slice-4988d44f6353",
+      "auditSha256": "693d79696efef4909de775b06f4c8fd3a837c2d57d27f031bf7830d1fc2635ca",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188231280.pdf",
+          "finalUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188231280.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T23:19:43.261Z",
+          "contentSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+          "objectPath": "evidence/web/sha256/bf/ef/bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 513138,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Beko",
+            "model": "BDP810W",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 597
+              },
+              "sourceLabel": "Unpacked Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "e130cea7f1790059a81e0b30e3b0ce6a4dc148af77252602d3fbbfde156310e8",
+              "bbox": [
+                526,
+                607,
+                830,
+                770
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 846
+              },
+              "sourceLabel": "Unpacked Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "e130cea7f1790059a81e0b30e3b0ce6a4dc148af77252602d3fbbfde156310e8",
+              "bbox": [
+                526,
+                607,
+                830,
+                770
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 589
+              },
+              "sourceLabel": "Unpacked Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "e130cea7f1790059a81e0b30e3b0ce6a4dc148af77252602d3fbbfde156310e8",
+              "bbox": [
+                526,
+                607,
+                830,
+                770
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_page",
+            "market": "AU",
+            "discoveryUrl": "https://www.beko.com/au-en/home-appliances/tumble-dryer/tumble-dryer-heat-pump-8-kg-bdp810w",
+            "requestedModel": "BDP810W",
+            "matchedModel": "BDP810W",
+            "artifactUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188231280.pdf",
+            "artifactLinkUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188231280.pdf",
+            "discoveryContentSha256": "e9d1c2968b22ffd8cd7aaaf2b57278803567a48a86185e71796a6220fb468128",
+            "discoveryObjectPath": "evidence/web/sha256/e9/d1/e9d1c2968b22ffd8cd7aaaf2b57278803567a48a86185e71796a6220fb468128.html",
+            "discoveryByteSize": 783567
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+            "contentSha256": "3947274f218015c9d56093f20b58b3942b902c1ac8cdb2c3ef4f15caa2f9fd1f",
+            "objectPath": "evidence/derived/mineru-json/sha256/39/47/3947274f218015c9d56093f20b58b3942b902c1ac8cdb2c3ef4f15caa2f9fd1f.json",
+            "byteSize": 40973,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "BDP810W:page:1:e5bcba9a898c5998cb65fc3321319457edd9e9e2e5c01cd03a528d323810ade5"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "BDP810W:page:2:bf73f066a1b125ad7ab4796765a776eb6634fccf0eea17d22ba2125216e6958b"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "BDP810W:document:repeated-page-header"
+            },
+            {
+              "type": "official_product_page_model",
+              "value": "BDP810W:e9d1c2968b22ffd8cd7aaaf2b57278803567a48a86185e71796a6220fb468128:https://www.beko.com/au-en/home-appliances/tumble-dryer/tumble-dryer-heat-pump-8-kg-bdp810w"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.6",
+            "verifiedAt": "2026-07-16T23:19:43.261Z",
+            "bindingSha256": "11c0720e713155efc469822137dbe2037d1c707705576fdfe21781be5540bead"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 597,
+            "heightMm": {
+              "minimumMm": 846,
+              "maximumMm": 846
+            },
+            "depthMm": 589
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188231280.pdf",
+            "contentSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+            "receiptBindingSha256": "11c0720e713155efc469822137dbe2037d1c707705576fdfe21781be5540bead",
+            "page": 1,
+            "fragmentSha256": "e130cea7f1790059a81e0b30e3b0ce6a4dc148af77252602d3fbbfde156310e8"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188231280.pdf",
+            "contentSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+            "receiptBindingSha256": "11c0720e713155efc469822137dbe2037d1c707705576fdfe21781be5540bead",
+            "page": 1,
+            "fragmentSha256": "e130cea7f1790059a81e0b30e3b0ce6a4dc148af77252602d3fbbfde156310e8"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7188231280.pdf",
+            "contentSha256": "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6",
+            "receiptBindingSha256": "11c0720e713155efc469822137dbe2037d1c707705576fdfe21781be5540bead",
+            "page": 1,
+            "fragmentSha256": "e130cea7f1790059a81e0b30e3b0ce6a4dc148af77252602d3fbbfde156310e8"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "bfef66f009e1bbb2dcec74172f749be9e99b336dde7d1a7c922785a26e1cdcc6"
         ]
       },
       "reconciliation": {
@@ -83786,6 +84272,20 @@
       "queueSha256": "80b69dcef61efd8d9b1024c2a239647401e19aece58d29731c48d6212cd83505",
       "resultsSha256": "5f7a34d9660a0ec868a80070d1ee87233aff2a40ef17548ef05991b2d9993d97",
       "auditSha256": "cfec774014b9a697fe0e6002c3749a90690b9573a58b1873ced1b3870d1880e3"
+    },
+    {
+      "batchId": "historical-recovery-37d1b183b2b85159e6f4cf8f-slice-f8c967f9ea69",
+      "batchSha256": "43034ea6bd1b1accde1248a46223e3ba0267c0474cb52ee6eae9fb4e0117009a",
+      "queueSha256": "31d73636b6cca5d111ea6bc2ed2f6bfdbd3a3f994067483f62b2282d20ed3ee3",
+      "resultsSha256": "313bc837150cfe6c4dfe49ff01eab8c21c135e1204faabcfa6035b3f1596ec2c",
+      "auditSha256": "d390632ecaef34cdf0b91fff4dc9afe3c498181afd4e86ae02bacdf121ab9560"
+    },
+    {
+      "batchId": "historical-recovery-3af2ed394150fdb40ffa0e32-slice-4988d44f6353",
+      "batchSha256": "f41fe4f1b981f08e2845b93451305c5548f89484a932ea6b7058575a642140e9",
+      "queueSha256": "9c44e83d627d542f4763b986f0c04819c34fec819b7ebad73335adab22cd17bd",
+      "resultsSha256": "8a550cd101c5db3fe3534608ef2eb1788e0b6ea2b3d427a16ab062038e997449",
+      "auditSha256": "693d79696efef4909de775b06f4c8fd3a837c2d57d27f031bf7830d1fc2635ca"
     },
     {
       "batchId": "historical-recovery-3cc0c9d39e8a118ae157ff06-slice-ff059305b872",
