@@ -1,24 +1,24 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T09:42:07.285Z",
-  "sourceAcquisitionQueueSha256": "c268a318b81dbbf732bcc90fab6f94381535570d80a686de0dc78e5cd7dec6db",
+  "generatedAt": "2026-07-16T09:50:35.142Z",
+  "sourceAcquisitionQueueSha256": "36970c969fa39d338ab5ea990fc13573fde82885cda5344d64bc91a2c78bf591",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7825,
+    "acquisitionRecords": 7823,
     "fetchJobs": 1,
-    "targets": 7742,
-    "resolverOnlyTargets": 7741,
+    "targets": 7740,
+    "resolverOnlyTargets": 7739,
     "candidateEdges": 1,
-    "uniqueReferences": 7742,
+    "uniqueReferences": 7740,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1168,
+      "CURRENT_RETAIL": 1166,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
@@ -26,7 +26,7 @@
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 187,
       "P3_HISTORICAL_CONFIRMATION": 4583,
-      "P4_CONFLICT_RESOLUTION": 68
+      "P4_CONFLICT_RESOLUTION": 66
     },
     "excluded": {
       "RESEARCH_REQUIRED": 83
@@ -250204,80 +250204,6 @@
       ],
       "sourceDocumentIds": [],
       "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_c9d7b904f20ab7a377325888",
-      "referenceId": "fa_ref_86e4464bb89935d2003a0a20",
-      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60un4b2",
-      "canonicalProductId": "fa_prod_c62a8b8554a105ced6e13213",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60UN4B2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "QUARANTINED",
-      "priorityClass": "P4_CONFLICT_RESOLUTION",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_f4b2cab4bad8524fb30b8945",
-        "legacy:data/pdf-evidence-raw/DW60UN4B2.json",
-        "source:doc_f4b2cab4bad8524fb30b8945"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_f4b2cab4bad8524fb30b8945",
-          "dimensionsMm": {
-            "width": 597,
-            "height": 820,
-            "depth": 574
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_47c7effb30ca1c3f6ce687ae",
-      "referenceId": "fa_ref_c8140287c8195005e28fcfec",
-      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60un4x2",
-      "canonicalProductId": "fa_prod_b3c9d103311bb7020e486669",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60UN4X2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "QUARANTINED",
-      "priorityClass": "P4_CONFLICT_RESOLUTION",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a8d3c83dec6d0e821604dee7",
-        "legacy:data/pdf-evidence-raw/DW60UN4X2.json",
-        "source:doc_a8d3c83dec6d0e821604dee7"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a8d3c83dec6d0e821604dee7",
-          "dimensionsMm": {
-            "width": 597,
-            "height": 820,
-            "depth": 574
-          }
-        }
-      ],
       "registryDimensionHints": [],
       "publicationEligible": false,
       "candidateJobIds": [],

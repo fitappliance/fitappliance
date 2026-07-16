@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T09:40:54.270Z",
+  "generatedAt": "2026-07-16T09:49:59.571Z",
   "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
   "entries": [
     {
@@ -16853,6 +16853,255 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_47c7effb30ca1c3f6ce687ae",
+      "referenceId": "fa_ref_c8140287c8195005e28fcfec",
+      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60un4x2",
+      "canonicalProductId": "fa_prod_b3c9d103311bb7020e486669",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UN4X2",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-63ce277829830eafa5026e34-slice-4864c193e37f",
+      "auditSha256": "87941f64e345b832dbb72983b28182f425f5993cf464cc3052dacc7df3e8a3b7",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9fc2fcbb/QRG/AU/QRG-AU-82434.pdf",
+          "finalUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9fc2fcbb/QRG/AU/QRG-AU-82434.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T09:48:18.359Z",
+          "contentSha256": "1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b",
+          "objectPath": "evidence/web/sha256/1d/7a/1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 627910,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Fisher & Paykel",
+            "model": "DW60UN4X2",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 597
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9",
+              "bbox": [
+                354,
+                141,
+                634,
+                225
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 820,
+                "maxMm": 880
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9",
+              "bbox": [
+                354,
+                141,
+                634,
+                225
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 574
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9",
+              "bbox": [
+                354,
+                141,
+                634,
+                225
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b",
+            "contentSha256": "df53b28b1766462bd0b0aea451298980f6a5a0e47fb9cffef128a0c7169bb8f9",
+            "objectPath": "evidence/derived/mineru-json/sha256/df/53/df53b28b1766462bd0b0aea451298980f6a5a0e47fb9cffef128a0c7169bb8f9.json",
+            "byteSize": 17328,
+            "pageCount": 3,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              3
+            ],
+            "sourcePageCount": 3,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "557ec3c32b992c1907b2e1ca7658c93535d1015c9c37797af07bafa86008b18c",
+              "objectPath": "evidence/derived/mineru-json/sha256/55/7e/557ec3c32b992c1907b2e1ca7658c93535d1015c9c37797af07bafa86008b18c.json",
+              "pages": [
+                3
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "DW60UN4X2:page:1:bd52430a15a865be98a161ed31992d19e3ba009bdd1fbb99bc34de99206e7d0e"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "DW60UN4X2:page:2:787b9be0010f62048c84614fe0cd0e8cbab2e537238673c6412947c90221e9ba"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "DW60UN4X2:page:3:0915f35f66465858dfe56937ac0fc88f2c1e4dcd0fb655d19faaa74b796b3019"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "DW60UN4X2:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "DW60UN4X2:page:3:46e72ce227e8394ec15dfd2a1c7b6c15e742897fc5eb6061baac325a5edbc192"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T09:48:18.359Z",
+            "bindingSha256": "98d5981b7b3305ba76a93e927ce716380ed6b02979316d8a79241636f606ce9d"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 597,
+            "heightMm": {
+              "minimumMm": 820,
+              "maximumMm": 880
+            },
+            "depthMm": 574
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9fc2fcbb/QRG/AU/QRG-AU-82434.pdf",
+            "contentSha256": "1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b",
+            "receiptBindingSha256": "98d5981b7b3305ba76a93e927ce716380ed6b02979316d8a79241636f606ce9d",
+            "page": 1,
+            "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9fc2fcbb/QRG/AU/QRG-AU-82434.pdf",
+            "contentSha256": "1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b",
+            "receiptBindingSha256": "98d5981b7b3305ba76a93e927ce716380ed6b02979316d8a79241636f606ce9d",
+            "page": 1,
+            "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9fc2fcbb/QRG/AU/QRG-AU-82434.pdf",
+            "contentSha256": "1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b",
+            "receiptBindingSha256": "98d5981b7b3305ba76a93e927ce716380ed6b02979316d8a79241636f606ce9d",
+            "page": 1,
+            "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b"
         ]
       },
       "reconciliation": {
@@ -50517,6 +50766,255 @@
       }
     },
     {
+      "targetId": "recovery_target_c9d7b904f20ab7a377325888",
+      "referenceId": "fa_ref_86e4464bb89935d2003a0a20",
+      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60un4b2",
+      "canonicalProductId": "fa_prod_c62a8b8554a105ced6e13213",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UN4B2",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-63ce277829830eafa5026e34-slice-4864c193e37f",
+      "auditSha256": "87941f64e345b832dbb72983b28182f425f5993cf464cc3052dacc7df3e8a3b7",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwbe048c9a/QRG/AU/QRG-AU-82435.pdf",
+          "finalUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwbe048c9a/QRG/AU/QRG-AU-82435.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-16T09:48:55.816Z",
+          "contentSha256": "6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7",
+          "objectPath": "evidence/web/sha256/6d/a2/6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 625894,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Fisher & Paykel",
+            "model": "DW60UN4B2",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 597
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9",
+              "bbox": [
+                354,
+                141,
+                634,
+                225
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 820,
+                "maxMm": 880
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9",
+              "bbox": [
+                354,
+                141,
+                634,
+                225
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 574
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9",
+              "bbox": [
+                354,
+                141,
+                634,
+                225
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7",
+            "contentSha256": "b84fbe926f9ea9990f585355737e93b0623d146476f7fa118a96afa030192f02",
+            "objectPath": "evidence/derived/mineru-json/sha256/b8/4f/b84fbe926f9ea9990f585355737e93b0623d146476f7fa118a96afa030192f02.json",
+            "byteSize": 17249,
+            "pageCount": 3,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              3
+            ],
+            "sourcePageCount": 3,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "a1c54cd4086d183ad8ac41179a665c8460c3e6c46f5f897bd1ac7a7e4c4a1489",
+              "objectPath": "evidence/derived/mineru-json/sha256/a1/c5/a1c54cd4086d183ad8ac41179a665c8460c3e6c46f5f897bd1ac7a7e4c4a1489.json",
+              "pages": [
+                3
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "DW60UN4B2:page:1:e4e5054460260e809fea4a11629a4558ffec26412b76520911c376967011594b"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "DW60UN4B2:page:2:a2a6c8a42b1eb74f5040d4553347ba0be33542389feee3cdb3c9c1a279c42db0"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "DW60UN4B2:page:3:26d56c1c4630861c576635cd7c2fad9fc6a4fa4c84511f9109d87a58ecab95b1"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "DW60UN4B2:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "DW60UN4B2:page:3:ee5f864e661fcee4e5868c5ff30a28a44d8e93ebbb362e65363933d1700434f8"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-16T09:48:55.816Z",
+            "bindingSha256": "7c3488ce4d889d15cbfc67ff7c5a6299059642b4ef073b7c6e9bdf6337e4c16a"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 597,
+            "heightMm": {
+              "minimumMm": 820,
+              "maximumMm": 880
+            },
+            "depthMm": 574
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwbe048c9a/QRG/AU/QRG-AU-82435.pdf",
+            "contentSha256": "6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7",
+            "receiptBindingSha256": "7c3488ce4d889d15cbfc67ff7c5a6299059642b4ef073b7c6e9bdf6337e4c16a",
+            "page": 1,
+            "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwbe048c9a/QRG/AU/QRG-AU-82435.pdf",
+            "contentSha256": "6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7",
+            "receiptBindingSha256": "7c3488ce4d889d15cbfc67ff7c5a6299059642b4ef073b7c6e9bdf6337e4c16a",
+            "page": 1,
+            "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwbe048c9a/QRG/AU/QRG-AU-82435.pdf",
+            "contentSha256": "6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7",
+            "receiptBindingSha256": "7c3488ce4d889d15cbfc67ff7c5a6299059642b4ef073b7c6e9bdf6337e4c16a",
+            "page": 1,
+            "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_ca994d4b2d365c5c5393aca6",
       "referenceId": "fa_ref_7f6351cce1bd410e26cccb76",
       "legacyRuntimeId": "ao-62834",
@@ -63013,6 +63511,13 @@
       "queueSha256": "3442caa907d53dafb417c83c2d70e07ca869a2ec382cbbf2f57905a79c3f2224",
       "resultsSha256": "7d5a73dfd65761e711d04c892eba62560edd3a89ddc1abc3f54606d7fc2f49d5",
       "auditSha256": "ab78018857c63cda615b54813addab26edd5380adee16596420314d2c6820c50"
+    },
+    {
+      "batchId": "historical-recovery-63ce277829830eafa5026e34-slice-4864c193e37f",
+      "batchSha256": "4b743657ddd86b0536566788bf70a6de8d76aa5bb50c85f6a9d57f3d3a357a21",
+      "queueSha256": "376dcaea2c9bb5ad76e90085340b0625106b6ecb8f9f5051744d12bf3bb6c932",
+      "resultsSha256": "a144f9588b1133cbb1dce925f98c91d351a5fcaf48e94f360bd5989ae0e6e670",
+      "auditSha256": "87941f64e345b832dbb72983b28182f425f5993cf464cc3052dacc7df3e8a3b7"
     },
     {
       "batchId": "historical-recovery-69664e22e7c2718137946771",

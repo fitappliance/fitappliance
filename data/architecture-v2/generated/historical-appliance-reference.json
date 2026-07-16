@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "4281d2877310d214202b0d7fbe8cd2dd309b3167b3228535056218073f6c535b"
+    "historical-recovery:historical-recovery-cumulative-v1": "be87339d087903ab3cc1d7a3b248d6a1309d2f9d73068d5efce674b570b06105"
   },
   "records": [
     {
@@ -27532,6 +27532,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c9d7b904f20ab7a377325888",
+          "snapshotSha256": "6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -27541,7 +27548,36 @@
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "INTERNAL_CONFLICT",
       "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR",
         "REGISTRY_INTERNAL_DIMENSION_CONFLICT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c9d7b904f20ab7a377325888",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwbe048c9a/QRG/AU/QRG-AU-82435.pdf",
+          "contentSha256": "6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7",
+          "receiptBindingSha256": "7c3488ce4d889d15cbfc67ff7c5a6299059642b4ef073b7c6e9bdf6337e4c16a",
+          "verifiedAt": "2026-07-16T09:48:55.816Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/6d/a2/6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7.pdf"
+        }
       ]
     },
     {
@@ -27616,6 +27652,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_47c7effb30ca1c3f6ce687ae",
+          "snapshotSha256": "1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -27625,7 +27668,36 @@
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "INTERNAL_CONFLICT",
       "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR",
         "REGISTRY_INTERNAL_DIMENSION_CONFLICT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_47c7effb30ca1c3f6ce687ae",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9fc2fcbb/QRG/AU/QRG-AU-82434.pdf",
+          "contentSha256": "1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b",
+          "receiptBindingSha256": "98d5981b7b3305ba76a93e927ce716380ed6b02979316d8a79241636f606ce9d",
+          "verifiedAt": "2026-07-16T09:48:18.359Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "38219716187430aa77841a6aeb27129c9678d5d30355f92ecb6960adfdc542e9"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/1d/7a/1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b.pdf"
+        }
       ]
     },
     {

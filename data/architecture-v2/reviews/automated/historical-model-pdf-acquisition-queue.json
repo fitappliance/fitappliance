@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T09:42:07.285Z",
-  "semanticQueueSha256": "c268a318b81dbbf732bcc90fab6f94381535570d80a686de0dc78e5cd7dec6db",
-  "sourceClassificationSha256": "ce0992fff414f3067dc34cf74d1141b5645d25e906ae5d78a3a36d5676fdf48f",
+  "generatedAt": "2026-07-16T09:50:35.142Z",
+  "semanticQueueSha256": "36970c969fa39d338ab5ea990fc13573fde82885cda5344d64bc91a2c78bf591",
+  "sourceClassificationSha256": "a5f278fb60d0526d3fe7cbf20ce2ac418830bd96cb1a332b5f8c5a8e18bc55ff",
   "records": [
     {
       "schemaVersion": 1,
@@ -2850,68 +2850,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_9344c42e10d2bba566bb1770"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_31e17059082fa37c2f56182c",
-      "referenceId": "fa_ref_86e4464bb89935d2003a0a20",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60UN4B2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_ef8d3798c7ba8e77",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_6327bb3aa96855db9480bbc7"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c9d7b904f20ab7a377325888"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-dishwasher-fisher-paykel-dw60un4b2"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_c62a8b8554a105ced6e13213"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_1b59584909643fc711cf90d5",
-      "referenceId": "fa_ref_c8140287c8195005e28fcfec",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60UN4X2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_ef8d3798c7ba8e77",
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d3d6e04190641db3311d5374"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_47c7effb30ca1c3f6ce687ae"
-      ],
-      "legacyRuntimeIds": [
-        "discovery-dishwasher-fisher-paykel-dw60un4x2"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b3c9d103311bb7020e486669"
       ],
       "offlineReplayOutcome": null
     },
@@ -201335,19 +201273,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_6327bb3aa96855db9480bbc7",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5eea8727/QRG/AU/QRG-AU-82435.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DW60UN4B2.json",
-        "source:doc_f4b2cab4bad8524fb30b8945"
-      ],
-      "referenceIds": [
-        "fa_ref_86e4464bb89935d2003a0a20"
-      ]
-    },
-    {
       "sourceId": "historical_source_6340d2b7de6f8c129080cac7",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/c/1/e/1c1ee5fac76f956965c52f767bdf08cd0a6872b4_Fisher___Paykel_E388LXFD1_389L_Upright_Freezer_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -209921,19 +209846,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_d3d6e04190641db3311d5374",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwecd0d542/QRG/AU/QRG-AU-82434.pdf",
-      "sourceAuthority": "NONE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DW60UN4X2.json",
-        "source:doc_a8d3c83dec6d0e821604dee7"
-      ],
-      "referenceIds": [
-        "fa_ref_c8140287c8195005e28fcfec"
-      ]
-    },
-    {
       "sourceId": "historical_source_d3da95c585b3b8eaf724cad9",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/f/2/6/e/f26e2ab88aa4219cde594bfb10a35bf53194a95e_Esatto_EBF46S_46L_Bar_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -212902,46 +212814,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 270,
+    "COMPLETE_RECEIPT": 272,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7825,
-    "uniqueReferences": 7825,
-    "candidateSources": 1478,
-    "candidateEdges": 1513,
+    "queuedModels": 7823,
+    "uniqueReferences": 7823,
+    "candidateSources": 1476,
+    "candidateEdges": 1511,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1187,
+      "CURRENT_RETAIL": 1185,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1315,
+      "dishwasher": 1313,
       "dryer": 812,
       "fridge": 4233,
       "washing_machine": 1465
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 154,
-      "OFFICIAL_DISCOVERY": 6417,
+      "IDENTITY_RESEARCH": 153,
+      "OFFICIAL_DISCOVERY": 6416,
       "REFERENCE_REDISCOVERY": 1171
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 154,
-      "OFFICIAL_DISCOVERY": 6417,
+      "IDENTITY_CLOSURE": 153,
+      "OFFICIAL_DISCOVERY": 6416,
       "OFFICIAL_REDISCOVERY": 1171
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5160,
+      "DISCOVERY_READY": 5158,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 270,
+      "COMPLETE_RECEIPT": 272,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

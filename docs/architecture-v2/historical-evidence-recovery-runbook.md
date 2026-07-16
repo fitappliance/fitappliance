@@ -389,18 +389,18 @@ cannot issue a public dimension or Fit claim.
 
 Current measured state:
 
-- cumulative bundle: 251 accepted targets and 276 source receipts, all 276
+- cumulative bundle: 253 accepted targets and 278 source receipts, all 278
   replayed from the external evidence store with zero failures;
-- attempt ledger: 132 failure entries, 17 resolution events, 151 source-level
-  acceptances, 76 active same-policy suppressions and 42 transient retries;
+- attempt ledger: 140 failure entries, 17 resolution events, 153 source-level
+  acceptances, 84 active same-policy suppressions and 42 transient retries;
 - historical reference: 8,095 records, 218 `AUTO_FILL` and 88 quarantined;
-- evidence classification: 270 `COMPLETE_RECEIPT`, 6,417
-  `OFFICIAL_DISCOVERY`, 1,171 `REFERENCE_REDISCOVERY`, 154
+- evidence classification: 272 `COMPLETE_RECEIPT`, 6,416
+  `OFFICIAL_DISCOVERY`, 1,171 `REFERENCE_REDISCOVERY`, 153
   `IDENTITY_RESEARCH` and 83 `CONFLICT_QUARANTINE`;
 - dimension corpus: 703 MinerU indexes, 702 valid bindings, 974 observations,
   177 parser profiles and 770 parser replays;
-- next acquisition epoch: 7,825 queued models, of which 270 complete receipts
-  are excluded. The executable view contains 7,742 targets, 7,741 of them
+- next acquisition epoch: 7,823 queued models, of which 272 complete receipts
+  are excluded. The executable view contains 7,740 targets, 7,739 of them
   resolver-only, so future runs must remain explicitly bounded.
 
 Do not use `--allow-all` on a batch containing thousands of resolver-only
@@ -442,3 +442,25 @@ five selected targets and the full online audit replayed 544 cumulative objects
 with zero violations. This route must stay manufacturer-specific and
 test-backed; do not generalize its spelling policy to another brand without a
 new canary and policy epoch.
+
+## 13. Adjustable-height exact-model PDF evidence
+
+The Fisher & Paykel `DW60UN4B2` and `DW60UN4X2` canary accepted two exact
+Australian quick-reference PDFs. MinerU page-one evidence proves width `597`,
+adjustable height `820-880` and depth `574` millimetres for each exact model.
+The full online audit checked both targets and 550 cumulative objects with zero
+repairs or violations; receipt replay then passed all 278 cumulative sources.
+
+These receipts deliberately do not increase historical `AUTO_FILL`. The legacy
+replacement index requires a scalar W/H/D triple and must not flatten an
+adjustable-height range. The public projection may show the range through
+`geometry_v2`, but installation, operation and rear-service fields remain
+unknown, the successful Fit outcome remains `INSUFFICIENT_DATA`, and
+`verifiedFitEligible` remains false.
+
+The manufacturer resolver also found family and multi-model installation
+guides whose filenames contain these models. Current identity attestation
+rejected those guides, so they cannot donate clearance or service claims. Treat
+that as a separate exact-scope research canary: prove the target model's scope
+and field applicability from the stored document before changing identity
+policy. Do not infer installation fields from the accepted QRG dimensions.

@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-16T09:42:07.285Z
+Generated: 2026-07-16T09:50:35.142Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -20,10 +20,10 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 270 |
+| COMPLETE_RECEIPT | 272 |
 | CONFLICT_QUARANTINE | 83 |
-| IDENTITY_RESEARCH | 154 |
-| OFFICIAL_DISCOVERY | 6417 |
+| IDENTITY_RESEARCH | 153 |
+| OFFICIAL_DISCOVERY | 6416 |
 | REFERENCE_REDISCOVERY | 1171 |
 
 ## Observed Brand / Series / PDF Grammar Groups
@@ -109,7 +109,7 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | LG | REFERENCE_REDISCOVERY | 51 |
 | fridge | Electrolux | OFFICIAL_DISCOVERY | 50 |
 | washing_machine | Inalto | OFFICIAL_DISCOVERY | 50 |
-| dishwasher | Fisher & Paykel | OFFICIAL_DISCOVERY | 49 |
+| dishwasher | Fisher & Paykel | OFFICIAL_DISCOVERY | 48 |
 | fridge | Husky | OFFICIAL_DISCOVERY | 47 |
 | washing_machine | Solt | OFFICIAL_DISCOVERY | 47 |
 | dishwasher | Kogan | OFFICIAL_DISCOVERY | 46 |

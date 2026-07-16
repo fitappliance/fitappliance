@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T09:42:35.942Z",
-  "sourceBundleSha256": "4281d2877310d214202b0d7fbe8cd2dd309b3167b3228535056218073f6c535b",
+  "generatedAt": "2026-07-16T09:50:55.321Z",
+  "sourceBundleSha256": "be87339d087903ab3cc1d7a3b248d6a1309d2f9d73068d5efce674b570b06105",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1064,6 +1064,20 @@
       "contentSha256": "b6f88d0328704b13110de75190df87d150a6b991dfa7727799a8d153cbfa3f88",
       "receiptBindingSha256": "f4bacd6e5c0e4679b048c4c31f87119fd626db763bbfd1d3aceeb1d8944131e0",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/19/7c/197c76fb40061f7ca744940b339207528b6c9b253d4388d917968c4fab38eb95.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_47c7effb30ca1c3f6ce687ae",
+      "referenceId": "fa_ref_c8140287c8195005e28fcfec",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UN4X2",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9fc2fcbb/QRG/AU/QRG-AU-82434.pdf",
+      "sourcePdfSha256": "1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b",
+      "contentSha256": "1d7a36222e6978b1835131ac7bba7a0ad684a6f0b43ffeb4885e0ba71a02200b",
+      "receiptBindingSha256": "98d5981b7b3305ba76a93e927ce716380ed6b02979316d8a79241636f606ce9d",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/df/53/df53b28b1766462bd0b0aea451298980f6a5a0e47fb9cffef128a0c7169bb8f9.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3112,6 +3126,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c9d7b904f20ab7a377325888",
+      "referenceId": "fa_ref_86e4464bb89935d2003a0a20",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UN4B2",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwbe048c9a/QRG/AU/QRG-AU-82435.pdf",
+      "sourcePdfSha256": "6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7",
+      "contentSha256": "6da2ecc1786e3becae8ee7adab069096b77325cfc29a9d15642a653ab4059fe7",
+      "receiptBindingSha256": "7c3488ce4d889d15cbfc67ff7c5a6299059642b4ef073b7c6e9bdf6337e4c16a",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/b8/4f/b84fbe926f9ea9990f585355737e93b0623d146476f7fa118a96afa030192f02.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_ca994d4b2d365c5c5393aca6",
       "referenceId": "fa_ref_7f6351cce1bd410e26cccb76",
       "brand": "Bosch",
@@ -3869,11 +3897,11 @@
     }
   ],
   "summary": {
-    "entries": 251,
-    "sources": 276,
-    "passed": 276,
+    "entries": 253,
+    "sources": 278,
+    "passed": 278,
     "failed": 0
   },
-  "checkedObjects": 544,
-  "semanticAuditSha256": "12fe254741cab25802ec97b3c69973d6873ff3e60bab29f8c3acce9b5e1aacbc"
+  "checkedObjects": 550,
+  "semanticAuditSha256": "39dbb4d8e5d72f2a051d95f67256b9bcd85b66009c7fd1572d7059c2d3d7eeb4"
 }

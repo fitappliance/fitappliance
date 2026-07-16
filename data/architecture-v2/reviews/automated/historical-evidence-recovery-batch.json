@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-63ce277829830eafa5026e34",
-  "generatedAt": "2026-07-16T09:42:07.285Z",
+  "batchId": "historical-recovery-0e7c25ce0c75280b02940d96",
+  "generatedAt": "2026-07-16T09:50:35.142Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "376dcaea2c9bb5ad76e90085340b0625106b6ecb8f9f5051744d12bf3bb6c932"
+    "sha256": "da4f4f57ba2bd9ab9ffcbe2c82543da73def107ced6309883cb27f37fa14aef0"
   },
   "policy": {
     "version": "2026-07-16.13",
@@ -236816,70 +236816,6 @@
       }
     },
     {
-      "targetId": "recovery_target_c9d7b904f20ab7a377325888",
-      "referenceId": "fa_ref_86e4464bb89935d2003a0a20",
-      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60un4b2",
-      "canonicalProductId": "fa_prod_c62a8b8554a105ced6e13213",
-      "brand": "Fisher & Paykel",
-      "model": "DW60UN4B2",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_f4b2cab4bad8524fb30b8945",
-            "dimensionsMm": {
-              "width": 597,
-              "height": 820,
-              "depth": 574
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_47c7effb30ca1c3f6ce687ae",
-      "referenceId": "fa_ref_c8140287c8195005e28fcfec",
-      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60un4x2",
-      "canonicalProductId": "fa_prod_b3c9d103311bb7020e486669",
-      "brand": "Fisher & Paykel",
-      "model": "DW60UN4X2",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_a8d3c83dec6d0e821604dee7",
-            "dimensionsMm": {
-              "width": 597,
-              "height": 820,
-              "depth": 574
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_6a493000f0a0c8243e2c9409",
       "referenceId": "fa_ref_4920645753c9226532acd37a",
       "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60unt4b2",
@@ -237824,7 +237760,7 @@
   ],
   "summary": {
     "artifactJobs": 1,
-    "targets": 7742,
+    "targets": 7740,
     "candidateEdges": 1,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
