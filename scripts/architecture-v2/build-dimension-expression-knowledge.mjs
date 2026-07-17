@@ -94,19 +94,6 @@ function addMetadata(map, pdfSha256, value) {
   map.set(pdfSha256, current);
 }
 
-function queueIdentityMaps(queue) {
-  const targetById = new Map(queue.targets.map((target) => [target.targetId, {
-    category: target.category, brand: target.brand, model: target.model,
-  }]));
-  const byUrl = new Map();
-  for (const job of queue.jobs) {
-    const current = byUrl.get(job.sourceUrl) ?? [];
-    current.push(...job.targetIds.map((targetId) => targetById.get(targetId)).filter(Boolean));
-    byUrl.set(job.sourceUrl, uniqueIdentities(current));
-  }
-  return { targetById, byUrl };
-}
-
 function productIdentityMaps(products, historicalRecords) {
   const byProductId = new Map();
   for (const product of products) {
@@ -123,14 +110,13 @@ function productIdentityMaps(products, historicalRecords) {
   return byProductId;
 }
 
-async function trackedObjectMetadata({ evidenceIndex, queueByUrl, productById }) {
+async function trackedObjectMetadata({ evidenceIndex, productById }) {
   const result = new Map();
   for (const document of evidenceIndex.documents ?? []) {
     const identities = [];
     for (const link of document.productLinks ?? []) {
       identities.push(productById.get(link.canonicalProductId), productById.get(link.legacyRuntimeId));
     }
-    for (const sourceUrl of document.sourceUrls ?? []) identities.push(...(queueByUrl.get(sourceUrl) ?? []));
     addMetadata(result, document.sha256, {
       sourceUrls: document.sourceUrls,
       identities: identities.filter(Boolean),
@@ -140,12 +126,12 @@ async function trackedObjectMetadata({ evidenceIndex, queueByUrl, productById })
   return result;
 }
 
-async function recoveryStateMetadata({ storageRoot, queueTargetById }) {
+async function recoveryStateMetadata({ storageRoot }) {
   const result = new Map();
   const states = await walkFiles(join(storageRoot, 'runs/historical-evidence-recovery'), 'state.json');
   for (const statePath of states) {
     const state = await readJson(statePath);
-    const targetById = new Map(queueTargetById);
+    const targetById = new Map();
     for (const [targetId, targetState] of Object.entries(state.targets ?? {})) {
       const identity = targetState?.outcome?.candidateInventory?.identity;
       if (identity?.brand && identity?.model && identity?.category) targetById.set(targetId, identity);
@@ -249,20 +235,25 @@ export async function loadMineruDocuments({ storageRoot, metadata }) {
 export async function main(args = process.argv.slice(2), environment = process.env) {
   const storageRoot = resolve(option(args, '--storage-root') ?? environment.FITAPPLIANCE_STORAGE_ROOT ?? '');
   if (!storageRoot || storageRoot === resolve('')) throw new TypeError('--storage-root or FITAPPLIANCE_STORAGE_ROOT required');
-  const generatedAt = option(args, '--generated-at');
+  const explicitGeneratedAt = option(args, '--generated-at');
+  const useReferenceTimestamp = args.includes('--generated-at-from-reference');
+  if (explicitGeneratedAt && useReferenceTimestamp) {
+    throw new TypeError('choose either --generated-at or --generated-at-from-reference');
+  }
+  const historical = await readJson(join(ROOT, 'data/architecture-v2/generated/historical-appliance-reference.json'));
+  const generatedAt = explicitGeneratedAt ?? (useReferenceTimestamp ? historical.generatedAt : null);
   if (!generatedAt) throw new TypeError('--generated-at is required for deterministic output');
   const outputJson = resolve(option(args, '--output-json') ?? DEFAULT_JSON);
   const outputMarkdown = resolve(option(args, '--output-markdown') ?? DEFAULT_MARKDOWN);
 
-  const historical = await readJson(join(ROOT, 'data/architecture-v2/generated/historical-appliance-reference.json'));
-  const publicCatalog = await readJson(join(ROOT, 'data/architecture-v2/generated/public-catalog-projection.json'));
-  const evidenceIndex = await readJson(join(ROOT, 'data/architecture-v2/generated/evidence-object-index.json'));
-  const queue = await readJson(join(ROOT, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json'));
-  const brandCanon = await readJson(join(ROOT, 'data/brand-canon.json'));
-  const { targetById, byUrl } = queueIdentityMaps(queue);
+  const [publicCatalog, evidenceIndex, brandCanon] = await Promise.all([
+    readJson(join(ROOT, 'data/architecture-v2/generated/public-catalog-projection.json')),
+    readJson(join(ROOT, 'data/architecture-v2/generated/evidence-object-index.json')),
+    readJson(join(ROOT, 'data/brand-canon.json')),
+  ]);
   const productById = productIdentityMaps(publicCatalog.products, historical.records);
-  const tracked = await trackedObjectMetadata({ evidenceIndex, queueByUrl: byUrl, productById });
-  const recovery = await recoveryStateMetadata({ storageRoot, queueTargetById: targetById });
+  const tracked = await trackedObjectMetadata({ evidenceIndex, productById });
+  const recovery = await recoveryStateMetadata({ storageRoot });
   const metadata = mergeMetadata(tracked, recovery);
   const loaded = await loadMineruDocuments({ storageRoot, metadata });
   const knowledge = buildDimensionExpressionKnowledge({

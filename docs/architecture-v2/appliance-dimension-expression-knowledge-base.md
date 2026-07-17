@@ -1,6 +1,6 @@
 # Appliance Dimension Expression Knowledge Base
 
-Generated: 2026-07-16T00:00:00.000Z
+Generated: 2026-07-12T12:40:00.000Z
 
 > This is a non-authoritative research sidecar. Brand, category, series and
 > document-family patterns must not authorise model claims, resolve ambiguous
@@ -13,16 +13,16 @@ Generated: 2026-07-16T00:00:00.000Z
 | Historical records | 8093 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 897 |
-| Valid MinerU documents | 882 |
+| MinerU documents | 901 |
+| Valid MinerU documents | 886 |
 | Invalid or orphaned MinerU documents | 15 |
-| Documents with recognised expressions | 468 |
-| Documents without recognised expressions | 414 |
-| Mapped MinerU documents | 849 |
+| Documents with recognised expressions | 469 |
+| Documents without recognised expressions | 417 |
+| Mapped MinerU documents | 853 |
 | Unmapped MinerU documents | 33 |
-| Dimension-expression observations | 1132 |
-| Reusable PDF grammar profiles | 208 |
-| Research gaps | 994 |
+| Dimension-expression observations | 1133 |
+| Reusable PDF grammar profiles | 210 |
+| Research gaps | 997 |
 
 A marketing-series count is a proven minimum, never an estimate of the
 manufacturer's complete range. `UNKNOWN` is intentional when official text
@@ -49,7 +49,11 @@ node scripts/architecture-v2/build-dimension-expression-knowledge.mjs \
   --generated-at <ISO-8601 timestamp>
 ```
 
-This command is intentionally outside the normal build and publication graph.
+The standalone command remains available for explicit research snapshots.
+`refresh:historical-evidence-recovery` invokes the deterministic
+`build:dimension-expression-knowledge` step after rebuilding the historical
+reference and before classification. The normal `build:architecture-v2` command
+still does not create or advance a historical-recovery epoch.
 
 ## Brand and PDF Family Index
 
@@ -68,7 +72,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | ARTIC | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Artusi | 27 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | AUCMA | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Beko | 51 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
+| Beko | 51 | 4 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
 | Bellini | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Bertazzoni | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Blaupunkt | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -172,7 +176,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Vinopro | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | VOGUE | 24 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Warrior Refrigeration | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Westinghouse | 290 | 66 | 0 | 28 | `MINERU_SAMPLE_OBSERVED` |
+| Westinghouse | 290 | 66 | 0 | 29 | `MINERU_SAMPLE_OBSERVED` |
 | WHIRLPOOL | 25 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | WINTERWULF | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | yokohama | 22 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -445,7 +449,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | `HIERARCHICAL_DEPTH_VARIANTS` | 1 | A Depth parent row followed by explicitly qualified product-depth variants. |
 | `INDIVIDUAL_LABELLED_AXIS` | 225 | One named axis/value pair; combine only through independently proven model scope. |
 | `INDIVIDUALLY_LABELLED_AXES` | 298 | Two or more dimensions expressed as separate named axis/value pairs. |
-| `INLINE_LABELLED_AXES` | 154 | Observed parser research pattern. |
+| `INLINE_LABELLED_AXES` | 155 | Observed parser research pattern. |
 | `INLINE_VALUE_LABELLED_AXIS_SEQUENCE` | 7 | Each value carries its own explicit W, H, or D label and unit. |
 | `LETTERED_EXPLICIT_AXIS_LIST` | 6 | Diagram letters explicitly map to axis names and values. |
 | `MODEL_COLUMN_DIMENSION_MATRIX` | 1 | Models occupy columns and dimension axes occupy rows. |
@@ -459,7 +463,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | `REJECTED_NON_PRODUCT_SCOPE` | 144 |
 | `RESEARCH_DOCUMENT_UNIQUE_SCOPE_REQUIRED` | 1 |
 | `RESEARCH_MODEL_ROW_BINDING_REQUIRED` | 163 |
-| `RESEARCH_MODEL_SCOPE_REQUIRED` | 40 |
+| `RESEARCH_MODEL_SCOPE_REQUIRED` | 41 |
 | `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | 18 |
 | `RESEARCH_UNIT_MISSING` | 52 |
 | `RESEARCH_UNLABELLED_AXIS_ORDER` | 17 |
@@ -578,12 +582,66 @@ Inventory: 4336 models across 116 category-brand groups.
 
 - Raw brand variants: `BEKO`, `Beko`
 - Inventory models: 51
-- Coverage: `NO_MINERU_SAMPLE`; MinerU documents: 0
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 4
 - Proven marketing series: 0; total series count: `UNKNOWN`
-- PDF grammar profiles: 0
-- Complete exact-model parser replays: 0
+- PDF grammar profiles: 1
+- Complete exact-model parser replays: 1
 
-`NO_MINERU_SAMPLE`: no PDF expression may be assumed for this brand.
+#### Document family 186d7fac41a1
+
+- Group type: `document_family`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `BBM450W`, `BBM450X`
+- PDF SHA-256: `186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa`
+- Official/source URLs: <https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf>, <https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### BBM407PX
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `BBM407PX`
+- PDF SHA-256: `f0b6a87c307a226b67c087e7c3b3574dfbe662b51be1fd739a4538f0793662af`
+- Official/source URLs: <https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### BBM450AN
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `BBM450AN`
+- PDF SHA-256: `16fa0c514333357c01a628bc637de7260e07da2f153938fb5180866430f328b0`
+- Official/source URLs: <https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### Beko AU fridge product specification
+
+- Group type: `parser_family`
+- Expression coverage: `PARSER_REPLAY_COMPLETE`
+- Models observed: `BBMB445PX`
+- PDF SHA-256: `b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7`
+- PDF grammar profiles: `beko_au_fridge_product_spec_mixed_section_list_v1`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Grammar variant: Mixed-section value list aligned to complete unpacked and packed labels
+- Detection: An exact-model scoped Beko AU fridge page contains one complete ordered Dimensions & Weights label paragraph and one adjacent mixed-section list with a unique contiguous mm/mm/mm/kg/mm/mm/mm/kg value sequence.
+- Semantic boundary: Only unpackaged height, width and depth including doors are projected. Prefix and suffix values, packaged dimensions, weight, cabinet width and dimension diagrams are excluded.
+- Official/source URLs: <https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | width | width | `product_closed_candidate` | Width 76 cm | p.1, `ac3673c2507b` |
 
 ### Bellini
 
@@ -3959,23 +4017,8 @@ Research gaps:
 - Inventory models: 290
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 66
 - Proven marketing series: 0; total series count: `UNKNOWN`
-- PDF grammar profiles: 28
-- Complete exact-model parser replays: 23
-
-#### Document family a792faf4dd33
-
-- Group type: `document_family`
-- Expression coverage: `PARSER_REPLAY_COMPLETE`
-- Models observed: `WHE6874BA`, `WHE6874SA`
-- PDF SHA-256: `a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a`
-- PDF grammar profiles: `pdf_grammar_100af9c8141cceb2`
-- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse>
-
-| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Total height (mm) 1782 \| Total width (mm) 913 \| Total depth (mm) 803 | p.4, `9f17dff35fa6` |
-| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | none | `product_body` | Cabinet height (mm) 1756 \| Cabinet width (mm) 908 \| Cabinet depth (mm) 625 | p.4, `9f17dff35fa6` |
+- PDF grammar profiles: 29
+- Complete exact-model parser replays: 22
 
 #### Document family b93c83bd4afe
 
@@ -4551,6 +4594,21 @@ Research gaps:
 
 Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 8: Please note: Top gap all 25mm. These dimensions are a guide only. All measurements are in millimetres (mm). For complete installation instructions, refer to ...
+
+#### PDF grammar pdf_grammar_a298258f9abc6e5f
+
+- Group type: `parser_family`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Models observed: `WHE6874BA`
+- PDF SHA-256: `a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a`
+- PDF grammar profiles: `pdf_grammar_a298258f9abc6e5f`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `RESEARCH_MODEL_SCOPE_REQUIRED` | `INDIVIDUALLY_LABELLED_AXES` | `DOCUMENT_IDENTITY_ONLY` | height -> width -> depth | none | `product_closed_candidate` | Total height (mm) 1782 \| Total width (mm) 913 \| Total depth (mm) 803 | p.4, `9f17dff35fa6` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUALLY_LABELLED_AXES` | `DOCUMENT_IDENTITY_ONLY` | height -> width -> depth | none | `product_body` | Cabinet height (mm) 1756 \| Cabinet width (mm) 908 \| Cabinet depth (mm) 625 | p.4, `9f17dff35fa6` |
 
 #### PDF grammar pdf_grammar_aa27ff5cbc948a0a
 

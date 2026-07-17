@@ -10,7 +10,7 @@
 - Historical PDF evidence: 69/69 unique documents have current MinerU structured JSON indexes.
 - Receipt-bound coverage: 21/3,521 products have verified dimensions; zero products are currently eligible for receipt-bound `VERIFIED_FIT`.
 <!-- RETAILER_METRICS_SUMMARY:START -->
-- ✅ Catalog: raw specs catalog: 3,518 products across 4 categories; retailer-verified products: 1,384; verified retailer links: 1,614; live price rows: 688
+- ✅ Catalog: raw specs catalog: 3,516 products across 4 categories; retailer-verified products: 1,382; verified retailer links: 1,612; live price rows: 686
 <!-- RETAILER_METRICS_SUMMARY:END -->
 - Production acceptance: zero evidence/publication violations in the 2026-07-12 release audit.
 - Validation baseline: 286 Architecture V2 tests and 1,590 full tests passed at the latest evidence rollout.

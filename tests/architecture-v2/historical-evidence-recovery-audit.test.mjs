@@ -630,6 +630,48 @@ test('re-promoting an already committed batch is byte-stable and idempotent', as
   assert.deepEqual(replayed, priorBundle);
 });
 
+test('a new run may revisit one batch selection while each run remains idempotent', async () => {
+  const first = acceptedFixture();
+  const firstAudit = await runAudit(first);
+  const priorBundle = promoteHistoricalEvidenceRecovery({
+    batch: first.batch,
+    results: first.results,
+    audit: firstAudit,
+    priorBundle: null,
+    generatedAt: '2026-07-13T00:05:00.000Z',
+  });
+
+  const second = acceptedFixture();
+  second.results.runId = 'audit-run-hisense-parser-epoch-2';
+  second.state.runId = second.results.runId;
+  const secondAudit = await runAudit(second, priorBundle, true);
+  assert.equal(secondAudit.status, 'passed', secondAudit.violations.join('\n'));
+  const cumulative = promoteHistoricalEvidenceRecovery({
+    batch: second.batch,
+    results: second.results,
+    audit: secondAudit,
+    priorBundle,
+    generatedAt: '2026-07-13T01:02:00.000Z',
+  });
+
+  assert.equal(cumulative.entries.length, 1);
+  assert.equal(cumulative.lineage.length, 2);
+  assert.equal(cumulative.lineage.filter((row) => (
+    row.batchSha256 === canonicalJsonSha256(second.batch)
+  )).length, 2);
+  assert.notEqual(cumulative.lineage[0].batchId, cumulative.lineage[1].batchId);
+
+  const replayAudit = await runAudit(second, cumulative, true);
+  const replayed = promoteHistoricalEvidenceRecovery({
+    batch: second.batch,
+    results: second.results,
+    audit: replayAudit,
+    priorBundle: cumulative,
+    generatedAt: '2026-07-13T01:03:00.000Z',
+  });
+  assert.deepEqual(replayed, cumulative);
+});
+
 test('offline bundle audit replays receipt and projection structure without object access', async () => {
   const fixture = acceptedFixture();
   const audit = await runAudit(fixture);

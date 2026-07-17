@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T23:59:11.852Z",
+  "generatedAt": "2026-07-17T00:41:27.426Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "5eedc4e717e0fd1faca0148c0afaa5a8a35245da537728a266ee22aa44f66318",
+  "semanticClassificationSha256": "dd3e4587b23068c5bbdd7704e9a349529fa5f6922f1221b8ef6a5ca04c5e8bdb",
   "summary": {
     "records": 8093,
     "uniqueReferenceIds": 8093,
-    "documentLinks": 4342,
+    "documentLinks": 4343,
     "modelsWithDocumentLinks": 1768,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 363,
+      "COMPLETE_RECEIPT": 364,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1096
+      "REFERENCE_REDISCOVERY": 1095
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 363,
-      "REDISCOVER_OFFICIAL_SOURCE": 1096,
+      "NO_ACTION": 364,
+      "REDISCOVER_OFFICIAL_SOURCE": 1095,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 135
     },
     "bySourceAuthority": {
-      "MIXED": 207,
+      "MIXED": 208,
       "NONE": 6611,
       "OFFICIAL": 162,
-      "REFERENCE": 1113
+      "REFERENCE": 1112
     },
     "byIdentityScope": {
       "AMBIGUOUS": 172,
@@ -47,8 +47,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 86,
-      "ALL_AXIS_SCALAR": 414,
-      "NOT_PARSED": 7499,
+      "ALL_AXIS_SCALAR": 415,
+      "NOT_PARSED": 7498,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 363,
-      "LEGACY_UNBOUND": 1405,
+      "CURRENT_VALID": 364,
+      "LEGACY_UNBOUND": 1404,
       "NONE": 6325
     }
   },
@@ -94,13 +94,13 @@
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2304,
+      "documentLinks": 2305,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 120,
+        "COMPLETE_RECEIPT": 121,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 84,
         "OFFICIAL_DISCOVERY": 3405,
-        "REFERENCE_REDISCOVERY": 679
+        "REFERENCE_REDISCOVERY": 678
       }
     },
     {
@@ -10408,8 +10408,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMI50M05AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 2dc618f4e502",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -10480,7 +10480,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 2dc618f4e502",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMI50M05AU",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -10676,8 +10687,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMI68M25AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 5ab48d9a2642",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -10748,7 +10759,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 5ab48d9a2642",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMI68M25AU",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -10837,6 +10859,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -10844,6 +10867,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -10949,8 +10973,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMP63M05AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 29a33ef7af64",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -11021,7 +11045,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 29a33ef7af64",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family f99d8830fee6",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -11388,6 +11423,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -11395,6 +11431,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -11486,6 +11523,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -11493,6 +11531,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -11584,6 +11623,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -11591,6 +11631,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -11885,8 +11926,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS40E02AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 8250e63e863d",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -11957,7 +11998,13 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8250e63e863d",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -12608,8 +12655,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS50D08AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 563aa92915c3",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -12680,7 +12727,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 563aa92915c3",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMS50D08AU",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -12783,8 +12841,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMS50E38AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family b7b746517406",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -12855,7 +12913,13 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family b7b746517406",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -13899,6 +13963,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -13906,6 +13971,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -13997,6 +14063,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -14004,6 +14071,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -14095,6 +14163,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -14102,6 +14171,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -14193,6 +14263,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -14200,6 +14271,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -14276,6 +14348,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -14283,6 +14356,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -14374,6 +14448,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -14381,6 +14456,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -14566,8 +14642,13 @@
           "grammarProfileIds": []
         },
         {
-          "groupType": "model_specific",
-          "groupName": "SMS88TI04A",
+          "groupType": "document_family",
+          "groupName": "Document family 8e8d196ff904",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family b757f1b2a0f5",
           "grammarProfileIds": []
         },
         {
@@ -14877,8 +14958,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU46KS01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 0169893f1bf9",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -14950,8 +15031,28 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 0169893f1bf9",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMU46KS01A",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d0a7cfc9cb0c3200",
+          "grammarProfileIds": [
+            "pdf_grammar_d0a7cfc9cb0c3200"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d0a7cfc9cb0c3200"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -15168,8 +15269,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU50D05AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 93e21f0e53ae",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -15240,7 +15341,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 93e21f0e53ae",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMU50D05AU",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -15250,8 +15362,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU50E05AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 0169893f1bf9",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -15322,8 +15434,28 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 0169893f1bf9",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMU50E05AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d0a7cfc9cb0c3200",
+          "grammarProfileIds": [
+            "pdf_grammar_d0a7cfc9cb0c3200"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d0a7cfc9cb0c3200"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -15332,8 +15464,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU50E65AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 93e21f0e53ae",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -15404,7 +15536,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 93e21f0e53ae",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family b7b746517406",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -15414,8 +15557,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU50E75AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 0169893f1bf9",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -15488,8 +15631,28 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 0169893f1bf9",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8250e63e863d",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "Bosch Australia dishwasher product specification",
+          "grammarProfileIds": [
+            "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -15498,8 +15661,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU50L05AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 93e21f0e53ae",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -15570,7 +15733,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 93e21f0e53ae",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMU50L05AU",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -15580,8 +15754,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU50M05AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 29a33ef7af64",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -15652,7 +15826,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 29a33ef7af64",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 2dc618f4e502",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -15662,8 +15847,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU50M15AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 29a33ef7af64",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -15734,7 +15919,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 29a33ef7af64",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 2dc618f4e502",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -15744,8 +15940,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU66JS01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 77c243681756",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -15817,8 +16013,33 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 77c243681756",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8e8d196ff904",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMU66JS01A",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d0a7cfc9cb0c3200",
+          "grammarProfileIds": [
+            "pdf_grammar_d0a7cfc9cb0c3200"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d0a7cfc9cb0c3200"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -15827,8 +16048,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU66MS02A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 77c243681756",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -15900,8 +16121,28 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 77c243681756",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMU66MS02A",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d0a7cfc9cb0c3200",
+          "grammarProfileIds": [
+            "pdf_grammar_d0a7cfc9cb0c3200"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d0a7cfc9cb0c3200"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -15910,8 +16151,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU68M25AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 29a33ef7af64",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -15982,7 +16223,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 29a33ef7af64",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 5ab48d9a2642",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -16076,6 +16328,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -16088,6 +16341,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -16184,6 +16438,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -16196,6 +16451,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -16208,8 +16464,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU88TS02A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 29a33ef7af64",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -16280,8 +16536,28 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 29a33ef7af64",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family c183e56dae14",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_ccc9b452cf840127",
+          "grammarProfileIds": [
+            "pdf_grammar_ccc9b452cf840127"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_ccc9b452cf840127"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -16290,8 +16566,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU88TS03A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "SMU88TS03A",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -16362,7 +16638,13 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "SMU88TS03A",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -16372,8 +16654,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMU88TS04A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 29a33ef7af64",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -16444,7 +16726,28 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 29a33ef7af64",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8e8d196ff904",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family b757f1b2a0f5",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMU88TS04A",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -16776,8 +17079,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMV46GX01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 0b8de90c4b1d",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -16849,8 +17152,33 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 0b8de90c4b1d",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8e8d196ff904",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMV46GX01A",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "Bosch Australia dishwasher product specification",
+          "grammarProfileIds": [
+            "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -16958,8 +17286,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMV50D00AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 0b8de90c4b1d",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -17031,8 +17359,28 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 0b8de90c4b1d",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMV50D00AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "Bosch Australia dishwasher product specification",
+          "grammarProfileIds": [
+            "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -17041,8 +17389,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMV63M10AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family f99d8830fee6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -17113,7 +17461,18 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family f99d8830fee6",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMV63M10AU",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -17123,8 +17482,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMV66JX01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 3252d801106c",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -17196,8 +17555,33 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 3252d801106c",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8e8d196ff904",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMV66JX01A",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "Bosch Australia dishwasher product specification",
+          "grammarProfileIds": [
+            "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -17206,8 +17590,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMV66MX01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 3252d801106c",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -17279,8 +17663,33 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 3252d801106c",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 8e8d196ff904",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMV66MX01A",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "Bosch Australia dishwasher product specification",
+          "grammarProfileIds": [
+            "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -17368,6 +17777,7 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
             "pdf_grammar_2cd42a3705740fb2",
             "pdf_grammar_a2b008d9dd159831",
             "pdf_grammar_cf52905eae731e58"
@@ -17380,6 +17790,7 @@
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
         "pdf_grammar_2cd42a3705740fb2",
         "pdf_grammar_a2b008d9dd159831",
         "pdf_grammar_cf52905eae731e58"
@@ -17392,8 +17803,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMV88TX01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "SMV88TX01A",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -17464,7 +17875,13 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "SMV88TX01A",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -17474,8 +17891,8 @@
       "canonicalBrand": "Bosch",
       "model": "SMV88TX02A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family c183e56dae14",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -17547,8 +17964,28 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family c183e56dae14",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SMV88TX02A",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_ccc9b452cf840127",
+          "grammarProfileIds": [
+            "pdf_grammar_ccc9b452cf840127"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_ccc9b452cf840127"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -17557,8 +17994,8 @@
       "canonicalBrand": "Bosch",
       "model": "SPS60M08AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "Bosch Australia dishwasher product specification",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -17630,8 +18067,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "SPS60M08AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "Bosch Australia dishwasher product specification",
+          "grammarProfileIds": [
+            "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "bosch-au-dishwasher-dimensions-section-explicit-axes-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -17640,8 +18092,8 @@
       "canonicalBrand": "Bosch",
       "model": "SPS6IKI01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -17714,8 +18166,29 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
+            "pdf_grammar_2cd42a3705740fb2",
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
+          ]
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SPS6IKI01A",
+          "grammarProfileIds": []
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
+        "pdf_grammar_2cd42a3705740fb2",
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -17724,8 +18197,8 @@
       "canonicalBrand": "Bosch",
       "model": "SPU6IMS01A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -17798,8 +18271,29 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_201d4e5bb8bf90fb",
+            "pdf_grammar_2cd42a3705740fb2",
+            "pdf_grammar_a2b008d9dd159831",
+            "pdf_grammar_cf52905eae731e58"
+          ]
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "SPU6IMS01A",
+          "grammarProfileIds": []
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_201d4e5bb8bf90fb",
+        "pdf_grammar_2cd42a3705740fb2",
+        "pdf_grammar_a2b008d9dd159831",
+        "pdf_grammar_cf52905eae731e58"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -34128,8 +34622,8 @@
       "canonicalBrand": "Haier",
       "model": "HDW15G3W",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_eae9667c949db76d",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -34201,8 +34695,23 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "HDW15G3W",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_eae9667c949db76d",
+          "grammarProfileIds": [
+            "pdf_grammar_eae9667c949db76d"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_eae9667c949db76d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -34211,8 +34720,8 @@
       "canonicalBrand": "Haier",
       "model": "HDW15G3X",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_eae9667c949db76d",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -34284,8 +34793,18 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_eae9667c949db76d",
+          "grammarProfileIds": [
+            "pdf_grammar_eae9667c949db76d"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_eae9667c949db76d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -34621,8 +35140,8 @@
       "canonicalBrand": "Haier",
       "model": "HDW15V2S1",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 076b650c074f",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -34674,7 +35193,13 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 076b650c074f",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -34736,8 +35261,8 @@
       "canonicalBrand": "Haier",
       "model": "HDW15V3S1",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 076b650c074f",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -34789,7 +35314,13 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 076b650c074f",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -34799,8 +35330,8 @@
       "canonicalBrand": "Haier",
       "model": "HDW9TFE3SS",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family b0c0874da582",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -34872,8 +35403,18 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family b0c0874da582",
+          "grammarProfileIds": [
+            "pdf_grammar_d934f7fde1cc2ba6"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d934f7fde1cc2ba6"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -34908,8 +35449,8 @@
       "canonicalBrand": "Haier",
       "model": "HDW9TFE3WH",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family b0c0874da582",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -34981,8 +35522,18 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family b0c0874da582",
+          "grammarProfileIds": [
+            "pdf_grammar_d934f7fde1cc2ba6"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d934f7fde1cc2ba6"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -62285,8 +62836,8 @@
       "canonicalBrand": "Beko",
       "model": "BDP810W",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "Beko AU dryer product specification",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -62358,8 +62909,18 @@
       "rawBrandVariants": [
         "Beko"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "Beko AU dryer product specification",
+          "grammarProfileIds": [
+            "beko_au_dryer_product_spec_parallel_lists_v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "beko_au_dryer_product_spec_parallel_lists_v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -62368,8 +62929,8 @@
       "canonicalBrand": "Beko",
       "model": "BDP83HW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "Beko AU dryer product specification",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -62441,8 +63002,18 @@
       "rawBrandVariants": [
         "Beko"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "Beko AU dryer product specification",
+          "grammarProfileIds": [
+            "beko_au_dryer_product_spec_parallel_lists_v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "beko_au_dryer_product_spec_parallel_lists_v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -63732,12 +64303,14 @@
           "groupName": "Series 4",
           "grammarProfileIds": [
             "pdf_grammar_2d2f6fda7f7538e6",
+            "pdf_grammar_3bb3c56cf204e5c7",
             "pdf_grammar_f3714471e6856327"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_2d2f6fda7f7538e6",
+        "pdf_grammar_3bb3c56cf204e5c7",
         "pdf_grammar_f3714471e6856327"
       ]
     },
@@ -63845,8 +64418,8 @@
       "canonicalBrand": "Bosch",
       "model": "WTH83002AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -63919,8 +64492,30 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 4",
+          "grammarProfileIds": [
+            "pdf_grammar_2d2f6fda7f7538e6",
+            "pdf_grammar_3bb3c56cf204e5c7",
+            "pdf_grammar_f3714471e6856327"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_e7a7b9c24a423996",
+          "grammarProfileIds": [
+            "pdf_grammar_e7a7b9c24a423996"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_2d2f6fda7f7538e6",
+        "pdf_grammar_3bb3c56cf204e5c7",
+        "pdf_grammar_e7a7b9c24a423996",
+        "pdf_grammar_f3714471e6856327"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -64008,12 +64603,14 @@
           "groupName": "Series 4",
           "grammarProfileIds": [
             "pdf_grammar_2d2f6fda7f7538e6",
+            "pdf_grammar_3bb3c56cf204e5c7",
             "pdf_grammar_f3714471e6856327"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_2d2f6fda7f7538e6",
+        "pdf_grammar_3bb3c56cf204e5c7",
         "pdf_grammar_f3714471e6856327"
       ]
     },
@@ -64050,8 +64647,8 @@
       "canonicalBrand": "Bosch",
       "model": "WTW87564AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -64123,8 +64720,26 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_3bb3c56cf204e5c7"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_c2fca9b7010b59f1",
+          "grammarProfileIds": [
+            "pdf_grammar_c2fca9b7010b59f1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_3bb3c56cf204e5c7",
+        "pdf_grammar_c2fca9b7010b59f1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -64319,8 +64934,8 @@
       "canonicalBrand": "Bosch",
       "model": "WTY88701AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_a0c86d20fd05bb23",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -64392,8 +65007,31 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WTY88701AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_a0c86d20fd05bb23",
+          "grammarProfileIds": [
+            "pdf_grammar_a0c86d20fd05bb23"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_d0340de8a29fce6d",
+          "grammarProfileIds": [
+            "pdf_grammar_d0340de8a29fce6d"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_a0c86d20fd05bb23",
+        "pdf_grammar_d0340de8a29fce6d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -89677,8 +90315,8 @@
       "canonicalBrand": "Beko",
       "model": "BBM407PX",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "BBM407PX",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -89730,7 +90368,13 @@
       "rawBrandVariants": [
         "Beko"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "BBM407PX",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -89740,8 +90384,8 @@
       "canonicalBrand": "Beko",
       "model": "BBM450AN",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "BBM450AN",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -89793,7 +90437,13 @@
       "rawBrandVariants": [
         "Beko"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "BBM450AN",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -89803,8 +90453,8 @@
       "canonicalBrand": "Beko",
       "model": "BBM450W",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 186d7fac41a1",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -89856,7 +90506,13 @@
       "rawBrandVariants": [
         "Beko"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 186d7fac41a1",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -89866,8 +90522,8 @@
       "canonicalBrand": "Beko",
       "model": "BBM450X",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 186d7fac41a1",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -89919,7 +90575,13 @@
       "rawBrandVariants": [
         "Beko"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family 186d7fac41a1",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -89992,16 +90654,17 @@
       "canonicalBrand": "Beko",
       "model": "BBMB445PX",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "parser_family",
+      "groupName": "Beko AU fridge product specification",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -90024,6 +90687,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/a8/48/a848d5a5a5437572ae210e954cc7c5d7cf21feefa14e9d8c1964f1da2bf3fd35.json",
+            "evidence/web/sha256/b9/77/b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7.pdf",
+            "receipt:75c714cffaf106a03c253adc717267681c395c05b74a7d3eae65dfa7c32aa4a3"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7"
+        },
+        {
           "documentId": "source:doc_7730350e9ea33405b3339f5b",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/2/3/2/3/232353f1e5d89b03b7aec0577e6f7ef33c4d13f0_BBMB445PX_Beko_Specification_Sheet_2023.pdf",
           "evidenceObjectIds": [
@@ -90039,15 +90721,25 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Beko",
         "BEKO"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "Beko AU fridge product specification",
+          "grammarProfileIds": [
+            "beko_au_fridge_product_spec_mixed_section_list_v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "beko_au_fridge_product_spec_mixed_section_list_v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -92751,14 +93443,18 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_03c1b2409a545411",
             "pdf_grammar_692fec06a586dc45",
-            "pdf_grammar_b782a1b7a0a51ecb"
+            "pdf_grammar_b782a1b7a0a51ecb",
+            "pdf_grammar_cea547fe866bdff9"
           ]
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_03c1b2409a545411",
         "pdf_grammar_692fec06a586dc45",
-        "pdf_grammar_b782a1b7a0a51ecb"
+        "pdf_grammar_b782a1b7a0a51ecb",
+        "pdf_grammar_cea547fe866bdff9"
       ]
     },
     {
@@ -92768,8 +93464,8 @@
       "canonicalBrand": "Bosch",
       "model": "GSN33VI3A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -92842,8 +93538,29 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 4",
+          "grammarProfileIds": [
+            "pdf_grammar_03c1b2409a545411",
+            "pdf_grammar_5b4575fe7b22db8b",
+            "pdf_grammar_b782a1b7a0a51ecb",
+            "pdf_grammar_f8a6f2735d7f6dfb"
+          ]
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "GSN33VI3A",
+          "grammarProfileIds": []
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_03c1b2409a545411",
+        "pdf_grammar_5b4575fe7b22db8b",
+        "pdf_grammar_b782a1b7a0a51ecb",
+        "pdf_grammar_f8a6f2735d7f6dfb"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -93026,14 +93743,16 @@
           "grammarProfileIds": [
             "pdf_grammar_03c1b2409a545411",
             "pdf_grammar_5b4575fe7b22db8b",
-            "pdf_grammar_b782a1b7a0a51ecb"
+            "pdf_grammar_b782a1b7a0a51ecb",
+            "pdf_grammar_f8a6f2735d7f6dfb"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_03c1b2409a545411",
         "pdf_grammar_5b4575fe7b22db8b",
-        "pdf_grammar_b782a1b7a0a51ecb"
+        "pdf_grammar_b782a1b7a0a51ecb",
+        "pdf_grammar_f8a6f2735d7f6dfb"
       ]
     },
     {
@@ -93043,8 +93762,8 @@
       "canonicalBrand": "Bosch",
       "model": "KDN53VL30A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "KDN53VL30A",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -93115,7 +93834,13 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "KDN53VL30A",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -93191,14 +93916,18 @@
           "groupType": "marketing_series",
           "groupName": "Series 6",
           "grammarProfileIds": [
+            "pdf_grammar_03c1b2409a545411",
             "pdf_grammar_692fec06a586dc45",
-            "pdf_grammar_b782a1b7a0a51ecb"
+            "pdf_grammar_b782a1b7a0a51ecb",
+            "pdf_grammar_cea547fe866bdff9"
           ]
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_03c1b2409a545411",
         "pdf_grammar_692fec06a586dc45",
-        "pdf_grammar_b782a1b7a0a51ecb"
+        "pdf_grammar_b782a1b7a0a51ecb",
+        "pdf_grammar_cea547fe866bdff9"
       ]
     },
     {
@@ -93208,8 +93937,8 @@
       "canonicalBrand": "Bosch",
       "model": "KFI96AXEAA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -93282,8 +94011,29 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_03c1b2409a545411",
+            "pdf_grammar_692fec06a586dc45",
+            "pdf_grammar_b782a1b7a0a51ecb",
+            "pdf_grammar_cea547fe866bdff9"
+          ]
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "KFI96AXEAA",
+          "grammarProfileIds": []
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_03c1b2409a545411",
+        "pdf_grammar_692fec06a586dc45",
+        "pdf_grammar_b782a1b7a0a51ecb",
+        "pdf_grammar_cea547fe866bdff9"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -93292,8 +94042,8 @@
       "canonicalBrand": "Bosch",
       "model": "KFN96AXEAA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -93366,8 +94116,29 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_03c1b2409a545411",
+            "pdf_grammar_692fec06a586dc45",
+            "pdf_grammar_b782a1b7a0a51ecb",
+            "pdf_grammar_cea547fe866bdff9"
+          ]
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "KFN96AXEAA",
+          "grammarProfileIds": []
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_03c1b2409a545411",
+        "pdf_grammar_692fec06a586dc45",
+        "pdf_grammar_b782a1b7a0a51ecb",
+        "pdf_grammar_cea547fe866bdff9"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -93457,14 +94228,16 @@
           "grammarProfileIds": [
             "pdf_grammar_03c1b2409a545411",
             "pdf_grammar_5b4575fe7b22db8b",
-            "pdf_grammar_b782a1b7a0a51ecb"
+            "pdf_grammar_b782a1b7a0a51ecb",
+            "pdf_grammar_f8a6f2735d7f6dfb"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_03c1b2409a545411",
         "pdf_grammar_5b4575fe7b22db8b",
-        "pdf_grammar_b782a1b7a0a51ecb"
+        "pdf_grammar_b782a1b7a0a51ecb",
+        "pdf_grammar_f8a6f2735d7f6dfb"
       ]
     },
     {
@@ -93555,14 +94328,16 @@
           "grammarProfileIds": [
             "pdf_grammar_03c1b2409a545411",
             "pdf_grammar_5b4575fe7b22db8b",
-            "pdf_grammar_b782a1b7a0a51ecb"
+            "pdf_grammar_b782a1b7a0a51ecb",
+            "pdf_grammar_f8a6f2735d7f6dfb"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_03c1b2409a545411",
         "pdf_grammar_5b4575fe7b22db8b",
-        "pdf_grammar_b782a1b7a0a51ecb"
+        "pdf_grammar_b782a1b7a0a51ecb",
+        "pdf_grammar_f8a6f2735d7f6dfb"
       ]
     },
     {
@@ -93598,8 +94373,8 @@
       "canonicalBrand": "Bosch",
       "model": "KGN53XI25A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_5b4575fe7b22db8b",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -93671,8 +94446,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "KGN53XI25A",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_5b4575fe7b22db8b",
+          "grammarProfileIds": [
+            "pdf_grammar_5b4575fe7b22db8b"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_5b4575fe7b22db8b"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -93681,8 +94471,8 @@
       "canonicalBrand": "Bosch",
       "model": "KIN34P60AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_f461f096a04c9931",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -93753,8 +94543,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "KIN34P60AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_f461f096a04c9931",
+          "grammarProfileIds": [
+            "pdf_grammar_f461f096a04c9931"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_f461f096a04c9931"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -93763,8 +94568,8 @@
       "canonicalBrand": "Bosch",
       "model": "KIN86AD30A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -93836,8 +94641,29 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_03c1b2409a545411",
+            "pdf_grammar_692fec06a586dc45",
+            "pdf_grammar_b782a1b7a0a51ecb",
+            "pdf_grammar_cea547fe866bdff9"
+          ]
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "KIN86AD30A",
+          "grammarProfileIds": []
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_03c1b2409a545411",
+        "pdf_grammar_692fec06a586dc45",
+        "pdf_grammar_b782a1b7a0a51ecb",
+        "pdf_grammar_cea547fe866bdff9"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -93846,8 +94672,8 @@
       "canonicalBrand": "Bosch",
       "model": "KIR81AD30A",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -93919,8 +94745,29 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_03c1b2409a545411",
+            "pdf_grammar_692fec06a586dc45",
+            "pdf_grammar_b782a1b7a0a51ecb",
+            "pdf_grammar_cea547fe866bdff9"
+          ]
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "KIR81AD30A",
+          "grammarProfileIds": []
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_03c1b2409a545411",
+        "pdf_grammar_692fec06a586dc45",
+        "pdf_grammar_b782a1b7a0a51ecb",
+        "pdf_grammar_cea547fe866bdff9"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -140889,8 +141736,8 @@
       "canonicalBrand": "Haier",
       "model": "HBM340SA1",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "Haier Australia HBM refrigerator technical data",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -140962,8 +141809,18 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "Haier Australia HBM refrigerator technical data",
+          "grammarProfileIds": [
+            "haier-au-hbm-technical-data-family-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "haier-au-hbm-technical-data-family-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -140972,8 +141829,8 @@
       "canonicalBrand": "Haier",
       "model": "HBM340WH1",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "Haier Australia HBM refrigerator technical data",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -141044,8 +141901,18 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "Haier Australia HBM refrigerator technical data",
+          "grammarProfileIds": [
+            "haier-au-hbm-technical-data-family-v1"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "haier-au-hbm-technical-data-family-v1"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -141117,8 +141984,8 @@
       "canonicalBrand": "Haier",
       "model": "HBM450SA1",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "Haier Australia HBM refrigerator technical data",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -141190,8 +142057,26 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "Haier Australia HBM refrigerator technical data",
+          "grammarProfileIds": [
+            "haier-au-hbm-technical-data-family-v1"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_b94a8ec4bd6366a0",
+          "grammarProfileIds": [
+            "pdf_grammar_b94a8ec4bd6366a0"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "haier-au-hbm-technical-data-family-v1",
+        "pdf_grammar_b94a8ec4bd6366a0"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -141200,8 +142085,8 @@
       "canonicalBrand": "Haier",
       "model": "HBM450WH1",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "Haier Australia HBM refrigerator technical data",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -141273,8 +142158,26 @@
       "rawBrandVariants": [
         "Haier"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "Haier Australia HBM refrigerator technical data",
+          "grammarProfileIds": [
+            "haier-au-hbm-technical-data-family-v1"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_718ca7091dba535a",
+          "grammarProfileIds": [
+            "pdf_grammar_718ca7091dba535a"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "haier-au-hbm-technical-data-family-v1",
+        "pdf_grammar_718ca7091dba535a"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -236495,8 +237398,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WHE6874BA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family a792faf4dd33",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "REFERENCE",
       "identityScope": "AMBIGUOUS",
@@ -236594,22 +237497,23 @@
       ],
       "groups": [
         {
-          "groupType": "document_family",
-          "groupName": "Document family a792faf4dd33",
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
           "grammarProfileIds": [
             "pdf_grammar_100af9c8141cceb2"
           ]
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+          "groupName": "PDF grammar pdf_grammar_a298258f9abc6e5f",
           "grammarProfileIds": [
-            "pdf_grammar_100af9c8141cceb2"
+            "pdf_grammar_a298258f9abc6e5f"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_100af9c8141cceb2"
+        "pdf_grammar_100af9c8141cceb2",
+        "pdf_grammar_a298258f9abc6e5f"
       ]
     },
     {
@@ -236619,8 +237523,8 @@
       "canonicalBrand": "Westinghouse",
       "model": "WHE6874SA",
       "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "document_family",
-      "groupName": "Document family a792faf4dd33",
+      "groupType": "unclassified",
+      "groupName": null,
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -236695,15 +237599,7 @@
         "Westinghouse",
         "WESTINGHOUSE"
       ],
-      "groups": [
-        {
-          "groupType": "document_family",
-          "groupName": "Document family a792faf4dd33",
-          "grammarProfileIds": [
-            "pdf_grammar_100af9c8141cceb2"
-          ]
-        }
-      ],
+      "groups": [],
       "grammarProfileIds": [
         "pdf_grammar_100af9c8141cceb2"
       ]
@@ -251304,8 +252200,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAE22466AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "WAE22466AU",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -251357,7 +252253,13 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WAE22466AU",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -251367,8 +252269,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAK24161AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family be50fdc351af",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -251440,8 +252342,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family be50fdc351af",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_4c402fe83b8ed0c6",
+          "grammarProfileIds": [
+            "pdf_grammar_4c402fe83b8ed0c6"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_4c402fe83b8ed0c6"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -251450,8 +252367,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAK24162AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family be50fdc351af",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -251503,8 +252420,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "document_family",
+          "groupName": "Document family be50fdc351af",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_4c402fe83b8ed0c6",
+          "grammarProfileIds": [
+            "pdf_grammar_4c402fe83b8ed0c6"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_4c402fe83b8ed0c6"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -251513,8 +252445,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAN24121AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -251586,8 +252518,30 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 4",
+          "grammarProfileIds": [
+            "pdf_grammar_7278fc1b8aebe013",
+            "pdf_grammar_861c41113285bfa0",
+            "pdf_grammar_a97a7d1a7f1b7e1d"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_4ec51444c2032a05",
+          "grammarProfileIds": [
+            "pdf_grammar_4ec51444c2032a05"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_4ec51444c2032a05",
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_861c41113285bfa0",
+        "pdf_grammar_a97a7d1a7f1b7e1d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -251745,12 +252699,16 @@
           "groupType": "marketing_series",
           "groupName": "Series 4",
           "grammarProfileIds": [
-            "pdf_grammar_7278fc1b8aebe013"
+            "pdf_grammar_7278fc1b8aebe013",
+            "pdf_grammar_861c41113285bfa0",
+            "pdf_grammar_a97a7d1a7f1b7e1d"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_7278fc1b8aebe013"
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_861c41113285bfa0",
+        "pdf_grammar_a97a7d1a7f1b7e1d"
       ]
     },
     {
@@ -251760,8 +252718,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAN28288AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 4",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -251834,8 +252792,30 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 4",
+          "grammarProfileIds": [
+            "pdf_grammar_7278fc1b8aebe013",
+            "pdf_grammar_861c41113285bfa0",
+            "pdf_grammar_a97a7d1a7f1b7e1d"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_839d629ed03dd325",
+          "grammarProfileIds": [
+            "pdf_grammar_839d629ed03dd325"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_839d629ed03dd325",
+        "pdf_grammar_861c41113285bfa0",
+        "pdf_grammar_a97a7d1a7f1b7e1d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -251844,8 +252824,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAP28380AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "model_specific",
+      "groupName": "WAP28380AU",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -251897,7 +252877,13 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WAP28380AU",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {
@@ -252000,8 +252986,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAT24440AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4c402fe83b8ed0c6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -252073,8 +253059,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WAT24440AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_4c402fe83b8ed0c6",
+          "grammarProfileIds": [
+            "pdf_grammar_4c402fe83b8ed0c6"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_4c402fe83b8ed0c6"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -252083,8 +253084,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAW28460AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -252156,8 +253157,29 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_213ac6c7578293ed",
+            "pdf_grammar_7278fc1b8aebe013",
+            "pdf_grammar_747b0cd17567cfe1",
+            "pdf_grammar_a97a7d1a7f1b7e1d"
+          ]
+        },
+        {
+          "groupType": "model_specific",
+          "groupName": "WAW28460AU",
+          "grammarProfileIds": []
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_213ac6c7578293ed",
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_747b0cd17567cfe1",
+        "pdf_grammar_a97a7d1a7f1b7e1d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -252246,13 +253268,17 @@
           "groupName": "Series 8",
           "grammarProfileIds": [
             "pdf_grammar_213ac6c7578293ed",
-            "pdf_grammar_7278fc1b8aebe013"
+            "pdf_grammar_7278fc1b8aebe013",
+            "pdf_grammar_747b0cd17567cfe1",
+            "pdf_grammar_a97a7d1a7f1b7e1d"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_213ac6c7578293ed",
-        "pdf_grammar_7278fc1b8aebe013"
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_747b0cd17567cfe1",
+        "pdf_grammar_a97a7d1a7f1b7e1d"
       ]
     },
     {
@@ -252262,8 +253288,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAW28640AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4d28028d0f2ca563",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -252316,8 +253342,23 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WAW28640AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_4d28028d0f2ca563",
+          "grammarProfileIds": [
+            "pdf_grammar_4d28028d0f2ca563"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_4d28028d0f2ca563"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -252326,8 +253367,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAW32640AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_f2f9631eeb5990cc",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -252399,8 +253440,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WAW32640AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_f2f9631eeb5990cc",
+          "grammarProfileIds": [
+            "pdf_grammar_f2f9631eeb5990cc"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_f2f9631eeb5990cc"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -252435,8 +253491,8 @@
       "canonicalBrand": "Bosch",
       "model": "WAY32891AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4d28028d0f2ca563",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -252508,8 +253564,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WAY32891AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_4d28028d0f2ca563",
+          "grammarProfileIds": [
+            "pdf_grammar_4d28028d0f2ca563"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_4d28028d0f2ca563"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -252518,8 +253589,8 @@
       "canonicalBrand": "Bosch",
       "model": "WGG24401AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
@@ -252592,8 +253663,32 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_213ac6c7578293ed",
+            "pdf_grammar_7278fc1b8aebe013",
+            "pdf_grammar_747b0cd17567cfe1",
+            "pdf_grammar_a97a7d1a7f1b7e1d"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_20109d03a601ccc4",
+          "grammarProfileIds": [
+            "pdf_grammar_20109d03a601ccc4"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_20109d03a601ccc4",
+        "pdf_grammar_213ac6c7578293ed",
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_747b0cd17567cfe1",
+        "pdf_grammar_a97a7d1a7f1b7e1d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -252669,13 +253764,17 @@
           "groupName": "Series 8",
           "grammarProfileIds": [
             "pdf_grammar_213ac6c7578293ed",
-            "pdf_grammar_7278fc1b8aebe013"
+            "pdf_grammar_7278fc1b8aebe013",
+            "pdf_grammar_747b0cd17567cfe1",
+            "pdf_grammar_a97a7d1a7f1b7e1d"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_213ac6c7578293ed",
-        "pdf_grammar_7278fc1b8aebe013"
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_747b0cd17567cfe1",
+        "pdf_grammar_a97a7d1a7f1b7e1d"
       ]
     },
     {
@@ -252685,8 +253784,8 @@
       "canonicalBrand": "Bosch",
       "model": "WGG24403AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -252759,8 +253858,32 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_213ac6c7578293ed",
+            "pdf_grammar_7278fc1b8aebe013",
+            "pdf_grammar_747b0cd17567cfe1",
+            "pdf_grammar_a97a7d1a7f1b7e1d"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_839d629ed03dd325",
+          "grammarProfileIds": [
+            "pdf_grammar_839d629ed03dd325"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_213ac6c7578293ed",
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_747b0cd17567cfe1",
+        "pdf_grammar_839d629ed03dd325",
+        "pdf_grammar_a97a7d1a7f1b7e1d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -252769,8 +253892,8 @@
       "canonicalBrand": "Bosch",
       "model": "WGG24409AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -252843,8 +253966,26 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_7278fc1b8aebe013"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_875fba11738c76e3",
+          "grammarProfileIds": [
+            "pdf_grammar_875fba11738c76e3"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_875fba11738c76e3"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -252853,8 +253994,8 @@
       "canonicalBrand": "Bosch",
       "model": "WGG2441RAU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -252927,8 +254068,26 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_7278fc1b8aebe013"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_148e22e14343e1a5",
+          "grammarProfileIds": [
+            "pdf_grammar_148e22e14343e1a5"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_148e22e14343e1a5",
+        "pdf_grammar_7278fc1b8aebe013"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -253031,8 +254190,8 @@
       "canonicalBrand": "Bosch",
       "model": "WGG244A0AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -253105,8 +254264,32 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_213ac6c7578293ed",
+            "pdf_grammar_7278fc1b8aebe013",
+            "pdf_grammar_747b0cd17567cfe1",
+            "pdf_grammar_a97a7d1a7f1b7e1d"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_20109d03a601ccc4",
+          "grammarProfileIds": [
+            "pdf_grammar_20109d03a601ccc4"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_20109d03a601ccc4",
+        "pdf_grammar_213ac6c7578293ed",
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_747b0cd17567cfe1",
+        "pdf_grammar_a97a7d1a7f1b7e1d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -253115,8 +254298,8 @@
       "canonicalBrand": "Bosch",
       "model": "WGG244A1AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 8",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -253189,8 +254372,32 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 8",
+          "grammarProfileIds": [
+            "pdf_grammar_213ac6c7578293ed",
+            "pdf_grammar_7278fc1b8aebe013",
+            "pdf_grammar_747b0cd17567cfe1",
+            "pdf_grammar_a97a7d1a7f1b7e1d"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_2902ae0cb7b98342",
+          "grammarProfileIds": [
+            "pdf_grammar_2902ae0cb7b98342"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_213ac6c7578293ed",
+        "pdf_grammar_2902ae0cb7b98342",
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_747b0cd17567cfe1",
+        "pdf_grammar_a97a7d1a7f1b7e1d"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -253199,8 +254406,8 @@
       "canonicalBrand": "Bosch",
       "model": "WGG244ARAU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "marketing_series",
+      "groupName": "Series 6",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -253273,8 +254480,26 @@
         "Bosch",
         "BOSCH"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "marketing_series",
+          "groupName": "Series 6",
+          "grammarProfileIds": [
+            "pdf_grammar_7278fc1b8aebe013"
+          ]
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_839d629ed03dd325",
+          "grammarProfileIds": [
+            "pdf_grammar_839d629ed03dd325"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_839d629ed03dd325"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -253458,8 +254683,8 @@
       "canonicalBrand": "Bosch",
       "model": "WVG28420AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_7f2ae0175285e037",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -253511,8 +254736,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WVG28420AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_7f2ae0175285e037",
+          "grammarProfileIds": [
+            "pdf_grammar_7f2ae0175285e037"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_7f2ae0175285e037"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -253521,8 +254761,8 @@
       "canonicalBrand": "Bosch",
       "model": "WVH28441AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_004134185922d8a5",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -253574,8 +254814,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WVH28441AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_004134185922d8a5",
+          "grammarProfileIds": [
+            "pdf_grammar_004134185922d8a5"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_004134185922d8a5"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -253584,8 +254839,8 @@
       "canonicalBrand": "Bosch",
       "model": "WVH28490AU",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_454fce858734044e",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -253637,8 +254892,23 @@
       "rawBrandVariants": [
         "Bosch"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WVH28490AU",
+          "grammarProfileIds": []
+        },
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_454fce858734044e",
+          "grammarProfileIds": [
+            "pdf_grammar_454fce858734044e"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_454fce858734044e"
+      ]
     },
     {
       "schemaVersion": 1,

@@ -617,6 +617,24 @@ export function promoteHistoricalEvidenceRecovery({
   }
   promotionInputBindings(batch, results, audit, priorBundle);
   const auditSha256 = canonicalJsonSha256(audit);
+  const batchSha256 = canonicalJsonSha256(batch);
+  const resultsSha256 = canonicalJsonSha256(results);
+  const priorLineageRows = priorBundle?.lineage ?? [];
+  const matchingLineage = priorLineageRows.filter((row) => (
+    row.batchSha256 === batchSha256
+      && row.queueSha256 === batch.queue.sha256
+      && row.resultsSha256 === resultsSha256
+  ));
+  if (matchingLineage.length > 1) {
+    throw new Error(`ambiguous lineage for run ${results.runId}`);
+  }
+  let lineageId = matchingLineage[0]?.batchId ?? batch.batchId;
+  if (!matchingLineage.length && priorLineageRows.some((row) => row.batchId === lineageId)) {
+    lineageId = `${batch.batchId}--results-${resultsSha256.slice(0, 16)}`;
+    if (priorLineageRows.some((row) => row.batchId === lineageId)) {
+      throw new Error(`conflicting derived lineage for run ${results.runId}`);
+    }
+  }
   const targets = new Map(batch.targets.map((target) => [target.targetId, target]));
   const entries = new Map((priorBundle?.entries ?? []).map((entry) => [entry.targetId, structuredClone(entry)]));
   const identities = new Map([...entries.values()].map((entry) => [identityKey(entry), entry.targetId]));
@@ -635,7 +653,7 @@ export function promoteHistoricalEvidenceRecovery({
       category: target.category,
       lifecycleState: target.lifecycleState,
       acceptanceStatus: outcome.status,
-      sourceBatchId: batch.batchId,
+      sourceBatchId: lineageId,
       auditSha256,
       sources: structuredClone(outcome.sources),
       geometryProjection: structuredClone(outcome.geometryProjection),
@@ -661,33 +679,23 @@ export function promoteHistoricalEvidenceRecovery({
 
   const lineage = new Map((priorBundle?.lineage ?? []).map((row) => [row.batchId, structuredClone(row)]));
   const nextLineage = {
-    batchId: batch.batchId,
-    batchSha256: canonicalJsonSha256(batch),
+    batchId: lineageId,
+    batchSha256,
     queueSha256: batch.queue.sha256,
-    resultsSha256: canonicalJsonSha256(results),
+    resultsSha256,
     auditSha256,
   };
-  const existingLineage = lineage.get(batch.batchId);
-  if (existingLineage) {
-    const sameRunInputs = existingLineage.batchSha256 === nextLineage.batchSha256
-      && existingLineage.queueSha256 === nextLineage.queueSha256
-      && existingLineage.resultsSha256 === nextLineage.resultsSha256;
-    if (!sameRunInputs) throw new Error(`conflicting lineage for batch ${batch.batchId}`);
-
-    const expectedTargetIds = results.outcomes
-      .filter((outcome) => ['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status))
-      .map((outcome) => outcome.targetId)
-      .sort();
-    const committedTargetIds = priorBundle.entries
-      .filter((entry) => entry.sourceBatchId === batch.batchId)
-      .map((entry) => entry.targetId)
-      .sort();
-    if (!same(expectedTargetIds, committedTargetIds)) {
-      throw new Error(`incomplete prior promotion for batch ${batch.batchId}`);
+  if (matchingLineage.length) {
+    const prospectiveEntries = [...entries.values()]
+      .sort((left, right) => left.targetId.localeCompare(right.targetId));
+    const committedEntries = structuredClone(priorBundle.entries)
+      .sort((left, right) => left.targetId.localeCompare(right.targetId));
+    if (!same(prospectiveEntries, committedEntries)) {
+      throw new Error(`incomplete prior promotion for run ${results.runId}`);
     }
     return structuredClone(priorBundle);
   }
-  lineage.set(batch.batchId, nextLineage);
+  lineage.set(lineageId, nextLineage);
   return validateHistoricalEvidenceRecoveryAcceptanceBundle({
     schemaVersion: 1,
     bundleId: priorBundle?.bundleId ?? 'historical-recovery-cumulative-v1',

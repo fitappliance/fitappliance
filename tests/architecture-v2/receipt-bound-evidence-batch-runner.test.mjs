@@ -508,6 +508,137 @@ test('required PDF identity failure falls back to an exact official product page
   );
 });
 
+test('required product-page claim failure falls back to an exact official document', async () => {
+  const targetRecord = target('target-a', 'EX100', []);
+  targetRecord.primaryJobId = null;
+  const attempted = [];
+  const result = await runReceiptBoundEvidenceBatch(
+    batch({ jobs: [], targets: [targetRecord] }),
+    dependencies({
+      candidateResolversForTarget: () => [{
+        resolverId: 'official-model-resources',
+        version: '1',
+        scope: 'exact_model_product_page_and_documents',
+        required: true,
+        async resolve() {
+          return {
+            resolverId: 'official-model-resources', version: '1',
+            scope: 'exact_model_product_page_and_documents', required: true,
+            completion: 'complete',
+            candidates: [{
+              sourceUrl: 'https://official.example.com/model.html',
+              authorityMode: 'official',
+              sourceRole: 'manufacturer_product_page',
+              discoveryMethod: 'official_product_page',
+              requiredAttempt: true,
+            }, {
+              sourceUrl: 'https://official.example.com/model-manual.pdf',
+              authorityMode: 'official',
+              sourceRole: 'manufacturer_document',
+              discoveryMethod: 'official_product_document',
+              requiredAttempt: false,
+              discoveryProvenance: {
+                market: 'AU',
+                requestedModel: 'EX100',
+                matchedModel: 'EX100',
+                artifactUrl: 'https://official.example.com/model-manual.pdf',
+              },
+            }],
+          };
+        },
+      }],
+      attestTarget: async (record, artifact) => {
+        attempted.push(artifact.sourceUrl);
+        if (artifact.sourceUrl.endsWith('.html')) {
+          throw Object.assign(new Error('no supported evidence claims extracted'), {
+            code: 'claim_semantics',
+          });
+        }
+        return { source: attestedSource(record, artifact) };
+      },
+    }),
+  );
+
+  const outcome = result.outcomes[0];
+  assert.equal(outcome.status, 'accepted');
+  assert.deepEqual(attempted.sort(), [
+    'https://official.example.com/model-manual.pdf',
+    'https://official.example.com/model.html',
+  ].sort());
+  assert.equal(
+    outcome.candidateInventory.candidates
+      .find((candidate) => candidate.sourceUrl.endsWith('model-manual.pdf')).outcome.status,
+    'accepted',
+  );
+});
+
+test('optional official documents without exact AU artifact provenance remain unattempted', async () => {
+  const targetRecord = target('target-a', 'EX100', []);
+  targetRecord.primaryJobId = null;
+  const attempted = [];
+  const optionalDocument = (suffix, discoveryProvenance) => ({
+    sourceUrl: `https://official.example.com/${suffix}.pdf`,
+    authorityMode: 'official',
+    sourceRole: 'manufacturer_document',
+    discoveryMethod: 'official_product_document',
+    requiredAttempt: false,
+    discoveryProvenance,
+  });
+  const result = await runReceiptBoundEvidenceBatch(
+    batch({ jobs: [], targets: [targetRecord] }),
+    dependencies({
+      candidateResolversForTarget: () => [{
+        resolverId: 'official-model-resources',
+        version: '1',
+        scope: 'exact_model_product_page_and_documents',
+        required: true,
+        async resolve() {
+          return {
+            resolverId: 'official-model-resources', version: '1',
+            scope: 'exact_model_product_page_and_documents', required: true,
+            completion: 'complete',
+            candidates: [{
+              sourceUrl: 'https://official.example.com/model.html',
+              authorityMode: 'official',
+              sourceRole: 'manufacturer_product_page',
+              discoveryMethod: 'official_product_page',
+              requiredAttempt: true,
+            },
+            optionalDocument('wrong-market', {
+              market: 'NZ', requestedModel: 'EX100', matchedModel: 'EX100',
+              artifactUrl: 'https://official.example.com/wrong-market.pdf',
+            }),
+            optionalDocument('wrong-model', {
+              market: 'AU', requestedModel: 'EX100', matchedModel: 'EX101',
+              artifactUrl: 'https://official.example.com/wrong-model.pdf',
+            }),
+            optionalDocument('wrong-target', {
+              market: 'AU', requestedModel: 'EX200', matchedModel: 'EX200',
+              artifactUrl: 'https://official.example.com/wrong-target.pdf',
+            }),
+            optionalDocument('wrong-url', {
+              market: 'AU', requestedModel: 'EX100', matchedModel: 'EX100',
+              artifactUrl: 'https://official.example.com/other.pdf',
+            })],
+          };
+        },
+      }],
+      attestTarget: async (record, artifact) => {
+        attempted.push(artifact.sourceUrl);
+        throw Object.assign(new Error('no supported evidence claims extracted'), {
+          code: 'claim_semantics',
+        });
+      },
+    }),
+  );
+
+  assert.equal(result.outcomes[0].status, 'claims_incomplete');
+  assert.deepEqual(attempted, ['https://official.example.com/model.html']);
+  assert.ok(result.outcomes[0].candidateInventory.candidates
+    .filter((candidate) => candidate.sourceRole === 'manufacturer_document')
+    .every((candidate) => candidate.outcome.status === 'not_attempted_optional'));
+});
+
 test('non-accepted reconciliation retains diagnostic candidates but exposes no releasable sources', async () => {
   const artifactJob = job('a'.repeat(32), 'https://official.example.com/partial.pdf', ['target-a']);
   const input = batch({

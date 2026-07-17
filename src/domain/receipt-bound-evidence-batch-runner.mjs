@@ -199,11 +199,38 @@ function needsIndependentOfficialCorroboration(reconciled, inventory) {
   ));
 }
 
-function needsExactOfficialProductPageFallback(reconciled, inventory) {
-  if (!['identity_rejected', 'claims_incomplete'].includes(reconciled?.status)) return false;
-  return (inventory?.candidates ?? []).some((candidate) => (
+function exactOfficialProductPageFallbackCandidates(reconciled, inventory) {
+  if (!['identity_rejected', 'claims_incomplete'].includes(reconciled?.status)) return [];
+  return (inventory?.candidates ?? []).filter((candidate) => (
     candidate.authorityMode === 'official'
     && candidate.sourceRole === 'manufacturer_product_page'
+    && candidate.requiredAttempt === false
+    && candidate.outcome?.status === 'not_attempted_optional'
+  ));
+}
+
+function hasExactModelArtifactProvenance(candidate, targetIdentity) {
+  const provenance = candidate?.discoveryProvenance;
+  const normalizeModel = (value) => String(value ?? '').toUpperCase().replace(/[^A-Z0-9]+/g, '');
+  const targetModel = normalizeModel(targetIdentity?.model);
+  const requestedModel = normalizeModel(provenance?.requestedModel);
+  const matchedModel = normalizeModel(provenance?.matchedModel);
+  if (provenance?.market !== 'AU' || !targetModel
+    || requestedModel !== targetModel || matchedModel !== targetModel) return false;
+  const artifactUrl = provenance?.artifactUrl ?? provenance?.artifactLinkUrl;
+  try {
+    return new URL(artifactUrl).toString() === new URL(candidate.sourceUrl).toString();
+  } catch {
+    return false;
+  }
+}
+
+function exactOfficialDocumentFallbackCandidates(reconciled, inventory) {
+  if (!['identity_rejected', 'claims_incomplete'].includes(reconciled?.status)) return [];
+  return (inventory?.candidates ?? []).filter((candidate) => (
+    candidate.authorityMode === 'official'
+    && candidate.sourceRole === 'manufacturer_document'
+    && hasExactModelArtifactProvenance(candidate, inventory?.identity)
     && candidate.requiredAttempt === false
     && candidate.outcome?.status === 'not_attempted_optional'
   ));
@@ -397,11 +424,20 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         verifyInventoryHash: true,
       });
       const needsCorroboration = needsIndependentOfficialCorroboration(reconciled, inventory);
-      const needsProductPageFallback = needsExactOfficialProductPageFallback(reconciled, inventory);
-      if (needsCorroboration || needsProductPageFallback) {
+      const productPageFallbackCandidates = exactOfficialProductPageFallbackCandidates(
+        reconciled, inventory,
+      );
+      const documentFallbackCandidates = exactOfficialDocumentFallbackCandidates(
+        reconciled, inventory,
+      );
+      const fallbackCandidateIds = [
+        ...productPageFallbackCandidates,
+        ...documentFallbackCandidates,
+      ].map((candidate) => candidate.candidateId);
+      if (needsCorroboration || fallbackCandidateIds.length) {
         inventory = await expandOptionalOfficialEvidenceCandidates(inventory, {
           acquireAndAttest,
-          ...(needsCorroboration ? {} : { sourceRoles: ['manufacturer_product_page'] }),
+          ...(needsCorroboration ? {} : { candidateIds: fallbackCandidateIds }),
         });
         reconciled = await reconcileClaims({
           brand: target.brand,

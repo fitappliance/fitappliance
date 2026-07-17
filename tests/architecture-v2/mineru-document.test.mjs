@@ -1114,6 +1114,59 @@ test('MinerU binds Beko AU dryer unpacked dimensions from an exact aligned label
   }), /identity|model|evidence/i);
 });
 
+test('MinerU binds Beko AU fridge dimensions from the exact mixed-section specification list', () => {
+  const labels = 'Dimensions& Weights Unpackaged Height: Unpackaged Width: '
+    + 'Depth(incl. Doors): Unpackaged Weight: Packaged Height: Packaged Width: '
+    + 'Packaged Depth: Packaged Weight:';
+  const dimensions = [
+    '1770 mm', '756 mm', '700 mm', '85 kg',
+    '1854 mm', '813 mm', '775 mm', '91 kg',
+  ];
+  const document = ({
+    header = 'BBMB445PX 445 L Bottom Mount Fridge/Freezer Pearl Steel',
+    labelText = labels,
+    values = ['2 x Twist Ice Cube Maker', '2', ...dimensions, '8700000927', '8859377108749'],
+  } = {}) => Buffer.from(JSON.stringify([[
+    pageHeader(header),
+    paragraph(labelText, [526, 592, 705, 753]),
+    structuredListFragment(values, { type: 'index', bbox: [763, 554, 937, 588] }),
+  ]]));
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Beko', model: 'BBMB445PX', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+
+  const parsed = parseMineruContentListV2(document(), options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 756 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 1770 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 700 },
+  });
+  assert.equal(parsed.claims.find((claim) => (
+    claim.field === 'closedEnvelope.depthMm'
+  )).includesDoor, true);
+  assert.deepEqual(parsed.grammarProfileIds, [
+    'beko_au_fridge_product_spec_mixed_section_list_v1',
+  ]);
+
+  for (const [name, unsafe] of Object.entries({
+    incomplete_labels: { labelText: labels.replace('Unpackaged Width:', 'Packaged Width:') },
+    reordered_axes: { labelText: labels.replace('Unpackaged Width: Depth(incl. Doors):', 'Depth(incl. Doors): Unpackaged Width:') },
+    mixed_units: { values: ['2 x Twist Ice Cube Maker', '2', ...dimensions.with(2, '700 cm')] },
+    duplicate_sequences: { values: [...dimensions, 'separator', ...dimensions] },
+    sibling_model: { header: 'BBMB445PX / BBM450X Bottom Mount Fridges' },
+  })) {
+    assert.throws(() => parseMineruContentListV2(document(unsafe), options),
+      /identity|family|model|evidence/i, name);
+  }
+  assert.throws(() => parseMineruContentListV2(document(), {
+    ...options,
+    caseIdentity: { brand: 'Beko', model: 'BBMB445PX', category: 'dryer' },
+  }), /identity|model|evidence/i);
+});
+
 test('MinerU parses grouped dimension paragraphs and mixed compact separators', () => {
   const bytes = Buffer.from(JSON.stringify([[
     { type: 'title', content: { title_content: [{ type: 'text', content: 'DWAU615DB3 dishwasher' }], level: 1 }, bbox: [10, 10, 300, 40] },

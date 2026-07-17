@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-07-16T00:00:00.000Z",
+  "generatedAt": "2026-07-12T12:40:00.000Z",
   "policy": {
     "categories": [
       "fridge",
@@ -17,17 +17,17 @@
     "historicalRecords": 8093,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 897,
-    "validMineruDocuments": 882,
+    "mineruDocuments": 901,
+    "validMineruDocuments": 886,
     "invalidMineruDocuments": 15,
-    "documentsWithObservations": 468,
-    "documentsWithoutObservations": 414,
-    "mappedMineruDocuments": 849,
+    "documentsWithObservations": 469,
+    "documentsWithoutObservations": 417,
+    "mappedMineruDocuments": 853,
     "unmappedMineruDocuments": 33,
-    "observations": 1132,
-    "researchGaps": 994,
-    "parserProfiles": 208,
-    "parserReplays": 1008,
+    "observations": 1133,
+    "researchGaps": 997,
+    "parserProfiles": 210,
+    "parserReplays": 1012,
     "completeParserReplays": 407
   },
   "categories": [
@@ -170,15 +170,261 @@
             "Beko"
           ],
           "modelCount": 51,
-          "observedMineruDocuments": 0,
+          "observedMineruDocuments": 4,
           "observedMarketingSeriesCount": 0,
-          "observedDocumentFamilyCount": 0,
-          "observedParserProfileCount": 0,
-          "completeParserReplayCount": 0,
+          "observedDocumentFamilyCount": 1,
+          "observedParserProfileCount": 1,
+          "completeParserReplayCount": 1,
           "seriesCountStatus": "UNKNOWN",
-          "coverageStatus": "NO_MINERU_SAMPLE",
-          "expressionCoverageStatus": "NO_MINERU_SAMPLE",
-          "families": []
+          "coverageStatus": "MINERU_SAMPLE_OBSERVED",
+          "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
+          "families": [
+            {
+              "groupType": "document_family",
+              "groupName": "Document family 186d7fac41a1",
+              "models": [
+                "BBM450W",
+                "BBM450X"
+              ],
+              "pdfSha256s": [
+                "186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa"
+              ],
+              "sourceUrls": [
+                "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf",
+                "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa",
+                  "category": "fridge",
+                  "brand": "Beko",
+                  "model": "BBM450W",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                },
+                {
+                  "pdfSha256": "186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa",
+                  "category": "fridge",
+                  "brand": "Beko",
+                  "model": "BBM450X",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+                  "pdfSha256": "186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa",
+                  "contentSha256": "f963a7c1f1f3cec2b57d0d45fa5a9d7da0b2d70d4a7ffa6995a92b68fa5cfd55",
+                  "page": null,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+            },
+            {
+              "groupType": "model_specific",
+              "groupName": "BBM407PX",
+              "models": [
+                "BBM407PX"
+              ],
+              "pdfSha256s": [
+                "f0b6a87c307a226b67c087e7c3b3574dfbe662b51be1fd739a4538f0793662af"
+              ],
+              "sourceUrls": [
+                "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "f0b6a87c307a226b67c087e7c3b3574dfbe662b51be1fd739a4538f0793662af",
+                  "category": "fridge",
+                  "brand": "Beko",
+                  "model": "BBM407PX",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+                  "pdfSha256": "f0b6a87c307a226b67c087e7c3b3574dfbe662b51be1fd739a4538f0793662af",
+                  "contentSha256": "c45983e703c056f119ac2adb718e6860ac5744bcecb448a5e7b82b26bb24d072",
+                  "page": null,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+            },
+            {
+              "groupType": "model_specific",
+              "groupName": "BBM450AN",
+              "models": [
+                "BBM450AN"
+              ],
+              "pdfSha256s": [
+                "16fa0c514333357c01a628bc637de7260e07da2f153938fb5180866430f328b0"
+              ],
+              "sourceUrls": [
+                "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "16fa0c514333357c01a628bc637de7260e07da2f153938fb5180866430f328b0",
+                  "category": "fridge",
+                  "brand": "Beko",
+                  "model": "BBM450AN",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+                  "pdfSha256": "16fa0c514333357c01a628bc637de7260e07da2f153938fb5180866430f328b0",
+                  "contentSha256": "91100165c937548ff8acf0ad19f89d34f17655440c229f2e4afd3a16b6bacc04",
+                  "page": null,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "Beko AU fridge product specification",
+              "models": [
+                "BBMB445PX"
+              ],
+              "pdfSha256s": [
+                "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7"
+              ],
+              "sourceUrls": [
+                "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "beko_au_fridge_product_spec_mixed_section_list_v1",
+                  "grammarFamilyId": "beko_au_fridge_product_spec_v1",
+                  "grammarFamilyName": "Beko AU fridge product specification",
+                  "variantName": "Mixed-section value list aligned to complete unpacked and packed labels",
+                  "brand": "Beko",
+                  "category": "fridge",
+                  "documentType": "product_specification",
+                  "detectionSummary": "An exact-model scoped Beko AU fridge page contains one complete ordered Dimensions & Weights label paragraph and one adjacent mixed-section list with a unique contiguous mm/mm/mm/kg/mm/mm/mm/kg value sequence.",
+                  "semanticBoundary": "Only unpackaged height, width and depth including doors are projected. Prefix and suffix values, packaged dimensions, weight, cabinet width and dimension diagrams are excluded.",
+                  "profileKind": "declared_brand_category_grammar",
+                  "signatureVersion": 1,
+                  "expressionShapes": [],
+                  "researchGapTypes": []
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
+                  "category": "fridge",
+                  "brand": "Beko",
+                  "model": "BBMB445PX",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "beko_au_fridge_product_spec_mixed_section_list_v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_c7c1d72470f036cf94827aaf",
+                  "pdfSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
+                  "contentSha256": "15b97d62343b25b7444a9938dc62151808fe4695b200908cf3a220e72659207c",
+                  "page": 1,
+                  "bbox": [
+                    678,
+                    334,
+                    764,
+                    380
+                  ],
+                  "fragmentSha256": "ac3673c2507b87824044ff3958320fcb49b80fdcdd7675380c2972e7d24088ca",
+                  "sourceUrls": [
+                    "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Beko",
+                      "model": "BBMB445PX",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "BBMB445PX"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "Width",
+                  "sourceValue": "76 cm",
+                  "sourceQuote": "Width 76 cm",
+                  "axisOrder": [
+                    "width"
+                  ],
+                  "safeAxes": [
+                    "width"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "width",
+                      "label": "Width",
+                      "value": "76 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:width(scalar)"
+                }
+              ],
+              "researchGaps": [],
+              "parserProfileIds": [
+                "beko_au_fridge_product_spec_mixed_section_list_v1"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
+            }
+          ]
         },
         {
           "canonicalBrand": "Bellini",
@@ -33393,253 +33639,13 @@
           "modelCount": 290,
           "observedMineruDocuments": 66,
           "observedMarketingSeriesCount": 0,
-          "observedDocumentFamilyCount": 6,
-          "observedParserProfileCount": 28,
-          "completeParserReplayCount": 23,
+          "observedDocumentFamilyCount": 5,
+          "observedParserProfileCount": 29,
+          "completeParserReplayCount": 22,
           "seriesCountStatus": "UNKNOWN",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
           "families": [
-            {
-              "groupType": "document_family",
-              "groupName": "Document family a792faf4dd33",
-              "models": [
-                "WHE6874BA",
-                "WHE6874SA"
-              ],
-              "pdfSha256s": [
-                "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a"
-              ],
-              "sourceUrls": [
-                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse"
-              ],
-              "seriesEvidence": [],
-              "parserProfiles": [
-                {
-                  "parserProfileId": "pdf_grammar_100af9c8141cceb2",
-                  "signatureVersion": 1,
-                  "expressionShapes": [
-                    {
-                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                      "sourceLabel": "cabinet height (<unit>) | cabinet width (<unit>) | cabinet depth (<unit>)",
-                      "axisOrder": [
-                        "height",
-                        "width",
-                        "depth"
-                      ],
-                      "safeAxes": [],
-                      "scope": "product_body",
-                      "unit": "mm",
-                      "unitPlacement": "label",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": []
-                    },
-                    {
-                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
-                      "sourceLabel": "total height (<unit>) | total width (<unit>) | total depth (<unit>)",
-                      "axisOrder": [
-                        "height",
-                        "width",
-                        "depth"
-                      ],
-                      "safeAxes": [
-                        "depth",
-                        "height",
-                        "width"
-                      ],
-                      "scope": "product_closed_candidate",
-                      "unit": "mm",
-                      "unitPlacement": "label",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": []
-                    }
-                  ],
-                  "researchGapTypes": []
-                }
-              ],
-              "parserReplays": [
-                {
-                  "pdfSha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
-                  "category": "fridge",
-                  "brand": "Westinghouse",
-                  "model": "WHE6874BA",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
-                },
-                {
-                  "pdfSha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
-                  "category": "fridge",
-                  "brand": "Westinghouse",
-                  "model": "WHE6874SA",
-                  "extractionState": "ALL_AXIS_SCALAR",
-                  "identityScope": "EXACT_MODEL",
-                  "claimFields": [
-                    "closedEnvelope.depthMm",
-                    "closedEnvelope.heightMm",
-                    "closedEnvelope.widthMm"
-                  ],
-                  "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
-                }
-              ],
-              "expressions": [
-                {
-                  "observationId": "dimension_expression_55eb6fade06c6e5b549104f8",
-                  "pdfSha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
-                  "contentSha256": "26a2a84dabffddbccb89a78182593a69a7bb51c516ef9e24c7d865f78d1ca8de",
-                  "page": 4,
-                  "bbox": [
-                    516,
-                    229,
-                    941,
-                    887
-                  ],
-                  "fragmentSha256": "9f17dff35fa6aad3b10a853c3bc5b9ef2158fafc59e7347ebad136d09e979773",
-                  "sourceUrls": [
-                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Westinghouse",
-                      "model": "WHE6874BA",
-                      "category": "fridge"
-                    },
-                    {
-                      "brand": "Westinghouse",
-                      "model": "WHE6874SA",
-                      "category": "fridge"
-                    }
-                  ],
-                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
-                  "boundModels": [
-                    "WHE6874SA"
-                  ],
-                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
-                  "sourceValue": "1782 | 913 | 803",
-                  "sourceQuote": "Total height (mm) 1782 | Total width (mm) 913 | Total depth (mm) 803",
-                  "axisOrder": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "unit": "mm",
-                  "unitPlacement": "label",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "height",
-                      "label": "Total height (mm)",
-                      "value": "1782",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "width",
-                      "label": "Total width (mm)",
-                      "value": "913",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Total depth (mm)",
-                      "value": "803",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
-                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
-                },
-                {
-                  "observationId": "dimension_expression_ef8ed654064d66ad2235fbca",
-                  "pdfSha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
-                  "contentSha256": "26a2a84dabffddbccb89a78182593a69a7bb51c516ef9e24c7d865f78d1ca8de",
-                  "page": 4,
-                  "bbox": [
-                    516,
-                    229,
-                    941,
-                    887
-                  ],
-                  "fragmentSha256": "9f17dff35fa6aad3b10a853c3bc5b9ef2158fafc59e7347ebad136d09e979773",
-                  "sourceUrls": [
-                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Westinghouse",
-                      "model": "WHE6874BA",
-                      "category": "fridge"
-                    },
-                    {
-                      "brand": "Westinghouse",
-                      "model": "WHE6874SA",
-                      "category": "fridge"
-                    }
-                  ],
-                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
-                  "boundModels": [
-                    "WHE6874SA"
-                  ],
-                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                  "sourceLabel": "Cabinet height (mm) | Cabinet width (mm) | Cabinet depth (mm)",
-                  "sourceValue": "1756 | 908 | 625",
-                  "sourceQuote": "Cabinet height (mm) 1756 | Cabinet width (mm) 908 | Cabinet depth (mm) 625",
-                  "axisOrder": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "safeAxes": [],
-                  "unit": "mm",
-                  "unitPlacement": "label",
-                  "scope": "product_body",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "height",
-                      "label": "Cabinet height (mm)",
-                      "value": "1756",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "width",
-                      "label": "Cabinet width (mm)",
-                      "value": "908",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Cabinet depth (mm)",
-                      "value": "625",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
-                }
-              ],
-              "researchGaps": [],
-              "parserProfileIds": [
-                "pdf_grammar_100af9c8141cceb2"
-              ],
-              "completeParserReplay": true,
-              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
-            },
             {
               "groupType": "document_family",
               "groupName": "Document family b93c83bd4afe",
@@ -56122,6 +56128,209 @@
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_a298258f9abc6e5f",
+              "models": [
+                "WHE6874BA"
+              ],
+              "pdfSha256s": [
+                "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a"
+              ],
+              "sourceUrls": [
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_a298258f9abc6e5f",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                      "sourceLabel": "cabinet height (<unit>) | cabinet width (<unit>) | cabinet depth (<unit>)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [],
+                      "scope": "product_body",
+                      "unit": "mm",
+                      "unitPlacement": "label",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
+                      "sourceLabel": "total height (<unit>) | total width (<unit>) | total depth (<unit>)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "label",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": []
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
+                  "category": "fridge",
+                  "brand": "Westinghouse",
+                  "model": "WHE6874BA",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_d80f77b570755232c943f4f6",
+                  "pdfSha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
+                  "contentSha256": "26a2a84dabffddbccb89a78182593a69a7bb51c516ef9e24c7d865f78d1ca8de",
+                  "page": 4,
+                  "bbox": [
+                    516,
+                    229,
+                    941,
+                    887
+                  ],
+                  "fragmentSha256": "9f17dff35fa6aad3b10a853c3bc5b9ef2158fafc59e7347ebad136d09e979773",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Westinghouse",
+                      "model": "WHE6874BA",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "DOCUMENT_IDENTITY_ONLY",
+                  "boundModels": [],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "1782 | 913 | 803",
+                  "sourceQuote": "Total height (mm) 1782 | Total width (mm) 913 | Total depth (mm) 803",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "1782",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "913",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "803",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_MODEL_SCOPE_REQUIRED",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)",
+                  "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS"
+                },
+                {
+                  "observationId": "dimension_expression_e6453e8732777d13e93380f9",
+                  "pdfSha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
+                  "contentSha256": "26a2a84dabffddbccb89a78182593a69a7bb51c516ef9e24c7d865f78d1ca8de",
+                  "page": 4,
+                  "bbox": [
+                    516,
+                    229,
+                    941,
+                    887
+                  ],
+                  "fragmentSha256": "9f17dff35fa6aad3b10a853c3bc5b9ef2158fafc59e7347ebad136d09e979773",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Westinghouse",
+                      "model": "WHE6874BA",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "DOCUMENT_IDENTITY_ONLY",
+                  "boundModels": [],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Cabinet height (mm) | Cabinet width (mm) | Cabinet depth (mm)",
+                  "sourceValue": "1756 | 908 | 625",
+                  "sourceQuote": "Cabinet height (mm) 1756 | Cabinet width (mm) 908 | Cabinet depth (mm) 625",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_body",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Cabinet height (mm)",
+                      "value": "1756",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Cabinet width (mm)",
+                      "value": "908",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Cabinet depth (mm)",
+                      "value": "625",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                }
+              ],
+              "researchGaps": [],
+              "parserProfileIds": [
+                "pdf_grammar_a298258f9abc6e5f"
+              ],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
             },
             {
               "groupType": "parser_family",

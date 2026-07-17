@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1372,
-    "fetchJobs": 1335,
-    "targets": 1369,
-    "candidateEdges": 1372,
+    "documents": 1371,
+    "fetchJobs": 1334,
+    "targets": 1368,
+    "candidateEdges": 1371,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1369,
+    "uniqueReferences": 1368,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 938,
+      "MEASURE_REQUIRED": 937,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1122
+      "CURRENT_RETAIL": 1121
     },
     "byCategory": {
       "dishwasher": 281,
       "dryer": 51,
-      "fridge": 821,
+      "fridge": 820,
       "washing_machine": 216
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1075,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1074,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 233,
+      "ALREADY_AUTO_FILL": 234,
       "HISTORICAL_REFERENCE_NOT_FOUND": 146,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -3629,32 +3629,6 @@
       ],
       "targetIds": [
         "recovery_target_e872c93eb6ca4eceec16135c"
-      ]
-    },
-    {
-      "jobId": "recovery_5e34d6b31f55757ae6e3e57b",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/3/2/3/232353f1e5d89b03b7aec0577e6f7ef33c4d13f0_BBMB445PX_Beko_Specification_Sheet_2023.pdf",
-      "authorityBrand": "Beko",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_7c3a83dcf408d47f54f4f2c0"
       ]
     },
     {
@@ -35283,47 +35257,6 @@
         "recovery_285e62bb449151e19d00fe3c"
       ],
       "primaryJobId": "recovery_285e62bb449151e19d00fe3c"
-    },
-    {
-      "referenceId": "fa_ref_0e766c6071252bb43cb23986",
-      "legacyRuntimeId": "ao-154128",
-      "canonicalProductId": "fa_prod_b5a620d1e2e9c315868af9ac",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBMB445PX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 756,
-        "height": 1770,
-        "depth": 700
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_7c3a83dcf408d47f54f4f2c0",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_7730350e9ea33405b3339f5b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_7730350e9ea33405b3339f5b",
-          "dimensionsMm": {
-            "width": 756,
-            "height": 1770,
-            "depth": 700
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_5e34d6b31f55757ae6e3e57b"
-      ],
-      "primaryJobId": "recovery_5e34d6b31f55757ae6e3e57b"
     },
     {
       "referenceId": "fa_ref_77cacfab55cb103ae5d06eec",

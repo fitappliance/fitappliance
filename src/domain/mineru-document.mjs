@@ -3164,6 +3164,17 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'An exact-model scoped Beko AU dryer page contains one Dimensions & Weights title, the complete ordered unpacked and packed label paragraph, and one vertically aligned eight-value list with explicit mm and kg units.',
     semanticBoundary: 'Only unpacked height, width and depth are projected as the closed envelope. Packed values and the separate W/D/H operation diagram are excluded.',
   }),
+  beko_au_fridge_product_spec_mixed_section_list_v1: Object.freeze({
+    parserProfileId: 'beko_au_fridge_product_spec_mixed_section_list_v1',
+    grammarFamilyId: 'beko_au_fridge_product_spec_v1',
+    grammarFamilyName: 'Beko AU fridge product specification',
+    variantName: 'Mixed-section value list aligned to complete unpacked and packed labels',
+    brand: 'Beko',
+    category: 'fridge',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model scoped Beko AU fridge page contains one complete ordered Dimensions & Weights label paragraph and one adjacent mixed-section list with a unique contiguous mm/mm/mm/kg/mm/mm/mm/kg value sequence.',
+    semanticBoundary: 'Only unpackaged height, width and depth including doors are projected. Prefix and suffix values, packaged dimensions, weight, cabinet width and dimension diagrams are excluded.',
+  }),
 });
 const HISENSE_AU_WASHER_INDEXED_DIAGRAM_GRAMMAR = mineruGrammarProfiles
   ['hisense-au-washer-indexed-dimension-diagram-v1'].parserProfileId;
@@ -3177,6 +3188,8 @@ const BEKO_AU_DISHWASHER_MIN_HEIGHT_INLINE_GRAMMAR = mineruGrammarProfiles
   .beko_au_dishwasher_product_spec_min_height_inline_pairs_v1.parserProfileId;
 const BEKO_AU_DRYER_PARALLEL_GRAMMAR = mineruGrammarProfiles
   .beko_au_dryer_product_spec_parallel_lists_v1.parserProfileId;
+const BEKO_AU_FRIDGE_MIXED_SECTION_GRAMMAR = mineruGrammarProfiles
+  .beko_au_fridge_product_spec_mixed_section_list_v1.parserProfileId;
 const BEKO_AU_SPEC_LABELS = Object.freeze([
   'Unpackaged Height:',
   'Height (max - feet adjustment):',
@@ -3537,6 +3550,97 @@ function bekoAuDryerSpecRows(items, caseIdentity, identityScoped) {
       ],
       fragmentSha256: sha256(JSON.stringify({
         grammarProfileId: BEKO_AU_DRYER_PARALLEL_GRAMMAR,
+        sourceFragmentSha256s: fragments.map((fragment) => fragment.fragmentSha256),
+        rows,
+      })),
+    },
+  };
+}
+
+const BEKO_AU_FRIDGE_SPEC_LABELS = /^Dimensions\s*&\s*Weights\s+Unpackaged Height:\s+Unpackaged Width:\s+Depth\s*\(\s*incl\.?\s+Doors\s*\):\s+Unpackaged Weight:\s+Packaged Height:\s+Packaged Width:\s+Packaged Depth:\s+Packaged Weight:$/i;
+
+function bekoFridgeDimensionSequence(entries) {
+  const measurement = /^\d+(?:\.\d+)?\s*mm$/i;
+  const weight = /^\d+(?:\.\d+)?\s*kg$/i;
+  const starts = [];
+  for (let index = 0; index <= entries.length - 8; index += 1) {
+    const values = entries.slice(index, index + 8);
+    if (values.every((value, valueIndex) => (
+      [3, 7].includes(valueIndex) ? weight.test(value) : measurement.test(value)
+    ))) starts.push(index);
+  }
+  return starts.length === 1 ? entries.slice(starts[0], starts[0] + 8) : null;
+}
+
+function bekoAuFridgeSpecRows(items, caseIdentity, identityScoped) {
+  if (normalizedText(caseIdentity?.brand).toLowerCase() !== 'beko'
+    || normalizedText(caseIdentity?.category) !== 'fridge' || !identityScoped) return null;
+  const targetModel = canonicalModel(caseIdentity.model);
+  const exactHeaders = items.filter((item) => (
+    ['title', 'page_header'].includes(item.type)
+      && containsExplicitModelExpression(item.text, caseIdentity.model)
+  ));
+  if (exactHeaders.length !== 1) return null;
+  const headerModels = [...new Set((exactHeaders[0].text.toUpperCase().match(
+    /\b[A-Z][A-Z0-9-]{3,}\d[A-Z0-9-]*\b/g,
+  ) ?? []).map(canonicalModel))];
+  if (headerModels.length !== 1 || headerModels[0] !== targetModel) return null;
+  const labelCandidates = items.filter((item) => (
+    item.type === 'paragraph' && BEKO_AU_FRIDGE_SPEC_LABELS.test(item.text)
+  ));
+  if (labelCandidates.length !== 1) return null;
+  const labelFragment = labelCandidates[0];
+  const valueCandidates = items.map((item) => {
+    if (!['index', 'list'].includes(item.type)
+      || item.bbox[0] < labelFragment.bbox[2]
+      || item.bbox[0] - labelFragment.bbox[2] > 300) return null;
+    const verticalGap = Math.max(
+      0,
+      labelFragment.bbox[1] - item.bbox[3],
+      item.bbox[1] - labelFragment.bbox[3],
+    );
+    if (verticalGap > 50) return null;
+    const values = bekoFridgeDimensionSequence(item.listEntries);
+    return values ? { item, values } : null;
+  }).filter(Boolean);
+  if (valueCandidates.length !== 1) return null;
+  const { item: valueFragment, values } = valueCandidates[0];
+  const dimensions = values.slice(0, 3).map(Number.parseFloat);
+  if (dimensions.some((value) => !Number.isInteger(value) || value <= 0)) return null;
+  const rows = [
+    {
+      label: 'Unpackaged Height', value: values[0],
+      quote: `Unpackaged Height: ${values[0]}`,
+      semanticBasis: 'explicit_aligned_label_value', axisOrder: ['height'],
+      grammarProfileId: BEKO_AU_FRIDGE_MIXED_SECTION_GRAMMAR,
+    },
+    {
+      label: 'Unpackaged Width', value: values[1],
+      quote: `Unpackaged Width: ${values[1]}`,
+      semanticBasis: 'explicit_aligned_label_value', axisOrder: ['width'],
+      grammarProfileId: BEKO_AU_FRIDGE_MIXED_SECTION_GRAMMAR,
+    },
+    {
+      label: 'Depth(incl. Doors)', value: values[2],
+      quote: `Depth(incl. Doors): ${values[2]}`,
+      semanticBasis: 'explicit_aligned_label_value', axisOrder: ['depth'],
+      grammarProfileId: BEKO_AU_FRIDGE_MIXED_SECTION_GRAMMAR,
+    },
+  ];
+  const fragments = [labelFragment, valueFragment];
+  return {
+    grammarProfileId: BEKO_AU_FRIDGE_MIXED_SECTION_GRAMMAR,
+    rows,
+    fragment: {
+      type: 'derived_beko_fridge_spec',
+      bbox: [
+        Math.min(...fragments.map((fragment) => fragment.bbox[0])),
+        Math.min(...fragments.map((fragment) => fragment.bbox[1])),
+        Math.max(...fragments.map((fragment) => fragment.bbox[2])),
+        Math.max(...fragments.map((fragment) => fragment.bbox[3])),
+      ],
+      fragmentSha256: sha256(JSON.stringify({
+        grammarProfileId: BEKO_AU_FRIDGE_MIXED_SECTION_GRAMMAR,
         sourceFragmentSha256s: fragments.map((fragment) => fragment.fragmentSha256),
         rows,
       })),
@@ -3995,7 +4099,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       && (bekoPageScoped || bekoDocumentScoped || bekoDryerDocumentScoped);
     const bekoSpec = bekoIdentityScoped
       ? (bekoAuDishwasherSpecRows(items, caseIdentity, true)
-        ?? bekoAuDryerSpecRows(items, caseIdentity, true))
+        ?? bekoAuDryerSpecRows(items, caseIdentity, true)
+        ?? bekoAuFridgeSpecRows(items, caseIdentity, true))
       : null;
     for (const scope of [hisenseLegacySpecScope, hisenseNetPackageScope]) {
       if (!scope || scope.page !== pageIndex + 1) continue;

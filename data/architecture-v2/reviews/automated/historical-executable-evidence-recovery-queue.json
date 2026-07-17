@@ -1,29 +1,29 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-16T23:59:11.852Z",
-  "sourceAcquisitionQueueSha256": "ce495985dc966e718f522833c1fcd7b53708e162364f8e7dcb05972f94c2f085",
+  "generatedAt": "2026-07-17T00:41:27.426Z",
+  "sourceAcquisitionQueueSha256": "17629c6601001bffed481db6230184ec1845c54f48378b86fcecd9f7bd05db36",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7730,
+    "acquisitionRecords": 7729,
     "fetchJobs": 0,
-    "targets": 7612,
-    "resolverOnlyTargets": 7612,
+    "targets": 7607,
+    "resolverOnlyTargets": 7607,
     "candidateEdges": 0,
-    "uniqueReferences": 7612,
+    "uniqueReferences": 7607,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
-    "suppressedPriorResolverOnlyTargets": 35,
+    "suppressedPriorResolverOnlyTargets": 39,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1038,
+      "CURRENT_RETAIL": 1033,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 843,
+      "P0_CURRENT_MISSING_DIMENSIONS": 838,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -5677,154 +5677,6 @@
       "repairExistingReceipt": false
     },
     {
-      "targetId": "recovery_target_c9f6e399045019f484c609e1",
-      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
-      "legacyRuntimeId": "ao-62774",
-      "canonicalProductId": "fa_prod_68b86add207841292e9a5083",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM407PX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_981411b5729b38ffb9096efc",
-        "legacy:data/pdf-evidence-raw/BBM407PX.json",
-        "source:doc_981411b5729b38ffb9096efc"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_981411b5729b38ffb9096efc",
-          "dimensionsMm": {
-            "width": 700,
-            "height": 1720,
-            "depth": 660
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
-      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
-      "legacyRuntimeId": "ao-77023",
-      "canonicalProductId": "fa_prod_35603fcdc485eeb1d361470a",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450AN",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e42110e34bceb406d69fd1e8",
-        "legacy:data/pdf-evidence-raw/BBM450AN.json",
-        "source:doc_e42110e34bceb406d69fd1e8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e42110e34bceb406d69fd1e8",
-          "dimensionsMm": {
-            "width": 704,
-            "height": 1720,
-            "depth": 701
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
-      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
-      "legacyRuntimeId": "ao-64576",
-      "canonicalProductId": "fa_prod_b39f6e10698794ee503b7dea",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_ee1ea71781c6fc53161f610c",
-        "legacy:data/pdf-evidence-raw/BBM450W.json",
-        "source:doc_ee1ea71781c6fc53161f610c"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_ee1ea71781c6fc53161f610c",
-          "dimensionsMm": {
-            "width": 704,
-            "height": 1720,
-            "depth": 701
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
-      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
-      "legacyRuntimeId": "ao-64577",
-      "canonicalProductId": "fa_prod_665a83ea5766c87c5979503b",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_816d2f116fb46060ee3146c8",
-        "legacy:data/pdf-evidence-raw/BBM450X.json",
-        "source:doc_816d2f116fb46060ee3146c8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_816d2f116fb46060ee3146c8",
-          "dimensionsMm": {
-            "width": 704,
-            "height": 1720,
-            "depth": 701
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
       "targetId": "recovery_target_c135602ae53c5df6295b1340",
       "referenceId": "fa_ref_b2b14097dd66efbdb7e932e1",
       "legacyRuntimeId": "ao-64578",
@@ -5852,43 +5704,6 @@
             "width": 740,
             "height": 1720,
             "depth": 770
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_7c3a83dcf408d47f54f4f2c0",
-      "referenceId": "fa_ref_0e766c6071252bb43cb23986",
-      "legacyRuntimeId": "ao-154128",
-      "canonicalProductId": "fa_prod_b5a620d1e2e9c315868af9ac",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBMB445PX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_7730350e9ea33405b3339f5b",
-        "legacy:data/pdf-evidence-raw/BBMB445PX.json",
-        "source:doc_7730350e9ea33405b3339f5b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_7730350e9ea33405b3339f5b",
-          "dimensionsMm": {
-            "width": 756,
-            "height": 1770,
-            "depth": 700
           }
         }
       ],

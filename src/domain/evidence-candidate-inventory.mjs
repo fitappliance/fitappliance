@@ -293,12 +293,24 @@ export async function expandOptionalOfficialEvidenceCandidates(inventory, option
   if (sourceRoles && sourceRoles.size === 0) {
     throw new TypeError('optional candidate source roles cannot be empty');
   }
+  const candidateIds = options.candidateIds == null
+    ? null
+    : new Set(options.candidateIds.map((id) => requiredText(id, 'optional candidate ID')));
+  if (candidateIds && candidateIds.size === 0) {
+    throw new TypeError('optional candidate IDs cannot be empty');
+  }
+  if (candidateIds && [...candidateIds].some((id) => (
+    !inventory.candidates.some((candidate) => candidate.candidateId === id)
+  ))) {
+    throw new Error('optional candidate ID is not present in the bound inventory');
+  }
 
   const expanded = structuredClone(inventory);
   for (const candidate of expanded.candidates) {
     if (candidate.authorityMode !== 'official'
       || candidate.requiredAttempt
       || (sourceRoles && !sourceRoles.has(candidate.sourceRole))
+      || (candidateIds && !candidateIds.has(candidate.candidateId))
       || candidate.outcome?.status !== 'not_attempted_optional') continue;
     try {
       const acquired = await options.acquireAndAttest(structuredClone(candidate));

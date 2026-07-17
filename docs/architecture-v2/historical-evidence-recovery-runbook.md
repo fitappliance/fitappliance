@@ -1482,10 +1482,20 @@ This correction also exposed an invalid refresh order. Historical reference
 generation binds the current public catalog projection, so rebuilding history
 before rebuilding the projection can create a stale catalog snapshot and a
 mixed-epoch queue. `refresh:historical-evidence-recovery` now builds the public
-projection first, then the historical reference, classification, acquisition
-queues and executable batch, followed by publication audits. The replacement
-audit must fail with `HISTORICAL_CATALOG_SNAPSHOT_STALE` if that dependency
-order regresses.
+projection first, then the historical reference, the deterministic dimension-
+expression knowledge snapshot, classification, acquisition queues and the
+executable batch, followed by publication audits. Classification may therefore
+consume only a knowledge snapshot bound to the same historical-reference
+epoch. The replacement audit must fail with
+`HISTORICAL_CATALOG_SNAPSHOT_STALE` if that dependency order regresses.
+
+The dimension-expression builder must not read any generated recovery queue.
+Tracked documents derive identity only from their source-document product
+links; recovery artifacts derive identity from their immutable run state or
+run-local batch. An older artifact without either binding remains unmapped
+rather than inheriting a target from a later queue. This keeps the dependency
+graph acyclic and prevents a previous execution epoch from changing the next
+classification silently.
 
 Neither stacking-kit target was executed. The next Beko dryer lane may contain
 only `DCY7402GXB2`, `DCY8502XB1`, `DPE7400` and `DPY8500`, each selected from
@@ -1553,3 +1563,81 @@ candidates, and the retailer PDFs remain `REFERENCE/LEGACY_UNBOUND`.
 Existing immutable target-attempt entries retain the historical advisory
 disposition `AWAIT_RESOLVER_OR_POLICY_CHANGE`; execution permission is governed
 by the queue and run-history guards above, not by rewriting that audit label.
+
+## 39. Beko fridge AB1/AB2 parser closure and run-lineage identity
+
+A bounded source scout checked the first eight zero-attempt P0 Beko fridge
+targets before execution. `BBM335PX`, `BBM505X` and `BCF307W` returned no exact
+Australian support result and were not placed in a recovery run. Exact support
+results existed for `BBM407PX`, `BBM450AN`, `BBM450W`, `BBM450X` and
+`BBMB445PX`.
+
+Run `historical-beko-fridges-20260717-ab1` selected only those five exact-result
+targets. It produced zero acceptances and five typed terminal outcomes. The run
+exposed two implementation gaps: an exact optional manufacturer document was
+not attempted after an official product page returned no claims, and the
+two-page `BBMB445PX` product specification used a Beko fridge layout that the
+parser did not yet understand. AB1 passed a full online audit over 717 prior
+objects and was promoted only to preserve its immutable terminal-attempt
+history. AB1 and its pre-change results are closed and must not be resumed.
+
+Optional-document fallback is now candidate-specific rather than role-wide. A
+document may be attempted in the second pass only when all of these conditions
+are true:
+
+- authority is official and source role is `manufacturer_document`;
+- the required first pass ended as `identity_rejected` or `claims_incomplete`;
+- discovery provenance records market `AU`;
+- normalized target model, `requestedModel` and `matchedModel` are all equal;
+- the provenance artifact URL is exactly the candidate source URL; and
+- the candidate is still `not_attempted_optional`.
+
+The eligible `candidateId` values are passed as an explicit allowlist to the
+inventory expander. A single valid document cannot cause sibling, wrong-market
+or wrong-URL documents with the same source role to be fetched. Conflict-driven
+official corroboration retains its broader policy-controlled behavior.
+
+The new grammar
+`beko_au_fridge_product_spec_mixed_section_list_v1` accepts only one exact-model
+Beko fridge page header, one complete ordered `Dimensions & Weights` label
+paragraph and one adjacent value list containing exactly one contiguous
+`mm/mm/mm/kg/mm/mm/mm/kg` sequence. Prefix values such as ice-maker details and
+suffix values such as SKU or EAN are ignored. Reordered labels, mixed units,
+duplicate sequences, sibling-model headers and other appliance categories fail
+closed. For `BBMB445PX`, the receipt projects only:
+
+| Field | Value | Source semantics |
+| --- | ---: | --- |
+| width | 756 mm | `Unpackaged Width` |
+| height | 1770 mm | `Unpackaged Height` |
+| depth | 700 mm | `Depth(incl. Doors)`; includes door, handle unknown |
+
+Packaged dimensions, weight, `Cabin Width 76 cm`, the operation diagram and all
+installation clearances remain excluded or unknown. The resulting dimensions
+receipt is not eligible for `VERIFIED_FIT`.
+
+The post-fix run used unique IDs
+`historical-beko-fridges-20260717-ab2-preflight` and
+`historical-beko-fridges-20260717-ab2`. AB2 accepted only `BBMB445PX`. The
+manuals for `BBM407PX`, `BBM450AN`, `BBM450W` and `BBM450X` were downloaded and
+MinerU-indexed but failed exact in-document identity; `BBM450W` and `BBM450X`
+resolve to the same immutable PDF hash. They remain terminal and may be reopened
+only after a separately tested identity grammar or a newly materialized exact
+official source, never by resuming AB2. The full AB2 online audit checked 721
+objects with zero repairs and zero violations.
+
+AB1 and AB2 intentionally share the same selection-derived `batchId`. The
+cumulative acceptance bundle previously treated that value as a unique run
+lineage key and rejected the legal second promotion. Promotion now preserves
+the original lineage and assigns a colliding new run the deterministic ID
+`<batchId>--results-<results-sha-prefix>`. An identical re-promotion locates the
+existing row by batch, queue and results hashes and remains byte-stable; it does
+not create a third lineage or overwrite the first run.
+
+After AB2 promotion and a full recovery refresh, the cumulative bundle contains
+345 accepted entries and 370 replayable sources. All 370 receipts replay. The
+historical classification contains 364 complete receipts, the public projection
+contains 295 receipt-bound dimension records and zero receipt-bound
+`VERIFIED_FIT` records. The executable queue contains 7,607 targets and 39
+durably suppressed resolver-only targets; none of the five AB targets is
+immediately executable under the current epoch.

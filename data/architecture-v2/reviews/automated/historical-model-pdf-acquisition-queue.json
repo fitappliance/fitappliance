@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T23:59:11.852Z",
-  "semanticQueueSha256": "ce495985dc966e718f522833c1fcd7b53708e162364f8e7dcb05972f94c2f085",
-  "sourceClassificationSha256": "5eedc4e717e0fd1faca0148c0afaa5a8a35245da537728a266ee22aa44f66318",
+  "generatedAt": "2026-07-17T00:41:27.426Z",
+  "semanticQueueSha256": "17629c6601001bffed481db6230184ec1845c54f48378b86fcecd9f7bd05db36",
+  "sourceClassificationSha256": "dd3e4587b23068c5bbdd7704e9a349529fa5f6922f1221b8ef6a5ca04c5e8bdb",
   "records": [
     {
       "schemaVersion": 1,
@@ -1935,8 +1935,8 @@
       "model": "HDW15V2S1",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 076b650c074f",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -1966,8 +1966,8 @@
       "model": "HDW15V3S1",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family 076b650c074f",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -7874,130 +7874,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f9e2ad90062562b994c4d34d",
-      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM407PX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_f0ea3e9941ded62464f23b30"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c9f6e399045019f484c609e1"
-      ],
-      "legacyRuntimeIds": [
-        "ao-62774"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_68b86add207841292e9a5083"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_26793e7aba61089434a949ff",
-      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450AN",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_397c96344f6cc0a38870c820"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_6cc9fc43b1069f007e984b3f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77023"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_35603fcdc485eeb1d361470a"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_04109acc3352e44d4a43e346",
-      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_02017fe7fb350979fe8f6b83"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c3c9af1bd826cac06e40e0d0"
-      ],
-      "legacyRuntimeIds": [
-        "ao-64576"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b39f6e10698794ee503b7dea"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_bb4b06d67df95204f576a1bc",
-      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_40f7cd31818edb5eba21eea9"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_75dd12a645eecd3a896c8c36"
-      ],
-      "legacyRuntimeIds": [
-        "ao-64577"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_665a83ea5766c87c5979503b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_c12d4507630ce525345fa556",
       "referenceId": "fa_ref_b2b14097dd66efbdb7e932e1",
       "category": "fridge",
@@ -8024,37 +7900,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_7b8a564b7ec14be16c8b4037"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_2cacd1220e29f4a008d6249a",
-      "referenceId": "fa_ref_0e766c6071252bb43cb23986",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBMB445PX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_2b7ea4973be841682bf76c7e"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_7c3a83dcf408d47f54f4f2c0"
-      ],
-      "legacyRuntimeIds": [
-        "ao-154128"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b5a620d1e2e9c315868af9ac"
       ],
       "offlineReplayOutcome": null
     },
@@ -9078,6 +8923,130 @@
       ],
       "canonicalProductIds": [
         "fa_prod_d2cc72d2b1a0ac12f236b2f4"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_f9e2ad90062562b994c4d34d",
+      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "BBM407PX",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "BBM407PX",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_f0ea3e9941ded62464f23b30"
+      ],
+      "resolverIds": [
+        "beko-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_c9f6e399045019f484c609e1"
+      ],
+      "legacyRuntimeIds": [
+        "ao-62774"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_68b86add207841292e9a5083"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_26793e7aba61089434a949ff",
+      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "BBM450AN",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "BBM450AN",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_397c96344f6cc0a38870c820"
+      ],
+      "resolverIds": [
+        "beko-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_6cc9fc43b1069f007e984b3f"
+      ],
+      "legacyRuntimeIds": [
+        "ao-77023"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_35603fcdc485eeb1d361470a"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_04109acc3352e44d4a43e346",
+      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "BBM450W",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family 186d7fac41a1",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_02017fe7fb350979fe8f6b83"
+      ],
+      "resolverIds": [
+        "beko-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_c3c9af1bd826cac06e40e0d0"
+      ],
+      "legacyRuntimeIds": [
+        "ao-64576"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_b39f6e10698794ee503b7dea"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_bb4b06d67df95204f576a1bc",
+      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "BBM450X",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "document_family",
+      "groupName": "Document family 186d7fac41a1",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_40f7cd31818edb5eba21eea9"
+      ],
+      "resolverIds": [
+        "beko-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_75dd12a645eecd3a896c8c36"
+      ],
+      "legacyRuntimeIds": [
+        "ao-64577"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_665a83ea5766c87c5979503b"
       ],
       "offlineReplayOutcome": null
     },
@@ -27500,37 +27469,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_7b794515bf5c0acf79037ae3",
-      "referenceId": "fa_ref_7ebf0a5d46911e6ae58fd6c4",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAE22466AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_1682b8efda65d4e0e1b05dd1"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_3dd723bd8abaeee8a5cb3bfe"
-      ],
-      "legacyRuntimeIds": [
-        "ao-47516"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_46bf09cd895ac2271a82677e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_24f3f075ced95d6b88ab2c35",
       "referenceId": "fa_ref_1fb831e6b538f8b70b823166",
       "category": "washing_machine",
@@ -27538,8 +27476,8 @@
       "model": "WAK24162AU",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "document_family",
+      "groupName": "Document family be50fdc351af",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -27562,99 +27500,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_718447e1db7f59843d6cf127",
-      "referenceId": "fa_ref_375f29f4f91e3890a0def5ce",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAP28380AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ead1b772642ccf2e0cd2e2c4"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_96a67c07a4f5930ea7a0fd31"
-      ],
-      "legacyRuntimeIds": [
-        "ao-47452"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9ca88e06e6c4a2ab7671aa8f"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_0b7b288b4ad51943c98aade9",
-      "referenceId": "fa_ref_89c81e01f803afa5e94914c7",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAW28640AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_f54f6fd62d514482e7bac589"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_f26116765c287fa662075523"
-      ],
-      "legacyRuntimeIds": [
-        "ao-63684"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_ffb0888bb9c56577ae083acc"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_32132dff6fa2df579d9f316d",
-      "referenceId": "fa_ref_1cb2e322795f94f6c50a5831",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WVG28420AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_601b3ccc4c87854fe810e8c1"
-      ],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_dffc4ed4e05924c97b54bade"
-      ],
-      "legacyRuntimeIds": [
-        "ao-67576"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d1e4988dd079ffba61bab26f"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_59a511bf1e45d4a25f9bd18a",
       "referenceId": "fa_ref_e34071b813b2eb7954945af6",
       "category": "washing_machine",
@@ -27662,8 +27507,8 @@
       "model": "WVH28441AU",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_004134185922d8a5",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -27693,8 +27538,8 @@
       "model": "WVH28490AU",
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_454fce858734044e",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -27712,6 +27557,130 @@
       ],
       "canonicalProductIds": [
         "fa_prod_b893f5bb660e347143481639"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_0b7b288b4ad51943c98aade9",
+      "referenceId": "fa_ref_89c81e01f803afa5e94914c7",
+      "category": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAW28640AU",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4d28028d0f2ca563",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_f54f6fd62d514482e7bac589"
+      ],
+      "resolverIds": [
+        "bosch-official-product-documents"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_f26116765c287fa662075523"
+      ],
+      "legacyRuntimeIds": [
+        "ao-63684"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_ffb0888bb9c56577ae083acc"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_32132dff6fa2df579d9f316d",
+      "referenceId": "fa_ref_1cb2e322795f94f6c50a5831",
+      "category": "washing_machine",
+      "brand": "Bosch",
+      "model": "WVG28420AU",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_7f2ae0175285e037",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_601b3ccc4c87854fe810e8c1"
+      ],
+      "resolverIds": [
+        "bosch-official-product-documents"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_dffc4ed4e05924c97b54bade"
+      ],
+      "legacyRuntimeIds": [
+        "ao-67576"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_d1e4988dd079ffba61bab26f"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_7b794515bf5c0acf79037ae3",
+      "referenceId": "fa_ref_7ebf0a5d46911e6ae58fd6c4",
+      "category": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAE22466AU",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "WAE22466AU",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_1682b8efda65d4e0e1b05dd1"
+      ],
+      "resolverIds": [
+        "bosch-official-product-documents"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_3dd723bd8abaeee8a5cb3bfe"
+      ],
+      "legacyRuntimeIds": [
+        "ao-47516"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_46bf09cd895ac2271a82677e"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_718447e1db7f59843d6cf127",
+      "referenceId": "fa_ref_375f29f4f91e3890a0def5ce",
+      "category": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAP28380AU",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "WAP28380AU",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_ead1b772642ccf2e0cd2e2c4"
+      ],
+      "resolverIds": [
+        "bosch-official-product-documents"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_96a67c07a4f5930ea7a0fd31"
+      ],
+      "legacyRuntimeIds": [
+        "ao-47452"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_9ca88e06e6c4a2ab7671aa8f"
       ],
       "offlineReplayOutcome": null
     },
@@ -189750,37 +189719,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_83fb1219ab4adf59f582c692",
-      "referenceId": "fa_ref_9d003e7ce25e4e15d16c3432",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE6874BA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P3_CONFLICT",
-      "groupType": "document_family",
-      "groupName": "Document family a792faf4dd33",
-      "operationalClass": "CONFLICT_QUARANTINE",
-      "route": "CONFLICT_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
-      "candidateSourceIds": [
-        "historical_source_ef9508edd21251ca9b84aab6"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_eb7a5a3e5a9326a75d4b32cc"
-      ],
-      "legacyRuntimeIds": [
-        "ao-88474"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_ec7d5da97c44f9e0d0de0bcc"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_60d9103aade1232faf28fa5f",
       "referenceId": "fa_ref_bc817e7f1b66a2298d042440",
       "category": "fridge",
@@ -189788,8 +189726,8 @@
       "model": "WHE6874SA",
       "lifecycleState": "CATALOG_ARCHIVED",
       "priority": "P3_CONFLICT",
-      "groupType": "document_family",
-      "groupName": "Document family a792faf4dd33",
+      "groupType": "unclassified",
+      "groupName": null,
       "operationalClass": "CONFLICT_QUARANTINE",
       "route": "CONFLICT_CLOSURE",
       "executionReadiness": "RESEARCH_REQUIRED",
@@ -190365,6 +190303,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_6d94a61f25c68a1a56a33a4c"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_83fb1219ab4adf59f582c692",
+      "referenceId": "fa_ref_9d003e7ce25e4e15d16c3432",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6874BA",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P3_CONFLICT",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_100af9c8141cceb2",
+      "operationalClass": "CONFLICT_QUARANTINE",
+      "route": "CONFLICT_CLOSURE",
+      "executionReadiness": "RESEARCH_REQUIRED",
+      "candidateSourceIds": [
+        "historical_source_ef9508edd21251ca9b84aab6"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_eb7a5a3e5a9326a75d4b32cc"
+      ],
+      "legacyRuntimeIds": [
+        "ao-88474"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_ec7d5da97c44f9e0d0de0bcc"
       ],
       "offlineReplayOutcome": null
     },
@@ -193837,19 +193806,6 @@
       ],
       "referenceIds": [
         "fa_ref_361db00111fb6682a9bd612c"
-      ]
-    },
-    {
-      "sourceId": "historical_source_2b7ea4973be841682bf76c7e",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/3/2/3/232353f1e5d89b03b7aec0577e6f7ef33c4d13f0_BBMB445PX_Beko_Specification_Sheet_2023.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/BBMB445PX.json",
-        "source:doc_7730350e9ea33405b3339f5b"
-      ],
-      "referenceIds": [
-        "fa_ref_0e766c6071252bb43cb23986"
       ]
     },
     {
@@ -208701,46 +208657,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 363,
+    "COMPLETE_RECEIPT": 364,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8093,
-    "queuedModels": 7730,
-    "uniqueReferences": 7730,
-    "candidateSources": 1379,
-    "candidateEdges": 1414,
+    "queuedModels": 7729,
+    "uniqueReferences": 7729,
+    "candidateSources": 1378,
+    "candidateEdges": 1413,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1092,
+      "CURRENT_RETAIL": 1091,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1265,
       "dryer": 801,
-      "fridge": 4216,
+      "fridge": 4215,
       "washing_machine": 1448
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1096
+      "REFERENCE_REDISCOVERY": 1095
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1096
+      "OFFICIAL_REDISCOVERY": 1095
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5065,
+      "DISCOVERY_READY": 5064,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 363,
+      "COMPLETE_RECEIPT": 364,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

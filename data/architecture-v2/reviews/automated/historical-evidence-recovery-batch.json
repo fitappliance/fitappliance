@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-d9a5242b7f9c6a23f4f60b0c",
-  "generatedAt": "2026-07-16T23:59:11.852Z",
+  "batchId": "historical-recovery-500a4e275314f859c5c00ade",
+  "generatedAt": "2026-07-17T00:41:27.426Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "fb823f0d844c85f80e430a403fa415c5b7a6ec2c162f99b342393b4808948782"
+    "sha256": "a6a5d9d6d441dcf99d5df36abdc62417023b7a233d4af2c548246372d6cebfcf"
   },
   "policy": {
     "version": "2026-07-16.19",
@@ -4899,134 +4899,6 @@
       }
     },
     {
-      "targetId": "recovery_target_c9f6e399045019f484c609e1",
-      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
-      "legacyRuntimeId": "ao-62774",
-      "canonicalProductId": "fa_prod_68b86add207841292e9a5083",
-      "brand": "Beko",
-      "model": "BBM407PX",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_981411b5729b38ffb9096efc",
-            "dimensionsMm": {
-              "width": 700,
-              "height": 1720,
-              "depth": 660
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
-      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
-      "legacyRuntimeId": "ao-77023",
-      "canonicalProductId": "fa_prod_35603fcdc485eeb1d361470a",
-      "brand": "Beko",
-      "model": "BBM450AN",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_e42110e34bceb406d69fd1e8",
-            "dimensionsMm": {
-              "width": 704,
-              "height": 1720,
-              "depth": 701
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
-      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
-      "legacyRuntimeId": "ao-64576",
-      "canonicalProductId": "fa_prod_b39f6e10698794ee503b7dea",
-      "brand": "Beko",
-      "model": "BBM450W",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_ee1ea71781c6fc53161f610c",
-            "dimensionsMm": {
-              "width": 704,
-              "height": 1720,
-              "depth": 701
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
-      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
-      "legacyRuntimeId": "ao-64577",
-      "canonicalProductId": "fa_prod_665a83ea5766c87c5979503b",
-      "brand": "Beko",
-      "model": "BBM450X",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_816d2f116fb46060ee3146c8",
-            "dimensionsMm": {
-              "width": 704,
-              "height": 1720,
-              "depth": 701
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_c135602ae53c5df6295b1340",
       "referenceId": "fa_ref_b2b14097dd66efbdb7e932e1",
       "legacyRuntimeId": "ao-64578",
@@ -5053,38 +4925,6 @@
               "width": 740,
               "height": 1720,
               "depth": 770
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_7c3a83dcf408d47f54f4f2c0",
-      "referenceId": "fa_ref_0e766c6071252bb43cb23986",
-      "legacyRuntimeId": "ao-154128",
-      "canonicalProductId": "fa_prod_b5a620d1e2e9c315868af9ac",
-      "brand": "Beko",
-      "model": "BBMB445PX",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_7730350e9ea33405b3339f5b",
-            "dimensionsMm": {
-              "width": 756,
-              "height": 1770,
-              "depth": 700
             }
           }
         ]
@@ -233749,7 +233589,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7612,
+    "targets": 7607,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

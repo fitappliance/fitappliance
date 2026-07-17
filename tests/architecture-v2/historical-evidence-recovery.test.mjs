@@ -234,10 +234,15 @@ test('normal Architecture V2 build does not generate the next recovery epoch que
 
 test('historical recovery refresh rebuilds dependent artifacts in topological order', async () => {
   const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
+  const knowledgeBuilder = await readFile(
+    'scripts/architecture-v2/build-dimension-expression-knowledge.mjs',
+    'utf8',
+  );
   assert.equal(
     packageJson.scripts['refresh:historical-evidence-recovery'],
     'node scripts/architecture-v2/build-public-projection.mjs'
       + ' && npm run build:historical-reference'
+      + ' && npm run build:dimension-expression-knowledge'
       + ' && npm run build:historical-model-evidence-classification'
       + ' && npm run build:historical-evidence-recovery-queue'
       + ' && npm run build:historical-model-pdf-acquisition-queue'
@@ -247,6 +252,12 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
       + ' && npm run publish:historical-reference'
       + ' && npm run audit:historical-replacement',
   );
+  assert.equal(
+    packageJson.scripts['build:dimension-expression-knowledge'],
+    'node scripts/architecture-v2/build-dimension-expression-knowledge.mjs --generated-at-from-reference',
+  );
+  assert.doesNotMatch(knowledgeBuilder, /historical-evidence-recovery-queue\.json/);
+  assert.doesNotMatch(knowledgeBuilder, /queueIdentityMaps/);
 });
 
 test('committed source queue matches its audited epoch and excludes scalar promoted targets', async () => {

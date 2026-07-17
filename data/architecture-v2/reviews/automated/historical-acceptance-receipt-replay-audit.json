@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T23:59:25.836Z",
-  "sourceBundleSha256": "5c8aa417e68ac50fc9517c7d407872effb96786d6b5869a6e16de62b674b3eb5",
+  "generatedAt": "2026-07-17T00:46:36.925Z",
+  "sourceBundleSha256": "3a9fa7a16db228dc25eac354403952a37a6600da0856a7f18a4157b390590cd6",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -2464,6 +2464,20 @@
       "contentSha256": "93e6a1cf6b970a160a844129f721cb6ded378424fbcfd3948dd609ffb24d0bba",
       "receiptBindingSha256": "df1b6c2b61a1009bf47c60b43ced13fed1384781aa8b886bb782bb1492805f55",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_7c3a83dcf408d47f54f4f2c0",
+      "referenceId": "fa_ref_0e766c6071252bb43cb23986",
+      "brand": "Beko",
+      "model": "BBMB445PX",
+      "category": "fridge",
+      "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf",
+      "sourcePdfSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
+      "contentSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
+      "receiptBindingSha256": "75c714cffaf106a03c253adc717267681c395c05b74a7d3eae65dfa7c32aa4a3",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/a8/48/a848d5a5a5437572ae210e954cc7c5d7cf21feefa14e9d8c1964f1da2bf3fd35.json",
       "status": "passed",
       "failureCode": null
     },
@@ -5171,11 +5185,11 @@
     }
   ],
   "summary": {
-    "entries": 344,
-    "sources": 369,
-    "passed": 369,
+    "entries": 345,
+    "sources": 370,
+    "passed": 370,
     "failed": 0
   },
-  "checkedObjects": 717,
-  "semanticAuditSha256": "bf6c8211474dedba5dd7588a11ddfbaf477349a1f771b4df7e1f368bf835dcfd"
+  "checkedObjects": 721,
+  "semanticAuditSha256": "68a69b9d44373c0689bad49b972b51362ccd59d8b092a2a27110263a1250aff2"
 }

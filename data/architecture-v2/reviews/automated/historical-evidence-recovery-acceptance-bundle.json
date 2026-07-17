@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-16T23:34:10.508Z",
+  "generatedAt": "2026-07-17T00:31:24.168Z",
   "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
   "entries": [
     {
@@ -39846,6 +39846,266 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "93e6a1cf6b970a160a844129f721cb6ded378424fbcfd3948dd609ffb24d0bba"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_7c3a83dcf408d47f54f4f2c0",
+      "referenceId": "fa_ref_0e766c6071252bb43cb23986",
+      "legacyRuntimeId": "ao-154128",
+      "canonicalProductId": "fa_prod_b5a620d1e2e9c315868af9ac",
+      "brand": "Beko",
+      "model": "BBMB445PX",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-d9a5242b7f9c6a23f4f60b0c-slice-d6c41588068c--results-0e3d80411549f9b0",
+      "auditSha256": "2c4f1f8d33ad29d788bf0c7a8b5eba54ffadcd9542abf3fb9dc1c0bf5c7613a5",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf",
+          "finalUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T00:24:27.832Z",
+          "contentSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
+          "objectPath": "evidence/web/sha256/b9/77/b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 760783,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Beko",
+            "model": "BBMB445PX",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 756
+              },
+              "sourceLabel": "Unpackaged Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "85e3bc8306d9f5d81b80aa9105a5e386cf3223d11320f7b51a88006e8c49d73f",
+              "bbox": [
+                526,
+                554,
+                937,
+                753
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1770
+              },
+              "sourceLabel": "Unpackaged Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "85e3bc8306d9f5d81b80aa9105a5e386cf3223d11320f7b51a88006e8c49d73f",
+              "bbox": [
+                526,
+                554,
+                937,
+                753
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 700
+              },
+              "sourceLabel": "Depth(incl. Doors)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "85e3bc8306d9f5d81b80aa9105a5e386cf3223d11320f7b51a88006e8c49d73f",
+              "bbox": [
+                526,
+                554,
+                937,
+                753
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_page",
+            "market": "AU",
+            "discoveryUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-75-6-cm-bbmb445px",
+            "requestedModel": "BBMB445PX",
+            "matchedModel": "BBMB445PX",
+            "artifactUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf",
+            "artifactLinkUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf",
+            "discoveryContentSha256": "50b93a5f02a8d77dfcba275962d09cabbde2c574171569cc87419e1a434b0b9b",
+            "discoveryObjectPath": "evidence/web/sha256/50/b9/50b93a5f02a8d77dfcba275962d09cabbde2c574171569cc87419e1a434b0b9b.html",
+            "discoveryByteSize": 806251
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
+            "contentSha256": "a848d5a5a5437572ae210e954cc7c5d7cf21feefa14e9d8c1964f1da2bf3fd35",
+            "objectPath": "evidence/derived/mineru-json/sha256/a8/48/a848d5a5a5437572ae210e954cc7c5d7cf21feefa14e9d8c1964f1da2bf3fd35.json",
+            "byteSize": 11452,
+            "pageCount": 2,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              2
+            ],
+            "sourcePageCount": 2,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "15b97d62343b25b7444a9938dc62151808fe4695b200908cf3a220e72659207c",
+              "objectPath": "evidence/derived/mineru-json/sha256/15/b9/15b97d62343b25b7444a9938dc62151808fe4695b200908cf3a220e72659207c.json",
+              "pages": [
+                2
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "BBMB445PX:page:1:9074ddadc9dc0e5befbaf24ab910f7bfa38b460f7db96c8a09a26f88162ecf30"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "BBMB445PX:page:2:aa0418e280ed3d0b39525936d1f55961f73f5cba982fe4a22d44c312f33d8921"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "BBMB445PX:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "BBMB445PX:page:2:46a2ec3d821cc6c129af80dc5be24570723894ef496cb5bb1be5e2ee92432409"
+            },
+            {
+              "type": "official_product_page_model",
+              "value": "BBMB445PX:50b93a5f02a8d77dfcba275962d09cabbde2c574171569cc87419e1a434b0b9b:https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-75-6-cm-bbmb445px"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "discoveryPolicyVersion": "2026-07-16.6",
+            "verifiedAt": "2026-07-17T00:24:27.832Z",
+            "bindingSha256": "75c714cffaf106a03c253adc717267681c395c05b74a7d3eae65dfa7c32aa4a3"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 756,
+            "heightMm": {
+              "minimumMm": 1770,
+              "maximumMm": 1770
+            },
+            "depthMm": 700
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf",
+            "contentSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
+            "receiptBindingSha256": "75c714cffaf106a03c253adc717267681c395c05b74a7d3eae65dfa7c32aa4a3",
+            "page": 1,
+            "fragmentSha256": "85e3bc8306d9f5d81b80aa9105a5e386cf3223d11320f7b51a88006e8c49d73f"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf",
+            "contentSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
+            "receiptBindingSha256": "75c714cffaf106a03c253adc717267681c395c05b74a7d3eae65dfa7c32aa4a3",
+            "page": 1,
+            "fragmentSha256": "85e3bc8306d9f5d81b80aa9105a5e386cf3223d11320f7b51a88006e8c49d73f"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/8700000927.pdf",
+            "contentSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
+            "receiptBindingSha256": "75c714cffaf106a03c253adc717267681c395c05b74a7d3eae65dfa7c32aa4a3",
+            "page": 1,
+            "fragmentSha256": "85e3bc8306d9f5d81b80aa9105a5e386cf3223d11320f7b51a88006e8c49d73f"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7"
         ]
       },
       "reconciliation": {
@@ -84664,6 +84924,20 @@
       "queueSha256": "dd9847bd53f228430d70717f552686054da9454ee3e4f0149af40cb9b01eb9b7",
       "resultsSha256": "9a0cd9e91c1d6636e21437411fe006f4eb2d10afe4c7f86c0e235055da1c9e47",
       "auditSha256": "3048ffc4ee1f24d6e879595922e26ef1d2662a32150d59f7b9811e5eca8c0e69"
+    },
+    {
+      "batchId": "historical-recovery-d9a5242b7f9c6a23f4f60b0c-slice-d6c41588068c",
+      "batchSha256": "978980552d892365afd31a8ad35f4b62506c34d9911ab442d38a36ca2373b7c6",
+      "queueSha256": "fb823f0d844c85f80e430a403fa415c5b7a6ec2c162f99b342393b4808948782",
+      "resultsSha256": "a3db66b2338d0a7e99a957974460b0c5c3b2d7e08fb729332bc443868478a81b",
+      "auditSha256": "f1d56d504c033059618d9fe4bdfb0625fda66b22bbb2725767ca9ccd40fbff8d"
+    },
+    {
+      "batchId": "historical-recovery-d9a5242b7f9c6a23f4f60b0c-slice-d6c41588068c--results-0e3d80411549f9b0",
+      "batchSha256": "978980552d892365afd31a8ad35f4b62506c34d9911ab442d38a36ca2373b7c6",
+      "queueSha256": "fb823f0d844c85f80e430a403fa415c5b7a6ec2c162f99b342393b4808948782",
+      "resultsSha256": "0e3d80411549f9b041df2d8416c3d0e4325ca3b75e942dc8490e1bdafb2c7181",
+      "auditSha256": "2c4f1f8d33ad29d788bf0c7a8b5eba54ffadcd9542abf3fb9dc1c0bf5c7613a5"
     },
     {
       "batchId": "historical-recovery-dd35fdc8662e45bb9fa6e49a-slice-4d29d871b5bf",
