@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T01:49:07.978Z",
-  "sourceBundleSha256": "825ee04ca9b724ddff58401fcc13e913fe6fff25ed059ebfbba253a77c9cd41c",
+  "generatedAt": "2026-07-17T02:26:17.230Z",
+  "sourceBundleSha256": "7f185571e4637db50ecde188b8aeacf06db1411aa1366e47caffcdb2e3ce966a",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -2034,6 +2034,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_6408c9a52cd3181c0e05a724",
+      "referenceId": "fa_ref_d936944be9bacb4c4bd3c487",
+      "brand": "Smeg",
+      "model": "DWA315B",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315B.pdf",
+      "sourcePdfSha256": "d5aaa01317c70bfff4f83ba0ce43ecf59b0ddad420e799560614d2556ed397ef",
+      "contentSha256": "d5aaa01317c70bfff4f83ba0ce43ecf59b0ddad420e799560614d2556ed397ef",
+      "receiptBindingSha256": "3c43a9a9bf4e27f0bc76be2c18e51135311a23975c138e41b246b13514a5176a",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/5a/1a/5a1a4034c42628a435199fc2e1e46641d42af12ec82cff9a7046f50c2a270776.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_64a6960846c48fe311bba83a",
       "referenceId": "fa_ref_935712563469337605863347",
       "brand": "Westinghouse",
@@ -3406,6 +3420,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_a5200218ee493f7359f966a2",
+      "referenceId": "fa_ref_9a0456e94b64fac6b6e7e48d",
+      "brand": "Smeg",
+      "model": "DWA315W",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315W.pdf",
+      "sourcePdfSha256": "239f9fbc1e11fd9f9bc86795cc1c6e1f18bf8215b51c07402274ae0d5205bc36",
+      "contentSha256": "239f9fbc1e11fd9f9bc86795cc1c6e1f18bf8215b51c07402274ae0d5205bc36",
+      "receiptBindingSha256": "bebe3ac9c93fa2259774bf998b47fef40caba0da08c818476a0b166e3fa063ca",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/37/91/3791025560e49f4fd94ecd25ab9d6afae916e358f2213498818ddc2d2f917d41.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_a53ffc44471da2f46e9487f8",
       "referenceId": "fa_ref_0b56ecc3c7db223cdadbc4ee",
       "brand": "CHIQ",
@@ -3542,6 +3570,20 @@
       "contentSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
       "receiptBindingSha256": "4d08fe00f39c80e3f5a0f6bd092681cce29dfdbe9781d64c0be5fcb6892e752b",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/fa/6f/fa6fb596e8b71973f182b833c5cc7acce9ff6bf9eb5d8a12480a7edd33e39190.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_a9b171f741459a8e7dafc75a",
+      "referenceId": "fa_ref_b420833074faad9db3b45283",
+      "brand": "Smeg",
+      "model": "DWA314W",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf",
+      "sourcePdfSha256": "088cb470a8c9296544e6e009d9e2a6e825967b99fdb0f6b3e3e3b0e36635fb99",
+      "contentSha256": "088cb470a8c9296544e6e009d9e2a6e825967b99fdb0f6b3e3e3b0e36635fb99",
+      "receiptBindingSha256": "abc2912311bba52f67d73b6f8e815aeaf5b40971d32b043eb5724ccf89ca2618",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/64/76/647608a2af8becc82eb3c4138e0bad21e0ca2b0129c2facfbf61439d32d1e189.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4904,6 +4946,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_e872c93eb6ca4eceec16135c",
+      "referenceId": "fa_ref_797aa5f7c8435f7fa156b3aa",
+      "brand": "Smeg",
+      "model": "DWA157B",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA157B.pdf",
+      "sourcePdfSha256": "18fb799bfc1eb64079d6cfe08b7cadc1a899c03af1fbdcb817ba322f3494d077",
+      "contentSha256": "18fb799bfc1eb64079d6cfe08b7cadc1a899c03af1fbdcb817ba322f3494d077",
+      "receiptBindingSha256": "9a398125916e7ddb16627106a38635ba59fb2fe5881a7a936b76d2b48a70c7bc",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/9e/52/9e52a1084f485146b35aea0b13c5d0bdfc6b442a34c321d91cd1dcfff65e97bb.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_e8bf737ce94d6a8254d3bed1",
       "referenceId": "fa_ref_700f681364afd12f4848293c",
       "brand": "Bosch",
@@ -5297,11 +5353,11 @@
     }
   ],
   "summary": {
-    "entries": 353,
-    "sources": 378,
-    "passed": 378,
+    "entries": 357,
+    "sources": 382,
+    "passed": 382,
     "failed": 0
   },
-  "checkedObjects": 733,
-  "semanticAuditSha256": "b48b3dfe77dc1eb14ae67e474a509a36fd9eaa8356d12f552dac4540d4a9ee74"
+  "checkedObjects": 741,
+  "semanticAuditSha256": "afb0ab7c906ed12202e612a21b403968c9c34e207cadf13cf425ee6c458cc823"
 }

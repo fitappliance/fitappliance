@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T01:50:19.375Z",
-  "semanticQueueSha256": "5c5f9a8797521d169bcd53fff59c1405d6a21350fe3d28542104c081ecf9c3a2",
-  "sourceClassificationSha256": "ec64d29946d7a8eccf9211da6340a7d01501d746eb066d9f273013da42f3b61b",
+  "generatedAt": "2026-07-17T02:24:30.347Z",
+  "semanticQueueSha256": "8d6d08128a051c4b51d6ed5843e9aabdef4f9ef02fbe6b16dae57d22ea9a36c6",
+  "sourceClassificationSha256": "d8708bc842db3767f1ef7727172f7667e835a4fdf23f325a1c1c9a8419f112df",
   "records": [
     {
       "schemaVersion": 1,
@@ -4204,130 +4204,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_d1d3a680aed879a771bfc102"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_445188d6ef276af4a4248ad7",
-      "referenceId": "fa_ref_797aa5f7c8435f7fa156b3aa",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWA157B",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_850bba92c26a25f977b5d17c"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e872c93eb6ca4eceec16135c"
-      ],
-      "legacyRuntimeIds": [
-        "ao-11772"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_767473deafdd7ea071ddafa6"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_b3f632183e91e70abfdb9c83",
-      "referenceId": "fa_ref_b420833074faad9db3b45283",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWA314W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d9f7eb7ae83945ac0041c004"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a9b171f741459a8e7dafc75a"
-      ],
-      "legacyRuntimeIds": [
-        "ao-34092"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b6f62c38afa7f256304fe324"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_1e4c378ce8035e87eebd0239",
-      "referenceId": "fa_ref_d936944be9bacb4c4bd3c487",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWA315B",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_0d5eb6a47463486354c5c3b6"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_6408c9a52cd3181c0e05a724"
-      ],
-      "legacyRuntimeIds": [
-        "ao-34094"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_77cf9d306ac47422819d669f"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ae519ced14ea6673bb8e5b33",
-      "referenceId": "fa_ref_9a0456e94b64fac6b6e7e48d",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWA315W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_cf018b853f2ed2d839a3ec91"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a5200218ee493f7359f966a2"
-      ],
-      "legacyRuntimeIds": [
-        "ao-34095"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_bdd9ec138a6d03cad64783d9"
       ],
       "offlineReplayOutcome": null
     },
@@ -191317,19 +191193,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_0d5eb6a47463486354c5c3b6",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/f/d/c/f/fdcfb577dabb2577cc474d976adc2ce3b55aada1_DWA315B_Smeg_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DWA315B.json",
-        "source:doc_6e7f80a8153fdf3194095417"
-      ],
-      "referenceIds": [
-        "fa_ref_d936944be9bacb4c4bd3c487"
-      ]
-    },
-    {
       "sourceId": "historical_source_0dabb01ef7aeac019123e446",
       "sourceUrl": "https://media.miele.com/downloads/n-/ce/FS_11738410_OVE_OV-en-CE.pdf",
       "sourceAuthority": "NONE",
@@ -199981,19 +199844,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_850bba92c26a25f977b5d17c",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/2/d/a/22daf88bb19af743b46d166d1c0d92ebf47e9def_dwa157b.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DWA157B.json",
-        "source:doc_b14da6a8c6e02c5594fe4e9a"
-      ],
-      "referenceIds": [
-        "fa_ref_797aa5f7c8435f7fa156b3aa"
-      ]
-    },
-    {
       "sourceId": "historical_source_852f7c71a461f7cbb36f81e5",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/4/4/5/d/445d97eb1f9484b237c95a66d746599e417c6127_Hisense_HR6TFF600SD_593L_Top_Mount_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -205159,19 +205009,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_cf018b853f2ed2d839a3ec91",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/5/6/b/7/56b77a3ee1985dbfa2ed9d7f79fb57a29ce63881_dwa315w_technicalspecifications.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DWA315W.json",
-        "source:doc_5ae096eea207d3d003d8b5fe"
-      ],
-      "referenceIds": [
-        "fa_ref_9a0456e94b64fac6b6e7e48d"
-      ]
-    },
-    {
       "sourceId": "historical_source_cf1d61f58ae2efcded4641eb",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/e/f/3/3/ef336ee322aaf73ac567587c71470f4e3c7a66bc_TRF630SHG_Product_Specifications.pdf",
       "sourceAuthority": "REFERENCE",
@@ -205957,19 +205794,6 @@
       ],
       "referenceIds": [
         "fa_ref_37b87992b5c207176f912ef4"
-      ]
-    },
-    {
-      "sourceId": "historical_source_d9f7eb7ae83945ac0041c004",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/2/b/5/72b576045b8ec1fc8e7483af52ebd95bf72f676e_DWA314W_Smeg_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DWA314W.json",
-        "source:doc_ee7e1a545d47f9f3734cbbcd"
-      ],
-      "referenceIds": [
-        "fa_ref_b420833074faad9db3b45283"
       ]
     },
     {
@@ -208305,23 +208129,23 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 372,
+    "COMPLETE_RECEIPT": 376,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8093,
-    "queuedModels": 7721,
-    "uniqueReferences": 7721,
-    "candidateSources": 1370,
-    "candidateEdges": 1405,
+    "queuedModels": 7717,
+    "uniqueReferences": 7717,
+    "candidateSources": 1366,
+    "candidateEdges": 1401,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1083,
+      "CURRENT_RETAIL": 1079,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1261,
+      "dishwasher": 1257,
       "dryer": 801,
       "fridge": 4211,
       "washing_machine": 1448
@@ -208330,21 +208154,21 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1087
+      "REFERENCE_REDISCOVERY": 1083
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1087
+      "OFFICIAL_REDISCOVERY": 1083
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5056,
+      "DISCOVERY_READY": 5052,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 372,
+      "COMPLETE_RECEIPT": 376,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

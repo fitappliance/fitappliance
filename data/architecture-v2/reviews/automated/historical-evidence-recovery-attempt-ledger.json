@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-17T01:49:07.978Z",
+  "generatedAt": "2026-07-17T02:22:58.392Z",
   "processorEpochMigration": {
     "migratedAt": "2026-07-17T01:44:09.981Z",
     "migratedEntries": 3,
@@ -8789,6 +8789,37 @@
       "attemptedAt": "2026-07-15T22:04:32.763Z"
     },
     {
+      "attemptId": "historical_attempt_c778d256015146410eae6259",
+      "targetId": "recovery_target_a9b171f741459a8e7dafc75a",
+      "referenceId": "fa_ref_b420833074faad9db3b45283",
+      "legacyRuntimeId": "ao-34092",
+      "canonicalProductId": "fa_prod_b6f62c38afa7f256304fe324",
+      "brand": "Smeg",
+      "model": "DWA314W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf",
+      "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf",
+      "contentSha256": "088cb470a8c9296544e6e009d9e2a6e825967b99fdb0f6b3e3e3b0e36635fb99",
+      "status": "mineru_failure",
+      "failureCode": "mineru",
+      "reason": "no exact-model MinerU evidence with explicit axes extracted",
+      "reasonSha256": "93f92fe9e725348ea2dcc4a2c6fba71b52222c232b3193a03d66db3450ec26ee",
+      "disposition": "RETRY_AFTER_PARSER_OR_POLICY_CHANGE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "processorCapability": "smeg_au_techspec_pdf_dimensions_v1",
+      "evidenceProcessorSha256": "bbc860e3cde3776a8be9d760945b5440daf3980a69701a68f05ec767f5f78581",
+      "candidateInventorySha256": "b17ba8e0075a98c32db9af31cbc06672083c3243f5a53d659ca97a466a67d6b0",
+      "semanticOutcomeSha256": "c500537a6fd4b97719f6ff4c772d8c1f61f20fc1a83322de0fd1a27c995fbb17",
+      "batchId": "historical-recovery-c8f509825ec87cefde935d4b-slice-1422356b3d34",
+      "batchSha256": "fa1993e82007dfc356472dfac37fb2ebe217c7704176c90b6ffe2daed7e2c824",
+      "runId": "historical-smeg-dishwashers-20260717-ae1",
+      "resultsSha256": "d6202dbf5aea455c11d68b5e0d2f508262bab6d684b1dc1121532079afc6a217",
+      "auditSha256": "727cdd7d10b3e52e805e15f90dd2e5ec9a9f228a5e1f325c7197d898fba89026",
+      "attemptedAt": "2026-07-17T02:06:10.845Z"
+    },
+    {
       "attemptId": "historical_attempt_c785edf639f14582b82f9161",
       "targetId": "recovery_target_7f92b1a3a98551f7581fb471",
       "referenceId": "fa_ref_279bb2ff9098c91cd22d5dec",
@@ -11263,6 +11294,24 @@
       "resolvedAt": "2026-07-15T19:58:12.739Z"
     },
     {
+      "resolutionId": "historical_resolution_38fcd938e27eb8fc831b097a",
+      "attemptId": "historical_attempt_c778d256015146410eae6259",
+      "targetId": "recovery_target_a9b171f741459a8e7dafc75a",
+      "referenceId": "fa_ref_b420833074faad9db3b45283",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf",
+      "contentSha256": "088cb470a8c9296544e6e009d9e2a6e825967b99fdb0f6b3e3e3b0e36635fb99",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "25c59db64feebf5bdc1bb9f29f94753704f5339d200aed10860da2e4cebe849f",
+      "semanticOutcomeSha256": "6aff54a7b7a9e29066f96f4e466a9482d2d27f654a1abf33631475a64ed8701e",
+      "batchId": "historical-recovery-a88b4c52ed6c9bc81c9c6a21-slice-c969085763a4",
+      "batchSha256": "7be4b177b8d42bafd9ee69f99b851d42f4495ad97814c51750a0a237e8694847",
+      "runId": "historical-smeg-dishwasher-20260717-af1",
+      "resultsSha256": "88462815e5446872846d40cb61bec8890628b2c3889146913db4f02fbd5d25c5",
+      "auditSha256": "3a2fc747784724d2900f12ee6b7bac891302417695d1977ec4fb450daf259567",
+      "resolvedAt": "2026-07-17T02:21:58.429Z"
+    },
+    {
       "resolutionId": "historical_resolution_3a6150447a14e1d434122d0e",
       "attemptId": "historical_attempt_9562e8449073f2b3ef12578c",
       "targetId": "recovery_target_ff2a7ec908dd16cfd3730fee",
@@ -11586,6 +11635,23 @@
       "acceptedAt": "2026-07-16T18:40:19.863Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_0231e9ffcda519f2ee25265d",
+      "targetId": "recovery_target_e872c93eb6ca4eceec16135c",
+      "referenceId": "fa_ref_797aa5f7c8435f7fa156b3aa",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA157B.pdf",
+      "contentSha256": "18fb799bfc1eb64079d6cfe08b7cadc1a899c03af1fbdcb817ba322f3494d077",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "fcfb6156854ff7aafdd44ccb2b4377ac4c4a9c0cc39c6064e1e8f638f0893224",
+      "semanticOutcomeSha256": "937107bc10e79070ccb2a12591a873db70916eea4fb5695ae8b3e8a838932fb0",
+      "batchId": "historical-recovery-c8f509825ec87cefde935d4b-slice-1422356b3d34",
+      "batchSha256": "fa1993e82007dfc356472dfac37fb2ebe217c7704176c90b6ffe2daed7e2c824",
+      "runId": "historical-smeg-dishwashers-20260717-ae1",
+      "resultsSha256": "d6202dbf5aea455c11d68b5e0d2f508262bab6d684b1dc1121532079afc6a217",
+      "auditSha256": "727cdd7d10b3e52e805e15f90dd2e5ec9a9f228a5e1f325c7197d898fba89026",
+      "acceptedAt": "2026-07-17T02:06:10.845Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_02e0ed9208e0376f545083eb",
       "targetId": "recovery_target_dc5c84183ef45d12f70bf552",
       "referenceId": "fa_ref_4406a85cc9ac3d0eb2ce5b7e",
@@ -11635,6 +11701,23 @@
       "resultsSha256": "87f51766dc704b68c94d2f9d274251c97dde3c3fb29361df531bb6abc70281e0",
       "auditSha256": "21346a595b8e88983fe474d65cc270e8591e6441db19bf7ebcc18f61342504da",
       "acceptedAt": "2026-07-16T17:06:03.282Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_047e7e2d1c546c8e483a0db0",
+      "targetId": "recovery_target_6408c9a52cd3181c0e05a724",
+      "referenceId": "fa_ref_d936944be9bacb4c4bd3c487",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315B.pdf",
+      "contentSha256": "d5aaa01317c70bfff4f83ba0ce43ecf59b0ddad420e799560614d2556ed397ef",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "ae6c4800fc01f2ba60851df9a9441a2043094e96f91c4113a1f93158e3c19f41",
+      "semanticOutcomeSha256": "a44fd9d704dbc8cc46b4cec32f4a1fc092cedb2c4c5fc435139b926716f965a1",
+      "batchId": "historical-recovery-c8f509825ec87cefde935d4b-slice-1422356b3d34",
+      "batchSha256": "fa1993e82007dfc356472dfac37fb2ebe217c7704176c90b6ffe2daed7e2c824",
+      "runId": "historical-smeg-dishwashers-20260717-ae1",
+      "resultsSha256": "d6202dbf5aea455c11d68b5e0d2f508262bab6d684b1dc1121532079afc6a217",
+      "auditSha256": "727cdd7d10b3e52e805e15f90dd2e5ec9a9f228a5e1f325c7197d898fba89026",
+      "acceptedAt": "2026-07-17T02:06:10.845Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_053d20d1a165e2aad54c5757",
@@ -14221,6 +14304,23 @@
       "acceptedAt": "2026-07-16T08:41:58.415Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_95827ba174fa783900febf7e",
+      "targetId": "recovery_target_a9b171f741459a8e7dafc75a",
+      "referenceId": "fa_ref_b420833074faad9db3b45283",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf",
+      "contentSha256": "088cb470a8c9296544e6e009d9e2a6e825967b99fdb0f6b3e3e3b0e36635fb99",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "25c59db64feebf5bdc1bb9f29f94753704f5339d200aed10860da2e4cebe849f",
+      "semanticOutcomeSha256": "6aff54a7b7a9e29066f96f4e466a9482d2d27f654a1abf33631475a64ed8701e",
+      "batchId": "historical-recovery-a88b4c52ed6c9bc81c9c6a21-slice-c969085763a4",
+      "batchSha256": "7be4b177b8d42bafd9ee69f99b851d42f4495ad97814c51750a0a237e8694847",
+      "runId": "historical-smeg-dishwasher-20260717-af1",
+      "resultsSha256": "88462815e5446872846d40cb61bec8890628b2c3889146913db4f02fbd5d25c5",
+      "auditSha256": "3a2fc747784724d2900f12ee6b7bac891302417695d1977ec4fb450daf259567",
+      "acceptedAt": "2026-07-17T02:21:58.429Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_9771a27efd1ba6682694f9fd",
       "targetId": "recovery_target_0ca99ea2e3ca520266c62f80",
       "referenceId": "fa_ref_a28f5b6b48765d57d2e5dd1a",
@@ -15647,6 +15747,23 @@
       "resultsSha256": "99e85e776562a75f62d2fe446d015518a35e86d24c0c68e4837634898410b695",
       "auditSha256": "d1fb2add0ea9770d5265db19eb9234eb1782457166dfcce9af59808fabaca9e8",
       "acceptedAt": "2026-07-15T22:04:32.763Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_f129c54dd1e2c8ff4b93285c",
+      "targetId": "recovery_target_a5200218ee493f7359f966a2",
+      "referenceId": "fa_ref_9a0456e94b64fac6b6e7e48d",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315W.pdf",
+      "contentSha256": "239f9fbc1e11fd9f9bc86795cc1c6e1f18bf8215b51c07402274ae0d5205bc36",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "3799fc32ad99cac39dd046ceea4102f84da0fe9442a5f6084f6dc1d5a409e20a",
+      "semanticOutcomeSha256": "118af7bfbb9da1966f122da68643bbc1e351d5398897a799a29bc3dfe0e362a8",
+      "batchId": "historical-recovery-c8f509825ec87cefde935d4b-slice-1422356b3d34",
+      "batchSha256": "fa1993e82007dfc356472dfac37fb2ebe217c7704176c90b6ffe2daed7e2c824",
+      "runId": "historical-smeg-dishwashers-20260717-ae1",
+      "resultsSha256": "d6202dbf5aea455c11d68b5e0d2f508262bab6d684b1dc1121532079afc6a217",
+      "auditSha256": "727cdd7d10b3e52e805e15f90dd2e5ec9a9f228a5e1f325c7197d898fba89026",
+      "acceptedAt": "2026-07-17T02:06:10.845Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_f19fdfce5446bfebbb4860c6",
@@ -17429,6 +17546,50 @@
       "resultsSha256": "458df2ce93813b690f899242c8a5477fb9d49f61a1eed41af767942766d56be2",
       "auditSha256": "32f9b003c42bde8586a06d30b7ba8f6347f2170620994e644471d68ea2d03805",
       "attemptedAt": "2026-07-16T12:16:49.118Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_63aace1b898e70f3fc67969e",
+      "targetId": "recovery_target_a9b171f741459a8e7dafc75a",
+      "referenceId": "fa_ref_b420833074faad9db3b45283",
+      "legacyRuntimeId": "ao-34092",
+      "canonicalProductId": "fa_prod_b6f62c38afa7f256304fe324",
+      "brand": "Smeg",
+      "model": "DWA314W",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "mineru",
+      "reason": "complete_exhausted_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "a609a196b3601e68c15af3d5cedf91960da7da9d9fddccc49625376523399e4f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 1
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "b17ba8e0075a98c32db9af31cbc06672083c3243f5a53d659ca97a466a67d6b0",
+      "semanticOutcomeSha256": "c500537a6fd4b97719f6ff4c772d8c1f61f20fc1a83322de0fd1a27c995fbb17",
+      "batchId": "historical-recovery-c8f509825ec87cefde935d4b-slice-1422356b3d34",
+      "batchSha256": "fa1993e82007dfc356472dfac37fb2ebe217c7704176c90b6ffe2daed7e2c824",
+      "runId": "historical-smeg-dishwashers-20260717-ae1",
+      "resultsSha256": "d6202dbf5aea455c11d68b5e0d2f508262bab6d684b1dc1121532079afc6a217",
+      "auditSha256": "727cdd7d10b3e52e805e15f90dd2e5ec9a9f228a5e1f325c7197d898fba89026",
+      "attemptedAt": "2026-07-17T02:06:10.845Z"
     },
     {
       "targetAttemptId": "historical_target_attempt_6b9d336dfc0518742d134277",
@@ -19644,22 +19805,22 @@
     }
   ],
   "summary": {
-    "entries": 381,
-    "resolutions": 23,
-    "sourceAcceptances": 258,
+    "entries": 382,
+    "resolutions": 24,
+    "sourceAcceptances": 262,
     "suppressions": 298,
-    "resolvedSuppressions": 20,
+    "resolvedSuppressions": 21,
     "retryable": 63,
-    "targetAttempts": 72,
-    "resolverOnlySuppressions": 72,
+    "targetAttempts": 73,
+    "resolverOnlySuppressions": 73,
     "byStatus": {
       "claims_incomplete": 40,
       "identity_rejected": 199,
-      "mineru_failure": 80,
+      "mineru_failure": 81,
       "transport_failure": 62
     },
     "byDisposition": {
-      "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 80,
+      "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 81,
       "RETRY_TRANSIENT": 62,
       "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 199,
       "SEEK_EXACT_MODEL_FIELD_SOURCE": 40

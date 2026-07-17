@@ -14,7 +14,9 @@ import {
   validateDimensionEvidenceClaimsV2,
 } from './dimension-evidence-claim.mjs';
 import {
+  extractSmegAuDishwasherFixedTableSizeRows,
   extractSmegAuDishwasherSizeRows,
+  SMEG_AU_DISHWASHER_SUFFIX_FIXED_GRAMMAR,
   SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
 } from './smeg-pdf-dimensions.mjs';
 
@@ -721,6 +723,14 @@ function paragraphRows(text) {
     value: `${suffixed[1]} x ${suffixed[3]} x ${suffixed[4]} ${suffixed[2]}`,
     quote: normalizedText(text),
   }] : [];
+}
+
+function smegAuDishwasherTableRows(fragment) {
+  if (fragment?.type !== 'table' || !Array.isArray(fragment.rows)) return [];
+  const matches = fragment.rows
+    .map((row) => extractSmegAuDishwasherFixedTableSizeRows(`${row.label} ${row.value}`))
+    .filter(Boolean);
+  return matches.length === 1 ? matches[0] : [];
 }
 
 function joinedGroupedParagraphRow(items, fragmentIndex) {
@@ -3102,6 +3112,17 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'An exact-model Smeg Australia Techspec PDF contains one anchored Size expression whose positive integer values carry unique mmW, mmD and mmH suffixes in W/D/H order. Only the final height value may be an increasing range, with an optional max suffix.',
     semanticBoundary: 'Closed width and depth remain fixed while the complete adjustable height range is preserved. Packaging, installation, cavity, non-height ranges, duplicate axes, reversed ranges, fixed-height lookalikes and trailing qualification text are excluded.',
   }),
+  [SMEG_AU_DISHWASHER_SUFFIX_FIXED_GRAMMAR]: Object.freeze({
+    parserProfileId: SMEG_AU_DISHWASHER_SUFFIX_FIXED_GRAMMAR,
+    grammarFamilyId: 'smeg_au_dishwasher_techspec_dimensions_v1',
+    grammarFamilyName: 'Smeg Australia dishwasher technical specification',
+    variantName: 'Two-cell Size row with fixed W/H/D suffixes',
+    brand: 'Smeg',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model Smeg Australia Techspec PDF contains exactly one two-cell Size table row whose positive integer values carry unique mmW, mmH and mmD suffixes in W/H/D order.',
+    semanticBoundary: 'Only the closed fixed W/H/D envelope is projected. Packaging, installation, cavity, ranges, duplicate axes, multiple matching Size rows and trailing qualification text are excluded.',
+  }),
   [BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR]: Object.freeze({
     parserProfileId: BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR,
     grammarFamilyId: 'bosch_au_dishwasher_product_dimensions_v1',
@@ -4158,6 +4179,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         headerScoped || bodyScoped || modelTableScoped
         || sharedDimensionFragments.has(item)
         || groupedColumnRowsByFragment.get(item)?.length === 3
+        || (canonicalModel(caseIdentity?.brand) === 'SMEG' && category === 'dishwasher'
+          && smegAuDishwasherTableRows(item).length === 3)
         || containsExplicitModelExpression(item.identityText ?? item.text, model)
         || structuredFinishVariantScope?.dimensionFragment === item
         || haierTfe3Scope?.fragment === item
@@ -4202,8 +4225,13 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         const shiftedRows = claimSemanticsVersion === 2
           ? ocrShiftedDimensionSectionRows(fragment)
           : [];
+        const smegRows = canonicalModel(caseIdentity?.brand) === 'SMEG'
+          && category === 'dishwasher'
+          ? smegAuDishwasherTableRows(fragment)
+          : [];
         const directRows = [
           ...shiftedRows,
+          ...smegRows,
           ...(samsungWasherWildcardScope?.fragment === fragment
             || fisherPaykelRf610Scope?.fragment === fragment
             || fisherPaykelDw60ChSupportScope?.fragment === fragment

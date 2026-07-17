@@ -1757,6 +1757,56 @@ test('MinerU preserves Smeg W-D-H suffix order and an explicitly bounded adjusta
   }
 });
 
+test('MinerU parses an exact-model Smeg fixed W-H-D size row inside a larger table', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    titleFragment('DWA314W smeg freestanding/built-in dishwasher'),
+    titleFragment('ALSO AVAILABLE IN STAINLESS STEEL: DWA314X', [20, 130, 500, 165]),
+    tableFragment(`<table>
+      <tr><td>size</td><td>598mmW × 850mmH x 595mmD</td></tr>
+      <tr><td>capacity</td><td>14 place settings</td></tr>
+      <tr><td>water connection</td><td>single, cold/hot water max 60°C</td></tr>
+    </table>`),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    sourceUrls: ['https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf'],
+    caseIdentity: { brand: 'Smeg', model: 'DWA314W', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 850 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 595 },
+  });
+  assert.ok(parsed.claims.every((claim) => (
+    claim.sourceAxisOrder.join(',') === 'width,height,depth'
+  )));
+  assert.deepEqual(parsed.grammarProfileIds, [
+    'smeg-au-dishwasher-size-whd-suffix-fixed-v1',
+  ]);
+});
+
+test('Smeg fixed Size paragraphs retain the generic receipt semantics', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    pageHeader('DWA315W smeg freestanding/built-in dishwasher'),
+    paragraph('size 598mmW x 850mmH x 596mmD'),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Smeg', model: 'DWA315W', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(parsed.grammarProfileIds, []);
+  assert.ok(parsed.claims.every((claim) => (
+    claim.quote === undefined
+      && claim.sourceAxisOrder.join(',') === 'width,height,depth'
+  )));
+});
+
 test('Smeg suffix-range grammar rejects packaging, non-height ranges, duplicate axes, and trailing prose', () => {
   for (const expression of [
     'Package Size 598mmW x 570mmD x 818–868mmH max',

@@ -14,6 +14,7 @@ export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
   ]),
   [SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY]: Object.freeze([
     'src/domain/smeg-pdf-dimensions.mjs',
+    'src/domain/mineru-document.mjs',
   ]),
 });
 

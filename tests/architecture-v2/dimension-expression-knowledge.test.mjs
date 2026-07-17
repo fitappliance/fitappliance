@@ -439,6 +439,38 @@ test('knowledge documents the strict Smeg W-D-H adjustable-height grammar', () =
   assert.match(markdown, /Packaging, installation, cavity/i);
 });
 
+test('knowledge documents the strict Smeg two-cell fixed W-H-D grammar', () => {
+  const knowledge = buildDimensionExpressionKnowledge({
+    generatedAt: '2026-07-17T00:00:00.000Z',
+    historicalRecords: [
+      { category: 'dishwasher', brand: 'Smeg', model: 'DWA314W' },
+    ],
+    documents: [{
+      pdfSha256: '7'.repeat(64), contentSha256: '6'.repeat(64),
+      parserVersion: '3.4.4', modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+      sourceUrls: ['https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf'],
+      identities: [{ category: 'dishwasher', brand: 'Smeg', model: 'DWA314W' }],
+      contentList: [[
+        textBlock('title', 'DWA314W smeg freestanding/built-in dishwasher'),
+        table('<table><tr><td>size</td><td>598mmW × 850mmH x 595mmD</td></tr><tr><td>capacity</td><td>14 place settings</td></tr></table>'),
+      ]],
+    }],
+  });
+  const family = knowledge.categories.find((row) => row.category === 'dishwasher')
+    .brands[0].families[0];
+
+  assert.equal(family.groupType, 'parser_family');
+  assert.equal(family.groupName, 'Smeg Australia dishwasher technical specification');
+  assert.deepEqual(family.parserProfileIds, [
+    'smeg-au-dishwasher-size-whd-suffix-fixed-v1',
+  ]);
+  assert.equal(family.completeParserReplay, true);
+  const markdown = renderDimensionExpressionKnowledgeMarkdown(knowledge);
+  assert.match(markdown, /two-cell Size row/i);
+  assert.match(markdown, /W\/H\/D order/i);
+  assert.match(markdown, /multiple matching Size rows/i);
+});
+
 test('lettered explicit axes are distinct from unlabelled dimension triples', () => {
   const result = extractDimensionExpressions({
     pdfSha256: 'd'.repeat(64),

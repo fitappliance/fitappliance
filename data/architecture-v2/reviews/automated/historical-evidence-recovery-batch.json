@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-011addbaecd9a89369d19075",
-  "generatedAt": "2026-07-17T01:50:19.375Z",
+  "batchId": "historical-recovery-cc16c0f024732583f09ba65a",
+  "generatedAt": "2026-07-17T02:24:30.347Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "4068835094970380dd297ed70a2eba9407ed8d53adcc2e063aeaab6fff906190"
+    "sha256": "ebf33a5ae4a93240c35e799e76b807bf1016514564b10bb2e31b117bd3e8e940"
   },
   "policy": {
     "version": "2026-07-16.19",
@@ -2095,134 +2095,6 @@
               "width": 598,
               "height": 845,
               "depth": 600
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_e872c93eb6ca4eceec16135c",
-      "referenceId": "fa_ref_797aa5f7c8435f7fa156b3aa",
-      "legacyRuntimeId": "ao-11772",
-      "canonicalProductId": "fa_prod_767473deafdd7ea071ddafa6",
-      "brand": "Smeg",
-      "model": "DWA157B",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_b14da6a8c6e02c5594fe4e9a",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 850,
-              "depth": 596
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_a9b171f741459a8e7dafc75a",
-      "referenceId": "fa_ref_b420833074faad9db3b45283",
-      "legacyRuntimeId": "ao-34092",
-      "canonicalProductId": "fa_prod_b6f62c38afa7f256304fe324",
-      "brand": "Smeg",
-      "model": "DWA314W",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_ee7e1a545d47f9f3734cbbcd",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 850,
-              "depth": 595
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_6408c9a52cd3181c0e05a724",
-      "referenceId": "fa_ref_d936944be9bacb4c4bd3c487",
-      "legacyRuntimeId": "ao-34094",
-      "canonicalProductId": "fa_prod_77cf9d306ac47422819d669f",
-      "brand": "Smeg",
-      "model": "DWA315B",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_6e7f80a8153fdf3194095417",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 850,
-              "depth": 595
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_a5200218ee493f7359f966a2",
-      "referenceId": "fa_ref_9a0456e94b64fac6b6e7e48d",
-      "legacyRuntimeId": "ao-34095",
-      "canonicalProductId": "fa_prod_bdd9ec138a6d03cad64783d9",
-      "brand": "Smeg",
-      "model": "DWA315W",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_5ae096eea207d3d003d8b5fe",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 850,
-              "depth": 596
             }
           }
         ]
@@ -233461,7 +233333,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7603,
+    "targets": 7599,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

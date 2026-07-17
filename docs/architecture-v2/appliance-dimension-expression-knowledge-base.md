@@ -13,16 +13,16 @@ Generated: 2026-07-12T12:40:00.000Z
 | Historical records | 8093 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 905 |
-| Valid MinerU documents | 890 |
+| MinerU documents | 909 |
+| Valid MinerU documents | 894 |
 | Invalid or orphaned MinerU documents | 15 |
 | Documents with recognised expressions | 469 |
-| Documents without recognised expressions | 421 |
-| Mapped MinerU documents | 857 |
+| Documents without recognised expressions | 425 |
+| Mapped MinerU documents | 861 |
 | Unmapped MinerU documents | 33 |
 | Dimension-expression observations | 1133 |
-| Reusable PDF grammar profiles | 211 |
-| Research gaps | 1001 |
+| Reusable PDF grammar profiles | 212 |
+| Research gaps | 1005 |
 
 A marketing-series count is a proven minimum, never an estimate of the
 manufacturer's complete range. `UNKNOWN` is intentional when official text
@@ -259,7 +259,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | SEIKI | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | SHARP | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | SIEMENS | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Smeg | 124 | 5 | 0 | 2 | `MINERU_SAMPLE_OBSERVED` |
+| Smeg | 124 | 9 | 0 | 3 | `MINERU_SAMPLE_OBSERVED` |
 | Solt | 16 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Stirling | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Technika | 12 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -8392,10 +8392,49 @@ Research gaps:
 
 - Raw brand variants: `Smeg`
 - Inventory models: 124
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 5
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 9
 - Proven marketing series: 0; total series count: `UNKNOWN`
-- PDF grammar profiles: 2
-- Complete exact-model parser replays: 3
+- PDF grammar profiles: 3
+- Complete exact-model parser replays: 6
+
+#### DWA157B
+
+- Group type: `model_specific`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `DWA157B`
+- PDF SHA-256: `18fb799bfc1eb64079d6cfe08b7cadc1a899c03af1fbdcb817ba322f3494d077`
+- Official/source URLs: <https://sys.smeg.com.au/Product/Techspecs/DWA157B.pdf>
+
+`PARSER_REPLAY_COMPLETE`: the declared brand/category grammar produced complete exact-model dimension claims. Generic expression observations below remain diagnostic only.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### DWA315B
+
+- Group type: `model_specific`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `DWA315B`
+- PDF SHA-256: `d5aaa01317c70bfff4f83ba0ce43ecf59b0ddad420e799560614d2556ed397ef`
+- Official/source URLs: <https://sys.smeg.com.au/Product/Techspecs/DWA315B.pdf>
+
+`PARSER_REPLAY_COMPLETE`: the declared brand/category grammar produced complete exact-model dimension claims. Generic expression observations below remain diagnostic only.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+
+#### DWA315W
+
+- Group type: `model_specific`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `DWA315W`
+- PDF SHA-256: `239f9fbc1e11fd9f9bc86795cc1c6e1f18bf8215b51c07402274ae0d5205bc36`
+- Official/source URLs: <https://sys.smeg.com.au/Product/Techspecs/DWA315W.pdf>
+
+`PARSER_REPLAY_COMPLETE`: the declared brand/category grammar produced complete exact-model dimension claims. Generic expression observations below remain diagnostic only.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 
 #### DWA315X
 
@@ -8428,18 +8467,22 @@ Research gaps:
 
 - Group type: `parser_family`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `DWAFI6314`, `DWAI6314X`, `DWAU6315X`
-- PDF SHA-256: `4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5`, `5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e`, `b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5`
-- PDF grammar profiles: `smeg-au-dishwasher-size-wdh-suffix-range-v1`
+- Models observed: `DWA314W`, `DWAFI6314`, `DWAI6314X`, `DWAU6315X`
+- PDF SHA-256: `088cb470a8c9296544e6e009d9e2a6e825967b99fdb0f6b3e3e3b0e36635fb99`, `4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5`, `5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e`, `b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5`
+- PDF grammar profiles: `smeg-au-dishwasher-size-wdh-suffix-range-v1`, `smeg-au-dishwasher-size-whd-suffix-fixed-v1`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
 - Grammar variant: Size values with W/D/H suffixes and an adjustable height range
 - Detection: An exact-model Smeg Australia Techspec PDF contains one anchored Size expression whose positive integer values carry unique mmW, mmD and mmH suffixes in W/D/H order. Only the final height value may be an increasing range, with an optional max suffix.
 - Semantic boundary: Closed width and depth remain fixed while the complete adjustable height range is preserved. Packaging, installation, cavity, non-height ranges, duplicate axes, reversed ranges, fixed-height lookalikes and trailing qualification text are excluded.
-- Official/source URLs: <https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf>
+- Grammar variant: Two-cell Size row with fixed W/H/D suffixes
+- Detection: An exact-model Smeg Australia Techspec PDF contains exactly one two-cell Size table row whose positive integer values carry unique mmW, mmH and mmD suffixes in W/H/D order.
+- Semantic boundary: Only the closed fixed W/H/D envelope is projected. Packaging, installation, cavity, ranges, duplicate axes, multiple matching Size rows and trailing qualification text are excluded.
+- Official/source URLs: <https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf>
 
 `PARSER_REPLAY_COMPLETE`: the declared brand/category grammar produced complete exact-model dimension claims. Generic expression observations below remain diagnostic only.
 
 Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 2
