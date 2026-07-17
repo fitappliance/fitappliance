@@ -5,7 +5,7 @@ Status: active guardrails added on 2026-05-04.
 This audit checks the claims users actually see in the interface, not just whether
 catalog JSON is schema-valid.
 <!-- RETAILER_METRICS_SUMMARY:START -->
-The current raw specs catalog has 3,516 products;
+The current raw specs catalog has 3,512 products;
 retailer-verified products: 1,382; verified retailer product-page links in total:
 1,612; live price rows: 686. That means the UI must be careful about three words:
 price, stock, and requirement.
@@ -28,9 +28,9 @@ price, stock, and requirement.
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Fridges | 1,985 | 687 | 797 | 64 | 434 |
 | Dishwashers | 703 | 355 | 424 | 58 | 118 |
-| Dryers | 165 | 93 | 109 | 12 | 83 |
-| Washing machines | 663 | 247 | 282 | 27 | 51 |
-| **Total** | **3,516** | **1,382** | **1,612** | **161** | **686** |
+| Dryers | 162 | 93 | 109 | 12 | 83 |
+| Washing machines | 662 | 247 | 282 | 27 | 51 |
+| **Total** | **3,512** | **1,382** | **1,612** | **161** | **686** |
 <!-- RETAILER_METRICS_TABLE:END -->
 
 ## Guardrails

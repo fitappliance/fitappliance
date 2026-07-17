@@ -17,18 +17,18 @@
     "historicalRecords": 8089,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 930,
-    "validMineruDocuments": 915,
+    "mineruDocuments": 939,
+    "validMineruDocuments": 924,
     "invalidMineruDocuments": 15,
-    "documentsWithObservations": 486,
+    "documentsWithObservations": 495,
     "documentsWithoutObservations": 429,
-    "mappedMineruDocuments": 882,
+    "mappedMineruDocuments": 891,
     "unmappedMineruDocuments": 33,
-    "observations": 1156,
-    "researchGaps": 1027,
+    "observations": 1165,
+    "researchGaps": 1036,
     "parserProfiles": 215,
-    "parserReplays": 1041,
-    "completeParserReplays": 435
+    "parserReplays": 1050,
+    "completeParserReplays": 439
   },
   "categories": [
     {
@@ -102979,7 +102979,7 @@
             "Electrolux"
           ],
           "modelCount": 59,
-          "observedMineruDocuments": 3,
+          "observedMineruDocuments": 12,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 0,
           "observedParserProfileCount": 2,
@@ -102992,13 +102992,28 @@
               "groupType": "parser_family",
               "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
               "models": [
-                "EWF14013"
+                "EWF12753",
+                "EWF12763E",
+                "EWF14013",
+                "EWF1408B1WA",
+                "EWF14933",
+                "EWW12753"
               ],
               "pdfSha256s": [
-                "791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031"
+                "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773",
+                "378d9a3ee6cb135b2f7ee189826959d6fb69c5d8e9ef304b876b6dce45dd51a3",
+                "4bef6eca8a8f821f317bb64786cbaf434951893947bcb09d311617e34ad1b8ae",
+                "68f72b01c284bca3e3aed8ebcab98cd19f5474b49bafbdc32fa94fd11a4dd501",
+                "791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031",
+                "7b8c6a09dd8ac52009ccef9cdb41ef75f182c6730d70d7bee5da62fab296bdf1"
               ],
               "sourceUrls": [
-                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF14013&brand=Electrolux"
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF12753&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF12763E&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF14013&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF1408B1WA&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF14933&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW12753&brand=Electrolux"
               ],
               "seriesEvidence": [],
               "parserProfiles": [
@@ -103036,6 +103051,50 @@
               ],
               "parserReplays": [
                 {
+                  "pdfSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773",
+                  "category": "washing_machine",
+                  "brand": "Electrolux",
+                  "model": "EWF12763E",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                },
+                {
+                  "pdfSha256": "378d9a3ee6cb135b2f7ee189826959d6fb69c5d8e9ef304b876b6dce45dd51a3",
+                  "category": "washing_machine",
+                  "brand": "Electrolux",
+                  "model": "EWF1408B1WA",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                },
+                {
+                  "pdfSha256": "4bef6eca8a8f821f317bb64786cbaf434951893947bcb09d311617e34ad1b8ae",
+                  "category": "washing_machine",
+                  "brand": "Electrolux",
+                  "model": "EWF12753",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                },
+                {
+                  "pdfSha256": "68f72b01c284bca3e3aed8ebcab98cd19f5474b49bafbdc32fa94fd11a4dd501",
+                  "category": "washing_machine",
+                  "brand": "Electrolux",
+                  "model": "EWF14933",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                },
+                {
                   "pdfSha256": "791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031",
                   "category": "washing_machine",
                   "brand": "Electrolux",
@@ -103045,9 +103104,239 @@
                   "claimFields": [],
                   "grammarProfileIds": [],
                   "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                },
+                {
+                  "pdfSha256": "7b8c6a09dd8ac52009ccef9cdb41ef75f182c6730d70d7bee5da62fab296bdf1",
+                  "category": "washing_machine",
+                  "brand": "Electrolux",
+                  "model": "EWW12753",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
                 }
               ],
               "expressions": [
+                {
+                  "observationId": "dimension_expression_20cfb0f4e1d93e8846a23f54",
+                  "pdfSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773",
+                  "contentSha256": "db49577768f5ebc12728267d66e6efbb1d153bc8acab8bb0fdcdcd0cbbea71a2",
+                  "page": 3,
+                  "bbox": [
+                    516,
+                    229,
+                    939,
+                    449
+                  ],
+                  "fragmentSha256": "e57bb19071b0f809e2dd2adfce27187d763ce325c2add0a7479f842c5abc4934",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF12763E&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EWF12763E",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EWF12763E"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm) | Depth with hoses (mm)",
+                  "sourceValue": "850 | 600 | 576 | 606",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 576 | Depth with hoses (mm) 606",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "576",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth with hoses (mm)",
+                      "value": "606",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
+                },
+                {
+                  "observationId": "dimension_expression_658c854644525b13c9030e9d",
+                  "pdfSha256": "4bef6eca8a8f821f317bb64786cbaf434951893947bcb09d311617e34ad1b8ae",
+                  "contentSha256": "bcd1356d160fdbe64657ba9d045030dae2ae875d2c338c016b16517b26109a62",
+                  "page": 3,
+                  "bbox": [
+                    516,
+                    228,
+                    939,
+                    450
+                  ],
+                  "fragmentSha256": "745925cad21a55f152509b819fc5412534fa1ecd08ccfb63f5cd66bb79d82daa",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF12753&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EWF12753",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EWF12753"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm) | Depth with hoses (mm)",
+                  "sourceValue": "850 | 600 | 585 | 600",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 585 | Depth with hoses (mm) 600",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "585",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth with hoses (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
+                },
+                {
+                  "observationId": "dimension_expression_80d3b847088ffd508250806f",
+                  "pdfSha256": "378d9a3ee6cb135b2f7ee189826959d6fb69c5d8e9ef304b876b6dce45dd51a3",
+                  "contentSha256": "78e512a74b72dcb3e5b3daee4b7bce71e1336a5ad21ce35258e173a5baedefb5",
+                  "page": 4,
+                  "bbox": [
+                    516,
+                    228,
+                    939,
+                    450
+                  ],
+                  "fragmentSha256": "155322962a96a45894af529caae7e6f3e272fdbe5d1256ae66b0045efdf4be9e",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF1408B1WA&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EWF1408B1WA",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EWF1408B1WA"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm) | Depth with hoses (mm)",
+                  "sourceValue": "1010 | 686 | 858 | 888",
+                  "sourceQuote": "Total height (mm) 1010 | Total width (mm) 686 | Total depth (mm) 858 | Depth with hoses (mm) 888",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "1010",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "686",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "858",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth with hoses (mm)",
+                      "value": "888",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
+                },
                 {
                   "observationId": "dimension_expression_96c69c4bdfa04dfc8dc0cab3",
                   "pdfSha256": "791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031",
@@ -103120,15 +103409,196 @@
                   ],
                   "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
                   "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
+                },
+                {
+                  "observationId": "dimension_expression_cde66e6b4678aefaaa7c3af9",
+                  "pdfSha256": "68f72b01c284bca3e3aed8ebcab98cd19f5474b49bafbdc32fa94fd11a4dd501",
+                  "contentSha256": "b8ffb1e69af64aad5ee26439153aa8df1aecb50fe9c41bf4c2ea69fe9ee2e554",
+                  "page": 4,
+                  "bbox": [
+                    516,
+                    228,
+                    939,
+                    450
+                  ],
+                  "fragmentSha256": "cd633a995d248563fd3d47844b8b23efaca6bd468df05fa7f9559e5068cfea83",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF14933&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EWF14933",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EWF14933"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm) | Depth with hoses (mm)",
+                  "sourceValue": "850 | 600 | 665 | 680",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 665 | Depth with hoses (mm) 680",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "665",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth with hoses (mm)",
+                      "value": "680",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
+                },
+                {
+                  "observationId": "dimension_expression_db02d91dd26be759d03bf5f9",
+                  "pdfSha256": "7b8c6a09dd8ac52009ccef9cdb41ef75f182c6730d70d7bee5da62fab296bdf1",
+                  "contentSha256": "43f9458960709e1be9bb3f10660488f60399b38845864dc0813b87ad409e883b",
+                  "page": 4,
+                  "bbox": [
+                    516,
+                    229,
+                    939,
+                    450
+                  ],
+                  "fragmentSha256": "bd2e129705f5ecbdfdafe1da366a3b62ecdd76fd52846e8784b41a945ae316eb",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW12753&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EWW12753",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EWW12753"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm) | Depth with hoses (mm)",
+                  "sourceValue": "850 | 600 | 585 | 600",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 585 | Depth with hoses (mm) 600",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "585",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth with hoses (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
                 }
               ],
               "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773",
+                  "contentSha256": "db49577768f5ebc12728267d66e6efbb1d153bc8acab8bb0fdcdcd0cbbea71a2",
+                  "page": 5,
+                  "quote": "Shipping Weight (Kg) 64 Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 614"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "4bef6eca8a8f821f317bb64786cbaf434951893947bcb09d311617e34ad1b8ae",
+                  "contentSha256": "bcd1356d160fdbe64657ba9d045030dae2ae875d2c338c016b16517b26109a62",
+                  "page": 5,
+                  "quote": "Shipping Volume (m3) 0.34 Shipping Weight (Kg) 73 Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 614"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "378d9a3ee6cb135b2f7ee189826959d6fb69c5d8e9ef304b876b6dce45dd51a3",
+                  "contentSha256": "78e512a74b72dcb3e5b3daee4b7bce71e1336a5ad21ce35258e173a5baedefb5",
+                  "page": 6,
+                  "quote": "Shipping Volume (m3) 0.762 Shipping Weight (Kg) 102 Pack Dimensions Height (mm) 1090 Pack Dimension Width (mm) 760 Pack Dimension Depth (mm) 920"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "68f72b01c284bca3e3aed8ebcab98cd19f5474b49bafbdc32fa94fd11a4dd501",
+                  "contentSha256": "b8ffb1e69af64aad5ee26439153aa8df1aecb50fe9c41bf4c2ea69fe9ee2e554",
+                  "page": 6,
+                  "quote": "Shipping Volume (m3) 0.386 Shipping Weight (Kg) 80 Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 698"
+                },
                 {
                   "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
                   "pdfSha256": "791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031",
                   "contentSha256": "45b9766213b75c4affc69256582cffe1b6c16aa81f74d3d5127292090c99f54b",
                   "page": 6,
                   "quote": "Shipping Volume (m3) 0.386 Shipping Weight (Kg) 80 Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 698"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "7b8c6a09dd8ac52009ccef9cdb41ef75f182c6730d70d7bee5da62fab296bdf1",
+                  "contentSha256": "43f9458960709e1be9bb3f10660488f60399b38845864dc0813b87ad409e883b",
+                  "page": 7,
+                  "quote": "Shipping Volume (m3) 0.34 Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 614"
                 }
               ],
               "parserProfileIds": [
@@ -103142,15 +103612,27 @@
               "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
               "models": [
                 "EWF1043R7WC",
-                "EWF8524CDWA"
+                "EWF7524CDWA",
+                "EWF8524CDWA",
+                "EWW1042ADWA",
+                "EWW7524ADWA",
+                "EWW8024Q5WB"
               ],
               "pdfSha256s": [
+                "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+                "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
                 "2ac969549bd7c5e18b6d65d72c95566b044a459ad371318299b1655db17f0fdf",
-                "a4e5c7e4fac09d686457572088fa90477002b4faaf673362de432529818b77b6"
+                "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+                "a4e5c7e4fac09d686457572088fa90477002b4faaf673362de432529818b77b6",
+                "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6"
               ],
               "sourceUrls": [
                 "https://commercial.appliancesonline.com.au/manuals/ak/f/f/3/e/ff3e125e7880481b455a8cd38a4a4073efdb7892_Electrolux_EWF1043R7WC_Factsheet.pdf",
-                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF8524CDWA&brand=Electrolux"
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF7524CDWA&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF8524CDWA&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW1042ADWA&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW7524ADWA&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW8024Q5WB&brand=Electrolux"
               ],
               "seriesEvidence": [],
               "parserProfiles": [
@@ -103188,10 +103670,55 @@
               ],
               "parserReplays": [
                 {
+                  "pdfSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+                  "category": "washing_machine",
+                  "brand": "Electrolux",
+                  "model": "EWW1042ADWA",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+                  "category": "washing_machine",
+                  "brand": "Electrolux",
+                  "model": "EWF7524CDWA",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
                   "pdfSha256": "2ac969549bd7c5e18b6d65d72c95566b044a459ad371318299b1655db17f0fdf",
                   "category": "washing_machine",
                   "brand": "Electrolux",
                   "model": "EWF1043R7WC",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+                  "category": "washing_machine",
+                  "brand": "Electrolux",
+                  "model": "EWW8024Q5WB",
                   "extractionState": "ALL_AXIS_SCALAR",
                   "identityScope": "EXACT_MODEL",
                   "claimFields": [
@@ -103216,9 +103743,158 @@
                   ],
                   "grammarProfileIds": [],
                   "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+                  "category": "washing_machine",
+                  "brand": "Electrolux",
+                  "model": "EWW7524ADWA",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
+                {
+                  "observationId": "dimension_expression_77d0c8e13941579c81c39737",
+                  "pdfSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+                  "contentSha256": "6c6aad1c1dad08b00406d6f56fbfd63cafcca0db9f2a3aa7cb5ec42561a3b61a",
+                  "page": 4,
+                  "bbox": [
+                    516,
+                    229,
+                    939,
+                    405
+                  ],
+                  "fragmentSha256": "9c008fa881e80f982cedaa1e2d7b622f7a5752b374497c4a0f0088eff4ea2e6c",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW1042ADWA&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EWW1042ADWA",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EWW1042ADWA"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "850 | 600 | 659",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 659",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "659",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_95084b1a0f3f99b3af64b727",
+                  "pdfSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+                  "contentSha256": "b476b1d6291e487e4d2d80ec5fddf2dbf304bd1ee0dc83e7334020299d33015a",
+                  "page": 3,
+                  "bbox": [
+                    516,
+                    229,
+                    939,
+                    405
+                  ],
+                  "fragmentSha256": "99f1bffd69e678a11328a0644c4ff142b0f1d73d4aa742985de6bfd35b338604",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW7524ADWA&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EWW7524ADWA",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EWW7524ADWA"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "850 | 600 | 575",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 575",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "575",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
                 {
                   "observationId": "dimension_expression_c5901a5e5ceee1c0060dcf03",
                   "pdfSha256": "a4e5c7e4fac09d686457572088fa90477002b4faaf673362de432529818b77b6",
@@ -103280,6 +103956,73 @@
                       "axis": "depth",
                       "label": "Total depth (mm)",
                       "value": "659",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_cbc998be4cb4935ebe306fa2",
+                  "pdfSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+                  "contentSha256": "e82adf751ea55cae1934e9b444ab2a434fa2cee63860dd5a9429a7cde4195975",
+                  "page": 4,
+                  "bbox": [
+                    516,
+                    229,
+                    939,
+                    405
+                  ],
+                  "fragmentSha256": "a2e8e939111c4e27cea58331c42a650c2e97573c782f4a6f03e33d248329a733",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW8024Q5WB&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EWW8024Q5WB",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EWW8024Q5WB"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "850 | 600 | 575",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 575",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "575",
                       "valueShape": "scalar"
                     }
                   ],
@@ -103352,9 +104095,97 @@
                   ],
                   "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
                   "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_fd1ec68240885e325839768d",
+                  "pdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+                  "contentSha256": "6776505d2620c673aebb02a0dd010a972d02d8dce0ce998d388e1d162fd4009d",
+                  "page": 3,
+                  "bbox": [
+                    516,
+                    228,
+                    939,
+                    405
+                  ],
+                  "fragmentSha256": "ec89d13d50dce47a714d1a694aa5ad56e292831de12a381d9fb06492276415b6",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF7524CDWA&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EWF7524CDWA",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EWF7524CDWA"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "850 | 600 | 575",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 575",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "575",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
                 }
               ],
               "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+                  "contentSha256": "6776505d2620c673aebb02a0dd010a972d02d8dce0ce998d388e1d162fd4009d",
+                  "page": 5,
+                  "quote": "Shipping Weight (Kg) 67.5 Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 614"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+                  "contentSha256": "b476b1d6291e487e4d2d80ec5fddf2dbf304bd1ee0dc83e7334020299d33015a",
+                  "page": 5,
+                  "quote": "es Shipping Volume (m3) 33.9 Shipping Weight (Kg) 64.5 Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 614"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+                  "contentSha256": "6c6aad1c1dad08b00406d6f56fbfd63cafcca0db9f2a3aa7cb5ec42561a3b61a",
+                  "page": 6,
+                  "quote": "es Shipping Volume (m3) 38.6 Shipping Weight (Kg) 81.5 Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 698"
+                },
                 {
                   "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
                   "pdfSha256": "2ac969549bd7c5e18b6d65d72c95566b044a459ad371318299b1655db17f0fdf",
@@ -103368,6 +104199,13 @@
                   "contentSha256": "0856495766a98f3d27eb4a4efe9be87520ff4ee9c32d1884139e7e3efc30e86a",
                   "page": 6,
                   "quote": "Shipping Volume (m3) 38.6 Shipping Weight (Kg) 73 Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 698"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+                  "contentSha256": "e82adf751ea55cae1934e9b444ab2a434fa2cee63860dd5a9429a7cde4195975",
+                  "page": 7,
+                  "quote": "Shipping Volume (m3) .34 Shipping Weight (Kg) 65 Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 614"
                 }
               ],
               "parserProfileIds": [

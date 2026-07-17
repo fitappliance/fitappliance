@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1344,
-    "fetchJobs": 1307,
-    "targets": 1341,
-    "candidateEdges": 1344,
+    "documents": 1340,
+    "fetchJobs": 1303,
+    "targets": 1337,
+    "candidateEdges": 1340,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1341,
+    "uniqueReferences": 1337,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 910,
+      "MEASURE_REQUIRED": 906,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1094
+      "CURRENT_RETAIL": 1090
     },
     "byCategory": {
       "dishwasher": 263,
       "dryer": 46,
       "fridge": 816,
-      "washing_machine": 216
+      "washing_machine": 212
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1047,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1043,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 262,
+      "ALREADY_AUTO_FILL": 266,
       "HISTORICAL_REFERENCE_NOT_FOUND": 146,
       "IDENTITY_NOT_EXACT": 195,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -3135,32 +3135,6 @@
       ],
       "targetIds": [
         "recovery_target_c13e862ebe001c40f7b6ff48"
-      ]
-    },
-    {
-      "jobId": "recovery_7176895e86906544417f40f1",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/c/d/b/1cdb17d67fd846f8cdba150ff9c8abe366de9f2c_EWW1042ADWA_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_f0f25efff0137106b674f8fd"
       ]
     },
     {
@@ -8520,32 +8494,6 @@
       ]
     },
     {
-      "jobId": "recovery_b21fdb3ed9db5b2816edf7c3",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/5/a/4/8/5a487aa42371871b667b9677a66172f35f330422_EWW7524ADWA_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_3efc9e26dbba01a4b200a4e8"
-      ]
-    },
-    {
       "jobId": "recovery_5db6bb35aeec2dd74150de0e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/a/5/1/5a51d02b157f1b1f30c1ba7cb636a47b2d5dc079_Asko_Dishwasher_D5646SSXXL_Specifications_Sheet.pdf",
       "authorityBrand": "ASKO",
@@ -12547,32 +12495,6 @@
       ],
       "targetIds": [
         "recovery_target_f4f3c43ee1f157e7dfd3b7cf"
-      ]
-    },
-    {
-      "jobId": "recovery_e55ee3ca37f076c4e19e37c4",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/6/0/e/860e503cb07270fc301401cab4cb0ec14fe20d0a_EWW8024Q5WB_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_751959f851ac7b41c88a6ad6"
       ]
     },
     {
@@ -19931,32 +19853,6 @@
       ],
       "targetIds": [
         "recovery_target_21429c74d1e20528bcf14903"
-      ]
-    },
-    {
-      "jobId": "recovery_ceeae109cc075f5ac1a95502",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/d/d/2/9/dd290caf041381520acabef6287932e0751f44c1_EWF7524CDWA_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_5f8e2af40b047d20e6ef4573"
       ]
     },
     {
@@ -40789,88 +40685,6 @@
       "primaryJobId": "recovery_ce7306ea4bd3b31a0f83a4e8"
     },
     {
-      "referenceId": "fa_ref_7230dde540ed2688d9a06f6b",
-      "legacyRuntimeId": "ao-73252",
-      "canonicalProductId": "fa_prod_753f1244da4a93aeab2c6008",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF7524CDWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 575
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_5f8e2af40b047d20e6ef4573",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a7becfdc163e2b4d04d6b4c0"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a7becfdc163e2b4d04d6b4c0",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 575
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_ceeae109cc075f5ac1a95502"
-      ],
-      "primaryJobId": "recovery_ceeae109cc075f5ac1a95502"
-    },
-    {
-      "referenceId": "fa_ref_1d7d89a4ade9dc5fd523fddf",
-      "legacyRuntimeId": "ao-73255",
-      "canonicalProductId": "fa_prod_85f57d0c0041e0962caff36b",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWW1042ADWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 659
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_f0f25efff0137106b674f8fd",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_cce0fb4723920b3b0e4f9e07"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_cce0fb4723920b3b0e4f9e07",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 659
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_7176895e86906544417f40f1"
-      ],
-      "primaryJobId": "recovery_7176895e86906544417f40f1"
-    },
-    {
       "referenceId": "fa_ref_2783e304e07eea19e3a6cbb2",
       "legacyRuntimeId": "ao-58683",
       "canonicalProductId": "fa_prod_7d0eb6c178fa5bb9a18aee84",
@@ -40910,88 +40724,6 @@
         "recovery_58864530c3df843c0091c74c"
       ],
       "primaryJobId": "recovery_58864530c3df843c0091c74c"
-    },
-    {
-      "referenceId": "fa_ref_f655e9c2df31c10ec25b1bca",
-      "legacyRuntimeId": "ao-73256",
-      "canonicalProductId": "fa_prod_da09a2ab0682eab48c930380",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWW7524ADWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 575
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_3efc9e26dbba01a4b200a4e8",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_893dc97966cf0020e18b1230"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_893dc97966cf0020e18b1230",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 575
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b21fdb3ed9db5b2816edf7c3"
-      ],
-      "primaryJobId": "recovery_b21fdb3ed9db5b2816edf7c3"
-    },
-    {
-      "referenceId": "fa_ref_ccd5e16cd4321866bdbf5583",
-      "legacyRuntimeId": "ao-104268",
-      "canonicalProductId": "fa_prod_d0e51e941ef6593800a514dd",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWW8024Q5WB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 575
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_751959f851ac7b41c88a6ad6",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d60d06027ac71b170a62102f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d60d06027ac71b170a62102f",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 575
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e55ee3ca37f076c4e19e37c4"
-      ],
-      "primaryJobId": "recovery_e55ee3ca37f076c4e19e37c4"
     },
     {
       "referenceId": "fa_ref_8d2b1301cda03fa772212a74",

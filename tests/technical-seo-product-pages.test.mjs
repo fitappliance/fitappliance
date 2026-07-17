@@ -624,3 +624,22 @@ test('technical SEO: package build generates product pages before sitemap', asyn
   );
   assert.match(packageJson.scripts['generate-all'], /generate-product-pages/);
 });
+
+test('technical SEO: page generators finalize comparison indexes before brand cross-links', async () => {
+  const packageJson = JSON.parse(await fs.readFile(path.join(process.cwd(), 'package.json'), 'utf8'));
+  for (const scriptName of ['build', 'generate-pages']) {
+    const script = packageJson.scripts[scriptName];
+    assert.ok(
+      script.indexOf('generate-comparisons') < script.indexOf('generate-brand-pages'),
+      `${scriptName}: brand pages must read the current comparison index`
+    );
+    assert.ok(
+      script.indexOf('generate-compare-vs') < script.indexOf('generate-brand-pages'),
+      `${scriptName}: brand pages must read the finalized compare-vs index`
+    );
+    assert.ok(
+      script.indexOf('generate-brand-pages') < script.indexOf('inject-video-schema'),
+      `${scriptName}: video schema must be injected after brand pages are regenerated`
+    );
+  }
+});

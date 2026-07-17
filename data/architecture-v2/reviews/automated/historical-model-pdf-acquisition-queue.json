@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:42:16.427Z",
-  "semanticQueueSha256": "29648d5a29e629bd485707224e4c26df674a7239ad8458a5de8863cc28df76a9",
-  "sourceClassificationSha256": "96c2199f63fc97d9333b8a0cea89eeeee7d2530a1bc6a621e9617a29e83fed8c",
+  "generatedAt": "2026-07-17T03:52:43.562Z",
+  "semanticQueueSha256": "2a1da636c23647566ae42610c4581245c30434b19c885fe7b3d465eaee376702",
+  "sourceClassificationSha256": "d4a00e495c9431517077078d1dbd7e176650e95eb571ff69671d2b0f95ffa4d9",
   "records": [
     {
       "schemaVersion": 1,
@@ -26758,161 +26758,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_c7eb09699949b046577bdf7c",
-      "referenceId": "fa_ref_534a39be8f15450b9fb6e3e8",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF12753",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_eeda789a1b83f7c5ce54fa68"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_d5e95778e2e9ad59d32cf12d"
-      ],
-      "legacyRuntimeIds": [
-        "ao-56598"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_e504312641ad5685f9991bb9"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_5886d92041ea180977f27d44",
-      "referenceId": "fa_ref_edb30c6b4e5528251ac48989",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF12763E",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_922c48adec1f435ed6fb7efa"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_d30e36b216de4a83af7944a2"
-      ],
-      "legacyRuntimeIds": [
-        "ao-63112"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_8bd772474cd7d8be87f10b3d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a4423d52635a00c68271d179",
-      "referenceId": "fa_ref_4c98e0754edf8b1793593c9d",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF1408B1WA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ce6056cfd6e126bd65e8acc9"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c01b72b4689428229d0b24bc"
-      ],
-      "legacyRuntimeIds": [
-        "ao-69709"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_436c66cbf154a1dc8aa88768"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_665e19b0e3f23d774ced7660",
-      "referenceId": "fa_ref_11710c3f491f7bbd07aa453f",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF14933",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_e8e904514528363240d19d53"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_1dcaa7abd5d4bc8431df0d32"
-      ],
-      "legacyRuntimeIds": [
-        "ao-58483"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_3d8c5e503d85e9313d7350d2"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_33c6798f879563df1abac47f",
-      "referenceId": "fa_ref_7230dde540ed2688d9a06f6b",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF7524CDWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_1e2b2e1622456b9284ab33dd"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_5f8e2af40b047d20e6ef4573"
-      ],
-      "legacyRuntimeIds": [
-        "ao-73252"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_753f1244da4a93aeab2c6008"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_f18d732e94e0d75812a4ac06",
       "referenceId": "fa_ref_466ea0fa6e260ff4b9577f9e",
       "category": "washing_machine",
@@ -26975,130 +26820,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d6f4016aad20c40c3120dde9",
-      "referenceId": "fa_ref_1d7d89a4ade9dc5fd523fddf",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWW1042ADWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_5f2ac396fef5236859e8815a"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_f0f25efff0137106b674f8fd"
-      ],
-      "legacyRuntimeIds": [
-        "ao-73255"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_85f57d0c0041e0962caff36b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_b9aabba5958760f9b2624b40",
-      "referenceId": "fa_ref_2783e304e07eea19e3a6cbb2",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWW12753",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ad87f1907ab6077f56f3df66"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_7c4c12e04b5a0b65afd81e8c"
-      ],
-      "legacyRuntimeIds": [
-        "ao-58683"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_7d0eb6c178fa5bb9a18aee84"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_41023db182b06afe4fc3b8b6",
-      "referenceId": "fa_ref_f655e9c2df31c10ec25b1bca",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWW7524ADWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_9b84a9552c539e37c6c8b05c"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_3efc9e26dbba01a4b200a4e8"
-      ],
-      "legacyRuntimeIds": [
-        "ao-73256"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_da09a2ab0682eab48c930380"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_c674d465cd73b62f6743d945",
-      "referenceId": "fa_ref_ccd5e16cd4321866bdbf5583",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWW8024Q5WB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_2b1fb887b875ca9a3678c8d5"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_751959f851ac7b41c88a6ad6"
-      ],
-      "legacyRuntimeIds": [
-        "ao-104268"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d0e51e941ef6593800a514dd"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_eae01f04ec217d2e4c85278a",
       "referenceId": "fa_ref_8d2b1301cda03fa772212a74",
       "category": "washing_machine",
@@ -27130,6 +26851,68 @@
     },
     {
       "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_c7eb09699949b046577bdf7c",
+      "referenceId": "fa_ref_534a39be8f15450b9fb6e3e8",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF12753",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_eeda789a1b83f7c5ce54fa68"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_d5e95778e2e9ad59d32cf12d"
+      ],
+      "legacyRuntimeIds": [
+        "ao-56598"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_e504312641ad5685f9991bb9"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_5886d92041ea180977f27d44",
+      "referenceId": "fa_ref_edb30c6b4e5528251ac48989",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF12763E",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_922c48adec1f435ed6fb7efa"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_d30e36b216de4a83af7944a2"
+      ],
+      "legacyRuntimeIds": [
+        "ao-63112"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_8bd772474cd7d8be87f10b3d"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_098984929f290604de03b998",
       "referenceId": "fa_ref_b94cf8d37455d099ef867454",
       "category": "washing_machine",
@@ -27156,6 +26939,99 @@
       ],
       "canonicalProductIds": [
         "fa_prod_5291535003b601d5db9a1301"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_a4423d52635a00c68271d179",
+      "referenceId": "fa_ref_4c98e0754edf8b1793593c9d",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF1408B1WA",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_ce6056cfd6e126bd65e8acc9"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_c01b72b4689428229d0b24bc"
+      ],
+      "legacyRuntimeIds": [
+        "ao-69709"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_436c66cbf154a1dc8aa88768"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_665e19b0e3f23d774ced7660",
+      "referenceId": "fa_ref_11710c3f491f7bbd07aa453f",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF14933",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_e8e904514528363240d19d53"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_1dcaa7abd5d4bc8431df0d32"
+      ],
+      "legacyRuntimeIds": [
+        "ao-58483"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_3d8c5e503d85e9313d7350d2"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_b9aabba5958760f9b2624b40",
+      "referenceId": "fa_ref_2783e304e07eea19e3a6cbb2",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWW12753",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_ad87f1907ab6077f56f3df66"
+      ],
+      "resolverIds": [
+        "electrolux-group-official-factsheet"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_7c4c12e04b5a0b65afd81e8c"
+      ],
+      "legacyRuntimeIds": [
+        "ao-58683"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_7d0eb6c178fa5bb9a18aee84"
       ],
       "offlineReplayOutcome": null
     },
@@ -191665,19 +191541,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_1e2b2e1622456b9284ab33dd",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/d/d/2/9/dd290caf041381520acabef6287932e0751f44c1_EWF7524CDWA_Electrolux_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/EWF7524CDWA.json",
-        "source:doc_a7becfdc163e2b4d04d6b4c0"
-      ],
-      "referenceIds": [
-        "fa_ref_7230dde540ed2688d9a06f6b"
-      ]
-    },
-    {
       "sourceId": "historical_source_1e642c43b7d3a4b06b31f568",
       "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG604DLE&CttFileID=9716081&CDCttType=UM&VPath=UM%2F202406%2F20240601161223350%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
       "sourceAuthority": "NONE",
@@ -192604,19 +192467,6 @@
       ],
       "referenceIds": [
         "fa_ref_69115d64d7661cac09bb1628"
-      ]
-    },
-    {
-      "sourceId": "historical_source_2b1fb887b875ca9a3678c8d5",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/6/0/e/860e503cb07270fc301401cab4cb0ec14fe20d0a_EWW8024Q5WB_Electrolux_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/EWW8024Q5WB.json",
-        "source:doc_d60d06027ac71b170a62102f"
-      ],
-      "referenceIds": [
-        "fa_ref_ccd5e16cd4321866bdbf5583"
       ]
     },
     {
@@ -196286,19 +196136,6 @@
       ],
       "referenceIds": [
         "fa_ref_4f202254a3cf9a5467cc6491"
-      ]
-    },
-    {
-      "sourceId": "historical_source_5f2ac396fef5236859e8815a",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/c/d/b/1cdb17d67fd846f8cdba150ff9c8abe366de9f2c_EWW1042ADWA_Electrolux_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/EWW1042ADWA.json",
-        "source:doc_cce0fb4723920b3b0e4f9e07"
-      ],
-      "referenceIds": [
-        "fa_ref_1d7d89a4ade9dc5fd523fddf"
       ]
     },
     {
@@ -200673,19 +200510,6 @@
       ],
       "referenceIds": [
         "fa_ref_21e536fe81e7b9e476990801"
-      ]
-    },
-    {
-      "sourceId": "historical_source_9b84a9552c539e37c6c8b05c",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/5/a/4/8/5a487aa42371871b667b9677a66172f35f330422_EWW7524ADWA_Electrolux_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/EWW7524ADWA.json",
-        "source:doc_893dc97966cf0020e18b1230"
-      ],
-      "referenceIds": [
-        "fa_ref_f655e9c2df31c10ec25b1bca"
       ]
     },
     {
@@ -207143,46 +206967,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 396,
+    "COMPLETE_RECEIPT": 400,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8089,
-    "queuedModels": 7693,
-    "uniqueReferences": 7693,
-    "candidateSources": 1346,
-    "candidateEdges": 1381,
+    "queuedModels": 7689,
+    "uniqueReferences": 7689,
+    "candidateSources": 1342,
+    "candidateEdges": 1377,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2071,
-      "CURRENT_RETAIL": 1059,
+      "CURRENT_RETAIL": 1055,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1243,
       "dryer": 792,
       "fridge": 4211,
-      "washing_machine": 1447
+      "washing_machine": 1443
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 134,
       "OFFICIAL_DISCOVERY": 6412,
-      "REFERENCE_REDISCOVERY": 1064
+      "REFERENCE_REDISCOVERY": 1060
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 134,
       "OFFICIAL_DISCOVERY": 6412,
-      "OFFICIAL_REDISCOVERY": 1064
+      "OFFICIAL_REDISCOVERY": 1060
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5028,
+      "DISCOVERY_READY": 5024,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 396,
+      "COMPLETE_RECEIPT": 400,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

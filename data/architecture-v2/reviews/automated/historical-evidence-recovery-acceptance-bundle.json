@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-17T03:41:33.067Z",
+  "generatedAt": "2026-07-17T03:52:03.065Z",
   "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
   "entries": [
     {
@@ -20867,6 +20867,273 @@
       }
     },
     {
+      "targetId": "recovery_target_3efc9e26dbba01a4b200a4e8",
+      "referenceId": "fa_ref_f655e9c2df31c10ec25b1bca",
+      "legacyRuntimeId": "ao-73256",
+      "canonicalProductId": "fa_prod_da09a2ab0682eab48c930380",
+      "brand": "Electrolux",
+      "model": "EWW7524ADWA",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-44100078715481c4c1046d66-slice-fa46249bbe8b",
+      "auditSha256": "618035a9eb1417d1a34c855cc0d925112d5f87098d68d3ee694485794fd6bd73",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW7524ADWA&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW7524ADWA&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:47:02.125Z",
+          "contentSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+          "objectPath": "evidence/web/sha256/ad/59/ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1841521,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "EWW7524ADWA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "99f1bffd69e678a11328a0644c4ff142b0f1d73d4aa742985de6bfd35b338604",
+              "bbox": [
+                516,
+                229,
+                939,
+                405
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "99f1bffd69e678a11328a0644c4ff142b0f1d73d4aa742985de6bfd35b338604",
+              "bbox": [
+                516,
+                229,
+                939,
+                405
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 575
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "99f1bffd69e678a11328a0644c4ff142b0f1d73d4aa742985de6bfd35b338604",
+              "bbox": [
+                516,
+                229,
+                939,
+                405
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+            "contentSha256": "15757e9441c6d47ed4a2be1e93fc922319ab9a9b86b8597bd7f5c5dcdfb1ba32",
+            "objectPath": "evidence/derived/mineru-json/sha256/15/75/15757e9441c6d47ed4a2be1e93fc922319ab9a9b86b8597bd7f5c5dcdfb1ba32.json",
+            "byteSize": 22493,
+            "pageCount": 8,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              7
+            ],
+            "sourcePageCount": 8,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "b476b1d6291e487e4d2d80ec5fddf2dbf304bd1ee0dc83e7334020299d33015a",
+              "objectPath": "evidence/derived/mineru-json/sha256/b4/76/b476b1d6291e487e4d2d80ec5fddf2dbf304bd1ee0dc83e7334020299d33015a.json",
+              "pages": [
+                7
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW7524ADWA:page:1:e0a76d4c9ef6e7ed229b237c99eecac3d4406868f5cdaa9fc39608d4c8ea5a39"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW7524ADWA:page:2:26b6c484636e4d7090cd3f7767d2c7d7b90c5d09e4c1e868f615f7e10cb9b113"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW7524ADWA:page:3:0e3e7a3a654138904b493cc0410539cefc36a217c15382f48858fbc0ac3720dc"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW7524ADWA:page:4:9e085ffb70234e8f4babe340cdbe477f6d0429808869ee00a9e453798edae0ba"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW7524ADWA:page:5:d6910dccfa53a09c6a47b5cb4b682adf6a4e22a3cc2ed2e3ab48bcb7d4ea57ef"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW7524ADWA:page:6:d43d3724e920048bc08eeb27fb1747e3935951330dc136d1cc831fc1ccde2459"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW7524ADWA:page:7:607f2da8a34b7804014eb5d88961c9994b730312bc6b4619679d2c9c0057fa99"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW7524ADWA:page:8:24bd1427e0812c21039ea940545cc0871d109b22c996a4fcfd701596b92ec8d2"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EWW7524ADWA:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW7524ADWA:page:7:e1b424c1d930599a95f35cf66a6e49ede8bb37105fa929980b611590a506abc3"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:47:02.125Z",
+            "bindingSha256": "7e09644b89c10fef216a2613950d71375bdd290ba5a73d40f1220ea0bb0c368b"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 575
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW7524ADWA&brand=Electrolux",
+            "contentSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+            "receiptBindingSha256": "7e09644b89c10fef216a2613950d71375bdd290ba5a73d40f1220ea0bb0c368b",
+            "page": 3,
+            "fragmentSha256": "99f1bffd69e678a11328a0644c4ff142b0f1d73d4aa742985de6bfd35b338604"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW7524ADWA&brand=Electrolux",
+            "contentSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+            "receiptBindingSha256": "7e09644b89c10fef216a2613950d71375bdd290ba5a73d40f1220ea0bb0c368b",
+            "page": 3,
+            "fragmentSha256": "99f1bffd69e678a11328a0644c4ff142b0f1d73d4aa742985de6bfd35b338604"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW7524ADWA&brand=Electrolux",
+            "contentSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+            "receiptBindingSha256": "7e09644b89c10fef216a2613950d71375bdd290ba5a73d40f1220ea0bb0c368b",
+            "page": 3,
+            "fragmentSha256": "99f1bffd69e678a11328a0644c4ff142b0f1d73d4aa742985de6bfd35b338604"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_3f1643a3e2eda1bc19fc4653",
       "referenceId": "fa_ref_1ff73a2eab82a5cba3400c5e",
       "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh9060h1",
@@ -33015,6 +33282,269 @@
       }
     },
     {
+      "targetId": "recovery_target_5f8e2af40b047d20e6ef4573",
+      "referenceId": "fa_ref_7230dde540ed2688d9a06f6b",
+      "legacyRuntimeId": "ao-73252",
+      "canonicalProductId": "fa_prod_753f1244da4a93aeab2c6008",
+      "brand": "Electrolux",
+      "model": "EWF7524CDWA",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-44100078715481c4c1046d66-slice-fa46249bbe8b",
+      "auditSha256": "618035a9eb1417d1a34c855cc0d925112d5f87098d68d3ee694485794fd6bd73",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF7524CDWA&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF7524CDWA&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:47:55.770Z",
+          "contentSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "objectPath": "evidence/web/sha256/1b/89/1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1854641,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "EWF7524CDWA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "ec89d13d50dce47a714d1a694aa5ad56e292831de12a381d9fb06492276415b6",
+              "bbox": [
+                516,
+                228,
+                939,
+                405
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "ec89d13d50dce47a714d1a694aa5ad56e292831de12a381d9fb06492276415b6",
+              "bbox": [
+                516,
+                228,
+                939,
+                405
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 575
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "ec89d13d50dce47a714d1a694aa5ad56e292831de12a381d9fb06492276415b6",
+              "bbox": [
+                516,
+                228,
+                939,
+                405
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+            "contentSha256": "f9fee3fa81c18dfa8db90301491d669d33c9e9793ef5eeccf813a70b7387c181",
+            "objectPath": "evidence/derived/mineru-json/sha256/f9/fe/f9fee3fa81c18dfa8db90301491d669d33c9e9793ef5eeccf813a70b7387c181.json",
+            "byteSize": 20616,
+            "pageCount": 7,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              6
+            ],
+            "sourcePageCount": 7,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "6776505d2620c673aebb02a0dd010a972d02d8dce0ce998d388e1d162fd4009d",
+              "objectPath": "evidence/derived/mineru-json/sha256/67/76/6776505d2620c673aebb02a0dd010a972d02d8dce0ce998d388e1d162fd4009d.json",
+              "pages": [
+                6
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWF7524CDWA:page:1:016a674c6a7955acdc83f153c08addb1840e1f64d6f46b0bdfcea4d04b0b68f6"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWF7524CDWA:page:2:747f19d758ff72ea00750f133836a1a7d029ac6f34b936102c49de860ae3614d"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWF7524CDWA:page:3:a99ec87b72451b7d136212b0878dbbe2f4ea70b69299f9517e03b228d2d296ad"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWF7524CDWA:page:4:0fec57547fe173e6c1f850606d33558be5663605899f63fbdc73fba4e36958dc"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWF7524CDWA:page:5:2b29d1c5680fef95a67d3e5668b477c96f8db58a3789ecc05c262485b84e85bc"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWF7524CDWA:page:6:55fe8fc79361ce65b1fd89e8f763be3bd5f7872aae533556fdf743ec737d8a28"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWF7524CDWA:page:7:fd06482710038aa1c62088b9772c7e9228ecd230250d790554bb76ea03af060e"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EWF7524CDWA:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWF7524CDWA:page:6:a2c7589882a954085f8f2bf11a1b072e2c9d5eef6d7e0bb9b9ff2171838fd02c"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:47:55.770Z",
+            "bindingSha256": "ad082d5dcc38a2f9d664a0d5431598e64253bada8ec25953e29cd54265d5490b"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 575
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF7524CDWA&brand=Electrolux",
+            "contentSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+            "receiptBindingSha256": "ad082d5dcc38a2f9d664a0d5431598e64253bada8ec25953e29cd54265d5490b",
+            "page": 3,
+            "fragmentSha256": "ec89d13d50dce47a714d1a694aa5ad56e292831de12a381d9fb06492276415b6"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF7524CDWA&brand=Electrolux",
+            "contentSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+            "receiptBindingSha256": "ad082d5dcc38a2f9d664a0d5431598e64253bada8ec25953e29cd54265d5490b",
+            "page": 3,
+            "fragmentSha256": "ec89d13d50dce47a714d1a694aa5ad56e292831de12a381d9fb06492276415b6"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF7524CDWA&brand=Electrolux",
+            "contentSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+            "receiptBindingSha256": "ad082d5dcc38a2f9d664a0d5431598e64253bada8ec25953e29cd54265d5490b",
+            "page": 3,
+            "fragmentSha256": "ec89d13d50dce47a714d1a694aa5ad56e292831de12a381d9fb06492276415b6"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_5fe768a59d31bf5568dfe5a1",
       "referenceId": "fa_ref_28b4272b7c535fe02ef09ae4",
       "legacyRuntimeId": "fridge-arf3073",
@@ -41996,6 +42526,285 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_751959f851ac7b41c88a6ad6",
+      "referenceId": "fa_ref_ccd5e16cd4321866bdbf5583",
+      "legacyRuntimeId": "ao-104268",
+      "canonicalProductId": "fa_prod_d0e51e941ef6593800a514dd",
+      "brand": "Electrolux",
+      "model": "EWW8024Q5WB",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-44100078715481c4c1046d66-slice-fa46249bbe8b",
+      "auditSha256": "618035a9eb1417d1a34c855cc0d925112d5f87098d68d3ee694485794fd6bd73",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW8024Q5WB&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW8024Q5WB&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:48:54.325Z",
+          "contentSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+          "objectPath": "evidence/web/sha256/8a/e2/8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 720444,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "EWW8024Q5WB",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "a2e8e939111c4e27cea58331c42a650c2e97573c782f4a6f03e33d248329a733",
+              "bbox": [
+                516,
+                229,
+                939,
+                405
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "a2e8e939111c4e27cea58331c42a650c2e97573c782f4a6f03e33d248329a733",
+              "bbox": [
+                516,
+                229,
+                939,
+                405
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 575
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "a2e8e939111c4e27cea58331c42a650c2e97573c782f4a6f03e33d248329a733",
+              "bbox": [
+                516,
+                229,
+                939,
+                405
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+            "contentSha256": "cd505b159312ed36f41ad3bf59d3b02bf4d83eb4e850d76300342c125fd10bac",
+            "objectPath": "evidence/derived/mineru-json/sha256/cd/50/cd505b159312ed36f41ad3bf59d3b02bf4d83eb4e850d76300342c125fd10bac.json",
+            "byteSize": 27034,
+            "pageCount": 9,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              8
+            ],
+            "sourcePageCount": 9,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "e82adf751ea55cae1934e9b444ab2a434fa2cee63860dd5a9429a7cde4195975",
+              "objectPath": "evidence/derived/mineru-json/sha256/e8/2a/e82adf751ea55cae1934e9b444ab2a434fa2cee63860dd5a9429a7cde4195975.json",
+              "pages": [
+                8
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "EWW8024Q5WB:page:8:5852f67d671fc79c7210b840f436a3d3e5933f56591479f4271965d6e29c6a4e"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW8024Q5WB:page:1:4b4005655e111d97f4ad29e5446a32c5ef13cd3da1458af70424e7d004bc5adf"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW8024Q5WB:page:2:efa85422615bcfac59e422aaa0d24ba3ec9d7fc88fee896b2c28618053afa260"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW8024Q5WB:page:3:ed721ce0652547d10da78d0affe2a31d5ceee5f3dd13c07a989570b9391292a5"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW8024Q5WB:page:4:0f361cb2e7cb491c574b25045cf49aac0cef05c184ca296c66d833b98c83dfe2"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW8024Q5WB:page:5:a87c46cc3cd6160abc697aab71b3f542099e6a2c71fc00a17e3e640ac2439270"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW8024Q5WB:page:6:a26fd65792a41781421ed6a8a0c39be4e2f86bd05c5156d5657e2bf34d8fe782"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW8024Q5WB:page:7:4cb35cdcef47eb8116dc4fb377015f731f432745afad5be77c6a65bf8b669b5d"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW8024Q5WB:page:8:9b9e1d682bae5436060595235c844341eadb66f7e0336acfe8ca373c778f9628"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW8024Q5WB:page:9:24e798bdb81be720f29313c1b9d832656081c7d3e3b91b8ae9f1558050ee2687"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EWW8024Q5WB:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_body_model",
+              "value": "EWW8024Q5WB:page:8:9b4d3a4e69596e0990629c307343eb22710dcb7fefb6d1ddc00ec266492d82b4"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW8024Q5WB:page:8:3b37700820d485f18231463f66b38fd11e98ce3ba42b5a1fc23d04b648976788"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:48:54.325Z",
+            "bindingSha256": "63e4a0c30ca2edae225c05bff69d3f67540e9c8abb0069f1aa2b1676c33d077e"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 575
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW8024Q5WB&brand=Electrolux",
+            "contentSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+            "receiptBindingSha256": "63e4a0c30ca2edae225c05bff69d3f67540e9c8abb0069f1aa2b1676c33d077e",
+            "page": 4,
+            "fragmentSha256": "a2e8e939111c4e27cea58331c42a650c2e97573c782f4a6f03e33d248329a733"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW8024Q5WB&brand=Electrolux",
+            "contentSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+            "receiptBindingSha256": "63e4a0c30ca2edae225c05bff69d3f67540e9c8abb0069f1aa2b1676c33d077e",
+            "page": 4,
+            "fragmentSha256": "a2e8e939111c4e27cea58331c42a650c2e97573c782f4a6f03e33d248329a733"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW8024Q5WB&brand=Electrolux",
+            "contentSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+            "receiptBindingSha256": "63e4a0c30ca2edae225c05bff69d3f67540e9c8abb0069f1aa2b1676c33d077e",
+            "page": 4,
+            "fragmentSha256": "a2e8e939111c4e27cea58331c42a650c2e97573c782f4a6f03e33d248329a733"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62"
         ]
       },
       "reconciliation": {
@@ -87911,6 +88720,277 @@
       }
     },
     {
+      "targetId": "recovery_target_f0f25efff0137106b674f8fd",
+      "referenceId": "fa_ref_1d7d89a4ade9dc5fd523fddf",
+      "legacyRuntimeId": "ao-73255",
+      "canonicalProductId": "fa_prod_85f57d0c0041e0962caff36b",
+      "brand": "Electrolux",
+      "model": "EWW1042ADWA",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-44100078715481c4c1046d66-slice-fa46249bbe8b",
+      "auditSha256": "618035a9eb1417d1a34c855cc0d925112d5f87098d68d3ee694485794fd6bd73",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW1042ADWA&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW1042ADWA&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:51:23.310Z",
+          "contentSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+          "objectPath": "evidence/web/sha256/04/68/0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1989176,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "EWW1042ADWA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "9c008fa881e80f982cedaa1e2d7b622f7a5752b374497c4a0f0088eff4ea2e6c",
+              "bbox": [
+                516,
+                229,
+                939,
+                405
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "9c008fa881e80f982cedaa1e2d7b622f7a5752b374497c4a0f0088eff4ea2e6c",
+              "bbox": [
+                516,
+                229,
+                939,
+                405
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 659
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "9c008fa881e80f982cedaa1e2d7b622f7a5752b374497c4a0f0088eff4ea2e6c",
+              "bbox": [
+                516,
+                229,
+                939,
+                405
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+            "contentSha256": "ee417a08ae6ccddcf2a65b4bb61be7b20e18f8fe9089e2b2ff8e15b7dc2eb2ac",
+            "objectPath": "evidence/derived/mineru-json/sha256/ee/41/ee417a08ae6ccddcf2a65b4bb61be7b20e18f8fe9089e2b2ff8e15b7dc2eb2ac.json",
+            "byteSize": 24112,
+            "pageCount": 9,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              8
+            ],
+            "sourcePageCount": 9,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "6c6aad1c1dad08b00406d6f56fbfd63cafcca0db9f2a3aa7cb5ec42561a3b61a",
+              "objectPath": "evidence/derived/mineru-json/sha256/6c/6a/6c6aad1c1dad08b00406d6f56fbfd63cafcca0db9f2a3aa7cb5ec42561a3b61a.json",
+              "pages": [
+                8
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW1042ADWA:page:1:96a95d40b91eb064722774dc6037c3fa04d0f28506d2cae768e93a18aa3686e7"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW1042ADWA:page:2:417c174749417e60586feb9bb1c99818ab9f05defba37d0fb5e781440bc4596a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW1042ADWA:page:3:99e790d47b7a44cdd03da2ceec67a00987ad2cd067f166ce0488cfaf9d7ecc66"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW1042ADWA:page:4:41e0dbb7856b4a3e3ebb24d31646a444c83f95eb2fc80de018d98d49ed65d94b"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW1042ADWA:page:5:082ecc90fc0b076cc5da5d2fea1c11858f4402f74e7aeff88c5b0f1122b1809a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW1042ADWA:page:6:6ed79d8373f686cc20d1dfaa4b3a95ace161e24476b46e91ef7ea37f5476be1a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW1042ADWA:page:7:dba483f1d669536817efbe34d56b4ac976b5db5690960a3f21b31e381ee5773e"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW1042ADWA:page:8:01d3a0e087140ea32450544672e0d43bb6c499fb2b495090272b26b83b674438"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW1042ADWA:page:9:63dfbf2817496a44d81d40d4d39882d4b055d126b5434c85c1e11c119526996b"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EWW1042ADWA:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EWW1042ADWA:page:8:635c64fdfc49d483d45ed49da71b90a21bb2968df437ed1b46ce188863a43d5c"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:51:23.310Z",
+            "bindingSha256": "3a557875f063533df871917169df63fb1d3623ad753c0b2612427379034ddf01"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 659
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW1042ADWA&brand=Electrolux",
+            "contentSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+            "receiptBindingSha256": "3a557875f063533df871917169df63fb1d3623ad753c0b2612427379034ddf01",
+            "page": 4,
+            "fragmentSha256": "9c008fa881e80f982cedaa1e2d7b622f7a5752b374497c4a0f0088eff4ea2e6c"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW1042ADWA&brand=Electrolux",
+            "contentSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+            "receiptBindingSha256": "3a557875f063533df871917169df63fb1d3623ad753c0b2612427379034ddf01",
+            "page": 4,
+            "fragmentSha256": "9c008fa881e80f982cedaa1e2d7b622f7a5752b374497c4a0f0088eff4ea2e6c"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW1042ADWA&brand=Electrolux",
+            "contentSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+            "receiptBindingSha256": "3a557875f063533df871917169df63fb1d3623ad753c0b2612427379034ddf01",
+            "page": 4,
+            "fragmentSha256": "9c008fa881e80f982cedaa1e2d7b622f7a5752b374497c4a0f0088eff4ea2e6c"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_f3a70e08b6741d7ca608e204",
       "referenceId": "fa_ref_2dce716d84b8685ff21cef84",
       "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1260dg5",
@@ -92321,6 +93401,13 @@
       "queueSha256": "8b73c68eb42b7fb9a63be0010789cff15210007068ecd627169b4ab39e47648f",
       "resultsSha256": "59bf63a6cd2b9f9d676a0f15d703010285a9be99794c4aca0bc33e0742a822df",
       "auditSha256": "3165d903cb88b576bb14d7d39e7eb6a564a05b0e20d6c22e8f7eca4495339aea"
+    },
+    {
+      "batchId": "historical-recovery-44100078715481c4c1046d66-slice-fa46249bbe8b",
+      "batchSha256": "166cab5eaaa2e70fd30c822341ca97d26e6ddff96e611e328fedd6dd2c99236f",
+      "queueSha256": "314074cb61dcc0207f402466f666b8542b628ae04d71825ff058cbed7c50a783",
+      "resultsSha256": "efe26d1c0bf11cee2286f3bd58452ea0206ea2496ad121a8adb11526c19efda3",
+      "auditSha256": "618035a9eb1417d1a34c855cc0d925112d5f87098d68d3ee694485794fd6bd73"
     },
     {
       "batchId": "historical-recovery-449973b3bf58102620f0e1c7-slice-6d2a9c4a4264",

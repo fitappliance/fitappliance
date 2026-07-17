@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "6f1504895d6a82463c6ab8141e7e4d8b959d76b0d8be3c7fd8b45eb57efeacc9",
-    "historical-recovery:historical-recovery-cumulative-v1": "aa1080517d754fd91745e2e881680c94390b4f132bd7e742eb7ef9bd5c46c82e"
+    "historical-recovery:historical-recovery-cumulative-v1": "e077063e7b5e352fae71961b1e6d531c8afcce8b3c1e9735a1363c5872b9b9c4"
   },
   "records": [
     {
@@ -276646,14 +276646,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 575
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "6f1504895d6a82463c6ab8141e7e4d8b959d76b0d8be3c7fd8b45eb57efeacc9",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_5f8e2af40b047d20e6ef4573",
+          "snapshotSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -276662,8 +276673,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_5f8e2af40b047d20e6ef4573",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF7524CDWA&brand=Electrolux",
+          "contentSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+          "receiptBindingSha256": "ad082d5dcc38a2f9d664a0d5431598e64253bada8ec25953e29cd54265d5490b",
+          "verifiedAt": "2026-07-17T03:47:55.770Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "ec89d13d50dce47a714d1a694aa5ad56e292831de12a381d9fb06492276415b6"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "ec89d13d50dce47a714d1a694aa5ad56e292831de12a381d9fb06492276415b6"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "ec89d13d50dce47a714d1a694aa5ad56e292831de12a381d9fb06492276415b6"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/1b/89/1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244.pdf"
+        }
       ]
     },
     {
@@ -277130,14 +277167,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 659
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "6f1504895d6a82463c6ab8141e7e4d8b959d76b0d8be3c7fd8b45eb57efeacc9",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_f0f25efff0137106b674f8fd",
+          "snapshotSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -277146,8 +277194,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_f0f25efff0137106b674f8fd",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW1042ADWA&brand=Electrolux",
+          "contentSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+          "receiptBindingSha256": "3a557875f063533df871917169df63fb1d3623ad753c0b2612427379034ddf01",
+          "verifiedAt": "2026-07-17T03:51:23.310Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "9c008fa881e80f982cedaa1e2d7b622f7a5752b374497c4a0f0088eff4ea2e6c"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "9c008fa881e80f982cedaa1e2d7b622f7a5752b374497c4a0f0088eff4ea2e6c"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "9c008fa881e80f982cedaa1e2d7b622f7a5752b374497c4a0f0088eff4ea2e6c"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/04/68/0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1.pdf"
+        }
       ]
     },
     {
@@ -277786,14 +277860,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 575
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "6f1504895d6a82463c6ab8141e7e4d8b959d76b0d8be3c7fd8b45eb57efeacc9",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3efc9e26dbba01a4b200a4e8",
+          "snapshotSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -277802,8 +277887,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3efc9e26dbba01a4b200a4e8",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW7524ADWA&brand=Electrolux",
+          "contentSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+          "receiptBindingSha256": "7e09644b89c10fef216a2613950d71375bdd290ba5a73d40f1220ea0bb0c368b",
+          "verifiedAt": "2026-07-17T03:47:02.125Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "99f1bffd69e678a11328a0644c4ff142b0f1d73d4aa742985de6bfd35b338604"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "99f1bffd69e678a11328a0644c4ff142b0f1d73d4aa742985de6bfd35b338604"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "99f1bffd69e678a11328a0644c4ff142b0f1d73d4aa742985de6bfd35b338604"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/ad/59/ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6.pdf"
+        }
       ]
     },
     {
@@ -277821,14 +277932,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 575
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "6f1504895d6a82463c6ab8141e7e4d8b959d76b0d8be3c7fd8b45eb57efeacc9",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_751959f851ac7b41c88a6ad6",
+          "snapshotSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -277837,8 +277959,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_751959f851ac7b41c88a6ad6",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW8024Q5WB&brand=Electrolux",
+          "contentSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+          "receiptBindingSha256": "63e4a0c30ca2edae225c05bff69d3f67540e9c8abb0069f1aa2b1676c33d077e",
+          "verifiedAt": "2026-07-17T03:48:54.325Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "a2e8e939111c4e27cea58331c42a650c2e97573c782f4a6f03e33d248329a733"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "a2e8e939111c4e27cea58331c42a650c2e97573c782f4a6f03e33d248329a733"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "a2e8e939111c4e27cea58331c42a650c2e97573c782f4a6f03e33d248329a733"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/8a/e2/8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62.pdf"
+        }
       ]
     },
     {
@@ -325257,16 +325405,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2833,
-      "MODEL_RECEIPT": 305,
+      "IDENTITY_ONLY": 2829,
+      "MODEL_RECEIPT": 309,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2833,
-      "AUTO_FILL": 316,
+      "MEASURE_REQUIRED": 2829,
+      "AUTO_FILL": 320,
       "QUARANTINED": 88
     }
   }

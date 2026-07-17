@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:41:33.067Z",
-  "sourceBundleSha256": "aa1080517d754fd91745e2e881680c94390b4f132bd7e742eb7ef9bd5c46c82e",
+  "generatedAt": "2026-07-17T03:52:03.065Z",
+  "sourceBundleSha256": "e077063e7b5e352fae71961b1e6d531c8afcce8b3c1e9735a1363c5872b9b9c4",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1292,6 +1292,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_3efc9e26dbba01a4b200a4e8",
+      "referenceId": "fa_ref_f655e9c2df31c10ec25b1bca",
+      "brand": "Electrolux",
+      "model": "EWW7524ADWA",
+      "category": "washing_machine",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW7524ADWA&brand=Electrolux",
+      "sourcePdfSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+      "contentSha256": "ad59c34edd2bbf51b2efb29593fc936f7b66953b75ac1e53bb8ddd4db3fc4ff6",
+      "receiptBindingSha256": "7e09644b89c10fef216a2613950d71375bdd290ba5a73d40f1220ea0bb0c368b",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/15/75/15757e9441c6d47ed4a2be1e93fc922319ab9a9b86b8597bd7f5c5dcdfb1ba32.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_3f1643a3e2eda1bc19fc4653",
       "referenceId": "fa_ref_1ff73a2eab82a5cba3400c5e",
       "brand": "Fisher & Paykel",
@@ -2048,6 +2062,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_5f8e2af40b047d20e6ef4573",
+      "referenceId": "fa_ref_7230dde540ed2688d9a06f6b",
+      "brand": "Electrolux",
+      "model": "EWF7524CDWA",
+      "category": "washing_machine",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF7524CDWA&brand=Electrolux",
+      "sourcePdfSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+      "contentSha256": "1b8980e6e6e287657658fd2b5c7b58c6013f21d544cf7b2c5393cd7d877e5244",
+      "receiptBindingSha256": "ad082d5dcc38a2f9d664a0d5431598e64253bada8ec25953e29cd54265d5490b",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f9/fe/f9fee3fa81c18dfa8db90301491d669d33c9e9793ef5eeccf813a70b7387c181.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_5fe768a59d31bf5568dfe5a1",
       "referenceId": "fa_ref_28b4272b7c535fe02ef09ae4",
       "brand": "Westinghouse",
@@ -2576,6 +2604,20 @@
       "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
       "receiptBindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/82/63/82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_751959f851ac7b41c88a6ad6",
+      "referenceId": "fa_ref_ccd5e16cd4321866bdbf5583",
+      "brand": "Electrolux",
+      "model": "EWW8024Q5WB",
+      "category": "washing_machine",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW8024Q5WB&brand=Electrolux",
+      "sourcePdfSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+      "contentSha256": "8ae2d4056ab1256869788441921bd58609824674a660b73c3bfab8f5653f6b62",
+      "receiptBindingSha256": "63e4a0c30ca2edae225c05bff69d3f67540e9c8abb0069f1aa2b1676c33d077e",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/cd/50/cd505b159312ed36f41ad3bf59d3b02bf4d83eb4e850d76300342c125fd10bac.json",
       "status": "passed",
       "failureCode": null
     },
@@ -5380,6 +5422,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_f0f25efff0137106b674f8fd",
+      "referenceId": "fa_ref_1d7d89a4ade9dc5fd523fddf",
+      "brand": "Electrolux",
+      "model": "EWW1042ADWA",
+      "category": "washing_machine",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW1042ADWA&brand=Electrolux",
+      "sourcePdfSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+      "contentSha256": "0468f24e542f1e9cdc22e5edb7a2f72b1e295168ec9d9e0d6ae3db74d65684f1",
+      "receiptBindingSha256": "3a557875f063533df871917169df63fb1d3623ad753c0b2612427379034ddf01",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ee/41/ee417a08ae6ccddcf2a65b4bb61be7b20e18f8fe9089e2b2ff8e15b7dc2eb2ac.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_f3a70e08b6741d7ca608e204",
       "referenceId": "fa_ref_2dce716d84b8685ff21cef84",
       "brand": "Fisher & Paykel",
@@ -5633,11 +5689,11 @@
     }
   ],
   "summary": {
-    "entries": 377,
-    "sources": 402,
-    "passed": 402,
+    "entries": 381,
+    "sources": 406,
+    "passed": 406,
     "failed": 0
   },
-  "checkedObjects": 789,
-  "semanticAuditSha256": "de095c65b298c9cb4a55a3dc032791e5b76cf5eca6e490a38b12eb81e21ddaef"
+  "checkedObjects": 801,
+  "semanticAuditSha256": "6ee38723877703a13beabba280ee8cea400f715fb54d152f1a46c301e9b1c234"
 }
