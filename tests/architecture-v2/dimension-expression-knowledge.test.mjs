@@ -471,6 +471,41 @@ test('knowledge documents the strict Smeg two-cell fixed W-H-D grammar', () => {
   assert.match(markdown, /multiple matching Size rows/i);
 });
 
+test('knowledge documents strict Smeg fixed suffix axis permutations', () => {
+  const documents = [
+    ['DWA6314B', 'Size 598mmW x 600mmD x 850mmH'],
+    ['DWA4510X', 'dimensions 850mmH x 448mmW x 600mmD'],
+  ].map(([model, expression], index) => ({
+    pdfSha256: String(index + 1).repeat(64),
+    contentSha256: String(index + 3).repeat(64),
+    parserVersion: '3.4.4',
+    modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+    sourceUrls: [`https://sys.smeg.com.au/Product/Techspecs/${model}.pdf`],
+    identities: [{ category: 'dishwasher', brand: 'Smeg', model }],
+    contentList: [[
+      textBlock('title', `${model} SMEG DISHWASHER`),
+      paragraph(expression),
+    ]],
+  }));
+  const knowledge = buildDimensionExpressionKnowledge({
+    generatedAt: '2026-07-17T00:00:00.000Z',
+    historicalRecords: documents.flatMap((document) => document.identities),
+    documents,
+  });
+  const family = knowledge.categories.find((row) => row.category === 'dishwasher')
+    .brands[0].families[0];
+
+  assert.equal(family.groupName, 'Smeg Australia dishwasher technical specification');
+  assert.deepEqual(family.models, ['DWA4510X', 'DWA6314B']);
+  assert.deepEqual(family.parserProfileIds, [
+    'smeg-au-dishwasher-fixed-axis-suffix-permutation-v1',
+  ]);
+  assert.equal(family.completeParserReplay, true);
+  const markdown = renderDimensionExpressionKnowledgeMarkdown(knowledge);
+  assert.match(markdown, /explicit W\/D\/H or H\/W\/D suffix order/i);
+  assert.match(markdown, /parentheses, qualifiers and trailing text are excluded/i);
+});
+
 test('lettered explicit axes are distinct from unlabelled dimension triples', () => {
   const result = extractDimensionExpressions({
     pdfSha256: 'd'.repeat(64),

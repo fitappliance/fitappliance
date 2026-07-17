@@ -3,8 +3,10 @@ import test from 'node:test';
 
 import {
   extractSmegAuDishwasherFixedTableSizeRows,
+  extractSmegAuDishwasherFixedSuffixPermutationRows,
   extractSmegAuDishwasherSizeRows,
   SMEG_AU_DISHWASHER_SUFFIX_FIXED_GRAMMAR,
+  SMEG_AU_DISHWASHER_SUFFIX_PERMUTATION_GRAMMAR,
   SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
 } from '../../src/domain/smeg-pdf-dimensions.mjs';
 
@@ -65,4 +67,32 @@ test('rejects lookalikes outside the fixed Smeg two-cell table grammar', () => {
     'Size 598mmW x 595mmD x 850mmH',
     'Size 598mmW x 850mmH x 595–610mmD',
   ]) assert.equal(extractSmegAuDishwasherFixedTableSizeRows(value), null, value);
+});
+
+test('extracts strict Smeg fixed dimensions in explicit W-D-H and H-W-D order', () => {
+  for (const [expression, expected] of [
+    ['Size 598mmW x 600mmD x 850mmH', [
+      ['Width', '598 mm'], ['Depth', '600 mm'], ['Height', '850 mm'],
+    ]],
+    ['dimensions 850mmH x 448mmW x 600mmD', [
+      ['Height', '850 mm'], ['Width', '448 mm'], ['Depth', '600 mm'],
+    ]],
+  ]) {
+    const rows = extractSmegAuDishwasherFixedSuffixPermutationRows(expression);
+    assert.deepEqual(rows.map((row) => [row.label, row.value]), expected);
+    assert.ok(rows.every((row) => (
+      row.grammarProfileId === SMEG_AU_DISHWASHER_SUFFIX_PERMUTATION_GRAMMAR
+    )));
+  }
+});
+
+test('fixed Smeg permutation grammar rejects legacy W-H-D and qualified dimensions', () => {
+  for (const expression of [
+    'size 598mmW x 850mmH x 596mmD',
+    'Package Size 598mmW x 600mmD x 850mmH',
+    'Size 598mmW x 600mmW x 850mmH',
+    'Size 598mmW x 600mmD x 850-900mmH',
+    'size 598mmW x 928mmH max x 550mmD (excluding door)',
+    'size 598mmW x 858mmH (928mmH max) x 570mmD',
+  ]) assert.equal(extractSmegAuDishwasherFixedSuffixPermutationRows(expression), null, expression);
 });

@@ -1807,6 +1807,55 @@ test('Smeg fixed Size paragraphs retain the generic receipt semantics', () => {
   )));
 });
 
+test('MinerU parses strict Smeg fixed suffix permutations without reordering axes', () => {
+  for (const [model, expression, expected] of [
+    ['DWA6314B', 'Size 598mmW x 600mmD x 850mmH', {
+      'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+      'closedEnvelope.heightMm': { kind: 'fixed', mm: 850 },
+      'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+    }],
+    ['DWA4510X', 'dimensions 850mmH x 448mmW x 600mmD', {
+      'closedEnvelope.widthMm': { kind: 'fixed', mm: 448 },
+      'closedEnvelope.heightMm': { kind: 'fixed', mm: 850 },
+      'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+    }],
+  ]) {
+    const bytes = Buffer.from(JSON.stringify([[
+      pageHeader(`${model} smeg dishwasher`),
+      paragraph(expression),
+    ]]));
+    const parsed = parseMineruContentListV2(bytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision,
+      caseIdentity: { brand: 'Smeg', model, category: 'dishwasher' },
+      claimSemanticsVersion: 2,
+      fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    });
+
+    assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), expected);
+    assert.deepEqual(parsed.grammarProfileIds, [
+      'smeg-au-dishwasher-fixed-axis-suffix-permutation-v1',
+    ]);
+  }
+});
+
+test('Smeg fixed suffix permutations reject qualified depth and dual-height expressions', () => {
+  for (const [model, expression] of [
+    ['DWAFI152T', 'size 598mmW x 928mmH max x 550mmD (excluding door)'],
+    ['DWAI315XT', 'size 598mmW x 858mmH (928mmH max) x 570mmD'],
+  ]) {
+    const bytes = Buffer.from(JSON.stringify([[
+      pageHeader(`${model} smeg dishwasher`),
+      paragraph(expression),
+    ]]));
+    assert.throws(() => parseMineruContentListV2(bytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision,
+      caseIdentity: { brand: 'Smeg', model, category: 'dishwasher' },
+      claimSemanticsVersion: 2,
+      fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    }), /no exact-model MinerU evidence/i, expression);
+  }
+});
+
 test('Smeg suffix-range grammar rejects packaging, non-height ranges, duplicate axes, and trailing prose', () => {
   for (const expression of [
     'Package Size 598mmW x 570mmD x 818–868mmH max',

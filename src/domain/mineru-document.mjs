@@ -15,8 +15,10 @@ import {
 } from './dimension-evidence-claim.mjs';
 import {
   extractSmegAuDishwasherFixedTableSizeRows,
+  extractSmegAuDishwasherFixedSuffixPermutationRows,
   extractSmegAuDishwasherSizeRows,
   SMEG_AU_DISHWASHER_SUFFIX_FIXED_GRAMMAR,
+  SMEG_AU_DISHWASHER_SUFFIX_PERMUTATION_GRAMMAR,
   SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
 } from './smeg-pdf-dimensions.mjs';
 
@@ -3123,6 +3125,17 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'An exact-model Smeg Australia Techspec PDF contains exactly one two-cell Size table row whose positive integer values carry unique mmW, mmH and mmD suffixes in W/H/D order.',
     semanticBoundary: 'Only the closed fixed W/H/D envelope is projected. Packaging, installation, cavity, ranges, duplicate axes, multiple matching Size rows and trailing qualification text are excluded.',
   }),
+  [SMEG_AU_DISHWASHER_SUFFIX_PERMUTATION_GRAMMAR]: Object.freeze({
+    parserProfileId: SMEG_AU_DISHWASHER_SUFFIX_PERMUTATION_GRAMMAR,
+    grammarFamilyId: 'smeg_au_dishwasher_techspec_dimensions_v1',
+    grammarFamilyName: 'Smeg Australia dishwasher technical specification',
+    variantName: 'Fixed dimensions with explicit W/D/H or H/W/D suffix order',
+    brand: 'Smeg',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model Smeg Australia Techspec PDF contains one fully anchored Size or dimensions expression whose three positive integer millimetre values carry unique axis suffixes in explicit W/D/H or H/W/D order.',
+    semanticBoundary: 'Only the closed fixed envelope is projected. The established W/H/D grammar remains on its existing parser path; packaging, installation, cavity, ranges, duplicate axes, parentheses, qualifiers and trailing text are excluded.',
+  }),
   [BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR]: Object.freeze({
     parserProfileId: BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR,
     grammarFamilyId: 'bosch_au_dishwasher_product_dimensions_v1',
@@ -4309,7 +4322,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
             : documentDimensionSectionRowsByFragment.has(fragment)
               ? documentDimensionSectionRowsByFragment.get(fragment)
           : canonicalModel(caseIdentity?.brand) === 'SMEG' && category === 'dishwasher'
-            ? (extractSmegAuDishwasherSizeRows(fragment.text) ?? paragraphRows(fragment.text))
+            ? (extractSmegAuDishwasherSizeRows(fragment.text)
+              ?? extractSmegAuDishwasherFixedSuffixPermutationRows(fragment.text)
+              ?? paragraphRows(fragment.text))
             : paragraphRows(fragment.text);
       }
       if (canonicalModel(caseIdentity?.brand) === 'BOSCH' && category === 'dishwasher') {

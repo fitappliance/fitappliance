@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T02:24:30.347Z",
-  "semanticQueueSha256": "8d6d08128a051c4b51d6ed5843e9aabdef4f9ef02fbe6b16dae57d22ea9a36c6",
-  "sourceClassificationSha256": "d8708bc842db3767f1ef7727172f7667e835a4fdf23f325a1c1c9a8419f112df",
+  "generatedAt": "2026-07-17T02:46:25.630Z",
+  "semanticQueueSha256": "078b1574617f31d32ff01fbf63912be9bf0f375437d5c473571e9babcdfffdb4",
+  "sourceClassificationSha256": "1b6825651c0687b68368e304cc17c02091d9626f6ce386fb1aaebcb478736058",
   "records": [
     {
       "schemaVersion": 1,
@@ -4209,37 +4209,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_02a5165908fed2536f59a13d",
-      "referenceId": "fa_ref_f658dcb64e7d5e441e509050",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWA4510X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_16ea63f53ffdbc79dcac46ee"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_d3f0a735d1ba9b7ee9a9bf4b"
-      ],
-      "legacyRuntimeIds": [
-        "ao-46716"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_3b1631628aa38397c458657e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_9a150cd4dd5d5151da0125a7",
       "referenceId": "fa_ref_08b339edee8aa88bb1687c92",
       "category": "dishwasher",
@@ -4359,37 +4328,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_89f19ad7a598d81751a4e86e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_b35446dcabc4c7d12dfd7210",
-      "referenceId": "fa_ref_b15871307a5551bc8b529b98",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWA6314B",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_240fe643b7c8d9177da56fd9"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_229b39e3d78f502be50e3f89"
-      ],
-      "legacyRuntimeIds": [
-        "ao-53497"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_0bfda6f7036035e2fe26f23e"
       ],
       "offlineReplayOutcome": null
     },
@@ -4674,68 +4612,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_5ac3d6145e63c6684548a19e",
-      "referenceId": "fa_ref_98371fd24fda6dc474596f08",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWA6D15X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_f686309d1777f16402fd6665"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_88a5bb4493812fec2690e7de"
-      ],
-      "legacyRuntimeIds": [
-        "ao-53502"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_df9b7f4e30b42994b1b36dd1"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_cc4ba5d47722bec719bd5374",
-      "referenceId": "fa_ref_9dd4c52991abbcc9c1133d0d",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWAFI152T",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_3dd402420e1b6490631cbf7b"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_3e53fc5311f5a5d1bca2473b"
-      ],
-      "legacyRuntimeIds": [
-        "ao-11764"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_be6067a45c20c7d5ef6f3d31"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_e4b21c7516a55850251566e7",
       "referenceId": "fa_ref_3aded49017ff39758838c41d",
       "category": "dishwasher",
@@ -4948,37 +4824,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_45c6d7af59895072fe731143"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e045e45d378016cb3b9be692",
-      "referenceId": "fa_ref_bc43393df15f3e85ef9beba9",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWAI315XT",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_b479507cded1e1280cd2314b"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a3f8855d04740001cebb0a2f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-34099"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_797bd66fbcf1c7f1593b3726"
       ],
       "offlineReplayOutcome": null
     },
@@ -5232,37 +5077,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d9a5ad19c20445aa1b94600b",
-      "referenceId": "fa_ref_3d578901aa96515d9690c940",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWAUP364X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_b7ee2b36b5914b0f2fb0b7cb"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_b9f202bc79fecf9d56813321"
-      ],
-      "legacyRuntimeIds": [
-        "ao-32643"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_11e6e449016c29ebc7ebe7d0"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_449139dd2f6c0cff3a497a79",
       "referenceId": "fa_ref_0512054b4e4b87abb81a3466",
       "category": "dishwasher",
@@ -5351,6 +5165,68 @@
       ],
       "canonicalProductIds": [
         "fa_prod_ba96bef3fc0d9a4bb2f5b85b"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_cc4ba5d47722bec719bd5374",
+      "referenceId": "fa_ref_9dd4c52991abbcc9c1133d0d",
+      "category": "dishwasher",
+      "brand": "Smeg",
+      "model": "DWAFI152T",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "DWAFI152T",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_3dd402420e1b6490631cbf7b"
+      ],
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_3e53fc5311f5a5d1bca2473b"
+      ],
+      "legacyRuntimeIds": [
+        "ao-11764"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_be6067a45c20c7d5ef6f3d31"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_e045e45d378016cb3b9be692",
+      "referenceId": "fa_ref_bc43393df15f3e85ef9beba9",
+      "category": "dishwasher",
+      "brand": "Smeg",
+      "model": "DWAI315XT",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "model_specific",
+      "groupName": "DWAI315XT",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_b479507cded1e1280cd2314b"
+      ],
+      "resolverIds": [
+        "architecture-v2-core-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_a3f8855d04740001cebb0a2f"
+      ],
+      "legacyRuntimeIds": [
+        "ao-34099"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_797bd66fbcf1c7f1593b3726"
       ],
       "offlineReplayOutcome": null
     },
@@ -191861,19 +191737,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_16ea63f53ffdbc79dcac46ee",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/b/f/a/6bfa53049f2b4ca76b9d576d1e9f5dbce29585ab_DWA4510X_Smeg_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DWA4510X.json",
-        "source:doc_7f42ce723323ee2ab25bad8c"
-      ],
-      "referenceIds": [
-        "fa_ref_f658dcb64e7d5e441e509050"
-      ]
-    },
-    {
       "sourceId": "historical_source_16f09e01ae3fdbdebb804c15",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/7/0/6/2/7062e927deed6bc846c79d8a2c08cb75235f1ffa_WBE5300SALH_Westinghouse_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -192830,19 +192693,6 @@
       ],
       "referenceIds": [
         "fa_ref_db49273c0f958b356719d426"
-      ]
-    },
-    {
-      "sourceId": "historical_source_240fe643b7c8d9177da56fd9",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/b/c/c/1/bcc12122e22a92a26e92376c49f3687bbb09b592_DWA6314B_Smeg_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DWA6314B.json",
-        "source:doc_04408c65369577e075ed5308"
-      ],
-      "referenceIds": [
-        "fa_ref_b15871307a5551bc8b529b98"
       ]
     },
     {
@@ -203383,19 +203233,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_b7ee2b36b5914b0f2fb0b7cb",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/7/f/6/27f66b944d85f3911da460141c7504f4f4064107_Smeg_DWAUP364X_Under_Bench_Dishwasher_Datasheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DWAUP364X.json",
-        "source:doc_f8fe8982b66ffddab79ddbee"
-      ],
-      "referenceIds": [
-        "fa_ref_3d578901aa96515d9690c940"
-      ]
-    },
-    {
       "sourceId": "historical_source_b8116ce21421d84f1c1ca15d",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/e/8/2/7/e827c11c69e5d213ba061b05d549ca4a2213ce91_DE4560M1_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -207467,19 +207304,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_f686309d1777f16402fd6665",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/0/8/8/7088ae18377742c974075c6836bdcaf537bf6020_Smeg_DWA6D15X_Diamond_Series_Freestanding_Dishwasher_Datasheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DWA6D15X.json",
-        "source:doc_c3d3f365e041b723960448aa"
-      ],
-      "referenceIds": [
-        "fa_ref_98371fd24fda6dc474596f08"
-      ]
-    },
-    {
       "sourceId": "historical_source_f6a37bc4d51f531d69840b39",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/c/5/4/4/c5446cc490a09d5be5f80bbb1d42a72a90be32e4_SR624LSTC_Samsung_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -208129,23 +207953,23 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 376,
+    "COMPLETE_RECEIPT": 380,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8093,
-    "queuedModels": 7717,
-    "uniqueReferences": 7717,
-    "candidateSources": 1366,
-    "candidateEdges": 1401,
+    "queuedModels": 7713,
+    "uniqueReferences": 7713,
+    "candidateSources": 1362,
+    "candidateEdges": 1397,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1079,
+      "CURRENT_RETAIL": 1075,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1257,
+      "dishwasher": 1253,
       "dryer": 801,
       "fridge": 4211,
       "washing_machine": 1448
@@ -208154,21 +207978,21 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1083
+      "REFERENCE_REDISCOVERY": 1079
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1083
+      "OFFICIAL_REDISCOVERY": 1079
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5052,
+      "DISCOVERY_READY": 5048,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 376,
+      "COMPLETE_RECEIPT": 380,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

@@ -7,6 +7,9 @@ export const SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR =
 export const SMEG_AU_DISHWASHER_SUFFIX_FIXED_GRAMMAR =
   'smeg-au-dishwasher-size-whd-suffix-fixed-v1';
 
+export const SMEG_AU_DISHWASHER_SUFFIX_PERMUTATION_GRAMMAR =
+  'smeg-au-dishwasher-fixed-axis-suffix-permutation-v1';
+
 function normalizedText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
 }
@@ -74,4 +77,31 @@ export function extractSmegAuDishwasherFixedTableSizeRows(value) {
     value: `${depthMm} mm`,
     quote: `Depth ${depthMm} mm`,
   }];
+}
+
+export function extractSmegAuDishwasherFixedSuffixPermutationRows(value) {
+  const source = normalizedText(value);
+  const fixedMatch = /^(?:Size|dimensions)\s+(\d+)\s*mm\s*([WHD])\s*[x×]\s*(\d+)\s*mm\s*([WHD])\s*[x×]\s*(\d+)\s*mm\s*([WHD])\s*$/i.exec(source);
+  if (!fixedMatch) return null;
+
+  const tokens = [
+    { mm: Number(fixedMatch[1]), axis: fixedMatch[2].toUpperCase() },
+    { mm: Number(fixedMatch[3]), axis: fixedMatch[4].toUpperCase() },
+    { mm: Number(fixedMatch[5]), axis: fixedMatch[6].toUpperCase() },
+  ];
+  if (tokens.some(({ mm }) => !Number.isInteger(mm) || mm <= 0)) return null;
+
+  const suffixOrder = tokens.map(({ axis }) => axis).join('');
+  if (!['WDH', 'HWD'].includes(suffixOrder)) return null;
+
+  const axisNames = { W: 'width', H: 'height', D: 'depth' };
+  const labels = { W: 'Width', H: 'Height', D: 'Depth' };
+  const axisOrder = tokens.map(({ axis }) => axisNames[axis]);
+  return tokens.map(({ axis, mm }) => ({
+    axisOrder,
+    grammarProfileId: SMEG_AU_DISHWASHER_SUFFIX_PERMUTATION_GRAMMAR,
+    label: labels[axis],
+    value: `${mm} mm`,
+    quote: `${labels[axis]} ${mm} mm`,
+  }));
 }

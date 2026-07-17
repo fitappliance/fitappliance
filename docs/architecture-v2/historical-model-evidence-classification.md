@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-17T02:24:30.347Z
+Generated: 2026-07-17T02:46:25.630Z
 
 Coverage: **8,093 / 8,093** unique historical models.
 Models with document links: **1,768**; without links: **6,325**.
@@ -11,7 +11,7 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 1101 |
+| dishwasher | 1419 | 94 | 1105 |
 | dryer | 841 | 72 | 269 |
 | fridge | 4336 | 121 | 2309 |
 | washing_machine | 1497 | 88 | 676 |
@@ -20,11 +20,11 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 376 |
+| COMPLETE_RECEIPT | 380 |
 | CONFLICT_QUARANTINE | 83 |
 | IDENTITY_RESEARCH | 135 |
 | OFFICIAL_DISCOVERY | 6416 |
-| REFERENCE_REDISCOVERY | 1083 |
+| REFERENCE_REDISCOVERY | 1079 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -52,6 +52,7 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Bosch | document_family | Document family 29a33ef7af64 | 6 |
 | dishwasher | Bosch | document_family | Document family 8e8d196ff904 | 6 |
 | dishwasher | Fisher & Paykel | document_family | Document family 40d415ddb0ed | 6 |
+| dishwasher | Smeg | parser_family | Smeg Australia dishwasher technical specification | 6 |
 | fridge | Bosch | marketing_series | Series 6 | 6 |
 | fridge | Sub-Zero | parser_family | PDF grammar pdf_grammar_b6dfa4c93dc0b9e7 | 6 |
 | fridge | Westinghouse | document_family | Document family e316fc226e4d | 6 |
@@ -69,7 +70,6 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Bosch | marketing_series | Series 4 | 4 |
 | fridge | Electrolux | parser_family | PDF grammar pdf_grammar_fd6fd1396552b04a | 4 |
 | fridge | Haier | parser_family | Haier Australia HBM refrigerator technical data | 4 |
-| washing_machine | Bosch | parser_family | PDF grammar pdf_grammar_4c402fe83b8ed0c6 | 4 |
 
 ## Highest-Impact Gaps
 

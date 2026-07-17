@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T02:26:17.230Z",
-  "sourceBundleSha256": "7f185571e4637db50ecde188b8aeacf06db1411aa1366e47caffcdb2e3ce966a",
+  "generatedAt": "2026-07-17T02:45:02.304Z",
+  "sourceBundleSha256": "ba470313c35c16385dd7b8af798f3ec2f5d33e609d9bdc1c883a8e282c19d4c7",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -532,6 +532,20 @@
       "contentSha256": "f88f13657d3f3869cd0c9d70025f9010ad3aaa786692c644c95cdc41d5a366dc",
       "receiptBindingSha256": "5e95407195a6ee80aaaccb1a1688bf83d84da1a7576b71626e7648ab3444d372",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_229b39e3d78f502be50e3f89",
+      "referenceId": "fa_ref_b15871307a5551bc8b529b98",
+      "brand": "Smeg",
+      "model": "DWA6314B",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA6314B.pdf",
+      "sourcePdfSha256": "db82f71583ca6f937a0323ecfa6b6febc15d6a255470ed1dc9c53d066991bb1b",
+      "contentSha256": "db82f71583ca6f937a0323ecfa6b6febc15d6a255470ed1dc9c53d066991bb1b",
+      "receiptBindingSha256": "1a0b8bac87e343f6e50cd8099ae7e79587403cdeb1fa55406dd1834bf5ddd7ca",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f4/24/f42470c78314132a52a7ad5d221d4d7237d633f586aed3c9942677defda848e6.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2734,6 +2748,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_88a5bb4493812fec2690e7de",
+      "referenceId": "fa_ref_98371fd24fda6dc474596f08",
+      "brand": "Smeg",
+      "model": "DWA6D15X",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA6D15X.pdf",
+      "sourcePdfSha256": "b252e88beef08491320f2570c6ac37cffb907dfe101b93ff09b60de42f584e54",
+      "contentSha256": "b252e88beef08491320f2570c6ac37cffb907dfe101b93ff09b60de42f584e54",
+      "receiptBindingSha256": "835f7655baf7c3159dbafcf66d25929db2d6cc8e3c1164e14394710384b2264c",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ca/5a/ca5adccdbc3dc6f68f12538324b35293f4ec244903245a82dd084f0f928b8ed7.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_895a1be60e3fa96e85e3015e",
       "referenceId": "fa_ref_34601f00c17825bfd5a8ca86",
       "brand": "Fisher & Paykel",
@@ -3896,6 +3924,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_b9f202bc79fecf9d56813321",
+      "referenceId": "fa_ref_3d578901aa96515d9690c940",
+      "brand": "Smeg",
+      "model": "DWAUP364X",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAUP364X.pdf",
+      "sourcePdfSha256": "a53f8f50c6164d0f067b1eb80dec28cad8eaeee8ef129cef3c655085f50e0055",
+      "contentSha256": "a53f8f50c6164d0f067b1eb80dec28cad8eaeee8ef129cef3c655085f50e0055",
+      "receiptBindingSha256": "fbd3ad14eeb7565921e1f86a6308bafbb61aa5c3f9c2633f085960e90cb84a1d",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/53/ae/53aefe53cb1323e2763828b2182759de5b6347e166a643b7682ddca62996678a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_ba9606f9e6fd9dcc17526951",
       "referenceId": "fa_ref_304f8ae0811c2ee504f6cf1f",
       "brand": "Haier",
@@ -4494,6 +4536,20 @@
       "contentSha256": "9c57591939d1fe0b28381fc975e52f52578c5e4f8fd1fb1aefd87fcbc9ca7d1a",
       "receiptBindingSha256": "c72de78fedd0dbd0845576cebfcd6c9d4c948289b69368636f275304b7c6e3a5",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/d8/03/d8033f9df9be6b0a76107d13b2ff27d056318e81b18dacbdbc882dcc8e3fedbb.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_d3f0a735d1ba9b7ee9a9bf4b",
+      "referenceId": "fa_ref_f658dcb64e7d5e441e509050",
+      "brand": "Smeg",
+      "model": "DWA4510X",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA4510X.pdf",
+      "sourcePdfSha256": "e3b80904f260069f14d6e4d27832dd796ee5234ce0eabb13ce8a95a14f49ae01",
+      "contentSha256": "e3b80904f260069f14d6e4d27832dd796ee5234ce0eabb13ce8a95a14f49ae01",
+      "receiptBindingSha256": "3ec433abcd3ec403128d0874568ed1c385bdefa19e47083ed3f1b5c9098e3372",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/10/f4/10f4b2b775280ed17bc86de1b6a6618a80e9ed7d25e0ce94f54f43350f8fdf9c.json",
       "status": "passed",
       "failureCode": null
     },
@@ -5353,11 +5409,11 @@
     }
   ],
   "summary": {
-    "entries": 357,
-    "sources": 382,
-    "passed": 382,
+    "entries": 361,
+    "sources": 386,
+    "passed": 386,
     "failed": 0
   },
-  "checkedObjects": 741,
-  "semanticAuditSha256": "afb0ab7c906ed12202e612a21b403968c9c34e207cadf13cf425ee6c458cc823"
+  "checkedObjects": 749,
+  "semanticAuditSha256": "c53faa2bade213f75220a36db5834167e9e874c6f9a4628d1a01d8eda49b7367"
 }
