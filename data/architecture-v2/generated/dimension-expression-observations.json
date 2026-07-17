@@ -17,18 +17,18 @@
     "historicalRecords": 8093,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 924,
-    "validMineruDocuments": 909,
+    "mineruDocuments": 929,
+    "validMineruDocuments": 914,
     "invalidMineruDocuments": 15,
-    "documentsWithObservations": 480,
+    "documentsWithObservations": 485,
     "documentsWithoutObservations": 429,
-    "mappedMineruDocuments": 876,
+    "mappedMineruDocuments": 881,
     "unmappedMineruDocuments": 33,
-    "observations": 1150,
-    "researchGaps": 1021,
+    "observations": 1155,
+    "researchGaps": 1026,
     "parserProfiles": 215,
-    "parserReplays": 1035,
-    "completeParserReplays": 429
+    "parserReplays": 1040,
+    "completeParserReplays": 434
   },
   "categories": [
     {
@@ -121258,7 +121258,7 @@
             "Electrolux"
           ],
           "modelCount": 43,
-          "observedMineruDocuments": 3,
+          "observedMineruDocuments": 8,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 0,
           "observedParserProfileCount": 1,
@@ -121271,18 +121271,33 @@
               "groupType": "parser_family",
               "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
               "models": [
+                "EDC2075GDW",
+                "EDC2086GDW",
+                "EDH3586GDW",
+                "EDH3896GDW",
                 "EDV605H3WC",
+                "EDV605HQWA",
                 "EDV705H3WC",
                 "EDV705HQWA"
               ],
               "pdfSha256s": [
+                "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+                "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+                "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
                 "858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8",
                 "8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d",
-                "9ec95da728ee5b2059853a9bd0ef1c33a119d761d46d9047f1e2bb5d9a372872"
+                "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+                "9ec95da728ee5b2059853a9bd0ef1c33a119d761d46d9047f1e2bb5d9a372872",
+                "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b"
               ],
               "sourceUrls": [
                 "https://commercial.appliancesonline.com.au/manuals/ak/b/5/7/e/b57e4730d952fa76093dfb152bc519c36d67fd23_Electrolux_EDV705H3WC_Factsheet.pdf",
                 "https://commercial.appliancesonline.com.au/manuals/ak/d/7/e/2/d7e29d214f2e4ae675965724e2bfae2f462549a0_Electrolux_EDV605H3WC_Factsheet.pdf",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
                 "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV705HQWA&brand=Electrolux"
               ],
               "seriesEvidence": [],
@@ -121321,6 +121336,51 @@
               ],
               "parserReplays": [
                 {
+                  "pdfSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+                  "category": "dryer",
+                  "brand": "Electrolux",
+                  "model": "EDH3586GDW",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+                  "category": "dryer",
+                  "brand": "Electrolux",
+                  "model": "EDC2086GDW",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+                  "category": "dryer",
+                  "brand": "Electrolux",
+                  "model": "EDV605HQWA",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
                   "pdfSha256": "858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8",
                   "category": "dryer",
                   "brand": "Electrolux",
@@ -121351,6 +121411,21 @@
                   "reasonCode": "PARSED_COMPLETE"
                 },
                 {
+                  "pdfSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+                  "category": "dryer",
+                  "brand": "Electrolux",
+                  "model": "EDH3896GDW",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
                   "pdfSha256": "9ec95da728ee5b2059853a9bd0ef1c33a119d761d46d9047f1e2bb5d9a372872",
                   "category": "dryer",
                   "brand": "Electrolux",
@@ -121364,9 +121439,91 @@
                   ],
                   "grammarProfileIds": [],
                   "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+                  "category": "dryer",
+                  "brand": "Electrolux",
+                  "model": "EDC2075GDW",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
+                {
+                  "observationId": "dimension_expression_0760200735ea514ddfcc6bb2",
+                  "pdfSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+                  "contentSha256": "ee76b39578123645a30d5425d21eecea56c94f48be0903fb66621384959779a5",
+                  "page": 3,
+                  "bbox": [
+                    504,
+                    227,
+                    918,
+                    361
+                  ],
+                  "fragmentSha256": "3af89440c3dfefcd06cbc8e0a896c4ff059a6638abef0cab35cf7786fc9af972",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EDC2086GDW",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EDC2086GDW"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "850 | 600 | 600",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 600",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
                 {
                   "observationId": "dimension_expression_2280a6860a165e7f3dd0a77d",
                   "pdfSha256": "858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8",
@@ -121416,6 +121573,73 @@
                       "axis": "height",
                       "label": "Total height (mm)",
                       "value": "795",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_5d04c0adbbd61fbac60c0688",
+                  "pdfSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+                  "contentSha256": "d4463205aba63236a80078f2023d929f20dd01052282503b7d1ffa223f3abe5c",
+                  "page": 3,
+                  "bbox": [
+                    516,
+                    229,
+                    939,
+                    367
+                  ],
+                  "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EDH3896GDW",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EDH3896GDW"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "850 | 600 | 600",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 600",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
                       "valueShape": "scalar"
                     },
                     {
@@ -121502,6 +121726,73 @@
                   "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
                 },
                 {
+                  "observationId": "dimension_expression_96e751554f31666975e0d739",
+                  "pdfSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+                  "contentSha256": "18b24d023af90274991c377a650a543ab9198548f442de15f0fb4b6db729a4d1",
+                  "page": 3,
+                  "bbox": [
+                    509,
+                    228,
+                    926,
+                    363
+                  ],
+                  "fragmentSha256": "90f65f2fbc81d5a6f4161d39a2ce060b860a1b6763ca1f01cb62f06d09c134da",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EDC2075GDW",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EDC2075GDW"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "850 | 600 | 540",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 540",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "540",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
+                {
                   "observationId": "dimension_expression_a7b30040b69ea907d5901301",
                   "pdfSha256": "8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d",
                   "contentSha256": "679514976605e48da78a345e9fdec99c3f5cfa3b7499d1c3e136edaff82ef506",
@@ -121567,9 +121858,164 @@
                   ],
                   "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
                   "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_d4ad7720686b583c8f5118b0",
+                  "pdfSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+                  "contentSha256": "f41eefb46c3fd9e11ec700311b5514592848dae7d9c9ac8d7b4d1438cb2012ed",
+                  "page": 3,
+                  "bbox": [
+                    516,
+                    229,
+                    939,
+                    367
+                  ],
+                  "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EDH3586GDW",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EDH3586GDW"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "850 | 600 | 600",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 600",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_d507c2b316ff65fe0322ebc5",
+                  "pdfSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+                  "contentSha256": "25901d4caaedbb6be0fcf176ee05edcd60613c597bd0903c5fdf008548af3546",
+                  "page": 3,
+                  "bbox": [
+                    517,
+                    229,
+                    939,
+                    366
+                  ],
+                  "fragmentSha256": "b96fbc95cd3a5e1bd136db125d26f8e508ea289b474465571d14325139f18eb9",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EDV605HQWA",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EDV605HQWA"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "795 | 600 | 560",
+                  "sourceQuote": "Total height (mm) 795 | Total width (mm) 600 | Total depth (mm) 560",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "795",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "560",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
                 }
               ],
               "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+                  "contentSha256": "f41eefb46c3fd9e11ec700311b5514592848dae7d9c9ac8d7b4d1438cb2012ed",
+                  "page": 5,
+                  "quote": "Shipping Volume (m3) 0.387 Shipping Weight (Kg) 51 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 640 Pack Dimension Depth (mm) 680"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+                  "contentSha256": "ee76b39578123645a30d5425d21eecea56c94f48be0903fb66621384959779a5",
+                  "page": 5,
+                  "quote": "Shipping Volume (m3) 0.387 Shipping Weight (Kg) 46 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 640 Pack Dimension Depth (mm) 680"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+                  "contentSha256": "25901d4caaedbb6be0fcf176ee05edcd60613c597bd0903c5fdf008548af3546",
+                  "page": 5,
+                  "quote": "Shipping Volume (m3) 0.31 Shipping Weight (Kg) 27.5 Pack Dimensions Height (mm) 830 Pack Dimension Width (mm) 630 Pack Dimension Depth (mm) 600"
+                },
                 {
                   "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
                   "pdfSha256": "858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8",
@@ -121586,10 +122032,24 @@
                 },
                 {
                   "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+                  "contentSha256": "d4463205aba63236a80078f2023d929f20dd01052282503b7d1ffa223f3abe5c",
+                  "page": 5,
+                  "quote": "Shipping Volume (m3) 0.387 Shipping Weight (Kg) 54 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 640 Pack Dimension Depth (mm) 680"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
                   "pdfSha256": "9ec95da728ee5b2059853a9bd0ef1c33a119d761d46d9047f1e2bb5d9a372872",
                   "contentSha256": "12dfee97e20c3562174cead181254d876b94cfaf7fd37c1a8d11fc0eec602b31",
                   "page": 5,
                   "quote": "Shipping Volume (m3) 0.33 Shipping Weight (Kg) 28.5 Pack Dimensions Height (mm) 830 Pack Dimension Width (mm) 630 Pack Dimension Depth (mm) 640"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+                  "contentSha256": "18b24d023af90274991c377a650a543ab9198548f442de15f0fb4b6db729a4d1",
+                  "page": 5,
+                  "quote": "Shipping Volume (m3) 0.347 Shipping Weight (Kg) 39 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 640 Pack Dimension Depth (mm) 610"
                 }
               ],
               "parserProfileIds": [

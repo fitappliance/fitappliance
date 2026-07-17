@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-17T03:18:06.343Z",
+  "generatedAt": "2026-07-17T03:25:48.641Z",
   "processorEpochMigration": {
     "migratedAt": "2026-07-17T01:44:09.981Z",
     "migratedEntries": 3,
@@ -12697,6 +12697,23 @@
       "acceptedAt": "2026-07-16T05:02:00.788Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_2ece18e0ead1728db84673c5",
+      "targetId": "recovery_target_c7f1eb66ab51b116905ea965",
+      "referenceId": "fa_ref_fc0d43b68d78ae703f8e2590",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
+      "contentSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "ada4c9ab002606de73e0e7b45f453df8f2980ecf95094503d0ca9846ddb3ece8",
+      "semanticOutcomeSha256": "2374c0be6f03c4af7c86d1d45db837477f455e284a39ebdba4b53f9e8b3e866c",
+      "batchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "batchSha256": "e14cb72415ecfa0e9cdd783a43cb5f888989f5bfd4f007c9c5eb126e0577f90f",
+      "runId": "historical-electrolux-dryers-20260717-al1",
+      "resultsSha256": "0cb4b5a71275bcfb0df939dfa8cff0ed91a8372b01974c15333a472e286c9ef2",
+      "auditSha256": "b5a84fa7187c63e87fc957ad43b810e31febcc0c4b79a4ce4fe431b9e8055aff",
+      "acceptedAt": "2026-07-17T03:24:56.820Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_2fdb881456d293b26f249005",
       "targetId": "recovery_target_3641547be7cf869a61db6140",
       "referenceId": "fa_ref_70a486d5df7caa827a726723",
@@ -12984,6 +13001,23 @@
       "resultsSha256": "d8a12de96b26a08d5294304815439fff83a8f088b70f4300ab9e65f10343bac7",
       "auditSha256": "c9082e01294ab19687d5a57fd13abdfc70c76311214c1e8c976b1299782b835c",
       "acceptedAt": "2026-07-16T18:19:00.633Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_3b6389cbe5c617cf73480b82",
+      "targetId": "recovery_target_8e8175b7876a2e462a9d260a",
+      "referenceId": "fa_ref_6eda38b5eca5b8f2959ca1b9",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+      "contentSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "a8ac824c32f0f6fbecc92ad03d7eef88ffa90c5ff9b2a15a782850f8dc4643bb",
+      "semanticOutcomeSha256": "2b0693182c6dcf4df103e8d4ca3d99ac1c8e95fbe0aae44eac4a720cfe0b5f19",
+      "batchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "batchSha256": "e14cb72415ecfa0e9cdd783a43cb5f888989f5bfd4f007c9c5eb126e0577f90f",
+      "runId": "historical-electrolux-dryers-20260717-al1",
+      "resultsSha256": "0cb4b5a71275bcfb0df939dfa8cff0ed91a8372b01974c15333a472e286c9ef2",
+      "auditSha256": "b5a84fa7187c63e87fc957ad43b810e31febcc0c4b79a4ce4fe431b9e8055aff",
+      "acceptedAt": "2026-07-17T03:24:56.820Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_3cebcaba8fdb850bb99ada08",
@@ -13698,6 +13732,23 @@
       "resultsSha256": "70910d735993cbe407bc6a408c7b6e646fb0f64326860c1270f1df08394fc0fc",
       "auditSha256": "8bc3fcc76b8f6fa850b19ec6702890df6b3c4bf26566c816f0630ee2b315180a",
       "acceptedAt": "2026-07-16T12:48:31.690Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_6321531b291bf46d40c1f888",
+      "targetId": "recovery_target_2eb5334a9ca8c185ffe48a24",
+      "referenceId": "fa_ref_e9414d2aae4776f86e46ff99",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
+      "contentSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "927c5baf93aeecf1570b8cadb569629c46ce8ba9e215c50c60445156b3afee9a",
+      "semanticOutcomeSha256": "bb5c1715020a0ef4dadc5268cb35a7ecdd6d88fc7708915a39032e24fd1942e9",
+      "batchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "batchSha256": "e14cb72415ecfa0e9cdd783a43cb5f888989f5bfd4f007c9c5eb126e0577f90f",
+      "runId": "historical-electrolux-dryers-20260717-al1",
+      "resultsSha256": "0cb4b5a71275bcfb0df939dfa8cff0ed91a8372b01974c15333a472e286c9ef2",
+      "auditSha256": "b5a84fa7187c63e87fc957ad43b810e31febcc0c4b79a4ce4fe431b9e8055aff",
+      "acceptedAt": "2026-07-17T03:24:56.820Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_63a523d42dcdeb50d131c016",
@@ -14752,6 +14803,23 @@
       "resultsSha256": "ae21efa26c9dfcf08bf497b393a8695f34f2b9dbe9167a8f3e8929d7460911c6",
       "auditSha256": "e6e1b59c0d646cf8a4f8366eb7cc644e7eea331936a79f118d1597d1f710b3bc",
       "acceptedAt": "2026-07-16T23:03:51.177Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_9bca496d698e889f8213a4a7",
+      "targetId": "recovery_target_0b87d866973ded846f2cd29f",
+      "referenceId": "fa_ref_60c4bbf40e7a438355a9b5db",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+      "contentSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "129df985d8b510d3b8d9c1b4678fc0cf1de7ca7e9cfdbb4d53ac6d0784f6240b",
+      "semanticOutcomeSha256": "b5af247d3af57a171b61e20620d89ab9673d2c1da61fc97ccd1a1aa5650aeeb2",
+      "batchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "batchSha256": "e14cb72415ecfa0e9cdd783a43cb5f888989f5bfd4f007c9c5eb126e0577f90f",
+      "runId": "historical-electrolux-dryers-20260717-al1",
+      "resultsSha256": "0cb4b5a71275bcfb0df939dfa8cff0ed91a8372b01974c15333a472e286c9ef2",
+      "auditSha256": "b5a84fa7187c63e87fc957ad43b810e31febcc0c4b79a4ce4fe431b9e8055aff",
+      "acceptedAt": "2026-07-17T03:24:56.820Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_9d9c2a983af65bc0c22adcea",
@@ -15976,6 +16044,23 @@
       "resultsSha256": "75b1213fb4de5ad027017596a88eb8b671dfb27cdb15aca2b1ed3032d7e81b3d",
       "auditSha256": "dfd1175015c0f831d36a2c5beda465ef5da6943cf20d7842d6a093b4408ffef0",
       "acceptedAt": "2026-07-16T01:01:19.499Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_da0ca31ad22eef3a277d2062",
+      "targetId": "recovery_target_6f27ef9727bb00f6adb981b1",
+      "referenceId": "fa_ref_9bc56c3ea8e3083cc4f3ce50",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux",
+      "contentSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "8da65faafb9e9171794c81a5fd9b740b024c0c5d4b0a30763b81a78b2e1a42bf",
+      "semanticOutcomeSha256": "da99b774c90b19ceadafdb66b0aa1695dcec1e004a641b43b3d0c068f73d6142",
+      "batchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "batchSha256": "e14cb72415ecfa0e9cdd783a43cb5f888989f5bfd4f007c9c5eb126e0577f90f",
+      "runId": "historical-electrolux-dryers-20260717-al1",
+      "resultsSha256": "0cb4b5a71275bcfb0df939dfa8cff0ed91a8372b01974c15333a472e286c9ef2",
+      "auditSha256": "b5a84fa7187c63e87fc957ad43b810e31febcc0c4b79a4ce4fe431b9e8055aff",
+      "acceptedAt": "2026-07-17T03:24:56.820Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_db6c98c528663d363cb62e52",
@@ -20399,7 +20484,7 @@
   "summary": {
     "entries": 386,
     "resolutions": 27,
-    "sourceAcceptances": 276,
+    "sourceAcceptances": 281,
     "suppressions": 299,
     "resolvedSuppressions": 24,
     "retryable": 63,

@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-17T03:18:55.893Z
+Generated: 2026-07-17T03:26:33.651Z
 
 Coverage: **8,093 / 8,093** unique historical models.
 Models with document links: **1,768**; without links: **6,325**.
@@ -12,7 +12,7 @@ This is a research and repair classification. It does not grant publication auth
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
 | dishwasher | 1419 | 94 | 1115 |
-| dryer | 841 | 72 | 269 |
+| dryer | 841 | 72 | 274 |
 | fridge | 4336 | 121 | 2309 |
 | washing_machine | 1497 | 88 | 676 |
 
@@ -20,11 +20,11 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 390 |
+| COMPLETE_RECEIPT | 395 |
 | CONFLICT_QUARANTINE | 83 |
 | IDENTITY_RESEARCH | 135 |
 | OFFICIAL_DISCOVERY | 6416 |
-| REFERENCE_REDISCOVERY | 1069 |
+| REFERENCE_REDISCOVERY | 1064 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -40,6 +40,7 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Bosch | document_family | Document family 563aa92915c3 | 9 |
 | fridge | KELVINATOR | parser_family | PDF grammar pdf_grammar_b56ff9ab0cbbc9f2 | 9 |
 | dishwasher | Fisher & Paykel | document_family | Document family b5a036b18078 | 8 |
+| dryer | Electrolux | parser_family | PDF grammar pdf_grammar_8f60826f847a01df | 8 |
 | washing_machine | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_fa4e96e9408d0085 | 8 |
 | dishwasher | Bosch | marketing_series | Series 4 | 7 |
 | dishwasher | Bosch | parser_family | PDF grammar pdf_grammar_2a3308cabe6ee132 | 7 |
@@ -69,7 +70,6 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Fisher & Paykel | document_family | Document family 4c6a3e96a150 | 4 |
 | dryer | Bosch | marketing_series | Series 8 | 4 |
 | fridge | Bosch | marketing_series | Series 4 | 4 |
-| fridge | Electrolux | parser_family | PDF grammar pdf_grammar_fd6fd1396552b04a | 4 |
 
 ## Highest-Impact Gaps
 

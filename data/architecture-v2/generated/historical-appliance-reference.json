@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
-    "historical-recovery:historical-recovery-cumulative-v1": "1692bc02bd44de59d0837081335f29336dcc66450f62cdb9f5de4d31b7e066b5"
+    "historical-recovery:historical-recovery-cumulative-v1": "8eaf83def058f8985e02672679d7253b3fd331a9695be80d15d8cc59c8917915"
   },
   "records": [
     {
@@ -67148,14 +67148,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 540
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6f27ef9727bb00f6adb981b1",
+          "snapshotSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -67164,8 +67175,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_6f27ef9727bb00f6adb981b1",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux",
+          "contentSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+          "receiptBindingSha256": "8ef50c391ad5e74f7178a38218d6cb7e5a2257bbf067b192dbbbafce413ffc21",
+          "verifiedAt": "2026-07-17T03:23:46.802Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "90f65f2fbc81d5a6f4161d39a2ce060b860a1b6763ca1f01cb62f06d09c134da"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "90f65f2fbc81d5a6f4161d39a2ce060b860a1b6763ca1f01cb62f06d09c134da"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "90f65f2fbc81d5a6f4161d39a2ce060b860a1b6763ca1f01cb62f06d09c134da"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/aa/8d/aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b.pdf"
+        }
       ]
     },
     {
@@ -67183,14 +67220,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2eb5334a9ca8c185ffe48a24",
+          "snapshotSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -67199,8 +67247,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2eb5334a9ca8c185ffe48a24",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
+          "contentSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+          "receiptBindingSha256": "b3d190bed04bbe9db2df8a24d554890f6c6ac5c9d0c100e850cec749b3d7de15",
+          "verifiedAt": "2026-07-17T03:23:25.000Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "3af89440c3dfefcd06cbc8e0a896c4ff059a6638abef0cab35cf7786fc9af972"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "3af89440c3dfefcd06cbc8e0a896c4ff059a6638abef0cab35cf7786fc9af972"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "3af89440c3dfefcd06cbc8e0a896c4ff059a6638abef0cab35cf7786fc9af972"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/4d/75/4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9.pdf"
+        }
       ]
     },
     {
@@ -67253,14 +67327,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_8e8175b7876a2e462a9d260a",
+          "snapshotSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -67269,8 +67354,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_8e8175b7876a2e462a9d260a",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+          "contentSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+          "receiptBindingSha256": "de8ad5ae183f4328b92386e91fc8257beff68ac2acb9ff3637b78c717b91085d",
+          "verifiedAt": "2026-07-17T03:24:08.475Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/14/c1/14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161.pdf"
+        }
       ]
     },
     {
@@ -67288,14 +67399,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_0b87d866973ded846f2cd29f",
+          "snapshotSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -67304,8 +67426,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_0b87d866973ded846f2cd29f",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+          "contentSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+          "receiptBindingSha256": "0d3199372cd1b15453ddd424f1a75202f0e6ef8e73f3d92d49e112dbc9f9290e",
+          "verifiedAt": "2026-07-17T03:23:02.291Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/8c/17/8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5.pdf"
+        }
       ]
     },
     {
@@ -67907,14 +68055,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 795,
+        "depth": 560
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c7f1eb66ab51b116905ea965",
+          "snapshotSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -67923,8 +68082,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c7f1eb66ab51b116905ea965",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
+          "contentSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+          "receiptBindingSha256": "3cc63452531dd42bb1de98356d6048d19a4617301938d09e560f84591c15b891",
+          "verifiedAt": "2026-07-17T03:24:56.767Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "b96fbc95cd3a5e1bd136db125d26f8e508ea289b474465571d14325139f18eb9"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "b96fbc95cd3a5e1bd136db125d26f8e508ea289b474465571d14325139f18eb9"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "b96fbc95cd3a5e1bd136db125d26f8e508ea289b474465571d14325139f18eb9"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/76/6e/766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555.pdf"
+        }
       ]
     },
     {
@@ -325175,16 +325360,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2843,
-      "MODEL_RECEIPT": 299,
+      "IDENTITY_ONLY": 2838,
+      "MODEL_RECEIPT": 304,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2843,
-      "AUTO_FILL": 310,
+      "MEASURE_REQUIRED": 2838,
+      "AUTO_FILL": 315,
       "QUARANTINED": 88
     }
   }

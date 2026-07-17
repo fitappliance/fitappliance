@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:18:55.893Z",
+  "generatedAt": "2026-07-17T03:26:33.651Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "175cbb04d22906947c2eb8a28f67b5f3c1d877fc5b5d1fb82f61bba9f76ccd2e",
+  "semanticClassificationSha256": "ca911cdc35c96a63960999fe2e8ab31252285155345d74f48cebffcfec0005b6",
   "summary": {
     "records": 8093,
     "uniqueReferenceIds": 8093,
-    "documentLinks": 4369,
+    "documentLinks": 4374,
     "modelsWithDocumentLinks": 1768,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 390,
+      "COMPLETE_RECEIPT": 395,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1069
+      "REFERENCE_REDISCOVERY": 1064
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 390,
-      "REDISCOVER_OFFICIAL_SOURCE": 1069,
+      "NO_ACTION": 395,
+      "REDISCOVER_OFFICIAL_SOURCE": 1064,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 135
     },
     "bySourceAuthority": {
-      "MIXED": 234,
+      "MIXED": 239,
       "NONE": 6611,
       "OFFICIAL": 162,
-      "REFERENCE": 1086
+      "REFERENCE": 1081
     },
     "byIdentityScope": {
       "AMBIGUOUS": 172,
@@ -47,8 +47,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 90,
-      "ALL_AXIS_SCALAR": 437,
-      "NOT_PARSED": 7472,
+      "ALL_AXIS_SCALAR": 442,
+      "NOT_PARSED": 7467,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 390,
-      "LEGACY_UNBOUND": 1378,
+      "CURRENT_VALID": 395,
+      "LEGACY_UNBOUND": 1373,
       "NONE": 6325
     }
   },
@@ -81,13 +81,13 @@
       "category": "dryer",
       "records": 841,
       "brands": 72,
-      "documentLinks": 269,
+      "documentLinks": 274,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 40,
+        "COMPLETE_RECEIPT": 45,
         "CONFLICT_QUARANTINE": 4,
         "IDENTITY_RESEARCH": 4,
         "OFFICIAL_DISCOVERY": 745,
-        "REFERENCE_REDISCOVERY": 48
+        "REFERENCE_REDISCOVERY": 43
       }
     },
     {
@@ -66612,16 +66612,17 @@
       "canonicalBrand": "Electrolux",
       "model": "EDC2075GDW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -66644,6 +66645,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/18/b2/18b24d023af90274991c377a650a543ab9198548f442de15f0fb4b6db729a4d1.json",
+            "evidence/web/sha256/aa/8d/aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b.pdf",
+            "receipt:8ef50c391ad5e74f7178a38218d6cb7e5a2257bbf067b192dbbbafce413ffc21"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b"
+        },
+        {
           "documentId": "source:doc_d0070e8dcec2a22f6f6ff2b8",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/2/d/6/7/2d6722c90ceaea1c4e978b82161b888284154155_EDC2075GDW_Electrolux_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -66659,14 +66679,24 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+          "grammarProfileIds": [
+            "pdf_grammar_8f60826f847a01df"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_8f60826f847a01df"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -66675,16 +66705,17 @@
       "canonicalBrand": "Electrolux",
       "model": "EDC2086GDW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -66707,6 +66738,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/ee/76/ee76b39578123645a30d5425d21eecea56c94f48be0903fb66621384959779a5.json",
+            "evidence/web/sha256/4d/75/4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9.pdf",
+            "receipt:b3d190bed04bbe9db2df8a24d554890f6c6ac5c9d0c100e850cec749b3d7de15"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9"
+        },
+        {
           "documentId": "source:doc_e71a71c70ae5054ba446e122",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/a/e/1/d/ae1d5574309807e7477d8966b17f3cdc8b2898bb_EDC2086GDW_Electrolux_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -66722,14 +66772,24 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+          "grammarProfileIds": [
+            "pdf_grammar_8f60826f847a01df"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_8f60826f847a01df"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -66764,16 +66824,17 @@
       "canonicalBrand": "Electrolux",
       "model": "EDH3586GDW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -66796,6 +66857,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/f4/1e/f41eefb46c3fd9e11ec700311b5514592848dae7d9c9ac8d7b4d1438cb2012ed.json",
+            "evidence/web/sha256/14/c1/14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161.pdf",
+            "receipt:de8ad5ae183f4328b92386e91fc8257beff68ac2acb9ff3637b78c717b91085d"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161"
+        },
+        {
           "documentId": "source:doc_042a3c49c1ed02e717ab733b",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/b/8/d/8/b8d83fd4a0da89cf7b37bd1e4605550dc91e9752_EDH3586GDW_Electrolux_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -66811,14 +66891,24 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+          "grammarProfileIds": [
+            "pdf_grammar_8f60826f847a01df"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_8f60826f847a01df"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -66827,16 +66917,17 @@
       "canonicalBrand": "Electrolux",
       "model": "EDH3896GDW",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -66859,6 +66950,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/d4/46/d4463205aba63236a80078f2023d929f20dd01052282503b7d1ffa223f3abe5c.json",
+            "evidence/web/sha256/8c/17/8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5.pdf",
+            "receipt:0d3199372cd1b15453ddd424f1a75202f0e6ef8e73f3d92d49e112dbc9f9290e"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5"
+        },
+        {
           "documentId": "source:doc_f4707fc6c528435068056536",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/7/9/3/679390172699f81f597dfa45144e8fe975f32001_Electrolux_EDH3896GDW_9kg_Heat_Pump_Dryer_User_Manual.pdf",
           "evidenceObjectIds": [
@@ -66874,14 +66984,24 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+          "grammarProfileIds": [
+            "pdf_grammar_8f60826f847a01df"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_8f60826f847a01df"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -67397,16 +67517,17 @@
       "canonicalBrand": "Electrolux",
       "model": "EDV605HQWA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -67429,6 +67550,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/fe/ba/feba9e9a28896d1fe0f0a9f9689fe0de29781616ae42f2a97eeba8b9a36ce546.json",
+            "evidence/web/sha256/76/6e/766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555.pdf",
+            "receipt:3cc63452531dd42bb1de98356d6048d19a4617301938d09e560f84591c15b891"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555"
+        },
+        {
           "documentId": "source:doc_b26c8da6c3bc93719d307355",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/3/0/2/6/3026c008bee52d84caac5804f42b7b9530f6bf02_EDV605HQWA_Electrolux_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -67444,14 +67584,24 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+          "grammarProfileIds": [
+            "pdf_grammar_8f60826f847a01df"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_8f60826f847a01df"
+      ]
     },
     {
       "schemaVersion": 1,

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-17T03:18:06.343Z",
+  "generatedAt": "2026-07-17T03:25:48.641Z",
   "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
   "entries": [
     {
@@ -4106,6 +4106,247 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "a66a14e316a8b1967696884d4f5479a1c02da1ad52ea2e8b46db70530c180b5f"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_0b87d866973ded846f2cd29f",
+      "referenceId": "fa_ref_60c4bbf40e7a438355a9b5db",
+      "legacyRuntimeId": "ao-61423",
+      "canonicalProductId": "fa_prod_2faa2bf50416dabc73eaf78f",
+      "brand": "Electrolux",
+      "model": "EDH3896GDW",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "auditSha256": "92740bedfb2721c3b7a77a947117585823cdc52d4a8cb65aad7fd18046bdd7ea",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:23:02.291Z",
+          "contentSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+          "objectPath": "evidence/web/sha256/8c/17/8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 462107,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "EDH3896GDW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8",
+              "bbox": [
+                516,
+                229,
+                939,
+                367
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8",
+              "bbox": [
+                516,
+                229,
+                939,
+                367
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8",
+              "bbox": [
+                516,
+                229,
+                939,
+                367
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+            "contentSha256": "d4463205aba63236a80078f2023d929f20dd01052282503b7d1ffa223f3abe5c",
+            "objectPath": "evidence/derived/mineru-json/sha256/d4/46/d4463205aba63236a80078f2023d929f20dd01052282503b7d1ffa223f3abe5c.json",
+            "byteSize": 43807,
+            "pageCount": 6
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3896GDW:page:1:6e311e4233e95d64f9512bae788177a07f2d170e69af261acb8355f6265f24e5"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3896GDW:page:2:d95047c306ced59e9bc211c25ff55db8d85b5c6ab122adef203bc7787a67d4b3"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3896GDW:page:3:9e69ae3e034c47c9de50827f588d6850ee389cfb1b218307aebb8e72dc369450"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3896GDW:page:4:a2a605ce30766ef232ad4b28b5f7f41a82b9d2afb0457457b75a8ceed38b44df"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3896GDW:page:5:f84f2e00b328f33bbc50d050ac94d2828e9ac6f3526d991435be27108237f394"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3896GDW:page:6:b0f0b61796fdbe4e609979a27d5d9552c41000123b15c10d7bd54df0f3be53ac"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EDH3896GDW:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:23:02.291Z",
+            "bindingSha256": "0d3199372cd1b15453ddd424f1a75202f0e6ef8e73f3d92d49e112dbc9f9290e"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+            "contentSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+            "receiptBindingSha256": "0d3199372cd1b15453ddd424f1a75202f0e6ef8e73f3d92d49e112dbc9f9290e",
+            "page": 3,
+            "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+            "contentSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+            "receiptBindingSha256": "0d3199372cd1b15453ddd424f1a75202f0e6ef8e73f3d92d49e112dbc9f9290e",
+            "page": 3,
+            "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+            "contentSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+            "receiptBindingSha256": "0d3199372cd1b15453ddd424f1a75202f0e6ef8e73f3d92d49e112dbc9f9290e",
+            "page": 3,
+            "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5"
         ]
       },
       "reconciliation": {
@@ -14604,6 +14845,247 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "631dfea517b11912d9d0d0ff0a7064efc6779f97d72c1d2df498ab721536b291"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_2eb5334a9ca8c185ffe48a24",
+      "referenceId": "fa_ref_e9414d2aae4776f86e46ff99",
+      "legacyRuntimeId": "ao-47259",
+      "canonicalProductId": "fa_prod_8ecc1633b91f6f401a73d4bb",
+      "brand": "Electrolux",
+      "model": "EDC2086GDW",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "auditSha256": "92740bedfb2721c3b7a77a947117585823cdc52d4a8cb65aad7fd18046bdd7ea",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:23:25.000Z",
+          "contentSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+          "objectPath": "evidence/web/sha256/4d/75/4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 354595,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "EDC2086GDW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "3af89440c3dfefcd06cbc8e0a896c4ff059a6638abef0cab35cf7786fc9af972",
+              "bbox": [
+                504,
+                227,
+                918,
+                361
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "3af89440c3dfefcd06cbc8e0a896c4ff059a6638abef0cab35cf7786fc9af972",
+              "bbox": [
+                504,
+                227,
+                918,
+                361
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "3af89440c3dfefcd06cbc8e0a896c4ff059a6638abef0cab35cf7786fc9af972",
+              "bbox": [
+                504,
+                227,
+                918,
+                361
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+            "contentSha256": "ee76b39578123645a30d5425d21eecea56c94f48be0903fb66621384959779a5",
+            "objectPath": "evidence/derived/mineru-json/sha256/ee/76/ee76b39578123645a30d5425d21eecea56c94f48be0903fb66621384959779a5.json",
+            "byteSize": 44034,
+            "pageCount": 6
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2086GDW:page:1:d7f5394b7bd9bf52b0070fdbc0edbe289ea48475d1bec7a5792d3eb49f54309c"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2086GDW:page:2:b89a719d59d8697a7b5be3126f17e942f89ffb8270ac237113d473a46d13af57"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2086GDW:page:3:84167980c8e16c0f31bb52b58d452434456f8a3820729d2bae0ca83ddf2f27a6"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2086GDW:page:4:c19f943610ae58a59cdc5f40fec569ac44a252d898cd2d9702c7727e8a1c323a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2086GDW:page:5:f53272b0c3935786a38375fe813b32981c5baeeb1235c21efb0198eb88a90895"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2086GDW:page:6:feab010488bc8d050fb1efcc3764bce8a0d3ad2a804351d3e79706257f649978"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EDC2086GDW:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:23:25.000Z",
+            "bindingSha256": "b3d190bed04bbe9db2df8a24d554890f6c6ac5c9d0c100e850cec749b3d7de15"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
+            "contentSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+            "receiptBindingSha256": "b3d190bed04bbe9db2df8a24d554890f6c6ac5c9d0c100e850cec749b3d7de15",
+            "page": 3,
+            "fragmentSha256": "3af89440c3dfefcd06cbc8e0a896c4ff059a6638abef0cab35cf7786fc9af972"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
+            "contentSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+            "receiptBindingSha256": "b3d190bed04bbe9db2df8a24d554890f6c6ac5c9d0c100e850cec749b3d7de15",
+            "page": 3,
+            "fragmentSha256": "3af89440c3dfefcd06cbc8e0a896c4ff059a6638abef0cab35cf7786fc9af972"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
+            "contentSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+            "receiptBindingSha256": "b3d190bed04bbe9db2df8a24d554890f6c6ac5c9d0c100e850cec749b3d7de15",
+            "page": 3,
+            "fragmentSha256": "3af89440c3dfefcd06cbc8e0a896c4ff059a6638abef0cab35cf7786fc9af972"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9"
         ]
       },
       "reconciliation": {
@@ -39053,6 +39535,247 @@
       }
     },
     {
+      "targetId": "recovery_target_6f27ef9727bb00f6adb981b1",
+      "referenceId": "fa_ref_9bc56c3ea8e3083cc4f3ce50",
+      "legacyRuntimeId": "ao-56597",
+      "canonicalProductId": "fa_prod_d9809950da006c6c22c4f352",
+      "brand": "Electrolux",
+      "model": "EDC2075GDW",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "auditSha256": "92740bedfb2721c3b7a77a947117585823cdc52d4a8cb65aad7fd18046bdd7ea",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:23:46.802Z",
+          "contentSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+          "objectPath": "evidence/web/sha256/aa/8d/aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 468878,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "EDC2075GDW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "90f65f2fbc81d5a6f4161d39a2ce060b860a1b6763ca1f01cb62f06d09c134da",
+              "bbox": [
+                509,
+                228,
+                926,
+                363
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "90f65f2fbc81d5a6f4161d39a2ce060b860a1b6763ca1f01cb62f06d09c134da",
+              "bbox": [
+                509,
+                228,
+                926,
+                363
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 540
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "90f65f2fbc81d5a6f4161d39a2ce060b860a1b6763ca1f01cb62f06d09c134da",
+              "bbox": [
+                509,
+                228,
+                926,
+                363
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+            "contentSha256": "18b24d023af90274991c377a650a543ab9198548f442de15f0fb4b6db729a4d1",
+            "objectPath": "evidence/derived/mineru-json/sha256/18/b2/18b24d023af90274991c377a650a543ab9198548f442de15f0fb4b6db729a4d1.json",
+            "byteSize": 38671,
+            "pageCount": 6
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2075GDW:page:1:0d69890f5f559efeb8e3077bbf6fc48c8a6ca86bce085fbbf3c41de5a7d66897"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2075GDW:page:2:f369b4004aa17f72783a3e26dba7fcbfb4c6dc7c88c1897cc576aaee138e589b"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2075GDW:page:3:8cb6886472c53c6ca02d5241398e7f07b67a1a71d875e852f62acd7dc68deecf"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2075GDW:page:4:b3dc4fbed870235b087ad8a3326673787d893bbfc9700b1f6426970b1be0df56"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2075GDW:page:5:a970103214a920602d25d3f74a5e165b5c9d24917fb46b9bd0e6e749071bfb67"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDC2075GDW:page:6:7d2790226aee6d6462e5010f3cd43f1e8d2511556af1ba4be7de699767935caf"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EDC2075GDW:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:23:46.802Z",
+            "bindingSha256": "8ef50c391ad5e74f7178a38218d6cb7e5a2257bbf067b192dbbbafce413ffc21"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 540
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux",
+            "contentSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+            "receiptBindingSha256": "8ef50c391ad5e74f7178a38218d6cb7e5a2257bbf067b192dbbbafce413ffc21",
+            "page": 3,
+            "fragmentSha256": "90f65f2fbc81d5a6f4161d39a2ce060b860a1b6763ca1f01cb62f06d09c134da"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux",
+            "contentSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+            "receiptBindingSha256": "8ef50c391ad5e74f7178a38218d6cb7e5a2257bbf067b192dbbbafce413ffc21",
+            "page": 3,
+            "fragmentSha256": "90f65f2fbc81d5a6f4161d39a2ce060b860a1b6763ca1f01cb62f06d09c134da"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux",
+            "contentSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+            "receiptBindingSha256": "8ef50c391ad5e74f7178a38218d6cb7e5a2257bbf067b192dbbbafce413ffc21",
+            "page": 3,
+            "fragmentSha256": "90f65f2fbc81d5a6f4161d39a2ce060b860a1b6763ca1f01cb62f06d09c134da"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_6fa8749ec77ab4efea5335df",
       "referenceId": "fa_ref_b7b4ebdfa7a0c9091baef4b3",
       "legacyRuntimeId": "ao-53552",
@@ -46927,6 +47650,247 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_8e8175b7876a2e462a9d260a",
+      "referenceId": "fa_ref_6eda38b5eca5b8f2959ca1b9",
+      "legacyRuntimeId": "ao-61422",
+      "canonicalProductId": "fa_prod_01ba3d79131ac247d79197e0",
+      "brand": "Electrolux",
+      "model": "EDH3586GDW",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "auditSha256": "92740bedfb2721c3b7a77a947117585823cdc52d4a8cb65aad7fd18046bdd7ea",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:24:08.475Z",
+          "contentSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+          "objectPath": "evidence/web/sha256/14/c1/14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 451566,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "EDH3586GDW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8",
+              "bbox": [
+                516,
+                229,
+                939,
+                367
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8",
+              "bbox": [
+                516,
+                229,
+                939,
+                367
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8",
+              "bbox": [
+                516,
+                229,
+                939,
+                367
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+            "contentSha256": "f41eefb46c3fd9e11ec700311b5514592848dae7d9c9ac8d7b4d1438cb2012ed",
+            "objectPath": "evidence/derived/mineru-json/sha256/f4/1e/f41eefb46c3fd9e11ec700311b5514592848dae7d9c9ac8d7b4d1438cb2012ed.json",
+            "byteSize": 45704,
+            "pageCount": 6
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3586GDW:page:1:4680357274a9a396e6a79f2af9e8e3427ebbf7d9fc2433935a9f3d7917447ec2"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3586GDW:page:2:9761d31e1efacb96ae3dfb9bbf6d19473e8c1599c7496e861028260d0be602b2"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3586GDW:page:3:b19a27d3741c244027b51e90e7d6831272cfa605b8420b756aeff93d622e39c4"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3586GDW:page:4:c5a7c55d0ca4afde3244404a5249f41164208ff98446469faf616a46fa9e8f62"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3586GDW:page:5:a48f942e0d5340aaa77b7355662e633d5802ea0a8d86be3b7ddf0b4523809ccd"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH3586GDW:page:6:55a7ad96e70e8f88c5f1a6a9e858c2dbf2afe1b61e1154f7e6f15783dd0708c0"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EDH3586GDW:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:24:08.475Z",
+            "bindingSha256": "de8ad5ae183f4328b92386e91fc8257beff68ac2acb9ff3637b78c717b91085d"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+            "contentSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+            "receiptBindingSha256": "de8ad5ae183f4328b92386e91fc8257beff68ac2acb9ff3637b78c717b91085d",
+            "page": 3,
+            "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+            "contentSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+            "receiptBindingSha256": "de8ad5ae183f4328b92386e91fc8257beff68ac2acb9ff3637b78c717b91085d",
+            "page": 3,
+            "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+            "contentSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+            "receiptBindingSha256": "de8ad5ae183f4328b92386e91fc8257beff68ac2acb9ff3637b78c717b91085d",
+            "page": 3,
+            "fragmentSha256": "4e136ef14a2d336a48f09c793bbe158bee93bc4aa08554579bbdf4fd24b465c8"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161"
         ]
       },
       "reconciliation": {
@@ -70799,6 +71763,270 @@
       }
     },
     {
+      "targetId": "recovery_target_c7f1eb66ab51b116905ea965",
+      "referenceId": "fa_ref_fc0d43b68d78ae703f8e2590",
+      "legacyRuntimeId": "ao-72536",
+      "canonicalProductId": "fa_prod_61c831c5abb58d723aeb4de1",
+      "brand": "Electrolux",
+      "model": "EDV605HQWA",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "auditSha256": "92740bedfb2721c3b7a77a947117585823cdc52d4a8cb65aad7fd18046bdd7ea",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:24:56.767Z",
+          "contentSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+          "objectPath": "evidence/web/sha256/76/6e/766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1417108,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "EDV605HQWA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "b96fbc95cd3a5e1bd136db125d26f8e508ea289b474465571d14325139f18eb9",
+              "bbox": [
+                517,
+                229,
+                939,
+                366
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 795
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "b96fbc95cd3a5e1bd136db125d26f8e508ea289b474465571d14325139f18eb9",
+              "bbox": [
+                517,
+                229,
+                939,
+                366
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 560
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "b96fbc95cd3a5e1bd136db125d26f8e508ea289b474465571d14325139f18eb9",
+              "bbox": [
+                517,
+                229,
+                939,
+                366
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+            "contentSha256": "feba9e9a28896d1fe0f0a9f9689fe0de29781616ae42f2a97eeba8b9a36ce546",
+            "objectPath": "evidence/derived/mineru-json/sha256/fe/ba/feba9e9a28896d1fe0f0a9f9689fe0de29781616ae42f2a97eeba8b9a36ce546.json",
+            "byteSize": 18869,
+            "pageCount": 7,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              6
+            ],
+            "sourcePageCount": 7,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "25901d4caaedbb6be0fcf176ee05edcd60613c597bd0903c5fdf008548af3546",
+              "objectPath": "evidence/derived/mineru-json/sha256/25/90/25901d4caaedbb6be0fcf176ee05edcd60613c597bd0903c5fdf008548af3546.json",
+              "pages": [
+                6
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDV605HQWA:page:1:2a030d317e2e9895408d7b9af9292528de28fcc94c74bc9d5d8e8adf833da1a9"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDV605HQWA:page:2:e2aa2220f0b128c5cf69355d4b1ef8b976f640c413ca9d156b98b24dd3b02d07"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDV605HQWA:page:3:62c1e9b487d1a5ac1a3c083ea9a982de0536bb41ded04005f02b00362e0909b2"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDV605HQWA:page:4:d75e036055f47341246c7bb43bf0b9195f92ba95521224d12df173801655d1fc"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDV605HQWA:page:5:908bc3ac3b3fe90eb0f910540e12cfc2013cf91d864fce004391a3600fca2c8d"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDV605HQWA:page:6:96d917b1911d2253c54aa29d5224976f698b067ec93013dfeb9d5184bd403fdb"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDV605HQWA:page:7:582d3926d740a5d202a15ca0a39b59a5b75b24ae8210473e381066c7e6c563b1"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EDV605HQWA:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDV605HQWA:page:6:bc5b19272d34d75b60a8bbfb88afb960797fa270fd406768f6be7f2dc2423732"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:24:56.767Z",
+            "bindingSha256": "3cc63452531dd42bb1de98356d6048d19a4617301938d09e560f84591c15b891"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 795,
+              "maximumMm": 795
+            },
+            "depthMm": 560
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
+            "contentSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+            "receiptBindingSha256": "3cc63452531dd42bb1de98356d6048d19a4617301938d09e560f84591c15b891",
+            "page": 3,
+            "fragmentSha256": "b96fbc95cd3a5e1bd136db125d26f8e508ea289b474465571d14325139f18eb9"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
+            "contentSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+            "receiptBindingSha256": "3cc63452531dd42bb1de98356d6048d19a4617301938d09e560f84591c15b891",
+            "page": 3,
+            "fragmentSha256": "b96fbc95cd3a5e1bd136db125d26f8e508ea289b474465571d14325139f18eb9"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
+            "contentSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+            "receiptBindingSha256": "3cc63452531dd42bb1de98356d6048d19a4617301938d09e560f84591c15b891",
+            "page": 3,
+            "fragmentSha256": "b96fbc95cd3a5e1bd136db125d26f8e508ea289b474465571d14325139f18eb9"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_c8179547d5bc884d0ca4e074",
       "referenceId": "fa_ref_eb551bbb7335333e145c20c0",
       "legacyRuntimeId": "ao-46466",
@@ -90923,6 +92151,13 @@
       "queueSha256": "d1fd49ca0aadcefb694716b837bf2dc3b1e16e60dc11490ac254cfa11267166c",
       "resultsSha256": "546ec16f667eb3fa8effe5c33dd19b5a17891e85c0ba8881229745e8705a8175",
       "auditSha256": "492e7f99e6a636798a8048e81cd8861a1f0199de30b410d47ca0f194d2756091"
+    },
+    {
+      "batchId": "historical-recovery-66e964f6a428c9fcd1ed0aa4-slice-0be9c2445972",
+      "batchSha256": "e14cb72415ecfa0e9cdd783a43cb5f888989f5bfd4f007c9c5eb126e0577f90f",
+      "queueSha256": "65331635b496f5a6004b0a492815673ccbe3f30540deb62730c6b04ecbcab3cb",
+      "resultsSha256": "0cb4b5a71275bcfb0df939dfa8cff0ed91a8372b01974c15333a472e286c9ef2",
+      "auditSha256": "92740bedfb2721c3b7a77a947117585823cdc52d4a8cb65aad7fd18046bdd7ea"
     },
     {
       "batchId": "historical-recovery-69664e22e7c2718137946771",

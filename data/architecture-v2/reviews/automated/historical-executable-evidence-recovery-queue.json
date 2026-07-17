@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-17T03:18:55.893Z",
-  "sourceAcquisitionQueueSha256": "5f0a1985198d46156ca00a92b8414a9ab32623b777a76c41458a14d74fd220a3",
+  "generatedAt": "2026-07-17T03:26:33.651Z",
+  "sourceAcquisitionQueueSha256": "5c9212d1d291039ed9a4117b586b45173e6acfcffc32e9e9813b37d977123082",
   "evidenceProcessorEpochs": {
     "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
     "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
@@ -13,22 +13,22 @@
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7703,
+    "acquisitionRecords": 7698,
     "fetchJobs": 0,
-    "targets": 7585,
-    "resolverOnlyTargets": 7585,
+    "targets": 7580,
+    "resolverOnlyTargets": 7580,
     "candidateEdges": 0,
-    "uniqueReferences": 7585,
+    "uniqueReferences": 7580,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 35,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1011,
+      "CURRENT_RETAIL": 1006,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 816,
+      "P0_CURRENT_MISSING_DIMENSIONS": 811,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -3768,154 +3768,6 @@
       "repairExistingReceipt": false
     },
     {
-      "targetId": "recovery_target_6f27ef9727bb00f6adb981b1",
-      "referenceId": "fa_ref_9bc56c3ea8e3083cc4f3ce50",
-      "legacyRuntimeId": "ao-56597",
-      "canonicalProductId": "fa_prod_d9809950da006c6c22c4f352",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDC2075GDW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d0070e8dcec2a22f6f6ff2b8",
-        "legacy:data/pdf-evidence-raw/EDC2075GDW.json",
-        "source:doc_d0070e8dcec2a22f6f6ff2b8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d0070e8dcec2a22f6f6ff2b8",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 540
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_2eb5334a9ca8c185ffe48a24",
-      "referenceId": "fa_ref_e9414d2aae4776f86e46ff99",
-      "legacyRuntimeId": "ao-47259",
-      "canonicalProductId": "fa_prod_8ecc1633b91f6f401a73d4bb",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDC2086GDW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e71a71c70ae5054ba446e122",
-        "legacy:data/pdf-evidence-raw/EDC2086GDW.json",
-        "source:doc_e71a71c70ae5054ba446e122"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e71a71c70ae5054ba446e122",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_8e8175b7876a2e462a9d260a",
-      "referenceId": "fa_ref_6eda38b5eca5b8f2959ca1b9",
-      "legacyRuntimeId": "ao-61422",
-      "canonicalProductId": "fa_prod_01ba3d79131ac247d79197e0",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDH3586GDW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_042a3c49c1ed02e717ab733b",
-        "legacy:data/pdf-evidence-raw/EDH3586GDW.json",
-        "source:doc_042a3c49c1ed02e717ab733b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_042a3c49c1ed02e717ab733b",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_0b87d866973ded846f2cd29f",
-      "referenceId": "fa_ref_60c4bbf40e7a438355a9b5db",
-      "legacyRuntimeId": "ao-61423",
-      "canonicalProductId": "fa_prod_2faa2bf50416dabc73eaf78f",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDH3896GDW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_f4707fc6c528435068056536",
-        "legacy:data/pdf-evidence-raw/EDH3896GDW.json",
-        "source:doc_f4707fc6c528435068056536"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_f4707fc6c528435068056536",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
       "targetId": "recovery_target_e6dbec2575eba23540666687",
       "referenceId": "fa_ref_a69e2ef30a41965895a47c2f",
       "legacyRuntimeId": "dr3",
@@ -3936,43 +3788,6 @@
         "source:doc_9340aa63e27469a88356cc0a"
       ],
       "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_c7f1eb66ab51b116905ea965",
-      "referenceId": "fa_ref_fc0d43b68d78ae703f8e2590",
-      "legacyRuntimeId": "ao-72536",
-      "canonicalProductId": "fa_prod_61c831c5abb58d723aeb4de1",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDV605HQWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_b26c8da6c3bc93719d307355",
-        "legacy:data/pdf-evidence-raw/EDV605HQWA.json",
-        "source:doc_b26c8da6c3bc93719d307355"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_b26c8da6c3bc93719d307355",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 795,
-            "depth": 560
-          }
-        }
-      ],
       "registryDimensionHints": [],
       "publicationEligible": false,
       "candidateJobIds": [],

@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1349,
-    "fetchJobs": 1312,
-    "targets": 1346,
-    "candidateEdges": 1349,
+    "documents": 1344,
+    "fetchJobs": 1307,
+    "targets": 1341,
+    "candidateEdges": 1344,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1346,
+    "uniqueReferences": 1341,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 915,
+      "MEASURE_REQUIRED": 910,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1099
+      "CURRENT_RETAIL": 1094
     },
     "byCategory": {
       "dishwasher": 263,
-      "dryer": 51,
+      "dryer": 46,
       "fridge": 816,
       "washing_machine": 216
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1052,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1047,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 256,
+      "ALREADY_AUTO_FILL": 261,
       "HISTORICAL_REFERENCE_NOT_FOUND": 146,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -4308,32 +4308,6 @@
       ]
     },
     {
-      "jobId": "recovery_a7fefcd1676e4f136885adcd",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/d/6/7/2d6722c90ceaea1c4e978b82161b888284154155_EDC2075GDW_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_6f27ef9727bb00f6adb981b1"
-      ]
-    },
-    {
       "jobId": "recovery_d299d6f1b2d33422cb1f8936",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/2/d/6/9/2d69970709ee90bb9d08a242960795be1da0ba16_HRZ113SS_Haier_Specifications_Sheet.pdf",
       "authorityBrand": "Haier",
@@ -4617,32 +4591,6 @@
       ],
       "targetIds": [
         "recovery_target_2e9d163bdaec0131ccd7731f"
-      ]
-    },
-    {
-      "jobId": "recovery_be984280564c4d64113078eb",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/0/2/6/3026c008bee52d84caac5804f42b7b9530f6bf02_EDV605HQWA_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_c7f1eb66ab51b116905ea965"
       ]
     },
     {
@@ -9817,32 +9765,6 @@
       ],
       "targetIds": [
         "recovery_target_91d308352ff165c81e418ba9"
-      ]
-    },
-    {
-      "jobId": "recovery_b438215bf000f62b0f51fef6",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/7/9/3/679390172699f81f597dfa45144e8fe975f32001_Electrolux_EDH3896GDW_9kg_Heat_Pump_Dryer_User_Manual.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_0b87d866973ded846f2cd29f"
       ]
     },
     {
@@ -16138,32 +16060,6 @@
       ]
     },
     {
-      "jobId": "recovery_f09e2fb4aaeba2d841e99b38",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/e/1/d/ae1d5574309807e7477d8966b17f3cdc8b2898bb_EDC2086GDW_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_2eb5334a9ca8c185ffe48a24"
-      ]
-    },
-    {
       "jobId": "recovery_2ccd27c2617fc0bcf8932ef0",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/e/c/f/aecfd4dd40a293bf2b9cff0e1811f4b7e6eae96d_Fisher___Paykel_WH8560J3_QuickSmart_8.5_kg_Front_Load_Washing_Machine_Installation_Guide.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -17149,32 +17045,6 @@
       ],
       "targetIds": [
         "recovery_target_234b2cc4ab36ab3784d5a361"
-      ]
-    },
-    {
-      "jobId": "recovery_9d96e362aca5ed5abae7e508",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/b/8/d/8/b8d83fd4a0da89cf7b37bd1e4605550dc91e9752_EDH3586GDW_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_8e8175b7876a2e462a9d260a"
       ]
     },
     {
@@ -40261,211 +40131,6 @@
         "recovery_ab607622cce24addd4ea9459"
       ],
       "primaryJobId": "recovery_ab607622cce24addd4ea9459"
-    },
-    {
-      "referenceId": "fa_ref_9bc56c3ea8e3083cc4f3ce50",
-      "legacyRuntimeId": "ao-56597",
-      "canonicalProductId": "fa_prod_d9809950da006c6c22c4f352",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDC2075GDW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 540
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_6f27ef9727bb00f6adb981b1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d0070e8dcec2a22f6f6ff2b8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d0070e8dcec2a22f6f6ff2b8",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 540
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_a7fefcd1676e4f136885adcd"
-      ],
-      "primaryJobId": "recovery_a7fefcd1676e4f136885adcd"
-    },
-    {
-      "referenceId": "fa_ref_e9414d2aae4776f86e46ff99",
-      "legacyRuntimeId": "ao-47259",
-      "canonicalProductId": "fa_prod_8ecc1633b91f6f401a73d4bb",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDC2086GDW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 600
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_2eb5334a9ca8c185ffe48a24",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e71a71c70ae5054ba446e122"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e71a71c70ae5054ba446e122",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_f09e2fb4aaeba2d841e99b38"
-      ],
-      "primaryJobId": "recovery_f09e2fb4aaeba2d841e99b38"
-    },
-    {
-      "referenceId": "fa_ref_6eda38b5eca5b8f2959ca1b9",
-      "legacyRuntimeId": "ao-61422",
-      "canonicalProductId": "fa_prod_01ba3d79131ac247d79197e0",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDH3586GDW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 600
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_8e8175b7876a2e462a9d260a",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_042a3c49c1ed02e717ab733b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_042a3c49c1ed02e717ab733b",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_9d96e362aca5ed5abae7e508"
-      ],
-      "primaryJobId": "recovery_9d96e362aca5ed5abae7e508"
-    },
-    {
-      "referenceId": "fa_ref_60c4bbf40e7a438355a9b5db",
-      "legacyRuntimeId": "ao-61423",
-      "canonicalProductId": "fa_prod_2faa2bf50416dabc73eaf78f",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDH3896GDW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 600
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_0b87d866973ded846f2cd29f",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_f4707fc6c528435068056536"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_f4707fc6c528435068056536",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b438215bf000f62b0f51fef6"
-      ],
-      "primaryJobId": "recovery_b438215bf000f62b0f51fef6"
-    },
-    {
-      "referenceId": "fa_ref_fc0d43b68d78ae703f8e2590",
-      "legacyRuntimeId": "ao-72536",
-      "canonicalProductId": "fa_prod_61c831c5abb58d723aeb4de1",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDV605HQWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 795,
-        "depth": 560
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_c7f1eb66ab51b116905ea965",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_b26c8da6c3bc93719d307355"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_b26c8da6c3bc93719d307355",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 795,
-            "depth": 560
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_be984280564c4d64113078eb"
-      ],
-      "primaryJobId": "recovery_be984280564c4d64113078eb"
     },
     {
       "referenceId": "fa_ref_89b9e744f7753acb832d737c",

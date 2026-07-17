@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:18:06.343Z",
-  "sourceBundleSha256": "1692bc02bd44de59d0837081335f29336dcc66450f62cdb9f5de4d31b7e066b5",
+  "generatedAt": "2026-07-17T03:25:48.641Z",
+  "sourceBundleSha256": "8eaf83def058f8985e02672679d7253b3fd331a9695be80d15d8cc59c8917915",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -252,6 +252,20 @@
       "contentSha256": "a66a14e316a8b1967696884d4f5479a1c02da1ad52ea2e8b46db70530c180b5f",
       "receiptBindingSha256": "342b744c6c7c3aaca7c9ca31d29e40cc3b05f594b72a27f9e01679ca28b214c9",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/6f/6d/6f6dd2bc019b39f17c22a4b6619fc87cf69aca96b959d2360b324c5cfd65df75.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_0b87d866973ded846f2cd29f",
+      "referenceId": "fa_ref_60c4bbf40e7a438355a9b5db",
+      "brand": "Electrolux",
+      "model": "EDH3896GDW",
+      "category": "dryer",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+      "sourcePdfSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+      "contentSha256": "8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5",
+      "receiptBindingSha256": "0d3199372cd1b15453ddd424f1a75202f0e6ef8e73f3d92d49e112dbc9f9290e",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/d4/46/d4463205aba63236a80078f2023d929f20dd01052282503b7d1ffa223f3abe5c.json",
       "status": "passed",
       "failureCode": null
     },
@@ -910,6 +924,20 @@
       "contentSha256": "631dfea517b11912d9d0d0ff0a7064efc6779f97d72c1d2df498ab721536b291",
       "receiptBindingSha256": "3f4cef920b6b96de58130f460f825aa0e48d4b409e270f2cb42613dd787b46fe",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_2eb5334a9ca8c185ffe48a24",
+      "referenceId": "fa_ref_e9414d2aae4776f86e46ff99",
+      "brand": "Electrolux",
+      "model": "EDC2086GDW",
+      "category": "dryer",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
+      "sourcePdfSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+      "contentSha256": "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+      "receiptBindingSha256": "b3d190bed04bbe9db2df8a24d554890f6c6ac5c9d0c100e850cec749b3d7de15",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ee/76/ee76b39578123645a30d5425d21eecea56c94f48be0903fb66621384959779a5.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2412,6 +2440,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_6f27ef9727bb00f6adb981b1",
+      "referenceId": "fa_ref_9bc56c3ea8e3083cc4f3ce50",
+      "brand": "Electrolux",
+      "model": "EDC2075GDW",
+      "category": "dryer",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux",
+      "sourcePdfSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+      "contentSha256": "aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b",
+      "receiptBindingSha256": "8ef50c391ad5e74f7178a38218d6cb7e5a2257bbf067b192dbbbafce413ffc21",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/18/b2/18b24d023af90274991c377a650a543ab9198548f442de15f0fb4b6db729a4d1.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_6fa8749ec77ab4efea5335df",
       "referenceId": "fa_ref_b7b4ebdfa7a0c9091baef4b3",
       "brand": "Westinghouse",
@@ -2884,6 +2926,20 @@
       "contentSha256": "ad0bfac64b852abd482e765624bb1d39cd840b0414b4c7167def2a1b9cbbed9f",
       "receiptBindingSha256": "f2b87b041da764e3e64db8704fca4417a93206afddd44d7bcb6d73b5b811662e",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_8e8175b7876a2e462a9d260a",
+      "referenceId": "fa_ref_6eda38b5eca5b8f2959ca1b9",
+      "brand": "Electrolux",
+      "model": "EDH3586GDW",
+      "category": "dryer",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
+      "sourcePdfSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+      "contentSha256": "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
+      "receiptBindingSha256": "de8ad5ae183f4328b92386e91fc8257beff68ac2acb9ff3637b78c717b91085d",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/f4/1e/f41eefb46c3fd9e11ec700311b5514592848dae7d9c9ac8d7b4d1438cb2012ed.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4344,6 +4400,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c7f1eb66ab51b116905ea965",
+      "referenceId": "fa_ref_fc0d43b68d78ae703f8e2590",
+      "brand": "Electrolux",
+      "model": "EDV605HQWA",
+      "category": "dryer",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
+      "sourcePdfSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+      "contentSha256": "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
+      "receiptBindingSha256": "3cc63452531dd42bb1de98356d6048d19a4617301938d09e560f84591c15b891",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/fe/ba/feba9e9a28896d1fe0f0a9f9689fe0de29781616ae42f2a97eeba8b9a36ce546.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c8179547d5bc884d0ca4e074",
       "referenceId": "fa_ref_eb551bbb7335333e145c20c0",
       "brand": "Bosch",
@@ -5549,11 +5619,11 @@
     }
   ],
   "summary": {
-    "entries": 371,
-    "sources": 396,
-    "passed": 396,
+    "entries": 376,
+    "sources": 401,
+    "passed": 401,
     "failed": 0
   },
-  "checkedObjects": 775,
-  "semanticAuditSha256": "50da3b85aeb33429c2dc96f1223211d5ba57e13f701841e1af2db9c3d5b6dc5a"
+  "checkedObjects": 786,
+  "semanticAuditSha256": "fd4712ab9fb13fca77cf31049996b288c44568d0692d7fdc16d1407a94534508"
 }
