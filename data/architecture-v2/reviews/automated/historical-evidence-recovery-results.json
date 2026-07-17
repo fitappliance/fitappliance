@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "historical-beko-fridges-20260717-ac2",
-  "batchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
-  "batchSha256": "77bbc8320adb9d08195d514f4efb5f4d26018852b25c7210f66dc22f8fb5f873",
-  "queueSha256": "5343e1075c850c881166a4a0ba27a56c8250ffcf5b64e29861884764f5a78a4e",
+  "runId": "historical-smeg-dishwashers-20260717-ad1",
+  "batchId": "historical-recovery-57c73ac52b198bbb067adb16-slice-85a8c256844c",
+  "batchSha256": "2f7a725828888d729796874ff5a12b1963186622d6ea9f531e1ae61fa04fc1f6",
+  "queueSha256": "b1c728f7acebed149c8ecb57576a5ea7ccb5299231d573065d1296479edc9be8",
   "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
-  "startedAt": "2026-07-17T01:23:27.025Z",
-  "completedAt": "2026-07-17T01:23:36.209Z",
-  "semanticOutcomeSha256": "bd1095d2d65c11e9e86ec5909708a2f82d78e1a86e7a6e453affac3f28cf401f",
+  "startedAt": "2026-07-17T01:34:24.316Z",
+  "completedAt": "2026-07-17T01:35:23.422Z",
+  "semanticOutcomeSha256": "c1a2171083075db5a4e6c3bbeaded011df2bf6c09e6c16cbeb0cbfa25514ca31",
   "outcomes": [
     {
-      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
-      "status": "accepted",
-      "failureCode": null,
-      "candidateInventorySha256": "7a002ec8741bff00ae0c8a8fd19580789a03e358aaf541417aae24692689f1ca",
+      "targetId": "recovery_target_2435be3cab48fa695da5851b",
+      "status": "claims_incomplete",
+      "failureCode": "mineru",
+      "candidateInventorySha256": "1ee271575c554035fd05edc4cfd756f51a50d54126b3384fa9bcb59de5a62673",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
+        "targetId": "recovery_target_2435be3cab48fa695da5851b",
         "identity": {
-          "brand": "Beko",
-          "model": "BBM450AN",
-          "category": "fridge"
+          "brand": "Smeg",
+          "model": "DWAI6314X",
+          "category": "dishwasher"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -30,9 +30,9 @@
             "resolverId": "architecture-v2-core-official-discovery",
             "version": "1",
             "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": false,
+            "required": true,
             "completion": "complete",
-            "candidateCount": 0
+            "candidateCount": 1
           },
           {
             "resolverId": "batch-candidates",
@@ -41,393 +41,71 @@
             "required": true,
             "completion": "complete",
             "candidateCount": 0
-          },
-          {
-            "resolverId": "beko-official-discovery",
-            "version": "2",
-            "scope": "beko_au_exact_support_search_result_and_product_documents",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 2
           }
         ],
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_1a7de9de345fe0690eb4cba1",
-            "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf",
+            "candidateId": "candidate_bd13dae013d24356d502008a",
+            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
-            "requiredAttempt": false,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_product_page",
-              "market": "AU",
-              "discoveryUrl": "https://www.beko.com/au-en/support/user-manuals-result?search=BBM450AN",
-              "requestedModel": "BBM450AN",
-              "matchedModel": "BBM450AN",
-              "artifactUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf",
-              "artifactLinkUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf",
-              "discoveryContentSha256": "4fec55263b1b6d7a551147ea43d16057ab2198aa587c7aab86e79f7d7de15ef7",
-              "discoveryObjectPath": "evidence/web/sha256/4f/ec/4fec55263b1b6d7a551147ea43d16057ab2198aa587c7aab86e79f7d7de15ef7.html",
-              "discoveryByteSize": 648562
-            },
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
             "batchJobIds": [],
             "resolverRefs": [
               {
-                "resolverId": "beko-official-discovery",
-                "version": "2",
-                "scope": "beko_au_exact_support_search_result_and_product_documents",
-                "discoveryMethod": "beko_legacy_finder",
+                "resolverId": "architecture-v2-core-official-discovery",
+                "version": "1",
+                "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+                "discoveryMethod": "brand_template",
                 "sourceRole": "manufacturer_document",
                 "order": 0
               }
             ],
             "outcome": {
-              "status": "identity_rejected",
-              "failureCode": "identity",
-              "reason": "structured exact-model identity signal required in MinerU JSON",
+              "status": "mineru_failure",
+              "failureCode": "mineru",
+              "reason": "no exact-model MinerU evidence with explicit axes extracted",
               "artifactBinding": {
-                "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf",
-                "finalUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf",
-                "contentSha256": "16fa0c514333357c01a628bc637de7260e07da2f153938fb5180866430f328b0",
-                "objectPath": "evidence/web/sha256/16/fa/16fa0c514333357c01a628bc637de7260e07da2f153938fb5180866430f328b0.pdf",
+                "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf",
+                "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf",
+                "contentSha256": "5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e",
+                "objectPath": "evidence/web/sha256/5a/8d/5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e.pdf",
                 "contentType": "application/pdf",
-                "byteSize": 2517455
+                "byteSize": 509139
               },
               "source": null
             }
-          },
-          {
-            "candidateId": "candidate_1d1b26510561fd60900115f4",
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_product_page",
-            "requiredAttempt": false,
-            "discoveryProvenance": null,
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "beko-official-discovery",
-                "version": "2",
-                "scope": "beko_au_exact_support_search_result_and_product_documents",
-                "discoveryMethod": "beko_legacy_finder",
-                "sourceRole": "manufacturer_product_page",
-                "order": 1
-              }
-            ],
-            "outcome": {
-              "status": "accepted",
-              "failureCode": null,
-              "source": {
-                "authority": "manufacturer",
-                "sourceType": "official_exact_model_product_page",
-                "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
-                "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
-                "redirectChain": [],
-                "retrievedAt": "2026-07-17T01:23:32.723Z",
-                "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
-                "objectPath": "evidence/web/sha256/ea/88/ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27.html",
-                "contentType": "text/html",
-                "byteSize": 791976,
-                "supersedesContentSha256": [],
-                "identity": {
-                  "brand": "Beko",
-                  "model": "BBM450AN",
-                  "outcome": "exact"
-                },
-                "claims": [
-                  {
-                    "field": "closedEnvelope.widthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 700
-                    },
-                    "sourceLabel": "Width",
-                    "sourceAxisOrder": [
-                      "width"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 1720
-                    },
-                    "sourceLabel": "Height",
-                    "sourceAxisOrder": [
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 705
-                    },
-                    "sourceLabel": "Depth",
-                    "sourceAxisOrder": [
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  }
-                ],
-                "identitySignals": [
-                  {
-                    "type": "canonical_url",
-                    "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an"
-                  },
-                  {
-                    "type": "document_title",
-                    "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM450AN | BEKO"
-                  },
-                  {
-                    "type": "structured_product_model",
-                    "value": "BBM450AN"
-                  }
-                ],
-                "verificationReceipt": {
-                  "schemaVersion": 3,
-                  "claimSemanticsVersion": 2,
-                  "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-16.4",
-                  "verifiedAt": "2026-07-17T01:23:32.723Z",
-                  "bindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab"
-                }
-              }
-            }
           }
         ],
-        "candidateInventorySha256": "7a002ec8741bff00ae0c8a8fd19580789a03e358aaf541417aae24692689f1ca"
+        "candidateInventorySha256": "1ee271575c554035fd05edc4cfd756f51a50d54126b3384fa9bcb59de5a62673"
       },
-      "sources": [
-        {
-          "authority": "manufacturer",
-          "sourceType": "official_exact_model_product_page",
-          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
-          "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
-          "redirectChain": [],
-          "retrievedAt": "2026-07-17T01:23:32.723Z",
-          "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
-          "objectPath": "evidence/web/sha256/ea/88/ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27.html",
-          "contentType": "text/html",
-          "byteSize": 791976,
-          "supersedesContentSha256": [],
-          "identity": {
-            "brand": "Beko",
-            "model": "BBM450AN",
-            "outcome": "exact"
-          },
-          "claims": [
-            {
-              "field": "closedEnvelope.widthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 700
-              },
-              "sourceLabel": "Width",
-              "sourceAxisOrder": [
-                "width"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 1720
-              },
-              "sourceLabel": "Height",
-              "sourceAxisOrder": [
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.depthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 705
-              },
-              "sourceLabel": "Depth",
-              "sourceAxisOrder": [
-                "depth"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            }
-          ],
-          "identitySignals": [
-            {
-              "type": "canonical_url",
-              "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an"
-            },
-            {
-              "type": "document_title",
-              "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM450AN | BEKO"
-            },
-            {
-              "type": "structured_product_model",
-              "value": "BBM450AN"
-            }
-          ],
-          "verificationReceipt": {
-            "schemaVersion": 3,
-            "claimSemanticsVersion": 2,
-            "policyVersion": "2026-07-13.1",
-            "manufacturerPolicyVersion": "2026-07-16.4",
-            "verifiedAt": "2026-07-17T01:23:32.723Z",
-            "bindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab"
-          }
-        }
-      ],
-      "geometryProjection": {
-        "geometry": {
-          "closedEnvelope": {
-            "widthMm": 700,
-            "heightMm": {
-              "minimumMm": 1720,
-              "maximumMm": 1720
-            },
-            "depthMm": 705
-          },
-          "installation": {
-            "leftMm": null,
-            "rightMm": null,
-            "topMm": null,
-            "rearMm": null,
-            "frontMm": null
-          },
-          "operation": {
-            "doorOpenDepthMm": null,
-            "hingeSideSpaceMm": null,
-            "lidOpenHeightMm": null
-          },
-          "delivery": {
-            "widthMm": null,
-            "heightMm": null,
-            "depthMm": null
-          },
-          "category": "fridge",
-          "formFactor": null,
-          "service": {
-            "plumbingRearMm": null,
-            "rearServicesMm": null,
-            "rearVentilationMm": null
-          }
-        },
-        "fieldEvidence": {
-          "closedEnvelope.widthMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
-            "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
-            "receiptBindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab",
-            "page": null,
-            "fragmentSha256": null
-          },
-          "closedEnvelope.heightMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
-            "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
-            "receiptBindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab",
-            "page": null,
-            "fragmentSha256": null
-          },
-          "closedEnvelope.depthMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
-            "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
-            "receiptBindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab",
-            "page": null,
-            "fragmentSha256": null
-          }
-        },
-        "evidenceLevel": "dimensions",
-        "requiredInstallationEnvelope": null,
-        "missingForVerifiedFit": [
-          "installation.leftMm",
-          "installation.rearMm",
-          "installation.rightMm",
-          "installation.topMm"
-        ],
-        "verifiedFitEligible": false,
-        "successfulFitOutcome": "INSUFFICIENT_DATA",
-        "activeSourceHashes": [
-          "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27"
-        ]
-      },
+      "sources": [],
+      "geometryProjection": null,
       "reconciliation": {
         "conflictingFields": [],
-        "conflictHints": [
-          {
-            "sourceRole": "legacy_hint",
-            "sourceId": "doc_e42110e34bceb406d69fd1e8",
-            "kind": "lower_authority_disagreement",
-            "fields": [
-              "depthMm",
-              "widthMm"
-            ],
-            "dimensionsMm": {
-              "widthMm": 704,
-              "heightMm": 1720,
-              "depthMm": 701
-            }
-          }
-        ],
+        "conflictHints": [],
         "missingFields": [],
         "supersessionViolations": [],
         "axisPermutationResolution": null,
-        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "4c8adc2f9d6f6133b2af2301c287be3a954d955d4e7aae3ac967e82ded1bb193"
+      "semanticOutcomeSha256": "51948cfe6fc7ce4548e9453beda13f0f6cac3fe61c33bb08fc1e33509aa8b314"
     },
     {
-      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
-      "status": "accepted",
-      "failureCode": null,
-      "candidateInventorySha256": "9571277eb5d951d5e2be4f00c2fea6f990d7382eb08a3ce75759a398b0f60c65",
+      "targetId": "recovery_target_66e2fd1351b96298c38429d9",
+      "status": "claims_incomplete",
+      "failureCode": "mineru",
+      "candidateInventorySha256": "4afd4aafabc32d5d8e10c000275a39a0bb2dfd211bb9d82e815360d158995a71",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
+        "targetId": "recovery_target_66e2fd1351b96298c38429d9",
         "identity": {
-          "brand": "Beko",
-          "model": "BBM450X",
-          "category": "fridge"
+          "brand": "Smeg",
+          "model": "DWAU6315X",
+          "category": "dishwasher"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -437,9 +115,9 @@
             "resolverId": "architecture-v2-core-official-discovery",
             "version": "1",
             "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": false,
+            "required": true,
             "completion": "complete",
-            "candidateCount": 0
+            "candidateCount": 1
           },
           {
             "resolverId": "batch-candidates",
@@ -448,393 +126,71 @@
             "required": true,
             "completion": "complete",
             "candidateCount": 0
-          },
-          {
-            "resolverId": "beko-official-discovery",
-            "version": "2",
-            "scope": "beko_au_exact_support_search_result_and_product_documents",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 2
           }
         ],
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_e1df8568a7cc9423e05d8010",
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+            "candidateId": "candidate_582b351bd8a79cc473b2d623",
+            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf",
             "authorityMode": "official",
-            "sourceRole": "manufacturer_product_page",
-            "requiredAttempt": false,
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
             "discoveryProvenance": null,
             "batchJobIds": [],
             "resolverRefs": [
               {
-                "resolverId": "beko-official-discovery",
-                "version": "2",
-                "scope": "beko_au_exact_support_search_result_and_product_documents",
-                "discoveryMethod": "beko_legacy_finder",
-                "sourceRole": "manufacturer_product_page",
-                "order": 1
-              }
-            ],
-            "outcome": {
-              "status": "accepted",
-              "failureCode": null,
-              "source": {
-                "authority": "manufacturer",
-                "sourceType": "official_exact_model_product_page",
-                "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
-                "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
-                "redirectChain": [],
-                "retrievedAt": "2026-07-17T01:23:29.302Z",
-                "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
-                "objectPath": "evidence/web/sha256/d4/c3/d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e.html",
-                "contentType": "text/html",
-                "byteSize": 791908,
-                "supersedesContentSha256": [],
-                "identity": {
-                  "brand": "Beko",
-                  "model": "BBM450X",
-                  "outcome": "exact"
-                },
-                "claims": [
-                  {
-                    "field": "closedEnvelope.widthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 700
-                    },
-                    "sourceLabel": "Width",
-                    "sourceAxisOrder": [
-                      "width"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 1720
-                    },
-                    "sourceLabel": "Height",
-                    "sourceAxisOrder": [
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 705
-                    },
-                    "sourceLabel": "Depth",
-                    "sourceAxisOrder": [
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  }
-                ],
-                "identitySignals": [
-                  {
-                    "type": "canonical_url",
-                    "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x"
-                  },
-                  {
-                    "type": "document_title",
-                    "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM450X | BEKO"
-                  },
-                  {
-                    "type": "structured_product_model",
-                    "value": "BBM450X"
-                  }
-                ],
-                "verificationReceipt": {
-                  "schemaVersion": 3,
-                  "claimSemanticsVersion": 2,
-                  "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-16.4",
-                  "verifiedAt": "2026-07-17T01:23:29.302Z",
-                  "bindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704"
-                }
-              }
-            }
-          },
-          {
-            "candidateId": "candidate_f37b33706f1b46f05e0b24e2",
-            "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": false,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_product_page",
-              "market": "AU",
-              "discoveryUrl": "https://www.beko.com/au-en/support/user-manuals-result?search=BBM450X",
-              "requestedModel": "BBM450X",
-              "matchedModel": "BBM450X",
-              "artifactUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf",
-              "artifactLinkUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf",
-              "discoveryContentSha256": "12e9922c01863121379493418072313c09494d1d46f732e865d36cec5c86184c",
-              "discoveryObjectPath": "evidence/web/sha256/12/e9/12e9922c01863121379493418072313c09494d1d46f732e865d36cec5c86184c.html",
-              "discoveryByteSize": 648540
-            },
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "beko-official-discovery",
-                "version": "2",
-                "scope": "beko_au_exact_support_search_result_and_product_documents",
-                "discoveryMethod": "beko_legacy_finder",
+                "resolverId": "architecture-v2-core-official-discovery",
+                "version": "1",
+                "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+                "discoveryMethod": "brand_template",
                 "sourceRole": "manufacturer_document",
                 "order": 0
               }
             ],
             "outcome": {
-              "status": "identity_rejected",
-              "failureCode": "identity",
-              "reason": "structured exact-model identity signal required in MinerU JSON",
+              "status": "mineru_failure",
+              "failureCode": "mineru",
+              "reason": "no exact-model MinerU evidence with explicit axes extracted",
               "artifactBinding": {
-                "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf",
-                "finalUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf",
-                "contentSha256": "186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa",
-                "objectPath": "evidence/web/sha256/18/6d/186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa.pdf",
+                "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf",
+                "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf",
+                "contentSha256": "4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5",
+                "objectPath": "evidence/web/sha256/4f/3b/4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5.pdf",
                 "contentType": "application/pdf",
-                "byteSize": 2590301
+                "byteSize": 487871
               },
               "source": null
             }
           }
         ],
-        "candidateInventorySha256": "9571277eb5d951d5e2be4f00c2fea6f990d7382eb08a3ce75759a398b0f60c65"
+        "candidateInventorySha256": "4afd4aafabc32d5d8e10c000275a39a0bb2dfd211bb9d82e815360d158995a71"
       },
-      "sources": [
-        {
-          "authority": "manufacturer",
-          "sourceType": "official_exact_model_product_page",
-          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
-          "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
-          "redirectChain": [],
-          "retrievedAt": "2026-07-17T01:23:29.302Z",
-          "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
-          "objectPath": "evidence/web/sha256/d4/c3/d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e.html",
-          "contentType": "text/html",
-          "byteSize": 791908,
-          "supersedesContentSha256": [],
-          "identity": {
-            "brand": "Beko",
-            "model": "BBM450X",
-            "outcome": "exact"
-          },
-          "claims": [
-            {
-              "field": "closedEnvelope.widthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 700
-              },
-              "sourceLabel": "Width",
-              "sourceAxisOrder": [
-                "width"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 1720
-              },
-              "sourceLabel": "Height",
-              "sourceAxisOrder": [
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.depthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 705
-              },
-              "sourceLabel": "Depth",
-              "sourceAxisOrder": [
-                "depth"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            }
-          ],
-          "identitySignals": [
-            {
-              "type": "canonical_url",
-              "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x"
-            },
-            {
-              "type": "document_title",
-              "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM450X | BEKO"
-            },
-            {
-              "type": "structured_product_model",
-              "value": "BBM450X"
-            }
-          ],
-          "verificationReceipt": {
-            "schemaVersion": 3,
-            "claimSemanticsVersion": 2,
-            "policyVersion": "2026-07-13.1",
-            "manufacturerPolicyVersion": "2026-07-16.4",
-            "verifiedAt": "2026-07-17T01:23:29.302Z",
-            "bindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704"
-          }
-        }
-      ],
-      "geometryProjection": {
-        "geometry": {
-          "closedEnvelope": {
-            "widthMm": 700,
-            "heightMm": {
-              "minimumMm": 1720,
-              "maximumMm": 1720
-            },
-            "depthMm": 705
-          },
-          "installation": {
-            "leftMm": null,
-            "rightMm": null,
-            "topMm": null,
-            "rearMm": null,
-            "frontMm": null
-          },
-          "operation": {
-            "doorOpenDepthMm": null,
-            "hingeSideSpaceMm": null,
-            "lidOpenHeightMm": null
-          },
-          "delivery": {
-            "widthMm": null,
-            "heightMm": null,
-            "depthMm": null
-          },
-          "category": "fridge",
-          "formFactor": null,
-          "service": {
-            "plumbingRearMm": null,
-            "rearServicesMm": null,
-            "rearVentilationMm": null
-          }
-        },
-        "fieldEvidence": {
-          "closedEnvelope.widthMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
-            "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
-            "receiptBindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704",
-            "page": null,
-            "fragmentSha256": null
-          },
-          "closedEnvelope.heightMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
-            "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
-            "receiptBindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704",
-            "page": null,
-            "fragmentSha256": null
-          },
-          "closedEnvelope.depthMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
-            "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
-            "receiptBindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704",
-            "page": null,
-            "fragmentSha256": null
-          }
-        },
-        "evidenceLevel": "dimensions",
-        "requiredInstallationEnvelope": null,
-        "missingForVerifiedFit": [
-          "installation.leftMm",
-          "installation.rearMm",
-          "installation.rightMm",
-          "installation.topMm"
-        ],
-        "verifiedFitEligible": false,
-        "successfulFitOutcome": "INSUFFICIENT_DATA",
-        "activeSourceHashes": [
-          "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e"
-        ]
-      },
+      "sources": [],
+      "geometryProjection": null,
       "reconciliation": {
         "conflictingFields": [],
-        "conflictHints": [
-          {
-            "sourceRole": "legacy_hint",
-            "sourceId": "doc_816d2f116fb46060ee3146c8",
-            "kind": "lower_authority_disagreement",
-            "fields": [
-              "depthMm",
-              "widthMm"
-            ],
-            "dimensionsMm": {
-              "widthMm": 704,
-              "heightMm": 1720,
-              "depthMm": 701
-            }
-          }
-        ],
+        "conflictHints": [],
         "missingFields": [],
         "supersessionViolations": [],
         "axisPermutationResolution": null,
-        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "395defb4ba4bfab5bdfba7ff2df43e67d9a2489f08ec11e72171a18c7e86fb9e"
+      "semanticOutcomeSha256": "cb814f4338e127f875b6afc46471fa9e1c039508e3a508cbecdc349d00cceb82"
     },
     {
-      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
+      "targetId": "recovery_target_746735988e3f8fd021bc6c80",
       "status": "accepted",
       "failureCode": null,
-      "candidateInventorySha256": "b16c01312922dc65e0df66bb0ac848846a8543933703cd67790845fcb31eb0af",
+      "candidateInventorySha256": "ba90c2dbe0edd532d69bb4e3df5d10504bfc66b285398d386a051cb04c2cd1a5",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
+        "targetId": "recovery_target_746735988e3f8fd021bc6c80",
         "identity": {
-          "brand": "Beko",
-          "model": "BBM450W",
-          "category": "fridge"
+          "brand": "Smeg",
+          "model": "DWA315X",
+          "category": "dishwasher"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -844,9 +200,9 @@
             "resolverId": "architecture-v2-core-official-discovery",
             "version": "1",
             "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": false,
+            "required": true,
             "completion": "complete",
-            "candidateCount": 0
+            "candidateCount": 1
           },
           {
             "resolverId": "batch-candidates",
@@ -855,34 +211,26 @@
             "required": true,
             "completion": "complete",
             "candidateCount": 0
-          },
-          {
-            "resolverId": "beko-official-discovery",
-            "version": "2",
-            "scope": "beko_au_exact_support_search_result_and_product_documents",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 2
           }
         ],
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_497fe8444ee04f8fb13c5e2a",
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+            "candidateId": "candidate_297e83cbff2a8d0f4d50a675",
+            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
             "authorityMode": "official",
-            "sourceRole": "manufacturer_product_page",
-            "requiredAttempt": false,
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
             "discoveryProvenance": null,
             "batchJobIds": [],
             "resolverRefs": [
               {
-                "resolverId": "beko-official-discovery",
-                "version": "2",
-                "scope": "beko_au_exact_support_search_result_and_product_documents",
-                "discoveryMethod": "beko_legacy_finder",
-                "sourceRole": "manufacturer_product_page",
-                "order": 1
+                "resolverId": "architecture-v2-core-official-discovery",
+                "version": "1",
+                "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+                "discoveryMethod": "brand_template",
+                "sourceRole": "manufacturer_document",
+                "order": 0
               }
             ],
             "outcome": {
@@ -890,19 +238,19 @@
               "failureCode": null,
               "source": {
                 "authority": "manufacturer",
-                "sourceType": "official_exact_model_product_page",
-                "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
-                "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+                "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
                 "redirectChain": [],
-                "retrievedAt": "2026-07-17T01:23:30.450Z",
-                "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
-                "objectPath": "evidence/web/sha256/f8/23/f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb.html",
-                "contentType": "text/html",
-                "byteSize": 791855,
+                "retrievedAt": "2026-07-17T01:35:10.354Z",
+                "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+                "objectPath": "evidence/web/sha256/1d/65/1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 1357626,
                 "supersedesContentSha256": [],
                 "identity": {
-                  "brand": "Beko",
-                  "model": "BBM450W",
+                  "brand": "Smeg",
+                  "model": "DWA315X",
                   "outcome": "exact"
                 },
                 "claims": [
@@ -910,69 +258,110 @@
                     "field": "closedEnvelope.widthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 700
+                      "mm": 598
                     },
-                    "sourceLabel": "Width",
+                    "sourceLabel": "Dimensions (W x H x D)",
                     "sourceAxisOrder": [
-                      "width"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 1720
-                    },
-                    "sourceLabel": "Height",
-                    "sourceAxisOrder": [
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 705
-                    },
-                    "sourceLabel": "Depth",
-                    "sourceAxisOrder": [
+                      "width",
+                      "height",
                       "depth"
                     ],
                     "sourceUnit": "mm",
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
+                    "page": 1,
+                    "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+                    "bbox": [
+                      25,
+                      414,
+                      393,
+                      430
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 850
+                    },
+                    "sourceLabel": "Dimensions (W x H x D)",
+                    "sourceAxisOrder": [
+                      "width",
+                      "height",
+                      "depth"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 1,
+                    "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+                    "bbox": [
+                      25,
+                      414,
+                      393,
+                      430
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 596
+                    },
+                    "sourceLabel": "Dimensions (W x H x D)",
+                    "sourceAxisOrder": [
+                      "width",
+                      "height",
+                      "depth"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 1,
+                    "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+                    "bbox": [
+                      25,
+                      414,
+                      393,
+                      430
+                    ]
                   }
                 ],
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+                  "contentSha256": "82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7",
+                  "objectPath": "evidence/derived/mineru-json/sha256/82/63/82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7.json",
+                  "byteSize": 32443,
+                  "pageCount": 2
+                },
                 "identitySignals": [
                   {
-                    "type": "canonical_url",
-                    "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w"
+                    "type": "mineru_title_model",
+                    "value": "DWA315X:page:1"
                   },
                   {
-                    "type": "document_title",
-                    "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM450W | BEKO"
+                    "type": "mineru_title_model",
+                    "value": "DWA315X:page:2"
                   },
                   {
-                    "type": "structured_product_model",
-                    "value": "BBM450W"
+                    "type": "source_url_exact_model",
+                    "value": "DWA315X:https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf"
+                  },
+                  {
+                    "type": "pdf_source_url_model",
+                    "value": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf"
                   }
                 ],
                 "verificationReceipt": {
@@ -980,76 +369,31 @@
                   "claimSemanticsVersion": 2,
                   "policyVersion": "2026-07-13.1",
                   "manufacturerPolicyVersion": "2026-07-16.4",
-                  "verifiedAt": "2026-07-17T01:23:30.450Z",
-                  "bindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2"
+                  "verifiedAt": "2026-07-17T01:35:10.354Z",
+                  "bindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd"
                 }
               }
             }
-          },
-          {
-            "candidateId": "candidate_aac7812aa51a456ef894e281",
-            "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": false,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_product_page",
-              "market": "AU",
-              "discoveryUrl": "https://www.beko.com/au-en/support/user-manuals-result?search=BBM450W",
-              "requestedModel": "BBM450W",
-              "matchedModel": "BBM450W",
-              "artifactUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf",
-              "artifactLinkUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf",
-              "discoveryContentSha256": "aa345a33d3bc2952ef61cf22b1c4d6a8259cc0c68eba68834686a7c6a744516e",
-              "discoveryObjectPath": "evidence/web/sha256/aa/34/aa345a33d3bc2952ef61cf22b1c4d6a8259cc0c68eba68834686a7c6a744516e.html",
-              "discoveryByteSize": 648540
-            },
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "beko-official-discovery",
-                "version": "2",
-                "scope": "beko_au_exact_support_search_result_and_product_documents",
-                "discoveryMethod": "beko_legacy_finder",
-                "sourceRole": "manufacturer_document",
-                "order": 0
-              }
-            ],
-            "outcome": {
-              "status": "identity_rejected",
-              "failureCode": "identity",
-              "reason": "structured exact-model identity signal required in MinerU JSON",
-              "artifactBinding": {
-                "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf",
-                "finalUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf",
-                "contentSha256": "186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa",
-                "objectPath": "evidence/web/sha256/18/6d/186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa.pdf",
-                "contentType": "application/pdf",
-                "byteSize": 2590301
-              },
-              "source": null
-            }
           }
         ],
-        "candidateInventorySha256": "b16c01312922dc65e0df66bb0ac848846a8543933703cd67790845fcb31eb0af"
+        "candidateInventorySha256": "ba90c2dbe0edd532d69bb4e3df5d10504bfc66b285398d386a051cb04c2cd1a5"
       },
       "sources": [
         {
           "authority": "manufacturer",
-          "sourceType": "official_exact_model_product_page",
-          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
-          "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+          "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
           "redirectChain": [],
-          "retrievedAt": "2026-07-17T01:23:30.450Z",
-          "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
-          "objectPath": "evidence/web/sha256/f8/23/f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb.html",
-          "contentType": "text/html",
-          "byteSize": 791855,
+          "retrievedAt": "2026-07-17T01:35:10.354Z",
+          "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+          "objectPath": "evidence/web/sha256/1d/65/1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1357626,
           "supersedesContentSha256": [],
           "identity": {
-            "brand": "Beko",
-            "model": "BBM450W",
+            "brand": "Smeg",
+            "model": "DWA315X",
             "outcome": "exact"
           },
           "claims": [
@@ -1057,69 +401,110 @@
               "field": "closedEnvelope.widthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 700
+                "mm": 598
               },
-              "sourceLabel": "Width",
+              "sourceLabel": "Dimensions (W x H x D)",
               "sourceAxisOrder": [
-                "width"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 1720
-              },
-              "sourceLabel": "Height",
-              "sourceAxisOrder": [
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.depthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 705
-              },
-              "sourceLabel": "Depth",
-              "sourceAxisOrder": [
+                "width",
+                "height",
                 "depth"
               ],
               "sourceUnit": "mm",
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
+              "page": 1,
+              "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+              "bbox": [
+                25,
+                414,
+                393,
+                430
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Dimensions (W x H x D)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+              "bbox": [
+                25,
+                414,
+                393,
+                430
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Dimensions (W x H x D)",
+              "sourceAxisOrder": [
+                "width",
+                "height",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+              "bbox": [
+                25,
+                414,
+                393,
+                430
+              ]
             }
           ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+            "contentSha256": "82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7",
+            "objectPath": "evidence/derived/mineru-json/sha256/82/63/82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7.json",
+            "byteSize": 32443,
+            "pageCount": 2
+          },
           "identitySignals": [
             {
-              "type": "canonical_url",
-              "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w"
+              "type": "mineru_title_model",
+              "value": "DWA315X:page:1"
             },
             {
-              "type": "document_title",
-              "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM450W | BEKO"
+              "type": "mineru_title_model",
+              "value": "DWA315X:page:2"
             },
             {
-              "type": "structured_product_model",
-              "value": "BBM450W"
+              "type": "source_url_exact_model",
+              "value": "DWA315X:https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf"
             }
           ],
           "verificationReceipt": {
@@ -1127,20 +512,20 @@
             "claimSemanticsVersion": 2,
             "policyVersion": "2026-07-13.1",
             "manufacturerPolicyVersion": "2026-07-16.4",
-            "verifiedAt": "2026-07-17T01:23:30.450Z",
-            "bindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2"
+            "verifiedAt": "2026-07-17T01:35:10.354Z",
+            "bindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd"
           }
         }
       ],
       "geometryProjection": {
         "geometry": {
           "closedEnvelope": {
-            "widthMm": 700,
+            "widthMm": 598,
             "heightMm": {
-              "minimumMm": 1720,
-              "maximumMm": 1720
+              "minimumMm": 850,
+              "maximumMm": 850
             },
-            "depthMm": 705
+            "depthMm": 596
           },
           "installation": {
             "leftMm": null,
@@ -1159,7 +544,7 @@
             "heightMm": null,
             "depthMm": null
           },
-          "category": "fridge",
+          "category": "dishwasher",
           "formFactor": null,
           "service": {
             "plumbingRearMm": null,
@@ -1169,25 +554,25 @@
         },
         "fieldEvidence": {
           "closedEnvelope.widthMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
-            "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
-            "receiptBindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2",
-            "page": null,
-            "fragmentSha256": null
+            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+            "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+            "receiptBindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd",
+            "page": 1,
+            "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84"
           },
           "closedEnvelope.heightMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
-            "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
-            "receiptBindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2",
-            "page": null,
-            "fragmentSha256": null
+            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+            "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+            "receiptBindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd",
+            "page": 1,
+            "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84"
           },
           "closedEnvelope.depthMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
-            "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
-            "receiptBindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2",
-            "page": null,
-            "fragmentSha256": null
+            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+            "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+            "receiptBindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd",
+            "page": 1,
+            "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84"
           }
         },
         "evidenceLevel": "dimensions",
@@ -1196,52 +581,39 @@
           "installation.leftMm",
           "installation.rearMm",
           "installation.rightMm",
-          "installation.topMm"
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
         ],
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb"
+          "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd"
         ]
       },
       "reconciliation": {
         "conflictingFields": [],
-        "conflictHints": [
-          {
-            "sourceRole": "legacy_hint",
-            "sourceId": "doc_ee1ea71781c6fc53161f610c",
-            "kind": "lower_authority_disagreement",
-            "fields": [
-              "depthMm",
-              "widthMm"
-            ],
-            "dimensionsMm": {
-              "widthMm": 704,
-              "heightMm": 1720,
-              "depthMm": 701
-            }
-          }
-        ],
+        "conflictHints": [],
         "missingFields": [],
         "supersessionViolations": [],
         "axisPermutationResolution": null,
-        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "719a162feb2b9e2aa4548877aebc621d8b2b4c926c8ed8227ae19db0ea070ddc"
+      "semanticOutcomeSha256": "5efb4297a1b0ec9a005590f2f8b63c2cf4b1c26d6b7da3068016b4cf22ca2629"
     },
     {
-      "targetId": "recovery_target_c9f6e399045019f484c609e1",
-      "status": "accepted",
-      "failureCode": null,
-      "candidateInventorySha256": "d0901df6d6a17de11651e4bd770d894f2c5f5be0d9af46bd9bcf0ef442f4d05a",
+      "targetId": "recovery_target_c32bb8a5abc49aa3f737344e",
+      "status": "claims_incomplete",
+      "failureCode": "mineru",
+      "candidateInventorySha256": "605373098eb88faff745467ab35e48a2f752492b364ab145b81db5fe18989148",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_c9f6e399045019f484c609e1",
+        "targetId": "recovery_target_c32bb8a5abc49aa3f737344e",
         "identity": {
-          "brand": "Beko",
-          "model": "BBM407PX",
-          "category": "fridge"
+          "brand": "Smeg",
+          "model": "DWAFI6314",
+          "category": "dishwasher"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -1251,9 +623,9 @@
             "resolverId": "architecture-v2-core-official-discovery",
             "version": "1",
             "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": false,
+            "required": true,
             "completion": "complete",
-            "candidateCount": 0
+            "candidateCount": 1
           },
           {
             "resolverId": "batch-candidates",
@@ -1262,386 +634,65 @@
             "required": true,
             "completion": "complete",
             "candidateCount": 0
-          },
-          {
-            "resolverId": "beko-official-discovery",
-            "version": "2",
-            "scope": "beko_au_exact_support_search_result_and_product_documents",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 2
           }
         ],
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_772f5877c398bcd8363f407b",
-            "sourceUrl": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf",
+            "candidateId": "candidate_1b6891aba11220aeb4ced7a1",
+            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
-            "requiredAttempt": false,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_product_page",
-              "market": "AU",
-              "discoveryUrl": "https://www.beko.com/au-en/support/user-manuals-result?search=BBM407PX",
-              "requestedModel": "BBM407PX",
-              "matchedModel": "BBM407PX",
-              "artifactUrl": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf",
-              "artifactLinkUrl": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf",
-              "discoveryContentSha256": "d19550a0b28b81ede794f5890c8ffb39e23421c2fe96bd680a3855b1e450c80b",
-              "discoveryObjectPath": "evidence/web/sha256/d1/95/d19550a0b28b81ede794f5890c8ffb39e23421c2fe96bd680a3855b1e450c80b.html",
-              "discoveryByteSize": 643001
-            },
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
             "batchJobIds": [],
             "resolverRefs": [
               {
-                "resolverId": "beko-official-discovery",
-                "version": "2",
-                "scope": "beko_au_exact_support_search_result_and_product_documents",
-                "discoveryMethod": "beko_legacy_finder",
+                "resolverId": "architecture-v2-core-official-discovery",
+                "version": "1",
+                "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+                "discoveryMethod": "brand_template",
                 "sourceRole": "manufacturer_document",
                 "order": 0
               }
             ],
             "outcome": {
-              "status": "identity_rejected",
-              "failureCode": "identity",
-              "reason": "structured exact-model identity signal required in MinerU JSON",
+              "status": "mineru_failure",
+              "failureCode": "mineru",
+              "reason": "no exact-model MinerU evidence with explicit axes extracted",
               "artifactBinding": {
-                "sourceUrl": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf",
-                "finalUrl": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf",
-                "contentSha256": "f0b6a87c307a226b67c087e7c3b3574dfbe662b51be1fd739a4538f0793662af",
-                "objectPath": "evidence/web/sha256/f0/b6/f0b6a87c307a226b67c087e7c3b3574dfbe662b51be1fd739a4538f0793662af.pdf",
+                "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf",
+                "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf",
+                "contentSha256": "b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5",
+                "objectPath": "evidence/web/sha256/b5/e8/b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5.pdf",
                 "contentType": "application/pdf",
-                "byteSize": 7589006
+                "byteSize": 448269
               },
               "source": null
             }
-          },
-          {
-            "candidateId": "candidate_a2640051320d10d2e93febcb",
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_product_page",
-            "requiredAttempt": false,
-            "discoveryProvenance": null,
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "beko-official-discovery",
-                "version": "2",
-                "scope": "beko_au_exact_support_search_result_and_product_documents",
-                "discoveryMethod": "beko_legacy_finder",
-                "sourceRole": "manufacturer_product_page",
-                "order": 1
-              }
-            ],
-            "outcome": {
-              "status": "accepted",
-              "failureCode": null,
-              "source": {
-                "authority": "manufacturer",
-                "sourceType": "official_exact_model_product_page",
-                "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
-                "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
-                "redirectChain": [],
-                "retrievedAt": "2026-07-17T01:23:35.771Z",
-                "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
-                "objectPath": "evidence/web/sha256/f0/07/f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3.html",
-                "contentType": "text/html",
-                "byteSize": 782801,
-                "supersedesContentSha256": [],
-                "identity": {
-                  "brand": "Beko",
-                  "model": "BBM407PX",
-                  "outcome": "exact"
-                },
-                "claims": [
-                  {
-                    "field": "closedEnvelope.widthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 700
-                    },
-                    "sourceLabel": "Width",
-                    "sourceAxisOrder": [
-                      "width"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 1720
-                    },
-                    "sourceLabel": "Height",
-                    "sourceAxisOrder": [
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 670
-                    },
-                    "sourceLabel": "Depth",
-                    "sourceAxisOrder": [
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  }
-                ],
-                "identitySignals": [
-                  {
-                    "type": "canonical_url",
-                    "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px"
-                  },
-                  {
-                    "type": "document_title",
-                    "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM407PX | BEKO"
-                  },
-                  {
-                    "type": "structured_product_model",
-                    "value": "BBM407PX"
-                  }
-                ],
-                "verificationReceipt": {
-                  "schemaVersion": 3,
-                  "claimSemanticsVersion": 2,
-                  "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-16.4",
-                  "verifiedAt": "2026-07-17T01:23:35.771Z",
-                  "bindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b"
-                }
-              }
-            }
           }
         ],
-        "candidateInventorySha256": "d0901df6d6a17de11651e4bd770d894f2c5f5be0d9af46bd9bcf0ef442f4d05a"
+        "candidateInventorySha256": "605373098eb88faff745467ab35e48a2f752492b364ab145b81db5fe18989148"
       },
-      "sources": [
-        {
-          "authority": "manufacturer",
-          "sourceType": "official_exact_model_product_page",
-          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
-          "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
-          "redirectChain": [],
-          "retrievedAt": "2026-07-17T01:23:35.771Z",
-          "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
-          "objectPath": "evidence/web/sha256/f0/07/f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3.html",
-          "contentType": "text/html",
-          "byteSize": 782801,
-          "supersedesContentSha256": [],
-          "identity": {
-            "brand": "Beko",
-            "model": "BBM407PX",
-            "outcome": "exact"
-          },
-          "claims": [
-            {
-              "field": "closedEnvelope.widthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 700
-              },
-              "sourceLabel": "Width",
-              "sourceAxisOrder": [
-                "width"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 1720
-              },
-              "sourceLabel": "Height",
-              "sourceAxisOrder": [
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.depthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 670
-              },
-              "sourceLabel": "Depth",
-              "sourceAxisOrder": [
-                "depth"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            }
-          ],
-          "identitySignals": [
-            {
-              "type": "canonical_url",
-              "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px"
-            },
-            {
-              "type": "document_title",
-              "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM407PX | BEKO"
-            },
-            {
-              "type": "structured_product_model",
-              "value": "BBM407PX"
-            }
-          ],
-          "verificationReceipt": {
-            "schemaVersion": 3,
-            "claimSemanticsVersion": 2,
-            "policyVersion": "2026-07-13.1",
-            "manufacturerPolicyVersion": "2026-07-16.4",
-            "verifiedAt": "2026-07-17T01:23:35.771Z",
-            "bindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b"
-          }
-        }
-      ],
-      "geometryProjection": {
-        "geometry": {
-          "closedEnvelope": {
-            "widthMm": 700,
-            "heightMm": {
-              "minimumMm": 1720,
-              "maximumMm": 1720
-            },
-            "depthMm": 670
-          },
-          "installation": {
-            "leftMm": null,
-            "rightMm": null,
-            "topMm": null,
-            "rearMm": null,
-            "frontMm": null
-          },
-          "operation": {
-            "doorOpenDepthMm": null,
-            "hingeSideSpaceMm": null,
-            "lidOpenHeightMm": null
-          },
-          "delivery": {
-            "widthMm": null,
-            "heightMm": null,
-            "depthMm": null
-          },
-          "category": "fridge",
-          "formFactor": null,
-          "service": {
-            "plumbingRearMm": null,
-            "rearServicesMm": null,
-            "rearVentilationMm": null
-          }
-        },
-        "fieldEvidence": {
-          "closedEnvelope.widthMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
-            "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
-            "receiptBindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b",
-            "page": null,
-            "fragmentSha256": null
-          },
-          "closedEnvelope.heightMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
-            "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
-            "receiptBindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b",
-            "page": null,
-            "fragmentSha256": null
-          },
-          "closedEnvelope.depthMm": {
-            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
-            "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
-            "receiptBindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b",
-            "page": null,
-            "fragmentSha256": null
-          }
-        },
-        "evidenceLevel": "dimensions",
-        "requiredInstallationEnvelope": null,
-        "missingForVerifiedFit": [
-          "installation.leftMm",
-          "installation.rearMm",
-          "installation.rightMm",
-          "installation.topMm"
-        ],
-        "verifiedFitEligible": false,
-        "successfulFitOutcome": "INSUFFICIENT_DATA",
-        "activeSourceHashes": [
-          "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3"
-        ]
-      },
+      "sources": [],
+      "geometryProjection": null,
       "reconciliation": {
         "conflictingFields": [],
-        "conflictHints": [
-          {
-            "sourceRole": "legacy_hint",
-            "sourceId": "doc_981411b5729b38ffb9096efc",
-            "kind": "lower_authority_disagreement",
-            "fields": [
-              "depthMm"
-            ],
-            "dimensionsMm": {
-              "widthMm": 700,
-              "heightMm": 1720,
-              "depthMm": 660
-            }
-          }
-        ],
+        "conflictHints": [],
         "missingFields": [],
         "supersessionViolations": [],
         "axisPermutationResolution": null,
-        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "803d62231b432bcb0b1f7b408828aafe422afb0e723e6f31346a4dcd7046efb9"
+      "semanticOutcomeSha256": "9327f0cd244dbb9616cb66e9390b49cc48ae0c4b59ea602f6c52bfdbff6db497"
     }
   ],
   "summary": {
     "targets": 4,
-    "accepted": 4,
+    "accepted": 1,
     "nonScalar": 0,
     "retryable": 0,
-    "terminal": 0
+    "terminal": 3
   }
 }

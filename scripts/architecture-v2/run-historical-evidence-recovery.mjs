@@ -54,6 +54,7 @@ const CLAIM_PARSER_IMPLEMENTATION_PATHS = Object.freeze([
   'src/domain/official-market-api-discovery-evidence.mjs',
   'src/domain/official-model-variant-policy.mjs',
   'src/domain/official-support-api-discovery-evidence.mjs',
+  'src/domain/smeg-pdf-dimensions.mjs',
 ]);
 
 function requiredText(value, label) {

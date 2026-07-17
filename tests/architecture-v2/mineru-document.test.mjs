@@ -1729,6 +1729,55 @@ test('MinerU parses explicit value-unit-axis suffixes without position heuristic
   });
 });
 
+test('MinerU preserves Smeg W-D-H suffix order and an explicitly bounded adjustable height', () => {
+  for (const [model, expression, expectedHeight] of [
+    ['DWAI6314X', 'Size 598mmW x 570mmD x 818–868mmH max', { minMm: 818, maxMm: 868 }],
+    ['DWAU6315X', 'Size 598mmW x 570mmD x 818mm-888mmH max', { minMm: 818, maxMm: 888 }],
+    ['DWAFI6314', 'Size 598mmW x 570mmD x 818mm–888mmH', { minMm: 818, maxMm: 888 }],
+  ]) {
+    const bytes = Buffer.from(JSON.stringify([[
+      pageHeader(`${model} SMEG DISHWASHER`),
+      paragraph(expression),
+    ]]));
+    const parsed = parseMineruContentListV2(bytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision,
+      caseIdentity: { brand: 'Smeg', model, category: 'dishwasher' },
+      claimSemanticsVersion: 2,
+      fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    });
+
+    assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+      'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+      'closedEnvelope.heightMm': { kind: 'range', ...expectedHeight },
+      'closedEnvelope.depthMm': { kind: 'fixed', mm: 570 },
+    });
+    assert.ok(parsed.claims.every((claim) => (
+      claim.sourceAxisOrder.join(',') === 'width,depth,height'
+    )));
+  }
+});
+
+test('Smeg suffix-range grammar rejects packaging, non-height ranges, duplicate axes, and trailing prose', () => {
+  for (const expression of [
+    'Package Size 598mmW x 570mmD x 818–868mmH max',
+    'Size 598–620mmW x 570mmD x 818mmH max',
+    'Size 598mmW x 570mmW x 818–868mmH max',
+    'Size 598mmW x 570mmD x 888–818mmH max',
+    'Size 598mmW x 570mmD x 818–868mmH including hoses',
+  ]) {
+    const bytes = Buffer.from(JSON.stringify([[
+      pageHeader('DWAI6314X SMEG DISHWASHER'),
+      paragraph(expression),
+    ]]));
+    assert.throws(() => parseMineruContentListV2(bytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision,
+      caseIdentity: { brand: 'Smeg', model: 'DWAI6314X', category: 'dishwasher' },
+      claimSemanticsVersion: 2,
+      fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    }), /no exact-model MinerU evidence/i, expression);
+  }
+});
+
 test('MinerU uses the explicit including-handle depth variant for the overall closed envelope', () => {
   const bytes = Buffer.from(JSON.stringify([[
     pageHeader('Series 6 WQG235DRAU'),

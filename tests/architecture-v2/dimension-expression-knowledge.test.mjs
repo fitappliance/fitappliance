@@ -407,6 +407,38 @@ test('knowledge groups strict Beko spec variants under one declared grammar fami
   assert.match(markdown, /complete exact-model parser replays: 1/i);
 });
 
+test('knowledge documents the strict Smeg W-D-H adjustable-height grammar', () => {
+  const knowledge = buildDimensionExpressionKnowledge({
+    generatedAt: '2026-07-17T00:00:00.000Z',
+    historicalRecords: [
+      { category: 'dishwasher', brand: 'Smeg', model: 'DWAI6314X' },
+    ],
+    documents: [{
+      pdfSha256: '9'.repeat(64), contentSha256: '8'.repeat(64),
+      parserVersion: '3.4.4', modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+      sourceUrls: ['https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf'],
+      identities: [{ category: 'dishwasher', brand: 'Smeg', model: 'DWAI6314X' }],
+      contentList: [[
+        textBlock('title', 'DWAI6314X SMEG SEMI-INTEGRATED DISHWASHER'),
+        paragraph('Size 598mmW x 570mmD x 818–868mmH max'),
+      ]],
+    }],
+  });
+  const family = knowledge.categories.find((row) => row.category === 'dishwasher')
+    .brands[0].families[0];
+
+  assert.equal(family.groupType, 'parser_family');
+  assert.equal(family.groupName, 'Smeg Australia dishwasher technical specification');
+  assert.deepEqual(family.parserProfileIds, [
+    'smeg-au-dishwasher-size-wdh-suffix-range-v1',
+  ]);
+  assert.equal(family.completeParserReplay, true);
+  const markdown = renderDimensionExpressionKnowledgeMarkdown(knowledge);
+  assert.match(markdown, /W\/D\/H order/);
+  assert.match(markdown, /adjustable height range is preserved/i);
+  assert.match(markdown, /Packaging, installation, cavity/i);
+});
+
 test('lettered explicit axes are distinct from unlabelled dimension triples', () => {
   const result = extractDimensionExpressions({
     pdfSha256: 'd'.repeat(64),

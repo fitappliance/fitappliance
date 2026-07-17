@@ -17,18 +17,18 @@
     "historicalRecords": 8093,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 901,
-    "validMineruDocuments": 886,
+    "mineruDocuments": 905,
+    "validMineruDocuments": 890,
     "invalidMineruDocuments": 15,
     "documentsWithObservations": 469,
-    "documentsWithoutObservations": 417,
-    "mappedMineruDocuments": 853,
+    "documentsWithoutObservations": 421,
+    "mappedMineruDocuments": 857,
     "unmappedMineruDocuments": 33,
     "observations": 1133,
-    "researchGaps": 997,
-    "parserProfiles": 210,
-    "parserReplays": 1012,
-    "completeParserReplays": 407
+    "researchGaps": 1001,
+    "parserProfiles": 211,
+    "parserReplays": 1016,
+    "completeParserReplays": 411
   },
   "categories": [
     {
@@ -91886,15 +91886,60 @@
             "Smeg"
           ],
           "modelCount": 124,
-          "observedMineruDocuments": 1,
+          "observedMineruDocuments": 5,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 0,
-          "observedParserProfileCount": 1,
-          "completeParserReplayCount": 1,
+          "observedParserProfileCount": 2,
+          "completeParserReplayCount": 3,
           "seriesCountStatus": "UNKNOWN",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
           "families": [
+            {
+              "groupType": "model_specific",
+              "groupName": "DWA315X",
+              "models": [
+                "DWA315X"
+              ],
+              "pdfSha256s": [
+                "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd"
+              ],
+              "sourceUrls": [
+                "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+                  "category": "dishwasher",
+                  "brand": "Smeg",
+                  "model": "DWA315X",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+                  "pdfSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+                  "contentSha256": "82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7",
+                  "page": null,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
             {
               "groupType": "parser_family",
               "groupName": "PDF grammar pdf_grammar_380d583408d1560f",
@@ -92031,6 +92076,125 @@
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "Smeg Australia dishwasher technical specification",
+              "models": [
+                "DWAFI6314",
+                "DWAI6314X",
+                "DWAU6315X"
+              ],
+              "pdfSha256s": [
+                "4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5",
+                "5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e",
+                "b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5"
+              ],
+              "sourceUrls": [
+                "https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf",
+                "https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf",
+                "https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "smeg-au-dishwasher-size-wdh-suffix-range-v1",
+                  "grammarFamilyId": "smeg_au_dishwasher_techspec_dimensions_v1",
+                  "grammarFamilyName": "Smeg Australia dishwasher technical specification",
+                  "variantName": "Size values with W/D/H suffixes and an adjustable height range",
+                  "brand": "Smeg",
+                  "category": "dishwasher",
+                  "documentType": "product_specification",
+                  "detectionSummary": "An exact-model Smeg Australia Techspec PDF contains one anchored Size expression whose positive integer values carry unique mmW, mmD and mmH suffixes in W/D/H order. Only the final height value may be an increasing range, with an optional max suffix.",
+                  "semanticBoundary": "Closed width and depth remain fixed while the complete adjustable height range is preserved. Packaging, installation, cavity, non-height ranges, duplicate axes, reversed ranges, fixed-height lookalikes and trailing qualification text are excluded.",
+                  "profileKind": "declared_brand_category_grammar",
+                  "signatureVersion": 1,
+                  "expressionShapes": [],
+                  "researchGapTypes": []
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5",
+                  "category": "dishwasher",
+                  "brand": "Smeg",
+                  "model": "DWAU6315X",
+                  "extractionState": "ALL_AXIS_RANGE",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "smeg-au-dishwasher-size-wdh-suffix-range-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e",
+                  "category": "dishwasher",
+                  "brand": "Smeg",
+                  "model": "DWAI6314X",
+                  "extractionState": "ALL_AXIS_RANGE",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "smeg-au-dishwasher-size-wdh-suffix-range-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5",
+                  "category": "dishwasher",
+                  "brand": "Smeg",
+                  "model": "DWAFI6314",
+                  "extractionState": "ALL_AXIS_RANGE",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "smeg-au-dishwasher-size-wdh-suffix-range-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+                  "pdfSha256": "5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e",
+                  "contentSha256": "cd00c4bf908e1a42ece8d482aacb03f18aeb6692e7fde6782712e8a7b70a27eb",
+                  "page": null,
+                  "quote": ""
+                },
+                {
+                  "gapType": "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+                  "pdfSha256": "b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5",
+                  "contentSha256": "af2789aff9d8181c2965b919e67c99cc33f3f57f16ad3366e5f98a1779a87f51",
+                  "page": null,
+                  "quote": ""
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5",
+                  "contentSha256": "01b4ff4ad6e29a0c626febf60237627d49a1e71c3c5ee0c502652622efeffdc1",
+                  "page": 2,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [
+                "smeg-au-dishwasher-size-wdh-suffix-range-v1"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
             }
           ]
         },

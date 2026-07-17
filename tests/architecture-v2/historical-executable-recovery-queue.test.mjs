@@ -4,6 +4,7 @@ import test from 'node:test';
 import { buildHistoricalExecutableRecoveryQueue } from '../../src/domain/historical-executable-recovery-queue.mjs';
 import { historicalResolverContractSha256 } from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
 import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from '../../src/domain/beko-product-page-dimensions.mjs';
+import { SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY } from '../../src/domain/smeg-pdf-dimensions.mjs';
 
 const fields = [
   'closedEnvelope.widthMm',
@@ -316,6 +317,55 @@ test('a bounded Beko HTML processor change reopens only the product page and kee
   assert.equal(queue.jobs[0].sourceUrl, htmlUrl);
   assert.deepEqual(queue.targets[0].candidateJobIds, [queue.jobs[0].jobId]);
   assert.deepEqual(queue.targets[0].priorAttemptSuppressions.map((entry) => entry.sourceUrl), [pdfUrl]);
+});
+
+test('a bounded Smeg MinerU processor change reopens only its exact Techspec PDF failure', () => {
+  const policySha256 = 'b'.repeat(64);
+  const techspecUrl = 'https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf';
+  const manualUrl = 'https://sys.smeg.com.au/Manuals/DWAI6314X.pdf';
+  const queue = buildHistoricalExecutableRecoveryQueue({
+    acquisitionQueue: {
+      schemaVersion: 1,
+      generatedAt: '2026-07-17T00:00:00.000Z',
+      semanticQueueSha256: 'a'.repeat(64),
+      records: [acquisition('smeg', {
+        category: 'dishwasher', brand: 'Smeg', model: 'DWAI6314X',
+        candidateSourceIds: ['source-techspec', 'source-manual'],
+      })],
+      sources: [{
+        sourceId: 'source-techspec', sourceUrl: techspecUrl, sourceAuthority: 'OFFICIAL',
+        receiptEligible: true, documentIds: ['pdf:smeg-techspec'], referenceIds: ['smeg'],
+      }, {
+        sourceId: 'source-manual', sourceUrl: manualUrl, sourceAuthority: 'OFFICIAL',
+        receiptEligible: true, documentIds: ['pdf:smeg-manual'], referenceIds: ['smeg'],
+      }],
+    },
+    historicalReference: {
+      records: [reference('smeg', { category: 'dishwasher', brand: 'Smeg', model: 'DWAI6314X' })],
+    },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+    recoveryPolicySha256: policySha256,
+    evidenceProcessorEpochs: { [SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY]: '2'.repeat(64) },
+    priorAttemptLedger: {
+      schemaVersion: 1,
+      entries: [{
+        attemptId: 'attempt-techspec', targetId: 'ignored', referenceId: 'smeg', brand: 'Smeg',
+        sourceUrl: techspecUrl, contentSha256: 'c'.repeat(64), status: 'mineru_failure',
+        failureCode: 'mineru', policySha256, suppressesSamePolicySource: true,
+        processorCapability: SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY,
+        evidenceProcessorSha256: '1'.repeat(64),
+      }, {
+        attemptId: 'attempt-manual', targetId: 'ignored', referenceId: 'smeg', brand: 'Smeg',
+        sourceUrl: manualUrl, contentSha256: 'd'.repeat(64), status: 'identity_rejected',
+        failureCode: 'identity', policySha256, suppressesSamePolicySource: true,
+      }],
+    },
+  });
+
+  assert.equal(queue.jobs.length, 1);
+  assert.equal(queue.jobs[0].sourceUrl, techspecUrl);
+  assert.deepEqual(queue.targets[0].candidateJobIds, [queue.jobs[0].jobId]);
+  assert.deepEqual(queue.targets[0].priorAttemptSuppressions.map((entry) => entry.sourceUrl), [manualUrl]);
 });
 
 test('same-policy complete zero-candidate discovery stays suppressed across resolver revisions', () => {

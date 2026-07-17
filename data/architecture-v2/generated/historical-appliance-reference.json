@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
-    "historical-recovery:historical-recovery-cumulative-v1": "fa1171882ecad9a2ca0f75d936310c008d2442befd66d10df96aa961ff4e07b5"
+    "historical-recovery:historical-recovery-cumulative-v1": "825ee04ca9b724ddff58401fcc13e913fe6fff25ed059ebfbba253a77c9cd41c"
   },
   "records": [
     {
@@ -50114,14 +50114,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 596
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_746735988e3f8fd021bc6c80",
+          "snapshotSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -50130,8 +50141,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_746735988e3f8fd021bc6c80",
+          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+          "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+          "receiptBindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd",
+          "verifiedAt": "2026-07-17T01:35:10.354Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/1d/65/1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd.pdf"
+        }
       ]
     },
     {
@@ -51891,6 +51928,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c32bb8a5abc49aa3f737344e",
+          "snapshotSha256": "b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -51900,7 +51944,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c32bb8a5abc49aa3f737344e",
+          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf",
+          "contentSha256": "b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5",
+          "receiptBindingSha256": "1cfa2344d4f3fcb69ac2b486661492064934868aafb1fe7222887e5b1a475b8e",
+          "verifiedAt": "2026-07-17T01:48:34.478Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8eee5fae49a8021c18130883c1baf39f6632974c1638f521605fb7baf96221a4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8eee5fae49a8021c18130883c1baf39f6632974c1638f521605fb7baf96221a4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8eee5fae49a8021c18130883c1baf39f6632974c1638f521605fb7baf96221a4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/b5/e8/b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5.pdf"
+        }
       ]
     },
     {
@@ -52509,6 +52582,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2435be3cab48fa695da5851b",
+          "snapshotSha256": "5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -52518,7 +52598,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2435be3cab48fa695da5851b",
+          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf",
+          "contentSha256": "5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e",
+          "receiptBindingSha256": "e7dcc557a481d1390b806d4c08cfa0c129e80f9210523c5dfb19a25289120f60",
+          "verifiedAt": "2026-07-17T01:48:33.614Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "a47b87d9846da22af0152f77a54b6159c0a7ba3a00ef6739a8a7ba2fd0131f51"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "a47b87d9846da22af0152f77a54b6159c0a7ba3a00ef6739a8a7ba2fd0131f51"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "a47b87d9846da22af0152f77a54b6159c0a7ba3a00ef6739a8a7ba2fd0131f51"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/5a/8d/5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e.pdf"
+        }
       ]
     },
     {
@@ -53319,6 +53428,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_66e2fd1351b96298c38429d9",
+          "snapshotSha256": "4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -53328,7 +53444,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_66e2fd1351b96298c38429d9",
+          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf",
+          "contentSha256": "4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5",
+          "receiptBindingSha256": "2acab1f1d1a0762b92c768bd0f08046ad18f72ee688b8e4b6aeedea1068ddf67",
+          "verifiedAt": "2026-07-17T01:48:34.091Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d62444fe99626369ed65c8ed4bb1ea431b3c5c7ce3e3071285a4d5b9ff9769bf"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d62444fe99626369ed65c8ed4bb1ea431b3c5c7ce3e3071285a4d5b9ff9769bf"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d62444fe99626369ed65c8ed4bb1ea431b3c5c7ce3e3071285a4d5b9ff9769bf"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/4f/3b/4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5.pdf"
+        }
       ]
     },
     {
@@ -324359,16 +324504,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2861,
-      "MODEL_RECEIPT": 281,
+      "IDENTITY_ONLY": 2860,
+      "MODEL_RECEIPT": 282,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2861,
-      "AUTO_FILL": 292,
+      "MEASURE_REQUIRED": 2860,
+      "AUTO_FILL": 293,
       "QUARANTINED": 88
     }
   }

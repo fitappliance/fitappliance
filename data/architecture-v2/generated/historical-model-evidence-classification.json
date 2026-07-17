@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T01:24:54.730Z",
+  "generatedAt": "2026-07-17T01:50:19.375Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "c281fbf255317106e834b2e5ba58cee76da9eec6f9183bee716eb20c6b89ba5c",
+  "semanticClassificationSha256": "ec64d29946d7a8eccf9211da6340a7d01501d746eb066d9f273013da42f3b61b",
   "summary": {
     "records": 8093,
     "uniqueReferenceIds": 8093,
-    "documentLinks": 4347,
+    "documentLinks": 4351,
     "modelsWithDocumentLinks": 1768,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 368,
+      "COMPLETE_RECEIPT": 372,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1091
+      "REFERENCE_REDISCOVERY": 1087
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 368,
-      "REDISCOVER_OFFICIAL_SOURCE": 1091,
+      "NO_ACTION": 372,
+      "REDISCOVER_OFFICIAL_SOURCE": 1087,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 135
     },
     "bySourceAuthority": {
-      "MIXED": 212,
+      "MIXED": 216,
       "NONE": 6611,
       "OFFICIAL": 162,
-      "REFERENCE": 1108
+      "REFERENCE": 1104
     },
     "byIdentityScope": {
       "AMBIGUOUS": 172,
@@ -46,9 +46,9 @@
       "UNPROVEN": 6325
     },
     "byExtractionState": {
-      "ALL_AXIS_RANGE": 86,
-      "ALL_AXIS_SCALAR": 419,
-      "NOT_PARSED": 7494,
+      "ALL_AXIS_RANGE": 89,
+      "ALL_AXIS_SCALAR": 420,
+      "NOT_PARSED": 7490,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 368,
-      "LEGACY_UNBOUND": 1400,
+      "CURRENT_VALID": 372,
+      "LEGACY_UNBOUND": 1396,
       "NONE": 6325
     }
   },
@@ -68,13 +68,13 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 1093,
+      "documentLinks": 1097,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 154,
+        "COMPLETE_RECEIPT": 158,
         "CONFLICT_QUARANTINE": 22,
         "IDENTITY_RESEARCH": 18,
         "OFFICIAL_DISCOVERY": 1029,
-        "REFERENCE_REDISCOVERY": 196
+        "REFERENCE_REDISCOVERY": 192
       }
     },
     {
@@ -353,12 +353,6 @@
       "models": 46
     },
     {
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "models": 45
-    },
-    {
       "category": "dryer",
       "brand": "Fisher & Paykel",
       "operationalClass": "OFFICIAL_DISCOVERY",
@@ -417,6 +411,12 @@
       "brand": "SAMSUNG ELECTRONICS",
       "operationalClass": "OFFICIAL_DISCOVERY",
       "models": 42
+    },
+    {
+      "category": "dishwasher",
+      "brand": "Omega",
+      "operationalClass": "OFFICIAL_DISCOVERY",
+      "models": 41
     }
   ],
   "records": [
@@ -51024,14 +51024,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -51054,6 +51055,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/82/63/82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7.json",
+            "evidence/web/sha256/1d/65/1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd.pdf",
+            "receipt:cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd"
+        },
+        {
           "documentId": "source:doc_c225576ccce0dca5dd28d129",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/1/b/f/c/1bfc1757758eb02a234e1f6afbb2652e20ff7090_dwa315x_technicalspecifications.pdf",
           "evidenceObjectIds": [
@@ -51069,8 +51089,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Smeg"
@@ -52997,14 +53017,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -53027,6 +53048,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5",
+          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/af/27/af2789aff9d8181c2965b919e67c99cc33f3f57f16ad3366e5f98a1779a87f51.json",
+            "evidence/web/sha256/b5/e8/b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5.pdf",
+            "receipt:1cfa2344d4f3fcb69ac2b486661492064934868aafb1fe7222887e5b1a475b8e"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5"
+        },
+        {
           "documentId": "source:doc_c68c14567379b76d7a3f9fa6",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/f/7/4/8/f7480f1a8298f06a1d5fddae0b4e61284c2a5e52_Smeg_DWAFI6314_Fully_Integrated_DishDrawer_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -53042,8 +53082,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Smeg"
@@ -53661,14 +53701,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -53691,6 +53732,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e",
+          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/cd/00/cd00c4bf908e1a42ece8d482aacb03f18aeb6692e7fde6782712e8a7b70a27eb.json",
+            "evidence/web/sha256/5a/8d/5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e.pdf",
+            "receipt:e7dcc557a481d1390b806d4c08cfa0c129e80f9210523c5dfb19a25289120f60"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e"
+        },
+        {
           "documentId": "source:doc_d160a8ffc25a6052c26df11f",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/2/1/8/b/218b4bfe62e41bf911641517d8eb36c632bc75fd_Smeg_DWAI6314X_Semi_Integrated_Dishwasher_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -53706,8 +53766,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Smeg"
@@ -54556,14 +54616,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_RANGE",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -54586,6 +54647,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5",
+          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/01/b4/01b4ff4ad6e29a0c626febf60237627d49a1e71c3c5ee0c502652622efeffdc1.json",
+            "evidence/web/sha256/4f/3b/4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5.pdf",
+            "receipt:2acab1f1d1a0762b92c768bd0f08046ad18f72ee688b8e4b6aeedea1068ddf67"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_RANGE",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5"
+        },
+        {
           "documentId": "source:doc_a6e1ee07efc62db17d992b6c",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/f/f/e/4/ffe4db35f3e3174f7dd77fafcc0dfe253b217a8c_DWAU6315X_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -54601,8 +54681,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Smeg"

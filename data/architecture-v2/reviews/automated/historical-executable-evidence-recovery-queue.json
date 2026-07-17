@@ -1,10 +1,11 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-17T01:24:54.730Z",
-  "sourceAcquisitionQueueSha256": "4a07df3058d26bc07d259d0015b1ea8e3792ff6fce377b6ab14da07825009ed1",
+  "generatedAt": "2026-07-17T01:50:19.375Z",
+  "sourceAcquisitionQueueSha256": "5c5f9a8797521d169bcd53fff59c1405d6a21350fe3d28542104c081ecf9c3a2",
   "evidenceProcessorEpochs": {
     "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
-    "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b"
+    "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+    "smeg_au_techspec_pdf_dimensions_v1": "bbc860e3cde3776a8be9d760945b5440daf3980a69701a68f05ec767f5f78581"
   },
   "policy": {
     "resolverOnlyTargetsAllowed": true,
@@ -12,22 +13,22 @@
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7725,
+    "acquisitionRecords": 7721,
     "fetchJobs": 0,
-    "targets": 7607,
-    "resolverOnlyTargets": 7607,
+    "targets": 7603,
+    "resolverOnlyTargets": 7603,
     "candidateEdges": 0,
-    "uniqueReferences": 7607,
+    "uniqueReferences": 7603,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 35,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1033,
+      "CURRENT_RETAIL": 1029,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 838,
+      "P0_CURRENT_MISSING_DIMENSIONS": 834,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -2593,43 +2594,6 @@
       "repairExistingReceipt": false
     },
     {
-      "targetId": "recovery_target_746735988e3f8fd021bc6c80",
-      "referenceId": "fa_ref_a0dfbb2f7bdc92b2343a7fd4",
-      "legacyRuntimeId": "ao-34096",
-      "canonicalProductId": "fa_prod_3feffeae3187ac1de06c74ea",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWA315X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c225576ccce0dca5dd28d129",
-        "legacy:data/pdf-evidence-raw/DWA315X.json",
-        "source:doc_c225576ccce0dca5dd28d129"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c225576ccce0dca5dd28d129",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 596
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
       "targetId": "recovery_target_d3f0a735d1ba9b7ee9a9bf4b",
       "referenceId": "fa_ref_f658dcb64e7d5e441e509050",
       "legacyRuntimeId": "ao-46716",
@@ -3111,43 +3075,6 @@
       "repairExistingReceipt": false
     },
     {
-      "targetId": "recovery_target_c32bb8a5abc49aa3f737344e",
-      "referenceId": "fa_ref_03886474705b5e3f5f27fa1f",
-      "legacyRuntimeId": "ao-53126",
-      "canonicalProductId": "fa_prod_67d4d325ae7e1ea6d063eaa5",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWAFI6314",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c68c14567379b76d7a3f9fa6",
-        "legacy:data/pdf-evidence-raw/DWAFI6314.json",
-        "source:doc_c68c14567379b76d7a3f9fa6"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c68c14567379b76d7a3f9fa6",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 818,
-            "depth": 570
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
       "targetId": "recovery_target_0f522d61cd2f49a2103f0e48",
       "referenceId": "fa_ref_eeecb269825b9882a7e69072",
       "legacyRuntimeId": "ao-53503",
@@ -3333,43 +3260,6 @@
       "repairExistingReceipt": false
     },
     {
-      "targetId": "recovery_target_2435be3cab48fa695da5851b",
-      "referenceId": "fa_ref_5ca79b2e92da1735ba7070eb",
-      "legacyRuntimeId": "ao-52135",
-      "canonicalProductId": "fa_prod_6614ddbdffd273d13a188b1a",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWAI6314X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d160a8ffc25a6052c26df11f",
-        "legacy:data/pdf-evidence-raw/DWAI6314X.json",
-        "source:doc_d160a8ffc25a6052c26df11f"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d160a8ffc25a6052c26df11f",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 868,
-            "depth": 570
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
       "targetId": "recovery_target_817f56a76e4f17f693fa7a00",
       "referenceId": "fa_ref_7af26edae091e4284db0039e",
       "legacyRuntimeId": "ao-53127",
@@ -3544,43 +3434,6 @@
           "dimensionsMm": {
             "width": 598,
             "height": 820,
-            "depth": 570
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_66e2fd1351b96298c38429d9",
-      "referenceId": "fa_ref_7ccce11c9ddd72318673571e",
-      "legacyRuntimeId": "ao-53507",
-      "canonicalProductId": "fa_prod_4bb92cfd2eee6bdbe2477773",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWAU6315X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a6e1ee07efc62db17d992b6c",
-        "legacy:data/pdf-evidence-raw/DWAU6315X.json",
-        "source:doc_a6e1ee07efc62db17d992b6c"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a6e1ee07efc62db17d992b6c",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 818,
             "depth": 570
           }
         }

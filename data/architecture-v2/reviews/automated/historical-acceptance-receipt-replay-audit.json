@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T01:24:05.671Z",
-  "sourceBundleSha256": "fa1171882ecad9a2ca0f75d936310c008d2442befd66d10df96aa961ff4e07b5",
+  "generatedAt": "2026-07-17T01:49:07.978Z",
+  "sourceBundleSha256": "825ee04ca9b724ddff58401fcc13e913fe6fff25ed059ebfbba253a77c9cd41c",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -532,6 +532,20 @@
       "contentSha256": "f88f13657d3f3869cd0c9d70025f9010ad3aaa786692c644c95cdc41d5a366dc",
       "receiptBindingSha256": "5e95407195a6ee80aaaccb1a1688bf83d84da1a7576b71626e7648ab3444d372",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_2435be3cab48fa695da5851b",
+      "referenceId": "fa_ref_5ca79b2e92da1735ba7070eb",
+      "brand": "Smeg",
+      "model": "DWAI6314X",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf",
+      "sourcePdfSha256": "5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e",
+      "contentSha256": "5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e",
+      "receiptBindingSha256": "e7dcc557a481d1390b806d4c08cfa0c129e80f9210523c5dfb19a25289120f60",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/cd/00/cd00c4bf908e1a42ece8d482aacb03f18aeb6692e7fde6782712e8a7b70a27eb.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2104,6 +2118,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_66e2fd1351b96298c38429d9",
+      "referenceId": "fa_ref_7ccce11c9ddd72318673571e",
+      "brand": "Smeg",
+      "model": "DWAU6315X",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf",
+      "sourcePdfSha256": "4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5",
+      "contentSha256": "4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5",
+      "receiptBindingSha256": "2acab1f1d1a0762b92c768bd0f08046ad18f72ee688b8e4b6aeedea1068ddf67",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/01/b4/01b4ff4ad6e29a0c626febf60237627d49a1e71c3c5ee0c502652622efeffdc1.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_670a635e3f9e46ee7eaed608",
       "referenceId": "fa_ref_4137710ed346deda073c0b87",
       "brand": "LG",
@@ -2380,6 +2408,20 @@
       "contentSha256": "a7c4976344a15d0b1c11356714fbfab62fc8d359fbf319a15963acba6fd08056",
       "receiptBindingSha256": "4f77cdc1e4e20fe4504fdbd42e53d6dc35f560ea83bb94dd22155ecc3d5369fd",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/46/36/4636f26cee29fac193b7526e960a79946649330bd93af3c0e0d255dda2a1313d.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_746735988e3f8fd021bc6c80",
+      "referenceId": "fa_ref_a0dfbb2f7bdc92b2343a7fd4",
+      "brand": "Smeg",
+      "model": "DWA315X",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+      "sourcePdfSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+      "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
+      "receiptBindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/82/63/82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3938,6 +3980,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c32bb8a5abc49aa3f737344e",
+      "referenceId": "fa_ref_03886474705b5e3f5f27fa1f",
+      "brand": "Smeg",
+      "model": "DWAFI6314",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf",
+      "sourcePdfSha256": "b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5",
+      "contentSha256": "b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5",
+      "receiptBindingSha256": "1cfa2344d4f3fcb69ac2b486661492064934868aafb1fe7222887e5b1a475b8e",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/af/27/af2789aff9d8181c2965b919e67c99cc33f3f57f16ad3366e5f98a1779a87f51.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
       "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
       "brand": "Beko",
@@ -5241,11 +5297,11 @@
     }
   ],
   "summary": {
-    "entries": 349,
-    "sources": 374,
-    "passed": 374,
+    "entries": 353,
+    "sources": 378,
+    "passed": 378,
     "failed": 0
   },
-  "checkedObjects": 725,
-  "semanticAuditSha256": "d87a8dbddbee1f8b8e7f4d11366d8c77baeff26a88fb2580b874292a91982e7a"
+  "checkedObjects": 733,
+  "semanticAuditSha256": "b48b3dfe77dc1eb14ae67e474a509a36fd9eaa8356d12f552dac4540d4a9ee74"
 }

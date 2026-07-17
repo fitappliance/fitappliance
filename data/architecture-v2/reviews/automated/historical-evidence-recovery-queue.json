@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1367,
-    "fetchJobs": 1330,
-    "targets": 1364,
-    "candidateEdges": 1367,
+    "documents": 1366,
+    "fetchJobs": 1329,
+    "targets": 1363,
+    "candidateEdges": 1366,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1364,
+    "uniqueReferences": 1363,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 933,
+      "MEASURE_REQUIRED": 932,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1117
+      "CURRENT_RETAIL": 1116
     },
     "byCategory": {
-      "dishwasher": 281,
+      "dishwasher": 280,
       "dryer": 51,
       "fridge": 816,
       "washing_machine": 216
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1070,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1069,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 238,
+      "ALREADY_AUTO_FILL": 239,
       "HISTORICAL_REFERENCE_NOT_FOUND": 146,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -3031,32 +3031,6 @@
       ],
       "targetIds": [
         "recovery_target_cb31f8071db3044e56e70b94"
-      ]
-    },
-    {
-      "jobId": "recovery_c26ea30d2d2b605f2ccdcccb",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/b/f/c/1bfc1757758eb02a234e1f6afbb2652e20ff7090_dwa315x_technicalspecifications.pdf",
-      "authorityBrand": "Smeg",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_746735988e3f8fd021bc6c80"
       ]
     },
     {
@@ -64632,47 +64606,6 @@
         "recovery_aa8e0f3a9feabcfd66b50ac7"
       ],
       "primaryJobId": "recovery_aa8e0f3a9feabcfd66b50ac7"
-    },
-    {
-      "referenceId": "fa_ref_a0dfbb2f7bdc92b2343a7fd4",
-      "legacyRuntimeId": "ao-34096",
-      "canonicalProductId": "fa_prod_3feffeae3187ac1de06c74ea",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWA315X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 850,
-        "depth": 596
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_746735988e3f8fd021bc6c80",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c225576ccce0dca5dd28d129"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c225576ccce0dca5dd28d129",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 596
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_c26ea30d2d2b605f2ccdcccb"
-      ],
-      "primaryJobId": "recovery_c26ea30d2d2b605f2ccdcccb"
     },
     {
       "referenceId": "fa_ref_f658dcb64e7d5e441e509050",

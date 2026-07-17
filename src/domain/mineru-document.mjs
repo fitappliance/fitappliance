@@ -13,6 +13,10 @@ import {
   upgradeLegacyDimensionClaim,
   validateDimensionEvidenceClaimsV2,
 } from './dimension-evidence-claim.mjs';
+import {
+  extractSmegAuDishwasherSizeRows,
+  SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
+} from './smeg-pdf-dimensions.mjs';
 
 const MAX_JSON_BYTES = 128 * 1024 * 1024;
 const MAX_PAGES = 2000;
@@ -3087,6 +3091,17 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'Exactly one table contains one exact target Model row and one Size row whose three values each carry the same explicit unit plus a unique W, D or H axis label.',
     semanticBoundary: 'Only the three Size values are projected in their written W/D/H order; unitless tuples, packaged or installation sizes, conflicting label orders and tables with multiple matching model or size rows are excluded.',
   }),
+  [SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR]: Object.freeze({
+    parserProfileId: SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
+    grammarFamilyId: 'smeg_au_dishwasher_techspec_dimensions_v1',
+    grammarFamilyName: 'Smeg Australia dishwasher technical specification',
+    variantName: 'Size values with W/D/H suffixes and an adjustable height range',
+    brand: 'Smeg',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model Smeg Australia Techspec PDF contains one anchored Size expression whose positive integer values carry unique mmW, mmD and mmH suffixes in W/D/H order. Only the final height value may be an increasing range, with an optional max suffix.',
+    semanticBoundary: 'Closed width and depth remain fixed while the complete adjustable height range is preserved. Packaging, installation, cavity, non-height ranges, duplicate axes, reversed ranges, fixed-height lookalikes and trailing qualification text are excluded.',
+  }),
   [BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR]: Object.freeze({
     parserProfileId: BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR,
     grammarFamilyId: 'bosch_au_dishwasher_product_dimensions_v1',
@@ -4265,7 +4280,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
               ? askoProductSheetRowsByFragment.get(fragment)
             : documentDimensionSectionRowsByFragment.has(fragment)
               ? documentDimensionSectionRowsByFragment.get(fragment)
-          : paragraphRows(fragment.text);
+          : canonicalModel(caseIdentity?.brand) === 'SMEG' && category === 'dishwasher'
+            ? (extractSmegAuDishwasherSizeRows(fragment.text) ?? paragraphRows(fragment.text))
+            : paragraphRows(fragment.text);
       }
       if (canonicalModel(caseIdentity?.brand) === 'BOSCH' && category === 'dishwasher') {
         for (const profileId of [
@@ -4284,6 +4301,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           ...clearanceClaims(row, fragment, pageIndex + 1, fields),
           ...directClaims(row, fragment, pageIndex + 1, fields, category, claimSemanticsVersion),
         ];
+        if (claims.length > 0 && row.grammarProfileId) {
+          appliedGrammarProfiles.add(row.grammarProfileId);
+        }
         for (const claim of claims) candidates.get(claim.field)?.push(claim);
       }
     }

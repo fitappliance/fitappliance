@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from './beko-product-page-dimensions.mjs';
 import { BEKO_AU_PRODUCT_IDENTITY_CAPABILITY } from './beko-product-page-identity.mjs';
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
+import { SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY } from './smeg-pdf-dimensions.mjs';
 
 export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
   [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: Object.freeze([
@@ -10,6 +11,9 @@ export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
   ]),
   [BEKO_AU_PRODUCT_IDENTITY_CAPABILITY]: Object.freeze([
     'src/domain/beko-product-page-identity.mjs',
+  ]),
+  [SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY]: Object.freeze([
+    'src/domain/smeg-pdf-dimensions.mjs',
   ]),
 });
 
@@ -24,14 +28,22 @@ function normalizedBrand(value) {
 }
 
 export function historicalAttemptProcessorCapability({ brand, sourceUrl, failureCode }) {
-  if (!['claim_semantics', 'identity'].includes(failureCode) || normalizedBrand(brand) !== 'beko') return null;
   let url;
   try { url = new URL(sourceUrl); } catch { return null; }
-  if ((url.hostname !== 'beko.com' && !url.hostname.endsWith('.beko.com'))
-    || !url.pathname.startsWith('/au-en/home-appliances/')) return null;
-  return failureCode === 'identity'
-    ? BEKO_AU_PRODUCT_IDENTITY_CAPABILITY
-    : BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY;
+  const normalized = normalizedBrand(brand);
+  if (normalized === 'beko' && ['claim_semantics', 'identity'].includes(failureCode)
+    && (url.hostname === 'beko.com' || url.hostname.endsWith('.beko.com'))
+    && url.pathname.startsWith('/au-en/home-appliances/')) {
+    return failureCode === 'identity'
+      ? BEKO_AU_PRODUCT_IDENTITY_CAPABILITY
+      : BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY;
+  }
+  if (normalized === 'smeg' && failureCode === 'mineru'
+    && url.hostname === 'sys.smeg.com.au'
+    && /^\/Product\/Techspecs\/[^/]+\.pdf$/i.test(url.pathname)) {
+    return SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY;
+  }
+  return null;
 }
 
 export function buildEvidenceProcessorEpochs(files) {
