@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-17T03:05:50.351Z
+Generated: 2026-07-17T03:18:55.893Z
 
 Coverage: **8,093 / 8,093** unique historical models.
 Models with document links: **1,768**; without links: **6,325**.
@@ -11,7 +11,7 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 1106 |
+| dishwasher | 1419 | 94 | 1115 |
 | dryer | 841 | 72 | 269 |
 | fridge | 4336 | 121 | 2309 |
 | washing_machine | 1497 | 88 | 676 |
@@ -20,11 +20,11 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 381 |
+| COMPLETE_RECEIPT | 390 |
 | CONFLICT_QUARANTINE | 83 |
 | IDENTITY_RESEARCH | 135 |
 | OFFICIAL_DISCOVERY | 6416 |
-| REFERENCE_REDISCOVERY | 1078 |
+| REFERENCE_REDISCOVERY | 1069 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -52,6 +52,7 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Beko | parser_family | Beko AU dishwasher product specification | 6 |
 | dishwasher | Bosch | document_family | Document family 29a33ef7af64 | 6 |
 | dishwasher | Bosch | document_family | Document family 8e8d196ff904 | 6 |
+| dishwasher | Electrolux | parser_family | PDF grammar pdf_grammar_18d3fb848d41715e | 6 |
 | dishwasher | Fisher & Paykel | document_family | Document family 40d415ddb0ed | 6 |
 | fridge | Bosch | marketing_series | Series 6 | 6 |
 | fridge | Sub-Zero | parser_family | PDF grammar pdf_grammar_b6dfa4c93dc0b9e7 | 6 |
@@ -69,7 +70,6 @@ This is a research and repair classification. It does not grant publication auth
 | dryer | Bosch | marketing_series | Series 8 | 4 |
 | fridge | Bosch | marketing_series | Series 4 | 4 |
 | fridge | Electrolux | parser_family | PDF grammar pdf_grammar_fd6fd1396552b04a | 4 |
-| fridge | Haier | parser_family | Haier Australia HBM refrigerator technical data | 4 |
 
 ## Highest-Impact Gaps
 

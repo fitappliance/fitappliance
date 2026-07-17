@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1358,
-    "fetchJobs": 1321,
-    "targets": 1355,
-    "candidateEdges": 1358,
+    "documents": 1349,
+    "fetchJobs": 1312,
+    "targets": 1346,
+    "candidateEdges": 1349,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1355,
+    "uniqueReferences": 1346,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 924,
+      "MEASURE_REQUIRED": 915,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1108
+      "CURRENT_RETAIL": 1099
     },
     "byCategory": {
-      "dishwasher": 272,
+      "dishwasher": 263,
       "dryer": 51,
       "fridge": 816,
       "washing_machine": 216
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1061,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1052,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 247,
+      "ALREADY_AUTO_FILL": 256,
       "HISTORICAL_REFERENCE_NOT_FOUND": 146,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -2121,32 +2121,6 @@
       ],
       "targetIds": [
         "recovery_target_3c2e2479fb918338a6dc76e8"
-      ]
-    },
-    {
-      "jobId": "recovery_1fa45545910bd8024f83bbee",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/3/2/9/13294630a26858b5b81c5664ce96bd8a00ffdb79_esf6700row_usermanual.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_1474ddeab220d7945bca6a7e"
       ]
     },
     {
@@ -4620,32 +4594,6 @@
       ]
     },
     {
-      "jobId": "recovery_33e1ffa1449e421c548f8a87",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/f/c/f/2fcf887ea07bc601106c8df391108d07288876c1_ESL69200RO_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_1ce55d62d4938da2f03880d7"
-      ]
-    },
-    {
       "jobId": "recovery_9ef38b25df903edd013ce5d9",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/2/f/d/4/2fd4b433f59c3e2e5228f864caf37d1eef1fb984_WTB5404SBR_Specifications_Sheet.pdf",
       "authorityBrand": "Westinghouse",
@@ -6177,32 +6125,6 @@
       ],
       "targetIds": [
         "recovery_target_fcce90975f2dcae7fa796088"
-      ]
-    },
-    {
-      "jobId": "recovery_b0b7cdc16d9318877c851ff9",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/2/d/6/42d631f69bbcc659a2aa172b8cb30abbe8f201c6_esl6610ro_usermanual.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_da978a2ae3d441988e7e7e63"
       ]
     },
     {
@@ -9690,32 +9612,6 @@
       ]
     },
     {
-      "jobId": "recovery_b763f93ccf02a7fdddbedd92",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/5/d/e/65de20616a614e8e6656ee26ab866f454047a89d_ESF8735RKX_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_5061bd3e463a2fd0df1869c7"
-      ]
-    },
-    {
       "jobId": "recovery_f4c83c0e85db87e48b5985ef",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/6/6/1/e/661e0353b8005684b35db6fb859ec45179ee79dc_Westinghouse_WBE4500WAL_450L_Bottom_Mount_Fridge_Datasheet.pdf",
       "authorityBrand": "Westinghouse",
@@ -9947,32 +9843,6 @@
       ],
       "targetIds": [
         "recovery_target_0b87d866973ded846f2cd29f"
-      ]
-    },
-    {
-      "jobId": "recovery_6c77c0ea21db6a859794069b",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/7/f/4/67f43b5b71e519d86bd40001e99cf0446dda5739_Electrolux_ESF8725ROX_Dishwasher_User_Manual.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_3a08318b0c895cef7dab3a85"
       ]
     },
     {
@@ -11978,32 +11848,6 @@
       ]
     },
     {
-      "jobId": "recovery_b4929576c3b616cd9a698c00",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/e/2/7/7e271ecb05cac6f861c5fa77652a29676cfb1d87_esf6800rox_usermanual.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_9d8eb5370a8f4566a7dcc509"
-      ]
-    },
-    {
       "jobId": "recovery_dfe674dc43138b74f1f7c8ac",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/7/e/b/1/7eb1bba559e0bf33db4b236251bd2b1a31a51f69_HWF70BW1_Haier_Datasheet.pdf",
       "authorityBrand": "Haier",
@@ -12235,32 +12079,6 @@
       ],
       "targetIds": [
         "recovery_target_deadb00561ef444134d7032a"
-      ]
-    },
-    {
-      "jobId": "recovery_24a31925c5d2726f0a8643f8",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/1/8/d/818d4fc49342f5df7a157f1e9953ed894290ba9b_ESF8735ROX_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_a0a5d5195d4e598fe41a5fa5"
       ]
     },
     {
@@ -13041,32 +12859,6 @@
       ],
       "targetIds": [
         "recovery_target_76b7110e413e982762c26dba"
-      ]
-    },
-    {
-      "jobId": "recovery_7ac39ead263418d355c5c614",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/7/e/6/87e64bffb8bda4521e1cd2f10db4d5cf2dbd8cf5_Electrolux_ESL8530RO_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_30028c18134fcd65daffecc8"
       ]
     },
     {
@@ -22739,32 +22531,6 @@
       ],
       "targetIds": [
         "recovery_target_1ea74deace96a723bec96ccd"
-      ]
-    },
-    {
-      "jobId": "recovery_93e5fa851057d63f0cc451be",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/f/9/4/5/f9453221631e99165ffadef1e2236fd35ceab38f_Electrolux_ESL7510RO_Fully_Integrated_Dishwasher_User_Manual.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_fa72ef813f1bfaf73ab35c50"
       ]
     },
     {
@@ -41069,375 +40835,6 @@
         "recovery_bc333b29674e1ae84aadc81d"
       ],
       "primaryJobId": "recovery_bc333b29674e1ae84aadc81d"
-    },
-    {
-      "referenceId": "fa_ref_c4840a2878e5b72696d65e27",
-      "legacyRuntimeId": "ao-33312",
-      "canonicalProductId": "fa_prod_038dc9b0e74e69bf049f6cbd",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF6700ROW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 850,
-        "depth": 610
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_1474ddeab220d7945bca6a7e",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_16bd1b24989d1739b5fce9b3"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_16bd1b24989d1739b5fce9b3",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 850,
-            "depth": 610
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_1fa45545910bd8024f83bbee"
-      ],
-      "primaryJobId": "recovery_1fa45545910bd8024f83bbee"
-    },
-    {
-      "referenceId": "fa_ref_e452f5d6a2e0751e65c38a23",
-      "legacyRuntimeId": "ao-33314",
-      "canonicalProductId": "fa_prod_8cfca01f73b38f40ab22df97",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF6800ROX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 850,
-        "depth": 610
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_9d8eb5370a8f4566a7dcc509",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_62f61b367ae95102b0e86516"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_62f61b367ae95102b0e86516",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 850,
-            "depth": 610
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b4929576c3b616cd9a698c00"
-      ],
-      "primaryJobId": "recovery_b4929576c3b616cd9a698c00"
-    },
-    {
-      "referenceId": "fa_ref_735731fb39e820b5b1bb3e66",
-      "legacyRuntimeId": "ao-52802",
-      "canonicalProductId": "fa_prod_398226b5e4402293d1bbc0f0",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF8725ROX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 850,
-        "depth": 610
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_3a08318b0c895cef7dab3a85",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_8fd33779aa8aef466b013421"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_8fd33779aa8aef466b013421",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 850,
-            "depth": 610
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_6c77c0ea21db6a859794069b"
-      ],
-      "primaryJobId": "recovery_6c77c0ea21db6a859794069b"
-    },
-    {
-      "referenceId": "fa_ref_62f717bafb3662cc8d57802d",
-      "legacyRuntimeId": "ao-72422",
-      "canonicalProductId": "fa_prod_b1a5323e3437a0376d120fc0",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF8735RKX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 818,
-        "depth": 570
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_5061bd3e463a2fd0df1869c7",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_60fbb4444de02b41286470ff"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_60fbb4444de02b41286470ff",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 570
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b763f93ccf02a7fdddbedd92"
-      ],
-      "primaryJobId": "recovery_b763f93ccf02a7fdddbedd92"
-    },
-    {
-      "referenceId": "fa_ref_6e89cf79b3ce24ad7748d30f",
-      "legacyRuntimeId": "ao-62517",
-      "canonicalProductId": "fa_prod_6b73f30786d38f296be24454",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF8735ROX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 818,
-        "depth": 570
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_a0a5d5195d4e598fe41a5fa5",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_4bb0dec323e8b4a7012a3100"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_4bb0dec323e8b4a7012a3100",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 570
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_24a31925c5d2726f0a8643f8"
-      ],
-      "primaryJobId": "recovery_24a31925c5d2726f0a8643f8"
-    },
-    {
-      "referenceId": "fa_ref_13cf77bb02c8994b168062e0",
-      "legacyRuntimeId": "ao-33315",
-      "canonicalProductId": "fa_prod_ac1ccc98567ce664ae10ee71",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL6610RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 818,
-        "depth": 550
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_da978a2ae3d441988e7e7e63",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_76676fe3137550dd8038251d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_76676fe3137550dd8038251d",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 550
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b0b7cdc16d9318877c851ff9"
-      ],
-      "primaryJobId": "recovery_b0b7cdc16d9318877c851ff9"
-    },
-    {
-      "referenceId": "fa_ref_40fb98197033b89a407b6b34",
-      "legacyRuntimeId": "ao-88458",
-      "canonicalProductId": "fa_prod_535e7e5c0f19b813eeeb32cf",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL69200RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 818,
-        "depth": 570
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_1ce55d62d4938da2f03880d7",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_da9d0586d7afaf48c22bcdc1"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_da9d0586d7afaf48c22bcdc1",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 570
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_33e1ffa1449e421c548f8a87"
-      ],
-      "primaryJobId": "recovery_33e1ffa1449e421c548f8a87"
-    },
-    {
-      "referenceId": "fa_ref_00b11171902c9ebd7b6603d7",
-      "legacyRuntimeId": "ao-52803",
-      "canonicalProductId": "fa_prod_9bc844a4eb347f777d1b4b74",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL7510RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 818,
-        "depth": 550
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_fa72ef813f1bfaf73ab35c50",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_fcde64a303100ada5163773d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_fcde64a303100ada5163773d",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 550
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_93e5fa851057d63f0cc451be"
-      ],
-      "primaryJobId": "recovery_93e5fa851057d63f0cc451be"
-    },
-    {
-      "referenceId": "fa_ref_3d296060041ec7d9f34f71b8",
-      "legacyRuntimeId": "ao-62518",
-      "canonicalProductId": "fa_prod_65115843ef4b1bf69bdc8b04",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL8530RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 596,
-        "height": 818,
-        "depth": 550
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_30028c18134fcd65daffecc8",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_08941be0c0093cb441e4d2a0"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_08941be0c0093cb441e4d2a0",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 550
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_7ac39ead263418d355c5c614"
-      ],
-      "primaryJobId": "recovery_7ac39ead263418d355c5c614"
     },
     {
       "referenceId": "fa_ref_6b86779551acd0625a34bd1f",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:04:37.609Z",
-  "sourceBundleSha256": "5112fcdebf31023486d33346e447478d2fc1dc1b31e54af134a5468da3eebc72",
+  "generatedAt": "2026-07-17T03:18:06.343Z",
+  "sourceBundleSha256": "1692bc02bd44de59d0837081335f29336dcc66450f62cdb9f5de4d31b7e066b5",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -368,6 +368,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_1474ddeab220d7945bca6a7e",
+      "referenceId": "fa_ref_c4840a2878e5b72696d65e27",
+      "brand": "Electrolux",
+      "model": "ESF6700ROW",
+      "category": "dishwasher",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux",
+      "sourcePdfSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+      "contentSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+      "receiptBindingSha256": "3432788b7a307e79bbeddd960238c929d0bedd9a500036f9b9454add9a618b91",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/32/15/3215ba8bb931f3b89f397b5eade8a6fbaf840493fba86cfd43619f6488edc9d2.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_16dbb87245a533dacb255f65",
       "referenceId": "fa_ref_258b0f8b71f2daf986855d5e",
       "brand": "ASKO",
@@ -490,6 +504,20 @@
       "contentSha256": "ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6",
       "receiptBindingSha256": "b0bc5252049e2ae03c81db2fbdd0fb608a5aa87b0d80d8e28176f2e5ea052588",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/48/62/486271c6f950b00dcbab782a9b3817d0d742ab2355692b2dad0d75e4a8f05e5c.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_1ce55d62d4938da2f03880d7",
+      "referenceId": "fa_ref_40fb98197033b89a407b6b34",
+      "brand": "Electrolux",
+      "model": "ESL69200RO",
+      "category": "dishwasher",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux",
+      "sourcePdfSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+      "contentSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+      "receiptBindingSha256": "8fa9f2172309a8659a1603afa4d12db7519b69dcef9237c683333cd41fd50061",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/72/e7/72e795cf582f78ab4b7866900fdbc9917a5f52e92fa72c8aef597cc1dfee10ac.json",
       "status": "passed",
       "failureCode": null
     },
@@ -914,6 +942,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_30028c18134fcd65daffecc8",
+      "referenceId": "fa_ref_3d296060041ec7d9f34f71b8",
+      "brand": "Electrolux",
+      "model": "ESL8530RO",
+      "category": "dishwasher",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux",
+      "sourcePdfSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+      "contentSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+      "receiptBindingSha256": "3fcc3fec415d7d91fcb605c339a5bfabc01c850938ea9a850b5ef5635be5915f",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/31/66/31660a6c1828fe59828eee5c0d13532c0b9523e05435784e7ad7b61ee5a2f7b5.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_308bac8cfe8d6b46c5102b6b",
       "referenceId": "fa_ref_2210a276b84ee0439b0ff1f2",
       "brand": "LG",
@@ -1064,6 +1106,20 @@
       "contentSha256": "6b00b7a620ff17afdc6ce28a1bb403c01331f12ece7dcb6def56b6beb0e45d83",
       "receiptBindingSha256": "02248e02c332e872684fcfae98f20d4f79081d17e77b58a4d35e55342027468d",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_3a08318b0c895cef7dab3a85",
+      "referenceId": "fa_ref_735731fb39e820b5b1bb3e66",
+      "brand": "Electrolux",
+      "model": "ESF8725ROX",
+      "category": "dishwasher",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux",
+      "sourcePdfSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+      "contentSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+      "receiptBindingSha256": "84ef5e0c4a5a53adc0f11124c0a07225ff7549b333bc3d94678d8f20db613656",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/db/d2/dbd26f5da095c3d514c4cfb4c3fc241782cc44e4b3acc712b0714cc09dc33e7f.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1596,6 +1652,20 @@
       "contentSha256": "7fe483659b04dbb1f77a958bb33a3f4cbc29ad7b8b54e0deb19c688a3cae1678",
       "receiptBindingSha256": "fe8222e7c811e92c45af52a29917bbb0e320100b6a819644e881cd7614697343",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/e7/e5/e7e514c67bc52c4ec459a13b2b748df12f1c86224edbfc326b6a7e37c05ff8bb.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_5061bd3e463a2fd0df1869c7",
+      "referenceId": "fa_ref_62f717bafb3662cc8d57802d",
+      "brand": "Electrolux",
+      "model": "ESF8735RKX",
+      "category": "dishwasher",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux",
+      "sourcePdfSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+      "contentSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+      "receiptBindingSha256": "920671135d3b96fe9ab25f9a01abd58ee28f631dd3b61448b6dc7b82c1ef7ed6",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/65/f4/65f428956e8ff976b4af9b4083950868280bb959e7484ba6ab7c62a291145940.json",
       "status": "passed",
       "failureCode": null
     },
@@ -3252,6 +3322,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_9d8eb5370a8f4566a7dcc509",
+      "referenceId": "fa_ref_e452f5d6a2e0751e65c38a23",
+      "brand": "Electrolux",
+      "model": "ESF6800ROX",
+      "category": "dishwasher",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux",
+      "sourcePdfSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+      "contentSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+      "receiptBindingSha256": "49504b88c1e5369dfd38f724fafd113c7b904a15fba721f4ea2bc9fb3fcbccb0",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/5f/6e/5f6e2fa1a7ddac8c1c9c66b66673a3b8315d835bac4ca2ad06231d7872719f16.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_9d9a6795f6cf84ae562766bf",
       "referenceId": "fa_ref_f146f4be05637a92ab43278f",
       "brand": "Bosch",
@@ -3304,6 +3388,20 @@
       "contentSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
       "receiptBindingSha256": "ecb69c3a275b9824fb6b0937652fb92d59bb69ac02c2ea46d7156de3ff133a07",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/6c/56/6c569d67712b4ac08dd80bf19662494996c787a4d4d9f706c4ecd6c829639fe4.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_a0a5d5195d4e598fe41a5fa5",
+      "referenceId": "fa_ref_6e89cf79b3ce24ad7748d30f",
+      "brand": "Electrolux",
+      "model": "ESF8735ROX",
+      "category": "dishwasher",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux",
+      "sourcePdfSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+      "contentSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+      "receiptBindingSha256": "e533d452aa2441f52bdc04f7f9adee39c57c0ea1c378e483557876bbdd91c892",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/95/f8/95f833eed07a7e019ad42d846966e17a97eab36e74c756dffb955fd3c2613ea3.json",
       "status": "passed",
       "failureCode": null
     },
@@ -4624,6 +4722,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_da978a2ae3d441988e7e7e63",
+      "referenceId": "fa_ref_13cf77bb02c8994b168062e0",
+      "brand": "Electrolux",
+      "model": "ESL6610RO",
+      "category": "dishwasher",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux",
+      "sourcePdfSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+      "contentSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+      "receiptBindingSha256": "bdd1442a87cf297d057f37486cc77c1acc12762c0170efb1893399ea2eabde47",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/3b/16/3b1624528f29a9cf0d56945e78b9a45d60736d5b0da341c23ece37df46e0b6f2.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_dae6775aa8a110232e8bb2be",
       "referenceId": "fa_ref_15bd9138423891ee4d5596f9",
       "brand": "ASKO",
@@ -5310,6 +5422,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_fa72ef813f1bfaf73ab35c50",
+      "referenceId": "fa_ref_00b11171902c9ebd7b6603d7",
+      "brand": "Electrolux",
+      "model": "ESL7510RO",
+      "category": "dishwasher",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux",
+      "sourcePdfSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+      "contentSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+      "receiptBindingSha256": "4d4e3b3cdc476465894c863439c2ed39d8c878e8eb6f807f7957399eea904267",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/c5/ba/c5baea47e7ee536270a5a8f3d04c455151f1f6e2f8104c592520438cb0982a81.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_fa91a8c4bb8f5e3280f2b837",
       "referenceId": "fa_ref_58d6644d988c7bd0e844c80d",
       "brand": "Bosch",
@@ -5423,11 +5549,11 @@
     }
   ],
   "summary": {
-    "entries": 362,
-    "sources": 387,
-    "passed": 387,
+    "entries": 371,
+    "sources": 396,
+    "passed": 396,
     "failed": 0
   },
-  "checkedObjects": 751,
-  "semanticAuditSha256": "c336f60fde29d6cdb3aeda9ea91e17ab502ae86027e55186c8b47d6e0e941f37"
+  "checkedObjects": 775,
+  "semanticAuditSha256": "50da3b85aeb33429c2dc96f1223211d5ba57e13f701841e1af2db9c3d5b6dc5a"
 }

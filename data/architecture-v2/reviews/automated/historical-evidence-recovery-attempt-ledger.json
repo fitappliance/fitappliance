@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-17T03:04:37.609Z",
+  "generatedAt": "2026-07-17T03:18:06.343Z",
   "processorEpochMigration": {
     "migratedAt": "2026-07-17T01:44:09.981Z",
     "migratedEntries": 3,
@@ -12119,6 +12119,23 @@
       "acceptedAt": "2026-07-16T18:30:54.361Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_0e7e6479426c50e26eea28f7",
+      "targetId": "recovery_target_5061bd3e463a2fd0df1869c7",
+      "referenceId": "fa_ref_62f717bafb3662cc8d57802d",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux",
+      "contentSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "321f2d77d2c707e867beabe574514a51f11829183abf15ea9a2beaeae088aff7",
+      "semanticOutcomeSha256": "ce7cf56e5d4dd67e541c7d5ce3dc593b6947672bb621304bd2b1b6e13db0f8e8",
+      "batchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "batchSha256": "cf49a55953f60be7b396d5d723caf0a6a5df44a1f21c396c9b0610038742bc2c",
+      "runId": "historical-electrolux-dishwashers-20260717-ak1",
+      "resultsSha256": "d579910798c713822594b9fb03d81a7bd085cf70e6d717bd11eae7917734fbde",
+      "auditSha256": "ac1b56f99cdabfd2539d5084157d5d774a705ec143c60123c81946b5dd528f2f",
+      "acceptedAt": "2026-07-17T03:17:10.605Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_0fd16527e70a79b88e633b8b",
       "targetId": "recovery_target_8dbd133f5eab994514fc24bb",
       "referenceId": "fa_ref_203c0d309beb73538180251f",
@@ -12270,6 +12287,23 @@
       "resultsSha256": "3519f123cc63332f1ce2e6b723c4aca80b332cef4a78272d7ebcd77df4c04428",
       "auditSha256": "539ea4478cbaf23721a36c0b7f4afd42262cbe766d98efbbfc95a5771c4721fc",
       "acceptedAt": "2026-07-16T18:55:07.193Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_189d3f052f5ee67248b46f76",
+      "targetId": "recovery_target_30028c18134fcd65daffecc8",
+      "referenceId": "fa_ref_3d296060041ec7d9f34f71b8",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux",
+      "contentSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "1739f3b4eb756c6d0d91a04e551653cf1afea0cfa9c1de3bca9957e98f64839c",
+      "semanticOutcomeSha256": "1a67e204764b73dfd025e33fb80e5fff2b9f9b2eb8a3159434d73ac469b7211b",
+      "batchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "batchSha256": "cf49a55953f60be7b396d5d723caf0a6a5df44a1f21c396c9b0610038742bc2c",
+      "runId": "historical-electrolux-dishwashers-20260717-ak1",
+      "resultsSha256": "d579910798c713822594b9fb03d81a7bd085cf70e6d717bd11eae7917734fbde",
+      "auditSha256": "ac1b56f99cdabfd2539d5084157d5d774a705ec143c60123c81946b5dd528f2f",
+      "acceptedAt": "2026-07-17T03:17:10.605Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_1afc45f62b5ef6acff38bb35",
@@ -12474,6 +12508,23 @@
       "resultsSha256": "8aa7453659f108d0b4fe09920f0a9f0d170ab2c639cb987ca44b029cf1744dac",
       "auditSha256": "b0c5547b81102ab1cebbe4e365dcead790ece28d4ba672608b634b575be0c212",
       "acceptedAt": "2026-07-16T04:18:18.504Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_25222f63f4295faf8264d4ed",
+      "targetId": "recovery_target_1474ddeab220d7945bca6a7e",
+      "referenceId": "fa_ref_c4840a2878e5b72696d65e27",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux",
+      "contentSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "452280083120a0c465b6b51f5c169e7eb86c74d09eb7368c6d7c24c0ea1c91f0",
+      "semanticOutcomeSha256": "f5e8aa5bcc9846d403a854a21e1e22f89dbed38c31fbf179cf0994cbda0fbbda",
+      "batchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "batchSha256": "cf49a55953f60be7b396d5d723caf0a6a5df44a1f21c396c9b0610038742bc2c",
+      "runId": "historical-electrolux-dishwashers-20260717-ak1",
+      "resultsSha256": "d579910798c713822594b9fb03d81a7bd085cf70e6d717bd11eae7917734fbde",
+      "auditSha256": "ac1b56f99cdabfd2539d5084157d5d774a705ec143c60123c81946b5dd528f2f",
+      "acceptedAt": "2026-07-17T03:17:10.605Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_2587a191fd1977d32d573527",
@@ -13530,6 +13581,23 @@
       "acceptedAt": "2026-07-15T19:15:34.741Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_6047b0e73ec7ce4eb80b54e6",
+      "targetId": "recovery_target_1ce55d62d4938da2f03880d7",
+      "referenceId": "fa_ref_40fb98197033b89a407b6b34",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux",
+      "contentSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "606b9cdd84bab09058daf4add7e6b403e7e502d20d6ae6c5a9be5010214b4847",
+      "semanticOutcomeSha256": "f77247c5f21dc4408b948c149587c90db1eed12cc0aceefb60a6888ac7c3dda6",
+      "batchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "batchSha256": "cf49a55953f60be7b396d5d723caf0a6a5df44a1f21c396c9b0610038742bc2c",
+      "runId": "historical-electrolux-dishwashers-20260717-ak1",
+      "resultsSha256": "d579910798c713822594b9fb03d81a7bd085cf70e6d717bd11eae7917734fbde",
+      "auditSha256": "ac1b56f99cdabfd2539d5084157d5d774a705ec143c60123c81946b5dd528f2f",
+      "acceptedAt": "2026-07-17T03:17:10.605Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_6071b66cf63dfbfb7ad430c7",
       "targetId": "recovery_target_83f0f6e20bccf3d250b69a52",
       "referenceId": "fa_ref_c39413faf56e81ee697117cb",
@@ -14040,6 +14108,23 @@
       "acceptedAt": "2026-07-16T00:46:29.094Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_73b0a14c3b24a1f1b80b55fa",
+      "targetId": "recovery_target_3a08318b0c895cef7dab3a85",
+      "referenceId": "fa_ref_735731fb39e820b5b1bb3e66",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux",
+      "contentSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "f3e1f8a96d5d051c5cb02d4d9702dfc391dc5ab40128358775bd193149229c5a",
+      "semanticOutcomeSha256": "f4701b9c9ba0257aa29cd7ab838c0233a7da3a5ca4931ec893ee7497b4c668fc",
+      "batchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "batchSha256": "cf49a55953f60be7b396d5d723caf0a6a5df44a1f21c396c9b0610038742bc2c",
+      "runId": "historical-electrolux-dishwashers-20260717-ak1",
+      "resultsSha256": "d579910798c713822594b9fb03d81a7bd085cf70e6d717bd11eae7917734fbde",
+      "auditSha256": "ac1b56f99cdabfd2539d5084157d5d774a705ec143c60123c81946b5dd528f2f",
+      "acceptedAt": "2026-07-17T03:17:10.605Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_741fd91b8ef0a03d966b4f74",
       "targetId": "recovery_target_46d9da3fd3a27f8dda8bb845",
       "referenceId": "fa_ref_f509b02ebf57485bfd3ecfbe",
@@ -14244,6 +14329,23 @@
       "acceptedAt": "2026-07-15T19:43:21.995Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_7d6e31278cbdd9472fc62b30",
+      "targetId": "recovery_target_da978a2ae3d441988e7e7e63",
+      "referenceId": "fa_ref_13cf77bb02c8994b168062e0",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux",
+      "contentSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "e932ae01e8daadc68414020e9b68962f34ee4091ad48b53c165995d5548bd2e8",
+      "semanticOutcomeSha256": "3521ffc24ae25d093660100a2eb3e819ab5b193a04b765067164ab13f5ab343d",
+      "batchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "batchSha256": "cf49a55953f60be7b396d5d723caf0a6a5df44a1f21c396c9b0610038742bc2c",
+      "runId": "historical-electrolux-dishwashers-20260717-ak1",
+      "resultsSha256": "d579910798c713822594b9fb03d81a7bd085cf70e6d717bd11eae7917734fbde",
+      "auditSha256": "ac1b56f99cdabfd2539d5084157d5d774a705ec143c60123c81946b5dd528f2f",
+      "acceptedAt": "2026-07-17T03:17:10.605Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_7f99081ae9f545f3da5ed4be",
       "targetId": "recovery_target_c6c769cdd7908e7b87fb9268",
       "referenceId": "fa_ref_920a86081bf8db74137980d1",
@@ -14361,6 +14463,23 @@
       "resultsSha256": "76550275cffb2744cc271a4420252d195ab648c3e8669f98ec89935e192161cd",
       "auditSha256": "652f66146fb4a7b8e69bd44cb2cbf988a8576224d6dd3c23a3a94f869e134a46",
       "acceptedAt": "2026-07-16T03:57:52.474Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_8ca6b4d15f6f91281819f3e6",
+      "targetId": "recovery_target_fa72ef813f1bfaf73ab35c50",
+      "referenceId": "fa_ref_00b11171902c9ebd7b6603d7",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux",
+      "contentSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "6878722449b3140e5b7874df3f9faa09f2299733a1b22641844ff7f66580e795",
+      "semanticOutcomeSha256": "86905d0edb7dfa0baeb84973b9806e264bfcdf347dfd07ae53ce2aff4c76bb09",
+      "batchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "batchSha256": "cf49a55953f60be7b396d5d723caf0a6a5df44a1f21c396c9b0610038742bc2c",
+      "runId": "historical-electrolux-dishwashers-20260717-ak1",
+      "resultsSha256": "d579910798c713822594b9fb03d81a7bd085cf70e6d717bd11eae7917734fbde",
+      "auditSha256": "ac1b56f99cdabfd2539d5084157d5d774a705ec143c60123c81946b5dd528f2f",
+      "acceptedAt": "2026-07-17T03:17:10.605Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_8d9150ac17185defccf0c75f",
@@ -15247,6 +15366,23 @@
       "acceptedAt": "2026-07-16T00:46:29.094Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_bc18a9eaeee695993d190058",
+      "targetId": "recovery_target_a0a5d5195d4e598fe41a5fa5",
+      "referenceId": "fa_ref_6e89cf79b3ce24ad7748d30f",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux",
+      "contentSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "27cacffab1c44c54740c79b5026969c1a9795a536722981a3937a1d6ba3ae7a2",
+      "semanticOutcomeSha256": "a3462fee5e5cc0c6bf9b33247793a8452ad77f5b2bb8dadd92da93dce941d792",
+      "batchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "batchSha256": "cf49a55953f60be7b396d5d723caf0a6a5df44a1f21c396c9b0610038742bc2c",
+      "runId": "historical-electrolux-dishwashers-20260717-ak1",
+      "resultsSha256": "d579910798c713822594b9fb03d81a7bd085cf70e6d717bd11eae7917734fbde",
+      "auditSha256": "ac1b56f99cdabfd2539d5084157d5d774a705ec143c60123c81946b5dd528f2f",
+      "acceptedAt": "2026-07-17T03:17:10.605Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_bc6bfaa6b7751caf3347caef",
       "targetId": "recovery_target_29e5c24d2f34ab873c2073ad",
       "referenceId": "fa_ref_dd8527794840cb1b80797421",
@@ -15364,6 +15500,23 @@
       "resultsSha256": "1cecefd531e0442caa919a04b971150b6af98149eb41bc571a01121a12b72aa6",
       "auditSha256": "621b21f8752460a7978f194d2e030639aa93b5cef22f1cc597a3b06e759b24a9",
       "acceptedAt": "2026-07-15T19:58:12.739Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_c22516b3f509fb9d0f400965",
+      "targetId": "recovery_target_9d8eb5370a8f4566a7dcc509",
+      "referenceId": "fa_ref_e452f5d6a2e0751e65c38a23",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux",
+      "contentSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "997284ee910eadf73d6df482fa46d0de6c7443dc3d016f77121da1a3669cbcd8",
+      "semanticOutcomeSha256": "a6790745c54f65b22ed218ade7c166f1d2ef562eeb5d1a017523014e10a66d2f",
+      "batchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "batchSha256": "cf49a55953f60be7b396d5d723caf0a6a5df44a1f21c396c9b0610038742bc2c",
+      "runId": "historical-electrolux-dishwashers-20260717-ak1",
+      "resultsSha256": "d579910798c713822594b9fb03d81a7bd085cf70e6d717bd11eae7917734fbde",
+      "auditSha256": "ac1b56f99cdabfd2539d5084157d5d774a705ec143c60123c81946b5dd528f2f",
+      "acceptedAt": "2026-07-17T03:17:10.605Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_c4770932308f6c456b6b6241",
@@ -20246,7 +20399,7 @@
   "summary": {
     "entries": 386,
     "resolutions": 27,
-    "sourceAcceptances": 267,
+    "sourceAcceptances": 276,
     "suppressions": 299,
     "resolvedSuppressions": 24,
     "retryable": 63,

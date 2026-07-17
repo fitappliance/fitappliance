@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:05:50.351Z",
-  "semanticQueueSha256": "9d153b74ef6a7368eafcd7eb75b6b3df80e1d77f979c51b36d86a5f8cae54387",
-  "sourceClassificationSha256": "a937b8c672bdb34be2f47576f1e4aea271c891a21b2c92c290ddbd98a751a70d",
+  "generatedAt": "2026-07-17T03:18:55.893Z",
+  "semanticQueueSha256": "5f0a1985198d46156ca00a92b8414a9ab32623b777a76c41458a14d74fd220a3",
+  "sourceClassificationSha256": "175cbb04d22906947c2eb8a28f67b5f3c1d877fc5b5d1fb82f61bba9f76ccd2e",
   "records": [
     {
       "schemaVersion": 1,
@@ -590,285 +590,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_24bcd07a081e313203e932f8"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_9bdf06a9595c766532171654",
-      "referenceId": "fa_ref_c4840a2878e5b72696d65e27",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF6700ROW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_e2e82e39770a64f688fce80f"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_1474ddeab220d7945bca6a7e"
-      ],
-      "legacyRuntimeIds": [
-        "ao-33312"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_038dc9b0e74e69bf049f6cbd"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_43f577fcee6506794e78d3fd",
-      "referenceId": "fa_ref_e452f5d6a2e0751e65c38a23",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF6800ROX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_f281b242a8d68e1fd1f16a16"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_9d8eb5370a8f4566a7dcc509"
-      ],
-      "legacyRuntimeIds": [
-        "ao-33314"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_8cfca01f73b38f40ab22df97"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d4c9d1ddf3237cbb7ba1b9d3",
-      "referenceId": "fa_ref_735731fb39e820b5b1bb3e66",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF8725ROX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_8acf03e974f530699064dfa1"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_3a08318b0c895cef7dab3a85"
-      ],
-      "legacyRuntimeIds": [
-        "ao-52802"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_398226b5e4402293d1bbc0f0"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_af789eb929d885629083ec4f",
-      "referenceId": "fa_ref_62f717bafb3662cc8d57802d",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF8735RKX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_df7ddc471d1109cbd828920c"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_5061bd3e463a2fd0df1869c7"
-      ],
-      "legacyRuntimeIds": [
-        "ao-72422"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b1a5323e3437a0376d120fc0"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_cd4c25aa180e5592ffe007e4",
-      "referenceId": "fa_ref_6e89cf79b3ce24ad7748d30f",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF8735ROX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_b2d047b32dae57d77dd11d05"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a0a5d5195d4e598fe41a5fa5"
-      ],
-      "legacyRuntimeIds": [
-        "ao-62517"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6b73f30786d38f296be24454"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e9cbe74a8df7bf17ae35d25c",
-      "referenceId": "fa_ref_13cf77bb02c8994b168062e0",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL6610RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_5f1a3db214ef4b70effd97c1"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_da978a2ae3d441988e7e7e63"
-      ],
-      "legacyRuntimeIds": [
-        "ao-33315"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_ac1ccc98567ce664ae10ee71"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e1f3c7372d6d2fe888fb4d88",
-      "referenceId": "fa_ref_40fb98197033b89a407b6b34",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL69200RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_4f7328ab991a57f21f1742ae"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_1ce55d62d4938da2f03880d7"
-      ],
-      "legacyRuntimeIds": [
-        "ao-88458"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_535e7e5c0f19b813eeeb32cf"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3b8f539396a1ca9fbfc8c03e",
-      "referenceId": "fa_ref_00b11171902c9ebd7b6603d7",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL7510RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d467f490ed23cec035fb37e1"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_fa72ef813f1bfaf73ab35c50"
-      ],
-      "legacyRuntimeIds": [
-        "ao-52803"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9bc844a4eb347f777d1b4b74"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_68b92d20f5fda4d5daee953c",
-      "referenceId": "fa_ref_3d296060041ec7d9f34f71b8",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL8530RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d6e10c94536abc43d325103a"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_30028c18134fcd65daffecc8"
-      ],
-      "legacyRuntimeIds": [
-        "ao-62518"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_65115843ef4b1bf69bdc8b04"
       ],
       "offlineReplayOutcome": null
     },
@@ -195632,19 +195353,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_4f7328ab991a57f21f1742ae",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/f/c/f/2fcf887ea07bc601106c8df391108d07288876c1_ESL69200RO_Electrolux_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/ESL69200RO.json",
-        "source:doc_da9d0586d7afaf48c22bcdc1"
-      ],
-      "referenceIds": [
-        "fa_ref_40fb98197033b89a407b6b34"
-      ]
-    },
-    {
       "sourceId": "historical_source_4f93787b61e61a681e696579",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/c/8/7/c/c87c890ddc6d45f05fe4628c8aaceba98afb2406_DFN28430X_Beko_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -196883,19 +196591,6 @@
       ],
       "referenceIds": [
         "fa_ref_4f202254a3cf9a5467cc6491"
-      ]
-    },
-    {
-      "sourceId": "historical_source_5f1a3db214ef4b70effd97c1",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/4/2/d/6/42d631f69bbcc659a2aa172b8cb30abbe8f201c6_esl6610ro_usermanual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/ESL6610RO.json",
-        "source:doc_76676fe3137550dd8038251d"
-      ],
-      "referenceIds": [
-        "fa_ref_13cf77bb02c8994b168062e0"
       ]
     },
     {
@@ -200166,19 +199861,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_8acf03e974f530699064dfa1",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/7/f/4/67f43b5b71e519d86bd40001e99cf0446dda5739_Electrolux_ESF8725ROX_Dishwasher_User_Manual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/ESF8725ROX.json",
-        "source:doc_8fd33779aa8aef466b013421"
-      ],
-      "referenceIds": [
-        "fa_ref_735731fb39e820b5b1bb3e66"
-      ]
-    },
-    {
       "sourceId": "historical_source_8b61db68372fcf6ee94e7527",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/6/6/3/166391d49d861d848dc056ec41045de725134efe_FAB28RVE1_Datasheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -202892,19 +202574,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_b2d047b32dae57d77dd11d05",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/1/8/d/818d4fc49342f5df7a157f1e9953ed894290ba9b_ESF8735ROX_Electrolux_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/ESF8735ROX.json",
-        "source:doc_4bb0dec323e8b4a7012a3100"
-      ],
-      "referenceIds": [
-        "fa_ref_6e89cf79b3ce24ad7748d30f"
-      ]
-    },
-    {
       "sourceId": "historical_source_b30e9e62d05dac6464ff31bb",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/b/9/b/b/b9bb34a7543464ef7ba0f580a7e72b930757313f_CBM250S_CHiQ_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -205213,19 +204882,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_d467f490ed23cec035fb37e1",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/f/9/4/5/f9453221631e99165ffadef1e2236fd35ceab38f_Electrolux_ESL7510RO_Fully_Integrated_Dishwasher_User_Manual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/ESL7510RO.json",
-        "source:doc_fcde64a303100ada5163773d"
-      ],
-      "referenceIds": [
-        "fa_ref_00b11171902c9ebd7b6603d7"
-      ]
-    },
-    {
       "sourceId": "historical_source_d46a8477975f6d95c1dc7753",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/3/2/d/a/32dabf5f2b5bbddc803d349b2988ebbf9d8b32e8_GS_B680WL_LG_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -205353,19 +205009,6 @@
       ],
       "referenceIds": [
         "fa_ref_00cc6e53a913629d8b005678"
-      ]
-    },
-    {
-      "sourceId": "historical_source_d6e10c94536abc43d325103a",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/7/e/6/87e64bffb8bda4521e1cd2f10db4d5cf2dbd8cf5_Electrolux_ESL8530RO_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/ESL8530RO.json",
-        "source:doc_08941be0c0093cb441e4d2a0"
-      ],
-      "referenceIds": [
-        "fa_ref_3d296060041ec7d9f34f71b8"
       ]
     },
     {
@@ -205965,19 +205608,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_df7ddc471d1109cbd828920c",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/5/d/e/65de20616a614e8e6656ee26ab866f454047a89d_ESF8735RKX_Electrolux_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/ESF8735RKX.json",
-        "source:doc_60fbb4444de02b41286470ff"
-      ],
-      "referenceIds": [
-        "fa_ref_62f717bafb3662cc8d57802d"
-      ]
-    },
-    {
       "sourceId": "historical_source_df8c628f2791444449a3a4cc",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/5/3/1/1531327b1635963d1994523825ed03a12878f02e_HWT60AW1_Haier_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -206143,19 +205773,6 @@
       ],
       "referenceIds": [
         "fa_ref_f4b938c5b8f42463ce253b47"
-      ]
-    },
-    {
-      "sourceId": "historical_source_e2e82e39770a64f688fce80f",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/3/2/9/13294630a26858b5b81c5664ce96bd8a00ffdb79_esf6700row_usermanual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/ESF6700ROW.json",
-        "source:doc_16bd1b24989d1739b5fce9b3"
-      ],
-      "referenceIds": [
-        "fa_ref_c4840a2878e5b72696d65e27"
       ]
     },
     {
@@ -207092,19 +206709,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_f281b242a8d68e1fd1f16a16",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/e/2/7/7e271ecb05cac6f861c5fa77652a29676cfb1d87_esf6800rox_usermanual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/ESF6800ROX.json",
-        "source:doc_62f61b367ae95102b0e86516"
-      ],
-      "referenceIds": [
-        "fa_ref_e452f5d6a2e0751e65c38a23"
-      ]
-    },
-    {
       "sourceId": "historical_source_f28a47767ca4a3b68e85d6aa",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwdc84d0fc/QRG/AU/QRG-AU-26364.pdf",
       "sourceAuthority": "NONE",
@@ -207909,23 +207513,23 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 381,
+    "COMPLETE_RECEIPT": 390,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8093,
-    "queuedModels": 7712,
-    "uniqueReferences": 7712,
-    "candidateSources": 1361,
-    "candidateEdges": 1396,
+    "queuedModels": 7703,
+    "uniqueReferences": 7703,
+    "candidateSources": 1352,
+    "candidateEdges": 1387,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1074,
+      "CURRENT_RETAIL": 1065,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1252,
+      "dishwasher": 1243,
       "dryer": 801,
       "fridge": 4211,
       "washing_machine": 1448
@@ -207934,21 +207538,21 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1078
+      "REFERENCE_REDISCOVERY": 1069
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1078
+      "OFFICIAL_REDISCOVERY": 1069
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5047,
+      "DISCOVERY_READY": 5038,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 381,
+      "COMPLETE_RECEIPT": 390,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

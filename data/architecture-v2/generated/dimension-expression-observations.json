@@ -17,18 +17,18 @@
     "historicalRecords": 8093,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 915,
-    "validMineruDocuments": 900,
+    "mineruDocuments": 924,
+    "validMineruDocuments": 909,
     "invalidMineruDocuments": 15,
-    "documentsWithObservations": 471,
+    "documentsWithObservations": 480,
     "documentsWithoutObservations": 429,
-    "mappedMineruDocuments": 867,
+    "mappedMineruDocuments": 876,
     "unmappedMineruDocuments": 33,
-    "observations": 1135,
-    "researchGaps": 1009,
-    "parserProfiles": 214,
-    "parserReplays": 1026,
-    "completeParserReplays": 420
+    "observations": 1150,
+    "researchGaps": 1021,
+    "parserProfiles": 215,
+    "parserReplays": 1035,
+    "completeParserReplays": 429
   },
   "categories": [
     {
@@ -73402,15 +73402,1249 @@
             "Electrolux"
           ],
           "modelCount": 20,
-          "observedMineruDocuments": 0,
+          "observedMineruDocuments": 9,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 0,
-          "observedParserProfileCount": 0,
-          "completeParserReplayCount": 0,
+          "observedParserProfileCount": 2,
+          "completeParserReplayCount": 2,
           "seriesCountStatus": "UNKNOWN",
-          "coverageStatus": "NO_MINERU_SAMPLE",
-          "expressionCoverageStatus": "NO_MINERU_SAMPLE",
-          "families": []
+          "coverageStatus": "MINERU_SAMPLE_OBSERVED",
+          "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
+          "families": [
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_18d3fb848d41715e",
+              "models": [
+                "ESF6700ROW",
+                "ESF6800ROX",
+                "ESF8725ROX",
+                "ESL6610RO",
+                "ESL69200RO",
+                "ESL7510RO"
+              ],
+              "pdfSha256s": [
+                "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+                "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+                "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+                "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+                "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+                "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0"
+              ],
+              "sourceUrls": [
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_18d3fb848d41715e",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
+                      "sourceLabel": "total depth (<unit>)",
+                      "axisOrder": [
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "label",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
+                      "sourceLabel": "total height (<unit>) | total width (<unit>)",
+                      "axisOrder": [
+                        "height",
+                        "width"
+                      ],
+                      "safeAxes": [
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "label",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+                  ]
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+                  "category": "dishwasher",
+                  "brand": "Electrolux",
+                  "model": "ESL6610RO",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+                  "category": "dishwasher",
+                  "brand": "Electrolux",
+                  "model": "ESL69200RO",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+                  "category": "dishwasher",
+                  "brand": "Electrolux",
+                  "model": "ESF8725ROX",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+                  "category": "dishwasher",
+                  "brand": "Electrolux",
+                  "model": "ESF6800ROX",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+                  "category": "dishwasher",
+                  "brand": "Electrolux",
+                  "model": "ESF6700ROW",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+                  "category": "dishwasher",
+                  "brand": "Electrolux",
+                  "model": "ESL7510RO",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_52a9223ae8463e8171ab8db3",
+                  "pdfSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+                  "contentSha256": "e658c94870d13ce47a2b7eef975f8bc84d3438eba8dba079ae758642c83551c7",
+                  "page": 4,
+                  "bbox": [
+                    32,
+                    777,
+                    455,
+                    871
+                  ],
+                  "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESF8725ROX",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESF8725ROX"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm)",
+                  "sourceValue": "850 | 596",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 596",
+                  "axisOrder": [
+                    "height",
+                    "width"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "596",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_568383fc2215a2069f307854",
+                  "pdfSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+                  "contentSha256": "92f9c9c9982949bed0dc043f950ec50f4704bffdd32d897cfb4745b2f1512374",
+                  "page": 4,
+                  "bbox": [
+                    32,
+                    776,
+                    455,
+                    871
+                  ],
+                  "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESL6610RO",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESL6610RO"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm)",
+                  "sourceValue": "818 | 596",
+                  "sourceQuote": "Total height (mm) 818 | Total width (mm) 596",
+                  "axisOrder": [
+                    "height",
+                    "width"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "818",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "596",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_6b67fe051f59ba6b8264a867",
+                  "pdfSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+                  "contentSha256": "c5baea47e7ee536270a5a8f3d04c455151f1f6e2f8104c592520438cb0982a81",
+                  "page": 5,
+                  "bbox": [
+                    32,
+                    143,
+                    455,
+                    415
+                  ],
+                  "fragmentSha256": "c1bf2b2b06b065a98b755d739c88d7e1a28578f36e93971ae0be0eb2c237bc54",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESL7510RO",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESL7510RO"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Total depth (mm)",
+                  "sourceValue": "550",
+                  "sourceQuote": "Total depth (mm) 550",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "550",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_8a46d8099a497b0a5f80bd4f",
+                  "pdfSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+                  "contentSha256": "3215ba8bb931f3b89f397b5eade8a6fbaf840493fba86cfd43619f6488edc9d2",
+                  "page": 5,
+                  "bbox": [
+                    32,
+                    142,
+                    426,
+                    594
+                  ],
+                  "fragmentSha256": "bcddce035e6205a3da73165f60f8ddbfca1f289d88404fd44d472c4c945da7d2",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESF6700ROW",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESF6700ROW"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Total depth (mm)",
+                  "sourceValue": "610",
+                  "sourceQuote": "Total depth (mm) 610",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "610",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_97f5430de332a02b846544d9",
+                  "pdfSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+                  "contentSha256": "92f9c9c9982949bed0dc043f950ec50f4704bffdd32d897cfb4745b2f1512374",
+                  "page": 5,
+                  "bbox": [
+                    32,
+                    142,
+                    455,
+                    415
+                  ],
+                  "fragmentSha256": "6bee1b8a42577c24dbd24d1aa08c981b65a82850cb5c00a0476f6ced1d10c353",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESL6610RO",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESL6610RO"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Total depth (mm)",
+                  "sourceValue": "550",
+                  "sourceQuote": "Total depth (mm) 550",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "550",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_aeb4d60b12e960e57f640e5d",
+                  "pdfSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+                  "contentSha256": "e658c94870d13ce47a2b7eef975f8bc84d3438eba8dba079ae758642c83551c7",
+                  "page": 5,
+                  "bbox": [
+                    32,
+                    142,
+                    457,
+                    593
+                  ],
+                  "fragmentSha256": "3d8867d9f453daba0954039038d205d01ffa6b9432cfa34851d1a466c6c79988",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESF8725ROX",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESF8725ROX"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Total depth (mm)",
+                  "sourceValue": "610",
+                  "sourceQuote": "Total depth (mm) 610",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "610",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_b0b757faf128a52021afd431",
+                  "pdfSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+                  "contentSha256": "5f6e2fa1a7ddac8c1c9c66b66673a3b8315d835bac4ca2ad06231d7872719f16",
+                  "page": 5,
+                  "bbox": [
+                    32,
+                    142,
+                    455,
+                    593
+                  ],
+                  "fragmentSha256": "9f0338028a5bc059c1d5b1a1670bb3d469fd383c7bcfe210c09cd0d746bbc9b5",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESF6800ROX",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESF6800ROX"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Total depth (mm)",
+                  "sourceValue": "610",
+                  "sourceQuote": "Total depth (mm) 610",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "610",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_b158febc754d8831f81a37ff",
+                  "pdfSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+                  "contentSha256": "5f6e2fa1a7ddac8c1c9c66b66673a3b8315d835bac4ca2ad06231d7872719f16",
+                  "page": 4,
+                  "bbox": [
+                    32,
+                    777,
+                    455,
+                    871
+                  ],
+                  "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESF6800ROX",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESF6800ROX"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm)",
+                  "sourceValue": "850 | 596",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 596",
+                  "axisOrder": [
+                    "height",
+                    "width"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "596",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_b606c1939ea237ce8541843b",
+                  "pdfSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+                  "contentSha256": "3215ba8bb931f3b89f397b5eade8a6fbaf840493fba86cfd43619f6488edc9d2",
+                  "page": 4,
+                  "bbox": [
+                    32,
+                    775,
+                    426,
+                    871
+                  ],
+                  "fragmentSha256": "c1d3ca0ee7c9254f68ec395fdec5f33d4527de08ef8cb165295adb0569ee9902",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESF6700ROW",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESF6700ROW"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm)",
+                  "sourceValue": "850 | 596",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 596",
+                  "axisOrder": [
+                    "height",
+                    "width"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "596",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_caf6a1fd6baf28f43452f616",
+                  "pdfSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+                  "contentSha256": "5c8621ddc873621551e17cd87cb875b51d6873321ff057bdf8a294fc7581c7c6",
+                  "page": 5,
+                  "bbox": [
+                    32,
+                    143,
+                    455,
+                    236
+                  ],
+                  "fragmentSha256": "91fd9198178962aa8d469822fa2dba2524179cd7f11b92aba4c88d28c3934450",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESL69200RO",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESL69200RO"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Total depth (mm)",
+                  "sourceValue": "570",
+                  "sourceQuote": "Total depth (mm) 570",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "570",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_e330a6b84296d24db8c7569e",
+                  "pdfSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+                  "contentSha256": "c5baea47e7ee536270a5a8f3d04c455151f1f6e2f8104c592520438cb0982a81",
+                  "page": 4,
+                  "bbox": [
+                    32,
+                    776,
+                    457,
+                    871
+                  ],
+                  "fragmentSha256": "781b4a86cb6e7089c169d2d5ff7bf99221b248b83b4c285517a55a92ab72b9d4",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESL7510RO",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESL7510RO"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm)",
+                  "sourceValue": "818 | 596",
+                  "sourceQuote": "Total height (mm) 818 | Total width (mm) 596",
+                  "axisOrder": [
+                    "height",
+                    "width"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "818",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "596",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_f154416d6eb1e226ed4ad94c",
+                  "pdfSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+                  "contentSha256": "5c8621ddc873621551e17cd87cb875b51d6873321ff057bdf8a294fc7581c7c6",
+                  "page": 4,
+                  "bbox": [
+                    32,
+                    776,
+                    455,
+                    871
+                  ],
+                  "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESL69200RO",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESL69200RO"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm)",
+                  "sourceValue": "818 | 596",
+                  "sourceQuote": "Total height (mm) 818 | Total width (mm) 596",
+                  "axisOrder": [
+                    "height",
+                    "width"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "818",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "596",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar)"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+                  "contentSha256": "92f9c9c9982949bed0dc043f950ec50f4704bffdd32d897cfb4745b2f1512374",
+                  "page": 6,
+                  "quote": "Shipping Volume (m3) 0.402 Shipping Weight (Kg) 40.1 Pack Dimensions Height (mm) 910 Pack Dimension Width (mm) 650"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+                  "contentSha256": "92f9c9c9982949bed0dc043f950ec50f4704bffdd32d897cfb4745b2f1512374",
+                  "page": 7,
+                  "quote": ""
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+                  "contentSha256": "5c8621ddc873621551e17cd87cb875b51d6873321ff057bdf8a294fc7581c7c6",
+                  "page": 7,
+                  "quote": "Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 680"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+                  "contentSha256": "e658c94870d13ce47a2b7eef975f8bc84d3438eba8dba079ae758642c83551c7",
+                  "page": 7,
+                  "quote": "Shipping Volume (m3) 0.389 Shipping Weight (Kg) 47.7 Pack Dimensions Height (mm) 900 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 680 Total shelf area (m^2) 0.432"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+                  "contentSha256": "5f6e2fa1a7ddac8c1c9c66b66673a3b8315d835bac4ca2ad06231d7872719f16",
+                  "page": 7,
+                  "quote": "Shipping Volume (m3) 0.393 Shipping Weight (Kg) 51.6 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 650 Pack Dimension Depth (mm) 680"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+                  "contentSha256": "3215ba8bb931f3b89f397b5eade8a6fbaf840493fba86cfd43619f6488edc9d2",
+                  "page": 7,
+                  "quote": "Shipping Volume (m3) 0.393 Shipping Weight (Kg) 47.6 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 650 Pack Dimension Depth (mm) 680"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+                  "contentSha256": "c5baea47e7ee536270a5a8f3d04c455151f1f6e2f8104c592520438cb0982a81",
+                  "page": 7,
+                  "quote": "Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 680 Total shelf area (m^2) 0.432"
+                }
+              ],
+              "parserProfileIds": [
+                "pdf_grammar_18d3fb848d41715e"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+              "models": [
+                "ESF8735RKX",
+                "ESF8735ROX",
+                "ESL8530RO"
+              ],
+              "pdfSha256s": [
+                "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+                "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+                "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298"
+              ],
+              "sourceUrls": [
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_8f60826f847a01df",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
+                      "sourceLabel": "total height (<unit>) | total width (<unit>) | total depth (<unit>)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "label",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+                  ]
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+                  "category": "dishwasher",
+                  "brand": "Electrolux",
+                  "model": "ESF8735ROX",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+                  "category": "dishwasher",
+                  "brand": "Electrolux",
+                  "model": "ESL8530RO",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+                  "category": "dishwasher",
+                  "brand": "Electrolux",
+                  "model": "ESF8735RKX",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_1713d7da28c555df73074451",
+                  "pdfSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+                  "contentSha256": "ae4154db6ba6dea910bd1eada5712b6a3a7c48447bca76e4e8159909e288d5f7",
+                  "page": 4,
+                  "bbox": [
+                    32,
+                    731,
+                    455,
+                    869
+                  ],
+                  "fragmentSha256": "6777c144bbccc2530215bc43d9c1342d3f78d63843a242df713e2525e8b17270",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESL8530RO",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESL8530RO"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "818 | 596 | 550",
+                  "sourceQuote": "Total height (mm) 818 | Total width (mm) 596 | Total depth (mm) 550",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "818",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "596",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "550",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_9b4a0b041f67e32901bc60f4",
+                  "pdfSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+                  "contentSha256": "0510682f583eb9b704dceddcd6ade895802f06c8d7d6b3565cf806363efc6f1a",
+                  "page": 4,
+                  "bbox": [
+                    32,
+                    731,
+                    455,
+                    869
+                  ],
+                  "fragmentSha256": "9b95c554b7daf2d4a4aed63736ab377d4287fb88ebe8eeeed90630bca3d2dd15",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESF8735RKX",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESF8735RKX"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "818 | 600 | 570",
+                  "sourceQuote": "Total height (mm) 818 | Total width (mm) 600 | Total depth (mm) 570",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "818",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "570",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_f94d52824bf44ec2df4f917e",
+                  "pdfSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+                  "contentSha256": "025d318e0fd1013613a808a75e472ade8a03cc3db73e977dec11706bc3b3ca48",
+                  "page": 4,
+                  "bbox": [
+                    32,
+                    731,
+                    455,
+                    869
+                  ],
+                  "fragmentSha256": "f06e62e6df4d0011c005edf14e950027b45c6f5602cb31efd8caebf41eaa32a9",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "ESF8735ROX",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "ESF8735ROX"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "818 | 596 | 570",
+                  "sourceQuote": "Total height (mm) 818 | Total width (mm) 596 | Total depth (mm) 570",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "818",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "596",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "570",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+                  "contentSha256": "025d318e0fd1013613a808a75e472ade8a03cc3db73e977dec11706bc3b3ca48",
+                  "page": 5,
+                  "quote": ""
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+                  "contentSha256": "ae4154db6ba6dea910bd1eada5712b6a3a7c48447bca76e4e8159909e288d5f7",
+                  "page": 5,
+                  "quote": ""
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+                  "contentSha256": "0510682f583eb9b704dceddcd6ade895802f06c8d7d6b3565cf806363efc6f1a",
+                  "page": 5,
+                  "quote": ""
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+                  "contentSha256": "ae4154db6ba6dea910bd1eada5712b6a3a7c48447bca76e4e8159909e288d5f7",
+                  "page": 6,
+                  "quote": "Shipping Weight (Kg) 40.10 Shipping Weight (Kg) 38.67 Pack Dimensions Height (mm) 870"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+                  "contentSha256": "ae4154db6ba6dea910bd1eada5712b6a3a7c48447bca76e4e8159909e288d5f7",
+                  "page": 7,
+                  "quote": "Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 680"
+                }
+              ],
+              "parserProfileIds": [
+                "pdf_grammar_8f60826f847a01df"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            }
+          ]
         },
         {
           "canonicalBrand": "Emilia",

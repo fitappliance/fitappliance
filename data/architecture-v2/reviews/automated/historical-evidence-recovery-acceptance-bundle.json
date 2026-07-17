@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-17T03:04:37.609Z",
+  "generatedAt": "2026-07-17T03:18:06.343Z",
   "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
   "entries": [
     {
@@ -5843,6 +5843,255 @@
       }
     },
     {
+      "targetId": "recovery_target_1474ddeab220d7945bca6a7e",
+      "referenceId": "fa_ref_c4840a2878e5b72696d65e27",
+      "legacyRuntimeId": "ao-33312",
+      "canonicalProductId": "fa_prod_038dc9b0e74e69bf049f6cbd",
+      "brand": "Electrolux",
+      "model": "ESF6700ROW",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "auditSha256": "4fb5e90ae151bfaa624633c005461fb23c2750d5dde65f5a2f8e419dc2bc3aac",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:11:01.847Z",
+          "contentSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+          "objectPath": "evidence/web/sha256/bd/7b/bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 184559,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "ESF6700ROW",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "c1d3ca0ee7c9254f68ec395fdec5f33d4527de08ef8cb165295adb0569ee9902",
+              "bbox": [
+                32,
+                775,
+                426,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "c1d3ca0ee7c9254f68ec395fdec5f33d4527de08ef8cb165295adb0569ee9902",
+              "bbox": [
+                32,
+                775,
+                426,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 610
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 5,
+              "fragmentSha256": "bcddce035e6205a3da73165f60f8ddbfca1f289d88404fd44d472c4c945da7d2",
+              "bbox": [
+                32,
+                142,
+                426,
+                594
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+            "contentSha256": "3215ba8bb931f3b89f397b5eade8a6fbaf840493fba86cfd43619f6488edc9d2",
+            "objectPath": "evidence/derived/mineru-json/sha256/32/15/3215ba8bb931f3b89f397b5eade8a6fbaf840493fba86cfd43619f6488edc9d2.json",
+            "byteSize": 59885,
+            "pageCount": 8
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6700ROW:page:1:2c901bbd0bec27872df3555f6664326233b7b294a9cbe6ee95d9521f49db7afb"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6700ROW:page:2:24d18befdd46d0599cd9ff333b06ce384b93692843d79eba803469b174ed4d59"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6700ROW:page:3:84707aa12943619edb396b2cf46294948d36b6e4134f7fd88af2dc0d0f5bea32"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6700ROW:page:4:23c40fdc16f79a07137ca0bd8a28247b67e892228e35b761913a8651ae3b2034"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6700ROW:page:5:b4199cb5bc5ee2aae675021eba93127cde3afd1b73ad02e53566e1dc98823d6c"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6700ROW:page:6:39ad39f97dca675dcbda45d3d7ae5abee00ee30a29afa0e7b6da3468793a9889"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6700ROW:page:7:1be26bbb95c6d8486b526bdf66ce50e5ecea153b859c3d71dc44cbd0017718aa"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6700ROW:page:8:1a72edde96cc25f2bee84c5dbc8cc26915ec2eb91614404c88166d72428aa344"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "ESF6700ROW:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:11:01.847Z",
+            "bindingSha256": "3432788b7a307e79bbeddd960238c929d0bedd9a500036f9b9454add9a618b91"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 610
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux",
+            "contentSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+            "receiptBindingSha256": "3432788b7a307e79bbeddd960238c929d0bedd9a500036f9b9454add9a618b91",
+            "page": 4,
+            "fragmentSha256": "c1d3ca0ee7c9254f68ec395fdec5f33d4527de08ef8cb165295adb0569ee9902"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux",
+            "contentSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+            "receiptBindingSha256": "3432788b7a307e79bbeddd960238c929d0bedd9a500036f9b9454add9a618b91",
+            "page": 4,
+            "fragmentSha256": "c1d3ca0ee7c9254f68ec395fdec5f33d4527de08ef8cb165295adb0569ee9902"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux",
+            "contentSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+            "receiptBindingSha256": "3432788b7a307e79bbeddd960238c929d0bedd9a500036f9b9454add9a618b91",
+            "page": 5,
+            "fragmentSha256": "bcddce035e6205a3da73165f60f8ddbfca1f289d88404fd44d472c4c945da7d2"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_16dbb87245a533dacb255f65",
       "referenceId": "fa_ref_258b0f8b71f2daf986855d5e",
       "legacyRuntimeId": "ao-63966",
@@ -7908,6 +8157,278 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "ecaf939fc211da118c320f2929884651077a1490a2b47b7a23758aa02ac146d6"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_1ce55d62d4938da2f03880d7",
+      "referenceId": "fa_ref_40fb98197033b89a407b6b34",
+      "legacyRuntimeId": "ao-88458",
+      "canonicalProductId": "fa_prod_535e7e5c0f19b813eeeb32cf",
+      "brand": "Electrolux",
+      "model": "ESL69200RO",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "auditSha256": "4fb5e90ae151bfaa624633c005461fb23c2750d5dde65f5a2f8e419dc2bc3aac",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:12:00.333Z",
+          "contentSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+          "objectPath": "evidence/web/sha256/76/2a/762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1393696,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "ESL69200RO",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128",
+              "bbox": [
+                32,
+                776,
+                455,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 818
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128",
+              "bbox": [
+                32,
+                776,
+                455,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 570
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 5,
+              "fragmentSha256": "91fd9198178962aa8d469822fa2dba2524179cd7f11b92aba4c88d28c3934450",
+              "bbox": [
+                32,
+                143,
+                455,
+                236
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+            "contentSha256": "72e795cf582f78ab4b7866900fdbc9917a5f52e92fa72c8aef597cc1dfee10ac",
+            "objectPath": "evidence/derived/mineru-json/sha256/72/e7/72e795cf582f78ab4b7866900fdbc9917a5f52e92fa72c8aef597cc1dfee10ac.json",
+            "byteSize": 22353,
+            "pageCount": 9,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              8
+            ],
+            "sourcePageCount": 9,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "5c8621ddc873621551e17cd87cb875b51d6873321ff057bdf8a294fc7581c7c6",
+              "objectPath": "evidence/derived/mineru-json/sha256/5c/86/5c8621ddc873621551e17cd87cb875b51d6873321ff057bdf8a294fc7581c7c6.json",
+              "pages": [
+                8
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL69200RO:page:1:16f754293bfc74729717060458d8a33220c3ba385342767ba92899e53b4c3d7e"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL69200RO:page:2:57a32af7d1422a07db3c41b96e343b2ba2a50056199a381f7c2b0115097a2771"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL69200RO:page:3:fc4960dbe015debd5aad90966246171843d20a7d3f1a9c4903e4009ae7bb994c"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL69200RO:page:4:c2a10a0f806edce4d4c9d907749abd59d70e489dd298f2f4a035fff6853e9b80"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL69200RO:page:5:95dfc8c6c54e006f476e531568940bd6faedaa2a4d2843371e5b87ced8272c90"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL69200RO:page:6:fb2744d3da41aadfd574d365d1b326d02fcc9fd78d25af2853188ba80b49686e"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL69200RO:page:7:a5668be7780e388b8a55b1dfe576709376ee7447fd26955e80a94e94e5220813"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL69200RO:page:8:de5ea4293771153df9d36d4ce9a239a1e8f538d7b1213e23b717ba3a7ef39aa2"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL69200RO:page:9:bc40aa2a0d6ca1e1ca79772ad2efe5dcb7133d667ccfcf51af6d635244dacf52"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "ESL69200RO:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL69200RO:page:8:a2441ac7b6efffe7e8aef82846adf669b9d174d5c0f6ee9afe76e88acb9e3c28"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:12:00.333Z",
+            "bindingSha256": "8fa9f2172309a8659a1603afa4d12db7519b69dcef9237c683333cd41fd50061"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 818,
+              "maximumMm": 818
+            },
+            "depthMm": 570
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux",
+            "contentSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+            "receiptBindingSha256": "8fa9f2172309a8659a1603afa4d12db7519b69dcef9237c683333cd41fd50061",
+            "page": 4,
+            "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux",
+            "contentSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+            "receiptBindingSha256": "8fa9f2172309a8659a1603afa4d12db7519b69dcef9237c683333cd41fd50061",
+            "page": 4,
+            "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux",
+            "contentSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+            "receiptBindingSha256": "8fa9f2172309a8659a1603afa4d12db7519b69dcef9237c683333cd41fd50061",
+            "page": 5,
+            "fragmentSha256": "91fd9198178962aa8d469822fa2dba2524179cd7f11b92aba4c88d28c3934450"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db"
         ]
       },
       "reconciliation": {
@@ -14674,6 +15195,278 @@
       }
     },
     {
+      "targetId": "recovery_target_30028c18134fcd65daffecc8",
+      "referenceId": "fa_ref_3d296060041ec7d9f34f71b8",
+      "legacyRuntimeId": "ao-62518",
+      "canonicalProductId": "fa_prod_65115843ef4b1bf69bdc8b04",
+      "brand": "Electrolux",
+      "model": "ESL8530RO",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "auditSha256": "4fb5e90ae151bfaa624633c005461fb23c2750d5dde65f5a2f8e419dc2bc3aac",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:12:54.071Z",
+          "contentSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+          "objectPath": "evidence/web/sha256/b8/db/b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1414098,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "ESL8530RO",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "6777c144bbccc2530215bc43d9c1342d3f78d63843a242df713e2525e8b17270",
+              "bbox": [
+                32,
+                731,
+                455,
+                869
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 818
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "6777c144bbccc2530215bc43d9c1342d3f78d63843a242df713e2525e8b17270",
+              "bbox": [
+                32,
+                731,
+                455,
+                869
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 550
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "6777c144bbccc2530215bc43d9c1342d3f78d63843a242df713e2525e8b17270",
+              "bbox": [
+                32,
+                731,
+                455,
+                869
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+            "contentSha256": "31660a6c1828fe59828eee5c0d13532c0b9523e05435784e7ad7b61ee5a2f7b5",
+            "objectPath": "evidence/derived/mineru-json/sha256/31/66/31660a6c1828fe59828eee5c0d13532c0b9523e05435784e7ad7b61ee5a2f7b5.json",
+            "byteSize": 24827,
+            "pageCount": 9,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              8
+            ],
+            "sourcePageCount": 9,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "ae4154db6ba6dea910bd1eada5712b6a3a7c48447bca76e4e8159909e288d5f7",
+              "objectPath": "evidence/derived/mineru-json/sha256/ae/41/ae4154db6ba6dea910bd1eada5712b6a3a7c48447bca76e4e8159909e288d5f7.json",
+              "pages": [
+                8
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL8530RO:page:1:3794de975a558c3cd63cc32f21e8141d2bf1e63d90d35f8b74231aaf064d2691"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL8530RO:page:2:7e57c1e89b85022f24408cc8d9d81b5972280f5694ef17691d4d968c91204150"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL8530RO:page:3:97a42341c9468ca2add9f401b20a07d8246517bf19e5edd32d87918d2c495929"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL8530RO:page:4:1f40f302dc10273df71e15feca3fa7200afdff12981e128248241a108c518ddf"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL8530RO:page:5:8755fb8255801eaad4a41fd52e3caf6e79954070de9ecb1b113ff4f24214906d"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL8530RO:page:6:ddbf1953d7e0398a2340e279450275a19ca763f297eefe72f4c362b6e96ae5bd"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL8530RO:page:7:95baf9211530c24ba65fe1117b0e49befbbca7a2f3fb796fe640e932bf445764"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL8530RO:page:8:3a458a563d80300c00e0e198405d4f857c84cbd30a0e62938044e79f0f88191b"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL8530RO:page:9:a1310897460b3c816c56fe8bf2cf513c21605dbe5ec85028f6866ab0501a311c"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "ESL8530RO:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL8530RO:page:8:d20a7e7178eb83f4f2bdd4a5ea0cf781b644ea7d8c15734fbc4a5e46f715145d"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:12:54.071Z",
+            "bindingSha256": "3fcc3fec415d7d91fcb605c339a5bfabc01c850938ea9a850b5ef5635be5915f"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 818,
+              "maximumMm": 818
+            },
+            "depthMm": 550
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux",
+            "contentSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+            "receiptBindingSha256": "3fcc3fec415d7d91fcb605c339a5bfabc01c850938ea9a850b5ef5635be5915f",
+            "page": 4,
+            "fragmentSha256": "6777c144bbccc2530215bc43d9c1342d3f78d63843a242df713e2525e8b17270"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux",
+            "contentSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+            "receiptBindingSha256": "3fcc3fec415d7d91fcb605c339a5bfabc01c850938ea9a850b5ef5635be5915f",
+            "page": 4,
+            "fragmentSha256": "6777c144bbccc2530215bc43d9c1342d3f78d63843a242df713e2525e8b17270"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux",
+            "contentSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+            "receiptBindingSha256": "3fcc3fec415d7d91fcb605c339a5bfabc01c850938ea9a850b5ef5635be5915f",
+            "page": 4,
+            "fragmentSha256": "6777c144bbccc2530215bc43d9c1342d3f78d63843a242df713e2525e8b17270"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_308bac8cfe8d6b46c5102b6b",
       "referenceId": "fa_ref_2210a276b84ee0439b0ff1f2",
       "legacyRuntimeId": "fridge-arf3177",
@@ -16994,6 +17787,278 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "6b00b7a620ff17afdc6ce28a1bb403c01331f12ece7dcb6def56b6beb0e45d83"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_3a08318b0c895cef7dab3a85",
+      "referenceId": "fa_ref_735731fb39e820b5b1bb3e66",
+      "legacyRuntimeId": "ao-52802",
+      "canonicalProductId": "fa_prod_398226b5e4402293d1bbc0f0",
+      "brand": "Electrolux",
+      "model": "ESF8725ROX",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "auditSha256": "4fb5e90ae151bfaa624633c005461fb23c2750d5dde65f5a2f8e419dc2bc3aac",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:13:46.865Z",
+          "contentSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+          "objectPath": "evidence/web/sha256/81/a3/81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 613592,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "ESF8725ROX",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72",
+              "bbox": [
+                32,
+                777,
+                455,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72",
+              "bbox": [
+                32,
+                777,
+                455,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 610
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 5,
+              "fragmentSha256": "3d8867d9f453daba0954039038d205d01ffa6b9432cfa34851d1a466c6c79988",
+              "bbox": [
+                32,
+                142,
+                457,
+                593
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+            "contentSha256": "dbd26f5da095c3d514c4cfb4c3fc241782cc44e4b3acc712b0714cc09dc33e7f",
+            "objectPath": "evidence/derived/mineru-json/sha256/db/d2/dbd26f5da095c3d514c4cfb4c3fc241782cc44e4b3acc712b0714cc09dc33e7f.json",
+            "byteSize": 24326,
+            "pageCount": 9,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              8
+            ],
+            "sourcePageCount": 9,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "e658c94870d13ce47a2b7eef975f8bc84d3438eba8dba079ae758642c83551c7",
+              "objectPath": "evidence/derived/mineru-json/sha256/e6/58/e658c94870d13ce47a2b7eef975f8bc84d3438eba8dba079ae758642c83551c7.json",
+              "pages": [
+                8
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8725ROX:page:1:20bf8fc71cea8fd3393c8d615333b87334347d70c7e0bb1dc146730bfa99fb06"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8725ROX:page:2:52f9713b9b7be9d68ef8c22afeec3d64d4277a9cd3476e20e8ea3d4db62bebd2"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8725ROX:page:3:a5571b41e69d8ffed7853ccf84bd0140aa7160f6ebf27fd5f3c4aefb6a16f296"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8725ROX:page:4:a042ccc5365523fbcb4e08de8ca4d8cd08eec359941657a9cb44d79034d4f27a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8725ROX:page:5:a18f837002576709c63a32e5eacbe295ba9b3ddd96ca07bcd1420461a5702cb8"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8725ROX:page:6:ec6a0e232d424d9b3fcf1f2e9240d651f1b9c2d8a1b37e8845ebf4af7b64f641"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8725ROX:page:7:e6f0787f19b0a50900678642e6c5f70eb7d60daefaf5a95a5213bfb57d0f986f"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8725ROX:page:8:adbdc2845c1d5ed8c29811daa165f02cbf2cb89e00bce0c9eb767cb1f8704347"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8725ROX:page:9:0128982ff977fa5a4053022abe57be8842e732c573656d3b2e388914017b9445"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "ESF8725ROX:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8725ROX:page:8:ce9763191ddbaf8c83b307be0bb6d9cc5ddfe9e64f4a319fbaf2f921a87251ce"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:13:46.865Z",
+            "bindingSha256": "84ef5e0c4a5a53adc0f11124c0a07225ff7549b333bc3d94678d8f20db613656"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 610
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux",
+            "contentSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+            "receiptBindingSha256": "84ef5e0c4a5a53adc0f11124c0a07225ff7549b333bc3d94678d8f20db613656",
+            "page": 4,
+            "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux",
+            "contentSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+            "receiptBindingSha256": "84ef5e0c4a5a53adc0f11124c0a07225ff7549b333bc3d94678d8f20db613656",
+            "page": 4,
+            "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux",
+            "contentSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+            "receiptBindingSha256": "84ef5e0c4a5a53adc0f11124c0a07225ff7549b333bc3d94678d8f20db613656",
+            "page": 5,
+            "fragmentSha256": "3d8867d9f453daba0954039038d205d01ffa6b9432cfa34851d1a466c6c79988"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023"
         ]
       },
       "reconciliation": {
@@ -25565,6 +26630,288 @@
         "activeSourceHashes": [
           "7fe483659b04dbb1f77a958bb33a3f4cbc29ad7b8b54e0deb19c688a3cae1678"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_5061bd3e463a2fd0df1869c7",
+      "referenceId": "fa_ref_62f717bafb3662cc8d57802d",
+      "legacyRuntimeId": "ao-72422",
+      "canonicalProductId": "fa_prod_b1a5323e3437a0376d120fc0",
+      "brand": "Electrolux",
+      "model": "ESF8735RKX",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "auditSha256": "4fb5e90ae151bfaa624633c005461fb23c2750d5dde65f5a2f8e419dc2bc3aac",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:14:35.792Z",
+          "contentSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+          "objectPath": "evidence/web/sha256/df/f3/dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1715751,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "ESF8735RKX",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "9b95c554b7daf2d4a4aed63736ab377d4287fb88ebe8eeeed90630bca3d2dd15",
+              "bbox": [
+                32,
+                731,
+                455,
+                869
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 818
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "9b95c554b7daf2d4a4aed63736ab377d4287fb88ebe8eeeed90630bca3d2dd15",
+              "bbox": [
+                32,
+                731,
+                455,
+                869
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 570
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "9b95c554b7daf2d4a4aed63736ab377d4287fb88ebe8eeeed90630bca3d2dd15",
+              "bbox": [
+                32,
+                731,
+                455,
+                869
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+            "contentSha256": "65f428956e8ff976b4af9b4083950868280bb959e7484ba6ab7c62a291145940",
+            "objectPath": "evidence/derived/mineru-json/sha256/65/f4/65f428956e8ff976b4af9b4083950868280bb959e7484ba6ab7c62a291145940.json",
+            "byteSize": 22763,
+            "pageCount": 8,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              7
+            ],
+            "sourcePageCount": 8,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "0510682f583eb9b704dceddcd6ade895802f06c8d7d6b3565cf806363efc6f1a",
+              "objectPath": "evidence/derived/mineru-json/sha256/05/10/0510682f583eb9b704dceddcd6ade895802f06c8d7d6b3565cf806363efc6f1a.json",
+              "pages": [
+                7
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735RKX:page:1:3f58e5c464b59cb327e6e9d0af4556b3e5cdd02a725da04f8951f419780c8c21"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735RKX:page:2:8c2b0e6c4ce3bdab29efa8b4bce78e5f319ac3b8bb7b22e4a48872881022f16e"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735RKX:page:3:3cd8a4c32929cc9dd80967c2084efda161dc05bac85cef41d717e07140ed0c09"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735RKX:page:4:7ca7453e228ef3c5d4609378a6bffcfe8cb97ec22ac1327aec2de56d48add593"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735RKX:page:5:72ec44483c3e4465ceffb37b14d2fcdd0796d12a3e8e33e10745413c427254cd"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735RKX:page:6:d51125ed188b632dd4e5d6bfccbf63aba3e2b56e611650f54147b6cc936b8a38"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735RKX:page:7:5d90cc8e7303fdfc978bf917e053cbbb808ae81b602c5a0315c525c182d3c28b"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735RKX:page:8:1c4076419280578221603f3a41964c65ef6aac430231942b377d1eec59e46dba"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "ESF8735RKX:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735RKX:page:7:6267ed3c920aeff3ca947d48e1c1e17a59137bd3cf5acec679cf4a8906dcb5aa"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:14:35.792Z",
+            "bindingSha256": "920671135d3b96fe9ab25f9a01abd58ee28f631dd3b61448b6dc7b82c1ef7ed6"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 818,
+              "maximumMm": 818
+            },
+            "depthMm": 570
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux",
+            "contentSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+            "receiptBindingSha256": "920671135d3b96fe9ab25f9a01abd58ee28f631dd3b61448b6dc7b82c1ef7ed6",
+            "page": 4,
+            "fragmentSha256": "9b95c554b7daf2d4a4aed63736ab377d4287fb88ebe8eeeed90630bca3d2dd15"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux",
+            "contentSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+            "receiptBindingSha256": "920671135d3b96fe9ab25f9a01abd58ee28f631dd3b61448b6dc7b82c1ef7ed6",
+            "page": 4,
+            "fragmentSha256": "9b95c554b7daf2d4a4aed63736ab377d4287fb88ebe8eeeed90630bca3d2dd15"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux",
+            "contentSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+            "receiptBindingSha256": "920671135d3b96fe9ab25f9a01abd58ee28f631dd3b61448b6dc7b82c1ef7ed6",
+            "page": 4,
+            "fragmentSha256": "9b95c554b7daf2d4a4aed63736ab377d4287fb88ebe8eeeed90630bca3d2dd15"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_60fbb4444de02b41286470ff",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "widthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 596,
+              "heightMm": 818,
+              "depthMm": 570
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
       }
     },
     {
@@ -52689,6 +54036,255 @@
       }
     },
     {
+      "targetId": "recovery_target_9d8eb5370a8f4566a7dcc509",
+      "referenceId": "fa_ref_e452f5d6a2e0751e65c38a23",
+      "legacyRuntimeId": "ao-33314",
+      "canonicalProductId": "fa_prod_8cfca01f73b38f40ab22df97",
+      "brand": "Electrolux",
+      "model": "ESF6800ROX",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "auditSha256": "4fb5e90ae151bfaa624633c005461fb23c2750d5dde65f5a2f8e419dc2bc3aac",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:15:03.602Z",
+          "contentSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+          "objectPath": "evidence/web/sha256/ab/4d/ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 279972,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "ESF6800ROX",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72",
+              "bbox": [
+                32,
+                777,
+                455,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72",
+              "bbox": [
+                32,
+                777,
+                455,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 610
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 5,
+              "fragmentSha256": "9f0338028a5bc059c1d5b1a1670bb3d469fd383c7bcfe210c09cd0d746bbc9b5",
+              "bbox": [
+                32,
+                142,
+                455,
+                593
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+            "contentSha256": "5f6e2fa1a7ddac8c1c9c66b66673a3b8315d835bac4ca2ad06231d7872719f16",
+            "objectPath": "evidence/derived/mineru-json/sha256/5f/6e/5f6e2fa1a7ddac8c1c9c66b66673a3b8315d835bac4ca2ad06231d7872719f16.json",
+            "byteSize": 61354,
+            "pageCount": 8
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6800ROX:page:1:e100e71c79b59a1ed30fed3d12ad6aa74346555b7cf53802d717aa6e19e271f0"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6800ROX:page:2:fd51c70075cc9789c4431f69ac7acdd0846ac4958038ebd75d6e0b09f84a4921"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6800ROX:page:3:9757475e5f35f216b3dad03860fe97c2947ae29809051cd37190ce0ab4294b96"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6800ROX:page:4:1f32a170c6e49817d35d8c992f1e49c63311461c72ba12b8163b233852980a66"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6800ROX:page:5:250d42704cc0a5f6d4151e1aecbc33f5b296edc693d56653b049776c969f9adb"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6800ROX:page:6:78e6a374dd77a9171802920b635fc1d9deaee8592986fc4dce2485902f252f67"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6800ROX:page:7:742a92a0ea6169bf562d9b14b0922647ea2f52b64f183ca7aeedea9a8e999625"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF6800ROX:page:8:95f6312ffce4dc596e1c3c5cff9a542f907aab478e4e6004150999cd74f29429"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "ESF6800ROX:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:15:03.602Z",
+            "bindingSha256": "49504b88c1e5369dfd38f724fafd113c7b904a15fba721f4ea2bc9fb3fcbccb0"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 610
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux",
+            "contentSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+            "receiptBindingSha256": "49504b88c1e5369dfd38f724fafd113c7b904a15fba721f4ea2bc9fb3fcbccb0",
+            "page": 4,
+            "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux",
+            "contentSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+            "receiptBindingSha256": "49504b88c1e5369dfd38f724fafd113c7b904a15fba721f4ea2bc9fb3fcbccb0",
+            "page": 4,
+            "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux",
+            "contentSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+            "receiptBindingSha256": "49504b88c1e5369dfd38f724fafd113c7b904a15fba721f4ea2bc9fb3fcbccb0",
+            "page": 5,
+            "fragmentSha256": "9f0338028a5bc059c1d5b1a1670bb3d469fd383c7bcfe210c09cd0d746bbc9b5"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_9d9a6795f6cf84ae562766bf",
       "referenceId": "fa_ref_f146f4be05637a92ab43278f",
       "legacyRuntimeId": "ao-30576",
@@ -53580,6 +55176,274 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_a0a5d5195d4e598fe41a5fa5",
+      "referenceId": "fa_ref_6e89cf79b3ce24ad7748d30f",
+      "legacyRuntimeId": "ao-62517",
+      "canonicalProductId": "fa_prod_6b73f30786d38f296be24454",
+      "brand": "Electrolux",
+      "model": "ESF8735ROX",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "auditSha256": "4fb5e90ae151bfaa624633c005461fb23c2750d5dde65f5a2f8e419dc2bc3aac",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:15:51.345Z",
+          "contentSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+          "objectPath": "evidence/web/sha256/49/31/4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 2187182,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "ESF8735ROX",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "f06e62e6df4d0011c005edf14e950027b45c6f5602cb31efd8caebf41eaa32a9",
+              "bbox": [
+                32,
+                731,
+                455,
+                869
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 818
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "f06e62e6df4d0011c005edf14e950027b45c6f5602cb31efd8caebf41eaa32a9",
+              "bbox": [
+                32,
+                731,
+                455,
+                869
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 570
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "f06e62e6df4d0011c005edf14e950027b45c6f5602cb31efd8caebf41eaa32a9",
+              "bbox": [
+                32,
+                731,
+                455,
+                869
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+            "contentSha256": "95f833eed07a7e019ad42d846966e17a97eab36e74c756dffb955fd3c2613ea3",
+            "objectPath": "evidence/derived/mineru-json/sha256/95/f8/95f833eed07a7e019ad42d846966e17a97eab36e74c756dffb955fd3c2613ea3.json",
+            "byteSize": 23080,
+            "pageCount": 8,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              7
+            ],
+            "sourcePageCount": 8,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "025d318e0fd1013613a808a75e472ade8a03cc3db73e977dec11706bc3b3ca48",
+              "objectPath": "evidence/derived/mineru-json/sha256/02/5d/025d318e0fd1013613a808a75e472ade8a03cc3db73e977dec11706bc3b3ca48.json",
+              "pages": [
+                7
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735ROX:page:1:c8ab221ee00a116def0e343dd1e7753a394d91bb16f1c2787bfde64255c3b290"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735ROX:page:2:291c2c9ab252e4c9c07b7d0ab76187c699e46c8fa94498b4d3e67bb7bd5099db"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735ROX:page:3:198ee1775dc8dc5ea4c9f426fc6c1251a2cd8836cfd8bb21b0e2640b4b06cf8c"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735ROX:page:4:7a1482af306053c746b5dca75b867281d9881062f392a68b83c37451137d41c4"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735ROX:page:5:a823aa7bc7d4d33d9fb9e96c6aa0bc999adc2a8966cec5fa729da308565ccfad"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735ROX:page:6:4f532c9b0153fc802c1cfbe9cfaf0cd6d19721dd80cbd6918b4acdce76407540"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735ROX:page:7:1806fddf4292e53cee08cd238eec50136b9012d15bbb520487c99d13681382db"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735ROX:page:8:66ad2bef5cd1699533e15bd730eb90bb5f9ec80e91709c5936b7a09bec9b4072"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "ESF8735ROX:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESF8735ROX:page:7:4b39378efb46bd9d73f569fb235a6ec9dd3004b4e0793440b4965eeaf79a397d"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:15:51.345Z",
+            "bindingSha256": "e533d452aa2441f52bdc04f7f9adee39c57c0ea1c378e483557876bbdd91c892"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 818,
+              "maximumMm": 818
+            },
+            "depthMm": 570
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux",
+            "contentSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+            "receiptBindingSha256": "e533d452aa2441f52bdc04f7f9adee39c57c0ea1c378e483557876bbdd91c892",
+            "page": 4,
+            "fragmentSha256": "f06e62e6df4d0011c005edf14e950027b45c6f5602cb31efd8caebf41eaa32a9"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux",
+            "contentSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+            "receiptBindingSha256": "e533d452aa2441f52bdc04f7f9adee39c57c0ea1c378e483557876bbdd91c892",
+            "page": 4,
+            "fragmentSha256": "f06e62e6df4d0011c005edf14e950027b45c6f5602cb31efd8caebf41eaa32a9"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux",
+            "contentSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+            "receiptBindingSha256": "e533d452aa2441f52bdc04f7f9adee39c57c0ea1c378e483557876bbdd91c892",
+            "page": 4,
+            "fragmentSha256": "f06e62e6df4d0011c005edf14e950027b45c6f5602cb31efd8caebf41eaa32a9"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8"
         ]
       },
       "reconciliation": {
@@ -75134,6 +76998,278 @@
       }
     },
     {
+      "targetId": "recovery_target_da978a2ae3d441988e7e7e63",
+      "referenceId": "fa_ref_13cf77bb02c8994b168062e0",
+      "legacyRuntimeId": "ao-33315",
+      "canonicalProductId": "fa_prod_ac1ccc98567ce664ae10ee71",
+      "brand": "Electrolux",
+      "model": "ESL6610RO",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "auditSha256": "4fb5e90ae151bfaa624633c005461fb23c2750d5dde65f5a2f8e419dc2bc3aac",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:16:42.797Z",
+          "contentSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+          "objectPath": "evidence/web/sha256/05/c8/05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 391893,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "ESL6610RO",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128",
+              "bbox": [
+                32,
+                776,
+                455,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 818
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128",
+              "bbox": [
+                32,
+                776,
+                455,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 550
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 5,
+              "fragmentSha256": "6bee1b8a42577c24dbd24d1aa08c981b65a82850cb5c00a0476f6ced1d10c353",
+              "bbox": [
+                32,
+                142,
+                455,
+                415
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+            "contentSha256": "3b1624528f29a9cf0d56945e78b9a45d60736d5b0da341c23ece37df46e0b6f2",
+            "objectPath": "evidence/derived/mineru-json/sha256/3b/16/3b1624528f29a9cf0d56945e78b9a45d60736d5b0da341c23ece37df46e0b6f2.json",
+            "byteSize": 25403,
+            "pageCount": 9,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              8
+            ],
+            "sourcePageCount": 9,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "92f9c9c9982949bed0dc043f950ec50f4704bffdd32d897cfb4745b2f1512374",
+              "objectPath": "evidence/derived/mineru-json/sha256/92/f9/92f9c9c9982949bed0dc043f950ec50f4704bffdd32d897cfb4745b2f1512374.json",
+              "pages": [
+                8
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL6610RO:page:1:7200e14bfb31e9a53ed48d38674e64c0fa2d41c5cf7b0e7d965aea7d36afa4bf"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL6610RO:page:2:ab0b9a1fec29daa050d0e320aabb19689bcf830073eced80365487a70ce652b3"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL6610RO:page:3:96f3d13aaf657239fe19741848a425b47d8510b6441682fb56f8dce2c3e9d031"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL6610RO:page:4:49ed5fbbaec520ec28cf9004213171ffa672b61d08f729803e99a77f445058c1"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL6610RO:page:5:3368ce996e59b457ab455456edd95a7f35d8de36a0d6939b34d52d4d075ef2df"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL6610RO:page:6:f3f3745cf32958fa92c55871fb1cffcc797c1f6df3b01070830bb6bab285a210"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL6610RO:page:7:e5c1087eda69da9ad413f8a093d8fb081b819525450b0a97aed5e39b9dc90350"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL6610RO:page:8:7834c1282bdbd2e075f116b22d3c19a8c0341021bd1604241703e97db22fbc50"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL6610RO:page:9:1f22a89c8547976d60cb4efc62576398427e22ad4f5a67be12f4ec89327bc85c"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "ESL6610RO:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL6610RO:page:8:cc2f38ae72ed4d0c834b65cc2036c37d1a2a93edc3a1021a9a4cc9835b1aa965"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:16:42.797Z",
+            "bindingSha256": "bdd1442a87cf297d057f37486cc77c1acc12762c0170efb1893399ea2eabde47"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 818,
+              "maximumMm": 818
+            },
+            "depthMm": 550
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux",
+            "contentSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+            "receiptBindingSha256": "bdd1442a87cf297d057f37486cc77c1acc12762c0170efb1893399ea2eabde47",
+            "page": 4,
+            "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux",
+            "contentSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+            "receiptBindingSha256": "bdd1442a87cf297d057f37486cc77c1acc12762c0170efb1893399ea2eabde47",
+            "page": 4,
+            "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux",
+            "contentSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+            "receiptBindingSha256": "bdd1442a87cf297d057f37486cc77c1acc12762c0170efb1893399ea2eabde47",
+            "page": 5,
+            "fragmentSha256": "6bee1b8a42577c24dbd24d1aa08c981b65a82850cb5c00a0476f6ced1d10c353"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_dae6775aa8a110232e8bb2be",
       "referenceId": "fa_ref_15bd9138423891ee4d5596f9",
       "legacyRuntimeId": "historical-fa_ref_15bd9138423891ee4d5596f9",
@@ -86313,6 +88449,255 @@
       }
     },
     {
+      "targetId": "recovery_target_fa72ef813f1bfaf73ab35c50",
+      "referenceId": "fa_ref_00b11171902c9ebd7b6603d7",
+      "legacyRuntimeId": "ao-52803",
+      "canonicalProductId": "fa_prod_9bc844a4eb347f777d1b4b74",
+      "brand": "Electrolux",
+      "model": "ESL7510RO",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "auditSha256": "4fb5e90ae151bfaa624633c005461fb23c2750d5dde65f5a2f8e419dc2bc3aac",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:17:10.517Z",
+          "contentSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+          "objectPath": "evidence/web/sha256/c7/b8/c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 503675,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "ESL7510RO",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "781b4a86cb6e7089c169d2d5ff7bf99221b248b83b4c285517a55a92ab72b9d4",
+              "bbox": [
+                32,
+                776,
+                457,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 818
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "781b4a86cb6e7089c169d2d5ff7bf99221b248b83b4c285517a55a92ab72b9d4",
+              "bbox": [
+                32,
+                776,
+                457,
+                871
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 550
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 5,
+              "fragmentSha256": "c1bf2b2b06b065a98b755d739c88d7e1a28578f36e93971ae0be0eb2c237bc54",
+              "bbox": [
+                32,
+                143,
+                455,
+                415
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+            "contentSha256": "c5baea47e7ee536270a5a8f3d04c455151f1f6e2f8104c592520438cb0982a81",
+            "objectPath": "evidence/derived/mineru-json/sha256/c5/ba/c5baea47e7ee536270a5a8f3d04c455151f1f6e2f8104c592520438cb0982a81.json",
+            "byteSize": 51895,
+            "pageCount": 8
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL7510RO:page:1:7176334774f614a35f638e004544be5e6884aa60e854a2faf0e967259d21aeef"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL7510RO:page:2:1cf6ca1eccee9e53dc34e87ef1b7ba44fa5261a793beb12839bf4a233115779b"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL7510RO:page:3:3d3b8bbb71bfe2182003f27393f2c7746440320981aea05c31f14de234440946"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL7510RO:page:4:5c98e1142bcb85be01f7af99e95e14062062cc992f7732c339b162f30b7e8fe4"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL7510RO:page:5:e26d64d1b60e2e5eb08d31800bee1ce8a99525d67de3fa13e5ac52aa9a2dc4d2"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL7510RO:page:6:652eff2b9779693dec4c090f8848da43829d2b328c1e1b135d91379f162fbd0b"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL7510RO:page:7:219498a019ce2ff9c7073e480d685dee765504250c98f64e6d1862d7bee8dca6"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "ESL7510RO:page:8:2910ac3f5800fbf9e6fcaacea35552dde9a910adc0abcf6e973883d403ecddaa"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "ESL7510RO:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:17:10.517Z",
+            "bindingSha256": "4d4e3b3cdc476465894c863439c2ed39d8c878e8eb6f807f7957399eea904267"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 818,
+              "maximumMm": 818
+            },
+            "depthMm": 550
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux",
+            "contentSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+            "receiptBindingSha256": "4d4e3b3cdc476465894c863439c2ed39d8c878e8eb6f807f7957399eea904267",
+            "page": 4,
+            "fragmentSha256": "781b4a86cb6e7089c169d2d5ff7bf99221b248b83b4c285517a55a92ab72b9d4"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux",
+            "contentSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+            "receiptBindingSha256": "4d4e3b3cdc476465894c863439c2ed39d8c878e8eb6f807f7957399eea904267",
+            "page": 4,
+            "fragmentSha256": "781b4a86cb6e7089c169d2d5ff7bf99221b248b83b4c285517a55a92ab72b9d4"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux",
+            "contentSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+            "receiptBindingSha256": "4d4e3b3cdc476465894c863439c2ed39d8c878e8eb6f807f7957399eea904267",
+            "page": 5,
+            "fragmentSha256": "c1bf2b2b06b065a98b755d739c88d7e1a28578f36e93971ae0be0eb2c237bc54"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_fa91a8c4bb8f5e3280f2b837",
       "referenceId": "fa_ref_58d6644d988c7bd0e844c80d",
       "legacyRuntimeId": "ao-45245",
@@ -88804,6 +91189,13 @@
       "queueSha256": "051bec2bc239c649615b89861e7997f9c109bd433622bb44f68d206f001bb820",
       "resultsSha256": "bafe4ef9a4389d71f5511e1303eb8c84f1cbedc2c3523a1d7e52037d8c4b22d2",
       "auditSha256": "8f4200cdb9a46e23a8da4d750e63fb3dabe12c5e0efed774172c7bdc999f6dc3"
+    },
+    {
+      "batchId": "historical-recovery-cb30f615bf1f90a54c8a1122-slice-3a9d60e09341",
+      "batchSha256": "cf49a55953f60be7b396d5d723caf0a6a5df44a1f21c396c9b0610038742bc2c",
+      "queueSha256": "3d42c86a049ff5095c5e1056175608b0ddec2519491744af1f5903f91575274c",
+      "resultsSha256": "d579910798c713822594b9fb03d81a7bd085cf70e6d717bd11eae7917734fbde",
+      "auditSha256": "4fb5e90ae151bfaa624633c005461fb23c2750d5dde65f5a2f8e419dc2bc3aac"
     },
     {
       "batchId": "historical-recovery-d01ec36b2cd9d5c0faf3321d-slice-45da35cec619",

@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
-    "historical-recovery:historical-recovery-cumulative-v1": "5112fcdebf31023486d33346e447478d2fc1dc1b31e54af134a5468da3eebc72"
+    "historical-recovery:historical-recovery-cumulative-v1": "1692bc02bd44de59d0837081335f29336dcc66450f62cdb9f5de4d31b7e066b5"
   },
   "records": [
     {
@@ -20759,14 +20759,26 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 850,
+        "depth": 610
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_1474ddeab220d7945bca6a7e",
+          "snapshotSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+          "sourceLines": [
+            4,
+            5
+          ]
         }
       ],
       "catalogProductIds": [
@@ -20775,8 +20787,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_1474ddeab220d7945bca6a7e",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux",
+          "contentSha256": "bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4",
+          "receiptBindingSha256": "3432788b7a307e79bbeddd960238c929d0bedd9a500036f9b9454add9a618b91",
+          "verifiedAt": "2026-07-17T03:11:01.847Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "c1d3ca0ee7c9254f68ec395fdec5f33d4527de08ef8cb165295adb0569ee9902"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "c1d3ca0ee7c9254f68ec395fdec5f33d4527de08ef8cb165295adb0569ee9902"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 5,
+              "fragmentSha256": "bcddce035e6205a3da73165f60f8ddbfca1f289d88404fd44d472c4c945da7d2"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/bd/7b/bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4.pdf"
+        }
       ]
     },
     {
@@ -20794,14 +20832,26 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 850,
+        "depth": 610
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_9d8eb5370a8f4566a7dcc509",
+          "snapshotSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+          "sourceLines": [
+            4,
+            5
+          ]
         }
       ],
       "catalogProductIds": [
@@ -20810,8 +20860,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_9d8eb5370a8f4566a7dcc509",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux",
+          "contentSha256": "ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7",
+          "receiptBindingSha256": "49504b88c1e5369dfd38f724fafd113c7b904a15fba721f4ea2bc9fb3fcbccb0",
+          "verifiedAt": "2026-07-17T03:15:03.602Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 5,
+              "fragmentSha256": "9f0338028a5bc059c1d5b1a1670bb3d469fd383c7bcfe210c09cd0d746bbc9b5"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/ab/4d/ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7.pdf"
+        }
       ]
     },
     {
@@ -20864,14 +20940,26 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 850,
+        "depth": 610
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3a08318b0c895cef7dab3a85",
+          "snapshotSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+          "sourceLines": [
+            4,
+            5
+          ]
         }
       ],
       "catalogProductIds": [
@@ -20880,8 +20968,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3a08318b0c895cef7dab3a85",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux",
+          "contentSha256": "81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023",
+          "receiptBindingSha256": "84ef5e0c4a5a53adc0f11124c0a07225ff7549b333bc3d94678d8f20db613656",
+          "verifiedAt": "2026-07-17T03:13:46.865Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "713a5c86d46d9f879b0766568c7ec37615f6d9ba2c38e4c1c969862061537c72"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 5,
+              "fragmentSha256": "3d8867d9f453daba0954039038d205d01ffa6b9432cfa34851d1a466c6c79988"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/81/a3/81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023.pdf"
+        }
       ]
     },
     {
@@ -20899,14 +21013,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 818,
+        "depth": 570
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_5061bd3e463a2fd0df1869c7",
+          "snapshotSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -20915,8 +21040,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_5061bd3e463a2fd0df1869c7",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux",
+          "contentSha256": "dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298",
+          "receiptBindingSha256": "920671135d3b96fe9ab25f9a01abd58ee28f631dd3b61448b6dc7b82c1ef7ed6",
+          "verifiedAt": "2026-07-17T03:14:35.792Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "9b95c554b7daf2d4a4aed63736ab377d4287fb88ebe8eeeed90630bca3d2dd15"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "9b95c554b7daf2d4a4aed63736ab377d4287fb88ebe8eeeed90630bca3d2dd15"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "9b95c554b7daf2d4a4aed63736ab377d4287fb88ebe8eeeed90630bca3d2dd15"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/df/f3/dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298.pdf"
+        }
       ]
     },
     {
@@ -20934,14 +21085,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 818,
+        "depth": 570
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a0a5d5195d4e598fe41a5fa5",
+          "snapshotSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -20950,8 +21112,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a0a5d5195d4e598fe41a5fa5",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux",
+          "contentSha256": "4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8",
+          "receiptBindingSha256": "e533d452aa2441f52bdc04f7f9adee39c57c0ea1c378e483557876bbdd91c892",
+          "verifiedAt": "2026-07-17T03:15:51.345Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "f06e62e6df4d0011c005edf14e950027b45c6f5602cb31efd8caebf41eaa32a9"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "f06e62e6df4d0011c005edf14e950027b45c6f5602cb31efd8caebf41eaa32a9"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "f06e62e6df4d0011c005edf14e950027b45c6f5602cb31efd8caebf41eaa32a9"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/49/31/4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8.pdf"
+        }
       ]
     },
     {
@@ -21091,14 +21279,26 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 818,
+        "depth": 550
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_da978a2ae3d441988e7e7e63",
+          "snapshotSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+          "sourceLines": [
+            4,
+            5
+          ]
         }
       ],
       "catalogProductIds": [
@@ -21107,8 +21307,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_da978a2ae3d441988e7e7e63",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux",
+          "contentSha256": "05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21",
+          "receiptBindingSha256": "bdd1442a87cf297d057f37486cc77c1acc12762c0170efb1893399ea2eabde47",
+          "verifiedAt": "2026-07-17T03:16:42.797Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 5,
+              "fragmentSha256": "6bee1b8a42577c24dbd24d1aa08c981b65a82850cb5c00a0476f6ced1d10c353"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/05/c8/05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21.pdf"
+        }
       ]
     },
     {
@@ -21126,14 +21352,26 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 818,
+        "depth": 570
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_1ce55d62d4938da2f03880d7",
+          "snapshotSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+          "sourceLines": [
+            4,
+            5
+          ]
         }
       ],
       "catalogProductIds": [
@@ -21142,8 +21380,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_1ce55d62d4938da2f03880d7",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux",
+          "contentSha256": "762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db",
+          "receiptBindingSha256": "8fa9f2172309a8659a1603afa4d12db7519b69dcef9237c683333cd41fd50061",
+          "verifiedAt": "2026-07-17T03:12:00.333Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "799c4ec477cc077b4843c2f1aa47f78dcca0b5bb9a3810fd5d39024ee60a5128"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 5,
+              "fragmentSha256": "91fd9198178962aa8d469822fa2dba2524179cd7f11b92aba4c88d28c3934450"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/76/2a/762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db.pdf"
+        }
       ]
     },
     {
@@ -21161,14 +21425,26 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 818,
+        "depth": 550
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_fa72ef813f1bfaf73ab35c50",
+          "snapshotSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+          "sourceLines": [
+            4,
+            5
+          ]
         }
       ],
       "catalogProductIds": [
@@ -21177,8 +21453,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_fa72ef813f1bfaf73ab35c50",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux",
+          "contentSha256": "c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0",
+          "receiptBindingSha256": "4d4e3b3cdc476465894c863439c2ed39d8c878e8eb6f807f7957399eea904267",
+          "verifiedAt": "2026-07-17T03:17:10.517Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "781b4a86cb6e7089c169d2d5ff7bf99221b248b83b4c285517a55a92ab72b9d4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "781b4a86cb6e7089c169d2d5ff7bf99221b248b83b4c285517a55a92ab72b9d4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 5,
+              "fragmentSha256": "c1bf2b2b06b065a98b755d739c88d7e1a28578f36e93971ae0be0eb2c237bc54"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/c7/b8/c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0.pdf"
+        }
       ]
     },
     {
@@ -21244,14 +21546,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 596,
+        "height": 818,
+        "depth": 550
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_30028c18134fcd65daffecc8",
+          "snapshotSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -21260,8 +21573,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_30028c18134fcd65daffecc8",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux",
+          "contentSha256": "b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8",
+          "receiptBindingSha256": "3fcc3fec415d7d91fcb605c339a5bfabc01c850938ea9a850b5ef5635be5915f",
+          "verifiedAt": "2026-07-17T03:12:54.071Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "6777c144bbccc2530215bc43d9c1342d3f78d63843a242df713e2525e8b17270"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "6777c144bbccc2530215bc43d9c1342d3f78d63843a242df713e2525e8b17270"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "6777c144bbccc2530215bc43d9c1342d3f78d63843a242df713e2525e8b17270"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/b8/db/b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8.pdf"
+        }
       ]
     },
     {
@@ -324836,16 +325175,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2852,
-      "MODEL_RECEIPT": 290,
+      "IDENTITY_ONLY": 2843,
+      "MODEL_RECEIPT": 299,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2852,
-      "AUTO_FILL": 301,
+      "MEASURE_REQUIRED": 2843,
+      "AUTO_FILL": 310,
       "QUARANTINED": 88
     }
   }

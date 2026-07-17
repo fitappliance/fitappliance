@@ -13,16 +13,16 @@ Generated: 2026-07-12T12:40:00.000Z
 | Historical records | 8093 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 915 |
-| Valid MinerU documents | 900 |
+| MinerU documents | 924 |
+| Valid MinerU documents | 909 |
 | Invalid or orphaned MinerU documents | 15 |
-| Documents with recognised expressions | 471 |
+| Documents with recognised expressions | 480 |
 | Documents without recognised expressions | 429 |
-| Mapped MinerU documents | 867 |
+| Mapped MinerU documents | 876 |
 | Unmapped MinerU documents | 33 |
-| Dimension-expression observations | 1135 |
-| Reusable PDF grammar profiles | 214 |
-| Research gaps | 1009 |
+| Dimension-expression observations | 1150 |
+| Reusable PDF grammar profiles | 215 |
+| Research gaps | 1021 |
 
 A marketing-series count is a proven minimum, never an estimate of the
 manufacturer's complete range. `UNKNOWN` is intentional when official text
@@ -209,7 +209,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Di Lusso | 9 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Domain | 9 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Duos | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Electrolux | 20 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
+| Electrolux | 20 | 9 | 0 | 2 | `MINERU_SAMPLE_OBSERVED` |
 | Emilia | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Esatto | 21 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | EURO | 33 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -447,8 +447,8 @@ and every extracted value still requires exact-model identity and receipt checks
 | `GROUPED_AXIS_SEQUENCE` | 125 | Explicit axis order followed by one three-value sequence. |
 | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | 31 | Explicit three-axis sequence plus a qualified alternative depth. |
 | `HIERARCHICAL_DEPTH_VARIANTS` | 1 | A Depth parent row followed by explicitly qualified product-depth variants. |
-| `INDIVIDUAL_LABELLED_AXIS` | 225 | One named axis/value pair; combine only through independently proven model scope. |
-| `INDIVIDUALLY_LABELLED_AXES` | 298 | Two or more dimensions expressed as separate named axis/value pairs. |
+| `INDIVIDUAL_LABELLED_AXIS` | 231 | One named axis/value pair; combine only through independently proven model scope. |
+| `INDIVIDUALLY_LABELLED_AXES` | 307 | Two or more dimensions expressed as separate named axis/value pairs. |
 | `INLINE_LABELLED_AXES` | 155 | Observed parser research pattern. |
 | `INLINE_VALUE_LABELLED_AXIS_SEQUENCE` | 7 | Each value carries its own explicit W, H, or D label and unit. |
 | `LETTERED_EXPLICIT_AXIS_LIST` | 6 | Diagram letters explicitly map to axis names and values. |
@@ -475,7 +475,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | 22 |
 | `SUPPORTED_EXPLICIT_HANDLE_INCLUSIVE_DEPTH` | 1 |
 | `SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE` | 7 |
-| `SUPPORTED_EXPLICIT_LABELS` | 439 |
+| `SUPPORTED_EXPLICIT_LABELS` | 454 |
 | `SUPPORTED_EXPLICIT_NET_SECTION` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_AXIS_COLUMNS` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | 1 |
@@ -6292,12 +6292,67 @@ Research gaps:
 
 - Raw brand variants: `Electrolux`
 - Inventory models: 20
-- Coverage: `NO_MINERU_SAMPLE`; MinerU documents: 0
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 9
 - Proven marketing series: 0; total series count: `UNKNOWN`
-- PDF grammar profiles: 0
-- Complete exact-model parser replays: 0
+- PDF grammar profiles: 2
+- Complete exact-model parser replays: 2
 
-`NO_MINERU_SAMPLE`: no PDF expression may be assumed for this brand.
+#### PDF grammar pdf_grammar_18d3fb848d41715e
+
+- Group type: `parser_family`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `ESF6700ROW`, `ESF6800ROX`, `ESF8725ROX`, `ESL6610RO`, `ESL69200RO`, `ESL7510RO`
+- PDF SHA-256: `05c81d5971bace39f0c50eabc3d770029b22c0f16c2cad3fc614f90a1c23cf21`, `762a2b7524a444900dd47cba0bbf61231a00998c7608f20a5128f5efb69b26db`, `81a3c2f627ca987d3b91340b9f48cd141993f07f66b7831b52382e4e6b18d023`, `ab4db76fa3698edbdc73a7e37412d5c9f503ac94d33d19d160da022aabe5dfb7`, `bd7bce112881a4198639c373a31dbc0d50a8912dab3bd47fdf8a65b11d13d9f4`, `c7b8b0a488bf6c4bd34ba2a73f4826967c3b4a53087b75d3433453beb6f09bc0`
+- PDF grammar profiles: `pdf_grammar_18d3fb848d41715e`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6700ROW&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF6800ROX&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8725ROX&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL6610RO&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL69200RO&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL7510RO&brand=Electrolux>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width | height, width | `product_closed_candidate` | Total height (mm) 850 \| Total width (mm) 596 | p.4, `713a5c86d46d` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width | height, width | `product_closed_candidate` | Total height (mm) 818 \| Total width (mm) 596 | p.4, `799c4ec477cc` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_PAGE_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Total depth (mm) 550 | p.5, `c1bf2b2b06b0` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_PAGE_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Total depth (mm) 610 | p.5, `bcddce035e62` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_PAGE_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Total depth (mm) 550 | p.5, `6bee1b8a4257` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_PAGE_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Total depth (mm) 610 | p.5, `3d8867d9f453` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_PAGE_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Total depth (mm) 610 | p.5, `9f0338028a5b` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width | height, width | `product_closed_candidate` | Total height (mm) 850 \| Total width (mm) 596 | p.4, `713a5c86d46d` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width | height, width | `product_closed_candidate` | Total height (mm) 850 \| Total width (mm) 596 | p.4, `c1d3ca0ee7c9` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_PAGE_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Total depth (mm) 570 | p.5, `91fd91981789` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width | height, width | `product_closed_candidate` | Total height (mm) 818 \| Total width (mm) 596 | p.4, `781b4a86cb6e` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width | height, width | `product_closed_candidate` | Total height (mm) 818 \| Total width (mm) 596 | p.4, `799c4ec477cc` |
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 6: Shipping Volume (m3) 0.402 Shipping Weight (Kg) 40.1 Pack Dimensions Height (mm) 910 Pack Dimension Width (mm) 650
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 7
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 7: Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 680
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 7: Shipping Volume (m3) 0.389 Shipping Weight (Kg) 47.7 Pack Dimensions Height (mm) 900 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 680 Total shelf ...
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 7: Shipping Volume (m3) 0.393 Shipping Weight (Kg) 51.6 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 650 Pack Dimension Depth (mm) 680
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 7: Shipping Volume (m3) 0.393 Shipping Weight (Kg) 47.6 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 650 Pack Dimension Depth (mm) 680
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 7: Pack Dimensions Height (mm) 870 Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 680 Total shelf area (m^2) 0.432
+
+#### PDF grammar pdf_grammar_8f60826f847a01df
+
+- Group type: `parser_family`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `ESF8735RKX`, `ESF8735ROX`, `ESL8530RO`
+- PDF SHA-256: `4931ef1102b187d55e9e6cb6ca6483fcaa7a42cd0db8a8be729d6f04c63943b8`, `b8db6fcb3e373c07d60b7093afe7d3fe9379efb3090275c4c201a94ef9ddd3f8`, `dff39d6ffe1a878daf7c32be8b78a5a5efc075ce03f6f42a993b146de1383298`
+- PDF grammar profiles: `pdf_grammar_8f60826f847a01df`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735RKX&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESF8735ROX&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=ESL8530RO&brand=Electrolux>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Total height (mm) 818 \| Total width (mm) 596 \| Total depth (mm) 550 | p.4, `6777c144bbcc` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Total height (mm) 818 \| Total width (mm) 600 \| Total depth (mm) 570 | p.4, `9b95c554b7da` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Total height (mm) 818 \| Total width (mm) 596 \| Total depth (mm) 570 | p.4, `f06e62e6df4d` |
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 5
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 5
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 5
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 6: Shipping Weight (Kg) 40.10 Shipping Weight (Kg) 38.67 Pack Dimensions Height (mm) 870
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 7: Pack Dimension Width (mm) 635 Pack Dimension Depth (mm) 680
 
 ### Emilia
 

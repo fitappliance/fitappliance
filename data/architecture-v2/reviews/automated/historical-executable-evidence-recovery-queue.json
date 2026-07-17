@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-17T03:05:50.351Z",
-  "sourceAcquisitionQueueSha256": "9d153b74ef6a7368eafcd7eb75b6b3df80e1d77f979c51b36d86a5f8cae54387",
+  "generatedAt": "2026-07-17T03:18:55.893Z",
+  "sourceAcquisitionQueueSha256": "5f0a1985198d46156ca00a92b8414a9ab32623b777a76c41458a14d74fd220a3",
   "evidenceProcessorEpochs": {
     "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
     "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
@@ -13,22 +13,22 @@
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7712,
+    "acquisitionRecords": 7703,
     "fetchJobs": 0,
-    "targets": 7594,
-    "resolverOnlyTargets": 7594,
+    "targets": 7585,
+    "resolverOnlyTargets": 7585,
     "candidateEdges": 0,
-    "uniqueReferences": 7594,
+    "uniqueReferences": 7585,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 35,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1020,
+      "CURRENT_RETAIL": 1011,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 825,
+      "P0_CURRENT_MISSING_DIMENSIONS": 816,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -40,339 +40,6 @@
   },
   "jobs": [],
   "targets": [
-    {
-      "targetId": "recovery_target_1474ddeab220d7945bca6a7e",
-      "referenceId": "fa_ref_c4840a2878e5b72696d65e27",
-      "legacyRuntimeId": "ao-33312",
-      "canonicalProductId": "fa_prod_038dc9b0e74e69bf049f6cbd",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF6700ROW",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_16bd1b24989d1739b5fce9b3",
-        "legacy:data/pdf-evidence-raw/ESF6700ROW.json",
-        "source:doc_16bd1b24989d1739b5fce9b3"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_16bd1b24989d1739b5fce9b3",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 850,
-            "depth": 610
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_9d8eb5370a8f4566a7dcc509",
-      "referenceId": "fa_ref_e452f5d6a2e0751e65c38a23",
-      "legacyRuntimeId": "ao-33314",
-      "canonicalProductId": "fa_prod_8cfca01f73b38f40ab22df97",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF6800ROX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_62f61b367ae95102b0e86516",
-        "legacy:data/pdf-evidence-raw/ESF6800ROX.json",
-        "source:doc_62f61b367ae95102b0e86516"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_62f61b367ae95102b0e86516",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 850,
-            "depth": 610
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_3a08318b0c895cef7dab3a85",
-      "referenceId": "fa_ref_735731fb39e820b5b1bb3e66",
-      "legacyRuntimeId": "ao-52802",
-      "canonicalProductId": "fa_prod_398226b5e4402293d1bbc0f0",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF8725ROX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_8fd33779aa8aef466b013421",
-        "legacy:data/pdf-evidence-raw/ESF8725ROX.json",
-        "source:doc_8fd33779aa8aef466b013421"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_8fd33779aa8aef466b013421",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 850,
-            "depth": 610
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_5061bd3e463a2fd0df1869c7",
-      "referenceId": "fa_ref_62f717bafb3662cc8d57802d",
-      "legacyRuntimeId": "ao-72422",
-      "canonicalProductId": "fa_prod_b1a5323e3437a0376d120fc0",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF8735RKX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_60fbb4444de02b41286470ff",
-        "legacy:data/pdf-evidence-raw/ESF8735RKX.json",
-        "source:doc_60fbb4444de02b41286470ff"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_60fbb4444de02b41286470ff",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 570
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_a0a5d5195d4e598fe41a5fa5",
-      "referenceId": "fa_ref_6e89cf79b3ce24ad7748d30f",
-      "legacyRuntimeId": "ao-62517",
-      "canonicalProductId": "fa_prod_6b73f30786d38f296be24454",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESF8735ROX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_4bb0dec323e8b4a7012a3100",
-        "legacy:data/pdf-evidence-raw/ESF8735ROX.json",
-        "source:doc_4bb0dec323e8b4a7012a3100"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_4bb0dec323e8b4a7012a3100",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 570
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_da978a2ae3d441988e7e7e63",
-      "referenceId": "fa_ref_13cf77bb02c8994b168062e0",
-      "legacyRuntimeId": "ao-33315",
-      "canonicalProductId": "fa_prod_ac1ccc98567ce664ae10ee71",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL6610RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_76676fe3137550dd8038251d",
-        "legacy:data/pdf-evidence-raw/ESL6610RO.json",
-        "source:doc_76676fe3137550dd8038251d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_76676fe3137550dd8038251d",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 550
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_1ce55d62d4938da2f03880d7",
-      "referenceId": "fa_ref_40fb98197033b89a407b6b34",
-      "legacyRuntimeId": "ao-88458",
-      "canonicalProductId": "fa_prod_535e7e5c0f19b813eeeb32cf",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL69200RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_da9d0586d7afaf48c22bcdc1",
-        "legacy:data/pdf-evidence-raw/ESL69200RO.json",
-        "source:doc_da9d0586d7afaf48c22bcdc1"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_da9d0586d7afaf48c22bcdc1",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 570
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_fa72ef813f1bfaf73ab35c50",
-      "referenceId": "fa_ref_00b11171902c9ebd7b6603d7",
-      "legacyRuntimeId": "ao-52803",
-      "canonicalProductId": "fa_prod_9bc844a4eb347f777d1b4b74",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL7510RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_fcde64a303100ada5163773d",
-        "legacy:data/pdf-evidence-raw/ESL7510RO.json",
-        "source:doc_fcde64a303100ada5163773d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_fcde64a303100ada5163773d",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 550
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_30028c18134fcd65daffecc8",
-      "referenceId": "fa_ref_3d296060041ec7d9f34f71b8",
-      "legacyRuntimeId": "ao-62518",
-      "canonicalProductId": "fa_prod_65115843ef4b1bf69bdc8b04",
-      "category": "dishwasher",
-      "brand": "Electrolux",
-      "model": "ESL8530RO",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_08941be0c0093cb441e4d2a0",
-        "legacy:data/pdf-evidence-raw/ESL8530RO.json",
-        "source:doc_08941be0c0093cb441e4d2a0"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_08941be0c0093cb441e4d2a0",
-          "dimensionsMm": {
-            "width": 596,
-            "height": 818,
-            "depth": 550
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
     {
       "targetId": "recovery_target_24ed948d4390531eefa18311",
       "referenceId": "fa_ref_fd1cddcdc50d2622c30e7b3c",
