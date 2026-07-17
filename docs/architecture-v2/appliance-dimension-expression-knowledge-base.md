@@ -13,16 +13,16 @@ Generated: 2026-07-12T12:40:00.000Z
 | Historical records | 8089 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 939 |
-| Valid MinerU documents | 924 |
+| MinerU documents | 940 |
+| Valid MinerU documents | 925 |
 | Invalid or orphaned MinerU documents | 15 |
 | Documents with recognised expressions | 495 |
-| Documents without recognised expressions | 429 |
-| Mapped MinerU documents | 891 |
+| Documents without recognised expressions | 430 |
+| Mapped MinerU documents | 892 |
 | Unmapped MinerU documents | 33 |
 | Dimension-expression observations | 1165 |
 | Reusable PDF grammar profiles | 215 |
-| Research gaps | 1036 |
+| Research gaps | 1037 |
 
 A marketing-series count is a proven minimum, never an estimate of the
 manufacturer's complete range. `UNKNOWN` is intentional when official text
@@ -176,7 +176,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Vinopro | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | VOGUE | 24 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Warrior Refrigeration | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Westinghouse | 290 | 66 | 0 | 29 | `MINERU_SAMPLE_OBSERVED` |
+| Westinghouse | 290 | 67 | 0 | 29 | `MINERU_SAMPLE_OBSERVED` |
 | WHIRLPOOL | 25 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | WINTERWULF | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | yokohama | 22 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -4015,7 +4015,7 @@ Research gaps:
 
 - Raw brand variants: `Westinghouse`
 - Inventory models: 290
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 66
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 67
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 29
 - Complete exact-model parser replays: 22
@@ -4101,6 +4101,19 @@ Research gaps:
 | `RESEARCH_MODEL_ROW_BINDING_REQUIRED` | `MODEL_ROW_DIMENSION_MATRIX` | `UNRESOLVED_MODEL_EXPRESSION` | height -> width -> depth -> depth | none | `mixed_product_and_operation` | Product Height (H) \| Product Width (W) \| Product Depth (D) \| Product Depth (D2) (Door Open) \| WTB3700AH/ WH \| 1755 \| 598 \| 650 \| 1199 | p.1, `0a0dd5c2dccf` |
 | `RESEARCH_MODEL_ROW_BINDING_REQUIRED` | `MODEL_ROW_DIMENSION_MATRIX` | `UNRESOLVED_MODEL_EXPRESSION` | height -> width -> depth -> depth | none | `mixed_product_and_operation` | Product Height (H) \| Product Width (W) \| Product Depth (D) \| Product Depth (D2) (Door Open) \| WTB2800AH/WH \| 1605 \| 540 \| 615 \| 1108 | p.1, `0a0dd5c2dccf` |
 | `RESEARCH_MODEL_ROW_BINDING_REQUIRED` | `MODEL_ROW_DIMENSION_MATRIX` | `UNRESOLVED_MODEL_EXPRESSION` | height -> width -> depth -> depth | none | `mixed_product_and_operation` | Product Height (H) \| Product Width (W) \| Product Depth (D) \| Product Depth (D2) (Door Open) \| WTB3400AH/WH \| 1645 \| 598 \| 650 \| 1199 | p.1, `0a0dd5c2dccf` |
+
+#### WBB3400AH-X
+
+- Group type: `model_specific`
+- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
+- Models observed: `WBB3400AH-X`
+- PDF SHA-256: `d1f198786facd36f68601a6d7c3e7f389b40bb7b1ee31b1d9f52c36a58738502`
+- Official/source URLs: <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3400AH-X&brand=Westinghouse>
+
+`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
+
+Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 
 #### WTB5400SC-L
 

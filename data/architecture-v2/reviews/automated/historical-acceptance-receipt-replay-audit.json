@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:52:03.065Z",
-  "sourceBundleSha256": "e077063e7b5e352fae71961b1e6d531c8afcce8b3c1e9735a1363c5872b9b9c4",
+  "generatedAt": "2026-07-17T04:18:44.196Z",
+  "sourceBundleSha256": "03fa22490a6eabc4ce6883fff8cbfac8f423c2df0cdff99eda88dea5debf2596",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -2930,6 +2930,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_88dfd08889fd447af6b6808e",
+      "referenceId": "fa_ref_c81f5e5b550f5da707f38d0c",
+      "brand": "Westinghouse",
+      "model": "WBB3400AH-X",
+      "category": "fridge",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbb3400ah-x/",
+      "sourcePdfSha256": null,
+      "contentSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2",
+      "receiptBindingSha256": "f228b42a58d95fdd34d562565b14de8fdf291da7053cc301ac8278c5e86a1ca3",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_895a1be60e3fa96e85e3015e",
       "referenceId": "fa_ref_34601f00c17825bfd5a8ca86",
       "brand": "Fisher & Paykel",
@@ -5689,11 +5703,11 @@
     }
   ],
   "summary": {
-    "entries": 381,
-    "sources": 406,
-    "passed": 406,
+    "entries": 382,
+    "sources": 407,
+    "passed": 407,
     "failed": 0
   },
-  "checkedObjects": 801,
-  "semanticAuditSha256": "6ee38723877703a13beabba280ee8cea400f715fb54d152f1a46c301e9b1c234"
+  "checkedObjects": 802,
+  "semanticAuditSha256": "0d5d7f0a9cc5d1e6b346d248c803d3eb04ae809ad2cb0f761738f0b416f54fb8"
 }

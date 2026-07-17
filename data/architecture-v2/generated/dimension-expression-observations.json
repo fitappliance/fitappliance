@@ -17,17 +17,17 @@
     "historicalRecords": 8089,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 939,
-    "validMineruDocuments": 924,
+    "mineruDocuments": 940,
+    "validMineruDocuments": 925,
     "invalidMineruDocuments": 15,
     "documentsWithObservations": 495,
-    "documentsWithoutObservations": 429,
-    "mappedMineruDocuments": 891,
+    "documentsWithoutObservations": 430,
+    "mappedMineruDocuments": 892,
     "unmappedMineruDocuments": 33,
     "observations": 1165,
-    "researchGaps": 1036,
+    "researchGaps": 1037,
     "parserProfiles": 215,
-    "parserReplays": 1050,
+    "parserReplays": 1051,
     "completeParserReplays": 439
   },
   "categories": [
@@ -33637,7 +33637,7 @@
             "Westinghouse"
           ],
           "modelCount": 290,
-          "observedMineruDocuments": 66,
+          "observedMineruDocuments": 67,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 5,
           "observedParserProfileCount": 29,
@@ -36218,6 +36218,47 @@
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
+            },
+            {
+              "groupType": "model_specific",
+              "groupName": "WBB3400AH-X",
+              "models": [
+                "WBB3400AH-X"
+              ],
+              "pdfSha256s": [
+                "d1f198786facd36f68601a6d7c3e7f389b40bb7b1ee31b1d9f52c36a58738502"
+              ],
+              "sourceUrls": [
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3400AH-X&brand=Westinghouse"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [],
+              "parserReplays": [
+                {
+                  "pdfSha256": "d1f198786facd36f68601a6d7c3e7f389b40bb7b1ee31b1d9f52c36a58738502",
+                  "category": "fridge",
+                  "brand": "Westinghouse",
+                  "model": "WBB3400AH-X",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "EXACT_MODEL_IDENTITY_NOT_PROVEN"
+                }
+              ],
+              "expressions": [],
+              "researchGaps": [
+                {
+                  "gapType": "NO_RECOGNIZED_DIMENSION_EXPRESSION",
+                  "pdfSha256": "d1f198786facd36f68601a6d7c3e7f389b40bb7b1ee31b1d9f52c36a58738502",
+                  "contentSha256": "8f1022696a4689a560f9a8f4e8d78e94c5e4af91c0e65730d3c9d356c7f4cf3c",
+                  "page": null,
+                  "quote": ""
+                }
+              ],
+              "parserProfileIds": [],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION"
             },
             {
               "groupType": "model_specific",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-17T03:52:43.562Z",
-  "sourceAcquisitionQueueSha256": "2a1da636c23647566ae42610c4581245c30434b19c885fe7b3d465eaee376702",
+  "generatedAt": "2026-07-17T04:19:39.580Z",
+  "sourceAcquisitionQueueSha256": "5cc5a0534835c0362e3c1995f9f17c930e75868159422a35c3cab4796f62e5c5",
   "evidenceProcessorEpochs": {
     "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
     "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
@@ -13,22 +13,22 @@
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7689,
+    "acquisitionRecords": 7688,
     "fetchJobs": 0,
-    "targets": 7565,
-    "resolverOnlyTargets": 7565,
+    "targets": 7564,
+    "resolverOnlyTargets": 7564,
     "candidateEdges": 0,
-    "uniqueReferences": 7565,
+    "uniqueReferences": 7564,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 41,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2018,
-      "CURRENT_RETAIL": 995,
+      "CURRENT_RETAIL": 994,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 800,
+      "P0_CURRENT_MISSING_DIMENSIONS": 799,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1932,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
@@ -20735,43 +20735,6 @@
       "repairExistingReceipt": false
     },
     {
-      "targetId": "recovery_target_88dfd08889fd447af6b6808e",
-      "referenceId": "fa_ref_c81f5e5b550f5da707f38d0c",
-      "legacyRuntimeId": "ao-86322",
-      "canonicalProductId": "fa_prod_fe1993a0093b0f9e4a17030f",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBB3400AH-X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_3f076fd55d458658e99fdbc9",
-        "legacy:data/pdf-evidence-raw/WBB3400AH-X.json",
-        "source:doc_3f076fd55d458658e99fdbc9"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_3f076fd55d458658e99fdbc9",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 1645,
-            "depth": 650
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
       "targetId": "recovery_target_0f8864923b734944bef7facc",
       "referenceId": "fa_ref_598fc1e34c2740f9c06319af",
       "legacyRuntimeId": "ao-48215",
@@ -20806,7 +20769,33 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
+      "repairExistingReceipt": false,
+      "priorAttemptSuppressions": [
+        {
+          "attemptId": "historical_attempt_4a3d0ced2169407da07ff961",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500salh-l/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_09d1d11ea445ef5e57eee8fe",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500salh-r/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_e4650a370a0e786daf5b445a",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500salh/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        }
+      ]
     },
     {
       "targetId": "recovery_target_012e32f439e4eb6eaa25f864",
@@ -20843,7 +20832,33 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
+      "repairExistingReceipt": false,
+      "priorAttemptSuppressions": [
+        {
+          "attemptId": "historical_attempt_a05e4bea69607f54e67a7658",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sarh-l/",
+          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_2a45d7663b2626b13a90f3a5",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sarh-r/",
+          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_cdb827b66855a6cabd06a824",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sarh/",
+          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        }
+      ]
     },
     {
       "targetId": "recovery_target_572a32b7d00bf349463b7ce0",
@@ -20880,7 +20895,33 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
+      "repairExistingReceipt": false,
+      "priorAttemptSuppressions": [
+        {
+          "attemptId": "historical_attempt_efa2e01c81463886108a046c",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbl-l/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_c6ec6a619372a71c2d245879",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbl-r/",
+          "contentSha256": "12dc4198dd3ccff9766fd157fe3f12e5de6458d287c2a9e5a8ff6312493808cc",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_a1af495a77ba80c2546bbf2a",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbl/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        }
+      ]
     },
     {
       "targetId": "recovery_target_8da06904ceead467cced9b69",
@@ -20917,7 +20958,33 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
+      "repairExistingReceipt": false,
+      "priorAttemptSuppressions": [
+        {
+          "attemptId": "historical_attempt_bb9fff08c932250ce8b8eddd",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbr-l/",
+          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_be2a53f96d0f60d3a5581974",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbr-r/",
+          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_56e1787f0bc32150f5b793f6",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbr/",
+          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        }
+      ]
     },
     {
       "targetId": "recovery_target_d4cd858b534f8ee0d6d1928b",
@@ -20954,7 +21021,33 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
+      "repairExistingReceipt": false,
+      "priorAttemptSuppressions": [
+        {
+          "attemptId": "historical_attempt_a255d2f93597227ea79ca6a1",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500walh-l/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_1a0cfa49864ba0a43720a904",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500walh-r/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_e80f2545188e8d19fdc070b1",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500walh/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        }
+      ]
     },
     {
       "targetId": "recovery_target_5a71d9b6e53199c9e8204b20",
@@ -20991,7 +21084,33 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
+      "repairExistingReceipt": false,
+      "priorAttemptSuppressions": [
+        {
+          "attemptId": "historical_attempt_8f5f2b2d197d3d9e70a04560",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbl-l/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_270dfe93299897f41dd2cafa",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbl-r/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_eb85b66c711c0e48f2c3427e",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbl/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        }
+      ]
     },
     {
       "targetId": "recovery_target_a0adfab5c86481c62e34e510",
@@ -21028,7 +21147,33 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
+      "repairExistingReceipt": false,
+      "priorAttemptSuppressions": [
+        {
+          "attemptId": "historical_attempt_12bb74aa57756a5f59f60f7d",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbr-l/",
+          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_676156423accb6229cfab9ff",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbr-r/",
+          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_c4a4f1278f0dfe9e3995987d",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbr/",
+          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        }
+      ]
     },
     {
       "targetId": "recovery_target_5b59e980c5299207efa593a6",
@@ -21065,7 +21210,33 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
+      "repairExistingReceipt": false,
+      "priorAttemptSuppressions": [
+        {
+          "attemptId": "historical_attempt_d994a7bb218379be9e599046",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbl-l/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_5352f5f8047a7af9e80ae18b",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbl-r/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_e150e6aac0a65a1726bc9b8b",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbl/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        }
+      ]
     },
     {
       "targetId": "recovery_target_4c9d8949e8509dde08f38384",
@@ -21102,7 +21273,33 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
+      "repairExistingReceipt": false,
+      "priorAttemptSuppressions": [
+        {
+          "attemptId": "historical_attempt_49bb85bb01e1d9bc90c01808",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbr-l/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_f657c3421f2975c18b78fdd7",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbr-r/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        },
+        {
+          "attemptId": "historical_attempt_35fdaf74543f3ae601ddf6aa",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbr/",
+          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
+        }
+      ]
     },
     {
       "targetId": "recovery_target_04de1bfe9e9719affced76c6",

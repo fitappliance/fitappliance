@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:52:43.562Z",
+  "generatedAt": "2026-07-17T04:19:39.580Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "d4a00e495c9431517077078d1dbd7e176650e95eb571ff69671d2b0f95ffa4d9",
+  "semanticClassificationSha256": "88b2986938073de17e3170a7289b44ea5dc6deb05f10521f545f682fda27781b",
   "summary": {
     "records": 8089,
     "uniqueReferenceIds": 8089,
-    "documentLinks": 4378,
+    "documentLinks": 4379,
     "modelsWithDocumentLinks": 1768,
     "modelsWithoutDocumentLinks": 6321,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 400,
+      "COMPLETE_RECEIPT": 401,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 134,
       "OFFICIAL_DISCOVERY": 6412,
-      "REFERENCE_REDISCOVERY": 1060
+      "REFERENCE_REDISCOVERY": 1059
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6412,
-      "NO_ACTION": 400,
-      "REDISCOVER_OFFICIAL_SOURCE": 1060,
+      "NO_ACTION": 401,
+      "REDISCOVER_OFFICIAL_SOURCE": 1059,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 134
     },
     "bySourceAuthority": {
-      "MIXED": 244,
+      "MIXED": 245,
       "NONE": 6607,
       "OFFICIAL": 162,
-      "REFERENCE": 1076
+      "REFERENCE": 1075
     },
     "byIdentityScope": {
       "AMBIGUOUS": 171,
@@ -47,8 +47,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 90,
-      "ALL_AXIS_SCALAR": 447,
-      "NOT_PARSED": 7458,
+      "ALL_AXIS_SCALAR": 448,
+      "NOT_PARSED": 7457,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 400,
-      "LEGACY_UNBOUND": 1368,
+      "CURRENT_VALID": 401,
+      "LEGACY_UNBOUND": 1367,
       "NONE": 6321
     }
   },
@@ -94,13 +94,13 @@
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2309,
+      "documentLinks": 2310,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 125,
+        "COMPLETE_RECEIPT": 126,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 84,
         "OFFICIAL_DISCOVERY": 3405,
-        "REFERENCE_REDISCOVERY": 674
+        "REFERENCE_REDISCOVERY": 673
       }
     },
     {
@@ -200,7 +200,7 @@
       "category": "fridge",
       "brand": "Westinghouse",
       "operationalClass": "REFERENCE_REDISCOVERY",
-      "models": 88
+      "models": 87
     },
     {
       "category": "fridge",
@@ -231906,16 +231906,17 @@
       "canonicalBrand": "Westinghouse",
       "model": "WBB3400AH-X",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "groupType": "model_specific",
+      "groupName": "WBB3400AH-X",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -231938,6 +231939,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbb3400ah-x/",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/13/80/138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2.html",
+            "receipt:f228b42a58d95fdd34d562565b14de8fdf291da7053cc301ac8278c5e86a1ca3"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2"
+        },
+        {
           "documentId": "source:doc_3f076fd55d458658e99fdbc9",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/9/8/8/c/988c86ae0776731ade38c208011673bc66d1c67f_WBB3400AH_X_Westinghouse_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -231953,13 +231972,19 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"
       ],
-      "groups": [],
+      "groups": [
+        {
+          "groupType": "model_specific",
+          "groupName": "WBB3400AH-X",
+          "grammarProfileIds": []
+        }
+      ],
       "grammarProfileIds": []
     },
     {

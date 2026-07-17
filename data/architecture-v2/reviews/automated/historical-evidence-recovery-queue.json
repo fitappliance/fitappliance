@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1340,
-    "fetchJobs": 1303,
-    "targets": 1337,
-    "candidateEdges": 1340,
+    "documents": 1339,
+    "fetchJobs": 1302,
+    "targets": 1336,
+    "candidateEdges": 1339,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1337,
+    "uniqueReferences": 1336,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 906,
+      "MEASURE_REQUIRED": 905,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1090
+      "CURRENT_RETAIL": 1089
     },
     "byCategory": {
       "dishwasher": 263,
       "dryer": 46,
-      "fridge": 816,
+      "fridge": 815,
       "washing_machine": 212
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1043,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1042,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 266,
+      "ALREADY_AUTO_FILL": 267,
       "HISTORICAL_REFERENCE_NOT_FOUND": 146,
       "IDENTITY_NOT_EXACT": 195,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -14029,32 +14029,6 @@
       ],
       "targetIds": [
         "recovery_target_085e0390b31348939bbc3eea"
-      ]
-    },
-    {
-      "jobId": "recovery_4d469e7ecfe6be40caa4f340",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/8/8/c/988c86ae0776731ade38c208011673bc66d1c67f_WBB3400AH_X_Westinghouse_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_88dfd08889fd447af6b6808e"
       ]
     },
     {
@@ -66062,47 +66036,6 @@
         "recovery_2fdb9c2e97ec86de84a552ee"
       ],
       "primaryJobId": "recovery_2fdb9c2e97ec86de84a552ee"
-    },
-    {
-      "referenceId": "fa_ref_c81f5e5b550f5da707f38d0c",
-      "legacyRuntimeId": "ao-86322",
-      "canonicalProductId": "fa_prod_fe1993a0093b0f9e4a17030f",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBB3400AH-X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 1645,
-        "depth": 650
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_88dfd08889fd447af6b6808e",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_3f076fd55d458658e99fdbc9"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_3f076fd55d458658e99fdbc9",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 1645,
-            "depth": 650
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_4d469e7ecfe6be40caa4f340"
-      ],
-      "primaryJobId": "recovery_4d469e7ecfe6be40caa4f340"
     },
     {
       "referenceId": "fa_ref_598fc1e34c2740f9c06319af",

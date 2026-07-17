@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:52:43.562Z",
-  "semanticQueueSha256": "2a1da636c23647566ae42610c4581245c30434b19c885fe7b3d465eaee376702",
-  "sourceClassificationSha256": "d4a00e495c9431517077078d1dbd7e176650e95eb571ff69671d2b0f95ffa4d9",
+  "generatedAt": "2026-07-17T04:19:39.580Z",
+  "semanticQueueSha256": "5cc5a0534835c0362e3c1995f9f17c930e75868159422a35c3cab4796f62e5c5",
+  "sourceClassificationSha256": "88b2986938073de17e3170a7289b44ea5dc6deb05f10521f545f682fda27781b",
   "records": [
     {
       "schemaVersion": 1,
@@ -23657,37 +23657,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_5b2f42e7391d85a23a706df6"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_77d8330273801ac7d55c88b6",
-      "referenceId": "fa_ref_c81f5e5b550f5da707f38d0c",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBB3400AH-X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_4e8da76dcf7e878cbfba5b4e"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_88dfd08889fd447af6b6808e"
-      ],
-      "legacyRuntimeIds": [
-        "ao-86322"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_fe1993a0093b0f9e4a17030f"
       ],
       "offlineReplayOutcome": null
     },
@@ -194796,19 +194765,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_4e8da76dcf7e878cbfba5b4e",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/8/8/c/988c86ae0776731ade38c208011673bc66d1c67f_WBB3400AH_X_Westinghouse_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WBB3400AH-X.json",
-        "source:doc_3f076fd55d458658e99fdbc9"
-      ],
-      "referenceIds": [
-        "fa_ref_c81f5e5b550f5da707f38d0c"
-      ]
-    },
-    {
       "sourceId": "historical_source_4ed17ef3af434b20d3282e5a",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/3/8/a/1/38a19d330fabdb471cfbae0804b1cfbcaa6e1a9c_Samsung_SRF644CDLS_647L_French_Flat_Door_Fridge_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -206967,46 +206923,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 400,
+    "COMPLETE_RECEIPT": 401,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8089,
-    "queuedModels": 7689,
-    "uniqueReferences": 7689,
-    "candidateSources": 1342,
-    "candidateEdges": 1377,
+    "queuedModels": 7688,
+    "uniqueReferences": 7688,
+    "candidateSources": 1341,
+    "candidateEdges": 1376,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2071,
-      "CURRENT_RETAIL": 1055,
+      "CURRENT_RETAIL": 1054,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1243,
       "dryer": 792,
-      "fridge": 4211,
+      "fridge": 4210,
       "washing_machine": 1443
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 134,
       "OFFICIAL_DISCOVERY": 6412,
-      "REFERENCE_REDISCOVERY": 1060
+      "REFERENCE_REDISCOVERY": 1059
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 134,
       "OFFICIAL_DISCOVERY": 6412,
-      "OFFICIAL_REDISCOVERY": 1060
+      "OFFICIAL_REDISCOVERY": 1059
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5024,
+      "DISCOVERY_READY": 5023,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 400,
+      "COMPLETE_RECEIPT": 401,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

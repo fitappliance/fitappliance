@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "6f1504895d6a82463c6ab8141e7e4d8b959d76b0d8be3c7fd8b45eb57efeacc9",
-    "historical-recovery:historical-recovery-cumulative-v1": "e077063e7b5e352fae71961b1e6d531c8afcce8b3c1e9735a1363c5872b9b9c4"
+    "historical-recovery:historical-recovery-cumulative-v1": "03fa22490a6eabc4ce6883fff8cbfac8f423c2df0cdff99eda88dea5debf2596"
   },
   "records": [
     {
@@ -251541,13 +251541,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 1645,
+        "depth": 650
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "6f1504895d6a82463c6ab8141e7e4d8b959d76b0d8be3c7fd8b45eb57efeacc9",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_88dfd08889fd447af6b6808e",
+          "snapshotSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2",
           "sourceLines": []
         }
       ],
@@ -251557,8 +251566,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_88dfd08889fd447af6b6808e",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbb3400ah-x/",
+          "contentSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2",
+          "receiptBindingSha256": "f228b42a58d95fdd34d562565b14de8fdf291da7053cc301ac8278c5e86a1ca3",
+          "verifiedAt": "2026-07-17T04:13:07.333Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/13/80/138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2.html"
+        }
       ]
     },
     {
@@ -325405,16 +325437,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2829,
-      "MODEL_RECEIPT": 309,
+      "IDENTITY_ONLY": 2828,
+      "MODEL_RECEIPT": 310,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2829,
-      "AUTO_FILL": 320,
+      "MEASURE_REQUIRED": 2828,
+      "AUTO_FILL": 321,
       "QUARANTINED": 88
     }
   }

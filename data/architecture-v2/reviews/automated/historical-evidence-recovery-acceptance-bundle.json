@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-17T03:52:03.065Z",
+  "generatedAt": "2026-07-17T04:18:44.196Z",
   "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
   "entries": [
     {
@@ -47856,6 +47856,198 @@
       }
     },
     {
+      "targetId": "recovery_target_88dfd08889fd447af6b6808e",
+      "referenceId": "fa_ref_c81f5e5b550f5da707f38d0c",
+      "legacyRuntimeId": "ao-86322",
+      "canonicalProductId": "fa_prod_fe1993a0093b0f9e4a17030f",
+      "brand": "Westinghouse",
+      "model": "WBB3400AH-X",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-0ac578813cd5873da1bf5da6-slice-ee8fbf0bb315",
+      "auditSha256": "e15401ea3a30b0a140fe97f0f3e1dcaa0cde36178edee498d0ce9b51c614e837",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbb3400ah-x/",
+          "finalUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbb3400ah-x/",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T04:13:07.333Z",
+          "contentSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2",
+          "objectPath": "evidence/web/sha256/13/80/138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2.html",
+          "contentType": "text/html",
+          "byteSize": 419488,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WBB3400AH-X",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1645
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 650
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbb3400ah-x/"
+            },
+            {
+              "type": "document_title",
+              "value": "317L bottom freezer refrigerator - WBB3400AH-X | Westinghouse Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "WBB3400AH-X"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T04:13:07.333Z",
+            "bindingSha256": "f228b42a58d95fdd34d562565b14de8fdf291da7053cc301ac8278c5e86a1ca3"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 1645,
+              "maximumMm": 1645
+            },
+            "depthMm": 650
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbb3400ah-x/",
+            "contentSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2",
+            "receiptBindingSha256": "f228b42a58d95fdd34d562565b14de8fdf291da7053cc301ac8278c5e86a1ca3",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbb3400ah-x/",
+            "contentSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2",
+            "receiptBindingSha256": "f228b42a58d95fdd34d562565b14de8fdf291da7053cc301ac8278c5e86a1ca3",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbb3400ah-x/",
+            "contentSha256": "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2",
+            "receiptBindingSha256": "f228b42a58d95fdd34d562565b14de8fdf291da7053cc301ac8278c5e86a1ca3",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "138080dc6de7d1acf49ffa6190451ea212ca914d5c41070309c5bd291e2a2fb2"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_895a1be60e3fa96e85e3015e",
       "referenceId": "fa_ref_34601f00c17825bfd5a8ca86",
       "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh8060j5",
@@ -93233,6 +93425,13 @@
       "queueSha256": "d5c912d377bb3fdb06dbd69385aee84ce61c3512eb34e2081f97fe39b750f5bb",
       "resultsSha256": "35a8e87a94357aa0ad7839deb753afb727eb88f10a283a64ce4d96e58b929041",
       "auditSha256": "986e7830757f5d0cdcecdde8ffa5810267e6dd6933ad6570f36aca9ddd6da2ca"
+    },
+    {
+      "batchId": "historical-recovery-0ac578813cd5873da1bf5da6-slice-ee8fbf0bb315",
+      "batchSha256": "df777363a0fb378d038a7621fee2bac8cc7571cab57a7bfc7bee46fa37e84ac9",
+      "queueSha256": "6936e1e8a90e4e813b7842a77ea5fa291733126ca2273f00220651bf02d1aa4e",
+      "resultsSha256": "ced74bd989ae41293f4e7d790763f507bb9f9f64c83887098d742499fa64b96e",
+      "auditSha256": "e15401ea3a30b0a140fe97f0f3e1dcaa0cde36178edee498d0ce9b51c614e837"
     },
     {
       "batchId": "historical-recovery-0e7c25ce0c75280b02940d96-slice-7d410515b036",
