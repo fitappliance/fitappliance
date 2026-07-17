@@ -47,7 +47,7 @@ const ACTION_BY_CLASS = Object.freeze({
 export const DEFAULT_CLASSIFICATION_POLICY = Object.freeze({
   schemaVersion: 1,
   policyVersion: 'historical-model-evidence-classification-v2',
-  expectedReferenceCount: 8093,
+  expectedReferenceCount: 8089,
   blockingConflicts: Object.freeze(['SOURCE_CONFLICT', 'IDENTITY_CONFLICT', 'INVALID_DIMENSIONS']),
   receiptEligibleAuthorities: Object.freeze(['OFFICIAL']),
   exactIdentityScopes: Object.freeze(['EXACT_MODEL', 'PAGE_SCOPED_EXACT']),

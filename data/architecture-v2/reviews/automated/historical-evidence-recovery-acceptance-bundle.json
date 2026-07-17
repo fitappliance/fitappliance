@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-17T03:25:48.641Z",
+  "generatedAt": "2026-07-17T03:41:33.067Z",
   "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
   "entries": [
     {
@@ -27946,6 +27946,274 @@
         "activeSourceHashes": [
           "19d1fb386eadb09f4a0d1fbc07ea26b9de0f65079b636627b266e90f78e6680a",
           "c464998926e4822596e0758060e2958942e18900735817e45fcfdc27aac530f9"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_51e51cc8c41c76d42ad6d2cb",
+      "referenceId": "fa_ref_419d598512c70b7e32d6eead",
+      "legacyRuntimeId": "dr3",
+      "canonicalProductId": "fa_prod_d1904cde03a9b748917652b4",
+      "brand": "Electrolux",
+      "model": "EDH803BEWA",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-58db7801d77acddcbb12b863-slice-c4bac21ee76c",
+      "auditSha256": "cc4c0fcc5f7983716796c5eb3a8277d675cf6e6a0709a515a20d14328adc83ee",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T03:39:57.917Z",
+          "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+          "objectPath": "evidence/web/sha256/5d/b5/5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1593030,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Electrolux",
+            "model": "EDH803BEWA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db",
+              "bbox": [
+                516,
+                229,
+                939,
+                367
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db",
+              "bbox": [
+                516,
+                229,
+                939,
+                367
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 665
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db",
+              "bbox": [
+                516,
+                229,
+                939,
+                367
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+            "contentSha256": "1e264b4a9f10c5f736036c2290c16f2360184626f97a873770553c70376da9ed",
+            "objectPath": "evidence/derived/mineru-json/sha256/1e/26/1e264b4a9f10c5f736036c2290c16f2360184626f97a873770553c70376da9ed.json",
+            "byteSize": 21783,
+            "pageCount": 8,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              7
+            ],
+            "sourcePageCount": 8,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "751b6dcba91c8b55d0d5eb593edd03181392cabe89b3a67e6251edcb8452cca1",
+              "objectPath": "evidence/derived/mineru-json/sha256/75/1b/751b6dcba91c8b55d0d5eb593edd03181392cabe89b3a67e6251edcb8452cca1.json",
+              "pages": [
+                7
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:1:0e12ec6bf62a2e85a84a4a46ebcd97dae3a3098704129dd5bc30e2cfe40c98b7"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:2:29ea0f621ccdd3c0c1eefe47c4a70141d695d5601502e613f5d2b22be33a52a5"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:3:db8aad8607e4baafab19bf9bf267d2515f7e430731c1a059dd31525519f6c4f1"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:4:d6a51bd3b58839f6f70de77e3cb4f4a0bc34eb9c0caab1eb6a0f93804726e5cf"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:5:07248b547246bf69343d7764aa02f26046e5b5f27390fcfd59480c62d68b1828"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:6:117a3fd3d260c6c29ff3aa8e6322fedf6e065d80eca39c42e3c3c5a98abd95f0"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:7:4abfc360d8d961a32e9c6a4fadd2405722ef5e26f4bc4a1435357de473e01ab6"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:8:8fa7fd19981a32d9f8a250872ede5e9ee2fc6e2ec0230f6369c59bde712f9a2b"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EDH803BEWA:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:7:9176027db0a1d4ca3ee5a21f676a0a23385c0a6236fb2849a2e33f3705336787"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T03:39:57.917Z",
+            "bindingSha256": "c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 665
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+            "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+            "receiptBindingSha256": "c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713",
+            "page": 4,
+            "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+            "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+            "receiptBindingSha256": "c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713",
+            "page": 4,
+            "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+            "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+            "receiptBindingSha256": "c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713",
+            "page": 4,
+            "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358"
         ]
       },
       "reconciliation": {
@@ -92109,6 +92377,13 @@
       "queueSha256": "daf9d9e68db25ee056fc05a46c66be9a63d4b676c202f0baffca67614305cffd",
       "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
       "auditSha256": "561096e1e5b183266eb8969c19697980e1f597c2482c061b6e67ebf4549d054f"
+    },
+    {
+      "batchId": "historical-recovery-58db7801d77acddcbb12b863-slice-c4bac21ee76c",
+      "batchSha256": "8a17748f626bf184b24f50219e85e4ce78c4de08e2fdff098818c62e2fe268cc",
+      "queueSha256": "f8574e6d1274d664750a5e6560122e87e5e5814c82d2428859ca65da24cb1856",
+      "resultsSha256": "1ba980603dfbb11d4282f0103ec9984eb1c2d8743fac044812ec0f1ccd9476e3",
+      "auditSha256": "cc4c0fcc5f7983716796c5eb3a8277d675cf6e6a0709a515a20d14328adc83ee"
     },
     {
       "batchId": "historical-recovery-5e49fc13221ec4594404618e-slice-5ba69d7d21d1",

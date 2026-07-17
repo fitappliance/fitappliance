@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:25:48.641Z",
-  "sourceBundleSha256": "8eaf83def058f8985e02672679d7253b3fd331a9695be80d15d8cc59c8917915",
+  "generatedAt": "2026-07-17T03:41:33.067Z",
+  "sourceBundleSha256": "aa1080517d754fd91745e2e881680c94390b4f132bd7e742eb7ef9bd5c46c82e",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1736,6 +1736,20 @@
       "contentSha256": "c464998926e4822596e0758060e2958942e18900735817e45fcfdc27aac530f9",
       "receiptBindingSha256": "5e3de3b1b8c2f52265bbea6990f204085c5c53804bb21e7e95e23d99700afdd7",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_51e51cc8c41c76d42ad6d2cb",
+      "referenceId": "fa_ref_419d598512c70b7e32d6eead",
+      "brand": "Electrolux",
+      "model": "EDH803BEWA",
+      "category": "dryer",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+      "sourcePdfSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+      "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+      "receiptBindingSha256": "c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/1e/26/1e264b4a9f10c5f736036c2290c16f2360184626f97a873770553c70376da9ed.json",
       "status": "passed",
       "failureCode": null
     },
@@ -5619,11 +5633,11 @@
     }
   ],
   "summary": {
-    "entries": 376,
-    "sources": 401,
-    "passed": 401,
+    "entries": 377,
+    "sources": 402,
+    "passed": 402,
     "failed": 0
   },
-  "checkedObjects": 786,
-  "semanticAuditSha256": "fd4712ab9fb13fca77cf31049996b288c44568d0692d7fdc16d1407a94534508"
+  "checkedObjects": 789,
+  "semanticAuditSha256": "de095c65b298c9cb4a55a3dc032791e5b76cf5eca6e490a38b12eb81e21ddaef"
 }

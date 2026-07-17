@@ -36,6 +36,22 @@ test('quarantines exact manufacturer identity collisions instead of choosing a w
   assert.ok(result.quarantine.every((row) => row.reasons.includes('manufacturer_identity_collision')));
 });
 
+test('quarantines catalog models polluted with marketing copy and capacity', () => {
+  const result = buildCanonicalRegistry({ products: [
+    { id: 'dryer-dirty', cat: 'dryer', brand: 'Example', model: 'ABC123 Heat Pump — 8kg' },
+    { id: 'dryer-series', cat: 'dryer', brand: 'Example', model: 'AVDE45 Series' },
+    { id: 'dryer-clean', cat: 'dryer', brand: 'Example', model: 'T208H.W.AU' },
+  ] });
+
+  assert.deepEqual(result.products.map((product) => product.model), ['AVDE45 Series', 'T208H.W.AU']);
+  assert.deepEqual(result.quarantine, [{
+    legacyRuntimeId: 'dryer-dirty',
+    brand: 'Example',
+    model: 'ABC123 Heat Pump — 8kg',
+    reasons: ['marketing_text_in_model_identity'],
+  }]);
+});
+
 test('rejects duplicate legacy IDs and malformed catalog rows', () => {
   assert.throws(() => buildCanonicalRegistry({ products: [catalog.products[0], catalog.products[0]] }), /duplicate legacy/i);
   assert.throws(() => buildCanonicalRegistry({ products: [{ id: '', cat: 'fridge' }] }), /non-empty/i);
@@ -119,4 +135,15 @@ test('repository publication quarantine excludes Beko stacking kits from the app
     row.legacyRuntimeId === legacyRuntimeId
       && row.reasons.includes('dryer_stacking_kit_is_not_a_complete_appliance')
   ))));
+
+  const marketingPollutedIds = ['dr1', 'dr2', 'dr4', 'w3'];
+  assert.ok(marketingPollutedIds.every((legacyRuntimeId) => result.quarantine.some((row) => (
+    row.legacyRuntimeId === legacyRuntimeId
+      && row.reasons.includes('marketing_text_in_model_identity')
+  ))));
+  assert.ok(result.identifierMappings.some((row) => row.legacyRuntimeId === 'dr3'));
+  assert.equal(result.products.find((row) => (
+    result.identifierMappings.some((mapping) => mapping.legacyRuntimeId === 'dr3'
+      && mapping.canonicalProductId === row.id)
+  ))?.model, 'EDH803BEWA');
 });

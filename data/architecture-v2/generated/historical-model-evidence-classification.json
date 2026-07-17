@@ -1,66 +1,66 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:26:33.651Z",
+  "generatedAt": "2026-07-17T03:42:16.427Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "ca911cdc35c96a63960999fe2e8ab31252285155345d74f48cebffcfec0005b6",
+  "semanticClassificationSha256": "96c2199f63fc97d9333b8a0cea89eeeee7d2530a1bc6a621e9617a29e83fed8c",
   "summary": {
-    "records": 8093,
-    "uniqueReferenceIds": 8093,
+    "records": 8089,
+    "uniqueReferenceIds": 8089,
     "documentLinks": 4374,
     "modelsWithDocumentLinks": 1768,
-    "modelsWithoutDocumentLinks": 6325,
+    "modelsWithoutDocumentLinks": 6321,
     "byCategory": {
       "dishwasher": 1419,
-      "dryer": 841,
+      "dryer": 838,
       "fridge": 4336,
-      "washing_machine": 1497
+      "washing_machine": 1496
     },
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2134,
+      "CATALOG_ARCHIVED": 2130,
       "CURRENT_RETAIL": 1382,
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 395,
+      "COMPLETE_RECEIPT": 396,
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 135,
-      "OFFICIAL_DISCOVERY": 6416,
+      "IDENTITY_RESEARCH": 134,
+      "OFFICIAL_DISCOVERY": 6412,
       "REFERENCE_REDISCOVERY": 1064
     },
     "byNextAction": {
-      "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 395,
+      "DISCOVER_OFFICIAL_SOURCE": 6412,
+      "NO_ACTION": 396,
       "REDISCOVER_OFFICIAL_SOURCE": 1064,
       "RUN_CONFLICT_CLOSURE": 83,
-      "RUN_IDENTITY_CLOSURE": 135
+      "RUN_IDENTITY_CLOSURE": 134
     },
     "bySourceAuthority": {
-      "MIXED": 239,
-      "NONE": 6611,
+      "MIXED": 240,
+      "NONE": 6607,
       "OFFICIAL": 162,
-      "REFERENCE": 1081
+      "REFERENCE": 1080
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 172,
-      "EXACT_MODEL": 1596,
-      "UNPROVEN": 6325
+      "AMBIGUOUS": 171,
+      "EXACT_MODEL": 1597,
+      "UNPROVEN": 6321
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 90,
-      "ALL_AXIS_SCALAR": 442,
-      "NOT_PARSED": 7467,
+      "ALL_AXIS_SCALAR": 443,
+      "NOT_PARSED": 7462,
       "PARSER_GAP": 94
     },
     "byConflictState": {
       "INVALID_DIMENSIONS": 19,
-      "NONE": 7941,
+      "NONE": 7937,
       "REGISTRY_CONFLICT": 69,
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 395,
-      "LEGACY_UNBOUND": 1373,
-      "NONE": 6325
+      "CURRENT_VALID": 396,
+      "LEGACY_UNBOUND": 1372,
+      "NONE": 6321
     }
   },
   "categorySummaries": [
@@ -79,14 +79,14 @@
     },
     {
       "category": "dryer",
-      "records": 841,
+      "records": 838,
       "brands": 72,
       "documentLinks": 274,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 45,
+        "COMPLETE_RECEIPT": 46,
         "CONFLICT_QUARANTINE": 4,
-        "IDENTITY_RESEARCH": 4,
-        "OFFICIAL_DISCOVERY": 745,
+        "IDENTITY_RESEARCH": 3,
+        "OFFICIAL_DISCOVERY": 742,
         "REFERENCE_REDISCOVERY": 43
       }
     },
@@ -105,14 +105,14 @@
     },
     {
       "category": "washing_machine",
-      "records": 1497,
+      "records": 1496,
       "brands": 88,
       "documentLinks": 676,
       "byOperationalClass": {
         "COMPLETE_RECEIPT": 49,
         "CONFLICT_QUARANTINE": 9,
         "IDENTITY_RESEARCH": 29,
-        "OFFICIAL_DISCOVERY": 1237,
+        "OFFICIAL_DISCOVERY": 1236,
         "REFERENCE_REDISCOVERY": 173
       }
     }
@@ -257,16 +257,16 @@
       "models": 61
     },
     {
-      "category": "dryer",
-      "brand": "LG",
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "models": 60
-    },
-    {
       "category": "fridge",
       "brand": "CHIQ",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "models": 60
+    },
+    {
+      "category": "dryer",
+      "brand": "LG",
+      "operationalClass": "OFFICIAL_DISCOVERY",
+      "models": 59
     },
     {
       "category": "dishwasher",
@@ -65304,32 +65304,6 @@
     },
     {
       "schemaVersion": 1,
-      "referenceId": "fa_ref_62f9d3c97e2f8a3bc8bf8d32",
-      "category": "dryer",
-      "canonicalBrand": "Bosch",
-      "model": "WTH85209AU Series 4 Heat Pump — 8kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
-      "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "rawBrandVariants": [
-        "Bosch"
-      ],
-      "groups": [],
-      "grammarProfileIds": []
-    },
-    {
-      "schemaVersion": 1,
       "referenceId": "fa_ref_d0f2a6295328c543cc54d10a",
       "category": "dryer",
       "canonicalBrand": "Bosch",
@@ -67005,41 +66979,42 @@
     },
     {
       "schemaVersion": 1,
-      "referenceId": "fa_ref_a69e2ef30a41965895a47c2f",
+      "referenceId": "fa_ref_419d598512c70b7e32d6eead",
       "category": "dryer",
       "canonicalBrand": "Electrolux",
-      "model": "EDH803BEWA Heat Pump — 8kg",
+      "model": "EDH803BEWA",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "NOT_PARSED",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
         {
-          "documentId": "legacy:data/pdf-evidence-raw/EDH803BEWA.json",
-          "sourceUrl": "https://commercial.appliancesonline.com.au/public/manuals/EDH803BEWA-Electrolux-Specifications-Sheet.pdf",
+          "documentId": "pdf:5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
           "evidenceObjectIds": [
-            "doc_9340aa63e27469a88356cc0a"
+            "evidence/derived/mineru-json/sha256/1e/26/1e264b4a9f10c5f736036c2290c16f2360184626f97a873770553c70376da9ed.json",
+            "evidence/web/sha256/5d/b5/5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358.pdf",
+            "receipt:c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713"
           ],
           "reasonCodes": [
-            "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
-            "LEGACY_FIELDS_UNBOUND",
-            "LEGACY_SUMMARY_DISCOVERY_HINT",
-            "LEGACY_ZERO_CLEARANCE_UNTRUSTED"
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
           ],
-          "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "REFERENCE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "NOT_PARSED",
-          "receiptState": "LEGACY_UNBOUND"
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358"
         },
         {
           "documentId": "source:doc_9340aa63e27469a88356cc0a",
@@ -67052,19 +67027,29 @@
           ],
           "corpusState": "SOURCE_URL_ONLY",
           "sourceAuthority": "REFERENCE",
-          "identityScope": "AMBIGUOUS",
+          "identityScope": "EXACT_MODEL",
           "extractionState": "NOT_PARSED",
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "IDENTITY_RESEARCH",
-      "nextAction": "RUN_IDENTITY_CLOSURE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Electrolux"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_8f60826f847a01df",
+          "grammarProfileIds": [
+            "pdf_grammar_8f60826f847a01df"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_8f60826f847a01df"
+      ]
     },
     {
       "schemaVersion": 1,
@@ -79469,32 +79454,6 @@
     },
     {
       "schemaVersion": 1,
-      "referenceId": "fa_ref_ebe96dbde511d504e8ac3c64",
-      "category": "dryer",
-      "canonicalBrand": "LG",
-      "model": "RC802HM2F DualInverter Condenser — 8kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
-      "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "rawBrandVariants": [
-        "LG"
-      ],
-      "groups": [],
-      "grammarProfileIds": []
-    },
-    {
-      "schemaVersion": 1,
       "referenceId": "fa_ref_6696fde14152f500a58c435f",
       "category": "dryer",
       "canonicalBrand": "LG",
@@ -84830,32 +84789,6 @@
       "operationalClass": "REFERENCE_REDISCOVERY",
       "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
       "priority": "P0_CURRENT_RETAIL",
-      "rawBrandVariants": [
-        "Samsung"
-      ],
-      "groups": [],
-      "grammarProfileIds": []
-    },
-    {
-      "schemaVersion": 1,
-      "referenceId": "fa_ref_86c0defb0abb9db9520d17e5",
-      "category": "dryer",
-      "canonicalBrand": "Samsung",
-      "model": "DV90T6240LE Vented — 9kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
-      "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "Samsung"
       ],
@@ -254371,32 +254304,6 @@
       "grammarProfileIds": [
         "pdf_grammar_f2f9631eeb5990cc"
       ]
-    },
-    {
-      "schemaVersion": 1,
-      "referenceId": "fa_ref_bd562b2e01ff2e572169b108",
-      "category": "washing_machine",
-      "canonicalBrand": "Bosch",
-      "model": "WAX32EH0AU Series 8 — 10kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "NO_SOURCE",
-      "sourceAuthority": "NONE",
-      "identityScope": "UNPROVEN",
-      "extractionState": "NOT_PARSED",
-      "conflictState": "NONE",
-      "receiptState": "NONE",
-      "corpusSummary": {},
-      "documentLinks": [],
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "nextAction": "DISCOVER_OFFICIAL_SOURCE",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "rawBrandVariants": [
-        "Bosch"
-      ],
-      "groups": [],
-      "grammarProfileIds": []
     },
     {
       "schemaVersion": 1,

@@ -14,21 +14,21 @@
     "exactModelReceiptStillRequired": true
   },
   "summary": {
-    "historicalRecords": 8093,
+    "historicalRecords": 8089,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 929,
-    "validMineruDocuments": 914,
+    "mineruDocuments": 930,
+    "validMineruDocuments": 915,
     "invalidMineruDocuments": 15,
-    "documentsWithObservations": 485,
+    "documentsWithObservations": 486,
     "documentsWithoutObservations": 429,
-    "mappedMineruDocuments": 881,
+    "mappedMineruDocuments": 882,
     "unmappedMineruDocuments": 33,
-    "observations": 1155,
-    "researchGaps": 1026,
+    "observations": 1156,
+    "researchGaps": 1027,
     "parserProfiles": 215,
-    "parserReplays": 1040,
-    "completeParserReplays": 434
+    "parserReplays": 1041,
+    "completeParserReplays": 435
   },
   "categories": [
     {
@@ -94553,7 +94553,7 @@
     },
     {
       "category": "washing_machine",
-      "recordCount": 1497,
+      "recordCount": 1496,
       "brands": [
         {
           "canonicalBrand": "3J",
@@ -96260,7 +96260,7 @@
             "BOSCH",
             "Bosch"
           ],
-          "modelCount": 61,
+          "modelCount": 60,
           "observedMineruDocuments": 49,
           "observedMarketingSeriesCount": 3,
           "observedDocumentFamilyCount": 1,
@@ -116904,7 +116904,7 @@
     },
     {
       "category": "dryer",
-      "recordCount": 841,
+      "recordCount": 838,
       "brands": [
         {
           "canonicalBrand": "AEG",
@@ -117976,7 +117976,7 @@
             "BOSCH",
             "Bosch"
           ],
-          "modelCount": 25,
+          "modelCount": 24,
           "observedMineruDocuments": 18,
           "observedMarketingSeriesCount": 3,
           "observedDocumentFamilyCount": 0,
@@ -121258,7 +121258,7 @@
             "Electrolux"
           ],
           "modelCount": 43,
-          "observedMineruDocuments": 8,
+          "observedMineruDocuments": 9,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 0,
           "observedParserProfileCount": 1,
@@ -121275,6 +121275,7 @@
                 "EDC2086GDW",
                 "EDH3586GDW",
                 "EDH3896GDW",
+                "EDH803BEWA",
                 "EDV605H3WC",
                 "EDV605HQWA",
                 "EDV705H3WC",
@@ -121283,6 +121284,7 @@
               "pdfSha256s": [
                 "14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161",
                 "4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9",
+                "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
                 "766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555",
                 "858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8",
                 "8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d",
@@ -121297,6 +121299,7 @@
                 "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux",
                 "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux",
                 "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux",
+                "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
                 "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux",
                 "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV705HQWA&brand=Electrolux"
               ],
@@ -121355,6 +121358,21 @@
                   "category": "dryer",
                   "brand": "Electrolux",
                   "model": "EDC2086GDW",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+                  "category": "dryer",
+                  "brand": "Electrolux",
+                  "model": "EDH803BEWA",
                   "extractionState": "ALL_AXIS_SCALAR",
                   "identityScope": "EXACT_MODEL",
                   "claimFields": [
@@ -121992,6 +122010,73 @@
                   ],
                   "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
                   "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_f3083e6e03d1c83d057077cf",
+                  "pdfSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+                  "contentSha256": "751b6dcba91c8b55d0d5eb593edd03181392cabe89b3a67e6251edcb8452cca1",
+                  "page": 4,
+                  "bbox": [
+                    516,
+                    229,
+                    939,
+                    367
+                  ],
+                  "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db",
+                  "sourceUrls": [
+                    "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Electrolux",
+                      "model": "EDH803BEWA",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EDH803BEWA"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Total height (mm) | Total width (mm) | Total depth (mm)",
+                  "sourceValue": "850 | 600 | 665",
+                  "sourceQuote": "Total height (mm) 850 | Total width (mm) 600 | Total depth (mm) 665",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "label",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Total height (mm)",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Total width (mm)",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Total depth (mm)",
+                      "value": "665",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
                 }
               ],
               "researchGaps": [
@@ -122050,6 +122135,13 @@
                   "contentSha256": "18b24d023af90274991c377a650a543ab9198548f442de15f0fb4b6db729a4d1",
                   "page": 5,
                   "quote": "Shipping Volume (m3) 0.347 Shipping Weight (Kg) 39 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 640 Pack Dimension Depth (mm) 610"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+                  "contentSha256": "751b6dcba91c8b55d0d5eb593edd03181392cabe89b3a67e6251edcb8452cca1",
+                  "page": 6,
+                  "quote": "Pack Dimensions Height (mm) 900 Pack Dimension Width (mm) 640 Pack Dimension Depth (mm) 710"
                 }
               ],
               "parserProfileIds": [
@@ -127430,7 +127522,7 @@
           "rawBrandVariants": [
             "LG"
           ],
-          "modelCount": 68,
+          "modelCount": 67,
           "observedMineruDocuments": 6,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 2,
@@ -128291,7 +128383,7 @@
           "rawBrandVariants": [
             "Samsung"
           ],
-          "modelCount": 12,
+          "modelCount": 11,
           "observedMineruDocuments": 1,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 1,

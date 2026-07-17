@@ -95,7 +95,7 @@
     "cat": "dryer",
     "slug": "bosch-vs-electrolux-dryer-clearance",
     "url": "/compare/bosch-vs-electrolux-dryer-clearance",
-    "modelsA": 13,
+    "modelsA": 12,
     "modelsB": 12
   },
   {
@@ -104,7 +104,7 @@
     "cat": "dryer",
     "slug": "bosch-vs-esatto-dryer-clearance",
     "url": "/compare/bosch-vs-esatto-dryer-clearance",
-    "modelsA": 13,
+    "modelsA": 12,
     "modelsB": 10
   },
   {
@@ -113,8 +113,8 @@
     "cat": "dryer",
     "slug": "bosch-vs-lg-dryer-clearance",
     "url": "/compare/bosch-vs-lg-dryer-clearance",
-    "modelsA": 13,
-    "modelsB": 10
+    "modelsA": 12,
+    "modelsB": 9
   },
   {
     "brandA": "Electrolux",
@@ -132,7 +132,7 @@
     "slug": "fisher-paykel-vs-bosch-dryer-clearance",
     "url": "/compare/fisher-paykel-vs-bosch-dryer-clearance",
     "modelsA": 24,
-    "modelsB": 13
+    "modelsB": 12
   },
   {
     "brandA": "Fisher & Paykel",
@@ -154,12 +154,21 @@
   },
   {
     "brandA": "Fisher & Paykel",
+    "brandB": "Haier",
+    "cat": "dryer",
+    "slug": "fisher-paykel-vs-haier-dryer-clearance",
+    "url": "/compare/fisher-paykel-vs-haier-dryer-clearance",
+    "modelsA": 24,
+    "modelsB": 5
+  },
+  {
+    "brandA": "Fisher & Paykel",
     "brandB": "LG",
     "cat": "dryer",
     "slug": "fisher-paykel-vs-lg-dryer-clearance",
     "url": "/compare/fisher-paykel-vs-lg-dryer-clearance",
     "modelsA": 24,
-    "modelsB": 10
+    "modelsB": 9
   },
   {
     "brandA": "Fisher & Paykel",
@@ -167,15 +176,6 @@
     "cat": "dryer",
     "slug": "fisher-paykel-vs-omega-dryer-clearance",
     "url": "/compare/fisher-paykel-vs-omega-dryer-clearance",
-    "modelsA": 24,
-    "modelsB": 6
-  },
-  {
-    "brandA": "Fisher & Paykel",
-    "brandB": "Samsung",
-    "cat": "dryer",
-    "slug": "fisher-paykel-vs-samsung-dryer-clearance",
-    "url": "/compare/fisher-paykel-vs-samsung-dryer-clearance",
     "modelsA": 24,
     "modelsB": 6
   },
@@ -276,7 +276,7 @@
     "slug": "fisher-paykel-vs-bosch-washing-machine-clearance",
     "url": "/compare/fisher-paykel-vs-bosch-washing-machine-clearance",
     "modelsA": 47,
-    "modelsB": 30
+    "modelsB": 29
   },
   {
     "brandA": "Fisher & Paykel",
@@ -303,7 +303,7 @@
     "slug": "lg-vs-bosch-washing-machine-clearance",
     "url": "/compare/lg-vs-bosch-washing-machine-clearance",
     "modelsA": 97,
-    "modelsB": 30
+    "modelsB": 29
   },
   {
     "brandA": "LG",
@@ -357,7 +357,7 @@
     "slug": "samsung-vs-bosch-washing-machine-clearance",
     "url": "/compare/samsung-vs-bosch-washing-machine-clearance",
     "modelsA": 39,
-    "modelsB": 30
+    "modelsB": 29
   },
   {
     "kind": "rtings-compare",
@@ -517,7 +517,7 @@
     "slug": "beko-vs-lg-dryer",
     "url": "/compare/beko-vs-lg-dryer",
     "modelsA": 10,
-    "modelsB": 10
+    "modelsB": 9
   },
   {
     "kind": "rtings-compare",
@@ -526,7 +526,7 @@
     "cat": "dryer",
     "slug": "bosch-vs-beko-dryer",
     "url": "/compare/bosch-vs-beko-dryer",
-    "modelsA": 13,
+    "modelsA": 12,
     "modelsB": 10
   },
   {
@@ -536,7 +536,7 @@
     "cat": "dryer",
     "slug": "bosch-vs-electrolux-dryer",
     "url": "/compare/bosch-vs-electrolux-dryer",
-    "modelsA": 13,
+    "modelsA": 12,
     "modelsB": 12
   },
   {
@@ -546,8 +546,8 @@
     "cat": "dryer",
     "slug": "bosch-vs-lg-dryer",
     "url": "/compare/bosch-vs-lg-dryer",
-    "modelsA": 13,
-    "modelsB": 10
+    "modelsA": 12,
+    "modelsB": 9
   },
   {
     "kind": "rtings-compare",
@@ -557,7 +557,7 @@
     "slug": "electrolux-vs-lg-dryer",
     "url": "/compare/electrolux-vs-lg-dryer",
     "modelsA": 12,
-    "modelsB": 10
+    "modelsB": 9
   },
   {
     "kind": "rtings-compare",
@@ -577,7 +577,7 @@
     "slug": "fisher-paykel-vs-bosch-dryer",
     "url": "/compare/fisher-paykel-vs-bosch-dryer",
     "modelsA": 24,
-    "modelsB": 13
+    "modelsB": 12
   },
   {
     "kind": "rtings-compare",
@@ -597,7 +597,7 @@
     "slug": "fisher-paykel-vs-lg-dryer",
     "url": "/compare/fisher-paykel-vs-lg-dryer",
     "modelsA": 24,
-    "modelsB": 10
+    "modelsB": 9
   },
   {
     "kind": "rtings-compare",
@@ -1266,7 +1266,7 @@
     "cat": "washing_machine",
     "slug": "bosch-vs-haier-washing-machine",
     "url": "/compare/bosch-vs-haier-washing-machine",
-    "modelsA": 30,
+    "modelsA": 29,
     "modelsB": 22
   },
   {
@@ -1277,7 +1277,7 @@
     "slug": "fisher-paykel-vs-bosch-washing-machine",
     "url": "/compare/fisher-paykel-vs-bosch-washing-machine",
     "modelsA": 47,
-    "modelsB": 30
+    "modelsB": 29
   },
   {
     "kind": "rtings-compare",
@@ -1307,7 +1307,7 @@
     "slug": "lg-vs-bosch-washing-machine",
     "url": "/compare/lg-vs-bosch-washing-machine",
     "modelsA": 97,
-    "modelsB": 30
+    "modelsB": 29
   },
   {
     "kind": "rtings-compare",
@@ -1347,7 +1347,7 @@
     "slug": "samsung-vs-bosch-washing-machine",
     "url": "/compare/samsung-vs-bosch-washing-machine",
     "modelsA": 39,
-    "modelsB": 30
+    "modelsB": 29
   },
   {
     "kind": "rtings-compare",

@@ -22,11 +22,18 @@ function identityKey(product) {
 
 const NON_RELEASABLE_REASON_PATTERNS = Object.freeze([
   /manufacturer_identity_collision/,
+  /marketing_text_in_model_identity/,
   /not_a_complete_appliance/,
   /invalid_axis_assignment/,
   /rejected_alias/,
   /identity_quarantine/,
 ]);
+
+const MARKETING_MODEL_SUFFIX_PATTERN = /^[A-Z0-9][A-Z0-9._/-]{3,}\s+.+\s+[—–]\s*\d+(?:\.\d+)?\s*(?:KG|L)\s*$/i;
+
+function hasMarketingTextInModelIdentity(value) {
+  return MARKETING_MODEL_SUFFIX_PATTERN.test(text(value, 'model'));
+}
 
 function quarantineReason(value) {
   return text(value, 'quarantine reason').toLowerCase();
@@ -128,6 +135,7 @@ export function buildCanonicalRegistry(catalog, {
     for (const row of rows) {
       const reasons = [];
       if (collision) reasons.push('manufacturer_identity_collision');
+      if (hasMarketingTextInModelIdentity(row.product.model)) reasons.push('marketing_text_in_model_identity');
       const releasedReasons = released.get(row.legacyId) ?? new Set();
       for (const reason of forced.get(row.legacyId) ?? []) {
         if (!releasedReasons.has(reason)) reasons.push(reason);

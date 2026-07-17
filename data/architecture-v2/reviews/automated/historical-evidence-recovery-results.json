@@ -1,196 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "historical-smeg-dishwashers-20260717-ad1",
-  "batchId": "historical-recovery-57c73ac52b198bbb067adb16-slice-85a8c256844c",
-  "batchSha256": "2f7a725828888d729796874ff5a12b1963186622d6ea9f531e1ae61fa04fc1f6",
-  "queueSha256": "b1c728f7acebed149c8ecb57576a5ea7ccb5299231d573065d1296479edc9be8",
+  "runId": "historical-electrolux-edh803bewa-20260717-am1",
+  "batchId": "historical-recovery-58db7801d77acddcbb12b863-slice-c4bac21ee76c",
+  "batchSha256": "8a17748f626bf184b24f50219e85e4ce78c4de08e2fdff098818c62e2fe268cc",
+  "queueSha256": "f8574e6d1274d664750a5e6560122e87e5e5814c82d2428859ca65da24cb1856",
   "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
-  "startedAt": "2026-07-17T01:34:24.316Z",
-  "completedAt": "2026-07-17T01:35:23.422Z",
-  "semanticOutcomeSha256": "c1a2171083075db5a4e6c3bbeaded011df2bf6c09e6c16cbeb0cbfa25514ca31",
+  "startedAt": "2026-07-17T03:39:05.768Z",
+  "completedAt": "2026-07-17T03:39:57.988Z",
+  "semanticOutcomeSha256": "34c523fbed28ec548c2a1a2458a5fb9d012a77e7a63696afcc68981dc78a2a0c",
   "outcomes": [
     {
-      "targetId": "recovery_target_2435be3cab48fa695da5851b",
-      "status": "claims_incomplete",
-      "failureCode": "mineru",
-      "candidateInventorySha256": "1ee271575c554035fd05edc4cfd756f51a50d54126b3384fa9bcb59de5a62673",
-      "candidateInventory": {
-        "schemaVersion": 1,
-        "targetId": "recovery_target_2435be3cab48fa695da5851b",
-        "identity": {
-          "brand": "Smeg",
-          "model": "DWAI6314X",
-          "category": "dishwasher"
-        },
-        "completionStatus": "complete",
-        "incompleteResolvers": [],
-        "missingBatchCandidateJobIds": [],
-        "resolvers": [
-          {
-            "resolverId": "architecture-v2-core-official-discovery",
-            "version": "1",
-            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 1
-          },
-          {
-            "resolverId": "batch-candidates",
-            "version": "1",
-            "scope": "recovery_batch_graph",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 0
-          }
-        ],
-        "activeReceiptSources": [],
-        "candidates": [
-          {
-            "candidateId": "candidate_bd13dae013d24356d502008a",
-            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": null,
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "architecture-v2-core-official-discovery",
-                "version": "1",
-                "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-                "discoveryMethod": "brand_template",
-                "sourceRole": "manufacturer_document",
-                "order": 0
-              }
-            ],
-            "outcome": {
-              "status": "mineru_failure",
-              "failureCode": "mineru",
-              "reason": "no exact-model MinerU evidence with explicit axes extracted",
-              "artifactBinding": {
-                "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf",
-                "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf",
-                "contentSha256": "5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e",
-                "objectPath": "evidence/web/sha256/5a/8d/5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e.pdf",
-                "contentType": "application/pdf",
-                "byteSize": 509139
-              },
-              "source": null
-            }
-          }
-        ],
-        "candidateInventorySha256": "1ee271575c554035fd05edc4cfd756f51a50d54126b3384fa9bcb59de5a62673"
-      },
-      "sources": [],
-      "geometryProjection": null,
-      "reconciliation": {
-        "conflictingFields": [],
-        "conflictHints": [],
-        "missingFields": [],
-        "supersessionViolations": [],
-        "axisPermutationResolution": null,
-        "lowerAuthorityResolution": null,
-        "conflictReason": null
-      },
-      "semanticOutcomeSha256": "51948cfe6fc7ce4548e9453beda13f0f6cac3fe61c33bb08fc1e33509aa8b314"
-    },
-    {
-      "targetId": "recovery_target_66e2fd1351b96298c38429d9",
-      "status": "claims_incomplete",
-      "failureCode": "mineru",
-      "candidateInventorySha256": "4afd4aafabc32d5d8e10c000275a39a0bb2dfd211bb9d82e815360d158995a71",
-      "candidateInventory": {
-        "schemaVersion": 1,
-        "targetId": "recovery_target_66e2fd1351b96298c38429d9",
-        "identity": {
-          "brand": "Smeg",
-          "model": "DWAU6315X",
-          "category": "dishwasher"
-        },
-        "completionStatus": "complete",
-        "incompleteResolvers": [],
-        "missingBatchCandidateJobIds": [],
-        "resolvers": [
-          {
-            "resolverId": "architecture-v2-core-official-discovery",
-            "version": "1",
-            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 1
-          },
-          {
-            "resolverId": "batch-candidates",
-            "version": "1",
-            "scope": "recovery_batch_graph",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 0
-          }
-        ],
-        "activeReceiptSources": [],
-        "candidates": [
-          {
-            "candidateId": "candidate_582b351bd8a79cc473b2d623",
-            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": null,
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "architecture-v2-core-official-discovery",
-                "version": "1",
-                "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-                "discoveryMethod": "brand_template",
-                "sourceRole": "manufacturer_document",
-                "order": 0
-              }
-            ],
-            "outcome": {
-              "status": "mineru_failure",
-              "failureCode": "mineru",
-              "reason": "no exact-model MinerU evidence with explicit axes extracted",
-              "artifactBinding": {
-                "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf",
-                "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf",
-                "contentSha256": "4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5",
-                "objectPath": "evidence/web/sha256/4f/3b/4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5.pdf",
-                "contentType": "application/pdf",
-                "byteSize": 487871
-              },
-              "source": null
-            }
-          }
-        ],
-        "candidateInventorySha256": "4afd4aafabc32d5d8e10c000275a39a0bb2dfd211bb9d82e815360d158995a71"
-      },
-      "sources": [],
-      "geometryProjection": null,
-      "reconciliation": {
-        "conflictingFields": [],
-        "conflictHints": [],
-        "missingFields": [],
-        "supersessionViolations": [],
-        "axisPermutationResolution": null,
-        "lowerAuthorityResolution": null,
-        "conflictReason": null
-      },
-      "semanticOutcomeSha256": "cb814f4338e127f875b6afc46471fa9e1c039508e3a508cbecdc349d00cceb82"
-    },
-    {
-      "targetId": "recovery_target_746735988e3f8fd021bc6c80",
+      "targetId": "recovery_target_51e51cc8c41c76d42ad6d2cb",
       "status": "accepted",
       "failureCode": null,
-      "candidateInventorySha256": "ba90c2dbe0edd532d69bb4e3df5d10504bfc66b285398d386a051cb04c2cd1a5",
+      "candidateInventorySha256": "a04e8dca2bcee074c2a198dcb9db3521e28041b02395cc594792660fedebe9c4",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_746735988e3f8fd021bc6c80",
+        "targetId": "recovery_target_51e51cc8c41c76d42ad6d2cb",
         "identity": {
-          "brand": "Smeg",
-          "model": "DWA315X",
-          "category": "dishwasher"
+          "brand": "Electrolux",
+          "model": "EDH803BEWA",
+          "category": "dryer"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -200,7 +30,7 @@
             "resolverId": "architecture-v2-core-official-discovery",
             "version": "1",
             "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": true,
+            "required": false,
             "completion": "complete",
             "candidateCount": 1
           },
@@ -211,13 +41,21 @@
             "required": true,
             "completion": "complete",
             "candidateCount": 0
+          },
+          {
+            "resolverId": "electrolux-group-official-factsheet",
+            "version": "2",
+            "scope": "exact_model_au_factsheet_endpoint",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 1
           }
         ],
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_297e83cbff2a8d0f4d50a675",
-            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+            "candidateId": "candidate_4330a10902a3dc6746851a8f",
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
@@ -229,6 +67,14 @@
                 "version": "1",
                 "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
                 "discoveryMethod": "brand_template",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              },
+              {
+                "resolverId": "electrolux-group-official-factsheet",
+                "version": "2",
+                "scope": "exact_model_au_factsheet_endpoint",
+                "discoveryMethod": "electrolux_group_factsheet_endpoint",
                 "sourceRole": "manufacturer_document",
                 "order": 0
               }
@@ -239,18 +85,18 @@
               "source": {
                 "authority": "manufacturer",
                 "sourceType": "official_exact_model_pdf",
-                "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
-                "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+                "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+                "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
                 "redirectChain": [],
-                "retrievedAt": "2026-07-17T01:35:10.354Z",
-                "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
-                "objectPath": "evidence/web/sha256/1d/65/1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd.pdf",
+                "retrievedAt": "2026-07-17T03:39:57.917Z",
+                "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+                "objectPath": "evidence/web/sha256/5d/b5/5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358.pdf",
                 "contentType": "application/pdf",
-                "byteSize": 1357626,
+                "byteSize": 1593030,
                 "supersedesContentSha256": [],
                 "identity": {
-                  "brand": "Smeg",
-                  "model": "DWA315X",
+                  "brand": "Electrolux",
+                  "model": "EDH803BEWA",
                   "outcome": "exact"
                 },
                 "claims": [
@@ -258,25 +104,23 @@
                     "field": "closedEnvelope.widthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 598
+                      "mm": 600
                     },
-                    "sourceLabel": "Dimensions (W x H x D)",
+                    "sourceLabel": "Total width (mm)",
                     "sourceAxisOrder": [
-                      "width",
-                      "height",
-                      "depth"
+                      "width"
                     ],
                     "sourceUnit": "mm",
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": 1,
-                    "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+                    "page": 4,
+                    "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db",
                     "bbox": [
-                      25,
-                      414,
-                      393,
-                      430
+                      516,
+                      229,
+                      939,
+                      367
                     ]
                   },
                   {
@@ -285,48 +129,44 @@
                       "kind": "fixed",
                       "mm": 850
                     },
-                    "sourceLabel": "Dimensions (W x H x D)",
+                    "sourceLabel": "Total height (mm)",
                     "sourceAxisOrder": [
-                      "width",
-                      "height",
-                      "depth"
+                      "height"
                     ],
                     "sourceUnit": "mm",
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": 1,
-                    "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+                    "page": 4,
+                    "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db",
                     "bbox": [
-                      25,
-                      414,
-                      393,
-                      430
+                      516,
+                      229,
+                      939,
+                      367
                     ]
                   },
                   {
                     "field": "closedEnvelope.depthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 596
+                      "mm": 665
                     },
-                    "sourceLabel": "Dimensions (W x H x D)",
+                    "sourceLabel": "Total depth (mm)",
                     "sourceAxisOrder": [
-                      "width",
-                      "height",
                       "depth"
                     ],
                     "sourceUnit": "mm",
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": 1,
-                    "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+                    "page": 4,
+                    "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db",
                     "bbox": [
-                      25,
-                      414,
-                      393,
-                      430
+                      516,
+                      229,
+                      939,
+                      367
                     ]
                   }
                 ],
@@ -335,33 +175,72 @@
                   "format": "content_list_v2",
                   "parserName": "MinerU",
                   "parserVersion": "3.4.4",
-                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-                  "backend": "pipeline",
+                  "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+                  "backend": "hybrid-engine",
                   "method": "auto",
                   "tableEnabled": true,
                   "formulaEnabled": false,
-                  "sourcePdfSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
-                  "contentSha256": "82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7",
-                  "objectPath": "evidence/derived/mineru-json/sha256/82/63/82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7.json",
-                  "byteSize": 32443,
-                  "pageCount": 2
+                  "sourcePdfSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+                  "contentSha256": "1e264b4a9f10c5f736036c2290c16f2360184626f97a873770553c70376da9ed",
+                  "objectPath": "evidence/derived/mineru-json/sha256/1e/26/1e264b4a9f10c5f736036c2290c16f2360184626f97a873770553c70376da9ed.json",
+                  "byteSize": 21783,
+                  "pageCount": 8,
+                  "profileId": "hybrid-image-high-v1",
+                  "effort": "high",
+                  "imageAnalysis": true,
+                  "processedPages": [
+                    7
+                  ],
+                  "sourcePageCount": 8,
+                  "fallbackTrigger": {
+                    "profileId": "pipeline-auto-v1",
+                    "contentSha256": "751b6dcba91c8b55d0d5eb593edd03181392cabe89b3a67e6251edcb8452cca1",
+                    "objectPath": "evidence/derived/mineru-json/sha256/75/1b/751b6dcba91c8b55d0d5eb593edd03181392cabe89b3a67e6251edcb8452cca1.json",
+                    "pages": [
+                      7
+                    ]
+                  }
                 },
                 "identitySignals": [
                   {
-                    "type": "mineru_title_model",
-                    "value": "DWA315X:page:1"
+                    "type": "mineru_page_header_model",
+                    "value": "EDH803BEWA:page:1:0e12ec6bf62a2e85a84a4a46ebcd97dae3a3098704129dd5bc30e2cfe40c98b7"
                   },
                   {
-                    "type": "mineru_title_model",
-                    "value": "DWA315X:page:2"
+                    "type": "mineru_page_header_model",
+                    "value": "EDH803BEWA:page:2:29ea0f621ccdd3c0c1eefe47c4a70141d695d5601502e613f5d2b22be33a52a5"
                   },
                   {
-                    "type": "source_url_exact_model",
-                    "value": "DWA315X:https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf"
+                    "type": "mineru_page_header_model",
+                    "value": "EDH803BEWA:page:3:db8aad8607e4baafab19bf9bf267d2515f7e430731c1a059dd31525519f6c4f1"
                   },
                   {
-                    "type": "pdf_source_url_model",
-                    "value": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf"
+                    "type": "mineru_page_header_model",
+                    "value": "EDH803BEWA:page:4:d6a51bd3b58839f6f70de77e3cb4f4a0bc34eb9c0caab1eb6a0f93804726e5cf"
+                  },
+                  {
+                    "type": "mineru_page_header_model",
+                    "value": "EDH803BEWA:page:5:07248b547246bf69343d7764aa02f26046e5b5f27390fcfd59480c62d68b1828"
+                  },
+                  {
+                    "type": "mineru_page_header_model",
+                    "value": "EDH803BEWA:page:6:117a3fd3d260c6c29ff3aa8e6322fedf6e065d80eca39c42e3c3c5a98abd95f0"
+                  },
+                  {
+                    "type": "mineru_page_header_model",
+                    "value": "EDH803BEWA:page:7:4abfc360d8d961a32e9c6a4fadd2405722ef5e26f4bc4a1435357de473e01ab6"
+                  },
+                  {
+                    "type": "mineru_page_header_model",
+                    "value": "EDH803BEWA:page:8:8fa7fd19981a32d9f8a250872ede5e9ee2fc6e2ec0230f6369c59bde712f9a2b"
+                  },
+                  {
+                    "type": "mineru_repeated_page_header_model",
+                    "value": "EDH803BEWA:document:repeated-page-header"
+                  },
+                  {
+                    "type": "mineru_page_header_model",
+                    "value": "EDH803BEWA:page:7:9176027db0a1d4ca3ee5a21f676a0a23385c0a6236fb2849a2e33f3705336787"
                   }
                 ],
                 "verificationReceipt": {
@@ -369,31 +248,31 @@
                   "claimSemanticsVersion": 2,
                   "policyVersion": "2026-07-13.1",
                   "manufacturerPolicyVersion": "2026-07-16.4",
-                  "verifiedAt": "2026-07-17T01:35:10.354Z",
-                  "bindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd"
+                  "verifiedAt": "2026-07-17T03:39:57.917Z",
+                  "bindingSha256": "c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713"
                 }
               }
             }
           }
         ],
-        "candidateInventorySha256": "ba90c2dbe0edd532d69bb4e3df5d10504bfc66b285398d386a051cb04c2cd1a5"
+        "candidateInventorySha256": "a04e8dca2bcee074c2a198dcb9db3521e28041b02395cc594792660fedebe9c4"
       },
       "sources": [
         {
           "authority": "manufacturer",
           "sourceType": "official_exact_model_pdf",
-          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
-          "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
           "redirectChain": [],
-          "retrievedAt": "2026-07-17T01:35:10.354Z",
-          "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
-          "objectPath": "evidence/web/sha256/1d/65/1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd.pdf",
+          "retrievedAt": "2026-07-17T03:39:57.917Z",
+          "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+          "objectPath": "evidence/web/sha256/5d/b5/5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358.pdf",
           "contentType": "application/pdf",
-          "byteSize": 1357626,
+          "byteSize": 1593030,
           "supersedesContentSha256": [],
           "identity": {
-            "brand": "Smeg",
-            "model": "DWA315X",
+            "brand": "Electrolux",
+            "model": "EDH803BEWA",
             "outcome": "exact"
           },
           "claims": [
@@ -401,25 +280,23 @@
               "field": "closedEnvelope.widthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 598
+                "mm": 600
               },
-              "sourceLabel": "Dimensions (W x H x D)",
+              "sourceLabel": "Total width (mm)",
               "sourceAxisOrder": [
-                "width",
-                "height",
-                "depth"
+                "width"
               ],
               "sourceUnit": "mm",
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": 1,
-              "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+              "page": 4,
+              "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db",
               "bbox": [
-                25,
-                414,
-                393,
-                430
+                516,
+                229,
+                939,
+                367
               ]
             },
             {
@@ -428,48 +305,44 @@
                 "kind": "fixed",
                 "mm": 850
               },
-              "sourceLabel": "Dimensions (W x H x D)",
+              "sourceLabel": "Total height (mm)",
               "sourceAxisOrder": [
-                "width",
-                "height",
-                "depth"
+                "height"
               ],
               "sourceUnit": "mm",
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": 1,
-              "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+              "page": 4,
+              "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db",
               "bbox": [
-                25,
-                414,
-                393,
-                430
+                516,
+                229,
+                939,
+                367
               ]
             },
             {
               "field": "closedEnvelope.depthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 596
+                "mm": 665
               },
-              "sourceLabel": "Dimensions (W x H x D)",
+              "sourceLabel": "Total depth (mm)",
               "sourceAxisOrder": [
-                "width",
-                "height",
                 "depth"
               ],
               "sourceUnit": "mm",
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": 1,
-              "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84",
+              "page": 4,
+              "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db",
               "bbox": [
-                25,
-                414,
-                393,
-                430
+                516,
+                229,
+                939,
+                367
               ]
             }
           ],
@@ -478,33 +351,72 @@
             "format": "content_list_v2",
             "parserName": "MinerU",
             "parserVersion": "3.4.4",
-            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-            "backend": "pipeline",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
             "method": "auto",
             "tableEnabled": true,
             "formulaEnabled": false,
-            "sourcePdfSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
-            "contentSha256": "82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7",
-            "objectPath": "evidence/derived/mineru-json/sha256/82/63/82639f4b07e7dc786422ab016dfe19258f1752096aa67cb82c11957a7a6cd9f7.json",
-            "byteSize": 32443,
-            "pageCount": 2
+            "sourcePdfSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+            "contentSha256": "1e264b4a9f10c5f736036c2290c16f2360184626f97a873770553c70376da9ed",
+            "objectPath": "evidence/derived/mineru-json/sha256/1e/26/1e264b4a9f10c5f736036c2290c16f2360184626f97a873770553c70376da9ed.json",
+            "byteSize": 21783,
+            "pageCount": 8,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              7
+            ],
+            "sourcePageCount": 8,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "751b6dcba91c8b55d0d5eb593edd03181392cabe89b3a67e6251edcb8452cca1",
+              "objectPath": "evidence/derived/mineru-json/sha256/75/1b/751b6dcba91c8b55d0d5eb593edd03181392cabe89b3a67e6251edcb8452cca1.json",
+              "pages": [
+                7
+              ]
+            }
           },
           "identitySignals": [
             {
-              "type": "mineru_title_model",
-              "value": "DWA315X:page:1"
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:1:0e12ec6bf62a2e85a84a4a46ebcd97dae3a3098704129dd5bc30e2cfe40c98b7"
             },
             {
-              "type": "mineru_title_model",
-              "value": "DWA315X:page:2"
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:2:29ea0f621ccdd3c0c1eefe47c4a70141d695d5601502e613f5d2b22be33a52a5"
             },
             {
-              "type": "source_url_exact_model",
-              "value": "DWA315X:https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf"
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:3:db8aad8607e4baafab19bf9bf267d2515f7e430731c1a059dd31525519f6c4f1"
             },
             {
-              "type": "pdf_source_url_model",
-              "value": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf"
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:4:d6a51bd3b58839f6f70de77e3cb4f4a0bc34eb9c0caab1eb6a0f93804726e5cf"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:5:07248b547246bf69343d7764aa02f26046e5b5f27390fcfd59480c62d68b1828"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:6:117a3fd3d260c6c29ff3aa8e6322fedf6e065d80eca39c42e3c3c5a98abd95f0"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:7:4abfc360d8d961a32e9c6a4fadd2405722ef5e26f4bc4a1435357de473e01ab6"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:8:8fa7fd19981a32d9f8a250872ede5e9ee2fc6e2ec0230f6369c59bde712f9a2b"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "EDH803BEWA:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDH803BEWA:page:7:9176027db0a1d4ca3ee5a21f676a0a23385c0a6236fb2849a2e33f3705336787"
             }
           ],
           "verificationReceipt": {
@@ -512,20 +424,20 @@
             "claimSemanticsVersion": 2,
             "policyVersion": "2026-07-13.1",
             "manufacturerPolicyVersion": "2026-07-16.4",
-            "verifiedAt": "2026-07-17T01:35:10.354Z",
-            "bindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd"
+            "verifiedAt": "2026-07-17T03:39:57.917Z",
+            "bindingSha256": "c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713"
           }
         }
       ],
       "geometryProjection": {
         "geometry": {
           "closedEnvelope": {
-            "widthMm": 598,
+            "widthMm": 600,
             "heightMm": {
               "minimumMm": 850,
               "maximumMm": 850
             },
-            "depthMm": 596
+            "depthMm": 665
           },
           "installation": {
             "leftMm": null,
@@ -544,7 +456,7 @@
             "heightMm": null,
             "depthMm": null
           },
-          "category": "dishwasher",
+          "category": "dryer",
           "formFactor": null,
           "service": {
             "plumbingRearMm": null,
@@ -554,25 +466,25 @@
         },
         "fieldEvidence": {
           "closedEnvelope.widthMm": {
-            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
-            "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
-            "receiptBindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd",
-            "page": 1,
-            "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84"
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+            "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+            "receiptBindingSha256": "c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713",
+            "page": 4,
+            "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db"
           },
           "closedEnvelope.heightMm": {
-            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
-            "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
-            "receiptBindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd",
-            "page": 1,
-            "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84"
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+            "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+            "receiptBindingSha256": "c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713",
+            "page": 4,
+            "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db"
           },
           "closedEnvelope.depthMm": {
-            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWA315X.pdf",
-            "contentSha256": "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd",
-            "receiptBindingSha256": "cb42f47aba7a94bc7c8d7b2f29d7359f4debf6007c9b22c832ba4bc24d3b67cd",
-            "page": 1,
-            "fragmentSha256": "114b4bc5da6a8a626bb91e21cfd4c09e53f6f0ea2cc89e10b4fae4be2d56cb84"
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+            "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+            "receiptBindingSha256": "c50de44c2808911302ac11f3beabd282e42bca33e8b72a751a8661184705e713",
+            "page": 4,
+            "fragmentSha256": "b7a557ff9da30c55d31e7899cc80a083af9e2dc0240e1be946f1f006ffc905db"
           }
         },
         "evidenceLevel": "dimensions",
@@ -583,12 +495,12 @@
           "installation.rightMm",
           "installation.topMm",
           "operation.doorOpenDepthMm",
-          "service.rearServicesMm"
+          "service.rearVentilationMm"
         ],
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "1d65ee3bc53e40cf6aa8cafed4dbdf1a19dee785a097cb240597f7cc0f6772bd"
+          "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358"
         ]
       },
       "reconciliation": {
@@ -600,99 +512,14 @@
         "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "5efb4297a1b0ec9a005590f2f8b63c2cf4b1c26d6b7da3068016b4cf22ca2629"
-    },
-    {
-      "targetId": "recovery_target_c32bb8a5abc49aa3f737344e",
-      "status": "claims_incomplete",
-      "failureCode": "mineru",
-      "candidateInventorySha256": "605373098eb88faff745467ab35e48a2f752492b364ab145b81db5fe18989148",
-      "candidateInventory": {
-        "schemaVersion": 1,
-        "targetId": "recovery_target_c32bb8a5abc49aa3f737344e",
-        "identity": {
-          "brand": "Smeg",
-          "model": "DWAFI6314",
-          "category": "dishwasher"
-        },
-        "completionStatus": "complete",
-        "incompleteResolvers": [],
-        "missingBatchCandidateJobIds": [],
-        "resolvers": [
-          {
-            "resolverId": "architecture-v2-core-official-discovery",
-            "version": "1",
-            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 1
-          },
-          {
-            "resolverId": "batch-candidates",
-            "version": "1",
-            "scope": "recovery_batch_graph",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 0
-          }
-        ],
-        "activeReceiptSources": [],
-        "candidates": [
-          {
-            "candidateId": "candidate_1b6891aba11220aeb4ced7a1",
-            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": null,
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "architecture-v2-core-official-discovery",
-                "version": "1",
-                "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-                "discoveryMethod": "brand_template",
-                "sourceRole": "manufacturer_document",
-                "order": 0
-              }
-            ],
-            "outcome": {
-              "status": "mineru_failure",
-              "failureCode": "mineru",
-              "reason": "no exact-model MinerU evidence with explicit axes extracted",
-              "artifactBinding": {
-                "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf",
-                "finalUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf",
-                "contentSha256": "b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5",
-                "objectPath": "evidence/web/sha256/b5/e8/b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5.pdf",
-                "contentType": "application/pdf",
-                "byteSize": 448269
-              },
-              "source": null
-            }
-          }
-        ],
-        "candidateInventorySha256": "605373098eb88faff745467ab35e48a2f752492b364ab145b81db5fe18989148"
-      },
-      "sources": [],
-      "geometryProjection": null,
-      "reconciliation": {
-        "conflictingFields": [],
-        "conflictHints": [],
-        "missingFields": [],
-        "supersessionViolations": [],
-        "axisPermutationResolution": null,
-        "lowerAuthorityResolution": null,
-        "conflictReason": null
-      },
-      "semanticOutcomeSha256": "9327f0cd244dbb9616cb66e9390b49cc48ae0c4b59ea602f6c52bfdbff6db497"
+      "semanticOutcomeSha256": "43b2b6acbf32468e4dcf75fa9806ac7763ed24e6c83ee4b7b20dedbfceab600c"
     }
   ],
   "summary": {
-    "targets": 4,
+    "targets": 1,
     "accepted": 1,
     "nonScalar": 0,
     "retryable": 0,
-    "terminal": 3
+    "terminal": 0
   }
 }

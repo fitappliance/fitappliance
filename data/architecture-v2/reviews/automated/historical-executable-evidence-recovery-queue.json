@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-17T03:26:33.651Z",
-  "sourceAcquisitionQueueSha256": "5c9212d1d291039ed9a4117b586b45173e6acfcffc32e9e9813b37d977123082",
+  "generatedAt": "2026-07-17T03:42:16.427Z",
+  "sourceAcquisitionQueueSha256": "29648d5a29e629bd485707224e4c26df674a7239ad8458a5de8863cc28df76a9",
   "evidenceProcessorEpochs": {
     "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
     "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
@@ -13,23 +13,23 @@
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7698,
+    "acquisitionRecords": 7693,
     "fetchJobs": 0,
-    "targets": 7580,
-    "resolverOnlyTargets": 7580,
+    "targets": 7575,
+    "resolverOnlyTargets": 7575,
     "candidateEdges": 0,
-    "uniqueReferences": 7580,
+    "uniqueReferences": 7575,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 35,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2022,
-      "CURRENT_RETAIL": 1006,
+      "CATALOG_ARCHIVED": 2018,
+      "CURRENT_RETAIL": 1005,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 811,
-      "P1_HISTORICAL_MISSING_DIMENSIONS": 1936,
+      "P0_CURRENT_MISSING_DIMENSIONS": 810,
+      "P1_HISTORICAL_MISSING_DIMENSIONS": 1932,
       "P2_CURRENT_CONFIRMATION": 184,
       "P3_HISTORICAL_CONFIRMATION": 4583,
       "P4_CONFLICT_RESOLUTION": 66
@@ -3761,33 +3761,6 @@
           }
         }
       ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_e6dbec2575eba23540666687",
-      "referenceId": "fa_ref_a69e2ef30a41965895a47c2f",
-      "legacyRuntimeId": "dr3",
-      "canonicalProductId": "fa_prod_b7f7127ecc20c94db73d4922",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDH803BEWA Heat Pump — 8kg",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/EDH803BEWA.json",
-        "source:doc_9340aa63e27469a88356cc0a"
-      ],
-      "legacyHints": [],
       "registryDimensionHints": [],
       "publicationEligible": false,
       "candidateJobIds": [],
@@ -38504,30 +38477,6 @@
       "repairExistingReceipt": false
     },
     {
-      "targetId": "recovery_target_d94f4e75e9cee33c0b5e713c",
-      "referenceId": "fa_ref_62f9d3c97e2f8a3bc8bf8d32",
-      "legacyRuntimeId": "dr1",
-      "canonicalProductId": "fa_prod_c91c0785b71cc850a94e8df3",
-      "category": "dryer",
-      "brand": "Bosch",
-      "model": "WTH85209AU Series 4 Heat Pump — 8kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [],
-      "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
       "targetId": "recovery_target_7a69d8062ca4c7377027b93f",
       "referenceId": "fa_ref_0ae4a2c9ca09bae615221650",
       "legacyRuntimeId": "historical-fa_ref_0ae4a2c9ca09bae615221650",
@@ -41831,30 +41780,6 @@
       "repairExistingReceipt": false
     },
     {
-      "targetId": "recovery_target_46db9f08e0ba6de1c1b17317",
-      "referenceId": "fa_ref_ebe96dbde511d504e8ac3c64",
-      "legacyRuntimeId": "dr2",
-      "canonicalProductId": "fa_prod_d774895e025bf89994fd7154",
-      "category": "dryer",
-      "brand": "LG",
-      "model": "RC802HM2F DualInverter Condenser — 8kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [],
-      "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
       "targetId": "recovery_target_60acde31fee3409f09339451",
       "referenceId": "fa_ref_c51fcda5776434bd4c979750",
       "legacyRuntimeId": "dryer-zcd0122",
@@ -42284,30 +42209,6 @@
       "brand": "Samsung",
       "model": "DV90F17CDS",
       "lifecycleState": "REGISTRY_ONLY",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [],
-      "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_d0a2ac7612bf333377b76c47",
-      "referenceId": "fa_ref_86c0defb0abb9db9520d17e5",
-      "legacyRuntimeId": "dr4",
-      "canonicalProductId": "fa_prod_f4e5afa217243a12be6559dc",
-      "category": "dryer",
-      "brand": "Samsung",
-      "model": "DV90T6240LE Vented — 9kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
       "currentLookupAction": "MEASURE_REQUIRED",
       "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "requestedFields": [
@@ -65947,30 +65848,6 @@
       "brand": "BOSCH",
       "model": "WAW28790AU",
       "lifecycleState": "REGISTRY_ONLY",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [],
-      "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_08d891a92469c735b845cefd",
-      "referenceId": "fa_ref_bd562b2e01ff2e572169b108",
-      "legacyRuntimeId": "w3",
-      "canonicalProductId": "fa_prod_0a3280b1171057144994dfea",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAX32EH0AU Series 8 — 10kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
       "currentLookupAction": "MEASURE_REQUIRED",
       "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
       "requestedFields": [

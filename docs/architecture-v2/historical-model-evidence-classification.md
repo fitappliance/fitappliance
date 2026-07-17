@@ -1,9 +1,9 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-17T03:26:33.651Z
+Generated: 2026-07-17T03:42:16.427Z
 
-Coverage: **8,093 / 8,093** unique historical models.
-Models with document links: **1,768**; without links: **6,325**.
+Coverage: **8,089 / 8,089** unique historical models.
+Models with document links: **1,768**; without links: **6,321**.
 
 This is a research and repair classification. It does not grant publication authority.
 
@@ -12,18 +12,18 @@ This is a research and repair classification. It does not grant publication auth
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
 | dishwasher | 1419 | 94 | 1115 |
-| dryer | 841 | 72 | 274 |
+| dryer | 838 | 72 | 274 |
 | fridge | 4336 | 121 | 2309 |
-| washing_machine | 1497 | 88 | 676 |
+| washing_machine | 1496 | 88 | 676 |
 
 ## Operational Classes
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 395 |
+| COMPLETE_RECEIPT | 396 |
 | CONFLICT_QUARANTINE | 83 |
-| IDENTITY_RESEARCH | 135 |
-| OFFICIAL_DISCOVERY | 6416 |
+| IDENTITY_RESEARCH | 134 |
+| OFFICIAL_DISCOVERY | 6412 |
 | REFERENCE_REDISCOVERY | 1064 |
 
 ## Observed Brand / Series / PDF Grammar Groups
@@ -38,9 +38,9 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Bosch | marketing_series | Series 8 | 10 |
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_1cb932102aaee1e6 | 10 |
 | dishwasher | Bosch | document_family | Document family 563aa92915c3 | 9 |
+| dryer | Electrolux | parser_family | PDF grammar pdf_grammar_8f60826f847a01df | 9 |
 | fridge | KELVINATOR | parser_family | PDF grammar pdf_grammar_b56ff9ab0cbbc9f2 | 9 |
 | dishwasher | Fisher & Paykel | document_family | Document family b5a036b18078 | 8 |
-| dryer | Electrolux | parser_family | PDF grammar pdf_grammar_8f60826f847a01df | 8 |
 | washing_machine | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_fa4e96e9408d0085 | 8 |
 | dishwasher | Bosch | marketing_series | Series 4 | 7 |
 | dishwasher | Bosch | parser_family | PDF grammar pdf_grammar_2a3308cabe6ee132 | 7 |
@@ -98,8 +98,8 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Miele | OFFICIAL_DISCOVERY | 65 |
 | fridge | TECO | OFFICIAL_DISCOVERY | 65 |
 | fridge | HELLER | OFFICIAL_DISCOVERY | 61 |
-| dryer | LG | OFFICIAL_DISCOVERY | 60 |
 | fridge | CHIQ | REFERENCE_REDISCOVERY | 60 |
+| dryer | LG | OFFICIAL_DISCOVERY | 59 |
 | dishwasher | Artusi | OFFICIAL_DISCOVERY | 57 |
 | washing_machine | Haier | OFFICIAL_DISCOVERY | 57 |
 | fridge | Mykin | OFFICIAL_DISCOVERY | 55 |

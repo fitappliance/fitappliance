@@ -10,19 +10,19 @@ Generated: 2026-07-12T12:40:00.000Z
 
 | Metric | Count |
 | --- | ---: |
-| Historical records | 8093 |
+| Historical records | 8089 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 929 |
-| Valid MinerU documents | 914 |
+| MinerU documents | 930 |
+| Valid MinerU documents | 915 |
 | Invalid or orphaned MinerU documents | 15 |
-| Documents with recognised expressions | 485 |
+| Documents with recognised expressions | 486 |
 | Documents without recognised expressions | 429 |
-| Mapped MinerU documents | 881 |
+| Mapped MinerU documents | 882 |
 | Unmapped MinerU documents | 33 |
-| Dimension-expression observations | 1155 |
+| Dimension-expression observations | 1156 |
 | Reusable PDF grammar profiles | 215 |
-| Research gaps | 1026 |
+| Research gaps | 1027 |
 
 A marketing-series count is a proven minimum, never an estimate of the
 manufacturer's complete range. `UNKNOWN` is intentional when official text
@@ -292,7 +292,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | AWARD | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BEKO | 41 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BL | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| BOSCH | 61 | 49 | 3 | 17 | `MINERU_SAMPLE_OBSERVED` |
+| BOSCH | 60 | 49 | 3 | 17 | `MINERU_SAMPLE_OBSERVED` |
 | CAMEC | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | carson | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | CHIQ | 41 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -378,11 +378,11 @@ and every extracted value still requires exact-model identity and receipt checks
 | ASKO | 24 | 4 | 0 | 3 | `MINERU_SAMPLE_OBSERVED` |
 | AWARD | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BEKO | 29 | 2 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
-| Bosch | 25 | 18 | 3 | 8 | `MINERU_SAMPLE_OBSERVED` |
+| Bosch | 24 | 18 | 3 | 8 | `MINERU_SAMPLE_OBSERVED` |
 | carson | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | CHIQ | 16 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Devanti | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Electrolux | 43 | 8 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
+| Electrolux | 43 | 9 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
 | Esatto | 56 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | EURO | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Euroclean | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -400,7 +400,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | HOOVER | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Inalto | 19 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Kogan | 68 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| LG | 68 | 6 | 0 | 2 | `MINERU_SAMPLE_OBSERVED` |
+| LG | 67 | 6 | 0 | 2 | `MINERU_SAMPLE_OBSERVED` |
 | majestic | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Midea | 15 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Miele | 49 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -414,7 +414,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Platinum | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Prinetti | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Robinhood | 7 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Samsung | 12 | 1 | 0 | 0 | `MINERU_SAMPLE_OBSERVED` |
+| Samsung | 11 | 1 | 0 | 0 | `MINERU_SAMPLE_OBSERVED` |
 | SAMSUNG ELECTRONICS | 26 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | SEIKI | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | SHARP | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -448,7 +448,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | 31 | Explicit three-axis sequence plus a qualified alternative depth. |
 | `HIERARCHICAL_DEPTH_VARIANTS` | 1 | A Depth parent row followed by explicitly qualified product-depth variants. |
 | `INDIVIDUAL_LABELLED_AXIS` | 231 | One named axis/value pair; combine only through independently proven model scope. |
-| `INDIVIDUALLY_LABELLED_AXES` | 312 | Two or more dimensions expressed as separate named axis/value pairs. |
+| `INDIVIDUALLY_LABELLED_AXES` | 313 | Two or more dimensions expressed as separate named axis/value pairs. |
 | `INLINE_LABELLED_AXES` | 155 | Observed parser research pattern. |
 | `INLINE_VALUE_LABELLED_AXIS_SEQUENCE` | 7 | Each value carries its own explicit W, H, or D label and unit. |
 | `LETTERED_EXPLICIT_AXIS_LIST` | 6 | Diagram letters explicitly map to axis names and values. |
@@ -475,7 +475,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | 22 |
 | `SUPPORTED_EXPLICIT_HANDLE_INCLUSIVE_DEPTH` | 1 |
 | `SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE` | 7 |
-| `SUPPORTED_EXPLICIT_LABELS` | 459 |
+| `SUPPORTED_EXPLICIT_LABELS` | 460 |
 | `SUPPORTED_EXPLICIT_NET_SECTION` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_AXIS_COLUMNS` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | 1 |
@@ -8804,7 +8804,7 @@ Research gaps:
 
 ## Washing Machines
 
-Inventory: 1497 models across 83 category-brand groups.
+Inventory: 1496 models across 83 category-brand groups.
 
 ### 3J
 
@@ -9005,7 +9005,7 @@ Research gaps:
 ### BOSCH
 
 - Raw brand variants: `BOSCH`, `Bosch`
-- Inventory models: 61
+- Inventory models: 60
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 49
 - Proven marketing series: 3; total series count: `PROVEN_MINIMUM_ONLY`
 - PDF grammar profiles: 17
@@ -11367,7 +11367,7 @@ Research gaps:
 
 ## Dryers
 
-Inventory: 841 models across 68 category-brand groups.
+Inventory: 838 models across 68 category-brand groups.
 
 ### AEG
 
@@ -11543,7 +11543,7 @@ Research gaps:
 ### Bosch
 
 - Raw brand variants: `BOSCH`, `Bosch`
-- Inventory models: 25
+- Inventory models: 24
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 18
 - Proven marketing series: 3; total series count: `PROVEN_MINIMUM_ONLY`
 - PDF grammar profiles: 8
@@ -11761,7 +11761,7 @@ Research gaps:
 
 - Raw brand variants: `Electrolux`
 - Inventory models: 43
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 8
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 9
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 1
 - Complete exact-model parser replays: 1
@@ -11770,11 +11770,11 @@ Research gaps:
 
 - Group type: `parser_family`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `EDC2075GDW`, `EDC2086GDW`, `EDH3586GDW`, `EDH3896GDW`, `EDV605H3WC`, `EDV605HQWA`, `EDV705H3WC`, `EDV705HQWA`
-- PDF SHA-256: `14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161`, `4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9`, `766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555`, `858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8`, `8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d`, `8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5`, `9ec95da728ee5b2059853a9bd0ef1c33a119d761d46d9047f1e2bb5d9a372872`, `aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b`
+- Models observed: `EDC2075GDW`, `EDC2086GDW`, `EDH3586GDW`, `EDH3896GDW`, `EDH803BEWA`, `EDV605H3WC`, `EDV605HQWA`, `EDV705H3WC`, `EDV705HQWA`
+- PDF SHA-256: `14c1a4222d8289037ac3780bea2fbdad899d4e0f86474ed0e60723ce93c48161`, `4d753d64eab0b964822ff5533e497637669e4870a97464cfdbfc62cf975582b9`, `5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358`, `766eeded7552055fa09976e619ac3720a1f4f8fbac2f0db77503c377ba71a555`, `858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8`, `8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d`, `8c176e5c5037106effe6674119c441e03871ce628ef475ce375a21966876f4f5`, `9ec95da728ee5b2059853a9bd0ef1c33a119d761d46d9047f1e2bb5d9a372872`, `aa8d2ae8efaafd7d8e9f06ab1e0aad43a8b717fe2df121e06512463b2ee8bb7b`
 - PDF grammar profiles: `pdf_grammar_8f60826f847a01df`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://commercial.appliancesonline.com.au/manuals/ak/b/5/7/e/b57e4730d952fa76093dfb152bc519c36d67fd23_Electrolux_EDV705H3WC_Factsheet.pdf>, <https://commercial.appliancesonline.com.au/manuals/ak/d/7/e/2/d7e29d214f2e4ae675965724e2bfae2f462549a0_Electrolux_EDV605H3WC_Factsheet.pdf>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV705HQWA&brand=Electrolux>
+- Official/source URLs: <https://commercial.appliancesonline.com.au/manuals/ak/b/5/7/e/b57e4730d952fa76093dfb152bc519c36d67fd23_Electrolux_EDV705H3WC_Factsheet.pdf>, <https://commercial.appliancesonline.com.au/manuals/ak/d/7/e/2/d7e29d214f2e4ae675965724e2bfae2f462549a0_Electrolux_EDV605H3WC_Factsheet.pdf>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2075GDW&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDC2086GDW&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3586GDW&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH3896GDW&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV605HQWA&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV705HQWA&brand=Electrolux>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -11786,6 +11786,7 @@ Research gaps:
 | `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Total height (mm) 795 \| Total width (mm) 560 \| Total depth (mm) 600 | p.3, `3c4199a6c327` |
 | `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Total height (mm) 850 \| Total width (mm) 600 \| Total depth (mm) 600 | p.3, `4e136ef14a2d` |
 | `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Total height (mm) 795 \| Total width (mm) 600 \| Total depth (mm) 560 | p.3, `b96fbc95cd3a` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Total height (mm) 850 \| Total width (mm) 600 \| Total depth (mm) 665 | p.4, `b7a557ff9da3` |
 
 Research gaps:
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 5: Shipping Volume (m3) 0.387 Shipping Weight (Kg) 51 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 640 Pack Dimension Depth (mm) 680
@@ -11796,6 +11797,7 @@ Research gaps:
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 5: Shipping Volume (m3) 0.387 Shipping Weight (Kg) 54 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 640 Pack Dimension Depth (mm) 680
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 5: Shipping Volume (m3) 0.33 Shipping Weight (Kg) 28.5 Pack Dimensions Height (mm) 830 Pack Dimension Width (mm) 630 Pack Dimension Depth (mm) 640
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 5: Shipping Volume (m3) 0.347 Shipping Weight (Kg) 39 Pack Dimensions Height (mm) 890 Pack Dimension Width (mm) 640 Pack Dimension Depth (mm) 610
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 6: Pack Dimensions Height (mm) 900 Pack Dimension Width (mm) 640 Pack Dimension Depth (mm) 710
 
 ### Esatto
 
@@ -12510,7 +12512,7 @@ Research gaps:
 ### LG
 
 - Raw brand variants: `LG`
-- Inventory models: 68
+- Inventory models: 67
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 6
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 2
@@ -12730,7 +12732,7 @@ Research gaps:
 ### Samsung
 
 - Raw brand variants: `Samsung`
-- Inventory models: 12
+- Inventory models: 11
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 1
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 0

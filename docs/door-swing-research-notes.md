@@ -117,7 +117,7 @@ explicit `null` so the schema stays consistent.
   I did not find a trustworthy official LG product or support page for the
   exact `RC802HM2F` code during this pass, so the value remains `null`.
 
-### `dr3` Electrolux `EDH803BEWA Heat Pump — 8kg`
+### `dr3` Electrolux `EDH803BEWA`
 
 - Source checked:
   [Electrolux AU EDH803BEWA product page](https://www.electrolux.com.au/laundry/dryers/edh803bewa/)

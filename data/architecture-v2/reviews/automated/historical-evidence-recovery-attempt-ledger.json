@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-17T03:25:48.641Z",
+  "generatedAt": "2026-07-17T03:41:33.067Z",
   "processorEpochMigration": {
     "migratedAt": "2026-07-17T01:44:09.981Z",
     "migratedEntries": 3,
@@ -11762,6 +11762,23 @@
   ],
   "sourceAcceptances": [
     {
+      "sourceAcceptanceId": "historical_source_acceptance_001067d2a1588c08e92dfb8b",
+      "targetId": "recovery_target_51e51cc8c41c76d42ad6d2cb",
+      "referenceId": "fa_ref_419d598512c70b7e32d6eead",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDH803BEWA&brand=Electrolux",
+      "contentSha256": "5db57816d06468d53a25b135f30224e12824ca1cbd852dda485123c0720da358",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "a04e8dca2bcee074c2a198dcb9db3521e28041b02395cc594792660fedebe9c4",
+      "semanticOutcomeSha256": "43b2b6acbf32468e4dcf75fa9806ac7763ed24e6c83ee4b7b20dedbfceab600c",
+      "batchId": "historical-recovery-58db7801d77acddcbb12b863-slice-c4bac21ee76c",
+      "batchSha256": "8a17748f626bf184b24f50219e85e4ce78c4de08e2fdff098818c62e2fe268cc",
+      "runId": "historical-electrolux-edh803bewa-20260717-am1",
+      "resultsSha256": "1ba980603dfbb11d4282f0103ec9984eb1c2d8743fac044812ec0f1ccd9476e3",
+      "auditSha256": "1016562ecaf428130e1ec79c018304e46ad56cc4833cf4efe2c32e6fe071cb45",
+      "acceptedAt": "2026-07-17T03:39:57.988Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_00a0785ab8669c9109134bb9",
       "targetId": "recovery_target_a53ffc44471da2f46e9487f8",
       "referenceId": "fa_ref_0b56ecc3c7db223cdadbc4ee",
@@ -20484,7 +20501,7 @@
   "summary": {
     "entries": 386,
     "resolutions": 27,
-    "sourceAcceptances": 281,
+    "sourceAcceptances": 282,
     "suppressions": 299,
     "resolvedSuppressions": 24,
     "retryable": 63,

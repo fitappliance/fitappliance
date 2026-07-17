@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T03:26:33.651Z",
-  "semanticQueueSha256": "5c9212d1d291039ed9a4117b586b45173e6acfcffc32e9e9813b37d977123082",
-  "sourceClassificationSha256": "ca911cdc35c96a63960999fe2e8ab31252285155345d74f48cebffcfec0005b6",
+  "generatedAt": "2026-07-17T03:42:16.427Z",
+  "semanticQueueSha256": "29648d5a29e629bd485707224e4c26df674a7239ad8458a5de8863cc28df76a9",
+  "sourceClassificationSha256": "96c2199f63fc97d9333b8a0cea89eeeee7d2530a1bc6a621e9617a29e83fed8c",
   "records": [
     {
       "schemaVersion": 1,
@@ -5891,35 +5891,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_e14515d7b08512aaf8b33f28"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_55c6457f387bea5c70ff15df",
-      "referenceId": "fa_ref_a69e2ef30a41965895a47c2f",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDH803BEWA Heat Pump — 8kg",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "IDENTITY_RESEARCH",
-      "route": "IDENTITY_CLOSURE",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_f12a273b3d00b31097441235"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "dr3"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b7f7127ecc20c94db73d4922"
       ],
       "offlineReplayOutcome": null
     },
@@ -41436,33 +41407,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ca99a4d7749529ba69e02908",
-      "referenceId": "fa_ref_62f9d3c97e2f8a3bc8bf8d32",
-      "category": "dryer",
-      "brand": "Bosch",
-      "model": "WTH85209AU Series 4 Heat Pump — 8kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "dr1"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_c91c0785b71cc850a94e8df3"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_46f4a14b0d10d8b5a02ea710",
       "referenceId": "fa_ref_b7bc26c9ad91d63e358d7c41",
       "category": "dryer",
@@ -42361,33 +42305,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_c2015d6e617f71c05054faec",
-      "referenceId": "fa_ref_ebe96dbde511d504e8ac3c64",
-      "category": "dryer",
-      "brand": "LG",
-      "model": "RC802HM2F DualInverter Condenser — 8kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "dr2"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d774895e025bf89994fd7154"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_993fbb62abee306f632e68fc",
       "referenceId": "fa_ref_c51fcda5776434bd4c979750",
       "category": "dryer",
@@ -42780,33 +42697,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_14179f9e367376342b921422"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_59bd5c74df0980adc79f680e",
-      "referenceId": "fa_ref_86c0defb0abb9db9520d17e5",
-      "category": "dryer",
-      "brand": "Samsung",
-      "model": "DV90T6240LE Vented — 9kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "dr4"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_f4e5afa217243a12be6559dc"
       ],
       "offlineReplayOutcome": null
     },
@@ -76146,33 +76036,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_6f7731cbc6899db0697b18a6"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3f4351854c6bb3e187b30b91",
-      "referenceId": "fa_ref_bd562b2e01ff2e572169b108",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAX32EH0AU Series 8 — 10kg",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "OFFICIAL_DISCOVERY",
-      "route": "OFFICIAL_DISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [],
-      "resolverIds": [
-        "bosch-official-product-documents"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "w3"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_0a3280b1171057144994dfea"
       ],
       "offlineReplayOutcome": null
     },
@@ -206424,19 +206287,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_f12a273b3d00b31097441235",
-      "sourceUrl": "https://commercial.appliancesonline.com.au/public/manuals/EDH803BEWA-Electrolux-Specifications-Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/EDH803BEWA.json",
-        "source:doc_9340aa63e27469a88356cc0a"
-      ],
-      "referenceIds": [
-        "fa_ref_a69e2ef30a41965895a47c2f"
-      ]
-    },
-    {
       "sourceId": "historical_source_f138b6f57ddfd1cfd4f9a080",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw276d83c8/QRG/AU/QRG-AU-82316.pdf",
       "sourceAuthority": "NONE",
@@ -207293,46 +207143,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 395,
+    "COMPLETE_RECEIPT": 396,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
-    "classificationRecords": 8093,
-    "queuedModels": 7698,
-    "uniqueReferences": 7698,
-    "candidateSources": 1347,
-    "candidateEdges": 1382,
+    "classificationRecords": 8089,
+    "queuedModels": 7693,
+    "uniqueReferences": 7693,
+    "candidateSources": 1346,
+    "candidateEdges": 1381,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1060,
+      "CATALOG_ARCHIVED": 2071,
+      "CURRENT_RETAIL": 1059,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1243,
-      "dryer": 796,
+      "dryer": 792,
       "fridge": 4211,
-      "washing_machine": 1448
+      "washing_machine": 1447
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
-      "IDENTITY_RESEARCH": 135,
-      "OFFICIAL_DISCOVERY": 6416,
+      "IDENTITY_RESEARCH": 134,
+      "OFFICIAL_DISCOVERY": 6412,
       "REFERENCE_REDISCOVERY": 1064
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
-      "IDENTITY_CLOSURE": 135,
-      "OFFICIAL_DISCOVERY": 6416,
+      "IDENTITY_CLOSURE": 134,
+      "OFFICIAL_DISCOVERY": 6412,
       "OFFICIAL_REDISCOVERY": 1064
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5033,
+      "DISCOVERY_READY": 5028,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 395,
+      "COMPLETE_RECEIPT": 396,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }
