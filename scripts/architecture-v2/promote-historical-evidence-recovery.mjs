@@ -81,15 +81,17 @@ export async function runPromotionCli(options) {
   const [results, audit, priorBundle, priorAttemptLedger] = await Promise.all([
     readJson(resultsPath), readJson(auditPath), readOptionalJson(bundlePath), readOptionalJson(attemptLedgerPath),
   ]);
-  const batch = await readJson(join(
-    storageRoot, 'runs/historical-evidence-recovery', results.runId, 'batch.json',
-  ));
+  const runDirectory = join(storageRoot, 'runs/historical-evidence-recovery', results.runId);
+  const [batch, state] = await Promise.all([
+    readJson(join(runDirectory, 'batch.json')),
+    readJson(join(runDirectory, 'state.json')),
+  ]);
   const generatedAt = new Date().toISOString();
   const bundle = promoteHistoricalEvidenceRecovery({
     batch, results, audit, priorBundle, generatedAt,
   });
   const attemptLedger = buildHistoricalEvidenceRecoveryAttemptLedger({
-    batch, results, audit, priorLedger: priorAttemptLedger, generatedAt,
+    batch, results, audit, state, priorLedger: priorAttemptLedger, generatedAt,
   });
   const objectStore = createEvidenceObjectStore(storageRoot);
   const receiptAudit = await auditHistoricalAcceptanceReceipts({

@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import { buildHistoricalExecutableRecoveryQueue } from '../../src/domain/historical-executable-recovery-queue.mjs';
 import { historicalResolverContractSha256 } from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
+import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from '../../src/domain/beko-product-page-dimensions.mjs';
 
 const fields = [
   'closedEnvelope.widthMm',
@@ -269,6 +270,52 @@ test('same-policy terminal source becomes resolver-only but preserves alternativ
   });
   assert.equal(changedPolicy.jobs.length, 1);
   assert.equal(changedPolicy.targets[0].priorAttemptSuppressions, undefined);
+});
+
+test('a bounded Beko HTML processor change reopens only the product page and keeps its PDF identity rejection closed', () => {
+  const policySha256 = 'b'.repeat(64);
+  const htmlUrl = 'https://www.beko.com/au-en/home-appliances/fridge-freezer/example-bbm450x';
+  const pdfUrl = 'https://www.beko.com/content/manual.pdf';
+  const queue = buildHistoricalExecutableRecoveryQueue({
+    acquisitionQueue: {
+      schemaVersion: 1,
+      generatedAt: '2026-07-17T00:00:00.000Z',
+      semanticQueueSha256: 'a'.repeat(64),
+      records: [acquisition('beko', {
+        brand: 'Beko', model: 'BBM450X', candidateSourceIds: ['source-html', 'source-pdf'],
+      })],
+      sources: [{
+        sourceId: 'source-html', sourceUrl: htmlUrl, sourceAuthority: 'OFFICIAL', receiptEligible: true,
+        documentIds: ['html:beko'], referenceIds: ['beko'],
+      }, {
+        sourceId: 'source-pdf', sourceUrl: pdfUrl, sourceAuthority: 'OFFICIAL', receiptEligible: true,
+        documentIds: ['pdf:beko'], referenceIds: ['beko'],
+      }],
+    },
+    historicalReference: { records: [reference('beko', { brand: 'Beko', model: 'BBM450X' })] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+    recoveryPolicySha256: policySha256,
+    evidenceProcessorEpochs: { [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: '2'.repeat(64) },
+    priorAttemptLedger: {
+      schemaVersion: 1,
+      entries: [{
+        attemptId: 'attempt-html', targetId: 'ignored', referenceId: 'beko', brand: 'Beko',
+        sourceUrl: htmlUrl, contentSha256: 'c'.repeat(64), status: 'claims_incomplete',
+        failureCode: 'claim_semantics', policySha256, suppressesSamePolicySource: true,
+        processorCapability: BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY,
+        evidenceProcessorSha256: '1'.repeat(64),
+      }, {
+        attemptId: 'attempt-pdf', targetId: 'ignored', referenceId: 'beko', brand: 'Beko',
+        sourceUrl: pdfUrl, contentSha256: 'd'.repeat(64), status: 'identity_rejected',
+        failureCode: 'identity', policySha256, suppressesSamePolicySource: true,
+      }],
+    },
+  });
+
+  assert.equal(queue.jobs.length, 1);
+  assert.equal(queue.jobs[0].sourceUrl, htmlUrl);
+  assert.deepEqual(queue.targets[0].candidateJobIds, [queue.jobs[0].jobId]);
+  assert.deepEqual(queue.targets[0].priorAttemptSuppressions.map((entry) => entry.sourceUrl), [pdfUrl]);
 });
 
 test('same-policy complete zero-candidate discovery stays suppressed across resolver revisions', () => {

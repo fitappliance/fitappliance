@@ -411,6 +411,22 @@ test('promotion requires a passing online audit and preserves all source receipt
   }), /passing online audit/i);
 });
 
+function completedRunState(fixture) {
+  const toolchain = { evidenceProcessorEpochs: {} };
+  return {
+    schemaVersion: 1,
+    runId: fixture.results.runId,
+    batchId: fixture.batch.batchId,
+    status: 'completed',
+    input: {
+      batchSha256: fixture.results.batchSha256,
+      policySha256: fixture.results.policySha256,
+      toolchainSha256: canonicalJsonSha256(toolchain),
+      toolchain,
+    },
+  };
+}
+
 test('promotion CLI receipt-audits the prospective cumulative bundle before publishing it', async () => {
   const fixture = acceptedFixture();
   const audit = await runAudit(fixture);
@@ -418,6 +434,7 @@ test('promotion CLI receipt-audits the prospective cumulative bundle before publ
   const runDirectory = join(storageRoot, 'runs/historical-evidence-recovery', fixture.results.runId);
   await mkdir(runDirectory, { recursive: true });
   await writeFile(join(runDirectory, 'batch.json'), `${JSON.stringify(fixture.batch)}\n`);
+  await writeFile(join(runDirectory, 'state.json'), `${JSON.stringify(completedRunState(fixture))}\n`);
   for (const [relativePath, bytes] of fixture.objects) {
     const absolutePath = join(storageRoot, relativePath);
     await mkdir(dirname(absolutePath), { recursive: true });
@@ -467,6 +484,7 @@ test('promotion CLI keeps a failed prospective receipt replay out of the bundle 
   const runDirectory = join(storageRoot, 'runs/historical-evidence-recovery', fixture.results.runId);
   await mkdir(runDirectory, { recursive: true });
   await writeFile(join(runDirectory, 'batch.json'), `${JSON.stringify(fixture.batch)}\n`);
+  await writeFile(join(runDirectory, 'state.json'), `${JSON.stringify(completedRunState(fixture))}\n`);
   for (const [relativePath, bytes] of fixture.objects) {
     if (relativePath === fixture.source.derivedArtifact.objectPath) continue;
     const absolutePath = join(storageRoot, relativePath);

@@ -7,8 +7,10 @@ import {
   activeHistoricalSourceAcceptances,
   buildHistoricalEvidenceRecoveryAttemptLedger,
   historicalResolverContractSha256,
+  migrateHistoricalAttemptLedgerProcessorEpochs,
 } from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
+import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from '../../src/domain/beko-product-page-dimensions.mjs';
 
 const SHA = (value) => value.repeat(64);
 
@@ -75,6 +77,42 @@ test('audited terminal candidate is appended once with immutable source and run 
   });
   assert.deepEqual(second.entries, first.entries);
   assert.equal(second.summary.entries, 1);
+});
+
+test('new Beko HTML attempts bind the processor epoch from the immutable completed run state', () => {
+  const input = fixture();
+  const target = input.batch.targets[0];
+  target.brand = 'Beko';
+  target.model = 'BBM450X';
+  const candidate = input.results.outcomes[0].candidateInventory.candidates[0];
+  candidate.sourceUrl = 'https://www.beko.com/au-en/home-appliances/fridge-freezer/example-bbm450x';
+  candidate.outcome.status = 'claims_incomplete';
+  candidate.outcome.failureCode = 'claim_semantics';
+  candidate.outcome.artifactBinding.sourceUrl = candidate.sourceUrl;
+  candidate.outcome.artifactBinding.finalUrl = candidate.sourceUrl;
+  input.results.outcomes[0].status = 'claims_incomplete';
+  input.results.outcomes[0].failureCode = 'claim_semantics';
+  input.results.batchSha256 = canonicalJsonSha256(input.batch);
+  input.audit.batchSha256 = input.results.batchSha256;
+  input.audit.resultsSha256 = canonicalJsonSha256(input.results);
+  const toolchain = {
+    evidenceProcessorEpochs: { [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: SHA('7') },
+  };
+  const state = {
+    schemaVersion: 1, runId: input.results.runId, batchId: input.batch.batchId, status: 'completed',
+    input: {
+      batchSha256: input.results.batchSha256,
+      policySha256: input.results.policySha256,
+      toolchainSha256: canonicalJsonSha256(toolchain),
+      toolchain,
+    },
+  };
+
+  const ledger = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, state, priorLedger: null, generatedAt: '2026-07-16T01:01:00.000Z',
+  });
+  assert.equal(ledger.entries[0].processorCapability, BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY);
+  assert.equal(ledger.entries[0].evidenceProcessorSha256, SHA('7'));
 });
 
 test('the same candidate failure in a later run appends a distinct immutable attempt', () => {
@@ -272,6 +310,155 @@ test('a claim parser revision change invalidates same-policy terminal suppressio
     referenceId: 'reference-fp',
     policySha256: nextPolicySha,
   }), []);
+});
+
+test('only a changed bounded Beko HTML processor epoch reopens its claim-semantics source', () => {
+  const policySha256 = SHA('b');
+  const sourceUrl = 'https://www.beko.com/au-en/home-appliances/fridge-freezer/example-bbm450x';
+  const ledger = {
+    schemaVersion: 1,
+    entries: [{
+      attemptId: 'attempt-beko-html', targetId: 'target-beko', referenceId: 'reference-beko',
+      brand: 'Beko', sourceUrl, contentSha256: SHA('c'),
+      status: 'claims_incomplete', failureCode: 'claim_semantics', policySha256,
+      suppressesSamePolicySource: true,
+      processorCapability: BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY,
+      evidenceProcessorSha256: SHA('1'),
+    }, {
+      attemptId: 'attempt-beko-pdf', targetId: 'target-beko', referenceId: 'reference-beko',
+      brand: 'Beko', sourceUrl: 'https://www.beko.com/content/manual.pdf', contentSha256: SHA('d'),
+      status: 'identity_rejected', failureCode: 'identity', policySha256,
+      suppressesSamePolicySource: true,
+    }],
+  };
+  assert.equal(activeHistoricalAttemptSuppressions({
+    ledger, targetId: 'target-beko', referenceId: 'reference-beko', policySha256,
+    evidenceProcessorEpochs: { [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: SHA('1') },
+  }).length, 2);
+
+  const changed = activeHistoricalAttemptSuppressions({
+    ledger, targetId: 'target-beko', referenceId: 'reference-beko', policySha256,
+    evidenceProcessorEpochs: { [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: SHA('2') },
+  });
+  assert.deepEqual(changed.map((entry) => entry.sourceUrl), ['https://www.beko.com/content/manual.pdf']);
+});
+
+test('a changed bounded source processor reopens a complete-exhausted resolver target but not complete-zero discovery', () => {
+  const policySha256 = SHA('b');
+  const resolver = [{
+    resolverId: 'beko-product-page', version: '1', scope: 'exact-model', required: true,
+  }];
+  const targetAttempt = {
+    targetAttemptId: 'target-attempt-beko', targetId: 'target-beko', referenceId: 'reference-beko',
+    reason: 'complete_exhausted_candidate_inventory', policySha256,
+    suppressesSamePolicyResolverOnly: true, resolvers: resolver,
+  };
+  const sourceAttempt = {
+    attemptId: 'attempt-beko-html', targetId: 'target-beko', referenceId: 'reference-beko',
+    brand: 'Beko',
+    sourceUrl: 'https://www.beko.com/au-en/home-appliances/fridge-freezer/example-bbm450x',
+    contentSha256: SHA('c'), status: 'claims_incomplete', failureCode: 'claim_semantics',
+    policySha256, suppressesSamePolicySource: true,
+    processorCapability: BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY,
+    evidenceProcessorSha256: SHA('1'),
+  };
+  const ledger = { schemaVersion: 1, entries: [sourceAttempt], targetAttempts: [targetAttempt] };
+  const input = {
+    ledger, targetId: 'target-beko', referenceId: 'reference-beko', policySha256,
+    resolverContractSha256: historicalResolverContractSha256(resolver),
+  };
+  assert.equal(activeHistoricalResolverSuppressions({
+    ...input,
+    evidenceProcessorEpochs: { [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: SHA('1') },
+  }).length, 1);
+  assert.deepEqual(activeHistoricalResolverSuppressions({
+    ...input,
+    evidenceProcessorEpochs: { [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: SHA('2') },
+  }), []);
+
+  ledger.targetAttempts[0].reason = 'complete_zero_candidate_inventory';
+  assert.equal(activeHistoricalResolverSuppressions({
+    ...input,
+    evidenceProcessorEpochs: { [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: SHA('2') },
+  }).length, 1);
+});
+
+test('missing historical processor binding fails closed instead of creating a retry loop', () => {
+  const policySha256 = SHA('b');
+  const sourceUrl = 'https://www.beko.com/au-en/home-appliances/fridge-freezer/example-bbm450x';
+  const ledger = {
+    schemaVersion: 1,
+    entries: [{
+      attemptId: 'attempt-unbound', targetId: 'target-beko', referenceId: 'reference-beko',
+      brand: 'Beko', sourceUrl, contentSha256: SHA('c'),
+      status: 'claims_incomplete', failureCode: 'claim_semantics', policySha256,
+      suppressesSamePolicySource: true,
+    }],
+  };
+  assert.equal(activeHistoricalAttemptSuppressions({
+    ledger, targetId: 'target-beko', referenceId: 'reference-beko', policySha256,
+    evidenceProcessorEpochs: { [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: SHA('2') },
+  }).length, 1);
+});
+
+test('legacy processor migration binds only audited run-state facts and is idempotent', () => {
+  const policySha256 = SHA('b');
+  const toolchain = { runnerVersion: 'legacy' };
+  const toolchainSha256 = canonicalJsonSha256(toolchain);
+  const ledger = {
+    schemaVersion: 1,
+    entries: [{
+      attemptId: 'attempt-unbound', targetId: 'target-beko', referenceId: 'reference-beko',
+      brand: 'Beko', sourceUrl: 'https://www.beko.com/au-en/home-appliances/fridge-freezer/example-bbm450x',
+      contentSha256: SHA('c'), status: 'claims_incomplete', failureCode: 'claim_semantics',
+      policySha256, suppressesSamePolicySource: true, runId: 'run-beko',
+      batchId: 'batch-beko', batchSha256: SHA('a'),
+    }],
+    summary: {},
+  };
+  const state = {
+    schemaVersion: 1, runId: 'run-beko', batchId: 'batch-beko', status: 'completed',
+    input: {
+      batchSha256: SHA('a'), policySha256, toolchainSha256,
+      toolchain,
+    },
+  };
+  const first = migrateHistoricalAttemptLedgerProcessorEpochs({
+    ledger, runStates: new Map([['run-beko', state]]), migratedAt: '2026-07-17T01:00:00.000Z',
+  });
+  assert.equal(first.entries[0].processorCapability, BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY);
+  assert.match(first.entries[0].evidenceProcessorSha256, /^[a-f0-9]{64}$/);
+  assert.equal(first.processorEpochMigration.migratedEntries, 1);
+  assert.deepEqual(first.processorEpochMigrations, [first.processorEpochMigration]);
+
+  const second = migrateHistoricalAttemptLedgerProcessorEpochs({
+    ledger: first, runStates: new Map(), migratedAt: '2026-07-17T02:00:00.000Z',
+  });
+  assert.equal(second.entries[0].evidenceProcessorSha256, first.entries[0].evidenceProcessorSha256);
+  assert.deepEqual(second, first);
+});
+
+test('attempt-ledger rebuild preserves append-only processor epoch migration history', () => {
+  const input = fixture();
+  const migration = {
+    migratedAt: '2026-07-17T01:00:00.000Z',
+    migratedEntries: 4,
+    boundEntries: 16,
+    unboundEntries: 0,
+    failClosedUnboundEntries: true,
+  };
+  const priorLedger = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, priorLedger: null, generatedAt: '2026-07-16T01:01:00.000Z',
+  });
+  priorLedger.processorEpochMigration = migration;
+  priorLedger.processorEpochMigrations = [migration];
+
+  const rebuilt = buildHistoricalEvidenceRecoveryAttemptLedger({
+    ...input, priorLedger, generatedAt: '2026-07-16T01:02:00.000Z',
+  });
+
+  assert.deepEqual(rebuilt.processorEpochMigration, migration);
+  assert.deepEqual(rebuilt.processorEpochMigrations, [migration]);
 });
 
 test('a later accepted replay appends a resolution and deactivates the prior suppression', () => {

@@ -491,6 +491,124 @@ test('HTML extractor prioritises structured product dimensions and rejects packa
   assert.ok(attested.identitySignals.some((signal) => signal.type === 'product_model'));
 });
 
+test('HTML extractor reads one complete Beko animated dimension component from bound attributes', () => {
+  const markup = ({
+    title = 'Dimensions (cm)',
+    rows = [['Height', '172'], ['Width', '70'], ['Depth', '70.5']],
+  } = {}) => Buffer.from(`<!doctype html><html><head>
+    <title>BBM450AN | Beko Australia</title>
+    <link rel="canonical" href="https://www.beko.com/au-en/home-appliances/fridge-freezer/freezer-bottom-bbm450an">
+  </head><body data-item-model="BBM450AN">
+    <div class="PackagingDimensions"><span data-counter-to="999">Width</span></div>
+    <div class="MainSpecs__dimensions MainSpecs__dimensions__single">
+      <span class="MainSpecs__title">${title}</span>
+      <div class="MainSpecs__items">
+        ${rows.map(([axis, value]) => `<div class="DimensionsItem__root">
+          <span class="JS-aos-counter DimensionsItem__number" data-counter-to="${value}">0</span>
+          <span class="DimensionsItem__title">${axis}</span>
+        </div>`).join('')}
+      </div>
+    </div>
+  </body></html>`);
+  const fields = [
+    'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+  ];
+  const bytes = markup();
+  const claims = extractClaimsFromHtml(bytes, { category: 'fridge', fields });
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 700,
+    'closedEnvelope.heightMm': 1720,
+    'closedEnvelope.depthMm': 705,
+  });
+  assert.ok(claims.every((claim) => claim.semanticBasis === 'structured_product_property'));
+
+  const target = { brand: 'Beko', model: 'BBM450AN', category: 'fridge' };
+  const attested = verifyAndAttestResolutionArtifact({
+    source: source(bytes, {
+      sourceUrl: 'https://www.beko.com/au-en/home-appliances/fridge-freezer/freezer-bottom-bbm450an',
+      finalUrl: 'https://www.beko.com/au-en/home-appliances/fridge-freezer/freezer-bottom-bbm450an',
+      identity: { ...target, outcome: 'exact' },
+      claims,
+    }),
+    caseIdentity: target,
+    bytes,
+    verifiedAt: '2026-07-17T10:00:00.000Z',
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'product_model'));
+
+  for (const unsafe of [
+    { title: 'Package Dimensions (cm)' },
+    { rows: [['Height', '172'], ['Width', '70']] },
+    { rows: [['Height', '172'], ['Width', '70'], ['Width', '71'], ['Depth', '70.5']] },
+    { rows: [['Height', '172'], ['Width', '70'], ['Depth', '70.5 kg']] },
+  ]) {
+    assert.deepEqual(extractClaimsFromHtml(markup(unsafe), { category: 'fridge', fields }), []);
+  }
+});
+
+test('Beko AU product identity binds an exact commerce payload to its canonical product page', () => {
+  const productUrl = 'https://www.beko.com/au-en/home-appliances/fridge-freezer/freezer-bottom-bbm450an';
+  const markup = ({
+    itemName = 'BBM450AN', itemId = '7293642481', dataCode = '7293642481',
+    selectorClass = 'ProductInfo__header', extra = '',
+  } = {}) => Buffer.from(`<!doctype html><html><head>
+    <title>Fridge Freezer | BBM450AN | BEKO</title>
+    <link rel="canonical" href="${productUrl}">
+  </head><body>
+    <div class="${selectorClass}">
+      <button class="JS-wishlist-button" data-code="${dataCode}"
+        data-gtm-data='{"event":"add_to_wishlist","items":[{"item_id":"${itemId}","item_MarketingCode":"${itemId}","item_name":"${itemName}","item_category1":"Kitchen Appliances"}]}'></button>
+      ${extra}
+    </div>
+    <div class="MainSpecs__dimensions MainSpecs__dimensions__single">
+      <span class="MainSpecs__title">Dimensions (cm)</span>
+      <div class="MainSpecs__items">
+        <div class="DimensionsItem__root"><span class="DimensionsItem__number" data-counter-to="172">0</span><span class="DimensionsItem__title">Height</span></div>
+        <div class="DimensionsItem__root"><span class="DimensionsItem__number" data-counter-to="70">0</span><span class="DimensionsItem__title">Width</span></div>
+        <div class="DimensionsItem__root"><span class="DimensionsItem__number" data-counter-to="70.5">0</span><span class="DimensionsItem__title">Depth</span></div>
+      </div>
+    </div>
+  </body></html>`);
+  const target = { brand: 'Beko', model: 'BBM450AN', category: 'fridge' };
+  const bytes = markup();
+  const fields = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+  const claims = extractClaimsFromHtml(bytes, { category: 'fridge', fields });
+  const attested = verifyAndAttestResolutionArtifact({
+    source: source(bytes, {
+      sourceUrl: productUrl, finalUrl: productUrl,
+      identity: { ...target, outcome: 'exact' }, claims,
+    }),
+    caseIdentity: target,
+    bytes,
+    verifiedAt: '2026-07-17T10:00:00.000Z',
+  });
+  assert.ok(attested.identitySignals.some((signal) => (
+    signal.type === 'structured_product_model' && signal.value === 'BBM450AN'
+  )));
+
+  for (const unsafe of [
+    { itemName: 'BBM450X' },
+    { itemId: '7293642482' },
+    { dataCode: '7293642482' },
+    { selectorClass: 'RecommendationCard' },
+    {
+      extra: '<button class="JS-wishlist-button" data-code="7293642491" data-gtm-data=\'{"event":"add_to_wishlist","items":[{"item_id":"7293642491","item_MarketingCode":"7293642491","item_name":"BBM450X"}]}\'></button>',
+    },
+  ]) {
+    const unsafeBytes = markup(unsafe);
+    const unsafeClaims = extractClaimsFromHtml(unsafeBytes, { category: 'fridge', fields });
+    assert.throws(() => verifyAndAttestResolutionArtifact({
+      source: source(unsafeBytes, {
+        sourceUrl: productUrl, finalUrl: productUrl,
+        identity: { ...target, outcome: 'exact' }, claims: unsafeClaims,
+      }),
+      caseIdentity: target,
+      bytes: unsafeBytes,
+      verifiedAt: '2026-07-17T10:00:00.000Z',
+    }), /identity signal missing/i);
+  }
+});
+
 test('HTML extractor maps LG Unit W x D x H rows and excludes packaging dimensions', () => {
   const lg = Buffer.from(`<!doctype html><html><head>
     <title>WD1275A1 | LG Australia</title>

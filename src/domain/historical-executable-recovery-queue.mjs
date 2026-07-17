@@ -101,6 +101,7 @@ export function buildHistoricalExecutableRecoveryQueue({
   priorAcceptanceBundle = { entries: [] },
   priorAttemptLedger = { entries: [] },
   recoveryPolicySha256 = null,
+  evidenceProcessorEpochs = {},
   resolverContractSha256ForTarget = null,
 }) {
   if (acquisitionQueue?.schemaVersion !== 1 || !Array.isArray(acquisitionQueue.records)
@@ -171,6 +172,7 @@ export function buildHistoricalExecutableRecoveryQueue({
         targetId,
         referenceId: record.referenceId,
         policySha256: recoveryPolicySha256,
+        evidenceProcessorEpochs,
       })
       : [];
     const priorSourceAcceptances = recoveryPolicySha256
@@ -188,6 +190,7 @@ export function buildHistoricalExecutableRecoveryQueue({
         referenceId: record.referenceId,
         policySha256: recoveryPolicySha256,
         resolverContractSha256,
+        evidenceProcessorEpochs,
       })
       : [];
     const terminalUrls = new Set(priorAttemptSuppressions.map((entry) => entry.sourceUrl));
@@ -263,6 +266,7 @@ export function buildHistoricalExecutableRecoveryQueue({
     schemaVersion: 2,
     generatedAt: new Date(acquisitionQueue.generatedAt).toISOString(),
     sourceAcquisitionQueueSha256: acquisitionQueue.semanticQueueSha256,
+    evidenceProcessorEpochs: structuredClone(evidenceProcessorEpochs),
     policy: {
       resolverOnlyTargetsAllowed: true,
       officialSourceRequiredForReceiptPromotion: true,

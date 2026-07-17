@@ -1,6 +1,9 @@
 import { createHash } from 'node:crypto';
 import { load } from 'cheerio';
 
+import { extractBekoAuProductDimensions } from './beko-product-page-dimensions.mjs';
+import { extractBekoAuProductIdentity } from './beko-product-page-identity.mjs';
+
 import {
   claimFromEvidenceFragment,
   claimsFromExplicitDimensionSequence,
@@ -100,7 +103,11 @@ function canonicalProductPropertyValues($) {
   const canonical = $('link[rel="canonical"]').first().attr('href');
   if (!canonical) return [];
   let canonicalKey;
-  try { canonicalKey = resourceKey(canonical); } catch { return []; }
+  let canonicalUrl;
+  try {
+    canonicalKey = resourceKey(canonical);
+    canonicalUrl = new URL(canonical);
+  } catch { return []; }
   const properties = [];
   $('script[type="application/ld+json"]').each((_, element) => {
     const raw = String($(element).html() ?? '').trim();
@@ -138,6 +145,7 @@ function canonicalProductPropertyValues($) {
       }
     }
   });
+  properties.push(...extractBekoAuProductDimensions($, canonicalUrl));
   return [...new Map(properties.map((property) => [
     `${property.name}\0${property.value}\0${property.unitText}`,
     property,
@@ -145,6 +153,8 @@ function canonicalProductPropertyValues($) {
 }
 
 function structuredProductModel($, model, canonical) {
+  const bekoIdentity = extractBekoAuProductIdentity($, canonical, model);
+  if (bekoIdentity) return bekoIdentity.model;
   const target = identifier(model);
   let matched = null;
   $('script').each((_, element) => {
@@ -645,6 +655,18 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
       quote,
     }, { category }, fields);
     grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push(claim));
+    for (const field of fields) {
+      const rule = evidenceFieldRules[field];
+      if (!rule?.label.test(property.name) || (rule.reject && rule.reject.test(property.name))) continue;
+      try {
+        structuredCandidates.get(field).push({
+          ...claimFromEvidenceFragment(field, property.name, quote, { category }),
+          semanticBasis: 'structured_product_property',
+        });
+      } catch {
+        // A structured property still has to satisfy the ordinary field semantics.
+      }
+    }
   }
   $('body li, body [role="listitem"], body tr').each((_, row) => {
     if ($(row).closest('[hidden],[aria-hidden="true"],script,style,noscript,template').length) return;

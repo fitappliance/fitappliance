@@ -1,4 +1,9 @@
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
+import {
+  historicalAttemptProcessorCapability,
+  legacyEvidenceProcessorEpoch,
+  validateEvidenceProcessorEpochs,
+} from './evidence-processor-epoch.mjs';
 
 const TRANSIENT_FAILURES = new Set(['transport', 'discovery', 'discovery_incomplete', 'environment']);
 const SKIPPED_STATUSES = new Set([
@@ -81,7 +86,27 @@ export function historicalResolverContractSha256(resolvers) {
   return canonicalJsonSha256(normalized);
 }
 
-function validateRunBindings(batch, results, audit) {
+function validateRunStateBinding(state, { batch, results, batchSha256 }) {
+  if (!state) return { evidenceProcessorEpochs: {} };
+  if (state.schemaVersion !== 1 || state.status !== 'completed'
+    || state.runId !== results.runId || state.batchId !== batch.batchId
+    || state.input?.batchSha256 !== batchSha256
+    || state.input?.policySha256 !== results.policySha256) {
+    throw new Error('attempt ledger run-state binding mismatch');
+  }
+  const toolchainSha256 = sha256(state.input?.toolchainSha256, 'run-state toolchain SHA-256');
+  if (canonicalJsonSha256(state.input?.toolchain) !== toolchainSha256) {
+    throw new Error('attempt ledger run-state toolchain drift');
+  }
+  return {
+    toolchainSha256,
+    evidenceProcessorEpochs: state.input.toolchain?.evidenceProcessorEpochs
+      ? validateEvidenceProcessorEpochs(state.input.toolchain.evidenceProcessorEpochs)
+      : {},
+  };
+}
+
+function validateRunBindings(batch, results, audit, state) {
   if (audit?.mode !== 'online' || audit?.status !== 'passed') {
     throw new Error('attempt ledger requires a passing online audit');
   }
@@ -94,7 +119,11 @@ function validateRunBindings(batch, results, audit) {
     || results.policySha256 !== batch.policy.sha256) {
     throw new Error('attempt ledger run binding mismatch');
   }
-  return { batchSha256, resultsSha256 };
+  return {
+    batchSha256,
+    resultsSha256,
+    ...validateRunStateBinding(state, { batch, results, batchSha256 }),
+  };
 }
 
 function attemptEntry({ target, candidate, outcome, batch, results, audit, bindings }) {
@@ -105,6 +134,17 @@ function attemptEntry({ target, candidate, outcome, batch, results, audit, bindi
     ?? null;
   if (contentSha256 !== null) sha256(contentSha256, 'candidate content SHA-256');
   const reason = text(outcome.reason ?? `${outcome.status}:${failureCode}`, 'candidate failure reason');
+  const processorCapability = historicalAttemptProcessorCapability({
+    brand: target.brand,
+    sourceUrl: normalizedSourceUrl,
+    failureCode,
+  });
+  const evidenceProcessorSha256 = processorCapability
+    ? bindings.evidenceProcessorEpochs?.[processorCapability]
+    : null;
+  if (processorCapability && !evidenceProcessorSha256) {
+    throw new Error(`attempt processor epoch missing: ${processorCapability}`);
+  }
   const seed = {
     runId: results.runId,
     targetId: target.targetId,
@@ -113,6 +153,7 @@ function attemptEntry({ target, candidate, outcome, batch, results, audit, bindi
     status: outcome.status,
     failureCode,
     policySha256: results.policySha256,
+    ...(processorCapability ? { processorCapability, evidenceProcessorSha256 } : {}),
     reasonSha256: canonicalJsonSha256(reason),
   };
   return {
@@ -135,6 +176,7 @@ function attemptEntry({ target, candidate, outcome, batch, results, audit, bindi
     disposition: disposition(failureCode),
     suppressesSamePolicySource: !TRANSIENT_FAILURES.has(failureCode) && contentSha256 !== null,
     policySha256: results.policySha256,
+    ...(processorCapability ? { processorCapability, evidenceProcessorSha256 } : {}),
     candidateInventorySha256: sha256(
       results.outcomes.find((entry) => entry.targetId === target.targetId).candidateInventorySha256,
       'candidate inventory SHA-256',
@@ -313,10 +355,11 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
   batch,
   results,
   audit,
+  state = null,
   priorLedger = null,
   generatedAt,
 }) {
-  const bindings = validateRunBindings(batch, results, audit);
+  const bindings = validateRunBindings(batch, results, audit, state);
   const targets = new Map((batch.targets ?? []).map((target) => [target.targetId, target]));
   const entries = new Map((priorLedger?.entries ?? []).map((entry) => [entry.attemptId, structuredClone(entry)]));
   const resolutions = new Map((priorLedger?.resolutions ?? [])
@@ -394,10 +437,19 @@ export function buildHistoricalEvidenceRecoveryAttemptLedger({
   const activeSuppressions = materialized.filter((entry) => (
     entry.suppressesSamePolicySource && !resolvedAttemptIds.has(entry.attemptId)
   ));
+  const processorEpochMigrations = Array.isArray(priorLedger?.processorEpochMigrations)
+    ? structuredClone(priorLedger.processorEpochMigrations)
+    : priorLedger?.processorEpochMigration
+      ? [structuredClone(priorLedger.processorEpochMigration)]
+      : [];
   return {
     schemaVersion: 1,
     ledgerId: priorLedger?.ledgerId ?? 'historical-evidence-recovery-attempts-v1',
     generatedAt: timestamp(generatedAt, 'attempt ledger generation time'),
+    ...(processorEpochMigrations.length ? {
+      processorEpochMigration: structuredClone(processorEpochMigrations.at(-1)),
+      processorEpochMigrations,
+    } : {}),
     entries: materialized,
     resolutions: materializedResolutions,
     sourceAcceptances: materializedSourceAcceptances,
@@ -427,14 +479,27 @@ export function activeHistoricalResolverSuppressions({
   referenceId,
   policySha256,
   resolverContractSha256,
+  evidenceProcessorEpochs = {},
 }) {
   if (!ledger?.targetAttempts || !/^[a-f0-9]{64}$/.test(String(resolverContractSha256 ?? ''))) return [];
   if (activeHistoricalSourceAcceptances({ ledger, targetId, referenceId, policySha256 }).length) return [];
+  const resolvedAttemptIds = new Set((ledger.resolutions ?? []).map((entry) => entry.attemptId));
+  const processorReopenedSource = (ledger.entries ?? []).some((entry) => {
+    if (entry.policySha256 !== policySha256 || resolvedAttemptIds.has(entry.attemptId)
+      || (entry.targetId !== targetId && entry.referenceId !== referenceId)) return false;
+    const capability = historicalAttemptProcessorCapability(entry);
+    if (!capability || entry.processorCapability !== capability
+      || !/^[a-f0-9]{64}$/.test(String(entry.evidenceProcessorSha256 ?? ''))) return false;
+    const currentEpoch = evidenceProcessorEpochs?.[capability];
+    return /^[a-f0-9]{64}$/.test(String(currentEpoch ?? ''))
+      && currentEpoch !== entry.evidenceProcessorSha256;
+  });
   return ledger.targetAttempts.filter((entry) => (
     entry.suppressesSamePolicyResolverOnly === true
       && (entry.targetId === targetId || entry.referenceId === referenceId)
       && (entry.reason === 'complete_zero_candidate_inventory'
-        || (entry.policySha256 === policySha256
+        || (!processorReopenedSource
+          && entry.policySha256 === policySha256
           && historicalResolverContractSha256(entry.resolvers) === resolverContractSha256))
   ));
 }
@@ -472,15 +537,23 @@ export function activeHistoricalAttemptSuppressions({
   targetId,
   referenceId,
   policySha256,
+  evidenceProcessorEpochs = {},
 }) {
   if (!ledger?.entries) return [];
   const resolvedAttemptIds = new Set((ledger.resolutions ?? []).map((entry) => entry.attemptId));
   return ledger.entries
-    .filter((entry) => entry.suppressesSamePolicySource === true
-      && !resolvedAttemptIds.has(entry.attemptId)
-      && entry.contentSha256 !== null
-      && entry.policySha256 === policySha256
-      && (entry.targetId === targetId || entry.referenceId === referenceId))
+    .filter((entry) => {
+      if (entry.suppressesSamePolicySource !== true) return false;
+      if (resolvedAttemptIds.has(entry.attemptId) || entry.contentSha256 === null
+        || entry.policySha256 !== policySha256
+        || (entry.targetId !== targetId && entry.referenceId !== referenceId)) return false;
+      const capability = historicalAttemptProcessorCapability(entry);
+      if (!capability) return true;
+      if (entry.processorCapability !== capability || !entry.evidenceProcessorSha256) return true;
+      const currentEpoch = evidenceProcessorEpochs?.[capability];
+      if (!/^[a-f0-9]{64}$/.test(String(currentEpoch ?? ''))) return true;
+      return entry.evidenceProcessorSha256 === currentEpoch;
+    })
     .map((entry) => ({
       attemptId: entry.attemptId,
       sourceUrl: entry.sourceUrl,
@@ -488,7 +561,72 @@ export function activeHistoricalAttemptSuppressions({
       status: entry.status,
       failureCode: entry.failureCode,
       policySha256: entry.policySha256,
+      ...(entry.processorCapability ? {
+        processorCapability: entry.processorCapability,
+        evidenceProcessorSha256: entry.evidenceProcessorSha256,
+      } : {}),
     }))
     .sort((left, right) => left.sourceUrl.localeCompare(right.sourceUrl)
       || left.attemptId.localeCompare(right.attemptId));
+}
+
+export function migrateHistoricalAttemptLedgerProcessorEpochs({
+  ledger,
+  runStates,
+  migratedAt,
+}) {
+  if (!ledger || !Array.isArray(ledger.entries)) throw new TypeError('attempt ledger entries required');
+  if (!(runStates instanceof Map)) throw new TypeError('attempt ledger run states map required');
+  const migrated = structuredClone(ledger);
+  let migratedEntries = 0;
+  let boundEntries = 0;
+  let unboundEntries = 0;
+  for (const entry of migrated.entries) {
+    const capability = historicalAttemptProcessorCapability(entry);
+    if (!capability) continue;
+    if (entry.processorCapability || entry.evidenceProcessorSha256) {
+      if (entry.processorCapability !== capability
+        || !/^[a-f0-9]{64}$/.test(String(entry.evidenceProcessorSha256 ?? ''))) {
+        throw new Error(`attempt processor binding malformed: ${entry.attemptId}`);
+      }
+      boundEntries += 1;
+      continue;
+    }
+    const state = runStates.get(entry.runId);
+    if (!state) {
+      unboundEntries += 1;
+      continue;
+    }
+    const binding = validateRunStateBinding(state, {
+      batch: { batchId: entry.batchId },
+      results: { runId: entry.runId, policySha256: entry.policySha256 },
+      batchSha256: entry.batchSha256,
+    });
+    const stateEpoch = binding.evidenceProcessorEpochs[capability];
+    entry.processorCapability = capability;
+    entry.evidenceProcessorSha256 = stateEpoch ?? legacyEvidenceProcessorEpoch({
+      capability,
+      toolchainSha256: binding.toolchainSha256,
+    });
+    migratedEntries += 1;
+    boundEntries += 1;
+  }
+  const migrationHistory = Array.isArray(ledger.processorEpochMigrations)
+    ? structuredClone(ledger.processorEpochMigrations)
+    : ledger.processorEpochMigration
+      ? [structuredClone(ledger.processorEpochMigration)]
+      : [];
+  if (migratedEntries === 0 && migrationHistory.length) return migrated;
+  if (migratedEntries === 0 && boundEntries === 0 && unboundEntries === 0) return migrated;
+  const migration = {
+    migratedAt: timestamp(migratedAt, 'processor epoch migration time'),
+    migratedEntries,
+    boundEntries,
+    unboundEntries,
+    failClosedUnboundEntries: true,
+    mode: migratedEntries > 0 ? 'binding' : 'bound_inventory_snapshot',
+  };
+  migrated.processorEpochMigration = migration;
+  migrated.processorEpochMigrations = [...migrationHistory, structuredClone(migration)];
+  return migrated;
 }

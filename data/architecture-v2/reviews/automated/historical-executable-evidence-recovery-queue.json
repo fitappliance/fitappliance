@@ -1,14 +1,18 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-17T00:41:27.426Z",
-  "sourceAcquisitionQueueSha256": "17629c6601001bffed481db6230184ec1845c54f48378b86fcecd9f7bd05db36",
+  "generatedAt": "2026-07-17T01:24:54.730Z",
+  "sourceAcquisitionQueueSha256": "4a07df3058d26bc07d259d0015b1ea8e3792ff6fce377b6ab14da07825009ed1",
+  "evidenceProcessorEpochs": {
+    "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+    "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b"
+  },
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7729,
+    "acquisitionRecords": 7725,
     "fetchJobs": 0,
     "targets": 7607,
     "resolverOnlyTargets": 7607,
@@ -16,7 +20,7 @@
     "uniqueReferences": 7607,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
-    "suppressedPriorResolverOnlyTargets": 39,
+    "suppressedPriorResolverOnlyTargets": 35,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2022,
       "CURRENT_RETAIL": 1033,

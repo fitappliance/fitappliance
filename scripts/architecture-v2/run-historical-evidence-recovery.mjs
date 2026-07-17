@@ -11,6 +11,7 @@ import { promisify } from 'node:util';
 import { acquireEvidenceArtifact, attestEvidenceArtifactForCase } from '../../src/domain/evidence-artifact-pipeline.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { collectEvidenceCandidates } from '../../src/domain/evidence-candidate-inventory.mjs';
+import { buildEvidenceProcessorEpochs } from '../../src/domain/evidence-processor-epoch.mjs';
 import { reconcileEvidenceClaims } from '../../src/domain/evidence-claim-reconciliation.mjs';
 import { discoverRankedEvidenceCandidates } from '../../src/domain/evidence-source-discovery.mjs';
 import {
@@ -39,6 +40,8 @@ import { buildArchitectureV2ResolverAdapters } from '../pdf-pipeline/architectur
 const execFile = promisify(execFileCallback);
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const CLAIM_PARSER_IMPLEMENTATION_PATHS = Object.freeze([
+  'src/domain/beko-product-page-dimensions.mjs',
+  'src/domain/beko-product-page-identity.mjs',
   'src/domain/category-geometry.mjs',
   'src/domain/dimension-evidence-claim.mjs',
   'src/domain/evidence-artifact-pipeline.mjs',
@@ -339,6 +342,7 @@ async function defaultVerifyTools(policy) {
     claimParserImplementationSha256: claimParserImplementationIdentity(claimParserFiles),
     manufacturerDocumentStrategiesSha256: manufacturerDocumentStrategiesIdentity(manufacturerStrategies),
     manufacturerSourcePolicySha256: manufacturerSourcePolicyIdentity(manufacturerSourcePolicy),
+    evidenceProcessorEpochs: buildEvidenceProcessorEpochs(claimParserFiles),
   };
 }
 

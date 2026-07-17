@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-17T00:31:24.168Z",
+  "generatedAt": "2026-07-17T01:24:05.671Z",
   "entries": [
     {
       "attemptId": "historical_attempt_00e25476c86d4d0f342468ba",
@@ -613,6 +613,35 @@
       "attemptedAt": "2026-07-16T19:21:33.775Z"
     },
     {
+      "attemptId": "historical_attempt_105ba97a8b1bdf141123d6c4",
+      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
+      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
+      "legacyRuntimeId": "ao-64576",
+      "canonicalProductId": "fa_prod_b39f6e10698794ee503b7dea",
+      "brand": "Beko",
+      "model": "BBM450W",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf",
+      "finalUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf",
+      "contentSha256": "186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "b16c01312922dc65e0df66bb0ac848846a8543933703cd67790845fcb31eb0af",
+      "semanticOutcomeSha256": "719a162feb2b9e2aa4548877aebc621d8b2b4c926c8ed8227ae19db0ea070ddc",
+      "batchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "batchSha256": "77bbc8320adb9d08195d514f4efb5f4d26018852b25c7210f66dc22f8fb5f873",
+      "runId": "historical-beko-fridges-20260717-ac2",
+      "resultsSha256": "ba161643f677d5cc4b92c02dbc623544a6c8b61e14ce8deae727a08cabcbd5f1",
+      "auditSha256": "dfd5c7623c58183c942f745c10db8e8a2f3280c248ca08c4395e0d0fe3d1dd95",
+      "attemptedAt": "2026-07-17T01:23:36.209Z"
+    },
+    {
       "attemptId": "historical_attempt_117b2992a0e99fe5bcd9e99a",
       "targetId": "recovery_target_aa37ec26435197fc5b6d4b94",
       "referenceId": "fa_ref_d92c861c9dad5d633c612981",
@@ -697,7 +726,9 @@
       "runId": "historical-beko-dryers-20260716-x",
       "resultsSha256": "313bc837150cfe6c4dfe49ff01eab8c21c135e1204faabcfa6035b3f1596ec2c",
       "auditSha256": "5f139f6d7d618c3bca74115486bc6b4f6d12a661a6ed4240e124bc7935717e6b",
-      "attemptedAt": "2026-07-16T23:13:54.408Z"
+      "attemptedAt": "2026-07-16T23:13:54.408Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "3b9a9955d73152e95d789baed93ab3101fa34b6adf9e13b78055622b3f43823e"
     },
     {
       "attemptId": "historical_attempt_15d72ef1d355abb85a4c659c",
@@ -755,7 +786,9 @@
       "runId": "historical-beko-fridges-20260717-ab2",
       "resultsSha256": "0e3d80411549f9b041df2d8416c3d0e4325ca3b75e942dc8490e1bdafb2c7181",
       "auditSha256": "120969c387b0de375ad3df76f1d1284cb6c26e14522c112aa7124b7aa66ed657",
-      "attemptedAt": "2026-07-17T00:26:29.882Z"
+      "attemptedAt": "2026-07-17T00:26:29.882Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "1579a6c16238bf6c59600127f3c720bd3e6338b6df4db6e0dc3b2be8c0d764c1"
     },
     {
       "attemptId": "historical_attempt_19ad98dc72e00083fe56ad5a",
@@ -1425,6 +1458,35 @@
       "attemptedAt": "2026-07-16T20:28:24.626Z"
     },
     {
+      "attemptId": "historical_attempt_2482de0bf252c10578b38501",
+      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
+      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
+      "legacyRuntimeId": "ao-64577",
+      "canonicalProductId": "fa_prod_665a83ea5766c87c5979503b",
+      "brand": "Beko",
+      "model": "BBM450X",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf",
+      "finalUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf",
+      "contentSha256": "186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "9571277eb5d951d5e2be4f00c2fea6f990d7382eb08a3ce75759a398b0f60c65",
+      "semanticOutcomeSha256": "395defb4ba4bfab5bdfba7ff2df43e67d9a2489f08ec11e72171a18c7e86fb9e",
+      "batchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "batchSha256": "77bbc8320adb9d08195d514f4efb5f4d26018852b25c7210f66dc22f8fb5f873",
+      "runId": "historical-beko-fridges-20260717-ac2",
+      "resultsSha256": "ba161643f677d5cc4b92c02dbc623544a6c8b61e14ce8deae727a08cabcbd5f1",
+      "auditSha256": "dfd5c7623c58183c942f745c10db8e8a2f3280c248ca08c4395e0d0fe3d1dd95",
+      "attemptedAt": "2026-07-17T01:23:36.209Z"
+    },
+    {
       "attemptId": "historical_attempt_24d8a2e4749efdc0260d96e9",
       "targetId": "recovery_target_dc5c84183ef45d12f70bf552",
       "referenceId": "fa_ref_4406a85cc9ac3d0eb2ce5b7e",
@@ -1596,7 +1658,9 @@
       "runId": "historical-beko-fridges-20260717-ab1",
       "resultsSha256": "a3db66b2338d0a7e99a957974460b0c5c3b2d7e08fb729332bc443868478a81b",
       "auditSha256": "38e3ff97d7b1c83505265a52b8f835ea68f3a16e56601b724c9bfa56a8d6c939",
-      "attemptedAt": "2026-07-17T00:06:36.053Z"
+      "attemptedAt": "2026-07-17T00:06:36.053Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "4d1f5176a412dfbb2a4efe4c68c413a7ec795c5f12754c3398df23f20888bf5e"
     },
     {
       "attemptId": "historical_attempt_29806a963233f525375fddd3",
@@ -1712,7 +1776,9 @@
       "runId": "historical-beko-fridges-20260717-ab1",
       "resultsSha256": "a3db66b2338d0a7e99a957974460b0c5c3b2d7e08fb729332bc443868478a81b",
       "auditSha256": "38e3ff97d7b1c83505265a52b8f835ea68f3a16e56601b724c9bfa56a8d6c939",
-      "attemptedAt": "2026-07-17T00:06:36.053Z"
+      "attemptedAt": "2026-07-17T00:06:36.053Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "4d1f5176a412dfbb2a4efe4c68c413a7ec795c5f12754c3398df23f20888bf5e"
     },
     {
       "attemptId": "historical_attempt_2f23faeb31f0adfd3a271a7c",
@@ -2496,6 +2562,35 @@
       "resultsSha256": "0d96ecf0ebc94fa44ca3beea7c23adbba895eb8c11e793844bc91f7dc861dad7",
       "auditSha256": "46840ef1a95d8705ff07211c5da44a86e0a9e5bce30ebb9ca097ed4a3c5e9081",
       "attemptedAt": "2026-07-16T19:12:17.289Z"
+    },
+    {
+      "attemptId": "historical_attempt_3d58bd6a62f3ab6c27f28e84",
+      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
+      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
+      "legacyRuntimeId": "ao-77023",
+      "canonicalProductId": "fa_prod_35603fcdc485eeb1d361470a",
+      "brand": "Beko",
+      "model": "BBM450AN",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf",
+      "finalUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf",
+      "contentSha256": "16fa0c514333357c01a628bc637de7260e07da2f153938fb5180866430f328b0",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "7a002ec8741bff00ae0c8a8fd19580789a03e358aaf541417aae24692689f1ca",
+      "semanticOutcomeSha256": "4c8adc2f9d6f6133b2af2301c287be3a954d955d4e7aae3ac967e82ded1bb193",
+      "batchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "batchSha256": "77bbc8320adb9d08195d514f4efb5f4d26018852b25c7210f66dc22f8fb5f873",
+      "runId": "historical-beko-fridges-20260717-ac2",
+      "resultsSha256": "ba161643f677d5cc4b92c02dbc623544a6c8b61e14ce8deae727a08cabcbd5f1",
+      "auditSha256": "dfd5c7623c58183c942f745c10db8e8a2f3280c248ca08c4395e0d0fe3d1dd95",
+      "attemptedAt": "2026-07-17T01:23:36.209Z"
     },
     {
       "attemptId": "historical_attempt_3e52f6c3c0f2cc25c6b2f155",
@@ -4470,6 +4565,37 @@
       "attemptedAt": "2026-07-16T18:55:07.193Z"
     },
     {
+      "attemptId": "historical_attempt_6c83b24e93150beabbd01866",
+      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
+      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
+      "legacyRuntimeId": "ao-77023",
+      "canonicalProductId": "fa_prod_35603fcdc485eeb1d361470a",
+      "brand": "Beko",
+      "model": "BBM450AN",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+      "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+      "contentSha256": "539f46ba21181037cc6f811c52463e0c20eb48447ad23487abe45183a558ef71",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "exact product model identity signal missing",
+      "reasonSha256": "fe00ee2ce44b60d1c50ff482842749c61986642a8e12587af6104a0121c04d5b",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "ca59262692a7b8eedff7413f57b2f7387a2a784340bac99140b4a4b13c366ccf",
+      "semanticOutcomeSha256": "87ff6727d3a4056dc988e9c3b1a69f0466c96a3ed9b4d614f349c92e0cd18f5f",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z",
+      "processorCapability": "beko_au_product_html_identity_v1",
+      "evidenceProcessorSha256": "59122124b273a080af648ee40d449eb3317c01893897c3d4cd78e57ff06af455"
+    },
+    {
       "attemptId": "historical_attempt_6c894d9054524385b8781a38",
       "targetId": "recovery_target_e8bf737ce94d6a8254d3bed1",
       "referenceId": "fa_ref_700f681364afd12f4848293c",
@@ -5166,6 +5292,35 @@
       "attemptedAt": "2026-07-16T06:38:00.019Z"
     },
     {
+      "attemptId": "historical_attempt_7db8ae7b59a412d7a5222fe1",
+      "targetId": "recovery_target_c9f6e399045019f484c609e1",
+      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
+      "legacyRuntimeId": "ao-62774",
+      "canonicalProductId": "fa_prod_68b86add207841292e9a5083",
+      "brand": "Beko",
+      "model": "BBM407PX",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf",
+      "finalUrl": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf",
+      "contentSha256": "f0b6a87c307a226b67c087e7c3b3574dfbe662b51be1fd739a4538f0793662af",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "d0901df6d6a17de11651e4bd770d894f2c5f5be0d9af46bd9bcf0ef442f4d05a",
+      "semanticOutcomeSha256": "803d62231b432bcb0b1f7b408828aafe422afb0e723e6f31346a4dcd7046efb9",
+      "batchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "batchSha256": "77bbc8320adb9d08195d514f4efb5f4d26018852b25c7210f66dc22f8fb5f873",
+      "runId": "historical-beko-fridges-20260717-ac2",
+      "resultsSha256": "ba161643f677d5cc4b92c02dbc623544a6c8b61e14ce8deae727a08cabcbd5f1",
+      "auditSha256": "dfd5c7623c58183c942f745c10db8e8a2f3280c248ca08c4395e0d0fe3d1dd95",
+      "attemptedAt": "2026-07-17T01:23:36.209Z"
+    },
+    {
       "attemptId": "historical_attempt_7e53aec61ede4b4b0d211502",
       "targetId": "recovery_target_7638b53459b92a54af9a6109",
       "referenceId": "fa_ref_93e2c24cce69162020cd76f1",
@@ -5221,7 +5376,9 @@
       "runId": "historical-beko-fridges-20260717-ab1",
       "resultsSha256": "a3db66b2338d0a7e99a957974460b0c5c3b2d7e08fb729332bc443868478a81b",
       "auditSha256": "38e3ff97d7b1c83505265a52b8f835ea68f3a16e56601b724c9bfa56a8d6c939",
-      "attemptedAt": "2026-07-17T00:06:36.053Z"
+      "attemptedAt": "2026-07-17T00:06:36.053Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "4d1f5176a412dfbb2a4efe4c68c413a7ec795c5f12754c3398df23f20888bf5e"
     },
     {
       "attemptId": "historical_attempt_7f48e3622ff44b849e774829",
@@ -5743,7 +5900,9 @@
       "runId": "historical-beko-fridges-20260717-ab1",
       "resultsSha256": "a3db66b2338d0a7e99a957974460b0c5c3b2d7e08fb729332bc443868478a81b",
       "auditSha256": "38e3ff97d7b1c83505265a52b8f835ea68f3a16e56601b724c9bfa56a8d6c939",
-      "attemptedAt": "2026-07-17T00:06:36.053Z"
+      "attemptedAt": "2026-07-17T00:06:36.053Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "4d1f5176a412dfbb2a4efe4c68c413a7ec795c5f12754c3398df23f20888bf5e"
     },
     {
       "attemptId": "historical_attempt_887519c1b5642038928dc7fd",
@@ -6062,7 +6221,9 @@
       "runId": "historical-beko-38450-dishwashers-20260716-a",
       "resultsSha256": "87f51766dc704b68c94d2f9d274251c97dde3c3fb29361df531bb6abc70281e0",
       "auditSha256": "21346a595b8e88983fe474d65cc270e8591e6441db19bf7ebcc18f61342504da",
-      "attemptedAt": "2026-07-16T17:06:03.282Z"
+      "attemptedAt": "2026-07-16T17:06:03.282Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "0e2dde9c8dbc967d8829fa0f8d7181f7ce89349d6a50728b07c8d3bcca1b8cd5"
     },
     {
       "attemptId": "historical_attempt_914886d08dea06755d5f5f87",
@@ -6471,6 +6632,35 @@
       "attemptedAt": "2026-07-16T18:19:00.633Z"
     },
     {
+      "attemptId": "historical_attempt_96199fa77e2bc76998d44f3c",
+      "targetId": "recovery_target_c9f6e399045019f484c609e1",
+      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
+      "legacyRuntimeId": "ao-62774",
+      "canonicalProductId": "fa_prod_68b86add207841292e9a5083",
+      "brand": "Beko",
+      "model": "BBM407PX",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf",
+      "finalUrl": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/8700000209-BBM407PX/en-US-8700000209-201802220453959-User-Manual---Fileen-US.pdf",
+      "contentSha256": "f0b6a87c307a226b67c087e7c3b3574dfbe662b51be1fd739a4538f0793662af",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "1bace33c94ed962cbeb78c1f400c712c307f88de46f3c89a915c1363b47cba0c",
+      "semanticOutcomeSha256": "c85a546b1cd5e3264e31a356d6e6194cea9b5080d480dcc9a6d4c74846aa9cfb",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z"
+    },
+    {
       "attemptId": "historical_attempt_970a9941ad1e0450756fdbc0",
       "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
       "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
@@ -6498,6 +6688,37 @@
       "resultsSha256": "7c71fb1c9f79e48b74979178f883d0662f537e3ff7ec323772c9fa1b3bdbb84d",
       "auditSha256": "547b198cb2529822bff643849337bf096c56d6854f4919cdc019aa92e5751623",
       "attemptedAt": "2026-07-15T18:18:21.756Z"
+    },
+    {
+      "attemptId": "historical_attempt_97861fa1102a0dff03a9f1f9",
+      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
+      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
+      "legacyRuntimeId": "ao-64576",
+      "canonicalProductId": "fa_prod_b39f6e10698794ee503b7dea",
+      "brand": "Beko",
+      "model": "BBM450W",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+      "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+      "contentSha256": "49445b2f7b768b7f29f371851d47b44a67ccab5cc66ac515079686bd1c74cc11",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "exact product model identity signal missing",
+      "reasonSha256": "fe00ee2ce44b60d1c50ff482842749c61986642a8e12587af6104a0121c04d5b",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "e24d76a65df5b77ec1e0c310403c9c612c84e7fba7a05fc9e3cb79f30fa2981e",
+      "semanticOutcomeSha256": "0e4e2f0f96a9cd3138e9b1f472663fac282f22133c452f0dee2515e2f5148d1c",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z",
+      "processorCapability": "beko_au_product_html_identity_v1",
+      "evidenceProcessorSha256": "59122124b273a080af648ee40d449eb3317c01893897c3d4cd78e57ff06af455"
     },
     {
       "attemptId": "historical_attempt_989951cfa0291a8a54b11f27",
@@ -6701,6 +6922,35 @@
       "resultsSha256": "6119fae47e758a349712f6598d32e2f67f7e710187aef9662a4ef26d4ca63a6d",
       "auditSha256": "f83e2c8f511f8e471f35bfa6fc95db4c66f9aeb99a5fa3e23415bf5fc3192327",
       "attemptedAt": "2026-07-16T18:40:19.863Z"
+    },
+    {
+      "attemptId": "historical_attempt_9b78995b71d279b6d1322809",
+      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
+      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
+      "legacyRuntimeId": "ao-77023",
+      "canonicalProductId": "fa_prod_35603fcdc485eeb1d361470a",
+      "brand": "Beko",
+      "model": "BBM450AN",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf",
+      "finalUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642481-BBM450AN/en-US-7293642481-20181129071837-User-Manual---File-Longen-US.pdf",
+      "contentSha256": "16fa0c514333357c01a628bc637de7260e07da2f153938fb5180866430f328b0",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "ca59262692a7b8eedff7413f57b2f7387a2a784340bac99140b4a4b13c366ccf",
+      "semanticOutcomeSha256": "87ff6727d3a4056dc988e9c3b1a69f0466c96a3ed9b4d614f349c92e0cd18f5f",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z"
     },
     {
       "attemptId": "historical_attempt_9bdfea6075d1623738510e9d",
@@ -7106,7 +7356,9 @@
       "runId": "historical-beko-fridges-20260717-ab2",
       "resultsSha256": "0e3d80411549f9b041df2d8416c3d0e4325ca3b75e942dc8490e1bdafb2c7181",
       "auditSha256": "120969c387b0de375ad3df76f1d1284cb6c26e14522c112aa7124b7aa66ed657",
-      "attemptedAt": "2026-07-17T00:26:29.882Z"
+      "attemptedAt": "2026-07-17T00:26:29.882Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "1579a6c16238bf6c59600127f3c720bd3e6338b6df4db6e0dc3b2be8c0d764c1"
     },
     {
       "attemptId": "historical_attempt_a5b58fc41120483b039b160f",
@@ -7164,7 +7416,9 @@
       "runId": "historical-beko-fridges-20260717-ab2",
       "resultsSha256": "0e3d80411549f9b041df2d8416c3d0e4325ca3b75e942dc8490e1bdafb2c7181",
       "auditSha256": "120969c387b0de375ad3df76f1d1284cb6c26e14522c112aa7124b7aa66ed657",
-      "attemptedAt": "2026-07-17T00:26:29.882Z"
+      "attemptedAt": "2026-07-17T00:26:29.882Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "1579a6c16238bf6c59600127f3c720bd3e6338b6df4db6e0dc3b2be8c0d764c1"
     },
     {
       "attemptId": "historical_attempt_a853d0e7ad62e793d61c4879",
@@ -7396,7 +7650,9 @@
       "runId": "historical-beko-fridges-20260717-ab1",
       "resultsSha256": "a3db66b2338d0a7e99a957974460b0c5c3b2d7e08fb729332bc443868478a81b",
       "auditSha256": "38e3ff97d7b1c83505265a52b8f835ea68f3a16e56601b724c9bfa56a8d6c939",
-      "attemptedAt": "2026-07-17T00:06:36.053Z"
+      "attemptedAt": "2026-07-17T00:06:36.053Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "4d1f5176a412dfbb2a4efe4c68c413a7ec795c5f12754c3398df23f20888bf5e"
     },
     {
       "attemptId": "historical_attempt_abb49b44103060243034e2b7",
@@ -7541,7 +7797,9 @@
       "runId": "historical-beko-fridges-20260717-ab2",
       "resultsSha256": "0e3d80411549f9b041df2d8416c3d0e4325ca3b75e942dc8490e1bdafb2c7181",
       "auditSha256": "120969c387b0de375ad3df76f1d1284cb6c26e14522c112aa7124b7aa66ed657",
-      "attemptedAt": "2026-07-17T00:26:29.882Z"
+      "attemptedAt": "2026-07-17T00:26:29.882Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "1579a6c16238bf6c59600127f3c720bd3e6338b6df4db6e0dc3b2be8c0d764c1"
     },
     {
       "attemptId": "historical_attempt_af04fb8fdab3cbe71b8958e7",
@@ -7600,6 +7858,35 @@
       "resultsSha256": "805ddbe8a0c5c6aa408f97dcb29786af9afaac2727421aea0880d06a942f2505",
       "auditSha256": "fabf07b28e2c91c5ce3e9d2388eac1a8522bd3771517a46365f74fcbe8e04e65",
       "attemptedAt": "2026-07-16T19:50:17.004Z"
+    },
+    {
+      "attemptId": "historical_attempt_b074dc58a509e5cf871aee4b",
+      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
+      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
+      "legacyRuntimeId": "ao-64576",
+      "canonicalProductId": "fa_prod_b39f6e10698794ee503b7dea",
+      "brand": "Beko",
+      "model": "BBM450W",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf",
+      "finalUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642411-BBM450W/en-US-7293642411-201709261040171-User-Manual---Fileen-US.pdf",
+      "contentSha256": "186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "e24d76a65df5b77ec1e0c310403c9c612c84e7fba7a05fc9e3cb79f30fa2981e",
+      "semanticOutcomeSha256": "0e4e2f0f96a9cd3138e9b1f472663fac282f22133c452f0dee2515e2f5148d1c",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z"
     },
     {
       "attemptId": "historical_attempt_b0f854c01a408bf658220e16",
@@ -8731,6 +9018,37 @@
       "resultsSha256": "3519f123cc63332f1ce2e6b723c4aca80b332cef4a78272d7ebcd77df4c04428",
       "auditSha256": "539ea4478cbaf23721a36c0b7f4afd42262cbe766d98efbbfc95a5771c4721fc",
       "attemptedAt": "2026-07-16T18:55:07.193Z"
+    },
+    {
+      "attemptId": "historical_attempt_ce6a43e6e70120b3e16cb5e5",
+      "targetId": "recovery_target_c9f6e399045019f484c609e1",
+      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
+      "legacyRuntimeId": "ao-62774",
+      "canonicalProductId": "fa_prod_68b86add207841292e9a5083",
+      "brand": "Beko",
+      "model": "BBM407PX",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+      "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+      "contentSha256": "a1c964b2d6ef355f2e000f16c4827d4deb63f5524c657c7d1db7f531df597a13",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "exact product model identity signal missing",
+      "reasonSha256": "fe00ee2ce44b60d1c50ff482842749c61986642a8e12587af6104a0121c04d5b",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "1bace33c94ed962cbeb78c1f400c712c307f88de46f3c89a915c1363b47cba0c",
+      "semanticOutcomeSha256": "c85a546b1cd5e3264e31a356d6e6194cea9b5080d480dcc9a6d4c74846aa9cfb",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z",
+      "processorCapability": "beko_au_product_html_identity_v1",
+      "evidenceProcessorSha256": "59122124b273a080af648ee40d449eb3317c01893897c3d4cd78e57ff06af455"
     },
     {
       "attemptId": "historical_attempt_ce97f52f4592f05ddfa6c032",
@@ -10125,6 +10443,37 @@
       "attemptedAt": "2026-07-16T06:38:00.019Z"
     },
     {
+      "attemptId": "historical_attempt_f12e7fedf258db9e2c8f26bb",
+      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
+      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
+      "legacyRuntimeId": "ao-64577",
+      "canonicalProductId": "fa_prod_665a83ea5766c87c5979503b",
+      "brand": "Beko",
+      "model": "BBM450X",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+      "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+      "contentSha256": "e81d50d8c3f9b9418428778476f6e45c66fa5f5687b47e948ef131b254048a02",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "exact product model identity signal missing",
+      "reasonSha256": "fe00ee2ce44b60d1c50ff482842749c61986642a8e12587af6104a0121c04d5b",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "48f0d46d14da068f5a4776d3b37a1466a5854379d04c76b503b870067a333fdc",
+      "semanticOutcomeSha256": "284766d6543c7f2dd4593970fd3a6fec087f6fdbfa79e5fca44ea007f2ef06d2",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z",
+      "processorCapability": "beko_au_product_html_identity_v1",
+      "evidenceProcessorSha256": "59122124b273a080af648ee40d449eb3317c01893897c3d4cd78e57ff06af455"
+    },
+    {
       "attemptId": "historical_attempt_f13baa8233b61265edf08282",
       "targetId": "recovery_target_308bac8cfe8d6b46c5102b6b",
       "referenceId": "fa_ref_2210a276b84ee0439b0ff1f2",
@@ -10502,6 +10851,35 @@
       "attemptedAt": "2026-07-15T18:36:35.428Z"
     },
     {
+      "attemptId": "historical_attempt_fbd5e0ba368aa86c462074b1",
+      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
+      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
+      "legacyRuntimeId": "ao-64577",
+      "canonicalProductId": "fa_prod_665a83ea5766c87c5979503b",
+      "brand": "Beko",
+      "model": "BBM450X",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf",
+      "finalUrl": "https://www.beko.com/content/dam/new-zealand-nz-aem/new-zealand-nz-aemProductCatalog/product-documents/7293642491-BBM450X/en-US-7293642491-201709261044353-User-Manual---Fileen-US.pdf",
+      "contentSha256": "186d7fac41a149f00830754ca462a2aafbfa0489420a06c7cf4c497a70ea6baa",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "48f0d46d14da068f5a4776d3b37a1466a5854379d04c76b503b870067a333fdc",
+      "semanticOutcomeSha256": "284766d6543c7f2dd4593970fd3a6fec087f6fdbfa79e5fca44ea007f2ef06d2",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z"
+    },
+    {
       "attemptId": "historical_attempt_fc214f895ba2534c37c2b475",
       "targetId": "recovery_target_08bedeba7612804e2ac94fd6",
       "referenceId": "fa_ref_f5d0b05f449b892711be2903",
@@ -10557,7 +10935,9 @@
       "runId": "historical-beko-dryers-20260716-x",
       "resultsSha256": "313bc837150cfe6c4dfe49ff01eab8c21c135e1204faabcfa6035b3f1596ec2c",
       "auditSha256": "5f139f6d7d618c3bca74115486bc6b4f6d12a661a6ed4240e124bc7935717e6b",
-      "attemptedAt": "2026-07-16T23:13:54.408Z"
+      "attemptedAt": "2026-07-16T23:13:54.408Z",
+      "processorCapability": "beko_au_product_html_dimensions_v1",
+      "evidenceProcessorSha256": "3b9a9955d73152e95d789baed93ab3101fa34b6adf9e13b78055622b3f43823e"
     },
     {
       "attemptId": "historical_attempt_fea4487dd46baa2c140c756d",
@@ -12376,6 +12756,23 @@
       "acceptedAt": "2026-07-16T20:28:24.626Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_50df58dae9fd69e93a47cb9f",
+      "targetId": "recovery_target_c9f6e399045019f484c609e1",
+      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+      "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "d0901df6d6a17de11651e4bd770d894f2c5f5be0d9af46bd9bcf0ef442f4d05a",
+      "semanticOutcomeSha256": "803d62231b432bcb0b1f7b408828aafe422afb0e723e6f31346a4dcd7046efb9",
+      "batchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "batchSha256": "77bbc8320adb9d08195d514f4efb5f4d26018852b25c7210f66dc22f8fb5f873",
+      "runId": "historical-beko-fridges-20260717-ac2",
+      "resultsSha256": "ba161643f677d5cc4b92c02dbc623544a6c8b61e14ce8deae727a08cabcbd5f1",
+      "auditSha256": "dfd5c7623c58183c942f745c10db8e8a2f3280c248ca08c4395e0d0fe3d1dd95",
+      "acceptedAt": "2026-07-17T01:23:36.209Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_5185de1d5096fbddf8c11d05",
       "targetId": "recovery_target_269b2c672b0f0a57114940cf",
       "referenceId": "fa_ref_cb6a8f7e8fb8e5998bd2ee03",
@@ -13379,6 +13776,23 @@
       "acceptedAt": "2026-07-16T09:48:55.878Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_880995426f60bbd74ee7bbac",
+      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
+      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+      "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "b16c01312922dc65e0df66bb0ac848846a8543933703cd67790845fcb31eb0af",
+      "semanticOutcomeSha256": "719a162feb2b9e2aa4548877aebc621d8b2b4c926c8ed8227ae19db0ea070ddc",
+      "batchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "batchSha256": "77bbc8320adb9d08195d514f4efb5f4d26018852b25c7210f66dc22f8fb5f873",
+      "runId": "historical-beko-fridges-20260717-ac2",
+      "resultsSha256": "ba161643f677d5cc4b92c02dbc623544a6c8b61e14ce8deae727a08cabcbd5f1",
+      "auditSha256": "dfd5c7623c58183c942f745c10db8e8a2f3280c248ca08c4395e0d0fe3d1dd95",
+      "acceptedAt": "2026-07-17T01:23:36.209Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_8b5a70bb5a45a07ef6c4101d",
       "targetId": "recovery_target_76cfbf9f468ea1412fbb39a1",
       "referenceId": "fa_ref_e3059bd4d6cc548c743848f6",
@@ -13513,6 +13927,23 @@
       "resultsSha256": "6119fae47e758a349712f6598d32e2f67f7e710187aef9662a4ef26d4ca63a6d",
       "auditSha256": "f83e2c8f511f8e471f35bfa6fc95db4c66f9aeb99a5fa3e23415bf5fc3192327",
       "acceptedAt": "2026-07-16T18:40:19.863Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_91c5e5db4bdd8b618f8b8fd1",
+      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
+      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+      "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "9571277eb5d951d5e2be4f00c2fea6f990d7382eb08a3ce75759a398b0f60c65",
+      "semanticOutcomeSha256": "395defb4ba4bfab5bdfba7ff2df43e67d9a2489f08ec11e72171a18c7e86fb9e",
+      "batchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "batchSha256": "77bbc8320adb9d08195d514f4efb5f4d26018852b25c7210f66dc22f8fb5f873",
+      "runId": "historical-beko-fridges-20260717-ac2",
+      "resultsSha256": "ba161643f677d5cc4b92c02dbc623544a6c8b61e14ce8deae727a08cabcbd5f1",
+      "auditSha256": "dfd5c7623c58183c942f745c10db8e8a2f3280c248ca08c4395e0d0fe3d1dd95",
+      "acceptedAt": "2026-07-17T01:23:36.209Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_92fbaf6e152222855b55d312",
@@ -14244,6 +14675,23 @@
       "resultsSha256": "093f321b68d8eb1f7d0d3216bc5f66a8ea66822f4af4e0de52e61730704c4db7",
       "auditSha256": "e5aea60354ca44b4a12946af6807b4c8276bae79e0b10fbfe1250fddd5e42cfb",
       "acceptedAt": "2026-07-16T08:06:11.921Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_bcdb64cf30c122f34f3639d9",
+      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
+      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+      "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "7a002ec8741bff00ae0c8a8fd19580789a03e358aaf541417aae24692689f1ca",
+      "semanticOutcomeSha256": "4c8adc2f9d6f6133b2af2301c287be3a954d955d4e7aae3ac967e82ded1bb193",
+      "batchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "batchSha256": "77bbc8320adb9d08195d514f4efb5f4d26018852b25c7210f66dc22f8fb5f873",
+      "runId": "historical-beko-fridges-20260717-ac2",
+      "resultsSha256": "ba161643f677d5cc4b92c02dbc623544a6c8b61e14ce8deae727a08cabcbd5f1",
+      "auditSha256": "dfd5c7623c58183c942f745c10db8e8a2f3280c248ca08c4395e0d0fe3d1dd95",
+      "acceptedAt": "2026-07-17T01:23:36.209Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_bd4c944eb63a31f4e70fc57d",
@@ -15442,6 +15890,58 @@
       "attemptedAt": "2026-07-16T12:43:54.447Z"
     },
     {
+      "targetAttemptId": "historical_target_attempt_105702f474033041b4168689",
+      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
+      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
+      "legacyRuntimeId": "ao-77023",
+      "canonicalProductId": "fa_prod_35603fcdc485eeb1d361470a",
+      "brand": "Beko",
+      "model": "BBM450AN",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "complete_exhausted_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "eb635380b625b306bdcea29b7b8253d40c6a68824afc725524c63cef0098f9bb",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "2",
+          "scope": "beko_au_exact_support_search_result_and_product_documents",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 2
+        }
+      ],
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "ca59262692a7b8eedff7413f57b2f7387a2a784340bac99140b4a4b13c366ccf",
+      "semanticOutcomeSha256": "87ff6727d3a4056dc988e9c3b1a69f0466c96a3ed9b4d614f349c92e0cd18f5f",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z"
+    },
+    {
       "targetAttemptId": "historical_target_attempt_1261e43fa6410a9086ea5541",
       "targetId": "recovery_target_fe4b691f79d62b5f8dcfa45f",
       "referenceId": "fa_ref_96755e418ee9132916be8d1e",
@@ -16066,6 +16566,58 @@
       "attemptedAt": "2026-07-16T15:42:28.065Z"
     },
     {
+      "targetAttemptId": "historical_target_attempt_40160f3aaa1f0d240ef7bcc6",
+      "targetId": "recovery_target_c9f6e399045019f484c609e1",
+      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
+      "legacyRuntimeId": "ao-62774",
+      "canonicalProductId": "fa_prod_68b86add207841292e9a5083",
+      "brand": "Beko",
+      "model": "BBM407PX",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "complete_exhausted_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "eb635380b625b306bdcea29b7b8253d40c6a68824afc725524c63cef0098f9bb",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "2",
+          "scope": "beko_au_exact_support_search_result_and_product_documents",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 2
+        }
+      ],
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "1bace33c94ed962cbeb78c1f400c712c307f88de46f3c89a915c1363b47cba0c",
+      "semanticOutcomeSha256": "c85a546b1cd5e3264e31a356d6e6194cea9b5080d480dcc9a6d4c74846aa9cfb",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z"
+    },
+    {
       "targetAttemptId": "historical_target_attempt_41e5ea78b8753d9e100cf6ee",
       "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
       "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
@@ -16480,6 +17032,58 @@
       "resultsSha256": "5f7a34d9660a0ec868a80070d1ee87233aff2a40ef17548ef05991b2d9993d97",
       "auditSha256": "da640e916dc68fdbddba99e7cbc4374aed8ec6a94509d991c60d4cfab0e0154a",
       "attemptedAt": "2026-07-16T22:38:57.227Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_5be9106e52c112fd9ac43836",
+      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
+      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
+      "legacyRuntimeId": "ao-64576",
+      "canonicalProductId": "fa_prod_b39f6e10698794ee503b7dea",
+      "brand": "Beko",
+      "model": "BBM450W",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "complete_exhausted_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "eb635380b625b306bdcea29b7b8253d40c6a68824afc725524c63cef0098f9bb",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "2",
+          "scope": "beko_au_exact_support_search_result_and_product_documents",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 2
+        }
+      ],
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "e24d76a65df5b77ec1e0c310403c9c612c84e7fba7a05fc9e3cb79f30fa2981e",
+      "semanticOutcomeSha256": "0e4e2f0f96a9cd3138e9b1f472663fac282f22133c452f0dee2515e2f5148d1c",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z"
     },
     {
       "targetAttemptId": "historical_target_attempt_5ef5ee1bfc9d2c6b8fd8a6b9",
@@ -17208,6 +17812,58 @@
       "resultsSha256": "d921be78d782bc1335d0a8c771c1972ebc0513fd0899d84055d3fa31349557e4",
       "auditSha256": "792ffdb3f33bf230639ba06c6e896729dff87af8ca430bc3f5238854fb24b022",
       "attemptedAt": "2026-07-16T20:28:24.626Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_9348d4e8ebb402ac22c1737c",
+      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
+      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
+      "legacyRuntimeId": "ao-64577",
+      "canonicalProductId": "fa_prod_665a83ea5766c87c5979503b",
+      "brand": "Beko",
+      "model": "BBM450X",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "complete_exhausted_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "eb635380b625b306bdcea29b7b8253d40c6a68824afc725524c63cef0098f9bb",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "2",
+          "scope": "beko_au_exact_support_search_result_and_product_documents",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 2
+        }
+      ],
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "48f0d46d14da068f5a4776d3b37a1466a5854379d04c76b503b870067a333fdc",
+      "semanticOutcomeSha256": "284766d6543c7f2dd4593970fd3a6fec087f6fdbfa79e5fca44ea007f2ef06d2",
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "runId": "historical-beko-fridges-20260717-ac1",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "4d014aafa2a068f9646a3258f14d4df04d7f407b2baf0eed7b611c3a45ecfe14",
+      "attemptedAt": "2026-07-17T01:16:33.482Z"
     },
     {
       "targetAttemptId": "historical_target_attempt_939495f19d5efc02ad71689d",
@@ -18615,25 +19271,43 @@
     }
   ],
   "summary": {
-    "entries": 366,
+    "entries": 378,
     "resolutions": 20,
-    "sourceAcceptances": 250,
-    "suppressions": 286,
+    "sourceAcceptances": 254,
+    "suppressions": 298,
     "resolvedSuppressions": 17,
     "retryable": 63,
-    "targetAttempts": 65,
-    "resolverOnlySuppressions": 65,
+    "targetAttempts": 69,
+    "resolverOnlySuppressions": 69,
     "byStatus": {
       "claims_incomplete": 40,
-      "identity_rejected": 187,
+      "identity_rejected": 199,
       "mineru_failure": 77,
       "transport_failure": 62
     },
     "byDisposition": {
       "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 77,
       "RETRY_TRANSIENT": 62,
-      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 187,
+      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 199,
       "SEEK_EXACT_MODEL_FIELD_SOURCE": 40
     }
-  }
+  },
+  "processorEpochMigration": {
+    "migratedAt": "2026-07-17T01:30:18.481Z",
+    "migratedEntries": 0,
+    "boundEntries": 16,
+    "unboundEntries": 0,
+    "failClosedUnboundEntries": true,
+    "mode": "bound_inventory_snapshot"
+  },
+  "processorEpochMigrations": [
+    {
+      "migratedAt": "2026-07-17T01:30:18.481Z",
+      "migratedEntries": 0,
+      "boundEntries": 16,
+      "unboundEntries": 0,
+      "failClosedUnboundEntries": true,
+      "mode": "bound_inventory_snapshot"
+    }
+  ]
 }

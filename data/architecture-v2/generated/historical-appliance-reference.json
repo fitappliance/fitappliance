@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
-    "historical-recovery:historical-recovery-cumulative-v1": "3a9fa7a16db228dc25eac354403952a37a6600da0856a7f18a4157b390590cd6"
+    "historical-recovery:historical-recovery-cumulative-v1": "fa1171882ecad9a2ca0f75d936310c008d2442befd66d10df96aa961ff4e07b5"
   },
   "records": [
     {
@@ -96071,13 +96071,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 700,
+        "height": 1720,
+        "depth": 670
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c9f6e399045019f484c609e1",
+          "snapshotSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
           "sourceLines": []
         }
       ],
@@ -96087,8 +96096,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c9f6e399045019f484c609e1",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+          "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
+          "receiptBindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b",
+          "verifiedAt": "2026-07-17T01:23:35.771Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/f0/07/f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3.html"
+        }
       ]
     },
     {
@@ -96176,13 +96208,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 700,
+        "height": 1720,
+        "depth": 705
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6cc9fc43b1069f007e984b3f",
+          "snapshotSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
           "sourceLines": []
         }
       ],
@@ -96192,8 +96233,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+          "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
+          "receiptBindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab",
+          "verifiedAt": "2026-07-17T01:23:32.723Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/ea/88/ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27.html"
+        }
       ]
     },
     {
@@ -96211,13 +96275,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 700,
+        "height": 1720,
+        "depth": 705
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c3c9af1bd826cac06e40e0d0",
+          "snapshotSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
           "sourceLines": []
         }
       ],
@@ -96227,8 +96300,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+          "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
+          "receiptBindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2",
+          "verifiedAt": "2026-07-17T01:23:30.450Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/f8/23/f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb.html"
+        }
       ]
     },
     {
@@ -96246,13 +96342,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 700,
+        "height": 1720,
+        "depth": 705
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_75dd12a645eecd3a896c8c36",
+          "snapshotSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
           "sourceLines": []
         }
       ],
@@ -96262,8 +96367,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+          "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
+          "receiptBindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704",
+          "verifiedAt": "2026-07-17T01:23:29.302Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/d4/c3/d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e.html"
+        }
       ]
     },
     {
@@ -324231,16 +324359,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4852,
-      "IDENTITY_ONLY": 2865,
-      "MODEL_RECEIPT": 277,
+      "IDENTITY_ONLY": 2861,
+      "MODEL_RECEIPT": 281,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4852,
-      "MEASURE_REQUIRED": 2865,
-      "AUTO_FILL": 288,
+      "MEASURE_REQUIRED": 2861,
+      "AUTO_FILL": 292,
       "QUARANTINED": 88
     }
   }

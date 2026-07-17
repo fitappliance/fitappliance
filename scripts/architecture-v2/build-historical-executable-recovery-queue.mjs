@@ -5,6 +5,10 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import {
+  buildEvidenceProcessorEpochs,
+  EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS,
+} from '../../src/domain/evidence-processor-epoch.mjs';
 import { historicalResolverContractSha256 } from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
 import { buildHistoricalExecutableRecoveryQueue } from '../../src/domain/historical-executable-recovery-queue.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
@@ -42,6 +46,12 @@ export async function runCli() {
     readOptionalJson('historicalEvidenceRecoveryAttemptLedger', { schemaVersion: 1, entries: [] }),
     readJson('historicalEvidenceRecoveryPolicy'),
   ]);
+  const processorPaths = [...new Set(Object.values(EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS).flat())];
+  const processorFiles = new Map(await Promise.all(processorPaths.map(async (path) => [
+    path,
+    await readFile(resolve(root, path)),
+  ])));
+  const evidenceProcessorEpochs = buildEvidenceProcessorEpochs(processorFiles);
   const queue = buildHistoricalExecutableRecoveryQueue({
     acquisitionQueue,
     historicalReference,
@@ -49,6 +59,7 @@ export async function runCli() {
     priorAcceptanceBundle,
     priorAttemptLedger,
     recoveryPolicySha256: canonicalJsonSha256(recoveryPolicy),
+    evidenceProcessorEpochs,
     resolverContractSha256ForTarget: (target) => historicalResolverContractSha256(
       recoveryResolverContractForTarget(target),
     ),

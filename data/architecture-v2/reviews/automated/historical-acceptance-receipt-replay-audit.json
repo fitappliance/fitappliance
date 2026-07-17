@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T00:46:36.925Z",
-  "sourceBundleSha256": "3a9fa7a16db228dc25eac354403952a37a6600da0856a7f18a4157b390590cd6",
+  "generatedAt": "2026-07-17T01:24:05.671Z",
+  "sourceBundleSha256": "fa1171882ecad9a2ca0f75d936310c008d2442befd66d10df96aa961ff4e07b5",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -2244,6 +2244,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
+      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
+      "brand": "Beko",
+      "model": "BBM450AN",
+      "category": "fridge",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+      "sourcePdfSha256": null,
+      "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
+      "receiptBindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_6de2c5a7ba4994b08699a478",
       "referenceId": "fa_ref_7d285e9c168e13cd0922c846",
       "brand": "Bosch",
@@ -2380,6 +2394,20 @@
       "contentSha256": "36ad2fa97f1890466cc82241b5695a2ff6cfa385d05963da95764015fe99a6fc",
       "receiptBindingSha256": "9537194cd31acef3e5f71309e378a36a0cbbbc684e14bc5b21fe87683b6c93b3",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/8d/17/8d1737fd199a5d8418e0c70e603b4258aadc46708d5b74816aaa6b9d090f1e26.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
+      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
+      "brand": "Beko",
+      "model": "BBM450X",
+      "category": "fridge",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+      "sourcePdfSha256": null,
+      "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
+      "receiptBindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -3910,6 +3938,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
+      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
+      "brand": "Beko",
+      "model": "BBM450W",
+      "category": "fridge",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+      "sourcePdfSha256": null,
+      "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
+      "receiptBindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c4295ee36eb7c14ebebe7c87",
       "referenceId": "fa_ref_17961db2e0780daa439c2111",
       "brand": "Beko",
@@ -4158,6 +4200,20 @@
       "contentSha256": "376f1406ca9735afa20511bea670c04766ef2d7dc8d1d7bdd61d0bf6ade31f7d",
       "receiptBindingSha256": "c94ebf92574d0dc024a7bcd45423e172f2673d5c4c0c22f714564db6f4246c9d",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/cc/2a/cc2a1521805e54bdb296c4e378d79bd9741e19c0d54e9f5247b24adc00f5c137.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_c9f6e399045019f484c609e1",
+      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
+      "brand": "Beko",
+      "model": "BBM407PX",
+      "category": "fridge",
+      "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+      "sourcePdfSha256": null,
+      "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
+      "receiptBindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b",
+      "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
     },
@@ -5185,11 +5241,11 @@
     }
   ],
   "summary": {
-    "entries": 345,
-    "sources": 370,
-    "passed": 370,
+    "entries": 349,
+    "sources": 374,
+    "passed": 374,
     "failed": 0
   },
-  "checkedObjects": 721,
-  "semanticAuditSha256": "68a69b9d44373c0689bad49b972b51362ccd59d8b092a2a27110263a1250aff2"
+  "checkedObjects": 725,
+  "semanticAuditSha256": "d87a8dbddbee1f8b8e7f4d11366d8c77baeff26a88fb2580b874292a91982e7a"
 }

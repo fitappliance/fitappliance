@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1371,
-    "fetchJobs": 1334,
-    "targets": 1368,
-    "candidateEdges": 1371,
+    "documents": 1367,
+    "fetchJobs": 1330,
+    "targets": 1364,
+    "candidateEdges": 1367,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1368,
+    "uniqueReferences": 1364,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 937,
+      "MEASURE_REQUIRED": 933,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1121
+      "CURRENT_RETAIL": 1117
     },
     "byCategory": {
       "dishwasher": 281,
       "dryer": 51,
-      "fridge": 820,
+      "fridge": 816,
       "washing_machine": 216
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1074,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1070,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 234,
+      "ALREADY_AUTO_FILL": 238,
       "HISTORICAL_REFERENCE_NOT_FOUND": 146,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -5660,32 +5660,6 @@
       ]
     },
     {
-      "jobId": "recovery_286182e006ba7b28b713a302",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/b/0/2/3b02ed85cb37953ec4aa30d9086ae5f174fa09a8_Beko_BBM407PX_407L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
-      "authorityBrand": "Beko",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_c9f6e399045019f484c609e1"
-      ]
-    },
-    {
       "jobId": "recovery_2fbe4a16b752feb8f0ed52a6",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/3/b/2/8/3b289ba032c7e757d2803335a12a1de44751fda9_Fisher___Paykel_RF522BLGW6_519L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -10626,32 +10600,6 @@
       ]
     },
     {
-      "jobId": "recovery_8ab4f2509a4e688af561857e",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/e/9/a/6e9a7ed5d00abe4734c6a64ea5bdf0b26e98ebf3_BBM450AN_Beko_Datasheet.pdf",
-      "authorityBrand": "Beko",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_6cc9fc43b1069f007e984b3f"
-      ]
-    },
-    {
       "jobId": "recovery_2b82c875cb0b737d75f701f5",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/6/e/b/5/6eb58cb1e269869d9b4ee21f1849ee7513f31baa_BFD629X_Beko_Specifications_Sheet.pdf",
       "authorityBrand": "Beko",
@@ -11767,32 +11715,6 @@
       ],
       "targetIds": [
         "recovery_target_7be8df517854a5aa9fa38a4d"
-      ]
-    },
-    {
-      "jobId": "recovery_59b5ee161ce1ae2c71b8a65a",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/9/e/4/79e44f561070df6f1eaab936f51ac7eb263b8a46_BBM450W_Beko_Specifications_Sheet.pdf",
-      "authorityBrand": "Beko",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_c3c9af1bd826cac06e40e0d0"
       ]
     },
     {
@@ -17747,32 +17669,6 @@
       ],
       "targetIds": [
         "recovery_target_0bce49ea1d5ed7f33a36d2db"
-      ]
-    },
-    {
-      "jobId": "recovery_e6f3e7ac271561c2c641e036",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/b/9/4/9/b949cefd6ba079d219f1bfd76fc00c1afc90c1b4_BBM450X_Beko_Specifications_Sheet.pdf",
-      "authorityBrand": "Beko",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_75dd12a645eecd3a896c8c36"
       ]
     },
     {
@@ -35052,170 +34948,6 @@
         "recovery_406cb4932d39cc74b270879c"
       ],
       "primaryJobId": "recovery_406cb4932d39cc74b270879c"
-    },
-    {
-      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
-      "legacyRuntimeId": "ao-62774",
-      "canonicalProductId": "fa_prod_68b86add207841292e9a5083",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM407PX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 700,
-        "height": 1720,
-        "depth": 660
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_c9f6e399045019f484c609e1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_981411b5729b38ffb9096efc"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_981411b5729b38ffb9096efc",
-          "dimensionsMm": {
-            "width": 700,
-            "height": 1720,
-            "depth": 660
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_286182e006ba7b28b713a302"
-      ],
-      "primaryJobId": "recovery_286182e006ba7b28b713a302"
-    },
-    {
-      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
-      "legacyRuntimeId": "ao-77023",
-      "canonicalProductId": "fa_prod_35603fcdc485eeb1d361470a",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450AN",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 704,
-        "height": 1720,
-        "depth": 701
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e42110e34bceb406d69fd1e8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e42110e34bceb406d69fd1e8",
-          "dimensionsMm": {
-            "width": 704,
-            "height": 1720,
-            "depth": 701
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_8ab4f2509a4e688af561857e"
-      ],
-      "primaryJobId": "recovery_8ab4f2509a4e688af561857e"
-    },
-    {
-      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
-      "legacyRuntimeId": "ao-64576",
-      "canonicalProductId": "fa_prod_b39f6e10698794ee503b7dea",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 704,
-        "height": 1720,
-        "depth": 701
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_ee1ea71781c6fc53161f610c"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_ee1ea71781c6fc53161f610c",
-          "dimensionsMm": {
-            "width": 704,
-            "height": 1720,
-            "depth": 701
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_59b5ee161ce1ae2c71b8a65a"
-      ],
-      "primaryJobId": "recovery_59b5ee161ce1ae2c71b8a65a"
-    },
-    {
-      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
-      "legacyRuntimeId": "ao-64577",
-      "canonicalProductId": "fa_prod_665a83ea5766c87c5979503b",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 704,
-        "height": 1720,
-        "depth": 701
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_816d2f116fb46060ee3146c8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_816d2f116fb46060ee3146c8",
-          "dimensionsMm": {
-            "width": 704,
-            "height": 1720,
-            "depth": 701
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e6f3e7ac271561c2c641e036"
-      ],
-      "primaryJobId": "recovery_e6f3e7ac271561c2c641e036"
     },
     {
       "referenceId": "fa_ref_b2b14097dd66efbdb7e932e1",

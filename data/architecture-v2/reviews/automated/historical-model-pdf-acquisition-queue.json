@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T00:41:27.426Z",
-  "semanticQueueSha256": "17629c6601001bffed481db6230184ec1845c54f48378b86fcecd9f7bd05db36",
-  "sourceClassificationSha256": "dd3e4587b23068c5bbdd7704e9a349529fa5f6922f1221b8ef6a5ca04c5e8bdb",
+  "generatedAt": "2026-07-17T01:24:54.730Z",
+  "semanticQueueSha256": "4a07df3058d26bc07d259d0015b1ea8e3792ff6fce377b6ab14da07825009ed1",
+  "sourceClassificationSha256": "c281fbf255317106e834b2e5ba58cee76da9eec6f9183bee716eb20c6b89ba5c",
   "records": [
     {
       "schemaVersion": 1,
@@ -8923,130 +8923,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_d2cc72d2b1a0ac12f236b2f4"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f9e2ad90062562b994c4d34d",
-      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM407PX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "model_specific",
-      "groupName": "BBM407PX",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_f0ea3e9941ded62464f23b30"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c9f6e399045019f484c609e1"
-      ],
-      "legacyRuntimeIds": [
-        "ao-62774"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_68b86add207841292e9a5083"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_26793e7aba61089434a949ff",
-      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450AN",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "model_specific",
-      "groupName": "BBM450AN",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_397c96344f6cc0a38870c820"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_6cc9fc43b1069f007e984b3f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77023"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_35603fcdc485eeb1d361470a"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_04109acc3352e44d4a43e346",
-      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family 186d7fac41a1",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_02017fe7fb350979fe8f6b83"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c3c9af1bd826cac06e40e0d0"
-      ],
-      "legacyRuntimeIds": [
-        "ao-64576"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b39f6e10698794ee503b7dea"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_bb4b06d67df95204f576a1bc",
-      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
-      "category": "fridge",
-      "brand": "Beko",
-      "model": "BBM450X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family 186d7fac41a1",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_40f7cd31818edb5eba21eea9"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_75dd12a645eecd3a896c8c36"
-      ],
-      "legacyRuntimeIds": [
-        "ao-64577"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_665a83ea5766c87c5979503b"
       ],
       "offlineReplayOutcome": null
     },
@@ -190826,19 +190702,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_02017fe7fb350979fe8f6b83",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/9/e/4/79e44f561070df6f1eaab936f51ac7eb263b8a46_BBM450W_Beko_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/BBM450W.json",
-        "source:doc_ee1ea71781c6fc53161f610c"
-      ],
-      "referenceIds": [
-        "fa_ref_5d9c9308366cdb732b45c3e4"
-      ]
-    },
-    {
       "sourceId": "historical_source_0216e83b9006ecb9916149b9",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/c/2/9fc25506f4d15d068c59be215afbfc97b153ea77_WTB5404SBL_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -194917,19 +194780,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_397c96344f6cc0a38870c820",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/e/9/a/6e9a7ed5d00abe4734c6a64ea5bdf0b26e98ebf3_BBM450AN_Beko_Datasheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/BBM450AN.json",
-        "source:doc_e42110e34bceb406d69fd1e8"
-      ],
-      "referenceIds": [
-        "fa_ref_e7c750eec07123ddab4bf1c2"
-      ]
-    },
-    {
       "sourceId": "historical_source_398b3878237526cac00b0d16",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/9/4/3/99439fe1ce8808ae7850da5d30683edd4464bd6f_CSH379NBSR_CHiQ_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -195327,19 +195177,6 @@
       ],
       "referenceIds": [
         "fa_ref_2b44167ef128f7c87589e8d1"
-      ]
-    },
-    {
-      "sourceId": "historical_source_40f7cd31818edb5eba21eea9",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/b/9/4/9/b949cefd6ba079d219f1bfd76fc00c1afc90c1b4_BBM450X_Beko_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/BBM450X.json",
-        "source:doc_816d2f116fb46060ee3146c8"
-      ],
-      "referenceIds": [
-        "fa_ref_3322d559457e84b6604aab9b"
       ]
     },
     {
@@ -207697,19 +207534,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_f0ea3e9941ded62464f23b30",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/b/0/2/3b02ed85cb37953ec4aa30d9086ae5f174fa09a8_Beko_BBM407PX_407L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/BBM407PX.json",
-        "source:doc_981411b5729b38ffb9096efc"
-      ],
-      "referenceIds": [
-        "fa_ref_47f004bedf8b147dfdc9567c"
-      ]
-    },
-    {
       "sourceId": "historical_source_f0f74ee6209bad1e453ea3c4",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf26f4376/QRG/AU/QRG-AU-92275.pdf",
       "sourceAuthority": "NONE",
@@ -208657,46 +208481,46 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 364,
+    "COMPLETE_RECEIPT": 368,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8093,
-    "queuedModels": 7729,
-    "uniqueReferences": 7729,
-    "candidateSources": 1378,
-    "candidateEdges": 1413,
+    "queuedModels": 7725,
+    "uniqueReferences": 7725,
+    "candidateSources": 1374,
+    "candidateEdges": 1409,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1091,
+      "CURRENT_RETAIL": 1087,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1265,
       "dryer": 801,
-      "fridge": 4215,
+      "fridge": 4211,
       "washing_machine": 1448
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1095
+      "REFERENCE_REDISCOVERY": 1091
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1095
+      "OFFICIAL_REDISCOVERY": 1091
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5064,
+      "DISCOVERY_READY": 5060,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 364,
+      "COMPLETE_RECEIPT": 368,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

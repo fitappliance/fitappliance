@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T00:41:27.426Z",
+  "generatedAt": "2026-07-17T01:24:54.730Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "dd3e4587b23068c5bbdd7704e9a349529fa5f6922f1221b8ef6a5ca04c5e8bdb",
+  "semanticClassificationSha256": "c281fbf255317106e834b2e5ba58cee76da9eec6f9183bee716eb20c6b89ba5c",
   "summary": {
     "records": 8093,
     "uniqueReferenceIds": 8093,
-    "documentLinks": 4343,
+    "documentLinks": 4347,
     "modelsWithDocumentLinks": 1768,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,24 +21,24 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 364,
+      "COMPLETE_RECEIPT": 368,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1095
+      "REFERENCE_REDISCOVERY": 1091
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
-      "NO_ACTION": 364,
-      "REDISCOVER_OFFICIAL_SOURCE": 1095,
+      "NO_ACTION": 368,
+      "REDISCOVER_OFFICIAL_SOURCE": 1091,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 135
     },
     "bySourceAuthority": {
-      "MIXED": 208,
+      "MIXED": 212,
       "NONE": 6611,
       "OFFICIAL": 162,
-      "REFERENCE": 1112
+      "REFERENCE": 1108
     },
     "byIdentityScope": {
       "AMBIGUOUS": 172,
@@ -47,8 +47,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 86,
-      "ALL_AXIS_SCALAR": 415,
-      "NOT_PARSED": 7498,
+      "ALL_AXIS_SCALAR": 419,
+      "NOT_PARSED": 7494,
       "PARSER_GAP": 94
     },
     "byConflictState": {
@@ -58,8 +58,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 364,
-      "LEGACY_UNBOUND": 1404,
+      "CURRENT_VALID": 368,
+      "LEGACY_UNBOUND": 1400,
       "NONE": 6325
     }
   },
@@ -94,13 +94,13 @@
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2305,
+      "documentLinks": 2309,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 121,
+        "COMPLETE_RECEIPT": 125,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 84,
         "OFFICIAL_DISCOVERY": 3405,
-        "REFERENCE_REDISCOVERY": 678
+        "REFERENCE_REDISCOVERY": 674
       }
     },
     {
@@ -90317,14 +90317,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "model_specific",
       "groupName": "BBM407PX",
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -90347,6 +90348,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/f0/07/f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3.html",
+            "receipt:593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3"
+        },
+        {
           "documentId": "source:doc_981411b5729b38ffb9096efc",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/3/b/0/2/3b02ed85cb37953ec4aa30d9086ae5f174fa09a8_Beko_BBM407PX_407L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -90362,8 +90381,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Beko"
@@ -90386,14 +90405,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "model_specific",
       "groupName": "BBM450AN",
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -90416,6 +90436,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/ea/88/ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27.html",
+            "receipt:48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27"
+        },
+        {
           "documentId": "source:doc_e42110e34bceb406d69fd1e8",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/e/9/a/6e9a7ed5d00abe4734c6a64ea5bdf0b26e98ebf3_BBM450AN_Beko_Datasheet.pdf",
           "evidenceObjectIds": [
@@ -90431,8 +90469,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Beko"
@@ -90455,14 +90493,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 186d7fac41a1",
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -90485,6 +90524,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/f8/23/f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb.html",
+            "receipt:6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb"
+        },
+        {
           "documentId": "source:doc_ee1ea71781c6fc53161f610c",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/7/9/e/4/79e44f561070df6f1eaab936f51ac7eb263b8a46_BBM450W_Beko_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -90500,8 +90557,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Beko"
@@ -90524,14 +90581,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 186d7fac41a1",
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -90554,6 +90612,24 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/d4/c3/d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e.html",
+            "receipt:2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e"
+        },
+        {
           "documentId": "source:doc_816d2f116fb46060ee3146c8",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/b/9/4/9/b949cefd6ba079d219f1bfd76fc00c1afc90c1b4_BBM450X_Beko_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -90569,8 +90645,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Beko"

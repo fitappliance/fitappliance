@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-17T00:31:24.168Z",
+  "generatedAt": "2026-07-17T01:24:05.671Z",
   "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
   "entries": [
     {
@@ -36087,6 +36087,213 @@
       }
     },
     {
+      "targetId": "recovery_target_6cc9fc43b1069f007e984b3f",
+      "referenceId": "fa_ref_e7c750eec07123ddab4bf1c2",
+      "legacyRuntimeId": "ao-77023",
+      "canonicalProductId": "fa_prod_35603fcdc485eeb1d361470a",
+      "brand": "Beko",
+      "model": "BBM450AN",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "auditSha256": "2ff374ea408130d474113eab0d616b20d6654be7aabb01c1afb4ab6e05528b17",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+          "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T01:23:32.723Z",
+          "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
+          "objectPath": "evidence/web/sha256/ea/88/ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27.html",
+          "contentType": "text/html",
+          "byteSize": 791976,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Beko",
+            "model": "BBM450AN",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 700
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1720
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 705
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an"
+            },
+            {
+              "type": "document_title",
+              "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM450AN | BEKO"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "BBM450AN"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T01:23:32.723Z",
+            "bindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 700,
+            "heightMm": {
+              "minimumMm": 1720,
+              "maximumMm": 1720
+            },
+            "depthMm": 705
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+            "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
+            "receiptBindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+            "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
+            "receiptBindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
+            "contentSha256": "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27",
+            "receiptBindingSha256": "48b548d59b3d85de2a23e91a9fb9e5dc3d877b083ed6eb81e5ed275f57b3a0ab",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_e42110e34bceb406d69fd1e8",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm",
+              "widthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 704,
+              "heightMm": 1720,
+              "depthMm": 701
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_6de2c5a7ba4994b08699a478",
       "referenceId": "fa_ref_7d285e9c168e13cd0922c846",
       "legacyRuntimeId": "ao-141853",
@@ -38556,6 +38763,213 @@
         "activeSourceHashes": [
           "36ad2fa97f1890466cc82241b5695a2ff6cfa385d05963da95764015fe99a6fc"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_75dd12a645eecd3a896c8c36",
+      "referenceId": "fa_ref_3322d559457e84b6604aab9b",
+      "legacyRuntimeId": "ao-64577",
+      "canonicalProductId": "fa_prod_665a83ea5766c87c5979503b",
+      "brand": "Beko",
+      "model": "BBM450X",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "auditSha256": "2ff374ea408130d474113eab0d616b20d6654be7aabb01c1afb4ab6e05528b17",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+          "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T01:23:29.302Z",
+          "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
+          "objectPath": "evidence/web/sha256/d4/c3/d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e.html",
+          "contentType": "text/html",
+          "byteSize": 791908,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Beko",
+            "model": "BBM450X",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 700
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1720
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 705
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x"
+            },
+            {
+              "type": "document_title",
+              "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM450X | BEKO"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "BBM450X"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T01:23:29.302Z",
+            "bindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 700,
+            "heightMm": {
+              "minimumMm": 1720,
+              "maximumMm": 1720
+            },
+            "depthMm": 705
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+            "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
+            "receiptBindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+            "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
+            "receiptBindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450x",
+            "contentSha256": "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e",
+            "receiptBindingSha256": "2fb1a5a2d960591ca81bcfbd7ce3aaf93b1cee2222817bed35740951123f4704",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "d4c38ac4e1beb8fb27f55a2e49a6d9461f7e7be3d34149dcdc075b485b4cb76e"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_816d2f116fb46060ee3146c8",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm",
+              "widthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 704,
+              "heightMm": 1720,
+              "depthMm": 701
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
       }
     },
     {
@@ -63468,6 +63882,213 @@
       }
     },
     {
+      "targetId": "recovery_target_c3c9af1bd826cac06e40e0d0",
+      "referenceId": "fa_ref_5d9c9308366cdb732b45c3e4",
+      "legacyRuntimeId": "ao-64576",
+      "canonicalProductId": "fa_prod_b39f6e10698794ee503b7dea",
+      "brand": "Beko",
+      "model": "BBM450W",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "auditSha256": "2ff374ea408130d474113eab0d616b20d6654be7aabb01c1afb4ab6e05528b17",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+          "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T01:23:30.450Z",
+          "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
+          "objectPath": "evidence/web/sha256/f8/23/f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb.html",
+          "contentType": "text/html",
+          "byteSize": 791855,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Beko",
+            "model": "BBM450W",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 700
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1720
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 705
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w"
+            },
+            {
+              "type": "document_title",
+              "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM450W | BEKO"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "BBM450W"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T01:23:30.450Z",
+            "bindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 700,
+            "heightMm": {
+              "minimumMm": 1720,
+              "maximumMm": 1720
+            },
+            "depthMm": 705
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+            "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
+            "receiptBindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+            "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
+            "receiptBindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450w",
+            "contentSha256": "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb",
+            "receiptBindingSha256": "6dfb2d67b7f6945f74a4f74d14ff27f9cdc30af106586e48e45b6715214a9fc2",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "f823476c0b1c2e5255aaa6f0294e6b8cb12c5cc813e8ddde3cc892b5f9e28ccb"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_ee1ea71781c6fc53161f610c",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm",
+              "widthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 704,
+              "heightMm": 1720,
+              "depthMm": 701
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_c4295ee36eb7c14ebebe7c87",
       "referenceId": "fa_ref_17961db2e0780daa439c2111",
       "legacyRuntimeId": "ao-72964",
@@ -67643,6 +68264,212 @@
         "supersessionViolations": [],
         "axisPermutationResolution": null,
         "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_c9f6e399045019f484c609e1",
+      "referenceId": "fa_ref_47f004bedf8b147dfdc9567c",
+      "legacyRuntimeId": "ao-62774",
+      "canonicalProductId": "fa_prod_68b86add207841292e9a5083",
+      "brand": "Beko",
+      "model": "BBM407PX",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "auditSha256": "2ff374ea408130d474113eab0d616b20d6654be7aabb01c1afb4ab6e05528b17",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+          "finalUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-17T01:23:35.771Z",
+          "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
+          "objectPath": "evidence/web/sha256/f0/07/f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3.html",
+          "contentType": "text/html",
+          "byteSize": 782801,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Beko",
+            "model": "BBM407PX",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 700
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1720
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 670
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": null,
+              "fragmentSha256": null,
+              "bbox": null
+            }
+          ],
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px"
+            },
+            {
+              "type": "document_title",
+              "value": "Fridge Freezer (Freezer Bottom, 70 cm) | BBM407PX | BEKO"
+            },
+            {
+              "type": "structured_product_model",
+              "value": "BBM407PX"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.4",
+            "verifiedAt": "2026-07-17T01:23:35.771Z",
+            "bindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 700,
+            "heightMm": {
+              "minimumMm": 1720,
+              "maximumMm": 1720
+            },
+            "depthMm": 670
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+            "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
+            "receiptBindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+            "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
+            "receiptBindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm407px",
+            "contentSha256": "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3",
+            "receiptBindingSha256": "593f47713437f98b2f354ed2ad30680870edac4d6cb52bead9fe5ff30398414b",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "f00756f6d73297750dda00de27497f0346b8cbfb7d55a43767c4ef8e804edbd3"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_981411b5729b38ffb9096efc",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 700,
+              "heightMm": 1720,
+              "depthMm": 660
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
         "conflictReason": null
       }
     },
@@ -84436,6 +85263,13 @@
       "auditSha256": "8278b3c7a2e5564ea7afc28656d1dcd0d84bad1a604070cddcf1e797406d779d"
     },
     {
+      "batchId": "historical-recovery-12201ca08dca2c1cf54d2e52-slice-9692ff5b588d",
+      "batchSha256": "ded85124421e84567c1a2b65a3054dcb68c1e3d81ab7ef8e11c4a02937bdeb6b",
+      "queueSha256": "e2891a90f3505c39339812fbcc0a9f483f247b053e9790913671f9882a8e666e",
+      "resultsSha256": "5dc6f20718364b98c4580684e9115216deb8329c74b01dd56de422b7c9ce0551",
+      "auditSha256": "9cc9d3ba9e68ddcb4a02ca8cf61b391e7c84d9009311e142f32d52e62289fa91"
+    },
+    {
       "batchId": "historical-recovery-1276a0867158e1900325f1e6-slice-9c03b84f7a50",
       "batchSha256": "f44ab460e72de05a2e667ddb1ac4b783f7636610470391f0b851fbef4dfbbb0b",
       "queueSha256": "e006d4be31b04102851035be7c79e0126602f28a6a6fe9a9bd620c60d5648a6f",
@@ -85008,6 +85842,13 @@
       "queueSha256": "b5abab4c395da8fee9e9c00511c0e9d40f600c469710e833490e24008d91092d",
       "resultsSha256": "d8a12de96b26a08d5294304815439fff83a8f088b70f4300ab9e65f10343bac7",
       "auditSha256": "f4f66fcd31120a5ac80e8b1a44870a4203cf7d676d77eb1ee273aaf3df1e4eb7"
+    },
+    {
+      "batchId": "historical-recovery-fa0be55c7f2157bab264f566-slice-abe3ec4d1b69",
+      "batchSha256": "77bbc8320adb9d08195d514f4efb5f4d26018852b25c7210f66dc22f8fb5f873",
+      "queueSha256": "5343e1075c850c881166a4a0ba27a56c8250ffcf5b64e29861884764f5a78a4e",
+      "resultsSha256": "ba161643f677d5cc4b92c02dbc623544a6c8b61e14ce8deae727a08cabcbd5f1",
+      "auditSha256": "2ff374ea408130d474113eab0d616b20d6654be7aabb01c1afb4ab6e05528b17"
     },
     {
       "batchId": "historical-recovery-fa5580fe91293ea84fd8690f-slice-d1a3310f83aa",
