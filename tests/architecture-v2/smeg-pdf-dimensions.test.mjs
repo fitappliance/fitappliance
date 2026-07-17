@@ -4,7 +4,9 @@ import test from 'node:test';
 import {
   extractSmegAuDishwasherFixedTableSizeRows,
   extractSmegAuDishwasherFixedSuffixPermutationRows,
+  extractSmegAuDishwasherParentheticalHeightMaxRows,
   extractSmegAuDishwasherSizeRows,
+  SMEG_AU_DISHWASHER_PARENTHETICAL_HEIGHT_MAX_GRAMMAR,
   SMEG_AU_DISHWASHER_SUFFIX_FIXED_GRAMMAR,
   SMEG_AU_DISHWASHER_SUFFIX_PERMUTATION_GRAMMAR,
   SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
@@ -95,4 +97,30 @@ test('fixed Smeg permutation grammar rejects legacy W-H-D and qualified dimensio
     'size 598mmW x 928mmH max x 550mmD (excluding door)',
     'size 598mmW x 858mmH (928mmH max) x 570mmD',
   ]) assert.equal(extractSmegAuDishwasherFixedSuffixPermutationRows(expression), null, expression);
+});
+
+test('extracts a strict Smeg parenthetical maximum as an adjustable height range', () => {
+  const rows = extractSmegAuDishwasherParentheticalHeightMaxRows(
+    'size 598mmW x 858mmH (928mmH max) x 570mmD',
+  );
+  assert.deepEqual(rows.map((row) => [row.label, row.value]), [
+    ['Width', '598 mm'],
+    ['Height', '858-928 mm'],
+    ['Depth', '570 mm'],
+  ]);
+  assert.ok(rows.every((row) => (
+    row.grammarProfileId === SMEG_AU_DISHWASHER_PARENTHETICAL_HEIGHT_MAX_GRAMMAR
+  )));
+});
+
+test('parenthetical Smeg height grammar rejects missing semantics and unsafe qualifiers', () => {
+  for (const expression of [
+    'Package size 598mmW x 858mmH (928mmH max) x 570mmD',
+    'size 598mmW x 858mmH (928mmH) x 570mmD',
+    'size 598mmW x 858mmH (928mmH min) x 570mmD',
+    'size 598mmW x 928mmH (858mmH max) x 570mmD',
+    'size 598mmW x 858mmH (858mmH max) x 570mmD',
+    'size 598mmW x 858mmH (928mmD max) x 570mmD',
+    'size 598mmW x 858mmH (928mmH max) x 570mmD excluding handle',
+  ]) assert.equal(extractSmegAuDishwasherParentheticalHeightMaxRows(expression), null, expression);
 });

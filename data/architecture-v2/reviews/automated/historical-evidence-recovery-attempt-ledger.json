@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-17T02:45:02.304Z",
+  "generatedAt": "2026-07-17T03:04:37.609Z",
   "processorEpochMigration": {
     "migratedAt": "2026-07-17T01:44:09.981Z",
     "migratedEntries": 3,
@@ -11310,6 +11310,24 @@
       "resolvedAt": "2026-07-15T23:14:57.600Z"
     },
     {
+      "resolutionId": "historical_resolution_18e5257b576e3f57cd303fce",
+      "attemptId": "historical_attempt_e63dd0423c16512679e5e57c",
+      "targetId": "recovery_target_a3f8855d04740001cebb0a2f",
+      "referenceId": "fa_ref_bc43393df15f3e85ef9beba9",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI315XT.pdf",
+      "contentSha256": "15cbab085d6d6d34779d2c2428088d71f82ed4ab0b228a8320310acdd4f640e1",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "1cbb3ac72457d496ab4469b9be617183ee660ed03f3db2d5de3bad5ed12fba59",
+      "semanticOutcomeSha256": "c7fd535d46b17ff2163d40dbfd7bd9203b7dea50bb630ced67026eb3aafa6c07",
+      "batchId": "historical-recovery-4fa9a050497310f595dd02a7-slice-2cd63b2e3b12",
+      "batchSha256": "c2a92e6f514861db50d3c81e9ac14e945a1eb00a1e35e0d874ab0d421511847a",
+      "runId": "historical-smeg-dishwasher-20260717-aj1",
+      "resultsSha256": "81381f7d02aefb1b870b34c1815ffd9510baf3b8f7ec0484d72dcdc324b71a9e",
+      "auditSha256": "22ebeed5b8cc3857e81290838f01f5646c02023f764f69ca7b2ed1f285d58454",
+      "resolvedAt": "2026-07-17T03:03:53.888Z"
+    },
+    {
       "resolutionId": "historical_resolution_25df327ab927cf442e52bc56",
       "attemptId": "historical_attempt_9258f034fdf7c6e7a358d6db",
       "targetId": "recovery_target_7c3a83dcf408d47f54f4f2c0",
@@ -12524,6 +12542,23 @@
       "resultsSha256": "6e2bd69d63e3370c167ff4f5775fdaf76183150314068aa5291544daf6d38788",
       "auditSha256": "2a982f450b5baa6e5de6242a88ad63d8e8737b9bc78bdb9d58ee79d3c3b0c49a",
       "acceptedAt": "2026-07-16T19:37:00.303Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_2768a573099e263780fd7426",
+      "targetId": "recovery_target_a3f8855d04740001cebb0a2f",
+      "referenceId": "fa_ref_bc43393df15f3e85ef9beba9",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI315XT.pdf",
+      "contentSha256": "15cbab085d6d6d34779d2c2428088d71f82ed4ab0b228a8320310acdd4f640e1",
+      "status": "accepted",
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "1cbb3ac72457d496ab4469b9be617183ee660ed03f3db2d5de3bad5ed12fba59",
+      "semanticOutcomeSha256": "c7fd535d46b17ff2163d40dbfd7bd9203b7dea50bb630ced67026eb3aafa6c07",
+      "batchId": "historical-recovery-4fa9a050497310f595dd02a7-slice-2cd63b2e3b12",
+      "batchSha256": "c2a92e6f514861db50d3c81e9ac14e945a1eb00a1e35e0d874ab0d421511847a",
+      "runId": "historical-smeg-dishwasher-20260717-aj1",
+      "resultsSha256": "81381f7d02aefb1b870b34c1815ffd9510baf3b8f7ec0484d72dcdc324b71a9e",
+      "auditSha256": "22ebeed5b8cc3857e81290838f01f5646c02023f764f69ca7b2ed1f285d58454",
+      "acceptedAt": "2026-07-17T03:03:53.888Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_28bf711f20f1bd0151390ccb",
@@ -20210,10 +20245,10 @@
   ],
   "summary": {
     "entries": 386,
-    "resolutions": 26,
-    "sourceAcceptances": 266,
-    "suppressions": 300,
-    "resolvedSuppressions": 23,
+    "resolutions": 27,
+    "sourceAcceptances": 267,
+    "suppressions": 299,
+    "resolvedSuppressions": 24,
     "retryable": 63,
     "targetAttempts": 77,
     "resolverOnlySuppressions": 77,

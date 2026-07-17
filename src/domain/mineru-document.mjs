@@ -16,7 +16,9 @@ import {
 import {
   extractSmegAuDishwasherFixedTableSizeRows,
   extractSmegAuDishwasherFixedSuffixPermutationRows,
+  extractSmegAuDishwasherParentheticalHeightMaxRows,
   extractSmegAuDishwasherSizeRows,
+  SMEG_AU_DISHWASHER_PARENTHETICAL_HEIGHT_MAX_GRAMMAR,
   SMEG_AU_DISHWASHER_SUFFIX_FIXED_GRAMMAR,
   SMEG_AU_DISHWASHER_SUFFIX_PERMUTATION_GRAMMAR,
   SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
@@ -725,6 +727,12 @@ function paragraphRows(text) {
     value: `${suffixed[1]} x ${suffixed[3]} x ${suffixed[4]} ${suffixed[2]}`,
     quote: normalizedText(text),
   }] : [];
+}
+
+function smegAuDishwasherParagraphRows(text) {
+  return extractSmegAuDishwasherSizeRows(text)
+    ?? extractSmegAuDishwasherParentheticalHeightMaxRows(text)
+    ?? extractSmegAuDishwasherFixedSuffixPermutationRows(text);
 }
 
 function smegAuDishwasherTableRows(fragment) {
@@ -3136,6 +3144,17 @@ export const mineruGrammarProfiles = Object.freeze({
     detectionSummary: 'An exact-model Smeg Australia Techspec PDF contains one fully anchored Size or dimensions expression whose three positive integer millimetre values carry unique axis suffixes in explicit W/D/H or H/W/D order.',
     semanticBoundary: 'Only the closed fixed envelope is projected. The established W/H/D grammar remains on its existing parser path; packaging, installation, cavity, ranges, duplicate axes, parentheses, qualifiers and trailing text are excluded.',
   }),
+  [SMEG_AU_DISHWASHER_PARENTHETICAL_HEIGHT_MAX_GRAMMAR]: Object.freeze({
+    parserProfileId: SMEG_AU_DISHWASHER_PARENTHETICAL_HEIGHT_MAX_GRAMMAR,
+    grammarFamilyId: 'smeg_au_dishwasher_techspec_dimensions_v1',
+    grammarFamilyName: 'Smeg Australia dishwasher technical specification',
+    variantName: 'Size values with repeated H suffix and a parenthetical explicit maximum',
+    brand: 'Smeg',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model Smeg Australia Techspec PDF contains one fully anchored Size expression in W/H/Hmax/D order. Width and depth are unique positive integer millimetre values, while the repeated H suffix is accepted only when the parenthetical value is explicitly marked max and is greater than the first height.',
+    semanticBoundary: 'The complete increasing height range is preserved while width and depth remain fixed. Packaging, missing or non-height max semantics, reversed or equal heights, qualifiers and trailing text are excluded.',
+  }),
   [BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR]: Object.freeze({
     parserProfileId: BOSCH_AU_DISHWASHER_SHORTHAND_HWD_GRAMMAR,
     grammarFamilyId: 'bosch_au_dishwasher_product_dimensions_v1',
@@ -4212,16 +4231,20 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       ))
       || (pageScoped && ['paragraph', 'text', 'list', 'index'].includes(item.type))
       || (documentScoped && ['paragraph', 'text'].includes(item.type)
-        && paragraphRows(item.text).some((row) => (
-          /\b(?:dimensions?|size)\b/i.test(row.label) && (
-            explicitSequence(row.label, {
-              w: 'width', width: 'width', h: 'height', height: 'height', d: 'depth', depth: 'depth',
-            }, 3)
-            || (boschDimensionSectionScope && dimensionClaims(
-              row, item, pageIndex + 1, fields, category,
-            ).length > 0)
-          )
-        )))
+        && (
+          paragraphRows(item.text).some((row) => (
+            /\b(?:dimensions?|size)\b/i.test(row.label) && (
+              explicitSequence(row.label, {
+                w: 'width', width: 'width', h: 'height', height: 'height', d: 'depth', depth: 'depth',
+              }, 3)
+              || (boschDimensionSectionScope && dimensionClaims(
+                row, item, pageIndex + 1, fields, category,
+              ).length > 0)
+            )
+          ))
+          || (canonicalModel(caseIdentity?.brand) === 'SMEG' && category === 'dishwasher'
+            && smegAuDishwasherParagraphRows(item.text))
+        ))
       || joinedParagraphRowsByFragment.has(item)
       || joinedScalarRowsByFragment.has(item)
       || documentDimensionSectionRowsByFragment.has(item)
@@ -4322,9 +4345,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
             : documentDimensionSectionRowsByFragment.has(fragment)
               ? documentDimensionSectionRowsByFragment.get(fragment)
           : canonicalModel(caseIdentity?.brand) === 'SMEG' && category === 'dishwasher'
-            ? (extractSmegAuDishwasherSizeRows(fragment.text)
-              ?? extractSmegAuDishwasherFixedSuffixPermutationRows(fragment.text)
-              ?? paragraphRows(fragment.text))
+            ? (smegAuDishwasherParagraphRows(fragment.text) ?? paragraphRows(fragment.text))
             : paragraphRows(fragment.text);
       }
       if (canonicalModel(caseIdentity?.brand) === 'BOSCH' && category === 'dishwasher') {

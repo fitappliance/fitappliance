@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T02:45:02.304Z",
-  "sourceBundleSha256": "ba470313c35c16385dd7b8af798f3ec2f5d33e609d9bdc1c883a8e282c19d4c7",
+  "generatedAt": "2026-07-17T03:04:37.609Z",
+  "sourceBundleSha256": "5112fcdebf31023486d33346e447478d2fc1dc1b31e54af134a5468da3eebc72",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -3434,6 +3434,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_a3f8855d04740001cebb0a2f",
+      "referenceId": "fa_ref_bc43393df15f3e85ef9beba9",
+      "brand": "Smeg",
+      "model": "DWAI315XT",
+      "category": "dishwasher",
+      "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI315XT.pdf",
+      "sourcePdfSha256": "15cbab085d6d6d34779d2c2428088d71f82ed4ab0b228a8320310acdd4f640e1",
+      "contentSha256": "15cbab085d6d6d34779d2c2428088d71f82ed4ab0b228a8320310acdd4f640e1",
+      "receiptBindingSha256": "439e4cfaf1a8aeca927e0c04680768d04d733057bbeb5301bee78b8909481506",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/70/b8/70b82dc26142c3a572a3d5d0f206dde113d51835ef7d3e50da2b847a94ce0dfc.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_a4d0bec07c2e3e47463bc24c",
       "referenceId": "fa_ref_aadd3635eb4b4dd65bcc27b8",
       "brand": "Fisher & Paykel",
@@ -5409,11 +5423,11 @@
     }
   ],
   "summary": {
-    "entries": 361,
-    "sources": 386,
-    "passed": 386,
+    "entries": 362,
+    "sources": 387,
+    "passed": 387,
     "failed": 0
   },
-  "checkedObjects": 749,
-  "semanticAuditSha256": "c53faa2bade213f75220a36db5834167e9e874c6f9a4628d1a01d8eda49b7367"
+  "checkedObjects": 751,
+  "semanticAuditSha256": "c336f60fde29d6cdb3aeda9ea91e17ab502ae86027e55186c8b47d6e0e941f37"
 }

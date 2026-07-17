@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T02:46:25.630Z",
-  "semanticQueueSha256": "078b1574617f31d32ff01fbf63912be9bf0f375437d5c473571e9babcdfffdb4",
-  "sourceClassificationSha256": "1b6825651c0687b68368e304cc17c02091d9626f6ce386fb1aaebcb478736058",
+  "generatedAt": "2026-07-17T03:05:50.351Z",
+  "semanticQueueSha256": "9d153b74ef6a7368eafcd7eb75b6b3df80e1d77f979c51b36d86a5f8cae54387",
+  "sourceClassificationSha256": "a937b8c672bdb34be2f47576f1e4aea271c891a21b2c92c290ddbd98a751a70d",
   "records": [
     {
       "schemaVersion": 1,
@@ -5196,37 +5196,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_be6067a45c20c7d5ef6f3d31"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e045e45d378016cb3b9be692",
-      "referenceId": "fa_ref_bc43393df15f3e85ef9beba9",
-      "category": "dishwasher",
-      "brand": "Smeg",
-      "model": "DWAI315XT",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "model_specific",
-      "groupName": "DWAI315XT",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_b479507cded1e1280cd2314b"
-      ],
-      "resolverIds": [
-        "architecture-v2-core-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a3f8855d04740001cebb0a2f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-34099"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_797bd66fbcf1c7f1593b3726"
       ],
       "offlineReplayOutcome": null
     },
@@ -203001,19 +202970,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_b479507cded1e1280cd2314b",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/6/9/d/669df6f6974fee501f970281f912b3759a51e6f1_Smeg_Dishwasher_DWAI315XT_Product_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DWAI315XT.json",
-        "source:doc_cfecf4624f0d5fd394057107"
-      ],
-      "referenceIds": [
-        "fa_ref_bc43393df15f3e85ef9beba9"
-      ]
-    },
-    {
       "sourceId": "historical_source_b47b92e29e6e8bcb5d8ddc74",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/5/0/aa50e9e05e48c4d1644a291b039c250b0c82647a_ILREF256I_ILVE_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -207953,23 +207909,23 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 380,
+    "COMPLETE_RECEIPT": 381,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8093,
-    "queuedModels": 7713,
-    "uniqueReferences": 7713,
-    "candidateSources": 1362,
-    "candidateEdges": 1397,
+    "queuedModels": 7712,
+    "uniqueReferences": 7712,
+    "candidateSources": 1361,
+    "candidateEdges": 1396,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1075,
+      "CURRENT_RETAIL": 1074,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1253,
+      "dishwasher": 1252,
       "dryer": 801,
       "fridge": 4211,
       "washing_machine": 1448
@@ -207978,21 +207934,21 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1079
+      "REFERENCE_REDISCOVERY": 1078
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1079
+      "OFFICIAL_REDISCOVERY": 1078
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5048,
+      "DISCOVERY_READY": 5047,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 380,
+      "COMPLETE_RECEIPT": 381,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

@@ -506,6 +506,35 @@ test('knowledge documents strict Smeg fixed suffix axis permutations', () => {
   assert.match(markdown, /parentheses, qualifiers and trailing text are excluded/i);
 });
 
+test('knowledge documents the strict Smeg parenthetical maximum height grammar', () => {
+  const knowledge = buildDimensionExpressionKnowledge({
+    generatedAt: '2026-07-17T00:00:00.000Z',
+    historicalRecords: [
+      { category: 'dishwasher', brand: 'Smeg', model: 'DWAI315XT' },
+    ],
+    documents: [{
+      pdfSha256: '4'.repeat(64), contentSha256: '5'.repeat(64),
+      parserVersion: '3.4.4', modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+      sourceUrls: ['https://sys.smeg.com.au/Product/Techspecs/DWAI315XT.pdf'],
+      identities: [{ category: 'dishwasher', brand: 'Smeg', model: 'DWAI315XT' }],
+      contentList: [[
+        textBlock('title', 'DWAI315XT SMEG SEMI-INTEGRATED DISHWASHER, TALL TANK'),
+        paragraph('size 598mmW x 858mmH (928mmH max) x 570mmD'),
+      ]],
+    }],
+  });
+  const family = knowledge.categories.find((row) => row.category === 'dishwasher')
+    .brands[0].families[0];
+
+  assert.deepEqual(family.parserProfileIds, [
+    'smeg-au-dishwasher-size-whd-parenthetical-height-max-v1',
+  ]);
+  assert.equal(family.completeParserReplay, true);
+  const markdown = renderDimensionExpressionKnowledgeMarkdown(knowledge);
+  assert.match(markdown, /repeated H suffix and a parenthetical explicit maximum/i);
+  assert.match(markdown, /complete increasing height range is preserved/i);
+});
+
 test('lettered explicit axes are distinct from unlabelled dimension triples', () => {
   const result = extractDimensionExpressions({
     pdfSha256: 'd'.repeat(64),

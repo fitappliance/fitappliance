@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
-    "historical-recovery:historical-recovery-cumulative-v1": "ba470313c35c16385dd7b8af798f3ec2f5d33e609d9bdc1c883a8e282c19d4c7"
+    "historical-recovery:historical-recovery-cumulative-v1": "5112fcdebf31023486d33346e447478d2fc1dc1b31e54af134a5468da3eebc72"
   },
   "records": [
     {
@@ -52581,6 +52581,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3c5451f45bf2df80d8d80d4a7ec3e8eb2a53ec90d122a0628d14d098258f16dd",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a3f8855d04740001cebb0a2f",
+          "snapshotSha256": "15cbab085d6d6d34779d2c2428088d71f82ed4ab0b228a8320310acdd4f640e1",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -52590,7 +52597,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a3f8855d04740001cebb0a2f",
+          "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAI315XT.pdf",
+          "contentSha256": "15cbab085d6d6d34779d2c2428088d71f82ed4ab0b228a8320310acdd4f640e1",
+          "receiptBindingSha256": "439e4cfaf1a8aeca927e0c04680768d04d733057bbeb5301bee78b8909481506",
+          "verifiedAt": "2026-07-17T03:03:53.841Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "28294c73175a9de4f208fdb8f3f1938244389648861384c004da05e64145a855"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "28294c73175a9de4f208fdb8f3f1938244389648861384c004da05e64145a855"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "28294c73175a9de4f208fdb8f3f1938244389648861384c004da05e64145a855"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/15/cb/15cbab085d6d6d34779d2c2428088d71f82ed4ab0b228a8320310acdd4f640e1.pdf"
+        }
       ]
     },
     {

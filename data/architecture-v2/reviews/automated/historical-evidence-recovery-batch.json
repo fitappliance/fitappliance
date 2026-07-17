@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-1b1d1cddb38dc5fde97ec2a6",
-  "generatedAt": "2026-07-17T02:46:25.630Z",
+  "batchId": "historical-recovery-dba3ecf4d91126fd630ba193",
+  "generatedAt": "2026-07-17T03:05:50.351Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "e8985f2190eeae6772ef5da934a6e0c1d6989d40b1826135b2990cac5f8c37e2"
+    "sha256": "3d42c86a049ff5095c5e1056175608b0ddec2519491744af1f5903f91575274c"
   },
   "policy": {
     "version": "2026-07-16.19",
@@ -2543,38 +2543,6 @@
               "width": 600,
               "height": 860,
               "depth": 595
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_a3f8855d04740001cebb0a2f",
-      "referenceId": "fa_ref_bc43393df15f3e85ef9beba9",
-      "legacyRuntimeId": "ao-34099",
-      "canonicalProductId": "fa_prod_797bd66fbcf1c7f1593b3726",
-      "brand": "Smeg",
-      "model": "DWAI315XT",
-      "category": "dishwasher",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_cfecf4624f0d5fd394057107",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 858,
-              "depth": 570
             }
           }
         ]
@@ -233205,7 +233173,7 @@
   ],
   "summary": {
     "artifactJobs": 0,
-    "targets": 7595,
+    "targets": 7594,
     "candidateEdges": 0,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0

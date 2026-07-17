@@ -10,6 +10,9 @@ export const SMEG_AU_DISHWASHER_SUFFIX_FIXED_GRAMMAR =
 export const SMEG_AU_DISHWASHER_SUFFIX_PERMUTATION_GRAMMAR =
   'smeg-au-dishwasher-fixed-axis-suffix-permutation-v1';
 
+export const SMEG_AU_DISHWASHER_PARENTHETICAL_HEIGHT_MAX_GRAMMAR =
+  'smeg-au-dishwasher-size-whd-parenthetical-height-max-v1';
+
 function normalizedText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
 }
@@ -104,4 +107,38 @@ export function extractSmegAuDishwasherFixedSuffixPermutationRows(value) {
     value: `${mm} mm`,
     quote: `${labels[axis]} ${mm} mm`,
   }));
+}
+
+export function extractSmegAuDishwasherParentheticalHeightMaxRows(value) {
+  const source = normalizedText(value);
+  const match = /^Size\s+(\d+)\s*mm\s*W\s*[x×]\s*(\d+)\s*mm\s*H\s*\(\s*(\d+)\s*mm\s*H\s+max\s*\)\s*[x×]\s*(\d+)\s*mm\s*D\s*$/i.exec(source);
+  if (!match) return null;
+
+  const [widthMm, minimumHeightMm, maximumHeightMm, depthMm] = match.slice(1).map(Number);
+  if ([widthMm, minimumHeightMm, maximumHeightMm, depthMm].some((number) => (
+    !Number.isInteger(number) || number <= 0
+  )) || minimumHeightMm >= maximumHeightMm) return null;
+
+  const axisOrder = ['width', 'height', 'depth'];
+  const common = {
+    axisOrder,
+    grammarProfileId: SMEG_AU_DISHWASHER_PARENTHETICAL_HEIGHT_MAX_GRAMMAR,
+  };
+  return [{
+    ...common,
+    label: 'Width',
+    value: `${widthMm} mm`,
+    quote: `Width ${widthMm} mm`,
+  }, {
+    ...common,
+    label: 'Height',
+    value: `${minimumHeightMm}-${maximumHeightMm} mm`,
+    quote: `Height ${minimumHeightMm}-${maximumHeightMm} mm`,
+    semanticBasis: 'explicit_label_range',
+  }, {
+    ...common,
+    label: 'Depth',
+    value: `${depthMm} mm`,
+    quote: `Depth ${depthMm} mm`,
+  }];
 }

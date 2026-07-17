@@ -1838,22 +1838,67 @@ test('MinerU parses strict Smeg fixed suffix permutations without reordering axe
   }
 });
 
-test('Smeg fixed suffix permutations reject qualified depth and dual-height expressions', () => {
-  for (const [model, expression] of [
-    ['DWAFI152T', 'size 598mmW x 928mmH max x 550mmD (excluding door)'],
-    ['DWAI315XT', 'size 598mmW x 858mmH (928mmH max) x 570mmD'],
-  ]) {
-    const bytes = Buffer.from(JSON.stringify([[
-      pageHeader(`${model} smeg dishwasher`),
-      paragraph(expression),
-    ]]));
-    assert.throws(() => parseMineruContentListV2(bytes, {
-      pdfSha256, parserVersion: '3.4.4', modelRevision,
-      caseIdentity: { brand: 'Smeg', model, category: 'dishwasher' },
-      claimSemanticsVersion: 2,
-      fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
-    }), /no exact-model MinerU evidence/i, expression);
-  }
+test('MinerU preserves a strict Smeg parenthetical maximum as a height range', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    pageHeader('DWAI315XT smeg dishwasher'),
+    paragraph('size 598mmW x 858mmH (928mmH max) x 570mmD'),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Smeg', model: 'DWAI315XT', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 858, maxMm: 928 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 570 },
+  });
+  assert.deepEqual(parsed.grammarProfileIds, [
+    'smeg-au-dishwasher-size-whd-parenthetical-height-max-v1',
+  ]);
+});
+
+test('MinerU document-scopes a Smeg parenthetical height range through its exact footer and official URL', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    paragraph('size 598mmW x 858mmH (928mmH max) x 570mmD'),
+    {
+      type: 'page_footer',
+      content: { page_footer_content: [{ type: 'text', content: 'Code DWAI315XT' }] },
+      bbox: [796, 966, 956, 982],
+    },
+  ], [
+    pageHeader('DWAI315XT smeg semi-integrated dishwasher, TALL TANK'),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Smeg', model: 'DWAI315XT', category: 'dishwasher' },
+    sourceUrls: ['https://sys.smeg.com.au/Product/Techspecs/DWAI315XT.pdf'],
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 858, maxMm: 928 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 570 },
+  });
+  assert.deepEqual(parsed.grammarProfileIds, [
+    'smeg-au-dishwasher-size-whd-parenthetical-height-max-v1',
+  ]);
+});
+
+test('Smeg fixed suffix parsing keeps excluding-door depth blocked', () => {
+  const expression = 'size 598mmW x 928mmH max x 550mmD (excluding door)';
+  const bytes = Buffer.from(JSON.stringify([[
+    pageHeader('DWAFI152T smeg dishwasher'),
+    paragraph(expression),
+  ]]));
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Smeg', model: 'DWAFI152T', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }), /no exact-model MinerU evidence/i);
 });
 
 test('Smeg suffix-range grammar rejects packaging, non-height ranges, duplicate axes, and trailing prose', () => {

@@ -21,7 +21,7 @@ Generated: 2026-07-12T12:40:00.000Z
 | Mapped MinerU documents | 867 |
 | Unmapped MinerU documents | 33 |
 | Dimension-expression observations | 1135 |
-| Reusable PDF grammar profiles | 213 |
+| Reusable PDF grammar profiles | 214 |
 | Research gaps | 1009 |
 
 A marketing-series count is a proven minimum, never an estimate of the
@@ -259,7 +259,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | SEIKI | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | SHARP | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | SIEMENS | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Smeg | 124 | 15 | 0 | 4 | `MINERU_SAMPLE_OBSERVED` |
+| Smeg | 124 | 15 | 0 | 5 | `MINERU_SAMPLE_OBSERVED` |
 | Solt | 16 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Stirling | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Technika | 12 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -8394,7 +8394,7 @@ Research gaps:
 - Inventory models: 124
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 15
 - Proven marketing series: 0; total series count: `UNKNOWN`
-- PDF grammar profiles: 4
+- PDF grammar profiles: 5
 - Complete exact-model parser replays: 7
 
 #### DWA157B
@@ -8462,19 +8462,6 @@ Research gaps:
 Research gaps:
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 
-#### DWAI315XT
-
-- Group type: `model_specific`
-- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
-- Models observed: `DWAI315XT`
-- PDF SHA-256: `15cbab085d6d6d34779d2c2428088d71f82ed4ab0b228a8320310acdd4f640e1`
-- Official/source URLs: <https://sys.smeg.com.au/Product/Techspecs/DWAI315XT.pdf>
-
-`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
-
-Research gaps:
-- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
-
 #### DWAUP364X
 
 - Group type: `model_specific`
@@ -8507,9 +8494,9 @@ Research gaps:
 
 - Group type: `parser_family`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `DWA314W`, `DWA4510X`, `DWA6314B`, `DWAFI6314`, `DWAI6314X`, `DWAU6315X`
-- PDF SHA-256: `088cb470a8c9296544e6e009d9e2a6e825967b99fdb0f6b3e3e3b0e36635fb99`, `4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5`, `5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e`, `b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5`, `db82f71583ca6f937a0323ecfa6b6febc15d6a255470ed1dc9c53d066991bb1b`, `e3b80904f260069f14d6e4d27832dd796ee5234ce0eabb13ce8a95a14f49ae01`
-- PDF grammar profiles: `smeg-au-dishwasher-fixed-axis-suffix-permutation-v1`, `smeg-au-dishwasher-size-wdh-suffix-range-v1`, `smeg-au-dishwasher-size-whd-suffix-fixed-v1`
+- Models observed: `DWA314W`, `DWA4510X`, `DWA6314B`, `DWAFI6314`, `DWAI315XT`, `DWAI6314X`, `DWAU6315X`
+- PDF SHA-256: `088cb470a8c9296544e6e009d9e2a6e825967b99fdb0f6b3e3e3b0e36635fb99`, `15cbab085d6d6d34779d2c2428088d71f82ed4ab0b228a8320310acdd4f640e1`, `4f3bc41759de8a2e31ae853adf6973494530ae5f26ff003e8cb2e832c3c681c5`, `5a8dc0143f3d37b99e8ac4111b21fb35c3e45a188ab069c9d7054c4b1787e44e`, `b5e8d7b732f301fca71c344052180b09517ec03beeab945344d75a108bcde6f5`, `db82f71583ca6f937a0323ecfa6b6febc15d6a255470ed1dc9c53d066991bb1b`, `e3b80904f260069f14d6e4d27832dd796ee5234ce0eabb13ce8a95a14f49ae01`
+- PDF grammar profiles: `smeg-au-dishwasher-fixed-axis-suffix-permutation-v1`, `smeg-au-dishwasher-size-wdh-suffix-range-v1`, `smeg-au-dishwasher-size-whd-parenthetical-height-max-v1`, `smeg-au-dishwasher-size-whd-suffix-fixed-v1`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
 - Grammar variant: Fixed dimensions with explicit W/D/H or H/W/D suffix order
 - Detection: An exact-model Smeg Australia Techspec PDF contains one fully anchored Size or dimensions expression whose three positive integer millimetre values carry unique axis suffixes in explicit W/D/H or H/W/D order.
@@ -8517,16 +8504,20 @@ Research gaps:
 - Grammar variant: Size values with W/D/H suffixes and an adjustable height range
 - Detection: An exact-model Smeg Australia Techspec PDF contains one anchored Size expression whose positive integer values carry unique mmW, mmD and mmH suffixes in W/D/H order. Only the final height value may be an increasing range, with an optional max suffix.
 - Semantic boundary: Closed width and depth remain fixed while the complete adjustable height range is preserved. Packaging, installation, cavity, non-height ranges, duplicate axes, reversed ranges, fixed-height lookalikes and trailing qualification text are excluded.
+- Grammar variant: Size values with repeated H suffix and a parenthetical explicit maximum
+- Detection: An exact-model Smeg Australia Techspec PDF contains one fully anchored Size expression in W/H/Hmax/D order. Width and depth are unique positive integer millimetre values, while the repeated H suffix is accepted only when the parenthetical value is explicitly marked max and is greater than the first height.
+- Semantic boundary: The complete increasing height range is preserved while width and depth remain fixed. Packaging, missing or non-height max semantics, reversed or equal heights, qualifiers and trailing text are excluded.
 - Grammar variant: Two-cell Size row with fixed W/H/D suffixes
 - Detection: An exact-model Smeg Australia Techspec PDF contains exactly one two-cell Size table row whose positive integer values carry unique mmW, mmH and mmD suffixes in W/H/D order.
 - Semantic boundary: Only the closed fixed W/H/D envelope is projected. Packaging, installation, cavity, ranges, duplicate axes, multiple matching Size rows and trailing qualification text are excluded.
-- Official/source URLs: <https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWA4510X.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWA6314B.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf>
+- Official/source URLs: <https://sys.smeg.com.au/Product/Techspecs/DWA314W.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWA4510X.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWA6314B.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAFI6314.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAI315XT.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf>, <https://sys.smeg.com.au/Product/Techspecs/DWAU6315X.pdf>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `SUPPORTED_EXPLICIT_GROUPED` | `SUFFIXED_VALUE_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (H x W x D) 850 x 448 x 600 mm | p.1, `5925c9f86de7` |
 
 Research gaps:
+- `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`

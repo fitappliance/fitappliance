@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-17T02:46:25.630Z
+Generated: 2026-07-17T03:05:50.351Z
 
 Coverage: **8,093 / 8,093** unique historical models.
 Models with document links: **1,768**; without links: **6,325**.
@@ -11,7 +11,7 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 1105 |
+| dishwasher | 1419 | 94 | 1106 |
 | dryer | 841 | 72 | 269 |
 | fridge | 4336 | 121 | 2309 |
 | washing_machine | 1497 | 88 | 676 |
@@ -20,11 +20,11 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 380 |
+| COMPLETE_RECEIPT | 381 |
 | CONFLICT_QUARANTINE | 83 |
 | IDENTITY_RESEARCH | 135 |
 | OFFICIAL_DISCOVERY | 6416 |
-| REFERENCE_REDISCOVERY | 1079 |
+| REFERENCE_REDISCOVERY | 1078 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -44,6 +44,7 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Bosch | marketing_series | Series 4 | 7 |
 | dishwasher | Bosch | parser_family | PDF grammar pdf_grammar_2a3308cabe6ee132 | 7 |
 | dishwasher | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_766c1f4c547cb6cf | 7 |
+| dishwasher | Smeg | parser_family | Smeg Australia dishwasher technical specification | 7 |
 | fridge | Hisense | parser_family | Hisense Australia legacy exact-model specification sheet | 7 |
 | fridge | Westinghouse | document_family | Document family b93c83bd4afe | 7 |
 | fridge | Westinghouse | document_family | Document family fd329081b852 | 7 |
@@ -52,7 +53,6 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Bosch | document_family | Document family 29a33ef7af64 | 6 |
 | dishwasher | Bosch | document_family | Document family 8e8d196ff904 | 6 |
 | dishwasher | Fisher & Paykel | document_family | Document family 40d415ddb0ed | 6 |
-| dishwasher | Smeg | parser_family | Smeg Australia dishwasher technical specification | 6 |
 | fridge | Bosch | marketing_series | Series 6 | 6 |
 | fridge | Sub-Zero | parser_family | PDF grammar pdf_grammar_b6dfa4c93dc0b9e7 | 6 |
 | fridge | Westinghouse | document_family | Document family e316fc226e4d | 6 |
