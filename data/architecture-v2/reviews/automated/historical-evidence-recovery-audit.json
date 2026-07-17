@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "auditId": "historical-recovery-audit-85f111adce349e59e02a5a81",
-  "generatedAt": "2026-07-16T23:21:26.441Z",
+  "auditId": "historical-recovery-audit-f22dcfd88fad1d7dd2558f4b",
+  "generatedAt": "2026-07-16T23:33:49.840Z",
   "mode": "online",
   "status": "passed",
-  "batchId": "historical-recovery-3af2ed394150fdb40ffa0e32-slice-4988d44f6353",
-  "batchSha256": "f41fe4f1b981f08e2845b93451305c5548f89484a932ea6b7058575a642140e9",
-  "queueSha256": "9c44e83d627d542f4763b986f0c04819c34fec819b7ebad73335adab22cd17bd",
+  "batchId": "historical-recovery-6551594cfa83b88f4bd4e3d5-slice-3f8f3efbee89",
+  "batchSha256": "d5d254832af28a1928cbdb3a684a183518dbebd056e4b1e00dd60b392a9bf52c",
+  "queueSha256": "d1fd49ca0aadcefb694716b837bf2dc3b1e16e60dc11490ac254cfa11267166c",
   "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
-  "resultsSha256": "8a550cd101c5db3fe3534608ef2eb1788e0b6ea2b3d427a16ab062038e997449",
-  "priorBundleSha256": "bd99a192d9bdc05ac665a564894ff32c4438da873859d64b1d5cfcb837c3a568",
+  "resultsSha256": "546ec16f667eb3fa8effe5c33dd19b5a17891e85c0ba8881229745e8705a8175",
+  "priorBundleSha256": "450822ebea7faaab963ef64a7d8ae899e2f2c5c399720f1e0fd3f0e09c4b40ba",
   "priorObjectsReplayed": true,
-  "checkedTargets": 2,
+  "checkedTargets": 4,
   "checkedObjects": 717,
   "repairs": [],
   "violations": [],
-  "semanticAuditSha256": "85f111adce349e59e02a5a817a637f1181127f39f89efa1a13371ecc57f6ef15"
+  "semanticAuditSha256": "f22dcfd88fad1d7dd2558f4b20b7408c74da7c7884ceeff502cfc5d54441c82e"
 }

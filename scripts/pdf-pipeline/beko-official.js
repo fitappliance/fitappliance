@@ -222,6 +222,33 @@ function exactModelMention(html, sku) {
   return new RegExp(`(^|[^A-Z0-9])${escaped}([^A-Z0-9]|$)`, 'i').test(String(html || ''));
 }
 
+function manualSearchApiUrlForTarget(target = {}) {
+  const sku = String(target.sku || target.model || target.product?.model || '').trim();
+  if (!sku) throw new TypeError('Beko support search requires an exact model');
+  return `https://www.beko.com/content/bekoglobal/au/en/support/user-manual/jcr:content/root/responsivegrid/responsivegrid/productsearch.ajax.html?search=${encodeURIComponent(sku)}`;
+}
+
+function extractManualResultUrlForSku(html, sku) {
+  const target = normalizeSku(sku);
+  if (!target) return null;
+  const source = String(html || '');
+  const anchorPattern = /<a\b([^>]*?)>([\s\S]*?)<\/a>/gi;
+  for (const match of source.matchAll(anchorPattern)) {
+    const rawHref = match[1]?.match(/\bhref=["']([^"']+)["']/i)?.[1];
+    if (!rawHref) continue;
+    const url = absoluteUrl(rawHref);
+    if (!url) continue;
+    let parsed;
+    try { parsed = new URL(url); } catch { continue; }
+    if (parsed.hostname.toLowerCase() !== 'www.beko.com'
+      || parsed.pathname !== '/au-en/support/user-manuals-result'
+      || normalizeSku(parsed.searchParams.get('search')) !== target
+      || !exactModelMention(match[2], sku)) continue;
+    return parsed.toString();
+  }
+  return null;
+}
+
 async function resultFromDiscoveryPage(target, discoveryUrl, html, writeObject) {
   const sku = String(target.sku || target.model || target.product?.model || '').trim();
   if (!exactModelMention(html, sku)) return null;
@@ -308,9 +335,21 @@ async function findBekoOfficialPdf(target = {}, {
   const errors = [];
   const sku = target.sku || target.model || target.product?.model;
 
-  const manualSearchUrl = `https://www.beko.com/au-en/support/user-manuals-result?search=${encodeURIComponent(String(sku || '').trim())}`;
+  const manualSearchApiUrl = manualSearchApiUrlForTarget(target);
   try {
-    const html = await fetchText(manualSearchUrl, { fetchImpl, scraplingImpl, timeoutMs, userAgent });
+    const searchHtml = await fetchText(manualSearchApiUrl, {
+      fetchImpl, scraplingImpl, timeoutMs, userAgent,
+    });
+    const manualSearchUrl = extractManualResultUrlForSku(searchHtml, sku);
+    if (!manualSearchUrl) {
+      errors.push(`${manualSearchApiUrl}: no exact-model support result`);
+      throw Object.assign(new Error('Beko AU support search returned no exact model'), {
+        code: 'BEKO_SUPPORT_EXACT_MODEL_NOT_FOUND',
+      });
+    }
+    const html = await fetchText(manualSearchUrl, {
+      fetchImpl, scraplingImpl, timeoutMs, userAgent,
+    });
     const supportResult = await resultFromDiscoveryPage(target, manualSearchUrl, html, writeObject);
     if (supportResult) {
       const results = [supportResult];
@@ -334,7 +373,9 @@ async function findBekoOfficialPdf(target = {}, {
     }
     errors.push(`${manualSearchUrl}: no exact-model PDF result`);
   } catch (error) {
-    errors.push(`${manualSearchUrl}: ${error.message}`);
+    if (error?.code !== 'BEKO_SUPPORT_EXACT_MODEL_NOT_FOUND') {
+      errors.push(`${manualSearchApiUrl}: ${error.message}`);
+    }
   }
 
   for (const categoryUrl of categoryUrlsForTarget(target)) {
@@ -390,7 +431,9 @@ exports.buildSearchQueries = buildSearchQueries;
 exports.categoryUrlsForTarget = categoryUrlsForTarget;
 exports.extractPdfUrlsFromPage = extractPdfUrlsFromPage;
 exports.extractPdfResourcesFromPage = extractPdfResourcesFromPage;
+exports.extractManualResultUrlForSku = extractManualResultUrlForSku;
 exports.extractProductPageUrlsForSku = extractProductPageUrlsForSku;
 exports.extractSearchResultUrls = extractSearchResultUrls;
 exports.findBekoOfficialPdf = findBekoOfficialPdf;
+exports.manualSearchApiUrlForTarget = manualSearchApiUrlForTarget;
 exports.scorePdfUrl = scorePdfUrl;

@@ -65,9 +65,12 @@ test('completed acceptance suppresses a same-policy rerun before promotion', () 
     'completed_unpromoted_acceptance');
 });
 
-test('retryable work and changed resolver contracts reopen the target', () => {
+test('retryable work reopens but resolver and policy revisions do not repeat zero-candidate discovery', () => {
   assert.equal(suppression(state({ status: 'retryable_failure', failureCode: 'transport' })), null);
-  assert.equal(suppression(state({ contract: [CONTRACT[0], { ...CONTRACT[1], version: '2' }] })), null);
+  assert.equal(suppression(state({ contract: [CONTRACT[0], { ...CONTRACT[1], version: '2' }] }))?.reason,
+    'completed_exhausted_source_discovery');
+  assert.equal(suppression(state({ policy: 'c'.repeat(64) }))?.reason,
+    'completed_exhausted_source_discovery');
 });
 
 test('parser terminal work requires the same toolchain epoch to suppress', () => {

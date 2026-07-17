@@ -432,9 +432,10 @@ export function activeHistoricalResolverSuppressions({
   if (activeHistoricalSourceAcceptances({ ledger, targetId, referenceId, policySha256 }).length) return [];
   return ledger.targetAttempts.filter((entry) => (
     entry.suppressesSamePolicyResolverOnly === true
-      && entry.policySha256 === policySha256
-      && historicalResolverContractSha256(entry.resolvers) === resolverContractSha256
       && (entry.targetId === targetId || entry.referenceId === referenceId)
+      && (entry.reason === 'complete_zero_candidate_inventory'
+        || (entry.policySha256 === policySha256
+          && historicalResolverContractSha256(entry.resolvers) === resolverContractSha256))
   ));
 }
 

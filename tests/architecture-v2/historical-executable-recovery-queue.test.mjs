@@ -271,7 +271,7 @@ test('same-policy terminal source becomes resolver-only but preserves alternativ
   assert.equal(changedPolicy.targets[0].priorAttemptSuppressions, undefined);
 });
 
-test('same-policy complete zero-candidate discovery suppresses only resolver-only targets', () => {
+test('same-policy complete zero-candidate discovery stays suppressed across resolver revisions', () => {
   const policySha256 = 'b'.repeat(64);
   const targetAttempt = {
     targetAttemptId: 'target-attempt-official',
@@ -279,6 +279,7 @@ test('same-policy complete zero-candidate discovery suppresses only resolver-onl
     referenceId: 'official',
     status: 'claims_incomplete',
     failureCode: 'source_authority',
+    reason: 'complete_zero_candidate_inventory',
     policySha256,
     suppressesSamePolicyResolverOnly: true,
     resolvers: [{
@@ -312,8 +313,8 @@ test('same-policy complete zero-candidate discovery suppresses only resolver-onl
     recoveryPolicySha256: 'd'.repeat(64),
     resolverContractSha256ForTarget: () => currentResolverContractSha256,
   });
-  assert.equal(changedPolicy.targets.length, 1);
-  assert.deepEqual(changedPolicy.targets[0].candidateJobIds, []);
+  assert.equal(changedPolicy.targets.length, 0);
+  assert.equal(changedPolicy.summary.suppressedPriorResolverOnlyTargets, 1);
 
   const changedResolver = buildHistoricalExecutableRecoveryQueue({
     ...base,
@@ -322,8 +323,8 @@ test('same-policy complete zero-candidate discovery suppresses only resolver-onl
       ...targetAttempt.resolvers[0], version: '2',
     }]),
   });
-  assert.equal(changedResolver.targets.length, 1);
-  assert.deepEqual(changedResolver.targets[0].candidateJobIds, []);
+  assert.equal(changedResolver.targets.length, 0);
+  assert.equal(changedResolver.summary.suppressedPriorResolverOnlyTargets, 1);
 
   const explicitSource = structuredClone(base);
   explicitSource.acquisitionQueue.records[0].candidateSourceIds = ['source-official'];
@@ -335,7 +336,9 @@ test('same-policy complete zero-candidate discovery suppresses only resolver-onl
   const reopened = buildHistoricalExecutableRecoveryQueue({
     ...explicitSource,
     recoveryPolicySha256: policySha256,
-    resolverContractSha256ForTarget: () => currentResolverContractSha256,
+    resolverContractSha256ForTarget: () => historicalResolverContractSha256([{
+      ...targetAttempt.resolvers[0], version: '2',
+    }]),
   });
   assert.equal(reopened.targets.length, 1);
   assert.equal(reopened.jobs.length, 1);

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T23:22:29.356Z",
-  "semanticQueueSha256": "194bcbe795e9883448bc9c81ae7ab84b8a5808f299e7562725dbbcf29d7d1b9b",
-  "sourceClassificationSha256": "fb8cec10158f740b4e82b40d7785d10d48c7bbfe5ed2af2e071a656eec6505ac",
+  "generatedAt": "2026-07-16T23:59:11.852Z",
+  "semanticQueueSha256": "ce495985dc966e718f522833c1fcd7b53708e162364f8e7dcb05972f94c2f085",
+  "sourceClassificationSha256": "5eedc4e717e0fd1faca0148c0afaa5a8a35245da537728a266ee22aa44f66318",
   "records": [
     {
       "schemaVersion": 1,
@@ -6573,68 +6573,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_e14515d7b08512aaf8b33f28"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_51e9c4937ba7785f5472a57f",
-      "referenceId": "fa_ref_d84512c9338eacda185f8a75",
-      "category": "dryer",
-      "brand": "Beko",
-      "model": "SKWS54",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_b1a0c07b4b119ddeab8efeb7"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_4f74adbc66063da7159a6878"
-      ],
-      "legacyRuntimeIds": [
-        "ao-111095"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_7534f071af2f462320a08875"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_0e146042b9bc9b2e9196a3df",
-      "referenceId": "fa_ref_6c43d86b917403bbb6c43d3a",
-      "category": "dryer",
-      "brand": "Beko",
-      "model": "USKTRR541",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_5af426e9022e20c5f73227c7"
-      ],
-      "resolverIds": [
-        "beko-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_faa6a6f3fd177de5b5d49a69"
-      ],
-      "legacyRuntimeIds": [
-        "ao-111099"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_b7f0a5f35ac3ec7037a49485"
       ],
       "offlineReplayOutcome": null
     },
@@ -197297,19 +197235,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_5af426e9022e20c5f73227c7",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/d/e/3/7de3bafbe8085d8419e3ba8ed3b65fe09895c6bd_USKTRR541_Beko_User_Manual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/USKTRR541.json",
-        "source:doc_41fc005cea1df1e36442adbc"
-      ],
-      "referenceIds": [
-        "fa_ref_6c43d86b917403bbb6c43d3a"
-      ]
-    },
-    {
       "sourceId": "historical_source_5b43116ae20005e460bdb477",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/6/c/9/a6c9e9b760bcc963da2483563901c1f62ea23456_FA490RANAU_Smeg_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -203617,19 +203542,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_b1a0c07b4b119ddeab8efeb7",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/1/5/e/015e38e9a299659de71c191638ac8cb00bc2dcc6_SKWS54_Beko_User_Manual.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SKWS54.json",
-        "source:doc_2de103974d714264643f3711"
-      ],
-      "referenceIds": [
-        "fa_ref_d84512c9338eacda185f8a75"
-      ]
-    },
-    {
       "sourceId": "historical_source_b1f3a75e24a22f8f8df9ee1b",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/5/a/a/95aa062b9294643b81869ee3f8674dd12a882a57_HCF324W2_Haier_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -208794,19 +208706,19 @@
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
-    "classificationRecords": 8095,
-    "queuedModels": 7732,
-    "uniqueReferences": 7732,
-    "candidateSources": 1381,
-    "candidateEdges": 1416,
+    "classificationRecords": 8093,
+    "queuedModels": 7730,
+    "uniqueReferences": 7730,
+    "candidateSources": 1379,
+    "candidateEdges": 1414,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2075,
-      "CURRENT_RETAIL": 1094,
+      "CURRENT_RETAIL": 1092,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1265,
-      "dryer": 803,
+      "dryer": 801,
       "fridge": 4216,
       "washing_machine": 1448
     },
@@ -208814,16 +208726,16 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1098
+      "REFERENCE_REDISCOVERY": 1096
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "OFFICIAL_REDISCOVERY": 1098
+      "OFFICIAL_REDISCOVERY": 1096
     },
     "byExecutionReadiness": {
-      "DISCOVERY_READY": 5067,
+      "DISCOVERY_READY": 5065,
       "RESEARCH_REQUIRED": 83,
       "RESOLVER_GAP": 2582
     },

@@ -97,3 +97,26 @@ test('rejects malformed, duplicate, and non-releasable automated grants', () => 
     releaseGrants: [{ legacyRuntimeId: 'fridge-a1', caseId: '', reason: 'evidence_projection_hold' }],
   }), /case/i);
 });
+
+test('repository publication quarantine excludes Beko stacking kits from the appliance registry', () => {
+  const repositoryCatalog = JSON.parse(readFileSync(
+    new URL('../../data/catalog-final.json', import.meta.url),
+    'utf8',
+  ));
+  const publicationQuarantine = JSON.parse(readFileSync(
+    new URL('../../data/architecture-v2/decisions/canonical-publication-quarantine.json', import.meta.url),
+    'utf8',
+  ));
+  const result = buildCanonicalRegistry(repositoryCatalog, {
+    quarantineEntries: publicationQuarantine.products,
+  });
+  const accessoryIds = ['ao-111095', 'ao-111099'];
+
+  assert.ok(accessoryIds.every((legacyRuntimeId) => (
+    !result.identifierMappings.some((row) => row.legacyRuntimeId === legacyRuntimeId)
+  )));
+  assert.ok(accessoryIds.every((legacyRuntimeId) => result.quarantine.some((row) => (
+    row.legacyRuntimeId === legacyRuntimeId
+      && row.reasons.includes('dryer_stacking_kit_is_not_a_complete_appliance')
+  ))));
+});

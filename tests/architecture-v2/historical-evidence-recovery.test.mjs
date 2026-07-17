@@ -236,13 +236,13 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
   const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
   assert.equal(
     packageJson.scripts['refresh:historical-evidence-recovery'],
-    'npm run build:historical-reference'
+    'node scripts/architecture-v2/build-public-projection.mjs'
+      + ' && npm run build:historical-reference'
       + ' && npm run build:historical-model-evidence-classification'
       + ' && npm run build:historical-evidence-recovery-queue'
       + ' && npm run build:historical-model-pdf-acquisition-queue'
       + ' && npm run build:historical-executable-recovery-queue'
       + ' && npm run build:historical-evidence-recovery-batch'
-      + ' && node scripts/architecture-v2/build-public-projection.mjs'
       + ' && npm run audit:fit-publication'
       + ' && npm run publish:historical-reference'
       + ' && npm run audit:historical-replacement',

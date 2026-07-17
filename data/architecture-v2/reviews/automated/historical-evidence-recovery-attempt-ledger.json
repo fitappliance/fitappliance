@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-16T23:21:49.683Z",
+  "generatedAt": "2026-07-16T23:34:10.508Z",
   "entries": [
     {
       "attemptId": "historical_attempt_00e25476c86d4d0f342468ba",
@@ -15053,6 +15053,58 @@
       "attemptedAt": "2026-07-16T12:16:49.118Z"
     },
     {
+      "targetAttemptId": "historical_target_attempt_1c29c6321ae617981ca29bc1",
+      "targetId": "recovery_target_1c641c6dd5006f54e47c6bd3",
+      "referenceId": "fa_ref_677fb751f67a1f805cd2b788",
+      "legacyRuntimeId": "ao-59952",
+      "canonicalProductId": "fa_prod_7315b0f2aaee1a0e662b35fa",
+      "brand": "Beko",
+      "model": "DCY8502XB1",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "bcc5c5fbed306430ffd1f2049b8f82ceae000a1e6cdd9679dd9e025d6566966c",
+      "semanticOutcomeSha256": "20f2449fcfe1212ea1d68f36597f3d6cd256a2604cf964a091d4090709e1f6b3",
+      "batchId": "historical-recovery-6551594cfa83b88f4bd4e3d5-slice-3f8f3efbee89",
+      "batchSha256": "d5d254832af28a1928cbdb3a684a183518dbebd056e4b1e00dd60b392a9bf52c",
+      "runId": "historical-beko-dryers-20260717-aa2",
+      "resultsSha256": "546ec16f667eb3fa8effe5c33dd19b5a17891e85c0ba8881229745e8705a8175",
+      "auditSha256": "f22dcfd88fad1d7dd2558f4b20b7408c74da7c7884ceeff502cfc5d54441c82e",
+      "attemptedAt": "2026-07-16T23:33:30.684Z"
+    },
+    {
       "targetAttemptId": "historical_target_attempt_255e8086b764900b7283aabc",
       "targetId": "recovery_target_658c78230b15a34b4af8b76c",
       "referenceId": "fa_ref_06196fb6913c5b5f0f362781",
@@ -15155,6 +15207,58 @@
       "resultsSha256": "9365aefb3c0ed25cf3357b30309e2280a84e1503f3b2c4cbb48fcc55f7553969",
       "auditSha256": "7ed0a8dcf9af55dadfc1dd9b8105755b22ad02a2981bc17357096cf9fcb33a10",
       "attemptedAt": "2026-07-16T12:36:46.872Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_277a6dda790a203a1598197e",
+      "targetId": "recovery_target_21429c74d1e20528bcf14903",
+      "referenceId": "fa_ref_3f3c9d4ff1db7a559b1f97fc",
+      "legacyRuntimeId": "ao-59219",
+      "canonicalProductId": "fa_prod_03a665eaa135777a3cdac45b",
+      "brand": "Beko",
+      "model": "DPE7400",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "fdeec676cafadce881e5c6c5f2c9f6e3bc33f5aa1ec9ff34fe77dcf66eda41de",
+      "semanticOutcomeSha256": "9aa7fe15be511f02a039ffd8420207a3b1e70cffbf0d8ba8622a370822c08bed",
+      "batchId": "historical-recovery-6551594cfa83b88f4bd4e3d5-slice-3f8f3efbee89",
+      "batchSha256": "d5d254832af28a1928cbdb3a684a183518dbebd056e4b1e00dd60b392a9bf52c",
+      "runId": "historical-beko-dryers-20260717-aa2",
+      "resultsSha256": "546ec16f667eb3fa8effe5c33dd19b5a17891e85c0ba8881229745e8705a8175",
+      "auditSha256": "f22dcfd88fad1d7dd2558f4b20b7408c74da7c7884ceeff502cfc5d54441c82e",
+      "attemptedAt": "2026-07-16T23:33:30.684Z"
     },
     {
       "targetAttemptId": "historical_target_attempt_29e4e6b44385030a1e88e8f1",
@@ -16351,6 +16455,58 @@
       "resultsSha256": "805ddbe8a0c5c6aa408f97dcb29786af9afaac2727421aea0880d06a942f2505",
       "auditSha256": "fabf07b28e2c91c5ce3e9d2388eac1a8522bd3771517a46365f74fcbe8e04e65",
       "attemptedAt": "2026-07-16T19:50:17.004Z"
+    },
+    {
+      "targetAttemptId": "historical_target_attempt_79111f9bcd3937a5a2702f12",
+      "targetId": "recovery_target_f3daf9b55ed6f0c1cb31176e",
+      "referenceId": "fa_ref_1893e36f4306b781edf5c5c0",
+      "legacyRuntimeId": "ao-59220",
+      "canonicalProductId": "fa_prod_e14515d7b08512aaf8b33f28",
+      "brand": "Beko",
+      "model": "DPY8500",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "1119c9851e1ce60efd824b5d1cff7a169e5060865f6ff5819b0ff95681f34008",
+      "semanticOutcomeSha256": "72ff75716d7d77815c9c0ece835f7d9ff4f5fb7fb9269d5263ab3216851b9b5f",
+      "batchId": "historical-recovery-6551594cfa83b88f4bd4e3d5-slice-3f8f3efbee89",
+      "batchSha256": "d5d254832af28a1928cbdb3a684a183518dbebd056e4b1e00dd60b392a9bf52c",
+      "runId": "historical-beko-dryers-20260717-aa2",
+      "resultsSha256": "546ec16f667eb3fa8effe5c33dd19b5a17891e85c0ba8881229745e8705a8175",
+      "auditSha256": "f22dcfd88fad1d7dd2558f4b20b7408c74da7c7884ceeff502cfc5d54441c82e",
+      "attemptedAt": "2026-07-16T23:33:30.684Z"
     },
     {
       "targetAttemptId": "historical_target_attempt_798f2d0220dd5b41c9fca23d",
@@ -17705,6 +17861,58 @@
       "attemptedAt": "2026-07-16T15:42:28.065Z"
     },
     {
+      "targetAttemptId": "historical_target_attempt_e82a91d3bf8a26c27666a49e",
+      "targetId": "recovery_target_350ad0c22db37f39ac15b7d6",
+      "referenceId": "fa_ref_c4e6c312a72836e1b1b29636",
+      "legacyRuntimeId": "ao-59207",
+      "canonicalProductId": "fa_prod_64b4bff3a9ea0765adceec90",
+      "brand": "Beko",
+      "model": "DCY7402GXB2",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "source_authority",
+      "reason": "complete_zero_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "6c028e59945ef06805568720f9bf310fcf00f1539a6bd8919c8f325724d9177f",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "beko-official-discovery",
+          "version": "1",
+          "scope": "beko_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 0
+        }
+      ],
+      "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
+      "candidateInventorySha256": "4a8a98b28cdb65a818ab357f43d20db6dc38c6ef7ee5df5f2d6f6fab7a6ef66d",
+      "semanticOutcomeSha256": "14f970fa32300334b6c73a69fd7a9c22eced4d2855011b5dcb2e2c4daf60bdde",
+      "batchId": "historical-recovery-6551594cfa83b88f4bd4e3d5-slice-3f8f3efbee89",
+      "batchSha256": "d5d254832af28a1928cbdb3a684a183518dbebd056e4b1e00dd60b392a9bf52c",
+      "runId": "historical-beko-dryers-20260717-aa2",
+      "resultsSha256": "546ec16f667eb3fa8effe5c33dd19b5a17891e85c0ba8881229745e8705a8175",
+      "auditSha256": "f22dcfd88fad1d7dd2558f4b20b7408c74da7c7884ceeff502cfc5d54441c82e",
+      "attemptedAt": "2026-07-16T23:33:30.684Z"
+    },
+    {
       "targetAttemptId": "historical_target_attempt_f632cadf5600b2a0cdc0cfdb",
       "targetId": "recovery_target_7f92b1a3a98551f7581fb471",
       "referenceId": "fa_ref_279bb2ff9098c91cd22d5dec",
@@ -17764,8 +17972,8 @@
     "suppressions": 273,
     "resolvedSuppressions": 16,
     "retryable": 63,
-    "targetAttempts": 57,
-    "resolverOnlySuppressions": 57,
+    "targetAttempts": 61,
+    "resolverOnlySuppressions": 61,
     "byStatus": {
       "claims_incomplete": 31,
       "identity_rejected": 183,

@@ -8,36 +8,36 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1374,
-    "fetchJobs": 1337,
-    "targets": 1371,
-    "candidateEdges": 1374,
+    "documents": 1372,
+    "fetchJobs": 1335,
+    "targets": 1369,
+    "candidateEdges": 1372,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1371,
+    "uniqueReferences": 1369,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 406,
-      "MEASURE_REQUIRED": 940,
+      "MEASURE_REQUIRED": 938,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 247,
-      "CURRENT_RETAIL": 1124
+      "CURRENT_RETAIL": 1122
     },
     "byCategory": {
       "dishwasher": 281,
-      "dryer": 53,
+      "dryer": 51,
       "fridge": 821,
       "washing_machine": 216
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1077,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1075,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 202,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
       "ALREADY_AUTO_FILL": 233,
-      "HISTORICAL_REFERENCE_NOT_FOUND": 144,
+      "HISTORICAL_REFERENCE_NOT_FOUND": 146,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
     }
@@ -665,32 +665,6 @@
       ],
       "targetIds": [
         "recovery_target_15767e663a438dc4bed37aa9"
-      ]
-    },
-    {
-      "jobId": "recovery_beace89c0534e5c79e46e878",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/1/5/e/015e38e9a299659de71c191638ac8cb00bc2dcc6_SKWS54_Beko_User_Manual.pdf",
-      "authorityBrand": "Beko",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_4f74adbc66063da7159a6878"
       ]
     },
     {
@@ -12261,32 +12235,6 @@
       ],
       "targetIds": [
         "recovery_target_42723a7cb9f24398016a493b"
-      ]
-    },
-    {
-      "jobId": "recovery_6e92295592ca3cd63576914f",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/d/e/3/7de3bafbe8085d8419e3ba8ed3b65fe09895c6bd_USKTRR541_Beko_User_Manual.pdf",
-      "authorityBrand": "Beko",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_faa6a6f3fd177de5b5d49a69"
       ]
     },
     {
@@ -37797,47 +37745,6 @@
       "primaryJobId": "recovery_0a5579a601dfa7c787eae2dc"
     },
     {
-      "referenceId": "fa_ref_d84512c9338eacda185f8a75",
-      "legacyRuntimeId": "ao-111095",
-      "canonicalProductId": "fa_prod_7534f071af2f462320a08875",
-      "category": "dryer",
-      "brand": "Beko",
-      "model": "SKWS54",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 850,
-        "depth": 540
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_4f74adbc66063da7159a6878",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_2de103974d714264643f3711"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_2de103974d714264643f3711",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 540
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_beace89c0534e5c79e46e878"
-      ],
-      "primaryJobId": "recovery_beace89c0534e5c79e46e878"
-    },
-    {
       "referenceId": "fa_ref_14c45c1e238d6503097eba34",
       "legacyRuntimeId": "ao-59264",
       "canonicalProductId": "fa_prod_d2cc72d2b1a0ac12f236b2f4",
@@ -37877,47 +37784,6 @@
         "recovery_ba3fda538060008b5a5a80d1"
       ],
       "primaryJobId": "recovery_ba3fda538060008b5a5a80d1"
-    },
-    {
-      "referenceId": "fa_ref_6c43d86b917403bbb6c43d3a",
-      "legacyRuntimeId": "ao-111099",
-      "canonicalProductId": "fa_prod_b7f0a5f35ac3ec7037a49485",
-      "category": "dryer",
-      "brand": "Beko",
-      "model": "USKTRR541",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 850,
-        "depth": 600
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_faa6a6f3fd177de5b5d49a69",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_41fc005cea1df1e36442adbc"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_41fc005cea1df1e36442adbc",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 600
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_6e92295592ca3cd63576914f"
-      ],
-      "primaryJobId": "recovery_6e92295592ca3cd63576914f"
     },
     {
       "referenceId": "fa_ref_75a5621cf854e498c3681f0d",

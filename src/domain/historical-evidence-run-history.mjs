@@ -61,18 +61,20 @@ export function historicalRunTargetSuppression({
   const target = priorState?.targets?.[targetId];
   const outcome = target?.outcome;
   if (target?.state !== 'completed' || !outcome) return null;
-  if (priorState.input?.policySha256 !== currentPolicySha256) return null;
-  if (!sameResolverContract(outcome.candidateInventory?.resolvers, currentResolverContract)) return null;
 
   let reason = null;
-  if (ACCEPTED_STATUSES.has(outcome.status)) {
-    reason = 'completed_unpromoted_acceptance';
-  } else if (exhaustedSourceDiscovery(outcome)) {
+  if (exhaustedSourceDiscovery(outcome)) {
     if (currentHasExplicitCandidateJobs) return null;
     reason = 'completed_exhausted_source_discovery';
-  } else if (TERMINAL_STATUSES.has(outcome.status)
-    && priorState.input?.toolchainSha256 === currentToolchainSha256) {
-    reason = 'completed_terminal_same_epoch';
+  } else {
+    if (priorState.input?.policySha256 !== currentPolicySha256) return null;
+    if (!sameResolverContract(outcome.candidateInventory?.resolvers, currentResolverContract)) return null;
+    if (ACCEPTED_STATUSES.has(outcome.status)) {
+      reason = 'completed_unpromoted_acceptance';
+    } else if (TERMINAL_STATUSES.has(outcome.status)
+      && priorState.input?.toolchainSha256 === currentToolchainSha256) {
+      reason = 'completed_terminal_same_epoch';
+    }
   }
   if (!reason) return null;
 

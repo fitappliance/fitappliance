@@ -604,6 +604,16 @@ test('generic adapter does not mistake an AEM ProductCatalog directory for a cat
   ]);
 });
 
+test('Beko resolver uses the deterministic AU support-search contract epoch', () => {
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'Beko', model: 'BDF1640AX', category: 'dishwasher' },
+    { beko: { finder: async () => null } },
+  );
+  assert.equal(adapter.resolverId, 'beko-official-discovery');
+  assert.equal(adapter.version, '2');
+  assert.equal(adapter.scope, 'beko_au_exact_support_search_result_and_product_documents');
+});
+
 test('generic adapter accepts object product-page entries without fabricating URLs', async () => {
   const adapter = createLegacyFinderResolverAdapter({
     brandKey: 'haier', resolverId: 'haier-product-page-object',

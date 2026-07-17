@@ -1460,3 +1460,96 @@ Lanes X and Y are closed. Neither may be rerun merely because the four
 discovery-gap models remain useful. A future attempt requires a changed
 resolver/source-authority epoch and a new run ID; a parser-policy change alone
 does not justify repeating a target that never produced an official artifact.
+
+## 37. Non-appliance isolation and recovery refresh topology
+
+Zero-attempt selection identified `SKWS54` and `USKTRR541` in the current Beko
+dryer lane. Both retailer titles explicitly describe stacking kits rather than
+complete tumble dryers. They must not be treated as appliance identities,
+dimension-recovery targets, replacement references or public Fit candidates.
+The canonical publication quarantine now records both legacy IDs with the
+non-releasable reason `dryer_stacking_kit_is_not_a_complete_appliance`.
+
+After rebuilding from the quarantine decision, the canonical appliance
+registry contains 3,519 products with 22 quarantined rows. The historical
+appliance denominator is 8,093 rather than 8,095: the two removed records were
+retailer accessories, not historical appliances. The classification policy is
+therefore version `historical-model-evidence-classification-v2` and pins the
+8,093-record denominator. Dryer references decrease from 843 to 841; no
+government-registry appliance record or accepted evidence receipt is removed.
+
+This correction also exposed an invalid refresh order. Historical reference
+generation binds the current public catalog projection, so rebuilding history
+before rebuilding the projection can create a stale catalog snapshot and a
+mixed-epoch queue. `refresh:historical-evidence-recovery` now builds the public
+projection first, then the historical reference, classification, acquisition
+queues and executable batch, followed by publication audits. The replacement
+audit must fail with `HISTORICAL_CATALOG_SNAPSHOT_STALE` if that dependency
+order regresses.
+
+Neither stacking-kit target was executed. The next Beko dryer lane may contain
+only `DCY7402GXB2`, `DCY8502XB1`, `DPE7400` and `DPY8500`, each selected from
+the zero-attempt union after the corrected 8,093-record refresh.
+
+## 38. Beko archived-dryer AA2 closure and resolver-safe retry control
+
+Lane AA2 used the unique run ID
+`historical-beko-dryers-20260717-aa2`. Its separate preflight used
+`historical-beko-dryers-20260717-aa2-preflight`. The execution selected only
+`DCY7402GXB2`, `DCY8502XB1`, `DPE7400` and `DPY8500`; all four resolvers
+completed with zero official candidates. The passing online audit covered the
+four targets and 717 immutable objects with zero repairs and zero violations.
+Promotion appended four `complete_zero_candidate_inventory` target attempts,
+bringing the cumulative attempt ledger to 61 resolver-only suppressions. Both
+AA2 run IDs are closed and must never be resumed.
+
+Beko's Australian support site exposes an AEM exact-model endpoint rather than
+the generic support-page search assumed by resolver v1:
+
+```text
+https://www.beko.com/content/bekoglobal/au/en/support/user-manual/jcr:content/root/responsivegrid/responsivegrid/productsearch.ajax.html?search={MODEL}
+```
+
+Resolver v2 queries that bounded endpoint first, accepts only an exact model
+link to `/au-en/support/user-manuals-result`, and then extracts Beko-hosted
+product documents. A live smoke test for current model `BDF1640AX` returned an
+exact Australian support result, product page, specification sheet,
+installation guide and user manual. The four AA2 models returned the endpoint's
+explicit no-result response in both Australia and New Zealand. The old direct
+Australian product-spec paths derived from archived Beko stock IDs also return
+real HTTP 404 responses:
+
+| Model | Beko stock ID | Direct AU product-spec result |
+| --- | --- | --- |
+| `DCY7402GXB2` | `7182482930` | 404 |
+| `DCY8502XB1` | `7187841320` | 404 |
+| `DPE7400` | `7188232170` | 404 |
+| `DPY8500` | `7188285530` | 404 |
+
+Exact retailer-hosted Beko specification sheets were retained as research
+references and processed through MinerU `content_list_v2`. They establish useful
+closed-envelope hints but are not manufacturer-hosted evidence and therefore
+cannot create acceptance receipts or public `geometry_v2`:
+
+| Model | Width | Height | Depth | PDF SHA-256 |
+| --- | ---: | ---: | ---: | --- |
+| `DCY7402GXB2` | 597 | 846 | 558 | `cf0ae2b11c8f9f8077ba896261c6b3968792f359e916c6f6df1123f0e36904b7` |
+| `DCY8502XB1` | 597 | 846 | 623 | `20c933298e9728ac070eb5cc58b6740ee5fbd975f5ec545a7440a96be587338c` |
+| `DPE7400` | 597 | 846 | 558 | `0937d3d783dba7a00c8c2033419ade39f7c680d64f5d8ba2ed7004973286023a` |
+| `DPY8500` | 597 | 846 | 623 | `95ea255c2ed79e353d39550d5d3fabdbcd2a3658b94b42e2abd42194c0ce13d9` |
+
+The executable queue and direct-run history guard both treat a complete
+zero-candidate discovery as durable across recovery-policy and resolver
+implementation revisions. A version, scope or parser change may justify a
+bounded source scout, but cannot automatically re-enqueue or manually rerun the
+full evidence-recovery target. Only a newly materialized official source edge
+reopens execution. A complete inventory that did contain candidate artifacts
+retains the narrower policy-and-resolver-bound suppression because a relevant
+parser or authority-policy revision may make that evidence actionable. This
+keeps resolver improvements useful for unseen models without turning every
+upgrade into a repeat of already exhausted targets. AA2 must not be rerun under
+Beko resolver v2: live source research already produced zero official
+candidates, and the retailer PDFs remain `REFERENCE/LEGACY_UNBOUND`.
+Existing immutable target-attempt entries retain the historical advisory
+disposition `AWAIT_RESOLVER_OR_POLICY_CHANGE`; execution permission is governed
+by the queue and run-history guards above, not by rewriting that audit label.

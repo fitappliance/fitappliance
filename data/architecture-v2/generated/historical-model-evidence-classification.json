@@ -1,23 +1,23 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T23:22:29.356Z",
-  "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "fb8cec10158f740b4e82b40d7785d10d48c7bbfe5ed2af2e071a656eec6505ac",
+  "generatedAt": "2026-07-16T23:59:11.852Z",
+  "policyVersion": "historical-model-evidence-classification-v2",
+  "semanticClassificationSha256": "5eedc4e717e0fd1faca0148c0afaa5a8a35245da537728a266ee22aa44f66318",
   "summary": {
-    "records": 8095,
-    "uniqueReferenceIds": 8095,
-    "documentLinks": 4346,
-    "modelsWithDocumentLinks": 1770,
+    "records": 8093,
+    "uniqueReferenceIds": 8093,
+    "documentLinks": 4342,
+    "modelsWithDocumentLinks": 1768,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
       "dishwasher": 1419,
-      "dryer": 843,
+      "dryer": 841,
       "fridge": 4336,
       "washing_machine": 1497
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2134,
-      "CURRENT_RETAIL": 1384,
+      "CURRENT_RETAIL": 1382,
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
@@ -25,12 +25,12 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 135,
       "OFFICIAL_DISCOVERY": 6416,
-      "REFERENCE_REDISCOVERY": 1098
+      "REFERENCE_REDISCOVERY": 1096
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6416,
       "NO_ACTION": 363,
-      "REDISCOVER_OFFICIAL_SOURCE": 1098,
+      "REDISCOVER_OFFICIAL_SOURCE": 1096,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 135
     },
@@ -38,28 +38,28 @@
       "MIXED": 207,
       "NONE": 6611,
       "OFFICIAL": 162,
-      "REFERENCE": 1115
+      "REFERENCE": 1113
     },
     "byIdentityScope": {
       "AMBIGUOUS": 172,
-      "EXACT_MODEL": 1598,
+      "EXACT_MODEL": 1596,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 86,
       "ALL_AXIS_SCALAR": 414,
-      "NOT_PARSED": 7501,
+      "NOT_PARSED": 7499,
       "PARSER_GAP": 94
     },
     "byConflictState": {
       "INVALID_DIMENSIONS": 19,
-      "NONE": 7943,
+      "NONE": 7941,
       "REGISTRY_CONFLICT": 69,
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
       "CURRENT_VALID": 363,
-      "LEGACY_UNBOUND": 1407,
+      "LEGACY_UNBOUND": 1405,
       "NONE": 6325
     }
   },
@@ -79,15 +79,15 @@
     },
     {
       "category": "dryer",
-      "records": 843,
+      "records": 841,
       "brands": 72,
-      "documentLinks": 273,
+      "documentLinks": 269,
       "byOperationalClass": {
         "COMPLETE_RECEIPT": 40,
         "CONFLICT_QUARANTINE": 4,
         "IDENTITY_RESEARCH": 4,
         "OFFICIAL_DISCOVERY": 745,
-        "REFERENCE_REDISCOVERY": 50
+        "REFERENCE_REDISCOVERY": 48
       }
     },
     {
@@ -62801,130 +62801,6 @@
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/b/6/0/6b6049e23ff7ab369908e3da6a4654703c70769b_Beko_DPY8500_8kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
             "doc_e5eb6b20603d7a894049704b"
-          ],
-          "reasonCodes": [
-            "SOURCE_DOCUMENT_DISCOVERY_HINT"
-          ],
-          "corpusState": "SOURCE_URL_ONLY",
-          "sourceAuthority": "REFERENCE",
-          "identityScope": "EXACT_MODEL",
-          "extractionState": "NOT_PARSED",
-          "receiptState": "LEGACY_UNBOUND"
-        }
-      ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
-      "rawBrandVariants": [
-        "Beko"
-      ],
-      "groups": [],
-      "grammarProfileIds": []
-    },
-    {
-      "schemaVersion": 1,
-      "referenceId": "fa_ref_d84512c9338eacda185f8a75",
-      "category": "dryer",
-      "canonicalBrand": "Beko",
-      "model": "SKWS54",
-      "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
-      "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
-      "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
-      "corpusSummary": {
-        "LEGACY_METADATA_ONLY": 1,
-        "SOURCE_URL_ONLY": 1
-      },
-      "documentLinks": [
-        {
-          "documentId": "legacy:data/pdf-evidence-raw/SKWS54.json",
-          "sourceUrl": "https://www.appliancesonline.com.au/ak/0/1/5/e/015e38e9a299659de71c191638ac8cb00bc2dcc6_SKWS54_Beko_User_Manual.pdf",
-          "evidenceObjectIds": [
-            "doc_2de103974d714264643f3711"
-          ],
-          "reasonCodes": [
-            "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
-            "LEGACY_FIELDS_UNBOUND",
-            "LEGACY_SUMMARY_DISCOVERY_HINT"
-          ],
-          "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "REFERENCE",
-          "identityScope": "EXACT_MODEL",
-          "extractionState": "NOT_PARSED",
-          "receiptState": "LEGACY_UNBOUND"
-        },
-        {
-          "documentId": "source:doc_2de103974d714264643f3711",
-          "sourceUrl": "https://www.appliancesonline.com.au/ak/0/1/5/e/015e38e9a299659de71c191638ac8cb00bc2dcc6_SKWS54_Beko_User_Manual.pdf",
-          "evidenceObjectIds": [
-            "doc_2de103974d714264643f3711"
-          ],
-          "reasonCodes": [
-            "SOURCE_DOCUMENT_DISCOVERY_HINT"
-          ],
-          "corpusState": "SOURCE_URL_ONLY",
-          "sourceAuthority": "REFERENCE",
-          "identityScope": "EXACT_MODEL",
-          "extractionState": "NOT_PARSED",
-          "receiptState": "LEGACY_UNBOUND"
-        }
-      ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
-      "priority": "P0_CURRENT_RETAIL",
-      "rawBrandVariants": [
-        "Beko"
-      ],
-      "groups": [],
-      "grammarProfileIds": []
-    },
-    {
-      "schemaVersion": 1,
-      "referenceId": "fa_ref_6c43d86b917403bbb6c43d3a",
-      "category": "dryer",
-      "canonicalBrand": "Beko",
-      "model": "USKTRR541",
-      "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
-      "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
-      "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
-      "corpusSummary": {
-        "LEGACY_METADATA_ONLY": 1,
-        "SOURCE_URL_ONLY": 1
-      },
-      "documentLinks": [
-        {
-          "documentId": "legacy:data/pdf-evidence-raw/USKTRR541.json",
-          "sourceUrl": "https://www.appliancesonline.com.au/ak/7/d/e/3/7de3bafbe8085d8419e3ba8ed3b65fe09895c6bd_USKTRR541_Beko_User_Manual.pdf",
-          "evidenceObjectIds": [
-            "doc_41fc005cea1df1e36442adbc"
-          ],
-          "reasonCodes": [
-            "LEGACY_BOOLEAN_FLAG_UNTRUSTED",
-            "LEGACY_FIELDS_UNBOUND",
-            "LEGACY_SUMMARY_DISCOVERY_HINT"
-          ],
-          "corpusState": "LEGACY_METADATA_ONLY",
-          "sourceAuthority": "REFERENCE",
-          "identityScope": "EXACT_MODEL",
-          "extractionState": "NOT_PARSED",
-          "receiptState": "LEGACY_UNBOUND"
-        },
-        {
-          "documentId": "source:doc_41fc005cea1df1e36442adbc",
-          "sourceUrl": "https://www.appliancesonline.com.au/ak/7/d/e/3/7de3bafbe8085d8419e3ba8ed3b65fe09895c6bd_USKTRR541_Beko_User_Manual.pdf",
-          "evidenceObjectIds": [
-            "doc_41fc005cea1df1e36442adbc"
           ],
           "reasonCodes": [
             "SOURCE_DOCUMENT_DISCOVERY_HINT"

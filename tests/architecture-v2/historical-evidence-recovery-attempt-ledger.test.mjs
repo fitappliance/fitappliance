@@ -126,7 +126,7 @@ test('transient transport failures remain retryable and suppressed candidates ar
   assert.deepEqual(ledger.targetAttempts, []);
 });
 
-test('a complete zero-candidate resolver pass creates one policy-bound target suppression', () => {
+test('a complete zero-candidate resolver pass creates one source-bound target suppression', () => {
   const input = fixture();
   const result = input.results.outcomes[0];
   result.status = 'claims_incomplete';
@@ -169,7 +169,7 @@ test('a complete zero-candidate resolver pass creates one policy-bound target su
     referenceId: 'reference-fp',
     policySha256: SHA('9'),
     resolverContractSha256: historicalResolverContractSha256(result.candidateInventory.resolvers),
-  }), []);
+  }).map((entry) => entry.targetAttemptId), [first.targetAttempts[0].targetAttemptId]);
   assert.deepEqual(activeHistoricalResolverSuppressions({
     ledger: second,
     targetId: 'target-fp',
@@ -178,7 +178,7 @@ test('a complete zero-candidate resolver pass creates one policy-bound target su
     resolverContractSha256: historicalResolverContractSha256([{
       ...result.candidateInventory.resolvers[0], version: '2',
     }]),
-  }), []);
+  }).map((entry) => entry.targetAttemptId), [first.targetAttempts[0].targetAttemptId]);
 });
 
 test('a complete exhausted inventory of reference and terminal candidates suppresses resolver-only reruns', () => {
@@ -211,6 +211,13 @@ test('a complete exhausted inventory of reference and terminal candidates suppre
   assert.equal(ledger.targetAttempts[0].reason, 'complete_exhausted_candidate_inventory');
   assert.equal(ledger.targetAttempts[0].suppressesSamePolicyResolverOnly, true);
   assert.equal(ledger.summary.resolverOnlySuppressions, 1);
+  assert.deepEqual(activeHistoricalResolverSuppressions({
+    ledger,
+    targetId: 'target-fp',
+    referenceId: 'reference-fp',
+    policySha256: SHA('9'),
+    resolverContractSha256: historicalResolverContractSha256(result.candidateInventory.resolvers),
+  }), []);
 });
 
 test('an incomplete zero-candidate resolver pass remains retryable', () => {

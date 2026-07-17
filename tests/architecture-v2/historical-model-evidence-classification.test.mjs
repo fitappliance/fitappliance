@@ -135,7 +135,8 @@ test('committed classification policy is valid and covers every operational clas
     new URL('../../data/architecture-v2/policies/historical-model-evidence-classification-policy.json', import.meta.url),
     'utf8',
   )));
-  assert.equal(policy.expectedReferenceCount, 8095);
+  assert.equal(policy.policyVersion, 'historical-model-evidence-classification-v2');
+  assert.equal(policy.expectedReferenceCount, 8093);
   assert.deepEqual(Object.keys(policy.actions).sort(), [...CLASSIFICATION_ENUMS.operationalClasses].sort());
 });
 

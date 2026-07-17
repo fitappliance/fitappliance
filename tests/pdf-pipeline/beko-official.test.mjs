@@ -2,12 +2,34 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   categoryUrlsForTarget,
+  extractManualResultUrlForSku,
   extractProductPageUrlsForSku,
   extractPdfUrlsFromPage,
   extractSearchResultUrls,
   findBekoOfficialPdf,
+  manualSearchApiUrlForTarget,
   scorePdfUrl
 } from '../../scripts/pdf-pipeline/beko-official.js';
+
+test('Beko finder builds the bounded AU support search endpoint', () => {
+  assert.equal(
+    manualSearchApiUrlForTarget({ sku: 'BDF1640AX' }),
+    'https://www.beko.com/content/bekoglobal/au/en/support/user-manual/jcr:content/root/responsivegrid/responsivegrid/productsearch.ajax.html?search=BDF1640AX'
+  );
+});
+
+test('Beko finder selects only an exact model from support autocomplete HTML', () => {
+  const html = `
+    <a href="/au-en/support/user-manuals-result?search=BDF1640A"><span>BDF1640A</span></a>
+    <a href="/au-en/support/user-manuals-result?search=BDF1640AX"><span class="ModelSelectItem__modelName">BDF1640AX</span></a>
+    <a href="https://example.com/au-en/support/user-manuals-result?search=BDF1640AX"><span>BDF1640AX</span></a>
+  `;
+  assert.equal(
+    extractManualResultUrlForSku(html, 'BDF1640AX'),
+    'https://www.beko.com/au-en/support/user-manuals-result?search=BDF1640AX'
+  );
+  assert.equal(extractManualResultUrlForSku(html, 'BDF1640AXZ'), null);
+});
 
 test('Beko finder extracts official product PDFs from product pages', () => {
   const html = `
@@ -33,6 +55,12 @@ test('Beko finder uses the exact AU manual result and binds every PDF to stored 
   const manual = 'https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7679159077-BDF1640AX/en-US-7679159077-User-Manual.pdf';
   const installation = 'https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7679159077-BDF1640AX/en-US-7679159077-Installation-Diagram.pdf';
   const specification = 'https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7679159077.pdf';
+  const supportApiUrl = 'https://www.beko.com/content/bekoglobal/au/en/support/user-manual/jcr:content/root/responsivegrid/responsivegrid/productsearch.ajax.html?search=BDF1640AX';
+  const supportApiHtml = `<!doctype html><html><body>
+    <a href="/au-en/support/user-manuals-result?search=BDF1640AX">
+      <span class="ModelSelectItem__modelName">BDF1640AX</span>
+    </a>
+  </body></html>`;
   const discoveryHtml = `<!doctype html><html><body>
     <a href="${productPage}"><span>BDF1640AX</span></a>
     <a href="${manual}" aria-label="User Manual">User Manual</a>
@@ -57,7 +85,9 @@ test('Beko finder uses the exact AU manual result and binds every PDF to stored 
         finalUrl: url,
         redirectChain: [],
         contentType: 'text/html',
-        bytes: Buffer.from(url === productPage ? productHtml : discoveryHtml),
+        bytes: Buffer.from(url === supportApiUrl
+          ? supportApiHtml
+          : url === productPage ? productHtml : discoveryHtml),
       }),
       writeObject: async (path, bytes) => writes.push({ path, bytes: Buffer.from(bytes) }),
     }
@@ -73,6 +103,7 @@ test('Beko finder uses the exact AU manual result and binds every PDF to stored 
   assert.equal(writes.length, 2);
   assert.ok(writes.every((write) => /^evidence\/web\/sha256\/[a-f0-9]{2}\/[a-f0-9]{2}\/[a-f0-9]{64}\.html$/.test(write.path)));
   assert.deepEqual(new Set(writes.map((write) => write.bytes.toString())), new Set([discoveryHtml, productHtml]));
+  assert.equal(calls[0], supportApiUrl);
   assert.equal(calls.some((url) => String(url).includes('bing.com')), false);
 });
 
