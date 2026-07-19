@@ -11,7 +11,7 @@
   [`2026-07-13-historical-evidence-coverage-recovery.md`](2026-07-13-historical-evidence-coverage-recovery.md)
 - **Canonical runbook:**
   [`historical-evidence-recovery-runbook.md`](../../architecture-v2/historical-evidence-recovery-runbook.md)
-- **Active task:** None - Task 2 complete; Task 3 is next
+- **Active task:** None - Task 3 complete; Task 4 is next
 
 **Goal:** Move the 8,089-model historical evidence programme from a safe but
 low-throughput recovery loop to a measurable, family-aware, bounded and
@@ -82,7 +82,7 @@ under that task, repair the plan first, and only then resume implementation.
 | 0 | Lock the ten-problem solution and execution order | COMPLETE | This plan created and self-reviewed |
 | 1 | Mixed KPI definitions and incomparable grains | COMPLETE | 9 focused tests; Architecture V2 877/877; lint/build passed; 8,089-model report generated |
 | 2 | Source-level ledger cannot show model outcomes; terminal queue noise | COMPLETE | 9 projection tests; 32 focused tests; Architecture V2 887/887; lint/build/diff passed; all 8,089 targets projected |
-| 3 | 6,321 models lack document links or materialised official candidates | PENDING | - |
+| 3 | 6,321 models lack document links or materialised official candidates | COMPLETE | 12 manifest tests; 55 focused tests; Architecture V2 899/899; two immutable ASKO canaries; lint/build/refresh/diff passed |
 | 4 | Executable graph has resolver-only targets and zero fetch jobs | PENDING | - |
 | 5 | PDF/MinerU/document-family/model relationships are not canonical | PENDING | - |
 | 6 | Per-model runs repeat family-level source failures | PENDING | - |
@@ -282,14 +282,31 @@ result and never independently reimplements reopening policy.
 - Records `NO_CANDIDATE_COMPLETE` only after every required resolver reports a
   complete inventory; timeout and truncation remain retryable.
 
-- [ ] Test URL normalization, official-host validation, cross-brand isolation,
+- [x] Test URL normalization, official-host validation, cross-brand isolation,
   duplicate candidates, incomplete resolvers and exact-model URL signals.
-- [ ] Build a network-free manifest reducer and a bounded online discovery CLI.
-- [ ] Seed it from current acquisition candidates without granting evidence
+- [x] Build a network-free manifest reducer and a bounded online discovery CLI.
+- [x] Seed it from current acquisition candidates without granting evidence
   authority to retailer or registry links.
-- [ ] Run one brand/category canary and retain immutable discovery output on the
+- [x] Run one brand/category canary and retain immutable discovery output on the
   evidence disk.
-- [ ] Update this task and commit.
+- [x] Update this task and commit.
+
+**Completed evidence (2026-07-19):** The committed manifest projects all 7,688
+acquisition records into exactly one state: 6 `CANDIDATES_READY`, 5,021
+`DISCOVERY_RETRYABLE`, 2,659 `RESEARCH_REQUIRED` and 2
+`NO_CANDIDATE_COMPLETE`. Six classified official URLs are materialised; all
+retailer and registry links remain hints. The ASKO `D5424SS` and `D5436SS`
+canaries retained complete resolver results in two content-addressed objects;
+the second also proved the immutable run-ID pointer path. Content SHA/byte
+bindings were verified, and the network-free reducer remains idempotent at
+semantic SHA `6ea26dc16f11043656c49aeab4a003e67de5b4cceb82c36c37116d8a7f53b9c5`.
+Tests cover crash recovery without a second network call, global resolver-call
+concurrency, Australian discovery-provenance replay, multi-strategy metadata
+replay and generated-time seed deduplication. The manifest suite passed 12/12,
+the resolver/refresh focused set passed 55/55, the complete Architecture V2
+suite passed 899/899, and `npm run lint`, `npm run build:architecture-v2`, the
+mounted-storage historical refresh, repeated manifest builds and
+`git diff --check` passed.
 
 **Acceptance:** Candidate discovery is inspectable before acquisition; each
 queued model has either materialized candidates, retryable discovery, research

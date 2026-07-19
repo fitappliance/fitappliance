@@ -21,6 +21,7 @@ export const architectureV2Paths = Object.freeze({
   historicalMineruBackfillAudit: `${base}/reviews/automated/historical-mineru-backfill-audit.json`,
   historicalEvidenceProgramStatus: `${base}/reviews/automated/historical-evidence-program-status.json`,
   historicalEvidenceTargetState: `${base}/reviews/automated/historical-evidence-target-state.json`,
+  historicalOfficialCandidateManifest: `${base}/reviews/automated/historical-official-candidate-manifest.json`,
   historicalModelPdfBaseline: `${base}/reviews/automated/historical-model-pdf-baseline.json`,
   legacyPdfLibraryAudit: `${base}/reviews/automated/legacy-pdf-library-audit.json`,
   historicalModelEvidenceClassification: `${base}/generated/historical-model-evidence-classification.json`,

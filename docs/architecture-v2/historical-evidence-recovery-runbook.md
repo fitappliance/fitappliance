@@ -1,7 +1,7 @@
 # Historical Evidence Recovery Runbook
 
 Status: canonical operations guide
-Last verified: 2026-07-16
+Last verified: 2026-07-19
 Owner: FitAppliance data and evidence pipeline
 
 This runbook operates the only supported path from a historical document
@@ -95,6 +95,48 @@ and `--limit` values still fails. A future owner-approved all-batch operation
 must use explicit `--allow-all`, which cannot be combined with any selection.
 The production graph contains thousands of targets and must not use that
 override.
+
+### 2.1 Materialise official candidates before acquisition
+
+The tracked official-candidate manifest is a network-free projection. Rebuild
+it without the evidence disk to replay prior discoveries and classified
+official seeds:
+
+```bash
+npm run build:historical-official-candidate-manifest
+jq '.summary' \
+  data/architecture-v2/reviews/automated/historical-official-candidate-manifest.json
+```
+
+Online discovery is a separate, explicitly bounded operation. Select either
+one or more `--reference-id` values, or one `--brand` plus `--category`; always
+supply `--limit` (maximum 25) and a unique `--run-id`:
+
+```bash
+npm run discover:historical-official-candidates -- \
+  --brand ASKO \
+  --category dishwasher \
+  --limit 1 \
+  --network-concurrency 2 \
+  --run-id task3-asko-dishwasher-canary-20260719-a
+```
+
+The runner verifies the external storage marker and volume UUID, writes the
+immutable run payload under
+`evidence/discovery/sha256/<sha-prefix>/<sha>.json`, then writes an immutable
+run pointer under `evidence/discovery/runs/<run-id>.json`, and only then updates
+the tracked manifest. If manifest persistence fails after those external
+writes, rerun the identical command: the pointer, queue SHA, selection, marker,
+content SHA and byte size must all match, and the runner resumes without
+calling the network resolvers again. If the tracked manifest already contains
+the run ID, the run is complete and duplicate execution is rejected.
+
+`NO_CANDIDATE_COMPLETE` is legal only when every current **required** resolver
+matches its declared ID, version, scope and required flag and reports
+`complete`. Missing, failed, timed-out, truncated or version-drifted required
+results remain `DISCOVERY_RETRYABLE`. Retailer, registry and mirror candidates
+remain reference hints even when they contain an exact model string; they do
+not satisfy the official-candidate inventory.
 
 ## 3. Build and inspect the execution graph
 
