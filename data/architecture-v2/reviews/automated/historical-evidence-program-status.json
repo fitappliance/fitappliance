@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-17T04:19:39.580Z",
+  "inventory": {
+    "historicalModelReferences": 8089,
+    "currentCatalogProducts": 3515,
+    "acceptedRecoveryEntries": 382,
+    "targetAttempts": 83
+  },
+  "controls": [
+    {
+      "id": "classification_inventory",
+      "label": "Classification inventory is unique and complete",
+      "status": "PASS"
+    },
+    {
+      "id": "acquisition_inventory",
+      "label": "Acquisition queue accounts for every classified model",
+      "status": "PASS"
+    },
+    {
+      "id": "executable_inventory",
+      "label": "Executable queue accounts for every acquisition target",
+      "status": "PASS"
+    },
+    {
+      "id": "receipt_replay",
+      "label": "Every accepted source replays without failure",
+      "status": "PASS"
+    },
+    {
+      "id": "replacement_inventory",
+      "label": "Replacement reference matches the historical inventory",
+      "status": "PASS"
+    },
+    {
+      "id": "fit_publication",
+      "label": "Current catalogue and Fit audit agree without violations",
+      "status": "PASS"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "model.inventory_classified",
+      "label": "Inventory classified",
+      "grain": "historical_model_reference",
+      "numerator": 8089,
+      "denominator": 8089,
+      "rateBasisPoints": 10000,
+      "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json"
+    },
+    {
+      "id": "model.with_document_links",
+      "label": "Models with document links",
+      "grain": "historical_model_reference",
+      "numerator": 1768,
+      "denominator": 8089,
+      "rateBasisPoints": 2186,
+      "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json"
+    },
+    {
+      "id": "model.without_document_links",
+      "label": "Models without document links",
+      "grain": "historical_model_reference",
+      "numerator": 6321,
+      "denominator": 8089,
+      "rateBasisPoints": 7814,
+      "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json"
+    },
+    {
+      "id": "model.current_valid_receipt",
+      "label": "Models with current valid receipts",
+      "grain": "historical_model_reference",
+      "numerator": 401,
+      "denominator": 8089,
+      "rateBasisPoints": 496,
+      "sourceArtifact": "data/architecture-v2/generated/historical-model-evidence-classification.json"
+    },
+    {
+      "id": "model.queued_for_acquisition",
+      "label": "Models queued for acquisition",
+      "grain": "historical_model_reference",
+      "numerator": 7688,
+      "denominator": 8089,
+      "rateBasisPoints": 9504,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-model-pdf-acquisition-queue.json"
+    },
+    {
+      "id": "model.executable_targets",
+      "label": "Executable model targets",
+      "grain": "historical_model_reference",
+      "numerator": 7564,
+      "denominator": 7688,
+      "rateBasisPoints": 9839,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json"
+    },
+    {
+      "id": "model.accepted_recovery_entries",
+      "label": "Models in cumulative recovery acceptance",
+      "grain": "historical_model_reference",
+      "numerator": 382,
+      "denominator": 8089,
+      "rateBasisPoints": 472,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
+    },
+    {
+      "id": "model.replacement_auto_fill",
+      "label": "Historical models eligible for replacement auto-fill",
+      "grain": "historical_model_reference",
+      "numerator": 321,
+      "denominator": 8089,
+      "rateBasisPoints": 397,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-replacement-audit.json"
+    },
+    {
+      "id": "document.unique_pdf_content",
+      "label": "Unique PDF content",
+      "grain": "physical_pdf_file",
+      "numerator": 516,
+      "denominator": 530,
+      "rateBasisPoints": 9736,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-mineru-backfill-audit.json"
+    },
+    {
+      "id": "document.backfill_unique_indexed",
+      "label": "Unique PDF content indexed",
+      "grain": "unique_pdf_content",
+      "numerator": 516,
+      "denominator": 516,
+      "rateBasisPoints": 10000,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-mineru-backfill-audit.json"
+    },
+    {
+      "id": "document.knowledge_valid",
+      "label": "Valid MinerU knowledge documents",
+      "grain": "mineru_knowledge_document",
+      "numerator": 925,
+      "denominator": 940,
+      "rateBasisPoints": 9840,
+      "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
+    },
+    {
+      "id": "document.knowledge_recognized",
+      "label": "MinerU knowledge documents with recognized expressions",
+      "grain": "mineru_knowledge_document",
+      "numerator": 495,
+      "denominator": 925,
+      "rateBasisPoints": 5351,
+      "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
+    },
+    {
+      "id": "parser.complete_replays",
+      "label": "Complete parser replays",
+      "grain": "parser_replay",
+      "numerator": 439,
+      "denominator": 1051,
+      "rateBasisPoints": 4177,
+      "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
+    },
+    {
+      "id": "accepted_source_lane.pdf_only",
+      "label": "PDF only",
+      "grain": "accepted_model_entry",
+      "numerator": 291,
+      "denominator": 382,
+      "rateBasisPoints": 7618,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
+    },
+    {
+      "id": "accepted_source_lane.html_only",
+      "label": "HTML only",
+      "grain": "accepted_model_entry",
+      "numerator": 64,
+      "denominator": 382,
+      "rateBasisPoints": 1675,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
+    },
+    {
+      "id": "accepted_source_lane.json_only",
+      "label": "JSON/API only",
+      "grain": "accepted_model_entry",
+      "numerator": 13,
+      "denominator": 382,
+      "rateBasisPoints": 340,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
+    },
+    {
+      "id": "accepted_source_lane.mixed",
+      "label": "Mixed official source lanes",
+      "grain": "accepted_model_entry",
+      "numerator": 14,
+      "denominator": 382,
+      "rateBasisPoints": 366,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
+    },
+    {
+      "id": "accepted_source_lane.pdf_involved",
+      "label": "PDF involved",
+      "grain": "accepted_model_entry",
+      "numerator": 305,
+      "denominator": 382,
+      "rateBasisPoints": 7984,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json"
+    },
+    {
+      "id": "fit.receipt_bound_dimensions",
+      "label": "Current products with receipt-bound dimensions",
+      "grain": "current_catalog_product",
+      "numerator": 332,
+      "denominator": 3515,
+      "rateBasisPoints": 945,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/fit-publication-audit.json"
+    },
+    {
+      "id": "fit.receipt_bound_verified",
+      "label": "Current products with receipt-bound Verified Fit",
+      "grain": "current_catalog_product",
+      "numerator": 0,
+      "denominator": 3515,
+      "rateBasisPoints": 0,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/fit-publication-audit.json"
+    }
+  ],
+  "diagnostics": [
+    {
+      "code": "SOURCE_LINK_COVERAGE_LOW",
+      "severity": "CRITICAL",
+      "metricId": "model.with_document_links",
+      "message": "Fewer than half of historical models have any document link."
+    },
+    {
+      "code": "EXECUTION_GRAPH_RESOLVER_ONLY",
+      "severity": "CRITICAL",
+      "metricId": "model.executable_targets",
+      "message": "The executable graph has targets but no materialized fetch jobs."
+    },
+    {
+      "code": "MINERU_OBSERVATION_GAP",
+      "severity": "HIGH",
+      "metricId": "document.knowledge_recognized",
+      "message": "Valid MinerU documents remain without recognized dimension expressions."
+    },
+    {
+      "code": "MODEL_RECEIPT_COVERAGE_LOW",
+      "severity": "CRITICAL",
+      "metricId": "model.current_valid_receipt",
+      "message": "Fewer than half of historical models have a current valid evidence receipt."
+    },
+    {
+      "code": "VERIFIED_FIT_ZERO",
+      "severity": "HIGH",
+      "metricId": "fit.receipt_bound_verified",
+      "message": "No current catalogue product has complete receipt-bound Fit evidence."
+    }
+  ]
+}

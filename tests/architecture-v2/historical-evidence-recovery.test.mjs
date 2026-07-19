@@ -250,7 +250,8 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
       + ' && npm run build:historical-evidence-recovery-batch'
       + ' && npm run audit:fit-publication'
       + ' && npm run publish:historical-reference'
-      + ' && npm run audit:historical-replacement',
+      + ' && npm run audit:historical-replacement'
+      + ' && npm run build:historical-evidence-program-status',
   );
   assert.equal(
     packageJson.scripts['build:dimension-expression-knowledge'],
