@@ -26,6 +26,7 @@ export const architectureV2Paths = Object.freeze({
   legacyPdfLibraryAudit: `${base}/reviews/automated/legacy-pdf-library-audit.json`,
   historicalModelEvidenceClassification: `${base}/generated/historical-model-evidence-classification.json`,
   dimensionExpressionObservations: `${base}/generated/dimension-expression-observations.json`,
+  historicalDocumentFamilyGraph: `${base}/generated/historical-document-family-graph.json`,
   historicalModelPdfAcquisitionQueue: `${base}/reviews/automated/historical-model-pdf-acquisition-queue.json`,
   historicalExecutableEvidenceRecoveryQueue: `${base}/reviews/automated/historical-executable-evidence-recovery-queue.json`,
   identityResearchQueue: `${base}/reviews/automated/identity-research-queue.json`,

@@ -40,7 +40,7 @@ function fixture() {
       },
     },
     knowledge: {
-      schemaVersion: 3,
+      schemaVersion: 4,
       summary: {
         mineruDocuments: 3,
         validMineruDocuments: 2,
@@ -50,6 +50,64 @@ function fixture() {
         parserReplays: 4,
         completeParserReplays: 2,
       },
+    },
+    documentGraph: {
+      schemaVersion: 1,
+      summary: {
+        indexedPdfDocuments: 3,
+        validIndexedPdfDocuments: 2,
+        invalidIndexedPdfDocuments: 1,
+        uniquePdfDocuments: 3,
+        physicalFiles: 3,
+        physicallyStoredUniqueDocuments: 2,
+        duplicatePhysicalFiles: 1,
+        documentFamilies: 1,
+        sourceUrls: 2,
+        sourceVersions: 2,
+        conflictingSourceUrls: 0,
+        modelEdges: 4,
+        mappedModelEdges: 3,
+        byProofLevel: {
+          EXACT_MODEL_PROVEN: 1,
+          MODEL_LIST_PROVEN: 1,
+          FAMILY_SCOPE_ONLY: 1,
+          UNMAPPED: 1,
+        },
+        nonIndexedClassificationLinks: 0,
+        nonIndexedClassificationLinksByLane: {},
+      },
+      sourceVersions: [{ sourceVersionId: 'source-1' }, { sourceVersionId: 'source-2' }],
+      nonIndexedClassificationLinks: [],
+      families: [{ familyId: 'family-1' }],
+      documents: [
+        {
+          pdfSha256: 'a'.repeat(64), validity: 'VALID',
+          modelEdges: [{
+            referenceId: 'ref-1',
+            proofLevel: 'EXACT_MODEL_PROVEN',
+            proofLocators: [{ type: 'CURRENT_RECEIPT', documentId: 'receipt-document-1' }],
+          }],
+        },
+        {
+          pdfSha256: 'b'.repeat(64), validity: 'VALID',
+          modelEdges: [
+            {
+              referenceId: 'ref-2',
+              proofLevel: 'MODEL_LIST_PROVEN',
+              proofLocators: [{
+                type: 'MINERU_MODEL_ROW',
+                page: 1,
+                fragmentSha256: 'd'.repeat(64),
+              }],
+            },
+            { referenceId: 'ref-3', proofLevel: 'FAMILY_SCOPE_ONLY', proofLocators: [{ type: 'KNOWLEDGE_FAMILY_SCOPE' }] },
+          ],
+        },
+        {
+          pdfSha256: 'c'.repeat(64), validity: 'INVALID',
+          modelEdges: [{ referenceId: null, proofLevel: 'UNMAPPED', proofLocators: [{ type: 'INDEX_MAPPING_STATUS' }] }],
+        },
+      ],
     },
     acquisitionQueue: {
       schemaVersion: 1,
@@ -165,6 +223,10 @@ test('builds a grain-safe model, document, parser, source-lane and Fit funnel', 
   assert.equal(metricById(status, 'model.inventory_classified').numerator, 5);
   assert.equal(metricById(status, 'model.with_document_links').rateBasisPoints, 8000);
   assert.equal(metricById(status, 'document.backfill_unique_indexed').grain, 'unique_pdf_content');
+  assert.equal(metricById(status, 'document.graph_indexed_nodes').numerator, 3);
+  assert.equal(metricById(status, 'document.graph_valid_nodes').denominator, 3);
+  assert.equal(metricById(status, 'document.graph_proven_model_applicability').grain, 'document_model_edge');
+  assert.equal(metricById(status, 'document.graph_proven_model_applicability').numerator, 2);
   assert.equal(metricById(status, 'parser.complete_replays').rateBasisPoints, 5000);
   assert.equal(metricById(status, 'accepted_source_lane.pdf_only').numerator, 1);
   assert.equal(metricById(status, 'accepted_source_lane.html_only').numerator, 1);
@@ -183,7 +245,7 @@ test('builds a grain-safe model, document, parser, source-lane and Fit funnel', 
       && typeof metric.sourceArtifact === 'string'
   )));
   assert.deepEqual(status.controls.map((control) => control.status), [
-    'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS',
+    'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS',
   ]);
   assert.ok(!status.diagnostics.some((diagnostic) => (
     diagnostic.code === 'EXECUTION_GRAPH_RESOLVER_ONLY'
@@ -246,6 +308,37 @@ test('fails closed when MinerU document accounting drifts', () => {
   );
 });
 
+test('fails closed when the document graph misses a MinerU index node', () => {
+  const input = fixture();
+  input.documentGraph.documents.pop();
+
+  assert.throws(
+    () => buildHistoricalEvidenceProgramStatus(input),
+    /document graph.*accounting mismatch/i,
+  );
+});
+
+test('fails closed when a proven document edge points outside model classification', () => {
+  const input = fixture();
+  input.documentGraph.documents[0].modelEdges[0].referenceId = 'ref-missing';
+
+  assert.throws(
+    () => buildHistoricalEvidenceProgramStatus(input),
+    /document graph reference missing from classification/i,
+  );
+});
+
+test('fails closed when parser replay is presented as exact proof without a source locator', () => {
+  const input = fixture();
+  input.documentGraph.documents[0].modelEdges[0].proofLocators = [{
+    type: 'MINERU_EXACT_MODEL_REPLAY',
+  }];
+  assert.throws(
+    () => buildHistoricalEvidenceProgramStatus(input),
+    /exact-model proof locator invalid/i,
+  );
+});
+
 test('fails closed when accepted evidence points outside the classification', () => {
   const input = fixture();
   input.acceptanceBundle.entries[0].referenceId = 'ref-missing';
@@ -282,7 +375,7 @@ test('rejects unknown input schema versions', () => {
 
   assert.throws(
     () => buildHistoricalEvidenceProgramStatus(input),
-    /knowledge schema version 3 required/,
+    /knowledge schema version 4 required/,
   );
 });
 

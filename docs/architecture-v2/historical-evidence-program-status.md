@@ -32,6 +32,9 @@ Generated: 2026-07-17T04:19:39.580Z
 | --- | --- | ---: | ---: | ---: |
 | Unique PDF content | Physical Pdf File | 516 | 530 | 97.36% |
 | Unique PDF content indexed | Unique Pdf Content | 516 | 516 | 100.00% |
+| Indexed PDF content graph nodes | Unique Pdf Content | 940 | 940 | 100.00% |
+| Valid indexed PDF graph nodes | Unique Pdf Content | 925 | 940 | 98.40% |
+| Document-model edges with exact or internal model-list proof | Document Model Edge | 547 | 3760 | 14.55% |
 | Valid MinerU knowledge documents | Mineru Knowledge Document | 925 | 940 | 98.40% |
 | MinerU knowledge documents with recognized expressions | Mineru Knowledge Document | 495 | 925 | 53.51% |
 | Complete parser replays | Parser Replay | 439 | 1051 | 41.77% |
@@ -64,6 +67,7 @@ Generated: 2026-07-17T04:19:39.580Z
 | Every accepted source replays without failure | PASS |
 | Replacement reference matches the historical inventory | PASS |
 | Current catalogue and Fit audit agree without violations | PASS |
+| Every MinerU index has one content-hash graph node and typed model edges | PASS |
 
 ## Active diagnostics
 

@@ -56,6 +56,15 @@ before changing evidence semantics.
     epoch. Resume is exempt because it continues the immutable run. A malformed
     historical state fails closed. Audit and promote an eligible prior run
     instead of rerunning it.
+14. The canonical document-family graph is an inventory and applicability
+    control, not a receipt authority. Only `EXACT_MODEL_PROVEN` and
+    `MODEL_LIST_PROVEN` edges have internal exact-model evidence. A
+    `FAMILY_SCOPE_ONLY` edge may select a canary but cannot fan out dimensions
+    or create a receipt for the other models in that family.
+15. PDF identity is the immutable PDF SHA-256. Physical copies collapse to one
+    node, while one source URL returning different hashes remains multiple
+    unordered source versions. Never label one version current or latest unless
+    a separate acquisition-time artifact proves that state.
 
 ## 2. Storage and tool preflight
 
@@ -165,11 +174,51 @@ Never reconstruct fetch jobs from retailer hints or directly from unresolved
 acquisition rows. Never copy a discovery target into `targets` to make the
 recovery runner accept it. Rebuild the official-candidate manifest instead.
 
+### 2.3 Rebuild and inspect the canonical document graph
+
+The committed dimension-expression knowledge artifact contains one flat
+`indexedDocuments` record for every MinerU index. Rebuilding the graph from
+that committed index is network-free and does not require the evidence drive:
+
+```bash
+npm run build:historical-document-family-graph
+jq '{
+  indexed: .summary.indexedPdfDocuments,
+  valid: .summary.validIndexedPdfDocuments,
+  invalid: .summary.invalidIndexedPdfDocuments,
+  unique: .summary.uniquePdfDocuments,
+  families: .summary.documentFamilies,
+  modelEdges: .summary.modelEdges,
+  byProofLevel: .summary.byProofLevel,
+  nonPdfLinks: .summary.nonIndexedClassificationLinksByLane
+}' data/architecture-v2/generated/historical-document-family-graph.json
+```
+
+To refresh the committed MinerU index from immutable external objects, mount
+the evidence drive and run the knowledge builder first:
+
+```bash
+FITAPPLIANCE_STORAGE_ROOT=/Volumes/UGREEN-1TB/FitAppliance \
+  npm run build:dimension-expression-knowledge
+npm run build:historical-document-family-graph
+npm run build:historical-evidence-program-status
+```
+
+Every PDF hash must have exactly one graph node. `EXACT_MODEL_PROVEN` requires
+a current exact-model receipt or an exact MinerU locator/replay;
+`MODEL_LIST_PROVEN` requires an explicit internal model row or model-list
+locator. Filenames, URL hints, family membership and classification
+associations alone stay `FAMILY_SCOPE_ONLY` or `ALIAS_RESEARCH`. Classification
+links to official HTML or JSON evidence remain in
+`nonIndexedClassificationLinks`; do not fabricate PDF graph nodes from their
+content hashes.
+
 ## 3. Build and inspect the execution graph
 
 Regenerate the next-epoch queue only after the previous release is committed:
 
 ```bash
+npm run build:historical-document-family-graph
 npm run build:historical-model-pdf-acquisition-queue
 npm run build:historical-official-candidate-manifest
 npm run build:historical-executable-recovery-queue

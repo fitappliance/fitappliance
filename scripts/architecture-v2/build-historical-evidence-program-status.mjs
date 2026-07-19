@@ -43,6 +43,7 @@ export async function runCli(args = process.argv.slice(2)) {
   const [
     classification,
     knowledge,
+    documentGraph,
     acquisitionQueue,
     executableQueue,
     acceptanceBundle,
@@ -55,6 +56,7 @@ export async function runCli(args = process.argv.slice(2)) {
   ] = await Promise.all([
     readJson('historicalModelEvidenceClassification'),
     readJson('dimensionExpressionObservations'),
+    readJson('historicalDocumentFamilyGraph'),
     readJson('historicalModelPdfAcquisitionQueue'),
     readJson('historicalExecutableEvidenceRecoveryQueue'),
     readJson('historicalEvidenceRecoveryAcceptanceBundle'),
@@ -68,6 +70,7 @@ export async function runCli(args = process.argv.slice(2)) {
   const artifacts = [
     classification,
     knowledge,
+    documentGraph,
     acquisitionQueue,
     executableQueue,
     acceptanceBundle,
@@ -83,6 +86,7 @@ export async function runCli(args = process.argv.slice(2)) {
     generatedAt,
     classification,
     knowledge,
+    documentGraph,
     acquisitionQueue,
     executableQueue,
     acceptanceBundle,

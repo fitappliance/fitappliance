@@ -42,6 +42,11 @@
       "id": "fit_publication",
       "label": "Current catalogue and Fit audit agree without violations",
       "status": "PASS"
+    },
+    {
+      "id": "document_graph",
+      "label": "Every MinerU index has one content-hash graph node and typed model edges",
+      "status": "PASS"
     }
   ],
   "metrics": [
@@ -172,13 +177,40 @@
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-mineru-backfill-audit.json"
     },
     {
+      "id": "document.graph_indexed_nodes",
+      "label": "Indexed PDF content graph nodes",
+      "grain": "unique_pdf_content",
+      "numerator": 940,
+      "denominator": 940,
+      "rateBasisPoints": 10000,
+      "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
+    },
+    {
+      "id": "document.graph_valid_nodes",
+      "label": "Valid indexed PDF graph nodes",
+      "grain": "unique_pdf_content",
+      "numerator": 925,
+      "denominator": 940,
+      "rateBasisPoints": 9840,
+      "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
+    },
+    {
+      "id": "document.graph_proven_model_applicability",
+      "label": "Document-model edges with exact or internal model-list proof",
+      "grain": "document_model_edge",
+      "numerator": 547,
+      "denominator": 3760,
+      "rateBasisPoints": 1455,
+      "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
+    },
+    {
       "id": "document.knowledge_valid",
       "label": "Valid MinerU knowledge documents",
       "grain": "mineru_knowledge_document",
       "numerator": 925,
       "denominator": 940,
       "rateBasisPoints": 9840,
-      "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
+      "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
     {
       "id": "document.knowledge_recognized",

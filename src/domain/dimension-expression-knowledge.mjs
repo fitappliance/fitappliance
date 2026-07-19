@@ -44,6 +44,55 @@ function requiredHash(value, label) {
   return result;
 }
 
+function indexedMineruObject(document, pdfSha256, contentSha256) {
+  const source = document.mineruObject ?? {};
+  const parserVersion = normalizedText(source.parserVersion ?? document.parserVersion) || null;
+  const modelRevision = normalizedText(source.modelRevision ?? document.modelRevision) || null;
+  return {
+    schemaVersion: Number.isInteger(source.schemaVersion) ? source.schemaVersion : 1,
+    format: normalizedText(source.format) || 'content_list_v2',
+    parserName: normalizedText(source.parserName) || 'MinerU',
+    parserVersion,
+    modelRevision,
+    sourcePdfSha256: pdfSha256,
+    contentSha256,
+    objectPath: normalizedText(source.objectPath) || (contentSha256
+      ? `evidence/derived/mineru-json/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.json`
+      : null),
+    byteSize: Number.isInteger(source.byteSize) ? source.byteSize : null,
+    pageCount: Number.isInteger(source.pageCount) ? source.pageCount : null,
+  };
+}
+
+function indexedDocumentRecord(document, validity) {
+  const pdfSha256 = requiredHash(document.pdfSha256, 'indexed document PDF');
+  const contentSha256 = document.contentSha256
+    ? requiredHash(document.contentSha256, 'indexed document MinerU content')
+    : null;
+  return {
+    pdfSha256,
+    contentSha256,
+    validity,
+    ...(validity === 'INVALID' ? { invalidReason: normalizedText(document.reason) } : {}),
+    mappingStatus: normalizedText(document.mappingStatus) || 'UNMAPPED',
+    sourceUrls: [...new Set((document.sourceUrls ?? []).map(normalizedText).filter(Boolean))].sort(),
+    identities: [...new Map((document.identities ?? []).map((identity) => {
+      const normalized = {
+        brand: normalizedText(identity.brand),
+        model: normalizedText(identity.model),
+        category: normalizedText(identity.category),
+      };
+      return [`${normalized.category}\0${normalized.brand.toLowerCase()}\0${normalized.model.toLowerCase()}`, normalized];
+    }).filter(([, identity]) => (
+      identity.brand && identity.model && CATEGORIES.includes(identity.category)
+    ))).values()].sort((left, right) => (
+      `${left.category}\0${left.brand.toLowerCase()}\0${left.model.toLowerCase()}`
+        .localeCompare(`${right.category}\0${right.brand.toLowerCase()}\0${right.model.toLowerCase()}`)
+    )),
+    mineruObject: indexedMineruObject(document, pdfSha256, contentSha256),
+  };
+}
+
 function nestedText(value) {
   if (typeof value === 'string') return value;
   if (Array.isArray(value)) return value.map(nestedText).filter(Boolean).join(' ');
@@ -1471,8 +1520,15 @@ export function buildDimensionExpressionKnowledge(input) {
   const observations = [...extractedByHash.values()].reduce((sum, row) => sum + row.observations.length, 0);
   const documentsWithObservations = [...extractedByHash.values()].filter((row) => row.observations.length).length;
   const researchGaps = [...extractedByHash.values()].reduce((sum, row) => sum + row.researchGaps.length, 0);
+  const indexedDocuments = [
+    ...documents.map((document) => indexedDocumentRecord(document, 'VALID')),
+    ...invalidDocuments.map((document) => indexedDocumentRecord(document, 'INVALID')),
+  ].sort((left, right) => left.pdfSha256.localeCompare(right.pdfSha256));
+  if (new Set(indexedDocuments.map((document) => document.pdfSha256)).size !== indexedDocuments.length) {
+    throw new Error('duplicate PDF hash in MinerU indexed-document inventory');
+  }
   return {
-    schemaVersion: 3,
+    schemaVersion: 4,
     generatedAt,
     policy: {
       categories: [...CATEGORIES],
@@ -1503,6 +1559,7 @@ export function buildDimensionExpressionKnowledge(input) {
       completeParserReplays: [...parserReplaysByHash.values()].flat()
         .filter((replay) => ['ALL_AXIS_SCALAR', 'ALL_AXIS_RANGE'].includes(replay.extractionState)).length,
     },
+    indexedDocuments,
     categories: categoryRows,
     unmappedDocuments,
     invalidDocuments,

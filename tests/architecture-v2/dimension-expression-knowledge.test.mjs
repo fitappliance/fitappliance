@@ -824,6 +824,8 @@ test('MinerU loader quarantines a missing source PDF but rejects derived-content
   assert.equal(loaded.invalidDocuments[0].pdfSha256, pdfSha256);
   assert.equal(loaded.invalidDocuments[0].contentSha256, contentSha256);
   assert.equal(loaded.invalidDocuments[0].identities[0].model, 'WHE6874BA');
+  assert.equal(loaded.invalidDocuments[0].mineruObject.sourcePdfSha256, pdfSha256);
+  assert.equal(loaded.invalidDocuments[0].mineruObject.contentSha256, contentSha256);
 
   index.derivedArtifact.contentSha256 = '4'.repeat(64);
   await fs.writeFile(indexPath, `${JSON.stringify(index)}\n`);

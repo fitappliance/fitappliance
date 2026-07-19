@@ -1,6 +1,7 @@
 const INPUT_SCHEMAS = Object.freeze({
   classification: 1,
-  knowledge: 3,
+  knowledge: 4,
+  documentGraph: 1,
   acquisitionQueue: 1,
   executableQueue: 2,
   acceptanceBundle: 1,
@@ -15,6 +16,7 @@ const INPUT_SCHEMAS = Object.freeze({
 const SOURCE_ARTIFACTS = Object.freeze({
   classification: 'data/architecture-v2/generated/historical-model-evidence-classification.json',
   knowledge: 'data/architecture-v2/generated/dimension-expression-observations.json',
+  documentGraph: 'data/architecture-v2/generated/historical-document-family-graph.json',
   acquisitionQueue: 'data/architecture-v2/reviews/automated/historical-model-pdf-acquisition-queue.json',
   executableQueue: 'data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json',
   acceptanceBundle: 'data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json',
@@ -31,6 +33,25 @@ const CONTENT_LANES = Object.freeze({
   'text/html': 'html',
   'application/json': 'json',
 });
+const SHA256 = /^[a-f0-9]{64}$/;
+
+function isExactGraphLocator(locator) {
+  if (locator?.type === 'CURRENT_RECEIPT') {
+    return typeof locator.documentId === 'string' && locator.documentId.length > 0;
+  }
+  return locator?.type === 'MINERU_EXACT_MODEL_LOCATOR'
+    && Number.isInteger(locator.page)
+    && locator.page >= 0
+    && SHA256.test(locator.fragmentSha256 ?? '');
+}
+
+function isModelListGraphLocator(locator) {
+  if (!Number.isInteger(locator?.page) || locator.page < 0) return false;
+  if (locator.type === 'MINERU_MODEL_ROW') return SHA256.test(locator.fragmentSha256 ?? '');
+  return locator.type === 'MINERU_MODEL_LIST_LOCATOR'
+    && typeof locator.quote === 'string'
+    && locator.quote.length > 0;
+}
 
 function integer(value, label) {
   if (!Number.isInteger(value) || value < 0) throw new TypeError(`${label} must be a non-negative integer`);
@@ -98,6 +119,7 @@ function pass(id, label) {
 function assertAccounting({
   classification,
   knowledge,
+  documentGraph,
   acquisitionQueue,
   executableQueue,
   acceptanceBundle,
@@ -219,6 +241,59 @@ function assertAccounting({
     throw new Error('MinerU observation accounting mismatch');
   }
 
+  if (!Array.isArray(documentGraph.documents) || !Array.isArray(documentGraph.families)
+    || !Array.isArray(documentGraph.sourceVersions)
+    || !Array.isArray(documentGraph.nonIndexedClassificationLinks)) {
+    throw new TypeError('document graph node arrays required');
+  }
+  const graphDocuments = integer(documentGraph.summary.indexedPdfDocuments, 'document graph nodes');
+  const graphValid = integer(documentGraph.summary.validIndexedPdfDocuments, 'valid document graph nodes');
+  const graphInvalid = integer(documentGraph.summary.invalidIndexedPdfDocuments, 'invalid document graph nodes');
+  const uniqueGraphHashes = new Set(documentGraph.documents.map((document) => document.pdfSha256));
+  if (documentGraph.documents.length !== graphDocuments
+    || uniqueGraphHashes.size !== graphDocuments
+    || documentGraph.summary.uniquePdfDocuments !== graphDocuments
+    || graphValid + graphInvalid !== graphDocuments
+    || graphDocuments !== mineruTotal
+    || graphValid !== mineruValid
+    || graphInvalid !== mineruInvalid
+    || documentGraph.documents.filter((document) => document.validity === 'VALID').length !== graphValid
+    || documentGraph.documents.filter((document) => document.validity === 'INVALID').length !== graphInvalid
+    || documentGraph.families.length !== documentGraph.summary.documentFamilies
+    || documentGraph.sourceVersions.length !== documentGraph.summary.sourceVersions
+    || documentGraph.nonIndexedClassificationLinks.length
+      !== documentGraph.summary.nonIndexedClassificationLinks) {
+    throw new Error('document graph node accounting mismatch');
+  }
+  const graphEdges = documentGraph.documents.flatMap((document) => document.modelEdges ?? []);
+  const mappedGraphEdges = graphEdges.filter((edge) => edge.referenceId !== null);
+  if (graphEdges.length !== documentGraph.summary.modelEdges
+    || mappedGraphEdges.length !== documentGraph.summary.mappedModelEdges
+    || countValues(documentGraph.summary.byProofLevel, 'document graph proof levels') !== graphEdges.length) {
+    throw new Error('document graph edge accounting mismatch');
+  }
+  for (const edge of graphEdges) {
+    if (!Array.isArray(edge.proofLocators) || edge.proofLocators.length === 0) {
+      throw new Error('document graph edge proof locator missing');
+    }
+    if (edge.referenceId === null) {
+      if (edge.proofLevel !== 'UNMAPPED') throw new Error('document graph null reference must be UNMAPPED');
+      continue;
+    }
+    if (!classificationByReference.has(edge.referenceId)) {
+      throw new Error(`document graph reference missing from classification: ${edge.referenceId}`);
+    }
+    if (edge.proofLevel === 'UNMAPPED') throw new Error('mapped document graph edge cannot be UNMAPPED');
+    if (edge.proofLevel === 'EXACT_MODEL_PROVEN'
+      && !edge.proofLocators.some(isExactGraphLocator)) {
+      throw new Error(`document graph exact-model proof locator invalid: ${edge.referenceId}`);
+    }
+    if (edge.proofLevel === 'MODEL_LIST_PROVEN'
+      && !edge.proofLocators.some(isModelListGraphLocator)) {
+      throw new Error(`document graph model-list proof locator invalid: ${edge.referenceId}`);
+    }
+  }
+
   const uniquePdfs = integer(mineruBackfillAudit.summary.uniqueDocuments, 'unique backfill PDFs');
   const indexedPdfs = integer(mineruBackfillAudit.summary.indexed, 'indexed backfill PDFs');
   const pendingPdfs = ['missing', 'stale', 'failed']
@@ -264,6 +339,7 @@ function assertAccounting({
     pass('receipt_replay', 'Every accepted source replays without failure'),
     pass('replacement_inventory', 'Replacement reference matches the historical inventory'),
     pass('fit_publication', 'Current catalogue and Fit audit agree without violations'),
+    pass('document_graph', 'Every MinerU index has one content-hash graph node and typed model edges'),
   ];
 }
 
@@ -322,6 +398,7 @@ export function buildHistoricalEvidenceProgramStatus(input) {
   if (Number.isNaN(generatedAt.valueOf())) throw new TypeError('valid programme status generatedAt required');
   const classification = schema(input.classification, 'classification');
   const knowledge = schema(input.knowledge, 'knowledge');
+  const documentGraph = schema(input.documentGraph, 'documentGraph');
   const acquisitionQueue = schema(input.acquisitionQueue, 'acquisitionQueue');
   const executableQueue = schema(input.executableQueue, 'executableQueue');
   const acceptanceBundle = schema(input.acceptanceBundle, 'acceptanceBundle');
@@ -336,6 +413,7 @@ export function buildHistoricalEvidenceProgramStatus(input) {
   const controls = assertAccounting({
     classification,
     knowledge,
+    documentGraph,
     acquisitionQueue,
     executableQueue,
     acceptanceBundle,
@@ -422,9 +500,31 @@ export function buildHistoricalEvidenceProgramStatus(input) {
       sourceArtifact: SOURCE_ARTIFACTS.mineruBackfillAudit,
     }),
     metric({
+      id: 'document.graph_indexed_nodes', label: 'Indexed PDF content graph nodes', grain: 'unique_pdf_content',
+      numerator: documentGraph.summary.indexedPdfDocuments,
+      denominator: documentGraph.summary.indexedPdfDocuments,
+      sourceArtifact: SOURCE_ARTIFACTS.documentGraph,
+    }),
+    metric({
+      id: 'document.graph_valid_nodes', label: 'Valid indexed PDF graph nodes', grain: 'unique_pdf_content',
+      numerator: documentGraph.summary.validIndexedPdfDocuments,
+      denominator: documentGraph.summary.indexedPdfDocuments,
+      sourceArtifact: SOURCE_ARTIFACTS.documentGraph,
+    }),
+    metric({
+      id: 'document.graph_proven_model_applicability',
+      label: 'Document-model edges with exact or internal model-list proof',
+      grain: 'document_model_edge',
+      numerator: (documentGraph.summary.byProofLevel.EXACT_MODEL_PROVEN ?? 0)
+        + (documentGraph.summary.byProofLevel.MODEL_LIST_PROVEN ?? 0),
+      denominator: documentGraph.summary.mappedModelEdges,
+      sourceArtifact: SOURCE_ARTIFACTS.documentGraph,
+    }),
+    metric({
       id: 'document.knowledge_valid', label: 'Valid MinerU knowledge documents', grain: 'mineru_knowledge_document',
-      numerator: knowledge.summary.validMineruDocuments,
-      denominator: knowledge.summary.mineruDocuments, sourceArtifact: SOURCE_ARTIFACTS.knowledge,
+      numerator: documentGraph.summary.validIndexedPdfDocuments,
+      denominator: documentGraph.summary.indexedPdfDocuments,
+      sourceArtifact: SOURCE_ARTIFACTS.documentGraph,
     }),
     metric({
       id: 'document.knowledge_recognized', label: 'MinerU knowledge documents with recognized expressions', grain: 'mineru_knowledge_document',

@@ -196,33 +196,50 @@ export async function loadMineruDocuments({ storageRoot, metadata }) {
     const pdfSha256 = normalizedText(index.sourcePdfSha256).toLowerCase();
     if (`${pdfSha256}.json` !== name) throw new Error(`MinerU index filename mismatch: ${name}`);
     if (index.derivedArtifact?.sourcePdfSha256 !== pdfSha256) throw new Error(`MinerU source binding mismatch: ${name}`);
-    const contentPath = safeStoragePath(storageRoot, index.derivedArtifact.objectPath);
+    const derived = index.derivedArtifact;
+    const contentPath = safeStoragePath(storageRoot, derived.objectPath);
     const contentBytes = await fs.readFile(contentPath);
-    if (sha256(contentBytes) !== index.derivedArtifact.contentSha256) throw new Error(`MinerU content hash mismatch: ${name}`);
+    if (sha256(contentBytes) !== derived.contentSha256) throw new Error(`MinerU content hash mismatch: ${name}`);
     const contentList = JSON.parse(contentBytes);
     const source = metadata.get(pdfSha256) ?? { sourceUrls: [], identities: [], objectPaths: [] };
+    const mineruObject = {
+      schemaVersion: Number.isInteger(derived.schemaVersion) ? derived.schemaVersion : 1,
+      format: derived.format ?? 'content_list_v2',
+      parserName: derived.parserName ?? 'MinerU',
+      parserVersion: derived.parserVersion ?? index.parserVersion ?? null,
+      modelRevision: derived.modelRevision ?? index.modelRevision ?? null,
+      sourcePdfSha256: pdfSha256,
+      contentSha256: derived.contentSha256,
+      objectPath: derived.objectPath,
+      byteSize: Number.isInteger(derived.byteSize) ? derived.byteSize : contentBytes.length,
+      pageCount: Number.isInteger(derived.pageCount) ? derived.pageCount : null,
+    };
     const sourcePdfPath = await verifyPdf(storageRoot, pdfSha256, source.objectPaths);
     const mappingStatus = source.identities.length ? 'MAPPED_TARGET_IDENTITY' : 'UNMAPPED_SOURCE_PDF';
     if (!sourcePdfPath) {
       invalidDocuments.push({
         indexFile: name,
         pdfSha256,
-        contentSha256: index.derivedArtifact.contentSha256,
+        contentSha256: derived.contentSha256,
         reason: 'ORPHANED_SOURCE_PDF',
         mappingStatus,
         sourceUrls: source.sourceUrls,
         identities: source.identities,
+        parserVersion: index.parserVersion,
+        modelRevision: index.modelRevision,
+        mineruObject,
       });
       continue;
     }
     documents.push({
       pdfSha256,
-      contentSha256: index.derivedArtifact.contentSha256,
+      contentSha256: derived.contentSha256,
       parserVersion: index.parserVersion,
       modelRevision: index.modelRevision,
       mappingStatus,
       sourceUrls: source.sourceUrls,
       identities: source.identities,
+      mineruObject,
       contentList,
     });
   }

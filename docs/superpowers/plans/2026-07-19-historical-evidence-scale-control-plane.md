@@ -11,7 +11,7 @@
   [`2026-07-13-historical-evidence-coverage-recovery.md`](2026-07-13-historical-evidence-coverage-recovery.md)
 - **Canonical runbook:**
   [`historical-evidence-recovery-runbook.md`](../../architecture-v2/historical-evidence-recovery-runbook.md)
-- **Active task:** None - Task 4 complete; Task 5 pending
+- **Active task:** Task 5 - verification complete; commit pending
 
 **Goal:** Move the 8,089-model historical evidence programme from a safe but
 low-throughput recovery loop to a measurable, family-aware, bounded and
@@ -84,7 +84,7 @@ under that task, repair the plan first, and only then resume implementation.
 | 2 | Source-level ledger cannot show model outcomes; terminal queue noise | COMPLETE | 9 projection tests; 32 focused tests; Architecture V2 887/887; lint/build/diff passed; all 8,089 targets projected |
 | 3 | 6,321 models lack document links or materialised official candidates | COMPLETE | 12 manifest tests; 55 focused tests; Architecture V2 899/899; two immutable ASKO canaries; lint/build/refresh/diff passed |
 | 4 | Executable graph has resolver-only targets and zero fetch jobs | COMPLETE | 68 focused tests; Architecture V2 905/905; lint/build/diff passed; 6 fetch jobs and 6 candidate edges; 4,982 bounded discovery targets; zero resolver-only acquisition targets |
-| 5 | PDF/MinerU/document-family/model relationships are not canonical | PENDING | - |
+| 5 | PDF/MinerU/document-family/model relationships are not canonical | COMPLETE | 55 focused tests; Architecture V2 920/920; lint/build/diff passed; five-artifact external replay idempotent |
 | 6 | Per-model runs repeat family-level source failures | PENDING | - |
 | 7 | Generated batches are operationally too broad | PENDING | - |
 | 8 | Parser repairs are not prioritised by reusable family impact | PENDING | - |
@@ -392,19 +392,53 @@ target loses all candidates without a typed reason.
 - Create: `tests/architecture-v2/historical-document-family-graph.test.mjs`
 - Create: `data/architecture-v2/generated/historical-document-family-graph.json`
 - Modify: `scripts/architecture-v2/build-dimension-expression-knowledge.mjs`
+- Modify: `src/domain/dimension-expression-knowledge.mjs`
+- Modify: `src/domain/historical-evidence-program-status.mjs`
+- Modify: `src/domain/architecture-v2-paths.mjs`
+- Modify: `package.json`
 
 **Interfaces:**
 - Canonical nodes: immutable content hash, source URL/version, MinerU object,
   parser grammar and applicable exact-model references.
 - Edges distinguish `EXACT_MODEL_PROVEN`, `MODEL_LIST_PROVEN`,
   `FAMILY_SCOPE_ONLY`, `ALIAS_RESEARCH` and `UNMAPPED`.
+- Dimension-expression knowledge schema v4 adds one flat `indexedDocuments`
+  record per MinerU index. It preserves the source-PDF hash, derived-object
+  hash/path, parser version/model revision, validity, source URLs and mapped
+  identity hints. The graph is generated from this committed index, so ordinary
+  builds remain external-drive-independent.
+- A current exact-model receipt or a MinerU page/fragment/model-row locator can
+  create a proven edge. Family membership, filenames, URL model hints and
+  classification associations alone remain `FAMILY_SCOPE_ONLY` or
+  `ALIAS_RESEARCH`.
+- One source URL resolving to multiple content hashes produces explicit sibling
+  source versions. No version is called current/latest without acquisition-time
+  evidence, and the content hashes are never merged.
 
-- [ ] Test physical duplicate PDFs, shared manuals, model lists, family-only
+- [x] Test physical duplicate PDFs, shared manuals, model lists, family-only
   manuals, suffix aliases and conflicting content under one URL.
-- [ ] Build the graph from existing immutable PDF and MinerU indexes.
-- [ ] Rebase document KPI metrics on graph nodes without changing model receipt
+- [x] Build the graph from existing immutable PDF and MinerU indexes.
+- [x] Rebase document KPI metrics on graph nodes without changing model receipt
   authority.
-- [ ] Update this task and commit.
+- [x] Update this task and commit.
+
+**Completed evidence (2026-07-19):** Dimension-expression knowledge schema v4
+now preserves one flat immutable MinerU-object binding for all 940 indexed PDF
+hashes (925 valid and 15 invalid). The graph collapses 637 physical files into
+590 physically stored unique documents while retaining all 940 indexed graph
+nodes, 510 document families, 1,102 URL/content versions and one explicit
+same-URL content conflict. Its 3,799 edges are 534 `EXACT_MODEL_PROVEN`, 13
+`MODEL_LIST_PROVEN`, 3,213 `FAMILY_SCOPE_ONLY` and 39 `UNMAPPED`; only 547 of
+3,760 mapped document-model edges have receipt or page/fragment/model-list
+proof. Submission review found and removed 17 replay-only false exact proofs;
+parser replay without a source locator is now a non-authorising hint, and seven
+additional edges correctly resolve to model-list rather than exact proof. The
+98 graph-external classification links remain typed as 85 HTML and 13 JSON
+links rather than fabricated PDF nodes. Fifty-five focused tests, the full
+Architecture V2 suite (920/920), lint, normal drive-independent build,
+cross-artifact invariants and `git diff --check` pass. Rebuilding the MinerU
+index from `/Volumes/UGREEN-1TB/FitAppliance`, then the graph and programme
+status, leaves all five generated JSON/Markdown hashes unchanged.
 
 **Acceptance:** Every indexed PDF hash has one graph node and every model edge
 states its proof level; document-level completion cannot be reported as
@@ -412,6 +446,15 @@ model-level completion.
 
 **Stop condition:** A shared manual is fanned out without internal model-list or
 exact-model proof.
+
+**Plan correction (2026-07-19):** The prior nested knowledge artifact could
+account for 940 MinerU indexes only by reconstructing hashes from families,
+unmapped rows and invalid rows. That loses parser/object metadata and makes a
+canonical graph impossible to replay. Task 5 therefore first adds the flat
+index above, then builds the graph and rebases document-grain KPIs on its nodes.
+This is an input-contract repair, not a new evidence authority.
+Parser replay is retained as `MINERU_REPLAY_HINT` but cannot authorise an exact
+edge without a current receipt or an immutable MinerU page/fragment locator.
 
 ---
 
