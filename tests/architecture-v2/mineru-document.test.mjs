@@ -1335,7 +1335,7 @@ test('MinerU applies the Hisense AU washer indexed dimension diagram to listed s
   );
 });
 
-test('MinerU accepts only the unqualified primary depth from a dimension diagram with primed variants', () => {
+test('MinerU leaves D/D-prime diagram depth variants unresolved without a declared profile', () => {
   const bytes = Buffer.from(JSON.stringify([[
     tableFragment('<table><tr><td>Model</td><td>DVH1-08WP</td></tr></table>'),
     paragraph('Dimension(mm)', [80, 180, 300, 210]),
@@ -1363,15 +1363,95 @@ test('MinerU accepts only the unqualified primary depth from a dimension diagram
   assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
     'closedEnvelope.widthMm': 600,
     'closedEnvelope.heightMm': 850,
-    'closedEnvelope.depthMm': 660,
   });
   assert.deepEqual(parsed.claims.map((claim) => claim.sourceAxisOrder), [
     ['width'],
     ['height'],
-    ['depth'],
   ]);
-  const depth = parsed.claims.find((claim) => claim.field === 'closedEnvelope.depthMm');
-  assert.equal(depth.sourceLabel, 'Depth (mm)');
+  assert.equal(parsed.claims.some((claim) => claim.field === 'closedEnvelope.depthMm'), false);
+});
+
+test('MinerU applies the hash-bound LG dryer diagram profile to closed depth only', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    tableFragment('<table><tr><td>Description</td><td>Value</td></tr><tr><td>Model</td><td>DVH1-08WP</td></tr></table>'),
+    paragraph('Dimension(mm)', [80, 180, 300, 210]),
+    {
+      type: 'image',
+      content: {
+        image_source: { path: 'images/dimension-side-view.jpg' },
+        image_caption: [], image_footnote: [],
+      },
+      bbox: [200, 230, 800, 520],
+    },
+    {
+      ...tableFragment('<table><tr><td>W</td><td>600</td><td>D</td><td>660</td><td>D&quot;</td><td>1115</td></tr><tr><td>H</td><td>850</td><td>D&#x27;</td><td>614</td><td></td><td></td></tr></table>'),
+      bbox: [80, 550, 900, 760],
+    },
+  ]]));
+
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256: '22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957',
+    parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'LG', model: 'DVH1-08WP', category: 'dryer' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 600,
+    'closedEnvelope.heightMm': 850,
+    'closedEnvelope.depthMm': 660,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['lg-au-dryer-dimension-diagram-v1']);
+  assert.equal(parsed.claims.some((claim) => claim.sourceLabel === "D'"), false);
+  assert.equal(parsed.claims.some((claim) => claim.sourceLabel === 'D"'), false);
+});
+
+test('LG dryer diagram profile accepts an explicit model list but rejects structural drift', () => {
+  const sourceTable = '<table><tr><td>W</td><td>600</td><td>D</td><td>690</td><td>D&quot;</td><td>1115</td></tr><tr><td>H</td><td>850</td><td>D&#x27;</td><td>615</td><td></td><td></td></tr></table>';
+  const modelTable = tableFragment('<table><tr><td>Description</td><td>Value</td></tr><tr><td>Model</td><td>DVH10-10B / DVH10-10W / DVH9-10B / DVH5-10G</td></tr></table>');
+  const image = {
+    type: 'image',
+    content: {
+      image_source: { path: 'images/dimension-side-view.jpg' },
+      image_caption: [], image_footnote: [],
+    },
+    bbox: [200, 230, 800, 520],
+  };
+  const parse = (items, model = 'DVH10-10B') => parseMineruContentListV2(
+    Buffer.from(JSON.stringify([items])),
+    {
+      pdfSha256: '521077b559417d620664ead6be32ee1738e575ae50a7ffb3734b3fc24458d462',
+      parserVersion: '3.4.4', modelRevision,
+      caseIdentity: { brand: 'LG', model, category: 'dryer' },
+      claimSemanticsVersion: 2,
+      fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    },
+  );
+
+  const accepted = parse([
+    modelTable,
+    paragraph('Dimension(mm)', [80, 180, 300, 210]),
+    image,
+    tableFragment(sourceTable),
+  ]);
+  assert.equal(accepted.claims.find((claim) => claim.field === 'closedEnvelope.depthMm').value.mm, 690);
+  assert.deepEqual(accepted.grammarProfileIds, ['lg-au-dryer-dimension-diagram-v1']);
+
+  const noImage = parse([
+    modelTable,
+    paragraph('Dimension(mm)', [80, 180, 300, 210]),
+    tableFragment(sourceTable),
+  ]);
+  assert.equal(noImage.claims.some((claim) => claim.field === 'closedEnvelope.depthMm'), false);
+  assert.deepEqual(noImage.grammarProfileIds, []);
+
+  assert.throws(() => parse([
+    modelTable,
+    paragraph('Dimension(mm)', [80, 180, 300, 210]),
+    image,
+    tableFragment(sourceTable),
+  ], 'DVH11-10B'), /identity|exact-model/i);
 });
 
 test('MinerU resolves a Depth parent row to the explicit door-and-handle external depth', () => {
@@ -2964,6 +3044,27 @@ test('MinerU expands an explicit Electrolux colour-suffix shorthand only inside 
     claimSemanticsVersion: 2,
     fields: ['closedEnvelope.widthMm'],
   }), /identity|exact-model/i);
+});
+
+test('MinerU keeps an exact Electrolux total-only table on the generic explicit-axis path', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    titleFragment('DIMENSIONS'),
+    tableFragment('<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>575</td></tr></table>'),
+    pageHeader('EWW7524ADWA'),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Electrolux', model: 'EWW7524ADWA', category: 'washing_machine' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 600,
+    'closedEnvelope.heightMm': 850,
+    'closedEnvelope.depthMm': 575,
+  });
+  assert.ok(parsed.claims.every((claim) => claim.grammarProfileId == null));
 });
 
 test('MinerU parses a single-cell exact-model net dimension sequence', () => {

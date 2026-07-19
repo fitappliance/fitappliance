@@ -614,6 +614,18 @@ const HAIER_AU_TFE3_FINISH_FAMILY_GRAMMAR =
   'haier-au-tfe3-finish-family-product-dimensions-v1';
 const HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR =
   'haier-au-hbm-technical-data-family-v1';
+const LG_AU_DRYER_DIMENSION_DIAGRAM_GRAMMAR =
+  'lg-au-dryer-dimension-diagram-v1';
+const ELECTROLUX_AU_WASHER_PRODUCT_TOTAL_DEPTH_GRAMMAR =
+  'electrolux-au-washer-product-total-depth-v1';
+const LG_AU_DRYER_DIMENSION_DIAGRAM_MODELS = Object.freeze({
+  '22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957': Object.freeze([
+    'DVH1-08WP',
+  ]),
+  '521077b559417d620664ead6be32ee1738e575ae50a7ffb3734b3fc24458d462': Object.freeze([
+    'DVH10-10B', 'DVH10-10W', 'DVH9-10B', 'DVH5-10G',
+  ]),
+});
 
 function explicitDimensionRowsWithInheritedUnit(text, {
   requireShorthand = false,
@@ -1261,27 +1273,7 @@ function explicitPageDimensionUnit(items) {
   return { unit: 'mm', sourceLabel: normalizedText(matches[0][0]) };
 }
 
-function dimensionDiagramContext(items, fragment) {
-  const tableIndex = items.indexOf(fragment);
-  if (tableIndex < 1) return false;
-  let headingIndex = -1;
-  for (let index = tableIndex - 1; index >= 0; index -= 1) {
-    const item = items[index];
-    if (item.type === 'table') break;
-    if (/\bdimensions?\s*\(\s*(?:mm|millimet(?:re|er)s?)\s*\)/i.test(item.text)) {
-      headingIndex = index;
-      break;
-    }
-  }
-  if (headingIndex < 0) return false;
-  return items.slice(headingIndex + 1, tableIndex).some((item) => (
-    item.type === 'image'
-    && item.bbox[1] >= items[headingIndex].bbox[1]
-    && item.bbox[3] <= fragment.bbox[1]
-  ));
-}
-
-function alternatingAxisRows(fragment, pageUnit, options = {}) {
+function alternatingAxisRows(fragment, pageUnit) {
   if (!pageUnit || pageUnit.unit !== 'mm' || !Array.isArray(fragment.cells)) return [];
   const pairs = [];
   for (const cells of fragment.cells) {
@@ -1302,18 +1294,11 @@ function alternatingAxisRows(fragment, pageUnit, options = {}) {
   }
   if (pairs.length < 2) return [];
   const depthVariants = pairs.filter((pair) => pair.axis === 'D' && pair.qualifier);
-  const plainDepths = pairs.filter((pair) => pair.axis === 'D' && !pair.qualifier);
   const depthIsAmbiguous = depthVariants.length > 0;
-  const diagramPrimaryDepth = Boolean(
-    options.qualifiedDepthPrimary
-    && plainDepths.length === 1
-    && depthVariants.length > 0
-    && new Set(depthVariants.map((pair) => pair.qualifier)).size === depthVariants.length,
-  );
   const labels = { W: 'Width', H: 'Height', D: 'Depth' };
   const unambiguous = pairs.filter((pair) => (
     pair.axis !== 'D'
-    || (!pair.qualifier && (!depthIsAmbiguous || diagramPrimaryDepth))
+    || (!pair.qualifier && !depthIsAmbiguous)
   ));
   if (new Set(unambiguous.map((pair) => pair.axis)).size !== unambiguous.length) return [];
   const axisMap = { W: 'width', H: 'height', D: 'depth' };
@@ -1322,9 +1307,6 @@ function alternatingAxisRows(fragment, pageUnit, options = {}) {
     value: `${pair.sourceValue} ${pageUnit.unit}`,
     quote: `${pair.sourceAxis} ${pair.sourceValue}`,
     axisOrder: [axisMap[pair.axis]],
-    ...(pair.axis === 'D' && diagramPrimaryDepth ? {
-      semanticBasis: 'explicit_dimension_diagram_primary_axis',
-    } : {}),
   }));
 }
 
@@ -2956,6 +2938,136 @@ function lgDryerExactModelSizeScope(document, caseIdentity) {
   return matches.length === 1 ? matches[0] : null;
 }
 
+function electroluxAuWasherProductDimensionScope(document, caseIdentity) {
+  if (canonicalModel(caseIdentity?.brand) !== 'ELECTROLUX'
+    || normalizedText(caseIdentity?.category) !== 'washing_machine') {
+    return { candidateFragments: new Set(), scope: null };
+  }
+  const model = normalizedText(caseIdentity?.model);
+  if (!model) return { candidateFragments: new Set(), scope: null };
+  const candidateFragments = new Set();
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    items.forEach((heading, headingIndex) => {
+      if (heading.type !== 'title' || !/^dimensions$/i.test(heading.text)) return;
+      const fragment = items[headingIndex + 1];
+      if (fragment?.type !== 'table') return;
+      const cells = fragment.cells.map((row) => row.map(normalizedText));
+      const hasConnectionDepth = cells.some((row) => (
+        row.some((cell) => /^Depth with hoses\b/i.test(cell))
+      ));
+      const hasPackageScope = cells.some((row) => normalizedText(row.join(' ')) === 'PACKAGE');
+      if (!hasConnectionDepth && !hasPackageScope) return;
+      candidateFragments.add(fragment);
+      const exactHeaders = items.filter((item) => (
+        item.type === 'page_header' && canonicalModel(item.text) === canonicalModel(model)
+      ));
+      if (exactHeaders.length !== 1
+        || siblingModelCandidates({ pages: [items] }, model).length > 0) return;
+      if (cells.length !== 5
+        || normalizedText(cells[0].join(' ')) !== 'PRODUCT') return;
+      const expected = [
+        ['Total height (mm)', 'height'],
+        ['Total width (mm)', 'width'],
+        ['Total depth (mm)', 'depth'],
+        ['Depth with hoses (mm)', 'connectionDepth'],
+      ];
+      const values = new Map();
+      for (let index = 0; index < expected.length; index += 1) {
+        const row = cells[index + 1];
+        if (row.length !== 2 || row[0] !== expected[index][0] || !/^\d+$/.test(row[1])) return;
+        values.set(expected[index][1], Number(row[1]));
+      }
+      matches.push({
+        fragment,
+        page: pageIndex + 1,
+        header: exactHeaders[0],
+        rows: [
+          ['height', 'Height'],
+          ['width', 'Width'],
+          ['depth', 'Depth'],
+        ].map(([axis, label]) => ({
+          label,
+          value: `${values.get(axis)} mm`,
+          quote: `Total ${axis} (mm) ${values.get(axis)}`,
+          semanticBasis: 'electrolux_product_total_dimension',
+          axisOrder: [axis],
+          grammarProfileId: ELECTROLUX_AU_WASHER_PRODUCT_TOTAL_DEPTH_GRAMMAR,
+        })),
+      });
+    });
+  });
+  return {
+    candidateFragments,
+    scope: matches.length === 1 ? {
+      ...matches[0],
+      grammarProfileId: ELECTROLUX_AU_WASHER_PRODUCT_TOTAL_DEPTH_GRAMMAR,
+    } : null,
+  };
+}
+
+function lgAuDryerDimensionDiagramScope(document, caseIdentity, pdfSha256) {
+  if (canonicalModel(caseIdentity?.brand) !== 'LG'
+    || normalizedText(caseIdentity?.category) !== 'dryer') return null;
+  const configuredModels = LG_AU_DRYER_DIMENSION_DIAGRAM_MODELS[pdfSha256];
+  const model = normalizedText(caseIdentity?.model);
+  if (!configuredModels || !configuredModels.includes(model)) return null;
+  const expectedModels = configuredModels.map(canonicalModel).sort();
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    const modelRows = items.flatMap((item) => (
+      item.type === 'table' ? item.cells.filter((cells) => (
+        /^model$/i.test(normalizedText(cells[0]))
+      )) : []
+    ));
+    if (modelRows.length !== 1) return;
+    const listedModels = modelExpressionTokens(modelRows[0].slice(1).join(' '))
+      .map(canonicalModel).sort();
+    if (listedModels.length !== expectedModels.length
+      || listedModels.some((listedModel, index) => listedModel !== expectedModels[index])) return;
+    items.forEach((labelFragment, labelIndex) => {
+      if (!/^dimension\s*\(\s*mm\s*\)$/i.test(normalizedText(labelFragment.text))) return;
+      const tableIndex = items.findIndex((item, index) => index > labelIndex && item.type === 'table');
+      if (tableIndex < 0) return;
+      const between = items.slice(labelIndex + 1, tableIndex);
+      if (between.length < 1 || between.length > 2
+        || between.some((item) => item.type !== 'image')) return;
+      const fragment = items[tableIndex];
+      const cells = fragment.cells.map((row) => row.map(normalizedText));
+      if (cells.length !== 2 || cells.some((row) => row.length !== 6)) return;
+      const [first, second] = cells;
+      if (first[0] !== 'W' || first[2] !== 'D' || !/^D["″]$/.test(first[4])
+        || second[0] !== 'H' || !/^D['′]$/.test(second[2])
+        || second[4] !== '' || second[5] !== '') return;
+      const rawValues = [first[1], first[3], first[5], second[1], second[3]];
+      if (rawValues.some((value) => !/^\d+$/.test(value))) return;
+      const [width, depth, doorOpenDepth, height, cabinetDepth] = rawValues.map(Number);
+      if (!(cabinetDepth < depth && depth < doorOpenDepth)) return;
+      matches.push({
+        fragment,
+        identityFragment: items.find((item) => item.type === 'table' && item.cells.includes(modelRows[0])),
+        page: pageIndex + 1,
+        rows: [
+          ['width', 'Width (mm)', width, 'W'],
+          ['height', 'Height (mm)', height, 'H'],
+          ['depth', 'Depth (mm)', depth, 'D'],
+        ].map(([axis, label, value, sourceAxis]) => ({
+          label,
+          value: `${value} mm`,
+          quote: `${sourceAxis} ${value}`,
+          semanticBasis: 'lg_audited_closed_dimension_diagram',
+          axisOrder: [axis],
+          grammarProfileId: LG_AU_DRYER_DIMENSION_DIAGRAM_GRAMMAR,
+        })),
+      });
+    });
+  });
+  return matches.length === 1 ? {
+    ...matches[0],
+    grammarProfileId: LG_AU_DRYER_DIMENSION_DIAGRAM_GRAMMAR,
+  } : null;
+}
+
 export const mineruGrammarProfiles = Object.freeze({
   [HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR]: Object.freeze({
     parserProfileId: HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR,
@@ -3110,6 +3222,28 @@ export const mineruGrammarProfiles = Object.freeze({
     documentType: 'user_manual',
     detectionSummary: 'Exactly one table contains one exact target Model row and one Size row whose three values each carry the same explicit unit plus a unique W, D or H axis label.',
     semanticBoundary: 'Only the three Size values are projected in their written W/D/H order; unitless tuples, packaged or installation sizes, conflicting label orders and tables with multiple matching model or size rows are excluded.',
+  }),
+  [LG_AU_DRYER_DIMENSION_DIAGRAM_GRAMMAR]: Object.freeze({
+    parserProfileId: LG_AU_DRYER_DIMENSION_DIAGRAM_GRAMMAR,
+    grammarFamilyId: 'lg_au_dryer_dimension_diagram_v1',
+    grammarFamilyName: 'LG Australia dryer installation dimension diagram',
+    variantName: 'Audited D cabinet, closed-door and door-open side-view geometry',
+    brand: 'LG',
+    category: 'dryer',
+    documentType: 'user_manual',
+    detectionSummary: 'A reviewed source-PDF hash must bind the complete same-page Model row, one Dimension(mm) label, one or two intervening side-view image fragments and the exact two-row W/H/D/D-prime/D-double-prime integer table. The declared applicability list must equal the PDF Model row.',
+    semanticBoundary: 'Only W, H and unprimed D are projected as the closed external envelope after the audited diagram and D-prime < D < D-double-prime ordering agree. D-prime remains cabinet-only and D-double-prime remains door-open; unknown PDF hashes, model-list drift, missing images and malformed or reordered tables retain generic W/H only.',
+  }),
+  [ELECTROLUX_AU_WASHER_PRODUCT_TOTAL_DEPTH_GRAMMAR]: Object.freeze({
+    parserProfileId: ELECTROLUX_AU_WASHER_PRODUCT_TOTAL_DEPTH_GRAMMAR,
+    grammarFamilyId: 'electrolux_au_washer_product_total_dimensions_v1',
+    grammarFamilyName: 'Electrolux Australia washer product specification',
+    variantName: 'Exact-model DIMENSIONS table with product total depth and hose depth',
+    brand: 'Electrolux',
+    category: 'washing_machine',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact target model appears in the same-page header above one DIMENSIONS title and its immediately following five-row PRODUCT table. The table must contain unique integer Total height (mm), Total width (mm), Total depth (mm), and Depth with hoses (mm) rows in that exact order.',
+    semanticBoundary: 'Only Total height, Total width and Total depth are projected as the closed product envelope. Depth with hoses is a connection envelope and remains unpublished; package, door-open, duplicate, missing, reordered, non-mm and sibling-model variants fail closed without generic parser fallback.',
   }),
   [SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR]: Object.freeze({
     parserProfileId: SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
@@ -3897,6 +4031,13 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const lgDryerSizeScope = claimSemanticsVersion === 2
     ? lgDryerExactModelSizeScope(document, caseIdentity)
     : null;
+  const lgDryerDimensionDiagramScope = claimSemanticsVersion === 2
+    ? lgAuDryerDimensionDiagramScope(document, caseIdentity, pdfSha256)
+    : null;
+  const electroluxWasherDimensions = claimSemanticsVersion === 2
+    ? electroluxAuWasherProductDimensionScope(document, caseIdentity)
+    : { candidateFragments: new Set(), scope: null };
+  const electroluxWasherDimensionScope = electroluxWasherDimensions.scope;
   const boschDimensionSectionScope = claimSemanticsVersion === 2
     ? boschDishwasherDimensionSectionDocumentScope(document, caseIdentity, options.sourceUrls)
     : null;
@@ -3916,6 +4057,14 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   }, {
     type: 'mineru_hisense_exact_spec_identity',
     value: `${model}:${hisenseNetPackageScope.identityFragmentSha256s.join(',')}`,
+  }] : [];
+  const electroluxWasherDimensionSignals = electroluxWasherDimensionScope ? [{
+    type: 'mineru_electrolux_exact_product_dimensions',
+    value: `${model}:page:${electroluxWasherDimensionScope.page}:${electroluxWasherDimensionScope.fragment.fragmentSha256}:header:${electroluxWasherDimensionScope.header.fragmentSha256}`,
+  }] : [];
+  const lgDryerDimensionDiagramSignals = lgDryerDimensionDiagramScope ? [{
+    type: 'mineru_lg_audited_dryer_dimension_diagram',
+    value: `${model}:pdf:${pdfSha256}:page:${lgDryerDimensionDiagramScope.page}:${lgDryerDimensionDiagramScope.fragment.fragmentSha256}`,
   }] : [];
   const fisherPaykelDw60Scope = claimSemanticsVersion === 2
     ? fisherPaykelDw60ApplicabilityScope(document, caseIdentity, options.sourceUrls)
@@ -3976,6 +4125,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     && !chiqSpecScope
     && !hisenseLegacySpecScope
     && !hisenseNetPackageScope
+    && !lgDryerDimensionDiagramScope
+    && !electroluxWasherDimensionScope
     && !boschDimensionSectionScope
     && !fisherPaykelDw60Scope
     && !samsungWasherWildcardScope
@@ -4010,6 +4161,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...chiqSpecSignals,
     ...hisenseLegacySpecSignals,
     ...hisenseNetPackageSignals,
+    ...lgDryerDimensionDiagramSignals,
+    ...electroluxWasherDimensionSignals,
     ...boschDimensionSectionSignals,
     ...fisherPaykelDw60Signals,
     ...samsungWasherWildcardSignals,
@@ -4059,6 +4212,12 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   if (lgDryerSizeScope) {
     appliedGrammarProfiles.add(lgDryerSizeScope.grammarProfileId);
   }
+  if (lgDryerDimensionDiagramScope) {
+    appliedGrammarProfiles.add(lgDryerDimensionDiagramScope.grammarProfileId);
+  }
+  if (electroluxWasherDimensionScope) {
+    appliedGrammarProfiles.add(electroluxWasherDimensionScope.grammarProfileId);
+  }
   if (askoProductSheetDimensionScope) {
     appliedGrammarProfiles.add(askoProductSheetDimensionScope.grammarProfileId);
   }
@@ -4107,6 +4266,11 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const chiqSpecPageScoped = items.includes(chiqSpecScope?.fragment);
     const hisenseLegacySpecPageScoped = hisenseLegacySpecScope?.page === pageIndex + 1;
     const hisenseNetPackagePageScoped = hisenseNetPackageScope?.page === pageIndex + 1;
+    const lgDryerDimensionDiagramPageScoped = lgDryerDimensionDiagramScope?.page === pageIndex + 1;
+    const electroluxWasherDimensionPageScoped = electroluxWasherDimensionScope?.page === pageIndex + 1;
+    const electroluxWasherCandidatePageScoped = items.some((item) => (
+      electroluxWasherDimensions.candidateFragments.has(item)
+    ));
     const fisherPaykelDw60PageScoped = items.includes(
       fisherPaykelDw60Scope?.dimensionFragment,
     );
@@ -4156,7 +4320,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       && !fisherPaykelRf610PageScoped && !fisherPaykelDw60ChSupportPageScoped
       && !fisherPaykelWa60SupportPageScoped
       && !hisenseLegacySpecPageScoped
-      && !hisenseNetPackagePageScoped && !boschDimensionSectionScope
+      && !hisenseNetPackagePageScoped && !lgDryerDimensionDiagramPageScoped
+      && !electroluxWasherDimensionPageScoped
+      && !electroluxWasherCandidatePageScoped && !boschDimensionSectionScope
       && !askoProductSheetRowsByFragment.size && !haierExactSpecRowsByFragment.size
       && !haierHbmRowsByFragment.size) return;
     const bekoPageScoped = items.some((item) => (
@@ -4223,6 +4389,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         || fisherPaykelRf610Scope?.fragment === item
         || fisherPaykelDw60ChSupportScope?.fragment === item
         || fisherPaykelWa60SupportScope?.fragment === item
+        || electroluxWasherDimensions.candidateFragments.has(item)
         || (documentScoped && (
           documentScopedDimensionMatrixRows(item).length === 3
           || documentScopedExplicitAxisRows(item).length === 3
@@ -4265,7 +4432,15 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           && category === 'dishwasher'
           ? smegAuDishwasherTableRows(fragment)
           : [];
-        const directRows = [
+        const electroluxCandidate = electroluxWasherDimensions.candidateFragments.has(fragment);
+        const lgDryerDiagramCandidate = lgDryerDimensionDiagramScope?.fragment === fragment;
+        const directRows = lgDryerDiagramCandidate
+          ? lgDryerDimensionDiagramScope.rows
+          : electroluxCandidate ? (
+          electroluxWasherDimensionScope?.fragment === fragment
+            ? electroluxWasherDimensionScope.rows
+            : []
+        ) : [
           ...shiftedRows,
           ...smegRows,
           ...(samsungWasherWildcardScope?.fragment === fragment
@@ -4278,9 +4453,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
             ? []
             : fragment.rows),
           ...(!unresolvedFamily || sharedDimensionFragments.has(fragment)
-            ? alternatingAxisRows(fragment, pageDimensionUnit, {
-              qualifiedDepthPrimary: dimensionDiagramContext(items, fragment),
-            })
+            ? alternatingAxisRows(fragment, pageDimensionUnit)
             : []),
           ...(claimSemanticsVersion === 2 ? exactModelMatrixRows(fragment, model, pageDimensionUnit) : []),
           ...(claimSemanticsVersion === 2 ? (groupedColumnRowsByFragment.get(fragment) ?? []) : []),
@@ -4325,7 +4498,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         ].every((field) => directDimensionFields.has(field));
         rows = [
           ...directRows,
-          ...(!unresolvedFamily && !hasCompleteClosedEnvelope
+          ...(!electroluxCandidate && !unresolvedFamily && !hasCompleteClosedEnvelope
             ? (sectionRowsByFragment.get(fragment) ?? [])
             : []),
         ];

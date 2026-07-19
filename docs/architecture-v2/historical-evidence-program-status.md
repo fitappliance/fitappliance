@@ -1,6 +1,6 @@
 # Historical Evidence Programme Status
 
-Generated: 2026-07-17T04:19:39.580Z
+Generated: 2026-07-19T18:39:15.450Z
 
 > Counts are deliberately separated by grain. A PDF or MinerU document is not a model receipt, and W/H/D is not Verified Fit.
 
@@ -13,7 +13,7 @@ Generated: 2026-07-17T04:19:39.580Z
 | Models without document links | Historical Model Reference | 6321 | 8089 | 78.14% |
 | Models with current valid receipts | Historical Model Reference | 401 | 8089 | 4.96% |
 | Models queued for acquisition | Historical Model Reference | 7688 | 8089 | 95.04% |
-| Executable model targets | Historical Model Reference | 4988 | 7688 | 64.88% |
+| Executable model targets | Historical Model Reference | 4994 | 7688 | 64.96% |
 | Models in cumulative recovery acceptance | Historical Model Reference | 382 | 8089 | 4.72% |
 | Historical models eligible for replacement auto-fill | Historical Model Reference | 321 | 8089 | 3.97% |
 
@@ -21,10 +21,10 @@ Generated: 2026-07-17T04:19:39.580Z
 
 | Metric | Grain | Count | Denominator | Rate |
 | --- | --- | ---: | ---: | ---: |
-| Models with scheduled evidence work | Historical Model Reference | 4988 | 8089 | 61.66% |
+| Models with scheduled evidence work | Historical Model Reference | 4994 | 8089 | 61.74% |
 | Blocked models with scheduled evidence work | Historical Model Reference | 6 | 8089 | 0.07% |
 | Completed model targets | Historical Model Reference | 401 | 8089 | 4.96% |
-| Blocked model targets | Historical Model Reference | 2706 | 8089 | 33.45% |
+| Blocked model targets | Historical Model Reference | 2700 | 8089 | 33.38% |
 
 ## Document and parser funnel
 
@@ -37,7 +37,7 @@ Generated: 2026-07-17T04:19:39.580Z
 | Document-model edges with exact or internal model-list proof | Document Model Edge | 547 | 3760 | 14.55% |
 | Valid MinerU knowledge documents | Mineru Knowledge Document | 925 | 940 | 98.40% |
 | MinerU knowledge documents with recognized expressions | Mineru Knowledge Document | 495 | 925 | 53.51% |
-| Complete parser replays | Parser Replay | 439 | 1051 | 41.77% |
+| Complete parser replays | Parser Replay | 441 | 1051 | 41.96% |
 
 ## Accepted source lanes
 

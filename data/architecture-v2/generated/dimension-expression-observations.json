@@ -26,9 +26,9 @@
     "unmappedMineruDocuments": 33,
     "observations": 1165,
     "researchGaps": 1037,
-    "parserProfiles": 215,
+    "parserProfiles": 216,
     "parserReplays": 1051,
-    "completeParserReplays": 439
+    "completeParserReplays": 441
   },
   "indexedDocuments": [
     {
@@ -129982,14 +129982,14 @@
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 0,
           "observedParserProfileCount": 2,
-          "completeParserReplayCount": 1,
+          "completeParserReplayCount": 2,
           "seriesCountStatus": "UNKNOWN",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
           "families": [
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+              "groupName": "Electrolux Australia washer product specification",
               "models": [
                 "EWF12753",
                 "EWF12763E",
@@ -130017,35 +130017,19 @@
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_0bd4c2db9d70ff3b",
+                  "parserProfileId": "electrolux-au-washer-product-total-depth-v1",
+                  "grammarFamilyId": "electrolux_au_washer_product_total_dimensions_v1",
+                  "grammarFamilyName": "Electrolux Australia washer product specification",
+                  "variantName": "Exact-model DIMENSIONS table with product total depth and hose depth",
+                  "brand": "Electrolux",
+                  "category": "washing_machine",
+                  "documentType": "product_specification",
+                  "detectionSummary": "An exact target model appears in the same-page header above one DIMENSIONS title and its immediately following five-row PRODUCT table. The table must contain unique integer Total height (mm), Total width (mm), Total depth (mm), and Depth with hoses (mm) rows in that exact order.",
+                  "semanticBoundary": "Only Total height, Total width and Total depth are projected as the closed product envelope. Depth with hoses is a connection envelope and remains unpublished; package, door-open, duplicate, missing, reordered, non-mm and sibling-model variants fail closed without generic parser fallback.",
+                  "profileKind": "declared_brand_category_grammar",
                   "signatureVersion": 1,
-                  "expressionShapes": [
-                    {
-                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                      "syntaxDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
-                      "sourceLabel": "total height (<unit>) | total width (<unit>) | total depth (<unit>) | depth with hoses (<unit>)",
-                      "axisOrder": [
-                        "height",
-                        "width",
-                        "depth",
-                        "depth"
-                      ],
-                      "safeAxes": [
-                        "height",
-                        "width"
-                      ],
-                      "scope": "product_closed_candidate",
-                      "unit": "mm",
-                      "unitPlacement": "label",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": []
-                    }
-                  ],
-                  "researchGapTypes": [
-                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-                  ]
+                  "expressionShapes": [],
+                  "researchGapTypes": []
                 }
               ],
               "parserReplays": [
@@ -130054,66 +130038,102 @@
                   "category": "washing_machine",
                   "brand": "Electrolux",
                   "model": "EWF12763E",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "electrolux-au-washer-product-total-depth-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
                 },
                 {
                   "pdfSha256": "378d9a3ee6cb135b2f7ee189826959d6fb69c5d8e9ef304b876b6dce45dd51a3",
                   "category": "washing_machine",
                   "brand": "Electrolux",
                   "model": "EWF1408B1WA",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "electrolux-au-washer-product-total-depth-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
                 },
                 {
                   "pdfSha256": "4bef6eca8a8f821f317bb64786cbaf434951893947bcb09d311617e34ad1b8ae",
                   "category": "washing_machine",
                   "brand": "Electrolux",
                   "model": "EWF12753",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "electrolux-au-washer-product-total-depth-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
                 },
                 {
                   "pdfSha256": "68f72b01c284bca3e3aed8ebcab98cd19f5474b49bafbdc32fa94fd11a4dd501",
                   "category": "washing_machine",
                   "brand": "Electrolux",
                   "model": "EWF14933",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "electrolux-au-washer-product-total-depth-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
                 },
                 {
                   "pdfSha256": "791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031",
                   "category": "washing_machine",
                   "brand": "Electrolux",
                   "model": "EWF14013",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "electrolux-au-washer-product-total-depth-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
                 },
                 {
                   "pdfSha256": "7b8c6a09dd8ac52009ccef9cdb41ef75f182c6730d70d7bee5da62fab296bdf1",
                   "category": "washing_machine",
                   "brand": "Electrolux",
                   "model": "EWW12753",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "AMBIGUOUS_AXIS_VALUES"
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "electrolux-au-washer-product-total-depth-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
@@ -130601,10 +130621,10 @@
                 }
               ],
               "parserProfileIds": [
-                "pdf_grammar_0bd4c2db9d70ff3b"
+                "electrolux-au-washer-product-total-depth-v1"
               ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_WITH_RESEARCH_GAPS"
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
             },
             {
               "groupType": "parser_family",
@@ -141940,7 +141960,7 @@
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 1,
           "observedParserProfileCount": 4,
-          "completeParserReplayCount": 4,
+          "completeParserReplayCount": 3,
           "seriesCountStatus": "UNKNOWN",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
@@ -141961,12 +141981,12 @@
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_56dff8973bc69513",
+                  "parserProfileId": "pdf_grammar_ffd9ab93a81bfabf",
                   "signatureVersion": 1,
                   "expressionShapes": [
                     {
                       "patternKind": "ALTERNATING_AXIS_VALUE_CELLS",
-                      "syntaxDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
+                      "syntaxDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
                       "sourceLabel": "w | d | d\" | h | d'",
                       "axisOrder": [
                         "width",
@@ -141976,7 +141996,6 @@
                         "depth"
                       ],
                       "safeAxes": [
-                        "depth",
                         "height",
                         "width"
                       ],
@@ -142053,7 +142072,96 @@
               ],
               "expressions": [
                 {
-                  "observationId": "dimension_expression_65b509c177352c7a31bf7a6c",
+                  "observationId": "dimension_expression_8dd4d773f286c9a111f8d56f",
+                  "pdfSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
+                  "contentSha256": "b238dcf18f3b989bfad77c24d40a02f8fffad6ce769aaa0e3c15a265cd15a569",
+                  "page": 12,
+                  "bbox": [
+                    50,
+                    480,
+                    945,
+                    546
+                  ],
+                  "fragmentSha256": "82b71f1ed9349470762beb2f0210c9fd37d0a86b320ede2f387ae7b475291242",
+                  "sourceUrls": [
+                    "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "LG",
+                      "model": "WV9-1412B",
+                      "category": "washing_machine"
+                    },
+                    {
+                      "brand": "LG",
+                      "model": "WV9-1412W",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WV9-1412B",
+                    "WV9-1412W"
+                  ],
+                  "patternKind": "ALTERNATING_AXIS_VALUE_CELLS",
+                  "sourceLabel": "W | D | D\" | H | D'",
+                  "sourceValue": "600 | 560 | 1100 | 850 | 620",
+                  "sourceQuote": "Dimension(mm) W 600 D 560 D\" 1100 H 850 D' 620",
+                  "axisOrder": [
+                    "width",
+                    "depth",
+                    "depth",
+                    "height",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "width",
+                    "height"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "page_context",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "D\"",
+                    "D'"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "width",
+                      "label": "W",
+                      "value": "600",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D",
+                      "value": "560",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D\"",
+                      "value": "1100",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "height",
+                      "label": "H",
+                      "value": "850",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D'",
+                      "value": "620",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
+                  "semanticInterpretation": "Width and height are explicit; D, D-prime and D-double-prime semantics remain undefined by text."
+                },
+                {
+                  "observationId": "dimension_expression_f1f93f04be4a4e79b2c95dc2",
                   "pdfSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
                   "contentSha256": "b238dcf18f3b989bfad77c24d40a02f8fffad6ce769aaa0e3c15a265cd15a569",
                   "page": 12,
@@ -142139,102 +142247,12 @@
                     }
                   ],
                   "parserDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
-                  "semanticInterpretation": "Width and height are explicit; depth variants remain undefined by text."
-                },
-                {
-                  "observationId": "dimension_expression_9f82551267a87b303a2664c6",
-                  "pdfSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
-                  "contentSha256": "b238dcf18f3b989bfad77c24d40a02f8fffad6ce769aaa0e3c15a265cd15a569",
-                  "page": 12,
-                  "bbox": [
-                    50,
-                    480,
-                    945,
-                    546
-                  ],
-                  "fragmentSha256": "82b71f1ed9349470762beb2f0210c9fd37d0a86b320ede2f387ae7b475291242",
-                  "sourceUrls": [
-                    "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "LG",
-                      "model": "WV9-1412B",
-                      "category": "washing_machine"
-                    },
-                    {
-                      "brand": "LG",
-                      "model": "WV9-1412W",
-                      "category": "washing_machine"
-                    }
-                  ],
-                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
-                  "boundModels": [
-                    "WV9-1412B",
-                    "WV9-1412W"
-                  ],
-                  "patternKind": "ALTERNATING_AXIS_VALUE_CELLS",
-                  "sourceLabel": "W | D | D\" | H | D'",
-                  "sourceValue": "600 | 560 | 1100 | 850 | 620",
-                  "sourceQuote": "Dimension(mm) W 600 D 560 D\" 1100 H 850 D' 620",
-                  "axisOrder": [
-                    "width",
-                    "depth",
-                    "depth",
-                    "height",
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "width",
-                    "depth",
-                    "height"
-                  ],
-                  "unit": "mm",
-                  "unitPlacement": "page_context",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [
-                    "D\"",
-                    "D'"
-                  ],
-                  "axisValues": [
-                    {
-                      "axis": "width",
-                      "label": "W",
-                      "value": "600",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "D",
-                      "value": "560",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "D\"",
-                      "value": "1100",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "height",
-                      "label": "H",
-                      "value": "850",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "D'",
-                      "value": "620",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
-                  "semanticInterpretation": "The unqualified D is the primary depth in the adjacent dimension diagram; primed depth variants remain unpublished."
+                  "semanticInterpretation": "Width and height are explicit; D, D-prime and D-double-prime semantics remain undefined by text."
                 }
               ],
               "researchGaps": [],
               "parserProfileIds": [
-                "pdf_grammar_56dff8973bc69513"
+                "pdf_grammar_ffd9ab93a81bfabf"
               ],
               "completeParserReplay": false,
               "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
@@ -142372,7 +142390,7 @@
             },
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_2e826f8230419796",
+              "groupName": "PDF grammar pdf_grammar_9ff54db34179eeb6",
               "models": [
                 "WD1275A1"
               ],
@@ -142385,12 +142403,12 @@
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_2e826f8230419796",
+                  "parserProfileId": "pdf_grammar_9ff54db34179eeb6",
                   "signatureVersion": 1,
                   "expressionShapes": [
                     {
                       "patternKind": "ALTERNATING_AXIS_VALUE_CELLS",
-                      "syntaxDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
+                      "syntaxDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
                       "sourceLabel": "w | d | d\" | h | d'",
                       "axisOrder": [
                         "width",
@@ -142400,7 +142418,6 @@
                         "depth"
                       ],
                       "safeAxes": [
-                        "depth",
                         "height",
                         "width"
                       ],
@@ -142425,20 +142442,19 @@
                   "category": "washing_machine",
                   "brand": "LG",
                   "model": "WD1275A1",
-                  "extractionState": "ALL_AXIS_SCALAR",
+                  "extractionState": "PARTIAL_AXIS",
                   "identityScope": "EXACT_MODEL",
                   "claimFields": [
-                    "closedEnvelope.depthMm",
                     "closedEnvelope.heightMm",
                     "closedEnvelope.widthMm"
                   ],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "PARSED_PARTIAL"
                 }
               ],
               "expressions": [
                 {
-                  "observationId": "dimension_expression_1e31eb222d8f494060bcece5",
+                  "observationId": "dimension_expression_8fcbdd01bb4e9bb5b89636d1",
                   "pdfSha256": "736c5c97437df0ac5168dce2a213c2a552bc492e3b4407cd8297cdf9ca35cee1",
                   "contentSha256": "043404c207fc36d1032b5271b82b564098007517ae74107eecf8866cfd71cf05",
                   "page": 11,
@@ -142476,7 +142492,6 @@
                   ],
                   "safeAxes": [
                     "width",
-                    "depth",
                     "height"
                   ],
                   "unit": "mm",
@@ -142518,166 +142533,13 @@
                       "valueShape": "scalar"
                     }
                   ],
-                  "parserDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
-                  "semanticInterpretation": "The unqualified D is the primary depth in the adjacent dimension diagram; primed depth variants remain unpublished."
+                  "parserDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
+                  "semanticInterpretation": "Width and height are explicit; D, D-prime and D-double-prime semantics remain undefined by text."
                 }
               ],
               "researchGaps": [],
               "parserProfileIds": [
-                "pdf_grammar_2e826f8230419796"
-              ],
-              "completeParserReplay": true,
-              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
-            },
-            {
-              "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_658fb95d8446842a",
-              "models": [
-                "WTL9-12B"
-              ],
-              "pdfSha256s": [
-                "b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4"
-              ],
-              "sourceUrls": [
-                "https://gscs-b2c.lge.com/open/downloadFile?fileId=5dZGXMUYnBGTiZTytfPE7g"
-              ],
-              "seriesEvidence": [],
-              "parserProfiles": [
-                {
-                  "parserProfileId": "pdf_grammar_658fb95d8446842a",
-                  "signatureVersion": 1,
-                  "expressionShapes": [
-                    {
-                      "patternKind": "ALTERNATING_AXIS_VALUE_CELLS",
-                      "syntaxDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
-                      "sourceLabel": "w | d | h | d' | h'",
-                      "axisOrder": [
-                        "width",
-                        "depth",
-                        "height",
-                        "depth",
-                        "height"
-                      ],
-                      "safeAxes": [
-                        "depth",
-                        "height",
-                        "width"
-                      ],
-                      "scope": "product_closed_candidate",
-                      "unit": "mm",
-                      "unitPlacement": "page_context",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": [
-                        "d'"
-                      ]
-                    }
-                  ],
-                  "researchGapTypes": []
-                }
-              ],
-              "parserReplays": [
-                {
-                  "pdfSha256": "b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4",
-                  "category": "washing_machine",
-                  "brand": "LG",
-                  "model": "WTL9-12B",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
-                }
-              ],
-              "expressions": [
-                {
-                  "observationId": "dimension_expression_e3b13a378349a3a198a33d3f",
-                  "pdfSha256": "b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4",
-                  "contentSha256": "d74af14d3b7381171916bb748e66925061ea3d3ad32d718a46b8ab39d0e6606a",
-                  "page": 9,
-                  "bbox": [
-                    50,
-                    453,
-                    945,
-                    515
-                  ],
-                  "fragmentSha256": "ff57a04469e14275cfbe474dca039be89dafa277e1ec0ecfee1a4de966827faf",
-                  "sourceUrls": [
-                    "https://gscs-b2c.lge.com/open/downloadFile?fileId=5dZGXMUYnBGTiZTytfPE7g"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "LG",
-                      "model": "WTL9-12B",
-                      "category": "washing_machine"
-                    }
-                  ],
-                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
-                  "boundModels": [
-                    "WTL9-12B"
-                  ],
-                  "patternKind": "ALTERNATING_AXIS_VALUE_CELLS",
-                  "sourceLabel": "W | D | H | D' | H'",
-                  "sourceValue": "690 | 730 | 1070 | 760 | 1420",
-                  "sourceQuote": "Dimension(mm) W 690 D 730 H 1070 D' 760 H' 1420",
-                  "axisOrder": [
-                    "width",
-                    "depth",
-                    "height",
-                    "depth",
-                    "height"
-                  ],
-                  "safeAxes": [
-                    "width",
-                    "depth",
-                    "height"
-                  ],
-                  "unit": "mm",
-                  "unitPlacement": "page_context",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [
-                    "D'"
-                  ],
-                  "axisValues": [
-                    {
-                      "axis": "width",
-                      "label": "W",
-                      "value": "690",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "D",
-                      "value": "730",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "height",
-                      "label": "H",
-                      "value": "1070",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "D'",
-                      "value": "760",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "height",
-                      "label": "H'",
-                      "value": "1420",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
-                  "semanticInterpretation": "The unqualified D is the primary depth in the adjacent dimension diagram; primed depth variants remain unpublished."
-                }
-              ],
-              "researchGaps": [],
-              "parserProfileIds": [
-                "pdf_grammar_658fb95d8446842a"
+                "pdf_grammar_9ff54db34179eeb6"
               ],
               "completeParserReplay": false,
               "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
@@ -142907,6 +142769,157 @@
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_d6ce8e4a50b28d21",
+              "models": [
+                "WTL9-12B"
+              ],
+              "pdfSha256s": [
+                "b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4"
+              ],
+              "sourceUrls": [
+                "https://gscs-b2c.lge.com/open/downloadFile?fileId=5dZGXMUYnBGTiZTytfPE7g"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_d6ce8e4a50b28d21",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "ALTERNATING_AXIS_VALUE_CELLS",
+                      "syntaxDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
+                      "sourceLabel": "w | d | h | d' | h'",
+                      "axisOrder": [
+                        "width",
+                        "depth",
+                        "height",
+                        "depth",
+                        "height"
+                      ],
+                      "safeAxes": [
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "page_context",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": [
+                        "d'"
+                      ]
+                    }
+                  ],
+                  "researchGapTypes": []
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4",
+                  "category": "washing_machine",
+                  "brand": "LG",
+                  "model": "WTL9-12B",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "FAMILY_SCOPE_UNRESOLVED"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_9405f3c3dc75c2ead1f1ee79",
+                  "pdfSha256": "b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4",
+                  "contentSha256": "d74af14d3b7381171916bb748e66925061ea3d3ad32d718a46b8ab39d0e6606a",
+                  "page": 9,
+                  "bbox": [
+                    50,
+                    453,
+                    945,
+                    515
+                  ],
+                  "fragmentSha256": "ff57a04469e14275cfbe474dca039be89dafa277e1ec0ecfee1a4de966827faf",
+                  "sourceUrls": [
+                    "https://gscs-b2c.lge.com/open/downloadFile?fileId=5dZGXMUYnBGTiZTytfPE7g"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "LG",
+                      "model": "WTL9-12B",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WTL9-12B"
+                  ],
+                  "patternKind": "ALTERNATING_AXIS_VALUE_CELLS",
+                  "sourceLabel": "W | D | H | D' | H'",
+                  "sourceValue": "690 | 730 | 1070 | 760 | 1420",
+                  "sourceQuote": "Dimension(mm) W 690 D 730 H 1070 D' 760 H' 1420",
+                  "axisOrder": [
+                    "width",
+                    "depth",
+                    "height",
+                    "depth",
+                    "height"
+                  ],
+                  "safeAxes": [
+                    "width",
+                    "height"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "page_context",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "D'"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "width",
+                      "label": "W",
+                      "value": "690",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D",
+                      "value": "730",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "height",
+                      "label": "H",
+                      "value": "1070",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D'",
+                      "value": "760",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "height",
+                      "label": "H'",
+                      "value": "1420",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
+                  "semanticInterpretation": "Width and height are explicit; D, D-prime and D-double-prime semantics remain undefined by text."
+                }
+              ],
+              "researchGaps": [],
+              "parserProfileIds": [
+                "pdf_grammar_d6ce8e4a50b28d21"
+              ],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
             }
           ]
         },
@@ -155363,8 +155376,8 @@
           "observedMineruDocuments": 6,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 2,
-          "observedParserProfileCount": 2,
-          "completeParserReplayCount": 3,
+          "observedParserProfileCount": 3,
+          "completeParserReplayCount": 2,
           "seriesCountStatus": "UNKNOWN",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
@@ -155386,12 +155399,12 @@
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_68c6a6913a230966",
+                  "parserProfileId": "pdf_grammar_600384d0a8dab340",
                   "signatureVersion": 1,
                   "expressionShapes": [
                     {
                       "patternKind": "ALTERNATING_AXIS_VALUE_CELLS",
-                      "syntaxDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
+                      "syntaxDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
                       "sourceLabel": "w | d | d\" | h | d'",
                       "axisOrder": [
                         "width",
@@ -155401,7 +155414,6 @@
                         "depth"
                       ],
                       "safeAxes": [
-                        "depth",
                         "height",
                         "width"
                       ],
@@ -155428,50 +155440,47 @@
                   "category": "dryer",
                   "brand": "LG",
                   "model": "DVH5-08W",
-                  "extractionState": "ALL_AXIS_SCALAR",
+                  "extractionState": "PARTIAL_AXIS",
                   "identityScope": "EXACT_MODEL",
                   "claimFields": [
-                    "closedEnvelope.depthMm",
                     "closedEnvelope.heightMm",
                     "closedEnvelope.widthMm"
                   ],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "PARSED_PARTIAL"
                 },
                 {
                   "pdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
                   "category": "dryer",
                   "brand": "LG",
                   "model": "DVH9-09B",
-                  "extractionState": "ALL_AXIS_SCALAR",
+                  "extractionState": "PARTIAL_AXIS",
                   "identityScope": "EXACT_MODEL",
                   "claimFields": [
-                    "closedEnvelope.depthMm",
                     "closedEnvelope.heightMm",
                     "closedEnvelope.widthMm"
                   ],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "PARSED_PARTIAL"
                 },
                 {
                   "pdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
                   "category": "dryer",
                   "brand": "LG",
                   "model": "DVH9-09W",
-                  "extractionState": "ALL_AXIS_SCALAR",
+                  "extractionState": "PARTIAL_AXIS",
                   "identityScope": "EXACT_MODEL",
                   "claimFields": [
-                    "closedEnvelope.depthMm",
                     "closedEnvelope.heightMm",
                     "closedEnvelope.widthMm"
                   ],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_COMPLETE"
+                  "reasonCode": "PARSED_PARTIAL"
                 }
               ],
               "expressions": [
                 {
-                  "observationId": "dimension_expression_9415356efa283dfc44c1005f",
+                  "observationId": "dimension_expression_dfbefd7fd4f91d9f1ed6cd75",
                   "pdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
                   "contentSha256": "6345d4ee15d06fc55591670a0d916bae7d360ec8bd4b63528426d06ab09dd413",
                   "page": 10,
@@ -155521,7 +155530,6 @@
                   ],
                   "safeAxes": [
                     "width",
-                    "depth",
                     "height"
                   ],
                   "unit": "mm",
@@ -155563,8 +155571,8 @@
                       "valueShape": "scalar"
                     }
                   ],
-                  "parserDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
-                  "semanticInterpretation": "The unqualified D is the primary depth in the adjacent dimension diagram; primed depth variants remain unpublished."
+                  "parserDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
+                  "semanticInterpretation": "Width and height are explicit; D, D-prime and D-double-prime semantics remain undefined by text."
                 }
               ],
               "researchGaps": [
@@ -155577,10 +155585,10 @@
                 }
               ],
               "parserProfileIds": [
-                "pdf_grammar_68c6a6913a230966"
+                "pdf_grammar_600384d0a8dab340"
               ],
-              "completeParserReplay": true,
-              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_WITH_RESEARCH_GAPS"
             },
             {
               "groupType": "document_family",
@@ -155729,7 +155737,7 @@
             },
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_68c6a6913a230966",
+              "groupName": "LG Australia dryer installation dimension diagram",
               "models": [
                 "DVH1-08WP",
                 "DVH10-10B"
@@ -155745,40 +155753,19 @@
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_68c6a6913a230966",
+                  "parserProfileId": "lg-au-dryer-dimension-diagram-v1",
+                  "grammarFamilyId": "lg_au_dryer_dimension_diagram_v1",
+                  "grammarFamilyName": "LG Australia dryer installation dimension diagram",
+                  "variantName": "Audited D cabinet, closed-door and door-open side-view geometry",
+                  "brand": "LG",
+                  "category": "dryer",
+                  "documentType": "user_manual",
+                  "detectionSummary": "A reviewed source-PDF hash must bind the complete same-page Model row, one Dimension(mm) label, one or two intervening side-view image fragments and the exact two-row W/H/D/D-prime/D-double-prime integer table. The declared applicability list must equal the PDF Model row.",
+                  "semanticBoundary": "Only W, H and unprimed D are projected as the closed external envelope after the audited diagram and D-prime < D < D-double-prime ordering agree. D-prime remains cabinet-only and D-double-prime remains door-open; unknown PDF hashes, model-list drift, missing images and malformed or reordered tables retain generic W/H only.",
+                  "profileKind": "declared_brand_category_grammar",
                   "signatureVersion": 1,
-                  "expressionShapes": [
-                    {
-                      "patternKind": "ALTERNATING_AXIS_VALUE_CELLS",
-                      "syntaxDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
-                      "sourceLabel": "w | d | d\" | h | d'",
-                      "axisOrder": [
-                        "width",
-                        "depth",
-                        "depth",
-                        "height",
-                        "depth"
-                      ],
-                      "safeAxes": [
-                        "depth",
-                        "height",
-                        "width"
-                      ],
-                      "scope": "product_closed_candidate",
-                      "unit": "mm",
-                      "unitPlacement": "page_context",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": [
-                        "d\"",
-                        "d'"
-                      ]
-                    }
-                  ],
-                  "researchGapTypes": [
-                    "IMAGE_ONLY_DIMENSION_DIAGRAM"
-                  ]
+                  "expressionShapes": [],
+                  "researchGapTypes": []
                 }
               ],
               "parserReplays": [
@@ -155794,7 +155781,9 @@
                     "closedEnvelope.heightMm",
                     "closedEnvelope.widthMm"
                   ],
-                  "grammarProfileIds": [],
+                  "grammarProfileIds": [
+                    "lg-au-dryer-dimension-diagram-v1"
+                  ],
                   "reasonCode": "PARSED_COMPLETE"
                 },
                 {
@@ -155809,13 +155798,15 @@
                     "closedEnvelope.heightMm",
                     "closedEnvelope.widthMm"
                   ],
-                  "grammarProfileIds": [],
+                  "grammarProfileIds": [
+                    "lg-au-dryer-dimension-diagram-v1"
+                  ],
                   "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
                 {
-                  "observationId": "dimension_expression_1d00010c847d529df8f0f783",
+                  "observationId": "dimension_expression_71d7e50748de416ed390e5ff",
                   "pdfSha256": "521077b559417d620664ead6be32ee1738e575ae50a7ffb3734b3fc24458d462",
                   "contentSha256": "ce9c5d6947326f05847a1c14f8e87d5a230c6d540d420f5fb50dfb4df67643d4",
                   "page": 10,
@@ -155853,7 +155844,6 @@
                   ],
                   "safeAxes": [
                     "width",
-                    "depth",
                     "height"
                   ],
                   "unit": "mm",
@@ -155895,11 +155885,11 @@
                       "valueShape": "scalar"
                     }
                   ],
-                  "parserDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
-                  "semanticInterpretation": "The unqualified D is the primary depth in the adjacent dimension diagram; primed depth variants remain unpublished."
+                  "parserDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
+                  "semanticInterpretation": "Width and height are explicit; D, D-prime and D-double-prime semantics remain undefined by text."
                 },
                 {
-                  "observationId": "dimension_expression_369a5126acea00d5dd13d494",
+                  "observationId": "dimension_expression_d4c315c25fde50bfd06ec968",
                   "pdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
                   "contentSha256": "ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2",
                   "page": 12,
@@ -155937,7 +155927,6 @@
                   ],
                   "safeAxes": [
                     "width",
-                    "depth",
                     "height"
                   ],
                   "unit": "mm",
@@ -155979,8 +155968,8 @@
                       "valueShape": "scalar"
                     }
                   ],
-                  "parserDecision": "SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS",
-                  "semanticInterpretation": "The unqualified D is the primary depth in the adjacent dimension diagram; primed depth variants remain unpublished."
+                  "parserDecision": "SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH",
+                  "semanticInterpretation": "Width and height are explicit; D, D-prime and D-double-prime semantics remain undefined by text."
                 }
               ],
               "researchGaps": [
@@ -156000,7 +155989,7 @@
                 }
               ],
               "parserProfileIds": [
-                "pdf_grammar_68c6a6913a230966"
+                "lg-au-dryer-dimension-diagram-v1"
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"

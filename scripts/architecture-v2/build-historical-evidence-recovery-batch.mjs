@@ -48,11 +48,12 @@ export async function runCli(argv = process.argv.slice(2)) {
   const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
   const parsed = parseHistoricalEvidenceRecoveryBatchCliArgs(argv);
   const { selection } = parsed;
-  const [queue, policy, cumulativeBundle, pdfBatch, pdfResults,
+  const [queue, policy, cumulativeBundle, receiptReplayAudit, pdfBatch, pdfResults,
     rangeBatch, rangeResults] = await Promise.all([
     readJson(resolveArchitectureV2Path(root, 'historicalExecutableEvidenceRecoveryQueue')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryPolicy')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAcceptanceBundle')),
+    readJson(resolveArchitectureV2Path(root, 'historicalAcceptanceReceiptReplayAudit')),
     readJson(resolveArchitectureV2Path(root, 'pdfBrandAcceptanceBatch')),
     readJson(resolveArchitectureV2Path(root, 'pdfBrandAcceptanceResults')),
     readJson(resolveArchitectureV2Path(root, 'identityRangeRecoveryAcceptanceBatch')),
@@ -66,6 +67,7 @@ export async function runCli(argv = process.argv.slice(2)) {
       { batch: pdfBatch, results: pdfResults },
       { batch: rangeBatch, results: rangeResults },
     ],
+    receiptReplayAudit,
     selection,
   });
   const outputPath = parsed.output

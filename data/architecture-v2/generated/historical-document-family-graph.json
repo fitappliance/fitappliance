@@ -26,9 +26,9 @@
       "MODEL_LIST_PROVEN": 13,
       "UNMAPPED": 39
     },
-    "nonIndexedClassificationLinks": 98,
+    "nonIndexedClassificationLinks": 99,
     "nonIndexedClassificationLinksByLane": {
-      "HTML": 85,
+      "HTML": 86,
       "JSON": 13
     }
   },
@@ -10283,6 +10283,13 @@
       "documentId": "pdf:94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd"
     },
     {
+      "referenceId": "fa_ref_7aead6dc34c0fe035e925c12",
+      "contentSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
+      "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
+      "contentLane": "HTML",
+      "documentId": "pdf:af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822"
+    },
+    {
       "referenceId": "fa_ref_7d2d3d7eaedf7b403717808b",
       "contentSha256": "53deea19118328c96b2a20f42cb12ad6d1e08ab97be6aabbe87fc2ed2ddea4b7",
       "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
@@ -11471,10 +11478,10 @@
         "pageCount": 6
       },
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ],
       "familyIds": [
-        "document_family_be851af92048b964c094aed1"
+        "document_family_cb9a13f98026d0165c598eaf"
       ],
       "modelEdges": [
         {
@@ -11483,9 +11490,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -11495,9 +11502,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -11507,9 +11514,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -11519,9 +11526,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -11531,9 +11538,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -11547,9 +11554,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -11558,6 +11565,17 @@
               "fragmentSha256": "e57bb19071b0f809e2dd2adfce27187d763ce325c2add0a7479f842c5abc4934",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "washing_machine",
+              "brand": "Electrolux",
+              "model": "EWF12763E",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": [
+                "electrolux-au-washer-product-total-depth-v1"
+              ]
             }
           ]
         }
@@ -22399,10 +22417,10 @@
         "pageCount": 48
       },
       "grammarProfileIds": [
-        "pdf_grammar_68c6a6913a230966"
+        "lg-au-dryer-dimension-diagram-v1"
       ],
       "familyIds": [
-        "document_family_46ad0a3a894af4ff4104450a"
+        "document_family_6b4689d4157d434ddc8f50b0"
       ],
       "modelEdges": [
         {
@@ -22420,13 +22438,13 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_46ad0a3a894af4ff4104450a",
+              "familyId": "document_family_6b4689d4157d434ddc8f50b0",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_68c6a6913a230966"
+              "groupName": "LG Australia dryer installation dimension diagram"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_369a5126acea00d5dd13d494",
+              "observationId": "dimension_expression_d4c315c25fde50bfd06ec968",
               "page": 12,
               "fragmentSha256": "14c5e7f03d58c3c07d9c2e6a825cac7f4892f1710bbe49b32d95a2072220cce5",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
@@ -22439,7 +22457,9 @@
               "brand": "LG",
               "model": "DVH1-08WP",
               "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
+              "grammarProfileIds": [
+                "lg-au-dryer-dimension-diagram-v1"
+              ]
             }
           ]
         },
@@ -22449,9 +22469,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_46ad0a3a894af4ff4104450a",
+              "familyId": "document_family_6b4689d4157d434ddc8f50b0",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_68c6a6913a230966"
+              "groupName": "LG Australia dryer installation dimension diagram"
             }
           ]
         }
@@ -25816,7 +25836,7 @@
         "pageCount": 48
       },
       "grammarProfileIds": [
-        "pdf_grammar_56dff8973bc69513"
+        "pdf_grammar_ffd9ab93a81bfabf"
       ],
       "familyIds": [
         "document_family_af3e9fdae45cbe74a813678b"
@@ -25843,17 +25863,17 @@
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_65b509c177352c7a31bf7a6c",
+              "observationId": "dimension_expression_8dd4d773f286c9a111f8d56f",
               "page": 12,
-              "fragmentSha256": "3d53d627e79d8a66c1a6b14b32b1f234f9ee66422e291b69c5f2b39b503b1c88",
+              "fragmentSha256": "82b71f1ed9349470762beb2f0210c9fd37d0a86b320ede2f387ae7b475291242",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "ALTERNATING_AXIS_VALUE_CELLS"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_9f82551267a87b303a2664c6",
+              "observationId": "dimension_expression_f1f93f04be4a4e79b2c95dc2",
               "page": 12,
-              "fragmentSha256": "82b71f1ed9349470762beb2f0210c9fd37d0a86b320ede2f387ae7b475291242",
+              "fragmentSha256": "3d53d627e79d8a66c1a6b14b32b1f234f9ee66422e291b69c5f2b39b503b1c88",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "ALTERNATING_AXIS_VALUE_CELLS"
             },
@@ -25889,17 +25909,17 @@
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_65b509c177352c7a31bf7a6c",
+              "observationId": "dimension_expression_8dd4d773f286c9a111f8d56f",
               "page": 12,
-              "fragmentSha256": "3d53d627e79d8a66c1a6b14b32b1f234f9ee66422e291b69c5f2b39b503b1c88",
+              "fragmentSha256": "82b71f1ed9349470762beb2f0210c9fd37d0a86b320ede2f387ae7b475291242",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "ALTERNATING_AXIS_VALUE_CELLS"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_9f82551267a87b303a2664c6",
+              "observationId": "dimension_expression_f1f93f04be4a4e79b2c95dc2",
               "page": 12,
-              "fragmentSha256": "82b71f1ed9349470762beb2f0210c9fd37d0a86b320ede2f387ae7b475291242",
+              "fragmentSha256": "3d53d627e79d8a66c1a6b14b32b1f234f9ee66422e291b69c5f2b39b503b1c88",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "ALTERNATING_AXIS_VALUE_CELLS"
             },
@@ -27161,7 +27181,7 @@
         "pageCount": 48
       },
       "grammarProfileIds": [
-        "pdf_grammar_68c6a6913a230966"
+        "pdf_grammar_600384d0a8dab340"
       ],
       "familyIds": [
         "document_family_ac0bcc3c94f5c52c7e8c5ec4"
@@ -27188,7 +27208,7 @@
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_9415356efa283dfc44c1005f",
+              "observationId": "dimension_expression_dfbefd7fd4f91d9f1ed6cd75",
               "page": 10,
               "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
@@ -27200,7 +27220,7 @@
               "category": "dryer",
               "brand": "LG",
               "model": "DVH5-08W",
-              "reasonCode": "PARSED_COMPLETE",
+              "reasonCode": "PARSED_PARTIAL",
               "grammarProfileIds": []
             }
           ]
@@ -27226,7 +27246,7 @@
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_9415356efa283dfc44c1005f",
+              "observationId": "dimension_expression_dfbefd7fd4f91d9f1ed6cd75",
               "page": 10,
               "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
@@ -27238,7 +27258,7 @@
               "category": "dryer",
               "brand": "LG",
               "model": "DVH9-09B",
-              "reasonCode": "PARSED_COMPLETE",
+              "reasonCode": "PARSED_PARTIAL",
               "grammarProfileIds": []
             }
           ]
@@ -27264,7 +27284,7 @@
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_9415356efa283dfc44c1005f",
+              "observationId": "dimension_expression_dfbefd7fd4f91d9f1ed6cd75",
               "page": 10,
               "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
@@ -27276,7 +27296,7 @@
               "category": "dryer",
               "brand": "LG",
               "model": "DVH9-09W",
-              "reasonCode": "PARSED_COMPLETE",
+              "reasonCode": "PARSED_PARTIAL",
               "grammarProfileIds": []
             }
           ]
@@ -29677,10 +29697,10 @@
         "pageCount": 7
       },
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ],
       "familyIds": [
-        "document_family_be851af92048b964c094aed1"
+        "document_family_cb9a13f98026d0165c598eaf"
       ],
       "modelEdges": [
         {
@@ -29689,9 +29709,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -29701,9 +29721,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -29717,9 +29737,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -29728,6 +29748,17 @@
               "fragmentSha256": "155322962a96a45894af529caae7e6f3e272fdbe5d1256ae66b0045efdf4be9e",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "washing_machine",
+              "brand": "Electrolux",
+              "model": "EWF1408B1WA",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": [
+                "electrolux-au-washer-product-total-depth-v1"
+              ]
             }
           ]
         },
@@ -29737,9 +29768,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -29749,9 +29780,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -29761,9 +29792,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         }
@@ -38223,10 +38254,10 @@
         "pageCount": 6
       },
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ],
       "familyIds": [
-        "document_family_be851af92048b964c094aed1"
+        "document_family_cb9a13f98026d0165c598eaf"
       ],
       "modelEdges": [
         {
@@ -38235,9 +38266,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -38247,9 +38278,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -38259,9 +38290,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -38275,9 +38306,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -38286,6 +38317,17 @@
               "fragmentSha256": "745925cad21a55f152509b819fc5412534fa1ecd08ccfb63f5cd66bb79d82daa",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "washing_machine",
+              "brand": "Electrolux",
+              "model": "EWF12753",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": [
+                "electrolux-au-washer-product-total-depth-v1"
+              ]
             }
           ]
         },
@@ -38295,9 +38337,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -38307,9 +38349,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         }
@@ -40949,10 +40991,10 @@
         "pageCount": 44
       },
       "grammarProfileIds": [
-        "pdf_grammar_68c6a6913a230966"
+        "lg-au-dryer-dimension-diagram-v1"
       ],
       "familyIds": [
-        "document_family_46ad0a3a894af4ff4104450a"
+        "document_family_6b4689d4157d434ddc8f50b0"
       ],
       "modelEdges": [
         {
@@ -40961,9 +41003,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_46ad0a3a894af4ff4104450a",
+              "familyId": "document_family_6b4689d4157d434ddc8f50b0",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_68c6a6913a230966"
+              "groupName": "LG Australia dryer installation dimension diagram"
             }
           ]
         },
@@ -40982,13 +41024,13 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_46ad0a3a894af4ff4104450a",
+              "familyId": "document_family_6b4689d4157d434ddc8f50b0",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_68c6a6913a230966"
+              "groupName": "LG Australia dryer installation dimension diagram"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_1d00010c847d529df8f0f783",
+              "observationId": "dimension_expression_71d7e50748de416ed390e5ff",
               "page": 10,
               "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
@@ -41001,7 +41043,9 @@
               "brand": "LG",
               "model": "DVH10-10B",
               "reasonCode": "PARSED_COMPLETE",
-              "grammarProfileIds": []
+              "grammarProfileIds": [
+                "lg-au-dryer-dimension-diagram-v1"
+              ]
             }
           ]
         }
@@ -48875,10 +48919,10 @@
         "pageCount": 7
       },
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ],
       "familyIds": [
-        "document_family_be851af92048b964c094aed1"
+        "document_family_cb9a13f98026d0165c598eaf"
       ],
       "modelEdges": [
         {
@@ -48891,9 +48935,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -48902,6 +48946,17 @@
               "fragmentSha256": "cd633a995d248563fd3d47844b8b23efaca6bd468df05fa7f9559e5068cfea83",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "washing_machine",
+              "brand": "Electrolux",
+              "model": "EWF14933",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": [
+                "electrolux-au-washer-product-total-depth-v1"
+              ]
             }
           ]
         },
@@ -48911,9 +48966,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -48923,9 +48978,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -48935,9 +48990,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -48947,9 +49002,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -48959,9 +49014,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         }
@@ -52000,10 +52055,10 @@
         "pageCount": 48
       },
       "grammarProfileIds": [
-        "pdf_grammar_2e826f8230419796"
+        "pdf_grammar_9ff54db34179eeb6"
       ],
       "familyIds": [
-        "document_family_df8fc835c0f835fe66a73ee4"
+        "document_family_6b66be72d9a9df4b2d137108"
       ],
       "modelEdges": [
         {
@@ -52021,13 +52076,13 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_df8fc835c0f835fe66a73ee4",
+              "familyId": "document_family_6b66be72d9a9df4b2d137108",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_2e826f8230419796"
+              "groupName": "PDF grammar pdf_grammar_9ff54db34179eeb6"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_1e31eb222d8f494060bcece5",
+              "observationId": "dimension_expression_8fcbdd01bb4e9bb5b89636d1",
               "page": 11,
               "fragmentSha256": "ac5ea0a069ae119c9db03c7dde6d92410b52f6b304090e0e2141fc9d25a178ad",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
@@ -52039,7 +52094,7 @@
               "category": "washing_machine",
               "brand": "LG",
               "model": "WD1275A1",
-              "reasonCode": "PARSED_COMPLETE",
+              "reasonCode": "PARSED_PARTIAL",
               "grammarProfileIds": []
             }
           ]
@@ -54592,10 +54647,10 @@
         "pageCount": 7
       },
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ],
       "familyIds": [
-        "document_family_be851af92048b964c094aed1"
+        "document_family_cb9a13f98026d0165c598eaf"
       ],
       "modelEdges": [
         {
@@ -54604,9 +54659,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -54616,9 +54671,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -54628,9 +54683,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -54640,9 +54695,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -54661,9 +54716,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -54672,6 +54727,17 @@
               "fragmentSha256": "cd633a995d248563fd3d47844b8b23efaca6bd468df05fa7f9559e5068cfea83",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "washing_machine",
+              "brand": "Electrolux",
+              "model": "EWF14013",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": [
+                "electrolux-au-washer-product-total-depth-v1"
+              ]
             }
           ]
         },
@@ -54681,9 +54747,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         }
@@ -55376,10 +55442,10 @@
         "pageCount": 8
       },
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ],
       "familyIds": [
-        "document_family_be851af92048b964c094aed1"
+        "document_family_cb9a13f98026d0165c598eaf"
       ],
       "modelEdges": [
         {
@@ -55388,9 +55454,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -55404,9 +55470,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -55415,6 +55481,17 @@
               "fragmentSha256": "bd2e129705f5ecbdfdafe1da366a3b62ecdd76fd52846e8784b41a945ae316eb",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "washing_machine",
+              "brand": "Electrolux",
+              "model": "EWW12753",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": [
+                "electrolux-au-washer-product-total-depth-v1"
+              ]
             }
           ]
         },
@@ -55424,9 +55501,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -55436,9 +55513,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -55448,9 +55525,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         },
@@ -55460,9 +55537,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_be851af92048b964c094aed1",
+              "familyId": "document_family_cb9a13f98026d0165c598eaf",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b"
+              "groupName": "Electrolux Australia washer product specification"
             }
           ]
         }
@@ -78736,10 +78813,10 @@
         "pageCount": 48
       },
       "grammarProfileIds": [
-        "pdf_grammar_658fb95d8446842a"
+        "pdf_grammar_d6ce8e4a50b28d21"
       ],
       "familyIds": [
-        "document_family_a7d28d8d9995ef2b7f63de9f"
+        "document_family_d271480522e869631f681521"
       ],
       "modelEdges": [
         {
@@ -78757,13 +78834,13 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_a7d28d8d9995ef2b7f63de9f",
+              "familyId": "document_family_d271480522e869631f681521",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_658fb95d8446842a"
+              "groupName": "PDF grammar pdf_grammar_d6ce8e4a50b28d21"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_e3b13a378349a3a198a33d3f",
+              "observationId": "dimension_expression_9405f3c3dc75c2ead1f1ee79",
               "page": 9,
               "fragmentSha256": "ff57a04469e14275cfbe474dca039be89dafa277e1ec0ecfee1a4de966827faf",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
@@ -109038,28 +109115,6 @@
       ]
     },
     {
-      "familyId": "document_family_46ad0a3a894af4ff4104450a",
-      "category": "dryer",
-      "brand": "LG",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_68c6a6913a230966",
-      "documentIds": [
-        "pdf_document_818a7124ba88a08ec9c426a5",
-        "pdf_document_32f2e3e78e3305a410fff13f"
-      ],
-      "pdfSha256s": [
-        "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-        "521077b559417d620664ead6be32ee1738e575ae50a7ffb3734b3fc24458d462"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_68c6a6913a230966"
-      ],
-      "referenceIds": [
-        "fa_ref_7aead6dc34c0fe035e925c12",
-        "fa_ref_ef887ff35eb44dabee42caa9"
-      ]
-    },
-    {
       "familyId": "document_family_4778dbf21c0a26c672bd24d8",
       "category": "fridge",
       "brand": "Haier",
@@ -110369,6 +110424,28 @@
       ]
     },
     {
+      "familyId": "document_family_6b4689d4157d434ddc8f50b0",
+      "category": "dryer",
+      "brand": "LG",
+      "groupType": "parser_family",
+      "groupName": "LG Australia dryer installation dimension diagram",
+      "documentIds": [
+        "pdf_document_818a7124ba88a08ec9c426a5",
+        "pdf_document_32f2e3e78e3305a410fff13f"
+      ],
+      "pdfSha256s": [
+        "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+        "521077b559417d620664ead6be32ee1738e575ae50a7ffb3734b3fc24458d462"
+      ],
+      "grammarProfileIds": [
+        "lg-au-dryer-dimension-diagram-v1"
+      ],
+      "referenceIds": [
+        "fa_ref_7aead6dc34c0fe035e925c12",
+        "fa_ref_ef887ff35eb44dabee42caa9"
+      ]
+    },
+    {
       "familyId": "document_family_6b4d2b5afa21c2dab8de5b88",
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -110385,6 +110462,25 @@
       ],
       "referenceIds": [
         "fa_ref_425fbafb959841f0fbec2768"
+      ]
+    },
+    {
+      "familyId": "document_family_6b66be72d9a9df4b2d137108",
+      "category": "washing_machine",
+      "brand": "LG",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_9ff54db34179eeb6",
+      "documentIds": [
+        "pdf_document_a075b3ebaff99f5a0bcca8f0"
+      ],
+      "pdfSha256s": [
+        "736c5c97437df0ac5168dce2a213c2a552bc492e3b4407cd8297cdf9ca35cee1"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_9ff54db34179eeb6"
+      ],
+      "referenceIds": [
+        "fa_ref_b0a61b8ec241b9d255321589"
       ]
     },
     {
@@ -112798,25 +112894,6 @@
       ]
     },
     {
-      "familyId": "document_family_a7d28d8d9995ef2b7f63de9f",
-      "category": "washing_machine",
-      "brand": "LG",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_658fb95d8446842a",
-      "documentIds": [
-        "pdf_document_aeb8ad7b48bec5f71f84dad7"
-      ],
-      "pdfSha256s": [
-        "b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_658fb95d8446842a"
-      ],
-      "referenceIds": [
-        "fa_ref_d66ec415a4d99f0b1fb4977e"
-      ]
-    },
-    {
       "familyId": "document_family_a7e066561c46445f7939a377",
       "category": "dishwasher",
       "brand": "Bosch",
@@ -113064,7 +113141,7 @@
         "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1"
       ],
       "grammarProfileIds": [
-        "pdf_grammar_68c6a6913a230966"
+        "pdf_grammar_600384d0a8dab340"
       ],
       "referenceIds": [
         "fa_ref_2ec9757e9c741c0018388580",
@@ -113189,7 +113266,7 @@
         "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b"
       ],
       "grammarProfileIds": [
-        "pdf_grammar_56dff8973bc69513"
+        "pdf_grammar_ffd9ab93a81bfabf"
       ],
       "referenceIds": [
         "fa_ref_4b9ea51ba47945c5ee8f95c3",
@@ -114129,40 +114206,6 @@
       ]
     },
     {
-      "familyId": "document_family_be851af92048b964c094aed1",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
-      "documentIds": [
-        "pdf_document_3d58a1c83fb114e63d355873",
-        "pdf_document_c1a20b7fcd2f90b38898346f",
-        "pdf_document_c93e0bac23401d5b0b0ce87e",
-        "pdf_document_f7d48109200b9ab938bae78e",
-        "pdf_document_bbf44c591d8df2ebf2ed467b",
-        "pdf_document_dc8d31b6290935ddb688ab55"
-      ],
-      "pdfSha256s": [
-        "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773",
-        "378d9a3ee6cb135b2f7ee189826959d6fb69c5d8e9ef304b876b6dce45dd51a3",
-        "4bef6eca8a8f821f317bb64786cbaf434951893947bcb09d311617e34ad1b8ae",
-        "68f72b01c284bca3e3aed8ebcab98cd19f5474b49bafbdc32fa94fd11a4dd501",
-        "791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031",
-        "7b8c6a09dd8ac52009ccef9cdb41ef75f182c6730d70d7bee5da62fab296bdf1"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
-      ],
-      "referenceIds": [
-        "fa_ref_11710c3f491f7bbd07aa453f",
-        "fa_ref_2783e304e07eea19e3a6cbb2",
-        "fa_ref_4c98e0754edf8b1793593c9d",
-        "fa_ref_534a39be8f15450b9fb6e3e8",
-        "fa_ref_b94cf8d37455d099ef867454",
-        "fa_ref_edb30c6b4e5528251ac48989"
-      ]
-    },
-    {
       "familyId": "document_family_bed1cf48b638bdb5d6ea592a",
       "category": "fridge",
       "brand": "Westinghouse",
@@ -114692,6 +114735,40 @@
       ]
     },
     {
+      "familyId": "document_family_cb9a13f98026d0165c598eaf",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "groupType": "parser_family",
+      "groupName": "Electrolux Australia washer product specification",
+      "documentIds": [
+        "pdf_document_3d58a1c83fb114e63d355873",
+        "pdf_document_c1a20b7fcd2f90b38898346f",
+        "pdf_document_c93e0bac23401d5b0b0ce87e",
+        "pdf_document_f7d48109200b9ab938bae78e",
+        "pdf_document_bbf44c591d8df2ebf2ed467b",
+        "pdf_document_dc8d31b6290935ddb688ab55"
+      ],
+      "pdfSha256s": [
+        "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773",
+        "378d9a3ee6cb135b2f7ee189826959d6fb69c5d8e9ef304b876b6dce45dd51a3",
+        "4bef6eca8a8f821f317bb64786cbaf434951893947bcb09d311617e34ad1b8ae",
+        "68f72b01c284bca3e3aed8ebcab98cd19f5474b49bafbdc32fa94fd11a4dd501",
+        "791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031",
+        "7b8c6a09dd8ac52009ccef9cdb41ef75f182c6730d70d7bee5da62fab296bdf1"
+      ],
+      "grammarProfileIds": [
+        "electrolux-au-washer-product-total-depth-v1"
+      ],
+      "referenceIds": [
+        "fa_ref_11710c3f491f7bbd07aa453f",
+        "fa_ref_2783e304e07eea19e3a6cbb2",
+        "fa_ref_4c98e0754edf8b1793593c9d",
+        "fa_ref_534a39be8f15450b9fb6e3e8",
+        "fa_ref_b94cf8d37455d099ef867454",
+        "fa_ref_edb30c6b4e5528251ac48989"
+      ]
+    },
+    {
       "familyId": "document_family_cbfb6125a934ed4e5c7af30a",
       "category": "washing_machine",
       "brand": "ASKO",
@@ -115087,6 +115164,25 @@
       ]
     },
     {
+      "familyId": "document_family_d271480522e869631f681521",
+      "category": "washing_machine",
+      "brand": "LG",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_d6ce8e4a50b28d21",
+      "documentIds": [
+        "pdf_document_aeb8ad7b48bec5f71f84dad7"
+      ],
+      "pdfSha256s": [
+        "b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_d6ce8e4a50b28d21"
+      ],
+      "referenceIds": [
+        "fa_ref_d66ec415a4d99f0b1fb4977e"
+      ]
+    },
+    {
       "familyId": "document_family_d449b384c7bf9a7787aed1a1",
       "category": "washing_machine",
       "brand": "Fisher & Paykel",
@@ -115425,25 +115521,6 @@
       ],
       "referenceIds": [
         "fa_ref_c8514fc95f69f69afdd33075"
-      ]
-    },
-    {
-      "familyId": "document_family_df8fc835c0f835fe66a73ee4",
-      "category": "washing_machine",
-      "brand": "LG",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_2e826f8230419796",
-      "documentIds": [
-        "pdf_document_a075b3ebaff99f5a0bcca8f0"
-      ],
-      "pdfSha256s": [
-        "736c5c97437df0ac5168dce2a213c2a552bc492e3b4407cd8297cdf9ca35cee1"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_2e826f8230419796"
-      ],
-      "referenceIds": [
-        "fa_ref_b0a61b8ec241b9d255321589"
       ]
     },
     {
@@ -116637,5 +116714,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "70a58559939f7d7a7108bed2081c58f0732bb7f5a5291c44f5457a7e99c25282"
+  "semanticGraphSha256": "e4f1ed29bec250adcc3fd91d5865fea0a1e06d5eaeb5d96247485a855bcc4cd4"
 }

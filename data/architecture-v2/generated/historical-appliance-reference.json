@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "6f1504895d6a82463c6ab8141e7e4d8b959d76b0d8be3c7fd8b45eb57efeacc9",
-    "historical-recovery:historical-recovery-cumulative-v1": "03fa22490a6eabc4ce6883fff8cbfac8f423c2df0cdff99eda88dea5debf2596"
+    "historical-recovery:historical-recovery-cumulative-v1": "d68114df5024050129d5ef34ce00bda8ca3830c29e67bf21bc992110bf785688"
   },
   "records": [
     {
@@ -80611,7 +80611,7 @@
         },
         {
           "sourceId": "historical-recovery:recovery_target_6252d12c8636ff82d87b836d",
-          "snapshotSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd",
+          "snapshotSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
           "sourceLines": []
         }
       ],
@@ -80627,8 +80627,8 @@
           "targetId": "recovery_target_6252d12c8636ff82d87b836d",
           "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
           "contentSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-          "receiptBindingSha256": "e4db14a50878b8b884a81f50c9ed97f45a39dc22d12ccc39215a11f27c2dca49",
-          "verifiedAt": "2026-07-14T20:05:52.421Z",
+          "receiptBindingSha256": "d891e0641f21883f896ad52014f2cc35223a45d6a1541573c9cbd0c2c3fb7803",
+          "verifiedAt": "2026-07-19T18:26:12.676Z",
           "fields": {
             "width": {
               "locatorKind": "PDF_FRAGMENT",
@@ -80652,25 +80652,25 @@
         {
           "targetId": "recovery_target_6252d12c8636ff82d87b836d",
           "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
-          "contentSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd",
-          "receiptBindingSha256": "8e7cec63fbc3fd1a4309359f59d37c22a5fd3be46d9a1df5a3c02d543367d23c",
-          "verifiedAt": "2026-07-14T20:05:50.687Z",
+          "contentSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
+          "receiptBindingSha256": "9a5db30e16ccbdbb45dee10a36ecfbbb11edf72312a46428487d0256f7cde359",
+          "verifiedAt": "2026-07-19T18:26:11.397Z",
           "fields": {
             "width": {
               "locatorKind": "HTML_ARTIFACT",
-              "artifactSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd"
+              "artifactSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822"
             },
             "height": {
               "locatorKind": "HTML_ARTIFACT",
-              "artifactSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd"
+              "artifactSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822"
             },
             "depth": {
               "locatorKind": "HTML_ARTIFACT",
-              "artifactSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd"
+              "artifactSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822"
             }
           },
           "contentType": "text/html",
-          "objectPath": "evidence/web/sha256/94/c3/94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd.html"
+          "objectPath": "evidence/web/sha256/af/3e/af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822.html"
         }
       ]
     },

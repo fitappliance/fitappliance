@@ -340,7 +340,7 @@ function validateTarget(value) {
     'targetId', 'referenceId', 'legacyRuntimeId', 'canonicalProductId', 'brand',
     'model', 'category', 'lifecycleState', 'requestedFields', 'primaryJobId',
     'candidateJobIds', 'publicationEligible', 'reconciliationContext',
-  ]);
+  ], ['repairExistingReceipt']);
   text(value.targetId, 'targetId');
   text(value.referenceId, 'referenceId');
   text(value.legacyRuntimeId, 'legacyRuntimeId');
@@ -357,6 +357,9 @@ function validateTarget(value) {
     throw new TypeError('target primaryJobId must be first candidate job');
   }
   if (value.publicationEligible !== false) throw new TypeError('new recovery target publicationEligible must be false');
+  if (value.repairExistingReceipt != null && value.repairExistingReceipt !== true) {
+    throw new TypeError('repairExistingReceipt may only be present as true');
+  }
   validateReconciliationContext(value.reconciliationContext);
 }
 

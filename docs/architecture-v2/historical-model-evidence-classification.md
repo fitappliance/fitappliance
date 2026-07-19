@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-17T04:19:39.580Z
+Generated: 2026-07-19T18:38:55.827Z
 
 Coverage: **8,089 / 8,089** unique historical models.
 Models with document links: **1,768**; without links: **6,321**.
@@ -12,7 +12,7 @@ This is a research and repair classification. It does not grant publication auth
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
 | dishwasher | 1419 | 94 | 1115 |
-| dryer | 838 | 72 | 274 |
+| dryer | 838 | 72 | 275 |
 | fridge | 4336 | 121 | 2310 |
 | washing_machine | 1496 | 88 | 680 |
 
@@ -59,7 +59,7 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Sub-Zero | parser_family | PDF grammar pdf_grammar_b6dfa4c93dc0b9e7 | 6 |
 | fridge | Westinghouse | document_family | Document family e316fc226e4d | 6 |
 | washing_machine | Bosch | marketing_series | Series 6 | 6 |
-| washing_machine | Electrolux | parser_family | PDF grammar pdf_grammar_0bd4c2db9d70ff3b | 6 |
+| washing_machine | Electrolux | parser_family | Electrolux Australia washer product specification | 6 |
 | washing_machine | Electrolux | parser_family | PDF grammar pdf_grammar_8f60826f847a01df | 6 |
 | dishwasher | Bosch | document_family | Document family 2dc618f4e502 | 5 |
 | dishwasher | Bosch | parser_family | PDF grammar pdf_grammar_d0a7cfc9cb0c3200 | 5 |

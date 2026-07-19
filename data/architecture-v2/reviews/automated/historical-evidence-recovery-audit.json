@@ -1,19 +1,26 @@
 {
   "schemaVersion": 1,
-  "auditId": "historical-recovery-audit-b611fc1121ef83eeb237df91",
-  "generatedAt": "2026-07-17T03:51:40.825Z",
+  "auditId": "historical-recovery-audit-7d47ce64ee97d054f2ca282d",
+  "generatedAt": "2026-07-19T18:33:14.167Z",
   "mode": "online",
   "status": "passed",
-  "batchId": "historical-recovery-44100078715481c4c1046d66-slice-fa46249bbe8b",
-  "batchSha256": "166cab5eaaa2e70fd30c822341ca97d26e6ddff96e611e328fedd6dd2c99236f",
-  "queueSha256": "314074cb61dcc0207f402466f666b8542b628ae04d71825ff058cbed7c50a783",
-  "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c",
-  "resultsSha256": "efe26d1c0bf11cee2286f3bd58452ea0206ea2496ad121a8adb11526c19efda3",
-  "priorBundleSha256": "aa1080517d754fd91745e2e881680c94390b4f132bd7e742eb7ef9bd5c46c82e",
+  "batchId": "historical-recovery-2214f258c0c5951010062bfb-slice-1e81991c2f38",
+  "batchSha256": "3c3cf668ab420b85063e35c6acbd55ccd12e0f137e1c7206234d82fb8def834c",
+  "queueSha256": "b3ef1e25639b04a7296c8df26160446cf654198321e87f4c11508f4de1c169b2",
+  "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+  "resultsSha256": "9df5da9a1e7c0c9c1e3e6f465b639869522ddd0a02bd1f2daaf2de17dee2c422",
+  "priorBundleSha256": "03fa22490a6eabc4ce6883fff8cbfac8f423c2df0cdff99eda88dea5debf2596",
   "priorObjectsReplayed": true,
-  "checkedTargets": 10,
-  "checkedObjects": 801,
-  "repairs": [],
+  "checkedTargets": 1,
+  "checkedObjects": 803,
+  "repairs": [
+    {
+      "targetId": "recovery_target_6252d12c8636ff82d87b836d",
+      "reason": "receipt_rederived_from_identical_raw_artifact_with_verified_corroboration",
+      "priorEntrySha256": "8e7ebf033489f509165389dfd48e6bb007d49420db23b7f29e95b040ab6e8485",
+      "replacementOutcomeSha256": "3624854dfb85db2c4770b476a35e43e3c127986b0e4349a2ea39f7424f275aa8"
+    }
+  ],
   "violations": [],
-  "semanticAuditSha256": "b611fc1121ef83eeb237df91006ffd9a79d983a8cc5bef493685dd6c84625926"
+  "semanticAuditSha256": "7d47ce64ee97d054f2ca282daf3923fa5748671e7b3e7759a2b2a73d846d4b97"
 }

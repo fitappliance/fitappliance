@@ -21,6 +21,7 @@ function target({
   lifecycleState = 'CURRENT_RETAIL',
   priorityClass = 'P0_CURRENT_MISSING_DIMENSIONS',
   executionLane = 'BOUNDED_DISCOVERY',
+  repairExistingReceipt = false,
 }) {
   return {
     targetId,
@@ -31,6 +32,7 @@ function target({
     lifecycleState,
     priorityClass,
     executionLane,
+    repairExistingReceipt,
     candidateJobIds: executionLane === 'ACQUISITION' ? [`job-${targetId}`] : [],
     primaryJobId: executionLane === 'ACQUISITION' ? `job-${targetId}` : null,
   };
@@ -353,6 +355,34 @@ test('P4 discovery work enters conflict closure without pretending to be quarant
   const conflict = artifact.workstreams.find((row) => row.workstreamId === 'CONFLICT_CLOSURE');
   assert.equal(conflict.assignedTargets, 2);
   assert.equal(conflict.eligibleTargets, 2);
+});
+
+test('explicit receipt repair takes parser-repair precedence over P4 conflict priority', () => {
+  const input = fixture();
+  const targetRow = input.executableQueue.discoveryTargets.find(
+    (row) => row.targetId === 'current-singleton',
+  );
+  targetRow.priorityClass = 'P4_CONFLICT_RESOLUTION';
+  targetRow.repairExistingReceipt = true;
+  input.familyCanaries.executableQueueSha256 = canonicalJsonSha256(input.executableQueue);
+  const semantic = {
+    schemaVersion: input.familyCanaries.schemaVersion,
+    generatedAt: input.familyCanaries.generatedAt,
+    documentGraphSha256: input.familyCanaries.documentGraphSha256,
+    executableQueueSha256: input.familyCanaries.executableQueueSha256,
+    policySha256: input.familyCanaries.policySha256,
+    parserContractSha256: input.familyCanaries.parserContractSha256,
+    processorEpochs: input.familyCanaries.processorEpochs,
+    families: input.familyCanaries.families,
+    targetDecisions: input.familyCanaries.targetDecisions,
+  };
+  input.familyCanaries.semanticCanarySha256 = canonicalJsonSha256(semantic);
+
+  const artifact = build(input);
+  const parser = artifact.workstreams.find((row) => row.workstreamId === 'PARSER_REPAIR');
+  const conflict = artifact.workstreams.find((row) => row.workstreamId === 'CONFLICT_CLOSURE');
+  assert.equal(parser.assignedTargets, 2);
+  assert.equal(conflict.assignedTargets, 1);
 });
 
 test('priority semantics cannot cross current and historical lifecycle workstreams', () => {

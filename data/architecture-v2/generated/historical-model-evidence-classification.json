@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T04:19:39.580Z",
+  "generatedAt": "2026-07-19T18:38:55.827Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "88b2986938073de17e3170a7289b44ea5dc6deb05f10521f545f682fda27781b",
+  "semanticClassificationSha256": "ad2d54e4bba90c9abb33fe13e2b4771dbedee9187f4ce28a4ea08a796f069f4a",
   "summary": {
     "records": 8089,
     "uniqueReferenceIds": 8089,
-    "documentLinks": 4379,
+    "documentLinks": 4380,
     "modelsWithDocumentLinks": 1768,
     "modelsWithoutDocumentLinks": 6321,
     "byCategory": {
@@ -81,7 +81,7 @@
       "category": "dryer",
       "records": 838,
       "brands": 72,
-      "documentLinks": 274,
+      "documentLinks": 275,
       "byOperationalClass": {
         "COMPLETE_RECEIPT": 46,
         "CONFLICT_QUARANTINE": 4,
@@ -78439,7 +78439,7 @@
       "model": "DVH1-08WP",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_68c6a6913a230966",
+      "groupName": "LG Australia dryer installation dimension diagram",
       "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
@@ -78448,7 +78448,7 @@
       "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
-        "RECEIPT_BOUND": 2
+        "RECEIPT_BOUND": 3
       },
       "documentLinks": [
         {
@@ -78474,7 +78474,7 @@
           "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
           "evidenceObjectIds": [
             "mineru-index:22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-            "receipt:e4db14a50878b8b884a81f50c9ed97f45a39dc22d12ccc39215a11f27c2dca49",
+            "receipt:d891e0641f21883f896ad52014f2cc35223a45d6a1541573c9cbd0c2c3fb7803",
             "storage:evidence/objects/sha256/22/22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957.pdf"
           ],
           "reasonCodes": [
@@ -78507,6 +78507,24 @@
           "extractionState": "ALL_AXIS_SCALAR",
           "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd"
+        },
+        {
+          "documentId": "pdf:af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
+          "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/af/3e/af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822.html",
+            "receipt:9a5db30e16ccbdbb45dee10a36ecfbbb11edf72312a46428487d0256f7cde359"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822"
         }
       ],
       "operationalClass": "COMPLETE_RECEIPT",
@@ -78518,13 +78536,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_68c6a6913a230966",
+          "groupName": "LG Australia dryer installation dimension diagram",
           "grammarProfileIds": [
-            "pdf_grammar_68c6a6913a230966"
+            "lg-au-dryer-dimension-diagram-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "lg-au-dryer-dimension-diagram-v1",
         "pdf_grammar_68c6a6913a230966"
       ]
     },
@@ -78562,7 +78581,7 @@
       "model": "DVH10-10B",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_68c6a6913a230966",
+      "groupName": "LG Australia dryer installation dimension diagram",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "EXACT_MODEL",
@@ -78640,13 +78659,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_68c6a6913a230966",
+          "groupName": "LG Australia dryer installation dimension diagram",
           "grammarProfileIds": [
-            "pdf_grammar_68c6a6913a230966"
+            "lg-au-dryer-dimension-diagram-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "lg-au-dryer-dimension-diagram-v1",
         "pdf_grammar_68c6a6913a230966"
       ]
     },
@@ -78874,11 +78894,12 @@
           "groupType": "document_family",
           "groupName": "Document family 2fe3cc8c8972",
           "grammarProfileIds": [
-            "pdf_grammar_68c6a6913a230966"
+            "pdf_grammar_600384d0a8dab340"
           ]
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_600384d0a8dab340",
         "pdf_grammar_68c6a6913a230966"
       ]
     },
@@ -79042,11 +79063,12 @@
           "groupType": "document_family",
           "groupName": "Document family 2fe3cc8c8972",
           "grammarProfileIds": [
-            "pdf_grammar_68c6a6913a230966"
+            "pdf_grammar_600384d0a8dab340"
           ]
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_600384d0a8dab340",
         "pdf_grammar_68c6a6913a230966"
       ]
     },
@@ -79158,11 +79180,12 @@
           "groupType": "document_family",
           "groupName": "Document family 2fe3cc8c8972",
           "grammarProfileIds": [
-            "pdf_grammar_68c6a6913a230966"
+            "pdf_grammar_600384d0a8dab340"
           ]
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_600384d0a8dab340",
         "pdf_grammar_68c6a6913a230966"
       ]
     },
@@ -258578,7 +258601,7 @@
       "model": "EWF12753",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "groupName": "Electrolux Australia washer product specification",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -258633,14 +258656,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+          "groupName": "Electrolux Australia washer product specification",
           "grammarProfileIds": [
-            "pdf_grammar_0bd4c2db9d70ff3b"
+            "electrolux-au-washer-product-total-depth-v1"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ]
     },
     {
@@ -258651,7 +258674,7 @@
       "model": "EWF12763E",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "groupName": "Electrolux Australia washer product specification",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -258706,14 +258729,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+          "groupName": "Electrolux Australia washer product specification",
           "grammarProfileIds": [
-            "pdf_grammar_0bd4c2db9d70ff3b"
+            "electrolux-au-washer-product-total-depth-v1"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ]
     },
     {
@@ -258724,7 +258747,7 @@
       "model": "EWF14013",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "groupName": "Electrolux Australia washer product specification",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -258798,13 +258821,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+          "groupName": "Electrolux Australia washer product specification",
           "grammarProfileIds": [
-            "pdf_grammar_0bd4c2db9d70ff3b"
+            "electrolux-au-washer-product-total-depth-v1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "electrolux-au-washer-product-total-depth-v1",
         "pdf_grammar_0bd4c2db9d70ff3b"
       ]
     },
@@ -258816,7 +258840,7 @@
       "model": "EWF1408B1WA",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "groupName": "Electrolux Australia washer product specification",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -258871,14 +258895,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+          "groupName": "Electrolux Australia washer product specification",
           "grammarProfileIds": [
-            "pdf_grammar_0bd4c2db9d70ff3b"
+            "electrolux-au-washer-product-total-depth-v1"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ]
     },
     {
@@ -258889,7 +258913,7 @@
       "model": "EWF14933",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "groupName": "Electrolux Australia washer product specification",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -258944,14 +258968,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+          "groupName": "Electrolux Australia washer product specification",
           "grammarProfileIds": [
-            "pdf_grammar_0bd4c2db9d70ff3b"
+            "electrolux-au-washer-product-total-depth-v1"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ]
     },
     {
@@ -259967,7 +259991,7 @@
       "model": "EWW12753",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+      "groupName": "Electrolux Australia washer product specification",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -260022,14 +260046,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_0bd4c2db9d70ff3b",
+          "groupName": "Electrolux Australia washer product specification",
           "grammarProfileIds": [
-            "pdf_grammar_0bd4c2db9d70ff3b"
+            "electrolux-au-washer-product-total-depth-v1"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_0bd4c2db9d70ff3b"
+        "electrolux-au-washer-product-total-depth-v1"
       ]
     },
     {
@@ -278828,7 +278852,7 @@
       "model": "WD1275A1",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_2e826f8230419796",
+      "groupName": "PDF grammar pdf_grammar_9ff54db34179eeb6",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -278921,14 +278945,15 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_2e826f8230419796",
+          "groupName": "PDF grammar pdf_grammar_9ff54db34179eeb6",
           "grammarProfileIds": [
-            "pdf_grammar_2e826f8230419796"
+            "pdf_grammar_9ff54db34179eeb6"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_2e826f8230419796"
+        "pdf_grammar_2e826f8230419796",
+        "pdf_grammar_9ff54db34179eeb6"
       ]
     },
     {
@@ -281416,7 +281441,7 @@
       "model": "WTL9-12B",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_658fb95d8446842a",
+      "groupName": "PDF grammar pdf_grammar_cf02f858aff32168",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -281513,22 +281538,23 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_658fb95d8446842a",
+          "groupName": "PDF grammar pdf_grammar_cf02f858aff32168",
           "grammarProfileIds": [
-            "pdf_grammar_658fb95d8446842a"
+            "pdf_grammar_cf02f858aff32168"
           ]
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_cf02f858aff32168",
+          "groupName": "PDF grammar pdf_grammar_d6ce8e4a50b28d21",
           "grammarProfileIds": [
-            "pdf_grammar_cf02f858aff32168"
+            "pdf_grammar_d6ce8e4a50b28d21"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_658fb95d8446842a",
-        "pdf_grammar_cf02f858aff32168"
+        "pdf_grammar_cf02f858aff32168",
+        "pdf_grammar_d6ce8e4a50b28d21"
       ]
     },
     {
@@ -283212,12 +283238,13 @@
           "groupType": "document_family",
           "groupName": "Document family 2d559286f86e",
           "grammarProfileIds": [
-            "pdf_grammar_56dff8973bc69513"
+            "pdf_grammar_ffd9ab93a81bfabf"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_56dff8973bc69513"
+        "pdf_grammar_56dff8973bc69513",
+        "pdf_grammar_ffd9ab93a81bfabf"
       ]
     },
     {
@@ -283314,12 +283341,13 @@
           "groupType": "document_family",
           "groupName": "Document family 2d559286f86e",
           "grammarProfileIds": [
-            "pdf_grammar_56dff8973bc69513"
+            "pdf_grammar_ffd9ab93a81bfabf"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_56dff8973bc69513"
+        "pdf_grammar_56dff8973bc69513",
+        "pdf_grammar_ffd9ab93a81bfabf"
       ]
     },
     {

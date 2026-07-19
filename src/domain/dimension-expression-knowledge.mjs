@@ -452,7 +452,7 @@ function exactAxisCell(value) {
   return { axis: axisForToken(match[1]), sourceAxis: normalizedText(value), qualifier: match[2] };
 }
 
-function alternatingObservation({ cells, pageContext, base, qualifiedDepthPrimary = false }) {
+function alternatingObservation({ cells, pageContext, base }) {
   const pairs = [];
   for (const row of cells) {
     if (row.length < 2 || row.length % 2 !== 0) return null;
@@ -468,22 +468,14 @@ function alternatingObservation({ cells, pageContext, base, qualifiedDepthPrimar
   const depthVariants = pairs.filter((pair) => pair.axis === 'depth' && pair.qualifier)
     .map((pair) => pair.sourceAxis);
   const axes = pairs.map((pair) => pair.axis);
-  const plainDepths = pairs.filter((pair) => pair.axis === 'depth' && !pair.qualifier);
-  const diagramPrimaryDepth = Boolean(
-    qualifiedDepthPrimary
-    && plainDepths.length === 1
-    && depthVariants.length > 0,
-  );
   const safeAxes = [...new Set(depthVariants.length
-    ? pairs.filter((pair) => pair.axis !== 'depth' || (diagramPrimaryDepth && !pair.qualifier))
+    ? pairs.filter((pair) => pair.axis !== 'depth')
       .map((pair) => pair.axis)
     : axes)];
   const { unit, unitPlacement } = unitEvidence('', '', pageContext);
   let parserDecision = unit ? 'SUPPORTED_EXPLICIT_ALTERNATING_CELLS' : 'RESEARCH_UNIT_MISSING';
   if (depthVariants.length && unit) {
-    parserDecision = diagramPrimaryDepth
-      ? 'SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS'
-      : 'SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH';
+    parserDecision = 'SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH';
   }
   return finalizeObservation(base, {
     patternKind: 'ALTERNATING_AXIS_VALUE_CELLS',
@@ -504,27 +496,9 @@ function alternatingObservation({ cells, pageContext, base, qualifiedDepthPrimar
     })),
     parserDecision,
     semanticInterpretation: depthVariants.length
-      ? diagramPrimaryDepth
-        ? 'The unqualified D is the primary depth in the adjacent dimension diagram; primed depth variants remain unpublished.'
-        : 'Width and height are explicit; depth variants remain undefined by text.'
+      ? 'Width and height are explicit; D, D-prime and D-double-prime semantics remain undefined by text.'
       : axes.map((axis, index) => `${index + 1}:${axis}`).join(', '),
   });
-}
-
-function dimensionDiagramContext(items, fragment) {
-  const tableIndex = items.indexOf(fragment);
-  if (tableIndex < 1) return false;
-  let headingIndex = -1;
-  for (let index = tableIndex - 1; index >= 0; index -= 1) {
-    const candidate = items[index];
-    if (candidate.type === 'table') break;
-    if (/\bdimensions?\s*\(\s*(?:mm|millimet(?:re|er)s?)\s*\)/i.test(itemText(candidate))) {
-      headingIndex = index;
-      break;
-    }
-  }
-  return headingIndex >= 0
-    && items.slice(headingIndex + 1, tableIndex).some((item) => item.type === 'image');
 }
 
 function hierarchicalDepthObservation({ cells, pageContext, base }) {
@@ -1069,12 +1043,7 @@ export function extractDimensionExpressions(input) {
           if (lettered) observations.push(lettered);
           observations.push(...unlabelledDimensionTripleObservations({ text, pageContext, base }));
         }
-        const alternating = alternatingObservation({
-          cells,
-          pageContext,
-          base,
-          qualifiedDepthPrimary: dimensionDiagramContext(items, item),
-        });
+        const alternating = alternatingObservation({ cells, pageContext, base });
         if (alternating) observations.push(alternating);
         const hierarchicalDepth = hierarchicalDepthObservation({ cells, pageContext, base });
         if (hierarchicalDepth) observations.push(hierarchicalDepth);

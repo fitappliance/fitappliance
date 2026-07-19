@@ -11,7 +11,7 @@
   [`2026-07-13-historical-evidence-coverage-recovery.md`](2026-07-13-historical-evidence-coverage-recovery.md)
 - **Canonical runbook:**
   [`historical-evidence-recovery-runbook.md`](../../architecture-v2/historical-evidence-recovery-runbook.md)
-- **Active task:** Task 8 - Impact-Ranked Parser Gap Queue and Fixture Corpus
+- **Active task:** Task 9 - Controlled P0/P1 Dimensions Recovery Scale Loop
 
 **Goal:** Move the 8,089-model historical evidence programme from a safe but
 low-throughput recovery loop to a measurable, family-aware, bounded and
@@ -87,8 +87,8 @@ under that task, repair the plan first, and only then resume implementation.
 | 5 | PDF/MinerU/document-family/model relationships are not canonical | COMPLETE | 55 focused tests; Architecture V2 920/920; lint/build/diff passed; five-artifact external replay idempotent |
 | 6 | Per-model runs repeat family-level source failures | COMPLETE | 8 domain tests; 27 gate/runner/epoch tests; Architecture V2 929/929; lint/offline build/diff passed; schema-v2 artifact stable |
 | 7 | Generated batches are operationally too broad | COMPLETE | 12 planner tests; 48 lane tests; Architecture V2 942/942; lint/offline build/determinism/real-manifest validation passed |
-| 8 | Parser repairs are not prioritised by reusable family impact | IN_PROGRESS | Activated after Task 7 verification; dependency 5 complete |
-| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | PENDING | - |
+| 8 | Parser repairs are not prioritised by reusable family impact | COMPLETE | 216 focused tests; Architecture V2 968/968; lint/offline build/diff passed; full 803-object repair audit and 408/408 receipt replay passed |
+| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | IN_PROGRESS | Activated after Tasks 7 and 8 completed |
 | 10 | Full installation/Fit evidence has no separate scale pipeline | PENDING | - |
 
 ## Ten-Problem Solution Map
@@ -641,14 +641,52 @@ workstream.
   source authority, MinerU validity and ambiguity risk.
 - Every parser profile requires positive and negative fixtures preserving axis,
   unit, scope, page/table and model identity context.
+- Projects every incomplete or diagnostic family into exactly one typed lane:
+  `REPAIR_READY`, `IDENTITY_BLOCKED`, `MINERU_BLOCKED`,
+  `IMAGE_SEMANTICS_REQUIRED`, `AMBIGUITY_RESEARCH`, or
+  `COMPLETE_DIAGNOSTIC_ONLY`. Only `REPAIR_READY` rows receive an execution
+  rank; a high affected-model count can never override a failed evidence gate.
+- Counts affected models only from graph-bound exact/model-list references with
+  an incomplete replay. Family membership and a URL that merely looks official
+  never create identity or source authority.
+- Binds every selected repair to a tracked fixture-corpus profile. Corpus cases
+  include an immutable source fragment, exact model, page/table scope, axis and
+  unit semantics, expected accepted fields and expected rejected lookalikes.
 
-- [ ] Test ranking, tied scores, invalid MinerU, package/door-open exclusion,
+- [x] Test ranking, tied scores, invalid MinerU, package/door-open exclusion,
   adjustable ranges and ambiguous D/D'/D'' expressions.
-- [ ] Generate the current queue and select the highest reusable family.
-- [ ] Add failing fixtures, implement the minimum parser-profile repair and
+- [x] Generate the current queue and select the highest reusable family.
+- [x] Add failing fixtures, implement the minimum parser-profile repair and
   replay all documents in that family.
-- [ ] Bump processor epoch only when semantic output intentionally changes.
-- [ ] Update this task and commit.
+- [x] Bump processor epoch only when semantic output intentionally changes.
+- [x] Update this task and commit.
+
+**Plan correction (2026-07-19):** The original task treated all knowledge-base
+`researchGaps` as parser work. The current snapshot proves that this is unsafe:
+families with complete parser replays still carry generic packaging/image
+diagnostics, while other failures are caused by unproven identity, invalid
+MinerU, image-only semantics or unresolved D/D'/D'' variants. The queue must
+therefore apply typed hard gates before scoring and must report blocked lanes
+without pretending they are parser throughput. Existing classification
+authority remains canonical; official-looking hosts are not promoted by
+inference. The first repair is selected only after this corrected queue is
+generated, and a semantic parser change requires a processor-epoch bump plus
+full family replay.
+
+**Completed evidence (2026-07-19):** The typed priority artifact contains 410
+families: 43 `REPAIR_READY`, 279 `IDENTITY_BLOCKED`, 5
+`IMAGE_SEMANTICS_REQUIRED`, 23 `AMBIGUITY_RESEARCH` and 60
+`COMPLETE_DIAGNOSTIC_ONLY`; no invalid MinerU family was misranked. Two
+hash-bound fixture profiles cover real Electrolux washer and LG dryer MinerU
+fragments with positive and adversarial cases. The LG D/D'/D'' repair remained
+ambiguity-gated at family level while one exact audited target was safely
+re-derived. Its failed legacy receipt was replaced without losing a passed
+superseded HTML receipt. The cumulative bundle now replays 408/408 sources,
+`COMPLETE_RECEIPT` increased to 401, `PARSER_REPAIR` fell to zero,
+receipt-bound current dimensions increased to 332, and receipt-bound
+`VERIFIED_FIT` remains zero. Focused Task 8 tests passed 216/216, the full
+Architecture V2 suite passed 968/968, `npm run lint`, the online 803-object
+repair audit, external refresh, offline build and `git diff --check` passed.
 
 **Acceptance:** Parser work is selected by measurable model impact and every
 change has accept/reject corpus coverage.

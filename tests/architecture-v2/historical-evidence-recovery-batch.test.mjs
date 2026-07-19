@@ -163,6 +163,19 @@ function receiptSource({
   };
 }
 
+function receiptReplayAudit(bundle, outcomes) {
+  const semantic = {
+    sourceBundleSha256: canonicalJsonSha256(bundle),
+    outcomes,
+  };
+  return {
+    schemaVersion: 1,
+    generatedAt: '2026-07-19T00:00:00.000Z',
+    ...semantic,
+    semanticAuditSha256: canonicalJsonSha256(semantic),
+  };
+}
+
 test('batch deterministically selects targets and preserves every alternate candidate edge', () => {
   const queue = fixtureQueue();
   const input = {
@@ -348,22 +361,115 @@ test('batch fails closed when prior acceptance contains only a compact receipt r
 test('explicit parser repair reopens one accepted target without hydrating its invalid receipt', () => {
   const queue = fixtureQueue();
   queue.targets[0].repairExistingReceipt = true;
+  const failedSource = receiptSource({ sourceUrl: 'https://example.com.au/old.pdf' });
+  const bundle = {
+    entries: [{
+      targetId: queue.targets[0].targetId,
+      referenceId: queue.targets[0].referenceId,
+      brand: 'Example', model: 'EX100', category: 'dishwasher',
+      acceptanceStatus: 'accepted',
+      sources: [failedSource],
+    }],
+  };
   const batch = buildHistoricalEvidenceRecoveryBatch({
     queue,
     policy: fixturePolicy(),
-    existingAcceptanceBundles: [{
-      entries: [{
-        targetId: queue.targets[0].targetId,
-        brand: 'Example', model: 'EX100', category: 'dishwasher',
-        acceptanceStatus: 'accepted',
-        sources: [receiptSource({ sourceUrl: 'https://example.com.au/old.pdf' })],
-      }],
-    }],
+    existingAcceptanceBundles: [bundle],
+    receiptReplayAudit: receiptReplayAudit(bundle, [{
+      targetId: queue.targets[0].targetId,
+      referenceId: queue.targets[0].referenceId,
+      contentSha256: failedSource.contentSha256,
+      receiptBindingSha256: failedSource.verificationReceipt.bindingSha256,
+      status: 'failed',
+      failureCode: 'receipt_replay_mismatch',
+    }]),
     selection: { targetIds: [queue.targets[0].targetId] },
   });
 
   assert.equal(batch.targets.length, 1);
   assert.deepEqual(batch.targets[0].reconciliationContext.activeReceiptSources, []);
+  assert.equal(batch.targets[0].repairExistingReceipt, true);
+});
+
+test('parser repair preserves only prior receipt sources that passed the bound replay audit', () => {
+  const queue = fixtureQueue();
+  queue.targets[0].repairExistingReceipt = true;
+  const failedSource = receiptSource({ sourceUrl: 'https://example.com.au/old.pdf' });
+  const passedSource = receiptSource({
+    sourceUrl: 'https://example.com.au/old-product-page',
+    contentSha256: 'c'.repeat(64),
+    bindingSha256: 'd'.repeat(64),
+  });
+  const bundle = {
+    entries: [{
+      targetId: queue.targets[0].targetId,
+      referenceId: queue.targets[0].referenceId,
+      brand: 'Example', model: 'EX100', category: 'dishwasher',
+      acceptanceStatus: 'accepted',
+      sources: [failedSource, passedSource],
+    }],
+  };
+  const audit = receiptReplayAudit(bundle, [{
+    targetId: queue.targets[0].targetId,
+    referenceId: queue.targets[0].referenceId,
+    contentSha256: failedSource.contentSha256,
+    receiptBindingSha256: failedSource.verificationReceipt.bindingSha256,
+    status: 'failed',
+    failureCode: 'receipt_replay_mismatch',
+  }, {
+    targetId: queue.targets[0].targetId,
+    referenceId: queue.targets[0].referenceId,
+    contentSha256: passedSource.contentSha256,
+    receiptBindingSha256: passedSource.verificationReceipt.bindingSha256,
+    status: 'passed',
+    failureCode: null,
+  }]);
+
+  const batch = buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [bundle],
+    receiptReplayAudit: audit,
+    selection: { targetIds: [queue.targets[0].targetId] },
+  });
+
+  assert.deepEqual(batch.targets[0].reconciliationContext.activeReceiptSources, [passedSource]);
+});
+
+test('parser repair fails closed without a replay audit bound to the cumulative bundle', () => {
+  const queue = fixtureQueue();
+  queue.targets[0].repairExistingReceipt = true;
+  const source = receiptSource();
+  const bundle = {
+    entries: [{
+      targetId: queue.targets[0].targetId,
+      referenceId: queue.targets[0].referenceId,
+      brand: 'Example', model: 'EX100', category: 'dishwasher',
+      acceptanceStatus: 'accepted', sources: [source],
+    }],
+  };
+
+  assert.throws(() => buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [bundle],
+    selection: { targetIds: [queue.targets[0].targetId] },
+  }), /receipt replay audit.*required/i);
+
+  const drifted = receiptReplayAudit({ entries: [] }, [{
+    targetId: queue.targets[0].targetId,
+    referenceId: queue.targets[0].referenceId,
+    contentSha256: source.contentSha256,
+    receiptBindingSha256: source.verificationReceipt.bindingSha256,
+    status: 'failed', failureCode: 'receipt_replay_mismatch',
+  }]);
+  assert.throws(() => buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [bundle],
+    receiptReplayAudit: drifted,
+    selection: { targetIds: [queue.targets[0].targetId] },
+  }), /receipt replay audit.*bundle/i);
 });
 
 test('receipt-accepted non-scalar targets are also terminal for cumulative batch selection', () => {
@@ -452,11 +558,12 @@ test('batch CLI keeps canary output separate from the canonical full batch', () 
 });
 
 test('committed full batch is reproducible from the queue, policy and cumulative acceptance artifacts', async () => {
-  const [queue, policy, cumulativeBundle, pdfBatch, pdfResults,
+  const [queue, policy, cumulativeBundle, receiptReplayAudit, pdfBatch, pdfResults,
     rangeBatch, rangeResults, committed] = await Promise.all([
     readFile('data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/policies/historical-evidence-recovery-policy.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json', 'utf8').then(JSON.parse),
+    readFile('data/architecture-v2/reviews/automated/historical-acceptance-receipt-replay-audit.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/automated/pdf-brand-acceptance-batch.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/automated/identity-range-recovery-acceptance-batch.json', 'utf8').then(JSON.parse),
@@ -471,6 +578,7 @@ test('committed full batch is reproducible from the queue, policy and cumulative
       { batch: pdfBatch, results: pdfResults },
       { batch: rangeBatch, results: rangeResults },
     ],
+    receiptReplayAudit,
     selection: {},
   });
   assert.equal(canonicalJsonSha256(committed), canonicalJsonSha256(rebuilt));

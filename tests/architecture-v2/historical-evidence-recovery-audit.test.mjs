@@ -565,6 +565,123 @@ test('legacy repair allows a rederived MinerU artifact only when the raw artifac
   );
 });
 
+test('repair preserves a passed superseded receipt while replacing a failed receipt from identical raw bytes', async () => {
+  const fixture = acceptedFixture();
+  const priorBundle = await legacyMisparsedBundle(fixture);
+  const productUrl = 'https://www.hisense.com.au/product/hrcd640tbw/';
+  const productClaims = (claims) => claims.map((claim) => ({
+    ...structuredClone(claim), page: null, fragmentSha256: null, bbox: null,
+  }));
+  const productPageBytes = (marker, claims) => Buffer.from([
+    '<html><head>',
+    `<link rel="canonical" href="${productUrl}">`,
+    `<title>Hisense ${fixture.identity.model}</title>`,
+    '</head><body>',
+    `<div data-product-model="${fixture.identity.model}">`,
+    ...[...new Set(claims.map((claim) => claim.sourceLabel))],
+    marker,
+    '</div></body></html>',
+  ].join(' '));
+  const makeHtmlSource = (bytes, retrievedAt, claims, supersedesContentSha256 = []) => {
+    const contentSha256 = createHash('sha256').update(bytes).digest('hex');
+    const source = {
+      ...structuredClone(fixture.source),
+      sourceType: 'official_exact_model_product_page',
+      sourceUrl: productUrl,
+      finalUrl: productUrl,
+      retrievedAt,
+      contentSha256,
+      objectPath: `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.html`,
+      contentType: 'text/html',
+      byteSize: bytes.length,
+      supersedesContentSha256,
+      claims: productClaims(claims),
+    };
+    delete source.derivedArtifact;
+    delete source.verificationReceipt;
+    const attested = verifyAndAttestResolutionArtifact({
+      source,
+      caseIdentity: fixture.identity,
+      bytes,
+      verifiedAt: new Date(Date.parse(retrievedAt) + 1_000).toISOString(),
+      claimSemanticsVersion: 2,
+    });
+    fixture.objects.set(attested.objectPath, bytes);
+    return attested;
+  };
+  const oldHtml = makeHtmlSource(
+    productPageBytes('old product page', priorBundle.entries[0].sources[0].claims),
+    '2026-07-12T23:59:50.000Z',
+    priorBundle.entries[0].sources[0].claims,
+  );
+  const newHtml = makeHtmlSource(
+    productPageBytes('new product page', fixture.source.claims),
+    '2026-07-13T00:00:20.000Z',
+    fixture.source.claims,
+    [oldHtml.contentSha256],
+  );
+
+  priorBundle.entries[0].sources.push(structuredClone(oldHtml));
+  priorBundle.entries[0].geometryProjection = structuredClone(projectEvidenceGeometry({
+    ...fixture.identity,
+    formFactor: null,
+    sources: priorBundle.entries[0].sources,
+  }));
+  assert.equal(auditHistoricalEvidenceRecoveryBundle(priorBundle).status, 'passed');
+
+  fixture.target.repairExistingReceipt = true;
+  fixture.target.reconciliationContext.activeReceiptSources = [structuredClone(oldHtml)];
+  const inventory = fixture.results.outcomes[0].candidateInventory;
+  inventory.activeReceiptSources = [structuredClone(oldHtml)];
+  inventory.candidates.push({
+    candidateId: 'candidate-hisense-product-page',
+    sourceUrl: productUrl,
+    authorityMode: 'official',
+    sourceRole: 'manufacturer_product_page',
+    requiredAttempt: false,
+    batchJobIds: [],
+    resolverRefs: [{
+      resolverId: 'hisense-official-product-page', version: '1', scope: 'exact-model',
+      discoveryMethod: 'exact_model_product_page', sourceRole: 'manufacturer_product_page', order: 1,
+    }],
+    outcome: { status: 'accepted', failureCode: null, source: structuredClone(newHtml) },
+  });
+  inventory.candidateInventorySha256 = computeCandidateInventorySha256(inventory);
+  const outcome = fixture.results.outcomes[0];
+  outcome.candidateInventorySha256 = inventory.candidateInventorySha256;
+  outcome.sources = [structuredClone(fixture.source), structuredClone(newHtml)]
+    .sort((left, right) => left.contentSha256.localeCompare(right.contentSha256));
+  outcome.geometryProjection = structuredClone(projectEvidenceGeometry({
+    ...fixture.identity, formFactor: null, sources: outcome.sources,
+  }));
+  outcome.semanticOutcomeSha256 = recoveryOutcomeSemanticSha256(outcome);
+  fixture.results.semanticOutcomeSha256 = canonicalJsonSha256([{
+    targetId: outcome.targetId,
+    semanticOutcomeSha256: outcome.semanticOutcomeSha256,
+  }]);
+  fixture.results.batchSha256 = canonicalJsonSha256(fixture.batch);
+  fixture.state.input.batchSha256 = fixture.results.batchSha256;
+  fixture.state.semanticOutcomeSha256 = fixture.results.semanticOutcomeSha256;
+  fixture.state.targets[fixture.target.targetId].outcome = structuredClone(outcome);
+  fixture.state.artifacts['discovered-hisense-product-page'] = {
+    state: 'available',
+    artifactRecord: { contentSha256: newHtml.contentSha256, objectPath: newHtml.objectPath },
+  };
+
+  const audit = await runAudit(fixture, priorBundle, true);
+  assert.equal(audit.status, 'passed', audit.violations.join('\n'));
+  assert.equal(audit.repairs.length, 1);
+  const repaired = promoteHistoricalEvidenceRecovery({
+    batch: fixture.batch, results: fixture.results, audit, priorBundle,
+    generatedAt: '2026-07-13T00:06:00.000Z',
+  });
+  assert.deepEqual(
+    repaired.entries[0].sources.map((source) => source.contentSha256).sort(),
+    [fixture.source.contentSha256, oldHtml.contentSha256, newHtml.contentSha256].sort(),
+  );
+  assert.equal(auditHistoricalEvidenceRecoveryBundle(repaired).status, 'passed');
+});
+
 test('legacy repair rejects a different source binding even when raw content is identical', async () => {
   const fixture = acceptedFixture();
   const priorBundle = await legacyMisparsedBundle(fixture, {

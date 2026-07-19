@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T14:16:43.751Z",
-  "semanticManifestSha256": "eb9300f59fc3438aeb52dc7d68d333dd4200375a774b5697a920cc5bf961d5e2",
+  "generatedAt": "2026-07-19T18:38:55.827Z",
+  "semanticManifestSha256": "36cf32721eeadc9c61ee7849c6bfec47689454d4ecb0cab8dc22193fd74500b6",
   "policy": {
     "discoveryOnly": true,
     "candidatesAreNotEvidenceReceipts": true,
     "retailerAndRegistryHintsCannotBecomeOfficialCandidates": true,
     "completeNoSourceRequiresAllCurrentRequiredResolvers": true
   },
-  "sourceAcquisitionQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be",
+  "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b",
   "runBindings": [
     {
       "runId": "task3-asko-dishwasher-canary-20260719-a",

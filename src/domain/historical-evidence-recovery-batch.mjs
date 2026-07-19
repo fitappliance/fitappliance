@@ -166,6 +166,82 @@ function indexPriorAcceptance(existingAcceptanceBundles) {
   };
 }
 
+function receiptReplayOutcomeKey(value) {
+  return [
+    text(value.targetId, 'receipt replay target ID'),
+    text(value.referenceId, 'receipt replay reference ID'),
+    text(value.contentSha256, 'receipt replay content hash'),
+    text(value.receiptBindingSha256, 'receipt replay binding hash'),
+  ].join('\0');
+}
+
+function receiptSourceOutcomeKey(entry, source) {
+  return [
+    text(entry.targetId, 'accepted target ID'),
+    text(entry.referenceId, 'accepted reference ID'),
+    text(source.contentSha256, 'accepted source content hash'),
+    text(source.verificationReceipt?.bindingSha256, 'accepted source receipt binding'),
+  ].join('\0');
+}
+
+function buildReceiptRepairIndex(audit, cumulativeBundle) {
+  if (!audit || audit.schemaVersion !== 1 || !Array.isArray(audit.outcomes)) {
+    throw new TypeError('receipt replay audit schema v1 required for parser repair');
+  }
+  if (!cumulativeBundle || !Array.isArray(cumulativeBundle.entries)) {
+    throw new TypeError('cumulative acceptance bundle required for parser repair');
+  }
+  const semantic = {
+    sourceBundleSha256: audit.sourceBundleSha256,
+    outcomes: audit.outcomes,
+  };
+  if (audit.semanticAuditSha256 !== canonicalJsonSha256(semantic)) {
+    throw new Error('receipt replay audit digest mismatch');
+  }
+  if (audit.sourceBundleSha256 !== canonicalJsonSha256(cumulativeBundle)) {
+    throw new Error('receipt replay audit acceptance bundle binding mismatch');
+  }
+  const outcomes = new Map();
+  for (const outcome of audit.outcomes) {
+    if (!['passed', 'failed'].includes(outcome?.status)) {
+      throw new TypeError('receipt replay outcome status invalid');
+    }
+    const key = receiptReplayOutcomeKey(outcome);
+    if (outcomes.has(key)) throw new Error(`duplicate receipt replay outcome: ${key}`);
+    outcomes.set(key, outcome);
+  }
+  const entries = new Map();
+  for (const entry of cumulativeBundle.entries) {
+    if (!['accepted', 'receipt_accepted_non_scalar'].includes(entry.acceptanceStatus)) continue;
+    if (entries.has(entry.targetId)) throw new Error(`duplicate cumulative acceptance target: ${entry.targetId}`);
+    entries.set(entry.targetId, entry);
+  }
+  return {
+    sourcesFor(target) {
+      const entry = entries.get(target.targetId);
+      if (!entry || entry.referenceId !== target.referenceId || identityKey(entry) !== identityKey(target)) {
+        throw new Error(`parser repair acceptance target binding missing: ${target.targetId}`);
+      }
+      let failed = 0;
+      const passed = [];
+      for (const source of entry.sources ?? []) {
+        const outcome = outcomes.get(receiptSourceOutcomeKey(entry, source));
+        if (!outcome) throw new Error(`parser repair receipt replay outcome missing: ${target.targetId}`);
+        if (outcome.status === 'failed') {
+          failed += 1;
+          continue;
+        }
+        passed.push(sourceSnapshot(source));
+      }
+      if (failed < 1) throw new Error(`parser repair requires a failed receipt replay: ${target.targetId}`);
+      return passed.sort((left, right) => (
+        left.contentSha256.localeCompare(right.contentSha256)
+        || left.sourceUrl.localeCompare(right.sourceUrl)
+      ));
+    },
+  };
+}
+
 function legacyHints(target) {
   if (Array.isArray(target.legacyHints)) {
     return target.legacyHints.map((hint) => ({
@@ -201,7 +277,7 @@ function matchesSelection(target, jobsById, selection) {
   return true;
 }
 
-function materializeTarget(target, prior, policySha256) {
+function materializeTarget(target, prior, repair, policySha256) {
   const priorAttemptSuppressions = (target.priorAttemptSuppressions ?? [])
     .filter((entry) => entry.policySha256 === policySha256);
   return {
@@ -217,8 +293,11 @@ function materializeTarget(target, prior, policySha256) {
     primaryJobId: target.primaryJobId,
     candidateJobIds: [...target.candidateJobIds],
     publicationEligible: false,
+    ...(target.repairExistingReceipt === true ? { repairExistingReceipt: true } : {}),
     reconciliationContext: {
-      activeReceiptSources: target.repairExistingReceipt ? [] : prior.sourcesFor(target),
+      activeReceiptSources: target.repairExistingReceipt
+        ? repair.sourcesFor(target)
+        : prior.sourcesFor(target),
       ...(priorAttemptSuppressions.length > 0 ? {
         priorAttemptSuppressions: structuredClone(priorAttemptSuppressions),
       } : {}),
@@ -236,6 +315,7 @@ export function buildHistoricalEvidenceRecoveryBatch({
   queue,
   policy,
   existingAcceptanceBundles = [],
+  receiptReplayAudit = null,
   selection = {},
 }) {
   if (queue?.schemaVersion !== 2 || !Array.isArray(queue.jobs) || !Array.isArray(queue.targets)) {
@@ -258,6 +338,9 @@ export function buildHistoricalEvidenceRecoveryBatch({
   let selectedTargets = selectionMatchedTargets
     .filter((target) => target.repairExistingReceipt === true || !prior.isAccepted(target));
   if (normalizedSelection.limit !== null) selectedTargets = selectedTargets.slice(0, normalizedSelection.limit);
+  const repair = selectedTargets.some((target) => target.repairExistingReceipt === true)
+    ? buildReceiptRepairIndex(receiptReplayAudit, existingAcceptanceBundles[0])
+    : { sourcesFor: () => [] };
 
   const targetIds = new Set(selectedTargets.map((target) => target.targetId));
   const selectedJobIds = new Set(selectedTargets.flatMap((target) => target.candidateJobIds));
@@ -273,7 +356,7 @@ export function buildHistoricalEvidenceRecoveryBatch({
       targetIds: job.targetIds.filter((targetId) => targetIds.has(targetId)),
     }));
   const policySha256 = canonicalJsonSha256(policy);
-  const targets = selectedTargets.map((target) => materializeTarget(target, prior, policySha256));
+  const targets = selectedTargets.map((target) => materializeTarget(target, prior, repair, policySha256));
   const candidateEdgeCount = artifactJobs.reduce((count, job) => count + job.targetIds.length, 0);
   if (targets.length > 0 && candidateEdgeCount === 0) {
     throw new Error('acquisition batch contains targets but no candidate edge');

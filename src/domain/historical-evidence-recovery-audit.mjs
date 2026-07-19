@@ -225,7 +225,23 @@ function preservesEveryRawArtifactBinding(priorSources, replacementSources) {
   ));
 }
 
+function repairReplacementSources(target, outcome) {
+  const byRawBinding = new Map();
+  for (const source of [
+    ...(outcome?.sources ?? []),
+    ...(target?.reconciliationContext?.activeReceiptSources ?? []),
+  ]) {
+    const key = canonicalJsonSha256(immutableRawArtifactBinding(source));
+    if (!byRawBinding.has(key)) byRawBinding.set(key, structuredClone(source));
+  }
+  return [...byRawBinding.values()].sort((left, right) => (
+    left.contentSha256.localeCompare(right.contentSha256)
+      || left.verificationReceipt.bindingSha256.localeCompare(right.verificationReceipt.bindingSha256)
+  ));
+}
+
 function buildIdenticalArtifactRepair(entry, target, outcome) {
+  const replacementSources = repairReplacementSources(target, outcome);
   if (!entry || !target || !outcome
     || entry.targetId !== target.targetId
     || outcome.targetId !== target.targetId
@@ -236,8 +252,22 @@ function buildIdenticalArtifactRepair(entry, target, outcome) {
     || entry.lifecycleState !== target.lifecycleState
     || entry.acceptanceStatus !== outcome.status
     || !['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)
-    || !preservesEveryRawArtifactBinding(entry.sources, outcome.sources)) {
+    || !preservesEveryRawArtifactBinding(entry.sources, replacementSources)) {
     return null;
+  }
+  if (outcome.geometryProjection !== null) {
+    try {
+      const replayed = projectEvidenceGeometry({
+        brand: target.brand,
+        model: target.model,
+        category: target.category,
+        formFactor: null,
+        sources: replacementSources,
+      });
+      if (!same(replayed, outcome.geometryProjection)) return null;
+    } catch {
+      return null;
+    }
   }
   return Object.freeze({
     targetId: target.targetId,
@@ -667,6 +697,7 @@ export function promoteHistoricalEvidenceRecovery({
         if (!expectedRepair || !auditedRepair || !same(expectedRepair, auditedRepair)) {
           throw new Error(`conflicting replacement for ${target.targetId}`);
         }
+        next.sources = repairReplacementSources(target, outcome);
         entries.set(next.targetId, next);
       }
       continue;

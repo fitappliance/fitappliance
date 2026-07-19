@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-17T04:18:44.196Z",
+  "generatedAt": "2026-07-19T18:33:38.055Z",
   "processorEpochMigration": {
     "migratedAt": "2026-07-17T01:44:09.981Z",
     "migratedEntries": 3,
@@ -17402,6 +17402,23 @@
       "acceptedAt": "2026-07-16T19:21:33.775Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_d62628eafa1c1f418926e591",
+      "targetId": "recovery_target_6252d12c8636ff82d87b836d",
+      "referenceId": "fa_ref_7aead6dc34c0fe035e925c12",
+      "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
+      "contentSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
+      "status": "accepted",
+      "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+      "candidateInventorySha256": "479485bc9cf7ed8bc1eabde466989694081ebf306bf816f6ae164b677455a446",
+      "semanticOutcomeSha256": "3624854dfb85db2c4770b476a35e43e3c127986b0e4349a2ea39f7424f275aa8",
+      "batchId": "historical-recovery-2214f258c0c5951010062bfb-slice-1e81991c2f38",
+      "batchSha256": "3c3cf668ab420b85063e35c6acbd55ccd12e0f137e1c7206234d82fb8def834c",
+      "runId": "lg-dvh1-receipt-repair-20260719-v2",
+      "resultsSha256": "9df5da9a1e7c0c9c1e3e6f465b639869522ddd0a02bd1f2daaf2de17dee2c422",
+      "auditSha256": "7d47ce64ee97d054f2ca282daf3923fa5748671e7b3e7759a2b2a73d846d4b97",
+      "acceptedAt": "2026-07-19T18:26:12.852Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_d68ecf5b1bdd9cd314cea980",
       "targetId": "recovery_target_27e5354a82342644c72fc129",
       "referenceId": "fa_ref_7878748c04caef395faf230c",
@@ -17655,6 +17672,23 @@
       "resultsSha256": "99e85e776562a75f62d2fe446d015518a35e86d24c0c68e4837634898410b695",
       "auditSha256": "d1fb2add0ea9770d5265db19eb9234eb1782457166dfcce9af59808fabaca9e8",
       "acceptedAt": "2026-07-15T22:04:32.763Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_ef7be13907ec2ae115599e43",
+      "targetId": "recovery_target_6252d12c8636ff82d87b836d",
+      "referenceId": "fa_ref_7aead6dc34c0fe035e925c12",
+      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
+      "contentSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+      "status": "accepted",
+      "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+      "candidateInventorySha256": "479485bc9cf7ed8bc1eabde466989694081ebf306bf816f6ae164b677455a446",
+      "semanticOutcomeSha256": "3624854dfb85db2c4770b476a35e43e3c127986b0e4349a2ea39f7424f275aa8",
+      "batchId": "historical-recovery-2214f258c0c5951010062bfb-slice-1e81991c2f38",
+      "batchSha256": "3c3cf668ab420b85063e35c6acbd55ccd12e0f137e1c7206234d82fb8def834c",
+      "runId": "lg-dvh1-receipt-repair-20260719-v2",
+      "resultsSha256": "9df5da9a1e7c0c9c1e3e6f465b639869522ddd0a02bd1f2daaf2de17dee2c422",
+      "auditSha256": "7d47ce64ee97d054f2ca282daf3923fa5748671e7b3e7759a2b2a73d846d4b97",
+      "acceptedAt": "2026-07-19T18:26:12.852Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_f129c54dd1e2c8ff4b93285c",
@@ -22203,7 +22237,7 @@
   "summary": {
     "entries": 431,
     "resolutions": 27,
-    "sourceAcceptances": 287,
+    "sourceAcceptances": 289,
     "suppressions": 335,
     "resolvedSuppressions": 24,
     "retryable": 72,

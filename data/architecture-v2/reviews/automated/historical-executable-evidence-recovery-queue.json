@@ -1,12 +1,12 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-17T04:19:39.580Z",
-  "sourceAcquisitionQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be",
-  "sourceOfficialCandidateManifestSha256": "eb9300f59fc3438aeb52dc7d68d333dd4200375a774b5697a920cc5bf961d5e2",
+  "generatedAt": "2026-07-19T18:38:55.827Z",
+  "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b",
+  "sourceOfficialCandidateManifestSha256": "36cf32721eeadc9c61ee7849c6bfec47689454d4ecb0cab8dc22193fd74500b6",
   "evidenceProcessorEpochs": {
     "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
     "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-    "smeg_au_techspec_pdf_dimensions_v1": "09fd7554907db7dd1105ac7be9246ea966fc67910a828808907bb607be12cbcd"
+    "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
   },
   "policy": {
     "resolverOnlyTargetsAllowed": false,
@@ -17,23 +17,23 @@
   "summary": {
     "acquisitionRecords": 7688,
     "fetchJobs": 6,
-    "targets": 4988,
+    "targets": 4994,
     "acquisitionTargets": 6,
-    "discoveryTargets": 4982,
-    "deferredTargets": 2700,
+    "discoveryTargets": 4988,
+    "deferredTargets": 2694,
     "resolverOnlyTargets": 0,
     "candidateEdges": 6,
-    "uniqueReferences": 4988,
+    "uniqueReferences": 4994,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
-    "suppressedPriorResolverOnlyTargets": 39,
+    "suppressedPriorResolverOnlyTargets": 33,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 1131,
-      "CURRENT_RETAIL": 964,
+      "CURRENT_RETAIL": 970,
       "REGISTRY_ONLY": 2893
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 774,
+      "P0_CURRENT_MISSING_DIMENSIONS": 780,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1044,
       "P2_CURRENT_CONFIRMATION": 179,
       "P3_HISTORICAL_CONFIRMATION": 2934,
@@ -41,10 +41,10 @@
     },
     "byExecutionLane": {
       "ACQUISITION": 6,
-      "BOUNDED_DISCOVERY": 4982
+      "BOUNDED_DISCOVERY": 4988
     },
     "deferredByReason": {
-      "ACTIVE_RESOLVER_SUPPRESSION": 39,
+      "ACTIVE_RESOLVER_SUPPRESSION": 33,
       "NO_CANDIDATE_COMPLETE": 2,
       "RESEARCH_REQUIRED": 2659
     },
@@ -31126,32 +31126,6 @@
       "registryDimensionHints": [],
       "publicationEligible": false,
       "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_4a3d0ced2169407da07ff961",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500salh-l/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_09d1d11ea445ef5e57eee8fe",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500salh-r/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_e4650a370a0e786daf5b445a",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500salh/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
       "executionLane": "BOUNDED_DISCOVERY",
       "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
       "candidateManifestState": "DISCOVERY_RETRYABLE",
@@ -31209,32 +31183,6 @@
       "registryDimensionHints": [],
       "publicationEligible": false,
       "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_a05e4bea69607f54e67a7658",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sarh-l/",
-          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_2a45d7663b2626b13a90f3a5",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sarh-r/",
-          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_cdb827b66855a6cabd06a824",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sarh/",
-          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
       "executionLane": "BOUNDED_DISCOVERY",
       "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
       "candidateManifestState": "DISCOVERY_RETRYABLE",
@@ -31292,32 +31240,6 @@
       "registryDimensionHints": [],
       "publicationEligible": false,
       "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_efa2e01c81463886108a046c",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbl-l/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_c6ec6a619372a71c2d245879",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbl-r/",
-          "contentSha256": "12dc4198dd3ccff9766fd157fe3f12e5de6458d287c2a9e5a8ff6312493808cc",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_a1af495a77ba80c2546bbf2a",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbl/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
       "executionLane": "BOUNDED_DISCOVERY",
       "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
       "candidateManifestState": "DISCOVERY_RETRYABLE",
@@ -31375,32 +31297,6 @@
       "registryDimensionHints": [],
       "publicationEligible": false,
       "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_bb9fff08c932250ce8b8eddd",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbr-l/",
-          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_be2a53f96d0f60d3a5581974",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbr-r/",
-          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_56e1787f0bc32150f5b793f6",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500sbr/",
-          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
       "executionLane": "BOUNDED_DISCOVERY",
       "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
       "candidateManifestState": "DISCOVERY_RETRYABLE",
@@ -31458,32 +31354,6 @@
       "registryDimensionHints": [],
       "publicationEligible": false,
       "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_a255d2f93597227ea79ca6a1",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500walh-l/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_1a0cfa49864ba0a43720a904",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500walh-r/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_e80f2545188e8d19fdc070b1",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500walh/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
       "executionLane": "BOUNDED_DISCOVERY",
       "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
       "candidateManifestState": "DISCOVERY_RETRYABLE",
@@ -31541,32 +31411,6 @@
       "registryDimensionHints": [],
       "publicationEligible": false,
       "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_8f5f2b2d197d3d9e70a04560",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbl-l/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_270dfe93299897f41dd2cafa",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbl-r/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_eb85b66c711c0e48f2c3427e",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbl/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
       "executionLane": "BOUNDED_DISCOVERY",
       "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
       "candidateManifestState": "DISCOVERY_RETRYABLE",
@@ -31624,32 +31468,6 @@
       "registryDimensionHints": [],
       "publicationEligible": false,
       "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_12bb74aa57756a5f59f60f7d",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbr-l/",
-          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_676156423accb6229cfab9ff",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbr-r/",
-          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_c4a4f1278f0dfe9e3995987d",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4500wbr/",
-          "contentSha256": "eb0bd3d127c2092e68cdf38cb7eaa086b7320ed9c936048528da44370ad83e19",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
       "executionLane": "BOUNDED_DISCOVERY",
       "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
       "candidateManifestState": "DISCOVERY_RETRYABLE",
@@ -31707,32 +31525,6 @@
       "registryDimensionHints": [],
       "publicationEligible": false,
       "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_d994a7bb218379be9e599046",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbl-l/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_5352f5f8047a7af9e80ae18b",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbl-r/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_e150e6aac0a65a1726bc9b8b",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbl/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
       "executionLane": "BOUNDED_DISCOVERY",
       "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
       "candidateManifestState": "DISCOVERY_RETRYABLE",
@@ -31790,32 +31582,6 @@
       "registryDimensionHints": [],
       "publicationEligible": false,
       "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_49bb85bb01e1d9bc90c01808",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbr-l/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_f657c3421f2975c18b78fdd7",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbr-r/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        },
-        {
-          "attemptId": "historical_attempt_35fdaf74543f3ae601ddf6aa",
-          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5300bbr/",
-          "contentSha256": "300bf6fb2141df5a6d261f620e2a231becac02bdead28bcd72e117b89c6aab89",
-          "status": "claims_incomplete",
-          "failureCode": "claim_semantics",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
       "executionLane": "BOUNDED_DISCOVERY",
       "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
       "candidateManifestState": "DISCOVERY_RETRYABLE",
@@ -36169,6 +35935,348 @@
       ],
       "incompleteResolverIds": [
         "bosch-official-product-documents"
+      ]
+    },
+    {
+      "targetId": "recovery_target_d5e95778e2e9ad59d32cf12d",
+      "referenceId": "fa_ref_534a39be8f15450b9fb6e3e8",
+      "legacyRuntimeId": "ao-56598",
+      "canonicalProductId": "fa_prod_e504312641ad5685f9991bb9",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF12753",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_03e28778ee44a4fdf83b1c19",
+        "legacy:data/pdf-evidence-raw/EWF12753.json",
+        "source:doc_03e28778ee44a4fdf83b1c19"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_03e28778ee44a4fdf83b1c19",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 585
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "executionLane": "BOUNDED_DISCOVERY",
+      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
+      "candidateManifestState": "DISCOVERY_RETRYABLE",
+      "candidateJobIds": [],
+      "primaryJobId": null,
+      "resolverContract": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "resolverId": "electrolux-group-official-factsheet",
+          "version": "2",
+          "scope": "exact_model_au_factsheet_endpoint",
+          "required": true
+        }
+      ],
+      "incompleteResolverIds": [
+        "electrolux-group-official-factsheet"
+      ]
+    },
+    {
+      "targetId": "recovery_target_d30e36b216de4a83af7944a2",
+      "referenceId": "fa_ref_edb30c6b4e5528251ac48989",
+      "legacyRuntimeId": "ao-63112",
+      "canonicalProductId": "fa_prod_8bd772474cd7d8be87f10b3d",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF12763E",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_1ab73771f44571802f680328",
+        "legacy:data/pdf-evidence-raw/EWF12763E.json",
+        "source:doc_1ab73771f44571802f680328"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_1ab73771f44571802f680328",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 576
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "executionLane": "BOUNDED_DISCOVERY",
+      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
+      "candidateManifestState": "DISCOVERY_RETRYABLE",
+      "candidateJobIds": [],
+      "primaryJobId": null,
+      "resolverContract": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "resolverId": "electrolux-group-official-factsheet",
+          "version": "2",
+          "scope": "exact_model_au_factsheet_endpoint",
+          "required": true
+        }
+      ],
+      "incompleteResolverIds": [
+        "electrolux-group-official-factsheet"
+      ]
+    },
+    {
+      "targetId": "recovery_target_065b6009492d6a72a7ea1f26",
+      "referenceId": "fa_ref_b94cf8d37455d099ef867454",
+      "legacyRuntimeId": "ao-58627",
+      "canonicalProductId": "fa_prod_5291535003b601d5db9a1301",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF14013",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_1c12af597a55e8f5315e4a6b",
+        "legacy:data/pdf-evidence-raw/EWF14013.json",
+        "source:doc_1c12af597a55e8f5315e4a6b"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_1c12af597a55e8f5315e4a6b",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 665
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "executionLane": "BOUNDED_DISCOVERY",
+      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
+      "candidateManifestState": "DISCOVERY_RETRYABLE",
+      "candidateJobIds": [],
+      "primaryJobId": null,
+      "resolverContract": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "resolverId": "electrolux-group-official-factsheet",
+          "version": "2",
+          "scope": "exact_model_au_factsheet_endpoint",
+          "required": true
+        }
+      ],
+      "incompleteResolverIds": [
+        "electrolux-group-official-factsheet"
+      ]
+    },
+    {
+      "targetId": "recovery_target_c01b72b4689428229d0b24bc",
+      "referenceId": "fa_ref_4c98e0754edf8b1793593c9d",
+      "legacyRuntimeId": "ao-69709",
+      "canonicalProductId": "fa_prod_436c66cbf154a1dc8aa88768",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF1408B1WA",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_72d17e1305406707170a3a16",
+        "legacy:data/pdf-evidence-raw/EWF1408B1WA.json",
+        "source:doc_72d17e1305406707170a3a16"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_72d17e1305406707170a3a16",
+          "dimensionsMm": {
+            "width": 686,
+            "height": 1010,
+            "depth": 858
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "executionLane": "BOUNDED_DISCOVERY",
+      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
+      "candidateManifestState": "DISCOVERY_RETRYABLE",
+      "candidateJobIds": [],
+      "primaryJobId": null,
+      "resolverContract": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "resolverId": "electrolux-group-official-factsheet",
+          "version": "2",
+          "scope": "exact_model_au_factsheet_endpoint",
+          "required": true
+        }
+      ],
+      "incompleteResolverIds": [
+        "electrolux-group-official-factsheet"
+      ]
+    },
+    {
+      "targetId": "recovery_target_1dcaa7abd5d4bc8431df0d32",
+      "referenceId": "fa_ref_11710c3f491f7bbd07aa453f",
+      "legacyRuntimeId": "ao-58483",
+      "canonicalProductId": "fa_prod_3d8c5e503d85e9313d7350d2",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF14933",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_5f51c673f2b729df17ca8b0b",
+        "legacy:data/pdf-evidence-raw/EWF14933.json",
+        "source:doc_5f51c673f2b729df17ca8b0b"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_5f51c673f2b729df17ca8b0b",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 665
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "executionLane": "BOUNDED_DISCOVERY",
+      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
+      "candidateManifestState": "DISCOVERY_RETRYABLE",
+      "candidateJobIds": [],
+      "primaryJobId": null,
+      "resolverContract": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "resolverId": "electrolux-group-official-factsheet",
+          "version": "2",
+          "scope": "exact_model_au_factsheet_endpoint",
+          "required": true
+        }
+      ],
+      "incompleteResolverIds": [
+        "electrolux-group-official-factsheet"
+      ]
+    },
+    {
+      "targetId": "recovery_target_7c4c12e04b5a0b65afd81e8c",
+      "referenceId": "fa_ref_2783e304e07eea19e3a6cbb2",
+      "legacyRuntimeId": "ao-58683",
+      "canonicalProductId": "fa_prod_7d0eb6c178fa5bb9a18aee84",
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWW12753",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_d2048887182cd35b9cb68c43",
+        "legacy:data/pdf-evidence-raw/EWW12753.json",
+        "source:doc_d2048887182cd35b9cb68c43"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_d2048887182cd35b9cb68c43",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 585
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "executionLane": "BOUNDED_DISCOVERY",
+      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
+      "candidateManifestState": "DISCOVERY_RETRYABLE",
+      "candidateJobIds": [],
+      "primaryJobId": null,
+      "resolverContract": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "resolverId": "electrolux-group-official-factsheet",
+          "version": "2",
+          "scope": "exact_model_au_factsheet_endpoint",
+          "required": true
+        }
+      ],
+      "incompleteResolverIds": [
+        "electrolux-group-official-factsheet"
       ]
     },
     {
@@ -267257,402 +267365,6 @@
       "candidateIds": [],
       "resolverContract": [],
       "incompleteResolverIds": []
-    },
-    {
-      "targetId": "recovery_target_d5e95778e2e9ad59d32cf12d",
-      "referenceId": "fa_ref_534a39be8f15450b9fb6e3e8",
-      "legacyRuntimeId": "ao-56598",
-      "canonicalProductId": "fa_prod_e504312641ad5685f9991bb9",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF12753",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_03e28778ee44a4fdf83b1c19",
-        "legacy:data/pdf-evidence-raw/EWF12753.json",
-        "source:doc_03e28778ee44a4fdf83b1c19"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_03e28778ee44a4fdf83b1c19",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 585
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_adbce333260424e0fb55e846",
-          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF12753&brand=Electrolux",
-          "contentSha256": "4bef6eca8a8f821f317bb64786cbaf434951893947bcb09d311617e34ad1b8ae",
-          "status": "mineru_failure",
-          "failureCode": "mineru",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
-      "executionLane": "DEFERRED",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "dispositionReason": "ACTIVE_RESOLVER_SUPPRESSION",
-      "candidateIds": [],
-      "resolverContract": [
-        {
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "resolverId": "electrolux-group-official-factsheet",
-          "version": "2",
-          "scope": "exact_model_au_factsheet_endpoint",
-          "required": true
-        }
-      ],
-      "incompleteResolverIds": [
-        "electrolux-group-official-factsheet"
-      ]
-    },
-    {
-      "targetId": "recovery_target_d30e36b216de4a83af7944a2",
-      "referenceId": "fa_ref_edb30c6b4e5528251ac48989",
-      "legacyRuntimeId": "ao-63112",
-      "canonicalProductId": "fa_prod_8bd772474cd7d8be87f10b3d",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF12763E",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_1ab73771f44571802f680328",
-        "legacy:data/pdf-evidence-raw/EWF12763E.json",
-        "source:doc_1ab73771f44571802f680328"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_1ab73771f44571802f680328",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 576
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_ef4a25eca64841ec83eb9840",
-          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF12763E&brand=Electrolux",
-          "contentSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773",
-          "status": "mineru_failure",
-          "failureCode": "mineru",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
-      "executionLane": "DEFERRED",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "dispositionReason": "ACTIVE_RESOLVER_SUPPRESSION",
-      "candidateIds": [],
-      "resolverContract": [
-        {
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "resolverId": "electrolux-group-official-factsheet",
-          "version": "2",
-          "scope": "exact_model_au_factsheet_endpoint",
-          "required": true
-        }
-      ],
-      "incompleteResolverIds": [
-        "electrolux-group-official-factsheet"
-      ]
-    },
-    {
-      "targetId": "recovery_target_065b6009492d6a72a7ea1f26",
-      "referenceId": "fa_ref_b94cf8d37455d099ef867454",
-      "legacyRuntimeId": "ao-58627",
-      "canonicalProductId": "fa_prod_5291535003b601d5db9a1301",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF14013",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_1c12af597a55e8f5315e4a6b",
-        "legacy:data/pdf-evidence-raw/EWF14013.json",
-        "source:doc_1c12af597a55e8f5315e4a6b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_1c12af597a55e8f5315e4a6b",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 665
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_6d553ba735cb76b7c8b57015",
-          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF14013&brand=Electrolux",
-          "contentSha256": "791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031",
-          "status": "mineru_failure",
-          "failureCode": "mineru",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
-      "executionLane": "DEFERRED",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "dispositionReason": "ACTIVE_RESOLVER_SUPPRESSION",
-      "candidateIds": [],
-      "resolverContract": [
-        {
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "resolverId": "electrolux-group-official-factsheet",
-          "version": "2",
-          "scope": "exact_model_au_factsheet_endpoint",
-          "required": true
-        }
-      ],
-      "incompleteResolverIds": [
-        "electrolux-group-official-factsheet"
-      ]
-    },
-    {
-      "targetId": "recovery_target_c01b72b4689428229d0b24bc",
-      "referenceId": "fa_ref_4c98e0754edf8b1793593c9d",
-      "legacyRuntimeId": "ao-69709",
-      "canonicalProductId": "fa_prod_436c66cbf154a1dc8aa88768",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF1408B1WA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_72d17e1305406707170a3a16",
-        "legacy:data/pdf-evidence-raw/EWF1408B1WA.json",
-        "source:doc_72d17e1305406707170a3a16"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_72d17e1305406707170a3a16",
-          "dimensionsMm": {
-            "width": 686,
-            "height": 1010,
-            "depth": 858
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_72a2723244ce2448f1f52a49",
-          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF1408B1WA&brand=Electrolux",
-          "contentSha256": "378d9a3ee6cb135b2f7ee189826959d6fb69c5d8e9ef304b876b6dce45dd51a3",
-          "status": "mineru_failure",
-          "failureCode": "mineru",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
-      "executionLane": "DEFERRED",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "dispositionReason": "ACTIVE_RESOLVER_SUPPRESSION",
-      "candidateIds": [],
-      "resolverContract": [
-        {
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "resolverId": "electrolux-group-official-factsheet",
-          "version": "2",
-          "scope": "exact_model_au_factsheet_endpoint",
-          "required": true
-        }
-      ],
-      "incompleteResolverIds": [
-        "electrolux-group-official-factsheet"
-      ]
-    },
-    {
-      "targetId": "recovery_target_1dcaa7abd5d4bc8431df0d32",
-      "referenceId": "fa_ref_11710c3f491f7bbd07aa453f",
-      "legacyRuntimeId": "ao-58483",
-      "canonicalProductId": "fa_prod_3d8c5e503d85e9313d7350d2",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF14933",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_5f51c673f2b729df17ca8b0b",
-        "legacy:data/pdf-evidence-raw/EWF14933.json",
-        "source:doc_5f51c673f2b729df17ca8b0b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_5f51c673f2b729df17ca8b0b",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 665
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_256db7358274d64be0875319",
-          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF14933&brand=Electrolux",
-          "contentSha256": "68f72b01c284bca3e3aed8ebcab98cd19f5474b49bafbdc32fa94fd11a4dd501",
-          "status": "mineru_failure",
-          "failureCode": "mineru",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
-      "executionLane": "DEFERRED",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "dispositionReason": "ACTIVE_RESOLVER_SUPPRESSION",
-      "candidateIds": [],
-      "resolverContract": [
-        {
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "resolverId": "electrolux-group-official-factsheet",
-          "version": "2",
-          "scope": "exact_model_au_factsheet_endpoint",
-          "required": true
-        }
-      ],
-      "incompleteResolverIds": [
-        "electrolux-group-official-factsheet"
-      ]
-    },
-    {
-      "targetId": "recovery_target_7c4c12e04b5a0b65afd81e8c",
-      "referenceId": "fa_ref_2783e304e07eea19e3a6cbb2",
-      "legacyRuntimeId": "ao-58683",
-      "canonicalProductId": "fa_prod_7d0eb6c178fa5bb9a18aee84",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWW12753",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d2048887182cd35b9cb68c43",
-        "legacy:data/pdf-evidence-raw/EWW12753.json",
-        "source:doc_d2048887182cd35b9cb68c43"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d2048887182cd35b9cb68c43",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 585
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "priorAttemptSuppressions": [
-        {
-          "attemptId": "historical_attempt_d37f6c43a071e4b53f0f0d2e",
-          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW12753&brand=Electrolux",
-          "contentSha256": "7b8c6a09dd8ac52009ccef9cdb41ef75f182c6730d70d7bee5da62fab296bdf1",
-          "status": "mineru_failure",
-          "failureCode": "mineru",
-          "policySha256": "b6247ddb5f4d215ae93f1642628a879f66c1d3d71b297e56ba2b614ab479801c"
-        }
-      ],
-      "executionLane": "DEFERRED",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "dispositionReason": "ACTIVE_RESOLVER_SUPPRESSION",
-      "candidateIds": [],
-      "resolverContract": [
-        {
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "resolverId": "electrolux-group-official-factsheet",
-          "version": "2",
-          "scope": "exact_model_au_factsheet_endpoint",
-          "required": true
-        }
-      ],
-      "incompleteResolverIds": [
-        "electrolux-group-official-factsheet"
-      ]
     },
     {
       "targetId": "recovery_target_7987f5dc1d33b6a988c24cf2",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T04:18:44.196Z",
-  "sourceBundleSha256": "03fa22490a6eabc4ce6883fff8cbfac8f423c2df0cdff99eda88dea5debf2596",
+  "generatedAt": "2026-07-19T18:39:15.450Z",
+  "sourceBundleSha256": "d68114df5024050129d5ef34ce00bda8ca3830c29e67bf21bc992110bf785688",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -2168,8 +2168,8 @@
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
       "sourcePdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
       "contentSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-      "receiptBindingSha256": "e4db14a50878b8b884a81f50c9ed97f45a39dc22d12ccc39215a11f27c2dca49",
-      "derivedObjectPath": "evidence/derived/mineru-json/sha256/cd/23/cd23dcb5cef31ba7cadff0ba8e7f8e35d0eff8fdc9c0a850997dbf56d449946d.json",
+      "receiptBindingSha256": "d891e0641f21883f896ad52014f2cc35223a45d6a1541573c9cbd0c2c3fb7803",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ca/ae/caae0e3c9b21316ae47c70b96bbe018f81c8b73bc28ebcc6245846e65b43b1ac.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2183,6 +2183,20 @@
       "sourcePdfSha256": null,
       "contentSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd",
       "receiptBindingSha256": "8e7cec63fbc3fd1a4309359f59d37c22a5fd3be46d9a1df5a3c02d543367d23c",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_6252d12c8636ff82d87b836d",
+      "referenceId": "fa_ref_7aead6dc34c0fe035e925c12",
+      "brand": "LG",
+      "model": "DVH1-08WP",
+      "category": "dryer",
+      "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
+      "sourcePdfSha256": null,
+      "contentSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
+      "receiptBindingSha256": "9a5db30e16ccbdbb45dee10a36ecfbbb11edf72312a46428487d0256f7cde359",
       "derivedObjectPath": null,
       "status": "passed",
       "failureCode": null
@@ -5704,10 +5718,10 @@
   ],
   "summary": {
     "entries": 382,
-    "sources": 407,
-    "passed": 407,
+    "sources": 408,
+    "passed": 408,
     "failed": 0
   },
-  "checkedObjects": 802,
-  "semanticAuditSha256": "0d5d7f0a9cc5d1e6b346d248c803d3eb04ae809ad2cb0f761738f0b416f54fb8"
+  "checkedObjects": 803,
+  "semanticAuditSha256": "beef8de2bc4660c54506e94e3d1dd819a598e16bf5c284f48cd04714cf46e681"
 }

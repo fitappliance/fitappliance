@@ -1,6 +1,11 @@
 import * as defaultFs from 'node:fs/promises';
 import { join } from 'node:path';
 
+import {
+  canonicalJsonSha256,
+  validateHistoricalEvidenceRecoveryAudit,
+} from './historical-evidence-recovery-contract.mjs';
+
 const ACCEPTED_STATUSES = new Set(['accepted', 'receipt_accepted_non_scalar']);
 const TERMINAL_STATUSES = new Set([
   'claims_incomplete', 'conflict_quarantined', 'identity_rejected', 'terminal_failure',
@@ -57,6 +62,7 @@ export function historicalRunTargetSuppression({
   currentToolchainSha256,
   currentResolverContract,
   currentHasExplicitCandidateJobs = false,
+  verifiedRepairReopen = false,
 }) {
   const target = priorState?.targets?.[targetId];
   const outcome = target?.outcome;
@@ -70,6 +76,7 @@ export function historicalRunTargetSuppression({
     if (priorState.input?.policySha256 !== currentPolicySha256) return null;
     if (!sameResolverContract(outcome.candidateInventory?.resolvers, currentResolverContract)) return null;
     if (ACCEPTED_STATUSES.has(outcome.status)) {
+      if (verifiedRepairReopen) return null;
       reason = 'completed_unpromoted_acceptance';
     } else if (TERMINAL_STATUSES.has(outcome.status)
       && priorState.input?.toolchainSha256 === currentToolchainSha256) {
@@ -85,6 +92,87 @@ export function historicalRunTargetSuppression({
     priorFailureCode: outcome.failureCode ?? null,
     reason,
   };
+}
+
+function receiptSetSha256(target) {
+  const sources = target?.reconciliationContext?.activeReceiptSources;
+  if (!Array.isArray(sources)) return null;
+  const rows = [];
+  for (const source of sources) {
+    const contentSha256 = String(source?.contentSha256 ?? '');
+    const bindingSha256 = String(source?.verificationReceipt?.bindingSha256 ?? '');
+    if (!/^[a-f0-9]{64}$/.test(contentSha256) || !/^[a-f0-9]{64}$/.test(bindingSha256)) return null;
+    rows.push({ contentSha256, bindingSha256 });
+  }
+  rows.sort((left, right) => left.contentSha256.localeCompare(right.contentSha256)
+    || left.bindingSha256.localeCompare(right.bindingSha256));
+  if (new Set(rows.map((row) => `${row.contentSha256}:${row.bindingSha256}`)).size !== rows.length) return null;
+  return canonicalJsonSha256(rows);
+}
+
+function auditSemanticView(audit) {
+  return {
+    mode: audit.mode,
+    batchId: audit.batchId,
+    batchSha256: audit.batchSha256,
+    queueSha256: audit.queueSha256,
+    policySha256: audit.policySha256,
+    resultsSha256: audit.resultsSha256,
+    priorBundleSha256: audit.priorBundleSha256,
+    priorObjectsReplayed: audit.priorObjectsReplayed,
+    checkedTargets: audit.checkedTargets,
+    checkedObjects: audit.checkedObjects,
+    repairs: audit.repairs ?? [],
+    violations: audit.violations,
+  };
+}
+
+function verifiedParserRepairReopen({
+  targetId,
+  currentTarget,
+  priorState,
+  priorBatch,
+  priorResults,
+  priorAudit,
+}) {
+  if (currentTarget?.repairExistingReceipt !== true || !priorBatch || !priorResults || !priorAudit) return false;
+  try {
+    validateHistoricalEvidenceRecoveryAudit(priorAudit);
+  } catch {
+    return false;
+  }
+  const semanticSha256 = canonicalJsonSha256(auditSemanticView(priorAudit));
+  if (priorAudit.semanticAuditSha256 !== semanticSha256
+    || priorAudit.auditId !== `historical-recovery-audit-${semanticSha256.slice(0, 24)}`
+    || priorAudit.mode !== 'online'
+    || priorAudit.status !== 'failed'
+    || priorAudit.priorObjectsReplayed !== true
+    || priorAudit.batchSha256 !== canonicalJsonSha256(priorBatch)
+    || priorAudit.resultsSha256 !== canonicalJsonSha256(priorResults)
+    || priorResults.runId !== priorState.runId
+    || priorResults.batchId !== priorBatch.batchId
+    || (priorState.input?.batchSha256 && priorState.input.batchSha256 !== priorAudit.batchSha256)
+    || !priorAudit.violations.includes(`prior object ${targetId}: artifact attestation receipt mismatch`)) {
+    return false;
+  }
+  const priorTargets = (priorBatch.targets ?? []).filter((target) => target.targetId === targetId);
+  if (priorTargets.length !== 1) return false;
+  const priorReceiptSet = receiptSetSha256(priorTargets[0]);
+  const currentReceiptSet = receiptSetSha256(currentTarget);
+  return priorReceiptSet !== null && currentReceiptSet !== null && priorReceiptSet !== currentReceiptSet;
+}
+
+async function readRepairEvidence(fs, runRoot) {
+  try {
+    const [priorBatch, priorResults, priorAudit] = await Promise.all([
+      fs.readFile(join(runRoot, 'batch.json'), 'utf8').then(JSON.parse),
+      fs.readFile(join(runRoot, 'results.json'), 'utf8').then(JSON.parse),
+      fs.readFile(join(runRoot, 'audit.json'), 'utf8').then(JSON.parse),
+    ]);
+    return { priorBatch, priorResults, priorAudit };
+  } catch {
+    return null;
+  }
 }
 
 export async function scanHistoricalEvidenceRunHistory({
@@ -138,7 +226,21 @@ export async function scanHistoricalEvidenceRunHistory({
       || !priorState?.targets || typeof priorState.targets !== 'object') {
       throw new Error(`historical run state is malformed: ${directory.name}`);
     }
+    const currentTargets = new Map(selectedBatch.targets.map((target) => [target.targetId, target]));
+    const hasAcceptedRepairCandidate = selectedBatch.targets.some((target) => (
+      target.repairExistingReceipt === true
+      && ACCEPTED_STATUSES.has(priorState.targets?.[target.targetId]?.outcome?.status)
+    ));
+    const repairEvidence = hasAcceptedRepairCandidate
+      ? await readRepairEvidence(fs, join(root, directory.name))
+      : null;
     for (const target of selectedBatch.targets) {
+      const verifiedRepairReopen = repairEvidence ? verifiedParserRepairReopen({
+        targetId: target.targetId,
+        currentTarget: currentTargets.get(target.targetId),
+        priorState,
+        ...repairEvidence,
+      }) : false;
       const suppression = historicalRunTargetSuppression({
         priorState,
         targetId: target.targetId,
@@ -146,6 +248,7 @@ export async function scanHistoricalEvidenceRunHistory({
         currentToolchainSha256,
         currentResolverContract: contracts.get(target.targetId),
         currentHasExplicitCandidateJobs: explicitCandidateJobs.get(target.targetId),
+        verifiedRepairReopen,
       });
       if (suppression) conflicts.push({
         ...suppression,

@@ -220,6 +220,7 @@ function workstreamFor(entry) {
     pendingConflictBinding(entry.state, entry.target);
     return 'CONFLICT_CLOSURE';
   }
+  if (entry.target.repairExistingReceipt === true) return 'PARSER_REPAIR';
   if (entry.target.priorityClass === 'P4_CONFLICT_RESOLUTION') return 'CONFLICT_CLOSURE';
   if (parserRepairFamily(entry.family)) return 'PARSER_REPAIR';
   return entry.target.lifecycleState === 'CURRENT_RETAIL'

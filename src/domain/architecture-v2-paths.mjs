@@ -23,6 +23,7 @@ export const architectureV2Paths = Object.freeze({
   historicalEvidenceTargetState: `${base}/reviews/automated/historical-evidence-target-state.json`,
   historicalEvidenceFamilyCanaries: `${base}/reviews/automated/historical-evidence-family-canaries.json`,
   historicalEvidenceNextBatches: `${base}/reviews/automated/historical-evidence-next-batches.json`,
+  historicalParserGapPriority: `${base}/reviews/automated/historical-parser-gap-priority.json`,
   historicalOfficialCandidateManifest: `${base}/reviews/automated/historical-official-candidate-manifest.json`,
   historicalModelPdfBaseline: `${base}/reviews/automated/historical-model-pdf-baseline.json`,
   legacyPdfLibraryAudit: `${base}/reviews/automated/legacy-pdf-library-audit.json`,

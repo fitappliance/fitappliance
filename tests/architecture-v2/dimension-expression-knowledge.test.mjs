@@ -110,7 +110,7 @@ test('dimension research classifies grouped, scoped, labelled, and ambiguous dia
   assert.ok(result.observations.every((row) => row.fragmentSha256.length === 64));
 });
 
-test('dimension research records proven diagram primary depth and hierarchical external depth grammars', () => {
+test('dimension research rejects generic D/D-prime semantics even beside a diagram', () => {
   const diagram = {
     type: 'image',
     content: {
@@ -137,10 +137,10 @@ test('dimension research records proven diagram primary depth and hierarchical e
 
   const diagramPrimary = result.observations.find((row) => (
     row.patternKind === 'ALTERNATING_AXIS_VALUE_CELLS'
-      && row.parserDecision === 'SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS'
+      && row.parserDecision === 'SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH'
   ));
-  assert.deepEqual(diagramPrimary.safeAxes, ['width', 'depth', 'height']);
-  assert.equal(diagramPrimary.axisValues.find((row) => row.label === 'D').value, '660');
+  assert.deepEqual(diagramPrimary.safeAxes, ['width', 'height']);
+  assert.deepEqual(diagramPrimary.depthVariants, ['D"', "D'"]);
 
   const hierarchy = result.observations.find((row) => (
     row.patternKind === 'HIERARCHICAL_DEPTH_VARIANTS'

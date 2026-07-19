@@ -21,7 +21,7 @@ Generated: 2026-07-12T12:40:00.000Z
 | Mapped MinerU documents | 892 |
 | Unmapped MinerU documents | 33 |
 | Dimension-expression observations | 1165 |
-| Reusable PDF grammar profiles | 215 |
+| Reusable PDF grammar profiles | 216 |
 | Research gaps | 1037 |
 
 A marketing-series count is a proven minimum, never an estimate of the
@@ -400,7 +400,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | HOOVER | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Inalto | 19 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Kogan | 68 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| LG | 67 | 6 | 0 | 2 | `MINERU_SAMPLE_OBSERVED` |
+| LG | 67 | 6 | 0 | 3 | `MINERU_SAMPLE_OBSERVED` |
 | majestic | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Midea | 15 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Miele | 49 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -468,7 +468,6 @@ and every extracted value still requires exact-model identity and receipt checks
 | `RESEARCH_UNIT_MISSING` | 52 |
 | `RESEARCH_UNLABELLED_AXIS_ORDER` | 17 |
 | `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | 75 |
-| `SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS` | 6 |
 | `SUPPORTED_EXACT_MODEL_COLUMN_MATRIX` | 1 |
 | `SUPPORTED_EXACT_MODEL_ROW_MATRIX` | 22 |
 | `SUPPORTED_EXPLICIT_GROUPED` | 92 |
@@ -478,7 +477,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | `SUPPORTED_EXPLICIT_LABELS` | 464 |
 | `SUPPORTED_EXPLICIT_NET_SECTION` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_AXIS_COLUMNS` | 2 |
-| `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | 1 |
+| `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | 7 |
 | `SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT` | 9 |
 
 Model binding strength is ordered `SAME_FRAGMENT_EXACT_MODEL` >
@@ -9546,16 +9545,19 @@ Research gaps:
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 12
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 2
-- Complete exact-model parser replays: 1
+- Complete exact-model parser replays: 2
 
-#### PDF grammar pdf_grammar_0bd4c2db9d70ff3b
+#### Electrolux Australia washer product specification
 
 - Group type: `parser_family`
-- Expression coverage: `OBSERVED_WITH_RESEARCH_GAPS`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
 - Models observed: `EWF12753`, `EWF12763E`, `EWF14013`, `EWF1408B1WA`, `EWF14933`, `EWW12753`
 - PDF SHA-256: `04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773`, `378d9a3ee6cb135b2f7ee189826959d6fb69c5d8e9ef304b876b6dce45dd51a3`, `4bef6eca8a8f821f317bb64786cbaf434951893947bcb09d311617e34ad1b8ae`, `68f72b01c284bca3e3aed8ebcab98cd19f5474b49bafbdc32fa94fd11a4dd501`, `791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031`, `7b8c6a09dd8ac52009ccef9cdb41ef75f182c6730d70d7bee5da62fab296bdf1`
-- PDF grammar profiles: `pdf_grammar_0bd4c2db9d70ff3b`
+- PDF grammar profiles: `electrolux-au-washer-product-total-depth-v1`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Grammar variant: Exact-model DIMENSIONS table with product total depth and hose depth
+- Detection: An exact target model appears in the same-page header above one DIMENSIONS title and its immediately following five-row PRODUCT table. The table must contain unique integer Total height (mm), Total width (mm), Total depth (mm), and Depth with hoses (mm) rows in that exact order.
+- Semantic boundary: Only Total height, Total width and Total depth are projected as the closed product envelope. Depth with hoses is a connection envelope and remains unpublished; package, door-open, duplicate, missing, reordered, non-mm and sibling-model variants fail closed without generic parser fallback.
 - Official/source URLs: <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF12753&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF12763E&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF14013&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF1408B1WA&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF14933&brand=Electrolux>, <https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWW12753&brand=Electrolux>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
@@ -10724,7 +10726,7 @@ Research gaps:
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 7
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 4
-- Complete exact-model parser replays: 4
+- Complete exact-model parser replays: 3
 
 #### Document family 2d559286f86e
 
@@ -10732,14 +10734,14 @@ Research gaps:
 - Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
 - Models observed: `WV9-1412B`, `WV9-1412W`
 - PDF SHA-256: `2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b`
-- PDF grammar profiles: `pdf_grammar_56dff8973bc69513`
+- PDF grammar profiles: `pdf_grammar_ffd9ab93a81bfabf`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
 - Official/source URLs: <https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, height | `product_closed_candidate` | Dimension(mm) W 600 D 560 D" 1100 H 850 D' 620 | p.12, `82b71f1ed934` |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, height | `product_closed_candidate` | Dimension(mm) W 600 D 610 D" 1135 H 850 D' 660 | p.12, `3d53d627e79d` |
-| `SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, depth, height | `product_closed_candidate` | Dimension(mm) W 600 D 560 D" 1100 H 850 D' 620 | p.12, `82b71f1ed934` |
 
 #### WD1216HTE
 
@@ -10780,33 +10782,19 @@ Research gaps:
 Research gaps:
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 
-#### PDF grammar pdf_grammar_2e826f8230419796
+#### PDF grammar pdf_grammar_9ff54db34179eeb6
 
 - Group type: `parser_family`
-- Expression coverage: `PARSER_REPLAY_COMPLETE`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
 - Models observed: `WD1275A1`
 - PDF SHA-256: `736c5c97437df0ac5168dce2a213c2a552bc492e3b4407cd8297cdf9ca35cee1`
-- PDF grammar profiles: `pdf_grammar_2e826f8230419796`
+- PDF grammar profiles: `pdf_grammar_9ff54db34179eeb6`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
 - Official/source URLs: <https://gscs-b2c.lge.com/open/downloadFile?fileId=XSzB9y7vFqHz12fgVCRvHw>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, depth, height | `product_closed_candidate` | Dimension(mm) W 600 D 475 D" 1015 H 850 D' 535 | p.11, `ac5ea0a069ae` |
-
-#### PDF grammar pdf_grammar_658fb95d8446842a
-
-- Group type: `parser_family`
-- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
-- Models observed: `WTL9-12B`
-- PDF SHA-256: `b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4`
-- PDF grammar profiles: `pdf_grammar_658fb95d8446842a`
-- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://gscs-b2c.lge.com/open/downloadFile?fileId=5dZGXMUYnBGTiZTytfPE7g>
-
-| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> height -> depth -> height | width, depth, height | `product_closed_candidate` | Dimension(mm) W 690 D 730 H 1070 D' 760 H' 1420 | p.9, `ff57a04469e1` |
+| `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, height | `product_closed_candidate` | Dimension(mm) W 600 D 475 D" 1015 H 850 D' 535 | p.11, `ac5ea0a069ae` |
 
 #### PDF grammar pdf_grammar_cf02f858aff32168
 
@@ -10822,6 +10810,20 @@ Research gaps:
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Width 690mm \| Height 1070mm \| Depth 730mm | p.1, `1315aaa97e56` |
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Packing (W x H x D) 752mm ×1140mm x797mm | p.1, `1315aaa97e56` |
+
+#### PDF grammar pdf_grammar_d6ce8e4a50b28d21
+
+- Group type: `parser_family`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Models observed: `WTL9-12B`
+- PDF SHA-256: `b989a2ed39f79d119d7a146024bb609558ca2e06ab409c33721300644334dcd4`
+- PDF grammar profiles: `pdf_grammar_d6ce8e4a50b28d21`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://gscs-b2c.lge.com/open/downloadFile?fileId=5dZGXMUYnBGTiZTytfPE7g>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> height -> depth -> height | width, height | `product_closed_candidate` | Dimension(mm) W 690 D 730 H 1070 D' 760 H' 1420 | p.9, `ff57a04469e1` |
 
 ### Livable
 
@@ -12546,22 +12548,22 @@ Research gaps:
 - Inventory models: 67
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 6
 - Proven marketing series: 0; total series count: `UNKNOWN`
-- PDF grammar profiles: 2
-- Complete exact-model parser replays: 3
+- PDF grammar profiles: 3
+- Complete exact-model parser replays: 2
 
 #### Document family 2fe3cc8c8972
 
 - Group type: `document_family`
-- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Expression coverage: `OBSERVED_WITH_RESEARCH_GAPS`
 - Models observed: `DVH5-08W`, `DVH9-09B`, `DVH9-09W`
 - PDF SHA-256: `2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1`
-- PDF grammar profiles: `pdf_grammar_68c6a6913a230966`
+- PDF grammar profiles: `pdf_grammar_600384d0a8dab340`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
 - Official/source URLs: <https://gscs-b2c.lge.com/open/downloadFile?fileId=pUof6XKiAKggTDi5Im6WeA>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_DOCUMENT_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, depth, height | `product_closed_candidate` | Dimension(mm) W 600 D 690 D" 1115 H 850 D' 615 | p.10, `e3eb08ce7c85` |
+| `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_DOCUMENT_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, height | `product_closed_candidate` | Dimension(mm) W 600 D 690 D" 1115 H 850 D' 615 | p.10, `e3eb08ce7c85` |
 
 Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 14
@@ -12598,20 +12600,23 @@ Research gaps:
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 
-#### PDF grammar pdf_grammar_68c6a6913a230966
+#### LG Australia dryer installation dimension diagram
 
 - Group type: `parser_family`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
 - Models observed: `DVH1-08WP`, `DVH10-10B`
 - PDF SHA-256: `22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957`, `521077b559417d620664ead6be32ee1738e575ae50a7ffb3734b3fc24458d462`
-- PDF grammar profiles: `pdf_grammar_68c6a6913a230966`
+- PDF grammar profiles: `lg-au-dryer-dimension-diagram-v1`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Grammar variant: Audited D cabinet, closed-door and door-open side-view geometry
+- Detection: A reviewed source-PDF hash must bind the complete same-page Model row, one Dimension(mm) label, one or two intervening side-view image fragments and the exact two-row W/H/D/D-prime/D-double-prime integer table. The declared applicability list must equal the PDF Model row.
+- Semantic boundary: Only W, H and unprimed D are projected as the closed external envelope after the audited diagram and D-prime < D < D-double-prime ordering agree. D-prime remains cabinet-only and D-double-prime remains door-open; unknown PDF hashes, model-list drift, missing images and malformed or reordered tables retain generic W/H only.
 - Official/source URLs: <https://gscs-b2c.lge.com/open/downloadFile?fileId=l3ZnOgt0HYfuYHxXjG8Fw>, <https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, depth, height | `product_closed_candidate` | Dimension(mm) W 600 D 690 D" 1115 H 850 D' 615 | p.10, `e3eb08ce7c85` |
-| `SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, depth, height | `product_closed_candidate` | Dimension(mm) W 600 D 660 D" 1115 H 850 D' 614 | p.12, `14c5e7f03d58` |
+| `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, height | `product_closed_candidate` | Dimension(mm) W 600 D 690 D" 1115 H 850 D' 615 | p.10, `e3eb08ce7c85` |
+| `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | `ALTERNATING_AXIS_VALUE_CELLS` | `SAME_PAGE_EXACT_MODEL` | width -> depth -> depth -> height -> depth | width, height | `product_closed_candidate` | Dimension(mm) W 600 D 660 D" 1115 H 850 D' 614 | p.12, `14c5e7f03d58` |
 
 Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 13

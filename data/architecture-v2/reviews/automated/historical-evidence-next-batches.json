@@ -1,36 +1,36 @@
 {
   "schemaVersion": 1,
   "plannerVersion": "1",
-  "generatedAt": "2026-07-17T04:19:39.580Z",
+  "generatedAt": "2026-07-19T18:38:55.827Z",
   "maximumTargets": 10,
   "sourceBindings": {
-    "executableQueueSha256": "0bf5701ad785f1d26ef2e2f37e3f9b818e1199690154f5f87795600f2ccd0432",
-    "targetStateSha256": "c384f39a93f8acaeeafcdae96b8e72b3abb036c2e0e7be4deda1b6c3bb5ffec8",
-    "familyCanarySha256": "51d5f0da726bbf112c9bc2bbe9a07b50a8785537d7fd5e30fd1adb850f28fffe",
-    "sourceAcquisitionQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be"
+    "executableQueueSha256": "a47393f8270409a205221cdbcd09c08190d47cbc53dfb0a5811c4f5a347dd367",
+    "targetStateSha256": "77baa7c928f2bd1948baa0c3a5a1866831e11ac6490dab4f4df0b65170014c50",
+    "familyCanarySha256": "6bacfd36b56679e6ce401962ce55023de9f85ca8c357953bef8e0c3ebcb8bd44",
+    "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b"
   },
   "workstreams": [
     {
       "workstreamId": "CURRENT_DIMENSIONS",
       "description": "Current-retail dimensions recovery and confirmation",
-      "assignedTargets": 951,
-      "eligibleTargets": 946,
-      "suppressedTargets": 5,
+      "assignedTargets": 957,
+      "eligibleTargets": 947,
+      "suppressedTargets": 10,
       "suppressedByReason": {
-        "FAMILY_GATE_BLOCKED": 5
+        "FAMILY_GATE_BLOCKED": 10
       },
-      "nextManifestId": "historical_batch_48294e3d099a8ee7c949e106"
+      "nextManifestId": "historical_batch_98b047d648ded5811d0a3d67"
     },
     {
       "workstreamId": "HISTORICAL_DIMENSIONS",
       "description": "Archived and registry-only dimensions recovery and confirmation",
       "assignedTargets": 3974,
-      "eligibleTargets": 3941,
-      "suppressedTargets": 33,
+      "eligibleTargets": 3939,
+      "suppressedTargets": 35,
       "suppressedByReason": {
-        "FAMILY_GATE_BLOCKED": 33
+        "FAMILY_GATE_BLOCKED": 35
       },
-      "nextManifestId": "historical_batch_116385c9ba52ba578ea63d7c"
+      "nextManifestId": "historical_batch_97faa1ef1728fdb44eab8b58"
     },
     {
       "workstreamId": "PARSER_REPAIR",
@@ -50,7 +50,7 @@
       "suppressedByReason": {
         "FAMILY_GATE_BLOCKED": 1
       },
-      "nextManifestId": "historical_batch_dac08012c7f21ae3b2c61cf5"
+      "nextManifestId": "historical_batch_1db00b0d8378aee9f39a44c8"
     }
   ],
   "manifests": [
@@ -58,7 +58,7 @@
       "schemaVersion": 1,
       "plannerVersion": "1",
       "workstreamId": "CONFLICT_CLOSURE",
-      "mode": "FAMILY_EXPANSION",
+      "mode": "FAMILY_CANARY",
       "executionLane": "ACQUISITION",
       "executionCommand": "recover:historical-evidence",
       "constraints": {
@@ -69,12 +69,12 @@
         "executionLane": "ACQUISITION"
       },
       "familyId": "document_family_82eed9fcc8fd21713fbf9017",
-      "familyState": "PASSED",
+      "familyState": "REOPENED",
       "sourceBindings": {
-        "executableQueueSha256": "0bf5701ad785f1d26ef2e2f37e3f9b818e1199690154f5f87795600f2ccd0432",
-        "targetStateSha256": "c384f39a93f8acaeeafcdae96b8e72b3abb036c2e0e7be4deda1b6c3bb5ffec8",
-        "familyCanarySha256": "51d5f0da726bbf112c9bc2bbe9a07b50a8785537d7fd5e30fd1adb850f28fffe",
-        "sourceAcquisitionQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be"
+        "executableQueueSha256": "a47393f8270409a205221cdbcd09c08190d47cbc53dfb0a5811c4f5a347dd367",
+        "targetStateSha256": "77baa7c928f2bd1948baa0c3a5a1866831e11ac6490dab4f4df0b65170014c50",
+        "familyCanarySha256": "6bacfd36b56679e6ce401962ce55023de9f85ca8c357953bef8e0c3ebcb8bd44",
+        "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
@@ -88,8 +88,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_dac08012c7f21ae3b2c61cf5",
-      "semanticManifestSha256": "dac08012c7f21ae3b2c61cf51543fe7b8a46cd7dbd67cce6ac11aa4ac782d651"
+      "manifestId": "historical_batch_1db00b0d8378aee9f39a44c8",
+      "semanticManifestSha256": "1db00b0d8378aee9f39a44c8eb88dd7d3290ddb023c41aef80635e3e180c5a4a"
     },
     {
       "schemaVersion": 1,
@@ -108,12 +108,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "0bf5701ad785f1d26ef2e2f37e3f9b818e1199690154f5f87795600f2ccd0432",
-        "targetStateSha256": "c384f39a93f8acaeeafcdae96b8e72b3abb036c2e0e7be4deda1b6c3bb5ffec8",
-        "familyCanarySha256": "51d5f0da726bbf112c9bc2bbe9a07b50a8785537d7fd5e30fd1adb850f28fffe",
-        "sourceAcquisitionQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be"
+        "executableQueueSha256": "a47393f8270409a205221cdbcd09c08190d47cbc53dfb0a5811c4f5a347dd367",
+        "targetStateSha256": "77baa7c928f2bd1948baa0c3a5a1866831e11ac6490dab4f4df0b65170014c50",
+        "familyCanarySha256": "6bacfd36b56679e6ce401962ce55023de9f85ca8c357953bef8e0c3ebcb8bd44",
+        "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b"
       },
-      "reviewedTargetCount": 951,
+      "reviewedTargetCount": 957,
       "targetBindings": [
         {
           "targetId": "recovery_target_24ed948d4390531eefa18311",
@@ -125,8 +125,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_48294e3d099a8ee7c949e106",
-      "semanticManifestSha256": "48294e3d099a8ee7c949e1067e4eeee6252676338648ee06ad013d7f011c85ce"
+      "manifestId": "historical_batch_98b047d648ded5811d0a3d67",
+      "semanticManifestSha256": "98b047d648ded5811d0a3d67b875fbc0fb58b022d2715e30fb43df7a3f23747e"
     },
     {
       "schemaVersion": 1,
@@ -145,10 +145,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "0bf5701ad785f1d26ef2e2f37e3f9b818e1199690154f5f87795600f2ccd0432",
-        "targetStateSha256": "c384f39a93f8acaeeafcdae96b8e72b3abb036c2e0e7be4deda1b6c3bb5ffec8",
-        "familyCanarySha256": "51d5f0da726bbf112c9bc2bbe9a07b50a8785537d7fd5e30fd1adb850f28fffe",
-        "sourceAcquisitionQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be"
+        "executableQueueSha256": "a47393f8270409a205221cdbcd09c08190d47cbc53dfb0a5811c4f5a347dd367",
+        "targetStateSha256": "77baa7c928f2bd1948baa0c3a5a1866831e11ac6490dab4f4df0b65170014c50",
+        "familyCanarySha256": "6bacfd36b56679e6ce401962ce55023de9f85ca8c357953bef8e0c3ebcb8bd44",
+        "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b"
       },
       "reviewedTargetCount": 3974,
       "targetBindings": [
@@ -162,25 +162,25 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_116385c9ba52ba578ea63d7c",
-      "semanticManifestSha256": "116385c9ba52ba578ea63d7cba95bda927149d35bc46135a8719fdea67de2a74"
+      "manifestId": "historical_batch_97faa1ef1728fdb44eab8b58",
+      "semanticManifestSha256": "97faa1ef1728fdb44eab8b588bb7fb4b73953d9b847e9704783e2811ba5c2211"
     }
   ],
   "summary": {
-    "assignedTargets": 4988,
-    "eligibleTargets": 4949,
-    "suppressedTargets": 39,
+    "assignedTargets": 4994,
+    "eligibleTargets": 4948,
+    "suppressedTargets": 46,
     "suppressedByReason": {
-      "FAMILY_GATE_BLOCKED": 39
+      "FAMILY_GATE_BLOCKED": 46
     },
     "manifests": 3,
     "manifestedTargets": 3,
     "byWorkstream": {
-      "CURRENT_DIMENSIONS": 951,
+      "CURRENT_DIMENSIONS": 957,
       "HISTORICAL_DIMENSIONS": 3974,
       "PARSER_REPAIR": 0,
       "CONFLICT_CLOSURE": 63
     }
   },
-  "semanticBatchesSha256": "c0adc34112002fced57557ef2cd3206d775626e1ebfea0bfef27a8a5b5ac1304"
+  "semanticBatchesSha256": "ec746dd9f5aa0ac5659cb2212f7dbea9a48217465a2251595edd2d5b860c8b58"
 }
