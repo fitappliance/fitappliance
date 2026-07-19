@@ -18,6 +18,24 @@ export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
   ]),
 });
 
+export const CLAIM_PARSER_IMPLEMENTATION_PATHS = Object.freeze([
+  'src/domain/beko-product-page-dimensions.mjs',
+  'src/domain/beko-product-page-identity.mjs',
+  'src/domain/category-geometry.mjs',
+  'src/domain/dimension-evidence-claim.mjs',
+  'src/domain/evidence-artifact-pipeline.mjs',
+  'src/domain/evidence-artifact-verifier.mjs',
+  'src/domain/evidence-claim-reconciliation.mjs',
+  'src/domain/evidence-claim-semantics.mjs',
+  'src/domain/evidence-geometry-projector.mjs',
+  'src/domain/evidence-source-verifier.mjs',
+  'src/domain/mineru-document.mjs',
+  'src/domain/official-market-api-discovery-evidence.mjs',
+  'src/domain/official-model-variant-policy.mjs',
+  'src/domain/official-support-api-discovery-evidence.mjs',
+  'src/domain/smeg-pdf-dimensions.mjs',
+]);
+
 function requiredSha256(value, label) {
   const normalized = String(value ?? '').trim().toLowerCase();
   if (!/^[a-f0-9]{64}$/.test(normalized)) throw new TypeError(`${label} invalid`);
@@ -26,6 +44,27 @@ function requiredSha256(value, label) {
 
 function normalizedBrand(value) {
   return String(value ?? '').replace(/[^a-z0-9]+/gi, '').toLowerCase();
+}
+
+function implementationManifest(files, paths) {
+  if (!(files instanceof Map) || files.size === 0) {
+    throw new TypeError('claim parser implementation files required');
+  }
+  const manifest = paths.map((path) => {
+    if (!files.has(path)) throw new TypeError(`claim parser implementation missing: ${path}`);
+    return {
+      path,
+      sha256: createHash('sha256').update(Buffer.from(files.get(path))).digest('hex'),
+    };
+  }).sort((left, right) => left.path.localeCompare(right.path));
+  if (new Set(manifest.map(({ path }) => path)).size !== manifest.length) {
+    throw new TypeError('claim parser implementation paths must be unique');
+  }
+  return manifest;
+}
+
+export function claimParserImplementationIdentity(files) {
+  return canonicalJsonSha256(implementationManifest(files, [...files.keys()]));
 }
 
 export function historicalAttemptProcessorCapability({ brand, sourceUrl, failureCode }) {

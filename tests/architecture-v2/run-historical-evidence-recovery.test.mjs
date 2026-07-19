@@ -19,7 +19,95 @@ import {
 
 const SHA_A = 'a'.repeat(64);
 const SHA_B = 'b'.repeat(64);
+const PARSER_SHA = 'c'.repeat(64);
 const FIELDS = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+
+function familyCanaries(input, policyValue) {
+  const semantic = {
+    schemaVersion: 2,
+    generatedAt: '2026-07-13T00:00:00.000Z',
+    documentGraphSha256: 'd'.repeat(64),
+    executableQueueSha256: canonicalJsonSha256({ queue: true }),
+    policySha256: canonicalJsonSha256(policyValue),
+    parserContractSha256: PARSER_SHA,
+    processorEpochs: {},
+    families: [],
+    targetDecisions: input.targets.map((target) => ({
+      targetId: target.targetId,
+      referenceId: target.referenceId,
+      executionLane: 'ACQUISITION',
+      familyIds: [],
+      assignment: 'UNSCOPED_SINGLETON',
+      runnerAllowed: true,
+      fanoutEligible: false,
+      reason: 'NO_CANONICAL_DOCUMENT_FAMILY',
+    })),
+  };
+  return {
+    ...semantic,
+    semanticCanarySha256: canonicalJsonSha256(semantic),
+    summary: {},
+  };
+}
+
+function blockCanaryTarget(canaries, targetId) {
+  const next = structuredClone(canaries);
+  const decision = next.targetDecisions.find((entry) => entry.targetId === targetId);
+  const familyId = `test-family-${targetId}`;
+  const contractValue = {
+    schemaVersion: 1,
+    family: {
+      familyId,
+      category: 'dishwasher',
+      brand: 'Example',
+      groupType: 'document_family',
+      documentIds: [],
+      pdfSha256s: [],
+      grammarProfileIds: [],
+    },
+    graphSourceUrls: [],
+    candidateSourceUrls: [],
+    resolverContracts: [],
+    policySha256: next.policySha256,
+    parserContractSha256: next.parserContractSha256,
+    processorEpochs: next.processorEpochs,
+  };
+  next.families.push({
+    familyId,
+    category: 'dishwasher',
+    brand: 'Example',
+    groupType: 'document_family',
+    groupName: 'Test blocked family',
+    targetIds: [targetId],
+    representativeTargetId: targetId,
+    provenRepresentativeTargetIds: [],
+    contract: { ...contractValue, sha256: canonicalJsonSha256(contractValue) },
+    state: 'FAILED_SOURCE',
+    stateReason: 'POST_CANARY_TRANSPORT_FAILURE',
+  });
+  Object.assign(decision, {
+    familyIds: [familyId],
+    assignment: 'FAMILY_CANARY',
+    familyState: 'FAILED_SOURCE',
+    representativeTargetId: targetId,
+    runnerAllowed: false,
+    fanoutEligible: false,
+    reason: 'FAMILY_FAILED_SOURCE',
+  });
+  const semantic = {
+    schemaVersion: next.schemaVersion,
+    generatedAt: next.generatedAt,
+    documentGraphSha256: next.documentGraphSha256,
+    executableQueueSha256: next.executableQueueSha256,
+    policySha256: next.policySha256,
+    parserContractSha256: next.parserContractSha256,
+    processorEpochs: next.processorEpochs,
+    families: next.families,
+    targetDecisions: next.targetDecisions,
+  };
+  next.semanticCanarySha256 = canonicalJsonSha256(semantic);
+  return next;
+}
 
 test('recovery fetch options preserve model, category and discovery provenance end to end', () => {
   const discoveryProvenance = { method: 'official_market_api', matchedModel: 'W4104C.W.AU' };
@@ -159,10 +247,21 @@ async function fixture({ targetCount = 1 } = {}) {
   const queueValue = { queue: true };
   input.queue.sha256 = canonicalJsonSha256(queueValue);
   input.policy.sha256 = canonicalJsonSha256(policyValue);
+  const familyCanaryValue = familyCanaries(input, policyValue);
   await fs.writeFile(inputPath, JSON.stringify(input));
   await fs.writeFile(policyPath, JSON.stringify(policyValue));
   await fs.writeFile(queuePath, JSON.stringify(queueValue));
-  return { root, inputPath, policyPath, queuePath, outputPath, input, policyValue, queueValue };
+  return {
+    root,
+    inputPath,
+    policyPath,
+    queuePath,
+    outputPath,
+    input,
+    policyValue,
+    queueValue,
+    familyCanaries: familyCanaryValue,
+  };
 }
 
 function acceptedOutcome(targetId = 'target-a') {
@@ -199,7 +298,15 @@ function dependencies(fixtureState, overrides = {}) {
       runnerVersion: '1', nodeVersion: process.version,
       mineruVersion: fixtureState.policyValue.parser.version,
       modelRevision: fixtureState.policyValue.parser.modelRevision,
+      claimParserImplementationSha256: PARSER_SHA,
+      evidenceProcessorEpochs: {},
     }),
+    readFamilyCanaries: async (path) => {
+      if (path.startsWith(join(fixtureState.root, 'runs/historical-evidence-recovery'))) {
+        return JSON.parse(await fs.readFile(path, 'utf8'));
+      }
+      return structuredClone(fixtureState.familyCanaries);
+    },
     graphRunner: async (pending, graphDependencies) => {
       const outcome = acceptedOutcome(pending.targets[0].targetId);
       await graphDependencies.onTransition({
@@ -268,6 +375,7 @@ test('resume without repeated filters uses the immutable run batch and run-local
     output: '/evidence-root/runs/historical-evidence-recovery/run-1/results.json',
     policy: '/evidence-root/runs/historical-evidence-recovery/run-1/policy.json',
     queue: '/evidence-root/runs/historical-evidence-recovery/run-1/queue.json',
+    familyCanaries: '/evidence-root/runs/historical-evidence-recovery/run-1/family-canaries.json',
   });
 });
 
@@ -384,7 +492,7 @@ test('fresh run can select one resolver-only target by exact target ID', async (
   assert.equal(result.summary.accepted, 1);
 });
 
-test('fresh run persists immutable queue and policy snapshots beside run state', async (t) => {
+test('fresh run persists immutable queue, policy and family canary snapshots beside run state', async (t) => {
   const f = await fixture();
   t.after(() => fs.rm(f.root, { recursive: true, force: true }));
   await runHistoricalEvidenceRecovery({
@@ -396,6 +504,31 @@ test('fresh run persists immutable queue and policy snapshots beside run state',
   const runDirectory = join(f.root, 'runs/historical-evidence-recovery/run-snapshots');
   assert.deepEqual(JSON.parse(await fs.readFile(join(runDirectory, 'queue.json'), 'utf8')), f.queueValue);
   assert.deepEqual(JSON.parse(await fs.readFile(join(runDirectory, 'policy.json'), 'utf8')), f.policyValue);
+  assert.deepEqual(
+    JSON.parse(await fs.readFile(join(runDirectory, 'family-canaries.json'), 'utf8')),
+    f.familyCanaries,
+  );
+});
+
+test('fresh run rejects a family-blocked target before run state or graph execution', async (t) => {
+  const f = await fixture();
+  t.after(() => fs.rm(f.root, { recursive: true, force: true }));
+  let graphInvoked = false;
+  f.familyCanaries = blockCanaryTarget(f.familyCanaries, 'target-a');
+
+  await assert.rejects(() => runHistoricalEvidenceRecovery({
+    input: f.inputPath, output: f.outputPath, policy: f.policyPath, queue: null,
+    storageRoot: f.root, runId: 'run-canary-blocked', resume: false, dryRun: false,
+    jobIds: [], routes: [], limit: null, networkConcurrency: 2, mineruConcurrency: 1,
+  }, dependencies(f, {
+    graphRunner: async () => { graphInvoked = true; },
+  })), /blocked by family canary/i);
+
+  assert.equal(graphInvoked, false);
+  await assert.rejects(() => fs.access(f.outputPath), /ENOENT/);
+  await assert.rejects(() => fs.access(join(
+    f.root, 'runs/historical-evidence-recovery/run-canary-blocked',
+  )), /ENOENT/);
 });
 
 test('dry-run validates environment and graph without network, run state, or tracked output', async (t) => {
@@ -471,6 +604,8 @@ test('interrupted run resumes only pending work and matches uninterrupted semant
   assert.equal(interruptedState.targets['target-b'].state, 'queued');
   assert.deepEqual(firstAttempted, ['target-a']);
 
+  const originalFamilyCanaries = f.familyCanaries;
+  f.familyCanaries = blockCanaryTarget(f.familyCanaries, 'target-b');
   const resumedAttempted = [];
   const resumeDeps = dependencies(f, {
     processIdentity: { pid: 222, startIdentity: 'process-two' },
@@ -495,6 +630,7 @@ test('interrupted run resumes only pending work and matches uninterrupted semant
     jobIds: [], routes: [], limit: null, networkConcurrency: 2, mineruConcurrency: 1,
   }, resumeDeps);
 
+  f.familyCanaries = originalFamilyCanaries;
   const uninterruptedPath = join(f.root, 'uninterrupted.json');
   const uninterruptedDeps = dependencies(f, {
     processIdentity: { pid: 333, startIdentity: 'process-three' },
@@ -519,4 +655,11 @@ test('interrupted run resumes only pending work and matches uninterrupted semant
 
   assert.deepEqual(resumedAttempted, ['target-b']);
   assert.equal(resumed.semanticOutcomeSha256, uninterrupted.semanticOutcomeSha256);
+  const persistedCanaries = JSON.parse(await fs.readFile(join(
+    f.root, 'runs/historical-evidence-recovery/run-resume/family-canaries.json',
+  ), 'utf8'));
+  assert.equal(
+    persistedCanaries.targetDecisions.find((decision) => decision.targetId === 'target-b').runnerAllowed,
+    true,
+  );
 });

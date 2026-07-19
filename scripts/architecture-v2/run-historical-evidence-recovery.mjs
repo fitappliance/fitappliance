@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { execFile as execFileCallback } from 'node:child_process';
-import { createHash } from 'node:crypto';
 import { hostname } from 'node:os';
 import * as defaultFs from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
@@ -11,7 +10,12 @@ import { promisify } from 'node:util';
 import { acquireEvidenceArtifact, attestEvidenceArtifactForCase } from '../../src/domain/evidence-artifact-pipeline.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { collectEvidenceCandidates } from '../../src/domain/evidence-candidate-inventory.mjs';
-import { buildEvidenceProcessorEpochs } from '../../src/domain/evidence-processor-epoch.mjs';
+import {
+  buildEvidenceProcessorEpochs,
+  CLAIM_PARSER_IMPLEMENTATION_PATHS,
+  claimParserImplementationIdentity as sharedClaimParserImplementationIdentity,
+} from '../../src/domain/evidence-processor-epoch.mjs';
+import { validateHistoricalEvidenceFamilyCanarySelection } from '../../src/domain/historical-evidence-family-canary.mjs';
 import { reconcileEvidenceClaims } from '../../src/domain/evidence-claim-reconciliation.mjs';
 import { discoverRankedEvidenceCandidates } from '../../src/domain/evidence-source-discovery.mjs';
 import {
@@ -39,24 +43,6 @@ import { buildArchitectureV2ResolverAdapters } from '../pdf-pipeline/architectur
 
 const execFile = promisify(execFileCallback);
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-const CLAIM_PARSER_IMPLEMENTATION_PATHS = Object.freeze([
-  'src/domain/beko-product-page-dimensions.mjs',
-  'src/domain/beko-product-page-identity.mjs',
-  'src/domain/category-geometry.mjs',
-  'src/domain/dimension-evidence-claim.mjs',
-  'src/domain/evidence-artifact-pipeline.mjs',
-  'src/domain/evidence-artifact-verifier.mjs',
-  'src/domain/evidence-claim-reconciliation.mjs',
-  'src/domain/evidence-claim-semantics.mjs',
-  'src/domain/evidence-geometry-projector.mjs',
-  'src/domain/evidence-source-verifier.mjs',
-  'src/domain/mineru-document.mjs',
-  'src/domain/official-market-api-discovery-evidence.mjs',
-  'src/domain/official-model-variant-policy.mjs',
-  'src/domain/official-support-api-discovery-evidence.mjs',
-  'src/domain/smeg-pdf-dimensions.mjs',
-]);
-
 function requiredText(value, label) {
   const normalized = String(value ?? '').trim();
   if (!normalized) throw new TypeError(`${label} required`);
@@ -180,6 +166,9 @@ export function resolveHistoricalEvidenceRecoveryIoPaths(options, settings = {})
     queue: options.resume
       ? resolve(runDirectory, 'queue.json')
       : resolveArchitectureV2Path(repoRootPath, 'historicalExecutableEvidenceRecoveryQueue'),
+    familyCanaries: options.resume
+      ? resolve(runDirectory, 'family-canaries.json')
+      : resolveArchitectureV2Path(repoRootPath, 'historicalEvidenceFamilyCanaries'),
   };
 }
 
@@ -291,19 +280,7 @@ export function manufacturerSourcePolicyIdentity(document) {
 }
 
 export function claimParserImplementationIdentity(files) {
-  if (!(files instanceof Map) || files.size === 0) {
-    throw new TypeError('claim parser implementation files required');
-  }
-  const manifest = [...files.entries()]
-    .map(([path, bytes]) => ({
-      path: requiredText(path, 'claim parser implementation path'),
-      sha256: createHash('sha256').update(Buffer.from(bytes)).digest('hex'),
-    }))
-    .sort((left, right) => left.path.localeCompare(right.path));
-  if (new Set(manifest.map(({ path }) => path)).size !== manifest.length) {
-    throw new TypeError('claim parser implementation paths must be unique');
-  }
-  return canonicalJsonSha256(manifest);
+  return sharedClaimParserImplementationIdentity(files);
 }
 
 async function defaultVerifyTools(policy) {
@@ -550,11 +527,24 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
     if (canonicalJsonSha256(queueSnapshot) !== rawBatch.queue.sha256) throw new Error('recovery queue hash drift');
   }
   const batch = selectedBatch(rawBatch, options);
+  const runCanaryPath = options.resume
+    ? resolve(options.storageRoot, 'runs/historical-evidence-recovery', options.runId, 'family-canaries.json')
+    : resolve(options.familyCanaries
+      ?? resolveArchitectureV2Path(repoRoot, 'historicalEvidenceFamilyCanaries'));
+  const readFamilyCanaries = dependencies.readFamilyCanaries
+    ?? (async (path) => JSON.parse(await fs.readFile(path, 'utf8')));
+  const familyCanaries = await readFamilyCanaries(runCanaryPath);
   const verifyStorage = dependencies.verifyStorageRoot
     ?? ((root) => verifyEvidenceStorageRoot(root, { fs, getVolumeUuid: mountedVolumeUuid }));
   const storageIdentity = await verifyStorage(options.storageRoot);
   const verifyTools = dependencies.verifyTools ?? defaultVerifyTools;
   const toolchain = await verifyTools(policy);
+  validateHistoricalEvidenceFamilyCanarySelection({
+    canaries: familyCanaries,
+    batch,
+    parserContractSha256: toolchain.claimParserImplementationSha256,
+    processorEpochs: toolchain.evidenceProcessorEpochs,
+  });
   const runId = options.runId ?? `${options.dryRun ? 'dry' : 'run'}-${batch.batchId}-${now().replace(/[^0-9]/g, '').slice(0, 14)}`;
   if (!options.resume) {
     const scanRunHistory = dependencies.scanRunHistory ?? scanHistoricalEvidenceRunHistory;
@@ -611,6 +601,7 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
       const runDirectory = resolve(storageIdentity.root, 'runs/historical-evidence-recovery', runId);
       if (queueSnapshot) await durableOutputWrite(fs, resolve(runDirectory, 'queue.json'), queueSnapshot);
       await durableOutputWrite(fs, resolve(runDirectory, 'policy.json'), policy);
+      await durableOutputWrite(fs, resolve(runDirectory, 'family-canaries.json'), familyCanaries);
     }
     const schedule = dependencies.setInterval ?? setInterval;
     const cancel = dependencies.clearInterval ?? clearInterval;
@@ -680,7 +671,9 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
 async function main(argv) {
   const parsed = parseHistoricalEvidenceRecoveryRunArgs(argv);
   const storageRoot = process.env.FITAPPLIANCE_STORAGE_ROOT;
-  const { input, output, policy, queue } = resolveHistoricalEvidenceRecoveryIoPaths(parsed, { storageRoot });
+  const {
+    input, output, policy, queue, familyCanaries,
+  } = resolveHistoricalEvidenceRecoveryIoPaths(parsed, { storageRoot });
   const controller = new AbortController();
   const interrupt = () => controller.abort();
   process.once('SIGINT', interrupt);
@@ -692,6 +685,7 @@ async function main(argv) {
       output,
       policy,
       queue,
+      familyCanaries,
       storageRoot,
     }, { signal: controller.signal });
     process.stdout.write(`${JSON.stringify(result.dryRun ? result : result.summary, null, 2)}\n`);

@@ -11,7 +11,7 @@
   [`2026-07-13-historical-evidence-coverage-recovery.md`](2026-07-13-historical-evidence-coverage-recovery.md)
 - **Canonical runbook:**
   [`historical-evidence-recovery-runbook.md`](../../architecture-v2/historical-evidence-recovery-runbook.md)
-- **Active task:** Task 5 - verification complete; commit pending
+- **Active task:** None - Task 6 verified; Task 7 not started
 
 **Goal:** Move the 8,089-model historical evidence programme from a safe but
 low-throughput recovery loop to a measurable, family-aware, bounded and
@@ -85,7 +85,7 @@ under that task, repair the plan first, and only then resume implementation.
 | 3 | 6,321 models lack document links or materialised official candidates | COMPLETE | 12 manifest tests; 55 focused tests; Architecture V2 899/899; two immutable ASKO canaries; lint/build/refresh/diff passed |
 | 4 | Executable graph has resolver-only targets and zero fetch jobs | COMPLETE | 68 focused tests; Architecture V2 905/905; lint/build/diff passed; 6 fetch jobs and 6 candidate edges; 4,982 bounded discovery targets; zero resolver-only acquisition targets |
 | 5 | PDF/MinerU/document-family/model relationships are not canonical | COMPLETE | 55 focused tests; Architecture V2 920/920; lint/build/diff passed; five-artifact external replay idempotent |
-| 6 | Per-model runs repeat family-level source failures | PENDING | - |
+| 6 | Per-model runs repeat family-level source failures | COMPLETE | 8 domain tests; 27 gate/runner/epoch tests; Architecture V2 929/929; lint/offline build/diff passed; schema-v2 artifact stable |
 | 7 | Generated batches are operationally too broad | PENDING | - |
 | 8 | Parser repairs are not prioritised by reusable family impact | PENDING | - |
 | 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | PENDING | - |
@@ -469,26 +469,71 @@ edge without a current receipt or an immutable MinerU page/fragment locator.
 - Create: `scripts/architecture-v2/build-historical-evidence-family-canaries.mjs`
 - Create: `tests/architecture-v2/historical-evidence-family-canary.test.mjs`
 - Create: `data/architecture-v2/reviews/automated/historical-evidence-family-canaries.json`
-- Modify: recovery runner selection and runbook
+- Modify: `src/domain/evidence-processor-epoch.mjs`
+- Modify: recovery runner selection, Architecture V2 paths, package scripts and
+  runbook
 
 **Interfaces:**
 - A family state is `UNTESTED`, `CANARY_READY`, `PASSED`, `FAILED_SOURCE`,
   `FAILED_IDENTITY`, `FAILED_PARSER`, or `REOPENED`.
 - Expansion requires one accepted representative and matching resolver/parser
   contracts; claims are still validated per target.
+- The gate covers both ordinary acquisition targets and bounded-discovery
+  targets. It does not move discovery work into the acquisition runner.
+- Family membership comes only from the canonical Task 5 graph. A target with
+  zero families or multiple families remains singleton research and cannot
+  authorise fan-out for any guessed family.
+- A family contract binds the document-family node, source URL/content
+  versions, materialised candidate or resolver contract, recovery policy and
+  current claim-parser implementation hash. A prior pass or failure becomes
+  `REOPENED` when any bound contract changes.
+- Initial `PASSED` requires a proven representative whose immutable graph
+  source overlaps the current materialised candidate. A historical proof under
+  a different source template does not open fan-out.
+- The fresh recovery runner must validate the selected targets against the
+  tracked canary artifact and persist the exact canary snapshot for resume.
+  Resume continues that snapshot rather than reading a newer tracked gate.
 
-- [ ] Test representative selection, family failure stop, parser-epoch reopen,
+- [x] Test representative selection, family failure stop, parser-epoch reopen,
   source-template change and no cross-series leakage.
-- [ ] Generate one representative per high-impact family.
-- [ ] Block fan-out when the family canary fails and record the shared reason.
-- [ ] Prove with a formerly low-yield Westinghouse or Electrolux family.
-- [ ] Update this task and commit.
+- [x] Generate one representative per high-impact family.
+- [x] Block fan-out when the family canary fails and record the shared reason.
+- [x] Prove with a formerly low-yield Westinghouse or Electrolux family.
+- [x] Update this task and commit.
+
+**Completed evidence (2026-07-19):** The schema-v2 gate projects all 4,988
+actionable targets across 510 canonical Task 5 families: 5 `PASSED`, 87
+`CANARY_READY`, 418 `UNTESTED`, 4,804 unscoped singletons and 51 multi-family
+singletons. Only 7 targets are fan-out eligible; 4,949 are runner-eligible
+because singleton work remains isolated and each unpassed family exposes at
+most its representative. Electrolux `EQE6870SA` and Westinghouse `WHE5204BC`
+prove the low-yield path with exact current candidate URLs present in their
+immutable graph source sets; the unrelated Westinghouse `WHE6874SA` remains an
+unscoped singleton. Fresh runs validate queue, policy, parser, processor epoch
+and target/reference bindings before state creation, persist the exact gate,
+and resume only from that snapshot. Tampered state/time boundaries, old-contract
+events, stale parser failures and cross-family leakage fail closed. Two
+consecutive real builds produced byte-identical artifacts. Focused domain tests
+passed 8/8, the combined gate/runner/processor set passed 27/27, the full
+Architecture V2 suite passed 929/929, and `npm run lint`, external-drive-free
+`npm run build:architecture-v2`, actual six-target batch validation and
+`git diff --check` passed.
 
 **Acceptance:** One known-bad family endpoint is attempted once per relevant
 contract epoch, not once per model.
 
 **Stop condition:** Family membership is inferred only from similar model names
 or a marketing series without document proof.
+
+**Plan correction (2026-07-19):** The original task described a family state
+but did not define a contract-bound state transition or the 4,982-target
+discovery lane. That would either reuse stale success/failure forever or leave
+the dominant lane ungated. The corrected task uses a deterministic prior-state
+projection: only attempts made after the prior gate snapshot can change its
+state, parser-bound failures must match the current processor epoch, and source,
+resolver, policy or parser drift reopens the family. Ambiguous and unscoped
+targets stay explicit singleton work instead of being assigned by model-name
+similarity.
 
 ---
 

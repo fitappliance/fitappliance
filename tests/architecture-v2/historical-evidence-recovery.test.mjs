@@ -232,7 +232,7 @@ test('normal Architecture V2 build does not generate the next recovery epoch que
   assert.doesNotMatch(packageJson.scripts['build:architecture-v2'], /historical-evidence-recovery-queue/);
   assert.match(
     packageJson.scripts['build:architecture-v2'],
-    /build:historical-document-family-graph && npm run build:historical-evidence-program-status/,
+    /build:historical-document-family-graph && npm run build:historical-evidence-family-canaries && npm run build:historical-evidence-program-status/,
   );
 });
 
@@ -253,6 +253,7 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
       + ' && npm run build:historical-model-pdf-acquisition-queue'
       + ' && npm run build:historical-official-candidate-manifest'
       + ' && npm run build:historical-executable-recovery-queue'
+      + ' && npm run build:historical-evidence-family-canaries'
       + ' && npm run build:historical-evidence-target-state'
       + ' && npm run build:historical-evidence-recovery-batch'
       + ' && npm run audit:fit-publication'

@@ -86,8 +86,9 @@ mineru --version
 ```
 
 The runner also verifies the marker hash, mounted volume UUID, pinned MinerU
-version, model revision, queue SHA, policy SHA and batch SHA. Do not bypass a
-preflight failure by editing state or marker files.
+version, model revision, queue SHA, policy SHA, batch SHA and family-canary
+parser contract. Do not bypass a preflight failure by editing state, gate or
+marker files.
 
 Run a network-free preflight against one already materialised acquisition job:
 
@@ -213,6 +214,34 @@ links to official HTML or JSON evidence remain in
 `nonIndexedClassificationLinks`; do not fabricate PDF graph nodes from their
 content hashes.
 
+### 2.4 Build and inspect the family canary gate
+
+Build the gate after both the canonical document graph and executable queue are
+current. This command is network-free and external-drive-independent:
+
+```bash
+npm run build:historical-evidence-family-canaries
+jq '{
+  states: .summary.byFamilyState,
+  unscopedSingletons: .summary.unscopedSingletonTargets,
+  multiFamilySingletons: .summary.multiFamilySingletonTargets,
+  runnerAllowed: .summary.runnerAllowedTargets,
+  fanoutEligible: .summary.fanoutEligibleTargets
+}' data/architecture-v2/reviews/automated/historical-evidence-family-canaries.json
+```
+
+`PASSED` means one exact-model representative overlaps a current materialised
+source under the same family, resolver, policy and parser contract. Only that
+state authorises sibling fan-out. `CANARY_READY` and `REOPENED` authorise only
+the recorded representative. A failed family blocks all of its members until a
+bound contract changes. Targets with no canonical family or multiple families
+remain explicit singleton work; they never authorise either family.
+
+Fresh runs read the tracked gate and persist the exact value as
+`family-canaries.json` in the run directory. Resume reads only that run-local
+snapshot. A legacy run without the snapshot fails closed; do not copy the
+current tracked gate into an old run directory.
+
 ## 3. Build and inspect the execution graph
 
 Regenerate the next-epoch queue only after the previous release is committed:
@@ -222,6 +251,7 @@ npm run build:historical-document-family-graph
 npm run build:historical-model-pdf-acquisition-queue
 npm run build:historical-official-candidate-manifest
 npm run build:historical-executable-recovery-queue
+npm run build:historical-evidence-family-canaries
 npm run build:historical-evidence-target-state
 npm run build:historical-evidence-recovery-batch
 ```
@@ -244,6 +274,9 @@ jq '{
 Stop if `acquisitionTargets` is non-zero while `fetchJobs` or `candidateEdges`
 is zero, if `resolverOnlyTargets` is non-zero, or if the three target partitions
 do not sum to `acquisitionRecords`.
+
+Stop before runner invocation if the selected target has `runnerAllowed: false`
+in the family-canary artifact. Do not alter the batch to substitute a sibling.
 
 Inspect route counts before selecting work:
 
@@ -438,6 +471,7 @@ npm run build:historical-model-evidence-classification
 npm run build:historical-evidence-recovery-queue
 npm run build:historical-model-pdf-acquisition-queue
 npm run build:historical-executable-recovery-queue
+npm run build:historical-evidence-family-canaries
 npm run build:historical-evidence-recovery-batch
 
 # 5. Run repository gates. This must replay the tracked reference without disk access.
@@ -458,6 +492,7 @@ Review all changed tracked artifacts together, including:
 
 - cumulative acceptance bundle;
 - append-only attempt ledger, source-level acceptances and failure resolutions;
+- family-canary gate and its queue, policy, parser and processor bindings;
 - acceptance receipt replay audit;
 - public catalogue projection and runtime category projections;
 - historical reference, four replacement-reference shards and metadata;
