@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-19T18:38:55.827Z",
-  "documentGraphSha256": "e4f1ed29bec250adcc3fd91d5865fea0a1e06d5eaeb5d96247485a855bcc4cd4",
-  "executableQueueSha256": "7fb85fef2b85afb8a976507383c91ef5970421a5998a3d4d8f718f28ac08bfbe",
+  "generatedAt": "2026-07-19T19:26:14.787Z",
+  "documentGraphSha256": "be2e0689ebc7547a1bd05f81fa706cb3b25ad13b9d60c5b15162dc2ea13d67d0",
+  "executableQueueSha256": "16a6a89087b23056d926055bfb6e28f2ab9dc402f871ba1e4c7a3da3de30a6ac",
   "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
   "parserContractSha256": "d13880d3a30b2dc500963b0439194c3e367acacd459526e47f1f348c6380b2ff",
   "processorEpochs": {
@@ -22985,6 +22985,50 @@
       "stateReason": "NO_SINGLE_FAMILY_ACTIONABLE_TARGET"
     },
     {
+      "familyId": "document_family_e88b72e286e12c6f83981f4d",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
+      "targetIds": [],
+      "representativeTargetId": null,
+      "provenRepresentativeTargetIds": [],
+      "contract": {
+        "schemaVersion": 1,
+        "family": {
+          "familyId": "document_family_e88b72e286e12c6f83981f4d",
+          "category": "dishwasher",
+          "brand": "Esatto",
+          "groupType": "parser_family",
+          "documentIds": [
+            "pdf_document_c4aa0a7021321c9e136f281a"
+          ],
+          "pdfSha256s": [
+            "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93"
+          ],
+          "grammarProfileIds": [
+            "pdf_grammar_4f34b527b64d6ba6"
+          ]
+        },
+        "graphSourceUrls": [
+          "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+          "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf"
+        ],
+        "candidateSourceUrls": [],
+        "resolverContracts": [],
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "parserContractSha256": "d13880d3a30b2dc500963b0439194c3e367acacd459526e47f1f348c6380b2ff",
+        "processorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+        },
+        "sha256": "62e83521466efc0cdea8edd0910b872d4548ee286cd99ee8dd44a96f7c5c3584"
+      },
+      "state": "UNTESTED",
+      "stateReason": "NO_SINGLE_FAMILY_ACTIONABLE_TARGET"
+    },
+    {
       "familyId": "document_family_e8d8fdfc117dc31117904e6c",
       "category": "dryer",
       "brand": "Fisher & Paykel",
@@ -32589,16 +32633,6 @@
       "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
     },
     {
-      "targetId": "recovery_target_24ed948d4390531eefa18311",
-      "referenceId": "fa_ref_fd1cddcdc50d2622c30e7b3c",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "familyIds": [],
-      "assignment": "UNSCOPED_SINGLETON",
-      "runnerAllowed": true,
-      "fanoutEligible": false,
-      "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
-    },
-    {
       "targetId": "recovery_target_24f2022c553b293a27bb945f",
       "referenceId": "fa_ref_750d9d4c36f8f3620473433e",
       "executionLane": "BOUNDED_DISCOVERY",
@@ -35908,16 +35942,6 @@
     {
       "targetId": "recovery_target_344f857cd1d553c08a1236ea",
       "referenceId": "fa_ref_421899cf09a581bba8d37d7c",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "familyIds": [],
-      "assignment": "UNSCOPED_SINGLETON",
-      "runnerAllowed": true,
-      "fanoutEligible": false,
-      "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
-    },
-    {
-      "targetId": "recovery_target_3460eea918b1604f3adefc9c",
-      "referenceId": "fa_ref_70ebbc9218889efea62804de",
       "executionLane": "BOUNDED_DISCOVERY",
       "familyIds": [],
       "assignment": "UNSCOPED_SINGLETON",
@@ -51075,16 +51099,6 @@
       "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
     },
     {
-      "targetId": "recovery_target_80db96b796e61908327eb342",
-      "referenceId": "fa_ref_ba08c9a08baaa5e5b4e74e5d",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "familyIds": [],
-      "assignment": "UNSCOPED_SINGLETON",
-      "runnerAllowed": true,
-      "fanoutEligible": false,
-      "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
-    },
-    {
       "targetId": "recovery_target_80fcd3b28cdad43648a72710",
       "referenceId": "fa_ref_66fc17e77f473bdd628f23fc",
       "executionLane": "BOUNDED_DISCOVERY",
@@ -53095,16 +53109,6 @@
     {
       "targetId": "recovery_target_8be35e86d8a022f3849578be",
       "referenceId": "fa_ref_683144fafbb999dc89137b62",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "familyIds": [],
-      "assignment": "UNSCOPED_SINGLETON",
-      "runnerAllowed": true,
-      "fanoutEligible": false,
-      "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
-    },
-    {
-      "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
-      "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
       "executionLane": "BOUNDED_DISCOVERY",
       "familyIds": [],
       "assignment": "UNSCOPED_SINGLETON",
@@ -76100,10 +76104,10 @@
       "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
     }
   ],
-  "semanticCanarySha256": "d29168727b91dcc7c7402ab19dd2f6b6f22169fc6a5f35d6d6520a9a19695c6e",
+  "semanticCanarySha256": "e6fcf64994053548fd169d546c24c32ed6fee7cfa4c5d1d1ba7cec611bbd2779",
   "summary": {
-    "families": 510,
-    "targets": 4994,
+    "families": 511,
+    "targets": 4990,
     "byFamilyState": {
       "CANARY_READY": 88,
       "FAILED_IDENTITY": 0,
@@ -76111,11 +76115,11 @@
       "FAILED_SOURCE": 0,
       "PASSED": 0,
       "REOPENED": 5,
-      "UNTESTED": 417
+      "UNTESTED": 418
     },
-    "unscopedSingletonTargets": 4804,
+    "unscopedSingletonTargets": 4800,
     "multiFamilySingletonTargets": 51,
-    "runnerAllowedTargets": 4948,
+    "runnerAllowedTargets": 4944,
     "fanoutEligibleTargets": 0
   }
 }

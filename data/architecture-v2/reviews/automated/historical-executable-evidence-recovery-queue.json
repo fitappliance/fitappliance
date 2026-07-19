@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-19T18:38:55.827Z",
-  "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b",
-  "sourceOfficialCandidateManifestSha256": "36cf32721eeadc9c61ee7849c6bfec47689454d4ecb0cab8dc22193fd74500b6",
+  "generatedAt": "2026-07-19T19:26:14.787Z",
+  "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c",
+  "sourceOfficialCandidateManifestSha256": "1e59f57611d4456907ebe5373f78cfeeeca030da8540d7cdaa9599995036a6fd",
   "evidenceProcessorEpochs": {
     "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
     "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
@@ -17,23 +17,23 @@
   "summary": {
     "acquisitionRecords": 7688,
     "fetchJobs": 6,
-    "targets": 4994,
+    "targets": 4990,
     "acquisitionTargets": 6,
-    "discoveryTargets": 4988,
-    "deferredTargets": 2694,
+    "discoveryTargets": 4984,
+    "deferredTargets": 2698,
     "resolverOnlyTargets": 0,
     "candidateEdges": 6,
-    "uniqueReferences": 4994,
-    "suppressedPriorTerminalEdges": 0,
+    "uniqueReferences": 4990,
+    "suppressedPriorTerminalEdges": 2,
     "suppressedPriorAcceptedSourceEdges": 0,
-    "suppressedPriorResolverOnlyTargets": 33,
+    "suppressedPriorResolverOnlyTargets": 34,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 1131,
-      "CURRENT_RETAIL": 970,
+      "CURRENT_RETAIL": 966,
       "REGISTRY_ONLY": 2893
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 780,
+      "P0_CURRENT_MISSING_DIMENSIONS": 776,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1044,
       "P2_CURRENT_CONFIRMATION": 179,
       "P3_HISTORICAL_CONFIRMATION": 2934,
@@ -41,15 +41,15 @@
     },
     "byExecutionLane": {
       "ACQUISITION": 6,
-      "BOUNDED_DISCOVERY": 4988
+      "BOUNDED_DISCOVERY": 4984
     },
     "deferredByReason": {
-      "ACTIVE_RESOLVER_SUPPRESSION": 33,
-      "NO_CANDIDATE_COMPLETE": 2,
+      "ACTIVE_RESOLVER_SUPPRESSION": 34,
+      "NO_CANDIDATE_COMPLETE": 5,
       "RESEARCH_REQUIRED": 2659
     },
     "excluded": {
-      "NO_CANDIDATE_COMPLETE": 2,
+      "NO_CANDIDATE_COMPLETE": 5,
       "RESEARCH_REQUIRED": 2659
     }
   },
@@ -620,234 +620,6 @@
     }
   ],
   "discoveryTargets": [
-    {
-      "targetId": "recovery_target_24ed948d4390531eefa18311",
-      "referenceId": "fa_ref_fd1cddcdc50d2622c30e7b3c",
-      "legacyRuntimeId": "ao-57863",
-      "canonicalProductId": "fa_prod_8521b276431c5f76e2ccd87c",
-      "category": "dishwasher",
-      "brand": "Esatto",
-      "model": "DW42CS",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_1913f75a80e61c656b60c659",
-        "legacy:data/pdf-evidence-raw/DW42CS.json",
-        "source:doc_1913f75a80e61c656b60c659"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_1913f75a80e61c656b60c659",
-          "dimensionsMm": {
-            "width": 448,
-            "height": 845,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "executionLane": "BOUNDED_DISCOVERY",
-      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "resolverContract": [
-        {
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "resolverId": "esatto-official-discovery",
-          "version": "1",
-          "scope": "esatto_legacy_discovery_only",
-          "required": true
-        }
-      ],
-      "incompleteResolverIds": [
-        "esatto-official-discovery"
-      ]
-    },
-    {
-      "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
-      "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
-      "legacyRuntimeId": "ao-74176",
-      "canonicalProductId": "fa_prod_639c46180466ebf757389c62",
-      "category": "dishwasher",
-      "brand": "Esatto",
-      "model": "EDW456S",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_64ae7cd5fc4c8883e8086a90",
-        "legacy:data/pdf-evidence-raw/EDW456S.json",
-        "source:doc_64ae7cd5fc4c8883e8086a90"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_64ae7cd5fc4c8883e8086a90",
-          "dimensionsMm": {
-            "width": 448,
-            "height": 845,
-            "depth": 600
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "executionLane": "BOUNDED_DISCOVERY",
-      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "resolverContract": [
-        {
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "resolverId": "esatto-official-discovery",
-          "version": "1",
-          "scope": "esatto_legacy_discovery_only",
-          "required": true
-        }
-      ],
-      "incompleteResolverIds": [
-        "esatto-official-discovery"
-      ]
-    },
-    {
-      "targetId": "recovery_target_3460eea918b1604f3adefc9c",
-      "referenceId": "fa_ref_70ebbc9218889efea62804de",
-      "legacyRuntimeId": "ao-57644",
-      "canonicalProductId": "fa_prod_4e94fc19f0613ac1da2085cc",
-      "category": "dishwasher",
-      "brand": "Esatto",
-      "model": "EDW6CS",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a8ad7ecfa7ab5f5844218bbe",
-        "legacy:data/pdf-evidence-raw/EDW6CS.json",
-        "source:doc_a8ad7ecfa7ab5f5844218bbe"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a8ad7ecfa7ab5f5844218bbe",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 580
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "executionLane": "BOUNDED_DISCOVERY",
-      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "resolverContract": [
-        {
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "resolverId": "esatto-official-discovery",
-          "version": "1",
-          "scope": "esatto_legacy_discovery_only",
-          "required": true
-        }
-      ],
-      "incompleteResolverIds": [
-        "esatto-official-discovery"
-      ]
-    },
-    {
-      "targetId": "recovery_target_80db96b796e61908327eb342",
-      "referenceId": "fa_ref_ba08c9a08baaa5e5b4e74e5d",
-      "legacyRuntimeId": "ao-57645",
-      "canonicalProductId": "fa_prod_fde3996b2e689d36d36c85c9",
-      "category": "dishwasher",
-      "brand": "Esatto",
-      "model": "EDW6SL",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d7b7b30dd5203c3473b62082",
-        "legacy:data/pdf-evidence-raw/EDW6SL.json",
-        "source:doc_d7b7b30dd5203c3473b62082"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d7b7b30dd5203c3473b62082",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 580
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "executionLane": "BOUNDED_DISCOVERY",
-      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "resolverContract": [
-        {
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "resolverId": "esatto-official-discovery",
-          "version": "1",
-          "scope": "esatto_legacy_discovery_only",
-          "required": true
-        }
-      ],
-      "incompleteResolverIds": [
-        "esatto-official-discovery"
-      ]
-    },
     {
       "targetId": "recovery_target_38a3f3112e0fee5d688f8e2c",
       "referenceId": "fa_ref_1521ace8bfc9a54835d11c55",
@@ -265369,6 +265141,243 @@
       "incompleteResolverIds": [
         "beko-official-discovery"
       ]
+    },
+    {
+      "targetId": "recovery_target_24ed948d4390531eefa18311",
+      "referenceId": "fa_ref_fd1cddcdc50d2622c30e7b3c",
+      "legacyRuntimeId": "ao-57863",
+      "canonicalProductId": "fa_prod_8521b276431c5f76e2ccd87c",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "DW42CS",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_1913f75a80e61c656b60c659",
+        "legacy:data/pdf-evidence-raw/DW42CS.json",
+        "source:doc_1913f75a80e61c656b60c659"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_1913f75a80e61c656b60c659",
+          "dimensionsMm": {
+            "width": 448,
+            "height": 845,
+            "depth": 600
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "executionLane": "DEFERRED",
+      "candidateManifestState": "NO_CANDIDATE_COMPLETE",
+      "dispositionReason": "NO_CANDIDATE_COMPLETE",
+      "candidateIds": [],
+      "resolverContract": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "resolverId": "esatto-official-discovery",
+          "version": "1",
+          "scope": "esatto_legacy_discovery_only",
+          "required": true
+        }
+      ],
+      "incompleteResolverIds": []
+    },
+    {
+      "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
+      "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
+      "legacyRuntimeId": "ao-74176",
+      "canonicalProductId": "fa_prod_639c46180466ebf757389c62",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "EDW456S",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_64ae7cd5fc4c8883e8086a90",
+        "legacy:data/pdf-evidence-raw/EDW456S.json",
+        "source:doc_64ae7cd5fc4c8883e8086a90"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_64ae7cd5fc4c8883e8086a90",
+          "dimensionsMm": {
+            "width": 448,
+            "height": 845,
+            "depth": 600
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "priorAttemptSuppressions": [
+        {
+          "attemptId": "historical_attempt_18560132f2f47e665fbb0a42",
+          "sourceUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+          "contentSha256": "739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277",
+          "status": "claims_incomplete",
+          "failureCode": "claim_semantics",
+          "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9"
+        },
+        {
+          "attemptId": "historical_attempt_fc794126ceac69cbb50e6c68",
+          "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+          "contentSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+          "status": "mineru_failure",
+          "failureCode": "mineru",
+          "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9"
+        }
+      ],
+      "executionLane": "DEFERRED",
+      "candidateManifestState": "CANDIDATES_READY",
+      "dispositionReason": "ACTIVE_RESOLVER_SUPPRESSION",
+      "candidateIds": [
+        "official_candidate_57f42962a5beab0fd25e80b1",
+        "official_candidate_bc80231620accd1aa099f765"
+      ],
+      "resolverContract": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "resolverId": "esatto-official-discovery",
+          "version": "1",
+          "scope": "esatto_legacy_discovery_only",
+          "required": true
+        }
+      ],
+      "incompleteResolverIds": []
+    },
+    {
+      "targetId": "recovery_target_3460eea918b1604f3adefc9c",
+      "referenceId": "fa_ref_70ebbc9218889efea62804de",
+      "legacyRuntimeId": "ao-57644",
+      "canonicalProductId": "fa_prod_4e94fc19f0613ac1da2085cc",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "EDW6CS",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_a8ad7ecfa7ab5f5844218bbe",
+        "legacy:data/pdf-evidence-raw/EDW6CS.json",
+        "source:doc_a8ad7ecfa7ab5f5844218bbe"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_a8ad7ecfa7ab5f5844218bbe",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 580
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "executionLane": "DEFERRED",
+      "candidateManifestState": "NO_CANDIDATE_COMPLETE",
+      "dispositionReason": "NO_CANDIDATE_COMPLETE",
+      "candidateIds": [],
+      "resolverContract": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "resolverId": "esatto-official-discovery",
+          "version": "1",
+          "scope": "esatto_legacy_discovery_only",
+          "required": true
+        }
+      ],
+      "incompleteResolverIds": []
+    },
+    {
+      "targetId": "recovery_target_80db96b796e61908327eb342",
+      "referenceId": "fa_ref_ba08c9a08baaa5e5b4e74e5d",
+      "legacyRuntimeId": "ao-57645",
+      "canonicalProductId": "fa_prod_fde3996b2e689d36d36c85c9",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "EDW6SL",
+      "lifecycleState": "CURRENT_RETAIL",
+      "currentLookupAction": "MEASURE_REQUIRED",
+      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+      "requestedFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm"
+      ],
+      "sourceDocumentIds": [
+        "doc_d7b7b30dd5203c3473b62082",
+        "legacy:data/pdf-evidence-raw/EDW6SL.json",
+        "source:doc_d7b7b30dd5203c3473b62082"
+      ],
+      "legacyHints": [
+        {
+          "sourceDocumentId": "doc_d7b7b30dd5203c3473b62082",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 580
+          }
+        }
+      ],
+      "registryDimensionHints": [],
+      "publicationEligible": false,
+      "repairExistingReceipt": false,
+      "executionLane": "DEFERRED",
+      "candidateManifestState": "NO_CANDIDATE_COMPLETE",
+      "dispositionReason": "NO_CANDIDATE_COMPLETE",
+      "candidateIds": [],
+      "resolverContract": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false
+        },
+        {
+          "resolverId": "esatto-official-discovery",
+          "version": "1",
+          "scope": "esatto_legacy_discovery_only",
+          "required": true
+        }
+      ],
+      "incompleteResolverIds": []
     },
     {
       "targetId": "recovery_target_182fad898d1f99f9d6565274",

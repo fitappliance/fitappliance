@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T18:38:55.827Z",
-  "semanticManifestSha256": "36cf32721eeadc9c61ee7849c6bfec47689454d4ecb0cab8dc22193fd74500b6",
+  "generatedAt": "2026-07-19T19:26:14.787Z",
+  "semanticManifestSha256": "1e59f57611d4456907ebe5373f78cfeeeca030da8540d7cdaa9599995036a6fd",
   "policy": {
     "discoveryOnly": true,
     "candidatesAreNotEvidenceReceipts": true,
     "retailerAndRegistryHintsCannotBecomeOfficialCandidates": true,
     "completeNoSourceRequiresAllCurrentRequiredResolvers": true
   },
-  "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b",
+  "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c",
   "runBindings": [
     {
       "runId": "task3-asko-dishwasher-canary-20260719-a",
@@ -55,6 +55,86 @@
         "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
       },
       "targets": 1
+    },
+    {
+      "runId": "historical-scale-p0-esatto-dw42cs-20260719-a",
+      "startedAt": "2026-07-19T19:11:28.978Z",
+      "completedAt": "2026-07-19T19:11:29.870Z",
+      "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b",
+      "selection": {
+        "manifestId": "historical_batch_98b047d648ded5811d0a3d67",
+        "semanticManifestSha256": "98b047d648ded5811d0a3d67b875fbc0fb58b022d2715e30fb43df7a3f23747e",
+        "selectedReferenceIds": [
+          "fa_ref_fd1cddcdc50d2622c30e7b3c"
+        ]
+      },
+      "storageObject": {
+        "contentSha256": "03c3360278cc8b79009b9b23563176d7544e164a1ec659cafc7820b580666093",
+        "byteSize": 3552,
+        "objectPath": "evidence/discovery/sha256/03/c3/03c3360278cc8b79009b9b23563176d7544e164a1ec659cafc7820b580666093.json",
+        "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
+      },
+      "targets": 1
+    },
+    {
+      "runId": "historical-scale-p0-esatto-edw456s-20260719-b",
+      "startedAt": "2026-07-19T19:16:15.610Z",
+      "completedAt": "2026-07-19T19:16:16.066Z",
+      "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b",
+      "selection": {
+        "manifestId": "historical_batch_b366bec5b232f0367e63c83c",
+        "semanticManifestSha256": "b366bec5b232f0367e63c83cc0e10b28c57e7822111f19a16e593a5581cb3224",
+        "selectedReferenceIds": [
+          "fa_ref_6429cd36602c53e258e7e96e"
+        ]
+      },
+      "storageObject": {
+        "contentSha256": "095e8737336ab563b48b85afbbc8bf2ffdf43928fbc6b5602b704e9206c4dc8d",
+        "byteSize": 5502,
+        "objectPath": "evidence/discovery/sha256/09/5e/095e8737336ab563b48b85afbbc8bf2ffdf43928fbc6b5602b704e9206c4dc8d.json",
+        "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
+      },
+      "targets": 1
+    },
+    {
+      "runId": "historical-scale-p0-esatto-edw6cs-20260719-d",
+      "startedAt": "2026-07-19T19:22:51.595Z",
+      "completedAt": "2026-07-19T19:22:51.898Z",
+      "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c",
+      "selection": {
+        "manifestId": "historical_batch_157d299e01994cde979ebab1",
+        "semanticManifestSha256": "157d299e01994cde979ebab13f99c4daffeffaa0ccae65d82c994c2db8701f30",
+        "selectedReferenceIds": [
+          "fa_ref_70ebbc9218889efea62804de"
+        ]
+      },
+      "storageObject": {
+        "contentSha256": "7a36da4a466fbf7e4dcb9b9ca234e7bfd290fc552c3248d87ad4ca50f176ffbe",
+        "byteSize": 3576,
+        "objectPath": "evidence/discovery/sha256/7a/36/7a36da4a466fbf7e4dcb9b9ca234e7bfd290fc552c3248d87ad4ca50f176ffbe.json",
+        "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
+      },
+      "targets": 1
+    },
+    {
+      "runId": "historical-scale-p0-esatto-edw6sl-20260719-e",
+      "startedAt": "2026-07-19T19:25:48.718Z",
+      "completedAt": "2026-07-19T19:25:49.011Z",
+      "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c",
+      "selection": {
+        "manifestId": "historical_batch_adaf195c3484ec0951ce566c",
+        "semanticManifestSha256": "adaf195c3484ec0951ce566cfb0fa955f652ecf5a9419e5cbd4ee8ae790c4ae0",
+        "selectedReferenceIds": [
+          "fa_ref_ba08c9a08baaa5e5b4e74e5d"
+        ]
+      },
+      "storageObject": {
+        "contentSha256": "e88383541799d407b4685efdd6838d9c363e8f921694eb92d3ebd23c67d7f494",
+        "byteSize": 3576,
+        "objectPath": "evidence/discovery/sha256/e8/83/e88383541799d407b4685efdd6838d9c363e8f921694eb92d3ebd23c67d7f494.json",
+        "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
+      },
+      "targets": 1
     }
   ],
   "candidates": [
@@ -90,6 +170,53 @@
           "runId": null,
           "runContentSha256": null,
           "discoveryProvenance": null
+        }
+      ]
+    },
+    {
+      "candidateId": "official_candidate_57f42962a5beab0fd25e80b1",
+      "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+      "authorityBrand": "Esatto",
+      "expectedContentType": "application/pdf",
+      "categories": [
+        "dishwasher"
+      ],
+      "documentTypes": [
+        "user_manual"
+      ],
+      "sourceRoles": [
+        "manufacturer_document"
+      ],
+      "applicableReferenceIds": [
+        "fa_ref_6429cd36602c53e258e7e96e"
+      ],
+      "sourceRanks": [
+        {
+          "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
+          "sourceRank": 1
+        }
+      ],
+      "discoveries": [
+        {
+          "resolverId": "esatto-official-discovery",
+          "resolverVersion": "1",
+          "discoveryMethod": "esatto_legacy_finder",
+          "retrievedAt": "2026-07-19T19:16:16.066Z",
+          "runId": "historical-scale-p0-esatto-edw456s-20260719-b",
+          "runContentSha256": "095e8737336ab563b48b85afbbc8bf2ffdf43928fbc6b5602b704e9206c4dc8d",
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_page",
+            "market": "AU",
+            "discoveryUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+            "requestedModel": "EDW456S",
+            "matchedModel": "EDW456S",
+            "artifactUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+            "artifactLinkUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+            "discoveryContentSha256": "739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277",
+            "discoveryObjectPath": "evidence/web/sha256/73/9f/739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277.html",
+            "discoveryByteSize": 369831
+          }
         }
       ]
     },
@@ -264,6 +391,41 @@
           "retrievedAt": "2026-07-17T04:19:39.580Z",
           "runId": null,
           "runContentSha256": null,
+          "discoveryProvenance": null
+        }
+      ]
+    },
+    {
+      "candidateId": "official_candidate_bc80231620accd1aa099f765",
+      "sourceUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+      "authorityBrand": "Esatto",
+      "expectedContentType": "text/html",
+      "categories": [
+        "dishwasher"
+      ],
+      "documentTypes": [
+        "product_page"
+      ],
+      "sourceRoles": [
+        "manufacturer_product_page"
+      ],
+      "applicableReferenceIds": [
+        "fa_ref_6429cd36602c53e258e7e96e"
+      ],
+      "sourceRanks": [
+        {
+          "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
+          "sourceRank": 2
+        }
+      ],
+      "discoveries": [
+        {
+          "resolverId": "esatto-official-discovery",
+          "resolverVersion": "1",
+          "discoveryMethod": "esatto_legacy_finder",
+          "retrievedAt": "2026-07-19T19:16:16.066Z",
+          "runId": "historical-scale-p0-esatto-edw456s-20260719-b",
+          "runContentSha256": "095e8737336ab563b48b85afbbc8bf2ffdf43928fbc6b5602b704e9206c4dc8d",
           "discoveryProvenance": null
         }
       ]
@@ -1066,9 +1228,9 @@
       "priority": "P0_CURRENT_RETAIL",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
-      "state": "DISCOVERY_RETRYABLE",
-      "terminal": false,
-      "retryableDiscovery": true,
+      "state": "NO_CANDIDATE_COMPLETE",
+      "terminal": true,
+      "retryableDiscovery": false,
       "resolverContract": [
         {
           "resolverId": "architecture-v2-core-official-discovery",
@@ -1083,12 +1245,44 @@
           "required": true
         }
       ],
-      "resolverResults": [],
-      "incompleteResolverIds": [
-        "esatto-official-discovery"
+      "resolverResults": [
+        {
+          "schemaVersion": 1,
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidates": [
+            {
+              "sourceUrl": "https://www.appliancesonline.com.au/ak/d/7/7/7/d7772fb176f407f8d40a9c8fb6c0c8e2d0068fad_DW42CS_Esatto_Specifications_Sheet.pdf",
+              "resolverId": "architecture-v2-core-official-discovery",
+              "resolverVersion": "1",
+              "discoveryMethod": "reference_mirror_seed",
+              "documentType": "specification_sheet",
+              "sourceModelHint": "DW42CS",
+              "authorityMode": "reference",
+              "sourceRole": "retailer_reference",
+              "requiredAttempt": false,
+              "batchJobId": null
+            }
+          ],
+          "failures": []
+        },
+        {
+          "schemaVersion": 1,
+          "resolverId": "esatto-official-discovery",
+          "version": "1",
+          "scope": "esatto_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidates": [],
+          "failures": []
+        }
       ],
-      "lastDiscoveryRunId": null,
-      "lastDiscoveryAt": null,
+      "incompleteResolverIds": [],
+      "lastDiscoveryRunId": "historical-scale-p0-esatto-dw42cs-20260719-a",
+      "lastDiscoveryAt": "2026-07-19T19:11:29.870Z",
       "referenceHintSourceIds": [
         "historical_source_b421d74f54907cf5e2190a6c"
       ],
@@ -1104,9 +1298,9 @@
       "priority": "P0_CURRENT_RETAIL",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
-      "state": "DISCOVERY_RETRYABLE",
+      "state": "CANDIDATES_READY",
       "terminal": false,
-      "retryableDiscovery": true,
+      "retryableDiscovery": false,
       "resolverContract": [
         {
           "resolverId": "architecture-v2-core-official-discovery",
@@ -1121,16 +1315,119 @@
           "required": true
         }
       ],
-      "resolverResults": [],
-      "incompleteResolverIds": [
-        "esatto-official-discovery"
+      "resolverResults": [
+        {
+          "schemaVersion": 1,
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidates": [
+            {
+              "sourceUrl": "https://www.appliancesonline.com.au/ak/5/c/d/9/5cd9c9836dd00b4ba17385dfba48682e359d8aff_EDW456S_QSG_V1.1.pdf",
+              "resolverId": "architecture-v2-core-official-discovery",
+              "resolverVersion": "1",
+              "discoveryMethod": "reference_mirror_seed",
+              "documentType": "family_manual",
+              "sourceModelHint": "EDW456S",
+              "authorityMode": "reference",
+              "sourceRole": "retailer_reference",
+              "requiredAttempt": false,
+              "batchJobId": null
+            }
+          ],
+          "failures": []
+        },
+        {
+          "schemaVersion": 1,
+          "resolverId": "esatto-official-discovery",
+          "version": "1",
+          "scope": "esatto_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidates": [
+            {
+              "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+              "resolverId": "esatto-official-discovery",
+              "resolverVersion": "1",
+              "discoveryMethod": "esatto_legacy_finder",
+              "documentType": "user_manual",
+              "sourceModelHint": "EDW456S",
+              "authorityMode": "official",
+              "sourceRole": "manufacturer_document",
+              "requiredAttempt": true,
+              "batchJobId": null,
+              "discoveryProvenance": {
+                "schemaVersion": 1,
+                "method": "official_product_page",
+                "market": "AU",
+                "discoveryUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+                "requestedModel": "EDW456S",
+                "matchedModel": "EDW456S",
+                "artifactUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+                "artifactLinkUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+                "discoveryContentSha256": "739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277",
+                "discoveryObjectPath": "evidence/web/sha256/73/9f/739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277.html",
+                "discoveryByteSize": 369831
+              }
+            },
+            {
+              "sourceUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+              "resolverId": "esatto-official-discovery",
+              "resolverVersion": "1",
+              "discoveryMethod": "esatto_legacy_finder",
+              "documentType": "product_page",
+              "sourceModelHint": "EDW456S",
+              "authorityMode": "official",
+              "sourceRole": "manufacturer_product_page",
+              "requiredAttempt": false,
+              "batchJobId": null
+            }
+          ],
+          "failures": []
+        }
       ],
-      "lastDiscoveryRunId": null,
-      "lastDiscoveryAt": null,
+      "incompleteResolverIds": [],
+      "lastDiscoveryRunId": "historical-scale-p0-esatto-edw456s-20260719-b",
+      "lastDiscoveryAt": "2026-07-19T19:16:16.066Z",
       "referenceHintSourceIds": [
         "historical_source_1ee6a29159227baf28e2b39e"
       ],
-      "candidateEdges": []
+      "candidateEdges": [
+        {
+          "candidateId": "official_candidate_57f42962a5beab0fd25e80b1",
+          "exactModelUrlSignal": false,
+          "sourceModelHintExact": true,
+          "requiredAttempt": true,
+          "sourceModelHints": [
+            "EDW456S"
+          ],
+          "documentTypes": [
+            "user_manual"
+          ],
+          "discoveryStrategyIds": [
+            "esatto-official-discovery@1:esatto_legacy_finder"
+          ],
+          "sourceRank": 1
+        },
+        {
+          "candidateId": "official_candidate_bc80231620accd1aa099f765",
+          "exactModelUrlSignal": false,
+          "sourceModelHintExact": true,
+          "requiredAttempt": false,
+          "sourceModelHints": [
+            "EDW456S"
+          ],
+          "documentTypes": [
+            "product_page"
+          ],
+          "discoveryStrategyIds": [
+            "esatto-official-discovery@1:esatto_legacy_finder"
+          ],
+          "sourceRank": 2
+        }
+      ]
     },
     {
       "referenceId": "fa_ref_70ebbc9218889efea62804de",
@@ -1142,9 +1439,9 @@
       "priority": "P0_CURRENT_RETAIL",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
-      "state": "DISCOVERY_RETRYABLE",
-      "terminal": false,
-      "retryableDiscovery": true,
+      "state": "NO_CANDIDATE_COMPLETE",
+      "terminal": true,
+      "retryableDiscovery": false,
       "resolverContract": [
         {
           "resolverId": "architecture-v2-core-official-discovery",
@@ -1159,12 +1456,44 @@
           "required": true
         }
       ],
-      "resolverResults": [],
-      "incompleteResolverIds": [
-        "esatto-official-discovery"
+      "resolverResults": [
+        {
+          "schemaVersion": 1,
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidates": [
+            {
+              "sourceUrl": "https://www.appliancesonline.com.au/ak/3/7/7/7/377793df5638e1b29f24ced204f4dec422d07bdd_Esatto_EDW6CS_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+              "resolverId": "architecture-v2-core-official-discovery",
+              "resolverVersion": "1",
+              "discoveryMethod": "reference_mirror_seed",
+              "documentType": "specification_sheet",
+              "sourceModelHint": "EDW6CS",
+              "authorityMode": "reference",
+              "sourceRole": "retailer_reference",
+              "requiredAttempt": false,
+              "batchJobId": null
+            }
+          ],
+          "failures": []
+        },
+        {
+          "schemaVersion": 1,
+          "resolverId": "esatto-official-discovery",
+          "version": "1",
+          "scope": "esatto_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidates": [],
+          "failures": []
+        }
       ],
-      "lastDiscoveryRunId": null,
-      "lastDiscoveryAt": null,
+      "incompleteResolverIds": [],
+      "lastDiscoveryRunId": "historical-scale-p0-esatto-edw6cs-20260719-d",
+      "lastDiscoveryAt": "2026-07-19T19:22:51.898Z",
       "referenceHintSourceIds": [
         "historical_source_33a32de184041a90995a21e9"
       ],
@@ -1180,9 +1509,9 @@
       "priority": "P0_CURRENT_RETAIL",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
-      "state": "DISCOVERY_RETRYABLE",
-      "terminal": false,
-      "retryableDiscovery": true,
+      "state": "NO_CANDIDATE_COMPLETE",
+      "terminal": true,
+      "retryableDiscovery": false,
       "resolverContract": [
         {
           "resolverId": "architecture-v2-core-official-discovery",
@@ -1197,12 +1526,44 @@
           "required": true
         }
       ],
-      "resolverResults": [],
-      "incompleteResolverIds": [
-        "esatto-official-discovery"
+      "resolverResults": [
+        {
+          "schemaVersion": 1,
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidates": [
+            {
+              "sourceUrl": "https://www.appliancesonline.com.au/ak/3/4/9/1/3491720a9e9da0ad69598b608902a5d0878166fa_Esatto_EDW6SL_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+              "resolverId": "architecture-v2-core-official-discovery",
+              "resolverVersion": "1",
+              "discoveryMethod": "reference_mirror_seed",
+              "documentType": "specification_sheet",
+              "sourceModelHint": "EDW6SL",
+              "authorityMode": "reference",
+              "sourceRole": "retailer_reference",
+              "requiredAttempt": false,
+              "batchJobId": null
+            }
+          ],
+          "failures": []
+        },
+        {
+          "schemaVersion": 1,
+          "resolverId": "esatto-official-discovery",
+          "version": "1",
+          "scope": "esatto_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidates": [],
+          "failures": []
+        }
       ],
-      "lastDiscoveryRunId": null,
-      "lastDiscoveryAt": null,
+      "incompleteResolverIds": [],
+      "lastDiscoveryRunId": "historical-scale-p0-esatto-edw6sl-20260719-e",
+      "lastDiscoveryAt": "2026-07-19T19:25:49.011Z",
       "referenceHintSourceIds": [
         "historical_source_4f080646bc984069454813a0"
       ],
@@ -239176,13 +239537,13 @@
   "summary": {
     "acquisitionRecords": 7688,
     "targets": 7688,
-    "candidates": 6,
-    "candidateEdges": 6,
-    "runBindings": 2,
+    "candidates": 8,
+    "candidateEdges": 8,
+    "runBindings": 6,
     "byState": {
-      "CANDIDATES_READY": 6,
-      "DISCOVERY_RETRYABLE": 5021,
-      "NO_CANDIDATE_COMPLETE": 2,
+      "CANDIDATES_READY": 7,
+      "DISCOVERY_RETRYABLE": 5017,
+      "NO_CANDIDATE_COMPLETE": 5,
       "RESEARCH_REQUIRED": 2659
     }
   }

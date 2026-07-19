@@ -1818,3 +1818,124 @@ contains 295 receipt-bound dimension records and zero receipt-bound
 `VERIFIED_FIT` records. The executable queue contains 7,607 targets and 39
 durably suppressed resolver-only targets; none of the five AB targets is
 immediately executable under the current epoch.
+
+## 40. Controlled P0/P1 dimensions scale loop
+
+The dimensions programme is authorised by the tracked scale control, not by an
+operator selecting a convenient queue row. The append-safe ledger is
+`data/architecture-v2/ledgers/historical-dimensions-scale-ledger.json`; the
+derived current decision is
+`data/architecture-v2/reviews/automated/historical-dimensions-scale-control.json`.
+Every new discovery or acquisition run must use the exact
+`decision.allowedManifestId`. P1 stays blocked while any eligible P0 target
+exists. A stopped control authorises no manifest.
+
+Mount and attest the evidence drive, then rebuild the current inputs and
+control before selecting work:
+
+```bash
+export FITAPPLIANCE_STORAGE_ROOT=/Volumes/UGREEN-1TB/FitAppliance
+npm run refresh:historical-evidence-recovery
+jq '{counters, checkpointCount, haltedCohorts, weeklyThroughput, projection, decision}' \
+  data/architecture-v2/reviews/automated/historical-dimensions-scale-control.json
+```
+
+Resolve the approved manifest from the bounded-batch artifact and inspect its
+lane before execution:
+
+```bash
+manifest_id="$(jq -r '.decision.allowedManifestId // empty' \
+  data/architecture-v2/reviews/automated/historical-dimensions-scale-control.json)"
+jq --arg id "$manifest_id" \
+  '.manifests[] | select(.manifestId == $id) | {
+    manifestId, workstreamId, executionLane, constraints, targetBindings
+  }' data/architecture-v2/reviews/automated/historical-evidence-next-batches.json
+```
+
+Stop if the ID is empty, the manifest cannot be found, its workstream differs
+from `decision.allowedWorkstreamId`, or the lane is not the expected discovery
+or acquisition lane. Both runners independently revalidate the same control,
+manifest, queue, target-state and family-gate bindings.
+
+For `BOUNDED_DISCOVERY`, use a unique run ID, rebuild all materialised inputs,
+then record the immutable discovery object and final candidate-manifest state:
+
+```bash
+run_id=historical-scale-p0-brand-category-model-YYYYMMDD-a
+npm run discover:historical-official-candidates -- \
+  --manifest-id "$manifest_id" \
+  --run-id "$run_id"
+npm run refresh:historical-evidence-recovery:inputs
+npm run record:historical-dimensions-scale-checkpoint -- \
+  --stage discovery \
+  --run-id "$run_id"
+```
+
+Discovery yield is measured from the final materialised official-candidate
+manifest. Raw resolver hints, retailer references and registry links do not
+count. A complete zero-candidate inventory is a terminal outcome; an incomplete
+required resolver is retryable.
+
+For `ACQUISITION`, run the exact manifest, perform full online replay, promote
+the audited result so terminal attempts and accepted receipts become cumulative,
+then rebuild and checkpoint:
+
+```bash
+run_id=historical-scale-p0-brand-category-model-dimensions-YYYYMMDD-a
+run_dir="$FITAPPLIANCE_STORAGE_ROOT/runs/historical-evidence-recovery/$run_id"
+npm run recover:historical-evidence -- \
+  --manifest-id "$manifest_id" \
+  --run-id "$run_id" \
+  --output "$run_dir/results.json"
+node scripts/architecture-v2/audit-historical-evidence-recovery.mjs \
+  --mode online \
+  --full \
+  --results "$run_dir/results.json" \
+  --output "$run_dir/audit-full.json"
+jq -e '.status == "passed" and (.violations | length) == 0' \
+  "$run_dir/audit-full.json"
+node scripts/architecture-v2/promote-historical-evidence-recovery.mjs \
+  --results "$run_dir/results.json" \
+  --audit "$run_dir/audit-full.json"
+npm run refresh:historical-evidence-recovery:inputs
+npm run record:historical-dimensions-scale-checkpoint -- \
+  --stage dimensions \
+  --run-id "$run_id" \
+  --audit "$run_dir/audit-full.json"
+```
+
+A byte-bound official artifact counts as fetched even if MinerU or exact-model
+identity later fails. It does not count as MinerU-valid, identity-proven or
+dimensions-receipted. Only scalar receipt deltas may increase replacement
+`AUTO_FILL`; every checkpoint also requires complete receipt replay, zero
+replacement-audit issues and zero Fit-publication violations. Normal offline
+builds consume only the tracked ledger/control and remain independent of the
+mounted evidence drive.
+
+The first controlled P0 cohort used five immutable checkpoints for Esatto
+dishwashers:
+
+| Run | Stage | Official candidate | Fetched | MinerU valid | Receipt | Terminal |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| `historical-scale-p0-esatto-dw42cs-20260719-a` | discovery | 0 | 0 | 0 | 0 | 1 |
+| `historical-scale-p0-esatto-edw456s-20260719-b` | discovery | 1 | 0 | 0 | 0 | 0 |
+| `historical-scale-p0-esatto-edw456s-dimensions-20260719-c` | dimensions | 1 | 1 | 0 | 0 | 1 |
+| `historical-scale-p0-esatto-edw6cs-20260719-d` | discovery | 0 | 0 | 0 | 0 | 1 |
+| `historical-scale-p0-esatto-edw6sl-20260719-e` | discovery | 0 | 0 | 0 | 0 | 1 |
+
+The EDW456S acquisition fetched the exact official PDF and added one valid
+MinerU document to the indexed inventory, but the extracted content did not
+prove exact-model axis claims, so it created no receipt. Across the five
+checkpoints, P0 assigned/eligible targets decreased from `957/947` to
+`953/943`; current valid receipts stayed at 401, replacement `AUTO_FILL` at
+321, receipt-bound public dimensions at 332 and receipt-bound `VERIFIED_FIT` at
+zero. Full online replay passed 408/408 prior receipt sources with zero
+publication violations.
+
+The final two same-cohort discovery checkpoints both yielded 0%, below the 50%
+minimum, so the current decision is `STOP_LOW_YIELD` with reason
+`TWO_CONSECUTIVE_SAME_COHORT_BATCHES_BELOW_MINIMUM_YIELD`. Do not edit the
+ledger, remove checkpoints or run a different manifest to bypass this stop.
+Resume expansion only after a tested Esatto candidate-resolver, document-family
+identity or parser repair creates a new explicit control-plane epoch and its
+baseline/reopening rules are reviewed.

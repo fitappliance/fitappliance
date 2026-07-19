@@ -520,6 +520,7 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
   const readFamilyCanaries = dependencies.readFamilyCanaries
     ?? (async (path) => JSON.parse(await fs.readFile(path, 'utf8')));
   const familyCanaries = await readFamilyCanaries(runCanaryPath);
+  const scaleControl = options.resume ? null : (dependencies.scaleControl ?? null);
   let boundedManifest = null;
   if (options.boundedBatches) {
     if (!queueSnapshot || !targetStateSnapshot) {
@@ -545,6 +546,7 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
         executableQueue: queueSnapshot,
         targetState: targetStateSnapshot,
         familyCanaries,
+        scaleControl,
       });
     }
   }
@@ -618,6 +620,10 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
         boundedManifestId: boundedManifest.manifestId,
         boundedManifestSha256: boundedManifest.semanticManifestSha256,
       } : {}),
+      ...(scaleControl ? {
+        dimensionsScaleControlId: scaleControl.controlId,
+        dimensionsScaleControlSha256: scaleControl.semanticControlSha256,
+      } : {}),
       summary: structuredClone(batch.summary),
     };
   }
@@ -638,6 +644,9 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
       await durableOutputWrite(fs, resolve(runDirectory, 'family-canaries.json'), familyCanaries);
       if (boundedManifest) {
         await durableOutputWrite(fs, resolve(runDirectory, 'bounded-manifest.json'), boundedManifest);
+      }
+      if (scaleControl) {
+        await durableOutputWrite(fs, resolve(runDirectory, 'dimensions-scale-control.json'), scaleControl);
       }
     }
     const schedule = dependencies.setInterval ?? setInterval;
@@ -712,6 +721,10 @@ async function main(argv) {
     input, output, policy, queue, familyCanaries, targetState, boundedBatches,
   } = resolveHistoricalEvidenceRecoveryIoPaths(parsed, { storageRoot });
   const controller = new AbortController();
+  const scaleControl = parsed.resume ? null : JSON.parse(await defaultFs.readFile(
+    resolveArchitectureV2Path(repoRoot, 'historicalDimensionsScaleControl'),
+    'utf8',
+  ));
   const interrupt = () => controller.abort();
   process.once('SIGINT', interrupt);
   process.once('SIGTERM', interrupt);
@@ -726,7 +739,7 @@ async function main(argv) {
       targetState,
       boundedBatches,
       storageRoot,
-    }, { signal: controller.signal });
+    }, { signal: controller.signal, scaleControl });
     process.stdout.write(`${JSON.stringify(result.dryRun ? result : result.summary, null, 2)}\n`);
   } finally {
     process.removeListener('SIGINT', interrupt);

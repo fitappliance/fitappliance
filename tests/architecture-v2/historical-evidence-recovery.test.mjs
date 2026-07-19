@@ -242,9 +242,7 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
     'scripts/architecture-v2/build-dimension-expression-knowledge.mjs',
     'utf8',
   );
-  assert.equal(
-    packageJson.scripts['refresh:historical-evidence-recovery'],
-    'node scripts/architecture-v2/build-public-projection.mjs'
+  const inputRefresh = 'node scripts/architecture-v2/build-public-projection.mjs'
       + ' && npm run build:historical-reference'
       + ' && npm run build:dimension-expression-knowledge'
       + ' && npm run build:historical-model-evidence-classification'
@@ -261,7 +259,15 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
       + ' && npm run audit:fit-publication'
       + ' && npm run publish:historical-reference'
       + ' && npm run audit:historical-replacement'
-      + ' && npm run build:historical-evidence-program-status',
+      + ' && npm run build:historical-evidence-program-status';
+  assert.equal(
+    packageJson.scripts['refresh:historical-evidence-recovery:inputs'],
+    inputRefresh,
+  );
+  assert.equal(
+    packageJson.scripts['refresh:historical-evidence-recovery'],
+    'npm run refresh:historical-evidence-recovery:inputs'
+      + ' && npm run build:historical-dimensions-scale-control',
   );
   assert.equal(
     packageJson.scripts['build:dimension-expression-knowledge'],

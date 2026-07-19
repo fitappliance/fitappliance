@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "lg-dvh1-receipt-repair-20260719-v2",
-  "batchId": "historical-recovery-2214f258c0c5951010062bfb-slice-1e81991c2f38",
-  "batchSha256": "3c3cf668ab420b85063e35c6acbd55ccd12e0f137e1c7206234d82fb8def834c",
-  "queueSha256": "b3ef1e25639b04a7296c8df26160446cf654198321e87f4c11508f4de1c169b2",
+  "runId": "historical-scale-p0-esatto-edw456s-dimensions-20260719-c",
+  "batchId": "historical-recovery-80fb5b96b8bbdf17bf74511e-slice-cb0614910d17",
+  "batchSha256": "8030f9d1c13e944c85c71f90c49845066d002fb7c6ab2526941835651aab9454",
+  "queueSha256": "b3974d0fa1ec43e7b627523aefd37a73901404866a82f4ef4ef237d6b409deee",
   "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
-  "startedAt": "2026-07-19T18:26:09.461Z",
-  "completedAt": "2026-07-19T18:26:12.852Z",
-  "semanticOutcomeSha256": "0b496dabfcf155671794016de7952f66493bdfc8d57fb388a2302a965e7e5008",
+  "startedAt": "2026-07-19T19:17:45.337Z",
+  "completedAt": "2026-07-19T19:18:58.376Z",
+  "semanticOutcomeSha256": "4b566dec6e448b169656fd1d755866127cfdf620ee24497a1174487233c91e7d",
   "outcomes": [
     {
-      "targetId": "recovery_target_6252d12c8636ff82d87b836d",
-      "status": "accepted",
-      "failureCode": null,
-      "candidateInventorySha256": "479485bc9cf7ed8bc1eabde466989694081ebf306bf816f6ae164b677455a446",
+      "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
+      "status": "claims_incomplete",
+      "failureCode": "mineru",
+      "candidateInventorySha256": "6ec35c32b6b1225eaeb31e84f42a8c29266539509d4a678191ffc6542257e637",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_6252d12c8636ff82d87b836d",
+        "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
         "identity": {
-          "brand": "LG",
-          "model": "DVH1-08WP",
-          "category": "dryer"
+          "brand": "Esatto",
+          "model": "EDW456S",
+          "category": "dishwasher"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -32,7 +32,7 @@
             "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
             "required": false,
             "completion": "complete",
-            "candidateCount": 1
+            "candidateCount": 0
           },
           {
             "resolverId": "batch-candidates",
@@ -40,141 +40,85 @@
             "scope": "recovery_batch_graph",
             "required": true,
             "completion": "complete",
-            "candidateCount": 1
+            "candidateCount": 2
           },
           {
-            "resolverId": "lg-official-support",
-            "version": "2",
-            "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
+            "resolverId": "esatto-official-discovery",
+            "version": "1",
+            "scope": "esatto_legacy_discovery_only",
             "required": true,
             "completion": "complete",
             "candidateCount": 2
           }
         ],
-        "activeReceiptSources": [
-          {
-            "authority": "manufacturer",
-            "sourceType": "official_exact_model_product_page",
-            "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
-            "finalUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
-            "redirectChain": [],
-            "retrievedAt": "2026-07-14T20:05:50.687Z",
-            "contentSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd",
-            "objectPath": "evidence/web/sha256/94/c3/94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd.html",
-            "contentType": "text/html",
-            "byteSize": 3021055,
-            "supersedesContentSha256": [],
-            "identity": {
-              "brand": "LG",
-              "model": "DVH1-08WP",
-              "outcome": "exact"
-            },
-            "claims": [
-              {
-                "field": "closedEnvelope.widthMm",
-                "value": {
-                  "kind": "fixed",
-                  "mm": 600
-                },
-                "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
-                "sourceAxisOrder": [
-                  "width",
-                  "height",
-                  "depth"
-                ],
-                "sourceUnit": "mm",
-                "measurementScope": "product_closed_external",
-                "includesDoor": null,
-                "includesHandle": null,
-                "page": null,
-                "fragmentSha256": null,
-                "bbox": null
-              },
-              {
-                "field": "closedEnvelope.heightMm",
-                "value": {
-                  "kind": "fixed",
-                  "mm": 850
-                },
-                "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
-                "sourceAxisOrder": [
-                  "width",
-                  "height",
-                  "depth"
-                ],
-                "sourceUnit": "mm",
-                "measurementScope": "product_closed_external",
-                "includesDoor": null,
-                "includesHandle": null,
-                "page": null,
-                "fragmentSha256": null,
-                "bbox": null
-              },
-              {
-                "field": "closedEnvelope.depthMm",
-                "value": {
-                  "kind": "fixed",
-                  "mm": 660
-                },
-                "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
-                "sourceAxisOrder": [
-                  "width",
-                  "height",
-                  "depth"
-                ],
-                "sourceUnit": "mm",
-                "measurementScope": "product_closed_external",
-                "includesDoor": null,
-                "includesHandle": null,
-                "page": null,
-                "fragmentSha256": null,
-                "bbox": null
-              }
-            ],
-            "identitySignals": [
-              {
-                "type": "canonical_url",
-                "value": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/"
-              },
-              {
-                "type": "document_title",
-                "value": "8kg Heat Pump Dryer White AI Dry™ TurboDry - DVH1-08WP | LG Australia"
-              },
-              {
-                "type": "product_model",
-                "value": "DVH1-08WP.AGWREAP.EHAP.AU.C"
-              }
-            ],
-            "verificationReceipt": {
-              "schemaVersion": 3,
-              "claimSemanticsVersion": 2,
-              "policyVersion": "2026-07-13.1",
-              "manufacturerPolicyVersion": "2026-07-14.1",
-              "verifiedAt": "2026-07-14T20:05:50.687Z",
-              "bindingSha256": "8e7cec63fbc3fd1a4309359f59d37c22a5fd3be46d9a1df5a3c02d543367d23c"
-            }
-          }
-        ],
+        "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_54feec2a9c2b0b37a55d7a0b",
-            "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
+            "candidateId": "candidate_261ad78de85b9fe0a1b83368",
+            "sourceUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
             "discoveryProvenance": null,
             "batchJobIds": [
-              "recovery_d415f4b74b9f744cd61c8a6a"
+              "recovery_fcad85266f62f8d0d31f4a67"
             ],
             "resolverRefs": [
               {
-                "resolverId": "architecture-v2-core-official-discovery",
+                "resolverId": "batch-candidates",
                 "version": "1",
-                "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-                "discoveryMethod": "explicit_registry",
+                "scope": "recovery_batch_graph",
+                "discoveryMethod": "recovery_batch",
                 "sourceRole": "manufacturer_document",
-                "order": 0
+                "order": 1
               },
+              {
+                "resolverId": "esatto-official-discovery",
+                "version": "1",
+                "scope": "esatto_legacy_discovery_only",
+                "discoveryMethod": "esatto_legacy_finder",
+                "sourceRole": "manufacturer_product_page",
+                "order": 1
+              }
+            ],
+            "outcome": {
+              "status": "claims_incomplete",
+              "failureCode": "claim_semantics",
+              "reason": "no supported evidence claims extracted",
+              "artifactBinding": {
+                "sourceUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+                "finalUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+                "contentSha256": "739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277",
+                "objectPath": "evidence/web/sha256/73/9f/739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277.html",
+                "contentType": "text/html",
+                "byteSize": 369831
+              },
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_d3a24d304983f7a0f8b226a7",
+            "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+              "requestedModel": "EDW456S",
+              "matchedModel": "EDW456S",
+              "artifactUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+              "artifactLinkUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+              "discoveryContentSha256": "739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277",
+              "discoveryObjectPath": "evidence/web/sha256/73/9f/739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277.html",
+              "discoveryByteSize": 369831
+            },
+            "batchJobIds": [
+              "recovery_b8c839baf551e10c87370239"
+            ],
+            "resolverRefs": [
               {
                 "resolverId": "batch-candidates",
                 "version": "1",
@@ -184,683 +128,34 @@
                 "order": 0
               },
               {
-                "resolverId": "lg-official-support",
-                "version": "2",
-                "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
-                "discoveryMethod": "lg_au_exact_model_product_page_template",
-                "sourceRole": "manufacturer_product_page",
-                "order": 1
-              }
-            ],
-            "outcome": {
-              "status": "accepted",
-              "failureCode": null,
-              "source": {
-                "authority": "manufacturer",
-                "sourceType": "official_exact_model_product_page",
-                "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
-                "finalUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
-                "redirectChain": [],
-                "retrievedAt": "2026-07-19T18:26:11.397Z",
-                "contentSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
-                "objectPath": "evidence/web/sha256/af/3e/af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822.html",
-                "contentType": "text/html",
-                "byteSize": 3062057,
-                "supersedesContentSha256": [
-                  "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd"
-                ],
-                "identity": {
-                  "brand": "LG",
-                  "model": "DVH1-08WP",
-                  "outcome": "exact"
-                },
-                "claims": [
-                  {
-                    "field": "closedEnvelope.widthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 600
-                    },
-                    "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
-                    "sourceAxisOrder": [
-                      "width",
-                      "height",
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 850
-                    },
-                    "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
-                    "sourceAxisOrder": [
-                      "width",
-                      "height",
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 660
-                    },
-                    "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
-                    "sourceAxisOrder": [
-                      "width",
-                      "height",
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": null,
-                    "fragmentSha256": null,
-                    "bbox": null
-                  }
-                ],
-                "identitySignals": [
-                  {
-                    "type": "canonical_url",
-                    "value": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/"
-                  },
-                  {
-                    "type": "document_title",
-                    "value": "8kg Heat Pump Dryer White AI Dry™ TurboDry - DVH1-08WP | LG Australia"
-                  },
-                  {
-                    "type": "product_model",
-                    "value": "DVH1-08WP.AGWREAP.EHAP.AU.C"
-                  }
-                ],
-                "verificationReceipt": {
-                  "schemaVersion": 3,
-                  "claimSemanticsVersion": 2,
-                  "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-16.4",
-                  "verifiedAt": "2026-07-19T18:26:11.397Z",
-                  "bindingSha256": "9a5db30e16ccbdbb45dee10a36ecfbbb11edf72312a46428487d0256f7cde359"
-                }
-              }
-            }
-          },
-          {
-            "candidateId": "candidate_adacac3e08068cd5bb8422e4",
-            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_market_api",
-              "market": "AU",
-              "discoveryUrl": "https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU",
-              "requestedModel": "DVH1-08WP",
-              "matchedModel": "DVH1-08WP",
-              "artifactUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-              "documentId": "20155096256163",
-              "originalFileName": "DR_EAP_MFL72047852_00_260326_00_OM_WEB.pdf"
-            },
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "lg-official-support",
-                "version": "2",
-                "scope": "exact_model_au_support_api_documents_and_bounded_product_pages",
-                "discoveryMethod": "lg_au_support_api",
+                "resolverId": "esatto-official-discovery",
+                "version": "1",
+                "scope": "esatto_legacy_discovery_only",
+                "discoveryMethod": "esatto_legacy_finder",
                 "sourceRole": "manufacturer_document",
                 "order": 0
               }
             ],
             "outcome": {
-              "status": "accepted",
-              "failureCode": null,
-              "source": {
-                "authority": "manufacturer",
-                "sourceType": "official_exact_model_pdf",
-                "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-                "finalUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-                "redirectChain": [],
-                "retrievedAt": "2026-07-19T18:26:12.676Z",
-                "contentSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-                "objectPath": "evidence/web/sha256/22/c0/22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957.pdf",
+              "status": "mineru_failure",
+              "failureCode": "mineru",
+              "reason": "no exact-model MinerU evidence with explicit axes extracted",
+              "artifactBinding": {
+                "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+                "finalUrl": "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf",
+                "contentSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+                "objectPath": "evidence/web/sha256/b3/26/b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93.pdf",
                 "contentType": "application/pdf",
-                "byteSize": 2109960,
-                "supersedesContentSha256": [],
-                "identity": {
-                  "brand": "LG",
-                  "model": "DVH1-08WP",
-                  "outcome": "exact"
-                },
-                "claims": [
-                  {
-                    "field": "closedEnvelope.widthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 600
-                    },
-                    "sourceLabel": "Width (mm)",
-                    "sourceAxisOrder": [
-                      "width"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": 12,
-                    "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71",
-                    "bbox": [
-                      50,
-                      549,
-                      947,
-                      615
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.heightMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 850
-                    },
-                    "sourceLabel": "Height (mm)",
-                    "sourceAxisOrder": [
-                      "height"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": 12,
-                    "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71",
-                    "bbox": [
-                      50,
-                      549,
-                      947,
-                      615
-                    ]
-                  },
-                  {
-                    "field": "closedEnvelope.depthMm",
-                    "value": {
-                      "kind": "fixed",
-                      "mm": 660
-                    },
-                    "sourceLabel": "Depth (mm)",
-                    "sourceAxisOrder": [
-                      "depth"
-                    ],
-                    "sourceUnit": "mm",
-                    "measurementScope": "product_closed_external",
-                    "includesDoor": null,
-                    "includesHandle": null,
-                    "page": 12,
-                    "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71",
-                    "bbox": [
-                      50,
-                      549,
-                      947,
-                      615
-                    ]
-                  }
-                ],
-                "discoveryProvenance": {
-                  "schemaVersion": 1,
-                  "method": "official_market_api",
-                  "market": "AU",
-                  "discoveryUrl": "https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU",
-                  "requestedModel": "DVH1-08WP",
-                  "matchedModel": "DVH1-08WP",
-                  "artifactUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-                  "documentId": "20155096256163",
-                  "originalFileName": "DR_EAP_MFL72047852_00_260326_00_OM_WEB.pdf"
-                },
-                "derivedArtifact": {
-                  "schemaVersion": 1,
-                  "format": "content_list_v2",
-                  "parserName": "MinerU",
-                  "parserVersion": "3.4.4",
-                  "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
-                  "backend": "hybrid-engine",
-                  "method": "auto",
-                  "tableEnabled": true,
-                  "formulaEnabled": false,
-                  "sourcePdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-                  "contentSha256": "caae0e3c9b21316ae47c70b96bbe018f81c8b73bc28ebcc6245846e65b43b1ac",
-                  "objectPath": "evidence/derived/mineru-json/sha256/ca/ae/caae0e3c9b21316ae47c70b96bbe018f81c8b73bc28ebcc6245846e65b43b1ac.json",
-                  "byteSize": 165079,
-                  "pageCount": 48,
-                  "profileId": "hybrid-image-high-v1",
-                  "effort": "high",
-                  "imageAnalysis": true,
-                  "processedPages": [
-                    12
-                  ],
-                  "sourcePageCount": 48,
-                  "fallbackTrigger": {
-                    "profileId": "pipeline-auto-v1",
-                    "contentSha256": "ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2",
-                    "objectPath": "evidence/derived/mineru-json/sha256/ec/37/ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2.json",
-                    "pages": [
-                      12
-                    ]
-                  }
-                },
-                "identitySignals": [
-                  {
-                    "type": "mineru_body_model",
-                    "value": "DVH1-08WP:page:1:3256d4c58eef76f44244b693cea0e7aca0a3df089751240ae26ab02cf2cfe3ed"
-                  },
-                  {
-                    "type": "mineru_table_model",
-                    "value": "DVH1-08WP:page:12:5ced062ae2b8706dd874629993f550072916a74ee50250299f5bedde2f355b9e"
-                  },
-                  {
-                    "type": "mineru_table_model",
-                    "value": "DVH1-08WP:page:12:1bde551ee390a4ca20d9ca46f98ae024940566b28c40ed3c694e8aeb18e9c175"
-                  },
-                  {
-                    "type": "mineru_lg_audited_dryer_dimension_diagram",
-                    "value": "DVH1-08WP:pdf:22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957:page:12:9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71"
-                  }
-                ],
-                "verificationReceipt": {
-                  "schemaVersion": 3,
-                  "claimSemanticsVersion": 2,
-                  "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-16.4",
-                  "discoveryPolicyVersion": "2026-07-16.6",
-                  "verifiedAt": "2026-07-19T18:26:12.676Z",
-                  "bindingSha256": "d891e0641f21883f896ad52014f2cc35223a45d6a1541573c9cbd0c2c3fb7803"
-                }
-              }
+                "byteSize": 7039208
+              },
+              "source": null
             }
           }
         ],
-        "candidateInventorySha256": "479485bc9cf7ed8bc1eabde466989694081ebf306bf816f6ae164b677455a446"
+        "candidateInventorySha256": "6ec35c32b6b1225eaeb31e84f42a8c29266539509d4a678191ffc6542257e637"
       },
-      "sources": [
-        {
-          "authority": "manufacturer",
-          "sourceType": "official_exact_model_pdf",
-          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-          "finalUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-          "redirectChain": [],
-          "retrievedAt": "2026-07-19T18:26:12.676Z",
-          "contentSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-          "objectPath": "evidence/web/sha256/22/c0/22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957.pdf",
-          "contentType": "application/pdf",
-          "byteSize": 2109960,
-          "supersedesContentSha256": [],
-          "identity": {
-            "brand": "LG",
-            "model": "DVH1-08WP",
-            "outcome": "exact"
-          },
-          "claims": [
-            {
-              "field": "closedEnvelope.widthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 600
-              },
-              "sourceLabel": "Width (mm)",
-              "sourceAxisOrder": [
-                "width"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": 12,
-              "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71",
-              "bbox": [
-                50,
-                549,
-                947,
-                615
-              ]
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 850
-              },
-              "sourceLabel": "Height (mm)",
-              "sourceAxisOrder": [
-                "height"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": 12,
-              "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71",
-              "bbox": [
-                50,
-                549,
-                947,
-                615
-              ]
-            },
-            {
-              "field": "closedEnvelope.depthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 660
-              },
-              "sourceLabel": "Depth (mm)",
-              "sourceAxisOrder": [
-                "depth"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": 12,
-              "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71",
-              "bbox": [
-                50,
-                549,
-                947,
-                615
-              ]
-            }
-          ],
-          "discoveryProvenance": {
-            "schemaVersion": 1,
-            "method": "official_market_api",
-            "market": "AU",
-            "discoveryUrl": "https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU",
-            "requestedModel": "DVH1-08WP",
-            "matchedModel": "DVH1-08WP",
-            "artifactUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-            "documentId": "20155096256163",
-            "originalFileName": "DR_EAP_MFL72047852_00_260326_00_OM_WEB.pdf"
-          },
-          "derivedArtifact": {
-            "schemaVersion": 1,
-            "format": "content_list_v2",
-            "parserName": "MinerU",
-            "parserVersion": "3.4.4",
-            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
-            "backend": "hybrid-engine",
-            "method": "auto",
-            "tableEnabled": true,
-            "formulaEnabled": false,
-            "sourcePdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-            "contentSha256": "caae0e3c9b21316ae47c70b96bbe018f81c8b73bc28ebcc6245846e65b43b1ac",
-            "objectPath": "evidence/derived/mineru-json/sha256/ca/ae/caae0e3c9b21316ae47c70b96bbe018f81c8b73bc28ebcc6245846e65b43b1ac.json",
-            "byteSize": 165079,
-            "pageCount": 48,
-            "profileId": "hybrid-image-high-v1",
-            "effort": "high",
-            "imageAnalysis": true,
-            "processedPages": [
-              12
-            ],
-            "sourcePageCount": 48,
-            "fallbackTrigger": {
-              "profileId": "pipeline-auto-v1",
-              "contentSha256": "ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2",
-              "objectPath": "evidence/derived/mineru-json/sha256/ec/37/ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2.json",
-              "pages": [
-                12
-              ]
-            }
-          },
-          "identitySignals": [
-            {
-              "type": "mineru_body_model",
-              "value": "DVH1-08WP:page:1:3256d4c58eef76f44244b693cea0e7aca0a3df089751240ae26ab02cf2cfe3ed"
-            },
-            {
-              "type": "mineru_table_model",
-              "value": "DVH1-08WP:page:12:5ced062ae2b8706dd874629993f550072916a74ee50250299f5bedde2f355b9e"
-            },
-            {
-              "type": "mineru_table_model",
-              "value": "DVH1-08WP:page:12:1bde551ee390a4ca20d9ca46f98ae024940566b28c40ed3c694e8aeb18e9c175"
-            },
-            {
-              "type": "mineru_lg_audited_dryer_dimension_diagram",
-              "value": "DVH1-08WP:pdf:22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957:page:12:9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71"
-            }
-          ],
-          "verificationReceipt": {
-            "schemaVersion": 3,
-            "claimSemanticsVersion": 2,
-            "policyVersion": "2026-07-13.1",
-            "manufacturerPolicyVersion": "2026-07-16.4",
-            "discoveryPolicyVersion": "2026-07-16.6",
-            "verifiedAt": "2026-07-19T18:26:12.676Z",
-            "bindingSha256": "d891e0641f21883f896ad52014f2cc35223a45d6a1541573c9cbd0c2c3fb7803"
-          }
-        },
-        {
-          "authority": "manufacturer",
-          "sourceType": "official_exact_model_product_page",
-          "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
-          "finalUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
-          "redirectChain": [],
-          "retrievedAt": "2026-07-19T18:26:11.397Z",
-          "contentSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
-          "objectPath": "evidence/web/sha256/af/3e/af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822.html",
-          "contentType": "text/html",
-          "byteSize": 3062057,
-          "supersedesContentSha256": [
-            "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd"
-          ],
-          "identity": {
-            "brand": "LG",
-            "model": "DVH1-08WP",
-            "outcome": "exact"
-          },
-          "claims": [
-            {
-              "field": "closedEnvelope.widthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 600
-              },
-              "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
-              "sourceAxisOrder": [
-                "width",
-                "height",
-                "depth"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.heightMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 850
-              },
-              "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
-              "sourceAxisOrder": [
-                "width",
-                "height",
-                "depth"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            },
-            {
-              "field": "closedEnvelope.depthMm",
-              "value": {
-                "kind": "fixed",
-                "mm": 660
-              },
-              "sourceLabel": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
-              "sourceAxisOrder": [
-                "width",
-                "height",
-                "depth"
-              ],
-              "sourceUnit": "mm",
-              "measurementScope": "product_closed_external",
-              "includesDoor": null,
-              "includesHandle": null,
-              "page": null,
-              "fragmentSha256": null,
-              "bbox": null
-            }
-          ],
-          "identitySignals": [
-            {
-              "type": "canonical_url",
-              "value": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/"
-            },
-            {
-              "type": "document_title",
-              "value": "8kg Heat Pump Dryer White AI Dry™ TurboDry - DVH1-08WP | LG Australia"
-            },
-            {
-              "type": "product_model",
-              "value": "DVH1-08WP.AGWREAP.EHAP.AU.C"
-            }
-          ],
-          "verificationReceipt": {
-            "schemaVersion": 3,
-            "claimSemanticsVersion": 2,
-            "policyVersion": "2026-07-13.1",
-            "manufacturerPolicyVersion": "2026-07-16.4",
-            "verifiedAt": "2026-07-19T18:26:11.397Z",
-            "bindingSha256": "9a5db30e16ccbdbb45dee10a36ecfbbb11edf72312a46428487d0256f7cde359"
-          }
-        }
-      ],
-      "geometryProjection": {
-        "geometry": {
-          "closedEnvelope": {
-            "widthMm": 600,
-            "heightMm": {
-              "minimumMm": 850,
-              "maximumMm": 850
-            },
-            "depthMm": 660
-          },
-          "installation": {
-            "leftMm": null,
-            "rightMm": null,
-            "topMm": null,
-            "rearMm": null,
-            "frontMm": null
-          },
-          "operation": {
-            "doorOpenDepthMm": null,
-            "hingeSideSpaceMm": null,
-            "lidOpenHeightMm": null
-          },
-          "delivery": {
-            "widthMm": null,
-            "heightMm": null,
-            "depthMm": null
-          },
-          "category": "dryer",
-          "formFactor": null,
-          "service": {
-            "plumbingRearMm": null,
-            "rearServicesMm": null,
-            "rearVentilationMm": null
-          }
-        },
-        "fieldEvidence": {
-          "closedEnvelope.widthMm": {
-            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-            "contentSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-            "receiptBindingSha256": "d891e0641f21883f896ad52014f2cc35223a45d6a1541573c9cbd0c2c3fb7803",
-            "page": 12,
-            "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71",
-            "corroborating": [
-              {
-                "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
-                "contentSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
-                "receiptBindingSha256": "9a5db30e16ccbdbb45dee10a36ecfbbb11edf72312a46428487d0256f7cde359",
-                "page": null,
-                "fragmentSha256": null
-              }
-            ]
-          },
-          "closedEnvelope.heightMm": {
-            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-            "contentSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-            "receiptBindingSha256": "d891e0641f21883f896ad52014f2cc35223a45d6a1541573c9cbd0c2c3fb7803",
-            "page": 12,
-            "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71",
-            "corroborating": [
-              {
-                "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
-                "contentSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
-                "receiptBindingSha256": "9a5db30e16ccbdbb45dee10a36ecfbbb11edf72312a46428487d0256f7cde359",
-                "page": null,
-                "fragmentSha256": null
-              }
-            ]
-          },
-          "closedEnvelope.depthMm": {
-            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
-            "contentSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-            "receiptBindingSha256": "d891e0641f21883f896ad52014f2cc35223a45d6a1541573c9cbd0c2c3fb7803",
-            "page": 12,
-            "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71",
-            "corroborating": [
-              {
-                "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
-                "contentSha256": "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822",
-                "receiptBindingSha256": "9a5db30e16ccbdbb45dee10a36ecfbbb11edf72312a46428487d0256f7cde359",
-                "page": null,
-                "fragmentSha256": null
-              }
-            ]
-          }
-        },
-        "evidenceLevel": "dimensions",
-        "requiredInstallationEnvelope": null,
-        "missingForVerifiedFit": [
-          "installation.leftMm",
-          "installation.rearMm",
-          "installation.rightMm",
-          "installation.topMm",
-          "operation.doorOpenDepthMm",
-          "service.rearVentilationMm"
-        ],
-        "verifiedFitEligible": false,
-        "successfulFitOutcome": "INSUFFICIENT_DATA",
-        "activeSourceHashes": [
-          "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
-          "af3e2bd418f936d1a6f3c014841ecbbebe44ec4f8472ca8e9620df422fdd7822"
-        ]
-      },
+      "sources": [],
+      "geometryProjection": null,
       "reconciliation": {
         "conflictingFields": [],
         "conflictHints": [],
@@ -870,14 +165,14 @@
         "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "3624854dfb85db2c4770b476a35e43e3c127986b0e4349a2ea39f7424f275aa8"
+      "semanticOutcomeSha256": "7bd35e5de4cf2cfc768a57a8f69691c6cfa2f95528e29277433e6bd63e139c2f"
     }
   ],
   "summary": {
     "targets": 1,
-    "accepted": 1,
+    "accepted": 0,
     "nonScalar": 0,
     "retryable": 0,
-    "terminal": 0
+    "terminal": 1
   }
 }

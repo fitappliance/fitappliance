@@ -11,7 +11,7 @@
   [`2026-07-13-historical-evidence-coverage-recovery.md`](2026-07-13-historical-evidence-coverage-recovery.md)
 - **Canonical runbook:**
   [`historical-evidence-recovery-runbook.md`](../../architecture-v2/historical-evidence-recovery-runbook.md)
-- **Active task:** Task 9 - Controlled P0/P1 Dimensions Recovery Scale Loop
+- **Active task:** Task 10 - Independent Installation and Fit Evidence Pipeline
 
 **Goal:** Move the 8,089-model historical evidence programme from a safe but
 low-throughput recovery loop to a measurable, family-aware, bounded and
@@ -88,8 +88,8 @@ under that task, repair the plan first, and only then resume implementation.
 | 6 | Per-model runs repeat family-level source failures | COMPLETE | 8 domain tests; 27 gate/runner/epoch tests; Architecture V2 929/929; lint/offline build/diff passed; schema-v2 artifact stable |
 | 7 | Generated batches are operationally too broad | COMPLETE | 12 planner tests; 48 lane tests; Architecture V2 942/942; lint/offline build/determinism/real-manifest validation passed |
 | 8 | Parser repairs are not prioritised by reusable family impact | COMPLETE | 216 focused tests; Architecture V2 968/968; lint/offline build/diff passed; full 803-object repair audit and 408/408 receipt replay passed |
-| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | IN_PROGRESS | Activated after Tasks 7 and 8 completed |
-| 10 | Full installation/Fit evidence has no separate scale pipeline | PENDING | - |
+| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Five immutable P0 checkpoints; typed low-yield stop; 982/982 tests; lint/offline build/408-source replay passed |
+| 10 | Full installation/Fit evidence has no separate scale pipeline | IN_PROGRESS | Activated only after the Task 9 stop and verification gates passed |
 
 ## Ten-Problem Solution Map
 
@@ -713,12 +713,37 @@ unlabelled axis order or lossy OCR overriding richer native MinerU content.
 - Each batch emits discovered, fetched, MinerU-valid, identity-proven,
   dimensions-receipted, terminal and retryable counts.
 
-- [ ] Process P0 by highest-impact passed family until its queue is empty or a
+- [x] Process P0 by highest-impact passed family until its queue is empty or a
   typed stop condition is reached.
-- [ ] Recompute KPIs and verify no publication violations after every batch.
-- [ ] Process P1 only after P0 source/parser learning is incorporated.
-- [ ] Publish replacement auto-fill only from receipt-bound scalar dimensions.
-- [ ] Record weekly throughput and projected remaining batches.
+- [x] Recompute KPIs and verify no publication violations after every batch.
+- [x] Process P1 only after P0 source/parser learning is incorporated. P1 was
+  correctly kept blocked because P0 reached a typed source-yield stop first.
+- [x] Publish replacement auto-fill only from receipt-bound scalar dimensions.
+- [x] Record weekly throughput and projected remaining batches.
+
+**Completed evidence (2026-07-19):** A versioned scale control and append-safe
+ledger now bind every batch to one approved manifest, immutable run bytes,
+current materialised evidence and publication guards. Five P0 Esatto dishwasher
+checkpoints exercised discovery and acquisition: four discovery targets
+materialised one official-candidate target, while one acquisition fetched an
+exact official PDF but produced no valid exact-model MinerU axis evidence and
+therefore no receipt. P0 assigned/eligible targets decreased from `957/947` to
+`953/943`; all coverage counters remained monotonic at 401 current valid
+receipts, 321 replacement `AUTO_FILL`, 332 receipt-bound public dimensions and
+zero receipt-bound `VERIFIED_FIT`. The final two same-cohort discovery batches
+both yielded 0%, so the controller emitted `STOP_LOW_YIELD`, blocked P1 and
+authorised no further manifest. The runbook records the recovery protocol and
+all five checkpoints. Focused control/runner tests passed 43/43, the complete
+Architecture V2 suite passed 982/982, lint and `git diff --check` passed, a
+drive-independent `build:architecture-v2` passed, the offline cumulative audit
+passed 382 entries, and external receipt replay passed 408/408 sources with
+zero replacement or Fit-publication violations.
+
+**Typed follow-up:** Do not bypass the stopped Esatto cohort or start P1. A
+tested official-candidate resolver, document-family identity rule or parser
+repair must establish a reviewed new control epoch before dimensions expansion
+resumes. Task 10 proceeds independently and cannot reinterpret this
+dimensions-only result as Fit evidence.
 
 **Acceptance:** Coverage increases monotonically, prior receipts replay, and no
 batch can claim progress from downloads or MinerU output alone.

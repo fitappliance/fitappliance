@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T18:38:55.827Z",
+  "generatedAt": "2026-07-19T19:26:14.787Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "ad2d54e4bba90c9abb33fe13e2b4771dbedee9187f4ce28a4ea08a796f069f4a",
+  "semanticClassificationSha256": "19dff0090fbf85eaadc9b729678fa9f51130b3eb41e71600e2cf744a3f05bd8a",
   "summary": {
     "records": 8089,
     "uniqueReferenceIds": 8089,
@@ -21597,8 +21597,8 @@
       "canonicalBrand": "Esatto",
       "model": "EDW456S",
       "lifecycleState": "CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -21650,8 +21650,18 @@
       "rawBrandVariants": [
         "Esatto"
       ],
-      "groups": [],
-      "grammarProfileIds": []
+      "groups": [
+        {
+          "groupType": "parser_family",
+          "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
+          "grammarProfileIds": [
+            "pdf_grammar_4f34b527b64d6ba6"
+          ]
+        }
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_4f34b527b64d6ba6"
+      ]
     },
     {
       "schemaVersion": 1,

@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
   "plannerVersion": "1",
-  "generatedAt": "2026-07-19T18:38:55.827Z",
+  "generatedAt": "2026-07-19T19:26:14.787Z",
   "maximumTargets": 10,
   "sourceBindings": {
-    "executableQueueSha256": "a47393f8270409a205221cdbcd09c08190d47cbc53dfb0a5811c4f5a347dd367",
-    "targetStateSha256": "77baa7c928f2bd1948baa0c3a5a1866831e11ac6490dab4f4df0b65170014c50",
-    "familyCanarySha256": "6bacfd36b56679e6ce401962ce55023de9f85ca8c357953bef8e0c3ebcb8bd44",
-    "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b"
+    "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
+    "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
+    "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
+    "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
   },
   "workstreams": [
     {
       "workstreamId": "CURRENT_DIMENSIONS",
       "description": "Current-retail dimensions recovery and confirmation",
-      "assignedTargets": 957,
-      "eligibleTargets": 947,
+      "assignedTargets": 953,
+      "eligibleTargets": 943,
       "suppressedTargets": 10,
       "suppressedByReason": {
         "FAMILY_GATE_BLOCKED": 10
       },
-      "nextManifestId": "historical_batch_98b047d648ded5811d0a3d67"
+      "nextManifestId": "historical_batch_839d127fd39a1d062b0fef3d"
     },
     {
       "workstreamId": "HISTORICAL_DIMENSIONS",
@@ -30,7 +30,7 @@
       "suppressedByReason": {
         "FAMILY_GATE_BLOCKED": 35
       },
-      "nextManifestId": "historical_batch_97faa1ef1728fdb44eab8b58"
+      "nextManifestId": "historical_batch_e7c2a450882dedc8ff4630ba"
     },
     {
       "workstreamId": "PARSER_REPAIR",
@@ -50,7 +50,7 @@
       "suppressedByReason": {
         "FAMILY_GATE_BLOCKED": 1
       },
-      "nextManifestId": "historical_batch_1db00b0d8378aee9f39a44c8"
+      "nextManifestId": "historical_batch_3ae4b25af4c4e2e802bbc10a"
     }
   ],
   "manifests": [
@@ -71,10 +71,10 @@
       "familyId": "document_family_82eed9fcc8fd21713fbf9017",
       "familyState": "REOPENED",
       "sourceBindings": {
-        "executableQueueSha256": "a47393f8270409a205221cdbcd09c08190d47cbc53dfb0a5811c4f5a347dd367",
-        "targetStateSha256": "77baa7c928f2bd1948baa0c3a5a1866831e11ac6490dab4f4df0b65170014c50",
-        "familyCanarySha256": "6bacfd36b56679e6ce401962ce55023de9f85ca8c357953bef8e0c3ebcb8bd44",
-        "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b"
+        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
+        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
+        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
+        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
@@ -88,8 +88,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_1db00b0d8378aee9f39a44c8",
-      "semanticManifestSha256": "1db00b0d8378aee9f39a44c8eb88dd7d3290ddb023c41aef80635e3e180c5a4a"
+      "manifestId": "historical_batch_3ae4b25af4c4e2e802bbc10a",
+      "semanticManifestSha256": "3ae4b25af4c4e2e802bbc10a6060258adbbaa4ecff2860d1075aa118db1f2911"
     },
     {
       "schemaVersion": 1,
@@ -108,16 +108,16 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "a47393f8270409a205221cdbcd09c08190d47cbc53dfb0a5811c4f5a347dd367",
-        "targetStateSha256": "77baa7c928f2bd1948baa0c3a5a1866831e11ac6490dab4f4df0b65170014c50",
-        "familyCanarySha256": "6bacfd36b56679e6ce401962ce55023de9f85ca8c357953bef8e0c3ebcb8bd44",
-        "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b"
+        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
+        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
+        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
+        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
       },
-      "reviewedTargetCount": 957,
+      "reviewedTargetCount": 953,
       "targetBindings": [
         {
-          "targetId": "recovery_target_24ed948d4390531eefa18311",
-          "referenceId": "fa_ref_fd1cddcdc50d2622c30e7b3c",
+          "targetId": "recovery_target_38a3f3112e0fee5d688f8e2c",
+          "referenceId": "fa_ref_1521ace8bfc9a54835d11c55",
           "executionLane": "BOUNDED_DISCOVERY",
           "familyId": null,
           "assignment": "UNSCOPED_SINGLETON"
@@ -125,8 +125,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_98b047d648ded5811d0a3d67",
-      "semanticManifestSha256": "98b047d648ded5811d0a3d67b875fbc0fb58b022d2715e30fb43df7a3f23747e"
+      "manifestId": "historical_batch_839d127fd39a1d062b0fef3d",
+      "semanticManifestSha256": "839d127fd39a1d062b0fef3dc856ab7de4ce5a11bb843c71406ea0fd712a02de"
     },
     {
       "schemaVersion": 1,
@@ -145,10 +145,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "a47393f8270409a205221cdbcd09c08190d47cbc53dfb0a5811c4f5a347dd367",
-        "targetStateSha256": "77baa7c928f2bd1948baa0c3a5a1866831e11ac6490dab4f4df0b65170014c50",
-        "familyCanarySha256": "6bacfd36b56679e6ce401962ce55023de9f85ca8c357953bef8e0c3ebcb8bd44",
-        "sourceAcquisitionQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b"
+        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
+        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
+        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
+        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
       },
       "reviewedTargetCount": 3974,
       "targetBindings": [
@@ -162,13 +162,13 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_97faa1ef1728fdb44eab8b58",
-      "semanticManifestSha256": "97faa1ef1728fdb44eab8b588bb7fb4b73953d9b847e9704783e2811ba5c2211"
+      "manifestId": "historical_batch_e7c2a450882dedc8ff4630ba",
+      "semanticManifestSha256": "e7c2a450882dedc8ff4630ba959bb518f7be7616e10a6a59b5eff85c7408a27a"
     }
   ],
   "summary": {
-    "assignedTargets": 4994,
-    "eligibleTargets": 4948,
+    "assignedTargets": 4990,
+    "eligibleTargets": 4944,
     "suppressedTargets": 46,
     "suppressedByReason": {
       "FAMILY_GATE_BLOCKED": 46
@@ -176,11 +176,11 @@
     "manifests": 3,
     "manifestedTargets": 3,
     "byWorkstream": {
-      "CURRENT_DIMENSIONS": 957,
+      "CURRENT_DIMENSIONS": 953,
       "HISTORICAL_DIMENSIONS": 3974,
       "PARSER_REPAIR": 0,
       "CONFLICT_CLOSURE": 63
     }
   },
-  "semanticBatchesSha256": "ec746dd9f5aa0ac5659cb2212f7dbea9a48217465a2251595edd2d5b860c8b58"
+  "semanticBatchesSha256": "e4a579532195b44ecf9e4a891e058817006c6e2e5b69083d3a2b3bb83b1153e4"
 }

@@ -1,31 +1,31 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T18:38:55.827Z",
-  "sourceClassificationGeneratedAt": "2026-07-19T18:38:55.827Z",
-  "sourceExecutableQueueGeneratedAt": "2026-07-19T18:38:55.827Z",
+  "generatedAt": "2026-07-19T19:26:14.787Z",
+  "sourceClassificationGeneratedAt": "2026-07-19T19:26:14.787Z",
+  "sourceExecutableQueueGeneratedAt": "2026-07-19T19:26:14.787Z",
   "summary": {
     "records": 8089,
-    "actionable": 4994,
+    "actionable": 4990,
     "actionableBlockedOverlap": 6,
     "acquisitionWork": 6,
-    "discoveryWork": 4988,
-    "deferred": 2694,
+    "discoveryWork": 4984,
+    "deferred": 2698,
     "completed": 401,
-    "blocked": 2700,
-    "terminal": 3101,
+    "blocked": 2704,
+    "terminal": 3105,
     "byState": {
-      "BLOCKED_SAME_EPOCH": 2,
+      "BLOCKED_SAME_EPOCH": 3,
       "CONFLICT_QUARANTINE": 83,
       "DIMENSIONS_RECEIPT": 401,
       "IDENTITY_RESEARCH": 134,
-      "NO_OFFICIAL_SOURCE": 33,
+      "NO_OFFICIAL_SOURCE": 36,
       "RETRYABLE": 10,
-      "SOURCE_DISCOVERY_REQUIRED": 4844,
+      "SOURCE_DISCOVERY_REQUIRED": 4840,
       "UNSEEN": 2582
     },
     "byStateClass": {
-      "ACTIONABLE": 4988,
-      "BLOCKED": 2700,
+      "ACTIONABLE": 4984,
+      "BLOCKED": 2704,
       "COMPLETED": 401
     }
   },
@@ -11932,18 +11932,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "NO_OFFICIAL_SOURCE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_24ed948d4390531eefa18311",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "NO_CANDIDATE_COMPLETE"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
+      ]
     },
     {
       "referenceId": "fa_ref_c330725a2b8be301c0e742a7",
@@ -12025,21 +12026,34 @@
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
         "activeRetryable": 0,
-        "activeTerminal": 0,
+        "activeTerminal": 2,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "BLOCKED_SAME_EPOCH",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_30be75ffb40aeb2589e270d3",
+        "reason": "complete_exhausted_candidate_inventory",
+        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+        "resolverSetSha256": "a43f74bbd0cf475037508378b3b856835dba29b3296d6cfbdd4ca929deafedc4",
+        "runId": "historical-scale-p0-esatto-edw456s-dimensions-20260719-c",
+        "batchId": "historical-recovery-80fb5b96b8bbdf17bf74511e-slice-cb0614910d17",
+        "attemptedAt": "2026-07-19T19:18:58.376Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+        }
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
+        "POLICY_CHANGED",
+        "PROCESSOR_EPOCH_CHANGED",
+        "RESOLVER_CONTRACT_CHANGED"
+      ]
     },
     {
       "referenceId": "fa_ref_9128bbf72dce70b38063d024",
@@ -12268,18 +12282,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "NO_OFFICIAL_SOURCE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_3460eea918b1604f3adefc9c",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "NO_CANDIDATE_COMPLETE"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
+      ]
     },
     {
       "referenceId": "fa_ref_ba08c9a08baaa5e5b4e74e5d",
@@ -12292,18 +12307,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "NO_OFFICIAL_SOURCE",
+      "stateClass": "BLOCKED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
+        "type": "control_plane_disposition",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_80db96b796e61908327eb342",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "dispositionReason": "NO_CANDIDATE_COMPLETE"
       },
-      "reopeningConditions": []
+      "reopeningConditions": [
+        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
+      ]
     },
     {
       "referenceId": "fa_ref_1521ace8bfc9a54835d11c55",

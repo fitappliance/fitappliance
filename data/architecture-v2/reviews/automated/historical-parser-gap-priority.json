@@ -13,19 +13,19 @@
     "completeReplayDiagnosticsCanEnterRepair": false
   },
   "sourceBindings": {
-    "dimensionKnowledgeSha256": "b539f63a47b00b73c21c9e13838588fe0469638273773a6affb0787bde290a8e",
-    "documentGraphSha256": "e4f1ed29bec250adcc3fd91d5865fea0a1e06d5eaeb5d96247485a855bcc4cd4",
-    "classificationSha256": "ad2d54e4bba90c9abb33fe13e2b4771dbedee9187f4ce28a4ea08a796f069f4a",
+    "dimensionKnowledgeSha256": "a521825de572b3ea70ece2d65658a1c2d9494f6b0ed8357b455485fcb97691dc",
+    "documentGraphSha256": "be2e0689ebc7547a1bd05f81fa706cb3b25ad13b9d60c5b15162dc2ea13d67d0",
+    "classificationSha256": "19dff0090fbf85eaadc9b729678fa9f51130b3eb41e71600e2cf744a3f05bd8a",
     "fixtureCorpusSha256": "b747eda86941bbeef8be4bd681d00c087a123b0d55c61c7b05df7e10920632db"
   },
   "summary": {
-    "rows": 410,
-    "repairReady": 43,
-    "affectedExactModels": 113,
+    "rows": 411,
+    "repairReady": 44,
+    "affectedExactModels": 114,
     "fixtureProfiles": 2,
     "fixtureCoveredFamilies": 2,
     "byLane": {
-      "REPAIR_READY": 43,
+      "REPAIR_READY": 44,
       "IDENTITY_BLOCKED": 279,
       "MINERU_BLOCKED": 0,
       "IMAGE_SEMANTICS_REQUIRED": 5,
@@ -1361,13 +1361,63 @@
       "fixtureProfileIds": []
     },
     {
+      "familyId": "document_family_e88b72e286e12c6f83981f4d",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
+      "lane": "REPAIR_READY",
+      "rank": 24,
+      "score": 1280,
+      "scoreComponents": {
+        "affectedExactModels": 1000,
+        "lifecyclePriority": 200,
+        "familyReuse": 50,
+        "sourceAuthority": 20,
+        "mineruValidity": 10,
+        "ambiguityRisk": 0
+      },
+      "affectedExactModels": 1,
+      "affectedReferenceIds": [
+        "fa_ref_6429cd36602c53e258e7e96e"
+      ],
+      "affectedModels": [
+        "EDW456S"
+      ],
+      "incompleteReplayCount": 1,
+      "incompletePdfSha256s": [
+        "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93"
+      ],
+      "documentIds": [
+        "pdf_document_c4aa0a7021321c9e136f281a"
+      ],
+      "pdfSha256s": [
+        "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93"
+      ],
+      "validMineruDocuments": 1,
+      "invalidMineruDocuments": 0,
+      "reasonCodes": [
+        "NO_COMPLETE_EXPLICIT_AXES"
+      ],
+      "researchGapTypes": [],
+      "riskFlags": [],
+      "lifecycleCounts": {
+        "CURRENT_RETAIL": 1
+      },
+      "sourceAuthorityCounts": {
+        "REFERENCE": 1
+      },
+      "fixtureCoverage": "NONE",
+      "fixtureProfileIds": []
+    },
+    {
       "familyId": "document_family_e967f9c8d9df118446b77f70",
       "category": "washing_machine",
       "brand": "BOSCH",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7f2ae0175285e037",
       "lane": "REPAIR_READY",
-      "rank": 24,
+      "rank": 25,
       "score": 1280,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1419,7 +1469,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7fbb3482f967fc40",
       "lane": "REPAIR_READY",
-      "rank": 25,
+      "rank": 26,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1471,7 +1521,7 @@
       "groupType": "model_specific",
       "groupName": "HRCD610TS",
       "lane": "REPAIR_READY",
-      "rank": 26,
+      "rank": 27,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1523,7 +1573,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_7e33a76b59add102",
       "lane": "REPAIR_READY",
-      "rank": 27,
+      "rank": 28,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1578,7 +1628,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_4134bce35c24bce3",
       "lane": "REPAIR_READY",
-      "rank": 28,
+      "rank": 29,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1628,7 +1678,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_626913e6286d74b0",
       "lane": "REPAIR_READY",
-      "rank": 29,
+      "rank": 30,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1678,7 +1728,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_1f676258dbfe930d",
       "lane": "REPAIR_READY",
-      "rank": 30,
+      "rank": 31,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1733,7 +1783,7 @@
       "groupType": "marketing_series",
       "groupName": "Series 7",
       "lane": "REPAIR_READY",
-      "rank": 31,
+      "rank": 32,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1788,7 +1838,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_72cc319d973c51a6",
       "lane": "REPAIR_READY",
-      "rank": 32,
+      "rank": 33,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1843,7 +1893,7 @@
       "groupType": "marketing_series",
       "groupName": "Series 5",
       "lane": "REPAIR_READY",
-      "rank": 33,
+      "rank": 34,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1895,7 +1945,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_69bdef4b32e8dbfe",
       "lane": "REPAIR_READY",
-      "rank": 34,
+      "rank": 35,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -1950,7 +2000,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_3c28d9e9e031905b",
       "lane": "REPAIR_READY",
-      "rank": 35,
+      "rank": 36,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2000,7 +2050,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b8fc98139a3cc065",
       "lane": "REPAIR_READY",
-      "rank": 36,
+      "rank": 37,
       "score": 1260,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2050,7 +2100,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_d5866f311c5d2318",
       "lane": "REPAIR_READY",
-      "rank": 37,
+      "rank": 38,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2100,7 +2150,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_df944d3206f56151",
       "lane": "REPAIR_READY",
-      "rank": 38,
+      "rank": 39,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2155,7 +2205,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_86d30e2b33f39e6d",
       "lane": "REPAIR_READY",
-      "rank": 39,
+      "rank": 40,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2207,7 +2257,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b43e7538fc63e19b",
       "lane": "REPAIR_READY",
-      "rank": 40,
+      "rank": 41,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2259,7 +2309,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_a90dbefa9352a2ea",
       "lane": "REPAIR_READY",
-      "rank": 41,
+      "rank": 42,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2309,7 +2359,7 @@
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_380d583408d1560f",
       "lane": "REPAIR_READY",
-      "rank": 42,
+      "rank": 43,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -2359,7 +2409,7 @@
       "groupType": "marketing_series",
       "groupName": "Series 9",
       "lane": "REPAIR_READY",
-      "rank": 43,
+      "rank": 44,
       "score": 1160,
       "scoreComponents": {
         "affectedExactModels": 1000,
@@ -16907,6 +16957,6 @@
       "fixtureProfileIds": []
     }
   ],
-  "generatedAt": "2026-07-19T18:38:55.827Z",
-  "semanticQueueSha256": "b4ce5cd581aba342edb0929af690d49cd26a859714dac3b79acec0f436767cb7"
+  "generatedAt": "2026-07-19T19:26:14.787Z",
+  "semanticQueueSha256": "6677973e66450a02c39e62ed4d5b03a8525a3c4c8912ef3b05f3e5c437d83a0f"
 }

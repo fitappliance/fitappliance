@@ -13,15 +13,15 @@ Generated: 2026-07-12T12:40:00.000Z
 | Historical records | 8089 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 940 |
-| Valid MinerU documents | 925 |
+| MinerU documents | 941 |
+| Valid MinerU documents | 926 |
 | Invalid or orphaned MinerU documents | 15 |
-| Documents with recognised expressions | 495 |
+| Documents with recognised expressions | 496 |
 | Documents without recognised expressions | 430 |
-| Mapped MinerU documents | 892 |
+| Mapped MinerU documents | 893 |
 | Unmapped MinerU documents | 33 |
-| Dimension-expression observations | 1165 |
-| Reusable PDF grammar profiles | 216 |
+| Dimension-expression observations | 1166 |
+| Reusable PDF grammar profiles | 217 |
 | Research gaps | 1037 |
 
 A marketing-series count is a proven minimum, never an estimate of the
@@ -211,7 +211,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Duos | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Electrolux | 20 | 9 | 0 | 2 | `MINERU_SAMPLE_OBSERVED` |
 | Emilia | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Esatto | 21 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
+| Esatto | 21 | 1 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
 | EURO | 33 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Euromaid | 15 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | EUROMATIC | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -448,7 +448,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | 31 | Explicit three-axis sequence plus a qualified alternative depth. |
 | `HIERARCHICAL_DEPTH_VARIANTS` | 1 | A Depth parent row followed by explicitly qualified product-depth variants. |
 | `INDIVIDUAL_LABELLED_AXIS` | 231 | One named axis/value pair; combine only through independently proven model scope. |
-| `INDIVIDUALLY_LABELLED_AXES` | 322 | Two or more dimensions expressed as separate named axis/value pairs. |
+| `INDIVIDUALLY_LABELLED_AXES` | 323 | Two or more dimensions expressed as separate named axis/value pairs. |
 | `INLINE_LABELLED_AXES` | 155 | Observed parser research pattern. |
 | `INLINE_VALUE_LABELLED_AXIS_SEQUENCE` | 7 | Each value carries its own explicit W, H, or D label and unit. |
 | `LETTERED_EXPLICIT_AXIS_LIST` | 6 | Diagram letters explicitly map to axis names and values. |
@@ -474,7 +474,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | 22 |
 | `SUPPORTED_EXPLICIT_HANDLE_INCLUSIVE_DEPTH` | 1 |
 | `SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE` | 7 |
-| `SUPPORTED_EXPLICIT_LABELS` | 464 |
+| `SUPPORTED_EXPLICIT_LABELS` | 465 |
 | `SUPPORTED_EXPLICIT_NET_SECTION` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_AXIS_COLUMNS` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | 7 |
@@ -6381,12 +6381,24 @@ Research gaps:
 
 - Raw brand variants: `Esatto`
 - Inventory models: 21
-- Coverage: `NO_MINERU_SAMPLE`; MinerU documents: 0
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 1
 - Proven marketing series: 0; total series count: `UNKNOWN`
-- PDF grammar profiles: 0
+- PDF grammar profiles: 1
 - Complete exact-model parser replays: 0
 
-`NO_MINERU_SAMPLE`: no PDF expression may be assumed for this brand.
+#### PDF grammar pdf_grammar_4f34b527b64d6ba6
+
+- Group type: `parser_family`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Models observed: `EDW456S`
+- PDF SHA-256: `b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93`
+- PDF grammar profiles: `pdf_grammar_4f34b527b64d6ba6`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width | height, width | `product_closed_candidate` | Height (H) 845mm \| Width (W) 448mm | p.24, `e1367605f353` |
 
 ### EURO
 

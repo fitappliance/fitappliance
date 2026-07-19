@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-19T18:33:38.055Z",
+  "generatedAt": "2026-07-19T19:19:53.552Z",
   "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
   "entries": [
     {
@@ -93911,6 +93911,13 @@
       "queueSha256": "9d2e9db7b4564a372f7f97301d3fc46e6c200da0772cfb4735095f3d4ba34680",
       "resultsSha256": "b4b4479cbad7d8224b7e2182f736cdaad30c5440c3f2342afbd7595c8846b058",
       "auditSha256": "277e0317c56893a2221520f45ec4f846d474f0023b26e10d364d7b64a44d5bf6"
+    },
+    {
+      "batchId": "historical-recovery-80fb5b96b8bbdf17bf74511e-slice-cb0614910d17",
+      "batchSha256": "8030f9d1c13e944c85c71f90c49845066d002fb7c6ab2526941835651aab9454",
+      "queueSha256": "b3974d0fa1ec43e7b627523aefd37a73901404866a82f4ef4ef237d6b409deee",
+      "resultsSha256": "9c7443f8f59f42b20e7e538916789c841ef5f39518ee5eeacec1fcf2d2bd13bb",
+      "auditSha256": "f4082ae944621fb8ecc74a3a30d8250bc210fc6e04b85439c442d3424a673d96"
     },
     {
       "batchId": "historical-recovery-85771becc9e077b2ead8c1e9-slice-76e9ae3e4ae2",

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-19T19:26:14.787Z",
+  "policy": {
+    "minimumYieldBasisPoints": 5000,
+    "consecutiveLowYieldBatches": 2,
+    "p0BeforeP1": true,
+    "scalarReceiptRequiredForReplacementAutoFill": true,
+    "receiptReplayAndZeroPublicationViolationsRequired": true
+  },
+  "sourceBindings": {
+    "ledgerSha256": "366fc22612a5c857a2cdad3436b6bcfb85200aa9fcb5530a8a9151762db7c5cb",
+    "nextBatchesSha256": "f7033ca007b8640cbd79f6565da27de2829bf5a291ca3db69bb6445046fc8b39",
+    "programStatusSha256": "16c9d8fc793d8f1b01172f9aa0c1ffd9f5941cb5c87ec46e0f4e83624a391436",
+    "receiptAuditSha256": "56b1490fc950ad4868b884ccda0ed1aa6249d9f020d817ca2935167f8379f207",
+    "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
+    "fitPublicationAuditSha256": "93d8cfb09daed552e3f9a11e3e1170774ba0e85c6fa60173d79336f90add3714"
+  },
+  "counters": {
+    "currentValidReceipts": 401,
+    "replacementAutoFill": 321,
+    "receiptSourcesPassed": 408,
+    "fitReceiptBoundDimensions": 332,
+    "fitReceiptBoundVerified": 0,
+    "p0AssignedTargets": 953,
+    "p0EligibleTargets": 943,
+    "p1AssignedTargets": 3974,
+    "p1EligibleTargets": 3939
+  },
+  "checkpointCount": 5,
+  "haltedCohorts": [
+    {
+      "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
+      "stage": "DISCOVERY",
+      "familyId": null,
+      "checkpointIds": [
+        "historical-dimensions-checkpoint-ae1a0f6271049292b6940fae",
+        "historical-dimensions-checkpoint-3804ee7dce26c1d2af9c3a59"
+      ],
+      "yields": [
+        {
+          "numerator": 0,
+          "denominator": 1,
+          "rateBasisPoints": 0
+        },
+        {
+          "numerator": 0,
+          "denominator": 1,
+          "rateBasisPoints": 0
+        }
+      ]
+    }
+  ],
+  "weeklyThroughput": [
+    {
+      "isoWeek": "2026-W29",
+      "completedBatches": 5,
+      "selectedTargets": 5,
+      "targetsWithOfficialCandidates": 2,
+      "dimensionsReceipted": 0,
+      "terminalTargets": 4,
+      "retryableTargets": 0
+    }
+  ],
+  "projection": {
+    "completedDimensionsBatches": 1,
+    "dimensionsReceipted": 0,
+    "receiptedTargetsPerCompletedBatch": 0,
+    "projectedRemainingP0Batches": null,
+    "projectedRemainingP1Batches": null,
+    "projectionBasis": "OBSERVED_RECEIPTED_TARGETS_PER_COMPLETED_DIMENSIONS_BATCH"
+  },
+  "decision": {
+    "status": "STOP_LOW_YIELD",
+    "allowedManifestId": null,
+    "allowedWorkstreamId": "CURRENT_DIMENSIONS",
+    "p1Blocked": true,
+    "reason": "TWO_CONSECUTIVE_SAME_COHORT_BATCHES_BELOW_MINIMUM_YIELD",
+    "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY"
+  },
+  "controlId": "historical-dimensions-scale-b784c862df70ea2ccb221025",
+  "semanticControlSha256": "b784c862df70ea2ccb2210253805b1006ead5ce04140b87f548c260378afe70f"
+}

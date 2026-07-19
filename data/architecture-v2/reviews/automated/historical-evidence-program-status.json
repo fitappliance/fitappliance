@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T18:39:15.450Z",
+  "generatedAt": "2026-07-19T19:26:14.787Z",
   "inventory": {
     "historicalModelReferences": 8089,
     "currentCatalogProducts": 3515,
     "acceptedRecoveryEntries": 382,
-    "targetAttempts": 83
+    "targetAttempts": 84
   },
   "controls": [
     {
@@ -99,9 +99,9 @@
       "id": "model.executable_targets",
       "label": "Executable model targets",
       "grain": "historical_model_reference",
-      "numerator": 4994,
+      "numerator": 4990,
       "denominator": 7688,
-      "rateBasisPoints": 6496,
+      "rateBasisPoints": 6491,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json"
     },
     {
@@ -126,9 +126,9 @@
       "id": "target_state.actionable",
       "label": "Models with scheduled evidence work",
       "grain": "historical_model_reference",
-      "numerator": 4994,
+      "numerator": 4990,
       "denominator": 8089,
-      "rateBasisPoints": 6174,
+      "rateBasisPoints": 6169,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
@@ -153,9 +153,9 @@
       "id": "target_state.blocked",
       "label": "Blocked model targets",
       "grain": "historical_model_reference",
-      "numerator": 2700,
+      "numerator": 2704,
       "denominator": 8089,
-      "rateBasisPoints": 3338,
+      "rateBasisPoints": 3343,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
@@ -180,8 +180,8 @@
       "id": "document.graph_indexed_nodes",
       "label": "Indexed PDF content graph nodes",
       "grain": "unique_pdf_content",
-      "numerator": 940,
-      "denominator": 940,
+      "numerator": 941,
+      "denominator": 941,
       "rateBasisPoints": 10000,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
@@ -189,36 +189,36 @@
       "id": "document.graph_valid_nodes",
       "label": "Valid indexed PDF graph nodes",
       "grain": "unique_pdf_content",
-      "numerator": 925,
-      "denominator": 940,
-      "rateBasisPoints": 9840,
+      "numerator": 926,
+      "denominator": 941,
+      "rateBasisPoints": 9841,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
     {
       "id": "document.graph_proven_model_applicability",
       "label": "Document-model edges with exact or internal model-list proof",
       "grain": "document_model_edge",
-      "numerator": 547,
-      "denominator": 3760,
-      "rateBasisPoints": 1455,
+      "numerator": 548,
+      "denominator": 3761,
+      "rateBasisPoints": 1457,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
     {
       "id": "document.knowledge_valid",
       "label": "Valid MinerU knowledge documents",
       "grain": "mineru_knowledge_document",
-      "numerator": 925,
-      "denominator": 940,
-      "rateBasisPoints": 9840,
+      "numerator": 926,
+      "denominator": 941,
+      "rateBasisPoints": 9841,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
     {
       "id": "document.knowledge_recognized",
       "label": "MinerU knowledge documents with recognized expressions",
       "grain": "mineru_knowledge_document",
-      "numerator": 495,
-      "denominator": 925,
-      "rateBasisPoints": 5351,
+      "numerator": 496,
+      "denominator": 926,
+      "rateBasisPoints": 5356,
       "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
     },
     {
@@ -226,8 +226,8 @@
       "label": "Complete parser replays",
       "grain": "parser_replay",
       "numerator": 441,
-      "denominator": 1051,
-      "rateBasisPoints": 4196,
+      "denominator": 1052,
+      "rateBasisPoints": 4192,
       "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
     },
     {

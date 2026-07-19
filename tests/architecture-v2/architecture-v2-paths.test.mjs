@@ -8,7 +8,14 @@ import {
 } from '../../src/domain/architecture-v2-paths.mjs';
 
 test('Architecture V2 data is separated by ownership and has no flat JSON artifacts', () => {
-  const expectedRoots = ['decisions/', 'generated/', 'observations/', 'policies/', 'reviews/'];
+  const expectedRoots = [
+    'decisions/',
+    'generated/',
+    'ledgers/',
+    'observations/',
+    'policies/',
+    'reviews/',
+  ];
   const paths = Object.values(architectureV2Paths);
   assert.ok(paths.every((path) => expectedRoots.some((prefix) => path.startsWith(`data/architecture-v2/${prefix}`))));
   assert.ok(paths.every(existsSync), 'every registered Architecture V2 path must exist');

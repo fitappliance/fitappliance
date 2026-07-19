@@ -366,6 +366,7 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
     )),
     targetState: await readJson(resolveArchitectureV2Path(root, 'historicalEvidenceTargetState')),
     familyCanaries: await readJson(resolveArchitectureV2Path(root, 'historicalEvidenceFamilyCanaries')),
+    scaleControl: await readJson(resolveArchitectureV2Path(root, 'historicalDimensionsScaleControl')),
   };
   const boundedManifest = resolveHistoricalEvidenceBoundedManifest({
     batches: controlPlane.boundedBatches,
@@ -374,6 +375,7 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
     executableQueue: controlPlane.executableQueue,
     targetState: controlPlane.targetState,
     familyCanaries: controlPlane.familyCanaries,
+    scaleControl: controlPlane.scaleControl ?? null,
   });
   if (boundedManifest.targetBindings.length > MAXIMUM_TARGETS) {
     throw new Error(`bounded manifest exceeds discovery maximum ${MAXIMUM_TARGETS}`);

@@ -17,17 +17,17 @@
     "historicalRecords": 8089,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 940,
-    "validMineruDocuments": 925,
+    "mineruDocuments": 941,
+    "validMineruDocuments": 926,
     "invalidMineruDocuments": 15,
-    "documentsWithObservations": 495,
+    "documentsWithObservations": 496,
     "documentsWithoutObservations": 430,
-    "mappedMineruDocuments": 892,
+    "mappedMineruDocuments": 893,
     "unmappedMineruDocuments": 33,
-    "observations": 1165,
+    "observations": 1166,
     "researchGaps": 1037,
-    "parserProfiles": 216,
-    "parserReplays": 1051,
+    "parserProfiles": 217,
+    "parserReplays": 1052,
     "completeParserReplays": 441
   },
   "indexedDocuments": [
@@ -18330,6 +18330,35 @@
         "objectPath": "evidence/derived/mineru-json/sha256/be/2e/be2ea5a56599cb3818ba66b60b5d83c2c1930fdc42142550261831766e065c37.json",
         "byteSize": 33654,
         "pageCount": 3
+      }
+    },
+    {
+      "pdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+      "contentSha256": "f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b",
+      "validity": "VALID",
+      "mappingStatus": "MAPPED_TARGET_IDENTITY",
+      "sourceUrls": [
+        "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+        "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf"
+      ],
+      "identities": [
+        {
+          "brand": "Esatto",
+          "model": "EDW456S",
+          "category": "dishwasher"
+        }
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+        "contentSha256": "f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b",
+        "objectPath": "evidence/derived/mineru-json/sha256/f1/fd/f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b.json",
+        "byteSize": 313509,
+        "pageCount": 32
       }
     },
     {
@@ -101667,15 +101696,141 @@
             "Esatto"
           ],
           "modelCount": 21,
-          "observedMineruDocuments": 0,
+          "observedMineruDocuments": 1,
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 0,
-          "observedParserProfileCount": 0,
+          "observedParserProfileCount": 1,
           "completeParserReplayCount": 0,
           "seriesCountStatus": "UNKNOWN",
-          "coverageStatus": "NO_MINERU_SAMPLE",
-          "expressionCoverageStatus": "NO_MINERU_SAMPLE",
-          "families": []
+          "coverageStatus": "MINERU_SAMPLE_OBSERVED",
+          "expressionCoverageStatus": "DIMENSION_EXPRESSIONS_OBSERVED",
+          "families": [
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
+              "models": [
+                "EDW456S"
+              ],
+              "pdfSha256s": [
+                "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93"
+              ],
+              "sourceUrls": [
+                "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+                "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_4f34b527b64d6ba6",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
+                      "sourceLabel": "height (h) | width (w)",
+                      "axisOrder": [
+                        "height",
+                        "width"
+                      ],
+                      "safeAxes": [
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": []
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+                  "category": "dishwasher",
+                  "brand": "Esatto",
+                  "model": "EDW456S",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_08a451c73e414aee04a55f43",
+                  "pdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+                  "contentSha256": "f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b",
+                  "page": 24,
+                  "bbox": [
+                    122,
+                    501,
+                    537,
+                    577
+                  ],
+                  "fragmentSha256": "e1367605f353e447530019f66a022eb79951ead6bc96708ceb5f5e826663c365",
+                  "sourceUrls": [
+                    "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+                    "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Esatto",
+                      "model": "EDW456S",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EDW456S"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Height (H) | Width (W)",
+                  "sourceValue": "845mm | 448mm",
+                  "sourceQuote": "Height (H) 845mm | Width (W) 448mm",
+                  "axisOrder": [
+                    "height",
+                    "width"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Height (H)",
+                      "value": "845mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Width (W)",
+                      "value": "448mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar)"
+                }
+              ],
+              "researchGaps": [],
+              "parserProfileIds": [
+                "pdf_grammar_4f34b527b64d6ba6"
+              ],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
+            }
+          ]
         },
         {
           "canonicalBrand": "EURO",

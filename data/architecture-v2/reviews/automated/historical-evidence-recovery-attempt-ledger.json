@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-19T18:33:38.055Z",
+  "generatedAt": "2026-07-19T19:19:53.552Z",
   "processorEpochMigration": {
     "migratedAt": "2026-07-17T01:44:09.981Z",
     "migratedEntries": 3,
@@ -933,6 +933,35 @@
       "attemptedAt": "2026-07-17T00:26:29.882Z",
       "processorCapability": "beko_au_product_html_dimensions_v1",
       "evidenceProcessorSha256": "1579a6c16238bf6c59600127f3c720bd3e6338b6df4db6e0dc3b2be8c0d764c1"
+    },
+    {
+      "attemptId": "historical_attempt_18560132f2f47e665fbb0a42",
+      "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
+      "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
+      "legacyRuntimeId": "ao-74176",
+      "canonicalProductId": "fa_prod_639c46180466ebf757389c62",
+      "brand": "Esatto",
+      "model": "EDW456S",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+      "finalUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+      "contentSha256": "739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277",
+      "status": "claims_incomplete",
+      "failureCode": "claim_semantics",
+      "reason": "no supported evidence claims extracted",
+      "reasonSha256": "73a28731d21277cb33f9ce09d2954d2b2e0cb63ee30787f1c94e11e568a10140",
+      "disposition": "SEEK_EXACT_MODEL_FIELD_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+      "candidateInventorySha256": "6ec35c32b6b1225eaeb31e84f42a8c29266539509d4a678191ffc6542257e637",
+      "semanticOutcomeSha256": "7bd35e5de4cf2cfc768a57a8f69691c6cfa2f95528e29277433e6bd63e139c2f",
+      "batchId": "historical-recovery-80fb5b96b8bbdf17bf74511e-slice-cb0614910d17",
+      "batchSha256": "8030f9d1c13e944c85c71f90c49845066d002fb7c6ab2526941835651aab9454",
+      "runId": "historical-scale-p0-esatto-edw456s-dimensions-20260719-c",
+      "resultsSha256": "9c7443f8f59f42b20e7e538916789c841ef5f39518ee5eeacec1fcf2d2bd13bb",
+      "auditSha256": "bad3988dabac234ac7025ae963fb1923143ea63efc74d04cda1a4a559c0c1794",
+      "attemptedAt": "2026-07-19T19:18:58.376Z"
     },
     {
       "attemptId": "historical_attempt_19ad98dc72e00083fe56ad5a",
@@ -12459,6 +12488,35 @@
       "attemptedAt": "2026-07-16T22:15:07.363Z"
     },
     {
+      "attemptId": "historical_attempt_fc794126ceac69cbb50e6c68",
+      "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
+      "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
+      "legacyRuntimeId": "ao-74176",
+      "canonicalProductId": "fa_prod_639c46180466ebf757389c62",
+      "brand": "Esatto",
+      "model": "EDW456S",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+      "finalUrl": "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf",
+      "contentSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+      "status": "mineru_failure",
+      "failureCode": "mineru",
+      "reason": "no exact-model MinerU evidence with explicit axes extracted",
+      "reasonSha256": "93f92fe9e725348ea2dcc4a2c6fba71b52222c232b3193a03d66db3450ec26ee",
+      "disposition": "RETRY_AFTER_PARSER_OR_POLICY_CHANGE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+      "candidateInventorySha256": "6ec35c32b6b1225eaeb31e84f42a8c29266539509d4a678191ffc6542257e637",
+      "semanticOutcomeSha256": "7bd35e5de4cf2cfc768a57a8f69691c6cfa2f95528e29277433e6bd63e139c2f",
+      "batchId": "historical-recovery-80fb5b96b8bbdf17bf74511e-slice-cb0614910d17",
+      "batchSha256": "8030f9d1c13e944c85c71f90c49845066d002fb7c6ab2526941835651aab9454",
+      "runId": "historical-scale-p0-esatto-edw456s-dimensions-20260719-c",
+      "resultsSha256": "9c7443f8f59f42b20e7e538916789c841ef5f39518ee5eeacec1fcf2d2bd13bb",
+      "auditSha256": "bad3988dabac234ac7025ae963fb1923143ea63efc74d04cda1a4a559c0c1794",
+      "attemptedAt": "2026-07-19T19:18:58.376Z"
+    },
+    {
       "attemptId": "historical_attempt_fdff9d8ebd283b2ff6e1fc0a",
       "targetId": "recovery_target_7638b53459b92a54af9a6109",
       "referenceId": "fa_ref_93e2c24cce69162020cd76f1",
@@ -18710,6 +18768,58 @@
       "attemptedAt": "2026-07-16T22:38:57.227Z"
     },
     {
+      "targetAttemptId": "historical_target_attempt_30be75ffb40aeb2589e270d3",
+      "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
+      "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
+      "legacyRuntimeId": "ao-74176",
+      "canonicalProductId": "fa_prod_639c46180466ebf757389c62",
+      "brand": "Esatto",
+      "model": "EDW456S",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "status": "claims_incomplete",
+      "failureCode": "mineru",
+      "reason": "complete_exhausted_candidate_inventory",
+      "disposition": "AWAIT_RESOLVER_OR_POLICY_CHANGE",
+      "suppressesSamePolicyResolverOnly": true,
+      "resolverSetSha256": "a43f74bbd0cf475037508378b3b856835dba29b3296d6cfbdd4ca929deafedc4",
+      "resolvers": [
+        {
+          "resolverId": "architecture-v2-core-official-discovery",
+          "version": "1",
+          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+          "required": false,
+          "completion": "complete",
+          "candidateCount": 0
+        },
+        {
+          "resolverId": "batch-candidates",
+          "version": "1",
+          "scope": "recovery_batch_graph",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 2
+        },
+        {
+          "resolverId": "esatto-official-discovery",
+          "version": "1",
+          "scope": "esatto_legacy_discovery_only",
+          "required": true,
+          "completion": "complete",
+          "candidateCount": 2
+        }
+      ],
+      "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+      "candidateInventorySha256": "6ec35c32b6b1225eaeb31e84f42a8c29266539509d4a678191ffc6542257e637",
+      "semanticOutcomeSha256": "7bd35e5de4cf2cfc768a57a8f69691c6cfa2f95528e29277433e6bd63e139c2f",
+      "batchId": "historical-recovery-80fb5b96b8bbdf17bf74511e-slice-cb0614910d17",
+      "batchSha256": "8030f9d1c13e944c85c71f90c49845066d002fb7c6ab2526941835651aab9454",
+      "runId": "historical-scale-p0-esatto-edw456s-dimensions-20260719-c",
+      "resultsSha256": "9c7443f8f59f42b20e7e538916789c841ef5f39518ee5eeacec1fcf2d2bd13bb",
+      "auditSha256": "bad3988dabac234ac7025ae963fb1923143ea63efc74d04cda1a4a559c0c1794",
+      "attemptedAt": "2026-07-19T19:18:58.376Z"
+    },
+    {
       "targetAttemptId": "historical_target_attempt_3533b8f327243edbf10eb052",
       "targetId": "recovery_target_2401eebdd45580e01cd65c1d",
       "referenceId": "fa_ref_0c1668d2f2c4f94674a38f7b",
@@ -22235,25 +22345,25 @@
     }
   ],
   "summary": {
-    "entries": 431,
+    "entries": 433,
     "resolutions": 27,
     "sourceAcceptances": 289,
-    "suppressions": 335,
+    "suppressions": 337,
     "resolvedSuppressions": 24,
     "retryable": 72,
-    "targetAttempts": 83,
-    "resolverOnlySuppressions": 83,
+    "targetAttempts": 84,
+    "resolverOnlySuppressions": 84,
     "byStatus": {
-      "claims_incomplete": 69,
+      "claims_incomplete": 70,
       "identity_rejected": 200,
-      "mineru_failure": 91,
+      "mineru_failure": 92,
       "transport_failure": 71
     },
     "byDisposition": {
-      "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 91,
+      "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 92,
       "RETRY_TRANSIENT": 71,
       "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 200,
-      "SEEK_EXACT_MODEL_FIELD_SOURCE": 69
+      "SEEK_EXACT_MODEL_FIELD_SOURCE": 70
     }
   }
 }

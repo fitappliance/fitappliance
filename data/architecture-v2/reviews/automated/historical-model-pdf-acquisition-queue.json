@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T18:38:55.827Z",
-  "semanticQueueSha256": "e9009539c7f40380a4f4d58e2b4d1ab18e4586cf48c2812cab897d1c53acc22b",
-  "sourceClassificationSha256": "ad2d54e4bba90c9abb33fe13e2b4771dbedee9187f4ce28a4ea08a796f069f4a",
+  "generatedAt": "2026-07-19T19:26:14.787Z",
+  "semanticQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c",
+  "sourceClassificationSha256": "19dff0090fbf85eaadc9b729678fa9f51130b3eb41e71600e2cf744a3f05bd8a",
   "records": [
     {
       "schemaVersion": 1,
@@ -626,37 +626,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_6d305464e8d9cfd6c5fb9dd4",
-      "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
-      "category": "dishwasher",
-      "brand": "Esatto",
-      "model": "EDW456S",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_1ee6a29159227baf28e2b39e"
-      ],
-      "resolverIds": [
-        "esatto-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_8be97bde43aa0abbe886adc8"
-      ],
-      "legacyRuntimeIds": [
-        "ao-74176"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_639c46180466ebf757389c62"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_76cd21e81ee9e4f180f47b7e",
       "referenceId": "fa_ref_70ebbc9218889efea62804de",
       "category": "dishwasher",
@@ -838,6 +807,37 @@
       ],
       "canonicalProductIds": [
         "fa_prod_13dbb58fe628aaf3a9b61ed7"
+      ],
+      "offlineReplayOutcome": null
+    },
+    {
+      "schemaVersion": 1,
+      "acquisitionId": "historical_acquisition_6d305464e8d9cfd6c5fb9dd4",
+      "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "EDW456S",
+      "lifecycleState": "CURRENT_RETAIL",
+      "priority": "P0_CURRENT_RETAIL",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "route": "OFFICIAL_REDISCOVERY",
+      "executionReadiness": "DISCOVERY_READY",
+      "candidateSourceIds": [
+        "historical_source_1ee6a29159227baf28e2b39e"
+      ],
+      "resolverIds": [
+        "esatto-official-discovery"
+      ],
+      "legacyRecoveryTargetIds": [
+        "recovery_target_8be97bde43aa0abbe886adc8"
+      ],
+      "legacyRuntimeIds": [
+        "ao-74176"
+      ],
+      "canonicalProductIds": [
+        "fa_prod_639c46180466ebf757389c62"
       ],
       "offlineReplayOutcome": null
     },

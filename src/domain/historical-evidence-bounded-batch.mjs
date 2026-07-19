@@ -1,4 +1,5 @@
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
+import { assertHistoricalDimensionsScaleManifestAllowed } from './historical-dimensions-scale-control.mjs';
 
 export const HISTORICAL_EVIDENCE_BOUNDED_BATCH_SCHEMA_VERSION = 1;
 export const HISTORICAL_EVIDENCE_BOUNDED_BATCH_PLANNER_VERSION = '1';
@@ -604,18 +605,25 @@ export function resolveHistoricalEvidenceBoundedManifest({
   executableQueue,
   targetState,
   familyCanaries,
+  scaleControl = null,
 }) {
   validateHistoricalEvidenceBoundedBatches(batches);
   const id = requiredText(manifestId, 'bounded manifest ID');
   const manifest = batches.manifests.find((row) => row.manifestId === id);
   if (!manifest) throw new TypeError(`unknown bounded manifest ID: ${id}`);
-  return validateHistoricalEvidenceBoundedManifestSnapshot({
+  const validatedManifest = validateHistoricalEvidenceBoundedManifestSnapshot({
     manifest,
     expectedExecutionLane,
     executableQueue,
     targetState,
     familyCanaries,
   });
+  if (scaleControl) assertHistoricalDimensionsScaleManifestAllowed({
+    control: scaleControl,
+    batches,
+    manifest: validatedManifest,
+  });
+  return validatedManifest;
 }
 
 export function validateHistoricalEvidenceBoundedManifestSnapshot({

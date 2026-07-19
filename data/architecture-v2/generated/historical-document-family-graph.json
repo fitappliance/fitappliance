@@ -7,21 +7,21 @@
     "dimensionsReceiptAuthorityChanged": false
   },
   "summary": {
-    "indexedPdfDocuments": 940,
-    "validIndexedPdfDocuments": 925,
+    "indexedPdfDocuments": 941,
+    "validIndexedPdfDocuments": 926,
     "invalidIndexedPdfDocuments": 15,
-    "uniquePdfDocuments": 940,
+    "uniquePdfDocuments": 941,
     "physicalFiles": 637,
     "physicallyStoredUniqueDocuments": 590,
     "duplicatePhysicalFiles": 47,
-    "documentFamilies": 510,
-    "sourceUrls": 1100,
-    "sourceVersions": 1102,
+    "documentFamilies": 511,
+    "sourceUrls": 1102,
+    "sourceVersions": 1104,
     "conflictingSourceUrls": 1,
-    "modelEdges": 3799,
-    "mappedModelEdges": 3760,
+    "modelEdges": 3800,
+    "mappedModelEdges": 3761,
     "byProofLevel": {
-      "EXACT_MODEL_PROVEN": 534,
+      "EXACT_MODEL_PROVEN": 535,
       "FAMILY_SCOPE_ONLY": 3213,
       "MODEL_LIST_PROVEN": 13,
       "UNMAPPED": 39
@@ -2566,6 +2566,15 @@
       "sourceVersionId": "source_version_17de7f34719233b0b8fc52eb",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/User-Manul-HWF8I1015BX-0723.pdf?context=bWFzdGVyfE1hbnVhbHwxMTg0NjU2MnxhcHBsaWNhdGlvbi9wZGZ8YUdFNEwyaGtNQzg0T0RjM05qVTFNakk0TkRRMkwxVnpaWElnVFdGdWRXd3RTRmRHT0VreE1ERTFRbGd0TURjeU15NXdaR1l8MGQwOTMyODYyM2ZmZGZjNGI4YTBjYzZlYjA2OTk4ZjFiMmJmNTdiM2NlYjFlODQ4ZDZiNjVlZDAwNDU1YWM3Yw",
       "pdfSha256": "1fb14dce702d4c6a84359c12c1b4d482e360ec68a98475342f4f4f1faa899fe3",
+      "versionOrdinal": 1,
+      "versionCount": 1,
+      "ordinalBasis": "CONTENT_HASH_ORDER_ONLY",
+      "contentConflict": false
+    },
+    {
+      "sourceVersionId": "source_version_e5d0f566e6302a89c4c7c4e4",
+      "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+      "pdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
       "versionOrdinal": 1,
       "versionCount": 1,
       "ordinalBasis": "CONTENT_HASH_ORDER_ONLY",
@@ -7984,6 +7993,15 @@
       "sourceVersionId": "source_version_44f4e916f07a9a4a621b7f57",
       "sourceUrl": "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/60fa611efdb29b40de6e5dd4/1627021603490/Esatto_UserManual_ETM207-239-268_0518.pdf",
       "pdfSha256": "ed789eb7b9e8234d75733d7dae518e44803108c00c919cc1796b9848add855a6",
+      "versionOrdinal": 1,
+      "versionCount": 1,
+      "ordinalBasis": "CONTENT_HASH_ORDER_ONLY",
+      "contentConflict": false
+    },
+    {
+      "sourceVersionId": "source_version_c62a09ab496b463a90d3463f",
+      "sourceUrl": "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf",
+      "pdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
       "versionOrdinal": 1,
       "versionCount": 1,
       "ordinalBasis": "CONTENT_HASH_ORDER_ONLY",
@@ -75341,6 +75359,61 @@
       ]
     },
     {
+      "documentId": "pdf_document_c4aa0a7021321c9e136f281a",
+      "pdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+      "validity": "VALID",
+      "physicalPaths": [],
+      "physicalCopyCount": 0,
+      "sourceVersionIds": [
+        "source_version_c62a09ab496b463a90d3463f",
+        "source_version_e5d0f566e6302a89c4c7c4e4"
+      ],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+        "contentSha256": "f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b",
+        "objectPath": "evidence/derived/mineru-json/sha256/f1/fd/f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b.json",
+        "byteSize": 313509,
+        "pageCount": 32
+      },
+      "grammarProfileIds": [
+        "pdf_grammar_4f34b527b64d6ba6"
+      ],
+      "familyIds": [
+        "document_family_e88b72e286e12c6f83981f4d"
+      ],
+      "modelEdges": [
+        {
+          "referenceId": "fa_ref_6429cd36602c53e258e7e96e",
+          "proofLevel": "EXACT_MODEL_PROVEN",
+          "proofLocators": [
+            {
+              "type": "INDEX_IDENTITY_HINT",
+              "mappingStatus": "MAPPED_TARGET_IDENTITY"
+            },
+            {
+              "type": "KNOWLEDGE_FAMILY_SCOPE",
+              "familyId": "document_family_e88b72e286e12c6f83981f4d",
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6"
+            },
+            {
+              "type": "MINERU_EXACT_MODEL_LOCATOR",
+              "observationId": "dimension_expression_08a451c73e414aee04a55f43",
+              "page": 24,
+              "fragmentSha256": "e1367605f353e447530019f66a022eb79951ead6bc96708ceb5f5e826663c365",
+              "modelBinding": "SAME_PAGE_EXACT_MODEL",
+              "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "documentId": "pdf_document_720ef312b653b9bf68df538c",
       "pdfSha256": "b330fc963a0bccdcf4f22b489a652e22248bcf7d3b3881b1b10c90a60d247940",
       "validity": "VALID",
@@ -115690,6 +115763,25 @@
       ]
     },
     {
+      "familyId": "document_family_e88b72e286e12c6f83981f4d",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
+      "documentIds": [
+        "pdf_document_c4aa0a7021321c9e136f281a"
+      ],
+      "pdfSha256s": [
+        "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_4f34b527b64d6ba6"
+      ],
+      "referenceIds": [
+        "fa_ref_6429cd36602c53e258e7e96e"
+      ]
+    },
+    {
       "familyId": "document_family_e8d8fdfc117dc31117904e6c",
       "category": "dryer",
       "brand": "Fisher & Paykel",
@@ -116714,5 +116806,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "e4f1ed29bec250adcc3fd91d5865fea0a1e06d5eaeb5d96247485a855bcc4cd4"
+  "semanticGraphSha256": "be2e0689ebc7547a1bd05f81fa706cb3b25ad13b9d60c5b15162dc2ea13d67d0"
 }
