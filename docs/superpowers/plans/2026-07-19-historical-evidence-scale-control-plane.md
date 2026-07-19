@@ -11,7 +11,7 @@
   [`2026-07-13-historical-evidence-coverage-recovery.md`](2026-07-13-historical-evidence-coverage-recovery.md)
 - **Canonical runbook:**
   [`historical-evidence-recovery-runbook.md`](../../architecture-v2/historical-evidence-recovery-runbook.md)
-- **Active task:** None; Task 1 complete, Task 2 requires a fresh plan reread
+- **Active task:** None - Task 2 complete; Task 3 is next
 
 **Goal:** Move the 8,089-model historical evidence programme from a safe but
 low-throughput recovery loop to a measurable, family-aware, bounded and
@@ -81,7 +81,7 @@ under that task, repair the plan first, and only then resume implementation.
 | --- | --- | --- | --- |
 | 0 | Lock the ten-problem solution and execution order | COMPLETE | This plan created and self-reviewed |
 | 1 | Mixed KPI definitions and incomparable grains | COMPLETE | 9 focused tests; Architecture V2 877/877; lint/build passed; 8,089-model report generated |
-| 2 | Source-level ledger cannot show model outcomes; terminal queue noise | PENDING | - |
+| 2 | Source-level ledger cannot show model outcomes; terminal queue noise | COMPLETE | 9 projection tests; 32 focused tests; Architecture V2 887/887; lint/build/diff passed; all 8,089 targets projected |
 | 3 | 6,321 models lack document links or materialised official candidates | PENDING | - |
 | 4 | Executable graph has resolver-only targets and zero fetch jobs | PENDING | - |
 | 5 | PDF/MinerU/document-family/model relationships are not canonical | PENDING | - |
@@ -186,7 +186,7 @@ or a warning-only result.
 
 ---
 
-### Task 2: Append-Safe Target Outcome State and Queue Suppression
+### Task 2: Target Outcome Projection and Suppression Audit
 
 **Solves:** Problems 6 and 8.
 
@@ -197,37 +197,67 @@ or a warning-only result.
 - Create: `scripts/architecture-v2/build-historical-evidence-target-state.mjs`
 - Create: `tests/architecture-v2/historical-evidence-target-state.test.mjs`
 - Create: `data/architecture-v2/reviews/automated/historical-evidence-target-state.json`
-- Modify: `src/domain/historical-executable-recovery-queue.mjs`
-- Modify: `scripts/architecture-v2/build-historical-executable-recovery-queue.mjs`
 - Modify: `package.json`
 
 **Interfaces:**
 - Produces one state per `referenceId`: `UNSEEN`, `CANDIDATE_READY`,
-  `RETRYABLE`, `BLOCKED_SAME_EPOCH`, `NO_OFFICIAL_SOURCE`,
-  `IDENTITY_CONFLICT`, `DIMENSIONS_RECEIPT`, or `FIT_RECEIPT`.
-- Every terminal state carries policy SHA, resolver-contract SHA, processor
-  epoch, run ID and reopening conditions.
-- The executable queue consumes this projection instead of inferring all
-  model-level progress from source-attempt rows.
+  `SOURCE_DISCOVERY_REQUIRED`, `RETRYABLE`, `BLOCKED_SAME_EPOCH`,
+  `NO_OFFICIAL_SOURCE`, `IDENTITY_RESEARCH`, `CONFLICT_QUARANTINE`,
+  `DIMENSIONS_RECEIPT`, or `FIT_RECEIPT`.
+- Suppression terminal states carry policy SHA, resolver-contract SHA,
+  processor epoch, run ID and reopening conditions. Receipt terminal states
+  instead carry immutable receipt/evidence bindings and no automatic reopening;
+  conflict terminal states carry the classification or decision artifact that
+  created the conflict. A state must not fabricate bindings that do not apply.
+- The projection audits the executable queue but does not become its upstream
+  input, avoiding a queue -> state -> queue dependency cycle. Existing
+  source-attempt suppression remains authoritative until Task 4 materializes
+  the candidate graph. A terminal candidate URL suppresses only that source;
+  the model remains discoverable unless a complete candidate inventory created
+  a target-level terminal attempt.
 
-- [ ] Test append/merge, repeated run, policy change, resolver change, processor
-  epoch change, accepted receipt and malformed prior state.
-- [ ] Implement deterministic target-state reduction from cumulative bundle,
+- [x] Test deterministic rebuild after repeated ledger attempts, queue reopening
+  after policy/resolver/processor changes, accepted-receipt precedence and
+  malformed cumulative ledger rows. The executable-queue tests remain the
+  authority for deciding whether a concrete binding change reopens work.
+- [x] Implement deterministic target-state reduction from cumulative bundle,
   attempt ledger and immutable run outcomes.
-- [ ] Suppress same-epoch terminal targets directly in the executable queue and
-  expose counts by target state.
-- [ ] Preserve source-level attempt ledger rows for transport/parser learning.
-- [ ] Generate current state and prove every 8,089 reference has exactly one
+- [x] Prove same-epoch target-level terminals are absent from actionable queue
+  rows while candidate-level terminal failures leave the model discoverable.
+- [x] Preserve source-level attempt ledger rows for transport/parser learning.
+- [x] Generate current state and prove every 8,089 reference has exactly one
   control-plane state.
-- [ ] Run focused queue, ledger, run-history and contract tests.
-- [ ] Update this task and commit.
+- [x] Run focused queue, ledger, run-history and contract tests.
+- [x] Update this task and commit.
 
-**Acceptance:** The queue and KPI report agree on target states; a terminal
-target disappears from actionable work until a recorded reopening condition
-changes.
+**Completed evidence (2026-07-19):** The deterministic projection assigns one
+state to all 8,089 references: 7,564 actionable, 401 completed and 124 blocked.
+The detailed state counts are 7,420 `SOURCE_DISCOVERY_REQUIRED`, 10
+`RETRYABLE`, 401 `DIMENSIONS_RECEIPT`, 134 `IDENTITY_RESEARCH`, 83
+`CONFLICT_QUARANTINE`, 33 `NO_OFFICIAL_SOURCE` and 8
+`BLOCKED_SAME_EPOCH`. A candidate-level terminal remains source-only; only a
+complete target inventory suppresses the model. Receipt precedence, repeated
+ledger rebuilds, malformed bindings and queue/accounting drift fail-closed
+tests pass. The target projection passed 9/9 tests, the queue/ledger focused
+set passed 32/32, the full Architecture V2 suite passed 887/887, and
+`npm run lint`, `npm run build:architecture-v2`, both generated builders and
+`git diff --check` passed.
+
+**Acceptance:** The queue and KPI report agree on target states; a true
+target-level terminal disappears from actionable work until a recorded
+reopening condition changes, while one failed source never suppresses the whole
+model.
 
 **Stop condition:** Any target receives two terminal states or accepted evidence
 can be weakened by a later failure.
+
+**Plan correction (2026-07-19):** This task originally described append/merge
+of a second persisted state history. That would duplicate the append-only
+attempt ledger and create competing truth. The committed artifact is instead a
+deterministic projection rebuilt from the cumulative ledger, receipts,
+classification and executable queue. Policy, resolver and processor changes
+are tested where they alter queue eligibility; this projection verifies the
+result and never independently reimplements reopening policy.
 
 ---
 

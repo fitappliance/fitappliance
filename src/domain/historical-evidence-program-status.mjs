@@ -5,6 +5,7 @@ const INPUT_SCHEMAS = Object.freeze({
   executableQueue: 2,
   acceptanceBundle: 1,
   attemptLedger: 1,
+  targetState: 1,
   mineruBackfillAudit: 1,
   receiptReplayAudit: 1,
   replacementAudit: 1,
@@ -18,6 +19,7 @@ const SOURCE_ARTIFACTS = Object.freeze({
   executableQueue: 'data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json',
   acceptanceBundle: 'data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json',
   attemptLedger: 'data/architecture-v2/reviews/automated/historical-evidence-recovery-attempt-ledger.json',
+  targetState: 'data/architecture-v2/reviews/automated/historical-evidence-target-state.json',
   mineruBackfillAudit: 'data/architecture-v2/reviews/automated/historical-mineru-backfill-audit.json',
   receiptReplayAudit: 'data/architecture-v2/reviews/automated/historical-acceptance-receipt-replay-audit.json',
   replacementAudit: 'data/architecture-v2/reviews/automated/historical-replacement-audit.json',
@@ -99,6 +101,7 @@ function assertAccounting({
   acquisitionQueue,
   executableQueue,
   acceptanceBundle,
+  targetState,
   mineruBackfillAudit,
   receiptReplayAudit,
   replacementAudit,
@@ -202,10 +205,37 @@ function assertAccounting({
     throw new Error('physical PDF accounting mismatch');
   }
 
+  if (!Array.isArray(targetState.records) || targetState.records.length !== classified
+    || targetState.summary.records !== classified
+    || countValues(targetState.summary.byState, 'target states') !== classified
+    || countValues(targetState.summary.byStateClass, 'target state classes') !== classified) {
+    throw new Error('target-state inventory accounting mismatch');
+  }
+  const targetReferences = new Set(targetState.records.map((record) => record.referenceId));
+  if (targetReferences.size !== classified
+    || [...targetReferences].some((referenceId) => !classificationByReference.has(referenceId))) {
+    throw new Error('target-state reference accounting mismatch');
+  }
+  const targetActionable = targetState.records.filter((record) => record.actionable === true).length;
+  const targetCompleted = targetState.records.filter((record) => record.stateClass === 'COMPLETED').length;
+  const targetBlocked = targetState.records.filter((record) => record.stateClass === 'BLOCKED').length;
+  const targetTerminal = targetState.records.filter((record) => record.terminal === true).length;
+  if (targetState.summary.actionable !== targetActionable
+    || targetActionable !== executableQueue.summary.targets) {
+    throw new Error('target-state actionable accounting mismatch');
+  }
+  if (targetState.summary.completed !== targetCompleted
+    || targetCompleted !== (classification.summary.byOperationalClass.COMPLETE_RECEIPT ?? 0)
+    || targetState.summary.blocked !== targetBlocked
+    || targetState.summary.terminal !== targetTerminal) {
+    throw new Error('target-state outcome accounting mismatch');
+  }
+
   return [
     pass('classification_inventory', 'Classification inventory is unique and complete'),
     pass('acquisition_inventory', 'Acquisition queue accounts for every classified model'),
     pass('executable_inventory', 'Executable queue accounts for every acquisition target'),
+    pass('target_state', 'Target outcome projection matches classification and executable work'),
     pass('receipt_replay', 'Every accepted source replays without failure'),
     pass('replacement_inventory', 'Replacement reference matches the historical inventory'),
     pass('fit_publication', 'Current catalogue and Fit audit agree without violations'),
@@ -269,6 +299,7 @@ export function buildHistoricalEvidenceProgramStatus(input) {
   const executableQueue = schema(input.executableQueue, 'executableQueue');
   const acceptanceBundle = schema(input.acceptanceBundle, 'acceptanceBundle');
   const attemptLedger = schema(input.attemptLedger, 'attemptLedger');
+  const targetState = schema(input.targetState, 'targetState');
   const mineruBackfillAudit = schema(input.mineruBackfillAudit, 'mineruBackfillAudit');
   const receiptReplayAudit = schema(input.receiptReplayAudit, 'receiptReplayAudit');
   const replacementAudit = schema(input.replacementAudit, 'replacementAudit');
@@ -281,6 +312,7 @@ export function buildHistoricalEvidenceProgramStatus(input) {
     acquisitionQueue,
     executableQueue,
     acceptanceBundle,
+    targetState,
     mineruBackfillAudit,
     receiptReplayAudit,
     replacementAudit,
@@ -326,6 +358,21 @@ export function buildHistoricalEvidenceProgramStatus(input) {
       id: 'model.replacement_auto_fill', label: 'Historical models eligible for replacement auto-fill', grain: 'historical_model_reference',
       numerator: replacementAudit.summary.byLookupAction.AUTO_FILL ?? 0,
       denominator: inventory, sourceArtifact: SOURCE_ARTIFACTS.replacementAudit,
+    }),
+    metric({
+      id: 'target_state.actionable', label: 'Actionable model targets', grain: 'historical_model_reference',
+      numerator: targetState.summary.actionable, denominator: inventory,
+      sourceArtifact: SOURCE_ARTIFACTS.targetState,
+    }),
+    metric({
+      id: 'target_state.completed', label: 'Completed model targets', grain: 'historical_model_reference',
+      numerator: targetState.summary.completed, denominator: inventory,
+      sourceArtifact: SOURCE_ARTIFACTS.targetState,
+    }),
+    metric({
+      id: 'target_state.blocked', label: 'Blocked model targets', grain: 'historical_model_reference',
+      numerator: targetState.summary.blocked, denominator: inventory,
+      sourceArtifact: SOURCE_ARTIFACTS.targetState,
     }),
     metric({
       id: 'document.unique_pdf_content', label: 'Unique PDF content', grain: 'physical_pdf_file',
@@ -434,6 +481,7 @@ export function renderHistoricalEvidenceProgramStatusMarkdown(status) {
     '> Counts are deliberately separated by grain. A PDF or MinerU document is not a model receipt, and W/H/D is not Verified Fit.',
     '',
     ...section('Model evidence funnel', starts('model.')),
+    ...section('Target outcome funnel', starts('target_state.')),
     ...section('Document and parser funnel', [
       ...starts('document.'),
       ...starts('parser.'),

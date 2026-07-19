@@ -17,6 +17,14 @@ Generated: 2026-07-17T04:19:39.580Z
 | Models in cumulative recovery acceptance | Historical Model Reference | 382 | 8089 | 4.72% |
 | Historical models eligible for replacement auto-fill | Historical Model Reference | 321 | 8089 | 3.97% |
 
+## Target outcome funnel
+
+| Metric | Grain | Count | Denominator | Rate |
+| --- | --- | ---: | ---: | ---: |
+| Actionable model targets | Historical Model Reference | 7564 | 8089 | 93.51% |
+| Completed model targets | Historical Model Reference | 401 | 8089 | 4.96% |
+| Blocked model targets | Historical Model Reference | 124 | 8089 | 1.53% |
+
 ## Document and parser funnel
 
 | Metric | Grain | Count | Denominator | Rate |
@@ -51,6 +59,7 @@ Generated: 2026-07-17T04:19:39.580Z
 | Classification inventory is unique and complete | PASS |
 | Acquisition queue accounts for every classified model | PASS |
 | Executable queue accounts for every acquisition target | PASS |
+| Target outcome projection matches classification and executable work | PASS |
 | Every accepted source replays without failure | PASS |
 | Replacement reference matches the historical inventory | PASS |
 | Current catalogue and Fit audit agree without violations | PASS |

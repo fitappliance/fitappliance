@@ -24,6 +24,11 @@
       "status": "PASS"
     },
     {
+      "id": "target_state",
+      "label": "Target outcome projection matches classification and executable work",
+      "status": "PASS"
+    },
+    {
       "id": "receipt_replay",
       "label": "Every accepted source replays without failure",
       "status": "PASS"
@@ -111,6 +116,33 @@
       "denominator": 8089,
       "rateBasisPoints": 397,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-replacement-audit.json"
+    },
+    {
+      "id": "target_state.actionable",
+      "label": "Actionable model targets",
+      "grain": "historical_model_reference",
+      "numerator": 7564,
+      "denominator": 8089,
+      "rateBasisPoints": 9351,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
+    },
+    {
+      "id": "target_state.completed",
+      "label": "Completed model targets",
+      "grain": "historical_model_reference",
+      "numerator": 401,
+      "denominator": 8089,
+      "rateBasisPoints": 496,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
+    },
+    {
+      "id": "target_state.blocked",
+      "label": "Blocked model targets",
+      "grain": "historical_model_reference",
+      "numerator": 124,
+      "denominator": 8089,
+      "rateBasisPoints": 153,
+      "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
       "id": "document.unique_pdf_content",

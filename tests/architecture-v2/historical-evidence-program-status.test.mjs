@@ -88,6 +88,25 @@ function fixture() {
       schemaVersion: 1,
       summary: { targetAttempts: 1, resolverOnlySuppressions: 1 },
     },
+    targetState: {
+      schemaVersion: 1,
+      summary: {
+        records: 5,
+        actionable: 1,
+        completed: 4,
+        blocked: 0,
+        terminal: 4,
+        byState: { DIMENSIONS_RECEIPT: 4, SOURCE_DISCOVERY_REQUIRED: 1 },
+        byStateClass: { ACTIONABLE: 1, COMPLETED: 4 },
+      },
+      records: Array.from({ length: 5 }, (_, index) => ({
+        referenceId: `ref-${index + 1}`,
+        state: index < 4 ? 'DIMENSIONS_RECEIPT' : 'SOURCE_DISCOVERY_REQUIRED',
+        stateClass: index < 4 ? 'COMPLETED' : 'ACTIONABLE',
+        actionable: index === 4,
+        terminal: index < 4,
+      })),
+    },
     mineruBackfillAudit: {
       schemaVersion: 1,
       summary: {
@@ -146,6 +165,8 @@ test('builds a grain-safe model, document, parser, source-lane and Fit funnel', 
   assert.equal(metricById(status, 'accepted_source_lane.json_only').numerator, 1);
   assert.equal(metricById(status, 'accepted_source_lane.mixed').numerator, 1);
   assert.equal(metricById(status, 'accepted_source_lane.pdf_involved').numerator, 2);
+  assert.equal(metricById(status, 'target_state.actionable').numerator, 1);
+  assert.equal(metricById(status, 'target_state.completed').numerator, 4);
   assert.equal(metricById(status, 'fit.receipt_bound_verified').numerator, 0);
   assert.ok(status.metrics.every((metric) => (
     typeof metric.grain === 'string'
@@ -155,7 +176,7 @@ test('builds a grain-safe model, document, parser, source-lane and Fit funnel', 
       && typeof metric.sourceArtifact === 'string'
   )));
   assert.deepEqual(status.controls.map((control) => control.status), [
-    'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS',
+    'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS',
   ]);
   assert.ok(status.diagnostics.some((diagnostic) => (
     diagnostic.code === 'EXECUTION_GRAPH_RESOLVER_ONLY'
@@ -242,5 +263,15 @@ test('rejects unknown input schema versions', () => {
   assert.throws(
     () => buildHistoricalEvidenceProgramStatus(input),
     /knowledge schema version 3 required/,
+  );
+});
+
+test('fails closed when target-state and executable actionable counts drift', () => {
+  const input = fixture();
+  input.targetState.summary.actionable = 0;
+
+  assert.throws(
+    () => buildHistoricalEvidenceProgramStatus(input),
+    /target-state actionable accounting mismatch/,
   );
 });
