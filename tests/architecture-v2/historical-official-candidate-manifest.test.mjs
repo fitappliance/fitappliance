@@ -11,6 +11,8 @@ import {
   urlHasExactModelSignal,
 } from '../../src/domain/historical-official-candidate-manifest.mjs';
 import { validateEvidenceSourceResolverResult } from '../../src/domain/evidence-source-adapter-contract.mjs';
+import { buildHistoricalEvidenceBoundedBatches } from '../../src/domain/historical-evidence-bounded-batch.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import {
   parseHistoricalOfficialCandidateDiscoveryArgs,
   runHistoricalOfficialCandidateDiscovery,
@@ -190,6 +192,93 @@ function fixture() {
     ])],
     officialCandidateValidator: () => true,
   };
+}
+
+function discoveryControlPlane(input) {
+  const records = input.acquisitionQueue.records.filter((record) => record.resolverIds.length > 0);
+  const targets = records.map((record) => ({
+    targetId: `target-${record.referenceId}`,
+    referenceId: record.referenceId,
+    brand: record.brand,
+    model: record.model,
+    category: record.category,
+    lifecycleState: record.lifecycleState,
+    priorityClass: 'P1_HISTORICAL_MISSING_DIMENSIONS',
+    executionLane: 'BOUNDED_DISCOVERY',
+    candidateJobIds: [],
+    primaryJobId: null,
+  }));
+  const executableQueue = {
+    schemaVersion: 2,
+    generatedAt: input.acquisitionQueue.generatedAt,
+    sourceAcquisitionQueueSha256: input.acquisitionQueue.semanticQueueSha256,
+    sourceOfficialCandidateManifestSha256: SHA('b'),
+    evidenceProcessorEpochs: {},
+    jobs: [],
+    targets: [],
+    discoveryTargets: targets,
+    deferredTargets: [],
+    summary: {
+      targets: targets.length,
+      acquisitionTargets: 0,
+      discoveryTargets: targets.length,
+      deferredTargets: 0,
+    },
+  };
+  const targetState = {
+    schemaVersion: 1,
+    generatedAt: input.acquisitionQueue.generatedAt,
+    summary: { records: targets.length },
+    records: targets.map((row) => ({
+      referenceId: row.referenceId,
+      category: row.category,
+      canonicalBrand: row.brand,
+      model: row.model,
+      lifecycleState: row.lifecycleState,
+      state: 'SOURCE_DISCOVERY_REQUIRED',
+      stateClass: 'ACTIONABLE',
+      actionable: true,
+      terminal: false,
+      binding: {
+        type: 'executable_queue',
+        targetId: row.targetId,
+        executionLane: row.executionLane,
+        candidateJobIds: [],
+      },
+      reopeningConditions: [],
+    })),
+  };
+  const canarySemantic = {
+    schemaVersion: 2,
+    generatedAt: input.acquisitionQueue.generatedAt,
+    documentGraphSha256: SHA('c'),
+    executableQueueSha256: canonicalJsonSha256(executableQueue),
+    policySha256: SHA('d'),
+    parserContractSha256: SHA('e'),
+    processorEpochs: {},
+    families: [],
+    targetDecisions: targets.map((row) => ({
+      targetId: row.targetId,
+      referenceId: row.referenceId,
+      executionLane: row.executionLane,
+      familyIds: [],
+      assignment: 'UNSCOPED_SINGLETON',
+      runnerAllowed: true,
+      fanoutEligible: false,
+      reason: 'NO_CANONICAL_DOCUMENT_FAMILY',
+    })),
+  };
+  const familyCanaries = {
+    ...canarySemantic,
+    semanticCanarySha256: canonicalJsonSha256(canarySemantic),
+    summary: {},
+  };
+  const boundedBatches = buildHistoricalEvidenceBoundedBatches({
+    executableQueue,
+    targetState,
+    familyCanaries,
+  });
+  return { boundedBatches, executableQueue, targetState, familyCanaries };
 }
 
 function target(manifest, referenceId) {
@@ -398,23 +487,22 @@ test('replays a global official candidate through its hash-bound Australian disc
   assert.deepEqual(replayed.candidates, first.candidates);
 });
 
-test('online discovery CLI requires an explicit bounded selection', () => {
-  assert.throws(() => parseHistoricalOfficialCandidateDiscoveryArgs([]), /selection/i);
-  assert.throws(
-    () => parseHistoricalOfficialCandidateDiscoveryArgs(['--brand', 'Alpha', '--category', 'fridge']),
-    /limit/i,
-  );
-  assert.throws(
-    () => parseHistoricalOfficialCandidateDiscoveryArgs([
-      '--brand', 'Alpha', '--category', 'fridge', '--limit', '26',
-    ]),
-    /maximum/i,
-  );
+test('online discovery CLI requires a tracked manifest and rejects legacy selectors', () => {
+  assert.throws(() => parseHistoricalOfficialCandidateDiscoveryArgs([]), /manifest-id/i);
+  for (const flag of ['--brand', '--category', '--reference-id', '--limit']) {
+    assert.throws(
+      () => parseHistoricalOfficialCandidateDiscoveryArgs([flag, 'unsafe']),
+      /prohibited.*manifest-id/i,
+    );
+  }
   const parsed = parseHistoricalOfficialCandidateDiscoveryArgs([
-    '--brand', 'Alpha', '--category', 'fridge', '--limit', '2',
+    '--manifest-id', 'historical_batch_abc',
     '--run-id', 'alpha-fridge-canary', '--storage-root', '/tmp/evidence',
   ]);
-  const selected = selectHistoricalOfficialCandidateTargets(fixture().acquisitionQueue, parsed);
+  assert.equal(parsed.manifestId, 'historical_batch_abc');
+  const selected = selectHistoricalOfficialCandidateTargets(fixture().acquisitionQueue, {
+    referenceIds: ['abc-123', 'no-100'], brand: null, category: null, limit: 2,
+  });
   assert.deepEqual(selected.map((record) => record.referenceId), ['abc-123', 'no-100']);
 });
 
@@ -424,11 +512,13 @@ test('online discovery persists an immutable run object before updating the offl
   const inputPath = join(directory, 'acquisition.json');
   const outputPath = join(directory, 'manifest.json');
   const input = fixture();
+  const controlPlane = discoveryControlPlane(input);
+  const boundedManifest = controlPlane.boundedBatches.manifests[0];
   await writeFile(inputPath, `${JSON.stringify(input.acquisitionQueue)}\n`);
   const times = [new Date('2026-07-19T02:00:00.000Z'), new Date('2026-07-19T02:01:00.000Z')];
   try {
     const result = await runHistoricalOfficialCandidateDiscovery([
-      '--brand', 'Alpha', '--category', 'fridge', '--limit', '1',
+      '--manifest-id', boundedManifest.manifestId,
       '--run-id', 'alpha-fridge-unit-canary', '--storage-root', storageRoot,
       '--input', inputPath, '--output', outputPath,
     ], {
@@ -437,6 +527,7 @@ test('online discovery persists an immutable run object before updating the offl
         markerSha256: SHA('d'),
         volumeUuid: 'UNIT-TEST',
       }),
+      controlPlane,
       now: () => times.shift(),
       resolversForRecord: () => [{
         resolverId: 'alpha-official',
@@ -457,6 +548,7 @@ test('online discovery persists an immutable run object before updating the offl
     const persisted = JSON.parse(await readFile(outputPath, 'utf8'));
     assert.equal(persisted.runBindings[0].runId, 'alpha-fridge-unit-canary');
     assert.equal(target(persisted, 'abc-123').state, 'CANDIDATES_READY');
+    assert.deepEqual(result.run.boundedManifest, boundedManifest);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
@@ -468,15 +560,18 @@ test('online discovery resumes an externally indexed run after manifest persiste
   const inputPath = join(directory, 'acquisition.json');
   const outputPath = join(directory, 'manifest.json');
   const input = fixture();
+  const controlPlane = discoveryControlPlane(input);
+  const boundedManifest = controlPlane.boundedBatches.manifests[0];
   await writeFile(inputPath, `${JSON.stringify(input.acquisitionQueue)}\n`);
   const argv = [
-    '--brand', 'Alpha', '--category', 'fridge', '--limit', '1',
+    '--manifest-id', boundedManifest.manifestId,
     '--run-id', 'alpha-fridge-resume-canary', '--storage-root', storageRoot,
     '--input', inputPath, '--output', outputPath,
   ];
   const times = [new Date('2026-07-19T03:00:00.000Z'), new Date('2026-07-19T03:01:00.000Z')];
   let resolverCalls = 0;
   const common = {
+    controlPlane,
     verifyStorageRoot: async () => ({
       root: storageRoot,
       markerSha256: SHA('e'),
@@ -526,6 +621,8 @@ test('network concurrency bounds resolver calls rather than only target workers'
   const inputPath = join(directory, 'acquisition.json');
   const outputPath = join(directory, 'manifest.json');
   const input = fixture();
+  const controlPlane = discoveryControlPlane(input);
+  const boundedManifest = controlPlane.boundedBatches.manifests[0];
   await writeFile(inputPath, `${JSON.stringify(input.acquisitionQueue)}\n`);
   const times = [new Date('2026-07-19T04:00:00.000Z'), new Date('2026-07-19T04:01:00.000Z')];
   let active = 0;
@@ -545,7 +642,7 @@ test('network concurrency bounds resolver calls rather than only target workers'
   });
   try {
     await runHistoricalOfficialCandidateDiscovery([
-      '--brand', 'Alpha', '--category', 'fridge', '--limit', '1',
+      '--manifest-id', boundedManifest.manifestId,
       '--network-concurrency', '1', '--run-id', 'alpha-concurrency-canary',
       '--storage-root', storageRoot, '--input', inputPath, '--output', outputPath,
     ], {
@@ -554,6 +651,7 @@ test('network concurrency bounds resolver calls rather than only target workers'
         markerSha256: SHA('f'),
         volumeUuid: 'UNIT-TEST',
       }),
+      controlPlane,
       now: () => times.shift(),
       resolversForRecord: () => [
         resolver('alpha-official', true),

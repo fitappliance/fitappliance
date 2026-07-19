@@ -170,6 +170,26 @@ function normalizeDiscoveryRun(value) {
   if (new Set(targets.map((target) => target.referenceId)).size !== targets.length) {
     throw new Error(`duplicate target in discovery run: ${runId}`);
   }
+  let boundedManifest = null;
+  if (value.boundedManifest !== undefined) {
+    if (!value.boundedManifest || typeof value.boundedManifest !== 'object'
+      || Array.isArray(value.boundedManifest)) {
+      throw new TypeError('discovery run bounded manifest required');
+    }
+    const {
+      manifestId,
+      semanticManifestSha256,
+      ...manifestSemantic
+    } = value.boundedManifest;
+    const manifestSha256 = canonicalJsonSha256(manifestSemantic);
+    if (manifestId !== `historical_batch_${manifestSha256.slice(0, 24)}`
+      || semanticManifestSha256 !== manifestSha256
+      || value.selection?.manifestId !== manifestId
+      || value.selection?.semanticManifestSha256 !== semanticManifestSha256) {
+      throw new Error(`discovery run bounded manifest binding mismatch: ${runId}`);
+    }
+    boundedManifest = structuredClone(value.boundedManifest);
+  }
   const payload = {
     schemaVersion: 1,
     runId,
@@ -180,6 +200,7 @@ function normalizeDiscoveryRun(value) {
       'discovery run acquisition queue SHA-256',
     ),
     selection: structuredClone(value.selection ?? {}),
+    ...(boundedManifest ? { boundedManifest } : {}),
     targets,
   };
   const storageObject = normalizeStorageObject(value.storageObject);

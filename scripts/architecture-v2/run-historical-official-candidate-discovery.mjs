@@ -9,6 +9,7 @@ import { promisify } from 'node:util';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { validateEvidenceSourceResolverResult } from '../../src/domain/evidence-source-adapter-contract.mjs';
+import { resolveHistoricalEvidenceBoundedManifest } from '../../src/domain/historical-evidence-bounded-batch.mjs';
 import {
   createEvidenceObjectStore,
   verifyEvidenceStorageRoot,
@@ -40,10 +41,8 @@ function optionValue(argv, index, inline, label) {
 
 export function parseHistoricalOfficialCandidateDiscoveryArgs(argv) {
   const result = {
-    brand: null,
-    category: null,
-    referenceIds: [],
-    limit: null,
+    manifestId: null,
+    manifestInput: null,
     runId: null,
     storageRoot: null,
     input: null,
@@ -51,17 +50,21 @@ export function parseHistoricalOfficialCandidateDiscoveryArgs(argv) {
     networkConcurrency: 2,
     resolverTimeoutMs: 30_000,
   };
+  const prohibitedSelectionFlags = new Set(['--brand', '--category', '--reference-id', '--limit']);
   for (let index = 0; index < argv.length; index += 1) {
     const raw = argv[index];
     const separator = raw.indexOf('=');
     const flag = separator < 0 ? raw : raw.slice(0, separator);
     const inline = separator < 0 ? null : raw.slice(separator + 1);
-    if (['--brand', '--category', '--run-id', '--storage-root', '--input', '--output'].includes(flag)) {
+    if (prohibitedSelectionFlags.has(flag)) {
+      throw new TypeError(`${flag} is prohibited; use a tracked --manifest-id`);
+    }
+    if (['--manifest-id', '--manifest-input', '--run-id', '--storage-root', '--input', '--output'].includes(flag)) {
       const value = optionValue(argv, index, inline, flag);
       if (separator < 0) index += 1;
       const key = {
-        '--brand': 'brand',
-        '--category': 'category',
+        '--manifest-id': 'manifestId',
+        '--manifest-input': 'manifestInput',
         '--run-id': 'runId',
         '--storage-root': 'storageRoot',
         '--input': 'input',
@@ -70,33 +73,18 @@ export function parseHistoricalOfficialCandidateDiscoveryArgs(argv) {
       result[key] = value;
       continue;
     }
-    if (flag === '--reference-id') {
-      result.referenceIds.push(optionValue(argv, index, inline, flag));
-      if (separator < 0) index += 1;
-      continue;
-    }
-    if (['--limit', '--network-concurrency', '--resolver-timeout-ms'].includes(flag)) {
+    if (['--network-concurrency', '--resolver-timeout-ms'].includes(flag)) {
       const number = positiveInteger(optionValue(argv, index, inline, flag), flag);
       if (separator < 0) index += 1;
-      if (flag === '--limit') result.limit = number;
       if (flag === '--network-concurrency') result.networkConcurrency = number;
       if (flag === '--resolver-timeout-ms') result.resolverTimeoutMs = number;
       continue;
     }
     throw new TypeError(`unknown argument: ${raw}`);
   }
-  result.referenceIds = [...new Set(result.referenceIds)].sort();
-  const hasReferenceSelection = result.referenceIds.length > 0;
-  const hasBrandCategorySelection = Boolean(result.brand && result.category);
-  if (!hasReferenceSelection && !hasBrandCategorySelection) {
-    throw new TypeError('explicit reference or brand/category selection required');
-  }
-  if (Boolean(result.brand) !== Boolean(result.category)) {
-    throw new TypeError('brand and category selection must be supplied together');
-  }
-  if (result.limit == null) throw new TypeError('bounded --limit selection required');
-  if (result.limit > MAXIMUM_TARGETS) {
-    throw new TypeError(`discovery limit exceeds maximum ${MAXIMUM_TARGETS}`);
+  if (!result.manifestId) throw new TypeError('--manifest-id required');
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(result.manifestId)) {
+    throw new TypeError('manifest ID must be a safe value');
   }
   if (result.networkConcurrency > 4) throw new TypeError('network concurrency exceeds maximum 4');
   if (result.resolverTimeoutMs > 120_000) throw new TypeError('resolver timeout exceeds maximum 120000ms');
@@ -292,12 +280,10 @@ function discoveryRunPointerPath(runId) {
   return `evidence/discovery/runs/${runId}.json`;
 }
 
-function selectionFor(options, selected) {
+function selectionFor(options, selected, boundedManifest) {
   return {
-    brand: options.brand,
-    category: options.category,
-    referenceIds: options.referenceIds,
-    limit: options.limit,
+    manifestId: boundedManifest.manifestId,
+    semanticManifestSha256: boundedManifest.semanticManifestSha256,
     selectedReferenceIds: selected.map((record) => record.referenceId),
   };
 }
@@ -318,6 +304,7 @@ async function loadIndexedDiscoveryRun({
   markerSha256,
   acquisitionQueueSha256,
   selection,
+  boundedManifest,
 }) {
   const pointerBytes = await readOptionalObject(objectStore, pointerPath);
   if (!pointerBytes) return null;
@@ -343,7 +330,8 @@ async function loadIndexedDiscoveryRun({
   }
   if (payload?.schemaVersion !== 1 || payload.runId !== runId
     || payload.sourceAcquisitionQueueSha256 !== acquisitionQueueSha256
-    || JSON.stringify(payload.selection) !== JSON.stringify(selection)) {
+    || JSON.stringify(payload.selection) !== JSON.stringify(selection)
+    || JSON.stringify(payload.boundedManifest) !== JSON.stringify(boundedManifest)) {
     throw new Error(`discovery run resume binding mismatch: ${runId}`);
   }
   return {
@@ -369,16 +357,46 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
   const output = resolve(options.output
     ?? resolveArchitectureV2Path(root, 'historicalOfficialCandidateManifest'));
   const acquisitionQueue = await readJson(acquisitionPath);
+  const controlPlane = dependencies.controlPlane ?? {
+    boundedBatches: await readJson(resolve(options.manifestInput
+      ?? resolveArchitectureV2Path(root, 'historicalEvidenceNextBatches'))),
+    executableQueue: await readJson(resolveArchitectureV2Path(
+      root,
+      'historicalExecutableEvidenceRecoveryQueue',
+    )),
+    targetState: await readJson(resolveArchitectureV2Path(root, 'historicalEvidenceTargetState')),
+    familyCanaries: await readJson(resolveArchitectureV2Path(root, 'historicalEvidenceFamilyCanaries')),
+  };
+  const boundedManifest = resolveHistoricalEvidenceBoundedManifest({
+    batches: controlPlane.boundedBatches,
+    manifestId: options.manifestId,
+    expectedExecutionLane: 'BOUNDED_DISCOVERY',
+    executableQueue: controlPlane.executableQueue,
+    targetState: controlPlane.targetState,
+    familyCanaries: controlPlane.familyCanaries,
+  });
+  if (boundedManifest.targetBindings.length > MAXIMUM_TARGETS) {
+    throw new Error(`bounded manifest exceeds discovery maximum ${MAXIMUM_TARGETS}`);
+  }
+  if (boundedManifest.sourceBindings.sourceAcquisitionQueueSha256
+    !== acquisitionQueue.semanticQueueSha256) {
+    throw new Error('acquisition queue hash drift against bounded manifest');
+  }
   const priorManifest = await readOptionalJson(output, null);
   if (priorManifest?.runBindings?.some((binding) => binding.runId === options.runId)) {
     throw new Error(`discovery run ID already exists: ${options.runId}`);
   }
-  const selected = selectHistoricalOfficialCandidateTargets(acquisitionQueue, options);
+  const selected = selectHistoricalOfficialCandidateTargets(acquisitionQueue, {
+    referenceIds: boundedManifest.targetBindings.map((binding) => binding.referenceId),
+    brand: null,
+    category: null,
+    limit: boundedManifest.targetBindings.length,
+  });
   const verifyStorage = dependencies.verifyStorageRoot
     ?? ((path) => verifyEvidenceStorageRoot(path, { getVolumeUuid: mountedVolumeUuid }));
   const storageIdentity = await verifyStorage(storageRoot);
   const objectStore = dependencies.objectStore ?? createEvidenceObjectStore(storageIdentity.root);
-  const selection = selectionFor(options, selected);
+  const selection = selectionFor(options, selected, boundedManifest);
   const pointerPath = discoveryRunPointerPath(options.runId);
   let run = await loadIndexedDiscoveryRun({
     objectStore,
@@ -387,6 +405,7 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
     markerSha256: storageIdentity.markerSha256,
     acquisitionQueueSha256: acquisitionQueue.semanticQueueSha256,
     selection,
+    boundedManifest,
   });
   const resumed = Boolean(run);
   if (!run) {
@@ -436,6 +455,7 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
       completedAt,
       sourceAcquisitionQueueSha256: acquisitionQueue.semanticQueueSha256,
       selection,
+      boundedManifest: structuredClone(boundedManifest),
       targets: targetResults,
     };
     const bytes = Buffer.from(`${JSON.stringify(runPayload, null, 2)}\n`);

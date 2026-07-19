@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
+import { buildHistoricalEvidenceBoundedBatches } from '../../src/domain/historical-evidence-bounded-batch.mjs';
 
 import {
   claimParserImplementationIdentity,
@@ -22,12 +23,12 @@ const SHA_B = 'b'.repeat(64);
 const PARSER_SHA = 'c'.repeat(64);
 const FIELDS = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
 
-function familyCanaries(input, policyValue) {
+function familyCanaries(input, policyValue, queueValue = { queue: true }) {
   const semantic = {
     schemaVersion: 2,
     generatedAt: '2026-07-13T00:00:00.000Z',
     documentGraphSha256: 'd'.repeat(64),
-    executableQueueSha256: canonicalJsonSha256({ queue: true }),
+    executableQueueSha256: canonicalJsonSha256(queueValue),
     policySha256: canonicalJsonSha256(policyValue),
     parserContractSha256: PARSER_SHA,
     processorEpochs: {},
@@ -241,25 +242,90 @@ async function fixture({ targetCount = 1 } = {}) {
   const inputPath = join(root, 'batch.json');
   const policyPath = join(root, 'policy.json');
   const queuePath = join(root, 'queue.json');
+  const targetStatePath = join(root, 'target-state.json');
+  const boundedBatchesPath = join(root, 'bounded-batches.json');
   const outputPath = join(root, 'results.json');
   const input = batch(targetCount);
   const policyValue = policy();
-  const queueValue = { queue: true };
+  const queueTargets = input.targets.map((row) => ({
+    targetId: row.targetId,
+    referenceId: row.referenceId,
+    brand: row.brand,
+    model: row.model,
+    category: row.category,
+    lifecycleState: row.lifecycleState,
+    priorityClass: 'P0_CURRENT_MISSING_DIMENSIONS',
+    executionLane: 'ACQUISITION',
+    candidateJobIds: [...row.candidateJobIds],
+    primaryJobId: row.primaryJobId,
+  }));
+  const queueValue = {
+    schemaVersion: 2,
+    generatedAt: '2026-07-13T00:00:00.000Z',
+    sourceAcquisitionQueueSha256: '1'.repeat(64),
+    sourceOfficialCandidateManifestSha256: '2'.repeat(64),
+    evidenceProcessorEpochs: {},
+    jobs: input.artifactJobs.map((row) => ({ jobId: row.jobId, targetIds: [...row.targetIds] })),
+    targets: queueTargets,
+    discoveryTargets: [],
+    deferredTargets: [],
+    summary: {
+      targets: queueTargets.length,
+      acquisitionTargets: queueTargets.length,
+      discoveryTargets: 0,
+      deferredTargets: 0,
+    },
+  };
   input.queue.sha256 = canonicalJsonSha256(queueValue);
   input.policy.sha256 = canonicalJsonSha256(policyValue);
-  const familyCanaryValue = familyCanaries(input, policyValue);
+  const familyCanaryValue = familyCanaries(input, policyValue, queueValue);
+  const targetState = {
+    schemaVersion: 1,
+    generatedAt: '2026-07-13T00:00:00.000Z',
+    summary: { records: queueTargets.length },
+    records: queueTargets.map((row) => ({
+      referenceId: row.referenceId,
+      category: row.category,
+      canonicalBrand: row.brand,
+      model: row.model,
+      lifecycleState: row.lifecycleState,
+      state: 'CANDIDATE_READY',
+      stateClass: 'ACTIONABLE',
+      actionable: true,
+      terminal: false,
+      binding: {
+        type: 'executable_queue',
+        targetId: row.targetId,
+        executionLane: row.executionLane,
+        candidateJobIds: [...row.candidateJobIds],
+      },
+      reopeningConditions: [],
+    })),
+  };
+  const boundedBatches = buildHistoricalEvidenceBoundedBatches({
+    executableQueue: queueValue,
+    targetState,
+    familyCanaries: familyCanaryValue,
+    maximumTargets: 10,
+  });
   await fs.writeFile(inputPath, JSON.stringify(input));
   await fs.writeFile(policyPath, JSON.stringify(policyValue));
   await fs.writeFile(queuePath, JSON.stringify(queueValue));
+  await fs.writeFile(targetStatePath, JSON.stringify(targetState));
+  await fs.writeFile(boundedBatchesPath, JSON.stringify(boundedBatches));
   return {
     root,
     inputPath,
     policyPath,
     queuePath,
+    targetStatePath,
+    boundedBatchesPath,
     outputPath,
     input,
     policyValue,
     queueValue,
+    targetState,
+    boundedBatches,
     familyCanaries: familyCanaryValue,
   };
 }
@@ -320,48 +386,37 @@ function dependencies(fixtureState, overrides = {}) {
   };
 }
 
-test('CLI parser supports recovery filters and rejects unsafe or incomplete combinations', () => {
+test('CLI parser requires tracked manifests and rejects legacy broad selections', () => {
   assert.deepEqual(parseHistoricalEvidenceRecoveryRunArgs([
-    '--input', 'in.json', '--output=out.json', '--run-id', 'run-1', '--resume',
-    '--require-selection',
-    '--job-id', 'job-a', '--target-id', 'target-a',
-    '--route=OFFICIAL_RECEIPT_REBUILD', '--limit', '2',
+    '--input', 'in.json', '--output=out.json', '--run-id', 'run-1',
+    '--manifest-input', 'bounded.json', '--manifest-id', 'historical_batch_abc',
     '--network-concurrency', '2', '--mineru-concurrency=1',
   ]), {
-    input: 'in.json', output: 'out.json', runId: 'run-1', resume: true, dryRun: false,
-    requireSelection: true,
-    jobIds: ['job-a'], targetIds: ['target-a'], routes: ['OFFICIAL_RECEIPT_REBUILD'], limit: 2,
+    input: 'in.json', output: 'out.json', manifestInput: 'bounded.json',
+    manifestId: 'historical_batch_abc', runId: 'run-1', resume: false, dryRun: false,
+    jobIds: [], targetIds: [], routes: [], limit: null,
     networkConcurrency: 2, mineruConcurrency: 1,
   });
-  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([]), /selection.*required/i);
-  const allowAll = parseHistoricalEvidenceRecoveryRunArgs(['--allow-all']);
-  assert.equal(allowAll.networkConcurrency, null);
-  assert.equal(allowAll.mineruConcurrency, null);
-  assert.equal(allowAll.requireSelection, false);
-  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([
-    '--allow-all', '--limit', '1',
-  ]), /allow-all.*selection/i);
-  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([
-    '--allow-all', '--require-selection', '--limit', '1',
-  ]), /allow-all.*require-selection/i);
-  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--require-selection']), /selection.*required/i);
-  assert.equal(parseHistoricalEvidenceRecoveryRunArgs([
-    '--require-selection', '--route', 'OFFICIAL_SOURCE_DISCOVERY_REQUIRED',
-  ]).requireSelection, true);
+  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([]), /manifest-id.*required/i);
+  for (const flag of ['--allow-all', '--require-selection', '--job-id', '--target-id', '--route', '--limit']) {
+    assert.throws(
+      () => parseHistoricalEvidenceRecoveryRunArgs([flag, 'unsafe']),
+      /prohibited.*manifest-id/i,
+    );
+  }
   const resume = parseHistoricalEvidenceRecoveryRunArgs(['--resume', '--run-id', 'run-1']);
   assert.equal(resume.resume, true);
   assert.equal(resume.runId, 'run-1');
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([
-    '--resume', '--run-id', 'run-1', '--allow-all',
-  ]), /resume.*allow-all/i);
+    '--resume', '--run-id', 'run-1', '--manifest-input', 'other.json',
+  ]), /manifest-input.*run-local/i);
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([
-    '--resume', '--run-id', 'run-1', '--require-selection',
-  ]), /selection.*required/i);
+    '--resume', '--run-id', 'run-1', '--input', 'other.json',
+  ]), /input.*run-local/i);
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([
     '--resume', '--run-id', '../escape',
   ]), /run ID.*safe/i);
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--resume']), /run-id.*resume/i);
-  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--limit', '0']), /positive integer/i);
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--unknown']), /unknown argument/i);
 });
 
@@ -376,6 +431,8 @@ test('resume without repeated filters uses the immutable run batch and run-local
     policy: '/evidence-root/runs/historical-evidence-recovery/run-1/policy.json',
     queue: '/evidence-root/runs/historical-evidence-recovery/run-1/queue.json',
     familyCanaries: '/evidence-root/runs/historical-evidence-recovery/run-1/family-canaries.json',
+    targetState: '/evidence-root/runs/historical-evidence-recovery/run-1/target-state.json',
+    boundedBatches: '/evidence-root/runs/historical-evidence-recovery/run-1/bounded-manifest.json',
   });
 });
 
@@ -492,21 +549,91 @@ test('fresh run can select one resolver-only target by exact target ID', async (
   assert.equal(result.summary.accepted, 1);
 });
 
-test('fresh run persists immutable queue, policy and family canary snapshots beside run state', async (t) => {
+test('manifest-bound run persists queue, target state, policy, canary and selected manifest snapshots', async (t) => {
   const f = await fixture();
   t.after(() => fs.rm(f.root, { recursive: true, force: true }));
+  const manifest = f.boundedBatches.manifests[0];
   await runHistoricalEvidenceRecovery({
     input: f.inputPath, output: f.outputPath, policy: f.policyPath, queue: f.queuePath,
+    targetState: f.targetStatePath, boundedBatches: f.boundedBatchesPath,
+    manifestId: manifest.manifestId,
     storageRoot: f.root, runId: 'run-snapshots', resume: false, dryRun: false,
     jobIds: [], routes: [], limit: null, networkConcurrency: 2, mineruConcurrency: 1,
   }, dependencies(f));
 
   const runDirectory = join(f.root, 'runs/historical-evidence-recovery/run-snapshots');
   assert.deepEqual(JSON.parse(await fs.readFile(join(runDirectory, 'queue.json'), 'utf8')), f.queueValue);
+  assert.deepEqual(
+    JSON.parse(await fs.readFile(join(runDirectory, 'target-state.json'), 'utf8')),
+    f.targetState,
+  );
   assert.deepEqual(JSON.parse(await fs.readFile(join(runDirectory, 'policy.json'), 'utf8')), f.policyValue);
   assert.deepEqual(
     JSON.parse(await fs.readFile(join(runDirectory, 'family-canaries.json'), 'utf8')),
     f.familyCanaries,
+  );
+  assert.deepEqual(
+    JSON.parse(await fs.readFile(join(runDirectory, 'bounded-manifest.json'), 'utf8')),
+    manifest,
+  );
+});
+
+test('manifest-bound resume uses only the run-local control-plane snapshots', async (t) => {
+  const f = await fixture();
+  t.after(() => fs.rm(f.root, { recursive: true, force: true }));
+  const manifest = f.boundedBatches.manifests[0];
+  const firstDependencies = dependencies(f, {
+    graphRunner: async () => {
+      throw Object.assign(new Error('manifest-bound interrupt'), { code: 'INTERRUPTED' });
+    },
+  });
+  await assert.rejects(() => runHistoricalEvidenceRecovery({
+    input: f.inputPath,
+    output: f.outputPath,
+    policy: f.policyPath,
+    queue: f.queuePath,
+    targetState: f.targetStatePath,
+    boundedBatches: f.boundedBatchesPath,
+    manifestId: manifest.manifestId,
+    storageRoot: f.root,
+    runId: 'run-manifest-resume',
+    resume: false,
+    dryRun: false,
+    jobIds: [],
+    routes: [],
+    limit: null,
+    networkConcurrency: 2,
+    mineruConcurrency: 1,
+  }, firstDependencies), /manifest-bound interrupt/);
+
+  const runDirectory = join(f.root, 'runs/historical-evidence-recovery/run-manifest-resume');
+  const resumeDependencies = dependencies(f, {
+    processIdentity: { pid: 444, startIdentity: 'manifest-resume-process' },
+  });
+  resumeDependencies.setNow('2026-07-13T00:01:00.000Z');
+  const result = await runHistoricalEvidenceRecovery({
+    input: join(runDirectory, 'batch.json'),
+    output: join(runDirectory, 'results.json'),
+    policy: join(runDirectory, 'policy.json'),
+    queue: join(runDirectory, 'queue.json'),
+    targetState: join(runDirectory, 'target-state.json'),
+    boundedBatches: join(runDirectory, 'bounded-manifest.json'),
+    manifestId: null,
+    storageRoot: f.root,
+    runId: 'run-manifest-resume',
+    resume: true,
+    dryRun: false,
+    jobIds: [],
+    routes: [],
+    limit: null,
+    networkConcurrency: 2,
+    mineruConcurrency: 1,
+  }, resumeDependencies);
+
+  assert.equal(result.summary.accepted, 1);
+  assert.deepEqual(
+    JSON.parse(await fs.readFile(join(runDirectory, 'bounded-manifest.json'), 'utf8')),
+    manifest,
   );
 });
 

@@ -65,6 +65,10 @@ before changing evidence semantics.
     node, while one source URL returning different hashes remains multiple
     unordered source versions. Never label one version current or latest unless
     a separate acquisition-time artifact proves that state.
+16. Every fresh acquisition or discovery run must use one tracked bounded
+    manifest. Legacy job, target, route, brand, category, reference, limit and
+    `--allow-all` selectors are prohibited at the CLI boundary. Acquisition and
+    discovery manifests are not interchangeable.
 
 ## 2. Storage and tool preflight
 
@@ -90,24 +94,19 @@ version, model revision, queue SHA, policy SHA, batch SHA and family-canary
 parser contract. Do not bypass a preflight failure by editing state, gate or
 marker files.
 
-Run a network-free preflight against one already materialised acquisition job:
+Run a network-free preflight against the tracked acquisition manifest:
 
 ```bash
-JOB_ID="$(jq -r '.artifactJobs[0].jobId' \
-  data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json)"
+MANIFEST_ID="$(jq -r '
+  .manifests[] | select(.executionLane == "ACQUISITION") | .manifestId
+' data/architecture-v2/reviews/automated/historical-evidence-next-batches.json)"
 npm run recover:historical-evidence -- \
   --dry-run \
-  --require-selection \
-  --job-id "$JOB_ID" \
-  --limit 1
+  --manifest-id "$MANIFEST_ID"
 ```
 
-The CLI is selection-required by default. `--require-selection` makes that
-operator intent visible in recorded commands; omitting all `--job-id`, `--route`
-and `--limit` values still fails. A future owner-approved all-batch operation
-must use explicit `--allow-all`, which cannot be combined with any selection.
-Discovery work uses the candidate-discovery command in section 2.1 instead of
-the recovery runner.
+The CLI rejects every legacy selection flag. Discovery work uses the
+candidate-discovery command in section 2.1 with a `BOUNDED_DISCOVERY` manifest.
 
 ### 2.1 Materialise official candidates before acquisition
 
@@ -121,17 +120,19 @@ jq '.summary' \
   data/architecture-v2/reviews/automated/historical-official-candidate-manifest.json
 ```
 
-Online discovery is a separate, explicitly bounded operation. Select either
-one or more `--reference-id` values, or one `--brand` plus `--category`; always
-supply `--limit` (maximum 25) and a unique `--run-id`:
+Online discovery is a separate, manifest-bound operation. Select one tracked
+`BOUNDED_DISCOVERY` manifest and supply a unique `--run-id`:
 
 ```bash
+MANIFEST_ID="$(jq -r '
+  .manifests[]
+  | select(.workstreamId == "CURRENT_DIMENSIONS")
+  | .manifestId
+' data/architecture-v2/reviews/automated/historical-evidence-next-batches.json)"
 npm run discover:historical-official-candidates -- \
-  --brand ASKO \
-  --category dishwasher \
-  --limit 1 \
+  --manifest-id "$MANIFEST_ID" \
   --network-concurrency 2 \
-  --run-id task3-asko-dishwasher-canary-20260719-a
+  --run-id historical-current-discovery-YYYYMMDD-a
 ```
 
 The runner verifies the external storage marker and volume UUID, writes the
@@ -242,6 +243,27 @@ Fresh runs read the tracked gate and persist the exact value as
 snapshot. A legacy run without the snapshot fails closed; do not copy the
 current tracked gate into an old run directory.
 
+### 2.5 Build the deterministic next manifests
+
+Build manifests only after the executable queue, target-state projection and
+family gate are current:
+
+```bash
+npm run build:historical-evidence-bounded-batches
+jq '{summary, workstreams, manifests: [.manifests[] | {
+  manifestId, workstreamId, mode, executionLane, constraints,
+  targets: (.targetBindings | length), reviewedTargetCount
+}]}' data/architecture-v2/reviews/automated/historical-evidence-next-batches.json
+```
+
+The artifact contains at most one next manifest per workstream and at most ten
+targets per manifest. A family canary and an unscoped or ambiguous singleton
+contain one target. A passed-family expansion may contain up to ten targets but
+must retain one exact priority, lifecycle, category, brand, family and execution
+lane. Empty workstreams remain explicit. `CONFLICT_QUARANTINE` may enter only
+conflict closure with an exact pending-work binding and remains publication
+ineligible.
+
 ## 3. Build and inspect the execution graph
 
 Regenerate the next-epoch queue only after the previous release is committed:
@@ -253,6 +275,7 @@ npm run build:historical-official-candidate-manifest
 npm run build:historical-executable-recovery-queue
 npm run build:historical-evidence-family-canaries
 npm run build:historical-evidence-target-state
+npm run build:historical-evidence-bounded-batches
 npm run build:historical-evidence-recovery-batch
 ```
 
@@ -278,66 +301,47 @@ do not sum to `acquisitionRecords`.
 Stop before runner invocation if the selected target has `runnerAllowed: false`
 in the family-canary artifact. Do not alter the batch to substitute a sibling.
 
-Inspect route counts before selecting work:
+Inspect the tracked next manifests before selecting work:
 
 ```bash
-jq '
-  .artifactJobs
-  | group_by(.acquisitionRoute)
-  | map({route: .[0].acquisitionRoute, jobs: length})
-' data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json
+jq '[.manifests[] | {
+  manifestId,
+  workstreamId,
+  mode,
+  executionLane,
+  constraints,
+  reviewedTargetCount,
+  targets: (.targetBindings | length),
+  estimatedSharedArtifactCount
+}]' data/architecture-v2/reviews/automated/historical-evidence-next-batches.json
 ```
 
-Create an explicit job-ID file and verify both job and expanded-target counts:
+Stop if a manifest has more than ten targets, mixes constraints, names an empty
+target list, or uses the wrong execution command for its lane. The runner
+revalidates these bindings; the inspection is the operator review boundary.
 
-```bash
-jq -r '
-  .artifactJobs[]
-  | select(.acquisitionRoute == "OFFICIAL_SOURCE_DISCOVERY_REQUIRED")
-  | .jobId
-' data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json \
-  > /tmp/fitappliance-recovery-job-ids.txt
-
-wc -l /tmp/fitappliance-recovery-job-ids.txt
-jq --rawfile ids /tmp/fitappliance-recovery-job-ids.txt '
-  ($ids | split("\n") | map(select(length > 0))) as $selected
-  | {
-      jobs: [.artifactJobs[] | select(.jobId as $id | $selected | index($id))] | length,
-      targets: [
-        .targets[]
-        | select(.candidateJobIds | any(. as $id | $selected | index($id)))
-      ] | length
-    }
-' data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json
-```
-
-Stop if the count is not the reviewed count. A route filter is retained in the
-run command as a second boundary even when every job ID is explicit.
-
-## 4. Start a bounded run
+## 4. Start a bounded acquisition run
 
 Use a unique run ID. Results belong beside state on the evidence disk, not in a
 tracked repository file during acquisition:
 
 ```bash
-job_args=()
-while IFS= read -r id; do
-  job_args+=(--job-id "$id")
-done < /tmp/fitappliance-recovery-job-ids.txt
-
 run_id=historical-recovery-YYYYMMDD-group-a
 run_dir="$FITAPPLIANCE_STORAGE_ROOT/runs/historical-evidence-recovery/$run_id"
+manifest_id="$(jq -r '
+  .manifests[] | select(.executionLane == "ACQUISITION") | .manifestId
+' data/architecture-v2/reviews/automated/historical-evidence-next-batches.json)"
 
 node scripts/architecture-v2/run-historical-evidence-recovery.mjs \
-  --require-selection \
-  --route OFFICIAL_SOURCE_DISCOVERY_REQUIRED \
-  "${job_args[@]}" \
+  --manifest-id "$manifest_id" \
   --run-id "$run_id" \
   --output "$run_dir/results.json"
 ```
 
-The run directory contains `batch.json`, `state.json`, `events.ndjson`, the
-temporary `lock.json`, and `results.json` after complete accounting. The policy
+The run directory contains `batch.json`, `bounded-manifest.json`, `queue.json`,
+`target-state.json`, `family-canaries.json`, `policy.json`, `state.json`,
+`events.ndjson`, the temporary `lock.json`, and `results.json` after complete
+accounting. The policy
 caps network concurrency at 2, per-host concurrency at 1 and MinerU concurrency
 at 1. Operators may reduce these values but cannot exceed the policy.
 
@@ -358,10 +362,9 @@ selected target count. Zero running or unaccounted targets are allowed.
 
 Use `SIGINT` or `SIGTERM` for an intentional stop. The runner marks the run
 `interrupted`, checkpoints completed objects and targets, and releases its lock.
-Resume by run ID. With no new selection flags, the runner loads the immutable
-`batch.json` and writes `results.json` in that run directory. This avoids
-reconstructing a long job selection at the command line; the state store still
-rejects input, policy, queue, storage or toolchain drift:
+Resume by run ID. The runner loads only the immutable run-local batch,
+manifest, queue, target state, family gate and policy. The state store still
+rejects input, storage or toolchain drift:
 
 ```bash
 node scripts/architecture-v2/run-historical-evidence-recovery.mjs \
@@ -369,9 +372,8 @@ node scripts/architecture-v2/run-historical-evidence-recovery.mjs \
   --run-id "$run_id"
 ```
 
-Do not combine `--resume` with `--allow-all`. Supplying
-`--require-selection` on resume intentionally restores the stricter legacy
-form and requires the complete original selection.
+Do not supply a new input or manifest path on resume. An optional
+`--manifest-id` must match the run-local snapshot.
 
 Do not manually delete `lock.json`. A lock is reclaimable only after the
 90-second policy timeout and after its recorded PID plus process-start identity
@@ -604,11 +606,10 @@ Current measured state:
   are excluded. The executable view contains 7,738 resolver-only targets and
   no materialized fetch edge, so future runs must remain explicitly bounded.
 
-Do not use `--allow-all` on a batch containing thousands of resolver-only
-targets. It intentionally selects those targets and can launch broad online
-discovery. For a reviewed canary or policy replay, pass explicit `--job-id`
-values. Use `--allow-all` only when the materialized target and job counts are
-small, inspected and intentionally in scope.
+The former `--allow-all`, `--job-id`, route and ad hoc resolver-only execution
+paths have been removed. Historical examples below describe old runs but are
+not valid current commands. Always rebuild and execute a tracked bounded
+manifest.
 
 ## 12. Official structured product API evidence
 

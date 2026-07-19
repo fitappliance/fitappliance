@@ -16,6 +16,10 @@ import {
   claimParserImplementationIdentity as sharedClaimParserImplementationIdentity,
 } from '../../src/domain/evidence-processor-epoch.mjs';
 import { validateHistoricalEvidenceFamilyCanarySelection } from '../../src/domain/historical-evidence-family-canary.mjs';
+import {
+  resolveHistoricalEvidenceBoundedManifest,
+  validateHistoricalEvidenceBoundedManifestSnapshot,
+} from '../../src/domain/historical-evidence-bounded-batch.mjs';
 import { reconcileEvidenceClaims } from '../../src/domain/evidence-claim-reconciliation.mjs';
 import { discoverRankedEvidenceCandidates } from '../../src/domain/evidence-source-discovery.mjs';
 import {
@@ -59,10 +63,11 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
   const result = {
     input: null,
     output: null,
+    manifestInput: null,
+    manifestId: null,
     runId: null,
     resume: false,
     dryRun: false,
-    requireSelection: true,
     jobIds: [],
     targetIds: [],
     routes: [],
@@ -72,16 +77,15 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
   };
   const textFlags = new Map([
     ['--input', 'input'], ['--output', 'output'], ['--run-id', 'runId'],
-  ]);
-  const repeatable = new Map([
-    ['--job-id', 'jobIds'], ['--target-id', 'targetIds'], ['--route', 'routes'],
+    ['--manifest-input', 'manifestInput'], ['--manifest-id', 'manifestId'],
   ]);
   const numeric = new Map([
-    ['--limit', 'limit'], ['--network-concurrency', 'networkConcurrency'],
+    ['--network-concurrency', 'networkConcurrency'],
     ['--mineru-concurrency', 'mineruConcurrency'],
   ]);
-  let allowAll = false;
-  let explicitRequireSelection = false;
+  const prohibitedSelectionFlags = new Set([
+    '--allow-all', '--require-selection', '--job-id', '--target-id', '--route', '--limit',
+  ]);
   for (let index = 0; index < argv.length; index += 1) {
     const raw = argv[index];
     const separator = raw.indexOf('=');
@@ -89,24 +93,12 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
     let value = separator === -1 ? null : raw.slice(separator + 1);
     if (flag === '--resume') { result.resume = true; continue; }
     if (flag === '--dry-run') { result.dryRun = true; continue; }
-    if (flag === '--require-selection') {
-      explicitRequireSelection = true;
-      result.requireSelection = true;
-      continue;
-    }
-    if (flag === '--allow-all') {
-      allowAll = true;
-      result.requireSelection = false;
-      continue;
+    if (prohibitedSelectionFlags.has(flag)) {
+      throw new TypeError(`${flag} is prohibited; use a tracked --manifest-id`);
     }
     if (textFlags.has(flag)) {
       value ??= argv[++index];
       result[textFlags.get(flag)] = requiredText(value, flag);
-      continue;
-    }
-    if (repeatable.has(flag)) {
-      value ??= argv[++index];
-      result[repeatable.get(flag)].push(requiredText(value, flag));
       continue;
     }
     if (numeric.has(flag)) {
@@ -116,33 +108,18 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
     }
     throw new TypeError(`unknown argument: ${raw}`);
   }
-  result.jobIds = [...new Set(result.jobIds)].sort();
-  result.targetIds = [...new Set(result.targetIds)].sort();
-  result.routes = [...new Set(result.routes)].sort();
-  const hasSelection = result.jobIds.length || result.targetIds.length
-    || result.routes.length || result.limit !== null;
-  if (allowAll && explicitRequireSelection) {
-    throw new TypeError('--allow-all cannot be combined with --require-selection');
-  }
   if (result.resume && !result.runId) throw new TypeError('--run-id is required with --resume');
   if (result.runId && !/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(result.runId)) {
     throw new TypeError('run ID must be a safe path segment');
   }
-  if (result.resume && allowAll) {
-    throw new TypeError('--resume cannot be combined with --allow-all');
+  if (!result.resume && !result.manifestId) throw new TypeError('--manifest-id required for a fresh run');
+  if (result.resume && result.manifestInput) {
+    throw new TypeError('--manifest-input cannot override the run-local manifest during resume');
   }
-  if (result.requireSelection && !hasSelection && (!result.resume || explicitRequireSelection)) {
-    throw new TypeError('at least one job, route or limit selection is required');
-  }
-  if (allowAll && hasSelection) {
-    throw new TypeError('--allow-all cannot be combined with a job, route or limit selection');
+  if (result.resume && result.input) {
+    throw new TypeError('--input cannot override the run-local batch during resume');
   }
   return result;
-}
-
-function hasExplicitSelection(options) {
-  return options.jobIds.length > 0 || (options.targetIds ?? []).length > 0
-    || options.routes.length > 0 || options.limit !== null;
 }
 
 export function resolveHistoricalEvidenceRecoveryIoPaths(options, settings = {}) {
@@ -152,9 +129,8 @@ export function resolveHistoricalEvidenceRecoveryIoPaths(options, settings = {})
     const storageRoot = resolve(requiredText(settings.storageRoot, 'storage root'));
     runDirectory = resolve(storageRoot, 'runs/historical-evidence-recovery', options.runId);
   }
-  const usePersistedBatch = options.resume && !options.input && !hasExplicitSelection(options);
   return {
-    input: resolve(options.input ?? (usePersistedBatch
+    input: resolve(options.input ?? (options.resume
       ? resolve(runDirectory, 'batch.json')
       : resolve(repoRootPath, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json'))),
     output: resolve(options.output ?? (options.resume
@@ -169,6 +145,13 @@ export function resolveHistoricalEvidenceRecoveryIoPaths(options, settings = {})
     familyCanaries: options.resume
       ? resolve(runDirectory, 'family-canaries.json')
       : resolveArchitectureV2Path(repoRootPath, 'historicalEvidenceFamilyCanaries'),
+    targetState: options.resume
+      ? resolve(runDirectory, 'target-state.json')
+      : resolveArchitectureV2Path(repoRootPath, 'historicalEvidenceTargetState'),
+    boundedBatches: options.resume
+      ? resolve(runDirectory, 'bounded-manifest.json')
+      : resolve(options.manifestInput
+        ?? resolveArchitectureV2Path(repoRootPath, 'historicalEvidenceNextBatches')),
   };
 }
 
@@ -526,7 +509,10 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
     queueSnapshot = JSON.parse(await fs.readFile(resolve(options.queue), 'utf8'));
     if (canonicalJsonSha256(queueSnapshot) !== rawBatch.queue.sha256) throw new Error('recovery queue hash drift');
   }
-  const batch = selectedBatch(rawBatch, options);
+  let targetStateSnapshot = null;
+  if (options.targetState) {
+    targetStateSnapshot = JSON.parse(await fs.readFile(resolve(options.targetState), 'utf8'));
+  }
   const runCanaryPath = options.resume
     ? resolve(options.storageRoot, 'runs/historical-evidence-recovery', options.runId, 'family-canaries.json')
     : resolve(options.familyCanaries
@@ -534,6 +520,47 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
   const readFamilyCanaries = dependencies.readFamilyCanaries
     ?? (async (path) => JSON.parse(await fs.readFile(path, 'utf8')));
   const familyCanaries = await readFamilyCanaries(runCanaryPath);
+  let boundedManifest = null;
+  if (options.boundedBatches) {
+    if (!queueSnapshot || !targetStateSnapshot) {
+      throw new Error('bounded manifest execution requires queue and target-state snapshots');
+    }
+    const boundedInput = JSON.parse(await fs.readFile(resolve(options.boundedBatches), 'utf8'));
+    if (options.resume) {
+      boundedManifest = validateHistoricalEvidenceBoundedManifestSnapshot({
+        manifest: boundedInput,
+        expectedExecutionLane: 'ACQUISITION',
+        executableQueue: queueSnapshot,
+        targetState: targetStateSnapshot,
+        familyCanaries,
+      });
+      if (options.manifestId && boundedManifest.manifestId !== options.manifestId) {
+        throw new Error('resume manifest ID does not match the run-local manifest');
+      }
+    } else {
+      boundedManifest = resolveHistoricalEvidenceBoundedManifest({
+        batches: boundedInput,
+        manifestId: options.manifestId,
+        expectedExecutionLane: 'ACQUISITION',
+        executableQueue: queueSnapshot,
+        targetState: targetStateSnapshot,
+        familyCanaries,
+      });
+    }
+  }
+  const batch = boundedManifest && options.resume
+    ? structuredClone(rawBatch)
+    : selectedBatch(rawBatch, boundedManifest ? {
+      jobIds: [],
+      targetIds: boundedManifest.targetBindings.map((binding) => binding.targetId),
+      routes: [],
+      limit: null,
+    } : options);
+  if (boundedManifest && (batch.targets.length !== boundedManifest.targetBindings.length
+    || JSON.stringify(batch.targets.map((target) => target.targetId).sort())
+      !== JSON.stringify(boundedManifest.targetBindings.map((binding) => binding.targetId).sort()))) {
+    throw new Error('recovery batch does not exactly materialise the bounded manifest');
+  }
   const verifyStorage = dependencies.verifyStorageRoot
     ?? ((root) => verifyEvidenceStorageRoot(root, { fs, getVolumeUuid: mountedVolumeUuid }));
   const storageIdentity = await verifyStorage(options.storageRoot);
@@ -587,6 +614,10 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
       policySha256: batch.policy.sha256,
       toolchainSha256: canonicalJsonSha256(toolchain),
       storageIdentity,
+      ...(boundedManifest ? {
+        boundedManifestId: boundedManifest.manifestId,
+        boundedManifestSha256: boundedManifest.semanticManifestSha256,
+      } : {}),
       summary: structuredClone(batch.summary),
     };
   }
@@ -600,8 +631,14 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
     if (!options.resume) {
       const runDirectory = resolve(storageIdentity.root, 'runs/historical-evidence-recovery', runId);
       if (queueSnapshot) await durableOutputWrite(fs, resolve(runDirectory, 'queue.json'), queueSnapshot);
+      if (targetStateSnapshot) {
+        await durableOutputWrite(fs, resolve(runDirectory, 'target-state.json'), targetStateSnapshot);
+      }
       await durableOutputWrite(fs, resolve(runDirectory, 'policy.json'), policy);
       await durableOutputWrite(fs, resolve(runDirectory, 'family-canaries.json'), familyCanaries);
+      if (boundedManifest) {
+        await durableOutputWrite(fs, resolve(runDirectory, 'bounded-manifest.json'), boundedManifest);
+      }
     }
     const schedule = dependencies.setInterval ?? setInterval;
     const cancel = dependencies.clearInterval ?? clearInterval;
@@ -672,7 +709,7 @@ async function main(argv) {
   const parsed = parseHistoricalEvidenceRecoveryRunArgs(argv);
   const storageRoot = process.env.FITAPPLIANCE_STORAGE_ROOT;
   const {
-    input, output, policy, queue, familyCanaries,
+    input, output, policy, queue, familyCanaries, targetState, boundedBatches,
   } = resolveHistoricalEvidenceRecoveryIoPaths(parsed, { storageRoot });
   const controller = new AbortController();
   const interrupt = () => controller.abort();
@@ -686,6 +723,8 @@ async function main(argv) {
       policy,
       queue,
       familyCanaries,
+      targetState,
+      boundedBatches,
       storageRoot,
     }, { signal: controller.signal });
     process.stdout.write(`${JSON.stringify(result.dryRun ? result : result.summary, null, 2)}\n`);

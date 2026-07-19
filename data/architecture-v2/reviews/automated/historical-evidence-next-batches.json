@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "plannerVersion": "1",
+  "generatedAt": "2026-07-17T04:19:39.580Z",
+  "maximumTargets": 10,
+  "sourceBindings": {
+    "executableQueueSha256": "0bf5701ad785f1d26ef2e2f37e3f9b818e1199690154f5f87795600f2ccd0432",
+    "targetStateSha256": "c384f39a93f8acaeeafcdae96b8e72b3abb036c2e0e7be4deda1b6c3bb5ffec8",
+    "familyCanarySha256": "51d5f0da726bbf112c9bc2bbe9a07b50a8785537d7fd5e30fd1adb850f28fffe",
+    "sourceAcquisitionQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be"
+  },
+  "workstreams": [
+    {
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "description": "Current-retail dimensions recovery and confirmation",
+      "assignedTargets": 951,
+      "eligibleTargets": 946,
+      "suppressedTargets": 5,
+      "suppressedByReason": {
+        "FAMILY_GATE_BLOCKED": 5
+      },
+      "nextManifestId": "historical_batch_48294e3d099a8ee7c949e106"
+    },
+    {
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "description": "Archived and registry-only dimensions recovery and confirmation",
+      "assignedTargets": 3974,
+      "eligibleTargets": 3941,
+      "suppressedTargets": 33,
+      "suppressedByReason": {
+        "FAMILY_GATE_BLOCKED": 33
+      },
+      "nextManifestId": "historical_batch_116385c9ba52ba578ea63d7c"
+    },
+    {
+      "workstreamId": "PARSER_REPAIR",
+      "description": "Reopened family canaries after a parser-bound failure",
+      "assignedTargets": 0,
+      "eligibleTargets": 0,
+      "suppressedTargets": 0,
+      "suppressedByReason": {},
+      "nextManifestId": null
+    },
+    {
+      "workstreamId": "CONFLICT_CLOSURE",
+      "description": "Actionable conflict quarantine with an exact pending-work binding",
+      "assignedTargets": 63,
+      "eligibleTargets": 62,
+      "suppressedTargets": 1,
+      "suppressedByReason": {
+        "FAMILY_GATE_BLOCKED": 1
+      },
+      "nextManifestId": "historical_batch_dac08012c7f21ae3b2c61cf5"
+    }
+  ],
+  "manifests": [
+    {
+      "schemaVersion": 1,
+      "plannerVersion": "1",
+      "workstreamId": "CONFLICT_CLOSURE",
+      "mode": "FAMILY_EXPANSION",
+      "executionLane": "ACQUISITION",
+      "executionCommand": "recover:historical-evidence",
+      "constraints": {
+        "priorityClass": "P2_CURRENT_CONFIRMATION",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "executionLane": "ACQUISITION"
+      },
+      "familyId": "document_family_82eed9fcc8fd21713fbf9017",
+      "familyState": "PASSED",
+      "sourceBindings": {
+        "executableQueueSha256": "0bf5701ad785f1d26ef2e2f37e3f9b818e1199690154f5f87795600f2ccd0432",
+        "targetStateSha256": "c384f39a93f8acaeeafcdae96b8e72b3abb036c2e0e7be4deda1b6c3bb5ffec8",
+        "familyCanarySha256": "51d5f0da726bbf112c9bc2bbe9a07b50a8785537d7fd5e30fd1adb850f28fffe",
+        "sourceAcquisitionQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be"
+      },
+      "reviewedTargetCount": 63,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_a677bacb6d68e1c58a543364",
+          "referenceId": "fa_ref_c913768fa64a93313207ce31",
+          "executionLane": "ACQUISITION",
+          "familyId": "document_family_82eed9fcc8fd21713fbf9017",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_dac08012c7f21ae3b2c61cf5",
+      "semanticManifestSha256": "dac08012c7f21ae3b2c61cf51543fe7b8a46cd7dbd67cce6ac11aa4ac782d651"
+    },
+    {
+      "schemaVersion": 1,
+      "plannerVersion": "1",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dishwasher",
+        "brand": "Esatto",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "0bf5701ad785f1d26ef2e2f37e3f9b818e1199690154f5f87795600f2ccd0432",
+        "targetStateSha256": "c384f39a93f8acaeeafcdae96b8e72b3abb036c2e0e7be4deda1b6c3bb5ffec8",
+        "familyCanarySha256": "51d5f0da726bbf112c9bc2bbe9a07b50a8785537d7fd5e30fd1adb850f28fffe",
+        "sourceAcquisitionQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be"
+      },
+      "reviewedTargetCount": 951,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_24ed948d4390531eefa18311",
+          "referenceId": "fa_ref_fd1cddcdc50d2622c30e7b3c",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_48294e3d099a8ee7c949e106",
+      "semanticManifestSha256": "48294e3d099a8ee7c949e1067e4eeee6252676338648ee06ad013d7f011c85ce"
+    },
+    {
+      "schemaVersion": 1,
+      "plannerVersion": "1",
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "dishwasher",
+        "brand": "Artusi",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "0bf5701ad785f1d26ef2e2f37e3f9b818e1199690154f5f87795600f2ccd0432",
+        "targetStateSha256": "c384f39a93f8acaeeafcdae96b8e72b3abb036c2e0e7be4deda1b6c3bb5ffec8",
+        "familyCanarySha256": "51d5f0da726bbf112c9bc2bbe9a07b50a8785537d7fd5e30fd1adb850f28fffe",
+        "sourceAcquisitionQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be"
+      },
+      "reviewedTargetCount": 3974,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_c576bd4a2d9f6898def1d4ef",
+          "referenceId": "fa_ref_00010a5b30ee1af26eb320d2",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_116385c9ba52ba578ea63d7c",
+      "semanticManifestSha256": "116385c9ba52ba578ea63d7cba95bda927149d35bc46135a8719fdea67de2a74"
+    }
+  ],
+  "summary": {
+    "assignedTargets": 4988,
+    "eligibleTargets": 4949,
+    "suppressedTargets": 39,
+    "suppressedByReason": {
+      "FAMILY_GATE_BLOCKED": 39
+    },
+    "manifests": 3,
+    "manifestedTargets": 3,
+    "byWorkstream": {
+      "CURRENT_DIMENSIONS": 951,
+      "HISTORICAL_DIMENSIONS": 3974,
+      "PARSER_REPAIR": 0,
+      "CONFLICT_CLOSURE": 63
+    }
+  },
+  "semanticBatchesSha256": "c0adc34112002fced57557ef2cd3206d775626e1ebfea0bfef27a8a5b5ac1304"
+}

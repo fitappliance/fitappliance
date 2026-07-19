@@ -11,7 +11,7 @@
   [`2026-07-13-historical-evidence-coverage-recovery.md`](2026-07-13-historical-evidence-coverage-recovery.md)
 - **Canonical runbook:**
   [`historical-evidence-recovery-runbook.md`](../../architecture-v2/historical-evidence-recovery-runbook.md)
-- **Active task:** None - Task 6 verified; Task 7 not started
+- **Active task:** Task 8 - Impact-Ranked Parser Gap Queue and Fixture Corpus
 
 **Goal:** Move the 8,089-model historical evidence programme from a safe but
 low-throughput recovery loop to a measurable, family-aware, bounded and
@@ -86,8 +86,8 @@ under that task, repair the plan first, and only then resume implementation.
 | 4 | Executable graph has resolver-only targets and zero fetch jobs | COMPLETE | 68 focused tests; Architecture V2 905/905; lint/build/diff passed; 6 fetch jobs and 6 candidate edges; 4,982 bounded discovery targets; zero resolver-only acquisition targets |
 | 5 | PDF/MinerU/document-family/model relationships are not canonical | COMPLETE | 55 focused tests; Architecture V2 920/920; lint/build/diff passed; five-artifact external replay idempotent |
 | 6 | Per-model runs repeat family-level source failures | COMPLETE | 8 domain tests; 27 gate/runner/epoch tests; Architecture V2 929/929; lint/offline build/diff passed; schema-v2 artifact stable |
-| 7 | Generated batches are operationally too broad | PENDING | - |
-| 8 | Parser repairs are not prioritised by reusable family impact | PENDING | - |
+| 7 | Generated batches are operationally too broad | COMPLETE | 12 planner tests; 48 lane tests; Architecture V2 942/942; lint/offline build/determinism/real-manifest validation passed |
+| 8 | Parser repairs are not prioritised by reusable family impact | IN_PROGRESS | Activated after Task 7 verification; dependency 5 complete |
 | 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | PENDING | - |
 | 10 | Full installation/Fit evidence has no separate scale pipeline | PENDING | - |
 
@@ -551,22 +551,74 @@ similarity.
 - Modify: recovery runbook and package scripts
 
 **Interfaces:**
-- Produces deterministic manifests capped by policy, initially 10 targets and
-  one family canary or one passed-family expansion per manifest.
+- Produces one deterministic next manifest per workstream, capped by policy at
+  10 targets. A manifest contains one family canary, one passed-family
+  expansion, or one unscoped/ambiguous singleton; it never mixes those modes.
+- Manifests bind the executable queue, family-canary gate and target-state
+  projection. Completed and non-actionable targets, plus terminal targets with
+  no explicit pending control-plane work, remain counted but cannot enter a
+  manifest. `CONFLICT_QUARANTINE` is the sole terminal-state exception: it may
+  enter only conflict closure when `actionable=true` and its binding names the
+  same executable target; it remains ineligible for ordinary dimensions work
+  and public projection.
+- Acquisition and bounded discovery stay separate execution lanes. An
+  acquisition manifest is accepted only by the evidence recovery runner; a
+  discovery manifest is accepted only by the candidate-discovery command.
+- The four workstreams are current dimensions (P0/P2), historical dimensions
+  (P1/P3), parser repair, and conflict closure. Every target is assigned once;
+  each concrete manifest keeps one exact priority, lifecycle, category, brand
+  and execution lane.
 - Stores priority, category, brand, family, expected source lane, reviewed count
   and estimated shared artifact count.
 
-- [ ] Test deterministic ordering, hard cap, no mixed untested families,
-  accepted/terminal suppression and explicit empty queues.
-- [ ] Generate P0, P1, parser-repair and conflict manifests separately.
-- [ ] Make the runner accept a manifest ID and refuse broad default execution.
-- [ ] Update this task and commit.
+- [x] Test deterministic ordering, hard cap, no mixed untested families,
+  completed/non-actionable suppression, the bound conflict-terminal exception
+  and explicit empty queues.
+- [x] Generate current, historical, parser-repair and conflict manifests
+  separately, preserving exact P0-P4 priority in each concrete manifest.
+- [x] Make both execution lanes accept a manifest ID, persist the selected
+  manifest, and refuse broad default execution.
+- [x] Update this task and commit.
+
+**Completed evidence (2026-07-19):** The control plane assigns all 4,988
+executable targets to exactly one of four workstreams, with 4,949 eligible and
+39 family-gated suppressions. It emits only three next manifests and three
+targets: one acquisition conflict closure, one current discovery singleton and
+one historical discovery singleton; parser repair is explicitly empty. Both
+execution commands require a tracked manifest ID, reject legacy broad
+selectors, persist exact run-local manifest/control-plane snapshots and resume
+from those immutable snapshots. Artifact summary, source bindings, workstream
+ownership, constraints and target/family bindings are hash-bound and
+revalidated before execution. The planner passed 12/12 tests, the combined
+lane suite passed 48/48, Architecture V2 passed 942/942, `npm run lint`,
+explicit `node --check`, external-drive-free `npm run build:architecture-v2`,
+real-manifest validation and `git diff --check` passed. Two consecutive builds
+produced file SHA-256
+`2ea1755bfb7c81ad1ad523fc031fed15cf7945ee2a93a30795e9b306b880300c`.
 
 **Acceptance:** Normal operation never hands thousands of targets to the runner;
 every run has a tracked bounded manifest and reviewed count.
 
 **Stop condition:** A manifest crosses lifecycle/priority boundaries without an
 explicit policy or contains more than its hard cap.
+
+**Plan correction (2026-07-19):** The original runner requirement ignored that
+the current recovery batch can materialise only the six `ACQUISITION` targets,
+while 4,982 targets belong to the separate `BOUNDED_DISCOVERY` command. Passing
+a discovery manifest to the recovery runner would create a tracked but
+unexecutable plan. Task 7 therefore routes each manifest to its declared lane,
+generates only the next bounded unit per workstream instead of thousands of
+singleton files, persists the selected manifest with each run, and prohibits
+the legacy broad `--allow-all` escape hatch.
+
+**Plan correction (2026-07-19, terminal semantics):** Target-state projection
+uses `terminal=true` for the current quarantined evidence disposition even when
+an executable conflict-resolution binding exists. Treating all terminal rows
+as control-plane terminal would permanently suppress all six acquisition
+targets in the current snapshot. Batch admission therefore distinguishes
+publication/evidence terminality from pending control-plane work and permits
+only a fully bound, actionable `CONFLICT_QUARANTINE` row in the conflict-closure
+workstream.
 
 ---
 
