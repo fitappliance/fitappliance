@@ -256,6 +256,8 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
       + ' && npm run build:historical-evidence-target-state'
       + ' && npm run build:historical-evidence-bounded-batches'
       + ' && npm run build:historical-evidence-recovery-batch'
+      + ' && npm run audit:installation-evidence-receipts'
+      + ' && npm run build:installation-evidence-pipeline'
       + ' && npm run audit:fit-publication'
       + ' && npm run publish:historical-reference'
       + ' && npm run audit:historical-replacement'

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-19T00:00:00.000Z",
+  "products": [
+    {
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "observedAt": "2026-07-11T00:00:00.000Z",
+      "identityLocators": [
+        { "page": 2, "itemIndex": 11, "itemType": "page_header", "bbox": [35, 40, 240, 58] },
+        { "page": 1, "itemIndex": 0, "itemType": "title", "bbox": [39, 84, 288, 178] }
+      ],
+      "fields": [
+        { "field": "closedEnvelope.widthMm", "applicability": "required", "value": 905, "unit": "mm", "locator": { "page": 2, "itemIndex": 5, "itemType": "table", "bbox": [670, 262, 956, 463] } },
+        { "field": "closedEnvelope.heightMm", "applicability": "required", "value": 1790, "unit": "mm", "locator": { "page": 2, "itemIndex": 5, "itemType": "table", "bbox": [670, 262, 956, 463] } },
+        { "field": "closedEnvelope.depthMm", "applicability": "required", "value": 688, "unit": "mm", "locator": { "page": 2, "itemIndex": 5, "itemType": "table", "bbox": [670, 262, 956, 463] } },
+        { "field": "installationClearance.leftMm", "applicability": "required", "value": 20, "unit": "mm", "locator": { "page": 2, "itemIndex": 5, "itemType": "table", "bbox": [670, 262, 956, 463] } },
+        { "field": "installationClearance.rightMm", "applicability": "required", "value": 20, "unit": "mm", "locator": { "page": 2, "itemIndex": 5, "itemType": "table", "bbox": [670, 262, 956, 463] } },
+        { "field": "installationClearance.topMm", "applicability": "required", "value": 20, "unit": "mm", "locator": { "page": 2, "itemIndex": 5, "itemType": "table", "bbox": [670, 262, 956, 463] } },
+        { "field": "installationClearance.rearMm", "applicability": "required", "value": 30, "unit": "mm", "locator": { "page": 2, "itemIndex": 5, "itemType": "table", "bbox": [670, 262, 956, 463] } },
+        { "field": "powerConnection.required", "applicability": "required", "value": true, "unit": null, "locator": { "page": 2, "itemIndex": 2, "itemType": "table", "bbox": [670, 110, 956, 186] } },
+        { "field": "powerConnection.currentA", "applicability": "required", "value": 10, "unit": "A", "locator": { "page": 2, "itemIndex": 2, "itemType": "table", "bbox": [670, 110, 956, 186] } },
+        { "field": "powerConnection.minimumVoltageV", "applicability": "required", "value": 220, "unit": "V", "locator": { "page": 2, "itemIndex": 2, "itemType": "table", "bbox": [670, 110, 956, 186] } },
+        { "field": "powerConnection.maximumVoltageV", "applicability": "required", "value": 240, "unit": "V", "locator": { "page": 2, "itemIndex": 2, "itemType": "table", "bbox": [670, 110, 956, 186] } }
+      ]
+    },
+    {
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "observedAt": "2026-07-11T00:00:00.000Z",
+      "identityLocators": [
+        { "page": 1, "itemIndex": 25, "itemType": "page_header", "bbox": [35, 40, 228, 58] },
+        { "page": 1, "itemIndex": 0, "itemType": "paragraph", "bbox": [39, 84, 261, 146] }
+      ],
+      "fields": [
+        { "field": "closedEnvelope.widthMm", "applicability": "required", "value": 597, "unit": "mm", "locator": { "page": 1, "itemIndex": 9, "itemType": "paragraph", "bbox": [354, 141, 634, 225] } },
+        { "field": "closedEnvelope.heightMm", "applicability": "required", "value": { "minimumMm": 857, "maximumMm": 917 }, "unit": "mm", "locator": { "page": 1, "itemIndex": 9, "itemType": "paragraph", "bbox": [354, 141, 634, 225] } },
+        { "field": "closedEnvelope.depthMm", "applicability": "required", "value": 554, "unit": "mm", "locator": { "page": 1, "itemIndex": 9, "itemType": "paragraph", "bbox": [354, 141, 634, 225] } },
+        { "field": "powerConnection.required", "applicability": "required", "value": true, "unit": null, "locator": { "page": 2, "itemIndex": 24, "itemType": "paragraph", "bbox": [671, 662, 954, 737] } },
+        { "field": "powerConnection.currentA", "applicability": "required", "value": 10, "unit": "A", "locator": { "page": 2, "itemIndex": 24, "itemType": "paragraph", "bbox": [671, 662, 954, 737] } },
+        { "field": "powerConnection.minimumVoltageV", "applicability": "required", "value": 220, "unit": "V", "locator": { "page": 2, "itemIndex": 24, "itemType": "paragraph", "bbox": [671, 662, 954, 737] } },
+        { "field": "powerConnection.maximumVoltageV", "applicability": "required", "value": 240, "unit": "V", "locator": { "page": 2, "itemIndex": 24, "itemType": "paragraph", "bbox": [671, 662, 954, 737] } },
+        { "field": "waterConnection.required", "applicability": "required", "value": true, "unit": null, "locator": { "page": 3, "itemIndex": 0, "itemType": "table", "bbox": [38, 80, 326, 882] } },
+        { "field": "waterConnection.minimumPressureKpa", "applicability": "required", "value": 30, "unit": "kPa", "locator": { "page": 3, "itemIndex": 0, "itemType": "table", "bbox": [38, 80, 326, 882] } },
+        { "field": "waterConnection.maximumPressureKpa", "applicability": "required", "value": 1000, "unit": "kPa", "locator": { "page": 3, "itemIndex": 0, "itemType": "table", "bbox": [38, 80, 326, 882] } }
+      ]
+    }
+  ]
+}

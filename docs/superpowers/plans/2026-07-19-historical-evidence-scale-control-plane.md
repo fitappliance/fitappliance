@@ -5,13 +5,13 @@
 > checkbox (`- [ ]`) syntax for tracking. Do not start a task until this file
 > has been read and its dependencies are complete.
 
-- **Status:** In execution
+- **Status:** Complete
 - **Date:** 2026-07-19
 - **Parent workflow:**
   [`2026-07-13-historical-evidence-coverage-recovery.md`](2026-07-13-historical-evidence-coverage-recovery.md)
 - **Canonical runbook:**
   [`historical-evidence-recovery-runbook.md`](../../architecture-v2/historical-evidence-recovery-runbook.md)
-- **Active task:** Task 10 - Independent Installation and Fit Evidence Pipeline
+- **Active task:** Programme complete - all ten tasks passed their release gates
 
 **Goal:** Move the 8,089-model historical evidence programme from a safe but
 low-throughput recovery loop to a measurable, family-aware, bounded and
@@ -89,7 +89,7 @@ under that task, repair the plan first, and only then resume implementation.
 | 7 | Generated batches are operationally too broad | COMPLETE | 12 planner tests; 48 lane tests; Architecture V2 942/942; lint/offline build/determinism/real-manifest validation passed |
 | 8 | Parser repairs are not prioritised by reusable family impact | COMPLETE | 216 focused tests; Architecture V2 968/968; lint/offline build/diff passed; full 803-object repair audit and 408/408 receipt replay passed |
 | 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Five immutable P0 checkpoints; typed low-yield stop; 982/982 tests; lint/offline build/408-source replay passed |
-| 10 | Full installation/Fit evidence has no separate scale pipeline | IN_PROGRESS | Activated only after the Task 9 stop and verification gates passed |
+| 10 | Full installation/Fit evidence has no separate scale pipeline | COMPLETE | 27 focused tests; Architecture V2 1002/1002; full repository 2659/2659; offline build, lint and diff check passed; external MinerU replay 21/21; publication violations 0 |
 
 ## Ten-Problem Solution Map
 
@@ -765,6 +765,50 @@ batches; stop expansion and return to candidate, family or parser repair.
 - Modify Fit publication audit only after the new receipt contract passes
 - Update product core brief and runbook
 
+**Execution order locked after current-code audit (2026-07-19):**
+
+1. Extend the existing `installation-knowledge-v3` domain instead of creating a
+   competing Fit model. Publish a schema-v2 applicability matrix for fridge,
+   dishwasher, dryer and washing machine, including form-factor-specific
+   operation checks and connection-group dependencies.
+2. Add an independent field-receipt contract and cumulative bundle. Every
+   accepted field binds the exact model, official URL, PDF SHA-256, MinerU
+   `content_list_v2` SHA/object path, parser/model revision, page, bbox, quote,
+   fragment SHA and applicability. Legacy `pdftotext` approvals are candidates
+   only and cannot be migrated as receipts.
+3. Add offline candidate, typed parser-gap and deterministic bounded-batch
+   projections over the frozen 100-model fridge/dishwasher pilot. Keep source,
+   document, field receipt and Fit completion as separate grains.
+4. Add strict positive/negative MinerU fixtures and run one exact-model
+   refrigerator canary (`RF605QZUVB1`) plus one exact-model dishwasher canary
+   (`DW60UT4I2`). Preserve partial success: only explicit fields become
+   receipts; missing operation, service, connection or delivery fields remain
+   unknown.
+5. Add online object replay for the cumulative installation bundle and bind its
+   audit SHA to publication. Normal builds consume the tracked audit and remain
+   external-drive-independent; any changed bundle requires a new online replay.
+6. Extend the Fit publication audit only after steps 1-5 pass. A public
+   `VERIFIED_FIT` must map every applicable hard condition to a current exact-
+   model installation receipt and a passing replay audit. Dimensions-only or
+   partial canaries must remain below `VERIFIED_FIT`.
+7. Run adversarial checks for unknown-to-zero, not-applicable-without-evidence,
+   sibling/family donation, stale source, range flattening, bbox/page drift,
+   legacy parser migration, stale replay audit and score-overriding-hard-fail.
+   Then update product-core and runbook evidence and run all release gates.
+
+**Planned concrete files:**
+- Extend: `src/domain/installation-knowledge-v3.mjs`,
+  `src/domain/fit-v3.mjs`, `tests/architecture-v2/installation-knowledge-fit-v3.test.mjs`
+- Create: `src/domain/installation-evidence-pipeline.mjs`
+- Create: `scripts/architecture-v2/build-installation-evidence-pipeline.mjs`
+- Create: `scripts/architecture-v2/build-installation-evidence-pilot-receipts.mjs`
+- Create: `scripts/architecture-v2/audit-installation-evidence-receipts.mjs`
+- Create: `tests/architecture-v2/installation-evidence-pipeline.test.mjs`
+- Create tracked applicability, candidate, parser-gap, bounded-batch, receipt
+  bundle and replay-audit artifacts under the existing Architecture V2 owners
+- Modify: `scripts/architecture-v2/audit-fit-publication.mjs`, `package.json`,
+  `docs/product-core-brief.md`, and the canonical recovery runbook
+
 **Interfaces:**
 - Field groups: installation clearance, ventilation/service space, operation
   envelope, water, power, drainage and delivery envelope.
@@ -772,14 +816,29 @@ batches; stop expansion and return to candidate, family or parser repair.
   `LIKELY_FIT_ESTIMATED` or `VERIFIED_FIT`; numeric scoring may only rank within
   an already determined class.
 
-- [ ] Write the schema and evidence-applicability matrix for all four appliance
+- [x] Write the schema and evidence-applicability matrix for all four appliance
   categories before adding parser logic.
-- [ ] Test missing/not-applicable/zero distinctions, ranges, professional
+- [x] Test missing/not-applicable/zero distinctions, ranges, professional
   installation requirements and site-observation separation.
-- [ ] Pilot refrigerator and dishwasher families with exact-model installation
+- [x] Pilot refrigerator and dishwasher families with exact-model installation
   manuals.
-- [ ] Require receipt replay for every hard condition before `VERIFIED_FIT`.
-- [ ] Run adversarial publication and user-claim review.
+- [x] Require receipt replay for every hard condition before `VERIFIED_FIT`.
+- [x] Run adversarial publication and user-claim review.
+
+**Completed evidence (2026-07-19):** Schema v2 covers refrigerator,
+dishwasher, washing-machine and dryer applicability. The cumulative bundle has
+21 exact-model field receipts over two canaries, zero field conflicts and
+21/21 external MinerU object replay passes. The frozen 100-model control plane
+has two `RECEIPT_PARTIAL`, 87 `SOURCE_DISCOVERY_REQUIRED`, 11
+`IDENTITY_BLOCKED`, 99 bounded family-aware batches and zero
+`FIT_EVIDENCE_COMPLETE`. Adversarial tests reject cross-row table donation,
+optional/not-applicable substitution for hard fields, invented nominal-voltage
+tolerance, stale replay, sibling identity, range flattening and legacy parser
+migration; top-loading washers use lid-open height rather than front-door
+depth. Focused installation/Fit tests passed 27/27, Architecture V2 passed
+1002/1002, the full repository passed 2659/2659, and the external-drive-free
+Architecture V2 build, lint, `git diff --check`, PDF JSON-first audit and both
+geometry/installation publication gates passed with zero violations.
 
 **Acceptance:** W/H/D-only models stay dimensions-only; `VERIFIED_FIT` appears
 only when every applicable hard condition has exact-model evidence and passes.

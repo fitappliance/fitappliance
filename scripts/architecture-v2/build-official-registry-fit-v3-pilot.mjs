@@ -93,7 +93,12 @@ sourceCounts[welsSnapshot.manifest.sourceId] = {
 const scopedProducts = catalog.products.filter((product) => ['fridge', 'dishwasher'].includes(product.cat));
 const energyReconciliations = reconcileCatalogWithEnergy({ products: scopedProducts, observations: energyObservations });
 const welsReconciliations = reconcileCatalogWithWels({ products: scopedProducts, observations: welsObservations });
-const snapshotHashes = snapshotsDocument.snapshots.filter((row) => row.kind !== 'metadata').map((row) => row.manifest.contentSha256);
+const pilotSourceIds = ['energy-rating:fridge', 'energy-rating:dishwasher', 'wels:all-models'];
+const snapshotHashes = pilotSourceIds.map((sourceId) => {
+  const snapshot = snapshots.get(sourceId);
+  if (!snapshot) throw new Error(`missing pilot registry snapshot ${sourceId}`);
+  return snapshot.manifest.contentSha256;
+});
 const generatedPilot = selectInstallationKnowledgePilot({
   products: scopedProducts,
   reconciliations: energyReconciliations,

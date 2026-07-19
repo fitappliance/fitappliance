@@ -1939,3 +1939,114 @@ ledger, remove checkpoints or run a different manifest to bypass this stop.
 Resume expansion only after a tested Esatto candidate-resolver, document-family
 identity or parser repair creates a new explicit control-plane epoch and its
 baseline/reopening rules are reviewed.
+
+## 41. Independent installation and Fit evidence pipeline
+
+Installation/Fit evidence is independent of the stopped dimensions P0 loop. A
+W/H/D receipt cannot satisfy an installation field and cannot create
+`VERIFIED_FIT`. The tracked task anchor is
+`docs/superpowers/plans/2026-07-19-historical-evidence-scale-control-plane.md`;
+read it before every implementation or operational batch.
+
+The tracked contracts and outputs are:
+
+| Grain | Canonical artifact |
+| --- | --- |
+| Applicability | `data/architecture-v2/generated/installation-evidence-applicability-matrix.json` |
+| Exact canary recipes | `data/architecture-v2/policies/installation-evidence-canary-recipes.json` |
+| Cumulative field receipts | `data/architecture-v2/reviews/automated/installation-evidence-receipts.json` |
+| Object replay audit | `data/architecture-v2/reviews/automated/installation-evidence-receipt-replay-audit.json` |
+| Per-model control state | `data/architecture-v2/generated/installation-evidence-pipeline.json` |
+| Candidate projection | `data/architecture-v2/generated/installation-evidence-candidates.json` |
+| Typed parser gaps | `data/architecture-v2/generated/installation-evidence-parser-gaps.json` |
+| Family-aware batches | `data/architecture-v2/generated/installation-evidence-batches.json` |
+| Rejected-source diagnostics | `data/architecture-v2/generated/installation-evidence-source-diagnostics.json` |
+| Public release gate | `data/architecture-v2/reviews/automated/fit-publication-audit.json` |
+
+### Online receipt creation and replay
+
+Mount the evidence store and rebuild the exact frozen canaries:
+
+```bash
+export FITAPPLIANCE_STORAGE_ROOT=/Volumes/UGREEN-1TB/FitAppliance
+npm run build:installation-evidence-pilot-receipts
+npm run audit:installation-evidence-receipts:online
+npm run build:installation-evidence-pipeline
+npm run audit:fit-publication
+```
+
+The builder merges by default. It loads and replays every receipt in the merged
+bundle, including objects not referenced by the current recipe file. Never use
+`--replace` as a routine regeneration command. An intentional, reviewed reset
+requires the exact current semantic bundle hash:
+
+```bash
+bundle_sha="$(jq -r .bundleSha256 \
+  data/architecture-v2/reviews/automated/installation-evidence-receipts.json)"
+node scripts/architecture-v2/build-installation-evidence-pilot-receipts.mjs \
+  --replace \
+  --expected-current-bundle-sha "$bundle_sha"
+```
+
+A missing or stale expected hash aborts without writing either tracked artifact.
+
+### Offline build and publication gate
+
+Ordinary builds must not read the external drive or network:
+
+```bash
+env -u FITAPPLIANCE_STORAGE_ROOT npm run audit:installation-evidence-receipts
+env -u FITAPPLIANCE_STORAGE_ROOT npm run build:installation-evidence-pipeline
+env -u FITAPPLIANCE_STORAGE_ROOT npm run audit:fit-publication
+```
+
+Offline audit validates that the replay artifact covers the exact current
+bundle. A changed receipt bundle makes the audit stale and blocks publication
+until a new full online replay is committed.
+
+`official-registry-fit-v3-audit.json` is the immutable 2026-07-12 shadow-pilot
+baseline result, not a current-state replay target. Do not overwrite it by
+rerunning `audit:fit-v3-pilot` after an authorised public-catalogue release.
+Ongoing repository isolation is checked by `npm run audit:fit-v3-repository`.
+
+### Canary and fan-out rules
+
+Every source PDF is mapped through
+`historical-document-family-graph.json`. A model with no resolved family, or
+with ambiguous top-ranked source families, receives a one-target
+`DOCUMENT_FAMILY_REQUIRED` batch. A resolved family exposes one target until
+its canary has at least one exact semantic receipt and current object replay.
+Only then may `CANARY_PARTIAL_PASS` open the configured bounded same-family
+batch. Partial means parser reuse is demonstrated; it does not mean the product
+has complete installation evidence.
+
+Stop and quarantine the affected field, product or family if any of these
+conditions occurs:
+
+- exact model identity or exact form factor cannot be replayed;
+- a number and its field label are not bound in one paragraph, table row or
+  header-value column;
+- a negative, boolean or numeric claim is being borrowed from a different
+  table row than its field label;
+- an `optional` or `not_applicable` receipt is being used to satisfy a hard
+  numeric Fit requirement;
+- one PDF is assigned to multiple document families;
+- two receipts disagree for the same product and field;
+- a source is non-official, superseded, stale or cannot be provenance-bound;
+- a sibling, regional suffix or family manual donates a field without a
+  field-scoped exact-model bridge;
+- page, bbox, quote, object hash, parser version or model revision drifts;
+- unknown is being converted to zero/false, or a range is being flattened;
+- a scalar nominal voltage is being expanded into an unevidenced tolerance;
+- a top-loading washer is being checked with a front-door envelope instead of
+  its lid-open height;
+- a score or commercial signal would override a failed hard condition; or
+- any dimensions-only or partial-evidence product is promoted to
+  `VERIFIED_FIT`.
+
+At the 2026-07-19 checkpoint the bundle has 21 receipts over two products,
+21/21 online replay passes and zero field conflicts. The 100-model pilot has two
+`RECEIPT_PARTIAL`, 87 `SOURCE_DISCOVERY_REQUIRED`, 11
+`IDENTITY_BLOCKED`, 99 family-aware batches and zero
+`FIT_EVIDENCE_COMPLETE`. These are separate grains and must not be combined
+into one coverage percentage.

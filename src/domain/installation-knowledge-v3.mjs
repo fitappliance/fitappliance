@@ -1,3 +1,5 @@
+export const INSTALLATION_KNOWLEDGE_SCHEMA_VERSION = 2;
+
 const FIELD_TYPES = Object.freeze({
   'closedEnvelope.widthMm': 'number',
   'closedEnvelope.heightMm': 'height',
@@ -23,6 +25,8 @@ const FIELD_TYPES = Object.freeze({
   'powerConnection.required': 'boolean',
   'powerConnection.leadReachMm': 'number',
   'powerConnection.voltageV': 'number',
+  'powerConnection.minimumVoltageV': 'number',
+  'powerConnection.maximumVoltageV': 'number',
   'powerConnection.currentA': 'number',
   'drainConnection.required': 'boolean',
   'drainConnection.hoseReachMm': 'number',
@@ -42,6 +46,8 @@ const FIELD_UNITS = Object.freeze({
   'waterConnection.minimumPressureKpa': 'kPa',
   'waterConnection.maximumPressureKpa': 'kPa',
   'powerConnection.voltageV': 'V',
+  'powerConnection.minimumVoltageV': 'V',
+  'powerConnection.maximumVoltageV': 'V',
   'powerConnection.currentA': 'A',
   'deliveryEnvelope.weightKg': 'kg',
 });
@@ -74,11 +80,24 @@ const CATEGORY_REQUIRED = Object.freeze({
     'waterConnection.required',
     'drainConnection.required',
   ]),
+  washing_machine: Object.freeze([
+    ...BASE_REQUIRED,
+    'ventilation.rearMm',
+    'waterConnection.required',
+    'drainConnection.required',
+  ]),
+  dryer: Object.freeze([
+    ...BASE_REQUIRED,
+    'ventilation.rearMm',
+    'drainConnection.required',
+  ]),
 });
 
 const CATEGORY_FORM_FACTORS = Object.freeze({
   fridge: new Set(['upright', 'chest']),
   dishwasher: new Set(['built_in', 'freestanding', 'integrated', 'drawer']),
+  washing_machine: new Set(['front_loader', 'top_loader', 'washer_dryer_combo']),
+  dryer: new Set(['front_loader']),
 });
 
 function freezeDeep(value) {
@@ -88,6 +107,57 @@ function freezeDeep(value) {
   }
   return value;
 }
+
+export const INSTALLATION_KNOWLEDGE_APPLICABILITY_MATRIX = freezeDeep({
+  schemaVersion: INSTALLATION_KNOWLEDGE_SCHEMA_VERSION,
+  fieldGroups: {
+    placement: ['closedEnvelope', 'installationClearance'],
+    operation: ['operationEnvelope'],
+    service: ['ventilation'],
+    connections: ['waterConnection', 'powerConnection', 'drainConnection'],
+    delivery: ['deliveryEnvelope'],
+    professional: ['professionalInstallation'],
+  },
+  categories: Object.fromEntries(Object.entries(CATEGORY_REQUIRED).map(([category, fields]) => [
+    category,
+    {
+      requiredFields: [...fields],
+      formFactors: [...CATEGORY_FORM_FACTORS[category]],
+      formFactorRequirements: category === 'fridge'
+        ? {
+          upright: ['operationEnvelope.doorOpenDepthMm', 'operationEnvelope.hingeSideSpaceMm'],
+          chest: ['operationEnvelope.lidOpenHeightMm'],
+        }
+        : category === 'washing_machine'
+          ? {
+            front_loader: ['operationEnvelope.doorOpenDepthMm'],
+            top_loader: ['operationEnvelope.lidOpenHeightMm'],
+            washer_dryer_combo: ['operationEnvelope.doorOpenDepthMm'],
+          }
+          : category === 'dryer'
+            ? { front_loader: ['operationEnvelope.doorOpenDepthMm'] }
+            : {},
+      connectionDependencies: {
+        water: [
+          'waterConnection.hoseReachMm',
+          'waterConnection.minimumPressureKpa',
+          'waterConnection.maximumPressureKpa',
+        ],
+        power: [
+          'powerConnection.leadReachMm',
+          'powerConnection.voltage',
+          'powerConnection.currentA',
+        ],
+        drain: [
+          'drainConnection.hoseReachMm',
+          'drainConnection.minimumHeightMm',
+          'drainConnection.maximumHeightMm',
+          'drainConnection.highLoopRequired',
+        ],
+      },
+    },
+  ])),
+});
 
 function modelKey(value) {
   return String(value ?? '').normalize('NFKC').toUpperCase().replace(/[\s._-]+/g, '');
@@ -173,11 +243,21 @@ export function createModelRequirement({ field, value, unit = null, applicabilit
   });
 }
 
-export function createInstallationKnowledge({ canonicalProductId, category, brand, model, formFactor = null, requirements = {}, normativeRules = [] }) {
+export function createInstallationKnowledge({
+  canonicalProductId,
+  category,
+  brand,
+  model,
+  formFactor = null,
+  formFactorEvidence = null,
+  requirements = {},
+  normativeRules = [],
+}) {
   if (!CATEGORY_REQUIRED[category]) throw new TypeError(`unsupported installation knowledge category: ${category}`);
   if (typeof canonicalProductId !== 'string' || canonicalProductId === '') throw new TypeError('canonicalProductId is required');
   if (typeof brand !== 'string' || brand === '' || typeof model !== 'string' || model === '') throw new TypeError('brand and model are required');
   if (formFactor !== null && !CATEGORY_FORM_FACTORS[category].has(formFactor)) throw new TypeError(`unsupported ${category} form factor: ${formFactor}`);
+  if (formFactor === null && formFactorEvidence !== null) throw new TypeError('form-factor evidence cannot exist without a form factor');
   const accepted = {};
   for (const [field, requirement] of Object.entries(requirements)) {
     if (requirement === undefined) continue;
@@ -185,12 +265,13 @@ export function createInstallationKnowledge({ canonicalProductId, category, bran
     accepted[field] = requirement;
   }
   return freezeDeep({
-    schemaVersion: 1,
+    schemaVersion: INSTALLATION_KNOWLEDGE_SCHEMA_VERSION,
     canonicalProductId,
     category,
     brand,
     model,
     formFactor,
+    formFactorEvidence: formFactorEvidence === null ? null : validateEvidence(formFactorEvidence, model, 'formFactor'),
     requirements: Object.fromEntries(Object.entries(accepted).sort(([left], [right]) => left.localeCompare(right))),
     normativeRules: normativeRules.map((rule) => ({ ...rule })),
   });
@@ -198,15 +279,29 @@ export function createInstallationKnowledge({ canonicalProductId, category, bran
 
 function requiredFields(knowledge) {
   const fields = [...CATEGORY_REQUIRED[knowledge.category]];
+  if (knowledge.formFactor) fields.push('formFactorEvidence');
   if (knowledge.category === 'fridge') {
     if (knowledge.formFactor === 'chest') fields.push('operationEnvelope.lidOpenHeightMm');
     else if (knowledge.formFactor) fields.push('operationEnvelope.doorOpenDepthMm', 'operationEnvelope.hingeSideSpaceMm');
     else fields.push('formFactor');
+  } else if (knowledge.category === 'washing_machine') {
+    if (knowledge.formFactor === 'top_loader') fields.push('operationEnvelope.lidOpenHeightMm');
+    else if (knowledge.formFactor) fields.push('operationEnvelope.doorOpenDepthMm');
+    else fields.push('formFactor');
+  } else if (knowledge.category === 'dryer') {
+    if (knowledge.formFactor) fields.push('operationEnvelope.doorOpenDepthMm');
+    else fields.push('formFactor');
+  } else if (!knowledge.formFactor) {
+    fields.push('formFactor');
   }
   const water = knowledge.requirements['waterConnection.required'];
   if (water?.value === true) fields.push('waterConnection.hoseReachMm', 'waterConnection.minimumPressureKpa', 'waterConnection.maximumPressureKpa');
   const power = knowledge.requirements['powerConnection.required'];
-  if (power?.value === true) fields.push('powerConnection.leadReachMm', 'powerConnection.voltageV', 'powerConnection.currentA');
+  if (power?.value === true) fields.push(
+    'powerConnection.leadReachMm',
+    'powerConnection.voltage',
+    'powerConnection.currentA',
+  );
   const drain = knowledge.requirements['drainConnection.required'];
   if (drain?.value === true) fields.push(
     'drainConnection.hoseReachMm',
@@ -222,8 +317,19 @@ export function auditInstallationKnowledge(knowledge) {
   const required = requiredFields(knowledge);
   const missingRequired = required.filter((field) => {
     if (field === 'formFactor') return !knowledge.formFactor;
+    if (field === 'formFactorEvidence') return !knowledge.formFactorEvidence;
+    if (field === 'powerConnection.voltage') {
+      const scalar = knowledge.requirements['powerConnection.voltageV'];
+      const minimum = knowledge.requirements['powerConnection.minimumVoltageV'];
+      const maximum = knowledge.requirements['powerConnection.maximumVoltageV'];
+      const scalarKnown = scalar?.applicability === 'required' && Number.isFinite(scalar.value);
+      const rangeKnown = minimum?.applicability === 'required' && Number.isFinite(minimum.value)
+        && maximum?.applicability === 'required' && Number.isFinite(maximum.value);
+      return !scalarKnown && !rangeKnown;
+    }
     const requirement = knowledge.requirements[field];
-    return !requirement || requirement.applicability === 'unknown';
+    return !requirement || requirement.applicability !== 'required'
+      || (requirement.value === null && INSTALLATION_KNOWLEDGE_FIELDS[field] !== 'boolean');
   });
   const evidenceViolations = Object.entries(knowledge.requirements).flatMap(([field, requirement]) => {
     if (requirement.applicability === 'unknown') return [];
@@ -237,6 +343,7 @@ export function auditInstallationKnowledge(knowledge) {
   });
   const ranges = [
     ['waterConnection.minimumPressureKpa', 'waterConnection.maximumPressureKpa', 'waterConnection.pressureRange'],
+    ['powerConnection.minimumVoltageV', 'powerConnection.maximumVoltageV', 'powerConnection.voltageRange'],
     ['drainConnection.minimumHeightMm', 'drainConnection.maximumHeightMm', 'drainConnection.heightRange'],
   ];
   for (const [minimumField, maximumField, label] of ranges) {

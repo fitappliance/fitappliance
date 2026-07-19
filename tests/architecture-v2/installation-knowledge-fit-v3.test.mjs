@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  INSTALLATION_KNOWLEDGE_APPLICABILITY_MATRIX,
+  INSTALLATION_KNOWLEDGE_SCHEMA_VERSION,
   auditInstallationKnowledge,
   createInstallationKnowledge,
   createModelRequirement,
@@ -70,6 +72,7 @@ function completeDishwasherKnowledge(overrides = {}) {
     brand: 'Fisher & Paykel',
     model: MODEL,
     formFactor: 'built_in',
+    formFactorEvidence: receipt('closedEnvelope.widthMm', 597).evidence,
     requirements,
     normativeRules: [],
   });
@@ -140,6 +143,21 @@ test('knowledge audit distinguishes missing required evidence from non-applicabl
   });
   assert.ok(auditInstallationKnowledge(contradictory).evidenceViolations.includes('waterConnection.pressureRange'));
   assert.equal(auditInstallationKnowledge(contradictory).eligibleForVerifiedFit, false);
+
+  const nonApplicableWidth = completeDishwasherKnowledge({
+    'closedEnvelope.widthMm': receipt('closedEnvelope.widthMm', null, {
+      applicability: 'not_applicable',
+      unit: null,
+    }),
+  });
+  assert.ok(auditInstallationKnowledge(nonApplicableWidth).missingRequired.includes('closedEnvelope.widthMm'));
+
+  const optionalHeight = completeDishwasherKnowledge({
+    'closedEnvelope.heightMm': receipt('closedEnvelope.heightMm', 857, {
+      applicability: 'optional',
+    }),
+  });
+  assert.ok(auditInstallationKnowledge(optionalHeight).missingRequired.includes('closedEnvelope.heightMm'));
 });
 
 test('refrigerator knowledge requires form-factor-specific operation evidence', () => {
@@ -163,6 +181,7 @@ test('refrigerator knowledge requires form-factor-specific operation evidence', 
   assert.ok(auditInstallationKnowledge(unknownForm).missingRequired.includes('formFactor'));
 
   const upright = createInstallationKnowledge({ canonicalProductId: 'fridge-1', category: 'fridge', brand: 'Example', model: MODEL, formFactor: 'upright', requirements });
+  assert.ok(auditInstallationKnowledge(upright).missingRequired.includes('formFactorEvidence'));
   assert.ok(auditInstallationKnowledge(upright).missingRequired.includes('operationEnvelope.doorOpenDepthMm'));
   assert.ok(auditInstallationKnowledge(upright).missingRequired.includes('operationEnvelope.hingeSideSpaceMm'));
   assert.throws(
@@ -179,6 +198,19 @@ test('Fit V3 fails a hard cavity constraint with check-level reasons', () => {
   assert.equal(result.outcome, 'NO_FIT');
   assert.equal(result.checks.find((check) => check.id === 'placement.width').status, 'FAIL');
   assert.match(result.summary, /width/i);
+});
+
+test('Fit V3 never ignores accepted side or top ventilation requirements', () => {
+  const knowledge = completeDishwasherKnowledge({
+    'ventilation.leftMm': receipt('ventilation.leftMm', 10),
+    'ventilation.rightMm': receipt('ventilation.rightMm', 10),
+    'ventilation.topMm': receipt('ventilation.topMm', 20),
+  });
+  const result = evaluateFitV3({ knowledge, siteProfile: SITE });
+
+  assert.equal(result.outcome, 'NO_FIT');
+  assert.equal(result.checks.find((check) => check.id === 'placement.width').status, 'FAIL');
+  assert.equal(result.checks.find((check) => check.id === 'placement.height').status, 'FAIL');
 });
 
 test('Fit V3 is conditional when an applicable service condition is unknown', () => {
@@ -221,4 +253,143 @@ test('Fit V3 enforces drain height, water pressure, electrical capacity and deli
   });
   assert.equal(badDelivery.outcome, 'NO_FIT');
   assert.equal(badDelivery.checks.find((check) => check.id === 'delivery.width').status, 'FAIL');
+});
+
+test('Fit V3 evaluates exact voltage ranges without flattening them to a nominal value', () => {
+  const ranged = completeDishwasherKnowledge({
+    'powerConnection.voltageV': undefined,
+    'powerConnection.minimumVoltageV': receipt('powerConnection.minimumVoltageV', 220, { unit: 'V' }),
+    'powerConnection.maximumVoltageV': receipt('powerConnection.maximumVoltageV', 240, { unit: 'V' }),
+  });
+  const passing = evaluateFitV3({ knowledge: ranged, siteProfile: SITE });
+  assert.equal(passing.outcome, 'VERIFIED_FIT');
+  assert.equal(passing.checks.find((check) => check.id === 'powerConnection.voltage').status, 'PASS');
+
+  const failing = evaluateFitV3({
+    knowledge: ranged,
+    siteProfile: { ...SITE, power: { ...SITE.power, voltageV: 250 } },
+  });
+  assert.equal(failing.outcome, 'NO_FIT');
+  assert.equal(failing.checks.find((check) => check.id === 'powerConnection.voltage').status, 'FAIL');
+});
+
+test('Fit V3 does not invent a tolerance for a scalar nominal voltage', () => {
+  const result = evaluateFitV3({
+    knowledge: completeDishwasherKnowledge(),
+    siteProfile: { ...SITE, power: { ...SITE.power, voltageV: 245 } },
+  });
+  assert.equal(result.outcome, 'CONDITIONAL_FIT');
+  assert.equal(result.checks.find((check) => check.id === 'powerConnection.voltage').status, 'UNKNOWN');
+});
+
+test('Fit V3 checks lid-open height for a top-loader washing machine', () => {
+  const dishwasher = completeDishwasherKnowledge();
+  const requirements = {
+    ...dishwasher.requirements,
+    'operationEnvelope.doorOpenDepthMm': undefined,
+    'operationEnvelope.lidOpenHeightMm': receipt('operationEnvelope.lidOpenHeightMm', 1200),
+  };
+  const knowledge = createInstallationKnowledge({
+    canonicalProductId: 'washer-top-loader-1',
+    category: 'washing_machine',
+    brand: 'Example',
+    model: MODEL,
+    formFactor: 'top_loader',
+    formFactorEvidence: receipt('closedEnvelope.widthMm', 597).evidence,
+    requirements,
+  });
+  const result = evaluateFitV3({
+    knowledge,
+    siteProfile: {
+      ...SITE,
+      operation: { overheadClearanceMm: 1100 },
+    },
+  });
+  assert.equal(result.outcome, 'NO_FIT');
+  assert.equal(result.checks.find((check) => check.id === 'operation.lidOpenHeight').status, 'FAIL');
+  assert.equal(result.checks.some((check) => check.id === 'operation.doorOpenDepth'), false);
+});
+
+test('installation applicability contract covers all four appliance categories at schema v2', () => {
+  assert.equal(INSTALLATION_KNOWLEDGE_SCHEMA_VERSION, 2);
+  assert.equal(INSTALLATION_KNOWLEDGE_APPLICABILITY_MATRIX.schemaVersion, 2);
+  assert.deepEqual(
+    Object.keys(INSTALLATION_KNOWLEDGE_APPLICABILITY_MATRIX.categories).sort(),
+    ['dishwasher', 'dryer', 'fridge', 'washing_machine'],
+  );
+  assert.deepEqual(
+    INSTALLATION_KNOWLEDGE_APPLICABILITY_MATRIX.categories.washing_machine.formFactors,
+    ['front_loader', 'top_loader', 'washer_dryer_combo'],
+  );
+  assert.ok(
+    INSTALLATION_KNOWLEDGE_APPLICABILITY_MATRIX.categories.dryer.requiredFields
+      .includes('drainConnection.required'),
+  );
+});
+
+test('washing-machine and dryer requirements are form-factor and connection aware', () => {
+  const washer = createInstallationKnowledge({
+    canonicalProductId: 'washer-1',
+    category: 'washing_machine',
+    brand: 'Example',
+    model: MODEL,
+    formFactor: 'front_loader',
+    requirements: {},
+  });
+  assert.equal(washer.schemaVersion, 2);
+  const washerAudit = auditInstallationKnowledge(washer);
+  assert.ok(washerAudit.missingRequired.includes('operationEnvelope.doorOpenDepthMm'));
+  assert.ok(washerAudit.missingRequired.includes('waterConnection.required'));
+  assert.ok(washerAudit.missingRequired.includes('drainConnection.required'));
+
+  const dryer = createInstallationKnowledge({
+    canonicalProductId: 'dryer-1',
+    category: 'dryer',
+    brand: 'Example',
+    model: MODEL,
+    formFactor: 'front_loader',
+    requirements: {},
+  });
+  const dryerAudit = auditInstallationKnowledge(dryer);
+  assert.ok(dryerAudit.missingRequired.includes('operationEnvelope.doorOpenDepthMm'));
+  assert.ok(dryerAudit.missingRequired.includes('ventilation.rearMm'));
+  assert.ok(dryerAudit.missingRequired.includes('drainConnection.required'));
+  assert.throws(
+    () => createInstallationKnowledge({
+      canonicalProductId: 'washer-2',
+      category: 'washing_machine',
+      brand: 'Example',
+      model: MODEL,
+      formFactor: 'upright',
+      requirements: {},
+    }),
+    /form factor/i,
+  );
+});
+
+test('exact voltage ranges remain ranges and satisfy the voltage evidence alternative', () => {
+  const requirements = {
+    'powerConnection.required': receipt('powerConnection.required', true, { unit: null }),
+    'powerConnection.leadReachMm': receipt('powerConnection.leadReachMm', 1500),
+    'powerConnection.minimumVoltageV': receipt('powerConnection.minimumVoltageV', 220, { unit: 'V' }),
+    'powerConnection.maximumVoltageV': receipt('powerConnection.maximumVoltageV', 240, { unit: 'V' }),
+    'powerConnection.currentA': receipt('powerConnection.currentA', 10, { unit: 'A' }),
+  };
+  const knowledge = createInstallationKnowledge({
+    canonicalProductId: 'dryer-2',
+    category: 'dryer',
+    brand: 'Example',
+    model: MODEL,
+    formFactor: 'front_loader',
+    requirements,
+  });
+  const audit = auditInstallationKnowledge(knowledge);
+  assert.equal(audit.missingRequired.includes('powerConnection.voltage'), false);
+  assert.deepEqual(
+    [
+      knowledge.requirements['powerConnection.minimumVoltageV'].value,
+      knowledge.requirements['powerConnection.maximumVoltageV'].value,
+    ],
+    [220, 240],
+  );
 });

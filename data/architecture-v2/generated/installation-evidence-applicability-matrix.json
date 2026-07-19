@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 2,
+  "fieldGroups": {
+    "placement": [
+      "closedEnvelope",
+      "installationClearance"
+    ],
+    "operation": [
+      "operationEnvelope"
+    ],
+    "service": [
+      "ventilation"
+    ],
+    "connections": [
+      "waterConnection",
+      "powerConnection",
+      "drainConnection"
+    ],
+    "delivery": [
+      "deliveryEnvelope"
+    ],
+    "professional": [
+      "professionalInstallation"
+    ]
+  },
+  "categories": {
+    "fridge": {
+      "requiredFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm",
+        "installationClearance.leftMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "installationClearance.rearMm",
+        "powerConnection.required",
+        "professionalInstallation.required",
+        "deliveryEnvelope.widthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.depthMm",
+        "ventilation.rearMm",
+        "waterConnection.required"
+      ],
+      "formFactors": [
+        "upright",
+        "chest"
+      ],
+      "formFactorRequirements": {
+        "upright": [
+          "operationEnvelope.doorOpenDepthMm",
+          "operationEnvelope.hingeSideSpaceMm"
+        ],
+        "chest": [
+          "operationEnvelope.lidOpenHeightMm"
+        ]
+      },
+      "connectionDependencies": {
+        "water": [
+          "waterConnection.hoseReachMm",
+          "waterConnection.minimumPressureKpa",
+          "waterConnection.maximumPressureKpa"
+        ],
+        "power": [
+          "powerConnection.leadReachMm",
+          "powerConnection.voltage",
+          "powerConnection.currentA"
+        ],
+        "drain": [
+          "drainConnection.hoseReachMm",
+          "drainConnection.minimumHeightMm",
+          "drainConnection.maximumHeightMm",
+          "drainConnection.highLoopRequired"
+        ]
+      }
+    },
+    "dishwasher": {
+      "requiredFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm",
+        "installationClearance.leftMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "installationClearance.rearMm",
+        "powerConnection.required",
+        "professionalInstallation.required",
+        "deliveryEnvelope.widthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.depthMm",
+        "operationEnvelope.doorOpenDepthMm",
+        "ventilation.rearMm",
+        "waterConnection.required",
+        "drainConnection.required"
+      ],
+      "formFactors": [
+        "built_in",
+        "freestanding",
+        "integrated",
+        "drawer"
+      ],
+      "formFactorRequirements": {},
+      "connectionDependencies": {
+        "water": [
+          "waterConnection.hoseReachMm",
+          "waterConnection.minimumPressureKpa",
+          "waterConnection.maximumPressureKpa"
+        ],
+        "power": [
+          "powerConnection.leadReachMm",
+          "powerConnection.voltage",
+          "powerConnection.currentA"
+        ],
+        "drain": [
+          "drainConnection.hoseReachMm",
+          "drainConnection.minimumHeightMm",
+          "drainConnection.maximumHeightMm",
+          "drainConnection.highLoopRequired"
+        ]
+      }
+    },
+    "washing_machine": {
+      "requiredFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm",
+        "installationClearance.leftMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "installationClearance.rearMm",
+        "powerConnection.required",
+        "professionalInstallation.required",
+        "deliveryEnvelope.widthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.depthMm",
+        "ventilation.rearMm",
+        "waterConnection.required",
+        "drainConnection.required"
+      ],
+      "formFactors": [
+        "front_loader",
+        "top_loader",
+        "washer_dryer_combo"
+      ],
+      "formFactorRequirements": {
+        "front_loader": [
+          "operationEnvelope.doorOpenDepthMm"
+        ],
+        "top_loader": [
+          "operationEnvelope.lidOpenHeightMm"
+        ],
+        "washer_dryer_combo": [
+          "operationEnvelope.doorOpenDepthMm"
+        ]
+      },
+      "connectionDependencies": {
+        "water": [
+          "waterConnection.hoseReachMm",
+          "waterConnection.minimumPressureKpa",
+          "waterConnection.maximumPressureKpa"
+        ],
+        "power": [
+          "powerConnection.leadReachMm",
+          "powerConnection.voltage",
+          "powerConnection.currentA"
+        ],
+        "drain": [
+          "drainConnection.hoseReachMm",
+          "drainConnection.minimumHeightMm",
+          "drainConnection.maximumHeightMm",
+          "drainConnection.highLoopRequired"
+        ]
+      }
+    },
+    "dryer": {
+      "requiredFields": [
+        "closedEnvelope.widthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.depthMm",
+        "installationClearance.leftMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "installationClearance.rearMm",
+        "powerConnection.required",
+        "professionalInstallation.required",
+        "deliveryEnvelope.widthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.depthMm",
+        "ventilation.rearMm",
+        "drainConnection.required"
+      ],
+      "formFactors": [
+        "front_loader"
+      ],
+      "formFactorRequirements": {
+        "front_loader": [
+          "operationEnvelope.doorOpenDepthMm"
+        ]
+      },
+      "connectionDependencies": {
+        "water": [
+          "waterConnection.hoseReachMm",
+          "waterConnection.minimumPressureKpa",
+          "waterConnection.maximumPressureKpa"
+        ],
+        "power": [
+          "powerConnection.leadReachMm",
+          "powerConnection.voltage",
+          "powerConnection.currentA"
+        ],
+        "drain": [
+          "drainConnection.hoseReachMm",
+          "drainConnection.minimumHeightMm",
+          "drainConnection.maximumHeightMm",
+          "drainConnection.highLoopRequired"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1864 @@
+{
+  "schemaVersion": 1,
+  "receipts": [
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "field": "powerConnection.currentA",
+      "applicability": "required",
+      "value": 10,
+      "unit": "A",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 24,
+          "itemType": "paragraph",
+          "bbox": [
+            671,
+            662,
+            954,
+            737
+          ]
+        },
+        "quote": "Amperage 10A Supply frequency 50Hz Supply voltage 220 - 240V",
+        "fragmentSha256": "6bf2fea73c69ad0bec1c75cbaf89b6edb3fd7cd1e068778e5ad99255fccc1f04",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "DW60UT4I2"
+        ],
+        "identityLocators": [
+          {
+            "page": 1,
+            "itemIndex": 25,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              228,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > DW60UT4I2",
+            "fragmentSha256": "d210e07269a243e1ceef2219604194a27eb3bc39a302e202ed1fc22b333f97c4"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "paragraph",
+            "bbox": [
+              39,
+              84,
+              261,
+              146
+            ],
+            "quote": "Series 9, Integrated Tall Dishwasher",
+            "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "paragraph",
+          "bbox": [
+            39,
+            84,
+            261,
+            146
+          ],
+          "quote": "Series 9, Integrated Tall Dishwasher",
+          "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+        }
+      },
+      "receiptId": "inst_receipt_1dac4f32af8aa2aa83a2b244",
+      "semanticReceiptSha256": "1dac4f32af8aa2aa83a2b2444d63467a35cb03bec2e9d47e89b8711105d6bbd7"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "field": "powerConnection.maximumVoltageV",
+      "applicability": "required",
+      "value": 240,
+      "unit": "V",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 24,
+          "itemType": "paragraph",
+          "bbox": [
+            671,
+            662,
+            954,
+            737
+          ]
+        },
+        "quote": "Amperage 10A Supply frequency 50Hz Supply voltage 220 - 240V",
+        "fragmentSha256": "6bf2fea73c69ad0bec1c75cbaf89b6edb3fd7cd1e068778e5ad99255fccc1f04",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "DW60UT4I2"
+        ],
+        "identityLocators": [
+          {
+            "page": 1,
+            "itemIndex": 25,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              228,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > DW60UT4I2",
+            "fragmentSha256": "d210e07269a243e1ceef2219604194a27eb3bc39a302e202ed1fc22b333f97c4"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "paragraph",
+            "bbox": [
+              39,
+              84,
+              261,
+              146
+            ],
+            "quote": "Series 9, Integrated Tall Dishwasher",
+            "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "paragraph",
+          "bbox": [
+            39,
+            84,
+            261,
+            146
+          ],
+          "quote": "Series 9, Integrated Tall Dishwasher",
+          "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+        }
+      },
+      "receiptId": "inst_receipt_2e1a574560dd2aa5baa617de",
+      "semanticReceiptSha256": "2e1a574560dd2aa5baa617de3d64563dcea1159f3d149ddeb39b79a636fb6b05"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "closedEnvelope.depthMm",
+      "applicability": "required",
+      "value": 688,
+      "unit": "mm",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 5,
+          "itemType": "table",
+          "bbox": [
+            670,
+            262,
+            956,
+            463
+          ]
+        },
+        "quote": "<table><tr><td>Depth 688 mm</td></tr><tr><td>Height 1790 mm</td></tr><tr><td>Height to top of cabinet 1775 mm</td></tr><tr><td>Height to top of door 1790 mm</td></tr><tr><td>Minimum air clearance - at rear 30 mm</td></tr><tr><td>Minimum air clearance - each side 20 mm</td></tr><tr><td>Minimum air clearance - on top 20 mm</td></tr><tr><td>Width 905 mm</td></tr></table>",
+        "fragmentSha256": "7cef89de98f097ca8405f1a5e9148fb21b4dae689a7844c08607c4403580ecdc",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_3970b2d0b46866d3ef8c53eb",
+      "semanticReceiptSha256": "3970b2d0b46866d3ef8c53eb6e759c8ed9136c235307d29e0118e3f633545240"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "powerConnection.maximumVoltageV",
+      "applicability": "required",
+      "value": 240,
+      "unit": "V",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 2,
+          "itemType": "table",
+          "bbox": [
+            670,
+            110,
+            956,
+            186
+          ]
+        },
+        "quote": "<table><tr><td>Rated current 10 A</td></tr><tr><td>Supply frequency 50 Hz</td></tr><tr><td>Supply voltage 220 - 240 V</td></tr></table>",
+        "fragmentSha256": "b32757dc447ea870f10ac40816eee9c0d8458ff78bf8da4d7e811960c4b1d08b",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_4c8141c0a9d7816f19957028",
+      "semanticReceiptSha256": "4c8141c0a9d7816f199570288daea062aebe911df2a19811071058645303e9fc"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "closedEnvelope.widthMm",
+      "applicability": "required",
+      "value": 905,
+      "unit": "mm",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 5,
+          "itemType": "table",
+          "bbox": [
+            670,
+            262,
+            956,
+            463
+          ]
+        },
+        "quote": "<table><tr><td>Depth 688 mm</td></tr><tr><td>Height 1790 mm</td></tr><tr><td>Height to top of cabinet 1775 mm</td></tr><tr><td>Height to top of door 1790 mm</td></tr><tr><td>Minimum air clearance - at rear 30 mm</td></tr><tr><td>Minimum air clearance - each side 20 mm</td></tr><tr><td>Minimum air clearance - on top 20 mm</td></tr><tr><td>Width 905 mm</td></tr></table>",
+        "fragmentSha256": "7cef89de98f097ca8405f1a5e9148fb21b4dae689a7844c08607c4403580ecdc",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_5e212459b908ab2a76b49d5f",
+      "semanticReceiptSha256": "5e212459b908ab2a76b49d5f2896d9f9eb7ef9729e9d3fe7694eda927e0705f0"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "installationClearance.rearMm",
+      "applicability": "required",
+      "value": 30,
+      "unit": "mm",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 5,
+          "itemType": "table",
+          "bbox": [
+            670,
+            262,
+            956,
+            463
+          ]
+        },
+        "quote": "<table><tr><td>Depth 688 mm</td></tr><tr><td>Height 1790 mm</td></tr><tr><td>Height to top of cabinet 1775 mm</td></tr><tr><td>Height to top of door 1790 mm</td></tr><tr><td>Minimum air clearance - at rear 30 mm</td></tr><tr><td>Minimum air clearance - each side 20 mm</td></tr><tr><td>Minimum air clearance - on top 20 mm</td></tr><tr><td>Width 905 mm</td></tr></table>",
+        "fragmentSha256": "7cef89de98f097ca8405f1a5e9148fb21b4dae689a7844c08607c4403580ecdc",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_7a78ab6806465717a18f37f8",
+      "semanticReceiptSha256": "7a78ab6806465717a18f37f8f69f48a87ea6406321c0dece596c259a22ef128c"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "field": "closedEnvelope.widthMm",
+      "applicability": "required",
+      "value": 597,
+      "unit": "mm",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+        },
+        "locator": {
+          "page": 1,
+          "itemIndex": 9,
+          "itemType": "paragraph",
+          "bbox": [
+            354,
+            141,
+            634,
+            225
+          ]
+        },
+        "quote": "Height 857 - 917 mm Width 597 mm Depth 554 mm",
+        "fragmentSha256": "bccbb02b7beea76757d66d545e5a67a5b4e25d50e33a5d80ad54be05b3105340",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "DW60UT4I2"
+        ],
+        "identityLocators": [
+          {
+            "page": 1,
+            "itemIndex": 25,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              228,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > DW60UT4I2",
+            "fragmentSha256": "d210e07269a243e1ceef2219604194a27eb3bc39a302e202ed1fc22b333f97c4"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "paragraph",
+            "bbox": [
+              39,
+              84,
+              261,
+              146
+            ],
+            "quote": "Series 9, Integrated Tall Dishwasher",
+            "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "paragraph",
+          "bbox": [
+            39,
+            84,
+            261,
+            146
+          ],
+          "quote": "Series 9, Integrated Tall Dishwasher",
+          "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+        }
+      },
+      "receiptId": "inst_receipt_a13c0761a515ef294f80de6e",
+      "semanticReceiptSha256": "a13c0761a515ef294f80de6efc7b97c3c5ce9cefd3f2217cb15c62fd428cc359"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "field": "powerConnection.required",
+      "applicability": "required",
+      "value": true,
+      "unit": null,
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 24,
+          "itemType": "paragraph",
+          "bbox": [
+            671,
+            662,
+            954,
+            737
+          ]
+        },
+        "quote": "Amperage 10A Supply frequency 50Hz Supply voltage 220 - 240V",
+        "fragmentSha256": "6bf2fea73c69ad0bec1c75cbaf89b6edb3fd7cd1e068778e5ad99255fccc1f04",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "DW60UT4I2"
+        ],
+        "identityLocators": [
+          {
+            "page": 1,
+            "itemIndex": 25,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              228,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > DW60UT4I2",
+            "fragmentSha256": "d210e07269a243e1ceef2219604194a27eb3bc39a302e202ed1fc22b333f97c4"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "paragraph",
+            "bbox": [
+              39,
+              84,
+              261,
+              146
+            ],
+            "quote": "Series 9, Integrated Tall Dishwasher",
+            "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "paragraph",
+          "bbox": [
+            39,
+            84,
+            261,
+            146
+          ],
+          "quote": "Series 9, Integrated Tall Dishwasher",
+          "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+        }
+      },
+      "receiptId": "inst_receipt_aa6599867cb30a8ba139e9d6",
+      "semanticReceiptSha256": "aa6599867cb30a8ba139e9d606e641d65d094f470beb3f3533ff33c3313ba91a"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "installationClearance.leftMm",
+      "applicability": "required",
+      "value": 20,
+      "unit": "mm",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 5,
+          "itemType": "table",
+          "bbox": [
+            670,
+            262,
+            956,
+            463
+          ]
+        },
+        "quote": "<table><tr><td>Depth 688 mm</td></tr><tr><td>Height 1790 mm</td></tr><tr><td>Height to top of cabinet 1775 mm</td></tr><tr><td>Height to top of door 1790 mm</td></tr><tr><td>Minimum air clearance - at rear 30 mm</td></tr><tr><td>Minimum air clearance - each side 20 mm</td></tr><tr><td>Minimum air clearance - on top 20 mm</td></tr><tr><td>Width 905 mm</td></tr></table>",
+        "fragmentSha256": "7cef89de98f097ca8405f1a5e9148fb21b4dae689a7844c08607c4403580ecdc",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_b6945e53fb86101d66c69d26",
+      "semanticReceiptSha256": "b6945e53fb86101d66c69d26634533999a33c72e629a70364fb58d3c86c0fbbd"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "field": "waterConnection.maximumPressureKpa",
+      "applicability": "required",
+      "value": 1000,
+      "unit": "kPa",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+        },
+        "locator": {
+          "page": 3,
+          "itemIndex": 0,
+          "itemType": "table",
+          "bbox": [
+            38,
+            80,
+            326,
+            882
+          ]
+        },
+        "quote": "<table><tr><td>Width 597 mm</td></tr><tr><td></td></tr><tr><td>Wash Program Modifiers</td></tr><tr><td>Dry + Half load</td></tr><tr><td>Intensive</td></tr><tr><td>Sanitise •</td></tr><tr><td>Wash modifiers 4</td></tr><tr><td></td></tr><tr><td>Wash Programs</td></tr><tr><td>60 min</td></tr><tr><td>Auto</td></tr><tr><td>Eco</td></tr><tr><td>Glassware</td></tr><tr><td>Heavy</td></tr><tr><td>Light</td></tr><tr><td>Medium •</td></tr><tr><td>Rinse •</td></tr><tr><td>Wash programs 8</td></tr><tr><td>Water connection</td></tr><tr><td>Water pressure 30kPa - 1000 kPa</td></tr><tr><td>Water supply 3/4″ BSP (20mm) Connector Water</td></tr><tr><td>Inlet Hose</td></tr><tr><td>SKU 82440</td></tr></table>",
+        "fragmentSha256": "93bbbf8f2d359ffcc0bd7ff668c5a52cbbd3fae7a54f43b08c0c3d9174df5dde",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "DW60UT4I2"
+        ],
+        "identityLocators": [
+          {
+            "page": 1,
+            "itemIndex": 25,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              228,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > DW60UT4I2",
+            "fragmentSha256": "d210e07269a243e1ceef2219604194a27eb3bc39a302e202ed1fc22b333f97c4"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "paragraph",
+            "bbox": [
+              39,
+              84,
+              261,
+              146
+            ],
+            "quote": "Series 9, Integrated Tall Dishwasher",
+            "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "paragraph",
+          "bbox": [
+            39,
+            84,
+            261,
+            146
+          ],
+          "quote": "Series 9, Integrated Tall Dishwasher",
+          "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+        }
+      },
+      "receiptId": "inst_receipt_b9ee25e4646b81a3b6c15bdd",
+      "semanticReceiptSha256": "b9ee25e4646b81a3b6c15bddeb0b344e468158d7e6feade0e09fd8ea7cb1fa04"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "installationClearance.rightMm",
+      "applicability": "required",
+      "value": 20,
+      "unit": "mm",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 5,
+          "itemType": "table",
+          "bbox": [
+            670,
+            262,
+            956,
+            463
+          ]
+        },
+        "quote": "<table><tr><td>Depth 688 mm</td></tr><tr><td>Height 1790 mm</td></tr><tr><td>Height to top of cabinet 1775 mm</td></tr><tr><td>Height to top of door 1790 mm</td></tr><tr><td>Minimum air clearance - at rear 30 mm</td></tr><tr><td>Minimum air clearance - each side 20 mm</td></tr><tr><td>Minimum air clearance - on top 20 mm</td></tr><tr><td>Width 905 mm</td></tr></table>",
+        "fragmentSha256": "7cef89de98f097ca8405f1a5e9148fb21b4dae689a7844c08607c4403580ecdc",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_ba247499bc48aaf40a6a325a",
+      "semanticReceiptSha256": "ba247499bc48aaf40a6a325a4e6ae086e31b075026ec35e5772154e0c0853ea8"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "closedEnvelope.heightMm",
+      "applicability": "required",
+      "value": 1790,
+      "unit": "mm",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 5,
+          "itemType": "table",
+          "bbox": [
+            670,
+            262,
+            956,
+            463
+          ]
+        },
+        "quote": "<table><tr><td>Depth 688 mm</td></tr><tr><td>Height 1790 mm</td></tr><tr><td>Height to top of cabinet 1775 mm</td></tr><tr><td>Height to top of door 1790 mm</td></tr><tr><td>Minimum air clearance - at rear 30 mm</td></tr><tr><td>Minimum air clearance - each side 20 mm</td></tr><tr><td>Minimum air clearance - on top 20 mm</td></tr><tr><td>Width 905 mm</td></tr></table>",
+        "fragmentSha256": "7cef89de98f097ca8405f1a5e9148fb21b4dae689a7844c08607c4403580ecdc",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_be7f23df9888493b3e3991b7",
+      "semanticReceiptSha256": "be7f23df9888493b3e3991b7a3688fad255c846b6f761d2a4d42752b229960b7"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "installationClearance.topMm",
+      "applicability": "required",
+      "value": 20,
+      "unit": "mm",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 5,
+          "itemType": "table",
+          "bbox": [
+            670,
+            262,
+            956,
+            463
+          ]
+        },
+        "quote": "<table><tr><td>Depth 688 mm</td></tr><tr><td>Height 1790 mm</td></tr><tr><td>Height to top of cabinet 1775 mm</td></tr><tr><td>Height to top of door 1790 mm</td></tr><tr><td>Minimum air clearance - at rear 30 mm</td></tr><tr><td>Minimum air clearance - each side 20 mm</td></tr><tr><td>Minimum air clearance - on top 20 mm</td></tr><tr><td>Width 905 mm</td></tr></table>",
+        "fragmentSha256": "7cef89de98f097ca8405f1a5e9148fb21b4dae689a7844c08607c4403580ecdc",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_c9f0b6c127ba6c11b18b4f1d",
+      "semanticReceiptSha256": "c9f0b6c127ba6c11b18b4f1d69911fa17f14ef13499c78801656fbf014b0ec88"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "powerConnection.required",
+      "applicability": "required",
+      "value": true,
+      "unit": null,
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 2,
+          "itemType": "table",
+          "bbox": [
+            670,
+            110,
+            956,
+            186
+          ]
+        },
+        "quote": "<table><tr><td>Rated current 10 A</td></tr><tr><td>Supply frequency 50 Hz</td></tr><tr><td>Supply voltage 220 - 240 V</td></tr></table>",
+        "fragmentSha256": "b32757dc447ea870f10ac40816eee9c0d8458ff78bf8da4d7e811960c4b1d08b",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_d13b24c8a92695bbb01fe1aa",
+      "semanticReceiptSha256": "d13b24c8a92695bbb01fe1aac76e275270eee5e1499daa0b0082e98d08f1555e"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "field": "closedEnvelope.depthMm",
+      "applicability": "required",
+      "value": 554,
+      "unit": "mm",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+        },
+        "locator": {
+          "page": 1,
+          "itemIndex": 9,
+          "itemType": "paragraph",
+          "bbox": [
+            354,
+            141,
+            634,
+            225
+          ]
+        },
+        "quote": "Height 857 - 917 mm Width 597 mm Depth 554 mm",
+        "fragmentSha256": "bccbb02b7beea76757d66d545e5a67a5b4e25d50e33a5d80ad54be05b3105340",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "DW60UT4I2"
+        ],
+        "identityLocators": [
+          {
+            "page": 1,
+            "itemIndex": 25,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              228,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > DW60UT4I2",
+            "fragmentSha256": "d210e07269a243e1ceef2219604194a27eb3bc39a302e202ed1fc22b333f97c4"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "paragraph",
+            "bbox": [
+              39,
+              84,
+              261,
+              146
+            ],
+            "quote": "Series 9, Integrated Tall Dishwasher",
+            "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "paragraph",
+          "bbox": [
+            39,
+            84,
+            261,
+            146
+          ],
+          "quote": "Series 9, Integrated Tall Dishwasher",
+          "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+        }
+      },
+      "receiptId": "inst_receipt_d48036e17e3a261bf825f6a4",
+      "semanticReceiptSha256": "d48036e17e3a261bf825f6a4075acb10fd2c7bc9dde1a625529f584cef74c8a7"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "field": "waterConnection.required",
+      "applicability": "required",
+      "value": true,
+      "unit": null,
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+        },
+        "locator": {
+          "page": 3,
+          "itemIndex": 0,
+          "itemType": "table",
+          "bbox": [
+            38,
+            80,
+            326,
+            882
+          ]
+        },
+        "quote": "<table><tr><td>Width 597 mm</td></tr><tr><td></td></tr><tr><td>Wash Program Modifiers</td></tr><tr><td>Dry + Half load</td></tr><tr><td>Intensive</td></tr><tr><td>Sanitise •</td></tr><tr><td>Wash modifiers 4</td></tr><tr><td></td></tr><tr><td>Wash Programs</td></tr><tr><td>60 min</td></tr><tr><td>Auto</td></tr><tr><td>Eco</td></tr><tr><td>Glassware</td></tr><tr><td>Heavy</td></tr><tr><td>Light</td></tr><tr><td>Medium •</td></tr><tr><td>Rinse •</td></tr><tr><td>Wash programs 8</td></tr><tr><td>Water connection</td></tr><tr><td>Water pressure 30kPa - 1000 kPa</td></tr><tr><td>Water supply 3/4″ BSP (20mm) Connector Water</td></tr><tr><td>Inlet Hose</td></tr><tr><td>SKU 82440</td></tr></table>",
+        "fragmentSha256": "93bbbf8f2d359ffcc0bd7ff668c5a52cbbd3fae7a54f43b08c0c3d9174df5dde",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "DW60UT4I2"
+        ],
+        "identityLocators": [
+          {
+            "page": 1,
+            "itemIndex": 25,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              228,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > DW60UT4I2",
+            "fragmentSha256": "d210e07269a243e1ceef2219604194a27eb3bc39a302e202ed1fc22b333f97c4"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "paragraph",
+            "bbox": [
+              39,
+              84,
+              261,
+              146
+            ],
+            "quote": "Series 9, Integrated Tall Dishwasher",
+            "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "paragraph",
+          "bbox": [
+            39,
+            84,
+            261,
+            146
+          ],
+          "quote": "Series 9, Integrated Tall Dishwasher",
+          "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+        }
+      },
+      "receiptId": "inst_receipt_dacb3e663b450d12f074bde9",
+      "semanticReceiptSha256": "dacb3e663b450d12f074bde95db1bb9789016b3afa3a5c96f81811ef05d76908"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "powerConnection.currentA",
+      "applicability": "required",
+      "value": 10,
+      "unit": "A",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 2,
+          "itemType": "table",
+          "bbox": [
+            670,
+            110,
+            956,
+            186
+          ]
+        },
+        "quote": "<table><tr><td>Rated current 10 A</td></tr><tr><td>Supply frequency 50 Hz</td></tr><tr><td>Supply voltage 220 - 240 V</td></tr></table>",
+        "fragmentSha256": "b32757dc447ea870f10ac40816eee9c0d8458ff78bf8da4d7e811960c4b1d08b",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_ddbcbffa1f79b1d7f37330e8",
+      "semanticReceiptSha256": "ddbcbffa1f79b1d7f37330e8da80d231ff344174402968b1d784058d1abe3ed7"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "field": "closedEnvelope.heightMm",
+      "applicability": "required",
+      "value": {
+        "minimumMm": 857,
+        "maximumMm": 917
+      },
+      "unit": "mm",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+        },
+        "locator": {
+          "page": 1,
+          "itemIndex": 9,
+          "itemType": "paragraph",
+          "bbox": [
+            354,
+            141,
+            634,
+            225
+          ]
+        },
+        "quote": "Height 857 - 917 mm Width 597 mm Depth 554 mm",
+        "fragmentSha256": "bccbb02b7beea76757d66d545e5a67a5b4e25d50e33a5d80ad54be05b3105340",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "DW60UT4I2"
+        ],
+        "identityLocators": [
+          {
+            "page": 1,
+            "itemIndex": 25,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              228,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > DW60UT4I2",
+            "fragmentSha256": "d210e07269a243e1ceef2219604194a27eb3bc39a302e202ed1fc22b333f97c4"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "paragraph",
+            "bbox": [
+              39,
+              84,
+              261,
+              146
+            ],
+            "quote": "Series 9, Integrated Tall Dishwasher",
+            "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "paragraph",
+          "bbox": [
+            39,
+            84,
+            261,
+            146
+          ],
+          "quote": "Series 9, Integrated Tall Dishwasher",
+          "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+        }
+      },
+      "receiptId": "inst_receipt_e9d1db7d1ba0866f9a4d8f75",
+      "semanticReceiptSha256": "e9d1db7d1ba0866f9a4d8f757b5e243174b4ee545a2140d8f679e2afb1796e1a"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "field": "powerConnection.minimumVoltageV",
+      "applicability": "required",
+      "value": 220,
+      "unit": "V",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 24,
+          "itemType": "paragraph",
+          "bbox": [
+            671,
+            662,
+            954,
+            737
+          ]
+        },
+        "quote": "Amperage 10A Supply frequency 50Hz Supply voltage 220 - 240V",
+        "fragmentSha256": "6bf2fea73c69ad0bec1c75cbaf89b6edb3fd7cd1e068778e5ad99255fccc1f04",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "DW60UT4I2"
+        ],
+        "identityLocators": [
+          {
+            "page": 1,
+            "itemIndex": 25,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              228,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > DW60UT4I2",
+            "fragmentSha256": "d210e07269a243e1ceef2219604194a27eb3bc39a302e202ed1fc22b333f97c4"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "paragraph",
+            "bbox": [
+              39,
+              84,
+              261,
+              146
+            ],
+            "quote": "Series 9, Integrated Tall Dishwasher",
+            "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "paragraph",
+          "bbox": [
+            39,
+            84,
+            261,
+            146
+          ],
+          "quote": "Series 9, Integrated Tall Dishwasher",
+          "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+        }
+      },
+      "receiptId": "inst_receipt_e9fbbfa50cbeef50d557bb60",
+      "semanticReceiptSha256": "e9fbbfa50cbeef50d557bb608c9bf19ef1992d896ae1c526e2652e7bcff2b37d"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "formFactor": "integrated",
+      "field": "waterConnection.minimumPressureKpa",
+      "applicability": "required",
+      "value": 30,
+      "unit": "kPa",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+        },
+        "locator": {
+          "page": 3,
+          "itemIndex": 0,
+          "itemType": "table",
+          "bbox": [
+            38,
+            80,
+            326,
+            882
+          ]
+        },
+        "quote": "<table><tr><td>Width 597 mm</td></tr><tr><td></td></tr><tr><td>Wash Program Modifiers</td></tr><tr><td>Dry + Half load</td></tr><tr><td>Intensive</td></tr><tr><td>Sanitise •</td></tr><tr><td>Wash modifiers 4</td></tr><tr><td></td></tr><tr><td>Wash Programs</td></tr><tr><td>60 min</td></tr><tr><td>Auto</td></tr><tr><td>Eco</td></tr><tr><td>Glassware</td></tr><tr><td>Heavy</td></tr><tr><td>Light</td></tr><tr><td>Medium •</td></tr><tr><td>Rinse •</td></tr><tr><td>Wash programs 8</td></tr><tr><td>Water connection</td></tr><tr><td>Water pressure 30kPa - 1000 kPa</td></tr><tr><td>Water supply 3/4″ BSP (20mm) Connector Water</td></tr><tr><td>Inlet Hose</td></tr><tr><td>SKU 82440</td></tr></table>",
+        "fragmentSha256": "93bbbf8f2d359ffcc0bd7ff668c5a52cbbd3fae7a54f43b08c0c3d9174df5dde",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "DW60UT4I2"
+        ],
+        "identityLocators": [
+          {
+            "page": 1,
+            "itemIndex": 25,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              228,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > DW60UT4I2",
+            "fragmentSha256": "d210e07269a243e1ceef2219604194a27eb3bc39a302e202ed1fc22b333f97c4"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "paragraph",
+            "bbox": [
+              39,
+              84,
+              261,
+              146
+            ],
+            "quote": "Series 9, Integrated Tall Dishwasher",
+            "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "paragraph",
+          "bbox": [
+            39,
+            84,
+            261,
+            146
+          ],
+          "quote": "Series 9, Integrated Tall Dishwasher",
+          "fragmentSha256": "abdf955d8bfd84fbc740aa468049e6b9c039315f3bc3c79d9c7a4449ad3f9137"
+        }
+      },
+      "receiptId": "inst_receipt_f6f4e2f427e5fbc3d5216e31",
+      "semanticReceiptSha256": "f6f4e2f427e5fbc3d5216e31de57b625fee8ddd2c3996730fef74d14578ee73a"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "formFactor": "upright",
+      "field": "powerConnection.minimumVoltageV",
+      "applicability": "required",
+      "value": 220,
+      "unit": "V",
+      "evidence": {
+        "authorityMode": "official",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "sourceStatus": "current",
+        "observedAt": "2026-07-11T00:00:00.000Z",
+        "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "mineru": {
+          "format": "content_list_v2",
+          "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+          "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        },
+        "locator": {
+          "page": 2,
+          "itemIndex": 2,
+          "itemType": "table",
+          "bbox": [
+            670,
+            110,
+            956,
+            186
+          ]
+        },
+        "quote": "<table><tr><td>Rated current 10 A</td></tr><tr><td>Supply frequency 50 Hz</td></tr><tr><td>Supply voltage 220 - 240 V</td></tr></table>",
+        "fragmentSha256": "b32757dc447ea870f10ac40816eee9c0d8458ff78bf8da4d7e811960c4b1d08b",
+        "identityOutcome": "exact",
+        "applicableModels": [
+          "RF605QZUVB1"
+        ],
+        "identityLocators": [
+          {
+            "page": 2,
+            "itemIndex": 11,
+            "itemType": "page_header",
+            "bbox": [
+              35,
+              40,
+              240,
+              58
+            ],
+            "quote": "QUICK REFERENCE GUIDE > RF605QZUVB1",
+            "fragmentSha256": "b3805eaa6768ab05bdb8af0952f1ad87f80857c5457032e6189e147f23011308"
+          },
+          {
+            "page": 1,
+            "itemIndex": 0,
+            "itemType": "title",
+            "bbox": [
+              39,
+              84,
+              288,
+              178
+            ],
+            "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+            "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+          }
+        ],
+        "formFactorLocator": {
+          "page": 1,
+          "itemIndex": 0,
+          "itemType": "title",
+          "bbox": [
+            39,
+            84,
+            288,
+            178
+          ],
+          "quote": "538L Series 7 Quad Door Refrigerator Freezer, Ice & Water 2",
+          "fragmentSha256": "69e254402e560495cd20812fc0729ea91d62f9840c3b9a301beb91658ba3a3ed"
+        }
+      },
+      "receiptId": "inst_receipt_f96062da195d546ad75234d5",
+      "semanticReceiptSha256": "f96062da195d546ad75234d588c0a2a8034765a1928cbd09c3bb2f1fb1f2b38c"
+    }
+  ],
+  "generatedAt": "2026-07-19T00:00:00.000Z",
+  "bundleSha256": "540f7a9bc0ff94eeaadb84d042a4c2c8c57424e4df4efafcd9184fe0f00ffc41",
+  "summary": {
+    "receipts": 21,
+    "products": 2,
+    "fields": 21,
+    "conflictingFields": 0
+  }
+}

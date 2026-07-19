@@ -1,7 +1,7 @@
 # FitAppliance Product Core Brief
 
 Status: canonical product memory
-Last verified: 2026-07-13
+Last verified: 2026-07-19
 Product: [fitappliance.com.au](https://www.fitappliance.com.au)
 Repository: `/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2`
 
@@ -816,6 +816,77 @@ The locked publication rules are:
 - broad online recovery must use explicit bounded selections. `--allow-all` is
   prohibited for large resolver-only batches unless the entire run is an
   intentional, reviewed scale operation.
+
+### 9.6 Independent installation and Fit evidence checkpoint (2026-07-19)
+
+Dimensions recovery and full Fit recovery now have separate receipts, queues,
+metrics and publication gates. The installation contract is schema v2 and
+covers refrigerators, dishwashers, washing machines and dryers. It keeps closed
+product geometry, installation clearance, ventilation/service space,
+door-or-lid operation, water, power, drainage, delivery and professional
+installation as independently evidenced fields.
+
+An accepted installation field receipt must bind all of the following:
+
+- exact canonical product, category, brand, model and form factor;
+- current official manufacturer URL and immutable PDF SHA-256;
+- MinerU `content_list_v2` object SHA/path, parser version and model revision;
+- one-based page, item index/type, bbox, exact quote and fragment hash;
+- exact-model identity locators and field applicability;
+- a field-specific semantic label and value in the same paragraph, table row,
+  or header-value column.
+
+Numbers elsewhere in the same table cannot be donated to another field.
+Unknown cannot create a receipt, explicit zero remains zero, and
+`not_applicable` requires an exact negative statement plus the correct field
+label. Adjustable height and voltage remain ranges. Side, top and rear
+ventilation evidence participates in conservative Fit geometry and cannot be
+ignored after acceptance.
+
+A hard field is complete only when its receipt applicability is `required` and
+it carries the typed value needed by the check. `optional`, `unknown` and
+`not_applicable` receipts remain useful evidence states but cannot fill a hard
+numeric requirement. A scalar voltage is only a documented nominal value: the
+engine does not invent a +/-10% operating range, and a different site voltage
+stays conditional unless the exact model provides an explicit accepted range.
+Top-loading washers are evaluated against lid-open overhead clearance, not a
+front-door envelope.
+
+The frozen 100-model refrigerator/dishwasher pilot currently has:
+
+| Grain | Result |
+| --- | ---: |
+| Pilot products | 100 |
+| Receipt-partial products | 2 |
+| Exact installation field receipts | 21 |
+| Online MinerU replays | 21/21 pass |
+| Installation field conflicts | 0 |
+| Source discovery required | 87 |
+| Identity blocked | 11 |
+| Deterministic bounded batches | 99 |
+| Receipt-bound `VERIFIED_FIT` | 0 |
+| Installation publication violations | 0 |
+
+The exact canaries are Fisher & Paykel `RF605QZUVB1` (11 accepted fields) and
+`DW60UT4I2` (10 accepted fields). The dishwasher's exact QRG proves
+`integrated`, overriding only the pilot's `built_in` inference; missing
+clearance, operation, hose, drainage, delivery and professional-installation
+requirements remain unknown. Neither canary is eligible for
+`VERIFIED_FIT`.
+
+Batch fan-out is keyed to the canonical content-hash document-family graph.
+Targets without one resolved document family are target-only; a family without
+a replayed partial canary exposes only one canary target. A partial canary may
+open only a bounded same-family batch and does not imply complete Fit evidence.
+
+The cumulative installation bundle is append-safe. Destructive replacement is
+rejected unless the operator supplies the exact current bundle SHA-256, and all
+old and new MinerU objects are replayed before writing. Normal builds validate a
+tracked replay audit and remain external-drive-independent. Online acquisition,
+receipt creation and replay require the evidence drive explicitly.
+
+Canonical operations and stop conditions are in
+[Historical Evidence Recovery Runbook](architecture-v2/historical-evidence-recovery-runbook.md#41-independent-installation-and-fit-evidence-pipeline).
 
 ## 10. Success Metrics
 
