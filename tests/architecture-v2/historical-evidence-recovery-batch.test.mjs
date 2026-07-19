@@ -403,21 +403,17 @@ test('route, priority and brand filters combine and limit counts targets rather 
   assert.equal(batch.targets[0].canonicalProductId, null);
 });
 
-test('target ID filters allow a resolver-only conflict canary to be selected exactly', () => {
+test('an acquisition batch rejects a selected target with no candidate edge before network execution', () => {
   const queue = fixtureQueue();
   queue.targets[1] = target(queue.targets[1].targetId, 'EX200', [], {
     primaryJobId: null,
   });
-  const batch = buildHistoricalEvidenceRecoveryBatch({
+  assert.throws(() => buildHistoricalEvidenceRecoveryBatch({
     queue,
     policy: fixturePolicy(),
     existingAcceptanceBundles: [],
     selection: { targetIds: [queue.targets[1].targetId] },
-  });
-
-  assert.deepEqual(batch.targets.map((row) => row.model), ['EX200']);
-  assert.equal(batch.artifactJobs.length, 0);
-  assert.deepEqual(batch.selection.targetIds, [queue.targets[1].targetId]);
+  }), /acquisition batch.*candidate edge/i);
 });
 
 test('CLI parser rejects unknown flags and supports repeatable filters', () => {
@@ -478,6 +474,9 @@ test('committed full batch is reproducible from the queue, policy and cumulative
     selection: {},
   });
   assert.equal(canonicalJsonSha256(committed), canonicalJsonSha256(rebuilt));
-  assert.ok(committed.targets.length > 1_500);
+  assert.equal(committed.targets.length, queue.summary.acquisitionTargets);
+  assert.ok(committed.targets.length > 0);
+  assert.ok(committed.targets.every((target) => target.candidateJobIds.length > 0));
+  assert.equal(committed.summary.candidateEdges, queue.summary.candidateEdges);
   assert.equal(new Set(committed.targets.map((row) => row.targetId)).size, committed.targets.length);
 });

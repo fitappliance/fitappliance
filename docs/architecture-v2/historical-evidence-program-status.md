@@ -13,7 +13,7 @@ Generated: 2026-07-17T04:19:39.580Z
 | Models without document links | Historical Model Reference | 6321 | 8089 | 78.14% |
 | Models with current valid receipts | Historical Model Reference | 401 | 8089 | 4.96% |
 | Models queued for acquisition | Historical Model Reference | 7688 | 8089 | 95.04% |
-| Executable model targets | Historical Model Reference | 7564 | 7688 | 98.39% |
+| Executable model targets | Historical Model Reference | 4988 | 7688 | 64.88% |
 | Models in cumulative recovery acceptance | Historical Model Reference | 382 | 8089 | 4.72% |
 | Historical models eligible for replacement auto-fill | Historical Model Reference | 321 | 8089 | 3.97% |
 
@@ -21,9 +21,10 @@ Generated: 2026-07-17T04:19:39.580Z
 
 | Metric | Grain | Count | Denominator | Rate |
 | --- | --- | ---: | ---: | ---: |
-| Actionable model targets | Historical Model Reference | 7564 | 8089 | 93.51% |
+| Models with scheduled evidence work | Historical Model Reference | 4988 | 8089 | 61.66% |
+| Blocked models with scheduled evidence work | Historical Model Reference | 6 | 8089 | 0.07% |
 | Completed model targets | Historical Model Reference | 401 | 8089 | 4.96% |
-| Blocked model targets | Historical Model Reference | 124 | 8089 | 1.53% |
+| Blocked model targets | Historical Model Reference | 2706 | 8089 | 33.45% |
 
 ## Document and parser funnel
 
@@ -69,7 +70,6 @@ Generated: 2026-07-17T04:19:39.580Z
 | Severity | Code | Message |
 | --- | --- | --- |
 | CRITICAL | SOURCE_LINK_COVERAGE_LOW | Fewer than half of historical models have any document link. |
-| CRITICAL | EXECUTION_GRAPH_RESOLVER_ONLY | The executable graph has targets but no materialized fetch jobs. |
 | HIGH | MINERU_OBSERVATION_GAP | Valid MinerU documents remain without recognized dimension expressions. |
 | CRITICAL | MODEL_RECEIPT_COVERAGE_LOW | Fewer than half of historical models have a current valid evidence receipt. |
 | HIGH | VERIFIED_FIT_ZERO | No current catalogue product has complete receipt-bound Fit evidence. |

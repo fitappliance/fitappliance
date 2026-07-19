@@ -37,9 +37,10 @@ async function atomicJson(path, value) {
 }
 
 export async function runCli() {
-  const [acquisitionQueue, historicalReference, legacyRecoveryQueue, priorAcceptanceBundle,
+  const [acquisitionQueue, candidateManifest, historicalReference, legacyRecoveryQueue, priorAcceptanceBundle,
     priorAttemptLedger, recoveryPolicy] = await Promise.all([
     readJson('historicalModelPdfAcquisitionQueue'),
+    readJson('historicalOfficialCandidateManifest'),
     readJson('historicalApplianceReference'),
     readJson('historicalEvidenceRecoveryQueue'),
     readJson('historicalEvidenceRecoveryAcceptanceBundle'),
@@ -54,6 +55,7 @@ export async function runCli() {
   const evidenceProcessorEpochs = buildEvidenceProcessorEpochs(processorFiles);
   const queue = buildHistoricalExecutableRecoveryQueue({
     acquisitionQueue,
+    candidateManifest,
     historicalReference,
     legacyRecoveryQueue,
     priorAcceptanceBundle,

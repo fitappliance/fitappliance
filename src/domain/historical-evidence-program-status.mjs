@@ -134,7 +134,32 @@ function assertAccounting({
     executableQueue.summary.suppressedPriorResolverOnlyTargets,
     'resolver-only suppressed targets',
   );
-  if (executableQueue.summary.acquisitionRecords !== queued
+  const separatedLanes = Array.isArray(executableQueue.discoveryTargets)
+    && Array.isArray(executableQueue.deferredTargets);
+  if (separatedLanes) {
+    const acquisitionTargets = integer(
+      executableQueue.summary.acquisitionTargets,
+      'acquisition execution targets',
+    );
+    const discoveryTargets = integer(
+      executableQueue.summary.discoveryTargets,
+      'discovery execution targets',
+    );
+    const deferredTargets = integer(executableQueue.summary.deferredTargets, 'deferred targets');
+    if (executableQueue.summary.acquisitionRecords !== queued
+      || executableQueue.targets.length !== acquisitionTargets
+      || executableQueue.discoveryTargets.length !== discoveryTargets
+      || executableQueue.deferredTargets.length !== deferredTargets
+      || acquisitionTargets + discoveryTargets !== executableTargets
+      || executableTargets + deferredTargets !== queued
+      || executableExcluded + resolverSuppressed !== deferredTargets) {
+      throw new Error('separated executable target accounting mismatch');
+    }
+    if (acquisitionTargets > 0
+      && (executableQueue.summary.fetchJobs === 0 || executableQueue.summary.candidateEdges === 0)) {
+      throw new Error('acquisition execution graph has targets but no materialized candidate edge');
+    }
+  } else if (executableQueue.summary.acquisitionRecords !== queued
     || executableQueue.targets.length !== executableTargets
     || executableTargets + executableExcluded + resolverSuppressed !== queued) {
     throw new Error('executable target accounting mismatch');
@@ -253,7 +278,9 @@ function diagnosticsFor({ metrics, executableQueue, knowledge }) {
       message: 'Fewer than half of historical models have any document link.',
     });
   }
-  if (executableQueue.summary.targets > 0 && executableQueue.summary.fetchJobs === 0) {
+  const acquisitionTargets = executableQueue.summary.acquisitionTargets
+    ?? executableQueue.summary.targets;
+  if (acquisitionTargets > 0 && executableQueue.summary.fetchJobs === 0) {
     diagnostics.push({
       code: 'EXECUTION_GRAPH_RESOLVER_ONLY',
       severity: 'CRITICAL',
@@ -360,8 +387,16 @@ export function buildHistoricalEvidenceProgramStatus(input) {
       denominator: inventory, sourceArtifact: SOURCE_ARTIFACTS.replacementAudit,
     }),
     metric({
-      id: 'target_state.actionable', label: 'Actionable model targets', grain: 'historical_model_reference',
+      id: 'target_state.actionable', label: 'Models with scheduled evidence work', grain: 'historical_model_reference',
       numerator: targetState.summary.actionable, denominator: inventory,
+      sourceArtifact: SOURCE_ARTIFACTS.targetState,
+    }),
+    metric({
+      id: 'target_state.actionable_blocked_overlap',
+      label: 'Blocked models with scheduled evidence work',
+      grain: 'historical_model_reference',
+      numerator: targetState.summary.actionableBlockedOverlap ?? 0,
+      denominator: inventory,
       sourceArtifact: SOURCE_ARTIFACTS.targetState,
     }),
     metric({

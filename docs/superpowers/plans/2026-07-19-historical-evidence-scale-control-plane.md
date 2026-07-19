@@ -11,7 +11,7 @@
   [`2026-07-13-historical-evidence-coverage-recovery.md`](2026-07-13-historical-evidence-coverage-recovery.md)
 - **Canonical runbook:**
   [`historical-evidence-recovery-runbook.md`](../../architecture-v2/historical-evidence-recovery-runbook.md)
-- **Active task:** None - Task 3 complete; Task 4 is next
+- **Active task:** None - Task 4 complete; Task 5 pending
 
 **Goal:** Move the 8,089-model historical evidence programme from a safe but
 low-throughput recovery loop to a measurable, family-aware, bounded and
@@ -83,7 +83,7 @@ under that task, repair the plan first, and only then resume implementation.
 | 1 | Mixed KPI definitions and incomparable grains | COMPLETE | 9 focused tests; Architecture V2 877/877; lint/build passed; 8,089-model report generated |
 | 2 | Source-level ledger cannot show model outcomes; terminal queue noise | COMPLETE | 9 projection tests; 32 focused tests; Architecture V2 887/887; lint/build/diff passed; all 8,089 targets projected |
 | 3 | 6,321 models lack document links or materialised official candidates | COMPLETE | 12 manifest tests; 55 focused tests; Architecture V2 899/899; two immutable ASKO canaries; lint/build/refresh/diff passed |
-| 4 | Executable graph has resolver-only targets and zero fetch jobs | PENDING | - |
+| 4 | Executable graph has resolver-only targets and zero fetch jobs | COMPLETE | 68 focused tests; Architecture V2 905/905; lint/build/diff passed; 6 fetch jobs and 6 candidate edges; 4,982 bounded discovery targets; zero resolver-only acquisition targets |
 | 5 | PDF/MinerU/document-family/model relationships are not canonical | PENDING | - |
 | 6 | Per-model runs repeat family-level source failures | PENDING | - |
 | 7 | Generated batches are operationally too broad | PENDING | - |
@@ -327,6 +327,9 @@ authority cannot be bound to one canonical brand.
 - Modify: `src/domain/historical-model-pdf-acquisition.mjs`
 - Modify: `src/domain/historical-executable-recovery-queue.mjs`
 - Modify: `src/domain/historical-evidence-recovery-batch.mjs`
+- Modify: `src/domain/historical-evidence-target-state.mjs`
+- Modify: `src/domain/historical-evidence-program-status.mjs`
+- Modify: `docs/architecture-v2/historical-evidence-recovery-runbook.md`
 - Modify: corresponding Architecture V2 tests and builder scripts
 
 **Interfaces:**
@@ -335,13 +338,38 @@ authority cannot be bound to one canonical brand.
 - Resolver-only targets remain legal only for bounded discovery batches, not
   ordinary acquisition batches.
 
-- [ ] Test one URL shared by models, cross-brand same-URL isolation, alternate
+- [x] Test one URL shared by models, cross-brand same-URL isolation, alternate
   candidates, prior source suppression and zero-edge invariant failures.
-- [ ] Materialize fetch jobs from candidate records and preserve target priority.
-- [ ] Add a control-plane gate: an acquisition batch with targets but zero
+- [x] Materialize fetch jobs from candidate records and preserve target priority.
+- [x] Add a control-plane gate: an acquisition batch with targets but zero
   candidate edges fails before network access.
-- [ ] Regenerate the graph and reconcile all excluded/suppressed counts.
-- [ ] Update this task and commit.
+- [x] Regenerate the graph and reconcile all excluded/suppressed counts.
+- [x] Update this task and commit.
+
+**Plan correction (2026-07-19):** The original file list assumed every
+materialised candidate belonged to a non-quarantined target. The current six
+candidate-ready targets are all conflict-closure records. Fetching and parsing
+new evidence for those targets is valid, but it must not turn the product's
+conflict state into a publication-ready state. Task 4 therefore also separates
+ordinary acquisition targets from bounded discovery targets and updates the
+target-state/status accounting so pending evidence work is orthogonal to
+publication quarantine. A conflict target may have pending acquisition work
+while remaining terminal and blocked for publication.
+
+**Completed evidence (2026-07-19):** The executable graph now partitions all
+7,688 queued acquisition records into 6 ordinary acquisition targets, 4,982
+bounded discovery targets and 2,700 deferred targets. The 2,700 typed deferrals
+are 39 active resolver suppressions, 2 complete no-candidate outcomes and 2,659
+research-required outcomes. Six persisted official candidates materialise as
+six fetch jobs and six candidate edges; no ordinary acquisition target is
+resolver-only and every edge has a valid candidate/job/target back-reference.
+The six targets are conflict-closure evidence work, so target state records six
+blocked/actionable overlaps while all 83 conflict records remain publication
+quarantined. Repeated network-free generation produced identical SHA-256 hashes
+for all seven control-plane outputs. Focused tests passed 68/68, the full
+Architecture V2 suite passed 905/905, and `npm run lint`,
+`npm run build:architecture-v2`, graph invariant checks and `git diff --check`
+passed.
 
 **Acceptance:** Ordinary executable acquisition batches have non-zero fetch jobs
 and candidate edges; discovery-only work is explicitly labeled and separately

@@ -125,7 +125,7 @@ test('offline replay conflict is routed to corroboration instead of repeated rep
   assert.equal(queue.records[0].executionReadiness, 'RESEARCH_REQUIRED');
 });
 
-test('identity closure is discovery-ready only with a brand resolver while conflicts stay research-only', () => {
+test('identity closure is discovery-ready only with a brand resolver while unmaterialized conflicts stay research-only', () => {
   const records = [
     classified('identity-resolved', 'IDENTITY_RESEARCH'),
     classified('identity-unresolved', 'IDENTITY_RESEARCH', { canonicalBrand: 'No Resolver' }),
@@ -146,6 +146,29 @@ test('identity closure is discovery-ready only with a brand resolver while confl
   assert.equal(byReference.get('identity-unresolved').executionReadiness, 'RESEARCH_REQUIRED');
   assert.equal(byReference.get('conflict-resolved').route, 'CONFLICT_CLOSURE');
   assert.equal(byReference.get('conflict-resolved').executionReadiness, 'RESEARCH_REQUIRED');
+});
+
+test('conflict closure with a receipt-eligible official artifact is bounded-ready without changing its conflict route', () => {
+  const record = classified('conflict-official', 'CONFLICT_QUARANTINE', {
+    canonicalBrand: 'Samsung',
+    model: 'SRF5300SD',
+    documentLinks: [{
+      documentId: 'html:samsung-srf5300sd',
+      sourceUrl: 'https://www.samsung.com/au/refrigerators/french-door/srf5300sd/',
+      sourceAuthority: 'OFFICIAL',
+    }],
+  });
+  const queue = buildHistoricalModelPdfAcquisitionQueue({
+    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records: [record] },
+    historicalReference: { records: [reference(record.referenceId)] },
+    catalogProducts: catalogProducts([record]),
+    recoveryQueue: { targets: [] },
+    generatedAt: '2026-07-19T00:00:00.000Z',
+  });
+
+  assert.equal(queue.records[0].route, 'CONFLICT_CLOSURE');
+  assert.equal(queue.records[0].executionReadiness, 'BOUNDED_READY');
+  assert.equal(queue.sources[0].receiptEligible, true);
 });
 
 test('resolved autonomous identity research contributes only a replayable official URL hint', () => {

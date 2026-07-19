@@ -274,6 +274,10 @@ export function buildHistoricalEvidenceRecoveryBatch({
     }));
   const policySha256 = canonicalJsonSha256(policy);
   const targets = selectedTargets.map((target) => materializeTarget(target, prior, policySha256));
+  const candidateEdgeCount = artifactJobs.reduce((count, job) => count + job.targetIds.length, 0);
+  if (targets.length > 0 && candidateEdgeCount === 0) {
+    throw new Error('acquisition batch contains targets but no candidate edge');
+  }
   const queueSha256 = canonicalJsonSha256(queue);
   const semanticBatchSha256 = canonicalJsonSha256({
     queueSha256,
@@ -294,7 +298,7 @@ export function buildHistoricalEvidenceRecoveryBatch({
     summary: {
       artifactJobs: artifactJobs.length,
       targets: targets.length,
-      candidateEdges: artifactJobs.reduce((count, job) => count + job.targetIds.length, 0),
+      candidateEdges: candidateEdgeCount,
       excludedPriorAcceptedTargets: excludedPriorTargets.length,
       excludedPriorCandidateJobs: excludedPriorCandidateJobIds.size,
     },

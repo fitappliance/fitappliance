@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { buildHistoricalExecutableRecoveryQueue } from '../../src/domain/historical-executable-recovery-queue.mjs';
+import { buildHistoricalExecutableRecoveryQueue as buildQueueFromManifest } from '../../src/domain/historical-executable-recovery-queue.mjs';
 import { historicalResolverContractSha256 } from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from '../../src/domain/beko-product-page-dimensions.mjs';
 import { SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY } from '../../src/domain/smeg-pdf-dimensions.mjs';
 
@@ -48,7 +49,106 @@ function reference(referenceId, overrides = {}) {
   };
 }
 
-test('materializes official and resolver-only targets without fabricating source URLs', () => {
+function candidateManifestFor(acquisitionQueue) {
+  const officialSources = acquisitionQueue.sources.filter((source) => (
+    source.sourceAuthority === 'OFFICIAL' && source.receiptEligible === true
+  ));
+  const candidates = officialSources.map((source) => ({
+    candidateId: `candidate-${source.sourceId}`,
+    sourceUrl: source.sourceUrl,
+    authorityBrand: acquisitionQueue.records.find((record) => (
+      (source.referenceIds ?? []).includes(record.referenceId)
+    ))?.brand ?? 'Example',
+    expectedContentType: source.sourceUrl.endsWith('.pdf') ? 'application/pdf' : 'text/html',
+    categories: [...new Set(acquisitionQueue.records.filter((record) => (
+      (source.referenceIds ?? []).includes(record.referenceId)
+    )).map((record) => record.category))].sort(),
+    documentTypes: [source.sourceUrl.endsWith('.pdf') ? 'manual' : 'product_page'],
+    sourceRoles: ['manufacturer_document'],
+    applicableReferenceIds: [...source.referenceIds].sort(),
+    sourceRanks: source.referenceIds.map((referenceId) => ({ referenceId, sourceRank: 1 })),
+    discoveries: [{
+      resolverId: 'fixture-resolver', resolverVersion: '1', discoveryMethod: 'fixture',
+      retrievedAt: acquisitionQueue.generatedAt, runId: null, runContentSha256: null,
+      discoveryProvenance: null,
+    }],
+  }));
+  const candidateBySourceId = new Map(officialSources.map((source, index) => [
+    source.sourceId, candidates[index],
+  ]));
+  const targets = acquisitionQueue.records.map((record) => {
+    const candidateEdges = record.candidateSourceIds
+      .map((sourceId) => candidateBySourceId.get(sourceId))
+      .filter(Boolean)
+      .map((candidate, index) => ({
+        candidateId: candidate.candidateId,
+        exactModelUrlSignal: true,
+        sourceModelHintExact: true,
+        requiredAttempt: true,
+        sourceModelHints: [record.model],
+        documentTypes: [...candidate.documentTypes],
+        discoveryStrategyIds: ['fixture-resolver@1:fixture'],
+        sourceRank: index + 1,
+      }));
+    for (const edge of candidateEdges) {
+      const candidate = candidates.find((row) => row.candidateId === edge.candidateId);
+      candidate.sourceRanks.find((binding) => binding.referenceId === record.referenceId).sourceRank = edge.sourceRank;
+    }
+    const state = candidateEdges.length > 0
+      ? 'CANDIDATES_READY'
+      : record.executionReadiness === 'RESEARCH_REQUIRED' ? 'RESEARCH_REQUIRED' : 'DISCOVERY_RETRYABLE';
+    return {
+      referenceId: record.referenceId,
+      acquisitionId: record.acquisitionId,
+      category: record.category,
+      brand: record.brand,
+      model: record.model,
+      lifecycleState: record.lifecycleState,
+      priority: record.priority,
+      route: record.route,
+      executionReadiness: record.executionReadiness,
+      state,
+      terminal: false,
+      retryableDiscovery: state !== 'RESEARCH_REQUIRED',
+      resolverContract: [{ resolverId: 'fixture-resolver', version: '1', scope: 'exact-model', required: true }],
+      resolverResults: [],
+      incompleteResolverIds: state === 'RESEARCH_REQUIRED' ? [] : ['fixture-resolver'],
+      lastDiscoveryRunId: null,
+      lastDiscoveryAt: null,
+      referenceHintSourceIds: [],
+      candidateEdges,
+    };
+  });
+  const semanticPayload = {
+    sourceAcquisitionQueueSha256: acquisitionQueue.semanticQueueSha256,
+    runBindings: [], candidates, targets,
+  };
+  return {
+    schemaVersion: 1,
+    generatedAt: acquisitionQueue.generatedAt,
+    semanticManifestSha256: canonicalJsonSha256(semanticPayload),
+    policy: {},
+    ...semanticPayload,
+    summary: {
+      acquisitionRecords: acquisitionQueue.records.length,
+      targets: targets.length,
+      candidates: candidates.length,
+      candidateEdges: targets.reduce((sum, target) => sum + target.candidateEdges.length, 0),
+      runBindings: 0,
+      byState: Object.fromEntries([...new Set(targets.map((target) => target.state))].sort()
+        .map((state) => [state, targets.filter((target) => target.state === state).length])),
+    },
+  };
+}
+
+function buildQueue(input) {
+  return buildQueueFromManifest({
+    ...input,
+    candidateManifest: input.candidateManifest ?? candidateManifestFor(input.acquisitionQueue),
+  });
+}
+
+test('materializes acquisition and bounded-discovery targets without fabricating source URLs', () => {
   const records = [
     acquisition('official', { candidateSourceIds: ['source-official'] }),
     acquisition('registry', {
@@ -62,7 +162,7 @@ test('materializes official and resolver-only targets without fabricating source
       executionReadiness: 'RESEARCH_REQUIRED',
     }),
   ];
-  const queue = buildHistoricalExecutableRecoveryQueue({
+  const queue = buildQueue({
     acquisitionQueue: {
       schemaVersion: 1,
       generatedAt: '2026-07-14T00:00:00.000Z',
@@ -88,9 +188,10 @@ test('materializes official and resolver-only targets without fabricating source
   });
 
   assert.equal(queue.schemaVersion, 2);
-  assert.equal(queue.targets.length, 2);
+  assert.equal(queue.targets.length, 1);
+  assert.equal(queue.discoveryTargets.length, 1);
   assert.equal(queue.jobs.length, 1);
-  const registry = queue.targets.find((target) => target.referenceId === 'registry');
+  const registry = queue.discoveryTargets.find((target) => target.referenceId === 'registry');
   assert.equal(registry.lifecycleState, 'REGISTRY_ONLY');
   assert.equal(registry.legacyRuntimeId, 'historical-registry');
   assert.equal(registry.primaryJobId, null);
@@ -99,7 +200,7 @@ test('materializes official and resolver-only targets without fabricating source
   assert.equal(queue.summary.excluded.RESEARCH_REQUIRED, 1);
 });
 
-test('materializes resolver-backed identity closure but keeps unresolved identity research excluded', () => {
+test('separates resolver-backed identity discovery and keeps unresolved identity research deferred', () => {
   const records = [
     acquisition('identity-resolved', {
       operationalClass: 'IDENTITY_RESEARCH',
@@ -114,7 +215,7 @@ test('materializes resolver-backed identity closure but keeps unresolved identit
       resolverIds: [],
     }),
   ];
-  const queue = buildHistoricalExecutableRecoveryQueue({
+  const queue = buildQueue({
     acquisitionQueue: {
       schemaVersion: 1,
       generatedAt: '2026-07-14T00:00:00.000Z',
@@ -128,9 +229,10 @@ test('materializes resolver-backed identity closure but keeps unresolved identit
     legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
   });
 
-  assert.equal(queue.targets.length, 1);
-  assert.equal(queue.targets[0].referenceId, 'identity-resolved');
-  assert.equal(queue.targets[0].primaryJobId, null);
+  assert.equal(queue.targets.length, 0);
+  assert.equal(queue.discoveryTargets.length, 1);
+  assert.equal(queue.discoveryTargets[0].referenceId, 'identity-resolved');
+  assert.equal(queue.discoveryTargets[0].primaryJobId, null);
   assert.equal(queue.summary.excluded.RESEARCH_REQUIRED, 1);
 });
 
@@ -155,7 +257,7 @@ test('reuses legacy reconciliation hints but not stale legacy candidate edges', 
     sourceDocumentIds: ['legacy-doc'],
     publicationEligible: false,
   };
-  const queue = buildHistoricalExecutableRecoveryQueue({
+  const queue = buildQueue({
     acquisitionQueue: {
       schemaVersion: 1,
       generatedAt: '2026-07-14T00:00:00.000Z',
@@ -167,9 +269,9 @@ test('reuses legacy reconciliation hints but not stale legacy candidate edges', 
     legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [legacyTarget] },
   });
 
-  assert.equal(queue.targets[0].targetId, 'legacy-target');
-  assert.deepEqual(queue.targets[0].legacyHints, legacyTarget.legacyHints);
-  assert.deepEqual(queue.targets[0].candidateJobIds, []);
+  assert.equal(queue.discoveryTargets[0].targetId, 'legacy-target');
+  assert.deepEqual(queue.discoveryTargets[0].legacyHints, legacyTarget.legacyHints);
+  assert.deepEqual(queue.discoveryTargets[0].candidateJobIds, []);
 });
 
 test('materializes parser repair from the official PDF while preserving accepted target identity', () => {
@@ -180,7 +282,7 @@ test('materializes parser repair from the official PDF while preserving accepted
     candidateSourceIds: ['source-repair'],
     canonicalProductIds: [],
   });
-  const queue = buildHistoricalExecutableRecoveryQueue({
+  const queue = buildQueue({
     acquisitionQueue: {
       schemaVersion: 1,
       generatedAt: '2026-07-14T00:00:00.000Z',
@@ -210,10 +312,10 @@ test('materializes parser repair from the official PDF while preserving accepted
   assert.equal(queue.jobs[0].acquisitionRoute, 'OFFICIAL_RECEIPT_REBUILD');
 });
 
-test('same-policy terminal source becomes resolver-only but preserves alternative-source research', () => {
+test('same-policy terminal source moves to bounded discovery and preserves alternative-source research', () => {
   const sourceUrl = 'https://example.com/repointed-family.pdf';
   const policySha256 = 'b'.repeat(64);
-  const queue = buildHistoricalExecutableRecoveryQueue({
+  const queue = buildQueue({
     acquisitionQueue: {
       schemaVersion: 1,
       generatedAt: '2026-07-14T00:00:00.000Z',
@@ -239,13 +341,14 @@ test('same-policy terminal source becomes resolver-only but preserves alternativ
   });
 
   assert.equal(queue.jobs.length, 0);
-  assert.equal(queue.targets.length, 1);
-  assert.deepEqual(queue.targets[0].candidateJobIds, []);
-  assert.equal(queue.targets[0].priorAttemptSuppressions.length, 1);
-  assert.equal(queue.targets[0].priorAttemptSuppressions[0].sourceUrl, sourceUrl);
+  assert.equal(queue.targets.length, 0);
+  assert.equal(queue.discoveryTargets.length, 1);
+  assert.deepEqual(queue.discoveryTargets[0].candidateJobIds, []);
+  assert.equal(queue.discoveryTargets[0].priorAttemptSuppressions.length, 1);
+  assert.equal(queue.discoveryTargets[0].priorAttemptSuppressions[0].sourceUrl, sourceUrl);
   assert.equal(queue.summary.suppressedPriorTerminalEdges, 1);
 
-  const changedPolicy = buildHistoricalExecutableRecoveryQueue({
+  const changedPolicy = buildQueue({
     acquisitionQueue: {
       schemaVersion: 1,
       generatedAt: '2026-07-14T00:00:00.000Z',
@@ -277,7 +380,7 @@ test('a bounded Beko HTML processor change reopens only the product page and kee
   const policySha256 = 'b'.repeat(64);
   const htmlUrl = 'https://www.beko.com/au-en/home-appliances/fridge-freezer/example-bbm450x';
   const pdfUrl = 'https://www.beko.com/content/manual.pdf';
-  const queue = buildHistoricalExecutableRecoveryQueue({
+  const queue = buildQueue({
     acquisitionQueue: {
       schemaVersion: 1,
       generatedAt: '2026-07-17T00:00:00.000Z',
@@ -323,7 +426,7 @@ test('a bounded Smeg MinerU processor change reopens only its exact Techspec PDF
   const policySha256 = 'b'.repeat(64);
   const techspecUrl = 'https://sys.smeg.com.au/Product/Techspecs/DWAI6314X.pdf';
   const manualUrl = 'https://sys.smeg.com.au/Manuals/DWAI6314X.pdf';
-  const queue = buildHistoricalExecutableRecoveryQueue({
+  const queue = buildQueue({
     acquisitionQueue: {
       schemaVersion: 1,
       generatedAt: '2026-07-17T00:00:00.000Z',
@@ -397,7 +500,7 @@ test('same-policy complete zero-candidate discovery stays suppressed across reso
     priorAttemptLedger: { schemaVersion: 1, entries: [], targetAttempts: [targetAttempt] },
   };
 
-  const suppressed = buildHistoricalExecutableRecoveryQueue({
+  const suppressed = buildQueue({
     ...base,
     recoveryPolicySha256: policySha256,
     resolverContractSha256ForTarget: () => currentResolverContractSha256,
@@ -405,7 +508,7 @@ test('same-policy complete zero-candidate discovery stays suppressed across reso
   assert.equal(suppressed.targets.length, 0);
   assert.equal(suppressed.summary.suppressedPriorResolverOnlyTargets, 1);
 
-  const changedPolicy = buildHistoricalExecutableRecoveryQueue({
+  const changedPolicy = buildQueue({
     ...base,
     recoveryPolicySha256: 'd'.repeat(64),
     resolverContractSha256ForTarget: () => currentResolverContractSha256,
@@ -413,7 +516,7 @@ test('same-policy complete zero-candidate discovery stays suppressed across reso
   assert.equal(changedPolicy.targets.length, 0);
   assert.equal(changedPolicy.summary.suppressedPriorResolverOnlyTargets, 1);
 
-  const changedResolver = buildHistoricalExecutableRecoveryQueue({
+  const changedResolver = buildQueue({
     ...base,
     recoveryPolicySha256: policySha256,
     resolverContractSha256ForTarget: () => historicalResolverContractSha256([{
@@ -430,7 +533,7 @@ test('same-policy complete zero-candidate discovery stays suppressed across reso
     sourceAuthority: 'OFFICIAL', receiptEligible: true,
     documentIds: ['pdf:new'], referenceIds: ['official'],
   }];
-  const reopened = buildHistoricalExecutableRecoveryQueue({
+  const reopened = buildQueue({
     ...explicitSource,
     recoveryPolicySha256: policySha256,
     resolverContractSha256ForTarget: () => historicalResolverContractSha256([{
@@ -474,17 +577,18 @@ test('same-policy accepted source is not fetched again while its conflicted targ
     },
   };
 
-  const queue = buildHistoricalExecutableRecoveryQueue({
+  const queue = buildQueue({
     ...input, recoveryPolicySha256: policySha256,
   });
   assert.equal(queue.jobs.length, 0);
-  assert.equal(queue.targets.length, 1);
-  assert.deepEqual(queue.targets[0].candidateJobIds, []);
-  assert.equal(queue.targets[0].priorSourceAcceptances.length, 1);
-  assert.equal(queue.targets[0].priorSourceAcceptances[0].sourceUrl, sourceUrl);
+  assert.equal(queue.targets.length, 0);
+  assert.equal(queue.discoveryTargets.length, 1);
+  assert.deepEqual(queue.discoveryTargets[0].candidateJobIds, []);
+  assert.equal(queue.discoveryTargets[0].priorSourceAcceptances.length, 1);
+  assert.equal(queue.discoveryTargets[0].priorSourceAcceptances[0].sourceUrl, sourceUrl);
   assert.equal(queue.summary.suppressedPriorAcceptedSourceEdges, 1);
 
-  const changedPolicy = buildHistoricalExecutableRecoveryQueue({
+  const changedPolicy = buildQueue({
     ...input, recoveryPolicySha256: 'd'.repeat(64),
   });
   assert.equal(changedPolicy.jobs.length, 1);

@@ -51,17 +51,27 @@ function fixture() {
       evidenceProcessorEpochs: { pdf_claim_parser: 'a'.repeat(64) },
       jobs: [{ jobId: 'job-1', targetIds: ['target-4'] }],
       targets: [
-        { targetId: 'target-3', referenceId: 'ref-3', candidateJobIds: [] },
         { targetId: 'target-4', referenceId: 'ref-4', candidateJobIds: ['job-1'] },
+      ],
+      discoveryTargets: [
+        { targetId: 'target-3', referenceId: 'ref-3', candidateJobIds: [] },
         { targetId: 'target-5', referenceId: 'ref-5', candidateJobIds: [] },
         { targetId: 'target-8', referenceId: 'ref-8', candidateJobIds: [] },
+      ],
+      deferredTargets: [
+        { targetId: 'target-2', referenceId: 'ref-2', dispositionReason: 'RESEARCH_REQUIRED' },
+        { targetId: 'target-6', referenceId: 'ref-6', dispositionReason: 'ACTIVE_RESOLVER_SUPPRESSION' },
+        { targetId: 'target-7', referenceId: 'ref-7', dispositionReason: 'ACTIVE_RESOLVER_SUPPRESSION' },
       ],
       summary: {
         acquisitionRecords: 7,
         targets: 4,
+        acquisitionTargets: 1,
+        discoveryTargets: 3,
+        deferredTargets: 3,
         fetchJobs: 1,
         candidateEdges: 1,
-        resolverOnlyTargets: 3,
+        resolverOnlyTargets: 0,
         suppressedPriorResolverOnlyTargets: 2,
         excluded: { RESEARCH_REQUIRED: 1 },
       },
@@ -184,16 +194,44 @@ test('binds only complete target inventory terminals and records accurate reopen
 
 test('an executable target outranks a stale target-level terminal attempt', () => {
   const input = fixture();
-  input.executableQueue.targets.push({
+  input.executableQueue.discoveryTargets.push({
     targetId: 'target-6', referenceId: 'ref-6', candidateJobIds: [],
   });
+  input.executableQueue.deferredTargets = input.executableQueue.deferredTargets
+    .filter((target) => target.referenceId !== 'ref-6');
   input.executableQueue.summary.targets += 1;
-  input.executableQueue.summary.resolverOnlyTargets += 1;
+  input.executableQueue.summary.discoveryTargets += 1;
+  input.executableQueue.summary.deferredTargets -= 1;
   input.executableQueue.summary.suppressedPriorResolverOnlyTargets -= 1;
 
   const state = buildHistoricalEvidenceTargetState(input);
   assert.equal(byReference(state, 'ref-6').state, 'SOURCE_DISCOVERY_REQUIRED');
   assert.equal(byReference(state, 'ref-6').actionable, true);
+});
+
+test('pending acquisition work does not release a conflict-quarantined model for publication', () => {
+  const input = fixture();
+  input.executableQueue.jobs.push({ jobId: 'job-2', targetIds: ['target-2'] });
+  input.executableQueue.targets.push({
+    targetId: 'target-2', referenceId: 'ref-2', candidateJobIds: ['job-2'],
+  });
+  input.executableQueue.deferredTargets = input.executableQueue.deferredTargets
+    .filter((target) => target.referenceId !== 'ref-2');
+  input.executableQueue.summary.targets += 1;
+  input.executableQueue.summary.acquisitionTargets += 1;
+  input.executableQueue.summary.deferredTargets -= 1;
+  input.executableQueue.summary.fetchJobs += 1;
+  input.executableQueue.summary.candidateEdges += 1;
+  delete input.executableQueue.summary.excluded.RESEARCH_REQUIRED;
+
+  const conflict = byReference(buildHistoricalEvidenceTargetState(input), 'ref-2');
+  assert.equal(conflict.state, 'CONFLICT_QUARANTINE');
+  assert.equal(conflict.stateClass, 'BLOCKED');
+  assert.equal(conflict.actionable, true);
+  assert.equal(conflict.terminal, true);
+  assert.equal(conflict.binding.pendingWork.type, 'executable_queue');
+  assert.equal(buildHistoricalEvidenceTargetState(input).summary.actionableBlockedOverlap, 1);
+  assert.deepEqual(conflict.reopeningConditions, ['CONFLICT_CLOSURE_DECISION_ACCEPTED']);
 });
 
 test('a later target failure cannot weaken an accepted receipt', () => {

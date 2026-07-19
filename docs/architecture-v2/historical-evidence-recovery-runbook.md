@@ -43,11 +43,12 @@ before changing evidence semantics.
     source model, source URL/type, geometry and Fit requirements must match.
     Geometry drift, weaker requirements, an equal timestamp or a reused receipt
     binding stops the build.
-12. A complete zero-candidate resolver pass may suppress only a resolver-only
-    target under the same recovery policy and the same resolver contract (ID,
-    version, scope and required flag). An incomplete resolver remains retryable;
-    a policy change, resolver-contract change or new explicit official candidate
-    job reopens the target automatically.
+12. A complete zero-candidate resolver pass may suppress only the target's
+    separately recorded bounded-discovery work under the same recovery policy
+    and resolver contract (ID, version, scope and required flag). Resolver-only
+    targets must never appear in the ordinary acquisition batch. An incomplete
+    resolver remains retryable; a policy change, resolver-contract change or a
+    new explicit official candidate reopens the target automatically.
 13. Every fresh run, including a dry-run, scans completed run state before it
     creates a run directory or invokes discovery. An unpromoted acceptance or
     complete zero-candidate inventory blocks the same policy and resolver
@@ -79,13 +80,15 @@ The runner also verifies the marker hash, mounted volume UUID, pinned MinerU
 version, model revision, queue SHA, policy SHA and batch SHA. Do not bypass a
 preflight failure by editing state or marker files.
 
-Run a network-free preflight against a bounded selection:
+Run a network-free preflight against one already materialised acquisition job:
 
 ```bash
+JOB_ID="$(jq -r '.artifactJobs[0].jobId' \
+  data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json)"
 npm run recover:historical-evidence -- \
   --dry-run \
   --require-selection \
-  --route OFFICIAL_SOURCE_DISCOVERY_REQUIRED \
+  --job-id "$JOB_ID" \
   --limit 1
 ```
 
@@ -93,8 +96,8 @@ The CLI is selection-required by default. `--require-selection` makes that
 operator intent visible in recorded commands; omitting all `--job-id`, `--route`
 and `--limit` values still fails. A future owner-approved all-batch operation
 must use explicit `--allow-all`, which cannot be combined with any selection.
-The production graph contains thousands of targets and must not use that
-override.
+Discovery work uses the candidate-discovery command in section 2.1 instead of
+the recovery runner.
 
 ### 2.1 Materialise official candidates before acquisition
 
@@ -138,14 +141,60 @@ results remain `DISCOVERY_RETRYABLE`. Retailer, registry and mirror candidates
 remain reference hints even when they contain an exact model string; they do
 not satisfy the official-candidate inventory.
 
+### 2.2 Keep acquisition, discovery and deferred work separate
+
+Rebuild the executable graph only from a candidate manifest whose semantic SHA
+is bound to the current acquisition queue. The graph has three disjoint target
+partitions:
+
+- `targets`: ordinary acquisition work; every row has at least one explicit
+  candidate edge and may enter the evidence recovery batch;
+- `discoveryTargets`: resolver-only work; these rows are control-plane inputs
+  for separately bounded candidate-discovery batches and never enter the
+  ordinary recovery batch;
+- `deferredTargets`: non-executable rows carrying a target-level reason such as
+  `RESEARCH_REQUIRED`, `NO_CANDIDATE_COMPLETE` or
+  `ACTIVE_RESOLVER_SUPPRESSION`.
+
+The current tracked graph contains six acquisition targets and six fetch jobs,
+4,982 bounded-discovery targets, and 2,700 deferred targets. The six acquisition
+targets are conflict-closure evidence work. Their products remain
+`CONFLICT_QUARANTINE`; fetching new evidence does not release publication.
+
+Never reconstruct fetch jobs from retailer hints or directly from unresolved
+acquisition rows. Never copy a discovery target into `targets` to make the
+recovery runner accept it. Rebuild the official-candidate manifest instead.
+
 ## 3. Build and inspect the execution graph
 
 Regenerate the next-epoch queue only after the previous release is committed:
 
 ```bash
-npm run build:historical-evidence-recovery-queue
+npm run build:historical-model-pdf-acquisition-queue
+npm run build:historical-official-candidate-manifest
+npm run build:historical-executable-recovery-queue
+npm run build:historical-evidence-target-state
 npm run build:historical-evidence-recovery-batch
 ```
+
+Inspect and prove the partition before any runner invocation:
+
+```bash
+jq '{
+  manifest: .sourceOfficialCandidateManifestSha256,
+  acquisitionTargets: .summary.acquisitionTargets,
+  discoveryTargets: .summary.discoveryTargets,
+  deferredTargets: .summary.deferredTargets,
+  fetchJobs: .summary.fetchJobs,
+  candidateEdges: .summary.candidateEdges,
+  resolverOnlyTargets: .summary.resolverOnlyTargets,
+  deferredByReason: .summary.deferredByReason
+}' data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json
+```
+
+Stop if `acquisitionTargets` is non-zero while `fetchJobs` or `candidateEdges`
+is zero, if `resolverOnlyTargets` is non-zero, or if the three target partitions
+do not sum to `acquisitionRecords`.
 
 Inspect route counts before selecting work:
 
@@ -444,8 +493,9 @@ replay audit. The ledger retains terminal and transient failures, appends
 audited resolutions, and records official candidates that parsed successfully
 even when the enclosing product remains quarantined. Same-policy terminal
 sources and same-policy accepted sources are removed from future fetch edges;
-the target remains resolver-only so alternative official evidence can still be
-researched. Changing the recovery policy hash deliberately reopens those edges.
+the target moves to separately bounded discovery when alternative official
+evidence can still be researched. Changing the recovery policy hash
+deliberately reopens those edges.
 
 The real Hisense `HWF3S8514X` run proves the distinction. Its official user
 manual now parses page 11 as width `595`, height `845`, appliance depth `540`

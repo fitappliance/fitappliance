@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generatedAt": "2026-07-17T04:19:39.580Z",
-  "semanticQueueSha256": "5cc5a0534835c0362e3c1995f9f17c930e75868159422a35c3cab4796f62e5c5",
+  "semanticQueueSha256": "7be32d3b4ca862ba3e8511af25523f15d8582f04685b891c9fc462a777de98be",
   "sourceClassificationSha256": "88b2986938073de17e3170a7289b44ea5dc6deb05f10521f545f682fda27781b",
   "records": [
     {
@@ -187800,7 +187800,7 @@
       "groupName": "PDF grammar pdf_grammar_fd6fd1396552b04a",
       "operationalClass": "CONFLICT_QUARANTINE",
       "route": "CONFLICT_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "BOUNDED_READY",
       "candidateSourceIds": [
         "historical_source_e88ddc90569bc2fbd086c52c"
       ],
@@ -188421,7 +188421,7 @@
       "groupName": "PDF grammar pdf_grammar_b56ff9ab0cbbc9f2",
       "operationalClass": "CONFLICT_QUARANTINE",
       "route": "CONFLICT_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "BOUNDED_READY",
       "candidateSourceIds": [
         "historical_source_5ac7ef04ff7b1f174e77bc31"
       ],
@@ -188477,7 +188477,7 @@
       "groupName": null,
       "operationalClass": "CONFLICT_QUARANTINE",
       "route": "CONFLICT_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "BOUNDED_READY",
       "candidateSourceIds": [
         "historical_source_352c90b570b9bf3eb4ce50c7"
       ],
@@ -189128,7 +189128,7 @@
       "groupName": "PDF grammar pdf_grammar_1cb932102aaee1e6",
       "operationalClass": "CONFLICT_QUARANTINE",
       "route": "CONFLICT_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "BOUNDED_READY",
       "candidateSourceIds": [
         "historical_source_79d9c96dd94d3d349998896a"
       ],
@@ -189190,7 +189190,7 @@
       "groupName": "PDF grammar pdf_grammar_2358d2487e9939bc",
       "operationalClass": "CONFLICT_QUARANTINE",
       "route": "CONFLICT_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "BOUNDED_READY",
       "candidateSourceIds": [
         "historical_source_d93e7bb517961aa1f389cd4d"
       ],
@@ -189405,7 +189405,7 @@
       "groupName": "PDF grammar pdf_grammar_ceaa1c5c4d5fa4ff",
       "operationalClass": "CONFLICT_QUARANTINE",
       "route": "CONFLICT_CLOSURE",
-      "executionReadiness": "RESEARCH_REQUIRED",
+      "executionReadiness": "BOUNDED_READY",
       "candidateSourceIds": [
         "historical_source_adfe0ec7408bffb886b3d787",
         "historical_source_e56af970fc0506a9b28a4838"
@@ -206957,8 +206957,9 @@
       "OFFICIAL_REDISCOVERY": 1059
     },
     "byExecutionReadiness": {
+      "BOUNDED_READY": 6,
       "DISCOVERY_READY": 5023,
-      "RESEARCH_REQUIRED": 83,
+      "RESEARCH_REQUIRED": 77,
       "RESOLVER_GAP": 2582
     },
     "excluded": {

@@ -117,14 +117,27 @@ function executableBinding(target) {
     type: 'executable_queue',
     sourceArtifact: EXECUTABLE_QUEUE_PATH,
     targetId: target.targetId,
+    executionLane: target.executionLane ?? (target.candidateJobIds.length > 0
+      ? 'ACQUISITION'
+      : 'BOUNDED_DISCOVERY'),
     candidateJobIds: [...target.candidateJobIds].sort(),
+  };
+}
+
+function deferredBinding(target) {
+  return {
+    type: 'control_plane_disposition',
+    sourceArtifact: EXECUTABLE_QUEUE_PATH,
+    targetId: target.targetId,
+    dispositionReason: target.dispositionReason,
   };
 }
 
 function stateForRecord({
   record,
   acquisition,
-  executable,
+  workTarget,
+  deferredTarget,
   acceptanceEntry,
   attemptLedger,
   resolvedAttemptIds,
@@ -153,26 +166,27 @@ function stateForRecord({
     };
   }
   if (record.operationalClass === 'CONFLICT_QUARANTINE') {
-    if (executable) throw new Error(`conflict quarantine leaked into executable queue: ${record.referenceId}`);
     return {
       ...base,
       state: 'CONFLICT_QUARANTINE',
       stateClass: 'BLOCKED',
-      actionable: false,
+      actionable: Boolean(workTarget),
       terminal: true,
       binding: {
         type: 'classification',
         sourceArtifact: CLASSIFICATION_PATH,
         operationalClass: record.operationalClass,
         conflictState: record.conflictState,
+        ...(workTarget ? { pendingWork: executableBinding(workTarget) } : {}),
+        ...(deferredTarget ? { controlPlaneDisposition: deferredBinding(deferredTarget) } : {}),
       },
       reopeningConditions: ['CONFLICT_CLOSURE_DECISION_ACCEPTED'],
     };
   }
-  if (executable) {
+  if (workTarget) {
     let state = 'SOURCE_DISCOVERY_REQUIRED';
     if (record.operationalClass === 'IDENTITY_RESEARCH') state = 'IDENTITY_RESEARCH';
-    else if (executable.candidateJobIds.length > 0) state = 'CANDIDATE_READY';
+    else if (workTarget.candidateJobIds.length > 0) state = 'CANDIDATE_READY';
     else if (sourceAttemptSummary.activeRetryable > 0) state = 'RETRYABLE';
     return {
       ...base,
@@ -180,8 +194,19 @@ function stateForRecord({
       stateClass: 'ACTIONABLE',
       actionable: true,
       terminal: false,
-      binding: executableBinding(executable),
+      binding: executableBinding(workTarget),
       reopeningConditions: [],
+    };
+  }
+  if (deferredTarget?.dispositionReason === 'NO_CANDIDATE_COMPLETE') {
+    return {
+      ...base,
+      state: 'NO_OFFICIAL_SOURCE',
+      stateClass: 'BLOCKED',
+      actionable: false,
+      terminal: true,
+      binding: deferredBinding(deferredTarget),
+      reopeningConditions: ['EXPLICIT_OFFICIAL_CANDIDATE_ADDED'],
     };
   }
   if (record.operationalClass === 'IDENTITY_RESEARCH') {
@@ -219,6 +244,21 @@ function stateForRecord({
       ],
     };
   }
+  if (deferredTarget?.dispositionReason === 'ALL_CANDIDATES_SUPPRESSED') {
+    return {
+      ...base,
+      state: 'BLOCKED_SAME_EPOCH',
+      stateClass: 'BLOCKED',
+      actionable: false,
+      terminal: true,
+      binding: deferredBinding(deferredTarget),
+      reopeningConditions: [
+        'EXPLICIT_OFFICIAL_CANDIDATE_ADDED',
+        'POLICY_CHANGED',
+        'PROCESSOR_EPOCH_CHANGED',
+      ],
+    };
+  }
   return {
     ...base,
     state: 'UNSEEN',
@@ -229,6 +269,7 @@ function stateForRecord({
       type: 'classification',
       sourceArtifact: CLASSIFICATION_PATH,
       acquisitionQueued: Boolean(acquisition),
+      ...(deferredTarget ? { controlPlaneDisposition: deferredBinding(deferredTarget) } : {}),
     },
     reopeningConditions: ['CONTROL_PLANE_INPUT_CHANGED'],
   };
@@ -245,7 +286,27 @@ export function buildHistoricalEvidenceTargetState(input) {
   const attemptLedger = schema(input.attemptLedger, 1, 'attempt ledger');
   const classifications = uniqueMap(classification.records, 'referenceId', 'classification');
   const acquisitions = uniqueMap(acquisitionQueue.records, 'referenceId', 'acquisition');
-  const executables = uniqueMap(executableQueue.targets, 'referenceId', 'executable target');
+  const acquisitionTargets = uniqueMap(executableQueue.targets, 'referenceId', 'acquisition target');
+  const hasSeparatedLanes = Array.isArray(executableQueue.discoveryTargets)
+    && Array.isArray(executableQueue.deferredTargets);
+  const discoveryTargets = uniqueMap(
+    hasSeparatedLanes ? executableQueue.discoveryTargets : [],
+    'referenceId',
+    'discovery target',
+  );
+  const deferredTargets = uniqueMap(
+    hasSeparatedLanes ? executableQueue.deferredTargets : [],
+    'referenceId',
+    'deferred target',
+  );
+  const workTargets = new Map(acquisitionTargets);
+  for (const [referenceId, target] of discoveryTargets) {
+    if (workTargets.has(referenceId)) throw new Error(`target appears in two work lanes: ${referenceId}`);
+    workTargets.set(referenceId, target);
+  }
+  for (const referenceId of deferredTargets.keys()) {
+    if (workTargets.has(referenceId)) throw new Error(`target appears in work and deferred lanes: ${referenceId}`);
+  }
   const acceptances = uniqueMap(acceptanceBundle.entries, 'referenceId', 'acceptance');
   const fitReceiptReferenceIds = new Set(input.fitReceiptReferenceIds ?? []);
   const resolvedAttemptIds = new Set((attemptLedger.resolutions ?? []).map((entry) => entry.attemptId));
@@ -258,14 +319,31 @@ export function buildHistoricalEvidenceTargetState(input) {
     || executableQueue.summary.acquisitionRecords !== acquisitions.size) {
     throw new Error('acquisition target-state accounting mismatch');
   }
-  if (executableQueue.summary.targets !== executables.size) {
+  if (executableQueue.summary.targets !== workTargets.size) {
     throw new Error('executable target accounting mismatch');
+  }
+  if (hasSeparatedLanes) {
+    if (executableQueue.summary.acquisitionTargets !== acquisitionTargets.size
+      || executableQueue.summary.discoveryTargets !== discoveryTargets.size
+      || executableQueue.summary.deferredTargets !== deferredTargets.size) {
+      throw new Error('separated executable lane accounting mismatch');
+    }
   }
   for (const referenceId of acquisitions.keys()) {
     if (!classifications.has(referenceId)) throw new Error(`acquisition reference missing from classification: ${referenceId}`);
   }
-  for (const referenceId of executables.keys()) {
+  for (const referenceId of workTargets.keys()) {
     if (!acquisitions.has(referenceId)) throw new Error(`executable reference missing from acquisition: ${referenceId}`);
+  }
+  for (const referenceId of deferredTargets.keys()) {
+    if (!acquisitions.has(referenceId)) throw new Error(`deferred reference missing from acquisition: ${referenceId}`);
+  }
+  if (hasSeparatedLanes) {
+    for (const referenceId of acquisitions.keys()) {
+      if (!workTargets.has(referenceId) && !deferredTargets.has(referenceId)) {
+        throw new Error(`acquisition reference missing from control-plane partition: ${referenceId}`);
+      }
+    }
   }
   for (const referenceId of acceptances.keys()) {
     if (!classifications.has(referenceId)) throw new Error(`acceptance reference missing from classification: ${referenceId}`);
@@ -274,7 +352,8 @@ export function buildHistoricalEvidenceTargetState(input) {
   const records = [...classifications.values()].map((record) => stateForRecord({
     record,
     acquisition: acquisitions.get(record.referenceId) ?? null,
-    executable: executables.get(record.referenceId) ?? null,
+    workTarget: workTargets.get(record.referenceId) ?? null,
+    deferredTarget: deferredTargets.get(record.referenceId) ?? null,
     acceptanceEntry: acceptances.get(record.referenceId) ?? null,
     attemptLedger,
     resolvedAttemptIds,
@@ -288,17 +367,23 @@ export function buildHistoricalEvidenceTargetState(input) {
   ));
 
   const actionable = records.filter((record) => record.actionable).length;
+  const actionableBlockedOverlap = records.filter((record) => (
+    record.actionable && record.stateClass === 'BLOCKED'
+  )).length;
   const completed = records.filter((record) => record.stateClass === 'COMPLETED').length;
   const blocked = records.filter((record) => record.stateClass === 'BLOCKED').length;
   const targetSuppressed = records.filter((record) => (
     ['BLOCKED_SAME_EPOCH', 'NO_OFFICIAL_SOURCE'].includes(record.state)
   )).length;
   if (actionable !== executableQueue.summary.targets) throw new Error('actionable target accounting mismatch');
-  if (targetSuppressed !== executableQueue.summary.suppressedPriorResolverOnlyTargets) {
-    throw new Error('target-level suppression accounting mismatch');
-  }
   const excluded = countObject(executableQueue.summary.excluded, 'executable excluded counts');
-  if (actionable + targetSuppressed + excluded !== acquisitionQueue.summary.queuedModels) {
+  if (hasSeparatedLanes) {
+    const resolverSuppressed = deferredTargets.size - excluded;
+    if (resolverSuppressed !== executableQueue.summary.suppressedPriorResolverOnlyTargets
+      || actionable + deferredTargets.size !== acquisitionQueue.summary.queuedModels) {
+      throw new Error('separated target-state partition mismatch');
+    }
+  } else if (actionable + targetSuppressed + excluded !== acquisitionQueue.summary.queuedModels) {
     throw new Error('executable target-state partition mismatch');
   }
   if (completed + acquisitionQueue.summary.queuedModels !== classifications.size) {
@@ -313,6 +398,10 @@ export function buildHistoricalEvidenceTargetState(input) {
     summary: {
       records: records.length,
       actionable,
+      actionableBlockedOverlap,
+      acquisitionWork: acquisitionTargets.size,
+      discoveryWork: discoveryTargets.size,
+      deferred: deferredTargets.size,
       completed,
       blocked,
       terminal: records.filter((record) => record.terminal).length,
@@ -322,6 +411,7 @@ export function buildHistoricalEvidenceTargetState(input) {
     controls: {
       uniqueClassificationReferences: true,
       actionableMatchesExecutableQueue: true,
+      separatedWorkLanes: hasSeparatedLanes,
       targetSuppressionsMatchExecutableQueue: true,
       sourceTerminalDoesNotImplyTargetTerminal: true,
     },

@@ -161,7 +161,9 @@ function autonomousIdentityDiscoveryCases(identityResearchQueue, references, can
 
 function readiness(route, candidateAuthorities, resolverIds) {
   if (route === 'PARSER_REPAIR' || route === 'PDF_RECONVERT') return 'OFFLINE_REPAIR';
-  if (route === 'CONFLICT_CLOSURE') return 'RESEARCH_REQUIRED';
+  if (route === 'CONFLICT_CLOSURE') {
+    return candidateAuthorities.has('OFFICIAL') ? 'BOUNDED_READY' : 'RESEARCH_REQUIRED';
+  }
   if (route === 'IDENTITY_CLOSURE') {
     return resolverIds.length > 0 ? 'DISCOVERY_READY' : 'RESEARCH_REQUIRED';
   }

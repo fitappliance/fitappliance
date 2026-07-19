@@ -64,12 +64,17 @@ function fixture() {
     executableQueue: {
       schemaVersion: 2,
       jobs: [],
-      targets: [{ referenceId: 'ref-5', candidateJobIds: [] }],
+      targets: [],
+      discoveryTargets: [{ referenceId: 'ref-5', candidateJobIds: [] }],
+      deferredTargets: [],
       summary: {
         acquisitionRecords: 1,
         fetchJobs: 0,
         targets: 1,
-        resolverOnlyTargets: 1,
+        acquisitionTargets: 0,
+        discoveryTargets: 1,
+        deferredTargets: 0,
+        resolverOnlyTargets: 0,
         candidateEdges: 0,
         suppressedPriorResolverOnlyTargets: 0,
         excluded: {},
@@ -95,6 +100,7 @@ function fixture() {
         actionable: 1,
         completed: 4,
         blocked: 0,
+        actionableBlockedOverlap: 0,
         terminal: 4,
         byState: { DIMENSIONS_RECEIPT: 4, SOURCE_DISCOVERY_REQUIRED: 1 },
         byStateClass: { ACTIONABLE: 1, COMPLETED: 4 },
@@ -167,6 +173,7 @@ test('builds a grain-safe model, document, parser, source-lane and Fit funnel', 
   assert.equal(metricById(status, 'accepted_source_lane.pdf_involved').numerator, 2);
   assert.equal(metricById(status, 'target_state.actionable').numerator, 1);
   assert.equal(metricById(status, 'target_state.completed').numerator, 4);
+  assert.equal(metricById(status, 'target_state.actionable_blocked_overlap').numerator, 0);
   assert.equal(metricById(status, 'fit.receipt_bound_verified').numerator, 0);
   assert.ok(status.metrics.every((metric) => (
     typeof metric.grain === 'string'
@@ -178,7 +185,7 @@ test('builds a grain-safe model, document, parser, source-lane and Fit funnel', 
   assert.deepEqual(status.controls.map((control) => control.status), [
     'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS',
   ]);
-  assert.ok(status.diagnostics.some((diagnostic) => (
+  assert.ok(!status.diagnostics.some((diagnostic) => (
     diagnostic.code === 'EXECUTION_GRAPH_RESOLVER_ONLY'
   )));
 });
@@ -192,8 +199,21 @@ test('renders explicit grains and does not merge the two document inventories', 
   assert.match(markdown, /Unique PDF content/);
   assert.match(markdown, /MinerU knowledge document/);
   assert.match(markdown, /PDF only/);
-  assert.match(markdown, /EXECUTION_GRAPH_RESOLVER_ONLY/);
+  assert.doesNotMatch(markdown, /EXECUTION_GRAPH_RESOLVER_ONLY/);
   assert.doesNotMatch(markdown, /2\s*\/\s*3 unique PDFs and MinerU documents/);
+});
+
+test('fails closed when an ordinary acquisition lane has targets but no materialized edge', () => {
+  const input = fixture();
+  input.executableQueue.targets = [{ referenceId: 'ref-5', candidateJobIds: [] }];
+  input.executableQueue.discoveryTargets = [];
+  input.executableQueue.summary.acquisitionTargets = 1;
+  input.executableQueue.summary.discoveryTargets = 0;
+
+  assert.throws(
+    () => buildHistoricalEvidenceProgramStatus(input),
+    /acquisition execution graph.*candidate edge/i,
+  );
 });
 
 test('fails closed when classification and acquisition accounting drift', () => {
