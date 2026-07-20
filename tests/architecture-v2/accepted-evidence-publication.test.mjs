@@ -383,3 +383,35 @@ test('receipt-bound acceptance refuses to overwrite conflicting existing geometr
     },
   }, entry), /conflicting existing geometry/i);
 });
+
+test('dimensions-only acceptance removes unrelated legacy fit semantics and is idempotent', () => {
+  const accepted = buildReceiptBoundAcceptanceProjection({ batch, results, products: catalog.products });
+  const entry = accepted.get(batch.entries[0].legacyRuntimeId);
+  const source = catalog.products.find((product) => product.id === batch.entries[0].legacyRuntimeId);
+  const polluted = {
+    ...source,
+    inferred_door_swing: true,
+    door_swing_mm: 600,
+    clearance_top: 20,
+    clearance_left: 5,
+    clearance_right: 5,
+    clearance_rear: 10,
+    requires_plumbing: true,
+    flags: {
+      ...(source.flags ?? {}),
+      requires_plumbing: true,
+      ventilation_required: true,
+      reversible_door: true,
+    },
+  };
+
+  const once = applyReceiptBoundAcceptance(polluted, entry);
+  const twice = applyReceiptBoundAcceptance(once, entry);
+
+  assert.equal(Object.hasOwn(once, 'inferred_door_swing'), false);
+  assert.equal(once.door_swing_mm, null);
+  assert.equal(once.flags.requires_plumbing, null);
+  assert.equal(once.flags.ventilation_required, null);
+  assert.equal(once.flags.reversible_door, null);
+  assert.deepEqual(twice, once);
+});

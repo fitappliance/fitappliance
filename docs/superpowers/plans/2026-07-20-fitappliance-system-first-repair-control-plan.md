@@ -5,9 +5,9 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** EXECUTING - Task 6 in progress
+- **Status:** EXECUTING - Task 7 in progress
 - **Date:** 2026-07-20
-- **Active task:** Task 6 - prove receipt-to-publication vertical slices
+- **Active task:** Task 7 - deterministic multi-cohort manifest windows
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -443,8 +443,8 @@ Mandatory adversarial traces across the programme:
 | 3 | Build lifecycle shadow, refresh inventory, and prove destination/cutover isolation | 2 | COMPLETED | Shadow accounts for 3,515 products; all 1,384 legacy-current products have scoped refresh dispositions; real cutover remains safely blocked and production is byte-identical; synthetic atomic cutover passed |
 | 4 | Replace one-path discovery with typed official source lanes | 3 | COMPLETED | Schema-v2 five-lane contract; immutable AU/model/host-bound provenance; resume revalidation; exact Esatto canary; 1,059 Architecture V2 and 2,719 repository tests passed |
 | 5 | Repair category/series/document-family MinerU grammar | 4 | COMPLETED | Real immutable EDW456S replay yields 448x845x600 mm from page 24; D2 1150 mm remains operation-only; source-derived plus adversarial corpus; 1,063 Architecture V2 and 2,723 repository tests passed; no release/public artifact changed |
-| 6 | Prove receipt-to-publication vertical slices | 5 | IN_PROGRESS | Contract trace in progress |
-| 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | PENDING | Not started |
+| 6 | Prove receipt-to-publication vertical slices | 5 | COMPLETED | Unsupported legacy door semantics removed at receipt/public boundaries; unresolved accepted conflicts and forged verified Fit state fail closed; zero-violation idempotent next-epoch shadow; 1,066 Architecture V2 and 2,726 repository tests passed |
+| 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | IN_PROGRESS | Contract trace in progress |
 | 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | PENDING | Not started |
 | 9 | Full replay, migration, release DAG, and rollback drill | 8 | PENDING | Not started |
 | 10 | Refresh canonical docs and close the release | 9 | PENDING | Not started |
@@ -1046,6 +1046,68 @@ or negative corpus.
 
 ### Task 6: Prove receipt-to-publication vertical slices
 
+#### Task 6 execution repair record (written before implementation)
+
+```text
+Symptom: current and historical W/H/D routing passes isolated tests, but a
+  dimensions-only receipt can still expose unrelated legacy door semantics in
+  the public row. A crafted cumulative bundle can also label unresolved
+  official conflicts as accepted, and the public Fit audit does not inspect the
+  provenance outcome/eligibility bits unless another verified label is present.
+First incorrect persisted state: applyReceiptBoundAcceptance spreads the legacy
+  product before replacing only selected aliases, retaining
+  inferred_door_swing and flags.reversible_door. normalizePublicProduct then
+  derives door_swing_mm from door-open total depth minus closed depth even when
+  the two receipt-bound fields do not prove hinge-side clearance. The resulting
+  public projection is internally dimension-bound but semantically overclaims a
+  different operation field.
+Upstream producers: exact-model evidence reconciliation, verification receipts,
+  cumulative acceptance bundle, lifecycle shadow, and geometry projection.
+Downstream consumers: public projection, browser/UI legacy door warnings,
+  historical replacement projection, Fit publication audit, sitemap/product
+  pages, and release/status guards.
+Affected state axes: evidence applicability, public visibility payload, and Fit
+  outcome only. Identity, registry membership, retail lifecycle, retailer rows,
+  and immutable evidence objects must not change.
+Affected artifacts: cumulative acceptance bundle (validation only), public
+  catalog projection, historical evidence projection, Fit publication audit,
+  and system contract. Candidate/discovery artifacts are unaffected.
+Current contract: accepted geometry overwrites W/H/D and selected installation
+  aliases but does not own every legacy door flag; public normalization treats a
+  calculated depth delta as door swing; acceptance-bundle validation validates
+  reconciliation shape but not unresolved-conflict emptiness; Fit audit checks
+  visible trust labels but not successfulFitOutcome or verifiedFitEligible.
+Target contract: a dimensions receipt publishes only fields carried by its
+  receipt-bound geometry/provenance. Unsupported legacy inferred door and
+  reversible-door fields are removed or set unknown. Receipt-bound door swing
+  can be public only from explicit operation.hingeSideSpaceMm field evidence,
+  never from depth subtraction. Accepted bundle entries cannot retain unresolved
+  conflicting fields, conflict reasons, or supersession violations. Any
+  VERIFIED_FIT outcome or eligibility bit without a fully verified receipt-bound
+  geometry is an audit violation.
+Migration/rebuild: add vertical canaries first; repair the acceptance boundary,
+  public normalization, bundle validator, and audit. The repaired audit exposes
+  35 migration violations in the tracked public projection (33 unsupported
+  legacy door capability markers and 3 unsupported swing values). A direct
+  rebuild is correctly blocked because Task 3's lifecycle cutover remains
+  SHADOW_ONLY. Task 6 therefore proves a zero-violation, byte-stable in-memory
+  next-epoch projection while keeping production bytes intact. Cumulative
+  receipts, historical reference, public/Fit artifacts, candidates, discovery,
+  PDF/MinerU outputs, and the release DAG remain deferred to Task 9.
+Rollback: revert the validator/publication/audit batch and its tests. No
+  immutable objects or cumulative receipt lineage are deleted. If Task 9 has
+  already released it, restore the complete previous release projection rather
+  than mixing old public rows with the new contract.
+Positive canaries: current exact dimensions route to current plus historical;
+  archived exact dimensions route historical-only; a second application is a
+  semantic no-op; a complete adjustable range remains non-scalar; incomplete
+  installation evidence remains INSUFFICIENT_DATA or CONDITIONAL_FIT.
+Adversarial canaries: unresolved exact-official conflict cannot enter an
+  accepted bundle; stale clearance/plumbing/ventilation/reversible-door/inferred
+  door fields cannot ride a W/H/D receipt; door-open depth cannot synthesize
+  hinge-side swing; forged VERIFIED_FIT outcome or eligibility is audited.
+```
+
 **Goal:** Verify that upstream corrections survive reconciliation, receipts,
 geometry, replacement, and public publication.
 
@@ -1057,9 +1119,16 @@ geometry, replacement, and public publication.
   `src/domain/historical-evidence-publication.mjs`
 - Modify only when failing contracts require it:
   `src/domain/installation-evidence-pipeline.mjs`
+- Modify when the vertical slice proves post-acceptance semantic leakage:
+  `src/domain/accepted-evidence-publication.mjs`
+- Modify when public normalization invents unsupported operation semantics:
+  `src/domain/public-projection.mjs`
+- Modify when publication audit misses provenance or legacy-fit drift:
+  `src/domain/geometry-publication.mjs`
 - Modify: `tests/architecture-v2/historical-evidence-recovery-contract.test.mjs`
 - Modify: `tests/architecture-v2/accepted-evidence-publication.test.mjs`
 - Modify: `tests/architecture-v2/fit-publication-audit.test.mjs`
+- Modify: `tests/architecture-v2/public-projection.test.mjs`
 
 **Canary matrix:**
 
@@ -1075,6 +1144,22 @@ geometry, replacement, and public publication.
 objects; cumulative promotion is append-safe; public and historical projections
 are deterministic; zero Fit publication violations; a second promotion is a
 semantic no-op.
+
+**Execution evidence (2026-07-20):** focused receipt, projection, contract, and
+Fit-audit canaries passed, including current, archived, conflict, range, and
+partial-installation routes. Receipt-bound publication now removes unsupported
+legacy inferred/reversible-door state, derives hinge-side space only from its
+own receipt-bound field, rejects accepted reconciliation rows with unresolved
+conflicts, and audits forged verified outcomes. The stricter audit identifies
+35 migration violations in the tracked production projection; the same input
+normalized as a next-epoch in-memory shadow has zero violations and a second
+normalization is byte-stable. A direct public rebuild stopped before writing
+because the required current retail lifecycle decision is not yet available,
+which proves the Task 3 shadow-only gate prevents a mixed-epoch release. The 35
+focused tests, 135 vertical-slice tests, all 1,066 Architecture V2 tests, and all
+2,726 repository tests passed. Production public, Fit-audit, and historical
+reference artifacts remain unchanged. The system contract was re-attested as
+`historical_evidence_system_f0e68a94d9f1bc2e391f0942`.
 
 **Stop condition:** a correct W/H/D receipt carries unrelated stale retailer,
 clearance, plumbing, power, or door fields into public output.

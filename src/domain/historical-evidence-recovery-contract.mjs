@@ -659,7 +659,14 @@ function validateBundleEntry(value) {
     sourceHashes.add(source.contentSha256);
   }
   if (value.geometryProjection !== null) object(value.geometryProjection, 'bundle geometryProjection');
-  if (Object.hasOwn(value, 'reconciliation')) validateReconciliationDecision(value.reconciliation);
+  if (Object.hasOwn(value, 'reconciliation')) {
+    validateReconciliationDecision(value.reconciliation);
+    if (value.reconciliation.conflictingFields.length
+      || value.reconciliation.supersessionViolations.length
+      || value.reconciliation.conflictReason !== null) {
+      throw new TypeError('accepted bundle entry cannot retain unresolved conflict or supersession state');
+    }
+  }
   if (value.acceptanceStatus === 'accepted' && value.geometryProjection === null) {
     throw new TypeError('accepted bundle geometry projection required');
   }

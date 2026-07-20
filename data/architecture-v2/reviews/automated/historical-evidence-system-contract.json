@@ -130,10 +130,10 @@
         },
         {
           "path": "src/domain/public-projection.mjs",
-          "contentSha256": "cceb9f8f31adb2151043333f34b4e25186c39f88a0b172aa625cd88845c035b9"
+          "contentSha256": "5fdf5fcba66b6717cc1030f8fcdd95a5cff3bbe99a3592d601f32c999bac0be3"
         }
       ],
-      "semanticSha256": "088ed4561424ee0121d9e02c016ae8a60952ea43bda15bc770983a75706d4d0c"
+      "semanticSha256": "a6993c68f3f1f0932f07b38afa52bc936aa08fc084877b40f067124e3a29e595"
     },
     {
       "id": "receipt-policy",
@@ -145,10 +145,10 @@
         },
         {
           "path": "src/domain/historical-evidence-recovery-contract.mjs",
-          "contentSha256": "31c029d5b2d7571bf365195a74a8678fbde72d89a81382a6880c61514f1785f4"
+          "contentSha256": "ee48fe338f14aaad6193c655899e79e3f988874ab2482b10869866461c77ee2e"
         }
       ],
-      "semanticSha256": "46ece23ef86c8fc5bde0a299881cbf7de0e48857b0524469c4e2d833308d8989"
+      "semanticSha256": "6c7216f81d5fe42a7e1bc5c2afc365ee2465f7894d41e34b0df803792265c44c"
     },
     {
       "id": "resolver-contract",
@@ -265,10 +265,10 @@
         },
         {
           "path": "src/domain/historical-evidence-recovery-contract.mjs",
-          "contentSha256": "31c029d5b2d7571bf365195a74a8678fbde72d89a81382a6880c61514f1785f4"
+          "contentSha256": "ee48fe338f14aaad6193c655899e79e3f988874ab2482b10869866461c77ee2e"
         }
       ],
-      "producerSha256": "58c6006e7fb206ad1b8cfec2f419c2ea036400f4a76bdf1bf51062e8c779d5ec",
+      "producerSha256": "556d003d7dfd063d5117687e31a556d2b119771b1f125cd5dccd7e9deba0ef00",
       "consumers": [
         "current-publication",
         "executable-queue",
@@ -367,10 +367,10 @@
         },
         {
           "path": "src/domain/public-projection.mjs",
-          "contentSha256": "cceb9f8f31adb2151043333f34b4e25186c39f88a0b172aa625cd88845c035b9"
+          "contentSha256": "5fdf5fcba66b6717cc1030f8fcdd95a5cff3bbe99a3592d601f32c999bac0be3"
         }
       ],
-      "producerSha256": "ecce6fb82f76035acd4bdf7c1581a6638c1fda20d14d2e13f2dda86dba9c8151",
+      "producerSha256": "0e48cd659e6d9bb2788661ac3b0e6e8249edc5764579528a9483c45a3c7781a0",
       "consumers": [
         "fit-publication",
         "historical-replacement-publication",
@@ -1945,6 +1945,6 @@
     "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
     "checkpointCount": 5
   },
-  "contractId": "historical_evidence_system_26c7aa781210a2fa888ccd35",
-  "semanticContractSha256": "26c7aa781210a2fa888ccd352162c85a2d489d67f19f397c3b906221c984fb5c"
+  "contractId": "historical_evidence_system_f0e68a94d9f1bc2e391f0942",
+  "semanticContractSha256": "f0e68a94d9f1bc2e391f0942a46d48d1366921d491b76d6396c9c0005a9a05e3"
 }

@@ -214,7 +214,9 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
     && !same(product.geometry_v2_provenance, acceptance.geometry_v2_provenance)) {
     throw new Error(`conflicting existing geometry provenance for ${product.id}`);
   }
-  const verified = acceptance.geometry_v2_provenance.evidenceLevel === 'verified';
+  const verified = acceptance.geometry_v2_provenance.evidenceLevel === 'verified'
+    && acceptance.geometry_v2_provenance.verifiedFitEligible === true
+    && acceptance.geometry_v2_provenance.successfulFitOutcome === 'VERIFIED_FIT';
   const closed = acceptance.geometry_v2.closedEnvelope;
   const heightMm = closed.heightMm.maximumMm;
   const installation = acceptance.geometry_v2.installation;
@@ -242,8 +244,12 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
     clearance_verified: _legacyClearanceVerified,
     ...retainedEvidence
   } = product.evidence ?? {};
+  const {
+    inferred_door_swing: _legacyInferredDoorSwing,
+    ...retainedProduct
+  } = product;
   return {
-    ...product,
+    ...retainedProduct,
     w: closed.widthMm,
     h: heightMm,
     d: closed.depthMm,
@@ -271,6 +277,7 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
       ...(product.flags && typeof product.flags === 'object' ? product.flags : {}),
       requires_plumbing: null,
       ventilation_required: null,
+      reversible_door: null,
     },
     geometry_v2: structuredClone(acceptance.geometry_v2),
     geometry_v2_provenance: structuredClone(acceptance.geometry_v2_provenance),

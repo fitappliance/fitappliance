@@ -442,6 +442,28 @@ test('audit and cumulative bundle contracts fail closed on violations and duplic
   );
 });
 
+test('accepted cumulative entries cannot retain unresolved official conflicts', () => {
+  for (const reconciliation of [
+    { ...EMPTY_RECONCILIATION, conflictingFields: ['closedEnvelope.depthMm'] },
+    { ...EMPTY_RECONCILIATION, conflictReason: 'exact official depth conflict' },
+    {
+      ...EMPTY_RECONCILIATION,
+      supersessionViolations: [{
+        reason: 'cross_resource_supersession',
+        sourceHash: SHA_A,
+        priorHash: SHA_B,
+      }],
+    },
+  ]) {
+    const conflicted = bundle();
+    conflicted.entries[0].reconciliation = reconciliation;
+    assert.throws(
+      () => validateHistoricalEvidenceRecoveryAcceptanceBundle(conflicted),
+      /accepted.*unresolved|conflict|supersession/i,
+    );
+  }
+});
+
 test('bundle batch rollback is hash-bound and removes only one promoted lineage', () => {
   const input = bundle();
   const result = rollbackHistoricalEvidenceRecoveryBundleBatch(input, {

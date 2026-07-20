@@ -47,6 +47,19 @@ function legacyProjectionReasons(product, geometry) {
     reasons.push('legacy_door_open_drift_from_receipt_bound_geometry');
   }
 
+  const hingeSideSpace = geometry.operation.hingeSideSpaceMm;
+  const hingeEvidence = product.geometry_v2_provenance
+    ?.fieldEvidence?.['operation.hingeSideSpaceMm'];
+  if ((product.door_swing_mm !== null && product.door_swing_mm !== undefined)
+    && (!receiptBound(hingeEvidence) || product.door_swing_mm !== hingeSideSpace)) {
+    reasons.push('legacy_door_swing_without_receipt_bound_evidence');
+  }
+  if (product.inferred_door_swing === true
+    || (product.flags?.reversible_door !== null
+      && product.flags?.reversible_door !== undefined)) {
+    reasons.push('legacy_door_capability_without_receipt_bound_evidence');
+  }
+
   const clearancePairs = [
     ['top_mm', 'topMm', 'clearance_top'],
     ['left_mm', 'leftMm', 'clearance_left'],
@@ -111,6 +124,14 @@ export function auditPublicFitProjection(projection) {
     }
     if (product?.geometry_v2_provenance?.evidenceLevel === 'verified' && classification !== 'verified') {
       reasons.push('invalid_verified_geometry_provenance');
+    }
+    if (product?.geometry_v2_provenance?.verifiedFitEligible === true
+      && classification !== 'verified') {
+      reasons.push('verified_fit_eligibility_without_receipt_bound_fit');
+    }
+    if (product?.geometry_v2_provenance?.successfulFitOutcome === 'VERIFIED_FIT'
+      && classification !== 'verified') {
+      reasons.push('verified_fit_outcome_without_receipt_bound_fit');
     }
     if (classification !== 'none') {
       let geometry;
