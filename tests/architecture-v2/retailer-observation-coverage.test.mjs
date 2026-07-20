@@ -5,6 +5,7 @@ import test from 'node:test';
 
 import {
   buildRetailerObservationCoverage,
+  createBaselineRetailerLinkId,
   validateRetailerObservationCoverage,
 } from '../../src/domain/retailer-observation-coverage.mjs';
 import {
@@ -266,6 +267,119 @@ test('a hash-bound typed snapshot appends once and replaces only its own coverag
     first.observations.find((row) => row.canonicalProductId === product.canonicalProductId
       && row.sourceType !== 'legacy_catalog').id,
   ]);
+});
+
+test('coverage consumes a complete-feed per-listing identity quarantine without inventing availability', () => {
+  const adapter = adapterForPolicy('the-good-guys-partnerize-feed-v1');
+  const product = publicProjection.document.products.find((row) => (
+    row.retailers?.some((retailer) => retailer.n === 'The Good Guys')
+  ));
+  const retailer = product.retailers.find((row) => row.n === 'The Good Guys');
+  const sourceUrl = new URL(retailer.url).toString();
+  const baselineLinkId = createBaselineRetailerLinkId({
+    canonicalProductId: product.canonicalProductId,
+    retailer: 'The Good Guys',
+    url: sourceUrl,
+    originSource: retailer.source,
+  });
+  const snapshot = normalizeRetailerSnapshot(adapter, {
+    observedAt: '2026-07-20T00:00:00.000Z',
+    complete: true,
+    canonicalProductIds: [product.canonicalProductId],
+    rawPayloadSha256: 'e'.repeat(64),
+    rawSourceReference: 'fixture:tgg:identity-rebound',
+    rows: [],
+    listingReconciliations: [{
+      kind: 'identity_mismatch',
+      reasonCode: 'PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH',
+      baselineLinkId,
+      canonicalProductId: product.canonicalProductId,
+      sourceUrl,
+      expectedModel: product.model,
+      receivedModel: `${product.model}-OTHER`,
+      receivedUrl: `${sourceUrl}-other`,
+      rawPayloadSha256: 'e'.repeat(64),
+    }],
+  });
+  const ledger = buildRetailerObservationLedger({
+    existingLedger: emptyV1Ledger,
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+    typedSnapshots: [snapshot],
+  });
+  const coverage = buildRetailerObservationCoverage({
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    ledger,
+    ledgerSha256: canonicalSha256(ledger),
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+  });
+  const item = coverage.items.find((row) => row.baselineLinkId === baselineLinkId);
+
+  assert.equal(item.terminalObservationState, 'QUARANTINED_IDENTITY_MISMATCH');
+  assert.equal(item.typedObservation.receivedModel, `${product.model}-OTHER`);
+  assert.equal(item.revalidation, null);
+  assert.equal(ledger.summary.authoritativeTypedObservations, 0);
+  assert.equal(ledger.collectionAttempts.at(-1).listingReconciliations.length, 1);
+});
+
+test('coverage routes complete affiliate-feed absence to an alternate source without inferring unavailable', () => {
+  const adapter = adapterForPolicy('the-good-guys-partnerize-feed-v1');
+  const product = publicProjection.document.products.find((row) => (
+    row.retailers?.some((retailer) => retailer.n === 'The Good Guys')
+  ));
+  const retailer = product.retailers.find((row) => row.n === 'The Good Guys');
+  const sourceUrl = new URL(retailer.url).toString();
+  const baselineLinkId = createBaselineRetailerLinkId({
+    canonicalProductId: product.canonicalProductId,
+    retailer: 'The Good Guys',
+    url: sourceUrl,
+    originSource: retailer.source,
+  });
+  const snapshot = normalizeRetailerSnapshot(adapter, {
+    observedAt: '2026-07-20T00:00:00.000Z',
+    complete: true,
+    canonicalProductIds: [product.canonicalProductId],
+    rawPayloadSha256: 'f'.repeat(64),
+    rawSourceReference: 'fixture:tgg:source-absent',
+    rows: [],
+    listingReconciliations: [{
+      kind: 'source_absent',
+      reasonCode: 'PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED',
+      baselineLinkId,
+      canonicalProductId: product.canonicalProductId,
+      sourceUrl,
+      expectedModel: product.model,
+      retailerProductId: retailer.tgg_sku ?? null,
+      rawPayloadSha256: 'f'.repeat(64),
+    }],
+  });
+  const ledger = buildRetailerObservationLedger({
+    existingLedger: emptyV1Ledger,
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+    typedSnapshots: [snapshot],
+  });
+  const coverage = buildRetailerObservationCoverage({
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    ledger,
+    ledgerSha256: canonicalSha256(ledger),
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+  });
+  const item = coverage.items.find((row) => row.baselineLinkId === baselineLinkId);
+
+  assert.equal(item.terminalObservationState, 'SOURCE_ABSENT_IN_AUTHORIZED_FEED');
+  assert.equal(item.typedObservation.state, 'SOURCE_ABSENT_IN_AUTHORIZED_FEED');
+  assert.equal(item.revalidation.action, 'COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE');
+  assert.equal(item.revalidation.executionState, 'BLOCKED_BY_SOURCE_POLICY');
+  assert.equal(ledger.summary.authoritativeTypedObservations, 0);
 });
 
 test('redirected typed listings remain explicit revalidation work rather than terminal coverage', () => {

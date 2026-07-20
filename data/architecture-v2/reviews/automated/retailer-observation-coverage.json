@@ -9,11 +9,11 @@
     },
     {
       "kind": "RETAILER_OBSERVATION_LEDGER",
-      "sha256": "36bbbbc571fdf8844c1f24936889b2134e5cba09c7a4013e7b554992b4733bc8"
+      "sha256": "b534c1f19c80e3ce4c3cf42d8276588ccc106d920f1914c301824812a2c016ba"
     },
     {
       "kind": "RETAILER_SOURCE_POLICY",
-      "sha256": "1cbd08bffed5f851f794432401d90ae37bbc75e82c874ccc9df5ba3cdb7034fd"
+      "sha256": "5e5adc2c16232906c412f93431fb363b4cfe97a10f097abb0d2ebcefdf6ed125"
     }
   ],
   "items": [
@@ -125,11 +125,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_e7dff02b1306692f834a0d7f"
+          "obs_42491cdc3d79e069dbb53e0f"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -576,11 +576,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_6f047e6f3aec62d526844a1b"
+          "obs_2bff875151f01a39bceab926"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -702,11 +702,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_153137c242573d20f1cc334b"
+          "obs_54b42760a25145358cde0adc"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -820,11 +820,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_20ee4bf442d55061a9d68213"
+          "obs_fbc736e7fe2cad0dc77832a6"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -946,11 +946,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_570fbeafca85a1f166f463bd"
+          "obs_cc9d4cbd5d8a70cb0da5fa73"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -1724,11 +1724,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_5c900994f388e5c6b056dfad"
+          "obs_c4b2f6f6c5b9ef2846d77a7a"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -1850,11 +1850,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_a02b486960a4797e8a13cff3"
+          "obs_e9d6b22a7bccc785e3d21eb9"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -1871,11 +1871,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_ebeb66d2dd54c38fa4712cd3"
+          "obs_7f788f948d22942af4e05aef"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -1892,11 +1892,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_db13f6c84bae370d9f70e516"
+          "obs_9c37eba966ac1dd46b4a61cc"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -2367,11 +2367,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_0bac5b8cf88087f39563b15d"
+          "obs_1deeccc596e7643c768024ed"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -2388,11 +2388,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_6c431291fd9ec2e4a18849dc"
+          "obs_382f5c604e170d54f38cf677"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -2535,11 +2535,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_f5de5b5bc8f7fd78b24d0b0b"
+          "obs_e9d63475abc92ce4505468ca"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -2985,11 +2985,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_ddb0e0ce2171e1bfed0f4525"
+          "obs_9b412fd4fe9366e0e3b4d43b"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -3090,11 +3090,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_262f1e6dd2aaa75079988b7c"
+          "obs_ecd6dfeed8e865dfe5f516ed"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -3132,11 +3132,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_60bdc047b51996eb32f15438"
+          "obs_61aee595443fa8827f787533"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -3233,11 +3233,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_4de6a258f797000f716f34fd"
+          "obs_4e8e8216156a86217660d4c4"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -3347,11 +3347,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_27192fee648660c695a7ce6e"
+          "obs_230e776a739910c84f4539ae"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -3663,11 +3663,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_7d8eade898d0ab863134a99b"
+          "obs_9d55d8c943331002d79a6cf6"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -4054,13 +4054,26 @@
       "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u34le",
       "originSource": "sitemap",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_84d9823ba10d67d8d532c37d",
+        "baselineLinkId": "retail_link_1dcaec0bf8fd90ee2b4aa30e",
+        "sourceUrl": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u34le",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -4117,11 +4130,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_9d49045ebb2fed74117f7e95"
+          "obs_e4ddef28cbcd149f6a5b8066"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -4197,13 +4210,26 @@
       "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060sg1",
       "originSource": "partnerize-feed",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_7e1ed79251c3eaf2620ea2ac",
+        "baselineLinkId": "retail_link_1ff0e8844a8b2f1b91438bab",
+        "sourceUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060sg1",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -4386,11 +4412,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_e3953fd6ff3dd9bbcccb67a9"
+          "obs_fa9ea32dbb6bedde1cbadfec"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -4407,11 +4433,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_5bf962ac67a4492cda09df9e"
+          "obs_5321e16ab9799504320cab18"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -4529,15 +4555,23 @@
       "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
       "originSource": "websearch-the-good-guys",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
-        "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
-        "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
-      }
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
+      "typedObservation": {
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
+        "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
+        "sourceUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
+        "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+        "receivedModel": "RF730QZUVB1",
+        "receivedUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1"
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_233cbeb7e9b9108d2daf06ad",
@@ -4672,11 +4706,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_fc74b2ff72e8ee2debe6e766"
+          "obs_9216c701f24a450d3ccb4e24"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -5215,11 +5249,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_1163ec0176bd0102a017ae63"
+          "obs_9a9bfea4ef404ed78cbe6b1c"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -5468,11 +5502,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_fe85242c006cb24675e9196e"
+          "obs_fc11c7b6bfd285e036b31b7a"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -5590,11 +5624,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_8102d0ce728e88e552143465"
+          "obs_6146e7d47c541ddc4a95b7b1"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -6167,13 +6201,26 @@
       "url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wth83002au",
       "originSource": "sitemap",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_a460095592b57264c14a6556",
+        "baselineLinkId": "retail_link_326993c47d02748d898ed4d8",
+        "sourceUrl": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wth83002au",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -6419,11 +6466,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_ef5b22672988c141f8ee2ca0"
+          "obs_c40c1a8c753f1b38db87f6bd"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -6621,11 +6668,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_bcff4e72ba95776b3b5e41a4"
+          "obs_9ad188058d5ade71aa6ad660"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -6747,11 +6794,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_68f2eb9e07e1fdfdad8c4ba2"
+          "obs_bd4d79c6130fde9e522d726d"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -7202,11 +7249,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_40d4bee3209a1c1ddc53d3f0"
+          "obs_515d5b11f77ccf2cec1960af"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -8094,11 +8141,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_a6fe9ed8057967894a362004"
+          "obs_c225146175b0d07cd9506094"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -8443,11 +8490,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_d5103ba1ff980a8f7647993c"
+          "obs_040805f64e29f8c205e4c715"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -8586,11 +8633,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_cbd43b3cde9be152e1d2e828"
+          "obs_b4e6fb32e58331712eccb399"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -8628,11 +8675,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_25ad60b718b91d4997299fa1"
+          "obs_66eacac20e3d628eab3fd182"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -8725,15 +8772,23 @@
       "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
       "originSource": "sitemap",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
-        "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
-        "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
-      }
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
+      "typedObservation": {
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_3036232c6746d56e540fff19",
+        "baselineLinkId": "retail_link_445fbe05488583428292dd5e",
+        "sourceUrl": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
+        "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+        "receivedModel": "WWT-1910FGX",
+        "receivedUrl": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx"
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_44f01a038836ad7f5ec7e5cb",
@@ -9032,11 +9087,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_075d4c4f1b8993375add6227"
+          "obs_9b4b4b78ae1e99e632522a6f"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -9074,11 +9129,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_9b5dc5a49021faa9df8f8fa7"
+          "obs_b42ed9b8a9aefb1562cd87e9"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -9213,11 +9268,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_90e8f9e07138fbfd0c6a39a3"
+          "obs_364a40265eb22880253a2bb0"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -9381,11 +9436,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_1bab932d02172836c193a015"
+          "obs_c8806be784d3c754a5815844"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -9465,11 +9520,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_c45e2ade3509319e7226f03d"
+          "obs_50fcc27da72ae3ea84f458d3"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -9726,11 +9781,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_906161cc971f593a829dee4f"
+          "obs_3fc2dd75de7c3713b3cd55d4"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -9945,11 +10000,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_c2b0d7effc501ed65e5c552b"
+          "obs_a4c81aea0c5301a8e0609d80"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -10004,11 +10059,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_512b87d15c112cf384cd088b"
+          "obs_944af5671ce63ddf0f281f2b"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -10265,11 +10320,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_bf51d189e2d3b64165b4e9d9"
+          "obs_b8b5a44f31e3f9cde573efd2"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -10526,11 +10581,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_fe3321418bdb5240e785e8a5"
+          "obs_0a3724c28d338fe3f479f54e"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -10547,11 +10602,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_aac7dfc3f745634c8e4697b7"
+          "obs_838efcd412f77c23b2887349"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -10568,11 +10623,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_da5bbb1fbd85742a056cb715"
+          "obs_b2c4e8fde38a97986e8e142a"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -10707,11 +10762,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_4ad4b02c40c97bdea58a4b18"
+          "obs_f2547b4a0da37e4fd3a45aa0"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -10749,11 +10804,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_10a41cb30fec50c7677ef01b"
+          "obs_8ea23300d8a64cc0a0ffe339"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -10812,11 +10867,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_93e277aa199f5515b871758d"
+          "obs_2c940ebf33966be3c53f92b5"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -11148,11 +11203,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_3ae1b53102b5e85128d6757f"
+          "obs_3cb270ad849ecce6123e5265"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -11497,11 +11552,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_b38bd2d587f431af5722e78b"
+          "obs_90b9a50fb4d051b63b1ac491"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -11518,11 +11573,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_9523b02e0e742939d3549ec0"
+          "obs_7f8cceb85e8f36992c46a5b3"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -11602,11 +11657,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_2726713b53aa5db30b056c73"
+          "obs_03cdf4e894095ceaee2eb407"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -11787,11 +11842,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_a9e06c61e03d92d6b4ff5548"
+          "obs_569b8aa20f3488561f516c80"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -11955,11 +12010,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_1bf7fde3b826eb7a2821f591"
+          "obs_30c718f9dc7819bb0ae8f278"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -11997,11 +12052,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_79f1d4f18e8a9b6844f20af7"
+          "obs_44b8ad272ee7441f8063667f"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -12081,11 +12136,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_d38ab0869ceb45ff1bafa707"
+          "obs_fe49b77a7b19919802c2dbb7"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -12224,11 +12279,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_0cc032deef25eddc5cfa4f92"
+          "obs_4f02328437b3addb2589c8f1"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -12438,11 +12493,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_600d0c5bab396d5e9fc4ab1f"
+          "obs_68fad08ec1d238c22fb4a891"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -12476,13 +12531,26 @@
       "url": "https://www.thegoodguys.com.au/samsung-bespoke-12kg-front-load-washer-ww12bb944dgb",
       "originSource": "sitemap",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_049da49dd1e75737e8e251bc",
+        "baselineLinkId": "retail_link_6164a622c7040936477e8d07",
+        "sourceUrl": "https://www.thegoodguys.com.au/samsung-bespoke-12kg-front-load-washer-ww12bb944dgb",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -13048,13 +13116,26 @@
       "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wan24126au",
       "originSource": "sitemap",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_0762d35786278a6428f860d5",
+        "baselineLinkId": "retail_link_650f089f5c8d281b3a113833",
+        "sourceUrl": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wan24126au",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -13128,15 +13209,23 @@
       "url": "https://www.thegoodguys.com.au/chiq-202l-top-mount-refrigerator-ctm202nw3",
       "originSource": "websearch-the-good-guys",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
-        "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
-        "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
-      }
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
+      "typedObservation": {
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_6c37a64f4db8aefb49934e79",
+        "baselineLinkId": "retail_link_668a0c2034ea527c1b71d362",
+        "sourceUrl": "https://www.thegoodguys.com.au/chiq-202l-top-mount-refrigerator-ctm202nw3",
+        "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+        "receivedModel": "CTM202NW3",
+        "receivedUrl": "https://www.thegoodguys.com.au/chiq-202l-top-mount-refrigerator-ctm202nw3"
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_66b36c21aa8a5cf1b1d43af5",
@@ -13149,11 +13238,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_01ed286461106ec7d0a9cc41"
+          "obs_cfcb4cac26fd83793a8372fb"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -13271,11 +13360,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_ad5c6b658948c2aae7512176"
+          "obs_0e5f919f3a7e62c2a8df9065"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -13313,11 +13402,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_90e1c4369e4b2fdf786cdfc0"
+          "obs_806625ed00fae7bd5b89129e"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -13355,11 +13444,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_286855603799bc6a47ab052e"
+          "obs_09579b0cd00d3df2d2f280dc"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -13553,11 +13642,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_46aff2badaa44b8b8e79cb52"
+          "obs_618109b3a998330fb9ffea60"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -13692,13 +13781,26 @@
       "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-heat-pump-dryer-dh8060p3",
       "originSource": "sitemap",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_9a4211d7d7147bc2f37abe64",
+        "baselineLinkId": "retail_link_6b3d4ab29d00f83e774eb4dc",
+        "sourceUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-heat-pump-dryer-dh8060p3",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -13894,11 +13996,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_5768043502c5d5b0ac22adba"
+          "obs_17fa7ec3d7ebf7fb13e520a7"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -14100,13 +14202,26 @@
       "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060pg2",
       "originSource": "sitemap",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_5a49bed039787d3859724b55",
+        "baselineLinkId": "retail_link_6e4b140d5435e7f90845177a",
+        "sourceUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060pg2",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -14226,11 +14341,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_b62d50c3459682c49a8d0136"
+          "obs_bb830f92f334d641c4a020d7"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -14268,11 +14383,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_562744a1980cbe1d54f010ec"
+          "obs_4da670c60c675e993afd7867"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -14390,11 +14505,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_3b6662cf6f4661b17c1e5746"
+          "obs_6ac4cd800c22286ae8440ad5"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -14575,11 +14690,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_2011e6aeb9d66f5113fd581f"
+          "obs_653fc512f07c395b21260aca"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -14659,11 +14774,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_51d340dfa2979d8591e92765"
+          "obs_1196914647d7694a6cc4a1f3"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -14979,11 +15094,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_8fb305ea94c2a3aff503fe6f"
+          "obs_fe711ab54702b2a1441959ba"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -15277,11 +15392,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_ad16902a3a562480c1e40465"
+          "obs_df27cd4dc02f3a588065df35"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -15647,11 +15762,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_499bb45e71c78fb2309b33a1"
+          "obs_15167249e7f4120bbed6beca"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -15689,11 +15804,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_5a79b28e947cc9f89ab896b0"
+          "obs_1208a8b902c4374a616d5112"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -15836,11 +15951,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_2704726e9063f44f7f3d7381"
+          "obs_b9f4a908ea8621b1fdaa136f"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -15920,11 +16035,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_fdb898337234d1a671c2b517"
+          "obs_122eeb633482494c9077901a"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -16395,11 +16510,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_31360c8ecc73bcf038dbc488"
+          "obs_114d059e3d49d7e8bfafa42f"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -16542,11 +16657,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_8ba165ef1dd350b6a3137bf0"
+          "obs_64a9f146174fea548f278ad0"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -16714,11 +16829,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_9b630caa100ae7ca745bbd66"
+          "obs_e6a960ac6f1df89a62b9f8a7"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -16769,11 +16884,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_06b295b4b463723f62173a2b"
+          "obs_c5952d00c7ef5415242bbc3f"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -17106,11 +17221,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_024907eb103724277c4687f2"
+          "obs_fbe4e54ac86f7f8027ffb670"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -17498,11 +17613,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_258fbb7d2b75ab0e23a53f46"
+          "obs_909268f33d69959e0e153cb1"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -17717,11 +17832,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_fe42436a89e8c68c94d55f08"
+          "obs_902a64310cd3df9c5e641f70"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -17780,11 +17895,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_ec5cc671d0a250d97d38d322"
+          "obs_8b6f01374e8572580c4e66d6"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -17982,11 +18097,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_a56da968a5dbb3802629a504"
+          "obs_2cdbe04317a5355502dd697e"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -17999,13 +18114,26 @@
       "url": "https://www.thegoodguys.com.au/bosch-574l-quad-door-refrigerator-kfi96axeaa",
       "originSource": "partnerize-feed",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_3c96e77bd392defbdefd50c3",
+        "baselineLinkId": "retail_link_8cb2111786b10b60b6362fe3",
+        "sourceUrl": "https://www.thegoodguys.com.au/bosch-574l-quad-door-refrigerator-kfi96axeaa",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -18054,11 +18182,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_33d674eba22d3bc92ec5524c"
+          "obs_76b279d2db288c239a78f6d6"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -18327,11 +18455,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_70037f6b029e973c6b441af7"
+          "obs_a8adae3df42773be098e96f3"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -18596,11 +18724,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_ff3cbc44d98d2f1e1d79ab72"
+          "obs_840db7d79152d0a785b86ec9"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -18760,13 +18888,26 @@
       "url": "https://www.thegoodguys.com.au/bosch-series-8-60cm-fully-integrated-dishwasher-tall-tub-sbv8ecx01a",
       "originSource": "partnerize-feed",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_61360487e3f03d0d93145f05",
+        "baselineLinkId": "retail_link_9374e823e8bfbf1c1d9b317a",
+        "sourceUrl": "https://www.thegoodguys.com.au/bosch-series-8-60cm-fully-integrated-dishwasher-tall-tub-sbv8ecx01a",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -19067,11 +19208,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_90aa5a20ca7db4d1fbf506b5"
+          "obs_3f928a8bc3d8cf64698ff4b2"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -19147,11 +19288,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_007fa4c9bd8e997e983d4bf6"
+          "obs_9868f2274562e64df373d851"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -19189,11 +19330,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_af737be36a0f8a7097540826"
+          "obs_eff3a291f2d9fa0f9b617051"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -19479,13 +19620,26 @@
       "url": "https://www.thegoodguys.com.au/lg-8kg-heat-pump-dryer-dvh5-08w",
       "originSource": "partnerize-feed",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_e46b9203620dfe6d94864123",
+        "baselineLinkId": "retail_link_9875357ba2a2d53babf0c559",
+        "sourceUrl": "https://www.thegoodguys.com.au/lg-8kg-heat-pump-dryer-dvh5-08w",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -20401,11 +20555,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_e751c77294369978f46e5d40"
+          "obs_454f966bf68b63d2a55c3432"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -20485,11 +20639,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_3744d1edc9fd1cd46a51f458"
+          "obs_43013e91229a2d0419029fa8"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -20737,11 +20891,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_d5dda057d0e6954eb9ac5768"
+          "obs_aa38972a21f3a84e656a7ee6"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -20901,11 +21055,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_4776cc13c3db601c49662de4"
+          "obs_74bafcdfc2f77f7cc9094ce9"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -20918,15 +21072,23 @@
       "url": "https://www.thegoodguys.com.au/lg-530l-french-door-refrigerator-gf-b505mbl",
       "originSource": "websearch-the-good-guys",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
-        "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
-        "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
-      }
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
+      "typedObservation": {
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_49481a0226b78e0f7d8e1c3c",
+        "baselineLinkId": "retail_link_a3cf38d04073fd1cadb2de47",
+        "sourceUrl": "https://www.thegoodguys.com.au/lg-530l-french-door-refrigerator-gf-b505mbl",
+        "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+        "receivedModel": "GF-B505MBL",
+        "receivedUrl": "https://www.thegoodguys.com.au/lg-530l-french-door-refrigerator-gf-b505mbl"
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_a3cfd7e2655626c37fd2c4e1",
@@ -21019,11 +21181,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_279af44e9deddccbfa82b0bc"
+          "obs_1c80ba42fc9c5b3317760a84"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21061,11 +21223,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_62d950c6c9421c75f94cf2aa"
+          "obs_66a28f8d703e2441f74c0133"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21103,11 +21265,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_1b50f3c8ff4908598e69d7a1"
+          "obs_31101ec625da2df0ec42c0e5"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21145,11 +21307,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_2904f704b1ee5fe34b92fc1e"
+          "obs_a1e80ad1f9caa5ce408e94eb"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21187,11 +21349,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_dcfea3befe60ab14128c4606"
+          "obs_13a9257d10f05b9542b2a7e5"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21301,11 +21463,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_aa4349ee82683df565d029ed"
+          "obs_f94ffa91c6665a81ef4ae6c2"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21436,11 +21598,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_09a29aef30747270ff39b548"
+          "obs_1a78b59ca985271cd4c85c29"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21457,11 +21619,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_1952098c7482d0757f2b412a"
+          "obs_1291b9fae85389ca868a9352"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21537,11 +21699,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_5fbfbdf2060ad3a43b0c6912"
+          "obs_b40affc55f02a8a803fe6e22"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21731,15 +21893,23 @@
       "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
       "originSource": "sitemap",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
-        "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
-        "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
-      }
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
+      "typedObservation": {
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
+        "baselineLinkId": "retail_link_aa99e757908199d54ccd08f2",
+        "sourceUrl": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
+        "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+        "receivedModel": "WWT-1910BX",
+        "receivedUrl": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx"
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_aaa8ba8aaa866062e29b8553",
@@ -21828,11 +21998,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_d87a74c5bacd5d8dcdb4ed78"
+          "obs_1974b4b8ba760d436fb862d6"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21870,11 +22040,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_9d928f8d0c27283f2d066fa8"
+          "obs_f77f92f53345350a2f2d29af"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -21891,11 +22061,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_234d2f08a68fb55f68358c45"
+          "obs_48277c56e5e2f7a6da4f9f75"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -22240,11 +22410,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_3d1f622072425b0316b3f07f"
+          "obs_30d7dc2cadd7c612036d239b"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -22408,11 +22578,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_72a857790f4796ac2a55836f"
+          "obs_a04212bcf0c98f3110c6fc6f"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -22513,11 +22683,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_2bbd92f2a15f52b21baceed2"
+          "obs_97381227970dcae2bfe05a08"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -23093,11 +23263,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_9fbe4df080d76bd3cfedf3de"
+          "obs_6f6bb20ba7373cf335f308ba"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -23257,11 +23427,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_abe2e7207aede8dd57012868"
+          "obs_aa1586ed761bb5eceba0c230"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -23438,11 +23608,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_011a94ae0aa9f7636e718759"
+          "obs_7aaf90a959ab13d21927a2bc"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -23459,11 +23629,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_28fd073c8f700280b8d897bf"
+          "obs_42d550ad51c49c785e2d39e2"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -23480,11 +23650,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_01f9509604c734b6b00f0a82"
+          "obs_f2a7182a57e536a00b566a6d"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -23501,11 +23671,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_0cb2b01f9729f4331369ec63"
+          "obs_1104120018cb0acc88111443"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -23640,11 +23810,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_94737afb04246b0685792a49"
+          "obs_4524ed4114c8ffd31c680da8"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -23745,11 +23915,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_231ced864bef7a0f1c308c80"
+          "obs_248d61d8302a589251421e6c"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -23863,13 +24033,26 @@
       "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg24402au",
       "originSource": "partnerize-feed",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_03c7b7d484ef495ac73a0b95",
+        "baselineLinkId": "retail_link_b9a95f5ae2c5590d05d79bda",
+        "sourceUrl": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg24402au",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -23947,11 +24130,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_7e013661b690e480bb8eb6df"
+          "obs_cdb93c0c08e1b9d8994ad1ba"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -24115,11 +24298,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_25b6d1c46e9788adc9007755"
+          "obs_5284f7d0074743bdaf7ec602"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -24380,11 +24563,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_57edb024fb6b3fd2832db663"
+          "obs_b528fadf88e956fe0d5b1929"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -24565,11 +24748,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_79879f0be9e5f98dbb3fcfd5"
+          "obs_d0ad0107c07bbf574405c716"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -24872,11 +25055,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_e28852e4c1b3bcc0fa0ba2f1"
+          "obs_7f3e4aa65b4b51f09acca319"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -25322,11 +25505,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_fc6d420826776c72cd703a3e"
+          "obs_bc1de66b8417af1e5c6baa28"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -25423,11 +25606,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_2be7f6e9d973ec81455af2c2"
+          "obs_cd867430b124894d1e00e007"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -25549,11 +25732,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_e7e979f424e81ce45828e605"
+          "obs_fdc322cfdd3accc467c8cabd"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -25785,13 +25968,26 @@
       "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060hg1",
       "originSource": "sitemap",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_1d55416be8abd9c2901bd6d5",
+        "baselineLinkId": "retail_link_c8bd99b3b242e4e98672ce3a",
+        "sourceUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060hg1",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -25823,11 +26019,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_477580905e4bb6946722875f"
+          "obs_0b09fc4f216edefcfd08cf47"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -26143,11 +26339,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_4c9639128ad524fb48ea879c"
+          "obs_a1092521d6029ae824591d66"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -26454,11 +26650,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_075e48704fa549d0e141ee65"
+          "obs_fe359e98e966684060ae7c21"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -26475,11 +26671,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_dd960d159c62fc612c90e331"
+          "obs_4acbd2dcea7e8a27330269bf"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -26694,11 +26890,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_df084eee56a5f0d82aa00075"
+          "obs_f2a00470c299c6891bbdbf82"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -26816,11 +27012,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_04c84a9fecf04680390cf716"
+          "obs_7e8fc59dcbb2a0881da464b1"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -27271,13 +27467,26 @@
       "url": "https://www.thegoodguys.com.au/lg-12kg-front-load-washer-wv9-1412w",
       "originSource": "partnerize-feed",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_83f22d0c5c24cd044ae00974",
+        "baselineLinkId": "retail_link_d369d2223551198963e7dcbc",
+        "sourceUrl": "https://www.thegoodguys.com.au/lg-12kg-front-load-washer-wv9-1412w",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -27570,13 +27779,26 @@
       "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060p4",
       "originSource": "partnerize-feed",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_8dd1c56ffb418b190e22ecaf",
+        "baselineLinkId": "retail_link_d63d02efeebde299426177c3",
+        "sourceUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060p4",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -28062,13 +28284,26 @@
       "url": "https://www.thegoodguys.com.au/hisense-10kg-front-load-washer-hwfs1015e",
       "originSource": "websearch-the-good-guys",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_57417c9668113222e878e7b0",
+        "baselineLinkId": "retail_link_d91e39d212cd856bddb5c05c",
+        "sourceUrl": "https://www.thegoodguys.com.au/hisense-10kg-front-load-washer-hwfs1015e",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -28184,11 +28419,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_01def4436555561b8d709070"
+          "obs_239ebfa05575e5302cf5cc18"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -28331,11 +28566,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_f4f47f88e56ee04a0b2c8383"
+          "obs_167e3a85708d8048ffecd89b"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -28428,13 +28663,26 @@
       "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-front-load-washer-wh8060j3",
       "originSource": "partnerize-feed",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
+      "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+      "typedObservation": {
+        "state": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_4ef9921842b71a1734d67f75",
+        "baselineLinkId": "retail_link_dc72896668d55958aa9bf04b",
+        "sourceUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-front-load-washer-wh8060j3",
+        "reasonCode": "PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED",
+        "retailerProductId": null
+      },
       "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
+        "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
         "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
+        "executionState": "BLOCKED_BY_SOURCE_POLICY",
+        "collectionMode": "alternate_authorized_source_required",
         "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
       }
     },
@@ -28504,11 +28752,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_6e29a080dac060fb9a643cc0"
+          "obs_dd3e4b328f8533bc87b139b1"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -28790,11 +29038,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_b48956ab6f00efab1df63b49"
+          "obs_077f0b8ea7047ce753d9aa74"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -29038,11 +29286,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_61d0731117e49c041daeb685"
+          "obs_f1c0314166fa0d0b23daec11"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -29118,11 +29366,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_63246d4ada7c6cd7609e36f0"
+          "obs_bc0b4914adc73a85a9e42e62"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -29400,11 +29648,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_f3f33b8f30ff36b94d06f6f1"
+          "obs_fde9cbade43bc8182149b96e"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -29783,11 +30031,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_283382cf4d1022b56cf46397"
+          "obs_6f1a3a510270de119fec4324"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -30321,11 +30569,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_36e65bc5f401640355027743"
+          "obs_984335fc5e38c05f44bcb599"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -30502,11 +30750,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_f6bf0bd5d08985cb71f7c296"
+          "obs_4d70b6077e63e64e187c461b"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -31638,11 +31886,11 @@
       "typedObservation": {
         "state": "TYPED_AVAILABLE",
         "observationIds": [
-          "obs_a6538cc5c1f66744c4065646"
+          "obs_5b1f4bcf341bcb1dff9fb279"
         ],
-        "observedAt": "2026-07-20T14:56:53.000Z",
+        "observedAt": "2026-07-20T19:43:11.969Z",
         "adapterId": "the-good-guys-partnerize-feed-v1",
-        "rawSourceSha256": "ebfa69dda64e7853c57040aeba5290f88c7562b4d2f0a6371e2fdd2004929c94",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "redirectUrl": null,
         "policyExcludedObservationIds": []
       },
@@ -32446,15 +32694,23 @@
       "url": "https://www.thegoodguys.com.au/chiq-396l-bottom-mount-refrigerator-cbm393nb3",
       "originSource": "websearch-the-good-guys",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "LEGACY_UNKNOWN",
-      "typedObservation": null,
-      "revalidation": {
-        "action": "REPLAY_PARTNERIZE_FEED",
-        "policyState": "authorized_partner_feed",
-        "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-        "collectionMode": "partnerize_feed_only",
-        "sourcePolicyId": "the-good-guys-partnerize-feed-v1"
-      }
+      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
+      "typedObservation": {
+        "state": "QUARANTINED_IDENTITY_MISMATCH",
+        "attemptIds": [
+          "retail_attempt_0db105f17e40a28c16878d54"
+        ],
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "canonicalProductId": "fa_prod_ec08816aef599580a0e2159e",
+        "baselineLinkId": "retail_link_fd6baded2b779ec33fad52af",
+        "sourceUrl": "https://www.thegoodguys.com.au/chiq-396l-bottom-mount-refrigerator-cbm393nb3",
+        "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+        "receivedModel": "CBM393NB3",
+        "receivedUrl": "https://www.thegoodguys.com.au/chiq-396l-bottom-mount-refrigerator-cbm393nb3"
+      },
+      "revalidation": null
     },
     {
       "baselineLinkId": "retail_link_fd6c8b9b512e2f24c90fd334",
@@ -32847,8 +33103,8 @@
   "summary": {
     "baselineLinks": 1614,
     "accountedLinks": 1614,
-    "typedLinks": 1331,
-    "revalidationItems": 283,
+    "typedLinks": 1353,
+    "revalidationItems": 277,
     "byOriginSource": {
       "appliances-online-api": 1204,
       "partnerize-feed": 152,
@@ -32860,23 +33116,25 @@
       "websearch-the-good-guys": 11
     },
     "byTerminalObservationState": {
-      "LEGACY_UNKNOWN": 283,
-      "QUARANTINED_IDENTITY_MISMATCH": 16,
+      "LEGACY_UNKNOWN": 261,
+      "QUARANTINED_IDENTITY_MISMATCH": 22,
+      "SOURCE_ABSENT_IN_AUTHORIZED_FEED": 16,
       "TYPED_AVAILABLE": 261,
       "TYPED_UNAVAILABLE": 1054
     },
     "byRevalidationAction": {
+      "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE": 16,
       "HISTORICAL_ONLY_POLICY_BLOCKED": 91,
       "PAGE_REVALIDATION_POLICY_BLOCKED": 81,
-      "REPLAY_PARTNERIZE_FEED": 30,
+      "REPLAY_PARTNERIZE_FEED": 8,
       "REVALIDATE_AO_PRODUCT_API": 81
     },
     "byPolicyExecutionState": {
-      "BLOCKED_BY_SOURCE_POLICY": 172,
-      "RUNNABLE_AUTHORIZED_SOURCE": 30,
+      "BLOCKED_BY_SOURCE_POLICY": 188,
+      "RUNNABLE_AUTHORIZED_SOURCE": 8,
       "RUNNABLE_POLICY_REVIEWED_SOURCE": 81
     }
   },
-  "coverageId": "retailer_observation_coverage_23aba10b35e7a458d86f1a6c",
-  "semanticSha256": "c11e11e5be100a833734dde1c9aacf7c0c0da1ee644a389ed1e59f99a560de63"
+  "coverageId": "retailer_observation_coverage_1664c485e8033195bf0542c4",
+  "semanticSha256": "186e18286c9c28cc0ea89ca89d63a8d87e6113c5ef957212d1b6a3dc3136fec8"
 }

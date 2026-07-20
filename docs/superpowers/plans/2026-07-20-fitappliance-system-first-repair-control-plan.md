@@ -5,8 +5,8 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** BLOCKED - Task 9 lifecycle cutover has unresolved source and
-  identity prerequisites; production remains on the pre-cutover release
+- **Status:** IN_PROGRESS - Task 9 prerequisite recovery is active; production
+  remains on the pre-cutover release
 - **Date:** 2026-07-20
 - **Active task:** Task 9 blocked-state closeout and prerequisite recovery
 - **Canonical product contract:**
@@ -447,7 +447,7 @@ Mandatory adversarial traces across the programme:
 | 6 | Prove receipt-to-publication vertical slices | 5 | COMPLETED | Unsupported legacy door semantics removed at receipt/public boundaries; unresolved accepted conflicts and forged verified Fit state fail closed; zero-violation idempotent next-epoch shadow; 1,066 Architecture V2 and 2,726 repository tests passed |
 | 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | COMPLETED | Schema/planner v2 exposes 24 manifests across 402 eligible cohorts; 8 P0 slots rotate across all four categories; local exclusion selects another P0 while P1 remains blocked; 1,072 Architecture V2 and 2,732 repository tests passed |
 | 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | COMPLETED | Schema-v2 typed stage metrics; 10-unit/two-manifest Wilson gate; stable epoch reopening; five legacy entries preserved; real decision RUN_P0; 1,077 Architecture V2 and 2,737 repository tests passed |
-| 9 | Full replay, migration, release DAG, and rollback drill | 8 | BLOCKED | Available source runs and replay gates passed, but 81 prior-current products remain unresolved: 58 source-policy blocked, 22 require a new authorised feed epoch, and 1 requires exact-model rediscovery; no cutover or deployment occurred |
+| 9 | Full replay, migration, release DAG, and rollback drill | 8 | IN_PROGRESS | A fresh independently receipt-bound Partnerize epoch is captured and replayed; complete-feed listing reconciliation and canonical identity migration are now the active prerequisites; no cutover or deployment occurred |
 | 10 | Refresh canonical docs and close the release | 9 | BLOCKED_BY_9 | Canonical docs record the measured blocked state and recovery order; release closure remains prohibited until Task 9 independently passes |
 
 Only one row may be `IN_PROGRESS`. A task is complete only when its own
@@ -1412,8 +1412,40 @@ historical reference binding, lifecycle shadow/refresh inventory, audits, scale
 control, and system contract before a second normal build. It does not satisfy
 the lifecycle migration prerequisite and cannot make a blocked cutover READY.
 
+**Task 9 complete-feed reconciliation repair record (2026-07-21):**
+
+```text
+Symptom: A newly acquired complete Partnerize feed replays successfully, but legacy TGG listings absent from that affiliate feed remain undifferentiated LEGACY_UNKNOWN forever; feed rows whose stable TGG SKU now belongs to a different exact model are returned as run-level quarantines that the cumulative ledger and coverage audit cannot consume.
+First incorrect persisted state: The normalized complete snapshot contains only feed-present rows and omits a baseline-listing reconciliation contract.
+Upstream producers: Partnerize feed parser, public projection retailer rows, retailer source policy, acquisition receipt.
+Downstream consumers: Refresh-run validator, cumulative retailer ledger, observation coverage, lifecycle shadow, refresh inventory, atomic cutover gate.
+Affected state axes: Retail lifecycle and identity; evidence and public visibility must remain unchanged until atomic cutover.
+Affected tracked/external artifacts: Immutable feed and receipt, refresh run, retailer observation ledger, coverage, lifecycle shadow, refresh inventory, release policy.
+Current contract: Feed presence creates typed observations; complete-feed absence and per-listing identity mismatch do not create replayable terminal dispositions.
+Target contract: Reconcile every legacy TGG listing by stable retailer SKU, then canonical URL; exact matches emit feed state, absence from a complete affiliate snapshot emits SOURCE_ABSENT without inferring retailer availability, and a present row with incompatible exact identity emits a raw-bound per-link quarantine. Both terminal collection dispositions route to alternate evidence or identity repair and never become lifecycle observations. Incomplete snapshots emit neither disposition.
+Migration/rebuild required: Replay the fresh immutable feed through the new contract, append the resulting observations/reconciliations, then rebuild coverage, shadow, and inventory in DAG order.
+Rollback unit: Snapshot reconciliation schema, runner binding, ledger persistence, coverage consumption, generated lifecycle artifacts, and tests in one commit.
+Positive real canary: An exact legacy TGG SKU absent from the 2026-07-21 complete affiliate feed becomes SOURCE_ABSENT and is no longer scheduled against that feed epoch; an exact present SKU retains its explicit feed availability.
+Negative/adversarial canaries: Neither complete nor partial affiliate-feed absence can synthesize retailer unavailable; a reused SKU with a different model is quarantined rather than marked absent or attached to the wrong canonical product; multiple distinct TGG listings for one canonical product do not collapse into a false conflict.
+```
+
 **Task 9 execution and blocker record (2026-07-20):**
 
+- On 2026-07-21 a fresh authorised Partnerize retrieval was captured with an
+  independently verified acquisition receipt and immutable 10,472,316-byte
+  source object. Replaying that exact source time through the repaired listing
+  reconciliation contract produced 233 observations, six per-link identity
+  mismatches, and 16 `SOURCE_ABSENT_IN_AUTHORIZED_FEED` dispositions. Source
+  absence does not infer retailer unavailability.
+- The cumulative ledger now contains 3,291 observations and 1,192 collection
+  attempts. Coverage accounts for all 1,614 baseline links and routes the 16
+  source-absent TGG links to an alternate authorised source instead of
+  repeatedly scheduling the same Partnerize epoch.
+- Dependency-priority repair exposed 18 unresolved products with exact-model
+  mismatch work, not three: identity resolution is now shown before any
+  coexisting policy-blocked source collection. The refresh inventory therefore
+  contains 18 `REQUIRES_EXACT_MODEL_REDISCOVERY` products and 63 products whose
+  remaining work is source-policy blocked. Production remains `SHADOW_ONLY`.
 - A complete authorised Partnerize snapshot produced 233 exact observations
   (229 available, four unavailable) and three identity quarantines. Bounded AO
   execution accounted for all 1,169 selected retailer links: 1,153 succeeded
@@ -1461,16 +1493,17 @@ the lifecycle migration prerequisite and cannot make a blocked cutover READY.
 
 **Deterministic unblocking order:**
 
-1. capture a new authorised Partnerize feed with independently bound source
-   acquisition time, then replay it without reusing the prior content epoch;
-2. repair the three known canonical model identities through exact official AU
-   evidence and rebuild their retailer-link bindings without aliasing
-   availability;
+1. preserve the completed fresh Partnerize acquisition receipt and listing-
+   reconciliation replay as the released source epoch;
+2. adjudicate all 18 exposed exact-model mismatch products through official AU
+   identity evidence, distinguishing canonical correction, retailer-link
+   reassignment, and sibling-link invalidation without aliasing availability;
 3. obtain authorised feeds or explicit automation permission for Bing Lee,
    Harvey Norman, and JB Hi-Fi; until then their 58 products remain unknown and
-   hidden from current-result output;
-4. rediscover the exact LG `GS-B655PL` source instead of accepting its sibling
-   response;
+   hidden from current-result output, and obtain an alternate authorised source
+   for the 16 listings absent from the Partnerize affiliate feed;
+4. rediscover the exact LG `GS-B655PL` retail source instead of accepting its
+   `GS-B655MBL` sibling response;
 5. rerun the entire release DAG, require zero unresolved prior-current IDs,
    repeat the deterministic build, perform the rollback drill, and only then
    authorize cutover and Task 10 release closure.

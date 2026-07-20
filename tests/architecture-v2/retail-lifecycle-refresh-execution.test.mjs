@@ -11,6 +11,7 @@ import {
   validateRetailLifecycleRefreshPlan,
   validateRetailLifecycleRefreshRun,
 } from '../../src/domain/retail-lifecycle-refresh-execution.mjs';
+import { buildRetailerSourceAcquisitionReceipt } from '../../src/domain/retailer-source-acquisition-receipt.mjs';
 import { buildRetailerObservationLedger } from '../../src/domain/retailer-observation-ledger.mjs';
 import { normalizeRetailerSnapshot } from '../../src/domain/retailer-source-adapter.mjs';
 
@@ -29,6 +30,7 @@ const sourcePolicy = {
     retailer: 'The Good Guys',
     host: 'www.thegoodguys.com.au',
     allowedHosts: ['www.thegoodguys.com.au'],
+    acquisitionHosts: ['feeds.performancehorizon.com'],
     sourceType: 'affiliate_feed',
     collectionMode: 'partnerize_feed_only',
     termsReviewState: 'authorized_partner_feed',
@@ -154,13 +156,14 @@ function adapter() {
   };
 }
 
-function snapshot(observedAt = OBSERVED_AT) {
+function snapshot(observedAt = OBSERVED_AT, acquisitionReceiptSha256 = null) {
   return normalizeRetailerSnapshot(adapter(), {
     observedAt,
     complete: true,
     canonicalProductIds: ['fa_prod_archived', 'fa_prod_one'],
     rawPayloadSha256: RAW_SHA,
     rawSourceReference: `retailer-object:sha256:${RAW_SHA}`,
+    acquisitionReceiptSha256,
     rows: [{
       canonicalProductId: 'fa_prod_one',
       retailerProductId: '50000001',
@@ -170,6 +173,23 @@ function snapshot(observedAt = OBSERVED_AT) {
       availability: 'available',
       listingState: 'current',
     }],
+  });
+}
+
+function acquisitionReceipt(receivedAt) {
+  return buildRetailerSourceAcquisitionReceipt({
+    sourcePolicyId: sourcePolicy.sources[0].id,
+    sourcePolicySha256: canonicalSha256(sourcePolicy),
+    acquisitionHosts: sourcePolicy.sources[0].acquisitionHosts,
+    requestedUrl: 'https://feeds.performancehorizon.com/private/feed.csv',
+    finalUrl: 'https://feeds.performancehorizon.com/private/feed.csv',
+    redirects: [],
+    startedAt: new Date(new Date(receivedAt).valueOf() - 1000).toISOString(),
+    receivedAt,
+    responseStatus: 200,
+    responseHeaders: { 'content-type': 'text/csv' },
+    rawBytes: RAW_BYTES,
+    mediaType: 'text/csv',
   });
 }
 
@@ -403,4 +423,70 @@ test('application cannot advance affiliate-feed freshness by replaying identical
     existingLedger: firstLedger,
     run: replayedBytesRun,
   }), /identical affiliate feed.*freshness|source bytes.*new acquisition/i);
+});
+
+test('a distinct verified HTTPS acquisition receipt can advance unchanged affiliate-feed bytes', async () => {
+  const publicProjectionSha256 = canonicalSha256(publicProjection);
+  const sourcePolicySha256 = canonicalSha256(sourcePolicy);
+  const initial = buildRetailerObservationLedger({
+    existingLedger: { schemaVersion: 1, observations: [] },
+    publicProjection,
+    publicProjectionSha256,
+    sourcePolicy,
+    sourcePolicySha256,
+    typedSnapshots: [],
+  });
+  const firstPlan = buildPlan();
+  const firstRun = buildRetailLifecycleRefreshRun({
+    runId: 'tgg-feed-local-epoch',
+    plan: firstPlan,
+    records: [{
+      recordId: 'feed-record', outcome: 'succeeded',
+      rawObject: {
+        sha256: RAW_SHA, byteSize: RAW_BYTES.length,
+        objectPath: retailerRawObjectPath(RAW_SHA, 'csv'), mediaType: 'text/csv',
+      },
+      snapshot: snapshot(), quarantines: [],
+    }],
+  });
+  const application = {
+    publicProjection,
+    publicProjectionSha256,
+    inventorySha256: canonicalSha256(inventory),
+    inventorySemanticSha256: inventory.semanticSha256,
+    sourcePolicy,
+    sourcePolicySha256,
+    readObject: async () => RAW_BYTES,
+  };
+  const firstLedger = await applyRetailLifecycleRefreshRun({
+    ...application, existingLedger: initial, run: firstRun,
+  });
+
+  const laterObservedAt = '2026-07-21T14:56:53.000Z';
+  const receipt = acquisitionReceipt(laterObservedAt);
+  const laterRun = buildRetailLifecycleRefreshRun({
+    runId: 'tgg-feed-https-epoch',
+    plan: buildPlan(laterObservedAt),
+    records: [{
+      recordId: 'feed-record', outcome: 'succeeded',
+      rawObject: {
+        sha256: RAW_SHA, byteSize: RAW_BYTES.length,
+        objectPath: retailerRawObjectPath(RAW_SHA, 'csv'), mediaType: 'text/csv',
+        acquisitionReceipt: receipt,
+      },
+      snapshot: snapshot(laterObservedAt, receipt.semanticSha256), quarantines: [],
+    }],
+  });
+  const advanced = await applyRetailLifecycleRefreshRun({
+    ...application, existingLedger: firstLedger, run: laterRun,
+  });
+  assert.equal(advanced.collectionAttempts.length, firstLedger.collectionAttempts.length + 1);
+  assert.equal(
+    advanced.collectionAttempts.find((attempt) => attempt.observedAt === laterObservedAt)
+      .acquisitionReceiptSha256,
+    receipt.semanticSha256,
+  );
+  assert.ok(advanced.sourceBindings.some((binding) => (
+    binding.kind === 'IMMUTABLE_ACQUISITION_RECEIPT' && binding.sha256 === receipt.semanticSha256
+  )));
 });

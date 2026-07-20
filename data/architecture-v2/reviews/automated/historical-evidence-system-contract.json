@@ -54,7 +54,7 @@
         },
         {
           "path": "data/architecture-v2/policies/retail-lifecycle-release-policy.json",
-          "contentSha256": "9c12e8f4590a84dae2790d822d9987ef713d5857eebda923119e8b7b76dc8454"
+          "contentSha256": "0c7c094510e3a48bf135ceeec5e1206d85ddcbb3a9d5e15e693c257f3218c3ba"
         },
         {
           "path": "src/domain/historical-appliance-reference.mjs",
@@ -65,7 +65,7 @@
           "contentSha256": "1e08287d3e5a1d1854195b1fd8686baf01cda3f6d85832dea99b7d28b20a0c3c"
         }
       ],
-      "semanticSha256": "71668fa4b669fcf67747acf03ce6a301b47d24a326f09008da85cb70d41ab687"
+      "semanticSha256": "9118af164c49844f0723170a47be42761e7046425dd0cb35f9ea81e4aef9d05d"
     },
     {
       "id": "mineru-toolchain",
@@ -96,10 +96,10 @@
         },
         {
           "path": "src/domain/retailer-source-adapter.mjs",
-          "contentSha256": "8915e6e74c9c6803f230d62a5be75152ffa581502a46d75cbd2f6a7579edd64d"
+          "contentSha256": "546797e2451626507076d5024457f31360f88d169aa899127c1496f2028b89bd"
         }
       ],
-      "semanticSha256": "6f0d77f61b2e203d36e7c6a7c6cc4573b41437bda37f88e30319837f3c894bf2"
+      "semanticSha256": "e534c8542ae4224c77da64d618d9d7d50ee1e8b611e42845ab94bec72fd4f483"
     },
     {
       "id": "parser",
@@ -175,10 +175,10 @@
         },
         {
           "path": "data/architecture-v2/policies/retailer-source-policy.json",
-          "contentSha256": "1cbd08bffed5f851f794432401d90ae37bbc75e82c874ccc9df5ba3cdb7034fd"
+          "contentSha256": "5e5adc2c16232906c412f93431fb363b4cfe97a10f097abb0d2ebcefdf6ed125"
         }
       ],
-      "semanticSha256": "e50b4e6fad16ecbb82fe94f587944386caddb5cf5d1e341db41284af6f1dc8b5"
+      "semanticSha256": "4730580c1fb1efe264b9e055f3f6b540c4747e86ab1c1211e7b5bd1d98a382ce"
     }
   ],
   "stages": [
@@ -1316,7 +1316,7 @@
       "producerInputs": [
         {
           "path": "data/architecture-v2/policies/retailer-source-policy.json",
-          "contentSha256": "1cbd08bffed5f851f794432401d90ae37bbc75e82c874ccc9df5ba3cdb7034fd"
+          "contentSha256": "5e5adc2c16232906c412f93431fb363b4cfe97a10f097abb0d2ebcefdf6ed125"
         },
         {
           "path": "scripts/architecture-v2/build-retailer-ledger.mjs",
@@ -1324,7 +1324,7 @@
         },
         {
           "path": "src/domain/retailer-observation-ledger.mjs",
-          "contentSha256": "eea83e706f7d5b53083ae5a30d014cb837342f1d568ed9ba495bb0e2904f1fd8"
+          "contentSha256": "b1c370e054f6c18c783fe604e72693c2ec7d5197ba2d396c2b4ba93213086053"
         },
         {
           "path": "src/domain/retailer-observation.mjs",
@@ -1332,19 +1332,19 @@
         },
         {
           "path": "src/domain/retailer-source-adapter.mjs",
-          "contentSha256": "8915e6e74c9c6803f230d62a5be75152ffa581502a46d75cbd2f6a7579edd64d"
+          "contentSha256": "546797e2451626507076d5024457f31360f88d169aa899127c1496f2028b89bd"
         }
       ],
-      "producerSha256": "043166a5cbdaff51cd61474038363085c01ab80fc91a80443c7429e12855116c",
+      "producerSha256": "2ddb46ffba0250b8e2f6dba931b4a6cf8289bfc2b2b9ada78d7c1733d2e0771e",
       "consumers": [
         "retail-lifecycle-shadow",
         "retailer-observation-coverage"
       ],
       "schemaVersion": 2,
       "generatedAt": null,
-      "contentSha256": "d4f9f1b78e35977252a6b4dbc7876ed61449d3f498cb7d44a10f74ef2fa1afe6",
-      "semanticSha256": "56d19ee196b7dba83ce2bbd0757e1e6110ee996cba00c95fa5c26d52994455d2",
-      "declaredSemanticSha256": "56d19ee196b7dba83ce2bbd0757e1e6110ee996cba00c95fa5c26d52994455d2",
+      "contentSha256": "aa4d007cf4aa57a0393859b99a9bb0f0a05508e5d50216bf8a2603c8e8d5c487",
+      "semanticSha256": "bf950304d5fa2cf6a3031275a14c84646f2ecfba7ae0121efb6dcb7858558e5f",
+      "declaredSemanticSha256": "bf950304d5fa2cf6a3031275a14c84646f2ecfba7ae0121efb6dcb7858558e5f",
       "sourceBindings": [],
       "releaseDependencies": [],
       "releaseEpoch": 1,
@@ -1365,7 +1365,7 @@
       "producerInputs": [
         {
           "path": "data/architecture-v2/policies/retail-lifecycle-release-policy.json",
-          "contentSha256": "9c12e8f4590a84dae2790d822d9987ef713d5857eebda923119e8b7b76dc8454"
+          "contentSha256": "0c7c094510e3a48bf135ceeec5e1206d85ddcbb3a9d5e15e693c257f3218c3ba"
         },
         {
           "path": "scripts/architecture-v2/build-retail-lifecycle-shadow.mjs",
@@ -1380,15 +1380,15 @@
           "contentSha256": "adf53016d06d1186ab677c6e3da4b6e33ae280fdda8d202fe7c48112a8e87e1f"
         }
       ],
-      "producerSha256": "d4ee1fd9f9a0d7d236daf094b7a16b20f97225a476c7ee99f14397440126d40f",
+      "producerSha256": "f112df8dc69f86a1b5626cac1ede4a102dd0c9ef4dae39bf26f46e981221b591",
       "consumers": [
         "retail-lifecycle-refresh"
       ],
       "schemaVersion": 1,
       "generatedAt": null,
-      "contentSha256": "574bb7ab2e66ba9dd888fbba98ad4beec81e121356dd65a8140313bce26110a4",
-      "semanticSha256": "508c1ed4e6a3420187bce56a88b55bd91e7ad6a9a5c1c0e4b7274ac6e83ca011",
-      "declaredSemanticSha256": "508c1ed4e6a3420187bce56a88b55bd91e7ad6a9a5c1c0e4b7274ac6e83ca011",
+      "contentSha256": "9b7fefd8476f2f14469642e602647b104315f5c2e4280d7540c7f195d8bcd0ca",
+      "semanticSha256": "5bbd42436744997f4c4f1c9571d9dcd1d85f758d60eb7e89596fb655d661effd",
+      "declaredSemanticSha256": "5bbd42436744997f4c4f1c9571d9dcd1d85f758d60eb7e89596fb655d661effd",
       "sourceBindings": [
         {
           "sourceStageId": "current-publication",
@@ -1399,8 +1399,8 @@
         {
           "sourceStageId": "retailer-observations",
           "digestKind": "semantic",
-          "declaredSha256": "56d19ee196b7dba83ce2bbd0757e1e6110ee996cba00c95fa5c26d52994455d2",
-          "resolvedSha256": "56d19ee196b7dba83ce2bbd0757e1e6110ee996cba00c95fa5c26d52994455d2"
+          "declaredSha256": "bf950304d5fa2cf6a3031275a14c84646f2ecfba7ae0121efb6dcb7858558e5f",
+          "resolvedSha256": "bf950304d5fa2cf6a3031275a14c84646f2ecfba7ae0121efb6dcb7858558e5f"
         }
       ],
       "releaseDependencies": [
@@ -1424,7 +1424,7 @@
       "producerInputs": [
         {
           "path": "data/architecture-v2/policies/retailer-source-policy.json",
-          "contentSha256": "1cbd08bffed5f851f794432401d90ae37bbc75e82c874ccc9df5ba3cdb7034fd"
+          "contentSha256": "5e5adc2c16232906c412f93431fb363b4cfe97a10f097abb0d2ebcefdf6ed125"
         },
         {
           "path": "scripts/architecture-v2/build-retailer-observation-coverage.mjs",
@@ -1432,18 +1432,18 @@
         },
         {
           "path": "src/domain/retailer-observation-coverage.mjs",
-          "contentSha256": "857c791e104d1d5ac1a33de2144c15b58576aa905f7d5b3401fbca9f4cec4e4a"
+          "contentSha256": "281b3f3b0b2a829f3414b5be40f47b9c53714ff3198e449b91d9d772d541d6f0"
         }
       ],
-      "producerSha256": "a96101cb96ad53dc9021e7cd84fa6e67a90a3ba5e96328849d5cdd80d906dc3f",
+      "producerSha256": "6c802a23d7d3a8131e0614044640cb1df90eef57a67826838a67e6d79b948c4d",
       "consumers": [
         "retail-lifecycle-refresh"
       ],
       "schemaVersion": 1,
       "generatedAt": null,
-      "contentSha256": "f2c03e1f9e730d030eb9d82e8afea59c11d3737518ef87b52e03e9b17adc0a10",
-      "semanticSha256": "c11e11e5be100a833734dde1c9aacf7c0c0da1ee644a389ed1e59f99a560de63",
-      "declaredSemanticSha256": "c11e11e5be100a833734dde1c9aacf7c0c0da1ee644a389ed1e59f99a560de63",
+      "contentSha256": "e86d04a01199f192f74bfa392cf0ca45b9e7eddd85aecdc97a0e463b809f0bc5",
+      "semanticSha256": "186e18286c9c28cc0ea89ca89d63a8d87e6113c5ef957212d1b6a3dc3136fec8",
+      "declaredSemanticSha256": "186e18286c9c28cc0ea89ca89d63a8d87e6113c5ef957212d1b6a3dc3136fec8",
       "sourceBindings": [
         {
           "sourceStageId": "current-publication",
@@ -1454,8 +1454,8 @@
         {
           "sourceStageId": "retailer-observations",
           "digestKind": "semantic",
-          "declaredSha256": "56d19ee196b7dba83ce2bbd0757e1e6110ee996cba00c95fa5c26d52994455d2",
-          "resolvedSha256": "56d19ee196b7dba83ce2bbd0757e1e6110ee996cba00c95fa5c26d52994455d2"
+          "declaredSha256": "bf950304d5fa2cf6a3031275a14c84646f2ecfba7ae0121efb6dcb7858558e5f",
+          "resolvedSha256": "bf950304d5fa2cf6a3031275a14c84646f2ecfba7ae0121efb6dcb7858558e5f"
         }
       ],
       "releaseDependencies": [
@@ -1483,28 +1483,28 @@
         },
         {
           "path": "src/domain/retail-lifecycle-refresh-inventory.mjs",
-          "contentSha256": "e807eac30b95cb9f2a031bc4edf1e1cb228e9f402c5ff0d370f192bd9ca363b8"
+          "contentSha256": "46658c24b9b63c5a16bb1e5fad858130b74b142b877c19a48dd341f71edc683e"
         }
       ],
-      "producerSha256": "cd601fe5a43b732d9df533227f4e910f303453ea60d4eb161e5c0eb0c133da74",
+      "producerSha256": "6fbad980d5af47b35fc0bdbd4241224d5eaf830ba44f9c3c450fd56e0fd97d83",
       "consumers": [],
       "schemaVersion": 2,
       "generatedAt": null,
-      "contentSha256": "82dd5e1a58e5ead26ddde58b59a32e3d13c5edf6aff468dc59d324c446de27ef",
-      "semanticSha256": "c2d7dcb139e448f6544175959e5082bd3563f39f2bf53b3b4d7efff1ef614387",
-      "declaredSemanticSha256": "c2d7dcb139e448f6544175959e5082bd3563f39f2bf53b3b4d7efff1ef614387",
+      "contentSha256": "19d7b6cc9a47c0f61049d3f25323fe8b66c430dbb557c1d9a00ff036baf60706",
+      "semanticSha256": "35f07110d6b17b1835865228284df42c589e560ec542b9f04d44cb2e7e2f77ed",
+      "declaredSemanticSha256": "35f07110d6b17b1835865228284df42c589e560ec542b9f04d44cb2e7e2f77ed",
       "sourceBindings": [
         {
           "sourceStageId": "retail-lifecycle-shadow",
           "digestKind": "semantic",
-          "declaredSha256": "508c1ed4e6a3420187bce56a88b55bd91e7ad6a9a5c1c0e4b7274ac6e83ca011",
-          "resolvedSha256": "508c1ed4e6a3420187bce56a88b55bd91e7ad6a9a5c1c0e4b7274ac6e83ca011"
+          "declaredSha256": "5bbd42436744997f4c4f1c9571d9dcd1d85f758d60eb7e89596fb655d661effd",
+          "resolvedSha256": "5bbd42436744997f4c4f1c9571d9dcd1d85f758d60eb7e89596fb655d661effd"
         },
         {
           "sourceStageId": "retailer-observation-coverage",
           "digestKind": "semantic",
-          "declaredSha256": "c11e11e5be100a833734dde1c9aacf7c0c0da1ee644a389ed1e59f99a560de63",
-          "resolvedSha256": "c11e11e5be100a833734dde1c9aacf7c0c0da1ee644a389ed1e59f99a560de63"
+          "declaredSha256": "186e18286c9c28cc0ea89ca89d63a8d87e6113c5ef957212d1b6a3dc3136fec8",
+          "resolvedSha256": "186e18286c9c28cc0ea89ca89d63a8d87e6113c5ef957212d1b6a3dc3136fec8"
         }
       ],
       "releaseDependencies": [
@@ -1568,9 +1568,9 @@
       "consumers": [],
       "schemaVersion": 2,
       "generatedAt": "2026-07-19T19:32:08.439Z",
-      "contentSha256": "c1c1fd28f5f5aeeb09550090f0cc05577bf710914ded81bd55d79ba3b21d6dd4",
-      "semanticSha256": "d2e8c8f13f07fc99fb070387d6d2b65619f91f8ab635580b1e8ea24d5f75b235",
-      "declaredSemanticSha256": "d2e8c8f13f07fc99fb070387d6d2b65619f91f8ab635580b1e8ea24d5f75b235",
+      "contentSha256": "ab358eb1dca6399b027e489d1bb52f037fb82b2223880d79bc7e7c5ee99b6b77",
+      "semanticSha256": "e3b836f9ceec787433e5d42fa78d6cc71f5050744b675e2a3bde17089a8814ff",
+      "declaredSemanticSha256": "e3b836f9ceec787433e5d42fa78d6cc71f5050744b675e2a3bde17089a8814ff",
       "sourceBindings": [
         {
           "sourceStageId": "bounded-planner",
@@ -1899,8 +1899,8 @@
     "retailerLinksRequiringObservationMigration": 0,
     "retailerObservationBaselineLinks": 1614,
     "retailerObservationAccountedLinks": 1614,
-    "retailerObservationTypedLinks": 1331,
-    "retailerObservationRevalidationItems": 283,
+    "retailerObservationTypedLinks": 1353,
+    "retailerObservationRevalidationItems": 277,
     "lifecycleShadowStatus": "BLOCKED",
     "lifecycleShadowUnresolvedLegacyCurrentProducts": 81,
     "lifecycleShadowUnsafeRemovedLegacyCurrentProducts": 0,
@@ -1908,10 +1908,10 @@
     "lifecycleShadowPolicyExcludedObservations": 0,
     "lifecycleShadowPolicyExcludedCollectionAttempts": 0,
     "lifecycleRefreshProducts": 81,
-    "lifecycleRefreshAuthorizedProducts": 22,
+    "lifecycleRefreshAuthorizedProducts": 0,
     "lifecycleRefreshCanaryProducts": 0,
     "lifecycleRefreshPolicyReviewedProducts": 0,
-    "lifecycleRefreshPolicyBlockedProducts": 58,
+    "lifecycleRefreshPolicyBlockedProducts": 63,
     "p0AssignedTargets": 957,
     "p0EligibleTargets": 947,
     "p1AssignedTargets": 3974,
@@ -1946,6 +1946,6 @@
     "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e",
     "checkpointCount": 5
   },
-  "contractId": "historical_evidence_system_a9ebd23cc83b153d9ceda0c3",
-  "semanticContractSha256": "a9ebd23cc83b153d9ceda0c3507dc4f742c642d1c0093ab071d57f3ebd52c6ce"
+  "contractId": "historical_evidence_system_e5e2337a406a8bcd68501d93",
+  "semanticContractSha256": "e5e2337a406a8bcd68501d936a0cb1d4f2fd6fc7779dcbc0b3062acf26384d42"
 }

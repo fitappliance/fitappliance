@@ -54,6 +54,21 @@ function linkKey(canonicalProductId, url) {
   return `${canonicalProductId}\0${retailerUrl(url)}`;
 }
 
+export function createBaselineRetailerLinkId({
+  canonicalProductId,
+  retailer,
+  url,
+  originSource,
+}) {
+  const seed = [
+    required(canonicalProductId, 'baseline canonical product ID'),
+    required(retailer, 'baseline retailer'),
+    retailerUrl(url),
+    required(originSource, 'baseline origin source'),
+  ].join('\0');
+  return `retail_link_${createHash('sha256').update(seed).digest('hex').slice(0, 24)}`;
+}
+
 function typedState(observation) {
   if (observation.listingState === 'redirected') return 'TYPED_REDIRECTED';
   if (observation.availability === 'available'
@@ -125,33 +140,40 @@ function latestTypedByLink(ledger, normalizedPolicy) {
   return result;
 }
 
-function latestIdentityMismatchByBaselineLink(ledger, normalizedPolicy) {
+function latestListingReconciliationByBaselineLink(ledger, normalizedPolicy) {
   const result = new Map();
   for (const attempt of ledger.collectionAttempts ?? []) {
-    const context = attempt.failureContext;
-    if (context?.kind !== 'identity_mismatch') continue;
     const source = normalizedPolicy.sources.find((candidate) => candidate.id === attempt.adapterId);
     if (!source || source.termsReviewState === 'collection_blocked'
       || attempt.policyVersion !== source.policyVersion) continue;
-    const sourceUrl = retailerUrl(context.sourceUrl);
-    if (!source.allowedHosts.includes(new URL(sourceUrl).hostname.toLowerCase())) continue;
-    const candidate = {
-      state: 'QUARANTINED_IDENTITY_MISMATCH',
-      attemptIds: [attempt.id],
-      observedAt: attempt.observedAt,
-      adapterId: attempt.adapterId,
-      rawSourceSha256: context.rawPayloadSha256,
-      canonicalProductId: attempt.canonicalProductIds[0],
-      baselineLinkId: context.baselineLinkId,
-      sourceUrl,
-      reasonCode: context.reasonCode,
-      receivedModel: context.receivedModel,
-      receivedUrl: context.receivedUrl,
-    };
-    const prior = result.get(candidate.baselineLinkId);
-    if (!prior || candidate.observedAt > prior.observedAt
-      || (candidate.observedAt === prior.observedAt && attempt.id < prior.attemptIds[0])) {
-      result.set(candidate.baselineLinkId, candidate);
+    const contexts = [attempt.failureContext, ...(attempt.listingReconciliations ?? [])]
+      .filter((context) => ['identity_mismatch', 'source_absent'].includes(context?.kind));
+    for (const context of contexts) {
+      const sourceUrl = retailerUrl(context.sourceUrl);
+      if (!source.allowedHosts.includes(new URL(sourceUrl).hostname.toLowerCase())) continue;
+      const candidate = {
+        state: context.kind === 'identity_mismatch'
+          ? 'QUARANTINED_IDENTITY_MISMATCH'
+          : 'SOURCE_ABSENT_IN_AUTHORIZED_FEED',
+        attemptIds: [attempt.id],
+        observedAt: attempt.observedAt,
+        adapterId: attempt.adapterId,
+        rawSourceSha256: context.rawPayloadSha256,
+        canonicalProductId: context.canonicalProductId ?? attempt.canonicalProductIds[0],
+        baselineLinkId: context.baselineLinkId,
+        sourceUrl,
+        reasonCode: context.reasonCode,
+        ...(context.receivedModel ? { receivedModel: context.receivedModel } : {}),
+        ...(context.receivedUrl ? { receivedUrl: context.receivedUrl } : {}),
+        ...(context.retailerProductId !== undefined
+          ? { retailerProductId: context.retailerProductId }
+          : {}),
+      };
+      const prior = result.get(candidate.baselineLinkId);
+      if (!prior || candidate.observedAt > prior.observedAt
+        || (candidate.observedAt === prior.observedAt && attempt.id < prior.attemptIds[0])) {
+        result.set(candidate.baselineLinkId, candidate);
+      }
     }
   }
   return result;
@@ -170,9 +192,13 @@ function baselineLinks(publicProjection, normalizedPolicy) {
       if (!sourcePolicy) throw new TypeError(`unclassified retailer source host ${new URL(url).hostname}`);
       const originSource = required(retailer.source ?? 'legacy-catalog', 'retailer origin source');
       const retailerName = required(retailer.n ?? retailer.name, 'retailer name');
-      const seed = [canonicalProductId, retailerName, url, originSource].join('\0');
       links.push({
-        baselineLinkId: `retail_link_${createHash('sha256').update(seed).digest('hex').slice(0, 24)}`,
+        baselineLinkId: createBaselineRetailerLinkId({
+          canonicalProductId,
+          retailer: retailerName,
+          url,
+          originSource,
+        }),
         canonicalProductId,
         retailer: retailerName,
         url,
@@ -230,7 +256,7 @@ export function validateRetailerObservationCoverage(document) {
   }
   const states = new Set(['LEGACY_UNKNOWN', 'TYPED_AVAILABLE', 'TYPED_UNAVAILABLE',
     'TYPED_REDIRECTED', 'TYPED_UNKNOWN', 'TYPED_CONFLICT', 'TYPED_POLICY_EXCLUDED',
-    'QUARANTINED_IDENTITY_MISMATCH']);
+    'QUARANTINED_IDENTITY_MISMATCH', 'SOURCE_ABSENT_IN_AUTHORIZED_FEED']);
   for (const item of document.items) {
     required(item.canonicalProductId, 'coverage canonical product ID');
     retailerUrl(item.url);
@@ -283,17 +309,18 @@ export function buildRetailerObservationCoverage({
   validateRetailerObservationLedger(ledger);
   const normalizedPolicy = normalizeRetailerSourcePolicy(sourcePolicy);
   const typedByLink = latestTypedByLink(ledger, normalizedPolicy);
-  const mismatchByLink = latestIdentityMismatchByBaselineLink(ledger, normalizedPolicy);
+  const reconciliationByLink = latestListingReconciliationByBaselineLink(ledger, normalizedPolicy);
   const links = baselineLinks(publicProjection, normalizedPolicy);
   const items = links.map((link) => {
     const typedObservation = typedByLink.get(linkKey(link.canonicalProductId, link.url)) ?? null;
-    const mismatch = mismatchByLink.get(link.baselineLinkId) ?? null;
-    if (mismatch && (mismatch.canonicalProductId !== link.canonicalProductId
-      || mismatch.sourceUrl !== link.url)) {
-      throw new Error(`identity mismatch attempt does not bind current baseline link ${link.baselineLinkId}`);
+    const reconciliation = reconciliationByLink.get(link.baselineLinkId) ?? null;
+    if (reconciliation && (reconciliation.canonicalProductId !== link.canonicalProductId
+      || reconciliation.sourceUrl !== link.url)) {
+      throw new Error(`listing reconciliation does not bind current baseline link ${link.baselineLinkId}`);
     }
-    const typed = mismatch && (!typedObservation || mismatch.observedAt >= typedObservation.observedAt)
-      ? mismatch
+    const typed = reconciliation
+      && (!typedObservation || reconciliation.observedAt >= typedObservation.observedAt)
+      ? reconciliation
       : typedObservation;
     const resolved = typed && ['TYPED_AVAILABLE', 'TYPED_UNAVAILABLE'].includes(typed.state);
     const terminal = typed?.state === 'QUARANTINED_IDENTITY_MISMATCH' || resolved;
@@ -307,10 +334,16 @@ export function buildRetailerObservationCoverage({
       terminalObservationState: typed?.state ?? 'LEGACY_UNKNOWN',
       typedObservation: typed,
       revalidation: terminal ? null : {
-        action: typed ? 'REVALIDATE_TYPED_NON_TERMINAL' : link.sourcePolicy.legacyLinkAction,
+        action: typed?.state === 'SOURCE_ABSENT_IN_AUTHORIZED_FEED'
+          ? 'COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE'
+          : typed ? 'REVALIDATE_TYPED_NON_TERMINAL' : link.sourcePolicy.legacyLinkAction,
         policyState: link.sourcePolicy.termsReviewState,
-        executionState: policyExecutionState(link.sourcePolicy.termsReviewState),
-        collectionMode: link.sourcePolicy.collectionMode,
+        executionState: typed?.state === 'SOURCE_ABSENT_IN_AUTHORIZED_FEED'
+          ? 'BLOCKED_BY_SOURCE_POLICY'
+          : policyExecutionState(link.sourcePolicy.termsReviewState),
+        collectionMode: typed?.state === 'SOURCE_ABSENT_IN_AUTHORIZED_FEED'
+          ? 'alternate_authorized_source_required'
+          : link.sourcePolicy.collectionMode,
         sourcePolicyId: link.sourcePolicy.id,
       },
     };

@@ -86,6 +86,8 @@ export function normalizeRetailerSourcePolicy(policy) {
     const normalized = {
       ...adapter,
       host: required(source.host, 'retailer source host').toLowerCase(),
+      acquisitionHosts: [...new Set((source.acquisitionHosts ?? [])
+        .map((host) => required(host, 'retailer acquisition host').toLowerCase()))].sort(),
       collectionMode: required(source.collectionMode, 'retailer collection mode'),
       termsReviewState,
       legacyLinkAction: required(source.legacyLinkAction, 'legacy link action'),
@@ -238,6 +240,81 @@ function documentWithoutSemanticHash(document) {
   return rest;
 }
 
+function normalizedListingReconciliations(value, {
+  status,
+  complete,
+  rawPayloadSha256,
+  canonicalProductIds,
+}) {
+  const values = value ?? [];
+  if (!Array.isArray(values)) throw new TypeError('collection attempt listing reconciliations must be an array');
+  if (values.length && (status !== 'succeeded' || !complete || rawPayloadSha256 == null)) {
+    throw new TypeError('collection attempt listing reconciliations require a complete raw-bound success');
+  }
+  const scope = new Set(canonicalProductIds);
+  const result = values.map((context) => {
+    if (!['identity_mismatch', 'source_absent'].includes(context?.kind)) {
+      throw new TypeError('collection attempt listing reconciliation invalid');
+    }
+    const expectedReasonCode = context.kind === 'identity_mismatch'
+      ? 'PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH'
+      : 'PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED';
+    if (context.reasonCode !== expectedReasonCode) {
+      throw new TypeError('collection attempt listing reconciliation reason invalid');
+    }
+    if (sha256(context.rawPayloadSha256, 'listing reconciliation raw payload SHA-256') !== rawPayloadSha256) {
+      throw new TypeError('collection attempt listing reconciliation raw payload mismatch');
+    }
+    const baselineLinkId = required(context.baselineLinkId, 'listing quarantine baseline link ID');
+    if (!/^retail_link_[a-f0-9]{24}$/.test(baselineLinkId)) {
+      throw new TypeError('collection attempt listing reconciliation baseline link ID invalid');
+    }
+    const canonicalProductId = required(
+      context.canonicalProductId,
+      'listing reconciliation canonical product ID',
+    );
+    if (!scope.has(canonicalProductId)) {
+      throw new TypeError('collection attempt listing reconciliation escapes canonical product scope');
+    }
+    const sourceUrl = new URL(required(context.sourceUrl, 'listing reconciliation source URL'));
+    for (const url of [sourceUrl]) {
+      if (url.protocol !== 'https:' || url.username || url.password) {
+        throw new TypeError('listing reconciliation URLs must use trusted HTTPS');
+      }
+    }
+    const common = {
+      kind: context.kind,
+      reasonCode: expectedReasonCode,
+      baselineLinkId,
+      canonicalProductId,
+      sourceUrl: sourceUrl.toString(),
+      expectedModel: required(context.expectedModel, 'listing reconciliation expected model'),
+      rawPayloadSha256,
+    };
+    if (context.kind === 'source_absent') {
+      return {
+        ...common,
+        retailerProductId: context.retailerProductId == null
+          ? null
+          : required(context.retailerProductId, 'listing reconciliation retailer product ID'),
+      };
+    }
+    const receivedUrl = new URL(required(context.receivedUrl, 'listing reconciliation received URL'));
+    if (receivedUrl.protocol !== 'https:' || receivedUrl.username || receivedUrl.password) {
+      throw new TypeError('listing reconciliation URLs must use trusted HTTPS');
+    }
+    return {
+      ...common,
+      receivedModel: required(context.receivedModel, 'listing reconciliation received model'),
+      receivedUrl: receivedUrl.toString(),
+    };
+  }).sort((left, right) => left.baselineLinkId.localeCompare(right.baselineLinkId));
+  if (new Set(result.map((context) => context.baselineLinkId)).size !== result.length) {
+    throw new TypeError('collection attempt listing reconciliation baseline links must be unique');
+  }
+  return result;
+}
+
 function normalizedAttempt(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
     throw new TypeError('retailer collection attempt must be an object');
@@ -251,6 +328,9 @@ function normalizedAttempt(value) {
   const rawPayloadSha256 = value.rawPayloadSha256 == null
     ? null
     : sha256(value.rawPayloadSha256, 'collection attempt raw payload SHA-256');
+  const acquisitionReceiptSha256 = value.acquisitionReceiptSha256 == null
+    ? null
+    : sha256(value.acquisitionReceiptSha256, 'collection attempt acquisition receipt SHA-256');
   if (status === 'succeeded' && rawPayloadSha256 == null) {
     throw new TypeError('successful collection attempt requires raw payload SHA-256');
   }
@@ -266,6 +346,12 @@ function normalizedAttempt(value) {
     throw new TypeError('collection attempt canonical product scope contains duplicates');
   }
   canonicalProductIds.sort();
+  const listingReconciliations = normalizedListingReconciliations(value.listingReconciliations, {
+    status,
+    complete,
+    rawPayloadSha256,
+    canonicalProductIds,
+  });
   let failureContext = null;
   if (value.failureContext != null) {
     if (status !== 'failed' || rawPayloadSha256 == null || canonicalProductIds.length !== 1) {
@@ -319,10 +405,12 @@ function normalizedAttempt(value) {
     collectionError: status === 'failed' ? String(value.collectionError).trim() : null,
     rawSourceReference: required(value.rawSourceReference, 'collection attempt source reference'),
     rawPayloadSha256,
+    ...(acquisitionReceiptSha256 ? { acquisitionReceiptSha256 } : {}),
     policyVersion: required(value.policyVersion, 'collection attempt policy version'),
     complete,
     canonicalProductIds,
     ...(failureContext ? { failureContext } : {}),
+    ...(listingReconciliations.length ? { listingReconciliations } : {}),
   };
 }
 
@@ -376,6 +464,11 @@ export function validateRetailerObservationLedger(document) {
       throw new TypeError(`raw-bound retailer attempt ${attempt.id} lacks immutable source binding`);
     }
   }
+  for (const attempt of attempts.filter((row) => row.acquisitionReceiptSha256 != null)) {
+    if (!boundHashes.has(attempt.acquisitionReceiptSha256)) {
+      throw new TypeError(`retailer attempt ${attempt.id} lacks immutable acquisition receipt binding`);
+    }
+  }
   const summary = {
     observations: normalizedObservations.length,
     currentBaselineObservations: Number(document.summary?.currentBaselineObservations),
@@ -415,8 +508,10 @@ function normalizeExisting(existingLedger, baselineById, normalizedPolicy) {
 }
 
 function collectionAttempt(snapshot) {
+  const listingReconciliations = snapshot.listingReconciliations ?? [];
   const seed = [snapshot.adapterId, snapshot.observedAt, snapshot.rawSourceReference,
-    snapshot.collectionStatus, snapshot.rawPayloadSha256 ?? '',
+    snapshot.collectionStatus, snapshot.rawPayloadSha256 ?? '', snapshot.acquisitionReceiptSha256 ?? '',
+    ...(listingReconciliations.length ? [canonicalSha256(listingReconciliations)] : []),
     ...snapshot.canonicalProductIds].join('\0');
   return {
     id: `retail_attempt_${createHash('sha256').update(seed).digest('hex').slice(0, 24)}`,
@@ -427,10 +522,16 @@ function collectionAttempt(snapshot) {
     collectionError: snapshot.collectionError ?? null,
     rawSourceReference: required(snapshot.rawSourceReference, 'snapshot raw source reference'),
     rawPayloadSha256: snapshot.rawPayloadSha256 ?? null,
+    ...(snapshot.acquisitionReceiptSha256
+      ? { acquisitionReceiptSha256: snapshot.acquisitionReceiptSha256 }
+      : {}),
     policyVersion: required(snapshot.policyVersion, 'snapshot policy version'),
     complete: snapshot.complete === true,
     canonicalProductIds: [...snapshot.canonicalProductIds],
     ...(snapshot.failureContext ? { failureContext: structuredClone(snapshot.failureContext) } : {}),
+    ...(listingReconciliations.length
+      ? { listingReconciliations: structuredClone(listingReconciliations) }
+      : {}),
   };
 }
 
@@ -469,6 +570,13 @@ function assertSnapshotAuthorized(snapshot, normalizedPolicy) {
     for (const value of contextUrls) {
       if (!allowedHosts.has(new URL(value).hostname.toLowerCase())) {
         throw new Error(`snapshot failure URL escapes source policy hosts for ${adapterId}`);
+      }
+    }
+  }
+  for (const context of snapshot.listingReconciliations ?? []) {
+    for (const value of [context.sourceUrl, context.receivedUrl].filter(Boolean)) {
+      if (!allowedHosts.has(new URL(value).hostname.toLowerCase())) {
+        throw new Error(`snapshot listing reconciliation URL escapes source policy hosts for ${adapterId}`);
       }
     }
   }
@@ -545,6 +653,13 @@ export function buildRetailerObservationLedger({
         id: `retailer-snapshot:${snapshot.adapterId}:${snapshot.observedAt}:${snapshot.rawPayloadSha256}`,
         sha256: sha256(snapshot.rawPayloadSha256, 'retailer snapshot SHA-256'),
         kind: 'IMMUTABLE_RETAILER_SOURCE',
+      })),
+    ...typedSnapshots
+      .filter((snapshot) => snapshot.acquisitionReceiptSha256)
+      .map((snapshot) => ({
+        id: `retailer-acquisition:${snapshot.adapterId}:${snapshot.acquisitionReceiptSha256}`,
+        sha256: sha256(snapshot.acquisitionReceiptSha256, 'retailer acquisition receipt SHA-256'),
+        kind: 'IMMUTABLE_ACQUISITION_RECEIPT',
       })),
   ], 'source binding');
   const currentBaselineObservations = existingSchemaV2

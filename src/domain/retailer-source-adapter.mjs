@@ -5,6 +5,8 @@ import { createObservation } from './retailer-observation.mjs';
 const SOURCE_TYPES = new Set(['affiliate_feed', 'public_retailer_api', 'public_retailer_page']);
 const AVAILABILITY = new Set(['available', 'unavailable', 'unknown']);
 const LISTING_STATES = new Set(['current', 'stale', 'unavailable', 'redirected', 'relisted']);
+const SHA256 = /^[a-f0-9]{64}$/;
+const BASELINE_LINK_ID = /^retail_link_[a-f0-9]{24}$/;
 
 function required(value, label) { const result = String(value ?? '').trim(); if (!result) throw new TypeError(`${label} required`); return result; }
 function date(value, label) {
@@ -18,6 +20,12 @@ function date(value, label) {
 }
 function freezeDeep(value) { if (value && typeof value === 'object' && !Object.isFrozen(value)) { Object.freeze(value); for (const child of Object.values(value)) freezeDeep(child); } return value; }
 function positiveHours(value, label) { const result = Number(value); if (!Number.isInteger(result) || result <= 0) throw new TypeError(`${label} must be a positive integer`); return result; }
+function optionalSha256(value, label) {
+  if (value == null) return null;
+  const result = String(value).trim().toLowerCase();
+  if (!SHA256.test(result)) throw new TypeError(`${label} invalid`);
+  return result;
+}
 
 function canonicalProductScope(value, rows) {
   const source = value == null ? rows.map((row) => row.canonicalProductId) : value;
@@ -58,6 +66,77 @@ function rawSourceReference(value, sourceType) {
   return result;
 }
 
+function normalizeListingReconciliations(input, {
+  adapter,
+  complete,
+  failed,
+  rawPayloadSha256,
+  canonicalProductIds,
+}) {
+  const values = input ?? [];
+  if (!Array.isArray(values)) throw new TypeError('snapshot listing reconciliations must be an array');
+  if (values.length && (failed || !complete)) {
+    throw new TypeError('listing reconciliations require a complete snapshot');
+  }
+  const scope = new Set(canonicalProductIds);
+  const result = values.map((value) => {
+    if (!['identity_mismatch', 'source_absent'].includes(value?.kind)) {
+      throw new TypeError('snapshot listing reconciliation kind invalid');
+    }
+    const expectedReasonCode = value.kind === 'identity_mismatch'
+      ? 'PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH'
+      : 'PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED';
+    if (value.reasonCode !== expectedReasonCode) {
+      throw new TypeError('snapshot listing reconciliation reason invalid');
+    }
+    const baselineLinkId = required(value.baselineLinkId, 'listing quarantine baseline link ID');
+    if (!BASELINE_LINK_ID.test(baselineLinkId)) {
+      throw new TypeError('listing reconciliation baseline link ID invalid');
+    }
+    const canonicalProductId = required(value.canonicalProductId, 'listing quarantine canonical product ID');
+    if (!scope.has(canonicalProductId)) {
+      throw new TypeError('listing reconciliation canonical product is outside snapshot scope');
+    }
+    const quarantineHash = optionalSha256(
+      value.rawPayloadSha256,
+      'listing reconciliation raw payload hash',
+    );
+    if (quarantineHash !== rawPayloadSha256) {
+      throw new TypeError('listing reconciliation raw payload hash mismatch');
+    }
+    const common = {
+      kind: value.kind,
+      reasonCode: expectedReasonCode,
+      baselineLinkId,
+      canonicalProductId,
+      sourceUrl: trustedRetailerUrl(value.sourceUrl, adapter, 'listing reconciliation source URL'),
+      expectedModel: required(value.expectedModel, 'listing reconciliation expected model'),
+      rawPayloadSha256: quarantineHash,
+    };
+    if (value.kind === 'source_absent') {
+      return {
+        ...common,
+        retailerProductId: value.retailerProductId == null
+          ? null
+          : required(value.retailerProductId, 'listing reconciliation retailer product ID'),
+      };
+    }
+    return {
+      ...common,
+      receivedModel: required(value.receivedModel, 'listing reconciliation received model'),
+      receivedUrl: trustedRetailerUrl(
+        value.receivedUrl,
+        adapter,
+        'listing reconciliation received URL',
+      ),
+    };
+  }).sort((left, right) => left.baselineLinkId.localeCompare(right.baselineLinkId));
+  if (new Set(result.map((value) => value.baselineLinkId)).size !== result.length) {
+    throw new TypeError('snapshot listing reconciliations contain duplicate baseline links');
+  }
+  return result;
+}
+
 export function createRetailerSourceAdapter(input) {
   if (!input || typeof input !== 'object') throw new TypeError('retailer adapter required');
   const sourceType = required(input.sourceType, 'source type');
@@ -88,7 +167,7 @@ export function normalizeRetailerSnapshot(adapterInput, input) {
   if (Number.isNaN(observedAt.getTime())) throw new TypeError('observedAt must be a timestamp');
   const failed = Boolean(input.collectionError);
   if (failed && input.rows.length) throw new TypeError('failed snapshot cannot contain inventory rows');
-  if (!failed && !/^[a-f0-9]{64}$/.test(String(input.rawPayloadSha256 ?? ''))) throw new TypeError('successful snapshot requires raw payload hash');
+  if (!failed && !SHA256.test(String(input.rawPayloadSha256 ?? ''))) throw new TypeError('successful snapshot requires raw payload hash');
   const rows = input.rows.map((row) => {
     const url = trustedRetailerUrl(row.url, adapter, 'retailer product URL');
     const availability = row.availability ?? 'unknown';
@@ -114,6 +193,13 @@ export function normalizeRetailerSnapshot(adapterInput, input) {
     };
   });
   const canonicalProductIds = canonicalProductScope(input.canonicalProductIds, rows);
+  const listingReconciliations = normalizeListingReconciliations(input.listingReconciliations, {
+    adapter,
+    complete: input.complete === true,
+    failed,
+    rawPayloadSha256: input.rawPayloadSha256 ?? null,
+    canonicalProductIds,
+  });
   let failureContext = null;
   if (input.failureContext != null) {
     if (!failed) throw new TypeError('failure context requires a failed snapshot');
@@ -158,7 +244,14 @@ export function normalizeRetailerSnapshot(adapterInput, input) {
     collectionStatus: failed ? 'failed' : 'succeeded', collectionError: failed ? required(input.collectionError, 'collection error') : null,
     rawPayloadSha256: input.rawPayloadSha256 ?? null,
     rawSourceReference: rawSourceReference(input.rawSourceReference, adapter.sourceType),
+    ...(input.acquisitionReceiptSha256 == null ? {} : {
+      acquisitionReceiptSha256: optionalSha256(
+        input.acquisitionReceiptSha256,
+        'snapshot acquisition receipt SHA-256',
+      ),
+    }),
     ...(failureContext ? { failureContext } : {}),
+    listingReconciliations,
     canonicalProductIds,
     rows,
   });

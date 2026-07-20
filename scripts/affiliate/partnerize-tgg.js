@@ -454,19 +454,33 @@ function feedCandidateStateKey(row) {
 
 async function buildPartnerizeRetailerSnapshot({
   adapter,
+  baselineListings = null,
   catalogProducts,
   feedRawBytes,
   observedAt,
   rawSourceReference,
+  acquisitionReceiptSha256 = null,
   complete,
 } = {}) {
   if (!Array.isArray(catalogProducts)) throw new TypeError('catalogProducts required');
   if (typeof complete !== 'boolean') throw new TypeError('Partnerize feed completeness must be explicit');
   const bytes = exactFeedBytes(feedRawBytes);
+  const rawPayloadSha256 = createHash('sha256').update(bytes).digest('hex');
   const feedRows = parsePartnerizeFeedCsv(bytes.toString('utf8'), { requireInStock: false });
   const catalogByModel = buildCatalogModelIndex(catalogProducts);
   const quarantines = [];
   const candidates = [];
+  const feedRowsBySku = new Map();
+  const feedRowsByUrl = new Map();
+  const addFeedIndex = (index, key, row) => {
+    if (!key) return;
+    if (!index.has(key)) index.set(key, []);
+    index.get(key).push(row);
+  };
+  for (const row of feedRows) {
+    addFeedIndex(feedRowsBySku, String(row.tgg_sku ?? '').trim(), row);
+    addFeedIndex(feedRowsByUrl, row.url, row);
+  }
 
   for (const row of feedRows) {
     const wantedCategory = CORE_FEED_CATEGORY_TO_CATALOG[row.fit_category];
@@ -511,13 +525,114 @@ async function buildPartnerizeRetailerSnapshot({
     });
   }
 
+  const catalogByCanonical = new Map(catalogProducts.map((product) => [
+    product.canonicalProductId,
+    product,
+  ]));
+  let listingScope = baselineListings;
+  if (listingScope == null) {
+    const { createBaselineRetailerLinkId } = await import(
+      '../../src/domain/retailer-observation-coverage.mjs'
+    );
+    listingScope = catalogProducts.flatMap((product) => (product?.retailers ?? [])
+      .filter((retailer) => isTheGoodGuysRetailer(retailer))
+      .map((retailer) => {
+        const sourceUrl = String(
+          retailer.url ?? retailer.href ?? retailer.u ?? retailer.link ?? '',
+        ).trim();
+        return {
+          baselineLinkId: createBaselineRetailerLinkId({
+            canonicalProductId: product.canonicalProductId,
+            retailer: TGG_RETAILER_NAME,
+            url: sourceUrl,
+            originSource: retailer.source ?? 'legacy-catalog',
+          }),
+          canonicalProductId: product.canonicalProductId,
+          sourceUrl,
+          retailerProductId: retailer.tgg_sku == null
+            ? null
+            : String(retailer.tgg_sku).trim() || null,
+        };
+      }));
+  }
+  if (!Array.isArray(listingScope)) throw new TypeError('Partnerize baseline listings must be an array');
+  const listingReconciliations = [];
+  for (const listing of listingScope) {
+      const product = catalogByCanonical.get(String(listing?.canonicalProductId ?? '').trim());
+      if (!product) throw new TypeError('Partnerize baseline listing canonical product is outside catalogue');
+      const sourceUrl = String(listing.sourceUrl ?? listing.url ?? '').trim();
+      if (!isTheGoodGuysProductUrl(sourceUrl)) throw new TypeError('Partnerize baseline listing URL invalid');
+      const retailerProductId = listing.retailerProductId == null
+        ? null
+        : String(listing.retailerProductId).trim() || null;
+      const indexed = retailerProductId
+        ? (feedRowsBySku.get(retailerProductId) ?? [])
+        : (feedRowsByUrl.get(sourceUrl) ?? []);
+      const matchingRows = [...new Map(indexed.map((row) => [
+        [row.tgg_sku, row.url, row.manufacturer_model_normalized].join('\0'),
+        row,
+      ])).values()];
+      const expectedCategory = String(product.cat ?? '').trim();
+      const expectedModel = String(product.model ?? '').trim();
+      const exactRows = matchingRows.filter((row) => (
+        normalizeModel(expectedModel) === row.manufacturer_model_normalized
+        && CORE_FEED_CATEGORY_TO_CATALOG[row.fit_category] === expectedCategory
+        && (!product.brand || !row.brand
+          || normalizedBrand(product.brand) === normalizedBrand(row.brand))
+      ));
+      if (exactRows.length > 0) continue;
+      const baselineLinkId = String(listing.baselineLinkId ?? '').trim();
+      if (!/^retail_link_[a-f0-9]{24}$/.test(baselineLinkId)) {
+        throw new TypeError('Partnerize baseline listing ID invalid');
+      }
+      if (matchingRows.length === 1) {
+        const [received] = matchingRows;
+        const reconciliation = {
+          kind: 'identity_mismatch',
+          reasonCode: 'PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH',
+          baselineLinkId,
+          canonicalProductId: product.canonicalProductId,
+          sourceUrl,
+          expectedModel,
+          receivedModel: received.manufacturer_model,
+          receivedUrl: received.url,
+          rawPayloadSha256,
+        };
+        listingReconciliations.push(reconciliation);
+        quarantines.push(reconciliation);
+        continue;
+      }
+      if (matchingRows.length > 1) {
+        quarantines.push({
+          canonicalProductId: product.canonicalProductId,
+          baselineLinkId,
+          reasonCode: 'AMBIGUOUS_BASELINE_LISTING_IDENTITY',
+        });
+        continue;
+      }
+      if (complete) {
+        listingReconciliations.push({
+          kind: 'source_absent',
+          reasonCode: 'PARTNERIZE_LISTING_ABSENT_FROM_COMPLETE_AFFILIATE_FEED',
+          baselineLinkId,
+          canonicalProductId: product.canonicalProductId,
+          sourceUrl,
+          expectedModel,
+          retailerProductId,
+          rawPayloadSha256,
+        });
+      }
+  }
+
   const grouped = new Map();
   for (const candidate of candidates) {
-    if (!grouped.has(candidate.canonicalProductId)) grouped.set(candidate.canonicalProductId, []);
-    grouped.get(candidate.canonicalProductId).push(candidate);
+    const key = `${candidate.canonicalProductId}\0${candidate.retailerProductId}`;
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(candidate);
   }
   const rows = [];
-  for (const [canonicalProductId, matches] of grouped) {
+  for (const matches of grouped.values()) {
+    const canonicalProductId = matches[0].canonicalProductId;
     const states = new Map(matches.map((row) => [feedCandidateStateKey(row), row]));
     if (states.size > 1) {
       quarantines.push({ canonicalProductId, reasonCode: 'CONFLICTING_FEED_ROWS' });
@@ -535,8 +650,10 @@ async function buildPartnerizeRetailerSnapshot({
     observedAt,
     complete,
     canonicalProductIds: catalogProducts.map((product) => product.canonicalProductId),
-    rawPayloadSha256: createHash('sha256').update(bytes).digest('hex'),
+    rawPayloadSha256,
     rawSourceReference,
+    acquisitionReceiptSha256,
+    listingReconciliations,
     rows,
   });
   return {
@@ -546,6 +663,10 @@ async function buildPartnerizeRetailerSnapshot({
       parsedFeedRows: feedRows.length,
       acceptedRows: rows.length,
       quarantinedBindings: quarantines.length,
+      absentBaselineListings: listingReconciliations
+        .filter((row) => row.kind === 'source_absent').length,
+      identityMismatchBaselineListings: listingReconciliations
+        .filter((row) => row.kind === 'identity_mismatch').length,
       complete,
     },
   };

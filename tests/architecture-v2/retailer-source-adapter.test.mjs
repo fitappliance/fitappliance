@@ -50,6 +50,49 @@ test('normalizes a complete snapshot with raw evidence and host enforcement', ()
   }), /opaque source reference/i);
 });
 
+test('complete snapshots preserve raw-bound per-listing reconciliations', () => {
+  const rawPayloadSha256 = 'e'.repeat(64);
+  const snapshot = normalizeRetailerSnapshot(adapter, {
+    observedAt: '2026-07-11T01:00:00Z',
+    complete: true,
+    canonicalProductIds: ['fa_prod_expected', 'fa_prod_received'],
+    rawPayloadSha256,
+    rawSourceReference: 'partnerize:feed:identity-rebound',
+    rows: [{
+      canonicalProductId: 'fa_prod_received',
+      retailerProductId: '50000031',
+      url: 'https://www.thegoodguys.com.au/new-product',
+      title: 'New model',
+      availability: 'available',
+    }],
+    listingReconciliations: [{
+      kind: 'identity_mismatch',
+      reasonCode: 'PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH',
+      baselineLinkId: `retail_link_${'a'.repeat(24)}`,
+      canonicalProductId: 'fa_prod_expected',
+      sourceUrl: 'https://www.thegoodguys.com.au/old-product',
+      expectedModel: 'OLD-1',
+      receivedModel: 'NEW-1',
+      receivedUrl: 'https://www.thegoodguys.com.au/new-product',
+      rawPayloadSha256,
+    }],
+  });
+
+  assert.equal(snapshot.listingReconciliations.length, 1);
+  assert.equal(snapshot.listingReconciliations[0].canonicalProductId, 'fa_prod_expected');
+  assert.throws(() => normalizeRetailerSnapshot(adapter, {
+    ...snapshot,
+    complete: false,
+  }), /listing reconciliations require a complete snapshot/i);
+  assert.throws(() => normalizeRetailerSnapshot(adapter, {
+    ...snapshot,
+    listingReconciliations: [{
+      ...snapshot.listingReconciliations[0],
+      rawPayloadSha256: 'f'.repeat(64),
+    }],
+  }), /listing reconciliation raw payload hash/i);
+});
+
 test('redirect observations preserve a trusted destination without authorizing lifecycle by themselves', () => {
   const redirected = normalizeRetailerSnapshot(adapter, {
     observedAt: '2026-07-11T01:00:00Z',

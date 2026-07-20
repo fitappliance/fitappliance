@@ -47,7 +47,7 @@
     "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
     "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
     "fitPublicationAuditSha256": "33e16cec476a3805a3f3905c669a0957ee8b05a52f4ae12494204924663105a3",
-    "epochsSha256": "a2ecd5bc26f21b4cbe94f1a70fc62216fea3d7d9a6aadcb97c6c879479a9746f"
+    "epochsSha256": "cf71180c5239b0452b76cad94da189401d61910096a35fc42786fa5e93cb8f50"
   },
   "epochs": [
     {
@@ -60,7 +60,7 @@
     },
     {
       "id": "lifecycle-policy",
-      "semanticSha256": "71668fa4b669fcf67747acf03ce6a301b47d24a326f09008da85cb70d41ab687"
+      "semanticSha256": "9118af164c49844f0723170a47be42761e7046425dd0cb35f9ea81e4aef9d05d"
     },
     {
       "id": "mineru-toolchain",
@@ -68,7 +68,7 @@
     },
     {
       "id": "observation",
-      "semanticSha256": "6f0d77f61b2e203d36e7c6a7c6cc4573b41437bda37f88e30319837f3c894bf2"
+      "semanticSha256": "e534c8542ae4224c77da64d618d9d7d50ee1e8b611e42845ab94bec72fd4f483"
     },
     {
       "id": "parser",
@@ -88,7 +88,7 @@
     },
     {
       "id": "source-authority-policy",
-      "semanticSha256": "e50b4e6fad16ecbb82fe94f587944386caddb5cf5d1e341db41284af6f1dc8b5"
+      "semanticSha256": "4730580c1fb1efe264b9e055f3f6b540c4747e86ab1c1211e7b5bd1d98a382ce"
     }
   ],
   "operationalState": {
@@ -186,6 +186,6 @@
     "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
     "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e"
   },
-  "controlId": "historical-dimensions-scale-d2e8c8f13f07fc99fb070387",
-  "semanticControlSha256": "d2e8c8f13f07fc99fb070387d6d2b65619f91f8ab635580b1e8ea24d5f75b235"
+  "controlId": "historical-dimensions-scale-e3b836f9ceec787433e5d42f",
+  "semanticControlSha256": "e3b836f9ceec787433e5d42fa78d6cc71f5050744b675e2a3bde17089a8814ff"
 }

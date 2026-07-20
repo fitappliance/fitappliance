@@ -46,6 +46,25 @@ test('refresh inventory accounts for every unresolved prior-current product with
     && source.terminalObservationState !== 'TYPED_UNAVAILABLE'
   ))));
 
+  const unresolvedIds = new Set(shadow.cutover.unresolvedLegacyCurrentIds);
+  const mismatchProductIds = new Set(coverage.items
+    .filter((item) => item.terminalObservationState === 'QUARANTINED_IDENTITY_MISMATCH')
+    .map((item) => item.canonicalProductId)
+    .filter((id) => unresolvedIds.has(id)));
+  assert.equal(inventory.summary.resolutionTasks, mismatchProductIds.size);
+  assert.ok([...mismatchProductIds].every((id) => (
+    inventory.items.find((item) => item.canonicalProductId === id)
+      ?.executionDisposition === 'REQUIRES_EXACT_MODEL_REDISCOVERY'
+  )));
+
+  const mixedDependency = inventory.items.find((item) => item.legacyRuntimeId === 'f3');
+  assert.ok(mixedDependency.sourceTasks.length > 0);
+  assert.ok(mixedDependency.sourceTasks.every((task) => (
+    task.executionState === 'BLOCKED_BY_SOURCE_POLICY'
+  )));
+  assert.equal(mixedDependency.resolutionTasks.length, 1);
+  assert.equal(mixedDependency.executionDisposition, 'REQUIRES_EXACT_MODEL_REDISCOVERY');
+
   const identityRediscovery = inventory.items.find((item) => item.model === 'GS-B655PL');
   assert.ok(identityRediscovery, 'identity-quarantined product remains in the unresolved inventory');
   assert.equal(identityRediscovery.sourceTasks.length, 0);
@@ -61,5 +80,5 @@ test('refresh inventory accounts for every unresolved prior-current product with
     expectedModel: 'GS-B655PL',
     quarantinedBaselineLinkIds: ['retail_link_8248f5525f2a0c2266b3970d'],
   }]);
-  assert.equal(inventory.summary.resolutionTasks, 1);
+  assert.equal(inventory.summary.resolutionTasks, mismatchProductIds.size);
 });

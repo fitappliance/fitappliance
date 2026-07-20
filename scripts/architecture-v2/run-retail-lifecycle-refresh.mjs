@@ -21,6 +21,7 @@ import {
   createEvidenceObjectStore,
   verifyEvidenceStorageRoot,
 } from '../../src/domain/evidence-recovery-state-store.mjs';
+import { validateRetailerSourceAcquisitionReceipt } from '../../src/domain/retailer-source-acquisition-receipt.mjs';
 
 const require = createRequire(import.meta.url);
 const { buildPartnerizeRetailerSnapshot } = require('../affiliate/partnerize-tgg.js');
@@ -647,6 +648,26 @@ export async function collectPartnerizeRetailLifecycleRefreshRun(options, depend
       readJsonWithHash(fs, resolveArchitectureV2Path(root, 'publicProjection')),
       readJsonWithHash(fs, resolveArchitectureV2Path(root, 'retailerSourcePolicy')),
     ]);
+    const existingPlanBytes = await readOptional(fs, paths.plan);
+    let acquisitionReceipt = null;
+    if (options.acquisitionReceiptPath != null) {
+      acquisitionReceipt = JSON.parse(await fs.readFile(resolve(options.acquisitionReceiptPath), 'utf8'));
+      const source = policy.document.sources.find((candidate) => candidate.id === sourcePolicyId);
+      if (!source) throw new Error(`retailer source policy missing ${sourcePolicyId}`);
+      acquisitionReceipt = validateRetailerSourceAcquisitionReceipt(acquisitionReceipt, {
+        sourcePolicyId,
+        sourcePolicySha256: policy.sha256,
+        acquisitionHosts: source.acquisitionHosts,
+      });
+    }
+    const existingPlan = existingPlanBytes
+      ? validateRetailLifecycleRefreshPlan(JSON.parse(existingPlanBytes))
+      : null;
+    const observedAt = acquisitionReceipt?.receivedAt ?? options.observedAt ?? existingPlan?.observedAt;
+    if (acquisitionReceipt && options.observedAt != null
+      && new Date(options.observedAt).toISOString() !== acquisitionReceipt.receivedAt) {
+      throw new Error('Partnerize observedAt must equal acquisition receipt receivedAt');
+    }
     const plan = buildRetailLifecycleRefreshPlan({
       inventory: inventory.document,
       inventorySha256: inventory.sha256,
@@ -655,12 +676,10 @@ export async function collectPartnerizeRetailLifecycleRefreshRun(options, depend
       sourcePolicy: policy.document,
       sourcePolicySha256: policy.sha256,
       sourcePolicyId,
-      observedAt: options.observedAt,
+      observedAt,
     });
-    const existingPlanBytes = await readOptional(fs, paths.plan);
     if (options.resume) {
       if (!existingPlanBytes) throw new Error('retailer refresh resume plan is missing');
-      const existingPlan = validateRetailLifecycleRefreshPlan(JSON.parse(existingPlanBytes));
       if (existingPlan.semanticSha256 !== plan.semanticSha256) {
         throw new Error('retailer refresh plan drift blocks resume');
       }
@@ -693,11 +712,21 @@ export async function collectPartnerizeRetailLifecycleRefreshRun(options, depend
       const feedPath = resolve(required(options.feedPath, 'Partnerize feed path'));
       const feedBytes = await fs.readFile(feedPath);
       const contentSha256 = sha256(feedBytes);
+      if (acquisitionReceipt) {
+        acquisitionReceipt = validateRetailerSourceAcquisitionReceipt(acquisitionReceipt, {
+          sourcePolicyId,
+          sourcePolicySha256: policy.sha256,
+          acquisitionHosts: plan.sourceContract.acquisitionHosts,
+          rawPayloadSha256: contentSha256,
+          byteSize: feedBytes.length,
+        });
+      }
       rawObject = {
         sha256: contentSha256,
         byteSize: feedBytes.length,
         objectPath: retailerRawObjectPath(contentSha256, 'csv'),
         mediaType: 'text/csv',
+        ...(acquisitionReceipt ? { acquisitionReceipt } : {}),
       };
       await objectStore.writeObject(rawObject.objectPath, feedBytes);
       await durableAtomicWrite(
@@ -712,6 +741,11 @@ export async function collectPartnerizeRetailLifecycleRefreshRun(options, depend
     const feedBytes = await objectStore.readObject(rawObject.objectPath);
     const result = await buildPartnerizeRetailerSnapshot({
       adapter: adapterFromPolicy(policy.document, sourcePolicyId),
+      baselineListings: plan.targets.flatMap((target) => target.sourceTasks.map((task) => ({
+        baselineLinkId: task.baselineLinkId,
+        canonicalProductId: target.canonicalProductId,
+        sourceUrl: task.url,
+      }))),
       catalogProducts: plan.catalogScope.map((product) => ({
         canonicalProductId: product.canonicalProductId,
         cat: product.category,
@@ -721,6 +755,7 @@ export async function collectPartnerizeRetailLifecycleRefreshRun(options, depend
       feedRawBytes: feedBytes,
       observedAt: plan.observedAt,
       rawSourceReference: `retailer-object:sha256:${rawObject.sha256}`,
+      acquisitionReceiptSha256: rawObject.acquisitionReceipt?.semanticSha256 ?? null,
       complete: true,
     });
     const run = buildRetailLifecycleRefreshRun({
@@ -751,7 +786,7 @@ function option(args, name) {
 
 export function parseArgs(args) {
   const supported = new Set([
-    '--root', '--storage-root', '--run-id', '--feed', '--observed-at', '--source-policy-id', '--resume',
+    '--root', '--storage-root', '--run-id', '--feed', '--acquisition-receipt', '--observed-at', '--source-policy-id', '--resume',
     '--canary-index', '--canary-size', '--batch-index', '--batch-size',
   ]);
   for (let index = 0; index < args.length; index += 1) {
@@ -764,6 +799,7 @@ export function parseArgs(args) {
     storageRoot: option(args, '--storage-root') ?? process.env.FITAPPLIANCE_STORAGE_ROOT,
     runId: option(args, '--run-id'),
     feedPath: option(args, '--feed'),
+    acquisitionReceiptPath: option(args, '--acquisition-receipt'),
     observedAt: option(args, '--observed-at'),
     sourcePolicyId: option(args, '--source-policy-id') ?? DEFAULT_SOURCE_POLICY_ID,
     canaryIndex: option(args, '--canary-index') == null ? null : Number(option(args, '--canary-index')),

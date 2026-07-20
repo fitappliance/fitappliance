@@ -6,6 +6,7 @@ import {
   normalizeRetailerSourcePolicy,
 } from './retailer-observation-ledger.mjs';
 import { validateRetailLifecycleRefreshInventory } from './retail-lifecycle-refresh-inventory.mjs';
+import { validateRetailerSourceAcquisitionReceipt } from './retailer-source-acquisition-receipt.mjs';
 
 const SHA256 = /^[a-f0-9]{64}$/;
 const SAFE_ID = /^[A-Za-z0-9][A-Za-z0-9._-]*$/;
@@ -125,6 +126,7 @@ function sourceContract(source, policy) {
     collectionMode: source.collectionMode,
     termsReviewState: source.termsReviewState,
     allowedHosts: [...source.allowedHosts],
+    acquisitionHosts: [...source.acquisitionHosts],
     minimumIntervalMs: source.minimumIntervalMs,
     maximumTargetsPerRun: exactProductCanary ? 20 : exactProductScale ? controls.maximumTargetsPerRun : null,
     maximumConcurrency: exactProductCanary ? 1 : exactProductScale ? controls.maximumConcurrency : null,
@@ -351,7 +353,7 @@ export function buildRetailLifecycleRefreshPlan({
   return freezeDeep(validateRetailLifecycleRefreshPlan(document));
 }
 
-function validateRawObject(rawObject, snapshot) {
+function validateRawObject(rawObject, snapshot, plan) {
   if (!rawObject || typeof rawObject !== 'object') throw new TypeError('successful refresh record raw object required');
   const hash = sha256(rawObject.sha256, 'refresh raw object SHA-256');
   if (!Number.isInteger(rawObject.byteSize) || rawObject.byteSize < 1) {
@@ -364,6 +366,23 @@ function validateRawObject(rawObject, snapshot) {
   }
   if (snapshot.rawPayloadSha256 !== hash) {
     throw new Error('refresh raw object hash does not match snapshot raw payload');
+  }
+  if (rawObject.acquisitionReceipt == null) {
+    if (snapshot.acquisitionReceiptSha256 != null) {
+      throw new Error('refresh snapshot acquisition receipt lacks raw object receipt');
+    }
+    return;
+  }
+  const receipt = validateRetailerSourceAcquisitionReceipt(rawObject.acquisitionReceipt, {
+    sourcePolicyId: plan.sourceContract.sourcePolicyId,
+    sourcePolicySha256: plan.sourceBindings.sourcePolicySha256,
+    acquisitionHosts: plan.sourceContract.acquisitionHosts,
+    rawPayloadSha256: hash,
+    byteSize: rawObject.byteSize,
+  });
+  if (receipt.receivedAt !== snapshot.observedAt
+    || receipt.semanticSha256 !== snapshot.acquisitionReceiptSha256) {
+    throw new Error('refresh acquisition receipt is not bound to snapshot time and hash');
   }
 }
 
@@ -452,7 +471,7 @@ export function validateRetailLifecycleRefreshRun(document) {
       if (record.snapshot.collectionStatus !== 'succeeded') {
         throw new Error('successful refresh record requires successful snapshot');
       }
-      validateRawObject(record.rawObject, record.snapshot);
+      validateRawObject(record.rawObject, record.snapshot, plan);
       if (record.error != null) throw new Error('successful refresh record cannot carry an error');
     } else {
       if (!isExactProductMode(plan.mode)) {
@@ -472,14 +491,14 @@ export function validateRetailLifecycleRefreshRun(document) {
           || record.snapshot.failureContext.baselineLinkId !== record.baselineLinkId) {
           throw new Error('identity mismatch record requires one raw-bound listing quarantine');
         }
-        validateRawObject(record.rawObject, record.snapshot);
+        validateRawObject(record.rawObject, record.snapshot, plan);
       } else if (responseContractFailure) {
         if (!record.rawObject || record.quarantines.length !== 0
           || record.snapshot.failureContext.baselineLinkId !== record.baselineLinkId
           || record.snapshot.failureContext.reasonCode !== 'AO_RESPONSE_CONTRACT_FAILURE') {
           throw new Error('response contract failure requires one raw-bound non-terminal listing attempt');
         }
-        validateRawObject(record.rawObject, record.snapshot);
+        validateRawObject(record.rawObject, record.snapshot, plan);
       } else if (record.rawObject != null || record.snapshot.failureContext != null
         || record.quarantines.length !== 0) {
         throw new Error('ordinary failed exact-product record cannot carry raw or quarantine evidence');
@@ -540,15 +559,21 @@ function assertAffiliateFeedEpochAdvance(run, existingLedger) {
   const adapterId = run.plan.sourceContract.sourcePolicyId;
   const observedAt = run.plan.observedAt;
   const rawPayloadSha256 = run.records[0]?.rawObject?.sha256;
-  const priorSameBytes = existingLedger.collectionAttempts.find((attempt) => (
+  const priorSameBytes = existingLedger.collectionAttempts.filter((attempt) => (
     attempt.adapterId === adapterId
       && attempt.rawPayloadSha256 === rawPayloadSha256
       && attempt.observedAt !== observedAt
   ));
-  if (priorSameBytes) {
+  if (priorSameBytes.length === 0) return;
+  const receipt = run.records[0]?.rawObject?.acquisitionReceipt;
+  if (!receipt) {
     throw new Error(
       'identical affiliate feed source bytes cannot advance freshness without a distinct verified acquisition receipt',
     );
+  }
+  if (priorSameBytes.some((attempt) => attempt.acquisitionReceiptSha256 === receipt.semanticSha256)
+    || priorSameBytes.some((attempt) => new Date(attempt.observedAt) >= new Date(observedAt))) {
+    throw new Error('affiliate feed acquisition receipt is reused or does not advance source time');
   }
 }
 

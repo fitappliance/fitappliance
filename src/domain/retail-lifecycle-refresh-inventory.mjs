@@ -72,11 +72,11 @@ function executionDisposition(tasks) {
 }
 
 function itemExecutionDisposition(sourceTasks, resolutionTasks) {
-  if (sourceTasks.length > 0) return executionDisposition(sourceTasks);
   if (resolutionTasks.length === 1
     && resolutionTasks[0].executionState === 'REQUIRES_DISCOVERY_PIPELINE') {
     return 'REQUIRES_EXACT_MODEL_REDISCOVERY';
   }
+  if (sourceTasks.length > 0) return executionDisposition(sourceTasks);
   throw new Error('unresolved product has no safe execution disposition');
 }
 
@@ -120,9 +120,6 @@ export function validateRetailLifecycleRefreshInventory(document) {
     if (item.sourceTasks.length + resolutionTasks.length === 0) {
       throw new TypeError(`refresh item missing executable or resolution task: ${item.canonicalProductId}`);
     }
-    if (item.sourceTasks.length > 0 && resolutionTasks.length > 0) {
-      throw new TypeError(`refresh item cannot mix source and resolution tasks: ${item.canonicalProductId}`);
-    }
     const taskIds = item.sourceTasks.map((task) => required(task.baselineLinkId, 'refresh baseline link ID'));
     if (new Set(taskIds).size !== taskIds.length
       || taskIds.some((id, index) => index > 0 && taskIds[index - 1].localeCompare(id) > 0)) {
@@ -133,7 +130,8 @@ export function validateRetailLifecycleRefreshInventory(document) {
         throw new TypeError(`unsupported refresh execution state: ${task.executionState}`);
       }
       if (task.terminalObservationState !== 'LEGACY_UNKNOWN'
-        && !['TYPED_UNKNOWN', 'TYPED_CONFLICT', 'TYPED_REDIRECTED', 'TYPED_POLICY_EXCLUDED']
+        && !['TYPED_UNKNOWN', 'TYPED_CONFLICT', 'TYPED_REDIRECTED', 'TYPED_POLICY_EXCLUDED',
+          'SOURCE_ABSENT_IN_AUTHORIZED_FEED']
           .includes(task.terminalObservationState)) {
         throw new TypeError(`resolved retailer task cannot enter refresh inventory: ${task.baselineLinkId}`);
       }
@@ -269,7 +267,7 @@ export function buildRetailLifecycleRefreshInventory({
       .sort((left, right) => left.baselineLinkId.localeCompare(right.baselineLinkId));
     const quarantinedSources = (mismatchesByProduct.get(canonicalProductId) ?? [])
       .sort((left, right) => left.baselineLinkId.localeCompare(right.baselineLinkId));
-    const resolutionTasks = sourceTasks.length > 0 ? [] : quarantinedSources.length > 0 ? [{
+    const resolutionTasks = quarantinedSources.length > 0 ? [{
       resolutionTaskId: `retail_resolution_${canonicalSha256({
         canonicalProductId,
         quarantinedBaselineLinkIds: quarantinedSources.map((source) => source.baselineLinkId),

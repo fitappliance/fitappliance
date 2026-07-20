@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "policyVersion": "retail-lifecycle-refresh-inventory-v2",
-  "releaseEpoch": "retail-lifecycle-shadow-2026-07-20-04-safety",
-  "asOf": "2026-07-20T17:37:00.000Z",
+  "releaseEpoch": "retail-lifecycle-shadow-2026-07-20-ledger-4763ee99c574",
+  "asOf": "2026-07-20T19:43:11.969Z",
   "sourceBindings": {
-    "shadowSha256": "53005c89a8c2f68c8d994905028afff7727cdbad17c16be53737241f5d7f2247",
-    "shadowSemanticSha256": "508c1ed4e6a3420187bce56a88b55bd91e7ad6a9a5c1c0e4b7274ac6e83ca011",
-    "coverageSha256": "4eaac5a508ee8e91fdba5b9debe988cbdbe31cc776d6256d22ad03b3f24b47a3",
-    "coverageSemanticSha256": "c11e11e5be100a833734dde1c9aacf7c0c0da1ee644a389ed1e59f99a560de63"
+    "shadowSha256": "523e562a00ef8d44ab55a4b84af70d515aec259d8c3183e3ae82bad5f5382eb9",
+    "shadowSemanticSha256": "5bbd42436744997f4c4f1c9571d9dcd1d85f758d60eb7e89596fb655d661effd",
+    "coverageSha256": "3c837943b9bde5f548c38ff8ca2fb6a45ccb25f368c88f646eccbd308a2e8185",
+    "coverageSemanticSha256": "186e18286c9c28cc0ea89ca89d63a8d87e6113c5ef957212d1b6a3dc3136fec8"
   },
   "items": [
     {
@@ -63,7 +63,7 @@
       "brand": "Bosch",
       "model": "WGG24402AU",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_b9a95f5ae2c5590d05d79bda",
@@ -71,10 +71,10 @@
           "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg24402au",
           "originSource": "partnerize-feed",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         }
       ],
       "resolutionTasks": []
@@ -86,7 +86,7 @@
       "brand": "Samsung",
       "model": "WW12BB944DGB",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_1aa135e4efa74bfe395ad989",
@@ -105,10 +105,10 @@
           "url": "https://www.thegoodguys.com.au/samsung-bespoke-12kg-front-load-washer-ww12bb944dgb",
           "originSource": "sitemap",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         }
       ],
       "resolutionTasks": []
@@ -120,7 +120,7 @@
       "brand": "Bosch",
       "model": "WAN24126AU",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_650f089f5c8d281b3a113833",
@@ -128,10 +128,10 @@
           "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wan24126au",
           "originSource": "sitemap",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         },
         {
           "baselineLinkId": "retail_link_c9d2df6880af1402087759b2",
@@ -223,7 +223,7 @@
       "brand": "Fisher & Paykel",
       "model": "DH9060HG1",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_c8bd99b3b242e4e98672ce3a",
@@ -231,10 +231,10 @@
           "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060hg1",
           "originSource": "sitemap",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         }
       ],
       "resolutionTasks": []
@@ -282,21 +282,34 @@
       "brand": "LG",
       "model": "1910FGX",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
-      "sourceTasks": [
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "sourceTasks": [],
+      "resolutionTasks": [
         {
-          "baselineLinkId": "retail_link_445fbe05488583428292dd5e",
-          "retailer": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
-          "originSource": "sitemap",
-          "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "resolutionTaskId": "retail_resolution_0316aebf325e57640e08b749",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "washtower_combo",
+            "brand": "LG",
+            "model": "1910FGX"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_445fbe05488583428292dd5e"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_445fbe05488583428292dd5e",
+              "retailer": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
+              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+              "receivedModel": "WWT-1910FGX",
+              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
+            }
+          ]
         }
-      ],
-      "resolutionTasks": []
+      ]
     },
     {
       "canonicalProductId": "fa_prod_3861be7a22570ffc464f7378",
@@ -328,7 +341,7 @@
       "brand": "Bosch",
       "model": "KFI96AXEAA",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_8cb2111786b10b60b6362fe3",
@@ -336,10 +349,10 @@
           "url": "https://www.thegoodguys.com.au/bosch-574l-quad-door-refrigerator-kfi96axeaa",
           "originSource": "partnerize-feed",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         }
       ],
       "resolutionTasks": []
@@ -431,7 +444,7 @@
       "brand": "Fisher & Paykel",
       "model": "RF522ADX6",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_61caf6af01187f78a0bdf089",
@@ -445,7 +458,32 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_ab9b3b85e8c620cf2a6aff7a",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Fisher & Paykel",
+            "model": "RF522ADX6"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_54dabcb81a7aad73f6a80bf2"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_54dabcb81a7aad73f6a80bf2",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/fisher-paykel-rf522adux5-519l-activesmart-french-door-fridge/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "RF522ADUX5",
+              "rawSourceSha256": "80806d3bd66d2bf35ca91bf75e4f2a38f6da4843c89d999b8c82d2fa5f7a7a1f"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_46e2308662e7cea9d75826d1",
@@ -477,7 +515,7 @@
       "brand": "CHIQ",
       "model": "CRSR088DW",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_07ea0fad78b46ecfb2cd5fe4",
@@ -491,7 +529,32 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_5bcb63b8ebc2b87b11f6e11f",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "CHIQ",
+            "model": "CRSR088DW"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_65f26ea70eff44308526c3c9"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_65f26ea70eff44308526c3c9",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/chiq-90l-retro-bar-fridge-red-crsr089dr1/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "CRSR089DR1",
+              "rawSourceSha256": "28a17254602ece933ed093b447e8b4cfec9cde001cede693a959f8a921c64456"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_49481a0226b78e0f7d8e1c3c",
@@ -500,19 +563,8 @@
       "brand": "LG",
       "model": "GF-B505BB",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
-        {
-          "baselineLinkId": "retail_link_a3cf38d04073fd1cadb2de47",
-          "retailer": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/lg-530l-french-door-refrigerator-gf-b505mbl",
-          "originSource": "websearch-the-good-guys",
-          "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
-        },
         {
           "baselineLinkId": "retail_link_d47302044fba1285b3459474",
           "retailer": "JB Hi-Fi",
@@ -525,7 +577,41 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_d7d8fdf082df847a28fd0ddb",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "LG",
+            "model": "GF-B505BB"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_1733635c1f742b6b4ecd55d4",
+            "retail_link_a3cf38d04073fd1cadb2de47"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_1733635c1f742b6b4ecd55d4",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/lg-530l-french-door-fridge-stainless-stteel-gf-b505pl/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "GF-B505PL",
+              "rawSourceSha256": "82de919e66a77df013604e10a0dd95fdf13a1bb0ceea962ab1da56092268f8b1"
+            },
+            {
+              "baselineLinkId": "retail_link_a3cf38d04073fd1cadb2de47",
+              "retailer": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/lg-530l-french-door-refrigerator-gf-b505mbl",
+              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+              "receivedModel": "GF-B505MBL",
+              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_4ad2fa1ed239da6ebfbacee7",
@@ -626,7 +712,7 @@
       "brand": "Fisher & Paykel",
       "model": "WH8060J3",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_ac354afdb4aee6c2258a1d38",
@@ -645,10 +731,10 @@
           "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-front-load-washer-wh8060j3",
           "originSource": "partnerize-feed",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         }
       ],
       "resolutionTasks": []
@@ -660,7 +746,7 @@
       "brand": "Haier",
       "model": "HRF130UW",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_be9945d2771ce0d1884d5b3e",
@@ -674,7 +760,32 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_76128aa9f3fd0dc7bad74976",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Haier",
+            "model": "HRF130UW"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_7650808c2033fd93c7b9a526"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_7650808c2033fd93c7b9a526",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/haier-300-series-129l-bar-fridge-black-hrf130ug2/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "HRF130UG2",
+              "rawSourceSha256": "0c3918dcc2cfca75d838bf1249fba4c47594671d2c9f904012013800fc11114b"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_56b24b1e2ec999831a774780",
@@ -706,7 +817,7 @@
       "brand": "Hisense",
       "model": "HWFS1015E",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_d8f04a7485de4d31d7a9a146",
@@ -725,10 +836,10 @@
           "url": "https://www.thegoodguys.com.au/hisense-10kg-front-load-washer-hwfs1015e",
           "originSource": "websearch-the-good-guys",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         }
       ],
       "resolutionTasks": []
@@ -740,7 +851,7 @@
       "brand": "Fisher & Paykel",
       "model": "DH9060PG2",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_6e4b140d5435e7f90845177a",
@@ -748,10 +859,10 @@
           "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060pg2",
           "originSource": "sitemap",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         },
         {
           "baselineLinkId": "retail_link_bfbafb0f44057a56ee7b9931",
@@ -774,7 +885,7 @@
       "brand": "Westinghouse",
       "model": "WBB3100AK",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_01d47f1eecb755356315c6df",
@@ -799,7 +910,32 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_d05ea1a30c6320e6cb2a6c4a",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Westinghouse",
+            "model": "WBB3100AK"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_945a2a727616a6bde23662cf"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_945a2a727616a6bde23662cf",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/westinghouse-308l-bottom-mount-fridge-white-wbb3100wk/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "WBB3100WK",
+              "rawSourceSha256": "dd3a1c5880838c319b6f20ea689dec12847320b60339a0942d9014e02b66b929"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_61360487e3f03d0d93145f05",
@@ -808,7 +944,7 @@
       "brand": "Bosch",
       "model": "SBV8ECX01A",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_9374e823e8bfbf1c1d9b317a",
@@ -816,10 +952,10 @@
           "url": "https://www.thegoodguys.com.au/bosch-series-8-60cm-fully-integrated-dishwasher-tall-tub-sbv8ecx01a",
           "originSource": "partnerize-feed",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         }
       ],
       "resolutionTasks": []
@@ -877,7 +1013,7 @@
       "brand": "Haier",
       "model": "HRF420BHS",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_3d61cb02ebc053e5e2d5e0f2",
@@ -891,7 +1027,32 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_f98bdf55114c143a8527ed3c",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Haier",
+            "model": "HRF420BHS"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_10fe1faa140aaaa7910af16e"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_10fe1faa140aaaa7910af16e",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/haier-433l-bottom-mount-refrigerator-black-hrf420bec/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "HRF420BEC",
+              "rawSourceSha256": "00a0fe15627d288ff073a0bc469edef3cf43d04e16c9e8627dfdeb4e84ba0058"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_6b38e40353b20b2870b4ce04",
@@ -923,19 +1084,8 @@
       "brand": "CHIQ",
       "model": "CTM202NW",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
-        {
-          "baselineLinkId": "retail_link_668a0c2034ea527c1b71d362",
-          "retailer": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/chiq-202l-top-mount-refrigerator-ctm202nw3",
-          "originSource": "websearch-the-good-guys",
-          "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
-        },
         {
           "baselineLinkId": "retail_link_82c0212411ba520f3f9dfc0a",
           "retailer": "JB Hi-Fi",
@@ -970,7 +1120,41 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_53ef16b233e898f5559ab5a7",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "CHIQ",
+            "model": "CTM202NW"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_28c476154978a439150af56e",
+            "retail_link_668a0c2034ea527c1b71d362"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_28c476154978a439150af56e",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/chiq-202l-top-mount-fridge-white-ctm202nw3/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "CTM202NW3",
+              "rawSourceSha256": "693ee75073babec7b2184ecf442febe4b06e9a825af7a648221028e99cf30306"
+            },
+            {
+              "baselineLinkId": "retail_link_668a0c2034ea527c1b71d362",
+              "retailer": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/chiq-202l-top-mount-refrigerator-ctm202nw3",
+              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+              "receivedModel": "CTM202NW3",
+              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_6c3b2c524241c7e9a710b57f",
@@ -1025,7 +1209,7 @@
       "brand": "Haier",
       "model": "HRF520BHS French Door 520L",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_77cedd1e68130607337bfe2d",
@@ -1039,7 +1223,32 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_f38a69995df6884a8ae7cef2",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Haier",
+            "model": "HRF520BHS French Door 520L"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_07e45482f34191845d62fdb5"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_07e45482f34191845d62fdb5",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/haier-hrf520bhs-514l-bottom-mount-fridge/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "HRF520BHS",
+              "rawSourceSha256": "97f8a0801f76f987d074825c794c310bacadbc8ac4b02d12257f5dcdf1606340"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_71d51868b1d29e94aaaaf24d",
@@ -1105,7 +1314,7 @@
       "brand": "Westinghouse",
       "model": "WBE4302WC",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_d2a96fd42c254b886ca4dd23",
@@ -1119,7 +1328,32 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_432fa9672be78073527940ce",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Westinghouse",
+            "model": "WBE4302WC"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_600a22968c1eed41e8df89f3"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_600a22968c1eed41e8df89f3",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/westinghouse-425l-bottom-mount-fridge-silver-wbe4302acr/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "WBE4302ACR",
+              "rawSourceSha256": "a41fe1f397314b56b7095954f4bb7511608031ab66b269edacdf5ab883cfe99d"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_77b7cf1a45cf87e3f8996fec",
@@ -1185,7 +1419,7 @@
       "brand": "Fisher & Paykel",
       "model": "WH1060SG1",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_1ff0e8844a8b2f1b91438bab",
@@ -1193,10 +1427,10 @@
           "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060sg1",
           "originSource": "partnerize-feed",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         }
       ],
       "resolutionTasks": []
@@ -1208,7 +1442,7 @@
       "brand": "LG",
       "model": "WV9-1412W",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_c8b4bfcd81900fe237fcc03d",
@@ -1227,10 +1461,10 @@
           "url": "https://www.thegoodguys.com.au/lg-12kg-front-load-washer-wv9-1412w",
           "originSource": "partnerize-feed",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         },
         {
           "baselineLinkId": "retail_link_f53793ef01e409e0cc6d04bc",
@@ -1253,7 +1487,7 @@
       "brand": "Samsung",
       "model": "WW90DG6U34LE",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_01b3377dd82b96e5611ef4f0",
@@ -1272,10 +1506,10 @@
           "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u34le",
           "originSource": "sitemap",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         }
       ],
       "resolutionTasks": []
@@ -1310,7 +1544,7 @@
       "brand": "Westinghouse",
       "model": "WQE6000BB",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_51308d91605a304abc3e460f",
@@ -1335,7 +1569,32 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_60e350a2ff72837f002ff89d",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Westinghouse",
+            "model": "WQE6000BB"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_bd635e094915adab3c137132"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_bd635e094915adab3c137132",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/westinghouse-600l-french-door-fridge-wqe6000sb/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "WQE6000SB",
+              "rawSourceSha256": "e4f1f8f9eec38c98cd13a165911d67bea9d9bbdd4b7a863d87b8a2e5e657a709"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_8dd1c56ffb418b190e22ecaf",
@@ -1344,7 +1603,7 @@
       "brand": "Fisher & Paykel",
       "model": "WH1060P4",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_b804a7ae5e68a0be11b46243",
@@ -1363,10 +1622,10 @@
           "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060p4",
           "originSource": "partnerize-feed",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         }
       ],
       "resolutionTasks": []
@@ -1424,7 +1683,7 @@
       "brand": "Fisher & Paykel",
       "model": "DH8060P3",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_6b3d4ab29d00f83e774eb4dc",
@@ -1432,10 +1691,10 @@
           "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-heat-pump-dryer-dh8060p3",
           "originSource": "sitemap",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         },
         {
           "baselineLinkId": "retail_link_ab21fc44eaba0e976390d6e5",
@@ -1458,7 +1717,7 @@
       "brand": "Bosch",
       "model": "WTH83002AU",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_326993c47d02748d898ed4d8",
@@ -1466,10 +1725,10 @@
           "url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wth83002au",
           "originSource": "sitemap",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         },
         {
           "baselineLinkId": "retail_link_e3eda24c806b38a2e790c5ff",
@@ -1607,19 +1866,8 @@
       "brand": "Fisher & Paykel",
       "model": "RF730QZUVX1 French Door 726L",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
-        {
-          "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
-          "retailer": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
-          "originSource": "websearch-the-good-guys",
-          "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
-        },
         {
           "baselineLinkId": "retail_link_73d975163984d6f01f6dbe64",
           "retailer": "JB Hi-Fi",
@@ -1643,7 +1891,41 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Fisher & Paykel",
+            "model": "RF730QZUVX1 French Door 726L"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_233a887b6f4f2956f70ddb4b",
+            "retail_link_519e6530a163ff49992e0e39"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
+              "retailer": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
+              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+              "receivedModel": "RF730QZUVB1",
+              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
+            },
+            {
+              "baselineLinkId": "retail_link_519e6530a163ff49992e0e39",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/fisher-paykel-690l-freestanding-quad-door-fridge-freezer-ice-water-rf730qzuvb1/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "RF730QZUVB1",
+              "rawSourceSha256": "8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_afb829c199c02ba7668e16a4",
@@ -1698,7 +1980,7 @@
       "brand": "Westinghouse",
       "model": "WBE5300WC",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_4fb29498ee798406f5394743",
@@ -1723,7 +2005,32 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_582a1016f738172e2612d5f1",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Westinghouse",
+            "model": "WBE5300WC"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_8d7ebf0556fe7391f2ee8b6d"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_8d7ebf0556fe7391f2ee8b6d",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/westinghouse-528l-bottom-mount-fridge-right-hinge-stainless-steel-wbe5304sc-r/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "WBE5304SC-R",
+              "rawSourceSha256": "2038752b5a0f57b8695ab54c340b0d1ea317fe2fa65508e5318235382623e00c"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_c807bcb91f4565d29547584a",
@@ -1858,7 +2165,7 @@
       "brand": "Westinghouse",
       "model": "WSE6640SA",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_b82a4ac2e777b7f596e10b67",
@@ -1872,7 +2179,32 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_933c3a7734d6c2259d384afa",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Westinghouse",
+            "model": "WSE6640SA"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_01d2ab6ed14c8e14398a3858"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_01d2ab6ed14c8e14398a3858",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/westinghouse-619l-side-by-side-fridge-wse6640ba/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "WSE6640BA",
+              "rawSourceSha256": "f73077eb9d47e46044971fef05ce24861a7f663490dd077d098b3aacaeeb1d8e"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_e27f3965572485b098b7d289",
@@ -1961,7 +2293,7 @@
       "brand": "LG",
       "model": "DVH5-08W",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_833a9dff691efff550b04846",
@@ -1980,10 +2312,10 @@
           "url": "https://www.thegoodguys.com.au/lg-8kg-heat-pump-dryer-dvh5-08w",
           "originSource": "partnerize-feed",
           "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "terminalObservationState": "SOURCE_ABSENT_IN_AUTHORIZED_FEED",
+          "action": "COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE",
+          "executionState": "BLOCKED_BY_SOURCE_POLICY",
+          "collectionMode": "alternate_authorized_source_required"
         },
         {
           "baselineLinkId": "retail_link_9a9d4adcc45f5db8f925c273",
@@ -2040,7 +2372,7 @@
       "brand": "CHIQ",
       "model": "CBM394NSS",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_572e9686e0cb33922a530541",
@@ -2052,20 +2384,43 @@
           "action": "PAGE_REVALIDATION_POLICY_BLOCKED",
           "executionState": "BLOCKED_BY_SOURCE_POLICY",
           "collectionMode": "public_product_pages_pending_terms_review"
-        },
-        {
-          "baselineLinkId": "retail_link_fd6baded2b779ec33fad52af",
-          "retailer": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/chiq-396l-bottom-mount-refrigerator-cbm393nb3",
-          "originSource": "websearch-the-good-guys",
-          "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_e577b4216f413b6e194e53d5",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "CHIQ",
+            "model": "CBM394NSS"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_7a0cb41d30ca0f5a97dcca5f",
+            "retail_link_fd6baded2b779ec33fad52af"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_7a0cb41d30ca0f5a97dcca5f",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/chiq-396l-bottom-mount-fridge-black-cbm393nb/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "CBM393NB",
+              "rawSourceSha256": "74c3123b6019d75e4deac06b833ad60d75741c5d7b0e902d475172be4ffd25d0"
+            },
+            {
+              "baselineLinkId": "retail_link_fd6baded2b779ec33fad52af",
+              "retailer": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/chiq-396l-bottom-mount-refrigerator-cbm393nb3",
+              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+              "receivedModel": "CBM393NB3",
+              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_f085012846431d05125c52a6",
@@ -2120,7 +2475,7 @@
       "brand": "Haier",
       "model": "HRF505VW",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_6ad4186db74821a8542d54e8",
@@ -2156,7 +2511,32 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [
+        {
+          "resolutionTaskId": "retail_resolution_a1140e77d7492d402dc2400c",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "fridge",
+            "brand": "Haier",
+            "model": "HRF505VW"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_3126b05b2c3db9a783d3d7dd"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_3126b05b2c3db9a783d3d7dd",
+              "retailer": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/haier-505l-vertical-refrigerator-hrf505vs/",
+              "reasonCode": "AO_MODEL_MISMATCH",
+              "receivedModel": "HRF505VS",
+              "rawSourceSha256": "3b9e613357b0be1ec990076a6cb6cd6c85674148f3b8f0f18f58295ff72ce67a"
+            }
+          ]
+        }
+      ]
     },
     {
       "canonicalProductId": "fa_prod_f55fe3c8aff7542409f950de",
@@ -2188,21 +2568,34 @@
       "brand": "LG",
       "model": "1910BX",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "RUNNABLE_AUTHORIZED_SOURCE",
-      "sourceTasks": [
+      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "sourceTasks": [],
+      "resolutionTasks": [
         {
-          "baselineLinkId": "retail_link_aa99e757908199d54ccd08f2",
-          "retailer": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
-          "originSource": "sitemap",
-          "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "REPLAY_PARTNERIZE_FEED",
-          "executionState": "RUNNABLE_AUTHORIZED_SOURCE",
-          "collectionMode": "partnerize_feed_only"
+          "resolutionTaskId": "retail_resolution_2e33de9112e46e5744f1f206",
+          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
+          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
+          "expectedIdentity": {
+            "category": "washtower_combo",
+            "brand": "LG",
+            "model": "1910BX"
+          },
+          "quarantinedBaselineLinkIds": [
+            "retail_link_aa99e757908199d54ccd08f2"
+          ],
+          "quarantinedSources": [
+            {
+              "baselineLinkId": "retail_link_aa99e757908199d54ccd08f2",
+              "retailer": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
+              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
+              "receivedModel": "WWT-1910BX",
+              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
+            }
+          ]
         }
-      ],
-      "resolutionTasks": []
+      ]
     },
     {
       "canonicalProductId": "fa_prod_f75dc6941713a46c1f856088",
@@ -2230,21 +2623,19 @@
   ],
   "summary": {
     "products": 81,
-    "listings": 111,
+    "listings": 105,
     "byExecutionDisposition": {
-      "BLOCKED_BY_SOURCE_POLICY": 58,
-      "REQUIRES_EXACT_MODEL_REDISCOVERY": 1,
-      "RUNNABLE_AUTHORIZED_SOURCE": 22
+      "BLOCKED_BY_SOURCE_POLICY": 63,
+      "REQUIRES_EXACT_MODEL_REDISCOVERY": 18
     },
     "bySourceExecutionState": {
-      "BLOCKED_BY_SOURCE_POLICY": 89,
-      "RUNNABLE_AUTHORIZED_SOURCE": 22
+      "BLOCKED_BY_SOURCE_POLICY": 105
     },
-    "resolutionTasks": 1,
+    "resolutionTasks": 18,
     "byResolutionExecutionState": {
-      "REQUIRES_DISCOVERY_PIPELINE": 1
+      "REQUIRES_DISCOVERY_PIPELINE": 18
     }
   },
-  "inventoryId": "retail_lifecycle_refresh_c2d7dcb139e448f654417595",
-  "semanticSha256": "c2d7dcb139e448f6544175959e5082bd3563f39f2bf53b3b4d7efff1ef614387"
+  "inventoryId": "retail_lifecycle_refresh_35f07110d6b17b1835865228",
+  "semanticSha256": "35f07110d6b17b1835865228284df42c589e560ec542b9f04d44cb2e7e2f77ed"
 }
