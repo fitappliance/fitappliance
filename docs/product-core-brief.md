@@ -11,6 +11,11 @@ the Architecture V2 acceptance and remediation documents for implementation
 detail. Time-sensitive counts and provider capabilities must be re-verified
 before use.
 
+The active cross-cutting workflow-repair authority is the
+[FitAppliance System-First Repair Control Plan](superpowers/plans/2026-07-20-fitappliance-system-first-repair-control-plan.md).
+Earlier phase and scale plans remain implementation history unless that control
+plan explicitly delegates work back to them.
+
 ## 1. Product Problem and Commercial Model
 
 Australian appliance retailers generally optimise product discovery around

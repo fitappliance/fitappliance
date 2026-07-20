@@ -1,8 +1,10 @@
 # Architecture V2 Remediation Master Plan
 
-Status: active  
-Last updated: 2026-07-12
-Decision owner: FitAppliance repository  
+Status: strategic migration baseline; active cross-cutting execution is
+controlled by the
+[`2026-07-20 system-first repair plan`](../superpowers/plans/2026-07-20-fitappliance-system-first-repair-control-plan.md)
+Last updated: 2026-07-20
+Decision owner: FitAppliance repository
 Audit baseline: [`repository-architecture-audit.md`](./repository-architecture-audit.md)
 Canonical product/data strategy: [`../product-core-brief.md`](../product-core-brief.md)
 
