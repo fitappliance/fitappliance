@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "profiles": [
+    {
+      "parserProfileId": "esatto-au-dishwasher-technical-information-d1-d2-v1",
+      "familyId": "document_family_e88b72e286e12c6f83981f4d",
+      "cases": [
+        {
+          "caseId": "source-edw456s-user-manual-page-24",
+          "expectation": "ACCEPT",
+          "derivation": "SOURCE_FRAGMENT",
+          "source": {
+            "pdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+            "contentSha256": "f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b",
+            "page": 24,
+            "fragmentSha256": "e1367605f353e447530019f66a022eb79951ead6bc96708ceb5f5e826663c365",
+            "fragmentType": "table",
+            "bbox": [122, 501, 537, 577]
+          },
+          "sourceUrls": [
+            "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+            "https://static1.squarespace.com/static/example/EDW456S_UserManual_V2.1+0523.pdf"
+          ],
+          "identity": {
+            "category": "dishwasher",
+            "brand": "Esatto",
+            "model": "EDW456S"
+          },
+          "semanticContext": {
+            "axisOrder": ["height", "width", "depth"],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "EXACT_COVER_AND_SAME_PAGE_MODEL"
+          },
+          "expectedClaims": [
+            { "field": "closedEnvelope.widthMm", "mm": 448 },
+            { "field": "closedEnvelope.heightMm", "mm": 845 },
+            { "field": "closedEnvelope.depthMm", "mm": 600 }
+          ],
+          "rejectedSemantics": [
+            "Depth D2 1150 mm is the 90-degree door-open operation envelope, not closed product depth"
+          ],
+          "contentList": [
+            [
+              {
+                "type": "title",
+                "content": { "title_content": [{ "type": "text", "content": "Everything you need for your 45cm Compact Freestanding Dishwasher is in this User Manual" }], "level": 2 },
+                "bbox": [80, 238, 864, 448]
+              },
+              {
+                "type": "page_header",
+                "content": { "page_header_content": [{ "type": "text", "content": "Model/s EDW456S" }] },
+                "bbox": [82, 60, 231, 112]
+              }
+            ],
+            [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [],
+            [
+              {
+                "type": "title",
+                "content": { "title_content": [{ "type": "text", "content": "Technical Information" }], "level": 2 },
+                "bbox": [109, 121, 569, 155]
+              },
+              {
+                "type": "title",
+                "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 },
+                "bbox": [106, 176, 218, 191]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": { "path": "images/6b5efe79afe3b58d10b682165f4ad62725c6cd7ecef74098b3910cd1e39cf30b.jpg" },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>Height (H)</td><td rowspan=1 colspan=1>845mm</td></tr><tr><td rowspan=1 colspan=1>Width (W)</td><td rowspan=1 colspan=1>448mm</td></tr><tr><td rowspan=1 colspan=1>Depth (D1)</td><td rowspan=1 colspan=1>600mm (with the door closed)</td></tr><tr><td rowspan=1 colspan=1>Depth (D2)</td><td rowspan=1 colspan=1>1150mm (with the door opened 90°)</td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [122, 501, 537, 577]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "45cm Freestanding Dishwasher Model: EDW456S" }] },
+                "bbox": [122, 668, 292, 693]
+              }
+            ]
+          ]
+        },
+        {
+          "caseId": "reject-sibling-technical-page-model",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": {
+            "pdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+            "contentSha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "page": 2,
+            "fragmentSha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "fragmentType": "table",
+            "bbox": [122, 501, 537, 577]
+          },
+          "sourceUrls": ["https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf"],
+          "identity": {
+            "category": "dishwasher",
+            "brand": "Esatto",
+            "model": "EDW456S"
+          },
+          "semanticContext": {
+            "axisOrder": ["height", "width", "depth"],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "EXACT_COVER_AND_SAME_PAGE_MODEL"
+          },
+          "expectedClaims": [],
+          "rejectedSemantics": ["A sibling rating-label model cannot donate the technical dimension table"],
+          "contentList": [
+            [
+              {
+                "type": "page_header",
+                "content": { "page_header_content": [{ "type": "text", "content": "Model/s EDW456S" }] },
+                "bbox": [82, 60, 231, 112]
+              }
+            ],
+            [
+              {
+                "type": "title",
+                "content": { "title_content": [{ "type": "text", "content": "Technical Information" }], "level": 2 },
+                "bbox": [109, 121, 569, 155]
+              },
+              {
+                "type": "title",
+                "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 },
+                "bbox": [106, 176, 218, 191]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td>Height (H)</td><td>845mm</td></tr><tr><td>Width (W)</td><td>448mm</td></tr><tr><td>Depth (D1)</td><td>600mm (with the door closed)</td></tr><tr><td>Depth (D2)</td><td>1150mm (with the door opened 90°)</td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [122, 501, 537, 577]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "45cm Freestanding Dishwasher Model: EDW456S2" }] },
+                "bbox": [122, 668, 292, 693]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

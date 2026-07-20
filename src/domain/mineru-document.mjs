@@ -618,6 +618,8 @@ const LG_AU_DRYER_DIMENSION_DIAGRAM_GRAMMAR =
   'lg-au-dryer-dimension-diagram-v1';
 const ELECTROLUX_AU_WASHER_PRODUCT_TOTAL_DEPTH_GRAMMAR =
   'electrolux-au-washer-product-total-depth-v1';
+const ESATTO_AU_DISHWASHER_TECHNICAL_D1_D2_GRAMMAR =
+  'esatto-au-dishwasher-technical-information-d1-d2-v1';
 const LG_AU_DRYER_DIMENSION_DIAGRAM_MODELS = Object.freeze({
   '22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957': Object.freeze([
     'DVH1-08WP',
@@ -3006,6 +3008,89 @@ function electroluxAuWasherProductDimensionScope(document, caseIdentity) {
   };
 }
 
+function esattoAuDishwasherTechnicalDimensionScope(document, caseIdentity, sourceUrls) {
+  if (canonicalModel(caseIdentity?.brand) !== 'ESATTO'
+    || normalizedText(caseIdentity?.category) !== 'dishwasher') return null;
+  const model = normalizedText(caseIdentity?.model);
+  const exactDocumentUrl = exactModelSourceUrl(sourceUrls, model);
+  if (!/^EDW[A-Z0-9-]{3,}$/i.test(model) || !exactDocumentUrl
+    || siblingModelCandidates(document, model).length > 0) return null;
+
+  const coverFragments = (document.pages[0] ?? []).filter((fragment) => (
+    fragment.type === 'page_header'
+      && new RegExp(`^Model\\s*\\/s\\s+${escapeRegExp(model)}$`, 'i').test(fragment.text)
+  ));
+  if (coverFragments.length !== 1) return null;
+
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    const technicalTitles = items.filter((fragment) => (
+      fragment.type === 'title' && /^Technical Information$/i.test(fragment.text)
+    ));
+    const dimensionTitles = items.filter((fragment) => (
+      fragment.type === 'title' && /^Dimensions$/i.test(fragment.text)
+    ));
+    const identityFragments = items.filter((fragment) => (
+      fragment.type === 'paragraph'
+        && new RegExp(
+          `^45cm\\s+Freestanding\\s+Dishwasher\\s+Model\\s*:\\s*${escapeRegExp(model)}$`,
+          'i',
+        ).test(fragment.text)
+    ));
+    if (technicalTitles.length !== 1 || dimensionTitles.length !== 1
+      || identityFragments.length !== 1) return;
+
+    const titleIndex = items.indexOf(technicalTitles[0]);
+    const dimensionIndex = items.indexOf(dimensionTitles[0]);
+    const identityIndex = items.indexOf(identityFragments[0]);
+    const candidateTables = items.filter((fragment, index) => (
+      fragment.type === 'table' && index > dimensionIndex && index < identityIndex
+    ));
+    if (!(titleIndex < dimensionIndex) || candidateTables.length !== 1) return;
+    const fragment = candidateTables[0];
+    const cells = fragment.cells.map((row) => row.map(normalizedText));
+    if (cells.length !== 4 || cells.some((row) => row.length !== 2)) return;
+
+    const expectedLabels = ['Height (H)', 'Width (W)', 'Depth (D1)', 'Depth (D2)'];
+    if (cells.some((row, index) => row[0] !== expectedLabels[index])) return;
+    const height = /^(\d+)\s*mm$/i.exec(cells[0][1]);
+    const width = /^(\d+)\s*mm$/i.exec(cells[1][1]);
+    const closedDepth = /^(\d+)\s*mm\s*\(with the door closed\)$/i.exec(cells[2][1]);
+    const doorOpenDepth = /^(\d+)\s*mm\s*\(with the door opened 90(?:\s*°|\s*degrees?)\)$/i.exec(cells[3][1]);
+    if (!height || !width || !closedDepth || !doorOpenDepth) return;
+    const values = [height, width, closedDepth, doorOpenDepth].map((match) => Number(match[1]));
+    if (values.some((value) => !Number.isInteger(value) || value <= 0)
+      || values[3] <= values[2]) return;
+
+    const axisOrder = ['height', 'width', 'depth'];
+    matches.push({
+      exactDocumentUrl,
+      coverFragment: coverFragments[0],
+      identityFragment: identityFragments[0],
+      fragment,
+      page: pageIndex + 1,
+      doorOpenDepthMm: values[3],
+      rows: [
+        ['Height (H)', values[0], 'height', cells[0][1]],
+        ['Width (W)', values[1], 'width', cells[1][1]],
+        ['Depth (D1)', values[2], 'depth', cells[2][1]],
+      ].map(([label, value, axis, sourceValue]) => ({
+        label,
+        value: `${value} mm`,
+        quote: `${label} ${sourceValue}`,
+        semanticBasis: 'esatto_edw_explicit_closed_dimension',
+        axisOrder,
+        grammarProfileId: ESATTO_AU_DISHWASHER_TECHNICAL_D1_D2_GRAMMAR,
+        sourceAxis: axis,
+      })),
+    });
+  });
+  return matches.length === 1 ? {
+    ...matches[0],
+    grammarProfileId: ESATTO_AU_DISHWASHER_TECHNICAL_D1_D2_GRAMMAR,
+  } : null;
+}
+
 function lgAuDryerDimensionDiagramScope(document, caseIdentity, pdfSha256) {
   if (canonicalModel(caseIdentity?.brand) !== 'LG'
     || normalizedText(caseIdentity?.category) !== 'dryer') return null;
@@ -3244,6 +3329,17 @@ export const mineruGrammarProfiles = Object.freeze({
     documentType: 'product_specification',
     detectionSummary: 'An exact target model appears in the same-page header above one DIMENSIONS title and its immediately following five-row PRODUCT table. The table must contain unique integer Total height (mm), Total width (mm), Total depth (mm), and Depth with hoses (mm) rows in that exact order.',
     semanticBoundary: 'Only Total height, Total width and Total depth are projected as the closed product envelope. Depth with hoses is a connection envelope and remains unpublished; package, door-open, duplicate, missing, reordered, non-mm and sibling-model variants fail closed without generic parser fallback.',
+  }),
+  [ESATTO_AU_DISHWASHER_TECHNICAL_D1_D2_GRAMMAR]: Object.freeze({
+    parserProfileId: ESATTO_AU_DISHWASHER_TECHNICAL_D1_D2_GRAMMAR,
+    grammarFamilyId: 'esatto_au_edw_dishwasher_technical_information_v1',
+    grammarFamilyName: 'Esatto Australia EDW dishwasher technical information',
+    variantName: 'Exact cover and rating-label model with explicit H/W/D1/D2 table',
+    brand: 'Esatto',
+    category: 'dishwasher',
+    documentType: 'user_manual',
+    detectionSummary: 'An exact-model Esatto EDW manual URL, one exact Model/s cover header, no sibling model, and one Technical Information page containing one Dimensions title, one four-row H/W/D1/D2 millimetre table and the same exact rating-label model.',
+    semanticBoundary: 'Height and width are closed product dimensions; D1 is projected only when explicitly qualified as door closed. D2 must be present and explicitly qualified as door opened 90 degrees, but remains an operation envelope and is never projected as closed depth. Missing, duplicate, conflicting, unitless, sibling, cross-brand and cross-category variants fail closed.',
   }),
   [SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR]: Object.freeze({
     parserProfileId: SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
@@ -4038,6 +4134,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ? electroluxAuWasherProductDimensionScope(document, caseIdentity)
     : { candidateFragments: new Set(), scope: null };
   const electroluxWasherDimensionScope = electroluxWasherDimensions.scope;
+  const esattoDishwasherDimensionScope = claimSemanticsVersion === 2
+    ? esattoAuDishwasherTechnicalDimensionScope(document, caseIdentity, options.sourceUrls)
+    : null;
   const boschDimensionSectionScope = claimSemanticsVersion === 2
     ? boschDishwasherDimensionSectionDocumentScope(document, caseIdentity, options.sourceUrls)
     : null;
@@ -4061,6 +4160,10 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const electroluxWasherDimensionSignals = electroluxWasherDimensionScope ? [{
     type: 'mineru_electrolux_exact_product_dimensions',
     value: `${model}:page:${electroluxWasherDimensionScope.page}:${electroluxWasherDimensionScope.fragment.fragmentSha256}:header:${electroluxWasherDimensionScope.header.fragmentSha256}`,
+  }] : [];
+  const esattoDishwasherDimensionSignals = esattoDishwasherDimensionScope ? [{
+    type: 'mineru_esatto_edw_technical_information_exact_model',
+    value: `${model}:cover:${esattoDishwasherDimensionScope.coverFragment.fragmentSha256}:page:${esattoDishwasherDimensionScope.page}:identity:${esattoDishwasherDimensionScope.identityFragment.fragmentSha256}:dimensions:${esattoDishwasherDimensionScope.fragment.fragmentSha256}:url:${esattoDishwasherDimensionScope.exactDocumentUrl}`,
   }] : [];
   const lgDryerDimensionDiagramSignals = lgDryerDimensionDiagramScope ? [{
     type: 'mineru_lg_audited_dryer_dimension_diagram',
@@ -4127,6 +4230,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     && !hisenseNetPackageScope
     && !lgDryerDimensionDiagramScope
     && !electroluxWasherDimensionScope
+    && !esattoDishwasherDimensionScope
     && !boschDimensionSectionScope
     && !fisherPaykelDw60Scope
     && !samsungWasherWildcardScope
@@ -4163,6 +4267,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...hisenseNetPackageSignals,
     ...lgDryerDimensionDiagramSignals,
     ...electroluxWasherDimensionSignals,
+    ...esattoDishwasherDimensionSignals,
     ...boschDimensionSectionSignals,
     ...fisherPaykelDw60Signals,
     ...samsungWasherWildcardSignals,
@@ -4217,6 +4322,29 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   }
   if (electroluxWasherDimensionScope) {
     appliedGrammarProfiles.add(electroluxWasherDimensionScope.grammarProfileId);
+  }
+  if (esattoDishwasherDimensionScope) {
+    appliedGrammarProfiles.add(esattoDishwasherDimensionScope.grammarProfileId);
+    for (const row of esattoDishwasherDimensionScope.rows) {
+      const claims = [
+        ...dimensionClaims(
+          row,
+          esattoDishwasherDimensionScope.fragment,
+          esattoDishwasherDimensionScope.page,
+          fields,
+          category,
+        ),
+        ...directClaims(
+          row,
+          esattoDishwasherDimensionScope.fragment,
+          esattoDishwasherDimensionScope.page,
+          fields,
+          category,
+          claimSemanticsVersion,
+        ),
+      ];
+      for (const claim of claims) candidates.get(claim.field)?.push(claim);
+    }
   }
   if (askoProductSheetDimensionScope) {
     appliedGrammarProfiles.add(askoProductSheetDimensionScope.grammarProfileId);
@@ -4609,6 +4737,26 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ? claims.map(upgradeLegacyDimensionClaim)
     : claims;
   if (claimSemanticsVersion === 2) validateDimensionEvidenceClaimsV2(outputClaims);
+  const grammarProfileIds = [...appliedGrammarProfiles].sort();
+  const soleGrammarProfileId = grammarProfileIds.length === 1 ? grammarProfileIds[0] : null;
+  const evidenceObservations = claims.map((claim) => {
+    const fragment = document.pages[claim.page - 1]
+      ?.find((candidate) => candidate.fragmentSha256 === claim.fragmentSha256);
+    return {
+      field: claim.field,
+      value: claim.value,
+      sourceLabel: claim.label,
+      quote: claim.quote,
+      page: claim.page,
+      bbox: [...claim.bbox],
+      fragmentType: fragment?.type ?? 'derived_layout_scope',
+      fragmentSha256: claim.fragmentSha256,
+      axisOrder: [...(claim.axisOrder ?? [])],
+      sourceUnit: claim.sourceUnit ?? claim.unit,
+      semanticBasis: claim.semanticBasis ?? null,
+      parserProfileId: claim.grammarProfileId ?? soleGrammarProfileId,
+    };
+  });
   return {
     schemaVersion: 1,
     format: 'content_list_v2',
@@ -4619,9 +4767,10 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     contentSha256: sha256(document.bytes),
     pageCount: document.pageCount,
     identitySignals: signals,
-    grammarProfileIds: [...appliedGrammarProfiles].sort(),
+    grammarProfileIds,
     ...(claimSemanticsVersion === 2 ? { claimSemanticsVersion: 2 } : {}),
     claims: outputClaims,
+    evidenceObservations,
     documentText: normalizedText(document.pages.flat().map((item) => item.text).join(' ')),
   };
 }

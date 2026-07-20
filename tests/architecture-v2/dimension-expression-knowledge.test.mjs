@@ -535,6 +535,59 @@ test('knowledge documents the strict Smeg parenthetical maximum height grammar',
   assert.match(markdown, /complete increasing height range is preserved/i);
 });
 
+test('knowledge documents Esatto EDW D1 closed depth separately from the D2 operation envelope', async () => {
+  const corpus = JSON.parse(await fs.readFile(new URL(
+    '../fixtures/architecture-v2/historical-parser-gaps/esatto-dishwasher-technical-information-d1-d2-v1.json',
+    import.meta.url,
+  ), 'utf8'));
+  const fixture = corpus.profiles[0].cases.find((row) => row.expectation === 'ACCEPT');
+  const document = {
+    pdfSha256: fixture.source.pdfSha256,
+    contentSha256: fixture.source.contentSha256,
+    parserVersion: '3.4.4',
+    modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+    sourceUrls: fixture.sourceUrls,
+    identities: [fixture.identity],
+    contentList: fixture.contentList,
+  };
+  const extracted = extractDimensionExpressions(document);
+  const closed = extracted.observations.find((row) => (
+    row.page === 24 && row.scope === 'product_closed_candidate'
+      && row.patternKind === 'INDIVIDUALLY_LABELLED_AXES'
+  ));
+  const opened = extracted.observations.find((row) => (
+    row.page === 24 && row.scope === 'operation_envelope'
+  ));
+
+  assert.deepEqual(closed.axisOrder, ['height', 'width', 'depth']);
+  assert.deepEqual(closed.safeAxes, ['height', 'width', 'depth']);
+  assert.deepEqual(closed.depthVariants, ['Depth (D1) with the door closed']);
+  assert.equal(closed.axisValues.find((row) => row.axis === 'depth').value, '600mm');
+  assert.deepEqual(opened.safeAxes, []);
+  assert.deepEqual(opened.depthVariants, ['Depth (D2) with the door opened 90°']);
+  assert.equal(opened.parserDecision, 'REJECTED_NON_PRODUCT_SCOPE');
+
+  const knowledge = buildDimensionExpressionKnowledge({
+    generatedAt: '2026-07-20T00:00:00.000Z',
+    historicalRecords: [fixture.identity],
+    documents: [document],
+  });
+  const family = knowledge.categories.find((row) => row.category === 'dishwasher')
+    .brands[0].families[0];
+  assert.equal(family.groupType, 'parser_family');
+  assert.equal(family.groupName, 'Esatto Australia EDW dishwasher technical information');
+  assert.deepEqual(family.parserProfileIds, [
+    'esatto-au-dishwasher-technical-information-d1-d2-v1',
+  ]);
+  assert.equal(family.completeParserReplay, true);
+  assert.equal(family.parserReplays[0].extractionState, 'ALL_AXIS_SCALAR');
+
+  const markdown = renderDimensionExpressionKnowledgeMarkdown(knowledge);
+  assert.match(markdown, /D1.*door closed/i);
+  assert.match(markdown, /D2.*door opened 90/i);
+  assert.match(markdown, /operation envelope/i);
+});
+
 test('lettered explicit axes are distinct from unlabelled dimension triples', () => {
   const result = extractDimensionExpressions({
     pdfSha256: 'd'.repeat(64),

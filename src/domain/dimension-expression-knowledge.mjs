@@ -557,6 +557,14 @@ function dimensionValue(value) {
   };
 }
 
+function doorQualifiedDimensionValue(value) {
+  const text = normalizedText(value);
+  const match = /^(\d+(?:\.\d+)?(?:\s*[-–—]\s*\d+(?:\.\d+)?)?\s*(?:mm|cm))\s*\((with\s+(?:the\s+)?door\s+(?:closed|opened\s+90(?:\s*°|\s*degrees?)))\)$/i.exec(text);
+  if (!match) return null;
+  const parsed = dimensionValue(match[1]);
+  return parsed ? { ...parsed, qualifier: normalizedText(match[2]) } : null;
+}
+
 function combinedAxisValue(value) {
   const text = normalizedText(value);
   const match = /^(.*?)(\d+(?:\.\d+)?(?:\s*[-–—]\s*\d+(?:\.\d+)?)?\s*(?:mm|cm)?)$/i.exec(text);
@@ -588,12 +596,14 @@ function axisEntriesFromCells(cells) {
       if (combined) entries.push({ ...combined, row: entries.length, sourceCell: index, origin: 'cell' });
       if (index >= row.length - 1) continue;
       const axis = labelledAxis(row[index]);
-      const parsed = dimensionValue(row[index + 1]);
+      const parsed = dimensionValue(row[index + 1])
+        ?? doorQualifiedDimensionValue(row[index + 1]);
       if (axis && parsed) {
         entries.push({
           axis,
-          label: normalizedText(row[index]),
-          ...parsed,
+          label: normalizedText(`${row[index]}${parsed.qualifier ? ` ${parsed.qualifier}` : ''}`),
+          value: parsed.value,
+          valueShape: parsed.valueShape,
           row: entries.length,
           sourceCell: index,
           origin: 'cells',
@@ -652,7 +662,10 @@ function labelledObservations({ cells, pageContext, base }) {
       unit,
       unitPlacement,
       scope,
-      depthVariants: [],
+      depthVariants: rows.filter((row) => (
+        row.axis === 'depth'
+          && /\bD\d+\b|\bdoor\s+(?:closed|opened)\b/i.test(row.label)
+      )).map((row) => row.label),
       axisValues: rows.map(({ axis, label, value, valueShape }) => ({ axis, label, value, valueShape })),
       parserDecision,
       semanticInterpretation: [

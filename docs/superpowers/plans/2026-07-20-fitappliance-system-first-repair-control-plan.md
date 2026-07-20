@@ -5,9 +5,9 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** EXECUTING - Task 5 in progress
+- **Status:** EXECUTING - Task 6 in progress
 - **Date:** 2026-07-20
-- **Active task:** Task 5 - repair document-family and MinerU scope grammar
+- **Active task:** Task 6 - prove receipt-to-publication vertical slices
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -442,8 +442,8 @@ Mandatory adversarial traces across the programme:
 | 2 | Integrate real retailer availability observations | 1 | COMPLETED | 1,614/1,614 links accounted; append-safe schema-v2 ledger; AO/Partnerize typed adapters; policy-aware revalidation audit |
 | 3 | Build lifecycle shadow, refresh inventory, and prove destination/cutover isolation | 2 | COMPLETED | Shadow accounts for 3,515 products; all 1,384 legacy-current products have scoped refresh dispositions; real cutover remains safely blocked and production is byte-identical; synthetic atomic cutover passed |
 | 4 | Replace one-path discovery with typed official source lanes | 3 | COMPLETED | Schema-v2 five-lane contract; immutable AU/model/host-bound provenance; resume revalidation; exact Esatto canary; 1,059 Architecture V2 and 2,719 repository tests passed |
-| 5 | Repair category/series/document-family MinerU grammar | 4 | IN_PROGRESS | Contract trace in progress |
-| 6 | Prove receipt-to-publication vertical slices | 5 | PENDING | Not started |
+| 5 | Repair category/series/document-family MinerU grammar | 4 | COMPLETED | Real immutable EDW456S replay yields 448x845x600 mm from page 24; D2 1150 mm remains operation-only; source-derived plus adversarial corpus; 1,063 Architecture V2 and 2,723 repository tests passed; no release/public artifact changed |
+| 6 | Prove receipt-to-publication vertical slices | 5 | IN_PROGRESS | Contract trace in progress |
 | 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | PENDING | Not started |
 | 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | PENDING | Not started |
 | 9 | Full replay, migration, release DAG, and rollback drill | 8 | PENDING | Not started |
@@ -951,6 +951,52 @@ is promoted as official exact-model field evidence.
 **Goal:** Convert recurring PDF layouts into reusable, fail-closed knowledge
 instead of brand-specific regex accumulation.
 
+**Execution repair record (2026-07-20):**
+
+```text
+Symptom: The immutable EDW456S MinerU content_list_v2 contains an exact-model
+  identity and an explicit H/W/D1/D2 table on page 24, but the evidence
+  pipeline persists `claims_incomplete` with no dimensions.
+First incorrect persisted state: parseMineruContentListV2 produces no claims
+  because a same-page paragraph model signal makes `pageScoped` true while
+  table admission accepts only header/body-repeat/model-table scope. The table
+  is therefore skipped, and the true document scope is simultaneously disabled.
+Upstream producers: MinerU 3.4.4 content_list_v2, exact official Esatto manual
+  discovery, immutable PDF and derived-object storage.
+Downstream consumers: evidence-artifact-pipeline, receipt reconciliation,
+  geometry projection, replacement matching, publication audit, scale control,
+  and the dimension-expression knowledge generator.
+Affected state axes: evidence applicability and geometry semantics only.
+  Lifecycle, retail availability, public visibility, and Fit completeness must
+  not change in this task.
+Affected artifacts: PDF b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93;
+  MinerU JSON f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b;
+  page-24 table e1367605f353e447530019f66a022eb79951ead6bc96708ceb5f5e826663c365;
+  page-24 exact-model paragraph 844fca4c64fdd919777bcb27195d7e0a7884ac6b273b189712293f62409bf03f.
+Current contract: generic fragment admission treats model signals and dimension
+  tables independently and cannot prove this recurring Technical Information
+  document family. The legacy Esatto flat-text parser is not receipt authority.
+Target contract: one category/brand/document-family grammar must bind an exact
+  EDW model on the cover and technical page, require explicit Height (H),
+  Width (W), Depth (D1) with `door closed`, and Depth (D2) with `door opened
+  90 degrees`, preserve D1 and D2 as different semantics, and emit only closed
+  W/H/D claims with page, bbox, fragment hash, quote, unit, axis order, and
+  parser-profile provenance.
+Migration/rebuild: add immutable source-derived and adversarial fixtures first;
+  add the narrow grammar and knowledge classification; do not regenerate
+  candidate manifests, receipts, public projection, or release artifacts until
+  Task 9 executes the atomic dependency DAG.
+Rollback: revert the grammar/profile/fixture batch. Existing immutable PDF and
+  MinerU objects remain untouched, and no release projection requires reversal.
+Positive canary: exact EDW456S cover plus page-24 model and table yields
+  width 448, height 845, closed depth 600, and no D2 closed-depth claim.
+Adversarial canaries: sibling EDW456S2 page identity, cover/page mismatch,
+  absent same-page exact model, D1 without explicit closed qualifier, D2 without
+  explicit open qualifier, swapped D1/D2 qualifiers, duplicate conflicting
+  closed depths, missing units, malformed bbox, and non-Esatto/non-dishwasher
+  identities all fail closed or remain outside this grammar.
+```
+
 **Files:**
 
 - Modify: `src/domain/mineru-document.mjs`
@@ -979,6 +1025,21 @@ and parser profile in every observation.
 siblings and ambiguous depth diagrams fail closed; the complete parser fixture
 corpus and dimension-expression corpus pass; no generic fallback weakens older
 families.
+
+**Execution evidence (2026-07-20):** the immutable MinerU object
+`f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b`
+for PDF `b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93`
+replayed width `448`, height `845`, and closed depth `600` from page 24 table
+`e1367605f353e447530019f66a022eb79951ead6bc96708ceb5f5e826663c365`.
+The parser retained D2 `1150 mm` only as a rejected operation-envelope
+knowledge observation. Source-derived positive and sibling/qualifier/unit/
+conflict/category/bbox adversarial cases pass. Existing composed-layout grammar
+observations remain explicit `derived_layout_scope` records and carry their sole
+parser profile. The focused 152-test corpus, all 1,063 Architecture V2 tests,
+and all 2,723 repository tests passed. The system contract was re-attested as
+`historical_evidence_system_26c7aa781210a2fa888ccd35`; candidate manifests,
+receipts, publication artifacts, and public projection were deliberately not
+rebuilt or changed.
 
 **Stop condition:** the patch is an Esatto-only text match with no family rule
 or negative corpus.

@@ -817,6 +817,12 @@ test('MinerU replays the Beko AU dishwasher parallel-list specification grammar 
   assert.deepEqual(parsed.grammarProfileIds, [
     'beko_au_dishwasher_product_spec_parallel_lists_v1',
   ]);
+  assert.ok(parsed.evidenceObservations.every((observation) => (
+    observation.fragmentType === 'derived_layout_scope'
+      && observation.fragmentSha256
+      && observation.quote
+      && observation.parserProfileId === 'beko_au_dishwasher_product_spec_parallel_lists_v1'
+  )));
 });
 
 test('MinerU replays the Beko split-title parallel-list specification variant', () => {
@@ -3799,4 +3805,125 @@ test('official exact-cover binding scopes ASKO product-sheet dimension paragraph
     'closedEnvelope.widthMm': { kind: 'fixed', mm: 595 },
   });
   assert.deepEqual(parsed.grammarProfileIds, ['asko-au-product-sheet-dimension-section-v1']);
+});
+
+function esattoEdwTechnicalManual({
+  coverModel = 'EDW456S',
+  technicalModel = 'EDW456S',
+  height = '845mm',
+  width = '448mm',
+  d1 = '600mm (with the door closed)',
+  d2 = '1150mm (with the door opened 90°)',
+  extraRows = '',
+} = {}) {
+  const pages = Array.from({ length: 24 }, () => []);
+  pages[0] = [
+    titleFragment('Everything you need for your 45cm Compact Freestanding Dishwasher is in this User Manual', [80, 238, 864, 448]),
+    pageHeader(`Model/s ${coverModel}`),
+    pageHeader('Version V2.1 0523'),
+  ];
+  pages[23] = [
+    titleFragment('Technical Information', [109, 121, 569, 155]),
+    titleFragment('DIMENSIONS', [106, 176, 218, 191]),
+    {
+      type: 'table',
+      content: {
+        image_source: { path: 'images/6b5efe79afe3b58d10b682165f4ad62725c6cd7ecef74098b3910cd1e39cf30b.jpg' },
+        table_caption: [],
+        table_footnote: [],
+        html: `<table><tr><td rowspan=1 colspan=1>Height (H)</td><td rowspan=1 colspan=1>${height}</td></tr><tr><td rowspan=1 colspan=1>Width (W)</td><td rowspan=1 colspan=1>${width}</td></tr><tr><td rowspan=1 colspan=1>Depth (D1)</td><td rowspan=1 colspan=1>${d1}</td></tr><tr><td rowspan=1 colspan=1>Depth (D2)</td><td rowspan=1 colspan=1>${d2}</td></tr>${extraRows}</table>`,
+        table_type: 'complex_table',
+        table_nest_level: 1,
+      },
+      bbox: [122, 501, 537, 577],
+    },
+    titleFragment('RATING LABEL', [109, 633, 227, 649]),
+    paragraph(`45cm Freestanding Dishwasher Model: ${technicalModel}`, [122, 668, 292, 693]),
+  ];
+  return Buffer.from(JSON.stringify(pages));
+}
+
+const esattoEdwOptions = Object.freeze({
+  pdfSha256: 'b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93',
+  parserVersion: '3.4.4',
+  modelRevision,
+  caseIdentity: { brand: 'Esatto', model: 'EDW456S', category: 'dishwasher' },
+  claimSemanticsVersion: 2,
+  fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  sourceUrls: [
+    'https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf',
+    'https://static1.squarespace.com/static/example/EDW456S_UserManual_V2.1+0523.pdf',
+  ],
+});
+
+test('MinerU binds the Esatto EDW technical-information family and keeps D1 closed depth distinct from D2 door-open depth', () => {
+  const parsed = parseMineruContentListV2(esattoEdwTechnicalManual(), esattoEdwOptions);
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 845 },
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 448 },
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['esatto-au-dishwasher-technical-information-d1-d2-v1']);
+  assert.ok(parsed.identitySignals.some((signal) => (
+    signal.type === 'mineru_esatto_edw_technical_information_exact_model'
+  )));
+  assert.ok(parsed.claims.every((claim) => claim.page === 24));
+  assert.ok(parsed.claims.every((claim) => (
+    JSON.stringify(claim.bbox) === JSON.stringify([122, 501, 537, 577])
+      && claim.fragmentSha256 === 'e1367605f353e447530019f66a022eb79951ead6bc96708ceb5f5e826663c365'
+  )));
+  assert.ok(parsed.evidenceObservations.every((observation) => (
+    observation.fragmentType === 'table'
+      && observation.parserProfileId === 'esatto-au-dishwasher-technical-information-d1-d2-v1'
+      && observation.sourceUnit === 'mm'
+      && JSON.stringify(observation.axisOrder) === JSON.stringify(['height', 'width', 'depth'])
+      && observation.quote
+  )));
+  assert.equal(parsed.evidenceObservations.some((observation) => (
+    /1150|door opened/i.test(observation.quote)
+  )), false);
+});
+
+test('Esatto EDW technical-information grammar fails closed across identity, qualifier, unit, conflict, and category mutations', () => {
+  const cases = [
+    ['sibling technical-page model', esattoEdwTechnicalManual({ technicalModel: 'EDW456S2' }), esattoEdwOptions],
+    ['sibling cover model', esattoEdwTechnicalManual({ coverModel: 'EDW456S2' }), esattoEdwOptions],
+    ['D1 has no closed qualifier', esattoEdwTechnicalManual({ d1: '600mm' }), esattoEdwOptions],
+    ['D2 has no open qualifier', esattoEdwTechnicalManual({ d2: '1150mm' }), esattoEdwOptions],
+    ['D1 and D2 meanings are swapped', esattoEdwTechnicalManual({
+      d1: '600mm (with the door opened 90°)',
+      d2: '1150mm (with the door closed)',
+    }), esattoEdwOptions],
+    ['conflicting second closed depth', esattoEdwTechnicalManual({
+      extraRows: '<tr><td rowspan=1 colspan=1>Depth (D1)</td><td rowspan=1 colspan=1>620mm (with the door closed)</td></tr>',
+    }), esattoEdwOptions],
+    ['missing measurement units', esattoEdwTechnicalManual({ height: '845', width: '448' }), esattoEdwOptions],
+    ['wrong brand', esattoEdwTechnicalManual(), {
+      ...esattoEdwOptions,
+      caseIdentity: { ...esattoEdwOptions.caseIdentity, brand: 'Other' },
+    }],
+    ['wrong category', esattoEdwTechnicalManual(), {
+      ...esattoEdwOptions,
+      caseIdentity: { ...esattoEdwOptions.caseIdentity, category: 'fridge' },
+    }],
+    ['source URL lacks exact model', esattoEdwTechnicalManual(), {
+      ...esattoEdwOptions,
+      sourceUrls: ['https://esatto.house/s/user-manual.pdf'],
+    }],
+  ];
+
+  for (const [label, bytes, options] of cases) {
+    assert.throws(
+      () => parseMineruContentListV2(bytes, options),
+      /identity|exact-model|evidence|missing|ambiguous|scope/i,
+      label,
+    );
+  }
+
+  const malformed = JSON.parse(esattoEdwTechnicalManual());
+  malformed[23][2].bbox = [122, 501, 122, 577];
+  assert.throws(() => parseMineruContentListV2(
+    Buffer.from(JSON.stringify(malformed)), esattoEdwOptions,
+  ), /bbox invalid/i);
 });

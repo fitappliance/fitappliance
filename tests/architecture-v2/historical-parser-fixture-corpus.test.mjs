@@ -16,14 +16,20 @@ const lgFixtureUrl = new URL(
   '../fixtures/architecture-v2/historical-parser-gaps/lg-dryer-dimension-diagram-v1.json',
   import.meta.url,
 );
+const esattoFixtureUrl = new URL(
+  '../fixtures/architecture-v2/historical-parser-gaps/esatto-dishwasher-technical-information-d1-d2-v1.json',
+  import.meta.url,
+);
 const electroluxCorpus = JSON.parse(readFileSync(electroluxFixtureUrl, 'utf8'));
 const lgCorpus = JSON.parse(readFileSync(lgFixtureUrl, 'utf8'));
+const esattoCorpus = JSON.parse(readFileSync(esattoFixtureUrl, 'utf8'));
 const corpus = {
   schemaVersion: 1,
-  profiles: [...electroluxCorpus.profiles, ...lgCorpus.profiles],
+  profiles: [...electroluxCorpus.profiles, ...lgCorpus.profiles, ...esattoCorpus.profiles],
 };
 const profile = electroluxCorpus.profiles[0];
 const lgProfile = lgCorpus.profiles[0];
+const esattoProfile = esattoCorpus.profiles[0];
 const fields = [
   'closedEnvelope.widthMm',
   'closedEnvelope.heightMm',
@@ -38,6 +44,7 @@ function parseFixture(row) {
     caseIdentity: row.identity,
     claimSemanticsVersion: 2,
     fields,
+    sourceUrls: row.sourceUrls ?? [],
   });
 }
 
@@ -120,5 +127,35 @@ test('LG adversarial mutations cannot publish closed depth through the audited p
     } catch (error) {
       assert.match(String(error?.message ?? error), /identity|exact-model|evidence|missing|ambiguous|scope/i, row.caseId);
     }
+  }
+});
+
+test('Esatto fixture corpus binds the real EDW456S page-24 table and rejects sibling scope', () => {
+  validateHistoricalParserFixtureCorpus(corpus);
+  const accepted = esattoProfile.cases.find((row) => row.expectation === 'ACCEPT');
+  const inspected = inspectMineruContentListV2(Buffer.from(JSON.stringify(accepted.contentList)));
+  assert.equal(accepted.contentList.length, 24);
+  assert.ok(inspected.pages[23].fragments.some((fragment) => (
+    fragment.type === accepted.source.fragmentType
+      && fragment.fragmentSha256 === accepted.source.fragmentSha256
+      && JSON.stringify(fragment.bbox) === JSON.stringify(accepted.source.bbox)
+  )));
+
+  const parsed = parseFixture(accepted);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.depthMm': 600,
+    'closedEnvelope.heightMm': 845,
+    'closedEnvelope.widthMm': 448,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, [esattoProfile.parserProfileId]);
+  assert.ok(parsed.claims.every((claim) => claim.page === 24));
+  assert.ok(parsed.claims.every((claim) => !/1150|door opened/i.test(claim.quote)));
+
+  for (const row of esattoProfile.cases.filter((candidate) => candidate.expectation === 'REJECT')) {
+    assert.throws(
+      () => parseFixture(row),
+      /identity|exact-model|evidence|missing|ambiguous|scope/i,
+      row.caseId,
+    );
   }
 });

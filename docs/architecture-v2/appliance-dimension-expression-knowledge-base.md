@@ -6417,21 +6417,25 @@ Research gaps:
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 1
 - Proven marketing series: 0; total series count: `UNKNOWN`
 - PDF grammar profiles: 1
-- Complete exact-model parser replays: 0
+- Complete exact-model parser replays: 1
 
-#### PDF grammar pdf_grammar_4f34b527b64d6ba6
+#### Esatto Australia EDW dishwasher technical information
 
 - Group type: `parser_family`
-- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Expression coverage: `PARSER_REPLAY_COMPLETE`
 - Models observed: `EDW456S`
 - PDF SHA-256: `b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93`
-- PDF grammar profiles: `pdf_grammar_4f34b527b64d6ba6`
+- PDF grammar profiles: `esatto-au-dishwasher-technical-information-d1-d2-v1`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Grammar variant: Exact cover and rating-label model with explicit H/W/D1/D2 table
+- Detection: An exact-model Esatto EDW manual URL, one exact Model/s cover header, no sibling model, and one Technical Information page containing one Dimensions title, one four-row H/W/D1/D2 millimetre table and the same exact rating-label model.
+- Semantic boundary: Height and width are closed product dimensions; D1 is projected only when explicitly qualified as door closed. D2 must be present and explicitly qualified as door opened 90 degrees, but remains an operation envelope and is never projected as closed depth. Missing, duplicate, conflicting, unitless, sibling, cross-brand and cross-category variants fail closed.
 - Official/source URLs: <https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf>, <https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width | height, width | `product_closed_candidate` | Height (H) 845mm \| Width (W) 448mm | p.24, `e1367605f353` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_PAGE_EXACT_MODEL` | depth | none | `operation_envelope` | Depth (D2) with the door opened 90° 1150mm | p.24, `e1367605f353` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height (H) 845mm \| Width (W) 448mm \| Depth (D1) with the door closed 600mm | p.24, `e1367605f353` |
 
 ### EURO
 

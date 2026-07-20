@@ -107,14 +107,14 @@
       "inputs": [
         {
           "path": "src/domain/dimension-expression-knowledge.mjs",
-          "contentSha256": "62800a03169bf085097803aaa3fe32d02b729727a6c5b712457fa2111d229ab9"
+          "contentSha256": "27ae6d31f8f17ab2530ebbed49f8c5884564bce858caf8c055274bf4d6ecb0ee"
         },
         {
           "path": "src/domain/mineru-document.mjs",
-          "contentSha256": "cb0c8adfadf1ae05262b82d7a8711d1b789510770e874082c39c8c811096879e"
+          "contentSha256": "818b7beb6df158d3af2991fe6397ad7d17502dda15559481d18731bbc31df2d2"
         }
       ],
-      "semanticSha256": "8c8048cbe3719e617d5149dde35f9c9219b5d8b69c2a60277a1b7d412b094bc0"
+      "semanticSha256": "6abcdd98536b04aa5f11e4c6c959aa9816c91d0346e6e0b3de2f215257a924ec"
     },
     {
       "id": "publication",
@@ -1144,14 +1144,14 @@
         },
         {
           "path": "src/domain/dimension-expression-knowledge.mjs",
-          "contentSha256": "62800a03169bf085097803aaa3fe32d02b729727a6c5b712457fa2111d229ab9"
+          "contentSha256": "27ae6d31f8f17ab2530ebbed49f8c5884564bce858caf8c055274bf4d6ecb0ee"
         },
         {
           "path": "src/domain/mineru-document.mjs",
-          "contentSha256": "cb0c8adfadf1ae05262b82d7a8711d1b789510770e874082c39c8c811096879e"
+          "contentSha256": "818b7beb6df158d3af2991fe6397ad7d17502dda15559481d18731bbc31df2d2"
         }
       ],
-      "producerSha256": "e303ec19443872007118d785eea2a6a00f798ec8c2b28616d049c183841494ba",
+      "producerSha256": "43cc86dbc76b55d89123bcc4bc36bf3b6f2ccb1776412c7e8e28bb0c559e0121",
       "consumers": [
         "program-status"
       ],
@@ -1945,6 +1945,6 @@
     "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
     "checkpointCount": 5
   },
-  "contractId": "historical_evidence_system_ee4133065c59780d595724fa",
-  "semanticContractSha256": "ee4133065c59780d595724fabd903c74df0c85e6c589494899cbdeaa12dc972f"
+  "contractId": "historical_evidence_system_26c7aa781210a2fa888ccd35",
+  "semanticContractSha256": "26c7aa781210a2fa888ccd352162c85a2d489d67f19f397c3b906221c984fb5c"
 }
