@@ -159,13 +159,50 @@ export function historicalOfficialResolverContracts(acquisitionQueue) {
   }
   return new Map(acquisitionQueue.records.map((record) => [
     record.referenceId,
-    resolversForRecord(record).map(({ resolverId, version, scope, required }) => ({
+    resolversForRecord(record).map(({
+      schemaVersion, resolverId, version, scope, required, sourceLanes,
+    }) => ({
+      schemaVersion: schemaVersion ?? 1,
       resolverId,
       version,
       scope,
       required,
+      ...(sourceLanes ? { sourceLanes: structuredClone(sourceLanes) } : {}),
     })),
   ]));
+}
+
+function retryableResolverResult(resolver, code, message) {
+  const schemaVersion = resolver.schemaVersion ?? 1;
+  if (schemaVersion === 2) {
+    return {
+      schemaVersion: 2,
+      resolverId: resolver.resolverId,
+      version: resolver.version,
+      scope: resolver.scope,
+      required: resolver.required,
+      completion: 'retryable',
+      sourceLanes: resolver.sourceLanes.map((lane) => ({
+        ...lane,
+        status: lane.supported ? 'retryable' : 'unsupported',
+        candidateCount: 0,
+        provenance: [],
+        reason: lane.supported ? message : 'Lane is not supported by this resolver.',
+      })),
+      candidates: [],
+      failures: [{ code, message }],
+    };
+  }
+  return {
+    schemaVersion: 1,
+    resolverId: resolver.resolverId,
+    version: resolver.version,
+    scope: resolver.scope,
+    required: resolver.required,
+    completion: code === 'resolver_timeout' ? 'timed_out' : 'failed',
+    candidates: [],
+    failures: [{ code, message }],
+  };
 }
 
 async function resolveWithTimeout(resolver, target, timeoutMs) {
@@ -178,29 +215,19 @@ async function resolveWithTimeout(resolver, target, timeoutMs) {
       }),
     ]);
     if (outcome === Symbol.for('candidate_discovery_timeout')) {
-      return validateEvidenceSourceResolverResult({
-        schemaVersion: 1,
-        resolverId: resolver.resolverId,
-        version: resolver.version,
-        scope: resolver.scope,
-        required: resolver.required,
-        completion: 'timed_out',
-        candidates: [],
-        failures: [{ code: 'resolver_timeout', message: `resolver exceeded ${timeoutMs}ms` }],
-      });
+      return validateEvidenceSourceResolverResult(retryableResolverResult(
+        resolver,
+        'resolver_timeout',
+        `resolver exceeded ${timeoutMs}ms`,
+      ));
     }
     return validateEvidenceSourceResolverResult(outcome);
   } catch (error) {
-    return validateEvidenceSourceResolverResult({
-      schemaVersion: 1,
-      resolverId: resolver.resolverId,
-      version: resolver.version,
-      scope: resolver.scope,
-      required: resolver.required,
-      completion: 'failed',
-      candidates: [],
-      failures: [{ code: 'resolver_failed', message: String(error?.message ?? error) }],
-    });
+    return validateEvidenceSourceResolverResult(retryableResolverResult(
+      resolver,
+      'resolver_failed',
+      String(error?.message ?? error),
+    ));
   } finally {
     if (timer) clearTimeout(timer);
   }
@@ -294,6 +321,45 @@ async function readOptionalObject(objectStore, path) {
   } catch (error) {
     if (error?.code === 'ENOENT') return null;
     throw error;
+  }
+}
+
+async function verifySourceLaneProvenanceObjects(objectStore, resolverOutcomes) {
+  const verified = new Set();
+  async function verifyObject({ objectPath, contentSha256, byteSize }, label) {
+    const key = `${objectPath}\0${contentSha256}\0${byteSize}`;
+    if (verified.has(key)) return;
+    let bytes;
+    try {
+      bytes = await objectStore.readObject(objectPath);
+    } catch (error) {
+      if (error?.code === 'ENOENT') {
+        throw new Error(`${label} object is missing: ${objectPath}`);
+      }
+      throw error;
+    }
+    const actualSha256 = createHash('sha256').update(bytes).digest('hex');
+    if (bytes.length !== byteSize || actualSha256 !== contentSha256) {
+      throw new Error(`${label} object binding mismatch: ${objectPath}`);
+    }
+    verified.add(key);
+  }
+  for (const outcome of resolverOutcomes) {
+    for (const lane of outcome.result.sourceLanes ?? []) {
+      for (const provenance of lane.provenance ?? []) {
+        await verifyObject(provenance, 'source lane provenance');
+      }
+    }
+    for (const candidate of outcome.result.candidates ?? []) {
+      const provenance = candidate.discoveryProvenance;
+      if (provenance?.discoveryObjectPath) {
+        await verifyObject({
+          objectPath: provenance.discoveryObjectPath,
+          contentSha256: provenance.discoveryContentSha256,
+          byteSize: provenance.discoveryByteSize,
+        }, 'candidate discovery provenance');
+      }
+    }
   }
 }
 
@@ -433,6 +499,7 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
         result: await resolveWithTimeout(resolver, target, options.resolverTimeoutMs),
       }),
     );
+    await verifySourceLaneProvenanceObjects(objectStore, resolverOutcomes);
     const outcomesByReference = new Map();
     for (const outcome of resolverOutcomes) {
       const values = outcomesByReference.get(outcome.referenceId) ?? [];
@@ -486,6 +553,10 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
       },
     };
   }
+  await verifySourceLaneProvenanceObjects(
+    objectStore,
+    run.targets.flatMap((target) => target.resolvers.map((result) => ({ result }))),
+  );
   const manifest = buildHistoricalOfficialCandidateManifest({
     generatedAt: run.completedAt,
     acquisitionQueue,

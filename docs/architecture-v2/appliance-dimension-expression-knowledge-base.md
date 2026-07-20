@@ -55,6 +55,39 @@ The standalone command remains available for explicit research snapshots.
 reference and before classification. The normal `build:architecture-v2` command
 still does not create or advance a historical-recovery epoch.
 
+## Source Discovery Before PDF Grammar
+
+Document discovery and PDF interpretation are separate contracts. A source
+resolver must first record the official surfaces it actually checked; only a
+fetched, hash-bound document may proceed to document-family and dimension-
+expression analysis.
+
+Schema-v2 resolvers use five standard lanes: current product catalogue,
+discontinued/archive catalogue, support/search API, official document/CDN, and
+official HTML/JSON product detail. Every supported lane reports `complete` or
+`retryable` and binds its result to immutable raw content, the requested exact
+model, the Australian market, and an official brand host. An unsupported lane
+is explicit and cannot be required. Legacy aggregate resolver results may
+retain candidate observations, but cannot authorise terminal zero-source.
+
+The first versioned implementation is Esatto resolver v2. It checks the
+official sitemap and exact site search independently, follows exact-model
+current or discontinued product pages, and records product-page and document
+links as separate observations. A sibling URL suffix such as `EDW456S2` does
+not match `EDW456S`, and fetched page content must independently identify the
+requested model. The same PDF discovered through current and archive pages
+retains both page observations before artifact-level deduplication.
+
+These discovery states carry no product or Fit authority:
+
+- an archived official page is not evidence of current retail availability;
+- a product-page or PDF candidate is not an accepted field receipt;
+- a filename or URL model token is not exact-model field applicability;
+- parsed W/H/D is not installation clearance or `VERIFIED_FIT`.
+
+Only the downstream MinerU, exact-model scope, semantic claim, reconciliation,
+receipt, lifecycle, and publication gates can advance those states.
+
 ## Brand and PDF Family Index
 
 The series count is a proven minimum. PDF grammar profiles are syntax reuse only,
@@ -13121,4 +13154,3 @@ These indexes remain in total coverage accounting but their derived content is e
 | `cf0ae2b11c8f9f8077ba896261c6b3968792f359e916c6f6df1123f0e36904b7` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
 | `f3d62fe020ed532f9f8107437d0a56868b7d4e8b8bfe72fa0b0272492f16b762` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
 | `f803c5e9682c749b1be27eb89280d6547a6a1673d6677bca634efee4660f52dd` | `ORPHANED_SOURCE_PDF` | `UNMAPPED_SOURCE_PDF` | unknown | unknown |
-

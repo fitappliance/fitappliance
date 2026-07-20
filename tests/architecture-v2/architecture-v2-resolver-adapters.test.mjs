@@ -477,6 +477,130 @@ test('all migration brands route through typed discovery-only adapters', () => {
   }
 });
 
+test('Esatto adapter preserves the schema-v2 source-lane contract and candidate observations', async () => {
+  const hash = 'c'.repeat(64);
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_sitemap',
+    market: 'AU',
+    discoveryUrl: 'https://esatto.house/sitemap.xml',
+    requestedModel: 'EDW456S',
+    contentType: 'application/xml',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/cc/cc/${hash}.xml`,
+    byteSize: 450,
+  };
+  const sourceLanes = [
+    ['current_product', true, true, 'complete', 0, [provenance], null],
+    ['discontinued_archive', true, true, 'complete', 0, [provenance], null],
+    ['support_search_api', true, true, 'complete', 0, [provenance], null],
+    ['official_document_cdn', true, true, 'complete', 1, [provenance], null],
+    ['official_product_detail', true, true, 'complete', 1, [provenance], null],
+  ].map(([laneId, required, supported, status, candidateCount, laneProvenance, reason]) => ({
+    laneId, required, supported, status, candidateCount, provenance: laneProvenance, reason,
+  }));
+  const documentUrl = 'https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf';
+  const productUrl = 'https://esatto.house/discontinued-products/p/45cm-dishwasher-edw456s';
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'Esatto', model: 'EDW456S', category: 'dishwasher' },
+    { esatto: { finder: async () => ({
+      sourceUrl: documentUrl,
+      sourceLanes,
+      resources: [
+        { sourceUrl: documentUrl, resourceType: 'user_manual', sourceLaneId: 'official_document_cdn' },
+        { sourceUrl: productUrl, resourceType: 'product_page', sourceLaneId: 'official_product_detail' },
+      ],
+    }) } },
+  );
+  const result = await adapter.resolve({ brand: 'Esatto', model: 'EDW456S', category: 'dishwasher' });
+
+  assert.equal(result.schemaVersion, 2);
+  assert.equal(result.version, '2');
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.sourceLanes, sourceLanes);
+  assert.deepEqual(result.candidates.map((candidate) => [candidate.sourceLaneId, candidate.sourceUrl]), [
+    ['official_document_cdn', documentUrl],
+    ['official_product_detail', productUrl],
+  ]);
+});
+
+test('Esatto adapter preserves distinct current and archive observations of the same PDF', async () => {
+  const laneHash = 'd'.repeat(64);
+  const laneProvenance = {
+    schemaVersion: 1,
+    method: 'official_sitemap',
+    market: 'AU',
+    discoveryUrl: 'https://esatto.house/sitemap.xml',
+    requestedModel: 'EDW456S',
+    contentType: 'application/xml',
+    contentSha256: laneHash,
+    objectPath: `evidence/web/sha256/dd/dd/${laneHash}.xml`,
+    byteSize: 450,
+  };
+  const laneDescriptors = [
+    'current_product',
+    'discontinued_archive',
+    'support_search_api',
+    'official_document_cdn',
+    'official_product_detail',
+  ];
+  const documentUrl = 'https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf';
+  const discovery = (pageUrl, character) => {
+    const hash = character.repeat(64);
+    return {
+      schemaVersion: 1,
+      method: 'official_product_page',
+      market: 'AU',
+      discoveryUrl: pageUrl,
+      requestedModel: 'EDW456S',
+      matchedModel: 'EDW456S',
+      artifactUrl: documentUrl,
+      artifactLinkUrl: documentUrl,
+      discoveryContentSha256: hash,
+      discoveryObjectPath: `evidence/web/sha256/${character}${character}/${character}${character}/${hash}.html`,
+      discoveryByteSize: 500,
+    };
+  };
+  const currentPage = 'https://esatto.house/dishwashers/p/45cm-dishwasher-edw456s';
+  const archivePage = 'https://esatto.house/discontinued-products/p/45cm-dishwasher-edw456s';
+  const sourceLanes = laneDescriptors.map((laneId) => ({
+    laneId,
+    required: true,
+    supported: true,
+    status: 'complete',
+    candidateCount: laneId === 'official_document_cdn' ? 2 : 0,
+    provenance: [laneProvenance],
+    reason: null,
+  }));
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'Esatto', model: 'EDW456S', category: 'dishwasher' },
+    { esatto: { finder: async () => ({
+      sourceLanes,
+      resources: [
+        {
+          sourceUrl: documentUrl,
+          resourceType: 'user_manual',
+          sourceLaneId: 'official_document_cdn',
+          discoveryProvenance: discovery(currentPage, 'e'),
+        },
+        {
+          sourceUrl: documentUrl,
+          resourceType: 'user_manual',
+          sourceLaneId: 'official_document_cdn',
+          discoveryProvenance: discovery(archivePage, 'f'),
+        },
+      ],
+    }) } },
+  );
+
+  const result = await adapter.resolve({ brand: 'Esatto', model: 'EDW456S', category: 'dishwasher' });
+  assert.equal(result.candidates.length, 2);
+  assert.deepEqual(result.candidates.map((candidate) => candidate.discoveryProvenance.discoveryUrl), [
+    currentPage,
+    archivePage,
+  ]);
+});
+
 test('generic adapter preserves exact, regional, sibling, family and retailer discovery boundaries', async () => {
   const adapter = createLegacyFinderResolverAdapter({
     brandKey: 'samsung',

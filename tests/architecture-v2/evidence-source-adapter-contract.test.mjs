@@ -125,3 +125,76 @@ test('resolver adapter preserves explicit completion and normalizes candidates o
     sourceUrl: 'https://www.example-brand.com/manuals/ABC123.pdf',
   }]);
 });
+
+test('schema-v2 resolver results bind standard source lanes to immutable zero-result provenance', () => {
+  const hash = 'b'.repeat(64);
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_sitemap',
+    market: 'AU',
+    discoveryUrl: 'https://www.example-brand.com/sitemap.xml',
+    requestedModel: 'ABC123',
+    contentType: 'application/xml',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/bb/bb/${hash}.xml`,
+    byteSize: 321,
+  };
+  const sourceLanes = [
+    {
+      laneId: 'current_product', required: true, supported: true,
+      status: 'complete', candidateCount: 0, provenance: [provenance], reason: null,
+    },
+    {
+      laneId: 'discontinued_archive', required: true, supported: true,
+      status: 'complete', candidateCount: 0, provenance: [provenance], reason: null,
+    },
+    {
+      laneId: 'support_search_api', required: false, supported: false,
+      status: 'unsupported', candidateCount: 0, provenance: [], reason: 'No public support API.',
+    },
+    {
+      laneId: 'official_document_cdn', required: true, supported: true,
+      status: 'complete', candidateCount: 1, provenance: [provenance], reason: null,
+    },
+    {
+      laneId: 'official_product_detail', required: true, supported: true,
+      status: 'complete', candidateCount: 0, provenance: [provenance], reason: null,
+    },
+  ];
+  const result = {
+    schemaVersion: 2,
+    resolverId: 'example-official-v2',
+    version: '2',
+    scope: 'all_declared_official_source_lanes',
+    required: true,
+    completion: 'complete',
+    sourceLanes,
+    candidates: [{
+      ...candidate,
+      resolverId: 'example-official-v2',
+      resolverVersion: '2',
+      sourceLaneId: 'official_document_cdn',
+    }],
+    failures: [],
+  };
+
+  assert.deepEqual(validateEvidenceSourceResolverResult(result).sourceLanes, sourceLanes);
+  assert.throws(() => validateEvidenceSourceResolverResult({
+    ...result,
+    sourceLanes: sourceLanes.map((lane) => lane.laneId === 'official_document_cdn'
+      ? { ...lane, candidateCount: 0 }
+      : lane),
+  }), /candidate count/i);
+  assert.throws(() => validateEvidenceSourceResolverResult({
+    ...result,
+    sourceLanes: sourceLanes.map((lane) => lane.laneId === 'current_product'
+      ? { ...lane, provenance: [] }
+      : lane),
+  }), /provenance/i);
+  assert.throws(() => validateEvidenceSourceResolverResult({
+    ...result,
+    sourceLanes: sourceLanes.map((lane) => lane.laneId === 'support_search_api'
+      ? { ...lane, required: true }
+      : lane),
+  }), /unsupported.*required/i);
+});

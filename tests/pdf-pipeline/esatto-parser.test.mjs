@@ -21,6 +21,65 @@ test('Esatto official finder matches product URLs by SKU', () => {
     urlMatchesTargetSku('https://esatto.house/refrigeration/p/196l-bar-fridge-white-ebf196w', { sku: 'EBF124W' }),
     false
   );
+  assert.equal(
+    urlMatchesTargetSku('https://esatto.house/dishwashers/p/45cm-dishwasher-edw456s2', { sku: 'EDW456S' }),
+    false
+  );
+});
+
+test('Esatto finder rejects an exact-looking URL when the fetched page identifies a sibling model', async () => {
+  const productUrl = 'https://esatto.house/dishwashers/p/45cm-dishwasher-edw456s';
+  const result = await findEsattoOfficialPdf({ model: 'EDW456S' }, {
+    fetchImpl: async (url) => ({
+      ok: true,
+      status: 200,
+      text: async () => String(url).endsWith('/sitemap.xml')
+        ? `<urlset><url><loc>${productUrl}</loc></url></urlset>`
+        : String(url).includes('/search?')
+          ? '<html><body>No matching products</body></html>'
+          : '<html><body><h1>EDW456S2</h1><a href="/s/EDW456S2_UserManual.pdf">Manual</a></body></html>',
+    }),
+    writeObject: async () => {},
+  });
+
+  assert.deepEqual(result.resources, []);
+  assert.equal(
+    result.sourceLanes.find((lane) => lane.laneId === 'official_product_detail').status,
+    'retryable'
+  );
+  assert.match(result.reason, /does not identify exact model EDW456S/i);
+});
+
+test('Esatto finder extracts downloads only from the exact Squarespace product context', async () => {
+  const productUrl = 'https://esatto.house/dishwashers/p/45cm-dishwasher-edw456s';
+  const exactManual = 'https://esatto.house/s/EDW456S_UserManual.pdf';
+  const siblingManual = 'https://esatto.house/s/EDW6004B_UserManual.pdf';
+  const context = JSON.stringify({
+    product: {
+      description: `<p>Model EDW456S</p><a href="${exactManual}">User Manual</a>`,
+      variants: [{ sku: 'EDW456S' }],
+      tags: ['sku-EDW456S'],
+    },
+  }).replace(/&/g, '&amp;').replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const productHtml = `<html><body>
+    <div class="product-detail tag-sku-edw456s" data-controller="ProductDetail" data-context="${context}"></div>
+    <script type="application/json">{"otherProduct":"${siblingManual}"}</script>
+  </body></html>`;
+  const result = await findEsattoOfficialPdf({ model: 'EDW456S' }, {
+    fetchImpl: async (url) => ({
+      ok: true,
+      status: 200,
+      text: async () => String(url).endsWith('/sitemap.xml')
+        ? `<urlset><url><loc>${productUrl}</loc></url></urlset>`
+        : String(url).includes('/search?') ? '<html>No results</html>' : productHtml,
+    }),
+    writeObject: async () => {},
+  });
+
+  assert.deepEqual(result.resources
+    .filter((resource) => resource.sourceLaneId === 'official_document_cdn')
+    .map((resource) => resource.sourceUrl), [exactManual]);
 });
 
 test('Esatto official finder prefers user manual links over product cards', () => {
@@ -65,9 +124,59 @@ test('Esatto finder persists exact product-page discovery evidence for CDN redir
     discoveryObjectPath: `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.html`,
     discoveryByteSize: Buffer.byteLength(productHtml),
   });
-  assert.equal(writes.length, 1);
-  assert.equal(writes[0][0], result.discoveryProvenance.discoveryObjectPath);
-  assert.equal(writes[0][1].toString('utf8'), productHtml);
+  assert.equal(writes.length, 3);
+  const pageWrite = writes.find(([path]) => path === result.discoveryProvenance.discoveryObjectPath);
+  assert.ok(pageWrite);
+  assert.equal(pageWrite[1].toString('utf8'), productHtml);
+});
+
+test('Esatto finder exhausts current and discontinued lanes and retains non-anchor PDF observations', async () => {
+  const currentUrl = 'https://esatto.house/dishwashers/p/60cm-current-dishwasher-edw600';
+  const archivedUrl = 'https://esatto.house/discontinued-products/p/45cm-dishwasher-edw456s';
+  const artifactUrl = 'https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf';
+  const sitemap = `<urlset><url><loc>${currentUrl}</loc></url></urlset>`;
+  const searchHtml = `<html><body><div class="search-result" data-url="${archivedUrl}">
+    <span>Model <em>EDW456S</em></span></div></body></html>`;
+  const productHtml = `<html><body><h1>EDW456S</h1><script type="application/json">${JSON.stringify({
+    model: 'EDW456S',
+    manual: artifactUrl,
+  })}</script></body></html>`;
+  const writes = [];
+  const result = await findEsattoOfficialPdf({ model: 'EDW456S' }, {
+    fetchImpl: async (url) => ({
+      ok: true,
+      status: 200,
+      text: async () => String(url).endsWith('/sitemap.xml')
+        ? sitemap
+        : String(url).includes('/search?') ? searchHtml : productHtml,
+    }),
+    writeObject: async (path, bytes) => writes.push([path, Buffer.from(bytes)]),
+  });
+
+  assert.deepEqual(result.sourceLanes.map((lane) => [
+    lane.laneId, lane.status, lane.supported,
+  ]), [
+    ['current_product', 'complete', true],
+    ['discontinued_archive', 'complete', true],
+    ['support_search_api', 'complete', true],
+    ['official_document_cdn', 'complete', true],
+    ['official_product_detail', 'complete', true],
+  ]);
+  assert.equal(result.catalogState, 'archived');
+  assert.ok(result.resources.some((resource) => (
+    resource.sourceUrl === archivedUrl
+      && resource.sourceLaneId === 'official_product_detail'
+      && resource.resourceType === 'product_page'
+  )));
+  assert.ok(result.resources.some((resource) => (
+    resource.sourceUrl === artifactUrl
+      && resource.sourceLaneId === 'official_document_cdn'
+      && resource.resourceType === 'user_manual'
+  )));
+  assert.equal(writes.length, 3);
+  assert.ok(result.sourceLanes
+    .filter((lane) => lane.supported)
+    .every((lane) => lane.provenance.length > 0));
 });
 
 test('Esatto parser extracts fridge dimensions and clearances from user manual text', () => {

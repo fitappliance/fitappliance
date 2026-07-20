@@ -160,10 +160,10 @@
         },
         {
           "path": "scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs",
-          "contentSha256": "3e0ec9b7b137da0a03d055ad2dfdc131838c2d357d9585be6619dd70be080328"
+          "contentSha256": "3cdfce341259066f24f16fa6977ca4cb6f389d586e26a54d9e3fdc299ce2d765"
         }
       ],
-      "semanticSha256": "417d49ca1ba69c9526adac0334186c16997e2e7e681a5e478ecb974082944389"
+      "semanticSha256": "94fc01ff3faea78c6ca3f2053a31a696c63d520c9c8832b4aae0bc1ed2c73767"
     },
     {
       "id": "source-authority-policy",
@@ -638,14 +638,14 @@
         },
         {
           "path": "scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs",
-          "contentSha256": "3e0ec9b7b137da0a03d055ad2dfdc131838c2d357d9585be6619dd70be080328"
+          "contentSha256": "3cdfce341259066f24f16fa6977ca4cb6f389d586e26a54d9e3fdc299ce2d765"
         },
         {
           "path": "src/domain/historical-official-candidate-manifest.mjs",
-          "contentSha256": "1a2d9c348f212940d60c2eaeb45120cabda36007f2144e51942a42ea69ab9181"
+          "contentSha256": "34a0cde8ab3a49667ca9caeddc910a78682bede9649556a6bc454c5682628b18"
         }
       ],
-      "producerSha256": "85e16d6604600bae2c727775ab735ebaae683bc3af01c88423f510a5d473e987",
+      "producerSha256": "43cbca93bfb9d91df3164b8c04a5add9b9c0e6d0206d6bcf7a8cd7fa1e64490f",
       "consumers": [
         "executable-queue"
       ],
@@ -1945,6 +1945,6 @@
     "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
     "checkpointCount": 5
   },
-  "contractId": "historical_evidence_system_5d09d499d8f7d4ee0d5c7af6",
-  "semanticContractSha256": "5d09d499d8f7d4ee0d5c7af60ddaef1f91ac6d8e1f4142092a132e668fb9360e"
+  "contractId": "historical_evidence_system_ee4133065c59780d595724fa",
+  "semanticContractSha256": "ee4133065c59780d595724fabd903c74df0c85e6c589494899cbdeaa12dc972f"
 }

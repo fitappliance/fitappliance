@@ -302,9 +302,7 @@ test('builds one inspectable discovery state per queued model without promoting 
   assert.equal(manifest.schemaVersion, 1);
   assert.equal(manifest.summary.targets, 4);
   assert.deepEqual(manifest.summary.byState, {
-    CANDIDATES_READY: 1,
-    DISCOVERY_RETRYABLE: 1,
-    NO_CANDIDATE_COMPLETE: 1,
+    DISCOVERY_RETRYABLE: 3,
     RESEARCH_REQUIRED: 1,
   });
   assert.equal(manifest.candidates.length, 1);
@@ -313,8 +311,10 @@ test('builds one inspectable discovery state per queued model without promoting 
   assert.equal(target(manifest, 'abc-123').candidateEdges[0].exactModelUrlSignal, true);
   assert.equal(manifest.candidates[0].expectedContentType, 'application/pdf');
   assert.deepEqual(manifest.candidates[0].applicableReferenceIds, ['abc-123']);
-  assert.equal(target(manifest, 'no-100').state, 'NO_CANDIDATE_COMPLETE');
-  assert.equal(target(manifest, 'no-100').terminal, true);
+  assert.equal(target(manifest, 'abc-123').state, 'DISCOVERY_RETRYABLE');
+  assert.deepEqual(target(manifest, 'abc-123').legacyAggregateResolverIds, ['alpha-official']);
+  assert.equal(target(manifest, 'no-100').state, 'DISCOVERY_RETRYABLE');
+  assert.equal(target(manifest, 'no-100').terminal, false);
   assert.equal(target(manifest, 'retry-9').state, 'DISCOVERY_RETRYABLE');
   assert.equal(target(manifest, 'retry-9').retryableDiscovery, true);
   assert.equal(target(manifest, 'manual-gap').state, 'RESEARCH_REQUIRED');
@@ -379,6 +379,147 @@ test('never emits complete no-source from a missing, timed-out, truncated, or fa
   input.discoveryRuns[0].targets[1].resolvers = [];
   input.discoveryRuns[0] = rebindDiscoveryRun(input.discoveryRuns[0]);
   assert.equal(target(buildHistoricalOfficialCandidateManifest(input), 'no-100').state, 'DISCOVERY_RETRYABLE');
+});
+
+test('legacy aggregate completion cannot authorize terminal zero-source', () => {
+  const input = fixture();
+  assert.equal(
+    target(buildHistoricalOfficialCandidateManifest(input), 'no-100').state,
+    'DISCOVERY_RETRYABLE',
+  );
+});
+
+test('all required schema-v2 source lanes must complete before candidates or zero-source become ready', () => {
+  const input = fixture();
+  const hash = SHA('d');
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_sitemap',
+    market: 'AU',
+    discoveryUrl: 'https://manuals.alpha.example/sitemap.xml',
+    requestedModel: 'NO-100',
+    contentType: 'application/xml',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/dd/dd/${hash}.xml`,
+    byteSize: 200,
+  };
+  const laneContracts = [
+    { laneId: 'current_product', required: true, supported: true },
+    { laneId: 'discontinued_archive', required: true, supported: true },
+    { laneId: 'support_search_api', required: false, supported: false },
+    { laneId: 'official_document_cdn', required: true, supported: true },
+    { laneId: 'official_product_detail', required: true, supported: true },
+  ];
+  const completeLanes = laneContracts.map((lane) => ({
+    ...lane,
+    status: lane.supported ? 'complete' : 'unsupported',
+    candidateCount: 0,
+    provenance: lane.supported ? [provenance] : [],
+    reason: lane.supported ? null : 'No public support API.',
+  }));
+  input.resolverContractsByReference.set('no-100', [{
+    schemaVersion: 2,
+    resolverId: 'alpha-official',
+    version: '2',
+    scope: 'all_declared_official_source_lanes',
+    required: true,
+    sourceLanes: laneContracts,
+  }]);
+  input.discoveryRuns[0].targets[1].resolvers = [{
+    schemaVersion: 2,
+    resolverId: 'alpha-official',
+    version: '2',
+    scope: 'all_declared_official_source_lanes',
+    required: true,
+    completion: 'complete',
+    sourceLanes: completeLanes,
+    candidates: [],
+    failures: [],
+  }];
+  input.discoveryRuns[0] = rebindDiscoveryRun(input.discoveryRuns[0]);
+  assert.equal(target(buildHistoricalOfficialCandidateManifest(input), 'no-100').state, 'NO_CANDIDATE_COMPLETE');
+
+  const partial = fixture();
+  partial.resolverContractsByReference.set('no-100', input.resolverContractsByReference.get('no-100'));
+  partial.discoveryRuns[0].targets[1].resolvers = [{
+    ...input.discoveryRuns[0].targets[1].resolvers[0],
+    completion: 'retryable',
+    sourceLanes: completeLanes.map((lane) => lane.laneId === 'discontinued_archive'
+      ? { ...lane, status: 'retryable', provenance: [], reason: 'Archive request timed out.' }
+      : lane.laneId === 'official_document_cdn'
+        ? { ...lane, candidateCount: 1 }
+        : lane),
+    candidates: [{
+      sourceUrl: 'https://manuals.alpha.example/NO-100.pdf',
+      resolverId: 'alpha-official',
+      resolverVersion: '2',
+      sourceLaneId: 'official_document_cdn',
+      discoveryMethod: 'official_product_page_document_link',
+      documentType: 'installation_guide',
+      sourceModelHint: 'NO-100',
+      authorityMode: 'official',
+      sourceRole: 'manufacturer_document',
+      requiredAttempt: true,
+      batchJobId: null,
+    }],
+    failures: [{ code: 'archive_timeout', message: 'Archive request timed out.' }],
+  }];
+  partial.discoveryRuns[0] = rebindDiscoveryRun(partial.discoveryRuns[0]);
+  const partialTarget = target(buildHistoricalOfficialCandidateManifest(partial), 'no-100');
+  assert.equal(partialTarget.state, 'DISCOVERY_RETRYABLE');
+  assert.equal(partialTarget.candidateEdges.length, 1);
+  assert.deepEqual(partialTarget.incompleteSourceLaneIds, [
+    'alpha-official:discontinued_archive',
+  ]);
+
+  const wrongModel = fixture();
+  wrongModel.resolverContractsByReference.set('no-100', input.resolverContractsByReference.get('no-100'));
+  wrongModel.discoveryRuns[0].targets[1].resolvers = [{
+    ...input.discoveryRuns[0].targets[1].resolvers[0],
+    sourceLanes: completeLanes.map((lane) => ({
+      ...lane,
+      provenance: lane.provenance.map((entry) => ({ ...entry, requestedModel: 'OTHER-100' })),
+    })),
+  }];
+  wrongModel.discoveryRuns[0] = rebindDiscoveryRun(wrongModel.discoveryRuns[0]);
+  assert.throws(
+    () => buildHistoricalOfficialCandidateManifest(wrongModel),
+    /source lane.*model binding/i,
+  );
+
+  const wrongMarket = fixture();
+  wrongMarket.resolverContractsByReference.set('no-100', input.resolverContractsByReference.get('no-100'));
+  wrongMarket.discoveryRuns[0].targets[1].resolvers = [{
+    ...input.discoveryRuns[0].targets[1].resolvers[0],
+    sourceLanes: completeLanes.map((lane) => ({
+      ...lane,
+      provenance: lane.provenance.map((entry) => ({ ...entry, market: 'NZ' })),
+    })),
+  }];
+  wrongMarket.discoveryRuns[0] = rebindDiscoveryRun(wrongMarket.discoveryRuns[0]);
+  assert.throws(
+    () => buildHistoricalOfficialCandidateManifest(wrongMarket),
+    /source lane.*market binding/i,
+  );
+
+  const wrongHost = fixture();
+  wrongHost.officialCandidateValidator = ({ sourceUrl }) => new URL(sourceUrl).hostname.endsWith('alpha.example');
+  wrongHost.resolverContractsByReference.set('no-100', input.resolverContractsByReference.get('no-100'));
+  wrongHost.discoveryRuns[0].targets[1].resolvers = [{
+    ...input.discoveryRuns[0].targets[1].resolvers[0],
+    sourceLanes: completeLanes.map((lane) => ({
+      ...lane,
+      provenance: lane.provenance.map((entry) => ({
+        ...entry,
+        discoveryUrl: 'https://retailer.example/sitemap.xml',
+      })),
+    })),
+  }];
+  wrongHost.discoveryRuns[0] = rebindDiscoveryRun(wrongHost.discoveryRuns[0]);
+  assert.throws(
+    () => buildHistoricalOfficialCandidateManifest(wrongHost),
+    /source lane.*official host binding/i,
+  );
 });
 
 test('rebuilds idempotently from its prior manifest and rejects tampered run bindings', () => {
@@ -547,8 +688,93 @@ test('online discovery persists an immutable run object before updating the offl
     assert.equal(createHash('sha256').update(stored).digest('hex'), result.run.storageObject.contentSha256);
     const persisted = JSON.parse(await readFile(outputPath, 'utf8'));
     assert.equal(persisted.runBindings[0].runId, 'alpha-fridge-unit-canary');
-    assert.equal(target(persisted, 'abc-123').state, 'CANDIDATES_READY');
+    assert.equal(target(persisted, 'abc-123').state, 'DISCOVERY_RETRYABLE');
+    assert.equal(target(persisted, 'abc-123').candidateEdges.length, 2);
     assert.deepEqual(result.run.boundedManifest, boundedManifest);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test('online discovery rejects a schema-v2 lane whose content-addressed provenance object is missing', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'fitappliance-lane-object-missing-'));
+  const storageRoot = join(directory, 'storage');
+  const inputPath = join(directory, 'acquisition.json');
+  const outputPath = join(directory, 'manifest.json');
+  const input = fixture();
+  const controlPlane = discoveryControlPlane(input);
+  const boundedManifest = controlPlane.boundedBatches.manifests[0];
+  await writeFile(inputPath, `${JSON.stringify(input.acquisitionQueue)}\n`);
+  const laneContracts = [
+    { laneId: 'current_product', required: true, supported: true },
+    { laneId: 'discontinued_archive', required: true, supported: true },
+    { laneId: 'support_search_api', required: true, supported: true },
+    { laneId: 'official_document_cdn', required: true, supported: true },
+    { laneId: 'official_product_detail', required: true, supported: true },
+  ];
+  const hash = SHA('e');
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_sitemap',
+    market: 'AU',
+    discoveryUrl: 'https://manuals.alpha.example/sitemap.xml',
+    requestedModel: 'ABC-123',
+    contentType: 'application/xml',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/ee/ee/${hash}.xml`,
+    byteSize: 100,
+  };
+  const resolverContract = {
+    schemaVersion: 2,
+    resolverId: 'alpha-official',
+    version: '2',
+    scope: 'all_declared_official_source_lanes',
+    required: true,
+    sourceLanes: laneContracts,
+  };
+  const contracts = new Map(input.acquisitionQueue.records.map((record) => [
+    record.referenceId,
+    record.resolverIds.length ? [resolverContract] : [],
+  ]));
+  try {
+    await assert.rejects(
+      runHistoricalOfficialCandidateDiscovery([
+        '--manifest-id', boundedManifest.manifestId,
+        '--run-id', 'alpha-missing-lane-object', '--storage-root', storageRoot,
+        '--input', inputPath, '--output', outputPath,
+      ], {
+        verifyStorageRoot: async () => ({
+          root: storageRoot,
+          markerSha256: SHA('e'),
+          volumeUuid: 'UNIT-TEST',
+        }),
+        controlPlane,
+        now: (() => {
+          const times = [new Date('2026-07-19T02:30:00.000Z'), new Date('2026-07-19T02:31:00.000Z')];
+          return () => times.shift();
+        })(),
+        resolversForRecord: () => [{
+          ...resolverContract,
+          resolve: async () => ({
+            ...resolverContract,
+            completion: 'complete',
+            sourceLanes: laneContracts.map((lane) => ({
+              ...lane,
+              status: 'complete',
+              candidateCount: 0,
+              provenance: [provenance],
+              reason: null,
+            })),
+            candidates: [],
+            failures: [],
+          }),
+        }],
+        resolverContractsByReference: contracts,
+        officialCandidateValidator: () => true,
+        writeOutput: () => {},
+      }),
+      /source lane provenance object.*missing/i,
+    );
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
@@ -610,6 +836,156 @@ test('online discovery resumes an externally indexed run after manifest persiste
     assert.equal(resumed.run.runId, 'alpha-fridge-resume-canary');
     const persisted = JSON.parse(await readFile(outputPath, 'utf8'));
     assert.equal(persisted.runBindings[0].runId, 'alpha-fridge-resume-canary');
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test('online discovery revalidates candidate provenance objects before resuming an indexed run', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'fitappliance-candidate-resume-object-'));
+  const inputPath = join(directory, 'acquisition.json');
+  const outputPath = join(directory, 'manifest.json');
+  const input = fixture();
+  const controlPlane = discoveryControlPlane(input);
+  const boundedManifest = controlPlane.boundedBatches.manifests[0];
+  await writeFile(inputPath, `${JSON.stringify(input.acquisitionQueue)}\n`);
+  const objects = new Map();
+  const objectStore = {
+    async writeObject(path, bytes) { objects.set(path, Buffer.from(bytes)); },
+    async readObject(path) {
+      if (!objects.has(path)) {
+        const error = new Error(`missing ${path}`);
+        error.code = 'ENOENT';
+        throw error;
+      }
+      return Buffer.from(objects.get(path));
+    },
+  };
+  const laneContracts = [
+    'current_product',
+    'discontinued_archive',
+    'support_search_api',
+    'official_document_cdn',
+    'official_product_detail',
+  ].map((laneId) => ({ laneId, required: true, supported: true }));
+  const resolverContract = {
+    schemaVersion: 2,
+    resolverId: 'alpha-official',
+    version: '2',
+    scope: 'all_declared_official_source_lanes',
+    required: true,
+    sourceLanes: laneContracts,
+  };
+  const contracts = new Map(input.acquisitionQueue.records.map((record) => [
+    record.referenceId,
+    record.resolverIds.length ? [resolverContract] : [],
+  ]));
+  const candidateObjectPaths = [];
+  let resolverCalls = 0;
+  const common = {
+    objectStore,
+    controlPlane,
+    verifyStorageRoot: async () => ({
+      root: directory,
+      markerSha256: SHA('f'),
+      volumeUuid: 'UNIT-TEST',
+    }),
+    now: (() => {
+      const times = [new Date('2026-07-19T03:30:00.000Z'), new Date('2026-07-19T03:31:00.000Z')];
+      return () => times.shift() ?? (() => { throw new Error('network discovery unexpectedly restarted'); })();
+    })(),
+    resolversForRecord: () => [{
+      ...resolverContract,
+      resolve: async (record) => {
+        resolverCalls += 1;
+        const bytes = Buffer.from(`official source index for ${record.model}`);
+        const hash = createHash('sha256').update(bytes).digest('hex');
+        const objectPath = `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.html`;
+        await objectStore.writeObject(objectPath, bytes);
+        const candidateBytes = Buffer.from(`official product page for ${record.model}`);
+        const candidateHash = createHash('sha256').update(candidateBytes).digest('hex');
+        const candidateObjectPath = `evidence/web/sha256/${candidateHash.slice(0, 2)}/${candidateHash.slice(2, 4)}/${candidateHash}.html`;
+        candidateObjectPaths.push(candidateObjectPath);
+        await objectStore.writeObject(candidateObjectPath, candidateBytes);
+        const productUrl = `https://manuals.alpha.example/products/${record.model}`;
+        const documentUrl = `https://manuals.alpha.example/documents/${record.model}.pdf`;
+        const provenance = {
+          schemaVersion: 1,
+          method: 'official_product_page',
+          market: 'AU',
+          discoveryUrl: productUrl,
+          requestedModel: record.model,
+          contentType: 'text/html',
+          contentSha256: hash,
+          objectPath,
+          byteSize: bytes.length,
+        };
+        return {
+          ...resolverContract,
+          completion: 'complete',
+          sourceLanes: laneContracts.map((lane) => ({
+            ...lane,
+            status: 'complete',
+            candidateCount: lane.laneId === 'official_document_cdn' ? 1 : 0,
+            provenance: [provenance],
+            reason: null,
+          })),
+          candidates: [{
+            sourceUrl: documentUrl,
+            resolverId: resolverContract.resolverId,
+            resolverVersion: resolverContract.version,
+            discoveryMethod: 'official_product_page_document_link',
+            documentType: 'installation_guide',
+            sourceModelHint: record.model,
+            authorityMode: 'official',
+            sourceRole: 'manufacturer_document',
+            requiredAttempt: true,
+            batchJobId: null,
+            sourceLaneId: 'official_document_cdn',
+            discoveryProvenance: {
+              schemaVersion: 1,
+              method: 'official_product_page',
+              market: 'AU',
+              discoveryUrl: productUrl,
+              requestedModel: record.model,
+              matchedModel: record.model,
+              artifactUrl: documentUrl,
+              artifactLinkUrl: documentUrl,
+              discoveryContentSha256: candidateHash,
+              discoveryObjectPath: candidateObjectPath,
+              discoveryByteSize: candidateBytes.length,
+            },
+          }],
+          failures: [],
+        };
+      },
+    }],
+    resolverContractsByReference: contracts,
+    officialCandidateValidator: () => true,
+    writeOutput: () => {},
+  };
+  const argv = [
+    '--manifest-id', boundedManifest.manifestId,
+    '--run-id', 'alpha-resume-object-canary',
+    '--storage-root', directory,
+    '--input', inputPath,
+    '--output', outputPath,
+  ];
+  try {
+    await assert.rejects(
+      runHistoricalOfficialCandidateDiscovery(argv, {
+        ...common,
+        writeManifest: async () => { throw new Error('simulated manifest write failure'); },
+      }),
+      /simulated manifest write failure/,
+    );
+    const callsAfterFirstRun = resolverCalls;
+    objects.delete(candidateObjectPaths[0]);
+    await assert.rejects(
+      runHistoricalOfficialCandidateDiscovery(argv, common),
+      /candidate discovery provenance object.*missing/i,
+    );
+    assert.equal(resolverCalls, callsAfterFirstRun);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

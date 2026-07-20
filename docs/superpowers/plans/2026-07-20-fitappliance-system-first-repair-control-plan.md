@@ -5,9 +5,9 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** EXECUTING - Task 4 in progress
+- **Status:** EXECUTING - Task 5 in progress
 - **Date:** 2026-07-20
-- **Active task:** Task 4 - introduce typed official source-lane discovery
+- **Active task:** Task 5 - repair document-family and MinerU scope grammar
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -437,12 +437,12 @@ Mandatory adversarial traces across the programme:
 
 | Task | Scope | Depends on | Status | Completion evidence |
 | ---: | --- | --- | --- | --- |
-| 0 | Freeze baseline and executable system contract | none | COMPLETED | Current contract `historical_evidence_system_f01c788b2bbc45dc5a38d6b5`; 23 stages; 10 epochs; tracked contract replay passed |
+| 0 | Freeze baseline and executable system contract | none | COMPLETED | Current contract `historical_evidence_system_ee4133065c59780d595724fa`; 26 stages; 10 epochs; tracked contract replay passed |
 | 1 | Lock independent identity/lifecycle/evidence/visibility/Fit axes | 0 | COMPLETED | 13 state-axis fixtures; typed provenance and lifecycle binding; 34 focused and 1,020 Architecture V2 tests passed |
 | 2 | Integrate real retailer availability observations | 1 | COMPLETED | 1,614/1,614 links accounted; append-safe schema-v2 ledger; AO/Partnerize typed adapters; policy-aware revalidation audit |
 | 3 | Build lifecycle shadow, refresh inventory, and prove destination/cutover isolation | 2 | COMPLETED | Shadow accounts for 3,515 products; all 1,384 legacy-current products have scoped refresh dispositions; real cutover remains safely blocked and production is byte-identical; synthetic atomic cutover passed |
-| 4 | Replace one-path discovery with typed official source lanes | 3 | IN_PROGRESS | Contract trace in progress |
-| 5 | Repair category/series/document-family MinerU grammar | 4 | PENDING | Not started |
+| 4 | Replace one-path discovery with typed official source lanes | 3 | COMPLETED | Schema-v2 five-lane contract; immutable AU/model/host-bound provenance; resume revalidation; exact Esatto canary; 1,059 Architecture V2 and 2,719 repository tests passed |
+| 5 | Repair category/series/document-family MinerU grammar | 4 | IN_PROGRESS | Contract trace in progress |
 | 6 | Prove receipt-to-publication vertical slices | 5 | PENDING | Not started |
 | 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | PENDING | Not started |
 | 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | PENDING | Not started |
@@ -871,6 +871,23 @@ are built before current-epoch projections finish.
 **Goal:** Make discovery completeness measurable without treating one website
 shape as a brand's complete official inventory.
 
+**Execution repair record (2026-07-20):**
+
+```text
+Symptom: A resolver can report completion=complete after checking one website shape. The manifest then emits terminal NO_CANDIDATE_COMPLETE even though current catalogue, discontinued/archive, support/search, product-detail, or document-link lanes were never represented.
+First incorrect persisted state: evidence-source resolver result schema v1. It stores one aggregate completion value and has no lane contract or immutable zero-result provenance.
+Upstream producers: brand finder implementations; resolver adapter descriptors; bounded online discovery runner; immutable discovery object store.
+Downstream consumers: historical official candidate manifest; materialized candidate graph; executable queue; target state; bounded batches; stage yield and circuit-breaker inputs.
+Affected state axes: source-discovery completeness directly. Product identity, retailer lifecycle, registry state, receipt validity, public visibility, and Fit remain independent and cannot be inferred from a discovery lane.
+Affected tracked/external artifacts: resolver source and tests; immutable discovery run objects on external storage; historical-official-candidate-manifest on the next release replay. Existing PDF, MinerU, receipt, and public projection objects remain read-only.
+Current contract: schema-v1 resolver completion may authorize terminal zero-source; candidate provenance exists only when a candidate is found; distinct page/document observations may be collapsed before the manifest records them.
+Target contract: schema-v2 resolver descriptors declare standard official lanes and whether each is required and supported. Every lane reports complete, retryable, or unsupported. A supported complete zero-result lane carries hash-bound raw discovery provenance; unsupported is explicit and cannot masquerade as a completed query. Only current schema-v2 results with every required supported lane complete can authorize terminal zero-candidate.
+Migration/rebuild required: preserve schema-v1 run replay and candidate discoveries, but remove its authority to create a new terminal zero-source result. Add lane-aware Esatto discovery first, keep other brands on explicit legacy/non-terminal contracts until their lane maps are versioned, then rebuild the candidate manifest and downstream release DAG only in Task 9.
+Rollback unit: resolver schema/adapter/manifest policy plus its tests and knowledge-base entry. Immutable discovery runs are append-only and are never deleted during rollback.
+Positive real canary: Esatto EDW456S is discoverable through the official discontinued/product-detail path and its official PDF link remains a historical candidate without implying CURRENT_RETAIL.
+Negative/adversarial canaries: current sitemap empty while archive contains the model; archive timeout after current completes; a candidate with no raw lane provenance; unsupported support API; mirror/retailer PDF; duplicate URL observed through distinct lanes; filename-only exact-model signal; and a legacy schema-v1 complete empty result.
+```
+
 **Files:**
 
 - Modify: `scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs`
@@ -897,6 +914,34 @@ deduplication.
 supported lanes complete; an archived exact-model official page can remain a
 historical candidate without becoming current; incomplete lanes remain
 retryable; normal builds remain network-free.
+
+**Completion evidence (2026-07-20):**
+
+- Resolver schema v2 declares current, archive, support/search, document/CDN,
+  and product-detail lanes. Required supported lanes must all complete before
+  either candidate-ready or terminal zero-source can be emitted. Schema-v1
+  results still replay candidate observations but have no terminal-zero
+  authority.
+- Every completed lane binds immutable raw bytes to the requested model, `AU`
+  market, and official host. The online runner reads and re-hashes both lane
+  and candidate-provenance objects before first persistence and again on
+  resume; a missing or changed object fails before manifest publication.
+- Candidate identity now preserves the same PDF observed through different
+  product pages. Exact URL matching rejects sibling suffixes, fetched page
+  identity is independently checked, and Squarespace extraction is scoped to
+  the exact product's structured context rather than site-wide embedded data.
+- The live EDW456S canary initially exposed 18 document links, including
+  sibling models. After the scope repair it yields exactly the official
+  EDW456S manual, product card, quick-start guide, and product page. On
+  2026-07-20 that page resolves under Esatto's current catalogue path, not its
+  archive path. This official-catalogue observation remains independent of
+  retailer lifecycle and cannot mark the product `CURRENT_RETAIL`.
+- The candidate manifest and downstream release queues were intentionally not
+  rebuilt; Task 9 owns the atomic release DAG. The tracked public projection is
+  byte-identical. Current system contract is
+  `historical_evidence_system_ee4133065c59780d595724fa` (26 stages, 10 epochs).
+  `npm run test:architecture-v2` passed 1,059/1,059 and `npm test` passed
+  2,719/2,719.
 
 **Stop condition:** a mirror PDF, retailer manual, filename, or URL substring
 is promoted as official exact-model field evidence.

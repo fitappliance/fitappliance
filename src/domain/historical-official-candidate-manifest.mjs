@@ -1,6 +1,9 @@
 import { createHash } from 'node:crypto';
 
-import { validateEvidenceSourceResolverResult } from './evidence-source-adapter-contract.mjs';
+import {
+  validateEvidenceSourceResolverResult,
+  validateOfficialSourceLaneDescriptors,
+} from './evidence-source-adapter-contract.mjs';
 import {
   isOfficialBrandArtifactUrl,
   isOfficialBrandMarketUrl,
@@ -14,6 +17,14 @@ const MANIFEST_STATES = new Set([
   'NO_CANDIDATE_COMPLETE',
 ]);
 const ACQUISITION_SEED_STRATEGY_ID = 'acquisition-queue-seed@1:classified_document_link';
+const RESOLVER_CONTRACT_KEYS = new Set([
+  'schemaVersion',
+  'resolverId',
+  'version',
+  'scope',
+  'required',
+  'sourceLanes',
+]);
 
 function requiredText(value, label) {
   const normalized = String(value ?? '').replace(/\s+/g, ' ').trim();
@@ -111,6 +122,13 @@ function uniqueMap(rows, key, label) {
   return result;
 }
 
+function rejectUnknownKeys(value, allowed, label) {
+  const unknown = Object.keys(value).filter((key) => !allowed.has(key));
+  if (unknown.length) {
+    throw new TypeError(`${label} contains unknown fields: ${unknown.sort().join(', ')}`);
+  }
+}
+
 function normalizeResolverContract(values, referenceId) {
   if (!Array.isArray(values)) throw new TypeError(`resolver contract array required: ${referenceId}`);
   const seen = new Set();
@@ -118,15 +136,26 @@ function normalizeResolverContract(values, referenceId) {
     if (!value || typeof value !== 'object' || Array.isArray(value)) {
       throw new TypeError(`resolver contract object required: ${referenceId}`);
     }
+    rejectUnknownKeys(value, RESOLVER_CONTRACT_KEYS, 'resolver contract');
     const resolverId = requiredText(value.resolverId, 'resolver contract ID');
     if (seen.has(resolverId)) throw new Error(`duplicate resolver contract: ${referenceId} ${resolverId}`);
     seen.add(resolverId);
     if (typeof value.required !== 'boolean') throw new TypeError('resolver contract required flag invalid');
+    const schemaVersion = value.schemaVersion ?? 1;
+    if (![1, 2].includes(schemaVersion)) throw new TypeError('resolver contract schema invalid');
+    const sourceLanes = schemaVersion === 2
+      ? validateOfficialSourceLaneDescriptors(value.sourceLanes)
+      : null;
+    if (schemaVersion === 1 && value.sourceLanes != null) {
+      throw new TypeError('schema-v1 resolver contract cannot declare source lanes');
+    }
     return {
+      schemaVersion,
       resolverId,
       version: requiredText(value.version, 'resolver contract version'),
       scope: requiredText(value.scope, 'resolver contract scope'),
       required: value.required,
+      ...(sourceLanes ? { sourceLanes } : {}),
     };
   }).sort((left, right) => left.resolverId.localeCompare(right.resolverId));
 }
@@ -223,8 +252,10 @@ function discoveryKey(value) {
     value.resolverId,
     value.resolverVersion,
     value.discoveryMethod,
+    value.sourceLaneId ?? '',
     value.retrievedAt,
     value.runId ?? '',
+    value.discoveryProvenance ? canonicalJsonSha256(value.discoveryProvenance) : '',
   ].join('\0');
 }
 
@@ -236,7 +267,12 @@ function normalizePriorDiscoveries(values) {
       rows.push(discovery);
       continue;
     }
-    const key = [discovery.resolverId, discovery.resolverVersion, discovery.discoveryMethod].join('\0');
+    const key = [
+      discovery.resolverId,
+      discovery.resolverVersion,
+      discovery.discoveryMethod,
+      discovery.sourceLaneId ?? '',
+    ].join('\0');
     const existing = acquisitionSeeds.get(key);
     if (!existing || timestamp(discovery.retrievedAt, 'candidate retrieval time')
       < timestamp(existing.retrievedAt, 'candidate retrieval time')) {
@@ -301,6 +337,7 @@ function addCandidateObservation({
     resolverId: requiredText(candidate.resolverId, 'candidate resolver ID'),
     resolverVersion: requiredText(candidate.resolverVersion, 'candidate resolver version'),
     discoveryMethod: requiredText(candidate.discoveryMethod, 'candidate discovery method'),
+    sourceLaneId: candidate.sourceLaneId ?? null,
     retrievedAt,
     runId,
     runContentSha256,
@@ -313,6 +350,9 @@ function addCandidateObservation({
       resolverId: requiredText(discovery.resolverId, 'candidate discovery resolver ID'),
       resolverVersion: requiredText(discovery.resolverVersion, 'candidate discovery resolver version'),
       discoveryMethod: requiredText(discovery.discoveryMethod, 'candidate discovery method'),
+      sourceLaneId: discovery.sourceLaneId == null
+        ? null
+        : requiredText(discovery.sourceLaneId, 'candidate discovery source lane ID'),
       retrievedAt: timestamp(discovery.retrievedAt, 'candidate retrieval time'),
       runId: discovery.runId == null ? null : requiredText(discovery.runId, 'candidate discovery run ID'),
       runContentSha256: discovery.runContentSha256 == null
@@ -341,7 +381,9 @@ function addCandidateObservation({
   if (candidate.sourceModelHint) edge.sourceModelHints.add(requiredText(candidate.sourceModelHint, 'candidate source-model hint'));
   edge.documentTypes.add(documentType);
   for (const discovery of discoveries) {
-    edge.discoveryStrategyIds.add(`${discovery.resolverId}@${discovery.resolverVersion}:${discovery.discoveryMethod}`);
+    edge.discoveryStrategyIds.add(discovery.sourceLaneId
+      ? `${discovery.resolverId}@${discovery.resolverVersion}:${discovery.sourceLaneId}:${discovery.discoveryMethod}`
+      : `${discovery.resolverId}@${discovery.resolverVersion}:${discovery.discoveryMethod}`);
   }
   if (discoveryStrategyIdsOverride != null) {
     if (!Array.isArray(discoveryStrategyIdsOverride) || !discoveryStrategyIdsOverride.length) {
@@ -510,15 +552,66 @@ function latestDiscoveryResults({ priorTarget, runTargets }) {
   ))[0] ?? null;
 }
 
+function validateSourceLaneTargetBindings(target, latest, officialCandidateValidator) {
+  for (const resolver of latest?.resolvers ?? []) {
+    if (resolver.schemaVersion !== 2) continue;
+    for (const lane of resolver.sourceLanes) {
+      for (const provenance of lane.provenance) {
+        if (modelKey(provenance.requestedModel) !== modelKey(target.model)) {
+          throw new Error(
+            `source lane model binding mismatch: ${target.referenceId} ${resolver.resolverId}:${lane.laneId}`,
+          );
+        }
+        if (requiredText(provenance.market, 'source lane market').toUpperCase() !== 'AU') {
+          throw new Error(
+            `source lane market binding mismatch: ${target.referenceId} ${resolver.resolverId}:${lane.laneId}`,
+          );
+        }
+        if (!officialCandidateValidator({ sourceUrl: provenance.discoveryUrl }, target)) {
+          throw new Error(
+            `source lane official host binding mismatch: ${target.referenceId} ${resolver.resolverId}:${lane.laneId}`,
+          );
+        }
+      }
+    }
+  }
+}
+
 function resolverOutcome(contract, latest) {
   const results = latest?.resolvers ?? [];
   const byId = new Map(results.map((result) => [result.resolverId, result]));
   const required = contract.filter((entry) => entry.required);
   const incompleteResolverIds = [];
+  const incompleteSourceLaneIds = [];
+  const legacyAggregateResolverIds = [];
   for (const descriptor of required) {
     const result = byId.get(descriptor.resolverId);
     if (!result || result.version !== descriptor.version || result.scope !== descriptor.scope
-      || result.required !== descriptor.required || result.completion !== 'complete') {
+      || result.required !== descriptor.required) {
+      incompleteResolverIds.push(descriptor.resolverId);
+      continue;
+    }
+    if (descriptor.schemaVersion !== 2 || result.schemaVersion !== 2) {
+      incompleteResolverIds.push(descriptor.resolverId);
+      legacyAggregateResolverIds.push(descriptor.resolverId);
+      continue;
+    }
+    const expectedLanes = validateOfficialSourceLaneDescriptors(descriptor.sourceLanes);
+    const resultLaneById = new Map(result.sourceLanes.map((lane) => [lane.laneId, lane]));
+    let resolverIncomplete = false;
+    for (const lane of expectedLanes) {
+      const actual = resultLaneById.get(lane.laneId);
+      if (!actual
+        || actual.required !== lane.required
+        || actual.supported !== lane.supported
+        || (lane.required && lane.supported && actual.status !== 'complete')) {
+        if (lane.required && lane.supported) {
+          incompleteSourceLaneIds.push(`${descriptor.resolverId}:${lane.laneId}`);
+        }
+        resolverIncomplete = true;
+      }
+    }
+    if (resolverIncomplete || result.completion !== 'complete') {
       incompleteResolverIds.push(descriptor.resolverId);
     }
   }
@@ -527,15 +620,17 @@ function resolverOutcome(contract, latest) {
     requiredResolverCount: required.length,
     requiredResolversComplete: required.length > 0 && incompleteResolverIds.length === 0,
     incompleteResolverIds: incompleteResolverIds.sort(),
+    incompleteSourceLaneIds: incompleteSourceLaneIds.sort(),
+    legacyAggregateResolverIds: legacyAggregateResolverIds.sort(),
   };
 }
 
 function manifestState(record, candidateEdges, outcome) {
-  if (candidateEdges.length > 0) return 'CANDIDATES_READY';
   if (record.executionReadiness === 'RESEARCH_REQUIRED'
     || record.executionReadiness === 'RESOLVER_GAP'
     || outcome.requiredResolverCount === 0) return 'RESEARCH_REQUIRED';
   if (!outcome.requiredResolversComplete) return 'DISCOVERY_RETRYABLE';
+  if (candidateEdges.length > 0) return 'CANDIDATES_READY';
   return 'NO_CANDIDATE_COMPLETE';
 }
 
@@ -649,6 +744,7 @@ export function buildHistoricalOfficialCandidateManifest(input) {
       priorTarget: priorTargetByReference.get(record.referenceId),
       runTargets: runTargetsByReference.get(record.referenceId) ?? [],
     });
+    validateSourceLaneTargetBindings(record, latest, officialCandidateValidator);
     const outcome = resolverOutcome(resolverContract, latest);
     const candidateEdges = rankEdges(
       record,
@@ -673,6 +769,8 @@ export function buildHistoricalOfficialCandidateManifest(input) {
       resolverContract,
       resolverResults: outcome.results,
       incompleteResolverIds: outcome.incompleteResolverIds,
+      incompleteSourceLaneIds: outcome.incompleteSourceLaneIds,
+      legacyAggregateResolverIds: outcome.legacyAggregateResolverIds,
       lastDiscoveryRunId: latest?.runId || null,
       lastDiscoveryAt: latest?.completedAt ?? null,
       referenceHintSourceIds: [...referenceHints.get(record.referenceId)].sort(),
@@ -715,6 +813,9 @@ export function buildHistoricalOfficialCandidateManifest(input) {
     candidates,
     targets,
   };
+  const sourceLaneResults = targets.flatMap((target) => target.resolverResults
+    .filter((result) => result.schemaVersion === 2)
+    .flatMap((result) => result.sourceLanes));
   return {
     schemaVersion: 1,
     generatedAt,
@@ -724,6 +825,9 @@ export function buildHistoricalOfficialCandidateManifest(input) {
       candidatesAreNotEvidenceReceipts: true,
       retailerAndRegistryHintsCannotBecomeOfficialCandidates: true,
       completeNoSourceRequiresAllCurrentRequiredResolvers: true,
+      terminalZeroSourceRequiresSchemaV2SourceLanes: true,
+      candidatesRequireRequiredSourceLanesComplete: true,
+      legacyAggregateCompletionCannotAuthorizeTerminal: true,
     },
     ...semanticPayload,
     summary: {
@@ -733,6 +837,18 @@ export function buildHistoricalOfficialCandidateManifest(input) {
       candidateEdges: targets.reduce((sum, target) => sum + target.candidateEdges.length, 0),
       runBindings: runBindings.length,
       byState: countBy(targets, 'state'),
+      schemaV2Targets: targets.filter((target) => target.resolverResults
+        .some((result) => result.schemaVersion === 2)).length,
+      legacyAggregateTargets: targets.filter((target) => target.legacyAggregateResolverIds.length > 0).length,
+      incompleteRequiredSourceLanes: targets.reduce(
+        (sum, target) => sum + target.incompleteSourceLaneIds.length,
+        0,
+      ),
+      sourceLaneProvenanceObjects: sourceLaneResults.reduce(
+        (sum, lane) => sum + lane.provenance.length,
+        0,
+      ),
+      bySourceLaneStatus: countBy(sourceLaneResults, 'status'),
     },
   };
 }

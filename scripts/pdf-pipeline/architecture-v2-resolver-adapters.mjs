@@ -104,6 +104,7 @@ function typedCandidate({
   category = null,
   discoveryProvenance = null,
   requiredAttempt = true,
+  sourceLaneId = null,
 }) {
   const authorityMode = authorityForUrl(
     sourceUrl,
@@ -121,6 +122,7 @@ function typedCandidate({
     sourceRole: sourceRole(authorityMode, documentType),
     requiredAttempt: authorityMode === 'official' ? requiredAttempt : false,
     discoveryProvenance,
+    ...(sourceLaneId ? { sourceLaneId } : {}),
   };
 }
 
@@ -170,6 +172,7 @@ export function createLegacyFinderResolverAdapter({
   finder,
   finderOptions = {},
   maximumCandidates = 16,
+  sourceLanes = null,
 }) {
   if (typeof finder !== 'function') throw new TypeError('legacy finder function required');
   if (!Number.isInteger(maximumCandidates) || maximumCandidates < 1) {
@@ -180,13 +183,42 @@ export function createLegacyFinderResolverAdapter({
     version,
     scope,
     required: true,
+    sourceLanes,
     async resolve(caseRecord) {
       const target = exactTarget(caseRecord);
-      if (/[*?]/.test(target.model)) return { completion: 'complete', candidates: [], failures: [] };
+      if (/[*?]/.test(target.model)) {
+        if (!sourceLanes) return { completion: 'complete', candidates: [], failures: [] };
+        const reason = 'Exact model is required for official source-lane discovery.';
+        return {
+          completion: 'retryable',
+          sourceLanes: sourceLanes.map((lane) => ({
+            ...lane,
+            status: lane.supported ? 'retryable' : 'unsupported',
+            candidateCount: 0,
+            provenance: [],
+            reason: lane.supported ? reason : 'Lane is not supported by this resolver.',
+          })),
+          candidates: [],
+          failures: [{ code: 'exact_model_required', message: reason }],
+        };
+      }
       try {
         const result = await finder(target, finderOptions);
         if (!result || typeof result !== 'object') {
-          return { completion: 'complete', candidates: [], failures: [] };
+          if (!sourceLanes) return { completion: 'complete', candidates: [], failures: [] };
+          const reason = 'Finder did not return typed source-lane outcomes.';
+          return {
+            completion: 'retryable',
+            sourceLanes: sourceLanes.map((lane) => ({
+              ...lane,
+              status: lane.supported ? 'retryable' : 'unsupported',
+              candidateCount: 0,
+              provenance: [],
+              reason: lane.supported ? reason : 'Lane is not supported by this resolver.',
+            })),
+            candidates: [],
+            failures: [{ code: 'source_lane_result_missing', message: reason }],
+          };
         }
         const primary = result.sourceUrl ? [{
           ...result,
@@ -197,7 +229,7 @@ export function createLegacyFinderResolverAdapter({
           ...primary,
           ...(Array.isArray(result.resources) ? result.resources : []),
           ...(Array.isArray(result.candidates) ? result.candidates : []),
-          ...productPageResources(result),
+          ...(sourceLanes ? [] : productPageResources(result)),
         ];
         const invalidUrls = [];
         const candidates = [];
@@ -236,9 +268,30 @@ export function createLegacyFinderResolverAdapter({
             category: target.category,
             discoveryProvenance,
             requiredAttempt: resource?.requiredAttempt ?? requestedType !== 'product_page',
+            sourceLaneId: resource?.sourceLaneId
+              ?? (sourceLanes
+                ? requestedType === 'product_page'
+                  ? 'official_product_detail'
+                  : 'official_document_cdn'
+                : null),
           }));
         }
         if (invalidUrls.length) {
+          if (sourceLanes) {
+            const reason = 'Finder returned an invalid or untrusted candidate URL.';
+            return {
+              completion: 'retryable',
+              sourceLanes: sourceLanes.map((lane) => ({
+                ...lane,
+                status: lane.supported ? 'retryable' : 'unsupported',
+                candidateCount: 0,
+                provenance: [],
+                reason: lane.supported ? reason : 'Lane is not supported by this resolver.',
+              })),
+              candidates: [],
+              failures: [{ code: 'invalid_candidate_url', message: reason }],
+            };
+          }
           return {
             completion: 'failed',
             candidates: [],
@@ -250,15 +303,79 @@ export function createLegacyFinderResolverAdapter({
         }
         const unique = uniqueCandidates(candidates);
         const overflow = unique.length > maximumCandidates;
+        const selected = unique.slice(0, maximumCandidates);
+        if (sourceLanes) {
+          const emittedLanes = Array.isArray(result.sourceLanes) ? result.sourceLanes : [];
+          const emittedById = new Map(emittedLanes.map((lane) => [lane.laneId, lane]));
+          const overflowLaneIds = new Set(unique.slice(maximumCandidates).map((candidate) => candidate.sourceLaneId));
+          const normalizedLanes = sourceLanes.map((descriptor) => {
+            const emitted = emittedById.get(descriptor.laneId);
+            const missingReason = 'Finder did not emit this declared source-lane outcome.';
+            const status = overflowLaneIds.has(descriptor.laneId)
+              ? 'retryable'
+              : emitted?.status ?? (descriptor.supported ? 'retryable' : 'unsupported');
+            const reason = overflowLaneIds.has(descriptor.laneId)
+              ? `Candidate limit ${maximumCandidates} truncated this source lane.`
+              : emitted
+                ? emitted.reason
+                : (descriptor.supported ? missingReason : 'Lane is not supported by this resolver.');
+            return {
+              ...descriptor,
+              status,
+              candidateCount: selected.filter((candidate) => candidate.sourceLaneId === descriptor.laneId).length,
+              provenance: emitted?.provenance ?? [],
+              reason,
+            };
+          });
+          const completion = normalizedLanes
+            .filter((lane) => lane.required && lane.supported)
+            .every((lane) => lane.status === 'complete')
+            ? 'complete'
+            : 'retryable';
+          const incompleteLanes = normalizedLanes.filter((lane) => lane.supported && lane.status === 'retryable');
+          return {
+            completion,
+            sourceLanes: normalizedLanes,
+            candidates: selected,
+            failures: [
+              ...(overflow ? [{
+                code: 'candidate_limit',
+                message: `legacy finder exceeded ${maximumCandidates} candidates`,
+              }] : []),
+              ...(!emittedLanes.length ? [{
+                code: 'source_lane_result_missing',
+                message: 'Finder returned candidates without typed source-lane outcomes.',
+              }] : []),
+              ...incompleteLanes
+                .filter((lane) => lane.reason)
+                .map((lane) => ({ code: 'source_lane_retryable', message: `${lane.laneId}: ${lane.reason}` })),
+            ],
+          };
+        }
         return {
           completion: overflow ? 'truncated' : 'complete',
-          candidates: unique.slice(0, maximumCandidates),
+          candidates: selected,
           failures: overflow ? [{
             code: 'candidate_limit',
             message: `legacy finder exceeded ${maximumCandidates} candidates`,
           }] : [],
         };
       } catch (error) {
+        if (sourceLanes) {
+          const message = String(error?.message ?? error);
+          return {
+            completion: 'retryable',
+            sourceLanes: sourceLanes.map((lane) => ({
+              ...lane,
+              status: lane.supported ? 'retryable' : 'unsupported',
+              candidateCount: 0,
+              provenance: [],
+              reason: lane.supported ? message : 'Lane is not supported by this resolver.',
+            })),
+            candidates: [],
+            failures: [{ code: 'resolver_failed', message }],
+          };
+        }
         return completionFromError(error);
       }
     },
@@ -268,7 +385,15 @@ export function createLegacyFinderResolverAdapter({
 function uniqueCandidates(candidates) {
   const seen = new Set();
   return candidates.filter((candidate) => {
-    const key = `${candidate.authorityMode}\0${new URL(candidate.sourceUrl).toString()}`;
+    const provenance = candidate.discoveryProvenance;
+    const key = [
+      candidate.authorityMode,
+      candidate.sourceLaneId ?? '',
+      new URL(candidate.sourceUrl).toString(),
+      provenance?.discoveryUrl ?? '',
+      provenance?.discoveryContentSha256 ?? '',
+      provenance?.documentId ?? '',
+    ].join('\0');
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
@@ -520,6 +645,14 @@ function hasDeterministicModelTemplate(value) {
   return templates.some((template) => String(template?.url ?? '').includes('{model}'));
 }
 
+const ESATTO_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: true, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: true, supported: true }),
+  Object.freeze({ laneId: 'support_search_api', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
 const LEGACY_RESOLVER_PROFILES = new Map([
   ['asko', { optionKey: 'asko', brandKey: 'asko', resolverId: 'asko-official-manuals-api', finder: findAskoOfficialPdf }],
   ['haier', {
@@ -545,7 +678,15 @@ const LEGACY_RESOLVER_PROFILES = new Map([
   ['midea', { optionKey: 'midea', brandKey: 'midea', resolverId: 'midea-official-discovery', finder: findMideaOfficialPdf }],
   ['chiq', { optionKey: 'chiq', brandKey: 'chiq', resolverId: 'chiq-official-discovery', finder: findChiqOfficialPdf }],
   ['artusi', { optionKey: 'artusi', brandKey: 'artusi', resolverId: 'artusi-official-discovery', finder: findArtusiOfficialPdf }],
-  ['esatto', { optionKey: 'esatto', brandKey: 'esatto', resolverId: 'esatto-official-discovery', finder: findEsattoOfficialPdf }],
+  ['esatto', {
+    optionKey: 'esatto',
+    brandKey: 'esatto',
+    resolverId: 'esatto-official-discovery',
+    version: '2',
+    scope: 'esatto_au_current_archive_product_detail_and_document_lanes',
+    sourceLanes: ESATTO_OFFICIAL_SOURCE_LANES,
+    finder: findEsattoOfficialPdf,
+  }],
   ['euromaid', { optionKey: 'euromaid', brandKey: 'euromaid', resolverId: 'euromaid-official-discovery', finder: findEuromaidOfficialPdf }],
   ['inalto', { optionKey: 'inalto', brandKey: 'inalto', resolverId: 'inalto-official-discovery', finder: findInaltoOfficialPdf }],
   ['kogan', { optionKey: 'kogan', brandKey: 'kogan', resolverId: 'kogan-official-discovery', finder: findKoganOfficialPdf }],
