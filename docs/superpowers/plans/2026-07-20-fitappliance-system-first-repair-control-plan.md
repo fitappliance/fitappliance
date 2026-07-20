@@ -5,9 +5,9 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** EXECUTING - Task 0 in progress
+- **Status:** EXECUTING - Task 1 in progress
 - **Date:** 2026-07-20
-- **Active task:** Task 0 - freeze and attest the current whole-system baseline
+- **Active task:** Task 1 - lock independent state-axis contracts
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -412,8 +412,8 @@ Mandatory adversarial traces across the programme:
 
 | Task | Scope | Depends on | Status | Completion evidence |
 | ---: | --- | --- | --- | --- |
-| 0 | Freeze baseline and executable system contract | none | IN_PROGRESS | Baseline contract tests pending |
-| 1 | Lock independent identity/lifecycle/evidence/visibility/Fit axes | 0 | PENDING | Not started |
+| 0 | Freeze baseline and executable system contract | none | COMPLETED | Contract `historical_evidence_system_2e2f3a4e2f39803950680d43`; 23 stages; 10 epochs; 1,012 Architecture V2 tests passed |
+| 1 | Lock independent identity/lifecycle/evidence/visibility/Fit axes | 0 | IN_PROGRESS | Contract trace and failing boundary tests pending |
 | 2 | Integrate real retailer availability observations | 1 | PENDING | Not started |
 | 3 | Rebuild classification and prove lifecycle destination isolation | 2 | PENDING | Not started |
 | 4 | Replace one-path discovery with typed official source lanes | 3 | PENDING | Not started |
@@ -432,6 +432,23 @@ acceptance gate is independently satisfied; no gate may rely on a later task.
 ### Task 0: Freeze and attest the whole-system baseline
 
 **Goal:** Make drift and mixed-epoch input visible before behavior changes.
+
+**Execution repair record (2026-07-20):**
+
+```text
+Symptom: Independently valid generated artifacts can belong to different release epochs while focused tests remain green.
+First incorrect persisted state: No tracked artifact recomputes and binds the whole producer/consumer/release contract.
+Upstream producers: Architecture V2 policies, observations, registries, acceptance bundles, audits, queues, and control artifacts.
+Downstream consumers: public projection, historical replacement projection, bounded runners, scale controller, normal build, and deployment.
+Affected state axes: identity, lifecycle, evidence, public visibility, replacement eligibility, and Fit completeness.
+Affected tracked/external artifacts: tracked Architecture V2 JSON inputs/outputs; external evidence remains hash-referenced and read-only.
+Current contract: Per-artifact validation and partial build-graph ordering without a whole-system epoch attestation.
+Target contract: Deterministic, external-drive-free system contract with recomputed hashes, explicit owners/consumers, epochs, transitions, and an acyclic release DAG.
+Migration/rebuild required: Register the contract artifact, build it from current tracked inputs, and refresh the repository architecture audit.
+Rollback unit: One Task 0 Git commit containing producer, test, path registration, generated contract, package command, plan, and audit update.
+Positive real canary: Current tracked 2026-07-19 control-plane artifacts produce one valid contract.
+Negative/adversarial canaries: Mixed source hash, missing source, duplicate owner, unknown consumer, release cycle, and next-queue/source epoch inversion.
+```
 
 **Files:**
 
@@ -472,6 +489,34 @@ current code rather than the 2026-07-11 baseline.
 
 **Stop condition:** the builder merely copies self-reported hashes without
 recomputing or cross-checking them.
+
+**Execution result (2026-07-20):**
+
+- Added a deterministic repository-only contract that binds 23 persisted
+  stages, 10 independent code/policy/tool epochs, and the contract builder's
+  own source files.
+- Replayed target state, bounded batches, programme status, and scale control
+  from current tracked inputs before allowing output; native classification,
+  document graph, queue, candidate, canary, receipt-audit, and controller
+  semantic hashes are independently recomputed.
+- Recorded three current contract gaps without treating them as released facts:
+  retailer observations are not yet lifecycle inputs, target state still stores
+  timestamp-only source bindings, and the repository build graph is partial.
+- Producer boundary: malformed schemas, missing source hashes, duplicate
+  artifact owners, and mixed semantic/content bindings fail closed.
+- Consumer boundary: unknown consumers, non-reciprocal dependencies, and
+  tampered source bindings fail even when the whole contract is re-signed.
+- Replay and second-run boundaries: two consecutive final builds emitted byte
+  SHA-256 `0c5fc9cdb8afb2bb11a8b974aadf30cf31e2922c3d513332a1df3e02ecdfb2e6`;
+  the tracked contract is also covered by a two-build deep-equality test.
+- Publication boundary: the contract binds current publication, historical
+  replacement, receipt replay, and Fit audit as separate stages; no external
+  storage path appears in the artifact.
+- Adversarial review: strengthened the output validator after finding that a
+  caller could otherwise tamper with a local source binding and recompute only
+  the outer hash.
+- Verification: focused contract/path tests passed 15/15; full
+  `npm run test:architecture-v2` passed 1,012/1,012; `git diff --check` passed.
 
 ### Task 1: Lock independent state-axis contracts
 

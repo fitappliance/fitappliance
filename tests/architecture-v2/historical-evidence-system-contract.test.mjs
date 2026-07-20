@@ -1,0 +1,247 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
+import {
+  buildHistoricalEvidenceSystemContract,
+  validateHistoricalEvidenceSystemContract,
+} from '../../src/domain/historical-evidence-system-contract.mjs';
+import {
+  buildHistoricalEvidenceSystemContractFromRepository,
+} from '../../scripts/architecture-v2/build-historical-evidence-system-contract.mjs';
+
+const RELEASE_ID = 'historical-evidence-release-test';
+const GENERATED_AT = '2026-07-19T20:00:00.000Z';
+
+function sourceStage(overrides = {}) {
+  const semanticPayload = { records: [{ referenceId: 'historical_a' }] };
+  return {
+    id: 'released-source-projection',
+    artifactKey: 'historicalApplianceReference',
+    artifactPath: 'data/architecture-v2/generated/historical-appliance-reference.json',
+    owner: 'scripts/architecture-v2/build-historical-appliance-reference.mjs',
+    producerInputs: [{
+      path: 'src/domain/historical-appliance-reference.mjs',
+      content: 'source-producer-v1',
+    }],
+    consumers: ['tracked-next-queue'],
+    schemaVersion: 1,
+    payload: {
+      schemaVersion: 1,
+      generatedAt: GENERATED_AT,
+      ...semanticPayload,
+    },
+    semanticPayload,
+    declaredSemanticSha256: canonicalJsonSha256(semanticPayload),
+    sourceBindings: [],
+    releaseEpoch: 1,
+    releaseState: 'RELEASED',
+    lifecycleVisibility: ['HISTORICAL_INPUT'],
+    nextTransitions: ['tracked-next-queue'],
+    ...overrides,
+  };
+}
+
+function queueStage(source, overrides = {}) {
+  const semanticPayload = { targets: [{ referenceId: 'historical_a' }] };
+  return {
+    id: 'tracked-next-queue',
+    artifactKey: 'historicalExecutableEvidenceRecoveryQueue',
+    artifactPath: 'data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json',
+    owner: 'scripts/architecture-v2/build-historical-executable-recovery-queue.mjs',
+    producerInputs: [{
+      path: 'src/domain/historical-executable-recovery-queue.mjs',
+      content: 'queue-producer-v1',
+    }],
+    consumers: [],
+    schemaVersion: 2,
+    payload: {
+      schemaVersion: 2,
+      generatedAt: GENERATED_AT,
+      ...semanticPayload,
+    },
+    semanticPayload,
+    declaredSemanticSha256: canonicalJsonSha256(semanticPayload),
+    sourceBindings: [{
+      sourceStageId: source.id,
+      digestKind: 'semantic',
+      declaredSha256: canonicalJsonSha256(source.semanticPayload),
+    }],
+    releaseDependencies: [source.id],
+    releaseEpoch: 1,
+    releaseState: 'RELEASED',
+    lifecycleVisibility: ['CONTROL_ONLY'],
+    nextTransitions: [],
+    ...overrides,
+  };
+}
+
+function contractInput(overrides = {}) {
+  const source = sourceStage();
+  return {
+    generatedAt: GENERATED_AT,
+    releaseId: RELEASE_ID,
+    producerInputs: [
+      { path: 'src/domain/historical-evidence-system-contract.mjs', content: 'contract-v1' },
+      { path: 'scripts/architecture-v2/build-historical-evidence-system-contract.mjs', content: 'builder-v1' },
+    ],
+    stages: [source, queueStage(source)],
+    epochs: [
+      {
+        id: 'identity-registry',
+        owner: 'src/domain/canonical-product.mjs',
+        inputs: [{ path: 'src/domain/canonical-product.mjs', content: 'identity-v1' }],
+      },
+      {
+        id: 'receipt-policy',
+        owner: 'src/domain/historical-evidence-recovery-contract.mjs',
+        inputs: [{ path: 'data/architecture-v2/policies/historical-evidence-recovery-policy.json', content: '{"version":1}' }],
+      },
+    ],
+    baseline: {
+      historicalReferences: 8089,
+      currentProducts: 3515,
+      receiptBoundVerifiedFit: 0,
+    },
+    controllerDecision: {
+      decision: 'STOP_LOW_YIELD',
+      scope: 'dishwasher / Esatto / BOUNDED_DISCOVERY',
+    },
+    ...overrides,
+  };
+}
+
+test('system contract is deterministic and validates recomputed artifact and epoch digests', () => {
+  const first = buildHistoricalEvidenceSystemContract(contractInput());
+  const second = buildHistoricalEvidenceSystemContract(contractInput());
+
+  assert.deepEqual(second, first);
+  assert.equal(validateHistoricalEvidenceSystemContract(first), first);
+  assert.match(first.semanticContractSha256, /^[a-f0-9]{64}$/);
+  assert.match(first.producerSha256, /^[a-f0-9]{64}$/);
+  assert.equal(first.stages[0].declaredSemanticSha256, first.stages[0].semanticSha256);
+  assert.equal(first.stages[1].sourceBindings[0].declaredSha256, first.stages[1].sourceBindings[0].resolvedSha256);
+  assert.equal(first.epochs.length, 2);
+  assert.ok(first.epochs.every((epoch) => /^[a-f0-9]{64}$/.test(epoch.semanticSha256)));
+});
+
+test('system contract rejects a mixed-epoch source binding', () => {
+  const input = contractInput();
+  input.stages[1].sourceBindings[0].declaredSha256 = 'a'.repeat(64);
+
+  assert.throws(
+    () => buildHistoricalEvidenceSystemContract(input),
+    /mixed epoch.*tracked-next-queue.*released-source-projection/i,
+  );
+});
+
+test('system contract rejects a missing source hash', () => {
+  const input = contractInput();
+  delete input.stages[1].sourceBindings[0].declaredSha256;
+
+  assert.throws(
+    () => buildHistoricalEvidenceSystemContract(input),
+    /source hash required.*tracked-next-queue/i,
+  );
+});
+
+test('system contract rejects duplicate artifact ownership', () => {
+  const input = contractInput();
+  input.stages[1].artifactKey = input.stages[0].artifactKey;
+
+  assert.throws(
+    () => buildHistoricalEvidenceSystemContract(input),
+    /duplicate artifact owner.*historicalApplianceReference/i,
+  );
+});
+
+test('system contract rejects an unknown consumer', () => {
+  const input = contractInput();
+  input.stages[0].consumers.push('missing-consumer');
+
+  assert.throws(
+    () => buildHistoricalEvidenceSystemContract(input),
+    /unknown consumer.*missing-consumer/i,
+  );
+});
+
+test('system contract rejects a cyclic release dependency', () => {
+  const input = contractInput();
+  input.stages[0].releaseDependencies = ['tracked-next-queue'];
+
+  assert.throws(
+    () => buildHistoricalEvidenceSystemContract(input),
+    /cyclic release dependency/i,
+  );
+});
+
+test('system contract rejects a released queue newer than its source projection', () => {
+  const input = contractInput();
+  input.stages[1].releaseEpoch = 2;
+
+  assert.throws(
+    () => buildHistoricalEvidenceSystemContract(input),
+    /released queue epoch 2.*source projection epoch 1/i,
+  );
+});
+
+test('system contract permits a separately marked next-epoch pending queue', () => {
+  const input = contractInput();
+  input.stages[1].releaseEpoch = 2;
+  input.stages[1].releaseState = 'PENDING_NEXT';
+
+  const contract = buildHistoricalEvidenceSystemContract(input);
+  assert.equal(contract.stages[1].releaseState, 'PENDING_NEXT');
+});
+
+test('system contract validator rejects contract tampering', () => {
+  const contract = buildHistoricalEvidenceSystemContract(contractInput());
+  contract.baseline.currentProducts += 1;
+
+  assert.throws(
+    () => validateHistoricalEvidenceSystemContract(contract),
+    /semantic contract SHA-256 mismatch/i,
+  );
+});
+
+test('system contract validator rejects a tampered source binding even after re-signing', () => {
+  const contract = buildHistoricalEvidenceSystemContract(contractInput());
+  contract.stages[1].sourceBindings[0].resolvedSha256 = 'b'.repeat(64);
+  const { contractId, semanticContractSha256, ...semantic } = contract;
+  void contractId;
+  void semanticContractSha256;
+  const resignedSha256 = canonicalJsonSha256(semantic);
+  contract.semanticContractSha256 = resignedSha256;
+  contract.contractId = `historical_evidence_system_${resignedSha256.slice(0, 24)}`;
+
+  assert.throws(
+    () => validateHistoricalEvidenceSystemContract(contract),
+    /contract source binding mismatch/i,
+  );
+});
+
+test('tracked system contract replays from repository sources without external storage', async () => {
+  const tracked = JSON.parse(await readFile(
+    'data/architecture-v2/reviews/automated/historical-evidence-system-contract.json',
+    'utf8',
+  ));
+  const first = await buildHistoricalEvidenceSystemContractFromRepository();
+  const second = await buildHistoricalEvidenceSystemContractFromRepository();
+
+  assert.deepEqual(first, tracked);
+  assert.deepEqual(second, first);
+  assert.equal(first.stages.length, 23);
+  assert.equal(first.epochs.length, 10);
+  assert.ok(first.stages.every((stage) => stage.sourceBindings.every((binding) => (
+    binding.declaredSha256 === binding.resolvedSha256
+  ))));
+  assert.equal(first.baseline.historicalModelReferences, 8089);
+  assert.equal(first.baseline.currentProducts, 3515);
+  assert.equal(first.baseline.retailerLinksRequiringObservationMigration, 1614);
+  assert.equal(first.controllerDecision.status, 'STOP_LOW_YIELD');
+  assert.ok(first.baseline.knownContractGaps.some((gap) => (
+    gap.id === 'RETAILER_OBSERVATIONS_NOT_BOUND_TO_LIFECYCLE'
+  )));
+  assert.doesNotMatch(JSON.stringify(first), /\/Volumes\/|FITAPPLIANCE_STORAGE_ROOT/);
+});

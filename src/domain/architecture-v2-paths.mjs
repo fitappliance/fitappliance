@@ -20,6 +20,7 @@ export const architectureV2Paths = Object.freeze({
   evidenceResolutionInput: `${base}/reviews/automated/evidence-resolution-cases.json`,
   historicalMineruBackfillAudit: `${base}/reviews/automated/historical-mineru-backfill-audit.json`,
   historicalEvidenceProgramStatus: `${base}/reviews/automated/historical-evidence-program-status.json`,
+  historicalEvidenceSystemContract: `${base}/reviews/automated/historical-evidence-system-contract.json`,
   historicalEvidenceTargetState: `${base}/reviews/automated/historical-evidence-target-state.json`,
   historicalEvidenceFamilyCanaries: `${base}/reviews/automated/historical-evidence-family-canaries.json`,
   historicalEvidenceNextBatches: `${base}/reviews/automated/historical-evidence-next-batches.json`,

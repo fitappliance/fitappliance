@@ -42,6 +42,10 @@ test('historical reference artifacts follow identity before publication ordering
     'data/architecture-v2/policies/historical-evidence-recovery-policy.json',
   );
   assert.equal(
+    architectureV2Paths.historicalEvidenceSystemContract,
+    'data/architecture-v2/reviews/automated/historical-evidence-system-contract.json',
+  );
+  assert.equal(
     architectureV2Paths.historicalApplianceReference,
     'data/architecture-v2/generated/historical-appliance-reference.json',
   );
