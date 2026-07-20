@@ -99,9 +99,9 @@
       "id": "model.executable_targets",
       "label": "Executable model targets",
       "grain": "historical_model_reference",
-      "numerator": 4990,
+      "numerator": 4994,
       "denominator": 7688,
-      "rateBasisPoints": 6491,
+      "rateBasisPoints": 6496,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json"
     },
     {
@@ -126,9 +126,9 @@
       "id": "target_state.actionable",
       "label": "Models with scheduled evidence work",
       "grain": "historical_model_reference",
-      "numerator": 4990,
+      "numerator": 4994,
       "denominator": 8089,
-      "rateBasisPoints": 6169,
+      "rateBasisPoints": 6174,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
@@ -153,9 +153,9 @@
       "id": "target_state.blocked",
       "label": "Blocked model targets",
       "grain": "historical_model_reference",
-      "numerator": 2704,
+      "numerator": 2700,
       "denominator": 8089,
-      "rateBasisPoints": 3343,
+      "rateBasisPoints": 3338,
       "sourceArtifact": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json"
     },
     {
@@ -225,9 +225,9 @@
       "id": "parser.complete_replays",
       "label": "Complete parser replays",
       "grain": "parser_replay",
-      "numerator": 441,
+      "numerator": 442,
       "denominator": 1052,
-      "rateBasisPoints": 4192,
+      "rateBasisPoints": 4202,
       "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
     },
     {

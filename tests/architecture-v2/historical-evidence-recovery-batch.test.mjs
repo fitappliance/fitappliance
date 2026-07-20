@@ -557,7 +557,7 @@ test('batch CLI keeps canary output separate from the canonical full batch', () 
   );
 });
 
-test('committed full batch is reproducible from the queue, policy and cumulative acceptance artifacts', async () => {
+test('committed full batch is reproducible and isolates non-ready candidate observations', async () => {
   const [queue, policy, cumulativeBundle, receiptReplayAudit, pdfBatch, pdfResults,
     rangeBatch, rangeResults, committed] = await Promise.all([
     readFile('data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json', 'utf8').then(JSON.parse),
@@ -583,8 +583,15 @@ test('committed full batch is reproducible from the queue, policy and cumulative
   });
   assert.equal(canonicalJsonSha256(committed), canonicalJsonSha256(rebuilt));
   assert.equal(committed.targets.length, queue.summary.acquisitionTargets);
-  assert.ok(committed.targets.length > 0);
   assert.ok(committed.targets.every((target) => target.candidateJobIds.length > 0));
   assert.equal(committed.summary.candidateEdges, queue.summary.candidateEdges);
+  if (queue.summary.acquisitionTargets === 0) {
+    assert.equal(queue.summary.candidateEdges, 0);
+    assert.ok(queue.summary.observedCandidateEdges > 0);
+    assert.equal(
+      queue.summary.isolatedNonReadyCandidateEdges,
+      queue.summary.observedCandidateEdges,
+    );
+  }
   assert.equal(new Set(committed.targets.map((row) => row.targetId)).size, committed.targets.length);
 });

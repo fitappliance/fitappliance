@@ -59,6 +59,7 @@ const existingLedger = readJsonWithHash(
 const sourcePolicy = readJsonWithHash(
   '../../data/architecture-v2/policies/retailer-source-policy.json',
 );
+const emptyV1Ledger = Object.freeze({ schemaVersion: 1, observations: [] });
 
 function adapterForPolicy(sourceId) {
   const policy = sourcePolicy.document;
@@ -80,7 +81,7 @@ function adapterForPolicy(sourceId) {
 
 test('baseline migration accounts for all 1,614 retailer links without inventing availability', () => {
   const ledger = buildRetailerObservationLedger({
-    existingLedger: existingLedger.document,
+    existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
     sourcePolicy: sourcePolicy.document,
@@ -89,10 +90,10 @@ test('baseline migration accounts for all 1,614 retailer links without inventing
   });
 
   assert.equal(ledger.schemaVersion, 2);
-  assert.equal(ledger.observations.length, 1652);
+  assert.equal(ledger.observations.length, 1614);
   assert.equal(ledger.summary.currentBaselineObservations, 1614);
-  assert.equal(ledger.summary.preservedHistoricalObservations, 38);
-  assert.equal(ledger.summary.legacyUnknownObservations, 1652);
+  assert.equal(ledger.summary.preservedHistoricalObservations, 0);
+  assert.equal(ledger.summary.legacyUnknownObservations, 1614);
   assert.equal(ledger.summary.authoritativeTypedObservations, 0);
   assert.ok(ledger.observations.every((row) => row.sourceType === 'legacy_catalog'));
   assert.ok(ledger.observations.every((row) => row.availability === 'unknown'));
@@ -110,9 +111,36 @@ test('baseline migration accounts for all 1,614 retailer links without inventing
   assert.deepEqual(replay, ledger);
 });
 
+test('cumulative tracked ledger replay preserves typed history and collection attempts', () => {
+  const first = buildRetailerObservationLedger({
+    existingLedger: existingLedger.document,
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+    typedSnapshots: [],
+  });
+  const replay = buildRetailerObservationLedger({
+    existingLedger: first,
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+    typedSnapshots: [],
+  });
+  assert.deepEqual(replay, first);
+  assert.equal(
+    first.summary.authoritativeTypedObservations,
+    existingLedger.document.summary.authoritativeTypedObservations,
+  );
+  assert.equal(first.summary.collectionAttempts, existingLedger.document.summary.collectionAttempts);
+  assert.equal(first.summary.legacyUnknownObservations, existingLedger.document.summary.legacyUnknownObservations);
+  assert.ok(first.summary.observations >= first.summary.currentBaselineObservations);
+});
+
 test('coverage inventory classifies every baseline link as typed or a specific policy-aware revalidation item', () => {
   const ledger = buildRetailerObservationLedger({
-    existingLedger: existingLedger.document,
+    existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
     sourcePolicy: sourcePolicy.document,
@@ -160,7 +188,7 @@ test('coverage inventory classifies every baseline link as typed or a specific p
     .every((item) => item.revalidation.executionState === 'BLOCKED_BY_SOURCE_POLICY'));
   assert.ok(coverage.items
     .filter((item) => item.sourcePolicyId === 'appliances-online-product-api-v1')
-    .every((item) => item.revalidation.executionState === 'BOUNDED_CANARY_ONLY'));
+    .every((item) => item.revalidation.executionState === 'RUNNABLE_POLICY_REVIEWED_SOURCE'));
   assert.ok(coverage.items
     .filter((item) => item.sourcePolicyId === 'the-good-guys-partnerize-feed-v1')
     .every((item) => item.revalidation.executionState === 'RUNNABLE_AUTHORIZED_SOURCE'));
@@ -186,7 +214,7 @@ test('a hash-bound typed snapshot appends once and replaces only its own coverag
     }],
   });
   const first = buildRetailerObservationLedger({
-    existingLedger: existingLedger.document,
+    existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
     sourcePolicy: sourcePolicy.document,
@@ -263,7 +291,7 @@ test('redirected typed listings remain explicit revalidation work rather than te
     }],
   });
   const ledger = buildRetailerObservationLedger({
-    existingLedger: existingLedger.document,
+    existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
     sourcePolicy: sourcePolicy.document,
@@ -284,7 +312,7 @@ test('redirected typed listings remain explicit revalidation work rather than te
 
   assert.equal(item.terminalObservationState, 'TYPED_REDIRECTED');
   assert.equal(item.revalidation.action, 'REVALIDATE_TYPED_NON_TERMINAL');
-  assert.equal(item.revalidation.executionState, 'BOUNDED_CANARY_ONLY');
+  assert.equal(item.revalidation.executionState, 'RUNNABLE_POLICY_REVIEWED_SOURCE');
 });
 
 test('ledger rejects unregistered adapters, policy drift, and collection-blocked source snapshots', () => {
@@ -315,7 +343,7 @@ test('ledger rejects unregistered adapters, policy drift, and collection-blocked
     }],
   });
   assert.throws(() => buildRetailerObservationLedger({
-    existingLedger: existingLedger.document,
+    existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
     sourcePolicy: sourcePolicy.document,
@@ -326,7 +354,7 @@ test('ledger rejects unregistered adapters, policy drift, and collection-blocked
   const policyDrift = structuredClone(fakeSnapshot);
   policyDrift.adapterId = 'appliances-online-product-api-v1';
   assert.throws(() => buildRetailerObservationLedger({
-    existingLedger: existingLedger.document,
+    existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
     sourcePolicy: sourcePolicy.document,
@@ -359,7 +387,7 @@ test('ledger rejects unregistered adapters, policy drift, and collection-blocked
     }],
   });
   assert.throws(() => buildRetailerObservationLedger({
-    existingLedger: existingLedger.document,
+    existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
     sourcePolicy: sourcePolicy.document,
@@ -370,7 +398,7 @@ test('ledger rejects unregistered adapters, policy drift, and collection-blocked
 
 test('schema-v2 replay freezes its migration baseline across later public projection drift', () => {
   const ledger = buildRetailerObservationLedger({
-    existingLedger: existingLedger.document,
+    existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
     sourcePolicy: sourcePolicy.document,
@@ -392,7 +420,7 @@ test('schema-v2 replay freezes its migration baseline across later public projec
   assert.ok(removedLinks > 0);
   assert.deepEqual(next, ledger);
   assert.equal(next.summary.currentBaselineObservations, 1614);
-  assert.equal(next.summary.preservedHistoricalObservations, 38);
+  assert.equal(next.summary.preservedHistoricalObservations, 0);
   assert.equal(
     next.sourceBindings.filter((binding) => binding.kind === 'LEGACY_MIGRATION_INPUT').length,
     1,
@@ -412,7 +440,7 @@ test('schema-v2 replay freezes its migration baseline across later public projec
 
 test('ledger and coverage validators reject internally inconsistent artifacts even when re-signed', () => {
   const ledger = buildRetailerObservationLedger({
-    existingLedger: existingLedger.document,
+    existingLedger: emptyV1Ledger,
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
     sourcePolicy: sourcePolicy.document,

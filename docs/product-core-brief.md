@@ -891,7 +891,54 @@ tracked replay audit and remain external-drive-independent. Online acquisition,
 receipt creation and replay require the evidence drive explicitly.
 
 Canonical operations and stop conditions are in
-[Historical Evidence Recovery Runbook](architecture-v2/historical-evidence-recovery-runbook.md#41-independent-installation-and-fit-evidence-pipeline).
+[Historical Evidence Recovery Runbook](architecture-v2/historical-evidence-recovery-runbook.md#42-independent-installation-and-fit-evidence-pipeline).
+
+### 9.7 System-first lifecycle release checkpoint (2026-07-20)
+
+This checkpoint is a branch release candidate, not a live-site cutover. The
+current rebuilt Architecture V2 state contains 3,515 catalogue products, 8,089
+historical references, 401 models with current valid receipts, 321 replacement
+auto-fill records, 332 receipt-bound public dimensions, zero receipt-bound
+`VERIFIED_FIT` products, and zero Fit publication violations.
+
+Retail lifecycle now has its own append-safe evidence path. The cumulative
+ledger contains 3,058 observations, of which 1,406 are authoritative typed
+observations, and 1,190 immutable collection attempts. Partnerize complete-feed
+and Appliances Online bounded exact-product runs retain raw bytes, source policy,
+catalogue scope, observed time, success/failure state, and listing-level identity
+quarantines. An HTTP success with invalid response structure is evidence of an
+attempt, not evidence of availability. Replaying identical affiliate-feed bytes
+under a later time cannot make the listing appear fresh.
+
+The lifecycle shadow is deliberately blocked:
+
+| State | Products |
+| --- | ---: |
+| `CURRENT_RETAIL` | 345 |
+| `CATALOG_ARCHIVED` | 3,089 |
+| `UNKNOWN_RETAIL` | 81 |
+
+The 81 unknown prior-current products are not one interchangeable backlog. Of
+them, 58 depend on retailer sources whose automation policy is blocked, 22 need
+a genuinely new authorised The Good Guys feed epoch, and one needs exact-model
+rediscovery after Appliances Online returned a sibling identity. Known model
+pollution (`1910FGX` versus `WWT-1910FGX`, `1910BX` versus `WWT-1910BX`, and
+`CTM202NW` versus `CTM202NW3`) must be repaired as canonical identity. It must
+not be treated as a colour/suffix availability alias.
+
+Consequently, no lifecycle cutover or deployment is authorised. Unknown rows
+remain hidden from current-product results, archived rows remain available only
+to the old-appliance replacement reference, and immutable observations remain
+available for replay. A lifecycle-neutral safety projection removes unsupported
+legacy door fields from 36 rows and reduces 35 Fit-audit violations to zero, but
+does not change lifecycle, retailer data, dimensions, clearances, receipts, or
+Fit levels.
+
+The release unit is the complete Git epoch containing observations, lifecycle,
+public and historical projections, audits, queues, controller state, generated
+runtime data, and documentation. An intermediate task commit is not a supported
+rollback target. Rollback restores the complete pre-cutover release and never
+deletes content-addressed evidence from external storage.
 
 ## 10. Success Metrics
 

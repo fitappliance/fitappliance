@@ -5,7 +5,10 @@ import {
   canonicalJsonSha256,
   validateHistoricalEvidenceRecoveryAcceptanceBundle,
 } from './historical-evidence-recovery-contract.mjs';
-import { isCurrentRetailProduct } from './historical-appliance-reference.mjs';
+import {
+  isCurrentRetailProduct,
+  isRetailerProductPageUrl,
+} from './historical-appliance-reference.mjs';
 import { inferApplianceFormFactor } from './appliance-form-factor.mjs';
 import { isStandaloneOfficialHtmlMarketingAlias } from './evidence-claim-reconciliation.mjs';
 import { projectEvidenceGeometry } from './evidence-geometry-projector.mjs';
@@ -22,6 +25,11 @@ const PUBLICATION_LIFECYCLE_STATES = Object.freeze([
   'CATALOG_ARCHIVED',
   'REGISTRY_ONLY',
   'UNKNOWN_RETAIL',
+]);
+
+const LIFECYCLE_PUBLICATION_MODES = Object.freeze([
+  'LEGACY_BASELINE',
+  'OBSERVATION_CUTOVER',
 ]);
 
 function text(value) {
@@ -207,13 +215,23 @@ function assertEntryIdentity(entry, product) {
   }
 }
 
-function effectiveLifecycleState(entry, product) {
+function isLegacyBaselineCurrentProduct(product) {
+  return product?.unavailable === false
+    && Array.isArray(product?.retailers)
+    && product.retailers.some((retailer) => isRetailerProductPageUrl(
+      retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link,
+    ));
+}
+
+function effectiveLifecycleState(entry, product, lifecycleMode) {
   if (!product) {
     if (entry.lifecycleState === 'CURRENT_RETAIL') {
       throw new Error(`current recovery catalog product missing: ${entry.legacyRuntimeId}`);
     }
     return entry.lifecycleState;
   }
+
+  if (lifecycleMode === 'LEGACY_BASELINE') return entry.lifecycleState;
 
   const productId = text(product.canonicalProductId);
   const entryProductId = text(entry.canonicalProductId);
@@ -236,13 +254,20 @@ function effectiveLifecycleState(entry, product) {
   return lifecycleState;
 }
 
-export function buildHistoricalEvidencePublication({ bundle, products }) {
+export function buildHistoricalEvidencePublication({
+  bundle,
+  products,
+  lifecycleMode = 'OBSERVATION_CUTOVER',
+}) {
   validateHistoricalEvidenceRecoveryAcceptanceBundle(bundle);
   const offline = auditHistoricalEvidenceRecoveryBundle(bundle);
   if (offline.status !== 'passed') {
     throw new Error(`historical recovery bundle replay failed: ${offline.violations.join('; ')}`);
   }
   if (!Array.isArray(products)) throw new TypeError('catalog products required');
+  if (!LIFECYCLE_PUBLICATION_MODES.includes(lifecycleMode)) {
+    throw new TypeError(`unsupported lifecycle publication mode: ${lifecycleMode}`);
+  }
 
   const productById = new Map();
   for (const product of products) {
@@ -263,10 +288,13 @@ export function buildHistoricalEvidencePublication({ bundle, products }) {
     const product = productById.get(text(entry.legacyRuntimeId).toLowerCase());
     if (product) assertEntryIdentity(entry, product);
 
-    const lifecycleState = effectiveLifecycleState(entry, product);
+    const lifecycleState = effectiveLifecycleState(entry, product, lifecycleMode);
+    const currentProduct = lifecycleMode === 'LEGACY_BASELINE'
+      ? isLegacyBaselineCurrentProduct(product)
+      : isCurrentRetailProduct(product);
 
     if (lifecycleState === 'CURRENT_RETAIL') {
-      if (!isCurrentRetailProduct(product)) {
+      if (!currentProduct) {
         throw new Error(`current recovery lifecycle drift for ${entry.targetId}`);
       }
       if (entry.acceptanceStatus === 'accepted') {
@@ -276,11 +304,12 @@ export function buildHistoricalEvidencePublication({ bundle, products }) {
         currentAcceptanceByLegacyId.set(entry.legacyRuntimeId, currentAcceptance(entry, product));
       }
     } else if (lifecycleState === 'CATALOG_ARCHIVED' || lifecycleState === 'UNKNOWN_RETAIL') {
-      if (product && isCurrentRetailProduct(product)) {
+      if (product && currentProduct) {
         throw new Error(`non-current recovery lifecycle drift for ${entry.targetId}`);
       }
     } else if (lifecycleState === 'REGISTRY_ONLY') {
-      if (product && product.retailLifecycle?.lifecycleState !== 'REGISTRY_ONLY') {
+      if (product && (lifecycleMode === 'LEGACY_BASELINE'
+        || product.retailLifecycle?.lifecycleState !== 'REGISTRY_ONLY')) {
         throw new Error(`registry-only recovery catalog identity drift for ${entry.targetId}`);
       }
     } else {

@@ -1,78 +1,78 @@
 {
   "schemaVersion": 2,
   "plannerVersion": "2",
-  "generatedAt": "2026-07-19T19:26:14.787Z",
+  "generatedAt": "2026-07-19T19:32:08.439Z",
   "maximumTargets": 10,
   "manifestWindow": {
     "schemaVersion": 1,
     "cohortKeyVersion": "1",
     "maximumManifestsPerWorkstream": 8,
     "manifestIds": [
-      "historical_batch_9193906768885c0a2c3942e5",
-      "historical_batch_4718bcc489e271d090084755",
-      "historical_batch_5742370c2ae32c019397a8a2",
-      "historical_batch_c847ddd3f4c0f43a0e32e9c2",
-      "historical_batch_7deeb97edcdab9523573bf6f",
-      "historical_batch_1bd64f0dd8b4cb32d95e336c",
-      "historical_batch_4c78abdc4f527de1aa4f24a1",
-      "historical_batch_f27bb8cff5773bda754e1509",
-      "historical_batch_6220326087b555d8f15190ca",
-      "historical_batch_4fe79a4bdf0d92ee87f2294d",
-      "historical_batch_b70ce5166fbf55e6905da146",
-      "historical_batch_1fe70b85a0e5e687ee64dd4f",
-      "historical_batch_d0983516911d86f13029b17e",
-      "historical_batch_84fb96d7f391f43aa607679e",
-      "historical_batch_13f051453d0d757fbafac348",
-      "historical_batch_651dcfae1d52eb952fdf8c91",
-      "historical_batch_3315f42bd9df2177c8827d6e",
-      "historical_batch_fe9972d36dce189e482d7558",
-      "historical_batch_a357c8bed2c52902451d6591",
-      "historical_batch_942f7000e60e1f66050c5f09",
-      "historical_batch_d717fef1e42a2be72de43c80",
-      "historical_batch_50e36e49abc218243cf0f5b3",
-      "historical_batch_7366488c1cb27cba2b679f2b",
-      "historical_batch_fc50727dca98d9424b173433"
+      "historical_batch_78d6f0a1df31231c4bfcf6c1",
+      "historical_batch_8fda82a387b9e09e385f46c5",
+      "historical_batch_b1eeaedb72ad5f41cf3100c5",
+      "historical_batch_ebbaa7849f72aab8acfacc39",
+      "historical_batch_1d96290b92e2d550b4506cea",
+      "historical_batch_8d1f1d4534edab0ae8e2f1a7",
+      "historical_batch_0a8b342b9a6f595a3946729a",
+      "historical_batch_46dd6e1c888ff0c8d9685985",
+      "historical_batch_2f67b3342e65bed24c7c2326",
+      "historical_batch_8c86295cb78dece375122f7e",
+      "historical_batch_4b5ea541e840468673c9f2c4",
+      "historical_batch_d916253fbbe944a03a2c93bf",
+      "historical_batch_5176dc5ce7d073f0b9df3f79",
+      "historical_batch_34a96f50697cce2ff4cf186c",
+      "historical_batch_aef631ea410966fd773590ea",
+      "historical_batch_599ddc986dcc1408c18de045",
+      "historical_batch_b4aaca3104a7654e9d58419b",
+      "historical_batch_cc0183349bdbe68ce1cce01b",
+      "historical_batch_6f3a486f67882ca095d74f28",
+      "historical_batch_6a4d87e6d8be8c5aa8dcb6d6",
+      "historical_batch_302c0a1d1632573a7cabb8ac",
+      "historical_batch_d5eff3a5ff20718b59a30850",
+      "historical_batch_6734d1800b08443722ab52bc",
+      "historical_batch_42163a8056001cccefe6e34d"
     ]
   },
   "sourceBindings": {
-    "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-    "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-    "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-    "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+    "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+    "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+    "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+    "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
   },
   "workstreams": [
     {
       "workstreamId": "CURRENT_DIMENSIONS",
       "description": "Current-retail dimensions recovery and confirmation",
-      "assignedTargets": 953,
-      "eligibleTargets": 943,
+      "assignedTargets": 957,
+      "eligibleTargets": 947,
       "suppressedTargets": 10,
       "suppressedByReason": {
         "FAMILY_GATE_BLOCKED": 10
       },
       "eligibleByPriority": {
-        "P0_CURRENT_MISSING_DIMENSIONS": 766,
+        "P0_CURRENT_MISSING_DIMENSIONS": 770,
         "P2_CURRENT_CONFIRMATION": 177
       },
-      "eligibleCohorts": 107,
+      "eligibleCohorts": 108,
       "eligibleCohortsByPriority": {
-        "P0_CURRENT_MISSING_DIMENSIONS": 60,
+        "P0_CURRENT_MISSING_DIMENSIONS": 61,
         "P2_CURRENT_CONFIRMATION": 47
       },
       "windowedCohorts": 8,
       "windowedCohortsByPriority": {
         "P0_CURRENT_MISSING_DIMENSIONS": 8
       },
-      "deferredCohorts": 99,
+      "deferredCohorts": 100,
       "manifestIds": [
-        "historical_batch_9193906768885c0a2c3942e5",
-        "historical_batch_4718bcc489e271d090084755",
-        "historical_batch_5742370c2ae32c019397a8a2",
-        "historical_batch_c847ddd3f4c0f43a0e32e9c2",
-        "historical_batch_7deeb97edcdab9523573bf6f",
-        "historical_batch_1bd64f0dd8b4cb32d95e336c",
-        "historical_batch_4c78abdc4f527de1aa4f24a1",
-        "historical_batch_f27bb8cff5773bda754e1509"
+        "historical_batch_78d6f0a1df31231c4bfcf6c1",
+        "historical_batch_8fda82a387b9e09e385f46c5",
+        "historical_batch_b1eeaedb72ad5f41cf3100c5",
+        "historical_batch_ebbaa7849f72aab8acfacc39",
+        "historical_batch_1d96290b92e2d550b4506cea",
+        "historical_batch_8d1f1d4534edab0ae8e2f1a7",
+        "historical_batch_0a8b342b9a6f595a3946729a",
+        "historical_batch_46dd6e1c888ff0c8d9685985"
       ]
     },
     {
@@ -99,14 +99,14 @@
       },
       "deferredCohorts": 267,
       "manifestIds": [
-        "historical_batch_6220326087b555d8f15190ca",
-        "historical_batch_4fe79a4bdf0d92ee87f2294d",
-        "historical_batch_b70ce5166fbf55e6905da146",
-        "historical_batch_1fe70b85a0e5e687ee64dd4f",
-        "historical_batch_d0983516911d86f13029b17e",
-        "historical_batch_84fb96d7f391f43aa607679e",
-        "historical_batch_13f051453d0d757fbafac348",
-        "historical_batch_651dcfae1d52eb952fdf8c91"
+        "historical_batch_2f67b3342e65bed24c7c2326",
+        "historical_batch_8c86295cb78dece375122f7e",
+        "historical_batch_4b5ea541e840468673c9f2c4",
+        "historical_batch_d916253fbbe944a03a2c93bf",
+        "historical_batch_5176dc5ce7d073f0b9df3f79",
+        "historical_batch_34a96f50697cce2ff4cf186c",
+        "historical_batch_aef631ea410966fd773590ea",
+        "historical_batch_599ddc986dcc1408c18de045"
       ]
     },
     {
@@ -152,14 +152,14 @@
       },
       "deferredCohorts": 12,
       "manifestIds": [
-        "historical_batch_3315f42bd9df2177c8827d6e",
-        "historical_batch_fe9972d36dce189e482d7558",
-        "historical_batch_a357c8bed2c52902451d6591",
-        "historical_batch_942f7000e60e1f66050c5f09",
-        "historical_batch_d717fef1e42a2be72de43c80",
-        "historical_batch_50e36e49abc218243cf0f5b3",
-        "historical_batch_7366488c1cb27cba2b679f2b",
-        "historical_batch_fc50727dca98d9424b173433"
+        "historical_batch_b4aaca3104a7654e9d58419b",
+        "historical_batch_cc0183349bdbe68ce1cce01b",
+        "historical_batch_6f3a486f67882ca095d74f28",
+        "historical_batch_6a4d87e6d8be8c5aa8dcb6d6",
+        "historical_batch_302c0a1d1632573a7cabb8ac",
+        "historical_batch_d5eff3a5ff20718b59a30850",
+        "historical_batch_6734d1800b08443722ab52bc",
+        "historical_batch_42163a8056001cccefe6e34d"
       ]
     }
   ],
@@ -196,16 +196,16 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
-      "reviewedTargetCount": 953,
+      "reviewedTargetCount": 957,
       "targetBindings": [
         {
-          "targetId": "recovery_target_38a3f3112e0fee5d688f8e2c",
-          "referenceId": "fa_ref_1521ace8bfc9a54835d11c55",
+          "targetId": "recovery_target_24ed948d4390531eefa18311",
+          "referenceId": "fa_ref_fd1cddcdc50d2622c30e7b3c",
           "executionLane": "BOUNDED_DISCOVERY",
           "familyId": null,
           "assignment": "UNSCOPED_SINGLETON"
@@ -213,8 +213,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_9193906768885c0a2c3942e5",
-      "semanticManifestSha256": "9193906768885c0a2c3942e58d155cc6d116502dd995f1b0d83a30376a38b9db"
+      "manifestId": "historical_batch_78d6f0a1df31231c4bfcf6c1",
+      "semanticManifestSha256": "78d6f0a1df31231c4bfcf6c1de0dfaadf617f901cec6b254e48b7c0cf6634def"
     },
     {
       "schemaVersion": 2,
@@ -248,12 +248,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
-      "reviewedTargetCount": 953,
+      "reviewedTargetCount": 957,
       "targetBindings": [
         {
           "targetId": "recovery_target_9457752622cd76c35a283424",
@@ -265,8 +265,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_4718bcc489e271d090084755",
-      "semanticManifestSha256": "4718bcc489e271d0900847550be60b4a950c3027eef0394b998c77ff2580ddbb"
+      "manifestId": "historical_batch_8fda82a387b9e09e385f46c5",
+      "semanticManifestSha256": "8fda82a387b9e09e385f46c530b0c42340ddbab28e527efdd00d0b2d2a5421a3"
     },
     {
       "schemaVersion": 2,
@@ -300,12 +300,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
-      "reviewedTargetCount": 953,
+      "reviewedTargetCount": 957,
       "targetBindings": [
         {
           "targetId": "recovery_target_0be27ae58da88e5c8aa83aa8",
@@ -317,8 +317,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_5742370c2ae32c019397a8a2",
-      "semanticManifestSha256": "5742370c2ae32c019397a8a2265b7b323d292f1241599c423cb7430a9e1ab2b0"
+      "manifestId": "historical_batch_b1eeaedb72ad5f41cf3100c5",
+      "semanticManifestSha256": "b1eeaedb72ad5f41cf3100c537b42492d58c15f7d069b5c95df196f8eeedbc6d"
     },
     {
       "schemaVersion": 2,
@@ -352,12 +352,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
-      "reviewedTargetCount": 953,
+      "reviewedTargetCount": 957,
       "targetBindings": [
         {
           "targetId": "recovery_target_8316c64d26b05bb308c27222",
@@ -369,8 +369,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_c847ddd3f4c0f43a0e32e9c2",
-      "semanticManifestSha256": "c847ddd3f4c0f43a0e32e9c233018dd96b117ec6d9c5bcec37540e434d4babb3"
+      "manifestId": "historical_batch_ebbaa7849f72aab8acfacc39",
+      "semanticManifestSha256": "ebbaa7849f72aab8acfacc39c037911054af619ea831cc15ee2881e04e1c9efb"
     },
     {
       "schemaVersion": 2,
@@ -404,12 +404,12 @@
       "familyId": "document_family_b0015ec1b50ae90f81769d42",
       "familyState": "CANARY_READY",
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
-      "reviewedTargetCount": 953,
+      "reviewedTargetCount": 957,
       "targetBindings": [
         {
           "targetId": "recovery_target_16b918e68d48076bd93a0700",
@@ -421,8 +421,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_7deeb97edcdab9523573bf6f",
-      "semanticManifestSha256": "7deeb97edcdab9523573bf6f22b6cc074cbba45e8cae9153efaa507a2db7b0f6"
+      "manifestId": "historical_batch_1d96290b92e2d550b4506cea",
+      "semanticManifestSha256": "1d96290b92e2d550b4506cea809194ba2e563b350f7e913b82155f5b47d2a186"
     },
     {
       "schemaVersion": 2,
@@ -456,12 +456,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
-      "reviewedTargetCount": 953,
+      "reviewedTargetCount": 957,
       "targetBindings": [
         {
           "targetId": "recovery_target_8bb6f9f5b2e877e3f122686a",
@@ -473,8 +473,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_1bd64f0dd8b4cb32d95e336c",
-      "semanticManifestSha256": "1bd64f0dd8b4cb32d95e336cd71c469b9158f8c2d6c136f3bdddc9ed20565674"
+      "manifestId": "historical_batch_8d1f1d4534edab0ae8e2f1a7",
+      "semanticManifestSha256": "8d1f1d4534edab0ae8e2f1a779569438a29479587ecbda3668a1802e79c1b167"
     },
     {
       "schemaVersion": 2,
@@ -508,12 +508,12 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
-      "reviewedTargetCount": 953,
+      "reviewedTargetCount": 957,
       "targetBindings": [
         {
           "targetId": "recovery_target_273ca47d74649ed50760fced",
@@ -525,8 +525,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_4c78abdc4f527de1aa4f24a1",
-      "semanticManifestSha256": "4c78abdc4f527de1aa4f24a17e2d27a00ae37dea45ab5641be7468a3b700bc6d"
+      "manifestId": "historical_batch_0a8b342b9a6f595a3946729a",
+      "semanticManifestSha256": "0a8b342b9a6f595a3946729aa6030f70183b975360018c504f48ed77d311d028"
     },
     {
       "schemaVersion": 2,
@@ -560,12 +560,12 @@
       "familyId": "document_family_5542caafbb840718542d9cb0",
       "familyState": "CANARY_READY",
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
-      "reviewedTargetCount": 953,
+      "reviewedTargetCount": 957,
       "targetBindings": [
         {
           "targetId": "recovery_target_3dd723bd8abaeee8a5cb3bfe",
@@ -577,8 +577,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_f27bb8cff5773bda754e1509",
-      "semanticManifestSha256": "f27bb8cff5773bda754e1509ac5d5d5caae5192a5fd1f03350d9106ce6e9aa94"
+      "manifestId": "historical_batch_46dd6e1c888ff0c8d9685985",
+      "semanticManifestSha256": "46dd6e1c888ff0c8d9685985ab5c4784be227c9006f5ea9780245972d0fae5b4"
     },
     {
       "schemaVersion": 2,
@@ -612,10 +612,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 3974,
       "targetBindings": [
@@ -629,8 +629,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_6220326087b555d8f15190ca",
-      "semanticManifestSha256": "6220326087b555d8f15190ca1ccaf7cc15bd301ce565b64ab0dba68ded100bd9"
+      "manifestId": "historical_batch_2f67b3342e65bed24c7c2326",
+      "semanticManifestSha256": "2f67b3342e65bed24c7c23260757e3a6d9ac854d9abd907422169346fb589e0d"
     },
     {
       "schemaVersion": 2,
@@ -664,10 +664,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 3974,
       "targetBindings": [
@@ -681,8 +681,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_4fe79a4bdf0d92ee87f2294d",
-      "semanticManifestSha256": "4fe79a4bdf0d92ee87f2294d7d1d64a3dc6781c9bea2313a7e36b755f0c46d3c"
+      "manifestId": "historical_batch_8c86295cb78dece375122f7e",
+      "semanticManifestSha256": "8c86295cb78dece375122f7eb60a2dc6f954b7c14891204faf8119a0b1b73df6"
     },
     {
       "schemaVersion": 2,
@@ -716,10 +716,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 3974,
       "targetBindings": [
@@ -733,8 +733,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_b70ce5166fbf55e6905da146",
-      "semanticManifestSha256": "b70ce5166fbf55e6905da146af9932d9c017301d7631d5772f8b14621cf3a772"
+      "manifestId": "historical_batch_4b5ea541e840468673c9f2c4",
+      "semanticManifestSha256": "4b5ea541e840468673c9f2c4d694ede6fd0d01712be7625d02d9610b983f016e"
     },
     {
       "schemaVersion": 2,
@@ -768,10 +768,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 3974,
       "targetBindings": [
@@ -785,8 +785,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_1fe70b85a0e5e687ee64dd4f",
-      "semanticManifestSha256": "1fe70b85a0e5e687ee64dd4f170bc1675dc03882067ed728f8f25f61bc6ba5fb"
+      "manifestId": "historical_batch_d916253fbbe944a03a2c93bf",
+      "semanticManifestSha256": "d916253fbbe944a03a2c93bf7961bde4a1045ea473c20649cfcd78a1dd7fb587"
     },
     {
       "schemaVersion": 2,
@@ -820,10 +820,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 3974,
       "targetBindings": [
@@ -837,8 +837,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_d0983516911d86f13029b17e",
-      "semanticManifestSha256": "d0983516911d86f13029b17edf0256301c71b243f5fe414ae546f9d92c0d2261"
+      "manifestId": "historical_batch_5176dc5ce7d073f0b9df3f79",
+      "semanticManifestSha256": "5176dc5ce7d073f0b9df3f79ad0f100b2f6da2e6a252c7a0731aa2ec5cff874c"
     },
     {
       "schemaVersion": 2,
@@ -872,10 +872,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 3974,
       "targetBindings": [
@@ -889,8 +889,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_84fb96d7f391f43aa607679e",
-      "semanticManifestSha256": "84fb96d7f391f43aa607679e5939ed853fc70053e0bfd1ac9fda8ba308be3051"
+      "manifestId": "historical_batch_34a96f50697cce2ff4cf186c",
+      "semanticManifestSha256": "34a96f50697cce2ff4cf186c26bf003e3e360d911c39927814e484cbdb74b5a1"
     },
     {
       "schemaVersion": 2,
@@ -924,10 +924,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 3974,
       "targetBindings": [
@@ -941,8 +941,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_13f051453d0d757fbafac348",
-      "semanticManifestSha256": "13f051453d0d757fbafac3485c5c2b10407f63fe72c1b2ce62fc45a6c020a060"
+      "manifestId": "historical_batch_aef631ea410966fd773590ea",
+      "semanticManifestSha256": "aef631ea410966fd773590eaf6f3fa88f31d594ad777f0d2de314012f4cf0381"
     },
     {
       "schemaVersion": 2,
@@ -976,10 +976,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 3974,
       "targetBindings": [
@@ -993,16 +993,16 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_651dcfae1d52eb952fdf8c91",
-      "semanticManifestSha256": "651dcfae1d52eb952fdf8c913b85b2aa479fd065a18257deed897032bbc8de40"
+      "manifestId": "historical_batch_599ddc986dcc1408c18de045",
+      "semanticManifestSha256": "599ddc986dcc1408c18de0451b52b2e007fef98754ece35cb3da2ad6c41362d0"
     },
     {
       "schemaVersion": 2,
       "plannerVersion": "2",
       "workstreamId": "CONFLICT_CLOSURE",
       "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_81106842b75c3a15628ecf17",
-      "cohortSha256": "81106842b75c3a15628ecf17e94acb7cc7bc817e5b958e9c2c332f00aa2ee0fa",
+      "cohortKey": "historical_cohort_5d2b9b32a55aff7936167088",
+      "cohortSha256": "5d2b9b32a55aff7936167088400aded6dc6d4a040c51651e88bb6ae761070338",
       "cohort": {
         "schemaVersion": 1,
         "workstreamId": "CONFLICT_CLOSURE",
@@ -1012,49 +1012,49 @@
         "brand": "Fisher & Paykel",
         "normalizedBrand": "fisherpaykel",
         "familyId": "document_family_82eed9fcc8fd21713fbf9017",
-        "executionLane": "ACQUISITION",
+        "executionLane": "BOUNDED_DISCOVERY",
         "mode": "FAMILY_CANARY"
       },
       "mode": "FAMILY_CANARY",
-      "executionLane": "ACQUISITION",
-      "executionCommand": "recover:historical-evidence",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
       "constraints": {
         "priorityClass": "P2_CURRENT_CONFIRMATION",
         "lifecycleState": "CURRENT_RETAIL",
         "category": "washing_machine",
         "brand": "Fisher & Paykel",
-        "executionLane": "ACQUISITION"
+        "executionLane": "BOUNDED_DISCOVERY"
       },
       "familyId": "document_family_82eed9fcc8fd21713fbf9017",
       "familyState": "REOPENED",
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
         {
           "targetId": "recovery_target_a677bacb6d68e1c58a543364",
           "referenceId": "fa_ref_c913768fa64a93313207ce31",
-          "executionLane": "ACQUISITION",
+          "executionLane": "BOUNDED_DISCOVERY",
           "familyId": "document_family_82eed9fcc8fd21713fbf9017",
           "assignment": "FAMILY_CANARY"
         }
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_3315f42bd9df2177c8827d6e",
-      "semanticManifestSha256": "3315f42bd9df2177c8827d6e1eca217576f64b89c2a642d2a365820eaab05758"
+      "manifestId": "historical_batch_b4aaca3104a7654e9d58419b",
+      "semanticManifestSha256": "b4aaca3104a7654e9d58419b50cbb5d97d5555601de9929b303cf7a7f3634806"
     },
     {
       "schemaVersion": 2,
       "plannerVersion": "2",
       "workstreamId": "CONFLICT_CLOSURE",
       "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_fc58f0e3f93e667e0d712ae5",
-      "cohortSha256": "fc58f0e3f93e667e0d712ae52e66c476b2cf554f4588b5de34951b2ac7b83888",
+      "cohortKey": "historical_cohort_4bebd3fa1ac2fc16142ca3c9",
+      "cohortSha256": "4bebd3fa1ac2fc16142ca3c97bb5821cca1e92094f0f0805b49a2882a54ad7d2",
       "cohort": {
         "schemaVersion": 1,
         "workstreamId": "CONFLICT_CLOSURE",
@@ -1064,49 +1064,49 @@
         "brand": "Hisense",
         "normalizedBrand": "hisense",
         "familyId": "document_family_4df9004fb8faa875ea475e6c",
-        "executionLane": "ACQUISITION",
+        "executionLane": "BOUNDED_DISCOVERY",
         "mode": "FAMILY_CANARY"
       },
       "mode": "FAMILY_CANARY",
-      "executionLane": "ACQUISITION",
-      "executionCommand": "recover:historical-evidence",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
       "constraints": {
         "priorityClass": "P2_CURRENT_CONFIRMATION",
         "lifecycleState": "CURRENT_RETAIL",
         "category": "washing_machine",
         "brand": "Hisense",
-        "executionLane": "ACQUISITION"
+        "executionLane": "BOUNDED_DISCOVERY"
       },
       "familyId": "document_family_4df9004fb8faa875ea475e6c",
       "familyState": "REOPENED",
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
         {
           "targetId": "recovery_target_5abd7e69899be099d08694fd",
           "referenceId": "fa_ref_1320d0a02c0ddd2278437090",
-          "executionLane": "ACQUISITION",
+          "executionLane": "BOUNDED_DISCOVERY",
           "familyId": "document_family_4df9004fb8faa875ea475e6c",
           "assignment": "FAMILY_CANARY"
         }
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_fe9972d36dce189e482d7558",
-      "semanticManifestSha256": "fe9972d36dce189e482d7558b476fc3eefb4e9afa8847dc8f486158d2dd9bde2"
+      "manifestId": "historical_batch_cc0183349bdbe68ce1cce01b",
+      "semanticManifestSha256": "cc0183349bdbe68ce1cce01b63ce422d48f6809f065ecf1f66c40754db353978"
     },
     {
       "schemaVersion": 2,
       "plannerVersion": "2",
       "workstreamId": "CONFLICT_CLOSURE",
       "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_ce8d47d7aae20822ab62b3ab",
-      "cohortSha256": "ce8d47d7aae20822ab62b3ab0e61ab8e22b0c3080f4db41a741603e07de92115",
+      "cohortKey": "historical_cohort_6fd61cb3620ec5eda65f5a9d",
+      "cohortSha256": "6fd61cb3620ec5eda65f5a9df0a9572240bea879b25c01bf605b78232bd77595",
       "cohort": {
         "schemaVersion": 1,
         "workstreamId": "CONFLICT_CLOSURE",
@@ -1116,49 +1116,49 @@
         "brand": "Electrolux",
         "normalizedBrand": "electrolux",
         "familyId": "document_family_029b5a1a6ac979ee4755ebc2",
-        "executionLane": "ACQUISITION",
+        "executionLane": "BOUNDED_DISCOVERY",
         "mode": "FAMILY_CANARY"
       },
       "mode": "FAMILY_CANARY",
-      "executionLane": "ACQUISITION",
-      "executionCommand": "recover:historical-evidence",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
       "constraints": {
         "priorityClass": "P3_HISTORICAL_CONFIRMATION",
         "lifecycleState": "CATALOG_ARCHIVED",
         "category": "fridge",
         "brand": "Electrolux",
-        "executionLane": "ACQUISITION"
+        "executionLane": "BOUNDED_DISCOVERY"
       },
       "familyId": "document_family_029b5a1a6ac979ee4755ebc2",
       "familyState": "REOPENED",
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
         {
           "targetId": "recovery_target_188e82d7868288177e51820a",
           "referenceId": "fa_ref_54fb3218b6ac6851d14a5c2e",
-          "executionLane": "ACQUISITION",
+          "executionLane": "BOUNDED_DISCOVERY",
           "familyId": "document_family_029b5a1a6ac979ee4755ebc2",
           "assignment": "FAMILY_CANARY"
         }
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_a357c8bed2c52902451d6591",
-      "semanticManifestSha256": "a357c8bed2c52902451d6591da828052bfcb54ba183cb5b16db668ad601f457e"
+      "manifestId": "historical_batch_6f3a486f67882ca095d74f28",
+      "semanticManifestSha256": "6f3a486f67882ca095d74f28b1ba5952e3fe085c2821fc74337ab00104b2cf61"
     },
     {
       "schemaVersion": 2,
       "plannerVersion": "2",
       "workstreamId": "CONFLICT_CLOSURE",
       "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_06a35f7d7208892a8888336c",
-      "cohortSha256": "06a35f7d7208892a8888336c6fc42562c135b45a412cfb6defd8c79c648dcabe",
+      "cohortKey": "historical_cohort_049d2a3fe4c852ccc2efeb03",
+      "cohortSha256": "049d2a3fe4c852ccc2efeb03246bb2bd723a6dedabbd2c516e5bc89de63d7d2f",
       "cohort": {
         "schemaVersion": 1,
         "workstreamId": "CONFLICT_CLOSURE",
@@ -1168,49 +1168,49 @@
         "brand": "KELVINATOR",
         "normalizedBrand": "kelvinator",
         "familyId": "document_family_25d95408b7219ac2211e1b63",
-        "executionLane": "ACQUISITION",
+        "executionLane": "BOUNDED_DISCOVERY",
         "mode": "FAMILY_CANARY"
       },
       "mode": "FAMILY_CANARY",
-      "executionLane": "ACQUISITION",
-      "executionCommand": "recover:historical-evidence",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
       "constraints": {
         "priorityClass": "P3_HISTORICAL_CONFIRMATION",
         "lifecycleState": "CATALOG_ARCHIVED",
         "category": "fridge",
         "brand": "KELVINATOR",
-        "executionLane": "ACQUISITION"
+        "executionLane": "BOUNDED_DISCOVERY"
       },
       "familyId": "document_family_25d95408b7219ac2211e1b63",
       "familyState": "REOPENED",
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
         {
           "targetId": "recovery_target_6c312441be4d741742f10a29",
           "referenceId": "fa_ref_7256aaa1b29d398cf85376a3",
-          "executionLane": "ACQUISITION",
+          "executionLane": "BOUNDED_DISCOVERY",
           "familyId": "document_family_25d95408b7219ac2211e1b63",
           "assignment": "FAMILY_CANARY"
         }
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_942f7000e60e1f66050c5f09",
-      "semanticManifestSha256": "942f7000e60e1f66050c5f09d897a2db09e7542b261523076dcf957f2edfb9bb"
+      "manifestId": "historical_batch_6a4d87e6d8be8c5aa8dcb6d6",
+      "semanticManifestSha256": "6a4d87e6d8be8c5aa8dcb6d620899a4c2aadeae50894b7783c086d40faf86fef"
     },
     {
       "schemaVersion": 2,
       "plannerVersion": "2",
       "workstreamId": "CONFLICT_CLOSURE",
       "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_a8d019032552ca3ffd02b5ad",
-      "cohortSha256": "a8d019032552ca3ffd02b5ad9e41fa5d06b5647642f55a821c840e677c1be2bb",
+      "cohortKey": "historical_cohort_25aa06110a424f4cb646a619",
+      "cohortSha256": "25aa06110a424f4cb646a61976dd345426a6cae2dcb4ba7b8e56421ce7dda472",
       "cohort": {
         "schemaVersion": 1,
         "workstreamId": "CONFLICT_CLOSURE",
@@ -1220,49 +1220,49 @@
         "brand": "Westinghouse",
         "normalizedBrand": "westinghouse",
         "familyId": "document_family_3877f04b5a53d14be26a4663",
-        "executionLane": "ACQUISITION",
+        "executionLane": "BOUNDED_DISCOVERY",
         "mode": "FAMILY_CANARY"
       },
       "mode": "FAMILY_CANARY",
-      "executionLane": "ACQUISITION",
-      "executionCommand": "recover:historical-evidence",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
       "constraints": {
         "priorityClass": "P3_HISTORICAL_CONFIRMATION",
         "lifecycleState": "CATALOG_ARCHIVED",
         "category": "fridge",
         "brand": "Westinghouse",
-        "executionLane": "ACQUISITION"
+        "executionLane": "BOUNDED_DISCOVERY"
       },
       "familyId": "document_family_3877f04b5a53d14be26a4663",
       "familyState": "REOPENED",
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
         {
           "targetId": "recovery_target_178ba2b9d49b8bf0b0137832",
           "referenceId": "fa_ref_85325cf89aedd93a662f5e8b",
-          "executionLane": "ACQUISITION",
+          "executionLane": "BOUNDED_DISCOVERY",
           "familyId": "document_family_3877f04b5a53d14be26a4663",
           "assignment": "FAMILY_CANARY"
         }
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_d717fef1e42a2be72de43c80",
-      "semanticManifestSha256": "d717fef1e42a2be72de43c80953bd0db3fb53fb79720c79358ff6e4f759a44e8"
+      "manifestId": "historical_batch_302c0a1d1632573a7cabb8ac",
+      "semanticManifestSha256": "302c0a1d1632573a7cabb8acdcfb8baead4a3182fdd1a5b3e3804da22143029f"
     },
     {
       "schemaVersion": 2,
       "plannerVersion": "2",
       "workstreamId": "CONFLICT_CLOSURE",
       "cohortKeyVersion": "1",
-      "cohortKey": "historical_cohort_f40a2f124419a952f267c418",
-      "cohortSha256": "f40a2f124419a952f267c418bdede64eecabb5cfab8d744053d0a28c8ccd6fa0",
+      "cohortKey": "historical_cohort_9743489105a2e8a1fd6d95c8",
+      "cohortSha256": "9743489105a2e8a1fd6d95c8c93e30adcb072077aadce04873aa7cba8d5de23c",
       "cohort": {
         "schemaVersion": 1,
         "workstreamId": "CONFLICT_CLOSURE",
@@ -1272,41 +1272,41 @@
         "brand": "Westinghouse",
         "normalizedBrand": "westinghouse",
         "familyId": null,
-        "executionLane": "ACQUISITION",
+        "executionLane": "BOUNDED_DISCOVERY",
         "mode": "SINGLETON"
       },
       "mode": "SINGLETON",
-      "executionLane": "ACQUISITION",
-      "executionCommand": "recover:historical-evidence",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
       "constraints": {
         "priorityClass": "P3_HISTORICAL_CONFIRMATION",
         "lifecycleState": "CATALOG_ARCHIVED",
         "category": "fridge",
         "brand": "Westinghouse",
-        "executionLane": "ACQUISITION"
+        "executionLane": "BOUNDED_DISCOVERY"
       },
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
         {
           "targetId": "recovery_target_2eae033208d5ee47db368385",
           "referenceId": "fa_ref_bc817e7f1b66a2298d042440",
-          "executionLane": "ACQUISITION",
+          "executionLane": "BOUNDED_DISCOVERY",
           "familyId": null,
           "assignment": "UNSCOPED_SINGLETON"
         }
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_50e36e49abc218243cf0f5b3",
-      "semanticManifestSha256": "50e36e49abc218243cf0f5b3ae1dc9e3734072f5b1e03403a979a948d06d9cb9"
+      "manifestId": "historical_batch_d5eff3a5ff20718b59a30850",
+      "semanticManifestSha256": "d5eff3a5ff20718b59a30850943f629bab0e6676818be1ece283e9b19db96a4a"
     },
     {
       "schemaVersion": 2,
@@ -1340,10 +1340,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
@@ -1357,8 +1357,8 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_7366488c1cb27cba2b679f2b",
-      "semanticManifestSha256": "7366488c1cb27cba2b679f2b9040cb5462657928432085e4539365471b35e121"
+      "manifestId": "historical_batch_6734d1800b08443722ab52bc",
+      "semanticManifestSha256": "6734d1800b08443722ab52bcc98badee3fa3558f319f6c181d1670f877c8ca63"
     },
     {
       "schemaVersion": 2,
@@ -1392,10 +1392,10 @@
       "familyId": null,
       "familyState": null,
       "sourceBindings": {
-        "executableQueueSha256": "43b0282ec7845bdfa873824cd754e9601c6d518e3a9bf1f409da7772ce1a2691",
-        "targetStateSha256": "08f0885b1f94771b23e4402e0464b971b43dfd2bb273b31ddd7e30d7f45f4cf6",
-        "familyCanarySha256": "a87ddceeba0be4f29f109020819455b9c12596ec977b63488b244a9808097080",
-        "sourceAcquisitionQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c"
+        "executableQueueSha256": "6d19c0f3467f87c60e071fbc9a2617b3b3ca23680648d0f8748ad0bc5a7870d6",
+        "targetStateSha256": "f7157d3532ead7849c860471c03016aa19b7dc50b783f2a43e46eabc754eea71",
+        "familyCanarySha256": "6b27fba02d237aff8cb99dc1a45e2eb8e84adfdc9572018b5fca322bc63c9e6c",
+        "sourceAcquisitionQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a"
       },
       "reviewedTargetCount": 63,
       "targetBindings": [
@@ -1409,28 +1409,28 @@
       ],
       "estimatedSharedArtifactCount": 0,
       "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
-      "manifestId": "historical_batch_fc50727dca98d9424b173433",
-      "semanticManifestSha256": "fc50727dca98d9424b173433caf63728de9275eef5e64ed28d68832576c7b676"
+      "manifestId": "historical_batch_42163a8056001cccefe6e34d",
+      "semanticManifestSha256": "42163a8056001cccefe6e34df9598846ec8706f9d7bfafe5b7641364214182d2"
     }
   ],
   "summary": {
-    "assignedTargets": 4990,
-    "eligibleTargets": 4944,
+    "assignedTargets": 4994,
+    "eligibleTargets": 4948,
     "suppressedTargets": 46,
     "suppressedByReason": {
       "FAMILY_GATE_BLOCKED": 46
     },
-    "eligibleCohorts": 402,
+    "eligibleCohorts": 403,
     "windowedCohorts": 24,
-    "deferredCohorts": 378,
+    "deferredCohorts": 379,
     "manifests": 24,
     "manifestedTargets": 24,
     "byWorkstream": {
-      "CURRENT_DIMENSIONS": 953,
+      "CURRENT_DIMENSIONS": 957,
       "HISTORICAL_DIMENSIONS": 3974,
       "PARSER_REPAIR": 0,
       "CONFLICT_CLOSURE": 63
     }
   },
-  "semanticBatchesSha256": "c64eba71e726069775af8a71e4e842a70216b7c494a7c4a513dfc2db7bef362e"
+  "semanticBatchesSha256": "38c05ad105855fcaf7de727da91d00616a1514d0a654ec196d4be817a4043507"
 }

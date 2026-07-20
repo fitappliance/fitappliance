@@ -41,13 +41,13 @@
     "receiptReplayAndZeroPublicationViolationsRequired": true
   },
   "sourceBindings": {
-    "ledgerSha256": "6d7231356b3bff7d9952cf6a844a852119ad55571e1aa835bc44e50871cf9ae0",
-    "nextBatchesSha256": "35d1d753d38b72166a9ba8e912b78b094d031cdde78d25ac30e21140d19204b7",
-    "programStatusSha256": "7d71171de02c85df4b6f2c5a3d21a68d8fff3ac51a9c26414cbbf579671759ec",
+    "ledgerSha256": "7797bb1ee9e848be038a95a962c9ed2d0f1af558ae125aebf733d53f3be172d3",
+    "nextBatchesSha256": "14991c7ae94a788f7ffaca5908256bdf41b66d369930d1f99b460a262cc50760",
+    "programStatusSha256": "8aab07023e62600fa9deb9e7c04363490d1417e50d51a9d905044a5ac4a8db02",
     "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
     "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
-    "fitPublicationAuditSha256": "e017f300071c502801034c2a4ef996fcb68018aac7fda4d409073623fa26d9ed",
-    "epochsSha256": "60571915107cbb0414bc0d85a47b934cbdedfd8b66bbe6dc6fed50ce5df7db22"
+    "fitPublicationAuditSha256": "33e16cec476a3805a3f3905c669a0957ee8b05a52f4ae12494204924663105a3",
+    "epochsSha256": "a2ecd5bc26f21b4cbe94f1a70fc62216fea3d7d9a6aadcb97c6c879479a9746f"
   },
   "epochs": [
     {
@@ -60,7 +60,7 @@
     },
     {
       "id": "lifecycle-policy",
-      "semanticSha256": "321d175cc8911913795e59b23980202d32a926b851f78e4d2600b564b3c57759"
+      "semanticSha256": "71668fa4b669fcf67747acf03ce6a301b47d24a326f09008da85cb70d41ab687"
     },
     {
       "id": "mineru-toolchain",
@@ -68,15 +68,15 @@
     },
     {
       "id": "observation",
-      "semanticSha256": "0764059c5259d000369b11f41e1d731f25cda0494b83c74237d806b15b22303f"
+      "semanticSha256": "6f0d77f61b2e203d36e7c6a7c6cc4573b41437bda37f88e30319837f3c894bf2"
     },
     {
       "id": "parser",
-      "semanticSha256": "6abcdd98536b04aa5f11e4c6c959aa9816c91d0346e6e0b3de2f215257a924ec"
+      "semanticSha256": "d64ff7ac7e7caebf52c79f0fd9960c3e41ec2bdbe2aa1bde40280a343b88daaf"
     },
     {
       "id": "publication",
-      "semanticSha256": "a6993c68f3f1f0932f07b38afa52bc936aa08fc084877b40f067124e3a29e595"
+      "semanticSha256": "22e4eda5478bea3359cd82404f7d4698e44e71cf403725b16bdf7545e8277f0b"
     },
     {
       "id": "receipt-policy",
@@ -88,7 +88,7 @@
     },
     {
       "id": "source-authority-policy",
-      "semanticSha256": "fbaa59240f089f9397c29bebbd69ed7e1f7e2e1f7ff596b32917c438dd53b01a"
+      "semanticSha256": "e50b4e6fad16ecbb82fe94f587944386caddb5cf5d1e341db41284af6f1dc8b5"
     }
   ],
   "operationalState": {
@@ -102,12 +102,28 @@
     "receiptSourcesPassed": 408,
     "fitReceiptBoundDimensions": 332,
     "fitReceiptBoundVerified": 0,
-    "p0AssignedTargets": 953,
-    "p0EligibleTargets": 943,
+    "p0AssignedTargets": 957,
+    "p0EligibleTargets": 947,
     "p1AssignedTargets": 3974,
     "p1EligibleTargets": 3939
   },
   "checkpointCount": 5,
+  "rebaselineCount": 1,
+  "latestRebaseline": {
+    "rebaselineId": "historical-dimensions-rebaseline-134e9fa257a30f9d3039888d",
+    "activatedAt": "2026-07-20T18:29:13.000Z",
+    "reason": "RELEASE_DAG_RECONCILIATION",
+    "queueCounterDeltas": {
+      "p0AssignedTargets": 4,
+      "p0EligibleTargets": 4,
+      "p1AssignedTargets": 0,
+      "p1EligibleTargets": 0
+    },
+    "changedArtifactBindings": [
+      "nextBatchesSha256",
+      "programStatusSha256"
+    ]
+  },
   "haltedCohorts": [],
   "reopenedCohorts": [],
   "stageSummaries": [],
@@ -164,12 +180,12 @@
   },
   "decision": {
     "status": "RUN_P0",
-    "allowedManifestId": "historical_batch_9193906768885c0a2c3942e5",
+    "allowedManifestId": "historical_batch_78d6f0a1df31231c4bfcf6c1",
     "allowedWorkstreamId": "CURRENT_DIMENSIONS",
     "p1Blocked": true,
     "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
     "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e"
   },
-  "controlId": "historical-dimensions-scale-721f8d7edd0b37ca55f8c414",
-  "semanticControlSha256": "721f8d7edd0b37ca55f8c4142ecf540c2d13a9c7f3694009e8fa443e00401fb4"
+  "controlId": "historical-dimensions-scale-d2e8c8f13f07fc99fb070387",
+  "semanticControlSha256": "d2e8c8f13f07fc99fb070387d6d2b65619f91f8ab635580b1e8ea24d5f75b235"
 }

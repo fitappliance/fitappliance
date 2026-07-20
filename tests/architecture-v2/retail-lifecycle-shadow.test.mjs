@@ -5,7 +5,9 @@ import test from 'node:test';
 
 import {
   applyRetailLifecycleCutover,
+  buildRetailLifecycleNeutralSafetyPublication,
   buildRetailLifecycleShadow,
+  preserveRetailLifecycleShadowOnlyPublication,
   validateRetailLifecycleShadow,
 } from '../../src/domain/retail-lifecycle-shadow.mjs';
 import { buildRetailerObservationLedger } from '../../src/domain/retailer-observation-ledger.mjs';
@@ -186,6 +188,98 @@ test('shadow lifecycle accounts for transitions and blocks a partial production 
   assert.deepEqual(input.publicProjection, before);
 });
 
+test('shadow-only publication preserves the complete baseline byte-for-byte', () => {
+  const input = fixture();
+  const shadow = buildRetailLifecycleShadow(input);
+  const candidate = structuredClone(input.publicProjection);
+
+  const preserved = preserveRetailLifecycleShadowOnlyPublication({
+    baselinePublicProjection: input.publicProjection,
+    baselinePublicProjectionSha256: input.publicProjectionSha256,
+    candidatePublicProjection: candidate,
+    candidatePublicProjectionSha256: input.publicProjectionSha256,
+    releasePolicy: {
+      mode: 'SHADOW_ONLY',
+      releaseEpoch: input.releaseEpoch,
+      asOf: input.asOf,
+    },
+    releasePolicySha256: input.releasePolicySha256,
+    shadow,
+  });
+  assert.deepEqual(preserved.publicProjection, input.publicProjection);
+  assert.equal(preserved.decision.status, 'BASELINE_REPLAYED');
+
+  candidate.products[0].model = 'PARTIAL-OVERLAY';
+  const candidateBytes = `${JSON.stringify(candidate, null, 2)}\n`;
+  const isolated = preserveRetailLifecycleShadowOnlyPublication({
+    baselinePublicProjection: input.publicProjection,
+    baselinePublicProjectionSha256: input.publicProjectionSha256,
+    candidatePublicProjection: candidate,
+    candidatePublicProjectionSha256: hash(candidateBytes),
+    releasePolicy: {
+      mode: 'SHADOW_ONLY',
+      releaseEpoch: input.releaseEpoch,
+      asOf: input.asOf,
+    },
+    releasePolicySha256: input.releasePolicySha256,
+    shadow,
+  });
+  assert.deepEqual(isolated.publicProjection, input.publicProjection);
+  assert.equal(isolated.decision.status, 'CANDIDATE_ISOLATED');
+  assert.deepEqual(isolated.decision.changedProductIds, ['keep']);
+});
+
+test('a lifecycle-neutral safety release can only remove unsupported legacy door semantics', () => {
+  const input = fixture();
+  const shadow = buildRetailLifecycleShadow(input);
+  const baseline = structuredClone(input.publicProjection);
+  const candidate = structuredClone(baseline);
+  baseline.products[0].door_swing_mm = 600;
+  baseline.products[0].inferred_door_swing = true;
+  baseline.products[0].flags = { reversible_door: true, requires_plumbing: null };
+  candidate.products[0] = structuredClone(baseline.products[0]);
+  candidate.products[0].door_swing_mm = null;
+  delete candidate.products[0].inferred_door_swing;
+  candidate.products[0].flags.reversible_door = null;
+  const baselineBytes = `${JSON.stringify(baseline, null, 2)}\n`;
+  const reboundShadow = buildRetailLifecycleShadow({
+    ...input,
+    publicProjection: baseline,
+    publicProjectionSha256: hash(baselineBytes),
+  });
+  const candidateBytes = `${JSON.stringify(candidate, null, 2)}\n`;
+  const releasePolicy = {
+    mode: 'SHADOW_ONLY',
+    releaseEpoch: input.releaseEpoch,
+    asOf: input.asOf,
+  };
+
+  const released = buildRetailLifecycleNeutralSafetyPublication({
+    baselinePublicProjection: baseline,
+    baselinePublicProjectionSha256: hash(baselineBytes),
+    candidatePublicProjection: candidate,
+    candidatePublicProjectionSha256: hash(candidateBytes),
+    releasePolicy,
+    releasePolicySha256: input.releasePolicySha256,
+    shadow: reboundShadow,
+  });
+  assert.deepEqual(released.publicProjection, candidate);
+  assert.equal(released.decision.status, 'SAFETY_FIELDS_REMOVED');
+  assert.deepEqual(released.decision.changedProductIds, ['keep']);
+
+  const lifecycleDrift = structuredClone(candidate);
+  lifecycleDrift.products[0].unavailable = true;
+  assert.throws(() => buildRetailLifecycleNeutralSafetyPublication({
+    baselinePublicProjection: baseline,
+    baselinePublicProjectionSha256: hash(baselineBytes),
+    candidatePublicProjection: lifecycleDrift,
+    candidatePublicProjectionSha256: hash(`${JSON.stringify(lifecycleDrift, null, 2)}\n`),
+    releasePolicy,
+    releasePolicySha256: input.releasePolicySha256,
+    shadow: reboundShadow,
+  }), /lifecycle-neutral safety.*non-whitelisted/i);
+});
+
 test('a ready cutover publishes only observation-authorized retailers and restores a relisted product', () => {
   const input = fixture();
   const ledger = buildRetailerObservationLedger({
@@ -252,7 +346,11 @@ test('tracked full-catalogue shadow accounts for every product and keeps product
   const policyBytes = readFileSync(new URL(
     '../../data/architecture-v2/policies/retailer-source-policy.json', import.meta.url,
   ));
+  const releasePolicyBytes = readFileSync(new URL(
+    '../../data/architecture-v2/policies/retail-lifecycle-release-policy.json', import.meta.url,
+  ));
   const publicProjection = JSON.parse(projectionBytes);
+  const releasePolicy = JSON.parse(releasePolicyBytes);
   const shadow = buildRetailLifecycleShadow({
     publicProjection,
     publicProjectionSha256: hash(projectionBytes),
@@ -260,15 +358,23 @@ test('tracked full-catalogue shadow accounts for every product and keeps product
     retailerLedgerSha256: hash(ledgerBytes),
     sourcePolicy: JSON.parse(policyBytes),
     sourcePolicySha256: hash(policyBytes),
-    releasePolicySha256: 'd'.repeat(64),
-    releaseEpoch: 'retail-lifecycle-tracked-fixture-1',
-    asOf: '2026-07-20T00:00:00.000Z',
+    releasePolicySha256: hash(releasePolicyBytes),
+    releaseEpoch: releasePolicy.releaseEpoch,
+    asOf: releasePolicy.asOf,
   });
 
   assert.equal(shadow.summary.products, publicProjection.products.length);
   assert.equal(shadow.summary.legacyCurrentProducts, 1384);
-  assert.equal(shadow.cutover.status, 'BLOCKED');
-  assert.equal(shadow.cutover.unresolvedLegacyCurrentIds.length, 1384);
+  assert.equal(
+    shadow.cutover.status,
+    shadow.cutover.unresolvedLegacyCurrentIds.length === 0
+      && shadow.cutover.unsafeRemovedLegacyCurrentIds.length === 0 ? 'READY' : 'BLOCKED',
+  );
+  assert.ok(shadow.cutover.unresolvedLegacyCurrentIds.every((id) => (
+    shadow.records.some((record) => record.canonicalProductId === id
+      && record.priorVisibility === 'CURRENT_OUTPUT'
+      && record.lifecycleState === 'UNKNOWN_RETAIL')
+  )));
   assert.equal(new Set(shadow.records.map((row) => row.legacyRuntimeId)).size, publicProjection.products.length);
   assert.equal(hash(projectionBytes), shadow.sourceBindings.publicProjectionSha256);
   assert.equal(hash(projectionBytes), hash(readFileSync(new URL(
@@ -307,6 +413,16 @@ test('shadow validation recomputes release-critical cohorts, cutover membership,
   assert.throws(
     () => validateRetailLifecycleShadow(resignShadow(productBindingDrift)),
     /lifecycle product binding.*mismatch/i,
+  );
+
+  const attemptScopeDrift = structuredClone(shadow);
+  const recordWithAttempt = attemptScopeDrift.records.find((record) => (
+    record.retailLifecycle.collectionAttempts.length > 0
+  ));
+  recordWithAttempt.retailLifecycle.collectionAttempts[0].scope.canonicalProductId = 'fa_prod_other';
+  assert.throws(
+    () => validateRetailLifecycleShadow(resignShadow(attemptScopeDrift)),
+    /scoped evidence mismatch/i,
   );
 });
 

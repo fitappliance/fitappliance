@@ -41,11 +41,12 @@ then binds the complete release graph. It does not read the external evidence
 drive.
 
 The following values were reproduced in the Architecture V2 worktree on
-2026-07-20 from the released 2026-07-19 artifact epoch:
+2026-07-20 after the blocked Task 9 replay. They are release-candidate facts,
+not claims about the currently deployed site:
 
 | Measure | Current value |
 | --- | ---: |
-| Persisted contract stages | 23 |
+| Persisted contract stages | 26 |
 | Independently bound policy/tool epochs | 10 |
 | Historical model references | 8,089 |
 | Models with document links | 1,768 |
@@ -58,8 +59,10 @@ The following values were reproduced in the Architecture V2 worktree on
 | Receipt-bound dimensions | 332 |
 | Receipt-bound `VERIFIED_FIT` | 0 |
 | Public rows with retailer links | 1,384 |
-| Retailer links missing immutable observations | 1,614 |
-| Unavailable or history-only public rows | 2,131 |
+| Retailer ledger observations / typed observations | 3,058 / 1,406 |
+| Immutable retailer collection attempts | 1,190 |
+| Lifecycle current / archived / unknown | 345 / 3,089 / 81 |
+| Lifecycle cutover status | `BLOCKED` |
 
 Reproduce the contract and focused architecture gates with:
 
@@ -102,17 +105,24 @@ described as a fully migrated Fit engine.
 
 ### Current contract gaps
 
-The system contract deliberately records, rather than conceals, three release
-gaps:
+The system contract deliberately records, rather than conceals, the remaining
+release gaps:
 
-1. The 1,614 legacy retailer links are not yet bound to immutable retailer
-   observations, so lifecycle still depends on legacy catalogue state. Task 2
-   owns this migration.
-2. Target state stores source timestamps rather than source hashes. Task 0
-   supplies an external recomputed binding; Task 3 owns the schema migration.
-3. `ARCHITECTURE_V2_BUILD_GRAPH` is still a partial graph. The system contract
-   attests the complete current DAG, while Task 9 owns the executable release
-   graph and rollback drill.
+1. Lifecycle is still `BLOCKED` for 81 prior-current products. Fifty-eight are
+   behind collection-blocked retailer policies, 22 require a new authorised
+   Partnerize feed epoch, and one requires exact-model rediscovery. Unknown is
+   hidden; it is never converted to unavailable.
+2. The current Partnerize CSV has immutable bytes but no independently bound
+   source-processing timestamp. Identical feed bytes cannot advance freshness
+   until a separate acquisition receipt proves a new retrieval epoch.
+3. Three unresolved The Good Guys rows expose canonical model pollution rather
+   than ordinary aliasing: LG `1910FGX`/`1910BX` versus official
+   `WWT-1910FGX`/`WWT-1910BX`, and CHiQ `CTM202NW` versus `CTM202NW3`.
+   Availability cannot cross those identity boundaries.
+4. The complete release DAG and rollback drill pass in shadow, but production
+   cutover is prohibited until the lifecycle shadow reaches `READY` with zero
+   unresolved or unsafe prior-current products. No lifecycle cutover or
+   deployment has occurred.
 
 ## Existing Assets Worth Preserving
 

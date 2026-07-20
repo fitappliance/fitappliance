@@ -24,11 +24,11 @@
     "documentsWithoutObservations": 430,
     "mappedMineruDocuments": 893,
     "unmappedMineruDocuments": 33,
-    "observations": 1166,
+    "observations": 1168,
     "researchGaps": 1037,
     "parserProfiles": 217,
     "parserReplays": 1052,
-    "completeParserReplays": 441
+    "completeParserReplays": 442
   },
   "indexedDocuments": [
     {
@@ -86265,7 +86265,7 @@
             },
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_86d30e2b33f39e6d",
+              "groupName": "PDF grammar pdf_grammar_7b584de27a2887f1",
               "models": [
                 "ADW5009X"
               ],
@@ -86278,18 +86278,38 @@
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_86d30e2b33f39e6d",
+                  "parserProfileId": "pdf_grammar_7b584de27a2887f1",
                   "signatureVersion": 1,
                   "expressionShapes": [
                     {
+                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                      "sourceLabel": "depth (d<number>) with the door opened <number>°",
+                      "axisOrder": [
+                        "depth"
+                      ],
+                      "safeAxes": [],
+                      "scope": "operation_envelope",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": [
+                        "depth (d<number>) with the door opened <number>°"
+                      ]
+                    },
+                    {
                       "patternKind": "INDIVIDUALLY_LABELLED_AXES",
                       "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
-                      "sourceLabel": "height (h) | width (w)",
+                      "sourceLabel": "height (h) | width (w) | depth (d<number>) with the door closed",
                       "axisOrder": [
                         "height",
-                        "width"
+                        "width",
+                        "depth"
                       ],
                       "safeAxes": [
+                        "depth",
                         "height",
                         "width"
                       ],
@@ -86299,7 +86319,9 @@
                       "valueShapes": [
                         "scalar"
                       ],
-                      "depthVariantLabels": []
+                      "depthVariantLabels": [
+                        "depth (d<number>) with the door closed"
+                      ]
                     }
                   ],
                   "researchGapTypes": [
@@ -86322,7 +86344,58 @@
               ],
               "expressions": [
                 {
-                  "observationId": "dimension_expression_6d0be3d52549b1810ce2b426",
+                  "observationId": "dimension_expression_2e075dd50dd354932311bf44",
+                  "pdfSha256": "8f9dcb39e08164a629d4a0736ea14e4addd8cf5da1ee5320d4e8250d6b9e2eef",
+                  "contentSha256": "43a5337484960cdcb7735034344ae85aa6fa3a2f7ef4363df03978187453db30",
+                  "page": 45,
+                  "bbox": [
+                    181,
+                    673,
+                    878,
+                    800
+                  ],
+                  "fragmentSha256": "730c2fc8a143175c98fd7f66509dd705119d28c250354e5d43714f0f503448d6",
+                  "sourceUrls": [
+                    "https://artusi.com.au/wp-content/uploads/2025/11/16076000B36026-General-combined-User-Manual-ADW5009XBWMBWQP12-U7609W-AUArtusi.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Artusi",
+                      "model": "ADW5009X",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "ADW5009X"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Depth (D2) with the door opened 90°",
+                  "sourceValue": "1175mm",
+                  "sourceQuote": "Depth (D2) with the door opened 90° 1175mm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [
+                    "Depth (D2) with the door opened 90°"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Depth (D2) with the door opened 90°",
+                      "value": "1175mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_5b4199b36f1e95597ff22590",
                   "pdfSha256": "8f9dcb39e08164a629d4a0736ea14e4addd8cf5da1ee5320d4e8250d6b9e2eef",
                   "contentSha256": "43a5337484960cdcb7735034344ae85aa6fa3a2f7ef4363df03978187453db30",
                   "page": 45,
@@ -86348,21 +86421,25 @@
                     "ADW5009X"
                   ],
                   "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                  "sourceLabel": "Height (H) | Width (W)",
-                  "sourceValue": "845mm | 598mm",
-                  "sourceQuote": "Height (H) 845mm | Width (W) 598mm",
+                  "sourceLabel": "Height (H) | Width (W) | Depth (D1) with the door closed",
+                  "sourceValue": "845mm | 598mm | 600mm",
+                  "sourceQuote": "Height (H) 845mm | Width (W) 598mm | Depth (D1) with the door closed 600mm",
                   "axisOrder": [
                     "height",
-                    "width"
+                    "width",
+                    "depth"
                   ],
                   "safeAxes": [
                     "height",
-                    "width"
+                    "width",
+                    "depth"
                   ],
                   "unit": "mm",
                   "unitPlacement": "per_value",
                   "scope": "product_closed_candidate",
-                  "depthVariants": [],
+                  "depthVariants": [
+                    "Depth (D1) with the door closed"
+                  ],
                   "axisValues": [
                     {
                       "axis": "height",
@@ -86375,10 +86452,16 @@
                       "label": "Width (W)",
                       "value": "598mm",
                       "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth (D1) with the door closed",
+                      "value": "600mm",
+                      "valueShape": "scalar"
                     }
                   ],
                   "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
-                  "semanticInterpretation": "1:height(scalar), 2:width(scalar)"
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
                 }
               ],
               "researchGaps": [
@@ -86391,7 +86474,7 @@
                 }
               ],
               "parserProfileIds": [
-                "pdf_grammar_86d30e2b33f39e6d"
+                "pdf_grammar_7b584de27a2887f1"
               ],
               "completeParserReplay": false,
               "expressionCoverageStatus": "OBSERVED_WITH_RESEARCH_GAPS"
@@ -101700,14 +101783,14 @@
           "observedMarketingSeriesCount": 0,
           "observedDocumentFamilyCount": 0,
           "observedParserProfileCount": 1,
-          "completeParserReplayCount": 0,
+          "completeParserReplayCount": 1,
           "seriesCountStatus": "UNKNOWN",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
-          "expressionCoverageStatus": "DIMENSION_EXPRESSIONS_OBSERVED",
+          "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
           "families": [
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
+              "groupName": "Esatto Australia EDW dishwasher technical information",
               "models": [
                 "EDW456S"
               ],
@@ -101721,30 +101804,18 @@
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_4f34b527b64d6ba6",
+                  "parserProfileId": "esatto-au-dishwasher-technical-information-d1-d2-v1",
+                  "grammarFamilyId": "esatto_au_edw_dishwasher_technical_information_v1",
+                  "grammarFamilyName": "Esatto Australia EDW dishwasher technical information",
+                  "variantName": "Exact cover and rating-label model with explicit H/W/D1/D2 table",
+                  "brand": "Esatto",
+                  "category": "dishwasher",
+                  "documentType": "user_manual",
+                  "detectionSummary": "An exact-model Esatto EDW manual URL, one exact Model/s cover header, no sibling model, and one Technical Information page containing one Dimensions title, one four-row H/W/D1/D2 millimetre table and the same exact rating-label model.",
+                  "semanticBoundary": "Height and width are closed product dimensions; D1 is projected only when explicitly qualified as door closed. D2 must be present and explicitly qualified as door opened 90 degrees, but remains an operation envelope and is never projected as closed depth. Missing, duplicate, conflicting, unitless, sibling, cross-brand and cross-category variants fail closed.",
+                  "profileKind": "declared_brand_category_grammar",
                   "signatureVersion": 1,
-                  "expressionShapes": [
-                    {
-                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
-                      "sourceLabel": "height (h) | width (w)",
-                      "axisOrder": [
-                        "height",
-                        "width"
-                      ],
-                      "safeAxes": [
-                        "height",
-                        "width"
-                      ],
-                      "scope": "product_closed_candidate",
-                      "unit": "mm",
-                      "unitPlacement": "per_value",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": []
-                    }
-                  ],
+                  "expressionShapes": [],
                   "researchGapTypes": []
                 }
               ],
@@ -101754,16 +101825,74 @@
                   "category": "dishwasher",
                   "brand": "Esatto",
                   "model": "EDW456S",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [
+                    "esatto-au-dishwasher-technical-information-d1-d2-v1"
+                  ],
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
                 {
-                  "observationId": "dimension_expression_08a451c73e414aee04a55f43",
+                  "observationId": "dimension_expression_67807da7c207b3ad86e658c1",
+                  "pdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+                  "contentSha256": "f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b",
+                  "page": 24,
+                  "bbox": [
+                    122,
+                    501,
+                    537,
+                    577
+                  ],
+                  "fragmentSha256": "e1367605f353e447530019f66a022eb79951ead6bc96708ceb5f5e826663c365",
+                  "sourceUrls": [
+                    "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+                    "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Esatto",
+                      "model": "EDW456S",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "EDW456S"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Depth (D2) with the door opened 90°",
+                  "sourceValue": "1150mm",
+                  "sourceQuote": "Depth (D2) with the door opened 90° 1150mm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [
+                    "Depth (D2) with the door opened 90°"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Depth (D2) with the door opened 90°",
+                      "value": "1150mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_8a1c11dfdbf1bbc413f7f89b",
                   "pdfSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
                   "contentSha256": "f1fde39866440cb6b3c6cd420437355e3fab7ed1b89182238c9030c41fc9631b",
                   "page": 24,
@@ -101790,21 +101919,25 @@
                     "EDW456S"
                   ],
                   "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                  "sourceLabel": "Height (H) | Width (W)",
-                  "sourceValue": "845mm | 448mm",
-                  "sourceQuote": "Height (H) 845mm | Width (W) 448mm",
+                  "sourceLabel": "Height (H) | Width (W) | Depth (D1) with the door closed",
+                  "sourceValue": "845mm | 448mm | 600mm",
+                  "sourceQuote": "Height (H) 845mm | Width (W) 448mm | Depth (D1) with the door closed 600mm",
                   "axisOrder": [
                     "height",
-                    "width"
+                    "width",
+                    "depth"
                   ],
                   "safeAxes": [
                     "height",
-                    "width"
+                    "width",
+                    "depth"
                   ],
                   "unit": "mm",
                   "unitPlacement": "per_value",
                   "scope": "product_closed_candidate",
-                  "depthVariants": [],
+                  "depthVariants": [
+                    "Depth (D1) with the door closed"
+                  ],
                   "axisValues": [
                     {
                       "axis": "height",
@@ -101817,18 +101950,24 @@
                       "label": "Width (W)",
                       "value": "448mm",
                       "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth (D1) with the door closed",
+                      "value": "600mm",
+                      "valueShape": "scalar"
                     }
                   ],
                   "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
-                  "semanticInterpretation": "1:height(scalar), 2:width(scalar)"
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
                 }
               ],
               "researchGaps": [],
               "parserProfileIds": [
-                "pdf_grammar_4f34b527b64d6ba6"
+                "esatto-au-dishwasher-technical-information-d1-d2-v1"
               ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
             }
           ]
         },
@@ -126983,20 +127122,20 @@
             },
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_148e22e14343e1a5",
+              "groupName": "PDF grammar pdf_grammar_4147c0ab8430a222",
               "models": [
-                "WGG2441RAU"
+                "WGG24409AU"
               ],
               "pdfSha256s": [
-                "b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920"
+                "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e"
               ],
               "sourceUrls": [
-                "https://media3.bsh-group.com/Documents/9002009864_A.pdf"
+                "https://media3.bsh-group.com/Documents/9001733765_C.pdf"
               ],
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_148e22e14343e1a5",
+                  "parserProfileId": "pdf_grammar_4147c0ab8430a222",
                   "signatureVersion": 1,
                   "expressionShapes": [
                     {
@@ -127031,218 +127170,13 @@
                       ],
                       "scope": "product_closed_candidate",
                       "unit": "cm",
-                      "unitPlacement": "per_value",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": []
-                    }
-                  ],
-                  "researchGapTypes": []
-                }
-              ],
-              "parserReplays": [
-                {
-                  "pdfSha256": "b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920",
-                  "category": "washing_machine",
-                  "brand": "Bosch",
-                  "model": "WGG2441RAU",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
-                }
-              ],
-              "expressions": [
-                {
-                  "observationId": "dimension_expression_2c75fd11d5847ab683008ab3",
-                  "pdfSha256": "b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920",
-                  "contentSha256": "9ad9b23381cae8916ce7cfbcd9648a7e71b798470d204fd6ed16a2ce9e90b8d3",
-                  "page": 44,
-                  "bbox": [
-                    62,
-                    539,
-                    482,
-                    942
-                  ],
-                  "fragmentSha256": "8301f70e53c35a9e838fc1959d57d950c05307c50d57889497a5ebce39fde289",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9002009864_A.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WGG2441RAU",
-                      "category": "washing_machine"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WGG2441RAU"
-                  ],
-                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                  "sourceLabel": "Appliance height | Appliance width | Appliance depth | Appliance depthwith door closed",
-                  "sourceValue": "84.5 cm | 59.8 cm | 59.0 cm | 63.6 cm",
-                  "sourceQuote": "Appliance height 84.5 cm | Appliance width 59.8 cm | Appliance depth 59.0 cm | Appliance depthwith door closed 63.6 cm",
-                  "axisOrder": [
-                    "height",
-                    "width",
-                    "depth",
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "height",
-                    "width"
-                  ],
-                  "unit": "cm",
-                  "unitPlacement": "per_value",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "height",
-                      "label": "Appliance height",
-                      "value": "84.5 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "width",
-                      "label": "Appliance width",
-                      "value": "59.8 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depth",
-                      "value": "59.0 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depthwith door closed",
-                      "value": "63.6 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
-                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
-                },
-                {
-                  "observationId": "dimension_expression_fa63b1da21a33fb157334570",
-                  "pdfSha256": "b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920",
-                  "contentSha256": "9ad9b23381cae8916ce7cfbcd9648a7e71b798470d204fd6ed16a2ce9e90b8d3",
-                  "page": 44,
-                  "bbox": [
-                    62,
-                    539,
-                    482,
-                    942
-                  ],
-                  "fragmentSha256": "8301f70e53c35a9e838fc1959d57d950c05307c50d57889497a5ebce39fde289",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9002009864_A.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WGG2441RAU",
-                      "category": "washing_machine"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WGG2441RAU"
-                  ],
-                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
-                  "sourceLabel": "Appliance depthwith door open",
-                  "sourceValue": "107.3 cm",
-                  "sourceQuote": "Appliance depthwith door open 107.3 cm",
-                  "axisOrder": [
-                    "depth"
-                  ],
-                  "safeAxes": [],
-                  "unit": "cm",
-                  "unitPlacement": "value",
-                  "scope": "operation_envelope",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depthwith door open",
-                      "value": "107.3 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                  "semanticInterpretation": "1:depth(scalar)"
-                }
-              ],
-              "researchGaps": [],
-              "parserProfileIds": [
-                "pdf_grammar_148e22e14343e1a5"
-              ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
-            },
-            {
-              "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_20109d03a601ccc4",
-              "models": [
-                "WGG24401AU",
-                "WGG244A0AU"
-              ],
-              "pdfSha256s": [
-                "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
-                "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b"
-              ],
-              "sourceUrls": [
-                "https://media3.bsh-group.com/Documents/9001910032_C.pdf",
-                "https://media3.bsh-group.com/Documents/9001910058_C.pdf"
-              ],
-              "seriesEvidence": [],
-              "parserProfiles": [
-                {
-                  "parserProfileId": "pdf_grammar_20109d03a601ccc4",
-                  "signatureVersion": 1,
-                  "expressionShapes": [
-                    {
-                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
-                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                      "sourceLabel": "appliance depthwith door open",
-                      "axisOrder": [
-                        "depth"
-                      ],
-                      "safeAxes": [],
-                      "scope": "operation_envelope",
-                      "unit": "cm",
                       "unitPlacement": "value",
                       "valueShapes": [
                         "scalar"
                       ],
-                      "depthVariantLabels": []
-                    },
-                    {
-                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                      "syntaxDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
-                      "sourceLabel": "appliance height | appliance width | appliance depth | appliance depthwith door closed",
-                      "axisOrder": [
-                        "height",
-                        "width",
-                        "depth",
-                        "depth"
-                      ],
-                      "safeAxes": [
-                        "height",
-                        "width"
-                      ],
-                      "scope": "product_closed_candidate",
-                      "unit": "cm",
-                      "unitPlacement": "per_value",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": []
+                      "depthVariantLabels": [
+                        "appliance depthwith door closed"
+                      ]
                     },
                     {
                       "patternKind": "INLINE_LABELLED_AXES",
@@ -127268,21 +127202,10 @@
               ],
               "parserReplays": [
                 {
-                  "pdfSha256": "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
+                  "pdfSha256": "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e",
                   "category": "washing_machine",
                   "brand": "Bosch",
-                  "model": "WGG244A0AU",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
-                },
-                {
-                  "pdfSha256": "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b",
-                  "category": "washing_machine",
-                  "brand": "Bosch",
-                  "model": "WGG24401AU",
+                  "model": "WGG24409AU",
                   "extractionState": "PARSER_GAP",
                   "identityScope": "UNPROVEN",
                   "claimFields": [],
@@ -127292,30 +127215,105 @@
               ],
               "expressions": [
                 {
-                  "observationId": "dimension_expression_4bf3c575fc539a6e12d5b84d",
-                  "pdfSha256": "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b",
-                  "contentSha256": "c6ee40f8a9ea244fb5235962d4ea78c56fd79670d8f11107b1151c6f67957816",
-                  "page": 42,
+                  "observationId": "dimension_expression_8167b98e26f9358c418185eb",
+                  "pdfSha256": "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e",
+                  "contentSha256": "9aa462b4fc3492522becc9a2db4213b5a63c6d5e684a915fce2f372c15261590",
+                  "page": 43,
                   "bbox": [
-                    520,
-                    524,
-                    940,
-                    924
+                    54,
+                    137,
+                    474,
+                    391
                   ],
-                  "fragmentSha256": "d2e8f4a52c11e486571a1af4946926eadf3e6b05763ae142d1dbd3d4d4eea783",
+                  "fragmentSha256": "f4a7311946679bf5af15c6f471b02ee0ee24653fc23378836917352921251387",
                   "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001910058_C.pdf"
+                    "https://media3.bsh-group.com/Documents/9001733765_C.pdf"
                   ],
                   "identities": [
                     {
                       "brand": "Bosch",
-                      "model": "WGG24401AU",
+                      "model": "WGG24409AU",
                       "category": "washing_machine"
                     }
                   ],
                   "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
                   "boundModels": [
-                    "WGG24401AU"
+                    "WGG24409AU"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Appliance height | Appliance width | Appliance depth | Appliance depthwith door closed",
+                  "sourceValue": "84.8 | 59.8 | 59.0 cm | 63.6 cm",
+                  "sourceQuote": "Appliance height 84.8 | Appliance width 59.8 | Appliance depth 59.0 cm | Appliance depthwith door closed 63.6 cm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "Appliance depthwith door closed"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Appliance height",
+                      "value": "84.8",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Appliance width",
+                      "value": "59.8",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depth",
+                      "value": "59.0 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depthwith door closed",
+                      "value": "63.6 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
+                },
+                {
+                  "observationId": "dimension_expression_dfc41bbc98fa497156b16924",
+                  "pdfSha256": "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e",
+                  "contentSha256": "9aa462b4fc3492522becc9a2db4213b5a63c6d5e684a915fce2f372c15261590",
+                  "page": 43,
+                  "bbox": [
+                    54,
+                    137,
+                    474,
+                    391
+                  ],
+                  "fragmentSha256": "f4a7311946679bf5af15c6f471b02ee0ee24653fc23378836917352921251387",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9001733765_C.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WGG24409AU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WGG24409AU"
                   ],
                   "patternKind": "INDIVIDUAL_LABELLED_AXIS",
                   "sourceLabel": "Appliance depthwith door open",
@@ -127341,131 +127339,9 @@
                   "semanticInterpretation": "1:depth(scalar)"
                 },
                 {
-                  "observationId": "dimension_expression_5618ce2e0ef8a9fe6806a2d4",
-                  "pdfSha256": "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b",
-                  "contentSha256": "c6ee40f8a9ea244fb5235962d4ea78c56fd79670d8f11107b1151c6f67957816",
-                  "page": 42,
-                  "bbox": [
-                    520,
-                    524,
-                    940,
-                    924
-                  ],
-                  "fragmentSha256": "d2e8f4a52c11e486571a1af4946926eadf3e6b05763ae142d1dbd3d4d4eea783",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001910058_C.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WGG24401AU",
-                      "category": "washing_machine"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WGG24401AU"
-                  ],
-                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                  "sourceLabel": "Appliance height | Appliance width | Appliance depth | Appliance depthwith door closed",
-                  "sourceValue": "84.8 cm | 59.8 cm | 59.0 cm | 63.6 cm",
-                  "sourceQuote": "Appliance height 84.8 cm | Appliance width 59.8 cm | Appliance depth 59.0 cm | Appliance depthwith door closed 63.6 cm",
-                  "axisOrder": [
-                    "height",
-                    "width",
-                    "depth",
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "height",
-                    "width"
-                  ],
-                  "unit": "cm",
-                  "unitPlacement": "per_value",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "height",
-                      "label": "Appliance height",
-                      "value": "84.8 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "width",
-                      "label": "Appliance width",
-                      "value": "59.8 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depth",
-                      "value": "59.0 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depthwith door closed",
-                      "value": "63.6 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
-                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
-                },
-                {
-                  "observationId": "dimension_expression_60d8bd3e2d38f377e9080ba5",
-                  "pdfSha256": "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
-                  "contentSha256": "e5aa0c92604d3f6f867366dd3737391ddd70992bb538319882d046704974627e",
-                  "page": 44,
-                  "bbox": [
-                    520,
-                    532,
-                    940,
-                    926
-                  ],
-                  "fragmentSha256": "8b88d6ee423c2a2965f55cf7014d63bac7936ac1f45eaaa69730a62ca79887b8",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001910032_C.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WGG244A0AU",
-                      "category": "washing_machine"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WGG244A0AU"
-                  ],
-                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
-                  "sourceLabel": "Appliance depthwith door open",
-                  "sourceValue": "107.3 cm",
-                  "sourceQuote": "Appliance depthwith door open 107.3 cm",
-                  "axisOrder": [
-                    "depth"
-                  ],
-                  "safeAxes": [],
-                  "unit": "cm",
-                  "unitPlacement": "value",
-                  "scope": "operation_envelope",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depthwith door open",
-                      "value": "107.3 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                  "semanticInterpretation": "1:depth(scalar)"
-                },
-                {
-                  "observationId": "dimension_expression_77c66c2dc9fbfc255c88ed45",
-                  "pdfSha256": "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b",
-                  "contentSha256": "c6ee40f8a9ea244fb5235962d4ea78c56fd79670d8f11107b1151c6f67957816",
+                  "observationId": "dimension_expression_f3c58160a3b7587cfde56bf4",
+                  "pdfSha256": "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e",
+                  "contentSha256": "9aa462b4fc3492522becc9a2db4213b5a63c6d5e684a915fce2f372c15261590",
                   "page": 11,
                   "bbox": [
                     517,
@@ -127475,18 +127351,18 @@
                   ],
                   "fragmentSha256": "8c826ccef5cfcd1edff2c33cbe6396f4d96e4cab49a6aea6682e0b12e938137b",
                   "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001910058_C.pdf"
+                    "https://media3.bsh-group.com/Documents/9001733765_C.pdf"
                   ],
                   "identities": [
                     {
                       "brand": "Bosch",
-                      "model": "WGG24401AU",
+                      "model": "WGG24409AU",
                       "category": "washing_machine"
                     }
                   ],
                   "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
                   "boundModels": [
-                    "WGG24401AU"
+                    "WGG24409AU"
                   ],
                   "patternKind": "INLINE_LABELLED_AXES",
                   "sourceLabel": "width",
@@ -127512,142 +127388,18 @@
                   ],
                   "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
                   "semanticInterpretation": "1:width(scalar)"
-                },
-                {
-                  "observationId": "dimension_expression_8449676750826e9e18db76b3",
-                  "pdfSha256": "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
-                  "contentSha256": "e5aa0c92604d3f6f867366dd3737391ddd70992bb538319882d046704974627e",
-                  "page": 11,
-                  "bbox": [
-                    517,
-                    200,
-                    935,
-                    828
-                  ],
-                  "fragmentSha256": "8c826ccef5cfcd1edff2c33cbe6396f4d96e4cab49a6aea6682e0b12e938137b",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001910032_C.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WGG244A0AU",
-                      "category": "washing_machine"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WGG244A0AU"
-                  ],
-                  "patternKind": "INLINE_LABELLED_AXES",
-                  "sourceLabel": "width",
-                  "sourceValue": "60 cm",
-                  "sourceQuote": "width 60 cm",
-                  "axisOrder": [
-                    "width"
-                  ],
-                  "safeAxes": [
-                    "width"
-                  ],
-                  "unit": "cm",
-                  "unitPlacement": "value",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "width",
-                      "label": "width",
-                      "value": "60 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
-                  "semanticInterpretation": "1:width(scalar)"
-                },
-                {
-                  "observationId": "dimension_expression_bdbe59edcc29c6c34db475f1",
-                  "pdfSha256": "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
-                  "contentSha256": "e5aa0c92604d3f6f867366dd3737391ddd70992bb538319882d046704974627e",
-                  "page": 44,
-                  "bbox": [
-                    520,
-                    532,
-                    940,
-                    926
-                  ],
-                  "fragmentSha256": "8b88d6ee423c2a2965f55cf7014d63bac7936ac1f45eaaa69730a62ca79887b8",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001910032_C.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WGG244A0AU",
-                      "category": "washing_machine"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WGG244A0AU"
-                  ],
-                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                  "sourceLabel": "Appliance height | Appliance width | Appliance depth | Appliance depthwith door closed",
-                  "sourceValue": "84.8 cm | 59.8 cm | 59.0 cm | 63.6 cm",
-                  "sourceQuote": "Appliance height 84.8 cm | Appliance width 59.8 cm | Appliance depth 59.0 cm | Appliance depthwith door closed 63.6 cm",
-                  "axisOrder": [
-                    "height",
-                    "width",
-                    "depth",
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "height",
-                    "width"
-                  ],
-                  "unit": "cm",
-                  "unitPlacement": "per_value",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "height",
-                      "label": "Appliance height",
-                      "value": "84.8 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "width",
-                      "label": "Appliance width",
-                      "value": "59.8 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depth",
-                      "value": "59.0 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depthwith door closed",
-                      "value": "63.6 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
-                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
                 }
               ],
               "researchGaps": [],
               "parserProfileIds": [
-                "pdf_grammar_20109d03a601ccc4"
+                "pdf_grammar_4147c0ab8430a222"
               ],
               "completeParserReplay": false,
               "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
             },
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_2902ae0cb7b98342",
+              "groupName": "PDF grammar pdf_grammar_443eed39cc449a65",
               "models": [
                 "WGG244A1AU"
               ],
@@ -127660,7 +127412,7 @@
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_2902ae0cb7b98342",
+                  "parserProfileId": "pdf_grammar_443eed39cc449a65",
                   "signatureVersion": 1,
                   "expressionShapes": [
                     {
@@ -127699,7 +127451,9 @@
                       "valueShapes": [
                         "scalar"
                       ],
-                      "depthVariantLabels": []
+                      "depthVariantLabels": [
+                        "appliance depthwith door closed"
+                      ]
                     }
                   ],
                   "researchGapTypes": []
@@ -127769,7 +127523,7 @@
                   "semanticInterpretation": "1:depth(scalar)"
                 },
                 {
-                  "observationId": "dimension_expression_9c9bc0e8fdaa2c8ac34a43ae",
+                  "observationId": "dimension_expression_d72f11205fd711b630b49795",
                   "pdfSha256": "a71745dd0cdd0212a394a592e624f03a0aa6dbfd24c3619297c22de17455d6ef",
                   "contentSha256": "84d1bace8d8c4f77fb23f831bffd753b1125e2cb2ca0427cfd8d171d236c6f30",
                   "page": 44,
@@ -127811,7 +127565,9 @@
                   "unit": "cm",
                   "unitPlacement": "value",
                   "scope": "product_closed_candidate",
-                  "depthVariants": [],
+                  "depthVariants": [
+                    "Appliance depthwith door closed"
+                  ],
                   "axisValues": [
                     {
                       "axis": "height",
@@ -127844,7 +127600,7 @@
               ],
               "researchGaps": [],
               "parserProfileIds": [
-                "pdf_grammar_2902ae0cb7b98342"
+                "pdf_grammar_443eed39cc449a65"
               ],
               "completeParserReplay": false,
               "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
@@ -128775,26 +128531,29 @@
             },
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_4ec51444c2032a05",
+              "groupName": "PDF grammar pdf_grammar_4f970ddd833228a7",
               "models": [
-                "WAN24121AU"
+                "WGG24401AU",
+                "WGG244A0AU"
               ],
               "pdfSha256s": [
-                "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945"
+                "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
+                "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b"
               ],
               "sourceUrls": [
-                "https://media3.bsh-group.com/Documents/9001812118_A.pdf"
+                "https://media3.bsh-group.com/Documents/9001910032_C.pdf",
+                "https://media3.bsh-group.com/Documents/9001910058_C.pdf"
               ],
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_4ec51444c2032a05",
+                  "parserProfileId": "pdf_grammar_4f970ddd833228a7",
                   "signatureVersion": 1,
                   "expressionShapes": [
                     {
                       "patternKind": "INDIVIDUAL_LABELLED_AXIS",
                       "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                      "sourceLabel": "appliance depth with door open",
+                      "sourceLabel": "appliance depthwith door open",
                       "axisOrder": [
                         "depth"
                       ],
@@ -128810,7 +128569,7 @@
                     {
                       "patternKind": "INDIVIDUALLY_LABELLED_AXES",
                       "syntaxDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
-                      "sourceLabel": "appliance height | appliance width | appliance depth | appliance depth with door closed",
+                      "sourceLabel": "appliance height | appliance width | appliance depth | appliance depthwith door closed",
                       "axisOrder": [
                         "height",
                         "width",
@@ -128827,7 +128586,9 @@
                       "valueShapes": [
                         "scalar"
                       ],
-                      "depthVariantLabels": []
+                      "depthVariantLabels": [
+                        "appliance depthwith door closed"
+                      ]
                     },
                     {
                       "patternKind": "INLINE_LABELLED_AXES",
@@ -128853,10 +128614,21 @@
               ],
               "parserReplays": [
                 {
-                  "pdfSha256": "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945",
+                  "pdfSha256": "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
                   "category": "washing_machine",
                   "brand": "Bosch",
-                  "model": "WAN24121AU",
+                  "model": "WGG244A0AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                },
+                {
+                  "pdfSha256": "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b",
+                  "category": "washing_machine",
+                  "brand": "Bosch",
+                  "model": "WGG24401AU",
                   "extractionState": "PARSER_GAP",
                   "identityScope": "UNPROVEN",
                   "claimFields": [],
@@ -128866,30 +128638,203 @@
               ],
               "expressions": [
                 {
-                  "observationId": "dimension_expression_0aa7a56083ffc2da192fb13b",
-                  "pdfSha256": "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945",
-                  "contentSha256": "eb5428233dbf316805fd85006efd6ccc1e897031250d7b448edb6e412c6761d0",
-                  "page": 13,
+                  "observationId": "dimension_expression_3b23b392b108911c36fa8dea",
+                  "pdfSha256": "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
+                  "contentSha256": "e5aa0c92604d3f6f867366dd3737391ddd70992bb538319882d046704974627e",
+                  "page": 44,
                   "bbox": [
-                    66,
-                    331,
-                    479,
-                    811
+                    520,
+                    532,
+                    940,
+                    926
                   ],
-                  "fragmentSha256": "40335110f9dd935c2fca70f1c251e7015429f41f1145c3138cb49a30f28fd593",
+                  "fragmentSha256": "8b88d6ee423c2a2965f55cf7014d63bac7936ac1f45eaaa69730a62ca79887b8",
                   "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001812118_A.pdf"
+                    "https://media3.bsh-group.com/Documents/9001910032_C.pdf"
                   ],
                   "identities": [
                     {
                       "brand": "Bosch",
-                      "model": "WAN24121AU",
+                      "model": "WGG244A0AU",
                       "category": "washing_machine"
                     }
                   ],
                   "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
                   "boundModels": [
-                    "WAN24121AU"
+                    "WGG244A0AU"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Appliance height | Appliance width | Appliance depth | Appliance depthwith door closed",
+                  "sourceValue": "84.8 cm | 59.8 cm | 59.0 cm | 63.6 cm",
+                  "sourceQuote": "Appliance height 84.8 cm | Appliance width 59.8 cm | Appliance depth 59.0 cm | Appliance depthwith door closed 63.6 cm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "Appliance depthwith door closed"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Appliance height",
+                      "value": "84.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Appliance width",
+                      "value": "59.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depth",
+                      "value": "59.0 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depthwith door closed",
+                      "value": "63.6 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
+                },
+                {
+                  "observationId": "dimension_expression_4bf3c575fc539a6e12d5b84d",
+                  "pdfSha256": "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b",
+                  "contentSha256": "c6ee40f8a9ea244fb5235962d4ea78c56fd79670d8f11107b1151c6f67957816",
+                  "page": 42,
+                  "bbox": [
+                    520,
+                    524,
+                    940,
+                    924
+                  ],
+                  "fragmentSha256": "d2e8f4a52c11e486571a1af4946926eadf3e6b05763ae142d1dbd3d4d4eea783",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9001910058_C.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WGG24401AU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WGG24401AU"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Appliance depthwith door open",
+                  "sourceValue": "107.3 cm",
+                  "sourceQuote": "Appliance depthwith door open 107.3 cm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "cm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depthwith door open",
+                      "value": "107.3 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_60d8bd3e2d38f377e9080ba5",
+                  "pdfSha256": "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
+                  "contentSha256": "e5aa0c92604d3f6f867366dd3737391ddd70992bb538319882d046704974627e",
+                  "page": 44,
+                  "bbox": [
+                    520,
+                    532,
+                    940,
+                    926
+                  ],
+                  "fragmentSha256": "8b88d6ee423c2a2965f55cf7014d63bac7936ac1f45eaaa69730a62ca79887b8",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9001910032_C.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WGG244A0AU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WGG244A0AU"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Appliance depthwith door open",
+                  "sourceValue": "107.3 cm",
+                  "sourceQuote": "Appliance depthwith door open 107.3 cm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "cm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depthwith door open",
+                      "value": "107.3 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_77c66c2dc9fbfc255c88ed45",
+                  "pdfSha256": "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b",
+                  "contentSha256": "c6ee40f8a9ea244fb5235962d4ea78c56fd79670d8f11107b1151c6f67957816",
+                  "page": 11,
+                  "bbox": [
+                    517,
+                    200,
+                    935,
+                    828
+                  ],
+                  "fragmentSha256": "8c826ccef5cfcd1edff2c33cbe6396f4d96e4cab49a6aea6682e0b12e938137b",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9001910058_C.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WGG24401AU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WGG24401AU"
                   ],
                   "patternKind": "INLINE_LABELLED_AXES",
                   "sourceLabel": "width",
@@ -128917,35 +128862,86 @@
                   "semanticInterpretation": "1:width(scalar)"
                 },
                 {
-                  "observationId": "dimension_expression_3def88ad94facbbb88a43a02",
-                  "pdfSha256": "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945",
-                  "contentSha256": "eb5428233dbf316805fd85006efd6ccc1e897031250d7b448edb6e412c6761d0",
-                  "page": 50,
+                  "observationId": "dimension_expression_8449676750826e9e18db76b3",
+                  "pdfSha256": "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
+                  "contentSha256": "e5aa0c92604d3f6f867366dd3737391ddd70992bb538319882d046704974627e",
+                  "page": 11,
                   "bbox": [
-                    522,
-                    68,
-                    940,
-                    882
+                    517,
+                    200,
+                    935,
+                    828
                   ],
-                  "fragmentSha256": "08bbcc0a0ca345a29285853b8585e5a2bbc9d67c49a70bd95f8c3ebb61cfb929",
+                  "fragmentSha256": "8c826ccef5cfcd1edff2c33cbe6396f4d96e4cab49a6aea6682e0b12e938137b",
                   "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001812118_A.pdf"
+                    "https://media3.bsh-group.com/Documents/9001910032_C.pdf"
                   ],
                   "identities": [
                     {
                       "brand": "Bosch",
-                      "model": "WAN24121AU",
+                      "model": "WGG244A0AU",
                       "category": "washing_machine"
                     }
                   ],
                   "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
                   "boundModels": [
-                    "WAN24121AU"
+                    "WGG244A0AU"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "width",
+                  "sourceValue": "60 cm",
+                  "sourceQuote": "width 60 cm",
+                  "axisOrder": [
+                    "width"
+                  ],
+                  "safeAxes": [
+                    "width"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "60 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:width(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_f1da9ac0a3130022238c85a9",
+                  "pdfSha256": "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b",
+                  "contentSha256": "c6ee40f8a9ea244fb5235962d4ea78c56fd79670d8f11107b1151c6f67957816",
+                  "page": 42,
+                  "bbox": [
+                    520,
+                    524,
+                    940,
+                    924
+                  ],
+                  "fragmentSha256": "d2e8f4a52c11e486571a1af4946926eadf3e6b05763ae142d1dbd3d4d4eea783",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9001910058_C.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WGG24401AU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WGG24401AU"
                   ],
                   "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                  "sourceLabel": "Appliance height | Appliance width | Appliance depth | Appliance depth with door closed",
-                  "sourceValue": "84.8 cm | 59.8 cm | 55.0 cm | 60.0 cm",
-                  "sourceQuote": "Appliance height 84.8 cm | Appliance width 59.8 cm | Appliance depth 55.0 cm | Appliance depth with door closed 60.0 cm",
+                  "sourceLabel": "Appliance height | Appliance width | Appliance depth | Appliance depthwith door closed",
+                  "sourceValue": "84.8 cm | 59.8 cm | 59.0 cm | 63.6 cm",
+                  "sourceQuote": "Appliance height 84.8 cm | Appliance width 59.8 cm | Appliance depth 59.0 cm | Appliance depthwith door closed 63.6 cm",
                   "axisOrder": [
                     "height",
                     "width",
@@ -128959,7 +128955,9 @@
                   "unit": "cm",
                   "unitPlacement": "per_value",
                   "scope": "product_closed_candidate",
-                  "depthVariants": [],
+                  "depthVariants": [
+                    "Appliance depthwith door closed"
+                  ],
                   "axisValues": [
                     {
                       "axis": "height",
@@ -128976,13 +128974,172 @@
                     {
                       "axis": "depth",
                       "label": "Appliance depth",
-                      "value": "55.0 cm",
+                      "value": "59.0 cm",
                       "valueShape": "scalar"
                     },
                     {
                       "axis": "depth",
-                      "label": "Appliance depth with door closed",
-                      "value": "60.0 cm",
+                      "label": "Appliance depthwith door closed",
+                      "value": "63.6 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
+                }
+              ],
+              "researchGaps": [],
+              "parserProfileIds": [
+                "pdf_grammar_4f970ddd833228a7"
+              ],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_78fc024328aea0cc",
+              "models": [
+                "WGG2441RAU"
+              ],
+              "pdfSha256s": [
+                "b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920"
+              ],
+              "sourceUrls": [
+                "https://media3.bsh-group.com/Documents/9002009864_A.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_78fc024328aea0cc",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                      "sourceLabel": "appliance depthwith door open",
+                      "axisOrder": [
+                        "depth"
+                      ],
+                      "safeAxes": [],
+                      "scope": "operation_envelope",
+                      "unit": "cm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                      "syntaxDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
+                      "sourceLabel": "appliance height | appliance width | appliance depth | appliance depthwith door closed",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "cm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": [
+                        "appliance depthwith door closed"
+                      ]
+                    }
+                  ],
+                  "researchGapTypes": []
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920",
+                  "category": "washing_machine",
+                  "brand": "Bosch",
+                  "model": "WGG2441RAU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_6c013275a3f2b6174eeffa9e",
+                  "pdfSha256": "b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920",
+                  "contentSha256": "9ad9b23381cae8916ce7cfbcd9648a7e71b798470d204fd6ed16a2ce9e90b8d3",
+                  "page": 44,
+                  "bbox": [
+                    62,
+                    539,
+                    482,
+                    942
+                  ],
+                  "fragmentSha256": "8301f70e53c35a9e838fc1959d57d950c05307c50d57889497a5ebce39fde289",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9002009864_A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WGG2441RAU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WGG2441RAU"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Appliance height | Appliance width | Appliance depth | Appliance depthwith door closed",
+                  "sourceValue": "84.5 cm | 59.8 cm | 59.0 cm | 63.6 cm",
+                  "sourceQuote": "Appliance height 84.5 cm | Appliance width 59.8 cm | Appliance depth 59.0 cm | Appliance depthwith door closed 63.6 cm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "Appliance depthwith door closed"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Appliance height",
+                      "value": "84.5 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Appliance width",
+                      "value": "59.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depth",
+                      "value": "59.0 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depthwith door closed",
+                      "value": "63.6 cm",
                       "valueShape": "scalar"
                     }
                   ],
@@ -128990,35 +129147,35 @@
                   "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
                 },
                 {
-                  "observationId": "dimension_expression_7a520eb34e983b12344b51ef",
-                  "pdfSha256": "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945",
-                  "contentSha256": "eb5428233dbf316805fd85006efd6ccc1e897031250d7b448edb6e412c6761d0",
-                  "page": 50,
+                  "observationId": "dimension_expression_fa63b1da21a33fb157334570",
+                  "pdfSha256": "b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920",
+                  "contentSha256": "9ad9b23381cae8916ce7cfbcd9648a7e71b798470d204fd6ed16a2ce9e90b8d3",
+                  "page": 44,
                   "bbox": [
-                    522,
-                    68,
-                    940,
-                    882
+                    62,
+                    539,
+                    482,
+                    942
                   ],
-                  "fragmentSha256": "08bbcc0a0ca345a29285853b8585e5a2bbc9d67c49a70bd95f8c3ebb61cfb929",
+                  "fragmentSha256": "8301f70e53c35a9e838fc1959d57d950c05307c50d57889497a5ebce39fde289",
                   "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001812118_A.pdf"
+                    "https://media3.bsh-group.com/Documents/9002009864_A.pdf"
                   ],
                   "identities": [
                     {
                       "brand": "Bosch",
-                      "model": "WAN24121AU",
+                      "model": "WGG2441RAU",
                       "category": "washing_machine"
                     }
                   ],
                   "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
                   "boundModels": [
-                    "WAN24121AU"
+                    "WGG2441RAU"
                   ],
                   "patternKind": "INDIVIDUAL_LABELLED_AXIS",
-                  "sourceLabel": "Appliance depth with door open",
-                  "sourceValue": "101.7 cm",
-                  "sourceQuote": "Appliance depth with door open 101.7 cm",
+                  "sourceLabel": "Appliance depthwith door open",
+                  "sourceValue": "107.3 cm",
+                  "sourceQuote": "Appliance depthwith door open 107.3 cm",
                   "axisOrder": [
                     "depth"
                   ],
@@ -129030,8 +129187,8 @@
                   "axisValues": [
                     {
                       "axis": "depth",
-                      "label": "Appliance depth with door open",
-                      "value": "101.7 cm",
+                      "label": "Appliance depthwith door open",
+                      "value": "107.3 cm",
                       "valueShape": "scalar"
                     }
                   ],
@@ -129041,7 +129198,7 @@
               ],
               "researchGaps": [],
               "parserProfileIds": [
-                "pdf_grammar_4ec51444c2032a05"
+                "pdf_grammar_78fc024328aea0cc"
               ],
               "completeParserReplay": false,
               "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
@@ -129619,26 +129776,26 @@
             },
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_875fba11738c76e3",
+              "groupName": "PDF grammar pdf_grammar_a24fd05d9e9fbd9d",
               "models": [
-                "WGG24409AU"
+                "WAN24121AU"
               ],
               "pdfSha256s": [
-                "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e"
+                "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945"
               ],
               "sourceUrls": [
-                "https://media3.bsh-group.com/Documents/9001733765_C.pdf"
+                "https://media3.bsh-group.com/Documents/9001812118_A.pdf"
               ],
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_875fba11738c76e3",
+                  "parserProfileId": "pdf_grammar_a24fd05d9e9fbd9d",
                   "signatureVersion": 1,
                   "expressionShapes": [
                     {
                       "patternKind": "INDIVIDUAL_LABELLED_AXIS",
                       "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                      "sourceLabel": "appliance depthwith door open",
+                      "sourceLabel": "appliance depth with door open",
                       "axisOrder": [
                         "depth"
                       ],
@@ -129654,7 +129811,7 @@
                     {
                       "patternKind": "INDIVIDUALLY_LABELLED_AXES",
                       "syntaxDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
-                      "sourceLabel": "appliance height | appliance width | appliance depth | appliance depthwith door closed",
+                      "sourceLabel": "appliance height | appliance width | appliance depth | appliance depth with door closed",
                       "axisOrder": [
                         "height",
                         "width",
@@ -129667,11 +129824,13 @@
                       ],
                       "scope": "product_closed_candidate",
                       "unit": "cm",
-                      "unitPlacement": "value",
+                      "unitPlacement": "per_value",
                       "valueShapes": [
                         "scalar"
                       ],
-                      "depthVariantLabels": []
+                      "depthVariantLabels": [
+                        "appliance depth with door closed"
+                      ]
                     },
                     {
                       "patternKind": "INLINE_LABELLED_AXES",
@@ -129697,10 +129856,10 @@
               ],
               "parserReplays": [
                 {
-                  "pdfSha256": "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e",
+                  "pdfSha256": "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945",
                   "category": "washing_machine",
                   "brand": "Bosch",
-                  "model": "WGG24409AU",
+                  "model": "WAN24121AU",
                   "extractionState": "PARSER_GAP",
                   "identityScope": "UNPROVEN",
                   "claimFields": [],
@@ -129710,152 +129869,30 @@
               ],
               "expressions": [
                 {
-                  "observationId": "dimension_expression_982df5e985b559ae047d146e",
-                  "pdfSha256": "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e",
-                  "contentSha256": "9aa462b4fc3492522becc9a2db4213b5a63c6d5e684a915fce2f372c15261590",
-                  "page": 43,
+                  "observationId": "dimension_expression_0aa7a56083ffc2da192fb13b",
+                  "pdfSha256": "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945",
+                  "contentSha256": "eb5428233dbf316805fd85006efd6ccc1e897031250d7b448edb6e412c6761d0",
+                  "page": 13,
                   "bbox": [
-                    54,
-                    137,
-                    474,
-                    391
+                    66,
+                    331,
+                    479,
+                    811
                   ],
-                  "fragmentSha256": "f4a7311946679bf5af15c6f471b02ee0ee24653fc23378836917352921251387",
+                  "fragmentSha256": "40335110f9dd935c2fca70f1c251e7015429f41f1145c3138cb49a30f28fd593",
                   "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001733765_C.pdf"
+                    "https://media3.bsh-group.com/Documents/9001812118_A.pdf"
                   ],
                   "identities": [
                     {
                       "brand": "Bosch",
-                      "model": "WGG24409AU",
+                      "model": "WAN24121AU",
                       "category": "washing_machine"
                     }
                   ],
                   "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
                   "boundModels": [
-                    "WGG24409AU"
-                  ],
-                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                  "sourceLabel": "Appliance height | Appliance width | Appliance depth | Appliance depthwith door closed",
-                  "sourceValue": "84.8 | 59.8 | 59.0 cm | 63.6 cm",
-                  "sourceQuote": "Appliance height 84.8 | Appliance width 59.8 | Appliance depth 59.0 cm | Appliance depthwith door closed 63.6 cm",
-                  "axisOrder": [
-                    "height",
-                    "width",
-                    "depth",
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "height",
-                    "width"
-                  ],
-                  "unit": "cm",
-                  "unitPlacement": "value",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "height",
-                      "label": "Appliance height",
-                      "value": "84.8",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "width",
-                      "label": "Appliance width",
-                      "value": "59.8",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depth",
-                      "value": "59.0 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depthwith door closed",
-                      "value": "63.6 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
-                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
-                },
-                {
-                  "observationId": "dimension_expression_dfc41bbc98fa497156b16924",
-                  "pdfSha256": "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e",
-                  "contentSha256": "9aa462b4fc3492522becc9a2db4213b5a63c6d5e684a915fce2f372c15261590",
-                  "page": 43,
-                  "bbox": [
-                    54,
-                    137,
-                    474,
-                    391
-                  ],
-                  "fragmentSha256": "f4a7311946679bf5af15c6f471b02ee0ee24653fc23378836917352921251387",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001733765_C.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WGG24409AU",
-                      "category": "washing_machine"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WGG24409AU"
-                  ],
-                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
-                  "sourceLabel": "Appliance depthwith door open",
-                  "sourceValue": "107.3 cm",
-                  "sourceQuote": "Appliance depthwith door open 107.3 cm",
-                  "axisOrder": [
-                    "depth"
-                  ],
-                  "safeAxes": [],
-                  "unit": "cm",
-                  "unitPlacement": "value",
-                  "scope": "operation_envelope",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depthwith door open",
-                      "value": "107.3 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                  "semanticInterpretation": "1:depth(scalar)"
-                },
-                {
-                  "observationId": "dimension_expression_f3c58160a3b7587cfde56bf4",
-                  "pdfSha256": "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e",
-                  "contentSha256": "9aa462b4fc3492522becc9a2db4213b5a63c6d5e684a915fce2f372c15261590",
-                  "page": 11,
-                  "bbox": [
-                    517,
-                    200,
-                    935,
-                    828
-                  ],
-                  "fragmentSha256": "8c826ccef5cfcd1edff2c33cbe6396f4d96e4cab49a6aea6682e0b12e938137b",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001733765_C.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WGG24409AU",
-                      "category": "washing_machine"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WGG24409AU"
+                    "WAN24121AU"
                   ],
                   "patternKind": "INLINE_LABELLED_AXES",
                   "sourceLabel": "width",
@@ -129881,11 +129918,135 @@
                   ],
                   "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
                   "semanticInterpretation": "1:width(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_7a520eb34e983b12344b51ef",
+                  "pdfSha256": "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945",
+                  "contentSha256": "eb5428233dbf316805fd85006efd6ccc1e897031250d7b448edb6e412c6761d0",
+                  "page": 50,
+                  "bbox": [
+                    522,
+                    68,
+                    940,
+                    882
+                  ],
+                  "fragmentSha256": "08bbcc0a0ca345a29285853b8585e5a2bbc9d67c49a70bd95f8c3ebb61cfb929",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9001812118_A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WAN24121AU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WAN24121AU"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Appliance depth with door open",
+                  "sourceValue": "101.7 cm",
+                  "sourceQuote": "Appliance depth with door open 101.7 cm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "cm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depth with door open",
+                      "value": "101.7 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_ccc9fc9d44e9923dcab977e1",
+                  "pdfSha256": "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945",
+                  "contentSha256": "eb5428233dbf316805fd85006efd6ccc1e897031250d7b448edb6e412c6761d0",
+                  "page": 50,
+                  "bbox": [
+                    522,
+                    68,
+                    940,
+                    882
+                  ],
+                  "fragmentSha256": "08bbcc0a0ca345a29285853b8585e5a2bbc9d67c49a70bd95f8c3ebb61cfb929",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9001812118_A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WAN24121AU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WAN24121AU"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Appliance height | Appliance width | Appliance depth | Appliance depth with door closed",
+                  "sourceValue": "84.8 cm | 59.8 cm | 55.0 cm | 60.0 cm",
+                  "sourceQuote": "Appliance height 84.8 cm | Appliance width 59.8 cm | Appliance depth 55.0 cm | Appliance depth with door closed 60.0 cm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "Appliance depth with door closed"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Appliance height",
+                      "value": "84.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Appliance width",
+                      "value": "59.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depth",
+                      "value": "55.0 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depth with door closed",
+                      "value": "60.0 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "RESEARCH_MULTIPLE_VALUES_PER_AXIS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar), 4:depth(scalar), ambiguous:depth"
                 }
               ],
               "researchGaps": [],
               "parserProfileIds": [
-                "pdf_grammar_875fba11738c76e3"
+                "pdf_grammar_a24fd05d9e9fbd9d"
               ],
               "completeParserReplay": false,
               "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
@@ -148134,6 +148295,287 @@
             },
             {
               "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_5f8503873b3c54d7",
+              "models": [
+                "WTH83002AU"
+              ],
+              "pdfSha256s": [
+                "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca"
+              ],
+              "sourceUrls": [
+                "https://media3.bsh-group.com/Documents/9001987868_C.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_5f8503873b3c54d7",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                      "sourceLabel": "appliance depthwith door open",
+                      "axisOrder": [
+                        "depth"
+                      ],
+                      "safeAxes": [],
+                      "scope": "operation_envelope",
+                      "unit": "cm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
+                      "sourceLabel": "appliance depthwith door closed",
+                      "axisOrder": [
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "cm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": [
+                        "appliance depthwith door closed"
+                      ]
+                    },
+                    {
+                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
+                      "sourceLabel": "appliance height | appliance width | appliance depth",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "cm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+                  ]
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca",
+                  "category": "dryer",
+                  "brand": "Bosch",
+                  "model": "WTH83002AU",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_256f2d9f09a462eef4a41b5a",
+                  "pdfSha256": "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca",
+                  "contentSha256": "54f9254136a4079122460360e5e7dcdf6d8abdd4846f31ae50d97847c6387d37",
+                  "page": 35,
+                  "bbox": [
+                    515,
+                    803,
+                    935,
+                    942
+                  ],
+                  "fragmentSha256": "02c96610873de96864e79dea12e7b0b5ce71191025620ef2b01e0a97eebe8dd1",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9001987868_C.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WTH83002AU",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WTH83002AU"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Appliance depthwith door closed",
+                  "sourceValue": "65.4 cm",
+                  "sourceQuote": "Appliance depthwith door closed 65.4 cm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "depth"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "Appliance depthwith door closed"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depthwith door closed",
+                      "value": "65.4 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_68313507ad6f0a4c2cf37623",
+                  "pdfSha256": "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca",
+                  "contentSha256": "54f9254136a4079122460360e5e7dcdf6d8abdd4846f31ae50d97847c6387d37",
+                  "page": 35,
+                  "bbox": [
+                    515,
+                    803,
+                    935,
+                    942
+                  ],
+                  "fragmentSha256": "02c96610873de96864e79dea12e7b0b5ce71191025620ef2b01e0a97eebe8dd1",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9001987868_C.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WTH83002AU",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WTH83002AU"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Appliance depthwith door open",
+                  "sourceValue": "109.6 cm",
+                  "sourceQuote": "Appliance depthwith door open 109.6 cm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "cm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depthwith door open",
+                      "value": "109.6 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_9528336ef4f1c9ad35ff4f88",
+                  "pdfSha256": "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca",
+                  "contentSha256": "54f9254136a4079122460360e5e7dcdf6d8abdd4846f31ae50d97847c6387d37",
+                  "page": 35,
+                  "bbox": [
+                    54,
+                    842,
+                    474,
+                    919
+                  ],
+                  "fragmentSha256": "31fcbf73bed19b6e16bdc6acca1bf9a5a4e9ceab7f78dc7aacfabfad86eb5728",
+                  "sourceUrls": [
+                    "https://media3.bsh-group.com/Documents/9001987868_C.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WTH83002AU",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "WTH83002AU"
+                  ],
+                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
+                  "sourceLabel": "Appliance height | Appliance width | Appliance depth",
+                  "sourceValue": "84.2 | 59.8 cm | 61.3 cm",
+                  "sourceQuote": "Appliance height 84.2 | Appliance width 59.8 cm | Appliance depth 61.3 cm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Appliance height",
+                      "value": "84.2",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Appliance width",
+                      "value": "59.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Appliance depth",
+                      "value": "61.3 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca",
+                  "contentSha256": "54f9254136a4079122460360e5e7dcdf6d8abdd4846f31ae50d97847c6387d37",
+                  "page": 11,
+                  "quote": " depth and width of this appliance must correspond with the dimensions of the washing machine."
+                }
+              ],
+              "parserProfileIds": [
+                "pdf_grammar_5f8503873b3c54d7"
+              ],
+              "completeParserReplay": false,
+              "expressionCoverageStatus": "OBSERVED_WITH_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "parser_family",
               "groupName": "PDF grammar pdf_grammar_a0c86d20fd05bb23",
               "models": [
                 "WTY88701AU"
@@ -148367,7 +148809,7 @@
             },
             {
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_c2fca9b7010b59f1",
+              "groupName": "PDF grammar pdf_grammar_a5c301dc9942849a",
               "models": [
                 "WTW87564AU"
               ],
@@ -148380,7 +148822,7 @@
               "seriesEvidence": [],
               "parserProfiles": [
                 {
-                  "parserProfileId": "pdf_grammar_c2fca9b7010b59f1",
+                  "parserProfileId": "pdf_grammar_a5c301dc9942849a",
                   "signatureVersion": 1,
                   "expressionShapes": [
                     {
@@ -148419,7 +148861,9 @@
                       "valueShapes": [
                         "scalar"
                       ],
-                      "depthVariantLabels": []
+                      "depthVariantLabels": [
+                        "appliance depthwith door closed"
+                      ]
                     }
                   ],
                   "researchGapTypes": [
@@ -148491,7 +148935,7 @@
                   "semanticInterpretation": "1:depth(scalar)"
                 },
                 {
-                  "observationId": "dimension_expression_784c17c88d8efaea63c21fb3",
+                  "observationId": "dimension_expression_45163a743fb5c6cc6d762e97",
                   "pdfSha256": "21ccd904d14a6b1bbcd8ea9e2b0be8b8fad8348b4395dd52bbb892b4de293571",
                   "contentSha256": "26bc93487addeb0ef360ba8ecf55b316197a2122eeb82b42750cb3bdcca6875f",
                   "page": 41,
@@ -148533,7 +148977,9 @@
                   "unit": "cm",
                   "unitPlacement": "per_value",
                   "scope": "product_closed_candidate",
-                  "depthVariants": [],
+                  "depthVariants": [
+                    "Appliance depthwith door closed"
+                  ],
                   "axisValues": [
                     {
                       "axis": "height",
@@ -148574,7 +149020,7 @@
                 }
               ],
               "parserProfileIds": [
-                "pdf_grammar_c2fca9b7010b59f1"
+                "pdf_grammar_a5c301dc9942849a"
               ],
               "completeParserReplay": false,
               "expressionCoverageStatus": "OBSERVED_WITH_RESEARCH_GAPS"
@@ -148782,283 +149228,6 @@
               ],
               "completeParserReplay": false,
               "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
-            },
-            {
-              "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_e7a7b9c24a423996",
-              "models": [
-                "WTH83002AU"
-              ],
-              "pdfSha256s": [
-                "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca"
-              ],
-              "sourceUrls": [
-                "https://media3.bsh-group.com/Documents/9001987868_C.pdf"
-              ],
-              "seriesEvidence": [],
-              "parserProfiles": [
-                {
-                  "parserProfileId": "pdf_grammar_e7a7b9c24a423996",
-                  "signatureVersion": 1,
-                  "expressionShapes": [
-                    {
-                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
-                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                      "sourceLabel": "appliance depthwith door open",
-                      "axisOrder": [
-                        "depth"
-                      ],
-                      "safeAxes": [],
-                      "scope": "operation_envelope",
-                      "unit": "cm",
-                      "unitPlacement": "value",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": []
-                    },
-                    {
-                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
-                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
-                      "sourceLabel": "appliance depthwith door closed",
-                      "axisOrder": [
-                        "depth"
-                      ],
-                      "safeAxes": [
-                        "depth"
-                      ],
-                      "scope": "product_closed_candidate",
-                      "unit": "cm",
-                      "unitPlacement": "value",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": []
-                    },
-                    {
-                      "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
-                      "sourceLabel": "appliance height | appliance width | appliance depth",
-                      "axisOrder": [
-                        "height",
-                        "width",
-                        "depth"
-                      ],
-                      "safeAxes": [
-                        "depth",
-                        "height",
-                        "width"
-                      ],
-                      "scope": "product_closed_candidate",
-                      "unit": "cm",
-                      "unitPlacement": "value",
-                      "valueShapes": [
-                        "scalar"
-                      ],
-                      "depthVariantLabels": []
-                    }
-                  ],
-                  "researchGapTypes": [
-                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
-                  ]
-                }
-              ],
-              "parserReplays": [
-                {
-                  "pdfSha256": "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca",
-                  "category": "dryer",
-                  "brand": "Bosch",
-                  "model": "WTH83002AU",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
-                }
-              ],
-              "expressions": [
-                {
-                  "observationId": "dimension_expression_2724cdd7be8851495b050712",
-                  "pdfSha256": "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca",
-                  "contentSha256": "54f9254136a4079122460360e5e7dcdf6d8abdd4846f31ae50d97847c6387d37",
-                  "page": 35,
-                  "bbox": [
-                    515,
-                    803,
-                    935,
-                    942
-                  ],
-                  "fragmentSha256": "02c96610873de96864e79dea12e7b0b5ce71191025620ef2b01e0a97eebe8dd1",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001987868_C.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WTH83002AU",
-                      "category": "dryer"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WTH83002AU"
-                  ],
-                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
-                  "sourceLabel": "Appliance depthwith door closed",
-                  "sourceValue": "65.4 cm",
-                  "sourceQuote": "Appliance depthwith door closed 65.4 cm",
-                  "axisOrder": [
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "depth"
-                  ],
-                  "unit": "cm",
-                  "unitPlacement": "value",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depthwith door closed",
-                      "value": "65.4 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
-                  "semanticInterpretation": "1:depth(scalar)"
-                },
-                {
-                  "observationId": "dimension_expression_68313507ad6f0a4c2cf37623",
-                  "pdfSha256": "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca",
-                  "contentSha256": "54f9254136a4079122460360e5e7dcdf6d8abdd4846f31ae50d97847c6387d37",
-                  "page": 35,
-                  "bbox": [
-                    515,
-                    803,
-                    935,
-                    942
-                  ],
-                  "fragmentSha256": "02c96610873de96864e79dea12e7b0b5ce71191025620ef2b01e0a97eebe8dd1",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001987868_C.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WTH83002AU",
-                      "category": "dryer"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WTH83002AU"
-                  ],
-                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
-                  "sourceLabel": "Appliance depthwith door open",
-                  "sourceValue": "109.6 cm",
-                  "sourceQuote": "Appliance depthwith door open 109.6 cm",
-                  "axisOrder": [
-                    "depth"
-                  ],
-                  "safeAxes": [],
-                  "unit": "cm",
-                  "unitPlacement": "value",
-                  "scope": "operation_envelope",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depthwith door open",
-                      "value": "109.6 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
-                  "semanticInterpretation": "1:depth(scalar)"
-                },
-                {
-                  "observationId": "dimension_expression_9528336ef4f1c9ad35ff4f88",
-                  "pdfSha256": "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca",
-                  "contentSha256": "54f9254136a4079122460360e5e7dcdf6d8abdd4846f31ae50d97847c6387d37",
-                  "page": 35,
-                  "bbox": [
-                    54,
-                    842,
-                    474,
-                    919
-                  ],
-                  "fragmentSha256": "31fcbf73bed19b6e16bdc6acca1bf9a5a4e9ceab7f78dc7aacfabfad86eb5728",
-                  "sourceUrls": [
-                    "https://media3.bsh-group.com/Documents/9001987868_C.pdf"
-                  ],
-                  "identities": [
-                    {
-                      "brand": "Bosch",
-                      "model": "WTH83002AU",
-                      "category": "dryer"
-                    }
-                  ],
-                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-                  "boundModels": [
-                    "WTH83002AU"
-                  ],
-                  "patternKind": "INDIVIDUALLY_LABELLED_AXES",
-                  "sourceLabel": "Appliance height | Appliance width | Appliance depth",
-                  "sourceValue": "84.2 | 59.8 cm | 61.3 cm",
-                  "sourceQuote": "Appliance height 84.2 | Appliance width 59.8 cm | Appliance depth 61.3 cm",
-                  "axisOrder": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "safeAxes": [
-                    "height",
-                    "width",
-                    "depth"
-                  ],
-                  "unit": "cm",
-                  "unitPlacement": "value",
-                  "scope": "product_closed_candidate",
-                  "depthVariants": [],
-                  "axisValues": [
-                    {
-                      "axis": "height",
-                      "label": "Appliance height",
-                      "value": "84.2",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "width",
-                      "label": "Appliance width",
-                      "value": "59.8 cm",
-                      "valueShape": "scalar"
-                    },
-                    {
-                      "axis": "depth",
-                      "label": "Appliance depth",
-                      "value": "61.3 cm",
-                      "valueShape": "scalar"
-                    }
-                  ],
-                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
-                  "semanticInterpretation": "1:height(scalar), 2:width(scalar), 3:depth(scalar)"
-                }
-              ],
-              "researchGaps": [
-                {
-                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
-                  "pdfSha256": "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca",
-                  "contentSha256": "54f9254136a4079122460360e5e7dcdf6d8abdd4846f31ae50d97847c6387d37",
-                  "page": 11,
-                  "quote": " depth and width of this appliance must correspond with the dimensions of the washing machine."
-                }
-              ],
-              "parserProfileIds": [
-                "pdf_grammar_e7a7b9c24a423996"
-              ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_WITH_RESEARCH_GAPS"
             },
             {
               "groupType": "parser_family",

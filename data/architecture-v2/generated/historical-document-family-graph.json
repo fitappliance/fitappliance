@@ -16534,10 +16534,10 @@
         "pageCount": 48
       },
       "grammarProfileIds": [
-        "pdf_grammar_20109d03a601ccc4"
+        "pdf_grammar_4f970ddd833228a7"
       ],
       "familyIds": [
-        "document_family_72a320994150f5763bef44e6"
+        "document_family_ffa9c439b7d9e3c77d040982"
       ],
       "modelEdges": [
         {
@@ -16550,9 +16550,17 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_72a320994150f5763bef44e6",
+              "familyId": "document_family_ffa9c439b7d9e3c77d040982",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_20109d03a601ccc4"
+              "groupName": "PDF grammar pdf_grammar_4f970ddd833228a7"
+            },
+            {
+              "type": "MINERU_EXACT_MODEL_LOCATOR",
+              "observationId": "dimension_expression_3b23b392b108911c36fa8dea",
+              "page": 44,
+              "fragmentSha256": "8b88d6ee423c2a2965f55cf7014d63bac7936ac1f45eaaa69730a62ca79887b8",
+              "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+              "patternKind": "INDIVIDUALLY_LABELLED_AXES"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -16569,14 +16577,6 @@
               "fragmentSha256": "8c826ccef5cfcd1edff2c33cbe6396f4d96e4cab49a6aea6682e0b12e938137b",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
               "patternKind": "INLINE_LABELLED_AXES"
-            },
-            {
-              "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_bdbe59edcc29c6c34db475f1",
-              "page": 44,
-              "fragmentSha256": "8b88d6ee423c2a2965f55cf7014d63bac7936ac1f45eaaa69730a62ca79887b8",
-              "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-              "patternKind": "INDIVIDUALLY_LABELLED_AXES"
             }
           ]
         },
@@ -16586,9 +16586,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_72a320994150f5763bef44e6",
+              "familyId": "document_family_ffa9c439b7d9e3c77d040982",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_20109d03a601ccc4"
+              "groupName": "PDF grammar pdf_grammar_4f970ddd833228a7"
             }
           ]
         }
@@ -22052,10 +22052,10 @@
         "pageCount": 44
       },
       "grammarProfileIds": [
-        "pdf_grammar_c2fca9b7010b59f1"
+        "pdf_grammar_a5c301dc9942849a"
       ],
       "familyIds": [
-        "document_family_770abe33c6fcd63d3746896c"
+        "document_family_e9f27999a4271b27be73bf24"
       ],
       "modelEdges": [
         {
@@ -22068,9 +22068,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_770abe33c6fcd63d3746896c",
+              "familyId": "document_family_e9f27999a4271b27be73bf24",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_c2fca9b7010b59f1"
+              "groupName": "PDF grammar pdf_grammar_a5c301dc9942849a"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -22082,7 +22082,7 @@
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_784c17c88d8efaea63c21fb3",
+              "observationId": "dimension_expression_45163a743fb5c6cc6d762e97",
               "page": 41,
               "fragmentSha256": "16de98e88eaba5a00acc98501c76cafa1268b45ae601c7051bbadb2d98fe62f0",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
@@ -34487,10 +34487,10 @@
         "pageCount": 44
       },
       "grammarProfileIds": [
-        "pdf_grammar_875fba11738c76e3"
+        "pdf_grammar_4147c0ab8430a222"
       ],
       "familyIds": [
-        "document_family_2ce09ea9c002e815c8b40760"
+        "document_family_d36ac68239de3a1a0bbc4492"
       ],
       "modelEdges": [
         {
@@ -34503,13 +34503,13 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_2ce09ea9c002e815c8b40760",
+              "familyId": "document_family_d36ac68239de3a1a0bbc4492",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_875fba11738c76e3"
+              "groupName": "PDF grammar pdf_grammar_4147c0ab8430a222"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_982df5e985b559ae047d146e",
+              "observationId": "dimension_expression_8167b98e26f9358c418185eb",
               "page": 43,
               "fragmentSha256": "f4a7311946679bf5af15c6f471b02ee0ee24653fc23378836917352921251387",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
@@ -56211,10 +56211,10 @@
         "pageCount": 44
       },
       "grammarProfileIds": [
-        "pdf_grammar_20109d03a601ccc4"
+        "pdf_grammar_4f970ddd833228a7"
       ],
       "familyIds": [
-        "document_family_72a320994150f5763bef44e6"
+        "document_family_ffa9c439b7d9e3c77d040982"
       ],
       "modelEdges": [
         {
@@ -56223,9 +56223,9 @@
           "proofLocators": [
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_72a320994150f5763bef44e6",
+              "familyId": "document_family_ffa9c439b7d9e3c77d040982",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_20109d03a601ccc4"
+              "groupName": "PDF grammar pdf_grammar_4f970ddd833228a7"
             }
           ]
         },
@@ -56239,9 +56239,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_72a320994150f5763bef44e6",
+              "familyId": "document_family_ffa9c439b7d9e3c77d040982",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_20109d03a601ccc4"
+              "groupName": "PDF grammar pdf_grammar_4f970ddd833228a7"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -56253,19 +56253,19 @@
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_5618ce2e0ef8a9fe6806a2d4",
-              "page": 42,
-              "fragmentSha256": "d2e8f4a52c11e486571a1af4946926eadf3e6b05763ae142d1dbd3d4d4eea783",
-              "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-              "patternKind": "INDIVIDUALLY_LABELLED_AXES"
-            },
-            {
-              "type": "MINERU_EXACT_MODEL_LOCATOR",
               "observationId": "dimension_expression_77c66c2dc9fbfc255c88ed45",
               "page": 11,
               "fragmentSha256": "8c826ccef5cfcd1edff2c33cbe6396f4d96e4cab49a6aea6682e0b12e938137b",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
               "patternKind": "INLINE_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_EXACT_MODEL_LOCATOR",
+              "observationId": "dimension_expression_f1da9ac0a3130022238c85a9",
+              "page": 42,
+              "fragmentSha256": "d2e8f4a52c11e486571a1af4946926eadf3e6b05763ae142d1dbd3d4d4eea783",
+              "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+              "patternKind": "INDIVIDUALLY_LABELLED_AXES"
             }
           ]
         }
@@ -62687,10 +62687,10 @@
         "pageCount": 49
       },
       "grammarProfileIds": [
-        "pdf_grammar_86d30e2b33f39e6d"
+        "pdf_grammar_7b584de27a2887f1"
       ],
       "familyIds": [
-        "document_family_19f74804285888f4e03f400d"
+        "document_family_f29caee7165e92a85801c1f4"
       ],
       "modelEdges": [
         {
@@ -62708,13 +62708,21 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_19f74804285888f4e03f400d",
+              "familyId": "document_family_f29caee7165e92a85801c1f4",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_86d30e2b33f39e6d"
+              "groupName": "PDF grammar pdf_grammar_7b584de27a2887f1"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_6d0be3d52549b1810ce2b426",
+              "observationId": "dimension_expression_2e075dd50dd354932311bf44",
+              "page": 45,
+              "fragmentSha256": "730c2fc8a143175c98fd7f66509dd705119d28c250354e5d43714f0f503448d6",
+              "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+              "patternKind": "INDIVIDUAL_LABELLED_AXIS"
+            },
+            {
+              "type": "MINERU_EXACT_MODEL_LOCATOR",
+              "observationId": "dimension_expression_5b4199b36f1e95597ff22590",
               "page": 45,
               "fragmentSha256": "730c2fc8a143175c98fd7f66509dd705119d28c250354e5d43714f0f503448d6",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
@@ -70232,10 +70240,10 @@
         "pageCount": 48
       },
       "grammarProfileIds": [
-        "pdf_grammar_2902ae0cb7b98342"
+        "pdf_grammar_443eed39cc449a65"
       ],
       "familyIds": [
-        "document_family_6026c12a27c4e7e0e4f81c1d"
+        "document_family_ef3fd8fbf1112a5fae6705ab"
       ],
       "modelEdges": [
         {
@@ -70248,9 +70256,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_6026c12a27c4e7e0e4f81c1d",
+              "familyId": "document_family_ef3fd8fbf1112a5fae6705ab",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_2902ae0cb7b98342"
+              "groupName": "PDF grammar pdf_grammar_443eed39cc449a65"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -70262,7 +70270,7 @@
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_9c9bc0e8fdaa2c8ac34a43ae",
+              "observationId": "dimension_expression_d72f11205fd711b630b49795",
               "page": 44,
               "fragmentSha256": "abb7cd66df6549f9ddd15470884da090b1f401c57fdcc12372150f07f8148549",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
@@ -75381,10 +75389,10 @@
         "pageCount": 32
       },
       "grammarProfileIds": [
-        "pdf_grammar_4f34b527b64d6ba6"
+        "esatto-au-dishwasher-technical-information-d1-d2-v1"
       ],
       "familyIds": [
-        "document_family_e88b72e286e12c6f83981f4d"
+        "document_family_f97a9b73ece48bc0617ff4a3"
       ],
       "modelEdges": [
         {
@@ -75397,17 +75405,36 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_e88b72e286e12c6f83981f4d",
+              "familyId": "document_family_f97a9b73ece48bc0617ff4a3",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6"
+              "groupName": "Esatto Australia EDW dishwasher technical information"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_08a451c73e414aee04a55f43",
+              "observationId": "dimension_expression_67807da7c207b3ad86e658c1",
+              "page": 24,
+              "fragmentSha256": "e1367605f353e447530019f66a022eb79951ead6bc96708ceb5f5e826663c365",
+              "modelBinding": "SAME_PAGE_EXACT_MODEL",
+              "patternKind": "INDIVIDUAL_LABELLED_AXIS"
+            },
+            {
+              "type": "MINERU_EXACT_MODEL_LOCATOR",
+              "observationId": "dimension_expression_8a1c11dfdbf1bbc413f7f89b",
               "page": 24,
               "fragmentSha256": "e1367605f353e447530019f66a022eb79951ead6bc96708ceb5f5e826663c365",
               "modelBinding": "SAME_PAGE_EXACT_MODEL",
               "patternKind": "INDIVIDUALLY_LABELLED_AXES"
+            },
+            {
+              "type": "MINERU_REPLAY_HINT",
+              "identityScope": "EXACT_MODEL",
+              "category": "dishwasher",
+              "brand": "Esatto",
+              "model": "EDW456S",
+              "reasonCode": "PARSED_COMPLETE",
+              "grammarProfileIds": [
+                "esatto-au-dishwasher-technical-information-d1-d2-v1"
+              ]
             }
           ]
         }
@@ -76119,10 +76146,10 @@
         "pageCount": 48
       },
       "grammarProfileIds": [
-        "pdf_grammar_148e22e14343e1a5"
+        "pdf_grammar_78fc024328aea0cc"
       ],
       "familyIds": [
-        "document_family_44e48fcfcaebf66a3978900b"
+        "document_family_9ed0e371afcc73504611374f"
       ],
       "modelEdges": [
         {
@@ -76135,13 +76162,13 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_44e48fcfcaebf66a3978900b",
+              "familyId": "document_family_9ed0e371afcc73504611374f",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_148e22e14343e1a5"
+              "groupName": "PDF grammar pdf_grammar_78fc024328aea0cc"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_2c75fd11d5847ab683008ab3",
+              "observationId": "dimension_expression_6c013275a3f2b6174eeffa9e",
               "page": 44,
               "fragmentSha256": "8301f70e53c35a9e838fc1959d57d950c05307c50d57889497a5ebce39fde289",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
@@ -78744,10 +78771,10 @@
         "pageCount": 40
       },
       "grammarProfileIds": [
-        "pdf_grammar_e7a7b9c24a423996"
+        "pdf_grammar_5f8503873b3c54d7"
       ],
       "familyIds": [
-        "document_family_01117b2e3f7e889efa397c20"
+        "document_family_a310329f53fe8003c9dc8aea"
       ],
       "modelEdges": [
         {
@@ -78760,13 +78787,13 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_01117b2e3f7e889efa397c20",
+              "familyId": "document_family_a310329f53fe8003c9dc8aea",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_e7a7b9c24a423996"
+              "groupName": "PDF grammar pdf_grammar_5f8503873b3c54d7"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_2724cdd7be8851495b050712",
+              "observationId": "dimension_expression_256f2d9f09a462eef4a41b5a",
               "page": 35,
               "fragmentSha256": "02c96610873de96864e79dea12e7b0b5ce71191025620ef2b01e0a97eebe8dd1",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
@@ -96713,10 +96740,10 @@
         "pageCount": 52
       },
       "grammarProfileIds": [
-        "pdf_grammar_4ec51444c2032a05"
+        "pdf_grammar_a24fd05d9e9fbd9d"
       ],
       "familyIds": [
-        "document_family_b859aa5c4a7acddff2d1fd05"
+        "document_family_12957a126c2087bf1771fb54"
       ],
       "modelEdges": [
         {
@@ -96729,9 +96756,9 @@
             },
             {
               "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_b859aa5c4a7acddff2d1fd05",
+              "familyId": "document_family_12957a126c2087bf1771fb54",
               "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_4ec51444c2032a05"
+              "groupName": "PDF grammar pdf_grammar_a24fd05d9e9fbd9d"
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
@@ -96743,19 +96770,19 @@
             },
             {
               "type": "MINERU_EXACT_MODEL_LOCATOR",
-              "observationId": "dimension_expression_3def88ad94facbbb88a43a02",
-              "page": 50,
-              "fragmentSha256": "08bbcc0a0ca345a29285853b8585e5a2bbc9d67c49a70bd95f8c3ebb61cfb929",
-              "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
-              "patternKind": "INDIVIDUALLY_LABELLED_AXES"
-            },
-            {
-              "type": "MINERU_EXACT_MODEL_LOCATOR",
               "observationId": "dimension_expression_7a520eb34e983b12344b51ef",
               "page": 50,
               "fragmentSha256": "08bbcc0a0ca345a29285853b8585e5a2bbc9d67c49a70bd95f8c3ebb61cfb929",
               "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
               "patternKind": "INDIVIDUAL_LABELLED_AXIS"
+            },
+            {
+              "type": "MINERU_EXACT_MODEL_LOCATOR",
+              "observationId": "dimension_expression_ccc9fc9d44e9923dcab977e1",
+              "page": 50,
+              "fragmentSha256": "08bbcc0a0ca345a29285853b8585e5a2bbc9d67c49a70bd95f8c3ebb61cfb929",
+              "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+              "patternKind": "INDIVIDUALLY_LABELLED_AXES"
             }
           ]
         }
@@ -106518,25 +106545,6 @@
       ]
     },
     {
-      "familyId": "document_family_01117b2e3f7e889efa397c20",
-      "category": "dryer",
-      "brand": "Bosch",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_e7a7b9c24a423996",
-      "documentIds": [
-        "pdf_document_9ecea2e00e89b5b61803c0e8"
-      ],
-      "pdfSha256s": [
-        "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_e7a7b9c24a423996"
-      ],
-      "referenceIds": [
-        "fa_ref_8a08c1cb1f7ddf4fb5c84ae1"
-      ]
-    },
-    {
       "familyId": "document_family_0112a6c432aed8e57b102f00",
       "category": "dishwasher",
       "brand": "Bosch",
@@ -107181,6 +107189,25 @@
       ]
     },
     {
+      "familyId": "document_family_12957a126c2087bf1771fb54",
+      "category": "washing_machine",
+      "brand": "BOSCH",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_a24fd05d9e9fbd9d",
+      "documentIds": [
+        "pdf_document_8fc7871cc7c1ab98084e22b4"
+      ],
+      "pdfSha256s": [
+        "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_a24fd05d9e9fbd9d"
+      ],
+      "referenceIds": [
+        "fa_ref_de71b268ed7d86c1acda82b0"
+      ]
+    },
+    {
       "familyId": "document_family_145178ea16fa315973905eb2",
       "category": "fridge",
       "brand": "Fisher & Paykel",
@@ -107519,25 +107546,6 @@
       ],
       "referenceIds": [
         "fa_ref_1e029fc89edcae974abdb6dd"
-      ]
-    },
-    {
-      "familyId": "document_family_19f74804285888f4e03f400d",
-      "category": "dishwasher",
-      "brand": "Artusi",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_86d30e2b33f39e6d",
-      "documentIds": [
-        "pdf_document_4f17503db3c54b1eea2fc95e"
-      ],
-      "pdfSha256s": [
-        "8f9dcb39e08164a629d4a0736ea14e4addd8cf5da1ee5320d4e8250d6b9e2eef"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_86d30e2b33f39e6d"
-      ],
-      "referenceIds": [
-        "fa_ref_bec692fc1d6f7838d6b8eb9b"
       ]
     },
     {
@@ -108279,25 +108287,6 @@
       ],
       "referenceIds": [
         "fa_ref_b37a483d902f4f65f2653bff"
-      ]
-    },
-    {
-      "familyId": "document_family_2ce09ea9c002e815c8b40760",
-      "category": "washing_machine",
-      "brand": "BOSCH",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_875fba11738c76e3",
-      "documentIds": [
-        "pdf_document_b9f323d190dd7eb103410201"
-      ],
-      "pdfSha256s": [
-        "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_875fba11738c76e3"
-      ],
-      "referenceIds": [
-        "fa_ref_5357493e9011356828162f2c"
       ]
     },
     {
@@ -109149,25 +109138,6 @@
       "grammarProfileIds": [],
       "referenceIds": [
         "fa_ref_3994a3a30c0ae9193c217bf4"
-      ]
-    },
-    {
-      "familyId": "document_family_44e48fcfcaebf66a3978900b",
-      "category": "washing_machine",
-      "brand": "BOSCH",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_148e22e14343e1a5",
-      "documentIds": [
-        "pdf_document_d022fc57a74f984803f232bb"
-      ],
-      "pdfSha256s": [
-        "b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_148e22e14343e1a5"
-      ],
-      "referenceIds": [
-        "fa_ref_135d961a7689550d811a2896"
       ]
     },
     {
@@ -110079,25 +110049,6 @@
       ]
     },
     {
-      "familyId": "document_family_6026c12a27c4e7e0e4f81c1d",
-      "category": "washing_machine",
-      "brand": "BOSCH",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_2902ae0cb7b98342",
-      "documentIds": [
-        "pdf_document_d9132ba5da91ccda6bac676f"
-      ],
-      "pdfSha256s": [
-        "a71745dd0cdd0212a394a592e624f03a0aa6dbfd24c3619297c22de17455d6ef"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_2902ae0cb7b98342"
-      ],
-      "referenceIds": [
-        "fa_ref_261e15b924e4f3e4d4a1e7c7"
-      ]
-    },
-    {
       "familyId": "document_family_60de48351acad774ac28d8dc",
       "category": "washing_machine",
       "brand": "Fisher & Paykel",
@@ -110823,28 +110774,6 @@
       ]
     },
     {
-      "familyId": "document_family_72a320994150f5763bef44e6",
-      "category": "washing_machine",
-      "brand": "BOSCH",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_20109d03a601ccc4",
-      "documentIds": [
-        "pdf_document_f9b15bec87a6aa18beaaaaf7",
-        "pdf_document_4ab7a82765ac4a7545072a78"
-      ],
-      "pdfSha256s": [
-        "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
-        "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_20109d03a601ccc4"
-      ],
-      "referenceIds": [
-        "fa_ref_06dc5747b7da584d2471cb03",
-        "fa_ref_ac20e5e87de2a14f3fd830a1"
-      ]
-    },
-    {
       "familyId": "document_family_7316eaa5481721e2dfac3c5d",
       "category": "dishwasher",
       "brand": "Bosch",
@@ -111057,25 +110986,6 @@
       ],
       "referenceIds": [
         "fa_ref_04631c6cfcfd31ae8fac5f0d"
-      ]
-    },
-    {
-      "familyId": "document_family_770abe33c6fcd63d3746896c",
-      "category": "dryer",
-      "brand": "Bosch",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_c2fca9b7010b59f1",
-      "documentIds": [
-        "pdf_document_b4a76e66416ed41d9a9cbbc3"
-      ],
-      "pdfSha256s": [
-        "21ccd904d14a6b1bbcd8ea9e2b0be8b8fad8348b4395dd52bbb892b4de293571"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_c2fca9b7010b59f1"
-      ],
-      "referenceIds": [
-        "fa_ref_d0f2a6295328c543cc54d10a"
       ]
     },
     {
@@ -112526,6 +112436,25 @@
       ]
     },
     {
+      "familyId": "document_family_9ed0e371afcc73504611374f",
+      "category": "washing_machine",
+      "brand": "BOSCH",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_78fc024328aea0cc",
+      "documentIds": [
+        "pdf_document_d022fc57a74f984803f232bb"
+      ],
+      "pdfSha256s": [
+        "b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_78fc024328aea0cc"
+      ],
+      "referenceIds": [
+        "fa_ref_135d961a7689550d811a2896"
+      ]
+    },
+    {
       "familyId": "document_family_9efc98c6d0aa936e6f2e6983",
       "category": "washing_machine",
       "brand": "Hisense",
@@ -112797,6 +112726,25 @@
       ],
       "referenceIds": [
         "fa_ref_dae0d6eaef8645eab79f97ba"
+      ]
+    },
+    {
+      "familyId": "document_family_a310329f53fe8003c9dc8aea",
+      "category": "dryer",
+      "brand": "Bosch",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_5f8503873b3c54d7",
+      "documentIds": [
+        "pdf_document_9ecea2e00e89b5b61803c0e8"
+      ],
+      "pdfSha256s": [
+        "b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_5f8503873b3c54d7"
+      ],
+      "referenceIds": [
+        "fa_ref_8a08c1cb1f7ddf4fb5c84ae1"
       ]
     },
     {
@@ -113849,25 +113797,6 @@
         "fa_ref_c4d416b46b61327bd0919089",
         "fa_ref_ec7b18c0aea7954bf26673f6",
         "fa_ref_f70dafd689034189788eff02"
-      ]
-    },
-    {
-      "familyId": "document_family_b859aa5c4a7acddff2d1fd05",
-      "category": "washing_machine",
-      "brand": "BOSCH",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_4ec51444c2032a05",
-      "documentIds": [
-        "pdf_document_8fc7871cc7c1ab98084e22b4"
-      ],
-      "pdfSha256s": [
-        "e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_4ec51444c2032a05"
-      ],
-      "referenceIds": [
-        "fa_ref_de71b268ed7d86c1acda82b0"
       ]
     },
     {
@@ -115256,6 +115185,25 @@
       ]
     },
     {
+      "familyId": "document_family_d36ac68239de3a1a0bbc4492",
+      "category": "washing_machine",
+      "brand": "BOSCH",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4147c0ab8430a222",
+      "documentIds": [
+        "pdf_document_b9f323d190dd7eb103410201"
+      ],
+      "pdfSha256s": [
+        "441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_4147c0ab8430a222"
+      ],
+      "referenceIds": [
+        "fa_ref_5357493e9011356828162f2c"
+      ]
+    },
+    {
       "familyId": "document_family_d449b384c7bf9a7787aed1a1",
       "category": "washing_machine",
       "brand": "Fisher & Paykel",
@@ -115763,25 +115711,6 @@
       ]
     },
     {
-      "familyId": "document_family_e88b72e286e12c6f83981f4d",
-      "category": "dishwasher",
-      "brand": "Esatto",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
-      "documentIds": [
-        "pdf_document_c4aa0a7021321c9e136f281a"
-      ],
-      "pdfSha256s": [
-        "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93"
-      ],
-      "grammarProfileIds": [
-        "pdf_grammar_4f34b527b64d6ba6"
-      ],
-      "referenceIds": [
-        "fa_ref_6429cd36602c53e258e7e96e"
-      ]
-    },
-    {
       "familyId": "document_family_e8d8fdfc117dc31117904e6c",
       "category": "dryer",
       "brand": "Fisher & Paykel",
@@ -115889,6 +115818,25 @@
       "referenceIds": [
         "fa_ref_3e5c521a27340879d0163005",
         "fa_ref_98371fd24fda6dc474596f08"
+      ]
+    },
+    {
+      "familyId": "document_family_e9f27999a4271b27be73bf24",
+      "category": "dryer",
+      "brand": "Bosch",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_a5c301dc9942849a",
+      "documentIds": [
+        "pdf_document_b4a76e66416ed41d9a9cbbc3"
+      ],
+      "pdfSha256s": [
+        "21ccd904d14a6b1bbcd8ea9e2b0be8b8fad8348b4395dd52bbb892b4de293571"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_a5c301dc9942849a"
+      ],
+      "referenceIds": [
+        "fa_ref_d0f2a6295328c543cc54d10a"
       ]
     },
     {
@@ -116019,6 +115967,25 @@
       "grammarProfileIds": [],
       "referenceIds": [
         "fa_ref_bba9fee916959081a2bab2c3"
+      ]
+    },
+    {
+      "familyId": "document_family_ef3fd8fbf1112a5fae6705ab",
+      "category": "washing_machine",
+      "brand": "BOSCH",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_443eed39cc449a65",
+      "documentIds": [
+        "pdf_document_d9132ba5da91ccda6bac676f"
+      ],
+      "pdfSha256s": [
+        "a71745dd0cdd0212a394a592e624f03a0aa6dbfd24c3619297c22de17455d6ef"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_443eed39cc449a65"
+      ],
+      "referenceIds": [
+        "fa_ref_261e15b924e4f3e4d4a1e7c7"
       ]
     },
     {
@@ -116181,6 +116148,25 @@
         "fa_ref_aad5b342ddeed0be5176d221",
         "fa_ref_b3c5fff0b169a8e2dac9bc25",
         "fa_ref_bff29a8a6a6e257bb854e786"
+      ]
+    },
+    {
+      "familyId": "document_family_f29caee7165e92a85801c1f4",
+      "category": "dishwasher",
+      "brand": "Artusi",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_7b584de27a2887f1",
+      "documentIds": [
+        "pdf_document_4f17503db3c54b1eea2fc95e"
+      ],
+      "pdfSha256s": [
+        "8f9dcb39e08164a629d4a0736ea14e4addd8cf5da1ee5320d4e8250d6b9e2eef"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_7b584de27a2887f1"
+      ],
+      "referenceIds": [
+        "fa_ref_bec692fc1d6f7838d6b8eb9b"
       ]
     },
     {
@@ -116581,6 +116567,25 @@
       ]
     },
     {
+      "familyId": "document_family_f97a9b73ece48bc0617ff4a3",
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "groupType": "parser_family",
+      "groupName": "Esatto Australia EDW dishwasher technical information",
+      "documentIds": [
+        "pdf_document_c4aa0a7021321c9e136f281a"
+      ],
+      "pdfSha256s": [
+        "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93"
+      ],
+      "grammarProfileIds": [
+        "esatto-au-dishwasher-technical-information-d1-d2-v1"
+      ],
+      "referenceIds": [
+        "fa_ref_6429cd36602c53e258e7e96e"
+      ]
+    },
+    {
       "familyId": "document_family_fa34bd5482806ef2f8280e3d",
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -116803,8 +116808,30 @@
       "referenceIds": [
         "fa_ref_797aa5f7c8435f7fa156b3aa"
       ]
+    },
+    {
+      "familyId": "document_family_ffa9c439b7d9e3c77d040982",
+      "category": "washing_machine",
+      "brand": "BOSCH",
+      "groupType": "parser_family",
+      "groupName": "PDF grammar pdf_grammar_4f970ddd833228a7",
+      "documentIds": [
+        "pdf_document_f9b15bec87a6aa18beaaaaf7",
+        "pdf_document_4ab7a82765ac4a7545072a78"
+      ],
+      "pdfSha256s": [
+        "11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07",
+        "7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b"
+      ],
+      "grammarProfileIds": [
+        "pdf_grammar_4f970ddd833228a7"
+      ],
+      "referenceIds": [
+        "fa_ref_06dc5747b7da584d2471cb03",
+        "fa_ref_ac20e5e87de2a14f3fd830a1"
+      ]
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "be2e0689ebc7547a1bd05f81fa706cb3b25ad13b9d60c5b15162dc2ea13d67d0"
+  "semanticGraphSha256": "9f6ae30b306eca0387815f63a64f84d1fec69166cd15a3d795d4adda89fcae39"
 }

@@ -39,6 +39,11 @@ const ACTION_BY_EVIDENCE = Object.freeze({
   INVALID_DIMENSIONS: 'QUARANTINED',
 });
 
+const HISTORICAL_LIFECYCLE_MODES = Object.freeze([
+  'OBSERVATION_DECISIONS',
+  'LEGACY_BASELINE',
+]);
+
 function freezeDeep(value) {
   if (value && typeof value === 'object' && !Object.isFrozen(value)) {
     Object.freeze(value);
@@ -140,6 +145,14 @@ export function isCurrentRetailProduct(product, retailLifecycle = null) {
     && product?.canonicalProductId != null
     && decision.canonicalProductId === product.canonicalProductId
     && authorizer.canonicalProductId === product.canonicalProductId;
+}
+
+function isLegacyBaselineCurrentProduct(product) {
+  return product?.unavailable === false
+    && Array.isArray(product?.retailers)
+    && product.retailers.some((retailer) => isRetailerProductPageUrl(
+      retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link,
+    ));
 }
 
 export function catalogReceiptDimensions(product) {
@@ -496,6 +509,7 @@ export function buildHistoricalApplianceReference({
   retailerObservations = [],
   retailerCollectionAttempts = [],
   retailerObservationSnapshotSha256 = null,
+  lifecycleMode = 'OBSERVATION_DECISIONS',
   retailLifecyclePolicyVersion = 'retail-lifecycle-v1',
   retailAsOf = null,
   historicalEvidenceProjection = null,
@@ -508,6 +522,9 @@ export function buildHistoricalApplianceReference({
   }
   if (!validSha256(catalogSnapshotSha256)) throw new TypeError('catalogSnapshotSha256 must be a SHA-256 hash');
   if (Number.isNaN(Date.parse(generatedAt))) throw new TypeError('generatedAt must be an ISO timestamp');
+  if (!HISTORICAL_LIFECYCLE_MODES.includes(lifecycleMode)) {
+    throw new TypeError(`unsupported historical lifecycle mode: ${lifecycleMode}`);
+  }
   const effectiveRetailAsOf = retailAsOf ?? generatedAt;
   if (Number.isNaN(Date.parse(effectiveRetailAsOf))) throw new TypeError('retailAsOf must be an ISO timestamp');
   if ((retailerObservations.length > 0 || retailerCollectionAttempts.length > 0)
@@ -575,16 +592,25 @@ export function buildHistoricalApplianceReference({
         : recoveryRow?.lifecycleState === 'CURRENT_RETAIL'
           ? 'LISTED_UNVERIFIED'
           : 'ABSENT';
-    const retailLifecycle = reduceRetailLifecycle({
-      canonicalProductId: lifecycleProductId,
-      observations: relevantRetailerObservations,
-      collectionAttempts: retailerCollectionAttempts,
-      asOf: effectiveRetailAsOf,
-      policyVersion: retailLifecyclePolicyVersion,
-      catalogState,
-      registryPresent: sourceRows.length > 0,
-    });
-    const lifecycleState = retailLifecycle.lifecycleState;
+    const retailLifecycle = lifecycleMode === 'OBSERVATION_DECISIONS'
+      ? reduceRetailLifecycle({
+        canonicalProductId: lifecycleProductId,
+        observations: relevantRetailerObservations,
+        collectionAttempts: retailerCollectionAttempts,
+        asOf: effectiveRetailAsOf,
+        policyVersion: retailLifecyclePolicyVersion,
+        catalogState,
+        registryPresent: sourceRows.length > 0,
+      })
+      : null;
+    const lifecycleState = lifecycleMode === 'OBSERVATION_DECISIONS'
+      ? retailLifecycle.lifecycleState
+      : catalogRows.some(isLegacyBaselineCurrentProduct)
+        ? 'CURRENT_RETAIL'
+        : catalogRows.length > 0
+          ? 'CATALOG_ARCHIVED'
+          : recoveryRow?.lifecycleState
+            ?? (sourceRows.length > 0 ? 'REGISTRY_ONLY' : 'UNKNOWN_RETAIL');
     const registryMarketState = sourceRows.length === 0
       ? 'NO_REGISTRY'
       : sourceRows.some((row) => row.activeInAustralia === true)

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "policyVersion": "retailer-source-policy-v2",
-  "reviewedAt": "2026-07-11",
+  "reviewedAt": "2026-07-20",
   "sources": [
     {
       "id": "appliances-online-product-api-v1",
@@ -12,14 +12,24 @@
       ],
       "sourceType": "public_retailer_api",
       "collectionMode": "bounded_exact_product_api",
-      "termsReviewState": "pending_automated_scale_review",
+      "termsReviewState": "reviewed_bounded_exact_product_api",
       "robotsHttpStatus": 200,
       "robotsSha256": "6182ec0bc41ff43cddc2d15a86d5f82bddb42c20c0eafcdbc596d5a3148fe65a",
       "minimumIntervalMs": 1000,
+      "automationControls": {
+        "maximumTargetsPerRun": 100,
+        "maximumConcurrency": 1,
+        "stopHttpStatuses": [
+          403,
+          429
+        ],
+        "maximumConsecutiveFailures": 5,
+        "canaryRunSha256": "e4646b7f209e15ed3c0bbd54757e9dff0590fb11f7906d07fe2f419043acdda5"
+      },
       "expectedCadenceHours": 24,
       "maximumCurrentAgeHours": 72,
       "legacyLinkAction": "REVALIDATE_AO_PRODUCT_API",
-      "notes": "Exact product API canaries are bounded. Broad page or API collection remains disabled until terms review is documented."
+      "notes": "Operational review permits only bounded replay of known exact-product URLs. This is not contractual or legal authorization. Search, catalogue discovery, parallel collection, and arbitrary endpoints remain disabled; stop and re-review on robots drift, HTTP 403/429, identity drift, or five consecutive failures."
     },
     {
       "id": "bing-lee-product-page-v1",

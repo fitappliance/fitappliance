@@ -22,7 +22,11 @@ test('refresh inventory builder replays byte-for-byte without network or externa
     const secondBytes = await readFile(output);
     assert.deepEqual(second, first);
     assert.equal(hash(secondBytes), hash(firstBytes));
-    assert.equal(first.summary.products, 1384);
+    const shadow = JSON.parse(await readFile(
+      resolve(root, 'data/architecture-v2/reviews/automated/retail-lifecycle-shadow.json'),
+      'utf8',
+    ));
+    assert.equal(first.summary.products, shadow.cutover.unresolvedLegacyCurrentIds.length);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

@@ -53,6 +53,7 @@ export async function buildHistoricalReferenceFromOfficialSnapshots({
   snapshotsDocument,
   catalog,
   historicalEvidenceProjection = null,
+  lifecycleMode = 'OBSERVATION_DECISIONS',
   storageRoot,
   canonicalizeBrand = brandCanon.canonicalizeBrand,
 }) {
@@ -89,6 +90,7 @@ export async function buildHistoricalReferenceFromOfficialSnapshots({
     observations,
     catalogProducts: catalog.products,
     historicalEvidenceProjection,
+    lifecycleMode,
     catalogSnapshotSha256,
     generatedAt: snapshotsDocument.acquiredAt,
   });
@@ -132,11 +134,13 @@ export async function runCli(args = process.argv.slice(2), environment = process
   const recoveryPublication = buildHistoricalEvidencePublication({
     bundle: safeRecoveryBundle,
     products: catalog.products,
+    lifecycleMode: 'LEGACY_BASELINE',
   });
   const artifact = await buildHistoricalReferenceFromOfficialSnapshots({
     snapshotsDocument: JSON.parse(snapshotsBytes),
     catalog,
     historicalEvidenceProjection: recoveryPublication.historicalEvidenceProjection,
+    lifecycleMode: 'LEGACY_BASELINE',
     storageRoot,
   });
   await atomicJson(outputPath, artifact);

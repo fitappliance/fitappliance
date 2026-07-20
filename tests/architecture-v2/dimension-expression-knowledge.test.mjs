@@ -405,6 +405,8 @@ test('knowledge groups strict Beko spec variants under one declared grammar fami
   assert.match(markdown, /Inline labelled pairs/);
   assert.match(markdown, /packaged values are excluded/i);
   assert.match(markdown, /complete exact-model parser replays: 1/i);
+  assert.equal(markdown.endsWith('\n'), true);
+  assert.equal(markdown.endsWith('\n\n'), false);
 });
 
 test('knowledge documents the strict Smeg W-D-H adjustable-height grammar', () => {

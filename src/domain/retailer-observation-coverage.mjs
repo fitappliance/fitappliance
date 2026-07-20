@@ -125,6 +125,38 @@ function latestTypedByLink(ledger, normalizedPolicy) {
   return result;
 }
 
+function latestIdentityMismatchByBaselineLink(ledger, normalizedPolicy) {
+  const result = new Map();
+  for (const attempt of ledger.collectionAttempts ?? []) {
+    const context = attempt.failureContext;
+    if (context?.kind !== 'identity_mismatch') continue;
+    const source = normalizedPolicy.sources.find((candidate) => candidate.id === attempt.adapterId);
+    if (!source || source.termsReviewState === 'collection_blocked'
+      || attempt.policyVersion !== source.policyVersion) continue;
+    const sourceUrl = retailerUrl(context.sourceUrl);
+    if (!source.allowedHosts.includes(new URL(sourceUrl).hostname.toLowerCase())) continue;
+    const candidate = {
+      state: 'QUARANTINED_IDENTITY_MISMATCH',
+      attemptIds: [attempt.id],
+      observedAt: attempt.observedAt,
+      adapterId: attempt.adapterId,
+      rawSourceSha256: context.rawPayloadSha256,
+      canonicalProductId: attempt.canonicalProductIds[0],
+      baselineLinkId: context.baselineLinkId,
+      sourceUrl,
+      reasonCode: context.reasonCode,
+      receivedModel: context.receivedModel,
+      receivedUrl: context.receivedUrl,
+    };
+    const prior = result.get(candidate.baselineLinkId);
+    if (!prior || candidate.observedAt > prior.observedAt
+      || (candidate.observedAt === prior.observedAt && attempt.id < prior.attemptIds[0])) {
+      result.set(candidate.baselineLinkId, candidate);
+    }
+  }
+  return result;
+}
+
 function baselineLinks(publicProjection, normalizedPolicy) {
   if (!publicProjection || !Array.isArray(publicProjection.products)) {
     throw new TypeError('public projection products required');
@@ -167,6 +199,7 @@ function countBy(items, key) {
 function policyExecutionState(termsReviewState) {
   if (termsReviewState === 'authorized_partner_feed') return 'RUNNABLE_AUTHORIZED_SOURCE';
   if (termsReviewState === 'pending_automated_scale_review') return 'BOUNDED_CANARY_ONLY';
+  if (termsReviewState === 'reviewed_bounded_exact_product_api') return 'RUNNABLE_POLICY_REVIEWED_SOURCE';
   if (termsReviewState === 'collection_blocked') return 'BLOCKED_BY_SOURCE_POLICY';
   throw new TypeError(`unsupported retailer policy execution state ${termsReviewState}`);
 }
@@ -196,12 +229,13 @@ export function validateRetailerObservationCoverage(document) {
     throw new TypeError('retailer observation coverage items must be sorted');
   }
   const states = new Set(['LEGACY_UNKNOWN', 'TYPED_AVAILABLE', 'TYPED_UNAVAILABLE',
-    'TYPED_REDIRECTED', 'TYPED_UNKNOWN', 'TYPED_CONFLICT', 'TYPED_POLICY_EXCLUDED']);
+    'TYPED_REDIRECTED', 'TYPED_UNKNOWN', 'TYPED_CONFLICT', 'TYPED_POLICY_EXCLUDED',
+    'QUARANTINED_IDENTITY_MISMATCH']);
   for (const item of document.items) {
     required(item.canonicalProductId, 'coverage canonical product ID');
     retailerUrl(item.url);
     if (!states.has(item.terminalObservationState)) throw new TypeError('unsupported terminal observation state');
-    const resolved = ['TYPED_AVAILABLE', 'TYPED_UNAVAILABLE']
+    const resolved = ['TYPED_AVAILABLE', 'TYPED_UNAVAILABLE', 'QUARANTINED_IDENTITY_MISMATCH']
       .includes(item.terminalObservationState);
     if (resolved !== (item.revalidation == null)) throw new TypeError('coverage revalidation state mismatch');
     if (item.terminalObservationState === 'LEGACY_UNKNOWN' && item.typedObservation != null) {
@@ -249,10 +283,20 @@ export function buildRetailerObservationCoverage({
   validateRetailerObservationLedger(ledger);
   const normalizedPolicy = normalizeRetailerSourcePolicy(sourcePolicy);
   const typedByLink = latestTypedByLink(ledger, normalizedPolicy);
+  const mismatchByLink = latestIdentityMismatchByBaselineLink(ledger, normalizedPolicy);
   const links = baselineLinks(publicProjection, normalizedPolicy);
   const items = links.map((link) => {
-    const typed = typedByLink.get(linkKey(link.canonicalProductId, link.url)) ?? null;
+    const typedObservation = typedByLink.get(linkKey(link.canonicalProductId, link.url)) ?? null;
+    const mismatch = mismatchByLink.get(link.baselineLinkId) ?? null;
+    if (mismatch && (mismatch.canonicalProductId !== link.canonicalProductId
+      || mismatch.sourceUrl !== link.url)) {
+      throw new Error(`identity mismatch attempt does not bind current baseline link ${link.baselineLinkId}`);
+    }
+    const typed = mismatch && (!typedObservation || mismatch.observedAt >= typedObservation.observedAt)
+      ? mismatch
+      : typedObservation;
     const resolved = typed && ['TYPED_AVAILABLE', 'TYPED_UNAVAILABLE'].includes(typed.state);
+    const terminal = typed?.state === 'QUARANTINED_IDENTITY_MISMATCH' || resolved;
     return {
       baselineLinkId: link.baselineLinkId,
       canonicalProductId: link.canonicalProductId,
@@ -262,7 +306,7 @@ export function buildRetailerObservationCoverage({
       sourcePolicyId: link.sourcePolicy.id,
       terminalObservationState: typed?.state ?? 'LEGACY_UNKNOWN',
       typedObservation: typed,
-      revalidation: resolved ? null : {
+      revalidation: terminal ? null : {
         action: typed ? 'REVALIDATE_TYPED_NON_TERMINAL' : link.sourcePolicy.legacyLinkAction,
         policyState: link.sourcePolicy.termsReviewState,
         executionState: policyExecutionState(link.sourcePolicy.termsReviewState),

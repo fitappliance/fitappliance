@@ -267,6 +267,36 @@ test('current recovery requires an exact, current catalog identity', () => {
   );
 });
 
+test('a shadow-only release routes receipts from the frozen legacy baseline without a partial lifecycle overlay', () => {
+  const product = wdProduct('CATALOG_ARCHIVED');
+  product.unavailable = false;
+  product.retailers = [{
+    n: 'Appliances Online',
+    url: 'https://www.appliancesonline.com.au/product/fisher-paykel-wd8560f1',
+    p: 999,
+  }];
+
+  const publication = buildHistoricalEvidencePublication({
+    bundle: currentBundle,
+    products: [product],
+    lifecycleMode: 'LEGACY_BASELINE',
+  });
+
+  assert.equal(publication.currentAcceptanceByLegacyId.has(product.id), true);
+  assert.equal(
+    publication.historicalEvidenceProjection.records[0].lifecycleState,
+    'CURRENT_RETAIL',
+  );
+});
+
+test('publication rejects an unknown lifecycle epoch instead of guessing a mixed mode', () => {
+  assert.throws(() => buildHistoricalEvidencePublication({
+    bundle: currentBundle,
+    products: [wdProduct()],
+    lifecycleMode: 'AUTO',
+  }), /unsupported lifecycle publication mode/i);
+});
+
 test('only a fixed three-axis envelope becomes scalar historical dimensions', () => {
   const geometryProjection = structuredClone(currentBundle.entries[0].geometryProjection);
   assert.deepEqual(scalarHistoricalDimensions(geometryProjection), {

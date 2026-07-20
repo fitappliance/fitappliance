@@ -6,10 +6,24 @@ import {
   applyAcceptanceReceiptReplayAudit,
   applyHistoricalPdfImageAudit,
   buildCurrentReceiptIndex,
+  deriveHistoricalModelEvidenceClassificationGeneratedAt,
   receiptDocumentLink,
 } from '../../scripts/architecture-v2/build-historical-model-evidence-classification.mjs';
 
 const HASH = 'a'.repeat(64);
+
+test('classification generation time is the latest bound input time, never wall clock time', () => {
+  assert.equal(deriveHistoricalModelEvidenceClassificationGeneratedAt({
+    historicalReference: { generatedAt: '2026-07-12T12:40:00.000Z' },
+    legacyAudit: { generatedAt: '2026-07-15T14:53:39.566Z' },
+    acceptanceBundle: { generatedAt: '2026-07-19T19:19:53.552Z' },
+    acceptanceReceiptReplayAudit: { generatedAt: '2026-07-19T19:32:08.439Z' },
+  }), '2026-07-19T19:32:08.439Z');
+  assert.throws(
+    () => deriveHistoricalModelEvidenceClassificationGeneratedAt({}),
+    /timestamp/i,
+  );
+});
 
 function source(model) {
   return {

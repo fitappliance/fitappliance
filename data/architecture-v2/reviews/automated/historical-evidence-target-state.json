@@ -1,31 +1,31 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T19:26:14.787Z",
-  "sourceClassificationGeneratedAt": "2026-07-19T19:26:14.787Z",
-  "sourceExecutableQueueGeneratedAt": "2026-07-19T19:26:14.787Z",
+  "generatedAt": "2026-07-19T19:32:08.439Z",
+  "sourceClassificationGeneratedAt": "2026-07-19T19:32:08.439Z",
+  "sourceExecutableQueueGeneratedAt": "2026-07-19T19:32:08.439Z",
   "summary": {
     "records": 8089,
-    "actionable": 4990,
+    "actionable": 4994,
     "actionableBlockedOverlap": 6,
-    "acquisitionWork": 6,
-    "discoveryWork": 4984,
-    "deferred": 2698,
+    "acquisitionWork": 0,
+    "discoveryWork": 4994,
+    "deferred": 2694,
     "completed": 401,
-    "blocked": 2704,
-    "terminal": 3105,
+    "blocked": 2700,
+    "terminal": 3101,
     "byState": {
-      "BLOCKED_SAME_EPOCH": 3,
+      "BLOCKED_SAME_EPOCH": 2,
       "CONFLICT_QUARANTINE": 83,
       "DIMENSIONS_RECEIPT": 401,
       "IDENTITY_RESEARCH": 134,
-      "NO_OFFICIAL_SOURCE": 36,
+      "NO_OFFICIAL_SOURCE": 33,
       "RETRYABLE": 10,
-      "SOURCE_DISCOVERY_REQUIRED": 4840,
+      "SOURCE_DISCOVERY_REQUIRED": 4844,
       "UNSEEN": 2582
     },
     "byStateClass": {
-      "ACTIONABLE": 4984,
-      "BLOCKED": 2704,
+      "ACTIONABLE": 4988,
+      "BLOCKED": 2700,
       "COMPLETED": 401
     }
   },
@@ -2339,10 +2339,19 @@
       "actionable": false,
       "terminal": true,
       "binding": {
-        "type": "control_plane_disposition",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_15e7e38fc54dc77ebe0dbced",
-        "dispositionReason": "NO_CANDIDATE_COMPLETE"
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_6e6c5f09007e9d6b5ba71d9b",
+        "reason": "complete_zero_candidate_inventory",
+        "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+        "resolverSetSha256": "b56e2a35a49872e1c5d17e746e656bfb1e28664e2562e1c09280ef0d4aa79e16",
+        "runId": "historical-asko-legacy-dishwashers-20260716-d",
+        "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-a136f6778b8e",
+        "attemptedAt": "2026-07-16T12:16:49.118Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
+        }
       },
       "reopeningConditions": [
         "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
@@ -2364,10 +2373,19 @@
       "actionable": false,
       "terminal": true,
       "binding": {
-        "type": "control_plane_disposition",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_97381d6cbf479dddedf9e15c",
-        "dispositionReason": "NO_CANDIDATE_COMPLETE"
+        "type": "target_attempt",
+        "targetAttemptId": "historical_target_attempt_60667f8220bcc7bd933e2ea2",
+        "reason": "complete_zero_candidate_inventory",
+        "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+        "resolverSetSha256": "b56e2a35a49872e1c5d17e746e656bfb1e28664e2562e1c09280ef0d4aa79e16",
+        "runId": "historical-asko-legacy-dishwashers-20260716-d",
+        "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-a136f6778b8e",
+        "attemptedAt": "2026-07-16T12:16:49.118Z",
+        "evidenceProcessorEpochs": {
+          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
+          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
+        }
       },
       "reopeningConditions": [
         "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
@@ -2400,7 +2418,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -2434,7 +2452,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -2495,7 +2513,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -3881,7 +3899,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -5058,7 +5076,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -5092,7 +5110,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -5126,7 +5144,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -5160,7 +5178,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -5194,7 +5212,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -5228,7 +5246,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -5262,7 +5280,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -5296,7 +5314,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -11932,19 +11950,18 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "NO_OFFICIAL_SOURCE",
-      "stateClass": "BLOCKED",
-      "actionable": false,
-      "terminal": true,
+      "state": "SOURCE_DISCOVERY_REQUIRED",
+      "stateClass": "ACTIONABLE",
+      "actionable": true,
+      "terminal": false,
       "binding": {
-        "type": "control_plane_disposition",
+        "type": "executable_queue",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_24ed948d4390531eefa18311",
-        "dispositionReason": "NO_CANDIDATE_COMPLETE"
+        "executionLane": "BOUNDED_DISCOVERY",
+        "candidateJobIds": []
       },
-      "reopeningConditions": [
-        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
-      ]
+      "reopeningConditions": []
     },
     {
       "referenceId": "fa_ref_c330725a2b8be301c0e742a7",
@@ -12029,31 +12046,18 @@
         "activeTerminal": 2,
         "resolved": 0
       },
-      "state": "BLOCKED_SAME_EPOCH",
-      "stateClass": "BLOCKED",
-      "actionable": false,
-      "terminal": true,
+      "state": "SOURCE_DISCOVERY_REQUIRED",
+      "stateClass": "ACTIONABLE",
+      "actionable": true,
+      "terminal": false,
       "binding": {
-        "type": "target_attempt",
-        "targetAttemptId": "historical_target_attempt_30be75ffb40aeb2589e270d3",
-        "reason": "complete_exhausted_candidate_inventory",
-        "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
-        "resolverSetSha256": "a43f74bbd0cf475037508378b3b856835dba29b3296d6cfbdd4ca929deafedc4",
-        "runId": "historical-scale-p0-esatto-edw456s-dimensions-20260719-c",
-        "batchId": "historical-recovery-80fb5b96b8bbdf17bf74511e-slice-cb0614910d17",
-        "attemptedAt": "2026-07-19T19:18:58.376Z",
-        "evidenceProcessorEpochs": {
-          "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
-          "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
-        }
+        "type": "executable_queue",
+        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
+        "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "candidateJobIds": []
       },
-      "reopeningConditions": [
-        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED",
-        "POLICY_CHANGED",
-        "PROCESSOR_EPOCH_CHANGED",
-        "RESOLVER_CONTRACT_CHANGED"
-      ]
+      "reopeningConditions": []
     },
     {
       "referenceId": "fa_ref_9128bbf72dce70b38063d024",
@@ -12282,19 +12286,18 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "NO_OFFICIAL_SOURCE",
-      "stateClass": "BLOCKED",
-      "actionable": false,
-      "terminal": true,
+      "state": "SOURCE_DISCOVERY_REQUIRED",
+      "stateClass": "ACTIONABLE",
+      "actionable": true,
+      "terminal": false,
       "binding": {
-        "type": "control_plane_disposition",
+        "type": "executable_queue",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_3460eea918b1604f3adefc9c",
-        "dispositionReason": "NO_CANDIDATE_COMPLETE"
+        "executionLane": "BOUNDED_DISCOVERY",
+        "candidateJobIds": []
       },
-      "reopeningConditions": [
-        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
-      ]
+      "reopeningConditions": []
     },
     {
       "referenceId": "fa_ref_ba08c9a08baaa5e5b4e74e5d",
@@ -12307,19 +12310,18 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "NO_OFFICIAL_SOURCE",
-      "stateClass": "BLOCKED",
-      "actionable": false,
-      "terminal": true,
+      "state": "SOURCE_DISCOVERY_REQUIRED",
+      "stateClass": "ACTIONABLE",
+      "actionable": true,
+      "terminal": false,
       "binding": {
-        "type": "control_plane_disposition",
+        "type": "executable_queue",
         "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
         "targetId": "recovery_target_80db96b796e61908327eb342",
-        "dispositionReason": "NO_CANDIDATE_COMPLETE"
+        "executionLane": "BOUNDED_DISCOVERY",
+        "candidateJobIds": []
       },
-      "reopeningConditions": [
-        "EXPLICIT_OFFICIAL_CANDIDATE_ADDED"
-      ]
+      "reopeningConditions": []
     },
     {
       "referenceId": "fa_ref_1521ace8bfc9a54835d11c55",
@@ -17537,7 +17539,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -17715,7 +17717,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -17749,7 +17751,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -17903,7 +17905,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -17937,7 +17939,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -18436,7 +18438,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -18521,7 +18523,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -39529,7 +39531,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -39587,7 +39589,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -40011,7 +40013,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -40045,7 +40047,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -40175,7 +40177,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -40209,7 +40211,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -40243,7 +40245,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -40277,7 +40279,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -44324,7 +44326,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -44433,7 +44435,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -44515,7 +44517,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -44624,7 +44626,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -44685,7 +44687,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -74374,10 +74376,8 @@
           "type": "executable_queue",
           "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
           "targetId": "recovery_target_188e82d7868288177e51820a",
-          "executionLane": "ACQUISITION",
-          "candidateJobIds": [
-            "recovery_bbe93dbf847ec608dfd56968"
-          ]
+          "executionLane": "BOUNDED_DISCOVERY",
+          "candidateJobIds": []
         }
       },
       "reopeningConditions": [
@@ -97040,7 +97040,7 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "smeg_au_techspec_pdf_dimensions_v1": "78635578b174e00b01d798e9c7a2e42ca48db68a887e9077ba8a192d1f1f8309"
+          "smeg_au_techspec_pdf_dimensions_v1": "0f979915324d75638a330e74d57d4349f7988d89f4362d134c82b211d4b1eddc"
         }
       },
       "reopeningConditions": [
@@ -114015,10 +114015,8 @@
           "type": "executable_queue",
           "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
           "targetId": "recovery_target_6c312441be4d741742f10a29",
-          "executionLane": "ACQUISITION",
-          "candidateJobIds": [
-            "recovery_4065dcfaac62f7a260ef5891"
-          ]
+          "executionLane": "BOUNDED_DISCOVERY",
+          "candidateJobIds": []
         }
       },
       "reopeningConditions": [
@@ -166862,10 +166860,8 @@
           "type": "executable_queue",
           "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
           "targetId": "recovery_target_178ba2b9d49b8bf0b0137832",
-          "executionLane": "ACQUISITION",
-          "candidateJobIds": [
-            "recovery_340160bf3e18af48724c4754"
-          ]
+          "executionLane": "BOUNDED_DISCOVERY",
+          "candidateJobIds": []
         }
       },
       "reopeningConditions": [
@@ -167517,10 +167513,8 @@
           "type": "executable_queue",
           "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
           "targetId": "recovery_target_2eae033208d5ee47db368385",
-          "executionLane": "ACQUISITION",
-          "candidateJobIds": [
-            "recovery_9d234f4fe490c1f05243bec8"
-          ]
+          "executionLane": "BOUNDED_DISCOVERY",
+          "candidateJobIds": []
         }
       },
       "reopeningConditions": [
@@ -182986,10 +182980,8 @@
           "type": "executable_queue",
           "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
           "targetId": "recovery_target_a677bacb6d68e1c58a543364",
-          "executionLane": "ACQUISITION",
-          "candidateJobIds": [
-            "recovery_1457a40e871de3cd1cea24b6"
-          ]
+          "executionLane": "BOUNDED_DISCOVERY",
+          "candidateJobIds": []
         }
       },
       "reopeningConditions": [
@@ -187213,10 +187205,8 @@
           "type": "executable_queue",
           "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
           "targetId": "recovery_target_5abd7e69899be099d08694fd",
-          "executionLane": "ACQUISITION",
-          "candidateJobIds": [
-            "recovery_3ea99708e17f111958e8d7a1"
-          ]
+          "executionLane": "BOUNDED_DISCOVERY",
+          "candidateJobIds": []
         }
       },
       "reopeningConditions": [

@@ -12,6 +12,7 @@ const {
   buildAoFailedRetailerSnapshot,
   buildAoRetailerSnapshot,
   buildProductStubFromAo,
+  fetchJsonWithBytes,
 } = require('../../scripts/discovery-pipeline/lib/appliances-online-product-api.js');
 
 const adapter = {
@@ -98,6 +99,23 @@ test('AO collection failure is an empty failed snapshot, never synthesized unava
   assert.deepEqual(snapshot.rows, []);
   assert.deepEqual(snapshot.canonicalProductIds, ['fa_prod_dw42cs']);
   assert.equal(snapshot.rawPayloadSha256, null);
+});
+
+test('AO invalid JSON errors retain the exact HTTP response bytes for evidence storage', async () => {
+  const bytes = Buffer.from('{"productId":');
+  await assert.rejects(async () => {
+    await fetchJsonWithBytes('https://www.appliancesonline.com.au/api/v2/product/slug/bad', {
+      fetchImpl: async () => ({
+        ok: true,
+        status: 200,
+        text: async () => bytes.toString(),
+      }),
+    });
+  }, (error) => {
+    assert.equal(error.code, 'AO_INVALID_JSON');
+    assert.deepEqual(error.rawResponseBytes, bytes);
+    return true;
+  });
 });
 
 test('AO typed status drives lifecycle while a later failed collection preserves the prior state', async () => {

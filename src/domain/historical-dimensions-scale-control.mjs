@@ -17,6 +17,14 @@ const QUEUE_COUNTERS = Object.freeze([
   'p1AssignedTargets',
   'p1EligibleTargets',
 ]);
+const SCALE_ARTIFACT_BINDING_FIELDS = Object.freeze([
+  'nextBatchesSha256',
+  'programStatusSha256',
+  'receiptAuditSha256',
+  'replacementAuditSha256',
+  'fitPublicationAuditSha256',
+  'epochsSha256',
+]);
 const FUNNEL_FIELDS = Object.freeze([
   'selectedTargets',
   'targetsWithOfficialCandidates',
@@ -82,6 +90,11 @@ function requiredText(value, label) {
 
 function requiredInteger(value, label, minimum = 0) {
   if (!Number.isInteger(value) || value < minimum) throw new TypeError(`${label} invalid`);
+  return value;
+}
+
+function requiredSignedInteger(value, label) {
+  if (!Number.isInteger(value)) throw new TypeError(`${label} invalid`);
   return value;
 }
 
@@ -824,6 +837,78 @@ function validateCheckpoint(value, previousCounters, previousCompletedAt) {
   return { checkpoint, completedAt, after };
 }
 
+function validateScaleArtifactBindings(value, label) {
+  const bindings = requiredObject(value, label);
+  if (!canonicalEqual(Object.keys(bindings).sort(), [...SCALE_ARTIFACT_BINDING_FIELDS].sort())) {
+    throw new TypeError(`${label} fields invalid`);
+  }
+  for (const field of SCALE_ARTIFACT_BINDING_FIELDS) requiredHash(bindings[field], `${label} ${field}`);
+  return bindings;
+}
+
+function validateRebaseline(value, previousCounters, previousCompletedAt) {
+  const rebaseline = requiredObject(value, 'scale rebaseline');
+  const { semanticRebaselineSha256, ...semantic } = rebaseline;
+  const rebaselineId = requiredText(rebaseline.rebaselineId, 'scale rebaseline ID');
+  if (canonicalJsonSha256(semantic) !== requiredHash(
+    semanticRebaselineSha256,
+    `${rebaselineId} semantic SHA-256`,
+  )) throw new Error(`${rebaselineId} rebaseline semantic hash drift`);
+  const activatedAt = requiredTimestamp(rebaseline.activatedAt, `${rebaselineId} activation time`);
+  if (previousCompletedAt && Date.parse(activatedAt) < Date.parse(previousCompletedAt)) {
+    throw new Error(`${rebaselineId} activation time is out of order`);
+  }
+  if (rebaseline.reason !== 'RELEASE_DAG_RECONCILIATION') {
+    throw new TypeError(`${rebaselineId} rebaseline reason invalid`);
+  }
+  requiredInteger(rebaseline.afterEntryCount, `${rebaselineId} entry offset`);
+  requiredHash(rebaseline.priorControlSha256, `${rebaselineId} prior control SHA-256`);
+  const priorBindings = validateScaleArtifactBindings(
+    rebaseline.priorArtifactBindings,
+    `${rebaselineId} prior artifact bindings`,
+  );
+  const nextBindings = validateScaleArtifactBindings(
+    rebaseline.nextArtifactBindings,
+    `${rebaselineId} next artifact bindings`,
+  );
+  const changedBindings = requiredArray(
+    rebaseline.changedArtifactBindings,
+    `${rebaselineId} changed artifact bindings`,
+  );
+  const expectedChangedBindings = SCALE_ARTIFACT_BINDING_FIELDS
+    .filter((field) => priorBindings[field] !== nextBindings[field]);
+  if (!expectedChangedBindings.length || !canonicalEqual(changedBindings, expectedChangedBindings)) {
+    throw new Error(`${rebaselineId} changed artifact binding accounting drift`);
+  }
+  const before = validateCounterSet(rebaseline.previousCounters, `${rebaselineId} previous counters`);
+  const after = validateCounterSet(rebaseline.nextCounters, `${rebaselineId} next counters`);
+  if (!canonicalEqual(before, previousCounters)) {
+    throw new Error(`${rebaselineId} rebaseline counter chain drift`);
+  }
+  for (const field of MONOTONIC_COUNTERS) {
+    if (after[field] !== before[field]) {
+      throw new Error(`${rebaselineId} coverage counters cannot change during rebaseline: ${field}`);
+    }
+  }
+  const queueCounterDeltas = requiredObject(
+    rebaseline.queueCounterDeltas,
+    `${rebaselineId} queue counter deltas`,
+  );
+  if (!canonicalEqual(Object.keys(queueCounterDeltas).sort(), [...QUEUE_COUNTERS].sort())) {
+    throw new TypeError(`${rebaselineId} queue counter delta fields invalid`);
+  }
+  let changedQueueCounters = 0;
+  for (const field of QUEUE_COUNTERS) {
+    const delta = requiredSignedInteger(queueCounterDeltas[field], `${rebaselineId} ${field} delta`);
+    if (delta !== after[field] - before[field]) {
+      throw new Error(`${rebaselineId} queue counter delta drift: ${field}`);
+    }
+    if (delta !== 0) changedQueueCounters += 1;
+  }
+  if (changedQueueCounters === 0) throw new Error(`${rebaselineId} rebaseline has no queue counter change`);
+  return { rebaseline, activatedAt, after };
+}
+
 function validateLedger(ledger, currentCounters) {
   if (![1, HISTORICAL_DIMENSIONS_SCALE_LEDGER_SCHEMA_VERSION].includes(ledger?.schemaVersion)) {
     throw new TypeError('historical dimensions scale ledger schema v1 or v2 required');
@@ -838,9 +923,27 @@ function validateLedger(ledger, currentCounters) {
   let previous = baseline;
   let previousCompletedAt = ledger.activatedAt;
   const checkpoints = [];
+  const rebaselines = [];
   const ids = new Set();
   const runs = new Set();
-  for (const row of requiredArray(ledger.entries, 'scale ledger entries')) {
+  const entries = requiredArray(ledger.entries, 'scale ledger entries');
+  const transitions = requiredArray(ledger.rebaselines ?? [], 'scale ledger rebaselines');
+  let transitionIndex = 0;
+  for (let entryIndex = 0; entryIndex <= entries.length; entryIndex += 1) {
+    while (transitionIndex < transitions.length
+      && transitions[transitionIndex]?.afterEntryCount === entryIndex) {
+      const result = validateRebaseline(transitions[transitionIndex], previous, previousCompletedAt);
+      if (ids.has(result.rebaseline.rebaselineId)) {
+        throw new Error(`duplicate scale rebaseline: ${result.rebaseline.rebaselineId}`);
+      }
+      ids.add(result.rebaseline.rebaselineId);
+      rebaselines.push(result.rebaseline);
+      previous = result.after;
+      previousCompletedAt = result.activatedAt;
+      transitionIndex += 1;
+    }
+    if (entryIndex === entries.length) break;
+    const row = entries[entryIndex];
     const result = validateCheckpoint(row, previous, previousCompletedAt);
     if (ids.has(row.checkpointId) || runs.has(row.runId)) {
       throw new Error(`duplicate scale checkpoint or run: ${row.checkpointId}`);
@@ -851,11 +954,15 @@ function validateLedger(ledger, currentCounters) {
     previous = result.after;
     previousCompletedAt = result.completedAt;
   }
+  if (transitionIndex !== transitions.length) {
+    throw new Error('scale rebaseline entry offset is out of order or exceeds ledger entries');
+  }
   if (!canonicalEqual(previous, currentCounters)) {
     throw new Error('current counters changed without a recorded scale checkpoint');
   }
   return {
     checkpoints,
+    rebaselines,
     policy,
   };
 }
@@ -944,15 +1051,21 @@ function validateManifestSemanticHash(manifest) {
   return manifest;
 }
 
-function sourceBindings(input, epochs) {
+function scaleArtifactBindings(input, epochs) {
   return {
-    ledgerSha256: canonicalJsonSha256(input.ledger),
     nextBatchesSha256: canonicalJsonSha256(input.nextBatches),
     programStatusSha256: canonicalJsonSha256(input.programStatus),
     receiptAuditSha256: canonicalJsonSha256(input.receiptAudit),
     replacementAuditSha256: canonicalJsonSha256(input.replacementAudit),
     fitPublicationAuditSha256: canonicalJsonSha256(input.fitPublicationAudit),
     epochsSha256: canonicalJsonSha256(epochs),
+  };
+}
+
+function sourceBindings(input, epochs) {
+  return {
+    ledgerSha256: canonicalJsonSha256(input.ledger),
+    ...scaleArtifactBindings(input, epochs),
   };
 }
 
@@ -985,6 +1098,17 @@ export function buildHistoricalDimensionsScaleControl(input) {
     operationalState,
     counters: structuredClone(counters),
     checkpointCount: ledger.checkpoints.length,
+    rebaselineCount: ledger.rebaselines.length,
+    latestRebaseline: ledger.rebaselines.length ? (() => {
+      const latest = ledger.rebaselines.at(-1);
+      return {
+        rebaselineId: latest.rebaselineId,
+        activatedAt: latest.activatedAt,
+        reason: latest.reason,
+        queueCounterDeltas: structuredClone(latest.queueCounterDeltas),
+        changedArtifactBindings: [...latest.changedArtifactBindings],
+      };
+    })() : null,
     haltedCohorts: circuits.haltedCohorts,
     reopenedCohorts: circuits.reopenedCohorts,
     stageSummaries: circuits.stageSummaries,
@@ -1260,6 +1384,86 @@ export function recordHistoricalDimensionsScaleCheckpoint({
     ledger: Object.freeze(nextLedger),
     control: nextControl,
     reconciled: false,
+  });
+}
+
+export function recordHistoricalDimensionsScaleRebaseline({
+  priorControl,
+  ledger,
+  currentInput,
+  activatedAt,
+  reason,
+}) {
+  validateScaleControl(priorControl);
+  requiredObject(ledger, 'scale rebaseline ledger');
+  if (priorControl.sourceBindings.ledgerSha256 !== canonicalJsonSha256(ledger)) {
+    throw new Error('scale rebaseline prior control ledger binding drift');
+  }
+  validateLedger(ledger, validateCounterSet(
+    priorControl.counters,
+    'scale rebaseline prior control counters',
+  ));
+  const shared = requiredObject(currentInput, 'current scale-control input');
+  const epochs = normalizedEpochRows(shared.epochs);
+  const nextCounters = canonicalHistoricalDimensionsScaleCounters(shared);
+  const previousCounters = structuredClone(priorControl.counters);
+  for (const field of MONOTONIC_COUNTERS) {
+    if (nextCounters[field] !== previousCounters[field]) {
+      throw new Error(`coverage counters cannot change during release DAG rebaseline: ${field}`);
+    }
+  }
+  const priorArtifactBindings = Object.fromEntries(SCALE_ARTIFACT_BINDING_FIELDS.map((field) => [
+    field,
+    requiredHash(priorControl.sourceBindings[field], `prior control ${field}`),
+  ]));
+  const nextArtifactBindings = scaleArtifactBindings(shared, epochs);
+  const changedArtifactBindings = SCALE_ARTIFACT_BINDING_FIELDS
+    .filter((field) => priorArtifactBindings[field] !== nextArtifactBindings[field]);
+  if (!changedArtifactBindings.length) {
+    throw new Error('release DAG rebaseline requires a changed bound artifact');
+  }
+  const queueCounterDeltas = Object.fromEntries(QUEUE_COUNTERS.map((field) => [
+    field,
+    nextCounters[field] - previousCounters[field],
+  ]));
+  if (Object.values(queueCounterDeltas).every((delta) => delta === 0)) {
+    throw new Error('release DAG rebaseline requires a queue counter change');
+  }
+  const activation = requiredTimestamp(activatedAt, 'scale rebaseline activation time');
+  if (reason !== 'RELEASE_DAG_RECONCILIATION') {
+    throw new TypeError('scale rebaseline reason invalid');
+  }
+  const identitySha256 = canonicalJsonSha256({
+    activatedAt: activation,
+    afterEntryCount: ledger.entries.length,
+    priorControlSha256: priorControl.semanticControlSha256,
+    nextArtifactBindings,
+    nextCounters,
+  });
+  const semantic = {
+    rebaselineId: `historical-dimensions-rebaseline-${identitySha256.slice(0, 24)}`,
+    activatedAt: activation,
+    afterEntryCount: ledger.entries.length,
+    reason,
+    priorControlSha256: priorControl.semanticControlSha256,
+    priorArtifactBindings,
+    nextArtifactBindings,
+    changedArtifactBindings,
+    previousCounters,
+    nextCounters: structuredClone(nextCounters),
+    queueCounterDeltas,
+  };
+  const rebaseline = {
+    ...semantic,
+    semanticRebaselineSha256: canonicalJsonSha256(semantic),
+  };
+  const nextLedger = structuredClone(ledger);
+  nextLedger.rebaselines = [...(nextLedger.rebaselines ?? []), rebaseline];
+  const control = buildHistoricalDimensionsScaleControl({ ...shared, ledger: nextLedger });
+  return Object.freeze({
+    rebaseline: Object.freeze(rebaseline),
+    ledger: Object.freeze(nextLedger),
+    control,
   });
 }
 

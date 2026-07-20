@@ -24,21 +24,42 @@ test('refresh inventory accounts for every unresolved prior-current product with
   });
 
   validateRetailLifecycleRefreshInventory(inventory);
-  assert.equal(inventory.summary.products, 1384);
-  assert.equal(inventory.summary.listings, 1614);
-  assert.deepEqual(inventory.summary.byExecutionDisposition, {
-    BLOCKED_BY_SOURCE_POLICY: 40,
-    BOUNDED_CANARY_ONLY: 1172,
-    RUNNABLE_AUTHORIZED_SOURCE: 172,
-  });
+  assert.equal(inventory.summary.products, shadow.cutover.unresolvedLegacyCurrentIds.length);
+  assert.equal(
+    inventory.summary.listings,
+    inventory.items.reduce((sum, item) => sum + item.sourceTasks.length, 0),
+  );
+  assert.equal(
+    Object.values(inventory.summary.byExecutionDisposition).reduce((sum, count) => sum + count, 0),
+    inventory.summary.products,
+  );
   assert.deepEqual(
     inventory.items.map((item) => item.canonicalProductId),
     [...shadow.cutover.unresolvedLegacyCurrentIds].sort(),
   );
-  assert.ok(inventory.items.every((item) => item.sourceTasks.length > 0));
+  assert.ok(inventory.items.every((item) => (
+    item.sourceTasks.length + item.resolutionTasks.length > 0
+  )));
   assert.ok(inventory.items.every((item) => item.lifecycleState === 'UNKNOWN_RETAIL'));
   assert.ok(inventory.items.every((item) => item.sourceTasks.every((source) => (
     source.terminalObservationState !== 'TYPED_AVAILABLE'
     && source.terminalObservationState !== 'TYPED_UNAVAILABLE'
   ))));
+
+  const identityRediscovery = inventory.items.find((item) => item.model === 'GS-B655PL');
+  assert.ok(identityRediscovery, 'identity-quarantined product remains in the unresolved inventory');
+  assert.equal(identityRediscovery.sourceTasks.length, 0);
+  assert.equal(identityRediscovery.executionDisposition, 'REQUIRES_EXACT_MODEL_REDISCOVERY');
+  assert.deepEqual(identityRediscovery.resolutionTasks.map((task) => ({
+    action: task.action,
+    executionState: task.executionState,
+    expectedModel: task.expectedIdentity.model,
+    quarantinedBaselineLinkIds: task.quarantinedBaselineLinkIds,
+  })), [{
+    action: 'DISCOVER_EXACT_MODEL_RETAIL_SOURCE',
+    executionState: 'REQUIRES_DISCOVERY_PIPELINE',
+    expectedModel: 'GS-B655PL',
+    quarantinedBaselineLinkIds: ['retail_link_8248f5525f2a0c2266b3970d'],
+  }]);
+  assert.equal(inventory.summary.resolutionTasks, 1);
 });

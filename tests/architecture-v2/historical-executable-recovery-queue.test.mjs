@@ -109,10 +109,10 @@ function candidateManifestFor(acquisitionQueue) {
       executionReadiness: record.executionReadiness,
       state,
       terminal: false,
-      retryableDiscovery: state !== 'RESEARCH_REQUIRED',
+      retryableDiscovery: state === 'DISCOVERY_RETRYABLE',
       resolverContract: [{ resolverId: 'fixture-resolver', version: '1', scope: 'exact-model', required: true }],
       resolverResults: [],
-      incompleteResolverIds: state === 'RESEARCH_REQUIRED' ? [] : ['fixture-resolver'],
+      incompleteResolverIds: state === 'DISCOVERY_RETRYABLE' ? ['fixture-resolver'] : [],
       lastDiscoveryRunId: null,
       lastDiscoveryAt: null,
       referenceHintSourceIds: [],
@@ -198,6 +198,51 @@ test('materializes acquisition and bounded-discovery targets without fabricating
   assert.deepEqual(registry.candidateJobIds, []);
   assert.deepEqual(registry.requestedFields, fields);
   assert.equal(queue.summary.excluded.RESEARCH_REQUIRED, 1);
+});
+
+test('keeps retryable candidate observations non-executable until required resolvers complete', () => {
+  const record = acquisition('partial', { candidateSourceIds: ['source-partial'] });
+  const acquisitionQueue = {
+    schemaVersion: 1,
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    semanticQueueSha256: 'a'.repeat(64),
+    records: [record],
+    sources: [{
+      sourceId: 'source-partial',
+      sourceUrl: 'https://example.com/partial.pdf',
+      sourceAuthority: 'OFFICIAL',
+      receiptEligible: true,
+      documentIds: ['doc-partial'],
+      referenceIds: ['partial'],
+    }],
+  };
+  const manifest = candidateManifestFor(acquisitionQueue);
+  manifest.targets[0].state = 'DISCOVERY_RETRYABLE';
+  manifest.targets[0].retryableDiscovery = true;
+  manifest.targets[0].incompleteResolverIds = ['fixture-resolver'];
+  manifest.summary.byState = { DISCOVERY_RETRYABLE: 1 };
+  manifest.semanticManifestSha256 = canonicalJsonSha256({
+    sourceAcquisitionQueueSha256: manifest.sourceAcquisitionQueueSha256,
+    runBindings: manifest.runBindings,
+    candidates: manifest.candidates,
+    targets: manifest.targets,
+  });
+
+  const queue = buildQueue({
+    acquisitionQueue,
+    candidateManifest: manifest,
+    historicalReference: { records: [reference('partial')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+  });
+
+  assert.equal(queue.jobs.length, 0);
+  assert.equal(queue.targets.length, 0);
+  assert.equal(queue.discoveryTargets.length, 1);
+  assert.deepEqual(queue.discoveryTargets[0].candidateJobIds, []);
+  assert.deepEqual(queue.discoveryTargets[0].observedCandidateIds, [manifest.candidates[0].candidateId]);
+  assert.equal(queue.summary.candidateEdges, 0);
+  assert.equal(queue.summary.observedCandidateEdges, 1);
+  assert.equal(queue.summary.isolatedNonReadyCandidateEdges, 1);
 });
 
 test('separates resolver-backed identity discovery and keeps unresolved identity research deferred', () => {

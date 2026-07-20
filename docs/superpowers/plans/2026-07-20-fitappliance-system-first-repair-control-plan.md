@@ -5,9 +5,10 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** EXECUTING - Task 9 in progress
+- **Status:** BLOCKED - Task 9 lifecycle cutover has unresolved source and
+  identity prerequisites; production remains on the pre-cutover release
 - **Date:** 2026-07-20
-- **Active task:** Task 9 - full replay, migration, release DAG, and rollback drill
+- **Active task:** Task 9 blocked-state closeout and prerequisite recovery
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -437,7 +438,7 @@ Mandatory adversarial traces across the programme:
 
 | Task | Scope | Depends on | Status | Completion evidence |
 | ---: | --- | --- | --- | --- |
-| 0 | Freeze baseline and executable system contract | none | COMPLETED | Current contract `historical_evidence_system_ee4133065c59780d595724fa`; 26 stages; 10 epochs; tracked contract replay passed |
+| 0 | Freeze baseline and executable system contract | none | COMPLETED | Current contract `historical_evidence_system_a9ebd23cc83b153d9ceda0c3`; 26 stages; 10 epochs; tracked contract replay passed |
 | 1 | Lock independent identity/lifecycle/evidence/visibility/Fit axes | 0 | COMPLETED | 13 state-axis fixtures; typed provenance and lifecycle binding; 34 focused and 1,020 Architecture V2 tests passed |
 | 2 | Integrate real retailer availability observations | 1 | COMPLETED | 1,614/1,614 links accounted; append-safe schema-v2 ledger; AO/Partnerize typed adapters; policy-aware revalidation audit |
 | 3 | Build lifecycle shadow, refresh inventory, and prove destination/cutover isolation | 2 | COMPLETED | Shadow accounts for 3,515 products; all 1,384 legacy-current products have scoped refresh dispositions; real cutover remains safely blocked and production is byte-identical; synthetic atomic cutover passed |
@@ -446,8 +447,8 @@ Mandatory adversarial traces across the programme:
 | 6 | Prove receipt-to-publication vertical slices | 5 | COMPLETED | Unsupported legacy door semantics removed at receipt/public boundaries; unresolved accepted conflicts and forged verified Fit state fail closed; zero-violation idempotent next-epoch shadow; 1,066 Architecture V2 and 2,726 repository tests passed |
 | 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | COMPLETED | Schema/planner v2 exposes 24 manifests across 402 eligible cohorts; 8 P0 slots rotate across all four categories; local exclusion selects another P0 while P1 remains blocked; 1,072 Architecture V2 and 2,732 repository tests passed |
 | 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | COMPLETED | Schema-v2 typed stage metrics; 10-unit/two-manifest Wilson gate; stable epoch reopening; five legacy entries preserved; real decision RUN_P0; 1,077 Architecture V2 and 2,737 repository tests passed |
-| 9 | Full replay, migration, release DAG, and rollback drill | 8 | IN_PROGRESS | Preflight and lifecycle cutover readiness audit in progress |
-| 10 | Refresh canonical docs and close the release | 9 | PENDING | Not started |
+| 9 | Full replay, migration, release DAG, and rollback drill | 8 | BLOCKED | Available source runs and replay gates passed, but 81 prior-current products remain unresolved: 58 source-policy blocked, 22 require a new authorised feed epoch, and 1 requires exact-model rediscovery; no cutover or deployment occurred |
+| 10 | Refresh canonical docs and close the release | 9 | BLOCKED_BY_9 | Canonical docs record the measured blocked state and recovery order; release closure remains prohibited until Task 9 independently passes |
 
 Only one row may be `IN_PROGRESS`. A task is complete only when its own
 acceptance gate is independently satisfied; no gate may rely on a later task.
@@ -1379,9 +1380,106 @@ the Task 4-8 source and control contracts. The lifecycle shadow must be
 file changes. If policy or external authorization prevents that state, Task 9
 is `BLOCKED` and the existing production epoch remains intact.
 
+**Execution contract correction (2026-07-20):** the first reviewed AO scale
+batch exposed a missing dependency contract before publication. Refresh work is
+listing-scoped, not merely product-scoped: one canonical product may own more
+than one `baselineLinkId`, every link requires an independent request/outcome,
+and the policy request ceiling applies to source tasks rather than product
+rows. A response whose exact SKU or canonical URI differs from the frozen task
+must bind and retain the raw response, emit a terminal
+`QUARANTINED_IDENTITY_MISMATCH` disposition for that link, and contribute no
+availability observation. One isolated stale link does not halt unrelated
+work; HTTP 403/429 still stop immediately, while repeated identity/transport
+failures use the persisted consecutive-failure breaker. Schema-v1 completed
+runs remain replayable, but all new AO runs account for every selected
+`baselineLinkId` exactly once. Coverage consumes the quarantine so a rebuild
+does not retry the same invalid binding; the product itself remains unknown
+unless a separate exact-model source resolves its lifecycle.
+
+**Safety-release correction (2026-07-20):** full DAG replay exposed 35 legacy
+door-capability/door-swing claims that the receipt-bound Fit audit now correctly
+rejects. Keeping those claims merely to preserve pre-cutover bytes would retain
+known unsafe Fit semantics, while publishing the complete regenerated candidate
+would also release unrelated form-factor changes and create a mixed review
+scope. Task 9 therefore permits one lifecycle-neutral safety sub-release before
+the observation cutover. Its whitelist is closed: `door_swing_mm` may only move
+to `null`, `inferred_door_swing` may only be removed, and
+`flags.reversible_door` may only move to `null`. Product identity/order,
+availability, retailer rows, dimensions, geometry, provenance, receipts,
+clearance, Fit level, and every other field must remain byte-equivalent. The
+sub-release must reduce the Fit publication violations to zero, then rebuild the
+historical reference binding, lifecycle shadow/refresh inventory, audits, scale
+control, and system contract before a second normal build. It does not satisfy
+the lifecycle migration prerequisite and cannot make a blocked cutover READY.
+
+**Task 9 execution and blocker record (2026-07-20):**
+
+- A complete authorised Partnerize snapshot produced 233 exact observations
+  (229 available, four unavailable) and three identity quarantines. Bounded AO
+  execution accounted for all 1,169 selected retailer links: 1,153 succeeded
+  and 16 exact-identity mismatches were raw-bound and quarantined.
+- The cumulative retailer ledger contains 3,058 observations, including 1,406
+  authoritative typed observations, across 1,190 immutable collection attempts.
+  Failed AO response contracts now retain their exact response bytes without
+  publishing availability, and completed-run replay verifies every raw-bound
+  record, including failure and quarantine records.
+- Reusing identical Partnerize bytes under a later `observedAt` is rejected.
+  Content-equivalent feed snapshots may advance freshness only after a future
+  acquisition-receipt contract can independently prove a new source retrieval.
+- The lifecycle shadow accounts for all 3,515 catalogue products: 345
+  `CURRENT_RETAIL`, 3,089 `CATALOG_ARCHIVED`, and 81 `UNKNOWN_RETAIL`. Its
+  cutover is `BLOCKED`, with zero unsafe removals.
+- The 81 unresolved products split into 58 blocked by collection policy (89
+  links: Bing Lee 57, Harvey Norman 9, JB Hi-Fi 23), 22 waiting for a genuinely
+  new authorised The Good Guys feed epoch, and one AO model requiring exact
+  rediscovery. At least three of the 22 also expose canonical identity defects:
+  LG `1910FGX`/`1910BX` are sold as `WWT-1910FGX`/`WWT-1910BX`, and CHiQ
+  `CTM202NW` is linked as `CTM202NW3`. These are identity-repair cases, not
+  availability aliases.
+- The lifecycle-neutral safety projection changed 36 product rows only within
+  the closed door-field whitelist and reduced 35 known Fit publication
+  violations to zero. It did not change product count, lifecycle, availability,
+  retailer rows, dimensions, receipts, clearances, or Fit level.
+- Full external replay verified 803 historical evidence objects. Two complete
+  DAG builds were semantically identical; normal builds passed with
+  `FITAPPLIANCE_STORAGE_ROOT` unset. The external inventory digest remained
+  `7b2f3612c90901e0806546ab01ec0324f48aceee9e200fb31f9b7313920e42c5`
+  across the rollback build.
+- Final verification passed lint, 1,118/1,118 Architecture V2 tests,
+  2,778/2,778 full-repository tests, 21/21 installation receipt replays,
+  historical replacement audit with zero issues, and both geometry and
+  installation publication audits with zero violations.
+- Intermediate Task 8 commit `4ced49876` is not a standalone rollback target
+  because it expects later generated contracts. The remote feature baseline
+  `3f6a28650` and production `origin/main` baseline `c2c7bfc4c` both rebuild
+  offline. A future cutover and all derived artifacts must therefore be one Git
+  release unit; rollback restores the complete pre-cutover commit and never
+  deletes immutable external evidence.
+- No lifecycle cutover, production deployment, or legacy-runtime deletion was
+  attempted. This is the required fail-closed outcome, not a partial release
+  labelled complete.
+
+**Deterministic unblocking order:**
+
+1. capture a new authorised Partnerize feed with independently bound source
+   acquisition time, then replay it without reusing the prior content epoch;
+2. repair the three known canonical model identities through exact official AU
+   evidence and rebuild their retailer-link bindings without aliasing
+   availability;
+3. obtain authorised feeds or explicit automation permission for Bing Lee,
+   Harvey Norman, and JB Hi-Fi; until then their 58 products remain unknown and
+   hidden from current-result output;
+4. rediscover the exact LG `GS-B655PL` source instead of accepting its sibling
+   response;
+5. rerun the entire release DAG, require zero unresolved prior-current IDs,
+   repeat the deterministic build, perform the rollback drill, and only then
+   authorize cutover and Task 10 release closure.
+
 **Required traces:** happy path, process crash/resume, repeated batch, duplicate
 target, cross-source conflict, archived publication, schema upgrade, rollback,
-and external-drive-disconnected normal build.
+and external-drive-disconnected normal build. The happy/resume traces must also
+cover a multi-link product and an isolated exact-identity mismatch followed by
+a successful unrelated task.
 
 **Execution order:**
 

@@ -320,7 +320,7 @@ test('repository projection publishes the resolved exact model without stale leg
 
   assert.ok(product, 'resolved WHE6874BA must be present in the canonical public projection');
   assert.deepEqual(product.clearance_requirements, { top_mm: 25 });
-  assert.deepEqual(product.flags, { requires_plumbing: true });
+  assert.deepEqual(product.flags, { requires_plumbing: true, reversible_door: null });
   assert.equal(product.geometry_v2.installation.leftMm, null);
   assert.equal(product.geometry_v2.installation.rearMm, null);
   assert.equal(product.evidence.v2_resolution.status, 'resolved');

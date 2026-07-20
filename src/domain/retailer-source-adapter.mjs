@@ -114,6 +114,41 @@ export function normalizeRetailerSnapshot(adapterInput, input) {
     };
   });
   const canonicalProductIds = canonicalProductScope(input.canonicalProductIds, rows);
+  let failureContext = null;
+  if (input.failureContext != null) {
+    if (!failed) throw new TypeError('failure context requires a failed snapshot');
+    const context = input.failureContext;
+    const kind = required(context.kind, 'failure context kind');
+    if (!['identity_mismatch', 'response_contract_failure'].includes(kind)) {
+      throw new TypeError(`unsupported failure context ${kind}`);
+    }
+    const reasonCode = required(context.reasonCode, 'failure context reason code');
+    if (kind === 'identity_mismatch'
+      && !['AO_MODEL_MISMATCH', 'AO_URI_MISMATCH'].includes(reasonCode)) {
+      throw new TypeError(`unsupported identity mismatch reason ${reasonCode}`);
+    }
+    if (kind === 'response_contract_failure' && reasonCode !== 'AO_RESPONSE_CONTRACT_FAILURE') {
+      throw new TypeError(`unsupported response contract failure reason ${reasonCode}`);
+    }
+    const contextHash = String(context.rawPayloadSha256 ?? '').toLowerCase();
+    if (!/^[a-f0-9]{64}$/.test(contextHash)
+      || contextHash !== String(input.rawPayloadSha256 ?? '').toLowerCase()) {
+      throw new TypeError('identity mismatch raw payload hash required');
+    }
+    const common = {
+      kind,
+      reasonCode,
+      baselineLinkId: required(context.baselineLinkId, 'failure context baseline link ID'),
+      sourceUrl: trustedRetailerUrl(context.sourceUrl, adapter, 'failure source URL'),
+      rawPayloadSha256: contextHash,
+    };
+    failureContext = kind === 'identity_mismatch' ? {
+      ...common,
+      expectedModel: required(context.expectedModel, 'failure expected model'),
+      receivedModel: required(context.receivedModel, 'failure received model'),
+      receivedUrl: trustedRetailerUrl(context.receivedUrl, adapter, 'failure received URL'),
+    } : common;
+  }
   return freezeDeep({
     adapterId: adapter.id, retailer: adapter.retailer, sourceType: adapter.sourceType,
     policyVersion: adapter.policyVersion,
@@ -123,6 +158,7 @@ export function normalizeRetailerSnapshot(adapterInput, input) {
     collectionStatus: failed ? 'failed' : 'succeeded', collectionError: failed ? required(input.collectionError, 'collection error') : null,
     rawPayloadSha256: input.rawPayloadSha256 ?? null,
     rawSourceReference: rawSourceReference(input.rawSourceReference, adapter.sourceType),
+    ...(failureContext ? { failureContext } : {}),
     canonicalProductIds,
     rows,
   });

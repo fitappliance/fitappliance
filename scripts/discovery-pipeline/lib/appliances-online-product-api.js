@@ -55,7 +55,15 @@ async function fetchJsonWithBytes(url, {
     }
     if (typeof response.text === 'function') {
       const text = await response.text();
-      return { payload: JSON.parse(text), bytes: Buffer.from(text) };
+      const bytes = Buffer.from(text);
+      try {
+        return { payload: JSON.parse(text), bytes };
+      } catch (cause) {
+        const error = new SyntaxError('AO API returned invalid JSON', { cause });
+        error.code = 'AO_INVALID_JSON';
+        error.rawResponseBytes = bytes;
+        throw error;
+      }
     }
     const payload = await response.json();
     return { payload, bytes: Buffer.from(JSON.stringify(payload)) };
@@ -113,6 +121,15 @@ function normalizedModel(value) {
   return String(value || '').trim().toUpperCase().replace(/[^A-Z0-9]+/g, '');
 }
 
+class AoProductIdentityError extends Error {
+  constructor(code, message, details) {
+    super(message);
+    this.name = 'AoProductIdentityError';
+    this.code = code;
+    Object.assign(this, details);
+  }
+}
+
 function productRecord(productPayload) {
   return productPayload?.product || productPayload || {};
 }
@@ -143,15 +160,33 @@ async function buildAoRetailerSnapshot({
   const product = productRecord(productPayload);
   if (!product.productId) throw new TypeError('AO product response missing productId');
   if (!product.sku) throw new TypeError('AO product response missing sku');
-  if (normalizedModel(product.sku) !== normalizedModel(expectedModel)) {
-    throw new Error(`AO product model mismatch: expected ${expectedModel}, received ${product.sku}`);
-  }
   const canonicalUrl = normalizeAbsoluteUrl(productUrl);
   const payloadUrl = normalizeAbsoluteUrl(product.uri);
   if (!canonicalUrl || !payloadUrl) throw new TypeError('AO product URL and payload URI required');
+  if (normalizedModel(product.sku) !== normalizedModel(expectedModel)) {
+    throw new AoProductIdentityError(
+      'AO_MODEL_MISMATCH',
+      `AO product model mismatch: expected ${expectedModel}, received ${product.sku}`,
+      {
+        expectedModel: String(expectedModel),
+        receivedModel: String(product.sku),
+        expectedUrl: canonicalUrl,
+        receivedUrl: payloadUrl,
+      },
+    );
+  }
   const normalizePath = (value) => new URL(value).pathname.replace(/\/+$/, '');
   if (normalizePath(canonicalUrl) !== normalizePath(payloadUrl)) {
-    throw new Error(`AO product URI mismatch: ${new URL(canonicalUrl).pathname} != ${new URL(payloadUrl).pathname}`);
+    throw new AoProductIdentityError(
+      'AO_URI_MISMATCH',
+      `AO product URI mismatch: ${new URL(canonicalUrl).pathname} != ${new URL(payloadUrl).pathname}`,
+      {
+        expectedModel: String(expectedModel),
+        receivedModel: String(product.sku),
+        expectedUrl: canonicalUrl,
+        receivedUrl: payloadUrl,
+      },
+    );
   }
   const bytes = exactRawBytes(productRawBytes);
   const { normalizeRetailerSnapshot } = await import('../../../src/domain/retailer-source-adapter.mjs');
@@ -180,6 +215,8 @@ async function buildAoFailedRetailerSnapshot({
   observedAt,
   rawSourceReference,
   collectionError,
+  rawPayloadSha256 = null,
+  failureContext = null,
 }) {
   const { normalizeRetailerSnapshot } = await import('../../../src/domain/retailer-source-adapter.mjs');
   return normalizeRetailerSnapshot(adapter, {
@@ -187,6 +224,8 @@ async function buildAoFailedRetailerSnapshot({
     complete: false,
     canonicalProductIds: [String(canonicalProductId || '').trim()],
     rawSourceReference,
+    rawPayloadSha256,
+    failureContext,
     collectionError,
     rows: [],
   });
@@ -321,6 +360,7 @@ module.exports = {
   AO_ORIGIN,
   buildAoFailedRetailerSnapshot,
   buildAoRetailerSnapshot,
+  AoProductIdentityError,
   buildProductStubFromAo,
   fetchAppliancesOnlineProductBundle,
   fetchJson,

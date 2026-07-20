@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { buildPublicProjection } from '../../src/domain/public-projection.mjs';
@@ -17,10 +18,26 @@ import {
 import applianceEnrichment from '../enrich-appliances.js';
 import { buildHistoricalEvidencePublication } from '../../src/domain/historical-evidence-publication.mjs';
 import { filterHistoricalAcceptanceBundleByReceiptReplayAudit } from '../../src/domain/historical-evidence-recovery-audit.mjs';
+import {
+  buildRetailLifecycleNeutralSafetyPublication,
+  preserveRetailLifecycleShadowOnlyPublication,
+} from '../../src/domain/retail-lifecycle-shadow.mjs';
+import { auditPublicFitProjection } from '../../src/domain/geometry-publication.mjs';
 
 const { enrichApplianceDocument } = applianceEnrichment;
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
+const publicProjectionPath = resolveArchitectureV2Path(root, 'publicProjection');
+const releasedPublicProjectionBytes = await readFile(publicProjectionPath);
+const releasedPublicProjection = JSON.parse(releasedPublicProjectionBytes);
+const lifecycleReleasePolicyBytes = await readFile(
+  resolveArchitectureV2Path(root, 'retailLifecycleReleasePolicy'),
+);
+const lifecycleReleasePolicy = JSON.parse(lifecycleReleasePolicyBytes);
+const lifecycleShadow = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'retailLifecycleShadow'),
+  'utf8',
+));
 const registry = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalRegistry'), 'utf8'));
 const catalog = JSON.parse(await readFile(resolve(root, 'data/catalog-final.json'), 'utf8'));
 const seriesDictionary = JSON.parse(await readFile(resolve(root, 'data/series-dictionary.json'), 'utf8'));
@@ -61,7 +78,8 @@ for (const row of resolutionManifest.activeQuarantines ?? []) {
 const resolutionByLegacy = new Map(resolutionManifest.results.map((row) => [row.legacyRuntimeId, row.decision]));
 const historicalRecoveryPublication = buildHistoricalEvidencePublication({
   bundle: safeHistoricalRecoveryAcceptanceBundle,
-  products: catalog.products,
+  products: releasedPublicProjection.products,
+  lifecycleMode: 'LEGACY_BASELINE',
 });
 const receiptBoundAcceptance = mergeReceiptBoundAcceptanceProjections(
   buildReceiptBoundAcceptanceProjection({
@@ -153,6 +171,41 @@ const displayReady = enrichApplianceDocument(filtered, {
   seriesDictionary,
   popularityResearch,
 });
-const projection = buildPublicProjection(registry, displayReady);
-await writeFile(resolveArchitectureV2Path(root, 'publicProjection'), `${JSON.stringify(projection)}\n`);
-console.log(JSON.stringify({ products: projection.products.length, quarantined: registry.quarantine.length }));
+const candidateProjection = buildPublicProjection(registry, displayReady);
+const candidateProjectionBytes = `${JSON.stringify(candidateProjection)}\n`;
+const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const safetyCandidateProjection = buildPublicProjection(registry, releasedPublicProjection);
+const safetyCandidateProjectionBytes = `${JSON.stringify(safetyCandidateProjection)}\n`;
+const safetyPublication = buildRetailLifecycleNeutralSafetyPublication({
+  baselinePublicProjection: releasedPublicProjection,
+  baselinePublicProjectionSha256: sha256(releasedPublicProjectionBytes),
+  candidatePublicProjection: safetyCandidateProjection,
+  candidatePublicProjectionSha256: sha256(safetyCandidateProjectionBytes),
+  releasePolicy: lifecycleReleasePolicy,
+  releasePolicySha256: sha256(lifecycleReleasePolicyBytes),
+  shadow: lifecycleShadow,
+});
+let lifecyclePublication = safetyPublication;
+if (safetyPublication.decision.status === 'SAFETY_FIELDS_REMOVED') {
+  const safetyAudit = auditPublicFitProjection(safetyPublication.publicProjection);
+  if (safetyAudit.summary.violations !== 0) {
+    throw new Error('lifecycle-neutral safety projection still contains unsafe Fit classifications');
+  }
+  await writeFile(publicProjectionPath, safetyCandidateProjectionBytes);
+} else {
+  lifecyclePublication = preserveRetailLifecycleShadowOnlyPublication({
+    baselinePublicProjection: releasedPublicProjection,
+    baselinePublicProjectionSha256: sha256(releasedPublicProjectionBytes),
+    candidatePublicProjection: candidateProjection,
+    candidatePublicProjectionSha256: sha256(candidateProjectionBytes),
+    releasePolicy: lifecycleReleasePolicy,
+    releasePolicySha256: sha256(lifecycleReleasePolicyBytes),
+    shadow: lifecycleShadow,
+  });
+}
+console.log(JSON.stringify({
+  products: lifecyclePublication.publicProjection.products.length,
+  quarantined: registry.quarantine.length,
+  lifecyclePublication: lifecyclePublication.decision.status,
+  changedProducts: lifecyclePublication.decision.changedProductIds.length,
+}));

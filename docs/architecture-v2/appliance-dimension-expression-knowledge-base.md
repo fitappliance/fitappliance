@@ -20,7 +20,7 @@ Generated: 2026-07-12T12:40:00.000Z
 | Documents without recognised expressions | 430 |
 | Mapped MinerU documents | 893 |
 | Unmapped MinerU documents | 33 |
-| Dimension-expression observations | 1166 |
+| Dimension-expression observations | 1168 |
 | Reusable PDF grammar profiles | 217 |
 | Research gaps | 1037 |
 
@@ -54,39 +54,6 @@ The standalone command remains available for explicit research snapshots.
 `build:dimension-expression-knowledge` step after rebuilding the historical
 reference and before classification. The normal `build:architecture-v2` command
 still does not create or advance a historical-recovery epoch.
-
-## Source Discovery Before PDF Grammar
-
-Document discovery and PDF interpretation are separate contracts. A source
-resolver must first record the official surfaces it actually checked; only a
-fetched, hash-bound document may proceed to document-family and dimension-
-expression analysis.
-
-Schema-v2 resolvers use five standard lanes: current product catalogue,
-discontinued/archive catalogue, support/search API, official document/CDN, and
-official HTML/JSON product detail. Every supported lane reports `complete` or
-`retryable` and binds its result to immutable raw content, the requested exact
-model, the Australian market, and an official brand host. An unsupported lane
-is explicit and cannot be required. Legacy aggregate resolver results may
-retain candidate observations, but cannot authorise terminal zero-source.
-
-The first versioned implementation is Esatto resolver v2. It checks the
-official sitemap and exact site search independently, follows exact-model
-current or discontinued product pages, and records product-page and document
-links as separate observations. A sibling URL suffix such as `EDW456S2` does
-not match `EDW456S`, and fetched page content must independently identify the
-requested model. The same PDF discovered through current and archive pages
-retains both page observations before artifact-level deduplication.
-
-These discovery states carry no product or Fit authority:
-
-- an archived official page is not evidence of current retail availability;
-- a product-page or PDF candidate is not an accepted field receipt;
-- a filename or URL model token is not exact-model field applicability;
-- parsed W/H/D is not installation clearance or `VERIFIED_FIT`.
-
-Only the downstream MinerU, exact-model scope, semantic claim, reconciliation,
-receipt, lifecycle, and publication gates can advance those states.
 
 ## Brand and PDF Family Index
 
@@ -480,7 +447,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | `GROUPED_AXIS_SEQUENCE` | 125 | Explicit axis order followed by one three-value sequence. |
 | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | 31 | Explicit three-axis sequence plus a qualified alternative depth. |
 | `HIERARCHICAL_DEPTH_VARIANTS` | 1 | A Depth parent row followed by explicitly qualified product-depth variants. |
-| `INDIVIDUAL_LABELLED_AXIS` | 231 | One named axis/value pair; combine only through independently proven model scope. |
+| `INDIVIDUAL_LABELLED_AXIS` | 233 | One named axis/value pair; combine only through independently proven model scope. |
 | `INDIVIDUALLY_LABELLED_AXES` | 323 | Two or more dimensions expressed as separate named axis/value pairs. |
 | `INLINE_LABELLED_AXES` | 155 | Observed parser research pattern. |
 | `INLINE_VALUE_LABELLED_AXIS_SEQUENCE` | 7 | Each value carries its own explicit W, H, or D label and unit. |
@@ -493,7 +460,7 @@ and every extracted value still requires exact-model identity and receipt checks
 
 | Parser decision | Unique observations |
 | --- | ---: |
-| `REJECTED_NON_PRODUCT_SCOPE` | 144 |
+| `REJECTED_NON_PRODUCT_SCOPE` | 146 |
 | `RESEARCH_DOCUMENT_UNIQUE_SCOPE_REQUIRED` | 1 |
 | `RESEARCH_MODEL_ROW_BINDING_REQUIRED` | 163 |
 | `RESEARCH_MODEL_SCOPE_REQUIRED` | 41 |
@@ -4857,19 +4824,20 @@ Inventory: 1419 models across 91 category-brand groups.
 Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 2
 
-#### PDF grammar pdf_grammar_86d30e2b33f39e6d
+#### PDF grammar pdf_grammar_7b584de27a2887f1
 
 - Group type: `parser_family`
 - Expression coverage: `OBSERVED_WITH_RESEARCH_GAPS`
 - Models observed: `ADW5009X`
 - PDF SHA-256: `8f9dcb39e08164a629d4a0736ea14e4addd8cf5da1ee5320d4e8250d6b9e2eef`
-- PDF grammar profiles: `pdf_grammar_86d30e2b33f39e6d`
+- PDF grammar profiles: `pdf_grammar_7b584de27a2887f1`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
 - Official/source URLs: <https://artusi.com.au/wp-content/uploads/2025/11/16076000B36026-General-combined-User-Manual-ADW5009XBWMBWQP12-U7609W-AUArtusi.pdf>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width | height, width | `product_closed_candidate` | Height (H) 845mm \| Width (W) 598mm | p.45, `730c2fc8a143` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Depth (D2) with the door opened 90° 1175mm | p.45, `730c2fc8a143` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height (H) 845mm \| Width (W) 598mm \| Depth (D1) with the door closed 600mm | p.45, `730c2fc8a143` |
 
 Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 19
@@ -9332,47 +9300,29 @@ Research gaps:
 Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 38
 
-#### PDF grammar pdf_grammar_148e22e14343e1a5
+#### PDF grammar pdf_grammar_4147c0ab8430a222
 
 - Group type: `parser_family`
 - Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
-- Models observed: `WGG2441RAU`
-- PDF SHA-256: `b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920`
-- PDF grammar profiles: `pdf_grammar_148e22e14343e1a5`
+- Models observed: `WGG24409AU`
+- PDF SHA-256: `441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e`
+- PDF grammar profiles: `pdf_grammar_4147c0ab8430a222`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bsh-group.com/Documents/9002009864_A.pdf>
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001733765_C.pdf>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> depth | height, width | `product_closed_candidate` | Appliance height 84.5 cm \| Appliance width 59.8 cm \| Appliance depth 59.0 cm \| Appliance depthwith door closed 63.6 cm | p.44, `8301f70e53c3` |
-| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depthwith door open 107.3 cm | p.44, `8301f70e53c3` |
-
-#### PDF grammar pdf_grammar_20109d03a601ccc4
-
-- Group type: `parser_family`
-- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
-- Models observed: `WGG24401AU`, `WGG244A0AU`
-- PDF SHA-256: `11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07`, `7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b`
-- PDF grammar profiles: `pdf_grammar_20109d03a601ccc4`
-- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bsh-group.com/Documents/9001910032_C.pdf>, <https://media3.bsh-group.com/Documents/9001910058_C.pdf>
-
-| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depthwith door open 107.3 cm | p.42, `d2e8f4a52c11` |
-| `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> depth | height, width | `product_closed_candidate` | Appliance height 84.8 cm \| Appliance width 59.8 cm \| Appliance depth 59.0 cm \| Appliance depthwith door closed 63.6 cm | p.42, `d2e8f4a52c11` |
-| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depthwith door open 107.3 cm | p.44, `8b88d6ee423c` |
+| `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> depth | height, width | `product_closed_candidate` | Appliance height 84.8 \| Appliance width 59.8 \| Appliance depth 59.0 cm \| Appliance depthwith door closed 63.6 cm | p.43, `f4a731194667` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depthwith door open 107.3 cm | p.43, `f4a731194667` |
 | `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 60 cm | p.11, `8c826ccef5cf` |
-| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 60 cm | p.11, `8c826ccef5cf` |
-| `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> depth | height, width | `product_closed_candidate` | Appliance height 84.8 cm \| Appliance width 59.8 cm \| Appliance depth 59.0 cm \| Appliance depthwith door closed 63.6 cm | p.44, `8b88d6ee423c` |
 
-#### PDF grammar pdf_grammar_2902ae0cb7b98342
+#### PDF grammar pdf_grammar_443eed39cc449a65
 
 - Group type: `parser_family`
 - Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
 - Models observed: `WGG244A1AU`
 - PDF SHA-256: `a71745dd0cdd0212a394a592e624f03a0aa6dbfd24c3619297c22de17455d6ef`
-- PDF grammar profiles: `pdf_grammar_2902ae0cb7b98342`
+- PDF grammar profiles: `pdf_grammar_443eed39cc449a65`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
 - Official/source URLs: <https://media3.bsh-group.com/Documents/9002022827_A.pdf>
 
@@ -9446,21 +9396,39 @@ Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 4: measurements in mm
 
-#### PDF grammar pdf_grammar_4ec51444c2032a05
+#### PDF grammar pdf_grammar_4f970ddd833228a7
 
 - Group type: `parser_family`
 - Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
-- Models observed: `WAN24121AU`
-- PDF SHA-256: `e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945`
-- PDF grammar profiles: `pdf_grammar_4ec51444c2032a05`
+- Models observed: `WGG24401AU`, `WGG244A0AU`
+- PDF SHA-256: `11f93eb5e77b7c86a0d72beac4981d7e79552613b39a4fba18b4ba7e5aacbf07`, `7dc49fc4779b1bf1bacb19f1cb268602ed86b7f69257684aec536790903d466b`
+- PDF grammar profiles: `pdf_grammar_4f970ddd833228a7`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bsh-group.com/Documents/9001812118_A.pdf>
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001910032_C.pdf>, <https://media3.bsh-group.com/Documents/9001910058_C.pdf>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 60 cm | p.13, `40335110f9dd` |
-| `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> depth | height, width | `product_closed_candidate` | Appliance height 84.8 cm \| Appliance width 59.8 cm \| Appliance depth 55.0 cm \| Appliance depth with door closed 60.0 cm | p.50, `08bbcc0a0ca3` |
-| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depth with door open 101.7 cm | p.50, `08bbcc0a0ca3` |
+| `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> depth | height, width | `product_closed_candidate` | Appliance height 84.8 cm \| Appliance width 59.8 cm \| Appliance depth 59.0 cm \| Appliance depthwith door closed 63.6 cm | p.44, `8b88d6ee423c` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depthwith door open 107.3 cm | p.42, `d2e8f4a52c11` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depthwith door open 107.3 cm | p.44, `8b88d6ee423c` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 60 cm | p.11, `8c826ccef5cf` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 60 cm | p.11, `8c826ccef5cf` |
+| `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> depth | height, width | `product_closed_candidate` | Appliance height 84.8 cm \| Appliance width 59.8 cm \| Appliance depth 59.0 cm \| Appliance depthwith door closed 63.6 cm | p.42, `d2e8f4a52c11` |
+
+#### PDF grammar pdf_grammar_78fc024328aea0cc
+
+- Group type: `parser_family`
+- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Models observed: `WGG2441RAU`
+- PDF SHA-256: `b4a8d2760ff0e68a4369c3b5a4a9e1d9f4a15e961d90afff4f2534d25399c920`
+- PDF grammar profiles: `pdf_grammar_78fc024328aea0cc`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9002009864_A.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> depth | height, width | `product_closed_candidate` | Appliance height 84.5 cm \| Appliance width 59.8 cm \| Appliance depth 59.0 cm \| Appliance depthwith door closed 63.6 cm | p.44, `8301f70e53c3` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depthwith door open 107.3 cm | p.44, `8301f70e53c3` |
 
 #### PDF grammar pdf_grammar_7f2ae0175285e037
 
@@ -9498,21 +9466,21 @@ Research gaps:
 | `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Appliance height 84.8 cm \| Appliance width 59.8 cm \| Appliance depth 59.0 cm | p.45, `bf59bc9a870a` |
 | `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 60 cm | p.11, `8c826ccef5cf` |
 
-#### PDF grammar pdf_grammar_875fba11738c76e3
+#### PDF grammar pdf_grammar_a24fd05d9e9fbd9d
 
 - Group type: `parser_family`
 - Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
-- Models observed: `WGG24409AU`
-- PDF SHA-256: `441c9229683968a475461d2c7dd8749e1997858a9993c00e8baf8cd632e1748e`
-- PDF grammar profiles: `pdf_grammar_875fba11738c76e3`
+- Models observed: `WAN24121AU`
+- PDF SHA-256: `e5023f11a88bec5484cc0d574b7599376c906efa87b43a575ec46c2c74123945`
+- PDF grammar profiles: `pdf_grammar_a24fd05d9e9fbd9d`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bsh-group.com/Documents/9001733765_C.pdf>
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001812118_A.pdf>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> depth | height, width | `product_closed_candidate` | Appliance height 84.8 \| Appliance width 59.8 \| Appliance depth 59.0 cm \| Appliance depthwith door closed 63.6 cm | p.43, `f4a731194667` |
-| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depthwith door open 107.3 cm | p.43, `f4a731194667` |
-| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 60 cm | p.11, `8c826ccef5cf` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width | width | `product_closed_candidate` | width 60 cm | p.13, `40335110f9dd` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depth with door open 101.7 cm | p.50, `08bbcc0a0ca3` |
+| `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth -> depth | height, width | `product_closed_candidate` | Appliance height 84.8 cm \| Appliance width 59.8 cm \| Appliance depth 55.0 cm \| Appliance depth with door closed 60.0 cm | p.50, `08bbcc0a0ca3` |
 
 #### PDF grammar pdf_grammar_f2f9631eeb5990cc
 
@@ -11722,6 +11690,25 @@ Research gaps:
 - `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: accessory and fasten it to the empty adapter (a). Check the dimensions. Do not plug the drain of the wash basin and check that the water can flow away quickl...
 
+#### PDF grammar pdf_grammar_5f8503873b3c54d7
+
+- Group type: `parser_family`
+- Expression coverage: `OBSERVED_WITH_RESEARCH_GAPS`
+- Models observed: `WTH83002AU`
+- PDF SHA-256: `b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca`
+- PDF grammar profiles: `pdf_grammar_5f8503873b3c54d7`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://media3.bsh-group.com/Documents/9001987868_C.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Appliance depthwith door closed 65.4 cm | p.35, `02c96610873d` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depthwith door open 109.6 cm | p.35, `02c96610873d` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Appliance height 84.2 \| Appliance width 59.8 cm \| Appliance depth 61.3 cm | p.35, `31fcbf73bed1` |
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 11: depth and width of this appliance must correspond with the dimensions of the washing machine.
+
 #### PDF grammar pdf_grammar_a0c86d20fd05bb23
 
 - Group type: `parser_family`
@@ -11737,13 +11724,13 @@ Research gaps:
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (HxWxD) 842x598x599 mm | p.1, `34aaa10543ce` |
 | `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (H x W x D) 84.2 cm x 59.8 cm x 59.9 cm | p.2, `cf21e8bd3c37` |
 
-#### PDF grammar pdf_grammar_c2fca9b7010b59f1
+#### PDF grammar pdf_grammar_a5c301dc9942849a
 
 - Group type: `parser_family`
 - Expression coverage: `OBSERVED_WITH_RESEARCH_GAPS`
 - Models observed: `WTW87564AU`
 - PDF SHA-256: `21ccd904d14a6b1bbcd8ea9e2b0be8b8fad8348b4395dd52bbb892b4de293571`
-- PDF grammar profiles: `pdf_grammar_c2fca9b7010b59f1`
+- PDF grammar profiles: `pdf_grammar_a5c301dc9942849a`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
 - Official/source URLs: <https://media3.bsh-group.com/Documents/9001791153_A.pdf>
 
@@ -11769,25 +11756,6 @@ Research gaps:
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `RESEARCH_MODEL_SCOPE_REQUIRED` | `GROUPED_AXIS_SEQUENCE` | `DOCUMENT_IDENTITY_ONLY` | depth -> width -> height | none | `product_closed_candidate` | Dimensions (DxWxH) 60 x 60 x 85 cm (adjustable height) | p.4, `61ea0a33a424` |
 | `RESEARCH_MODEL_SCOPE_REQUIRED` | `GROUPED_AXIS_SEQUENCE` | `DOCUMENT_IDENTITY_ONLY` | depth -> width -> height | none | `product_closed_candidate` | Dimensions (DxWxH) 60 x 60 x 85 cm (adjustable height) | p.1, `ea627da6b98b` |
-
-#### PDF grammar pdf_grammar_e7a7b9c24a423996
-
-- Group type: `parser_family`
-- Expression coverage: `OBSERVED_WITH_RESEARCH_GAPS`
-- Models observed: `WTH83002AU`
-- PDF SHA-256: `b95fe3f4b6dac84194fde2e2f15da3ddc33dd4a42384feab073748b78e5c68ca`
-- PDF grammar profiles: `pdf_grammar_e7a7b9c24a423996`
-- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bsh-group.com/Documents/9001987868_C.pdf>
-
-| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | depth | `product_closed_candidate` | Appliance depthwith door closed 65.4 cm | p.35, `02c96610873d` |
-| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_DOCUMENT_EXACT_MODEL` | depth | none | `operation_envelope` | Appliance depthwith door open 109.6 cm | p.35, `02c96610873d` |
-| `SUPPORTED_EXPLICIT_LABELS` | `INDIVIDUALLY_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Appliance height 84.2 \| Appliance width 59.8 cm \| Appliance depth 61.3 cm | p.35, `31fcbf73bed1` |
-
-Research gaps:
-- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 11: depth and width of this appliance must correspond with the dimensions of the washing machine.
 
 #### PDF grammar pdf_grammar_f3714471e6856327
 

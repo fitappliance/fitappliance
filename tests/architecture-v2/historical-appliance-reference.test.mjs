@@ -343,6 +343,29 @@ test('legacy availability, product URL, and active registry do not authorize cur
   assert.equal(result.records[0].retailLifecycle.authorizingObservation, null);
 });
 
+test('an explicit legacy-baseline rebuild reproduces the frozen release without minting an observation decision', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [observation({ brand: 'Electrolux', model: 'EQE6160BA' })],
+    catalogProducts: [receiptProduct()],
+    lifecycleMode: 'LEGACY_BASELINE',
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-12T12:40:00.000Z',
+  });
+
+  assert.equal(result.records[0].lifecycleState, 'CURRENT_RETAIL');
+  assert.equal(Object.hasOwn(result.records[0], 'retailLifecycle'), false);
+});
+
+test('historical reference rejects an unknown lifecycle build mode', () => {
+  assert.throws(() => buildHistoricalApplianceReference({
+    observations: [],
+    catalogProducts: [],
+    lifecycleMode: 'AUTO',
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-12T12:40:00.000Z',
+  }), /unsupported historical lifecycle mode/i);
+});
+
 test('exact recovery receipt outranks registry dimensions and retains model receipt provenance', () => {
   const result = buildHistoricalApplianceReference({
     observations: [observation({

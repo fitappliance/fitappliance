@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T19:26:14.787Z",
+  "generatedAt": "2026-07-19T19:32:08.439Z",
   "policyVersion": "historical-model-evidence-classification-v2",
-  "semanticClassificationSha256": "19dff0090fbf85eaadc9b729678fa9f51130b3eb41e71600e2cf744a3f05bd8a",
+  "semanticClassificationSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
   "summary": {
     "records": 8089,
     "uniqueReferenceIds": 8089,
@@ -1962,7 +1962,7 @@
       "model": "ADW5009X",
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_86d30e2b33f39e6d",
+      "groupName": "PDF grammar pdf_grammar_7b584de27a2887f1",
       "bestCorpusState": "CURRENT_MINERU",
       "sourceAuthority": "NONE",
       "identityScope": "AMBIGUOUS",
@@ -2064,13 +2064,14 @@
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_86d30e2b33f39e6d",
+          "groupName": "PDF grammar pdf_grammar_7b584de27a2887f1",
           "grammarProfileIds": [
-            "pdf_grammar_86d30e2b33f39e6d"
+            "pdf_grammar_7b584de27a2887f1"
           ]
         }
       ],
       "grammarProfileIds": [
+        "pdf_grammar_7b584de27a2887f1",
         "pdf_grammar_86d30e2b33f39e6d"
       ]
     },
@@ -21598,7 +21599,7 @@
       "model": "EDW456S",
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
+      "groupName": "Esatto Australia EDW dishwasher technical information",
       "bestCorpusState": "LEGACY_METADATA_ONLY",
       "sourceAuthority": "REFERENCE",
       "identityScope": "EXACT_MODEL",
@@ -21653,14 +21654,14 @@
       "groups": [
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
+          "groupName": "Esatto Australia EDW dishwasher technical information",
           "grammarProfileIds": [
-            "pdf_grammar_4f34b527b64d6ba6"
+            "esatto-au-dishwasher-technical-information-d1-d2-v1"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_4f34b527b64d6ba6"
+        "esatto-au-dishwasher-technical-information-d1-d2-v1"
       ]
     },
     {
@@ -65202,16 +65203,16 @@
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_e7a7b9c24a423996",
+          "groupName": "PDF grammar pdf_grammar_5f8503873b3c54d7",
           "grammarProfileIds": [
-            "pdf_grammar_e7a7b9c24a423996"
+            "pdf_grammar_5f8503873b3c54d7"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_2d2f6fda7f7538e6",
         "pdf_grammar_3bb3c56cf204e5c7",
-        "pdf_grammar_e7a7b9c24a423996",
+        "pdf_grammar_5f8503873b3c54d7",
         "pdf_grammar_f3714471e6856327"
       ]
     },
@@ -65402,15 +65403,15 @@
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_c2fca9b7010b59f1",
+          "groupName": "PDF grammar pdf_grammar_a5c301dc9942849a",
           "grammarProfileIds": [
-            "pdf_grammar_c2fca9b7010b59f1"
+            "pdf_grammar_a5c301dc9942849a"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_3bb3c56cf204e5c7",
-        "pdf_grammar_c2fca9b7010b59f1"
+        "pdf_grammar_a5c301dc9942849a"
       ]
     },
     {
@@ -253435,16 +253436,16 @@
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_4ec51444c2032a05",
+          "groupName": "PDF grammar pdf_grammar_a24fd05d9e9fbd9d",
           "grammarProfileIds": [
-            "pdf_grammar_4ec51444c2032a05"
+            "pdf_grammar_a24fd05d9e9fbd9d"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_4ec51444c2032a05",
         "pdf_grammar_7278fc1b8aebe013",
         "pdf_grammar_861c41113285bfa0",
+        "pdf_grammar_a24fd05d9e9fbd9d",
         "pdf_grammar_a97a7d1a7f1b7e1d"
       ]
     },
@@ -254555,15 +254556,15 @@
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_20109d03a601ccc4",
+          "groupName": "PDF grammar pdf_grammar_4f970ddd833228a7",
           "grammarProfileIds": [
-            "pdf_grammar_20109d03a601ccc4"
+            "pdf_grammar_4f970ddd833228a7"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_20109d03a601ccc4",
         "pdf_grammar_213ac6c7578293ed",
+        "pdf_grammar_4f970ddd833228a7",
         "pdf_grammar_7278fc1b8aebe013",
         "pdf_grammar_747b0cd17567cfe1",
         "pdf_grammar_a97a7d1a7f1b7e1d"
@@ -254855,15 +254856,15 @@
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_875fba11738c76e3",
+          "groupName": "PDF grammar pdf_grammar_4147c0ab8430a222",
           "grammarProfileIds": [
-            "pdf_grammar_875fba11738c76e3"
+            "pdf_grammar_4147c0ab8430a222"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_7278fc1b8aebe013",
-        "pdf_grammar_875fba11738c76e3"
+        "pdf_grammar_4147c0ab8430a222",
+        "pdf_grammar_7278fc1b8aebe013"
       ]
     },
     {
@@ -254957,15 +254958,15 @@
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_148e22e14343e1a5",
+          "groupName": "PDF grammar pdf_grammar_78fc024328aea0cc",
           "grammarProfileIds": [
-            "pdf_grammar_148e22e14343e1a5"
+            "pdf_grammar_78fc024328aea0cc"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_148e22e14343e1a5",
-        "pdf_grammar_7278fc1b8aebe013"
+        "pdf_grammar_7278fc1b8aebe013",
+        "pdf_grammar_78fc024328aea0cc"
       ]
     },
     {
@@ -255156,15 +255157,15 @@
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_20109d03a601ccc4",
+          "groupName": "PDF grammar pdf_grammar_4f970ddd833228a7",
           "grammarProfileIds": [
-            "pdf_grammar_20109d03a601ccc4"
+            "pdf_grammar_4f970ddd833228a7"
           ]
         }
       ],
       "grammarProfileIds": [
-        "pdf_grammar_20109d03a601ccc4",
         "pdf_grammar_213ac6c7578293ed",
+        "pdf_grammar_4f970ddd833228a7",
         "pdf_grammar_7278fc1b8aebe013",
         "pdf_grammar_747b0cd17567cfe1",
         "pdf_grammar_a97a7d1a7f1b7e1d"
@@ -255264,15 +255265,15 @@
         },
         {
           "groupType": "parser_family",
-          "groupName": "PDF grammar pdf_grammar_2902ae0cb7b98342",
+          "groupName": "PDF grammar pdf_grammar_443eed39cc449a65",
           "grammarProfileIds": [
-            "pdf_grammar_2902ae0cb7b98342"
+            "pdf_grammar_443eed39cc449a65"
           ]
         }
       ],
       "grammarProfileIds": [
         "pdf_grammar_213ac6c7578293ed",
-        "pdf_grammar_2902ae0cb7b98342",
+        "pdf_grammar_443eed39cc449a65",
         "pdf_grammar_7278fc1b8aebe013",
         "pdf_grammar_747b0cd17567cfe1",
         "pdf_grammar_a97a7d1a7f1b7e1d"

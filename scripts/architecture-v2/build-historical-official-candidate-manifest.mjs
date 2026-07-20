@@ -28,9 +28,19 @@ async function atomicJson(path, value) {
   await rename(temporary, path);
 }
 
-function latestGeneratedAt(values) {
-  const timestamps = values.map((value) => new Date(value?.generatedAt).valueOf()).filter(Number.isFinite);
-  if (!timestamps.length) throw new TypeError('candidate manifest input generatedAt required');
+export function deriveHistoricalOfficialCandidateManifestGeneratedAt({
+  acquisitionQueue,
+  priorManifest,
+} = {}) {
+  const values = [
+    acquisitionQueue?.generatedAt,
+    ...(priorManifest?.targets ?? []).map((target) => target.lastDiscoveryAt),
+    ...(priorManifest?.candidates ?? []).flatMap((candidate) => (
+      candidate.discoveries ?? []
+    ).map((discovery) => discovery.retrievedAt)),
+  ];
+  const timestamps = values.map((value) => new Date(value ?? '').valueOf()).filter(Number.isFinite);
+  if (!timestamps.length) throw new TypeError('candidate manifest input timestamp required');
   return new Date(Math.max(...timestamps)).toISOString();
 }
 
@@ -40,7 +50,10 @@ export async function runCli() {
   const acquisitionQueue = await readJson(acquisitionPath);
   const priorManifest = await readOptionalJson(output, null);
   const manifest = buildHistoricalOfficialCandidateManifest({
-    generatedAt: latestGeneratedAt([acquisitionQueue, priorManifest]),
+    generatedAt: deriveHistoricalOfficialCandidateManifestGeneratedAt({
+      acquisitionQueue,
+      priorManifest,
+    }),
     acquisitionQueue,
     priorManifest,
     discoveryRuns: [],

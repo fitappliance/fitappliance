@@ -8,7 +8,9 @@ const EXECUTION_STATES = new Set([
   'RUNNABLE_AUTHORIZED_SOURCE',
   'BOUNDED_CANARY_ONLY',
   'BLOCKED_BY_SOURCE_POLICY',
+  'RUNNABLE_POLICY_REVIEWED_SOURCE',
 ]);
+const RESOLUTION_EXECUTION_STATES = new Set(['REQUIRES_DISCOVERY_PIPELINE']);
 
 function required(value, label) {
   const result = String(value ?? '').trim();
@@ -20,6 +22,15 @@ function sha256(value, label) {
   const result = required(value, label).toLowerCase();
   if (!SHA256.test(result)) throw new TypeError(`${label} must be a SHA-256`);
   return result;
+}
+
+function retailerUrl(value) {
+  const url = new URL(required(value, 'retailer URL'));
+  if (url.protocol !== 'https:' || url.username || url.password) {
+    throw new TypeError('retailer URL must use trusted HTTPS');
+  }
+  url.hash = '';
+  return url.toString();
 }
 
 function canonical(value) {
@@ -54,9 +65,19 @@ function countBy(items, selector) {
 function executionDisposition(tasks) {
   const states = new Set(tasks.map((task) => task.executionState));
   if (states.has('RUNNABLE_AUTHORIZED_SOURCE')) return 'RUNNABLE_AUTHORIZED_SOURCE';
+  if (states.has('RUNNABLE_POLICY_REVIEWED_SOURCE')) return 'RUNNABLE_POLICY_REVIEWED_SOURCE';
   if (states.has('BOUNDED_CANARY_ONLY')) return 'BOUNDED_CANARY_ONLY';
   if (states.size === 1 && states.has('BLOCKED_BY_SOURCE_POLICY')) return 'BLOCKED_BY_SOURCE_POLICY';
   throw new Error('unresolved retailer source tasks have no safe execution disposition');
+}
+
+function itemExecutionDisposition(sourceTasks, resolutionTasks) {
+  if (sourceTasks.length > 0) return executionDisposition(sourceTasks);
+  if (resolutionTasks.length === 1
+    && resolutionTasks[0].executionState === 'REQUIRES_DISCOVERY_PIPELINE') {
+    return 'REQUIRES_EXACT_MODEL_REDISCOVERY';
+  }
+  throw new Error('unresolved product has no safe execution disposition');
 }
 
 function semanticPayload(document) {
@@ -65,10 +86,13 @@ function semanticPayload(document) {
 }
 
 export function validateRetailLifecycleRefreshInventory(document) {
-  if (!document || document.schemaVersion !== 1 || !Array.isArray(document.items)) {
-    throw new TypeError('retail lifecycle refresh inventory schema v1 required');
+  if (!document || ![1, 2].includes(document.schemaVersion) || !Array.isArray(document.items)) {
+    throw new TypeError('retail lifecycle refresh inventory schema v1 or v2 required');
   }
-  if (document.policyVersion !== 'retail-lifecycle-refresh-inventory-v1') {
+  const expectedPolicyVersion = document.schemaVersion === 1
+    ? 'retail-lifecycle-refresh-inventory-v1'
+    : 'retail-lifecycle-refresh-inventory-v2';
+  if (document.policyVersion !== expectedPolicyVersion) {
     throw new TypeError('retail lifecycle refresh inventory policy unsupported');
   }
   for (const [key, value] of Object.entries(document.sourceBindings ?? {})) {
@@ -83,8 +107,21 @@ export function validateRetailLifecycleRefreshInventory(document) {
     if (item.lifecycleState !== 'UNKNOWN_RETAIL') {
       throw new TypeError(`refresh item is not unresolved: ${item.canonicalProductId}`);
     }
-    if (!Array.isArray(item.sourceTasks) || item.sourceTasks.length === 0) {
-      throw new TypeError(`refresh item missing source task: ${item.canonicalProductId}`);
+    if (!Array.isArray(item.sourceTasks)) {
+      throw new TypeError(`refresh item source tasks required: ${item.canonicalProductId}`);
+    }
+    const resolutionTasks = item.resolutionTasks ?? [];
+    if (!Array.isArray(resolutionTasks)) {
+      throw new TypeError(`refresh item resolution tasks required: ${item.canonicalProductId}`);
+    }
+    if (document.schemaVersion === 1 && resolutionTasks.length > 0) {
+      throw new TypeError(`schema v1 refresh item cannot carry resolution tasks: ${item.canonicalProductId}`);
+    }
+    if (item.sourceTasks.length + resolutionTasks.length === 0) {
+      throw new TypeError(`refresh item missing executable or resolution task: ${item.canonicalProductId}`);
+    }
+    if (item.sourceTasks.length > 0 && resolutionTasks.length > 0) {
+      throw new TypeError(`refresh item cannot mix source and resolution tasks: ${item.canonicalProductId}`);
     }
     const taskIds = item.sourceTasks.map((task) => required(task.baselineLinkId, 'refresh baseline link ID'));
     if (new Set(taskIds).size !== taskIds.length
@@ -101,7 +138,56 @@ export function validateRetailLifecycleRefreshInventory(document) {
         throw new TypeError(`resolved retailer task cannot enter refresh inventory: ${task.baselineLinkId}`);
       }
     }
-    if (item.executionDisposition !== executionDisposition(item.sourceTasks)) {
+    const resolutionTaskIds = resolutionTasks.map((task) => required(
+      task.resolutionTaskId,
+      'refresh resolution task ID',
+    ));
+    if (new Set(resolutionTaskIds).size !== resolutionTaskIds.length
+      || resolutionTaskIds.some((id, index) => index > 0
+        && resolutionTaskIds[index - 1].localeCompare(id) > 0)) {
+      throw new TypeError(`refresh resolution tasks must be sorted and unique: ${item.canonicalProductId}`);
+    }
+    for (const task of resolutionTasks) {
+      if (task.kind !== 'EXACT_MODEL_RETAIL_REDISCOVERY'
+        || task.action !== 'DISCOVER_EXACT_MODEL_RETAIL_SOURCE'
+        || !RESOLUTION_EXECUTION_STATES.has(task.executionState)) {
+        throw new TypeError(`unsupported refresh resolution task: ${task.resolutionTaskId}`);
+      }
+      if (!Array.isArray(task.quarantinedSources) || task.quarantinedSources.length === 0) {
+        throw new TypeError(`refresh resolution task missing quarantined sources: ${task.resolutionTaskId}`);
+      }
+      const quarantinedIds = task.quarantinedSources.map((source) => required(
+        source.baselineLinkId,
+        'quarantined baseline link ID',
+      ));
+      if (new Set(quarantinedIds).size !== quarantinedIds.length
+        || quarantinedIds.some((id, index) => index > 0
+          && quarantinedIds[index - 1].localeCompare(id) > 0)) {
+        throw new TypeError(`quarantined sources must be sorted and unique: ${task.resolutionTaskId}`);
+      }
+      if (JSON.stringify(task.quarantinedBaselineLinkIds) !== JSON.stringify(quarantinedIds)) {
+        throw new TypeError(`quarantined source ID projection mismatch: ${task.resolutionTaskId}`);
+      }
+      for (const source of task.quarantinedSources) {
+        retailerUrl(source.url);
+        required(source.reasonCode, 'identity mismatch reason code');
+        required(source.receivedModel, 'identity mismatch received model');
+      }
+      const expectedIdentity = task.expectedIdentity ?? {};
+      for (const key of ['category', 'brand', 'model']) {
+        if (required(expectedIdentity[key], `resolution expected ${key}`) !== required(item[key], `refresh ${key}`)) {
+          throw new TypeError(`resolution expected identity mismatch: ${task.resolutionTaskId}`);
+        }
+      }
+      const expectedTaskId = `retail_resolution_${canonicalSha256({
+        canonicalProductId: item.canonicalProductId,
+        quarantinedBaselineLinkIds: quarantinedIds,
+      }).slice(0, 24)}`;
+      if (task.resolutionTaskId !== expectedTaskId) {
+        throw new TypeError(`refresh resolution task ID mismatch: ${task.resolutionTaskId}`);
+      }
+    }
+    if (item.executionDisposition !== itemExecutionDisposition(item.sourceTasks, resolutionTasks)) {
       throw new TypeError(`refresh execution disposition mismatch: ${item.canonicalProductId}`);
     }
   }
@@ -114,6 +200,16 @@ export function validateRetailLifecycleRefreshInventory(document) {
       (task) => task.executionState,
     ),
   };
+  if (document.schemaVersion === 2) {
+    expectedSummary.resolutionTasks = document.items.reduce(
+      (sum, item) => sum + item.resolutionTasks.length,
+      0,
+    );
+    expectedSummary.byResolutionExecutionState = countBy(
+      document.items.flatMap((item) => item.resolutionTasks),
+      (task) => task.executionState,
+    );
+  }
   if (JSON.stringify(document.summary) !== JSON.stringify(expectedSummary)) {
     throw new TypeError('retail lifecycle refresh summary mismatch');
   }
@@ -136,8 +232,22 @@ export function buildRetailLifecycleRefreshInventory({
   const unresolved = new Set(shadow.cutover.unresolvedLegacyCurrentIds);
   const recordById = new Map(shadow.records.map((record) => [record.canonicalProductId, record]));
   const tasksByProduct = new Map();
+  const mismatchesByProduct = new Map();
   for (const item of coverage.items) {
     if (!unresolved.has(item.canonicalProductId)) continue;
+    if (item.terminalObservationState === 'QUARANTINED_IDENTITY_MISMATCH') {
+      if (!mismatchesByProduct.has(item.canonicalProductId)) {
+        mismatchesByProduct.set(item.canonicalProductId, []);
+      }
+      mismatchesByProduct.get(item.canonicalProductId).push({
+        baselineLinkId: item.baselineLinkId,
+        retailer: item.retailer,
+        url: item.url,
+        reasonCode: item.typedObservation.reasonCode,
+        receivedModel: item.typedObservation.receivedModel,
+        rawSourceSha256: item.typedObservation.rawSourceSha256,
+      });
+    }
     if (item.revalidation == null) continue;
     if (!tasksByProduct.has(item.canonicalProductId)) tasksByProduct.set(item.canonicalProductId, []);
     tasksByProduct.get(item.canonicalProductId).push({
@@ -157,7 +267,27 @@ export function buildRetailLifecycleRefreshInventory({
     if (!record) throw new Error(`refresh shadow record missing: ${canonicalProductId}`);
     const sourceTasks = (tasksByProduct.get(canonicalProductId) ?? [])
       .sort((left, right) => left.baselineLinkId.localeCompare(right.baselineLinkId));
-    if (sourceTasks.length === 0) throw new Error(`refresh item missing source task: ${canonicalProductId}`);
+    const quarantinedSources = (mismatchesByProduct.get(canonicalProductId) ?? [])
+      .sort((left, right) => left.baselineLinkId.localeCompare(right.baselineLinkId));
+    const resolutionTasks = sourceTasks.length > 0 ? [] : quarantinedSources.length > 0 ? [{
+      resolutionTaskId: `retail_resolution_${canonicalSha256({
+        canonicalProductId,
+        quarantinedBaselineLinkIds: quarantinedSources.map((source) => source.baselineLinkId),
+      }).slice(0, 24)}`,
+      kind: 'EXACT_MODEL_RETAIL_REDISCOVERY',
+      action: 'DISCOVER_EXACT_MODEL_RETAIL_SOURCE',
+      executionState: 'REQUIRES_DISCOVERY_PIPELINE',
+      expectedIdentity: {
+        category: record.category,
+        brand: record.brand,
+        model: record.model,
+      },
+      quarantinedBaselineLinkIds: quarantinedSources.map((source) => source.baselineLinkId),
+      quarantinedSources,
+    }] : [];
+    if (sourceTasks.length + resolutionTasks.length === 0) {
+      throw new Error(`refresh item missing executable or identity rediscovery task: ${canonicalProductId}`);
+    }
     return {
       canonicalProductId,
       legacyRuntimeId: record.legacyRuntimeId,
@@ -165,13 +295,14 @@ export function buildRetailLifecycleRefreshInventory({
       brand: record.brand,
       model: record.model,
       lifecycleState: record.lifecycleState,
-      executionDisposition: executionDisposition(sourceTasks),
+      executionDisposition: itemExecutionDisposition(sourceTasks, resolutionTasks),
       sourceTasks,
+      resolutionTasks,
     };
   });
   const document = {
-    schemaVersion: 1,
-    policyVersion: 'retail-lifecycle-refresh-inventory-v1',
+    schemaVersion: 2,
+    policyVersion: 'retail-lifecycle-refresh-inventory-v2',
     releaseEpoch: shadow.releaseEpoch,
     asOf: shadow.asOf,
     sourceBindings: {
@@ -186,6 +317,11 @@ export function buildRetailLifecycleRefreshInventory({
       listings: items.reduce((sum, item) => sum + item.sourceTasks.length, 0),
       byExecutionDisposition: countBy(items, (item) => item.executionDisposition),
       bySourceExecutionState: countBy(items.flatMap((item) => item.sourceTasks), (task) => task.executionState),
+      resolutionTasks: items.reduce((sum, item) => sum + item.resolutionTasks.length, 0),
+      byResolutionExecutionState: countBy(
+        items.flatMap((item) => item.resolutionTasks),
+        (task) => task.executionState,
+      ),
     },
   };
   const semantic = canonicalSha256(document);

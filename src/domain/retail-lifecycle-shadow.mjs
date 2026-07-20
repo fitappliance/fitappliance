@@ -262,7 +262,12 @@ export function validateRetailLifecycleShadow(document) {
     if (decision.latestObservations.some((observation) => (
       observation.canonicalProductId !== record.canonicalProductId
     )) || decision.collectionAttempts.some((attempt) => (
-      !attempt.canonicalProductIds.includes(record.canonicalProductId)
+      !String(attempt.id ?? '').trim()
+      || attempt.scope?.canonicalProductId !== record.canonicalProductId
+      || !Number.isInteger(attempt.scope?.canonicalProductCount)
+      || attempt.scope.canonicalProductCount < 1
+      || !/^[a-f0-9]{64}$/.test(String(attempt.scope?.canonicalProductIdsSha256 ?? ''))
+      || Object.hasOwn(attempt, 'canonicalProductIds')
     ))) {
       throw new TypeError(`shadow lifecycle scoped evidence mismatch for ${record.legacyRuntimeId}`);
     }
@@ -490,6 +495,172 @@ export function applyRetailLifecycleCutover({ publicProjection, publicProjection
       shadowId: shadow.shadowId,
       semanticSha256: shadow.semanticSha256,
       asOf: shadow.asOf,
+    },
+  });
+}
+
+export function preserveRetailLifecycleShadowOnlyPublication({
+  baselinePublicProjection,
+  baselinePublicProjectionSha256,
+  candidatePublicProjection,
+  candidatePublicProjectionSha256,
+  releasePolicy,
+  releasePolicySha256,
+  shadow,
+}) {
+  validateRetailLifecycleShadow(shadow);
+  if (releasePolicy?.mode !== 'SHADOW_ONLY') {
+    throw new Error('shadow-only publication requires SHADOW_ONLY release policy');
+  }
+  if (required(releasePolicy.releaseEpoch, 'shadow-only release epoch') !== shadow.releaseEpoch
+    || timestamp(releasePolicy.asOf, 'shadow-only release asOf') !== shadow.asOf
+    || sha256(releasePolicySha256, 'shadow-only release policy SHA-256')
+      !== shadow.sourceBindings.releasePolicySha256) {
+    throw new Error('shadow-only release policy drift');
+  }
+  const baselineSha256 = sha256(
+    baselinePublicProjectionSha256,
+    'shadow-only baseline public projection SHA-256',
+  );
+  if (baselineSha256 !== shadow.sourceBindings.publicProjectionSha256) {
+    throw new Error('shadow-only baseline public projection drift');
+  }
+  if (canonicalSha256(baselinePublicProjection)
+    !== shadow.sourceBindings.publicProjectionSemanticSha256) {
+    throw new Error('shadow-only baseline public projection semantic drift');
+  }
+  const candidateSha256 = sha256(
+    candidatePublicProjectionSha256,
+    'shadow-only candidate public projection SHA-256',
+  );
+  const baselineSemanticSha256 = canonicalSha256(baselinePublicProjection);
+  const candidateSemanticSha256 = canonicalSha256(candidatePublicProjection);
+  const baselineById = new Map((baselinePublicProjection?.products ?? [])
+    .map((product) => [String(product?.id ?? ''), product]));
+  const candidateById = new Map((candidatePublicProjection?.products ?? [])
+    .map((product) => [String(product?.id ?? ''), product]));
+  const changedProductIds = [...new Set([...baselineById.keys(), ...candidateById.keys()])]
+    .filter((id) => canonicalSha256(baselineById.get(id) ?? null)
+      !== canonicalSha256(candidateById.get(id) ?? null))
+    .sort();
+  const baselineMetadata = { ...baselinePublicProjection, products: undefined };
+  const candidateMetadata = { ...candidatePublicProjection, products: undefined };
+  const metadataChanged = canonicalSha256(baselineMetadata) !== canonicalSha256(candidateMetadata);
+  const candidateMatchesBaseline = candidateSha256 === baselineSha256
+    && candidateSemanticSha256 === baselineSemanticSha256;
+  return freezeDeep({
+    publicProjection: structuredClone(baselinePublicProjection),
+    decision: {
+      mode: 'SHADOW_ONLY',
+      status: candidateMatchesBaseline ? 'BASELINE_REPLAYED' : 'CANDIDATE_ISOLATED',
+      shadowId: shadow.shadowId,
+      baselineSha256,
+      baselineSemanticSha256,
+      candidateSha256,
+      candidateSemanticSha256,
+      metadataChanged,
+      changedProductIds,
+    },
+  });
+}
+
+export function buildRetailLifecycleNeutralSafetyPublication({
+  baselinePublicProjection,
+  baselinePublicProjectionSha256,
+  candidatePublicProjection,
+  candidatePublicProjectionSha256,
+  releasePolicy,
+  releasePolicySha256,
+  shadow,
+}) {
+  validateRetailLifecycleShadow(shadow);
+  if (releasePolicy?.mode !== 'SHADOW_ONLY') {
+    throw new Error('lifecycle-neutral safety publication requires SHADOW_ONLY release policy');
+  }
+  if (required(releasePolicy.releaseEpoch, 'lifecycle-neutral safety release epoch') !== shadow.releaseEpoch
+    || timestamp(releasePolicy.asOf, 'lifecycle-neutral safety release asOf') !== shadow.asOf
+    || sha256(releasePolicySha256, 'lifecycle-neutral safety release policy SHA-256')
+      !== shadow.sourceBindings.releasePolicySha256) {
+    throw new Error('lifecycle-neutral safety release policy drift');
+  }
+  const baselineSha256 = sha256(
+    baselinePublicProjectionSha256,
+    'lifecycle-neutral safety baseline SHA-256',
+  );
+  if (baselineSha256 !== shadow.sourceBindings.publicProjectionSha256
+    || canonicalSha256(baselinePublicProjection)
+      !== shadow.sourceBindings.publicProjectionSemanticSha256) {
+    throw new Error('lifecycle-neutral safety baseline drift');
+  }
+  const candidateSha256 = sha256(
+    candidatePublicProjectionSha256,
+    'lifecycle-neutral safety candidate SHA-256',
+  );
+  const baselineMetadata = { ...baselinePublicProjection, products: undefined };
+  const candidateMetadata = { ...candidatePublicProjection, products: undefined };
+  if (canonicalSha256(baselineMetadata) !== canonicalSha256(candidateMetadata)) {
+    throw new Error('lifecycle-neutral safety release contains non-whitelisted metadata changes');
+  }
+  const baselineProducts = baselinePublicProjection?.products;
+  const candidateProducts = candidatePublicProjection?.products;
+  if (!Array.isArray(baselineProducts) || !Array.isArray(candidateProducts)
+    || baselineProducts.length !== candidateProducts.length) {
+    throw new Error('lifecycle-neutral safety release contains non-whitelisted product membership changes');
+  }
+
+  const changedProductIds = [];
+  for (let index = 0; index < baselineProducts.length; index += 1) {
+    const baseline = baselineProducts[index];
+    const candidate = candidateProducts[index];
+    if (String(candidate?.id ?? '') !== String(baseline?.id ?? '')) {
+      throw new Error('lifecycle-neutral safety release contains non-whitelisted product order changes');
+    }
+    const expected = structuredClone(baseline);
+    if (canonicalSha256(baseline?.door_swing_mm ?? null)
+      !== canonicalSha256(candidate?.door_swing_mm ?? null)) {
+      if (candidate?.door_swing_mm !== null
+        || baseline?.door_swing_mm === null
+        || baseline?.door_swing_mm === undefined) {
+        throw new Error(`lifecycle-neutral safety release contains non-whitelisted door swing change for ${baseline.id}`);
+      }
+      expected.door_swing_mm = null;
+    }
+    const baselineHasInference = Object.hasOwn(baseline ?? {}, 'inferred_door_swing');
+    const candidateHasInference = Object.hasOwn(candidate ?? {}, 'inferred_door_swing');
+    if (baselineHasInference !== candidateHasInference
+      || (baselineHasInference
+        && canonicalSha256(baseline.inferred_door_swing)
+          !== canonicalSha256(candidate.inferred_door_swing))) {
+      if (!baselineHasInference || candidateHasInference) {
+        throw new Error(`lifecycle-neutral safety release contains non-whitelisted inferred door change for ${baseline.id}`);
+      }
+      delete expected.inferred_door_swing;
+    }
+    if (canonicalSha256(baseline?.flags ?? null) !== canonicalSha256(candidate?.flags ?? null)) {
+      if (!baseline?.flags || typeof baseline.flags !== 'object' || Array.isArray(baseline.flags)
+        || !candidate?.flags || typeof candidate.flags !== 'object' || Array.isArray(candidate.flags)
+        || candidate.flags.reversible_door !== null) {
+        throw new Error(`lifecycle-neutral safety release contains non-whitelisted flags change for ${baseline.id}`);
+      }
+      expected.flags = { ...baseline.flags, reversible_door: null };
+    }
+    if (canonicalSha256(expected) !== canonicalSha256(candidate)) {
+      throw new Error(`lifecycle-neutral safety release contains non-whitelisted product changes for ${baseline.id}`);
+    }
+    if (canonicalSha256(baseline) !== canonicalSha256(candidate)) {
+      changedProductIds.push(String(baseline.id));
+    }
+  }
+
+  return freezeDeep({
+    publicProjection: structuredClone(candidatePublicProjection),
+    decision: {
+      mode: 'SHADOW_ONLY_SAFETY_RELEASE',
+      status: changedProductIds.length > 0 ? 'SAFETY_FIELDS_REMOVED' : 'NO_SAFETY_CHANGE',
+      shadowId: shadow.shadowId,
+      baselineSha256,
+      candidateSha256,
+      changedProductIds,
     },
   });
 }

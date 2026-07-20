@@ -13,7 +13,7 @@ Generated: 2026-07-19T19:32:08.439Z
 | Models without document links | Historical Model Reference | 6321 | 8089 | 78.14% |
 | Models with current valid receipts | Historical Model Reference | 401 | 8089 | 4.96% |
 | Models queued for acquisition | Historical Model Reference | 7688 | 8089 | 95.04% |
-| Executable model targets | Historical Model Reference | 4990 | 7688 | 64.91% |
+| Executable model targets | Historical Model Reference | 4994 | 7688 | 64.96% |
 | Models in cumulative recovery acceptance | Historical Model Reference | 382 | 8089 | 4.72% |
 | Historical models eligible for replacement auto-fill | Historical Model Reference | 321 | 8089 | 3.97% |
 
@@ -21,10 +21,10 @@ Generated: 2026-07-19T19:32:08.439Z
 
 | Metric | Grain | Count | Denominator | Rate |
 | --- | --- | ---: | ---: | ---: |
-| Models with scheduled evidence work | Historical Model Reference | 4990 | 8089 | 61.69% |
+| Models with scheduled evidence work | Historical Model Reference | 4994 | 8089 | 61.74% |
 | Blocked models with scheduled evidence work | Historical Model Reference | 6 | 8089 | 0.07% |
 | Completed model targets | Historical Model Reference | 401 | 8089 | 4.96% |
-| Blocked model targets | Historical Model Reference | 2704 | 8089 | 33.43% |
+| Blocked model targets | Historical Model Reference | 2700 | 8089 | 33.38% |
 
 ## Document and parser funnel
 
@@ -37,7 +37,7 @@ Generated: 2026-07-19T19:32:08.439Z
 | Document-model edges with exact or internal model-list proof | Document Model Edge | 548 | 3761 | 14.57% |
 | Valid MinerU knowledge documents | Mineru Knowledge Document | 926 | 941 | 98.41% |
 | MinerU knowledge documents with recognized expressions | Mineru Knowledge Document | 496 | 926 | 53.56% |
-| Complete parser replays | Parser Replay | 441 | 1052 | 41.92% |
+| Complete parser replays | Parser Replay | 442 | 1052 | 42.02% |
 
 ## Accepted source lanes
 

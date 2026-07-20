@@ -10,6 +10,7 @@ import {
   buildHistoricalDimensionsScaleControl,
   canonicalHistoricalDimensionsScaleCounters,
   HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY,
+  recordHistoricalDimensionsScaleRebaseline,
 } from '../../src/domain/historical-dimensions-scale-control.mjs';
 import {
   HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS,
@@ -33,16 +34,29 @@ function option(args, name) {
 }
 
 function parseArgs(args) {
-  const supported = new Set(['--output', '--ledger', '--generated-at', '--initialize-ledger']);
+  const supported = new Set([
+    '--output', '--ledger', '--generated-at', '--initialize-ledger',
+    '--record-rebaseline', '--rebaseline-at',
+  ]);
   let initializeLedger = false;
+  let recordRebaseline = false;
   for (let index = 0; index < args.length; index += 1) {
     const flag = args[index].split('=', 1)[0];
     if (!supported.has(flag)) throw new TypeError(`unknown argument: ${args[index]}`);
     if (flag === '--initialize-ledger') initializeLedger = true;
+    else if (flag === '--record-rebaseline') recordRebaseline = true;
     else if (!args[index].includes('=')) index += 1;
   }
+  if (initializeLedger && recordRebaseline) {
+    throw new TypeError('--initialize-ledger and --record-rebaseline are mutually exclusive');
+  }
+  const rebaselineAt = option(args, '--rebaseline-at');
+  if (recordRebaseline && !rebaselineAt) throw new TypeError('--rebaseline-at is required');
+  if (!recordRebaseline && rebaselineAt) throw new TypeError('--rebaseline-at requires --record-rebaseline');
   return {
     initializeLedger,
+    recordRebaseline,
+    rebaselineAt,
     output: resolve(option(args, '--output')
       ?? resolveArchitectureV2Path(root, 'historicalDimensionsScaleControl')),
     ledger: resolve(option(args, '--ledger')
@@ -105,6 +119,30 @@ export async function runCli(args = process.argv.slice(2)) {
     await atomicJson(options.ledger, ledger);
   } else {
     ledger = JSON.parse(await readFile(options.ledger, 'utf8'));
+  }
+  if (options.recordRebaseline) {
+    const priorControl = JSON.parse(await readFile(options.output, 'utf8'));
+    const advanced = recordHistoricalDimensionsScaleRebaseline({
+      priorControl,
+      ledger,
+      currentInput: {
+        ...shared,
+        generatedAt: options.generatedAt ?? programStatus.generatedAt ?? nextBatches.generatedAt,
+      },
+      activatedAt: options.rebaselineAt,
+      reason: 'RELEASE_DAG_RECONCILIATION',
+    });
+    await atomicJson(options.ledger, advanced.ledger);
+    await atomicJson(options.output, advanced.control);
+    process.stdout.write(`${JSON.stringify({
+      output: options.output,
+      ledger: options.ledger,
+      rebaselineId: advanced.rebaseline.rebaselineId,
+      queueCounterDeltas: advanced.rebaseline.queueCounterDeltas,
+      changedArtifactBindings: advanced.rebaseline.changedArtifactBindings,
+      decision: advanced.control.decision,
+    }, null, 2)}\n`);
+    return advanced.control;
   }
   const control = buildHistoricalDimensionsScaleControl({
     ...shared,

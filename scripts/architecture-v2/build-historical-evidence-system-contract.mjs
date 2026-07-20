@@ -558,6 +558,8 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
         artifacts.retailLifecycleRefreshInventory.summary.byExecutionDisposition.RUNNABLE_AUTHORIZED_SOURCE ?? 0,
       lifecycleRefreshCanaryProducts:
         artifacts.retailLifecycleRefreshInventory.summary.byExecutionDisposition.BOUNDED_CANARY_ONLY ?? 0,
+      lifecycleRefreshPolicyReviewedProducts:
+        artifacts.retailLifecycleRefreshInventory.summary.byExecutionDisposition.RUNNABLE_POLICY_REVIEWED_SOURCE ?? 0,
       lifecycleRefreshPolicyBlockedProducts:
         artifacts.retailLifecycleRefreshInventory.summary.byExecutionDisposition.BLOCKED_BY_SOURCE_POLICY ?? 0,
       p0AssignedTargets: currentWorkstream.assignedTargets,
@@ -565,12 +567,12 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
       p1AssignedTargets: historicalWorkstream.assignedTargets,
       p1EligibleTargets: historicalWorkstream.eligibleTargets,
       knownContractGaps: [
-        {
+        ...(artifacts.retailLifecycleShadow.cutover.status === 'BLOCKED' ? [{
           id: 'LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER',
           severity: 'CRITICAL',
           repairTask: 9,
           detail: 'The complete retailer ledger drives a hash-bound lifecycle shadow and product-scoped refresh inventory, but production cutover remains blocked until every legacy-current product is either freshly available or explicitly unavailable/archived.',
-        },
+        }] : []),
         {
           id: 'TARGET_STATE_LEGACY_TIME_BINDINGS',
           severity: 'HIGH',

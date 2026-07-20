@@ -228,6 +228,14 @@ test('tracked system contract replays from repository sources without external s
   ));
   const first = await buildHistoricalEvidenceSystemContractFromRepository();
   const second = await buildHistoricalEvidenceSystemContractFromRepository();
+  const shadow = JSON.parse(await readFile(
+    'data/architecture-v2/reviews/automated/retail-lifecycle-shadow.json',
+    'utf8',
+  ));
+  const refresh = JSON.parse(await readFile(
+    'data/architecture-v2/reviews/automated/retail-lifecycle-refresh-inventory.json',
+    'utf8',
+  ));
 
   assert.deepEqual(first, tracked);
   assert.deepEqual(second, first);
@@ -254,14 +262,31 @@ test('tracked system contract replays from repository sources without external s
     'retail-lifecycle-shadow',
     'retailer-observation-coverage',
   ]);
-  assert.equal(first.baseline.lifecycleShadowStatus, 'BLOCKED');
-  assert.equal(first.baseline.lifecycleShadowUnresolvedLegacyCurrentProducts, 1384);
-  assert.equal(first.baseline.lifecycleRefreshProducts, 1384);
-  assert.equal(first.baseline.lifecycleRefreshAuthorizedProducts, 172);
-  assert.equal(first.baseline.lifecycleRefreshCanaryProducts, 1172);
-  assert.equal(first.baseline.lifecycleRefreshPolicyBlockedProducts, 40);
-  assert.ok(first.baseline.knownContractGaps.some((gap) => (
-    gap.id === 'LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER'
-  )));
+  assert.equal(first.baseline.lifecycleShadowStatus, shadow.cutover.status);
+  assert.equal(
+    first.baseline.lifecycleShadowUnresolvedLegacyCurrentProducts,
+    shadow.cutover.unresolvedLegacyCurrentIds.length,
+  );
+  assert.equal(first.baseline.lifecycleRefreshProducts, refresh.summary.products);
+  assert.equal(
+    first.baseline.lifecycleRefreshAuthorizedProducts,
+    refresh.summary.byExecutionDisposition.RUNNABLE_AUTHORIZED_SOURCE ?? 0,
+  );
+  assert.equal(
+    first.baseline.lifecycleRefreshCanaryProducts,
+    refresh.summary.byExecutionDisposition.BOUNDED_CANARY_ONLY ?? 0,
+  );
+  assert.equal(
+    first.baseline.lifecycleRefreshPolicyReviewedProducts,
+    refresh.summary.byExecutionDisposition.RUNNABLE_POLICY_REVIEWED_SOURCE ?? 0,
+  );
+  assert.equal(
+    first.baseline.lifecycleRefreshPolicyBlockedProducts,
+    refresh.summary.byExecutionDisposition.BLOCKED_BY_SOURCE_POLICY ?? 0,
+  );
+  assert.equal(
+    first.baseline.knownContractGaps.some((gap) => gap.id === 'LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER'),
+    shadow.cutover.status === 'BLOCKED',
+  );
   assert.doesNotMatch(JSON.stringify(first), /\/Volumes\/|FITAPPLIANCE_STORAGE_ROOT/);
 });

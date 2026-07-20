@@ -81,14 +81,8 @@ test('committed publication integrates both receipt batches without false verifi
   };
 
   assert.equal(audit.summary.violations, 0);
-  assert.equal(strictCurrent.summary.violations, 35);
-  assert.deepEqual(
-    [...new Set(strictCurrent.violations.flatMap((row) => row.reasons))].sort(),
-    [
-      'legacy_door_capability_without_receipt_bound_evidence',
-      'legacy_door_swing_without_receipt_bound_evidence',
-    ],
-  );
+  assert.equal(strictCurrent.summary.violations, 0);
+  assert.deepEqual(strictCurrent.violations, []);
   assert.equal(strictShadow.summary.violations, 0);
   assert.deepEqual(replayedShadow, shadow);
   assert.equal(audit.summary.receiptBoundVerified, 0);

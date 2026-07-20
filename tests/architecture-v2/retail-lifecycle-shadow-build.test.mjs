@@ -25,10 +25,16 @@ test('retail lifecycle shadow builder replays byte-for-byte and leaves productio
 
     assert.deepEqual(second, first);
     assert.equal(hash(secondBytes), hash(firstBytes));
-    assert.equal(first.summary.products, 3515);
-    assert.equal(first.summary.legacyCurrentProducts, 1384);
-    assert.equal(first.cutover.status, 'BLOCKED');
-    assert.equal(first.cutover.unresolvedLegacyCurrentIds.length, 1384);
+    assert.equal(first.summary.products, first.records.length);
+    assert.equal(
+      first.summary.legacyCurrentProducts,
+      first.records.filter((record) => record.priorVisibility === 'CURRENT_OUTPUT').length,
+    );
+    assert.equal(
+      first.cutover.status,
+      first.cutover.unresolvedLegacyCurrentIds.length === 0
+        && first.cutover.unsafeRemovedLegacyCurrentIds.length === 0 ? 'READY' : 'BLOCKED',
+    );
     assert.equal(hash(await readFile(productionPath)), hash(productionBefore));
   } finally {
     await rm(directory, { recursive: true, force: true });

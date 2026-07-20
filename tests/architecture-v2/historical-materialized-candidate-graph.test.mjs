@@ -97,7 +97,7 @@ function manifestTarget(record, state, candidateEdges = [], overrides = {}) {
       resolverId: 'fixture-resolver', version: '1', scope: 'exact-model', required: true,
     }],
     resolverResults: [],
-    incompleteResolverIds: state === 'NO_CANDIDATE_COMPLETE' ? [] : ['fixture-resolver'],
+    incompleteResolverIds: state === 'DISCOVERY_RETRYABLE' ? ['fixture-resolver'] : [],
     lastDiscoveryRunId: null,
     lastDiscoveryAt: null,
     referenceHintSourceIds: [],
@@ -222,10 +222,9 @@ test('separates retryable discovery and gives every non-acquisition target a typ
   }));
 
   assert.equal(queue.targets.length, 0);
-  assert.deepEqual(queue.discoveryTargets.map((target) => target.referenceId), ['retry']);
+  assert.deepEqual(queue.discoveryTargets.map((target) => target.referenceId), ['retry', 'suppressed']);
   assert.equal(queue.summary.resolverOnlyTargets, 0);
   assert.deepEqual(queue.summary.excluded, {
-    ALL_CANDIDATES_SUPPRESSED: 1,
     NO_CANDIDATE_COMPLETE: 1,
     RESEARCH_REQUIRED: 1,
   });
@@ -293,5 +292,17 @@ test('candidate manifest bindings and candidate-ready edge invariants fail close
   assert.throws(
     () => buildHistoricalExecutableRecoveryQueue(buildInput([record], rankGap)),
     /edge rank invalid/i,
+  );
+
+  const terminalWithCandidate = candidateManifest(
+    [record], [validCandidate], [manifestTarget(record, 'NO_CANDIDATE_COMPLETE', [
+      edge(validCandidate.candidateId),
+    ], {
+      terminal: true, retryableDiscovery: false, incompleteResolverIds: [],
+    })],
+  );
+  assert.throws(
+    () => buildHistoricalExecutableRecoveryQueue(buildInput([record], terminalWithCandidate)),
+    /terminal.*candidate edge/i,
   );
 });

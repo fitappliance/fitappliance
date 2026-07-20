@@ -2105,3 +2105,129 @@ At the 2026-07-19 checkpoint the bundle has 21 receipts over two products,
 `IDENTITY_BLOCKED`, 99 family-aware batches and zero
 `FIT_EVIDENCE_COMPLETE`. These are separate grains and must not be combined
 into one coverage percentage.
+
+## 43. Retail lifecycle refresh, blocked cutover, and rollback
+
+Retail lifecycle collection is online and external-state-dependent. Normal
+builds only replay the committed ledger and must remain network- and
+external-drive-independent. The active policy permits the authorised The Good
+Guys Partnerize feed and bounded exact-product Appliances Online API. Bing Lee,
+Harvey Norman, and JB Hi-Fi collection remains blocked until an authorised feed
+or explicit automation approval is recorded in a new source-policy epoch.
+
+### Partnerize complete-feed run
+
+The feed file and its source acquisition record must be captured together.
+`--observed-at` is the time the source snapshot was actually retrieved, not the
+time the local file was parsed, copied, or applied. If source time cannot be
+independently established, stop: do not substitute the current clock. The
+collector does not store private feed URLs or credentials in Git.
+
+```bash
+export FITAPPLIANCE_STORAGE_ROOT=/Volumes/UGREEN-1TB/FitAppliance
+run_id="partnerize-tgg-YYYYMMDDTHHMMSSZ"
+captured_at="YYYY-MM-DDTHH:MM:SS.000Z"
+feed_file="/absolute/path/to/newly-captured-partnerize-feed.csv"
+
+node scripts/architecture-v2/run-retail-lifecycle-refresh.mjs \
+  --storage-root "$FITAPPLIANCE_STORAGE_ROOT" \
+  --run-id "$run_id" \
+  --feed "$feed_file" \
+  --observed-at "$captured_at"
+
+node scripts/architecture-v2/apply-retail-lifecycle-refresh.mjs \
+  --storage-root "$FITAPPLIANCE_STORAGE_ROOT" \
+  --run-id "$run_id"
+```
+
+A completed run may be replayed with the same run ID and timestamp. A second
+run with identical source bytes and a later timestamp is rejected because it
+would advance freshness without proving a new acquisition. A future HTTPS
+acquisition-receipt contract may permit content-equivalent snapshots only when
+it independently binds a new response time and source host.
+
+### Appliances Online bounded exact-product run
+
+Use the source-policy limits. Do not raise concurrency or bypass 403/429 and
+consecutive-failure stops. Every selected retailer link, not merely every
+canonical product, must receive one outcome.
+
+```bash
+export FITAPPLIANCE_STORAGE_ROOT=/Volumes/UGREEN-1TB/FitAppliance
+run_id="ao-scale-YYYYMMDDTHHMMSSZ-batch-N"
+captured_at="YYYY-MM-DDTHH:MM:SS.000Z"
+
+node scripts/architecture-v2/run-retail-lifecycle-refresh.mjs \
+  --storage-root "$FITAPPLIANCE_STORAGE_ROOT" \
+  --source-policy-id appliances-online-product-api-v1 \
+  --run-id "$run_id" \
+  --observed-at "$captured_at" \
+  --batch-index N \
+  --batch-size 100
+
+node scripts/architecture-v2/apply-retail-lifecycle-refresh.mjs \
+  --storage-root "$FITAPPLIANCE_STORAGE_ROOT" \
+  --run-id "$run_id"
+```
+
+HTTP success with invalid JSON or an invalid response contract retains the raw
+bytes as a failed, non-terminal attempt and publishes no availability. Exact
+model or canonical-URI mismatch retains the raw bytes, quarantines only that
+`baselineLinkId`, and does not transfer status from a sibling product. Resume
+uses the original run ID and frozen plan:
+
+```bash
+node scripts/architecture-v2/run-retail-lifecycle-refresh.mjs \
+  --storage-root "$FITAPPLIANCE_STORAGE_ROOT" \
+  --source-policy-id appliances-online-product-api-v1 \
+  --run-id "$run_id" \
+  --observed-at "$captured_at" \
+  --batch-index N \
+  --batch-size 100 \
+  --resume
+```
+
+### Rebuild and release gate
+
+After every applied run, finish all online replay that can update a tracked
+audit before rebuilding downstream control artifacts. Never run an online
+receipt audit in parallel with scale-control or system-contract generation: the
+contract must reject that mixed epoch. Then rebuild strictly in the canonical
+DAG order and inspect the refresh inventory before considering a release:
+
+```bash
+FITAPPLIANCE_STORAGE_ROOT=/Volumes/UGREEN-1TB/FitAppliance \
+  npm run audit:historical-evidence-recovery -- --full
+FITAPPLIANCE_STORAGE_ROOT=/Volumes/UGREEN-1TB/FitAppliance \
+  npm run audit:installation-evidence-receipts:online
+
+npm run build:retailer-observation-coverage
+npm run build:retail-lifecycle-shadow
+npm run build:retail-lifecycle-refresh-inventory
+env -u FITAPPLIANCE_STORAGE_ROOT npm run build:architecture-v2
+env -u FITAPPLIANCE_STORAGE_ROOT npm run build
+npm run build:historical-evidence-system-contract
+npm run audit:historical-replacement
+npm run audit:fit-publication
+node --test tests/architecture-v2/historical-evidence-system-contract.test.mjs
+```
+
+Repeat both offline build commands and compare the full tracked-file hash
+manifest. The second build must be byte-identical. Do not run another online
+audit after system-contract generation; if one is required, restart this
+sequence from the online replay step.
+
+The release gate is fail-closed. `retail-lifecycle-shadow.json` must report
+`cutover.status == "READY"`, an empty `unresolvedLegacyCurrentIds`, and an empty
+`unsafeRemovedLegacyCurrentIds`. At the 2026-07-20 checkpoint it is `BLOCKED`
+with 81 unresolved products and zero unsafe removals. Do not deploy the shadow
+lifecycle projection while that state remains.
+
+### Rollback unit
+
+Observation ledger, lifecycle/reference projection, public and historical
+projection, audits, queues, controller state, runtime data, and documentation
+form one release unit. Never revert only a generated file or an intermediate
+task commit. Before cutover, prove the full pre-cutover commit builds offline;
+after cutover, rollback by redeploying that complete commit. Never delete or
+rewrite content-addressed retailer, PDF, or MinerU objects during rollback.

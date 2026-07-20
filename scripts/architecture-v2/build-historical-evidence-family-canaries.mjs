@@ -65,6 +65,20 @@ function latestTimestamp(values) {
   return new Date(Math.max(...valid.map((value) => value.valueOf()))).toISOString();
 }
 
+export function deriveHistoricalEvidenceFamilyCanariesGeneratedAt({
+  documentGraph,
+  executableQueue,
+  attemptLedger,
+  previousCanaries,
+} = {}) {
+  return latestTimestamp([
+    documentGraph?.generatedAt,
+    executableQueue?.generatedAt,
+    attemptLedger?.generatedAt,
+    previousCanaries?.generatedAt,
+  ]);
+}
+
 async function atomicJson(path, value) {
   await mkdir(dirname(path), { recursive: true });
   const temporary = `${path}.${process.pid}.${Date.now()}.tmp`;
@@ -91,12 +105,13 @@ export async function runCli(args = process.argv.slice(2)) {
     readOptionalJson(output),
     claimParserFiles(),
   ]);
-  const generatedAt = option(args, '--generated-at') ?? latestTimestamp([
-    documentGraph.generatedAt,
-    executableQueue.generatedAt,
-    attemptLedger.generatedAt,
-    previousCanaries?.generatedAt,
-  ]);
+  const generatedAt = option(args, '--generated-at')
+    ?? deriveHistoricalEvidenceFamilyCanariesGeneratedAt({
+      documentGraph,
+      executableQueue,
+      attemptLedger,
+      previousCanaries,
+    });
   if (previousCanaries && ![1, HISTORICAL_EVIDENCE_FAMILY_CANARY_SCHEMA_VERSION]
     .includes(previousCanaries.schemaVersion)) {
     throw new TypeError(`unsupported prior family canary schema: ${previousCanaries.schemaVersion}`);

@@ -182,7 +182,9 @@ function validateCandidateManifest(candidateManifest, acquisitionQueue) {
       || target.executionReadiness !== record.executionReadiness) {
       throw new Error(`candidate manifest target identity drift: ${target.referenceId}`);
     }
-    if (!CANDIDATE_MANIFEST_STATES.has(target.state) || !Array.isArray(target.candidateEdges)) {
+    if (!CANDIDATE_MANIFEST_STATES.has(target.state) || !Array.isArray(target.candidateEdges)
+      || !Array.isArray(target.resolverContract) || !Array.isArray(target.resolverResults)
+      || !Array.isArray(target.incompleteResolverIds)) {
       throw new TypeError(`candidate manifest target state invalid: ${target.referenceId}`);
     }
     if (target.terminal !== (target.state === 'NO_CANDIDATE_COMPLETE')
@@ -192,8 +194,20 @@ function validateCandidateManifest(candidateManifest, acquisitionQueue) {
     if (target.state === 'CANDIDATES_READY' && target.candidateEdges.length === 0) {
       throw new Error(`candidate-ready target has no candidate edge: ${target.referenceId}`);
     }
-    if (target.state !== 'CANDIDATES_READY' && target.candidateEdges.length > 0) {
-      throw new Error(`non-ready target contains candidate edges: ${target.referenceId}`);
+    if (target.state === 'CANDIDATES_READY'
+      && (target.retryableDiscovery || target.incompleteResolverIds.length > 0)) {
+      throw new Error(`candidate-ready target has incomplete resolver state: ${target.referenceId}`);
+    }
+    if (target.state === 'DISCOVERY_RETRYABLE'
+      && (!target.retryableDiscovery || target.incompleteResolverIds.length === 0)) {
+      throw new Error(`retryable target has complete resolver state: ${target.referenceId}`);
+    }
+    if (target.state === 'NO_CANDIDATE_COMPLETE' && target.candidateEdges.length > 0) {
+      throw new Error(`terminal target contains candidate edge: ${target.referenceId}`);
+    }
+    if (target.state === 'NO_CANDIDATE_COMPLETE'
+      && (target.retryableDiscovery || target.incompleteResolverIds.length > 0)) {
+      throw new Error(`terminal target has incomplete resolver state: ${target.referenceId}`);
     }
     const seenCandidateIds = new Set();
     const seenRanks = new Set();
@@ -430,6 +444,7 @@ export function buildHistoricalExecutableRecoveryQueue({
         candidateManifestState: candidateTarget.state,
         candidateJobIds: [],
         primaryJobId: null,
+        observedCandidateIds: candidateTarget.candidateEdges.map((edge) => edge.candidateId),
         resolverContract: structuredClone(candidateTarget.resolverContract),
         incompleteResolverIds: [...candidateTarget.incompleteResolverIds],
       });
@@ -480,7 +495,8 @@ export function buildHistoricalExecutableRecoveryQueue({
     candidateEdges.sort((left, right) => left.sourceRank - right.sourceRank
       || left.candidateId.localeCompare(right.candidateId));
     if (candidateEdges.length === 0) {
-      if (candidateTarget.retryableDiscovery === true && priorResolverSuppressions.length === 0) {
+      if ((candidateTarget.retryableDiscovery === true || candidateTarget.state === 'CANDIDATES_READY')
+        && priorResolverSuppressions.length === 0) {
         discoveryTargets.push({
           ...baseTarget,
           executionLane: 'BOUNDED_DISCOVERY',
@@ -488,6 +504,7 @@ export function buildHistoricalExecutableRecoveryQueue({
           candidateManifestState: candidateTarget.state,
           candidateJobIds: [],
           primaryJobId: null,
+          observedCandidateIds: candidateTarget.candidateEdges.map((edge) => edge.candidateId),
           resolverContract: structuredClone(candidateTarget.resolverContract),
           incompleteResolverIds: [...candidateTarget.incompleteResolverIds],
         });
@@ -538,6 +555,7 @@ export function buildHistoricalExecutableRecoveryQueue({
     policy: {
       resolverOnlyTargetsAllowed: false,
       discoveryTargetsSeparatedFromAcquisition: true,
+      nonReadyCandidateObservationsExecutable: false,
       officialSourceRequiredForReceiptPromotion: true,
       registryOnlyHistoricalPublication: true,
     },
@@ -550,6 +568,10 @@ export function buildHistoricalExecutableRecoveryQueue({
       deferredTargets: deferredTargets.length,
       resolverOnlyTargets: 0,
       candidateEdges: materializedJobs.reduce((sum, job) => sum + job.targetIds.length, 0),
+      observedCandidateEdges: candidateManifest.summary.candidateEdges,
+      isolatedNonReadyCandidateEdges: candidateManifest.targets
+        .filter((target) => target.state !== 'CANDIDATES_READY')
+        .reduce((sum, target) => sum + target.candidateEdges.length, 0),
       uniqueReferences: new Set(workTargets.map((target) => target.referenceId)).size,
       suppressedPriorTerminalEdges,
       suppressedPriorAcceptedSourceEdges,

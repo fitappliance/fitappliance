@@ -51,11 +51,34 @@ Architecture V2 is complete only when:
 | 0 | Domain contracts and read-only shadow audit | Complete |
 | 1 | Verified dimension overlay and quarantine reduction | Guardrails complete; 9 pending |
 | 2 | Canonical identity mapping | Shadow registry complete |
-| 3 | Retailer observation ledger and current-sale reconciliation | Legacy migration complete; collection adapters pending |
+| 3 | Retailer observation ledger and current-sale reconciliation | Typed adapters and replay complete; cutover blocked by 81 unresolved prior-current products |
 | 4 | Source-document registry and PDF evidence state machine | State machine and quarantine baseline complete |
 | 5 | Category geometry and clearance migration | Contracts complete; evidence migration pending |
-| 6 | FitDecision parity and production cutover | Width parity complete; cutover authorised and deployment pending |
-| 7 | Runtime modularization and legacy deletion | Canonical views wired; deletion waits for rollback window |
+| 6 | FitDecision parity and production cutover | Safety audit passes with zero violations; lifecycle cutover not authorised |
+| 7 | Runtime modularization and legacy deletion | Canonical views wired; deletion prohibited while Task 9 is blocked |
+
+### Current system-first release gate
+
+Tasks 0-8 of the active system-first control plan are complete. Task 9 has
+passed the available-source runs, full evidence replay, offline builds,
+deterministic rebuild, safety projection, and rollback-baseline checks, but its
+lifecycle prerequisite is still `BLOCKED`. The 3,515-product shadow resolves
+345 current and 3,089 archived products while preserving 81 as unknown. No
+production cutover, deployment, or legacy deletion is authorised.
+
+The unresolved set has independent owners and must not be collapsed into one
+generic retry queue:
+
+- 58 products require an authorised source or explicit automation permission
+  for Bing Lee, Harvey Norman, or JB Hi-Fi;
+- 22 products require a genuinely new, source-time-bound The Good Guys feed;
+- LG `1910FGX`, LG `1910BX`, and CHiQ `CTM202NW` also require canonical identity
+  repair before availability can bind;
+- LG `GS-B655PL` requires exact-model rediscovery after a sibling AO response.
+
+The branch may retain the lifecycle-neutral safety projection because it only
+removes unsupported legacy door fields. It is not evidence that the lifecycle
+migration is complete.
 
 ## Completed Work
 
@@ -361,8 +384,17 @@ description of code changes.
 
 ## Immediate Next Actions
 
-1. Commit these architecture documents as the durable baseline.
-2. Create the explicit alias-registry schema and rejection tests.
-3. Research the remaining nine quarantined models without family inference.
-4. Produce a Phase 1 completion report even if unresolved rows remain.
-5. Start canonical identity inventory before broad retailer ingestion changes.
+1. Add a verified acquisition receipt for Partnerize source time, then capture
+   and replay a new authorised feed epoch; identical old bytes cannot refresh
+   lifecycle state.
+2. Correct the three known canonical model identities with exact official AU
+   evidence and rebuild their retailer-link bindings. Do not use an alias to
+   transfer availability.
+3. Obtain authorised feeds or explicit automation permission for Bing Lee,
+   Harvey Norman, and JB Hi-Fi. Until then, preserve those products as unknown
+   and hidden from current results.
+4. Rediscover the exact LG `GS-B655PL` source and keep the sibling response
+   quarantined.
+5. Rerun the complete release DAG. Authorise cutover only when the shadow is
+   `READY`, every prior-current ID has a safe disposition, two builds are
+   semantically identical, and the whole-release rollback drill passes.

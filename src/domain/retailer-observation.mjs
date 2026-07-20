@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto';
+
 const AVAILABILITY = new Set(['available', 'unavailable', 'unknown']);
 const SOURCE_TYPES = new Set([
   'affiliate_feed',
@@ -179,7 +181,8 @@ function normalizeCollectionAttempt(input, asOfMs) {
     throw new TypeError('collection attempt canonical product scope contains duplicates');
   }
   canonicalProductIds.sort();
-  return {
+  const normalized = {
+    id: input.id == null ? null : required(input.id, 'collection attempt id'),
     adapterId: required(input.adapterId, 'collection adapter id'),
     retailer: required(input.retailer, 'collection retailer'),
     observedAt,
@@ -194,6 +197,35 @@ function normalizeCollectionAttempt(input, asOfMs) {
     policyVersion: required(input.policyVersion, 'collection policy version'),
     complete: input.complete === true,
     canonicalProductIds,
+  };
+  if (normalized.id == null) {
+    const seed = [
+      normalized.adapterId,
+      normalized.retailer,
+      normalized.observedAt,
+      normalized.collectionStatus,
+      normalized.rawSourceReference,
+      normalized.rawPayloadSha256 ?? '',
+      normalized.policyVersion,
+      normalized.complete ? 'complete' : 'partial',
+      ...normalized.canonicalProductIds,
+    ].join('\0');
+    normalized.id = `retail_attempt_${createHash('sha256').update(seed).digest('hex').slice(0, 24)}`;
+  }
+  return normalized;
+}
+
+function productBoundCollectionAttempt(attempt, canonicalProductId) {
+  const { canonicalProductIds, ...evidence } = attempt;
+  return {
+    ...evidence,
+    scope: {
+      canonicalProductId,
+      canonicalProductCount: canonicalProductIds.length,
+      canonicalProductIdsSha256: createHash('sha256')
+        .update(JSON.stringify(canonicalProductIds))
+        .digest('hex'),
+    },
   };
 }
 
@@ -302,8 +334,10 @@ export function reduceRetailLifecycle(input) {
   const collectionAttempts = (input.collectionAttempts ?? [])
     .map((attempt) => normalizeCollectionAttempt(attempt, asOfMs))
     .filter((attempt) => attempt.canonicalProductIds.includes(canonicalProductId))
+    .map((attempt) => productBoundCollectionAttempt(attempt, canonicalProductId))
     .sort((left, right) => left.observedAt.localeCompare(right.observedAt)
-      || left.adapterId.localeCompare(right.adapterId));
+      || left.adapterId.localeCompare(right.adapterId)
+      || left.id.localeCompare(right.id));
   const authoritative = observations.filter((observation) => TYPED_SOURCE_TYPES.has(observation.sourceType));
   const { latest, conflicts } = newestObservations(authoritative);
   const latestObservations = latest.map((observation) => {

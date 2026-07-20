@@ -326,10 +326,47 @@ async function atomicWrite(path, bytes) {
   await rename(temporary, path);
 }
 
+export function deriveHistoricalModelEvidenceClassificationGeneratedAt({
+  historicalReference,
+  sourceDocumentArtifact,
+  knowledge,
+  legacyAudit,
+  recoveryQueue,
+  acceptanceBundle,
+  publicProjection,
+  pdfAcceptanceResults,
+  identityAcceptanceResults,
+  imageRepairAudit,
+  acceptanceReceiptReplayAudit,
+}) {
+  const values = [
+    historicalReference?.generatedAt,
+    sourceDocumentArtifact?.generatedAt,
+    knowledge?.generatedAt,
+    legacyAudit?.generatedAt,
+    recoveryQueue?.generatedAt,
+    acceptanceBundle?.generatedAt,
+    publicProjection?.generatedAt,
+    pdfAcceptanceResults?.generatedAt,
+    pdfAcceptanceResults?.reviewedAt,
+    identityAcceptanceResults?.generatedAt,
+    identityAcceptanceResults?.reviewedAt,
+    imageRepairAudit?.generatedAt,
+    acceptanceReceiptReplayAudit?.generatedAt,
+    acceptanceReceiptReplayAudit?.auditedAt,
+  ].filter((value) => value != null).map((value) => {
+    const timestamp = new Date(value);
+    if (!Number.isFinite(timestamp.valueOf())) throw new TypeError('classification input timestamp invalid');
+    return timestamp;
+  });
+  if (!values.length) throw new TypeError('classification input timestamp required');
+  return new Date(Math.max(...values.map((value) => value.valueOf()))).toISOString();
+}
+
 async function main(args) {
   const outputPath = resolve(option(args, '--output') ?? resolveArchitectureV2Path(root, 'historicalModelEvidenceClassification'));
   const outputMarkdown = resolve(option(args, '--markdown') ?? markdownPath);
-  const generatedAt = option(args, '--generated-at') ?? new Date().toISOString();
+  const generatedAtOption = option(args, '--generated-at');
   const [policyValue, historicalReference, sourceDocumentArtifact, knowledge, legacyAudit,
     recoveryQueue, acceptanceBundle, publicProjection, pdfAcceptanceResults,
     identityAcceptanceResults, imageRepairAudit, acceptanceReceiptReplayAudit] = await Promise.all([
@@ -346,6 +383,19 @@ async function main(args) {
     readJson(resolveArchitectureV2Path(root, 'historicalPdfImageRepairAudit')),
     readJson(resolveArchitectureV2Path(root, 'historicalAcceptanceReceiptReplayAudit')),
   ]);
+  const generatedAt = generatedAtOption ?? deriveHistoricalModelEvidenceClassificationGeneratedAt({
+    historicalReference,
+    sourceDocumentArtifact,
+    knowledge,
+    legacyAudit,
+    recoveryQueue,
+    acceptanceBundle,
+    publicProjection,
+    pdfAcceptanceResults,
+    identityAcceptanceResults,
+    imageRepairAudit,
+    acceptanceReceiptReplayAudit,
+  });
   const policy = validateHistoricalModelEvidenceClassificationPolicy(policyValue);
   const records = historicalReference.records;
   const referenceById = new Map(records.map((entry) => [entry.referenceId, entry]));

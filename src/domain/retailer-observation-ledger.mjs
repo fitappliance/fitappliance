@@ -11,6 +11,7 @@ const TERMS_REVIEW_STATES = new Set([
   'authorized_partner_feed',
   'collection_blocked',
   'pending_automated_scale_review',
+  'reviewed_bounded_exact_product_api',
 ]);
 
 function required(value, label) {
@@ -88,6 +89,9 @@ export function normalizeRetailerSourcePolicy(policy) {
       collectionMode: required(source.collectionMode, 'retailer collection mode'),
       termsReviewState,
       legacyLinkAction: required(source.legacyLinkAction, 'legacy link action'),
+      automationControls: source.automationControls == null
+        ? null
+        : structuredClone(source.automationControls),
     };
     for (const host of normalized.allowedHosts) {
       if (hosts.has(host)) throw new TypeError(`duplicate retailer source host ${host}`);
@@ -262,6 +266,50 @@ function normalizedAttempt(value) {
     throw new TypeError('collection attempt canonical product scope contains duplicates');
   }
   canonicalProductIds.sort();
+  let failureContext = null;
+  if (value.failureContext != null) {
+    if (status !== 'failed' || rawPayloadSha256 == null || canonicalProductIds.length !== 1) {
+      throw new TypeError('failure context must be one failed raw-bound product request');
+    }
+    const context = value.failureContext;
+    if (!['identity_mismatch', 'response_contract_failure'].includes(context.kind)
+      || sha256(context.rawPayloadSha256, 'failure context raw payload SHA-256') !== rawPayloadSha256) {
+      throw new TypeError('collection attempt failure context invalid');
+    }
+    if (context.kind === 'identity_mismatch'
+      && !['AO_MODEL_MISMATCH', 'AO_URI_MISMATCH'].includes(context.reasonCode)) {
+      throw new TypeError('collection attempt identity mismatch context invalid');
+    }
+    if (context.kind === 'response_contract_failure'
+      && context.reasonCode !== 'AO_RESPONSE_CONTRACT_FAILURE') {
+      throw new TypeError('collection attempt response contract context invalid');
+    }
+    const sourceUrl = new URL(required(context.sourceUrl, 'failure context source URL'));
+    if (sourceUrl.protocol !== 'https:' || sourceUrl.username || sourceUrl.password) {
+      throw new TypeError('failure context URLs must use trusted HTTPS');
+    }
+    const common = {
+      kind: context.kind,
+      reasonCode: context.reasonCode,
+      baselineLinkId: required(context.baselineLinkId, 'failure context baseline link ID'),
+      sourceUrl: sourceUrl.toString(),
+      rawPayloadSha256,
+    };
+    if (context.kind === 'identity_mismatch') {
+      const receivedUrl = new URL(required(context.receivedUrl, 'failure context received URL'));
+      if (receivedUrl.protocol !== 'https:' || receivedUrl.username || receivedUrl.password) {
+        throw new TypeError('failure context URLs must use trusted HTTPS');
+      }
+      failureContext = {
+        ...common,
+        expectedModel: required(context.expectedModel, 'failure context expected model'),
+        receivedModel: required(context.receivedModel, 'failure context received model'),
+        receivedUrl: receivedUrl.toString(),
+      };
+    } else {
+      failureContext = common;
+    }
+  }
   return {
     id: required(value.id, 'collection attempt ID'),
     adapterId: required(value.adapterId, 'collection attempt adapter ID'),
@@ -274,6 +322,7 @@ function normalizedAttempt(value) {
     policyVersion: required(value.policyVersion, 'collection attempt policy version'),
     complete,
     canonicalProductIds,
+    ...(failureContext ? { failureContext } : {}),
   };
 }
 
@@ -320,6 +369,11 @@ export function validateRetailerObservationLedger(document) {
   for (const observation of normalizedObservations.filter((row) => row.sourceType !== 'legacy_catalog')) {
     if (!boundHashes.has(observation.rawSourceSha256)) {
       throw new TypeError(`typed retailer observation ${observation.id} lacks immutable source binding`);
+    }
+  }
+  for (const attempt of attempts.filter((row) => row.rawPayloadSha256 != null)) {
+    if (!boundHashes.has(attempt.rawPayloadSha256)) {
+      throw new TypeError(`raw-bound retailer attempt ${attempt.id} lacks immutable source binding`);
     }
   }
   const summary = {
@@ -376,6 +430,7 @@ function collectionAttempt(snapshot) {
     policyVersion: required(snapshot.policyVersion, 'snapshot policy version'),
     complete: snapshot.complete === true,
     canonicalProductIds: [...snapshot.canonicalProductIds],
+    ...(snapshot.failureContext ? { failureContext: structuredClone(snapshot.failureContext) } : {}),
   };
 }
 
@@ -403,6 +458,17 @@ function assertSnapshotAuthorized(snapshot, normalizedPolicy) {
     for (const value of [row.url, row.redirectUrl].filter(Boolean)) {
       if (!allowedHosts.has(new URL(value).hostname.toLowerCase())) {
         throw new Error(`snapshot URL escapes source policy hosts for ${adapterId}`);
+      }
+    }
+  }
+  if (snapshot.failureContext) {
+    const contextUrls = [snapshot.failureContext.sourceUrl];
+    if (snapshot.failureContext.kind === 'identity_mismatch') {
+      contextUrls.push(snapshot.failureContext.receivedUrl);
+    }
+    for (const value of contextUrls) {
+      if (!allowedHosts.has(new URL(value).hostname.toLowerCase())) {
+        throw new Error(`snapshot failure URL escapes source policy hosts for ${adapterId}`);
       }
     }
   }

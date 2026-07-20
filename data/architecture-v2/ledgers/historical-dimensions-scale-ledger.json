@@ -12,12 +12,30 @@
     "minimumConclusiveUnits": 10,
     "minimumCompletedManifests": 2,
     "stages": {
-      "DISCOVERY": { "floorBasisPoints": 2000, "diagnosticOnly": false },
-      "ACQUISITION": { "floorBasisPoints": 8000, "diagnosticOnly": false },
-      "MINERU": { "floorBasisPoints": 9000, "diagnosticOnly": false },
-      "IDENTITY": { "floorBasisPoints": 5000, "diagnosticOnly": false },
-      "DIMENSIONS_RECEIPT": { "floorBasisPoints": 5000, "diagnosticOnly": false },
-      "INSTALLATION_FIT": { "floorBasisPoints": null, "diagnosticOnly": true }
+      "DISCOVERY": {
+        "floorBasisPoints": 2000,
+        "diagnosticOnly": false
+      },
+      "ACQUISITION": {
+        "floorBasisPoints": 8000,
+        "diagnosticOnly": false
+      },
+      "MINERU": {
+        "floorBasisPoints": 9000,
+        "diagnosticOnly": false
+      },
+      "IDENTITY": {
+        "floorBasisPoints": 5000,
+        "diagnosticOnly": false
+      },
+      "DIMENSIONS_RECEIPT": {
+        "floorBasisPoints": 5000,
+        "diagnosticOnly": false
+      },
+      "INSTALLATION_FIT": {
+        "floorBasisPoints": null,
+        "diagnosticOnly": true
+      }
     }
   },
   "baseline": {
@@ -283,6 +301,64 @@
         "p1EligibleTargets": 3939
       },
       "semanticCheckpointSha256": "f48fb5b0910d6bc5b048b2ccd41fc1070a6228da3f4ec011928ff31112fc97fc"
+    }
+  ],
+  "rebaselines": [
+    {
+      "rebaselineId": "historical-dimensions-rebaseline-134e9fa257a30f9d3039888d",
+      "activatedAt": "2026-07-20T18:29:13.000Z",
+      "afterEntryCount": 5,
+      "reason": "RELEASE_DAG_RECONCILIATION",
+      "priorControlSha256": "b48bc2b0c167f3dbc663ebfcd01ee6803387fef91ee00dc78b9de9d7d5700631",
+      "priorArtifactBindings": {
+        "nextBatchesSha256": "35d1d753d38b72166a9ba8e912b78b094d031cdde78d25ac30e21140d19204b7",
+        "programStatusSha256": "7d71171de02c85df4b6f2c5a3d21a68d8fff3ac51a9c26414cbbf579671759ec",
+        "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+        "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
+        "fitPublicationAuditSha256": "e017f300071c502801034c2a4ef996fcb68018aac7fda4d409073623fa26d9ed",
+        "epochsSha256": "c7b6b37866893f5fbaa1c2cfb5705e9e42f99c31473ba3ac9135224629685711"
+      },
+      "nextArtifactBindings": {
+        "nextBatchesSha256": "7006abba7a32896d6be27310be5812c80880f903233501db1cfdcd4e1993ed71",
+        "programStatusSha256": "eaf561c7a38bd0de7ef6f9df48d0e199ffc4e7462b32496466588a3fdd29d41f",
+        "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+        "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
+        "fitPublicationAuditSha256": "e017f300071c502801034c2a4ef996fcb68018aac7fda4d409073623fa26d9ed",
+        "epochsSha256": "c7b6b37866893f5fbaa1c2cfb5705e9e42f99c31473ba3ac9135224629685711"
+      },
+      "changedArtifactBindings": [
+        "nextBatchesSha256",
+        "programStatusSha256"
+      ],
+      "previousCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 953,
+        "p0EligibleTargets": 943,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "nextCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 957,
+        "p0EligibleTargets": 947,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "queueCounterDeltas": {
+        "p0AssignedTargets": 4,
+        "p0EligibleTargets": 4,
+        "p1AssignedTargets": 0,
+        "p1EligibleTargets": 0
+      },
+      "semanticRebaselineSha256": "ebddc55abd05f08d6a7df9065e66b0a451d5359f59fe1f28cfb3a00da64a4266"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T19:26:14.787Z",
-  "semanticQueueSha256": "b7c7dacad872e88c118e7246eb3c394f6921d833186d5d2e43228912e2f3954c",
-  "sourceClassificationSha256": "19dff0090fbf85eaadc9b729678fa9f51130b3eb41e71600e2cf744a3f05bd8a",
+  "generatedAt": "2026-07-19T19:32:08.439Z",
+  "semanticQueueSha256": "27f430e68934dae7d93ea162a547c2df5472a4f0f1da7f6b9c4a954934c02b5a",
+  "sourceClassificationSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
   "records": [
     {
       "schemaVersion": 1,
@@ -820,7 +820,7 @@
       "lifecycleState": "CURRENT_RETAIL",
       "priority": "P0_CURRENT_RETAIL",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_4f34b527b64d6ba6",
+      "groupName": "Esatto Australia EDW dishwasher technical information",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "route": "OFFICIAL_REDISCOVERY",
       "executionReadiness": "DISCOVERY_READY",
@@ -32885,7 +32885,7 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "priority": "P1_CATALOG_ARCHIVED",
       "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_86d30e2b33f39e6d",
+      "groupName": "PDF grammar pdf_grammar_7b584de27a2887f1",
       "operationalClass": "IDENTITY_RESEARCH",
       "route": "IDENTITY_CLOSURE",
       "executionReadiness": "DISCOVERY_READY",

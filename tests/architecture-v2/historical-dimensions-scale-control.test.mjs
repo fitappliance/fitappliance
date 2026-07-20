@@ -8,7 +8,9 @@ import {
   buildHistoricalDimensionsRecoveryFunnel,
   buildHistoricalDimensionsScaleControl,
   canonicalHistoricalDimensionsScaleCounters,
+  HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY,
   recordHistoricalDimensionsScaleCheckpoint,
+  recordHistoricalDimensionsScaleRebaseline,
 } from '../../src/domain/historical-dimensions-scale-control.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
@@ -320,6 +322,65 @@ test('checkpoint chains and publication guards fail closed', () => {
   const invalidReplacement = inputs();
   invalidReplacement.replacementAudit.summary.byLookupAction.AUTO_FILL = 402;
   assert.throws(() => canonicalHistoricalDimensionsScaleCounters(invalidReplacement), /replacement.*receipt/i);
+});
+
+test('release DAG rebaseline preserves checkpoint history and only reopens queue counters', () => {
+  const prior = inputs();
+  prior.ledger = {
+    ...prior.ledger,
+    schemaVersion: 2,
+    ledgerId: 'historical-dimensions-scale-v2',
+    policy: structuredClone(HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY),
+    rebaselines: [],
+  };
+  const priorControl = buildHistoricalDimensionsScaleControl(prior);
+  const current = inputs({ p0: 5, p1: 8 });
+  current.ledger = prior.ledger;
+
+  assert.throws(
+    () => buildHistoricalDimensionsScaleControl(current),
+    /changed without a recorded scale checkpoint/i,
+  );
+
+  const advanced = recordHistoricalDimensionsScaleRebaseline({
+    priorControl,
+    ledger: prior.ledger,
+    currentInput: current,
+    activatedAt: '2026-07-19T20:05:00.000Z',
+    reason: 'RELEASE_DAG_RECONCILIATION',
+  });
+
+  assert.deepEqual(advanced.ledger.entries, prior.ledger.entries);
+  assert.equal(advanced.ledger.rebaselines.length, 1);
+  assert.equal(advanced.ledger.rebaselines[0].afterEntryCount, 0);
+  assert.equal(advanced.ledger.rebaselines[0].queueCounterDeltas.p0AssignedTargets, 1);
+  assert.equal(advanced.control.counters.p0AssignedTargets, 5);
+  assert.equal(advanced.control.rebaselineCount, 1);
+  assert.equal(advanced.control.latestRebaseline.reason, 'RELEASE_DAG_RECONCILIATION');
+
+  const tampered = structuredClone(advanced.ledger);
+  tampered.rebaselines[0].nextCounters.p0AssignedTargets += 1;
+  assert.throws(
+    () => buildHistoricalDimensionsScaleControl({ ...current, ledger: tampered }),
+    /rebaseline.*hash|hash.*rebaseline/i,
+  );
+
+  const coverageDrift = inputs({ p0: 5, p1: 8 });
+  coverageDrift.ledger = prior.ledger;
+  coverageDrift.programStatus.metrics
+    .find((row) => row.id === 'model.current_valid_receipt').numerator += 1;
+  coverageDrift.programStatus.metrics
+    .find((row) => row.id === 'fit.receipt_bound_dimensions').numerator += 1;
+  coverageDrift.receiptAudit.summary.sources += 1;
+  coverageDrift.receiptAudit.summary.passed += 1;
+  coverageDrift.fitPublicationAudit.summary.receiptBoundDimensions += 1;
+  assert.throws(() => recordHistoricalDimensionsScaleRebaseline({
+    priorControl,
+    ledger: prior.ledger,
+    currentInput: coverageDrift,
+    activatedAt: '2026-07-19T20:05:00.000Z',
+    reason: 'RELEASE_DAG_RECONCILIATION',
+  }), /coverage.*rebaseline|rebaseline.*coverage/i);
 });
 
 test('weekly throughput and projected batches use receipted target grain only', () => {

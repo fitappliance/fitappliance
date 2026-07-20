@@ -235,6 +235,42 @@ test('collection failures affect only canonical products inside the declared att
   }), /canonical product scope/i);
 });
 
+test('catalogue-wide collection attempts emit compact product-bound evidence', () => {
+  const canonicalProductId = 'fa_prod_scope_0500';
+  const canonicalProductIds = Array.from(
+    { length: 1_000 },
+    (_, index) => `fa_prod_scope_${String(index).padStart(4, '0')}`,
+  );
+  const decision = reduceRetailLifecycle({
+    canonicalProductId,
+    observations: [],
+    collectionAttempts: [{
+      id: 'retail_attempt_catalogue_fixture',
+      adapterId: 'tgg-feed-v1',
+      retailer: 'The Good Guys',
+      canonicalProductIds,
+      observedAt: '2026-07-19T12:00:00.000Z',
+      collectionStatus: 'succeeded',
+      rawSourceReference: 'retailer-object:sha256:fixture',
+      rawPayloadSha256: 'a'.repeat(64),
+      policyVersion: 'tgg-source-v1',
+      complete: true,
+    }],
+    asOf: '2026-07-20T00:00:00.000Z',
+    policyVersion: 'retail-lifecycle-v1',
+    catalogState: 'LISTED_UNVERIFIED',
+    registryPresent: false,
+  });
+  assert.equal(decision.collectionAttempts.length, 1);
+  const [attempt] = decision.collectionAttempts;
+  assert.equal(attempt.id, 'retail_attempt_catalogue_fixture');
+  assert.equal(attempt.scope.canonicalProductId, canonicalProductId);
+  assert.equal(attempt.scope.canonicalProductCount, 1_000);
+  assert.match(attempt.scope.canonicalProductIdsSha256, /^[a-f0-9]{64}$/);
+  assert.equal(Object.hasOwn(attempt, 'canonicalProductIds'), false);
+  assert.ok(JSON.stringify(attempt).length < 1_000);
+});
+
 test('one unavailable retailer cannot archive a product while another migrated listing is unresolved', () => {
   const canonicalProductId = 'fa_prod_multi_listing';
   const legacy = (id, retailer, url, sourcePolicyId) => createObservation({
