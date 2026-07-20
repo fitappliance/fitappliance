@@ -42,6 +42,40 @@ test('normalizes a complete snapshot with raw evidence and host enforcement', ()
   assert.throws(() => normalizeRetailerSnapshot(adapter, {
     ...snapshot, rows: [{ ...snapshot.rows[0], availability: 'maybe' }],
   }), /availability/i);
+  assert.throws(() => normalizeRetailerSnapshot(adapter, {
+    ...snapshot,
+    rawSourceReference: 'https://feeds.example.test/private-token.csv',
+  }), /opaque source reference/i);
+});
+
+test('redirect observations preserve a trusted destination without authorizing lifecycle by themselves', () => {
+  const redirected = normalizeRetailerSnapshot(adapter, {
+    observedAt: '2026-07-11T01:00:00Z',
+    complete: false,
+    rawPayloadSha256: 'c'.repeat(64),
+    rawSourceReference: 'partnerize:redirect:2026-07-11',
+    rows: [{
+      canonicalProductId: 'fa_prod_redirect',
+      retailerProductId: 'redirect-1',
+      url: 'https://www.thegoodguys.com.au/old-product',
+      redirectUrl: 'https://www.thegoodguys.com.au/new-product',
+      title: 'Redirected model',
+      availability: 'unknown',
+      listingState: 'redirected',
+    }],
+  });
+  const [observation] = createRetailerObservationsFromSnapshot(redirected);
+  assert.equal(observation.redirectUrl, 'https://www.thegoodguys.com.au/new-product');
+  assert.throws(() => normalizeRetailerSnapshot(adapter, {
+    ...redirected,
+    rows: [{ ...redirected.rows[0], redirectUrl: null }],
+  }), /redirect destination/i);
+  const availableSignal = normalizeRetailerSnapshot(adapter, {
+    ...redirected,
+    rows: [{ ...redirected.rows[0], availability: 'available' }],
+  });
+  assert.equal(availableSignal.rows[0].availability, 'available');
+  assert.equal(availableSignal.rows[0].listingState, 'redirected');
 });
 
 test('successful snapshots become product-bound observations with immutable source provenance', () => {

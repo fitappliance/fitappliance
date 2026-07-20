@@ -2,14 +2,42 @@ import { createHash } from 'node:crypto';
 
 import { createObservation } from './retailer-observation.mjs';
 
-const SOURCE_TYPES = new Set(['affiliate_feed', 'public_retailer_page']);
+const SOURCE_TYPES = new Set(['affiliate_feed', 'public_retailer_api', 'public_retailer_page']);
 const AVAILABILITY = new Set(['available', 'unavailable', 'unknown']);
 const LISTING_STATES = new Set(['current', 'stale', 'unavailable', 'redirected', 'relisted']);
 
 function required(value, label) { const result = String(value ?? '').trim(); if (!result) throw new TypeError(`${label} required`); return result; }
-function date(value, label) { const result = required(value, label); if (!/^\d{4}-\d{2}-\d{2}$/.test(result)) throw new TypeError(`${label} must be YYYY-MM-DD`); return result; }
+function date(value, label) {
+  const result = required(value, label);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(result)) throw new TypeError(`${label} must be YYYY-MM-DD`);
+  const parsed = new Date(`${result}T00:00:00.000Z`);
+  if (Number.isNaN(parsed.valueOf()) || parsed.toISOString().slice(0, 10) !== result) {
+    throw new TypeError(`${label} must be a real calendar date`);
+  }
+  return result;
+}
 function freezeDeep(value) { if (value && typeof value === 'object' && !Object.isFrozen(value)) { Object.freeze(value); for (const child of Object.values(value)) freezeDeep(child); } return value; }
 function positiveHours(value, label) { const result = Number(value); if (!Number.isInteger(result) || result <= 0) throw new TypeError(`${label} must be a positive integer`); return result; }
+
+function trustedRetailerUrl(value, adapter, label) {
+  const url = new URL(required(value, label));
+  if (url.protocol !== 'https:' || url.username || url.password) {
+    throw new TypeError(`${label} must use trusted HTTPS`);
+  }
+  if (!adapter.allowedHosts.includes(url.hostname.toLowerCase())) {
+    throw new TypeError(`URL is outside allowed host: ${url.hostname}`);
+  }
+  url.hash = '';
+  return url.toString();
+}
+
+function rawSourceReference(value, sourceType) {
+  const result = required(value, 'raw source reference');
+  if (sourceType === 'affiliate_feed' && /^[a-z][a-z0-9+.-]*:\/\//i.test(result)) {
+    throw new TypeError('affiliate feed requires an opaque source reference');
+  }
+  return result;
+}
 
 export function createRetailerSourceAdapter(input) {
   if (!input || typeof input !== 'object') throw new TypeError('retailer adapter required');
@@ -43,21 +71,24 @@ export function normalizeRetailerSnapshot(adapterInput, input) {
   if (failed && input.rows.length) throw new TypeError('failed snapshot cannot contain inventory rows');
   if (!failed && !/^[a-f0-9]{64}$/.test(String(input.rawPayloadSha256 ?? ''))) throw new TypeError('successful snapshot requires raw payload hash');
   const rows = input.rows.map((row) => {
-    const url = new URL(required(row.url, 'retailer product URL'));
-    if (url.protocol !== 'https:' || url.username || url.password) {
-      throw new TypeError('retailer product URL must use trusted HTTPS');
-    }
-    if (!adapter.allowedHosts.includes(url.hostname.toLowerCase())) throw new TypeError(`URL is outside allowed host: ${url.hostname}`);
+    const url = trustedRetailerUrl(row.url, adapter, 'retailer product URL');
     const availability = row.availability ?? 'unknown';
     const listingState = row.listingState ?? 'current';
     if (!AVAILABILITY.has(availability)) throw new TypeError(`unsupported availability ${availability}`);
     if (!LISTING_STATES.has(listingState)) throw new TypeError(`unsupported listing state ${listingState}`);
+    const redirectUrl = listingState === 'redirected'
+      ? trustedRetailerUrl(row.redirectUrl, adapter, 'redirect destination')
+      : null;
+    if (listingState !== 'redirected' && row.redirectUrl != null) {
+      throw new TypeError('redirect destination requires redirected listing state');
+    }
     if (row.priceAud !== null && row.priceAud !== undefined && !(typeof row.priceAud === 'number' && Number.isFinite(row.priceAud) && row.priceAud >= 0)) {
       throw new TypeError('priceAud must be null or a non-negative number');
     }
     return {
       canonicalProductId: required(row.canonicalProductId, 'canonical product ID'),
-      retailerProductId: required(row.retailerProductId, 'retailer product ID'), url: url.toString(),
+      retailerProductId: required(row.retailerProductId, 'retailer product ID'), url,
+      redirectUrl,
       title: required(row.title, 'retailer title'), priceAud: row.priceAud ?? null,
       imageUrl: row.imageUrl ? String(row.imageUrl).trim() : null,
       availability, listingState,
@@ -71,7 +102,7 @@ export function normalizeRetailerSnapshot(adapterInput, input) {
     observedAt: observedAt.toISOString(), complete: input.complete === true,
     collectionStatus: failed ? 'failed' : 'succeeded', collectionError: failed ? required(input.collectionError, 'collection error') : null,
     rawPayloadSha256: input.rawPayloadSha256 ?? null,
-    rawSourceReference: required(input.rawSourceReference, 'raw source reference'), rows,
+    rawSourceReference: rawSourceReference(input.rawSourceReference, adapter.sourceType), rows,
   });
 }
 
@@ -90,6 +121,7 @@ export function createRetailerObservationsFromSnapshot(snapshot) {
       row.canonicalProductId,
       row.retailerProductId,
       row.url,
+      row.redirectUrl ?? '',
       snapshot.observedAt,
       row.availability,
       row.listingState,
@@ -101,6 +133,7 @@ export function createRetailerObservationsFromSnapshot(snapshot) {
       adapterId: snapshot.adapterId,
       observedAt: snapshot.observedAt,
       url: row.url,
+      redirectUrl: row.redirectUrl,
       availability: row.availability,
       priceAud: row.priceAud,
       title: row.title,

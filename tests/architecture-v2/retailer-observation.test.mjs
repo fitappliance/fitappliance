@@ -37,6 +37,9 @@ function caseObservation(value, canonicalProductId) {
     expectedCadenceHours: 24,
     maximumCurrentAgeHours: value.maximumCurrentAgeHours,
     listingState: value.listingState,
+    redirectUrl: value.listingState === 'redirected'
+      ? `https://www.thegoodguys.com.au/${value.id}-destination`
+      : null,
     retailerProductId: value.listingId ?? value.id,
   });
 }
@@ -85,6 +88,23 @@ test('typed retailer observations require source, policy, and freshness provenan
     rawSourceSha256: null,
   });
   assert.equal(legacy.availability, 'unknown');
+});
+
+test('public retailer API is typed evidence and cannot borrow a legacy projection binding', () => {
+  const api = createObservation({ ...base, sourceType: 'public_retailer_api' });
+  assert.equal(api.sourceType, 'public_retailer_api');
+  assert.equal(api.legacyProjectionBinding, null);
+  assert.throws(() => createObservation({
+    ...base,
+    sourceType: 'public_retailer_api',
+    legacyProjectionBinding: {
+      projectionSha256: 'a'.repeat(64),
+      rowSha256: 'b'.repeat(64),
+      originSource: 'legacy',
+      verifiedAt: '2026-07-08',
+      sourcePolicyId: 'legacy-policy',
+    },
+  }), /cannot carry a legacy projection binding/i);
 });
 
 test('lifecycle reducer keeps identity, registry, evidence, visibility, and Fit axes independent', () => {

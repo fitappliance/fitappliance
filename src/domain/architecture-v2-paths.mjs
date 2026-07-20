@@ -63,6 +63,7 @@ export const architectureV2Paths = Object.freeze({
   historicalPdfImageRepairQueue: `${base}/reviews/automated/historical-pdf-image-repair-queue.json`,
   historicalPdfImageRepairAudit: `${base}/reviews/automated/historical-pdf-image-repair-audit.json`,
   retailerObservations: `${base}/observations/retailer-observations.json`,
+  retailerObservationCoverage: `${base}/reviews/automated/retailer-observation-coverage.json`,
   canonicalRegistry: `${base}/generated/canonical-registry.json`,
   evidenceResolutionManifest: `${base}/generated/evidence-resolution-manifest.json`,
   evidenceObjectIndex: `${base}/generated/evidence-object-index.json`,
@@ -107,6 +108,8 @@ export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
     'historicalEvidenceRecoveryAcceptanceBundle',
     'historicalAcceptanceReceiptReplayAudit',
   ]),
+  retailerObservations: Object.freeze(['publicProjection']),
+  retailerObservationCoverage: Object.freeze(['publicProjection', 'retailerObservations']),
   historicalApplianceReference: Object.freeze([
     'officialRegistrySnapshots',
     'publicProjection',

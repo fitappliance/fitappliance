@@ -231,14 +231,16 @@ test('tracked system contract replays from repository sources without external s
 
   assert.deepEqual(first, tracked);
   assert.deepEqual(second, first);
-  assert.equal(first.stages.length, 23);
+  assert.equal(first.stages.length, 24);
   assert.equal(first.epochs.length, 10);
   assert.ok(first.stages.every((stage) => stage.sourceBindings.every((binding) => (
     binding.declaredSha256 === binding.resolvedSha256
   ))));
   assert.equal(first.baseline.historicalModelReferences, 8089);
   assert.equal(first.baseline.currentProducts, 3515);
-  assert.equal(first.baseline.retailerLinksRequiringObservationMigration, 1614);
+  assert.equal(first.baseline.retailerLinksRequiringObservationMigration, 0);
+  assert.equal(first.baseline.retailerObservationBaselineLinks, 1614);
+  assert.equal(first.baseline.retailerObservationAccountedLinks, 1614);
   assert.equal(first.controllerDecision.status, 'STOP_LOW_YIELD');
   assert.ok(first.baseline.knownContractGaps.some((gap) => (
     gap.id === 'RETAILER_OBSERVATIONS_NOT_BOUND_TO_LIFECYCLE'

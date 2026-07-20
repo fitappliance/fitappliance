@@ -5,14 +5,14 @@
   "producerInputs": [
     {
       "path": "scripts/architecture-v2/build-historical-evidence-system-contract.mjs",
-      "contentSha256": "adf8e0aa1882600cd404a7ba881a829d6faaac38b182a64dd613abe47de10205"
+      "contentSha256": "6e684cec552f16a584ea7d0584c27db2ab1c7faafdca4811c2308980d24f6a11"
     },
     {
       "path": "src/domain/historical-evidence-system-contract.mjs",
       "contentSha256": "d97cdb8fc20c51c4a28bc91d9242ac66683c399adb48af66e783755e1ad70c57"
     }
   ],
-  "producerSha256": "fa865c9031e29b5a6a7f7ddfa1e22878acf2697f8780ae490a5f53f00816447f",
+  "producerSha256": "4086b95ac2969848e9d71239e93e222ab286b429134f9fccc4a7369fd58d0b40",
   "epochs": [
     {
       "id": "fit-policy",
@@ -84,14 +84,14 @@
       "inputs": [
         {
           "path": "src/domain/retailer-observation.mjs",
-          "contentSha256": "5a940d757fde225f39bdc94216d0c33441a00ca5a9271ea101d415407c493897"
+          "contentSha256": "89f36578f646a6a13dc572f2ef0e503cb15244a46a3ef71b8085245da0e4d84a"
         },
         {
           "path": "src/domain/retailer-source-adapter.mjs",
-          "contentSha256": "26139251e27eb8518eb3f45b629a8f399f858db0434cfc24b61a990ea640e939"
+          "contentSha256": "463504977364033fc679c4ff23b5f73d2cb2075605981b7135c2b4615fb53609"
         }
       ],
-      "semanticSha256": "b5b28aab9ab0ae4537b39cabe3122bb4ef0c4c1a492e6b819c02da0c270ae9ae"
+      "semanticSha256": "5e9eb5dc95879591f4e5f5f489bebd71cd852d6aa5b6a51dee93a27163fce53f"
     },
     {
       "id": "parser",
@@ -167,10 +167,10 @@
         },
         {
           "path": "data/architecture-v2/policies/retailer-source-policy.json",
-          "contentSha256": "7d8821e1dd926c0b9d25f31f40bceea2b8d59df8b45174dc634f62122ff9120b"
+          "contentSha256": "f9db3e5ee3934721cac202b0ec904d6de4c6222efd9168938c975ded89917e5a"
         }
       ],
-      "semanticSha256": "3c10ab6b80f2c79cb41621a11461600256ac6a53a9c309ad067d54bfa2efac28"
+      "semanticSha256": "fbaa59240f089f9397c29bebbd69ed7e1f7e2e1f7ff596b32917c438dd53b01a"
     }
   ],
   "stages": [
@@ -366,7 +366,9 @@
       "consumers": [
         "fit-publication",
         "historical-replacement-publication",
-        "lifecycle-reduction"
+        "lifecycle-reduction",
+        "retailer-observation-coverage",
+        "retailer-observations"
       ],
       "schemaVersion": 3,
       "generatedAt": null,
@@ -406,7 +408,9 @@
       "nextTransitions": [
         "fit-publication",
         "historical-replacement-publication",
-        "lifecycle-reduction"
+        "lifecycle-reduction",
+        "retailer-observation-coverage",
+        "retailer-observations"
       ]
     },
     {
@@ -1300,30 +1304,106 @@
       "id": "retailer-observations",
       "artifactKey": "retailerObservations",
       "artifactPath": "data/architecture-v2/observations/retailer-observations.json",
-      "owner": "src/domain/retailer-observation.mjs",
+      "owner": "scripts/architecture-v2/build-retailer-ledger.mjs",
       "producerInputs": [
         {
+          "path": "data/architecture-v2/policies/retailer-source-policy.json",
+          "contentSha256": "f9db3e5ee3934721cac202b0ec904d6de4c6222efd9168938c975ded89917e5a"
+        },
+        {
+          "path": "scripts/architecture-v2/build-retailer-ledger.mjs",
+          "contentSha256": "1c686b5d7cea28d7fb9253146a66f718a726a0192367a2da5119d782005095eb"
+        },
+        {
+          "path": "src/domain/retailer-observation-ledger.mjs",
+          "contentSha256": "8ad701093b000adb8bb209854774d61c332cc88cc4475976d6b83be8e100c107"
+        },
+        {
           "path": "src/domain/retailer-observation.mjs",
-          "contentSha256": "5a940d757fde225f39bdc94216d0c33441a00ca5a9271ea101d415407c493897"
+          "contentSha256": "89f36578f646a6a13dc572f2ef0e503cb15244a46a3ef71b8085245da0e4d84a"
         },
         {
           "path": "src/domain/retailer-source-adapter.mjs",
-          "contentSha256": "26139251e27eb8518eb3f45b629a8f399f858db0434cfc24b61a990ea640e939"
+          "contentSha256": "463504977364033fc679c4ff23b5f73d2cb2075605981b7135c2b4615fb53609"
         }
       ],
-      "producerSha256": "89fcf398850cf9582a76e9be5ec53abc339d08b962f7400e77b962d345781ae9",
-      "consumers": [],
-      "schemaVersion": 1,
+      "producerSha256": "964025b9367d5cdd4d8bcbd7487414c4d8df07b92cb66f9c53df080d6af16b46",
+      "consumers": [
+        "retailer-observation-coverage"
+      ],
+      "schemaVersion": 2,
       "generatedAt": null,
-      "contentSha256": "7b5d21cf6956e0bfe74851b2b475966150a7f16984c93fc5298541b3eccb87e3",
-      "semanticSha256": "7b5d21cf6956e0bfe74851b2b475966150a7f16984c93fc5298541b3eccb87e3",
-      "declaredSemanticSha256": null,
-      "sourceBindings": [],
-      "releaseDependencies": [],
+      "contentSha256": "c3c1cf415a0c549fdb899d98cab5f789b25dcd3cc61b99c5f5cad96cef776eab",
+      "semanticSha256": "541de2d9f4a85dd61ba848ad5a00e5d2a74b59799de1b15c8abf05bf057454c3",
+      "declaredSemanticSha256": "541de2d9f4a85dd61ba848ad5a00e5d2a74b59799de1b15c8abf05bf057454c3",
+      "sourceBindings": [
+        {
+          "sourceStageId": "current-publication",
+          "digestKind": "content",
+          "declaredSha256": "0d354af8500a4959f47729b0b3d91b7936f167b071d32f9393cde568f116a501",
+          "resolvedSha256": "0d354af8500a4959f47729b0b3d91b7936f167b071d32f9393cde568f116a501"
+        }
+      ],
+      "releaseDependencies": [
+        "current-publication"
+      ],
       "releaseEpoch": 1,
       "releaseState": "RELEASED",
       "lifecycleVisibility": [
         "CONTROL_INPUT"
+      ],
+      "nextTransitions": [
+        "retailer-observation-coverage"
+      ]
+    },
+    {
+      "id": "retailer-observation-coverage",
+      "artifactKey": "retailerObservationCoverage",
+      "artifactPath": "data/architecture-v2/reviews/automated/retailer-observation-coverage.json",
+      "owner": "scripts/architecture-v2/build-retailer-observation-coverage.mjs",
+      "producerInputs": [
+        {
+          "path": "data/architecture-v2/policies/retailer-source-policy.json",
+          "contentSha256": "f9db3e5ee3934721cac202b0ec904d6de4c6222efd9168938c975ded89917e5a"
+        },
+        {
+          "path": "scripts/architecture-v2/build-retailer-observation-coverage.mjs",
+          "contentSha256": "3b4e7236aa8a5fc199d97090b7592727dd4ff1903c885eb37173405c6d7f86dc"
+        },
+        {
+          "path": "src/domain/retailer-observation-coverage.mjs",
+          "contentSha256": "99435a0b1cfbabffcc2b40aae76151ef9ca3f9bd6b8a045033078977e805b71c"
+        }
+      ],
+      "producerSha256": "41f22b91bbb65c8ea2bd1cb3ede190afc4801967c1f46637799af629d0fa07e7",
+      "consumers": [],
+      "schemaVersion": 1,
+      "generatedAt": null,
+      "contentSha256": "82231a37845b4d19ebc042351f3c7564a23f924407bd18ddd79aefdc84dbdee1",
+      "semanticSha256": "31f91ebb35b4c743aabc0f2f7a4c63fdff2f56bbd9af3b856de51890a88db78b",
+      "declaredSemanticSha256": "31f91ebb35b4c743aabc0f2f7a4c63fdff2f56bbd9af3b856de51890a88db78b",
+      "sourceBindings": [
+        {
+          "sourceStageId": "current-publication",
+          "digestKind": "content",
+          "declaredSha256": "0d354af8500a4959f47729b0b3d91b7936f167b071d32f9393cde568f116a501",
+          "resolvedSha256": "0d354af8500a4959f47729b0b3d91b7936f167b071d32f9393cde568f116a501"
+        },
+        {
+          "sourceStageId": "retailer-observations",
+          "digestKind": "semantic",
+          "declaredSha256": "541de2d9f4a85dd61ba848ad5a00e5d2a74b59799de1b15c8abf05bf057454c3",
+          "resolvedSha256": "541de2d9f4a85dd61ba848ad5a00e5d2a74b59799de1b15c8abf05bf057454c3"
+        }
+      ],
+      "releaseDependencies": [
+        "current-publication",
+        "retailer-observations"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
       ],
       "nextTransitions": []
     },
@@ -1457,6 +1537,7 @@
       "mineru-knowledge",
       "program-status",
       "retailer-observations",
+      "retailer-observation-coverage",
       "scale-ledger",
       "scale-control"
     ],
@@ -1638,6 +1719,18 @@
         "to": "program-status"
       },
       {
+        "from": "current-publication",
+        "to": "retailer-observations"
+      },
+      {
+        "from": "current-publication",
+        "to": "retailer-observation-coverage"
+      },
+      {
+        "from": "retailer-observations",
+        "to": "retailer-observation-coverage"
+      },
+      {
         "from": "bounded-planner",
         "to": "scale-control"
       },
@@ -1678,7 +1771,11 @@
     "currentProductsWithReceiptBoundVerifiedFit": 0,
     "publicRowsWithRetailerLinks": 1384,
     "publicRowsUnavailableOrHistoryOnly": 2131,
-    "retailerLinksRequiringObservationMigration": 1614,
+    "retailerLinksRequiringObservationMigration": 0,
+    "retailerObservationBaselineLinks": 1614,
+    "retailerObservationAccountedLinks": 1614,
+    "retailerObservationTypedLinks": 0,
+    "retailerObservationRevalidationItems": 1614,
     "p0AssignedTargets": 953,
     "p0EligibleTargets": 943,
     "p1AssignedTargets": 3974,
@@ -1687,8 +1784,8 @@
       {
         "id": "RETAILER_OBSERVATIONS_NOT_BOUND_TO_LIFECYCLE",
         "severity": "CRITICAL",
-        "repairTask": 2,
-        "detail": "The tracked lifecycle projection still derives current status from the legacy catalogue rather than retailer-observation hashes."
+        "repairTask": 3,
+        "detail": "Task 2 has migrated and accounted for every retailer link, but the tracked lifecycle projection still derives current status from the legacy catalogue rather than retailer-observation hashes."
       },
       {
         "id": "TARGET_STATE_LEGACY_TIME_BINDINGS",
@@ -1713,6 +1810,6 @@
     "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
     "checkpointCount": 5
   },
-  "contractId": "historical_evidence_system_f01c788b2bbc45dc5a38d6b5",
-  "semanticContractSha256": "f01c788b2bbc45dc5a38d6b585c91d7dd395b2c9e3c34819c2b3748cf7a155c1"
+  "contractId": "historical_evidence_system_3d41ac037450ec69977b7e13",
+  "semanticContractSha256": "3d41ac037450ec69977b7e13025fc2ef8854e27f435976b18c04a02aa724d85d"
 }

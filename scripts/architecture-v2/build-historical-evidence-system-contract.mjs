@@ -40,6 +40,7 @@ const defaultRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 const ARTIFACT_KEYS = Object.freeze([
   'retailerObservations',
+  'retailerObservationCoverage',
   'officialRegistrySnapshots',
   'canonicalRegistry',
   'historicalEvidenceRecoveryAcceptanceBundle',
@@ -162,7 +163,18 @@ function scaleControlSemantic(value) {
   return semantic;
 }
 
+function withoutField(value, field) {
+  const { [field]: ignored, ...semantic } = value;
+  return semantic;
+}
+
 function nativeSemantic(key, value) {
+  if (key === 'retailerObservations') {
+    return { payload: withoutField(value, 'semanticSha256'), declared: value.semanticSha256 };
+  }
+  if (key === 'retailerObservationCoverage') {
+    return { payload: withoutField(value, 'semanticSha256'), declared: value.semanticSha256 };
+  }
   if (key === 'historicalModelEvidenceClassification') {
     return { payload: classificationSemantic(value), declared: value.semanticClassificationSha256 };
   }
@@ -211,7 +223,8 @@ function retailerMigrationCounts(publicProjection, retailerObservations) {
     const retailers = product.retailers ?? [];
     if (retailers.length > 0) rowsWithRetailerLinks += 1;
     for (const retailer of retailers) {
-      const key = `${product.canonicalProductId}\0${retailer.name ?? retailer.retailer ?? ''}\0${retailer.url ?? ''}`;
+      const normalizedUrl = new URL(retailer.url).toString();
+      const key = `${product.canonicalProductId}\0${retailer.n ?? retailer.name ?? retailer.retailer ?? ''}\0${normalizedUrl}`;
       if (!observationKeys.has(key)) retailerLinksRequiringObservationMigration += 1;
     }
   }
@@ -339,7 +352,8 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
   const fileCache = new Map();
 
   const definitions = [
-    ['retailer-observations', 'retailerObservations', 'src/domain/retailer-observation.mjs', ['src/domain/retailer-observation.mjs', 'src/domain/retailer-source-adapter.mjs'], [], ['CONTROL_INPUT']],
+    ['retailer-observations', 'retailerObservations', 'scripts/architecture-v2/build-retailer-ledger.mjs', ['scripts/architecture-v2/build-retailer-ledger.mjs', 'src/domain/retailer-observation-ledger.mjs', 'src/domain/retailer-observation.mjs', 'src/domain/retailer-source-adapter.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [['current-publication', 'content']], ['CONTROL_INPUT']],
+    ['retailer-observation-coverage', 'retailerObservationCoverage', 'scripts/architecture-v2/build-retailer-observation-coverage.mjs', ['scripts/architecture-v2/build-retailer-observation-coverage.mjs', 'src/domain/retailer-observation-coverage.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [['current-publication', 'content'], ['retailer-observations', 'semantic']], ['CONTROL_ONLY']],
     ['official-registry-snapshots', 'officialRegistrySnapshots', 'scripts/architecture-v2/acquire-official-registries.mjs', ['scripts/architecture-v2/acquire-official-registries.mjs', 'data/architecture-v2/policies/official-registry-source-policy.json'], [], ['HISTORICAL_INPUT']],
     ['canonical-identity', 'canonicalRegistry', 'scripts/architecture-v2/build-canonical-registry.mjs', ['scripts/architecture-v2/build-canonical-registry.mjs', 'src/domain/canonical-registry.mjs'], [], ['CURRENT_INPUT', 'HISTORICAL_INPUT']],
     ['receipt-reconciliation', 'historicalEvidenceRecoveryAcceptanceBundle', 'src/domain/historical-evidence-recovery-contract.mjs', ['src/domain/historical-evidence-recovery-contract.mjs', 'data/architecture-v2/policies/historical-evidence-recovery-policy.json'], [], ['CURRENT_INPUT', 'HISTORICAL_INPUT']],
@@ -453,6 +467,10 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
       publicRowsWithRetailerLinks: migration.rowsWithRetailerLinks,
       publicRowsUnavailableOrHistoryOnly: artifacts.publicProjection.products.filter((product) => product.unavailable).length,
       retailerLinksRequiringObservationMigration: migration.retailerLinksRequiringObservationMigration,
+      retailerObservationBaselineLinks: artifacts.retailerObservationCoverage.summary.baselineLinks,
+      retailerObservationAccountedLinks: artifacts.retailerObservationCoverage.summary.accountedLinks,
+      retailerObservationTypedLinks: artifacts.retailerObservationCoverage.summary.typedLinks,
+      retailerObservationRevalidationItems: artifacts.retailerObservationCoverage.summary.revalidationItems,
       p0AssignedTargets: currentWorkstream.assignedTargets,
       p0EligibleTargets: currentWorkstream.eligibleTargets,
       p1AssignedTargets: historicalWorkstream.assignedTargets,
@@ -461,8 +479,8 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
         {
           id: 'RETAILER_OBSERVATIONS_NOT_BOUND_TO_LIFECYCLE',
           severity: 'CRITICAL',
-          repairTask: 2,
-          detail: 'The tracked lifecycle projection still derives current status from the legacy catalogue rather than retailer-observation hashes.',
+          repairTask: 3,
+          detail: 'Task 2 has migrated and accounted for every retailer link, but the tracked lifecycle projection still derives current status from the legacy catalogue rather than retailer-observation hashes.',
         },
         {
           id: 'TARGET_STATE_LEGACY_TIME_BINDINGS',

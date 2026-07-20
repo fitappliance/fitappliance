@@ -332,7 +332,11 @@ async function seedDiscoveryEvidence({
         continue;
       }
 
-      const bundle = await fetchAppliancesOnlineProductBundle(discovery, { fetchImpl, timeoutMs });
+      const bundle = await fetchAppliancesOnlineProductBundle(discovery, {
+        fetchImpl,
+        timeoutMs,
+        observedAt: seededAt,
+      });
       const existing = products[bundle.product.id];
       if (hasExistingApprovedEvidence(existing)) {
         skipped.push({

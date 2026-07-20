@@ -5,9 +5,9 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** EXECUTING - Task 2 in progress
+- **Status:** EXECUTING - Task 3 in progress
 - **Date:** 2026-07-20
-- **Active task:** Task 2 - integrate typed retailer observations
+- **Active task:** Task 3 - rebuild downstream lifecycle and visibility state
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -414,8 +414,8 @@ Mandatory adversarial traces across the programme:
 | ---: | --- | --- | --- | --- |
 | 0 | Freeze baseline and executable system contract | none | COMPLETED | Current contract `historical_evidence_system_f01c788b2bbc45dc5a38d6b5`; 23 stages; 10 epochs; tracked contract replay passed |
 | 1 | Lock independent identity/lifecycle/evidence/visibility/Fit axes | 0 | COMPLETED | 13 state-axis fixtures; typed provenance and lifecycle binding; 34 focused and 1,020 Architecture V2 tests passed |
-| 2 | Integrate real retailer availability observations | 1 | IN_PROGRESS | Source inventory and migration repair record pending |
-| 3 | Rebuild classification and prove lifecycle destination isolation | 2 | PENDING | Not started |
+| 2 | Integrate real retailer availability observations | 1 | COMPLETED | 1,614/1,614 links accounted; append-safe schema-v2 ledger; AO/Partnerize typed adapters; policy-aware revalidation audit |
+| 3 | Rebuild classification and prove lifecycle destination isolation | 2 | IN_PROGRESS | Task 2 contract released; downstream cutover not started |
 | 4 | Replace one-path discovery with typed official source lanes | 3 | PENDING | Not started |
 | 5 | Repair category/series/document-family MinerU grammar | 4 | PENDING | Not started |
 | 6 | Prove receipt-to-publication vertical slices | 5 | PENDING | Not started |
@@ -611,8 +611,29 @@ without preserving the three-state source observation.
 patching P0 classification. Appliances Online is the first real regression
 case, not the only source in scope.
 
+**Execution repair record (2026-07-20):**
+
+```text
+Symptom: The public projection contains 1,614 retailer-link rows, but the tracked retailer ledger contains only 183 observations; all 183 are unknown and all lack a raw-source hash. AO ingestion hardcodes unavailable:false, while explicit AO available:false and Partnerize Stock values do not survive as authoritative observations.
+First incorrect persisted state: legacy retailer rows in manual/discovery/catalog inputs and retailer-observations schema v1, before lifecycle reduction or P0/P1 classification.
+Upstream producers: AO product API responses, The Good Guys Partnerize feed, legacy sitemap/web-search discovery, canonical product mappings, retailer source policy, and collection-attempt records.
+Downstream consumers: lifecycle reducer, historical reference, catalog binding, publication, replacement eligibility, target classification, executable queue, bounded planner, and scale controller.
+Affected state axes: retail lifecycle directly; public visibility and scheduler priority only after Task 3. Identity, registry state, evidence receipts, and Fit remain independent.
+Affected tracked/external artifacts: retailer-source-policy.json, retailer-observations.json, public-catalog-projection.json as a legacy migration input, a new exhaustive coverage/revalidation audit, and later lifecycle-derived artifacts. Raw feed/API/page objects are immutable and never synthesized from the projection.
+Current contract: 1,204 AO API links have no stored AO availability evidence; 152 Partnerize links carry Stock=Yes in the projection but lose that signal and source hash in the ledger; 258 sitemap/web-search links are URLs rather than availability observations. Existing source policy forbids or defers automated page crawling for every legacy retailer lane.
+Target contract: source-policy-v2 adapters emit product-bound three-state observations only from hash-bound raw source objects; complete Partnerize feed presence may authorize available, explicit AO available true/false maps to available/unavailable, missing status maps to unknown, failed/incomplete collection cannot demote, and legacy links become explicit policy-aware revalidation items.
+Migration/rebuild required: inventory all 1,614 baseline rows; migrate the ledger append-safely to schema v2; add AO and Partnerize snapshot producers; preserve every legacy link as non-authoritative observation plus a terminal or runnable revalidation state; emit an exhaustive coverage audit. Do not rebuild lifecycle/public/P0 projections until Task 3.
+Rollback unit: one Task 2 commit containing source policy, producers, append-safe ledger, coverage audit, fixtures, tests, build scripts, and control-plan evidence. Rollback restores the prior ledger/artifact without deleting raw source objects.
+Positive real canaries: AO SMS6HCI02A response with available:true and a complete in-stock Partnerize row produce fresh available observations with raw hashes; an available observation remains current through a later failed collection attempt.
+Negative/adversarial canaries: AO DW42CS and EDW6SL responses with available:false; an AO payload with no available field; failed API collection; incomplete or ambiguous Partnerize feed; Stock=No/unknown; duplicate model bindings; legacy sitemap/search URLs; redirects; policy-blocked hosts; duplicate replay; and a conflicting observation ID.
+```
+
 **Files:**
 
+- Modify: `data/architecture-v2/policies/retailer-source-policy.json`
+- Modify: `src/domain/architecture-v2-paths.mjs`
+- Create: `src/domain/retailer-observation-ledger.mjs`
+- Create: `src/domain/retailer-observation-coverage.mjs`
 - Modify: `scripts/discovery-pipeline/lib/appliances-online-product-api.js`
 - Modify: `tests/discovery-evidence-seed.test.mjs`
 - Modify: `scripts/affiliate/partnerize-tgg.js`
@@ -628,6 +649,8 @@ case, not the only source in scope.
 - Create: `tests/architecture-v2/retailer-observation-coverage.test.mjs`
 - Create:
   `data/architecture-v2/reviews/automated/retailer-observation-coverage.json`
+- Add immutable AO and retailer-source fixtures under the existing
+  `tests/fixtures/architecture-v2/` hierarchy.
 
 **Current source inventory:** the tracked public projection contains 1,614
 retailer-link rows: 1,204 AO API, 152 The Good Guys Partnerize feed, and 258
@@ -673,6 +696,49 @@ to Task 3.
 
 **Stop condition:** page marketing text is parsed without a raw source object,
 timestamp, or explicit unknown fallback.
+
+**Execution result (2026-07-20):**
+
+- Migrated the tracked ledger from schema v1 to append-safe schema v2. It now
+  preserves 1,614 current baseline link observations plus 38 removed historical
+  observations, for 1,652 total; every migrated legacy row remains explicitly
+  `unknown` and carries a row/projection binding rather than fabricated raw
+  evidence.
+- Added hash-bound typed producers for the bounded Appliances Online exact
+  product API and the authorised The Good Guys Partnerize feed. Real AO
+  fixtures prove `available:true`, `available:false`, missing status, exact
+  model/URI mismatch, and failed collection behavior. Partnerize tests prove
+  `Stock=Yes`, `Stock=No`, unknown stock, incomplete-feed absence, ambiguous
+  identity, and conflicting duplicate rows.
+- Emitted exhaustive coverage for all 1,614 current links: 1,270 route to AO
+  bounded canary revalidation, 172 route to the authorised Partnerize feed,
+  and 172 retailer-page links remain blocked by source policy. The tracked
+  production ledger intentionally has zero typed observations until source runs
+  are executed; capability is not reported as completed collection.
+- Producer boundary: AO no longer hardcodes `unavailable:false`; collection
+  dates and verification dates are explicit inputs; feed/API evidence requires
+  exact product binding, raw bytes, timestamp, source policy, and SHA-256.
+- Consumer boundary: typed available/unavailable observations drive the shared
+  lifecycle reducer in integration tests; legacy URL/stock rows remain
+  non-authoritative. Actual lifecycle/public/P0 cutover remains isolated for
+  Task 3.
+- Replay and second-run boundaries: two consecutive builds produced byte
+  SHA-256 `3f06dbe18744c1d09abd514a693a8a3dc4d932b9450c8ee9932e289f6e51c94c`
+  for the ledger and
+  `0c064022acd0204e25eea9d2beb39d8d4592cd3f2e609fb7fe77981c7f8b6e12`
+  for coverage, without network or external-drive access.
+- Whole-system boundary: ledger and coverage are distinct released stages in a
+  24-stage system contract. The current semantic contract is
+  `historical_evidence_system_3d41ac037450ec69977b7e13`; the outstanding
+  lifecycle-binding gap now correctly belongs to Task 3. A prior system count
+  bug reading `retailer.name` instead of `retailer.n` was fixed, so pending
+  migration is now correctly zero.
+- Adversarial review added validation that survives re-signing: summary,
+  collection-attempt, source-binding, redirect-target, opaque affiliate source
+  reference, sorted-ID, and typed-raw-hash invariants all fail closed.
+- Verification: 53 affected producer/consumer tests passed; full
+  `npm run test:architecture-v2` passed 1,036/1,036; full `npm test` passed
+  2,693/2,693; generated artifacts replay byte-for-byte.
 
 ### Task 3: Rebuild downstream state and prove visibility isolation
 

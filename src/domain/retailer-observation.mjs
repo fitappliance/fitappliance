@@ -1,7 +1,12 @@
 const AVAILABILITY = new Set(['available', 'unavailable', 'unknown']);
-const SOURCE_TYPES = new Set(['affiliate_feed', 'public_retailer_page', 'legacy_catalog']);
+const SOURCE_TYPES = new Set([
+  'affiliate_feed',
+  'public_retailer_api',
+  'public_retailer_page',
+  'legacy_catalog',
+]);
 const LISTING_STATES = new Set(['current', 'stale', 'unavailable', 'redirected', 'relisted']);
-const TYPED_SOURCE_TYPES = new Set(['affiliate_feed', 'public_retailer_page']);
+const TYPED_SOURCE_TYPES = new Set(['affiliate_feed', 'public_retailer_api', 'public_retailer_page']);
 const CATALOG_STATES = new Set(['LISTED_UNVERIFIED', 'ARCHIVED', 'ABSENT']);
 
 function required(value, label) {
@@ -35,6 +40,40 @@ function sha256(value, label) {
   const normalized = String(value ?? '').trim().toLowerCase();
   if (!/^[a-f0-9]{64}$/.test(normalized)) throw new TypeError(`${label} must be a raw source SHA-256`);
   return normalized;
+}
+
+function calendarDate(value, label) {
+  const text = required(value, label);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) throw new TypeError(`${label} must be YYYY-MM-DD`);
+  const parsed = new Date(`${text}T00:00:00.000Z`);
+  if (Number.isNaN(parsed.valueOf()) || parsed.toISOString().slice(0, 10) !== text) {
+    throw new TypeError(`${label} must be a real calendar date`);
+  }
+  return text;
+}
+
+function normalizeLegacyProjectionBinding(input) {
+  if (input == null) return null;
+  if (typeof input !== 'object' || Array.isArray(input)) {
+    throw new TypeError('legacy projection binding must be an object');
+  }
+  const migratedFromSchemaVersion = input.migratedFromSchemaVersion == null
+    ? null
+    : Number(input.migratedFromSchemaVersion);
+  if (migratedFromSchemaVersion != null
+    && (!Number.isInteger(migratedFromSchemaVersion) || migratedFromSchemaVersion < 1)) {
+    throw new TypeError('migrated schema version must be a positive integer');
+  }
+  return {
+    projectionSha256: input.projectionSha256 == null
+      ? null
+      : sha256(input.projectionSha256, 'legacy projection SHA-256'),
+    rowSha256: sha256(input.rowSha256, 'legacy projection row SHA-256'),
+    originSource: required(input.originSource, 'legacy projection origin source'),
+    verifiedAt: calendarDate(input.verifiedAt, 'legacy projection verifiedAt'),
+    sourcePolicyId: required(input.sourcePolicyId, 'legacy projection source policy id'),
+    ...(migratedFromSchemaVersion == null ? {} : { migratedFromSchemaVersion }),
+  };
 }
 
 export function createObservation(input) {
@@ -72,6 +111,20 @@ export function createObservation(input) {
   if (!typedSource && availability !== 'unknown') {
     throw new TypeError('legacy catalogue observations must keep availability unknown');
   }
+  let redirectUrl = null;
+  if (listingState === 'redirected') {
+    const parsedRedirect = new URL(required(input.redirectUrl, 'redirect destination'));
+    if (parsedRedirect.protocol !== 'https:' || parsedRedirect.username || parsedRedirect.password) {
+      throw new TypeError('redirect destination must use trusted HTTPS');
+    }
+    parsedRedirect.hash = '';
+    redirectUrl = parsedRedirect.toString();
+  } else if (input.redirectUrl != null) {
+    throw new TypeError('redirect destination requires redirected listing state');
+  }
+  if (typedSource && input.legacyProjectionBinding != null) {
+    throw new TypeError('typed retailer observations cannot carry a legacy projection binding');
+  }
   const record = {
     id: required(input.id, 'observation id'),
     canonicalProductId: required(input.canonicalProductId, 'canonical product id'),
@@ -79,6 +132,7 @@ export function createObservation(input) {
     adapterId,
     observedAt,
     url: parsedUrl.toString(),
+    redirectUrl,
     availability,
     priceAud: input.priceAud ?? null,
     title: input.title ? String(input.title).trim() : null,
@@ -91,6 +145,9 @@ export function createObservation(input) {
     policyVersion,
     expectedCadenceHours,
     maximumCurrentAgeHours,
+    legacyProjectionBinding: typedSource
+      ? null
+      : normalizeLegacyProjectionBinding(input.legacyProjectionBinding),
   };
   if (input.dimensionHint) {
     record.dimensionHint = { ...input.dimensionHint };
@@ -138,7 +195,7 @@ function listingKey(observation) {
 }
 
 function observationStateKey(observation) {
-  return `${observation.availability}\0${observation.listingState}\0${observation.url}`;
+  return `${observation.availability}\0${observation.listingState}\0${observation.url}\0${observation.redirectUrl ?? ''}`;
 }
 
 function newestObservations(observations) {

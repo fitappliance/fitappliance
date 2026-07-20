@@ -69,6 +69,7 @@ test('AO product API helper normalizes decimal AUD prices to the runtime integer
     },
     specificationsPayload: { groupedAttributes: {} },
     productUrl: 'https://www.appliancesonline.com.au/product/smeg-dwau6315x-under-bench-dishwasher',
+    observedAt: '2026-05-09T00:00:00.000Z',
   });
 
   assert.equal(product.retailers[0].p, 1406);
@@ -117,6 +118,7 @@ test('discovery evidence seeding writes manual-evidence candidate entries and co
         title: 'LG Series 5 8kg Front Load Washing Machine WV5-1408W',
         uri: '/product/lg-wv5-1408w-8kg-series-5-front-load-washing-machine',
         price: 931,
+        available: true,
         manufacturer: { name: 'LG' }
       },
       'specifications/sku/WV5-1408W': {

@@ -2,6 +2,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { createHash } = require('node:crypto');
 
 const DEFAULT_CAMREF = '1011l5JNxE';
 const TGG_RETAILER_NAME = 'The Good Guys';
@@ -416,6 +417,137 @@ function buildCatalogModelIndex(catalogProducts) {
     index.set(model, list);
   }
   return index;
+}
+
+function partnerizeAvailability(stock) {
+  const normalized = String(stock ?? '').trim().toLowerCase();
+  if (['yes', 'in stock', 'instock', 'true', '1'].includes(normalized)) {
+    return { availability: 'available', listingState: 'current' };
+  }
+  if (['no', 'out of stock', 'outofstock', 'false', '0'].includes(normalized)) {
+    return { availability: 'unavailable', listingState: 'unavailable' };
+  }
+  return { availability: 'unknown', listingState: 'current' };
+}
+
+function exactFeedBytes(value) {
+  if (Buffer.isBuffer(value)) return value;
+  if (value instanceof Uint8Array) return Buffer.from(value);
+  if (typeof value === 'string') return Buffer.from(value);
+  throw new TypeError('Partnerize raw feed bytes required');
+}
+
+function normalizedBrand(value) {
+  return String(value ?? '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function feedCandidateStateKey(row) {
+  return [
+    row.retailerProductId,
+    row.url,
+    row.availability,
+    row.listingState,
+    row.priceAud,
+    row.title,
+  ].join('\0');
+}
+
+async function buildPartnerizeRetailerSnapshot({
+  adapter,
+  catalogProducts,
+  feedRawBytes,
+  observedAt,
+  rawSourceReference,
+  complete,
+} = {}) {
+  if (!Array.isArray(catalogProducts)) throw new TypeError('catalogProducts required');
+  if (typeof complete !== 'boolean') throw new TypeError('Partnerize feed completeness must be explicit');
+  const bytes = exactFeedBytes(feedRawBytes);
+  const feedRows = parsePartnerizeFeedCsv(bytes.toString('utf8'), { requireInStock: false });
+  const catalogByModel = buildCatalogModelIndex(catalogProducts);
+  const quarantines = [];
+  const candidates = [];
+
+  for (const row of feedRows) {
+    const wantedCategory = CORE_FEED_CATEGORY_TO_CATALOG[row.fit_category];
+    const modelMatches = catalogByModel.get(row.manufacturer_model_normalized) ?? [];
+    const categoryMatches = modelMatches.filter((product) => product?.cat === wantedCategory);
+    const brandMatches = categoryMatches.filter((product) => (
+      !product?.brand || !row.brand || normalizedBrand(product.brand) === normalizedBrand(row.brand)
+    ));
+    if (brandMatches.length === 0) {
+      if (modelMatches.length > 0) {
+        quarantines.push({
+          model: row.manufacturer_model,
+          reasonCode: categoryMatches.length ? 'BRAND_MISMATCH' : 'CATEGORY_MISMATCH',
+        });
+      }
+      continue;
+    }
+    if (brandMatches.length !== 1) {
+      quarantines.push({
+        model: row.manufacturer_model,
+        reasonCode: 'AMBIGUOUS_CATALOG_IDENTITY',
+        candidateCanonicalProductIds: brandMatches
+          .map((product) => product.canonicalProductId)
+          .filter(Boolean)
+          .sort(),
+      });
+      continue;
+    }
+    const product = brandMatches[0];
+    if (!product.canonicalProductId || !row.title || !(row.tgg_sku || row.manufacturer_model)) {
+      quarantines.push({ model: row.manufacturer_model, reasonCode: 'INCOMPLETE_IDENTITY_BINDING' });
+      continue;
+    }
+    candidates.push({
+      canonicalProductId: product.canonicalProductId,
+      retailerProductId: String(row.tgg_sku || row.manufacturer_model),
+      url: row.url,
+      title: row.title,
+      priceAud: row.p,
+      imageUrl: null,
+      ...partnerizeAvailability(row.stock),
+    });
+  }
+
+  const grouped = new Map();
+  for (const candidate of candidates) {
+    if (!grouped.has(candidate.canonicalProductId)) grouped.set(candidate.canonicalProductId, []);
+    grouped.get(candidate.canonicalProductId).push(candidate);
+  }
+  const rows = [];
+  for (const [canonicalProductId, matches] of grouped) {
+    const states = new Map(matches.map((row) => [feedCandidateStateKey(row), row]));
+    if (states.size > 1) {
+      quarantines.push({ canonicalProductId, reasonCode: 'CONFLICTING_FEED_ROWS' });
+      continue;
+    }
+    rows.push(states.values().next().value);
+  }
+  rows.sort((left, right) => left.retailerProductId.localeCompare(right.retailerProductId)
+    || left.canonicalProductId.localeCompare(right.canonicalProductId));
+  quarantines.sort((left, right) => left.reasonCode.localeCompare(right.reasonCode)
+    || String(left.canonicalProductId ?? left.model).localeCompare(String(right.canonicalProductId ?? right.model)));
+
+  const { normalizeRetailerSnapshot } = await import('../../src/domain/retailer-source-adapter.mjs');
+  const snapshot = normalizeRetailerSnapshot(adapter, {
+    observedAt,
+    complete,
+    rawPayloadSha256: createHash('sha256').update(bytes).digest('hex'),
+    rawSourceReference,
+    rows,
+  });
+  return {
+    snapshot,
+    quarantines,
+    summary: {
+      parsedFeedRows: feedRows.length,
+      acceptedRows: rows.length,
+      quarantinedBindings: quarantines.length,
+      complete,
+    },
+  };
 }
 
 function buildFeedRetailer(row, {
@@ -1041,6 +1173,7 @@ module.exports = {
   TGG_CAMPAIGN_TERMS,
   applyPartnerizeTrackingToCatalog,
   applyPartnerizeTrackingToManualRetailers,
+  buildPartnerizeRetailerSnapshot,
   buildTggCommissionMetadata,
   buildPartnerizeClickUrl,
   buildTggPdfEvidenceQueue,
