@@ -3,7 +3,12 @@ import { createHash } from 'node:crypto';
 const SHA256 = /^[a-f0-9]{64}$/;
 const RFC3339_UTC = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/;
 const AUTHORITY_MODES = Object.freeze(['official', 'reference']);
-const LIFECYCLE_STATES = Object.freeze(['CURRENT_RETAIL', 'CATALOG_ARCHIVED', 'REGISTRY_ONLY']);
+const LIFECYCLE_STATES = Object.freeze([
+  'CURRENT_RETAIL',
+  'CATALOG_ARCHIVED',
+  'REGISTRY_ONLY',
+  'UNKNOWN_RETAIL',
+]);
 const CATEGORIES = Object.freeze(['fridge', 'dishwasher', 'dryer', 'washing_machine']);
 const REQUESTED_FIELDS = Object.freeze([
   'closedEnvelope.widthMm',

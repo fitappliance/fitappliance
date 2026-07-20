@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -35,12 +36,20 @@ import {
 import {
   assertHistoricalReplacementAudit,
 } from '../../src/domain/historical-replacement-audit.mjs';
+import {
+  buildRetailLifecycleShadow,
+} from '../../src/domain/retail-lifecycle-shadow.mjs';
+import {
+  buildRetailLifecycleRefreshInventory,
+} from '../../src/domain/retail-lifecycle-refresh-inventory.mjs';
 
 const defaultRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 const ARTIFACT_KEYS = Object.freeze([
   'retailerObservations',
   'retailerObservationCoverage',
+  'retailLifecycleShadow',
+  'retailLifecycleRefreshInventory',
   'officialRegistrySnapshots',
   'canonicalRegistry',
   'historicalEvidenceRecoveryAcceptanceBundle',
@@ -174,6 +183,18 @@ function nativeSemantic(key, value) {
   }
   if (key === 'retailerObservationCoverage') {
     return { payload: withoutField(value, 'semanticSha256'), declared: value.semanticSha256 };
+  }
+  if (key === 'retailLifecycleShadow') {
+    return {
+      payload: withoutField(withoutField(value, 'semanticSha256'), 'shadowId'),
+      declared: value.semanticSha256,
+    };
+  }
+  if (key === 'retailLifecycleRefreshInventory') {
+    return {
+      payload: withoutField(withoutField(value, 'semanticSha256'), 'inventoryId'),
+      declared: value.semanticSha256,
+    };
   }
   if (key === 'historicalModelEvidenceClassification') {
     return { payload: classificationSemantic(value), declared: value.semanticClassificationSha256 };
@@ -348,12 +369,55 @@ async function fileInputs(root, paths, cache) {
 
 export async function buildHistoricalEvidenceSystemContractFromRepository({ root = defaultRoot } = {}) {
   const artifacts = await readArtifacts(root);
+  const [
+    projectionBytes,
+    ledgerBytes,
+    sourcePolicyBytes,
+    releasePolicyBytes,
+    lifecycleShadowBytes,
+    coverageBytes,
+  ] = await Promise.all([
+    readFile(resolveArchitectureV2Path(root, 'publicProjection')),
+    readFile(resolveArchitectureV2Path(root, 'retailerObservations')),
+    readFile(resolveArchitectureV2Path(root, 'retailerSourcePolicy')),
+    readFile(resolveArchitectureV2Path(root, 'retailLifecycleReleasePolicy')),
+    readFile(resolveArchitectureV2Path(root, 'retailLifecycleShadow')),
+    readFile(resolveArchitectureV2Path(root, 'retailerObservationCoverage')),
+  ]);
+  const releasePolicy = JSON.parse(releasePolicyBytes);
+  const fileSha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+  const lifecycleShadow = buildRetailLifecycleShadow({
+    publicProjection: artifacts.publicProjection,
+    publicProjectionSha256: fileSha256(projectionBytes),
+    retailerLedger: artifacts.retailerObservations,
+    retailerLedgerSha256: fileSha256(ledgerBytes),
+    sourcePolicy: JSON.parse(sourcePolicyBytes),
+    sourcePolicySha256: fileSha256(sourcePolicyBytes),
+    releasePolicySha256: fileSha256(releasePolicyBytes),
+    releaseEpoch: releasePolicy.releaseEpoch,
+    asOf: releasePolicy.asOf,
+    retailLifecyclePolicyVersion: releasePolicy.retailLifecyclePolicyVersion,
+  });
+  assertCanonicalEqual('retail lifecycle shadow', artifacts.retailLifecycleShadow, lifecycleShadow);
+  const lifecycleRefresh = buildRetailLifecycleRefreshInventory({
+    shadow: artifacts.retailLifecycleShadow,
+    shadowSha256: fileSha256(lifecycleShadowBytes),
+    coverage: artifacts.retailerObservationCoverage,
+    coverageSha256: fileSha256(coverageBytes),
+  });
+  assertCanonicalEqual(
+    'retail lifecycle refresh inventory',
+    artifacts.retailLifecycleRefreshInventory,
+    lifecycleRefresh,
+  );
   verifyCurrentReplay(artifacts);
   const fileCache = new Map();
 
   const definitions = [
-    ['retailer-observations', 'retailerObservations', 'scripts/architecture-v2/build-retailer-ledger.mjs', ['scripts/architecture-v2/build-retailer-ledger.mjs', 'src/domain/retailer-observation-ledger.mjs', 'src/domain/retailer-observation.mjs', 'src/domain/retailer-source-adapter.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [['current-publication', 'content']], ['CONTROL_INPUT']],
+    ['retailer-observations', 'retailerObservations', 'scripts/architecture-v2/build-retailer-ledger.mjs', ['scripts/architecture-v2/build-retailer-ledger.mjs', 'src/domain/retailer-observation-ledger.mjs', 'src/domain/retailer-observation.mjs', 'src/domain/retailer-source-adapter.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [], ['CONTROL_INPUT']],
     ['retailer-observation-coverage', 'retailerObservationCoverage', 'scripts/architecture-v2/build-retailer-observation-coverage.mjs', ['scripts/architecture-v2/build-retailer-observation-coverage.mjs', 'src/domain/retailer-observation-coverage.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [['current-publication', 'content'], ['retailer-observations', 'semantic']], ['CONTROL_ONLY']],
+    ['retail-lifecycle-shadow', 'retailLifecycleShadow', 'scripts/architecture-v2/build-retail-lifecycle-shadow.mjs', ['scripts/architecture-v2/build-retail-lifecycle-shadow.mjs', 'src/domain/retail-lifecycle-shadow.mjs', 'src/domain/retailer-observation.mjs', 'data/architecture-v2/policies/retail-lifecycle-release-policy.json'], [['current-publication', 'content'], ['retailer-observations', 'semantic']], ['CONTROL_ONLY']],
+    ['retail-lifecycle-refresh', 'retailLifecycleRefreshInventory', 'scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs', ['scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs', 'src/domain/retail-lifecycle-refresh-inventory.mjs'], [['retailer-observation-coverage', 'semantic'], ['retail-lifecycle-shadow', 'semantic']], ['CONTROL_ONLY']],
     ['official-registry-snapshots', 'officialRegistrySnapshots', 'scripts/architecture-v2/acquire-official-registries.mjs', ['scripts/architecture-v2/acquire-official-registries.mjs', 'data/architecture-v2/policies/official-registry-source-policy.json'], [], ['HISTORICAL_INPUT']],
     ['canonical-identity', 'canonicalRegistry', 'scripts/architecture-v2/build-canonical-registry.mjs', ['scripts/architecture-v2/build-canonical-registry.mjs', 'src/domain/canonical-registry.mjs'], [], ['CURRENT_INPUT', 'HISTORICAL_INPUT']],
     ['receipt-reconciliation', 'historicalEvidenceRecoveryAcceptanceBundle', 'src/domain/historical-evidence-recovery-contract.mjs', ['src/domain/historical-evidence-recovery-contract.mjs', 'data/architecture-v2/policies/historical-evidence-recovery-policy.json'], [], ['CURRENT_INPUT', 'HISTORICAL_INPUT']],
@@ -418,7 +482,7 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
   const epochDefinitions = [
     ['identity-registry', 'src/domain/canonical-registry.mjs', ['src/domain/canonical-registry.mjs', 'scripts/architecture-v2/build-canonical-registry.mjs']],
     ['observation', 'src/domain/retailer-observation.mjs', ['src/domain/retailer-observation.mjs', 'src/domain/retailer-source-adapter.mjs']],
-    ['lifecycle-policy', 'src/domain/historical-appliance-reference.mjs', ['src/domain/historical-appliance-reference.mjs', 'data/architecture-v2/policies/reference-artifact-policy.json']],
+    ['lifecycle-policy', 'src/domain/retail-lifecycle-shadow.mjs', ['src/domain/historical-appliance-reference.mjs', 'src/domain/retail-lifecycle-shadow.mjs', 'data/architecture-v2/policies/retail-lifecycle-release-policy.json', 'data/architecture-v2/policies/reference-artifact-policy.json']],
     ['resolver-contract', 'scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs', ['scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs', 'data/architecture-v2/policies/official-discovery-seed-policy.json']],
     ['source-authority-policy', 'data/architecture-v2/policies/manufacturer-source-policy.json', ['data/architecture-v2/policies/manufacturer-source-policy.json', 'data/architecture-v2/policies/retailer-source-policy.json']],
     ['mineru-toolchain', 'src/domain/mineru-tool-identity.mjs', ['src/domain/mineru-tool-identity.mjs', 'src/domain/mineru-runner.mjs', 'scripts/architecture-v2/parse-pdf-with-mineru.mjs']],
@@ -471,21 +535,39 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
       retailerObservationAccountedLinks: artifacts.retailerObservationCoverage.summary.accountedLinks,
       retailerObservationTypedLinks: artifacts.retailerObservationCoverage.summary.typedLinks,
       retailerObservationRevalidationItems: artifacts.retailerObservationCoverage.summary.revalidationItems,
+      lifecycleShadowStatus: artifacts.retailLifecycleShadow.cutover.status,
+      lifecycleShadowUnresolvedLegacyCurrentProducts:
+        artifacts.retailLifecycleShadow.cutover.unresolvedLegacyCurrentIds.length,
+      lifecycleShadowUnsafeRemovedLegacyCurrentProducts:
+        artifacts.retailLifecycleShadow.cutover.unsafeRemovedLegacyCurrentIds.length,
+      lifecycleShadowPolicyExcludedProducts:
+        artifacts.retailLifecycleShadow.summary.policyExcludedProducts,
+      lifecycleShadowPolicyExcludedObservations:
+        artifacts.retailLifecycleShadow.summary.policyExcludedObservations,
+      lifecycleShadowPolicyExcludedCollectionAttempts:
+        artifacts.retailLifecycleShadow.summary.policyExcludedCollectionAttempts,
+      lifecycleRefreshProducts: artifacts.retailLifecycleRefreshInventory.summary.products,
+      lifecycleRefreshAuthorizedProducts:
+        artifacts.retailLifecycleRefreshInventory.summary.byExecutionDisposition.RUNNABLE_AUTHORIZED_SOURCE ?? 0,
+      lifecycleRefreshCanaryProducts:
+        artifacts.retailLifecycleRefreshInventory.summary.byExecutionDisposition.BOUNDED_CANARY_ONLY ?? 0,
+      lifecycleRefreshPolicyBlockedProducts:
+        artifacts.retailLifecycleRefreshInventory.summary.byExecutionDisposition.BLOCKED_BY_SOURCE_POLICY ?? 0,
       p0AssignedTargets: currentWorkstream.assignedTargets,
       p0EligibleTargets: currentWorkstream.eligibleTargets,
       p1AssignedTargets: historicalWorkstream.assignedTargets,
       p1EligibleTargets: historicalWorkstream.eligibleTargets,
       knownContractGaps: [
         {
-          id: 'RETAILER_OBSERVATIONS_NOT_BOUND_TO_LIFECYCLE',
+          id: 'LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER',
           severity: 'CRITICAL',
-          repairTask: 3,
-          detail: 'Task 2 has migrated and accounted for every retailer link, but the tracked lifecycle projection still derives current status from the legacy catalogue rather than retailer-observation hashes.',
+          repairTask: 9,
+          detail: 'The complete retailer ledger drives a hash-bound lifecycle shadow and product-scoped refresh inventory, but production cutover remains blocked until every legacy-current product is either freshly available or explicitly unavailable/archived.',
         },
         {
           id: 'TARGET_STATE_LEGACY_TIME_BINDINGS',
           severity: 'HIGH',
-          repairTask: 3,
+          repairTask: 9,
           detail: 'The target-state artifact stores source generatedAt values; this contract supplies the missing recomputed content bindings until its schema is migrated.',
         },
         {

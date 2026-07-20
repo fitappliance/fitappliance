@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { createObservation } from './retailer-observation.mjs';
 import {
   normalizeRetailerSourcePolicy,
+  retailerObservationAuthorizedBySourcePolicy,
   validateRetailerObservationLedger,
 } from './retailer-observation-ledger.mjs';
 
@@ -67,17 +68,36 @@ function observationStateKey(observation) {
     observation.redirectUrl ?? ''].join('\0');
 }
 
-function latestTypedByLink(ledger) {
+function latestTypedByLink(ledger, normalizedPolicy) {
   const grouped = new Map();
+  const excluded = new Map();
   for (const value of ledger.observations) {
     const observation = createObservation(value);
     if (observation.sourceType === 'legacy_catalog') continue;
     const key = linkKey(observation.canonicalProductId, observation.url);
-    if (!grouped.has(key)) grouped.set(key, []);
-    grouped.get(key).push(observation);
+    const target = retailerObservationAuthorizedBySourcePolicy(observation, normalizedPolicy)
+      ? grouped
+      : excluded;
+    if (!target.has(key)) target.set(key, []);
+    target.get(key).push(observation);
   }
   const result = new Map();
-  for (const [key, observations] of grouped) {
+  const keys = [...new Set([...grouped.keys(), ...excluded.keys()])].sort();
+  for (const key of keys) {
+    const observations = grouped.get(key) ?? [];
+    const excludedRows = (excluded.get(key) ?? [])
+      .sort((left, right) => right.observedAt.localeCompare(left.observedAt)
+        || left.id.localeCompare(right.id));
+    const policyExcludedObservationIds = excludedRows.map((row) => row.id).sort();
+    if (observations.length === 0) {
+      result.set(key, {
+        state: 'TYPED_POLICY_EXCLUDED',
+        observationIds: policyExcludedObservationIds,
+        observedAt: excludedRows[0].observedAt,
+        policyExcludedObservationIds,
+      });
+      continue;
+    }
     observations.sort((left, right) => right.observedAt.localeCompare(left.observedAt)
       || left.id.localeCompare(right.id));
     const newestAt = observations[0].observedAt;
@@ -87,6 +107,7 @@ function latestTypedByLink(ledger) {
         state: 'TYPED_CONFLICT',
         observationIds: newest.map((row) => row.id).sort(),
         observedAt: newestAt,
+        policyExcludedObservationIds,
       });
     } else {
       const observation = newest[0];
@@ -97,6 +118,7 @@ function latestTypedByLink(ledger) {
         adapterId: observation.adapterId,
         rawSourceSha256: observation.rawSourceSha256,
         redirectUrl: observation.redirectUrl,
+        policyExcludedObservationIds,
       });
     }
   }
@@ -174,12 +196,12 @@ export function validateRetailerObservationCoverage(document) {
     throw new TypeError('retailer observation coverage items must be sorted');
   }
   const states = new Set(['LEGACY_UNKNOWN', 'TYPED_AVAILABLE', 'TYPED_UNAVAILABLE',
-    'TYPED_REDIRECTED', 'TYPED_UNKNOWN', 'TYPED_CONFLICT']);
+    'TYPED_REDIRECTED', 'TYPED_UNKNOWN', 'TYPED_CONFLICT', 'TYPED_POLICY_EXCLUDED']);
   for (const item of document.items) {
     required(item.canonicalProductId, 'coverage canonical product ID');
     retailerUrl(item.url);
     if (!states.has(item.terminalObservationState)) throw new TypeError('unsupported terminal observation state');
-    const resolved = ['TYPED_AVAILABLE', 'TYPED_UNAVAILABLE', 'TYPED_REDIRECTED']
+    const resolved = ['TYPED_AVAILABLE', 'TYPED_UNAVAILABLE']
       .includes(item.terminalObservationState);
     if (resolved !== (item.revalidation == null)) throw new TypeError('coverage revalidation state mismatch');
     if (item.terminalObservationState === 'LEGACY_UNKNOWN' && item.typedObservation != null) {
@@ -226,11 +248,11 @@ export function buildRetailerObservationCoverage({
   const policySha = sha256(sourcePolicySha256, 'retailer source policy SHA-256');
   validateRetailerObservationLedger(ledger);
   const normalizedPolicy = normalizeRetailerSourcePolicy(sourcePolicy);
-  const typedByLink = latestTypedByLink(ledger);
+  const typedByLink = latestTypedByLink(ledger, normalizedPolicy);
   const links = baselineLinks(publicProjection, normalizedPolicy);
   const items = links.map((link) => {
     const typed = typedByLink.get(linkKey(link.canonicalProductId, link.url)) ?? null;
-    const resolved = typed && !['TYPED_UNKNOWN', 'TYPED_CONFLICT'].includes(typed.state);
+    const resolved = typed && ['TYPED_AVAILABLE', 'TYPED_UNAVAILABLE'].includes(typed.state);
     return {
       baselineLinkId: link.baselineLinkId,
       canonicalProductId: link.canonicalProductId,

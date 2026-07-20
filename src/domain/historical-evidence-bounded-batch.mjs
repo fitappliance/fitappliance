@@ -39,7 +39,8 @@ const MODE_RANK = new Map([
 const LIFECYCLE_RANK = new Map([
   ['CURRENT_RETAIL', 0],
   ['CATALOG_ARCHIVED', 1],
-  ['REGISTRY_ONLY', 2],
+  ['UNKNOWN_RETAIL', 2],
+  ['REGISTRY_ONLY', 3],
 ]);
 const LANE_RANK = new Map([
   ['ACQUISITION', 0],
@@ -209,7 +210,7 @@ function validatePriorityLifecycle(target) {
   const allowed = lifecycleState === 'CURRENT_RETAIL'
     ? new Set(['P0_CURRENT_MISSING_DIMENSIONS', 'P2_CURRENT_CONFIRMATION'])
     : new Set(['P1_HISTORICAL_MISSING_DIMENSIONS', 'P3_HISTORICAL_CONFIRMATION']);
-  if (!['CURRENT_RETAIL', 'CATALOG_ARCHIVED', 'REGISTRY_ONLY'].includes(lifecycleState)
+  if (!['CURRENT_RETAIL', 'CATALOG_ARCHIVED', 'UNKNOWN_RETAIL', 'REGISTRY_ONLY'].includes(lifecycleState)
     || !allowed.has(priorityClass)) {
     throw new Error(`target priority/lifecycle mismatch: ${target.targetId}`);
   }

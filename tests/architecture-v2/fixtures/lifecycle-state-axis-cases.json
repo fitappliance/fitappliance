@@ -41,7 +41,7 @@
       { "id": "available_before_failure", "retailer": "The Good Guys", "adapterId": "tgg-feed-v1", "observedAt": "2026-07-19T00:00:00.000Z", "availability": "available", "listingState": "current", "maximumCurrentAgeHours": 72, "hash": "d" }
     ],
     "collectionAttempts": [
-      { "adapterId": "tgg-feed-v1", "retailer": "The Good Guys", "observedAt": "2026-07-19T23:00:00.000Z", "collectionStatus": "failed", "collectionError": "timeout", "rawSourceReference": "tgg:attempt:failed", "policyVersion": "tgg-source-v1" }
+      { "adapterId": "tgg-feed-v1", "retailer": "The Good Guys", "canonicalProductIds": ["fa_prod_failed_collection_preserves_fresh_available"], "observedAt": "2026-07-19T23:00:00.000Z", "collectionStatus": "failed", "collectionError": "timeout", "rawSourceReference": "tgg:attempt:failed", "policyVersion": "tgg-source-v1" }
     ],
     "expectedLifecycleState": "CURRENT_RETAIL",
     "expectedAuthorizingObservationId": "obs_available_before_failure"

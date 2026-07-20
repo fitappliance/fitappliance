@@ -88,6 +88,7 @@ test('AO snapshot refuses model or URI drift instead of attaching another produc
 test('AO collection failure is an empty failed snapshot, never synthesized unavailability', async () => {
   const snapshot = await buildAoFailedRetailerSnapshot({
     adapter,
+    canonicalProductId: 'fa_prod_dw42cs',
     observedAt: '2026-07-20T00:00:00.000Z',
     rawSourceReference: 'ao-api-attempt:timeout',
     collectionError: 'timeout',
@@ -95,6 +96,7 @@ test('AO collection failure is an empty failed snapshot, never synthesized unava
   assert.equal(snapshot.collectionStatus, 'failed');
   assert.equal(snapshot.complete, false);
   assert.deepEqual(snapshot.rows, []);
+  assert.deepEqual(snapshot.canonicalProductIds, ['fa_prod_dw42cs']);
   assert.equal(snapshot.rawPayloadSha256, null);
 });
 
@@ -113,6 +115,7 @@ test('AO typed status drives lifecycle while a later failed collection preserves
   });
   const failedSnapshot = await buildAoFailedRetailerSnapshot({
     adapter,
+    canonicalProductId: 'fa_prod_sms6hci02a',
     observedAt: '2026-07-20T01:00:00.000Z',
     rawSourceReference: 'ao-api-attempt:after-available',
     collectionError: 'timeout',

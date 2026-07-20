@@ -5,14 +5,14 @@
   "producerInputs": [
     {
       "path": "scripts/architecture-v2/build-historical-evidence-system-contract.mjs",
-      "contentSha256": "6e684cec552f16a584ea7d0584c27db2ab1c7faafdca4811c2308980d24f6a11"
+      "contentSha256": "ee0cef0242d4e04c4274578ef58ce0485db4ca1290d08eb7ccc8791d4b0e1fde"
     },
     {
       "path": "src/domain/historical-evidence-system-contract.mjs",
       "contentSha256": "d97cdb8fc20c51c4a28bc91d9242ac66683c399adb48af66e783755e1ad70c57"
     }
   ],
-  "producerSha256": "4086b95ac2969848e9d71239e93e222ab286b429134f9fccc4a7369fd58d0b40",
+  "producerSha256": "063d1c87cd977b45a97de250cc484b281e8abb259212afcf8c015f092dc06ae8",
   "epochs": [
     {
       "id": "fit-policy",
@@ -46,18 +46,26 @@
     },
     {
       "id": "lifecycle-policy",
-      "owner": "src/domain/historical-appliance-reference.mjs",
+      "owner": "src/domain/retail-lifecycle-shadow.mjs",
       "inputs": [
         {
           "path": "data/architecture-v2/policies/reference-artifact-policy.json",
           "contentSha256": "3dfa16b8e14ce105a03590426dde873871286aa942652222f58c5874b0ca220e"
         },
         {
+          "path": "data/architecture-v2/policies/retail-lifecycle-release-policy.json",
+          "contentSha256": "939fde58ff406a850cade9f963c5d02b870a89d5897a9f20d0932791296a2a8f"
+        },
+        {
           "path": "src/domain/historical-appliance-reference.mjs",
-          "contentSha256": "5004b55230e9ba2d133f8748287cb60fc331bdf2ddefebe13069a0347c307650"
+          "contentSha256": "bad4b7a40b551d069f7a1690007eb7cf9c871816ff961dd2aaa03afe7b84ae89"
+        },
+        {
+          "path": "src/domain/retail-lifecycle-shadow.mjs",
+          "contentSha256": "8fdc0dda1cf51cdfc3baf5bb825e617e717ced4cf476faaca2a7cd4dfc82ba67"
         }
       ],
-      "semanticSha256": "0394f1fdcb547dedb20cf5011a0db1910dc5b007884386827b528245fb80b8a2"
+      "semanticSha256": "321d175cc8911913795e59b23980202d32a926b851f78e4d2600b564b3c57759"
     },
     {
       "id": "mineru-toolchain",
@@ -84,14 +92,14 @@
       "inputs": [
         {
           "path": "src/domain/retailer-observation.mjs",
-          "contentSha256": "89f36578f646a6a13dc572f2ef0e503cb15244a46a3ef71b8085245da0e4d84a"
+          "contentSha256": "ec2715476eb9077c047a25ac76ca9922df8594cde55c1644e5027ec899ee7a73"
         },
         {
           "path": "src/domain/retailer-source-adapter.mjs",
-          "contentSha256": "463504977364033fc679c4ff23b5f73d2cb2075605981b7135c2b4615fb53609"
+          "contentSha256": "323c19042e972a9bd3f7778a77ae23c1d53af8dda8bf2a89cad41a16f190ba81"
         }
       ],
-      "semanticSha256": "5e9eb5dc95879591f4e5f5f489bebd71cd852d6aa5b6a51dee93a27163fce53f"
+      "semanticSha256": "0764059c5259d000369b11f41e1d731f25cda0494b83c74237d806b15b22303f"
     },
     {
       "id": "parser",
@@ -114,7 +122,7 @@
       "inputs": [
         {
           "path": "src/domain/historical-evidence-publication.mjs",
-          "contentSha256": "361dbae4a9645f0418eb82227c373eb59e9a12931a6d5996cbefc8ca00df06f6"
+          "contentSha256": "76c27f3fa3cbb835c5e1f37006d4784737f80a88ed14916f657a1bbf964587fc"
         },
         {
           "path": "src/domain/historical-reference-publication.mjs",
@@ -125,7 +133,7 @@
           "contentSha256": "cceb9f8f31adb2151043333f34b4e25186c39f88a0b172aa625cd88845c035b9"
         }
       ],
-      "semanticSha256": "bf2a8a1f9cba5abbc3af0eb4628fa56f205412bc4ba0becb6a99b807582f01c1"
+      "semanticSha256": "088ed4561424ee0121d9e02c016ae8a60952ea43bda15bc770983a75706d4d0c"
     },
     {
       "id": "receipt-policy",
@@ -137,10 +145,10 @@
         },
         {
           "path": "src/domain/historical-evidence-recovery-contract.mjs",
-          "contentSha256": "36ceb6547f46d09b95d8b004b238a537611ee605df02c913718a514b530e76a3"
+          "contentSha256": "31c029d5b2d7571bf365195a74a8678fbde72d89a81382a6880c61514f1785f4"
         }
       ],
-      "semanticSha256": "711ae56df01335fb3f03e2e4fe15cd5f44a620ffdae0c345efa03e18871a4c16"
+      "semanticSha256": "46ece23ef86c8fc5bde0a299881cbf7de0e48857b0524469c4e2d833308d8989"
     },
     {
       "id": "resolver-contract",
@@ -257,10 +265,10 @@
         },
         {
           "path": "src/domain/historical-evidence-recovery-contract.mjs",
-          "contentSha256": "36ceb6547f46d09b95d8b004b238a537611ee605df02c913718a514b530e76a3"
+          "contentSha256": "31c029d5b2d7571bf365195a74a8678fbde72d89a81382a6880c61514f1785f4"
         }
       ],
-      "producerSha256": "23ac4d5f81c71a8ed3108713897519923bcf5d5e32469e4f4f246f7bd216a192",
+      "producerSha256": "58c6006e7fb206ad1b8cfec2f419c2ea036400f4a76bdf1bf51062e8c779d5ec",
       "consumers": [
         "current-publication",
         "executable-queue",
@@ -355,20 +363,20 @@
         },
         {
           "path": "src/domain/historical-evidence-publication.mjs",
-          "contentSha256": "361dbae4a9645f0418eb82227c373eb59e9a12931a6d5996cbefc8ca00df06f6"
+          "contentSha256": "76c27f3fa3cbb835c5e1f37006d4784737f80a88ed14916f657a1bbf964587fc"
         },
         {
           "path": "src/domain/public-projection.mjs",
           "contentSha256": "cceb9f8f31adb2151043333f34b4e25186c39f88a0b172aa625cd88845c035b9"
         }
       ],
-      "producerSha256": "61f8288778d41535d7a53b83a840c9fa315d98091d093e421d8251c80c636437",
+      "producerSha256": "ecce6fb82f76035acd4bdf7c1581a6638c1fda20d14d2e13f2dda86dba9c8151",
       "consumers": [
         "fit-publication",
         "historical-replacement-publication",
         "lifecycle-reduction",
-        "retailer-observation-coverage",
-        "retailer-observations"
+        "retail-lifecycle-shadow",
+        "retailer-observation-coverage"
       ],
       "schemaVersion": 3,
       "generatedAt": null,
@@ -409,8 +417,8 @@
         "fit-publication",
         "historical-replacement-publication",
         "lifecycle-reduction",
-        "retailer-observation-coverage",
-        "retailer-observations"
+        "retail-lifecycle-shadow",
+        "retailer-observation-coverage"
       ]
     },
     {
@@ -460,14 +468,14 @@
         },
         {
           "path": "src/domain/historical-appliance-reference.mjs",
-          "contentSha256": "5004b55230e9ba2d133f8748287cb60fc331bdf2ddefebe13069a0347c307650"
+          "contentSha256": "bad4b7a40b551d069f7a1690007eb7cf9c871816ff961dd2aaa03afe7b84ae89"
         },
         {
           "path": "src/domain/historical-catalog-binding.mjs",
           "contentSha256": "892ae7126831a72477849906e76750746b4733cc822da3f4e6317d3a56064211"
         }
       ],
-      "producerSha256": "cfafadcf553a82c67785b4e54b44c073e905c8ff1680a57b09c900888b81203a",
+      "producerSha256": "a52658090ba7a517cde44b318f01d293b65c969233345efebd6c1d06d20e3fd1",
       "consumers": [
         "classification",
         "historical-replacement-publication",
@@ -922,10 +930,10 @@
         },
         {
           "path": "src/domain/historical-evidence-bounded-batch.mjs",
-          "contentSha256": "982f79f4bf3902d4213fa03ebc95980705b27d85b151756bd071661c74ba5bdd"
+          "contentSha256": "4f7d720d5605cb6209b385cd66a6cc3a58a9f23a231e43845f6795b8d8489328"
         }
       ],
-      "producerSha256": "f1186e1b45dc62649f8f2b47e1e85b2514acce9f096a861cd5a18180ef65432e",
+      "producerSha256": "3e2dc2424207c4e7c375e132370d1cb720b8aca96dcda1f8959e25c4527ff4be",
       "consumers": [
         "scale-control"
       ],
@@ -1312,23 +1320,24 @@
         },
         {
           "path": "scripts/architecture-v2/build-retailer-ledger.mjs",
-          "contentSha256": "1c686b5d7cea28d7fb9253146a66f718a726a0192367a2da5119d782005095eb"
+          "contentSha256": "597c453453435b365723db896e2aec6010353f105d1aff465dd2cab4a6bad840"
         },
         {
           "path": "src/domain/retailer-observation-ledger.mjs",
-          "contentSha256": "8ad701093b000adb8bb209854774d61c332cc88cc4475976d6b83be8e100c107"
+          "contentSha256": "991eabb8e7c87e1fd4daf0cf2adee0f2f9434d01210a01f2b2359ed23a769c86"
         },
         {
           "path": "src/domain/retailer-observation.mjs",
-          "contentSha256": "89f36578f646a6a13dc572f2ef0e503cb15244a46a3ef71b8085245da0e4d84a"
+          "contentSha256": "ec2715476eb9077c047a25ac76ca9922df8594cde55c1644e5027ec899ee7a73"
         },
         {
           "path": "src/domain/retailer-source-adapter.mjs",
-          "contentSha256": "463504977364033fc679c4ff23b5f73d2cb2075605981b7135c2b4615fb53609"
+          "contentSha256": "323c19042e972a9bd3f7778a77ae23c1d53af8dda8bf2a89cad41a16f190ba81"
         }
       ],
-      "producerSha256": "964025b9367d5cdd4d8bcbd7487414c4d8df07b92cb66f9c53df080d6af16b46",
+      "producerSha256": "c508d95a862c6cd5d5e3c13eac07c99bddb6da68d1394501133b9c6d7870c7e7",
       "consumers": [
+        "retail-lifecycle-shadow",
         "retailer-observation-coverage"
       ],
       "schemaVersion": 2,
@@ -1336,24 +1345,75 @@
       "contentSha256": "c3c1cf415a0c549fdb899d98cab5f789b25dcd3cc61b99c5f5cad96cef776eab",
       "semanticSha256": "541de2d9f4a85dd61ba848ad5a00e5d2a74b59799de1b15c8abf05bf057454c3",
       "declaredSemanticSha256": "541de2d9f4a85dd61ba848ad5a00e5d2a74b59799de1b15c8abf05bf057454c3",
-      "sourceBindings": [
-        {
-          "sourceStageId": "current-publication",
-          "digestKind": "content",
-          "declaredSha256": "0d354af8500a4959f47729b0b3d91b7936f167b071d32f9393cde568f116a501",
-          "resolvedSha256": "0d354af8500a4959f47729b0b3d91b7936f167b071d32f9393cde568f116a501"
-        }
-      ],
-      "releaseDependencies": [
-        "current-publication"
-      ],
+      "sourceBindings": [],
+      "releaseDependencies": [],
       "releaseEpoch": 1,
       "releaseState": "RELEASED",
       "lifecycleVisibility": [
         "CONTROL_INPUT"
       ],
       "nextTransitions": [
+        "retail-lifecycle-shadow",
         "retailer-observation-coverage"
+      ]
+    },
+    {
+      "id": "retail-lifecycle-shadow",
+      "artifactKey": "retailLifecycleShadow",
+      "artifactPath": "data/architecture-v2/reviews/automated/retail-lifecycle-shadow.json",
+      "owner": "scripts/architecture-v2/build-retail-lifecycle-shadow.mjs",
+      "producerInputs": [
+        {
+          "path": "data/architecture-v2/policies/retail-lifecycle-release-policy.json",
+          "contentSha256": "939fde58ff406a850cade9f963c5d02b870a89d5897a9f20d0932791296a2a8f"
+        },
+        {
+          "path": "scripts/architecture-v2/build-retail-lifecycle-shadow.mjs",
+          "contentSha256": "f037490b428917daac03331176b0d2e8d8832eb1d2aaa66e982d55079c114ce2"
+        },
+        {
+          "path": "src/domain/retail-lifecycle-shadow.mjs",
+          "contentSha256": "8fdc0dda1cf51cdfc3baf5bb825e617e717ced4cf476faaca2a7cd4dfc82ba67"
+        },
+        {
+          "path": "src/domain/retailer-observation.mjs",
+          "contentSha256": "ec2715476eb9077c047a25ac76ca9922df8594cde55c1644e5027ec899ee7a73"
+        }
+      ],
+      "producerSha256": "5338d3e6a16c69a97fa35e83dbbf09e80680d87c4aecf085c4805236cf3f6f7e",
+      "consumers": [
+        "retail-lifecycle-refresh"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": null,
+      "contentSha256": "2abc63c1bb586ce73a0726e4a1dfeab7abd648bbafaea0a15d97f3a6f49bc395",
+      "semanticSha256": "d0d9ae53f4abd60c72dbef5b1332bee5b25e65bf6cecd651dc45d54239edf7d8",
+      "declaredSemanticSha256": "d0d9ae53f4abd60c72dbef5b1332bee5b25e65bf6cecd651dc45d54239edf7d8",
+      "sourceBindings": [
+        {
+          "sourceStageId": "current-publication",
+          "digestKind": "content",
+          "declaredSha256": "0d354af8500a4959f47729b0b3d91b7936f167b071d32f9393cde568f116a501",
+          "resolvedSha256": "0d354af8500a4959f47729b0b3d91b7936f167b071d32f9393cde568f116a501"
+        },
+        {
+          "sourceStageId": "retailer-observations",
+          "digestKind": "semantic",
+          "declaredSha256": "541de2d9f4a85dd61ba848ad5a00e5d2a74b59799de1b15c8abf05bf057454c3",
+          "resolvedSha256": "541de2d9f4a85dd61ba848ad5a00e5d2a74b59799de1b15c8abf05bf057454c3"
+        }
+      ],
+      "releaseDependencies": [
+        "current-publication",
+        "retailer-observations"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "retail-lifecycle-refresh"
       ]
     },
     {
@@ -1372,11 +1432,13 @@
         },
         {
           "path": "src/domain/retailer-observation-coverage.mjs",
-          "contentSha256": "99435a0b1cfbabffcc2b40aae76151ef9ca3f9bd6b8a045033078977e805b71c"
+          "contentSha256": "d873182167d99f5984a424a0f765fd7dd416fe9934d05ca2dcece8879f629084"
         }
       ],
-      "producerSha256": "41f22b91bbb65c8ea2bd1cb3ede190afc4801967c1f46637799af629d0fa07e7",
-      "consumers": [],
+      "producerSha256": "66548b5b48158639bea314e7a9b1dccc382af438c7713d7e63003622d4c9d2e5",
+      "consumers": [
+        "retail-lifecycle-refresh"
+      ],
       "schemaVersion": 1,
       "generatedAt": null,
       "contentSha256": "82231a37845b4d19ebc042351f3c7564a23f924407bd18ddd79aefdc84dbdee1",
@@ -1399,6 +1461,55 @@
       "releaseDependencies": [
         "current-publication",
         "retailer-observations"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "retail-lifecycle-refresh"
+      ]
+    },
+    {
+      "id": "retail-lifecycle-refresh",
+      "artifactKey": "retailLifecycleRefreshInventory",
+      "artifactPath": "data/architecture-v2/reviews/automated/retail-lifecycle-refresh-inventory.json",
+      "owner": "scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs",
+          "contentSha256": "0dafbe0363b26d877a2291ab05cc81376c7f1709b44d2e4618215790993ab698"
+        },
+        {
+          "path": "src/domain/retail-lifecycle-refresh-inventory.mjs",
+          "contentSha256": "46fc4a690950bd2bb4146992e9e52b142b52137095eb85b8ea38f7ae84b83cb4"
+        }
+      ],
+      "producerSha256": "18b7ca9365862c8c099b533360b0b4aada26d653e2edb9fc718a29544b7668fe",
+      "consumers": [],
+      "schemaVersion": 1,
+      "generatedAt": null,
+      "contentSha256": "a6c701119a13f08f60f90dbae6d06154ea8cbdcf247e4a42f6a9a858ed58a636",
+      "semanticSha256": "4e19ef3b5cbf82de2e560b1f325e10f6d74b785915885c90179c68d5404c7b76",
+      "declaredSemanticSha256": "4e19ef3b5cbf82de2e560b1f325e10f6d74b785915885c90179c68d5404c7b76",
+      "sourceBindings": [
+        {
+          "sourceStageId": "retail-lifecycle-shadow",
+          "digestKind": "semantic",
+          "declaredSha256": "d0d9ae53f4abd60c72dbef5b1332bee5b25e65bf6cecd651dc45d54239edf7d8",
+          "resolvedSha256": "d0d9ae53f4abd60c72dbef5b1332bee5b25e65bf6cecd651dc45d54239edf7d8"
+        },
+        {
+          "sourceStageId": "retailer-observation-coverage",
+          "digestKind": "semantic",
+          "declaredSha256": "31f91ebb35b4c743aabc0f2f7a4c63fdff2f56bbd9af3b856de51890a88db78b",
+          "resolvedSha256": "31f91ebb35b4c743aabc0f2f7a4c63fdff2f56bbd9af3b856de51890a88db78b"
+        }
+      ],
+      "releaseDependencies": [
+        "retail-lifecycle-shadow",
+        "retailer-observation-coverage"
       ],
       "releaseEpoch": 1,
       "releaseState": "RELEASED",
@@ -1537,7 +1648,9 @@
       "mineru-knowledge",
       "program-status",
       "retailer-observations",
+      "retail-lifecycle-shadow",
       "retailer-observation-coverage",
+      "retail-lifecycle-refresh",
       "scale-ledger",
       "scale-control"
     ],
@@ -1720,7 +1833,11 @@
       },
       {
         "from": "current-publication",
-        "to": "retailer-observations"
+        "to": "retail-lifecycle-shadow"
+      },
+      {
+        "from": "retailer-observations",
+        "to": "retail-lifecycle-shadow"
       },
       {
         "from": "current-publication",
@@ -1729,6 +1846,14 @@
       {
         "from": "retailer-observations",
         "to": "retailer-observation-coverage"
+      },
+      {
+        "from": "retail-lifecycle-shadow",
+        "to": "retail-lifecycle-refresh"
+      },
+      {
+        "from": "retailer-observation-coverage",
+        "to": "retail-lifecycle-refresh"
       },
       {
         "from": "bounded-planner",
@@ -1776,21 +1901,31 @@
     "retailerObservationAccountedLinks": 1614,
     "retailerObservationTypedLinks": 0,
     "retailerObservationRevalidationItems": 1614,
+    "lifecycleShadowStatus": "BLOCKED",
+    "lifecycleShadowUnresolvedLegacyCurrentProducts": 1384,
+    "lifecycleShadowUnsafeRemovedLegacyCurrentProducts": 0,
+    "lifecycleShadowPolicyExcludedProducts": 0,
+    "lifecycleShadowPolicyExcludedObservations": 0,
+    "lifecycleShadowPolicyExcludedCollectionAttempts": 0,
+    "lifecycleRefreshProducts": 1384,
+    "lifecycleRefreshAuthorizedProducts": 172,
+    "lifecycleRefreshCanaryProducts": 1172,
+    "lifecycleRefreshPolicyBlockedProducts": 40,
     "p0AssignedTargets": 953,
     "p0EligibleTargets": 943,
     "p1AssignedTargets": 3974,
     "p1EligibleTargets": 3939,
     "knownContractGaps": [
       {
-        "id": "RETAILER_OBSERVATIONS_NOT_BOUND_TO_LIFECYCLE",
+        "id": "LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER",
         "severity": "CRITICAL",
-        "repairTask": 3,
-        "detail": "Task 2 has migrated and accounted for every retailer link, but the tracked lifecycle projection still derives current status from the legacy catalogue rather than retailer-observation hashes."
+        "repairTask": 9,
+        "detail": "The complete retailer ledger drives a hash-bound lifecycle shadow and product-scoped refresh inventory, but production cutover remains blocked until every legacy-current product is either freshly available or explicitly unavailable/archived."
       },
       {
         "id": "TARGET_STATE_LEGACY_TIME_BINDINGS",
         "severity": "HIGH",
-        "repairTask": 3,
+        "repairTask": 9,
         "detail": "The target-state artifact stores source generatedAt values; this contract supplies the missing recomputed content bindings until its schema is migrated."
       },
       {
@@ -1810,6 +1945,6 @@
     "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
     "checkpointCount": 5
   },
-  "contractId": "historical_evidence_system_3d41ac037450ec69977b7e13",
-  "semanticContractSha256": "3d41ac037450ec69977b7e13025fc2ef8854e27f435976b18c04a02aa724d85d"
+  "contractId": "historical_evidence_system_5d09d499d8f7d4ee0d5c7af6",
+  "semanticContractSha256": "5d09d499d8f7d4ee0d5c7af60ddaef1f91ac6d8e1f4142092a132e668fb9360e"
 }

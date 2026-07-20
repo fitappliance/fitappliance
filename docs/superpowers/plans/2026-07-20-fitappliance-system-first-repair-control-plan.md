@@ -5,9 +5,9 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** EXECUTING - Task 3 in progress
+- **Status:** EXECUTING - Task 4 in progress
 - **Date:** 2026-07-20
-- **Active task:** Task 3 - rebuild downstream lifecycle and visibility state
+- **Active task:** Task 4 - introduce typed official source-lane discovery
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -296,7 +296,7 @@ The order is based on dependency, not on which defect is easiest to patch.
 flowchart LR
   T0["0. Baseline and executable contract"] --> T1["1. State-axis contract"]
   T1 --> T2["2. Retail lifecycle integration"]
-  T2 --> T3["3. Reclassify and prove visibility isolation"]
+  T2 --> T3["3. Lifecycle shadow and cutover contract"]
   T3 --> T4["4. Source-lane discovery contract"]
   T4 --> T5["5. Document-family and MinerU grammar"]
   T5 --> T6["6. Receipt-to-publication vertical slice"]
@@ -304,7 +304,7 @@ flowchart LR
   T4 --> T7
   T6 --> T8["8. Stage-aware local circuit breaker"]
   T7 --> T8
-  T8 --> T9["9. Full replay, migration, and rollback"]
+  T8 --> T9["9. Observation completion, atomic migration, full replay, and rollback"]
   T9 --> T10["10. Runbook and release closeout"]
 ```
 
@@ -320,6 +320,31 @@ Why this order is mandatory:
    typed outcomes.
 5. A release cannot rebuild queues until the acceptance and lifecycle
    projections for the current epoch are complete.
+
+### 6.1 Execution-order correction found during Task 3
+
+The first Task 3 draft required all 1,384 legacy-current products to be
+revalidated and production-cut over before Task 4 could begin. That was a
+circular dependency: bounded source completion and safe programme control are
+implemented by Tasks 4-8. Forcing the old order would either keep false legacy
+current state, invent unavailable observations, or block all later repairs.
+
+The corrected gate is:
+
+1. Task 3 completes the exhaustive shadow, scoped refresh inventory, consumer
+   contract matrix, and fail-closed atomic-cutover function while production
+   remains byte-identical.
+2. Tasks 4-8 improve the source, parser, receipt, planner, and controller
+   contracts against released inputs and immutable fixtures. They may inspect
+   shadow cohorts but may not publish or schedule from a mixed lifecycle epoch.
+3. Task 9 completes bounded observation dispositions, requires the cutover
+   gate to pass, and promotes lifecycle, current publication, historical
+   replacement, audits, classification, target state, and next-epoch queues as
+   one release. A blocked Task 9 is an honest release block, not permission for
+   a partial overlay.
+
+This preserves the original safety requirement while making every preceding
+task independently executable.
 
 ## 7. No-Point-Fix Protocol
 
@@ -415,8 +440,8 @@ Mandatory adversarial traces across the programme:
 | 0 | Freeze baseline and executable system contract | none | COMPLETED | Current contract `historical_evidence_system_f01c788b2bbc45dc5a38d6b5`; 23 stages; 10 epochs; tracked contract replay passed |
 | 1 | Lock independent identity/lifecycle/evidence/visibility/Fit axes | 0 | COMPLETED | 13 state-axis fixtures; typed provenance and lifecycle binding; 34 focused and 1,020 Architecture V2 tests passed |
 | 2 | Integrate real retailer availability observations | 1 | COMPLETED | 1,614/1,614 links accounted; append-safe schema-v2 ledger; AO/Partnerize typed adapters; policy-aware revalidation audit |
-| 3 | Rebuild classification and prove lifecycle destination isolation | 2 | IN_PROGRESS | Task 2 contract released; downstream cutover not started |
-| 4 | Replace one-path discovery with typed official source lanes | 3 | PENDING | Not started |
+| 3 | Build lifecycle shadow, refresh inventory, and prove destination/cutover isolation | 2 | COMPLETED | Shadow accounts for 3,515 products; all 1,384 legacy-current products have scoped refresh dispositions; real cutover remains safely blocked and production is byte-identical; synthetic atomic cutover passed |
+| 4 | Replace one-path discovery with typed official source lanes | 3 | IN_PROGRESS | Contract trace in progress |
 | 5 | Repair category/series/document-family MinerU grammar | 4 | PENDING | Not started |
 | 6 | Prove receipt-to-publication vertical slices | 5 | PENDING | Not started |
 | 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | PENDING | Not started |
@@ -742,8 +767,26 @@ timestamp, or explicit unknown fallback.
 
 ### Task 3: Rebuild downstream state and prove visibility isolation
 
-**Goal:** Propagate Task 2 through every consumer before repairing discovery or
-parsing.
+**Goal:** Build the complete downstream shadow and prove every consumer and
+atomic-cutover boundary before repairing discovery or parsing. Actual
+production promotion occurs only in Task 9 after observation completion.
+
+**Execution repair record (2026-07-20):**
+
+```text
+Symptom: The typed retailer ledger is complete as a migration inventory but has zero authoritative observations, while the released historical reference, P0/P1 classification, public visibility, replacement eligibility, and Fit publication still derive lifecycle from legacy catalogue flags. A direct cutover would silently turn nearly every legacy-current product into unknown; retaining the old result per row would mix two lifecycle epochs.
+First incorrect persisted state: historical-appliance-reference lifecycleState. Its domain builder accepts retailer observations, but the repository CLI never reads the released retailer ledger and instead rebuilds from public-catalog-projection/catalog-final unavailable flags.
+Upstream producers: frozen legacy migration baseline, canonical product mappings, retailer-observations schema v2, retailer source policy, typed AO/Partnerize collectors, collection attempts, and the deterministic lifecycle reducer.
+Downstream consumers: historical model classification, PDF acquisition and executable queues, target state, bounded batches, current runtime/search visibility, historical replacement projection, Fit publication audit, programme status, and scale control.
+Affected state axes: retail lifecycle directly; P0/P1 priority, public visibility, replacement eligibility, and Fit destination indirectly. Identity, registry state, evidence receipts, and geometry remain independent and must not be rewritten by lifecycle migration.
+Affected tracked/external artifacts: retailer-observations.json; a new deterministic lifecycle shadow/cutover report; historical-appliance-reference.json and all lifecycle-derived generated queues/audits after cutover; public runtime/replacement files. Immutable raw source objects and receipt bundles remain read-only.
+Current contract: retailer-observations binds public projection as a one-time LEGACY_MIGRATION_INPUT, but current publication is also the eventual lifecycle consumer. The historical-reference CLI omits the ledger, and no full-catalogue shadow diff or atomic cutover proof exists.
+Target contract: freeze the legacy projection binding as migration provenance only; reduce every canonical product into an asOf-bound shadow lifecycle artifact; account for every legacy-current ID as fresh available, explicitly unavailable/archived, unknown/stale, relisted, or conflict; reject production cutover until unresolved prior-current IDs are zero; then atomically rebuild every downstream artifact from one policy/source epoch.
+Migration/rebuild required: add producer, producer-consumer, and full-catalogue shadow tests; generate the shadow without changing runtime files; run bounded typed refreshes for unresolved products; prove the cutover gate; attach lifecycle decisions to the public/reference inputs; rebuild classification, target state, executable queue, bounded batches, replacement publication, public projection, Fit audit, programme status, scale control, and system contract in release order.
+Rollback unit: the pre-cutover release remains byte-identical while shadow status is BLOCKED. A passing cutover is one commit/release epoch containing the lifecycle projection and every downstream rebuild; rollback restores that entire epoch, never individual product rows.
+Positive real canary: a fresh exact-product available observation keeps a legacy-current product current; an explicit unavailable product is removed; a later fresh relisted observation restores it; an archived receipt remains searchable only in historical replacement.
+Negative/adversarial canaries: zero-typed mass unknown, stale observation, failed or incomplete collection, same-listing conflict, mixed retailer availability/unknown, redirected listing, registry-active without retailer evidence, partial overlay, source/policy epoch mismatch, and a shadow diff that omits or duplicates any prior public ID.
+```
 
 **Files:**
 
@@ -770,29 +813,55 @@ cannot silently remove or retain a large unknown population.
    changing runtime catalogue files.
 2. Emit counts and exact IDs for `fresh_available`, `explicit_unavailable`,
    `unknown_or_stale`, `relisted`, and multi-retailer conflicts.
-3. Refresh observations for every `unknown_or_stale` product among the 1,384
-   legacy-current products through bounded,
-   typed source runs; do not convert missing rows into unavailable.
+3. Emit an executable, product-scoped refresh inventory for every
+   `unknown_or_stale` product among the 1,384 legacy-current products. Bounded
+   typed runs may append observations now, but unresolved work remains an
+   explicit Task 9 release prerequisite; missing rows never become unavailable.
 4. A product is current when at least one retailer has a fresh available
    observation. It is unavailable only when every authoritative retailer's
    latest complete observation is unavailable. Mixed or incomplete sources
    remain unknown.
-5. Permit production cutover only when every one of the 1,384 legacy-current
+5. The cutover function must permit production promotion only when every one
+   of the 1,384 legacy-current
    products that would remain a current search or replacement result has a
    fresh available observation and every removed product has an explicit
    unavailable/archived reason. The unresolved unknown count for either output
    must be zero.
-6. Until that gate passes, keep the existing production projection intact and
+6. Until Task 9 proves that gate, keep the existing production projection intact and
    forbid any next-epoch queue from mixing shadow lifecycle state with legacy
    publication state.
 
-**Acceptance:** all lifecycle-derived artifacts bind the same policy/source
-epoch; archived receipts alter historical replacement only; public projection
-may retain historical rows but the current runtime/search result set has zero
-unavailable or unknown-lifecycle products; the queue no longer selects the
-stale Esatto cohort as P0 merely because the old catalogue did. The shadow
-report accounts for every prior public product and production cutover is atomic
-rather than a partial overlay.
+**Acceptance:** the shadow report accounts for every prior public product;
+collection attempts are scoped to canonical products; transition fixtures
+prove classification, public visibility, historical replacement, and Fit
+destination isolation; blocked/partial overlays cannot change production; and
+a synthetic fully resolved fixture proves an atomic cutover, including relist
+retailer publication. The tracked production projection is expected to remain
+byte-identical and the real shadow may remain `BLOCKED`; zero unresolved
+products and the downstream release rebuild are Task 9's migration gate.
+
+**Completion evidence (2026-07-20):**
+
+- Generated shadow `retail_lifecycle_shadow_d0d9ae53f4abd60c72dbef5b`
+  accounts for all 3,515 products and keeps the real cutover `BLOCKED` with all
+  1,384 legacy-current products explicitly unresolved instead of silently
+  removed.
+- Generated refresh inventory
+  `retail_lifecycle_refresh_4e19ef3b5cbf82de2e560b1f` gives every unresolved
+  product a product-scoped disposition: 172 authorised, 1,172 bounded-canary,
+  and 40 blocked by source policy.
+- The shadow validator independently recomputes every lifecycle transition,
+  destination, cohort, cutover member, source-policy authorization, and source
+  binding. Re-signed omissions, stale policy, adapter conflicts, semantic/raw
+  source drift, and partial overlays fail closed.
+- Synthetic tests prove current, explicit unavailable, unknown, relisted, and
+  archived-with-receipt behavior through public, historical replacement, and
+  Fit destinations. A status-only observation without a price preserves prior
+  same-listing commercial metadata.
+- The tracked production public projection has no diff. Current system contract
+  `historical_evidence_system_5d09d499d8f7d4ee0d5c7af6` has 26 stages and 10
+  epochs. Full `npm run test:architecture-v2` passed 1,052/1,052 before task
+  transition; Task 9 remains the only production cutover authority.
 
 **Stop condition:** any generated file is manually edited or next-epoch queues
 are built before current-epoch projections finish.
@@ -986,10 +1055,16 @@ stage KPIs are never combined into one percentage.
 **Stop condition:** thresholds are tuned until the current batch runs without
 fixing state classification and outcome semantics first.
 
-### Task 9: Full replay, migration, and rollback drill
+### Task 9: Observation completion, atomic migration, full replay, and rollback drill
 
-**Goal:** Prove the repaired system as one acyclic release rather than a set of
-green modules.
+**Goal:** Complete every prior-current observation disposition and prove the
+repaired system as one acyclic release rather than a set of green modules.
+
+**Lifecycle migration prerequisite:** run the Task 3 refresh inventory through
+the Task 4-8 source and control contracts. The lifecycle shadow must be
+`READY`, with zero unresolved or unsafe prior-current IDs, before any production
+file changes. If policy or external authorization prevents that state, Task 9
+is `BLOCKED` and the existing production epoch remains intact.
 
 **Required traces:** happy path, process crash/resume, repeated batch, duplicate
 target, cross-source conflict, archived publication, schema upgrade, rollback,

@@ -534,6 +534,7 @@ async function buildPartnerizeRetailerSnapshot({
   const snapshot = normalizeRetailerSnapshot(adapter, {
     observedAt,
     complete,
+    canonicalProductIds: catalogProducts.map((product) => product.canonicalProductId),
     rawPayloadSha256: createHash('sha256').update(bytes).digest('hex'),
     rawSourceReference,
     rows,

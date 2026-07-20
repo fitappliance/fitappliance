@@ -182,6 +182,7 @@ test('successful collection attempts require immutable raw evidence', () => {
     observations: [],
     collectionAttempts: [{
       adapterId: 'tgg-feed-v1', retailer: 'The Good Guys',
+      canonicalProductIds: ['fa_prod_attempt'],
       observedAt: '2026-07-19T00:00:00.000Z', collectionStatus: 'succeeded',
       rawSourceReference: 'tgg:attempt:success', policyVersion: 'tgg-source-v1',
       complete: true,
@@ -191,4 +192,149 @@ test('successful collection attempts require immutable raw evidence', () => {
     catalogState: 'ABSENT',
     registryPresent: false,
   }), /successful collection.*raw payload SHA-256/i);
+});
+
+test('collection failures affect only canonical products inside the declared attempt scope', () => {
+  const canonicalProductId = 'fa_prod_scoped';
+  const available = createObservation({
+    ...base,
+    id: 'obs_scoped',
+    canonicalProductId,
+    observedAt: '2026-07-19T00:00:00.000Z',
+  });
+  const failedAttempt = {
+    adapterId: 'tgg-feed-v1',
+    retailer: 'The Good Guys',
+    canonicalProductIds: ['fa_prod_other'],
+    observedAt: '2026-07-19T12:00:00.000Z',
+    collectionStatus: 'failed',
+    collectionError: 'timeout',
+    rawSourceReference: 'tgg:attempt:other',
+    policyVersion: 'tgg-source-v1',
+    complete: false,
+  };
+  const decision = reduceRetailLifecycle({
+    canonicalProductId,
+    observations: [available],
+    collectionAttempts: [failedAttempt],
+    asOf: '2026-07-20T00:00:00.000Z',
+    policyVersion: 'retail-lifecycle-v1',
+    catalogState: 'LISTED_UNVERIFIED',
+    registryPresent: false,
+  });
+  assert.deepEqual(decision.collectionAttempts, []);
+  assert.equal(decision.reasonCodes.includes('COLLECTION_FAILURE_RETAINED'), false);
+  assert.throws(() => reduceRetailLifecycle({
+    canonicalProductId,
+    observations: [available],
+    collectionAttempts: [{ ...failedAttempt, canonicalProductIds: [] }],
+    asOf: '2026-07-20T00:00:00.000Z',
+    policyVersion: 'retail-lifecycle-v1',
+    catalogState: 'LISTED_UNVERIFIED',
+    registryPresent: false,
+  }), /canonical product scope/i);
+});
+
+test('one unavailable retailer cannot archive a product while another migrated listing is unresolved', () => {
+  const canonicalProductId = 'fa_prod_multi_listing';
+  const legacy = (id, retailer, url, sourcePolicyId) => createObservation({
+    id: `obs_legacy_${id}`,
+    canonicalProductId,
+    retailer,
+    observedAt: '2026-07-11T00:00:00.000Z',
+    url,
+    availability: 'unknown',
+    sourceType: 'legacy_catalog',
+    sourceReference: 'legacy-catalog',
+    policyVersion: 'retailer-source-policy-v2:legacy-link-migration-v1',
+    listingState: 'current',
+    legacyProjectionBinding: {
+      projectionSha256: '1'.repeat(64),
+      rowSha256: id.repeat(64).slice(0, 64),
+      originSource: 'legacy-catalog',
+      verifiedAt: '2026-07-11',
+      sourcePolicyId,
+    },
+  });
+  const unavailable = (id, retailer, adapterId, url, hash) => createObservation({
+    id: `obs_typed_${id}`,
+    canonicalProductId,
+    retailer,
+    adapterId,
+    observedAt: '2026-07-20T00:00:00.000Z',
+    url,
+    availability: 'unavailable',
+    sourceType: 'public_retailer_api',
+    sourceReference: `fixture:${id}`,
+    rawSourceSha256: hash.repeat(64),
+    policyVersion: `${adapterId}-policy-v1`,
+    expectedCadenceHours: 24,
+    maximumCurrentAgeHours: 72,
+    listingState: 'unavailable',
+    retailerProductId: id,
+  });
+  const aoUrl = 'https://www.appliancesonline.com.au/product/example-multi';
+  const tggUrl = 'https://www.thegoodguys.com.au/example-multi';
+  const migrated = [
+    legacy('a', 'Appliances Online', aoUrl, 'appliances-online-product-api-v1'),
+    legacy('b', 'The Good Guys', tggUrl, 'the-good-guys-partnerize-feed-v1'),
+  ];
+  const input = {
+    canonicalProductId,
+    observations: [...migrated, unavailable('a', 'Appliances Online', 'ao-v1', aoUrl, 'a')],
+    collectionAttempts: [],
+    asOf: '2026-07-20T01:00:00.000Z',
+    policyVersion: 'retail-lifecycle-v1',
+    catalogState: 'LISTED_UNVERIFIED',
+    registryPresent: true,
+  };
+
+  const partial = reduceRetailLifecycle(input);
+  assert.equal(partial.lifecycleState, 'UNKNOWN_RETAIL');
+  assert.ok(partial.reasonCodes.includes('UNRESOLVED_EXPECTED_RETAILER_LISTING'));
+
+  const complete = reduceRetailLifecycle({
+    ...input,
+    observations: [
+      ...input.observations,
+      unavailable('b', 'The Good Guys', 'tgg-v1', tggUrl, 'b'),
+    ],
+  });
+  assert.equal(complete.lifecycleState, 'CATALOG_ARCHIVED');
+  assert.ok(complete.reasonCodes.includes('FRESH_UNAVAILABLE_OBSERVATION'));
+});
+
+test('same retailer listing conflicts across adapters remain unknown instead of authorizing current', () => {
+  const canonicalProductId = 'fa_prod_cross_adapter_conflict';
+  const available = createObservation({
+    ...base,
+    id: 'obs_cross_adapter_available',
+    canonicalProductId,
+    adapterId: 'partner-feed-v1',
+    retailerProductId: 'same-listing',
+    observedAt: '2026-07-20T00:00:00.000Z',
+  });
+  const unavailable = createObservation({
+    ...base,
+    id: 'obs_cross_adapter_unavailable',
+    canonicalProductId,
+    adapterId: 'retailer-api-v1',
+    retailerProductId: 'same-listing',
+    observedAt: '2026-07-20T00:00:00.000Z',
+    availability: 'unavailable',
+    listingState: 'unavailable',
+  });
+  const decision = reduceRetailLifecycle({
+    canonicalProductId,
+    observations: [available, unavailable],
+    collectionAttempts: [],
+    asOf: '2026-07-20T01:00:00.000Z',
+    policyVersion: 'retail-lifecycle-v1',
+    catalogState: 'LISTED_UNVERIFIED',
+    registryPresent: false,
+  });
+
+  assert.equal(decision.lifecycleState, 'UNKNOWN_RETAIL');
+  assert.equal(decision.authorizingObservation, null);
+  assert.ok(decision.reasonCodes.includes('SAME_LISTING_SAME_INSTANT_CONFLICT'));
 });

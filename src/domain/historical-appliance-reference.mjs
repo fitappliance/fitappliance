@@ -339,7 +339,7 @@ function normalizeHistoricalEvidenceProjection(projection) {
     const brand = requireString(record.brand, 'historical evidence brand');
     const model = requireString(record.model, 'historical evidence model');
     const lifecycleState = requireString(record.lifecycleState, 'historical evidence lifecycle');
-    if (!['CURRENT_RETAIL', 'CATALOG_ARCHIVED', 'REGISTRY_ONLY'].includes(lifecycleState)) {
+    if (!LIFECYCLE_STATES.includes(lifecycleState)) {
       throw new TypeError(`unsupported historical evidence lifecycle: ${lifecycleState}`);
     }
     const referenceId = requireString(record.referenceId, 'historical evidence referenceId');

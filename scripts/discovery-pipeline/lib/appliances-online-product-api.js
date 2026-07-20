@@ -159,6 +159,7 @@ async function buildAoRetailerSnapshot({
   return normalizeRetailerSnapshot(adapter, {
     observedAt: explicitTimestamp(observedAt),
     complete: false,
+    canonicalProductIds: [canonicalProductId],
     rawPayloadSha256: createHash('sha256').update(bytes).digest('hex'),
     rawSourceReference,
     rows: [{
@@ -175,6 +176,7 @@ async function buildAoRetailerSnapshot({
 
 async function buildAoFailedRetailerSnapshot({
   adapter,
+  canonicalProductId,
   observedAt,
   rawSourceReference,
   collectionError,
@@ -183,6 +185,7 @@ async function buildAoFailedRetailerSnapshot({
   return normalizeRetailerSnapshot(adapter, {
     observedAt: explicitTimestamp(observedAt),
     complete: false,
+    canonicalProductIds: [String(canonicalProductId || '').trim()],
     rawSourceReference,
     collectionError,
     rows: [],

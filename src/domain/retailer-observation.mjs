@@ -170,6 +170,15 @@ function normalizeCollectionAttempt(input, asOfMs) {
   if (collectionStatus === 'failed' && input.complete === true) {
     throw new TypeError('failed collection cannot be complete');
   }
+  if (!Array.isArray(input.canonicalProductIds) || input.canonicalProductIds.length === 0) {
+    throw new TypeError('collection attempt canonical product scope required');
+  }
+  const canonicalProductIds = input.canonicalProductIds
+    .map((id) => required(id, 'collection attempt canonical product ID'));
+  if (new Set(canonicalProductIds).size !== canonicalProductIds.length) {
+    throw new TypeError('collection attempt canonical product scope contains duplicates');
+  }
+  canonicalProductIds.sort();
   return {
     adapterId: required(input.adapterId, 'collection adapter id'),
     retailer: required(input.retailer, 'collection retailer'),
@@ -184,34 +193,71 @@ function normalizeCollectionAttempt(input, asOfMs) {
       : sha256(input.rawPayloadSha256, 'collection raw payload SHA-256'),
     policyVersion: required(input.policyVersion, 'collection policy version'),
     complete: input.complete === true,
+    canonicalProductIds,
   };
 }
 
-function listingKey(observation) {
+function listingAliases(observation) {
+  const retailer = observation.retailer.trim().toLowerCase();
   return [
-    observation.adapterId,
-    observation.retailerProductId ?? observation.url,
-  ].join('\0');
+    `${retailer}\0url\0${observation.url}`,
+    ...(observation.retailerProductId
+      ? [`${retailer}\0retailer-product-id\0${observation.retailerProductId}`]
+      : []),
+  ];
 }
 
 function observationStateKey(observation) {
   return `${observation.availability}\0${observation.listingState}\0${observation.url}\0${observation.redirectUrl ?? ''}`;
 }
 
+function expectedListingKey(observation) {
+  return `${observation.retailer.trim().toLowerCase()}\0${observation.url}`;
+}
+
 function newestObservations(observations) {
+  const rows = [...observations].sort((left, right) => left.id.localeCompare(right.id));
+  const parent = rows.map((_, index) => index);
+  const find = (index) => {
+    let root = index;
+    while (parent[root] !== root) root = parent[root];
+    while (parent[index] !== index) {
+      const next = parent[index];
+      parent[index] = root;
+      index = next;
+    }
+    return root;
+  };
+  const union = (left, right) => {
+    const leftRoot = find(left);
+    const rightRoot = find(right);
+    if (leftRoot === rightRoot) return;
+    parent[Math.max(leftRoot, rightRoot)] = Math.min(leftRoot, rightRoot);
+  };
+  const aliasOwner = new Map();
+  rows.forEach((observation, index) => {
+    for (const alias of listingAliases(observation)) {
+      if (aliasOwner.has(alias)) union(index, aliasOwner.get(alias));
+      else aliasOwner.set(alias, index);
+    }
+  });
   const grouped = new Map();
-  for (const observation of observations) {
-    const key = listingKey(observation);
-    if (!grouped.has(key)) grouped.set(key, []);
-    grouped.get(key).push(observation);
-  }
+  rows.forEach((observation, index) => {
+    const root = find(index);
+    if (!grouped.has(root)) grouped.set(root, []);
+    grouped.get(root).push(observation);
+  });
+  const listingGroups = [...grouped.values()].map((groupRows) => ({
+    key: groupRows.flatMap(listingAliases).sort()[0],
+    rows: groupRows,
+  })).sort((left, right) => left.key.localeCompare(right.key));
   const latest = [];
   const conflicts = [];
-  for (const [key, rows] of grouped) {
-    rows.sort((left, right) => right.observedAt.localeCompare(left.observedAt)
+  for (const { key, rows: groupRows } of listingGroups) {
+    groupRows.sort((left, right) => right.observedAt.localeCompare(left.observedAt)
       || left.id.localeCompare(right.id));
-    const newestAt = rows[0].observedAt;
-    const tied = rows.filter((row) => row.observedAt === newestAt);
+    const newestAt = groupRows[0].observedAt;
+    const tied = groupRows.filter((row) => row.observedAt === newestAt);
     if (new Set(tied.map(observationStateKey)).size > 1) {
       conflicts.push({ listingKey: key, observedAt: newestAt, observationIds: tied.map((row) => row.id).sort() });
       continue;
@@ -255,6 +301,7 @@ export function reduceRetailLifecycle(input) {
   }
   const collectionAttempts = (input.collectionAttempts ?? [])
     .map((attempt) => normalizeCollectionAttempt(attempt, asOfMs))
+    .filter((attempt) => attempt.canonicalProductIds.includes(canonicalProductId))
     .sort((left, right) => left.observedAt.localeCompare(right.observedAt)
       || left.adapterId.localeCompare(right.adapterId));
   const authoritative = observations.filter((observation) => TYPED_SOURCE_TYPES.has(observation.sourceType));
@@ -272,9 +319,18 @@ export function reduceRetailLifecycle(input) {
     && ['current', 'relisted'].includes(observation.listingState));
   const unavailable = fresh.filter((observation) => observation.availability === 'unavailable'
     || observation.listingState === 'unavailable');
-  const allKnownLatestUnavailable = latestObservations.length > 0
-    && latestObservations.every((observation) => observation.freshnessState === 'FRESH'
-      && (observation.availability === 'unavailable' || observation.listingState === 'unavailable'));
+  const migratedExpectedListings = new Set(observations
+    .filter((observation) => observation.sourceType === 'legacy_catalog')
+    .map(expectedListingKey));
+  const expectedListings = migratedExpectedListings.size > 0
+    ? migratedExpectedListings
+    : new Set(latestObservations.map(expectedListingKey));
+  const freshUnavailableListings = new Set(unavailable.map(expectedListingKey));
+  const unresolvedExpectedListings = [...expectedListings]
+    .filter((key) => !freshUnavailableListings.has(key))
+    .sort();
+  const allExpectedLatestUnavailable = expectedListings.size > 0
+    && unresolvedExpectedListings.length === 0;
   const reasonCodes = [];
   if (observations.some((observation) => observation.sourceType === 'legacy_catalog')) {
     reasonCodes.push('LEGACY_OBSERVATION_NON_AUTHORITATIVE');
@@ -301,7 +357,7 @@ export function reduceRetailLifecycle(input) {
     if (unavailable.length > 0) reasonCodes.push('MULTI_RETAILER_AVAILABILITY_CONFLICT');
   } else if (conflicts.length > 0) {
     lifecycleState = 'UNKNOWN_RETAIL';
-  } else if (catalogState === 'ARCHIVED' || (catalogState !== 'ABSENT' && allKnownLatestUnavailable)) {
+  } else if (catalogState === 'ARCHIVED' || (catalogState !== 'ABSENT' && allExpectedLatestUnavailable)) {
     lifecycleState = 'CATALOG_ARCHIVED';
     reasonCodes.push(catalogState === 'ARCHIVED'
       ? 'ARCHIVED_CATALOG_STATE'
@@ -309,7 +365,12 @@ export function reduceRetailLifecycle(input) {
   } else if (catalogState === 'LISTED_UNVERIFIED') {
     lifecycleState = 'UNKNOWN_RETAIL';
     reasonCodes.push('CATALOG_LISTING_WITHOUT_FRESH_AVAILABLE_OBSERVATION');
-    if (unavailable.length > 0) reasonCodes.push('UNAVAILABLE_OBSERVATION_WITH_UNRESOLVED_RETAILER_STATE');
+    if (unavailable.length > 0) {
+      reasonCodes.push('UNAVAILABLE_OBSERVATION_WITH_UNRESOLVED_RETAILER_STATE');
+      if (unresolvedExpectedListings.length > 0) {
+        reasonCodes.push('UNRESOLVED_EXPECTED_RETAILER_LISTING');
+      }
+    }
   } else if (input.registryPresent) {
     lifecycleState = 'REGISTRY_ONLY';
     reasonCodes.push('REGISTRY_IDENTITY_WITHOUT_RETAIL_STATE');

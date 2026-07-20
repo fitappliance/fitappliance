@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "retail-lifecycle-release-v1",
+  "releaseEpoch": "retail-lifecycle-shadow-2026-07-20-01",
+  "asOf": "2026-07-20T00:00:00.000Z",
+  "mode": "SHADOW_ONLY",
+  "retailLifecyclePolicyVersion": "retail-lifecycle-v1",
+  "cutoverRequirements": {
+    "expectedLegacyCurrentProducts": 1384,
+    "maximumUnresolvedLegacyCurrentProducts": 0,
+    "maximumUnsafeRemovedLegacyCurrentProducts": 0,
+    "atomicDownstreamRebuildRequired": true
+  }
+}

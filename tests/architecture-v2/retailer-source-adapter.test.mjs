@@ -26,6 +26,7 @@ test('creates a policy-reviewed immutable source adapter', () => {
 test('normalizes a complete snapshot with raw evidence and host enforcement', () => {
   const snapshot = normalizeRetailerSnapshot(adapter, {
     observedAt: '2026-07-11T01:00:00Z', complete: true,
+    canonicalProductIds: ['fa_prod_123'],
     rawPayloadSha256: 'a'.repeat(64), rawSourceReference: 'partnerize:feed:2026-07-11',
     rows: [{ canonicalProductId: 'fa_prod_123', retailerProductId: '123', url: 'https://www.thegoodguys.com.au/product-123', title: 'Model ABC', priceAud: 999, availability: 'available' }],
   });
@@ -33,6 +34,7 @@ test('normalizes a complete snapshot with raw evidence and host enforcement', ()
   assert.equal(snapshot.complete, true);
   assert.equal(snapshot.policyVersion, 'tgg-source-v1');
   assert.equal(snapshot.maximumCurrentAgeHours, 72);
+  assert.deepEqual(snapshot.canonicalProductIds, ['fa_prod_123']);
   assert.throws(() => normalizeRetailerSnapshot(adapter, {
     ...snapshot, rows: [{ ...snapshot.rows[0], url: 'https://evil.example/item' }],
   }), /allowed host/i);
@@ -99,10 +101,16 @@ test('successful snapshots become product-bound observations with immutable sour
 test('failed collection is represented separately and cannot contain inventory rows', () => {
   const failed = normalizeRetailerSnapshot(adapter, {
     observedAt: '2026-07-11T01:00:00Z', complete: false, collectionError: 'timeout',
+    canonicalProductIds: ['fa_prod_123'],
     rawPayloadSha256: null, rawSourceReference: 'partnerize:attempt:2026-07-11', rows: [],
   });
   assert.equal(failed.collectionStatus, 'failed');
+  assert.deepEqual(failed.canonicalProductIds, ['fa_prod_123']);
   assert.throws(() => normalizeRetailerSnapshot(adapter, { ...failed, rows: [{ url: 'https://www.thegoodguys.com.au/x' }] }), /failed snapshot/i);
+  assert.throws(() => normalizeRetailerSnapshot(adapter, {
+    ...failed,
+    canonicalProductIds: [],
+  }), /canonical product scope/i);
 });
 
 test('only a complete successful snapshot can derive stale and relisted transitions', () => {

@@ -4,6 +4,7 @@ const base = 'data/architecture-v2';
 
 export const architectureV2Paths = Object.freeze({
   retailerSourcePolicy: `${base}/policies/retailer-source-policy.json`,
+  retailLifecycleReleasePolicy: `${base}/policies/retail-lifecycle-release-policy.json`,
   officialRegistrySourcePolicy: `${base}/policies/official-registry-source-policy.json`,
   historicalEvidenceRecoveryPolicy: `${base}/policies/historical-evidence-recovery-policy.json`,
   productDataChannelMatrix: `${base}/policies/product-data-channel-matrix.json`,
@@ -64,6 +65,8 @@ export const architectureV2Paths = Object.freeze({
   historicalPdfImageRepairAudit: `${base}/reviews/automated/historical-pdf-image-repair-audit.json`,
   retailerObservations: `${base}/observations/retailer-observations.json`,
   retailerObservationCoverage: `${base}/reviews/automated/retailer-observation-coverage.json`,
+  retailLifecycleShadow: `${base}/reviews/automated/retail-lifecycle-shadow.json`,
+  retailLifecycleRefreshInventory: `${base}/reviews/automated/retail-lifecycle-refresh-inventory.json`,
   canonicalRegistry: `${base}/generated/canonical-registry.json`,
   evidenceResolutionManifest: `${base}/generated/evidence-resolution-manifest.json`,
   evidenceObjectIndex: `${base}/generated/evidence-object-index.json`,
@@ -108,8 +111,12 @@ export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
     'historicalEvidenceRecoveryAcceptanceBundle',
     'historicalAcceptanceReceiptReplayAudit',
   ]),
-  retailerObservations: Object.freeze(['publicProjection']),
+  // Schema-v2 freezes its one-time migration input. Subsequent ledger epochs
+  // append typed source observations and no longer depend on current output.
+  retailerObservations: Object.freeze([]),
   retailerObservationCoverage: Object.freeze(['publicProjection', 'retailerObservations']),
+  retailLifecycleShadow: Object.freeze(['publicProjection', 'retailerObservations']),
+  retailLifecycleRefreshInventory: Object.freeze(['retailLifecycleShadow', 'retailerObservationCoverage']),
   historicalApplianceReference: Object.freeze([
     'officialRegistrySnapshots',
     'publicProjection',

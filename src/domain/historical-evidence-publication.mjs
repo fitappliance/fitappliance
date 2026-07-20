@@ -17,6 +17,13 @@ const AXIS_FIELDS = Object.freeze({
   depth: 'closedEnvelope.depthMm',
 });
 
+const PUBLICATION_LIFECYCLE_STATES = Object.freeze([
+  'CURRENT_RETAIL',
+  'CATALOG_ARCHIVED',
+  'REGISTRY_ONLY',
+  'UNKNOWN_RETAIL',
+]);
+
 function text(value) {
   return String(value ?? '').trim();
 }
@@ -200,6 +207,35 @@ function assertEntryIdentity(entry, product) {
   }
 }
 
+function effectiveLifecycleState(entry, product) {
+  if (!product) {
+    if (entry.lifecycleState === 'CURRENT_RETAIL') {
+      throw new Error(`current recovery catalog product missing: ${entry.legacyRuntimeId}`);
+    }
+    return entry.lifecycleState;
+  }
+
+  const productId = text(product.canonicalProductId);
+  const entryProductId = text(entry.canonicalProductId);
+  const decision = product.retailLifecycle;
+  if (!decision || typeof decision !== 'object' || Array.isArray(decision)) {
+    throw new Error(`current retail lifecycle decision missing for ${entry.targetId}`);
+  }
+  const lifecycleState = text(decision.lifecycleState);
+  if (!PUBLICATION_LIFECYCLE_STATES.includes(lifecycleState)) {
+    throw new Error(`unsupported current retail lifecycle: ${lifecycleState || 'missing'}`);
+  }
+  if (!productId || !entryProductId
+    || text(decision.canonicalProductId) !== productId
+    || entryProductId !== productId) {
+    throw new Error(`historical recovery lifecycle product binding mismatch for ${entry.targetId}`);
+  }
+  if (lifecycleState !== 'CURRENT_RETAIL' && decision.authorizingObservation !== null) {
+    throw new Error(`non-current retail lifecycle carries an authorizer for ${entry.targetId}`);
+  }
+  return lifecycleState;
+}
+
 export function buildHistoricalEvidencePublication({ bundle, products }) {
   validateHistoricalEvidenceRecoveryAcceptanceBundle(bundle);
   const offline = auditHistoricalEvidenceRecoveryBundle(bundle);
@@ -227,8 +263,9 @@ export function buildHistoricalEvidencePublication({ bundle, products }) {
     const product = productById.get(text(entry.legacyRuntimeId).toLowerCase());
     if (product) assertEntryIdentity(entry, product);
 
-    if (entry.lifecycleState === 'CURRENT_RETAIL') {
-      if (!product) throw new Error(`current recovery catalog product missing: ${entry.legacyRuntimeId}`);
+    const lifecycleState = effectiveLifecycleState(entry, product);
+
+    if (lifecycleState === 'CURRENT_RETAIL') {
       if (!isCurrentRetailProduct(product)) {
         throw new Error(`current recovery lifecycle drift for ${entry.targetId}`);
       }
@@ -238,14 +275,16 @@ export function buildHistoricalEvidencePublication({ bundle, products }) {
         }
         currentAcceptanceByLegacyId.set(entry.legacyRuntimeId, currentAcceptance(entry, product));
       }
-    } else if (entry.lifecycleState === 'CATALOG_ARCHIVED') {
+    } else if (lifecycleState === 'CATALOG_ARCHIVED' || lifecycleState === 'UNKNOWN_RETAIL') {
       if (product && isCurrentRetailProduct(product)) {
-        throw new Error(`archived recovery lifecycle drift for ${entry.targetId}`);
+        throw new Error(`non-current recovery lifecycle drift for ${entry.targetId}`);
       }
-    } else if (entry.lifecycleState === 'REGISTRY_ONLY') {
-      if (product) throw new Error(`registry-only recovery catalog identity drift for ${entry.targetId}`);
+    } else if (lifecycleState === 'REGISTRY_ONLY') {
+      if (product && product.retailLifecycle?.lifecycleState !== 'REGISTRY_ONLY') {
+        throw new Error(`registry-only recovery catalog identity drift for ${entry.targetId}`);
+      }
     } else {
-      throw new Error(`unsupported recovery publication lifecycle: ${entry.lifecycleState}`);
+      throw new Error(`unsupported recovery publication lifecycle: ${lifecycleState}`);
     }
 
     historicalRecords.push(Object.freeze({
@@ -256,7 +295,7 @@ export function buildHistoricalEvidencePublication({ bundle, products }) {
       brand: entry.brand,
       model: entry.model,
       category: entry.category,
-      lifecycleState: entry.lifecycleState,
+      lifecycleState,
       acceptanceStatus: entry.acceptanceStatus,
       dimensionsMm: scalarHistoricalDimensions(entry.geometryProjection),
       geometryProjection: structuredClone(entry.geometryProjection),

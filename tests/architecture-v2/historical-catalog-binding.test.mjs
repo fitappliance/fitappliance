@@ -154,6 +154,32 @@ test('historical catalog binding changes for identity, lifecycle, product-page o
   for (const catalog of changed) assert.notEqual(hashHistoricalCatalogBinding(catalog), baseHash);
 });
 
+test('catalog binding routes current, relisted, archived, and unknown lifecycle independently from receipt geometry', () => {
+  const states = [
+    ['CURRENT_RETAIL', 'current', false, true],
+    ['CURRENT_RETAIL', 'relisted', false, true],
+    ['CATALOG_ARCHIVED', null, true, false],
+    ['UNKNOWN_RETAIL', null, true, false],
+  ];
+  for (const [lifecycleState, listingState, unavailable, expectedCurrent] of states) {
+    const decision = retailLifecycle('fa_prod_1', lifecycleState);
+    if (decision.authorizingObservation) {
+      decision.authorizingObservation.listingState = listingState;
+      decision.latestObservations[0].listingState = listingState;
+    }
+    const [binding] = buildHistoricalCatalogBinding({
+      products: [product({
+        unavailable,
+        retailers: unavailable ? [] : product().retailers,
+        retailLifecycle: decision,
+      })],
+    }).products;
+    assert.equal(binding.currentRetail, expectedCurrent, `${lifecycleState}/${listingState}`);
+    assert.equal(binding.retailLifecycle.lifecycleState, lifecycleState);
+    assert.deepEqual(binding.receiptGeometry.dimensionsMm, { width: 600, height: 1700, depth: 650 });
+  }
+});
+
 test('historical catalog binding is deterministic across product and retailer order', () => {
   const first = product({
     retailers: [

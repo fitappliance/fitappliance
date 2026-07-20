@@ -98,6 +98,35 @@ export function normalizeRetailerSourcePolicy(policy) {
   return freezeDeep({ schemaVersion: 2, policyVersion, reviewedAt, sources, hosts });
 }
 
+function normalizedPolicy(value) {
+  return value?.schemaVersion === 2 && value.hosts instanceof Map
+    ? value
+    : normalizeRetailerSourcePolicy(value);
+}
+
+export function retailerObservationAuthorizedBySourcePolicy(value, policy) {
+  const observation = createObservation(value);
+  if (observation.sourceType === 'legacy_catalog') return true;
+  const source = normalizedPolicy(policy).sources.find((row) => row.id === observation.adapterId);
+  if (!source || source.termsReviewState === 'collection_blocked') return false;
+  if (observation.retailer !== source.retailer
+    || observation.sourceType !== source.sourceType
+    || observation.policyVersion !== source.policyVersion
+    || observation.expectedCadenceHours !== source.expectedCadenceHours
+    || observation.maximumCurrentAgeHours !== source.maximumCurrentAgeHours) return false;
+  const allowedHosts = new Set(source.allowedHosts);
+  return [observation.url, observation.redirectUrl].filter(Boolean)
+    .every((url) => allowedHosts.has(new URL(url).hostname.toLowerCase()));
+}
+
+export function retailerCollectionAttemptAuthorizedBySourcePolicy(attempt, policy) {
+  const source = normalizedPolicy(policy).sources.find((row) => row.id === attempt?.adapterId);
+  return Boolean(source)
+    && source.termsReviewState !== 'collection_blocked'
+    && attempt.retailer === source.retailer
+    && attempt.policyVersion === source.policyVersion;
+}
+
 function retailerUrl(value) {
   const url = new URL(required(value, 'retailer URL'));
   if (url.protocol !== 'https:' || url.username || url.password) {
@@ -224,6 +253,15 @@ function normalizedAttempt(value) {
   if (status === 'failed' && !required(value.collectionError, 'failed collection error')) {
     throw new TypeError('failed collection error required');
   }
+  if (!Array.isArray(value.canonicalProductIds) || value.canonicalProductIds.length === 0) {
+    throw new TypeError('collection attempt canonical product scope required');
+  }
+  const canonicalProductIds = value.canonicalProductIds
+    .map((id) => required(id, 'collection attempt canonical product ID'));
+  if (new Set(canonicalProductIds).size !== canonicalProductIds.length) {
+    throw new TypeError('collection attempt canonical product scope contains duplicates');
+  }
+  canonicalProductIds.sort();
   return {
     id: required(value.id, 'collection attempt ID'),
     adapterId: required(value.adapterId, 'collection attempt adapter ID'),
@@ -235,6 +273,7 @@ function normalizedAttempt(value) {
     rawPayloadSha256,
     policyVersion: required(value.policyVersion, 'collection attempt policy version'),
     complete,
+    canonicalProductIds,
   };
 }
 
@@ -323,7 +362,8 @@ function normalizeExisting(existingLedger, baselineById, normalizedPolicy) {
 
 function collectionAttempt(snapshot) {
   const seed = [snapshot.adapterId, snapshot.observedAt, snapshot.rawSourceReference,
-    snapshot.collectionStatus, snapshot.rawPayloadSha256 ?? ''].join('\0');
+    snapshot.collectionStatus, snapshot.rawPayloadSha256 ?? '',
+    ...snapshot.canonicalProductIds].join('\0');
   return {
     id: `retail_attempt_${createHash('sha256').update(seed).digest('hex').slice(0, 24)}`,
     adapterId: required(snapshot.adapterId, 'snapshot adapter ID'),
@@ -335,7 +375,43 @@ function collectionAttempt(snapshot) {
     rawPayloadSha256: snapshot.rawPayloadSha256 ?? null,
     policyVersion: required(snapshot.policyVersion, 'snapshot policy version'),
     complete: snapshot.complete === true,
+    canonicalProductIds: [...snapshot.canonicalProductIds],
   };
+}
+
+function assertSnapshotAuthorized(snapshot, normalizedPolicy) {
+  const adapterId = required(snapshot.adapterId, 'snapshot adapter ID');
+  const source = normalizedPolicy.sources.find((row) => row.id === adapterId);
+  if (!source) throw new Error(`snapshot adapter is not registered in source policy: ${adapterId}`);
+  if (source.termsReviewState === 'collection_blocked') {
+    throw new Error(`snapshot source policy collection blocked: ${adapterId}`);
+  }
+  const contractFields = [
+    ['retailer', source.retailer],
+    ['sourceType', source.sourceType],
+    ['policyVersion', source.policyVersion],
+    ['expectedCadenceHours', source.expectedCadenceHours],
+    ['maximumCurrentAgeHours', source.maximumCurrentAgeHours],
+  ];
+  for (const [field, expected] of contractFields) {
+    if (snapshot[field] !== expected) {
+      throw new Error(`snapshot source policy contract drift for ${adapterId}: ${field}`);
+    }
+  }
+  const allowedHosts = new Set(source.allowedHosts);
+  for (const row of snapshot.rows) {
+    for (const value of [row.url, row.redirectUrl].filter(Boolean)) {
+      if (!allowedHosts.has(new URL(value).hostname.toLowerCase())) {
+        throw new Error(`snapshot URL escapes source policy hosts for ${adapterId}`);
+      }
+    }
+  }
+  if (source.collectionMode === 'bounded_exact_product_api'
+    && (snapshot.complete === true
+      || snapshot.canonicalProductIds.length !== 1
+      || snapshot.rows.length > 1)) {
+    throw new Error(`snapshot exceeds bounded exact-product source policy for ${adapterId}`);
+  }
 }
 
 function sameLegacyObservation(left, right) {
@@ -369,11 +445,15 @@ export function buildRetailerObservationLedger({
   sourcePolicySha256,
   typedSnapshots = [],
 }) {
-  const projectionSha = sha256(publicProjectionSha256, 'public projection SHA-256');
+  const existingSchemaV2 = existingLedger?.schemaVersion === 2;
+  const projectionSha = existingSchemaV2
+    ? null
+    : sha256(publicProjectionSha256, 'public projection SHA-256');
   const policySha = sha256(sourcePolicySha256, 'retailer source policy SHA-256');
   if (!Array.isArray(typedSnapshots)) throw new TypeError('typed retailer snapshots must be an array');
   const normalizedPolicy = normalizeRetailerSourcePolicy(sourcePolicy);
-  const baseline = baselineRows(publicProjection, projectionSha, normalizedPolicy);
+  for (const snapshot of typedSnapshots) assertSnapshotAuthorized(snapshot, normalizedPolicy);
+  const baseline = existingSchemaV2 ? [] : baselineRows(publicProjection, projectionSha, normalizedPolicy);
   const baselineById = new Map(baseline.map((row) => [row.observation.id, row.observation]));
   const existing = normalizeExisting(existingLedger, baselineById, normalizedPolicy);
   const typedObservations = typedSnapshots.flatMap(createRetailerObservationsFromSnapshot);
@@ -389,7 +469,9 @@ export function buildRetailerObservationLedger({
     'collection attempt',
   );
   const sourceBindings = mergeById(existing.sourceBindings, [
-    { id: `public-projection:${projectionSha}`, sha256: projectionSha, kind: 'LEGACY_MIGRATION_INPUT' },
+    ...(!existingSchemaV2
+      ? [{ id: `public-projection:${projectionSha}`, sha256: projectionSha, kind: 'LEGACY_MIGRATION_INPUT' }]
+      : []),
     { id: `retailer-source-policy:${policySha}`, sha256: policySha, kind: 'POLICY' },
     ...typedSnapshots
       .filter((snapshot) => snapshot.rawPayloadSha256)
@@ -399,7 +481,9 @@ export function buildRetailerObservationLedger({
         kind: 'IMMUTABLE_RETAILER_SOURCE',
       })),
   ], 'source binding');
-  const baselineIds = new Set(baselineById.keys());
+  const currentBaselineObservations = existingSchemaV2
+    ? existingLedger.summary.currentBaselineObservations
+    : baselineById.size;
   const document = {
     schemaVersion: 2,
     ledgerPolicyVersion: 'retailer-observation-ledger-v2',
@@ -409,8 +493,8 @@ export function buildRetailerObservationLedger({
     collectionAttempts: attempts,
     summary: {
       observations: observations.length,
-      currentBaselineObservations: baselineIds.size,
-      preservedHistoricalObservations: observations.filter((row) => !baselineIds.has(row.id)).length,
+      currentBaselineObservations,
+      preservedHistoricalObservations: observations.length - currentBaselineObservations,
       legacyUnknownObservations: observations.filter((row) => row.sourceType === 'legacy_catalog'
         && row.availability === 'unknown').length,
       authoritativeTypedObservations: observations.filter((row) => row.sourceType !== 'legacy_catalog').length,

@@ -408,6 +408,45 @@ test('priority semantics cannot cross current and historical lifecycle workstrea
   assert.throws(() => build(input), /priority.*lifecycle/i);
 });
 
+test('unknown retailer lifecycle is historical recovery work and never enters the current workstream', () => {
+  const baseline = build();
+  const input = fixture();
+  const target = input.executableQueue.discoveryTargets.find((row) => row.targetId === 'current-singleton');
+  target.lifecycleState = 'UNKNOWN_RETAIL';
+  target.priorityClass = 'P1_HISTORICAL_MISSING_DIMENSIONS';
+  const state = input.targetState.records.find((row) => row.referenceId === target.referenceId);
+  state.lifecycleState = 'UNKNOWN_RETAIL';
+  state.priorityClass = 'P1_HISTORICAL_MISSING_DIMENSIONS';
+  input.familyCanaries.executableQueueSha256 = canonicalJsonSha256(input.executableQueue);
+  const semantic = {
+    schemaVersion: input.familyCanaries.schemaVersion,
+    generatedAt: input.familyCanaries.generatedAt,
+    documentGraphSha256: input.familyCanaries.documentGraphSha256,
+    executableQueueSha256: input.familyCanaries.executableQueueSha256,
+    policySha256: input.familyCanaries.policySha256,
+    parserContractSha256: input.familyCanaries.parserContractSha256,
+    processorEpochs: input.familyCanaries.processorEpochs,
+    families: input.familyCanaries.families,
+    targetDecisions: input.familyCanaries.targetDecisions,
+  };
+  input.familyCanaries.semanticCanarySha256 = canonicalJsonSha256(semantic);
+
+  const artifact = build(input);
+  const current = artifact.workstreams.find((row) => row.workstreamId === 'CURRENT_DIMENSIONS');
+  const selectedCurrent = artifact.manifests
+    .filter((manifest) => manifest.workstreamId === current.workstreamId)
+    .flatMap((manifest) => manifest.targetBindings.map((row) => row.targetId));
+  assert.equal(selectedCurrent.includes(target.targetId), false);
+  assert.equal(
+    artifact.summary.byWorkstream.CURRENT_DIMENSIONS,
+    baseline.summary.byWorkstream.CURRENT_DIMENSIONS - 1,
+  );
+  assert.equal(
+    artifact.summary.byWorkstream.HISTORICAL_DIMENSIONS,
+    baseline.summary.byWorkstream.HISTORICAL_DIMENSIONS + 1,
+  );
+});
+
 test('completed, non-actionable and family-gated rows remain counted but cannot enter manifests', () => {
   const artifact = build();
   const selected = new Set(artifact.manifests.flatMap((manifest) => (

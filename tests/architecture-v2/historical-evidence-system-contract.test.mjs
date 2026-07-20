@@ -231,7 +231,7 @@ test('tracked system contract replays from repository sources without external s
 
   assert.deepEqual(first, tracked);
   assert.deepEqual(second, first);
-  assert.equal(first.stages.length, 24);
+  assert.equal(first.stages.length, 26);
   assert.equal(first.epochs.length, 10);
   assert.ok(first.stages.every((stage) => stage.sourceBindings.every((binding) => (
     binding.declaredSha256 === binding.resolvedSha256
@@ -242,8 +242,26 @@ test('tracked system contract replays from repository sources without external s
   assert.equal(first.baseline.retailerObservationBaselineLinks, 1614);
   assert.equal(first.baseline.retailerObservationAccountedLinks, 1614);
   assert.equal(first.controllerDecision.status, 'STOP_LOW_YIELD');
+  const observationStage = first.stages.find((stage) => stage.id === 'retailer-observations');
+  const lifecycleShadow = first.stages.find((stage) => stage.id === 'retail-lifecycle-shadow');
+  const lifecycleRefresh = first.stages.find((stage) => stage.id === 'retail-lifecycle-refresh');
+  assert.deepEqual(observationStage.releaseDependencies, []);
+  assert.deepEqual(lifecycleShadow.releaseDependencies, [
+    'current-publication',
+    'retailer-observations',
+  ]);
+  assert.deepEqual(lifecycleRefresh.releaseDependencies, [
+    'retail-lifecycle-shadow',
+    'retailer-observation-coverage',
+  ]);
+  assert.equal(first.baseline.lifecycleShadowStatus, 'BLOCKED');
+  assert.equal(first.baseline.lifecycleShadowUnresolvedLegacyCurrentProducts, 1384);
+  assert.equal(first.baseline.lifecycleRefreshProducts, 1384);
+  assert.equal(first.baseline.lifecycleRefreshAuthorizedProducts, 172);
+  assert.equal(first.baseline.lifecycleRefreshCanaryProducts, 1172);
+  assert.equal(first.baseline.lifecycleRefreshPolicyBlockedProducts, 40);
   assert.ok(first.baseline.knownContractGaps.some((gap) => (
-    gap.id === 'RETAILER_OBSERVATIONS_NOT_BOUND_TO_LIFECYCLE'
+    gap.id === 'LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER'
   )));
   assert.doesNotMatch(JSON.stringify(first), /\/Volumes\/|FITAPPLIANCE_STORAGE_ROOT/);
 });

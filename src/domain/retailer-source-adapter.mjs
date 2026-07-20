@@ -19,6 +19,25 @@ function date(value, label) {
 function freezeDeep(value) { if (value && typeof value === 'object' && !Object.isFrozen(value)) { Object.freeze(value); for (const child of Object.values(value)) freezeDeep(child); } return value; }
 function positiveHours(value, label) { const result = Number(value); if (!Number.isInteger(result) || result <= 0) throw new TypeError(`${label} must be a positive integer`); return result; }
 
+function canonicalProductScope(value, rows) {
+  const source = value == null ? rows.map((row) => row.canonicalProductId) : value;
+  if (!Array.isArray(source) || source.length === 0) {
+    throw new TypeError('retailer snapshot canonical product scope required');
+  }
+  const normalized = source.map((id) => required(id, 'snapshot canonical product ID'));
+  if (new Set(normalized).size !== normalized.length) {
+    throw new TypeError('retailer snapshot canonical product scope contains duplicates');
+  }
+  const result = normalized.sort();
+  const scoped = new Set(result);
+  for (const row of rows) {
+    if (!scoped.has(row.canonicalProductId)) {
+      throw new TypeError(`retailer row is outside canonical product scope: ${row.canonicalProductId}`);
+    }
+  }
+  return result;
+}
+
 function trustedRetailerUrl(value, adapter, label) {
   const url = new URL(required(value, label));
   if (url.protocol !== 'https:' || url.username || url.password) {
@@ -94,6 +113,7 @@ export function normalizeRetailerSnapshot(adapterInput, input) {
       availability, listingState,
     };
   });
+  const canonicalProductIds = canonicalProductScope(input.canonicalProductIds, rows);
   return freezeDeep({
     adapterId: adapter.id, retailer: adapter.retailer, sourceType: adapter.sourceType,
     policyVersion: adapter.policyVersion,
@@ -102,7 +122,9 @@ export function normalizeRetailerSnapshot(adapterInput, input) {
     observedAt: observedAt.toISOString(), complete: input.complete === true,
     collectionStatus: failed ? 'failed' : 'succeeded', collectionError: failed ? required(input.collectionError, 'collection error') : null,
     rawPayloadSha256: input.rawPayloadSha256 ?? null,
-    rawSourceReference: rawSourceReference(input.rawSourceReference, adapter.sourceType), rows,
+    rawSourceReference: rawSourceReference(input.rawSourceReference, adapter.sourceType),
+    canonicalProductIds,
+    rows,
   });
 }
 

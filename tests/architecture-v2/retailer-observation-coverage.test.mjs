@@ -60,6 +60,24 @@ const sourcePolicy = readJsonWithHash(
   '../../data/architecture-v2/policies/retailer-source-policy.json',
 );
 
+function adapterForPolicy(sourceId) {
+  const policy = sourcePolicy.document;
+  const source = policy.sources.find((row) => row.id === sourceId);
+  assert.ok(source, `missing source policy ${sourceId}`);
+  return createRetailerSourceAdapter({
+    id: source.id,
+    retailer: source.retailer,
+    sourceType: source.sourceType,
+    allowedHosts: source.allowedHosts,
+    minimumIntervalMs: source.minimumIntervalMs,
+    robotsReviewedAt: policy.reviewedAt,
+    termsReviewedAt: policy.reviewedAt,
+    policyVersion: `${policy.policyVersion}:${source.id}`,
+    expectedCadenceHours: source.expectedCadenceHours,
+    maximumCurrentAgeHours: source.maximumCurrentAgeHours,
+  });
+}
+
 test('baseline migration accounts for all 1,614 retailer links without inventing availability', () => {
   const ledger = buildRetailerObservationLedger({
     existingLedger: existingLedger.document,
@@ -149,18 +167,7 @@ test('coverage inventory classifies every baseline link as typed or a specific p
 });
 
 test('a hash-bound typed snapshot appends once and replaces only its own coverage item', () => {
-  const adapter = createRetailerSourceAdapter({
-    id: 'ao-product-api-v1',
-    retailer: 'Appliances Online',
-    sourceType: 'public_retailer_api',
-    allowedHosts: ['www.appliancesonline.com.au'],
-    minimumIntervalMs: 1000,
-    robotsReviewedAt: '2026-07-11',
-    termsReviewedAt: '2026-07-11',
-    policyVersion: 'ao-product-api-policy-v1',
-    expectedCadenceHours: 24,
-    maximumCurrentAgeHours: 72,
-  });
+  const adapter = adapterForPolicy('appliances-online-product-api-v1');
   const product = publicProjection.document.products.find((row) => row.model === 'DW42CS');
   const retailer = product.retailers.find((row) => row.source === 'appliances-online-api');
   const snapshot = normalizeRetailerSnapshot(adapter, {
@@ -205,12 +212,163 @@ test('a hash-bound typed snapshot appends once and replaces only its own coverag
     sourcePolicy: sourcePolicy.document,
     sourcePolicySha256: sourcePolicy.sha256,
   });
-  const item = coverage.items.find((row) => row.canonicalProductId === product.canonicalProductId);
+  const item = coverage.items.find((row) => (
+    row.canonicalProductId === product.canonicalProductId && row.url === new URL(retailer.url).toString()
+  ));
   assert.equal(item.terminalObservationState, 'TYPED_UNAVAILABLE');
   assert.equal(item.revalidation, null);
+
+  const blockedPolicy = structuredClone(sourcePolicy.document);
+  blockedPolicy.sources.find((source) => source.id === 'appliances-online-product-api-v1')
+    .termsReviewState = 'collection_blocked';
+  const blockedCoverage = buildRetailerObservationCoverage({
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    ledger: first,
+    ledgerSha256: createHash('sha256').update(JSON.stringify(first)).digest('hex'),
+    sourcePolicy: blockedPolicy,
+    sourcePolicySha256: canonicalSha256(blockedPolicy),
+  });
+  const excluded = blockedCoverage.items.find((row) => (
+    row.canonicalProductId === product.canonicalProductId
+  ));
+  assert.equal(excluded.terminalObservationState, 'TYPED_POLICY_EXCLUDED');
+  assert.equal(excluded.revalidation.executionState, 'BLOCKED_BY_SOURCE_POLICY');
+  assert.deepEqual(excluded.typedObservation.policyExcludedObservationIds, [
+    first.observations.find((row) => row.canonicalProductId === product.canonicalProductId
+      && row.sourceType !== 'legacy_catalog').id,
+  ]);
 });
 
-test('schema-v2 replay preserves removed history and rejects conflicting observation reuse', () => {
+test('redirected typed listings remain explicit revalidation work rather than terminal coverage', () => {
+  const adapter = adapterForPolicy('appliances-online-product-api-v1');
+  const product = publicProjection.document.products.find((row) => (
+    row.retailers?.some((retailer) => retailer.url.includes('appliancesonline.com.au/product/'))
+  ));
+  const retailer = product.retailers.find((row) => row.url.includes('appliancesonline.com.au/product/'));
+  const snapshot = normalizeRetailerSnapshot(adapter, {
+    observedAt: '2026-07-20T00:00:00.000Z',
+    complete: false,
+    rawPayloadSha256: 'd'.repeat(64),
+    rawSourceReference: 'fixture:ao:redirected',
+    rows: [{
+      canonicalProductId: product.canonicalProductId,
+      retailerProductId: 'fixture-redirected',
+      url: retailer.url,
+      redirectUrl: `${retailer.url}-replacement`,
+      title: `${product.brand} ${product.model}`,
+      priceAud: null,
+      availability: 'unknown',
+      listingState: 'redirected',
+    }],
+  });
+  const ledger = buildRetailerObservationLedger({
+    existingLedger: existingLedger.document,
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+    typedSnapshots: [snapshot],
+  });
+  const coverage = buildRetailerObservationCoverage({
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    ledger,
+    ledgerSha256: canonicalSha256(ledger),
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+  });
+  const item = coverage.items.find((row) => (
+    row.canonicalProductId === product.canonicalProductId && row.url === new URL(retailer.url).toString()
+  ));
+
+  assert.equal(item.terminalObservationState, 'TYPED_REDIRECTED');
+  assert.equal(item.revalidation.action, 'REVALIDATE_TYPED_NON_TERMINAL');
+  assert.equal(item.revalidation.executionState, 'BOUNDED_CANARY_ONLY');
+});
+
+test('ledger rejects unregistered adapters, policy drift, and collection-blocked source snapshots', () => {
+  const aoProduct = publicProjection.document.products.find((row) => (
+    row.retailers?.some((retailer) => retailer.url.includes('appliancesonline.com.au/product/'))
+  ));
+  const aoRetailer = aoProduct.retailers.find((retailer) => (
+    retailer.url.includes('appliancesonline.com.au/product/')
+  ));
+  const fakeAdapter = createRetailerSourceAdapter({
+    ...adapterForPolicy('appliances-online-product-api-v1'),
+    id: 'unregistered-adapter-v1',
+    policyVersion: 'retailer-source-policy-v2:unregistered-adapter-v1',
+  });
+  const fakeSnapshot = normalizeRetailerSnapshot(fakeAdapter, {
+    observedAt: '2026-07-20T00:00:00.000Z',
+    complete: false,
+    rawPayloadSha256: 'b'.repeat(64),
+    rawSourceReference: 'fixture:unregistered',
+    rows: [{
+      canonicalProductId: aoProduct.canonicalProductId,
+      retailerProductId: 'fixture-unregistered',
+      url: aoRetailer.url,
+      title: `${aoProduct.brand} ${aoProduct.model}`,
+      priceAud: null,
+      availability: 'available',
+      listingState: 'current',
+    }],
+  });
+  assert.throws(() => buildRetailerObservationLedger({
+    existingLedger: existingLedger.document,
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+    typedSnapshots: [fakeSnapshot],
+  }), /adapter.*source policy|unregistered/i);
+
+  const policyDrift = structuredClone(fakeSnapshot);
+  policyDrift.adapterId = 'appliances-online-product-api-v1';
+  assert.throws(() => buildRetailerObservationLedger({
+    existingLedger: existingLedger.document,
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+    typedSnapshots: [policyDrift],
+  }), /source policy contract drift.*policyVersion/i);
+
+  const blockedSource = sourcePolicy.document.sources.find((source) => (
+    source.termsReviewState === 'collection_blocked'
+  ));
+  const blockedProduct = publicProjection.document.products.find((row) => (
+    row.retailers?.some((retailer) => new URL(retailer.url).hostname === blockedSource.host)
+  ));
+  const blockedRetailer = blockedProduct.retailers.find((retailer) => (
+    new URL(retailer.url).hostname === blockedSource.host
+  ));
+  const blockedSnapshot = normalizeRetailerSnapshot(adapterForPolicy(blockedSource.id), {
+    observedAt: '2026-07-20T00:00:00.000Z',
+    complete: false,
+    rawPayloadSha256: 'c'.repeat(64),
+    rawSourceReference: `fixture:${blockedSource.id}`,
+    rows: [{
+      canonicalProductId: blockedProduct.canonicalProductId,
+      retailerProductId: 'fixture-blocked',
+      url: blockedRetailer.url,
+      title: `${blockedProduct.brand} ${blockedProduct.model}`,
+      priceAud: null,
+      availability: 'available',
+      listingState: 'current',
+    }],
+  });
+  assert.throws(() => buildRetailerObservationLedger({
+    existingLedger: existingLedger.document,
+    publicProjection: publicProjection.document,
+    publicProjectionSha256: publicProjection.sha256,
+    sourcePolicy: sourcePolicy.document,
+    sourcePolicySha256: sourcePolicy.sha256,
+    typedSnapshots: [blockedSnapshot],
+  }), /collection.*blocked|source policy.*blocked/i);
+});
+
+test('schema-v2 replay freezes its migration baseline across later public projection drift', () => {
   const ledger = buildRetailerObservationLedger({
     existingLedger: existingLedger.document,
     publicProjection: publicProjection.document,
@@ -231,9 +389,14 @@ test('schema-v2 replay preserves removed history and rejects conflicting observa
     sourcePolicySha256: sourcePolicy.sha256,
     typedSnapshots: [],
   });
-  assert.equal(next.observations.length, ledger.observations.length);
-  assert.equal(next.summary.currentBaselineObservations, 1614 - removedLinks);
-  assert.equal(next.summary.preservedHistoricalObservations, 38 + removedLinks);
+  assert.ok(removedLinks > 0);
+  assert.deepEqual(next, ledger);
+  assert.equal(next.summary.currentBaselineObservations, 1614);
+  assert.equal(next.summary.preservedHistoricalObservations, 38);
+  assert.equal(
+    next.sourceBindings.filter((binding) => binding.kind === 'LEGACY_MIGRATION_INPUT').length,
+    1,
+  );
 
   const conflicting = structuredClone(ledger);
   conflicting.observations[0].url = 'https://www.example.com/conflict';

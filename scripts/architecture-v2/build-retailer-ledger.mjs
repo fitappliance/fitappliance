@@ -56,10 +56,12 @@ export async function buildRetailerObservationLedgerFromRepository({
   existingInput = resolveArchitectureV2Path(root, 'retailerObservations'),
   typedSnapshots = [],
 } = {}) {
-  const [publicProjection, sourcePolicy, existingLedger] = await Promise.all([
-    readJsonWithHash(resolveArchitectureV2Path(root, 'publicProjection')),
+  const existingLedger = await readExisting(output, existingInput);
+  const [publicProjection, sourcePolicy] = await Promise.all([
+    existingLedger.schemaVersion === 2
+      ? Promise.resolve({ document: null, sha256: null })
+      : readJsonWithHash(resolveArchitectureV2Path(root, 'publicProjection')),
     readJsonWithHash(resolveArchitectureV2Path(root, 'retailerSourcePolicy')),
-    readExisting(output, existingInput),
   ]);
   const ledger = buildRetailerObservationLedger({
     existingLedger,

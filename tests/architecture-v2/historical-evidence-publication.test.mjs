@@ -180,7 +180,7 @@ test('official structured product data publishes a JSON artifact locator without
   assert.equal(receipt.fields.width.page, undefined);
 });
 
-test('archived recovery evidence remains historical-only and cannot update a current product', () => {
+test('archived recovery evidence remains historical-only while the product is archived', () => {
   const archivedBundle = structuredClone(currentBundle);
   archivedBundle.entries[0].lifecycleState = 'CATALOG_ARCHIVED';
   const archivedProduct = wdProduct('CATALOG_ARCHIVED');
@@ -198,10 +198,41 @@ test('archived recovery evidence remains historical-only and cannot update a cur
     { width: 600, height: 850, depth: 645 },
   );
 
-  assert.throws(() => buildHistoricalEvidencePublication({
-    bundle: archivedBundle,
-    products: [wdProduct()],
-  }), /lifecycle.*drift|archived.*current/i);
+});
+
+test('publication routes an existing receipt by current lifecycle instead of stale bundle lifecycle', () => {
+  const cases = [
+    ['CATALOG_ARCHIVED', false],
+    ['UNKNOWN_RETAIL', false],
+  ];
+  for (const [lifecycleState, expectedCurrent] of cases) {
+    const product = wdProduct(lifecycleState);
+    product.unavailable = true;
+    product.retailers = [];
+    const publication = buildHistoricalEvidencePublication({
+      bundle: currentBundle,
+      products: [product],
+    });
+    assert.equal(publication.currentAcceptanceByLegacyId.has(product.id), expectedCurrent);
+    assert.equal(publication.historicalEvidenceProjection.records[0].lifecycleState, lifecycleState);
+    assert.deepEqual(publication.historicalEvidenceProjection.records[0].dimensionsMm, {
+      width: 600,
+      height: 850,
+      depth: 645,
+    });
+  }
+
+  const archivedAtAcceptance = structuredClone(currentBundle);
+  archivedAtAcceptance.entries[0].lifecycleState = 'CATALOG_ARCHIVED';
+  const relisted = wdProduct();
+  relisted.retailLifecycle.authorizingObservation.listingState = 'relisted';
+  relisted.retailLifecycle.latestObservations[0].listingState = 'relisted';
+  const publication = buildHistoricalEvidencePublication({
+    bundle: archivedAtAcceptance,
+    products: [relisted],
+  });
+  assert.equal(publication.currentAcceptanceByLegacyId.has(relisted.id), true);
+  assert.equal(publication.historicalEvidenceProjection.records[0].lifecycleState, 'CURRENT_RETAIL');
 });
 
 test('registry-only recovery publishes only to historical replacement data', () => {
@@ -227,6 +258,12 @@ test('current recovery requires an exact, current catalog identity', () => {
   assert.throws(
     () => buildHistoricalEvidencePublication({ bundle: currentBundle, products: [mismatched] }),
     /identity mismatch/i,
+  );
+
+  const unbound = structuredClone(catalog.products.find((product) => product.id === 'ao-62057'));
+  assert.throws(
+    () => buildHistoricalEvidencePublication({ bundle: currentBundle, products: [unbound] }),
+    /lifecycle decision missing/i,
   );
 });
 
