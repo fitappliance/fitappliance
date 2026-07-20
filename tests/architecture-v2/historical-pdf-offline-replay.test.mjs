@@ -59,8 +59,37 @@ function fixture(overrides = {}) {
       id: 'dishwasher-ex-100', cat: 'dishwasher', brand: 'Example Brand', model: 'EX-100',
       canonicalProductId: 'fa_prod_one', unavailable: false,
       retailers: [{ retailer: 'Example', url: 'https://www.appliancesonline.com.au/product/example' }],
+      retailLifecycle: {
+        schemaVersion: 1,
+        policyVersion: 'retail-lifecycle-v1',
+        asOf: '2026-07-20T00:00:00.000Z',
+        canonicalProductId: 'fa_prod_one',
+        catalogState: 'LISTED_UNVERIFIED',
+        lifecycleState: 'CURRENT_RETAIL',
+        authorizingObservation: {
+          id: 'obs_example_current',
+          canonicalProductId: 'fa_prod_one',
+          adapterId: 'ao-api-v1',
+          retailer: 'Appliances Online',
+          retailerProductId: 'example',
+          observedAt: '2026-07-19T00:00:00.000Z',
+          url: 'https://www.appliancesonline.com.au/product/example',
+          availability: 'available',
+          listingState: 'current',
+          freshnessState: 'FRESH',
+          rawSourceSha256: 'c'.repeat(64),
+          policyVersion: 'ao-source-v1',
+        },
+        latestObservations: [],
+        observationConflicts: [],
+        collectionAttempts: [],
+        reasonCodes: [],
+      },
     }],
   };
+  publicProjection.products[0].retailLifecycle.latestObservations = [
+    publicProjection.products[0].retailLifecycle.authorizingObservation,
+  ];
   const legacyPdfAudit = {
     pdfDocuments: [{
       sourcePdfSha256: PDF_SHA,

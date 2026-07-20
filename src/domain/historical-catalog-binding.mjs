@@ -3,7 +3,6 @@ import { createHash } from 'node:crypto';
 import {
   catalogReceiptDimensions,
   isCurrentRetailProduct,
-  isRetailerProductPageUrl,
 } from './historical-appliance-reference.mjs';
 
 const RECEIPT_FIELDS = Object.freeze([
@@ -24,17 +23,51 @@ function receiptEvidence(product) {
   }));
 }
 
+function observationBinding(observation) {
+  if (!observation) return null;
+  return {
+    id: String(observation.id ?? ''),
+    canonicalProductId: String(observation.canonicalProductId ?? ''),
+    adapterId: String(observation.adapterId ?? ''),
+    retailer: String(observation.retailer ?? ''),
+    retailerProductId: observation.retailerProductId == null
+      ? null
+      : String(observation.retailerProductId),
+    observedAt: String(observation.observedAt ?? ''),
+    url: String(observation.url ?? ''),
+    availability: String(observation.availability ?? ''),
+    listingState: String(observation.listingState ?? ''),
+    freshnessState: String(observation.freshnessState ?? ''),
+    rawSourceSha256: String(observation.rawSourceSha256 ?? ''),
+    policyVersion: String(observation.policyVersion ?? ''),
+  };
+}
+
+function retailLifecycleBinding(product) {
+  const decision = product?.retailLifecycle;
+  if (!decision) return null;
+  return {
+    schemaVersion: decision.schemaVersion ?? null,
+    policyVersion: String(decision.policyVersion ?? ''),
+    asOf: String(decision.asOf ?? ''),
+    canonicalProductId: String(decision.canonicalProductId ?? ''),
+    catalogState: String(decision.catalogState ?? ''),
+    lifecycleState: String(decision.lifecycleState ?? ''),
+    authorizingObservation: observationBinding(decision.authorizingObservation),
+    latestObservations: (decision.latestObservations ?? [])
+      .map(observationBinding)
+      .sort((left, right) => left.id.localeCompare(right.id)),
+    observationConflicts: structuredClone(decision.observationConflicts ?? []),
+    reasonCodes: [...(decision.reasonCodes ?? [])].map(String).sort(),
+  };
+}
+
 function productBinding(product) {
   const recoveryManaged = /^recovery_target_[a-z0-9]+$/i.test(
     String(product?.evidence?.acceptance?.id ?? ''),
   );
   const dimensionsMm = recoveryManaged ? null : catalogReceiptDimensions(product);
   const currentRetail = isCurrentRetailProduct(product);
-  const productPageUrls = currentRetail
-    ? [...new Set((product?.retailers ?? [])
-      .map((retailer) => String(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link ?? '').trim())
-      .filter(isRetailerProductPageUrl))].sort()
-    : [];
   return {
     id: String(product?.id ?? ''),
     canonicalProductId: String(product?.canonicalProductId ?? ''),
@@ -42,7 +75,7 @@ function productBinding(product) {
     brand: String(product?.brand ?? ''),
     model: String(product?.model ?? ''),
     currentRetail,
-    productPageUrls,
+    retailLifecycle: retailLifecycleBinding(product),
     receiptGeometry: dimensionsMm ? {
       dimensionsMm,
       fieldEvidence: receiptEvidence(product),

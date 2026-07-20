@@ -35,8 +35,45 @@ function bundleFor(model) {
 
 const currentBundle = bundleFor('WD8560F1');
 
-function wdProduct() {
-  return structuredClone(catalog.products.find((product) => product.id === 'ao-62057'));
+function withRetailLifecycle(product, entry, lifecycleState = 'CURRENT_RETAIL') {
+  const result = structuredClone(product);
+  result.canonicalProductId = entry.canonicalProductId;
+  const authorizingObservation = lifecycleState === 'CURRENT_RETAIL' ? {
+    id: `obs_${entry.targetId}`,
+    canonicalProductId: entry.canonicalProductId,
+    adapterId: 'test-retailer-source-v1',
+    retailer: 'Test retailer',
+    retailerProductId: entry.legacyRuntimeId,
+    observedAt: '2026-07-19T00:00:00.000Z',
+    url: `https://www.appliancesonline.com.au/product/${entry.legacyRuntimeId}`,
+    availability: 'available',
+    listingState: 'current',
+    freshnessState: 'FRESH',
+    rawSourceSha256: entry.sources[0].contentSha256,
+    policyVersion: 'test-retailer-source-v1',
+  } : null;
+  result.retailLifecycle = {
+    schemaVersion: 1,
+    policyVersion: 'retail-lifecycle-v1',
+    asOf: '2026-07-20T00:00:00.000Z',
+    canonicalProductId: entry.canonicalProductId,
+    catalogState: lifecycleState === 'CATALOG_ARCHIVED' ? 'ARCHIVED' : 'LISTED_UNVERIFIED',
+    lifecycleState,
+    authorizingObservation,
+    latestObservations: authorizingObservation ? [authorizingObservation] : [],
+    observationConflicts: [],
+    collectionAttempts: [],
+    reasonCodes: [],
+  };
+  return result;
+}
+
+function wdProduct(lifecycleState = 'CURRENT_RETAIL') {
+  return withRetailLifecycle(
+    catalog.products.find((product) => product.id === 'ao-62057'),
+    currentBundle.entries[0],
+    lifecycleState,
+  );
 }
 
 test('current recovery evidence projects to both current and historical lanes', () => {
@@ -62,7 +99,10 @@ test('current recovery evidence projects to both current and historical lanes', 
 
 test('current publication restores explicit catalog form factor before calculating Fit requirements', () => {
   const samsungBundle = bundleFor('SRF5300SD');
-  const samsungProduct = structuredClone(catalog.products.find((product) => product.id === 'ao-97642'));
+  const samsungProduct = withRetailLifecycle(
+    catalog.products.find((product) => product.id === 'ao-97642'),
+    samsungBundle.entries[0],
+  );
   assert.equal(samsungBundle.entries[0].geometryProjection.geometry.formFactor, null);
 
   const publication = buildHistoricalEvidencePublication({
@@ -101,7 +141,10 @@ test('form-factor safety projection cannot promote a stored dimensions receipt t
 
 test('mixed HTML and PDF evidence publishes only contributing sources with typed locators', () => {
   const lgBundle = bundleFor('DVH9-09B');
-  const lgProduct = structuredClone(catalog.products.find((product) => product.model === 'DVH9-09B'));
+  const lgProduct = withRetailLifecycle(
+    catalog.products.find((product) => product.model === 'DVH9-09B'),
+    lgBundle.entries[0],
+  );
   const publication = buildHistoricalEvidencePublication({
     bundle: lgBundle,
     products: [lgProduct],
@@ -122,7 +165,10 @@ test('mixed HTML and PDF evidence publishes only contributing sources with typed
 
 test('official structured product data publishes a JSON artifact locator without fake HTML or PDF provenance', () => {
   const apiBundle = bundleFor('DBI253IBS');
-  const product = structuredClone(catalog.products.find((candidate) => candidate.model === 'DBI253IBS'));
+  const product = withRetailLifecycle(
+    catalog.products.find((candidate) => candidate.model === 'DBI253IBS'),
+    apiBundle.entries[0],
+  );
   const publication = buildHistoricalEvidencePublication({ bundle: apiBundle, products: [product] });
   const current = publication.currentAcceptanceByLegacyId.get(product.id);
   const [receipt] = publication.historicalEvidenceProjection.records[0].modelReceipts;
@@ -137,7 +183,7 @@ test('official structured product data publishes a JSON artifact locator without
 test('archived recovery evidence remains historical-only and cannot update a current product', () => {
   const archivedBundle = structuredClone(currentBundle);
   archivedBundle.entries[0].lifecycleState = 'CATALOG_ARCHIVED';
-  const archivedProduct = wdProduct();
+  const archivedProduct = wdProduct('CATALOG_ARCHIVED');
   archivedProduct.unavailable = true;
   archivedProduct.retailers = [];
 

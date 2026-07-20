@@ -54,10 +54,10 @@
         },
         {
           "path": "src/domain/historical-appliance-reference.mjs",
-          "contentSha256": "1deee8a43b5bbf237278f2a49c1c619ceeb351e528981803400279b27447bfe7"
+          "contentSha256": "5004b55230e9ba2d133f8748287cb60fc331bdf2ddefebe13069a0347c307650"
         }
       ],
-      "semanticSha256": "ce191db0f4dd2e4c14a4df1441732803bf1391c573acb43e94d2caebcd025069"
+      "semanticSha256": "0394f1fdcb547dedb20cf5011a0db1910dc5b007884386827b528245fb80b8a2"
     },
     {
       "id": "mineru-toolchain",
@@ -84,14 +84,14 @@
       "inputs": [
         {
           "path": "src/domain/retailer-observation.mjs",
-          "contentSha256": "7cec2c1fa00924478b37e446ba00790e196cf2116099191eb05eaee22dcecd96"
+          "contentSha256": "5a940d757fde225f39bdc94216d0c33441a00ca5a9271ea101d415407c493897"
         },
         {
           "path": "src/domain/retailer-source-adapter.mjs",
-          "contentSha256": "72d690d6cf5b84cbacb1c91b62e40f9abdcd6e2631b1767f63371eda73d89d81"
+          "contentSha256": "26139251e27eb8518eb3f45b629a8f399f858db0434cfc24b61a990ea640e939"
         }
       ],
-      "semanticSha256": "6548fc79e75da1ce2711fbcb7d89074d186401c54656e759e19c983203dde28a"
+      "semanticSha256": "b5b28aab9ab0ae4537b39cabe3122bb4ef0c4c1a492e6b819c02da0c270ae9ae"
     },
     {
       "id": "parser",
@@ -456,14 +456,14 @@
         },
         {
           "path": "src/domain/historical-appliance-reference.mjs",
-          "contentSha256": "1deee8a43b5bbf237278f2a49c1c619ceeb351e528981803400279b27447bfe7"
+          "contentSha256": "5004b55230e9ba2d133f8748287cb60fc331bdf2ddefebe13069a0347c307650"
         },
         {
           "path": "src/domain/historical-catalog-binding.mjs",
-          "contentSha256": "a702c3d9d805e2e2bfe5af92ce923d5f1aefa4b07a1b95a3166cdd75454376aa"
+          "contentSha256": "892ae7126831a72477849906e76750746b4733cc822da3f4e6317d3a56064211"
         }
       ],
-      "producerSha256": "38dca1b8e1c4f39bf07fdd9d3986330b29b5037d6f7e332e73a2fc87eb3bdbab",
+      "producerSha256": "cfafadcf553a82c67785b4e54b44c073e905c8ff1680a57b09c900888b81203a",
       "consumers": [
         "classification",
         "historical-replacement-publication",
@@ -1304,14 +1304,14 @@
       "producerInputs": [
         {
           "path": "src/domain/retailer-observation.mjs",
-          "contentSha256": "7cec2c1fa00924478b37e446ba00790e196cf2116099191eb05eaee22dcecd96"
+          "contentSha256": "5a940d757fde225f39bdc94216d0c33441a00ca5a9271ea101d415407c493897"
         },
         {
           "path": "src/domain/retailer-source-adapter.mjs",
-          "contentSha256": "72d690d6cf5b84cbacb1c91b62e40f9abdcd6e2631b1767f63371eda73d89d81"
+          "contentSha256": "26139251e27eb8518eb3f45b629a8f399f858db0434cfc24b61a990ea640e939"
         }
       ],
-      "producerSha256": "6ad1f6d8322c1fb9c29589a07c5630c2e4d77efbf89aabef0de90d3ffe820a76",
+      "producerSha256": "89fcf398850cf9582a76e9be5ec53abc339d08b962f7400e77b962d345781ae9",
       "consumers": [],
       "schemaVersion": 1,
       "generatedAt": null,
@@ -1713,6 +1713,6 @@
     "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
     "checkpointCount": 5
   },
-  "contractId": "historical_evidence_system_2e2f3a4e2f39803950680d43",
-  "semanticContractSha256": "2e2f3a4e2f39803950680d431643c4991ff41c9371883609194de636fc1376ad"
+  "contractId": "historical_evidence_system_f01c788b2bbc45dc5a38d6b5",
+  "semanticContractSha256": "f01c788b2bbc45dc5a38d6b585c91d7dd395b2c9e3c34819c2b3748cf7a155c1"
 }

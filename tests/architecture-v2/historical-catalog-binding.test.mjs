@@ -6,12 +6,43 @@ import {
   hashHistoricalCatalogBinding,
 } from '../../src/domain/historical-catalog-binding.mjs';
 
+function retailLifecycle(canonicalProductId, lifecycleState = 'CURRENT_RETAIL') {
+  const authorizingObservation = lifecycleState === 'CURRENT_RETAIL' ? {
+    id: `obs_${canonicalProductId}`,
+    canonicalProductId,
+    adapterId: 'tgg-feed-v1',
+    retailer: 'The Good Guys',
+    retailerProductId: 'EX-1',
+    observedAt: '2026-07-19T00:00:00.000Z',
+    url: 'https://www.thegoodguys.com.au/example-fridge-ex-1',
+    availability: 'available',
+    listingState: 'current',
+    freshnessState: 'FRESH',
+    rawSourceSha256: 'b'.repeat(64),
+    policyVersion: 'tgg-source-v1',
+  } : null;
+  return {
+    schemaVersion: 1,
+    policyVersion: 'retail-lifecycle-v1',
+    asOf: '2026-07-20T00:00:00.000Z',
+    canonicalProductId,
+    catalogState: lifecycleState === 'CATALOG_ARCHIVED' ? 'ARCHIVED' : 'LISTED_UNVERIFIED',
+    lifecycleState,
+    authorizingObservation,
+    latestObservations: authorizingObservation ? [authorizingObservation] : [],
+    observationConflicts: [],
+    collectionAttempts: [],
+    reasonCodes: [],
+  };
+}
+
 function product(overrides = {}) {
   const hash = 'a'.repeat(64);
   const field = { contentSha256: hash, receiptBindingSha256: hash, fragmentSha256: hash };
+  const canonicalProductId = overrides.canonicalProductId ?? 'fa_prod_1';
   return {
     id: 'fridge-1',
-    canonicalProductId: 'fa_prod_1',
+    canonicalProductId,
     cat: 'fridge',
     brand: 'Example',
     model: 'EX-1',
@@ -35,6 +66,7 @@ function product(overrides = {}) {
         'closedEnvelope.depthMm': field,
       },
     },
+    retailLifecycle: retailLifecycle(canonicalProductId),
     ...overrides,
   };
 }
@@ -87,9 +119,13 @@ test('historical recovery receipt geometry is bound by its bundle, not duplicate
 });
 
 test('historical catalog binding ignores retailer URL drift for an archived product', () => {
-  const archived = product({ unavailable: true });
+  const archived = product({
+    unavailable: true,
+    retailLifecycle: retailLifecycle('fa_prod_1', 'CATALOG_ARCHIVED'),
+  });
   const changedUrl = product({
     unavailable: true,
+    retailLifecycle: retailLifecycle('fa_prod_1', 'CATALOG_ARCHIVED'),
     retailers: [{ n: 'The Good Guys', url: 'https://www.thegoodguys.com.au/example-fridge-ex-2' }],
   });
 
@@ -102,10 +138,16 @@ test('historical catalog binding ignores retailer URL drift for an archived prod
 test('historical catalog binding changes for identity, lifecycle, product-page or receipt geometry drift', () => {
   const base = { products: [product()] };
   const baseHash = hashHistoricalCatalogBinding(base);
+  const changedAuthorizer = retailLifecycle('fa_prod_1');
+  changedAuthorizer.authorizingObservation.url = 'https://www.thegoodguys.com.au/example-fridge-ex-2';
+  changedAuthorizer.latestObservations[0].url = changedAuthorizer.authorizingObservation.url;
   const changed = [
     { products: [product({ model: 'EX-2' })] },
-    { products: [product({ unavailable: true })] },
-    { products: [product({ retailers: [{ n: 'The Good Guys', url: 'https://www.thegoodguys.com.au/example-fridge-ex-2' }] })] },
+    { products: [product({
+      unavailable: true,
+      retailLifecycle: retailLifecycle('fa_prod_1', 'CATALOG_ARCHIVED'),
+    })] },
+    { products: [product({ retailLifecycle: changedAuthorizer })] },
     { products: [product({ geometry_v2: { closedEnvelope: { widthMm: 610, heightMm: 1700, depthMm: 650 } } })] },
   ];
 

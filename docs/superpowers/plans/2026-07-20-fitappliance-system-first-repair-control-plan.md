@@ -5,9 +5,9 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** EXECUTING - Task 1 in progress
+- **Status:** EXECUTING - Task 2 in progress
 - **Date:** 2026-07-20
-- **Active task:** Task 1 - lock independent state-axis contracts
+- **Active task:** Task 2 - integrate typed retailer observations
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -412,9 +412,9 @@ Mandatory adversarial traces across the programme:
 
 | Task | Scope | Depends on | Status | Completion evidence |
 | ---: | --- | --- | --- | --- |
-| 0 | Freeze baseline and executable system contract | none | COMPLETED | Contract `historical_evidence_system_2e2f3a4e2f39803950680d43`; 23 stages; 10 epochs; 1,012 Architecture V2 tests passed |
-| 1 | Lock independent identity/lifecycle/evidence/visibility/Fit axes | 0 | IN_PROGRESS | Contract trace and failing boundary tests pending |
-| 2 | Integrate real retailer availability observations | 1 | PENDING | Not started |
+| 0 | Freeze baseline and executable system contract | none | COMPLETED | Current contract `historical_evidence_system_f01c788b2bbc45dc5a38d6b5`; 23 stages; 10 epochs; tracked contract replay passed |
+| 1 | Lock independent identity/lifecycle/evidence/visibility/Fit axes | 0 | COMPLETED | 13 state-axis fixtures; typed provenance and lifecycle binding; 34 focused and 1,020 Architecture V2 tests passed |
+| 2 | Integrate real retailer availability observations | 1 | IN_PROGRESS | Source inventory and migration repair record pending |
 | 3 | Rebuild classification and prove lifecycle destination isolation | 2 | PENDING | Not started |
 | 4 | Replace one-path discovery with typed official source lanes | 3 | PENDING | Not started |
 | 5 | Repair category/series/document-family MinerU grammar | 4 | PENDING | Not started |
@@ -522,6 +522,23 @@ recomputing or cross-checking them.
 
 **Goal:** Prevent one state axis from silently authorizing another.
 
+**Execution repair record (2026-07-20):**
+
+```text
+Symptom: A legacy catalogue boolean plus a product-shaped retailer URL can authorize CURRENT_RETAIL without a dated availability observation.
+First incorrect persisted state: historical-appliance-reference lifecycleState, produced from public-catalog-projection rows rather than the retailer-observation ledger.
+Upstream producers: retailer adapters and feeds, build-retailer-ledger, public projection, official registry observations, and cumulative evidence receipts.
+Downstream consumers: evidence classification and P0/P1 priority, executable queue, target state, bounded planner, current publication, historical replacement, and scale control.
+Affected state axes: retail lifecycle directly; public visibility and scheduler priority indirectly; identity, registry state, evidence, and Fit must remain independent.
+Affected tracked/external artifacts: retailer-observations.json, public-catalog-projection.json, historical-appliance-reference.json, all derived queues/audits; immutable raw source objects remain read-only.
+Current contract: createObservation preserves a three-state availability value, but historical lifecycle ignores it and isCurrentRetailProduct trusts unavailable:false plus URL shape.
+Target contract: one deterministic asOf-bound reducer uses only fresh successful product-bound typed observations for CURRENT_RETAIL, preserves failures/unknowns, and never reads Date.now().
+Migration/rebuild required: Task 1 locks the schema and reducer; Task 2 migrates all retailer sources; Task 3 rebuilds lifecycle and downstream projections in release order.
+Rollback unit: one Task 1 commit containing adapter/reducer contracts, state-axis fixtures, consumer integration seam, tests, and plan evidence; no generated lifecycle artifact is promoted in this task.
+Positive real canary: a fresh exact-product available observation remains CURRENT_RETAIL, including a newer relisted observation after an unavailable observation.
+Negative/adversarial canaries: legacy boolean/URL only, explicit unavailable, unknown, stale, redirect, failed collection, registry-only, archived catalogue, same-listing conflict, and conflicting retailers.
+```
+
 **Files:**
 
 - Modify: `src/domain/retailer-observation.mjs`
@@ -554,6 +571,39 @@ policy version.
 
 **Stop condition:** the change introduces a new boolean compatibility field
 without preserving the three-state source observation.
+
+**Completion evidence (2026-07-20):**
+
+- Producer boundary: typed retailer observations now require product binding,
+  adapter and policy identity, raw-source SHA-256, explicit cadence, maximum
+  age, trusted HTTPS, and three-state availability. Successful collection
+  attempts without immutable source bytes and duplicate observation IDs fail
+  closed.
+- Consumer boundary: `CURRENT_RETAIL` now requires a fresh `available`
+  observation with `current` or `relisted` state. Legacy `unavailable: false`,
+  retailer URL shape, and active registry state cannot authorize lifecycle.
+  Historical publication, catalog binding, and offline replay fixtures consume
+  the typed decision instead of restoring the old shortcut.
+- Replay boundary: 13 state-axis fixtures replay identically in forward and
+  reverse observation order. Explicit future observations, same-instant
+  conflicts, outages, unknowns, redirects, and stale observations remain
+  fail-closed.
+- Publication boundary: a fresh available retailer wins over another explicit
+  unavailable retailer, while unavailable cannot override another retailer's
+  unknown or stale state. The semantic catalog binding now includes lifecycle
+  policy, release `asOf`, authorizing URL/timestamp/hash, latest observations,
+  conflicts, and reason codes rather than mutable presentation links.
+- Second-run boundary: the system contract rebuilt twice with contract ID
+  `historical_evidence_system_f01c788b2bbc45dc5a38d6b5` and byte SHA-256
+  `a261de4555c4596a02a16a74fc9c179dccb6d909dcdad7727c14013f1bcd3abc`.
+- Adversarial review found and fixed a multi-retailer false archive, duplicate
+  observation ambiguity, credential-bearing product URLs, missing successful
+  source hashes, and the `Array.filter(callback)` index masking an optional
+  lifecycle argument.
+- Verification: 34 focused state/adapter/reference tests passed; 47 direct
+  consumer/publication/replay tests passed; the complete Architecture V2 suite
+  passed 1,020/1,020. No lifecycle projection was regenerated or promoted;
+  that migration remains gated by Tasks 2 and 3.
 
 ### Task 2: Integrate typed observations for every current retailer source
 

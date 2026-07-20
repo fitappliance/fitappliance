@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { registryBrandKey, registryModelKey } from './energy-rating-registry.mjs';
+import { reduceRetailLifecycle } from './retailer-observation.mjs';
 
 const CATEGORIES = Object.freeze(['fridge', 'dishwasher', 'dryer', 'washing_machine']);
 const AXES = Object.freeze(['width', 'height', 'depth']);
@@ -125,12 +126,20 @@ export function isRetailerProductPageUrl(value) {
   return false;
 }
 
-export function isCurrentRetailProduct(product) {
-  return product?.unavailable === false
-    && Array.isArray(product?.retailers)
-    && product.retailers.some((retailer) => isRetailerProductPageUrl(
-      retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link,
-    ));
+export function isCurrentRetailProduct(product, retailLifecycle = null) {
+  const explicitDecision = retailLifecycle && typeof retailLifecycle === 'object' && !Array.isArray(retailLifecycle)
+    ? retailLifecycle
+    : null;
+  const decision = explicitDecision ?? product?.retailLifecycle ?? null;
+  const authorizer = decision?.authorizingObservation;
+  return decision?.lifecycleState === 'CURRENT_RETAIL'
+    && authorizer?.availability === 'available'
+    && ['current', 'relisted'].includes(authorizer?.listingState)
+    && authorizer?.freshnessState === 'FRESH'
+    && validSha256(authorizer?.rawSourceSha256)
+    && product?.canonicalProductId != null
+    && decision.canonicalProductId === product.canonicalProductId
+    && authorizer.canonicalProductId === product.canonicalProductId;
 }
 
 export function catalogReceiptDimensions(product) {
@@ -398,6 +407,32 @@ function normalizeSource(source) {
   };
 }
 
+function normalizeRetailLifecycleDecision(value, expectedLifecycleState) {
+  if (!value || typeof value !== 'object' || Array.isArray(value) || value.schemaVersion !== 1) {
+    throw new TypeError('retail lifecycle decision schema v1 required');
+  }
+  if (value.lifecycleState !== expectedLifecycleState) {
+    throw new TypeError('retail lifecycle decision state mismatch');
+  }
+  requireString(value.policyVersion, 'retail lifecycle policy version');
+  requireString(value.canonicalProductId, 'retail lifecycle product id');
+  const asOf = requireString(value.asOf, 'retail lifecycle asOf');
+  if (Number.isNaN(Date.parse(asOf))) throw new TypeError('retail lifecycle asOf must be an ISO timestamp');
+  if (!Array.isArray(value.latestObservations) || !Array.isArray(value.observationConflicts)
+    || !Array.isArray(value.collectionAttempts) || !Array.isArray(value.reasonCodes)) {
+    throw new TypeError('retail lifecycle evidence collections required');
+  }
+  if (value.lifecycleState === 'CURRENT_RETAIL') {
+    if (!validSha256(value.authorizingObservation?.rawSourceSha256)
+      || !value.latestObservations.some((observation) => observation.id === value.authorizingObservation.id)) {
+      throw new TypeError('current retail lifecycle requires a bound authorizing observation');
+    }
+  } else if (value.authorizingObservation !== null) {
+    throw new TypeError('non-current retail lifecycle cannot carry an authorizing observation');
+  }
+  return structuredClone(value);
+}
+
 export function createHistoricalReferenceRecord(input) {
   if (!input || typeof input !== 'object' || Array.isArray(input)) {
     throw new TypeError('historical reference record must be an object');
@@ -449,21 +484,36 @@ export function createHistoricalReferenceRecord(input) {
   if (input.registryDimensionState) record.registryDimensionState = String(input.registryDimensionState);
   if (input.reasonCodes) record.reasonCodes = [...new Set(input.reasonCodes.map(String))].sort();
   if (input.modelReceipts?.length) record.modelReceipts = input.modelReceipts.map(normalizeModelReceipt);
+  if (input.retailLifecycle) {
+    record.retailLifecycle = normalizeRetailLifecycleDecision(input.retailLifecycle, lifecycleState);
+  }
   return freezeDeep(record);
 }
 
 export function buildHistoricalApplianceReference({
   observations,
   catalogProducts,
+  retailerObservations = [],
+  retailerCollectionAttempts = [],
+  retailerObservationSnapshotSha256 = null,
+  retailLifecyclePolicyVersion = 'retail-lifecycle-v1',
+  retailAsOf = null,
   historicalEvidenceProjection = null,
   catalogSnapshotSha256,
   generatedAt,
 }) {
-  if (!Array.isArray(observations) || !Array.isArray(catalogProducts)) {
-    throw new TypeError('observations and catalogProducts must be arrays');
+  if (!Array.isArray(observations) || !Array.isArray(catalogProducts)
+    || !Array.isArray(retailerObservations) || !Array.isArray(retailerCollectionAttempts)) {
+    throw new TypeError('registry, catalog, and retailer observations must be arrays');
   }
   if (!validSha256(catalogSnapshotSha256)) throw new TypeError('catalogSnapshotSha256 must be a SHA-256 hash');
   if (Number.isNaN(Date.parse(generatedAt))) throw new TypeError('generatedAt must be an ISO timestamp');
+  const effectiveRetailAsOf = retailAsOf ?? generatedAt;
+  if (Number.isNaN(Date.parse(effectiveRetailAsOf))) throw new TypeError('retailAsOf must be an ISO timestamp');
+  if ((retailerObservations.length > 0 || retailerCollectionAttempts.length > 0)
+    && !validSha256(retailerObservationSnapshotSha256)) {
+    throw new TypeError('retailerObservationSnapshotSha256 required when retailer evidence is supplied');
+  }
   const historicalEvidence = normalizeHistoricalEvidenceProjection(historicalEvidenceProjection);
 
   const referenceObservations = observations.filter((row) => (
@@ -481,6 +531,12 @@ export function buildHistoricalApplianceReference({
   const historicalEvidenceGroups = groupByExactKey(historicalEvidence.records, (record) => (
     exactKey(record.category, record.brand, record.model)
   ));
+  const retailerObservationsByProduct = new Map();
+  for (const observation of retailerObservations) {
+    const canonicalProductId = requireString(observation?.canonicalProductId, 'retailer observation canonical product id');
+    if (!retailerObservationsByProduct.has(canonicalProductId)) retailerObservationsByProduct.set(canonicalProductId, []);
+    retailerObservationsByProduct.get(canonicalProductId).push(observation);
+  }
   const keys = [...new Set([
     ...observationGroups.keys(),
     ...catalogGroups.keys(),
@@ -501,17 +557,34 @@ export function buildHistoricalApplianceReference({
       ?? firstObservation?.identity?.brandCanonical ?? firstObservation?.identity?.brandRaw;
     const model = firstCatalog?.model ?? recoveryRow?.model ?? firstObservation?.identity?.modelRaw;
     const [, brandKey, modelKey] = key.split('\0');
-    const catalogLifecycleState = catalogRows.some(isCurrentRetailProduct)
-      ? 'CURRENT_RETAIL'
-      : catalogRows.length > 0
-        ? 'CATALOG_ARCHIVED'
-        : null;
-    if (catalogLifecycleState && recoveryRow && recoveryRow.lifecycleState !== catalogLifecycleState) {
-      throw new Error(`historical evidence lifecycle drift for ${recoveryRow.referenceId}`);
+    const referenceId = referenceIdFor(key);
+    const canonicalProductIds = [...new Set(catalogRows
+      .map((row) => String(row.canonicalProductId ?? '').trim())
+      .filter(Boolean))].sort();
+    if (canonicalProductIds.length > 1) {
+      throw new Error(`multiple canonical products for historical identity ${key}`);
     }
-    const lifecycleState = catalogLifecycleState
-      ?? recoveryRow?.lifecycleState
-      ?? (sourceRows.length > 0 ? 'REGISTRY_ONLY' : 'UNKNOWN_RETAIL');
+    const lifecycleProductId = canonicalProductIds[0] ?? referenceId;
+    const relevantRetailerObservations = canonicalProductIds.length === 0
+      ? []
+      : (retailerObservationsByProduct.get(canonicalProductIds[0]) ?? []);
+    const catalogState = catalogRows.length > 0
+      ? (catalogRows.every((row) => row.unavailable === true) ? 'ARCHIVED' : 'LISTED_UNVERIFIED')
+      : recoveryRow?.lifecycleState === 'CATALOG_ARCHIVED'
+        ? 'ARCHIVED'
+        : recoveryRow?.lifecycleState === 'CURRENT_RETAIL'
+          ? 'LISTED_UNVERIFIED'
+          : 'ABSENT';
+    const retailLifecycle = reduceRetailLifecycle({
+      canonicalProductId: lifecycleProductId,
+      observations: relevantRetailerObservations,
+      collectionAttempts: retailerCollectionAttempts,
+      asOf: effectiveRetailAsOf,
+      policyVersion: retailLifecyclePolicyVersion,
+      catalogState,
+      registryPresent: sourceRows.length > 0,
+    });
+    const lifecycleState = retailLifecycle.lifecycleState;
     const registryMarketState = sourceRows.length === 0
       ? 'NO_REGISTRY'
       : sourceRows.some((row) => row.activeInAustralia === true)
@@ -602,7 +675,7 @@ export function buildHistoricalApplianceReference({
     }
 
     records.push(createHistoricalReferenceRecord({
-      referenceId: referenceIdFor(key),
+      referenceId,
       category,
       brand,
       model,
@@ -620,6 +693,7 @@ export function buildHistoricalApplianceReference({
       registryDimensionState,
       reasonCodes: reasons,
       modelReceipts: recoveryRows.flatMap((row) => row.modelReceipts),
+      retailLifecycle,
     }));
   }
 
@@ -631,6 +705,9 @@ export function buildHistoricalApplianceReference({
       ['fitappliance:catalog', catalogSnapshotSha256],
       ...(historicalEvidence.bundleId
         ? [[`historical-recovery:${historicalEvidence.bundleId}`, historicalEvidence.bundleSha256]]
+        : []),
+      ...((retailerObservations.length > 0 || retailerCollectionAttempts.length > 0)
+        ? [['retailer-observations', retailerObservationSnapshotSha256]]
         : []),
     ].sort(([left], [right]) => left.localeCompare(right))),
     records,

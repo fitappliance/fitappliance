@@ -272,7 +272,21 @@ function receiptProduct(overrides = {}) {
 }
 
 test('current retail classification requires availability and a product-page URL', () => {
-  assert.equal(isCurrentRetailProduct(receiptProduct()), true);
+  const product = receiptProduct();
+  const decision = {
+    canonicalProductId: product.canonicalProductId,
+    lifecycleState: 'CURRENT_RETAIL',
+    authorizingObservation: {
+      id: 'obs_current',
+      canonicalProductId: product.canonicalProductId,
+      availability: 'available',
+      listingState: 'current',
+      freshnessState: 'FRESH',
+      rawSourceSha256: 'a'.repeat(64),
+    },
+  };
+  assert.equal(isCurrentRetailProduct(product), false);
+  assert.equal(isCurrentRetailProduct(product, decision), true);
   assert.equal(isCurrentRetailProduct(receiptProduct({ unavailable: true })), false);
   assert.equal(isCurrentRetailProduct(receiptProduct({
     retailers: [{ n: 'Retailer', url: 'https://www.thegoodguys.com.au/search?q=eqe6160ba' }],
@@ -289,16 +303,44 @@ test('exact receipt dimensions outrank an axis-suspect registry observation with
       brand: 'Electrolux', model: 'EQE6160BA', dimensions: { width: 1782, height: 913, depth: 749 },
     })],
     catalogProducts: [receiptProduct()],
+    retailerObservations: [{
+      id: 'obs_eqe6160ba', canonicalProductId: 'fa_prod_eqe6160ba',
+      retailer: 'The Good Guys', adapterId: 'tgg-feed-v1',
+      observedAt: '2026-07-12T00:00:00.000Z',
+      url: 'https://www.thegoodguys.com.au/electrolux-eqe6160ba',
+      availability: 'available', priceAud: null, sourceType: 'affiliate_feed',
+      listingState: 'current', sourceReference: 'fixture:eqe6160ba',
+      rawSourceSha256: 'e'.repeat(64), policyVersion: 'tgg-source-v1',
+      expectedCadenceHours: 24, maximumCurrentAgeHours: 72,
+      retailerProductId: 'eqe6160ba',
+    }],
+    retailerObservationSnapshotSha256: 'f'.repeat(64),
+    retailLifecyclePolicyVersion: 'retail-lifecycle-v1',
+    retailAsOf: '2026-07-12T12:40:00.000Z',
     catalogSnapshotSha256: 'd'.repeat(64),
     generatedAt: '2026-07-12T12:40:00.000Z',
   });
   const [record] = result.records;
   assert.equal(record.lifecycleState, 'CURRENT_RETAIL');
+  assert.equal(record.retailLifecycle.authorizingObservation.id, 'obs_eqe6160ba');
+  assert.equal(record.retailLifecycle.authorizingObservation.rawSourceSha256, 'e'.repeat(64));
   assert.equal(record.evidenceState, 'CATALOG_RECEIPT');
   assert.equal(record.lookupAction, 'AUTO_FILL');
   assert.deepEqual(record.dimensionsMm, { width: 913, height: 1782, depth: 749 });
   assert.equal(record.registryDimensionState, 'AXIS_SUSPECT');
   assert.ok(record.reasonCodes.includes('REGISTRY_AXIS_PERMUTATION_CONFLICT'));
+});
+
+test('legacy availability, product URL, and active registry do not authorize current retail', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [observation({ brand: 'Electrolux', model: 'EQE6160BA' })],
+    catalogProducts: [receiptProduct()],
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-12T12:40:00.000Z',
+  });
+  assert.equal(result.records[0].registryMarketState, 'ACTIVE_AU');
+  assert.equal(result.records[0].lifecycleState, 'UNKNOWN_RETAIL');
+  assert.equal(result.records[0].retailLifecycle.authorizingObservation, null);
 });
 
 test('exact recovery receipt outranks registry dimensions and retains model receipt provenance', () => {
