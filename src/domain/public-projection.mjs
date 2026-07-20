@@ -132,3 +132,28 @@ export function buildPublicProjection(registry, catalog) {
     products: Object.freeze(products),
   });
 }
+
+export function buildLifecycleNeutralSafetyProjection(releasedProjection) {
+  if (!releasedProjection || !Array.isArray(releasedProjection.products)) {
+    throw new TypeError('released public projection products required');
+  }
+  const seen = new Set();
+  const products = releasedProjection.products.map((product) => {
+    const canonicalProductId = String(product?.canonicalProductId ?? '').trim();
+    if (!canonicalProductId) throw new TypeError(`released canonical identity missing for ${product?.id}`);
+    const legacyRuntimeId = String(product?.id ?? '').trim().toLowerCase();
+    if (!legacyRuntimeId || seen.has(legacyRuntimeId)) {
+      throw new TypeError(`released legacy identity is missing or duplicated: ${legacyRuntimeId}`);
+    }
+    seen.add(legacyRuntimeId);
+    return Object.freeze({
+      ...normalizePublicProduct(product),
+      canonicalProductId,
+    });
+  });
+  return Object.freeze({
+    schema_version: releasedProjection.schema_version,
+    last_updated: releasedProjection.last_updated ?? null,
+    products: Object.freeze(products),
+  });
+}

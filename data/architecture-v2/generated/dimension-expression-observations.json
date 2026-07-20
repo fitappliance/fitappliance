@@ -17,14 +17,14 @@
     "historicalRecords": 8089,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 941,
-    "validMineruDocuments": 926,
+    "mineruDocuments": 942,
+    "validMineruDocuments": 927,
     "invalidMineruDocuments": 15,
-    "documentsWithObservations": 496,
+    "documentsWithObservations": 497,
     "documentsWithoutObservations": 430,
     "mappedMineruDocuments": 893,
-    "unmappedMineruDocuments": 33,
-    "observations": 1168,
+    "unmappedMineruDocuments": 34,
+    "observations": 1169,
     "researchGaps": 1037,
     "parserProfiles": 217,
     "parserReplays": 1052,
@@ -25195,6 +25195,26 @@
         "objectPath": "evidence/derived/mineru-json/sha256/48/62/486271c6f950b00dcbab782a9b3817d0d742ab2355692b2dad0d75e4a8f05e5c.json",
         "byteSize": 18636,
         "pageCount": 2
+      }
+    },
+    {
+      "pdfSha256": "ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5",
+      "contentSha256": "bb94bb3c22fd6d60a57b9123294c1bfe0e0a18c4c38c98c526d9bf39c5c80759",
+      "validity": "VALID",
+      "mappingStatus": "UNMAPPED_SOURCE_PDF",
+      "sourceUrls": [],
+      "identities": [],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5",
+        "contentSha256": "bb94bb3c22fd6d60a57b9123294c1bfe0e0a18c4c38c98c526d9bf39c5c80759",
+        "objectPath": "evidence/derived/mineru-json/sha256/bb/94/bb94bb3c22fd6d60a57b9123294c1bfe0e0a18c4c38c98c526d9bf39c5c80759.json",
+        "byteSize": 296668,
+        "pageCount": 38
       }
     },
     {
@@ -157388,6 +157408,12 @@
     {
       "pdfSha256": "d6cc1a5c3645bafadcd9b320649e6867c13ce1dc744360268aba6b4252948ef4",
       "contentSha256": "098a1c527a0cf88c73257b2c9e666d78cb53f9bd5f7f272adcee08d11ce8cbc7",
+      "sourceUrls": [],
+      "mappingStatus": "UNMAPPED_SOURCE_PDF"
+    },
+    {
+      "pdfSha256": "ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5",
+      "contentSha256": "bb94bb3c22fd6d60a57b9123294c1bfe0e0a18c4c38c98c526d9bf39c5c80759",
       "sourceUrls": [],
       "mappingStatus": "UNMAPPED_SOURCE_PDF"
     },

@@ -14,13 +14,17 @@ const hash = (value) => createHash('sha256').update(value).digest('hex');
 test('refresh inventory accounts for every unresolved prior-current product without synthesizing a state', () => {
   const shadowBytes = bytes('../../data/architecture-v2/reviews/automated/retail-lifecycle-shadow.json');
   const coverageBytes = bytes('../../data/architecture-v2/reviews/automated/retailer-observation-coverage.json');
+  const identityMigrationBytes = bytes('../../data/architecture-v2/reviews/automated/retailer-identity-migration.json');
   const shadow = JSON.parse(shadowBytes);
   const coverage = JSON.parse(coverageBytes);
+  const identityMigration = JSON.parse(identityMigrationBytes);
   const inventory = buildRetailLifecycleRefreshInventory({
     shadow,
     shadowSha256: hash(shadowBytes),
     coverage,
     coverageSha256: hash(coverageBytes),
+    identityMigration,
+    identityMigrationSha256: hash(identityMigrationBytes),
   });
 
   validateRetailLifecycleRefreshInventory(inventory);
@@ -38,7 +42,7 @@ test('refresh inventory accounts for every unresolved prior-current product with
     [...shadow.cutover.unresolvedLegacyCurrentIds].sort(),
   );
   assert.ok(inventory.items.every((item) => (
-    item.sourceTasks.length + item.resolutionTasks.length > 0
+    item.sourceTasks.length + item.resolutionTasks.length + item.controlTasks.length > 0
   )));
   assert.ok(inventory.items.every((item) => item.lifecycleState === 'UNKNOWN_RETAIL'));
   assert.ok(inventory.items.every((item) => item.sourceTasks.every((source) => (
@@ -57,28 +61,32 @@ test('refresh inventory accounts for every unresolved prior-current product with
       ?.executionDisposition === 'REQUIRES_EXACT_MODEL_REDISCOVERY'
   )));
 
-  const mixedDependency = inventory.items.find((item) => item.legacyRuntimeId === 'f3');
-  assert.ok(mixedDependency.sourceTasks.length > 0);
-  assert.ok(mixedDependency.sourceTasks.every((task) => (
-    task.executionState === 'BLOCKED_BY_SOURCE_POLICY'
-  )));
-  assert.equal(mixedDependency.resolutionTasks.length, 1);
-  assert.equal(mixedDependency.executionDisposition, 'REQUIRES_EXACT_MODEL_REDISCOVERY');
+  const identityConflict = inventory.items.find((item) => item.legacyRuntimeId === 'f3');
+  assert.equal(identityConflict.sourceTasks.length, 2);
+  assert.equal(identityConflict.resolutionTasks.length, 1);
+  assert.equal(identityConflict.controlTasks.length, 0);
+  assert.equal(identityConflict.executionDisposition, 'REQUIRES_EXACT_MODEL_REDISCOVERY');
+
+  const mixedDependency = inventory.items.find((item) => item.legacyRuntimeId === 'f7');
+  assert.equal(mixedDependency.sourceTasks.length, 0);
+  assert.equal(mixedDependency.resolutionTasks.length, 0);
+  assert.equal(mixedDependency.controlTasks[0].action, 'APPLY_DECLARATIVE_CANONICAL_MERGE');
+  assert.equal(mixedDependency.executionDisposition, 'PENDING_ATOMIC_IDENTITY_CUTOVER');
 
   const identityRediscovery = inventory.items.find((item) => item.model === 'GS-B655PL');
   assert.ok(identityRediscovery, 'identity-quarantined product remains in the unresolved inventory');
   assert.equal(identityRediscovery.sourceTasks.length, 0);
-  assert.equal(identityRediscovery.executionDisposition, 'REQUIRES_EXACT_MODEL_REDISCOVERY');
-  assert.deepEqual(identityRediscovery.resolutionTasks.map((task) => ({
+  assert.equal(identityRediscovery.resolutionTasks.length, 0);
+  assert.equal(identityRediscovery.executionDisposition, 'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY');
+  assert.deepEqual(identityRediscovery.controlTasks.map((task) => ({
     action: task.action,
     executionState: task.executionState,
-    expectedModel: task.expectedIdentity.model,
-    quarantinedBaselineLinkIds: task.quarantinedBaselineLinkIds,
+    canonicalAction: task.canonicalAction,
   })), [{
-    action: 'DISCOVER_EXACT_MODEL_RETAIL_SOURCE',
-    executionState: 'REQUIRES_DISCOVERY_PIPELINE',
-    expectedModel: 'GS-B655PL',
-    quarantinedBaselineLinkIds: ['retail_link_8248f5525f2a0c2266b3970d'],
+    action: 'DISCOVER_AUTHORIZED_EXACT_MODEL_RETAIL_SOURCE',
+    executionState: 'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY',
+    canonicalAction: 'KEEP_CANONICAL_IDENTITY',
   }]);
   assert.equal(inventory.summary.resolutionTasks, mismatchProductIds.size);
+  assert.equal(inventory.summary.controlTasks, 2);
 });

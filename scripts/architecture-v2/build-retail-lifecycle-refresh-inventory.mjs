@@ -29,15 +29,18 @@ export async function buildRetailLifecycleRefreshInventoryFromRepository({
   root = defaultRoot,
   output = resolveArchitectureV2Path(root, 'retailLifecycleRefreshInventory'),
 } = {}) {
-  const [shadow, coverage] = await Promise.all([
+  const [shadow, coverage, identityMigration] = await Promise.all([
     readJsonWithHash(resolveArchitectureV2Path(root, 'retailLifecycleShadow')),
     readJsonWithHash(resolveArchitectureV2Path(root, 'retailerObservationCoverage')),
+    readJsonWithHash(resolveArchitectureV2Path(root, 'retailerIdentityMigration')),
   ]);
   const inventory = buildRetailLifecycleRefreshInventory({
     shadow: shadow.document,
     shadowSha256: shadow.sha256,
     coverage: coverage.document,
     coverageSha256: coverage.sha256,
+    identityMigration: identityMigration.document,
+    identityMigrationSha256: identityMigration.sha256,
   });
   await atomicJson(output, inventory);
   return inventory;

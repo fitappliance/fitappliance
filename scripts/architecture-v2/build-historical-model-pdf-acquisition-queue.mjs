@@ -5,6 +5,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { buildHistoricalModelPdfAcquisitionQueue } from '../../src/domain/historical-model-pdf-acquisition.mjs';
 import { resolverAdapterIdsForBrand } from '../pdf-pipeline/architecture-v2-resolver-adapters.mjs';
 
@@ -23,7 +24,7 @@ async function atomicJson(path, value) {
 
 export async function runCli() {
   const [classification, historicalReference, recoveryQueue, offlineReplayQueue,
-    offlineReplayResults, publicProjection, identityResearchQueue] = await Promise.all([
+    offlineReplayResults, publicProjection, identityResearchQueue, identityMigration] = await Promise.all([
     readJson('historicalModelEvidenceClassification'),
     readJson('historicalApplianceReference'),
     readJson('historicalEvidenceRecoveryQueue'),
@@ -31,6 +32,7 @@ export async function runCli() {
     readJson('historicalPdfOfflineReplayResults'),
     readJson('publicProjection'),
     readJson('identityResearchQueue'),
+    readJson('retailerIdentityMigration'),
   ]);
   const brands = [...new Set(classification.records.map((record) => record.canonicalBrand))];
   const resolverIdsByBrand = new Map(brands.map((brand) => [
@@ -45,6 +47,8 @@ export async function runCli() {
     offlineReplayQueue,
     offlineReplayResults,
     identityResearchQueue,
+    identityMigration,
+    catalogProjectionSemanticSha256: canonicalJsonSha256(publicProjection),
     resolverIdsByBrand,
     generatedAt: classification.generatedAt,
   });

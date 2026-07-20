@@ -179,6 +179,29 @@ function latestListingReconciliationByBaselineLink(ledger, normalizedPolicy) {
   return result;
 }
 
+function identityResolutionByBaselineLink(ledger) {
+  const stateByAction = {
+    ACCEPT_AFTER_CANONICAL_CORRECTION: 'IDENTITY_ACCEPTED_AFTER_CANONICAL_CORRECTION',
+    REASSIGN_TO_EXISTING_CANONICAL: 'IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL',
+    INVALIDATE_WRONG_IDENTITY: 'IDENTITY_INVALIDATED_WRONG_MODEL',
+  };
+  return new Map((ledger.identityResolutionEvents ?? []).map((event) => [
+    event.baselineLinkId,
+    {
+      kind: 'IDENTITY_RESOLUTION',
+      state: stateByAction[event.action],
+      eventId: event.id,
+      action: event.action,
+      observedAt: event.resolvedAt,
+      sourceObservedAt: event.sourceObservedAt,
+      rawSourceSha256: event.rawSourceSha256,
+      canonicalProductId: event.sourceCanonicalProductId,
+      destinationCanonicalProductId: event.destinationCanonicalProductId,
+      observationId: event.observation?.id ?? null,
+    },
+  ]));
+}
+
 function baselineLinks(publicProjection, normalizedPolicy) {
   if (!publicProjection || !Array.isArray(publicProjection.products)) {
     throw new TypeError('public projection products required');
@@ -256,12 +279,18 @@ export function validateRetailerObservationCoverage(document) {
   }
   const states = new Set(['LEGACY_UNKNOWN', 'TYPED_AVAILABLE', 'TYPED_UNAVAILABLE',
     'TYPED_REDIRECTED', 'TYPED_UNKNOWN', 'TYPED_CONFLICT', 'TYPED_POLICY_EXCLUDED',
-    'QUARANTINED_IDENTITY_MISMATCH', 'SOURCE_ABSENT_IN_AUTHORIZED_FEED']);
+    'QUARANTINED_IDENTITY_MISMATCH', 'SOURCE_ABSENT_IN_AUTHORIZED_FEED',
+    'IDENTITY_ACCEPTED_AFTER_CANONICAL_CORRECTION',
+    'IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL',
+    'IDENTITY_INVALIDATED_WRONG_MODEL']);
   for (const item of document.items) {
     required(item.canonicalProductId, 'coverage canonical product ID');
     retailerUrl(item.url);
     if (!states.has(item.terminalObservationState)) throw new TypeError('unsupported terminal observation state');
-    const resolved = ['TYPED_AVAILABLE', 'TYPED_UNAVAILABLE', 'QUARANTINED_IDENTITY_MISMATCH']
+    const resolved = ['TYPED_AVAILABLE', 'TYPED_UNAVAILABLE', 'QUARANTINED_IDENTITY_MISMATCH',
+      'IDENTITY_ACCEPTED_AFTER_CANONICAL_CORRECTION',
+      'IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL',
+      'IDENTITY_INVALIDATED_WRONG_MODEL']
       .includes(item.terminalObservationState);
     if (resolved !== (item.revalidation == null)) throw new TypeError('coverage revalidation state mismatch');
     if (item.terminalObservationState === 'LEGACY_UNKNOWN' && item.typedObservation != null) {
@@ -310,20 +339,27 @@ export function buildRetailerObservationCoverage({
   const normalizedPolicy = normalizeRetailerSourcePolicy(sourcePolicy);
   const typedByLink = latestTypedByLink(ledger, normalizedPolicy);
   const reconciliationByLink = latestListingReconciliationByBaselineLink(ledger, normalizedPolicy);
+  const identityResolutionByLink = identityResolutionByBaselineLink(ledger);
   const links = baselineLinks(publicProjection, normalizedPolicy);
   const items = links.map((link) => {
     const typedObservation = typedByLink.get(linkKey(link.canonicalProductId, link.url)) ?? null;
     const reconciliation = reconciliationByLink.get(link.baselineLinkId) ?? null;
+    const identityResolution = identityResolutionByLink.get(link.baselineLinkId) ?? null;
     if (reconciliation && (reconciliation.canonicalProductId !== link.canonicalProductId
       || reconciliation.sourceUrl !== link.url)) {
       throw new Error(`listing reconciliation does not bind current baseline link ${link.baselineLinkId}`);
     }
-    const typed = reconciliation
-      && (!typedObservation || reconciliation.observedAt >= typedObservation.observedAt)
-      ? reconciliation
-      : typedObservation;
+    const typed = [typedObservation, reconciliation, identityResolution]
+      .filter(Boolean)
+      .sort((left, right) => (
+        right.observedAt.localeCompare(left.observedAt)
+        || (right.kind === 'IDENTITY_RESOLUTION' ? 1 : 0)
+        - (left.kind === 'IDENTITY_RESOLUTION' ? 1 : 0)
+      ))[0] ?? null;
     const resolved = typed && ['TYPED_AVAILABLE', 'TYPED_UNAVAILABLE'].includes(typed.state);
-    const terminal = typed?.state === 'QUARANTINED_IDENTITY_MISMATCH' || resolved;
+    const terminal = typed?.state === 'QUARANTINED_IDENTITY_MISMATCH'
+      || typed?.kind === 'IDENTITY_RESOLUTION'
+      || resolved;
     return {
       baselineLinkId: link.baselineLinkId,
       canonicalProductId: link.canonicalProductId,

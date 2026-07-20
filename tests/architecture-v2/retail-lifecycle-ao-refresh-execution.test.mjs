@@ -45,13 +45,23 @@ function resignInventory(inventory) {
       inventory.items.flatMap((item) => item.sourceTasks),
       (task) => task.executionState,
     ),
-    ...(inventory.schemaVersion === 2 ? {
+    ...(inventory.schemaVersion >= 2 ? {
       resolutionTasks: inventory.items.reduce(
         (sum, item) => sum + item.resolutionTasks.length,
         0,
       ),
       byResolutionExecutionState: countBy(
         inventory.items.flatMap((item) => item.resolutionTasks),
+        (task) => task.executionState,
+      ),
+    } : {}),
+    ...(inventory.schemaVersion >= 3 ? {
+      controlTasks: inventory.items.reduce(
+        (sum, item) => sum + item.controlTasks.length,
+        0,
+      ),
+      byControlExecutionState: countBy(
+        inventory.items.flatMap((item) => item.controlTasks),
         (task) => task.executionState,
       ),
     } : {}),
@@ -92,6 +102,7 @@ async function inputs() {
       collectionMode: 'bounded_exact_product_api',
     }];
     item.resolutionTasks = [];
+    item.controlTasks = [];
     item.executionDisposition = 'BOUNDED_CANARY_ONLY';
   }
   resignInventory(result.inventory);
@@ -200,7 +211,12 @@ test('reviewed AO scale plan remains bounded by explicit policy controls', async
   assert.equal(validateRetailLifecycleRefreshPlan(plan).planId, plan.planId);
 
   const overBudgetInventory = structuredClone(reviewedInventory);
-  for (const [index, item] of overBudgetInventory.items.slice(0, 21).entries()) {
+  const existingTasks = overBudgetInventory.items.reduce(
+    (sum, item) => sum + item.sourceTasks.length,
+    0,
+  );
+  const extraTasks = ao.automationControls.maximumTargetsPerRun - existingTasks + 1;
+  for (const [index, item] of overBudgetInventory.items.slice(0, extraTasks).entries()) {
     item.sourceTasks.push({
       ...item.sourceTasks[0],
       baselineLinkId: `retail_link_ao_fixture_extra_${String(index).padStart(4, '0')}`,

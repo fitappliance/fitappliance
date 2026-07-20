@@ -2,7 +2,10 @@
 import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { buildPublicProjection } from '../../src/domain/public-projection.mjs';
+import {
+  buildLifecycleNeutralSafetyProjection,
+  buildPublicProjection,
+} from '../../src/domain/public-projection.mjs';
 import { applyEvidencePilotReview, buildPilotEvidenceProjection } from '../../src/domain/evidence-review.mjs';
 import { buildSpaceEvidenceProjection } from '../../src/domain/space-evidence-review.mjs';
 import { createCategoryGeometry } from '../../src/domain/category-geometry.mjs';
@@ -23,6 +26,7 @@ import {
   preserveRetailLifecycleShadowOnlyPublication,
 } from '../../src/domain/retail-lifecycle-shadow.mjs';
 import { auditPublicFitProjection } from '../../src/domain/geometry-publication.mjs';
+import { applyRetailerIdentityMigrationToCatalog } from '../../src/domain/retailer-identity-migration.mjs';
 
 const { enrichApplianceDocument } = applianceEnrichment;
 
@@ -38,8 +42,19 @@ const lifecycleShadow = JSON.parse(await readFile(
   resolveArchitectureV2Path(root, 'retailLifecycleShadow'),
   'utf8',
 ));
-const registry = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalRegistry'), 'utf8'));
+const registry = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'canonicalRegistryMigrationCandidate'),
+  'utf8',
+));
 const catalog = JSON.parse(await readFile(resolve(root, 'data/catalog-final.json'), 'utf8'));
+const identityMigration = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'retailerIdentityMigration'),
+  'utf8',
+));
+const migratedCatalog = applyRetailerIdentityMigrationToCatalog({
+  catalog,
+  migration: identityMigration,
+});
 const seriesDictionary = JSON.parse(await readFile(resolve(root, 'data/series-dictionary.json'), 'utf8'));
 const popularityResearch = JSON.parse(await readFile(resolve(root, 'data/popularity-research.json'), 'utf8'));
 const reviewBundles = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'evidenceReviewBundles'), 'utf8'));
@@ -95,8 +110,8 @@ const receiptBoundAcceptance = mergeReceiptBoundAcceptanceProjections(
   historicalRecoveryPublication.currentAcceptanceByLegacyId,
 );
 const filtered = {
-  ...catalog,
-  products: catalog.products
+  ...migratedCatalog,
+  products: migratedCatalog.products
     .filter((row) => !quarantined.has(String(row.id).toLowerCase()))
     .map((row) => {
       const legacyRuntimeId = String(row.id).toLowerCase();
@@ -174,7 +189,7 @@ const displayReady = enrichApplianceDocument(filtered, {
 const candidateProjection = buildPublicProjection(registry, displayReady);
 const candidateProjectionBytes = `${JSON.stringify(candidateProjection)}\n`;
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
-const safetyCandidateProjection = buildPublicProjection(registry, releasedPublicProjection);
+const safetyCandidateProjection = buildLifecycleNeutralSafetyProjection(releasedPublicProjection);
 const safetyCandidateProjectionBytes = `${JSON.stringify(safetyCandidateProjection)}\n`;
 const safetyPublication = buildRetailLifecycleNeutralSafetyPublication({
   baselinePublicProjection: releasedPublicProjection,

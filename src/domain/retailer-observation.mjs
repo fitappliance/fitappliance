@@ -240,7 +240,7 @@ function listingAliases(observation) {
 }
 
 function observationStateKey(observation) {
-  return `${observation.availability}\0${observation.listingState}\0${observation.url}\0${observation.redirectUrl ?? ''}`;
+  return `${observation.availability}\0${observation.listingState}\0${observation.redirectUrl ?? ''}`;
 }
 
 function expectedListingKey(observation) {

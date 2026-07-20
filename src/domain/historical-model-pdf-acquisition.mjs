@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
 import { isOfficialBrandArtifactUrl } from './evidence-source-verifier.mjs';
+import { validateRetailerIdentityMigration } from './retailer-identity-migration.mjs';
 
 const TERMINAL_CLASSES = new Set(['COMPLETE_RECEIPT', 'OFFICIAL_HTML_ONLY', 'NO_OFFICIAL_SOURCE']);
 const ROUTE_BY_CLASS = Object.freeze({
@@ -111,6 +112,46 @@ function catalogCanonicalIdsByRuntimeId(catalogProducts) {
   return result;
 }
 
+function canonicalMergeResolver(identityMigration, catalogProjectionSemanticSha256) {
+  if (identityMigration == null) {
+    return { resolve: (canonicalProductId) => canonicalProductId, semanticSha256: null };
+  }
+  validateRetailerIdentityMigration(identityMigration);
+  const projectionSha256 = text(
+    catalogProjectionSemanticSha256,
+    'catalog projection semantic SHA-256',
+  ).toLowerCase();
+  if (!/^[a-f0-9]{64}$/.test(projectionSha256)
+    || projectionSha256 !== identityMigration.sourceBindings.publicProjectionSemanticSha256) {
+    throw new Error('identity migration public projection drift');
+  }
+  const directTargets = new Map();
+  for (const merge of identityMigration.canonicalMerges) {
+    const existing = directTargets.get(merge.sourceCanonicalProductId);
+    if (existing && existing !== merge.targetCanonicalProductId) {
+      throw new Error(`identity migration canonical merge conflict: ${merge.sourceCanonicalProductId}`);
+    }
+    directTargets.set(merge.sourceCanonicalProductId, merge.targetCanonicalProductId);
+  }
+  const resolveCanonicalProductId = (canonicalProductId) => {
+    let current = canonicalProductId;
+    const visited = new Set();
+    while (directTargets.has(current)) {
+      if (visited.has(current)) throw new Error(`identity migration canonical merge cycle: ${canonicalProductId}`);
+      visited.add(current);
+      current = directTargets.get(current);
+    }
+    return current;
+  };
+  for (const sourceCanonicalProductId of directTargets.keys()) {
+    resolveCanonicalProductId(sourceCanonicalProductId);
+  }
+  return {
+    resolve: resolveCanonicalProductId,
+    semanticSha256: identityMigration.semanticSha256,
+  };
+}
+
 function normalizedIdentity(value) {
   return String(value ?? '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '');
 }
@@ -180,6 +221,8 @@ export function buildHistoricalModelPdfAcquisitionQueue({
   offlineReplayQueue = null,
   offlineReplayResults = null,
   identityResearchQueue = null,
+  identityMigration = null,
+  catalogProjectionSemanticSha256 = null,
   resolverIdsByBrand = new Map(),
   generatedAt,
 }) {
@@ -192,6 +235,10 @@ export function buildHistoricalModelPdfAcquisitionQueue({
   const references = new Map(historicalReference.records.map((record) => [record.referenceId, record]));
   if (references.size !== historicalReference.records.length) throw new Error('duplicate historical reference ID');
   const canonicalByRuntimeId = catalogCanonicalIdsByRuntimeId(catalogProducts);
+  const canonicalMerge = canonicalMergeResolver(
+    identityMigration,
+    catalogProjectionSemanticSha256,
+  );
   const identityDiscoveryByReference = autonomousIdentityDiscoveryCases(
     identityResearchQueue, references, canonicalByRuntimeId,
   );
@@ -272,7 +319,7 @@ export function buildHistoricalModelPdfAcquisitionQueue({
     const canonicalProductIds = [...new Set([
       ...legacyTargets.map((target) => target.canonicalProductId).filter(Boolean),
       ...(reference.catalogProductIds ?? []).map((runtimeId) => canonicalByRuntimeId.get(runtimeId)).filter(Boolean),
-    ])].sort();
+    ].map(canonicalMerge.resolve))].sort();
     if (canonicalProductIds.length > 1) {
       throw new Error(`historical reference maps to multiple canonical products: ${classified.referenceId}`);
     }
@@ -320,6 +367,7 @@ export function buildHistoricalModelPdfAcquisitionQueue({
   })).sort((left, right) => left.sourceId.localeCompare(right.sourceId));
   const semanticPayload = {
     sourceClassificationSha256: classification.semanticClassificationSha256,
+    sourceIdentityMigrationSha256: canonicalMerge.semanticSha256,
     records,
     sources: materializedSources,
     excluded,

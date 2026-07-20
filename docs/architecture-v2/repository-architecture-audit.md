@@ -1,7 +1,7 @@
 # FitAppliance Repository Architecture Audit
 
 Status: current-code living audit
-Last verified: 2026-07-20
+Last verified: 2026-07-21
 Scope: product ingestion, manufacturer evidence, dimensions, installation
 requirements, Fit decisions, generated pages, and legacy migration
 
@@ -41,27 +41,27 @@ then binds the complete release graph. It does not read the external evidence
 drive.
 
 The following values were reproduced in the Architecture V2 worktree on
-2026-07-20 after the blocked Task 9 replay. They are release-candidate facts,
+2026-07-21 after the blocked Task 9 replay. They are release-candidate facts,
 not claims about the currently deployed site:
 
 | Measure | Current value |
 | --- | ---: |
-| Persisted contract stages | 26 |
+| Persisted contract stages | 29 |
 | Independently bound policy/tool epochs | 10 |
 | Historical model references | 8,089 |
 | Models with document links | 1,768 |
 | Models with current valid receipts | 401 |
 | Cumulative recovery acceptances | 382 |
 | Replacement auto-fill models | 321 |
-| Unique / valid PDF graph nodes | 941 / 926 |
+| Unique / valid PDF graph nodes | 942 / 927 |
 | Proven / mapped document-model edges | 548 / 3,761 |
 | Current catalogue products | 3,515 |
 | Receipt-bound dimensions | 332 |
 | Receipt-bound `VERIFIED_FIT` | 0 |
 | Public rows with retailer links | 1,384 |
-| Retailer ledger observations / typed observations | 3,058 / 1,406 |
-| Immutable retailer collection attempts | 1,190 |
-| Lifecycle current / archived / unknown | 345 / 3,089 / 81 |
+| Retailer ledger observations / typed observations | 3,298 / 1,646 |
+| Immutable retailer collection attempts | 1,192 |
+| Lifecycle current / archived / unknown | 348 / 3,088 / 79 |
 | Lifecycle cutover status | `BLOCKED` |
 
 Reproduce the contract and focused architecture gates with:
@@ -81,7 +81,10 @@ counts.
 
 ```mermaid
 flowchart TD
-  O["Retailer and registry observations"] --> R["Canonical identity and lifecycle reference"]
+  O["Retailer and registry observations"] --> I["Released canonical identity"]
+  O --> M["Evidence-bound identity migration"]
+  M --> CAND["Control-only migration candidate"]
+  I --> R["Lifecycle and historical reference"]
   B["Cumulative receipt bundle"] --> R
   R --> C["Evidence classification"]
   C --> Q["Acquisition and discovery queues"]
@@ -108,17 +111,20 @@ described as a fully migrated Fit engine.
 The system contract deliberately records, rather than conceals, the remaining
 release gaps:
 
-1. Lifecycle is still `BLOCKED` for 81 prior-current products. Fifty-eight are
-   behind collection-blocked retailer policies, 22 require a new authorised
-   Partnerize feed epoch, and one requires exact-model rediscovery. Unknown is
-   hidden; it is never converted to unavailable.
-2. The current Partnerize CSV has immutable bytes but no independently bound
-   source-processing timestamp. Identical feed bytes cannot advance freshness
-   until a separate acquisition receipt proves a new retrieval epoch.
-3. Three unresolved The Good Guys rows expose canonical model pollution rather
-   than ordinary aliasing: LG `1910FGX`/`1910BX` versus official
-   `WWT-1910FGX`/`WWT-1910BX`, and CHiQ `CTM202NW` versus `CTM202NW3`.
-   Availability cannot cross those identity boundaries.
+1. Lifecycle is still `BLOCKED` for 79 prior-current products. Seventy-six are
+   behind explicit retailer source policy, one requires an atomic canonical
+   migration cutover, one requires an authorised exact-model source, and one
+   conflicting embedded/retailer model requires exact-model rediscovery.
+   Unknown is hidden; it is never converted to unavailable.
+2. Seventeen of 18 raw-bound identity mismatch cases have deterministic
+   resolutions; the unresolved `RF730QZUVX1`/`RF730QZUVB1` conflict is excluded
+   from the mutation set. The released 3,515-product canonical registry and
+   public projection cannot consume the 3,514-product migration candidate until
+   the lifecycle gate is independently `READY`.
+3. Identity events are listing-scoped and cannot transfer availability,
+   dimensions, clearances, installation requirements, or Fit. Any later build
+   that makes the released registry depend on the migration candidate is a
+   mixed-epoch contract violation.
 4. The complete release DAG and rollback drill pass in shadow, but production
    cutover is prohibited until the lifecycle shadow reaches `READY` with zero
    unresolved or unsafe prior-current products. No lifecycle cutover or

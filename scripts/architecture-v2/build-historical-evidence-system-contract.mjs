@@ -50,11 +50,14 @@ const defaultRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 const ARTIFACT_KEYS = Object.freeze([
   'retailerObservations',
+  'retailerIdentityResolutions',
+  'retailerIdentityMigration',
   'retailerObservationCoverage',
   'retailLifecycleShadow',
   'retailLifecycleRefreshInventory',
   'officialRegistrySnapshots',
   'canonicalRegistry',
+  'canonicalRegistryMigrationCandidate',
   'historicalEvidenceRecoveryAcceptanceBundle',
   'historicalAcceptanceReceiptReplayAudit',
   'historicalEvidenceRecoveryAttemptLedger',
@@ -121,6 +124,7 @@ function documentGraphSemantic(value) {
 function acquisitionQueueSemantic(value) {
   return {
     sourceClassificationSha256: value.sourceClassificationSha256,
+    sourceIdentityMigrationSha256: value.sourceIdentityMigrationSha256,
     records: value.records,
     sources: value.sources,
     excluded: value.excluded,
@@ -184,6 +188,18 @@ function withoutField(value, field) {
 function nativeSemantic(key, value) {
   if (key === 'retailerObservations') {
     return { payload: withoutField(value, 'semanticSha256'), declared: value.semanticSha256 };
+  }
+  if (key === 'retailerIdentityResolutions') {
+    return {
+      payload: withoutField(withoutField(value, 'semanticSha256'), 'resolutionId'),
+      declared: value.semanticSha256,
+    };
+  }
+  if (key === 'retailerIdentityMigration') {
+    return {
+      payload: withoutField(withoutField(value, 'semanticSha256'), 'migrationId'),
+      declared: value.semanticSha256,
+    };
   }
   if (key === 'retailerObservationCoverage') {
     return { payload: withoutField(value, 'semanticSha256'), declared: value.semanticSha256 };
@@ -383,6 +399,7 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     releasePolicyBytes,
     lifecycleShadowBytes,
     coverageBytes,
+    identityMigrationBytes,
   ] = await Promise.all([
     readFile(resolveArchitectureV2Path(root, 'publicProjection')),
     readFile(resolveArchitectureV2Path(root, 'retailerObservations')),
@@ -390,6 +407,7 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     readFile(resolveArchitectureV2Path(root, 'retailLifecycleReleasePolicy')),
     readFile(resolveArchitectureV2Path(root, 'retailLifecycleShadow')),
     readFile(resolveArchitectureV2Path(root, 'retailerObservationCoverage')),
+    readFile(resolveArchitectureV2Path(root, 'retailerIdentityMigration')),
   ]);
   const releasePolicy = JSON.parse(releasePolicyBytes);
   const fileSha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -411,6 +429,8 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     shadowSha256: fileSha256(lifecycleShadowBytes),
     coverage: artifacts.retailerObservationCoverage,
     coverageSha256: fileSha256(coverageBytes),
+    identityMigration: artifacts.retailerIdentityMigration,
+    identityMigrationSha256: fileSha256(identityMigrationBytes),
   });
   assertCanonicalEqual(
     'retail lifecycle refresh inventory',
@@ -439,12 +459,15 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
   verifyCurrentReplay(artifacts, scaleEpochs);
 
   const definitions = [
-    ['retailer-observations', 'retailerObservations', 'scripts/architecture-v2/build-retailer-ledger.mjs', ['scripts/architecture-v2/build-retailer-ledger.mjs', 'src/domain/retailer-observation-ledger.mjs', 'src/domain/retailer-observation.mjs', 'src/domain/retailer-source-adapter.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [], ['CONTROL_INPUT']],
+    ['retailer-identity-resolution', 'retailerIdentityResolutions', 'scripts/architecture-v2/build-retailer-identity-resolutions.mjs', ['scripts/architecture-v2/build-retailer-identity-resolutions.mjs', 'src/domain/retailer-identity-resolution.mjs', 'src/domain/official-identity-evidence.mjs'], [], ['CONTROL_INPUT']],
+    ['retailer-identity-migration', 'retailerIdentityMigration', 'scripts/architecture-v2/build-retailer-identity-migration.mjs', ['scripts/architecture-v2/build-retailer-identity-migration.mjs', 'src/domain/retailer-identity-migration.mjs'], [['retailer-identity-resolution', 'semantic']], ['CONTROL_INPUT']],
+    ['retailer-observations', 'retailerObservations', 'scripts/architecture-v2/build-retailer-ledger.mjs', ['scripts/architecture-v2/build-retailer-ledger.mjs', 'scripts/architecture-v2/apply-retailer-identity-migration.mjs', 'src/domain/retailer-observation-ledger.mjs', 'src/domain/retailer-observation.mjs', 'src/domain/retailer-source-adapter.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [['retailer-identity-migration', 'semantic']], ['CONTROL_INPUT']],
     ['retailer-observation-coverage', 'retailerObservationCoverage', 'scripts/architecture-v2/build-retailer-observation-coverage.mjs', ['scripts/architecture-v2/build-retailer-observation-coverage.mjs', 'src/domain/retailer-observation-coverage.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [['current-publication', 'content'], ['retailer-observations', 'semantic']], ['CONTROL_ONLY']],
     ['retail-lifecycle-shadow', 'retailLifecycleShadow', 'scripts/architecture-v2/build-retail-lifecycle-shadow.mjs', ['scripts/architecture-v2/build-retail-lifecycle-shadow.mjs', 'src/domain/retail-lifecycle-shadow.mjs', 'src/domain/retailer-observation.mjs', 'data/architecture-v2/policies/retail-lifecycle-release-policy.json'], [['current-publication', 'content'], ['retailer-observations', 'semantic']], ['CONTROL_ONLY']],
-    ['retail-lifecycle-refresh', 'retailLifecycleRefreshInventory', 'scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs', ['scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs', 'src/domain/retail-lifecycle-refresh-inventory.mjs'], [['retailer-observation-coverage', 'semantic'], ['retail-lifecycle-shadow', 'semantic']], ['CONTROL_ONLY']],
+    ['retail-lifecycle-refresh', 'retailLifecycleRefreshInventory', 'scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs', ['scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs', 'src/domain/retail-lifecycle-refresh-inventory.mjs'], [['retailer-observation-coverage', 'semantic'], ['retail-lifecycle-shadow', 'semantic'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY']],
     ['official-registry-snapshots', 'officialRegistrySnapshots', 'scripts/architecture-v2/acquire-official-registries.mjs', ['scripts/architecture-v2/acquire-official-registries.mjs', 'data/architecture-v2/policies/official-registry-source-policy.json'], [], ['HISTORICAL_INPUT']],
     ['canonical-identity', 'canonicalRegistry', 'scripts/architecture-v2/build-canonical-registry.mjs', ['scripts/architecture-v2/build-canonical-registry.mjs', 'src/domain/canonical-registry.mjs'], [], ['CURRENT_INPUT', 'HISTORICAL_INPUT']],
+    ['canonical-identity-migration-candidate', 'canonicalRegistryMigrationCandidate', 'scripts/architecture-v2/build-canonical-registry.mjs', ['scripts/architecture-v2/build-canonical-registry.mjs', 'src/domain/canonical-registry.mjs', 'src/domain/retailer-identity-migration.mjs'], [['canonical-identity', 'content'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY']],
     ['receipt-reconciliation', 'historicalEvidenceRecoveryAcceptanceBundle', 'src/domain/historical-evidence-recovery-contract.mjs', ['src/domain/historical-evidence-recovery-contract.mjs', 'data/architecture-v2/policies/historical-evidence-recovery-policy.json'], [], ['CURRENT_INPUT', 'HISTORICAL_INPUT']],
     ['attempt-ledger', 'historicalEvidenceRecoveryAttemptLedger', 'src/domain/historical-evidence-recovery-attempt-ledger.mjs', ['src/domain/historical-evidence-recovery-attempt-ledger.mjs'], [], ['CONTROL_INPUT']],
     ['receipt-replay', 'historicalAcceptanceReceiptReplayAudit', 'scripts/architecture-v2/audit-historical-acceptance-receipts.mjs', ['scripts/architecture-v2/audit-historical-acceptance-receipts.mjs', 'src/domain/historical-evidence-recovery-audit.mjs'], [['receipt-reconciliation', 'content']], ['CONTROL_ONLY']],
@@ -454,7 +477,7 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     ['document-identity', 'historicalDocumentFamilyGraph', 'scripts/architecture-v2/build-historical-document-family-graph.mjs', ['scripts/architecture-v2/build-historical-document-family-graph.mjs', 'src/domain/historical-document-family-graph.mjs'], [['classification', 'semantic']], ['CONTROL_ONLY']],
     ['mineru-knowledge', 'dimensionExpressionObservations', 'scripts/architecture-v2/build-dimension-expression-knowledge.mjs', ['scripts/architecture-v2/build-dimension-expression-knowledge.mjs', 'src/domain/mineru-document.mjs', 'src/domain/dimension-expression-knowledge.mjs'], [['lifecycle-reduction', 'content'], ['document-identity', 'semantic']], ['CONTROL_ONLY']],
     ['mineru-backfill-audit', 'historicalMineruBackfillAudit', 'scripts/architecture-v2/backfill-historical-mineru.mjs', ['scripts/architecture-v2/backfill-historical-mineru.mjs', 'src/domain/historical-mineru-backfill.mjs'], [], ['CONTROL_ONLY']],
-    ['candidate-acquisition-queue', 'historicalModelPdfAcquisitionQueue', 'scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', ['scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', 'src/domain/historical-model-pdf-acquisition.mjs'], [['classification', 'semantic']], ['CONTROL_ONLY']],
+    ['candidate-acquisition-queue', 'historicalModelPdfAcquisitionQueue', 'scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', ['scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', 'src/domain/historical-model-pdf-acquisition.mjs'], [['classification', 'semantic'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY']],
     ['candidate-discovery', 'historicalOfficialCandidateManifest', 'scripts/architecture-v2/build-historical-official-candidate-manifest.mjs', ['scripts/architecture-v2/build-historical-official-candidate-manifest.mjs', 'src/domain/historical-official-candidate-manifest.mjs', 'scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs'], [['candidate-acquisition-queue', 'semantic']], ['CONTROL_ONLY']],
     ['executable-queue', 'historicalExecutableEvidenceRecoveryQueue', 'scripts/architecture-v2/build-historical-executable-recovery-queue.mjs', ['scripts/architecture-v2/build-historical-executable-recovery-queue.mjs', 'src/domain/historical-executable-recovery-queue.mjs'], [['candidate-acquisition-queue', 'semantic'], ['candidate-discovery', 'semantic'], ['receipt-reconciliation', 'content'], ['attempt-ledger', 'content']], ['CONTROL_ONLY']],
     ['family-canary', 'historicalEvidenceFamilyCanaries', 'scripts/architecture-v2/build-historical-evidence-family-canaries.mjs', ['scripts/architecture-v2/build-historical-evidence-family-canaries.mjs', 'src/domain/historical-evidence-family-canary.mjs'], [['document-identity', 'semantic'], ['executable-queue', 'content']], ['CONTROL_ONLY']],

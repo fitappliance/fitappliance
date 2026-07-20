@@ -236,6 +236,21 @@ test('normal Architecture V2 build does not generate the next recovery epoch que
   );
 });
 
+test('normal Architecture V2 build seals publication audits before scale control and the system contract', async () => {
+  const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
+  const build = packageJson.scripts['build:architecture-v2'];
+  const position = (command) => {
+    const index = build.indexOf(command);
+    assert.notEqual(index, -1, `${command} must be present in build:architecture-v2`);
+    return index;
+  };
+
+  assert.ok(position('audit:installation-evidence-receipts') < position('build:installation-evidence-pipeline'));
+  assert.ok(position('build:installation-evidence-pipeline') < position('audit:fit-publication'));
+  assert.ok(position('audit:fit-publication') < position('build:historical-dimensions-scale-control'));
+  assert.ok(position('build:historical-dimensions-scale-control') < position('build:historical-evidence-system-contract'));
+});
+
 test('historical recovery refresh rebuilds dependent artifacts in topological order', async () => {
   const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
   const knowledgeBuilder = await readFile(

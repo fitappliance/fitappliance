@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 
 import { validateRetailLifecycleShadow } from './retail-lifecycle-shadow.mjs';
 import { validateRetailerObservationCoverage } from './retailer-observation-coverage.mjs';
+import { validateRetailerIdentityMigration } from './retailer-identity-migration.mjs';
 
 const SHA256 = /^[a-f0-9]{64}$/;
 const EXECUTION_STATES = new Set([
@@ -11,6 +12,10 @@ const EXECUTION_STATES = new Set([
   'RUNNABLE_POLICY_REVIEWED_SOURCE',
 ]);
 const RESOLUTION_EXECUTION_STATES = new Set(['REQUIRES_DISCOVERY_PIPELINE']);
+const CONTROL_EXECUTION_STATES = new Set([
+  'PENDING_ATOMIC_IDENTITY_CUTOVER',
+  'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY',
+]);
 
 function required(value, label) {
   const result = String(value ?? '').trim();
@@ -71,11 +76,12 @@ function executionDisposition(tasks) {
   throw new Error('unresolved retailer source tasks have no safe execution disposition');
 }
 
-function itemExecutionDisposition(sourceTasks, resolutionTasks) {
+function itemExecutionDisposition(sourceTasks, resolutionTasks, controlTasks = []) {
   if (resolutionTasks.length === 1
     && resolutionTasks[0].executionState === 'REQUIRES_DISCOVERY_PIPELINE') {
     return 'REQUIRES_EXACT_MODEL_REDISCOVERY';
   }
+  if (controlTasks.length === 1) return controlTasks[0].executionState;
   if (sourceTasks.length > 0) return executionDisposition(sourceTasks);
   throw new Error('unresolved product has no safe execution disposition');
 }
@@ -86,12 +92,14 @@ function semanticPayload(document) {
 }
 
 export function validateRetailLifecycleRefreshInventory(document) {
-  if (!document || ![1, 2].includes(document.schemaVersion) || !Array.isArray(document.items)) {
-    throw new TypeError('retail lifecycle refresh inventory schema v1 or v2 required');
+  if (!document || ![1, 2, 3].includes(document.schemaVersion) || !Array.isArray(document.items)) {
+    throw new TypeError('retail lifecycle refresh inventory schema v1, v2, or v3 required');
   }
   const expectedPolicyVersion = document.schemaVersion === 1
     ? 'retail-lifecycle-refresh-inventory-v1'
-    : 'retail-lifecycle-refresh-inventory-v2';
+    : document.schemaVersion === 2
+      ? 'retail-lifecycle-refresh-inventory-v2'
+      : 'retail-lifecycle-refresh-inventory-v3';
   if (document.policyVersion !== expectedPolicyVersion) {
     throw new TypeError('retail lifecycle refresh inventory policy unsupported');
   }
@@ -111,13 +119,17 @@ export function validateRetailLifecycleRefreshInventory(document) {
       throw new TypeError(`refresh item source tasks required: ${item.canonicalProductId}`);
     }
     const resolutionTasks = item.resolutionTasks ?? [];
+    const controlTasks = item.controlTasks ?? [];
     if (!Array.isArray(resolutionTasks)) {
       throw new TypeError(`refresh item resolution tasks required: ${item.canonicalProductId}`);
     }
     if (document.schemaVersion === 1 && resolutionTasks.length > 0) {
       throw new TypeError(`schema v1 refresh item cannot carry resolution tasks: ${item.canonicalProductId}`);
     }
-    if (item.sourceTasks.length + resolutionTasks.length === 0) {
+    if (document.schemaVersion < 3 && controlTasks.length > 0) {
+      throw new TypeError(`legacy refresh item cannot carry control tasks: ${item.canonicalProductId}`);
+    }
+    if (item.sourceTasks.length + resolutionTasks.length + controlTasks.length === 0) {
       throw new TypeError(`refresh item missing executable or resolution task: ${item.canonicalProductId}`);
     }
     const taskIds = item.sourceTasks.map((task) => required(task.baselineLinkId, 'refresh baseline link ID'));
@@ -185,7 +197,49 @@ export function validateRetailLifecycleRefreshInventory(document) {
         throw new TypeError(`refresh resolution task ID mismatch: ${task.resolutionTaskId}`);
       }
     }
-    if (item.executionDisposition !== itemExecutionDisposition(item.sourceTasks, resolutionTasks)) {
+    const controlTaskIds = controlTasks.map((task) => required(task.controlTaskId, 'refresh control task ID'));
+    if (new Set(controlTaskIds).size !== controlTaskIds.length
+      || controlTaskIds.some((id, index) => index > 0
+        && controlTaskIds[index - 1].localeCompare(id) > 0)) {
+      throw new TypeError(`refresh control tasks must be sorted and unique: ${item.canonicalProductId}`);
+    }
+    if (controlTasks.length > 1 || (controlTasks.length > 0
+      && (resolutionTasks.length > 0 || item.sourceTasks.length > 0))) {
+      throw new TypeError(`refresh control task must be the sole product action: ${item.canonicalProductId}`);
+    }
+    for (const task of controlTasks) {
+      if (!CONTROL_EXECUTION_STATES.has(task.executionState)
+        || !Array.isArray(task.identityEventIds) || task.identityEventIds.length === 0
+        || new Set(task.identityEventIds).size !== task.identityEventIds.length
+        || task.identityEventIds.some((id, index) => index > 0
+          && task.identityEventIds[index - 1].localeCompare(id) > 0)) {
+        throw new TypeError(`unsupported refresh control task: ${task.controlTaskId}`);
+      }
+      const merge = task.kind === 'CANONICAL_IDENTITY_MIGRATION'
+        && task.action === 'APPLY_DECLARATIVE_CANONICAL_MERGE'
+        && task.canonicalAction === 'MERGE_DUPLICATE_CANONICAL'
+        && task.executionState === 'PENDING_ATOMIC_IDENTITY_CUTOVER';
+      const discovery = task.kind === 'EXACT_MODEL_RETAIL_SOURCE_DISCOVERY'
+        && task.action === 'DISCOVER_AUTHORIZED_EXACT_MODEL_RETAIL_SOURCE'
+        && task.canonicalAction === 'KEEP_CANONICAL_IDENTITY'
+        && task.executionState === 'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY';
+      if (!merge && !discovery) {
+        throw new TypeError(`refresh control task contract mismatch: ${task.controlTaskId}`);
+      }
+      const expectedId = `retail_control_${canonicalSha256({
+        canonicalProductId: item.canonicalProductId,
+        canonicalAction: task.canonicalAction,
+        identityEventIds: task.identityEventIds,
+      }).slice(0, 24)}`;
+      if (task.controlTaskId !== expectedId) {
+        throw new TypeError(`refresh control task ID mismatch: ${task.controlTaskId}`);
+      }
+    }
+    if (item.executionDisposition !== itemExecutionDisposition(
+      item.sourceTasks,
+      resolutionTasks,
+      controlTasks,
+    )) {
       throw new TypeError(`refresh execution disposition mismatch: ${item.canonicalProductId}`);
     }
   }
@@ -198,13 +252,23 @@ export function validateRetailLifecycleRefreshInventory(document) {
       (task) => task.executionState,
     ),
   };
-  if (document.schemaVersion === 2) {
+  if (document.schemaVersion >= 2) {
     expectedSummary.resolutionTasks = document.items.reduce(
       (sum, item) => sum + item.resolutionTasks.length,
       0,
     );
     expectedSummary.byResolutionExecutionState = countBy(
       document.items.flatMap((item) => item.resolutionTasks),
+      (task) => task.executionState,
+    );
+  }
+  if (document.schemaVersion >= 3) {
+    expectedSummary.controlTasks = document.items.reduce(
+      (sum, item) => sum + item.controlTasks.length,
+      0,
+    );
+    expectedSummary.byControlExecutionState = countBy(
+      document.items.flatMap((item) => item.controlTasks),
       (task) => task.executionState,
     );
   }
@@ -224,9 +288,35 @@ export function buildRetailLifecycleRefreshInventory({
   shadowSha256,
   coverage,
   coverageSha256,
+  identityMigration,
+  identityMigrationSha256,
 }) {
   validateRetailLifecycleShadow(shadow);
   validateRetailerObservationCoverage(coverage);
+  validateRetailerIdentityMigration(identityMigration);
+  const migrationCases = new Map(identityMigration.cases.map((row) => [
+    row.sourceCanonicalProductId,
+    row,
+  ]));
+  if (migrationCases.size !== identityMigration.cases.length) {
+    throw new TypeError('identity migration contains duplicate source canonical products');
+  }
+  const migrationEvents = new Map();
+  for (const event of identityMigration.linkEvents) {
+    if (!migrationEvents.has(event.sourceCanonicalProductId)) {
+      migrationEvents.set(event.sourceCanonicalProductId, []);
+    }
+    migrationEvents.get(event.sourceCanonicalProductId).push(event.id);
+  }
+  for (const events of migrationEvents.values()) events.sort();
+  const appliedEventIds = new Set(coverage.items
+    .filter((item) => item.typedObservation?.kind === 'IDENTITY_RESOLUTION')
+    .map((item) => item.typedObservation.eventId));
+  for (const event of identityMigration.linkEvents) {
+    if (!appliedEventIds.has(event.id)) {
+      throw new Error(`identity migration event is not reflected in coverage: ${event.id}`);
+    }
+  }
   const unresolved = new Set(shadow.cutover.unresolvedLegacyCurrentIds);
   const recordById = new Map(shadow.records.map((record) => [record.canonicalProductId, record]));
   const tasksByProduct = new Map();
@@ -283,7 +373,42 @@ export function buildRetailLifecycleRefreshInventory({
       quarantinedBaselineLinkIds: quarantinedSources.map((source) => source.baselineLinkId),
       quarantinedSources,
     }] : [];
-    if (sourceTasks.length + resolutionTasks.length === 0) {
+    const migrationCase = migrationCases.get(canonicalProductId) ?? null;
+    const identityEventIds = migrationEvents.get(canonicalProductId) ?? [];
+    let controlTasks = [];
+    if (migrationCase?.action === 'MERGE_DUPLICATE_CANONICAL') {
+      sourceTasks.splice(0);
+      resolutionTasks.splice(0);
+      controlTasks = [{
+        controlTaskId: `retail_control_${canonicalSha256({
+          canonicalProductId,
+          canonicalAction: migrationCase.action,
+          identityEventIds,
+        }).slice(0, 24)}`,
+        kind: 'CANONICAL_IDENTITY_MIGRATION',
+        action: 'APPLY_DECLARATIVE_CANONICAL_MERGE',
+        executionState: 'PENDING_ATOMIC_IDENTITY_CUTOVER',
+        canonicalAction: migrationCase.action,
+        identityEventIds,
+      }];
+    } else if (migrationCase?.action === 'CORRECT_CANONICAL_MODEL') {
+      throw new Error(`corrected canonical identity remains unresolved: ${canonicalProductId}`);
+    } else if (sourceTasks.length + resolutionTasks.length === 0
+      && migrationCase?.action === 'KEEP_CANONICAL_IDENTITY') {
+      controlTasks = [{
+        controlTaskId: `retail_control_${canonicalSha256({
+          canonicalProductId,
+          canonicalAction: migrationCase.action,
+          identityEventIds,
+        }).slice(0, 24)}`,
+        kind: 'EXACT_MODEL_RETAIL_SOURCE_DISCOVERY',
+        action: 'DISCOVER_AUTHORIZED_EXACT_MODEL_RETAIL_SOURCE',
+        executionState: 'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY',
+        canonicalAction: migrationCase.action,
+        identityEventIds,
+      }];
+    }
+    if (sourceTasks.length + resolutionTasks.length + controlTasks.length === 0) {
       throw new Error(`refresh item missing executable or identity rediscovery task: ${canonicalProductId}`);
     }
     return {
@@ -293,14 +418,15 @@ export function buildRetailLifecycleRefreshInventory({
       brand: record.brand,
       model: record.model,
       lifecycleState: record.lifecycleState,
-      executionDisposition: itemExecutionDisposition(sourceTasks, resolutionTasks),
+      executionDisposition: itemExecutionDisposition(sourceTasks, resolutionTasks, controlTasks),
       sourceTasks,
       resolutionTasks,
+      controlTasks,
     };
   });
   const document = {
-    schemaVersion: 2,
-    policyVersion: 'retail-lifecycle-refresh-inventory-v2',
+    schemaVersion: 3,
+    policyVersion: 'retail-lifecycle-refresh-inventory-v3',
     releaseEpoch: shadow.releaseEpoch,
     asOf: shadow.asOf,
     sourceBindings: {
@@ -308,6 +434,14 @@ export function buildRetailLifecycleRefreshInventory({
       shadowSemanticSha256: sha256(shadow.semanticSha256, 'retail lifecycle shadow semantic SHA-256'),
       coverageSha256: sha256(coverageSha256, 'retailer observation coverage SHA-256'),
       coverageSemanticSha256: sha256(coverage.semanticSha256, 'retailer observation coverage semantic SHA-256'),
+      identityMigrationSha256: sha256(
+        identityMigrationSha256,
+        'retailer identity migration SHA-256',
+      ),
+      identityMigrationSemanticSha256: sha256(
+        identityMigration.semanticSha256,
+        'retailer identity migration semantic SHA-256',
+      ),
     },
     items,
     summary: {
@@ -318,6 +452,11 @@ export function buildRetailLifecycleRefreshInventory({
       resolutionTasks: items.reduce((sum, item) => sum + item.resolutionTasks.length, 0),
       byResolutionExecutionState: countBy(
         items.flatMap((item) => item.resolutionTasks),
+        (task) => task.executionState,
+      ),
+      controlTasks: items.reduce((sum, item) => sum + item.controlTasks.length, 0),
+      byControlExecutionState: countBy(
+        items.flatMap((item) => item.controlTasks),
         (task) => task.executionState,
       ),
     },

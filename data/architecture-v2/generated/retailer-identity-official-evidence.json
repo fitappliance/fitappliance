@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "retailer-identity-official-evidence-v1",
+  "acquiredAt": "2026-07-20T21:01:16.038Z",
+  "seedDocumentSemanticSha256": "43d06daf3c4612c6622be5938a533b65bcafae07caed7efa96b4dc51eb5b87bd",
+  "records": [
+    {
+      "evidenceId": "official_identity_haier_hrf520bhs_pdf",
+      "evidenceKind": "OFFICIAL_PDF_MINERU",
+      "identity": {
+        "category": "fridge",
+        "brand": "Haier",
+        "model": "HRF520BHS"
+      },
+      "source": {
+        "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw41c88678/technical-content/cooling/refrigeration/bottom-mount/Haier790_user_manual_2019-5-31.pdf",
+        "finalUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw41c88678/technical-content/cooling/refrigeration/bottom-mount/Haier790_user_manual_2019-5-31.pdf",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-20T21:01:16.038Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5",
+        "objectPath": "evidence/web/sha256/ed/0d/ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5.pdf",
+        "byteSize": 4732276,
+        "mediaType": "application/pdf"
+      },
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5",
+        "contentSha256": "bb94bb3c22fd6d60a57b9123294c1bfe0e0a18c4c38c98c526d9bf39c5c80759",
+        "objectPath": "evidence/derived/mineru-json/sha256/bb/94/bb94bb3c22fd6d60a57b9123294c1bfe0e0a18c4c38c98c526d9bf39c5c80759.json",
+        "byteSize": 296668,
+        "pageCount": 38
+      },
+      "identityLocators": [
+        {
+          "kind": "mineru_exact_model_fragment",
+          "page": 5,
+          "fragmentIndex": 13,
+          "fragmentType": "paragraph",
+          "fragmentSha256": "8c3afaa0b8e6c070cbadbc0425ea8a79637976ae191fe8c11368f71a00709e2f",
+          "textSha256": "232670969458fcf66734f558601940dfd11d83b56946ad29f954b5054e2a95f1",
+          "textExcerpt": "Due to technical changes and different models, some of the illustrations in this manual may differ from your model. The accessories illustrations with \"*\" are used for reversible door of BM 2 doors model HRF520BW, HRF520BS, HRF520BHS and HR"
+        },
+        {
+          "kind": "mineru_exact_model_fragment",
+          "page": 35,
+          "fragmentIndex": 0,
+          "fragmentType": "title",
+          "fragmentSha256": "10f98b8f5ab32a0b7926f9e3bdb37c585795093df3b921836cbf5529d3aea0f3",
+          "textSha256": "9ef7b899f375156db04a8c3ddcf7da1582661ee018e11510a63e2a55ec23dc62",
+          "textExcerpt": "Door reversibility (Model HRF520BW, HRF520BS, HRF520BHS,HRF520BHC)"
+        }
+      ]
+    },
+    {
+      "evidenceId": "official_identity_westinghouse_wbe4302ac_r_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "fridge",
+        "brand": "Westinghouse",
+        "model": "WBE4302AC-R"
+      },
+      "source": {
+        "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4302ac-r/",
+        "finalUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4302ac-r/",
+        "redirectChain": [],
+        "transport": "curl",
+        "acquiredAt": "2026-07-20T21:01:16.038Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "607c8ec6cd0bacb9d385dbdebcb7b64b07919961dd171509180889860a2f32de",
+        "objectPath": "evidence/web/sha256/60/7c/607c8ec6cd0bacb9d385dbdebcb7b64b07919961dd171509180889860a2f32de.html",
+        "byteSize": 421045,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "product_analytics_model",
+          "path": "script[0].ELECTROLUX.GA4.item_id",
+          "value": "WBE4302AC-R",
+          "fragmentSha256": "6e5ce2ce159533f1f24426e053038ce06a915f9d3808f82781e5d4df882c3a4a"
+        },
+        {
+          "kind": "product_analytics_model",
+          "path": "script[0].ELECTROLUX.GA4.product_model_id",
+          "value": "WBE4302AC-R",
+          "fragmentSha256": "94d03193d980985186a8a54b623cb79b737e01ec0f93d6815ed0adda9d6b9e22"
+        },
+        {
+          "kind": "product_analytics_model",
+          "path": "script[0].ELECTROLUX.GA4.product_pnc",
+          "value": "WBE4302AC-R",
+          "fragmentSha256": "4e18847c03076058f217883562e147d346cf236c251e7b1098e9a3a51e739128"
+        },
+        {
+          "kind": "product_data_attribute",
+          "path": "[data-item-model][0]",
+          "value": "WBE4302AC-R",
+          "fragmentSha256": "27ba0e5d6f018050fb2c95f08023962e322fc0e709b15af96394b6dfb7f235bb"
+        },
+        {
+          "kind": "product_data_attribute",
+          "path": "[data-product-model][0]",
+          "value": "WBE4302AC-R",
+          "fragmentSha256": "876a877691780c169ad08931f49072b8a9c3823cf93d7e664fef9a6a763f2848"
+        },
+        {
+          "kind": "product_data_attribute",
+          "path": "[data-product-model][1]",
+          "value": "WBE4302AC-R",
+          "fragmentSha256": "57caa72b6bc93a5d2f7c0a90b33cc5e5dfb983873c1d25440b8b0d412282a38e"
+        },
+        {
+          "kind": "product_data_attribute",
+          "path": "[datalayer-origin-productmodelid][0]",
+          "value": "WBE4302AC-R",
+          "fragmentSha256": "98182346c9d74a717293c5ecd5d2eba7abbc65066bd960edc0369d682fa218c4"
+        },
+        {
+          "kind": "product_data_attribute",
+          "path": "[datalayer-productmodelid][0]",
+          "value": "WBE4302AC-R",
+          "fragmentSha256": "ef666d85e06e15f2e27ffa28afd385691d851dc696f4335bc68af6df04cf38d0"
+        }
+      ]
+    },
+    {
+      "evidenceId": "official_identity_westinghouse_wbe5304sc_r_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "fridge",
+        "brand": "Westinghouse",
+        "model": "WBE5304SC-R"
+      },
+      "source": {
+        "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5304sc-r/",
+        "finalUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5304sc-r/",
+        "redirectChain": [],
+        "transport": "curl",
+        "acquiredAt": "2026-07-20T21:01:16.038Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "0339ee2ea27ed74a360cda4de6d7e5d89b431f3ade2b57a1b6c423a3e9859565",
+        "objectPath": "evidence/web/sha256/03/39/0339ee2ea27ed74a360cda4de6d7e5d89b431f3ade2b57a1b6c423a3e9859565.html",
+        "byteSize": 434859,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "product_analytics_model",
+          "path": "script[0].ELECTROLUX.GA4.item_id",
+          "value": "WBE5304SC-R",
+          "fragmentSha256": "50ef765d39c186278e418d17408a7ab4df842ccb4479359d0fa8d98c8a89c3b8"
+        },
+        {
+          "kind": "product_analytics_model",
+          "path": "script[0].ELECTROLUX.GA4.product_model_id",
+          "value": "WBE5304SC-R",
+          "fragmentSha256": "307037c0ec1ca5dc9bad15d11c81a4dcc84dac3207cfebd91e838604044c10a3"
+        },
+        {
+          "kind": "product_analytics_model",
+          "path": "script[0].ELECTROLUX.GA4.product_pnc",
+          "value": "WBE5304SC-R",
+          "fragmentSha256": "836ecedd9c47e87f8b67e13741d78fa7b1e9f9ae3e5ee963546e338b9143343c"
+        },
+        {
+          "kind": "product_data_attribute",
+          "path": "[data-item-model][0]",
+          "value": "WBE5304SC-R",
+          "fragmentSha256": "78334f20066c6cce59a33dfd35359d9cc556c57bfa8d083ad61aca41c55911ad"
+        },
+        {
+          "kind": "product_data_attribute",
+          "path": "[data-product-model][0]",
+          "value": "WBE5304SC-R",
+          "fragmentSha256": "abebebfa7c48af864b87ba8b92e0959d7ab321f12c2b23301a6a8617a7262aa8"
+        },
+        {
+          "kind": "product_data_attribute",
+          "path": "[data-product-model][1]",
+          "value": "WBE5304SC-R",
+          "fragmentSha256": "492456503704085939061daa1e26e5d3db1b5b32a196bb9d36c440bff28aff35"
+        },
+        {
+          "kind": "product_data_attribute",
+          "path": "[datalayer-origin-productmodelid][0]",
+          "value": "WBE5304SC-R",
+          "fragmentSha256": "a9e640d15915a9642b9a8b40f248a4e288049fa82c80dc05321e49e73ecd49dc"
+        },
+        {
+          "kind": "product_data_attribute",
+          "path": "[datalayer-productmodelid][0]",
+          "value": "WBE5304SC-R",
+          "fragmentSha256": "bab11d4d6ff90c48d331f54d1b7222ad968139164d2b2508e13b2bc8413b7f58"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "records": 3,
+    "byEvidenceKind": {
+      "OFFICIAL_PDF_MINERU": 1,
+      "OFFICIAL_PRODUCT_PAGE": 2
+    }
+  },
+  "manifestId": "official_identity_evidence_783d87a9ba2cc66b7957120d",
+  "semanticSha256": "783d87a9ba2cc66b7957120d7b30af861a934e988fb19aed862ec60f68470428"
+}

@@ -36,6 +36,21 @@ test('Architecture V2 generated artifact graph is acyclic and follows declared b
   }
 });
 
+test('released and identity-migration candidate registries are separate build epochs', () => {
+  assert.equal(
+    architectureV2Paths.canonicalRegistryMigrationCandidate,
+    'data/architecture-v2/generated/canonical-registry-migration-candidate.json',
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.canonicalRegistry,
+    ['evidenceResolutionManifest'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.canonicalRegistryMigrationCandidate,
+    ['canonicalRegistry', 'retailerIdentityMigration'],
+  );
+});
+
 test('historical reference artifacts follow identity before publication ordering', () => {
   assert.equal(
     architectureV2Paths.historicalEvidenceRecoveryPolicy,

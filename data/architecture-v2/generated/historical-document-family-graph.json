@@ -7,10 +7,10 @@
     "dimensionsReceiptAuthorityChanged": false
   },
   "summary": {
-    "indexedPdfDocuments": 941,
-    "validIndexedPdfDocuments": 926,
+    "indexedPdfDocuments": 942,
+    "validIndexedPdfDocuments": 927,
     "invalidIndexedPdfDocuments": 15,
-    "uniquePdfDocuments": 941,
+    "uniquePdfDocuments": 942,
     "physicalFiles": 637,
     "physicallyStoredUniqueDocuments": 590,
     "duplicatePhysicalFiles": 47,
@@ -18,13 +18,13 @@
     "sourceUrls": 1102,
     "sourceVersions": 1104,
     "conflictingSourceUrls": 1,
-    "modelEdges": 3800,
+    "modelEdges": 3801,
     "mappedModelEdges": 3761,
     "byProofLevel": {
       "EXACT_MODEL_PROVEN": 535,
       "FAMILY_SCOPE_ONLY": 3213,
       "MODEL_LIST_PROVEN": 13,
-      "UNMAPPED": 39
+      "UNMAPPED": 40
     },
     "nonIndexedClassificationLinks": 99,
     "nonIndexedClassificationLinksByLane": {
@@ -100221,6 +100221,40 @@
       ]
     },
     {
+      "documentId": "pdf_document_c2d62e1734b62a1877243cb9",
+      "pdfSha256": "ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5",
+      "validity": "VALID",
+      "physicalPaths": [],
+      "physicalCopyCount": 0,
+      "sourceVersionIds": [],
+      "mineruObject": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "sourcePdfSha256": "ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5",
+        "contentSha256": "bb94bb3c22fd6d60a57b9123294c1bfe0e0a18c4c38c98c526d9bf39c5c80759",
+        "objectPath": "evidence/derived/mineru-json/sha256/bb/94/bb94bb3c22fd6d60a57b9123294c1bfe0e0a18c4c38c98c526d9bf39c5c80759.json",
+        "byteSize": 296668,
+        "pageCount": 38
+      },
+      "grammarProfileIds": [],
+      "familyIds": [],
+      "modelEdges": [
+        {
+          "referenceId": null,
+          "proofLevel": "UNMAPPED",
+          "proofLocators": [
+            {
+              "type": "INDEX_MAPPING_STATUS",
+              "mappingStatus": "UNMAPPED_SOURCE_PDF"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "documentId": "pdf_document_45d859de1bbfac63e6fda4f6",
       "pdfSha256": "ed789eb7b9e8234d75733d7dae518e44803108c00c919cc1796b9848add855a6",
       "validity": "VALID",
@@ -116833,5 +116867,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "9f6ae30b306eca0387815f63a64f84d1fec69166cd15a3d795d4adda89fcae39"
+  "semanticGraphSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8"
 }

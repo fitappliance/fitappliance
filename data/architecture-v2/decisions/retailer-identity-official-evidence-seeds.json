@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "retailer-identity-official-evidence-seeds-v1",
+  "seeds": [
+    {
+      "evidenceId": "official_identity_haier_hrf520bhs_pdf",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF520BHS",
+      "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw41c88678/technical-content/cooling/refrigeration/bottom-mount/Haier790_user_manual_2019-5-31.pdf",
+      "mediaType": "application/pdf"
+    },
+    {
+      "evidenceId": "official_identity_westinghouse_wbe4302ac_r_html",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE4302AC-R",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4302ac-r/",
+      "mediaType": "text/html"
+    },
+    {
+      "evidenceId": "official_identity_westinghouse_wbe5304sc_r_html",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE5304SC-R",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5304sc-r/",
+      "mediaType": "text/html"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # Historical Evidence Recovery Runbook
 
 Status: canonical operations guide
-Last verified: 2026-07-19
+Last verified: 2026-07-21
 Owner: FitAppliance data and evidence pipeline
 
 This runbook operates the only supported path from a historical document
@@ -2219,8 +2219,8 @@ sequence from the online replay step.
 
 The release gate is fail-closed. `retail-lifecycle-shadow.json` must report
 `cutover.status == "READY"`, an empty `unresolvedLegacyCurrentIds`, and an empty
-`unsafeRemovedLegacyCurrentIds`. At the 2026-07-20 checkpoint it is `BLOCKED`
-with 81 unresolved products and zero unsafe removals. Do not deploy the shadow
+`unsafeRemovedLegacyCurrentIds`. At the 2026-07-21 checkpoint it is `BLOCKED`
+with 79 unresolved products and zero unsafe removals. Do not deploy the shadow
 lifecycle projection while that state remains.
 
 ### Rollback unit
@@ -2231,3 +2231,43 @@ form one release unit. Never revert only a generated file or an intermediate
 task commit. Before cutover, prove the full pre-cutover commit builds offline;
 after cutover, rollback by redeploying that complete commit. Never delete or
 rewrite content-addressed retailer, PDF, or MinerU objects during rollback.
+
+## 44. Automated retailer identity closure and epoch isolation
+
+Acquire official AU identity evidence only from the frozen seed list and write
+the content-addressed source bindings before resolution:
+
+```bash
+export FITAPPLIANCE_STORAGE_ROOT=/Volumes/UGREEN-1TB/FitAppliance
+npm run acquire:retailer-identity-official-evidence
+npm run build:retailer-identity-resolutions
+npm run build:retailer-identity-migration
+npm run apply:retailer-identity-migration
+```
+
+The resolver supports only closed, evidence-bound outcomes: preserve canonical
+identity with listing invalidation/reassignment, strict canonical model
+correction, or merge into an already-existing exact canonical destination. It
+may merge a marketing-polluted row only when the row itself contains the exact
+received model token. It must reject sibling availability transfer, conflicting
+embedded model tokens, one-source prefix guesses,
+conflicting received models, invented destinations, and any attempt to promote
+dimensions, installation fields, or Fit.
+
+`canonical-registry.json` is the released pre-cutover registry and currently
+contains 3,515 products and 3,515 identifier mappings.
+`canonical-registry-migration-candidate.json` is a separate control-only
+artifact with 3,514 products and the same 3,515 mappings. Never overwrite the
+released registry with this candidate before the lifecycle shadow is `READY`.
+The public projection must depend on the released registry; candidate
+generation may read the migration registry but publication remains isolated.
+
+The 2026-07-21 automated replay resolved 17/18 cases and emitted 20 per-link
+identity events. A polluted `RF730QZUVX1` identity was not merged into retailer
+model `RF730QZUVB1`; partial migration applies only the 17 resolved cases and
+keeps that conflict isolated. The 79 lifecycle products remain blocked: 76 by
+source policy, one pending atomic identity cutover, one requiring an authorised
+exact-model source, and one requiring exact-model rediscovery. The rollback
+drill rebuilt detached commit `745a7212f` offline
+and left the external object-store metadata digest unchanged at
+`a17a43d039d9f112a3d8bd6b508ef242dc2178d06548a16d8a26bb60602c1e7c`.

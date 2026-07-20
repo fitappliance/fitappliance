@@ -32,11 +32,11 @@ Generated: 2026-07-19T19:32:08.439Z
 | --- | --- | ---: | ---: | ---: |
 | Unique PDF content | Physical Pdf File | 516 | 530 | 97.36% |
 | Unique PDF content indexed | Unique Pdf Content | 516 | 516 | 100.00% |
-| Indexed PDF content graph nodes | Unique Pdf Content | 941 | 941 | 100.00% |
-| Valid indexed PDF graph nodes | Unique Pdf Content | 926 | 941 | 98.41% |
+| Indexed PDF content graph nodes | Unique Pdf Content | 942 | 942 | 100.00% |
+| Valid indexed PDF graph nodes | Unique Pdf Content | 927 | 942 | 98.41% |
 | Document-model edges with exact or internal model-list proof | Document Model Edge | 548 | 3761 | 14.57% |
-| Valid MinerU knowledge documents | Mineru Knowledge Document | 926 | 941 | 98.41% |
-| MinerU knowledge documents with recognized expressions | Mineru Knowledge Document | 496 | 926 | 53.56% |
+| Valid MinerU knowledge documents | Mineru Knowledge Document | 927 | 942 | 98.41% |
+| MinerU knowledge documents with recognized expressions | Mineru Knowledge Document | 497 | 927 | 53.61% |
 | Complete parser replays | Parser Replay | 442 | 1052 | 42.02% |
 
 ## Accepted source lanes

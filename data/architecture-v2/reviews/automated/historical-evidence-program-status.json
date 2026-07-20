@@ -180,8 +180,8 @@
       "id": "document.graph_indexed_nodes",
       "label": "Indexed PDF content graph nodes",
       "grain": "unique_pdf_content",
-      "numerator": 941,
-      "denominator": 941,
+      "numerator": 942,
+      "denominator": 942,
       "rateBasisPoints": 10000,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
@@ -189,8 +189,8 @@
       "id": "document.graph_valid_nodes",
       "label": "Valid indexed PDF graph nodes",
       "grain": "unique_pdf_content",
-      "numerator": 926,
-      "denominator": 941,
+      "numerator": 927,
+      "denominator": 942,
       "rateBasisPoints": 9841,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
@@ -207,8 +207,8 @@
       "id": "document.knowledge_valid",
       "label": "Valid MinerU knowledge documents",
       "grain": "mineru_knowledge_document",
-      "numerator": 926,
-      "denominator": 941,
+      "numerator": 927,
+      "denominator": 942,
       "rateBasisPoints": 9841,
       "sourceArtifact": "data/architecture-v2/generated/historical-document-family-graph.json"
     },
@@ -216,9 +216,9 @@
       "id": "document.knowledge_recognized",
       "label": "MinerU knowledge documents with recognized expressions",
       "grain": "mineru_knowledge_document",
-      "numerator": 496,
-      "denominator": 926,
-      "rateBasisPoints": 5356,
+      "numerator": 497,
+      "denominator": 927,
+      "rateBasisPoints": 5361,
       "sourceArtifact": "data/architecture-v2/generated/dimension-expression-observations.json"
     },
     {

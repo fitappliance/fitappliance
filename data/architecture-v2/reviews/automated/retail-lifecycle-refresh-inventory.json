@@ -1,13 +1,15 @@
 {
-  "schemaVersion": 2,
-  "policyVersion": "retail-lifecycle-refresh-inventory-v2",
+  "schemaVersion": 3,
+  "policyVersion": "retail-lifecycle-refresh-inventory-v3",
   "releaseEpoch": "retail-lifecycle-shadow-2026-07-20-ledger-4763ee99c574",
   "asOf": "2026-07-20T19:43:11.969Z",
   "sourceBindings": {
-    "shadowSha256": "523e562a00ef8d44ab55a4b84af70d515aec259d8c3183e3ae82bad5f5382eb9",
-    "shadowSemanticSha256": "5bbd42436744997f4c4f1c9571d9dcd1d85f758d60eb7e89596fb655d661effd",
-    "coverageSha256": "3c837943b9bde5f548c38ff8ca2fb6a45ccb25f368c88f646eccbd308a2e8185",
-    "coverageSemanticSha256": "186e18286c9c28cc0ea89ca89d63a8d87e6113c5ef957212d1b6a3dc3136fec8"
+    "shadowSha256": "918a8ff849b30fe4aeb1c3ea27d6d53574da10ae620f61f628443ff76c43a1ea",
+    "shadowSemanticSha256": "0e9c45d6f1057023ab5f54f09dba0b1f8543459d13758d8f0552f69e5b2dae6d",
+    "coverageSha256": "67e3c2095f178802bb7af4d7da4480fbcb608fb78b7800c5bbf8b7bf5a8d308c",
+    "coverageSemanticSha256": "7c66c31dcb8ccdb5603bd624fa2dd739f6885ab49ce05234c6e950ff9adbb000",
+    "identityMigrationSha256": "239ca323d082dac786469d9b56c71fe9c0f3c4b3af7796c18a490a46ed896bbe",
+    "identityMigrationSemanticSha256": "66d56bf4f5840ed79d8c6af7c6566595594abe1af6458398d3ea4f69c9368a9f"
   },
   "items": [
     {
@@ -31,7 +33,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_0272984aae39a931f887465a",
@@ -54,7 +57,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_03c7b7d484ef495ac73a0b95",
@@ -77,7 +81,8 @@
           "collectionMode": "alternate_authorized_source_required"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_049da49dd1e75737e8e251bc",
@@ -111,7 +116,8 @@
           "collectionMode": "alternate_authorized_source_required"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_0762d35786278a6428f860d5",
@@ -145,7 +151,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_145b023266b43f1ae3f3ebf2",
@@ -168,7 +175,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_180aae07fda63c6f03c7c175",
@@ -191,7 +199,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_1c6c12fba6b1f8cf33c885bc",
@@ -214,7 +223,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_1d55416be8abd9c2901bd6d5",
@@ -237,7 +247,8 @@
           "collectionMode": "alternate_authorized_source_required"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_2058e392d0b85760f2db2265",
@@ -246,67 +257,18 @@
       "brand": "LG",
       "model": "GS-B655PL",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "REQUIRES_AUTHORIZED_SOURCE_DISCOVERY",
       "sourceTasks": [],
-      "resolutionTasks": [
+      "resolutionTasks": [],
+      "controlTasks": [
         {
-          "resolutionTaskId": "retail_resolution_6569b08c56179c5e6d50e0d7",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "LG",
-            "model": "GS-B655PL"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_8248f5525f2a0c2266b3970d"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_8248f5525f2a0c2266b3970d",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/lg-655l-side-by-side-fridge-gs-b655mbl/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "GS-B655MBL",
-              "rawSourceSha256": "77ca7a70e71be781693e4c6c967b64c9831e9ef917579d9b5fa235b9fa5f4aff"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "canonicalProductId": "fa_prod_3036232c6746d56e540fff19",
-      "legacyRuntimeId": "discovery-washing-machine-lg-1910fgx",
-      "category": "washtower_combo",
-      "brand": "LG",
-      "model": "1910FGX",
-      "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
-      "sourceTasks": [],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_0316aebf325e57640e08b749",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "washtower_combo",
-            "brand": "LG",
-            "model": "1910FGX"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_445fbe05488583428292dd5e"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_445fbe05488583428292dd5e",
-              "retailer": "The Good Guys",
-              "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
-              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
-              "receivedModel": "WWT-1910FGX",
-              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
-            }
+          "controlTaskId": "retail_control_cc789b396a12d2abd423bf7a",
+          "kind": "EXACT_MODEL_RETAIL_SOURCE_DISCOVERY",
+          "action": "DISCOVER_AUTHORIZED_EXACT_MODEL_RETAIL_SOURCE",
+          "executionState": "REQUIRES_AUTHORIZED_SOURCE_DISCOVERY",
+          "canonicalAction": "KEEP_CANONICAL_IDENTITY",
+          "identityEventIds": [
+            "retail_identity_event_4dc9b7e04e0521829cec8e2f"
           ]
         }
       ]
@@ -332,7 +294,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_3c96e77bd392defbdefd50c3",
@@ -355,7 +318,8 @@
           "collectionMode": "alternate_authorized_source_required"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_3f74412f8e17a28ff2f33ab7",
@@ -378,7 +342,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_3ffffc147b4696c3ab8b1be3",
@@ -401,7 +366,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_42567be9283922e610b38de2",
@@ -435,7 +401,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_43d528262e412c5c2b74b9b7",
@@ -444,7 +411,7 @@
       "brand": "Fisher & Paykel",
       "model": "RF522ADX6",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_61caf6af01187f78a0bdf089",
@@ -458,32 +425,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_ab9b3b85e8c620cf2a6aff7a",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "Fisher & Paykel",
-            "model": "RF522ADX6"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_54dabcb81a7aad73f6a80bf2"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_54dabcb81a7aad73f6a80bf2",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/fisher-paykel-rf522adux5-519l-activesmart-french-door-fridge/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "RF522ADUX5",
-              "rawSourceSha256": "80806d3bd66d2bf35ca91bf75e4f2a38f6da4843c89d999b8c82d2fa5f7a7a1f"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_46e2308662e7cea9d75826d1",
@@ -506,7 +449,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_4929eed99c994ef46671d689",
@@ -515,7 +459,7 @@
       "brand": "CHIQ",
       "model": "CRSR088DW",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_07ea0fad78b46ecfb2cd5fe4",
@@ -529,32 +473,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_5bcb63b8ebc2b87b11f6e11f",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "CHIQ",
-            "model": "CRSR088DW"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_65f26ea70eff44308526c3c9"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_65f26ea70eff44308526c3c9",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/chiq-90l-retro-bar-fridge-red-crsr089dr1/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "CRSR089DR1",
-              "rawSourceSha256": "28a17254602ece933ed093b447e8b4cfec9cde001cede693a959f8a921c64456"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_49481a0226b78e0f7d8e1c3c",
@@ -563,7 +483,7 @@
       "brand": "LG",
       "model": "GF-B505BB",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_d47302044fba1285b3459474",
@@ -577,41 +497,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_d7d8fdf082df847a28fd0ddb",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "LG",
-            "model": "GF-B505BB"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_1733635c1f742b6b4ecd55d4",
-            "retail_link_a3cf38d04073fd1cadb2de47"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_1733635c1f742b6b4ecd55d4",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/lg-530l-french-door-fridge-stainless-stteel-gf-b505pl/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "GF-B505PL",
-              "rawSourceSha256": "82de919e66a77df013604e10a0dd95fdf13a1bb0ceea962ab1da56092268f8b1"
-            },
-            {
-              "baselineLinkId": "retail_link_a3cf38d04073fd1cadb2de47",
-              "retailer": "The Good Guys",
-              "url": "https://www.thegoodguys.com.au/lg-530l-french-door-refrigerator-gf-b505mbl",
-              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
-              "receivedModel": "GF-B505MBL",
-              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_4ad2fa1ed239da6ebfbacee7",
@@ -634,7 +521,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_4b4f877fcb6026f4e2ddd668",
@@ -657,7 +545,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_4cd3e73c4763e88e496431f4",
@@ -680,7 +569,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_4d5e1914532267c65206ba72",
@@ -703,7 +593,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_4ef9921842b71a1734d67f75",
@@ -737,7 +628,8 @@
           "collectionMode": "alternate_authorized_source_required"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_507f501aa288199863392b3c",
@@ -746,7 +638,7 @@
       "brand": "Haier",
       "model": "HRF130UW",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_be9945d2771ce0d1884d5b3e",
@@ -760,32 +652,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_76128aa9f3fd0dc7bad74976",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "Haier",
-            "model": "HRF130UW"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_7650808c2033fd93c7b9a526"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_7650808c2033fd93c7b9a526",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/haier-300-series-129l-bar-fridge-black-hrf130ug2/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "HRF130UG2",
-              "rawSourceSha256": "0c3918dcc2cfca75d838bf1249fba4c47594671d2c9f904012013800fc11114b"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_56b24b1e2ec999831a774780",
@@ -808,7 +676,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_57417c9668113222e878e7b0",
@@ -842,7 +711,8 @@
           "collectionMode": "alternate_authorized_source_required"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_5a49bed039787d3859724b55",
@@ -876,7 +746,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_5b2f42e7391d85a23a706df6",
@@ -885,7 +756,7 @@
       "brand": "Westinghouse",
       "model": "WBB3100AK",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_01d47f1eecb755356315c6df",
@@ -910,32 +781,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_d05ea1a30c6320e6cb2a6c4a",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "Westinghouse",
-            "model": "WBB3100AK"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_945a2a727616a6bde23662cf"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_945a2a727616a6bde23662cf",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/westinghouse-308l-bottom-mount-fridge-white-wbb3100wk/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "WBB3100WK",
-              "rawSourceSha256": "dd3a1c5880838c319b6f20ea689dec12847320b60339a0942d9014e02b66b929"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_61360487e3f03d0d93145f05",
@@ -958,7 +805,8 @@
           "collectionMode": "alternate_authorized_source_required"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_64b489233ebdf4a516209dbe",
@@ -981,7 +829,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_678785a859c773936dd3f45c",
@@ -1004,7 +853,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_68d7810d7cb2acf101260e38",
@@ -1013,7 +863,7 @@
       "brand": "Haier",
       "model": "HRF420BHS",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_3d61cb02ebc053e5e2d5e0f2",
@@ -1027,32 +877,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_f98bdf55114c143a8527ed3c",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "Haier",
-            "model": "HRF420BHS"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_10fe1faa140aaaa7910af16e"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_10fe1faa140aaaa7910af16e",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/haier-433l-bottom-mount-refrigerator-black-hrf420bec/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "HRF420BEC",
-              "rawSourceSha256": "00a0fe15627d288ff073a0bc469edef3cf43d04e16c9e8627dfdeb4e84ba0058"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_6b38e40353b20b2870b4ce04",
@@ -1075,7 +901,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_6c37a64f4db8aefb49934e79",
@@ -1084,7 +911,7 @@
       "brand": "CHIQ",
       "model": "CTM202NW",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_82c0212411ba520f3f9dfc0a",
@@ -1120,41 +947,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_53ef16b233e898f5559ab5a7",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "CHIQ",
-            "model": "CTM202NW"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_28c476154978a439150af56e",
-            "retail_link_668a0c2034ea527c1b71d362"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_28c476154978a439150af56e",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/chiq-202l-top-mount-fridge-white-ctm202nw3/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "CTM202NW3",
-              "rawSourceSha256": "693ee75073babec7b2184ecf442febe4b06e9a825af7a648221028e99cf30306"
-            },
-            {
-              "baselineLinkId": "retail_link_668a0c2034ea527c1b71d362",
-              "retailer": "The Good Guys",
-              "url": "https://www.thegoodguys.com.au/chiq-202l-top-mount-refrigerator-ctm202nw3",
-              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
-              "receivedModel": "CTM202NW3",
-              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_6c3b2c524241c7e9a710b57f",
@@ -1177,7 +971,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_6cfcae456ed0636b9d3591ef",
@@ -1200,7 +995,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_6d94b7fe6a48634212faaeb9",
@@ -1209,43 +1005,18 @@
       "brand": "Haier",
       "model": "HRF520BHS French Door 520L",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
-      "sourceTasks": [
+      "executionDisposition": "PENDING_ATOMIC_IDENTITY_CUTOVER",
+      "sourceTasks": [],
+      "resolutionTasks": [],
+      "controlTasks": [
         {
-          "baselineLinkId": "retail_link_77cedd1e68130607337bfe2d",
-          "retailer": "JB Hi-Fi",
-          "url": "https://jbhifi.com.au/products/haier-hrf520bs-498l-bottom-mount-fridge-satina",
-          "originSource": "websearch-jbhifi",
-          "sourcePolicyId": "jb-hi-fi-product-page-v1",
-          "terminalObservationState": "LEGACY_UNKNOWN",
-          "action": "PAGE_REVALIDATION_POLICY_BLOCKED",
-          "executionState": "BLOCKED_BY_SOURCE_POLICY",
-          "collectionMode": "public_product_pages_pending_terms_review"
-        }
-      ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_f38a69995df6884a8ae7cef2",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "Haier",
-            "model": "HRF520BHS French Door 520L"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_07e45482f34191845d62fdb5"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_07e45482f34191845d62fdb5",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/haier-hrf520bhs-514l-bottom-mount-fridge/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "HRF520BHS",
-              "rawSourceSha256": "97f8a0801f76f987d074825c794c310bacadbc8ac4b02d12257f5dcdf1606340"
-            }
+          "controlTaskId": "retail_control_ecbe6c5ed483cf3de076431f",
+          "kind": "CANONICAL_IDENTITY_MIGRATION",
+          "action": "APPLY_DECLARATIVE_CANONICAL_MERGE",
+          "executionState": "PENDING_ATOMIC_IDENTITY_CUTOVER",
+          "canonicalAction": "MERGE_DUPLICATE_CANONICAL",
+          "identityEventIds": [
+            "retail_identity_event_cab7ee38ec1277021b62faf1"
           ]
         }
       ]
@@ -1282,7 +1053,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_73374c1cd548ba724a612e2e",
@@ -1305,7 +1077,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_775e2ad9d935bc1e139a828d",
@@ -1314,7 +1087,7 @@
       "brand": "Westinghouse",
       "model": "WBE4302WC",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_d2a96fd42c254b886ca4dd23",
@@ -1328,32 +1101,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_432fa9672be78073527940ce",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "Westinghouse",
-            "model": "WBE4302WC"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_600a22968c1eed41e8df89f3"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_600a22968c1eed41e8df89f3",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/westinghouse-425l-bottom-mount-fridge-silver-wbe4302acr/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "WBE4302ACR",
-              "rawSourceSha256": "a41fe1f397314b56b7095954f4bb7511608031ab66b269edacdf5ab883cfe99d"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_77b7cf1a45cf87e3f8996fec",
@@ -1376,7 +1125,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_7884e6857af1bac384815bc2",
@@ -1410,7 +1160,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_7e1ed79251c3eaf2620ea2ac",
@@ -1433,7 +1184,8 @@
           "collectionMode": "alternate_authorized_source_required"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_83f22d0c5c24cd044ae00974",
@@ -1478,7 +1230,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_84d9823ba10d67d8d532c37d",
@@ -1512,7 +1265,8 @@
           "collectionMode": "alternate_authorized_source_required"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_8ad544cd18495bf57951422f",
@@ -1535,7 +1289,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_8b35692597ff1ca7ab3820cf",
@@ -1544,7 +1299,7 @@
       "brand": "Westinghouse",
       "model": "WQE6000BB",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_51308d91605a304abc3e460f",
@@ -1569,32 +1324,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_60e350a2ff72837f002ff89d",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "Westinghouse",
-            "model": "WQE6000BB"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_bd635e094915adab3c137132"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_bd635e094915adab3c137132",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/westinghouse-600l-french-door-fridge-wqe6000sb/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "WQE6000SB",
-              "rawSourceSha256": "e4f1f8f9eec38c98cd13a165911d67bea9d9bbdd4b7a863d87b8a2e5e657a709"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_8dd1c56ffb418b190e22ecaf",
@@ -1628,7 +1359,8 @@
           "collectionMode": "alternate_authorized_source_required"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_8f186b7bfdc3b0de58ab5f0d",
@@ -1651,7 +1383,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_99b1d6129686c1197f331d95",
@@ -1674,7 +1407,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_9a4211d7d7147bc2f37abe64",
@@ -1708,7 +1442,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_a460095592b57264c14a6556",
@@ -1742,7 +1477,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_a475fff78e37f8b3c4ef8948",
@@ -1765,7 +1501,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_a533021bccdc2fe750e64f1e",
@@ -1788,7 +1525,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_a6e16f69836e8157850d3062",
@@ -1811,7 +1549,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_a7b7398537fc858371da8a40",
@@ -1834,7 +1573,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_a9e2a984a39d89afece799ec",
@@ -1857,7 +1597,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
@@ -1925,7 +1666,8 @@
             }
           ]
         }
-      ]
+      ],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_afb829c199c02ba7668e16a4",
@@ -1948,7 +1690,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_b4f21fb2bfbde16e2fe5b40a",
@@ -1971,7 +1714,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_bf5f37509b82baf1044dfb42",
@@ -1980,7 +1724,7 @@
       "brand": "Westinghouse",
       "model": "WBE5300WC",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_4fb29498ee798406f5394743",
@@ -2005,32 +1749,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_582a1016f738172e2612d5f1",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "Westinghouse",
-            "model": "WBE5300WC"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_8d7ebf0556fe7391f2ee8b6d"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_8d7ebf0556fe7391f2ee8b6d",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/westinghouse-528l-bottom-mount-fridge-right-hinge-stainless-steel-wbe5304sc-r/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "WBE5304SC-R",
-              "rawSourceSha256": "2038752b5a0f57b8695ab54c340b0d1ea317fe2fa65508e5318235382623e00c"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_c807bcb91f4565d29547584a",
@@ -2064,7 +1784,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_d01c197b1ead43e9b12c072f",
@@ -2087,7 +1808,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_d13bff0b6750b5ac1b40748c",
@@ -2110,7 +1832,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_d20cc8cece83a4f95a6f8db5",
@@ -2133,7 +1856,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_dd4c39650dcaf7c0d9b1e1d1",
@@ -2156,7 +1880,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_e191868e981538ab90701375",
@@ -2165,7 +1890,7 @@
       "brand": "Westinghouse",
       "model": "WSE6640SA",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_b82a4ac2e777b7f596e10b67",
@@ -2179,32 +1904,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_933c3a7734d6c2259d384afa",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "Westinghouse",
-            "model": "WSE6640SA"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_01d2ab6ed14c8e14398a3858"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_01d2ab6ed14c8e14398a3858",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/westinghouse-619l-side-by-side-fridge-wse6640ba/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "WSE6640BA",
-              "rawSourceSha256": "f73077eb9d47e46044971fef05ce24861a7f663490dd077d098b3aacaeeb1d8e"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_e27f3965572485b098b7d289",
@@ -2227,7 +1928,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_e3408dba53b4536319a00a4b",
@@ -2250,7 +1952,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_e34124271503b4915b0099bc",
@@ -2284,7 +1987,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_e46b9203620dfe6d94864123",
@@ -2329,7 +2033,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_e8acbe0c048f99d385efd94b",
@@ -2363,7 +2068,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_ec08816aef599580a0e2159e",
@@ -2372,7 +2078,7 @@
       "brand": "CHIQ",
       "model": "CBM394NSS",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_572e9686e0cb33922a530541",
@@ -2386,41 +2092,8 @@
           "collectionMode": "public_product_pages_pending_terms_review"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_e577b4216f413b6e194e53d5",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "CHIQ",
-            "model": "CBM394NSS"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_7a0cb41d30ca0f5a97dcca5f",
-            "retail_link_fd6baded2b779ec33fad52af"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_7a0cb41d30ca0f5a97dcca5f",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/chiq-396l-bottom-mount-fridge-black-cbm393nb/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "CBM393NB",
-              "rawSourceSha256": "74c3123b6019d75e4deac06b833ad60d75741c5d7b0e902d475172be4ffd25d0"
-            },
-            {
-              "baselineLinkId": "retail_link_fd6baded2b779ec33fad52af",
-              "retailer": "The Good Guys",
-              "url": "https://www.thegoodguys.com.au/chiq-396l-bottom-mount-refrigerator-cbm393nb3",
-              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
-              "receivedModel": "CBM393NB3",
-              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_f085012846431d05125c52a6",
@@ -2443,7 +2116,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_f1e2195ec83b0725ea1e3d98",
@@ -2466,7 +2140,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_f491bf00786fabb93ac9861f",
@@ -2475,7 +2150,7 @@
       "brand": "Haier",
       "model": "HRF505VW",
       "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
+      "executionDisposition": "BLOCKED_BY_SOURCE_POLICY",
       "sourceTasks": [
         {
           "baselineLinkId": "retail_link_6ad4186db74821a8542d54e8",
@@ -2511,32 +2186,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_a1140e77d7492d402dc2400c",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "fridge",
-            "brand": "Haier",
-            "model": "HRF505VW"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_3126b05b2c3db9a783d3d7dd"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_3126b05b2c3db9a783d3d7dd",
-              "retailer": "Appliances Online",
-              "url": "https://www.appliancesonline.com.au/product/haier-505l-vertical-refrigerator-hrf505vs/",
-              "reasonCode": "AO_MODEL_MISMATCH",
-              "receivedModel": "HRF505VS",
-              "rawSourceSha256": "3b9e613357b0be1ec990076a6cb6cd6c85674148f3b8f0f18f58295ff72ce67a"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_f55fe3c8aff7542409f950de",
@@ -2559,43 +2210,8 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
-    },
-    {
-      "canonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
-      "legacyRuntimeId": "discovery-washing-machine-lg-1910bx",
-      "category": "washtower_combo",
-      "brand": "LG",
-      "model": "1910BX",
-      "lifecycleState": "UNKNOWN_RETAIL",
-      "executionDisposition": "REQUIRES_EXACT_MODEL_REDISCOVERY",
-      "sourceTasks": [],
-      "resolutionTasks": [
-        {
-          "resolutionTaskId": "retail_resolution_2e33de9112e46e5744f1f206",
-          "kind": "EXACT_MODEL_RETAIL_REDISCOVERY",
-          "action": "DISCOVER_EXACT_MODEL_RETAIL_SOURCE",
-          "executionState": "REQUIRES_DISCOVERY_PIPELINE",
-          "expectedIdentity": {
-            "category": "washtower_combo",
-            "brand": "LG",
-            "model": "1910BX"
-          },
-          "quarantinedBaselineLinkIds": [
-            "retail_link_aa99e757908199d54ccd08f2"
-          ],
-          "quarantinedSources": [
-            {
-              "baselineLinkId": "retail_link_aa99e757908199d54ccd08f2",
-              "retailer": "The Good Guys",
-              "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
-              "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
-              "receivedModel": "WWT-1910BX",
-              "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e"
-            }
-          ]
-        }
-      ]
+      "resolutionTasks": [],
+      "controlTasks": []
     },
     {
       "canonicalProductId": "fa_prod_f75dc6941713a46c1f856088",
@@ -2618,24 +2234,32 @@
           "collectionMode": "historical_only"
         }
       ],
-      "resolutionTasks": []
+      "resolutionTasks": [],
+      "controlTasks": []
     }
   ],
   "summary": {
-    "products": 81,
-    "listings": 105,
+    "products": 79,
+    "listings": 104,
     "byExecutionDisposition": {
-      "BLOCKED_BY_SOURCE_POLICY": 63,
-      "REQUIRES_EXACT_MODEL_REDISCOVERY": 18
+      "BLOCKED_BY_SOURCE_POLICY": 76,
+      "PENDING_ATOMIC_IDENTITY_CUTOVER": 1,
+      "REQUIRES_AUTHORIZED_SOURCE_DISCOVERY": 1,
+      "REQUIRES_EXACT_MODEL_REDISCOVERY": 1
     },
     "bySourceExecutionState": {
-      "BLOCKED_BY_SOURCE_POLICY": 105
+      "BLOCKED_BY_SOURCE_POLICY": 104
     },
-    "resolutionTasks": 18,
+    "resolutionTasks": 1,
     "byResolutionExecutionState": {
-      "REQUIRES_DISCOVERY_PIPELINE": 18
+      "REQUIRES_DISCOVERY_PIPELINE": 1
+    },
+    "controlTasks": 2,
+    "byControlExecutionState": {
+      "PENDING_ATOMIC_IDENTITY_CUTOVER": 1,
+      "REQUIRES_AUTHORIZED_SOURCE_DISCOVERY": 1
     }
   },
-  "inventoryId": "retail_lifecycle_refresh_35f07110d6b17b1835865228",
-  "semanticSha256": "35f07110d6b17b1835865228284df42c589e560ec542b9f04d44cb2e7e2f77ed"
+  "inventoryId": "retail_lifecycle_refresh_a7e8794932811db7f688b0aa",
+  "semanticSha256": "a7e8794932811db7f688b0aad2b46907e680d1ecbf118aaa0bffaa9034cab923"
 }

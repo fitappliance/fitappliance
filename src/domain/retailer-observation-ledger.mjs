@@ -422,6 +422,80 @@ function validateSortedUnique(values, label) {
   }
 }
 
+function normalizedIdentityResolutionEvent(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('retailer identity resolution event must be an object');
+  }
+  const id = required(value.id, 'retailer identity resolution event ID');
+  if (!/^retail_identity_event_[a-f0-9]{24}$/.test(id)) {
+    throw new TypeError('retailer identity resolution event ID invalid');
+  }
+  const action = required(value.action, 'retailer identity resolution event action');
+  if (!['ACCEPT_AFTER_CANONICAL_CORRECTION', 'REASSIGN_TO_EXISTING_CANONICAL', 'INVALIDATE_WRONG_IDENTITY']
+    .includes(action)) {
+    throw new TypeError('retailer identity resolution event action invalid');
+  }
+  const resolvedAt = new Date(required(value.resolvedAt, 'retailer identity resolution event resolvedAt'));
+  const sourceObservedAt = new Date(required(
+    value.sourceObservedAt,
+    'retailer identity resolution event sourceObservedAt',
+  ));
+  if (Number.isNaN(resolvedAt.valueOf()) || Number.isNaN(sourceObservedAt.valueOf())
+    || resolvedAt < sourceObservedAt) {
+    throw new TypeError('retailer identity resolution event timestamps invalid');
+  }
+  const destinationCanonicalProductId = value.destinationCanonicalProductId == null
+    ? null
+    : required(value.destinationCanonicalProductId, 'retailer identity resolution event destination');
+  const observation = value.observation == null ? null : createObservation(value.observation);
+  if (action === 'INVALIDATE_WRONG_IDENTITY') {
+    if (destinationCanonicalProductId !== null || observation !== null) {
+      throw new TypeError('invalidated retailer identity event cannot create availability');
+    }
+  } else if (!destinationCanonicalProductId || !observation
+    || observation.canonicalProductId !== destinationCanonicalProductId
+    || observation.observedAt !== sourceObservedAt.toISOString()) {
+    throw new TypeError('retailer identity resolution event observation invalid');
+  }
+  const sourceCanonicalProductId = required(
+    value.sourceCanonicalProductId,
+    'retailer identity resolution event source canonical product ID',
+  );
+  if (action === 'ACCEPT_AFTER_CANONICAL_CORRECTION'
+    && destinationCanonicalProductId !== sourceCanonicalProductId) {
+    throw new TypeError('corrected retailer identity event destination invalid');
+  }
+  if (action === 'REASSIGN_TO_EXISTING_CANONICAL'
+    && destinationCanonicalProductId === sourceCanonicalProductId) {
+    throw new TypeError('reassigned retailer identity event destination invalid');
+  }
+  const rawSourceSha256 = sha256(value.rawSourceSha256, 'retailer identity event raw source SHA-256');
+  if (observation && observation.rawSourceSha256 !== rawSourceSha256) {
+    throw new TypeError('retailer identity event raw source observation mismatch');
+  }
+  if (!Array.isArray(value.reasonCodes) || value.reasonCodes.length === 0
+    || value.reasonCodes.some((reason) => !String(reason ?? '').trim())) {
+    throw new TypeError('retailer identity resolution event reason codes required');
+  }
+  return {
+    id,
+    resolutionTaskId: required(value.resolutionTaskId, 'retailer identity event resolution task ID'),
+    baselineLinkId: required(value.baselineLinkId, 'retailer identity event baseline link ID'),
+    action,
+    sourceCanonicalProductId,
+    destinationCanonicalProductId,
+    resolvedAt: resolvedAt.toISOString(),
+    sourceObservedAt: sourceObservedAt.toISOString(),
+    rawSourceSha256,
+    resolutionSemanticSha256: sha256(
+      value.resolutionSemanticSha256,
+      'retailer identity event resolution semantic SHA-256',
+    ),
+    reasonCodes: [...value.reasonCodes],
+    observation,
+  };
+}
+
 export function validateRetailerObservationLedger(document) {
   if (!document || document.schemaVersion !== 2 || !Array.isArray(document.observations)
     || !Array.isArray(document.collectionAttempts) || !Array.isArray(document.sourceBindings)) {
@@ -443,6 +517,13 @@ export function validateRetailerObservationLedger(document) {
   validateSortedUnique(document.observations, 'retailer observation');
   const attempts = document.collectionAttempts.map(normalizedAttempt);
   validateSortedUnique(attempts, 'retailer collection attempt');
+  const identityResolutionEvents = (document.identityResolutionEvents ?? [])
+    .map(normalizedIdentityResolutionEvent);
+  validateSortedUnique(identityResolutionEvents, 'retailer identity resolution event');
+  if (new Set(identityResolutionEvents.map((event) => event.baselineLinkId)).size
+    !== identityResolutionEvents.length) {
+    throw new TypeError('retailer identity resolution baseline links must be unique');
+  }
   const sourceBindings = document.sourceBindings.map((binding) => ({
     id: required(binding.id, 'retailer source binding ID'),
     sha256: sha256(binding.sha256, 'retailer source binding SHA-256'),
@@ -467,6 +548,19 @@ export function validateRetailerObservationLedger(document) {
   for (const attempt of attempts.filter((row) => row.acquisitionReceiptSha256 != null)) {
     if (!boundHashes.has(attempt.acquisitionReceiptSha256)) {
       throw new TypeError(`retailer attempt ${attempt.id} lacks immutable acquisition receipt binding`);
+    }
+  }
+  const observationById = new Map(normalizedObservations.map((observation) => [observation.id, observation]));
+  for (const event of identityResolutionEvents) {
+    if (!boundHashes.has(event.rawSourceSha256)
+      || !boundHashes.has(event.resolutionSemanticSha256)) {
+      throw new TypeError(`retailer identity resolution event ${event.id} lacks source binding`);
+    }
+    if (event.observation) {
+      const persisted = observationById.get(event.observation.id);
+      if (!persisted || canonicalSha256(persisted) !== canonicalSha256(event.observation)) {
+        throw new TypeError(`retailer identity resolution event ${event.id} observation not persisted`);
+      }
     }
   }
   const summary = {
@@ -496,6 +590,7 @@ function normalizeExisting(existingLedger, baselineById, normalizedPolicy) {
       observations: existingLedger.observations.map(createObservation),
       collectionAttempts: structuredClone(existingLedger.collectionAttempts),
       sourceBindings: structuredClone(existingLedger.sourceBindings),
+      identityResolutionEvents: structuredClone(existingLedger.identityResolutionEvents ?? []),
     };
   }
   if (existingLedger?.schemaVersion !== 1 || !Array.isArray(existingLedger.observations)) {
@@ -504,7 +599,7 @@ function normalizeExisting(existingLedger, baselineById, normalizedPolicy) {
   const observations = existingLedger.observations.map((row) => (
     baselineById.get(String(row.id)) ?? migratedV1Observation(row, normalizedPolicy)
   ));
-  return { observations, collectionAttempts: [], sourceBindings: [] };
+  return { observations, collectionAttempts: [], sourceBindings: [], identityResolutionEvents: [] };
 }
 
 function collectionAttempt(snapshot) {
@@ -672,6 +767,9 @@ export function buildRetailerObservationLedger({
     sourceBindings,
     observations,
     collectionAttempts: attempts,
+    ...(existing.identityResolutionEvents.length
+      ? { identityResolutionEvents: existing.identityResolutionEvents }
+      : {}),
     summary: {
       observations: observations.length,
       currentBaselineObservations,

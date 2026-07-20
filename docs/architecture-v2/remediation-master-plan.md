@@ -3,7 +3,7 @@
 Status: strategic migration baseline; active cross-cutting execution is
 controlled by the
 [`2026-07-20 system-first repair plan`](../superpowers/plans/2026-07-20-fitappliance-system-first-repair-control-plan.md)
-Last updated: 2026-07-20
+Last updated: 2026-07-21
 Decision owner: FitAppliance repository
 Audit baseline: [`repository-architecture-audit.md`](./repository-architecture-audit.md)
 Canonical product/data strategy: [`../product-core-brief.md`](../product-core-brief.md)
@@ -51,7 +51,7 @@ Architecture V2 is complete only when:
 | 0 | Domain contracts and read-only shadow audit | Complete |
 | 1 | Verified dimension overlay and quarantine reduction | Guardrails complete; 9 pending |
 | 2 | Canonical identity mapping | Shadow registry complete |
-| 3 | Retailer observation ledger and current-sale reconciliation | Typed adapters and replay complete; cutover blocked by 81 unresolved prior-current products |
+| 3 | Retailer observation ledger and current-sale reconciliation | Typed adapters and replay complete; cutover blocked by 79 unresolved prior-current products |
 | 4 | Source-document registry and PDF evidence state machine | State machine and quarantine baseline complete |
 | 5 | Category geometry and clearance migration | Contracts complete; evidence migration pending |
 | 6 | FitDecision parity and production cutover | Safety audit passes with zero violations; lifecycle cutover not authorised |
@@ -63,18 +63,25 @@ Tasks 0-8 of the active system-first control plan are complete. Task 9 has
 passed the available-source runs, full evidence replay, offline builds,
 deterministic rebuild, safety projection, and rollback-baseline checks, but its
 lifecycle prerequisite is still `BLOCKED`. The 3,515-product shadow resolves
-345 current and 3,089 archived products while preserving 81 as unknown. No
+348 current and 3,088 archived products while preserving 79 as unknown. No
 production cutover, deployment, or legacy deletion is authorised.
 
 The unresolved set has independent owners and must not be collapsed into one
 generic retry queue:
 
-- 58 products require an authorised source or explicit automation permission
-  for Bing Lee, Harvey Norman, or JB Hi-Fi;
-- 22 products require a genuinely new, source-time-bound The Good Guys feed;
-- LG `1910FGX`, LG `1910BX`, and CHiQ `CTM202NW` also require canonical identity
-  repair before availability can bind;
-- LG `GS-B655PL` requires exact-model rediscovery after a sibling AO response.
+- 76 products require an authorised source or explicit automation permission;
+- one product requires the already-proven identity merge to be applied only
+  as part of an atomic lifecycle/canonical cutover;
+- LG `GS-B655PL` requires authorised exact-model discovery after a sibling AO
+  response;
+- Fisher & Paykel `RF730QZUVX1` conflicts with captured `RF730QZUVB1` retailer
+  listings and requires exact-model rediscovery before any identity mutation.
+
+Seventeen of 18 identity mismatch cases have been automatically adjudicated
+from raw-bound retailer evidence and official AU identity snapshots. The
+remaining conflict is explicitly excluded from migration. The released registry
+remains at 3,515 products; the 3,514-product migration candidate is a separate
+control artifact and must not leak into the released public epoch.
 
 The branch may retain the lifecycle-neutral safety projection because it only
 removes unsupported legacy door fields. It is not evidence that the lifecycle

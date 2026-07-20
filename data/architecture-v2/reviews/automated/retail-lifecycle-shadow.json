@@ -7,10 +7,10 @@
   "sourceBindings": {
     "publicProjectionSha256": "50a85830929e5298a1f484b0ea3367d7480a3ddb91247bf16d7bd93eab6e33b1",
     "publicProjectionSemanticSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
-    "retailerLedgerSha256": "b534c1f19c80e3ce4c3cf42d8276588ccc106d920f1914c301824812a2c016ba",
+    "retailerLedgerSha256": "211ba778fed599d00ee9e5ef12734828a29a71b855f83a7e16978e08c12c4bc3",
     "sourcePolicySha256": "5e5adc2c16232906c412f93431fb363b4cfe97a10f097abb0d2ebcefdf6ed125",
     "releasePolicySha256": "0c7c094510e3a48bf135ceeec5e1206d85ddcbb3a9d5e15e693c257f3218c3ba",
-    "retailerLedgerSemanticSha256": "bf950304d5fa2cf6a3031275a14c84646f2ecfba7ae0121efb6dcb7858558e5f"
+    "retailerLedgerSemanticSha256": "71506dd9405f0522736d104a054aed4942407a58e400db7603515bd9ab9af63d"
   },
   "records": [
     {
@@ -155719,12 +155719,12 @@
         "catalogState": "LISTED_UNVERIFIED",
         "lifecycleState": "CURRENT_RETAIL",
         "authorizingObservation": {
-          "id": "obs_294c7c435ee332a479b1358e",
+          "id": "obs_identity_f6d0a1fa220d2a0f1e758d57",
           "canonicalProductId": "fa_prod_7cb88e6a4719789496740fee",
           "retailer": "Appliances Online",
           "adapterId": "appliances-online-product-api-v1",
-          "observedAt": "2026-07-20T17:34:24.000Z",
-          "url": "https://www.appliancesonline.com.au/product/haier-505l-vertical-refrigerator-hrf505vs",
+          "observedAt": "2026-07-20T17:36:17.000Z",
+          "url": "https://www.appliancesonline.com.au/product/haier-505l-vertical-refrigerator-hrf505vs/",
           "redirectUrl": null,
           "availability": "available",
           "priceAud": 1728,
@@ -155739,17 +155739,17 @@
           "expectedCadenceHours": 24,
           "maximumCurrentAgeHours": 72,
           "legacyProjectionBinding": null,
-          "ageHours": 2.1466580555555557,
+          "ageHours": 2.1152691666666668,
           "freshnessState": "FRESH"
         },
         "latestObservations": [
           {
-            "id": "obs_294c7c435ee332a479b1358e",
+            "id": "obs_identity_f6d0a1fa220d2a0f1e758d57",
             "canonicalProductId": "fa_prod_7cb88e6a4719789496740fee",
             "retailer": "Appliances Online",
             "adapterId": "appliances-online-product-api-v1",
-            "observedAt": "2026-07-20T17:34:24.000Z",
-            "url": "https://www.appliancesonline.com.au/product/haier-505l-vertical-refrigerator-hrf505vs",
+            "observedAt": "2026-07-20T17:36:17.000Z",
+            "url": "https://www.appliancesonline.com.au/product/haier-505l-vertical-refrigerator-hrf505vs/",
             "redirectUrl": null,
             "availability": "available",
             "priceAud": 1728,
@@ -155764,7 +155764,7 @@
             "expectedCadenceHours": 24,
             "maximumCurrentAgeHours": 72,
             "legacyProjectionBinding": null,
-            "ageHours": 2.1466580555555557,
+            "ageHours": 2.1152691666666668,
             "freshnessState": "FRESH"
           }
         ],
@@ -169900,12 +169900,12 @@
       "brand": "LG",
       "model": "1910BX",
       "priorVisibility": "CURRENT_OUTPUT",
-      "lifecycleState": "UNKNOWN_RETAIL",
-      "transition": "CURRENT_TO_UNKNOWN",
-      "priorityClass": "P2_REGISTRY_ONLY",
-      "publicVisibility": "HIDDEN_UNRESOLVED",
+      "lifecycleState": "CURRENT_RETAIL",
+      "transition": "STILL_CURRENT",
+      "priorityClass": "P0_CURRENT_RETAIL",
+      "publicVisibility": "CURRENT_OUTPUT",
       "replacementEligibility": "IDENTITY_ONLY",
-      "fitDestination": "HISTORICAL_ONLY",
+      "fitDestination": "CURRENT_FIT_INPUT",
       "hasReceiptBoundDimensions": false,
       "retailLifecycle": {
         "schemaVersion": 1,
@@ -169913,9 +169913,57 @@
         "asOf": "2026-07-20T19:43:11.969Z",
         "canonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
         "catalogState": "LISTED_UNVERIFIED",
-        "lifecycleState": "UNKNOWN_RETAIL",
-        "authorizingObservation": null,
-        "latestObservations": [],
+        "lifecycleState": "CURRENT_RETAIL",
+        "authorizingObservation": {
+          "id": "obs_identity_b5b309a14d2f1fb4a646d79d",
+          "canonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
+          "retailer": "The Good Guys",
+          "adapterId": "the-good-guys-partnerize-feed-v1",
+          "observedAt": "2026-07-20T19:43:11.969Z",
+          "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
+          "redirectUrl": null,
+          "availability": "available",
+          "priceAud": 4999,
+          "title": "LG WashTower 19kg-10kg Combo Washer Dryer",
+          "imageUrl": null,
+          "retailerProductId": "50097464",
+          "sourceType": "affiliate_feed",
+          "listingState": "current",
+          "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+          "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+          "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
+          "expectedCadenceHours": 24,
+          "maximumCurrentAgeHours": 72,
+          "legacyProjectionBinding": null,
+          "ageHours": 0,
+          "freshnessState": "FRESH"
+        },
+        "latestObservations": [
+          {
+            "id": "obs_identity_b5b309a14d2f1fb4a646d79d",
+            "canonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
+            "retailer": "The Good Guys",
+            "adapterId": "the-good-guys-partnerize-feed-v1",
+            "observedAt": "2026-07-20T19:43:11.969Z",
+            "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
+            "redirectUrl": null,
+            "availability": "available",
+            "priceAud": 4999,
+            "title": "LG WashTower 19kg-10kg Combo Washer Dryer",
+            "imageUrl": null,
+            "retailerProductId": "50097464",
+            "sourceType": "affiliate_feed",
+            "listingState": "current",
+            "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+            "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+            "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
+            "expectedCadenceHours": 24,
+            "maximumCurrentAgeHours": 72,
+            "legacyProjectionBinding": null,
+            "ageHours": 0,
+            "freshnessState": "FRESH"
+          }
+        ],
         "observationConflicts": [],
         "collectionAttempts": [
           {
@@ -169971,7 +170019,7 @@
           }
         ],
         "reasonCodes": [
-          "CATALOG_LISTING_WITHOUT_FRESH_AVAILABLE_OBSERVATION",
+          "FRESH_AVAILABLE_OBSERVATION",
           "LEGACY_OBSERVATION_NON_AUTHORITATIVE"
         ]
       },
@@ -169987,12 +170035,12 @@
       "brand": "LG",
       "model": "1910FGX",
       "priorVisibility": "CURRENT_OUTPUT",
-      "lifecycleState": "UNKNOWN_RETAIL",
-      "transition": "CURRENT_TO_UNKNOWN",
-      "priorityClass": "P2_REGISTRY_ONLY",
-      "publicVisibility": "HIDDEN_UNRESOLVED",
+      "lifecycleState": "CURRENT_RETAIL",
+      "transition": "STILL_CURRENT",
+      "priorityClass": "P0_CURRENT_RETAIL",
+      "publicVisibility": "CURRENT_OUTPUT",
       "replacementEligibility": "IDENTITY_ONLY",
-      "fitDestination": "HISTORICAL_ONLY",
+      "fitDestination": "CURRENT_FIT_INPUT",
       "hasReceiptBoundDimensions": false,
       "retailLifecycle": {
         "schemaVersion": 1,
@@ -170000,9 +170048,57 @@
         "asOf": "2026-07-20T19:43:11.969Z",
         "canonicalProductId": "fa_prod_3036232c6746d56e540fff19",
         "catalogState": "LISTED_UNVERIFIED",
-        "lifecycleState": "UNKNOWN_RETAIL",
-        "authorizingObservation": null,
-        "latestObservations": [],
+        "lifecycleState": "CURRENT_RETAIL",
+        "authorizingObservation": {
+          "id": "obs_identity_75898f84b67104a12e5bc72d",
+          "canonicalProductId": "fa_prod_3036232c6746d56e540fff19",
+          "retailer": "The Good Guys",
+          "adapterId": "the-good-guys-partnerize-feed-v1",
+          "observedAt": "2026-07-20T19:43:11.969Z",
+          "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
+          "redirectUrl": null,
+          "availability": "available",
+          "priceAud": 4999,
+          "title": "LG WashTower 19kg-10kg Combo Washer Dryer",
+          "imageUrl": null,
+          "retailerProductId": "50097466",
+          "sourceType": "affiliate_feed",
+          "listingState": "current",
+          "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+          "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+          "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
+          "expectedCadenceHours": 24,
+          "maximumCurrentAgeHours": 72,
+          "legacyProjectionBinding": null,
+          "ageHours": 0,
+          "freshnessState": "FRESH"
+        },
+        "latestObservations": [
+          {
+            "id": "obs_identity_75898f84b67104a12e5bc72d",
+            "canonicalProductId": "fa_prod_3036232c6746d56e540fff19",
+            "retailer": "The Good Guys",
+            "adapterId": "the-good-guys-partnerize-feed-v1",
+            "observedAt": "2026-07-20T19:43:11.969Z",
+            "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
+            "redirectUrl": null,
+            "availability": "available",
+            "priceAud": 4999,
+            "title": "LG WashTower 19kg-10kg Combo Washer Dryer",
+            "imageUrl": null,
+            "retailerProductId": "50097466",
+            "sourceType": "affiliate_feed",
+            "listingState": "current",
+            "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+            "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+            "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
+            "expectedCadenceHours": 24,
+            "maximumCurrentAgeHours": 72,
+            "legacyProjectionBinding": null,
+            "ageHours": 0,
+            "freshnessState": "FRESH"
+          }
+        ],
         "observationConflicts": [],
         "collectionAttempts": [
           {
@@ -170058,7 +170154,7 @@
           }
         ],
         "reasonCodes": [
-          "CATALOG_LISTING_WITHOUT_FRESH_AVAILABLE_OBSERVATION",
+          "FRESH_AVAILABLE_OBSERVATION",
           "LEGACY_OBSERVATION_NON_AUTHORITATIVE"
         ]
       },
@@ -310393,12 +310489,12 @@
       "brand": "Westinghouse",
       "model": "WQE6000SB",
       "priorVisibility": "HISTORICAL_INPUT_ONLY",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "transition": "STILL_ARCHIVED",
-      "priorityClass": "P1_CATALOG_ARCHIVED",
-      "publicVisibility": "HISTORICAL_INPUT_ONLY",
+      "lifecycleState": "CURRENT_RETAIL",
+      "transition": "RELISTED",
+      "priorityClass": "P0_CURRENT_RETAIL",
+      "publicVisibility": "CURRENT_OUTPUT",
       "replacementEligibility": "IDENTITY_ONLY",
-      "fitDestination": "HISTORICAL_ONLY",
+      "fitDestination": "CURRENT_FIT_INPUT",
       "hasReceiptBoundDimensions": false,
       "retailLifecycle": {
         "schemaVersion": 1,
@@ -310406,9 +310502,57 @@
         "asOf": "2026-07-20T19:43:11.969Z",
         "canonicalProductId": "fa_prod_fc36c3fa6506000b346c449e",
         "catalogState": "ARCHIVED",
-        "lifecycleState": "CATALOG_ARCHIVED",
-        "authorizingObservation": null,
-        "latestObservations": [],
+        "lifecycleState": "CURRENT_RETAIL",
+        "authorizingObservation": {
+          "id": "obs_identity_4875265c8fd347c32d575818",
+          "canonicalProductId": "fa_prod_fc36c3fa6506000b346c449e",
+          "retailer": "Appliances Online",
+          "adapterId": "appliances-online-product-api-v1",
+          "observedAt": "2026-07-20T17:36:17.000Z",
+          "url": "https://www.appliancesonline.com.au/product/westinghouse-600l-french-door-fridge-wqe6000sb/",
+          "redirectUrl": null,
+          "availability": "available",
+          "priceAud": 2171,
+          "title": "Westinghouse 541L French Door Frost Free Fridge WQE6000SB",
+          "imageUrl": null,
+          "retailerProductId": "86355",
+          "sourceType": "public_retailer_api",
+          "listingState": "current",
+          "sourceReference": "retailer-object:sha256:e4f1f8f9eec38c98cd13a165911d67bea9d9bbdd4b7a863d87b8a2e5e657a709",
+          "rawSourceSha256": "e4f1f8f9eec38c98cd13a165911d67bea9d9bbdd4b7a863d87b8a2e5e657a709",
+          "policyVersion": "retailer-source-policy-v2:appliances-online-product-api-v1",
+          "expectedCadenceHours": 24,
+          "maximumCurrentAgeHours": 72,
+          "legacyProjectionBinding": null,
+          "ageHours": 2.1152691666666668,
+          "freshnessState": "FRESH"
+        },
+        "latestObservations": [
+          {
+            "id": "obs_identity_4875265c8fd347c32d575818",
+            "canonicalProductId": "fa_prod_fc36c3fa6506000b346c449e",
+            "retailer": "Appliances Online",
+            "adapterId": "appliances-online-product-api-v1",
+            "observedAt": "2026-07-20T17:36:17.000Z",
+            "url": "https://www.appliancesonline.com.au/product/westinghouse-600l-french-door-fridge-wqe6000sb/",
+            "redirectUrl": null,
+            "availability": "available",
+            "priceAud": 2171,
+            "title": "Westinghouse 541L French Door Frost Free Fridge WQE6000SB",
+            "imageUrl": null,
+            "retailerProductId": "86355",
+            "sourceType": "public_retailer_api",
+            "listingState": "current",
+            "sourceReference": "retailer-object:sha256:e4f1f8f9eec38c98cd13a165911d67bea9d9bbdd4b7a863d87b8a2e5e657a709",
+            "rawSourceSha256": "e4f1f8f9eec38c98cd13a165911d67bea9d9bbdd4b7a863d87b8a2e5e657a709",
+            "policyVersion": "retailer-source-policy-v2:appliances-online-product-api-v1",
+            "expectedCadenceHours": 24,
+            "maximumCurrentAgeHours": 72,
+            "legacyProjectionBinding": null,
+            "ageHours": 2.1152691666666668,
+            "freshnessState": "FRESH"
+          }
+        ],
         "observationConflicts": [],
         "collectionAttempts": [
           {
@@ -310464,7 +310608,7 @@
           }
         ],
         "reasonCodes": [
-          "ARCHIVED_CATALOG_STATE"
+          "FRESH_AVAILABLE_OBSERVATION"
         ]
       },
       "excludedBySourcePolicy": {
@@ -367084,6 +367228,7 @@
       "fa_prod_2e583e9489a99c2ec2c3a6bc",
       "fa_prod_2e8aaa64f611b9722aa6c370",
       "fa_prod_2f34addef166fe0b4b84ed15",
+      "fa_prod_3036232c6746d56e540fff19",
       "fa_prod_30730fa7158f3b4857dcd2e1",
       "fa_prod_32d72774c1aeb04e7aea06e3",
       "fa_prod_3380c96741df3a38b532c10d",
@@ -367353,6 +367498,7 @@
       "fa_prod_f44f3390753da735a8bfb202",
       "fa_prod_f459c98170c19c60d8c73440",
       "fa_prod_f542c9962a7f92388ec31f78",
+      "fa_prod_f6eef12ddb184031f19e1c2c",
       "fa_prod_f7172bd65c1246edcc661396",
       "fa_prod_f8128ae01b65a21ae334fb6a",
       "fa_prod_f8452bd688aec55fd6ec92c8",
@@ -367360,6 +367506,7 @@
       "fa_prod_f8e988d15e5aa77f7d968e06",
       "fa_prod_f97527eeacac971b3948ab88",
       "fa_prod_fad5bc9636ab026de1626aa3",
+      "fa_prod_fc36c3fa6506000b346c449e",
       "fa_prod_fc73b631eb6aadf26b692b3f",
       "fa_prod_ff0b7aef544b305dd368c072",
       "fa_prod_ff0f203af96d53ce8cc58b20",
@@ -368423,7 +368570,6 @@
       "fa_prod_1c6c12fba6b1f8cf33c885bc",
       "fa_prod_1d55416be8abd9c2901bd6d5",
       "fa_prod_2058e392d0b85760f2db2265",
-      "fa_prod_3036232c6746d56e540fff19",
       "fa_prod_3861be7a22570ffc464f7378",
       "fa_prod_3c96e77bd392defbdefd50c3",
       "fa_prod_3f74412f8e17a28ff2f33ab7",
@@ -368492,7 +368638,6 @@
       "fa_prod_f1e2195ec83b0725ea1e3d98",
       "fa_prod_f491bf00786fabb93ac9861f",
       "fa_prod_f55fe3c8aff7542409f950de",
-      "fa_prod_f6eef12ddb184031f19e1c2c",
       "fa_prod_f75dc6941713a46c1f856088"
     ],
     "relistedIds": [
@@ -368582,6 +368727,7 @@
       "fa_prod_f8128ae01b65a21ae334fb6a",
       "fa_prod_f8452bd688aec55fd6ec92c8",
       "fa_prod_f97527eeacac971b3948ab88",
+      "fa_prod_fc36c3fa6506000b346c449e",
       "fa_prod_fc73b631eb6aadf26b692b3f"
     ],
     "multiRetailerConflictIds": [],
@@ -368591,26 +368737,26 @@
     "products": 3515,
     "legacyCurrentProducts": 1384,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 3089,
-      "CURRENT_RETAIL": 345,
-      "UNKNOWN_RETAIL": 81
+      "CATALOG_ARCHIVED": 3088,
+      "CURRENT_RETAIL": 348,
+      "UNKNOWN_RETAIL": 79
     },
     "byTransition": {
       "CURRENT_TO_UNAVAILABLE": 1045,
-      "CURRENT_TO_UNKNOWN": 81,
-      "RELISTED": 87,
-      "STILL_ARCHIVED": 2044,
-      "STILL_CURRENT": 258
+      "CURRENT_TO_UNKNOWN": 79,
+      "RELISTED": 88,
+      "STILL_ARCHIVED": 2043,
+      "STILL_CURRENT": 260
     },
     "byPublicVisibility": {
-      "CURRENT_OUTPUT": 345,
-      "HIDDEN_UNRESOLVED": 81,
-      "HISTORICAL_INPUT_ONLY": 3089
+      "CURRENT_OUTPUT": 348,
+      "HIDDEN_UNRESOLVED": 79,
+      "HISTORICAL_INPUT_ONLY": 3088
     },
     "byPriorityClass": {
-      "P0_CURRENT_RETAIL": 345,
-      "P1_CATALOG_ARCHIVED": 3089,
-      "P2_REGISTRY_ONLY": 81
+      "P0_CURRENT_RETAIL": 348,
+      "P1_CATALOG_ARCHIVED": 3088,
+      "P2_REGISTRY_ONLY": 79
     },
     "policyExcludedProducts": 0,
     "policyExcludedObservations": 0,
@@ -368629,7 +368775,6 @@
       "fa_prod_1c6c12fba6b1f8cf33c885bc",
       "fa_prod_1d55416be8abd9c2901bd6d5",
       "fa_prod_2058e392d0b85760f2db2265",
-      "fa_prod_3036232c6746d56e540fff19",
       "fa_prod_3861be7a22570ffc464f7378",
       "fa_prod_3c96e77bd392defbdefd50c3",
       "fa_prod_3f74412f8e17a28ff2f33ab7",
@@ -368698,11 +368843,10 @@
       "fa_prod_f1e2195ec83b0725ea1e3d98",
       "fa_prod_f491bf00786fabb93ac9861f",
       "fa_prod_f55fe3c8aff7542409f950de",
-      "fa_prod_f6eef12ddb184031f19e1c2c",
       "fa_prod_f75dc6941713a46c1f856088"
     ],
     "unsafeRemovedLegacyCurrentIds": []
   },
-  "shadowId": "retail_lifecycle_shadow_5bbd42436744997f4c4f1c95",
-  "semanticSha256": "5bbd42436744997f4c4f1c9571d9dcd1d85f758d60eb7e89596fb655d661effd"
+  "shadowId": "retail_lifecycle_shadow_0e9c45d6f1057023ab5f54f0",
+  "semanticSha256": "0e9c45d6f1057023ab5f54f09dba0b1f8543459d13758d8f0552f69e5b2dae6d"
 }

@@ -1,7 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { buildPublicProjection, normalizePublicProduct } from '../../src/domain/public-projection.mjs';
+import {
+  buildLifecycleNeutralSafetyProjection,
+  buildPublicProjection,
+  normalizePublicProduct,
+} from '../../src/domain/public-projection.mjs';
 
 test('public normalization keeps unknown measurements null and fills presentation fields only', () => {
   const result = normalizePublicProduct({
@@ -85,6 +89,25 @@ test('builds a stable projection while retaining legacy URLs as external identif
   assert.equal(result.products[0].id, 'fridge-1');
   assert.equal(result.products[0].canonicalProductId, 'fa_prod_a');
   assert.equal(result.products[0].w, 600);
+});
+
+test('lifecycle-neutral safety projection preserves already-published canonical identities', () => {
+  const released = {
+    schema_version: 3,
+    last_updated: '2026-07-21',
+    products: [{
+      id: 'legacy-duplicate',
+      canonicalProductId: 'fa_prod_pre_merge',
+      cat: 'fridge',
+      brand: 'A',
+      model: 'M',
+      evidence: { trust_level: 'verified_fit', clearance_verified: true },
+    }],
+  };
+  const result = buildLifecycleNeutralSafetyProjection(released);
+
+  assert.equal(result.products[0].canonicalProductId, 'fa_prod_pre_merge');
+  assert.equal(result.products[0].evidence.trust_level, 'evidence_pending');
 });
 
 test('refuses missing and duplicate mappings', () => {

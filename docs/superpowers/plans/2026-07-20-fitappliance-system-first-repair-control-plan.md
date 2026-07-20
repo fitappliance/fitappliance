@@ -5,10 +5,10 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** IN_PROGRESS - Task 9 prerequisite recovery is active; production
-  remains on the pre-cutover release
-- **Date:** 2026-07-20
-- **Active task:** Task 9 blocked-state closeout and prerequisite recovery
+- **Status:** IN_PROGRESS - Task 9 final verification is active; production
+  remains on the pre-cutover release because lifecycle cutover is blocked
+- **Date:** 2026-07-21
+- **Active task:** Task 9 adversarial closeout and blocked prerequisite record
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -438,7 +438,7 @@ Mandatory adversarial traces across the programme:
 
 | Task | Scope | Depends on | Status | Completion evidence |
 | ---: | --- | --- | --- | --- |
-| 0 | Freeze baseline and executable system contract | none | COMPLETED | Current contract `historical_evidence_system_a9ebd23cc83b153d9ceda0c3`; 26 stages; 10 epochs; tracked contract replay passed |
+| 0 | Freeze baseline and executable system contract | none | COMPLETED | Current contract `historical_evidence_system_4039d1a4da8055e5724b702c`; 29 stages; 10 epochs; tracked contract replay passed |
 | 1 | Lock independent identity/lifecycle/evidence/visibility/Fit axes | 0 | COMPLETED | 13 state-axis fixtures; typed provenance and lifecycle binding; 34 focused and 1,020 Architecture V2 tests passed |
 | 2 | Integrate real retailer availability observations | 1 | COMPLETED | 1,614/1,614 links accounted; append-safe schema-v2 ledger; AO/Partnerize typed adapters; policy-aware revalidation audit |
 | 3 | Build lifecycle shadow, refresh inventory, and prove destination/cutover isolation | 2 | COMPLETED | Shadow accounts for 3,515 products; all 1,384 legacy-current products have scoped refresh dispositions; real cutover remains safely blocked and production is byte-identical; synthetic atomic cutover passed |
@@ -447,8 +447,8 @@ Mandatory adversarial traces across the programme:
 | 6 | Prove receipt-to-publication vertical slices | 5 | COMPLETED | Unsupported legacy door semantics removed at receipt/public boundaries; unresolved accepted conflicts and forged verified Fit state fail closed; zero-violation idempotent next-epoch shadow; 1,066 Architecture V2 and 2,726 repository tests passed |
 | 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | COMPLETED | Schema/planner v2 exposes 24 manifests across 402 eligible cohorts; 8 P0 slots rotate across all four categories; local exclusion selects another P0 while P1 remains blocked; 1,072 Architecture V2 and 2,732 repository tests passed |
 | 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | COMPLETED | Schema-v2 typed stage metrics; 10-unit/two-manifest Wilson gate; stable epoch reopening; five legacy entries preserved; real decision RUN_P0; 1,077 Architecture V2 and 2,737 repository tests passed |
-| 9 | Full replay, migration, release DAG, and rollback drill | 8 | IN_PROGRESS | A fresh independently receipt-bound Partnerize epoch is captured and replayed; complete-feed listing reconciliation and canonical identity migration are now the active prerequisites; no cutover or deployment occurred |
-| 10 | Refresh canonical docs and close the release | 9 | BLOCKED_BY_9 | Canonical docs record the measured blocked state and recovery order; release closure remains prohibited until Task 9 independently passes |
+| 9 | Full replay, migration, release DAG, and rollback drill | 8 | IN_PROGRESS | Identity closure resolved 17/18 cases and isolated one conflicting embedded-model case; released and candidate identity epochs are isolated; full replay and rollback drill pass; 79 lifecycle prerequisites still prohibit cutover |
+| 10 | Refresh canonical docs and close the release | 9 | BLOCKED_BY_9 | Canonical docs record the measured blocked state and recovery order; release closure remains prohibited until the 79 Task 9 prerequisites are independently cleared |
 
 Only one row may be `IN_PROGRESS`. A task is complete only when its own
 acceptance gate is independently satisfied; no gate may rely on a later task.
@@ -1429,6 +1429,23 @@ Positive real canary: An exact legacy TGG SKU absent from the 2026-07-21 complet
 Negative/adversarial canaries: Neither complete nor partial affiliate-feed absence can synthesize retailer unavailable; a reused SKU with a different model is quarantined rather than marked absent or attached to the wrong canonical product; multiple distinct TGG listings for one canonical product do not collapse into a false conflict.
 ```
 
+**Task 9 automated retail-identity closure repair record (2026-07-21):**
+
+```text
+Symptom: Raw-bound retailer responses expose 18 products whose frozen catalogue identity differs from the exact received model, but the refresh inventory can only request open-ended rediscovery and has no evidence-bound, replayable way to distinguish a dirty canonical identity from a valid sibling listing.
+First incorrect persisted state: QUARANTINED_IDENTITY_MISMATCH is terminal for collection but has no separate resolution artifact binding the mismatch, official AU model identities, and any existing exact canonical destination.
+Upstream producers: AO raw response objects, Partnerize complete-feed object and receipt, official Energy Rating snapshots, canonical public projection, refresh inventory.
+Downstream consumers: Retailer observation ledger, coverage, lifecycle shadow, canonical identity migration, current publication, historical replacement, next-epoch refresh inventory.
+Affected state axes: Identity and retail lifecycle. Evidence, dimensions, Fit, and visibility remain independent and cannot be promoted by an identity resolution.
+Affected tracked/external artifacts: Immutable retailer raw objects, immutable government CSV snapshots, automated identity-resolution artifact, retailer ledger, coverage, lifecycle shadow, canonical registry/public candidate, historical reference, system contract.
+Current contract: Every mismatch remains unresolved even when official AU evidence proves both models are distinct siblings, or proves one strict canonical correction; unsafe manual aliasing is the only apparent escape.
+Target contract: Resolve only three closed outcomes: preserve the canonical product and invalidate/reassign the wrong listing when both exact models independently exist; correct a missing model prefix only when all retailer mismatches agree and at least two independent official category snapshots prove the received exact model while the old token has no exact match; merge a marketing-polluted duplicate only when all mismatches agree, the polluted value itself contains the exact received model token, the received exact model is official, and an existing exact canonical destination exists. All source hashes, rows, expected identities, and destination identities are replay-validated. Resolved cases may form a partial declarative migration, but every unresolved case remains outside the mutation set and in explicit rediscovery.
+Migration/rebuild required: Build the automated resolution artifact from mounted immutable sources; append only resolution-authorised typed observations or explicit invalidation dispositions; apply canonical corrections/merges through a declarative migration; replay coverage, shadow, publication and every downstream control artifact in DAG order.
+Rollback unit: Resolver schema, official-snapshot loader, ledger resolution events, catalogue migration, generated resolution/lifecycle artifacts, and tests in one root-cause commit. Immutable raw objects are never deleted.
+Positive real canaries: LG 1910FGX -> WWT-1910FGX strict prefix correction; f7 -> existing HRF520BHS duplicate merge; WSE6640SA vs WSE6640BA sibling-link invalidation; GF-B505BB mixed PL/MBL link dispositions.
+Negative/adversarial canaries: `RF730QZUVX1 French Door 726L` cannot merge into retailer model `RF730QZUVB1`; shared GEMS registration or equal dimensions cannot share availability; one registry match cannot authorize a missing-prefix correction; conflicting received models cannot merge; a destination absent from the canonical catalogue cannot be invented; a resolution cannot publish dimensions, clearance, Fit, or a newer observedAt than its raw source.
+```
+
 **Task 9 execution and blocker record (2026-07-20):**
 
 - On 2026-07-21 a fresh authorised Partnerize retrieval was captured with an
@@ -1437,74 +1454,108 @@ Negative/adversarial canaries: Neither complete nor partial affiliate-feed absen
   reconciliation contract produced 233 observations, six per-link identity
   mismatches, and 16 `SOURCE_ABSENT_IN_AUTHORIZED_FEED` dispositions. Source
   absence does not infer retailer unavailability.
-- The cumulative ledger now contains 3,291 observations and 1,192 collection
-  attempts. Coverage accounts for all 1,614 baseline links and routes the 16
-  source-absent TGG links to an alternate authorised source instead of
-  repeatedly scheduling the same Partnerize epoch.
-- Dependency-priority repair exposed 18 unresolved products with exact-model
-  mismatch work, not three: identity resolution is now shown before any
-  coexisting policy-blocked source collection. The refresh inventory therefore
-  contains 18 `REQUIRES_EXACT_MODEL_REDISCOVERY` products and 63 products whose
-  remaining work is source-policy blocked. Production remains `SHADOW_ONLY`.
 - A complete authorised Partnerize snapshot produced 233 exact observations
   (229 available, four unavailable) and three identity quarantines. Bounded AO
   execution accounted for all 1,169 selected retailer links: 1,153 succeeded
   and 16 exact-identity mismatches were raw-bound and quarantined.
-- The cumulative retailer ledger contains 3,058 observations, including 1,406
-  authoritative typed observations, across 1,190 immutable collection attempts.
+- The automatic evidence resolver closed 17 of 18 mismatch products without
+  human adjudication: two strict canonical corrections, 14 preserved canonical
+  identities, one duplicate-canonical merge, and 20 listing-level identity
+  events. `RF730QZUVX1 French Door 726L` remains unresolved because its embedded
+  model conflicts with retailer model `RF730QZUVB1`; partial migration excludes
+  it completely. Every resolution replays its retailer and official AU source
+  hashes; no identity action transfers availability, dimensions, installation
+  fields, or Fit.
+- The cumulative retailer ledger contains 3,298 observations, including 1,646
+  authoritative typed observations, across 1,192 immutable collection attempts.
   Failed AO response contracts now retain their exact response bytes without
   publishing availability, and completed-run replay verifies every raw-bound
   record, including failure and quarantine records.
 - Reusing identical Partnerize bytes under a later `observedAt` is rejected.
   Content-equivalent feed snapshots may advance freshness only after a future
   acquisition-receipt contract can independently prove a new source retrieval.
-- The lifecycle shadow accounts for all 3,515 catalogue products: 345
-  `CURRENT_RETAIL`, 3,089 `CATALOG_ARCHIVED`, and 81 `UNKNOWN_RETAIL`. Its
+- The lifecycle shadow accounts for all 3,515 catalogue products: 348
+  `CURRENT_RETAIL`, 3,088 `CATALOG_ARCHIVED`, and 79 `UNKNOWN_RETAIL`. Its
   cutover is `BLOCKED`, with zero unsafe removals.
-- The 81 unresolved products split into 58 blocked by collection policy (89
-  links: Bing Lee 57, Harvey Norman 9, JB Hi-Fi 23), 22 waiting for a genuinely
-  new authorised The Good Guys feed epoch, and one AO model requiring exact
-  rediscovery. At least three of the 22 also expose canonical identity defects:
-  LG `1910FGX`/`1910BX` are sold as `WWT-1910FGX`/`WWT-1910BX`, and CHiQ
-  `CTM202NW` is linked as `CTM202NW3`. These are identity-repair cases, not
-  availability aliases.
+- The 79 unresolved products split into 76 `BLOCKED_BY_SOURCE_POLICY`, one
+  `PENDING_ATOMIC_IDENTITY_CUTOVER`, one
+  `REQUIRES_AUTHORIZED_SOURCE_DISCOVERY`, and one
+  `REQUIRES_EXACT_MODEL_REDISCOVERY`. These states have separate control or
+  resolution tasks and are not collapsed into a generic retry queue.
+- Adversarial review found that the first declarative migration build had
+  overwritten the released canonical registry while the public projection
+  remained on the old identity epoch. Focused failing tests reproduced the
+  mixed-epoch defect. The fix retains a 3,515-product released registry and a
+  separate control-only 3,514-product migration candidate with all 3,515
+  identifier mappings. The public projection depends on the released registry;
+  candidate generation may read the migration candidate, but publication stays
+  isolated until atomic cutover.
+- Splitting released and candidate identity epochs exposed a stale next-epoch
+  recovery queue: a prior candidate build had already rewritten the `f7`
+  canonical target, while the ordinary Architecture V2 build deliberately does
+  not regenerate that queue. A focused test caught the mixed input. The explicit
+  `refresh:historical-evidence-recovery` command now rebuilds all next-epoch
+  inputs after identity migration; the current queue maps only the proven `f7`
+  merge and leaves the unresolved Fisher & Paykel identity unchanged.
 - The lifecycle-neutral safety projection changed 36 product rows only within
   the closed door-field whitelist and reduced 35 known Fit publication
   violations to zero. It did not change product count, lifecycle, availability,
   retailer rows, dimensions, receipts, clearances, or Fit level.
 - Full external replay verified 803 historical evidence objects. Two complete
-  DAG builds were semantically identical; normal builds passed with
+  DAG plus explicit next-epoch refresh replays were byte-identical across the
+  released registry, migration candidate, public projection, PDF acquisition
+  queue, executable recovery queue, and whole-system contract. Normal builds passed with
   `FITAPPLIANCE_STORAGE_ROOT` unset. The external inventory digest remained
-  `7b2f3612c90901e0806546ab01ec0324f48aceee9e200fb31f9b7313920e42c5`
-  across the rollback build.
-- Final verification passed lint, 1,118/1,118 Architecture V2 tests,
-  2,778/2,778 full-repository tests, 21/21 installation receipt replays,
-  historical replacement audit with zero issues, and both geometry and
-  installation publication audits with zero violations.
-- Intermediate Task 8 commit `4ced49876` is not a standalone rollback target
-  because it expects later generated contracts. The remote feature baseline
-  `3f6a28650` and production `origin/main` baseline `c2c7bfc4c` both rebuild
-  offline. A future cutover and all derived artifacts must therefore be one Git
-  release unit; rollback restores the complete pre-cutover commit and never
-  deletes immutable external evidence.
+  `a17a43d039d9f112a3d8bd6b508ef242dc2178d06548a16d8a26bb60602c1e7c`
+  across a detached offline rebuild of pre-change commit `745a7212f`.
+- The current whole-system contract has 29 stages and 10 epochs with semantic
+  SHA-256 `4039d1a4da8055e5724b702cd864b122d63e3e2fd9766639242c644fca248dee`.
+  The release unit remains the full Git epoch; rollback never deletes immutable
+  external evidence.
 - No lifecycle cutover, production deployment, or legacy-runtime deletion was
   attempted. This is the required fail-closed outcome, not a partial release
   labelled complete.
+
+**Final verification evidence (2026-07-21):**
+
+- `npm run test:architecture-v2`: 1,164 passed, 0 failed. The first full run
+  exposed one stale repository assertion that still assigned the unsafe `f3`
+  merge to the cutover lane; the corrected contract asserts `f3` exact-model
+  rediscovery and the proven `f7` pending merge, after which the full suite
+  passed.
+- `npm test`: 2,824 passed, 0 failed; `npm run lint` passed.
+- `env -u FITAPPLIANCE_STORAGE_ROOT npm run build` passed, including the full
+  Architecture V2 build, runtime projection, static-page generation, Fit audit,
+  and historical replacement audit without external-drive access.
+- Two identical `build:architecture-v2 ->
+  refresh:historical-evidence-recovery ->
+  build:historical-evidence-system-contract` sequences produced identical file
+  SHA-256 values: released registry `2459a3a6254c336c875a1fc8d5e070d0271175dd08786bba6477b94ef410336f`,
+  candidate registry `7109209fa492dbd51441f907ae309884c36c25eab981806305b7b2e696d990f7`,
+  public projection `50a85830929e5298a1f484b0ea3367d7480a3ddb91247bf16d7bd93eab6e33b1`,
+  PDF acquisition queue `b7c84b7ec3e17cc8025b6f25a9f8fd6de3360c54732e9dd57b4d88cf958f5fad`,
+  executable queue `84c1b361f69e592f70e4316259cf34623f8b51e969225cacb6be3e3c77d8854e`,
+  and system contract `77e386a56ebf23842ebd9cb993c3cb9648a75318adedddcfa5c977b0d2813157`.
+- The released registry and public projection remain byte-identical to `HEAD`;
+  the 3,514-product identity candidate is not a deployment input.
 
 **Deterministic unblocking order:**
 
 1. preserve the completed fresh Partnerize acquisition receipt and listing-
    reconciliation replay as the released source epoch;
-2. adjudicate all 18 exposed exact-model mismatch products through official AU
-   identity evidence, distinguishing canonical correction, retailer-link
-   reassignment, and sibling-link invalidation without aliasing availability;
-3. obtain authorised feeds or explicit automation permission for Bing Lee,
-   Harvey Norman, and JB Hi-Fi; until then their 58 products remain unknown and
-   hidden from current-result output, and obtain an alternate authorised source
-   for the 16 listings absent from the Partnerize affiliate feed;
-4. rediscover the exact LG `GS-B655PL` retail source instead of accepting its
+2. retain the 17 evidence-closed adjudications and their 20 per-link events as
+   a control-only partial migration candidate; keep the conflicting
+   `RF730QZUVX1` row outside every mutation set;
+3. obtain authorised feeds or explicit automation permission for the 76
+   source-policy-blocked products; until then they remain unknown and hidden
+   from current-result output;
+4. discover an authorised exact LG `GS-B655PL` retail source instead of accepting its
    `GS-B655MBL` sibling response;
-5. rerun the entire release DAG, require zero unresolved prior-current IDs,
+5. obtain exact-model evidence for `RF730QZUVX1` or prove a different canonical
+   correction without borrowing `RF730QZUVB1` availability;
+6. apply the one proven pending merge and any later independently proven
+   correction together with lifecycle publication,
+   rerun the entire release DAG, require zero unresolved prior-current IDs,
    repeat the deterministic build, perform the rollback drill, and only then
    authorize cutover and Task 10 release closure.
 
@@ -1675,3 +1726,27 @@ This programme is complete only when:
     code and generated artifacts.
 
 Focused tests are necessary but never sufficient for this definition of done.
+
+## 15. Final Residual Risk and Release Block
+
+The implemented release unit has no known open P0/P1 correctness defect in its
+tested scope, but the programme is deliberately **blocked**, not complete:
+
+1. 79 prior-current products remain `UNKNOWN_RETAIL`: 76 require source-policy
+   authorization, one requires an authorized exact `GS-B655PL` source, one
+   (`f3` / `RF730QZUVX1 French Door 726L`) requires exact-model rediscovery, and
+   one (`f7`) has a proven merge that is intentionally waiting for atomic
+   cutover.
+2. The 17 resolved identity cases and 20 link events are a control-only partial
+   migration. The one unresolved embedded-model conflict is outside every
+   mutation set; partial evidence cannot authorize its merge.
+3. `VERIFIED_FIT` remains zero by design. Receipt-bound dimensions exist for 332
+   products, but dimensions alone cannot supply installation, operation,
+   service, water, power, drainage, ventilation, or delivery evidence.
+4. Candidate lifecycle and identity artifacts are non-production inputs. No
+   lifecycle cutover, deployment, push, or legacy-runtime deletion is authorized
+   by this task.
+5. Task 9 can close only after the 79 prerequisites reach zero in a fresh typed
+   observation epoch and the entire release DAG, deterministic repeat, rollback
+   drill, and publication audits pass again. Task 10 remains blocked until that
+   condition is met.

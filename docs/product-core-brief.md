@@ -893,7 +893,7 @@ receipt creation and replay require the evidence drive explicitly.
 Canonical operations and stop conditions are in
 [Historical Evidence Recovery Runbook](architecture-v2/historical-evidence-recovery-runbook.md#42-independent-installation-and-fit-evidence-pipeline).
 
-### 9.7 System-first lifecycle release checkpoint (2026-07-20)
+### 9.7 System-first lifecycle release checkpoint (2026-07-21)
 
 This checkpoint is a branch release candidate, not a live-site cutover. The
 current rebuilt Architecture V2 state contains 3,515 catalogue products, 8,089
@@ -902,8 +902,8 @@ auto-fill records, 332 receipt-bound public dimensions, zero receipt-bound
 `VERIFIED_FIT` products, and zero Fit publication violations.
 
 Retail lifecycle now has its own append-safe evidence path. The cumulative
-ledger contains 3,058 observations, of which 1,406 are authoritative typed
-observations, and 1,190 immutable collection attempts. Partnerize complete-feed
+ledger contains 3,298 observations, of which 1,646 are authoritative typed
+observations, and 1,192 immutable collection attempts. Partnerize complete-feed
 and Appliances Online bounded exact-product runs retain raw bytes, source policy,
 catalogue scope, observed time, success/failure state, and listing-level identity
 quarantines. An HTTP success with invalid response structure is evidence of an
@@ -914,17 +914,28 @@ The lifecycle shadow is deliberately blocked:
 
 | State | Products |
 | --- | ---: |
-| `CURRENT_RETAIL` | 345 |
-| `CATALOG_ARCHIVED` | 3,089 |
-| `UNKNOWN_RETAIL` | 81 |
+| `CURRENT_RETAIL` | 348 |
+| `CATALOG_ARCHIVED` | 3,088 |
+| `UNKNOWN_RETAIL` | 79 |
 
-The 81 unknown prior-current products are not one interchangeable backlog. Of
-them, 58 depend on retailer sources whose automation policy is blocked, 22 need
-a genuinely new authorised The Good Guys feed epoch, and one needs exact-model
-rediscovery after Appliances Online returned a sibling identity. Known model
-pollution (`1910FGX` versus `WWT-1910FGX`, `1910BX` versus `WWT-1910BX`, and
-`CTM202NW` versus `CTM202NW3`) must be repaired as canonical identity. It must
-not be treated as a colour/suffix availability alias.
+The automated identity closure replay resolved 17 of 18 raw-bound mismatch
+cases: two strict canonical model corrections, 14 preserved canonical
+identities, one duplicate-canonical merge, and 20 listing-level identity events.
+The remaining Fisher & Paykel row contains model token `RF730QZUVX1` while all
+captured retailer listings identify `RF730QZUVB1`; it remains isolated for exact-
+model rediscovery instead of being deleted as a duplicate. Identity
+resolution neither donates availability nor promotes dimensions, installation
+requirements, or Fit. The released canonical registry therefore remains the
+3,515-product pre-cutover identity epoch. A separate 3,514-product migration
+candidate preserves all 3,515 identifier mappings and is control-only until an
+atomic cutover is authorised.
+
+The 79 unknown prior-current products are not one interchangeable backlog. Of
+them, 76 remain behind explicit retailer source policy, one waits for the atomic
+canonical-identity cutover, LG `GS-B655PL` requires a new authorised exact-model
+source after Appliances Online returned sibling `GS-B655MBL`, and the
+`RF730QZUVX1`/`RF730QZUVB1` conflict requires exact-model rediscovery. Unknown is
+hidden, never converted to unavailable.
 
 Consequently, no lifecycle cutover or deployment is authorised. Unknown rows
 remain hidden from current-product results, archived rows remain available only

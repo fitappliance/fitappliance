@@ -25,6 +25,18 @@ test('builds deterministic canonical products and reversible legacy mappings', (
   assert.match(first.products[0].id, /^fa_prod_[a-f0-9]{24}$/);
 });
 
+test('released registry preserves catalog mapping order when no migration aliases are added', () => {
+  const result = buildCanonicalRegistry({ products: [
+    { id: 'fridge-z', cat: 'fridge', brand: 'Example', model: 'MODEL-A' },
+    { id: 'fridge-a', cat: 'fridge', brand: 'Example', model: 'MODEL-Z' },
+  ] });
+
+  assert.deepEqual(
+    result.identifierMappings.map((row) => row.legacyRuntimeId),
+    ['fridge-z', 'fridge-a'],
+  );
+});
+
 test('quarantines exact manufacturer identity collisions instead of choosing a winner', () => {
   const duplicate = { products: [
     ...catalog.products,

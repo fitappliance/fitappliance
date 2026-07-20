@@ -13,14 +13,14 @@ Generated: 2026-07-12T12:40:00.000Z
 | Historical records | 8089 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 941 |
-| Valid MinerU documents | 926 |
+| MinerU documents | 942 |
+| Valid MinerU documents | 927 |
 | Invalid or orphaned MinerU documents | 15 |
-| Documents with recognised expressions | 496 |
+| Documents with recognised expressions | 497 |
 | Documents without recognised expressions | 430 |
 | Mapped MinerU documents | 893 |
-| Unmapped MinerU documents | 33 |
-| Dimension-expression observations | 1168 |
+| Unmapped MinerU documents | 34 |
+| Dimension-expression observations | 1169 |
 | Reusable PDF grammar profiles | 217 |
 | Research gaps | 1037 |
 
@@ -13101,6 +13101,7 @@ These documents remain in coverage accounting but cannot be assigned to a brand,
 | `baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `d1b06298dcc262b6b6019f04076a88a0cc96529e7ff60776e3194456a500f39a` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `d6cc1a5c3645bafadcd9b320649e6867c13ce1dc744360268aba6b4252948ef4` | `UNMAPPED_SOURCE_PDF` | unknown |
+| `ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402` | `UNMAPPED_SOURCE_PDF` | unknown |
 | `fbec08f7ee1931fcff00dd942fc4871b6b8039c689a7f8e65e730140884a4f08` | `UNMAPPED_SOURCE_PDF` | unknown |

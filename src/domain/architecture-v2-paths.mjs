@@ -11,6 +11,7 @@ export const architectureV2Paths = Object.freeze({
   canonicalIdentityDecisions: `${base}/decisions/canonical-identity-decisions.json`,
   canonicalPublicationQuarantine: `${base}/decisions/canonical-publication-quarantine.json`,
   phase1QuarantineDisposition: `${base}/decisions/phase1-quarantine-disposition.json`,
+  retailerIdentityOfficialEvidenceSeeds: `${base}/decisions/retailer-identity-official-evidence-seeds.json`,
   phase08Selection: `${base}/reviews/phase-08/evidence-pilot.json`,
   phase08DimensionInput: `${base}/reviews/phase-08/evidence-pilot-review-input.json`,
   phase09SpaceInput: `${base}/reviews/phase-09/space-evidence-pilot-input.json`,
@@ -67,7 +68,11 @@ export const architectureV2Paths = Object.freeze({
   retailerObservationCoverage: `${base}/reviews/automated/retailer-observation-coverage.json`,
   retailLifecycleShadow: `${base}/reviews/automated/retail-lifecycle-shadow.json`,
   retailLifecycleRefreshInventory: `${base}/reviews/automated/retail-lifecycle-refresh-inventory.json`,
+  retailerIdentityResolutions: `${base}/reviews/automated/retailer-identity-resolutions.json`,
+  retailerIdentityMigration: `${base}/reviews/automated/retailer-identity-migration.json`,
+  retailerIdentityOfficialEvidence: `${base}/generated/retailer-identity-official-evidence.json`,
   canonicalRegistry: `${base}/generated/canonical-registry.json`,
+  canonicalRegistryMigrationCandidate: `${base}/generated/canonical-registry-migration-candidate.json`,
   evidenceResolutionManifest: `${base}/generated/evidence-resolution-manifest.json`,
   evidenceObjectIndex: `${base}/generated/evidence-object-index.json`,
   evidenceReviewBundles: `${base}/generated/evidence-review-bundles.json`,
@@ -94,7 +99,13 @@ export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
   historicalEvidenceRecoveryAcceptanceBundle: Object.freeze([]),
   historicalAcceptanceReceiptReplayAudit: Object.freeze(['historicalEvidenceRecoveryAcceptanceBundle']),
   evidenceResolutionManifest: Object.freeze([]),
+  retailerIdentityResolutions: Object.freeze([]),
+  retailerIdentityMigration: Object.freeze(['retailerIdentityResolutions']),
   canonicalRegistry: Object.freeze(['evidenceResolutionManifest']),
+  canonicalRegistryMigrationCandidate: Object.freeze([
+    'canonicalRegistry',
+    'retailerIdentityMigration',
+  ]),
   phase10EvidenceBatch: Object.freeze([]),
   phase10Acquisition: Object.freeze(['phase10EvidenceBatch']),
   evidenceReviewBundles: Object.freeze(['canonicalRegistry']),
@@ -104,6 +115,7 @@ export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
   sourceDocuments: Object.freeze(['canonicalRegistry', 'evidenceReviewBundles', 'dimensionReviewManifest', 'spaceReviewManifest', 'phase10ReviewManifest']),
   publicProjection: Object.freeze([
     'canonicalRegistry',
+    'canonicalRegistryMigrationCandidate',
     'evidenceReviewBundles',
     'dimensionReviewManifest',
     'spaceReviewManifest',
@@ -113,10 +125,14 @@ export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
   ]),
   // Schema-v2 freezes its one-time migration input. Subsequent ledger epochs
   // append typed source observations and no longer depend on current output.
-  retailerObservations: Object.freeze([]),
+  retailerObservations: Object.freeze(['retailerIdentityMigration']),
   retailerObservationCoverage: Object.freeze(['publicProjection', 'retailerObservations']),
   retailLifecycleShadow: Object.freeze(['publicProjection', 'retailerObservations']),
-  retailLifecycleRefreshInventory: Object.freeze(['retailLifecycleShadow', 'retailerObservationCoverage']),
+  retailLifecycleRefreshInventory: Object.freeze([
+    'retailLifecycleShadow',
+    'retailerObservationCoverage',
+    'retailerIdentityMigration',
+  ]),
   historicalApplianceReference: Object.freeze([
     'officialRegistrySnapshots',
     'publicProjection',

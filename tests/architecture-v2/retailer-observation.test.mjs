@@ -374,3 +374,39 @@ test('same retailer listing conflicts across adapters remain unknown instead of 
   assert.equal(decision.authorizingObservation, null);
   assert.ok(decision.reasonCodes.includes('SAME_LISTING_SAME_INSTANT_CONFLICT'));
 });
+
+test('same listing state with an equivalent URL spelling is not a lifecycle conflict', () => {
+  const canonicalProductId = 'fa_prod_equivalent_listing_url';
+  const first = createObservation({
+    ...base,
+    id: 'obs_equivalent_url_a',
+    canonicalProductId,
+    retailerProductId: '62557',
+    url: 'https://www.appliancesonline.com.au/product/example',
+    observedAt: '2026-07-20T00:00:00.000Z',
+    availability: 'unavailable',
+    listingState: 'unavailable',
+  });
+  const second = createObservation({
+    ...base,
+    id: 'obs_equivalent_url_b',
+    canonicalProductId,
+    retailerProductId: '62557',
+    url: 'https://www.appliancesonline.com.au/product/example/',
+    observedAt: '2026-07-20T00:00:00.000Z',
+    availability: 'unavailable',
+    listingState: 'unavailable',
+  });
+  const decision = reduceRetailLifecycle({
+    canonicalProductId,
+    observations: [first, second],
+    collectionAttempts: [],
+    asOf: '2026-07-20T01:00:00.000Z',
+    policyVersion: 'retail-lifecycle-v1',
+    catalogState: 'LISTED_UNVERIFIED',
+    registryPresent: false,
+  });
+
+  assert.equal(decision.lifecycleState, 'CATALOG_ARCHIVED');
+  assert.equal(decision.observationConflicts.length, 0);
+});

@@ -253,6 +253,54 @@ test('identity research hints fail closed on unresolved, human, field, receipt, 
   assert.deepEqual(queue.records[0].candidateSourceIds, []);
 });
 
+test('explicit identity migration collapses an old canonical ID into its authorised merge target', async () => {
+  const migration = JSON.parse(await readFile(
+    'data/architecture-v2/reviews/automated/retailer-identity-migration.json',
+    'utf8',
+  ));
+  const merge = migration.canonicalMerges[0];
+  assert.ok(merge, 'tracked identity migration must include a merge fixture');
+  const record = classified('authorised-merge', 'IDENTITY_RESEARCH');
+  const queue = buildHistoricalModelPdfAcquisitionQueue({
+    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records: [record] },
+    historicalReference: {
+      records: [{ referenceId: record.referenceId, catalogProductIds: [merge.sourceLegacyRuntimeId] }],
+    },
+    catalogProducts: [{
+      id: merge.sourceLegacyRuntimeId,
+      canonicalProductId: merge.sourceCanonicalProductId,
+    }],
+    recoveryQueue: { targets: [{
+      targetId: 'recovery-authorised-merge',
+      referenceId: record.referenceId,
+      legacyRuntimeId: merge.sourceLegacyRuntimeId,
+      canonicalProductId: merge.targetCanonicalProductId,
+    }] },
+    identityMigration: migration,
+    catalogProjectionSemanticSha256: migration.sourceBindings.publicProjectionSemanticSha256,
+    generatedAt: '2026-07-21T00:00:00.000Z',
+  });
+
+  assert.deepEqual(queue.records[0].canonicalProductIds, [merge.targetCanonicalProductId]);
+  assert.equal(queue.sourceIdentityMigrationSha256, migration.semanticSha256);
+});
+
+test('multiple canonical products remain fail-closed without an explicit identity merge', () => {
+  const record = classified('unproven-merge', 'IDENTITY_RESEARCH');
+  assert.throws(() => buildHistoricalModelPdfAcquisitionQueue({
+    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records: [record] },
+    historicalReference: { records: [reference(record.referenceId)] },
+    catalogProducts: catalogProducts([record]),
+    recoveryQueue: { targets: [{
+      targetId: 'recovery-unproven-merge',
+      referenceId: record.referenceId,
+      legacyRuntimeId: `product-${record.referenceId}`,
+      canonicalProductId: 'fa_prod_unproven_target',
+    }] },
+    generatedAt: '2026-07-21T00:00:00.000Z',
+  }), /historical reference maps to multiple canonical products/);
+});
+
 test('committed acquisition queue excludes every complete receipt classification', async () => {
   const [classification, queue] = await Promise.all([
     readFile('data/architecture-v2/generated/historical-model-evidence-classification.json', 'utf8').then(JSON.parse),

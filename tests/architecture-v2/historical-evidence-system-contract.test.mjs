@@ -239,7 +239,7 @@ test('tracked system contract replays from repository sources without external s
 
   assert.deepEqual(first, tracked);
   assert.deepEqual(second, first);
-  assert.equal(first.stages.length, 26);
+  assert.equal(first.stages.length, 29);
   assert.equal(first.epochs.length, 10);
   assert.ok(first.stages.every((stage) => stage.sourceBindings.every((binding) => (
     binding.declaredSha256 === binding.resolvedSha256
@@ -251,17 +251,32 @@ test('tracked system contract replays from repository sources without external s
   assert.equal(first.baseline.retailerObservationAccountedLinks, 1614);
   assert.equal(first.controllerDecision.status, 'RUN_P0');
   const observationStage = first.stages.find((stage) => stage.id === 'retailer-observations');
+  const canonicalIdentity = first.stages.find((stage) => stage.id === 'canonical-identity');
+  const canonicalIdentityCandidate = first.stages.find(
+    (stage) => stage.id === 'canonical-identity-migration-candidate',
+  );
+  const currentPublication = first.stages.find((stage) => stage.id === 'current-publication');
   const lifecycleShadow = first.stages.find((stage) => stage.id === 'retail-lifecycle-shadow');
   const lifecycleRefresh = first.stages.find((stage) => stage.id === 'retail-lifecycle-refresh');
-  assert.deepEqual(observationStage.releaseDependencies, []);
+  assert.deepEqual(canonicalIdentity.releaseDependencies, []);
+  assert.deepEqual(canonicalIdentity.lifecycleVisibility, ['CURRENT_INPUT', 'HISTORICAL_INPUT']);
+  assert.deepEqual(canonicalIdentityCandidate.releaseDependencies, [
+    'canonical-identity',
+    'retailer-identity-migration',
+  ]);
+  assert.deepEqual(canonicalIdentityCandidate.lifecycleVisibility, ['CONTROL_ONLY']);
+  assert.ok(currentPublication.releaseDependencies.includes('canonical-identity'));
+  assert.ok(!currentPublication.releaseDependencies.includes('canonical-identity-migration-candidate'));
+  assert.deepEqual(observationStage.releaseDependencies, ['retailer-identity-migration']);
   assert.deepEqual(lifecycleShadow.releaseDependencies, [
     'current-publication',
     'retailer-observations',
   ]);
-  assert.deepEqual(lifecycleRefresh.releaseDependencies, [
-    'retail-lifecycle-shadow',
+  assert.deepEqual([...lifecycleRefresh.releaseDependencies].sort(), [
     'retailer-observation-coverage',
-  ]);
+    'retail-lifecycle-shadow',
+    'retailer-identity-migration',
+  ].sort());
   assert.equal(first.baseline.lifecycleShadowStatus, shadow.cutover.status);
   assert.equal(
     first.baseline.lifecycleShadowUnresolvedLegacyCurrentProducts,
