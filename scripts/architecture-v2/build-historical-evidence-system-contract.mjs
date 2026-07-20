@@ -13,6 +13,9 @@ import {
   buildHistoricalDimensionsScaleControl,
 } from '../../src/domain/historical-dimensions-scale-control.mjs';
 import {
+  HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS,
+} from '../../src/domain/historical-evidence-epoch-definitions.mjs';
+import {
   buildHistoricalEvidenceBoundedBatches,
   validateHistoricalEvidenceBoundedBatches,
 } from '../../src/domain/historical-evidence-bounded-batch.mjs';
@@ -260,7 +263,7 @@ async function readArtifacts(root) {
   ])));
 }
 
-function verifyCurrentReplay(artifacts) {
+function verifyCurrentReplay(artifacts, epochs) {
   const acceptanceBundle = validateHistoricalEvidenceRecoveryAcceptanceBundle(
     artifacts.historicalEvidenceRecoveryAcceptanceBundle,
   );
@@ -316,6 +319,7 @@ function verifyCurrentReplay(artifacts) {
     receiptAudit: artifacts.historicalAcceptanceReceiptReplayAudit,
     replacementAudit: artifacts.historicalReplacementAudit,
     fitPublicationAudit: artifacts.fitPublicationAudit,
+    epochs,
   });
   assertCanonicalEqual('historical dimensions scale control', artifacts.historicalDimensionsScaleControl, scaleControl);
 
@@ -413,8 +417,26 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     artifacts.retailLifecycleRefreshInventory,
     lifecycleRefresh,
   );
-  verifyCurrentReplay(artifacts);
   const fileCache = new Map();
+  const epochs = await Promise.all(HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS.map(async ([id, owner, paths]) => ({
+    id,
+    owner,
+    inputs: await fileInputs(root, paths, fileCache),
+  })));
+  const scaleEpochs = epochs.map(({ id, owner, inputs }) => ({
+    id,
+    owner,
+    inputs: inputs.map(({ path, content }) => ({
+      path,
+      contentSha256: createHash('sha256').update(content).digest('hex'),
+    })).sort((left, right) => left.path.localeCompare(right.path)),
+  })).map(({ id, owner, inputs }) => ({
+    id,
+    owner,
+    inputs,
+    semanticSha256: canonicalJsonSha256({ id, owner, inputs }),
+  }));
+  verifyCurrentReplay(artifacts, scaleEpochs);
 
   const definitions = [
     ['retailer-observations', 'retailerObservations', 'scripts/architecture-v2/build-retailer-ledger.mjs', ['scripts/architecture-v2/build-retailer-ledger.mjs', 'src/domain/retailer-observation-ledger.mjs', 'src/domain/retailer-observation.mjs', 'src/domain/retailer-source-adapter.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [], ['CONTROL_INPUT']],
@@ -481,24 +503,6 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     });
     delete stage.dependencyDefinitions;
   }
-
-  const epochDefinitions = [
-    ['identity-registry', 'src/domain/canonical-registry.mjs', ['src/domain/canonical-registry.mjs', 'scripts/architecture-v2/build-canonical-registry.mjs']],
-    ['observation', 'src/domain/retailer-observation.mjs', ['src/domain/retailer-observation.mjs', 'src/domain/retailer-source-adapter.mjs']],
-    ['lifecycle-policy', 'src/domain/retail-lifecycle-shadow.mjs', ['src/domain/historical-appliance-reference.mjs', 'src/domain/retail-lifecycle-shadow.mjs', 'data/architecture-v2/policies/retail-lifecycle-release-policy.json', 'data/architecture-v2/policies/reference-artifact-policy.json']],
-    ['resolver-contract', 'scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs', ['scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs', 'data/architecture-v2/policies/official-discovery-seed-policy.json']],
-    ['source-authority-policy', 'data/architecture-v2/policies/manufacturer-source-policy.json', ['data/architecture-v2/policies/manufacturer-source-policy.json', 'data/architecture-v2/policies/retailer-source-policy.json']],
-    ['mineru-toolchain', 'src/domain/mineru-tool-identity.mjs', ['src/domain/mineru-tool-identity.mjs', 'src/domain/mineru-runner.mjs', 'scripts/architecture-v2/parse-pdf-with-mineru.mjs']],
-    ['parser', 'src/domain/mineru-document.mjs', ['src/domain/mineru-document.mjs', 'src/domain/dimension-expression-knowledge.mjs']],
-    ['receipt-policy', 'src/domain/historical-evidence-recovery-contract.mjs', ['src/domain/historical-evidence-recovery-contract.mjs', 'data/architecture-v2/policies/historical-evidence-recovery-policy.json']],
-    ['publication', 'src/domain/historical-evidence-publication.mjs', ['src/domain/historical-evidence-publication.mjs', 'src/domain/public-projection.mjs', 'src/domain/historical-reference-publication.mjs']],
-    ['fit-policy', 'src/domain/fit-v3.mjs', ['src/domain/fit-v3.mjs', 'src/domain/installation-evidence-pipeline.mjs']],
-  ];
-  const epochs = await Promise.all(epochDefinitions.map(async ([id, owner, paths]) => ({
-    id,
-    owner,
-    inputs: await fileInputs(root, paths, fileCache),
-  })));
 
   const migration = retailerMigrationCounts(
     artifacts.publicProjection,

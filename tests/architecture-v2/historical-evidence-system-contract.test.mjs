@@ -241,7 +241,7 @@ test('tracked system contract replays from repository sources without external s
   assert.equal(first.baseline.retailerLinksRequiringObservationMigration, 0);
   assert.equal(first.baseline.retailerObservationBaselineLinks, 1614);
   assert.equal(first.baseline.retailerObservationAccountedLinks, 1614);
-  assert.equal(first.controllerDecision.status, 'STOP_LOW_YIELD');
+  assert.equal(first.controllerDecision.status, 'RUN_P0');
   const observationStage = first.stages.find((stage) => stage.id === 'retailer-observations');
   const lifecycleShadow = first.stages.find((stage) => stage.id === 'retail-lifecycle-shadow');
   const lifecycleRefresh = first.stages.find((stage) => stage.id === 'retail-lifecycle-refresh');

@@ -1,10 +1,24 @@
 {
-  "schemaVersion": 1,
-  "ledgerId": "historical-dimensions-scale-v1",
+  "schemaVersion": 2,
+  "ledgerId": "historical-dimensions-scale-v2",
   "activatedAt": "2026-07-19T18:39:15.450Z",
   "policy": {
-    "minimumYieldBasisPoints": 5000,
-    "consecutiveLowYieldBatches": 2
+    "schemaVersion": 2,
+    "confidence": {
+      "method": "ONE_SIDED_WILSON",
+      "confidenceBasisPoints": 9500,
+      "z": 1.6448536269514722
+    },
+    "minimumConclusiveUnits": 10,
+    "minimumCompletedManifests": 2,
+    "stages": {
+      "DISCOVERY": { "floorBasisPoints": 2000, "diagnosticOnly": false },
+      "ACQUISITION": { "floorBasisPoints": 8000, "diagnosticOnly": false },
+      "MINERU": { "floorBasisPoints": 9000, "diagnosticOnly": false },
+      "IDENTITY": { "floorBasisPoints": 5000, "diagnosticOnly": false },
+      "DIMENSIONS_RECEIPT": { "floorBasisPoints": 5000, "diagnosticOnly": false },
+      "INSTALLATION_FIT": { "floorBasisPoints": null, "diagnosticOnly": true }
+    }
   },
   "baseline": {
     "counters": {

@@ -1964,13 +1964,36 @@ checkpoints, P0 assigned/eligible targets decreased from `957/947` to
 zero. Full online replay passed 408/408 prior receipt sources with zero
 publication violations.
 
-The final two same-cohort discovery checkpoints both yielded 0%, below the 50%
-minimum, so the current decision is `STOP_LOW_YIELD` with reason
-`TWO_CONSECUTIVE_SAME_COHORT_BATCHES_BELOW_MINIMUM_YIELD`. Do not edit the
-ledger, remove checkpoints or run a different manifest to bypass this stop.
-Resume expansion only after a tested Esatto candidate-resolver, document-family
-identity or parser repair creates a new explicit control-plane epoch and its
-baseline/reopening rules are reviewed.
+Those five entries predate typed stage metrics. Ledger schema v2 preserves each
+entry and its original semantic hash, but reports it as
+`LEGACY_CHECKPOINT_HAS_NO_TYPED_STAGE_METRICS`; legacy target-grain percentages
+are not eligible to halt a stage. The current decision is therefore `RUN_P0`,
+and P1 remains blocked while current-retail work exists.
+
+New checkpoints record separate metrics and denominators for discovery,
+candidate acquisition, MinerU, exact-model identity, W/H/D receipt, and
+installation/Fit completeness. Installation/Fit is diagnostic only and cannot
+be inferred from a dimensions receipt. Retryable units remain in throughput
+reporting but are excluded from the conclusive statistical denominator.
+
+A percentage halt requires all of the following:
+
+1. the same stable cohort, stage, and relevant processor/policy epoch;
+2. at least 10 conclusive units;
+3. at least two distinct completed manifests; and
+4. a one-sided 95% Wilson upper bound below that stage's configured floor.
+
+Five misses can never halt. A qualifying halt removes only the affected
+cohort; the controller selects the next visible P0 cohort and never opens P1
+while runnable or deferred P0 work remains. Old halts reopen only when a
+relevant lifecycle, resolver, source-authority, parser, MinerU/toolchain,
+receipt-policy, or Fit-policy epoch changes. Queue and manifest hashes are not
+processor epochs.
+
+Global stops are limited to an explicit safety/audit failure, exhausted
+resource budget, unavailable required online external state, or no runnable
+manifest. Never edit or delete ledger history to bypass a stop; repair the
+typed stage or advance its relevant tested epoch.
 
 ## 42. Independent installation and Fit evidence pipeline
 

@@ -14,6 +14,13 @@ import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recove
 
 const AT = '2026-07-19T20:00:00.000Z';
 
+function epochs() {
+  return [
+    'fit-policy', 'lifecycle-policy', 'mineru-toolchain', 'parser',
+    'receipt-policy', 'resolver-contract', 'source-authority-policy',
+  ].map((id, index) => ({ id, semanticSha256: String(index + 1).repeat(64).slice(0, 64) }));
+}
+
 function metric(id, numerator, denominator = 8_089) {
   return {
     id,
@@ -210,7 +217,7 @@ function inputs(options = {}) {
   };
   return {
     generatedAt: AT, ledger, nextBatches, programStatus, receiptAudit,
-    replacementAudit, fitPublicationAudit,
+    replacementAudit, fitPublicationAudit, epochs: epochs(),
   };
 }
 
@@ -279,7 +286,7 @@ test('P1 opens only after the P0 workstream reaches zero eligible targets', () =
   assert.equal(control.decision.p1Blocked, false);
 });
 
-test('two consecutive sub-50-percent same-family batches stop expansion', () => {
+test('legacy one-target low-yield checkpoints remain visible but cannot stop expansion', () => {
   const input = inputs();
   const counters = input.ledger.baseline.counters;
   input.ledger.entries = [
@@ -287,9 +294,9 @@ test('two consecutive sub-50-percent same-family batches stop expansion', () => 
     checkpoint({ id: 'low-b', before: counters, dimensionsReceipted: 0, completedAt: '2026-07-19T21:00:00.000Z' }),
   ];
   const control = buildHistoricalDimensionsScaleControl(input);
-  assert.equal(control.decision.status, 'STOP_LOW_YIELD');
-  assert.equal(control.decision.allowedManifestId, null);
-  assert.deepEqual(control.haltedCohorts.map((row) => row.cohortKey), ['family:family-current']);
+  assert.equal(control.decision.status, 'RUN_P0');
+  assert.equal(control.haltedCohorts.length, 0);
+  assert.deepEqual(control.legacyDiagnostics.map((row) => row.checkpointId), ['low-a', 'low-b']);
 });
 
 test('checkpoint chains and publication guards fail closed', () => {
@@ -655,12 +662,40 @@ test('recording a checkpoint advances ledger and control as one validated state 
       receiptAudit: input.receiptAudit,
       replacementAudit: input.replacementAudit,
       fitPublicationAudit: input.fitPublicationAudit,
+      epochs: input.epochs,
     },
     storageContentSha256: 'b'.repeat(64),
   });
   assert.equal(advanced.ledger.entries.length, 1);
   assert.equal(advanced.ledger.entries[0].runId, run.runId);
   assert.equal(advanced.control.checkpointCount, 1);
+
+  const driftedEpochs = structuredClone(input.epochs);
+  driftedEpochs.find((row) => row.id === 'resolver-contract').semanticSha256 = 'f'.repeat(64);
+  assert.throws(() => recordHistoricalDimensionsScaleCheckpoint({
+    control,
+    ledger: input.ledger,
+    manifest: selected,
+    run,
+    candidateManifest: {
+      schemaVersion: 1,
+      targets: selected.targetBindings.map((row) => ({
+        referenceId: row.referenceId,
+        state: 'NO_CANDIDATE_COMPLETE',
+        lastDiscoveryRunId: run.runId,
+      })),
+    },
+    currentInput: {
+      generatedAt: '2026-07-19T20:06:00.000Z',
+      nextBatches: input.nextBatches,
+      programStatus: input.programStatus,
+      receiptAudit: input.receiptAudit,
+      replacementAudit: input.replacementAudit,
+      fitPublicationAudit: input.fitPublicationAudit,
+      epochs: driftedEpochs,
+    },
+    storageContentSha256: 'b'.repeat(64),
+  }), /epoch drift/i);
 
   const staleControl = structuredClone(control);
   staleControl.sourceBindings.ledgerSha256 = 'c'.repeat(64);
@@ -687,6 +722,7 @@ test('recording a checkpoint advances ledger and control as one validated state 
       receiptAudit: input.receiptAudit,
       replacementAudit: input.replacementAudit,
       fitPublicationAudit: input.fitPublicationAudit,
+      epochs: input.epochs,
     },
     storageContentSha256: 'b'.repeat(64),
   }), /ledger.*binding/i);

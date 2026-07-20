@@ -5,9 +5,9 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** EXECUTING - Task 8 in progress
+- **Status:** EXECUTING - Task 9 in progress
 - **Date:** 2026-07-20
-- **Active task:** Task 8 - stage-aware local circuit breakers
+- **Active task:** Task 9 - full replay, migration, release DAG, and rollback drill
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -445,8 +445,8 @@ Mandatory adversarial traces across the programme:
 | 5 | Repair category/series/document-family MinerU grammar | 4 | COMPLETED | Real immutable EDW456S replay yields 448x845x600 mm from page 24; D2 1150 mm remains operation-only; source-derived plus adversarial corpus; 1,063 Architecture V2 and 2,723 repository tests passed; no release/public artifact changed |
 | 6 | Prove receipt-to-publication vertical slices | 5 | COMPLETED | Unsupported legacy door semantics removed at receipt/public boundaries; unresolved accepted conflicts and forged verified Fit state fail closed; zero-violation idempotent next-epoch shadow; 1,066 Architecture V2 and 2,726 repository tests passed |
 | 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | COMPLETED | Schema/planner v2 exposes 24 manifests across 402 eligible cohorts; 8 P0 slots rotate across all four categories; local exclusion selects another P0 while P1 remains blocked; 1,072 Architecture V2 and 2,732 repository tests passed |
-| 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | IN_PROGRESS | Contract trace in progress |
-| 9 | Full replay, migration, release DAG, and rollback drill | 8 | PENDING | Not started |
+| 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | COMPLETED | Schema-v2 typed stage metrics; 10-unit/two-manifest Wilson gate; stable epoch reopening; five legacy entries preserved; real decision RUN_P0; 1,077 Architecture V2 and 2,737 repository tests passed |
+| 9 | Full replay, migration, release DAG, and rollback drill | 8 | IN_PROGRESS | Preflight and lifecycle cutover readiness audit in progress |
 | 10 | Refresh canonical docs and close the release | 9 | PENDING | Not started |
 
 Only one row may be `IN_PROGRESS`. A task is complete only when its own
@@ -1277,6 +1277,25 @@ reference, receipt, PDF, and MinerU artifacts remain unchanged.
 **Goal:** Stop wasting work locally without stopping the entire programme on a
 small or wrongly classified sample.
 
+**Execution repair record (2026-07-20):**
+
+```text
+Symptom: Two one-target Esatto discovery misses stop the entire P0 programme, while acquisition, MinerU, identity, dimensions receipt, and Fit outcomes are collapsed into one target-level percentage.
+First incorrect persisted state: Schema-v1 scale checkpoints store one DISCOVERY or DIMENSIONS funnel and a legacy family/brand key without a stage-specific denominator or stable processor/policy epoch.
+Upstream producers: bounded manifest window, immutable discovery run, recovery results and audit, cumulative coverage counters, and stable lifecycle/resolver/source/parser/MinerU/receipt/Fit epoch definitions.
+Downstream consumers: discovery and recovery runner admission, checkpoint ledger, bounded-window selection, programme projection, system contract, and Task 9 release replay.
+Affected state axes: scheduling and retry state only; identity, lifecycle, evidence acceptance, publication visibility, and Fit truth remain independent and cannot be changed by a yield decision.
+Affected tracked/external artifacts: append-preserved scale ledger, derived scale control, bounded manifests, and system contract; immutable discovery/PDF/MinerU/receipt objects remain read-only.
+Current contract: two consecutive same-cohort batches below one 50% floor produce STOP_LOW_YIELD before an alternative manifest is considered.
+Target contract: one run emits typed stage samples at their native grain; retryable units are excluded from conclusive halt samples; structural outcomes close only their target; a Wilson-qualified halt blocks only the same stage/cohort/epoch and selection skips it for another P0.
+Statistical correction: the prior five-unit rule was mathematically inconsistent. At the 50%, 80%, and 90% floors, 0/5 has a one-sided 95% Wilson upper bound below the floor. The minimum is therefore ten conclusive units across at least two completed manifests, after which the Wilson test still decides. Five misses can never halt.
+Epoch correction: queue, target, and manifest hashes are batch state, not processor epochs. Reopening binds only the relevant stable lifecycle, resolver, source-authority, parser, MinerU/toolchain, receipt-policy, and Fit-policy definitions shared with the system contract.
+Migration/rebuild: upgrade the ledger envelope without rewriting its five historical entries; expose those entries as legacy diagnostics ineligible for new statistical halts; rebuild the control and system contract from the same stable epoch definitions.
+Rollback: revert schema/policy producer, direct consumers, migrated ledger envelope, generated controls, tests, runbook, and shared epoch definitions together. Never delete historical ledger entries or external evidence objects.
+Positive canaries: five misses remain runnable; a sufficiently large conclusive low-yield cohort is locally halted; another P0 is selected; a relevant epoch change reports the old halt as reopened; P1 remains blocked while any P0 is runnable.
+Adversarial canaries: retryable failures, mixed stage denominators, forged epoch bindings, one manifest repeated under two IDs, unrelated epoch changes, all visible P0 cohorts blocked with deferred P0 work, budget exhaustion, safety failure, and missing online external state fail closed with explicit reasons.
+```
+
 **Files:**
 
 - Modify: `src/domain/historical-dimensions-scale-control.mjs`
@@ -1285,6 +1304,10 @@ small or wrongly classified sample.
 - Modify: `scripts/architecture-v2/build-historical-dimensions-scale-control.mjs`
 - Modify: recovery/discovery runner assertions that consume the control
   artifact.
+- Create: `src/domain/historical-evidence-epoch-definitions.mjs`
+- Modify: `scripts/architecture-v2/build-historical-evidence-system-contract.mjs`
+- Modify: focused system-contract tests so the controller and release contract
+  cannot drift onto different epoch definitions.
 
 **Test first:** separate discovery, acquisition, MinerU, identity, receipt, and
 Fit checkpoints. Test one-target misses, structural terminal outcomes,
@@ -1305,10 +1328,12 @@ reopening.
   | Dimensions receipt | targets with accepted W/H/D receipt / identity-proven targets | 50% |
   | Installation/Fit | complete applicable hard-field sets / selected model-field sets | diagnostic only |
 
-- A percentage-based low-yield halt requires at least five attempted units in
-  the same stage/cohort over at least two completed manifests **and** the
-  one-sided 95% Wilson upper confidence bound must fall below that stage's
-  floor. Thus five misses alone do not statistically halt a cohort.
+- A percentage-based low-yield halt requires at least ten **conclusive** units
+  in the same stage/cohort/epoch over at least two completed manifests **and**
+  the one-sided 95% Wilson upper confidence bound must fall below that stage's
+  floor. Retryable/incomplete units remain visible in raw throughput but are
+  excluded from the conclusive denominator. Thus five misses can never halt a
+  cohort; reaching ten units is necessary but the Wilson test remains decisive.
 - Deterministic structural terminal outcomes may close individual targets
   immediately without waiting for a sample threshold.
 - A local halt removes only that cohort from the candidate window.
@@ -1325,6 +1350,23 @@ stage KPIs are never combined into one percentage.
 
 **Stop condition:** thresholds are tuned until the current batch runs without
 fixing state classification and outcome semantics first.
+
+**Execution evidence (2026-07-20):** ledger schema v2 preserves all five prior
+checkpoint objects byte-semantically (`entries` SHA-256 remains
+`f11c62962ad8f37839863d3d574daa2e9d8e5198021fa7fb7defec2d098f1ea6`)
+and exposes them as legacy diagnostics rather than silently deleting or
+statistically reinterpreting them. New checkpoints record six independent
+stage metrics at target, candidate-job, PDF-document, parsed-document,
+identity-proven-target, and selected-field-set grain. Retryable units are not
+conclusive misses; a halt requires 10 conclusive units, two distinct manifests,
+and a one-sided 95% Wilson upper bound below the stage floor. Shared epoch
+definitions prevent the controller and system contract from drifting, and
+checkpoint admission rejects an epoch change during a run. A qualifying halt
+skips only its stable cohort; deferred P0 work never opens P1. The real tracked
+decision changed from the invalid global `STOP_LOW_YIELD` to `RUN_P0`, with 943
+eligible P0 targets and P1 still blocked. Focused tests passed 28/28,
+Architecture V2 passed 1,077/1,077, the full repository passed 2,737/2,737,
+lint passed, and no public, receipt, PDF, MinerU, or Fit truth artifact changed.
 
 ### Task 9: Observation completion, atomic migration, full replay, and rollback drill
 

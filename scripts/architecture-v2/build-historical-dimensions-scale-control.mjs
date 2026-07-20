@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -8,7 +9,12 @@ import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-path
 import {
   buildHistoricalDimensionsScaleControl,
   canonicalHistoricalDimensionsScaleCounters,
+  HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY,
 } from '../../src/domain/historical-dimensions-scale-control.mjs';
+import {
+  HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS,
+} from '../../src/domain/historical-evidence-epoch-definitions.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -56,17 +62,28 @@ async function atomicJson(path, value) {
   await rename(temporary, path);
 }
 
+async function currentEpochs() {
+  return Promise.all(HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS.map(async ([id, owner, paths]) => {
+    const inputs = (await Promise.all(paths.map(async (path) => ({
+      path,
+      contentSha256: createHash('sha256').update(await readFile(resolve(root, path))).digest('hex'),
+    })))).sort((left, right) => left.path.localeCompare(right.path));
+    return { id, owner, inputs, semanticSha256: canonicalJsonSha256({ id, owner, inputs }) };
+  }));
+}
+
 export async function runCli(args = process.argv.slice(2)) {
   const options = parseArgs(args);
-  const [nextBatches, programStatus, receiptAudit, replacementAudit, fitPublicationAudit] = await Promise.all([
+  const [nextBatches, programStatus, receiptAudit, replacementAudit, fitPublicationAudit, epochs] = await Promise.all([
     readJson('historicalEvidenceNextBatches'),
     readJson('historicalEvidenceProgramStatus'),
     readJson('historicalAcceptanceReceiptReplayAudit'),
     readJson('historicalReplacementAudit'),
     readJson('fitPublicationAudit'),
+    currentEpochs(),
   ]);
   const shared = {
-    nextBatches, programStatus, receiptAudit, replacementAudit, fitPublicationAudit,
+    nextBatches, programStatus, receiptAudit, replacementAudit, fitPublicationAudit, epochs,
   };
   let ledger;
   if (options.initializeLedger) {
@@ -78,10 +95,10 @@ export async function runCli(args = process.argv.slice(2)) {
     }
     const activatedAt = options.generatedAt ?? programStatus.generatedAt ?? nextBatches.generatedAt;
     ledger = {
-      schemaVersion: 1,
-      ledgerId: 'historical-dimensions-scale-v1',
+      schemaVersion: 2,
+      ledgerId: 'historical-dimensions-scale-v2',
       activatedAt,
-      policy: { minimumYieldBasisPoints: 5_000, consecutiveLowYieldBatches: 2 },
+      policy: structuredClone(HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY),
       baseline: { counters: canonicalHistoricalDimensionsScaleCounters(shared) },
       entries: [],
     };

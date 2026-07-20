@@ -1,7 +1,7 @@
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
 
-export const HISTORICAL_DIMENSIONS_SCALE_CONTROL_SCHEMA_VERSION = 1;
-export const HISTORICAL_DIMENSIONS_SCALE_LEDGER_SCHEMA_VERSION = 1;
+export const HISTORICAL_DIMENSIONS_SCALE_CONTROL_SCHEMA_VERSION = 2;
+export const HISTORICAL_DIMENSIONS_SCALE_LEDGER_SCHEMA_VERSION = 2;
 
 const HASH = /^[a-f0-9]{64}$/;
 const MONOTONIC_COUNTERS = Object.freeze([
@@ -27,6 +27,40 @@ const FUNNEL_FIELDS = Object.freeze([
   'terminalTargets',
   'retryableTargets',
 ]);
+
+export const HISTORICAL_DIMENSIONS_STAGE_EPOCH_IDS = Object.freeze({
+  DISCOVERY: Object.freeze(['lifecycle-policy', 'resolver-contract', 'source-authority-policy']),
+  ACQUISITION: Object.freeze(['lifecycle-policy', 'resolver-contract', 'source-authority-policy']),
+  MINERU: Object.freeze(['mineru-toolchain']),
+  IDENTITY: Object.freeze(['parser', 'source-authority-policy']),
+  DIMENSIONS_RECEIPT: Object.freeze(['parser', 'receipt-policy']),
+  INSTALLATION_FIT: Object.freeze(['fit-policy', 'parser', 'receipt-policy']),
+});
+
+const CIRCUIT_STAGES = Object.freeze(Object.keys(HISTORICAL_DIMENSIONS_STAGE_EPOCH_IDS));
+const RETRYABLE_CANDIDATE_OUTCOMES = new Set(['transport_failure']);
+const UNATTEMPTED_CANDIDATE_OUTCOMES = new Set([
+  'not_attempted_optional', 'reference_only', 'previous_terminal_suppressed',
+]);
+
+export const HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY = Object.freeze({
+  schemaVersion: 2,
+  confidence: Object.freeze({
+    method: 'ONE_SIDED_WILSON',
+    confidenceBasisPoints: 9_500,
+    z: 1.6448536269514722,
+  }),
+  minimumConclusiveUnits: 10,
+  minimumCompletedManifests: 2,
+  stages: Object.freeze({
+    DISCOVERY: Object.freeze({ floorBasisPoints: 2_000, diagnosticOnly: false }),
+    ACQUISITION: Object.freeze({ floorBasisPoints: 8_000, diagnosticOnly: false }),
+    MINERU: Object.freeze({ floorBasisPoints: 9_000, diagnosticOnly: false }),
+    IDENTITY: Object.freeze({ floorBasisPoints: 5_000, diagnosticOnly: false }),
+    DIMENSIONS_RECEIPT: Object.freeze({ floorBasisPoints: 5_000, diagnosticOnly: false }),
+    INSTALLATION_FIT: Object.freeze({ floorBasisPoints: null, diagnosticOnly: true }),
+  }),
+});
 
 function requiredObject(value, label) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -261,6 +295,436 @@ export function buildHistoricalDimensionsRecoveryFunnel(results) {
   return Object.freeze(funnel);
 }
 
+function normalizeEpochs(epochs) {
+  const byId = new Map();
+  for (const epoch of requiredArray(epochs, 'historical evidence epochs')) {
+    const id = requiredText(epoch?.id, 'historical evidence epoch ID');
+    if (byId.has(id)) throw new Error(`duplicate historical evidence epoch: ${id}`);
+    const semanticSha256 = requiredHash(
+      epoch?.semanticSha256,
+      `historical evidence epoch ${id} SHA-256`,
+    );
+    if (epoch.owner !== undefined || epoch.inputs !== undefined) {
+      const owner = requiredText(epoch.owner, `historical evidence epoch ${id} owner`);
+      const inputs = requiredArray(epoch.inputs, `historical evidence epoch ${id} inputs`)
+        .map((input) => ({
+          path: requiredText(input?.path, `historical evidence epoch ${id} input path`),
+          contentSha256: requiredHash(
+            input?.contentSha256,
+            `historical evidence epoch ${id} input SHA-256`,
+          ),
+        })).sort((left, right) => left.path.localeCompare(right.path));
+      if (new Set(inputs.map((input) => input.path)).size !== inputs.length
+        || canonicalJsonSha256({ id, owner, inputs }) !== semanticSha256) {
+        throw new Error(`historical evidence epoch semantic drift: ${id}`);
+      }
+    }
+    byId.set(id, semanticSha256);
+  }
+  for (const ids of Object.values(HISTORICAL_DIMENSIONS_STAGE_EPOCH_IDS)) {
+    for (const id of ids) {
+      if (!byId.has(id)) throw new Error(`historical evidence epoch missing: ${id}`);
+    }
+  }
+  return byId;
+}
+
+function normalizedEpochRows(epochs) {
+  return [...normalizeEpochs(epochs).entries()]
+    .map(([id, semanticSha256]) => ({ id, semanticSha256 }))
+    .sort((left, right) => left.id.localeCompare(right.id));
+}
+
+function stageEpochSha256(stage, epochs) {
+  const ids = HISTORICAL_DIMENSIONS_STAGE_EPOCH_IDS[stage];
+  if (!ids) throw new TypeError(`unsupported circuit-breaker stage: ${stage}`);
+  const byId = epochs instanceof Map ? epochs : normalizeEpochs(epochs);
+  return canonicalJsonSha256(ids.map((id) => ({ id, semanticSha256: byId.get(id) })));
+}
+
+function stageMetric({
+  stage,
+  metricId,
+  numerator,
+  denominator,
+  retryableUnits = 0,
+  structuralTerminalUnits = null,
+  diagnosticOnly = false,
+}, epochs) {
+  requiredInteger(numerator, `${stage} numerator`);
+  requiredInteger(denominator, `${stage} denominator`);
+  requiredInteger(retryableUnits, `${stage} retryable units`);
+  if (numerator > denominator || retryableUnits > denominator
+    || numerator + retryableUnits > denominator) {
+    throw new Error(`${stage} metric accounting invalid`);
+  }
+  const conclusiveDenominator = denominator - retryableUnits;
+  const conclusiveNumerator = numerator;
+  const terminal = structuralTerminalUnits === null
+    ? conclusiveDenominator - conclusiveNumerator
+    : requiredInteger(structuralTerminalUnits, `${stage} structural terminal units`);
+  if (terminal > conclusiveDenominator - conclusiveNumerator) {
+    throw new Error(`${stage} structural terminal accounting invalid`);
+  }
+  return Object.freeze({
+    stage,
+    metricId,
+    numerator,
+    denominator,
+    conclusiveNumerator,
+    conclusiveDenominator,
+    retryableUnits,
+    structuralTerminalUnits: terminal,
+    diagnosticOnly,
+    epochSha256: stageEpochSha256(stage, epochs),
+  });
+}
+
+export function buildHistoricalDimensionsDiscoveryStageMetrics(funnel, epochs) {
+  validateFunnel(funnel, 'DISCOVERY', 'discovery stage metric');
+  return Object.freeze([stageMetric({
+    stage: 'DISCOVERY',
+    metricId: 'authority_candidate_targets_per_selected_target',
+    numerator: funnel.targetsWithOfficialCandidates,
+    denominator: funnel.selectedTargets,
+    retryableUnits: funnel.retryableTargets,
+    structuralTerminalUnits: funnel.terminalTargets,
+  }, epochs)]);
+}
+
+function candidateRows(results) {
+  return requiredArray(results.outcomes, 'historical recovery outcomes').flatMap((outcome) => (
+    (outcome?.candidateInventory?.candidates ?? []).map((candidate) => ({ candidate, outcome }))
+  ));
+}
+
+function validImmutableAuthoritySource(source) {
+  return ['manufacturer', 'regulator'].includes(source?.authority)
+    && HASH.test(String(source?.contentSha256 ?? ''))
+    && typeof source?.objectPath === 'string'
+    && source.objectPath.length > 0;
+}
+
+function candidateWasAttempted(candidate) {
+  if (candidate?.authorityMode !== 'official') return false;
+  const status = candidate?.outcome?.status;
+  return Boolean(status) && !UNATTEMPTED_CANDIDATE_OUTCOMES.has(status);
+}
+
+function candidateHasEligiblePdf(candidate) {
+  const source = candidate?.outcome?.source;
+  if (validImmutableAuthoritySource(source)) return source.contentType === 'application/pdf';
+  const binding = candidate?.outcome?.artifactBinding;
+  return HASH.test(String(binding?.contentSha256 ?? ''))
+    && typeof binding?.objectPath === 'string'
+    && binding.objectPath.toLowerCase().endsWith('.pdf');
+}
+
+export function buildHistoricalDimensionsRecoveryStageMetrics(results, epochs) {
+  if (results?.schemaVersion !== 1) throw new TypeError('historical recovery results schema v1 required');
+  const outcomes = requiredArray(results.outcomes, 'historical recovery outcomes');
+  if (!outcomes.length) throw new TypeError('historical recovery outcomes required');
+  const rows = candidateRows(results);
+  const attempted = rows.filter(({ candidate }) => candidateWasAttempted(candidate));
+  const acquisitionSuccesses = attempted.filter(({ candidate }) => (
+    ['accepted', 'unchanged'].includes(candidate.outcome.status)
+      && validImmutableAuthoritySource(candidate.outcome.source)
+  ));
+  const acquisitionRetryable = attempted.filter(({ candidate }) => (
+    RETRYABLE_CANDIDATE_OUTCOMES.has(candidate.outcome.status)
+  ));
+  const eligiblePdfs = attempted.filter(({ candidate }) => candidateHasEligiblePdf(candidate));
+  const mineruValid = eligiblePdfs.filter(({ candidate }) => sourceHasMineru(candidate.outcome.source));
+  const parsedSources = mineruValid.map(({ candidate }) => candidate.outcome.source);
+  const identityProvenDocuments = parsedSources.filter(sourceHasExactIdentity);
+  const identityProvenOutcomes = outcomes.filter((outcome) => (
+    (outcome.sources ?? []).some(sourceHasExactIdentity)
+  ));
+  const retryableIdentityOutcomes = identityProvenOutcomes.filter(
+    (outcome) => outcome.status === 'retryable_failure',
+  );
+  const receipted = identityProvenOutcomes.filter((outcome) => outcome.status === 'accepted');
+  return Object.freeze([
+    stageMetric({
+      stage: 'ACQUISITION',
+      metricId: 'valid_immutable_authority_objects_per_attempted_candidate_job',
+      numerator: acquisitionSuccesses.length,
+      denominator: attempted.length,
+      retryableUnits: acquisitionRetryable.length,
+    }, epochs),
+    stageMetric({
+      stage: 'MINERU',
+      metricId: 'valid_content_list_v2_per_eligible_fetched_pdf',
+      numerator: mineruValid.length,
+      denominator: eligiblePdfs.length,
+    }, epochs),
+    stageMetric({
+      stage: 'IDENTITY',
+      metricId: 'exact_model_proof_per_valid_parsed_document',
+      numerator: identityProvenDocuments.length,
+      denominator: parsedSources.length,
+    }, epochs),
+    stageMetric({
+      stage: 'DIMENSIONS_RECEIPT',
+      metricId: 'accepted_whd_receipt_per_identity_proven_target',
+      numerator: receipted.length,
+      denominator: identityProvenOutcomes.length,
+      retryableUnits: retryableIdentityOutcomes.length,
+    }, epochs),
+    stageMetric({
+      stage: 'INSTALLATION_FIT',
+      metricId: 'complete_hard_field_set_per_selected_model_field_set',
+      numerator: 0,
+      denominator: 0,
+      diagnosticOnly: true,
+    }, epochs),
+  ]);
+}
+
+export function oneSidedWilsonUpperBound(numerator, denominator, z = 1.6448536269514722) {
+  requiredInteger(numerator, 'Wilson numerator');
+  requiredInteger(denominator, 'Wilson denominator', 1);
+  if (numerator > denominator || !Number.isFinite(z) || z <= 0) {
+    throw new TypeError('Wilson inputs invalid');
+  }
+  const probability = numerator / denominator;
+  const zSquared = z * z;
+  const centre = probability + (zSquared / (2 * denominator));
+  const spread = z * Math.sqrt(
+    ((probability * (1 - probability)) / denominator)
+      + (zSquared / (4 * denominator * denominator)),
+  );
+  return (centre + spread) / (1 + (zSquared / denominator));
+}
+
+function validateStagePolicy(policy) {
+  if (policy?.schemaVersion !== 2) throw new TypeError('stage circuit policy schema v2 required');
+  const minimumConclusiveUnits = requiredInteger(
+    policy.minimumConclusiveUnits, 'minimum conclusive units', 10,
+  );
+  const minimumCompletedManifests = requiredInteger(
+    policy.minimumCompletedManifests, 'minimum completed manifests', 2,
+  );
+  if (policy.confidence?.method !== 'ONE_SIDED_WILSON'
+    || policy.confidence?.confidenceBasisPoints !== 9_500
+    || !Number.isFinite(policy.confidence?.z) || policy.confidence.z <= 0) {
+    throw new TypeError('one-sided 95% Wilson policy required');
+  }
+  for (const stage of CIRCUIT_STAGES) {
+    const stagePolicy = requiredObject(policy.stages?.[stage], `${stage} circuit policy`);
+    if (stagePolicy.diagnosticOnly === true) {
+      if (stagePolicy.floorBasisPoints !== null) throw new TypeError(`${stage} diagnostic floor must be null`);
+    } else {
+      const floor = requiredInteger(stagePolicy.floorBasisPoints, `${stage} floor basis points`, 1);
+      if (floor > 10_000) throw new TypeError(`${stage} floor basis points invalid`);
+    }
+  }
+  return { minimumConclusiveUnits, minimumCompletedManifests };
+}
+
+function validateStageMetric(metric) {
+  if (!CIRCUIT_STAGES.includes(metric?.stage)) throw new TypeError('checkpoint stage metric invalid');
+  requiredText(metric.metricId, `${metric.stage} metric ID`);
+  for (const field of [
+    'numerator', 'denominator', 'conclusiveNumerator', 'conclusiveDenominator',
+    'retryableUnits', 'structuralTerminalUnits',
+  ]) requiredInteger(metric[field], `${metric.stage} ${field}`);
+  if (metric.numerator > metric.denominator
+    || metric.conclusiveNumerator > metric.conclusiveDenominator
+    || metric.conclusiveDenominator + metric.retryableUnits !== metric.denominator
+    || metric.conclusiveNumerator !== metric.numerator) {
+    throw new Error(`${metric.stage} checkpoint metric accounting drift`);
+  }
+  if (typeof metric.diagnosticOnly !== 'boolean') throw new TypeError(`${metric.stage} diagnostic flag invalid`);
+  requiredHash(metric.epochSha256, `${metric.stage} epoch SHA-256`);
+  return metric;
+}
+
+export function evaluateHistoricalDimensionsStageCircuitBreakers({
+  checkpoints,
+  policy,
+  currentEpochs,
+}) {
+  const thresholds = validateStagePolicy(policy);
+  const epochMap = normalizeEpochs(currentEpochs);
+  const groups = new Map();
+  const legacyDiagnostics = [];
+  for (const checkpoint of requiredArray(checkpoints, 'scale circuit checkpoints')) {
+    const checkpointId = requiredText(checkpoint?.checkpointId, 'scale circuit checkpoint ID');
+    const cohortKey = requiredText(checkpoint?.cohortKey, `${checkpointId} cohort key`);
+    const manifestId = requiredText(checkpoint?.manifestId, `${checkpointId} manifest ID`);
+    if (!Array.isArray(checkpoint.stageMetrics)) {
+      legacyDiagnostics.push({
+        checkpointId, cohortKey, manifestId,
+        reason: 'LEGACY_CHECKPOINT_HAS_NO_TYPED_STAGE_METRICS',
+      });
+      continue;
+    }
+    for (const metric of checkpoint.stageMetrics.map(validateStageMetric)) {
+      const key = [cohortKey, metric.stage, metric.epochSha256].join('|');
+      const group = groups.get(key) ?? {
+        cohortKey, stage: metric.stage, epochSha256: metric.epochSha256,
+        checkpointIds: [], manifestIds: new Set(), numerator: 0, denominator: 0,
+        conclusiveNumerator: 0, conclusiveDenominator: 0,
+        retryableUnits: 0, structuralTerminalUnits: 0,
+      };
+      group.checkpointIds.push(checkpointId);
+      group.manifestIds.add(manifestId);
+      for (const field of [
+        'numerator', 'denominator', 'conclusiveNumerator', 'conclusiveDenominator',
+        'retryableUnits', 'structuralTerminalUnits',
+      ]) group[field] += metric[field];
+      groups.set(key, group);
+    }
+  }
+  const haltedCohorts = [];
+  const reopenedCohorts = [];
+  const stageSummaries = [];
+  for (const group of groups.values()) {
+    const stagePolicy = policy.stages[group.stage];
+    const currentEpochSha256 = stageEpochSha256(group.stage, epochMap);
+    const row = {
+      ...group,
+      manifestIds: [...group.manifestIds].sort(),
+      completedManifests: group.manifestIds.size,
+      currentEpochSha256,
+    };
+    stageSummaries.push(row);
+    if (group.epochSha256 !== currentEpochSha256) {
+      reopenedCohorts.push({
+        cohortKey: group.cohortKey,
+        stage: group.stage,
+        priorEpochSha256: group.epochSha256,
+        currentEpochSha256,
+        reason: 'RELEVANT_EPOCH_CHANGED',
+      });
+      continue;
+    }
+    if (stagePolicy.diagnosticOnly
+      || group.conclusiveDenominator < thresholds.minimumConclusiveUnits
+      || group.manifestIds.size < thresholds.minimumCompletedManifests) continue;
+    const upperBound = oneSidedWilsonUpperBound(
+      group.conclusiveNumerator,
+      group.conclusiveDenominator,
+      policy.confidence.z,
+    );
+    if (upperBound * 10_000 < stagePolicy.floorBasisPoints) {
+      haltedCohorts.push({
+        cohortKey: group.cohortKey,
+        stage: group.stage,
+        epochSha256: group.epochSha256,
+        checkpointIds: [...group.checkpointIds],
+        manifestIds: row.manifestIds,
+        conclusiveNumerator: group.conclusiveNumerator,
+        conclusiveDenominator: group.conclusiveDenominator,
+        retryableUnits: group.retryableUnits,
+        floorBasisPoints: stagePolicy.floorBasisPoints,
+        wilsonUpperBasisPoints: Math.round(upperBound * 10_000),
+        reason: 'WILSON_UPPER_BOUND_BELOW_STAGE_FLOOR',
+      });
+    }
+  }
+  const sorter = (left, right) => left.cohortKey.localeCompare(right.cohortKey)
+    || left.stage.localeCompare(right.stage)
+    || String(left.epochSha256 ?? left.priorEpochSha256).localeCompare(
+      String(right.epochSha256 ?? right.priorEpochSha256),
+    );
+  return Object.freeze({
+    haltedCohorts: Object.freeze(haltedCohorts.sort(sorter)),
+    reopenedCohorts: Object.freeze(reopenedCohorts.sort(sorter)),
+    stageSummaries: Object.freeze(stageSummaries.sort(sorter)),
+    legacyDiagnostics: Object.freeze(legacyDiagnostics.sort((left, right) => (
+      left.checkpointId.localeCompare(right.checkpointId)
+    ))),
+  });
+}
+
+export function selectHistoricalDimensionsScaleDecision({
+  nextBatches,
+  counters,
+  haltedCohorts = [],
+  operationalState = {},
+}) {
+  const allowedOperational = {
+    safety: new Set(['PASSED', 'FAILED']),
+    resourceBudget: new Set(['AVAILABLE', 'EXHAUSTED']),
+    onlineExternalState: new Set(['NOT_REQUIRED', 'AVAILABLE', 'REQUIRED_UNAVAILABLE']),
+  };
+  for (const [field, allowed] of Object.entries(allowedOperational)) {
+    const value = operationalState[field] ?? {
+      safety: 'PASSED', resourceBudget: 'AVAILABLE', onlineExternalState: 'NOT_REQUIRED',
+    }[field];
+    if (!allowed.has(value)) throw new TypeError(`operational state ${field} invalid`);
+  }
+  const globalStops = [
+    [operationalState.safety === 'FAILED', 'STOP_SAFETY', 'SAFETY_OR_AUDIT_FAILURE'],
+    [operationalState.resourceBudget === 'EXHAUSTED', 'STOP_RESOURCE_BUDGET', 'RESOURCE_BUDGET_EXHAUSTED'],
+    [operationalState.onlineExternalState === 'REQUIRED_UNAVAILABLE', 'STOP_EXTERNAL_STATE', 'REQUIRED_ONLINE_EXTERNAL_STATE_UNAVAILABLE'],
+  ];
+  const stopped = globalStops.find(([condition]) => condition);
+  if (stopped) return Object.freeze({
+    status: stopped[1], allowedManifestId: null, allowedWorkstreamId: null,
+    p1Blocked: requiredInteger(counters.p0EligibleTargets, 'P0 eligible targets') > 0,
+    reason: stopped[2], cohortKey: null,
+  });
+  const manifests = new Map(requiredArray(nextBatches.manifests, 'bounded manifests')
+    .map((manifest) => [manifest.manifestId, manifest]));
+  const stream = (id) => requiredArray(nextBatches.workstreams, 'bounded workstreams')
+    .find((row) => row.workstreamId === id);
+  const blocked = new Set(haltedCohorts.map((row) => requiredText(row.cohortKey, 'halted cohort key')));
+  const select = (workstreamId, priorityClass) => {
+    const row = requiredObject(stream(workstreamId), `${workstreamId} workstream`);
+    const candidates = requiredArray(row.manifestIds, `${workstreamId} manifest IDs`)
+      .map((id) => manifests.get(id))
+      .filter((manifest) => manifest?.constraints?.priorityClass === priorityClass);
+    return { row, manifest: candidates.find((manifest) => !blocked.has(manifest.cohortKey)) ?? null };
+  };
+  const p0Eligible = requiredInteger(counters.p0EligibleTargets, 'P0 eligible targets');
+  const p1Eligible = requiredInteger(counters.p1EligibleTargets, 'P1 eligible targets');
+  if (p0Eligible > 0) {
+    const { row, manifest } = select('CURRENT_DIMENSIONS', 'P0_CURRENT_MISSING_DIMENSIONS');
+    if (manifest) return Object.freeze({
+      status: 'RUN_P0', allowedManifestId: manifest.manifestId,
+      allowedWorkstreamId: 'CURRENT_DIMENSIONS', p1Blocked: true,
+      reason: 'P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT', cohortKey: manifest.cohortKey,
+    });
+    const eligibleCohorts = row.eligibleCohortsByPriority?.P0_CURRENT_MISSING_DIMENSIONS ?? 0;
+    const windowedCohorts = row.windowedCohortsByPriority?.P0_CURRENT_MISSING_DIMENSIONS ?? 0;
+    return Object.freeze({
+      status: eligibleCohorts > windowedCohorts
+        ? 'STOP_P0_WINDOW_EXHAUSTED' : 'STOP_NO_RUNNABLE_MANIFESTS',
+      allowedManifestId: null, allowedWorkstreamId: 'CURRENT_DIMENSIONS', p1Blocked: true,
+      reason: eligibleCohorts > windowedCohorts
+        ? 'VISIBLE_P0_COHORTS_BLOCKED_DEFERRED_P0_REMAINS'
+        : 'ZERO_RUNNABLE_P0_MANIFESTS',
+      cohortKey: null,
+    });
+  }
+  if (p1Eligible > 0) {
+    const { row, manifest } = select('HISTORICAL_DIMENSIONS', 'P1_HISTORICAL_MISSING_DIMENSIONS');
+    if (manifest) return Object.freeze({
+      status: 'RUN_P1', allowedManifestId: manifest.manifestId,
+      allowedWorkstreamId: 'HISTORICAL_DIMENSIONS', p1Blocked: false,
+      reason: 'P0_EMPTY_P1_FIRST_RUNNABLE_COHORT', cohortKey: manifest.cohortKey,
+    });
+    const eligibleCohorts = row.eligibleCohortsByPriority?.P1_HISTORICAL_MISSING_DIMENSIONS ?? 0;
+    const windowedCohorts = row.windowedCohortsByPriority?.P1_HISTORICAL_MISSING_DIMENSIONS ?? 0;
+    return Object.freeze({
+      status: eligibleCohorts > windowedCohorts
+        ? 'STOP_P1_WINDOW_EXHAUSTED' : 'STOP_NO_RUNNABLE_MANIFESTS',
+      allowedManifestId: null, allowedWorkstreamId: 'HISTORICAL_DIMENSIONS', p1Blocked: false,
+      reason: eligibleCohorts > windowedCohorts
+        ? 'VISIBLE_P1_COHORTS_BLOCKED_DEFERRED_P1_REMAINS'
+        : 'ZERO_RUNNABLE_P1_MANIFESTS',
+      cohortKey: null,
+    });
+  }
+  return Object.freeze({
+    status: 'COMPLETE', allowedManifestId: null, allowedWorkstreamId: null,
+    p1Blocked: false, reason: 'NO_ELIGIBLE_DIMENSIONS_TARGETS', cohortKey: null,
+  });
+}
+
 function validateCounterSet(value, label) {
   const counters = requiredObject(value, label);
   const expected = [...MONOTONIC_COUNTERS, ...QUEUE_COUNTERS].sort();
@@ -335,6 +799,16 @@ function validateCheckpoint(value, previousCounters, previousCompletedAt) {
     );
   }
   const funnel = validateFunnel(checkpoint.funnel, checkpoint.stage, checkpointId);
+  if (checkpoint.stageMetrics !== undefined) {
+    const metrics = requiredArray(checkpoint.stageMetrics, `${checkpointId} stage metrics`)
+      .map(validateStageMetric);
+    const expectedStages = checkpoint.stage === 'DISCOVERY'
+      ? ['DISCOVERY']
+      : ['ACQUISITION', 'MINERU', 'IDENTITY', 'DIMENSIONS_RECEIPT', 'INSTALLATION_FIT'];
+    if (!canonicalEqual(metrics.map((row) => row.stage), expectedStages)) {
+      throw new Error(`${checkpointId} stage metric sequence drift`);
+    }
+  }
   const before = validateCounterSet(checkpoint.beforeCounters, `${checkpointId} before counters`);
   const after = validateCounterSet(checkpoint.afterCounters, `${checkpointId} after counters`);
   if (!canonicalEqual(before, previousCounters)) throw new Error(`${checkpointId} checkpoint chain drift`);
@@ -351,22 +825,15 @@ function validateCheckpoint(value, previousCounters, previousCompletedAt) {
 }
 
 function validateLedger(ledger, currentCounters) {
-  if (ledger?.schemaVersion !== HISTORICAL_DIMENSIONS_SCALE_LEDGER_SCHEMA_VERSION) {
-    throw new TypeError('historical dimensions scale ledger schema v1 required');
+  if (![1, HISTORICAL_DIMENSIONS_SCALE_LEDGER_SCHEMA_VERSION].includes(ledger?.schemaVersion)) {
+    throw new TypeError('historical dimensions scale ledger schema v1 or v2 required');
   }
   requiredText(ledger.ledgerId, 'scale ledger ID');
   requiredTimestamp(ledger.activatedAt, 'scale ledger activation time');
-  const minimumYieldBasisPoints = requiredInteger(
-    ledger.policy?.minimumYieldBasisPoints,
-    'minimum yield basis points',
-    1,
-  );
-  if (minimumYieldBasisPoints > 10_000) throw new TypeError('minimum yield basis points exceeds 10000');
-  const consecutiveLowYieldBatches = requiredInteger(
-    ledger.policy?.consecutiveLowYieldBatches,
-    'consecutive low-yield batches',
-    2,
-  );
+  const policy = ledger.schemaVersion === 1
+    ? structuredClone(HISTORICAL_DIMENSIONS_STAGE_CIRCUIT_POLICY)
+    : structuredClone(requiredObject(ledger.policy, 'stage circuit policy'));
+  validateStagePolicy(policy);
   const baseline = validateCounterSet(ledger.baseline?.counters, 'scale baseline counters');
   let previous = baseline;
   let previousCompletedAt = ledger.activatedAt;
@@ -389,45 +856,8 @@ function validateLedger(ledger, currentCounters) {
   }
   return {
     checkpoints,
-    policy: { minimumYieldBasisPoints, consecutiveLowYieldBatches },
+    policy,
   };
-}
-
-function checkpointYield(checkpoint) {
-  const numerator = checkpoint.stage === 'DIMENSIONS'
-    ? checkpoint.funnel.dimensionsReceipted
-    : checkpoint.funnel.targetsWithOfficialCandidates;
-  const denominator = checkpoint.funnel.selectedTargets;
-  return {
-    numerator,
-    denominator,
-    rateBasisPoints: Math.round((numerator / denominator) * 10_000),
-  };
-}
-
-function haltedCohorts(checkpoints, policy) {
-  const byCohort = new Map();
-  for (const checkpoint of checkpoints) {
-    const rows = byCohort.get(checkpoint.cohortKey) ?? [];
-    rows.push(checkpoint);
-    byCohort.set(checkpoint.cohortKey, rows);
-  }
-  const result = [];
-  for (const [cohortKey, rows] of byCohort) {
-    const tail = rows.slice(-policy.consecutiveLowYieldBatches);
-    if (tail.length !== policy.consecutiveLowYieldBatches) continue;
-    const yields = tail.map(checkpointYield);
-    if (yields.every((row) => row.rateBasisPoints < policy.minimumYieldBasisPoints)) {
-      result.push({
-        cohortKey,
-        stage: tail.at(-1).stage,
-        familyId: tail.at(-1).familyId,
-        checkpointIds: tail.map((row) => row.checkpointId),
-        yields,
-      });
-    }
-  }
-  return result.sort((left, right) => left.cohortKey.localeCompare(right.cohortKey));
 }
 
 function isoWeek(value) {
@@ -492,6 +922,9 @@ function normalizedBrand(value) {
 }
 
 function cohortKeyForManifest(manifest) {
+  if (manifest?.cohortKeyVersion === '1' && manifest?.cohortKey) {
+    return requiredText(manifest.cohortKey, 'manifest cohort key');
+  }
   if (manifest.familyId) return `family:${manifest.familyId}`;
   const stage = manifest.executionLane === 'BOUNDED_DISCOVERY' ? 'DISCOVERY' : 'DIMENSIONS';
   return [
@@ -511,50 +944,7 @@ function validateManifestSemanticHash(manifest) {
   return manifest;
 }
 
-function decisionFor({ nextBatches, counters, halted }) {
-  const p0 = workstreamById(nextBatches, 'CURRENT_DIMENSIONS');
-  const p1 = workstreamById(nextBatches, 'HISTORICAL_DIMENSIONS');
-  const selected = counters.p0EligibleTargets > 0 ? p0 : p1;
-  const status = counters.p0EligibleTargets > 0 ? 'RUN_P0' : 'RUN_P1';
-  if (selected.eligibleTargets === 0) {
-    return {
-      status: 'COMPLETE', allowedManifestId: null, allowedWorkstreamId: null,
-      p1Blocked: false, reason: 'NO_ELIGIBLE_DIMENSIONS_TARGETS', cohortKey: null,
-    };
-  }
-  const selectedManifestId = requiredArray(
-    selected.manifestIds,
-    `${selected.workstreamId} manifest window`,
-  )[0] ?? null;
-  const manifest = nextBatches.manifests.find((row) => row.manifestId === selectedManifestId);
-  if (!manifest) {
-    return {
-      status: 'STOP_MISSING_MANIFEST', allowedManifestId: null,
-      allowedWorkstreamId: selected.workstreamId,
-      p1Blocked: counters.p0EligibleTargets > 0,
-      reason: 'ELIGIBLE_WORKSTREAM_HAS_NO_BOUND_MANIFEST', cohortKey: null,
-    };
-  }
-  const cohortKey = cohortKeyForManifest(manifest);
-  if (halted.some((row) => row.cohortKey === cohortKey)) {
-    return {
-      status: 'STOP_LOW_YIELD', allowedManifestId: null,
-      allowedWorkstreamId: selected.workstreamId,
-      p1Blocked: counters.p0EligibleTargets > 0,
-      reason: 'TWO_CONSECUTIVE_SAME_COHORT_BATCHES_BELOW_MINIMUM_YIELD', cohortKey,
-    };
-  }
-  return {
-    status,
-    allowedManifestId: manifest.manifestId,
-    allowedWorkstreamId: selected.workstreamId,
-    p1Blocked: counters.p0EligibleTargets > 0,
-    reason: status === 'RUN_P0' ? 'P0_CURRENT_DIMENSIONS_FIRST' : 'P0_EMPTY_P1_OPEN',
-    cohortKey,
-  };
-}
-
-function sourceBindings(input) {
+function sourceBindings(input, epochs) {
   return {
     ledgerSha256: canonicalJsonSha256(input.ledger),
     nextBatchesSha256: canonicalJsonSha256(input.nextBatches),
@@ -562,13 +952,25 @@ function sourceBindings(input) {
     receiptAuditSha256: canonicalJsonSha256(input.receiptAudit),
     replacementAuditSha256: canonicalJsonSha256(input.replacementAudit),
     fitPublicationAuditSha256: canonicalJsonSha256(input.fitPublicationAudit),
+    epochsSha256: canonicalJsonSha256(epochs),
   };
 }
 
 export function buildHistoricalDimensionsScaleControl(input) {
   const counters = canonicalHistoricalDimensionsScaleCounters(input);
   const ledger = validateLedger(requiredObject(input?.ledger, 'scale ledger'), counters);
-  const halted = haltedCohorts(ledger.checkpoints, ledger.policy);
+  const epochs = normalizedEpochRows(input?.epochs);
+  const epochMap = normalizeEpochs(epochs);
+  const circuits = evaluateHistoricalDimensionsStageCircuitBreakers({
+    checkpoints: ledger.checkpoints,
+    policy: ledger.policy,
+    currentEpochs: epochs,
+  });
+  const operationalState = {
+    safety: input.operationalState?.safety ?? 'PASSED',
+    resourceBudget: input.operationalState?.resourceBudget ?? 'AVAILABLE',
+    onlineExternalState: input.operationalState?.onlineExternalState ?? 'NOT_REQUIRED',
+  };
   const semantic = {
     schemaVersion: HISTORICAL_DIMENSIONS_SCALE_CONTROL_SCHEMA_VERSION,
     generatedAt: requiredTimestamp(input.generatedAt, 'scale control generation time'),
@@ -578,13 +980,23 @@ export function buildHistoricalDimensionsScaleControl(input) {
       scalarReceiptRequiredForReplacementAutoFill: true,
       receiptReplayAndZeroPublicationViolationsRequired: true,
     },
-    sourceBindings: sourceBindings(input),
+    sourceBindings: sourceBindings(input, epochs),
+    epochs,
+    operationalState,
     counters: structuredClone(counters),
     checkpointCount: ledger.checkpoints.length,
-    haltedCohorts: halted,
+    haltedCohorts: circuits.haltedCohorts,
+    reopenedCohorts: circuits.reopenedCohorts,
+    stageSummaries: circuits.stageSummaries,
+    legacyDiagnostics: circuits.legacyDiagnostics,
     weeklyThroughput: weeklyThroughput(ledger.checkpoints),
     projection: projection(ledger.checkpoints, counters),
-    decision: decisionFor({ nextBatches: input.nextBatches, counters, halted }),
+    decision: selectHistoricalDimensionsScaleDecision({
+      nextBatches: input.nextBatches,
+      counters,
+      haltedCohorts: circuits.haltedCohorts,
+      operationalState,
+    }),
   };
   const semanticControlSha256 = canonicalJsonSha256(semantic);
   return Object.freeze({
@@ -596,7 +1008,7 @@ export function buildHistoricalDimensionsScaleControl(input) {
 
 function validateScaleControl(control) {
   if (control?.schemaVersion !== HISTORICAL_DIMENSIONS_SCALE_CONTROL_SCHEMA_VERSION) {
-    throw new TypeError('historical dimensions scale control schema v1 required');
+    throw new TypeError('historical dimensions scale control schema v2 required');
   }
   const { controlId, semanticControlSha256, ...semantic } = control;
   const expected = canonicalJsonSha256(semantic);
@@ -739,6 +1151,9 @@ export function buildHistoricalDimensionsScaleCheckpoint({
     familyId: manifest.familyId ?? null,
     evidenceBindings,
     funnel: structuredClone(funnel),
+    stageMetrics: structuredClone(stage === 'DISCOVERY'
+      ? buildHistoricalDimensionsDiscoveryStageMetrics(funnel, control.epochs)
+      : buildHistoricalDimensionsRecoveryStageMetrics(run, control.epochs)),
     beforeCounters: before,
     afterCounters: after,
   };
@@ -766,6 +1181,9 @@ export function recordHistoricalDimensionsScaleCheckpoint({
     throw new Error('scale control ledger binding drift');
   }
   const shared = requiredObject(currentInput, 'current scale-control input');
+  if (control.sourceBindings.epochsSha256 !== canonicalJsonSha256(
+    normalizedEpochRows(shared.epochs),
+  )) throw new Error('scale checkpoint processor or policy epoch drift');
   const afterCounters = canonicalHistoricalDimensionsScaleCounters(shared);
   const entries = requiredArray(ledger.entries, 'scale ledger entries');
   const existingIndex = entries.findIndex((row) => row.runId === run?.runId);
@@ -803,6 +1221,9 @@ export function recordHistoricalDimensionsScaleCheckpoint({
       ...structuredClone(existing),
       evidenceBindings,
       funnel: structuredClone(funnel),
+      stageMetrics: structuredClone(stage === 'DISCOVERY'
+        ? buildHistoricalDimensionsDiscoveryStageMetrics(funnel, control.epochs)
+        : buildHistoricalDimensionsRecoveryStageMetrics(run, control.epochs)),
     };
     delete semantic.semanticCheckpointSha256;
     const checkpoint = {

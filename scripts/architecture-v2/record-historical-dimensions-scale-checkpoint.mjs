@@ -15,6 +15,10 @@ import {
 import {
   recordHistoricalDimensionsScaleCheckpoint,
 } from '../../src/domain/historical-dimensions-scale-control.mjs';
+import {
+  HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS,
+} from '../../src/domain/historical-evidence-epoch-definitions.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
 const execFile = promisify(execFileCallback);
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -141,12 +145,19 @@ async function loadDimensionsRun(storageRoot, runId, auditPath) {
 }
 
 async function loadCurrentInput(generatedAt) {
-  const [nextBatches, programStatus, receiptAudit, replacementAudit, fitPublicationAudit] = await Promise.all([
+  const [nextBatches, programStatus, receiptAudit, replacementAudit, fitPublicationAudit, epochs] = await Promise.all([
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceNextBatches')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceProgramStatus')),
     readJson(resolveArchitectureV2Path(root, 'historicalAcceptanceReceiptReplayAudit')),
     readJson(resolveArchitectureV2Path(root, 'historicalReplacementAudit')),
     readJson(resolveArchitectureV2Path(root, 'fitPublicationAudit')),
+    Promise.all(HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS.map(async ([id, owner, paths]) => {
+      const inputs = (await Promise.all(paths.map(async (path) => ({
+        path,
+        contentSha256: createHash('sha256').update(await readFile(resolve(root, path))).digest('hex'),
+      })))).sort((left, right) => left.path.localeCompare(right.path));
+      return { id, owner, inputs, semanticSha256: canonicalJsonSha256({ id, owner, inputs }) };
+    })),
   ]);
   return {
     generatedAt: generatedAt ?? programStatus.generatedAt ?? nextBatches.generatedAt,
@@ -155,6 +166,7 @@ async function loadCurrentInput(generatedAt) {
     receiptAudit,
     replacementAudit,
     fitPublicationAudit,
+    epochs,
   };
 }
 
