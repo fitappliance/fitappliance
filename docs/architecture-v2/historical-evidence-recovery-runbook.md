@@ -1819,7 +1819,39 @@ contains 295 receipt-bound dimension records and zero receipt-bound
 durably suppressed resolver-only targets; none of the five AB targets is
 immediately executable under the current epoch.
 
-## 40. Controlled P0/P1 dimensions scale loop
+## 40. Deterministic multi-cohort manifest window
+
+`historical-evidence-next-batches.json` uses bounded-batch schema/planner v2.
+It no longer publishes one `nextManifestId` per workstream. Each workstream
+contains an ordered `manifestIds` window, and the top-level `manifestWindow`
+binds the window schema, cohort-key version, maximum manifests per workstream,
+and complete cross-workstream order.
+
+The default cap is eight manifests per workstream. Every manifest has one exact
+priority, lifecycle, category, brand, document family (or explicit unscoped
+singleton), execution lane, and mode. A target and a `cohortKey` may occur in at
+most one manifest. Priority remains the first ordering boundary; within one
+priority the planner rotates deterministically across category, execution lane,
+and brand so an alphabetically early category cannot occupy the whole window.
+Operational timestamps are source bindings but never scheduling keys.
+
+Inspect the candidate window with:
+
+```bash
+jq '{manifestWindow, summary, workstreams: [.workstreams[] | {
+  workstreamId, eligibleTargets, eligibleCohorts, windowedCohorts,
+  deferredCohorts, eligibleByPriority, manifestIds
+}]}' data/architecture-v2/reviews/automated/historical-evidence-next-batches.json
+```
+
+The window is not execution authority. P1 manifests may be visible for audit
+while P0 is still active, and conflict-closure manifests remain in their own
+workstream. Discovery and recovery runners must still receive the exact
+`historical-dimensions-scale-control.json` allowed manifest and revalidate its
+queue, target-state, family, cohort, source hashes, and execution lane. Never
+choose a convenient `manifestIds` entry manually.
+
+## 41. Controlled P0/P1 dimensions scale loop
 
 The dimensions programme is authorised by the tracked scale control, not by an
 operator selecting a convenient queue row. The append-safe ledger is
@@ -1940,7 +1972,7 @@ Resume expansion only after a tested Esatto candidate-resolver, document-family
 identity or parser repair creates a new explicit control-plane epoch and its
 baseline/reopening rules are reviewed.
 
-## 41. Independent installation and Fit evidence pipeline
+## 42. Independent installation and Fit evidence pipeline
 
 Installation/Fit evidence is independent of the stopped dimensions P0 loop. A
 W/H/D receipt cannot satisfy an installation field and cannot create

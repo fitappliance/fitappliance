@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import {
   buildHistoricalEvidenceBoundedBatches,
+  HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_MANIFESTS_PER_WORKSTREAM,
   HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_TARGETS,
 } from '../../src/domain/historical-evidence-bounded-batch.mjs';
 
@@ -28,7 +29,11 @@ function option(args, name) {
 }
 
 function validateArgs(args) {
-  const supported = new Set(['--output', '--maximum-targets']);
+  const supported = new Set([
+    '--output',
+    '--maximum-targets',
+    '--maximum-manifests-per-workstream',
+  ]);
   for (let index = 0; index < args.length; index += 1) {
     const raw = args[index];
     const flag = raw.split('=', 1)[0];
@@ -54,6 +59,10 @@ export async function runCli(args = process.argv.slice(2)) {
   const maximumTargets = maximumTargetsValue === null
     ? HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_TARGETS
     : Number(maximumTargetsValue);
+  const maximumManifestsValue = option(args, '--maximum-manifests-per-workstream');
+  const maximumManifestsPerWorkstream = maximumManifestsValue === null
+    ? HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_MANIFESTS_PER_WORKSTREAM
+    : Number(maximumManifestsValue);
   const [executableQueue, targetState, familyCanaries] = await Promise.all([
     readJson('historicalExecutableEvidenceRecoveryQueue'),
     readJson('historicalEvidenceTargetState'),
@@ -64,6 +73,7 @@ export async function runCli(args = process.argv.slice(2)) {
     targetState,
     familyCanaries,
     maximumTargets,
+    maximumManifestsPerWorkstream,
   });
   const output = resolve(option(args, '--output')
     ?? resolveArchitectureV2Path(root, 'historicalEvidenceNextBatches'));
@@ -71,6 +81,7 @@ export async function runCli(args = process.argv.slice(2)) {
   process.stdout.write(`${JSON.stringify({
     output,
     semanticBatchesSha256: batches.semanticBatchesSha256,
+    manifestWindow: batches.manifestWindow,
     summary: batches.summary,
     workstreams: batches.workstreams,
   }, null, 2)}\n`);

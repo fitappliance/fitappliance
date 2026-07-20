@@ -4,6 +4,7 @@ import test from 'node:test';
 import {
   buildHistoricalEvidenceBoundedBatches,
   resolveHistoricalEvidenceBoundedManifest,
+  selectHistoricalDimensionsManifestWindow,
   validateHistoricalEvidenceBoundedBatches,
   validateHistoricalEvidenceBoundedManifestSnapshot,
 } from '../../src/domain/historical-evidence-bounded-batch.mjs';
@@ -262,8 +263,143 @@ function fixture() {
   return { executableQueue, targetState, familyCanaries };
 }
 
-function build(input = fixture()) {
-  return buildHistoricalEvidenceBoundedBatches({ ...input, maximumTargets: 10 });
+function build(input = fixture(), options = {}) {
+  return buildHistoricalEvidenceBoundedBatches({ ...input, maximumTargets: 10, ...options });
+}
+
+function multiCohortFixture() {
+  const input = fixture();
+  const familyTargets = [
+    target({
+      targetId: 'current-beta-family-01',
+      brand: 'Beta',
+      category: 'dishwasher',
+    }),
+    target({
+      targetId: 'current-beta-family-02',
+      brand: 'Beta',
+      category: 'dishwasher',
+    }),
+  ];
+  const acquisition = target({
+    targetId: 'current-gamma-acquisition',
+    brand: 'Gamma',
+    category: 'dryer',
+    executionLane: 'ACQUISITION',
+  });
+  const currentFamily = family({
+    familyId: 'family-current-beta',
+    targetIds: familyTargets.map((row) => row.targetId),
+    brand: 'Beta',
+    category: 'dishwasher',
+  });
+  const added = [...familyTargets, acquisition];
+
+  input.executableQueue.discoveryTargets.push(...familyTargets);
+  input.executableQueue.targets.push(acquisition);
+  input.executableQueue.jobs.push({
+    jobId: acquisition.candidateJobIds[0],
+    targetIds: [acquisition.targetId],
+  });
+  input.executableQueue.summary.targets += added.length;
+  input.executableQueue.summary.discoveryTargets += familyTargets.length;
+  input.executableQueue.summary.acquisitionTargets += 1;
+  input.targetState.records.push(...added.map((row) => stateFor(row)));
+  input.targetState.summary.records = input.targetState.records.length;
+  input.familyCanaries.families.push(currentFamily);
+  input.familyCanaries.targetDecisions.push(
+    ...familyTargets.map((row, index) => ({
+      targetId: row.targetId,
+      referenceId: row.referenceId,
+      executionLane: row.executionLane,
+      familyIds: [currentFamily.familyId],
+      assignment: index === 0 ? 'FAMILY_CANARY' : 'FAMILY_MEMBER',
+      familyState: 'PASSED',
+      representativeTargetId: currentFamily.representativeTargetId,
+      runnerAllowed: true,
+      fanoutEligible: true,
+      reason: 'FAMILY_CANARY_PASSED',
+    })),
+    {
+      targetId: acquisition.targetId,
+      referenceId: acquisition.referenceId,
+      executionLane: acquisition.executionLane,
+      familyIds: [],
+      assignment: 'UNSCOPED_SINGLETON',
+      runnerAllowed: true,
+      fanoutEligible: false,
+      reason: 'NO_CANONICAL_DOCUMENT_FAMILY',
+    },
+  );
+  input.familyCanaries.executableQueueSha256 = canonicalJsonSha256(input.executableQueue);
+  const semantic = {
+    schemaVersion: input.familyCanaries.schemaVersion,
+    generatedAt: input.familyCanaries.generatedAt,
+    documentGraphSha256: input.familyCanaries.documentGraphSha256,
+    executableQueueSha256: input.familyCanaries.executableQueueSha256,
+    policySha256: input.familyCanaries.policySha256,
+    parserContractSha256: input.familyCanaries.parserContractSha256,
+    processorEpochs: input.familyCanaries.processorEpochs,
+    families: input.familyCanaries.families,
+    targetDecisions: input.familyCanaries.targetDecisions,
+  };
+  input.familyCanaries.semanticCanarySha256 = canonicalJsonSha256(semantic);
+  return input;
+}
+
+function appendCurrentSingletons(input, rows) {
+  input.executableQueue.discoveryTargets.push(...rows);
+  input.executableQueue.summary.targets += rows.length;
+  input.executableQueue.summary.discoveryTargets += rows.length;
+  input.targetState.records.push(...rows.map((row) => stateFor(row)));
+  input.targetState.summary.records = input.targetState.records.length;
+  input.familyCanaries.targetDecisions.push(...rows.map((row) => ({
+    targetId: row.targetId,
+    referenceId: row.referenceId,
+    executionLane: row.executionLane,
+    familyIds: [],
+    assignment: 'UNSCOPED_SINGLETON',
+    runnerAllowed: true,
+    fanoutEligible: false,
+    reason: 'NO_CANONICAL_DOCUMENT_FAMILY',
+  })));
+  input.familyCanaries.executableQueueSha256 = canonicalJsonSha256(input.executableQueue);
+  const semantic = {
+    schemaVersion: input.familyCanaries.schemaVersion,
+    generatedAt: input.familyCanaries.generatedAt,
+    documentGraphSha256: input.familyCanaries.documentGraphSha256,
+    executableQueueSha256: input.familyCanaries.executableQueueSha256,
+    policySha256: input.familyCanaries.policySha256,
+    parserContractSha256: input.familyCanaries.parserContractSha256,
+    processorEpochs: input.familyCanaries.processorEpochs,
+    families: input.familyCanaries.families,
+    targetDecisions: input.familyCanaries.targetDecisions,
+  };
+  input.familyCanaries.semanticCanarySha256 = canonicalJsonSha256(semantic);
+  return input;
+}
+
+function rehashArtifact(artifact) {
+  const { semanticBatchesSha256: ignored, ...semantic } = artifact;
+  artifact.semanticBatchesSha256 = canonicalJsonSha256(semantic);
+  return artifact;
+}
+
+function rehashManifest(artifact, index) {
+  const manifest = artifact.manifests[index];
+  const priorId = manifest.manifestId;
+  const { manifestId: ignoredId, semanticManifestSha256: ignoredSha, ...semantic } = manifest;
+  manifest.semanticManifestSha256 = canonicalJsonSha256(semantic);
+  manifest.manifestId = `historical_batch_${manifest.semanticManifestSha256.slice(0, 24)}`;
+  artifact.manifestWindow.manifestIds = artifact.manifestWindow.manifestIds.map(
+    (manifestId) => manifestId === priorId ? manifest.manifestId : manifestId,
+  );
+  for (const workstream of artifact.workstreams) {
+    workstream.manifestIds = workstream.manifestIds.map(
+      (manifestId) => manifestId === priorId ? manifest.manifestId : manifestId,
+    );
+  }
+  return rehashArtifact(artifact);
 }
 
 test('bounded manifests are deterministic regardless of source row order', () => {
@@ -295,10 +431,181 @@ test('bounded manifests are deterministic regardless of source row order', () =>
   assert.equal(second.semanticBatchesSha256, first.semanticBatchesSha256);
 });
 
+test('schema v2 exposes a deterministic multi-cohort window with exact homogeneous manifests', () => {
+  const input = multiCohortFixture();
+  const first = build(input, { maximumManifestsPerWorkstream: 3 });
+  const current = first.workstreams.find((row) => row.workstreamId === 'CURRENT_DIMENSIONS');
+  const currentManifests = current.manifestIds.map((manifestId) => (
+    first.manifests.find((row) => row.manifestId === manifestId)
+  ));
+
+  assert.equal(first.schemaVersion, 2);
+  assert.equal(first.plannerVersion, '2');
+  assert.deepEqual(first.manifestWindow, {
+    schemaVersion: 1,
+    cohortKeyVersion: '1',
+    maximumManifestsPerWorkstream: 3,
+    manifestIds: first.manifests.map((row) => row.manifestId),
+  });
+  assert.equal(Object.hasOwn(current, 'nextManifestId'), false);
+  assert.equal(current.manifestIds.length, 3);
+  assert.equal(new Set(currentManifests.map((row) => row.cohortKey)).size, 3);
+  assert.deepEqual(currentManifests.map((row) => row.constraints.brand), [
+    'Beta', 'Gamma', 'Alpha',
+  ]);
+  assert.deepEqual(currentManifests.map((row) => row.executionLane), [
+    'BOUNDED_DISCOVERY', 'ACQUISITION', 'BOUNDED_DISCOVERY',
+  ]);
+  for (const manifest of currentManifests) {
+    assert.equal(manifest.cohortKeyVersion, '1');
+    assert.match(manifest.cohortKey, /^historical_cohort_[a-f0-9]{24}$/);
+    assert.ok(manifest.targetBindings.every((row) => row.executionLane === manifest.executionLane));
+  }
+
+  const reversed = structuredClone(input);
+  reversed.executableQueue.targets.reverse();
+  reversed.executableQueue.discoveryTargets.reverse();
+  reversed.targetState.records.reverse();
+  reversed.familyCanaries.targetDecisions.reverse();
+  reversed.familyCanaries.families.reverse();
+  reversed.familyCanaries.executableQueueSha256 = canonicalJsonSha256(reversed.executableQueue);
+  const semantic = {
+    schemaVersion: reversed.familyCanaries.schemaVersion,
+    generatedAt: reversed.familyCanaries.generatedAt,
+    documentGraphSha256: reversed.familyCanaries.documentGraphSha256,
+    executableQueueSha256: reversed.familyCanaries.executableQueueSha256,
+    policySha256: reversed.familyCanaries.policySha256,
+    parserContractSha256: reversed.familyCanaries.parserContractSha256,
+    processorEpochs: reversed.familyCanaries.processorEpochs,
+    families: reversed.familyCanaries.families,
+    targetDecisions: reversed.familyCanaries.targetDecisions,
+  };
+  reversed.familyCanaries.semanticCanarySha256 = canonicalJsonSha256(semantic);
+  const second = build(reversed, { maximumManifestsPerWorkstream: 3 });
+  assert.deepEqual(second, first);
+});
+
+test('manifest window is capped per workstream without duplicating a cohort or target', () => {
+  const artifact = build(multiCohortFixture(), { maximumManifestsPerWorkstream: 2 });
+  const current = artifact.workstreams.find((row) => row.workstreamId === 'CURRENT_DIMENSIONS');
+  const manifests = current.manifestIds.map((id) => artifact.manifests.find((row) => row.manifestId === id));
+
+  assert.equal(current.manifestIds.length, 2);
+  assert.equal(current.windowedCohorts, 2);
+  assert.ok(current.eligibleCohorts > current.windowedCohorts);
+  assert.equal(current.deferredCohorts, current.eligibleCohorts - current.windowedCohorts);
+  assert.equal(new Set(manifests.map((row) => row.cohortKey)).size, manifests.length);
+  const selectedTargetIds = artifact.manifests.flatMap((manifest) => (
+    manifest.targetBindings.map((row) => row.targetId)
+  ));
+  assert.equal(new Set(selectedTargetIds).size, selectedTargetIds.length);
+});
+
+test('priority-preserving window rotation prevents one category from starving the others', () => {
+  const input = fixture();
+  appendCurrentSingletons(input, [
+    ...['Aardvark', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot'].map((brand, index) => target({
+      targetId: `current-dishwasher-${index}`,
+      brand,
+      category: 'dishwasher',
+    })),
+    target({ targetId: 'current-dryer', brand: 'Dryer Brand', category: 'dryer' }),
+    target({ targetId: 'current-washer', brand: 'Washer Brand', category: 'washing_machine' }),
+  ]);
+  const artifact = build(input, { maximumManifestsPerWorkstream: 4 });
+  const current = artifact.workstreams.find((row) => row.workstreamId === 'CURRENT_DIMENSIONS');
+  const selected = current.manifestIds.map((id) => (
+    artifact.manifests.find((manifest) => manifest.manifestId === id)
+  ));
+
+  assert.deepEqual(selected.map((manifest) => manifest.constraints.category), [
+    'dishwasher', 'dryer', 'fridge', 'washing_machine',
+  ]);
+  assert.ok(selected.every(
+    (manifest) => manifest.constraints.priorityClass === 'P0_CURRENT_MISSING_DIMENSIONS',
+  ));
+});
+
+test('a local cohort block selects another P0 while P1 and conflict closure stay isolated', () => {
+  const artifact = build(multiCohortFixture(), { maximumManifestsPerWorkstream: 3 });
+  const initial = selectHistoricalDimensionsManifestWindow({ batches: artifact });
+  const afterBlock = selectHistoricalDimensionsManifestWindow({
+    batches: artifact,
+    blockedCohortKeys: [initial.manifests[0].cohortKey],
+  });
+
+  assert.equal(initial.status, 'RUN_P0');
+  assert.equal(initial.p1Blocked, true);
+  assert.equal(afterBlock.status, 'RUN_P0');
+  assert.equal(afterBlock.p1Blocked, true);
+  assert.notEqual(afterBlock.manifests[0].cohortKey, initial.manifests[0].cohortKey);
+  assert.ok(afterBlock.manifests.every(
+    (manifest) => manifest.constraints.priorityClass === 'P0_CURRENT_MISSING_DIMENSIONS',
+  ));
+  assert.ok(afterBlock.manifests.every((manifest) => manifest.workstreamId !== 'CONFLICT_CLOSURE'));
+  const conflict = artifact.workstreams.find((row) => row.workstreamId === 'CONFLICT_CLOSURE');
+  assert.ok(conflict.manifestIds.length > 0);
+  assert.ok(conflict.manifestIds.every((id) => (
+    artifact.manifests.find((manifest) => manifest.manifestId === id).workstreamId === 'CONFLICT_CLOSURE'
+  )));
+});
+
+test('operational timestamps cannot reorder or rename semantic cohorts', () => {
+  const baselineInput = multiCohortFixture();
+  const laterInput = structuredClone(baselineInput);
+  laterInput.targetState.generatedAt = '2026-07-20T23:59:59.000Z';
+  const baseline = build(baselineInput, { maximumManifestsPerWorkstream: 3 });
+  const later = build(laterInput, { maximumManifestsPerWorkstream: 3 });
+  const order = (artifact) => artifact.manifests.map((manifest) => ({
+    cohortKey: manifest.cohortKey,
+    targets: manifest.targetBindings.map((row) => row.targetId),
+  }));
+
+  assert.deepEqual(order(later), order(baseline));
+  assert.notEqual(later.semanticBatchesSha256, baseline.semanticBatchesSha256);
+});
+
+test('schema v2 fails closed on duplicate cohorts, mixed constraints, overflow, and window reordering', () => {
+  const duplicate = build(multiCohortFixture(), { maximumManifestsPerWorkstream: 3 });
+  duplicate.manifests[1].cohort = structuredClone(duplicate.manifests[0].cohort);
+  duplicate.manifests[1].cohortKey = duplicate.manifests[0].cohortKey;
+  duplicate.manifests[1].cohortSha256 = duplicate.manifests[0].cohortSha256;
+  rehashManifest(duplicate, 1);
+  assert.throws(() => validateHistoricalEvidenceBoundedBatches(duplicate), /cohort selected more than once/i);
+
+  const mixed = build(multiCohortFixture(), { maximumManifestsPerWorkstream: 3 });
+  mixed.manifests[0].constraints.brand = 'Wrong Brand';
+  rehashManifest(mixed, 0);
+  assert.throws(() => validateHistoricalEvidenceBoundedBatches(mixed), /cohort constraint drift/i);
+
+  const overflow = build(multiCohortFixture(), { maximumManifestsPerWorkstream: 3 });
+  overflow.manifestWindow.maximumManifestsPerWorkstream = 1;
+  rehashArtifact(overflow);
+  assert.throws(() => validateHistoricalEvidenceBoundedBatches(overflow), /cohort accounting drift/i);
+
+  const reordered = build(multiCohortFixture(), { maximumManifestsPerWorkstream: 3 });
+  reordered.manifestWindow.manifestIds.reverse();
+  rehashArtifact(reordered);
+  assert.throws(() => validateHistoricalEvidenceBoundedBatches(reordered), /window ordering drift/i);
+
+  const priorityDrift = build(multiCohortFixture(), { maximumManifestsPerWorkstream: 3 });
+  const current = priorityDrift.workstreams.find((row) => row.workstreamId === 'CURRENT_DIMENSIONS');
+  current.windowedCohortsByPriority = { P1_HISTORICAL_MISSING_DIMENSIONS: current.windowedCohorts };
+  rehashArtifact(priorityDrift);
+  assert.throws(() => validateHistoricalEvidenceBoundedBatches(priorityDrift), /priority.*drift/i);
+
+  const cohortSchema = build(multiCohortFixture(), { maximumManifestsPerWorkstream: 3 });
+  cohortSchema.manifests[0].cohort.schemaVersion = 2;
+  cohortSchema.manifests[0].cohortSha256 = canonicalJsonSha256(cohortSchema.manifests[0].cohort);
+  cohortSchema.manifests[0].cohortKey = `historical_cohort_${cohortSchema.manifests[0].cohortSha256.slice(0, 24)}`;
+  rehashManifest(cohortSchema, 0);
+  assert.throws(() => validateHistoricalEvidenceBoundedBatches(cohortSchema), /cohort schema/i);
+});
+
 test('passed-family expansion is homogeneous and capped at ten targets', () => {
   const artifact = build();
   const workstream = artifact.workstreams.find((row) => row.workstreamId === 'HISTORICAL_DIMENSIONS');
-  const manifest = artifact.manifests.find((row) => row.manifestId === workstream.nextManifestId);
+  const manifest = artifact.manifests.find((row) => row.manifestId === workstream.manifestIds[0]);
 
   assert.equal(manifest.mode, 'FAMILY_EXPANSION');
   assert.equal(manifest.familyId, 'family-history');
@@ -317,7 +624,7 @@ test('passed-family expansion is homogeneous and capped at ten targets', () => {
 test('unscoped targets are emitted only as singleton manifests', () => {
   const artifact = build();
   const workstream = artifact.workstreams.find((row) => row.workstreamId === 'CURRENT_DIMENSIONS');
-  const manifest = artifact.manifests.find((row) => row.manifestId === workstream.nextManifestId);
+  const manifest = artifact.manifests.find((row) => row.manifestId === workstream.manifestIds[0]);
   assert.equal(manifest.mode, 'SINGLETON');
   assert.deepEqual(manifest.targetBindings.map((row) => row.targetId), ['current-singleton']);
 });
@@ -326,8 +633,8 @@ test('parser reopen and actionable conflict terminal rows use their exclusive wo
   const artifact = build();
   const parser = artifact.workstreams.find((row) => row.workstreamId === 'PARSER_REPAIR');
   const conflict = artifact.workstreams.find((row) => row.workstreamId === 'CONFLICT_CLOSURE');
-  assert.equal(artifact.manifests.find((row) => row.manifestId === parser.nextManifestId).targetBindings[0].targetId, 'parser-repair');
-  assert.equal(artifact.manifests.find((row) => row.manifestId === conflict.nextManifestId).targetBindings[0].targetId, 'conflict-acquisition');
+  assert.equal(artifact.manifests.find((row) => row.manifestId === parser.manifestIds[0]).targetBindings[0].targetId, 'parser-repair');
+  assert.equal(artifact.manifests.find((row) => row.manifestId === conflict.manifestIds[0]).targetBindings[0].targetId, 'conflict-acquisition');
   assert.equal(conflict.assignedTargets, 1);
 });
 
@@ -494,8 +801,8 @@ test('every actionable target is assigned once and empty workstream queues stay 
   input.familyCanaries.semanticCanarySha256 = canonicalJsonSha256(semantic);
 
   const artifact = build(input);
-  assert.equal(artifact.workstreams.find((row) => row.workstreamId === 'PARSER_REPAIR').nextManifestId, null);
-  assert.equal(artifact.workstreams.find((row) => row.workstreamId === 'CONFLICT_CLOSURE').nextManifestId, null);
+  assert.deepEqual(artifact.workstreams.find((row) => row.workstreamId === 'PARSER_REPAIR').manifestIds, []);
+  assert.deepEqual(artifact.workstreams.find((row) => row.workstreamId === 'CONFLICT_CLOSURE').manifestIds, []);
   assert.equal(artifact.summary.assignedTargets, input.executableQueue.summary.targets);
 });
 

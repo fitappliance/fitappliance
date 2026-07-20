@@ -36,11 +36,29 @@ function manifest({
   category = 'dishwasher',
   executionLane = 'ACQUISITION',
 }) {
-  const semantic = {
+  const mode = familyId ? 'FAMILY_EXPANSION' : 'SINGLETON';
+  const cohort = {
     schemaVersion: 1,
-    plannerVersion: '1',
     workstreamId,
-    mode: familyId ? 'FAMILY_EXPANSION' : 'SINGLETON',
+    priorityClass,
+    lifecycleState,
+    category,
+    brand,
+    normalizedBrand: brand.toLowerCase().replace(/[^a-z0-9]+/g, ''),
+    familyId,
+    executionLane,
+    mode,
+  };
+  const cohortSha256 = canonicalJsonSha256(cohort);
+  const semantic = {
+    schemaVersion: 2,
+    plannerVersion: '2',
+    workstreamId,
+    cohortKeyVersion: '1',
+    cohortKey: `historical_cohort_${cohortSha256.slice(0, 24)}`,
+    cohortSha256,
+    cohort,
+    mode,
     executionLane,
     executionCommand: executionLane === 'ACQUISITION'
       ? 'recover:historical-evidence' : 'discover:historical-official-candidates',
@@ -80,38 +98,68 @@ function batches({ p0 = 4, p1 = 8, p0ExecutionLane = 'ACQUISITION' } = {}) {
     priorityClass: 'P1_HISTORICAL_MISSING_DIMENSIONS', lifecycleState: 'CATALOG_ARCHIVED',
     familyId: 'family-historical',
   });
+  const manifests = [p0 ? p0Manifest : null, p1 ? p1Manifest : null].filter(Boolean);
+  const workstream = ({
+    workstreamId, description, assignedTargets, priorityClass, manifestRow,
+  }) => ({
+    workstreamId,
+    description,
+    assignedTargets,
+    eligibleTargets: assignedTargets,
+    suppressedTargets: 0,
+    suppressedByReason: {},
+    eligibleByPriority: assignedTargets ? { [priorityClass]: assignedTargets } : {},
+    eligibleCohorts: assignedTargets ? 1 : 0,
+    eligibleCohortsByPriority: assignedTargets ? { [priorityClass]: 1 } : {},
+    windowedCohorts: assignedTargets ? 1 : 0,
+    windowedCohortsByPriority: assignedTargets ? { [priorityClass]: 1 } : {},
+    deferredCohorts: 0,
+    manifestIds: assignedTargets ? [manifestRow.manifestId] : [],
+  });
   const semantic = {
-    schemaVersion: 1,
-    plannerVersion: '1',
+    schemaVersion: 2,
+    plannerVersion: '2',
     generatedAt: AT,
     maximumTargets: 10,
+    manifestWindow: {
+      schemaVersion: 1,
+      cohortKeyVersion: '1',
+      maximumManifestsPerWorkstream: 8,
+      manifestIds: manifests.map((row) => row.manifestId),
+    },
     sourceBindings: {
       executableQueueSha256: '1'.repeat(64),
       targetStateSha256: '2'.repeat(64),
       familyCanarySha256: '3'.repeat(64),
       sourceAcquisitionQueueSha256: '4'.repeat(64),
     },
-    workstreams: [{
-      workstreamId: 'CURRENT_DIMENSIONS', description: 'current',
-      assignedTargets: p0, eligibleTargets: p0, suppressedTargets: 0,
-      suppressedByReason: {}, nextManifestId: p0 ? p0Manifest.manifestId : null,
-    }, {
-      workstreamId: 'HISTORICAL_DIMENSIONS', description: 'historical',
-      assignedTargets: p1, eligibleTargets: p1, suppressedTargets: 0,
-      suppressedByReason: {}, nextManifestId: p1 ? p1Manifest.manifestId : null,
-    }, {
-      workstreamId: 'PARSER_REPAIR', description: 'parser', assignedTargets: 0,
-      eligibleTargets: 0, suppressedTargets: 0, suppressedByReason: {}, nextManifestId: null,
-    }, {
-      workstreamId: 'CONFLICT_CLOSURE', description: 'conflict', assignedTargets: 0,
-      eligibleTargets: 0, suppressedTargets: 0, suppressedByReason: {}, nextManifestId: null,
-    }],
-    manifests: [p0 ? p0Manifest : null, p1 ? p1Manifest : null].filter(Boolean),
+    workstreams: [
+      workstream({
+        workstreamId: 'CURRENT_DIMENSIONS', description: 'current', assignedTargets: p0,
+        priorityClass: 'P0_CURRENT_MISSING_DIMENSIONS', manifestRow: p0Manifest,
+      }),
+      workstream({
+        workstreamId: 'HISTORICAL_DIMENSIONS', description: 'historical', assignedTargets: p1,
+        priorityClass: 'P1_HISTORICAL_MISSING_DIMENSIONS', manifestRow: p1Manifest,
+      }),
+      workstream({
+        workstreamId: 'PARSER_REPAIR', description: 'parser', assignedTargets: 0,
+        priorityClass: 'P1_HISTORICAL_MISSING_DIMENSIONS', manifestRow: null,
+      }),
+      workstream({
+        workstreamId: 'CONFLICT_CLOSURE', description: 'conflict', assignedTargets: 0,
+        priorityClass: 'P4_CONFLICT_RESOLUTION', manifestRow: null,
+      }),
+    ],
+    manifests,
     summary: {
       assignedTargets: p0 + p1,
       eligibleTargets: p0 + p1,
       suppressedTargets: 0,
       suppressedByReason: {},
+      eligibleCohorts: Number(p0 > 0) + Number(p1 > 0),
+      windowedCohorts: Number(p0 > 0) + Number(p1 > 0),
+      deferredCohorts: 0,
       manifests: Number(p0 > 0) + Number(p1 > 0),
       manifestedTargets: Number(p0 > 0) + Number(p1 > 0),
       byWorkstream: {

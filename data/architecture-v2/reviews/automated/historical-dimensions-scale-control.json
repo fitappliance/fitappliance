@@ -10,7 +10,7 @@
   },
   "sourceBindings": {
     "ledgerSha256": "366fc22612a5c857a2cdad3436b6bcfb85200aa9fcb5530a8a9151762db7c5cb",
-    "nextBatchesSha256": "f7033ca007b8640cbd79f6565da27de2829bf5a291ca3db69bb6445046fc8b39",
+    "nextBatchesSha256": "35d1d753d38b72166a9ba8e912b78b094d031cdde78d25ac30e21140d19204b7",
     "programStatusSha256": "7d71171de02c85df4b6f2c5a3d21a68d8fff3ac51a9c26414cbbf579671759ec",
     "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
     "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
@@ -78,6 +78,6 @@
     "reason": "TWO_CONSECUTIVE_SAME_COHORT_BATCHES_BELOW_MINIMUM_YIELD",
     "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY"
   },
-  "controlId": "historical-dimensions-scale-df176d7f24eb7b9a671ce6d0",
-  "semanticControlSha256": "df176d7f24eb7b9a671ce6d0bc8c9bf4e65da001bf86c7c0eb9bb882debb6eef"
+  "controlId": "historical-dimensions-scale-3432eeeca5c83d357b84c53b",
+  "semanticControlSha256": "3432eeeca5c83d357b84c53b80f342710eedae642f2b3605f573d4150642a2ea"
 }

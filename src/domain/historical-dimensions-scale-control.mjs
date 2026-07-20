@@ -76,8 +76,8 @@ function metricById(programStatus, id) {
 }
 
 function workstreamById(nextBatches, id) {
-  if (nextBatches?.schemaVersion !== 1 || nextBatches?.plannerVersion !== '1') {
-    throw new TypeError('historical bounded batches schema v1 planner v1 required');
+  if (nextBatches?.schemaVersion !== 2 || nextBatches?.plannerVersion !== '2') {
+    throw new TypeError('historical bounded batches schema v2 planner v2 required');
   }
   const semantic = structuredClone(nextBatches);
   delete semantic.semanticBatchesSha256;
@@ -522,7 +522,11 @@ function decisionFor({ nextBatches, counters, halted }) {
       p1Blocked: false, reason: 'NO_ELIGIBLE_DIMENSIONS_TARGETS', cohortKey: null,
     };
   }
-  const manifest = nextBatches.manifests.find((row) => row.manifestId === selected.nextManifestId);
+  const selectedManifestId = requiredArray(
+    selected.manifestIds,
+    `${selected.workstreamId} manifest window`,
+  )[0] ?? null;
+  const manifest = nextBatches.manifests.find((row) => row.manifestId === selectedManifestId);
   if (!manifest) {
     return {
       status: 'STOP_MISSING_MANIFEST', allowedManifestId: null,

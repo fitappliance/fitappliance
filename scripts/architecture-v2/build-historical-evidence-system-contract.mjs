@@ -153,6 +153,7 @@ function boundedBatchesSemantic(value) {
     plannerVersion: value.plannerVersion,
     generatedAt: value.generatedAt,
     maximumTargets: value.maximumTargets,
+    manifestWindow: value.manifestWindow,
     sourceBindings: value.sourceBindings,
     workstreams: value.workstreams,
     manifests: value.manifests,
@@ -285,6 +286,8 @@ function verifyCurrentReplay(artifacts) {
     targetState,
     familyCanaries: artifacts.historicalEvidenceFamilyCanaries,
     maximumTargets: artifacts.historicalEvidenceNextBatches.maximumTargets,
+    maximumManifestsPerWorkstream:
+      artifacts.historicalEvidenceNextBatches.manifestWindow.maximumManifestsPerWorkstream,
   });
   assertCanonicalEqual('historical bounded batches', artifacts.historicalEvidenceNextBatches, nextBatches);
 

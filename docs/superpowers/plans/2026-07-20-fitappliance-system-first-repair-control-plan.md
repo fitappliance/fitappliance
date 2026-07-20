@@ -5,9 +5,9 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** EXECUTING - Task 7 in progress
+- **Status:** EXECUTING - Task 8 in progress
 - **Date:** 2026-07-20
-- **Active task:** Task 7 - deterministic multi-cohort manifest windows
+- **Active task:** Task 8 - stage-aware local circuit breakers
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -444,8 +444,8 @@ Mandatory adversarial traces across the programme:
 | 4 | Replace one-path discovery with typed official source lanes | 3 | COMPLETED | Schema-v2 five-lane contract; immutable AU/model/host-bound provenance; resume revalidation; exact Esatto canary; 1,059 Architecture V2 and 2,719 repository tests passed |
 | 5 | Repair category/series/document-family MinerU grammar | 4 | COMPLETED | Real immutable EDW456S replay yields 448x845x600 mm from page 24; D2 1150 mm remains operation-only; source-derived plus adversarial corpus; 1,063 Architecture V2 and 2,723 repository tests passed; no release/public artifact changed |
 | 6 | Prove receipt-to-publication vertical slices | 5 | COMPLETED | Unsupported legacy door semantics removed at receipt/public boundaries; unresolved accepted conflicts and forged verified Fit state fail closed; zero-violation idempotent next-epoch shadow; 1,066 Architecture V2 and 2,726 repository tests passed |
-| 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | IN_PROGRESS | Contract trace in progress |
-| 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | PENDING | Not started |
+| 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | COMPLETED | Schema/planner v2 exposes 24 manifests across 402 eligible cohorts; 8 P0 slots rotate across all four categories; local exclusion selects another P0 while P1 remains blocked; 1,072 Architecture V2 and 2,732 repository tests passed |
+| 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | IN_PROGRESS | Contract trace in progress |
 | 9 | Full replay, migration, release DAG, and rollback drill | 8 | PENDING | Not started |
 | 10 | Refresh canonical docs and close the release | 9 | PENDING | Not started |
 
@@ -1166,6 +1166,62 @@ clearance, plumbing, power, or door fields into public output.
 
 ### Task 7: Produce a deterministic multi-cohort manifest window
 
+#### Task 7 execution repair record (written before implementation)
+
+```text
+Symptom: the planner counts thousands of eligible targets but persists at most
+  one nextManifestId per workstream. When the scale controller locally halts
+  that manifest's cohort, no alternative current-priority cohort is visible and
+  the local halt becomes a programme-wide STOP_LOW_YIELD.
+First incorrect persisted state: buildHistoricalEvidenceBoundedBatches groups
+  every eligible target, sorts the groups, then serializes only groups[0]. The
+  discarded groups have no manifest ID or stable cohort key in the generated
+  next-batches artifact, so downstream code cannot distinguish "no work" from
+  "more work hidden by the planner".
+Upstream producers: released executable queue, released target state, family
+  canary decisions, and their semantic source bindings.
+Downstream consumers: dimensions scale controller, discovery and acquisition
+  runners, checkpoint recorder, system-contract replay, and the operator
+  runbook.
+Affected state axes: scheduling/control only. Product identity, lifecycle,
+  evidence acceptance, publication visibility, Fit outcomes, receipts, and
+  immutable source/MinerU objects must not change.
+Affected artifacts: historical-evidence-next-batches, its scale-control source
+  binding, and the executable system contract. No public, historical-reference,
+  candidate, receipt, PDF, or MinerU artifact is in scope.
+Current contract: bounded-batch schema/planner v1 exposes nextManifestId and
+  cannot name alternative cohorts; singleton grouping identity is target-local
+  and is unsuitable as the local circuit-breaker cohort identity.
+Target contract: schema/planner v2 exposes an explicitly versioned ordered
+  manifest window, a bounded maximum per workstream, stable cohort keys that do
+  not contain timestamps, and one homogeneous manifest per distinct cohort.
+  Every manifest remains exact on priority, lifecycle, category, canonical
+  brand, family, execution lane, and mode. Workstreams publish ordered
+  manifestIds rather than one nextManifestId. P0 and P1 remain distinguishable;
+  conflict closure remains an exclusive workstream.
+Migration/rebuild: write multi-P0/P1/conflict fixtures first; upgrade the
+  planner and validator; update the scale controller only for schema-v2 window
+  consumption so the direct consumer cannot drift; rebuild bounded batches,
+  scale control, then the system contract from the same released inputs. Task 8
+  owns halted-cohort filtering and stage-aware policy. Task 9 alone may combine
+  this control format with lifecycle/publication cutover.
+Rollback: revert schema-v2 producer, direct-consumer compatibility, generated
+  control artifacts, tests, and runbook together. Do not delete ledger entries,
+  receipts, or external objects.
+Positive canaries: multiple P0 brands/categories/families and both execution
+  lanes produce deterministic alternatives; excluding one cohort leaves the
+  next P0 cohort visible; source row reversal is byte-stable; P1 is not selected
+  while an unblocked P0 candidate is visible.
+Adversarial canaries: duplicated target across manifests, duplicated cohort,
+  mixed constraints, operational timestamp ordering, window overflow, missing
+  references, P1 priority inversion, and conflict targets leaking into a
+  dimensions manifest all fail closed.
+Dependency correction: add historical-dimensions-scale-control.mjs and the
+  system-contract native semantic projection with their focused tests to Task 7
+  as direct schema consumers only. The statistical and stage-aware behavior
+  remains in Task 8.
+```
+
 **Goal:** Give the controller safe alternatives when one cohort is exhausted or
 blocked.
 
@@ -1174,6 +1230,12 @@ blocked.
 - Modify: `src/domain/historical-evidence-bounded-batch.mjs`
 - Modify: `tests/architecture-v2/historical-evidence-bounded-batch.test.mjs`
 - Modify: `scripts/architecture-v2/build-historical-evidence-bounded-batches.mjs`
+- Modify for direct schema-v2 consumption only:
+  `src/domain/historical-dimensions-scale-control.mjs`
+- Modify: `tests/architecture-v2/historical-dimensions-scale-control.test.mjs`
+- Modify for native semantic projection:
+  `scripts/architecture-v2/build-historical-evidence-system-contract.mjs`
+- Modify: `tests/architecture-v2/historical-evidence-system-contract.test.mjs`
 - Modify: `docs/architecture-v2/historical-evidence-recovery-runbook.md`
 
 **Test first:** build fixtures with multiple P0 brands/categories/families,
@@ -1188,6 +1250,24 @@ be semantic and deterministic; operational timestamps cannot reorder work.
 **Acceptance:** two builds produce the same window and hashes; blocking one
 cohort leaves another P0 manifest selectable; P1 stays blocked while runnable
 P0 exists; conflict closure remains a separate lane.
+
+**Execution evidence (2026-07-20):** bounded-batch schema/planner v2 replaces
+one `nextManifestId` with an ordered, hash-bound `manifestIds` window and stable
+cohort identity. The real released inputs contain 4,944 eligible targets in 402
+cohorts; the bounded artifact exposes 24 manifests, eight each for current,
+historical, and conflict workstreams. Current P0 rotation gives two slots each
+to dishwasher, dryer, fridge, and washing machine instead of allowing the first
+category to consume the window. Reversed input rows produce the identical
+artifact and hashes, while changed operational timestamps preserve cohort and
+target order. Duplicate targets/cohorts, mixed constraints, priority-map drift,
+window overflow/reordering, and unsupported cohort schema fail closed. A real
+selection shadow that excludes the first Esatto dishwasher cohort selects the
+next P0 Esatto dryer cohort with P1 still blocked. The tracked legacy Esatto
+`STOP_LOW_YIELD` decision remains intact until Task 8 migrates its local halt;
+no ledger history was discarded. All 1,072 Architecture V2 tests and all 2,732
+repository tests passed. The system contract was re-attested as
+`historical_evidence_system_f57e90a14876fd0d7477d9e4`; public, historical
+reference, receipt, PDF, and MinerU artifacts remain unchanged.
 
 **Stop condition:** the planner hides alternative cohorts behind one
 `nextManifestId` or mixes targets to manufacture batch yield.

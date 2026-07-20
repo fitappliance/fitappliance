@@ -1,9 +1,11 @@
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
 import { assertHistoricalDimensionsScaleManifestAllowed } from './historical-dimensions-scale-control.mjs';
 
-export const HISTORICAL_EVIDENCE_BOUNDED_BATCH_SCHEMA_VERSION = 1;
-export const HISTORICAL_EVIDENCE_BOUNDED_BATCH_PLANNER_VERSION = '1';
+export const HISTORICAL_EVIDENCE_BOUNDED_BATCH_SCHEMA_VERSION = 2;
+export const HISTORICAL_EVIDENCE_BOUNDED_BATCH_PLANNER_VERSION = '2';
 export const HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_TARGETS = 10;
+export const HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_MANIFESTS_PER_WORKSTREAM = 8;
+export const HISTORICAL_EVIDENCE_BOUNDED_BATCH_COHORT_KEY_VERSION = '1';
 
 const WORKSTREAMS = Object.freeze([
   {
@@ -270,6 +272,28 @@ function groupKey(entry) {
   return constraint.join('\0');
 }
 
+function cohortFor(workstreamId, entry) {
+  const mode = manifestMode(entry);
+  const cohort = {
+    schemaVersion: 1,
+    workstreamId,
+    priorityClass: requiredText(entry.target.priorityClass, 'cohort priority'),
+    lifecycleState: requiredText(entry.target.lifecycleState, 'cohort lifecycle'),
+    category: requiredText(entry.target.category, 'cohort category'),
+    brand: requiredText(entry.target.brand, 'cohort brand'),
+    normalizedBrand: normalizedBrand(entry.target.brand),
+    familyId: mode === 'SINGLETON' ? null : requiredText(entry.family?.familyId, 'cohort family'),
+    executionLane: requiredText(entry.target.executionLane, 'cohort execution lane'),
+    mode,
+  };
+  const cohortSha256 = canonicalJsonSha256(cohort);
+  return {
+    cohort,
+    cohortKey: `historical_cohort_${cohortSha256.slice(0, 24)}`,
+    cohortSha256,
+  };
+}
+
 function compareGroups(left, right) {
   const firstLeft = left.entries[0];
   const firstRight = right.entries[0];
@@ -278,6 +302,55 @@ function compareGroups(left, right) {
     || (LANE_RANK.get(firstLeft.target.executionLane) ?? 99)
       - (LANE_RANK.get(firstRight.target.executionLane) ?? 99)
     || left.key.localeCompare(right.key);
+}
+
+function interleaveQueues(queues) {
+  const result = [];
+  const maximumLength = Math.max(0, ...queues.map((queue) => queue.length));
+  for (let index = 0; index < maximumLength; index += 1) {
+    for (const queue of queues) {
+      if (queue[index]) result.push(queue[index]);
+    }
+  }
+  return result;
+}
+
+function groupedQueues(rows, keyFor, compareKeys = (left, right) => left.localeCompare(right)) {
+  const groups = new Map();
+  for (const row of rows) {
+    const key = keyFor(row);
+    const queue = groups.get(key) ?? [];
+    queue.push(row);
+    groups.set(key, queue);
+  }
+  return [...groups.entries()]
+    .sort(([left], [right]) => compareKeys(left, right))
+    .map(([, queue]) => queue);
+}
+
+function fairWindowOrder(groups) {
+  const priorityQueues = groupedQueues(
+    groups,
+    (group) => group.entries[0].target.priorityClass,
+    (left, right) => (PRIORITY_RANK.get(left) ?? 99) - (PRIORITY_RANK.get(right) ?? 99)
+      || left.localeCompare(right),
+  );
+  return priorityQueues.flatMap((priorityRows) => {
+    const categoryQueues = groupedQueues(priorityRows, (group) => group.entries[0].target.category)
+      .map((categoryRows) => {
+        const laneQueues = groupedQueues(
+          categoryRows,
+          (group) => group.entries[0].target.executionLane,
+          (left, right) => (LANE_RANK.get(left) ?? 99) - (LANE_RANK.get(right) ?? 99)
+            || left.localeCompare(right),
+        ).map((laneRows) => interleaveQueues(groupedQueues(
+          laneRows,
+          (group) => normalizedBrand(group.entries[0].target.brand),
+        )));
+        return interleaveQueues(laneQueues);
+      });
+    return interleaveQueues(categoryQueues);
+  });
 }
 
 function constraintsFor(target) {
@@ -301,6 +374,10 @@ function manifestFor({ workstreamId, group, source, maximumTargets, reviewedTarg
     schemaVersion: HISTORICAL_EVIDENCE_BOUNDED_BATCH_SCHEMA_VERSION,
     plannerVersion: HISTORICAL_EVIDENCE_BOUNDED_BATCH_PLANNER_VERSION,
     workstreamId,
+    cohortKeyVersion: HISTORICAL_EVIDENCE_BOUNDED_BATCH_COHORT_KEY_VERSION,
+    cohortKey: group.cohortKey,
+    cohortSha256: group.cohortSha256,
+    cohort: structuredClone(group.cohort),
     mode: group.mode,
     executionLane: first.target.executionLane,
     executionCommand: first.target.executionLane === 'ACQUISITION'
@@ -355,12 +432,20 @@ function mergeCounts(rows) {
   return Object.fromEntries([...totals].sort(([left], [right]) => left.localeCompare(right)));
 }
 
+function countTotal(value, label) {
+  return Object.entries(requiredObject(value, label)).reduce((sum, [key, count]) => {
+    if (!Number.isInteger(count) || count < 0) throw new TypeError(`${label} count invalid: ${key}`);
+    return sum + count;
+  }, 0);
+}
+
 function artifactSemantic(value) {
   return {
     schemaVersion: value.schemaVersion,
     plannerVersion: value.plannerVersion,
     generatedAt: value.generatedAt,
     maximumTargets: value.maximumTargets,
+    manifestWindow: value.manifestWindow,
     sourceBindings: value.sourceBindings,
     workstreams: value.workstreams,
     manifests: value.manifests,
@@ -371,7 +456,7 @@ function artifactSemantic(value) {
 export function validateHistoricalEvidenceBoundedBatches(value) {
   requiredObject(value, 'bounded batch artifact');
   if (value.schemaVersion !== HISTORICAL_EVIDENCE_BOUNDED_BATCH_SCHEMA_VERSION) {
-    throw new TypeError('bounded batch schema version 1 required');
+    throw new TypeError('bounded batch schema version 2 required');
   }
   if (value.plannerVersion !== HISTORICAL_EVIDENCE_BOUNDED_BATCH_PLANNER_VERSION) {
     throw new TypeError('bounded batch planner version unsupported');
@@ -379,6 +464,17 @@ export function validateHistoricalEvidenceBoundedBatches(value) {
   if (!Number.isInteger(value.maximumTargets) || value.maximumTargets < 1
     || value.maximumTargets > HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_TARGETS) {
     throw new TypeError('bounded batch maximum targets invalid');
+  }
+  const window = requiredObject(value.manifestWindow, 'bounded manifest window');
+  if (window.schemaVersion !== 1
+    || window.cohortKeyVersion !== HISTORICAL_EVIDENCE_BOUNDED_BATCH_COHORT_KEY_VERSION) {
+    throw new TypeError('bounded manifest window schema unsupported');
+  }
+  if (!Number.isInteger(window.maximumManifestsPerWorkstream)
+    || window.maximumManifestsPerWorkstream < 1
+    || window.maximumManifestsPerWorkstream
+      > HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_MANIFESTS_PER_WORKSTREAM) {
+    throw new TypeError('bounded manifest window maximum invalid');
   }
   if (canonicalJsonSha256(artifactSemantic(value)) !== requiredSha256(
     value.semanticBatchesSha256,
@@ -390,6 +486,7 @@ export function validateHistoricalEvidenceBoundedBatches(value) {
   }
   const manifests = uniqueMap(value.manifests, 'manifestId', 'bounded manifests');
   const manifestedTargetIds = new Set();
+  const manifestedCohortKeys = new Set();
   for (const manifest of manifests.values()) {
     const { manifestId, semanticManifestSha256, ...semantic } = manifest;
     const expectedSha256 = canonicalJsonSha256(semantic);
@@ -405,6 +502,33 @@ export function validateHistoricalEvidenceBoundedBatches(value) {
     if (!canonicalEqual(manifest.sourceBindings, source)) {
       throw new Error(`bounded manifest source binding drift: ${manifestId}`);
     }
+    if (manifest.cohortKeyVersion !== HISTORICAL_EVIDENCE_BOUNDED_BATCH_COHORT_KEY_VERSION) {
+      throw new TypeError(`bounded manifest cohort key version unsupported: ${manifestId}`);
+    }
+    const cohort = requiredObject(manifest.cohort, `manifest ${manifestId} cohort`);
+    if (cohort.schemaVersion !== 1) {
+      throw new TypeError(`bounded manifest cohort schema unsupported: ${manifestId}`);
+    }
+    const cohortSha256 = canonicalJsonSha256(cohort);
+    if (manifest.cohortSha256 !== cohortSha256
+      || manifest.cohortKey !== `historical_cohort_${cohortSha256.slice(0, 24)}`) {
+      throw new Error(`bounded manifest cohort hash drift: ${manifestId}`);
+    }
+    if (manifestedCohortKeys.has(manifest.cohortKey)) {
+      throw new Error(`bounded manifest cohort selected more than once: ${manifest.cohortKey}`);
+    }
+    manifestedCohortKeys.add(manifest.cohortKey);
+    if (cohort.workstreamId !== manifest.workstreamId
+      || cohort.priorityClass !== manifest.constraints?.priorityClass
+      || cohort.lifecycleState !== manifest.constraints?.lifecycleState
+      || cohort.category !== manifest.constraints?.category
+      || cohort.brand !== manifest.constraints?.brand
+      || cohort.normalizedBrand !== normalizedBrand(manifest.constraints?.brand)
+      || cohort.familyId !== manifest.familyId
+      || cohort.executionLane !== manifest.executionLane
+      || cohort.mode !== manifest.mode) {
+      throw new Error(`bounded manifest cohort constraint drift: ${manifestId}`);
+    }
     const expectedCommand = manifest.executionLane === 'ACQUISITION'
       ? 'recover:historical-evidence'
       : 'discover:historical-official-candidates';
@@ -412,13 +536,17 @@ export function validateHistoricalEvidenceBoundedBatches(value) {
       || manifest.constraints?.executionLane !== manifest.executionLane) {
       throw new Error(`bounded manifest execution contract drift: ${manifestId}`);
     }
-    if (manifest.targetBindings.length < 1 || manifest.targetBindings.length > value.maximumTargets) {
+    const targetBindings = requiredArray(
+      manifest.targetBindings,
+      `manifest ${manifestId} target bindings`,
+    );
+    if (targetBindings.length < 1 || targetBindings.length > value.maximumTargets) {
       throw new Error(`bounded manifest target cap invalid: ${manifestId}`);
     }
-    if (manifest.mode !== 'FAMILY_EXPANSION' && manifest.targetBindings.length !== 1) {
+    if (manifest.mode !== 'FAMILY_EXPANSION' && targetBindings.length !== 1) {
       throw new Error(`non-expansion manifest must contain one target: ${manifestId}`);
     }
-    for (const binding of manifest.targetBindings) {
+    for (const binding of targetBindings) {
       const targetId = requiredText(binding.targetId, `manifest ${manifestId} target ID`);
       if (binding.executionLane !== manifest.executionLane) {
         throw new Error(`bounded manifest target lane drift: ${targetId}`);
@@ -429,12 +557,21 @@ export function validateHistoricalEvidenceBoundedBatches(value) {
       manifestedTargetIds.add(targetId);
     }
   }
+  const windowManifestIds = requiredArray(window.manifestIds, 'bounded manifest window IDs')
+    .map((manifestId) => requiredText(manifestId, 'bounded manifest window ID'));
+  if (new Set(windowManifestIds).size !== windowManifestIds.length
+    || !canonicalEqual(windowManifestIds, value.manifests.map((manifest) => manifest.manifestId))) {
+    throw new Error('bounded manifest window ordering drift');
+  }
   const workstreams = uniqueMap(value.workstreams, 'workstreamId', 'bounded workstreams');
   const manifestReferences = new Map([...manifests.keys()].map((manifestId) => [manifestId, 0]));
   for (const definition of WORKSTREAMS) {
     const row = workstreams.get(definition.workstreamId);
     if (!row) throw new Error(`bounded workstream missing: ${definition.workstreamId}`);
-    for (const key of ['assignedTargets', 'eligibleTargets', 'suppressedTargets']) {
+    for (const key of [
+      'assignedTargets', 'eligibleTargets', 'suppressedTargets',
+      'eligibleCohorts', 'windowedCohorts', 'deferredCohorts',
+    ]) {
       if (!Number.isInteger(row[key]) || row[key] < 0) {
         throw new TypeError(`bounded workstream ${definition.workstreamId} ${key} invalid`);
       }
@@ -446,13 +583,70 @@ export function validateHistoricalEvidenceBoundedBatches(value) {
       )).reduce((sum, count) => sum + count, 0) !== row.suppressedTargets) {
       throw new Error(`bounded workstream accounting drift: ${definition.workstreamId}`);
     }
-    if (row.nextManifestId !== null) {
-      const manifest = manifests.get(row.nextManifestId);
-      if (!manifest) throw new Error(`bounded workstream manifest missing: ${row.nextManifestId}`);
-      if (manifest.workstreamId !== definition.workstreamId) {
-        throw new Error(`bounded workstream manifest mismatch: ${row.nextManifestId}`);
+    const manifestIds = requiredArray(
+      row.manifestIds,
+      `bounded workstream ${definition.workstreamId} manifest IDs`,
+    ).map((manifestId) => requiredText(manifestId, 'bounded workstream manifest ID'));
+    if (row.eligibleCohorts > row.eligibleTargets
+      || row.windowedCohorts !== manifestIds.length
+      || row.deferredCohorts !== row.eligibleCohorts - row.windowedCohorts
+      || row.windowedCohorts > window.maximumManifestsPerWorkstream) {
+      throw new Error(`bounded workstream cohort accounting drift: ${definition.workstreamId}`);
+    }
+    const eligibleByPriority = requiredObject(
+      row.eligibleByPriority,
+      `bounded workstream ${definition.workstreamId} eligible priorities`,
+    );
+    const eligibleCohortsByPriority = requiredObject(
+      row.eligibleCohortsByPriority,
+      `bounded workstream ${definition.workstreamId} eligible cohort priorities`,
+    );
+    const windowedCohortsByPriority = requiredObject(
+      row.windowedCohortsByPriority,
+      `bounded workstream ${definition.workstreamId} windowed cohort priorities`,
+    );
+    if (countTotal(eligibleByPriority, 'eligible priority') !== row.eligibleTargets
+      || countTotal(eligibleCohortsByPriority, 'eligible cohort priority') !== row.eligibleCohorts
+      || countTotal(windowedCohortsByPriority, 'windowed cohort priority') !== row.windowedCohorts) {
+      throw new Error(`bounded workstream priority accounting drift: ${definition.workstreamId}`);
+    }
+    for (const priorityClass of new Set([
+      ...Object.keys(eligibleByPriority),
+      ...Object.keys(eligibleCohortsByPriority),
+      ...Object.keys(windowedCohortsByPriority),
+    ])) {
+      if (!PRIORITY_RANK.has(priorityClass)) {
+        throw new TypeError(`bounded workstream priority unsupported: ${priorityClass}`);
       }
-      manifestReferences.set(row.nextManifestId, manifestReferences.get(row.nextManifestId) + 1);
+      if ((eligibleCohortsByPriority[priorityClass] ?? 0) > (eligibleByPriority[priorityClass] ?? 0)
+        || (windowedCohortsByPriority[priorityClass] ?? 0)
+          > (eligibleCohortsByPriority[priorityClass] ?? 0)) {
+        throw new Error(`bounded workstream priority bounds drift: ${definition.workstreamId}`);
+      }
+    }
+    if (Object.hasOwn(row, 'nextManifestId') || new Set(manifestIds).size !== manifestIds.length) {
+      throw new Error(`bounded workstream manifest window invalid: ${definition.workstreamId}`);
+    }
+    const expectedManifestIds = value.manifests
+      .filter((manifest) => manifest.workstreamId === definition.workstreamId)
+      .map((manifest) => manifest.manifestId);
+    if (!canonicalEqual(manifestIds, expectedManifestIds)) {
+      throw new Error(`bounded workstream manifest ordering drift: ${definition.workstreamId}`);
+    }
+    const expectedWindowedCohortsByPriority = countBy(
+      manifestIds.map((manifestId) => manifests.get(manifestId)),
+      (manifest) => manifest.constraints.priorityClass,
+    );
+    if (!canonicalEqual(windowedCohortsByPriority, expectedWindowedCohortsByPriority)) {
+      throw new Error(`bounded workstream windowed priority drift: ${definition.workstreamId}`);
+    }
+    for (const manifestId of manifestIds) {
+      const manifest = manifests.get(manifestId);
+      if (!manifest) throw new Error(`bounded workstream manifest missing: ${manifestId}`);
+      if (manifest.workstreamId !== definition.workstreamId) {
+        throw new Error(`bounded workstream manifest mismatch: ${manifestId}`);
+      }
+      manifestReferences.set(manifestId, manifestReferences.get(manifestId) + 1);
     }
   }
   if (workstreams.size !== WORKSTREAMS.length) throw new Error('unknown bounded workstream');
@@ -465,6 +659,9 @@ export function validateHistoricalEvidenceBoundedBatches(value) {
     eligibleTargets: workstreamRows.reduce((sum, row) => sum + row.eligibleTargets, 0),
     suppressedTargets: workstreamRows.reduce((sum, row) => sum + row.suppressedTargets, 0),
     suppressedByReason: mergeCounts(workstreamRows.map((row) => row.suppressedByReason)),
+    eligibleCohorts: workstreamRows.reduce((sum, row) => sum + row.eligibleCohorts, 0),
+    windowedCohorts: workstreamRows.reduce((sum, row) => sum + row.windowedCohorts, 0),
+    deferredCohorts: workstreamRows.reduce((sum, row) => sum + row.deferredCohorts, 0),
     manifests: manifests.size,
     manifestedTargets: [...manifests.values()].reduce(
       (sum, manifest) => sum + manifest.targetBindings.length,
@@ -486,10 +683,20 @@ export function buildHistoricalEvidenceBoundedBatches({
   targetState,
   familyCanaries,
   maximumTargets = HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_TARGETS,
+  maximumManifestsPerWorkstream
+    = HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_MANIFESTS_PER_WORKSTREAM,
 }) {
   if (!Number.isInteger(maximumTargets) || maximumTargets < 1
     || maximumTargets > HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_TARGETS) {
     throw new TypeError(`maximum targets must be 1-${HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_TARGETS}`);
+  }
+  if (!Number.isInteger(maximumManifestsPerWorkstream)
+    || maximumManifestsPerWorkstream < 1
+    || maximumManifestsPerWorkstream
+      > HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_MANIFESTS_PER_WORKSTREAM) {
+    throw new TypeError(
+      `maximum manifests per workstream must be 1-${HISTORICAL_EVIDENCE_BOUNDED_BATCH_MAXIMUM_MANIFESTS_PER_WORKSTREAM}`,
+    );
   }
   const source = sourceBindings({ executableQueue, targetState, familyCanaries });
   const allTargets = [
@@ -548,18 +755,27 @@ export function buildHistoricalEvidenceBoundedBatches({
       group.entries.push(entry);
       groupsByKey.set(key, group);
     }
-    const groups = [...groupsByKey.values()].map((group) => ({
-      ...group,
-      entries: group.entries.sort(compareTargets),
-    })).sort(compareGroups);
-    const nextManifest = groups.length > 0 ? manifestFor({
+    const groups = [...groupsByKey.values()].map((group) => {
+      const sortedEntries = group.entries.sort(compareTargets);
+      return {
+        ...group,
+        entries: sortedEntries,
+        ...cohortFor(definition.workstreamId, sortedEntries[0]),
+      };
+    }).sort(compareGroups);
+    const eligibleCohorts = new Map();
+    for (const group of fairWindowOrder(groups)) {
+      if (!eligibleCohorts.has(group.cohortKey)) eligibleCohorts.set(group.cohortKey, group);
+    }
+    const selectedGroups = [...eligibleCohorts.values()].slice(0, maximumManifestsPerWorkstream);
+    const workstreamManifests = selectedGroups.map((group) => manifestFor({
       workstreamId: definition.workstreamId,
-      group: groups[0],
+      group,
       source,
       maximumTargets,
       reviewedTargetCount: assigned.length,
-    }) : null;
-    if (nextManifest) manifests.push(nextManifest);
+    }));
+    manifests.push(...workstreamManifests);
     return {
       ...definition,
       assignedTargets: assigned.length,
@@ -569,7 +785,19 @@ export function buildHistoricalEvidenceBoundedBatches({
         assigned.filter((entry) => entry.suppressionReason),
         (entry) => entry.suppressionReason,
       ),
-      nextManifestId: nextManifest?.manifestId ?? null,
+      eligibleByPriority: countBy(eligible, (entry) => entry.target.priorityClass),
+      eligibleCohorts: eligibleCohorts.size,
+      eligibleCohortsByPriority: countBy(
+        [...eligibleCohorts.values()],
+        (group) => group.entries[0].target.priorityClass,
+      ),
+      windowedCohorts: workstreamManifests.length,
+      windowedCohortsByPriority: countBy(
+        workstreamManifests,
+        (manifest) => manifest.constraints.priorityClass,
+      ),
+      deferredCohorts: eligibleCohorts.size - workstreamManifests.length,
+      manifestIds: workstreamManifests.map((manifest) => manifest.manifestId),
     };
   });
   const generatedAt = new Date(targetState.generatedAt).toISOString();
@@ -579,6 +807,9 @@ export function buildHistoricalEvidenceBoundedBatches({
     eligibleTargets: entries.length - suppressed.length,
     suppressedTargets: suppressed.length,
     suppressedByReason: countBy(suppressed, (entry) => entry.suppressionReason),
+    eligibleCohorts: workstreams.reduce((sum, row) => sum + row.eligibleCohorts, 0),
+    windowedCohorts: workstreams.reduce((sum, row) => sum + row.windowedCohorts, 0),
+    deferredCohorts: workstreams.reduce((sum, row) => sum + row.deferredCohorts, 0),
     manifests: manifests.length,
     manifestedTargets: manifests.reduce((sum, manifest) => sum + manifest.targetBindings.length, 0),
     byWorkstream: Object.fromEntries(workstreams.map((row) => [row.workstreamId, row.assignedTargets])),
@@ -588,14 +819,90 @@ export function buildHistoricalEvidenceBoundedBatches({
     plannerVersion: HISTORICAL_EVIDENCE_BOUNDED_BATCH_PLANNER_VERSION,
     generatedAt,
     maximumTargets,
+    manifestWindow: {
+      schemaVersion: 1,
+      cohortKeyVersion: HISTORICAL_EVIDENCE_BOUNDED_BATCH_COHORT_KEY_VERSION,
+      maximumManifestsPerWorkstream,
+      manifestIds: manifests.map((manifest) => manifest.manifestId),
+    },
     sourceBindings: source,
     workstreams,
-    manifests: manifests.sort((left, right) => left.workstreamId.localeCompare(right.workstreamId)),
+    manifests,
     summary,
   };
   return validateHistoricalEvidenceBoundedBatches({
     ...semantic,
     semanticBatchesSha256: canonicalJsonSha256(semantic),
+  });
+}
+
+export function selectHistoricalDimensionsManifestWindow({
+  batches,
+  blockedCohortKeys = [],
+}) {
+  validateHistoricalEvidenceBoundedBatches(batches);
+  const blockedRows = requiredArray(blockedCohortKeys, 'blocked cohort keys')
+    .map((value) => requiredText(value, 'blocked cohort key'));
+  if (new Set(blockedRows).size !== blockedRows.length) {
+    throw new TypeError('blocked cohort keys must be unique');
+  }
+  const blocked = new Set(blockedRows);
+  const manifests = new Map(batches.manifests.map((manifest) => [manifest.manifestId, manifest]));
+  const workstream = (workstreamId) => batches.workstreams.find(
+    (row) => row.workstreamId === workstreamId,
+  );
+  const candidates = (row, priorityClass) => row.manifestIds
+    .map((manifestId) => manifests.get(manifestId))
+    .filter((manifest) => manifest?.constraints?.priorityClass === priorityClass);
+  const runnable = (rows) => rows.filter((manifest) => !blocked.has(manifest.cohortKey));
+  const current = workstream('CURRENT_DIMENSIONS');
+  const historical = workstream('HISTORICAL_DIMENSIONS');
+  const p0 = candidates(current, 'P0_CURRENT_MISSING_DIMENSIONS');
+  const runnableP0 = runnable(p0);
+  const p0EligibleCohorts = current.eligibleCohortsByPriority.P0_CURRENT_MISSING_DIMENSIONS ?? 0;
+  const p0WindowedCohorts = current.windowedCohortsByPriority.P0_CURRENT_MISSING_DIMENSIONS ?? 0;
+  if (runnableP0.length) {
+    return Object.freeze({
+      status: 'RUN_P0',
+      p1Blocked: true,
+      blockedCohortKeys: Object.freeze([...blockedRows]),
+      manifests: Object.freeze(structuredClone(runnableP0)),
+    });
+  }
+  if (p0EligibleCohorts > p0WindowedCohorts) {
+    return Object.freeze({
+      status: 'STOP_P0_WINDOW_EXHAUSTED',
+      p1Blocked: true,
+      blockedCohortKeys: Object.freeze([...blockedRows]),
+      manifests: Object.freeze([]),
+    });
+  }
+
+  const p1 = candidates(historical, 'P1_HISTORICAL_MISSING_DIMENSIONS');
+  const runnableP1 = runnable(p1);
+  const p1EligibleCohorts = historical.eligibleCohortsByPriority.P1_HISTORICAL_MISSING_DIMENSIONS ?? 0;
+  const p1WindowedCohorts = historical.windowedCohortsByPriority.P1_HISTORICAL_MISSING_DIMENSIONS ?? 0;
+  if (runnableP1.length) {
+    return Object.freeze({
+      status: 'RUN_P1',
+      p1Blocked: false,
+      blockedCohortKeys: Object.freeze([...blockedRows]),
+      manifests: Object.freeze(structuredClone(runnableP1)),
+    });
+  }
+  if (p1EligibleCohorts > p1WindowedCohorts) {
+    return Object.freeze({
+      status: 'STOP_P1_WINDOW_EXHAUSTED',
+      p1Blocked: false,
+      blockedCohortKeys: Object.freeze([...blockedRows]),
+      manifests: Object.freeze([]),
+    });
+  }
+  return Object.freeze({
+    status: 'COMPLETE',
+    p1Blocked: false,
+    blockedCohortKeys: Object.freeze([...blockedRows]),
+    manifests: Object.freeze([]),
   });
 }
 
@@ -720,6 +1027,16 @@ export function validateHistoricalEvidenceBoundedManifestSnapshot({
   if (manifest.familyId !== (expectedFamily?.familyId ?? null)
     || manifest.familyState !== (expectedFamily?.state ?? null)) {
     throw new Error('bounded manifest family audit drift');
+  }
+  const expectedCohort = cohortFor(manifest.workstreamId, first);
+  if (manifest.cohortKeyVersion !== HISTORICAL_EVIDENCE_BOUNDED_BATCH_COHORT_KEY_VERSION
+    || manifest.cohortKey !== expectedCohort.cohortKey
+    || manifest.cohortSha256 !== expectedCohort.cohortSha256
+    || !canonicalEqual(manifest.cohort, expectedCohort.cohort)
+    || selectedEntries.some((entry) => (
+      cohortFor(manifest.workstreamId, entry).cohortKey !== expectedCohort.cohortKey
+    ))) {
+    throw new Error('bounded manifest cohort drift');
   }
   const expectedSharedArtifacts = expectedMode === 'FAMILY_EXPANSION'
     && selectedEntries.length > 1
