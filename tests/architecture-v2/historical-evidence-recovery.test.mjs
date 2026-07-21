@@ -226,13 +226,13 @@ test('one target with two source URLs owns one state node and two candidate edge
   assert.equal(queue.summary.multiCandidateTargets, 1);
 });
 
-test('normal Architecture V2 build does not generate the next recovery epoch queue', async () => {
+test('normal Architecture V2 build keeps the recovery queue frozen but replays its dependent plan', async () => {
   const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
   assert.match(packageJson.scripts['build:historical-evidence-recovery-queue'], /build-historical-evidence-recovery-queue/);
   assert.doesNotMatch(packageJson.scripts['build:architecture-v2'], /historical-evidence-recovery-queue/);
   assert.match(
     packageJson.scripts['build:architecture-v2'],
-    /build:historical-document-family-graph && npm run build:historical-parser-gap-priority && npm run build:historical-evidence-family-canaries && npm run build:historical-evidence-program-status/,
+    /build:historical-document-family-graph && npm run build:historical-parser-gap-priority && npm run build:historical-evidence-family-canaries && npm run build:historical-evidence-target-state && npm run build:historical-evidence-bounded-batches && npm run build:historical-evidence-program-status/,
   );
 });
 

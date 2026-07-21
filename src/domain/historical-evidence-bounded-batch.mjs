@@ -112,7 +112,7 @@ function executableQueueSemanticSha256(queue) {
 
 function targetStateSemanticSha256(targetState) {
   requiredObject(targetState, 'target state');
-  if (targetState.schemaVersion !== 1) throw new TypeError('target state schema version 1 required');
+  if (targetState.schemaVersion !== 2) throw new TypeError('target state schema version 2 required');
   return canonicalJsonSha256({
     ...structuredClone(targetState),
     records: sortedClone(requiredArray(targetState.records, 'target-state records'), 'referenceId'),

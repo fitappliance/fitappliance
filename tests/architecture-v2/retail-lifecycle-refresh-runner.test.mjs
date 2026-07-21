@@ -7,6 +7,7 @@ import test from 'node:test';
 
 import { applyRetailLifecycleRefreshRunFromRepository } from '../../scripts/architecture-v2/apply-retail-lifecycle-refresh.mjs';
 import { collectPartnerizeRetailLifecycleRefreshRun } from '../../scripts/architecture-v2/run-retail-lifecycle-refresh.mjs';
+import { buildRetailerObservationLedger } from '../../src/domain/retailer-observation-ledger.mjs';
 import { buildRetailerSourceAcquisitionReceipt } from '../../src/domain/retailer-source-acquisition-receipt.mjs';
 
 const repoRoot = resolve(new URL('../..', import.meta.url).pathname);
@@ -79,21 +80,41 @@ async function fixture(t) {
   const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-retailer-refresh-'));
   t.after(() => rm(storageRoot, { recursive: true, force: true }));
   const root = join(storageRoot, 'repo');
-  const [repositoryInventory, projection, ledger, policy] = await Promise.all([
-    readFile(join(repoRoot, 'data/architecture-v2/reviews/automated/retail-lifecycle-refresh-inventory.json'), 'utf8').then(JSON.parse),
-    readFile(join(repoRoot, 'data/architecture-v2/generated/public-catalog-projection.json'), 'utf8').then(JSON.parse),
-    readFile(join(repoRoot, 'data/architecture-v2/observations/retailer-observations.json'), 'utf8').then(JSON.parse),
-    readFile(join(repoRoot, 'data/architecture-v2/policies/retailer-source-policy.json'), 'utf8').then(JSON.parse),
-  ]);
-  const item = repositoryInventory.items.find((candidate) => candidate.sourceTasks.some((task) => (
-    task.sourcePolicyId === 'the-good-guys-partnerize-feed-v1'
-  )));
-  assert.ok(item, 'fixture requires a TGG baseline listing');
-  const inventory = fixtureInventory(item);
-  const task = item.sourceTasks.find((candidate) => (
-    candidate.sourcePolicyId === 'the-good-guys-partnerize-feed-v1'
+  const policy = JSON.parse(await readFile(
+    join(repoRoot, 'data/architecture-v2/policies/retailer-source-policy.json'),
+    'utf8',
   ));
-  const product = projection.products.find((candidate) => candidate.canonicalProductId === item.canonicalProductId);
+  const product = {
+    id: 'fixture-one',
+    canonicalProductId: 'fa_prod_partnerize_fixture',
+    cat: 'dishwasher',
+    brand: 'Fixture',
+    model: 'ONE-1',
+    retailers: [{
+      n: 'The Good Guys',
+      url: 'https://www.thegoodguys.com.au/fixture-one-1',
+      verified_at: '2026-07-01',
+      source: 'partnerize-feed',
+      tgg_sku: '50000001',
+    }],
+  };
+  const projection = { schemaVersion: 1, products: [product] };
+  const task = {
+    baselineLinkId: 'retail_link_partnerize_fixture',
+    retailer: 'The Good Guys',
+    url: product.retailers[0].url,
+    originSource: 'partnerize-feed',
+    sourcePolicyId: 'the-good-guys-partnerize-feed-v1',
+  };
+  const item = {
+    canonicalProductId: product.canonicalProductId,
+    legacyRuntimeId: product.id,
+    category: product.cat,
+    brand: product.brand,
+    model: product.model,
+    sourceTasks: [task],
+  };
+  const inventory = fixtureInventory(item);
   const category = {
     fridge: 'Fridges & Freezers > Refrigerators > French Door Fridges',
     dishwasher: 'Cooking & Dishwashers > Dishwashers > Freestanding Dishwashers',
@@ -116,6 +137,16 @@ async function fixture(t) {
   ].join('|');
   const feedPath = join(storageRoot, 'fixture-feed.csv');
   await writeFile(feedPath, `${header}\n${row}\n`);
+  const projectionBytes = Buffer.from(`${JSON.stringify(projection, null, 2)}\n`);
+  const policyBytes = Buffer.from(`${JSON.stringify(policy, null, 2)}\n`);
+  const ledger = buildRetailerObservationLedger({
+    existingLedger: { schemaVersion: 1, observations: [] },
+    publicProjection: projection,
+    publicProjectionSha256: sha256(projectionBytes),
+    sourcePolicy: policy,
+    sourcePolicySha256: sha256(policyBytes),
+    typedSnapshots: [],
+  });
   await Promise.all([
     writeFixtureJson(root, 'data/architecture-v2/reviews/automated/retail-lifecycle-refresh-inventory.json', inventory),
     writeFixtureJson(root, 'data/architecture-v2/generated/public-catalog-projection.json', projection),

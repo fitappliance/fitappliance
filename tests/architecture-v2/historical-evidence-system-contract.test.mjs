@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
@@ -236,10 +237,38 @@ test('tracked system contract replays from repository sources without external s
     'data/architecture-v2/reviews/automated/retail-lifecycle-refresh-inventory.json',
     'utf8',
   ));
+  const candidateShadow = JSON.parse(await readFile(
+    'data/architecture-v2/reviews/automated/retail-lifecycle-shadow-migration-candidate.json',
+    'utf8',
+  ));
+  const candidateRefresh = JSON.parse(await readFile(
+    'data/architecture-v2/reviews/automated/retail-lifecycle-refresh-inventory-migration-candidate.json',
+    'utf8',
+  ));
+  const releaseCandidate = JSON.parse(await readFile(
+    'data/architecture-v2/reviews/automated/retail-lifecycle-release-candidate.json',
+    'utf8',
+  ));
+  const targetState = JSON.parse(await readFile(
+    'data/architecture-v2/reviews/automated/historical-evidence-target-state.json',
+    'utf8',
+  ));
+  const targetStateSourceFiles = {
+    classificationSha256: 'data/architecture-v2/generated/historical-model-evidence-classification.json',
+    acquisitionQueueSha256: 'data/architecture-v2/reviews/automated/historical-model-pdf-acquisition-queue.json',
+    executableQueueSha256: 'data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json',
+    acceptanceBundleSha256: 'data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json',
+    attemptLedgerSha256: 'data/architecture-v2/reviews/automated/historical-evidence-recovery-attempt-ledger.json',
+  };
 
   assert.deepEqual(first, tracked);
   assert.deepEqual(second, first);
-  assert.equal(first.stages.length, 29);
+  assert.equal(targetState.schemaVersion, 2);
+  for (const [binding, path] of Object.entries(targetStateSourceFiles)) {
+    const bytes = await readFile(path);
+    assert.equal(targetState.sourceBindings[binding], createHash('sha256').update(bytes).digest('hex'));
+  }
+  assert.equal(first.stages.length, 38);
   assert.equal(first.epochs.length, 10);
   assert.ok(first.stages.every((stage) => stage.sourceBindings.every((binding) => (
     binding.declaredSha256 === binding.resolvedSha256
@@ -258,6 +287,7 @@ test('tracked system contract replays from repository sources without external s
   const currentPublication = first.stages.find((stage) => stage.id === 'current-publication');
   const lifecycleShadow = first.stages.find((stage) => stage.id === 'retail-lifecycle-shadow');
   const lifecycleRefresh = first.stages.find((stage) => stage.id === 'retail-lifecycle-refresh');
+  const candidateRelease = first.stages.find((stage) => stage.id === 'candidate-release-gate');
   assert.deepEqual(canonicalIdentity.releaseDependencies, []);
   assert.deepEqual(canonicalIdentity.lifecycleVisibility, ['CURRENT_INPUT', 'HISTORICAL_INPUT']);
   assert.deepEqual(canonicalIdentityCandidate.releaseDependencies, [
@@ -270,6 +300,7 @@ test('tracked system contract replays from repository sources without external s
   assert.deepEqual(observationStage.releaseDependencies, ['retailer-identity-migration']);
   assert.deepEqual(lifecycleShadow.releaseDependencies, [
     'current-publication',
+    'official-market-lifecycle',
     'retailer-observations',
   ]);
   assert.deepEqual([...lifecycleRefresh.releaseDependencies].sort(), [
@@ -302,6 +333,31 @@ test('tracked system contract replays from repository sources without external s
   assert.equal(
     first.baseline.knownContractGaps.some((gap) => gap.id === 'LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER'),
     shadow.cutover.status === 'BLOCKED',
+  );
+  assert.equal(candidateRelease.releaseEpoch, 2);
+  assert.equal(candidateRelease.releaseState, 'PENDING_NEXT');
+  assert.equal(
+    first.baseline.candidateReleaseAuthorizationStatus,
+    releaseCandidate.authorization.status,
+  );
+  assert.equal(
+    first.baseline.candidateUnresolvedLegacyCurrentProducts,
+    candidateShadow.cutover.unresolvedLegacyCurrentIds.length,
+  );
+  assert.equal(
+    first.baseline.candidateUnsafeRemovedLegacyCurrentProducts,
+    candidateShadow.cutover.unsafeRemovedLegacyCurrentIds.length,
+  );
+  assert.equal(first.baseline.candidateRefreshProducts, candidateRefresh.summary.products);
+  assert.equal(first.baseline.candidateFitPublicationViolations, 0);
+  assert.equal(first.baseline.candidateRollbackStatus, 'PROVEN_BYTE_IDENTICAL');
+  assert.equal(
+    first.baseline.knownContractGaps.some((gap) => gap.id === 'PARTIAL_REPOSITORY_BUILD_GRAPH'),
+    false,
+  );
+  assert.equal(
+    first.baseline.knownContractGaps.some((gap) => gap.id === 'TARGET_STATE_LEGACY_TIME_BINDINGS'),
+    false,
   );
   assert.doesNotMatch(JSON.stringify(first), /\/Volumes\/|FITAPPLIANCE_STORAGE_ROOT/);
 });

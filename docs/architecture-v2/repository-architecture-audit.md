@@ -46,7 +46,7 @@ not claims about the currently deployed site:
 
 | Measure | Current value |
 | --- | ---: |
-| Persisted contract stages | 29 |
+| Persisted contract stages | 38 |
 | Independently bound policy/tool epochs | 10 |
 | Historical model references | 8,089 |
 | Models with document links | 1,768 |
@@ -59,10 +59,16 @@ not claims about the currently deployed site:
 | Receipt-bound dimensions | 332 |
 | Receipt-bound `VERIFIED_FIT` | 0 |
 | Public rows with retailer links | 1,384 |
-| Retailer ledger observations / typed observations | 3,298 / 1,646 |
-| Immutable retailer collection attempts | 1,192 |
-| Lifecycle current / archived / unknown | 348 / 3,088 / 79 |
-| Lifecycle cutover status | `BLOCKED` |
+| Retailer ledger observations / typed observations | 3,533 / 1,881 |
+| Immutable retailer collection attempts | 1,193 |
+| Released lifecycle current / archived / unknown | 349 / 3,087 / 79 |
+| Released lifecycle cutover status | `BLOCKED` (`SHADOW_ONLY`) |
+| Epoch-2 candidate products | 3,513 |
+| Candidate current / archived / market-reference | 349 / 3,087 / 77 |
+| Candidate release status | `READY_FOR_CUTOVER` |
+| Candidate unresolved / unsafe removals | 0 / 0 |
+| Candidate public control-plane leakage | 0 |
+| Candidate public bytes / baseline bytes | 8,653,582 / 4,707,047 |
 
 Reproduce the contract and focused architecture gates with:
 
@@ -108,27 +114,27 @@ described as a fully migrated Fit engine.
 
 ### Current contract gaps
 
-The system contract deliberately records, rather than conceals, the remaining
-release gaps:
+The system contract deliberately records the released/candidate boundary:
 
-1. Lifecycle is still `BLOCKED` for 79 prior-current products. Seventy-six are
-   behind explicit retailer source policy, one requires an atomic canonical
-   migration cutover, one requires an authorised exact-model source, and one
-   conflicting embedded/retailer model requires exact-model rediscovery.
-   Unknown is hidden; it is never converted to unavailable.
-2. Seventeen of 18 raw-bound identity mismatch cases have deterministic
-   resolutions; the unresolved `RF730QZUVX1`/`RF730QZUVB1` conflict is excluded
-   from the mutation set. The released 3,515-product canonical registry and
-   public projection cannot consume the 3,514-product migration candidate until
-   the lifecycle gate is independently `READY`.
-3. Identity events are listing-scoped and cannot transfer availability,
-   dimensions, clearances, installation requirements, or Fit. Any later build
-   that makes the released registry depend on the migration candidate is a
-   mixed-epoch contract violation.
-4. The complete release DAG and rollback drill pass in shadow, but production
-   cutover is prohibited until the lifecycle shadow reaches `READY` with zero
-   unresolved or unsafe prior-current products. No lifecycle cutover or
-   deployment has occurred.
+1. The released epoch remains byte-identical and `BLOCKED` in `SHADOW_ONLY`.
+   Its two remaining identity-control rows are historical state, not work that
+   may be silently mutated in place.
+2. The separately bound epoch-2 candidate is `READY_FOR_CUTOVER`. It accounts
+   for every prior-current product, has zero unresolved IDs, zero unsafe
+   removals, zero Fit publication violations and a byte-identical rollback
+   proof. Candidate construction does not mutate released production.
+3. All 18 raw-bound mismatch cases now have deterministic dispositions. The
+   Fisher & Paykel conflict is quarantined rather than aliased; the Haier row is
+   merged only into an existing exact canonical product; the LG sibling listing
+   is invalidated while exact `GS-B655PL` official identity is retained.
+4. Identity events are listing-scoped and cannot transfer availability,
+   dimensions, clearances, installation requirements, or Fit. The 77
+   market-reference rows are also stripped of price, stock, retailer CTA and
+   sponsorship before publication.
+5. Production materialization and deployment are explicit operational actions
+   after this candidate commit. They are not simulated by changing generated
+   files, and legacy deletion remains prohibited until the rollback observation
+   window completes.
 
 ## Existing Assets Worth Preserving
 
@@ -290,6 +296,11 @@ authoritative list is generated, not copied into this document:
 - `data/architecture-v2/generated/historical-model-evidence-classification.json`
 - `data/architecture-v2/reviews/automated/historical-evidence-target-state.json`
 
+Target state is schema v2. It binds the exact SHA-256 bytes of classification,
+acquisition queue, executable queue, acceptance bundle and attempt ledger. The
+system-contract replay recomputes those five hashes from disk; timestamp-only
+or stale self-consistent derivatives cannot pass.
+
 The nine Phase 0 rows formerly listed here were a 2026-07-11 shadow-adapter
 snapshot and are not a complete current quarantine. Exact manufacturer proof or
 an evidence-bound alias remains mandatory; similar dimensions, matching
@@ -309,7 +320,7 @@ capacity, colour assumptions, and sibling-model evidence are insufficient.
 | `2057cacd` | Added verified dimension overlay in shadow mode. |
 | `1e79081b` | Added exact factsheet fallback and official-source priority. |
 | `b308983e` | Added seven additional exact group dimension records. |
-| Task 0 (2026-07-20) | Added a deterministic 23-stage, 10-epoch system contract and current-code audit. |
+| Task 0-10 (2026-07-21) | Added a deterministic 38-stage, 10-epoch system contract, target-state byte bindings, exhaustive lifecycle candidate gate and byte-identical rollback proof. |
 
 The commit ledger is supporting evidence, not a substitute for this audit or
 the remediation plan.

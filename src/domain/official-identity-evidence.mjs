@@ -3,14 +3,29 @@ import { createHash } from 'node:crypto';
 import { load } from 'cheerio';
 
 import { registryBrandKey, registryModelKey } from './energy-rating-registry.mjs';
-import { isOfficialBrandMarketUrl } from './evidence-source-verifier.mjs';
+import {
+  isOfficialBrandMarketUrl,
+  officialHtmlModelVariant,
+} from './evidence-source-verifier.mjs';
 import { inspectMineruContentListV2 } from './mineru-document.mjs';
 
 const SHA256 = /^[a-f0-9]{64}$/;
 const SEED_POLICY = 'retailer-identity-official-evidence-seeds-v1';
-const EVIDENCE_POLICY = 'retailer-identity-official-evidence-v1';
+const EVIDENCE_POLICIES = Object.freeze({
+  1: 'retailer-identity-official-evidence-v1',
+  2: 'retailer-identity-official-evidence-v2',
+});
 const MEDIA_TYPES = new Set(['text/html', 'application/pdf']);
 const EVIDENCE_KINDS = new Set(['OFFICIAL_PRODUCT_PAGE', 'OFFICIAL_PDF_MINERU']);
+const MARKET_SIGNAL_STATES = new Set(['AVAILABLE', 'UNAVAILABLE', 'CONFLICT', 'UNKNOWN']);
+const AVAILABLE_SCHEMA_STATES = new Set([
+  'instock',
+  'limitedavailability',
+  'onlineonly',
+  'preorder',
+  'presale',
+]);
+const UNAVAILABLE_SCHEMA_STATES = new Set(['discontinued', 'outofstock', 'soldout']);
 const MAXIMUM_BYTES = 25 * 1024 * 1024;
 
 function required(value, label) {
@@ -96,7 +111,23 @@ function normalizeSeed(value) {
   }
   const mediaType = required(value.mediaType, 'official identity media type').toLowerCase();
   if (!MEDIA_TYPES.has(mediaType)) throw new TypeError('official identity media type unsupported');
-  return { evidenceId, category, brand, model, sourceUrl, mediaType };
+  const sourceModel = value.sourceModel == null
+    ? model
+    : required(value.sourceModel, 'official identity source model');
+  const isVariant = !exactModel(sourceModel, model);
+  if (isVariant && (mediaType !== 'text/html'
+    || !officialHtmlModelVariant({ category, brand, model }, sourceModel))) {
+    throw new TypeError('official identity source model is not an approved HTML model variant');
+  }
+  return {
+    evidenceId,
+    category,
+    brand,
+    model,
+    sourceUrl,
+    mediaType,
+    ...(isVariant ? { sourceModel } : {}),
+  };
 }
 
 export function validateOfficialIdentityEvidenceSeeds(document) {
@@ -151,6 +182,84 @@ function walkJsonLd(value, path, candidates) {
   for (const [key, child] of Object.entries(value)) walkJsonLd(child, `${path}.${key}`, candidates);
 }
 
+function productHasExactModel(value, expectedModel) {
+  return ['sku', 'mpn', 'model', 'productID'].some((key) => (
+    typeof value?.[key] === 'string' && exactModel(value[key], expectedModel)
+  ));
+}
+
+function collectOfferAvailability(value, path, candidates) {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => collectOfferAvailability(item, `${path}[${index}]`, candidates));
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+  if (typeof value.availability === 'string') {
+    candidates.push(locator(
+      'json_ld_offer_availability',
+      `${path}.availability`,
+      value.availability,
+    ));
+  }
+  if (value.offers !== undefined) collectOfferAvailability(value.offers, `${path}.offers`, candidates);
+}
+
+function walkJsonLdMarketSignals(value, path, expectedModel, candidates) {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => walkJsonLdMarketSignals(
+      item,
+      `${path}[${index}]`,
+      expectedModel,
+      candidates,
+    ));
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+  const types = [value['@type']].flat().map((entry) => String(entry ?? '').toLowerCase());
+  if (types.includes('product') && productHasExactModel(value, expectedModel)) {
+    collectOfferAvailability(value.offers, `${path}.offers`, candidates);
+  }
+  for (const [key, child] of Object.entries(value)) {
+    walkJsonLdMarketSignals(child, `${path}.${key}`, expectedModel, candidates);
+  }
+}
+
+function schemaAvailabilityState(value) {
+  const token = String(value ?? '').trim().toLowerCase().split(/[\/#]/).filter(Boolean).at(-1) ?? '';
+  if (AVAILABLE_SCHEMA_STATES.has(token)) return 'AVAILABLE';
+  if (UNAVAILABLE_SCHEMA_STATES.has(token)) return 'UNAVAILABLE';
+  return null;
+}
+
+export function extractOfficialHtmlMarketSignal(bytes, expectedModel) {
+  const payload = validatePayload(bytes, 'text/html');
+  const $ = load(payload.toString('utf8'));
+  const candidates = [];
+  $('script[type="application/ld+json"]').each((index, element) => {
+    try {
+      walkJsonLdMarketSignals(
+        JSON.parse($(element).text()),
+        `script[application/ld+json][${index}]`,
+        expectedModel,
+        candidates,
+      );
+    } catch {
+      // Invalid or unrelated JSON-LD cannot become a market signal.
+    }
+  });
+  const locators = [...new Map(candidates.map((candidate) => [
+    `${candidate.kind}\0${candidate.path}\0${candidate.value}`,
+    candidate,
+  ])).values()].sort((left, right) => (
+    left.path.localeCompare(right.path) || left.value.localeCompare(right.value)
+  ));
+  const states = new Set(locators.map((entry) => schemaAvailabilityState(entry.value)).filter(Boolean));
+  const status = states.size > 1
+    ? 'CONFLICT'
+    : states.values().next().value ?? 'UNKNOWN';
+  return freezeDeep({ status, locators });
+}
+
 export function extractOfficialHtmlIdentityLocators(bytes, expectedModel) {
   const payload = validatePayload(bytes, 'text/html');
   const $ = load(payload.toString('utf8'));
@@ -193,6 +302,28 @@ export function extractOfficialHtmlIdentityLocators(bytes, expectedModel) {
   }
   $('meta[itemprop="sku"],meta[itemprop="mpn"],meta[itemprop="model"]').each((index, element) => {
     candidates.push(locator('product_meta_model', `meta[itemprop][${index}]`, $(element).attr('content')));
+  });
+  $('link[rel="canonical"]').each((index, element) => {
+    try {
+      const canonicalUrl = new URL($(element).attr('href'));
+      const match = /^\/au\/support\/model\/([^/]+)\/?$/i.exec(canonicalUrl.pathname);
+      if (canonicalUrl.hostname.toLowerCase() === 'www.samsung.com' && match) {
+        candidates.push(locator(
+          'official_support_canonical_model',
+          `link[rel=canonical][${index}]`,
+          decodeURIComponent(match[1]),
+        ));
+      }
+    } catch {
+      // Only a valid, narrowly scoped official support canonical can qualify.
+    }
+  });
+  $('button.btn-copy[data-sku]').each((index, element) => {
+    candidates.push(locator(
+      'product_copy_model_attribute',
+      `button.btn-copy[data-sku][${index}]`,
+      $(element).attr('data-sku'),
+    ));
   });
   const exact = candidates.filter((candidate) => exactModel(candidate.value, expectedModel));
   const unique = [...new Map(exact.map((candidate) => [
@@ -303,9 +434,10 @@ export async function acquireOfficialIdentityEvidence({
     let derivedArtifact;
     let identityLocators;
     let evidenceKind;
+    const sourceIdentityModel = seed.sourceModel ?? seed.model;
     if (seed.mediaType === 'text/html') {
       evidenceKind = 'OFFICIAL_PRODUCT_PAGE';
-      identityLocators = extractOfficialHtmlIdentityLocators(fetched.bytes, seed.model);
+      identityLocators = extractOfficialHtmlIdentityLocators(fetched.bytes, sourceIdentityModel);
     } else {
       if (typeof processPdf !== 'function') throw new TypeError('official identity PDF processor required');
       evidenceKind = 'OFFICIAL_PDF_MINERU';
@@ -320,6 +452,7 @@ export async function acquireOfficialIdentityEvidence({
       evidenceId: seed.evidenceId,
       evidenceKind,
       identity: { category: seed.category, brand: seed.brand, model: seed.model },
+      ...(seed.sourceModel ? { sourceIdentityModel } : {}),
       source: {
         sourceUrl: seed.sourceUrl,
         finalUrl: fetched.finalUrl,
@@ -330,6 +463,9 @@ export async function acquireOfficialIdentityEvidence({
       rawArtifact,
       ...(derivedArtifact ? { derivedArtifact } : {}),
       identityLocators,
+      marketSignal: seed.mediaType === 'text/html'
+        ? extractOfficialHtmlMarketSignal(fetched.bytes, sourceIdentityModel)
+        : { status: 'UNKNOWN', locators: [] },
     });
   }
   const byEvidenceKind = Object.fromEntries([...EVIDENCE_KINDS].sort().flatMap((kind) => {
@@ -337,12 +473,19 @@ export async function acquireOfficialIdentityEvidence({
     return count ? [[kind, count]] : [];
   }));
   const document = {
-    schemaVersion: 1,
-    policyVersion: EVIDENCE_POLICY,
+    schemaVersion: 2,
+    policyVersion: EVIDENCE_POLICIES[2],
     acquiredAt: at,
     seedDocumentSemanticSha256: canonicalSha256(normalizedSeeds),
     records,
-    summary: { records: records.length, byEvidenceKind },
+    summary: {
+      records: records.length,
+      byEvidenceKind,
+      byMarketSignal: Object.fromEntries(Object.entries(records.reduce((result, record) => {
+        result[record.marketSignal.status] = (result[record.marketSignal.status] ?? 0) + 1;
+        return result;
+      }, {})).sort(([left], [right]) => left.localeCompare(right))),
+    },
   };
   const semantic = canonicalSha256(document);
   document.manifestId = `official_identity_evidence_${semantic.slice(0, 24)}`;
@@ -350,16 +493,17 @@ export async function acquireOfficialIdentityEvidence({
   return freezeDeep(validateOfficialIdentityEvidenceManifest(document));
 }
 
-function validateLocatorList(record) {
+function validateLocatorList(record, identityLocatorModel) {
   if (!Array.isArray(record.identityLocators) || record.identityLocators.length === 0) {
     throw new TypeError('official identity locator required');
   }
   if (record.evidenceKind === 'OFFICIAL_PRODUCT_PAGE') {
     for (const value of record.identityLocators) {
-      if (!['json_ld_product_model', 'product_analytics_model', 'product_data_attribute', 'product_meta_model']
+      if (!['json_ld_product_model', 'product_analytics_model', 'product_data_attribute', 'product_meta_model',
+        'product_copy_model_attribute', 'official_support_canonical_model']
         .includes(value.kind)) throw new TypeError('official HTML identity locator invalid');
       required(value.path, 'official HTML identity locator path');
-      if (!exactModel(value.value, record.identity.model)) throw new TypeError('official HTML identity locator model mismatch');
+      if (!exactModel(value.value, identityLocatorModel)) throw new TypeError('official HTML identity locator model mismatch');
       hash(value.fragmentSha256, 'official HTML identity locator hash');
     }
   } else {
@@ -376,8 +520,36 @@ function validateLocatorList(record) {
   }
 }
 
+function validateMarketSignal(record, requiredForSchema) {
+  if (!requiredForSchema && record.marketSignal == null) return;
+  const signal = record.marketSignal;
+  if (!signal || !MARKET_SIGNAL_STATES.has(signal.status) || !Array.isArray(signal.locators)) {
+    throw new TypeError('official identity market signal invalid');
+  }
+  if (record.evidenceKind === 'OFFICIAL_PDF_MINERU') {
+    if (signal.status !== 'UNKNOWN' || signal.locators.length !== 0) {
+      throw new TypeError('official PDF identity cannot assert market availability');
+    }
+    return;
+  }
+  for (const value of signal.locators) {
+    if (value.kind !== 'json_ld_offer_availability') {
+      throw new TypeError('official HTML market locator invalid');
+    }
+    required(value.path, 'official HTML market locator path');
+    required(value.value, 'official HTML market locator value');
+    hash(value.fragmentSha256, 'official HTML market locator hash');
+  }
+  const states = new Set(signal.locators
+    .map((entry) => schemaAvailabilityState(entry.value))
+    .filter(Boolean));
+  const expected = states.size > 1 ? 'CONFLICT' : states.values().next().value ?? 'UNKNOWN';
+  if (signal.status !== expected) throw new TypeError('official HTML market signal status mismatch');
+}
+
 export function validateOfficialIdentityEvidenceManifest(document) {
-  if (!document || document.schemaVersion !== 1 || document.policyVersion !== EVIDENCE_POLICY
+  if (!document || ![1, 2].includes(document.schemaVersion)
+    || document.policyVersion !== EVIDENCE_POLICIES[document.schemaVersion]
     || !Array.isArray(document.records) || document.records.length === 0) {
     throw new TypeError('official identity evidence manifest schema invalid');
   }
@@ -393,6 +565,14 @@ export function validateOfficialIdentityEvidenceManifest(document) {
       brand: required(record.identity?.brand, 'official identity brand'),
       model: required(record.identity?.model, 'official identity model'),
     };
+    const sourceIdentityModel = record.sourceIdentityModel == null
+      ? identity.model
+      : required(record.sourceIdentityModel, 'official identity source identity model');
+    if (!exactModel(sourceIdentityModel, identity.model)
+      && (record.evidenceKind !== 'OFFICIAL_PRODUCT_PAGE'
+        || !officialHtmlModelVariant(identity, sourceIdentityModel))) {
+      throw new TypeError('official identity source identity model is not an approved HTML model variant');
+    }
     const sourceUrl = new URL(required(record.source?.sourceUrl, 'official identity source URL')).toString();
     const finalUrl = new URL(required(record.source?.finalUrl, 'official identity final URL')).toString();
     if (!isOfficialBrandMarketUrl(sourceUrl, identity.brand)
@@ -423,7 +603,8 @@ export function validateOfficialIdentityEvidenceManifest(document) {
     } else if (record.derivedArtifact != null) {
       throw new TypeError('official HTML identity cannot carry a MinerU artifact');
     }
-    validateLocatorList(record);
+    validateLocatorList(record, sourceIdentityModel);
+    validateMarketSignal(record, document.schemaVersion >= 2);
   }
   if (new Set(ids).size !== ids.length
     || ids.some((id, index) => index > 0 && ids[index - 1].localeCompare(id) > 0)) {
@@ -436,6 +617,12 @@ export function validateOfficialIdentityEvidenceManifest(document) {
       return result;
     }, {})).sort(([left], [right]) => left.localeCompare(right))),
   };
+  if (document.schemaVersion >= 2) {
+    expectedSummary.byMarketSignal = Object.fromEntries(Object.entries(document.records.reduce((result, record) => {
+      result[record.marketSignal.status] = (result[record.marketSignal.status] ?? 0) + 1;
+      return result;
+    }, {})).sort(([left], [right]) => left.localeCompare(right)));
+  }
   if (!sameCanonical(document.summary, expectedSummary)) throw new TypeError('official identity evidence summary mismatch');
   const semantic = canonicalSha256(semanticPayload(document));
   if (document.semanticSha256 !== semantic
@@ -457,8 +644,9 @@ export async function loadOfficialIdentityEvidence({ manifest, readObject }) {
     }
     validatePayload(rawBytes, record.rawArtifact.mediaType);
     let replayedLocators;
+    const sourceIdentityModel = record.sourceIdentityModel ?? record.identity.model;
     if (record.evidenceKind === 'OFFICIAL_PRODUCT_PAGE') {
-      replayedLocators = extractOfficialHtmlIdentityLocators(rawBytes, record.identity.model);
+      replayedLocators = extractOfficialHtmlIdentityLocators(rawBytes, sourceIdentityModel);
     } else {
       const jsonBytes = Buffer.from(await readObject(record.derivedArtifact.objectPath) ?? []);
       if (sha256(jsonBytes) !== record.derivedArtifact.contentSha256
@@ -471,6 +659,12 @@ export async function loadOfficialIdentityEvidence({ manifest, readObject }) {
     if (!sameCanonical(replayedLocators, record.identityLocators)) {
       throw new Error(`official identity locator replay mismatch: ${record.evidenceId}`);
     }
+    const replayedMarketSignal = record.evidenceKind === 'OFFICIAL_PRODUCT_PAGE'
+      ? extractOfficialHtmlMarketSignal(rawBytes, sourceIdentityModel)
+      : { status: 'UNKNOWN', locators: [] };
+    if (record.marketSignal != null && !sameCanonical(replayedMarketSignal, record.marketSignal)) {
+      throw new Error(`official identity market signal replay mismatch: ${record.evidenceId}`);
+    }
     observations.push({
       evidenceKind: record.evidenceKind,
       evidenceId: record.evidenceId,
@@ -478,12 +672,14 @@ export async function loadOfficialIdentityEvidence({ manifest, readObject }) {
       category: record.identity.category,
       brand: record.identity.brand,
       model: record.identity.model,
+      ...(record.sourceIdentityModel ? { sourceIdentityModel: record.sourceIdentityModel } : {}),
       sourceUrl: record.source.sourceUrl,
       finalUrl: record.source.finalUrl,
       observedAt: record.source.acquiredAt,
       rawSha256: record.rawArtifact.contentSha256,
       rawObjectPath: record.rawArtifact.objectPath,
       identityLocators: structuredClone(record.identityLocators),
+      marketSignal: structuredClone(record.marketSignal ?? replayedMarketSignal),
       ...(record.derivedArtifact ? { derivedArtifact: structuredClone(record.derivedArtifact) } : {}),
       manifestSemanticSha256: manifest.semanticSha256,
     });

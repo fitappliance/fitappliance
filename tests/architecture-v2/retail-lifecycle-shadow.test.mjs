@@ -33,6 +33,59 @@ function resignShadow(value) {
   return result;
 }
 
+function countBy(records, selector) {
+  const counts = {};
+  for (const record of records) {
+    const key = selector(record);
+    counts[key] = (counts[key] ?? 0) + 1;
+  }
+  return Object.fromEntries(Object.entries(counts).sort(([left], [right]) => left.localeCompare(right)));
+}
+
+function marketLifecycle(publicProjection, states = {}) {
+  const records = publicProjection.products.map((product) => {
+    const configured = states[product.id] ?? {};
+    return {
+      canonicalProductId: product.canonicalProductId,
+      legacyRuntimeId: product.id,
+      category: product.cat,
+      brand: product.brand,
+      model: product.model,
+      marketState: configured.marketState ?? 'UNKNOWN_AU',
+      registryMarketState: configured.registryMarketState ?? 'NO_REGISTRY',
+      officialOfferAvailability: configured.officialOfferAvailability ?? 'UNKNOWN',
+      referenceId: null,
+      registryEvidence: [],
+      officialEvidenceIds: configured.officialEvidenceIds ?? [],
+      reasonCodes: configured.reasonCodes ?? ['NO_ADMISSIBLE_EXACT_OFFICIAL_MARKET_EVIDENCE'],
+    };
+  }).sort((left, right) => left.legacyRuntimeId.localeCompare(right.legacyRuntimeId));
+  const result = {
+    schemaVersion: 1,
+    policyVersion: 'official-market-lifecycle-v1',
+    asOf: '2026-07-20T01:00:00.000Z',
+    sourceBindings: {
+      publicProjectionSha256: hash(`${JSON.stringify(publicProjection, null, 2)}\n`),
+      publicProjectionSemanticSha256: hash(JSON.stringify(canonical(publicProjection))),
+      historicalReferenceSha256: '3'.repeat(64),
+      historicalReferenceSemanticSha256: '4'.repeat(64),
+      officialIdentityEvidenceSha256: '5'.repeat(64),
+      officialIdentityEvidenceSemanticSha256: '6'.repeat(64),
+    },
+    records,
+    summary: {
+      products: records.length,
+      byMarketState: countBy(records, (record) => record.marketState),
+      byRegistryMarketState: countBy(records, (record) => record.registryMarketState),
+      byOfficialOfferAvailability: countBy(records, (record) => record.officialOfferAvailability),
+    },
+  };
+  const semanticSha256 = hash(JSON.stringify(canonical(result)));
+  result.projectionId = `official_market_lifecycle_${semanticSha256.slice(0, 24)}`;
+  result.semanticSha256 = semanticSha256;
+  return result;
+}
+
 const sourcePolicy = {
   schemaVersion: 2,
   policyVersion: 'retailer-source-policy-v2',
@@ -132,6 +185,8 @@ function fixture() {
     ],
   };
   const projectionBytes = `${JSON.stringify(publicProjection, null, 2)}\n`;
+  const officialMarketLifecycle = marketLifecycle(publicProjection);
+  const officialMarketLifecycleBytes = `${JSON.stringify(officialMarketLifecycle, null, 2)}\n`;
   const policyBytes = `${JSON.stringify(sourcePolicy)}\n`;
   const ledger = buildRetailerObservationLedger({
     existingLedger: { schemaVersion: 1, observations: [] },
@@ -148,6 +203,8 @@ function fixture() {
   return {
     publicProjection,
     publicProjectionSha256: hash(projectionBytes),
+    officialMarketLifecycle,
+    officialMarketLifecycleSha256: hash(officialMarketLifecycleBytes),
     retailerLedger: ledger,
     retailerLedgerSha256: hash(`${JSON.stringify(ledger)}\n`),
     sourcePolicy,
@@ -186,6 +243,76 @@ test('shadow lifecycle accounts for transitions and blocks a partial production 
     /cutover.*blocked/i,
   );
   assert.deepEqual(input.publicProjection, before);
+});
+
+test('official AU identity resolves unknown retail only to the reference library', () => {
+  const input = fixture();
+  const unknownProduct = input.publicProjection.products.find((product) => product.id === 'unknown');
+  unknownProduct.price = 1299;
+  unknownProduct.direct_url = 'https://www.fixture-retailer.example/products/unknown';
+  unknownProduct.affiliate_url = 'https://affiliate.example/unknown';
+  unknownProduct.discovery = {
+    retailer: 'Fixture Retailer',
+    product_url: 'https://www.fixture-retailer.example/products/unknown',
+    source: 'fixture',
+  };
+  input.publicProjectionSha256 = hash(`${JSON.stringify(input.publicProjection, null, 2)}\n`);
+  input.officialMarketLifecycle = marketLifecycle(input.publicProjection, {
+    unknown: {
+      marketState: 'ACTIVE_AU_REGISTERED',
+      registryMarketState: 'ACTIVE_AU',
+      reasonCodes: ['EXACT_ACTIVE_AU_REGISTRY'],
+    },
+  });
+  input.officialMarketLifecycleSha256 = hash(
+    `${JSON.stringify(input.officialMarketLifecycle, null, 2)}\n`,
+  );
+  const shadow = buildRetailLifecycleShadow(input);
+  const record = shadow.records.find((row) => row.legacyRuntimeId === 'unknown');
+  assert.equal(record.lifecycleState, 'UNKNOWN_RETAIL');
+  assert.equal(record.marketLifecycle.marketState, 'ACTIVE_AU_REGISTERED');
+  assert.equal(record.publicVisibility, 'MARKET_REFERENCE_ONLY');
+  assert.equal(record.fitDestination, 'HISTORICAL_ONLY');
+  assert.equal(record.retailLifecycle.authorizingObservation, null);
+  assert.equal(shadow.cutover.status, 'READY');
+  assert.deepEqual(shadow.cutover.unresolvedLegacyCurrentIds, []);
+
+  const released = applyRetailLifecycleCutover({
+    publicProjection: input.publicProjection,
+    publicProjectionSha256: input.publicProjectionSha256,
+    shadow,
+  });
+  const projected = released.products.find((product) => product.id === 'unknown');
+  assert.equal(projected.unavailable, true);
+  assert.deepEqual(projected.retailers, []);
+  assert.equal(projected.lifecycleVisibility, 'MARKET_REFERENCE_ONLY');
+  assert.equal(projected.price, null);
+  assert.equal(Object.hasOwn(projected, 'direct_url'), false);
+  assert.equal(Object.hasOwn(projected, 'affiliate_url'), false);
+  assert.equal(Object.hasOwn(projected, 'discovery'), false);
+  assert.deepEqual(projected.retailLifecycle.latestObservations, []);
+  assert.deepEqual(projected.retailLifecycle.collectionAttempts, []);
+});
+
+test('inactive registration cannot silently demote a prior-current product', () => {
+  const input = fixture();
+  input.officialMarketLifecycle = marketLifecycle(input.publicProjection, {
+    unknown: {
+      marketState: 'INACTIVE_AU_REGISTERED',
+      registryMarketState: 'INACTIVE_AU',
+      reasonCodes: ['EXACT_INACTIVE_AU_REGISTRY'],
+    },
+  });
+  input.officialMarketLifecycleSha256 = hash(
+    `${JSON.stringify(input.officialMarketLifecycle, null, 2)}\n`,
+  );
+
+  const shadow = buildRetailLifecycleShadow(input);
+  const record = shadow.records.find((row) => row.legacyRuntimeId === 'unknown');
+  assert.equal(record.lifecycleState, 'UNKNOWN_RETAIL');
+  assert.equal(record.publicVisibility, 'HIDDEN_UNRESOLVED');
+  assert.equal(shadow.cutover.status, 'BLOCKED');
+  assert.deepEqual(shadow.cutover.unresolvedLegacyCurrentIds, ['fa_prod_unknown']);
 });
 
 test('shadow-only publication preserves the complete baseline byte-for-byte', () => {
@@ -242,10 +369,13 @@ test('a lifecycle-neutral safety release can only remove unsupported legacy door
   delete candidate.products[0].inferred_door_swing;
   candidate.products[0].flags.reversible_door = null;
   const baselineBytes = `${JSON.stringify(baseline, null, 2)}\n`;
+  const reboundMarket = marketLifecycle(baseline);
   const reboundShadow = buildRetailLifecycleShadow({
     ...input,
     publicProjection: baseline,
     publicProjectionSha256: hash(baselineBytes),
+    officialMarketLifecycle: reboundMarket,
+    officialMarketLifecycleSha256: hash(`${JSON.stringify(reboundMarket, null, 2)}\n`),
   });
   const candidateBytes = `${JSON.stringify(candidate, null, 2)}\n`;
   const releasePolicy = {
@@ -349,11 +479,16 @@ test('tracked full-catalogue shadow accounts for every product and keeps product
   const releasePolicyBytes = readFileSync(new URL(
     '../../data/architecture-v2/policies/retail-lifecycle-release-policy.json', import.meta.url,
   ));
+  const officialMarketLifecycleBytes = readFileSync(new URL(
+    '../../data/architecture-v2/generated/official-market-lifecycle.json', import.meta.url,
+  ));
   const publicProjection = JSON.parse(projectionBytes);
   const releasePolicy = JSON.parse(releasePolicyBytes);
   const shadow = buildRetailLifecycleShadow({
     publicProjection,
     publicProjectionSha256: hash(projectionBytes),
+    officialMarketLifecycle: JSON.parse(officialMarketLifecycleBytes),
+    officialMarketLifecycleSha256: hash(officialMarketLifecycleBytes),
     retailerLedger: JSON.parse(ledgerBytes),
     retailerLedgerSha256: hash(ledgerBytes),
     sourcePolicy: JSON.parse(policyBytes),

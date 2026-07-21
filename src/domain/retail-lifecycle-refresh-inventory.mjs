@@ -219,11 +219,15 @@ export function validateRetailLifecycleRefreshInventory(document) {
         && task.action === 'APPLY_DECLARATIVE_CANONICAL_MERGE'
         && task.canonicalAction === 'MERGE_DUPLICATE_CANONICAL'
         && task.executionState === 'PENDING_ATOMIC_IDENTITY_CUTOVER';
+      const quarantine = task.kind === 'CANONICAL_IDENTITY_MIGRATION'
+        && task.action === 'APPLY_DECLARATIVE_CANONICAL_QUARANTINE'
+        && task.canonicalAction === 'QUARANTINE_UNSUPPORTED_CANONICAL'
+        && task.executionState === 'PENDING_ATOMIC_IDENTITY_CUTOVER';
       const discovery = task.kind === 'EXACT_MODEL_RETAIL_SOURCE_DISCOVERY'
         && task.action === 'DISCOVER_AUTHORIZED_EXACT_MODEL_RETAIL_SOURCE'
         && task.canonicalAction === 'KEEP_CANONICAL_IDENTITY'
         && task.executionState === 'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY';
-      if (!merge && !discovery) {
+      if (!merge && !quarantine && !discovery) {
         throw new TypeError(`refresh control task contract mismatch: ${task.controlTaskId}`);
       }
       const expectedId = `retail_control_${canonicalSha256({
@@ -376,9 +380,11 @@ export function buildRetailLifecycleRefreshInventory({
     const migrationCase = migrationCases.get(canonicalProductId) ?? null;
     const identityEventIds = migrationEvents.get(canonicalProductId) ?? [];
     let controlTasks = [];
-    if (migrationCase?.action === 'MERGE_DUPLICATE_CANONICAL') {
+    if (['MERGE_DUPLICATE_CANONICAL', 'QUARANTINE_UNSUPPORTED_CANONICAL']
+      .includes(migrationCase?.action)) {
       sourceTasks.splice(0);
       resolutionTasks.splice(0);
+      const quarantine = migrationCase.action === 'QUARANTINE_UNSUPPORTED_CANONICAL';
       controlTasks = [{
         controlTaskId: `retail_control_${canonicalSha256({
           canonicalProductId,
@@ -386,7 +392,9 @@ export function buildRetailLifecycleRefreshInventory({
           identityEventIds,
         }).slice(0, 24)}`,
         kind: 'CANONICAL_IDENTITY_MIGRATION',
-        action: 'APPLY_DECLARATIVE_CANONICAL_MERGE',
+        action: quarantine
+          ? 'APPLY_DECLARATIVE_CANONICAL_QUARANTINE'
+          : 'APPLY_DECLARATIVE_CANONICAL_MERGE',
         executionState: 'PENDING_ATOMIC_IDENTITY_CUTOVER',
         canonicalAction: migrationCase.action,
         identityEventIds,

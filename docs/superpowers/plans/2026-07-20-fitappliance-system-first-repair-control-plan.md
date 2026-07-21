@@ -5,10 +5,11 @@
 > batch. Use `superpowers:executing-plans` for execution and
 > `superpowers:test-driven-development` for behavior changes.
 
-- **Status:** IN_PROGRESS - Task 9 final verification is active; production
-  remains on the pre-cutover release because lifecycle cutover is blocked
+- **Status:** COMPLETED - Tasks 0-10 passed; the release candidate is authorized
+  while production intentionally remains on the pre-cutover release
 - **Date:** 2026-07-21
-- **Active task:** Task 9 adversarial closeout and blocked prerequisite record
+- **Active task:** none; completed closeout record:
+  [`2026-07-21-retail-lifecycle-five-blocker-closeout.md`](2026-07-21-retail-lifecycle-five-blocker-closeout.md)
 - **Canonical product contract:**
   [`../../product-core-brief.md`](../../product-core-brief.md)
 - **Canonical operations guide:**
@@ -447,8 +448,8 @@ Mandatory adversarial traces across the programme:
 | 6 | Prove receipt-to-publication vertical slices | 5 | COMPLETED | Unsupported legacy door semantics removed at receipt/public boundaries; unresolved accepted conflicts and forged verified Fit state fail closed; zero-violation idempotent next-epoch shadow; 1,066 Architecture V2 and 2,726 repository tests passed |
 | 7 | Produce deterministic multi-cohort manifest windows | 3, 4 | COMPLETED | Schema/planner v2 exposes 24 manifests across 402 eligible cohorts; 8 P0 slots rotate across all four categories; local exclusion selects another P0 while P1 remains blocked; 1,072 Architecture V2 and 2,732 repository tests passed |
 | 8 | Add stage-aware local circuit breakers and global stop rules | 6, 7 | COMPLETED | Schema-v2 typed stage metrics; 10-unit/two-manifest Wilson gate; stable epoch reopening; five legacy entries preserved; real decision RUN_P0; 1,077 Architecture V2 and 2,737 repository tests passed |
-| 9 | Full replay, migration, release DAG, and rollback drill | 8 | IN_PROGRESS | Identity closure resolved 17/18 cases and isolated one conflicting embedded-model case; released and candidate identity epochs are isolated; full replay and rollback drill pass; 79 lifecycle prerequisites still prohibit cutover |
-| 10 | Refresh canonical docs and close the release | 9 | BLOCKED_BY_9 | Canonical docs record the measured blocked state and recovery order; release closure remains prohibited until the 79 Task 9 prerequisites are independently cleared |
+| 9 | Full replay, migration, release DAG, and rollback drill | 8 | COMPLETED | Candidate `retail_lifecycle_release_6c42c754aeb1ff49097b32b4` accounts for 1,384/1,384 prior-current products with zero unresolved, zero unsafe removals, and zero public control-plane leakage; rollback is byte-identical; the production baseline remains unchanged |
+| 10 | Refresh canonical docs and close the release | 9 | COMPLETED | Product, architecture, remediation, runbook, and control-plan contracts now describe the 3,513-product candidate, three-axis lifecycle boundary, explicit materialization step, and residual operational risks |
 
 Only one row may be `IN_PROGRESS`. A task is complete only when its own
 acceptance gate is independently satisfied; no gate may rely on a later task.
@@ -1542,46 +1543,45 @@ Negative/adversarial canaries: `RF730QZUVX1 French Door 726L` cannot merge into 
 
 **Final verification evidence (2026-07-21):**
 
-- `npm run test:architecture-v2`: 1,164 passed, 0 failed. The first full run
-  exposed one stale repository assertion that still assigned the unsafe `f3`
-  merge to the cutover lane; the corrected contract asserts `f3` exact-model
-  rediscovery and the proven `f7` pending merge, after which the full suite
-  passed.
-- `npm test`: 2,824 passed, 0 failed; `npm run lint` passed.
+- `npm run test:architecture-v2`: 1,186 passed, 0 failed.
+- `npm test`: 2,846 passed, 0 failed; `npm run lint` passed.
 - `env -u FITAPPLIANCE_STORAGE_ROOT npm run build` passed, including the full
   Architecture V2 build, runtime projection, static-page generation, Fit audit,
   and historical replacement audit without external-drive access.
-- Two identical `build:architecture-v2 ->
-  refresh:historical-evidence-recovery ->
-  build:historical-evidence-system-contract` sequences produced identical file
-  SHA-256 values: released registry `2459a3a6254c336c875a1fc8d5e070d0271175dd08786bba6477b94ef410336f`,
-  candidate registry `7109209fa492dbd51441f907ae309884c36c25eab981806305b7b2e696d990f7`,
-  public projection `50a85830929e5298a1f484b0ea3367d7480a3ddb91247bf16d7bd93eab6e33b1`,
-  PDF acquisition queue `b7c84b7ec3e17cc8025b6f25a9f8fd6de3360c54732e9dd57b4d88cf958f5fad`,
-  executable queue `84c1b361f69e592f70e4316259cf34623f8b51e969225cacb6be3e3c77d8854e`,
-  and system contract `77e386a56ebf23842ebd9cb993c3cb9648a75318adedddcfa5c977b0d2813157`.
-- The released registry and public projection remain byte-identical to `HEAD`;
-  the 3,514-product identity candidate is not a deployment input.
+- Two successive offline Architecture V2 builds produced byte-identical hashes
+  for all 137 tracked architecture/reference files. Their combined manifest
+  SHA-256 is
+  `cae86752cdee37f7c1a873bff5f7da58a6dda607d02bcfa622ffcfec2abe9a9d`.
+- A separate build with `FITAPPLIANCE_STORAGE_ROOT` pointed at a nonexistent
+  directory passed and reproduced release candidate
+  `retail_lifecycle_release_6c42c754aeb1ff49097b32b4` and system contract
+  `historical_evidence_system_9b33eff3a2d26abab79c6c6c`.
+- The 38-stage, 10-epoch system contract has semantic SHA-256
+  `9b33eff3a2d26abab79c6c6c9ec768680f71022ccbf1f62809195792f813e9bf`.
+  Target-state schema v2 binds the exact classification, acquisition queue,
+  executable queue, acceptance bundle, and attempt-ledger bytes.
+- The candidate partitions all 1,384 prior-current products: 260 still-current,
+  1,045 explicitly unavailable, 77 market-reference-only, one identity merge,
+  and one unsupported-canonical quarantine. It has zero unresolved IDs, zero
+  unsafe removals, zero commercial leakage from market references, and zero Fit
+  publication violations. The final 8,653,582-byte public candidate excludes
+  collection attempts and conflict payloads and remains below the enforced
+  two-times-baseline size ceiling.
+- LG `GS-B655PL` keeps its own identity using exact official AU and government
+  evidence; its sibling retailer response is invalidated and cannot donate
+  availability. Fisher & Paykel `f3` is quarantined rather than borrowing
+  `RF730QZUVB1`; Haier `f7` is merged only into exact `HRF520BHS` without field
+  donation.
+- Rollback is `PROVEN_BYTE_IDENTICAL` against released projection SHA-256
+  `50a85830929e5298a1f484b0ea3367d7480a3ddb91247bf16d7bd93eab6e33b1`.
 
-**Deterministic unblocking order:**
+**Operational cutover boundary:**
 
-1. preserve the completed fresh Partnerize acquisition receipt and listing-
-   reconciliation replay as the released source epoch;
-2. retain the 17 evidence-closed adjudications and their 20 per-link events as
-   a control-only partial migration candidate; keep the conflicting
-   `RF730QZUVX1` row outside every mutation set;
-3. obtain authorised feeds or explicit automation permission for the 76
-   source-policy-blocked products; until then they remain unknown and hidden
-   from current-result output;
-4. discover an authorised exact LG `GS-B655PL` retail source instead of accepting its
-   `GS-B655MBL` sibling response;
-5. obtain exact-model evidence for `RF730QZUVX1` or prove a different canonical
-   correction without borrowing `RF730QZUVB1` availability;
-6. apply the one proven pending merge and any later independently proven
-   correction together with lifecycle publication,
-   rerun the entire release DAG, require zero unresolved prior-current IDs,
-   repeat the deterministic build, perform the rollback drill, and only then
-   authorize cutover and Task 10 release closure.
+The release candidate is authorized, but this repair does not materialize or
+deploy it. Production remains on the released 3,515-product baseline. A later
+explicit operational action may materialize the 3,513-product candidate, run
+the normal deployment checks, and retain the recorded rollback projection. A
+normal build never performs that cutover implicitly.
 
 **Required traces:** happy path, process crash/resume, repeated batch, duplicate
 target, cross-source conflict, archived publication, schema upgrade, rollback,

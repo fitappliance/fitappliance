@@ -200,8 +200,15 @@ function fixture() {
     state: 'DIMENSIONS_RECEIPT', stateClass: 'COMPLETED', actionable: false, terminal: true,
   });
   const targetState = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt: GENERATED_AT,
+    sourceBindings: {
+      classificationSha256: SHA('1'),
+      acquisitionQueueSha256: SHA('2'),
+      executableQueueSha256: SHA('3'),
+      acceptanceBundleSha256: SHA('4'),
+      attemptLedgerSha256: SHA('5'),
+    },
     summary: { records: stateRecords.length },
     records: stateRecords,
   };

@@ -24,6 +24,11 @@
       "kind": "IDENTITY_RESOLUTION"
     },
     {
+      "id": "retailer-identity-resolution:ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "sha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "kind": "IDENTITY_RESOLUTION"
+    },
+    {
       "id": "retailer-snapshot:appliances-online-product-api-v1:2026-07-20T16:34:00.000Z:0139b4f587d2624a6c2301f6f18e03c47f5566fe77e56b72cb2930782f028492",
       "sha256": "0139b4f587d2624a6c2301f6f18e03c47f5566fe77e56b72cb2930782f028492",
       "kind": "IMMUTABLE_RETAILER_SOURCE"
@@ -93518,6 +93523,28 @@
       "legacyProjectionBinding": null
     },
     {
+      "id": "obs_identity_62597b6e3d11c2b355e7e96e",
+      "canonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+      "retailer": "Appliances Online",
+      "adapterId": "appliances-online-product-api-v1",
+      "observedAt": "2026-07-20T17:23:04.000Z",
+      "url": "https://www.appliancesonline.com.au/product/fisher-paykel-690l-freestanding-quad-door-fridge-freezer-ice-water-rf730qzuvb1/",
+      "redirectUrl": null,
+      "availability": "available",
+      "priceAud": 3788,
+      "title": "Fisher & Paykel Series 7 690L Quad Door Refrigerator with Ice and Water Matte Black Glass RF730QZUVB1",
+      "imageUrl": null,
+      "retailerProductId": "92118",
+      "sourceType": "public_retailer_api",
+      "listingState": "current",
+      "sourceReference": "retailer-object:sha256:8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
+      "rawSourceSha256": "8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
+      "policyVersion": "retailer-source-policy-v2:appliances-online-product-api-v1",
+      "expectedCadenceHours": 24,
+      "maximumCurrentAgeHours": 72,
+      "legacyProjectionBinding": null
+    },
+    {
       "id": "obs_identity_75898f84b67104a12e5bc72d",
       "canonicalProductId": "fa_prod_3036232c6746d56e540fff19",
       "retailer": "The Good Guys",
@@ -93596,6 +93623,28 @@
       "title": "LG WashTower 19kg-10kg Combo Washer Dryer",
       "imageUrl": null,
       "retailerProductId": "50097464",
+      "sourceType": "affiliate_feed",
+      "listingState": "current",
+      "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+      "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+      "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
+      "expectedCadenceHours": 24,
+      "maximumCurrentAgeHours": 72,
+      "legacyProjectionBinding": null
+    },
+    {
+      "id": "obs_identity_de6154423c940c842eda3582",
+      "canonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+      "retailer": "The Good Guys",
+      "adapterId": "the-good-guys-partnerize-feed-v1",
+      "observedAt": "2026-07-20T19:43:11.969Z",
+      "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
+      "redirectUrl": null,
+      "availability": "available",
+      "priceAud": 3999,
+      "title": "Fisher & Paykel 690L Quad Door Refrigerator",
+      "imageUrl": null,
+      "retailerProductId": "50078267",
       "sourceType": "affiliate_feed",
       "listingState": "current",
       "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
@@ -126319,6 +126368,43 @@
       }
     },
     {
+      "id": "retail_identity_event_b62234c63a74dfac5a61ef0a",
+      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
+      "baselineLinkId": "retail_link_519e6530a163ff49992e0e39",
+      "action": "REASSIGN_TO_EXISTING_CANONICAL",
+      "sourceCanonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
+      "destinationCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+      "resolvedAt": "2026-07-21T12:12:18.070Z",
+      "sourceObservedAt": "2026-07-20T17:23:04.000Z",
+      "rawSourceSha256": "8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
+      "resolutionSemanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "reasonCodes": [
+        "UNSUPPORTED_POLLUTED_CANONICAL_WITH_ONE_EXACT_RECEIVED_DESTINATION"
+      ],
+      "observation": {
+        "id": "obs_identity_62597b6e3d11c2b355e7e96e",
+        "canonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+        "retailer": "Appliances Online",
+        "adapterId": "appliances-online-product-api-v1",
+        "observedAt": "2026-07-20T17:23:04.000Z",
+        "url": "https://www.appliancesonline.com.au/product/fisher-paykel-690l-freestanding-quad-door-fridge-freezer-ice-water-rf730qzuvb1/",
+        "redirectUrl": null,
+        "availability": "available",
+        "priceAud": 3788,
+        "title": "Fisher & Paykel Series 7 690L Quad Door Refrigerator with Ice and Water Matte Black Glass RF730QZUVB1",
+        "imageUrl": null,
+        "retailerProductId": "92118",
+        "sourceType": "public_retailer_api",
+        "listingState": "current",
+        "sourceReference": "retailer-object:sha256:8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
+        "rawSourceSha256": "8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
+        "policyVersion": "retailer-source-policy-v2:appliances-online-product-api-v1",
+        "expectedCadenceHours": 24,
+        "maximumCurrentAgeHours": 72,
+        "legacyProjectionBinding": null
+      }
+    },
+    {
       "id": "retail_identity_event_c8c843f199ce471080e8c439",
       "resolutionTaskId": "retail_resolution_933c3a7734d6c2259d384afa",
       "baselineLinkId": "retail_link_01d2ab6ed14c8e14398a3858",
@@ -126425,6 +126511,43 @@
       }
     },
     {
+      "id": "retail_identity_event_d0db14a16ab19be336826987",
+      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
+      "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
+      "action": "REASSIGN_TO_EXISTING_CANONICAL",
+      "sourceCanonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
+      "destinationCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+      "resolvedAt": "2026-07-21T12:12:18.070Z",
+      "sourceObservedAt": "2026-07-20T19:43:11.969Z",
+      "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+      "resolutionSemanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "reasonCodes": [
+        "UNSUPPORTED_POLLUTED_CANONICAL_WITH_ONE_EXACT_RECEIVED_DESTINATION"
+      ],
+      "observation": {
+        "id": "obs_identity_de6154423c940c842eda3582",
+        "canonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+        "retailer": "The Good Guys",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
+        "redirectUrl": null,
+        "availability": "available",
+        "priceAud": 3999,
+        "title": "Fisher & Paykel 690L Quad Door Refrigerator",
+        "imageUrl": null,
+        "retailerProductId": "50078267",
+        "sourceType": "affiliate_feed",
+        "listingState": "current",
+        "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
+        "expectedCadenceHours": 24,
+        "maximumCurrentAgeHours": 72,
+        "legacyProjectionBinding": null
+      }
+    },
+    {
       "id": "retail_identity_event_d6879ad66e88998a5584f77b",
       "resolutionTaskId": "retail_resolution_d05ea1a30c6320e6cb2a6c4a",
       "baselineLinkId": "retail_link_945a2a727616a6bde23662cf",
@@ -126442,13 +126565,13 @@
     }
   ],
   "summary": {
-    "observations": 3531,
+    "observations": 3533,
     "currentBaselineObservations": 1614,
-    "preservedHistoricalObservations": 1917,
+    "preservedHistoricalObservations": 1919,
     "legacyUnknownObservations": 1652,
-    "authoritativeTypedObservations": 1879,
+    "authoritativeTypedObservations": 1881,
     "collectionAttempts": 1193,
     "canonicalProducts": 1477
   },
-  "semanticSha256": "02c289d4ec3996e3730c961224c0e5ebcbd58c7c61f59f86add16f50e992efcc"
+  "semanticSha256": "873d777c0c9a94fafa5c63f551d65dcdcc5ce163bb951cf6024aea3a7d1fbab4"
 }

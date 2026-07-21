@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { createHash } from 'node:crypto';
-import { readFile, writeFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
 import {
   buildLifecycleNeutralSafetyProjection,
   buildPublicProjection,
@@ -32,6 +32,7 @@ const { enrichApplianceDocument } = applianceEnrichment;
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const publicProjectionPath = resolveArchitectureV2Path(root, 'publicProjection');
+const candidateProjectionPath = resolveArchitectureV2Path(root, 'publicProjectionMigrationCandidate');
 const releasedPublicProjectionBytes = await readFile(publicProjectionPath);
 const releasedPublicProjection = JSON.parse(releasedPublicProjectionBytes);
 const lifecycleReleasePolicyBytes = await readFile(
@@ -188,6 +189,7 @@ const displayReady = enrichApplianceDocument(filtered, {
 });
 const candidateProjection = buildPublicProjection(registry, displayReady);
 const candidateProjectionBytes = `${JSON.stringify(candidateProjection)}\n`;
+const candidateProjectionArtifactBytes = `${JSON.stringify(candidateProjection, null, 2)}\n`;
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const safetyCandidateProjection = buildLifecycleNeutralSafetyProjection(releasedPublicProjection);
 const safetyCandidateProjectionBytes = `${JSON.stringify(safetyCandidateProjection)}\n`;
@@ -218,8 +220,18 @@ if (safetyPublication.decision.status === 'SAFETY_FIELDS_REMOVED') {
     shadow: lifecycleShadow,
   });
 }
+const candidateAudit = auditPublicFitProjection(candidateProjection);
+if (candidateAudit.summary.violations !== 0) {
+  throw new Error('migration candidate contains unsafe Fit classifications');
+}
+await mkdir(dirname(candidateProjectionPath), { recursive: true });
+const candidateTemporaryPath = `${candidateProjectionPath}.${process.pid}.tmp`;
+await writeFile(candidateTemporaryPath, candidateProjectionArtifactBytes, { flag: 'wx' });
+await rename(candidateTemporaryPath, candidateProjectionPath);
 console.log(JSON.stringify({
   products: lifecyclePublication.publicProjection.products.length,
+  candidateProducts: candidateProjection.products.length,
+  candidateOutput: candidateProjectionPath,
   quarantined: registry.quarantine.length,
   lifecyclePublication: lifecyclePublication.decision.status,
   changedProducts: lifecyclePublication.decision.changedProductIds.length,

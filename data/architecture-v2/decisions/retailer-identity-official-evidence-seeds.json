@@ -3,12 +3,96 @@
   "policyVersion": "retailer-identity-official-evidence-seeds-v1",
   "seeds": [
     {
+      "evidenceId": "official_identity_bosch_kfi96axeaa_html",
+      "category": "fridge",
+      "brand": "Bosch",
+      "model": "KFI96AXEAA",
+      "sourceUrl": "https://www.bosch-home.com.au/en/product/fridges-freezers/fridge-freezers/freestanding-bottom-mount-fridge-freezer/KFI96AXEAA",
+      "mediaType": "text/html"
+    },
+    {
+      "evidenceId": "official_identity_bosch_sbv8ecx01a_html",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SBV8ECX01A",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/dishwashers/underbench-dishwashers/fully-integrated-dishwasher-60-cm/SBV8ECX01A",
+      "mediaType": "text/html"
+    },
+    {
+      "evidenceId": "official_identity_bosch_smu8zcs01a_html",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMU8ZCS01A",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/dishwashing/underbench-dishwashers/underbench-dishwasher-60-cm/SMU8ZCS01A",
+      "mediaType": "text/html"
+    },
+    {
+      "evidenceId": "official_identity_bosch_wan24121au_html",
+      "category": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAN24121AU",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/WAN24121AU",
+      "mediaType": "text/html"
+    },
+    {
+      "evidenceId": "official_identity_bosch_wan24126au_html",
+      "category": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAN24126AU",
+      "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/washers-dryers/washing-machines/front-load-washing-machines/WAN24126AU",
+      "mediaType": "text/html"
+    },
+    {
       "evidenceId": "official_identity_haier_hrf520bhs_pdf",
       "category": "fridge",
       "brand": "Haier",
       "model": "HRF520BHS",
       "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw41c88678/technical-content/cooling/refrigeration/bottom-mount/Haier790_user_manual_2019-5-31.pdf",
       "mediaType": "application/pdf"
+    },
+    {
+      "evidenceId": "official_identity_lg_gs_b655pl_html",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-B655PL",
+      "sourceUrl": "https://www.lg.com/au/fridge-freezers/side-by-side/gs-b655pl/",
+      "mediaType": "text/html"
+    },
+    {
+      "evidenceId": "official_identity_samsung_ww11cg604dle_html",
+      "category": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW11CG604DLE",
+      "sourceModel": "WW11CG604DLESA",
+      "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg604dlesa/",
+      "mediaType": "text/html"
+    },
+    {
+      "evidenceId": "official_identity_samsung_ww12bb944dgb_html",
+      "category": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW12BB944DGB",
+      "sourceModel": "WW12BB944DGBSA",
+      "sourceUrl": "https://www.samsung.com/au/support/model/WW12BB944DGBSA/",
+      "mediaType": "text/html"
+    },
+    {
+      "evidenceId": "official_identity_samsung_ww12bb944dgh_html",
+      "category": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW12BB944DGH",
+      "sourceModel": "WW12BB944DGHSA",
+      "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
+      "mediaType": "text/html"
+    },
+    {
+      "evidenceId": "official_identity_samsung_ww90dg6u34le_html",
+      "category": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW90DG6U34LE",
+      "sourceModel": "WW90DG6U34LESA",
+      "sourceUrl": "https://www.samsung.com/au/support/model/WW90DG6U34LESA/",
+      "mediaType": "text/html"
     },
     {
       "evidenceId": "official_identity_westinghouse_wbe4302ac_r_html",

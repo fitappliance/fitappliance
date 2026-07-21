@@ -200,6 +200,37 @@ test('archived recovery evidence remains historical-only while the product is ar
 
 });
 
+test('an exact archived legacy receipt may remain historical when its old entry lacks a canonical ID', () => {
+  const archivedBundle = structuredClone(currentBundle);
+  archivedBundle.entries[0].lifecycleState = 'CATALOG_ARCHIVED';
+  archivedBundle.entries[0].canonicalProductId = null;
+  const archivedProduct = wdProduct('CATALOG_ARCHIVED');
+  archivedProduct.unavailable = true;
+  archivedProduct.retailers = [];
+
+  const publication = buildHistoricalEvidencePublication({
+    bundle: archivedBundle,
+    products: [archivedProduct],
+  });
+  assert.equal(publication.currentAcceptanceByLegacyId.size, 0);
+  assert.equal(
+    publication.historicalEvidenceProjection.records[0].canonicalProductId,
+    archivedProduct.canonicalProductId,
+  );
+  assert.equal(publication.historicalEvidenceProjection.records[0].lifecycleState, 'CATALOG_ARCHIVED');
+
+  const currentProduct = wdProduct('CURRENT_RETAIL');
+  const relisted = buildHistoricalEvidencePublication({
+    bundle: archivedBundle,
+    products: [currentProduct],
+  });
+  assert.equal(relisted.currentAcceptanceByLegacyId.has(currentProduct.id), true);
+  assert.equal(
+    relisted.historicalEvidenceProjection.records[0].canonicalProductId,
+    currentProduct.canonicalProductId,
+  );
+});
+
 test('publication routes an existing receipt by current lifecycle instead of stale bundle lifecycle', () => {
   const cases = [
     ['CATALOG_ARCHIVED', false],

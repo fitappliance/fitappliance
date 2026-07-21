@@ -1,6 +1,13 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "generatedAt": "2026-07-19T19:32:08.439Z",
+  "sourceBindings": {
+    "classificationSha256": "c0f153f97ade174fa62e1ffae776569fe014740f6ed20790b81796073e979941",
+    "acquisitionQueueSha256": "b7c84b7ec3e17cc8025b6f25a9f8fd6de3360c54732e9dd57b4d88cf958f5fad",
+    "executableQueueSha256": "84c1b361f69e592f70e4316259cf34623f8b51e969225cacb6be3e3c77d8854e",
+    "acceptanceBundleSha256": "4540695de8470de76dfed64713f5e5989d90e63e196ff08f45142744d6936982",
+    "attemptLedgerSha256": "5ab203d81931c5ebfaf83d71b5d989622cd007e5e49be7648645c6f98b8c792e"
+  },
   "sourceClassificationGeneratedAt": "2026-07-19T19:32:08.439Z",
   "sourceExecutableQueueGeneratedAt": "2026-07-19T19:32:08.439Z",
   "summary": {

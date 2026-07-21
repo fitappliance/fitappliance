@@ -42,12 +42,12 @@
   },
   "sourceBindings": {
     "ledgerSha256": "7797bb1ee9e848be038a95a962c9ed2d0f1af558ae125aebf733d53f3be172d3",
-    "nextBatchesSha256": "bd0b13c353c1953b398d2010aedfb8e4a021eb854890119a828cbe3a8300fc16",
+    "nextBatchesSha256": "2ddda3e97ee5e57e513ede684ca34a87482ca3d9c397347dab4f0f8046cd7468",
     "programStatusSha256": "dd48f9357de1a3c88ee438493d3a252aace93e81ecd3eeffb5c3c95db3da1a12",
     "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
     "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
     "fitPublicationAuditSha256": "f7bc76df7f23d88ef2467002a98cd4852478d9ccabdbe136bd4c62cb7a1c9fdf",
-    "epochsSha256": "ea31f1559146f8a3a8e3c0015eefbb5871a268a7ed7cc5749084a64a3ec6b96d"
+    "epochsSha256": "ebc9b6ca6379dcaf09c56841ccc0e19f6b8c17eeb5d09bf9eb8be4fc86f1ca4b"
   },
   "epochs": [
     {
@@ -56,11 +56,11 @@
     },
     {
       "id": "identity-registry",
-      "semanticSha256": "e184e1108f9c020ca3af44a5d9291d65b7cb1f83441698d9685618f3c8954e64"
+      "semanticSha256": "e4557f5e2be3c1141f36ca001f9d1051ccba7d6d62f9fc3cd12791696917db16"
     },
     {
       "id": "lifecycle-policy",
-      "semanticSha256": "be8fe74ad0ae2be90d539808cb2b6e78f26b6ed649d85679b2704a85db887c1b"
+      "semanticSha256": "ea49f6f26a852ceef9ed157958a00a9c9edf60164f148710c4071f236f2fcc68"
     },
     {
       "id": "mineru-toolchain",
@@ -76,7 +76,7 @@
     },
     {
       "id": "publication",
-      "semanticSha256": "d4264ca609c61a95b5a239c694890c2a5122b617a13eb3d51161ff43d5496cec"
+      "semanticSha256": "35398adc2e9a96f582335e157405eccdb96f7840cb48626a175aeba8b4f50db4"
     },
     {
       "id": "receipt-policy",
@@ -88,7 +88,7 @@
     },
     {
       "id": "source-authority-policy",
-      "semanticSha256": "4730580c1fb1efe264b9e055f3f6b540c4747e86ab1c1211e7b5bd1d98a382ce"
+      "semanticSha256": "4a09f467b4db04324549ba478409385d715ff4880e72feba7a8212cfc5b7c9d9"
     }
   ],
   "operationalState": {
@@ -180,12 +180,12 @@
   },
   "decision": {
     "status": "RUN_P0",
-    "allowedManifestId": "historical_batch_e5b7d1e15e0275437deb9cd0",
+    "allowedManifestId": "historical_batch_cd540913d0d888a7ffaa9a0e",
     "allowedWorkstreamId": "CURRENT_DIMENSIONS",
     "p1Blocked": true,
     "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
     "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e"
   },
-  "controlId": "historical-dimensions-scale-37e4f648225b49d5a099af2d",
-  "semanticControlSha256": "37e4f648225b49d5a099af2db01c8c76d18e181bd84234e46683b1cb8687cc20"
+  "controlId": "historical-dimensions-scale-d4d983327c0c47fc144cbfb2",
+  "semanticControlSha256": "d4d983327c0c47fc144cbfb2424bc8144df7caa62591164abcf94dda88117de4"
 }

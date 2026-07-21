@@ -9,7 +9,7 @@
     },
     {
       "kind": "RETAILER_OBSERVATION_LEDGER",
-      "sha256": "ecefc0747385e9fba6486dcfe267660ffc8fe82b993b5493a31ee2088f9e4b60"
+      "sha256": "24051b205e3998974e1dad23b860818568d35603b04b8ce9121a825b82a99cff"
     },
     {
       "kind": "RETAILER_SOURCE_POLICY",
@@ -4543,21 +4543,18 @@
       "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
       "originSource": "websearch-the-good-guys",
       "sourcePolicyId": "the-good-guys-partnerize-feed-v1",
-      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
+      "terminalObservationState": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
       "typedObservation": {
-        "state": "QUARANTINED_IDENTITY_MISMATCH",
-        "attemptIds": [
-          "retail_attempt_0db105f17e40a28c16878d54"
-        ],
-        "observedAt": "2026-07-20T19:43:11.969Z",
-        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "kind": "IDENTITY_RESOLUTION",
+        "state": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
+        "eventId": "retail_identity_event_d0db14a16ab19be336826987",
+        "action": "REASSIGN_TO_EXISTING_CANONICAL",
+        "observedAt": "2026-07-21T12:12:18.070Z",
+        "sourceObservedAt": "2026-07-20T19:43:11.969Z",
         "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "canonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
-        "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
-        "sourceUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
-        "reasonCode": "PARTNERIZE_RETAILER_PRODUCT_IDENTITY_MISMATCH",
-        "receivedModel": "RF730QZUVB1",
-        "receivedUrl": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1"
+        "destinationCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+        "observationId": "obs_identity_de6154423c940c842eda3582"
       },
       "revalidation": null
     },
@@ -10451,21 +10448,18 @@
       "url": "https://www.appliancesonline.com.au/product/fisher-paykel-690l-freestanding-quad-door-fridge-freezer-ice-water-rf730qzuvb1/",
       "originSource": "websearch-appliances-online",
       "sourcePolicyId": "appliances-online-product-api-v1",
-      "terminalObservationState": "QUARANTINED_IDENTITY_MISMATCH",
+      "terminalObservationState": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
       "typedObservation": {
-        "state": "QUARANTINED_IDENTITY_MISMATCH",
-        "attemptIds": [
-          "retail_attempt_83cd39c11fe5fa3b5332fec4"
-        ],
-        "observedAt": "2026-07-20T17:23:04.000Z",
-        "adapterId": "appliances-online-product-api-v1",
+        "kind": "IDENTITY_RESOLUTION",
+        "state": "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL",
+        "eventId": "retail_identity_event_b62234c63a74dfac5a61ef0a",
+        "action": "REASSIGN_TO_EXISTING_CANONICAL",
+        "observedAt": "2026-07-21T12:12:18.070Z",
+        "sourceObservedAt": "2026-07-20T17:23:04.000Z",
         "rawSourceSha256": "8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
         "canonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
-        "baselineLinkId": "retail_link_519e6530a163ff49992e0e39",
-        "sourceUrl": "https://www.appliancesonline.com.au/product/fisher-paykel-690l-freestanding-quad-door-fridge-freezer-ice-water-rf730qzuvb1/",
-        "reasonCode": "AO_MODEL_MISMATCH",
-        "receivedModel": "RF730QZUVB1",
-        "receivedUrl": "https://www.appliancesonline.com.au/product/fisher-paykel-690l-freestanding-quad-door-fridge-freezer-ice-water-rf730qzuvb1"
+        "destinationCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+        "observationId": "obs_identity_62597b6e3d11c2b355e7e96e"
       },
       "revalidation": null
     },
@@ -33058,9 +33052,8 @@
     "byTerminalObservationState": {
       "IDENTITY_ACCEPTED_AFTER_CANONICAL_CORRECTION": 2,
       "IDENTITY_INVALIDATED_WRONG_MODEL": 13,
-      "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL": 5,
+      "IDENTITY_REASSIGNED_TO_EXISTING_CANONICAL": 7,
       "LEGACY_UNKNOWN": 261,
-      "QUARANTINED_IDENTITY_MISMATCH": 2,
       "SOURCE_ABSENT_IN_AUTHORIZED_FEED": 16,
       "TYPED_AVAILABLE": 261,
       "TYPED_UNAVAILABLE": 1054
@@ -33078,6 +33071,6 @@
       "RUNNABLE_POLICY_REVIEWED_SOURCE": 81
     }
   },
-  "coverageId": "retailer_observation_coverage_7b3bf3183d390d0cbe6754ed",
-  "semanticSha256": "a77d4991fbe92d1e2b3f8269b64122456801993d92b30c6896984f3a5e2d572f"
+  "coverageId": "retailer_observation_coverage_893e4323d942c13b220e6ce6",
+  "semanticSha256": "cec34896f2c8f7b0204b8ccfc97183b02f50938b00bb059220ecdceca0080598"
 }

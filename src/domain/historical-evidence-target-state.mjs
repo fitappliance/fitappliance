@@ -11,6 +11,40 @@ function schema(value, expected, label) {
   return value;
 }
 
+function requiredSha256(value, label) {
+  if (typeof value !== 'string' || !value) throw new TypeError(`${label} required`);
+  if (!/^[a-f0-9]{64}$/.test(value)) throw new TypeError(`${label} invalid`);
+  return value;
+}
+
+function normalizedSourceBindings(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('target-state source bindings required');
+  }
+  return {
+    classificationSha256: requiredSha256(
+      value.classificationSha256,
+      'classification source SHA-256',
+    ),
+    acquisitionQueueSha256: requiredSha256(
+      value.acquisitionQueueSha256,
+      'acquisition queue source SHA-256',
+    ),
+    executableQueueSha256: requiredSha256(
+      value.executableQueueSha256,
+      'executable queue source SHA-256',
+    ),
+    acceptanceBundleSha256: requiredSha256(
+      value.acceptanceBundleSha256,
+      'acceptance bundle source SHA-256',
+    ),
+    attemptLedgerSha256: requiredSha256(
+      value.attemptLedgerSha256,
+      'attempt ledger source SHA-256',
+    ),
+  };
+}
+
 function uniqueMap(rows, key, label) {
   if (!Array.isArray(rows)) throw new TypeError(`${label} rows required`);
   const result = new Map();
@@ -284,6 +318,7 @@ export function buildHistoricalEvidenceTargetState(input) {
   const executableQueue = schema(input.executableQueue, 2, 'executable queue');
   const acceptanceBundle = schema(input.acceptanceBundle, 1, 'acceptance bundle');
   const attemptLedger = schema(input.attemptLedger, 1, 'attempt ledger');
+  const sourceBindings = normalizedSourceBindings(input.sourceBindings);
   const classifications = uniqueMap(classification.records, 'referenceId', 'classification');
   const acquisitions = uniqueMap(acquisitionQueue.records, 'referenceId', 'acquisition');
   const acquisitionTargets = uniqueMap(executableQueue.targets, 'referenceId', 'acquisition target');
@@ -391,8 +426,9 @@ export function buildHistoricalEvidenceTargetState(input) {
   }
 
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt: generatedAt.toISOString(),
+    sourceBindings,
     sourceClassificationGeneratedAt: classification.generatedAt ?? null,
     sourceExecutableQueueGeneratedAt: executableQueue.generatedAt ?? null,
     summary: {

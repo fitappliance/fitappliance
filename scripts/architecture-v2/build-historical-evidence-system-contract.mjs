@@ -52,9 +52,18 @@ const ARTIFACT_KEYS = Object.freeze([
   'retailerObservations',
   'retailerIdentityResolutions',
   'retailerIdentityMigration',
+  'retailerIdentityOfficialEvidence',
   'retailerObservationCoverage',
+  'officialMarketLifecycle',
   'retailLifecycleShadow',
   'retailLifecycleRefreshInventory',
+  'publicProjectionMigrationCandidate',
+  'officialMarketLifecycleMigrationCandidate',
+  'retailLifecycleShadowMigrationCandidate',
+  'retailLifecycleRefreshInventoryMigrationCandidate',
+  'publicProjectionReleaseCandidate',
+  'historicalApplianceReferenceReleaseCandidate',
+  'retailLifecycleReleaseCandidate',
   'officialRegistrySnapshots',
   'canonicalRegistry',
   'canonicalRegistryMigrationCandidate',
@@ -79,6 +88,14 @@ const ARTIFACT_KEYS = Object.freeze([
   'historicalDimensionsScaleLedger',
   'historicalDimensionsScaleControl',
 ]);
+
+const TARGET_STATE_SOURCE_KEYS = Object.freeze({
+  classificationSha256: 'historicalModelEvidenceClassification',
+  acquisitionQueueSha256: 'historicalModelPdfAcquisitionQueue',
+  executableQueueSha256: 'historicalExecutableEvidenceRecoveryQueue',
+  acceptanceBundleSha256: 'historicalEvidenceRecoveryAcceptanceBundle',
+  attemptLedgerSha256: 'historicalEvidenceRecoveryAttemptLedger',
+});
 
 function option(args, name) {
   const index = args.indexOf(name);
@@ -201,18 +218,36 @@ function nativeSemantic(key, value) {
       declared: value.semanticSha256,
     };
   }
+  if (key === 'retailerIdentityOfficialEvidence') {
+    return {
+      payload: withoutField(withoutField(value, 'semanticSha256'), 'manifestId'),
+      declared: value.semanticSha256,
+    };
+  }
+  if (['officialMarketLifecycle', 'officialMarketLifecycleMigrationCandidate'].includes(key)) {
+    return {
+      payload: withoutField(withoutField(value, 'semanticSha256'), 'projectionId'),
+      declared: value.semanticSha256,
+    };
+  }
   if (key === 'retailerObservationCoverage') {
     return { payload: withoutField(value, 'semanticSha256'), declared: value.semanticSha256 };
   }
-  if (key === 'retailLifecycleShadow') {
+  if (['retailLifecycleShadow', 'retailLifecycleShadowMigrationCandidate'].includes(key)) {
     return {
       payload: withoutField(withoutField(value, 'semanticSha256'), 'shadowId'),
       declared: value.semanticSha256,
     };
   }
-  if (key === 'retailLifecycleRefreshInventory') {
+  if (['retailLifecycleRefreshInventory', 'retailLifecycleRefreshInventoryMigrationCandidate'].includes(key)) {
     return {
       payload: withoutField(withoutField(value, 'semanticSha256'), 'inventoryId'),
+      declared: value.semanticSha256,
+    };
+  }
+  if (key === 'retailLifecycleReleaseCandidate') {
+    return {
+      payload: withoutField(withoutField(value, 'semanticSha256'), 'releaseCandidateId'),
       declared: value.semanticSha256,
     };
   }
@@ -279,7 +314,15 @@ async function readArtifacts(root) {
   ])));
 }
 
-function verifyCurrentReplay(artifacts, epochs) {
+async function readTargetStateSourceBindings(root) {
+  return Object.fromEntries(await Promise.all(Object.entries(TARGET_STATE_SOURCE_KEYS)
+    .map(async ([binding, key]) => {
+      const bytes = await readFile(resolveArchitectureV2Path(root, key));
+      return [binding, createHash('sha256').update(bytes).digest('hex')];
+    })));
+}
+
+function verifyCurrentReplay(artifacts, epochs, targetStateSourceBindings) {
   const acceptanceBundle = validateHistoricalEvidenceRecoveryAcceptanceBundle(
     artifacts.historicalEvidenceRecoveryAcceptanceBundle,
   );
@@ -291,6 +334,7 @@ function verifyCurrentReplay(artifacts, epochs) {
 
   const targetState = buildHistoricalEvidenceTargetState({
     generatedAt: artifacts.historicalEvidenceTargetState.generatedAt,
+    sourceBindings: targetStateSourceBindings,
     classification: artifacts.historicalModelEvidenceClassification,
     acquisitionQueue: artifacts.historicalModelPdfAcquisitionQueue,
     executableQueue: artifacts.historicalExecutableEvidenceRecoveryQueue,
@@ -391,12 +435,16 @@ async function fileInputs(root, paths, cache) {
 }
 
 export async function buildHistoricalEvidenceSystemContractFromRepository({ root = defaultRoot } = {}) {
-  const artifacts = await readArtifacts(root);
+  const [artifacts, targetStateSourceBindings] = await Promise.all([
+    readArtifacts(root),
+    readTargetStateSourceBindings(root),
+  ]);
   const [
     projectionBytes,
     ledgerBytes,
     sourcePolicyBytes,
     releasePolicyBytes,
+    officialMarketLifecycleBytes,
     lifecycleShadowBytes,
     coverageBytes,
     identityMigrationBytes,
@@ -405,6 +453,7 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     readFile(resolveArchitectureV2Path(root, 'retailerObservations')),
     readFile(resolveArchitectureV2Path(root, 'retailerSourcePolicy')),
     readFile(resolveArchitectureV2Path(root, 'retailLifecycleReleasePolicy')),
+    readFile(resolveArchitectureV2Path(root, 'officialMarketLifecycle')),
     readFile(resolveArchitectureV2Path(root, 'retailLifecycleShadow')),
     readFile(resolveArchitectureV2Path(root, 'retailerObservationCoverage')),
     readFile(resolveArchitectureV2Path(root, 'retailerIdentityMigration')),
@@ -414,6 +463,8 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
   const lifecycleShadow = buildRetailLifecycleShadow({
     publicProjection: artifacts.publicProjection,
     publicProjectionSha256: fileSha256(projectionBytes),
+    officialMarketLifecycle: artifacts.officialMarketLifecycle,
+    officialMarketLifecycleSha256: fileSha256(officialMarketLifecycleBytes),
     retailerLedger: artifacts.retailerObservations,
     retailerLedgerSha256: fileSha256(ledgerBytes),
     sourcePolicy: JSON.parse(sourcePolicyBytes),
@@ -456,14 +507,16 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     inputs,
     semanticSha256: canonicalJsonSha256({ id, owner, inputs }),
   }));
-  verifyCurrentReplay(artifacts, scaleEpochs);
+  verifyCurrentReplay(artifacts, scaleEpochs, targetStateSourceBindings);
 
   const definitions = [
     ['retailer-identity-resolution', 'retailerIdentityResolutions', 'scripts/architecture-v2/build-retailer-identity-resolutions.mjs', ['scripts/architecture-v2/build-retailer-identity-resolutions.mjs', 'src/domain/retailer-identity-resolution.mjs', 'src/domain/official-identity-evidence.mjs'], [], ['CONTROL_INPUT']],
     ['retailer-identity-migration', 'retailerIdentityMigration', 'scripts/architecture-v2/build-retailer-identity-migration.mjs', ['scripts/architecture-v2/build-retailer-identity-migration.mjs', 'src/domain/retailer-identity-migration.mjs'], [['retailer-identity-resolution', 'semantic']], ['CONTROL_INPUT']],
+    ['official-identity-evidence', 'retailerIdentityOfficialEvidence', 'scripts/architecture-v2/acquire-retailer-identity-official-evidence.mjs', ['scripts/architecture-v2/acquire-retailer-identity-official-evidence.mjs', 'src/domain/official-identity-evidence.mjs', 'data/architecture-v2/policies/manufacturer-source-policy.json'], [], ['CONTROL_INPUT']],
     ['retailer-observations', 'retailerObservations', 'scripts/architecture-v2/build-retailer-ledger.mjs', ['scripts/architecture-v2/build-retailer-ledger.mjs', 'scripts/architecture-v2/apply-retailer-identity-migration.mjs', 'src/domain/retailer-observation-ledger.mjs', 'src/domain/retailer-observation.mjs', 'src/domain/retailer-source-adapter.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [['retailer-identity-migration', 'semantic']], ['CONTROL_INPUT']],
     ['retailer-observation-coverage', 'retailerObservationCoverage', 'scripts/architecture-v2/build-retailer-observation-coverage.mjs', ['scripts/architecture-v2/build-retailer-observation-coverage.mjs', 'src/domain/retailer-observation-coverage.mjs', 'data/architecture-v2/policies/retailer-source-policy.json'], [['current-publication', 'content'], ['retailer-observations', 'semantic']], ['CONTROL_ONLY']],
-    ['retail-lifecycle-shadow', 'retailLifecycleShadow', 'scripts/architecture-v2/build-retail-lifecycle-shadow.mjs', ['scripts/architecture-v2/build-retail-lifecycle-shadow.mjs', 'src/domain/retail-lifecycle-shadow.mjs', 'src/domain/retailer-observation.mjs', 'data/architecture-v2/policies/retail-lifecycle-release-policy.json'], [['current-publication', 'content'], ['retailer-observations', 'semantic']], ['CONTROL_ONLY']],
+    ['official-market-lifecycle', 'officialMarketLifecycle', 'scripts/architecture-v2/build-official-market-lifecycle.mjs', ['scripts/architecture-v2/build-official-market-lifecycle.mjs', 'src/domain/official-market-lifecycle.mjs'], [['current-publication', 'content'], ['lifecycle-reduction', 'content'], ['official-identity-evidence', 'semantic']], ['CONTROL_ONLY']],
+    ['retail-lifecycle-shadow', 'retailLifecycleShadow', 'scripts/architecture-v2/build-retail-lifecycle-shadow.mjs', ['scripts/architecture-v2/build-retail-lifecycle-shadow.mjs', 'src/domain/retail-lifecycle-shadow.mjs', 'src/domain/retailer-observation.mjs', 'data/architecture-v2/policies/retail-lifecycle-release-policy.json'], [['current-publication', 'content'], ['official-market-lifecycle', 'semantic'], ['retailer-observations', 'semantic']], ['CONTROL_ONLY']],
     ['retail-lifecycle-refresh', 'retailLifecycleRefreshInventory', 'scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs', ['scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs', 'src/domain/retail-lifecycle-refresh-inventory.mjs'], [['retailer-observation-coverage', 'semantic'], ['retail-lifecycle-shadow', 'semantic'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY']],
     ['official-registry-snapshots', 'officialRegistrySnapshots', 'scripts/architecture-v2/acquire-official-registries.mjs', ['scripts/architecture-v2/acquire-official-registries.mjs', 'data/architecture-v2/policies/official-registry-source-policy.json'], [], ['HISTORICAL_INPUT']],
     ['canonical-identity', 'canonicalRegistry', 'scripts/architecture-v2/build-canonical-registry.mjs', ['scripts/architecture-v2/build-canonical-registry.mjs', 'src/domain/canonical-registry.mjs'], [], ['CURRENT_INPUT', 'HISTORICAL_INPUT']],
@@ -473,6 +526,13 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     ['receipt-replay', 'historicalAcceptanceReceiptReplayAudit', 'scripts/architecture-v2/audit-historical-acceptance-receipts.mjs', ['scripts/architecture-v2/audit-historical-acceptance-receipts.mjs', 'src/domain/historical-evidence-recovery-audit.mjs'], [['receipt-reconciliation', 'content']], ['CONTROL_ONLY']],
     ['current-publication', 'publicProjection', 'scripts/architecture-v2/build-public-projection.mjs', ['scripts/architecture-v2/build-public-projection.mjs', 'src/domain/historical-evidence-publication.mjs', 'src/domain/public-projection.mjs'], [['canonical-identity', 'content'], ['receipt-reconciliation', 'content'], ['receipt-replay', 'content']], ['CURRENT_OUTPUT']],
     ['lifecycle-reduction', 'historicalApplianceReference', 'scripts/architecture-v2/build-historical-appliance-reference.mjs', ['scripts/architecture-v2/build-historical-appliance-reference.mjs', 'src/domain/historical-appliance-reference.mjs', 'src/domain/historical-catalog-binding.mjs'], [['official-registry-snapshots', 'content'], ['current-publication', 'content'], ['receipt-reconciliation', 'content']], ['HISTORICAL_INPUT']],
+    ['candidate-publication-base', 'publicProjectionMigrationCandidate', 'scripts/architecture-v2/build-public-projection.mjs', ['scripts/architecture-v2/build-public-projection.mjs', 'src/domain/public-projection.mjs', 'src/domain/retailer-identity-migration.mjs'], [['canonical-identity-migration-candidate', 'content'], ['retailer-identity-migration', 'semantic'], ['receipt-reconciliation', 'content'], ['receipt-replay', 'content']], ['CONTROL_ONLY'], 'PENDING_NEXT', 2],
+    ['candidate-official-market', 'officialMarketLifecycleMigrationCandidate', 'scripts/architecture-v2/build-official-market-lifecycle.mjs', ['scripts/architecture-v2/build-official-market-lifecycle.mjs', 'src/domain/official-market-lifecycle.mjs'], [['candidate-publication-base', 'content'], ['lifecycle-reduction', 'content'], ['official-identity-evidence', 'semantic']], ['CONTROL_ONLY'], 'PENDING_NEXT', 2],
+    ['candidate-lifecycle-shadow', 'retailLifecycleShadowMigrationCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'src/domain/retail-lifecycle-shadow.mjs'], [['candidate-publication-base', 'content'], ['candidate-official-market', 'semantic'], ['retailer-observations', 'semantic']], ['CONTROL_ONLY'], 'PENDING_NEXT', 2],
+    ['candidate-lifecycle-refresh', 'retailLifecycleRefreshInventoryMigrationCandidate', 'scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs', ['scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs', 'src/domain/retail-lifecycle-refresh-inventory.mjs'], [['candidate-lifecycle-shadow', 'semantic'], ['retailer-observation-coverage', 'semantic'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY'], 'PENDING_NEXT', 2],
+    ['candidate-current-publication', 'publicProjectionReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'src/domain/retail-lifecycle-shadow.mjs'], [['candidate-publication-base', 'content'], ['candidate-lifecycle-shadow', 'semantic']], ['CURRENT_OUTPUT_CANDIDATE'], 'PENDING_NEXT', 2],
+    ['candidate-lifecycle-reduction', 'historicalApplianceReferenceReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'scripts/architecture-v2/build-historical-appliance-reference.mjs', 'src/domain/historical-appliance-reference.mjs'], [['official-registry-snapshots', 'content'], ['candidate-current-publication', 'content'], ['receipt-reconciliation', 'content']], ['HISTORICAL_INPUT_CANDIDATE'], 'PENDING_NEXT', 2],
+    ['candidate-release-gate', 'retailLifecycleReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'src/domain/retail-lifecycle-release-candidate.mjs'], [['current-publication', 'content'], ['candidate-publication-base', 'content'], ['candidate-current-publication', 'content'], ['candidate-lifecycle-shadow', 'semantic'], ['candidate-lifecycle-reduction', 'content'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY'], 'PENDING_NEXT', 2],
     ['classification', 'historicalModelEvidenceClassification', 'scripts/architecture-v2/build-historical-model-evidence-classification.mjs', ['scripts/architecture-v2/build-historical-model-evidence-classification.mjs', 'src/domain/historical-model-evidence-classification.mjs', 'data/architecture-v2/policies/historical-model-evidence-classification-policy.json'], [['lifecycle-reduction', 'content']], ['CONTROL_ONLY']],
     ['document-identity', 'historicalDocumentFamilyGraph', 'scripts/architecture-v2/build-historical-document-family-graph.mjs', ['scripts/architecture-v2/build-historical-document-family-graph.mjs', 'src/domain/historical-document-family-graph.mjs'], [['classification', 'semantic']], ['CONTROL_ONLY']],
     ['mineru-knowledge', 'dimensionExpressionObservations', 'scripts/architecture-v2/build-dimension-expression-knowledge.mjs', ['scripts/architecture-v2/build-dimension-expression-knowledge.mjs', 'src/domain/mineru-document.mjs', 'src/domain/dimension-expression-knowledge.mjs'], [['lifecycle-reduction', 'content'], ['document-identity', 'semantic']], ['CONTROL_ONLY']],
@@ -491,7 +551,16 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
   ];
 
   const stageById = new Map();
-  for (const [id, key, owner, producerPaths, dependencies, lifecycleVisibility] of definitions) {
+  for (const [
+    id,
+    key,
+    owner,
+    producerPaths,
+    dependencies,
+    lifecycleVisibility,
+    releaseState = 'RELEASED',
+    releaseEpoch = 1,
+  ] of definitions) {
     const native = nativeSemantic(key, artifacts[key]);
     stageById.set(id, {
       id,
@@ -506,8 +575,8 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
       declaredSemanticSha256: native.declared,
       sourceBindings: [],
       releaseDependencies: dependencies.map(([dependency]) => dependency),
-      releaseEpoch: 1,
-      releaseState: 'RELEASED',
+      releaseEpoch,
+      releaseState,
       lifecycleVisibility,
       nextTransitions: [],
       dependencyDefinitions: dependencies,
@@ -585,6 +654,30 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
         artifacts.retailLifecycleRefreshInventory.summary.byExecutionDisposition.RUNNABLE_POLICY_REVIEWED_SOURCE ?? 0,
       lifecycleRefreshPolicyBlockedProducts:
         artifacts.retailLifecycleRefreshInventory.summary.byExecutionDisposition.BLOCKED_BY_SOURCE_POLICY ?? 0,
+      candidateReleaseId: artifacts.retailLifecycleReleaseCandidate.releaseCandidateId,
+      candidateReleaseEpoch: artifacts.retailLifecycleReleaseCandidate.releaseEpoch,
+      candidateReleaseAuthorizationStatus:
+        artifacts.retailLifecycleReleaseCandidate.authorization.status,
+      candidateExpectedLegacyCurrentProducts:
+        artifacts.retailLifecycleReleaseCandidate.partition.expectedLegacyCurrentProducts,
+      candidateAccountedLegacyCurrentProducts:
+        artifacts.retailLifecycleReleaseCandidate.partition.accountedLegacyCurrentProducts,
+      candidateUnresolvedLegacyCurrentProducts:
+        artifacts.retailLifecycleShadowMigrationCandidate.cutover.unresolvedLegacyCurrentIds.length,
+      candidateUnsafeRemovedLegacyCurrentProducts:
+        artifacts.retailLifecycleShadowMigrationCandidate.cutover.unsafeRemovedLegacyCurrentIds.length,
+      candidateCurrentProducts:
+        artifacts.retailLifecycleShadowMigrationCandidate.summary.byLifecycle.CURRENT_RETAIL,
+      candidateMarketReferenceProducts:
+        artifacts.retailLifecycleShadowMigrationCandidate.summary.marketReferenceProducts,
+      candidatePublicProducts: artifacts.publicProjectionReleaseCandidate.products.length,
+      candidateHistoricalReferenceRecords:
+        artifacts.historicalApplianceReferenceReleaseCandidate.records.length,
+      candidateRefreshProducts:
+        artifacts.retailLifecycleRefreshInventoryMigrationCandidate.summary.products,
+      candidateFitPublicationViolations:
+        artifacts.retailLifecycleReleaseCandidate.publicationAudit.fitPublicationViolations,
+      candidateRollbackStatus: artifacts.retailLifecycleReleaseCandidate.rollback.status,
       p0AssignedTargets: currentWorkstream.assignedTargets,
       p0EligibleTargets: currentWorkstream.eligibleTargets,
       p1AssignedTargets: historicalWorkstream.assignedTargets,
@@ -592,22 +685,10 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
       knownContractGaps: [
         ...(artifacts.retailLifecycleShadow.cutover.status === 'BLOCKED' ? [{
           id: 'LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER',
-          severity: 'CRITICAL',
-          repairTask: 9,
-          detail: 'The complete retailer ledger drives a hash-bound lifecycle shadow and product-scoped refresh inventory, but production cutover remains blocked until every legacy-current product is either freshly available or explicitly unavailable/archived.',
+          severity: 'INFORMATIONAL',
+          repairTask: 10,
+          detail: 'The released epoch intentionally remains byte-identical and blocked in SHADOW_ONLY mode. The separately bound epoch-2 candidate is READY_FOR_CUTOVER with an exhaustive prior-current partition, zero unresolved IDs, zero unsafe removals, and a byte-identical rollback proof.',
         }] : []),
-        {
-          id: 'TARGET_STATE_LEGACY_TIME_BINDINGS',
-          severity: 'HIGH',
-          repairTask: 9,
-          detail: 'The target-state artifact stores source generatedAt values; this contract supplies the missing recomputed content bindings until its schema is migrated.',
-        },
-        {
-          id: 'PARTIAL_REPOSITORY_BUILD_GRAPH',
-          severity: 'HIGH',
-          repairTask: 9,
-          detail: 'The repository build graph does not yet encode the complete release DAG represented by this contract.',
-        },
       ],
     },
     controllerDecision: {

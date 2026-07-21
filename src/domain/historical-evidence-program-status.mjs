@@ -6,7 +6,7 @@ const INPUT_SCHEMAS = Object.freeze({
   executableQueue: 2,
   acceptanceBundle: 1,
   attemptLedger: 1,
-  targetState: 1,
+  targetState: 2,
   mineruBackfillAudit: 1,
   receiptReplayAudit: 1,
   replacementAudit: 1,

@@ -67,10 +67,15 @@ export const architectureV2Paths = Object.freeze({
   retailerObservations: `${base}/observations/retailer-observations.json`,
   retailerObservationCoverage: `${base}/reviews/automated/retailer-observation-coverage.json`,
   retailLifecycleShadow: `${base}/reviews/automated/retail-lifecycle-shadow.json`,
+  retailLifecycleShadowMigrationCandidate: `${base}/reviews/automated/retail-lifecycle-shadow-migration-candidate.json`,
+  retailLifecycleReleaseCandidate: `${base}/reviews/automated/retail-lifecycle-release-candidate.json`,
   retailLifecycleRefreshInventory: `${base}/reviews/automated/retail-lifecycle-refresh-inventory.json`,
+  retailLifecycleRefreshInventoryMigrationCandidate: `${base}/reviews/automated/retail-lifecycle-refresh-inventory-migration-candidate.json`,
   retailerIdentityResolutions: `${base}/reviews/automated/retailer-identity-resolutions.json`,
   retailerIdentityMigration: `${base}/reviews/automated/retailer-identity-migration.json`,
   retailerIdentityOfficialEvidence: `${base}/generated/retailer-identity-official-evidence.json`,
+  officialMarketLifecycle: `${base}/generated/official-market-lifecycle.json`,
+  officialMarketLifecycleMigrationCandidate: `${base}/generated/official-market-lifecycle-migration-candidate.json`,
   canonicalRegistry: `${base}/generated/canonical-registry.json`,
   canonicalRegistryMigrationCandidate: `${base}/generated/canonical-registry-migration-candidate.json`,
   evidenceResolutionManifest: `${base}/generated/evidence-resolution-manifest.json`,
@@ -83,17 +88,21 @@ export const architectureV2Paths = Object.freeze({
   phase10ReviewCandidates: `${base}/generated/phase10-evidence-review-candidates.json`,
   phase10ReviewManifest: `${base}/generated/phase10-evidence-review-manifest.json`,
   publicProjection: `${base}/generated/public-catalog-projection.json`,
+  publicProjectionMigrationCandidate: `${base}/generated/public-catalog-projection-migration-candidate.json`,
+  publicProjectionReleaseCandidate: `${base}/generated/public-catalog-release-candidate.json`,
   sourceDocuments: `${base}/generated/source-documents.json`,
   spaceReviewManifest: `${base}/generated/space-evidence-pilot-review-manifest.json`,
   officialRegistrySnapshots: `${base}/generated/official-registry-snapshots.json`,
   officialRegistryObservations: `${base}/generated/official-registry-observations.json`,
   installationKnowledgePilot: `${base}/generated/installation-knowledge-pilot.json`,
   historicalApplianceReference: `${base}/generated/historical-appliance-reference.json`,
+  historicalApplianceReferenceReleaseCandidate: `${base}/generated/historical-appliance-reference-release-candidate.json`,
   historicalReferencePublicationManifest: `${base}/generated/historical-reference-publication-manifest.json`,
 });
 
 export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
   officialRegistrySnapshots: Object.freeze([]),
+  retailerIdentityOfficialEvidence: Object.freeze([]),
   // The committed cumulative bundle is the immutable input for one release
   // epoch. Recovery audit/promotion produces the next epoch outside normal CI.
   historicalEvidenceRecoveryAcceptanceBundle: Object.freeze([]),
@@ -123,20 +132,62 @@ export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
     'historicalEvidenceRecoveryAcceptanceBundle',
     'historicalAcceptanceReceiptReplayAudit',
   ]),
+  publicProjectionMigrationCandidate: Object.freeze(['publicProjection', 'retailerIdentityMigration']),
   // Schema-v2 freezes its one-time migration input. Subsequent ledger epochs
   // append typed source observations and no longer depend on current output.
   retailerObservations: Object.freeze(['retailerIdentityMigration']),
   retailerObservationCoverage: Object.freeze(['publicProjection', 'retailerObservations']),
-  retailLifecycleShadow: Object.freeze(['publicProjection', 'retailerObservations']),
+  historicalApplianceReference: Object.freeze([
+    'officialRegistrySnapshots',
+    'publicProjection',
+    'historicalEvidenceRecoveryAcceptanceBundle',
+  ]),
+  officialMarketLifecycle: Object.freeze([
+    'publicProjection',
+    'historicalApplianceReference',
+    'retailerIdentityOfficialEvidence',
+  ]),
+  officialMarketLifecycleMigrationCandidate: Object.freeze([
+    'publicProjectionMigrationCandidate',
+    'historicalApplianceReference',
+    'retailerIdentityOfficialEvidence',
+  ]),
+  retailLifecycleShadow: Object.freeze([
+    'publicProjection',
+    'officialMarketLifecycle',
+    'retailerObservations',
+  ]),
+  retailLifecycleShadowMigrationCandidate: Object.freeze([
+    'publicProjectionMigrationCandidate',
+    'officialMarketLifecycleMigrationCandidate',
+    'retailerObservations',
+  ]),
+  publicProjectionReleaseCandidate: Object.freeze([
+    'publicProjectionMigrationCandidate',
+    'retailLifecycleShadowMigrationCandidate',
+  ]),
+  historicalApplianceReferenceReleaseCandidate: Object.freeze([
+    'officialRegistrySnapshots',
+    'publicProjectionReleaseCandidate',
+    'historicalEvidenceRecoveryAcceptanceBundle',
+  ]),
+  retailLifecycleReleaseCandidate: Object.freeze([
+    'publicProjection',
+    'publicProjectionMigrationCandidate',
+    'publicProjectionReleaseCandidate',
+    'retailerIdentityMigration',
+    'retailLifecycleShadowMigrationCandidate',
+    'historicalApplianceReferenceReleaseCandidate',
+  ]),
   retailLifecycleRefreshInventory: Object.freeze([
     'retailLifecycleShadow',
     'retailerObservationCoverage',
     'retailerIdentityMigration',
   ]),
-  historicalApplianceReference: Object.freeze([
-    'officialRegistrySnapshots',
-    'publicProjection',
-    'historicalEvidenceRecoveryAcceptanceBundle',
+  retailLifecycleRefreshInventoryMigrationCandidate: Object.freeze([
+    'retailLifecycleShadowMigrationCandidate',
+    'retailerObservationCoverage',
+    'retailerIdentityMigration',
   ]),
   historicalReferencePublicationManifest: Object.freeze(['historicalApplianceReference']),
   historicalReplacementAudit: Object.freeze(['historicalReferencePublicationManifest', 'publicProjection']),

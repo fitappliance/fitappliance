@@ -33,6 +33,13 @@ function fixture() {
   ];
   return {
     generatedAt: '2026-07-19T00:00:00.000Z',
+    sourceBindings: {
+      classificationSha256: '1'.repeat(64),
+      acquisitionQueueSha256: '2'.repeat(64),
+      executableQueueSha256: '3'.repeat(64),
+      acceptanceBundleSha256: '4'.repeat(64),
+      attemptLedgerSha256: '5'.repeat(64),
+    },
     classification: {
       schemaVersion: 1,
       records,
@@ -139,7 +146,8 @@ function byReference(state, referenceId) {
 test('projects one auditable state for every classified model', () => {
   const state = buildHistoricalEvidenceTargetState(fixture());
 
-  assert.equal(state.schemaVersion, 1);
+  assert.equal(state.schemaVersion, 2);
+  assert.deepEqual(state.sourceBindings, fixture().sourceBindings);
   assert.equal(state.summary.records, 8);
   assert.equal(state.summary.actionable, 4);
   assert.equal(state.summary.completed, 1);
@@ -298,5 +306,21 @@ test('fails closed on a malformed cumulative target attempt', () => {
   assert.throws(
     () => buildHistoricalEvidenceTargetState(input),
     /target attempt attemptedAt invalid/,
+  );
+});
+
+test('fails closed when an exact upstream byte binding is missing or malformed', () => {
+  const missing = fixture();
+  delete missing.sourceBindings.acceptanceBundleSha256;
+  assert.throws(
+    () => buildHistoricalEvidenceTargetState(missing),
+    /acceptance bundle source SHA-256 required/,
+  );
+
+  const malformed = fixture();
+  malformed.sourceBindings.attemptLedgerSha256 = 'not-a-sha';
+  assert.throws(
+    () => buildHistoricalEvidenceTargetState(malformed),
+    /attempt ledger source SHA-256 invalid/,
   );
 });

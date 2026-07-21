@@ -25,6 +25,12 @@ const ledger = {
   collectionAttempts: [{ observedAt: '2026-07-20T19:43:11.969Z' }],
 };
 
+const officialEvidence = {
+  schemaVersion: 2,
+  semanticSha256: 'b'.repeat(64),
+  acquiredAt: '2026-07-20T20:00:00.000Z',
+};
+
 test('shadow epoch advances to the latest ledger event without authorizing cutover', () => {
   const result = advanceRetailLifecycleShadowEpoch({ releasePolicy: policy, retailerLedger: ledger });
   assert.equal(result.changed, true);
@@ -59,4 +65,36 @@ test('shadow epoch rejects malformed ledgers and non-shadow release policy', () 
   assert.throws(() => advanceRetailLifecycleShadowEpoch({
     releasePolicy: policy, retailerLedger: { ...ledger, collectionAttempts: [] },
   }), /ledger events required/i);
+});
+
+test('shadow epoch advances across both retailer and official-market evidence', () => {
+  const result = advanceRetailLifecycleShadowEpoch({
+    releasePolicy: policy,
+    retailerLedger: ledger,
+    officialIdentityEvidence: officialEvidence,
+  });
+  assert.equal(result.changed, true);
+  assert.equal(result.policy.asOf, officialEvidence.acquiredAt);
+  assert.match(result.policy.releaseEpoch, /^retail-lifecycle-shadow-2026-07-20-inputs-[a-f0-9]{12}$/);
+
+  const changedEvidence = { ...officialEvidence, semanticSha256: 'c'.repeat(64) };
+  const rebound = advanceRetailLifecycleShadowEpoch({
+    releasePolicy: policy,
+    retailerLedger: ledger,
+    officialIdentityEvidence: changedEvidence,
+  });
+  assert.notEqual(rebound.policy.releaseEpoch, result.policy.releaseEpoch);
+});
+
+test('shadow epoch rejects malformed or future-inconsistent official evidence', () => {
+  assert.throws(() => advanceRetailLifecycleShadowEpoch({
+    releasePolicy: policy,
+    retailerLedger: ledger,
+    officialIdentityEvidence: { ...officialEvidence, semanticSha256: 'bad' },
+  }), /official identity evidence/i);
+  assert.throws(() => advanceRetailLifecycleShadowEpoch({
+    releasePolicy: { ...policy, asOf: '2026-07-21T00:00:00.000Z' },
+    retailerLedger: ledger,
+    officialIdentityEvidence: officialEvidence,
+  }), /precedes current release asOf/i);
 });

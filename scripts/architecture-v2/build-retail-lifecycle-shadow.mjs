@@ -58,8 +58,15 @@ export async function buildRetailLifecycleShadowFromRepository({
   root = defaultRoot,
   output = resolveArchitectureV2Path(root, 'retailLifecycleShadow'),
 } = {}) {
-  const [publicProjection, retailerLedger, sourcePolicy, releasePolicySource] = await Promise.all([
+  const [
+    publicProjection,
+    officialMarketLifecycle,
+    retailerLedger,
+    sourcePolicy,
+    releasePolicySource,
+  ] = await Promise.all([
     readJsonWithHash(resolveArchitectureV2Path(root, 'publicProjection')),
+    readJsonWithHash(resolveArchitectureV2Path(root, 'officialMarketLifecycle')),
     readJsonWithHash(resolveArchitectureV2Path(root, 'retailerObservations')),
     readJsonWithHash(resolveArchitectureV2Path(root, 'retailerSourcePolicy')),
     readJsonWithHash(resolveArchitectureV2Path(root, 'retailLifecycleReleasePolicy')),
@@ -68,6 +75,8 @@ export async function buildRetailLifecycleShadowFromRepository({
   const shadow = buildRetailLifecycleShadow({
     publicProjection: publicProjection.document,
     publicProjectionSha256: publicProjection.sha256,
+    officialMarketLifecycle: officialMarketLifecycle.document,
+    officialMarketLifecycleSha256: officialMarketLifecycle.sha256,
     retailerLedger: retailerLedger.document,
     retailerLedgerSha256: retailerLedger.sha256,
     sourcePolicy: sourcePolicy.document,

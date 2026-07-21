@@ -107,7 +107,7 @@ function normalizeIdentityDecisions(decisions) {
 }
 
 function normalizeIdentityMigration(identityMigration, catalog, decisions) {
-  if (identityMigration == null) return { corrections: new Map(), merges: [] };
+  if (identityMigration == null) return { corrections: new Map(), merges: [], quarantines: [] };
   validateRetailerIdentityMigration(identityMigration);
   const byLegacy = new Map(catalog.products.map((row) => [
     text(row?.id, 'legacy runtime ID').toLowerCase(),
@@ -138,7 +138,25 @@ function normalizeIdentityMigration(identityMigration, catalog, decisions) {
       throw new Error(`identity migration merge target drift: ${merge.targetLegacyRuntimeId}`);
     }
   }
-  return { corrections, merges: identityMigration.canonicalMerges };
+  for (const quarantine of identityMigration.canonicalQuarantines ?? []) {
+    if (byLegacy.has(quarantine.sourceLegacyRuntimeId)) {
+      throw new Error(`identity migration quarantine source remains in catalog: ${quarantine.sourceLegacyRuntimeId}`);
+    }
+    if (decisions.has(quarantine.sourceLegacyRuntimeId)) {
+      throw new Error(`identity migration quarantine conflicts with manual decision: ${quarantine.sourceLegacyRuntimeId}`);
+    }
+    const target = byLegacy.get(quarantine.targetLegacyRuntimeId);
+    if (!target || target.cat !== quarantine.targetIdentity.category
+      || brandKey(target.brand) !== brandKey(quarantine.targetIdentity.brand)
+      || modelKey(target.model) !== modelKey(quarantine.targetIdentity.model)) {
+      throw new Error(`identity migration quarantine target drift: ${quarantine.targetLegacyRuntimeId}`);
+    }
+  }
+  return {
+    corrections,
+    merges: identityMigration.canonicalMerges,
+    quarantines: identityMigration.canonicalQuarantines ?? [],
+  };
 }
 
 export function buildCanonicalRegistry(catalog, {

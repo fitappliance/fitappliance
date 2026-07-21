@@ -51,41 +51,38 @@ Architecture V2 is complete only when:
 | 0 | Domain contracts and read-only shadow audit | Complete |
 | 1 | Verified dimension overlay and quarantine reduction | Guardrails complete; 9 pending |
 | 2 | Canonical identity mapping | Shadow registry complete |
-| 3 | Retailer observation ledger and current-sale reconciliation | Typed adapters and replay complete; cutover blocked by 79 unresolved prior-current products |
+| 3 | Retailer observation ledger and current-sale reconciliation | Complete; epoch-2 candidate accounts for all prior-current products with zero unresolved |
 | 4 | Source-document registry and PDF evidence state machine | State machine and quarantine baseline complete |
 | 5 | Category geometry and clearance migration | Contracts complete; evidence migration pending |
-| 6 | FitDecision parity and production cutover | Safety audit passes with zero violations; lifecycle cutover not authorised |
-| 7 | Runtime modularization and legacy deletion | Canonical views wired; deletion prohibited while Task 9 is blocked |
+| 6 | FitDecision parity and production cutover | Candidate authorised with zero Fit violations and byte-identical rollback; deployment remains explicit |
+| 7 | Runtime modularization and legacy deletion | Canonical views wired; deletion deferred through the post-cutover rollback window |
 
 ### Current system-first release gate
 
-Tasks 0-8 of the active system-first control plan are complete. Task 9 has
-passed the available-source runs, full evidence replay, offline builds,
-deterministic rebuild, safety projection, and rollback-baseline checks, but its
-lifecycle prerequisite is still `BLOCKED`. The 3,515-product shadow resolves
-348 current and 3,088 archived products while preserving 79 as unknown. No
-production cutover, deployment, or legacy deletion is authorised.
+Tasks 0-10 of the active system-first control plan have a complete epoch-2
+release candidate. The released 3,515-product epoch remains byte-identical and
+`BLOCKED` in `SHADOW_ONLY`; the 3,513-product candidate is independently
+`READY_FOR_CUTOVER`. It partitions all 1,384 prior-current products with zero
+unresolved IDs and zero unsafe removals, publishes 349 current-retail products,
+retains 77 products as non-commercial market references, and archives 3,087.
+The release candidate ID is
+`retail_lifecycle_release_6c42c754aeb1ff49097b32b4`.
 
-The unresolved set has independent owners and must not be collapsed into one
-generic retry queue:
+The earlier 79 blockers were closed without weakening evidence. The 76
+source-policy rows are market references rather than inferred retailer stock;
+LG `GS-B655PL` uses exact official AU identity but no sibling availability; the
+Fisher & Paykel embedded-model conflict is quarantined; and only the proven
+Haier duplicate is merged. Market-reference output has no price, stock,
+affiliate URL, sponsorship, CTA, or current Fit classification.
+The final public artifact also strips collection attempts and conflict payloads;
+the complete evidence remains in the control-plane shadow and ledger.
 
-- 76 products require an authorised source or explicit automation permission;
-- one product requires the already-proven identity merge to be applied only
-  as part of an atomic lifecycle/canonical cutover;
-- LG `GS-B655PL` requires authorised exact-model discovery after a sibling AO
-  response;
-- Fisher & Paykel `RF730QZUVX1` conflicts with captured `RF730QZUVB1` retailer
-  listings and requires exact-model rediscovery before any identity mutation.
-
-Seventeen of 18 identity mismatch cases have been automatically adjudicated
-from raw-bound retailer evidence and official AU identity snapshots. The
-remaining conflict is explicitly excluded from migration. The released registry
-remains at 3,515 products; the 3,514-product migration candidate is a separate
-control artifact and must not leak into the released public epoch.
-
-The branch may retain the lifecycle-neutral safety projection because it only
-removes unsupported legacy door fields. It is not evidence that the lifecycle
-migration is complete.
+The candidate release gate verifies source hashes against real files, reports
+zero Fit publication violations, and proves rollback to the released public
+projection byte-for-byte. Historical target state is schema v2 and binds five
+upstream artifacts by exact content SHA-256. Production materialization and
+deployment remain explicit operational actions; legacy deletion waits for the
+rollback observation window.
 
 ## Completed Work
 
@@ -391,17 +388,13 @@ description of code changes.
 
 ## Immediate Next Actions
 
-1. Add a verified acquisition receipt for Partnerize source time, then capture
-   and replay a new authorised feed epoch; identical old bytes cannot refresh
-   lifecycle state.
-2. Correct the three known canonical model identities with exact official AU
-   evidence and rebuild their retailer-link bindings. Do not use an alias to
-   transfer availability.
-3. Obtain authorised feeds or explicit automation permission for Bing Lee,
-   Harvey Norman, and JB Hi-Fi. Until then, preserve those products as unknown
-   and hidden from current results.
-4. Rediscover the exact LG `GS-B655PL` source and keep the sibling response
-   quarantined.
-5. Rerun the complete release DAG. Authorise cutover only when the shadow is
-   `READY`, every prior-current ID has a safe disposition, two builds are
-   semantically identical, and the whole-release rollback drill passes.
+1. Review and commit the complete epoch-2 release unit; do not cherry-pick an
+   individual generated projection.
+2. Materialize the candidate only through the release command after deployment
+   authorization, then rebuild the complete offline DAG from that Git epoch.
+3. Deploy the complete release, monitor current-result counts, replacement
+   lookup, CTA visibility, Fit violations and rollback hashes as one unit.
+4. Roll back by redeploying the prior complete commit if any severity-1 data
+   issue appears; never delete immutable retailer, PDF or MinerU evidence.
+5. Remove legacy runtime paths only after the rollback observation window ends
+   with no unresolved correctness issue.

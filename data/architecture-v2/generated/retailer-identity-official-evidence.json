@@ -1,9 +1,226 @@
 {
-  "schemaVersion": 1,
-  "policyVersion": "retailer-identity-official-evidence-v1",
-  "acquiredAt": "2026-07-20T21:01:16.038Z",
-  "seedDocumentSemanticSha256": "43d06daf3c4612c6622be5938a533b65bcafae07caed7efa96b4dc51eb5b87bd",
+  "schemaVersion": 2,
+  "policyVersion": "retailer-identity-official-evidence-v2",
+  "acquiredAt": "2026-07-21T12:12:18.070Z",
+  "seedDocumentSemanticSha256": "0d1bc6a80aa71e27389b1923e2a3f05cd7b22fc1e617e94d9d8dd6d8693164d0",
   "records": [
+    {
+      "evidenceId": "official_identity_bosch_kfi96axeaa_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "fridge",
+        "brand": "Bosch",
+        "model": "KFI96AXEAA"
+      },
+      "source": {
+        "sourceUrl": "https://www.bosch-home.com.au/en/product/fridges-freezers/fridge-freezers/freestanding-bottom-mount-fridge-freezer/KFI96AXEAA",
+        "finalUrl": "https://www.bosch-home.com.au/en/product/fridges-freezers/fridge-freezers/freestanding-bottom-mount-fridge-freezer/KFI96AXEAA",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "ee8b23c2ca068ac9d474610da9c7d5dbdf31300fef522bc0aea973921c3fe91a",
+        "objectPath": "evidence/web/sha256/ee/8b/ee8b23c2ca068ac9d474610da9c7d5dbdf31300fef522bc0aea973921c3fe91a.html",
+        "byteSize": 763412,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "json_ld_product_model",
+          "path": "script[application/ld+json][1].mpn",
+          "value": "KFI96AXEAA",
+          "fragmentSha256": "3ce4763bc80fd92aa20a2c7e13d5562953f5b11a10bc4ec648ea705446299d81"
+        }
+      ],
+      "marketSignal": {
+        "status": "AVAILABLE",
+        "locators": [
+          {
+            "kind": "json_ld_offer_availability",
+            "path": "script[application/ld+json][1].offers.availability",
+            "value": "https://schema.org/InStock",
+            "fragmentSha256": "f32a27f5461dd72a21eca7636dd0d0c5988c23b2e0273453af9e7c4f85928607"
+          }
+        ]
+      }
+    },
+    {
+      "evidenceId": "official_identity_bosch_sbv8ecx01a_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "dishwasher",
+        "brand": "Bosch",
+        "model": "SBV8ECX01A"
+      },
+      "source": {
+        "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/dishwashers/underbench-dishwashers/fully-integrated-dishwasher-60-cm/SBV8ECX01A",
+        "finalUrl": "https://www.bosch-home.com.au/en/mkt-product/dishwashers/underbench-dishwashers/fully-integrated-dishwasher-60-cm/SBV8ECX01A",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "0a48571c34c3f10714e0e7033e76212683a1cd78c2cd384f5d1b3ad39f971b2d",
+        "objectPath": "evidence/web/sha256/0a/48/0a48571c34c3f10714e0e7033e76212683a1cd78c2cd384f5d1b3ad39f971b2d.html",
+        "byteSize": 754162,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "json_ld_product_model",
+          "path": "script[application/ld+json][1].mpn",
+          "value": "SBV8ECX01A",
+          "fragmentSha256": "a76025e0987745b2be5b289ca07b64b8be56b8aadf1d48a7e9da9e13bb21f6bc"
+        }
+      ],
+      "marketSignal": {
+        "status": "AVAILABLE",
+        "locators": [
+          {
+            "kind": "json_ld_offer_availability",
+            "path": "script[application/ld+json][1].offers.offers[0].availability",
+            "value": "https://schema.org/InStock",
+            "fragmentSha256": "58dd866fcdbd36db6d63c57acc1d8699cdaa881927112c4fd31d41e35752b301"
+          }
+        ]
+      }
+    },
+    {
+      "evidenceId": "official_identity_bosch_smu8zcs01a_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "dishwasher",
+        "brand": "Bosch",
+        "model": "SMU8ZCS01A"
+      },
+      "source": {
+        "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/dishwashing/underbench-dishwashers/underbench-dishwasher-60-cm/SMU8ZCS01A",
+        "finalUrl": "https://www.bosch-home.com.au/en/mkt-product/dishwashing/underbench-dishwashers/underbench-dishwasher-60-cm/SMU8ZCS01A",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "098420fd01d1b6a1f9de3610b422e06401c423dab77113facd06c4a3b9e8b95d",
+        "objectPath": "evidence/web/sha256/09/84/098420fd01d1b6a1f9de3610b422e06401c423dab77113facd06c4a3b9e8b95d.html",
+        "byteSize": 775195,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "json_ld_product_model",
+          "path": "script[application/ld+json][1].mpn",
+          "value": "SMU8ZCS01A",
+          "fragmentSha256": "4d79d98777110b06c852f2f062ffcda04bf73d7c26deadc58f6eb7a54608d556"
+        }
+      ],
+      "marketSignal": {
+        "status": "AVAILABLE",
+        "locators": [
+          {
+            "kind": "json_ld_offer_availability",
+            "path": "script[application/ld+json][1].offers.offers[0].availability",
+            "value": "https://schema.org/InStock",
+            "fragmentSha256": "58dd866fcdbd36db6d63c57acc1d8699cdaa881927112c4fd31d41e35752b301"
+          },
+          {
+            "kind": "json_ld_offer_availability",
+            "path": "script[application/ld+json][1].offers.offers[1].availability",
+            "value": "https://schema.org/InStock",
+            "fragmentSha256": "8cf3a3cde5f23734faee761c682e5154145faaed5be79e86f2d1820683c35f57"
+          },
+          {
+            "kind": "json_ld_offer_availability",
+            "path": "script[application/ld+json][1].offers.offers[2].availability",
+            "value": "https://schema.org/InStock",
+            "fragmentSha256": "dced3f9219763ff2bc7fe35aec7b4654b32aeae24eaa1e7eca8c961ad20aca74"
+          }
+        ]
+      }
+    },
+    {
+      "evidenceId": "official_identity_bosch_wan24121au_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "washing_machine",
+        "brand": "Bosch",
+        "model": "WAN24121AU"
+      },
+      "source": {
+        "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/WAN24121AU",
+        "finalUrl": "https://www.bosch-home.com.au/en/mkt-product/WAN24121AU",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "25ccd5438fbb80e40f9d37ed046e802616d509679e786716c34c51b2d5ec1dd0",
+        "objectPath": "evidence/web/sha256/25/cc/25ccd5438fbb80e40f9d37ed046e802616d509679e786716c34c51b2d5ec1dd0.html",
+        "byteSize": 643036,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "json_ld_product_model",
+          "path": "script[application/ld+json][1].mpn",
+          "value": "WAN24121AU",
+          "fragmentSha256": "54be9e8aa9c56f420d1564dee44fc915df16e47c94dc2cf5d70e6441afd9e70b"
+        }
+      ],
+      "marketSignal": {
+        "status": "UNAVAILABLE",
+        "locators": [
+          {
+            "kind": "json_ld_offer_availability",
+            "path": "script[application/ld+json][1].offers.availability",
+            "value": "https://schema.org/OutOfStock",
+            "fragmentSha256": "e04dd073076c26ea0ac08e74b311542cb4edea9425f3b39ead55c1b836a08a14"
+          }
+        ]
+      }
+    },
+    {
+      "evidenceId": "official_identity_bosch_wan24126au_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "washing_machine",
+        "brand": "Bosch",
+        "model": "WAN24126AU"
+      },
+      "source": {
+        "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/washers-dryers/washing-machines/front-load-washing-machines/WAN24126AU",
+        "finalUrl": "https://www.bosch-home.com.au/en/mkt-product/washers-dryers/washing-machines/front-load-washing-machines/WAN24126AU",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "afc151cab691e8f6382e6fcadcb326911913ee29a273c37010e0e32dab453227",
+        "objectPath": "evidence/web/sha256/af/c1/afc151cab691e8f6382e6fcadcb326911913ee29a273c37010e0e32dab453227.html",
+        "byteSize": 645329,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "json_ld_product_model",
+          "path": "script[application/ld+json][1].mpn",
+          "value": "WAN24126AU",
+          "fragmentSha256": "24f6591d4bc1cc0878f6742a825490fdf8e1d4cf38c519bf4a27468ce519bd26"
+        }
+      ],
+      "marketSignal": {
+        "status": "UNAVAILABLE",
+        "locators": [
+          {
+            "kind": "json_ld_offer_availability",
+            "path": "script[application/ld+json][1].offers.availability",
+            "value": "https://schema.org/OutOfStock",
+            "fragmentSha256": "e04dd073076c26ea0ac08e74b311542cb4edea9425f3b39ead55c1b836a08a14"
+          }
+        ]
+      }
+    },
     {
       "evidenceId": "official_identity_haier_hrf520bhs_pdf",
       "evidenceKind": "OFFICIAL_PDF_MINERU",
@@ -17,7 +234,7 @@
         "finalUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw41c88678/technical-content/cooling/refrigeration/bottom-mount/Haier790_user_manual_2019-5-31.pdf",
         "redirectChain": [],
         "transport": "fetch",
-        "acquiredAt": "2026-07-20T21:01:16.038Z"
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
       },
       "rawArtifact": {
         "contentSha256": "ed0d9e1bcca5919905a1cb90a9c5d986ae68190496cb6be5b33359a97f532bf5",
@@ -60,7 +277,199 @@
           "textSha256": "9ef7b899f375156db04a8c3ddcf7da1582661ee018e11510a63e2a55ec23dc62",
           "textExcerpt": "Door reversibility (Model HRF520BW, HRF520BS, HRF520BHS,HRF520BHC)"
         }
-      ]
+      ],
+      "marketSignal": {
+        "status": "UNKNOWN",
+        "locators": []
+      }
+    },
+    {
+      "evidenceId": "official_identity_lg_gs_b655pl_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "fridge",
+        "brand": "LG",
+        "model": "GS-B655PL"
+      },
+      "source": {
+        "sourceUrl": "https://www.lg.com/au/fridge-freezers/side-by-side/gs-b655pl/",
+        "finalUrl": "https://www.lg.com/au/fridge-freezers/side-by-side/gs-b655pl/",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "2d6b7b0299060a2b906f6982b2d18521ccd25221de773e5452247c06349045f1",
+        "objectPath": "evidence/web/sha256/2d/6b/2d6b7b0299060a2b906f6982b2d18521ccd25221de773e5452247c06349045f1.html",
+        "byteSize": 2471984,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "product_copy_model_attribute",
+          "path": "button.btn-copy[data-sku][0]",
+          "value": "GS-B655PL",
+          "fragmentSha256": "fc2e8ed8ffe219e3d048d6c649d91d340eb305de60f6413afda6bd2928c46484"
+        }
+      ],
+      "marketSignal": {
+        "status": "UNKNOWN",
+        "locators": []
+      }
+    },
+    {
+      "evidenceId": "official_identity_samsung_ww11cg604dle_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW11CG604DLE"
+      },
+      "sourceIdentityModel": "WW11CG604DLESA",
+      "source": {
+        "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg604dlesa/",
+        "finalUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg604dlesa/",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "f1dc5a0ea4d0ab6e756d82daeab323267eafc7377abad5612ea058c0cb7a1aa2",
+        "objectPath": "evidence/web/sha256/f1/dc/f1dc5a0ea4d0ab6e756d82daeab323267eafc7377abad5612ea058c0cb7a1aa2.html",
+        "byteSize": 3223075,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "json_ld_product_model",
+          "path": "script[application/ld+json][0].sku",
+          "value": "WW11CG604DLESA",
+          "fragmentSha256": "8942ffaf2f9ee6d1f053ed508a048df2391b8efdb430e789f5b03c381b9f3477"
+        }
+      ],
+      "marketSignal": {
+        "status": "UNAVAILABLE",
+        "locators": [
+          {
+            "kind": "json_ld_offer_availability",
+            "path": "script[application/ld+json][0].offers.availability",
+            "value": "outOfStock",
+            "fragmentSha256": "a3dbc1326a95cfdc3aa4eda6331b1fb23af8eced8e97c067d0d5c1d322e9dbac"
+          }
+        ]
+      }
+    },
+    {
+      "evidenceId": "official_identity_samsung_ww12bb944dgb_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW12BB944DGB"
+      },
+      "sourceIdentityModel": "WW12BB944DGBSA",
+      "source": {
+        "sourceUrl": "https://www.samsung.com/au/support/model/WW12BB944DGBSA/",
+        "finalUrl": "https://www.samsung.com/au/support/model/WW12BB944DGBSA/",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "e7ed38c4bf1bb9e88dd5df24553cb67b272a9113944bfdd22587dec63fe9ac3e",
+        "objectPath": "evidence/web/sha256/e7/ed/e7ed38c4bf1bb9e88dd5df24553cb67b272a9113944bfdd22587dec63fe9ac3e.html",
+        "byteSize": 368960,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "official_support_canonical_model",
+          "path": "link[rel=canonical][0]",
+          "value": "WW12BB944DGBSA",
+          "fragmentSha256": "835d4a085c510879ed68a324b4d6fdf9161d3b7dce18164bc63c378f2f37ed49"
+        }
+      ],
+      "marketSignal": {
+        "status": "UNKNOWN",
+        "locators": []
+      }
+    },
+    {
+      "evidenceId": "official_identity_samsung_ww12bb944dgh_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW12BB944DGH"
+      },
+      "sourceIdentityModel": "WW12BB944DGHSA",
+      "source": {
+        "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
+        "finalUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww9400b-front-loading-ai-bubblewash-ai-wash-bespoke-design-12kg-white-ww12bb944dghsa/",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "eaa815bea09c5b1be374794805d6b768c0ed8aec4f98befb9e73db3b699483ec",
+        "objectPath": "evidence/web/sha256/ea/a8/eaa815bea09c5b1be374794805d6b768c0ed8aec4f98befb9e73db3b699483ec.html",
+        "byteSize": 2496812,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "json_ld_product_model",
+          "path": "script[application/ld+json][0].sku",
+          "value": "WW12BB944DGHSA",
+          "fragmentSha256": "fd52765c7124c99afaf8421452ff233cbe20c7b3757eeba0d69e29e939c0efb4"
+        }
+      ],
+      "marketSignal": {
+        "status": "UNAVAILABLE",
+        "locators": [
+          {
+            "kind": "json_ld_offer_availability",
+            "path": "script[application/ld+json][0].offers.availability",
+            "value": "outOfStock",
+            "fragmentSha256": "a3dbc1326a95cfdc3aa4eda6331b1fb23af8eced8e97c067d0d5c1d322e9dbac"
+          }
+        ]
+      }
+    },
+    {
+      "evidenceId": "official_identity_samsung_ww90dg6u34le_html",
+      "evidenceKind": "OFFICIAL_PRODUCT_PAGE",
+      "identity": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW90DG6U34LE"
+      },
+      "sourceIdentityModel": "WW90DG6U34LESA",
+      "source": {
+        "sourceUrl": "https://www.samsung.com/au/support/model/WW90DG6U34LESA/",
+        "finalUrl": "https://www.samsung.com/au/support/model/WW90DG6U34LESA/",
+        "redirectChain": [],
+        "transport": "fetch",
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
+      },
+      "rawArtifact": {
+        "contentSha256": "61554c7106a0a6dcc9e1770831baf6869368738c869f0bdd56043649bd0bb27d",
+        "objectPath": "evidence/web/sha256/61/55/61554c7106a0a6dcc9e1770831baf6869368738c869f0bdd56043649bd0bb27d.html",
+        "byteSize": 366149,
+        "mediaType": "text/html"
+      },
+      "identityLocators": [
+        {
+          "kind": "official_support_canonical_model",
+          "path": "link[rel=canonical][0]",
+          "value": "WW90DG6U34LESA",
+          "fragmentSha256": "f2b94d89bee9da29fc3662c2d02c4282533be504e0d698a0332645de8a417d73"
+        }
+      ],
+      "marketSignal": {
+        "status": "UNKNOWN",
+        "locators": []
+      }
     },
     {
       "evidenceId": "official_identity_westinghouse_wbe4302ac_r_html",
@@ -75,11 +484,11 @@
         "finalUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4302ac-r/",
         "redirectChain": [],
         "transport": "curl",
-        "acquiredAt": "2026-07-20T21:01:16.038Z"
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
       },
       "rawArtifact": {
-        "contentSha256": "607c8ec6cd0bacb9d385dbdebcb7b64b07919961dd171509180889860a2f32de",
-        "objectPath": "evidence/web/sha256/60/7c/607c8ec6cd0bacb9d385dbdebcb7b64b07919961dd171509180889860a2f32de.html",
+        "contentSha256": "2dba76b08b85b5c318a6fe1b8ae9d667d9a8df7cb84c893bcdd3bd7330df90cb",
+        "objectPath": "evidence/web/sha256/2d/ba/2dba76b08b85b5c318a6fe1b8ae9d667d9a8df7cb84c893bcdd3bd7330df90cb.html",
         "byteSize": 421045,
         "mediaType": "text/html"
       },
@@ -132,7 +541,11 @@
           "value": "WBE4302AC-R",
           "fragmentSha256": "ef666d85e06e15f2e27ffa28afd385691d851dc696f4335bc68af6df04cf38d0"
         }
-      ]
+      ],
+      "marketSignal": {
+        "status": "UNKNOWN",
+        "locators": []
+      }
     },
     {
       "evidenceId": "official_identity_westinghouse_wbe5304sc_r_html",
@@ -147,12 +560,12 @@
         "finalUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe5304sc-r/",
         "redirectChain": [],
         "transport": "curl",
-        "acquiredAt": "2026-07-20T21:01:16.038Z"
+        "acquiredAt": "2026-07-21T12:12:18.070Z"
       },
       "rawArtifact": {
-        "contentSha256": "0339ee2ea27ed74a360cda4de6d7e5d89b431f3ade2b57a1b6c423a3e9859565",
-        "objectPath": "evidence/web/sha256/03/39/0339ee2ea27ed74a360cda4de6d7e5d89b431f3ade2b57a1b6c423a3e9859565.html",
-        "byteSize": 434859,
+        "contentSha256": "31ba0085365374d60920bd8ab26ff9f789407f5f576708c93060b297a33f36e3",
+        "objectPath": "evidence/web/sha256/31/ba/31ba0085365374d60920bd8ab26ff9f789407f5f576708c93060b297a33f36e3.html",
+        "byteSize": 431849,
         "mediaType": "text/html"
       },
       "identityLocators": [
@@ -204,16 +617,25 @@
           "value": "WBE5304SC-R",
           "fragmentSha256": "bab11d4d6ff90c48d331f54d1b7222ad968139164d2b2508e13b2bc8413b7f58"
         }
-      ]
+      ],
+      "marketSignal": {
+        "status": "UNKNOWN",
+        "locators": []
+      }
     }
   ],
   "summary": {
-    "records": 3,
+    "records": 13,
     "byEvidenceKind": {
       "OFFICIAL_PDF_MINERU": 1,
-      "OFFICIAL_PRODUCT_PAGE": 2
+      "OFFICIAL_PRODUCT_PAGE": 12
+    },
+    "byMarketSignal": {
+      "AVAILABLE": 3,
+      "UNAVAILABLE": 4,
+      "UNKNOWN": 6
     }
   },
-  "manifestId": "official_identity_evidence_783d87a9ba2cc66b7957120d",
-  "semanticSha256": "783d87a9ba2cc66b7957120d7b30af861a934e988fb19aed862ec60f68470428"
+  "manifestId": "official_identity_evidence_e9bc87d53f72e6495db1e7bc",
+  "semanticSha256": "e9bc87d53f72e6495db1e7bcc8113347963533a7d87c474bc26288b36a5a9ba0"
 }

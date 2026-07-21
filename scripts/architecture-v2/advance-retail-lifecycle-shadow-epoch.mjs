@@ -5,6 +5,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { validateOfficialIdentityEvidenceManifest } from '../../src/domain/official-identity-evidence.mjs';
 import { advanceRetailLifecycleShadowEpoch } from '../../src/domain/retail-lifecycle-release-epoch.mjs';
 import { validateRetailerObservationLedger } from '../../src/domain/retailer-observation-ledger.mjs';
 
@@ -20,12 +21,19 @@ async function atomicJson(path, value) {
 export async function advanceRetailLifecycleShadowEpochFromRepository({ root = defaultRoot } = {}) {
   const policyPath = resolveArchitectureV2Path(root, 'retailLifecycleReleasePolicy');
   const ledgerPath = resolveArchitectureV2Path(root, 'retailerObservations');
-  const [releasePolicy, retailerLedger] = await Promise.all([
+  const officialEvidencePath = resolveArchitectureV2Path(root, 'retailerIdentityOfficialEvidence');
+  const [releasePolicy, retailerLedger, officialIdentityEvidence] = await Promise.all([
     readFile(policyPath, 'utf8').then(JSON.parse),
     readFile(ledgerPath, 'utf8').then(JSON.parse),
+    readFile(officialEvidencePath, 'utf8').then(JSON.parse),
   ]);
   validateRetailerObservationLedger(retailerLedger);
-  const result = advanceRetailLifecycleShadowEpoch({ releasePolicy, retailerLedger });
+  validateOfficialIdentityEvidenceManifest(officialIdentityEvidence);
+  const result = advanceRetailLifecycleShadowEpoch({
+    releasePolicy,
+    retailerLedger,
+    officialIdentityEvidence,
+  });
   if (result.changed) await atomicJson(policyPath, result.policy);
   return { ...result, policyPath };
 }

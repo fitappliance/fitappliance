@@ -1,26 +1,64 @@
 {
-  "schemaVersion": 2,
-  "policyVersion": "retailer-identity-migration-v2",
-  "generatedAt": "2026-07-20T21:01:16.038Z",
+  "schemaVersion": 4,
+  "policyVersion": "retailer-identity-migration-v4",
+  "generatedAt": "2026-07-21T12:12:18.070Z",
   "sourceBindings": {
-    "resolutionId": "retailer_identity_resolution_b4b95787ccc0f36d9b46eed8",
-    "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
+    "resolutionEpochs": [
+      {
+        "resolutionId": "retailer_identity_resolution_b4b95787ccc0f36d9b46eed8",
+        "semanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2",
+        "generatedAt": "2026-07-20T21:01:16.038Z",
+        "summary": {
+          "cases": 18,
+          "resolved": 17,
+          "unresolved": 1,
+          "byAction": {
+            "CORRECT_CANONICAL_MODEL": 2,
+            "KEEP_CANONICAL_IDENTITY": 14,
+            "MERGE_DUPLICATE_CANONICAL": 1
+          },
+          "byLinkAction": {
+            "ACCEPT_AFTER_CANONICAL_CORRECTION": 2,
+            "INVALIDATE_WRONG_IDENTITY": 13,
+            "REASSIGN_TO_EXISTING_CANONICAL": 5
+          }
+        }
+      },
+      {
+        "resolutionId": "retailer_identity_resolution_ceded7b749ca967973e517bb",
+        "semanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+        "generatedAt": "2026-07-21T12:12:18.070Z",
+        "summary": {
+          "cases": 1,
+          "resolved": 1,
+          "unresolved": 0,
+          "byAction": {
+            "QUARANTINE_UNSUPPORTED_CANONICAL": 1
+          },
+          "byLinkAction": {
+            "REASSIGN_TO_EXISTING_CANONICAL": 2
+          }
+        }
+      }
+    ],
     "publicProjectionSemanticSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
-    "retailerLedgerSemanticSha256": "bf950304d5fa2cf6a3031275a14c84646f2ecfba7ae0121efb6dcb7858558e5f"
+    "retailerLedgerSemanticSha256": "02c289d4ec3996e3730c961224c0e5ebcbd58c7c61f59f86add16f50e992efcc",
+    "predecessorMigrationSemanticSha256": "66d56bf4f5840ed79d8c6af7c6566595594abe1af6458398d3ea4f69c9368a9f"
   },
   "sourceResolutionSummary": {
     "cases": 18,
-    "resolved": 17,
-    "unresolved": 1,
+    "resolved": 18,
+    "unresolved": 0,
     "byAction": {
       "CORRECT_CANONICAL_MODEL": 2,
       "KEEP_CANONICAL_IDENTITY": 14,
-      "MERGE_DUPLICATE_CANONICAL": 1
+      "MERGE_DUPLICATE_CANONICAL": 1,
+      "QUARANTINE_UNSUPPORTED_CANONICAL": 1
     },
     "byLinkAction": {
       "ACCEPT_AFTER_CANONICAL_CORRECTION": 2,
       "INVALIDATE_WRONG_IDENTITY": 13,
-      "REASSIGN_TO_EXISTING_CANONICAL": 5
+      "REASSIGN_TO_EXISTING_CANONICAL": 7
     }
   },
   "cases": [
@@ -41,7 +79,8 @@
         "retail_link_445fbe05488583428292dd5e"
       ],
       "correctedModel": "WWT-1910FGX",
-      "targetCanonicalProductId": "fa_prod_3036232c6746d56e540fff19"
+      "targetCanonicalProductId": "fa_prod_3036232c6746d56e540fff19",
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_2e33de9112e46e5744f1f206",
@@ -60,7 +99,8 @@
         "retail_link_aa99e757908199d54ccd08f2"
       ],
       "correctedModel": "WWT-1910BX",
-      "targetCanonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c"
+      "targetCanonicalProductId": "fa_prod_f6eef12ddb184031f19e1c2c",
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_432fa9672be78073527940ce",
@@ -77,7 +117,8 @@
       ],
       "baselineLinkIds": [
         "retail_link_600a22968c1eed41e8df89f3"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_53ef16b233e898f5559ab5a7",
@@ -95,7 +136,8 @@
       "baselineLinkIds": [
         "retail_link_28c476154978a439150af56e",
         "retail_link_668a0c2034ea527c1b71d362"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_582a1016f738172e2612d5f1",
@@ -112,7 +154,8 @@
       ],
       "baselineLinkIds": [
         "retail_link_8d7ebf0556fe7391f2ee8b6d"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_5bcb63b8ebc2b87b11f6e11f",
@@ -129,7 +172,8 @@
       ],
       "baselineLinkIds": [
         "retail_link_65f26ea70eff44308526c3c9"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_60e350a2ff72837f002ff89d",
@@ -146,7 +190,8 @@
       ],
       "baselineLinkIds": [
         "retail_link_bd635e094915adab3c137132"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_6569b08c56179c5e6d50e0d7",
@@ -163,7 +208,8 @@
       ],
       "baselineLinkIds": [
         "retail_link_8248f5525f2a0c2266b3970d"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_76128aa9f3fd0dc7bad74976",
@@ -180,7 +226,8 @@
       ],
       "baselineLinkIds": [
         "retail_link_7650808c2033fd93c7b9a526"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_933c3a7734d6c2259d384afa",
@@ -197,7 +244,8 @@
       ],
       "baselineLinkIds": [
         "retail_link_01d2ab6ed14c8e14398a3858"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_a1140e77d7492d402dc2400c",
@@ -214,7 +262,8 @@
       ],
       "baselineLinkIds": [
         "retail_link_3126b05b2c3db9a783d3d7dd"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_ab9b3b85e8c620cf2a6aff7a",
@@ -231,7 +280,28 @@
       ],
       "baselineLinkIds": [
         "retail_link_54dabcb81a7aad73f6a80bf2"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
+    },
+    {
+      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
+      "resolutionSemanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "sourceCanonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
+      "sourceLegacyRuntimeId": "f3",
+      "expectedIdentity": {
+        "category": "fridge",
+        "brand": "Fisher & Paykel",
+        "model": "RF730QZUVX1 French Door 726L"
+      },
+      "action": "QUARANTINE_UNSUPPORTED_CANONICAL",
+      "reasonCodes": [
+        "UNSUPPORTED_POLLUTED_CANONICAL_WITH_ONE_EXACT_RECEIVED_DESTINATION"
+      ],
+      "baselineLinkIds": [
+        "retail_link_233a887b6f4f2956f70ddb4b",
+        "retail_link_519e6530a163ff49992e0e39"
+      ],
+      "targetCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5"
     },
     {
       "resolutionTaskId": "retail_resolution_d05ea1a30c6320e6cb2a6c4a",
@@ -248,7 +318,8 @@
       ],
       "baselineLinkIds": [
         "retail_link_945a2a727616a6bde23662cf"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_d7d8fdf082df847a28fd0ddb",
@@ -266,7 +337,8 @@
       "baselineLinkIds": [
         "retail_link_1733635c1f742b6b4ecd55d4",
         "retail_link_a3cf38d04073fd1cadb2de47"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_e577b4216f413b6e194e53d5",
@@ -284,7 +356,8 @@
       "baselineLinkIds": [
         "retail_link_7a0cb41d30ca0f5a97dcca5f",
         "retail_link_fd6baded2b779ec33fad52af"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_f38a69995df6884a8ae7cef2",
@@ -302,7 +375,8 @@
       "baselineLinkIds": [
         "retail_link_07e45482f34191845d62fdb5"
       ],
-      "targetCanonicalProductId": "fa_prod_d6013e41c3a0e8821cab11e5"
+      "targetCanonicalProductId": "fa_prod_d6013e41c3a0e8821cab11e5",
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     },
     {
       "resolutionTaskId": "retail_resolution_f98bdf55114c143a8527ed3c",
@@ -319,7 +393,8 @@
       ],
       "baselineLinkIds": [
         "retail_link_10fe1faa140aaaa7910af16e"
-      ]
+      ],
+      "resolutionSemanticSha256": "b4b95787ccc0f36d9b46eed86af7152ac98986bb6fdf6f6f5a5072e05627f3a2"
     }
   ],
   "canonicalCorrections": [
@@ -359,6 +434,37 @@
         "brand": "Haier",
         "model": "HRF520BHS"
       }
+    }
+  ],
+  "canonicalQuarantines": [
+    {
+      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
+      "sourceCanonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
+      "sourceLegacyRuntimeId": "f3",
+      "sourceIdentity": {
+        "category": "fridge",
+        "brand": "Fisher & Paykel",
+        "model": "RF730QZUVX1 French Door 726L"
+      },
+      "targetCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+      "targetLegacyRuntimeId": "ao-92118",
+      "targetIdentity": {
+        "category": "fridge",
+        "brand": "Fisher & Paykel",
+        "model": "RF730QZUVB1"
+      },
+      "discardedUnverifiedRetailerLinks": [
+        {
+          "retailer": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au/fisher-paykel-690l-series-7-quad-door-refrigerator-freezer-ice-water-black.html",
+          "reasonCode": "NO_RECEIPT_BOUND_EXACT_LISTING_FACT"
+        },
+        {
+          "retailer": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf730qzuvb1-690l-quad-french-door-fridge-black",
+          "reasonCode": "NO_RECEIPT_BOUND_EXACT_LISTING_FACT"
+        }
+      ]
     }
   ],
   "linkEvents": [
@@ -448,6 +554,43 @@
       "observation": null
     },
     {
+      "id": "retail_identity_event_d0db14a16ab19be336826987",
+      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
+      "baselineLinkId": "retail_link_233a887b6f4f2956f70ddb4b",
+      "action": "REASSIGN_TO_EXISTING_CANONICAL",
+      "sourceCanonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
+      "destinationCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+      "resolvedAt": "2026-07-21T12:12:18.070Z",
+      "sourceObservedAt": "2026-07-20T19:43:11.969Z",
+      "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+      "resolutionSemanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "reasonCodes": [
+        "UNSUPPORTED_POLLUTED_CANONICAL_WITH_ONE_EXACT_RECEIVED_DESTINATION"
+      ],
+      "observation": {
+        "id": "obs_identity_de6154423c940c842eda3582",
+        "canonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+        "retailer": "The Good Guys",
+        "adapterId": "the-good-guys-partnerize-feed-v1",
+        "observedAt": "2026-07-20T19:43:11.969Z",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qzuvb1",
+        "redirectUrl": null,
+        "availability": "available",
+        "priceAud": 3999,
+        "title": "Fisher & Paykel 690L Quad Door Refrigerator",
+        "imageUrl": null,
+        "retailerProductId": "50078267",
+        "sourceType": "affiliate_feed",
+        "listingState": "current",
+        "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
+        "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
+        "expectedCadenceHours": 24,
+        "maximumCurrentAgeHours": 72,
+        "legacyProjectionBinding": null
+      }
+    },
+    {
       "id": "retail_identity_event_8584ea8b02cc1f6c469e91e5",
       "resolutionTaskId": "retail_resolution_53ef16b233e898f5559ab5a7",
       "baselineLinkId": "retail_link_28c476154978a439150af56e",
@@ -532,6 +675,43 @@
         "sourceReference": "retailer-object:sha256:44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "rawSourceSha256": "44b6e22130f871df02abb4f940a9725f76b7746bfa3460d3055e368be699838e",
         "policyVersion": "retailer-source-policy-v2:the-good-guys-partnerize-feed-v1",
+        "expectedCadenceHours": 24,
+        "maximumCurrentAgeHours": 72,
+        "legacyProjectionBinding": null
+      }
+    },
+    {
+      "id": "retail_identity_event_b62234c63a74dfac5a61ef0a",
+      "resolutionTaskId": "retail_resolution_adce5487e8856bd0548cff41",
+      "baselineLinkId": "retail_link_519e6530a163ff49992e0e39",
+      "action": "REASSIGN_TO_EXISTING_CANONICAL",
+      "sourceCanonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
+      "destinationCanonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+      "resolvedAt": "2026-07-21T12:12:18.070Z",
+      "sourceObservedAt": "2026-07-20T17:23:04.000Z",
+      "rawSourceSha256": "8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
+      "resolutionSemanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "reasonCodes": [
+        "UNSUPPORTED_POLLUTED_CANONICAL_WITH_ONE_EXACT_RECEIVED_DESTINATION"
+      ],
+      "observation": {
+        "id": "obs_identity_62597b6e3d11c2b355e7e96e",
+        "canonicalProductId": "fa_prod_45ddc85fdb6e42a60edf9dd5",
+        "retailer": "Appliances Online",
+        "adapterId": "appliances-online-product-api-v1",
+        "observedAt": "2026-07-20T17:23:04.000Z",
+        "url": "https://www.appliancesonline.com.au/product/fisher-paykel-690l-freestanding-quad-door-fridge-freezer-ice-water-rf730qzuvb1/",
+        "redirectUrl": null,
+        "availability": "available",
+        "priceAud": 3788,
+        "title": "Fisher & Paykel Series 7 690L Quad Door Refrigerator with Ice and Water Matte Black Glass RF730QZUVB1",
+        "imageUrl": null,
+        "retailerProductId": "92118",
+        "sourceType": "public_retailer_api",
+        "listingState": "current",
+        "sourceReference": "retailer-object:sha256:8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
+        "rawSourceSha256": "8c18ceef21bf450ecc8b2b9ff10d46796019450f4de4b2efff5bd2e9852182dd",
+        "policyVersion": "retailer-source-policy-v2:appliances-online-product-api-v1",
         "expectedCadenceHours": 24,
         "maximumCurrentAgeHours": 72,
         "legacyProjectionBinding": null
@@ -831,17 +1011,18 @@
     }
   ],
   "summary": {
-    "cases": 17,
+    "cases": 18,
     "canonicalCorrections": 2,
     "canonicalMerges": 1,
-    "linkEvents": 20,
-    "generatedObservations": 7,
+    "canonicalQuarantines": 1,
+    "linkEvents": 22,
+    "generatedObservations": 9,
     "byLinkAction": {
       "ACCEPT_AFTER_CANONICAL_CORRECTION": 2,
       "INVALIDATE_WRONG_IDENTITY": 13,
-      "REASSIGN_TO_EXISTING_CANONICAL": 5
+      "REASSIGN_TO_EXISTING_CANONICAL": 7
     }
   },
-  "migrationId": "retailer_identity_migration_66d56bf4f5840ed79d8c6af7",
-  "semanticSha256": "66d56bf4f5840ed79d8c6af7c6566595594abe1af6458398d3ea4f69c9368a9f"
+  "migrationId": "retailer_identity_migration_834f0021c83facefd7b341f4",
+  "semanticSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946"
 }

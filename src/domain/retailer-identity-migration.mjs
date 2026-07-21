@@ -10,6 +10,7 @@ const ACTIONS = new Set([
   'KEEP_CANONICAL_IDENTITY',
   'CORRECT_CANONICAL_MODEL',
   'MERGE_DUPLICATE_CANONICAL',
+  'QUARANTINE_UNSUPPORTED_CANONICAL',
 ]);
 const LINK_ACTIONS = new Set([
   'ACCEPT_AFTER_CANONICAL_CORRECTION',
@@ -134,6 +135,7 @@ export function buildRetailerIdentityMigration({ resolution, publicProjection, l
   const cases = [];
   const canonicalCorrections = [];
   const canonicalMerges = [];
+  const canonicalQuarantines = [];
   const linkEvents = [];
   const rawBindings = new Set(ledger.sourceBindings.map((binding) => binding.sha256));
   for (const caseRecord of resolution.cases.filter((row) => row.decision.status === 'RESOLVED')) {
@@ -150,6 +152,7 @@ export function buildRetailerIdentityMigration({ resolution, publicProjection, l
     if (!ACTIONS.has(action)) throw new TypeError('identity migration case action invalid');
     const caseBinding = {
       resolutionTaskId: caseRecord.resolutionTaskId,
+      resolutionSemanticSha256: resolution.semanticSha256,
       sourceCanonicalProductId: caseRecord.canonicalProductId,
       sourceLegacyRuntimeId: caseRecord.legacyRuntimeId,
       expectedIdentity: structuredClone(caseRecord.expectedIdentity),
@@ -174,7 +177,7 @@ export function buildRetailerIdentityMigration({ resolution, publicProjection, l
         fromModel: source.model,
         toModel: caseRecord.decision.correctedModel,
       });
-    } else if (action === 'MERGE_DUPLICATE_CANONICAL') {
+    } else if (['MERGE_DUPLICATE_CANONICAL', 'QUARANTINE_UNSUPPORTED_CANONICAL'].includes(action)) {
       const target = byCanonical.get(caseRecord.decision.targetCanonicalProductId);
       const receivedModels = [...new Set(caseRecord.mismatchSources.map((row) => registryModelKey(row.receivedModel)))];
       if (!target || receivedModels.length !== 1
@@ -183,7 +186,7 @@ export function buildRetailerIdentityMigration({ resolution, publicProjection, l
         || registryModelKey(target.model) !== receivedModels[0]) {
         throw new Error(`identity migration merge target drift: ${caseRecord.canonicalProductId}`);
       }
-      canonicalMerges.push({
+      const canonicalRelationship = {
         resolutionTaskId: caseRecord.resolutionTaskId,
         sourceCanonicalProductId: caseRecord.canonicalProductId,
         sourceLegacyRuntimeId: caseRecord.legacyRuntimeId,
@@ -191,7 +194,23 @@ export function buildRetailerIdentityMigration({ resolution, publicProjection, l
         targetCanonicalProductId: target.canonicalProductId,
         targetLegacyRuntimeId: String(target.id).toLowerCase(),
         targetIdentity: { category: target.cat, brand: target.brand, model: target.model },
-      });
+      };
+      if (action === 'MERGE_DUPLICATE_CANONICAL') {
+        canonicalMerges.push(canonicalRelationship);
+      } else {
+        const receiptBoundUrls = new Set(caseRecord.mismatchSources.map((row) => row.url));
+        canonicalQuarantines.push({
+          ...canonicalRelationship,
+          discardedUnverifiedRetailerLinks: (source.retailers ?? [])
+            .filter((row) => !receiptBoundUrls.has(String(row?.url ?? '')))
+            .map((row) => ({
+              retailer: required(row?.n, 'quarantined retailer name'),
+              url: new URL(required(row?.url, 'quarantined retailer URL')).toString(),
+              reasonCode: 'NO_RECEIPT_BOUND_EXACT_LISTING_FACT',
+            }))
+            .sort((left, right) => left.url.localeCompare(right.url)),
+        });
+      }
     }
     for (const disposition of caseRecord.decision.linkDispositions) {
       const mismatch = caseRecord.mismatchSources.find((row) => row.baselineLinkId === disposition.baselineLinkId);
@@ -226,14 +245,21 @@ export function buildRetailerIdentityMigration({ resolution, publicProjection, l
   }
   canonicalCorrections.sort((left, right) => left.legacyRuntimeId.localeCompare(right.legacyRuntimeId));
   canonicalMerges.sort((left, right) => left.sourceLegacyRuntimeId.localeCompare(right.sourceLegacyRuntimeId));
+  canonicalQuarantines.sort((left, right) => (
+    left.sourceLegacyRuntimeId.localeCompare(right.sourceLegacyRuntimeId)
+  ));
   linkEvents.sort((left, right) => left.baselineLinkId.localeCompare(right.baselineLinkId));
   const document = {
-    schemaVersion: 2,
-    policyVersion: 'retailer-identity-migration-v2',
+    schemaVersion: 4,
+    policyVersion: 'retailer-identity-migration-v4',
     generatedAt: resolution.generatedAt,
     sourceBindings: {
-      resolutionId: resolution.resolutionId,
-      resolutionSemanticSha256: resolution.semanticSha256,
+      resolutionEpochs: [{
+        resolutionId: resolution.resolutionId,
+        semanticSha256: resolution.semanticSha256,
+        generatedAt: resolution.generatedAt,
+        summary: structuredClone(resolution.summary),
+      }],
       publicProjectionSemanticSha256: projectionSemanticSha256,
       retailerLedgerSemanticSha256: ledger.semanticSha256,
     },
@@ -241,11 +267,139 @@ export function buildRetailerIdentityMigration({ resolution, publicProjection, l
     cases,
     canonicalCorrections,
     canonicalMerges,
+    canonicalQuarantines,
     linkEvents,
     summary: {
       cases: cases.length,
       canonicalCorrections: canonicalCorrections.length,
       canonicalMerges: canonicalMerges.length,
+      canonicalQuarantines: canonicalQuarantines.length,
+      linkEvents: linkEvents.length,
+      generatedObservations: linkEvents.filter((event) => event.observation != null).length,
+      byLinkAction: countBy(linkEvents, (event) => event.action),
+    },
+  };
+  const semantic = canonicalSha256(document);
+  document.migrationId = `retailer_identity_migration_${semantic.slice(0, 24)}`;
+  document.semanticSha256 = semantic;
+  return freezeDeep(validateRetailerIdentityMigration(document));
+}
+
+function resolutionEpochsFromMigration(migration) {
+  if (migration.schemaVersion >= 4) {
+    return structuredClone(migration.sourceBindings.resolutionEpochs);
+  }
+  return [{
+    resolutionId: migration.sourceBindings.resolutionId,
+    semanticSha256: migration.sourceBindings.resolutionSemanticSha256,
+    generatedAt: migration.generatedAt,
+    summary: structuredClone(migration.sourceResolutionSummary),
+  }];
+}
+
+function mergeUniqueRecords(left, right, keyOf, label) {
+  const result = new Map();
+  for (const row of [...left, ...right]) {
+    const key = required(keyOf(row), `${label} key`);
+    const prior = result.get(key);
+    if (prior && !sameCanonical(prior, row)) throw new Error(`conflicting cumulative ${label}: ${key}`);
+    if (!prior) result.set(key, structuredClone(row));
+  }
+  return [...result.values()];
+}
+
+export function rollForwardRetailerIdentityMigration({
+  existingMigration,
+  resolution,
+  publicProjection,
+  ledger,
+}) {
+  validateRetailerIdentityMigration(existingMigration);
+  validateRetailerObservationLedger(ledger);
+  if (canonicalSha256(publicProjection) !== existingMigration.sourceBindings.publicProjectionSemanticSha256) {
+    throw new Error('cumulative identity migration public projection drift');
+  }
+  if (!migrationAlreadyApplied(ledger, existingMigration)) {
+    throw new Error('existing identity migration is not completely replayed into the input ledger');
+  }
+  const existingEpochs = resolutionEpochsFromMigration(existingMigration);
+  if (existingEpochs.some((epoch) => epoch.semanticSha256 === resolution.semanticSha256)) {
+    return freezeDeep(structuredClone(existingMigration));
+  }
+  const priorGeneratedAt = new Date(existingEpochs.at(-1).generatedAt);
+  const nextGeneratedAt = new Date(required(resolution.generatedAt, 'new identity resolution time'));
+  if (Number.isNaN(nextGeneratedAt.valueOf()) || nextGeneratedAt < priorGeneratedAt) {
+    throw new Error('new identity resolution precedes the cumulative migration epoch');
+  }
+  const delta = buildRetailerIdentityMigration({ resolution, publicProjection, ledger });
+  const existingDefaultSemantic = existingMigration.schemaVersion >= 4
+    ? null
+    : existingMigration.sourceBindings.resolutionSemanticSha256;
+  const existingCases = existingMigration.cases.map((row) => ({
+    ...structuredClone(row),
+    ...(row.resolutionSemanticSha256 ? {} : {
+      resolutionSemanticSha256: existingDefaultSemantic,
+    }),
+  }));
+  const cases = mergeUniqueRecords(
+    existingCases,
+    delta.cases,
+    (row) => row.resolutionTaskId,
+    'identity migration case',
+  ).sort((left, right) => left.resolutionTaskId.localeCompare(right.resolutionTaskId));
+  const canonicalCorrections = mergeUniqueRecords(
+    existingMigration.canonicalCorrections,
+    delta.canonicalCorrections,
+    (row) => row.legacyRuntimeId,
+    'canonical correction',
+  ).sort((left, right) => left.legacyRuntimeId.localeCompare(right.legacyRuntimeId));
+  const canonicalMerges = mergeUniqueRecords(
+    existingMigration.canonicalMerges,
+    delta.canonicalMerges,
+    (row) => row.sourceLegacyRuntimeId,
+    'canonical merge',
+  ).sort((left, right) => left.sourceLegacyRuntimeId.localeCompare(right.sourceLegacyRuntimeId));
+  const canonicalQuarantines = mergeUniqueRecords(
+    existingMigration.canonicalQuarantines ?? [],
+    delta.canonicalQuarantines,
+    (row) => row.sourceLegacyRuntimeId,
+    'canonical quarantine',
+  ).sort((left, right) => left.sourceLegacyRuntimeId.localeCompare(right.sourceLegacyRuntimeId));
+  const linkEvents = mergeUniqueRecords(
+    existingMigration.linkEvents,
+    delta.linkEvents,
+    (row) => row.baselineLinkId,
+    'identity link event',
+  ).sort((left, right) => left.baselineLinkId.localeCompare(right.baselineLinkId));
+  const resolutionEpochs = [...existingEpochs, ...delta.sourceBindings.resolutionEpochs];
+  const sourceResolutionSummary = {
+    cases: cases.length + resolution.summary.unresolved,
+    resolved: cases.length,
+    unresolved: resolution.summary.unresolved,
+    byAction: countBy(cases, (row) => row.action),
+    byLinkAction: countBy(linkEvents, (row) => row.action),
+  };
+  const document = {
+    schemaVersion: 4,
+    policyVersion: 'retailer-identity-migration-v4',
+    generatedAt: resolution.generatedAt,
+    sourceBindings: {
+      resolutionEpochs,
+      publicProjectionSemanticSha256: existingMigration.sourceBindings.publicProjectionSemanticSha256,
+      retailerLedgerSemanticSha256: ledger.semanticSha256,
+      predecessorMigrationSemanticSha256: existingMigration.semanticSha256,
+    },
+    sourceResolutionSummary,
+    cases,
+    canonicalCorrections,
+    canonicalMerges,
+    canonicalQuarantines,
+    linkEvents,
+    summary: {
+      cases: cases.length,
+      canonicalCorrections: canonicalCorrections.length,
+      canonicalMerges: canonicalMerges.length,
+      canonicalQuarantines: canonicalQuarantines.length,
       linkEvents: linkEvents.length,
       generatedObservations: linkEvents.filter((event) => event.observation != null).length,
       byLinkAction: countBy(linkEvents, (event) => event.action),
@@ -266,13 +420,52 @@ function sortedUnique(values, selector, label) {
 }
 
 export function validateRetailerIdentityMigration(document) {
-  if (!document || document.schemaVersion !== 2 || document.policyVersion !== 'retailer-identity-migration-v2'
+  if (!document || ![2, 3, 4].includes(document.schemaVersion)
+    || document.policyVersion !== `retailer-identity-migration-v${document.schemaVersion}`
     || !Array.isArray(document.cases) || !Array.isArray(document.canonicalCorrections)
-    || !Array.isArray(document.canonicalMerges) || !Array.isArray(document.linkEvents)) {
+    || !Array.isArray(document.canonicalMerges) || !Array.isArray(document.linkEvents)
+    || (document.schemaVersion >= 3 && !Array.isArray(document.canonicalQuarantines))) {
     throw new TypeError('retailer identity migration schema invalid');
   }
-  required(document.sourceBindings?.resolutionId, 'identity migration resolution ID');
-  hash(document.sourceBindings?.resolutionSemanticSha256, 'identity migration resolution semantic SHA-256');
+  const canonicalQuarantines = document.canonicalQuarantines ?? [];
+  const allowedResolutionSemantics = new Set();
+  if (document.schemaVersion >= 4) {
+    const epochs = document.sourceBindings?.resolutionEpochs;
+    if (!Array.isArray(epochs) || epochs.length === 0) {
+      throw new TypeError('identity migration resolution epochs required');
+    }
+    let previousTime = null;
+    for (const epoch of epochs) {
+      required(epoch.resolutionId, 'identity migration resolution epoch ID');
+      const semantic = hash(epoch.semanticSha256, 'identity migration resolution epoch semantic SHA-256');
+      if (allowedResolutionSemantics.has(semantic)) {
+        throw new TypeError('duplicate identity migration resolution epoch');
+      }
+      allowedResolutionSemantics.add(semantic);
+      const generatedAt = new Date(required(epoch.generatedAt, 'identity migration resolution epoch time'));
+      if (Number.isNaN(generatedAt.valueOf()) || (previousTime && generatedAt < previousTime)) {
+        throw new TypeError('identity migration resolution epochs must be chronological');
+      }
+      previousTime = generatedAt;
+      if (!epoch.summary || !Number.isSafeInteger(epoch.summary.cases)
+        || !Number.isSafeInteger(epoch.summary.resolved)
+        || !Number.isSafeInteger(epoch.summary.unresolved)) {
+        throw new TypeError('identity migration resolution epoch summary invalid');
+      }
+    }
+    if (document.sourceBindings.predecessorMigrationSemanticSha256 != null) {
+      hash(
+        document.sourceBindings.predecessorMigrationSemanticSha256,
+        'identity migration predecessor semantic SHA-256',
+      );
+    }
+  } else {
+    required(document.sourceBindings?.resolutionId, 'identity migration resolution ID');
+    allowedResolutionSemantics.add(hash(
+      document.sourceBindings?.resolutionSemanticSha256,
+      'identity migration resolution semantic SHA-256',
+    ));
+  }
   hash(document.sourceBindings?.publicProjectionSemanticSha256, 'identity migration projection semantic SHA-256');
   hash(document.sourceBindings?.retailerLedgerSemanticSha256, 'identity migration ledger semantic SHA-256');
   const sourceResolutionSummary = document.sourceResolutionSummary;
@@ -288,12 +481,23 @@ export function validateRetailerIdentityMigration(document) {
   sortedUnique(document.cases, (row) => required(row.resolutionTaskId, 'migration resolution task ID'), 'migration cases');
   sortedUnique(document.canonicalCorrections, (row) => required(row.legacyRuntimeId, 'correction legacy ID'), 'canonical corrections');
   sortedUnique(document.canonicalMerges, (row) => required(row.sourceLegacyRuntimeId, 'merge source legacy ID'), 'canonical merges');
+  sortedUnique(
+    canonicalQuarantines,
+    (row) => required(row.sourceLegacyRuntimeId, 'quarantine source legacy ID'),
+    'canonical quarantines',
+  );
   sortedUnique(document.linkEvents, (row) => required(row.baselineLinkId, 'identity event baseline link ID'), 'identity link events');
   const caseByTask = new Map(document.cases.map((row) => [row.resolutionTaskId, row]));
   for (const row of document.cases) {
     required(row.sourceCanonicalProductId, 'migration source canonical product ID');
     required(row.sourceLegacyRuntimeId, 'migration source legacy ID');
     normalizedIdentity(row.expectedIdentity, 'migration expected identity');
+    if (document.schemaVersion >= 4 && !allowedResolutionSemantics.has(hash(
+      row.resolutionSemanticSha256,
+      'migration case resolution semantic SHA-256',
+    ))) {
+      throw new TypeError('migration case resolution epoch binding invalid');
+    }
     if (!ACTIONS.has(row.action) || !Array.isArray(row.reasonCodes) || row.reasonCodes.length === 0) {
       throw new TypeError('identity migration case decision invalid');
     }
@@ -333,6 +537,33 @@ export function validateRetailerIdentityMigration(document) {
     }
     required(row.targetLegacyRuntimeId, 'merge target legacy ID');
   }
+  for (const row of canonicalQuarantines) {
+    const caseRecord = caseByTask.get(row.resolutionTaskId);
+    const sourceIdentity = normalizedIdentity(row.sourceIdentity, 'quarantine source identity');
+    const targetIdentity = normalizedIdentity(row.targetIdentity, 'quarantine target identity');
+    if (!caseRecord || caseRecord.action !== 'QUARANTINE_UNSUPPORTED_CANONICAL'
+      || caseRecord.sourceCanonicalProductId !== row.sourceCanonicalProductId
+      || caseRecord.sourceLegacyRuntimeId !== row.sourceLegacyRuntimeId
+      || caseRecord.targetCanonicalProductId !== row.targetCanonicalProductId
+      || row.sourceCanonicalProductId === row.targetCanonicalProductId
+      || sourceIdentity.category !== targetIdentity.category
+      || registryBrandKey(sourceIdentity.brand) !== registryBrandKey(targetIdentity.brand)
+      || !Array.isArray(row.discardedUnverifiedRetailerLinks)) {
+      throw new TypeError('canonical quarantine binding invalid');
+    }
+    required(row.targetLegacyRuntimeId, 'quarantine target legacy ID');
+    sortedUnique(
+      row.discardedUnverifiedRetailerLinks,
+      (link) => new URL(required(link.url, 'discarded retailer URL')).toString(),
+      'discarded unverified retailer links',
+    );
+    for (const link of row.discardedUnverifiedRetailerLinks) {
+      required(link.retailer, 'discarded retailer name');
+      if (link.reasonCode !== 'NO_RECEIPT_BOUND_EXACT_LISTING_FACT') {
+        throw new TypeError('discarded retailer link reason invalid');
+      }
+    }
+  }
   for (const event of document.linkEvents) {
     const caseRecord = caseByTask.get(event.resolutionTaskId);
     if (!caseRecord || !LINK_ACTIONS.has(event.action)
@@ -341,8 +572,10 @@ export function validateRetailerIdentityMigration(document) {
       throw new TypeError('identity link event case binding invalid');
     }
     hash(event.rawSourceSha256, 'identity event raw source SHA-256');
-    if (hash(event.resolutionSemanticSha256, 'identity event resolution semantic SHA-256')
-      !== document.sourceBindings.resolutionSemanticSha256) {
+    if (!allowedResolutionSemantics.has(hash(
+      event.resolutionSemanticSha256,
+      'identity event resolution semantic SHA-256',
+    ))) {
       throw new TypeError('identity event resolution semantic binding invalid');
     }
     const resolvedAt = new Date(required(event.resolvedAt, 'identity event resolvedAt'));
@@ -383,8 +616,10 @@ export function validateRetailerIdentityMigration(document) {
   }
   const correctionsByTask = new Map(document.canonicalCorrections.map((row) => [row.resolutionTaskId, row]));
   const mergesByTask = new Map(document.canonicalMerges.map((row) => [row.resolutionTaskId, row]));
+  const quarantinesByTask = new Map(canonicalQuarantines.map((row) => [row.resolutionTaskId, row]));
   if (correctionsByTask.size !== document.canonicalCorrections.length
-    || mergesByTask.size !== document.canonicalMerges.length) {
+    || mergesByTask.size !== document.canonicalMerges.length
+    || quarantinesByTask.size !== canonicalQuarantines.length) {
     throw new TypeError('identity migration canonical action tasks must be unique');
   }
   const eventsByTask = new Map();
@@ -396,6 +631,10 @@ export function validateRetailerIdentityMigration(document) {
     if ((row.action === 'CORRECT_CANONICAL_MODEL') !== correctionsByTask.has(row.resolutionTaskId)
       || (row.action === 'MERGE_DUPLICATE_CANONICAL') !== mergesByTask.has(row.resolutionTaskId)) {
       throw new TypeError(`identity migration canonical action coverage mismatch: ${row.resolutionTaskId}`);
+    }
+    if ((row.action === 'QUARANTINE_UNSUPPORTED_CANONICAL')
+      !== quarantinesByTask.has(row.resolutionTaskId)) {
+      throw new TypeError(`identity migration canonical quarantine coverage mismatch: ${row.resolutionTaskId}`);
     }
     const eventLinkIds = (eventsByTask.get(row.resolutionTaskId) ?? []).sort();
     if (!sameCanonical(eventLinkIds, row.baselineLinkIds)) {
@@ -410,6 +649,7 @@ export function validateRetailerIdentityMigration(document) {
     cases: document.cases.length,
     canonicalCorrections: document.canonicalCorrections.length,
     canonicalMerges: document.canonicalMerges.length,
+    ...(document.schemaVersion >= 3 ? { canonicalQuarantines: canonicalQuarantines.length } : {}),
     linkEvents: document.linkEvents.length,
     generatedObservations: document.linkEvents.filter((event) => event.observation != null).length,
     byLinkAction: countBy(document.linkEvents, (event) => event.action),
@@ -434,6 +674,10 @@ export function applyRetailerIdentityMigrationToCatalog({ catalog, migration }) 
   if (!catalog || !Array.isArray(catalog.products)) throw new TypeError('identity migration catalog products required');
   const corrections = new Map(migration.canonicalCorrections.map((row) => [row.legacyRuntimeId, row]));
   const merges = new Map(migration.canonicalMerges.map((row) => [row.sourceLegacyRuntimeId, row]));
+  const quarantines = new Map((migration.canonicalQuarantines ?? []).map((row) => [
+    row.sourceLegacyRuntimeId,
+    row,
+  ]));
   const byLegacy = new Map(catalog.products.map((row) => [String(row.id).toLowerCase(), row]));
   for (const correction of corrections.values()) {
     const product = byLegacy.get(correction.legacyRuntimeId);
@@ -458,9 +702,23 @@ export function applyRetailerIdentityMigrationToCatalog({ catalog, migration }) 
       merge.targetIdentity.model,
     )) throw new Error(`catalog merge target identity drift for ${merge.targetLegacyRuntimeId}`);
   }
+  for (const quarantine of quarantines.values()) {
+    const source = byLegacy.get(quarantine.sourceLegacyRuntimeId);
+    if (source && identityKey(source.cat, source.brand, source.model) !== identityKey(
+      quarantine.sourceIdentity.category,
+      quarantine.sourceIdentity.brand,
+      quarantine.sourceIdentity.model,
+    )) throw new Error(`catalog quarantine source identity drift for ${quarantine.sourceLegacyRuntimeId}`);
+    const target = byLegacy.get(quarantine.targetLegacyRuntimeId);
+    if (!target || identityKey(target.cat, target.brand, target.model) !== identityKey(
+      quarantine.targetIdentity.category,
+      quarantine.targetIdentity.brand,
+      quarantine.targetIdentity.model,
+    )) throw new Error(`catalog quarantine target identity drift for ${quarantine.targetLegacyRuntimeId}`);
+  }
   const products = catalog.products.flatMap((row) => {
     const legacyId = String(row.id).toLowerCase();
-    if (merges.has(legacyId)) return [];
+    if (merges.has(legacyId) || quarantines.has(legacyId)) return [];
     const correction = corrections.get(legacyId);
     if (!correction || registryModelKey(row.model) === registryModelKey(correction.toModel)) {
       return [structuredClone(row)];
@@ -509,14 +767,21 @@ function ledgerSummary(document) {
   };
 }
 
+function migrationResolutionSemantics(migration) {
+  if (migration.schemaVersion >= 4) {
+    return migration.sourceBindings.resolutionEpochs.map((epoch) => epoch.semanticSha256);
+  }
+  return [migration.sourceBindings.resolutionSemanticSha256];
+}
+
 function migrationAlreadyApplied(ledger, migration) {
   const events = new Map((ledger.identityResolutionEvents ?? []).map((event) => [event.id, event]));
   const observations = new Map(ledger.observations.map((observation) => [observation.id, observation]));
-  const binding = ledger.sourceBindings.find((row) => (
-    row.kind === 'IDENTITY_RESOLUTION'
-    && row.sha256 === migration.sourceBindings.resolutionSemanticSha256
-  ));
-  return Boolean(binding) && migration.linkEvents.every((event) => (
+  const boundResolutions = new Set(ledger.sourceBindings
+    .filter((row) => row.kind === 'IDENTITY_RESOLUTION')
+    .map((row) => row.sha256));
+  return migrationResolutionSemantics(migration).every((semantic) => boundResolutions.has(semantic))
+    && migration.linkEvents.every((event) => (
     sameCanonical(events.get(event.id), event)
     && (event.observation == null || sameCanonical(observations.get(event.observation.id), event.observation))
   ));
@@ -545,11 +810,11 @@ export function applyRetailerIdentityMigrationToLedger({ ledger, migration }) {
     migration.linkEvents,
     'retailer identity resolution event',
   );
-  const sourceBindings = mergeById(ledger.sourceBindings, [{
-    id: `retailer-identity-resolution:${migration.sourceBindings.resolutionSemanticSha256}`,
-    sha256: migration.sourceBindings.resolutionSemanticSha256,
+  const sourceBindings = mergeById(ledger.sourceBindings, migrationResolutionSemantics(migration).map((semantic) => ({
+    id: `retailer-identity-resolution:${semantic}`,
+    sha256: semantic,
     kind: 'IDENTITY_RESOLUTION',
-  }], 'retailer source binding');
+  })), 'retailer source binding');
   const document = {
     ...structuredClone(ledger),
     sourceBindings,

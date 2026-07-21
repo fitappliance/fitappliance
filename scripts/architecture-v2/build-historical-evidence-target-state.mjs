@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -9,8 +10,12 @@ import { buildHistoricalEvidenceTargetState } from '../../src/domain/historical-
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
-async function readJson(key) {
-  return JSON.parse(await readFile(resolveArchitectureV2Path(root, key), 'utf8'));
+async function readArtifact(key) {
+  const bytes = await readFile(resolveArchitectureV2Path(root, key));
+  return {
+    document: JSON.parse(bytes),
+    sha256: createHash('sha256').update(bytes).digest('hex'),
+  };
 }
 
 async function atomicJson(path, value) {
@@ -29,16 +34,28 @@ function latestGeneratedAt(artifacts) {
 }
 
 export async function runCli() {
-  const [classification, acquisitionQueue, executableQueue, acceptanceBundle, attemptLedger] = await Promise.all([
-    readJson('historicalModelEvidenceClassification'),
-    readJson('historicalModelPdfAcquisitionQueue'),
-    readJson('historicalExecutableEvidenceRecoveryQueue'),
-    readJson('historicalEvidenceRecoveryAcceptanceBundle'),
-    readJson('historicalEvidenceRecoveryAttemptLedger'),
+  const [classificationSource, acquisitionSource, executableSource, acceptanceSource, ledgerSource] = await Promise.all([
+    readArtifact('historicalModelEvidenceClassification'),
+    readArtifact('historicalModelPdfAcquisitionQueue'),
+    readArtifact('historicalExecutableEvidenceRecoveryQueue'),
+    readArtifact('historicalEvidenceRecoveryAcceptanceBundle'),
+    readArtifact('historicalEvidenceRecoveryAttemptLedger'),
   ]);
+  const classification = classificationSource.document;
+  const acquisitionQueue = acquisitionSource.document;
+  const executableQueue = executableSource.document;
+  const acceptanceBundle = acceptanceSource.document;
+  const attemptLedger = ledgerSource.document;
   const artifacts = [classification, acquisitionQueue, executableQueue, acceptanceBundle, attemptLedger];
   const state = buildHistoricalEvidenceTargetState({
     generatedAt: latestGeneratedAt(artifacts),
+    sourceBindings: {
+      classificationSha256: classificationSource.sha256,
+      acquisitionQueueSha256: acquisitionSource.sha256,
+      executableQueueSha256: executableSource.sha256,
+      acceptanceBundleSha256: acceptanceSource.sha256,
+      attemptLedgerSha256: ledgerSource.sha256,
+    },
     classification,
     acquisitionQueue,
     executableQueue,

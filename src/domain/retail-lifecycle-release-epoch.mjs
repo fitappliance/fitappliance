@@ -35,7 +35,11 @@ function validatePolicy(value) {
   return value;
 }
 
-export function advanceRetailLifecycleShadowEpoch({ releasePolicy, retailerLedger }) {
+export function advanceRetailLifecycleShadowEpoch({
+  releasePolicy,
+  retailerLedger,
+  officialIdentityEvidence = null,
+}) {
   const policy = validatePolicy(releasePolicy);
   if (!retailerLedger || retailerLedger.schemaVersion !== 2
     || !Array.isArray(retailerLedger.observations)
@@ -46,21 +50,41 @@ export function advanceRetailLifecycleShadowEpoch({ releasePolicy, retailerLedge
   }
   const eventTimes = [...retailerLedger.observations, ...retailerLedger.collectionAttempts]
     .map((event) => timestamp(event.observedAt, 'retailer ledger event observedAt'));
+  let officialSemanticSha256 = null;
+  if (officialIdentityEvidence != null) {
+    if (![1, 2].includes(officialIdentityEvidence.schemaVersion)
+      || !SHA256.test(String(officialIdentityEvidence.semanticSha256 ?? ''))) {
+      throw new TypeError('valid official identity evidence required for shadow epoch advancement');
+    }
+    officialSemanticSha256 = officialIdentityEvidence.semanticSha256;
+    eventTimes.push(timestamp(
+      officialIdentityEvidence.acquiredAt,
+      'official identity evidence acquiredAt',
+    ));
+  }
   const latest = eventTimes.sort().at(-1);
   const current = timestamp(policy.asOf, 'retail lifecycle release asOf');
   if (new Date(latest) < new Date(current)) {
-    throw new Error('latest retailer ledger event precedes current release asOf');
+    throw new Error('latest lifecycle input event precedes current release asOf');
   }
-  if (latest === current) return Object.freeze({ changed: false, policy: structuredClone(policy) });
   const suffix = createHash('sha256')
-    .update(`${retailerLedger.semanticSha256}\0${latest}`)
+    .update([
+      retailerLedger.semanticSha256,
+      ...(officialSemanticSha256 ? [officialSemanticSha256] : []),
+      latest,
+    ].join('\0'))
     .digest('hex')
     .slice(0, 12);
+  const sourceLabel = officialSemanticSha256 ? 'inputs' : 'ledger';
+  const releaseEpoch = `retail-lifecycle-shadow-${latest.slice(0, 10)}-${sourceLabel}-${suffix}`;
+  if (latest === current && policy.releaseEpoch === releaseEpoch) {
+    return Object.freeze({ changed: false, policy: structuredClone(policy) });
+  }
   return Object.freeze({
     changed: true,
     policy: {
       ...structuredClone(policy),
-      releaseEpoch: `retail-lifecycle-shadow-${latest.slice(0, 10)}-ledger-${suffix}`,
+      releaseEpoch,
       asOf: latest,
     },
   });

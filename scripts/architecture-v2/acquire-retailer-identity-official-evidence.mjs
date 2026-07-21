@@ -58,7 +58,7 @@ export async function acquireFromRepository({
       seed.sourceUrl,
       seed.brand,
       {
-        expectedModel: seed.model,
+        expectedModel: seed.sourceModel ?? seed.model,
         expectedCategory: seed.category,
         allowCurlFallback: true,
         allowScraplingFallback: true,

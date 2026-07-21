@@ -27,12 +27,15 @@ async function atomicJson(path, value) {
 
 export async function buildRetailLifecycleRefreshInventoryFromRepository({
   root = defaultRoot,
+  shadowPath = resolveArchitectureV2Path(root, 'retailLifecycleShadow'),
+  coveragePath = resolveArchitectureV2Path(root, 'retailerObservationCoverage'),
+  identityMigrationPath = resolveArchitectureV2Path(root, 'retailerIdentityMigration'),
   output = resolveArchitectureV2Path(root, 'retailLifecycleRefreshInventory'),
 } = {}) {
   const [shadow, coverage, identityMigration] = await Promise.all([
-    readJsonWithHash(resolveArchitectureV2Path(root, 'retailLifecycleShadow')),
-    readJsonWithHash(resolveArchitectureV2Path(root, 'retailerObservationCoverage')),
-    readJsonWithHash(resolveArchitectureV2Path(root, 'retailerIdentityMigration')),
+    readJsonWithHash(shadowPath),
+    readJsonWithHash(coveragePath),
+    readJsonWithHash(identityMigrationPath),
   ]);
   const inventory = buildRetailLifecycleRefreshInventory({
     shadow: shadow.document,
@@ -46,11 +49,36 @@ export async function buildRetailLifecycleRefreshInventoryFromRepository({
   return inventory;
 }
 
+function option(args, name) {
+  const index = args.indexOf(name);
+  if (index < 0) return null;
+  const value = args[index + 1];
+  if (!value || value.startsWith('--')) throw new TypeError(`${name} requires a value`);
+  return value;
+}
+
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  const root = resolve(process.argv[2] ?? defaultRoot);
-  const inventory = await buildRetailLifecycleRefreshInventoryFromRepository({ root });
+  const args = process.argv.slice(2);
+  const supported = new Set(['--root', '--shadow', '--coverage', '--identity-migration', '--output']);
+  for (let index = 0; index < args.length; index += 2) {
+    if (!supported.has(args[index])) throw new TypeError(`unknown refresh inventory argument: ${args[index]}`);
+    if (!args[index + 1] || args[index + 1].startsWith('--')) {
+      throw new TypeError(`${args[index]} requires a value`);
+    }
+  }
+  const root = resolve(option(args, '--root') ?? defaultRoot);
+  const output = resolve(option(args, '--output') ?? resolveArchitectureV2Path(root, 'retailLifecycleRefreshInventory'));
+  const inventory = await buildRetailLifecycleRefreshInventoryFromRepository({
+    root,
+    shadowPath: resolve(option(args, '--shadow') ?? resolveArchitectureV2Path(root, 'retailLifecycleShadow')),
+    coveragePath: resolve(option(args, '--coverage') ?? resolveArchitectureV2Path(root, 'retailerObservationCoverage')),
+    identityMigrationPath: resolve(
+      option(args, '--identity-migration') ?? resolveArchitectureV2Path(root, 'retailerIdentityMigration'),
+    ),
+    output,
+  });
   process.stdout.write(`${JSON.stringify({
-    output: resolveArchitectureV2Path(root, 'retailLifecycleRefreshInventory'),
+    output,
     inventoryId: inventory.inventoryId,
     summary: inventory.summary,
   }, null, 2)}\n`);

@@ -152,7 +152,14 @@ function fixture() {
       summary: { targetAttempts: 1, resolverOnlySuppressions: 1 },
     },
     targetState: {
-      schemaVersion: 1,
+      schemaVersion: 2,
+      sourceBindings: {
+        classificationSha256: '1'.repeat(64),
+        acquisitionQueueSha256: '2'.repeat(64),
+        executableQueueSha256: '3'.repeat(64),
+        acceptanceBundleSha256: '4'.repeat(64),
+        attemptLedgerSha256: '5'.repeat(64),
+      },
       summary: {
         records: 5,
         actionable: 1,

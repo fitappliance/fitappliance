@@ -235,6 +235,10 @@ function effectiveLifecycleState(entry, product, lifecycleMode) {
 
   const productId = text(product.canonicalProductId);
   const entryProductId = text(entry.canonicalProductId);
+  const exactLegacyRebind = !entryProductId
+    && Array.isArray(entry.sources)
+    && entry.sources.length > 0
+    && entry.sources.every((source) => source.identity?.outcome === 'exact');
   const decision = product.retailLifecycle;
   if (!decision || typeof decision !== 'object' || Array.isArray(decision)) {
     throw new Error(`current retail lifecycle decision missing for ${entry.targetId}`);
@@ -243,9 +247,10 @@ function effectiveLifecycleState(entry, product, lifecycleMode) {
   if (!PUBLICATION_LIFECYCLE_STATES.includes(lifecycleState)) {
     throw new Error(`unsupported current retail lifecycle: ${lifecycleState || 'missing'}`);
   }
-  if (!productId || !entryProductId
+  if (!productId
     || text(decision.canonicalProductId) !== productId
-    || entryProductId !== productId) {
+    || (entryProductId && entryProductId !== productId)
+    || (!entryProductId && lifecycleState === 'CURRENT_RETAIL' && !exactLegacyRebind)) {
     throw new Error(`historical recovery lifecycle product binding mismatch for ${entry.targetId}`);
   }
   if (lifecycleState !== 'CURRENT_RETAIL' && decision.authorizingObservation !== null) {
@@ -320,7 +325,10 @@ export function buildHistoricalEvidencePublication({
       targetId: entry.targetId,
       referenceId: entry.referenceId,
       legacyRuntimeId: entry.legacyRuntimeId,
-      canonicalProductId: entry.canonicalProductId,
+      canonicalProductId: entry.canonicalProductId
+        ?? (product && entry.sources.every((source) => source.identity?.outcome === 'exact')
+          ? product.canonicalProductId
+          : null),
       brand: entry.brand,
       model: entry.model,
       category: entry.category,

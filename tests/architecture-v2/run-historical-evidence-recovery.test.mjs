@@ -280,8 +280,15 @@ async function fixture({ targetCount = 1 } = {}) {
   input.policy.sha256 = canonicalJsonSha256(policyValue);
   const familyCanaryValue = familyCanaries(input, policyValue, queueValue);
   const targetState = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt: '2026-07-13T00:00:00.000Z',
+    sourceBindings: {
+      classificationSha256: '3'.repeat(64),
+      acquisitionQueueSha256: '4'.repeat(64),
+      executableQueueSha256: '5'.repeat(64),
+      acceptanceBundleSha256: '6'.repeat(64),
+      attemptLedgerSha256: '7'.repeat(64),
+    },
     summary: { records: queueTargets.length },
     records: queueTargets.map((row) => ({
       referenceId: row.referenceId,

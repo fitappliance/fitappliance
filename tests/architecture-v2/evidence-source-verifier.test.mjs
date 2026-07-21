@@ -39,6 +39,18 @@ test('official HTML model variants are limited to policy-approved brand, categor
   assert.equal(officialHtmlModelVariant({
     brand: 'Westinghouse', model: 'WTB4600SC', category: 'fridge',
   }, 'WTB4600SCR'), null);
+
+  assert.deepEqual(officialHtmlModelVariant({
+    brand: 'Samsung', model: 'WW11CG604DLE', category: 'washing_machine',
+  }, 'WW11CG604DLESA'), { sourceModel: 'WW11CG604DLESA', suffix: 'SA' });
+  for (const sourceModel of ['WW11CG604DLE-SA', 'WW11CG604DLEAU', 'WW11CG604DLESB']) {
+    assert.equal(officialHtmlModelVariant({
+      brand: 'Samsung', model: 'WW11CG604DLE', category: 'washing_machine',
+    }, sourceModel), null);
+  }
+  assert.equal(officialHtmlModelVariant({
+    brand: 'Samsung', model: 'WW11CG604DLE', category: 'dryer',
+  }, 'WW11CG604DLESA'), null);
 });
 
 test('official market API model variants permit only ASKO AU technical suffixes', () => {
@@ -670,9 +682,9 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.deepEqual(input.verificationReceipt, {
     schemaVersion: 2,
     policyVersion: '2026-07-12.2',
-    manufacturerPolicyVersion: '2026-07-16.4',
+    manufacturerPolicyVersion: '2026-07-21.1',
     verifiedAt: '2026-07-11T14:35:00.000Z',
-    bindingSha256: '449036797f0f511e2e1c556fc68aa1a0308be59cfc062f767034ab0373e3e8a6',
+    bindingSha256: '45ea3788e765d351169ac3a737ce0d8e626ab2754b56f0bfb8dae4713b08a8b7',
   });
 
   assert.equal(verifyVerificationReceipt(input, caseIdentity, {

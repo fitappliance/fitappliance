@@ -11,6 +11,7 @@ import {
   retailerObservationAuthorizedBySourcePolicy,
   validateRetailerObservationLedger,
 } from './retailer-observation-ledger.mjs';
+import { validateOfficialMarketLifecycle } from './official-market-lifecycle.mjs';
 
 const SHA256 = /^[a-f0-9]{64}$/;
 const PRIORITY_BY_LIFECYCLE = Object.freeze({
@@ -19,6 +20,11 @@ const PRIORITY_BY_LIFECYCLE = Object.freeze({
   REGISTRY_ONLY: 'P2_REGISTRY_ONLY',
   UNKNOWN_RETAIL: 'P2_REGISTRY_ONLY',
 });
+const MARKET_REFERENCE_STATES = new Set([
+  'ACTIVE_AU_REGISTERED',
+  'ACTIVE_AU_OFFICIAL',
+  'IDENTITY_AU_OFFICIAL',
+]);
 
 function required(value, label) {
   const result = String(value ?? '').trim();
@@ -84,11 +90,12 @@ function transition(prior, lifecycleState) {
   return 'HISTORICAL_TO_UNKNOWN';
 }
 
-function publicVisibility(lifecycleState) {
+function publicVisibility(lifecycleState, marketState) {
   if (lifecycleState === 'CURRENT_RETAIL') return 'CURRENT_OUTPUT';
   if (lifecycleState === 'CATALOG_ARCHIVED' || lifecycleState === 'REGISTRY_ONLY') {
     return 'HISTORICAL_INPUT_ONLY';
   }
+  if (MARKET_REFERENCE_STATES.has(marketState)) return 'MARKET_REFERENCE_ONLY';
   return 'HIDDEN_UNRESOLVED';
 }
 
@@ -114,6 +121,76 @@ function projectedCurrentRetailers(product, record) {
       });
     })
     .sort((left, right) => left.n.localeCompare(right.n) || left.url.localeCompare(right.url));
+}
+
+function stripCommercialOutput(product) {
+  const sanitized = structuredClone(product);
+  sanitized.price = null;
+  for (const key of [
+    'direct_url',
+    'directUrl',
+    'affiliate_url',
+    'affiliateUrl',
+    'salePrice',
+    'sale_price',
+    'stock',
+    'stockStatus',
+    'stock_status',
+    'availability',
+    'offer',
+    'offers',
+  ]) delete sanitized[key];
+  delete sanitized.discovery;
+  return sanitized;
+}
+
+function publicRetailObservation(observation) {
+  if (!observation) return null;
+  return Object.fromEntries([
+    'id',
+    'canonicalProductId',
+    'retailer',
+    'adapterId',
+    'observedAt',
+    'url',
+    'availability',
+    'priceAud',
+    'retailerProductId',
+    'sourceType',
+    'listingState',
+    'rawSourceSha256',
+    'policyVersion',
+    'freshnessState',
+  ].filter((key) => observation[key] !== undefined).map((key) => [
+    key,
+    structuredClone(observation[key]),
+  ]));
+}
+
+function publicRetailLifecycle(decision) {
+  const current = decision.lifecycleState === 'CURRENT_RETAIL';
+  const latestObservations = current
+    ? decision.latestObservations.map(publicRetailObservation)
+    : [];
+  const authorizingObservation = current
+    ? latestObservations.find((observation) => observation.id === decision.authorizingObservation?.id) ?? null
+    : null;
+  if (current && !authorizingObservation) {
+    throw new Error(`current retail lifecycle authorizer missing from public projection: ${decision.canonicalProductId}`);
+  }
+  return {
+    schemaVersion: decision.schemaVersion,
+    policyVersion: decision.policyVersion,
+    asOf: decision.asOf,
+    canonicalProductId: decision.canonicalProductId,
+    catalogState: decision.catalogState,
+    lifecycleState: decision.lifecycleState,
+    authorizingObservation,
+    latestObservations,
+    observationConflicts: [],
+    collectionAttempts: [],
+    reasonCodes: [...decision.reasonCodes],
+  };
 }
 
 function semanticPayload(document) {
@@ -152,6 +229,9 @@ function expectedCohorts(records) {
       record.excludedBySourcePolicy.observationIds.length > 0
       || record.excludedBySourcePolicy.collectionAttemptIds.length > 0
     )),
+    marketReferenceIds: idsFor(records, (record) => (
+      record.publicVisibility === 'MARKET_REFERENCE_ONLY'
+    )),
   };
 }
 
@@ -160,6 +240,7 @@ function expectedCutover(records) {
     record.priorVisibility === 'CURRENT_OUTPUT'
     && record.lifecycleState !== 'CURRENT_RETAIL'
     && !explicitUnavailable(record)
+    && record.publicVisibility === 'HIDDEN_UNRESOLVED'
   ));
   const unsafeRemovedLegacyCurrentIds = idsFor(records, (record) => (
     record.priorVisibility === 'CURRENT_OUTPUT'
@@ -180,10 +261,10 @@ function sameJson(left, right) {
 }
 
 export function validateRetailLifecycleShadow(document) {
-  if (!document || document.schemaVersion !== 1 || !Array.isArray(document.records)) {
-    throw new TypeError('retail lifecycle shadow schema v1 required');
+  if (!document || document.schemaVersion !== 2 || !Array.isArray(document.records)) {
+    throw new TypeError('retail lifecycle shadow schema v2 required');
   }
-  if (document.policyVersion !== 'retail-lifecycle-shadow-v1') {
+  if (document.policyVersion !== 'retail-lifecycle-shadow-v2') {
     throw new TypeError('retail lifecycle shadow policy version unsupported');
   }
   timestamp(document.asOf, 'retail lifecycle shadow asOf');
@@ -193,6 +274,8 @@ export function validateRetailLifecycleShadow(document) {
     'retailerLedgerSha256',
     'sourcePolicySha256',
     'releasePolicySha256',
+    'officialMarketLifecycleSha256',
+    'officialMarketLifecycleSemanticSha256',
   ]) {
     sha256(document.sourceBindings?.[field], `retail lifecycle shadow ${field}`);
   }
@@ -219,7 +302,15 @@ export function validateRetailLifecycleShadow(document) {
     if (record.transition !== transition(record.priorVisibility, record.lifecycleState)) {
       throw new TypeError(`shadow transition mismatch for ${record.legacyRuntimeId}`);
     }
-    if (record.publicVisibility !== publicVisibility(record.lifecycleState)) {
+    const market = record.marketLifecycle;
+    if (!market || market.canonicalProductId !== record.canonicalProductId
+      || market.legacyRuntimeId !== record.legacyRuntimeId
+      || market.category !== record.category
+      || market.brand !== record.brand
+      || market.model !== record.model) {
+      throw new TypeError(`shadow market lifecycle binding mismatch for ${record.legacyRuntimeId}`);
+    }
+    if (record.publicVisibility !== publicVisibility(record.lifecycleState, market.marketState)) {
       throw new TypeError(`shadow public visibility mismatch for ${record.legacyRuntimeId}`);
     }
     if (typeof record.hasReceiptBoundDimensions !== 'boolean'
@@ -303,6 +394,10 @@ export function validateRetailLifecycleShadow(document) {
     byTransition: countBy(document.records, (record) => record.transition),
     byPublicVisibility: countBy(document.records, (record) => record.publicVisibility),
     byPriorityClass: countBy(document.records, (record) => record.priorityClass),
+    byMarketState: countBy(document.records, (record) => record.marketLifecycle.marketState),
+    marketReferenceProducts: document.records.filter((record) => (
+      record.publicVisibility === 'MARKET_REFERENCE_ONLY'
+    )).length,
     policyExcludedProducts: document.records.filter((record) => (
       record.excludedBySourcePolicy.observationIds.length > 0
       || record.excludedBySourcePolicy.collectionAttemptIds.length > 0
@@ -330,6 +425,8 @@ export function validateRetailLifecycleShadow(document) {
 export function buildRetailLifecycleShadow({
   publicProjection,
   publicProjectionSha256,
+  officialMarketLifecycle,
+  officialMarketLifecycleSha256,
   retailerLedger,
   retailerLedgerSha256,
   sourcePolicy,
@@ -342,9 +439,27 @@ export function buildRetailLifecycleShadow({
   if (!publicProjection || !Array.isArray(publicProjection.products)) {
     throw new TypeError('public projection products required');
   }
+  validateOfficialMarketLifecycle(officialMarketLifecycle);
   validateRetailerObservationLedger(retailerLedger);
   const normalizedSourcePolicy = normalizeRetailerSourcePolicy(sourcePolicy);
   const normalizedAsOf = timestamp(asOf, 'retail lifecycle shadow asOf');
+  if (timestamp(officialMarketLifecycle.asOf, 'official market lifecycle asOf') !== normalizedAsOf) {
+    throw new Error('official market lifecycle and retail shadow epochs differ');
+  }
+  const normalizedProjectionSha256 = sha256(publicProjectionSha256, 'public projection SHA-256');
+  const publicProjectionSemanticSha256 = canonicalSha256(publicProjection);
+  if (officialMarketLifecycle.sourceBindings.publicProjectionSha256 !== normalizedProjectionSha256
+    || officialMarketLifecycle.sourceBindings.publicProjectionSemanticSha256
+      !== publicProjectionSemanticSha256) {
+    throw new Error('official market lifecycle public projection binding drift');
+  }
+  const marketByProduct = new Map(officialMarketLifecycle.records.map((record) => [
+    record.canonicalProductId,
+    record,
+  ]));
+  if (marketByProduct.size !== publicProjection.products.length) {
+    throw new Error('official market lifecycle does not account for every public product');
+  }
   const observationsByProduct = new Map();
   const excludedObservationsByProduct = new Map();
   for (const observation of retailerLedger.observations) {
@@ -381,6 +496,10 @@ export function buildRetailLifecycleShadow({
       registryPresent: false,
     });
     const lifecycleState = retailLifecycle.lifecycleState;
+    const marketLifecycle = marketByProduct.get(canonicalProductId);
+    if (!marketLifecycle || marketLifecycle.legacyRuntimeId !== legacyRuntimeId) {
+      throw new Error(`official market lifecycle identity drift for ${legacyRuntimeId}`);
+    }
     const nextTransition = transition(prior, lifecycleState);
     const dimensionsMm = catalogReceiptDimensions(product);
     return freezeDeep({
@@ -393,11 +512,12 @@ export function buildRetailLifecycleShadow({
       lifecycleState,
       transition: nextTransition,
       priorityClass: PRIORITY_BY_LIFECYCLE[lifecycleState],
-      publicVisibility: publicVisibility(lifecycleState),
+      publicVisibility: publicVisibility(lifecycleState, marketLifecycle.marketState),
       replacementEligibility: dimensionsMm ? 'HISTORICAL_LOOKUP' : 'IDENTITY_ONLY',
       fitDestination: lifecycleState === 'CURRENT_RETAIL' ? 'CURRENT_FIT_INPUT' : 'HISTORICAL_ONLY',
       hasReceiptBoundDimensions: dimensionsMm !== null,
       retailLifecycle,
+      marketLifecycle: structuredClone(marketLifecycle),
       excludedBySourcePolicy: {
         observationIds: (excludedObservationsByProduct.get(canonicalProductId) ?? [])
           .map((observation) => observation.id)
@@ -412,14 +532,22 @@ export function buildRetailLifecycleShadow({
   const cohorts = expectedCohorts(records);
   const cutover = expectedCutover(records);
   const document = {
-    schemaVersion: 1,
-    policyVersion: 'retail-lifecycle-shadow-v1',
+    schemaVersion: 2,
+    policyVersion: 'retail-lifecycle-shadow-v2',
     retailLifecyclePolicyVersion,
     releaseEpoch: required(releaseEpoch, 'retail lifecycle release epoch'),
     asOf: normalizedAsOf,
     sourceBindings: {
-      publicProjectionSha256: sha256(publicProjectionSha256, 'public projection SHA-256'),
-      publicProjectionSemanticSha256: canonicalSha256(publicProjection),
+      publicProjectionSha256: normalizedProjectionSha256,
+      publicProjectionSemanticSha256,
+      officialMarketLifecycleSha256: sha256(
+        officialMarketLifecycleSha256,
+        'official market lifecycle SHA-256',
+      ),
+      officialMarketLifecycleSemanticSha256: sha256(
+        officialMarketLifecycle.semanticSha256,
+        'official market lifecycle semantic SHA-256',
+      ),
       retailerLedgerSha256: sha256(retailerLedgerSha256, 'retailer ledger SHA-256'),
       sourcePolicySha256: sha256(sourcePolicySha256, 'retailer source policy SHA-256'),
       releasePolicySha256: sha256(releasePolicySha256, 'retail lifecycle release policy SHA-256'),
@@ -434,6 +562,10 @@ export function buildRetailLifecycleShadow({
       byTransition: countBy(records, (record) => record.transition),
       byPublicVisibility: countBy(records, (record) => record.publicVisibility),
       byPriorityClass: countBy(records, (record) => record.priorityClass),
+      byMarketState: countBy(records, (record) => record.marketLifecycle.marketState),
+      marketReferenceProducts: records.filter((record) => (
+        record.publicVisibility === 'MARKET_REFERENCE_ONLY'
+      )).length,
       policyExcludedProducts: records.filter((record) => (
         record.excludedBySourcePolicy.observationIds.length > 0
         || record.excludedBySourcePolicy.collectionAttemptIds.length > 0
@@ -480,11 +612,14 @@ export function applyRetailLifecycleCutover({ publicProjection, publicProjection
     if (record.lifecycleState === 'CURRENT_RETAIL' && retailers.length === 0) {
       throw new Error(`retail lifecycle cutover current product lacks projected retailer: ${product.id}`);
     }
+    const projection = record.lifecycleState === 'CURRENT_RETAIL'
+      ? structuredClone(product)
+      : stripCommercialOutput(product);
     return freezeDeep({
-      ...structuredClone(product),
+      ...projection,
       unavailable: record.lifecycleState !== 'CURRENT_RETAIL',
       retailers,
-      retailLifecycle: structuredClone(record.retailLifecycle),
+      retailLifecycle: publicRetailLifecycle(record.retailLifecycle),
       lifecycleVisibility: record.publicVisibility,
     });
   });

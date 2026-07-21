@@ -9,6 +9,7 @@ import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-path
 import {
   applyRetailerIdentityMigrationToLedger,
   buildRetailerIdentityMigration,
+  rollForwardRetailerIdentityMigration,
   validateRetailerIdentityMigration,
 } from '../../src/domain/retailer-identity-migration.mjs';
 
@@ -48,17 +49,26 @@ async function atomicJson(path, value) {
 
 function existingMigrationForCurrentEpoch({ existing, resolution, publicProjection, ledger }) {
   validateRetailerIdentityMigration(existing);
-  if (existing.sourceBindings.resolutionId !== resolution.resolutionId
-    || existing.sourceBindings.resolutionSemanticSha256 !== resolution.semanticSha256
-    || existing.sourceBindings.publicProjectionSemanticSha256 !== canonicalSha256(publicProjection)) {
-    throw new Error('retailer identity migration source epoch drift; create an explicit new release epoch');
+  if (existing.sourceBindings.publicProjectionSemanticSha256 !== canonicalSha256(publicProjection)) {
+    throw new Error('retailer identity migration public projection epoch drift');
   }
-  if (ledger.semanticSha256 === existing.sourceBindings.retailerLedgerSemanticSha256) return existing;
-  const replayed = applyRetailerIdentityMigrationToLedger({ ledger, migration: existing });
-  if (replayed.semanticSha256 !== ledger.semanticSha256) {
-    throw new Error('retailer identity migration ledger is neither the frozen baseline nor a complete replay');
+  const existingResolutionSemantics = existing.schemaVersion >= 4
+    ? existing.sourceBindings.resolutionEpochs.map((epoch) => epoch.semanticSha256)
+    : [existing.sourceBindings.resolutionSemanticSha256];
+  if (existingResolutionSemantics.includes(resolution.semanticSha256)) {
+    if (ledger.semanticSha256 === existing.sourceBindings.retailerLedgerSemanticSha256) return existing;
+    const replayed = applyRetailerIdentityMigrationToLedger({ ledger, migration: existing });
+    if (replayed.semanticSha256 !== ledger.semanticSha256) {
+      throw new Error('retailer identity migration ledger is neither the frozen baseline nor a complete replay');
+    }
+    return existing;
   }
-  return existing;
+  return rollForwardRetailerIdentityMigration({
+    existingMigration: existing,
+    resolution,
+    publicProjection,
+    ledger,
+  });
 }
 
 export async function buildRetailerIdentityMigrationFromRepository({
@@ -77,7 +87,9 @@ export async function buildRetailerIdentityMigrationFromRepository({
   const migration = existing
     ? existingMigrationForCurrentEpoch({ existing, resolution, publicProjection, ledger })
     : buildRetailerIdentityMigration({ resolution, publicProjection, ledger });
-  if (!existing) await atomicJson(output, migration);
+  if (!existing || existing.semanticSha256 !== migration.semanticSha256) {
+    await atomicJson(output, migration);
+  }
   return migration;
 }
 

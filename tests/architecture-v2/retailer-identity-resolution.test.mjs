@@ -313,7 +313,7 @@ test('classifies strict prefix correction, dirty duplicate merge, and exact sibl
   assert.equal(validateRetailerIdentityResolution(resolution), resolution);
 });
 
-test('does not merge a polluted identity when its embedded model conflicts with the retailer model', () => {
+test('quarantines rather than merges a polluted identity that conflicts with one exact destination', () => {
   const dirty = item({
     id: 'fa_prod_bbbbbbbbbbbbbbbbbbbbbbbb',
     legacyId: 'dirty-conflicting-model',
@@ -348,6 +348,40 @@ test('does not merge a polluted identity when its embedded model conflicts with 
     })],
   });
 
+  assert.equal(resolution.cases[0].decision.status, 'RESOLVED');
+  assert.equal(resolution.cases[0].decision.action, 'QUARANTINE_UNSUPPORTED_CANONICAL');
+  assert.equal(resolution.cases[0].decision.targetCanonicalProductId, target.canonicalProductId);
+  assert.deepEqual(
+    resolution.cases[0].decision.reasonCodes,
+    ['UNSUPPORTED_POLLUTED_CANONICAL_WITH_ONE_EXACT_RECEIVED_DESTINATION'],
+  );
+  assert.ok(resolution.cases[0].decision.linkDispositions.every((row) => (
+    row.action === 'REASSIGN_TO_EXISTING_CANONICAL'
+    && row.destinationCanonicalProductId === target.canonicalProductId
+  )));
+});
+
+test('keeps a conflicting polluted identity unresolved without one exact canonical destination', () => {
+  const dirty = item({
+    id: 'fa_prod_eeeeeeeeeeeeeeeeeeeeeeee',
+    legacyId: 'dirty-no-destination',
+    brand: 'Fisher & Paykel',
+    model: 'RF730QZUVX1 French Door 726L',
+    receivedModels: ['RF730QZUVB1'],
+  });
+  const resolution = buildFixture({
+    items: [dirty],
+    products: [{
+      canonicalProductId: dirty.canonicalProductId,
+      id: dirty.legacyRuntimeId,
+      cat: dirty.category,
+      brand: dirty.brand,
+      model: dirty.model,
+    }],
+    observations: [registry({
+      sourceId: 'f', category: 'fridge', brand: 'Fisher & Paykel', model: 'RF730QZUVB1',
+    })],
+  });
   assert.equal(resolution.cases[0].decision.status, 'UNRESOLVED');
   assert.deepEqual(
     resolution.cases[0].decision.reasonCodes,

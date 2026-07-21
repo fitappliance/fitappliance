@@ -226,8 +226,15 @@ function discoveryControlPlane(input) {
     },
   };
   const targetState = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt: input.acquisitionQueue.generatedAt,
+    sourceBindings: {
+      classificationSha256: SHA('3'),
+      acquisitionQueueSha256: SHA('4'),
+      executableQueueSha256: SHA('5'),
+      acceptanceBundleSha256: SHA('6'),
+      attemptLedgerSha256: SHA('7'),
+    },
     summary: { records: targets.length },
     records: targets.map((row) => ({
       referenceId: row.referenceId,

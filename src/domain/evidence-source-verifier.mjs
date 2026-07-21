@@ -173,8 +173,12 @@ export function officialHtmlModelVariant(caseIdentity, sourceModel) {
     ?.[brandKey(caseIdentity?.brand)]?.[category];
   if (!Array.isArray(suffixes)) return null;
   for (const configuredSuffix of suffixes) {
-    const suffix = String(configuredSuffix ?? '').trim().toUpperCase();
-    if (suffix && candidateModel === `${targetModel}-${suffix}`) {
+    const configuration = typeof configuredSuffix === 'string'
+      ? { suffix: configuredSuffix, separator: '-' }
+      : configuredSuffix;
+    const suffix = String(configuration?.suffix ?? '').trim().toUpperCase();
+    const separator = configuration?.separator === '' ? '' : '-';
+    if (suffix && candidateModel === `${targetModel}${separator}${suffix}`) {
       return { sourceModel: candidateModel, suffix };
     }
   }

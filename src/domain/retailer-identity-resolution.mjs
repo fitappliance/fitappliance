@@ -13,6 +13,7 @@ const RESOLUTION_ACTIONS = new Set([
   'KEEP_CANONICAL_IDENTITY',
   'CORRECT_CANONICAL_MODEL',
   'MERGE_DUPLICATE_CANONICAL',
+  'QUARANTINE_UNSUPPORTED_CANONICAL',
 ]);
 const LINK_ACTIONS = new Set([
   'ACCEPT_AFTER_CANONICAL_CORRECTION',
@@ -493,6 +494,18 @@ export function validateRetailerIdentityResolution(document) {
           ))) {
           throw new TypeError('merge destination evidence mismatch');
         }
+      } else if (item.decision.action === 'QUARANTINE_UNSUPPORTED_CANONICAL') {
+        if (item.officialEvidence.expectedExact.length !== 0 || receivedModels.length !== 1
+          || !modelLooksPolluted(expectedIdentity.model) || receivedEvidence.length === 0
+          || pollutedModelContainsExactToken(expectedIdentity.model, onlyReceivedModel)
+          || !item.decision.targetCanonicalProductId
+          || item.decision.targetCanonicalProductId === item.canonicalProductId
+          || item.decision.linkDispositions.some((row) => (
+            row.action !== 'REASSIGN_TO_EXISTING_CANONICAL'
+            || row.destinationCanonicalProductId !== item.decision.targetCanonicalProductId
+          ))) {
+          throw new TypeError('unsupported canonical quarantine evidence mismatch');
+        }
       } else if (item.officialEvidence.expectedExact.length === 0 || receivedModels.length === 0
         || receivedModels.some((model) => (
           item.officialEvidence.receivedExactByModel[model].length === 0
@@ -666,7 +679,8 @@ export function buildRetailerIdentityResolution({
         registryByReceivedModel[model].length > 0
         && registryModelKey(model) !== registryModelKey(item.model)
       ));
-      if (expectedRegistry.length > 0 && everyReceivedModelExact) {
+      const expectedExactEvidence = [...expectedRegistry, ...expectedManufacturer];
+      if (expectedExactEvidence.length > 0 && everyReceivedModelExact) {
         action = 'KEEP_CANONICAL_IDENTITY';
         reasonCodes = ['EXPECTED_AND_ALL_RECEIVED_ARE_DISTINCT_EXACT_AU_MODELS'];
       } else if (receivedModels.length === 1) {
@@ -679,20 +693,26 @@ export function buildRetailerIdentityResolution({
           && product.canonicalProductId !== item.canonicalProductId
         ));
         destination = destinationCandidates.length === 1 ? destinationCandidates[0] : null;
-        if (expectedRegistry.length === 0 && receivedEvidence.length > 0
+        if (expectedExactEvidence.length === 0 && receivedEvidence.length > 0
           && modelLooksPolluted(item.model)
           && pollutedModelContainsExactToken(item.model, receivedModel)
           && destination) {
           action = 'MERGE_DUPLICATE_CANONICAL';
           reasonCodes = ['MARKETING_POLLUTED_IDENTITY_CONTAINS_EXACT_RECEIVED_MODEL_WITH_ONE_DESTINATION'];
-        } else if (expectedRegistry.length === 0 && receivedEvidence.length > 0
+        } else if (expectedExactEvidence.length === 0 && receivedEvidence.length > 0
           && strictMissingPrefix(item.model, receivedModel)
           && new Set(receivedEvidence
             .filter((row) => row.evidenceKind === 'AU_GOVERNMENT_REGISTRY')
             .map((row) => row.sourceId)).size >= 2) {
           action = 'CORRECT_CANONICAL_MODEL';
           reasonCodes = ['STRICT_MISSING_PREFIX_PROVEN_BY_TWO_OFFICIAL_REGISTRY_SOURCES'];
-        } else if (expectedRegistry.length === 0 && receivedEvidence.length > 0
+        } else if (expectedExactEvidence.length === 0 && receivedEvidence.length > 0
+          && modelLooksPolluted(item.model)
+          && !pollutedModelContainsExactToken(item.model, receivedModel)
+          && destination) {
+          action = 'QUARANTINE_UNSUPPORTED_CANONICAL';
+          reasonCodes = ['UNSUPPORTED_POLLUTED_CANONICAL_WITH_ONE_EXACT_RECEIVED_DESTINATION'];
+        } else if (expectedExactEvidence.length === 0 && receivedEvidence.length > 0
           && modelLooksPolluted(item.model)
           && !pollutedModelContainsExactToken(item.model, receivedModel)) {
           decision = {
@@ -705,7 +725,7 @@ export function buildRetailerIdentityResolution({
       if (action) {
         const targetCanonicalProductId = action === 'CORRECT_CANONICAL_MODEL'
           ? item.canonicalProductId
-          : action === 'MERGE_DUPLICATE_CANONICAL'
+          : ['MERGE_DUPLICATE_CANONICAL', 'QUARANTINE_UNSUPPORTED_CANONICAL'].includes(action)
             ? destination?.canonicalProductId ?? null
             : null;
         decision = {

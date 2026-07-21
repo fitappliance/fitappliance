@@ -89,22 +89,34 @@ async function inputs() {
   const ao = result.policy.sources.find((candidate) => candidate.id === AO_SOURCE);
   ao.termsReviewState = 'pending_automated_scale_review';
   delete ao.automationControls;
-  for (const [index, item] of result.inventory.items.entries()) {
-    item.sourceTasks = [{
+  result.inventory.items = result.projection.products
+    .map((product) => ({
+      canonicalProductId: product.canonicalProductId,
+      legacyRuntimeId: product.id,
+      category: product.cat,
+      brand: product.brand,
+      model: product.model,
+    }))
+    .sort((left, right) => left.canonicalProductId.localeCompare(right.canonicalProductId))
+    .slice(0, 101)
+    .map((identity, index) => ({
+      ...identity,
+      lifecycleState: 'UNKNOWN_RETAIL',
+      executionDisposition: 'BOUNDED_CANARY_ONLY',
+      sourceTasks: [{
       baselineLinkId: `retail_link_ao_fixture_${String(index).padStart(4, '0')}`,
       retailer: 'Appliances Online',
-      url: `https://www.appliancesonline.com.au/product/fixture-${index}-${encodeURIComponent(item.model)}/`,
+      url: `https://www.appliancesonline.com.au/product/fixture-${index}-${encodeURIComponent(identity.model)}/`,
       originSource: 'test-fixture',
       sourcePolicyId: AO_SOURCE,
       terminalObservationState: 'LEGACY_UNKNOWN',
       action: 'REVALIDATE_AO_PRODUCT_API',
       executionState: 'BOUNDED_CANARY_ONLY',
       collectionMode: 'bounded_exact_product_api',
-    }];
-    item.resolutionTasks = [];
-    item.controlTasks = [];
-    item.executionDisposition = 'BOUNDED_CANARY_ONLY';
-  }
+      }],
+      resolutionTasks: [],
+      controlTasks: [],
+    }));
   resignInventory(result.inventory);
   result.inventorySha256 = sha256(JSON.stringify(result.inventory));
   result.policySha256 = sha256(JSON.stringify(result.policy));

@@ -110,6 +110,42 @@ Detailed evidence:
 - [`superpowers/specs/2026-07-12-historical-mineru-publication-coverage-design.md`](superpowers/specs/2026-07-12-historical-mineru-publication-coverage-design.md)
 - [`superpowers/plans/2026-07-12-historical-mineru-publication-coverage.md`](superpowers/plans/2026-07-12-historical-mineru-publication-coverage.md)
 
+### 3.1 Current lifecycle release candidate (2026-07-21)
+
+The released epoch and the next release candidate are deliberately separate.
+The released 3,515-product projection remains in `SHADOW_ONLY`; the independently
+bound epoch-2 candidate contains 3,513 products and is
+`READY_FOR_CUTOVER` as
+`retail_lifecycle_release_6c42c754aeb1ff49097b32b4`. Its exhaustive partition
+accounts for all 1,384 products
+that were current in the legacy projection, with zero unresolved identities and
+zero unsafe removals.
+
+The candidate has 349 current-retail products, 3,087 archived products and 77
+market-reference products. Market-reference rows may support old-appliance
+lookup, but carry no retailer CTA, price, stock, sponsorship, or current Fit
+classification. The candidate has zero Fit publication violations and its
+rollback drill restores the released public projection byte-for-byte.
+The 8,653,582-byte public candidate excludes collection attempts and conflict
+payloads; those remain in the shadow and append-only ledger. This separation is
+enforced by both a direct final-artifact audit and a two-times-baseline size
+ceiling.
+
+Identity changes remain field-neutral. The Haier marketing-polluted duplicate
+is merged only into the independently proven `HRF520BHS` identity. The Fisher &
+Paykel conflicting embedded model is quarantined and may retain only exact
+`RF730QZUVB1` listing bindings; it donates no dimensions, installation facts,
+availability, or Fit. LG `GS-B655PL` retains exact official AU identity and
+registry evidence, while the `GS-B655MBL` sibling retailer response remains
+invalid for availability.
+
+The whole-system contract now has 38 stages and ten independently bound epochs.
+Its current ID is `historical_evidence_system_9b33eff3a2d26abab79c6c6c`.
+Historical target state is schema v2 and binds the exact bytes of its five
+upstream inputs: classification, acquisition queue, executable queue,
+acceptance bundle and attempt ledger. A stale derivative or mixed replay fails
+closed even when timestamps appear current.
+
 ## 4. Data Strategy: Multi-Source Evidence Broker
 
 PDF-only acquisition is not the target architecture. A single commercial data

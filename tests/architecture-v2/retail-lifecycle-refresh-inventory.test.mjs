@@ -55,17 +55,14 @@ test('refresh inventory accounts for every unresolved prior-current product with
     .filter((item) => item.terminalObservationState === 'QUARANTINED_IDENTITY_MISMATCH')
     .map((item) => item.canonicalProductId)
     .filter((id) => unresolvedIds.has(id)));
-  assert.equal(inventory.summary.resolutionTasks, mismatchProductIds.size);
-  assert.ok([...mismatchProductIds].every((id) => (
-    inventory.items.find((item) => item.canonicalProductId === id)
-      ?.executionDisposition === 'REQUIRES_EXACT_MODEL_REDISCOVERY'
-  )));
+  assert.equal(mismatchProductIds.size, 0);
+  assert.equal(inventory.summary.resolutionTasks, 0);
 
   const identityConflict = inventory.items.find((item) => item.legacyRuntimeId === 'f3');
-  assert.equal(identityConflict.sourceTasks.length, 2);
-  assert.equal(identityConflict.resolutionTasks.length, 1);
-  assert.equal(identityConflict.controlTasks.length, 0);
-  assert.equal(identityConflict.executionDisposition, 'REQUIRES_EXACT_MODEL_REDISCOVERY');
+  assert.equal(identityConflict.sourceTasks.length, 0);
+  assert.equal(identityConflict.resolutionTasks.length, 0);
+  assert.equal(identityConflict.controlTasks[0].action, 'APPLY_DECLARATIVE_CANONICAL_QUARANTINE');
+  assert.equal(identityConflict.executionDisposition, 'PENDING_ATOMIC_IDENTITY_CUTOVER');
 
   const mixedDependency = inventory.items.find((item) => item.legacyRuntimeId === 'f7');
   assert.equal(mixedDependency.sourceTasks.length, 0);
@@ -74,19 +71,7 @@ test('refresh inventory accounts for every unresolved prior-current product with
   assert.equal(mixedDependency.executionDisposition, 'PENDING_ATOMIC_IDENTITY_CUTOVER');
 
   const identityRediscovery = inventory.items.find((item) => item.model === 'GS-B655PL');
-  assert.ok(identityRediscovery, 'identity-quarantined product remains in the unresolved inventory');
-  assert.equal(identityRediscovery.sourceTasks.length, 0);
-  assert.equal(identityRediscovery.resolutionTasks.length, 0);
-  assert.equal(identityRediscovery.executionDisposition, 'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY');
-  assert.deepEqual(identityRediscovery.controlTasks.map((task) => ({
-    action: task.action,
-    executionState: task.executionState,
-    canonicalAction: task.canonicalAction,
-  })), [{
-    action: 'DISCOVER_AUTHORIZED_EXACT_MODEL_RETAIL_SOURCE',
-    executionState: 'REQUIRES_AUTHORIZED_SOURCE_DISCOVERY',
-    canonicalAction: 'KEEP_CANONICAL_IDENTITY',
-  }]);
-  assert.equal(inventory.summary.resolutionTasks, mismatchProductIds.size);
+  assert.equal(identityRediscovery, undefined, 'exact LG official evidence closes retail rediscovery');
+  assert.equal(inventory.summary.resolutionTasks, 0);
   assert.equal(inventory.summary.controlTasks, 2);
 });

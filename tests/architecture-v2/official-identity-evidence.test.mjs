@@ -5,6 +5,8 @@ import test from 'node:test';
 import { buildMineruDerivedArtifact } from '../../src/domain/mineru-document.mjs';
 import {
   acquireOfficialIdentityEvidence,
+  extractOfficialHtmlIdentityLocators,
+  extractOfficialHtmlMarketSignal,
   loadOfficialIdentityEvidence,
   validateOfficialIdentityEvidenceManifest,
 } from '../../src/domain/official-identity-evidence.mjs';
@@ -12,6 +14,7 @@ import {
 const ACQUIRED_AT = '2026-07-21T01:00:00.000Z';
 const WESTINGHOUSE_URL = 'https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbe4302ac-r/';
 const HAIER_URL = 'https://www.haier.com.au/support/manuals/hrf520bhs-user-manual.pdf';
+const SAMSUNG_URL = 'https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-11kg-white-ww11cg604dlesa/';
 
 function sha256(value) {
   return createHash('sha256').update(value).digest('hex');
@@ -40,10 +43,14 @@ function seeds(overrides = {}) {
   };
 }
 
-function html(model = 'WBE4302AC-R') {
+function html(model = 'WBE4302AC-R', availability = null) {
+  const offers = availability == null
+    ? ''
+    : `,"offers":{"@type":"Offer","availability":"${availability}"}`;
   return Buffer.from(`<!doctype html><html><head>
     <title>425L bottom freezer fridge - ${model} | Westinghouse Australia</title>
     <link rel="canonical" href="${WESTINGHOUSE_URL}">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","mpn":"${model}"${offers}}</script>
     <script>ELECTROLUX.GA4 = {"page_type":"PDPs","market":"WHS AU 1","product_model_id":"${model}","product_brand":"Westinghouse"};</script>
   </head><body data-page-type="productdetailspage"></body></html>`);
 }
@@ -112,6 +119,133 @@ test('acquires official HTML and MinerU PDF identity evidence and replays it off
   assert.equal(observations.find((row) => row.model === 'HRF520BHS').evidenceKind, 'OFFICIAL_PDF_MINERU');
   assert.ok(observations.every((row) => row.identityLocators.length > 0));
   assert.ok(observations.every((row) => !('dimensions' in row) && !('fit' in row)));
+});
+
+test('binds structured availability to the same exact Product identity without treating page text as stock', async () => {
+  assert.equal(
+    extractOfficialHtmlMarketSignal(html('WBE4302AC-R', 'https://schema.org/InStock'), 'WBE4302AC-R').status,
+    'AVAILABLE',
+  );
+  assert.equal(
+    extractOfficialHtmlMarketSignal(html('WBE4302AC-R', 'https://schema.org/OutOfStock'), 'WBE4302AC-R').status,
+    'UNAVAILABLE',
+  );
+  assert.equal(extractOfficialHtmlMarketSignal(html(), 'WBE4302AC-R').status, 'UNKNOWN');
+  assert.equal(extractOfficialHtmlMarketSignal(Buffer.from(`<!doctype html><html><head>
+    <script type="application/ld+json">{"@type":"Product","mpn":"OTHER","offers":{"availability":"https://schema.org/InStock"}}</script>
+  </head><body>WBE4302AC-R is in stock</body></html>`), 'WBE4302AC-R').status, 'UNKNOWN');
+
+  const conflict = Buffer.from(`<!doctype html><html><head>
+    <script type="application/ld+json">{"@type":"Product","mpn":"WBE4302AC-R","offers":[
+      {"availability":"https://schema.org/InStock"},
+      {"availability":"https://schema.org/OutOfStock"}
+    ]}</script>
+  </head></html>`);
+  assert.equal(extractOfficialHtmlMarketSignal(conflict, 'WBE4302AC-R').status, 'CONFLICT');
+});
+
+test('acquisition and offline replay preserve structured official market signals', async () => {
+  const { manifest, objects } = await fixture({
+    seedsDocument: seeds({ seeds: [seeds().seeds[1]] }),
+    fetchArtifact: async (seed) => ({
+      requestedUrl: seed.sourceUrl,
+      finalUrl: seed.sourceUrl,
+      redirectChain: [],
+      contentType: seed.mediaType,
+      bytes: html('WBE4302AC-R', 'https://schema.org/InStock'),
+      transport: 'fetch',
+    }),
+  });
+  assert.equal(manifest.schemaVersion, 2);
+  assert.equal(manifest.records[0].marketSignal.status, 'AVAILABLE');
+  assert.equal(manifest.summary.byMarketSignal.AVAILABLE, 1);
+  const observations = await loadOfficialIdentityEvidence({
+    manifest,
+    readObject: async (path) => objects.get(path),
+  });
+  assert.equal(observations[0].marketSignal.status, 'AVAILABLE');
+});
+
+test('keeps canonical model separate from a narrowly approved Australian source SKU', async () => {
+  const sourceModel = 'WW11CG604DLESA';
+  const samsungSeeds = seeds({ seeds: [{
+    evidenceId: 'official_identity_samsung_ww11cg604dle_html',
+    category: 'washing_machine',
+    brand: 'Samsung',
+    model: 'WW11CG604DLE',
+    sourceModel,
+    sourceUrl: SAMSUNG_URL,
+    mediaType: 'text/html',
+  }] });
+  const objects = new Map();
+  const bytes = Buffer.from(`<!doctype html><html><head><script type="application/ld+json">{
+    "@type":"Product","sku":"${sourceModel}",
+    "offers":{"@type":"Offer","availability":"https://schema.org/InStock"}
+  }</script></head></html>`);
+  const manifest = await acquireOfficialIdentityEvidence({
+    seedsDocument: samsungSeeds,
+    acquiredAt: ACQUIRED_AT,
+    fetchArtifact: async (seed) => ({
+      requestedUrl: seed.sourceUrl,
+      finalUrl: seed.sourceUrl,
+      redirectChain: [],
+      contentType: 'text/html',
+      bytes,
+      transport: 'fetch',
+    }),
+    writeObject: async (path, value) => objects.set(path, Buffer.from(value)),
+  });
+  assert.equal(manifest.records[0].identity.model, 'WW11CG604DLE');
+  assert.equal(manifest.records[0].sourceIdentityModel, sourceModel);
+  assert.equal(manifest.records[0].marketSignal.status, 'AVAILABLE');
+
+  const observations = await loadOfficialIdentityEvidence({
+    manifest,
+    readObject: async (path) => objects.get(path),
+  });
+  assert.equal(observations[0].model, 'WW11CG604DLE');
+  assert.equal(observations[0].sourceIdentityModel, sourceModel);
+  assert.ok(!('dimensions' in observations[0]) && !('fit' in observations[0]));
+
+  await assert.rejects(() => acquireOfficialIdentityEvidence({
+    seedsDocument: seeds({ seeds: [{
+      ...samsungSeeds.seeds[0],
+      sourceModel: 'WW11CG604DLEAU',
+    }] }),
+    acquiredAt: ACQUIRED_AT,
+    fetchArtifact: async () => assert.fail('unapproved variant must fail before fetch'),
+    writeObject: async () => assert.fail('unapproved variant must not be stored'),
+  }), /approved HTML model variant/i);
+});
+
+test('accepts the LG PDP copy-model control but not arbitrary data-sku attributes', () => {
+  const exact = extractOfficialHtmlIdentityLocators(Buffer.from(`<!doctype html><html><body>
+    <button class="btn-copy" data-sku="GS-B655PL">Copy model</button>
+  </body></html>`), 'GS-B655PL');
+  assert.equal(exact.length, 1);
+  assert.equal(exact[0].kind, 'product_copy_model_attribute');
+
+  assert.throws(() => extractOfficialHtmlIdentityLocators(Buffer.from(`<!doctype html><html><body>
+    <div data-sku="GS-B655PL">Related product</div>
+  </body></html>`), 'GS-B655PL'), /structured exact-model/i);
+});
+
+test('accepts only a Samsung AU exact support canonical as support identity', () => {
+  const exact = extractOfficialHtmlIdentityLocators(Buffer.from(`<!doctype html><html><head>
+    <link rel="canonical" href="https://www.samsung.com/au/support/model/WW90DG6U34LESA/">
+  </head></html>`), 'WW90DG6U34LESA');
+  assert.equal(exact.length, 1);
+  assert.equal(exact[0].kind, 'official_support_canonical_model');
+
+  for (const url of [
+    'https://www.samsung.com/nz/support/model/WW90DG6U34LESA/',
+    'https://example.com/au/support/model/WW90DG6U34LESA/',
+    'https://www.samsung.com/au/support/search/?model=WW90DG6U34LESA',
+  ]) {
+    assert.throws(() => extractOfficialHtmlIdentityLocators(Buffer.from(`<!doctype html><html><head>
+      <link rel="canonical" href="${url}">
+    </head></html>`), 'WW90DG6U34LESA'), /structured exact-model/i);
+  }
 });
 
 test('rejects an unapproved seed host and a redirect escaping the official brand hosts', async () => {

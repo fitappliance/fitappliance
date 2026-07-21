@@ -2217,11 +2217,12 @@ manifest. The second build must be byte-identical. Do not run another online
 audit after system-contract generation; if one is required, restart this
 sequence from the online replay step.
 
-The release gate is fail-closed. `retail-lifecycle-shadow.json` must report
-`cutover.status == "READY"`, an empty `unresolvedLegacyCurrentIds`, and an empty
-`unsafeRemovedLegacyCurrentIds`. At the 2026-07-21 checkpoint it is `BLOCKED`
-with 79 unresolved products and zero unsafe removals. Do not deploy the shadow
-lifecycle projection while that state remains.
+The release gate is fail-closed. The released `retail-lifecycle-shadow.json`
+stays frozen in `SHADOW_ONLY`; it is not overwritten to manufacture a passing
+state. Cutover authority comes from the separately bound candidate manifest,
+whose shadow must report `cutover.status == "READY"`, an empty
+`unresolvedLegacyCurrentIds`, and an empty `unsafeRemovedLegacyCurrentIds`.
+Do not deploy an intermediate shadow or candidate artifact by itself.
 
 ### Rollback unit
 
@@ -2257,17 +2258,50 @@ dimensions, installation fields, or Fit.
 `canonical-registry.json` is the released pre-cutover registry and currently
 contains 3,515 products and 3,515 identifier mappings.
 `canonical-registry-migration-candidate.json` is a separate control-only
-artifact with 3,514 products and the same 3,515 mappings. Never overwrite the
+artifact with 3,513 products and 3,514 mappings. Never overwrite the
 released registry with this candidate before the lifecycle shadow is `READY`.
 The public projection must depend on the released registry; candidate
 generation may read the migration registry but publication remains isolated.
 
-The 2026-07-21 automated replay resolved 17/18 cases and emitted 20 per-link
-identity events. A polluted `RF730QZUVX1` identity was not merged into retailer
-model `RF730QZUVB1`; partial migration applies only the 17 resolved cases and
-keeps that conflict isolated. The 79 lifecycle products remain blocked: 76 by
-source policy, one pending atomic identity cutover, one requiring an authorised
-exact-model source, and one requiring exact-model rediscovery. The rollback
-drill rebuilt detached commit `745a7212f` offline
-and left the external object-store metadata digest unchanged at
-`a17a43d039d9f112a3d8bd6b508ef242dc2178d06548a16d8a26bb60602c1e7c`.
+The final 2026-07-21 replay assigned deterministic dispositions to all 18 cases:
+two canonical corrections, one exact-destination merge, one conflicting-model
+quarantine and listing-level invalidation/reassignment elsewhere, producing 22
+identity events. `RF730QZUVX1 French Door 726L` is not aliased to
+`RF730QZUVB1`; only exact B1 listing bindings survive and no fields transfer.
+The Haier marketing-polluted row merges into existing exact `HRF520BHS`. LG
+`GS-B655PL` keeps exact official AU identity and registry evidence while its
+`GS-B655MBL` sibling listing remains invalid for availability.
+
+## 45. Epoch-2 lifecycle candidate and target-state byte bindings
+
+Build the candidate in DAG order without mutating the released epoch:
+
+```bash
+npm run build:official-market-lifecycle:candidate
+npm run build:retail-lifecycle-release-candidate
+npm run build:retail-lifecycle-refresh-inventory:candidate
+env -u FITAPPLIANCE_STORAGE_ROOT npm run build:architecture-v2
+npm run build:historical-evidence-system-contract
+```
+
+The candidate manifest must report `READY_FOR_CUTOVER`, all 1,384 legacy-current
+products accounted, zero unresolved IDs, zero unsafe removals, zero Fit
+publication violations and `PROVEN_BYTE_IDENTICAL` rollback. The 77
+`MARKET_REFERENCE_ONLY` products must have no price, stock, retailer or
+affiliate URL, sponsorship, CTA, or current Fit classification.
+The final public candidate must also contain no collection attempts or conflict
+payloads and must remain below the two-times-baseline byte ceiling. Inspect the
+final `public-catalog-release-candidate.json`, not the pre-cutover identity
+projection, when checking these publication properties.
+
+`historical-evidence-target-state.json` is schema v2. Its `sourceBindings`
+contain the exact file SHA-256 values for classification, acquisition queue,
+executable queue, acceptance bundle and attempt ledger. The system-contract
+builder rereads those bytes and rebuilds target state; any stale artifact,
+missing binding or mixed epoch fails before bounded planning.
+
+Run `npm run materialize:retail-lifecycle-release-candidate` only as part of an
+authorized complete release. Commit, deploy and roll back the public projection,
+historical reference, identity migration, lifecycle shadow, audits, controller
+state and documentation together. Never materialize one generated file to make
+the repository appear ready.

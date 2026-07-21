@@ -49,10 +49,11 @@ function countBy(items, selector) {
 
 function withOneUnresolvedCase(resolution) {
   const document = structuredClone(resolution);
-  const unresolved = document.cases.find((item) => item.decision.action === 'MERGE_DUPLICATE_CANONICAL');
+  const unresolved = document.cases.find((item) => item.decision.status === 'RESOLVED');
+  assert.ok(unresolved, 'fixture needs one resolved identity case');
   unresolved.decision = {
     status: 'UNRESOLVED',
-    reasonCodes: ['POLLUTED_IDENTITY_EMBEDDED_MODEL_CONFLICTS_WITH_RECEIVED_MODEL'],
+    reasonCodes: ['SYNTHETIC_UNRESOLVED_CANARY'],
     linkDispositions: [],
   };
   document.summary = {
@@ -100,33 +101,41 @@ test('builds a declarative migration for every resolved case and leaves unresolv
   assert.doesNotThrow(() => validateRetailerIdentityMigration(migration));
   assert.deepEqual(migration.sourceResolutionSummary, {
     cases: 18,
-    resolved: 17,
-    unresolved: 1,
+    resolved: 18,
+    unresolved: 0,
     byAction: {
       CORRECT_CANONICAL_MODEL: 2,
       KEEP_CANONICAL_IDENTITY: 14,
       MERGE_DUPLICATE_CANONICAL: 1,
+      QUARANTINE_UNSUPPORTED_CANONICAL: 1,
     },
     byLinkAction: {
       ACCEPT_AFTER_CANONICAL_CORRECTION: 2,
       INVALIDATE_WRONG_IDENTITY: 13,
-      REASSIGN_TO_EXISTING_CANONICAL: 5,
+      REASSIGN_TO_EXISTING_CANONICAL: 7,
     },
   });
   assert.deepEqual(migration.summary, {
-    cases: 17,
+    cases: 18,
     canonicalCorrections: 2,
     canonicalMerges: 1,
-    linkEvents: 20,
-    generatedObservations: 7,
+    canonicalQuarantines: 1,
+    linkEvents: 22,
+    generatedObservations: 9,
     byLinkAction: {
       ACCEPT_AFTER_CANONICAL_CORRECTION: 2,
       INVALIDATE_WRONG_IDENTITY: 13,
-      REASSIGN_TO_EXISTING_CANONICAL: 5,
+      REASSIGN_TO_EXISTING_CANONICAL: 7,
     },
   });
   assert.ok(migration.linkEvents.filter((event) => event.action === 'INVALIDATE_WRONG_IDENTITY')
     .every((event) => event.observation === null && event.destinationCanonicalProductId === null));
+  assert.equal(migration.sourceBindings.resolutionEpochs.length, 2);
+  assert.equal(migration.canonicalQuarantines[0].sourceLegacyRuntimeId, 'f3');
+  assert.deepEqual(
+    migration.canonicalQuarantines[0].discardedUnverifiedRetailerLinks.map((row) => row.retailer),
+    ['Harvey Norman', 'JB Hi-Fi'],
+  );
 });
 
 test('builds a partial migration while preserving unresolved identity cases outside the mutation set', async () => {
@@ -176,7 +185,10 @@ test('coverage consumes persisted identity events as terminal dispositions witho
 test('catalog migration changes only authorised identity presentation and removes merged duplicates', async () => {
   const { catalog, migration, resolution } = await fixture();
   const migrated = applyRetailerIdentityMigrationToCatalog({ catalog, migration });
-  assert.equal(migrated.products.length, catalog.products.length - migration.canonicalMerges.length);
+  assert.equal(
+    migrated.products.length,
+    catalog.products.length - migration.canonicalMerges.length - migration.canonicalQuarantines.length,
+  );
   for (const unresolved of resolution.cases.filter((item) => item.decision.status === 'UNRESOLVED')) {
     assert.ok(migrated.products.some((row) => String(row.id).toLowerCase() === unresolved.legacyRuntimeId));
   }
@@ -194,6 +206,18 @@ test('catalog migration changes only authorised identity presentation and remove
     const beforeTarget = catalog.products.find((row) => String(row.id).toLowerCase() === merge.targetLegacyRuntimeId);
     const afterTarget = migrated.products.find((row) => String(row.id).toLowerCase() === merge.targetLegacyRuntimeId);
     assert.deepEqual(afterTarget, beforeTarget, 'merge must not copy fields from the dirty source product');
+  }
+  for (const quarantine of migration.canonicalQuarantines) {
+    assert.equal(migrated.products.some((row) => (
+      String(row.id).toLowerCase() === quarantine.sourceLegacyRuntimeId
+    )), false);
+    const beforeTarget = catalog.products.find((row) => (
+      String(row.id).toLowerCase() === quarantine.targetLegacyRuntimeId
+    ));
+    const afterTarget = migrated.products.find((row) => (
+      String(row.id).toLowerCase() === quarantine.targetLegacyRuntimeId
+    ));
+    assert.deepEqual(afterTarget, beforeTarget, 'quarantine must not donate any source fields');
   }
   assert.deepEqual(
     applyRetailerIdentityMigrationToCatalog({ catalog: migrated, migration }),
@@ -227,6 +251,13 @@ test('canonical registry preserves corrected IDs and maps merged legacy IDs to a
       && identifier.value === merge.sourceLegacyRuntimeId
     )));
   }
+  for (const quarantine of migration.canonicalQuarantines) {
+    assert.equal(mapping.has(quarantine.sourceLegacyRuntimeId), false);
+    assert.equal(
+      mapping.get(quarantine.targetLegacyRuntimeId),
+      quarantine.targetCanonicalProductId,
+    );
+  }
 });
 
 test('canonical registry rejects manual identity decisions that conflict with machine migration', async () => {
@@ -250,11 +281,16 @@ test('tracked ledger contains every authorised disposition and migration replay 
   const { ledger, migration } = await fixture();
   const migrated = applyRetailerIdentityMigrationToLedger({ ledger, migration });
   assert.equal(migrated.identityResolutionEvents.length, migration.linkEvents.length);
-  assert.equal(migrated.observations.length, ledger.observations.length);
-  assert.ok(migrated.sourceBindings.some((binding) => (
-    binding.kind === 'IDENTITY_RESOLUTION'
-    && binding.sha256 === migration.sourceBindings.resolutionSemanticSha256
-  )));
+  const priorObservationIds = new Set(ledger.observations.map((row) => row.id));
+  const newlyGenerated = migration.linkEvents.filter((event) => (
+    event.observation != null && !priorObservationIds.has(event.observation.id)
+  ));
+  assert.equal(migrated.observations.length, ledger.observations.length + newlyGenerated.length);
+  for (const epoch of migration.sourceBindings.resolutionEpochs) {
+    assert.ok(migrated.sourceBindings.some((binding) => (
+      binding.kind === 'IDENTITY_RESOLUTION' && binding.sha256 === epoch.semanticSha256
+    )));
+  }
   const generatedIds = new Set(migration.linkEvents.map((event) => event.observation?.id).filter(Boolean));
   assert.equal(generatedIds.size, migration.summary.generatedObservations);
   assert.equal(
