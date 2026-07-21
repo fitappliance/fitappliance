@@ -110,23 +110,22 @@ Detailed evidence:
 - [`superpowers/specs/2026-07-12-historical-mineru-publication-coverage-design.md`](superpowers/specs/2026-07-12-historical-mineru-publication-coverage-design.md)
 - [`superpowers/plans/2026-07-12-historical-mineru-publication-coverage.md`](superpowers/plans/2026-07-12-historical-mineru-publication-coverage.md)
 
-### 3.1 Current lifecycle release candidate (2026-07-21)
+### 3.1 Active lifecycle release (2026-07-22)
 
-The released epoch and the next release candidate are deliberately separate.
-The released 3,515-product projection remains in `SHADOW_ONLY`; the independently
-bound epoch-2 candidate contains 3,513 products and is
-`READY_FOR_CUTOVER` as
-`retail_lifecycle_release_6c42c754aeb1ff49097b32b4`. Its exhaustive partition
-accounts for all 1,384 products
-that were current in the legacy projection, with zero unresolved identities and
-zero unsafe removals.
+Production now publishes the immutable 3,513-product release
+`retail_lifecycle_release_6c42c754aeb1ff49097b32b4` through
+`active-retail-release.json`. The 3,515-product registry remains a pre-cutover
+control-plane epoch and is not the runtime publication owner. The active
+release's exhaustive partition accounts for all 1,384 products that were
+current in the legacy projection, with zero unresolved identities and zero
+unsafe removals.
 
-The candidate has 349 current-retail products, 3,087 archived products and 77
+The release has 349 current-retail products, 3,087 archived products and 77
 market-reference products. Market-reference rows may support old-appliance
 lookup, but carry no retailer CTA, price, stock, sponsorship, or current Fit
-classification. The candidate has zero Fit publication violations and its
-rollback drill restores the released public projection byte-for-byte.
-The 8,653,582-byte public candidate excludes collection attempts and conflict
+classification. The release has zero Fit publication violations and its
+rollback drill restores the pre-cutover public projection byte-for-byte.
+The 8,653,582-byte public release excludes collection attempts and conflict
 payloads; those remain in the shadow and append-only ledger. This separation is
 enforced by both a direct final-artifact audit and a two-times-baseline size
 ceiling.
@@ -140,7 +139,7 @@ registry evidence, while the `GS-B655MBL` sibling retailer response remains
 invalid for availability.
 
 The whole-system contract now has 38 stages and ten independently bound epochs.
-Its current ID is `historical_evidence_system_9b33eff3a2d26abab79c6c6c`.
+Its current ID is `historical_evidence_system_de77f30a75074d8bfd8a3c89`.
 Historical target state is schema v2 and binds the exact bytes of its five
 upstream inputs: classification, acquisition queue, executable queue,
 acceptance bundle and attempt ledger. A stale derivative or mixed replay fails
@@ -1008,6 +1007,32 @@ pull requests. The retired direct-main data-sync workflow remains disabled. The
 next release step is isolated candidate materialization, deterministic rebuild,
 route and sitemap impact analysis, desktop/mobile QA, and byte-identical rollback
 proof. No production lifecycle cutover is authorized until that gate passes.
+
+### 9.9 Active lifecycle cutover checkpoint (2026-07-22)
+
+Pull request `#191` activated
+`retail_lifecycle_release_6c42c754aeb1ff49097b32b4`; pull request `#192`
+then closed a measured GSC route regression before the observation window
+started. The runtime catalogue contains 3,513 products, including 349
+evidence-backed current-retail rows, and the old-appliance reference contains
+8,087 records. Production runtime semantic SHA-256
+`77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85`
+matches the immutable release.
+
+The top ten GSC landing routes are all reachable. Nine return HTTP 200
+directly; `/compare/hisense-vs-chiq-fridge-clearance` returns one permanent 308
+to `/compare/hisense-vs-chiq-fridge`, which returns 200. The automatic cutover
+decision now requires each measured route to exist directly or resolve through
+one permanent redirect to a generated candidate route. Search-result counts
+alone can no longer conceal an unexplained 404.
+
+Production browser checks passed cavity search, old-appliance replacement,
+zero-result guidance, standalone checker, representative content routes,
+mobile overflow, and affiliate-link semantics. The 24-hour operational
+observation window began at 2026-07-22 02:39 AWST and must close before P0
+evidence scaling or legacy cleanup begins. The legacy runtime remains available
+only as the proven full-release rollback unit; it must not be deleted during
+this window.
 
 ## 10. Success Metrics
 

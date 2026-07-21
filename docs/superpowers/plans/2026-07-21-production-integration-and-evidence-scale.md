@@ -275,12 +275,12 @@ git diff --check
 - Consumes: `CUTOVER_ALLOWED` and the tested materialized worktree.
 - Produces: production lifecycle release with 349 evidence-backed current rows at the frozen baseline, subject to the Task 5 report.
 
-- [ ] Open and merge a dedicated cutover PR containing the complete atomic release unit.
-- [ ] Deploy and rerun the Task 4 browser paths against production.
-- [ ] Compare production marker/catalog hashes to the committed release.
-- [ ] Monitor application errors, zero-result rate, outbound CTA behavior, sitemap health, and top GSC landing routes through one full observation window.
+- [x] Open and merge a dedicated cutover PR containing the complete atomic release unit.
+- [x] Deploy and rerun the Task 4 browser paths against production.
+- [x] Compare production marker/catalog hashes to the committed release.
+- [ ] Monitor application errors, deterministic zero-result behavior, outbound CTA behavior, sitemap health, and top GSC landing routes through the bounded 24-hour observation window. Do not claim a live zero-result rate until result-outcome telemetry exists.
 - [ ] Roll back the complete release commit on any severity-1 data, route, Fit, or CTA issue.
-- [ ] Mark legacy deletion prohibited until the observation window closes.
+- [x] Mark legacy deletion prohibited until the observation window closes.
 
 **Acceptance gate:** Production bytes match the cutover commit, smoke checks pass, and rollback remains immediately deployable.
 
@@ -498,7 +498,12 @@ git diff --check
 - An adversarial check of all ten measured GSC landing routes found rank 5, `/compare/hisense-vs-chiq-fridge-clearance`, returning 404 even though the cohort result-count check said `PRESERVED`. The generated destination `/compare/hisense-vs-chiq-fridge` existed; the defect was that measured route reachability was not part of the decision contract.
 - Hotfix commit `e58e5ca78` adds the exact permanent redirect and makes every measured route fail closed unless it is a direct candidate route or has a single permanent redirect to one. Missing route evidence now produces `MEASURED_ROUTE_RESOLUTION_MISSING`; an unresolved measured route produces `MEASURED_ROUTE_UNRESOLVED`.
 - Candidate and repeat snapshots were recaptured from `e58e5ca78` with 2,330 deployed routes. The refreshed impact report records the configured redirect, reports `PASS` with zero issues, proves candidate and rollback byte identity, and returns `CUTOVER_ALLOWED` with zero blockers. Focused tests passed 26/26; the canonical build remained at 3,513 / 349 / 8,087; the complete suite passed 2,879/2,879; lint and publication, documentation, copy, and portability audits passed.
-- Current state: the route hotfix still requires pull-request checks, production deployment, and a repeated ten-route HTTP check. The observation window starts only after that production verification. Task 6 remains `IN_PROGRESS`, and legacy deletion remains prohibited.
+- Hotfix pull request `#192` passed every required check and merged at `fe3073f6849afb53f185408db0d4e3e1fda67b9e`. Vercel production deployment `dpl_FaxkeaqTXxcLnjMSeS8jWxSNEyLc` reached `Ready` before verification.
+- The formerly missing route now returns permanent HTTP 308 to `/compare/hisense-vs-chiq-fridge`, whose response is 200. A production HTTP pass over the complete measured GSC manifest reports 10/10 reachable routes: nine direct 200 responses and this single valid redirect.
+- Production `/data/appliances.json` reports 3,513 products and 349 current-retail rows. Its semantic SHA-256 is `77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85`, exactly matching the active immutable release; replacement-reference metadata totals 8,087 records.
+- Production Playwright followed the historical route to the expected `Hisense vs CHiQ fridges` page, found the expected title and H1, 1,876 characters of rendered text, no horizontal overflow, and no new page error. The previously recorded GTM CSP error is an observability defect, not a failed comparison workflow.
+- Vercel reported no runtime error clusters from deployment readiness through the initial checkpoint. Existing analytics cannot supply a defensible live zero-result rate because the event fires before result calculation and the external analytics script is CSP-blocked. This release uses measured cohort result retention plus tested zero-result UI behavior; future rate thresholds require a separate privacy-safe result-outcome telemetry change.
+- Observation window: start `2026-07-22 02:39 AWST`; earliest close `2026-07-23 02:39 AWST`. Initial checkpoint passed. Intermediate and closing checkpoints remain pending, so Task 6 remains `IN_PROGRESS`; Task 8 and all legacy deletion remain prohibited.
 
 ## Final Completion Contract
 
