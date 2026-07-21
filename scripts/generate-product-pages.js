@@ -977,14 +977,14 @@ ${sections}
 `;
 }
 
-async function loadCatalog(repoRoot) {
-  const text = await readFile(path.join(
-    repoRoot,
-    'data',
-    'architecture-v2',
-    'generated',
-    'public-catalog-projection.json'
-  ), 'utf8');
+async function loadCatalog(repoRoot, catalogPath = path.join(
+  repoRoot,
+  'data',
+  'architecture-v2',
+  'generated',
+  'public-catalog-projection.json'
+)) {
+  const text = await readFile(catalogPath, 'utf8');
   const payload = JSON.parse(text);
   return Array.isArray(payload?.products) ? payload.products : [];
 }
@@ -992,9 +992,10 @@ async function loadCatalog(repoRoot) {
 async function generateProductPages({
   repoRoot = path.resolve(__dirname, '..'),
   outputDir = path.join(repoRoot, 'pages', 'products'),
+  catalogPath,
   logger = console
 } = {}) {
-  const catalog = await loadCatalog(repoRoot);
+  const catalog = await loadCatalog(repoRoot, catalogPath);
   const products = selectVerifiedProducts(catalog);
   await rm(outputDir, { recursive: true, force: true });
   await mkdir(outputDir, { recursive: true });
@@ -1022,7 +1023,11 @@ async function generateProductPages({
 }
 
 if (require.main === module) {
-  generateProductPages().catch((error) => {
+  const repoRoot = path.resolve(__dirname, '..');
+  generateProductPages({
+    repoRoot,
+    catalogPath: path.join(repoRoot, 'public', 'data', 'appliances.json')
+  }).catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });

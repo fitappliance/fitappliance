@@ -251,7 +251,9 @@ async function generateDoorwayPages(options = {}) {
   const logger = options.logger ?? console;
 
   const appliances = await readJson(path.join(dataDir, 'appliances.json'));
-  const products = canonicalizeProducts(appliances.products ?? []).filter((product) => product.cat === 'fridge');
+  const products = canonicalizeProducts(appliances.products ?? []).filter((product) => (
+    product.cat === 'fridge' && product.unavailable === false
+  ));
   const doorways = buildWidths(MIN_DOORWAY, MAX_DOORWAY, STEP);
   const contentModifiedTime = toIsoDateStart(appliances.last_updated);
 

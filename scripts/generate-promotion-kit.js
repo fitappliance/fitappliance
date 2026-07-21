@@ -93,9 +93,11 @@ _Auto-generated ${today} from live database_
 ---
 
 ## Site Stats (Current)
+<!-- RETAILER_METRICS_PROMOTION:START -->
 - **${fmt(stats.totalProducts)} raw appliance spec rows** across fridges, washing machines, dishwashers, and dryers
-- **${fmt(stats.retailerVerifiedProducts)} products with verified retailer product-page links** across the five tracked AU retailers
+- **${fmt(stats.retailerVerifiedProducts)} products with verified retailer product-page links** across tracked AU retailers
 - **${fmt(stats.retailerLinks)} verified retailer product-page links**; live price rows are ${stats.priceRows === 0 ? 'not yet captured' : fmt(stats.priceRows)}
+<!-- RETAILER_METRICS_PROMOTION:END -->
 - **${fmt(stats.brandPages)} brand clearance pages** with installation-specific ventilation data
 - **Door swing estimates for the raw specs catalog** where manufacturer values are unavailable
 - **${fmt(stats.comparePages)} comparison pages** covering top brand pairs in each category

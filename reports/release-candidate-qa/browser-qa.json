@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "candidateReleaseId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
+  "baseUrl": "http://127.0.0.1:4175",
+  "status": "PASS",
+  "harness": {
+    "server": "serve 14.2.4",
+    "assetRewrite": "Playwright route mapping from production /data and /scripts URLs to local public/ files",
+    "note": "The local static harness cannot register the production service-worker route. This expected harness-only 404 was excluded; pageerror and requestfailed listeners reported zero errors for each recorded case."
+  },
+  "checks": [
+    {
+      "id": "desktop-cavity-search",
+      "status": "PASS",
+      "viewport": "1440x1000",
+      "input": "dishwasher 600x850x600mm",
+      "observed": "2 linked current products; size margins and Conditional fit labels rendered",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "desktop-replacement-search",
+      "status": "PASS",
+      "viewport": "1440x1000",
+      "input": "washing_machine old appliance 600x850x600mm",
+      "observed": "46 current products ranked by direct W/H/D difference; 46 dimension-delta rows",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "desktop-zero-result",
+      "status": "PASS",
+      "viewport": "1440x1000",
+      "input": "fridge 300x300x300mm",
+      "observed": "Visible live count is zero; actionable Nothing fits those dimensions state rendered; stale result heading hidden from layout and accessibility",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "standalone-fit-checker",
+      "status": "PASS",
+      "viewport": "1440x1000",
+      "input": "dishwasher 600x850x600mm",
+      "observed": "Defaults to 2 linked current products; Show all reveals 37 total dimension matches; all required search globals loaded",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "product-detail",
+      "status": "PASS",
+      "viewport": "1440x1000 and 390x844",
+      "route": "/products/chiq-css556nbd4e-fridge-arf3387",
+      "observed": "Evidence Pending remains explicit; unknown cavity and clearance fields remain Unknown; The Good Guys price link rendered",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "brand-page",
+      "status": "PASS",
+      "viewport": "1440x1000",
+      "route": "/brands/chiq-fridge-clearance",
+      "observed": "Current models and archived replacement references are visibly separated; page is indexable",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "comparison-page",
+      "status": "PASS",
+      "viewport": "1440x1000",
+      "route": "/compare/bosch-vs-asko-dishwasher-clearance",
+      "observed": "Both brands, installation differences, featured models and related routes rendered; page is indexable",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "outbound-retailer-links",
+      "status": "PASS",
+      "observed": "Sample product and comparison CTAs use HTTPS product-page URLs and rel=sponsored nofollow noopener",
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "mobile-cavity-search",
+      "status": "PASS",
+      "viewport": "390x844",
+      "input": "dishwasher 600x850x600mm",
+      "observed": "2 result cards; no overflowing visible buttons",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "desktop-cavity-landing",
+      "status": "PASS",
+      "viewport": "1440x1000",
+      "route": "/cavity/600mm-fridge",
+      "observed": "17 current-retail cards and the generated quick answer rendered; all visible elements remained within the viewport",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "desktop-doorway-landing",
+      "status": "PASS",
+      "viewport": "1440x1000",
+      "route": "/doorway/650mm-fridge-doorway",
+      "observed": "44 current-retail doorway matches and 18 featured cards rendered; all visible elements remained within the viewport",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "mobile-cavity-landing",
+      "status": "PASS",
+      "viewport": "390x844",
+      "route": "/cavity/600mm-fridge",
+      "observed": "17 current-retail cards rendered; all three rotated W/H/D diagram labels remained inside the SVG and viewport",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    },
+    {
+      "id": "mobile-doorway-landing",
+      "status": "PASS",
+      "viewport": "390x844",
+      "route": "/doorway/650mm-fridge-doorway",
+      "observed": "44 current-retail doorway matches and 18 featured cards rendered without horizontal overflow",
+      "horizontalOverflow": false,
+      "clientErrors": 0,
+      "failedRequests": 0
+    }
+  ],
+  "screenshots": [
+    "candidate-desktop-cavity.png",
+    "candidate-desktop-replacement.png",
+    "candidate-desktop-zero-result.png",
+    "candidate-desktop-fit-checker.png",
+    "candidate-desktop-product.png",
+    "candidate-desktop-brand.png",
+    "candidate-desktop-compare.png",
+    "candidate-mobile-cavity.png",
+    "candidate-mobile-product.png",
+    "candidate-desktop-cavity-landing.png",
+    "candidate-desktop-doorway-landing.png",
+    "candidate-mobile-cavity-landing.png",
+    "candidate-mobile-cavity-viewport.png",
+    "candidate-mobile-measurement-svg.png",
+    "candidate-mobile-doorway-landing.png"
+  ]
+}

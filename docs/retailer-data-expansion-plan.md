@@ -13,11 +13,11 @@ Australian retailers.
 <!-- RETAILER_METRICS_BASELINE:START -->
 | Metric | Count | Meaning |
 | --- | ---: | --- |
-| Raw specs catalog | 3,512 | Sizing/spec rows across fridges, dishwashers, dryers, and washing machines. |
-| Retailer-verified products | 1,382 | Products with at least one verified product-page link from the five tracked retailers. |
-| Verified retailer links | 1,612 | Total product-page links across JB Hi-Fi, Appliances Online, The Good Guys, Harvey Norman, and Bing Lee. |
-| Multi-retailer products | 161 | Products with two or more verified retailer product-page links. |
-| Live price rows | 686 | Positive retailer prices captured with enough evidence to show as price data. |
+| Raw specs catalog | 3,510 | Sizing/spec rows across fridges, dishwashers, dryers, and washing machines. |
+| Retailer-verified products | 347 | Products with at least one verified product-page link from the five tracked retailers. |
+| Verified retailer links | 351 | Total product-page links across JB Hi-Fi, Appliances Online, The Good Guys, Harvey Norman, and Bing Lee. |
+| Multi-retailer products | 4 | Products with two or more verified retailer product-page links. |
+| Live price rows | 351 | Positive retailer prices captured with enough evidence to show as price data. |
 <!-- RETAILER_METRICS_BASELINE:END -->
 
 ## Coverage By Category
@@ -25,11 +25,11 @@ Australian retailers.
 <!-- RETAILER_METRICS_COVERAGE:START -->
 | Category | Raw specs | Retailer-verified products | Verified retailer links | Multi-retailer products | Link coverage |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Fridges | 1,985 | 687 | 797 | 64 | 34.6% |
-| Dishwashers | 703 | 355 | 424 | 58 | 50.5% |
-| Dryers | 162 | 93 | 109 | 12 | 57.4% |
-| Washing machines | 662 | 247 | 282 | 27 | 37.3% |
-| **Total** | **3,512** | **1,382** | **1,612** | **161** | **39.4%** |
+| Fridges | 1,983 | 158 | 159 | 1 | 8.0% |
+| Dishwashers | 703 | 117 | 119 | 2 | 16.6% |
+| Dryers | 162 | 24 | 25 | 1 | 14.8% |
+| Washing machines | 662 | 48 | 48 | 0 | 7.3% |
+| **Total** | **3,510** | **347** | **351** | **4** | **9.9%** |
 <!-- RETAILER_METRICS_COVERAGE:END -->
 
 ## Retailer Gaps On Already-Linked Products

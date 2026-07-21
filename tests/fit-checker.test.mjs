@@ -64,6 +64,60 @@ test('phase 25 fit-checker: non-numeric input is handled safely with friendly va
   assert.match(result.message, /valid.*number/i);
 });
 
+test('fit-checker defaults to linked current products and lets the user reveal all matches', async () => {
+  const module = loadFitCheckerModule();
+  const dom = new JSDOM('<main><p id="fitMessage"></p><div id="fitResults"></div></main>');
+  const messageEl = dom.window.document.getElementById('fitMessage');
+  const resultsEl = dom.window.document.getElementById('fitResults');
+  const products = [
+    {
+      id: 'linked-dishwasher',
+      cat: 'dishwasher',
+      brand: 'Linked',
+      model: 'CURRENT-1',
+      w: 550,
+      h: 800,
+      d: 550,
+      unavailable: false,
+      retailers: [{
+        n: 'The Good Guys',
+        url: 'https://www.thegoodguys.com.au/linked-dishwasher-current-1'
+      }]
+    },
+    {
+      id: 'reference-dishwasher',
+      cat: 'dishwasher',
+      brand: 'Reference',
+      model: 'ARCHIVED-1',
+      w: 540,
+      h: 790,
+      d: 540,
+      unavailable: true,
+      retailers: []
+    }
+  ];
+
+  const result = await module.runSearch({
+    cat: 'dishwasher',
+    w: 600,
+    h: 850,
+    d: 600,
+    fetchImpl: async () => ({ ok: true, json: async () => ({ products }) }),
+    resultsEl,
+    messageEl
+  });
+
+  assert.equal(result.ok, true);
+  assert.match(resultsEl.textContent, /Showing 1 products with verified retailer product links/i);
+  assert.match(resultsEl.textContent, /CURRENT-1/);
+  assert.doesNotMatch(resultsEl.textContent, /ARCHIVED-1/);
+
+  resultsEl.querySelector('[data-show-all-products]').click();
+  assert.match(resultsEl.textContent, /CURRENT-1/);
+  assert.match(resultsEl.textContent, /ARCHIVED-1/);
+  assert.equal(resultsEl.querySelector('.retailer-filter-banner'), null);
+});
+
 test('phase 25 fit-checker: script stays below 10KB gzip', () => {
   const source = fs.readFileSync(scriptPath, 'utf8');
   const gzipped = zlib.gzipSync(source);

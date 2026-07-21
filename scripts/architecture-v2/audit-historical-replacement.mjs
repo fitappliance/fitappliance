@@ -49,11 +49,13 @@ function runtimeCanary({ catalog, replacementEngineSource, searchCoreSource }) {
   }, { limit: 5 });
 }
 
-export async function runHistoricalReplacementAudit({ repoRoot }) {
-  const referencePath = resolveArchitectureV2Path(repoRoot, 'historicalApplianceReference');
-  const manifestPath = resolveArchitectureV2Path(repoRoot, 'historicalReferencePublicationManifest');
-  const catalogPath = resolveArchitectureV2Path(repoRoot, 'publicProjection');
-  const auditPath = resolveArchitectureV2Path(repoRoot, 'historicalReplacementAudit');
+export async function runHistoricalReplacementAudit({
+  repoRoot,
+  referencePath = resolveArchitectureV2Path(repoRoot, 'historicalApplianceReference'),
+  manifestPath = resolveArchitectureV2Path(repoRoot, 'historicalReferencePublicationManifest'),
+  catalogPath = resolveArchitectureV2Path(repoRoot, 'publicProjection'),
+  auditPath = resolveArchitectureV2Path(repoRoot, 'historicalReplacementAudit'),
+}) {
   const publicRoot = resolve(repoRoot, 'public/data/replacement-reference');
   const replacementEnginePath = resolve(repoRoot, 'public/scripts/replacement-match-engine.js');
   const searchCorePath = resolve(repoRoot, 'public/scripts/search-core.js');

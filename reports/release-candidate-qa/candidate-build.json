@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
+  "candidateSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
+  "historicalReferenceSha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882",
+  "products": 3513,
+  "currentRetailProducts": 349,
+  "historicalReferenceRecords": 8087,
+  "historicalReplacementIssues": 0,
+  "fitPublicationViolations": 0,
+  "outputs": {
+    "publicationManifest": "reports/release-candidate-qa/candidate-historical-reference-publication-manifest.json",
+    "historicalAudit": "reports/release-candidate-qa/candidate-historical-replacement-audit.json",
+    "fitAudit": "reports/release-candidate-qa/candidate-fit-publication-audit.json"
+  }
+}

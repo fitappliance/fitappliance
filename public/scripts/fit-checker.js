@@ -197,13 +197,22 @@
         categoryLabel: SearchCore.CATEGORY_LABELS[cat] ?? 'Appliances'
       });
 
-      SearchDom.renderSearchResults({
-        matches,
-        filters: { cat, ...validation.dims, toleranceMm, preset },
-        resultsEl,
-        messageEl,
-        emptyState
-      });
+      const linkedMatches = matches.filter((product) => SearchCore.isCurrentProduct(product));
+      const renderMatches = (showAll = false) => {
+        const visibleMatches = showAll || linkedMatches.length === 0 ? matches : linkedMatches;
+        SearchDom.renderSearchResults({
+          matches: visibleMatches,
+          filters: { cat, ...validation.dims, toleranceMm, preset },
+          resultsEl,
+          messageEl,
+          emptyState,
+          retailerOnly: !showAll,
+          retailerFallback: !showAll && matches.length > 0 && linkedMatches.length === 0,
+          onShowAllClick: () => renderMatches(true)
+        });
+      };
+
+      renderMatches();
 
       saveRecentQuery({ cat, ...validation.dims, toleranceMm, preset }, storage);
       return { ok: true, message: '', matches };

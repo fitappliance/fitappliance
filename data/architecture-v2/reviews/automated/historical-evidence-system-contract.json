@@ -1760,7 +1760,7 @@
       "producerInputs": [
         {
           "path": "scripts/architecture-v2/audit-fit-publication.mjs",
-          "contentSha256": "4f944c7579a826720962ae122473ebfedec5caabd526db2707cffa9290ae135b"
+          "contentSha256": "f376694ff2ed85b3d960ec7d71f98c7f179cf98f2d135149da25cc73f799e2a8"
         },
         {
           "path": "src/domain/fit-v3.mjs",
@@ -1771,7 +1771,7 @@
           "contentSha256": "6164d88b4a47dfec014bba19d1bdb1920c4f5cdf302b5bef17a453d23b489e12"
         }
       ],
-      "producerSha256": "3d097b7faa61fdacc69912a95134957ac3599e68ed63f5ee9ad2f8cb8eecb1b6",
+      "producerSha256": "6370cc417b168154c3f5dfbf9c053fef78d60cd084fad68b72069dab17ebae59",
       "consumers": [
         "program-status",
         "scale-control"
@@ -1824,7 +1824,7 @@
       "producerInputs": [
         {
           "path": "scripts/architecture-v2/audit-historical-replacement.mjs",
-          "contentSha256": "4d9abb297796fc0ad09d47a6653784681f2908fb5133aad3601184bbb5d0f41f"
+          "contentSha256": "2d026c0339dd0c9386f21828379ec9bdfb6e20e21c1017bb67b9bf0ab6ff6b66"
         },
         {
           "path": "src/domain/historical-reference-publication.mjs",
@@ -1835,7 +1835,7 @@
           "contentSha256": "92c32a211a167d1c26dd2e439d53a67393db768d7cabd1eb0cf3a5a8a54b8437"
         }
       ],
-      "producerSha256": "5215a02354e80ff48a2d2268b217f39834727b9a4def488bbf6e12f73957e70d",
+      "producerSha256": "d946f553c568abe3e5831ea6fae15a9ca54a52d0f9ea5c0e2f5d7ae8e61429bd",
       "consumers": [
         "program-status",
         "scale-control"
@@ -2840,6 +2840,6 @@
     "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e",
     "checkpointCount": 5
   },
-  "contractId": "historical_evidence_system_9b33eff3a2d26abab79c6c6c",
-  "semanticContractSha256": "9b33eff3a2d26abab79c6c6c9ec768680f71022ccbf1f62809195792f813e9bf"
+  "contractId": "historical_evidence_system_de77f30a75074d8bfd8a3c89",
+  "semanticContractSha256": "de77f30a75074d8bfd8a3c895abbe106a16e843653e10a370a8fde5cec8a1b9c"
 }

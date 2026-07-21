@@ -355,7 +355,9 @@ async function generateCavityPages(options = {}) {
   const reviewVideosDoc = await readJson(path.join(repoRoot, 'data', 'videos', 'review-videos.json'), { models: {} });
   const creatorWhitelist = await readJson(path.join(repoRoot, 'data', 'videos', 'creator-whitelist.json'), { creators: [] });
   const reviewDisclaimerCopy = await loadCopyFile('review-disclaimer', repoRoot).catch(() => ({}));
-  const products = canonicalizeProducts(appliances.products ?? []).filter((product) => product.cat === 'fridge');
+  const products = canonicalizeProducts(appliances.products ?? []).filter((product) => (
+    product.cat === 'fridge' && product.unavailable === false
+  ));
   const contentModifiedTime = toIsoDateStart(appliances.last_updated);
   const clearanceRules = canonicalizeRuleDocument(clearance.rules ?? {});
   const widths = buildWidthRange(MIN_WIDTH, MAX_WIDTH, STEP);

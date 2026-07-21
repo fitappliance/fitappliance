@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "source": "Google Search Console Web performance report",
+  "property": "https://www.fitappliance.com.au/",
+  "capturedAt": "2026-07-22T01:00:24+08:00",
+  "range": {
+    "startDate": "2026-06-22",
+    "endDate": "2026-07-19",
+    "days": 28
+  },
+  "summary": {
+    "clicks": 259,
+    "impressions": 21904,
+    "averageCtr": 0.012,
+    "averagePosition": 8.9
+  },
+  "cohorts": [
+    {
+      "rank": 1,
+      "route": "/",
+      "kind": "home",
+      "groups": [{ "id": "currentRetail" }]
+    },
+    {
+      "rank": 2,
+      "route": "/cavity/600mm-fridge",
+      "kind": "cavity",
+      "category": "fridge",
+      "widthMm": 600,
+      "groups": [{ "id": "fitResults" }]
+    },
+    {
+      "rank": 3,
+      "route": "/brands/mistral-dryer-clearance",
+      "kind": "brand",
+      "category": "dryer",
+      "groups": [{ "id": "brandResults", "brand": "Mistral" }]
+    },
+    {
+      "rank": 4,
+      "route": "/cavity/800mm-fridge",
+      "kind": "cavity",
+      "category": "fridge",
+      "widthMm": 800,
+      "groups": [{ "id": "fitResults" }]
+    },
+    {
+      "rank": 5,
+      "route": "/compare/hisense-vs-chiq-fridge-clearance",
+      "kind": "comparison",
+      "category": "fridge",
+      "groups": [
+        { "id": "brandA", "brand": "Hisense" },
+        { "id": "brandB", "brand": "CHIQ" }
+      ]
+    },
+    {
+      "rank": 6,
+      "route": "/cavity/950mm-fridge",
+      "kind": "cavity",
+      "category": "fridge",
+      "widthMm": 950,
+      "groups": [{ "id": "fitResults" }]
+    },
+    {
+      "rank": 7,
+      "route": "/cavity/700mm-fridge",
+      "kind": "cavity",
+      "category": "fridge",
+      "widthMm": 700,
+      "groups": [{ "id": "fitResults" }]
+    },
+    {
+      "rank": 8,
+      "route": "/compare/fisher-paykel-vs-lg-washing-machine",
+      "kind": "comparison",
+      "category": "washing_machine",
+      "groups": [
+        { "id": "brandA", "brand": "Fisher & Paykel" },
+        { "id": "brandB", "brand": "LG" }
+      ]
+    },
+    {
+      "rank": 9,
+      "route": "/cavity/900mm-fridge",
+      "kind": "cavity",
+      "category": "fridge",
+      "widthMm": 900,
+      "groups": [{ "id": "fitResults" }]
+    },
+    {
+      "rank": 10,
+      "route": "/cavity/650mm-fridge",
+      "kind": "cavity",
+      "category": "fridge",
+      "widthMm": 650,
+      "groups": [{ "id": "fitResults" }]
+    }
+  ]
+}

@@ -6966,15 +6966,6 @@
     "verified_at": "2026-05-09"
   },
   {
-    "id": "f3",
-    "slug": "fisher-paykel-rf730qzuvx1-french-door-726l-f3",
-    "url": "/products/fisher-paykel-rf730qzuvx1-french-door-726l-f3",
-    "cat": "fridge",
-    "brand": "Fisher & Paykel",
-    "model": "RF730QZUVX1 French Door 726L",
-    "verified_at": "2026-05-09"
-  },
-  {
     "id": "fridge-arf3475",
     "slug": "fisher-paykel-rs4621flje1-fridge-arf3475",
     "url": "/products/fisher-paykel-rs4621flje1-fridge-arf3475",
@@ -8232,15 +8223,6 @@
     "cat": "fridge",
     "brand": "Haier",
     "model": "HRF510FS",
-    "verified_at": "2026-05-09"
-  },
-  {
-    "id": "f7",
-    "slug": "haier-hrf520bhs-french-door-520l-f7",
-    "url": "/products/haier-hrf520bhs-french-door-520l-f7",
-    "cat": "fridge",
-    "brand": "Haier",
-    "model": "HRF520BHS French Door 520L",
     "verified_at": "2026-05-09"
   },
   {
@@ -15633,24 +15615,6 @@
     "verified_at": "2026-05-09"
   },
   {
-    "id": "discovery-washing-machine-lg-1910bx",
-    "slug": "lg-1910bx-discovery-washing-machine-lg-1910bx",
-    "url": "/products/lg-1910bx-discovery-washing-machine-lg-1910bx",
-    "cat": "washtower_combo",
-    "brand": "LG",
-    "model": "1910BX",
-    "verified_at": "2026-05-14"
-  },
-  {
-    "id": "discovery-washing-machine-lg-1910fgx",
-    "slug": "lg-1910fgx-discovery-washing-machine-lg-1910fgx",
-    "url": "/products/lg-1910fgx-discovery-washing-machine-lg-1910fgx",
-    "cat": "washtower_combo",
-    "brand": "LG",
-    "model": "1910FGX",
-    "verified_at": "2026-05-14"
-  },
-  {
     "id": "washing_machine-acw1453",
     "slug": "lg-wwt-1910b-washing-machine-acw1453",
     "url": "/products/lg-wwt-1910b-washing-machine-acw1453",
@@ -15658,5 +15622,23 @@
     "brand": "LG",
     "model": "WWT-1910B",
     "verified_at": "2026-05-20"
+  },
+  {
+    "id": "discovery-washing-machine-lg-1910bx",
+    "slug": "lg-wwt-1910bx-discovery-washing-machine-lg-1910bx",
+    "url": "/products/lg-wwt-1910bx-discovery-washing-machine-lg-1910bx",
+    "cat": "washtower_combo",
+    "brand": "LG",
+    "model": "WWT-1910BX",
+    "verified_at": "2026-05-14"
+  },
+  {
+    "id": "discovery-washing-machine-lg-1910fgx",
+    "slug": "lg-wwt-1910fgx-discovery-washing-machine-lg-1910fgx",
+    "url": "/products/lg-wwt-1910fgx-discovery-washing-machine-lg-1910fgx",
+    "cat": "washtower_combo",
+    "brand": "LG",
+    "model": "WWT-1910FGX",
+    "verified_at": "2026-05-14"
   }
 ]
