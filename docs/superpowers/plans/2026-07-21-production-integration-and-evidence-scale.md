@@ -491,8 +491,9 @@ git diff --check
 - Product-page CLI generation now reads the published active runtime catalogue. This prevents quarantined candidate rows from reappearing and keeps product pages, sitemap, runtime JSON, historical replacement, and Fit publication audits on the same release.
 - Verification before the corrective commit: two full builds produced the same worktree SHA-256 and each generated 1,738 product pages plus a 1,983-URL sitemap. The active release remained at 3,513 products, 349 current-retail rows, and 8,087 historical-reference records, with zero historical replacement issues and zero Fit publication violations.
 - Focused publication, impact, SEO, historical replacement, and Fit tests passed 53/53; the complete suite passed 2,879/2,879; lint, documentation, copy, and portability audits passed with zero violations; the cutover decision remained `CUTOVER_ALLOWED` with zero blockers. Active-release tests also prove that artifact byte drift and out-of-directory paths fail closed.
+- Corrective commit `688e67d7b` passed all pull-request checks: `test-and-verify`, documentation, copy, portability, and the Vercel preview deployment. The previously failing generated-output cleanliness step is green. Anonymous preview HTTP requests are blocked by Vercel deployment protection, so public hash and interaction verification remains a post-merge production gate rather than inferred success.
 - Explicit remaining boundary: the historical scale-control plane still computes its current-product P0 denominator from the 3,515-row legacy Architecture V2 baseline. Do not claim that priority rebasing is complete; perform it after production observation, before Task 8 scaling.
-- Current state: corrective commit, PR CI, production deployment, production hash/browser checks, and the observation window are still required. Legacy deletion remains prohibited.
+- Current state: pull request `#191` is merge-ready. Production deployment, production hash/browser checks, and the observation window are still required. Legacy deletion remains prohibited.
 
 ## Final Completion Contract
 
