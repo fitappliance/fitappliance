@@ -1,10 +1,22 @@
 {
   "schemaVersion": 1,
   "summary": {
-    "products": 3521,
+    "products": 3515,
     "receiptBoundVerified": 0,
-    "receiptBoundDimensions": 21,
+    "receiptBoundDimensions": 332,
     "violations": 0
   },
-  "violations": []
+  "violations": [],
+  "installation": {
+    "schemaVersion": 1,
+    "replayAuditSha256": "53493b43fddd137dfab86a2d306a670ca2df09209170263ff94652479a84a727",
+    "receiptBundleSha256": "540f7a9bc0ff94eeaadb84d042a4c2c8c57424e4df4efafcd9184fe0f00ffc41",
+    "summary": {
+      "products": 3515,
+      "verifiedDeclarations": 0,
+      "receiptBoundVerified": 0,
+      "violations": 0
+    },
+    "violations": []
+  }
 }

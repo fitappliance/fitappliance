@@ -6,8 +6,10 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
   issues: write
+  pull-requests: write
 
 jobs:
   validate-videos:
@@ -30,18 +32,36 @@ jobs:
         continue-on-error: true
         run: npm run validate-videos
 
-      - name: Inject validated video schema into brand pages
+      - name: Build canonical release outputs
         if: steps.video_validate.outcome == 'success'
-        run: npm run inject-video-schema
+        run: env -u FITAPPLIANCE_STORAGE_ROOT npm run build
 
-      - name: Commit refreshed validation artifacts
+      - name: Audit publication boundary
         if: steps.video_validate.outcome == 'success'
+        run: npm run audit:publication-boundary
+
+      - name: Open video validation PR if changed
+        if: steps.video_validate.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "video validation produced no changes"
+            exit 0
+          fi
+          branch="automation/video-validation-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/videos/brand-videos.json reports/video-validation.json pages/brands/*.html
-          git diff --cached --quiet || git commit -m "chore(video): refresh oEmbed validation $(date -u +%Y-%m-%d)"
-          git push origin main
+          git switch -c "$branch"
+          git add -A
+          git commit -m "chore(video): propose refreshed oEmbed validation"
+          git push -u origin "$branch"
+          gh pr create \
+            --base main \
+            --head "$branch" \
+            --title "chore(video): refresh oEmbed validation" \
+            --body "Automated video-validation candidate. Merge only after canonical build and PR checks pass."
+          gh workflow run pr-validation.yml --ref "$branch"
 
       - name: Create or update sentinel issue when validation fails
         if: steps.video_validate.outcome == 'failure'

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "batchId": "historical-recovery-8c1283129ab290c4f16ef09b",
+  "generatedAt": "2026-07-14T00:00:00.000Z",
+  "queue": {
+    "schemaVersion": 2,
+    "sha256": "0c7f4c31bdf29f7150776b00165f284aa22ba929d57b7aaf4c12cc01a9a929fc"
+  },
+  "policy": {
+    "version": "2026-07-14.1",
+    "sha256": "34edad995a430f797a52969710b8fef165779bfed3f702cedf9e461d550008b8"
+  },
+  "selection": {
+    "jobIds": [],
+    "routes": [],
+    "priorities": [],
+    "brands": [],
+    "targetIds": [],
+    "limit": null
+  },
+  "artifactJobs": [],
+  "targets": [],
+  "summary": {
+    "artifactJobs": 0,
+    "targets": 0,
+    "candidateEdges": 0
+  }
+}

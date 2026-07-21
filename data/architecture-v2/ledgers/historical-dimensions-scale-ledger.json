@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 2,
+  "ledgerId": "historical-dimensions-scale-v2",
+  "activatedAt": "2026-07-19T18:39:15.450Z",
+  "policy": {
+    "schemaVersion": 2,
+    "confidence": {
+      "method": "ONE_SIDED_WILSON",
+      "confidenceBasisPoints": 9500,
+      "z": 1.6448536269514722
+    },
+    "minimumConclusiveUnits": 10,
+    "minimumCompletedManifests": 2,
+    "stages": {
+      "DISCOVERY": {
+        "floorBasisPoints": 2000,
+        "diagnosticOnly": false
+      },
+      "ACQUISITION": {
+        "floorBasisPoints": 8000,
+        "diagnosticOnly": false
+      },
+      "MINERU": {
+        "floorBasisPoints": 9000,
+        "diagnosticOnly": false
+      },
+      "IDENTITY": {
+        "floorBasisPoints": 5000,
+        "diagnosticOnly": false
+      },
+      "DIMENSIONS_RECEIPT": {
+        "floorBasisPoints": 5000,
+        "diagnosticOnly": false
+      },
+      "INSTALLATION_FIT": {
+        "floorBasisPoints": null,
+        "diagnosticOnly": true
+      }
+    }
+  },
+  "baseline": {
+    "counters": {
+      "currentValidReceipts": 401,
+      "replacementAutoFill": 321,
+      "receiptSourcesPassed": 408,
+      "fitReceiptBoundDimensions": 332,
+      "fitReceiptBoundVerified": 0,
+      "p0AssignedTargets": 957,
+      "p0EligibleTargets": 947,
+      "p1AssignedTargets": 3974,
+      "p1EligibleTargets": 3939
+    }
+  },
+  "entries": [
+    {
+      "checkpointId": "historical-dimensions-checkpoint-47a566a675959bc1fc8f8d1d",
+      "runId": "historical-scale-p0-esatto-dw42cs-20260719-a",
+      "completedAt": "2026-07-19T19:11:29.870Z",
+      "stage": "DISCOVERY",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_98b047d648ded5811d0a3d67",
+      "manifestSha256": "98b047d648ded5811d0a3d67b875fbc0fb58b022d2715e30fb43df7a3f23747e",
+      "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "40176b65c8d4a76d0f37d776b5dfe746acc54d747fe1683815dce8505ee6003e",
+        "auditSha256": null,
+        "storageContentSha256": "03c3360278cc8b79009b9b23563176d7544e164a1ec659cafc7820b580666093",
+        "candidateManifestSha256": "ec011d29b0108abd4c065c713fcfece412d18796c682bc654e6ef187900fe37e"
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 0,
+        "fetchedTargets": 0,
+        "mineruValidTargets": 0,
+        "identityProvenTargets": 0,
+        "dimensionsReceipted": 0,
+        "terminalTargets": 1,
+        "retryableTargets": 0
+      },
+      "beforeCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 957,
+        "p0EligibleTargets": 947,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "afterCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 956,
+        "p0EligibleTargets": 946,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "semanticCheckpointSha256": "b7bc742f4d2120215df0ef1b61575441e157ae56a305adbd3e3d75b8ebcfa098"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-e67f57c33c9a49607362cdd4",
+      "runId": "historical-scale-p0-esatto-edw456s-20260719-b",
+      "completedAt": "2026-07-19T19:16:16.066Z",
+      "stage": "DISCOVERY",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_b366bec5b232f0367e63c83c",
+      "manifestSha256": "b366bec5b232f0367e63c83cc0e10b28c57e7822111f19a16e593a5581cb3224",
+      "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "9ab6381d46daaf3a485684b8e83376a3b3ff33f51a34386ce3ee20727722cac7",
+        "auditSha256": null,
+        "storageContentSha256": "095e8737336ab563b48b85afbbc8bf2ffdf43928fbc6b5602b704e9206c4dc8d",
+        "candidateManifestSha256": "9d3a43b38ab830d583ed5c8b65168f698b1589133a1fb2e349d81d50275b026f"
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 1,
+        "fetchedTargets": 0,
+        "mineruValidTargets": 0,
+        "identityProvenTargets": 0,
+        "dimensionsReceipted": 0,
+        "terminalTargets": 0,
+        "retryableTargets": 0
+      },
+      "beforeCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 956,
+        "p0EligibleTargets": 946,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "afterCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 956,
+        "p0EligibleTargets": 946,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "semanticCheckpointSha256": "b35a023361b3acfd28dfcf33637e200edd39a856dd66632613020a2e9124e681"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-f41520d35cd1a7cdd5a578c8",
+      "runId": "historical-scale-p0-esatto-edw456s-dimensions-20260719-c",
+      "completedAt": "2026-07-19T19:18:58.376Z",
+      "stage": "DIMENSIONS",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_0502263f98e07b97b73c7622",
+      "manifestSha256": "0502263f98e07b97b73c762271c8acbc76bfae1a55ddcf9fddb18c72aca258e0",
+      "cohortKey": "cohort:DIMENSIONS:dishwasher:esatto:ACQUISITION",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "9c7443f8f59f42b20e7e538916789c841ef5f39518ee5eeacec1fcf2d2bd13bb",
+        "auditSha256": "f4082ae944621fb8ecc74a3a30d8250bc210fc6e04b85439c442d3424a673d96",
+        "storageContentSha256": null,
+        "candidateManifestSha256": null
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 1,
+        "fetchedTargets": 1,
+        "mineruValidTargets": 0,
+        "identityProvenTargets": 0,
+        "dimensionsReceipted": 0,
+        "terminalTargets": 1,
+        "retryableTargets": 0
+      },
+      "beforeCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 956,
+        "p0EligibleTargets": 946,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "afterCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 955,
+        "p0EligibleTargets": 945,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "semanticCheckpointSha256": "e6ea07d4eb759afbdf6d274f1b27d1da88fa0e3b94a730943b9f69fd8ba23e2c"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-ae1a0f6271049292b6940fae",
+      "runId": "historical-scale-p0-esatto-edw6cs-20260719-d",
+      "completedAt": "2026-07-19T19:22:51.898Z",
+      "stage": "DISCOVERY",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_157d299e01994cde979ebab1",
+      "manifestSha256": "157d299e01994cde979ebab13f99c4daffeffaa0ccae65d82c994c2db8701f30",
+      "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "27fd65d48e9a990dbd26cb56991bda485e1b1fb3ce0b8ca5c7397f0b54623c17",
+        "auditSha256": null,
+        "storageContentSha256": "7a36da4a466fbf7e4dcb9b9ca234e7bfd290fc552c3248d87ad4ca50f176ffbe",
+        "candidateManifestSha256": "00d86797f153d2e325c34928e286614e26e1f32066f348dbd71283a80d423410"
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 0,
+        "fetchedTargets": 0,
+        "mineruValidTargets": 0,
+        "identityProvenTargets": 0,
+        "dimensionsReceipted": 0,
+        "terminalTargets": 1,
+        "retryableTargets": 0
+      },
+      "beforeCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 955,
+        "p0EligibleTargets": 945,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "afterCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 954,
+        "p0EligibleTargets": 944,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "semanticCheckpointSha256": "1a0cda012aa553bace7766eb901630866ce6d809b56da1c0147feaaadb59d4c6"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-3804ee7dce26c1d2af9c3a59",
+      "runId": "historical-scale-p0-esatto-edw6sl-20260719-e",
+      "completedAt": "2026-07-19T19:25:49.011Z",
+      "stage": "DISCOVERY",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_adaf195c3484ec0951ce566c",
+      "manifestSha256": "adaf195c3484ec0951ce566cfb0fa955f652ecf5a9419e5cbd4ee8ae790c4ae0",
+      "cohortKey": "cohort:DISCOVERY:dishwasher:esatto:BOUNDED_DISCOVERY",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "eb1c3b441f85ea1502458391c1cac0b699cc2ba7453c5965a1c231ec65e97f91",
+        "auditSha256": null,
+        "storageContentSha256": "e88383541799d407b4685efdd6838d9c363e8f921694eb92d3ebd23c67d7f494",
+        "candidateManifestSha256": "316b1949c2e698a69a87f9b9568be13828533a435435ee98e6c11e47d008a4a7"
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 0,
+        "fetchedTargets": 0,
+        "mineruValidTargets": 0,
+        "identityProvenTargets": 0,
+        "dimensionsReceipted": 0,
+        "terminalTargets": 1,
+        "retryableTargets": 0
+      },
+      "beforeCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 954,
+        "p0EligibleTargets": 944,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "afterCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 953,
+        "p0EligibleTargets": 943,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "semanticCheckpointSha256": "f48fb5b0910d6bc5b048b2ccd41fc1070a6228da3f4ec011928ff31112fc97fc"
+    }
+  ],
+  "rebaselines": [
+    {
+      "rebaselineId": "historical-dimensions-rebaseline-134e9fa257a30f9d3039888d",
+      "activatedAt": "2026-07-20T18:29:13.000Z",
+      "afterEntryCount": 5,
+      "reason": "RELEASE_DAG_RECONCILIATION",
+      "priorControlSha256": "b48bc2b0c167f3dbc663ebfcd01ee6803387fef91ee00dc78b9de9d7d5700631",
+      "priorArtifactBindings": {
+        "nextBatchesSha256": "35d1d753d38b72166a9ba8e912b78b094d031cdde78d25ac30e21140d19204b7",
+        "programStatusSha256": "7d71171de02c85df4b6f2c5a3d21a68d8fff3ac51a9c26414cbbf579671759ec",
+        "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+        "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
+        "fitPublicationAuditSha256": "e017f300071c502801034c2a4ef996fcb68018aac7fda4d409073623fa26d9ed",
+        "epochsSha256": "c7b6b37866893f5fbaa1c2cfb5705e9e42f99c31473ba3ac9135224629685711"
+      },
+      "nextArtifactBindings": {
+        "nextBatchesSha256": "7006abba7a32896d6be27310be5812c80880f903233501db1cfdcd4e1993ed71",
+        "programStatusSha256": "eaf561c7a38bd0de7ef6f9df48d0e199ffc4e7462b32496466588a3fdd29d41f",
+        "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+        "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
+        "fitPublicationAuditSha256": "e017f300071c502801034c2a4ef996fcb68018aac7fda4d409073623fa26d9ed",
+        "epochsSha256": "c7b6b37866893f5fbaa1c2cfb5705e9e42f99c31473ba3ac9135224629685711"
+      },
+      "changedArtifactBindings": [
+        "nextBatchesSha256",
+        "programStatusSha256"
+      ],
+      "previousCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 953,
+        "p0EligibleTargets": 943,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "nextCounters": {
+        "currentValidReceipts": 401,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 408,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 957,
+        "p0EligibleTargets": 947,
+        "p1AssignedTargets": 3974,
+        "p1EligibleTargets": 3939
+      },
+      "queueCounterDeltas": {
+        "p0AssignedTargets": 4,
+        "p0EligibleTargets": 4,
+        "p1AssignedTargets": 0,
+        "p1EligibleTargets": 0
+      },
+      "semanticRebaselineSha256": "ebddc55abd05f08d6a7df9065e66b0a451d5359f59fe1f28cfb3a00da64a4266"
+    }
+  ]
+}

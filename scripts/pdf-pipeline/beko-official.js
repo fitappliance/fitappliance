@@ -1,5 +1,7 @@
 const DEFAULT_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
 const DEFAULT_TIMEOUT_MS = 20_000;
+const DEFAULT_MAXIMUM_HTML_BYTES = 8 * 1024 * 1024;
+const { createHash } = require('node:crypto');
 
 function normalizeSku(value) {
   return String(value || '')
@@ -46,14 +48,36 @@ function extractSearchResultUrls(html) {
 }
 
 function extractPdfUrlsFromPage(html, pageUrl) {
-  const urls = [];
-  for (const rawHref of extractHrefValues(html)) {
+  return extractPdfResourcesFromPage(html, pageUrl).map((resource) => resource.url);
+}
+
+function documentType(label, url) {
+  const text = `${label || ''} ${url || ''}`;
+  if (/install/i.test(text)) return 'installation_guide';
+  if (/spec|product\/\d+\.pdf/i.test(text)) return 'specification_sheet';
+  if (/manual|instruction|user/i.test(text)) return 'user_manual';
+  return 'family_manual';
+}
+
+function extractPdfResourcesFromPage(html, pageUrl) {
+  const resources = [];
+  const source = String(html || '');
+  const anchorPattern = /<a\b([^>]*?)>([\s\S]*?)<\/a>/gi;
+  for (const match of source.matchAll(anchorPattern)) {
+    const attrs = match[1] || '';
+    const rawHref = attrs.match(/\bhref=["']([^"']+)["']/i)?.[1];
+    if (!rawHref) continue;
     const url = absoluteUrl(rawHref, pageUrl);
-    if (/\.pdf(?:$|[?#])/i.test(url) && /^https:\/\/www\.beko\.com\//i.test(url)) {
-      urls.push(url);
-    }
+    if (!/\.pdf(?:$|[?#])/i.test(url) || !/^https:\/\/www\.beko\.com\//i.test(url)) continue;
+    const label = `${attrs.match(/\baria-label=["']([^"']+)["']/i)?.[1] || ''} ${match[2].replace(/<[^>]+>/g, ' ')}`.trim();
+    resources.push({ url, label, resourceType: documentType(label, url) });
   }
-  return [...new Set(urls)];
+  const seen = new Set();
+  return resources.filter((resource) => {
+    if (seen.has(resource.url)) return false;
+    seen.add(resource.url);
+    return true;
+  });
 }
 
 function categoryUrlsForTarget(target = {}) {
@@ -126,7 +150,8 @@ function scorePdfUrl(url, target = {}) {
   const sku = normalizeSku(target.sku || target.model || target.product?.model);
   let score = 0;
   if (sku && normalizedUrl.includes(sku)) score += 80;
-  if (/\/bekoglobal\/au\/en\/pdf\/product\//i.test(url)) score += 50;
+  if (/\/bekoglobal\/au\/en\/pdf\/product\//i.test(url)) score += 140;
+  if (/install/i.test(url)) score += 45;
   if (/spec|product\/\d+\.pdf|specification/i.test(url)) score += 25;
   if (/product-documents/i.test(url)) score += 15;
   if (/user-manual|manual/i.test(url)) score += 8;
@@ -146,8 +171,10 @@ function buildSearchQueries(target = {}) {
 
 async function fetchText(url, {
   fetchImpl = globalThis.fetch,
+  scraplingImpl = null,
   timeoutMs = DEFAULT_TIMEOUT_MS,
-  userAgent = DEFAULT_USER_AGENT
+  userAgent = DEFAULT_USER_AGENT,
+  maximumBytes = DEFAULT_MAXIMUM_HTML_BYTES,
 } = {}) {
   if (!fetchImpl) throw new Error('Beko official finder requires fetch');
   const controller = new AbortController();
@@ -164,16 +191,143 @@ async function fetchText(url, {
     return await response.text();
   } catch (error) {
     if (controller.signal.aborted) throw new Error(`timeout after ${timeoutMs}ms`);
-    throw error;
+    if (typeof scraplingImpl !== 'function' || new URL(url).hostname.toLowerCase() !== 'www.beko.com') {
+      throw error;
+    }
+    const result = await scraplingImpl(url, { timeoutMs, maximumBytes });
+    const finalUrl = new URL(result?.finalUrl || url).toString();
+    if (new URL(finalUrl).hostname.toLowerCase() !== 'www.beko.com') {
+      throw new Error('Beko Scrapling fallback escaped the official host');
+    }
+    const bytes = Buffer.from(result?.bytes ?? []);
+    if (!bytes.length || bytes.length > maximumBytes) throw new Error('Beko HTML size outside limits');
+    if (!/^text\/html(?:;|$)/i.test(String(result?.contentType || ''))) {
+      throw new Error('Beko Scrapling fallback returned non-HTML content');
+    }
+    return bytes.toString('utf8');
   } finally {
     clearTimeout(timeout);
   }
 }
 
+async function defaultScraplingImpl(url, options) {
+  const { fetchViaScrapling } = await import('../../src/domain/scrapling-transport.mjs');
+  return fetchViaScrapling(url, options);
+}
+
+function exactModelMention(html, sku) {
+  const model = String(sku || '').trim().toUpperCase();
+  if (!model) return false;
+  const escaped = model.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(^|[^A-Z0-9])${escaped}([^A-Z0-9]|$)`, 'i').test(String(html || ''));
+}
+
+function manualSearchApiUrlForTarget(target = {}) {
+  const sku = String(target.sku || target.model || target.product?.model || '').trim();
+  if (!sku) throw new TypeError('Beko support search requires an exact model');
+  return `https://www.beko.com/content/bekoglobal/au/en/support/user-manual/jcr:content/root/responsivegrid/responsivegrid/productsearch.ajax.html?search=${encodeURIComponent(sku)}`;
+}
+
+function extractManualResultUrlForSku(html, sku) {
+  const target = normalizeSku(sku);
+  if (!target) return null;
+  const source = String(html || '');
+  const anchorPattern = /<a\b([^>]*?)>([\s\S]*?)<\/a>/gi;
+  for (const match of source.matchAll(anchorPattern)) {
+    const rawHref = match[1]?.match(/\bhref=["']([^"']+)["']/i)?.[1];
+    if (!rawHref) continue;
+    const url = absoluteUrl(rawHref);
+    if (!url) continue;
+    let parsed;
+    try { parsed = new URL(url); } catch { continue; }
+    if (parsed.hostname.toLowerCase() !== 'www.beko.com'
+      || parsed.pathname !== '/au-en/support/user-manuals-result'
+      || normalizeSku(parsed.searchParams.get('search')) !== target
+      || !exactModelMention(match[2], sku)) continue;
+    return parsed.toString();
+  }
+  return null;
+}
+
+async function resultFromDiscoveryPage(target, discoveryUrl, html, writeObject) {
+  const sku = String(target.sku || target.model || target.product?.model || '').trim();
+  if (!exactModelMention(html, sku)) return null;
+  const resources = extractPdfResourcesFromPage(html, discoveryUrl);
+  if (!resources.length) return null;
+  const productPageUrl = extractProductPageUrlsForSku(html, discoveryUrl, sku)[0] || null;
+  let discoveryFields = null;
+  if (typeof writeObject === 'function') {
+    const bytes = Buffer.from(html, 'utf8');
+    const discoveryContentSha256 = createHash('sha256').update(bytes).digest('hex');
+    const discoveryObjectPath = `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.html`;
+    await writeObject(discoveryObjectPath, bytes);
+    discoveryFields = { discoveryContentSha256, discoveryObjectPath, discoveryByteSize: bytes.length };
+  }
+  const ranked = resources
+    .map((resource) => ({ ...resource, score: scorePdfUrl(resource.url, target) }))
+    .filter((resource) => resource.score > 0)
+    .sort((left, right) => right.score - left.score || left.url.localeCompare(right.url));
+  if (!ranked.length) return null;
+  const enriched = ranked.map((resource) => ({
+    ...resource,
+    requiredAttempt: resource.resourceType === 'specification_sheet',
+    ...(discoveryFields ? {
+      discoveryProvenance: {
+        schemaVersion: 1,
+        method: 'official_product_page',
+        market: 'AU',
+        discoveryUrl,
+        requestedModel: sku,
+        matchedModel: sku,
+        artifactUrl: resource.url,
+        artifactLinkUrl: resource.url,
+        ...discoveryFields,
+      },
+    } : {}),
+  }));
+  const best = enriched[0];
+  return {
+    sourceUrl: best.url,
+    source: `beko-official-${best.resourceType}`,
+    resourceType: best.resourceType,
+    requiredAttempt: best.requiredAttempt,
+    productPageUrl,
+    resources: enriched,
+    discoveryProvenance: best.discoveryProvenance,
+  };
+}
+
+function combineDiscoveryResults(results) {
+  const available = results.filter(Boolean);
+  const resources = [];
+  const seen = new Set();
+  for (const result of available) {
+    for (const resource of result.resources ?? []) {
+      if (seen.has(resource.url)) continue;
+      seen.add(resource.url);
+      resources.push(resource);
+    }
+  }
+  resources.sort((left, right) => right.score - left.score || left.url.localeCompare(right.url));
+  if (!resources.length) return null;
+  const best = resources[0];
+  return {
+    sourceUrl: best.url,
+    source: `beko-official-${best.resourceType}`,
+    resourceType: best.resourceType,
+    requiredAttempt: best.requiredAttempt,
+    productPageUrl: available.find((result) => result.productPageUrl)?.productPageUrl ?? null,
+    resources,
+    discoveryProvenance: best.discoveryProvenance,
+  };
+}
+
 async function findBekoOfficialPdf(target = {}, {
   fetchImpl = globalThis.fetch,
+  scraplingImpl = defaultScraplingImpl,
   timeoutMs = DEFAULT_TIMEOUT_MS,
-  userAgent = DEFAULT_USER_AGENT
+  userAgent = DEFAULT_USER_AGENT,
+  writeObject = null,
 } = {}) {
   const queries = buildSearchQueries(target);
   const candidatePages = [];
@@ -181,9 +335,52 @@ async function findBekoOfficialPdf(target = {}, {
   const errors = [];
   const sku = target.sku || target.model || target.product?.model;
 
+  const manualSearchApiUrl = manualSearchApiUrlForTarget(target);
+  try {
+    const searchHtml = await fetchText(manualSearchApiUrl, {
+      fetchImpl, scraplingImpl, timeoutMs, userAgent,
+    });
+    const manualSearchUrl = extractManualResultUrlForSku(searchHtml, sku);
+    if (!manualSearchUrl) {
+      errors.push(`${manualSearchApiUrl}: no exact-model support result`);
+      throw Object.assign(new Error('Beko AU support search returned no exact model'), {
+        code: 'BEKO_SUPPORT_EXACT_MODEL_NOT_FOUND',
+      });
+    }
+    const html = await fetchText(manualSearchUrl, {
+      fetchImpl, scraplingImpl, timeoutMs, userAgent,
+    });
+    const supportResult = await resultFromDiscoveryPage(target, manualSearchUrl, html, writeObject);
+    if (supportResult) {
+      const results = [supportResult];
+      if (supportResult.productPageUrl) {
+        try {
+          const productHtml = await fetchText(supportResult.productPageUrl, {
+            fetchImpl, scraplingImpl, timeoutMs, userAgent,
+          });
+          results.push(await resultFromDiscoveryPage(
+            target,
+            supportResult.productPageUrl,
+            productHtml,
+            writeObject,
+          ));
+        } catch (error) {
+          errors.push(`${supportResult.productPageUrl}: ${error.message}`);
+        }
+      }
+      const direct = combineDiscoveryResults(results);
+      if (direct) return direct;
+    }
+    errors.push(`${manualSearchUrl}: no exact-model PDF result`);
+  } catch (error) {
+    if (error?.code !== 'BEKO_SUPPORT_EXACT_MODEL_NOT_FOUND') {
+      errors.push(`${manualSearchApiUrl}: ${error.message}`);
+    }
+  }
+
   for (const categoryUrl of categoryUrlsForTarget(target)) {
     try {
-      const html = await fetchText(categoryUrl, { fetchImpl, timeoutMs, userAgent });
+      const html = await fetchText(categoryUrl, { fetchImpl, scraplingImpl, timeoutMs, userAgent });
       candidatePages.push(...extractProductPageUrlsForSku(html, categoryUrl, sku));
     } catch (error) {
       errors.push(`${categoryUrl}: ${error.message}`);
@@ -205,7 +402,7 @@ async function findBekoOfficialPdf(target = {}, {
 
   for (const pageUrl of [...new Set(candidatePages)].slice(0, 6)) {
     try {
-      const html = await fetchText(pageUrl, { fetchImpl, timeoutMs, userAgent });
+      const html = await fetchText(pageUrl, { fetchImpl, scraplingImpl, timeoutMs, userAgent });
       candidatePdfs.push(...extractPdfUrlsFromPage(html, pageUrl));
     } catch (error) {
       errors.push(`${pageUrl}: ${error.message}`);
@@ -233,7 +430,10 @@ exports.absoluteUrl = absoluteUrl;
 exports.buildSearchQueries = buildSearchQueries;
 exports.categoryUrlsForTarget = categoryUrlsForTarget;
 exports.extractPdfUrlsFromPage = extractPdfUrlsFromPage;
+exports.extractPdfResourcesFromPage = extractPdfResourcesFromPage;
+exports.extractManualResultUrlForSku = extractManualResultUrlForSku;
 exports.extractProductPageUrlsForSku = extractProductPageUrlsForSku;
 exports.extractSearchResultUrls = extractSearchResultUrls;
 exports.findBekoOfficialPdf = findBekoOfficialPdf;
+exports.manualSearchApiUrlForTarget = manualSearchApiUrlForTarget;
 exports.scorePdfUrl = scorePdfUrl;

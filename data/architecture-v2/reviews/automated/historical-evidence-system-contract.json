@@ -1,0 +1,2845 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-21T12:12:18.070Z",
+  "releaseId": "tracked-baseline-2026-07-21T12:12:18.070Z",
+  "producerInputs": [
+    {
+      "path": "scripts/architecture-v2/build-historical-evidence-system-contract.mjs",
+      "contentSha256": "694aaae46a456c49c731efd35ba94b19acdd48d090cf2e7dfcc9b7aa6b4f5480"
+    },
+    {
+      "path": "src/domain/historical-evidence-system-contract.mjs",
+      "contentSha256": "d97cdb8fc20c51c4a28bc91d9242ac66683c399adb48af66e783755e1ad70c57"
+    }
+  ],
+  "producerSha256": "a351535300070e20bfa95ca31768d47c6b6a3af6b3737baac1dae9f5ba8d4b06",
+  "epochs": [
+    {
+      "id": "fit-policy",
+      "owner": "src/domain/fit-v3.mjs",
+      "inputs": [
+        {
+          "path": "src/domain/fit-v3.mjs",
+          "contentSha256": "229a65c2e013d2bcf137fc2705ca0b4fbfb65af6038926fb85e6591dac69b3ab"
+        },
+        {
+          "path": "src/domain/installation-evidence-pipeline.mjs",
+          "contentSha256": "6164d88b4a47dfec014bba19d1bdb1920c4f5cdf302b5bef17a453d23b489e12"
+        }
+      ],
+      "semanticSha256": "39d94838375e9fdbc5e262dfc6d94ce549f784bcef7a6c044d88e66de3a476c9"
+    },
+    {
+      "id": "identity-registry",
+      "owner": "src/domain/canonical-registry.mjs",
+      "inputs": [
+        {
+          "path": "scripts/architecture-v2/build-canonical-registry.mjs",
+          "contentSha256": "7454c541700cb7770d7b6c68cb8011440059739a5f2f3f8e0838d9828deeaaac"
+        },
+        {
+          "path": "src/domain/canonical-registry.mjs",
+          "contentSha256": "b3046beffc7c3de45fa7cbaf1a3514327908f4d1eca841bb13e4375b5bc5e534"
+        }
+      ],
+      "semanticSha256": "e4557f5e2be3c1141f36ca001f9d1051ccba7d6d62f9fc3cd12791696917db16"
+    },
+    {
+      "id": "lifecycle-policy",
+      "owner": "src/domain/retail-lifecycle-shadow.mjs",
+      "inputs": [
+        {
+          "path": "data/architecture-v2/policies/reference-artifact-policy.json",
+          "contentSha256": "3dfa16b8e14ce105a03590426dde873871286aa942652222f58c5874b0ca220e"
+        },
+        {
+          "path": "data/architecture-v2/policies/retail-lifecycle-release-policy.json",
+          "contentSha256": "1941c9a79a6640afc3357699ce8eb1078f7aea8d8cf57770fda97e30f0426241"
+        },
+        {
+          "path": "src/domain/historical-appliance-reference.mjs",
+          "contentSha256": "88855b42b772c2f01a5bf8f5eca997341f148e297fe773aff502cbf9f6c4be74"
+        },
+        {
+          "path": "src/domain/retail-lifecycle-shadow.mjs",
+          "contentSha256": "8d497037cc6963e816ee5556d5d55232ece27a55bb62b8a1e4e20a2c8d3dd7cd"
+        }
+      ],
+      "semanticSha256": "ea49f6f26a852ceef9ed157958a00a9c9edf60164f148710c4071f236f2fcc68"
+    },
+    {
+      "id": "mineru-toolchain",
+      "owner": "src/domain/mineru-tool-identity.mjs",
+      "inputs": [
+        {
+          "path": "scripts/architecture-v2/parse-pdf-with-mineru.mjs",
+          "contentSha256": "2558f284b9351e0b800f2958916e514861fff3c1cde671913ea5dfad0bf59690"
+        },
+        {
+          "path": "src/domain/mineru-runner.mjs",
+          "contentSha256": "e861f4c000ffebfca07d42e329d42377d4e671046245ac0da5dbbce6098e1f03"
+        },
+        {
+          "path": "src/domain/mineru-tool-identity.mjs",
+          "contentSha256": "8abbcbb31dd9ba0e4b43e1dc26e05f0c39c82837ad2b73c10abe9a0cb78837dd"
+        }
+      ],
+      "semanticSha256": "e7ff4434ea33e63c959abc0c2758c9dc0dae994bac08d14b235bcd727521c8c4"
+    },
+    {
+      "id": "observation",
+      "owner": "src/domain/retailer-observation.mjs",
+      "inputs": [
+        {
+          "path": "src/domain/retailer-observation.mjs",
+          "contentSha256": "248044d540a048774d93894f37481a574ef514fb9b81e97ae36c15b2f3e8d872"
+        },
+        {
+          "path": "src/domain/retailer-source-adapter.mjs",
+          "contentSha256": "546797e2451626507076d5024457f31360f88d169aa899127c1496f2028b89bd"
+        }
+      ],
+      "semanticSha256": "52d45719049edb7ea6ce58aa3489440027b5ee39e0a5014fc4507b78a3b9fea2"
+    },
+    {
+      "id": "parser",
+      "owner": "src/domain/mineru-document.mjs",
+      "inputs": [
+        {
+          "path": "src/domain/dimension-expression-knowledge.mjs",
+          "contentSha256": "708e87e838dc596058427618e7e9bc51d526b47a21b165cac08b69fa0681e2c3"
+        },
+        {
+          "path": "src/domain/mineru-document.mjs",
+          "contentSha256": "818b7beb6df158d3af2991fe6397ad7d17502dda15559481d18731bbc31df2d2"
+        }
+      ],
+      "semanticSha256": "d64ff7ac7e7caebf52c79f0fd9960c3e41ec2bdbe2aa1bde40280a343b88daaf"
+    },
+    {
+      "id": "publication",
+      "owner": "src/domain/historical-evidence-publication.mjs",
+      "inputs": [
+        {
+          "path": "src/domain/historical-evidence-publication.mjs",
+          "contentSha256": "9de9e03f1ca074f5212e56f72b5cc21c923935e35a9280a464f1ebda218a0ba5"
+        },
+        {
+          "path": "src/domain/historical-reference-publication.mjs",
+          "contentSha256": "d85cf33678edaa888924b98ca26416de05e85a09ab5ad26ff20c7cec89dd3889"
+        },
+        {
+          "path": "src/domain/public-projection.mjs",
+          "contentSha256": "42c8efbcca882cc16574fc733d411b6bfedc45e83cdb28330227d5bff8b39f14"
+        }
+      ],
+      "semanticSha256": "35398adc2e9a96f582335e157405eccdb96f7840cb48626a175aeba8b4f50db4"
+    },
+    {
+      "id": "receipt-policy",
+      "owner": "src/domain/historical-evidence-recovery-contract.mjs",
+      "inputs": [
+        {
+          "path": "data/architecture-v2/policies/historical-evidence-recovery-policy.json",
+          "contentSha256": "8a990ba19339788d57dd8c60168e78bd4296d8098e281ef1f7379c7733bd35ac"
+        },
+        {
+          "path": "src/domain/historical-evidence-recovery-contract.mjs",
+          "contentSha256": "ee48fe338f14aaad6193c655899e79e3f988874ab2482b10869866461c77ee2e"
+        }
+      ],
+      "semanticSha256": "6c7216f81d5fe42a7e1bc5c2afc365ee2465f7894d41e34b0df803792265c44c"
+    },
+    {
+      "id": "resolver-contract",
+      "owner": "scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs",
+      "inputs": [
+        {
+          "path": "data/architecture-v2/policies/official-discovery-seed-policy.json",
+          "contentSha256": "2bc6f908f1113441595784fb5169b8920454eb6ea6949686bc1641fc1181bfbc"
+        },
+        {
+          "path": "scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs",
+          "contentSha256": "3cdfce341259066f24f16fa6977ca4cb6f389d586e26a54d9e3fdc299ce2d765"
+        }
+      ],
+      "semanticSha256": "94fc01ff3faea78c6ca3f2053a31a696c63d520c9c8832b4aae0bc1ed2c73767"
+    },
+    {
+      "id": "source-authority-policy",
+      "owner": "data/architecture-v2/policies/manufacturer-source-policy.json",
+      "inputs": [
+        {
+          "path": "data/architecture-v2/policies/manufacturer-source-policy.json",
+          "contentSha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1"
+        },
+        {
+          "path": "data/architecture-v2/policies/retailer-source-policy.json",
+          "contentSha256": "5e5adc2c16232906c412f93431fb363b4cfe97a10f097abb0d2ebcefdf6ed125"
+        }
+      ],
+      "semanticSha256": "4a09f467b4db04324549ba478409385d715ff4880e72feba7a8212cfc5b7c9d9"
+    }
+  ],
+  "stages": [
+    {
+      "id": "attempt-ledger",
+      "artifactKey": "historicalEvidenceRecoveryAttemptLedger",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-evidence-recovery-attempt-ledger.json",
+      "owner": "src/domain/historical-evidence-recovery-attempt-ledger.mjs",
+      "producerInputs": [
+        {
+          "path": "src/domain/historical-evidence-recovery-attempt-ledger.mjs",
+          "contentSha256": "9483a8bcedb4872536db4a654976ebef45c482f0900f6ba3952936426a0a1844"
+        }
+      ],
+      "producerSha256": "be6edf4348861a5721c84ab73e1e906ec86840b351277e5cfa88685029c15290",
+      "consumers": [
+        "executable-queue",
+        "program-status",
+        "target-state"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-19T19:19:53.552Z",
+      "contentSha256": "a96ea697f03d81b201ac1f0a2dfbe59e83dd5c8dc2f23ae4df22c124ff4a4933",
+      "semanticSha256": "a96ea697f03d81b201ac1f0a2dfbe59e83dd5c8dc2f23ae4df22c124ff4a4933",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [],
+      "releaseDependencies": [],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_INPUT"
+      ],
+      "nextTransitions": [
+        "executable-queue",
+        "program-status",
+        "target-state"
+      ]
+    },
+    {
+      "id": "canonical-identity",
+      "artifactKey": "canonicalRegistry",
+      "artifactPath": "data/architecture-v2/generated/canonical-registry.json",
+      "owner": "scripts/architecture-v2/build-canonical-registry.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-canonical-registry.mjs",
+          "contentSha256": "7454c541700cb7770d7b6c68cb8011440059739a5f2f3f8e0838d9828deeaaac"
+        },
+        {
+          "path": "src/domain/canonical-registry.mjs",
+          "contentSha256": "b3046beffc7c3de45fa7cbaf1a3514327908f4d1eca841bb13e4375b5bc5e534"
+        }
+      ],
+      "producerSha256": "5a4b7f9a86fd8fc326eb71b482ffd5d2c3910c76271d8968a7991cc60dd561ff",
+      "consumers": [
+        "canonical-identity-migration-candidate",
+        "current-publication"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": null,
+      "contentSha256": "f26752c4d6311b12065c44d705c1f58ae580f7cf461f3519750aff4d03a7c56a",
+      "semanticSha256": "f26752c4d6311b12065c44d705c1f58ae580f7cf461f3519750aff4d03a7c56a",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [],
+      "releaseDependencies": [],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CURRENT_INPUT",
+        "HISTORICAL_INPUT"
+      ],
+      "nextTransitions": [
+        "canonical-identity-migration-candidate",
+        "current-publication"
+      ]
+    },
+    {
+      "id": "receipt-reconciliation",
+      "artifactKey": "historicalEvidenceRecoveryAcceptanceBundle",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json",
+      "owner": "src/domain/historical-evidence-recovery-contract.mjs",
+      "producerInputs": [
+        {
+          "path": "data/architecture-v2/policies/historical-evidence-recovery-policy.json",
+          "contentSha256": "8a990ba19339788d57dd8c60168e78bd4296d8098e281ef1f7379c7733bd35ac"
+        },
+        {
+          "path": "src/domain/historical-evidence-recovery-contract.mjs",
+          "contentSha256": "ee48fe338f14aaad6193c655899e79e3f988874ab2482b10869866461c77ee2e"
+        }
+      ],
+      "producerSha256": "556d003d7dfd063d5117687e31a556d2b119771b1f125cd5dccd7e9deba0ef00",
+      "consumers": [
+        "candidate-lifecycle-reduction",
+        "candidate-publication-base",
+        "current-publication",
+        "executable-queue",
+        "fit-publication",
+        "lifecycle-reduction",
+        "program-status",
+        "receipt-replay",
+        "target-state"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-19T19:19:53.552Z",
+      "contentSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+      "semanticSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [],
+      "releaseDependencies": [],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CURRENT_INPUT",
+        "HISTORICAL_INPUT"
+      ],
+      "nextTransitions": [
+        "candidate-lifecycle-reduction",
+        "candidate-publication-base",
+        "current-publication",
+        "executable-queue",
+        "fit-publication",
+        "lifecycle-reduction",
+        "program-status",
+        "receipt-replay",
+        "target-state"
+      ]
+    },
+    {
+      "id": "receipt-replay",
+      "artifactKey": "historicalAcceptanceReceiptReplayAudit",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-acceptance-receipt-replay-audit.json",
+      "owner": "scripts/architecture-v2/audit-historical-acceptance-receipts.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/audit-historical-acceptance-receipts.mjs",
+          "contentSha256": "4c026f78e3577bcbb0ba9dd151bbddbec042bfa7185c57421c904361c2a06900"
+        },
+        {
+          "path": "src/domain/historical-evidence-recovery-audit.mjs",
+          "contentSha256": "fde70a9e26725667d3611c44e302685f9894b2edd1186f9b67a4ce1675299f47"
+        }
+      ],
+      "producerSha256": "d32ad745f9b05e29e27a20e08ab2b2d4f5c54b68d271dd835d4f05678eac8475",
+      "consumers": [
+        "candidate-publication-base",
+        "current-publication",
+        "fit-publication",
+        "program-status",
+        "scale-control"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-19T19:32:08.439Z",
+      "contentSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+      "semanticSha256": "69a9eea8f543f526fcf311fbc94113a0f42046b1766eee7dba590e348548432d",
+      "declaredSemanticSha256": "69a9eea8f543f526fcf311fbc94113a0f42046b1766eee7dba590e348548432d",
+      "sourceBindings": [
+        {
+          "sourceStageId": "receipt-reconciliation",
+          "digestKind": "content",
+          "declaredSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+          "resolvedSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf"
+        }
+      ],
+      "releaseDependencies": [
+        "receipt-reconciliation"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "candidate-publication-base",
+        "current-publication",
+        "fit-publication",
+        "program-status",
+        "scale-control"
+      ]
+    },
+    {
+      "id": "current-publication",
+      "artifactKey": "publicProjection",
+      "artifactPath": "data/architecture-v2/generated/public-catalog-projection.json",
+      "owner": "scripts/architecture-v2/build-public-projection.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-public-projection.mjs",
+          "contentSha256": "26242cbb7a55dbff177b62f42d29131794fef9672f18a55b14f25ff36a883a16"
+        },
+        {
+          "path": "src/domain/historical-evidence-publication.mjs",
+          "contentSha256": "9de9e03f1ca074f5212e56f72b5cc21c923935e35a9280a464f1ebda218a0ba5"
+        },
+        {
+          "path": "src/domain/public-projection.mjs",
+          "contentSha256": "42c8efbcca882cc16574fc733d411b6bfedc45e83cdb28330227d5bff8b39f14"
+        }
+      ],
+      "producerSha256": "373200425184b861b48f8720933bda5139db93453d80451abecfc38cf0114bfb",
+      "consumers": [
+        "candidate-release-gate",
+        "fit-publication",
+        "historical-replacement-publication",
+        "lifecycle-reduction",
+        "official-market-lifecycle",
+        "retail-lifecycle-shadow",
+        "retailer-observation-coverage"
+      ],
+      "schemaVersion": 3,
+      "generatedAt": null,
+      "contentSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+      "semanticSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "canonical-identity",
+          "digestKind": "content",
+          "declaredSha256": "f26752c4d6311b12065c44d705c1f58ae580f7cf461f3519750aff4d03a7c56a",
+          "resolvedSha256": "f26752c4d6311b12065c44d705c1f58ae580f7cf461f3519750aff4d03a7c56a"
+        },
+        {
+          "sourceStageId": "receipt-reconciliation",
+          "digestKind": "content",
+          "declaredSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+          "resolvedSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf"
+        },
+        {
+          "sourceStageId": "receipt-replay",
+          "digestKind": "content",
+          "declaredSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+          "resolvedSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368"
+        }
+      ],
+      "releaseDependencies": [
+        "canonical-identity",
+        "receipt-reconciliation",
+        "receipt-replay"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CURRENT_OUTPUT"
+      ],
+      "nextTransitions": [
+        "candidate-release-gate",
+        "fit-publication",
+        "historical-replacement-publication",
+        "lifecycle-reduction",
+        "official-market-lifecycle",
+        "retail-lifecycle-shadow",
+        "retailer-observation-coverage"
+      ]
+    },
+    {
+      "id": "official-registry-snapshots",
+      "artifactKey": "officialRegistrySnapshots",
+      "artifactPath": "data/architecture-v2/generated/official-registry-snapshots.json",
+      "owner": "scripts/architecture-v2/acquire-official-registries.mjs",
+      "producerInputs": [
+        {
+          "path": "data/architecture-v2/policies/official-registry-source-policy.json",
+          "contentSha256": "3aa929ac0e302b97154b5a8f66cb84056309a9e3ca6881570f31b694717e7ad2"
+        },
+        {
+          "path": "scripts/architecture-v2/acquire-official-registries.mjs",
+          "contentSha256": "7343812ddb12a456aa5045188c9ecafdf798af6e783059133ed400d25fd0a152"
+        }
+      ],
+      "producerSha256": "a71b819206eabfa0fcca8696d692f6cfc44451cd0fc78bb63ef512df6a83d083",
+      "consumers": [
+        "candidate-lifecycle-reduction",
+        "lifecycle-reduction"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": null,
+      "contentSha256": "352d1904211faaef2cc84176499fccce0f088e64532d945659889106c1cd6ce4",
+      "semanticSha256": "352d1904211faaef2cc84176499fccce0f088e64532d945659889106c1cd6ce4",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [],
+      "releaseDependencies": [],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "HISTORICAL_INPUT"
+      ],
+      "nextTransitions": [
+        "candidate-lifecycle-reduction",
+        "lifecycle-reduction"
+      ]
+    },
+    {
+      "id": "lifecycle-reduction",
+      "artifactKey": "historicalApplianceReference",
+      "artifactPath": "data/architecture-v2/generated/historical-appliance-reference.json",
+      "owner": "scripts/architecture-v2/build-historical-appliance-reference.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-appliance-reference.mjs",
+          "contentSha256": "342707cf54cbc95f430763340ce77279107b69882707bc9d7fbb5473d327a98b"
+        },
+        {
+          "path": "src/domain/historical-appliance-reference.mjs",
+          "contentSha256": "88855b42b772c2f01a5bf8f5eca997341f148e297fe773aff502cbf9f6c4be74"
+        },
+        {
+          "path": "src/domain/historical-catalog-binding.mjs",
+          "contentSha256": "892ae7126831a72477849906e76750746b4733cc822da3f4e6317d3a56064211"
+        }
+      ],
+      "producerSha256": "a4aea57ee244c1bcd604c360482eaff53fb419df2ade0b0e4c642b9ee4143361",
+      "consumers": [
+        "candidate-official-market",
+        "classification",
+        "historical-replacement-publication",
+        "mineru-knowledge",
+        "official-market-lifecycle"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-12T12:40:00.000Z",
+      "contentSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba",
+      "semanticSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "current-publication",
+          "digestKind": "content",
+          "declaredSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+          "resolvedSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e"
+        },
+        {
+          "sourceStageId": "official-registry-snapshots",
+          "digestKind": "content",
+          "declaredSha256": "352d1904211faaef2cc84176499fccce0f088e64532d945659889106c1cd6ce4",
+          "resolvedSha256": "352d1904211faaef2cc84176499fccce0f088e64532d945659889106c1cd6ce4"
+        },
+        {
+          "sourceStageId": "receipt-reconciliation",
+          "digestKind": "content",
+          "declaredSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+          "resolvedSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf"
+        }
+      ],
+      "releaseDependencies": [
+        "current-publication",
+        "official-registry-snapshots",
+        "receipt-reconciliation"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "HISTORICAL_INPUT"
+      ],
+      "nextTransitions": [
+        "candidate-official-market",
+        "classification",
+        "historical-replacement-publication",
+        "mineru-knowledge",
+        "official-market-lifecycle"
+      ]
+    },
+    {
+      "id": "classification",
+      "artifactKey": "historicalModelEvidenceClassification",
+      "artifactPath": "data/architecture-v2/generated/historical-model-evidence-classification.json",
+      "owner": "scripts/architecture-v2/build-historical-model-evidence-classification.mjs",
+      "producerInputs": [
+        {
+          "path": "data/architecture-v2/policies/historical-model-evidence-classification-policy.json",
+          "contentSha256": "8f8305ef3540017e1b18a055fa5b7230f36a2035747b4b46d2f5157e8ce1bd69"
+        },
+        {
+          "path": "scripts/architecture-v2/build-historical-model-evidence-classification.mjs",
+          "contentSha256": "fef6758a14c156b441fc4d89fa3cf998025ede02cbfd79a2d0ab4f817a073568"
+        },
+        {
+          "path": "src/domain/historical-model-evidence-classification.mjs",
+          "contentSha256": "e73a5ed7cce3df2331b4e50f278ea50568611cd3bc78573c89b533d332777a80"
+        }
+      ],
+      "producerSha256": "265fb59dedf2af8c859b47c9730c81c59c19c8110a4364c1134f033724a0e41a",
+      "consumers": [
+        "candidate-acquisition-queue",
+        "document-identity",
+        "program-status",
+        "target-state"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-19T19:32:08.439Z",
+      "contentSha256": "21fe6b7d0bfe7d46cf5d4b2bdda0bfa687867a1d1f0eefe65104636d33f20071",
+      "semanticSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
+      "declaredSemanticSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
+      "sourceBindings": [
+        {
+          "sourceStageId": "lifecycle-reduction",
+          "digestKind": "content",
+          "declaredSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba",
+          "resolvedSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba"
+        }
+      ],
+      "releaseDependencies": [
+        "lifecycle-reduction"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "candidate-acquisition-queue",
+        "document-identity",
+        "program-status",
+        "target-state"
+      ]
+    },
+    {
+      "id": "retailer-identity-resolution",
+      "artifactKey": "retailerIdentityResolutions",
+      "artifactPath": "data/architecture-v2/reviews/automated/retailer-identity-resolutions.json",
+      "owner": "scripts/architecture-v2/build-retailer-identity-resolutions.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-retailer-identity-resolutions.mjs",
+          "contentSha256": "71ff64bd08b75029745c7cfce25c85a39fd0eee084f42f20b630fba4fc9fd2e6"
+        },
+        {
+          "path": "src/domain/official-identity-evidence.mjs",
+          "contentSha256": "41adea33bb25057a721c291ae8c78541c351541e7c555edd84b67af97f842f68"
+        },
+        {
+          "path": "src/domain/retailer-identity-resolution.mjs",
+          "contentSha256": "021ce19f1f3d0003d639a636a855d2d120b9ced002271f9ca4d04b8dcbb2340e"
+        }
+      ],
+      "producerSha256": "cc765a9dff0d48c533b9044e51e7571d69563254a3eead129402a4eda97be6a9",
+      "consumers": [
+        "retailer-identity-migration"
+      ],
+      "schemaVersion": 2,
+      "generatedAt": "2026-07-21T12:12:18.070Z",
+      "contentSha256": "a90bc6db15ff519308b706d018d8f55918d4f6f9c2c263ed53943e1233aa1387",
+      "semanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "declaredSemanticSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+      "sourceBindings": [],
+      "releaseDependencies": [],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_INPUT"
+      ],
+      "nextTransitions": [
+        "retailer-identity-migration"
+      ]
+    },
+    {
+      "id": "retailer-identity-migration",
+      "artifactKey": "retailerIdentityMigration",
+      "artifactPath": "data/architecture-v2/reviews/automated/retailer-identity-migration.json",
+      "owner": "scripts/architecture-v2/build-retailer-identity-migration.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-retailer-identity-migration.mjs",
+          "contentSha256": "7a00b6c708ebe2df539c90ed617fdbc154108fa3c86987337c1e297d49690f43"
+        },
+        {
+          "path": "src/domain/retailer-identity-migration.mjs",
+          "contentSha256": "470a1a44d8dd7f363dda3f1c99b8b1b960b26ed305574890d3fbc51f29ea25f7"
+        }
+      ],
+      "producerSha256": "dea4a9ed92d217282bd43ef889acac6f5f17875a9ff92d1f935a3c16e5972a53",
+      "consumers": [
+        "candidate-acquisition-queue",
+        "candidate-lifecycle-refresh",
+        "candidate-publication-base",
+        "candidate-release-gate",
+        "canonical-identity-migration-candidate",
+        "retail-lifecycle-refresh",
+        "retailer-observations"
+      ],
+      "schemaVersion": 4,
+      "generatedAt": "2026-07-21T12:12:18.070Z",
+      "contentSha256": "48fd52b0a05b865e0be493270aecd5f1b0aac475defd057591a38bd288e0bd48",
+      "semanticSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+      "declaredSemanticSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+      "sourceBindings": [
+        {
+          "sourceStageId": "retailer-identity-resolution",
+          "digestKind": "semantic",
+          "declaredSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca",
+          "resolvedSha256": "ceded7b749ca967973e517bb8abad0454faffbc2f8688dfb5137e208f7387bca"
+        }
+      ],
+      "releaseDependencies": [
+        "retailer-identity-resolution"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_INPUT"
+      ],
+      "nextTransitions": [
+        "candidate-acquisition-queue",
+        "candidate-lifecycle-refresh",
+        "candidate-publication-base",
+        "candidate-release-gate",
+        "canonical-identity-migration-candidate",
+        "retail-lifecycle-refresh",
+        "retailer-observations"
+      ]
+    },
+    {
+      "id": "candidate-acquisition-queue",
+      "artifactKey": "historicalModelPdfAcquisitionQueue",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-model-pdf-acquisition-queue.json",
+      "owner": "scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs",
+          "contentSha256": "39facd82b48b96954ac98066e8a63b2e850562b7a7feeddea41b6a0ae11f7685"
+        },
+        {
+          "path": "src/domain/historical-model-pdf-acquisition.mjs",
+          "contentSha256": "99936f3a32a30b5c8a9e20fff573b359a3953a1bdc5d23723349696b2d5878b0"
+        }
+      ],
+      "producerSha256": "3a1f99b4c2826d80b18ffc045c6f89b940782da31c4701331a400fe77160fc1b",
+      "consumers": [
+        "candidate-discovery",
+        "executable-queue",
+        "program-status",
+        "target-state"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-19T19:32:08.439Z",
+      "contentSha256": "cdb9d43417228dd5f2dda56ad1c74b5d1cf4c9286242092eff559122f1a317f7",
+      "semanticSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54",
+      "declaredSemanticSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54",
+      "sourceBindings": [
+        {
+          "sourceStageId": "classification",
+          "digestKind": "semantic",
+          "declaredSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
+          "resolvedSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922"
+        },
+        {
+          "sourceStageId": "retailer-identity-migration",
+          "digestKind": "semantic",
+          "declaredSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+          "resolvedSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946"
+        }
+      ],
+      "releaseDependencies": [
+        "classification",
+        "retailer-identity-migration"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "candidate-discovery",
+        "executable-queue",
+        "program-status",
+        "target-state"
+      ]
+    },
+    {
+      "id": "candidate-discovery",
+      "artifactKey": "historicalOfficialCandidateManifest",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-official-candidate-manifest.json",
+      "owner": "scripts/architecture-v2/build-historical-official-candidate-manifest.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-official-candidate-manifest.mjs",
+          "contentSha256": "386bb4f91053517218fd28f898d01927f5424d2deb313bf94aea794a27e0940a"
+        },
+        {
+          "path": "scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs",
+          "contentSha256": "3cdfce341259066f24f16fa6977ca4cb6f389d586e26a54d9e3fdc299ce2d765"
+        },
+        {
+          "path": "src/domain/historical-official-candidate-manifest.mjs",
+          "contentSha256": "34a0cde8ab3a49667ca9caeddc910a78682bede9649556a6bc454c5682628b18"
+        }
+      ],
+      "producerSha256": "e9b2fffafa8e3c1914b83af4d52fbd5826924be402187e63126d9c8a9e8a2e95",
+      "consumers": [
+        "executable-queue"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-19T19:32:08.439Z",
+      "contentSha256": "3a522f2fac59a39e97066a6fdd5bee98a7de2cf500cf26f2460bf631851bc129",
+      "semanticSha256": "f673061e4fc6d0043d3aaa428b18c044b2361ddf25862cb00a75ae968c29c87d",
+      "declaredSemanticSha256": "f673061e4fc6d0043d3aaa428b18c044b2361ddf25862cb00a75ae968c29c87d",
+      "sourceBindings": [
+        {
+          "sourceStageId": "candidate-acquisition-queue",
+          "digestKind": "semantic",
+          "declaredSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54",
+          "resolvedSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+        }
+      ],
+      "releaseDependencies": [
+        "candidate-acquisition-queue"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "executable-queue"
+      ]
+    },
+    {
+      "id": "executable-queue",
+      "artifactKey": "historicalExecutableEvidenceRecoveryQueue",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
+      "owner": "scripts/architecture-v2/build-historical-executable-recovery-queue.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-executable-recovery-queue.mjs",
+          "contentSha256": "037c21e400cb5eb7fa765e2bee2d6d8e39cfcf38b31960965e22e8ce7c667f73"
+        },
+        {
+          "path": "src/domain/historical-executable-recovery-queue.mjs",
+          "contentSha256": "2659e1899b5c8996b66e60474fa209600f6a6948c2c091dd84db8bbc14f099e9"
+        }
+      ],
+      "producerSha256": "97488322624e250795474f86014968c4884eade957269f9663a5241375602cb4",
+      "consumers": [
+        "bounded-planner",
+        "family-canary",
+        "program-status",
+        "target-state"
+      ],
+      "schemaVersion": 2,
+      "generatedAt": "2026-07-19T19:32:08.439Z",
+      "contentSha256": "23cacdf4e4a8aed7e4f939881f418be919b6f8c3ff64fcd30ae1a62d5755a12b",
+      "semanticSha256": "23cacdf4e4a8aed7e4f939881f418be919b6f8c3ff64fcd30ae1a62d5755a12b",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "attempt-ledger",
+          "digestKind": "content",
+          "declaredSha256": "a96ea697f03d81b201ac1f0a2dfbe59e83dd5c8dc2f23ae4df22c124ff4a4933",
+          "resolvedSha256": "a96ea697f03d81b201ac1f0a2dfbe59e83dd5c8dc2f23ae4df22c124ff4a4933"
+        },
+        {
+          "sourceStageId": "candidate-acquisition-queue",
+          "digestKind": "semantic",
+          "declaredSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54",
+          "resolvedSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+        },
+        {
+          "sourceStageId": "candidate-discovery",
+          "digestKind": "semantic",
+          "declaredSha256": "f673061e4fc6d0043d3aaa428b18c044b2361ddf25862cb00a75ae968c29c87d",
+          "resolvedSha256": "f673061e4fc6d0043d3aaa428b18c044b2361ddf25862cb00a75ae968c29c87d"
+        },
+        {
+          "sourceStageId": "receipt-reconciliation",
+          "digestKind": "content",
+          "declaredSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+          "resolvedSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf"
+        }
+      ],
+      "releaseDependencies": [
+        "attempt-ledger",
+        "candidate-acquisition-queue",
+        "candidate-discovery",
+        "receipt-reconciliation"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "bounded-planner",
+        "family-canary",
+        "program-status",
+        "target-state"
+      ]
+    },
+    {
+      "id": "document-identity",
+      "artifactKey": "historicalDocumentFamilyGraph",
+      "artifactPath": "data/architecture-v2/generated/historical-document-family-graph.json",
+      "owner": "scripts/architecture-v2/build-historical-document-family-graph.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-document-family-graph.mjs",
+          "contentSha256": "e616c8eb7ffae9b04fb749aaade697242256619101aa229cf9ba2f6a9498a470"
+        },
+        {
+          "path": "src/domain/historical-document-family-graph.mjs",
+          "contentSha256": "82b6d775968e970ec4c1e6b67245ad43f2011442bc03b324c4d137c289dc2d24"
+        }
+      ],
+      "producerSha256": "c8d54b862dce153fe4975a6968740b16e6a512c51b010c94ee7f0bc66b2243a8",
+      "consumers": [
+        "family-canary",
+        "mineru-knowledge",
+        "program-status"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-12T12:40:00.000Z",
+      "contentSha256": "0cf790b8340fdee0407411cf4038059164479965b74d72f32086e674dfc712ef",
+      "semanticSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8",
+      "declaredSemanticSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8",
+      "sourceBindings": [
+        {
+          "sourceStageId": "classification",
+          "digestKind": "semantic",
+          "declaredSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
+          "resolvedSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922"
+        }
+      ],
+      "releaseDependencies": [
+        "classification"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "family-canary",
+        "mineru-knowledge",
+        "program-status"
+      ]
+    },
+    {
+      "id": "family-canary",
+      "artifactKey": "historicalEvidenceFamilyCanaries",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-evidence-family-canaries.json",
+      "owner": "scripts/architecture-v2/build-historical-evidence-family-canaries.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-evidence-family-canaries.mjs",
+          "contentSha256": "94f06ff11ecb494aba822ae8023e584c56955b0cd551212c821dbf583a17665a"
+        },
+        {
+          "path": "src/domain/historical-evidence-family-canary.mjs",
+          "contentSha256": "89a7d1c0ab060474f7d058941183e3c7e876cd01be84a8e0195439e71eed72b2"
+        }
+      ],
+      "producerSha256": "2ab404859d50e4b1207b9838c9fc01961898c5a795f5097168e4227ff5175e65",
+      "consumers": [
+        "bounded-planner"
+      ],
+      "schemaVersion": 2,
+      "generatedAt": "2026-07-20T18:31:28.519Z",
+      "contentSha256": "c238764a9aa584db1a2c3a74e3c77a11542629c0667e9d9eb865ed1274e08378",
+      "semanticSha256": "46060e4e43f2316d707dcf2ddf0b62fbc31c55a50455c4ed09e62c41200f4788",
+      "declaredSemanticSha256": "46060e4e43f2316d707dcf2ddf0b62fbc31c55a50455c4ed09e62c41200f4788",
+      "sourceBindings": [
+        {
+          "sourceStageId": "document-identity",
+          "digestKind": "semantic",
+          "declaredSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8",
+          "resolvedSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8"
+        },
+        {
+          "sourceStageId": "executable-queue",
+          "digestKind": "content",
+          "declaredSha256": "23cacdf4e4a8aed7e4f939881f418be919b6f8c3ff64fcd30ae1a62d5755a12b",
+          "resolvedSha256": "23cacdf4e4a8aed7e4f939881f418be919b6f8c3ff64fcd30ae1a62d5755a12b"
+        }
+      ],
+      "releaseDependencies": [
+        "document-identity",
+        "executable-queue"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "bounded-planner"
+      ]
+    },
+    {
+      "id": "target-state",
+      "artifactKey": "historicalEvidenceTargetState",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-evidence-target-state.json",
+      "owner": "scripts/architecture-v2/build-historical-evidence-target-state.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-evidence-target-state.mjs",
+          "contentSha256": "c4974fae8ec333de11e98f21af0a16c63d89a6c357587636e3d27e7282a5a009"
+        },
+        {
+          "path": "src/domain/historical-evidence-target-state.mjs",
+          "contentSha256": "2aac1e3400b6f2c4873e35f1dde69ada6643997616d7d45d0436f6cab6bf8f12"
+        }
+      ],
+      "producerSha256": "d39041dc1f201425aeb1e03ca5c338f31bc326b570d65f1a0af828ecf483af7b",
+      "consumers": [
+        "bounded-planner",
+        "program-status"
+      ],
+      "schemaVersion": 2,
+      "generatedAt": "2026-07-19T19:32:08.439Z",
+      "contentSha256": "2f073e283f6c6be1b3af5f16908973cb389a7b587391a57276b3169c94903e70",
+      "semanticSha256": "2f073e283f6c6be1b3af5f16908973cb389a7b587391a57276b3169c94903e70",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "attempt-ledger",
+          "digestKind": "content",
+          "declaredSha256": "a96ea697f03d81b201ac1f0a2dfbe59e83dd5c8dc2f23ae4df22c124ff4a4933",
+          "resolvedSha256": "a96ea697f03d81b201ac1f0a2dfbe59e83dd5c8dc2f23ae4df22c124ff4a4933"
+        },
+        {
+          "sourceStageId": "candidate-acquisition-queue",
+          "digestKind": "semantic",
+          "declaredSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54",
+          "resolvedSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+        },
+        {
+          "sourceStageId": "classification",
+          "digestKind": "semantic",
+          "declaredSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
+          "resolvedSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922"
+        },
+        {
+          "sourceStageId": "executable-queue",
+          "digestKind": "content",
+          "declaredSha256": "23cacdf4e4a8aed7e4f939881f418be919b6f8c3ff64fcd30ae1a62d5755a12b",
+          "resolvedSha256": "23cacdf4e4a8aed7e4f939881f418be919b6f8c3ff64fcd30ae1a62d5755a12b"
+        },
+        {
+          "sourceStageId": "receipt-reconciliation",
+          "digestKind": "content",
+          "declaredSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+          "resolvedSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf"
+        }
+      ],
+      "releaseDependencies": [
+        "attempt-ledger",
+        "candidate-acquisition-queue",
+        "classification",
+        "executable-queue",
+        "receipt-reconciliation"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "bounded-planner",
+        "program-status"
+      ]
+    },
+    {
+      "id": "bounded-planner",
+      "artifactKey": "historicalEvidenceNextBatches",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-evidence-next-batches.json",
+      "owner": "scripts/architecture-v2/build-historical-evidence-bounded-batches.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-evidence-bounded-batches.mjs",
+          "contentSha256": "29350940706c57288a4c3a71710149c6e8c001c1737a1165237dba9b00568586"
+        },
+        {
+          "path": "src/domain/historical-evidence-bounded-batch.mjs",
+          "contentSha256": "911e4743b933e60e14eb8cec7c2448f6cd7543f591573a4e12138fc095c06bbb"
+        }
+      ],
+      "producerSha256": "0627bc9db2418ca55ab8b071f10b3851bdb0425d95b9cf1161c8e894a1ec7893",
+      "consumers": [
+        "scale-control"
+      ],
+      "schemaVersion": 2,
+      "generatedAt": "2026-07-19T19:32:08.439Z",
+      "contentSha256": "2ddda3e97ee5e57e513ede684ca34a87482ca3d9c397347dab4f0f8046cd7468",
+      "semanticSha256": "c128d19df463438b8fe869fa3b36f415f70878f3a197d89d2d48926c37897372",
+      "declaredSemanticSha256": "c128d19df463438b8fe869fa3b36f415f70878f3a197d89d2d48926c37897372",
+      "sourceBindings": [
+        {
+          "sourceStageId": "executable-queue",
+          "digestKind": "content",
+          "declaredSha256": "23cacdf4e4a8aed7e4f939881f418be919b6f8c3ff64fcd30ae1a62d5755a12b",
+          "resolvedSha256": "23cacdf4e4a8aed7e4f939881f418be919b6f8c3ff64fcd30ae1a62d5755a12b"
+        },
+        {
+          "sourceStageId": "family-canary",
+          "digestKind": "semantic",
+          "declaredSha256": "46060e4e43f2316d707dcf2ddf0b62fbc31c55a50455c4ed09e62c41200f4788",
+          "resolvedSha256": "46060e4e43f2316d707dcf2ddf0b62fbc31c55a50455c4ed09e62c41200f4788"
+        },
+        {
+          "sourceStageId": "target-state",
+          "digestKind": "content",
+          "declaredSha256": "2f073e283f6c6be1b3af5f16908973cb389a7b587391a57276b3169c94903e70",
+          "resolvedSha256": "2f073e283f6c6be1b3af5f16908973cb389a7b587391a57276b3169c94903e70"
+        }
+      ],
+      "releaseDependencies": [
+        "executable-queue",
+        "family-canary",
+        "target-state"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "scale-control"
+      ]
+    },
+    {
+      "id": "canonical-identity-migration-candidate",
+      "artifactKey": "canonicalRegistryMigrationCandidate",
+      "artifactPath": "data/architecture-v2/generated/canonical-registry-migration-candidate.json",
+      "owner": "scripts/architecture-v2/build-canonical-registry.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-canonical-registry.mjs",
+          "contentSha256": "7454c541700cb7770d7b6c68cb8011440059739a5f2f3f8e0838d9828deeaaac"
+        },
+        {
+          "path": "src/domain/canonical-registry.mjs",
+          "contentSha256": "b3046beffc7c3de45fa7cbaf1a3514327908f4d1eca841bb13e4375b5bc5e534"
+        },
+        {
+          "path": "src/domain/retailer-identity-migration.mjs",
+          "contentSha256": "470a1a44d8dd7f363dda3f1c99b8b1b960b26ed305574890d3fbc51f29ea25f7"
+        }
+      ],
+      "producerSha256": "9156de929009e8e3906832252f76ed26a292a60af31404a46450bed30f90bb2f",
+      "consumers": [
+        "candidate-publication-base"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": null,
+      "contentSha256": "c90034204a7d49cf9ab3ec471a18790db77ae4a7cad5eab262a5261bd3c48e44",
+      "semanticSha256": "c90034204a7d49cf9ab3ec471a18790db77ae4a7cad5eab262a5261bd3c48e44",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "canonical-identity",
+          "digestKind": "content",
+          "declaredSha256": "f26752c4d6311b12065c44d705c1f58ae580f7cf461f3519750aff4d03a7c56a",
+          "resolvedSha256": "f26752c4d6311b12065c44d705c1f58ae580f7cf461f3519750aff4d03a7c56a"
+        },
+        {
+          "sourceStageId": "retailer-identity-migration",
+          "digestKind": "semantic",
+          "declaredSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+          "resolvedSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946"
+        }
+      ],
+      "releaseDependencies": [
+        "canonical-identity",
+        "retailer-identity-migration"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "candidate-publication-base"
+      ]
+    },
+    {
+      "id": "candidate-publication-base",
+      "artifactKey": "publicProjectionMigrationCandidate",
+      "artifactPath": "data/architecture-v2/generated/public-catalog-projection-migration-candidate.json",
+      "owner": "scripts/architecture-v2/build-public-projection.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-public-projection.mjs",
+          "contentSha256": "26242cbb7a55dbff177b62f42d29131794fef9672f18a55b14f25ff36a883a16"
+        },
+        {
+          "path": "src/domain/public-projection.mjs",
+          "contentSha256": "42c8efbcca882cc16574fc733d411b6bfedc45e83cdb28330227d5bff8b39f14"
+        },
+        {
+          "path": "src/domain/retailer-identity-migration.mjs",
+          "contentSha256": "470a1a44d8dd7f363dda3f1c99b8b1b960b26ed305574890d3fbc51f29ea25f7"
+        }
+      ],
+      "producerSha256": "8de5c3221d3a6a7f238953e845114c1455a2d531cb016cba746899ee2c9695be",
+      "consumers": [
+        "candidate-current-publication",
+        "candidate-lifecycle-shadow",
+        "candidate-official-market",
+        "candidate-release-gate"
+      ],
+      "schemaVersion": 3,
+      "generatedAt": null,
+      "contentSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6",
+      "semanticSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "canonical-identity-migration-candidate",
+          "digestKind": "content",
+          "declaredSha256": "c90034204a7d49cf9ab3ec471a18790db77ae4a7cad5eab262a5261bd3c48e44",
+          "resolvedSha256": "c90034204a7d49cf9ab3ec471a18790db77ae4a7cad5eab262a5261bd3c48e44"
+        },
+        {
+          "sourceStageId": "receipt-reconciliation",
+          "digestKind": "content",
+          "declaredSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+          "resolvedSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf"
+        },
+        {
+          "sourceStageId": "receipt-replay",
+          "digestKind": "content",
+          "declaredSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+          "resolvedSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368"
+        },
+        {
+          "sourceStageId": "retailer-identity-migration",
+          "digestKind": "semantic",
+          "declaredSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+          "resolvedSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946"
+        }
+      ],
+      "releaseDependencies": [
+        "canonical-identity-migration-candidate",
+        "receipt-reconciliation",
+        "receipt-replay",
+        "retailer-identity-migration"
+      ],
+      "releaseEpoch": 2,
+      "releaseState": "PENDING_NEXT",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "candidate-current-publication",
+        "candidate-lifecycle-shadow",
+        "candidate-official-market",
+        "candidate-release-gate"
+      ]
+    },
+    {
+      "id": "official-identity-evidence",
+      "artifactKey": "retailerIdentityOfficialEvidence",
+      "artifactPath": "data/architecture-v2/generated/retailer-identity-official-evidence.json",
+      "owner": "scripts/architecture-v2/acquire-retailer-identity-official-evidence.mjs",
+      "producerInputs": [
+        {
+          "path": "data/architecture-v2/policies/manufacturer-source-policy.json",
+          "contentSha256": "35e35b0bda7b5df46b3044e25404e30fd512141e4b29a66aa9d43ae6e9ff3db1"
+        },
+        {
+          "path": "scripts/architecture-v2/acquire-retailer-identity-official-evidence.mjs",
+          "contentSha256": "f2fba3787f34f6d2ca0dedf43f2bff82f36e4b1cd50f7535a8ca134d6a2e1ed4"
+        },
+        {
+          "path": "src/domain/official-identity-evidence.mjs",
+          "contentSha256": "41adea33bb25057a721c291ae8c78541c351541e7c555edd84b67af97f842f68"
+        }
+      ],
+      "producerSha256": "9170bd7c3259fd57604d5aa84879c8116d593fa5e0ab49653add726fdec095a3",
+      "consumers": [
+        "candidate-official-market",
+        "official-market-lifecycle"
+      ],
+      "schemaVersion": 2,
+      "generatedAt": null,
+      "contentSha256": "7dddd633874c4cc495958e3caece9637ea5e2f0eadf9002de33c28360974836b",
+      "semanticSha256": "e9bc87d53f72e6495db1e7bcc8113347963533a7d87c474bc26288b36a5a9ba0",
+      "declaredSemanticSha256": "e9bc87d53f72e6495db1e7bcc8113347963533a7d87c474bc26288b36a5a9ba0",
+      "sourceBindings": [],
+      "releaseDependencies": [],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_INPUT"
+      ],
+      "nextTransitions": [
+        "candidate-official-market",
+        "official-market-lifecycle"
+      ]
+    },
+    {
+      "id": "candidate-official-market",
+      "artifactKey": "officialMarketLifecycleMigrationCandidate",
+      "artifactPath": "data/architecture-v2/generated/official-market-lifecycle-migration-candidate.json",
+      "owner": "scripts/architecture-v2/build-official-market-lifecycle.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-official-market-lifecycle.mjs",
+          "contentSha256": "040b8d10fae5b64e3cae9371a83691366e8245c211d69ef92625379d5e1dc885"
+        },
+        {
+          "path": "src/domain/official-market-lifecycle.mjs",
+          "contentSha256": "09fbe9ab7472359622bac304a20ebaa22f730a5b452b552972b0fe6bbbd03fda"
+        }
+      ],
+      "producerSha256": "fa20e5d2a0d8d34b52b4748fd84e94fb163caf59883ec851e553f86f12171d6c",
+      "consumers": [
+        "candidate-lifecycle-shadow"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": null,
+      "contentSha256": "164a0ca0a29408698827dc38754ef5b7b92690ab49085c4adbad32165d08ea5a",
+      "semanticSha256": "97b16640a3d13b3f456a89f77d26ac9fe0cbcce405659936b09cb14097efe084",
+      "declaredSemanticSha256": "97b16640a3d13b3f456a89f77d26ac9fe0cbcce405659936b09cb14097efe084",
+      "sourceBindings": [
+        {
+          "sourceStageId": "candidate-publication-base",
+          "digestKind": "content",
+          "declaredSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6",
+          "resolvedSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6"
+        },
+        {
+          "sourceStageId": "lifecycle-reduction",
+          "digestKind": "content",
+          "declaredSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba",
+          "resolvedSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba"
+        },
+        {
+          "sourceStageId": "official-identity-evidence",
+          "digestKind": "semantic",
+          "declaredSha256": "e9bc87d53f72e6495db1e7bcc8113347963533a7d87c474bc26288b36a5a9ba0",
+          "resolvedSha256": "e9bc87d53f72e6495db1e7bcc8113347963533a7d87c474bc26288b36a5a9ba0"
+        }
+      ],
+      "releaseDependencies": [
+        "candidate-publication-base",
+        "lifecycle-reduction",
+        "official-identity-evidence"
+      ],
+      "releaseEpoch": 2,
+      "releaseState": "PENDING_NEXT",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "candidate-lifecycle-shadow"
+      ]
+    },
+    {
+      "id": "retailer-observations",
+      "artifactKey": "retailerObservations",
+      "artifactPath": "data/architecture-v2/observations/retailer-observations.json",
+      "owner": "scripts/architecture-v2/build-retailer-ledger.mjs",
+      "producerInputs": [
+        {
+          "path": "data/architecture-v2/policies/retailer-source-policy.json",
+          "contentSha256": "5e5adc2c16232906c412f93431fb363b4cfe97a10f097abb0d2ebcefdf6ed125"
+        },
+        {
+          "path": "scripts/architecture-v2/apply-retailer-identity-migration.mjs",
+          "contentSha256": "c6a4f25873f149a73287ed18d4020e3d3722225aaa7bfd8d7dea47165b0baabd"
+        },
+        {
+          "path": "scripts/architecture-v2/build-retailer-ledger.mjs",
+          "contentSha256": "597c453453435b365723db896e2aec6010353f105d1aff465dd2cab4a6bad840"
+        },
+        {
+          "path": "src/domain/retailer-observation-ledger.mjs",
+          "contentSha256": "22920d1072d833c7d162f9bc8a654190b14f0059009b58816c038684d8c34e8c"
+        },
+        {
+          "path": "src/domain/retailer-observation.mjs",
+          "contentSha256": "248044d540a048774d93894f37481a574ef514fb9b81e97ae36c15b2f3e8d872"
+        },
+        {
+          "path": "src/domain/retailer-source-adapter.mjs",
+          "contentSha256": "546797e2451626507076d5024457f31360f88d169aa899127c1496f2028b89bd"
+        }
+      ],
+      "producerSha256": "f5a9c73dd6470d8af61ff6b4469010dc70ce98d524a7b1e8f042432267192d56",
+      "consumers": [
+        "candidate-lifecycle-shadow",
+        "retail-lifecycle-shadow",
+        "retailer-observation-coverage"
+      ],
+      "schemaVersion": 2,
+      "generatedAt": null,
+      "contentSha256": "d73d9ece2c7c14727f2276af09aad7c46beec07fb5d8ffb4289411816eeaad6b",
+      "semanticSha256": "873d777c0c9a94fafa5c63f551d65dcdcc5ce163bb951cf6024aea3a7d1fbab4",
+      "declaredSemanticSha256": "873d777c0c9a94fafa5c63f551d65dcdcc5ce163bb951cf6024aea3a7d1fbab4",
+      "sourceBindings": [
+        {
+          "sourceStageId": "retailer-identity-migration",
+          "digestKind": "semantic",
+          "declaredSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+          "resolvedSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946"
+        }
+      ],
+      "releaseDependencies": [
+        "retailer-identity-migration"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_INPUT"
+      ],
+      "nextTransitions": [
+        "candidate-lifecycle-shadow",
+        "retail-lifecycle-shadow",
+        "retailer-observation-coverage"
+      ]
+    },
+    {
+      "id": "candidate-lifecycle-shadow",
+      "artifactKey": "retailLifecycleShadowMigrationCandidate",
+      "artifactPath": "data/architecture-v2/reviews/automated/retail-lifecycle-shadow-migration-candidate.json",
+      "owner": "scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs",
+          "contentSha256": "d79f13c5a2d98ee401e40a69ee9fbeae38282b37d4c01c19d620a2d60f889180"
+        },
+        {
+          "path": "src/domain/retail-lifecycle-shadow.mjs",
+          "contentSha256": "8d497037cc6963e816ee5556d5d55232ece27a55bb62b8a1e4e20a2c8d3dd7cd"
+        }
+      ],
+      "producerSha256": "639c0eb77aab065b968982c82daee503fe21caef1fd00349874a1131cfaedc64",
+      "consumers": [
+        "candidate-current-publication",
+        "candidate-lifecycle-refresh",
+        "candidate-release-gate"
+      ],
+      "schemaVersion": 2,
+      "generatedAt": null,
+      "contentSha256": "218e7ca439eb48afe0df26763438171dde0b5b54674d89ee2b1c4ee15a233e4d",
+      "semanticSha256": "53a6646ee9cad7a15828578040884371d1b1733ce4b2b8519e12c71b7d7a2fcd",
+      "declaredSemanticSha256": "53a6646ee9cad7a15828578040884371d1b1733ce4b2b8519e12c71b7d7a2fcd",
+      "sourceBindings": [
+        {
+          "sourceStageId": "candidate-official-market",
+          "digestKind": "semantic",
+          "declaredSha256": "97b16640a3d13b3f456a89f77d26ac9fe0cbcce405659936b09cb14097efe084",
+          "resolvedSha256": "97b16640a3d13b3f456a89f77d26ac9fe0cbcce405659936b09cb14097efe084"
+        },
+        {
+          "sourceStageId": "candidate-publication-base",
+          "digestKind": "content",
+          "declaredSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6",
+          "resolvedSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6"
+        },
+        {
+          "sourceStageId": "retailer-observations",
+          "digestKind": "semantic",
+          "declaredSha256": "873d777c0c9a94fafa5c63f551d65dcdcc5ce163bb951cf6024aea3a7d1fbab4",
+          "resolvedSha256": "873d777c0c9a94fafa5c63f551d65dcdcc5ce163bb951cf6024aea3a7d1fbab4"
+        }
+      ],
+      "releaseDependencies": [
+        "candidate-official-market",
+        "candidate-publication-base",
+        "retailer-observations"
+      ],
+      "releaseEpoch": 2,
+      "releaseState": "PENDING_NEXT",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "candidate-current-publication",
+        "candidate-lifecycle-refresh",
+        "candidate-release-gate"
+      ]
+    },
+    {
+      "id": "candidate-current-publication",
+      "artifactKey": "publicProjectionReleaseCandidate",
+      "artifactPath": "data/architecture-v2/generated/public-catalog-release-candidate.json",
+      "owner": "scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs",
+          "contentSha256": "d79f13c5a2d98ee401e40a69ee9fbeae38282b37d4c01c19d620a2d60f889180"
+        },
+        {
+          "path": "src/domain/retail-lifecycle-shadow.mjs",
+          "contentSha256": "8d497037cc6963e816ee5556d5d55232ece27a55bb62b8a1e4e20a2c8d3dd7cd"
+        }
+      ],
+      "producerSha256": "639c0eb77aab065b968982c82daee503fe21caef1fd00349874a1131cfaedc64",
+      "consumers": [
+        "candidate-lifecycle-reduction",
+        "candidate-release-gate"
+      ],
+      "schemaVersion": 3,
+      "generatedAt": null,
+      "contentSha256": "77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85",
+      "semanticSha256": "77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "candidate-lifecycle-shadow",
+          "digestKind": "semantic",
+          "declaredSha256": "53a6646ee9cad7a15828578040884371d1b1733ce4b2b8519e12c71b7d7a2fcd",
+          "resolvedSha256": "53a6646ee9cad7a15828578040884371d1b1733ce4b2b8519e12c71b7d7a2fcd"
+        },
+        {
+          "sourceStageId": "candidate-publication-base",
+          "digestKind": "content",
+          "declaredSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6",
+          "resolvedSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6"
+        }
+      ],
+      "releaseDependencies": [
+        "candidate-lifecycle-shadow",
+        "candidate-publication-base"
+      ],
+      "releaseEpoch": 2,
+      "releaseState": "PENDING_NEXT",
+      "lifecycleVisibility": [
+        "CURRENT_OUTPUT_CANDIDATE"
+      ],
+      "nextTransitions": [
+        "candidate-lifecycle-reduction",
+        "candidate-release-gate"
+      ]
+    },
+    {
+      "id": "candidate-lifecycle-reduction",
+      "artifactKey": "historicalApplianceReferenceReleaseCandidate",
+      "artifactPath": "data/architecture-v2/generated/historical-appliance-reference-release-candidate.json",
+      "owner": "scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-appliance-reference.mjs",
+          "contentSha256": "342707cf54cbc95f430763340ce77279107b69882707bc9d7fbb5473d327a98b"
+        },
+        {
+          "path": "scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs",
+          "contentSha256": "d79f13c5a2d98ee401e40a69ee9fbeae38282b37d4c01c19d620a2d60f889180"
+        },
+        {
+          "path": "src/domain/historical-appliance-reference.mjs",
+          "contentSha256": "88855b42b772c2f01a5bf8f5eca997341f148e297fe773aff502cbf9f6c4be74"
+        }
+      ],
+      "producerSha256": "958613aeea829a394654e6ff83b08a03df6dc285914e264abcf752db0262d1d4",
+      "consumers": [
+        "candidate-release-gate"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-12T12:40:00.000Z",
+      "contentSha256": "d61db5788481496186d97f5af5101c65f6014eb7af134bef5acb111a61f8ef13",
+      "semanticSha256": "d61db5788481496186d97f5af5101c65f6014eb7af134bef5acb111a61f8ef13",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "candidate-current-publication",
+          "digestKind": "content",
+          "declaredSha256": "77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85",
+          "resolvedSha256": "77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85"
+        },
+        {
+          "sourceStageId": "official-registry-snapshots",
+          "digestKind": "content",
+          "declaredSha256": "352d1904211faaef2cc84176499fccce0f088e64532d945659889106c1cd6ce4",
+          "resolvedSha256": "352d1904211faaef2cc84176499fccce0f088e64532d945659889106c1cd6ce4"
+        },
+        {
+          "sourceStageId": "receipt-reconciliation",
+          "digestKind": "content",
+          "declaredSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+          "resolvedSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf"
+        }
+      ],
+      "releaseDependencies": [
+        "candidate-current-publication",
+        "official-registry-snapshots",
+        "receipt-reconciliation"
+      ],
+      "releaseEpoch": 2,
+      "releaseState": "PENDING_NEXT",
+      "lifecycleVisibility": [
+        "HISTORICAL_INPUT_CANDIDATE"
+      ],
+      "nextTransitions": [
+        "candidate-release-gate"
+      ]
+    },
+    {
+      "id": "retailer-observation-coverage",
+      "artifactKey": "retailerObservationCoverage",
+      "artifactPath": "data/architecture-v2/reviews/automated/retailer-observation-coverage.json",
+      "owner": "scripts/architecture-v2/build-retailer-observation-coverage.mjs",
+      "producerInputs": [
+        {
+          "path": "data/architecture-v2/policies/retailer-source-policy.json",
+          "contentSha256": "5e5adc2c16232906c412f93431fb363b4cfe97a10f097abb0d2ebcefdf6ed125"
+        },
+        {
+          "path": "scripts/architecture-v2/build-retailer-observation-coverage.mjs",
+          "contentSha256": "3b4e7236aa8a5fc199d97090b7592727dd4ff1903c885eb37173405c6d7f86dc"
+        },
+        {
+          "path": "src/domain/retailer-observation-coverage.mjs",
+          "contentSha256": "11d7e9f2d3987f3cd2746be89c9701ad2cf1e2d7bbaf8544bceec5dcccd310f0"
+        }
+      ],
+      "producerSha256": "b85f5723db35ff332a924b9b58feffae9e86c93b8e4e5778e87d2cfa192e5cae",
+      "consumers": [
+        "candidate-lifecycle-refresh",
+        "retail-lifecycle-refresh"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": null,
+      "contentSha256": "035168efb2e1d755825fa7bd330a00479cd9029bfe3c76f4a40d47800f0b8120",
+      "semanticSha256": "cec34896f2c8f7b0204b8ccfc97183b02f50938b00bb059220ecdceca0080598",
+      "declaredSemanticSha256": "cec34896f2c8f7b0204b8ccfc97183b02f50938b00bb059220ecdceca0080598",
+      "sourceBindings": [
+        {
+          "sourceStageId": "current-publication",
+          "digestKind": "content",
+          "declaredSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+          "resolvedSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e"
+        },
+        {
+          "sourceStageId": "retailer-observations",
+          "digestKind": "semantic",
+          "declaredSha256": "873d777c0c9a94fafa5c63f551d65dcdcc5ce163bb951cf6024aea3a7d1fbab4",
+          "resolvedSha256": "873d777c0c9a94fafa5c63f551d65dcdcc5ce163bb951cf6024aea3a7d1fbab4"
+        }
+      ],
+      "releaseDependencies": [
+        "current-publication",
+        "retailer-observations"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "candidate-lifecycle-refresh",
+        "retail-lifecycle-refresh"
+      ]
+    },
+    {
+      "id": "candidate-lifecycle-refresh",
+      "artifactKey": "retailLifecycleRefreshInventoryMigrationCandidate",
+      "artifactPath": "data/architecture-v2/reviews/automated/retail-lifecycle-refresh-inventory-migration-candidate.json",
+      "owner": "scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs",
+          "contentSha256": "f70d29aff9cbd0139ddd5d7fe65e4f998201299029d15e227c10a47ffbfc7913"
+        },
+        {
+          "path": "src/domain/retail-lifecycle-refresh-inventory.mjs",
+          "contentSha256": "1a9549ca6a4e3e2b0d9db8bf344c5a33b623b388b41dbabc01b4726398a76e46"
+        }
+      ],
+      "producerSha256": "65679ff8d418819416430bbf0519e837f85f7b9561f0d55b2ee51cbe87f05c7a",
+      "consumers": [],
+      "schemaVersion": 3,
+      "generatedAt": null,
+      "contentSha256": "578f55c20786afe09d72054b7a6b11f882a45a3e363a6e61280ca6207e0dce55",
+      "semanticSha256": "96bf170431c2db52cdc780a1af4d7af2a96bcb020376a1cf2a66313c796b06a4",
+      "declaredSemanticSha256": "96bf170431c2db52cdc780a1af4d7af2a96bcb020376a1cf2a66313c796b06a4",
+      "sourceBindings": [
+        {
+          "sourceStageId": "candidate-lifecycle-shadow",
+          "digestKind": "semantic",
+          "declaredSha256": "53a6646ee9cad7a15828578040884371d1b1733ce4b2b8519e12c71b7d7a2fcd",
+          "resolvedSha256": "53a6646ee9cad7a15828578040884371d1b1733ce4b2b8519e12c71b7d7a2fcd"
+        },
+        {
+          "sourceStageId": "retailer-identity-migration",
+          "digestKind": "semantic",
+          "declaredSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+          "resolvedSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946"
+        },
+        {
+          "sourceStageId": "retailer-observation-coverage",
+          "digestKind": "semantic",
+          "declaredSha256": "cec34896f2c8f7b0204b8ccfc97183b02f50938b00bb059220ecdceca0080598",
+          "resolvedSha256": "cec34896f2c8f7b0204b8ccfc97183b02f50938b00bb059220ecdceca0080598"
+        }
+      ],
+      "releaseDependencies": [
+        "candidate-lifecycle-shadow",
+        "retailer-identity-migration",
+        "retailer-observation-coverage"
+      ],
+      "releaseEpoch": 2,
+      "releaseState": "PENDING_NEXT",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": []
+    },
+    {
+      "id": "candidate-release-gate",
+      "artifactKey": "retailLifecycleReleaseCandidate",
+      "artifactPath": "data/architecture-v2/reviews/automated/retail-lifecycle-release-candidate.json",
+      "owner": "scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs",
+          "contentSha256": "d79f13c5a2d98ee401e40a69ee9fbeae38282b37d4c01c19d620a2d60f889180"
+        },
+        {
+          "path": "src/domain/retail-lifecycle-release-candidate.mjs",
+          "contentSha256": "4ff630f035995d5e0506e3075c67a7d929ec9ae3dd6e3430be250bf485a63d02"
+        }
+      ],
+      "producerSha256": "4e969a9dce831576e75c589867e069c3e93a722d130570d9107a79c82643a185",
+      "consumers": [],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-21T12:12:18.070Z",
+      "contentSha256": "a4effdfcc738b659186bc0d4fc22b3317a732960eed4964a57c4cb955e059377",
+      "semanticSha256": "6c42c754aeb1ff49097b32b40b193b20eba5221945648af4aa5213865db6e03c",
+      "declaredSemanticSha256": "6c42c754aeb1ff49097b32b40b193b20eba5221945648af4aa5213865db6e03c",
+      "sourceBindings": [
+        {
+          "sourceStageId": "candidate-current-publication",
+          "digestKind": "content",
+          "declaredSha256": "77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85",
+          "resolvedSha256": "77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85"
+        },
+        {
+          "sourceStageId": "candidate-lifecycle-reduction",
+          "digestKind": "content",
+          "declaredSha256": "d61db5788481496186d97f5af5101c65f6014eb7af134bef5acb111a61f8ef13",
+          "resolvedSha256": "d61db5788481496186d97f5af5101c65f6014eb7af134bef5acb111a61f8ef13"
+        },
+        {
+          "sourceStageId": "candidate-lifecycle-shadow",
+          "digestKind": "semantic",
+          "declaredSha256": "53a6646ee9cad7a15828578040884371d1b1733ce4b2b8519e12c71b7d7a2fcd",
+          "resolvedSha256": "53a6646ee9cad7a15828578040884371d1b1733ce4b2b8519e12c71b7d7a2fcd"
+        },
+        {
+          "sourceStageId": "candidate-publication-base",
+          "digestKind": "content",
+          "declaredSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6",
+          "resolvedSha256": "c9a0be36056c5240146bbc3417ebb7327291d089927cde9910c0e76f146630c6"
+        },
+        {
+          "sourceStageId": "current-publication",
+          "digestKind": "content",
+          "declaredSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+          "resolvedSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e"
+        },
+        {
+          "sourceStageId": "retailer-identity-migration",
+          "digestKind": "semantic",
+          "declaredSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+          "resolvedSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946"
+        }
+      ],
+      "releaseDependencies": [
+        "candidate-current-publication",
+        "candidate-lifecycle-reduction",
+        "candidate-lifecycle-shadow",
+        "candidate-publication-base",
+        "current-publication",
+        "retailer-identity-migration"
+      ],
+      "releaseEpoch": 2,
+      "releaseState": "PENDING_NEXT",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": []
+    },
+    {
+      "id": "fit-publication",
+      "artifactKey": "fitPublicationAudit",
+      "artifactPath": "data/architecture-v2/reviews/automated/fit-publication-audit.json",
+      "owner": "scripts/architecture-v2/audit-fit-publication.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/audit-fit-publication.mjs",
+          "contentSha256": "4f944c7579a826720962ae122473ebfedec5caabd526db2707cffa9290ae135b"
+        },
+        {
+          "path": "src/domain/fit-v3.mjs",
+          "contentSha256": "229a65c2e013d2bcf137fc2705ca0b4fbfb65af6038926fb85e6591dac69b3ab"
+        },
+        {
+          "path": "src/domain/installation-evidence-pipeline.mjs",
+          "contentSha256": "6164d88b4a47dfec014bba19d1bdb1920c4f5cdf302b5bef17a453d23b489e12"
+        }
+      ],
+      "producerSha256": "3d097b7faa61fdacc69912a95134957ac3599e68ed63f5ee9ad2f8cb8eecb1b6",
+      "consumers": [
+        "program-status",
+        "scale-control"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": null,
+      "contentSha256": "f7bc76df7f23d88ef2467002a98cd4852478d9ccabdbe136bd4c62cb7a1c9fdf",
+      "semanticSha256": "f7bc76df7f23d88ef2467002a98cd4852478d9ccabdbe136bd4c62cb7a1c9fdf",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "current-publication",
+          "digestKind": "content",
+          "declaredSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+          "resolvedSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e"
+        },
+        {
+          "sourceStageId": "receipt-reconciliation",
+          "digestKind": "content",
+          "declaredSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+          "resolvedSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf"
+        },
+        {
+          "sourceStageId": "receipt-replay",
+          "digestKind": "content",
+          "declaredSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+          "resolvedSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368"
+        }
+      ],
+      "releaseDependencies": [
+        "current-publication",
+        "receipt-reconciliation",
+        "receipt-replay"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "FIT_GUARD"
+      ],
+      "nextTransitions": [
+        "program-status",
+        "scale-control"
+      ]
+    },
+    {
+      "id": "historical-replacement-publication",
+      "artifactKey": "historicalReplacementAudit",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-replacement-audit.json",
+      "owner": "scripts/architecture-v2/audit-historical-replacement.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/audit-historical-replacement.mjs",
+          "contentSha256": "4d9abb297796fc0ad09d47a6653784681f2908fb5133aad3601184bbb5d0f41f"
+        },
+        {
+          "path": "src/domain/historical-reference-publication.mjs",
+          "contentSha256": "d85cf33678edaa888924b98ca26416de05e85a09ab5ad26ff20c7cec89dd3889"
+        },
+        {
+          "path": "src/domain/historical-replacement-audit.mjs",
+          "contentSha256": "92c32a211a167d1c26dd2e439d53a67393db768d7cabd1eb0cf3a5a8a54b8437"
+        }
+      ],
+      "producerSha256": "5215a02354e80ff48a2d2268b217f39834727b9a4def488bbf6e12f73957e70d",
+      "consumers": [
+        "program-status",
+        "scale-control"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-12T12:40:00.000Z",
+      "contentSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
+      "semanticSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "current-publication",
+          "digestKind": "content",
+          "declaredSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+          "resolvedSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e"
+        },
+        {
+          "sourceStageId": "lifecycle-reduction",
+          "digestKind": "content",
+          "declaredSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba",
+          "resolvedSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba"
+        }
+      ],
+      "releaseDependencies": [
+        "current-publication",
+        "lifecycle-reduction"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "HISTORICAL_OUTPUT"
+      ],
+      "nextTransitions": [
+        "program-status",
+        "scale-control"
+      ]
+    },
+    {
+      "id": "mineru-backfill-audit",
+      "artifactKey": "historicalMineruBackfillAudit",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-mineru-backfill-audit.json",
+      "owner": "scripts/architecture-v2/backfill-historical-mineru.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/backfill-historical-mineru.mjs",
+          "contentSha256": "5a2fba78ea8b96d53dcf29154d111c95e55eb937b6dc40877b079b5c72ad1f27"
+        },
+        {
+          "path": "src/domain/historical-mineru-backfill.mjs",
+          "contentSha256": "ca5d4feda220a0c5093ebc59a2084a374a3bf14292fedf2d436b76ff8c1e4a6f"
+        }
+      ],
+      "producerSha256": "6a117de68b7a6f247a3955f3a47b1945e202072862e7db0f5e4eceb66a00fffd",
+      "consumers": [
+        "program-status"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-14T12:09:35.839Z",
+      "contentSha256": "0d2dff645e5ec8b447ad05798f586dee8ffa1db981012fd562b84d583d54c165",
+      "semanticSha256": "0d2dff645e5ec8b447ad05798f586dee8ffa1db981012fd562b84d583d54c165",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [],
+      "releaseDependencies": [],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "program-status"
+      ]
+    },
+    {
+      "id": "mineru-knowledge",
+      "artifactKey": "dimensionExpressionObservations",
+      "artifactPath": "data/architecture-v2/generated/dimension-expression-observations.json",
+      "owner": "scripts/architecture-v2/build-dimension-expression-knowledge.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-dimension-expression-knowledge.mjs",
+          "contentSha256": "fd7a75547619e0450ec5a4cffec3666f4dd8efeddcb1d1dbf3c10bac9e4ae21b"
+        },
+        {
+          "path": "src/domain/dimension-expression-knowledge.mjs",
+          "contentSha256": "708e87e838dc596058427618e7e9bc51d526b47a21b165cac08b69fa0681e2c3"
+        },
+        {
+          "path": "src/domain/mineru-document.mjs",
+          "contentSha256": "818b7beb6df158d3af2991fe6397ad7d17502dda15559481d18731bbc31df2d2"
+        }
+      ],
+      "producerSha256": "d606bb0554a1834f6bd8c964c539e00a1d5069a8b2cc175f8bcb871d0755cae1",
+      "consumers": [
+        "program-status"
+      ],
+      "schemaVersion": 4,
+      "generatedAt": "2026-07-12T12:40:00.000Z",
+      "contentSha256": "ffec2d4a5908b0b34a01f1f1f4dfca9d55dde7832d9380f2081b113b2e6e9e3d",
+      "semanticSha256": "ffec2d4a5908b0b34a01f1f1f4dfca9d55dde7832d9380f2081b113b2e6e9e3d",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "document-identity",
+          "digestKind": "semantic",
+          "declaredSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8",
+          "resolvedSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8"
+        },
+        {
+          "sourceStageId": "lifecycle-reduction",
+          "digestKind": "content",
+          "declaredSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba",
+          "resolvedSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba"
+        }
+      ],
+      "releaseDependencies": [
+        "document-identity",
+        "lifecycle-reduction"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "program-status"
+      ]
+    },
+    {
+      "id": "official-market-lifecycle",
+      "artifactKey": "officialMarketLifecycle",
+      "artifactPath": "data/architecture-v2/generated/official-market-lifecycle.json",
+      "owner": "scripts/architecture-v2/build-official-market-lifecycle.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-official-market-lifecycle.mjs",
+          "contentSha256": "040b8d10fae5b64e3cae9371a83691366e8245c211d69ef92625379d5e1dc885"
+        },
+        {
+          "path": "src/domain/official-market-lifecycle.mjs",
+          "contentSha256": "09fbe9ab7472359622bac304a20ebaa22f730a5b452b552972b0fe6bbbd03fda"
+        }
+      ],
+      "producerSha256": "fa20e5d2a0d8d34b52b4748fd84e94fb163caf59883ec851e553f86f12171d6c",
+      "consumers": [
+        "retail-lifecycle-shadow"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": null,
+      "contentSha256": "5d38c79c2a7e1296a217ae570ee0ad6455317bfea2942f3b1614b119d95397b5",
+      "semanticSha256": "377836abea5e61df220a7162dfe2ef0ae3210aaad92f3c8539721a5fb5aa66b2",
+      "declaredSemanticSha256": "377836abea5e61df220a7162dfe2ef0ae3210aaad92f3c8539721a5fb5aa66b2",
+      "sourceBindings": [
+        {
+          "sourceStageId": "current-publication",
+          "digestKind": "content",
+          "declaredSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+          "resolvedSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e"
+        },
+        {
+          "sourceStageId": "lifecycle-reduction",
+          "digestKind": "content",
+          "declaredSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba",
+          "resolvedSha256": "907a31033001b1f52acd4d9c3e4c267b93314d40c2fc8247b2702ac0da141dba"
+        },
+        {
+          "sourceStageId": "official-identity-evidence",
+          "digestKind": "semantic",
+          "declaredSha256": "e9bc87d53f72e6495db1e7bcc8113347963533a7d87c474bc26288b36a5a9ba0",
+          "resolvedSha256": "e9bc87d53f72e6495db1e7bcc8113347963533a7d87c474bc26288b36a5a9ba0"
+        }
+      ],
+      "releaseDependencies": [
+        "current-publication",
+        "lifecycle-reduction",
+        "official-identity-evidence"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "retail-lifecycle-shadow"
+      ]
+    },
+    {
+      "id": "program-status",
+      "artifactKey": "historicalEvidenceProgramStatus",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-evidence-program-status.json",
+      "owner": "scripts/architecture-v2/build-historical-evidence-program-status.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-evidence-program-status.mjs",
+          "contentSha256": "99ee8695aaa67cb9e9e479c31e9e3a017db766ac4cb0681944e947f5a2547ce2"
+        },
+        {
+          "path": "src/domain/historical-evidence-program-status.mjs",
+          "contentSha256": "573e61aae4569b29ad315c3f1153a7b5712e16ccb8044c7cacc656ca8e4dac09"
+        }
+      ],
+      "producerSha256": "1eefdcc04aef2d960e6f01d6c3f6d51944a1810c91b287c506107e7dfb736c18",
+      "consumers": [
+        "scale-control"
+      ],
+      "schemaVersion": 1,
+      "generatedAt": "2026-07-19T19:32:08.439Z",
+      "contentSha256": "dd48f9357de1a3c88ee438493d3a252aace93e81ecd3eeffb5c3c95db3da1a12",
+      "semanticSha256": "dd48f9357de1a3c88ee438493d3a252aace93e81ecd3eeffb5c3c95db3da1a12",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [
+        {
+          "sourceStageId": "attempt-ledger",
+          "digestKind": "content",
+          "declaredSha256": "a96ea697f03d81b201ac1f0a2dfbe59e83dd5c8dc2f23ae4df22c124ff4a4933",
+          "resolvedSha256": "a96ea697f03d81b201ac1f0a2dfbe59e83dd5c8dc2f23ae4df22c124ff4a4933"
+        },
+        {
+          "sourceStageId": "candidate-acquisition-queue",
+          "digestKind": "semantic",
+          "declaredSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54",
+          "resolvedSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+        },
+        {
+          "sourceStageId": "classification",
+          "digestKind": "semantic",
+          "declaredSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922",
+          "resolvedSha256": "1d1f982ff08164efdde362cbaae08d268a329f017ddfa8f7f74aefac016a0922"
+        },
+        {
+          "sourceStageId": "document-identity",
+          "digestKind": "semantic",
+          "declaredSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8",
+          "resolvedSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8"
+        },
+        {
+          "sourceStageId": "executable-queue",
+          "digestKind": "content",
+          "declaredSha256": "23cacdf4e4a8aed7e4f939881f418be919b6f8c3ff64fcd30ae1a62d5755a12b",
+          "resolvedSha256": "23cacdf4e4a8aed7e4f939881f418be919b6f8c3ff64fcd30ae1a62d5755a12b"
+        },
+        {
+          "sourceStageId": "fit-publication",
+          "digestKind": "content",
+          "declaredSha256": "f7bc76df7f23d88ef2467002a98cd4852478d9ccabdbe136bd4c62cb7a1c9fdf",
+          "resolvedSha256": "f7bc76df7f23d88ef2467002a98cd4852478d9ccabdbe136bd4c62cb7a1c9fdf"
+        },
+        {
+          "sourceStageId": "historical-replacement-publication",
+          "digestKind": "content",
+          "declaredSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
+          "resolvedSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671"
+        },
+        {
+          "sourceStageId": "mineru-backfill-audit",
+          "digestKind": "content",
+          "declaredSha256": "0d2dff645e5ec8b447ad05798f586dee8ffa1db981012fd562b84d583d54c165",
+          "resolvedSha256": "0d2dff645e5ec8b447ad05798f586dee8ffa1db981012fd562b84d583d54c165"
+        },
+        {
+          "sourceStageId": "mineru-knowledge",
+          "digestKind": "content",
+          "declaredSha256": "ffec2d4a5908b0b34a01f1f1f4dfca9d55dde7832d9380f2081b113b2e6e9e3d",
+          "resolvedSha256": "ffec2d4a5908b0b34a01f1f1f4dfca9d55dde7832d9380f2081b113b2e6e9e3d"
+        },
+        {
+          "sourceStageId": "receipt-reconciliation",
+          "digestKind": "content",
+          "declaredSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+          "resolvedSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf"
+        },
+        {
+          "sourceStageId": "receipt-replay",
+          "digestKind": "content",
+          "declaredSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+          "resolvedSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368"
+        },
+        {
+          "sourceStageId": "target-state",
+          "digestKind": "content",
+          "declaredSha256": "2f073e283f6c6be1b3af5f16908973cb389a7b587391a57276b3169c94903e70",
+          "resolvedSha256": "2f073e283f6c6be1b3af5f16908973cb389a7b587391a57276b3169c94903e70"
+        }
+      ],
+      "releaseDependencies": [
+        "attempt-ledger",
+        "candidate-acquisition-queue",
+        "classification",
+        "document-identity",
+        "executable-queue",
+        "fit-publication",
+        "historical-replacement-publication",
+        "mineru-backfill-audit",
+        "mineru-knowledge",
+        "receipt-reconciliation",
+        "receipt-replay",
+        "target-state"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "scale-control"
+      ]
+    },
+    {
+      "id": "retail-lifecycle-shadow",
+      "artifactKey": "retailLifecycleShadow",
+      "artifactPath": "data/architecture-v2/reviews/automated/retail-lifecycle-shadow.json",
+      "owner": "scripts/architecture-v2/build-retail-lifecycle-shadow.mjs",
+      "producerInputs": [
+        {
+          "path": "data/architecture-v2/policies/retail-lifecycle-release-policy.json",
+          "contentSha256": "1941c9a79a6640afc3357699ce8eb1078f7aea8d8cf57770fda97e30f0426241"
+        },
+        {
+          "path": "scripts/architecture-v2/build-retail-lifecycle-shadow.mjs",
+          "contentSha256": "531a9776475c408eec5573f6f790e39988625f14324aef5a84ec57e1f2d5942f"
+        },
+        {
+          "path": "src/domain/retail-lifecycle-shadow.mjs",
+          "contentSha256": "8d497037cc6963e816ee5556d5d55232ece27a55bb62b8a1e4e20a2c8d3dd7cd"
+        },
+        {
+          "path": "src/domain/retailer-observation.mjs",
+          "contentSha256": "248044d540a048774d93894f37481a574ef514fb9b81e97ae36c15b2f3e8d872"
+        }
+      ],
+      "producerSha256": "9fc0544f48ea12fc79ed9cc12a2117699b1373b44dc7c72a1794d1f8985664be",
+      "consumers": [
+        "retail-lifecycle-refresh"
+      ],
+      "schemaVersion": 2,
+      "generatedAt": null,
+      "contentSha256": "8bf3d5f64d0940bc2cc8d0e4b08fbf0da37e53efa1996d1693b2fb5e0b4cf76b",
+      "semanticSha256": "6c1f60fe08ebe873a65906b430cb9440a8d50add37648e7e22c1adce7519ee0e",
+      "declaredSemanticSha256": "6c1f60fe08ebe873a65906b430cb9440a8d50add37648e7e22c1adce7519ee0e",
+      "sourceBindings": [
+        {
+          "sourceStageId": "current-publication",
+          "digestKind": "content",
+          "declaredSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e",
+          "resolvedSha256": "67e67191ab26f38be436c2600a0346833e546297b323799b813d646208a31c9e"
+        },
+        {
+          "sourceStageId": "official-market-lifecycle",
+          "digestKind": "semantic",
+          "declaredSha256": "377836abea5e61df220a7162dfe2ef0ae3210aaad92f3c8539721a5fb5aa66b2",
+          "resolvedSha256": "377836abea5e61df220a7162dfe2ef0ae3210aaad92f3c8539721a5fb5aa66b2"
+        },
+        {
+          "sourceStageId": "retailer-observations",
+          "digestKind": "semantic",
+          "declaredSha256": "873d777c0c9a94fafa5c63f551d65dcdcc5ce163bb951cf6024aea3a7d1fbab4",
+          "resolvedSha256": "873d777c0c9a94fafa5c63f551d65dcdcc5ce163bb951cf6024aea3a7d1fbab4"
+        }
+      ],
+      "releaseDependencies": [
+        "current-publication",
+        "official-market-lifecycle",
+        "retailer-observations"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": [
+        "retail-lifecycle-refresh"
+      ]
+    },
+    {
+      "id": "retail-lifecycle-refresh",
+      "artifactKey": "retailLifecycleRefreshInventory",
+      "artifactPath": "data/architecture-v2/reviews/automated/retail-lifecycle-refresh-inventory.json",
+      "owner": "scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-retail-lifecycle-refresh-inventory.mjs",
+          "contentSha256": "f70d29aff9cbd0139ddd5d7fe65e4f998201299029d15e227c10a47ffbfc7913"
+        },
+        {
+          "path": "src/domain/retail-lifecycle-refresh-inventory.mjs",
+          "contentSha256": "1a9549ca6a4e3e2b0d9db8bf344c5a33b623b388b41dbabc01b4726398a76e46"
+        }
+      ],
+      "producerSha256": "65679ff8d418819416430bbf0519e837f85f7b9561f0d55b2ee51cbe87f05c7a",
+      "consumers": [],
+      "schemaVersion": 3,
+      "generatedAt": null,
+      "contentSha256": "8c27d2ef342a345a28645c431541593f00a23181a090918d64759ab4ff26ffc7",
+      "semanticSha256": "d134f9aa346aa639f6f35b1ca0ed642795ada56e5706869e6c7b22f831abb572",
+      "declaredSemanticSha256": "d134f9aa346aa639f6f35b1ca0ed642795ada56e5706869e6c7b22f831abb572",
+      "sourceBindings": [
+        {
+          "sourceStageId": "retail-lifecycle-shadow",
+          "digestKind": "semantic",
+          "declaredSha256": "6c1f60fe08ebe873a65906b430cb9440a8d50add37648e7e22c1adce7519ee0e",
+          "resolvedSha256": "6c1f60fe08ebe873a65906b430cb9440a8d50add37648e7e22c1adce7519ee0e"
+        },
+        {
+          "sourceStageId": "retailer-identity-migration",
+          "digestKind": "semantic",
+          "declaredSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946",
+          "resolvedSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946"
+        },
+        {
+          "sourceStageId": "retailer-observation-coverage",
+          "digestKind": "semantic",
+          "declaredSha256": "cec34896f2c8f7b0204b8ccfc97183b02f50938b00bb059220ecdceca0080598",
+          "resolvedSha256": "cec34896f2c8f7b0204b8ccfc97183b02f50938b00bb059220ecdceca0080598"
+        }
+      ],
+      "releaseDependencies": [
+        "retail-lifecycle-shadow",
+        "retailer-identity-migration",
+        "retailer-observation-coverage"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": []
+    },
+    {
+      "id": "scale-ledger",
+      "artifactKey": "historicalDimensionsScaleLedger",
+      "artifactPath": "data/architecture-v2/ledgers/historical-dimensions-scale-ledger.json",
+      "owner": "src/domain/historical-dimensions-scale-control.mjs",
+      "producerInputs": [
+        {
+          "path": "src/domain/historical-dimensions-scale-control.mjs",
+          "contentSha256": "8c047c7d760235c4d55e45880b1faa7f1f64fee8ce668671c9a99ab60e18fa2c"
+        }
+      ],
+      "producerSha256": "b3b587d0a6076af8c0cdafad7976b0a6ea400d515e93820bed586a6fbc07e343",
+      "consumers": [
+        "scale-control"
+      ],
+      "schemaVersion": 2,
+      "generatedAt": null,
+      "contentSha256": "7797bb1ee9e848be038a95a962c9ed2d0f1af558ae125aebf733d53f3be172d3",
+      "semanticSha256": "7797bb1ee9e848be038a95a962c9ed2d0f1af558ae125aebf733d53f3be172d3",
+      "declaredSemanticSha256": null,
+      "sourceBindings": [],
+      "releaseDependencies": [],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_INPUT"
+      ],
+      "nextTransitions": [
+        "scale-control"
+      ]
+    },
+    {
+      "id": "scale-control",
+      "artifactKey": "historicalDimensionsScaleControl",
+      "artifactPath": "data/architecture-v2/reviews/automated/historical-dimensions-scale-control.json",
+      "owner": "scripts/architecture-v2/build-historical-dimensions-scale-control.mjs",
+      "producerInputs": [
+        {
+          "path": "scripts/architecture-v2/build-historical-dimensions-scale-control.mjs",
+          "contentSha256": "1b1f7b69c1fd1cb1613f599b9f0dd9a92fb93278de7ff0083da13604f1d453eb"
+        },
+        {
+          "path": "src/domain/historical-dimensions-scale-control.mjs",
+          "contentSha256": "8c047c7d760235c4d55e45880b1faa7f1f64fee8ce668671c9a99ab60e18fa2c"
+        }
+      ],
+      "producerSha256": "e9c0cd707fa434aa2eea1d0b80af0667c3bda1f8b1140010f4f3123a0aa2d2f8",
+      "consumers": [],
+      "schemaVersion": 2,
+      "generatedAt": "2026-07-19T19:32:08.439Z",
+      "contentSha256": "beb1deb0b1dd6e9d9fe3b61ac568d134e007cb194443a0a49445d1a9a65a583a",
+      "semanticSha256": "d4d983327c0c47fc144cbfb2424bc8144df7caa62591164abcf94dda88117de4",
+      "declaredSemanticSha256": "d4d983327c0c47fc144cbfb2424bc8144df7caa62591164abcf94dda88117de4",
+      "sourceBindings": [
+        {
+          "sourceStageId": "bounded-planner",
+          "digestKind": "content",
+          "declaredSha256": "2ddda3e97ee5e57e513ede684ca34a87482ca3d9c397347dab4f0f8046cd7468",
+          "resolvedSha256": "2ddda3e97ee5e57e513ede684ca34a87482ca3d9c397347dab4f0f8046cd7468"
+        },
+        {
+          "sourceStageId": "fit-publication",
+          "digestKind": "content",
+          "declaredSha256": "f7bc76df7f23d88ef2467002a98cd4852478d9ccabdbe136bd4c62cb7a1c9fdf",
+          "resolvedSha256": "f7bc76df7f23d88ef2467002a98cd4852478d9ccabdbe136bd4c62cb7a1c9fdf"
+        },
+        {
+          "sourceStageId": "historical-replacement-publication",
+          "digestKind": "content",
+          "declaredSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
+          "resolvedSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671"
+        },
+        {
+          "sourceStageId": "program-status",
+          "digestKind": "content",
+          "declaredSha256": "dd48f9357de1a3c88ee438493d3a252aace93e81ecd3eeffb5c3c95db3da1a12",
+          "resolvedSha256": "dd48f9357de1a3c88ee438493d3a252aace93e81ecd3eeffb5c3c95db3da1a12"
+        },
+        {
+          "sourceStageId": "receipt-replay",
+          "digestKind": "content",
+          "declaredSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
+          "resolvedSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368"
+        },
+        {
+          "sourceStageId": "scale-ledger",
+          "digestKind": "content",
+          "declaredSha256": "7797bb1ee9e848be038a95a962c9ed2d0f1af558ae125aebf733d53f3be172d3",
+          "resolvedSha256": "7797bb1ee9e848be038a95a962c9ed2d0f1af558ae125aebf733d53f3be172d3"
+        }
+      ],
+      "releaseDependencies": [
+        "bounded-planner",
+        "fit-publication",
+        "historical-replacement-publication",
+        "program-status",
+        "receipt-replay",
+        "scale-ledger"
+      ],
+      "releaseEpoch": 1,
+      "releaseState": "RELEASED",
+      "lifecycleVisibility": [
+        "CONTROL_ONLY"
+      ],
+      "nextTransitions": []
+    }
+  ],
+  "releaseGraph": {
+    "order": [
+      "attempt-ledger",
+      "canonical-identity",
+      "receipt-reconciliation",
+      "receipt-replay",
+      "current-publication",
+      "official-registry-snapshots",
+      "lifecycle-reduction",
+      "classification",
+      "retailer-identity-resolution",
+      "retailer-identity-migration",
+      "candidate-acquisition-queue",
+      "candidate-discovery",
+      "executable-queue",
+      "document-identity",
+      "family-canary",
+      "target-state",
+      "bounded-planner",
+      "canonical-identity-migration-candidate",
+      "candidate-publication-base",
+      "official-identity-evidence",
+      "candidate-official-market",
+      "retailer-observations",
+      "candidate-lifecycle-shadow",
+      "candidate-current-publication",
+      "candidate-lifecycle-reduction",
+      "retailer-observation-coverage",
+      "candidate-lifecycle-refresh",
+      "candidate-release-gate",
+      "fit-publication",
+      "historical-replacement-publication",
+      "mineru-backfill-audit",
+      "mineru-knowledge",
+      "official-market-lifecycle",
+      "program-status",
+      "retail-lifecycle-shadow",
+      "retail-lifecycle-refresh",
+      "scale-ledger",
+      "scale-control"
+    ],
+    "edges": [
+      {
+        "from": "receipt-reconciliation",
+        "to": "receipt-replay"
+      },
+      {
+        "from": "canonical-identity",
+        "to": "current-publication"
+      },
+      {
+        "from": "receipt-reconciliation",
+        "to": "current-publication"
+      },
+      {
+        "from": "receipt-replay",
+        "to": "current-publication"
+      },
+      {
+        "from": "current-publication",
+        "to": "lifecycle-reduction"
+      },
+      {
+        "from": "official-registry-snapshots",
+        "to": "lifecycle-reduction"
+      },
+      {
+        "from": "receipt-reconciliation",
+        "to": "lifecycle-reduction"
+      },
+      {
+        "from": "lifecycle-reduction",
+        "to": "classification"
+      },
+      {
+        "from": "retailer-identity-resolution",
+        "to": "retailer-identity-migration"
+      },
+      {
+        "from": "classification",
+        "to": "candidate-acquisition-queue"
+      },
+      {
+        "from": "retailer-identity-migration",
+        "to": "candidate-acquisition-queue"
+      },
+      {
+        "from": "candidate-acquisition-queue",
+        "to": "candidate-discovery"
+      },
+      {
+        "from": "attempt-ledger",
+        "to": "executable-queue"
+      },
+      {
+        "from": "candidate-acquisition-queue",
+        "to": "executable-queue"
+      },
+      {
+        "from": "candidate-discovery",
+        "to": "executable-queue"
+      },
+      {
+        "from": "receipt-reconciliation",
+        "to": "executable-queue"
+      },
+      {
+        "from": "classification",
+        "to": "document-identity"
+      },
+      {
+        "from": "document-identity",
+        "to": "family-canary"
+      },
+      {
+        "from": "executable-queue",
+        "to": "family-canary"
+      },
+      {
+        "from": "attempt-ledger",
+        "to": "target-state"
+      },
+      {
+        "from": "candidate-acquisition-queue",
+        "to": "target-state"
+      },
+      {
+        "from": "classification",
+        "to": "target-state"
+      },
+      {
+        "from": "executable-queue",
+        "to": "target-state"
+      },
+      {
+        "from": "receipt-reconciliation",
+        "to": "target-state"
+      },
+      {
+        "from": "executable-queue",
+        "to": "bounded-planner"
+      },
+      {
+        "from": "family-canary",
+        "to": "bounded-planner"
+      },
+      {
+        "from": "target-state",
+        "to": "bounded-planner"
+      },
+      {
+        "from": "canonical-identity",
+        "to": "canonical-identity-migration-candidate"
+      },
+      {
+        "from": "retailer-identity-migration",
+        "to": "canonical-identity-migration-candidate"
+      },
+      {
+        "from": "canonical-identity-migration-candidate",
+        "to": "candidate-publication-base"
+      },
+      {
+        "from": "receipt-reconciliation",
+        "to": "candidate-publication-base"
+      },
+      {
+        "from": "receipt-replay",
+        "to": "candidate-publication-base"
+      },
+      {
+        "from": "retailer-identity-migration",
+        "to": "candidate-publication-base"
+      },
+      {
+        "from": "candidate-publication-base",
+        "to": "candidate-official-market"
+      },
+      {
+        "from": "lifecycle-reduction",
+        "to": "candidate-official-market"
+      },
+      {
+        "from": "official-identity-evidence",
+        "to": "candidate-official-market"
+      },
+      {
+        "from": "retailer-identity-migration",
+        "to": "retailer-observations"
+      },
+      {
+        "from": "candidate-official-market",
+        "to": "candidate-lifecycle-shadow"
+      },
+      {
+        "from": "candidate-publication-base",
+        "to": "candidate-lifecycle-shadow"
+      },
+      {
+        "from": "retailer-observations",
+        "to": "candidate-lifecycle-shadow"
+      },
+      {
+        "from": "candidate-lifecycle-shadow",
+        "to": "candidate-current-publication"
+      },
+      {
+        "from": "candidate-publication-base",
+        "to": "candidate-current-publication"
+      },
+      {
+        "from": "candidate-current-publication",
+        "to": "candidate-lifecycle-reduction"
+      },
+      {
+        "from": "official-registry-snapshots",
+        "to": "candidate-lifecycle-reduction"
+      },
+      {
+        "from": "receipt-reconciliation",
+        "to": "candidate-lifecycle-reduction"
+      },
+      {
+        "from": "current-publication",
+        "to": "retailer-observation-coverage"
+      },
+      {
+        "from": "retailer-observations",
+        "to": "retailer-observation-coverage"
+      },
+      {
+        "from": "candidate-lifecycle-shadow",
+        "to": "candidate-lifecycle-refresh"
+      },
+      {
+        "from": "retailer-identity-migration",
+        "to": "candidate-lifecycle-refresh"
+      },
+      {
+        "from": "retailer-observation-coverage",
+        "to": "candidate-lifecycle-refresh"
+      },
+      {
+        "from": "candidate-current-publication",
+        "to": "candidate-release-gate"
+      },
+      {
+        "from": "candidate-lifecycle-reduction",
+        "to": "candidate-release-gate"
+      },
+      {
+        "from": "candidate-lifecycle-shadow",
+        "to": "candidate-release-gate"
+      },
+      {
+        "from": "candidate-publication-base",
+        "to": "candidate-release-gate"
+      },
+      {
+        "from": "current-publication",
+        "to": "candidate-release-gate"
+      },
+      {
+        "from": "retailer-identity-migration",
+        "to": "candidate-release-gate"
+      },
+      {
+        "from": "current-publication",
+        "to": "fit-publication"
+      },
+      {
+        "from": "receipt-reconciliation",
+        "to": "fit-publication"
+      },
+      {
+        "from": "receipt-replay",
+        "to": "fit-publication"
+      },
+      {
+        "from": "current-publication",
+        "to": "historical-replacement-publication"
+      },
+      {
+        "from": "lifecycle-reduction",
+        "to": "historical-replacement-publication"
+      },
+      {
+        "from": "document-identity",
+        "to": "mineru-knowledge"
+      },
+      {
+        "from": "lifecycle-reduction",
+        "to": "mineru-knowledge"
+      },
+      {
+        "from": "current-publication",
+        "to": "official-market-lifecycle"
+      },
+      {
+        "from": "lifecycle-reduction",
+        "to": "official-market-lifecycle"
+      },
+      {
+        "from": "official-identity-evidence",
+        "to": "official-market-lifecycle"
+      },
+      {
+        "from": "attempt-ledger",
+        "to": "program-status"
+      },
+      {
+        "from": "candidate-acquisition-queue",
+        "to": "program-status"
+      },
+      {
+        "from": "classification",
+        "to": "program-status"
+      },
+      {
+        "from": "document-identity",
+        "to": "program-status"
+      },
+      {
+        "from": "executable-queue",
+        "to": "program-status"
+      },
+      {
+        "from": "fit-publication",
+        "to": "program-status"
+      },
+      {
+        "from": "historical-replacement-publication",
+        "to": "program-status"
+      },
+      {
+        "from": "mineru-backfill-audit",
+        "to": "program-status"
+      },
+      {
+        "from": "mineru-knowledge",
+        "to": "program-status"
+      },
+      {
+        "from": "receipt-reconciliation",
+        "to": "program-status"
+      },
+      {
+        "from": "receipt-replay",
+        "to": "program-status"
+      },
+      {
+        "from": "target-state",
+        "to": "program-status"
+      },
+      {
+        "from": "current-publication",
+        "to": "retail-lifecycle-shadow"
+      },
+      {
+        "from": "official-market-lifecycle",
+        "to": "retail-lifecycle-shadow"
+      },
+      {
+        "from": "retailer-observations",
+        "to": "retail-lifecycle-shadow"
+      },
+      {
+        "from": "retail-lifecycle-shadow",
+        "to": "retail-lifecycle-refresh"
+      },
+      {
+        "from": "retailer-identity-migration",
+        "to": "retail-lifecycle-refresh"
+      },
+      {
+        "from": "retailer-observation-coverage",
+        "to": "retail-lifecycle-refresh"
+      },
+      {
+        "from": "bounded-planner",
+        "to": "scale-control"
+      },
+      {
+        "from": "fit-publication",
+        "to": "scale-control"
+      },
+      {
+        "from": "historical-replacement-publication",
+        "to": "scale-control"
+      },
+      {
+        "from": "program-status",
+        "to": "scale-control"
+      },
+      {
+        "from": "receipt-replay",
+        "to": "scale-control"
+      },
+      {
+        "from": "scale-ledger",
+        "to": "scale-control"
+      }
+    ]
+  },
+  "baseline": {
+    "historicalModelReferences": 8089,
+    "modelsWithDocumentLinks": 1768,
+    "modelsWithCurrentValidReceipts": 401,
+    "cumulativeRecoveryAcceptances": 382,
+    "replacementAutoFillModels": 321,
+    "uniquePdfGraphNodes": 942,
+    "validPdfGraphNodes": 927,
+    "provenDocumentModelEdges": 548,
+    "mappedDocumentModelEdges": 3761,
+    "currentProducts": 3515,
+    "currentProductsWithReceiptBoundDimensions": 332,
+    "currentProductsWithReceiptBoundVerifiedFit": 0,
+    "publicRowsWithRetailerLinks": 1384,
+    "publicRowsUnavailableOrHistoryOnly": 2131,
+    "retailerLinksRequiringObservationMigration": 0,
+    "retailerObservationBaselineLinks": 1614,
+    "retailerObservationAccountedLinks": 1614,
+    "retailerObservationTypedLinks": 1353,
+    "retailerObservationRevalidationItems": 277,
+    "lifecycleShadowStatus": "BLOCKED",
+    "lifecycleShadowUnresolvedLegacyCurrentProducts": 2,
+    "lifecycleShadowUnsafeRemovedLegacyCurrentProducts": 0,
+    "lifecycleShadowPolicyExcludedProducts": 0,
+    "lifecycleShadowPolicyExcludedObservations": 0,
+    "lifecycleShadowPolicyExcludedCollectionAttempts": 0,
+    "lifecycleRefreshProducts": 2,
+    "lifecycleRefreshAuthorizedProducts": 0,
+    "lifecycleRefreshCanaryProducts": 0,
+    "lifecycleRefreshPolicyReviewedProducts": 0,
+    "lifecycleRefreshPolicyBlockedProducts": 0,
+    "candidateReleaseId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
+    "candidateReleaseEpoch": "retail-lifecycle-shadow-2026-07-21-inputs-9bbd5004205e",
+    "candidateReleaseAuthorizationStatus": "READY_FOR_CUTOVER",
+    "candidateExpectedLegacyCurrentProducts": 1384,
+    "candidateAccountedLegacyCurrentProducts": 1384,
+    "candidateUnresolvedLegacyCurrentProducts": 0,
+    "candidateUnsafeRemovedLegacyCurrentProducts": 0,
+    "candidateCurrentProducts": 349,
+    "candidateMarketReferenceProducts": 77,
+    "candidatePublicProducts": 3513,
+    "candidateHistoricalReferenceRecords": 8087,
+    "candidateRefreshProducts": 0,
+    "candidateFitPublicationViolations": 0,
+    "candidateRollbackStatus": "PROVEN_BYTE_IDENTICAL",
+    "p0AssignedTargets": 957,
+    "p0EligibleTargets": 947,
+    "p1AssignedTargets": 3974,
+    "p1EligibleTargets": 3939,
+    "knownContractGaps": [
+      {
+        "id": "LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER",
+        "severity": "INFORMATIONAL",
+        "repairTask": 10,
+        "detail": "The released epoch intentionally remains byte-identical and blocked in SHADOW_ONLY mode. The separately bound epoch-2 candidate is READY_FOR_CUTOVER with an exhaustive prior-current partition, zero unresolved IDs, zero unsafe removals, and a byte-identical rollback proof."
+      }
+    ]
+  },
+  "controllerDecision": {
+    "status": "RUN_P0",
+    "allowedManifestId": "historical_batch_cd540913d0d888a7ffaa9a0e",
+    "allowedWorkstreamId": "CURRENT_DIMENSIONS",
+    "p1Blocked": true,
+    "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
+    "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e",
+    "checkpointCount": 5
+  },
+  "contractId": "historical_evidence_system_9b33eff3a2d26abab79c6c6c",
+  "semanticContractSha256": "9b33eff3a2d26abab79c6c6c9ec768680f71022ccbf1f62809195792f813e9bf"
+}

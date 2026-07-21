@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "targetId": "recovery_target_b4c27af7c13ba6643cb2cf6a",
+  "identity": {
+    "brand": "Fisher & Paykel",
+    "model": "WD8560F1",
+    "category": "washing_machine"
+  },
+  "source": {
+    "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
+    "contentSha256": "7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098",
+    "byteSize": 879229,
+    "derivedContentSha256": "019d08ca030317d36cb547600caf40f0007f1b545287aa66bbc3bd9c77a19909",
+    "pageCount": 2,
+    "parserVersion": "3.4.4",
+    "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9"
+  },
+  "claims": [
+    {
+      "field": "closedEnvelope.widthMm",
+      "mm": 600,
+      "sourceLabel": "Width",
+      "page": 1,
+      "bbox": [354, 137, 634, 159]
+    },
+    {
+      "field": "closedEnvelope.heightMm",
+      "mm": 850,
+      "sourceLabel": "Height",
+      "page": 1,
+      "bbox": [354, 107, 634, 129]
+    },
+    {
+      "field": "closedEnvelope.depthMm",
+      "mm": 645,
+      "sourceLabel": "Depth",
+      "page": 1,
+      "bbox": [354, 169, 634, 189]
+    }
+  ],
+  "projection": {
+    "widthMm": 600,
+    "heightMinimumMm": 850,
+    "heightMaximumMm": 850,
+    "depthMm": 645,
+    "evidenceLevel": "dimensions",
+    "verifiedFitEligible": false,
+    "successfulFitOutcome": "INSUFFICIENT_DATA"
+  }
+}

@@ -24,7 +24,7 @@
 
 **Files:**
 - Create: `data/architecture-v2/reviews/automated/core-technology-baseline.json`
-- Create: `tests/architecture-v2/core-technology-baseline.test.mjs`
+- Modify: `tests/architecture-v2/browser-fit-contract.test.mjs`
 - Modify: this plan
 
 - [x] Record acquisition outcomes by stage for the cross-brand canary set.
@@ -84,7 +84,7 @@
 - Modify: `public/scripts/search-core.js`
 - Modify: `scripts/generate-ui-copy.js`
 - Test: `tests/architecture-v2/browser-fit-contract.test.mjs`
-- Test: `tests/fit-score.test.mjs`
+- Test: `tests/architecture-v2/fit-decision.test.mjs`
 
 - [x] Make the browser adapter consume geometry_v2 and call the same fit outcome rules as the domain engine.
 - [x] Remove default-zero clearance from evidence-backed manufacturer mode.
@@ -96,10 +96,10 @@
 ### Phase 6: Catalog migration and publication gates
 
 **Files:**
-- Create: `scripts/architecture-v2/audit-fit-engine-inputs.mjs`
+- Create: `scripts/architecture-v2/audit-fit-publication.mjs`
 - Modify: `scripts/architecture-v2/build-public-projection.mjs`
 - Modify: `package.json`
-- Create: `tests/architecture-v2/fit-engine-input-audit.test.mjs`
+- Create: `tests/architecture-v2/fit-publication-audit.test.mjs`
 
 - [x] Audit every current product for legacy-vs-geometry disagreement and provenance completeness.
 - [x] Quarantine conflicts instead of silently preferring either representation.

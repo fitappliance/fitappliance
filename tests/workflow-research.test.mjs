@@ -20,7 +20,7 @@ test('phase 43a backfill: workflow serializes runs with concurrency protection',
   assert.match(workflow, /cancel-in-progress:\s*false/);
 });
 
-test('phase 43a backfill: workflow rebuilds and commits canonical generated release artifacts', () => {
+test('phase 43a backfill: workflow rebuilds canonical artifacts and opens a review PR', () => {
   const workflowPath = path.join(process.cwd(), '.github', 'workflows', 'research-popularity.yml');
   const workflow = fs.readFileSync(workflowPath, 'utf8');
 
@@ -34,8 +34,10 @@ test('phase 43a backfill: workflow rebuilds and commits canonical generated rele
   assert.match(workflow, /npm run validate-schema/);
   assert.match(workflow, /npm run audit-indexability-policy/);
   assert.match(workflow, /node --test tests\/catalog-data-cleanup\.test\.mjs tests\/retailer-metrics-copy\.test\.mjs/);
-  assert.match(workflow, /git add data\/architecture-v2\/generated\/public-catalog-projection\.json public\/data public\/sitemap\.xml public\/service-worker\.js pages\/brands pages\/compare pages\/guides pages\/location pages\/products reports\/schema-validation\.json data\/popularity-research\.json README\.md docs\/display-data-accuracy-audit\.md docs\/retailer-data-expansion-plan\.md/);
+  assert.match(workflow, /git add -A/);
   assert.match(workflow, /git diff --cached --quiet/);
   assert.match(workflow, /chore\(backfill\): retailer sync cursor=/);
-  assert.match(workflow, /git push/);
+  assert.match(workflow, /git push -u origin "\$branch"/);
+  assert.match(workflow, /gh pr create/);
+  assert.doesNotMatch(workflow, /git push origin main|^\s*git push\s*$/m);
 });

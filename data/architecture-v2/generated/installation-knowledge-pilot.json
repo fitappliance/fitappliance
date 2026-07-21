@@ -8,7 +8,7 @@
   ],
   "selectionPolicy": {
     "currentListing": "unavailable!=true, stock!=No and retailer URL verified within 90 days",
-    "asOf": "2026-07-12T11:13:49.000Z",
+    "asOf": "2026-07-12T12:40:00.000Z",
     "maxRetailerAgeDays": 90,
     "categoryTargets": {
       "dishwasher": 50,
@@ -26,14 +26,7 @@
       "brand/model/canonicalProductId asc"
     ]
   },
-  "selectionShortfalls": [
-    {
-      "category": "dishwasher",
-      "stratum": "clean",
-      "requested": 20,
-      "selected": 19
-    }
-  ],
+  "selectionShortfalls": [],
   "products": [
     {
       "canonicalProductId": "fa_prod_d5dac930765190f760b0500f",
@@ -41,7 +34,7 @@
       "category": "dishwasher",
       "brand": "ASKO",
       "model": "DFI666GXXL.AU",
-      "formFactor": null,
+      "formFactor": "integrated",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -55,7 +48,7 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDF1620W",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "reasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
@@ -69,7 +62,7 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDF1620X",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "reasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
@@ -83,7 +76,7 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDF1630X",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "reasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
@@ -97,7 +90,7 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDF1640AX",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "reasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
@@ -111,7 +104,7 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDF1640DX",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "reasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
@@ -125,7 +118,7 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDFB1410W",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -139,7 +132,7 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDFB1630X",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -153,38 +146,10 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "DDN38450",
-      "formFactor": null,
+      "formFactor": "built_in",
       "reconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "reasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
-      ],
-      "requestedStratum": "recovery",
-      "selectedFromStratum": "recovery"
-    },
-    {
-      "canonicalProductId": "fa_prod_c10836872988f234eac38f4c",
-      "legacyRuntimeId": "ao-103524",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI4HTS01A",
-      "formFactor": null,
-      "reconciliationState": "EXACT_NO_DIMENSIONS",
-      "reasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
-      ],
-      "requestedStratum": "recovery",
-      "selectedFromStratum": "recovery"
-    },
-    {
-      "canonicalProductId": "fa_prod_5a84ca3b168d4f76044963f4",
-      "legacyRuntimeId": "ao-102182",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI6HCS01A",
-      "formFactor": null,
-      "reconciliationState": "EXACT_NO_DIMENSIONS",
-      "reasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
       ],
       "requestedStratum": "recovery",
       "selectedFromStratum": "recovery"
@@ -195,7 +160,21 @@
       "category": "dishwasher",
       "brand": "Bosch",
       "model": "SMS24AI01A",
-      "formFactor": null,
+      "formFactor": "built_in",
+      "reconciliationState": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "requestedStratum": "recovery",
+      "selectedFromStratum": "recovery"
+    },
+    {
+      "canonicalProductId": "fa_prod_a9202ecd30b56a2cd702c36c",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms2iti02a",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS2ITI02A",
+      "formFactor": "built_in",
       "reconciliationState": "EXACT_NO_DIMENSIONS",
       "reasonCodes": [
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
@@ -209,7 +188,7 @@
       "category": "dishwasher",
       "brand": "Bosch",
       "model": "SMS2ITW01A",
-      "formFactor": null,
+      "formFactor": "built_in",
       "reconciliationState": "EXACT_NO_DIMENSIONS",
       "reasonCodes": [
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
@@ -223,21 +202,7 @@
       "category": "dishwasher",
       "brand": "Bosch",
       "model": "SMS4HTI01A",
-      "formFactor": null,
-      "reconciliationState": "EXACT_NO_DIMENSIONS",
-      "reasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
-      ],
-      "requestedStratum": "recovery",
-      "selectedFromStratum": "recovery"
-    },
-    {
-      "canonicalProductId": "fa_prod_71ba41e4e13dc2f758852acf",
-      "legacyRuntimeId": "ao-107181",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS4HVB01A",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_NO_DIMENSIONS",
       "reasonCodes": [
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
@@ -251,7 +216,7 @@
       "category": "dishwasher",
       "brand": "Bosch",
       "model": "SMS4HVI01A",
-      "formFactor": null,
+      "formFactor": "built_in",
       "reconciliationState": "EXACT_NO_DIMENSIONS",
       "reasonCodes": [
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
@@ -260,12 +225,40 @@
       "selectedFromStratum": "recovery"
     },
     {
-      "canonicalProductId": "fa_prod_58f5a7609ebcb420091eb986",
-      "legacyRuntimeId": "ao-141853",
+      "canonicalProductId": "fa_prod_91c22252a1874afb78355a91",
+      "legacyRuntimeId": "ao-104570",
       "category": "dishwasher",
       "brand": "Bosch",
-      "model": "SMS6HAI02A",
-      "formFactor": null,
+      "model": "SMS6HCB01A",
+      "formFactor": "freestanding",
+      "reconciliationState": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "requestedStratum": "recovery",
+      "selectedFromStratum": "recovery"
+    },
+    {
+      "canonicalProductId": "fa_prod_4a618d9f867ec77222f1a02c",
+      "legacyRuntimeId": "ao-127312",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6HCI02A",
+      "formFactor": "freestanding",
+      "reconciliationState": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "requestedStratum": "recovery",
+      "selectedFromStratum": "recovery"
+    },
+    {
+      "canonicalProductId": "fa_prod_4076bfeec9fe64e40d799c30",
+      "legacyRuntimeId": "ao-102999",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMU6HCS01A",
+      "formFactor": "built_in",
       "reconciliationState": "EXACT_NO_DIMENSIONS",
       "reasonCodes": [
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
@@ -279,7 +272,7 @@
       "category": "dishwasher",
       "brand": "Electrolux",
       "model": "ESF6700ROW",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "reasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
@@ -293,13 +286,13 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DD60D2NB9",
-      "formFactor": null,
-      "reconciliationState": "EXACT_DIMENSION_CONFLICT",
+      "formFactor": "drawer",
+      "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
+        "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
-      "requestedStratum": "conflict",
-      "selectedFromStratum": "conflict"
+      "requestedStratum": "clean",
+      "selectedFromStratum": "clean"
     },
     {
       "canonicalProductId": "fa_prod_6868cdde53bfa347a96e1a20",
@@ -307,13 +300,13 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DD60D2NX9",
-      "formFactor": null,
-      "reconciliationState": "EXACT_DIMENSION_CONFLICT",
+      "formFactor": "drawer",
+      "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
+        "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
-      "requestedStratum": "conflict",
-      "selectedFromStratum": "conflict"
+      "requestedStratum": "clean",
+      "selectedFromStratum": "clean"
     },
     {
       "canonicalProductId": "fa_prod_03d589b78c6f4837a6825ce9",
@@ -321,13 +314,13 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DD60D4NB9",
-      "formFactor": null,
-      "reconciliationState": "EXACT_DIMENSION_CONFLICT",
+      "formFactor": "drawer",
+      "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
+        "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
-      "requestedStratum": "conflict",
-      "selectedFromStratum": "conflict"
+      "requestedStratum": "clean",
+      "selectedFromStratum": "clean"
     },
     {
       "canonicalProductId": "fa_prod_e83b25b67b2dd20a2a1c3b8c",
@@ -335,7 +328,7 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DD60D4NX9",
-      "formFactor": null,
+      "formFactor": "drawer",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -349,7 +342,7 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DD60SCX9",
-      "formFactor": null,
+      "formFactor": "built_in",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -358,12 +351,12 @@
       "selectedFromStratum": "clean"
     },
     {
-      "canonicalProductId": "fa_prod_9ffb22502ce4f205bcc22ec0",
-      "legacyRuntimeId": "ao-153384",
+      "canonicalProductId": "fa_prod_9344c42e10d2bba566bb1770",
+      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60fc4b2",
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
-      "model": "DD60ST4NB9",
-      "formFactor": null,
+      "model": "DW60FC4B2",
+      "formFactor": "built_in",
       "reconciliationState": "REGISTRY_INTERNAL_CONFLICT",
       "reasonCodes": [
         "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
@@ -377,7 +370,7 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DW60UT4I2",
-      "formFactor": null,
+      "formFactor": "built_in",
       "reconciliationState": "REGISTRY_INTERNAL_CONFLICT",
       "reasonCodes": [
         "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
@@ -391,24 +384,10 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DW60UZT4B2",
-      "formFactor": null,
+      "formFactor": "built_in",
       "reconciliationState": "REGISTRY_INTERNAL_CONFLICT",
       "reasonCodes": [
         "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
-      ],
-      "requestedStratum": "conflict",
-      "selectedFromStratum": "conflict"
-    },
-    {
-      "canonicalProductId": "fa_prod_c41a6900126e62213070f3ff",
-      "legacyRuntimeId": "ao-168357",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW13F0B1",
-      "formFactor": null,
-      "reconciliationState": "EXACT_DIMENSION_CONFLICT",
-      "reasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
       ],
       "requestedStratum": "conflict",
       "selectedFromStratum": "conflict"
@@ -419,7 +398,7 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15F1B1",
-      "formFactor": "front_loader",
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -433,7 +412,7 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15F1S1",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -447,12 +426,26 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15F2B1",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
       ],
-      "requestedStratum": "deficit_fill",
+      "requestedStratum": "conflict",
+      "selectedFromStratum": "conflict"
+    },
+    {
+      "canonicalProductId": "fa_prod_aaf669e02e59495318b1056b",
+      "legacyRuntimeId": "ao-132906",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F3B1",
+      "formFactor": "freestanding",
+      "reconciliationState": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "requestedStratum": "conflict",
       "selectedFromStratum": "conflict"
     },
     {
@@ -461,7 +454,7 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15F3S1",
-      "formFactor": "front_loader",
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -475,7 +468,7 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15F4B1",
-      "formFactor": "front_loader",
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -489,7 +482,7 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15U2I1",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -503,7 +496,7 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15V2B2",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -517,7 +510,7 @@
       "category": "dishwasher",
       "brand": "Hisense",
       "model": "HSBE15FS",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -531,7 +524,7 @@
       "category": "dishwasher",
       "brand": "Hisense",
       "model": "HSCM15FS",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -545,7 +538,7 @@
       "category": "dishwasher",
       "brand": "Ilve",
       "model": "IVBID10X",
-      "formFactor": null,
+      "formFactor": "built_in",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -559,7 +552,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD2A25MB",
-      "formFactor": null,
+      "formFactor": "built_in",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -573,7 +566,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD3A15MB",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -587,7 +580,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD3A15NS",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -601,7 +594,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD3A25MB",
-      "formFactor": null,
+      "formFactor": "built_in",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -615,7 +608,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD3A25MW",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -629,7 +622,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD4B15PS",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -643,7 +636,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD4B24PS",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -657,7 +650,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD5B14PS",
-      "formFactor": null,
+      "formFactor": "built_in",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -666,32 +659,32 @@
       "selectedFromStratum": "clean"
     },
     {
-      "canonicalProductId": "fa_prod_a1725ebc3892da3158722c8f",
-      "legacyRuntimeId": "ao-66240",
+      "canonicalProductId": "fa_prod_0910660e1a804a67fa883688",
+      "legacyRuntimeId": "ao-101283",
       "category": "dishwasher",
-      "brand": "Midea",
-      "model": "MDWB1BL",
-      "formFactor": null,
-      "reconciliationState": "EXACT_CONSISTENT",
+      "brand": "Smeg",
+      "model": "DWAU615DB3",
+      "formFactor": "built_in",
+      "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
-        "EXACT_IDENTITY_AND_WHD_AGREE"
+        "ONE_OR_MORE_AXES_DISAGREE"
       ],
-      "requestedStratum": "clean",
-      "selectedFromStratum": "clean"
+      "requestedStratum": "conflict",
+      "selectedFromStratum": "conflict"
     },
     {
-      "canonicalProductId": "fa_prod_3494250b2a85d645b6573ea3",
-      "legacyRuntimeId": "ao-66241",
+      "canonicalProductId": "fa_prod_150eb75eea0da8832efacf71",
+      "legacyRuntimeId": "ao-101284",
       "category": "dishwasher",
-      "brand": "Midea",
-      "model": "MDWB1SS",
-      "formFactor": null,
-      "reconciliationState": "EXACT_CONSISTENT",
+      "brand": "Smeg",
+      "model": "DWAU615DX3",
+      "formFactor": "built_in",
+      "reconciliationState": "EXACT_DIMENSION_CONFLICT",
       "reasonCodes": [
-        "EXACT_IDENTITY_AND_WHD_AGREE"
+        "ONE_OR_MORE_AXES_DISAGREE"
       ],
-      "requestedStratum": "clean",
-      "selectedFromStratum": "clean"
+      "requestedStratum": "conflict",
+      "selectedFromStratum": "conflict"
     },
     {
       "canonicalProductId": "fa_prod_eb83316f7761f0b2f28f032a",
@@ -699,7 +692,7 @@
       "category": "dishwasher",
       "brand": "Westinghouse",
       "model": "WSF6602WB",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -713,7 +706,7 @@
       "category": "dishwasher",
       "brand": "Westinghouse",
       "model": "WSF6604XB",
-      "formFactor": "front_loader",
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -727,7 +720,7 @@
       "category": "dishwasher",
       "brand": "Westinghouse",
       "model": "WSF6606XB",
-      "formFactor": "front_loader",
+      "formFactor": "freestanding",
       "reconciliationState": "EXACT_CONSISTENT",
       "reasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -1452,7 +1445,7 @@
       "dishwasher:Hisense": 2,
       "dishwasher:Ilve": 1,
       "dishwasher:LG": 8,
-      "dishwasher:Midea": 2,
+      "dishwasher:Smeg": 2,
       "dishwasher:Westinghouse": 3,
       "fridge:Beko": 6,
       "fridge:Bosch": 2,
@@ -1465,8 +1458,8 @@
     },
     "byState": {
       "AXIS_SUSPECT": 3,
-      "EXACT_CONSISTENT": 39,
-      "EXACT_DIMENSION_CONFLICT": 25,
+      "EXACT_CONSISTENT": 40,
+      "EXACT_DIMENSION_CONFLICT": 24,
       "EXACT_NO_DIMENSIONS": 10,
       "NO_EXACT_REGISTRY_MATCH": 20,
       "REGISTRY_INTERNAL_CONFLICT": 3

@@ -1,7 +1,11 @@
 #!/usr/bin/env node
-import { readFile, writeFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
-import { buildPublicProjection } from '../../src/domain/public-projection.mjs';
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import {
+  buildLifecycleNeutralSafetyProjection,
+  buildPublicProjection,
+} from '../../src/domain/public-projection.mjs';
 import { applyEvidencePilotReview, buildPilotEvidenceProjection } from '../../src/domain/evidence-review.mjs';
 import { buildSpaceEvidenceProjection } from '../../src/domain/space-evidence-review.mjs';
 import { createCategoryGeometry } from '../../src/domain/category-geometry.mjs';
@@ -15,12 +19,43 @@ import {
   mergeReceiptBoundAcceptanceProjections,
 } from '../../src/domain/accepted-evidence-publication.mjs';
 import applianceEnrichment from '../enrich-appliances.js';
+import { buildHistoricalEvidencePublication } from '../../src/domain/historical-evidence-publication.mjs';
+import { filterHistoricalAcceptanceBundleByReceiptReplayAudit } from '../../src/domain/historical-evidence-recovery-audit.mjs';
+import {
+  buildRetailLifecycleNeutralSafetyPublication,
+  preserveRetailLifecycleShadowOnlyPublication,
+} from '../../src/domain/retail-lifecycle-shadow.mjs';
+import { auditPublicFitProjection } from '../../src/domain/geometry-publication.mjs';
+import { applyRetailerIdentityMigrationToCatalog } from '../../src/domain/retailer-identity-migration.mjs';
 
 const { enrichApplianceDocument } = applianceEnrichment;
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
-const registry = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalRegistry'), 'utf8'));
+const publicProjectionPath = resolveArchitectureV2Path(root, 'publicProjection');
+const candidateProjectionPath = resolveArchitectureV2Path(root, 'publicProjectionMigrationCandidate');
+const releasedPublicProjectionBytes = await readFile(publicProjectionPath);
+const releasedPublicProjection = JSON.parse(releasedPublicProjectionBytes);
+const lifecycleReleasePolicyBytes = await readFile(
+  resolveArchitectureV2Path(root, 'retailLifecycleReleasePolicy'),
+);
+const lifecycleReleasePolicy = JSON.parse(lifecycleReleasePolicyBytes);
+const lifecycleShadow = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'retailLifecycleShadow'),
+  'utf8',
+));
+const registry = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'canonicalRegistryMigrationCandidate'),
+  'utf8',
+));
 const catalog = JSON.parse(await readFile(resolve(root, 'data/catalog-final.json'), 'utf8'));
+const identityMigration = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'retailerIdentityMigration'),
+  'utf8',
+));
+const migratedCatalog = applyRetailerIdentityMigrationToCatalog({
+  catalog,
+  migration: identityMigration,
+});
 const seriesDictionary = JSON.parse(await readFile(resolve(root, 'data/series-dictionary.json'), 'utf8'));
 const popularityResearch = JSON.parse(await readFile(resolve(root, 'data/popularity-research.json'), 'utf8'));
 const reviewBundles = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'evidenceReviewBundles'), 'utf8'));
@@ -36,6 +71,16 @@ const recoveryAcceptanceBatch = JSON.parse(await readFile(
 const recoveryAcceptanceResults = JSON.parse(await readFile(
   resolveArchitectureV2Path(root, 'identityRangeRecoveryAcceptanceResults'), 'utf8',
 ));
+const historicalRecoveryAcceptanceBundle = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAcceptanceBundle'), 'utf8',
+));
+const historicalAcceptanceReceiptReplayAudit = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'historicalAcceptanceReceiptReplayAudit'), 'utf8',
+));
+const safeHistoricalRecoveryAcceptanceBundle = filterHistoricalAcceptanceBundleByReceiptReplayAudit(
+  historicalRecoveryAcceptanceBundle,
+  historicalAcceptanceReceiptReplayAudit,
+).bundle;
 const pilotEvidence = buildPilotEvidenceProjection(applyEvidencePilotReview({ bundles: reviewBundles.bundles, manifest: reviewManifest }));
 for (const [id, review] of buildPhase10EvidenceProjection(phase10ReviewManifest.outcomes)) pilotEvidence.set(id, review);
 const spaceEvidence = buildSpaceEvidenceProjection(spaceReviewManifest.results);
@@ -47,6 +92,11 @@ for (const row of resolutionManifest.activeQuarantines ?? []) {
   }
 }
 const resolutionByLegacy = new Map(resolutionManifest.results.map((row) => [row.legacyRuntimeId, row.decision]));
+const historicalRecoveryPublication = buildHistoricalEvidencePublication({
+  bundle: safeHistoricalRecoveryAcceptanceBundle,
+  products: releasedPublicProjection.products,
+  lifecycleMode: 'LEGACY_BASELINE',
+});
 const receiptBoundAcceptance = mergeReceiptBoundAcceptanceProjections(
   buildReceiptBoundAcceptanceProjection({
     batch: acceptanceBatch,
@@ -58,10 +108,11 @@ const receiptBoundAcceptance = mergeReceiptBoundAcceptanceProjections(
     results: recoveryAcceptanceResults,
     products: catalog.products,
   }),
+  historicalRecoveryPublication.currentAcceptanceByLegacyId,
 );
 const filtered = {
-  ...catalog,
-  products: catalog.products
+  ...migratedCatalog,
+  products: migratedCatalog.products
     .filter((row) => !quarantined.has(String(row.id).toLowerCase()))
     .map((row) => {
       const legacyRuntimeId = String(row.id).toLowerCase();
@@ -136,6 +187,52 @@ const displayReady = enrichApplianceDocument(filtered, {
   seriesDictionary,
   popularityResearch,
 });
-const projection = buildPublicProjection(registry, displayReady);
-await writeFile(resolveArchitectureV2Path(root, 'publicProjection'), `${JSON.stringify(projection)}\n`);
-console.log(JSON.stringify({ products: projection.products.length, quarantined: registry.quarantine.length }));
+const candidateProjection = buildPublicProjection(registry, displayReady);
+const candidateProjectionBytes = `${JSON.stringify(candidateProjection)}\n`;
+const candidateProjectionArtifactBytes = `${JSON.stringify(candidateProjection, null, 2)}\n`;
+const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const safetyCandidateProjection = buildLifecycleNeutralSafetyProjection(releasedPublicProjection);
+const safetyCandidateProjectionBytes = `${JSON.stringify(safetyCandidateProjection)}\n`;
+const safetyPublication = buildRetailLifecycleNeutralSafetyPublication({
+  baselinePublicProjection: releasedPublicProjection,
+  baselinePublicProjectionSha256: sha256(releasedPublicProjectionBytes),
+  candidatePublicProjection: safetyCandidateProjection,
+  candidatePublicProjectionSha256: sha256(safetyCandidateProjectionBytes),
+  releasePolicy: lifecycleReleasePolicy,
+  releasePolicySha256: sha256(lifecycleReleasePolicyBytes),
+  shadow: lifecycleShadow,
+});
+let lifecyclePublication = safetyPublication;
+if (safetyPublication.decision.status === 'SAFETY_FIELDS_REMOVED') {
+  const safetyAudit = auditPublicFitProjection(safetyPublication.publicProjection);
+  if (safetyAudit.summary.violations !== 0) {
+    throw new Error('lifecycle-neutral safety projection still contains unsafe Fit classifications');
+  }
+  await writeFile(publicProjectionPath, safetyCandidateProjectionBytes);
+} else {
+  lifecyclePublication = preserveRetailLifecycleShadowOnlyPublication({
+    baselinePublicProjection: releasedPublicProjection,
+    baselinePublicProjectionSha256: sha256(releasedPublicProjectionBytes),
+    candidatePublicProjection: candidateProjection,
+    candidatePublicProjectionSha256: sha256(candidateProjectionBytes),
+    releasePolicy: lifecycleReleasePolicy,
+    releasePolicySha256: sha256(lifecycleReleasePolicyBytes),
+    shadow: lifecycleShadow,
+  });
+}
+const candidateAudit = auditPublicFitProjection(candidateProjection);
+if (candidateAudit.summary.violations !== 0) {
+  throw new Error('migration candidate contains unsafe Fit classifications');
+}
+await mkdir(dirname(candidateProjectionPath), { recursive: true });
+const candidateTemporaryPath = `${candidateProjectionPath}.${process.pid}.tmp`;
+await writeFile(candidateTemporaryPath, candidateProjectionArtifactBytes, { flag: 'wx' });
+await rename(candidateTemporaryPath, candidateProjectionPath);
+console.log(JSON.stringify({
+  products: lifecyclePublication.publicProjection.products.length,
+  candidateProducts: candidateProjection.products.length,
+  candidateOutput: candidateProjectionPath,
+  quarantined: registry.quarantine.length,
+  lifecyclePublication: lifecyclePublication.decision.status,
+  changedProducts: lifecyclePublication.decision.changedProductIds.length,
+}));

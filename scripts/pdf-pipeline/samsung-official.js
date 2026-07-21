@@ -1,8 +1,10 @@
 require('dotenv').config({ quiet: true });
 
 const SAMSUNG_AU_BASE_URL = 'https://www.samsung.com';
+const SAMSUNG_AU_APPLIANCE_SITEMAP_URL = `${SAMSUNG_AU_BASE_URL}/au/da-sitemap.xml`;
 const DEFAULT_USER_AGENT = 'FitApplianceBot/1.0 (+https://www.fitappliance.com.au/about)';
 const DEFAULT_TIMEOUT_MS = 60_000;
+const sitemapCache = new WeakMap();
 
 function normalizeSku(value) {
   return String(value || '')
@@ -202,11 +204,55 @@ function extractSamsungPdfResources(html, sku = '') {
   return [...deduped.values()].sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
 }
 
+function extractSamsungProductPageUrls(xml, sku = '') {
+  const exact = normalizeSku(sku);
+  if (!exact) return [];
+  const variants = new Set([exact, ...(exact.endsWith('SA') ? [] : [`${exact}SA`])]);
+  const urls = [];
+  const pattern = /<loc>([^<]+)<\/loc>/gi;
+  let match;
+  while ((match = pattern.exec(String(xml || '')))) {
+    let url;
+    try {
+      url = new URL(decodeHtml(match[1]).trim());
+    } catch {
+      continue;
+    }
+    if (url.protocol !== 'https:' || url.hostname !== 'www.samsung.com'
+      || !url.pathname.startsWith('/au/') || url.pathname.startsWith('/au/support/')) continue;
+    const pathIdentity = normalizeSku(decodeURIComponent(url.pathname));
+    if (![...variants].some((variant) => pathIdentity.includes(variant))) continue;
+    url.hash = '';
+    urls.push(url.toString());
+  }
+  return [...new Set(urls)].sort();
+}
+
+async function fetchSamsungApplianceSitemap(opts = {}) {
+  const fetchImpl = opts.fetchImpl ?? globalThis.fetch;
+  if (typeof fetchImpl !== 'function') throw new Error('Samsung official finder requires fetch');
+  if (!sitemapCache.has(fetchImpl)) {
+    const promise = fetchHtml(SAMSUNG_AU_APPLIANCE_SITEMAP_URL, { ...opts, fetchImpl });
+    sitemapCache.set(fetchImpl, promise);
+    promise.catch(() => sitemapCache.delete(fetchImpl));
+  }
+  return sitemapCache.get(fetchImpl);
+}
+
+async function findSamsungProductPageUrls(sku, opts = {}) {
+  try {
+    return extractSamsungProductPageUrls(await fetchSamsungApplianceSitemap(opts), sku);
+  } catch {
+    return [];
+  }
+}
+
 async function findSamsungOfficialPdf(target, opts = {}) {
   const sku = target?.sku || target?.model || target?.product?.model || target?.product?.sku;
   if (!sku) throw new Error('Samsung official finder requires sku/model');
   const variants = buildSamsungSupportModelVariants(sku);
   let lastError = null;
+  let matched = null;
 
   for (const variant of variants) {
     const supportUrl = `${SAMSUNG_AU_BASE_URL}/au/support/model/${variant}/`;
@@ -215,7 +261,7 @@ async function findSamsungOfficialPdf(target, opts = {}) {
       const resources = extractSamsungPdfResources(html, sku);
       const best = resources.find((resource) => resource.score > 0) || null;
       if (best) {
-        return {
+        matched = {
           sku,
           matchedSku: variant,
           supportUrl,
@@ -224,11 +270,15 @@ async function findSamsungOfficialPdf(target, opts = {}) {
           resourceType: best.type,
           resources
         };
+        break;
       }
     } catch (error) {
       lastError = error;
     }
   }
+
+  const productUrls = await findSamsungProductPageUrls(sku, opts);
+  if (matched) return { ...matched, productUrls };
 
   return {
     sku,
@@ -237,12 +287,14 @@ async function findSamsungOfficialPdf(target, opts = {}) {
     sourceUrl: null,
     source: 'samsung-official',
     resources: [],
+    productUrls,
     reason: lastError ? lastError.message : 'pdf_resource_not_found'
   };
 }
 
 exports.absoluteSamsungUrl = absoluteSamsungUrl;
 exports.buildSamsungSupportModelVariants = buildSamsungSupportModelVariants;
+exports.extractSamsungProductPageUrls = extractSamsungProductPageUrls;
 exports.extractSamsungPdfResources = extractSamsungPdfResources;
 exports.findSamsungOfficialPdf = findSamsungOfficialPdf;
 exports.normalizeSku = normalizeSku;

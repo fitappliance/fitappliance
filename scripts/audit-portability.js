@@ -29,28 +29,16 @@ const DEFAULT_WHITELIST = [
     reason: 'Intentional fixture string used to assert localhost URL detection and whitelist behaviour.'
   },
   {
-    filePattern: /^\.github\/workflows\/data-sync\.yml$/,
+    filePattern: /^tests\/publication-boundary\.test\.mjs$/,
     rule: 'hardcoded-main-branch',
-    linePattern: /\bgit push origin main\b/,
-    reason: 'Production data sync intentionally publishes generated data to the canonical main branch.'
+    linePattern: /git push origin main/,
+    reason: 'Intentional unsafe workflow fixture used to verify direct-main publication is rejected.'
   },
   {
-    filePattern: /^\.github\/workflows\/validate-videos\.yml$/,
+    filePattern: /^tests\/workflow-research\.test\.mjs$/,
     rule: 'hardcoded-main-branch',
-    linePattern: /\bgit push origin main\b/,
-    reason: 'Video validation workflow must commit refreshed schema metadata back to the canonical main branch.'
-  },
-  {
-    filePattern: /^\.github\/workflows\/validate-reviews\.yml$/,
-    rule: 'hardcoded-main-branch',
-    linePattern: /\bgit push origin main\b/,
-    reason: 'Review validation workflow must commit refreshed pilot metadata back to the canonical main branch.'
-  },
-  {
-    filePattern: /^\.github\/workflows\/weekly-growth\.yml$/,
-    rule: 'hardcoded-main-branch',
-    linePattern: /\bgit push origin main\b/,
-    reason: 'Weekly growth automation intentionally pushes generated reports to the canonical main branch.'
+    linePattern: /git push origin main/,
+    reason: 'Negative assertion ensures the research workflow cannot restore a direct-main push.'
   }
 ];
 

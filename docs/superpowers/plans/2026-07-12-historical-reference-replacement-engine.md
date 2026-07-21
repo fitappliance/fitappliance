@@ -24,7 +24,7 @@
 - Create `src/domain/historical-appliance-reference.mjs`
 - Modify `src/domain/architecture-v2-paths.mjs`
 - Test `tests/architecture-v2/historical-appliance-reference.test.mjs`
-- Test `tests/architecture-v2/architecture-v2-data-layout.test.mjs`
+- Test `tests/architecture-v2/architecture-v2-paths.test.mjs`
 
 - [x] Define lifecycle, evidence and lookup-action enums as separate fields.
 - [x] Validate exact identity groups, complete dimensions, source hashes and allowed state combinations.
@@ -101,7 +101,7 @@
 - Modify `public/scripts/replacement-matcher.mjs`
 - Create `public/scripts/replacement-reference-loader.mjs`
 - Modify `tests/replacement-matcher.test.mjs`
-- Create `tests/replacement-reference-loader.test.mjs`
+- Modify `tests/replacement-matcher.test.mjs`
 
 - [x] Pass old dimensions through unchanged and delete the fixed practical buffer.
 - [x] Resolve exact brand/model or unique exact model automatically.
@@ -172,7 +172,11 @@
 - Accessibility/layout: aria-live status is polite; Space, Tab and Enter complete registry confirmation; 1,440px desktop and 390px mobile layouts have no horizontal overflow or control overlap.
 - Gates: 1,952 tests passed; lint passed; schema validation checked 2,334 pages and 7,145 JSON-LD blocks with zero errors; indexability audit passed; production build passed with `FITAPPLIANCE_STORAGE_ROOT` unset.
 - Release evidence: the Git deployment reached `READY` in `syd1`; apex redirects permanently to `www`; the public fridge reference hash matches its manifest and carries `X-Robots-Tag: noindex`; fresh cavity sessions load no historical file; replacement sessions load one selected category, preserve confirmation gates and expose direct W/H/D deltas for current-only products.
-- Remaining evidence gap: none for the requested release. Future government-registry and retailer refreshes remain subject to the documented hash-drift rebuild gate.
+- The requested runtime release had no remaining functional gate. That statement
+  did not mean evidence coverage was complete: the post-release coverage audit
+  found only 11 receipt-bound auto-fill records and a large unmigrated legacy
+  document backlog. The remediation is tracked in
+  `2026-07-13-historical-evidence-coverage-recovery.md`.
 
 ## Post-release reproducibility hardening (2026-07-13)
 

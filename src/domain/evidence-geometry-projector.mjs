@@ -4,6 +4,7 @@ import {
   requiredCategoryPlacementEnvelope,
 } from './category-geometry.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
+import { claimV2GeometryValue } from './dimension-evidence-claim.mjs';
 
 const GEOMETRY_FIELDS = Object.freeze([
   'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
@@ -67,15 +68,20 @@ export function projectEvidenceGeometry(input, options = {}) {
     .filter((source) => !superseded.has(source.contentSha256))
     .sort((left, right) => left.contentSha256.localeCompare(right.contentSha256));
   const values = new Map();
+  const claimValues = new Map();
   const evidence = {};
   for (const source of active) {
     verifyReceipt(source, identity, { asOf: source?.verificationReceipt?.verifiedAt });
     for (const claim of source.claims ?? []) {
       if (!GEOMETRY_FIELDS.includes(claim.field)) continue;
-      if (values.has(claim.field) && !sameValue(values.get(claim.field), claim.value)) {
+      if (claimValues.has(claim.field) && !sameValue(claimValues.get(claim.field), claim.value)) {
         throw new Error(`conflicting active evidence for ${claim.field}`);
       }
-      values.set(claim.field, structuredClone(claim.value));
+      claimValues.set(claim.field, structuredClone(claim.value));
+      const geometryValue = claim?.value?.kind
+        ? claimV2GeometryValue(claim)
+        : claim.value;
+      if (geometryValue !== null) values.set(claim.field, structuredClone(geometryValue));
       const fieldEvidence = {
         sourceUrl: source.sourceUrl,
         contentSha256: source.contentSha256,

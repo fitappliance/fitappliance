@@ -8,7 +8,14 @@ import {
 } from '../../src/domain/architecture-v2-paths.mjs';
 
 test('Architecture V2 data is separated by ownership and has no flat JSON artifacts', () => {
-  const expectedRoots = ['decisions/', 'generated/', 'observations/', 'policies/', 'reviews/'];
+  const expectedRoots = [
+    'decisions/',
+    'generated/',
+    'ledgers/',
+    'observations/',
+    'policies/',
+    'reviews/',
+  ];
   const paths = Object.values(architectureV2Paths);
   assert.ok(paths.every((path) => expectedRoots.some((prefix) => path.startsWith(`data/architecture-v2/${prefix}`))));
   assert.ok(paths.every(existsSync), 'every registered Architecture V2 path must exist');
@@ -29,7 +36,30 @@ test('Architecture V2 generated artifact graph is acyclic and follows declared b
   }
 });
 
+test('released and identity-migration candidate registries are separate build epochs', () => {
+  assert.equal(
+    architectureV2Paths.canonicalRegistryMigrationCandidate,
+    'data/architecture-v2/generated/canonical-registry-migration-candidate.json',
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.canonicalRegistry,
+    ['evidenceResolutionManifest'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.canonicalRegistryMigrationCandidate,
+    ['canonicalRegistry', 'retailerIdentityMigration'],
+  );
+});
+
 test('historical reference artifacts follow identity before publication ordering', () => {
+  assert.equal(
+    architectureV2Paths.historicalEvidenceRecoveryPolicy,
+    'data/architecture-v2/policies/historical-evidence-recovery-policy.json',
+  );
+  assert.equal(
+    architectureV2Paths.historicalEvidenceSystemContract,
+    'data/architecture-v2/reviews/automated/historical-evidence-system-contract.json',
+  );
   assert.equal(
     architectureV2Paths.historicalApplianceReference,
     'data/architecture-v2/generated/historical-appliance-reference.json',
@@ -42,9 +72,21 @@ test('historical reference artifacts follow identity before publication ordering
     architectureV2Paths.historicalReplacementAudit,
     'data/architecture-v2/reviews/automated/historical-replacement-audit.json',
   );
+  assert.equal(
+    architectureV2Paths.historicalEvidenceRecoveryQueue,
+    'data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json',
+  );
+  assert.equal(
+    architectureV2Paths.historicalEvidenceRecoveryBatch,
+    'data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json',
+  );
+  assert.equal(
+    architectureV2Paths.historicalEvidenceRecoveryAcceptanceBundle,
+    'data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json',
+  );
   assert.deepEqual(
     ARCHITECTURE_V2_BUILD_GRAPH.historicalApplianceReference,
-    ['officialRegistrySnapshots', 'publicProjection'],
+    ['officialRegistrySnapshots', 'publicProjection', 'historicalEvidenceRecoveryAcceptanceBundle'],
   );
   assert.deepEqual(
     ARCHITECTURE_V2_BUILD_GRAPH.historicalReferencePublicationManifest,
@@ -53,6 +95,23 @@ test('historical reference artifacts follow identity before publication ordering
   assert.deepEqual(
     ARCHITECTURE_V2_BUILD_GRAPH.historicalReplacementAudit,
     ['historicalReferencePublicationManifest', 'publicProjection'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.historicalEvidenceRecoveryQueue,
+    ['sourceDocuments', 'historicalApplianceReference'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.historicalEvidenceRecoveryBatch,
+    ['historicalEvidenceRecoveryQueue'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.historicalEvidenceRecoveryAcceptanceBundle,
+    [],
+  );
+  assert.ok(
+    ARCHITECTURE_V2_BUILD_GRAPH.publicProjection.includes(
+      'historicalEvidenceRecoveryAcceptanceBundle',
+    ),
   );
 });
 

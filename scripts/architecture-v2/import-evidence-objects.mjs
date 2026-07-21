@@ -13,7 +13,7 @@ import {
 } from '../../src/domain/evidence-object-store.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { inspectMineruContentListV2 } from '../../src/domain/mineru-document.mjs';
-import { evidenceSourcePolicy } from '../../src/domain/evidence-source-verifier.mjs';
+import { currentMineruEvidenceProfile } from '../../src/domain/evidence-source-verifier.mjs';
 
 const execFile = promisify(execFileCallback);
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -99,12 +99,11 @@ async function verifyPhase10MineruEntry(acquisition, acquired, storageRoot) {
   const jsonBytes = await readFile(jsonPath);
   const inspection = inspectMineruContentListV2(jsonBytes);
   const artifact = acquired.derivedArtifact;
-  const required = evidenceSourcePolicy.resolutionPolicy.pdfEvidence;
+  const profile = currentMineruEvidenceProfile(artifact);
   if (inspection.contentSha256 !== artifact.contentSha256
     || inspection.pageCount !== acquired.pageCount
     || artifact.sourcePdfSha256 !== acquired.sha256
-    || artifact.parserName !== required.parserName || artifact.parserVersion !== required.parserVersion
-    || artifact.modelRevision !== required.modelRevision) {
+    || acquired.parserVersion !== `MinerU-${profile.parserVersion}`) {
     throw new Error(`Phase 10 MinerU artifact mismatch for ${acquired.legacyRuntimeId}`);
   }
   const objectPath = resolveWithin(storageRoot, artifact.objectPath);

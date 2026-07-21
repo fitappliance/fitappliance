@@ -10,13 +10,17 @@
       "category": "dishwasher",
       "brand": "Electrolux",
       "model": "ESF6700ROW",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "energyReasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
       ],
       "welsIdentityState": "WELS_EXACT_EXPIRED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -69,13 +73,17 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DD60D4NB9",
-      "formFactor": null,
-      "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
+      "formFactor": "drawer",
+      "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
+        "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -128,7 +136,7 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15F3S1",
-      "formFactor": "front_loader",
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
       "energyReasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -191,13 +199,80 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDF1640AX",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "energyReasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "acceptedV3Fields": [],
+      "missingFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm",
+        "deliveryEnvelope.depthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.widthMm",
+        "drainConnection.highLoopRequired",
+        "drainConnection.hoseReachMm",
+        "drainConnection.maximumHeightMm",
+        "drainConnection.minimumHeightMm",
+        "drainConnection.required",
+        "installationClearance.leftMm",
+        "installationClearance.rearMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "operationEnvelope.doorOpenDepthMm",
+        "powerConnection.currentA",
+        "powerConnection.leadReachMm",
+        "powerConnection.required",
+        "powerConnection.voltageV",
+        "professionalInstallation.required",
+        "ventilation.rearMm",
+        "waterConnection.hoseReachMm",
+        "waterConnection.maximumPressureKpa",
+        "waterConnection.minimumPressureKpa",
+        "waterConnection.required"
+      ],
+      "nextAction": {
+        "strategy": "exact_official_installation_document",
+        "tier": 1,
+        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
+      },
+      "sourceOrder": [
+        "exact_au_manufacturer_asset",
+        "official_support_or_trade_endpoint",
+        "official_registry_identity",
+        "licensed_product_master",
+        "direct_brand_data_request"
+      ],
+      "publicationState": "shadow_quarantined",
+      "terminalState": "needs_research"
+    },
+    {
+      "schemaVersion": 1,
+      "caseId": "fitv3_fa_prod_0910660e1a804a67fa883688",
+      "canonicalProductId": "fa_prod_0910660e1a804a67fa883688",
+      "legacyRuntimeId": "ao-101283",
+      "category": "dishwasher",
+      "brand": "Smeg",
+      "model": "DWAU615DB3",
+      "formFactor": "built_in",
+      "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
+      "energyReasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "welsIdentityState": "WELS_EXACT_REGISTERED",
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -256,7 +331,11 @@
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -305,7 +384,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD3A15NS",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -425,7 +504,11 @@
         "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -468,13 +551,72 @@
     },
     {
       "schemaVersion": 1,
+      "caseId": "fitv3_fa_prod_150eb75eea0da8832efacf71",
+      "canonicalProductId": "fa_prod_150eb75eea0da8832efacf71",
+      "legacyRuntimeId": "ao-101284",
+      "category": "dishwasher",
+      "brand": "Smeg",
+      "model": "DWAU615DX3",
+      "formFactor": "built_in",
+      "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
+      "energyReasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "welsIdentityState": "WELS_EXACT_REGISTERED",
+      "legacyReceiptBoundFields": [],
+      "acceptedV3Fields": [],
+      "missingFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm",
+        "deliveryEnvelope.depthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.widthMm",
+        "drainConnection.highLoopRequired",
+        "drainConnection.hoseReachMm",
+        "drainConnection.maximumHeightMm",
+        "drainConnection.minimumHeightMm",
+        "drainConnection.required",
+        "installationClearance.leftMm",
+        "installationClearance.rearMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "operationEnvelope.doorOpenDepthMm",
+        "powerConnection.currentA",
+        "powerConnection.leadReachMm",
+        "powerConnection.required",
+        "powerConnection.voltageV",
+        "professionalInstallation.required",
+        "ventilation.rearMm",
+        "waterConnection.hoseReachMm",
+        "waterConnection.maximumPressureKpa",
+        "waterConnection.minimumPressureKpa",
+        "waterConnection.required"
+      ],
+      "nextAction": {
+        "strategy": "exact_official_installation_document",
+        "tier": 1,
+        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
+      },
+      "sourceOrder": [
+        "exact_au_manufacturer_asset",
+        "official_support_or_trade_endpoint",
+        "official_registry_identity",
+        "licensed_product_master",
+        "direct_brand_data_request"
+      ],
+      "publicationState": "shadow_quarantined",
+      "terminalState": "needs_research"
+    },
+    {
+      "schemaVersion": 1,
       "caseId": "fitv3_fa_prod_1e22efa5bb243f387f279af7",
       "canonicalProductId": "fa_prod_1e22efa5bb243f387f279af7",
       "legacyRuntimeId": "dishwasher-adw0956",
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DW60UZT4B2",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "REGISTRY_INTERNAL_CONFLICT",
       "energyReasonCodes": [
         "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
@@ -533,7 +675,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD5B14PS",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -653,7 +795,11 @@
         "ONE_OR_MORE_AXES_DISAGREE"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -702,7 +848,7 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "DDN38450",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "energyReasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
@@ -816,13 +962,17 @@
       "category": "dishwasher",
       "brand": "Bosch",
       "model": "SMS2ITW01A",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "EXACT_NO_DIMENSIONS",
       "energyReasonCodes": [
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -936,7 +1086,11 @@
         "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -991,7 +1145,11 @@
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -1021,65 +1179,6 @@
         "strategy": "exact_official_installation_document",
         "tier": 1,
         "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
-      },
-      "sourceOrder": [
-        "exact_au_manufacturer_asset",
-        "official_support_or_trade_endpoint",
-        "official_registry_identity",
-        "licensed_product_master",
-        "direct_brand_data_request"
-      ],
-      "publicationState": "shadow_quarantined",
-      "terminalState": "needs_research"
-    },
-    {
-      "schemaVersion": 1,
-      "caseId": "fitv3_fa_prod_3494250b2a85d645b6573ea3",
-      "canonicalProductId": "fa_prod_3494250b2a85d645b6573ea3",
-      "legacyRuntimeId": "ao-66241",
-      "category": "dishwasher",
-      "brand": "Midea",
-      "model": "MDWB1SS",
-      "formFactor": null,
-      "energyReconciliationState": "EXACT_CONSISTENT",
-      "energyReasonCodes": [
-        "EXACT_IDENTITY_AND_WHD_AGREE"
-      ],
-      "welsIdentityState": "WELS_IDENTITY_CONFLICT",
-      "legacyReceiptBoundFields": [],
-      "acceptedV3Fields": [],
-      "missingFields": [
-        "closedEnvelope.depthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.widthMm",
-        "deliveryEnvelope.depthMm",
-        "deliveryEnvelope.heightMm",
-        "deliveryEnvelope.widthMm",
-        "drainConnection.highLoopRequired",
-        "drainConnection.hoseReachMm",
-        "drainConnection.maximumHeightMm",
-        "drainConnection.minimumHeightMm",
-        "drainConnection.required",
-        "installationClearance.leftMm",
-        "installationClearance.rearMm",
-        "installationClearance.rightMm",
-        "installationClearance.topMm",
-        "operationEnvelope.doorOpenDepthMm",
-        "powerConnection.currentA",
-        "powerConnection.leadReachMm",
-        "powerConnection.required",
-        "powerConnection.voltageV",
-        "professionalInstallation.required",
-        "ventilation.rearMm",
-        "waterConnection.hoseReachMm",
-        "waterConnection.maximumPressureKpa",
-        "waterConnection.minimumPressureKpa",
-        "waterConnection.required"
-      ],
-      "nextAction": {
-        "strategy": "wels_then_exact_official_document",
-        "tier": 1,
-        "reason": "Confirm exact AU registration identity, then acquire the exact official installation asset."
       },
       "sourceOrder": [
         "exact_au_manufacturer_asset",
@@ -1148,19 +1247,86 @@
     },
     {
       "schemaVersion": 1,
+      "caseId": "fitv3_fa_prod_4076bfeec9fe64e40d799c30",
+      "canonicalProductId": "fa_prod_4076bfeec9fe64e40d799c30",
+      "legacyRuntimeId": "ao-102999",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMU6HCS01A",
+      "formFactor": "built_in",
+      "energyReconciliationState": "EXACT_NO_DIMENSIONS",
+      "energyReasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "welsIdentityState": "WELS_EXACT_REGISTERED",
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "acceptedV3Fields": [],
+      "missingFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm",
+        "deliveryEnvelope.depthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.widthMm",
+        "drainConnection.highLoopRequired",
+        "drainConnection.hoseReachMm",
+        "drainConnection.maximumHeightMm",
+        "drainConnection.minimumHeightMm",
+        "drainConnection.required",
+        "installationClearance.leftMm",
+        "installationClearance.rearMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "operationEnvelope.doorOpenDepthMm",
+        "powerConnection.currentA",
+        "powerConnection.leadReachMm",
+        "powerConnection.required",
+        "powerConnection.voltageV",
+        "professionalInstallation.required",
+        "ventilation.rearMm",
+        "waterConnection.hoseReachMm",
+        "waterConnection.maximumPressureKpa",
+        "waterConnection.minimumPressureKpa",
+        "waterConnection.required"
+      ],
+      "nextAction": {
+        "strategy": "exact_official_installation_document",
+        "tier": 1,
+        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
+      },
+      "sourceOrder": [
+        "exact_au_manufacturer_asset",
+        "official_support_or_trade_endpoint",
+        "official_registry_identity",
+        "licensed_product_master",
+        "direct_brand_data_request"
+      ],
+      "publicationState": "shadow_quarantined",
+      "terminalState": "needs_research"
+    },
+    {
+      "schemaVersion": 1,
       "caseId": "fitv3_fa_prod_43be0630d42f1bf6bdfcb231",
       "canonicalProductId": "fa_prod_43be0630d42f1bf6bdfcb231",
       "legacyRuntimeId": "ao-132904",
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15F2B1",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
       "energyReasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -1274,7 +1440,11 @@
         "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -1433,13 +1603,80 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDF1630X",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "energyReasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "acceptedV3Fields": [],
+      "missingFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm",
+        "deliveryEnvelope.depthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.widthMm",
+        "drainConnection.highLoopRequired",
+        "drainConnection.hoseReachMm",
+        "drainConnection.maximumHeightMm",
+        "drainConnection.minimumHeightMm",
+        "drainConnection.required",
+        "installationClearance.leftMm",
+        "installationClearance.rearMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "operationEnvelope.doorOpenDepthMm",
+        "powerConnection.currentA",
+        "powerConnection.leadReachMm",
+        "powerConnection.required",
+        "powerConnection.voltageV",
+        "professionalInstallation.required",
+        "ventilation.rearMm",
+        "waterConnection.hoseReachMm",
+        "waterConnection.maximumPressureKpa",
+        "waterConnection.minimumPressureKpa",
+        "waterConnection.required"
+      ],
+      "nextAction": {
+        "strategy": "exact_official_installation_document",
+        "tier": 1,
+        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
+      },
+      "sourceOrder": [
+        "exact_au_manufacturer_asset",
+        "official_support_or_trade_endpoint",
+        "official_registry_identity",
+        "licensed_product_master",
+        "direct_brand_data_request"
+      ],
+      "publicationState": "shadow_quarantined",
+      "terminalState": "needs_research"
+    },
+    {
+      "schemaVersion": 1,
+      "caseId": "fitv3_fa_prod_4a618d9f867ec77222f1a02c",
+      "canonicalProductId": "fa_prod_4a618d9f867ec77222f1a02c",
+      "legacyRuntimeId": "ao-127312",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6HCI02A",
+      "formFactor": "freestanding",
+      "energyReconciliationState": "EXACT_NO_DIMENSIONS",
+      "energyReasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "welsIdentityState": "WELS_EXACT_REGISTERED",
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -1492,13 +1729,17 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DD60D2NB9",
-      "formFactor": null,
-      "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
+      "formFactor": "drawer",
+      "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
+        "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -1557,7 +1798,11 @@
         "ONE_OR_MORE_AXES_DISAGREE"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -1655,124 +1900,6 @@
     },
     {
       "schemaVersion": 1,
-      "caseId": "fitv3_fa_prod_58f5a7609ebcb420091eb986",
-      "canonicalProductId": "fa_prod_58f5a7609ebcb420091eb986",
-      "legacyRuntimeId": "ao-141853",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS6HAI02A",
-      "formFactor": null,
-      "energyReconciliationState": "EXACT_NO_DIMENSIONS",
-      "energyReasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
-      ],
-      "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
-      "acceptedV3Fields": [],
-      "missingFields": [
-        "closedEnvelope.depthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.widthMm",
-        "deliveryEnvelope.depthMm",
-        "deliveryEnvelope.heightMm",
-        "deliveryEnvelope.widthMm",
-        "drainConnection.highLoopRequired",
-        "drainConnection.hoseReachMm",
-        "drainConnection.maximumHeightMm",
-        "drainConnection.minimumHeightMm",
-        "drainConnection.required",
-        "installationClearance.leftMm",
-        "installationClearance.rearMm",
-        "installationClearance.rightMm",
-        "installationClearance.topMm",
-        "operationEnvelope.doorOpenDepthMm",
-        "powerConnection.currentA",
-        "powerConnection.leadReachMm",
-        "powerConnection.required",
-        "powerConnection.voltageV",
-        "professionalInstallation.required",
-        "ventilation.rearMm",
-        "waterConnection.hoseReachMm",
-        "waterConnection.maximumPressureKpa",
-        "waterConnection.minimumPressureKpa",
-        "waterConnection.required"
-      ],
-      "nextAction": {
-        "strategy": "exact_official_installation_document",
-        "tier": 1,
-        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
-      },
-      "sourceOrder": [
-        "exact_au_manufacturer_asset",
-        "official_support_or_trade_endpoint",
-        "official_registry_identity",
-        "licensed_product_master",
-        "direct_brand_data_request"
-      ],
-      "publicationState": "shadow_quarantined",
-      "terminalState": "needs_research"
-    },
-    {
-      "schemaVersion": 1,
-      "caseId": "fitv3_fa_prod_5a84ca3b168d4f76044963f4",
-      "canonicalProductId": "fa_prod_5a84ca3b168d4f76044963f4",
-      "legacyRuntimeId": "ao-102182",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI6HCS01A",
-      "formFactor": null,
-      "energyReconciliationState": "EXACT_NO_DIMENSIONS",
-      "energyReasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
-      ],
-      "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
-      "acceptedV3Fields": [],
-      "missingFields": [
-        "closedEnvelope.depthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.widthMm",
-        "deliveryEnvelope.depthMm",
-        "deliveryEnvelope.heightMm",
-        "deliveryEnvelope.widthMm",
-        "drainConnection.highLoopRequired",
-        "drainConnection.hoseReachMm",
-        "drainConnection.maximumHeightMm",
-        "drainConnection.minimumHeightMm",
-        "drainConnection.required",
-        "installationClearance.leftMm",
-        "installationClearance.rearMm",
-        "installationClearance.rightMm",
-        "installationClearance.topMm",
-        "operationEnvelope.doorOpenDepthMm",
-        "powerConnection.currentA",
-        "powerConnection.leadReachMm",
-        "powerConnection.required",
-        "powerConnection.voltageV",
-        "professionalInstallation.required",
-        "ventilation.rearMm",
-        "waterConnection.hoseReachMm",
-        "waterConnection.maximumPressureKpa",
-        "waterConnection.minimumPressureKpa",
-        "waterConnection.required"
-      ],
-      "nextAction": {
-        "strategy": "exact_official_installation_document",
-        "tier": 1,
-        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
-      },
-      "sourceOrder": [
-        "exact_au_manufacturer_asset",
-        "official_support_or_trade_endpoint",
-        "official_registry_identity",
-        "licensed_product_master",
-        "direct_brand_data_request"
-      ],
-      "publicationState": "shadow_quarantined",
-      "terminalState": "needs_research"
-    },
-    {
-      "schemaVersion": 1,
       "caseId": "fitv3_fa_prod_5b2f42e7391d85a23a706df6",
       "canonicalProductId": "fa_prod_5b2f42e7391d85a23a706df6",
       "legacyRuntimeId": "fridge-arf3865",
@@ -1834,13 +1961,17 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DW60UT4I2",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "REGISTRY_INTERNAL_CONFLICT",
       "energyReasonCodes": [
         "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -1893,13 +2024,17 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DD60D2NX9",
-      "formFactor": null,
-      "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
+      "formFactor": "drawer",
+      "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
+        "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -2007,13 +2142,17 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD2A25MB",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -2066,13 +2205,17 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15U2I1",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
       "energyReasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -2201,65 +2344,6 @@
         "installationClearance.topMm",
         "operationEnvelope.doorOpenDepthMm",
         "operationEnvelope.hingeSideSpaceMm",
-        "powerConnection.currentA",
-        "powerConnection.leadReachMm",
-        "powerConnection.required",
-        "powerConnection.voltageV",
-        "professionalInstallation.required",
-        "ventilation.rearMm",
-        "waterConnection.hoseReachMm",
-        "waterConnection.maximumPressureKpa",
-        "waterConnection.minimumPressureKpa",
-        "waterConnection.required"
-      ],
-      "nextAction": {
-        "strategy": "exact_official_installation_document",
-        "tier": 1,
-        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
-      },
-      "sourceOrder": [
-        "exact_au_manufacturer_asset",
-        "official_support_or_trade_endpoint",
-        "official_registry_identity",
-        "licensed_product_master",
-        "direct_brand_data_request"
-      ],
-      "publicationState": "shadow_quarantined",
-      "terminalState": "needs_research"
-    },
-    {
-      "schemaVersion": 1,
-      "caseId": "fitv3_fa_prod_71ba41e4e13dc2f758852acf",
-      "canonicalProductId": "fa_prod_71ba41e4e13dc2f758852acf",
-      "legacyRuntimeId": "ao-107181",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS4HVB01A",
-      "formFactor": null,
-      "energyReconciliationState": "EXACT_NO_DIMENSIONS",
-      "energyReasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
-      ],
-      "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
-      "acceptedV3Fields": [],
-      "missingFields": [
-        "closedEnvelope.depthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.widthMm",
-        "deliveryEnvelope.depthMm",
-        "deliveryEnvelope.heightMm",
-        "deliveryEnvelope.widthMm",
-        "drainConnection.highLoopRequired",
-        "drainConnection.hoseReachMm",
-        "drainConnection.maximumHeightMm",
-        "drainConnection.minimumHeightMm",
-        "drainConnection.required",
-        "installationClearance.leftMm",
-        "installationClearance.rearMm",
-        "installationClearance.rightMm",
-        "installationClearance.topMm",
-        "operationEnvelope.doorOpenDepthMm",
         "powerConnection.currentA",
         "powerConnection.leadReachMm",
         "powerConnection.required",
@@ -2581,7 +2665,11 @@
         "ONE_OR_MORE_AXES_DISAGREE"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -2630,7 +2718,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD4B24PS",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -2854,10 +2942,136 @@
       "category": "dishwasher",
       "brand": "Bosch",
       "model": "SMS4HTI01A",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_NO_DIMENSIONS",
       "energyReasonCodes": [
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "welsIdentityState": "WELS_EXACT_REGISTERED",
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "acceptedV3Fields": [],
+      "missingFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm",
+        "deliveryEnvelope.depthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.widthMm",
+        "drainConnection.highLoopRequired",
+        "drainConnection.hoseReachMm",
+        "drainConnection.maximumHeightMm",
+        "drainConnection.minimumHeightMm",
+        "drainConnection.required",
+        "installationClearance.leftMm",
+        "installationClearance.rearMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "operationEnvelope.doorOpenDepthMm",
+        "powerConnection.currentA",
+        "powerConnection.leadReachMm",
+        "powerConnection.required",
+        "powerConnection.voltageV",
+        "professionalInstallation.required",
+        "ventilation.rearMm",
+        "waterConnection.hoseReachMm",
+        "waterConnection.maximumPressureKpa",
+        "waterConnection.minimumPressureKpa",
+        "waterConnection.required"
+      ],
+      "nextAction": {
+        "strategy": "exact_official_installation_document",
+        "tier": 1,
+        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
+      },
+      "sourceOrder": [
+        "exact_au_manufacturer_asset",
+        "official_support_or_trade_endpoint",
+        "official_registry_identity",
+        "licensed_product_master",
+        "direct_brand_data_request"
+      ],
+      "publicationState": "shadow_quarantined",
+      "terminalState": "needs_research"
+    },
+    {
+      "schemaVersion": 1,
+      "caseId": "fitv3_fa_prod_91c22252a1874afb78355a91",
+      "canonicalProductId": "fa_prod_91c22252a1874afb78355a91",
+      "legacyRuntimeId": "ao-104570",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6HCB01A",
+      "formFactor": "freestanding",
+      "energyReconciliationState": "EXACT_NO_DIMENSIONS",
+      "energyReasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "welsIdentityState": "WELS_EXACT_REGISTERED",
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "acceptedV3Fields": [],
+      "missingFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm",
+        "deliveryEnvelope.depthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.widthMm",
+        "drainConnection.highLoopRequired",
+        "drainConnection.hoseReachMm",
+        "drainConnection.maximumHeightMm",
+        "drainConnection.minimumHeightMm",
+        "drainConnection.required",
+        "installationClearance.leftMm",
+        "installationClearance.rearMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "operationEnvelope.doorOpenDepthMm",
+        "powerConnection.currentA",
+        "powerConnection.leadReachMm",
+        "powerConnection.required",
+        "powerConnection.voltageV",
+        "professionalInstallation.required",
+        "ventilation.rearMm",
+        "waterConnection.hoseReachMm",
+        "waterConnection.maximumPressureKpa",
+        "waterConnection.minimumPressureKpa",
+        "waterConnection.required"
+      ],
+      "nextAction": {
+        "strategy": "exact_official_installation_document",
+        "tier": 1,
+        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
+      },
+      "sourceOrder": [
+        "exact_au_manufacturer_asset",
+        "official_support_or_trade_endpoint",
+        "official_registry_identity",
+        "licensed_product_master",
+        "direct_brand_data_request"
+      ],
+      "publicationState": "shadow_quarantined",
+      "terminalState": "needs_research"
+    },
+    {
+      "schemaVersion": 1,
+      "caseId": "fitv3_fa_prod_9344c42e10d2bba566bb1770",
+      "canonicalProductId": "fa_prod_9344c42e10d2bba566bb1770",
+      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60fc4b2",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4B2",
+      "formFactor": "built_in",
+      "energyReconciliationState": "REGISTRY_INTERNAL_CONFLICT",
+      "energyReasonCodes": [
+        "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
       "legacyReceiptBoundFields": [],
@@ -2968,13 +3182,17 @@
       "category": "dishwasher",
       "brand": "Bosch",
       "model": "SMS4HVI01A",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "EXACT_NO_DIMENSIONS",
       "energyReasonCodes": [
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -3027,7 +3245,7 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DD60SCX9",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -3086,7 +3304,7 @@
       "category": "dishwasher",
       "brand": "Ilve",
       "model": "IVBID10X",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -3200,7 +3418,7 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15F4B1",
-      "formFactor": "front_loader",
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
       "energyReasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -3269,7 +3487,11 @@
         "ONE_OR_MORE_AXES_DISAGREE"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -3312,131 +3534,13 @@
     },
     {
       "schemaVersion": 1,
-      "caseId": "fitv3_fa_prod_9ffb22502ce4f205bcc22ec0",
-      "canonicalProductId": "fa_prod_9ffb22502ce4f205bcc22ec0",
-      "legacyRuntimeId": "ao-153384",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DD60ST4NB9",
-      "formFactor": null,
-      "energyReconciliationState": "REGISTRY_INTERNAL_CONFLICT",
-      "energyReasonCodes": [
-        "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
-      ],
-      "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
-      "acceptedV3Fields": [],
-      "missingFields": [
-        "closedEnvelope.depthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.widthMm",
-        "deliveryEnvelope.depthMm",
-        "deliveryEnvelope.heightMm",
-        "deliveryEnvelope.widthMm",
-        "drainConnection.highLoopRequired",
-        "drainConnection.hoseReachMm",
-        "drainConnection.maximumHeightMm",
-        "drainConnection.minimumHeightMm",
-        "drainConnection.required",
-        "installationClearance.leftMm",
-        "installationClearance.rearMm",
-        "installationClearance.rightMm",
-        "installationClearance.topMm",
-        "operationEnvelope.doorOpenDepthMm",
-        "powerConnection.currentA",
-        "powerConnection.leadReachMm",
-        "powerConnection.required",
-        "powerConnection.voltageV",
-        "professionalInstallation.required",
-        "ventilation.rearMm",
-        "waterConnection.hoseReachMm",
-        "waterConnection.maximumPressureKpa",
-        "waterConnection.minimumPressureKpa",
-        "waterConnection.required"
-      ],
-      "nextAction": {
-        "strategy": "exact_official_installation_document",
-        "tier": 1,
-        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
-      },
-      "sourceOrder": [
-        "exact_au_manufacturer_asset",
-        "official_support_or_trade_endpoint",
-        "official_registry_identity",
-        "licensed_product_master",
-        "direct_brand_data_request"
-      ],
-      "publicationState": "shadow_quarantined",
-      "terminalState": "needs_research"
-    },
-    {
-      "schemaVersion": 1,
-      "caseId": "fitv3_fa_prod_a1725ebc3892da3158722c8f",
-      "canonicalProductId": "fa_prod_a1725ebc3892da3158722c8f",
-      "legacyRuntimeId": "ao-66240",
-      "category": "dishwasher",
-      "brand": "Midea",
-      "model": "MDWB1BL",
-      "formFactor": null,
-      "energyReconciliationState": "EXACT_CONSISTENT",
-      "energyReasonCodes": [
-        "EXACT_IDENTITY_AND_WHD_AGREE"
-      ],
-      "welsIdentityState": "WELS_IDENTITY_CONFLICT",
-      "legacyReceiptBoundFields": [],
-      "acceptedV3Fields": [],
-      "missingFields": [
-        "closedEnvelope.depthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.widthMm",
-        "deliveryEnvelope.depthMm",
-        "deliveryEnvelope.heightMm",
-        "deliveryEnvelope.widthMm",
-        "drainConnection.highLoopRequired",
-        "drainConnection.hoseReachMm",
-        "drainConnection.maximumHeightMm",
-        "drainConnection.minimumHeightMm",
-        "drainConnection.required",
-        "installationClearance.leftMm",
-        "installationClearance.rearMm",
-        "installationClearance.rightMm",
-        "installationClearance.topMm",
-        "operationEnvelope.doorOpenDepthMm",
-        "powerConnection.currentA",
-        "powerConnection.leadReachMm",
-        "powerConnection.required",
-        "powerConnection.voltageV",
-        "professionalInstallation.required",
-        "ventilation.rearMm",
-        "waterConnection.hoseReachMm",
-        "waterConnection.maximumPressureKpa",
-        "waterConnection.minimumPressureKpa",
-        "waterConnection.required"
-      ],
-      "nextAction": {
-        "strategy": "wels_then_exact_official_document",
-        "tier": 1,
-        "reason": "Confirm exact AU registration identity, then acquire the exact official installation asset."
-      },
-      "sourceOrder": [
-        "exact_au_manufacturer_asset",
-        "official_support_or_trade_endpoint",
-        "official_registry_identity",
-        "licensed_product_master",
-        "direct_brand_data_request"
-      ],
-      "publicationState": "shadow_quarantined",
-      "terminalState": "needs_research"
-    },
-    {
-      "schemaVersion": 1,
       "caseId": "fitv3_fa_prod_a7cc3652bfa5c1f6c770478b",
       "canonicalProductId": "fa_prod_a7cc3652bfa5c1f6c770478b",
       "legacyRuntimeId": "ao-161221",
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15F1S1",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
       "energyReasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -3495,10 +3599,132 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD3A25MW",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "welsIdentityState": "WELS_EXACT_REGISTERED",
+      "legacyReceiptBoundFields": [],
+      "acceptedV3Fields": [],
+      "missingFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm",
+        "deliveryEnvelope.depthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.widthMm",
+        "drainConnection.highLoopRequired",
+        "drainConnection.hoseReachMm",
+        "drainConnection.maximumHeightMm",
+        "drainConnection.minimumHeightMm",
+        "drainConnection.required",
+        "installationClearance.leftMm",
+        "installationClearance.rearMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "operationEnvelope.doorOpenDepthMm",
+        "powerConnection.currentA",
+        "powerConnection.leadReachMm",
+        "powerConnection.required",
+        "powerConnection.voltageV",
+        "professionalInstallation.required",
+        "ventilation.rearMm",
+        "waterConnection.hoseReachMm",
+        "waterConnection.maximumPressureKpa",
+        "waterConnection.minimumPressureKpa",
+        "waterConnection.required"
+      ],
+      "nextAction": {
+        "strategy": "exact_official_installation_document",
+        "tier": 1,
+        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
+      },
+      "sourceOrder": [
+        "exact_au_manufacturer_asset",
+        "official_support_or_trade_endpoint",
+        "official_registry_identity",
+        "licensed_product_master",
+        "direct_brand_data_request"
+      ],
+      "publicationState": "shadow_quarantined",
+      "terminalState": "needs_research"
+    },
+    {
+      "schemaVersion": 1,
+      "caseId": "fitv3_fa_prod_a9202ecd30b56a2cd702c36c",
+      "canonicalProductId": "fa_prod_a9202ecd30b56a2cd702c36c",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms2iti02a",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS2ITI02A",
+      "formFactor": "built_in",
+      "energyReconciliationState": "EXACT_NO_DIMENSIONS",
+      "energyReasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "welsIdentityState": "WELS_EXACT_REGISTERED",
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "acceptedV3Fields": [],
+      "missingFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm",
+        "deliveryEnvelope.depthMm",
+        "deliveryEnvelope.heightMm",
+        "deliveryEnvelope.widthMm",
+        "drainConnection.highLoopRequired",
+        "drainConnection.hoseReachMm",
+        "drainConnection.maximumHeightMm",
+        "drainConnection.minimumHeightMm",
+        "drainConnection.required",
+        "installationClearance.leftMm",
+        "installationClearance.rearMm",
+        "installationClearance.rightMm",
+        "installationClearance.topMm",
+        "operationEnvelope.doorOpenDepthMm",
+        "powerConnection.currentA",
+        "powerConnection.leadReachMm",
+        "powerConnection.required",
+        "powerConnection.voltageV",
+        "professionalInstallation.required",
+        "ventilation.rearMm",
+        "waterConnection.hoseReachMm",
+        "waterConnection.maximumPressureKpa",
+        "waterConnection.minimumPressureKpa",
+        "waterConnection.required"
+      ],
+      "nextAction": {
+        "strategy": "exact_official_installation_document",
+        "tier": 1,
+        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
+      },
+      "sourceOrder": [
+        "exact_au_manufacturer_asset",
+        "official_support_or_trade_endpoint",
+        "official_registry_identity",
+        "licensed_product_master",
+        "direct_brand_data_request"
+      ],
+      "publicationState": "shadow_quarantined",
+      "terminalState": "needs_research"
+    },
+    {
+      "schemaVersion": 1,
+      "caseId": "fitv3_fa_prod_aaf669e02e59495318b1056b",
+      "canonicalProductId": "fa_prod_aaf669e02e59495318b1056b",
+      "legacyRuntimeId": "ao-132906",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F3B1",
+      "formFactor": "freestanding",
+      "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
+      "energyReasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
       "legacyReceiptBoundFields": [],
@@ -3609,13 +3835,17 @@
       "category": "dishwasher",
       "brand": "Bosch",
       "model": "SMS24AI01A",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "EXACT_NO_DIMENSIONS",
       "energyReasonCodes": [
         "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -3668,7 +3898,7 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15V2B2",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
       "energyReasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -3727,7 +3957,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD3A25MB",
-      "formFactor": null,
+      "formFactor": "built_in",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -4065,13 +4295,17 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDF1640DX",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "energyReasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -4179,72 +4413,17 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDF1620W",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "energyReasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
       ],
       "welsIdentityState": "WELS_EXACT_EXPIRED",
-      "legacyReceiptBoundFields": [],
-      "acceptedV3Fields": [],
-      "missingFields": [
+      "legacyReceiptBoundFields": [
         "closedEnvelope.depthMm",
         "closedEnvelope.heightMm",
-        "closedEnvelope.widthMm",
-        "deliveryEnvelope.depthMm",
-        "deliveryEnvelope.heightMm",
-        "deliveryEnvelope.widthMm",
-        "drainConnection.highLoopRequired",
-        "drainConnection.hoseReachMm",
-        "drainConnection.maximumHeightMm",
-        "drainConnection.minimumHeightMm",
-        "drainConnection.required",
-        "installationClearance.leftMm",
-        "installationClearance.rearMm",
-        "installationClearance.rightMm",
-        "installationClearance.topMm",
-        "operationEnvelope.doorOpenDepthMm",
-        "powerConnection.currentA",
-        "powerConnection.leadReachMm",
-        "powerConnection.required",
-        "powerConnection.voltageV",
-        "professionalInstallation.required",
-        "ventilation.rearMm",
-        "waterConnection.hoseReachMm",
-        "waterConnection.maximumPressureKpa",
-        "waterConnection.minimumPressureKpa",
-        "waterConnection.required"
+        "closedEnvelope.widthMm"
       ],
-      "nextAction": {
-        "strategy": "exact_official_installation_document",
-        "tier": 1,
-        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
-      },
-      "sourceOrder": [
-        "exact_au_manufacturer_asset",
-        "official_support_or_trade_endpoint",
-        "official_registry_identity",
-        "licensed_product_master",
-        "direct_brand_data_request"
-      ],
-      "publicationState": "shadow_quarantined",
-      "terminalState": "needs_research"
-    },
-    {
-      "schemaVersion": 1,
-      "caseId": "fitv3_fa_prod_c10836872988f234eac38f4c",
-      "canonicalProductId": "fa_prod_c10836872988f234eac38f4c",
-      "legacyRuntimeId": "ao-103524",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI4HTS01A",
-      "formFactor": null,
-      "energyReconciliationState": "EXACT_NO_DIMENSIONS",
-      "energyReasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
-      ],
-      "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -4297,69 +4476,10 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDFB1630X",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
-      ],
-      "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
-      "acceptedV3Fields": [],
-      "missingFields": [
-        "closedEnvelope.depthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.widthMm",
-        "deliveryEnvelope.depthMm",
-        "deliveryEnvelope.heightMm",
-        "deliveryEnvelope.widthMm",
-        "drainConnection.highLoopRequired",
-        "drainConnection.hoseReachMm",
-        "drainConnection.maximumHeightMm",
-        "drainConnection.minimumHeightMm",
-        "drainConnection.required",
-        "installationClearance.leftMm",
-        "installationClearance.rearMm",
-        "installationClearance.rightMm",
-        "installationClearance.topMm",
-        "operationEnvelope.doorOpenDepthMm",
-        "powerConnection.currentA",
-        "powerConnection.leadReachMm",
-        "powerConnection.required",
-        "powerConnection.voltageV",
-        "professionalInstallation.required",
-        "ventilation.rearMm",
-        "waterConnection.hoseReachMm",
-        "waterConnection.maximumPressureKpa",
-        "waterConnection.minimumPressureKpa",
-        "waterConnection.required"
-      ],
-      "nextAction": {
-        "strategy": "exact_official_installation_document",
-        "tier": 1,
-        "reason": "Acquire exact-model AU installation, QRG, specification or trade asset and parse through MinerU."
-      },
-      "sourceOrder": [
-        "exact_au_manufacturer_asset",
-        "official_support_or_trade_endpoint",
-        "official_registry_identity",
-        "licensed_product_master",
-        "direct_brand_data_request"
-      ],
-      "publicationState": "shadow_quarantined",
-      "terminalState": "needs_research"
-    },
-    {
-      "schemaVersion": 1,
-      "caseId": "fitv3_fa_prod_c41a6900126e62213070f3ff",
-      "canonicalProductId": "fa_prod_c41a6900126e62213070f3ff",
-      "legacyRuntimeId": "ao-168357",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW13F0B1",
-      "formFactor": null,
-      "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
-      "energyReasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
       "legacyReceiptBoundFields": [],
@@ -4415,7 +4535,7 @@
       "category": "dishwasher",
       "brand": "Haier",
       "model": "HDW15F1B1",
-      "formFactor": "front_loader",
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
       "energyReasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -4533,7 +4653,7 @@
       "category": "dishwasher",
       "brand": "Hisense",
       "model": "HSBE15FS",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
       "energyReasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"
@@ -4592,7 +4712,7 @@
       "category": "dishwasher",
       "brand": "Westinghouse",
       "model": "WSF6606XB",
-      "formFactor": "front_loader",
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -4710,13 +4830,17 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDF1620X",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "NO_EXACT_REGISTRY_MATCH",
       "energyReasonCodes": [
         "NO_ACTIVE_AU_EXACT_KEY"
       ],
       "welsIdentityState": "WELS_EXACT_EXPIRED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -4769,13 +4893,17 @@
       "category": "dishwasher",
       "brand": "ASKO",
       "model": "DFI666GXXL.AU",
-      "formFactor": null,
+      "formFactor": "integrated",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -4834,7 +4962,11 @@
         "ONE_OR_MORE_AXES_DISAGREE"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -4889,7 +5021,11 @@
         "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -5048,7 +5184,7 @@
       "category": "dishwasher",
       "brand": "Hisense",
       "model": "HSCM15FS",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -5113,7 +5249,11 @@
         "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "NOT_APPLICABLE",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -5272,7 +5412,7 @@
       "category": "dishwasher",
       "brand": "Westinghouse",
       "model": "WSF6604XB",
-      "formFactor": "front_loader",
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -5335,7 +5475,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD3A15MB",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -5394,13 +5534,17 @@
       "category": "dishwasher",
       "brand": "Fisher & Paykel",
       "model": "DD60D4NX9",
-      "formFactor": null,
+      "formFactor": "drawer",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "welsIdentityState": "WELS_EXACT_REGISTERED",
-      "legacyReceiptBoundFields": [],
+      "legacyReceiptBoundFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
       "acceptedV3Fields": [],
       "missingFields": [
         "closedEnvelope.depthMm",
@@ -5453,7 +5597,7 @@
       "category": "dishwasher",
       "brand": "Westinghouse",
       "model": "WSF6602WB",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -5512,7 +5656,7 @@
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD4B15PS",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_CONSISTENT",
       "energyReasonCodes": [
         "EXACT_IDENTITY_AND_WHD_AGREE"
@@ -5681,7 +5825,7 @@
       "category": "dishwasher",
       "brand": "Beko",
       "model": "BDFB1410W",
-      "formFactor": null,
+      "formFactor": "freestanding",
       "energyReconciliationState": "EXACT_DIMENSION_CONFLICT",
       "energyReasonCodes": [
         "ONE_OR_MORE_AXES_DISAGREE"

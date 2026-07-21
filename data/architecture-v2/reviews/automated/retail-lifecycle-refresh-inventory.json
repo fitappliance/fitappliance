@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 3,
+  "policyVersion": "retail-lifecycle-refresh-inventory-v3",
+  "releaseEpoch": "retail-lifecycle-shadow-2026-07-21-inputs-9bbd5004205e",
+  "asOf": "2026-07-21T12:12:18.070Z",
+  "sourceBindings": {
+    "shadowSha256": "404a56be1df5672ebd6d073a3ffbf5fcd1504cad5cdca84a5a9230647e161bb6",
+    "shadowSemanticSha256": "6c1f60fe08ebe873a65906b430cb9440a8d50add37648e7e22c1adce7519ee0e",
+    "coverageSha256": "24632d4610b81dff160c7bfc5013ff65a2de9a6188d45ae640c34765d46421f3",
+    "coverageSemanticSha256": "cec34896f2c8f7b0204b8ccfc97183b02f50938b00bb059220ecdceca0080598",
+    "identityMigrationSha256": "5528e4843539638a37d68db5329f5c85ddb95d006dbabc85dda9242d5984a751",
+    "identityMigrationSemanticSha256": "834f0021c83facefd7b341f49a6d181fecaf70128be7514c373ba0e3e4354946"
+  },
+  "items": [
+    {
+      "canonicalProductId": "fa_prod_6d94b7fe6a48634212faaeb9",
+      "legacyRuntimeId": "f7",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF520BHS French Door 520L",
+      "lifecycleState": "UNKNOWN_RETAIL",
+      "executionDisposition": "PENDING_ATOMIC_IDENTITY_CUTOVER",
+      "sourceTasks": [],
+      "resolutionTasks": [],
+      "controlTasks": [
+        {
+          "controlTaskId": "retail_control_ecbe6c5ed483cf3de076431f",
+          "kind": "CANONICAL_IDENTITY_MIGRATION",
+          "action": "APPLY_DECLARATIVE_CANONICAL_MERGE",
+          "executionState": "PENDING_ATOMIC_IDENTITY_CUTOVER",
+          "canonicalAction": "MERGE_DUPLICATE_CANONICAL",
+          "identityEventIds": [
+            "retail_identity_event_cab7ee38ec1277021b62faf1"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalProductId": "fa_prod_aab8b0aaf2867bb908408b62",
+      "legacyRuntimeId": "f3",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF730QZUVX1 French Door 726L",
+      "lifecycleState": "UNKNOWN_RETAIL",
+      "executionDisposition": "PENDING_ATOMIC_IDENTITY_CUTOVER",
+      "sourceTasks": [],
+      "resolutionTasks": [],
+      "controlTasks": [
+        {
+          "controlTaskId": "retail_control_3f41cfabdbb4af941d293778",
+          "kind": "CANONICAL_IDENTITY_MIGRATION",
+          "action": "APPLY_DECLARATIVE_CANONICAL_QUARANTINE",
+          "executionState": "PENDING_ATOMIC_IDENTITY_CUTOVER",
+          "canonicalAction": "QUARANTINE_UNSUPPORTED_CANONICAL",
+          "identityEventIds": [
+            "retail_identity_event_b62234c63a74dfac5a61ef0a",
+            "retail_identity_event_d0db14a16ab19be336826987"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "products": 2,
+    "listings": 0,
+    "byExecutionDisposition": {
+      "PENDING_ATOMIC_IDENTITY_CUTOVER": 2
+    },
+    "bySourceExecutionState": {},
+    "resolutionTasks": 0,
+    "byResolutionExecutionState": {},
+    "controlTasks": 2,
+    "byControlExecutionState": {
+      "PENDING_ATOMIC_IDENTITY_CUTOVER": 2
+    }
+  },
+  "inventoryId": "retail_lifecycle_refresh_d134f9aa346aa639f6f35b1c",
+  "semanticSha256": "d134f9aa346aa639f6f35b1ca0ed642795ada56e5706869e6c7b22f831abb572"
+}

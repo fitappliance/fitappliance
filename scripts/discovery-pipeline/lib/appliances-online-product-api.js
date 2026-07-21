@@ -1,6 +1,7 @@
 const DEFAULT_USER_AGENT = 'FitApplianceBot/1.0 (+https://www.fitappliance.com.au/about)';
 const DEFAULT_TIMEOUT_MS = 30_000;
 const AO_ORIGIN = 'https://www.appliancesonline.com.au';
+const { createHash } = require('node:crypto');
 const { normalizeRetailerPrice } = require('../../common/retailer-price.js');
 
 function sleep(ms) {
@@ -30,7 +31,7 @@ function slugFromProductUrl(url) {
   }
 }
 
-async function fetchJson(url, {
+async function fetchJsonWithBytes(url, {
   fetchImpl = globalThis.fetch,
   timeoutMs = DEFAULT_TIMEOUT_MS,
   userAgent = DEFAULT_USER_AGENT
@@ -52,7 +53,20 @@ async function fetchJson(url, {
     if (!response.ok) {
       throw new Error(`AO API HTTP ${response.status}`);
     }
-    return await response.json();
+    if (typeof response.text === 'function') {
+      const text = await response.text();
+      const bytes = Buffer.from(text);
+      try {
+        return { payload: JSON.parse(text), bytes };
+      } catch (cause) {
+        const error = new SyntaxError('AO API returned invalid JSON', { cause });
+        error.code = 'AO_INVALID_JSON';
+        error.rawResponseBytes = bytes;
+        throw error;
+      }
+    }
+    const payload = await response.json();
+    return { payload, bytes: Buffer.from(JSON.stringify(payload)) };
   } catch (error) {
     if (controller.signal.aborted) {
       throw new Error(`AO API timeout after ${timeoutMs}ms`);
@@ -61,6 +75,10 @@ async function fetchJson(url, {
   } finally {
     if (timeout) clearTimeout(timeout);
   }
+}
+
+async function fetchJson(url, options = {}) {
+  return (await fetchJsonWithBytes(url, options)).payload;
 }
 
 function categoryFromDiscoveryCategory(category) {
@@ -93,13 +111,136 @@ function parseMm(value) {
   return Number.isFinite(parsed) ? Math.round(parsed) : null;
 }
 
+function explicitTimestamp(value, label = 'observedAt') {
+  const parsed = new Date(String(value || ''));
+  if (Number.isNaN(parsed.valueOf())) throw new TypeError(`${label} must be an explicit timestamp`);
+  return parsed.toISOString();
+}
+
+function normalizedModel(value) {
+  return String(value || '').trim().toUpperCase().replace(/[^A-Z0-9]+/g, '');
+}
+
+class AoProductIdentityError extends Error {
+  constructor(code, message, details) {
+    super(message);
+    this.name = 'AoProductIdentityError';
+    this.code = code;
+    Object.assign(this, details);
+  }
+}
+
+function productRecord(productPayload) {
+  return productPayload?.product || productPayload || {};
+}
+
+function aoAvailability(product) {
+  if (product.available === true) return { availability: 'available', listingState: 'current' };
+  if (product.available === false) return { availability: 'unavailable', listingState: 'unavailable' };
+  return { availability: 'unknown', listingState: 'current' };
+}
+
+function exactRawBytes(value) {
+  if (Buffer.isBuffer(value)) return value;
+  if (value instanceof Uint8Array) return Buffer.from(value);
+  if (typeof value === 'string') return Buffer.from(value);
+  throw new TypeError('AO product raw response bytes required');
+}
+
+async function buildAoRetailerSnapshot({
+  adapter,
+  canonicalProductId,
+  expectedModel,
+  productPayload,
+  productRawBytes,
+  productUrl,
+  observedAt,
+  rawSourceReference,
+}) {
+  const product = productRecord(productPayload);
+  if (!product.productId) throw new TypeError('AO product response missing productId');
+  if (!product.sku) throw new TypeError('AO product response missing sku');
+  const canonicalUrl = normalizeAbsoluteUrl(productUrl);
+  const payloadUrl = normalizeAbsoluteUrl(product.uri);
+  if (!canonicalUrl || !payloadUrl) throw new TypeError('AO product URL and payload URI required');
+  if (normalizedModel(product.sku) !== normalizedModel(expectedModel)) {
+    throw new AoProductIdentityError(
+      'AO_MODEL_MISMATCH',
+      `AO product model mismatch: expected ${expectedModel}, received ${product.sku}`,
+      {
+        expectedModel: String(expectedModel),
+        receivedModel: String(product.sku),
+        expectedUrl: canonicalUrl,
+        receivedUrl: payloadUrl,
+      },
+    );
+  }
+  const normalizePath = (value) => new URL(value).pathname.replace(/\/+$/, '');
+  if (normalizePath(canonicalUrl) !== normalizePath(payloadUrl)) {
+    throw new AoProductIdentityError(
+      'AO_URI_MISMATCH',
+      `AO product URI mismatch: ${new URL(canonicalUrl).pathname} != ${new URL(payloadUrl).pathname}`,
+      {
+        expectedModel: String(expectedModel),
+        receivedModel: String(product.sku),
+        expectedUrl: canonicalUrl,
+        receivedUrl: payloadUrl,
+      },
+    );
+  }
+  const bytes = exactRawBytes(productRawBytes);
+  const { normalizeRetailerSnapshot } = await import('../../../src/domain/retailer-source-adapter.mjs');
+  const state = aoAvailability(product);
+  return normalizeRetailerSnapshot(adapter, {
+    observedAt: explicitTimestamp(observedAt),
+    complete: false,
+    canonicalProductIds: [canonicalProductId],
+    rawPayloadSha256: createHash('sha256').update(bytes).digest('hex'),
+    rawSourceReference,
+    rows: [{
+      canonicalProductId,
+      retailerProductId: String(product.productId),
+      url: canonicalUrl,
+      title: String(product.title || `${product.manufacturer?.name || ''} ${product.sku}`).trim(),
+      priceAud: normalizeRetailerPrice(product.price),
+      imageUrl: normalizeAbsoluteUrl(product.image?.url || product.imageUrl || '') || null,
+      ...state,
+    }],
+  });
+}
+
+async function buildAoFailedRetailerSnapshot({
+  adapter,
+  canonicalProductId,
+  observedAt,
+  rawSourceReference,
+  collectionError,
+  rawPayloadSha256 = null,
+  failureContext = null,
+}) {
+  const { normalizeRetailerSnapshot } = await import('../../../src/domain/retailer-source-adapter.mjs');
+  return normalizeRetailerSnapshot(adapter, {
+    observedAt: explicitTimestamp(observedAt),
+    complete: false,
+    canonicalProductIds: [String(canonicalProductId || '').trim()],
+    rawSourceReference,
+    rawPayloadSha256,
+    failureContext,
+    collectionError,
+    rows: [],
+  });
+}
+
 function buildProductStubFromAo({
   discovery,
   productPayload,
   specificationsPayload,
-  productUrl
+  productUrl,
+  observedAt,
 }) {
-  const product = productPayload?.product || productPayload || {};
+  const product = productRecord(productPayload);
+  const observationTimestamp = explicitTimestamp(observedAt);
+  const availability = aoAvailability(product);
   const attributes = flattenSpecificationAttributes(specificationsPayload);
   const brand = product.manufacturer?.name || discovery.brand;
   const sku = product.sku || discovery.model;
@@ -121,14 +262,18 @@ function buildProductStubFromAo({
     w,
     h,
     d,
-    unavailable: false,
+    unavailable: availability.availability !== 'available',
     retailers: [
       {
         n: 'Appliances Online',
         url: normalizeAbsoluteUrl(productPath),
         p: normalizeRetailerPrice(product.price),
-        verified_at: new Date().toISOString().slice(0, 10),
-        source: 'appliances-online-api'
+        verified_at: observationTimestamp.slice(0, 10),
+        source: 'appliances-online-api',
+        stock: availability.availability === 'available'
+          ? 'Yes'
+          : availability.availability === 'unavailable' ? 'No' : null,
+        availability_state: availability.availability,
       }
     ],
     discovery: {
@@ -168,15 +313,18 @@ function selectBestPdfManual(manualsPayload) {
 
 async function fetchAppliancesOnlineProductBundle(discovery, {
   fetchImpl = globalThis.fetch,
-  timeoutMs = DEFAULT_TIMEOUT_MS
+  timeoutMs = DEFAULT_TIMEOUT_MS,
+  observedAt,
 } = {}) {
   const slug = slugFromProductUrl(discovery.url);
   if (!slug) throw new Error('AO product URL does not contain /product/<slug>');
 
-  const date = new Date().toISOString().slice(0, 10).split('-').map((part) => Number(part)).join('-');
+  const observationTimestamp = explicitTimestamp(observedAt);
+  const date = observationTimestamp.slice(0, 10).split('-').map((part) => Number(part)).join('-');
   const productUrl = `${AO_ORIGIN}/api/v2/product/slug/${encodeURIComponent(slug)}?date=${date}`;
-  const productPayload = await fetchJson(productUrl, { fetchImpl, timeoutMs });
-  const product = productPayload?.product || productPayload || {};
+  const productResponse = await fetchJsonWithBytes(productUrl, { fetchImpl, timeoutMs });
+  const productPayload = productResponse.payload;
+  const product = productRecord(productPayload);
   const productId = product.productId;
   const sku = product.sku || discovery.model;
   if (!productId) throw new Error('AO API product response missing productId');
@@ -192,13 +340,16 @@ async function fetchAppliancesOnlineProductBundle(discovery, {
     discovery,
     productPayload,
     productUrl: discovery.url,
-    specificationsPayload
+    specificationsPayload,
+    observedAt: observationTimestamp,
   });
 
   return {
     discovery,
     product: productStub,
     productPayload,
+    productRawBytes: productResponse.bytes,
+    productPayloadSha256: createHash('sha256').update(productResponse.bytes).digest('hex'),
     specificationsPayload,
     manualsPayload,
     selectedManual
@@ -207,9 +358,13 @@ async function fetchAppliancesOnlineProductBundle(discovery, {
 
 module.exports = {
   AO_ORIGIN,
+  buildAoFailedRetailerSnapshot,
+  buildAoRetailerSnapshot,
+  AoProductIdentityError,
   buildProductStubFromAo,
   fetchAppliancesOnlineProductBundle,
   fetchJson,
+  fetchJsonWithBytes,
   normalizeAbsoluteUrl,
   selectBestPdfManual,
   sleep,

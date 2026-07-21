@@ -9,7 +9,7 @@ import { runEvidenceResearchCycle } from '../../src/domain/evidence-research-run
 import { verifyAndAttestResolutionArtifact } from '../../src/domain/evidence-artifact-verifier.mjs';
 import { adjudicateResolutionCase } from '../../src/domain/evidence-resolution-loop.mjs';
 import { buildResolutionSeedDocument } from '../../src/domain/evidence-resolution-seed.mjs';
-import { runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
+import { runMineruPdfWithImageFallback } from '../../src/domain/mineru-runner.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -63,11 +63,15 @@ async function reattestStoredSources(caseRecord, storageRoot, verifiedAt) {
     const derivedArtifactBytes = source.derivedArtifact
       ? await readFile(resolveWithin(storageRoot, source.derivedArtifact.objectPath))
       : null;
+    const discoveryArtifactBytes = source.discoveryProvenance?.method === 'official_product_page'
+      ? await readFile(resolveWithin(storageRoot, source.discoveryProvenance.discoveryObjectPath))
+      : null;
     sources.push(verifyAndAttestResolutionArtifact({
       source: { ...source, verificationReceipt: undefined },
       caseIdentity,
       bytes,
       derivedArtifactBytes,
+      discoveryArtifactBytes,
       verifiedAt,
     }));
   }
@@ -138,7 +142,8 @@ async function main(args) {
       fetchAttempts: 3,
       retryDelayMs: 750,
       allowCurlFallback: true,
-      processPdf: (bytes) => runMineruPdfToJson(bytes, { storageRoot }),
+      allowScraplingFallback: true,
+      processPdf: (bytes) => runMineruPdfWithImageFallback(bytes, { storageRoot }),
     });
     cases.push(result.caseRecord);
     outcomes.push({

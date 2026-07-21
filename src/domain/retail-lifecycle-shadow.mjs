@@ -1,0 +1,801 @@
+import { createHash } from 'node:crypto';
+
+import {
+  catalogReceiptDimensions,
+  isCurrentRetailProduct,
+} from './historical-appliance-reference.mjs';
+import { reduceRetailLifecycle } from './retailer-observation.mjs';
+import {
+  normalizeRetailerSourcePolicy,
+  retailerCollectionAttemptAuthorizedBySourcePolicy,
+  retailerObservationAuthorizedBySourcePolicy,
+  validateRetailerObservationLedger,
+} from './retailer-observation-ledger.mjs';
+import { validateOfficialMarketLifecycle } from './official-market-lifecycle.mjs';
+
+const SHA256 = /^[a-f0-9]{64}$/;
+const PRIORITY_BY_LIFECYCLE = Object.freeze({
+  CURRENT_RETAIL: 'P0_CURRENT_RETAIL',
+  CATALOG_ARCHIVED: 'P1_CATALOG_ARCHIVED',
+  REGISTRY_ONLY: 'P2_REGISTRY_ONLY',
+  UNKNOWN_RETAIL: 'P2_REGISTRY_ONLY',
+});
+const MARKET_REFERENCE_STATES = new Set([
+  'ACTIVE_AU_REGISTERED',
+  'ACTIVE_AU_OFFICIAL',
+  'IDENTITY_AU_OFFICIAL',
+]);
+
+function required(value, label) {
+  const result = String(value ?? '').trim();
+  if (!result) throw new TypeError(`${label} required`);
+  return result;
+}
+
+function sha256(value, label) {
+  const result = required(value, label).toLowerCase();
+  if (!SHA256.test(result)) throw new TypeError(`${label} must be a SHA-256`);
+  return result;
+}
+
+function timestamp(value, label) {
+  const result = new Date(required(value, label));
+  if (Number.isNaN(result.valueOf())) throw new TypeError(`${label} must be an ISO timestamp`);
+  return result.toISOString();
+}
+
+function canonical(value) {
+  if (Array.isArray(value)) return value.map(canonical);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonical(value[key])]));
+  }
+  return value;
+}
+
+function canonicalSha256(value) {
+  return createHash('sha256').update(JSON.stringify(canonical(value))).digest('hex');
+}
+
+function freezeDeep(value) {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    Object.freeze(value);
+    for (const child of Object.values(value)) freezeDeep(child);
+  }
+  return value;
+}
+
+function countBy(records, selector) {
+  const counts = {};
+  for (const record of records) {
+    const key = selector(record);
+    counts[key] = (counts[key] ?? 0) + 1;
+  }
+  return Object.fromEntries(Object.entries(counts).sort(([left], [right]) => left.localeCompare(right)));
+}
+
+function priorVisibility(product) {
+  return product.unavailable === false && Array.isArray(product.retailers) && product.retailers.length > 0
+    ? 'CURRENT_OUTPUT'
+    : 'HISTORICAL_INPUT_ONLY';
+}
+
+function transition(prior, lifecycleState) {
+  if (prior === 'CURRENT_OUTPUT') {
+    if (lifecycleState === 'CURRENT_RETAIL') return 'STILL_CURRENT';
+    if (lifecycleState === 'CATALOG_ARCHIVED') return 'CURRENT_TO_UNAVAILABLE';
+    return 'CURRENT_TO_UNKNOWN';
+  }
+  if (lifecycleState === 'CURRENT_RETAIL') return 'RELISTED';
+  if (lifecycleState === 'CATALOG_ARCHIVED') return 'STILL_ARCHIVED';
+  return 'HISTORICAL_TO_UNKNOWN';
+}
+
+function publicVisibility(lifecycleState, marketState) {
+  if (lifecycleState === 'CURRENT_RETAIL') return 'CURRENT_OUTPUT';
+  if (lifecycleState === 'CATALOG_ARCHIVED' || lifecycleState === 'REGISTRY_ONLY') {
+    return 'HISTORICAL_INPUT_ONLY';
+  }
+  if (MARKET_REFERENCE_STATES.has(marketState)) return 'MARKET_REFERENCE_ONLY';
+  return 'HIDDEN_UNRESOLVED';
+}
+
+function projectedCurrentRetailers(product, record) {
+  const existing = Array.isArray(product.retailers) ? product.retailers : [];
+  return record.retailLifecycle.latestObservations
+    .filter((observation) => observation.freshnessState === 'FRESH'
+      && observation.availability === 'available'
+      && ['current', 'relisted'].includes(observation.listingState))
+    .map((observation) => {
+      const prior = existing.find((row) => String(row?.url ?? '') === observation.url) ?? {};
+      return freezeDeep({
+        ...structuredClone(prior),
+        n: observation.retailer,
+        url: observation.url,
+        p: observation.priceAud ?? prior.p ?? null,
+        verified_at: observation.observedAt.slice(0, 10),
+        source: `retailer-observation:${observation.sourceType}`,
+        stock: 'Yes',
+        availability_state: 'available',
+        listing_state: observation.listingState,
+        observation_id: observation.id,
+      });
+    })
+    .sort((left, right) => left.n.localeCompare(right.n) || left.url.localeCompare(right.url));
+}
+
+function stripCommercialOutput(product) {
+  const sanitized = structuredClone(product);
+  sanitized.price = null;
+  for (const key of [
+    'direct_url',
+    'directUrl',
+    'affiliate_url',
+    'affiliateUrl',
+    'salePrice',
+    'sale_price',
+    'stock',
+    'stockStatus',
+    'stock_status',
+    'availability',
+    'offer',
+    'offers',
+  ]) delete sanitized[key];
+  delete sanitized.discovery;
+  return sanitized;
+}
+
+function publicRetailObservation(observation) {
+  if (!observation) return null;
+  return Object.fromEntries([
+    'id',
+    'canonicalProductId',
+    'retailer',
+    'adapterId',
+    'observedAt',
+    'url',
+    'availability',
+    'priceAud',
+    'retailerProductId',
+    'sourceType',
+    'listingState',
+    'rawSourceSha256',
+    'policyVersion',
+    'freshnessState',
+  ].filter((key) => observation[key] !== undefined).map((key) => [
+    key,
+    structuredClone(observation[key]),
+  ]));
+}
+
+function publicRetailLifecycle(decision) {
+  const current = decision.lifecycleState === 'CURRENT_RETAIL';
+  const latestObservations = current
+    ? decision.latestObservations.map(publicRetailObservation)
+    : [];
+  const authorizingObservation = current
+    ? latestObservations.find((observation) => observation.id === decision.authorizingObservation?.id) ?? null
+    : null;
+  if (current && !authorizingObservation) {
+    throw new Error(`current retail lifecycle authorizer missing from public projection: ${decision.canonicalProductId}`);
+  }
+  return {
+    schemaVersion: decision.schemaVersion,
+    policyVersion: decision.policyVersion,
+    asOf: decision.asOf,
+    canonicalProductId: decision.canonicalProductId,
+    catalogState: decision.catalogState,
+    lifecycleState: decision.lifecycleState,
+    authorizingObservation,
+    latestObservations,
+    observationConflicts: [],
+    collectionAttempts: [],
+    reasonCodes: [...decision.reasonCodes],
+  };
+}
+
+function semanticPayload(document) {
+  const { shadowId, semanticSha256, ...payload } = document;
+  return payload;
+}
+
+function assertSortedUnique(values, label) {
+  if (!Array.isArray(values)) throw new TypeError(`${label} must be an array`);
+  if (new Set(values).size !== values.length) throw new TypeError(`${label} contains duplicates`);
+  if (values.some((value, index) => index > 0 && values[index - 1].localeCompare(value) > 0)) {
+    throw new TypeError(`${label} must be sorted`);
+  }
+}
+
+function idsFor(records, predicate) {
+  return records.filter(predicate).map((record) => record.canonicalProductId).sort();
+}
+
+function explicitUnavailable(record) {
+  return record.lifecycleState === 'CATALOG_ARCHIVED'
+    && record.retailLifecycle.reasonCodes.includes('FRESH_UNAVAILABLE_OBSERVATION');
+}
+
+function expectedCohorts(records) {
+  return {
+    freshAvailableIds: idsFor(records, (record) => record.lifecycleState === 'CURRENT_RETAIL'),
+    explicitUnavailableIds: idsFor(records, explicitUnavailable),
+    unknownOrStaleIds: idsFor(records, (record) => record.lifecycleState === 'UNKNOWN_RETAIL'),
+    relistedIds: idsFor(records, (record) => record.transition === 'RELISTED'),
+    multiRetailerConflictIds: idsFor(records, (record) => (
+      record.retailLifecycle.observationConflicts.length > 0
+      || record.retailLifecycle.reasonCodes.includes('MULTI_RETAILER_AVAILABILITY_CONFLICT')
+    )),
+    sourcePolicyExcludedIds: idsFor(records, (record) => (
+      record.excludedBySourcePolicy.observationIds.length > 0
+      || record.excludedBySourcePolicy.collectionAttemptIds.length > 0
+    )),
+    marketReferenceIds: idsFor(records, (record) => (
+      record.publicVisibility === 'MARKET_REFERENCE_ONLY'
+    )),
+  };
+}
+
+function expectedCutover(records) {
+  const unresolvedLegacyCurrentIds = idsFor(records, (record) => (
+    record.priorVisibility === 'CURRENT_OUTPUT'
+    && record.lifecycleState !== 'CURRENT_RETAIL'
+    && !explicitUnavailable(record)
+    && record.publicVisibility === 'HIDDEN_UNRESOLVED'
+  ));
+  const unsafeRemovedLegacyCurrentIds = idsFor(records, (record) => (
+    record.priorVisibility === 'CURRENT_OUTPUT'
+    && record.lifecycleState === 'CATALOG_ARCHIVED'
+    && !explicitUnavailable(record)
+  ));
+  return {
+    status: unresolvedLegacyCurrentIds.length === 0 && unsafeRemovedLegacyCurrentIds.length === 0
+      ? 'READY'
+      : 'BLOCKED',
+    unresolvedLegacyCurrentIds,
+    unsafeRemovedLegacyCurrentIds,
+  };
+}
+
+function sameJson(left, right) {
+  return JSON.stringify(left) === JSON.stringify(right);
+}
+
+export function validateRetailLifecycleShadow(document) {
+  if (!document || document.schemaVersion !== 2 || !Array.isArray(document.records)) {
+    throw new TypeError('retail lifecycle shadow schema v2 required');
+  }
+  if (document.policyVersion !== 'retail-lifecycle-shadow-v2') {
+    throw new TypeError('retail lifecycle shadow policy version unsupported');
+  }
+  timestamp(document.asOf, 'retail lifecycle shadow asOf');
+  for (const field of [
+    'publicProjectionSha256',
+    'publicProjectionSemanticSha256',
+    'retailerLedgerSha256',
+    'sourcePolicySha256',
+    'releasePolicySha256',
+    'officialMarketLifecycleSha256',
+    'officialMarketLifecycleSemanticSha256',
+  ]) {
+    sha256(document.sourceBindings?.[field], `retail lifecycle shadow ${field}`);
+  }
+  required(document.releaseEpoch, 'retail lifecycle release epoch');
+  const ids = document.records.map((record) => required(record.canonicalProductId, 'shadow canonical product ID'));
+  if (new Set(ids).size !== ids.length) throw new TypeError('duplicate shadow canonical product ID');
+  const legacyIds = document.records.map((record) => required(record.legacyRuntimeId, 'shadow legacy runtime ID'));
+  if (new Set(legacyIds).size !== legacyIds.length) throw new TypeError('duplicate shadow legacy runtime ID');
+  if (document.records.some((record, index) => index > 0
+    && document.records[index - 1].legacyRuntimeId.localeCompare(record.legacyRuntimeId) > 0)) {
+    throw new TypeError('retail lifecycle shadow records must be sorted');
+  }
+  for (const record of document.records) {
+    required(record.legacyRuntimeId, 'shadow legacy runtime ID');
+    required(record.category, 'shadow category');
+    required(record.brand, 'shadow brand');
+    required(record.model, 'shadow model');
+    if (!['CURRENT_OUTPUT', 'HISTORICAL_INPUT_ONLY'].includes(record.priorVisibility)) {
+      throw new TypeError(`shadow prior visibility unsupported for ${record.legacyRuntimeId}`);
+    }
+    if (record.priorityClass !== PRIORITY_BY_LIFECYCLE[record.lifecycleState]) {
+      throw new TypeError(`shadow lifecycle priority mismatch for ${record.legacyRuntimeId}`);
+    }
+    if (record.transition !== transition(record.priorVisibility, record.lifecycleState)) {
+      throw new TypeError(`shadow transition mismatch for ${record.legacyRuntimeId}`);
+    }
+    const market = record.marketLifecycle;
+    if (!market || market.canonicalProductId !== record.canonicalProductId
+      || market.legacyRuntimeId !== record.legacyRuntimeId
+      || market.category !== record.category
+      || market.brand !== record.brand
+      || market.model !== record.model) {
+      throw new TypeError(`shadow market lifecycle binding mismatch for ${record.legacyRuntimeId}`);
+    }
+    if (record.publicVisibility !== publicVisibility(record.lifecycleState, market.marketState)) {
+      throw new TypeError(`shadow public visibility mismatch for ${record.legacyRuntimeId}`);
+    }
+    if (typeof record.hasReceiptBoundDimensions !== 'boolean'
+      || record.replacementEligibility !== (record.hasReceiptBoundDimensions
+        ? 'HISTORICAL_LOOKUP'
+        : 'IDENTITY_ONLY')) {
+      throw new TypeError(`shadow replacement eligibility mismatch for ${record.legacyRuntimeId}`);
+    }
+    if (record.fitDestination !== (record.lifecycleState === 'CURRENT_RETAIL'
+      ? 'CURRENT_FIT_INPUT'
+      : 'HISTORICAL_ONLY')) {
+      throw new TypeError(`shadow Fit destination mismatch for ${record.legacyRuntimeId}`);
+    }
+    const decision = record.retailLifecycle;
+    if (!decision || decision.schemaVersion !== 1
+      || decision.canonicalProductId !== record.canonicalProductId
+      || decision.lifecycleState !== record.lifecycleState) {
+      throw new TypeError(`shadow lifecycle product binding mismatch for ${record.legacyRuntimeId}`);
+    }
+    if (decision.policyVersion !== document.retailLifecyclePolicyVersion
+      || decision.asOf !== document.asOf) {
+      throw new TypeError(`shadow lifecycle policy epoch mismatch for ${record.legacyRuntimeId}`);
+    }
+    if (!Array.isArray(decision.latestObservations)
+      || !Array.isArray(decision.observationConflicts)
+      || !Array.isArray(decision.collectionAttempts)
+      || !Array.isArray(decision.reasonCodes)) {
+      throw new TypeError(`shadow lifecycle evidence collections missing for ${record.legacyRuntimeId}`);
+    }
+    const excluded = record.excludedBySourcePolicy;
+    if (!excluded || !Array.isArray(excluded.observationIds)
+      || !Array.isArray(excluded.collectionAttemptIds)) {
+      throw new TypeError(`shadow source-policy exclusions missing for ${record.legacyRuntimeId}`);
+    }
+    assertSortedUnique(excluded.observationIds, `shadow excluded observations ${record.legacyRuntimeId}`);
+    assertSortedUnique(
+      excluded.collectionAttemptIds,
+      `shadow excluded collection attempts ${record.legacyRuntimeId}`,
+    );
+    if (decision.latestObservations.some((observation) => (
+      observation.canonicalProductId !== record.canonicalProductId
+    )) || decision.collectionAttempts.some((attempt) => (
+      !String(attempt.id ?? '').trim()
+      || attempt.scope?.canonicalProductId !== record.canonicalProductId
+      || !Number.isInteger(attempt.scope?.canonicalProductCount)
+      || attempt.scope.canonicalProductCount < 1
+      || !/^[a-f0-9]{64}$/.test(String(attempt.scope?.canonicalProductIdsSha256 ?? ''))
+      || Object.hasOwn(attempt, 'canonicalProductIds')
+    ))) {
+      throw new TypeError(`shadow lifecycle scoped evidence mismatch for ${record.legacyRuntimeId}`);
+    }
+    if (record.lifecycleState === 'CURRENT_RETAIL') {
+      if (!isCurrentRetailProduct({
+        canonicalProductId: record.canonicalProductId,
+        retailLifecycle: decision,
+      }) || !decision.latestObservations.some((observation) => (
+        observation.id === decision.authorizingObservation.id
+      ))) {
+        throw new TypeError(`shadow current product lacks bound authorizer: ${record.legacyRuntimeId}`);
+      }
+    } else if (decision.authorizingObservation !== null) {
+      throw new TypeError(`shadow non-current product carries authorizer: ${record.legacyRuntimeId}`);
+    }
+  }
+  const cohorts = document.cohorts ?? {};
+  for (const [key, values] of Object.entries(cohorts)) {
+    assertSortedUnique(values, `shadow cohort ${key}`);
+  }
+  if (!sameJson(cohorts, expectedCohorts(document.records))) {
+    throw new TypeError('retail lifecycle shadow cohort membership mismatch');
+  }
+  assertSortedUnique(document.cutover?.unresolvedLegacyCurrentIds, 'unresolved legacy current IDs');
+  assertSortedUnique(document.cutover?.unsafeRemovedLegacyCurrentIds, 'unsafe removed legacy current IDs');
+  if (!sameJson(document.cutover, expectedCutover(document.records))) {
+    throw new TypeError('retail lifecycle shadow cutover membership mismatch');
+  }
+  const expectedSummary = {
+    products: document.records.length,
+    legacyCurrentProducts: document.records.filter((record) => record.priorVisibility === 'CURRENT_OUTPUT').length,
+    byLifecycle: countBy(document.records, (record) => record.lifecycleState),
+    byTransition: countBy(document.records, (record) => record.transition),
+    byPublicVisibility: countBy(document.records, (record) => record.publicVisibility),
+    byPriorityClass: countBy(document.records, (record) => record.priorityClass),
+    byMarketState: countBy(document.records, (record) => record.marketLifecycle.marketState),
+    marketReferenceProducts: document.records.filter((record) => (
+      record.publicVisibility === 'MARKET_REFERENCE_ONLY'
+    )).length,
+    policyExcludedProducts: document.records.filter((record) => (
+      record.excludedBySourcePolicy.observationIds.length > 0
+      || record.excludedBySourcePolicy.collectionAttemptIds.length > 0
+    )).length,
+    policyExcludedObservations: document.records.reduce(
+      (sum, record) => sum + record.excludedBySourcePolicy.observationIds.length,
+      0,
+    ),
+    policyExcludedCollectionAttempts: document.records.reduce(
+      (sum, record) => sum + record.excludedBySourcePolicy.collectionAttemptIds.length,
+      0,
+    ),
+  };
+  if (JSON.stringify(document.summary) !== JSON.stringify(expectedSummary)) {
+    throw new TypeError('retail lifecycle shadow summary mismatch');
+  }
+  const semantic = canonicalSha256(semanticPayload(document));
+  if (document.semanticSha256 !== semantic
+    || document.shadowId !== `retail_lifecycle_shadow_${semantic.slice(0, 24)}`) {
+    throw new Error('retail lifecycle shadow integrity mismatch');
+  }
+  return document;
+}
+
+export function buildRetailLifecycleShadow({
+  publicProjection,
+  publicProjectionSha256,
+  officialMarketLifecycle,
+  officialMarketLifecycleSha256,
+  retailerLedger,
+  retailerLedgerSha256,
+  sourcePolicy,
+  sourcePolicySha256,
+  releasePolicySha256,
+  releaseEpoch,
+  asOf,
+  retailLifecyclePolicyVersion = 'retail-lifecycle-v1',
+}) {
+  if (!publicProjection || !Array.isArray(publicProjection.products)) {
+    throw new TypeError('public projection products required');
+  }
+  validateOfficialMarketLifecycle(officialMarketLifecycle);
+  validateRetailerObservationLedger(retailerLedger);
+  const normalizedSourcePolicy = normalizeRetailerSourcePolicy(sourcePolicy);
+  const normalizedAsOf = timestamp(asOf, 'retail lifecycle shadow asOf');
+  if (timestamp(officialMarketLifecycle.asOf, 'official market lifecycle asOf') !== normalizedAsOf) {
+    throw new Error('official market lifecycle and retail shadow epochs differ');
+  }
+  const normalizedProjectionSha256 = sha256(publicProjectionSha256, 'public projection SHA-256');
+  const publicProjectionSemanticSha256 = canonicalSha256(publicProjection);
+  if (officialMarketLifecycle.sourceBindings.publicProjectionSha256 !== normalizedProjectionSha256
+    || officialMarketLifecycle.sourceBindings.publicProjectionSemanticSha256
+      !== publicProjectionSemanticSha256) {
+    throw new Error('official market lifecycle public projection binding drift');
+  }
+  const marketByProduct = new Map(officialMarketLifecycle.records.map((record) => [
+    record.canonicalProductId,
+    record,
+  ]));
+  if (marketByProduct.size !== publicProjection.products.length) {
+    throw new Error('official market lifecycle does not account for every public product');
+  }
+  const observationsByProduct = new Map();
+  const excludedObservationsByProduct = new Map();
+  for (const observation of retailerLedger.observations) {
+    const target = retailerObservationAuthorizedBySourcePolicy(observation, normalizedSourcePolicy)
+      ? observationsByProduct
+      : excludedObservationsByProduct;
+    if (!target.has(observation.canonicalProductId)) {
+      target.set(observation.canonicalProductId, []);
+    }
+    target.get(observation.canonicalProductId).push(observation);
+  }
+  const attemptsByProduct = new Map();
+  const excludedAttemptsByProduct = new Map();
+  for (const attempt of retailerLedger.collectionAttempts) {
+    const target = retailerCollectionAttemptAuthorizedBySourcePolicy(attempt, normalizedSourcePolicy)
+      ? attemptsByProduct
+      : excludedAttemptsByProduct;
+    for (const canonicalProductId of attempt.canonicalProductIds) {
+      if (!target.has(canonicalProductId)) target.set(canonicalProductId, []);
+      target.get(canonicalProductId).push(attempt);
+    }
+  }
+  const records = publicProjection.products.map((product) => {
+    const canonicalProductId = required(product.canonicalProductId, 'public product canonical ID');
+    const legacyRuntimeId = required(product.id, 'public product legacy runtime ID');
+    const prior = priorVisibility(product);
+    const retailLifecycle = reduceRetailLifecycle({
+      canonicalProductId,
+      observations: observationsByProduct.get(canonicalProductId) ?? [],
+      collectionAttempts: attemptsByProduct.get(canonicalProductId) ?? [],
+      asOf: normalizedAsOf,
+      policyVersion: retailLifecyclePolicyVersion,
+      catalogState: prior === 'CURRENT_OUTPUT' ? 'LISTED_UNVERIFIED' : 'ARCHIVED',
+      registryPresent: false,
+    });
+    const lifecycleState = retailLifecycle.lifecycleState;
+    const marketLifecycle = marketByProduct.get(canonicalProductId);
+    if (!marketLifecycle || marketLifecycle.legacyRuntimeId !== legacyRuntimeId) {
+      throw new Error(`official market lifecycle identity drift for ${legacyRuntimeId}`);
+    }
+    const nextTransition = transition(prior, lifecycleState);
+    const dimensionsMm = catalogReceiptDimensions(product);
+    return freezeDeep({
+      canonicalProductId,
+      legacyRuntimeId,
+      category: required(product.cat, 'public product category'),
+      brand: required(product.brand, 'public product brand'),
+      model: required(product.model, 'public product model'),
+      priorVisibility: prior,
+      lifecycleState,
+      transition: nextTransition,
+      priorityClass: PRIORITY_BY_LIFECYCLE[lifecycleState],
+      publicVisibility: publicVisibility(lifecycleState, marketLifecycle.marketState),
+      replacementEligibility: dimensionsMm ? 'HISTORICAL_LOOKUP' : 'IDENTITY_ONLY',
+      fitDestination: lifecycleState === 'CURRENT_RETAIL' ? 'CURRENT_FIT_INPUT' : 'HISTORICAL_ONLY',
+      hasReceiptBoundDimensions: dimensionsMm !== null,
+      retailLifecycle,
+      marketLifecycle: structuredClone(marketLifecycle),
+      excludedBySourcePolicy: {
+        observationIds: (excludedObservationsByProduct.get(canonicalProductId) ?? [])
+          .map((observation) => observation.id)
+          .sort(),
+        collectionAttemptIds: (excludedAttemptsByProduct.get(canonicalProductId) ?? [])
+          .map((attempt) => attempt.id)
+          .sort(),
+      },
+    });
+  }).sort((left, right) => left.legacyRuntimeId.localeCompare(right.legacyRuntimeId));
+
+  const cohorts = expectedCohorts(records);
+  const cutover = expectedCutover(records);
+  const document = {
+    schemaVersion: 2,
+    policyVersion: 'retail-lifecycle-shadow-v2',
+    retailLifecyclePolicyVersion,
+    releaseEpoch: required(releaseEpoch, 'retail lifecycle release epoch'),
+    asOf: normalizedAsOf,
+    sourceBindings: {
+      publicProjectionSha256: normalizedProjectionSha256,
+      publicProjectionSemanticSha256,
+      officialMarketLifecycleSha256: sha256(
+        officialMarketLifecycleSha256,
+        'official market lifecycle SHA-256',
+      ),
+      officialMarketLifecycleSemanticSha256: sha256(
+        officialMarketLifecycle.semanticSha256,
+        'official market lifecycle semantic SHA-256',
+      ),
+      retailerLedgerSha256: sha256(retailerLedgerSha256, 'retailer ledger SHA-256'),
+      sourcePolicySha256: sha256(sourcePolicySha256, 'retailer source policy SHA-256'),
+      releasePolicySha256: sha256(releasePolicySha256, 'retail lifecycle release policy SHA-256'),
+      retailerLedgerSemanticSha256: sha256(retailerLedger.semanticSha256, 'retailer ledger semantic SHA-256'),
+    },
+    records,
+    cohorts,
+    summary: {
+      products: records.length,
+      legacyCurrentProducts: records.filter((record) => record.priorVisibility === 'CURRENT_OUTPUT').length,
+      byLifecycle: countBy(records, (record) => record.lifecycleState),
+      byTransition: countBy(records, (record) => record.transition),
+      byPublicVisibility: countBy(records, (record) => record.publicVisibility),
+      byPriorityClass: countBy(records, (record) => record.priorityClass),
+      byMarketState: countBy(records, (record) => record.marketLifecycle.marketState),
+      marketReferenceProducts: records.filter((record) => (
+        record.publicVisibility === 'MARKET_REFERENCE_ONLY'
+      )).length,
+      policyExcludedProducts: records.filter((record) => (
+        record.excludedBySourcePolicy.observationIds.length > 0
+        || record.excludedBySourcePolicy.collectionAttemptIds.length > 0
+      )).length,
+      policyExcludedObservations: records.reduce(
+        (sum, record) => sum + record.excludedBySourcePolicy.observationIds.length,
+        0,
+      ),
+      policyExcludedCollectionAttempts: records.reduce(
+        (sum, record) => sum + record.excludedBySourcePolicy.collectionAttemptIds.length,
+        0,
+      ),
+    },
+    cutover,
+  };
+  const semantic = canonicalSha256(document);
+  document.shadowId = `retail_lifecycle_shadow_${semantic.slice(0, 24)}`;
+  document.semanticSha256 = semantic;
+  return freezeDeep(validateRetailLifecycleShadow(document));
+}
+
+export function applyRetailLifecycleCutover({ publicProjection, publicProjectionSha256, shadow }) {
+  validateRetailLifecycleShadow(shadow);
+  if (shadow.cutover.status !== 'READY') throw new Error('retail lifecycle cutover is blocked');
+  if (sha256(publicProjectionSha256, 'retail lifecycle cutover public projection SHA-256')
+    !== shadow.sourceBindings.publicProjectionSha256) {
+    throw new Error('retail lifecycle cutover public projection drift');
+  }
+  if (canonicalSha256(publicProjection) !== shadow.sourceBindings.publicProjectionSemanticSha256) {
+    throw new Error('retail lifecycle cutover public projection semantic drift');
+  }
+  const byLegacyId = new Map(shadow.records.map((record) => [record.legacyRuntimeId, record]));
+  if (byLegacyId.size !== publicProjection.products.length) {
+    throw new Error('retail lifecycle cutover does not account for every public product');
+  }
+  const products = publicProjection.products.map((product) => {
+    const record = byLegacyId.get(String(product.id));
+    if (!record || record.canonicalProductId !== product.canonicalProductId) {
+      throw new Error(`retail lifecycle cutover identity drift for ${product.id}`);
+    }
+    const retailers = record.lifecycleState === 'CURRENT_RETAIL'
+      ? projectedCurrentRetailers(product, record)
+      : [];
+    if (record.lifecycleState === 'CURRENT_RETAIL' && retailers.length === 0) {
+      throw new Error(`retail lifecycle cutover current product lacks projected retailer: ${product.id}`);
+    }
+    const projection = record.lifecycleState === 'CURRENT_RETAIL'
+      ? structuredClone(product)
+      : stripCommercialOutput(product);
+    return freezeDeep({
+      ...projection,
+      unavailable: record.lifecycleState !== 'CURRENT_RETAIL',
+      retailers,
+      retailLifecycle: publicRetailLifecycle(record.retailLifecycle),
+      lifecycleVisibility: record.publicVisibility,
+    });
+  });
+  return freezeDeep({
+    ...structuredClone(publicProjection),
+    products,
+    retailLifecycleRelease: {
+      shadowId: shadow.shadowId,
+      semanticSha256: shadow.semanticSha256,
+      asOf: shadow.asOf,
+    },
+  });
+}
+
+export function preserveRetailLifecycleShadowOnlyPublication({
+  baselinePublicProjection,
+  baselinePublicProjectionSha256,
+  candidatePublicProjection,
+  candidatePublicProjectionSha256,
+  releasePolicy,
+  releasePolicySha256,
+  shadow,
+}) {
+  validateRetailLifecycleShadow(shadow);
+  if (releasePolicy?.mode !== 'SHADOW_ONLY') {
+    throw new Error('shadow-only publication requires SHADOW_ONLY release policy');
+  }
+  if (required(releasePolicy.releaseEpoch, 'shadow-only release epoch') !== shadow.releaseEpoch
+    || timestamp(releasePolicy.asOf, 'shadow-only release asOf') !== shadow.asOf
+    || sha256(releasePolicySha256, 'shadow-only release policy SHA-256')
+      !== shadow.sourceBindings.releasePolicySha256) {
+    throw new Error('shadow-only release policy drift');
+  }
+  const baselineSha256 = sha256(
+    baselinePublicProjectionSha256,
+    'shadow-only baseline public projection SHA-256',
+  );
+  if (baselineSha256 !== shadow.sourceBindings.publicProjectionSha256) {
+    throw new Error('shadow-only baseline public projection drift');
+  }
+  if (canonicalSha256(baselinePublicProjection)
+    !== shadow.sourceBindings.publicProjectionSemanticSha256) {
+    throw new Error('shadow-only baseline public projection semantic drift');
+  }
+  const candidateSha256 = sha256(
+    candidatePublicProjectionSha256,
+    'shadow-only candidate public projection SHA-256',
+  );
+  const baselineSemanticSha256 = canonicalSha256(baselinePublicProjection);
+  const candidateSemanticSha256 = canonicalSha256(candidatePublicProjection);
+  const baselineById = new Map((baselinePublicProjection?.products ?? [])
+    .map((product) => [String(product?.id ?? ''), product]));
+  const candidateById = new Map((candidatePublicProjection?.products ?? [])
+    .map((product) => [String(product?.id ?? ''), product]));
+  const changedProductIds = [...new Set([...baselineById.keys(), ...candidateById.keys()])]
+    .filter((id) => canonicalSha256(baselineById.get(id) ?? null)
+      !== canonicalSha256(candidateById.get(id) ?? null))
+    .sort();
+  const baselineMetadata = { ...baselinePublicProjection, products: undefined };
+  const candidateMetadata = { ...candidatePublicProjection, products: undefined };
+  const metadataChanged = canonicalSha256(baselineMetadata) !== canonicalSha256(candidateMetadata);
+  const candidateMatchesBaseline = candidateSha256 === baselineSha256
+    && candidateSemanticSha256 === baselineSemanticSha256;
+  return freezeDeep({
+    publicProjection: structuredClone(baselinePublicProjection),
+    decision: {
+      mode: 'SHADOW_ONLY',
+      status: candidateMatchesBaseline ? 'BASELINE_REPLAYED' : 'CANDIDATE_ISOLATED',
+      shadowId: shadow.shadowId,
+      baselineSha256,
+      baselineSemanticSha256,
+      candidateSha256,
+      candidateSemanticSha256,
+      metadataChanged,
+      changedProductIds,
+    },
+  });
+}
+
+export function buildRetailLifecycleNeutralSafetyPublication({
+  baselinePublicProjection,
+  baselinePublicProjectionSha256,
+  candidatePublicProjection,
+  candidatePublicProjectionSha256,
+  releasePolicy,
+  releasePolicySha256,
+  shadow,
+}) {
+  validateRetailLifecycleShadow(shadow);
+  if (releasePolicy?.mode !== 'SHADOW_ONLY') {
+    throw new Error('lifecycle-neutral safety publication requires SHADOW_ONLY release policy');
+  }
+  if (required(releasePolicy.releaseEpoch, 'lifecycle-neutral safety release epoch') !== shadow.releaseEpoch
+    || timestamp(releasePolicy.asOf, 'lifecycle-neutral safety release asOf') !== shadow.asOf
+    || sha256(releasePolicySha256, 'lifecycle-neutral safety release policy SHA-256')
+      !== shadow.sourceBindings.releasePolicySha256) {
+    throw new Error('lifecycle-neutral safety release policy drift');
+  }
+  const baselineSha256 = sha256(
+    baselinePublicProjectionSha256,
+    'lifecycle-neutral safety baseline SHA-256',
+  );
+  if (baselineSha256 !== shadow.sourceBindings.publicProjectionSha256
+    || canonicalSha256(baselinePublicProjection)
+      !== shadow.sourceBindings.publicProjectionSemanticSha256) {
+    throw new Error('lifecycle-neutral safety baseline drift');
+  }
+  const candidateSha256 = sha256(
+    candidatePublicProjectionSha256,
+    'lifecycle-neutral safety candidate SHA-256',
+  );
+  const baselineMetadata = { ...baselinePublicProjection, products: undefined };
+  const candidateMetadata = { ...candidatePublicProjection, products: undefined };
+  if (canonicalSha256(baselineMetadata) !== canonicalSha256(candidateMetadata)) {
+    throw new Error('lifecycle-neutral safety release contains non-whitelisted metadata changes');
+  }
+  const baselineProducts = baselinePublicProjection?.products;
+  const candidateProducts = candidatePublicProjection?.products;
+  if (!Array.isArray(baselineProducts) || !Array.isArray(candidateProducts)
+    || baselineProducts.length !== candidateProducts.length) {
+    throw new Error('lifecycle-neutral safety release contains non-whitelisted product membership changes');
+  }
+
+  const changedProductIds = [];
+  for (let index = 0; index < baselineProducts.length; index += 1) {
+    const baseline = baselineProducts[index];
+    const candidate = candidateProducts[index];
+    if (String(candidate?.id ?? '') !== String(baseline?.id ?? '')) {
+      throw new Error('lifecycle-neutral safety release contains non-whitelisted product order changes');
+    }
+    const expected = structuredClone(baseline);
+    if (canonicalSha256(baseline?.door_swing_mm ?? null)
+      !== canonicalSha256(candidate?.door_swing_mm ?? null)) {
+      if (candidate?.door_swing_mm !== null
+        || baseline?.door_swing_mm === null
+        || baseline?.door_swing_mm === undefined) {
+        throw new Error(`lifecycle-neutral safety release contains non-whitelisted door swing change for ${baseline.id}`);
+      }
+      expected.door_swing_mm = null;
+    }
+    const baselineHasInference = Object.hasOwn(baseline ?? {}, 'inferred_door_swing');
+    const candidateHasInference = Object.hasOwn(candidate ?? {}, 'inferred_door_swing');
+    if (baselineHasInference !== candidateHasInference
+      || (baselineHasInference
+        && canonicalSha256(baseline.inferred_door_swing)
+          !== canonicalSha256(candidate.inferred_door_swing))) {
+      if (!baselineHasInference || candidateHasInference) {
+        throw new Error(`lifecycle-neutral safety release contains non-whitelisted inferred door change for ${baseline.id}`);
+      }
+      delete expected.inferred_door_swing;
+    }
+    if (canonicalSha256(baseline?.flags ?? null) !== canonicalSha256(candidate?.flags ?? null)) {
+      if (!baseline?.flags || typeof baseline.flags !== 'object' || Array.isArray(baseline.flags)
+        || !candidate?.flags || typeof candidate.flags !== 'object' || Array.isArray(candidate.flags)
+        || candidate.flags.reversible_door !== null) {
+        throw new Error(`lifecycle-neutral safety release contains non-whitelisted flags change for ${baseline.id}`);
+      }
+      expected.flags = { ...baseline.flags, reversible_door: null };
+    }
+    if (canonicalSha256(expected) !== canonicalSha256(candidate)) {
+      throw new Error(`lifecycle-neutral safety release contains non-whitelisted product changes for ${baseline.id}`);
+    }
+    if (canonicalSha256(baseline) !== canonicalSha256(candidate)) {
+      changedProductIds.push(String(baseline.id));
+    }
+  }
+
+  return freezeDeep({
+    publicProjection: structuredClone(candidatePublicProjection),
+    decision: {
+      mode: 'SHADOW_ONLY_SAFETY_RELEASE',
+      status: changedProductIds.length > 0 ? 'SAFETY_FIELDS_REMOVED' : 'NO_SAFETY_CHANGE',
+      shadowId: shadow.shadowId,
+      baselineSha256,
+      candidateSha256,
+      changedProductIds,
+    },
+  });
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-07-13.1",
+  "maximumBytes": 20971520,
+  "maximumRedirects": 5,
+  "sources": [
+    {
+      "id": "appliances-online-commercial-reference",
+      "retailer": "Appliances Online Commercial",
+      "allowedHosts": [
+        "commercial.appliancesonline.com.au"
+      ],
+      "minimumIntervalMs": 2000,
+      "robots": {
+        "url": "https://commercial.appliancesonline.com.au/robots.txt",
+        "reviewedAt": "2026-07-13",
+        "status": "inaccessible_403"
+      },
+      "terms": {
+        "url": "https://www.appliancesonline.com.au/article/trading-terms/",
+        "reviewedAt": "2026-07-13",
+        "status": "sale_terms_only"
+      },
+      "scaleAllowed": false,
+      "manualCanaryUrls": [
+        "https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf"
+      ]
+    }
+  ]
+}

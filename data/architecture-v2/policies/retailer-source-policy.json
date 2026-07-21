@@ -1,1 +1,111 @@
-{"schemaVersion":1,"reviewedAt":"2026-07-11","sources":[{"retailer":"Appliances Online","host":"www.appliancesonline.com.au","collectionMode":"public_product_pages_pending_terms_review","robotsHttpStatus":200,"robotsSha256":"6182ec0bc41ff43cddc2d15a86d5f82bddb42c20c0eafcdbc596d5a3148fe65a","notes":"Product paths are not generally disallowed; automated collection remains disabled until terms review is documented."},{"retailer":"Bing Lee","host":"www.binglee.com.au","collectionMode":"historical_only","robotsHttpStatus":403,"robotsSha256":"8771f1f016ccd4e709e1d714bcbfdabcbeceae3aafdf33159eb6c04a172b789d","notes":"Robots could not be retrieved without access denial. Do not automate collection."},{"retailer":"Harvey Norman","host":"www.harveynorman.com.au","collectionMode":"public_product_pages_pending_terms_review","robotsHttpStatus":200,"robotsSha256":"b70b7002b308ac7108e6e90dd330cf83f95b32d5eaadcc8b534ac007f29b1c3d","notes":"Search and catalog paths are disallowed; product-page adapter remains disabled until path and terms review is complete."},{"retailer":"JB Hi-Fi","host":"www.jbhifi.com.au","collectionMode":"public_product_pages_pending_terms_review","robotsHttpStatus":200,"robotsSha256":"3f63d67185ea04dea3f7b4ea3b6f94afeba70e9dbb4aeb0bd5821ad04bd57262","notes":"Search and filtered collection paths are disallowed. Product-page adapter remains disabled pending terms review."},{"retailer":"The Good Guys","host":"www.thegoodguys.com.au","collectionMode":"partnerize_feed_only","robotsHttpStatus":200,"robotsSha256":"0d73e51be2ca9f07ede19daa5e5b9ccb0de5ab2ac4663ff4e30910a3b3135735","notes":"Use the authorised Partnerize product feed. Do not crawl disallowed product/search paths."}]}
+{
+  "schemaVersion": 2,
+  "policyVersion": "retailer-source-policy-v2",
+  "reviewedAt": "2026-07-20",
+  "sources": [
+    {
+      "id": "appliances-online-product-api-v1",
+      "retailer": "Appliances Online",
+      "host": "www.appliancesonline.com.au",
+      "allowedHosts": [
+        "www.appliancesonline.com.au"
+      ],
+      "sourceType": "public_retailer_api",
+      "collectionMode": "bounded_exact_product_api",
+      "termsReviewState": "reviewed_bounded_exact_product_api",
+      "robotsHttpStatus": 200,
+      "robotsSha256": "6182ec0bc41ff43cddc2d15a86d5f82bddb42c20c0eafcdbc596d5a3148fe65a",
+      "minimumIntervalMs": 1000,
+      "automationControls": {
+        "maximumTargetsPerRun": 100,
+        "maximumConcurrency": 1,
+        "stopHttpStatuses": [
+          403,
+          429
+        ],
+        "maximumConsecutiveFailures": 5,
+        "canaryRunSha256": "e4646b7f209e15ed3c0bbd54757e9dff0590fb11f7906d07fe2f419043acdda5"
+      },
+      "expectedCadenceHours": 24,
+      "maximumCurrentAgeHours": 72,
+      "legacyLinkAction": "REVALIDATE_AO_PRODUCT_API",
+      "notes": "Operational review permits only bounded replay of known exact-product URLs. This is not contractual or legal authorization. Search, catalogue discovery, parallel collection, and arbitrary endpoints remain disabled; stop and re-review on robots drift, HTTP 403/429, identity drift, or five consecutive failures."
+    },
+    {
+      "id": "bing-lee-product-page-v1",
+      "retailer": "Bing Lee",
+      "host": "www.binglee.com.au",
+      "allowedHosts": [
+        "www.binglee.com.au"
+      ],
+      "sourceType": "public_retailer_page",
+      "collectionMode": "historical_only",
+      "termsReviewState": "collection_blocked",
+      "robotsHttpStatus": 403,
+      "robotsSha256": "8771f1f016ccd4e709e1d714bcbfdabcbeceae3aafdf33159eb6c04a172b789d",
+      "minimumIntervalMs": 2000,
+      "expectedCadenceHours": 168,
+      "maximumCurrentAgeHours": 336,
+      "legacyLinkAction": "HISTORICAL_ONLY_POLICY_BLOCKED",
+      "notes": "Robots could not be retrieved without access denial. Do not automate collection."
+    },
+    {
+      "id": "harvey-norman-product-page-v1",
+      "retailer": "Harvey Norman",
+      "host": "www.harveynorman.com.au",
+      "allowedHosts": [
+        "www.harveynorman.com.au"
+      ],
+      "sourceType": "public_retailer_page",
+      "collectionMode": "public_product_pages_pending_terms_review",
+      "termsReviewState": "collection_blocked",
+      "robotsHttpStatus": 200,
+      "robotsSha256": "b70b7002b308ac7108e6e90dd330cf83f95b32d5eaadcc8b534ac007f29b1c3d",
+      "minimumIntervalMs": 2000,
+      "expectedCadenceHours": 168,
+      "maximumCurrentAgeHours": 336,
+      "legacyLinkAction": "PAGE_REVALIDATION_POLICY_BLOCKED",
+      "notes": "Search and catalog paths are disallowed; product-page collection remains disabled until path and terms review is complete."
+    },
+    {
+      "id": "jb-hi-fi-product-page-v1",
+      "retailer": "JB Hi-Fi",
+      "host": "www.jbhifi.com.au",
+      "allowedHosts": [
+        "www.jbhifi.com.au",
+        "jbhifi.com.au"
+      ],
+      "sourceType": "public_retailer_page",
+      "collectionMode": "public_product_pages_pending_terms_review",
+      "termsReviewState": "collection_blocked",
+      "robotsHttpStatus": 200,
+      "robotsSha256": "3f63d67185ea04dea3f7b4ea3b6f94afeba70e9dbb4aeb0bd5821ad04bd57262",
+      "minimumIntervalMs": 2000,
+      "expectedCadenceHours": 168,
+      "maximumCurrentAgeHours": 336,
+      "legacyLinkAction": "PAGE_REVALIDATION_POLICY_BLOCKED",
+      "notes": "Search and filtered collection paths are disallowed. Product-page collection remains disabled pending terms review."
+    },
+    {
+      "id": "the-good-guys-partnerize-feed-v1",
+      "retailer": "The Good Guys",
+      "host": "www.thegoodguys.com.au",
+      "allowedHosts": [
+        "www.thegoodguys.com.au"
+      ],
+      "acquisitionHosts": [
+        "feeds.performancehorizon.com"
+      ],
+      "sourceType": "affiliate_feed",
+      "collectionMode": "partnerize_feed_only",
+      "termsReviewState": "authorized_partner_feed",
+      "robotsHttpStatus": 200,
+      "robotsSha256": "0d73e51be2ca9f07ede19daa5e5b9ccb0de5ab2ac4663ff4e30910a3b3135735",
+      "minimumIntervalMs": 1000,
+      "expectedCadenceHours": 24,
+      "maximumCurrentAgeHours": 72,
+      "legacyLinkAction": "REPLAY_PARTNERIZE_FEED",
+      "notes": "Use the authorised Partnerize product feed. Do not crawl disallowed product or search paths."
+    }
+  ]
+}

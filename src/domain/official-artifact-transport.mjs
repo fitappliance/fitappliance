@@ -5,7 +5,11 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { promisify } from 'node:util';
 
-import { isOfficialBrandHostUrl, isOfficialBrandUrl } from './evidence-source-verifier.mjs';
+import {
+  isOfficialBrandArtifactHostUrl,
+  isOfficialBrandArtifactUrl,
+} from './evidence-source-verifier.mjs';
+import { fetchViaScrapling } from './scrapling-transport.mjs';
 
 const execFile = promisify(execFileCallback);
 const DEFAULT_MAXIMUM_BYTES = 20 * 1024 * 1024;
@@ -22,15 +26,27 @@ function normalizeContentType(value) {
 function validatePayload(contentType, input, maximumBytes) {
   const bytes = Buffer.from(input ?? []);
   if (!bytes.length || bytes.length > maximumBytes) throw new Error('artifact size outside limits');
-  const prefix = bytes.subarray(0, 32).toString('utf8').trimStart().toLowerCase();
-  if (contentType === 'application/pdf' && !prefix.startsWith('%pdf-')) throw new Error('PDF content type does not match payload');
-  if (contentType === 'text/html' && !prefix.startsWith('<!doctype') && !prefix.startsWith('<html')) {
+  const binaryPrefix = bytes.subarray(0, 32).toString('utf8').trimStart().toLowerCase();
+  const htmlPrefix = bytes.subarray(0, Math.min(bytes.length, 4096)).toString('utf8')
+    .replace(/^\uFEFF/, '').trimStart().toLowerCase();
+  const pdfMagic = binaryPrefix.startsWith('%pdf-');
+  if (contentType === 'application/pdf' && !pdfMagic) throw new Error('PDF content type does not match payload');
+  if (contentType === 'application/octet-stream') {
+    if (!pdfMagic) throw new Error('generic binary content type does not match a PDF payload');
+    return { bytes, contentType: 'application/pdf' };
+  }
+  if (contentType === 'text/html' && !htmlPrefix.startsWith('<!doctype') && !htmlPrefix.startsWith('<html')) {
     throw new Error('HTML content type does not match payload');
   }
-  if (!['application/pdf', 'text/html'].includes(contentType)) {
+  if (contentType === 'application/json') {
+    try { JSON.parse(bytes.toString('utf8')); } catch {
+      throw new Error('JSON payload is invalid');
+    }
+  }
+  if (!['application/pdf', 'text/html', 'application/json'].includes(contentType)) {
     throw new TypeError(`unsupported evidence content type ${contentType || 'missing'}`);
   }
-  return bytes;
+  return { bytes, contentType };
 }
 
 function retriable(error) {
@@ -46,6 +62,25 @@ function transportError(message, retry = false) {
   return error;
 }
 
+function requestHeadersForUrl(value) {
+  const hostname = new URL(value).hostname.toLowerCase();
+  return { ...(strategies.transport.requestHeadersByHost?.[hostname] ?? {}) };
+}
+
+function hostTransportOptions(requestedUrl, options) {
+  const hostname = new URL(requestedUrl).hostname.toLowerCase();
+  const configuredTimeout = Number(strategies.transport.timeoutMsByHost?.[hostname]);
+  const forceHttp1_1 = strategies.transport.curlHttp1OnlyHosts?.includes(hostname) === true;
+  if ((!Number.isInteger(configuredTimeout) || configuredTimeout < 1) && !forceHttp1_1) return options;
+  return {
+    ...options,
+    ...(Number.isInteger(configuredTimeout) && configuredTimeout > 0
+      ? { timeoutMs: Math.max(options.timeoutMs ?? 30000, configuredTimeout) }
+      : {}),
+    ...(forceHttp1_1 ? { forceHttp1_1: true } : {}),
+  };
+}
+
 async function fetchTransport(requestedUrl, brand, options) {
   const fetchImpl = options.fetchImpl ?? fetch;
   const maximumRedirects = options.maximumRedirects ?? 5;
@@ -57,7 +92,11 @@ async function fetchTransport(requestedUrl, brand, options) {
       response = await fetchImpl(current, {
         redirect: 'manual',
         signal: options.signal ?? AbortSignal.timeout(options.timeoutMs ?? 30000),
-        headers: { 'user-agent': USER_AGENT, accept: 'text/html,application/pdf;q=0.9' },
+        headers: {
+          'user-agent': USER_AGENT,
+          accept: 'application/json,text/html;q=0.9,application/pdf;q=0.8',
+          ...requestHeadersForUrl(current),
+        },
       });
     } catch (error) {
       if (retriable(error) || error instanceof TypeError) throw transportError(error.message, true);
@@ -68,15 +107,23 @@ async function fetchTransport(requestedUrl, brand, options) {
       const location = response.headers.get('location');
       if (!location) throw new Error('redirect location missing');
       const next = new URL(location, current).toString();
-      if (!isOfficialBrandHostUrl(next, brand)) throw new Error('redirect escaped official brand hosts');
+      if (!isOfficialBrandArtifactHostUrl(next, brand, {
+        model: options.expectedModel,
+        category: options.expectedCategory,
+        artifactUrl: requestedUrl,
+        discoveryProvenance: options.discoveryProvenance,
+      })) throw new Error('redirect escaped official brand hosts or lacks provenance');
       redirectChain.push(next);
       current = next;
       continue;
     }
     if (!response.ok) throw transportError(`http_${response.status}`, response.status === 408 || response.status === 429 || response.status >= 500);
-    const contentType = normalizeContentType(response.headers.get('content-type'));
-    const bytes = validatePayload(contentType, await response.arrayBuffer(), options.maximumBytes);
-    return { finalUrl: current, redirectChain, contentType, bytes, transport: 'fetch' };
+    const validated = validatePayload(
+      normalizeContentType(response.headers.get('content-type')),
+      await response.arrayBuffer(),
+      options.maximumBytes,
+    );
+    return { finalUrl: current, redirectChain, ...validated, transport: 'fetch' };
   }
   throw new Error('unreachable redirect state');
 }
@@ -117,6 +164,20 @@ async function defaultCurlTransport(requestedUrl, options) {
   }
 }
 
+function isCurlHttp2ProtocolFailure(error) {
+  const message = String(error?.stderr ?? error?.message ?? error);
+  return /curl:\s*\(92\)|HTTP\/2[^\n]*(?:INTERNAL_ERROR|not closed cleanly|stream error)/i.test(message);
+}
+
+async function curlTransportWithProtocolFallback(curlImpl, requestedUrl, options) {
+  try {
+    return await curlImpl(requestedUrl, options);
+  } catch (error) {
+    if (options.forceHttp1_1 === true || !isCurlHttp2ProtocolFailure(error)) throw error;
+    return curlImpl(requestedUrl, { ...options, forceHttp1_1: true });
+  }
+}
+
 export function buildCurlArguments(requestedUrl, options, bodyPath, headersPath) {
   const seconds = Math.max(1, Math.ceil((options.timeoutMs ?? 30000) / 1000));
   const hostname = new URL(requestedUrl).hostname.toLowerCase();
@@ -125,11 +186,15 @@ export function buildCurlArguments(requestedUrl, options, bodyPath, headersPath)
     '--max-time', String(seconds), '--max-redirs', String(options.maximumRedirects ?? 5),
     '--max-filesize', String(options.maximumBytes),
   ];
+  if (options.forceHttp1_1 === true) args.push('--http1.1');
   if (!strategies.transport.preserveCurlDefaultUserAgentHosts.includes(hostname)) {
     args.push('--user-agent', USER_AGENT);
   }
+  for (const [name, value] of Object.entries(requestHeadersForUrl(requestedUrl))) {
+    args.push('--header', `${name[0].toUpperCase()}${name.slice(1)}: ${value}`);
+  }
   args.push(
-    '--header', 'Accept: text/html,application/pdf;q=0.9',
+    '--header', 'Accept: application/json,text/html;q=0.9,application/pdf;q=0.8',
     '--dump-header', headersPath,
     '--output', bodyPath,
     '--write-out', '%{url_effective}\n%{content_type}\n',
@@ -139,28 +204,57 @@ export function buildCurlArguments(requestedUrl, options, bodyPath, headersPath)
 }
 
 function validateTransportResult(result, requestedUrl, brand, options) {
-  if (!isOfficialBrandHostUrl(result?.finalUrl, brand)) throw new Error('final URL escaped official brand hosts');
-  if (!Array.isArray(result?.redirectChain) || result.redirectChain.length > (options.maximumRedirects ?? 5)
-    || result.redirectChain.some((url) => !isOfficialBrandHostUrl(url, brand))) {
-    throw new Error('redirect escaped official brand hosts');
+  const hostContext = {
+    model: options.expectedModel,
+    category: options.expectedCategory,
+    artifactUrl: requestedUrl,
+    discoveryProvenance: options.discoveryProvenance,
+  };
+  if (!isOfficialBrandArtifactHostUrl(result?.finalUrl, brand, hostContext)) {
+    throw new Error('final URL escaped official brand hosts or lacks provenance');
   }
-  const contentType = normalizeContentType(result.contentType);
-  if (/\.pdf$/i.test(new URL(requestedUrl).pathname) && contentType !== 'application/pdf') {
+  if (!Array.isArray(result?.redirectChain) || result.redirectChain.length > (options.maximumRedirects ?? 5)
+    || result.redirectChain.some((url) => !isOfficialBrandArtifactHostUrl(url, brand, hostContext))) {
+    throw new Error('redirect escaped official brand hosts or lacks provenance');
+  }
+  const validated = validatePayload(normalizeContentType(result.contentType), result.bytes, options.maximumBytes);
+  if (/\.pdf$/i.test(new URL(requestedUrl).pathname) && validated.contentType !== 'application/pdf') {
     throw new Error('PDF request returned a non-PDF content type');
   }
-  const bytes = validatePayload(contentType, result.bytes, options.maximumBytes);
-  return { finalUrl: new URL(result.finalUrl).toString(), redirectChain: result.redirectChain.map((url) => new URL(url).toString()), contentType, bytes };
+  return {
+    finalUrl: new URL(result.finalUrl).toString(),
+    redirectChain: result.redirectChain.map((url) => new URL(url).toString()),
+    ...validated,
+  };
 }
 
 export async function fetchOfficialArtifactResilient(requestedUrl, brand, options = {}) {
-  if (!isOfficialBrandUrl(requestedUrl, brand)) throw new TypeError('requested URL is not an official brand URL');
-  const normalizedOptions = { ...options, maximumBytes: options.maximumBytes ?? DEFAULT_MAXIMUM_BYTES };
+  if (!isOfficialBrandArtifactUrl(requestedUrl, brand, {
+    model: options.expectedModel,
+    category: options.expectedCategory,
+    discoveryProvenance: options.discoveryProvenance,
+  })) {
+    throw new TypeError('requested URL is not an official brand URL with valid market discovery provenance');
+  }
+  const normalizedOptions = hostTransportOptions(requestedUrl, {
+    ...options,
+    maximumBytes: options.maximumBytes ?? DEFAULT_MAXIMUM_BYTES,
+  });
   const curlImpl = options.curlImpl ?? defaultCurlTransport;
+  const scraplingImpl = options.scraplingImpl ?? fetchViaScrapling;
+  const hostname = new URL(requestedUrl).hostname.toLowerCase();
   const curlPreferred = options.allowCurlFallback === true
-    && strategies.transport.curlPreferredHosts.includes(new URL(requestedUrl).hostname.toLowerCase());
+    && strategies.transport.curlPreferredHosts.includes(hostname);
+  const scraplingFallback = options.allowScraplingFallback === true
+    && strategies.transport.scraplingFallbackHosts.includes(hostname);
   if (curlPreferred) {
     try {
-      const preferred = validateTransportResult(await curlImpl(requestedUrl, normalizedOptions), requestedUrl, brand, normalizedOptions);
+      const preferred = validateTransportResult(
+        await curlTransportWithProtocolFallback(curlImpl, requestedUrl, normalizedOptions),
+        requestedUrl,
+        brand,
+        normalizedOptions,
+      );
       return { requestedUrl: new URL(requestedUrl).toString(), ...preferred, transport: 'curl' };
     } catch {
       // The primary fetch path remains available when the preferred local transport is absent.
@@ -170,8 +264,22 @@ export async function fetchOfficialArtifactResilient(requestedUrl, brand, option
     const result = await fetchTransport(requestedUrl, brand, normalizedOptions);
     return { requestedUrl: new URL(requestedUrl).toString(), ...result };
   } catch (error) {
+    if (scraplingFallback) {
+      const fallback = validateTransportResult(
+        await scraplingImpl(requestedUrl, normalizedOptions),
+        requestedUrl,
+        brand,
+        normalizedOptions,
+      );
+      return { requestedUrl: new URL(requestedUrl).toString(), ...fallback, transport: 'scrapling' };
+    }
     if (!retriable(error) || options.allowCurlFallback !== true) throw error;
-    const fallback = validateTransportResult(await curlImpl(requestedUrl, normalizedOptions), requestedUrl, brand, normalizedOptions);
+    const fallback = validateTransportResult(
+      await curlTransportWithProtocolFallback(curlImpl, requestedUrl, normalizedOptions),
+      requestedUrl,
+      brand,
+      normalizedOptions,
+    );
     return { requestedUrl: new URL(requestedUrl).toString(), ...fallback, transport: 'curl' };
   }
 }

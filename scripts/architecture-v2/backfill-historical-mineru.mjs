@@ -1,24 +1,19 @@
 #!/usr/bin/env node
 
 import { createHash } from 'node:crypto';
-import { access, mkdir, readFile, readdir, rename, stat, writeFile } from 'node:fs/promises';
-import { dirname, extname, join, relative, resolve, sep } from 'node:path';
+import { mkdir, readFile, rename, stat, writeFile } from 'node:fs/promises';
+import { dirname, relative, resolve, sep } from 'node:path';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import {
   buildHistoricalMineruAudit,
-  deduplicateHistoricalPdfs,
   selectHistoricalMineruBackfill,
+  validateHistoricalPdfInventoryDocument,
 } from '../../src/domain/historical-mineru-backfill.mjs';
 import { inspectMineruPdfCache, runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
 import { evidenceSourcePolicy } from '../../src/domain/evidence-source-verifier.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
-const EVIDENCE_ROOTS = Object.freeze([
-  'evidence/objects/sha256',
-  'evidence/web/sha256',
-]);
-
 function argument(args, name) {
   const index = args.indexOf(name);
   return index >= 0 ? args[index + 1] : null;
@@ -30,32 +25,6 @@ function integerArgument(args, name, fallback) {
   const value = Number(raw);
   if (!Number.isSafeInteger(value) || value < 1) throw new TypeError(`${name} must be a positive integer`);
   return value;
-}
-
-function portableRelativePath(storageRoot, path) {
-  const value = relative(storageRoot, path).split(sep).join('/');
-  if (!value || value === '..' || value.startsWith('../')) throw new Error('historical PDF escaped storage root');
-  return value;
-}
-
-async function listPdfFiles(directory) {
-  try {
-    await access(directory);
-  } catch (error) {
-    if (error?.code === 'ENOENT') return [];
-    throw error;
-  }
-  const paths = [];
-  async function walk(current) {
-    for (const entry of await readdir(current, { withFileTypes: true })) {
-      if (entry.isSymbolicLink()) throw new Error(`historical evidence symlink rejected: ${join(current, entry.name)}`);
-      const path = join(current, entry.name);
-      if (entry.isDirectory()) await walk(path);
-      else if (entry.isFile() && extname(entry.name).toLowerCase() === '.pdf') paths.push(path);
-    }
-  }
-  await walk(directory);
-  return paths.sort();
 }
 
 async function readPriorAttempts(auditPath) {
@@ -97,6 +66,29 @@ function reportDigest(audit) {
   return createHash('sha256').update(JSON.stringify(audit.entries)).digest('hex');
 }
 
+function resolveStoragePath(storageRoot, relativePath) {
+  const path = resolve(storageRoot, ...String(relativePath ?? '').split('/'));
+  if (!path.startsWith(`${storageRoot}${sep}`)) throw new Error('historical PDF escaped storage root');
+  return path;
+}
+
+async function readFrozenDocument(storageRoot, document) {
+  const missing = [];
+  for (const relativePath of document.paths) {
+    try {
+      const bytes = await readFile(resolveStoragePath(storageRoot, relativePath));
+      return { bytes, document: validateHistoricalPdfInventoryDocument(document, bytes), relativePath };
+    } catch (error) {
+      if (error?.code === 'ENOENT') {
+        missing.push(relativePath);
+        continue;
+      }
+      throw error;
+    }
+  }
+  throw new Error(`all frozen PDF paths are missing: ${missing.join(', ')}`);
+}
+
 async function main(args) {
   const configuredRoot = argument(args, '--storage-root') ?? process.env.FITAPPLIANCE_STORAGE_ROOT;
   if (!configuredRoot) throw new TypeError('--storage-root or FITAPPLIANCE_STORAGE_ROOT is required');
@@ -109,33 +101,21 @@ async function main(args) {
   const maximumAttempts = integerArgument(args, '--maximum-attempts', 3);
   const targetHash = argument(args, '--sha256');
   const policy = evidenceSourcePolicy.resolutionPolicy.pdfEvidence;
-
-  const physicalPaths = (await Promise.all(EVIDENCE_ROOTS.map((path) => listPdfFiles(resolve(storageRoot, path)))))
-    .flat()
-    .sort();
-  const validRecords = [];
-  const invalidFiles = [];
-  for (const path of physicalPaths) {
-    const relativePath = portableRelativePath(storageRoot, path);
-    const pdfBytes = await readFile(path);
-    try {
-      deduplicateHistoricalPdfs([{ relativePath, pdfBytes }]);
-      validRecords.push({ relativePath, pdfBytes });
-    } catch (error) {
-      invalidFiles.push({ relativePath, error: error.message });
-    }
+  const baselinePath = resolve(argument(args, '--baseline')
+    ?? resolveArchitectureV2Path(root, 'historicalModelPdfBaseline'));
+  const baseline = JSON.parse(await readFile(baselinePath, 'utf8'));
+  const documents = baseline?.semantic?.pdfDocuments;
+  const invalidFiles = baseline?.semantic?.invalidPdfFiles;
+  if (!Array.isArray(documents) || !Array.isArray(invalidFiles)) {
+    throw new Error('historical model PDF baseline inventory required');
   }
-  const documents = deduplicateHistoricalPdfs(validRecords);
-  const pathByHash = new Map(documents.map((document) => [
-    document.sourcePdfSha256,
-    resolve(storageRoot, ...document.paths[0].split('/')),
-  ]));
   const priorAttempts = await readPriorAttempts(auditPath);
   const attemptsByHash = new Map(priorAttempts.map((entry) => [entry.sourcePdfSha256, entry]));
   const cacheStatesByHash = new Map();
   for (const document of documents) {
     try {
-      const state = await inspectMineruPdfCache(await readFile(pathByHash.get(document.sourcePdfSha256)), { storageRoot });
+      const frozen = await readFrozenDocument(storageRoot, document);
+      const state = await inspectMineruPdfCache(frozen.bytes, { storageRoot });
       cacheStatesByHash.set(document.sourcePdfSha256, state);
     } catch (error) {
       cacheStatesByHash.set(document.sourcePdfSha256, {
@@ -172,7 +152,8 @@ async function main(args) {
     for (const entry of selected) {
       const attemptedAt = new Date().toISOString();
       try {
-        const pdfBytes = await readFile(pathByHash.get(entry.sourcePdfSha256));
+        const frozen = await readFrozenDocument(storageRoot, entry);
+        const pdfBytes = frozen.bytes;
         const result = await runMineruPdfToJson(pdfBytes, { storageRoot });
         const state = await inspectMineruPdfCache(pdfBytes, { storageRoot });
         cacheStatesByHash.set(entry.sourcePdfSha256, state);

@@ -7,7 +7,7 @@ import { buildEvidenceAcquisitionPlan } from '../../src/domain/evidence-acquisit
 import { inspectDocumentPayload } from '../../src/domain/document-source-adapter.mjs';
 import { classifyTransportHost } from '../../src/domain/source-provenance.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
-import { runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
+import { runMineruPdfWithImageFallback } from '../../src/domain/mineru-runner.mjs';
 import { inspectMineruContentListV2 } from '../../src/domain/mineru-document.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -80,7 +80,7 @@ async function acquireEntry(entry, storageRoot, retrievedAt) {
     const contentType = response.headers.get('content-type') ?? '';
     const payloadInspection = inspectDocumentPayload({ contentType, bytes });
     if (!payloadInspection.accepted) throw new Error(payloadInspection.reason);
-    const processed = await runMineruPdfToJson(bytes, { storageRoot });
+    const processed = await runMineruPdfWithImageFallback(bytes, { storageRoot });
     const mineruInspection = inspectMineruContentListV2(processed.jsonBytes);
     const compatibilityText = Buffer.from(mineruInspection.pages.map((page) => page.fragments
       .map((fragment) => fragment.rawText)

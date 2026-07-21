@@ -125,6 +125,10 @@ test('replacement dimensions pass through unchanged and obey evidence action', a
   assert.equal(automatic.requiresConfirmation, false);
   assert.equal(automatic.canUseDimensions, true);
 
+  const modelReceipt = buildReplacementDimensionState(reference({ action: 'AUTO_FILL', evidence: 'MODEL_RECEIPT' }));
+  assert.equal(modelReceipt.requiresConfirmation, false);
+  assert.equal(modelReceipt.canUseDimensions, true);
+
   for (const [action, evidence] of [
     ['MEASURE_REQUIRED', 'IDENTITY_ONLY'],
     ['QUARANTINED', 'INTERNAL_CONFLICT'],

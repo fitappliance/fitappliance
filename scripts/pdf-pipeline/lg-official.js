@@ -154,7 +154,8 @@ async function findLgOfficialPdf(target = {}, {
       originalFileName: row.originalFileName || '',
       docId: row.docId || '',
       modelName: payload.retrieveManualSoftwareList?.modelList?.modelName || '',
-      lookupSku
+      lookupSku,
+      discoveryUrl: endpoint
     };
   }
 
@@ -169,4 +170,5 @@ exports.getManualRows = getManualRows;
 exports.normalizeLookupSku = normalizeLookupSku;
 exports.normalizeSku = normalizeSku;
 exports.selectBestManualRow = selectBestManualRow;
+exports.SUPPORT_API_URL = SUPPORT_API_URL;
 exports.trimLookupSkuCandidate = trimLookupSkuCandidate;

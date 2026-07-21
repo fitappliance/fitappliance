@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-14T00:00:00.000Z",
+  "policy": {
+    "legacyDimensionsAreHintsOnly": true,
+    "automaticPublicationRequiresAllCheckpoints": true,
+    "officialSourceRequiredForReceiptPromotion": true,
+    "authorityContextRequired": true,
+    "frozenPdfReplayRequiresCurrentMineru": true
+  },
+  "summary": {
+    "candidateModels": 0,
+    "artifacts": 0,
+    "fetchJobs": 0,
+    "targets": 0,
+    "candidateEdges": 0,
+    "uniqueReferences": 0,
+    "byLifecycle": {},
+    "byCategory": {},
+    "excluded": {}
+  },
+  "replayArtifacts": [],
+  "jobs": [],
+  "targets": []
+}

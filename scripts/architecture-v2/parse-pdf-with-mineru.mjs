@@ -5,7 +5,7 @@ import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, isAbsolute, resolve, sep } from 'node:path';
 
 import { inspectMineruContentListV2 } from '../../src/domain/mineru-document.mjs';
-import { runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
+import { runMineruPdfWithImageFallback } from '../../src/domain/mineru-runner.mjs';
 
 function option(args, name) {
   const index = args.indexOf(name);
@@ -40,7 +40,7 @@ async function main(args) {
   const storageRoot = option(args, '--storage-root') ?? process.env.FITAPPLIANCE_STORAGE_ROOT;
   if (!input || !storageRoot) throw new TypeError('--input and --storage-root are required');
   const pdfBytes = await readFile(resolve(input));
-  const result = await runMineruPdfToJson(pdfBytes, { storageRoot });
+  const result = await runMineruPdfWithImageFallback(pdfBytes, { storageRoot });
   const outputPath = resolveWithin(storageRoot, result.derivedArtifact.objectPath);
   await writeImmutable(outputPath, result.jsonBytes, result.derivedArtifact.contentSha256);
   const inspection = inspectMineruContentListV2(result.jsonBytes);

@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-12T11:13:49.000Z",
+  "generatedAt": "2026-07-12T12:40:00.000Z",
   "policyVersion": "2026-07-12.1",
   "publicationMode": "shadow_only",
   "repositoryScope": "frozen_pilot_slice_plus_full_summary",
   "fullArtifact": {
-    "contentSha256": "f21cb0d044cf0759a3307a7c36e5130c72832c7839a79dd4ce0c43a82fb080fb",
-    "byteLength": 3029657,
+    "contentSha256": "7832ffa93904552b606087ec42506bf94c162719fe2f75e89f2382ae98c555a2",
+    "byteLength": 3029640,
     "storage": {
       "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
-      "objectPath": "registries/derived/sha256/f2/1c/f21cb0d044cf0759a3307a7c36e5130c72832c7839a79dd4ce0c43a82fb080fb.json"
+      "objectPath": "registries/derived/sha256/78/32/7832ffa93904552b606087ec42506bf94c162719fe2f75e89f2382ae98c555a2.json"
     }
   },
   "energyRating": [
@@ -43,13 +43,13 @@
       "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D4NB9",
       "catalogDimensionsMm": {
         "width": 599,
-        "height": 820,
+        "height": 880,
         "depth": 573
       },
       "canPromoteDimensions": false,
-      "state": "EXACT_DIMENSION_CONFLICT",
+      "state": "EXACT_CONSISTENT",
       "reasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
+        "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "registryDimensionsMm": {
         "width": 599,
@@ -58,7 +58,7 @@
       },
       "deltasMm": {
         "width": 0,
-        "height": 60,
+        "height": 0,
         "depth": 0
       },
       "registryObservations": [
@@ -169,6 +169,50 @@
     },
     {
       "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_0910660e1a804a67fa883688",
+      "legacyRuntimeId": "ao-101283",
+      "category": "dishwasher",
+      "brand": "Smeg",
+      "model": "DWAU615DB3",
+      "exactKey": "dishwasher\u0000SMEG\u0000DWAU615DB3",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 818,
+        "depth": 570
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 820,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 2,
+        "height": 2,
+        "depth": 30
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1317,
+          "rowFingerprint": "952395b2f0b12dd896c73b381a08580cc934bb1b4c456d2a33d2ee5e6bef82d1",
+          "registrationNumber": "ADW1394",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 820,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_0b8ac4f5a56110f2b8fefc3d",
       "legacyRuntimeId": "ao-140367",
       "category": "fridge",
@@ -176,7 +220,7 @@
       "model": "KFN96VPEAA",
       "exactKey": "fridge\u0000BOSCH\u0000KFN96VPEAA",
       "catalogDimensionsMm": {
-        "width": 910,
+        "width": 905,
         "height": 1830,
         "depth": 731
       },
@@ -331,6 +375,50 @@
             "width": 700,
             "height": 1725,
             "depth": 675
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_150eb75eea0da8832efacf71",
+      "legacyRuntimeId": "ao-101284",
+      "category": "dishwasher",
+      "brand": "Smeg",
+      "model": "DWAU615DX3",
+      "exactKey": "dishwasher\u0000SMEG\u0000DWAU615DX3",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 818,
+        "depth": 570
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 820,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 2,
+        "height": 2,
+        "depth": 30
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1316,
+          "rowFingerprint": "d157bfdcaeabecf00d56fafc302bfaea6a82df80f78c1ddd7d33672d630f58d7",
+          "registrationNumber": "ADW1394",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 820,
+            "depth": 600
           },
           "qualityFlags": []
         }
@@ -733,50 +821,6 @@
     },
     {
       "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_3494250b2a85d645b6573ea3",
-      "legacyRuntimeId": "ao-66241",
-      "category": "dishwasher",
-      "brand": "Midea",
-      "model": "MDWB1SS",
-      "exactKey": "dishwasher\u0000MIDEA\u0000MDWB1SS",
-      "catalogDimensionsMm": {
-        "width": 550,
-        "height": 438,
-        "depth": 500
-      },
-      "canPromoteDimensions": false,
-      "state": "EXACT_CONSISTENT",
-      "reasonCodes": [
-        "EXACT_IDENTITY_AND_WHD_AGREE"
-      ],
-      "registryDimensionsMm": {
-        "width": 550,
-        "height": 438,
-        "depth": 500
-      },
-      "deltasMm": {
-        "width": 0,
-        "height": 0,
-        "depth": 0
-      },
-      "registryObservations": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "sourceLine": 633,
-          "rowFingerprint": "98f926f79d5e8b8cbfd778c06df6a6706a43f5311161f7fc79e396cf7e2e11f8",
-          "registrationNumber": "ADW1201",
-          "dimensionsMm": {
-            "width": 550,
-            "height": 438,
-            "depth": 500
-          },
-          "qualityFlags": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_3c21c0bd9837cd721e76e032",
       "legacyRuntimeId": "fridge-arf2831",
       "category": "fridge",
@@ -829,6 +873,43 @@
             "depth": 746
           },
           "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_4076bfeec9fe64e40d799c30",
+      "legacyRuntimeId": "ao-102999",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMU6HCS01A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMU6HCS01A",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 875,
+        "depth": 573
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1356,
+          "rowFingerprint": "22e4691cf15e7368c36ae852adda932bfad41a2c8601810c363f35e0cca0a19a",
+          "registrationNumber": "ADW1354",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
         }
       ]
     },
@@ -1038,7 +1119,7 @@
       "exactKey": "dishwasher\u0000BEKO\u0000BDF1630X",
       "catalogDimensionsMm": {
         "width": 598,
-        "height": 850,
+        "height": 865,
         "depth": 600
       },
       "canPromoteDimensions": false,
@@ -1050,6 +1131,43 @@
     },
     {
       "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_4a618d9f867ec77222f1a02c",
+      "legacyRuntimeId": "ao-127312",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6HCI02A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMS6HCI02A",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 247,
+          "rowFingerprint": "34eae7c2acfc38f742cd31b766c99886ade3613d62817355e2ab3e70918bdba3",
+          "registrationNumber": "ADW0951",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_4c5dd632cbad6b5d410cb718",
       "legacyRuntimeId": "ao-150517",
       "category": "dishwasher",
@@ -1058,13 +1176,13 @@
       "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D2NB9",
       "catalogDimensionsMm": {
         "width": 599,
-        "height": 820,
+        "height": 880,
         "depth": 573
       },
       "canPromoteDimensions": false,
-      "state": "EXACT_DIMENSION_CONFLICT",
+      "state": "EXACT_CONSISTENT",
       "reasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
+        "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "registryDimensionsMm": {
         "width": 599,
@@ -1073,7 +1191,7 @@
       },
       "deltasMm": {
         "width": 0,
-        "height": 60,
+        "height": 0,
         "depth": 0
       },
       "registryObservations": [
@@ -1195,95 +1313,6 @@
     },
     {
       "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_58f5a7609ebcb420091eb986",
-      "legacyRuntimeId": "ao-141853",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS6HAI02A",
-      "exactKey": "dishwasher\u0000BOSCH\u0000SMS6HAI02A",
-      "catalogDimensionsMm": {
-        "width": 600,
-        "height": 845,
-        "depth": 600
-      },
-      "canPromoteDimensions": false,
-      "state": "EXACT_NO_DIMENSIONS",
-      "reasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
-      ],
-      "registryDimensionsMm": null,
-      "registryObservations": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "sourceLine": 1361,
-          "rowFingerprint": "5df2ab442ed413cde07beb5d9f838baf6d29b612490c86f87473647eb8f81b4d",
-          "registrationNumber": "ADW1360",
-          "dimensionsMm": {
-            "width": null,
-            "height": null,
-            "depth": null
-          },
-          "qualityFlags": [
-            "MISSING_DIMENSIONS"
-          ]
-        },
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "sourceLine": 74,
-          "rowFingerprint": "b76c48823dea19064296c1a883f0ad032a2d2391cb36567ec58f60ba4648590a",
-          "registrationNumber": "ADW0855",
-          "dimensionsMm": {
-            "width": null,
-            "height": null,
-            "depth": null
-          },
-          "qualityFlags": [
-            "MISSING_DIMENSIONS"
-          ]
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_5a84ca3b168d4f76044963f4",
-      "legacyRuntimeId": "ao-102182",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI6HCS01A",
-      "exactKey": "dishwasher\u0000BOSCH\u0000SMI6HCS01A",
-      "catalogDimensionsMm": {
-        "width": 598,
-        "height": 815,
-        "depth": 573
-      },
-      "canPromoteDimensions": false,
-      "state": "EXACT_NO_DIMENSIONS",
-      "reasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
-      ],
-      "registryDimensionsMm": null,
-      "registryObservations": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "sourceLine": 1348,
-          "rowFingerprint": "d9f2218d81633e40b85600d90f990ad7605e31d59285f43af357be6c6f5fe45f",
-          "registrationNumber": "ADW1353",
-          "dimensionsMm": {
-            "width": null,
-            "height": null,
-            "depth": null
-          },
-          "qualityFlags": [
-            "MISSING_DIMENSIONS"
-          ]
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_5b2f42e7391d85a23a706df6",
       "legacyRuntimeId": "fridge-arf3865",
       "category": "fridge",
@@ -1384,13 +1413,13 @@
       "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D2NX9",
       "catalogDimensionsMm": {
         "width": 599,
-        "height": 820,
+        "height": 880,
         "depth": 573
       },
       "canPromoteDimensions": false,
-      "state": "EXACT_DIMENSION_CONFLICT",
+      "state": "EXACT_CONSISTENT",
       "reasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
+        "EXACT_IDENTITY_AND_WHD_AGREE"
       ],
       "registryDimensionsMm": {
         "width": 599,
@@ -1399,7 +1428,7 @@
       },
       "deltasMm": {
         "width": 0,
-        "height": 60,
+        "height": 0,
         "depth": 0
       },
       "registryObservations": [
@@ -1605,43 +1634,6 @@
     },
     {
       "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_71ba41e4e13dc2f758852acf",
-      "legacyRuntimeId": "ao-107181",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS4HVB01A",
-      "exactKey": "dishwasher\u0000BOSCH\u0000SMS4HVB01A",
-      "catalogDimensionsMm": {
-        "width": 600,
-        "height": 845,
-        "depth": 600
-      },
-      "canPromoteDimensions": false,
-      "state": "EXACT_NO_DIMENSIONS",
-      "reasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
-      ],
-      "registryDimensionsMm": null,
-      "registryObservations": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "sourceLine": 1330,
-          "rowFingerprint": "ef410953239e07ec42b2569d0a42b499a0430eceaad71f8c4a699a608e32d27e",
-          "registrationNumber": "ADW1350",
-          "dimensionsMm": {
-            "width": null,
-            "height": null,
-            "depth": null
-          },
-          "qualityFlags": [
-            "MISSING_DIMENSIONS"
-          ]
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_7236090550350867fad560f2",
       "legacyRuntimeId": "fridge-arf2887",
       "category": "fridge",
@@ -1828,7 +1820,7 @@
       "catalogDimensionsMm": {
         "width": 835,
         "height": 1787,
-        "depth": 730
+        "depth": 721
       },
       "canPromoteDimensions": false,
       "state": "EXACT_DIMENSION_CONFLICT",
@@ -1843,7 +1835,7 @@
       "deltasMm": {
         "width": 0,
         "height": 0,
-        "depth": 4
+        "depth": 13
       },
       "registryObservations": [
         {
@@ -2076,6 +2068,91 @@
           "qualityFlags": [
             "MISSING_DIMENSIONS"
           ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_91c22252a1874afb78355a91",
+      "legacyRuntimeId": "ao-104570",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6HCB01A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMS6HCB01A",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1355,
+          "rowFingerprint": "c7a04a4e5e87856f20e6a93476d00851ae7ae05cf9684f05e95575b7af3d0fa1",
+          "registrationNumber": "ADW1354",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9344c42e10d2bba566bb1770",
+      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60fc4b2",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4B2",
+      "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DW60FC4B2",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "REGISTRY_INTERNAL_CONFLICT",
+      "reasonCodes": [
+        "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 673,
+          "rowFingerprint": "644d780fd513fdce82c691583494c4b759b6e133b2d528844668800bcc36fee7",
+          "registrationNumber": "ADW0959",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 820,
+            "depth": 580
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1151,
+          "rowFingerprint": "d48b55bd20533e2567934cb4b832edb7009398dd6652236b0fbc172604e92caa",
+          "registrationNumber": "ADW1295",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 857,
+            "depth": 580
+          },
+          "qualityFlags": []
         }
       ]
     },
@@ -2395,98 +2472,6 @@
     },
     {
       "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_9ffb22502ce4f205bcc22ec0",
-      "legacyRuntimeId": "ao-153384",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DD60ST4NB9",
-      "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60ST4NB9",
-      "catalogDimensionsMm": {
-        "width": 599,
-        "height": 454,
-        "depth": 573
-      },
-      "canPromoteDimensions": false,
-      "state": "REGISTRY_INTERNAL_CONFLICT",
-      "reasonCodes": [
-        "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
-      ],
-      "registryDimensionsMm": null,
-      "registryObservations": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "sourceLine": 950,
-          "rowFingerprint": "1c9288618874a5198e2dd4bf3515b58269b6882e20a741972d2ecfe47a2ec031",
-          "registrationNumber": "ADW1240",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 410,
-            "depth": 573
-          },
-          "qualityFlags": []
-        },
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "sourceLine": 412,
-          "rowFingerprint": "9e62b67f6fdeabc3d99953501a266a2fce0dc56f1c7169aafc7189300986f03c",
-          "registrationNumber": "ADW1048",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 880,
-            "depth": 573
-          },
-          "qualityFlags": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_a1725ebc3892da3158722c8f",
-      "legacyRuntimeId": "ao-66240",
-      "category": "dishwasher",
-      "brand": "Midea",
-      "model": "MDWB1BL",
-      "exactKey": "dishwasher\u0000MIDEA\u0000MDWB1BL",
-      "catalogDimensionsMm": {
-        "width": 550,
-        "height": 438,
-        "depth": 500
-      },
-      "canPromoteDimensions": false,
-      "state": "EXACT_CONSISTENT",
-      "reasonCodes": [
-        "EXACT_IDENTITY_AND_WHD_AGREE"
-      ],
-      "registryDimensionsMm": {
-        "width": 550,
-        "height": 438,
-        "depth": 500
-      },
-      "deltasMm": {
-        "width": 0,
-        "height": 0,
-        "depth": 0
-      },
-      "registryObservations": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "sourceLine": 632,
-          "rowFingerprint": "40566f94354791552a2600d212c318496b10614399b466d54e1bdeaf5654e885",
-          "registrationNumber": "ADW1201",
-          "dimensionsMm": {
-            "width": 550,
-            "height": 438,
-            "depth": 500
-          },
-          "qualityFlags": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_a7cc3652bfa5c1f6c770478b",
       "legacyRuntimeId": "ao-161221",
       "category": "dishwasher",
@@ -2581,6 +2566,100 @@
             "width": 600,
             "height": 850,
             "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_a9202ecd30b56a2cd702c36c",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms2iti02a",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS2ITI02A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMS2ITI02A",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1339,
+          "rowFingerprint": "03382d7dcc7bde2aea9f98852c376298b33bf1d7f36d79128b6fc156f1e848ef",
+          "registrationNumber": "ADW1358",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_aaf669e02e59495318b1056b",
+      "legacyRuntimeId": "ao-132906",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F3B1",
+      "exactKey": "dishwasher\u0000HAIER\u0000HDW15F3B1",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 850,
+        "depth": 599
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 610
+      },
+      "deltasMm": {
+        "width": 1,
+        "height": 0,
+        "depth": 11
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 758,
+          "rowFingerprint": "a1e5889ada217a3f5fbeffd6c6d468cba83662025e78570be00be533b28f3654",
+          "registrationNumber": "ADW0961",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1165,
+          "rowFingerprint": "ab104e7f0355b520e5fbfc337a8cc6457c8f1348a8660da809170762a7ea8ed6",
+          "registrationNumber": "ADW1297",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
           },
           "qualityFlags": []
         }
@@ -2994,43 +3073,6 @@
     },
     {
       "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_c10836872988f234eac38f4c",
-      "legacyRuntimeId": "ao-103524",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI4HTS01A",
-      "exactKey": "dishwasher\u0000BOSCH\u0000SMI4HTS01A",
-      "catalogDimensionsMm": {
-        "width": 598,
-        "height": 815,
-        "depth": 573
-      },
-      "canPromoteDimensions": false,
-      "state": "EXACT_NO_DIMENSIONS",
-      "reasonCodes": [
-        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
-      ],
-      "registryDimensionsMm": null,
-      "registryObservations": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "sourceLine": 1332,
-          "rowFingerprint": "b3f433b50c1c8c02afd63ff2e4d51c63249dd75b2a8a7e9362a8ac84b15a4d0b",
-          "registrationNumber": "ADW1346",
-          "dimensionsMm": {
-            "width": null,
-            "height": null,
-            "depth": null
-          },
-          "qualityFlags": [
-            "MISSING_DIMENSIONS"
-          ]
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_c1c7eb642dab553f98535f85",
       "legacyRuntimeId": "ao-149204",
       "category": "dishwasher",
@@ -3068,50 +3110,6 @@
             "width": 598,
             "height": 850,
             "depth": 600
-          },
-          "qualityFlags": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_c41a6900126e62213070f3ff",
-      "legacyRuntimeId": "ao-168357",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW13F0B1",
-      "exactKey": "dishwasher\u0000HAIER\u0000HDW13F0B1",
-      "catalogDimensionsMm": {
-        "width": 597,
-        "height": 859,
-        "depth": 600
-      },
-      "canPromoteDimensions": false,
-      "state": "EXACT_DIMENSION_CONFLICT",
-      "reasonCodes": [
-        "ONE_OR_MORE_AXES_DISAGREE"
-      ],
-      "registryDimensionsMm": {
-        "width": 598,
-        "height": 850,
-        "depth": 610
-      },
-      "deltasMm": {
-        "width": 1,
-        "height": -9,
-        "depth": 10
-      },
-      "registryObservations": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "sourceLine": 1040,
-          "rowFingerprint": "ead2fef0c50cf2f6d770504f13ad6785ea5aa354fc825af44e2a930a12b83742",
-          "registrationNumber": "ADW1241",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 610
           },
           "qualityFlags": []
         }
@@ -4112,6 +4110,21 @@
     },
     {
       "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_0910660e1a804a67fa883688",
+      "legacyRuntimeId": "ao-101283",
+      "category": "dishwasher",
+      "brand": "Smeg",
+      "model": "DWAU615DB3",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02626",
+      "licenceNumber": "1222",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "22c09059604d7f893d9604a4d8a044948ad8b30ce1a4908beddbec45e584785d"
+    },
+    {
+      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_0bd9b11cfb973369769a5d94",
       "legacyRuntimeId": "ao-84181",
       "category": "dishwasher",
@@ -4124,6 +4137,21 @@
       "licenceNumber": "0351",
       "expiryDateRaw": "22/07/2027",
       "sourceRowFingerprint": "d40221874c7d310377e55c9ddfadf41f8a472ba4e832ffd38f3aac91806cd996"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_150eb75eea0da8832efacf71",
+      "legacyRuntimeId": "ao-101284",
+      "category": "dishwasher",
+      "brand": "Smeg",
+      "model": "DWAU615DX3",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02627",
+      "licenceNumber": "1222",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "48046abb6587ac1b331fb8006ae558e4da645bbd62fb2b79ccb1991cd6c2d31f"
     },
     {
       "schemaVersion": 1,
@@ -4187,19 +4215,18 @@
     },
     {
       "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_3494250b2a85d645b6573ea3",
-      "legacyRuntimeId": "ao-66241",
+      "canonicalProductId": "fa_prod_4076bfeec9fe64e40d799c30",
+      "legacyRuntimeId": "ao-102999",
       "category": "dishwasher",
-      "brand": "Midea",
-      "model": "MDWB1SS",
+      "brand": "Bosch",
+      "model": "SMU6HCS01A",
       "canPromoteDimensions": false,
-      "state": "WELS_IDENTITY_CONFLICT",
+      "state": "WELS_EXACT_REGISTERED",
       "matchRelationship": "model_code",
-      "registrationNumber": null,
-      "matchingRegistrations": [
-        "D02262",
-        "D02630"
-      ]
+      "registrationNumber": "D02572",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "b3908f8f826a247e8a053e8df5e164b4c114384b6d9af0c8b67d94120d843335"
     },
     {
       "schemaVersion": 1,
@@ -4233,6 +4260,21 @@
     },
     {
       "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_4a618d9f867ec77222f1a02c",
+      "legacyRuntimeId": "ao-127312",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6HCI02A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02710",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "aac43dc10c63509ad0391f638c56eabbff37350cf6577b4c12a307c62532a5f7"
+    },
+    {
+      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_4c5dd632cbad6b5d410cb718",
       "legacyRuntimeId": "ao-150517",
       "category": "dishwasher",
@@ -4245,36 +4287,6 @@
       "licenceNumber": "0355",
       "expiryDateRaw": "22/07/2027",
       "sourceRowFingerprint": "f4e5f0219703cd92dc3c59f0973c2286903e7999bde8259ae557c31f614f8b2c"
-    },
-    {
-      "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_58f5a7609ebcb420091eb986",
-      "legacyRuntimeId": "ao-141853",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS6HAI02A",
-      "canPromoteDimensions": false,
-      "state": "WELS_EXACT_REGISTERED",
-      "matchRelationship": "model_code",
-      "registrationNumber": "D02622",
-      "licenceNumber": "0377",
-      "expiryDateRaw": "22/07/2027",
-      "sourceRowFingerprint": "fdfad9448ed96d0cd37deab76984039a6958d791b1a745cc8b1a99e8366b710a"
-    },
-    {
-      "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_5a84ca3b168d4f76044963f4",
-      "legacyRuntimeId": "ao-102182",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI6HCS01A",
-      "canPromoteDimensions": false,
-      "state": "WELS_EXACT_REGISTERED",
-      "matchRelationship": "model_code",
-      "registrationNumber": "D02554",
-      "licenceNumber": "0377",
-      "expiryDateRaw": "22/07/2027",
-      "sourceRowFingerprint": "faa4027a14498f98530796a18865e3016343df833a3d55b40a9a152cc0503b62"
     },
     {
       "schemaVersion": 1,
@@ -4338,21 +4350,6 @@
     },
     {
       "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_71ba41e4e13dc2f758852acf",
-      "legacyRuntimeId": "ao-107181",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMS4HVB01A",
-      "canPromoteDimensions": false,
-      "state": "WELS_EXACT_REGISTERED",
-      "matchRelationship": "model_code",
-      "registrationNumber": "D02592",
-      "licenceNumber": "0377",
-      "expiryDateRaw": "22/07/2027",
-      "sourceRowFingerprint": "e3348b4c0bf7105f37794d798387e20857edbf5a8b813f82cf057800d453c671"
-    },
-    {
-      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_86422bbb5614880076006338",
       "legacyRuntimeId": "ao-113736",
       "category": "dishwasher",
@@ -4380,6 +4377,36 @@
       "licenceNumber": "0377",
       "expiryDateRaw": "22/07/2027",
       "sourceRowFingerprint": "90e269fff4a95a84349f3931113817e4b243acdda3a8d86de50af41e7182c1aa"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_91c22252a1874afb78355a91",
+      "legacyRuntimeId": "ao-104570",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6HCB01A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02570",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "a39cc0ea63f362251742c9355663bcc353e33bb3ca5af54990d374f36d8f3b10"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9344c42e10d2bba566bb1770",
+      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dw60fc4b2",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4B2",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02834",
+      "licenceNumber": "0355",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "2fada96cf760e721e44dee5ae6d3ce1fdc58e34bc3d863d9aaba43b988bbaa94"
     },
     {
       "schemaVersion": 1,
@@ -4443,37 +4470,6 @@
     },
     {
       "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_9ffb22502ce4f205bcc22ec0",
-      "legacyRuntimeId": "ao-153384",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DD60ST4NB9",
-      "canPromoteDimensions": false,
-      "state": "WELS_EXACT_REGISTERED",
-      "matchRelationship": "variant_model_code",
-      "registrationNumber": "D02063",
-      "licenceNumber": "0355",
-      "expiryDateRaw": "22/07/2027",
-      "sourceRowFingerprint": "6d74dbb07566aa00c4a8e7628ac6f8fbc4d1aa3af6ca5ba491ed06df9547296e"
-    },
-    {
-      "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_a1725ebc3892da3158722c8f",
-      "legacyRuntimeId": "ao-66240",
-      "category": "dishwasher",
-      "brand": "Midea",
-      "model": "MDWB1BL",
-      "canPromoteDimensions": false,
-      "state": "WELS_IDENTITY_CONFLICT",
-      "matchRelationship": "model_code",
-      "registrationNumber": null,
-      "matchingRegistrations": [
-        "D02261",
-        "D02629"
-      ]
-    },
-    {
-      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_a7cc3652bfa5c1f6c770478b",
       "legacyRuntimeId": "ao-161221",
       "category": "dishwasher",
@@ -4501,6 +4497,36 @@
       "licenceNumber": "0351",
       "expiryDateRaw": "22/07/2027",
       "sourceRowFingerprint": "239c098f275342122bf5563580444827b26ab79e4644c4f2500ec6f3ab638677"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_a9202ecd30b56a2cd702c36c",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms2iti02a",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS2ITI02A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02581",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "c317a4d57addece4d790e1eef78805f30af32ea2847f316efc4521b03dba909d"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_aaf669e02e59495318b1056b",
+      "legacyRuntimeId": "ao-132906",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F3B1",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02754",
+      "licenceNumber": "1160",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "8db344d6ae4df75d3b2c53c8a5cdfe97f2561c8a71f48a41f63a70f55f882a48"
     },
     {
       "schemaVersion": 1,
@@ -4579,21 +4605,6 @@
     },
     {
       "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_c10836872988f234eac38f4c",
-      "legacyRuntimeId": "ao-103524",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SMI4HTS01A",
-      "canPromoteDimensions": false,
-      "state": "WELS_EXACT_REGISTERED",
-      "matchRelationship": "model_code",
-      "registrationNumber": "D02578",
-      "licenceNumber": "0377",
-      "expiryDateRaw": "22/07/2027",
-      "sourceRowFingerprint": "21c6fec25fc5dba645ce07e71e97a7541785f9aadbef26435630863e1d30a65b"
-    },
-    {
-      "schemaVersion": 1,
       "canonicalProductId": "fa_prod_c1c7eb642dab553f98535f85",
       "legacyRuntimeId": "ao-149204",
       "category": "dishwasher",
@@ -4606,21 +4617,6 @@
       "licenceNumber": "1268",
       "expiryDateRaw": "22/07/2027",
       "sourceRowFingerprint": "71fc1d9420b146cf56f3e136171570a7cbde8c77468c4bc742e0882df64deb6d"
-    },
-    {
-      "schemaVersion": 1,
-      "canonicalProductId": "fa_prod_c41a6900126e62213070f3ff",
-      "legacyRuntimeId": "ao-168357",
-      "category": "dishwasher",
-      "brand": "Haier",
-      "model": "HDW13F0B1",
-      "canPromoteDimensions": false,
-      "state": "WELS_EXACT_REGISTERED",
-      "matchRelationship": "variant_model_code",
-      "registrationNumber": "D03019",
-      "licenceNumber": "1160",
-      "expiryDateRaw": "22/07/2027",
-      "sourceRowFingerprint": "ad46470372427da6e49175ee7379c27d79bdf639154c12bf63d7aaeb32a10cd0"
     },
     {
       "schemaVersion": 1,
@@ -4804,8 +4800,8 @@
   "summary": {
     "energyByState": {
       "AXIS_SUSPECT": 27,
-      "EXACT_CONSISTENT": 1258,
-      "EXACT_DIMENSION_CONFLICT": 203,
+      "EXACT_CONSISTENT": 1261,
+      "EXACT_DIMENSION_CONFLICT": 200,
       "EXACT_NO_DIMENSIONS": 74,
       "NO_EXACT_REGISTRY_MATCH": 1103,
       "REGISTRY_INTERNAL_CONFLICT": 23

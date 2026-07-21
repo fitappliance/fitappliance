@@ -20,11 +20,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint
+        run: npm run lint
+
       - name: Run test suite
         run: npm test
 
-      - name: Regenerate generated assets
-        run: npm run generate-all
+      - name: Build canonical release outputs
+        run: env -u FITAPPLIANCE_STORAGE_ROOT npm run build
+
+      - name: Audit publication boundary
+        run: npm run audit:publication-boundary
+
+      - name: Check generated diff formatting
+        run: git diff --check
 
       - name: Verify sitemap coverage
         run: node scripts/verify-sitemap.js

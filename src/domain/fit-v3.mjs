@@ -38,13 +38,35 @@ function rangeCheck({ id, actual, minimum, maximum, fields, unknownReason, unit 
   return { id, status: passed ? 'PASS' : 'FAIL', actual, minimum, maximum, fields, reason: passed ? `${id} is within the ${minimum}-${maximum} ${unit} requirement` : `${id} ${actual} ${unit} is outside the ${minimum}-${maximum} ${unit} requirement` };
 }
 
-function nominalCheck({ id, required, actual, tolerance, fields, unknownReason, unit }) {
+function nominalCheck({ id, required, actual, fields, unknownReason, unit }) {
   if (![required, actual].every(Number.isFinite)) {
     return { id, status: 'UNKNOWN', required: Number.isFinite(required) ? required : null, actual: Number.isFinite(actual) ? actual : null, fields, reason: unknownReason };
   }
-  const delta = Math.abs(actual - required);
-  const passed = delta <= tolerance;
-  return { id, status: passed ? 'PASS' : 'FAIL', required, actual, tolerance, fields, reason: passed ? `${id} is within ${tolerance} ${unit}` : `${id} differs by ${delta} ${unit}` };
+  if (actual === required) {
+    return { id, status: 'PASS', required, actual, fields, reason: `${id} matches the exact ${required} ${unit} nominal evidence` };
+  }
+  return { id, status: 'UNKNOWN', required, actual, fields, reason: `${id} differs from the nominal value and no exact supported range is evidenced` };
+}
+
+function voltageCheck(knowledge, siteProfile) {
+  const nominal = value(knowledge, 'powerConnection.voltageV');
+  if (Number.isFinite(nominal)) return nominalCheck({
+    id: 'powerConnection.voltage',
+    required: nominal,
+    actual: siteProfile?.power?.voltageV,
+    fields: ['powerConnection.voltageV', 'power.voltageV'],
+    unknownReason: 'required or available voltage is unknown',
+    unit: 'V',
+  });
+  return rangeCheck({
+    id: 'powerConnection.voltage',
+    actual: siteProfile?.power?.voltageV,
+    minimum: value(knowledge, 'powerConnection.minimumVoltageV'),
+    maximum: value(knowledge, 'powerConnection.maximumVoltageV'),
+    fields: ['powerConnection.minimumVoltageV', 'powerConnection.maximumVoltageV', 'power.voltageV'],
+    unknownReason: 'required voltage range or available voltage is unknown',
+    unit: 'V',
+  });
 }
 
 function checkConnection({ knowledge, siteProfile, prefix, distanceField, accessField, accessLabel }) {
@@ -71,7 +93,9 @@ function checkConnection({ knowledge, siteProfile, prefix, distanceField, access
 }
 
 function operationChecks(knowledge, siteProfile, conservative) {
-  if (knowledge.category === 'fridge' && knowledge.formFactor === 'chest') return [numericCheck({
+  const opensUpward = (knowledge.category === 'fridge' && knowledge.formFactor === 'chest')
+    || (knowledge.category === 'washing_machine' && knowledge.formFactor === 'top_loader');
+  if (opensUpward) return [numericCheck({
     id: 'operation.lidOpenHeight',
     required: value(knowledge, 'operationEnvelope.lidOpenHeightMm'),
     available: conservative(siteProfile?.operation?.overheadClearanceMm),
@@ -101,14 +125,26 @@ export function evaluateFitV3({ knowledge, siteProfile }) {
     ? siteProfile.measurementUncertaintyMm
     : null;
   const conservative = (measurement) => Number.isFinite(measurement) && uncertainty !== null ? measurement - uncertainty : null;
+  const maximumKnown = (...requirements) => Math.max(...requirements.filter(Number.isFinite));
+  const leftSpace = maximumKnown(
+    value(knowledge, 'installationClearance.leftMm'),
+    value(knowledge, 'ventilation.leftMm'),
+  );
+  const rightSpace = maximumKnown(
+    value(knowledge, 'installationClearance.rightMm'),
+    value(knowledge, 'ventilation.rightMm'),
+  );
   const widthRequired = [
     value(knowledge, 'closedEnvelope.widthMm'),
-    value(knowledge, 'installationClearance.leftMm'),
-    value(knowledge, 'installationClearance.rightMm'),
-  ].every(Number.isFinite) ? value(knowledge, 'closedEnvelope.widthMm') + value(knowledge, 'installationClearance.leftMm') + value(knowledge, 'installationClearance.rightMm') : null;
+    leftSpace,
+    rightSpace,
+  ].every(Number.isFinite) ? value(knowledge, 'closedEnvelope.widthMm') + leftSpace + rightSpace : null;
   const height = heightMaximum(value(knowledge, 'closedEnvelope.heightMm'));
-  const heightRequired = [height, value(knowledge, 'installationClearance.topMm')].every(Number.isFinite)
-    ? height + value(knowledge, 'installationClearance.topMm') : null;
+  const topSpace = maximumKnown(
+    value(knowledge, 'installationClearance.topMm'),
+    value(knowledge, 'ventilation.topMm'),
+  );
+  const heightRequired = [height, topSpace].every(Number.isFinite) ? height + topSpace : null;
   const rearTerms = [
     value(knowledge, 'installationClearance.rearMm'),
     value(knowledge, 'ventilation.rearMm'),
@@ -121,8 +157,8 @@ export function evaluateFitV3({ knowledge, siteProfile }) {
   const drainRequired = value(knowledge, 'drainConnection.required');
 
   const checks = [
-    numericCheck({ id: 'placement.width', required: widthRequired, available: conservative(siteProfile?.cavity?.widthMm), fields: ['closedEnvelope.widthMm', 'installationClearance.leftMm', 'installationClearance.rightMm', 'cavity.widthMm'], unknownReason: 'product width clearances, cavity width, or measurement uncertainty is unknown' }),
-    numericCheck({ id: 'placement.height', required: heightRequired, available: conservative(siteProfile?.cavity?.heightMm), fields: ['closedEnvelope.heightMm', 'installationClearance.topMm', 'cavity.heightMm'], unknownReason: 'product height range, top clearance, cavity height, or measurement uncertainty is unknown' }),
+    numericCheck({ id: 'placement.width', required: widthRequired, available: conservative(siteProfile?.cavity?.widthMm), fields: ['closedEnvelope.widthMm', 'installationClearance.leftMm', 'installationClearance.rightMm', 'ventilation.leftMm', 'ventilation.rightMm', 'cavity.widthMm'], unknownReason: 'product width clearances, cavity width, or measurement uncertainty is unknown' }),
+    numericCheck({ id: 'placement.height', required: heightRequired, available: conservative(siteProfile?.cavity?.heightMm), fields: ['closedEnvelope.heightMm', 'installationClearance.topMm', 'ventilation.topMm', 'cavity.heightMm'], unknownReason: 'product height range, top clearance, cavity height, or measurement uncertainty is unknown' }),
     numericCheck({ id: 'placement.depth', required: depthRequired, available: conservative(siteProfile?.cavity?.depthMm), fields: ['closedEnvelope.depthMm', 'installationClearance.rearMm', 'ventilation.rearMm', 'cavity.depthMm'], unknownReason: 'product depth, rear space, cavity depth, or measurement uncertainty is unknown' }),
     ...operationChecks(knowledge, siteProfile, conservative),
     ...checkConnection({ knowledge, siteProfile, prefix: 'waterConnection', distanceField: 'pointDistanceMm', accessField: 'isolationAccessible', accessLabel: 'isolationAccess' }),
@@ -137,15 +173,7 @@ export function evaluateFitV3({ knowledge, siteProfile }) {
     })] : []),
     ...checkConnection({ knowledge, siteProfile, prefix: 'powerConnection', distanceField: 'socketDistanceMm', accessField: 'socketAccessible', accessLabel: 'socketAccess' }),
     ...(powerRequired === true ? [
-      nominalCheck({
-        id: 'powerConnection.voltage',
-        required: value(knowledge, 'powerConnection.voltageV'),
-        actual: siteProfile?.power?.voltageV,
-        tolerance: Number.isFinite(value(knowledge, 'powerConnection.voltageV')) ? value(knowledge, 'powerConnection.voltageV') * 0.1 : 0,
-        fields: ['powerConnection.voltageV', 'power.voltageV'],
-        unknownReason: 'required or available voltage is unknown',
-        unit: 'V',
-      }),
+      voltageCheck(knowledge, siteProfile),
       numericCheck({
         id: 'powerConnection.current',
         required: value(knowledge, 'powerConnection.currentA'),

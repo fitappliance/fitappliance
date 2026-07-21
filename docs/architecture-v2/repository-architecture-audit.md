@@ -1,7 +1,7 @@
 # FitAppliance Repository Architecture Audit
 
-Status: living audit baseline  
-Last verified: 2026-07-11  
+Status: current-code living audit
+Last verified: 2026-07-21
 Scope: product ingestion, manufacturer evidence, dimensions, installation
 requirements, Fit decisions, generated pages, and legacy migration
 
@@ -12,8 +12,9 @@ It is not a claim that every file has been rewritten or every data row is
 correct. It records the current system boundaries, verified baseline, known
 failure modes, and decisions that future work must not silently reverse.
 
-The companion execution document is
-[`remediation-master-plan.md`](./remediation-master-plan.md).
+The active cross-cutting execution authority is the
+[`FitAppliance System-First Repair Control Plan`](../superpowers/plans/2026-07-20-fitappliance-system-first-repair-control-plan.md).
+`remediation-master-plan.md` is an index and may not override that plan.
 
 ## Executive Finding
 
@@ -32,57 +33,108 @@ gates are proven.
 
 ## Verified Baseline
 
+Task 0 now produces a deterministic, tracked whole-system contract at
+`data/architecture-v2/reviews/automated/historical-evidence-system-contract.json`.
+The builder rereads tracked source artifacts, recomputes native semantic hashes,
+replays target state, bounded planning, programme status, and scale control, and
+then binds the complete release graph. It does not read the external evidence
+drive.
+
 The following values were reproduced in the Architecture V2 worktree on
-2026-07-11:
+2026-07-21 after the blocked Task 9 replay. They are release-candidate facts,
+not claims about the currently deployed site:
 
 | Measure | Current value |
 | --- | ---: |
-| Runtime products audited | 2,268 |
-| Shadow products adapted | 2,259 |
-| Products quarantined | 9 |
-| Evidence-index matches | 427 |
-| Official dimensions applied in shadow mode | 331 |
-| Full automated tests | 1,560 passing |
-| Generated pages checked by schema audit | 2,348 |
-| Structured-data blocks checked | 7,193 |
-| Schema errors | 0 |
+| Persisted contract stages | 38 |
+| Independently bound policy/tool epochs | 10 |
+| Historical model references | 8,089 |
+| Models with document links | 1,768 |
+| Models with current valid receipts | 401 |
+| Cumulative recovery acceptances | 382 |
+| Replacement auto-fill models | 321 |
+| Unique / valid PDF graph nodes | 942 / 927 |
+| Proven / mapped document-model edges | 548 / 3,761 |
+| Current catalogue products | 3,515 |
+| Receipt-bound dimensions | 332 |
+| Receipt-bound `VERIFIED_FIT` | 0 |
+| Public rows with retailer links | 1,384 |
+| Retailer ledger observations / typed observations | 3,533 / 1,881 |
+| Immutable retailer collection attempts | 1,193 |
+| Released lifecycle current / archived / unknown | 349 / 3,087 / 79 |
+| Released lifecycle cutover status | `BLOCKED` (`SHADOW_ONLY`) |
+| Epoch-2 candidate products | 3,513 |
+| Candidate current / archived / market-reference | 349 / 3,087 / 77 |
+| Candidate release status | `READY_FOR_CUTOVER` |
+| Candidate unresolved / unsafe removals | 0 / 0 |
+| Candidate public control-plane leakage | 0 |
+| Candidate public bytes / baseline bytes | 8,653,582 / 4,707,047 |
 
-Reproduce the architecture counts with:
+Reproduce the contract and focused architecture gates with:
 
 ```bash
-npm run build-evidence-index
-npm run test:architecture-v2
-node scripts/architecture-v2/shadow-audit.mjs
+npm run build:historical-evidence-system-contract
+node --test tests/architecture-v2/historical-evidence-system-contract.test.mjs \
+  tests/architecture-v2/architecture-v2-paths.test.mjs
 ```
 
-Run the broader compatibility gates with:
-
-```bash
-npm test -- --runInBand
-npm run validate-schema
-```
+The 2026-07-11 Phase 0 snapshot recorded 2,268 runtime products, 2,259 shadow
+adapters, nine quarantines, and 1,560 passing tests. Those values are retained
+in Git history as the migration starting point; they are not current programme
+counts.
 
 ## Current Data Flow
 
 ```mermaid
 flowchart TD
-  R["Retailer observations and feeds"] --> L["Legacy category data"]
-  M["Manufacturer pages and PDFs"] --> P["PDF pipeline"]
-  P --> V["data/manual-evidence.json"]
-  P --> X["data/pdf-evidence-raw/*.json"]
-  V --> I["public/data/evidence-index.json"]
-  L --> C["Legacy catalog projection"]
-  X --> C
-  C --> A["public/data/appliances.json"]
-  A --> G["Static page generators and browser search"]
-  I --> G
-  A --> S["Architecture V2 shadow adapter"]
-  I --> S
-  S --> D["Identity, geometry, evidence, and FitDecision domain"]
+  O["Retailer and registry observations"] --> I["Released canonical identity"]
+  O --> M["Evidence-bound identity migration"]
+  M --> CAND["Control-only migration candidate"]
+  I --> R["Lifecycle and historical reference"]
+  B["Cumulative receipt bundle"] --> R
+  R --> C["Evidence classification"]
+  C --> Q["Acquisition and discovery queues"]
+  Q --> E["Executable queue and family canaries"]
+  E --> T["Target state and bounded planner"]
+  B --> P["Architecture V2 public projection"]
+  P --> H["Historical replacement projection"]
+  P --> F["Fit publication audit"]
+  T --> S["Stage controller"]
+  H --> S
+  F --> S
+  P --> X["Runtime compatibility projection"]
+  X --> G["Static generators and browser search"]
 ```
 
-The production path still uses legacy projections. Architecture V2 is currently
-diagnostic and must not be described as the production Fit engine.
+The normal catalogue build now generates the Architecture V2 public projection
+before publishing the runtime compatibility catalogue. The browser-facing shape
+is still legacy-compatible, and zero products currently qualify for
+receipt-bound `VERIFIED_FIT`; therefore the compatibility projection must not be
+described as a fully migrated Fit engine.
+
+### Current contract gaps
+
+The system contract deliberately records the released/candidate boundary:
+
+1. The released epoch remains byte-identical and `BLOCKED` in `SHADOW_ONLY`.
+   Its two remaining identity-control rows are historical state, not work that
+   may be silently mutated in place.
+2. The separately bound epoch-2 candidate is `READY_FOR_CUTOVER`. It accounts
+   for every prior-current product, has zero unresolved IDs, zero unsafe
+   removals, zero Fit publication violations and a byte-identical rollback
+   proof. Candidate construction does not mutate released production.
+3. All 18 raw-bound mismatch cases now have deterministic dispositions. The
+   Fisher & Paykel conflict is quarantined rather than aliased; the Haier row is
+   merged only into an existing exact canonical product; the LG sibling listing
+   is invalidated while exact `GS-B655PL` official identity is retained.
+4. Identity events are listing-scoped and cannot transfer availability,
+   dimensions, clearances, installation requirements, or Fit. The 77
+   market-reference rows are also stripped of price, stock, retailer CTA and
+   sponsorship before publication.
+5. Production materialization and deployment are explicit operational actions
+   after this candidate commit. They are not simulated by changing generated
+   files, and legacy deletion remains prohibited until the rollback observation
+   window completes.
 
 ## Existing Assets Worth Preserving
 
@@ -90,7 +142,7 @@ diagnostic and must not be described as the production Fit engine.
 - Retailer observations and affiliate links with historical availability data.
 - Manufacturer PDF files, extraction records, source URLs, and manual review
   metadata.
-- Existing page generators and 1,560 regression tests.
+- Existing page generators and their regression suite.
 - GSC remediation, reviewer-readiness, disclosure, business identity, and
   editorial trust work.
 - Category pages, cavity pages, doorway pages, product pages, guides, and
@@ -233,25 +285,26 @@ physical outcome remain separate.
 A compatibility artifact for static pages and browser search. It is generated
 from approved domain state and must not become a second source of truth.
 
-## Remaining Dimension Quarantine
+## Current Evidence Quarantine
 
-These rows remain quarantined as of 2026-07-11:
+The current historical reference contains 88 quarantined models: 69 registry
+conflicts and 19 invalid-dimension records. The classification additionally
+isolates source conflicts and identity ambiguity at field/model grain. The
+authoritative list is generated, not copied into this document:
 
-| Legacy ID | Brand | Model | Reason automatic repair is blocked |
-| --- | --- | --- | --- |
-| `fridge-arf2445` | Electrolux | `EBE5367BC` | Exact factsheet returns 404; historical guide lists `EBE5367SC`, not `BC`. |
-| `fridge-arf2581` | Westinghouse | `WTB2500AH` | Exact factsheet returns 404; historical guide lists `WTB2500WH`, not `AH`. |
-| `fridge-arf2582` | Kelvinator | `KTB2502AB` | Exact factsheet returns 404; `WB` evidence is not an approved alias. |
-| `fridge-arf2584` | Kelvinator | `KTB2802AB` | Exact factsheet returns 404; `WB` evidence is not an approved alias. |
-| `fridge-arf2595` | Kelvinator | `KTB2302AB` | Exact factsheet returns 404; `WB` evidence is not an approved alias. |
-| `fridge-arf3916` | Westinghouse | `WHE7074BA` | Exact factsheet returns 404; `SA` evidence is not an approved alias. |
-| `fridge-arf3968` | Westinghouse | `WHE6000BB` | Exact factsheet returns 404; dimension guide lists `SB`, not `BB`. |
-| `fridge-arf3969` | Westinghouse | `WHE6060BB` | Exact factsheet returns 404; dimension guide lists `SB`, not `BB`. |
-| `fridge-arf3970` | Westinghouse | `WHE6874BA` | Official PDF is an error document without dimensions; existing retailer PDF cannot be promoted to official. |
+- `data/architecture-v2/generated/historical-appliance-reference.json`
+- `data/architecture-v2/generated/historical-model-evidence-classification.json`
+- `data/architecture-v2/reviews/automated/historical-evidence-target-state.json`
 
-These rows require an exact manufacturer source or a separately reviewed alias
-record. Similar dimensions, matching capacity, colour-only assumptions, or
-sibling model evidence are insufficient.
+Target state is schema v2. It binds the exact SHA-256 bytes of classification,
+acquisition queue, executable queue, acceptance bundle and attempt ledger. The
+system-contract replay recomputes those five hashes from disk; timestamp-only
+or stale self-consistent derivatives cannot pass.
+
+The nine Phase 0 rows formerly listed here were a 2026-07-11 shadow-adapter
+snapshot and are not a complete current quarantine. Exact manufacturer proof or
+an evidence-bound alias remains mandatory; similar dimensions, matching
+capacity, colour assumptions, and sibling-model evidence are insufficient.
 
 ## Completed Architecture Ledger
 
@@ -267,6 +320,7 @@ sibling model evidence are insufficient.
 | `2057cacd` | Added verified dimension overlay in shadow mode. |
 | `1e79081b` | Added exact factsheet fallback and official-source priority. |
 | `b308983e` | Added seven additional exact group dimension records. |
+| Task 0-10 (2026-07-21) | Added a deterministic 38-stage, 10-epoch system contract, target-state byte bindings, exhaustive lifecycle candidate gate and byte-identical rollback proof. |
 
 The commit ledger is supporting evidence, not a substitute for this audit or
 the remediation plan.
@@ -292,4 +346,3 @@ the remediation plan.
 - [`PDF Evidence Audit`](../pdf-evidence-audit.md)
 - [`Manual Evidence Pipeline`](../manual-evidence-pipeline.md)
 - [`Retailer Data Expansion Plan`](../retailer-data-expansion-plan.md)
-

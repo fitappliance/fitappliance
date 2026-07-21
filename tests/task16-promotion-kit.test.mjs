@@ -26,6 +26,17 @@ test('task 16 promotion-kit: buildPromoStats computes total product count', asyn
   assert.equal(stats.totalProducts, 5);
 });
 
+test('task 16 promotion-kit: unsupported categories are excluded from four-category claims', async () => {
+  const { buildPromoStats } = await import(moduleUrl);
+  const fixture = {
+    ...appliancesFixture,
+    products: [...appliancesFixture.products, { id: 'unknown-1', brand: 'Unknown', cat: 'unknown' }]
+  };
+
+  const stats = buildPromoStats(fixture, [], []);
+  assert.equal(stats.totalProducts, 5);
+});
+
 test('task 16 promotion-kit: buildPromoStats computes deduped brand count', async () => {
   const { buildPromoStats } = await import(moduleUrl);
   const stats = buildPromoStats(appliancesFixture, [], []);

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import {
   discoverCandidateUrls,
+  discoverRankedEvidenceCandidates,
   discoverRankedCandidateUrls,
   extractSitemapLocations,
 } from '../../src/domain/evidence-source-discovery.mjs';
@@ -105,4 +106,140 @@ test('ranked discovery extracts model-bound PDFs from official product pages', a
   });
   assert.equal(urls[0], pdfUrl);
   assert.ok(urls.includes('https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse'));
+});
+
+test('typed discovery preserves ranking, resolver provenance and reference authority', async () => {
+  const result = await discoverRankedEvidenceCandidates({
+    brand: 'Electrolux',
+    model: 'EQE6160BA',
+    category: 'fridge',
+    candidateUrls: [
+      'https://www.electrolux.com.au/legacy/EQE6160BA/',
+      'https://www.appliancesonline.com.au/manuals/EQE6160BA.pdf',
+    ],
+  });
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.candidates.map((candidate) => [
+    candidate.sourceUrl,
+    candidate.authorityMode,
+    candidate.discoveryMethod,
+  ]), [
+    [
+      'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux',
+      'official',
+      'brand_template',
+    ],
+    ['https://www.electrolux.com.au/legacy/EQE6160BA/', 'official', 'explicit_registry'],
+    ['https://www.appliancesonline.com.au/manuals/EQE6160BA.pdf', 'reference', 'reference_mirror_seed'],
+  ]);
+  assert.ok(result.candidates.every((candidate) => candidate.resolverId === result.resolverId));
+});
+
+test('reference fingerprint rediscovery adds a separate official candidate without promoting the mirror', async () => {
+  const mirror = 'https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-Specifications.pdf';
+  const official = 'https://mf-support.mfe.fisherpaykel.com/au/support/articles/450L-Vertical-refrigerator---User-Care-Guide-22309-ka0Jw000000NxXFIA0/';
+  const result = await discoverRankedEvidenceCandidates({
+    brand: 'Fisher & Paykel',
+    model: 'E450LXFD',
+    category: 'fridge',
+    candidateUrls: [mirror],
+  }, {
+    rediscoverReferenceArtifact: async ({ sourceUrl }) => {
+      assert.equal(sourceUrl, mirror);
+      return {
+        schemaVersion: 1,
+        status: 'official_candidates_discovered',
+        referenceContentSha256: 'a'.repeat(64),
+        officialCandidates: [{
+          sourceUrl: official,
+          authorityMode: 'official',
+          documentType: 'official_support_article',
+          sourceModelHint: 'E450LXFD',
+          matchBasis: 'exact_model_official_candidate',
+          requiresOfficialAcquisition: true,
+        }],
+      };
+    },
+  });
+
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.candidates.map((candidate) => [
+    candidate.sourceUrl,
+    candidate.authorityMode,
+    candidate.discoveryMethod,
+    candidate.requiredAttempt,
+  ]), [
+    [mirror, 'reference', 'reference_mirror_seed', false],
+    [official, 'official', 'reference_fingerprint_rediscovery', true],
+  ]);
+});
+
+test('reference rediscovery failure is typed and prevents false complete discovery', async () => {
+  const mirror = 'https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-Specifications.pdf';
+  const result = await discoverRankedEvidenceCandidates({
+    brand: 'Fisher & Paykel',
+    model: 'E450LXFD',
+    category: 'fridge',
+    candidateUrls: [mirror],
+  }, {
+    rediscoverReferenceArtifact: async () => {
+      throw new Error('reference MinerU conversion failed');
+    },
+  });
+
+  assert.equal(result.completion, 'failed');
+  assert.ok(result.candidates.some((candidate) => (
+    candidate.sourceUrl === mirror && candidate.authorityMode === 'reference'
+  )));
+  assert.deepEqual(result.failures, [{
+    code: 'reference_rediscovery_failed',
+    sourceUrl: mirror,
+    message: 'reference MinerU conversion failed',
+  }]);
+});
+
+test('typed discovery never marks partial product-page discovery complete', async () => {
+  const result = await discoverRankedEvidenceCandidates({
+    brand: 'Westinghouse',
+    model: 'WHE5264SC',
+    category: 'fridge',
+    productPageUrls: [
+      'https://www.westinghouse.com.au/fridges/WHE5264SC/',
+      'https://www.westinghouse.com.au/fridges/WHE5264SC/support/',
+    ],
+  }, {
+    fetchImpl: async (url) => {
+      if (url.endsWith('/WHE5264SC/')) {
+        return new Response('<a href="https://resource.electrolux.com.au/manuals/WHE5264SC-installation-guide.pdf">guide</a>');
+      }
+      throw new Error('support page timeout');
+    },
+  });
+  assert.equal(result.completion, 'failed');
+  assert.ok(result.candidates.some((candidate) => candidate.documentType === 'installation_guide'));
+  assert.equal(result.failures.length, 1);
+});
+
+test('typed discovery reports sitemap budget exhaustion as truncated with retained candidates', async () => {
+  const result = await discoverRankedEvidenceCandidates({
+    brand: 'Westinghouse', model: 'WHE5264SC', category: 'fridge',
+  }, {
+    fetchImpl: async (url) => new Response(`<?xml version="1.0"?><sitemapindex>
+      <sitemap><loc>${url}/next.xml</loc></sitemap>
+    </sitemapindex>`),
+    sitemapUrls: ['https://www.westinghouse.com.au/sitemap.xml'],
+    maximumSitemapDocuments: 1,
+  });
+  assert.equal(result.completion, 'truncated');
+  assert.ok(result.candidates.some((candidate) => candidate.discoveryMethod === 'brand_template'));
+});
+
+test('legacy ranked string API excludes reference-only candidates and keeps old order', async () => {
+  const urls = await discoverRankedCandidateUrls({
+    brand: 'Electrolux', model: 'EQE6160BA', category: 'fridge',
+    candidateUrls: ['https://www.appliancesonline.com.au/manuals/EQE6160BA.pdf'],
+  });
+  assert.deepEqual(urls, [
+    'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux',
+  ]);
 });

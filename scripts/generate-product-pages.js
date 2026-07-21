@@ -206,7 +206,16 @@ function sumKnown(base, ...clearances) {
 
 function reviewedFields(product) {
   const review = product?.evidence?.v2_resolution ?? product?.evidence?.v2_review;
-  return new Set(review?.approved_fields ?? []);
+  const fields = new Set(review?.approved_fields ?? []);
+  for (const [field, evidence] of Object.entries(
+    product?.geometry_v2_provenance?.fieldEvidence ?? {}
+  )) {
+    if (/^[a-f0-9]{64}$/i.test(String(evidence?.contentSha256 ?? ''))
+      && /^[a-f0-9]{64}$/i.test(String(evidence?.receiptBindingSha256 ?? ''))) {
+      fields.add(field);
+    }
+  }
+  return fields;
 }
 
 function getEvidenceTrustLevel(product) {
@@ -220,9 +229,33 @@ function getEvidenceTrustLevel(product) {
   return 'retailer_spec';
 }
 
+function hasManufacturerHtmlEvidence(product) {
+  return product?.evidence?.acceptance?.artifact_type === 'html'
+    || product?.data_source === 'official_html_receipt_bound'
+    || ['official_manufacturer_html', 'official_exact_model_product_page']
+      .includes(product?.evidence?.source_type);
+}
+
+function hasManufacturerApiEvidence(product) {
+  return product?.evidence?.acceptance?.artifact_type === 'json'
+    || product?.data_source === 'official_api_receipt_bound'
+    || ['official_exact_model_api', 'official_model_variant_api']
+      .includes(product?.evidence?.source_type);
+}
+
+function evidenceDataSource(product) {
+  if (product?.evidence?.v2_resolution?.status === 'resolved') return 'evidence';
+  if (hasManufacturerHtmlEvidence(product)) return 'manufacturer-evidence';
+  if (hasManufacturerApiEvidence(product)) return 'manufacturer-api-evidence';
+  if (product?.evidence?.has_pdf_evidence === true
+    || String(product?.data_source ?? '').includes('pdf')) return 'pdf-evidence';
+  return 'retailer-evidence';
+}
+
 function getEvidenceTrustCopy(product) {
   const trustLevel = getEvidenceTrustLevel(product);
-  const manufacturerHtml = product?.evidence?.source_type === 'official_manufacturer_html';
+  const manufacturerHtml = hasManufacturerHtmlEvidence(product);
+  const manufacturerApi = hasManufacturerApiEvidence(product);
   if (trustLevel === 'evidence_pending') {
     return {
       label: 'Evidence Pending',
@@ -233,6 +266,25 @@ function getEvidenceTrustCopy(product) {
       faqVerification: 'Not yet. A source has been captured, but FitAppliance has not promoted its fields into the receipt-backed geometry used for fit decisions.',
       cavityAnswerSuffix: 'after confirming the model manual and installation requirements.'
     };
+  }
+  if (manufacturerApi) {
+    const hasApprovedSpace = [...reviewedFields(product)].some((field) => (
+      field.startsWith('installation.') || field.startsWith('operation.') || field.startsWith('service.')
+    ));
+    if (trustLevel === 'verified_fit' || hasApprovedSpace) {
+      throw new Error('manufacturer API evidence cannot publish Fit or space-requirement claims');
+    }
+    if (trustLevel === 'dimensions_verified') {
+      return {
+        label: 'Dimensions Verified',
+        titleSuffix: 'Exact Dimensions & Clearance Pending',
+        descriptionVerb: 'Manufacturer product-data dimensions; installation clearance remains unknown',
+        sourceProperty: 'Official manufacturer product-data dimensions captured by FitAppliance; clearance remains unknown until explicit installation evidence is captured',
+        sourceLabel: 'Official manufacturer product data',
+        faqVerification: 'Partially. FitAppliance has verified the physical dimensions from manufacturer product-data evidence, but installation clearance remains unknown until explicit evidence is captured.',
+        cavityAnswerSuffix: 'after confirming the model-specific installation clearance.'
+      };
+    }
   }
   if (!manufacturerHtml) {
     if (trustLevel === 'verified_fit') {
@@ -247,26 +299,28 @@ function getEvidenceTrustCopy(product) {
       };
     }
     if (trustLevel === 'dimensions_verified') {
-      const hasApprovedSpace = Object.keys(product?.evidence?.v2_review?.approved_space_values ?? {}).length > 0;
+      const hasApprovedSpace = [...reviewedFields(product)].some((field) => (
+        field.startsWith('installation.') || field.startsWith('operation.') || field.startsWith('service.')
+      ));
       if (hasApprovedSpace) {
         return {
           label: 'Dimensions Verified',
           titleSuffix: 'Exact Dimensions & Partial Space Evidence',
           descriptionVerb: 'PDF-backed dimensions with selected manufacturer space requirements',
-          sourceProperty: 'Official PDF dimensions and selected space fields captured by FitAppliance; remaining space requirements are unknown or estimated',
+          sourceProperty: 'Official PDF dimensions and selected space fields captured by FitAppliance; remaining space requirements are unknown',
           sourceLabel: 'Official dimensions and partial space evidence',
-          faqVerification: 'Partially. FitAppliance has verified the physical dimensions and selected installation or operating-space fields from manufacturer PDF evidence. Remaining space requirements are still unknown or estimated.',
-          cavityAnswerSuffix: 'using approved fields where available and estimates for the remaining requirements.'
+          faqVerification: 'Partially. FitAppliance has verified the physical dimensions and selected installation or operating-space fields from manufacturer PDF evidence. Remaining space requirements are unknown.',
+          cavityAnswerSuffix: 'after confirming the remaining model-specific space requirements.'
         };
       }
       return {
         label: 'Dimensions Verified',
-        titleSuffix: 'Exact Dimensions & Clearance Estimate',
-        descriptionVerb: 'PDF-backed dimensions with conservative clearance estimates',
-        sourceProperty: 'Official PDF dimensions evidence captured by FitAppliance; clearance is estimated until explicit installation clearance is verified',
+        titleSuffix: 'Exact Dimensions & Clearance Pending',
+        descriptionVerb: 'PDF-backed dimensions; installation clearance remains unknown',
+        sourceProperty: 'Official PDF dimensions evidence captured by FitAppliance; clearance remains unknown until explicit installation evidence is captured',
         sourceLabel: 'Official dimensions evidence',
-        faqVerification: 'Partially. FitAppliance has verified the physical dimensions from PDF evidence, but installation clearance is treated as an estimate until explicit clearance evidence is captured.',
-        cavityAnswerSuffix: 'using the currently recorded clearance estimate.'
+        faqVerification: 'Partially. FitAppliance has verified the physical dimensions from PDF evidence, but installation clearance remains unknown until explicit evidence is captured.',
+        cavityAnswerSuffix: 'after confirming the model-specific installation clearance.'
       };
     }
     return {
@@ -307,17 +361,17 @@ function getEvidenceTrustCopy(product) {
         sourceProperty: `Official ${evidenceAdjective} dimensions and selected space fields captured by FitAppliance; remaining space requirements are unknown`,
         sourceLabel: manufacturerHtml ? 'Official manufacturer dimensions and partial space evidence' : 'Official dimensions and partial space evidence',
         faqVerification: `Partially. FitAppliance has verified the physical dimensions and selected installation or operating-space fields from ${evidenceMedium} evidence. Remaining space requirements are unknown.`,
-        cavityAnswerSuffix: 'using approved fields where available and estimates for the remaining requirements.'
+        cavityAnswerSuffix: 'after confirming the remaining model-specific space requirements.'
       };
     }
     return {
       label: 'Dimensions Verified',
-      titleSuffix: 'Exact Dimensions & Clearance Estimate',
-      descriptionVerb: `${descriptionAdjective}-backed dimensions with conservative clearance estimates`,
+      titleSuffix: 'Exact Dimensions & Clearance Pending',
+      descriptionVerb: `${descriptionAdjective}-backed dimensions; installation clearance remains unknown`,
       sourceProperty: `Official ${evidenceAdjective} dimensions evidence captured by FitAppliance; clearance is unknown until explicit installation evidence is captured`,
       sourceLabel: manufacturerHtml ? 'Official manufacturer dimensions evidence' : 'Official dimensions evidence',
       faqVerification: `Partially. FitAppliance has verified the physical dimensions from ${evidenceMedium} evidence, but installation clearance remains unknown until explicit evidence is captured.`,
-      cavityAnswerSuffix: 'using the currently recorded clearance estimate.'
+      cavityAnswerSuffix: 'after confirming the model-specific installation clearance.'
     };
   }
   return {
@@ -786,8 +840,8 @@ ${productSchemaScript}  <script type="application/ld+json">${safeJsonLd(buildBre
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> → <a href="${escAttr(CATEGORY_HUBS[product?.cat] ?? '/')}">${escHtml(category)} dimensions</a> → ${escHtml(name)}</nav>
     <p class="sku-kicker" data-source="catalog-final">${escHtml(product?.brand ?? '')} · ${escHtml(category)} · Model ${escHtml(product?.model ?? product?.id ?? '')}</p>
     <h1 class="sku-title">${escHtml(name)} ${escHtml(trustCopy.titleSuffix.toLowerCase())}</h1>
-    <p data-source="${product?.evidence?.v2_resolution?.status === 'resolved' ? 'evidence' : 'pdf-evidence'}">${escHtml(description)}</p>
-    <p data-source="${product?.evidence?.v2_resolution?.status === 'resolved' ? 'evidence' : 'pdf-evidence'}"><span class="sku-badge sku-badge--${escAttr(getEvidenceTrustLevel(product))}">${escHtml(trustCopy.label)}</span></p>
+    <p data-source="${evidenceDataSource(product)}">${escHtml(description)}</p>
+    <p data-source="${evidenceDataSource(product)}"><span class="sku-badge sku-badge--${escAttr(getEvidenceTrustLevel(product))}">${escHtml(trustCopy.label)}</span></p>
     <div class="sku-grid">
       <section class="sku-panel">
         <h2>Physical dimensions</h2>

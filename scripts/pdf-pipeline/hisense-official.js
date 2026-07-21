@@ -1,5 +1,6 @@
 const OCC_BASE_URL = 'https://dtc-aus-api.hisense.com/occ/v2/au';
 const ASSET_BASE_URL = 'https://dtc-aus-api.hisense.com';
+const SITE_BASE_URL = 'https://hisense.com.au';
 const DEFAULT_FIELDS = 'FULL';
 
 function normalizeSku(value, { keepWildcard = false } = {}) {
@@ -54,6 +55,13 @@ function resolveHisenseAssetUrl(url) {
   if (!raw) return '';
   if (/^https?:\/\//i.test(raw)) return raw;
   return `${ASSET_BASE_URL}${raw.startsWith('/') ? '' : '/'}${raw}`;
+}
+
+function resolveHisenseProductPageUrl(url) {
+  const page = new URL(String(url || '').trim(), SITE_BASE_URL);
+  page.hash = '';
+  page.pathname = page.pathname.replace(/-+\/?$/, '');
+  return page.toString();
 }
 
 function scoreResource(resource = {}) {
@@ -139,7 +147,8 @@ function productToResult(product, target, sourceSuffix = 'specification_doc') {
     resourceType: resource.type || sourceSuffix,
     productCode: product.code || '',
     productName: product.name || '',
-    documentName: resource.name || ''
+    documentName: resource.name || '',
+    ...(product.url ? { productPageUrl: resolveHisenseProductPageUrl(product.url) } : {})
   };
 }
 
@@ -189,4 +198,5 @@ exports.findHisenseOfficialPdf = findHisenseOfficialPdf;
 exports.hisenseProductCodeMatchesSku = hisenseProductCodeMatchesSku;
 exports.normalizeSku = normalizeSku;
 exports.resolveHisenseAssetUrl = resolveHisenseAssetUrl;
+exports.resolveHisenseProductPageUrl = resolveHisenseProductPageUrl;
 exports.selectHisensePdfResource = selectHisensePdfResource;

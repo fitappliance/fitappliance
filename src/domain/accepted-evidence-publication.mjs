@@ -1,4 +1,6 @@
 import { projectEvidenceGeometry } from './evidence-geometry-projector.mjs';
+import { isStandaloneOfficialHtmlMarketingAlias } from './evidence-claim-reconciliation.mjs';
+import { isStrictOfficialModelVariantSource } from './official-model-variant-policy.mjs';
 
 function text(value) {
   return String(value ?? '').trim();
@@ -14,6 +16,63 @@ function stable(value) {
 
 function same(left, right) {
   return JSON.stringify(stable(left)) === JSON.stringify(stable(right));
+}
+
+function modelKey(value) {
+  return text(value).toUpperCase().replace(/[^A-Z0-9]+/g, '');
+}
+
+function sourceUrlKey(value) {
+  const url = new URL(text(value));
+  if (url.protocol !== 'https:' || url.username || url.password) {
+    throw new TypeError('receipt-bound acceptance source URL must be trusted HTTPS');
+  }
+  url.hash = '';
+  url.hostname = url.hostname.toLowerCase();
+  return url.toString();
+}
+
+function artifactClass(value) {
+  const normalized = text(value).toLowerCase();
+  if (normalized.includes('pdf')) return 'pdf';
+  if (normalized.includes('html')) return 'html';
+  if (normalized.includes('json') || normalized.includes('api') || normalized.includes('structured')) return 'json';
+  if (normalized === 'mixed') return 'mixed';
+  return normalized;
+}
+
+function publicationSemantics(acceptance) {
+  const provenance = acceptance?.geometry_v2_provenance ?? {};
+  return {
+    identityOutcome: acceptance?.identityOutcome,
+    sourceModel: modelKey(acceptance?.sourceModel),
+    artifactType: artifactClass(acceptance?.artifactType),
+    sourceType: acceptance?.sourceType,
+    sourceUrl: sourceUrlKey(acceptance?.sourceUrl),
+    geometry_v2: acceptance?.geometry_v2,
+    provenance: {
+      evidenceLevel: provenance.evidenceLevel,
+      missingForVerifiedFit: [...(provenance.missingForVerifiedFit ?? [])].sort(),
+      verifiedFitEligible: provenance.verifiedFitEligible,
+      successfulFitOutcome: provenance.successfulFitOutcome,
+    },
+  };
+}
+
+function replaceEquivalentReceiptRefresh(legacyRuntimeId, previous, next) {
+  if (!same(publicationSemantics(previous), publicationSemantics(next))) {
+    throw new Error(`duplicate receipt-bound acceptance product semantic conflict: ${legacyRuntimeId}`);
+  }
+  const previousAt = Date.parse(previous?.verifiedAt);
+  const nextAt = Date.parse(next?.verifiedAt);
+  if (!Number.isFinite(previousAt) || !Number.isFinite(nextAt) || nextAt <= previousAt) {
+    throw new Error(`duplicate receipt-bound acceptance product requires a strictly newer receipt timestamp: ${legacyRuntimeId}`);
+  }
+  if (previous.contentSha256 === next.contentSha256
+    && previous.receiptBindingSha256 === next.receiptBindingSha256) {
+    throw new Error(`duplicate receipt-bound acceptance product requires a new receipt binding: ${legacyRuntimeId}`);
+  }
+  return next;
 }
 
 function uniqueMap(rows, key, label) {
@@ -40,12 +99,6 @@ function completeClosedEnvelope(geometry) {
     && geometry?.closedEnvelope?.heightMm !== null
     && geometry?.closedEnvelope?.depthMm !== null;
 }
-
-const ALIAS_DIMENSION_FIELDS = new Set([
-  'closedEnvelope.widthMm',
-  'closedEnvelope.heightMm',
-  'closedEnvelope.depthMm',
-]);
 
 export function buildReceiptBoundAcceptanceProjection(input, options = {}) {
   const batch = input?.batch;
@@ -85,10 +138,13 @@ export function buildReceiptBoundAcceptanceProjection(input, options = {}) {
       throw new Error(`accepted evidence identity outcome drift: ${id}`);
     }
     if (identityOutcome === 'official_marketing_alias') {
-      if (outcome.source.contentType !== 'text/html'
-        || !text(outcome.source.identity?.sourceModel)
-        || !(outcome.source.claims ?? []).every((claim) => ALIAS_DIMENSION_FIELDS.has(claim.field))) {
-        throw new Error(`strict official marketing alias must be HTML dimensions only: ${id}`);
+      const htmlAlias = text(outcome.source.identity?.sourceModel)
+        && isStandaloneOfficialHtmlMarketingAlias(outcome.source);
+      const boundVariant = isStrictOfficialModelVariantSource(outcome.source, {
+        brand: entry.brand, model: entry.model, category: entry.category,
+      });
+      if (!htmlAlias && !boundVariant) {
+        throw new Error(`HTML marketing alias requires complete binding signals, or model variant requires complete PDF/API binding signals: ${id}`);
       }
     }
     const projected = projectEvidenceGeometry({
@@ -136,7 +192,12 @@ export function mergeReceiptBoundAcceptanceProjections(...projections) {
     if (!(projection instanceof Map)) throw new TypeError('receipt-bound acceptance projection map required');
     for (const [legacyRuntimeId, acceptance] of projection) {
       if (merged.has(legacyRuntimeId)) {
-        throw new Error(`duplicate receipt-bound acceptance product: ${legacyRuntimeId}`);
+        merged.set(legacyRuntimeId, replaceEquivalentReceiptRefresh(
+          legacyRuntimeId,
+          merged.get(legacyRuntimeId),
+          acceptance,
+        ));
+        continue;
       }
       merged.set(legacyRuntimeId, acceptance);
     }
@@ -153,11 +214,25 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
     && !same(product.geometry_v2_provenance, acceptance.geometry_v2_provenance)) {
     throw new Error(`conflicting existing geometry provenance for ${product.id}`);
   }
-  const verified = acceptance.geometry_v2_provenance.evidenceLevel === 'verified';
+  const verified = acceptance.geometry_v2_provenance.evidenceLevel === 'verified'
+    && acceptance.geometry_v2_provenance.verifiedFitEligible === true
+    && acceptance.geometry_v2_provenance.successfulFitOutcome === 'VERIFIED_FIT';
   const closed = acceptance.geometry_v2.closedEnvelope;
   const heightMm = closed.heightMm.maximumMm;
   const installation = acceptance.geometry_v2.installation;
   const doorOpenDepthMm = acceptance.geometry_v2.operation.doorOpenDepthMm;
+  const acceptanceSources = Array.isArray(acceptance.sources)
+    ? acceptance.sources.map((source) => ({
+      authority: source.authority,
+      source_type: source.sourceType,
+      source_url: source.sourceUrl,
+      final_url: source.finalUrl,
+      content_type: source.contentType,
+      content_sha256: source.contentSha256,
+      receipt_binding_sha256: source.receiptBindingSha256,
+      verified_at: source.verifiedAt,
+    }))
+    : null;
   const {
     source_url: _legacySourceUrl,
     source_type: _legacySourceType,
@@ -169,8 +244,12 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
     clearance_verified: _legacyClearanceVerified,
     ...retainedEvidence
   } = product.evidence ?? {};
+  const {
+    inferred_door_swing: _legacyInferredDoorSwing,
+    ...retainedProduct
+  } = product;
   return {
-    ...product,
+    ...retainedProduct,
     w: closed.widthMm,
     h: heightMm,
     d: closed.depthMm,
@@ -198,12 +277,17 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
       ...(product.flags && typeof product.flags === 'object' ? product.flags : {}),
       requires_plumbing: null,
       ventilation_required: null,
+      reversible_door: null,
     },
     geometry_v2: structuredClone(acceptance.geometry_v2),
     geometry_v2_provenance: structuredClone(acceptance.geometry_v2_provenance),
     data_source: acceptance.artifactType === 'pdf'
       ? 'official_pdf_receipt_bound'
-      : 'official_html_receipt_bound',
+      : acceptance.artifactType === 'html'
+        ? 'official_html_receipt_bound'
+        : acceptance.artifactType === 'json'
+          ? 'official_api_receipt_bound'
+          : 'official_mixed_receipt_bound',
     evidence: {
       ...retainedEvidence,
       source_url: acceptance.sourceUrl,
@@ -225,6 +309,7 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
         content_sha256: acceptance.contentSha256,
         receipt_binding_sha256: acceptance.receiptBindingSha256,
         verified_at: acceptance.verifiedAt,
+        ...(acceptanceSources ? { sources: acceptanceSources } : {}),
         missing_for_verified_fit: [...acceptance.geometry_v2_provenance.missingForVerifiedFit],
       },
     },

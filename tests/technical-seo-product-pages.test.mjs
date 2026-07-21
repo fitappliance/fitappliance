@@ -150,6 +150,65 @@ test('technical SEO: receipt-bound adjustable height remains a range in schema, 
   assert.doesNotMatch(html, /<tr><th>Required height<\/th><td>850mm<\/td><\/tr>/);
 });
 
+test('technical SEO: receipt-bound manufacturer API dimensions never claim PDF or retailer evidence', () => {
+  const product = receiptBoundProduct({
+    id: 'dishwasher-asko-dbi253ibs',
+    cat: 'dishwasher',
+    brand: 'ASKO',
+    model: 'DBI253IBS',
+    displayName: 'ASKO DBI253IBS Dishwasher',
+    w: 596,
+    h: 819,
+    d: 559,
+    dimensions: { width_mm: 596, height_mm: 819, depth_mm: 559 },
+    clearance_requirements: { left_mm: null, right_mm: null, top_mm: null, rear_mm: null },
+    evidence: {
+      has_pdf_evidence: false,
+      has_official_evidence: true,
+      source_url: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/732487',
+      source_type: 'official_model_variant_api',
+      verified_at: '2026-07-16',
+      trust_level: 'dimensions_verified',
+      clearance_verified: false,
+      acceptance: { artifact_type: 'json' },
+    },
+    data_source: 'official_api_receipt_bound',
+  }, 'dimensions');
+
+  const html = buildProductPageHtml(product);
+  const schema = buildProductJsonLd(product);
+  const sourceProperty = schema.additionalProperty.find((row) => row.name === 'Evidence source');
+
+  assert.match(html, /manufacturer product-data dimensions/i);
+  assert.match(html, /data-source="manufacturer-api-evidence"/);
+  assert.match(sourceProperty.value, /manufacturer product-data dimensions/i);
+  assert.doesNotMatch(html, /PDF-backed|from PDF evidence|retailer-sourced/i);
+  assert.equal(
+    schema.additionalProperty.find((row) => row.name === 'Data source').value,
+    'official_api_receipt_bound',
+  );
+});
+
+test('technical SEO: manufacturer API evidence fails closed on Fit or space claims', () => {
+  const apiEvidence = {
+    has_pdf_evidence: false,
+    has_official_evidence: true,
+    source_url: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/732487',
+    source_type: 'official_exact_model_api',
+    verified_at: '2026-07-16',
+    trust_level: 'dimensions_verified',
+    acceptance: { artifact_type: 'json' },
+  };
+  const verified = receiptBoundProduct({ evidence: apiEvidence, data_source: 'official_api_receipt_bound' });
+  const spaceClaim = receiptBoundProduct({ evidence: apiEvidence, data_source: 'official_api_receipt_bound' }, 'dimensions');
+  spaceClaim.geometry_v2_provenance.fieldEvidence['installation.leftMm'] = {
+    contentSha256: 'a'.repeat(64), receiptBindingSha256: 'b'.repeat(64),
+  };
+
+  assert.throws(() => buildProductPageHtml(verified), /cannot publish Fit or space-requirement claims/);
+  assert.throws(() => buildProductPageHtml(spaceClaim), /cannot publish Fit or space-requirement claims/);
+});
+
 test('technical SEO: machine-resolved pages omit unknown clearance instead of inventing zero', () => {
   const product = makeProduct({
     cat: 'fridge', brand: 'Westinghouse', model: 'WHE6874BA',
@@ -200,6 +259,9 @@ test('technical SEO: machine-resolved pages omit unknown clearance instead of in
   assert.match(html, /<tr><th>Rear<\/th><td>Unknown<\/td><\/tr>/);
   assert.doesNotMatch(html, /PDF-backed/);
   assert.match(html, /manufacturer-backed/i);
+  assert.match(html, /Partial Space Evidence/);
+  assert.match(html, /selected manufacturer space requirements/);
+  assert.doesNotMatch(html, /estimate|estimated/i);
   assert.doesNotMatch(html, /Allow at least 913mm width, 1807mm height, and 803mm depth/);
   assert.match(html, /Width and depth clearance remain unknown/);
 });
@@ -364,7 +426,9 @@ test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit 
     data_source: 'official_pdf_dimensions_only',
   }, 'dimensions'));
   assert.match(dimensionsOnly, /Dimensions Verified/);
-  assert.match(dimensionsOnly, /Exact Dimensions &amp; Clearance Estimate/);
+  assert.match(dimensionsOnly, /Exact Dimensions &amp; Clearance Pending/);
+  assert.match(dimensionsOnly, /installation clearance remains unknown/);
+  assert.doesNotMatch(dimensionsOnly, /clearance estimate|clearance estimates/i);
   assert.doesNotMatch(dimensionsOnly, /Verified PDF evidence/);
 
   const retailerSpec = buildProductPageHtml(makeProduct({
@@ -381,6 +445,55 @@ test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit 
   assert.match(retailerSpec, /Retailer Spec/);
   assert.match(retailerSpec, /Retailer Dimensions/);
   assert.doesNotMatch(retailerSpec, /Verified Cavity Fit/);
+});
+
+test('technical SEO: receipt-bound partial PDF space evidence is incomplete, never estimated', () => {
+  const partial = receiptBoundProduct({
+    evidence: {
+      has_pdf_evidence: true,
+      source_url: 'https://example.com/partial-space.pdf',
+      verified_at: '2026-07-16',
+      trust_level: 'dimensions_verified',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+    },
+    data_source: 'official_pdf_dimensions_only',
+  }, 'dimensions');
+  partial.geometry_v2.installation.topMm = 25;
+  partial.geometry_v2_provenance.fieldEvidence['installation.topMm'] = {
+    sourceUrl: partial.evidence.source_url,
+    contentSha256: 'a'.repeat(64),
+    receiptBindingSha256: 'b'.repeat(64),
+  };
+
+  const html = buildProductPageHtml(partial);
+
+  assert.match(html, /Exact Dimensions &amp; Partial Space Evidence/);
+  assert.match(html, /selected manufacturer space requirements/);
+  assert.match(html, /remaining space requirements are unknown/i);
+  assert.doesNotMatch(html, /estimate|estimated/i);
+});
+
+test('technical SEO: receipt-bound manufacturer HTML is not described as PDF evidence', () => {
+  const html = buildProductPageHtml(receiptBoundProduct({
+    evidence: {
+      has_pdf_evidence: false,
+      source_type: 'official_exact_model_product_page',
+      source_url: 'https://www.lg.com/au/fridges/gb-450uplx/',
+      verified_at: '2026-07-15',
+      trust_level: 'dimensions_verified',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+      acceptance: { artifact_type: 'html' },
+    },
+    data_source: 'official_html_receipt_bound',
+  }, 'dimensions'));
+
+  assert.match(html, /Manufacturer-backed dimensions/);
+  assert.match(html, /from manufacturer page evidence/);
+  assert.match(html, /data-source="manufacturer-evidence"/);
+  assert.doesNotMatch(html, /data-source="pdf-evidence"/);
+  assert.doesNotMatch(html, /PDF-backed|from PDF evidence/);
 });
 
 test('technical SEO: product page exposes V2 field review without claiming clearance approval', () => {
@@ -436,12 +549,27 @@ test('technical SEO: product page separates approved installation and operation 
   assert.doesNotMatch(html, />Verified Fit</);
 });
 
-test('technical SEO: generated product pages include only PDF-verified SKUs', async () => {
+test('technical SEO: generated product pages include only receipt-bound PDF or manufacturer API SKUs', async () => {
   const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'fitappliance-product-pages-'));
   await fs.mkdir(path.join(rootDir, 'data', 'architecture-v2', 'generated'), { recursive: true });
+  const apiProduct = receiptBoundProduct({
+    id: 'dishwasher-asko-api',
+    cat: 'dishwasher',
+    brand: 'ASKO',
+    model: 'DBI253IBS',
+    evidence: {
+      has_pdf_evidence: false,
+      has_official_evidence: true,
+      source_type: 'official_model_variant_api',
+      trust_level: 'dimensions_verified',
+      acceptance: { artifact_type: 'json' },
+    },
+    data_source: 'official_api_receipt_bound',
+  }, 'dimensions');
   await fs.writeFile(path.join(rootDir, 'data', 'architecture-v2', 'generated', 'public-catalog-projection.json'), `${JSON.stringify({
     products: [
       makeProduct(),
+      apiProduct,
       makeProduct({
         id: 'fridge-unverified',
         cat: 'fridge',
@@ -456,14 +584,17 @@ test('technical SEO: generated product pages include only PDF-verified SKUs', as
   const indexText = await fs.readFile(path.join(rootDir, 'pages', 'products', 'index.json'), 'utf8');
   const index = JSON.parse(indexText);
 
-  assert.equal(result.count, 1);
-  assert.equal(index.length, 1);
-  assert.equal(index[0].slug, slugifyProduct(makeProduct()));
+  assert.equal(result.count, 2);
+  assert.equal(index.length, 2);
+  assert.deepEqual(index.map((row) => row.slug), [
+    slugifyProduct(apiProduct),
+    slugifyProduct(makeProduct()),
+  ]);
   assert.match(
     await fs.readFile(path.join(rootDir, 'pages', 'products.html'), 'utf8'),
     new RegExp(`href="/products/${slugifyProduct(makeProduct())}"`)
   );
-  assert.equal(selectVerifiedProducts([makeProduct(), makeProduct({ evidence: null })]).length, 1);
+  assert.equal(selectVerifiedProducts([makeProduct(), apiProduct, makeProduct({ evidence: null })]).length, 2);
 });
 
 test('technical SEO: product index links generated product pages for crawl discovery', () => {
@@ -492,4 +623,23 @@ test('technical SEO: package build generates product pages before sitemap', asyn
     'build must generate product index before sitemap'
   );
   assert.match(packageJson.scripts['generate-all'], /generate-product-pages/);
+});
+
+test('technical SEO: page generators finalize comparison indexes before brand cross-links', async () => {
+  const packageJson = JSON.parse(await fs.readFile(path.join(process.cwd(), 'package.json'), 'utf8'));
+  for (const scriptName of ['build', 'generate-pages']) {
+    const script = packageJson.scripts[scriptName];
+    assert.ok(
+      script.indexOf('generate-comparisons') < script.indexOf('generate-brand-pages'),
+      `${scriptName}: brand pages must read the current comparison index`
+    );
+    assert.ok(
+      script.indexOf('generate-compare-vs') < script.indexOf('generate-brand-pages'),
+      `${scriptName}: brand pages must read the finalized compare-vs index`
+    );
+    assert.ok(
+      script.indexOf('generate-brand-pages') < script.indexOf('inject-video-schema'),
+      `${scriptName}: video schema must be injected after brand pages are regenerated`
+    );
+  }
 });

@@ -7,7 +7,7 @@ export const REPLACEMENT_REFERENCE_FILES = Object.freeze({
 
 const referenceCache = new Map();
 const ACTION_EVIDENCE = Object.freeze({
-  AUTO_FILL: Object.freeze(['CATALOG_RECEIPT']),
+  AUTO_FILL: Object.freeze(['CATALOG_RECEIPT', 'MODEL_RECEIPT']),
   CONFIRM_REQUIRED: Object.freeze(['REGISTRY_CONSISTENT']),
   MEASURE_REQUIRED: Object.freeze(['IDENTITY_ONLY']),
   QUARANTINED: Object.freeze(['INTERNAL_CONFLICT', 'AXIS_SUSPECT', 'INVALID_DIMENSIONS']),

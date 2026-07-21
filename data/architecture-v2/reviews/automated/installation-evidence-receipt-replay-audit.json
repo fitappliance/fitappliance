@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-07-21T11:30:54.955Z",
+  "bundleSha256": "540f7a9bc0ff94eeaadb84d042a4c2c8c57424e4df4efafcd9184fe0f00ffc41",
+  "results": [
+    {
+      "receiptId": "inst_receipt_1dac4f32af8aa2aa83a2b244",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "field": "powerConnection.currentA",
+      "status": "PASS",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "mineruContentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e"
+    },
+    {
+      "receiptId": "inst_receipt_2e1a574560dd2aa5baa617de",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "field": "powerConnection.maximumVoltageV",
+      "status": "PASS",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "mineruContentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e"
+    },
+    {
+      "receiptId": "inst_receipt_3970b2d0b46866d3ef8c53eb",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "closedEnvelope.depthMm",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    },
+    {
+      "receiptId": "inst_receipt_4c8141c0a9d7816f19957028",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "powerConnection.maximumVoltageV",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    },
+    {
+      "receiptId": "inst_receipt_5e212459b908ab2a76b49d5f",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "closedEnvelope.widthMm",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    },
+    {
+      "receiptId": "inst_receipt_7a78ab6806465717a18f37f8",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "installationClearance.rearMm",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    },
+    {
+      "receiptId": "inst_receipt_a13c0761a515ef294f80de6e",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "field": "closedEnvelope.widthMm",
+      "status": "PASS",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "mineruContentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e"
+    },
+    {
+      "receiptId": "inst_receipt_aa6599867cb30a8ba139e9d6",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "field": "powerConnection.required",
+      "status": "PASS",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "mineruContentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e"
+    },
+    {
+      "receiptId": "inst_receipt_b6945e53fb86101d66c69d26",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "installationClearance.leftMm",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    },
+    {
+      "receiptId": "inst_receipt_b9ee25e4646b81a3b6c15bdd",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "field": "waterConnection.maximumPressureKpa",
+      "status": "PASS",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "mineruContentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e"
+    },
+    {
+      "receiptId": "inst_receipt_ba247499bc48aaf40a6a325a",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "installationClearance.rightMm",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    },
+    {
+      "receiptId": "inst_receipt_be7f23df9888493b3e3991b7",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "closedEnvelope.heightMm",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    },
+    {
+      "receiptId": "inst_receipt_c9f0b6c127ba6c11b18b4f1d",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "installationClearance.topMm",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    },
+    {
+      "receiptId": "inst_receipt_d13b24c8a92695bbb01fe1aa",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "powerConnection.required",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    },
+    {
+      "receiptId": "inst_receipt_d48036e17e3a261bf825f6a4",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "field": "closedEnvelope.depthMm",
+      "status": "PASS",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "mineruContentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e"
+    },
+    {
+      "receiptId": "inst_receipt_dacb3e663b450d12f074bde9",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "field": "waterConnection.required",
+      "status": "PASS",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "mineruContentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e"
+    },
+    {
+      "receiptId": "inst_receipt_ddbcbffa1f79b1d7f37330e8",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "powerConnection.currentA",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    },
+    {
+      "receiptId": "inst_receipt_e9d1db7d1ba0866f9a4d8f75",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "field": "closedEnvelope.heightMm",
+      "status": "PASS",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "mineruContentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e"
+    },
+    {
+      "receiptId": "inst_receipt_e9fbbfa50cbeef50d557bb60",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "field": "powerConnection.minimumVoltageV",
+      "status": "PASS",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "mineruContentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e"
+    },
+    {
+      "receiptId": "inst_receipt_f6f4e2f427e5fbc3d5216e31",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "field": "waterConnection.minimumPressureKpa",
+      "status": "PASS",
+      "pdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "mineruContentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e"
+    },
+    {
+      "receiptId": "inst_receipt_f96062da195d546ad75234d5",
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "field": "powerConnection.minimumVoltageV",
+      "status": "PASS",
+      "pdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "mineruContentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd"
+    }
+  ],
+  "summary": {
+    "receipts": 21,
+    "passed": 21,
+    "failed": 0
+  }
+}

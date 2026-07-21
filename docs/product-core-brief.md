@@ -1,7 +1,7 @@
 # FitAppliance Product Core Brief
 
 Status: canonical product memory
-Last verified: 2026-07-12
+Last verified: 2026-07-19
 Product: [fitappliance.com.au](https://www.fitappliance.com.au)
 Repository: `/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2`
 
@@ -10,6 +10,11 @@ FitAppliance. Future plans and implementations must start here, then consult
 the Architecture V2 acceptance and remediation documents for implementation
 detail. Time-sensitive counts and provider capabilities must be re-verified
 before use.
+
+The active cross-cutting workflow-repair authority is the
+[FitAppliance System-First Repair Control Plan](superpowers/plans/2026-07-20-fitappliance-system-first-repair-control-plan.md).
+Earlier phase and scale plans remain implementation history unless that control
+plan explicitly delegates work back to them.
 
 ## 1. Product Problem and Commercial Model
 
@@ -104,6 +109,42 @@ Detailed evidence:
 - [`architecture-v2/pdf-brand-acceptance-2026-07-12.md`](architecture-v2/pdf-brand-acceptance-2026-07-12.md)
 - [`superpowers/specs/2026-07-12-historical-mineru-publication-coverage-design.md`](superpowers/specs/2026-07-12-historical-mineru-publication-coverage-design.md)
 - [`superpowers/plans/2026-07-12-historical-mineru-publication-coverage.md`](superpowers/plans/2026-07-12-historical-mineru-publication-coverage.md)
+
+### 3.1 Current lifecycle release candidate (2026-07-21)
+
+The released epoch and the next release candidate are deliberately separate.
+The released 3,515-product projection remains in `SHADOW_ONLY`; the independently
+bound epoch-2 candidate contains 3,513 products and is
+`READY_FOR_CUTOVER` as
+`retail_lifecycle_release_6c42c754aeb1ff49097b32b4`. Its exhaustive partition
+accounts for all 1,384 products
+that were current in the legacy projection, with zero unresolved identities and
+zero unsafe removals.
+
+The candidate has 349 current-retail products, 3,087 archived products and 77
+market-reference products. Market-reference rows may support old-appliance
+lookup, but carry no retailer CTA, price, stock, sponsorship, or current Fit
+classification. The candidate has zero Fit publication violations and its
+rollback drill restores the released public projection byte-for-byte.
+The 8,653,582-byte public candidate excludes collection attempts and conflict
+payloads; those remain in the shadow and append-only ledger. This separation is
+enforced by both a direct final-artifact audit and a two-times-baseline size
+ceiling.
+
+Identity changes remain field-neutral. The Haier marketing-polluted duplicate
+is merged only into the independently proven `HRF520BHS` identity. The Fisher &
+Paykel conflicting embedded model is quarantined and may retain only exact
+`RF730QZUVB1` listing bindings; it donates no dimensions, installation facts,
+availability, or Fit. LG `GS-B655PL` retains exact official AU identity and
+registry evidence, while the `GS-B655MBL` sibling retailer response remains
+invalid for availability.
+
+The whole-system contract now has 38 stages and ten independently bound epochs.
+Its current ID is `historical_evidence_system_9b33eff3a2d26abab79c6c6c`.
+Historical target state is schema v2 and binds the exact bytes of its five
+upstream inputs: classification, acquisition queue, executable queue,
+acceptance bundle and attempt ledger. A stale derivative or mixed replay fails
+closed even when timestamps appear current.
 
 ## 4. Data Strategy: Multi-Source Evidence Broker
 
@@ -621,6 +662,58 @@ Measured release facts:
   dimensions win while the government conflict remains visible internally;
   HDW15F3S1 remains confirmation-only, not auto-fill.
 
+### 9.3 Coverage-recovery diagnosis (2026-07-13)
+
+The `11 / 4,940 / 3,054 / 90` split is not an acceptable steady state. It is
+also not evidence that MinerU succeeds on only 11 products. The current release
+mix combines three separate conditions:
+
+- 4,951 records, or 61.2%, already expose a complete W/H/D triplet: 11 from
+  receipt-bound catalogue evidence and 4,940 from internally consistent Energy
+  Rating rows that still require user confirmation;
+- 3,054 records have no publishable triplet. Of these, 1,630 have registry rows
+  with missing dimensions and 1,424 have catalogue dimensions without a V2
+  receipt;
+- only 69 unique historical PDF files had been passed through the current MinerU
+  cache at the time of this audit. The 11 auto-fill records therefore measure
+  completed evidence migration, not parser capability.
+
+The historical source-document registry contains a much larger recoverable
+backlog. The deterministic recovery queue currently identifies:
+
+- 1,600 legacy documents with exact identity and complete legacy W/H/D hints;
+- 1,556 unique fetch jobs after URL deduplication;
+- 1,591 unique historical target nodes backed by 1,600 candidate edges; nine
+  targets retain two candidate documents rather than becoming duplicate work;
+- 1,092 targets are `MEASURE_REQUIRED`, 472 are `CONFIRM_REQUIRED`, and 27 are
+  quarantined conflict targets;
+- 1,064 of the 1,115 current-retail `MEASURE_REQUIRED` references, or 95.4%, as
+  having at least one exact-identity, complete legacy document candidate;
+- only 23 jobs ready for direct official receipt rebuilding, 254 requiring
+  official-host author validation, 1,223 retailer mirrors that must lead to an
+  official equivalent, and 56 requiring new official-source discovery.
+
+This establishes an architecture and throughput failure: historical acquisition
+found many candidates, but legacy source discovery, content-addressed fetching,
+MinerU extraction, field receipts, and historical publication were never joined
+into one resumable production path.
+
+The conservative publication policy remains necessary. Among 1,897
+registry-confirmation records that also have complete catalogue W/H/D, 262
+disagree and 28 are direct axis permutations. Registry consistency means that
+registry rows agree with each other; it does not prove that width, height and
+depth are physically correct. Legacy dimensions therefore remain hints until
+the exact-model document proves axis meaning and measurement scope.
+
+The repair programme is defined in
+[Historical Evidence Coverage Recovery Plan](superpowers/plans/2026-07-13-historical-evidence-coverage-recovery.md).
+Its first artifact is
+`data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json`.
+The queue downloads a shared document once but retains separate model targets,
+and every target must pass fetch/hash, MinerU JSON, exact identity, axis/range
+semantics, official authority, conflict checks, and receipt-bound projection.
+Queue inclusion never makes a dimension public.
+
 Runtime catalogue ownership:
 
 - `data/catalog-final.json`, Architecture V2 evidence artifacts and
@@ -670,6 +763,230 @@ Refresh and rollback:
   meta file and audit as one commit, then redeploying that exact commit. Immutable
   source snapshots remain available for replay.
 
+### 9.4 Coverage-recovery implementation checkpoint (2026-07-13)
+
+The resumable Architecture V2 recovery path is implemented and verified on the
+release branch. These are branch/release-candidate facts, not a claim that the
+live website has already deployed the changes:
+
+- the queue contains 1,556 content-deduplicated jobs and 1,591 exact target
+  nodes: 23 direct official rebuilds, 254 official-host validations, 56
+  official-source discovery jobs and 1,223 retailer-mirror rediscovery jobs;
+- the direct resolver migration exercised 23 brands and 24 targets. The full
+  official-host route accounted for 288 targets with 89 accepted and 199 typed
+  terminal outcomes; full replay checked 180 raw PDF/MinerU objects with zero
+  violations;
+- all 62 targets in the three official-discovery groups have outcomes: 10
+  accepted, nine retryable and 43 typed terminal. A batch containing retryable
+  discovery remains non-promotable;
+- a final Westinghouse release subset accounted for 12 targets: 10 exact-model
+  three-axis receipts, two identity rejections and zero retryable outcomes. Its
+  full online audit replayed 24 objects with zero violations;
+- promotion increased the cumulative acceptance bundle from two to 12 entries.
+  All 10 new entries are `CATALOG_ARCHIVED`, so the current public catalogue
+  projection remained byte-stable;
+- after the required external-snapshot rebuild, the 8,095-record historical
+  reference contains 12 `MODEL_RECEIPT` records and 23 `AUTO_FILL` records,
+  compared with two and 13 before the release candidate. Registry-consistent
+  confirmation rows fell from 4,940 to 4,930 and quarantines remained 90;
+- the current Fit publication audit reports 3,521 products, 22 receipt-bound
+  dimension products, zero receipt-bound `VERIFIED_FIT` products and zero
+  violations. Historical replacement remains a separate direct W/H/D contract;
+- the permanent dimension-expression corpus now accounts for 480 MinerU
+  indexes, 479 valid source bindings, 645 hash/page/fragment-bound observations,
+  606 typed research gaps and 130 syntax-only grammar profiles across all four
+  categories and 358 category-brand groups;
+- retailer mirror scale remains disabled. The reviewed policy has
+  `scaleAllowed: false`, so only the bounded discovery canary ran and none of
+  the 1,223 mirror jobs was launched;
+- Esatto and Euromaid current official web ownership requires a new source-policy
+  epoch and fresh receipts. Existing authority policy is intentionally not
+  widened in place.
+
+Operational commands, staged outcomes, resume rules, release ordering and
+rollback are canonical in
+[Historical Evidence Recovery Runbook](architecture-v2/historical-evidence-recovery-runbook.md).
+
+### 9.5 Automated evidence closure checkpoint (2026-07-16)
+
+Evidence recovery is a two-level state machine. Candidate-source success means
+that a specific official artifact, content hash, exact-model identity and set of
+field claims passed the current parser and policy. Product-target acceptance is
+a separate decision requiring all applicable exact-model sources to reconcile.
+The first state may be true while the second remains quarantined.
+
+The append-only attempt ledger is the durable control plane for that distinction.
+It retains failed attempts, appends audited resolutions, records source-level
+acceptances and suppresses redundant same-policy downloads. Failures are never
+deleted; a changed parser or policy hash can reopen them. A successful source
+does not make its product publishable, and an unresolved target continues to be
+available for alternative-source research.
+
+The production canary is Hisense `HWF3S8514X`. Its official user manual identifies
+the exact model and maps diagram `A/B/E/F` to `595/845/540/1020 mm`, where `E` is
+appliance depth and `F` is door-open depth. Its official 2026 specification PDF
+states net dimensions `595 x 845 x 510 mm`. The source-level parser failure is
+resolved, but the exact-model official conflict remains quarantined. No value is
+chosen by majority, recency or retailer agreement.
+
+The current tracked evidence state contains 246 cumulative accepted targets and
+271 replay-valid source receipts. The 8,095-model replacement reference contains
+213 `AUTO_FILL`, 4,856 `REGISTRY_CONSISTENT`, 2,938 `IDENTITY_ONLY` and 88
+quarantined rows. The evidence classifier contains 265 `COMPLETE_RECEIPT`, 6,417
+`OFFICIAL_DISCOVERY`, 1,176 `REFERENCE_REDISCOVERY`, 154 `IDENTITY_RESEARCH` and
+83 `CONFLICT_QUARANTINE` records. The dimension-expression corpus contains 703
+MinerU indexes, 702 valid source bindings, 974 observations, 177 parser profiles
+and 770 parser replays. These figures measure evidence processing, not Fit
+completeness.
+
+The locked publication rules are:
+
+- exact official depth may override a lower-authority registry hint only when
+  the source explicitly scopes depth to the closed product, door or handle;
+- official-versus-official disagreement remains quarantined until an exact-model
+  source explains the measurement scope or supersession;
+- successful W/H/D evidence cannot produce `VERIFIED_FIT`; installation,
+  operation, service and connection requirements remain independently required;
+- an official manufacturer product-detail API may supply dimensions-only
+  evidence when one Australian-market record, immutable JSON bytes, exact or
+  policy-bounded punctuation-only model identity, complete W/H/D and receipt
+  replay all agree. Search-list JSON, family records and sibling variants are
+  not eligible, and API evidence cannot populate clearance or service fields;
+- old-appliance replacement continues to compare external W/H/D directly and
+  remains separate from cavity Fit decisions;
+- broad online recovery must use explicit bounded selections. `--allow-all` is
+  prohibited for large resolver-only batches unless the entire run is an
+  intentional, reviewed scale operation.
+
+### 9.6 Independent installation and Fit evidence checkpoint (2026-07-19)
+
+Dimensions recovery and full Fit recovery now have separate receipts, queues,
+metrics and publication gates. The installation contract is schema v2 and
+covers refrigerators, dishwashers, washing machines and dryers. It keeps closed
+product geometry, installation clearance, ventilation/service space,
+door-or-lid operation, water, power, drainage, delivery and professional
+installation as independently evidenced fields.
+
+An accepted installation field receipt must bind all of the following:
+
+- exact canonical product, category, brand, model and form factor;
+- current official manufacturer URL and immutable PDF SHA-256;
+- MinerU `content_list_v2` object SHA/path, parser version and model revision;
+- one-based page, item index/type, bbox, exact quote and fragment hash;
+- exact-model identity locators and field applicability;
+- a field-specific semantic label and value in the same paragraph, table row,
+  or header-value column.
+
+Numbers elsewhere in the same table cannot be donated to another field.
+Unknown cannot create a receipt, explicit zero remains zero, and
+`not_applicable` requires an exact negative statement plus the correct field
+label. Adjustable height and voltage remain ranges. Side, top and rear
+ventilation evidence participates in conservative Fit geometry and cannot be
+ignored after acceptance.
+
+A hard field is complete only when its receipt applicability is `required` and
+it carries the typed value needed by the check. `optional`, `unknown` and
+`not_applicable` receipts remain useful evidence states but cannot fill a hard
+numeric requirement. A scalar voltage is only a documented nominal value: the
+engine does not invent a +/-10% operating range, and a different site voltage
+stays conditional unless the exact model provides an explicit accepted range.
+Top-loading washers are evaluated against lid-open overhead clearance, not a
+front-door envelope.
+
+The frozen 100-model refrigerator/dishwasher pilot currently has:
+
+| Grain | Result |
+| --- | ---: |
+| Pilot products | 100 |
+| Receipt-partial products | 2 |
+| Exact installation field receipts | 21 |
+| Online MinerU replays | 21/21 pass |
+| Installation field conflicts | 0 |
+| Source discovery required | 87 |
+| Identity blocked | 11 |
+| Deterministic bounded batches | 99 |
+| Receipt-bound `VERIFIED_FIT` | 0 |
+| Installation publication violations | 0 |
+
+The exact canaries are Fisher & Paykel `RF605QZUVB1` (11 accepted fields) and
+`DW60UT4I2` (10 accepted fields). The dishwasher's exact QRG proves
+`integrated`, overriding only the pilot's `built_in` inference; missing
+clearance, operation, hose, drainage, delivery and professional-installation
+requirements remain unknown. Neither canary is eligible for
+`VERIFIED_FIT`.
+
+Batch fan-out is keyed to the canonical content-hash document-family graph.
+Targets without one resolved document family are target-only; a family without
+a replayed partial canary exposes only one canary target. A partial canary may
+open only a bounded same-family batch and does not imply complete Fit evidence.
+
+The cumulative installation bundle is append-safe. Destructive replacement is
+rejected unless the operator supplies the exact current bundle SHA-256, and all
+old and new MinerU objects are replayed before writing. Normal builds validate a
+tracked replay audit and remain external-drive-independent. Online acquisition,
+receipt creation and replay require the evidence drive explicitly.
+
+Canonical operations and stop conditions are in
+[Historical Evidence Recovery Runbook](architecture-v2/historical-evidence-recovery-runbook.md#42-independent-installation-and-fit-evidence-pipeline).
+
+### 9.7 System-first lifecycle release checkpoint (2026-07-21)
+
+This checkpoint is a branch release candidate, not a live-site cutover. The
+current rebuilt Architecture V2 state contains 3,515 catalogue products, 8,089
+historical references, 401 models with current valid receipts, 321 replacement
+auto-fill records, 332 receipt-bound public dimensions, zero receipt-bound
+`VERIFIED_FIT` products, and zero Fit publication violations.
+
+Retail lifecycle now has its own append-safe evidence path. The cumulative
+ledger contains 3,298 observations, of which 1,646 are authoritative typed
+observations, and 1,192 immutable collection attempts. Partnerize complete-feed
+and Appliances Online bounded exact-product runs retain raw bytes, source policy,
+catalogue scope, observed time, success/failure state, and listing-level identity
+quarantines. An HTTP success with invalid response structure is evidence of an
+attempt, not evidence of availability. Replaying identical affiliate-feed bytes
+under a later time cannot make the listing appear fresh.
+
+The lifecycle shadow is deliberately blocked:
+
+| State | Products |
+| --- | ---: |
+| `CURRENT_RETAIL` | 348 |
+| `CATALOG_ARCHIVED` | 3,088 |
+| `UNKNOWN_RETAIL` | 79 |
+
+The automated identity closure replay resolved 17 of 18 raw-bound mismatch
+cases: two strict canonical model corrections, 14 preserved canonical
+identities, one duplicate-canonical merge, and 20 listing-level identity events.
+The remaining Fisher & Paykel row contains model token `RF730QZUVX1` while all
+captured retailer listings identify `RF730QZUVB1`; it remains isolated for exact-
+model rediscovery instead of being deleted as a duplicate. Identity
+resolution neither donates availability nor promotes dimensions, installation
+requirements, or Fit. The released canonical registry therefore remains the
+3,515-product pre-cutover identity epoch. A separate 3,514-product migration
+candidate preserves all 3,515 identifier mappings and is control-only until an
+atomic cutover is authorised.
+
+The 79 unknown prior-current products are not one interchangeable backlog. Of
+them, 76 remain behind explicit retailer source policy, one waits for the atomic
+canonical-identity cutover, LG `GS-B655PL` requires a new authorised exact-model
+source after Appliances Online returned sibling `GS-B655MBL`, and the
+`RF730QZUVX1`/`RF730QZUVB1` conflict requires exact-model rediscovery. Unknown is
+hidden, never converted to unavailable.
+
+Consequently, no lifecycle cutover or deployment is authorised. Unknown rows
+remain hidden from current-product results, archived rows remain available only
+to the old-appliance replacement reference, and immutable observations remain
+available for replay. A lifecycle-neutral safety projection removes unsupported
+legacy door fields from 36 rows and reduces 35 Fit-audit violations to zero, but
+does not change lifecycle, retailer data, dimensions, clearances, receipts, or
+Fit levels.
+
+The release unit is the complete Git epoch containing observations, lifecycle,
+public and historical projections, audits, queues, controller state, generated
+runtime data, and documentation. An intermediate task commit is not a supported
+rollback target. Rollback restores the complete pre-cutover release and never
+deletes content-addressed evidence from external storage.
+
 ## 10. Success Metrics
 
 Track coverage and truth separately:
@@ -682,6 +999,12 @@ Track coverage and truth separately:
 - unknown reasons by category and field;
 - source conflicts, axis anomalies, duplicate registrations and quarantines;
 - false acceptance count, which must remain zero in adversarial fixtures;
+- current-retail `MEASURE_REQUIRED` rate and its reason distribution;
+- recovery funnel counts from candidate URL through fetch, MinerU, exact-model
+  binding, per-axis extraction, official authority, conflict resolution and
+  receipt-bound publication;
+- recovery yield and failure reasons by brand, category, transport host and
+  lifecycle state;
 - source freshness and successful delta-replay rate;
 - retailer in-stock coverage and affiliate-link freshness;
 - user measurement completion, result-to-retailer click-through, and returns or
@@ -697,6 +1020,9 @@ product-success metrics.
 - preserve the existing evidence and Architecture V2 investment;
 - use a multi-source evidence broker;
 - retain PDF -> MinerU structured JSON for new PDF evidence;
+- permit exact manufacturer product-detail JSON as a separate receipt-bound
+  dimensions source; keep it manufacturer-specific, content-addressed and
+  dimensions-only rather than treating it as a PDF substitute;
 - use government and structured provider data as candidates subject to quality
   and rights gates;
 - keep installation truth exact-model and field-scoped;

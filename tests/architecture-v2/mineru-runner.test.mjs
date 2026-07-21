@@ -4,11 +4,17 @@ import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { inspectMineruPdfCache, runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
+import {
+  inspectMineruPdfCache,
+  runMineruPdfToJson,
+  runMineruPdfWithImageFallback,
+} from '../../src/domain/mineru-runner.mjs';
 
 const contentList = [[
   { type: 'title', content: { title_content: [{ type: 'text', content: 'Model A1' }] }, bbox: [1, 1, 10, 10] },
 ]];
+
+const VLM_MODEL_REVISION = 'bff20d4ae2bf202df9f45284b4d43681555a97ed';
 
 test('MinerU runner produces one content-addressed content_list_v2 artifact with fixed safe options', async () => {
   const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-test-'));
@@ -36,6 +42,30 @@ test('MinerU runner produces one content-addressed content_list_v2 artifact with
     assert.equal(result.derivedArtifact.pageCount, 1);
     assert.deepEqual(JSON.parse(result.jsonBytes), contentList);
     assert.match(result.derivedArtifact.objectPath, /^evidence\/derived\/mineru-json\/sha256\/[a-f0-9]{2}\/[a-f0-9]{2}\/[a-f0-9]{64}\.json$/);
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
+});
+
+test('MinerU runner accepts a vanilla version response when the configured local model snapshot is attested', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-config-test-'));
+  const modelRoot = join(storageRoot, 'models', 'snapshots', 'ed6b654c018d742e65a17671e379c5e6ecc87ec9');
+  const configPath = join(storageRoot, 'mineru.json');
+  try {
+    await mkdir(modelRoot, { recursive: true });
+    await writeFile(configPath, JSON.stringify({ 'models-dir': { pipeline: modelRoot } }));
+    const result = await runMineruPdfToJson(Buffer.from('%PDF-1.7\nconfig-attestation'), {
+      storageRoot,
+      mineruConfigPath: configPath,
+      runCommand: async (_binary, args) => {
+        if (args[0] === '-v') return { stdout: 'mineru, version 3.4.4\n', stderr: '' };
+        const output = args[args.indexOf('-o') + 1];
+        await mkdir(join(output, 'source', 'auto'), { recursive: true });
+        await writeFile(join(output, 'source', 'auto', 'source_content_list_v2.json'), JSON.stringify(contentList));
+        return { stdout: 'done', stderr: '' };
+      },
+    });
+    assert.equal(result.derivedArtifact.modelRevision, 'ed6b654c018d742e65a17671e379c5e6ecc87ec9');
   } finally {
     await rm(storageRoot, { recursive: true, force: true });
   }
@@ -225,6 +255,282 @@ test('MinerU runner rejects a corrupted cached JSON object instead of trusting o
       storageRoot,
       runCommand: async () => { throw new Error('must not reprocess corruption'); },
     }), /cache integrity/i);
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
+});
+
+test('hybrid image fallback is profile-bound, page-preserving, and isolated from the legacy cache', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-hybrid-profile-'));
+  const pdf = Buffer.from('%PDF-1.7\nhybrid-page-selection-fixture');
+  const calls = [];
+  const runCommand = async (_binary, args) => {
+    calls.push(args);
+    if (args[0] === '-v') {
+      return { stdout: [
+        'mineru, version 3.4.4',
+        'fitappliance-model-revision ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+        `fitappliance-vlm-model-revision ${VLM_MODEL_REVISION}`,
+        '',
+      ].join('\n') };
+    }
+    const output = args[args.indexOf('-o') + 1];
+    await mkdir(join(output, 'source', 'hybrid_auto'), { recursive: true });
+    await writeFile(
+      join(output, 'source', 'hybrid_auto', 'source_content_list_v2.json'),
+      JSON.stringify(contentList),
+    );
+    return { stdout: 'done' };
+  };
+  try {
+    const result = await runMineruPdfToJson(pdf, {
+      storageRoot,
+      profileId: 'hybrid-image-high-v1',
+      selectedPages: [2],
+      sourcePageCount: 3,
+      runCommand,
+    });
+    const parseArgs = calls[1];
+    assert.deepEqual(parseArgs.slice(parseArgs.indexOf('-b')), [
+      '-b', 'hybrid-engine', '-m', 'auto', '-f', 'false', '-t', 'true',
+      '--effort', 'high', '--image-analysis', 'true', '-s', '1', '-e', '1',
+    ]);
+    assert.deepEqual(JSON.parse(result.jsonBytes), [[], contentList[0], []]);
+    assert.equal(result.derivedArtifact.profileId, 'hybrid-image-high-v1');
+    assert.equal(result.derivedArtifact.modelRevision, VLM_MODEL_REVISION);
+    assert.equal(result.derivedArtifact.backend, 'hybrid-engine');
+    assert.equal(result.derivedArtifact.effort, 'high');
+    assert.equal(result.derivedArtifact.imageAnalysis, true);
+    assert.deepEqual(result.derivedArtifact.processedPages, [2]);
+    assert.equal(result.derivedArtifact.sourcePageCount, 3);
+    assert.equal(result.derivedArtifact.pageCount, 3);
+
+    const cached = await runMineruPdfToJson(pdf, {
+      storageRoot,
+      profileId: 'hybrid-image-high-v1',
+      selectedPages: [2],
+      sourcePageCount: 3,
+      runCommand: async () => { throw new Error('profile cache miss'); },
+    });
+    assert.deepEqual(cached, result);
+    const inspection = await inspectMineruPdfCache(pdf, {
+      storageRoot,
+      profileId: 'hybrid-image-high-v1',
+      selectedPages: [2],
+      sourcePageCount: 3,
+    });
+    assert.equal(inspection.status, 'indexed');
+    await assert.rejects(() => runMineruPdfToJson(pdf, {
+      storageRoot,
+      profileId: 'hybrid-image-high-v1',
+      selectedPages: [1],
+      sourcePageCount: 3,
+      runCommand: async () => { throw new Error('different page selection must not reuse cache'); },
+    }), /different page selection must not reuse cache/);
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
+});
+
+test('image fallback binds the primary parse trigger and runs only detected source pages', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-image-fallback-'));
+  const pdf = Buffer.from('%PDF-1.7\nimage-fallback-orchestration-fixture');
+  const primaryContent = [[
+    { type: 'title', content: { title_content: [{ type: 'text', content: 'Model A1' }] }, bbox: [1, 1, 10, 10] },
+    { type: 'image', content: { image_caption: ['Dimensions'], image_footnote: [] }, bbox: [20, 20, 200, 200] },
+  ], [{
+    type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Warranty' }] }, bbox: [1, 1, 10, 10],
+  }]];
+  const hybridContent = [[{
+    type: 'table', content: {
+      html: '<table><tr><td>Width</td><td>598 mm</td></tr></table>',
+      table_caption: [], table_footnote: [], table_type: 'simple_table', table_nest_level: 1,
+    }, bbox: [20, 20, 200, 200],
+  }]];
+  const parseCalls = [];
+  try {
+    const result = await runMineruPdfWithImageFallback(pdf, {
+      storageRoot,
+      runCommand: async (_binary, args) => {
+        if (args[0] === '-v') return { stdout: [
+          'mineru, version 3.4.4',
+          'fitappliance-model-revision ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+          `fitappliance-vlm-model-revision ${VLM_MODEL_REVISION}`,
+          '',
+        ].join('\n') };
+        parseCalls.push(args);
+        const hybrid = args[args.indexOf('-b') + 1] === 'hybrid-engine';
+        const output = args[args.indexOf('-o') + 1];
+        await mkdir(join(output, 'source', hybrid ? 'hybrid_auto' : 'auto'), { recursive: true });
+        await writeFile(
+          join(output, 'source', hybrid ? 'hybrid_auto' : 'auto', 'source_content_list_v2.json'),
+          JSON.stringify(hybrid ? hybridContent : primaryContent),
+        );
+        return { stdout: 'done' };
+      },
+    });
+    assert.equal(parseCalls.length, 2);
+    assert.deepEqual(parseCalls[1].slice(-4), ['-s', '0', '-e', '0']);
+    assert.equal(result.derivedArtifact.profileId, 'hybrid-image-high-v1');
+    assert.deepEqual(result.derivedArtifact.processedPages, [1]);
+    assert.deepEqual(result.derivedArtifact.fallbackTrigger, {
+      profileId: 'pipeline-auto-v1',
+      contentSha256: result.primaryDerivedArtifact.contentSha256,
+      objectPath: result.primaryDerivedArtifact.objectPath,
+      pages: [1],
+    });
+    assert.deepEqual(JSON.parse(result.jsonBytes), [
+      hybridContent[0],
+      primaryContent[1],
+    ]);
+    const replay = await runMineruPdfWithImageFallback(pdf, {
+      storageRoot,
+      runCommand: async () => { throw new Error('merged image fallback cache was not reused'); },
+    });
+    assert.deepEqual(JSON.parse(replay.jsonBytes), [
+      hybridContent[0],
+      primaryContent[1],
+    ]);
+    assert.equal(replay.derivedArtifact.contentSha256, result.derivedArtifact.contentSha256);
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
+});
+
+test('complete unit-before-value axes keep the primary MinerU artifact without image fallback', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-primary-axes-'));
+  const pdf = Buffer.from('%PDF-1.7\nunit-before-value-primary-fixture');
+  const primaryContent = [[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'Dimensions' }] },
+      bbox: [40, 60, 220, 90],
+    },
+    {
+      type: 'image',
+      content: { image_caption: ['Product photograph'], image_footnote: [] },
+      bbox: [40, 100, 320, 500],
+    },
+    {
+      type: 'index',
+      content: {
+        list_type: 'text_list',
+        list_items: ['Width mm 1114', 'Depth mm 630', 'Height mm 847'].map((content) => ({
+          item_type: 'text',
+          item_content: [{ type: 'text', content }],
+        })),
+      },
+      bbox: [400, 120, 700, 260],
+    },
+  ]];
+  const parseBackends = [];
+  try {
+    const result = await runMineruPdfWithImageFallback(pdf, {
+      storageRoot,
+      runCommand: async (_binary, args) => {
+        if (args[0] === '-v') return { stdout: [
+          'mineru, version 3.4.4',
+          'fitappliance-model-revision ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+          `fitappliance-vlm-model-revision ${VLM_MODEL_REVISION}`,
+          '',
+        ].join('\n') };
+        const backend = args[args.indexOf('-b') + 1];
+        parseBackends.push(backend);
+        const output = args[args.indexOf('-o') + 1];
+        await mkdir(join(output, 'source', 'auto'), { recursive: true });
+        await writeFile(
+          join(output, 'source', 'auto', 'source_content_list_v2.json'),
+          JSON.stringify(primaryContent),
+        );
+        return { stdout: 'done' };
+      },
+    });
+    assert.deepEqual(parseBackends, ['pipeline']);
+    assert.equal(result.usedImageFallback, false);
+  assert.equal(result.derivedArtifact.backend, 'pipeline');
+    assert.deepEqual(JSON.parse(result.jsonBytes), primaryContent);
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
+});
+
+test('image fallback recovers a bounded primary command failure without hiding the primary gap', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-operational-fallback-'));
+  const pdf = Buffer.from('%PDF-1.7\noperational-page-fallback-fixture');
+  const parseCalls = [];
+  const page = (number) => [[{
+    type: 'paragraph',
+    content: { paragraph_content: [{ type: 'text', content: `Page ${number}` }] },
+    bbox: [1, 1, 10, 10],
+  }]];
+  const hybridPage = [[{
+    type: 'table',
+    content: {
+      html: '<table><tr><td>Width</td><td>596 mm</td></tr></table>',
+      table_caption: [], table_footnote: [], table_type: 'simple_table', table_nest_level: 1,
+    },
+    bbox: [20, 20, 200, 200],
+  }]];
+  const runCommand = async (_binary, args) => {
+    if (args[0] === '-v') return { stdout: [
+      'mineru, version 3.4.4',
+      'fitappliance-model-revision ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+      `fitappliance-vlm-model-revision ${VLM_MODEL_REVISION}`,
+      '',
+    ].join('\n') };
+    const backend = args[args.indexOf('-b') + 1];
+    const startIndex = args.indexOf('-s');
+    const range = startIndex < 0
+      ? null
+      : [Number(args[startIndex + 1]), Number(args[args.indexOf('-e') + 1])];
+    parseCalls.push({ backend, range });
+    if (!range) throw new Error('1 document, 3 pages in this batch | 3 pages total | assembly failed');
+    if (backend === 'pipeline' && (range[0] === 1 || range[1] === 1)) {
+      throw new Error('All connection attempts failed');
+    }
+    const output = args[args.indexOf('-o') + 1];
+    const mode = backend === 'hybrid-engine' ? 'hybrid_auto' : 'auto';
+    await mkdir(join(output, 'source', mode), { recursive: true });
+    const content = backend === 'hybrid-engine'
+      ? hybridPage
+      : Array.from({ length: range[1] - range[0] + 1 }, (_, offset) => page(range[0] + offset + 1)[0]);
+    await writeFile(
+      join(output, 'source', mode, 'source_content_list_v2.json'),
+      JSON.stringify(content),
+    );
+    return { stdout: 'done' };
+  };
+  try {
+    const result = await runMineruPdfWithImageFallback(pdf, {
+      storageRoot,
+      chunkPageCount: 2,
+      runCommand,
+    });
+    assert.deepEqual(parseCalls, [
+      { backend: 'pipeline', range: null },
+      { backend: 'pipeline', range: [0, 1] },
+      { backend: 'pipeline', range: [0, 0] },
+      { backend: 'pipeline', range: [1, 1] },
+      { backend: 'pipeline', range: [2, 2] },
+      { backend: 'hybrid-engine', range: [1, 1] },
+    ]);
+    assert.equal(result.usedImageFallback, true);
+    assert.equal(result.derivedArtifact.profileId, 'hybrid-image-high-v1');
+    assert.deepEqual(result.derivedArtifact.processedPages, [2]);
+    assert.deepEqual(result.derivedArtifact.fallbackTrigger.pages, [2]);
+    assert.deepEqual(result.derivedArtifact.fallbackTrigger.pageReasons, [{
+      page: 2,
+      reason: 'operational_page_failure',
+      failureCode: 'MINERU_COMMAND_FAILED',
+    }]);
+    assert.deepEqual(JSON.parse(result.primaryJsonBytes), [page(1)[0], [], page(3)[0]]);
+    assert.deepEqual(JSON.parse(result.jsonBytes), [page(1)[0], hybridPage[0], page(3)[0]]);
+
+    const replay = await runMineruPdfWithImageFallback(pdf, {
+      storageRoot,
+      runCommand: async () => { throw new Error('operational fallback cache was not reused'); },
+    });
+    assert.deepEqual(JSON.parse(replay.jsonBytes), JSON.parse(result.jsonBytes));
   } finally {
     await rm(storageRoot, { recursive: true, force: true });
   }

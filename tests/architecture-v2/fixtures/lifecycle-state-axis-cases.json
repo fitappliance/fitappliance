@@ -1,0 +1,149 @@
+[
+  {
+    "id": "fresh_available",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "LISTED_UNVERIFIED",
+    "registryPresent": false,
+    "observations": [
+      { "id": "available", "retailer": "Appliances Online", "adapterId": "ao-api-v1", "observedAt": "2026-07-19T00:00:00.000Z", "availability": "available", "listingState": "current", "maximumCurrentAgeHours": 72, "hash": "a" }
+    ],
+    "expectedLifecycleState": "CURRENT_RETAIL",
+    "expectedAuthorizingObservationId": "obs_available"
+  },
+  {
+    "id": "fresh_unavailable",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "LISTED_UNVERIFIED",
+    "registryPresent": true,
+    "observations": [
+      { "id": "unavailable", "retailer": "Appliances Online", "adapterId": "ao-api-v1", "observedAt": "2026-07-19T12:00:00.000Z", "availability": "unavailable", "listingState": "unavailable", "maximumCurrentAgeHours": 72, "hash": "b" }
+    ],
+    "expectedLifecycleState": "CATALOG_ARCHIVED",
+    "expectedAuthorizingObservationId": null
+  },
+  {
+    "id": "fresh_unknown",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "LISTED_UNVERIFIED",
+    "registryPresent": true,
+    "observations": [
+      { "id": "unknown", "retailer": "The Good Guys", "adapterId": "tgg-feed-v1", "observedAt": "2026-07-19T12:00:00.000Z", "availability": "unknown", "listingState": "current", "maximumCurrentAgeHours": 72, "hash": "c" }
+    ],
+    "expectedLifecycleState": "UNKNOWN_RETAIL",
+    "expectedAuthorizingObservationId": null
+  },
+  {
+    "id": "failed_collection_preserves_fresh_available",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "LISTED_UNVERIFIED",
+    "registryPresent": false,
+    "observations": [
+      { "id": "available_before_failure", "retailer": "The Good Guys", "adapterId": "tgg-feed-v1", "observedAt": "2026-07-19T00:00:00.000Z", "availability": "available", "listingState": "current", "maximumCurrentAgeHours": 72, "hash": "d" }
+    ],
+    "collectionAttempts": [
+      { "adapterId": "tgg-feed-v1", "retailer": "The Good Guys", "canonicalProductIds": ["fa_prod_failed_collection_preserves_fresh_available"], "observedAt": "2026-07-19T23:00:00.000Z", "collectionStatus": "failed", "collectionError": "timeout", "rawSourceReference": "tgg:attempt:failed", "policyVersion": "tgg-source-v1" }
+    ],
+    "expectedLifecycleState": "CURRENT_RETAIL",
+    "expectedAuthorizingObservationId": "obs_available_before_failure"
+  },
+  {
+    "id": "stale_available",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "LISTED_UNVERIFIED",
+    "registryPresent": true,
+    "observations": [
+      { "id": "stale", "retailer": "Appliances Online", "adapterId": "ao-api-v1", "observedAt": "2026-07-15T00:00:00.000Z", "availability": "available", "listingState": "current", "maximumCurrentAgeHours": 72, "hash": "e" }
+    ],
+    "expectedLifecycleState": "UNKNOWN_RETAIL",
+    "expectedAuthorizingObservationId": null
+  },
+  {
+    "id": "redirected_available_signal",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "LISTED_UNVERIFIED",
+    "registryPresent": false,
+    "observations": [
+      { "id": "redirected", "retailer": "Appliances Online", "adapterId": "ao-api-v1", "observedAt": "2026-07-19T12:00:00.000Z", "availability": "available", "listingState": "redirected", "maximumCurrentAgeHours": 72, "hash": "f" }
+    ],
+    "expectedLifecycleState": "UNKNOWN_RETAIL",
+    "expectedAuthorizingObservationId": null
+  },
+  {
+    "id": "newer_relisted_available",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "ARCHIVED",
+    "registryPresent": true,
+    "observations": [
+      { "id": "old_unavailable", "listingId": "same-sku", "retailer": "The Good Guys", "adapterId": "tgg-feed-v1", "observedAt": "2026-07-18T00:00:00.000Z", "availability": "unavailable", "listingState": "unavailable", "maximumCurrentAgeHours": 72, "hash": "1" },
+      { "id": "new_relisted", "listingId": "same-sku", "retailer": "The Good Guys", "adapterId": "tgg-feed-v1", "observedAt": "2026-07-19T12:00:00.000Z", "availability": "available", "listingState": "relisted", "maximumCurrentAgeHours": 72, "hash": "2" }
+    ],
+    "expectedLifecycleState": "CURRENT_RETAIL",
+    "expectedAuthorizingObservationId": "obs_new_relisted"
+  },
+  {
+    "id": "registry_only_without_retail_evidence",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "ABSENT",
+    "registryPresent": true,
+    "observations": [],
+    "expectedLifecycleState": "REGISTRY_ONLY",
+    "expectedAuthorizingObservationId": null
+  },
+  {
+    "id": "archived_catalog_without_retail_evidence",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "ARCHIVED",
+    "registryPresent": true,
+    "observations": [],
+    "expectedLifecycleState": "CATALOG_ARCHIVED",
+    "expectedAuthorizingObservationId": null
+  },
+  {
+    "id": "conflicting_retailers_available_wins",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "LISTED_UNVERIFIED",
+    "registryPresent": true,
+    "observations": [
+      { "id": "tgg_unavailable", "retailer": "The Good Guys", "adapterId": "tgg-feed-v1", "observedAt": "2026-07-19T12:00:00.000Z", "availability": "unavailable", "listingState": "unavailable", "maximumCurrentAgeHours": 72, "hash": "3" },
+      { "id": "ao_available", "retailer": "Appliances Online", "adapterId": "ao-api-v1", "observedAt": "2026-07-19T11:00:00.000Z", "availability": "available", "listingState": "current", "maximumCurrentAgeHours": 72, "hash": "4" }
+    ],
+    "expectedLifecycleState": "CURRENT_RETAIL",
+    "expectedAuthorizingObservationId": "obs_ao_available"
+  },
+  {
+    "id": "unavailable_cannot_override_unknown_retailer",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "LISTED_UNVERIFIED",
+    "registryPresent": true,
+    "observations": [
+      { "id": "tgg_unavailable_only", "retailer": "The Good Guys", "adapterId": "tgg-feed-v1", "observedAt": "2026-07-19T12:00:00.000Z", "availability": "unavailable", "listingState": "unavailable", "maximumCurrentAgeHours": 72, "hash": "7" },
+      { "id": "ao_unknown", "retailer": "Appliances Online", "adapterId": "ao-api-v1", "observedAt": "2026-07-19T11:00:00.000Z", "availability": "unknown", "listingState": "current", "maximumCurrentAgeHours": 72, "hash": "8" }
+    ],
+    "expectedLifecycleState": "UNKNOWN_RETAIL",
+    "expectedAuthorizingObservationId": null
+  },
+  {
+    "id": "unavailable_cannot_override_stale_retailer",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "LISTED_UNVERIFIED",
+    "registryPresent": true,
+    "observations": [
+      { "id": "tgg_unavailable_with_stale", "retailer": "The Good Guys", "adapterId": "tgg-feed-v1", "observedAt": "2026-07-19T12:00:00.000Z", "availability": "unavailable", "listingState": "unavailable", "maximumCurrentAgeHours": 72, "hash": "9" },
+      { "id": "ao_stale_available", "retailer": "Appliances Online", "adapterId": "ao-api-v1", "observedAt": "2026-07-15T11:00:00.000Z", "availability": "available", "listingState": "current", "maximumCurrentAgeHours": 72, "hash": "a" }
+    ],
+    "expectedLifecycleState": "UNKNOWN_RETAIL",
+    "expectedAuthorizingObservationId": null
+  },
+  {
+    "id": "same_listing_same_instant_conflict",
+    "asOf": "2026-07-20T00:00:00.000Z",
+    "catalogState": "LISTED_UNVERIFIED",
+    "registryPresent": false,
+    "observations": [
+      { "id": "same_available", "listingId": "same-sku", "retailer": "The Good Guys", "adapterId": "tgg-feed-v1", "observedAt": "2026-07-19T12:00:00.000Z", "availability": "available", "listingState": "current", "maximumCurrentAgeHours": 72, "hash": "5" },
+      { "id": "same_unavailable", "listingId": "same-sku", "retailer": "The Good Guys", "adapterId": "tgg-feed-v1", "observedAt": "2026-07-19T12:00:00.000Z", "availability": "unavailable", "listingState": "unavailable", "maximumCurrentAgeHours": 72, "hash": "6" }
+    ],
+    "expectedLifecycleState": "UNKNOWN_RETAIL",
+    "expectedAuthorizingObservationId": null
+  }
+]

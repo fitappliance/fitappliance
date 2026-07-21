@@ -1,7 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { buildPublicProjection, normalizePublicProduct } from '../../src/domain/public-projection.mjs';
+import {
+  buildLifecycleNeutralSafetyProjection,
+  buildPublicProjection,
+  normalizePublicProduct,
+} from '../../src/domain/public-projection.mjs';
 
 test('public normalization keeps unknown measurements null and fills presentation fields only', () => {
   const result = normalizePublicProduct({
@@ -35,6 +39,49 @@ test('public normalization derives door projection only from explicit 90-degree 
   assert.equal(ambiguous.door_swing_mm, null);
 });
 
+test('receipt-bound geometry never converts door-open depth into hinge-side swing', () => {
+  const evidence = {
+    sourceUrl: 'https://www.example.com/spec.pdf',
+    contentSha256: 'a'.repeat(64),
+    receiptBindingSha256: 'b'.repeat(64),
+  };
+  const product = normalizePublicProduct({
+    id: 'receipt-bound-fridge',
+    cat: 'fridge',
+    door_swing_mm: null,
+    inferred_door_swing: true,
+    flags: { reversible_door: true },
+    dimensions: { depth_mm: 650, door_open_90_depth_mm: 1100 },
+    geometry_v2: {
+      category: 'fridge', formFactor: 'upright',
+      closedEnvelope: {
+        widthMm: 600,
+        heightMm: { minimumMm: 1700, maximumMm: 1700 },
+        depthMm: 650,
+      },
+      installation: { leftMm: null, rightMm: null, topMm: null, rearMm: null, frontMm: null },
+      operation: { doorOpenDepthMm: 1100, hingeSideSpaceMm: null, lidOpenHeightMm: null },
+      service: { plumbingRearMm: null, rearServicesMm: null, rearVentilationMm: null },
+      delivery: { widthMm: null, heightMm: null, depthMm: null },
+    },
+    geometry_v2_provenance: {
+      evidenceLevel: 'dimensions',
+      fieldEvidence: {
+        'closedEnvelope.widthMm': evidence,
+        'closedEnvelope.heightMm': evidence,
+        'closedEnvelope.depthMm': evidence,
+        'operation.doorOpenDepthMm': evidence,
+      },
+      verifiedFitEligible: false,
+      successfulFitOutcome: 'INSUFFICIENT_DATA',
+    },
+  });
+
+  assert.equal(product.door_swing_mm, null);
+  assert.equal(Object.hasOwn(product, 'inferred_door_swing'), false);
+  assert.equal(product.flags.reversible_door, null);
+});
+
 test('builds a stable projection while retaining legacy URLs as external identifiers', () => {
   const registry = { products: [{ id: 'fa_prod_a', category: 'fridge', brand: 'A', model: 'M', identifiers: [] }], identifierMappings: [{ legacyRuntimeId: 'fridge-1', canonicalProductId: 'fa_prod_a' }] };
   const catalog = { products: [{ id: 'fridge-1', cat: 'fridge', brand: 'A', model: 'M', w: 600 }] };
@@ -42,6 +89,25 @@ test('builds a stable projection while retaining legacy URLs as external identif
   assert.equal(result.products[0].id, 'fridge-1');
   assert.equal(result.products[0].canonicalProductId, 'fa_prod_a');
   assert.equal(result.products[0].w, 600);
+});
+
+test('lifecycle-neutral safety projection preserves already-published canonical identities', () => {
+  const released = {
+    schema_version: 3,
+    last_updated: '2026-07-21',
+    products: [{
+      id: 'legacy-duplicate',
+      canonicalProductId: 'fa_prod_pre_merge',
+      cat: 'fridge',
+      brand: 'A',
+      model: 'M',
+      evidence: { trust_level: 'verified_fit', clearance_verified: true },
+    }],
+  };
+  const result = buildLifecycleNeutralSafetyProjection(released);
+
+  assert.equal(result.products[0].canonicalProductId, 'fa_prod_pre_merge');
+  assert.equal(result.products[0].evidence.trust_level, 'evidence_pending');
 });
 
 test('refuses missing and duplicate mappings', () => {

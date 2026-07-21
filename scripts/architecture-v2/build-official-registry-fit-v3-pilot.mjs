@@ -93,7 +93,12 @@ sourceCounts[welsSnapshot.manifest.sourceId] = {
 const scopedProducts = catalog.products.filter((product) => ['fridge', 'dishwasher'].includes(product.cat));
 const energyReconciliations = reconcileCatalogWithEnergy({ products: scopedProducts, observations: energyObservations });
 const welsReconciliations = reconcileCatalogWithWels({ products: scopedProducts, observations: welsObservations });
-const snapshotHashes = snapshotsDocument.snapshots.filter((row) => row.kind !== 'metadata').map((row) => row.manifest.contentSha256);
+const pilotSourceIds = ['energy-rating:fridge', 'energy-rating:dishwasher', 'wels:all-models'];
+const snapshotHashes = pilotSourceIds.map((sourceId) => {
+  const snapshot = snapshots.get(sourceId);
+  if (!snapshot) throw new Error(`missing pilot registry snapshot ${sourceId}`);
+  return snapshot.manifest.contentSha256;
+});
 const generatedPilot = selectInstallationKnowledgePilot({
   products: scopedProducts,
   reconciliations: energyReconciliations,
@@ -135,9 +140,17 @@ const compactEnergy = energyReconciliations.map(({ registryObservations, ...row 
     qualityFlags: observation.qualityFlags,
   })),
 }));
+function countByState(rows) {
+  const counts = rows.reduce((result, row) => {
+    result[row.state] = (result[row.state] ?? 0) + 1;
+    return result;
+  }, {});
+  return Object.fromEntries(Object.entries(counts).sort());
+}
+
 const reconciliationSummary = {
-  energyByState: Object.fromEntries(Object.entries(Object.groupBy(compactEnergy, (row) => row.state)).map(([state, rows]) => [state, rows.length]).sort()),
-  welsByState: Object.fromEntries(Object.entries(Object.groupBy(welsReconciliations, (row) => row.state)).map(([state, rows]) => [state, rows.length]).sort()),
+  energyByState: countByState(compactEnergy),
+  welsByState: countByState(welsReconciliations),
   dimensionsPromoted: 0,
   publicWrites: 0,
 };

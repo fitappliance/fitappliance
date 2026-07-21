@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-19T00:00:00.000Z",
+  "receiptBundleSha256": "540f7a9bc0ff94eeaadb84d042a4c2c8c57424e4df4efafcd9184fe0f00ffc41",
+  "replayAuditStatus": "CURRENT_PASS",
+  "records": [
+    {
+      "canonicalProductId": "fa_prod_83c263d3a4d601a5e0df6a7d",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-V500MBLC",
+      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
+      "pdfSha256": "c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e",
+      "state": "OFFICIAL_PROVENANCE_REQUIRED_OR_UNAPPROVED_HOST"
+    },
+    {
+      "canonicalProductId": "fa_prod_b3ff5e116c2b87ffdb717ce8",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF5300SD",
+      "sourceUrl": "https://downloadcenter.samsung.com/content/UM/202605/20260518184516600/DA68-04132R-02_FDR_RF5000A_EN_260414.pdf",
+      "pdfSha256": "2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae",
+      "state": "OFFICIAL_PROVENANCE_REQUIRED_OR_UNAPPROVED_HOST"
+    },
+    {
+      "canonicalProductId": "fa_prod_693c6fa3684bef1660a42e9f",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD2A25MB",
+      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=XFUDD7WCYvPmtwnCUJg7w",
+      "pdfSha256": "cde14b717d6353dca7585bc4d02665b033157dee55e3a709175fb06806bfb8b0",
+      "state": "OFFICIAL_PROVENANCE_REQUIRED_OR_UNAPPROVED_HOST"
+    }
+  ],
+  "summary": {
+    "records": 3
+  }
+}

@@ -1,0 +1,1423 @@
+{
+  "schemaVersion": 1,
+  "profiles": [
+    {
+      "parserProfileId": "lg-au-dryer-dimension-diagram-v1",
+      "familyId": "document_family_4ed333be679cc3ce1d4389f1",
+      "cases": [
+        {
+          "caseId": "source-dvh1-08wp-primary",
+          "expectation": "ACCEPT",
+          "derivation": "SOURCE_FRAGMENT",
+          "source": {
+            "pdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+            "contentSha256": "ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2",
+            "page": 12,
+            "fragmentSha256": "14c5e7f03d58c3c07d9c2e6a825cac7f4892f1710bbe49b32d95a2072220cce5",
+            "fragmentType": "table",
+            "bbox": [
+              50,
+              549,
+              945,
+              611
+            ]
+          },
+          "identity": {
+            "category": "dryer",
+            "brand": "LG",
+            "model": "DVH1-08WP"
+          },
+          "semanticContext": {
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "SAME_PAGE_COMPLETE_MODEL_LIST"
+          },
+          "expectedClaims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "mm": 600
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "mm": 850
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "mm": 660
+            }
+          ],
+          "rejectedSemantics": [
+            "D' is cabinet depth and D\" is door-open depth; neither is closed product depth"
+          ],
+          "contentList": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "12 INSTALLATION"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  15,
+                  283,
+                  35
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Specifications"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  47,
+                  62,
+                  242,
+                  85
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": {
+                  "paragraph_content": [
+                    {
+                      "type": "text",
+                      "content": "Asterisk(s) means model variant and can be varied (0-9) or (A-Z)."
+                    }
+                  ]
+                },
+                "bbox": [
+                  47,
+                  94,
+                  595,
+                  114
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/0662a884477da44ea9a133a95e02a3c850426f8eb4d9ccf957f129bac1722495.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>Description</td><td rowspan=1 colspan=1>Value</td></tr><tr><td rowspan=1 colspan=1>Model</td><td rowspan=1 colspan=1>DVH1-08WP</td></tr><tr><td rowspan=1 colspan=1>Power supply</td><td rowspan=1 colspan=1>220 - 240 V~, 50 Hz</td></tr><tr><td rowspan=1 colspan=1>Product weight</td><td rowspan=1 colspan=1>53 kg</td></tr><tr><td rowspan=1 colspan=1>Allowable temperature</td><td rowspan=1 colspan=1>5 - 35 ℃</td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  124,
+                  945,
+                  277
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Dimension(mm)"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  285,
+                  245,
+                  305
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/47626c86f4b7928018ccc23f5738014143846214062a010bb094650cf83b6e04.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  216,
+                  326,
+                  421,
+                  522
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/fa3cf2659c946a2882103f5bb71324ff52301dfddc08918df5a16affef60df33.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  502,
+                  327,
+                  780,
+                  522
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/5743e1fc621f3d936a4226a984757c6c1bb2701f59554aa2d6977cca0c717c36.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>W</td><td rowspan=1 colspan=1>600</td><td rowspan=1 colspan=1>D</td><td rowspan=1 colspan=1>660</td><td rowspan=1 colspan=1>D&quot;</td><td rowspan=1 colspan=1>1115</td></tr><tr><td rowspan=1 colspan=1>H</td><td rowspan=1 colspan=1>850</td><td rowspan=1 colspan=1>D&#x27;</td><td rowspan=1 colspan=1>614</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  549,
+                  945,
+                  611
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "caseId": "source-dvh10-10b-family-primary",
+          "expectation": "ACCEPT",
+          "derivation": "SOURCE_FRAGMENT",
+          "source": {
+            "pdfSha256": "521077b559417d620664ead6be32ee1738e575ae50a7ffb3734b3fc24458d462",
+            "contentSha256": "ce9c5d6947326f05847a1c14f8e87d5a230c6d540d420f5fb50dfb4df67643d4",
+            "page": 10,
+            "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d",
+            "fragmentType": "table",
+            "bbox": [
+              50,
+              786,
+              945,
+              853
+            ]
+          },
+          "identity": {
+            "category": "dryer",
+            "brand": "LG",
+            "model": "DVH10-10B"
+          },
+          "semanticContext": {
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "SAME_PAGE_COMPLETE_MODEL_LIST"
+          },
+          "expectedClaims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "mm": 600
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "mm": 850
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "mm": 690
+            }
+          ],
+          "rejectedSemantics": [
+            "D' is cabinet depth and D\" is door-open depth; neither is closed product depth"
+          ],
+          "contentList": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/8e2a999e990f70665d9ec1b94f1a2b89c3d3a3ef66dda14f25cdc777142ddde2.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td><img src=\"images/82517f59a71c698c817565c7669f40e1d3b5c2614ff728f5577c6ecffdf46af1.jpg\"/> Stacking Kit</td><td></td></tr></table>",
+                  "table_type": "simple_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  63,
+                  942,
+                  201
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "NOTE"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  221,
+                  121,
+                  242
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": {
+                  "paragraph_content": [
+                    {
+                      "type": "text",
+                      "content": "• The included accessories vary depending on the model you purchased."
+                    }
+                  ]
+                },
+                "bbox": [
+                  50,
+                  247,
+                  676,
+                  267
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Specifications"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  47,
+                  321,
+                  242,
+                  344
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": {
+                  "paragraph_content": [
+                    {
+                      "type": "text",
+                      "content": "Asterisk(s) means model variant and can be varied (0-9) or (A-Z)."
+                    }
+                  ]
+                },
+                "bbox": [
+                  47,
+                  354,
+                  592,
+                  373
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/1433f897f2ac7efd306256652c0c5363c3371422b1e5667c970b5640431d24ac.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>Description</td><td rowspan=1 colspan=1>Value</td></tr><tr><td rowspan=1 colspan=1>Model</td><td rowspan=1 colspan=1>DVH10-10B / DVH10-10W / DVH9-10B / DVH5-10G</td></tr><tr><td rowspan=1 colspan=1>Power supply</td><td rowspan=1 colspan=1>220 - 240 V~, 50 Hz</td></tr><tr><td rowspan=1 colspan=1>Product weight</td><td rowspan=1 colspan=1>56 kg</td></tr><tr><td rowspan=1 colspan=1>Allowable temperature</td><td rowspan=1 colspan=1>5- 35℃</td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  383,
+                  945,
+                  536
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": {
+                  "paragraph_content": [
+                    {
+                      "type": "text",
+                      "content": "Dimension(mm)"
+                    }
+                  ]
+                },
+                "bbox": [
+                  50,
+                  544,
+                  242,
+                  564
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/52367cb02169298f1c77ba229034f5d811cc4258e29b740d51b2b25344d37e1c.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  216,
+                  574,
+                  421,
+                  771
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/894ce18a663aa8f42172c7e8cef6481f916327fd820ca9542d13db164878233e.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  502,
+                  574,
+                  778,
+                  771
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/ceb78339fd8c6fda6fbe0fa10cbc2d545cbdd98884b3c54fae0400dec104ea8d.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>W</td><td rowspan=1 colspan=1>600</td><td rowspan=1 colspan=1>D</td><td rowspan=1 colspan=1>690</td><td rowspan=1 colspan=1>D&quot;</td><td rowspan=1 colspan=1>1115</td></tr><tr><td rowspan=1 colspan=1>H</td><td rowspan=1 colspan=1>850</td><td rowspan=1 colspan=1>D&#x27;</td><td rowspan=1 colspan=1>615</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  786,
+                  945,
+                  853
+                ]
+              },
+              {
+                "type": "page_number",
+                "content": {
+                  "page_number_content": [
+                    {
+                      "type": "text",
+                      "content": "10"
+                    }
+                  ]
+                },
+                "bbox": [
+                  50,
+                  16,
+                  80,
+                  33
+                ]
+              },
+              {
+                "type": "page_header",
+                "content": {
+                  "page_header_content": [
+                    {
+                      "type": "text",
+                      "content": "INSTALLATION"
+                    }
+                  ]
+                },
+                "bbox": [
+                  97,
+                  15,
+                  283,
+                  35
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "caseId": "reject-unpinned-pdf-hash",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": {
+            "pdfSha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "contentSha256": "ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2",
+            "page": 12,
+            "fragmentSha256": "14c5e7f03d58c3c07d9c2e6a825cac7f4892f1710bbe49b32d95a2072220cce5",
+            "fragmentType": "table",
+            "bbox": [
+              50,
+              549,
+              945,
+              611
+            ]
+          },
+          "identity": {
+            "category": "dryer",
+            "brand": "LG",
+            "model": "DVH1-08WP"
+          },
+          "semanticContext": {
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "SAME_PAGE_COMPLETE_MODEL_LIST"
+          },
+          "expectedClaims": [],
+          "rejectedSemantics": [
+            "diagram grammar is limited to audited PDF hashes"
+          ],
+          "contentList": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "12 INSTALLATION"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  15,
+                  283,
+                  35
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Specifications"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  47,
+                  62,
+                  242,
+                  85
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": {
+                  "paragraph_content": [
+                    {
+                      "type": "text",
+                      "content": "Asterisk(s) means model variant and can be varied (0-9) or (A-Z)."
+                    }
+                  ]
+                },
+                "bbox": [
+                  47,
+                  94,
+                  595,
+                  114
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/0662a884477da44ea9a133a95e02a3c850426f8eb4d9ccf957f129bac1722495.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>Description</td><td rowspan=1 colspan=1>Value</td></tr><tr><td rowspan=1 colspan=1>Model</td><td rowspan=1 colspan=1>DVH1-08WP</td></tr><tr><td rowspan=1 colspan=1>Power supply</td><td rowspan=1 colspan=1>220 - 240 V~, 50 Hz</td></tr><tr><td rowspan=1 colspan=1>Product weight</td><td rowspan=1 colspan=1>53 kg</td></tr><tr><td rowspan=1 colspan=1>Allowable temperature</td><td rowspan=1 colspan=1>5 - 35 ℃</td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  124,
+                  945,
+                  277
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Dimension(mm)"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  285,
+                  245,
+                  305
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/47626c86f4b7928018ccc23f5738014143846214062a010bb094650cf83b6e04.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  216,
+                  326,
+                  421,
+                  522
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/fa3cf2659c946a2882103f5bb71324ff52301dfddc08918df5a16affef60df33.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  502,
+                  327,
+                  780,
+                  522
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/5743e1fc621f3d936a4226a984757c6c1bb2701f59554aa2d6977cca0c717c36.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>W</td><td rowspan=1 colspan=1>600</td><td rowspan=1 colspan=1>D</td><td rowspan=1 colspan=1>660</td><td rowspan=1 colspan=1>D&quot;</td><td rowspan=1 colspan=1>1115</td></tr><tr><td rowspan=1 colspan=1>H</td><td rowspan=1 colspan=1>850</td><td rowspan=1 colspan=1>D&#x27;</td><td rowspan=1 colspan=1>614</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  549,
+                  945,
+                  611
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "caseId": "reject-missing-dimension-image",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": {
+            "pdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+            "contentSha256": "ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2",
+            "page": 12,
+            "fragmentSha256": "14c5e7f03d58c3c07d9c2e6a825cac7f4892f1710bbe49b32d95a2072220cce5",
+            "fragmentType": "table",
+            "bbox": [
+              50,
+              549,
+              945,
+              611
+            ]
+          },
+          "identity": {
+            "category": "dryer",
+            "brand": "LG",
+            "model": "DVH1-08WP"
+          },
+          "semanticContext": {
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "SAME_PAGE_COMPLETE_MODEL_LIST"
+          },
+          "expectedClaims": [],
+          "rejectedSemantics": [
+            "axis table without its dimension diagrams is incomplete context"
+          ],
+          "contentList": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "12 INSTALLATION"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  15,
+                  283,
+                  35
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Specifications"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  47,
+                  62,
+                  242,
+                  85
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": {
+                  "paragraph_content": [
+                    {
+                      "type": "text",
+                      "content": "Asterisk(s) means model variant and can be varied (0-9) or (A-Z)."
+                    }
+                  ]
+                },
+                "bbox": [
+                  47,
+                  94,
+                  595,
+                  114
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/0662a884477da44ea9a133a95e02a3c850426f8eb4d9ccf957f129bac1722495.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>Description</td><td rowspan=1 colspan=1>Value</td></tr><tr><td rowspan=1 colspan=1>Model</td><td rowspan=1 colspan=1>DVH1-08WP</td></tr><tr><td rowspan=1 colspan=1>Power supply</td><td rowspan=1 colspan=1>220 - 240 V~, 50 Hz</td></tr><tr><td rowspan=1 colspan=1>Product weight</td><td rowspan=1 colspan=1>53 kg</td></tr><tr><td rowspan=1 colspan=1>Allowable temperature</td><td rowspan=1 colspan=1>5 - 35 ℃</td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  124,
+                  945,
+                  277
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Dimension(mm)"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  285,
+                  245,
+                  305
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/5743e1fc621f3d936a4226a984757c6c1bb2701f59554aa2d6977cca0c717c36.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>W</td><td rowspan=1 colspan=1>600</td><td rowspan=1 colspan=1>D</td><td rowspan=1 colspan=1>660</td><td rowspan=1 colspan=1>D&quot;</td><td rowspan=1 colspan=1>1115</td></tr><tr><td rowspan=1 colspan=1>H</td><td rowspan=1 colspan=1>850</td><td rowspan=1 colspan=1>D&#x27;</td><td rowspan=1 colspan=1>614</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  549,
+                  945,
+                  611
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "caseId": "reject-model-list-drift",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": {
+            "pdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+            "contentSha256": "ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2",
+            "page": 12,
+            "fragmentSha256": "14c5e7f03d58c3c07d9c2e6a825cac7f4892f1710bbe49b32d95a2072220cce5",
+            "fragmentType": "table",
+            "bbox": [
+              50,
+              549,
+              945,
+              611
+            ]
+          },
+          "identity": {
+            "category": "dryer",
+            "brand": "LG",
+            "model": "DVH1-08WP"
+          },
+          "semanticContext": {
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "SAME_PAGE_COMPLETE_MODEL_LIST"
+          },
+          "expectedClaims": [],
+          "rejectedSemantics": [
+            "model table must equal the audited model set"
+          ],
+          "contentList": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "12 INSTALLATION"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  15,
+                  283,
+                  35
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Specifications"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  47,
+                  62,
+                  242,
+                  85
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": {
+                  "paragraph_content": [
+                    {
+                      "type": "text",
+                      "content": "Asterisk(s) means model variant and can be varied (0-9) or (A-Z)."
+                    }
+                  ]
+                },
+                "bbox": [
+                  47,
+                  94,
+                  595,
+                  114
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/0662a884477da44ea9a133a95e02a3c850426f8eb4d9ccf957f129bac1722495.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>Description</td><td rowspan=1 colspan=1>Value</td></tr><tr><td rowspan=1 colspan=1>Model</td><td rowspan=1 colspan=1>DVH1-08WX</td></tr><tr><td rowspan=1 colspan=1>Power supply</td><td rowspan=1 colspan=1>220 - 240 V~, 50 Hz</td></tr><tr><td rowspan=1 colspan=1>Product weight</td><td rowspan=1 colspan=1>53 kg</td></tr><tr><td rowspan=1 colspan=1>Allowable temperature</td><td rowspan=1 colspan=1>5 - 35 ℃</td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  124,
+                  945,
+                  277
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Dimension(mm)"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  285,
+                  245,
+                  305
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/47626c86f4b7928018ccc23f5738014143846214062a010bb094650cf83b6e04.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  216,
+                  326,
+                  421,
+                  522
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/fa3cf2659c946a2882103f5bb71324ff52301dfddc08918df5a16affef60df33.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  502,
+                  327,
+                  780,
+                  522
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/5743e1fc621f3d936a4226a984757c6c1bb2701f59554aa2d6977cca0c717c36.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>W</td><td rowspan=1 colspan=1>600</td><td rowspan=1 colspan=1>D</td><td rowspan=1 colspan=1>660</td><td rowspan=1 colspan=1>D&quot;</td><td rowspan=1 colspan=1>1115</td></tr><tr><td rowspan=1 colspan=1>H</td><td rowspan=1 colspan=1>850</td><td rowspan=1 colspan=1>D&#x27;</td><td rowspan=1 colspan=1>614</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  549,
+                  945,
+                  611
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "caseId": "reject-duplicate-depth-axis",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": {
+            "pdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+            "contentSha256": "ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2",
+            "page": 12,
+            "fragmentSha256": "14c5e7f03d58c3c07d9c2e6a825cac7f4892f1710bbe49b32d95a2072220cce5",
+            "fragmentType": "table",
+            "bbox": [
+              50,
+              549,
+              945,
+              611
+            ]
+          },
+          "identity": {
+            "category": "dryer",
+            "brand": "LG",
+            "model": "DVH1-08WP"
+          },
+          "semanticContext": {
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "SAME_PAGE_COMPLETE_MODEL_LIST"
+          },
+          "expectedClaims": [],
+          "rejectedSemantics": [
+            "duplicate D values make closed depth ambiguous"
+          ],
+          "contentList": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "12 INSTALLATION"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  15,
+                  283,
+                  35
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Specifications"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  47,
+                  62,
+                  242,
+                  85
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": {
+                  "paragraph_content": [
+                    {
+                      "type": "text",
+                      "content": "Asterisk(s) means model variant and can be varied (0-9) or (A-Z)."
+                    }
+                  ]
+                },
+                "bbox": [
+                  47,
+                  94,
+                  595,
+                  114
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/0662a884477da44ea9a133a95e02a3c850426f8eb4d9ccf957f129bac1722495.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>Description</td><td rowspan=1 colspan=1>Value</td></tr><tr><td rowspan=1 colspan=1>Model</td><td rowspan=1 colspan=1>DVH1-08WP</td></tr><tr><td rowspan=1 colspan=1>Power supply</td><td rowspan=1 colspan=1>220 - 240 V~, 50 Hz</td></tr><tr><td rowspan=1 colspan=1>Product weight</td><td rowspan=1 colspan=1>53 kg</td></tr><tr><td rowspan=1 colspan=1>Allowable temperature</td><td rowspan=1 colspan=1>5 - 35 ℃</td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  124,
+                  945,
+                  277
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Dimension(mm)"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  285,
+                  245,
+                  305
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/47626c86f4b7928018ccc23f5738014143846214062a010bb094650cf83b6e04.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  216,
+                  326,
+                  421,
+                  522
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/fa3cf2659c946a2882103f5bb71324ff52301dfddc08918df5a16affef60df33.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  502,
+                  327,
+                  780,
+                  522
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/5743e1fc621f3d936a4226a984757c6c1bb2701f59554aa2d6977cca0c717c36.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>W</td><td rowspan=1 colspan=1>600</td><td rowspan=1 colspan=1>D</td><td rowspan=1 colspan=1>660</td><td rowspan=1 colspan=1>D&quot;</td><td rowspan=1 colspan=1>1115</td><td rowspan=1 colspan=1>D</td><td rowspan=1 colspan=1>661</td></tr><tr><td rowspan=1 colspan=1>H</td><td rowspan=1 colspan=1>850</td><td rowspan=1 colspan=1>D&#x27;</td><td rowspan=1 colspan=1>614</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  549,
+                  945,
+                  611
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "caseId": "reject-invalid-depth-order",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": {
+            "pdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+            "contentSha256": "ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2",
+            "page": 12,
+            "fragmentSha256": "14c5e7f03d58c3c07d9c2e6a825cac7f4892f1710bbe49b32d95a2072220cce5",
+            "fragmentType": "table",
+            "bbox": [
+              50,
+              549,
+              945,
+              611
+            ]
+          },
+          "identity": {
+            "category": "dryer",
+            "brand": "LG",
+            "model": "DVH1-08WP"
+          },
+          "semanticContext": {
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "SAME_PAGE_COMPLETE_MODEL_LIST"
+          },
+          "expectedClaims": [],
+          "rejectedSemantics": [
+            "the required ordering is D' < D < D\""
+          ],
+          "contentList": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "12 INSTALLATION"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  15,
+                  283,
+                  35
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Specifications"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  47,
+                  62,
+                  242,
+                  85
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": {
+                  "paragraph_content": [
+                    {
+                      "type": "text",
+                      "content": "Asterisk(s) means model variant and can be varied (0-9) or (A-Z)."
+                    }
+                  ]
+                },
+                "bbox": [
+                  47,
+                  94,
+                  595,
+                  114
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/0662a884477da44ea9a133a95e02a3c850426f8eb4d9ccf957f129bac1722495.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>Description</td><td rowspan=1 colspan=1>Value</td></tr><tr><td rowspan=1 colspan=1>Model</td><td rowspan=1 colspan=1>DVH1-08WP</td></tr><tr><td rowspan=1 colspan=1>Power supply</td><td rowspan=1 colspan=1>220 - 240 V~, 50 Hz</td></tr><tr><td rowspan=1 colspan=1>Product weight</td><td rowspan=1 colspan=1>53 kg</td></tr><tr><td rowspan=1 colspan=1>Allowable temperature</td><td rowspan=1 colspan=1>5 - 35 ℃</td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  124,
+                  945,
+                  277
+                ]
+              },
+              {
+                "type": "title",
+                "content": {
+                  "title_content": [
+                    {
+                      "type": "text",
+                      "content": "Dimension(mm)"
+                    }
+                  ],
+                  "level": 2
+                },
+                "bbox": [
+                  50,
+                  285,
+                  245,
+                  305
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/47626c86f4b7928018ccc23f5738014143846214062a010bb094650cf83b6e04.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  216,
+                  326,
+                  421,
+                  522
+                ]
+              },
+              {
+                "type": "image",
+                "content": {
+                  "image_source": {
+                    "path": "images/fa3cf2659c946a2882103f5bb71324ff52301dfddc08918df5a16affef60df33.jpg"
+                  },
+                  "image_caption": [],
+                  "image_footnote": []
+                },
+                "bbox": [
+                  502,
+                  327,
+                  780,
+                  522
+                ]
+              },
+              {
+                "type": "table",
+                "content": {
+                  "image_source": {
+                    "path": "images/5743e1fc621f3d936a4226a984757c6c1bb2701f59554aa2d6977cca0c717c36.jpg"
+                  },
+                  "table_caption": [],
+                  "table_footnote": [],
+                  "html": "<table><tr><td rowspan=1 colspan=1>W</td><td rowspan=1 colspan=1>600</td><td rowspan=1 colspan=1>D</td><td rowspan=1 colspan=1>660</td><td rowspan=1 colspan=1>D&quot;</td><td rowspan=1 colspan=1>1115</td></tr><tr><td rowspan=1 colspan=1>H</td><td rowspan=1 colspan=1>850</td><td rowspan=1 colspan=1>D&#x27;</td><td rowspan=1 colspan=1>700</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td></tr></table>",
+                  "table_type": "complex_table",
+                  "table_nest_level": 1
+                },
+                "bbox": [
+                  50,
+                  549,
+                  945,
+                  611
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

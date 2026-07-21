@@ -18,8 +18,18 @@ let documents = buildLegacySourceDocuments({ manual, canonical });
 const reviewResults = applyEvidencePilotReview({ bundles: reviewBundles.bundles, manifest: reviewManifest });
 const manifestByLegacy = new Map(reviewManifest.reviews.map((row) => [row.legacyRuntimeId, row]));
 const bundleByDocument = new Map(reviewBundles.bundles.map((row) => [row.sourceDocument.id, row]));
-const resultsByDocument = Map.groupBy(reviewResults, (row) => row.sourceDocumentId);
-const spaceResultsByDocument = Map.groupBy(spaceReviewManifest.results, (row) => row.sourceDocumentId);
+function groupByDocument(rows) {
+  const grouped = new Map();
+  for (const row of rows) {
+    const group = grouped.get(row.sourceDocumentId) ?? [];
+    group.push(row);
+    grouped.set(row.sourceDocumentId, group);
+  }
+  return grouped;
+}
+
+const resultsByDocument = groupByDocument(reviewResults);
+const spaceResultsByDocument = groupByDocument(spaceReviewManifest.results);
 documents = documents.map((document) => {
   const results = resultsByDocument.get(document.id);
   if (!results) return document;

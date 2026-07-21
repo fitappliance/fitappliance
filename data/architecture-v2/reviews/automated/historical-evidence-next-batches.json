@@ -1,0 +1,1436 @@
+{
+  "schemaVersion": 2,
+  "plannerVersion": "2",
+  "generatedAt": "2026-07-19T19:32:08.439Z",
+  "maximumTargets": 10,
+  "manifestWindow": {
+    "schemaVersion": 1,
+    "cohortKeyVersion": "1",
+    "maximumManifestsPerWorkstream": 8,
+    "manifestIds": [
+      "historical_batch_cd540913d0d888a7ffaa9a0e",
+      "historical_batch_a1b2d1404337e89a1c3625fe",
+      "historical_batch_11eda6d31c28c8d7a7d01629",
+      "historical_batch_aff58746b962514773b5ea02",
+      "historical_batch_97cce838b4b04df51d59ad9a",
+      "historical_batch_a14b3ae4a38174973a37bb82",
+      "historical_batch_ad69cd1a4b6f18af205f0ee1",
+      "historical_batch_3fddc9cb007f268dc4a5c7fa",
+      "historical_batch_0728079dfbc6974854a7b871",
+      "historical_batch_abaf58bb2b99734792bb6b7d",
+      "historical_batch_0b4ee47b0ac115831de1969f",
+      "historical_batch_0fb2b85ff20c052291107790",
+      "historical_batch_5e19f94dfb1254ac13c30a0e",
+      "historical_batch_72103527147ae7780ebae7cf",
+      "historical_batch_744ec7c471182f7e464abb26",
+      "historical_batch_fe68d9b0f2d85346f2c46993",
+      "historical_batch_100fdc2f86c0ede1518ae50d",
+      "historical_batch_f1a6af45a886dd3f1dc2bf70",
+      "historical_batch_b201d3326081128770a54765",
+      "historical_batch_e60dee153d054e632ea8b9be",
+      "historical_batch_8e197c67a2d07c84c2699c1f",
+      "historical_batch_05d0bb021fe29e6ca7dffec0",
+      "historical_batch_8f4b5ad5f75b47a3482665eb",
+      "historical_batch_3f3fc69a0d8c9b43ae0cf535"
+    ]
+  },
+  "sourceBindings": {
+    "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+    "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+    "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+    "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+  },
+  "workstreams": [
+    {
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "description": "Current-retail dimensions recovery and confirmation",
+      "assignedTargets": 957,
+      "eligibleTargets": 947,
+      "suppressedTargets": 10,
+      "suppressedByReason": {
+        "FAMILY_GATE_BLOCKED": 10
+      },
+      "eligibleByPriority": {
+        "P0_CURRENT_MISSING_DIMENSIONS": 770,
+        "P2_CURRENT_CONFIRMATION": 177
+      },
+      "eligibleCohorts": 108,
+      "eligibleCohortsByPriority": {
+        "P0_CURRENT_MISSING_DIMENSIONS": 61,
+        "P2_CURRENT_CONFIRMATION": 47
+      },
+      "windowedCohorts": 8,
+      "windowedCohortsByPriority": {
+        "P0_CURRENT_MISSING_DIMENSIONS": 8
+      },
+      "deferredCohorts": 100,
+      "manifestIds": [
+        "historical_batch_cd540913d0d888a7ffaa9a0e",
+        "historical_batch_a1b2d1404337e89a1c3625fe",
+        "historical_batch_11eda6d31c28c8d7a7d01629",
+        "historical_batch_aff58746b962514773b5ea02",
+        "historical_batch_97cce838b4b04df51d59ad9a",
+        "historical_batch_a14b3ae4a38174973a37bb82",
+        "historical_batch_ad69cd1a4b6f18af205f0ee1",
+        "historical_batch_3fddc9cb007f268dc4a5c7fa"
+      ]
+    },
+    {
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "description": "Archived and registry-only dimensions recovery and confirmation",
+      "assignedTargets": 3974,
+      "eligibleTargets": 3939,
+      "suppressedTargets": 35,
+      "suppressedByReason": {
+        "FAMILY_GATE_BLOCKED": 35
+      },
+      "eligibleByPriority": {
+        "P1_HISTORICAL_MISSING_DIMENSIONS": 1044,
+        "P3_HISTORICAL_CONFIRMATION": 2895
+      },
+      "eligibleCohorts": 275,
+      "eligibleCohortsByPriority": {
+        "P1_HISTORICAL_MISSING_DIMENSIONS": 91,
+        "P3_HISTORICAL_CONFIRMATION": 184
+      },
+      "windowedCohorts": 8,
+      "windowedCohortsByPriority": {
+        "P1_HISTORICAL_MISSING_DIMENSIONS": 8
+      },
+      "deferredCohorts": 267,
+      "manifestIds": [
+        "historical_batch_0728079dfbc6974854a7b871",
+        "historical_batch_abaf58bb2b99734792bb6b7d",
+        "historical_batch_0b4ee47b0ac115831de1969f",
+        "historical_batch_0fb2b85ff20c052291107790",
+        "historical_batch_5e19f94dfb1254ac13c30a0e",
+        "historical_batch_72103527147ae7780ebae7cf",
+        "historical_batch_744ec7c471182f7e464abb26",
+        "historical_batch_fe68d9b0f2d85346f2c46993"
+      ]
+    },
+    {
+      "workstreamId": "PARSER_REPAIR",
+      "description": "Reopened family canaries after a parser-bound failure",
+      "assignedTargets": 0,
+      "eligibleTargets": 0,
+      "suppressedTargets": 0,
+      "suppressedByReason": {},
+      "eligibleByPriority": {},
+      "eligibleCohorts": 0,
+      "eligibleCohortsByPriority": {},
+      "windowedCohorts": 0,
+      "windowedCohortsByPriority": {},
+      "deferredCohorts": 0,
+      "manifestIds": []
+    },
+    {
+      "workstreamId": "CONFLICT_CLOSURE",
+      "description": "Actionable conflict quarantine with an exact pending-work binding",
+      "assignedTargets": 63,
+      "eligibleTargets": 62,
+      "suppressedTargets": 1,
+      "suppressedByReason": {
+        "FAMILY_GATE_BLOCKED": 1
+      },
+      "eligibleByPriority": {
+        "P2_CURRENT_CONFIRMATION": 2,
+        "P3_HISTORICAL_CONFIRMATION": 4,
+        "P4_CONFLICT_RESOLUTION": 56
+      },
+      "eligibleCohorts": 20,
+      "eligibleCohortsByPriority": {
+        "P2_CURRENT_CONFIRMATION": 2,
+        "P3_HISTORICAL_CONFIRMATION": 4,
+        "P4_CONFLICT_RESOLUTION": 14
+      },
+      "windowedCohorts": 8,
+      "windowedCohortsByPriority": {
+        "P2_CURRENT_CONFIRMATION": 2,
+        "P3_HISTORICAL_CONFIRMATION": 4,
+        "P4_CONFLICT_RESOLUTION": 2
+      },
+      "deferredCohorts": 12,
+      "manifestIds": [
+        "historical_batch_100fdc2f86c0ede1518ae50d",
+        "historical_batch_f1a6af45a886dd3f1dc2bf70",
+        "historical_batch_b201d3326081128770a54765",
+        "historical_batch_e60dee153d054e632ea8b9be",
+        "historical_batch_8e197c67a2d07c84c2699c1f",
+        "historical_batch_05d0bb021fe29e6ca7dffec0",
+        "historical_batch_8f4b5ad5f75b47a3482665eb",
+        "historical_batch_3f3fc69a0d8c9b43ae0cf535"
+      ]
+    }
+  ],
+  "manifests": [
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e",
+      "cohortSha256": "f9c3a8af7d137760377ddf3e8c9c4045f4956ed9bf7dc71286d63fb59bee3c85",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dishwasher",
+        "brand": "Esatto",
+        "normalizedBrand": "esatto",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dishwasher",
+        "brand": "Esatto",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 957,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_24ed948d4390531eefa18311",
+          "referenceId": "fa_ref_fd1cddcdc50d2622c30e7b3c",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_cd540913d0d888a7ffaa9a0e",
+      "semanticManifestSha256": "cd540913d0d888a7ffaa9a0ed13ad60e0861c8e10c131cca23e52ed130f809bd"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_df0191124b4ff3040e3d7b80",
+      "cohortSha256": "df0191124b4ff3040e3d7b805e016537c13c42891ef5fa1fb3397b093baf0545",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dryer",
+        "brand": "Esatto",
+        "normalizedBrand": "esatto",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dryer",
+        "brand": "Esatto",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 957,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_9457752622cd76c35a283424",
+          "referenceId": "fa_ref_1a6f1e29fc9a740350034e50",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_a1b2d1404337e89a1c3625fe",
+      "semanticManifestSha256": "a1b2d1404337e89a1c3625fefe5c063dfd3c2bde80ea65166b8f73ebffa84443"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_c1d03766991ecdc3ff1fbe5d",
+      "cohortSha256": "c1d03766991ecdc3ff1fbe5d03fb69359ee85b17e0b8e58672f3386478405380",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "fridge",
+        "brand": "Beko",
+        "normalizedBrand": "beko",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "fridge",
+        "brand": "Beko",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 957,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_0be27ae58da88e5c8aa83aa8",
+          "referenceId": "fa_ref_5a5354c0c62786ffb8a333ce",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_11eda6d31c28c8d7a7d01629",
+      "semanticManifestSha256": "11eda6d31c28c8d7a7d01629cf6106039754f00c25ed8134398134ccd3c7c552"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_702961cc22f5067d3c85fbbc",
+      "cohortSha256": "702961cc22f5067d3c85fbbc948ee6f81a5aaa49c48bd37f07488e5a8bd92bdc",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Beko",
+        "normalizedBrand": "beko",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Beko",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 957,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_8316c64d26b05bb308c27222",
+          "referenceId": "fa_ref_7f99cb83f53ac38202b1f8f9",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_aff58746b962514773b5ea02",
+      "semanticManifestSha256": "aff58746b962514773b5ea02e29706201c4bcf093391c5010b6aed9ba52b3654"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_97a06a44cbec840a0f772899",
+      "cohortSha256": "97a06a44cbec840a0f772899e6034c76c03df23a4b6a3b53eadd10c7852221d7",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dishwasher",
+        "brand": "Fisher & Paykel",
+        "normalizedBrand": "fisherpaykel",
+        "familyId": "document_family_b0015ec1b50ae90f81769d42",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "FAMILY_CANARY"
+      },
+      "mode": "FAMILY_CANARY",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dishwasher",
+        "brand": "Fisher & Paykel",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": "document_family_b0015ec1b50ae90f81769d42",
+      "familyState": "CANARY_READY",
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 957,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_16b918e68d48076bd93a0700",
+          "referenceId": "fa_ref_a60f253b70404d2122cef804",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": "document_family_b0015ec1b50ae90f81769d42",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_97cce838b4b04df51d59ad9a",
+      "semanticManifestSha256": "97cce838b4b04df51d59ad9aaa1bce6ae53d38c1862e1765e3bff9131c5bf136"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_5c70be5b26c4c80b02039fbf",
+      "cohortSha256": "5c70be5b26c4c80b02039fbf2b393b3a9cab9592d36c89ee7a2eae8c6d410671",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dryer",
+        "brand": "Fisher & Paykel",
+        "normalizedBrand": "fisherpaykel",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dryer",
+        "brand": "Fisher & Paykel",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 957,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_8bb6f9f5b2e877e3f122686a",
+          "referenceId": "fa_ref_65a617ffe2d6e16da569b98e",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "MULTI_FAMILY_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_a14b3ae4a38174973a37bb82",
+      "semanticManifestSha256": "a14b3ae4a38174973a37bb8294c25f7a1ec3b5985186a1f4585e25b585cd64ad"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_597e48a8d72e7008b1b0c82e",
+      "cohortSha256": "597e48a8d72e7008b1b0c82e4c4f639fd09a7335e66b722693862ba642d23e12",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "fridge",
+        "brand": "CHIQ",
+        "normalizedBrand": "chiq",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "fridge",
+        "brand": "CHIQ",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 957,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_273ca47d74649ed50760fced",
+          "referenceId": "fa_ref_4935fa9cfbe6c884f1d38eb1",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_ad69cd1a4b6f18af205f0ee1",
+      "semanticManifestSha256": "ad69cd1a4b6f18af205f0ee1f71f19a460128446955fa225eea9ae0edf17615e"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_cdfe13ef2a84cbec8203108d",
+      "cohortSha256": "cdfe13ef2a84cbec8203108daac934ea6c36addd03289272025068f43d25afa8",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CURRENT_DIMENSIONS",
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Bosch",
+        "normalizedBrand": "bosch",
+        "familyId": "document_family_5542caafbb840718542d9cb0",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "FAMILY_CANARY"
+      },
+      "mode": "FAMILY_CANARY",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Bosch",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": "document_family_5542caafbb840718542d9cb0",
+      "familyState": "CANARY_READY",
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 957,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_3dd723bd8abaeee8a5cb3bfe",
+          "referenceId": "fa_ref_7ebf0a5d46911e6ae58fd6c4",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": "document_family_5542caafbb840718542d9cb0",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_3fddc9cb007f268dc4a5c7fa",
+      "semanticManifestSha256": "3fddc9cb007f268dc4a5c7fae498d4852ec8cb2171b267c2c344c2030b9685c5"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_3b43fd54579063a8f7f8ea51",
+      "cohortSha256": "3b43fd54579063a8f7f8ea515439f45f4411167dc1d14ffd5da6ec62945a08cb",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "HISTORICAL_DIMENSIONS",
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "dishwasher",
+        "brand": "Artusi",
+        "normalizedBrand": "artusi",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "dishwasher",
+        "brand": "Artusi",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 3974,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_c576bd4a2d9f6898def1d4ef",
+          "referenceId": "fa_ref_00010a5b30ee1af26eb320d2",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_0728079dfbc6974854a7b871",
+      "semanticManifestSha256": "0728079dfbc6974854a7b8710377b99a08f3a919bd2f8cb8cf5c86695b20dcf0"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_54baad85a7f98ee5f7197ebf",
+      "cohortSha256": "54baad85a7f98ee5f7197ebf846e0e3a4886c01e5fcebc075facab54b8573232",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "HISTORICAL_DIMENSIONS",
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "dryer",
+        "brand": "BOSCH",
+        "normalizedBrand": "bosch",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "dryer",
+        "brand": "BOSCH",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 3974,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_403364051c7a6408639454e7",
+          "referenceId": "fa_ref_f5d6f99c82db1758894adcc1",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_abaf58bb2b99734792bb6b7d",
+      "semanticManifestSha256": "abaf58bb2b99734792bb6b7d4a275793d2cd219e18016c983325ddcdc65171b4"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_c4395fe7d8b51aee486e40a2",
+      "cohortSha256": "c4395fe7d8b51aee486e40a209c9d88448ea0e2f865a166f99d8eab8e8cb92ac",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "HISTORICAL_DIMENSIONS",
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "Artusi",
+        "normalizedBrand": "artusi",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "Artusi",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 3974,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_705fb02c491ebabbffb65240",
+          "referenceId": "fa_ref_9f8d8891894bfedc171e5f70",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_0b4ee47b0ac115831de1969f",
+      "semanticManifestSha256": "0b4ee47b0ac115831de1969f36a2f7ce969c0afd7a61c41aeda8d42e32e68468"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_0ed2271d00134faeaccbd6d3",
+      "cohortSha256": "0ed2271d00134faeaccbd6d3282e4c2f70b143dd4149449ed6435d7ea37560c1",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "HISTORICAL_DIMENSIONS",
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "washing_machine",
+        "brand": "ASKO",
+        "normalizedBrand": "asko",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "washing_machine",
+        "brand": "ASKO",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 3974,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_43d95e55aeb174f1b9f934f3",
+          "referenceId": "fa_ref_bedb3bd0acecd63760f244b7",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_0fb2b85ff20c052291107790",
+      "semanticManifestSha256": "0fb2b85ff20c05229110779069ecb6ad6a989b781a3338a686042a905c886917"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_5de5025739639135ff441885",
+      "cohortSha256": "5de5025739639135ff441885c2540687a34d26ff33c9cc5cff91307e48c8ffdf",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "HISTORICAL_DIMENSIONS",
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "dishwasher",
+        "brand": "ASKO",
+        "normalizedBrand": "asko",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "dishwasher",
+        "brand": "ASKO",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 3974,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_5ee5a0c19cc2d86e4e973745",
+          "referenceId": "fa_ref_13b732b0e58cce9476daee9d",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_5e19f94dfb1254ac13c30a0e",
+      "semanticManifestSha256": "5e19f94dfb1254ac13c30a0e98b872401b121f0390f524b59fdb7419d32bc189"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_fdd669e640cf326a1af6bde5",
+      "cohortSha256": "fdd669e640cf326a1af6bde509c86045445fa0f7c60964d432510def22ddd26d",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "HISTORICAL_DIMENSIONS",
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "dryer",
+        "brand": "Electrolux",
+        "normalizedBrand": "electrolux",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "dryer",
+        "brand": "Electrolux",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 3974,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_75505400ec67cea082606e13",
+          "referenceId": "fa_ref_391f8cc0b6185c72628b88be",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_72103527147ae7780ebae7cf",
+      "semanticManifestSha256": "72103527147ae7780ebae7cfe0fb25785a4dbe261f203a7ed589a68cd2f9d9ba"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_25633f2cb044bbf03ded43e6",
+      "cohortSha256": "25633f2cb044bbf03ded43e64cbca3bdf065ab6166522869f5188fb614e2ee46",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "HISTORICAL_DIMENSIONS",
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "BEKO",
+        "normalizedBrand": "beko",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "BEKO",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 3974,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_9a11fc1c5c4500abf5ea08a6",
+          "referenceId": "fa_ref_ad6c6f6610727fff8927c4b8",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_744ec7c471182f7e464abb26",
+      "semanticManifestSha256": "744ec7c471182f7e464abb263c947467d05aa6672a11c781498ed706fb32fc0d"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "HISTORICAL_DIMENSIONS",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_20d00b1bd98d228a38ff8200",
+      "cohortSha256": "20d00b1bd98d228a38ff820022c6bea51c53aee0dd5f7c7a7255e7b1803c7979",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "HISTORICAL_DIMENSIONS",
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "washing_machine",
+        "brand": "BOSCH",
+        "normalizedBrand": "bosch",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "washing_machine",
+        "brand": "BOSCH",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 3974,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_da56843677e6bd0d0cbe3c0a",
+          "referenceId": "fa_ref_f056f19d701eef642603328e",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_fe68d9b0f2d85346f2c46993",
+      "semanticManifestSha256": "fe68d9b0f2d85346f2c469930617227a26c930fd5a70abc89c8aae78f392443c"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CONFLICT_CLOSURE",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_5d2b9b32a55aff7936167088",
+      "cohortSha256": "5d2b9b32a55aff7936167088400aded6dc6d4a040c51651e88bb6ae761070338",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CONFLICT_CLOSURE",
+        "priorityClass": "P2_CURRENT_CONFIRMATION",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "normalizedBrand": "fisherpaykel",
+        "familyId": "document_family_82eed9fcc8fd21713fbf9017",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "FAMILY_CANARY"
+      },
+      "mode": "FAMILY_CANARY",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P2_CURRENT_CONFIRMATION",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Fisher & Paykel",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": "document_family_82eed9fcc8fd21713fbf9017",
+      "familyState": "REOPENED",
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 63,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_a677bacb6d68e1c58a543364",
+          "referenceId": "fa_ref_c913768fa64a93313207ce31",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": "document_family_82eed9fcc8fd21713fbf9017",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_100fdc2f86c0ede1518ae50d",
+      "semanticManifestSha256": "100fdc2f86c0ede1518ae50d3e644c6fa586244859e5eaa382684e27a6262b31"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CONFLICT_CLOSURE",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_4bebd3fa1ac2fc16142ca3c9",
+      "cohortSha256": "4bebd3fa1ac2fc16142ca3c97bb5821cca1e92094f0f0805b49a2882a54ad7d2",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CONFLICT_CLOSURE",
+        "priorityClass": "P2_CURRENT_CONFIRMATION",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Hisense",
+        "normalizedBrand": "hisense",
+        "familyId": "document_family_4df9004fb8faa875ea475e6c",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "FAMILY_CANARY"
+      },
+      "mode": "FAMILY_CANARY",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P2_CURRENT_CONFIRMATION",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "washing_machine",
+        "brand": "Hisense",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": "document_family_4df9004fb8faa875ea475e6c",
+      "familyState": "REOPENED",
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 63,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_5abd7e69899be099d08694fd",
+          "referenceId": "fa_ref_1320d0a02c0ddd2278437090",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": "document_family_4df9004fb8faa875ea475e6c",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_f1a6af45a886dd3f1dc2bf70",
+      "semanticManifestSha256": "f1a6af45a886dd3f1dc2bf70c877c7ff3f0c04d5bda4efe03effa1acc5410c89"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CONFLICT_CLOSURE",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_6fd61cb3620ec5eda65f5a9d",
+      "cohortSha256": "6fd61cb3620ec5eda65f5a9df0a9572240bea879b25c01bf605b78232bd77595",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CONFLICT_CLOSURE",
+        "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "Electrolux",
+        "normalizedBrand": "electrolux",
+        "familyId": "document_family_029b5a1a6ac979ee4755ebc2",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "FAMILY_CANARY"
+      },
+      "mode": "FAMILY_CANARY",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "Electrolux",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": "document_family_029b5a1a6ac979ee4755ebc2",
+      "familyState": "REOPENED",
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 63,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_188e82d7868288177e51820a",
+          "referenceId": "fa_ref_54fb3218b6ac6851d14a5c2e",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": "document_family_029b5a1a6ac979ee4755ebc2",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_b201d3326081128770a54765",
+      "semanticManifestSha256": "b201d3326081128770a54765d37cd7646a00365654440df39ddaa82185190f80"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CONFLICT_CLOSURE",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_049d2a3fe4c852ccc2efeb03",
+      "cohortSha256": "049d2a3fe4c852ccc2efeb03246bb2bd723a6dedabbd2c516e5bc89de63d7d2f",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CONFLICT_CLOSURE",
+        "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "KELVINATOR",
+        "normalizedBrand": "kelvinator",
+        "familyId": "document_family_25d95408b7219ac2211e1b63",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "FAMILY_CANARY"
+      },
+      "mode": "FAMILY_CANARY",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "KELVINATOR",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": "document_family_25d95408b7219ac2211e1b63",
+      "familyState": "REOPENED",
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 63,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_6c312441be4d741742f10a29",
+          "referenceId": "fa_ref_7256aaa1b29d398cf85376a3",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": "document_family_25d95408b7219ac2211e1b63",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_e60dee153d054e632ea8b9be",
+      "semanticManifestSha256": "e60dee153d054e632ea8b9be4185257afadc3a95fbc998c4ad9370439016b16b"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CONFLICT_CLOSURE",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_25aa06110a424f4cb646a619",
+      "cohortSha256": "25aa06110a424f4cb646a61976dd345426a6cae2dcb4ba7b8e56421ce7dda472",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CONFLICT_CLOSURE",
+        "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "Westinghouse",
+        "normalizedBrand": "westinghouse",
+        "familyId": "document_family_3877f04b5a53d14be26a4663",
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "FAMILY_CANARY"
+      },
+      "mode": "FAMILY_CANARY",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "Westinghouse",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": "document_family_3877f04b5a53d14be26a4663",
+      "familyState": "REOPENED",
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 63,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_178ba2b9d49b8bf0b0137832",
+          "referenceId": "fa_ref_85325cf89aedd93a662f5e8b",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": "document_family_3877f04b5a53d14be26a4663",
+          "assignment": "FAMILY_CANARY"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_8e197c67a2d07c84c2699c1f",
+      "semanticManifestSha256": "8e197c67a2d07c84c2699c1f266b38077d451bb16a5e977f33b4094e067aba4a"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CONFLICT_CLOSURE",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_9743489105a2e8a1fd6d95c8",
+      "cohortSha256": "9743489105a2e8a1fd6d95c8c93e30adcb072077aadce04873aa7cba8d5de23c",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CONFLICT_CLOSURE",
+        "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "Westinghouse",
+        "normalizedBrand": "westinghouse",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P3_HISTORICAL_CONFIRMATION",
+        "lifecycleState": "CATALOG_ARCHIVED",
+        "category": "fridge",
+        "brand": "Westinghouse",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 63,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_2eae033208d5ee47db368385",
+          "referenceId": "fa_ref_bc817e7f1b66a2298d042440",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_05d0bb021fe29e6ca7dffec0",
+      "semanticManifestSha256": "05d0bb021fe29e6ca7dffec00ba65fa19e450b25f49ca5d23e42f2022fd9aea7"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CONFLICT_CLOSURE",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_f0bce0ca190cddbe414d94ba",
+      "cohortSha256": "f0bce0ca190cddbe414d94bac0cc7c0781e4901c24c5a3489b4fe20076fcef41",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CONFLICT_CLOSURE",
+        "priorityClass": "P4_CONFLICT_RESOLUTION",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dishwasher",
+        "brand": "Fisher & Paykel",
+        "normalizedBrand": "fisherpaykel",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P4_CONFLICT_RESOLUTION",
+        "lifecycleState": "CURRENT_RETAIL",
+        "category": "dishwasher",
+        "brand": "Fisher & Paykel",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 63,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_cf60f23f45a9bf9c8cd6d170",
+          "referenceId": "fa_ref_989a90fd26cef5186c53f412",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "MULTI_FAMILY_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_8f4b5ad5f75b47a3482665eb",
+      "semanticManifestSha256": "8f4b5ad5f75b47a3482665eb158b6257efe3eeee1c4adbe214f86cd75cbe56dc"
+    },
+    {
+      "schemaVersion": 2,
+      "plannerVersion": "2",
+      "workstreamId": "CONFLICT_CLOSURE",
+      "cohortKeyVersion": "1",
+      "cohortKey": "historical_cohort_d6d95cecae099f22ff11d78e",
+      "cohortSha256": "d6d95cecae099f22ff11d78ea235e958ac613c93f005991ab61cc136d4539332",
+      "cohort": {
+        "schemaVersion": 1,
+        "workstreamId": "CONFLICT_CLOSURE",
+        "priorityClass": "P4_CONFLICT_RESOLUTION",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "dryer",
+        "brand": "Kogan",
+        "normalizedBrand": "kogan",
+        "familyId": null,
+        "executionLane": "BOUNDED_DISCOVERY",
+        "mode": "SINGLETON"
+      },
+      "mode": "SINGLETON",
+      "executionLane": "BOUNDED_DISCOVERY",
+      "executionCommand": "discover:historical-official-candidates",
+      "constraints": {
+        "priorityClass": "P4_CONFLICT_RESOLUTION",
+        "lifecycleState": "REGISTRY_ONLY",
+        "category": "dryer",
+        "brand": "Kogan",
+        "executionLane": "BOUNDED_DISCOVERY"
+      },
+      "familyId": null,
+      "familyState": null,
+      "sourceBindings": {
+        "executableQueueSha256": "eb82e219cdc24261220e649d43dd4d326b668872af3b023a7ad0978c3264db62",
+        "targetStateSha256": "ab71bef0944ce598c8084388367545af01e8e79a6195401650855eab844bfc1f",
+        "familyCanarySha256": "401c28c1c1c23d5df343e53f6f23c312f402f22331f4ab50b9d610f1e9ab821a",
+        "sourceAcquisitionQueueSha256": "77ec141f4fc5d9bea559276d1f95b4b3a1309a0e7a89045ab50e4fa80c686c54"
+      },
+      "reviewedTargetCount": 63,
+      "targetBindings": [
+        {
+          "targetId": "recovery_target_2dbc381e2bada68b749825db",
+          "referenceId": "fa_ref_4da1359b6af843a2fa49d728",
+          "executionLane": "BOUNDED_DISCOVERY",
+          "familyId": null,
+          "assignment": "UNSCOPED_SINGLETON"
+        }
+      ],
+      "estimatedSharedArtifactCount": 0,
+      "estimatedSharedArtifactBasis": "NO_PROVEN_SHARED_ARTIFACT_IN_SELECTED_TARGETS",
+      "manifestId": "historical_batch_3f3fc69a0d8c9b43ae0cf535",
+      "semanticManifestSha256": "3f3fc69a0d8c9b43ae0cf535405d364d0b4ac228419627fef07b55b5cf1e4670"
+    }
+  ],
+  "summary": {
+    "assignedTargets": 4994,
+    "eligibleTargets": 4948,
+    "suppressedTargets": 46,
+    "suppressedByReason": {
+      "FAMILY_GATE_BLOCKED": 46
+    },
+    "eligibleCohorts": 403,
+    "windowedCohorts": 24,
+    "deferredCohorts": 379,
+    "manifests": 24,
+    "manifestedTargets": 24,
+    "byWorkstream": {
+      "CURRENT_DIMENSIONS": 957,
+      "HISTORICAL_DIMENSIONS": 3974,
+      "PARSER_REPAIR": 0,
+      "CONFLICT_CLOSURE": 63
+    }
+  },
+  "semanticBatchesSha256": "c128d19df463438b8fe869fa3b36f415f70878f3a197d89d2d48926c37897372"
+}

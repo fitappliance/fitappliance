@@ -1,0 +1,880 @@
+# Historical Evidence Scale Control Plane Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use
+> `superpowers:executing-plans` to implement this plan task-by-task. Steps use
+> checkbox (`- [ ]`) syntax for tracking. Do not start a task until this file
+> has been read and its dependencies are complete.
+
+- **Status:** Complete
+- **Date:** 2026-07-19
+- **Parent workflow:**
+  [`2026-07-13-historical-evidence-coverage-recovery.md`](2026-07-13-historical-evidence-coverage-recovery.md)
+- **Canonical runbook:**
+  [`historical-evidence-recovery-runbook.md`](../../architecture-v2/historical-evidence-recovery-runbook.md)
+- **Active task:** Programme complete - all ten tasks passed their release gates
+
+**Goal:** Move the 8,089-model historical evidence programme from a safe but
+low-throughput recovery loop to a measurable, family-aware, bounded and
+resumable system that gives every model a deterministic terminal evidence
+state, while keeping dimensions evidence separate from full Fit evidence.
+
+**Architecture:** Add a tracked control plane above the existing immutable
+artifact, MinerU, receipt and publication pipeline. The control plane separates
+model, source, document, parser and Fit grains; materialises official candidate
+URLs before execution; gates fan-out through document-family canaries; and
+emits bounded batches plus target-level outcomes. Existing exact-model receipt
+and fail-closed publication rules remain authoritative.
+
+**Tech stack:** Node.js ESM, `node:test`, Architecture V2 JSON contracts,
+MinerU `content_list_v2`, SHA-256 content-addressed evidence storage, generated
+Markdown reports, existing official-source resolvers and receipt replay.
+
+## Global Constraints
+
+1. The current canonical inventory is 8,089 unique historical model references.
+2. A PDF, MinerU document, parser replay, model receipt and Fit decision are
+   different grains and must never share an unlabeled completion percentage.
+3. Official HTML or API evidence may complete model dimensions when no official
+   PDF exists; the terminal state must record the source lane truthfully.
+4. One immutable document may serve multiple targets, but every model and field
+   still requires independent identity, semantics and receipt validation.
+5. Registry, retailer and mirror evidence remain discovery or conflict hints.
+6. W/H/D evidence cannot create `VERIFIED_FIT`.
+7. Normal builds must remain network-free and external-drive-optional.
+8. Online discovery, acquisition and MinerU conversion must be explicit,
+   bounded operations with resumable external state.
+9. No task may weaken existing publication, lifecycle, identity, axis or
+   receipt-replay gates to improve coverage.
+10. The unrelated untracked root file `typescript` is user-owned and must not
+    be modified, removed or committed.
+
+---
+
+## Execution Discipline
+
+This file is the durable task anchor for the whole programme.
+
+Before every implementation task or operational batch:
+
+```bash
+sed -n '1,260p' docs/superpowers/plans/2026-07-19-historical-evidence-scale-control-plane.md
+```
+
+Then follow this protocol:
+
+1. Confirm every dependency in the progress register is complete.
+2. Mark exactly one task `IN_PROGRESS` and update **Active task**.
+3. Write a focused failing test and confirm the expected failure.
+4. Implement only that task's contract.
+5. Run focused tests, relevant Architecture V2 tests and generated-artifact
+   validation.
+6. Reread this file before interpreting the result.
+7. Record exact verification evidence and mark the task complete.
+8. Commit one coherent task. Do not combine unrelated later tasks.
+
+If a task exposes a plan defect, mark it `BLOCKED`, record the concrete defect
+under that task, repair the plan first, and only then resume implementation.
+
+## Progress Register
+
+| Task | Problem addressed | Status | Verification evidence |
+| --- | --- | --- | --- |
+| 0 | Lock the ten-problem solution and execution order | COMPLETE | This plan created and self-reviewed |
+| 1 | Mixed KPI definitions and incomparable grains | COMPLETE | 9 focused tests; Architecture V2 877/877; lint/build passed; 8,089-model report generated |
+| 2 | Source-level ledger cannot show model outcomes; terminal queue noise | COMPLETE | 9 projection tests; 32 focused tests; Architecture V2 887/887; lint/build/diff passed; all 8,089 targets projected |
+| 3 | 6,321 models lack document links or materialised official candidates | COMPLETE | 12 manifest tests; 55 focused tests; Architecture V2 899/899; two immutable ASKO canaries; lint/build/refresh/diff passed |
+| 4 | Executable graph has resolver-only targets and zero fetch jobs | COMPLETE | 68 focused tests; Architecture V2 905/905; lint/build/diff passed; 6 fetch jobs and 6 candidate edges; 4,982 bounded discovery targets; zero resolver-only acquisition targets |
+| 5 | PDF/MinerU/document-family/model relationships are not canonical | COMPLETE | 55 focused tests; Architecture V2 920/920; lint/build/diff passed; five-artifact external replay idempotent |
+| 6 | Per-model runs repeat family-level source failures | COMPLETE | 8 domain tests; 27 gate/runner/epoch tests; Architecture V2 929/929; lint/offline build/diff passed; schema-v2 artifact stable |
+| 7 | Generated batches are operationally too broad | COMPLETE | 12 planner tests; 48 lane tests; Architecture V2 942/942; lint/offline build/determinism/real-manifest validation passed |
+| 8 | Parser repairs are not prioritised by reusable family impact | COMPLETE | 216 focused tests; Architecture V2 968/968; lint/offline build/diff passed; full 803-object repair audit and 408/408 receipt replay passed |
+| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Five immutable P0 checkpoints; typed low-yield stop; 982/982 tests; lint/offline build/408-source replay passed |
+| 10 | Full installation/Fit evidence has no separate scale pipeline | COMPLETE | 27 focused tests; Architecture V2 1002/1002; full repository 2659/2659; offline build, lint and diff check passed; external MinerU replay 21/21; publication violations 0 |
+
+## Ten-Problem Solution Map
+
+| Original problem | Structural solution | Primary task |
+| --- | --- | ---: |
+| 1. PDF, parsing, receipt and Fit completion are conflated | Versioned KPI catalogue with explicit grain, numerator and denominator | 1 |
+| 2. Source acquisition is the dominant bottleneck | Persisted official-candidate manifest with provenance and terminal no-source state | 3 |
+| 3. Executable queue contains resolver-only targets | Build fetch jobs and candidate edges from the persisted candidate manifest | 4 |
+| 4. Family failures are repeated per model | One canary per brand/category/document family before target fan-out | 6 |
+| 5. Document and model metrics are not comparable | Canonical content-hash document-family-to-model graph | 5 |
+| 6. Attempt ledger does not expose a model funnel | Append-safe target outcome projection derived from runs and receipts | 2 |
+| 7. Parser gaps are repaired ad hoc | Impact-ranked parser-gap queue with accept/reject fixtures | 8 |
+| 8. Terminal targets remain visible in future work | Tracked target terminal state with policy/epoch reopening rules | 2 |
+| 9. Default execution graph is thousands of targets | Deterministic bounded manifests and explicit reviewed `--allow-all` prohibition | 7 |
+| 10. W/H/D recovery is mistaken for Fit completion | Independent installation-evidence contract, queue, receipts and Fit gate | 10 |
+
+## Dependency Order
+
+```mermaid
+flowchart LR
+  T1["1. KPI and grain contract"] --> T2["2. Target outcome state"]
+  T1 --> T3["3. Candidate manifest"]
+  T2 --> T4["4. Materialised graph"]
+  T3 --> T4
+  T3 --> T5["5. Document-family graph"]
+  T4 --> T6["6. Family canary gate"]
+  T5 --> T6
+  T6 --> T7["7. Bounded manifests"]
+  T5 --> T8["8. Parser-gap priority"]
+  T7 --> T9["9. Dimensions scale loop"]
+  T8 --> T9
+  T9 --> T10["10. Installation/Fit lane"]
+```
+
+---
+
+### Task 1: Versioned Evidence Programme KPI and Grain Contract
+
+**Solves:** Problem 1 and the observability part of Problem 5.
+
+**Files:**
+- Create: `src/domain/historical-evidence-program-status.mjs`
+- Create: `scripts/architecture-v2/build-historical-evidence-program-status.mjs`
+- Create: `tests/architecture-v2/historical-evidence-program-status.test.mjs`
+- Create: `data/architecture-v2/reviews/automated/historical-evidence-program-status.json`
+- Create: `docs/architecture-v2/historical-evidence-program-status.md`
+- Modify: `package.json`
+
+**Interfaces:**
+- Consumes the committed classification, knowledge-base observations,
+  acquisition queue, executable queue, cumulative acceptance bundle, attempt
+  ledger, MinerU backfill audit, receipt replay audit, replacement audit and Fit
+  publication audit.
+- Produces `buildHistoricalEvidenceProgramStatus(inputs)` and
+  `renderHistoricalEvidenceProgramStatusMarkdown(status)`.
+- Every metric contains `grain`, `numerator`, `denominator`, `rateBasisPoints`,
+  `sourceArtifact` and an unambiguous label.
+
+- [x] Write tests proving model, document, source, receipt and Fit metrics remain
+  separate and that acceptance source lanes classify as PDF-only, HTML-only,
+  JSON-only or mixed.
+- [x] Write tests that fail on cross-artifact invariant drift, including
+  classification totals, acquisition accounting, receipt replay mismatch and
+  replacement-reference mismatch.
+- [x] Implement the pure domain builder and Markdown renderer.
+- [x] Implement the CLI with explicit input/output defaults and stable JSON.
+- [x] Add `build:historical-evidence-program-status` to `package.json` and run it
+  at the end of `refresh:historical-evidence-recovery`.
+- [x] Generate current JSON/Markdown and verify the current 8,089-model baseline.
+- [x] Run:
+  `node --test tests/architecture-v2/historical-evidence-program-status.test.mjs`.
+- [x] Run the focused historical classification, executable queue, attempt
+  ledger, receipt replay, replacement and Fit publication tests.
+- [x] Update this task with exact counts and commit.
+
+**Completed evidence (2026-07-19):** The generated report contains 20 metrics
+across explicit model, physical-PDF, unique-PDF, MinerU-document, parser-replay,
+accepted-entry and current-product grains. Six cross-artifact controls pass.
+Current critical baselines are 8,089 classified models, 1,768 with links, 401
+current valid receipts, 382 cumulative accepted entries, 516/516 indexed unique
+backfill PDFs, 495/925 recognized valid MinerU knowledge documents, 321
+replacement auto-fill models, 332/3,515 receipt-bound current dimensions and
+0/3,515 receipt-bound Verified Fit. Focused tests passed 9/9, the full
+Architecture V2 suite passed 877/877, `npm run lint`,
+`npm run build:architecture-v2` and `git diff --check` passed.
+
+**Acceptance:** No completion percentage can be emitted without a named grain
+and denominator. Document records from different inventories are never silently
+combined. Current accepted sources replay with zero failures.
+
+**Stop condition:** Any input total is inconsistent or an input artifact has an
+unknown schema. Do not paper over the mismatch with `Math.min`, inferred totals
+or a warning-only result.
+
+---
+
+### Task 2: Target Outcome Projection and Suppression Audit
+
+**Solves:** Problems 6 and 8.
+
+**Depends on:** Task 1.
+
+**Files:**
+- Create: `src/domain/historical-evidence-target-state.mjs`
+- Create: `scripts/architecture-v2/build-historical-evidence-target-state.mjs`
+- Create: `tests/architecture-v2/historical-evidence-target-state.test.mjs`
+- Create: `data/architecture-v2/reviews/automated/historical-evidence-target-state.json`
+- Modify: `package.json`
+
+**Interfaces:**
+- Produces one state per `referenceId`: `UNSEEN`, `CANDIDATE_READY`,
+  `SOURCE_DISCOVERY_REQUIRED`, `RETRYABLE`, `BLOCKED_SAME_EPOCH`,
+  `NO_OFFICIAL_SOURCE`, `IDENTITY_RESEARCH`, `CONFLICT_QUARANTINE`,
+  `DIMENSIONS_RECEIPT`, or `FIT_RECEIPT`.
+- Suppression terminal states carry policy SHA, resolver-contract SHA,
+  processor epoch, run ID and reopening conditions. Receipt terminal states
+  instead carry immutable receipt/evidence bindings and no automatic reopening;
+  conflict terminal states carry the classification or decision artifact that
+  created the conflict. A state must not fabricate bindings that do not apply.
+- The projection audits the executable queue but does not become its upstream
+  input, avoiding a queue -> state -> queue dependency cycle. Existing
+  source-attempt suppression remains authoritative until Task 4 materializes
+  the candidate graph. A terminal candidate URL suppresses only that source;
+  the model remains discoverable unless a complete candidate inventory created
+  a target-level terminal attempt.
+
+- [x] Test deterministic rebuild after repeated ledger attempts, queue reopening
+  after policy/resolver/processor changes, accepted-receipt precedence and
+  malformed cumulative ledger rows. The executable-queue tests remain the
+  authority for deciding whether a concrete binding change reopens work.
+- [x] Implement deterministic target-state reduction from cumulative bundle,
+  attempt ledger and immutable run outcomes.
+- [x] Prove same-epoch target-level terminals are absent from actionable queue
+  rows while candidate-level terminal failures leave the model discoverable.
+- [x] Preserve source-level attempt ledger rows for transport/parser learning.
+- [x] Generate current state and prove every 8,089 reference has exactly one
+  control-plane state.
+- [x] Run focused queue, ledger, run-history and contract tests.
+- [x] Update this task and commit.
+
+**Completed evidence (2026-07-19):** The deterministic projection assigns one
+state to all 8,089 references: 7,564 actionable, 401 completed and 124 blocked.
+The detailed state counts are 7,420 `SOURCE_DISCOVERY_REQUIRED`, 10
+`RETRYABLE`, 401 `DIMENSIONS_RECEIPT`, 134 `IDENTITY_RESEARCH`, 83
+`CONFLICT_QUARANTINE`, 33 `NO_OFFICIAL_SOURCE` and 8
+`BLOCKED_SAME_EPOCH`. A candidate-level terminal remains source-only; only a
+complete target inventory suppresses the model. Receipt precedence, repeated
+ledger rebuilds, malformed bindings and queue/accounting drift fail-closed
+tests pass. The target projection passed 9/9 tests, the queue/ledger focused
+set passed 32/32, the full Architecture V2 suite passed 887/887, and
+`npm run lint`, `npm run build:architecture-v2`, both generated builders and
+`git diff --check` passed.
+
+**Acceptance:** The queue and KPI report agree on target states; a true
+target-level terminal disappears from actionable work until a recorded
+reopening condition changes, while one failed source never suppresses the whole
+model.
+
+**Stop condition:** Any target receives two terminal states or accepted evidence
+can be weakened by a later failure.
+
+**Plan correction (2026-07-19):** This task originally described append/merge
+of a second persisted state history. That would duplicate the append-only
+attempt ledger and create competing truth. The committed artifact is instead a
+deterministic projection rebuilt from the cumulative ledger, receipts,
+classification and executable queue. Policy, resolver and processor changes
+are tested where they alter queue eligibility; this projection verifies the
+result and never independently reimplements reopening policy.
+
+---
+
+### Task 3: Persisted Official Candidate Discovery Manifest
+
+**Solves:** Problem 2.
+
+**Depends on:** Task 1.
+
+**Files:**
+- Create: `src/domain/historical-official-candidate-manifest.mjs`
+- Create: `scripts/architecture-v2/build-historical-official-candidate-manifest.mjs`
+- Create: `scripts/architecture-v2/run-historical-official-candidate-discovery.mjs`
+- Create: `tests/architecture-v2/historical-official-candidate-manifest.test.mjs`
+- Create: `data/architecture-v2/reviews/automated/historical-official-candidate-manifest.json`
+- Modify: `package.json`
+
+**Interfaces:**
+- Stores normalized candidate URL, authority brand, category, discovery
+  strategy/version, retrieval time, source rank, expected content type,
+  applicable reference IDs and resolver completeness.
+- Records `NO_CANDIDATE_COMPLETE` only after every required resolver reports a
+  complete inventory; timeout and truncation remain retryable.
+
+- [x] Test URL normalization, official-host validation, cross-brand isolation,
+  duplicate candidates, incomplete resolvers and exact-model URL signals.
+- [x] Build a network-free manifest reducer and a bounded online discovery CLI.
+- [x] Seed it from current acquisition candidates without granting evidence
+  authority to retailer or registry links.
+- [x] Run one brand/category canary and retain immutable discovery output on the
+  evidence disk.
+- [x] Update this task and commit.
+
+**Completed evidence (2026-07-19):** The committed manifest projects all 7,688
+acquisition records into exactly one state: 6 `CANDIDATES_READY`, 5,021
+`DISCOVERY_RETRYABLE`, 2,659 `RESEARCH_REQUIRED` and 2
+`NO_CANDIDATE_COMPLETE`. Six classified official URLs are materialised; all
+retailer and registry links remain hints. The ASKO `D5424SS` and `D5436SS`
+canaries retained complete resolver results in two content-addressed objects;
+the second also proved the immutable run-ID pointer path. Content SHA/byte
+bindings were verified, and the network-free reducer remains idempotent at
+semantic SHA `6ea26dc16f11043656c49aeab4a003e67de5b4cceb82c36c37116d8a7f53b9c5`.
+Tests cover crash recovery without a second network call, global resolver-call
+concurrency, Australian discovery-provenance replay, multi-strategy metadata
+replay and generated-time seed deduplication. The manifest suite passed 12/12,
+the resolver/refresh focused set passed 55/55, the complete Architecture V2
+suite passed 899/899, and `npm run lint`, `npm run build:architecture-v2`, the
+mounted-storage historical refresh, repeated manifest builds and
+`git diff --check` passed.
+
+**Acceptance:** Candidate discovery is inspectable before acquisition; each
+queued model has either materialized candidates, retryable discovery, research
+required or a complete no-source terminal state.
+
+**Stop condition:** A resolver cannot report completion semantics or candidate
+authority cannot be bound to one canonical brand.
+
+---
+
+### Task 4: Materialised Fetch-Job and Candidate-Edge Graph
+
+**Solves:** Problem 3.
+
+**Depends on:** Tasks 2 and 3.
+
+**Files:**
+- Modify: `src/domain/historical-model-pdf-acquisition.mjs`
+- Modify: `src/domain/historical-executable-recovery-queue.mjs`
+- Modify: `src/domain/historical-evidence-recovery-batch.mjs`
+- Modify: `src/domain/historical-evidence-target-state.mjs`
+- Modify: `src/domain/historical-evidence-program-status.mjs`
+- Modify: `docs/architecture-v2/historical-evidence-recovery-runbook.md`
+- Modify: corresponding Architecture V2 tests and builder scripts
+
+**Interfaces:**
+- The executable queue consumes the candidate manifest and emits deduplicated
+  fetch jobs plus explicit target edges.
+- Resolver-only targets remain legal only for bounded discovery batches, not
+  ordinary acquisition batches.
+
+- [x] Test one URL shared by models, cross-brand same-URL isolation, alternate
+  candidates, prior source suppression and zero-edge invariant failures.
+- [x] Materialize fetch jobs from candidate records and preserve target priority.
+- [x] Add a control-plane gate: an acquisition batch with targets but zero
+  candidate edges fails before network access.
+- [x] Regenerate the graph and reconcile all excluded/suppressed counts.
+- [x] Update this task and commit.
+
+**Plan correction (2026-07-19):** The original file list assumed every
+materialised candidate belonged to a non-quarantined target. The current six
+candidate-ready targets are all conflict-closure records. Fetching and parsing
+new evidence for those targets is valid, but it must not turn the product's
+conflict state into a publication-ready state. Task 4 therefore also separates
+ordinary acquisition targets from bounded discovery targets and updates the
+target-state/status accounting so pending evidence work is orthogonal to
+publication quarantine. A conflict target may have pending acquisition work
+while remaining terminal and blocked for publication.
+
+**Completed evidence (2026-07-19):** The executable graph now partitions all
+7,688 queued acquisition records into 6 ordinary acquisition targets, 4,982
+bounded discovery targets and 2,700 deferred targets. The 2,700 typed deferrals
+are 39 active resolver suppressions, 2 complete no-candidate outcomes and 2,659
+research-required outcomes. Six persisted official candidates materialise as
+six fetch jobs and six candidate edges; no ordinary acquisition target is
+resolver-only and every edge has a valid candidate/job/target back-reference.
+The six targets are conflict-closure evidence work, so target state records six
+blocked/actionable overlaps while all 83 conflict records remain publication
+quarantined. Repeated network-free generation produced identical SHA-256 hashes
+for all seven control-plane outputs. Focused tests passed 68/68, the full
+Architecture V2 suite passed 905/905, and `npm run lint`,
+`npm run build:architecture-v2`, graph invariant checks and `git diff --check`
+passed.
+
+**Acceptance:** Ordinary executable acquisition batches have non-zero fetch jobs
+and candidate edges; discovery-only work is explicitly labeled and separately
+bounded.
+
+**Stop condition:** Candidate edges cannot be reproduced from the manifest or a
+target loses all candidates without a typed reason.
+
+---
+
+### Task 5: Canonical Document-Family-to-Model Graph
+
+**Solves:** Problem 5.
+
+**Depends on:** Tasks 1 and 3.
+
+**Files:**
+- Create: `src/domain/historical-document-family-graph.mjs`
+- Create: `scripts/architecture-v2/build-historical-document-family-graph.mjs`
+- Create: `tests/architecture-v2/historical-document-family-graph.test.mjs`
+- Create: `data/architecture-v2/generated/historical-document-family-graph.json`
+- Modify: `scripts/architecture-v2/build-dimension-expression-knowledge.mjs`
+- Modify: `src/domain/dimension-expression-knowledge.mjs`
+- Modify: `src/domain/historical-evidence-program-status.mjs`
+- Modify: `src/domain/architecture-v2-paths.mjs`
+- Modify: `package.json`
+
+**Interfaces:**
+- Canonical nodes: immutable content hash, source URL/version, MinerU object,
+  parser grammar and applicable exact-model references.
+- Edges distinguish `EXACT_MODEL_PROVEN`, `MODEL_LIST_PROVEN`,
+  `FAMILY_SCOPE_ONLY`, `ALIAS_RESEARCH` and `UNMAPPED`.
+- Dimension-expression knowledge schema v4 adds one flat `indexedDocuments`
+  record per MinerU index. It preserves the source-PDF hash, derived-object
+  hash/path, parser version/model revision, validity, source URLs and mapped
+  identity hints. The graph is generated from this committed index, so ordinary
+  builds remain external-drive-independent.
+- A current exact-model receipt or a MinerU page/fragment/model-row locator can
+  create a proven edge. Family membership, filenames, URL model hints and
+  classification associations alone remain `FAMILY_SCOPE_ONLY` or
+  `ALIAS_RESEARCH`.
+- One source URL resolving to multiple content hashes produces explicit sibling
+  source versions. No version is called current/latest without acquisition-time
+  evidence, and the content hashes are never merged.
+
+- [x] Test physical duplicate PDFs, shared manuals, model lists, family-only
+  manuals, suffix aliases and conflicting content under one URL.
+- [x] Build the graph from existing immutable PDF and MinerU indexes.
+- [x] Rebase document KPI metrics on graph nodes without changing model receipt
+  authority.
+- [x] Update this task and commit.
+
+**Completed evidence (2026-07-19):** Dimension-expression knowledge schema v4
+now preserves one flat immutable MinerU-object binding for all 940 indexed PDF
+hashes (925 valid and 15 invalid). The graph collapses 637 physical files into
+590 physically stored unique documents while retaining all 940 indexed graph
+nodes, 510 document families, 1,102 URL/content versions and one explicit
+same-URL content conflict. Its 3,799 edges are 534 `EXACT_MODEL_PROVEN`, 13
+`MODEL_LIST_PROVEN`, 3,213 `FAMILY_SCOPE_ONLY` and 39 `UNMAPPED`; only 547 of
+3,760 mapped document-model edges have receipt or page/fragment/model-list
+proof. Submission review found and removed 17 replay-only false exact proofs;
+parser replay without a source locator is now a non-authorising hint, and seven
+additional edges correctly resolve to model-list rather than exact proof. The
+98 graph-external classification links remain typed as 85 HTML and 13 JSON
+links rather than fabricated PDF nodes. Fifty-five focused tests, the full
+Architecture V2 suite (920/920), lint, normal drive-independent build,
+cross-artifact invariants and `git diff --check` pass. Rebuilding the MinerU
+index from `/Volumes/UGREEN-1TB/FitAppliance`, then the graph and programme
+status, leaves all five generated JSON/Markdown hashes unchanged.
+
+**Acceptance:** Every indexed PDF hash has one graph node and every model edge
+states its proof level; document-level completion cannot be reported as
+model-level completion.
+
+**Stop condition:** A shared manual is fanned out without internal model-list or
+exact-model proof.
+
+**Plan correction (2026-07-19):** The prior nested knowledge artifact could
+account for 940 MinerU indexes only by reconstructing hashes from families,
+unmapped rows and invalid rows. That loses parser/object metadata and makes a
+canonical graph impossible to replay. Task 5 therefore first adds the flat
+index above, then builds the graph and rebases document-grain KPIs on its nodes.
+This is an input-contract repair, not a new evidence authority.
+Parser replay is retained as `MINERU_REPLAY_HINT` but cannot authorise an exact
+edge without a current receipt or an immutable MinerU page/fragment locator.
+
+---
+
+### Task 6: Brand/Category/Document-Family Canary Gate
+
+**Solves:** Problem 4.
+
+**Depends on:** Tasks 4 and 5.
+
+**Files:**
+- Create: `src/domain/historical-evidence-family-canary.mjs`
+- Create: `scripts/architecture-v2/build-historical-evidence-family-canaries.mjs`
+- Create: `tests/architecture-v2/historical-evidence-family-canary.test.mjs`
+- Create: `data/architecture-v2/reviews/automated/historical-evidence-family-canaries.json`
+- Modify: `src/domain/evidence-processor-epoch.mjs`
+- Modify: recovery runner selection, Architecture V2 paths, package scripts and
+  runbook
+
+**Interfaces:**
+- A family state is `UNTESTED`, `CANARY_READY`, `PASSED`, `FAILED_SOURCE`,
+  `FAILED_IDENTITY`, `FAILED_PARSER`, or `REOPENED`.
+- Expansion requires one accepted representative and matching resolver/parser
+  contracts; claims are still validated per target.
+- The gate covers both ordinary acquisition targets and bounded-discovery
+  targets. It does not move discovery work into the acquisition runner.
+- Family membership comes only from the canonical Task 5 graph. A target with
+  zero families or multiple families remains singleton research and cannot
+  authorise fan-out for any guessed family.
+- A family contract binds the document-family node, source URL/content
+  versions, materialised candidate or resolver contract, recovery policy and
+  current claim-parser implementation hash. A prior pass or failure becomes
+  `REOPENED` when any bound contract changes.
+- Initial `PASSED` requires a proven representative whose immutable graph
+  source overlaps the current materialised candidate. A historical proof under
+  a different source template does not open fan-out.
+- The fresh recovery runner must validate the selected targets against the
+  tracked canary artifact and persist the exact canary snapshot for resume.
+  Resume continues that snapshot rather than reading a newer tracked gate.
+
+- [x] Test representative selection, family failure stop, parser-epoch reopen,
+  source-template change and no cross-series leakage.
+- [x] Generate one representative per high-impact family.
+- [x] Block fan-out when the family canary fails and record the shared reason.
+- [x] Prove with a formerly low-yield Westinghouse or Electrolux family.
+- [x] Update this task and commit.
+
+**Completed evidence (2026-07-19):** The schema-v2 gate projects all 4,988
+actionable targets across 510 canonical Task 5 families: 5 `PASSED`, 87
+`CANARY_READY`, 418 `UNTESTED`, 4,804 unscoped singletons and 51 multi-family
+singletons. Only 7 targets are fan-out eligible; 4,949 are runner-eligible
+because singleton work remains isolated and each unpassed family exposes at
+most its representative. Electrolux `EQE6870SA` and Westinghouse `WHE5204BC`
+prove the low-yield path with exact current candidate URLs present in their
+immutable graph source sets; the unrelated Westinghouse `WHE6874SA` remains an
+unscoped singleton. Fresh runs validate queue, policy, parser, processor epoch
+and target/reference bindings before state creation, persist the exact gate,
+and resume only from that snapshot. Tampered state/time boundaries, old-contract
+events, stale parser failures and cross-family leakage fail closed. Two
+consecutive real builds produced byte-identical artifacts. Focused domain tests
+passed 8/8, the combined gate/runner/processor set passed 27/27, the full
+Architecture V2 suite passed 929/929, and `npm run lint`, external-drive-free
+`npm run build:architecture-v2`, actual six-target batch validation and
+`git diff --check` passed.
+
+**Acceptance:** One known-bad family endpoint is attempted once per relevant
+contract epoch, not once per model.
+
+**Stop condition:** Family membership is inferred only from similar model names
+or a marketing series without document proof.
+
+**Plan correction (2026-07-19):** The original task described a family state
+but did not define a contract-bound state transition or the 4,982-target
+discovery lane. That would either reuse stale success/failure forever or leave
+the dominant lane ungated. The corrected task uses a deterministic prior-state
+projection: only attempts made after the prior gate snapshot can change its
+state, parser-bound failures must match the current processor epoch, and source,
+resolver, policy or parser drift reopens the family. Ambiguous and unscoped
+targets stay explicit singleton work instead of being assigned by model-name
+similarity.
+
+---
+
+### Task 7: Deterministic Bounded Batch Manifests
+
+**Solves:** Problem 9.
+
+**Depends on:** Task 6.
+
+**Files:**
+- Create: `src/domain/historical-evidence-bounded-batch.mjs`
+- Create: `scripts/architecture-v2/build-historical-evidence-bounded-batches.mjs`
+- Create: `tests/architecture-v2/historical-evidence-bounded-batch.test.mjs`
+- Create: `data/architecture-v2/reviews/automated/historical-evidence-next-batches.json`
+- Modify: recovery runbook and package scripts
+
+**Interfaces:**
+- Produces one deterministic next manifest per workstream, capped by policy at
+  10 targets. A manifest contains one family canary, one passed-family
+  expansion, or one unscoped/ambiguous singleton; it never mixes those modes.
+- Manifests bind the executable queue, family-canary gate and target-state
+  projection. Completed and non-actionable targets, plus terminal targets with
+  no explicit pending control-plane work, remain counted but cannot enter a
+  manifest. `CONFLICT_QUARANTINE` is the sole terminal-state exception: it may
+  enter only conflict closure when `actionable=true` and its binding names the
+  same executable target; it remains ineligible for ordinary dimensions work
+  and public projection.
+- Acquisition and bounded discovery stay separate execution lanes. An
+  acquisition manifest is accepted only by the evidence recovery runner; a
+  discovery manifest is accepted only by the candidate-discovery command.
+- The four workstreams are current dimensions (P0/P2), historical dimensions
+  (P1/P3), parser repair, and conflict closure. Every target is assigned once;
+  each concrete manifest keeps one exact priority, lifecycle, category, brand
+  and execution lane.
+- Stores priority, category, brand, family, expected source lane, reviewed count
+  and estimated shared artifact count.
+
+- [x] Test deterministic ordering, hard cap, no mixed untested families,
+  completed/non-actionable suppression, the bound conflict-terminal exception
+  and explicit empty queues.
+- [x] Generate current, historical, parser-repair and conflict manifests
+  separately, preserving exact P0-P4 priority in each concrete manifest.
+- [x] Make both execution lanes accept a manifest ID, persist the selected
+  manifest, and refuse broad default execution.
+- [x] Update this task and commit.
+
+**Completed evidence (2026-07-19):** The control plane assigns all 4,988
+executable targets to exactly one of four workstreams, with 4,949 eligible and
+39 family-gated suppressions. It emits only three next manifests and three
+targets: one acquisition conflict closure, one current discovery singleton and
+one historical discovery singleton; parser repair is explicitly empty. Both
+execution commands require a tracked manifest ID, reject legacy broad
+selectors, persist exact run-local manifest/control-plane snapshots and resume
+from those immutable snapshots. Artifact summary, source bindings, workstream
+ownership, constraints and target/family bindings are hash-bound and
+revalidated before execution. The planner passed 12/12 tests, the combined
+lane suite passed 48/48, Architecture V2 passed 942/942, `npm run lint`,
+explicit `node --check`, external-drive-free `npm run build:architecture-v2`,
+real-manifest validation and `git diff --check` passed. Two consecutive builds
+produced file SHA-256
+`2ea1755bfb7c81ad1ad523fc031fed15cf7945ee2a93a30795e9b306b880300c`.
+
+**Acceptance:** Normal operation never hands thousands of targets to the runner;
+every run has a tracked bounded manifest and reviewed count.
+
+**Stop condition:** A manifest crosses lifecycle/priority boundaries without an
+explicit policy or contains more than its hard cap.
+
+**Plan correction (2026-07-19):** The original runner requirement ignored that
+the current recovery batch can materialise only the six `ACQUISITION` targets,
+while 4,982 targets belong to the separate `BOUNDED_DISCOVERY` command. Passing
+a discovery manifest to the recovery runner would create a tracked but
+unexecutable plan. Task 7 therefore routes each manifest to its declared lane,
+generates only the next bounded unit per workstream instead of thousands of
+singleton files, persists the selected manifest with each run, and prohibits
+the legacy broad `--allow-all` escape hatch.
+
+**Plan correction (2026-07-19, terminal semantics):** Target-state projection
+uses `terminal=true` for the current quarantined evidence disposition even when
+an executable conflict-resolution binding exists. Treating all terminal rows
+as control-plane terminal would permanently suppress all six acquisition
+targets in the current snapshot. Batch admission therefore distinguishes
+publication/evidence terminality from pending control-plane work and permits
+only a fully bound, actionable `CONFLICT_QUARANTINE` row in the conflict-closure
+workstream.
+
+---
+
+### Task 8: Impact-Ranked Parser Gap Queue and Fixture Corpus
+
+**Solves:** Problem 7.
+
+**Depends on:** Task 5.
+
+**Files:**
+- Create: `src/domain/historical-parser-gap-priority.mjs`
+- Create: `scripts/architecture-v2/build-historical-parser-gap-priority.mjs`
+- Create: `tests/architecture-v2/historical-parser-gap-priority.test.mjs`
+- Create: `data/architecture-v2/reviews/automated/historical-parser-gap-priority.json`
+- Extend: existing MinerU parser fixtures under `tests/fixtures/`
+- Modify: dimension-expression knowledge generator
+
+**Interfaces:**
+- Scores gaps by affected exact models, lifecycle priority, family reuse,
+  source authority, MinerU validity and ambiguity risk.
+- Every parser profile requires positive and negative fixtures preserving axis,
+  unit, scope, page/table and model identity context.
+- Projects every incomplete or diagnostic family into exactly one typed lane:
+  `REPAIR_READY`, `IDENTITY_BLOCKED`, `MINERU_BLOCKED`,
+  `IMAGE_SEMANTICS_REQUIRED`, `AMBIGUITY_RESEARCH`, or
+  `COMPLETE_DIAGNOSTIC_ONLY`. Only `REPAIR_READY` rows receive an execution
+  rank; a high affected-model count can never override a failed evidence gate.
+- Counts affected models only from graph-bound exact/model-list references with
+  an incomplete replay. Family membership and a URL that merely looks official
+  never create identity or source authority.
+- Binds every selected repair to a tracked fixture-corpus profile. Corpus cases
+  include an immutable source fragment, exact model, page/table scope, axis and
+  unit semantics, expected accepted fields and expected rejected lookalikes.
+
+- [x] Test ranking, tied scores, invalid MinerU, package/door-open exclusion,
+  adjustable ranges and ambiguous D/D'/D'' expressions.
+- [x] Generate the current queue and select the highest reusable family.
+- [x] Add failing fixtures, implement the minimum parser-profile repair and
+  replay all documents in that family.
+- [x] Bump processor epoch only when semantic output intentionally changes.
+- [x] Update this task and commit.
+
+**Plan correction (2026-07-19):** The original task treated all knowledge-base
+`researchGaps` as parser work. The current snapshot proves that this is unsafe:
+families with complete parser replays still carry generic packaging/image
+diagnostics, while other failures are caused by unproven identity, invalid
+MinerU, image-only semantics or unresolved D/D'/D'' variants. The queue must
+therefore apply typed hard gates before scoring and must report blocked lanes
+without pretending they are parser throughput. Existing classification
+authority remains canonical; official-looking hosts are not promoted by
+inference. The first repair is selected only after this corrected queue is
+generated, and a semantic parser change requires a processor-epoch bump plus
+full family replay.
+
+**Completed evidence (2026-07-19):** The typed priority artifact contains 410
+families: 43 `REPAIR_READY`, 279 `IDENTITY_BLOCKED`, 5
+`IMAGE_SEMANTICS_REQUIRED`, 23 `AMBIGUITY_RESEARCH` and 60
+`COMPLETE_DIAGNOSTIC_ONLY`; no invalid MinerU family was misranked. Two
+hash-bound fixture profiles cover real Electrolux washer and LG dryer MinerU
+fragments with positive and adversarial cases. The LG D/D'/D'' repair remained
+ambiguity-gated at family level while one exact audited target was safely
+re-derived. Its failed legacy receipt was replaced without losing a passed
+superseded HTML receipt. The cumulative bundle now replays 408/408 sources,
+`COMPLETE_RECEIPT` increased to 401, `PARSER_REPAIR` fell to zero,
+receipt-bound current dimensions increased to 332, and receipt-bound
+`VERIFIED_FIT` remains zero. Focused Task 8 tests passed 216/216, the full
+Architecture V2 suite passed 968/968, `npm run lint`, the online 803-object
+repair audit, external refresh, offline build and `git diff --check` passed.
+
+**Acceptance:** Parser work is selected by measurable model impact and every
+change has accept/reject corpus coverage.
+
+**Stop condition:** A proposed repair relies on brand-wide value sharing,
+unlabelled axis order or lossy OCR overriding richer native MinerU content.
+
+---
+
+### Task 9: Controlled P0/P1 Dimensions Recovery Scale Loop
+
+**Solves:** The throughput consequence of Problems 2-9.
+
+**Depends on:** Tasks 7 and 8.
+
+**Files:**
+- Update generated control-plane reports, bounded manifests, acceptance bundle,
+  target state, attempt ledger and runbook evidence after each batch
+- No new parser or resolver code without a failing family canary/fixture
+
+**Interfaces:**
+- P0: current-retail models missing trusted dimensions.
+- P1: archived/registry historical models missing trusted dimensions.
+- Each batch emits discovered, fetched, MinerU-valid, identity-proven,
+  dimensions-receipted, terminal and retryable counts.
+
+- [x] Process P0 by highest-impact passed family until its queue is empty or a
+  typed stop condition is reached.
+- [x] Recompute KPIs and verify no publication violations after every batch.
+- [x] Process P1 only after P0 source/parser learning is incorporated. P1 was
+  correctly kept blocked because P0 reached a typed source-yield stop first.
+- [x] Publish replacement auto-fill only from receipt-bound scalar dimensions.
+- [x] Record weekly throughput and projected remaining batches.
+
+**Completed evidence (2026-07-19):** A versioned scale control and append-safe
+ledger now bind every batch to one approved manifest, immutable run bytes,
+current materialised evidence and publication guards. Five P0 Esatto dishwasher
+checkpoints exercised discovery and acquisition: four discovery targets
+materialised one official-candidate target, while one acquisition fetched an
+exact official PDF but produced no valid exact-model MinerU axis evidence and
+therefore no receipt. P0 assigned/eligible targets decreased from `957/947` to
+`953/943`; all coverage counters remained monotonic at 401 current valid
+receipts, 321 replacement `AUTO_FILL`, 332 receipt-bound public dimensions and
+zero receipt-bound `VERIFIED_FIT`. The final two same-cohort discovery batches
+both yielded 0%, so the controller emitted `STOP_LOW_YIELD`, blocked P1 and
+authorised no further manifest. The runbook records the recovery protocol and
+all five checkpoints. Focused control/runner tests passed 43/43, the complete
+Architecture V2 suite passed 982/982, lint and `git diff --check` passed, a
+drive-independent `build:architecture-v2` passed, the offline cumulative audit
+passed 382 entries, and external receipt replay passed 408/408 sources with
+zero replacement or Fit-publication violations.
+
+**Typed follow-up:** Do not bypass the stopped Esatto cohort or start P1. A
+tested official-candidate resolver, document-family identity rule or parser
+repair must establish a reviewed new control epoch before dimensions expansion
+resumes. Task 10 proceeds independently and cannot reinterpret this
+dimensions-only result as Fit evidence.
+
+**Acceptance:** Coverage increases monotonically, prior receipts replay, and no
+batch can claim progress from downloads or MinerU output alone.
+
+**Stop condition:** Acceptance yield falls below 50% for two same-family
+batches; stop expansion and return to candidate, family or parser repair.
+
+---
+
+### Task 10: Independent Installation and Fit Evidence Pipeline
+
+**Solves:** Problem 10.
+
+**Depends on:** Task 9 establishing stable dimensions receipts.
+
+**Files:**
+- Create versioned installation-evidence contract/domain/tests
+- Create installation candidate, parser-gap and bounded-batch generators
+- Modify Fit publication audit only after the new receipt contract passes
+- Update product core brief and runbook
+
+**Execution order locked after current-code audit (2026-07-19):**
+
+1. Extend the existing `installation-knowledge-v3` domain instead of creating a
+   competing Fit model. Publish a schema-v2 applicability matrix for fridge,
+   dishwasher, dryer and washing machine, including form-factor-specific
+   operation checks and connection-group dependencies.
+2. Add an independent field-receipt contract and cumulative bundle. Every
+   accepted field binds the exact model, official URL, PDF SHA-256, MinerU
+   `content_list_v2` SHA/object path, parser/model revision, page, bbox, quote,
+   fragment SHA and applicability. Legacy `pdftotext` approvals are candidates
+   only and cannot be migrated as receipts.
+3. Add offline candidate, typed parser-gap and deterministic bounded-batch
+   projections over the frozen 100-model fridge/dishwasher pilot. Keep source,
+   document, field receipt and Fit completion as separate grains.
+4. Add strict positive/negative MinerU fixtures and run one exact-model
+   refrigerator canary (`RF605QZUVB1`) plus one exact-model dishwasher canary
+   (`DW60UT4I2`). Preserve partial success: only explicit fields become
+   receipts; missing operation, service, connection or delivery fields remain
+   unknown.
+5. Add online object replay for the cumulative installation bundle and bind its
+   audit SHA to publication. Normal builds consume the tracked audit and remain
+   external-drive-independent; any changed bundle requires a new online replay.
+6. Extend the Fit publication audit only after steps 1-5 pass. A public
+   `VERIFIED_FIT` must map every applicable hard condition to a current exact-
+   model installation receipt and a passing replay audit. Dimensions-only or
+   partial canaries must remain below `VERIFIED_FIT`.
+7. Run adversarial checks for unknown-to-zero, not-applicable-without-evidence,
+   sibling/family donation, stale source, range flattening, bbox/page drift,
+   legacy parser migration, stale replay audit and score-overriding-hard-fail.
+   Then update product-core and runbook evidence and run all release gates.
+
+**Planned concrete files:**
+- Extend: `src/domain/installation-knowledge-v3.mjs`,
+  `src/domain/fit-v3.mjs`, `tests/architecture-v2/installation-knowledge-fit-v3.test.mjs`
+- Create: `src/domain/installation-evidence-pipeline.mjs`
+- Create: `scripts/architecture-v2/build-installation-evidence-pipeline.mjs`
+- Create: `scripts/architecture-v2/build-installation-evidence-pilot-receipts.mjs`
+- Create: `scripts/architecture-v2/audit-installation-evidence-receipts.mjs`
+- Create: `tests/architecture-v2/installation-evidence-pipeline.test.mjs`
+- Create tracked applicability, candidate, parser-gap, bounded-batch, receipt
+  bundle and replay-audit artifacts under the existing Architecture V2 owners
+- Modify: `scripts/architecture-v2/audit-fit-publication.mjs`, `package.json`,
+  `docs/product-core-brief.md`, and the canonical recovery runbook
+
+**Interfaces:**
+- Field groups: installation clearance, ventilation/service space, operation
+  envelope, water, power, drainage and delivery envelope.
+- Decisions remain `NO_FIT`, `INSUFFICIENT_DATA`, `CONDITIONAL_FIT`,
+  `LIKELY_FIT_ESTIMATED` or `VERIFIED_FIT`; numeric scoring may only rank within
+  an already determined class.
+
+- [x] Write the schema and evidence-applicability matrix for all four appliance
+  categories before adding parser logic.
+- [x] Test missing/not-applicable/zero distinctions, ranges, professional
+  installation requirements and site-observation separation.
+- [x] Pilot refrigerator and dishwasher families with exact-model installation
+  manuals.
+- [x] Require receipt replay for every hard condition before `VERIFIED_FIT`.
+- [x] Run adversarial publication and user-claim review.
+
+**Completed evidence (2026-07-19):** Schema v2 covers refrigerator,
+dishwasher, washing-machine and dryer applicability. The cumulative bundle has
+21 exact-model field receipts over two canaries, zero field conflicts and
+21/21 external MinerU object replay passes. The frozen 100-model control plane
+has two `RECEIPT_PARTIAL`, 87 `SOURCE_DISCOVERY_REQUIRED`, 11
+`IDENTITY_BLOCKED`, 99 bounded family-aware batches and zero
+`FIT_EVIDENCE_COMPLETE`. Adversarial tests reject cross-row table donation,
+optional/not-applicable substitution for hard fields, invented nominal-voltage
+tolerance, stale replay, sibling identity, range flattening and legacy parser
+migration; top-loading washers use lid-open height rather than front-door
+depth. Focused installation/Fit tests passed 27/27, Architecture V2 passed
+1002/1002, the full repository passed 2659/2659, and the external-drive-free
+Architecture V2 build, lint, `git diff --check`, PDF JSON-first audit and both
+geometry/installation publication gates passed with zero violations.
+
+**Acceptance:** W/H/D-only models stay dimensions-only; `VERIFIED_FIT` appears
+only when every applicable hard condition has exact-model evidence and passes.
+
+**Stop condition:** A brand norm, government registry, sibling model or generic
+installation guide is being promoted as an exact-model hard requirement.
+
+---
+
+## Programme Completion Criteria
+
+This plan is complete only when:
+
+1. All 8,089 references have one current target state.
+2. Every progress percentage has an explicit grain and denominator.
+3. Every discoverable official candidate is materialized or has typed resolver
+   completion state.
+4. Every indexed PDF belongs to one content-hash document node and has explicit
+   model applicability edges.
+5. Normal runs use bounded manifests and family canaries.
+6. Parser changes are backed by positive and negative MinerU fixtures.
+7. Receipt and replacement coverage increase monotonically without weakening
+   earlier evidence.
+8. Dimensions and full Fit evidence remain separate through publication.
+9. The full Architecture V2 suite, lint, build, receipt replay, replacement
+   audit and Fit publication audit pass.
+10. Current counts and unresolved gaps are written back into this file and the
+    generated control-plane status report.
+
+## Task 0 Self-Review
+
+- All ten identified shortcomings map to an implementation task.
+- Dependencies flow only from earlier tasks to later tasks.
+- Acquisition is separated from offline build and publication.
+- Document reuse is separated from per-model evidence authority.
+- Terminal states have explicit reopening rules.
+- Parser and family learning cannot authorise model claims.
+- No acceptance criterion depends on a later task.
+- No task requires modifying or deleting the unrelated `typescript` file.

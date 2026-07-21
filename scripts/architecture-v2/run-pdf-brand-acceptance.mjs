@@ -7,7 +7,8 @@ import { fileURLToPath } from 'node:url';
 
 import { runEvidenceResearchCycle } from '../../src/domain/evidence-research-runner.mjs';
 import { projectEvidenceGeometry } from '../../src/domain/evidence-geometry-projector.mjs';
-import { runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
+import { runMineruPdfWithImageFallback } from '../../src/domain/mineru-runner.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -71,8 +72,125 @@ export function acceptanceCase(entry) {
   };
 }
 
+function summarizeOutcomes(outcomes) {
+  return {
+    entries: outcomes.length,
+    accepted: outcomes.filter((row) => row.outcome === 'accepted').length,
+    acceptedPdf: outcomes.filter((row) => row.artifactType === 'pdf').length,
+    acceptedHtmlFallback: outcomes.filter((row) => row.artifactType === 'official_html_fallback').length,
+    geometryDimensions: outcomes.filter((row) => row.geometryProjection?.evidenceLevel === 'dimensions').length,
+    geometryVerified: outcomes.filter((row) => row.geometryProjection?.evidenceLevel === 'verified').length,
+    fitInsufficient: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'INSUFFICIENT_DATA').length,
+    fitConditional: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'CONDITIONAL_FIT').length,
+    fitEstimated: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'LIKELY_FIT_ESTIMATED').length,
+    fitVerified: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'VERIFIED_FIT').length,
+    quarantined: outcomes.filter((row) => row.outcome === 'quarantined').length,
+  };
+}
+
+function pdfBrandGraphBatch(batch) {
+  const artifactJobs = [];
+  const targets = [];
+  for (const entry of batch.entries) {
+    const urls = entry.urls ?? [entry.url];
+    const candidateJobIds = urls.map((sourceUrl, index) => {
+      const jobId = `pdf-brand-${canonicalJsonSha256({ id: entry.id, sourceUrl, index }).slice(0, 24)}`;
+      artifactJobs.push({
+        jobId,
+        sourceUrl,
+        authorityBrand: entry.brand,
+        authorityMode: 'official',
+        acquisitionRoute: 'OFFICIAL_RECEIPT_REBUILD',
+        priorityClass: 'P2_CURRENT_CONFIRMATION',
+        targetIds: [entry.id],
+      });
+      return jobId;
+    });
+    targets.push({
+      targetId: entry.id,
+      referenceId: entry.id,
+      legacyRuntimeId: entry.legacyRuntimeId ?? entry.id,
+      canonicalProductId: entry.id,
+      brand: entry.brand,
+      model: entry.model,
+      category: entry.category,
+      lifecycleState: 'CURRENT_RETAIL',
+      requestedFields: [
+        'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+      ],
+      primaryJobId: candidateJobIds[0],
+      candidateJobIds,
+      publicationEligible: false,
+      reconciliationContext: { activeReceiptSources: [], registryHints: [], legacyHints: [] },
+    });
+  }
+  return {
+    schemaVersion: 1,
+    batchId: `pdf-brand-graph-${canonicalJsonSha256({ batchId: batch.batchId, entries: batch.entries }).slice(0, 24)}`,
+    generatedAt: batch.reviewedAt,
+    queue: { schemaVersion: 2, sha256: canonicalJsonSha256({ sourceBatchId: batch.batchId, entries: batch.entries }) },
+    policy: { version: 'pdf-brand-compatibility-v1', sha256: canonicalJsonSha256({ adapter: 'pdf-brand-compatibility-v1' }) },
+    selection: { jobIds: [], targetIds: [], routes: [], priorities: [], brands: [], limit: null },
+    artifactJobs,
+    targets,
+    summary: {
+      artifactJobs: artifactJobs.length,
+      targets: targets.length,
+      candidateEdges: artifactJobs.reduce((count, job) => count + job.targetIds.length, 0),
+    },
+  };
+}
+
+function legacyOutcomeFromGraph(entry, graphOutcome) {
+  const source = graphOutcome?.sources?.[0] ?? null;
+  const accepted = graphOutcome?.status === 'accepted';
+  return {
+    id: entry.id,
+    brand: entry.brand,
+    model: entry.model,
+    category: entry.category,
+    requestedUrl: entry.url,
+    requestedUrls: entry.urls ?? [entry.url],
+    outcome: accepted ? 'accepted' : 'quarantined',
+    acquisition: source ? 'passed' : 'failed',
+    mineru: source?.derivedArtifact ? 'passed' : 'not_run_or_failed',
+    identity: source?.identity?.outcome ?? 'not_accepted',
+    claims: source?.claims?.map((claim) => ({ field: claim.field, value: claim.value, page: claim.page })) ?? [],
+    receipt: source?.verificationReceipt ? 'passed' : 'not_accepted',
+    geometryProjection: graphOutcome?.geometryProjection ?? null,
+    artifactType: source?.contentType === 'application/pdf'
+      ? 'pdf'
+      : source?.contentType === 'text/html' ? 'official_html_fallback' : null,
+    source: source ? structuredClone(source) : null,
+    diagnosticArtifacts: {
+      pdfObjectPath: source?.contentType === 'application/pdf' ? source.objectPath ?? null : null,
+      derivedArtifact: source?.derivedArtifact ?? null,
+    },
+    failures: accepted ? [] : [{
+      candidateUrl: entry.url,
+      reason: graphOutcome?.failureCode ?? 'graph_outcome_missing',
+    }],
+  };
+}
+
 export async function runPdfBrandAcceptanceBatch(batch, options) {
   if (batch?.schemaVersion !== 1 || !Array.isArray(batch.entries)) throw new TypeError('PDF brand batch required');
+  if (typeof options?.graphRunner === 'function') {
+    const graph = pdfBrandGraphBatch(batch);
+    const graphResult = await options.graphRunner(graph, options.graphDependencies ?? {});
+    const byTargetId = new Map((graphResult?.outcomes ?? []).map((outcome) => [outcome.targetId, outcome]));
+    const outcomes = batch.entries.map((entry) => legacyOutcomeFromGraph(entry, byTargetId.get(entry.id)));
+    if (options.onProgress) {
+      for (let index = 1; index <= outcomes.length; index += 1) await options.onProgress(outcomes.slice(0, index));
+    }
+    return {
+      schemaVersion: 1,
+      batchId: batch.batchId,
+      reviewedAt: batch.reviewedAt,
+      summary: summarizeOutcomes(outcomes),
+      outcomes,
+    };
+  }
   const writeObject = await objectWriter(options.storageRoot);
   const outcomes = [];
   for (const entry of batch.entries) {
@@ -83,12 +201,13 @@ export async function runPdfBrandAcceptanceBatch(batch, options) {
       fetchAttempts: 1,
       timeoutMs: 30000,
       allowCurlFallback: true,
+      allowScraplingFallback: true,
       processPdf: async (bytes) => {
         diagnostics.acquisition = 'passed';
         const pdfSha256 = createHash('sha256').update(bytes).digest('hex');
         diagnostics.pdfObjectPath = `evidence/web/sha256/${pdfSha256.slice(0, 2)}/${pdfSha256.slice(2, 4)}/${pdfSha256}.pdf`;
         await writeObject(diagnostics.pdfObjectPath, bytes);
-        const processed = await runMineruPdfToJson(bytes, { storageRoot: options.storageRoot });
+        const processed = await runMineruPdfWithImageFallback(bytes, { storageRoot: options.storageRoot });
         diagnostics.mineru = 'passed';
         diagnostics.derivedArtifact = processed.derivedArtifact;
         await writeObject(processed.derivedArtifact.objectPath, processed.jsonBytes);
@@ -133,19 +252,7 @@ export async function runPdfBrandAcceptanceBatch(batch, options) {
     schemaVersion: 1,
     batchId: batch.batchId,
     reviewedAt: batch.reviewedAt,
-    summary: {
-      entries: outcomes.length,
-      accepted: outcomes.filter((row) => row.outcome === 'accepted').length,
-      acceptedPdf: outcomes.filter((row) => row.artifactType === 'pdf').length,
-      acceptedHtmlFallback: outcomes.filter((row) => row.artifactType === 'official_html_fallback').length,
-      geometryDimensions: outcomes.filter((row) => row.geometryProjection?.evidenceLevel === 'dimensions').length,
-      geometryVerified: outcomes.filter((row) => row.geometryProjection?.evidenceLevel === 'verified').length,
-      fitInsufficient: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'INSUFFICIENT_DATA').length,
-      fitConditional: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'CONDITIONAL_FIT').length,
-      fitEstimated: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'LIKELY_FIT_ESTIMATED').length,
-      fitVerified: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'VERIFIED_FIT').length,
-      quarantined: outcomes.filter((row) => row.outcome === 'quarantined').length,
-    },
+    summary: summarizeOutcomes(outcomes),
     outcomes,
   };
 }

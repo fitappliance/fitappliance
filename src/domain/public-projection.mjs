@@ -12,7 +12,28 @@ function integerInRange(value, minimum, maximum) {
   return Number.isInteger(value) && value >= minimum && value <= maximum ? value : null;
 }
 
-function deriveDoorSwing(product) {
+function receiptBound(row) {
+  return Boolean(
+    row
+    && /^[a-f0-9]{64}$/i.test(String(row.contentSha256 ?? ''))
+    && /^[a-f0-9]{64}$/i.test(String(row.receiptBindingSha256 ?? ''))
+    && /^https:\/\//i.test(String(row.sourceUrl ?? ''))
+  );
+}
+
+function deriveDoorSwing(product, publicationLevel) {
+  if (publicationLevel !== 'none') {
+    const hingeSideSpace = product?.geometry_v2?.operation?.hingeSideSpaceMm;
+    const evidence = product?.geometry_v2_provenance
+      ?.fieldEvidence?.['operation.hingeSideSpaceMm'];
+    if (!receiptBound(evidence)) return null;
+    if (hingeSideSpace === 0) return 0;
+    const explicitHingeSideSpace = integerInRange(hingeSideSpace, 5, 1200);
+    return explicitHingeSideSpace !== null
+      && (explicitHingeSideSpace <= 100 || explicitHingeSideSpace >= 400)
+      ? explicitHingeSideSpace
+      : null;
+  }
   if (product?.door_swing_mm === 0) return 0;
   const explicit = integerInRange(product?.door_swing_mm, 5, 1200);
   if (explicit !== null && (explicit <= 100 || explicit >= 400)) return explicit;
@@ -61,8 +82,17 @@ export function normalizePublicProduct(product) {
       ...(sourceProvenance.evidenceLevel !== publicationLevel ? { publicationDowngraded: true } : {}),
     }
     : null;
+  const publicSource = publicationLevel === 'none'
+    ? product
+    : Object.fromEntries(Object.entries(product ?? {}).filter(([key]) => key !== 'inferred_door_swing'));
+  const publicFlags = publicationLevel === 'none'
+    ? product?.flags
+    : (product?.flags && typeof product.flags === 'object'
+      ? { ...product.flags, reversible_door: null }
+      : product?.flags);
   return Object.freeze({
-    ...product,
+    ...publicSource,
+    ...(publicFlags ? { flags: publicFlags } : {}),
     ...(evidence ? { evidence } : {}),
     ...(geometryProvenance ? { geometry_v2_provenance: geometryProvenance } : {}),
     emoji: typeof product?.emoji === 'string' && product.emoji.trim()
@@ -71,7 +101,7 @@ export function normalizePublicProduct(product) {
     kwh_year: integerInRange(product?.kwh_year, 50, 2000),
     stars: integerInRange(product?.stars, 1, 6),
     price: integerInRange(product?.price, 1, 100000),
-    door_swing_mm: deriveDoorSwing(product),
+    door_swing_mm: deriveDoorSwing(product, publicationLevel),
     features: Array.isArray(product?.features)
       ? product.features.filter((value) => typeof value === 'string' && value.trim()).map((value) => value.trim())
       : [],
@@ -99,6 +129,31 @@ export function buildPublicProjection(registry, catalog) {
   return Object.freeze({
     schema_version: 3,
     last_updated: catalog.last_updated ?? catalog.latest_verified_at ?? null,
+    products: Object.freeze(products),
+  });
+}
+
+export function buildLifecycleNeutralSafetyProjection(releasedProjection) {
+  if (!releasedProjection || !Array.isArray(releasedProjection.products)) {
+    throw new TypeError('released public projection products required');
+  }
+  const seen = new Set();
+  const products = releasedProjection.products.map((product) => {
+    const canonicalProductId = String(product?.canonicalProductId ?? '').trim();
+    if (!canonicalProductId) throw new TypeError(`released canonical identity missing for ${product?.id}`);
+    const legacyRuntimeId = String(product?.id ?? '').trim().toLowerCase();
+    if (!legacyRuntimeId || seen.has(legacyRuntimeId)) {
+      throw new TypeError(`released legacy identity is missing or duplicated: ${legacyRuntimeId}`);
+    }
+    seen.add(legacyRuntimeId);
+    return Object.freeze({
+      ...normalizePublicProduct(product),
+      canonicalProductId,
+    });
+  });
+  return Object.freeze({
+    schema_version: releasedProjection.schema_version,
+    last_updated: releasedProjection.last_updated ?? null,
     products: Object.freeze(products),
   });
 }

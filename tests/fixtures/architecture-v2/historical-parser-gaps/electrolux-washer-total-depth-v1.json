@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "profiles": [
+    {
+      "parserProfileId": "electrolux-au-washer-product-total-depth-v1",
+      "familyId": "document_family_be851af92048b964c094aed1",
+      "cases": [
+        {
+          "caseId": "source-ewf12763e",
+          "expectation": "ACCEPT",
+          "derivation": "SOURCE_FRAGMENT",
+          "source": { "pdfSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773", "contentSha256": "db49577768f5ebc12728267d66e6efbb1d153bc8acab8bb0fdcdcd0cbbea71a2", "page": 3, "fragmentSha256": "e57bb19071b0f809e2dd2adfce27187d763ce325c2add0a7479f842c5abc4934", "fragmentType": "table", "bbox": [516, 229, 939, 449] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF12763E" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "product_closed", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [{ "field": "closedEnvelope.widthMm", "mm": 600 }, { "field": "closedEnvelope.heightMm", "mm": 850 }, { "field": "closedEnvelope.depthMm", "mm": 576 }],
+          "rejectedSemantics": ["Depth with hoses is not the closed product depth"],
+          "contentList": [[], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "image_source": { "path": "images/362c857e943f682e2a6e13d2aec3bab76052b6d460655c8659d5c149d319cba4.jpg" }, "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>576</td></tr><tr><td>Depth with hoses (mm)</td><td>606</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 229, 939, 449] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF12763E" }] }, "bbox": [794, 40, 964, 64] }]]
+        },
+        {
+          "caseId": "source-ewf1408b1wa",
+          "expectation": "ACCEPT",
+          "derivation": "SOURCE_FRAGMENT",
+          "source": { "pdfSha256": "378d9a3ee6cb135b2f7ee189826959d6fb69c5d8e9ef304b876b6dce45dd51a3", "contentSha256": "78e512a74b72dcb3e5b3daee4b7bce71e1336a5ad21ce35258e173a5baedefb5", "page": 4, "fragmentSha256": "155322962a96a45894af529caae7e6f3e272fdbe5d1256ae66b0045efdf4be9e", "fragmentType": "table", "bbox": [516, 228, 939, 450] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF1408B1WA" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "product_closed", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [{ "field": "closedEnvelope.widthMm", "mm": 686 }, { "field": "closedEnvelope.heightMm", "mm": 1010 }, { "field": "closedEnvelope.depthMm", "mm": 858 }],
+          "rejectedSemantics": ["Depth with hoses is not the closed product depth"],
+          "contentList": [[], [], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "image_source": { "path": "images/b2c803eeb80356776851144531a669d0f705b393c519b0f603fac652871e2cc8.jpg" }, "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>1010</td></tr><tr><td>Total width (mm)</td><td>686</td></tr><tr><td>Total depth (mm)</td><td>858</td></tr><tr><td>Depth with hoses (mm)</td><td>888</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 228, 939, 450] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF1408B1WA" }] }, "bbox": [748, 40, 965, 64] }]]
+        },
+        {
+          "caseId": "source-ewf12753",
+          "expectation": "ACCEPT",
+          "derivation": "SOURCE_FRAGMENT",
+          "source": { "pdfSha256": "4bef6eca8a8f821f317bb64786cbaf434951893947bcb09d311617e34ad1b8ae", "contentSha256": "bcd1356d160fdbe64657ba9d045030dae2ae875d2c338c016b16517b26109a62", "page": 3, "fragmentSha256": "745925cad21a55f152509b819fc5412534fa1ecd08ccfb63f5cd66bb79d82daa", "fragmentType": "table", "bbox": [516, 228, 939, 450] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF12753" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "product_closed", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [{ "field": "closedEnvelope.widthMm", "mm": 600 }, { "field": "closedEnvelope.heightMm", "mm": 850 }, { "field": "closedEnvelope.depthMm", "mm": 585 }],
+          "rejectedSemantics": ["Depth with hoses is not the closed product depth"],
+          "contentList": [[], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "image_source": { "path": "images/73913e683f7875f0e6ea08b32e0942ea1e17387a4a062e57871de8c1436cb7dd.jpg" }, "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>585</td></tr><tr><td>Depth with hoses (mm)</td><td>600</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 228, 939, 450] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF12753" }] }, "bbox": [813, 40, 964, 64] }]]
+        },
+        {
+          "caseId": "source-ewf14933",
+          "expectation": "ACCEPT",
+          "derivation": "SOURCE_FRAGMENT",
+          "source": { "pdfSha256": "68f72b01c284bca3e3aed8ebcab98cd19f5474b49bafbdc32fa94fd11a4dd501", "contentSha256": "b8ffb1e69af64aad5ee26439153aa8df1aecb50fe9c41bf4c2ea69fe9ee2e554", "page": 4, "fragmentSha256": "cd633a995d248563fd3d47844b8b23efaca6bd468df05fa7f9559e5068cfea83", "fragmentType": "table", "bbox": [516, 228, 939, 450] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF14933" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "product_closed", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [{ "field": "closedEnvelope.widthMm", "mm": 600 }, { "field": "closedEnvelope.heightMm", "mm": 850 }, { "field": "closedEnvelope.depthMm", "mm": 665 }],
+          "rejectedSemantics": ["Depth with hoses is not the closed product depth"],
+          "contentList": [[], [], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "image_source": { "path": "images/5e765a1a976cd13ed17bb6560f3390db8b072dd50743e42a9346a45bb39491c3.jpg" }, "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>665</td></tr><tr><td>Depth with hoses (mm)</td><td>680</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 228, 939, 450] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF14933" }] }, "bbox": [813, 40, 964, 64] }]]
+        },
+        {
+          "caseId": "source-ewf14013",
+          "expectation": "ACCEPT",
+          "derivation": "SOURCE_FRAGMENT",
+          "source": { "pdfSha256": "791dc27c905a13fd9210d59a7cb1f7c015222b836a1e1f1b86d51c713fa61031", "contentSha256": "45b9766213b75c4affc69256582cffe1b6c16aa81f74d3d5127292090c99f54b", "page": 4, "fragmentSha256": "cd633a995d248563fd3d47844b8b23efaca6bd468df05fa7f9559e5068cfea83", "fragmentType": "table", "bbox": [516, 228, 939, 450] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF14013" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "product_closed", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [{ "field": "closedEnvelope.widthMm", "mm": 600 }, { "field": "closedEnvelope.heightMm", "mm": 850 }, { "field": "closedEnvelope.depthMm", "mm": 665 }],
+          "rejectedSemantics": ["Depth with hoses is not the closed product depth"],
+          "contentList": [[], [], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "image_source": { "path": "images/b7252b9195a589204bbfb96981b4d5bacd9e5d95aee902eaf34eda25cb5b41de.jpg" }, "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>665</td></tr><tr><td>Depth with hoses (mm)</td><td>680</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 228, 939, 450] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF14013" }] }, "bbox": [813, 40, 964, 64] }]]
+        },
+        {
+          "caseId": "source-eww12753",
+          "expectation": "ACCEPT",
+          "derivation": "SOURCE_FRAGMENT",
+          "source": { "pdfSha256": "7b8c6a09dd8ac52009ccef9cdb41ef75f182c6730d70d7bee5da62fab296bdf1", "contentSha256": "43f9458960709e1be9bb3f10660488f60399b38845864dc0813b87ad409e883b", "page": 4, "fragmentSha256": "24eac35dd4f98277988296ccc06ced74f2f46b8ddf818143c477541472ea4169", "fragmentType": "table", "bbox": [516, 229, 939, 450] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWW12753" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "product_closed", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [{ "field": "closedEnvelope.widthMm", "mm": 600 }, { "field": "closedEnvelope.heightMm", "mm": 850 }, { "field": "closedEnvelope.depthMm", "mm": 585 }],
+          "rejectedSemantics": ["Depth with hoses is not the closed product depth"],
+          "contentList": [[], [], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [516, 203, 645, 223] }, { "type": "table", "content": { "image_source": { "path": "images/4d048a26ca76f1067ac68189ce7d4b1266d9b3f573a7c46ecb69820603962903.jpg" }, "table_caption": [], "table_footnote": [], "html": "<table><tr><td colspan=\"2\">PRODUCT</td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>585</td></tr><tr><td>Depth with hoses (mm)</td><td>600</td></tr></table>", "table_type": "complex_table", "table_nest_level": 1 }, "bbox": [516, 229, 939, 450] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWW12753" }] }, "bbox": [803, 40, 964, 64] }]]
+        },
+        {
+          "caseId": "reject-model-mismatch",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": { "pdfSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773", "contentSha256": "db49577768f5ebc12728267d66e6efbb1d153bc8acab8bb0fdcdcd0cbbea71a2", "page": 3, "fragmentSha256": "e57bb19071b0f809e2dd2adfce27187d763ce325c2add0a7479f842c5abc4934", "fragmentType": "table", "bbox": [516, 229, 939, 449] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF12763E" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "product_closed", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [], "rejectedSemantics": ["sibling model header cannot bind the table"],
+          "contentList": [[], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>576</td></tr><tr><td>Depth with hoses (mm)</td><td>606</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 229, 939, 449] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF12763X" }] }, "bbox": [794, 40, 964, 64] }]]
+        },
+        {
+          "caseId": "reject-package-scope",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": { "pdfSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773", "contentSha256": "db49577768f5ebc12728267d66e6efbb1d153bc8acab8bb0fdcdcd0cbbea71a2", "page": 3, "fragmentSha256": "e57bb19071b0f809e2dd2adfce27187d763ce325c2add0a7479f842c5abc4934", "fragmentType": "table", "bbox": [516, 229, 939, 449] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF12763E" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "delivery_package", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [], "rejectedSemantics": ["package dimensions cannot become closed product dimensions"],
+          "contentList": [[], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PACKAGE</td><td></td></tr><tr><td>Total height (mm)</td><td>890</td></tr><tr><td>Total width (mm)</td><td>660</td></tr><tr><td>Total depth (mm)</td><td>650</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 229, 939, 449] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF12763E" }] }, "bbox": [794, 40, 964, 64] }]]
+        },
+        {
+          "caseId": "reject-hose-only-depth",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": { "pdfSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773", "contentSha256": "db49577768f5ebc12728267d66e6efbb1d153bc8acab8bb0fdcdcd0cbbea71a2", "page": 3, "fragmentSha256": "e57bb19071b0f809e2dd2adfce27187d763ce325c2add0a7479f842c5abc4934", "fragmentType": "table", "bbox": [516, 229, 939, 449] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF12763E" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "connection_envelope", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [], "rejectedSemantics": ["hose depth cannot substitute for a missing total depth"],
+          "contentList": [[], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Depth with hoses (mm)</td><td>606</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 229, 939, 449] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF12763E" }] }, "bbox": [794, 40, 964, 64] }]]
+        },
+        {
+          "caseId": "reject-duplicate-total-depth",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": { "pdfSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773", "contentSha256": "db49577768f5ebc12728267d66e6efbb1d153bc8acab8bb0fdcdcd0cbbea71a2", "page": 3, "fragmentSha256": "e57bb19071b0f809e2dd2adfce27187d763ce325c2add0a7479f842c5abc4934", "fragmentType": "table", "bbox": [516, 229, 939, 449] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF12763E" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "product_closed", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [], "rejectedSemantics": ["duplicate closed-depth values are ambiguous"],
+          "contentList": [[], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>576</td></tr><tr><td>Total depth (mm)</td><td>577</td></tr><tr><td>Depth with hoses (mm)</td><td>606</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 229, 939, 449] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF12763E" }] }, "bbox": [794, 40, 964, 64] }]]
+        },
+        {
+          "caseId": "reject-unit-drift",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": { "pdfSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773", "contentSha256": "db49577768f5ebc12728267d66e6efbb1d153bc8acab8bb0fdcdcd0cbbea71a2", "page": 3, "fragmentSha256": "e57bb19071b0f809e2dd2adfce27187d763ce325c2add0a7479f842c5abc4934", "fragmentType": "table", "bbox": [516, 229, 939, 449] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF12763E" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "cm", "scope": "product_closed", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [], "rejectedSemantics": ["the profile is millimetre-specific"],
+          "contentList": [[], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (cm)</td><td>85</td></tr><tr><td>Total width (cm)</td><td>60</td></tr><tr><td>Total depth (cm)</td><td>57.6</td></tr><tr><td>Depth with hoses (cm)</td><td>60.6</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 229, 939, 449] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF12763E" }] }, "bbox": [794, 40, 964, 64] }]]
+        },
+        {
+          "caseId": "reject-door-open-row",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": { "pdfSha256": "04808e12b2d070b4dce630b4e689d3e888e86b94c10c65d16e79e412050aa773", "contentSha256": "db49577768f5ebc12728267d66e6efbb1d153bc8acab8bb0fdcdcd0cbbea71a2", "page": 3, "fragmentSha256": "e57bb19071b0f809e2dd2adfce27187d763ce325c2add0a7479f842c5abc4934", "fragmentType": "table", "bbox": [516, 229, 939, 449] },
+          "identity": { "category": "washing_machine", "brand": "Electrolux", "model": "EWF12763E" },
+          "semanticContext": { "axisOrder": ["height", "width", "depth"], "unit": "mm", "scope": "operation_envelope", "modelBinding": "SAME_PAGE_EXACT_MODEL" },
+          "expectedClaims": [], "rejectedSemantics": ["door-open depth requires a separate operation-envelope grammar"],
+          "contentList": [[], [], [{ "type": "title", "content": { "title_content": [{ "type": "text", "content": "DIMENSIONS" }], "level": 2 }, "bbox": [517, 203, 645, 223] }, { "type": "table", "content": { "table_caption": [], "table_footnote": [], "html": "<table><tr><td>PRODUCT</td><td></td></tr><tr><td>Total height (mm)</td><td>850</td></tr><tr><td>Total width (mm)</td><td>600</td></tr><tr><td>Total depth (mm)</td><td>576</td></tr><tr><td>Depth with hoses (mm)</td><td>606</td></tr><tr><td>Depth door open (mm)</td><td>1015</td></tr></table>", "table_type": "simple_table", "table_nest_level": 1 }, "bbox": [516, 229, 939, 449] }, { "type": "page_header", "content": { "page_header_content": [{ "type": "text", "content": "EWF12763E" }] }, "bbox": [794, 40, 964, 64] }]]
+        }
+      ]
+    }
+  ]
+}

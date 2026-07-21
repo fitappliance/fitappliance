@@ -1,8 +1,20 @@
 # Codex SOP: FitAppliance Data Lifecycle
 
-Last updated: 2026-05-09
+Status: legacy Phase 53 research reference
+Last updated: 2026-07-13
 
-This file is the operating runbook Codex must read before running FitAppliance data acquisition, evidence, or discovery workflows.
+> **Do not use this file as the production evidence workflow.** The canonical
+> production path is
+> [`architecture-v2/historical-evidence-recovery-runbook.md`](architecture-v2/historical-evidence-recovery-runbook.md).
+> The retailer fallback, AI parse, vault and merge stages below may create
+> research candidates only. They cannot issue Architecture V2 receipts, change
+> public geometry or publish historical replacement dimensions. Retailer-hosted
+> PDFs are `reference` discovery artifacts unless an independently rediscovered
+> exact official source passes the current authority policy.
+
+This file preserves the older data-acquisition workflow for regression and
+historical context. New acquisition, evidence, discovery and publication work
+must follow the Architecture V2 runbook.
 
 ## Permanent Prompt Library Rule
 
@@ -14,7 +26,7 @@ The block must include:
 - Codex wake phrase
 - Exact commands or files when relevant
 
-## Lifecycle Overview
+## Legacy Lifecycle Overview
 
 ```text
 Scout -> Search/Seed URLs -> Fetch PDF -> Extract Text/Layout -> AI Parse -> Validate -> Vault -> Merge -> Audit

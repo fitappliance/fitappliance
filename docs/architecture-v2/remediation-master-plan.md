@@ -1,8 +1,10 @@
 # Architecture V2 Remediation Master Plan
 
-Status: active  
-Last updated: 2026-07-12
-Decision owner: FitAppliance repository  
+Status: strategic migration baseline; active cross-cutting execution is
+controlled by the
+[`2026-07-20 system-first repair plan`](../superpowers/plans/2026-07-20-fitappliance-system-first-repair-control-plan.md)
+Last updated: 2026-07-21
+Decision owner: FitAppliance repository
 Audit baseline: [`repository-architecture-audit.md`](./repository-architecture-audit.md)
 Canonical product/data strategy: [`../product-core-brief.md`](../product-core-brief.md)
 
@@ -49,11 +51,38 @@ Architecture V2 is complete only when:
 | 0 | Domain contracts and read-only shadow audit | Complete |
 | 1 | Verified dimension overlay and quarantine reduction | Guardrails complete; 9 pending |
 | 2 | Canonical identity mapping | Shadow registry complete |
-| 3 | Retailer observation ledger and current-sale reconciliation | Legacy migration complete; collection adapters pending |
+| 3 | Retailer observation ledger and current-sale reconciliation | Complete; epoch-2 candidate accounts for all prior-current products with zero unresolved |
 | 4 | Source-document registry and PDF evidence state machine | State machine and quarantine baseline complete |
 | 5 | Category geometry and clearance migration | Contracts complete; evidence migration pending |
-| 6 | FitDecision parity and production cutover | Width parity complete; cutover authorised and deployment pending |
-| 7 | Runtime modularization and legacy deletion | Canonical views wired; deletion waits for rollback window |
+| 6 | FitDecision parity and production cutover | Candidate authorised with zero Fit violations and byte-identical rollback; deployment remains explicit |
+| 7 | Runtime modularization and legacy deletion | Canonical views wired; deletion deferred through the post-cutover rollback window |
+
+### Current system-first release gate
+
+Tasks 0-10 of the active system-first control plan have a complete epoch-2
+release candidate. The released 3,515-product epoch remains byte-identical and
+`BLOCKED` in `SHADOW_ONLY`; the 3,513-product candidate is independently
+`READY_FOR_CUTOVER`. It partitions all 1,384 prior-current products with zero
+unresolved IDs and zero unsafe removals, publishes 349 current-retail products,
+retains 77 products as non-commercial market references, and archives 3,087.
+The release candidate ID is
+`retail_lifecycle_release_6c42c754aeb1ff49097b32b4`.
+
+The earlier 79 blockers were closed without weakening evidence. The 76
+source-policy rows are market references rather than inferred retailer stock;
+LG `GS-B655PL` uses exact official AU identity but no sibling availability; the
+Fisher & Paykel embedded-model conflict is quarantined; and only the proven
+Haier duplicate is merged. Market-reference output has no price, stock,
+affiliate URL, sponsorship, CTA, or current Fit classification.
+The final public artifact also strips collection attempts and conflict payloads;
+the complete evidence remains in the control-plane shadow and ledger.
+
+The candidate release gate verifies source hashes against real files, reports
+zero Fit publication violations, and proves rollback to the released public
+projection byte-for-byte. Historical target state is schema v2 and binds five
+upstream artifacts by exact content SHA-256. Production materialization and
+deployment remain explicit operational actions; legacy deletion waits for the
+rollback observation window.
 
 ## Completed Work
 
@@ -359,8 +388,13 @@ description of code changes.
 
 ## Immediate Next Actions
 
-1. Commit these architecture documents as the durable baseline.
-2. Create the explicit alias-registry schema and rejection tests.
-3. Research the remaining nine quarantined models without family inference.
-4. Produce a Phase 1 completion report even if unresolved rows remain.
-5. Start canonical identity inventory before broad retailer ingestion changes.
+1. Review and commit the complete epoch-2 release unit; do not cherry-pick an
+   individual generated projection.
+2. Materialize the candidate only through the release command after deployment
+   authorization, then rebuild the complete offline DAG from that Git epoch.
+3. Deploy the complete release, monitor current-result counts, replacement
+   lookup, CTA visibility, Fit violations and rollback hashes as one unit.
+4. Roll back by redeploying the prior complete commit if any severity-1 data
+   issue appears; never delete immutable retailer, PDF or MinerU evidence.
+5. Remove legacy runtime paths only after the rollback observation window ends
+   with no unresolved correctness issue.

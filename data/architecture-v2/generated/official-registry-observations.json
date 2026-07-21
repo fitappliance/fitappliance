@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-12T11:13:49.000Z",
+  "generatedAt": "2026-07-12T12:40:00.000Z",
   "sourceCounts": {
     "energy-rating:fridge": {
       "rows": 3985,
@@ -20,8 +20,10 @@
   },
   "snapshotHashes": {
     "energy-rating:dishwasher": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+    "energy-rating:dryer": "dc1d443dac44ad3310356376df8e3418caed7265f99105f6918141cf5f3ff099",
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:metadata": "a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71",
+    "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "wels:all-models": "a9a124213e968ee2ea800c76e2f37a2120b0c4a50848a579c52cb1ff1f9c9446"
   },
   "canaries": [

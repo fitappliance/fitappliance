@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "runId": "historical-scale-p0-esatto-edw456s-dimensions-20260719-c",
+  "batchId": "historical-recovery-80fb5b96b8bbdf17bf74511e-slice-cb0614910d17",
+  "batchSha256": "8030f9d1c13e944c85c71f90c49845066d002fb7c6ab2526941835651aab9454",
+  "queueSha256": "b3974d0fa1ec43e7b627523aefd37a73901404866a82f4ef4ef237d6b409deee",
+  "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+  "startedAt": "2026-07-19T19:17:45.337Z",
+  "completedAt": "2026-07-19T19:18:58.376Z",
+  "semanticOutcomeSha256": "4b566dec6e448b169656fd1d755866127cfdf620ee24497a1174487233c91e7d",
+  "outcomes": [
+    {
+      "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
+      "status": "claims_incomplete",
+      "failureCode": "mineru",
+      "candidateInventorySha256": "6ec35c32b6b1225eaeb31e84f42a8c29266539509d4a678191ffc6542257e637",
+      "candidateInventory": {
+        "schemaVersion": 1,
+        "targetId": "recovery_target_8be97bde43aa0abbe886adc8",
+        "identity": {
+          "brand": "Esatto",
+          "model": "EDW456S",
+          "category": "dishwasher"
+        },
+        "completionStatus": "complete",
+        "incompleteResolvers": [],
+        "missingBatchCandidateJobIds": [],
+        "resolvers": [
+          {
+            "resolverId": "architecture-v2-core-official-discovery",
+            "version": "1",
+            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+            "required": false,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "batch-candidates",
+            "version": "1",
+            "scope": "recovery_batch_graph",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 2
+          },
+          {
+            "resolverId": "esatto-official-discovery",
+            "version": "1",
+            "scope": "esatto_legacy_discovery_only",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 2
+          }
+        ],
+        "activeReceiptSources": [],
+        "candidates": [
+          {
+            "candidateId": "candidate_261ad78de85b9fe0a1b83368",
+            "sourceUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
+            "batchJobIds": [
+              "recovery_fcad85266f62f8d0d31f4a67"
+            ],
+            "resolverRefs": [
+              {
+                "resolverId": "batch-candidates",
+                "version": "1",
+                "scope": "recovery_batch_graph",
+                "discoveryMethod": "recovery_batch",
+                "sourceRole": "manufacturer_document",
+                "order": 1
+              },
+              {
+                "resolverId": "esatto-official-discovery",
+                "version": "1",
+                "scope": "esatto_legacy_discovery_only",
+                "discoveryMethod": "esatto_legacy_finder",
+                "sourceRole": "manufacturer_product_page",
+                "order": 1
+              }
+            ],
+            "outcome": {
+              "status": "claims_incomplete",
+              "failureCode": "claim_semantics",
+              "reason": "no supported evidence claims extracted",
+              "artifactBinding": {
+                "sourceUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+                "finalUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+                "contentSha256": "739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277",
+                "objectPath": "evidence/web/sha256/73/9f/739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277.html",
+                "contentType": "text/html",
+                "byteSize": 369831
+              },
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_d3a24d304983f7a0f8b226a7",
+            "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_product_page",
+              "market": "AU",
+              "discoveryUrl": "https://esatto.house/dishwashers/p/45cm-compact-freestanding-dishwasher-stainless-steel-edw456s",
+              "requestedModel": "EDW456S",
+              "matchedModel": "EDW456S",
+              "artifactUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+              "artifactLinkUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+              "discoveryContentSha256": "739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277",
+              "discoveryObjectPath": "evidence/web/sha256/73/9f/739fedb0bbe127cc2a49df9bdbfe2fe50962e67e7b571f780eb37750bbe2f277.html",
+              "discoveryByteSize": 369831
+            },
+            "batchJobIds": [
+              "recovery_b8c839baf551e10c87370239"
+            ],
+            "resolverRefs": [
+              {
+                "resolverId": "batch-candidates",
+                "version": "1",
+                "scope": "recovery_batch_graph",
+                "discoveryMethod": "recovery_batch",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              },
+              {
+                "resolverId": "esatto-official-discovery",
+                "version": "1",
+                "scope": "esatto_legacy_discovery_only",
+                "discoveryMethod": "esatto_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "mineru_failure",
+              "failureCode": "mineru",
+              "reason": "no exact-model MinerU evidence with explicit axes extracted",
+              "artifactBinding": {
+                "sourceUrl": "https://esatto.house/s/EDW456S_UserManual_V21-0523.pdf",
+                "finalUrl": "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/6476eb0886a1d920cefd5642/1685515038799/EDW456S_UserManual_V2.1+0523.pdf",
+                "contentSha256": "b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93",
+                "objectPath": "evidence/web/sha256/b3/26/b326268b2ca19065d915e05100dac8ada4e9bbd54a97da0ff671dbb02ffc1c93.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 7039208
+              },
+              "source": null
+            }
+          }
+        ],
+        "candidateInventorySha256": "6ec35c32b6b1225eaeb31e84f42a8c29266539509d4a678191ffc6542257e637"
+      },
+      "sources": [],
+      "geometryProjection": null,
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "7bd35e5de4cf2cfc768a57a8f69691c6cfa2f95528e29277433e6bd63e139c2f"
+    }
+  ],
+  "summary": {
+    "targets": 1,
+    "accepted": 0,
+    "nonScalar": 0,
+    "retryable": 0,
+    "terminal": 1
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-16T12:11:45.186Z",
+  "run": {
+    "runId": "historical-asko-current-au-dishwashers-20260716-b",
+    "batchId": "historical-recovery-fb355ad65e354c456fcb9766-slice-324db49275fe",
+    "semanticOutcomeSha256": "abab1cb1079a5ab1189e52912aa6273247f8556d0f1d29c3043a6ef2fc17b373",
+    "batchSha256": "52557525f01abc42af57bbf09da52eaa4e75b4abf0ba6770bdbe6240620b9c60",
+    "queueSha256": "c45dc5c297802b5377f559db5313541b625a75612b3041c848ab860f54aec4e5",
+    "policySha256": "5c724abfc6df24de0a3adf79164190100c04813595aa99c0d517bd1c395d84b2",
+    "toolchainSha256": "62242c2ca5a3e225d7ed4876db8ee8cea2a8c607150478db7870512f47be1209"
+  },
+  "definitions": {
+    "fetched": "Official candidate reached payload or parser processing; transport failures and optional product pages are excluded.",
+    "parsed": "Official candidate reached claim or identity evaluation after MinerU processing.",
+    "identityAccepted": "Target has at least one accepted official candidate source.",
+    "allAxisAccepted": "Target has an accepted official source with width, height and depth claims.",
+    "receiptAccepted": "Target has an accepted official source with a verification receipt binding.",
+    "officialHostCoverage": "Targets with at least one official candidate divided by attempted targets."
+  },
+  "summary": {
+    "brands": 1,
+    "targets": 3,
+    "completedTargets": 3,
+    "targetsWithOfficialCandidate": 3,
+    "officialCandidatesFetched": 3,
+    "officialCandidatesParsed": 3,
+    "identityAccepted": 3,
+    "allAxisAccepted": 3,
+    "receiptAccepted": 3
+  },
+  "safety": {
+    "referenceCandidatesAccepted": 0,
+    "acceptedTargetsWithoutAllAxisReceipt": 0,
+    "zeroUnsafePromotion": true
+  },
+  "brands": [
+    {
+      "brandKey": "asko",
+      "brand": "ASKO",
+      "targets": 3,
+      "completedTargets": 3,
+      "targetStatuses": {
+        "accepted": 3
+      },
+      "candidateCounts": {
+        "total": 3,
+        "official": 3,
+        "reference": 0,
+        "fromBatch": 0,
+        "fromCoreDiscovery": 0,
+        "fromBrandAdapter": 3,
+        "brandAdapterOfficial": 3,
+        "brandAdapterReference": 0
+      },
+      "candidateOutcomes": {
+        "accepted": 3
+      },
+      "funnel": {
+        "targetsWithOfficialCandidate": 3,
+        "officialCandidatesFetched": 3,
+        "officialCandidatesParsed": 3,
+        "identityAccepted": 3,
+        "allAxisAccepted": 3,
+        "receiptAccepted": 3
+      },
+      "quarantinedByReason": {},
+      "officialHostCoverage": 1
+    }
+  ]
+}

@@ -1,15 +1,52 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-12.1",
+  "policyVersion": "2026-07-21.1",
+  "supportedReceiptPolicyVersions": [
+    "2026-07-12.1",
+    "2026-07-14.1",
+    "2026-07-15.1",
+    "2026-07-16.1",
+    "2026-07-16.2",
+    "2026-07-16.3",
+    "2026-07-16.4",
+    "2026-07-21.1"
+  ],
+  "officialHtmlModelVariantSuffixes": {
+    "westinghouse": {
+      "fridge": ["L", "R"]
+    },
+    "samsung": {
+      "washing_machine": [
+        {
+          "suffix": "SA",
+          "separator": ""
+        }
+      ]
+    }
+  },
+  "officialMarketApiModelVariantSuffixes": {
+    "asko": {
+      "fridge": [".AU"],
+      "dishwasher": [".AU"],
+      "dryer": [".AU"],
+      "washing_machine": [".AU"]
+    }
+  },
   "maxEvidenceAgeDays": 400,
+  "marketQualifiedHosts": {
+    "esatto": ["esatto.house"],
+    "hisense": ["dtc-aus-api.hisense.com"]
+  },
   "marketPathPatterns": {
+    "asko": ["^/(?:p/|products/|manuals(?:/|$)|ggcommercewebservices/v2/asko-au/)"],
     "lg": ["^/au(?:/|$)", "^/content/dam/channel/wcms/au(?:/|$)"],
     "samsung": ["^/au(?:/|$)", "[?&]CDSite=UNI_AU(?:&|$)"]
   },
   "brands": {
     "artusi": ["artusi.com.au"],
+    "asko": ["asko.com"],
     "beko": ["beko.com"],
-    "bosch": ["bosch-home.com"],
+    "bosch": ["bosch-home.com", "bosch-home.com.au"],
     "chiq": ["chiq.com.au"],
     "electrolux": ["electrolux.com.au", "resource.electrolux.com.au"],
     "esatto": ["esatto.house", "residentia.group"],

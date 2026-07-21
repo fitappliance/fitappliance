@@ -10,6 +10,7 @@ import {
   LOOKUP_ACTIONS,
   buildHistoricalApplianceReference,
   createHistoricalReferenceRecord,
+  historicalReferenceIdFor,
   isCurrentRetailProduct,
 } from '../../src/domain/historical-appliance-reference.mjs';
 import { createRegistrySnapshotManifest } from '../../src/domain/official-registry-snapshot.mjs';
@@ -41,7 +42,7 @@ test('historical reference exposes independent lifecycle, evidence, and lookup e
     'CURRENT_RETAIL', 'CATALOG_ARCHIVED', 'REGISTRY_ONLY', 'UNKNOWN_RETAIL',
   ]);
   assert.deepEqual(DIMENSION_EVIDENCE_STATES, [
-    'CATALOG_RECEIPT', 'REGISTRY_CONSISTENT', 'IDENTITY_ONLY',
+    'CATALOG_RECEIPT', 'MODEL_RECEIPT', 'REGISTRY_CONSISTENT', 'IDENTITY_ONLY',
     'INTERNAL_CONFLICT', 'AXIS_SUSPECT', 'INVALID_DIMENSIONS',
   ]);
   assert.deepEqual(LOOKUP_ACTIONS, [
@@ -77,6 +78,133 @@ test('receipt agreement can auto-fill while identity-only requires measurement',
   });
   assert.equal(identityOnly.lookupAction, 'MEASURE_REQUIRED');
   assert.equal(identityOnly.dimensionsMm, null);
+});
+
+function recoveryProjection({
+  category = 'fridge',
+  brand = 'Example',
+  model = 'MODEL1',
+  lifecycleState = 'CATALOG_ARCHIVED',
+  dimensionsMm = { width: 600, height: 1700, depth: 650 },
+  acceptanceStatus = dimensionsMm ? 'accepted' : 'receipt_accepted_non_scalar',
+  geometryProjection = null,
+  modelReceipts = null,
+} = {}) {
+  return {
+    schemaVersion: 1,
+    bundleId: 'historical-recovery-cumulative-v1',
+    bundleSha256: '9'.repeat(64),
+    records: [{
+      targetId: 'recovery_target_example',
+      referenceId: historicalReferenceIdFor(category, brand, model),
+      legacyRuntimeId: 'fridge-example-model1',
+      canonicalProductId: 'fa_prod_example_model1',
+      category,
+      brand,
+      model,
+      lifecycleState,
+      acceptanceStatus,
+      dimensionsMm,
+      geometryProjection,
+      modelReceipts: modelReceipts ?? [{
+        targetId: 'recovery_target_example',
+        sourceUrl: 'https://example.com/model1.pdf',
+        contentSha256: '7'.repeat(64),
+        receiptBindingSha256: '8'.repeat(64),
+        verifiedAt: '2026-07-13T00:00:00.000Z',
+        fields: dimensionsMm ? {
+          width: { page: 1, fragmentSha256: '1'.repeat(64) },
+          height: { page: 1, fragmentSha256: '2'.repeat(64) },
+          depth: { page: 1, fragmentSha256: '3'.repeat(64) },
+        } : {
+          width: { page: 1, fragmentSha256: '1'.repeat(64) },
+        },
+      }],
+    }],
+    summary: { records: 1, scalarDimensions: dimensionsMm ? 1 : 0, nonScalar: dimensionsMm ? 0 : 1 },
+  };
+}
+
+test('HTML model receipts bind axes to the immutable artifact without a fake PDF fragment', () => {
+  const projection = recoveryProjection({
+    modelReceipts: [{
+      targetId: 'recovery_target_example',
+      sourceUrl: 'https://example.com/model1/',
+      contentType: 'text/html',
+      objectPath: `evidence/web/sha256/${'7'.repeat(2)}/${'7'.repeat(2)}/${'7'.repeat(64)}.html`,
+      contentSha256: '7'.repeat(64),
+      receiptBindingSha256: '8'.repeat(64),
+      verifiedAt: '2026-07-13T00:00:00.000Z',
+      fields: {
+        width: { locatorKind: 'HTML_ARTIFACT', artifactSha256: '7'.repeat(64) },
+        height: { locatorKind: 'HTML_ARTIFACT', artifactSha256: '7'.repeat(64) },
+        depth: { locatorKind: 'HTML_ARTIFACT', artifactSha256: '7'.repeat(64) },
+      },
+    }],
+  });
+  const result = buildHistoricalApplianceReference({
+    observations: [],
+    catalogProducts: [],
+    historicalEvidenceProjection: projection,
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  assert.equal(result.records[0].modelReceipts[0].fields.depth.locatorKind, 'HTML_ARTIFACT');
+  assert.equal(result.records[0].modelReceipts[0].fields.depth.artifactSha256, '7'.repeat(64));
+  assert.equal(result.records[0].modelReceipts[0].objectPath.endsWith('.html'), true);
+});
+
+test('JSON model receipts bind axes to the immutable structured artifact without a fake page locator', () => {
+  const projection = recoveryProjection({
+    modelReceipts: [{
+      targetId: 'recovery_target_example',
+      sourceUrl: 'https://api-storefront.asko.com/product/1',
+      contentType: 'application/json',
+      objectPath: `evidence/web/sha256/${'7'.repeat(2)}/${'7'.repeat(2)}/${'7'.repeat(64)}.json`,
+      contentSha256: '7'.repeat(64),
+      receiptBindingSha256: '8'.repeat(64),
+      verifiedAt: '2026-07-16T00:00:00.000Z',
+      fields: {
+        width: { locatorKind: 'JSON_ARTIFACT', artifactSha256: '7'.repeat(64) },
+        height: { locatorKind: 'JSON_ARTIFACT', artifactSha256: '7'.repeat(64) },
+        depth: { locatorKind: 'JSON_ARTIFACT', artifactSha256: '7'.repeat(64) },
+      },
+    }],
+  });
+  const result = buildHistoricalApplianceReference({
+    observations: [], catalogProducts: [], historicalEvidenceProjection: projection,
+    catalogSnapshotSha256: 'd'.repeat(64), generatedAt: '2026-07-16T00:00:00.000Z',
+  });
+  const receipt = result.records[0].modelReceipts[0];
+  assert.equal(receipt.fields.depth.locatorKind, 'JSON_ARTIFACT');
+  assert.equal(receipt.fields.depth.artifactSha256, '7'.repeat(64));
+  assert.equal(receipt.objectPath.endsWith('.json'), true);
+});
+
+test('PDF model receipts cannot weaken page-fragment replay binding', () => {
+  const projection = recoveryProjection({
+    modelReceipts: [{
+      targetId: 'recovery_target_example',
+      sourceUrl: 'https://example.com/model1.pdf',
+      contentType: 'application/pdf',
+      objectPath: `evidence/web/sha256/${'7'.repeat(2)}/${'7'.repeat(2)}/${'7'.repeat(64)}.pdf`,
+      contentSha256: '7'.repeat(64),
+      receiptBindingSha256: '8'.repeat(64),
+      verifiedAt: '2026-07-13T00:00:00.000Z',
+      fields: {
+        width: { locatorKind: 'PDF_FRAGMENT', page: 1, fragmentSha256: null },
+      },
+    }],
+  });
+
+  assert.throws(() => buildHistoricalApplianceReference({
+    observations: [],
+    catalogProducts: [],
+    historicalEvidenceProjection: projection,
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  }), /PDF.*fragment hash required/i);
 });
 
 function observation({
@@ -144,7 +272,21 @@ function receiptProduct(overrides = {}) {
 }
 
 test('current retail classification requires availability and a product-page URL', () => {
-  assert.equal(isCurrentRetailProduct(receiptProduct()), true);
+  const product = receiptProduct();
+  const decision = {
+    canonicalProductId: product.canonicalProductId,
+    lifecycleState: 'CURRENT_RETAIL',
+    authorizingObservation: {
+      id: 'obs_current',
+      canonicalProductId: product.canonicalProductId,
+      availability: 'available',
+      listingState: 'current',
+      freshnessState: 'FRESH',
+      rawSourceSha256: 'a'.repeat(64),
+    },
+  };
+  assert.equal(isCurrentRetailProduct(product), false);
+  assert.equal(isCurrentRetailProduct(product, decision), true);
   assert.equal(isCurrentRetailProduct(receiptProduct({ unavailable: true })), false);
   assert.equal(isCurrentRetailProduct(receiptProduct({
     retailers: [{ n: 'Retailer', url: 'https://www.thegoodguys.com.au/search?q=eqe6160ba' }],
@@ -161,16 +303,169 @@ test('exact receipt dimensions outrank an axis-suspect registry observation with
       brand: 'Electrolux', model: 'EQE6160BA', dimensions: { width: 1782, height: 913, depth: 749 },
     })],
     catalogProducts: [receiptProduct()],
+    retailerObservations: [{
+      id: 'obs_eqe6160ba', canonicalProductId: 'fa_prod_eqe6160ba',
+      retailer: 'The Good Guys', adapterId: 'tgg-feed-v1',
+      observedAt: '2026-07-12T00:00:00.000Z',
+      url: 'https://www.thegoodguys.com.au/electrolux-eqe6160ba',
+      availability: 'available', priceAud: null, sourceType: 'affiliate_feed',
+      listingState: 'current', sourceReference: 'fixture:eqe6160ba',
+      rawSourceSha256: 'e'.repeat(64), policyVersion: 'tgg-source-v1',
+      expectedCadenceHours: 24, maximumCurrentAgeHours: 72,
+      retailerProductId: 'eqe6160ba',
+    }],
+    retailerObservationSnapshotSha256: 'f'.repeat(64),
+    retailLifecyclePolicyVersion: 'retail-lifecycle-v1',
+    retailAsOf: '2026-07-12T12:40:00.000Z',
     catalogSnapshotSha256: 'd'.repeat(64),
     generatedAt: '2026-07-12T12:40:00.000Z',
   });
   const [record] = result.records;
   assert.equal(record.lifecycleState, 'CURRENT_RETAIL');
+  assert.equal(record.retailLifecycle.authorizingObservation.id, 'obs_eqe6160ba');
+  assert.equal(record.retailLifecycle.authorizingObservation.rawSourceSha256, 'e'.repeat(64));
   assert.equal(record.evidenceState, 'CATALOG_RECEIPT');
   assert.equal(record.lookupAction, 'AUTO_FILL');
   assert.deepEqual(record.dimensionsMm, { width: 913, height: 1782, depth: 749 });
   assert.equal(record.registryDimensionState, 'AXIS_SUSPECT');
   assert.ok(record.reasonCodes.includes('REGISTRY_AXIS_PERMUTATION_CONFLICT'));
+});
+
+test('legacy availability, product URL, and active registry do not authorize current retail', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [observation({ brand: 'Electrolux', model: 'EQE6160BA' })],
+    catalogProducts: [receiptProduct()],
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-12T12:40:00.000Z',
+  });
+  assert.equal(result.records[0].registryMarketState, 'ACTIVE_AU');
+  assert.equal(result.records[0].lifecycleState, 'UNKNOWN_RETAIL');
+  assert.equal(result.records[0].retailLifecycle.authorizingObservation, null);
+});
+
+test('an explicit legacy-baseline rebuild reproduces the frozen release without minting an observation decision', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [observation({ brand: 'Electrolux', model: 'EQE6160BA' })],
+    catalogProducts: [receiptProduct()],
+    lifecycleMode: 'LEGACY_BASELINE',
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-12T12:40:00.000Z',
+  });
+
+  assert.equal(result.records[0].lifecycleState, 'CURRENT_RETAIL');
+  assert.equal(Object.hasOwn(result.records[0], 'retailLifecycle'), false);
+});
+
+test('historical reference rejects an unknown lifecycle build mode', () => {
+  assert.throws(() => buildHistoricalApplianceReference({
+    observations: [],
+    catalogProducts: [],
+    lifecycleMode: 'AUTO',
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-12T12:40:00.000Z',
+  }), /unsupported historical lifecycle mode/i);
+});
+
+test('exact recovery receipt outranks registry dimensions and retains model receipt provenance', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [observation({
+      brand: 'Example', model: 'MODEL1', dimensions: { width: 1700, height: 600, depth: 650 },
+    })],
+    catalogProducts: [receiptProduct({
+      id: 'fridge-example-model1', canonicalProductId: 'fa_prod_example_model1',
+      brand: 'Example', model: 'MODEL1', unavailable: true, retailers: [],
+      geometry_v2: null, geometry_v2_provenance: null,
+    })],
+    historicalEvidenceProjection: recoveryProjection(),
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  const [record] = result.records;
+  assert.equal(record.evidenceState, 'MODEL_RECEIPT');
+  assert.equal(record.lookupAction, 'AUTO_FILL');
+  assert.deepEqual(record.dimensionsMm, { width: 600, height: 1700, depth: 650 });
+  assert.equal(record.registryDimensionState, 'AXIS_SUSPECT');
+  assert.equal(record.modelReceipts[0].receiptBindingSha256, '8'.repeat(64));
+});
+
+test('registry-only exact recovery receipt remains historical and auto-fillable', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [observation()],
+    catalogProducts: [],
+    historicalEvidenceProjection: recoveryProjection({ lifecycleState: 'REGISTRY_ONLY' }),
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  assert.equal(result.records[0].lifecycleState, 'REGISTRY_ONLY');
+  assert.equal(result.records[0].evidenceState, 'MODEL_RECEIPT');
+  assert.equal(result.records[0].lookupAction, 'AUTO_FILL');
+});
+
+test('conflicting catalog and recovery receipts quarantine instead of overwriting', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [],
+    catalogProducts: [receiptProduct({
+      id: 'fridge-example-model1', canonicalProductId: 'fa_prod_example_model1',
+      brand: 'Example', model: 'MODEL1', unavailable: true, retailers: [],
+    })],
+    historicalEvidenceProjection: recoveryProjection(),
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  const [record] = result.records;
+  assert.equal(record.evidenceState, 'INTERNAL_CONFLICT');
+  assert.equal(record.lookupAction, 'QUARANTINED');
+  assert.equal(record.dimensionsMm, null);
+  assert.ok(record.reasonCodes.includes('MULTIPLE_MODEL_RECEIPTS_CONFLICT'));
+});
+
+test('partial recovery receipt is retained but cannot make registry dimensions auto-fill', () => {
+  const projection = recoveryProjection({ dimensionsMm: null });
+  const result = buildHistoricalApplianceReference({
+    observations: [observation()],
+    catalogProducts: [],
+    historicalEvidenceProjection: projection,
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  const [record] = result.records;
+  assert.equal(record.evidenceState, 'REGISTRY_CONSISTENT');
+  assert.equal(record.lookupAction, 'CONFIRM_REQUIRED');
+  assert.equal(record.modelReceipts.length, 1);
+  assert.ok(record.reasonCodes.includes('MODEL_RECEIPT_NON_SCALAR'));
+});
+
+test('accepted adjustable-height receipt is retained but cannot become scalar auto-fill', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [observation()],
+    catalogProducts: [],
+    historicalEvidenceProjection: recoveryProjection({
+      dimensionsMm: null,
+      acceptanceStatus: 'accepted',
+      geometryProjection: {
+        geometry: {
+          closedEnvelope: {
+            widthMm: 600,
+            heightMm: { minimumMm: 1680, maximumMm: 1720 },
+            depthMm: 650,
+          },
+        },
+      },
+    }),
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  const [record] = result.records;
+  assert.equal(record.evidenceState, 'REGISTRY_CONSISTENT');
+  assert.equal(record.lookupAction, 'CONFIRM_REQUIRED');
+  assert.deepEqual(record.dimensionsMm, { width: 600, height: 1700, depth: 650 });
+  assert.equal(record.modelReceipts.length, 1);
+  assert.ok(record.reasonCodes.includes('MODEL_RECEIPT_NON_SCALAR'));
 });
 
 test('registry-only exact identities separate consistent, missing, and conflicting dimensions', () => {

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "historical-model-evidence-classification-v2",
+  "expectedReferenceCount": 8089,
+  "blockingConflicts": [
+    "SOURCE_CONFLICT",
+    "IDENTITY_CONFLICT",
+    "INVALID_DIMENSIONS"
+  ],
+  "receiptEligibleAuthorities": [
+    "OFFICIAL"
+  ],
+  "exactIdentityScopes": [
+    "EXACT_MODEL",
+    "PAGE_SCOPED_EXACT"
+  ],
+  "completeExtractionStates": [
+    "ALL_AXIS_SCALAR",
+    "ALL_AXIS_RANGE"
+  ],
+  "currentReceiptState": "CURRENT_VALID",
+  "lifecyclePriorities": {
+    "CURRENT_RETAIL": "P0_CURRENT_RETAIL",
+    "CATALOG_ARCHIVED": "P1_CATALOG_ARCHIVED",
+    "REGISTRY_ONLY": "P2_REGISTRY_ONLY",
+    "UNKNOWN_RETAIL": "P2_REGISTRY_ONLY"
+  },
+  "conflictPriority": "P3_CONFLICT",
+  "actions": {
+    "COMPLETE_RECEIPT": "NO_ACTION",
+    "OFFLINE_REPLAY": "REPLAY_CURRENT_MINERU",
+    "OFFLINE_PARSER_REPAIR": "REPAIR_SHARED_GRAMMAR",
+    "PDF_RECONVERT": "CONVERT_STORED_PDF",
+    "OFFICIAL_REACQUIRE": "REACQUIRE_OFFICIAL_SOURCE",
+    "REFERENCE_REDISCOVERY": "REDISCOVER_OFFICIAL_SOURCE",
+    "OFFICIAL_DISCOVERY": "DISCOVER_OFFICIAL_SOURCE",
+    "IDENTITY_RESEARCH": "RUN_IDENTITY_CLOSURE",
+    "CONFLICT_QUARANTINE": "RUN_CONFLICT_CLOSURE",
+    "OFFICIAL_HTML_ONLY": "RECORD_NO_PDF_HTML_TERMINAL",
+    "NO_OFFICIAL_SOURCE": "RECORD_NO_SOURCE_TERMINAL"
+  }
+}

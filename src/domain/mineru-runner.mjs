@@ -4,7 +4,11 @@ import { mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from 'node:f
 import { basename, dirname, join, resolve, sep } from 'node:path';
 import { promisify } from 'node:util';
 
-import { buildMineruDerivedArtifact } from './mineru-document.mjs';
+import {
+  buildMineruDerivedArtifact,
+  findMineruImageOnlyDimensionPages,
+} from './mineru-document.mjs';
+import { attestMineruToolIdentity } from './mineru-tool-identity.mjs';
 import { evidenceSourcePolicy } from './evidence-source-verifier.mjs';
 
 const execFile = promisify(execFileCallback);
@@ -29,7 +33,36 @@ function mineruReportedPageCount(error) {
 function normalizedProcessing(value, pageCount) {
   const processing = value ?? { strategy: 'whole_document' };
   if (processing.strategy === 'whole_document') return { strategy: 'whole_document' };
-  if (processing.strategy !== 'page_ranges' || !Array.isArray(processing.ranges) || !processing.ranges.length) {
+  if (processing.strategy === 'selected_page_ranges') {
+    if (!Array.isArray(processing.ranges) || !processing.ranges.length
+      || !Array.isArray(processing.selectedPages) || !processing.selectedPages.length
+      || processing.sourcePageCount !== pageCount) {
+      throw new Error('MinerU cache integrity failure: selected page processing invalid');
+    }
+    const selectedPages = [...new Set(processing.selectedPages)].sort((left, right) => left - right);
+    if (selectedPages.some((page) => !Number.isInteger(page) || page < 1 || page > pageCount)) {
+      throw new Error('MinerU cache integrity failure: selected page map invalid');
+    }
+    const expectedRanges = [];
+    for (const page of selectedPages) {
+      const zeroBased = page - 1;
+      const last = expectedRanges.at(-1);
+      if (last && last[1] + 1 === zeroBased) last[1] = zeroBased;
+      else expectedRanges.push([zeroBased, zeroBased]);
+    }
+    if (JSON.stringify(expectedRanges) !== JSON.stringify(processing.ranges)) {
+      throw new Error('MinerU cache integrity failure: selected page ranges invalid');
+    }
+    return {
+      strategy: 'selected_page_ranges',
+      ranges: expectedRanges,
+      selectedPages,
+      sourcePageCount: pageCount,
+    };
+  }
+  const hasOperationalFallback = processing.strategy === 'page_ranges_with_operational_fallback';
+  if (!['page_ranges', 'page_ranges_with_operational_fallback'].includes(processing.strategy)
+    || !Array.isArray(processing.ranges) || !processing.ranges.length) {
     throw new Error('MinerU cache integrity failure: processing strategy invalid');
   }
   let expectedStart = 0;
@@ -43,6 +76,15 @@ function normalizedProcessing(value, pageCount) {
     return [range[0], range[1]];
   });
   if (expectedStart !== pageCount) throw new Error('MinerU cache integrity failure: page ranges incomplete');
+  if (hasOperationalFallback) {
+    const fallbackPages = [...new Set(processing.fallbackPages ?? [])].sort((left, right) => left - right);
+    if (!Array.isArray(processing.fallbackPages) || !fallbackPages.length
+      || fallbackPages.length !== processing.fallbackPages.length
+      || fallbackPages.some((page) => !Number.isInteger(page) || page < 1 || page > pageCount)) {
+      throw new Error('MinerU cache integrity failure: operational fallback page map invalid');
+    }
+    return { strategy: processing.strategy, ranges, fallbackPages };
+  }
   return { strategy: 'page_ranges', ranges };
 }
 
@@ -77,19 +119,6 @@ function validatePdfPayload(pdfBytes, maximumPdfBytes) {
   return bytes;
 }
 
-function parserVersion(stdout) {
-  const match = /\bversion\s+(\d+\.\d+\.\d+)\b/i.exec(String(stdout ?? ''));
-  if (!match) throw new Error('MinerU version output invalid');
-  return match[1];
-}
-
-function modelRevision(stdout) {
-  const marker = /\bfitappliance-model-revision\s+([a-f0-9]{40})\b/i.exec(String(stdout ?? ''))?.[1];
-  const revision = String(marker ?? '').toLowerCase();
-  if (!/^[a-f0-9]{40}$/.test(revision)) throw new Error('MinerU model revision is not attested');
-  return revision;
-}
-
 function sha256(bytes) {
   return createHash('sha256').update(bytes).digest('hex');
 }
@@ -98,6 +127,79 @@ function resolveStoragePath(storageRoot, relativePath) {
   const path = resolve(storageRoot, ...String(relativePath ?? '').split('/'));
   if (!path.startsWith(`${storageRoot}${sep}`)) throw new Error('MinerU cache path escaped storage root');
   return path;
+}
+
+function resolvedProfile(options = {}) {
+  if (!options.profileId) {
+    return { ...evidenceSourcePolicy.resolutionPolicy.pdfEvidence, profileId: null, legacyCache: true };
+  }
+  const profile = evidenceSourcePolicy.resolutionPolicy.pdfEvidenceProfiles
+    ?.find((entry) => entry.profileId === options.profileId);
+  if (!profile) throw new TypeError(`unsupported MinerU profile: ${options.profileId}`);
+  return { ...profile, legacyCache: false };
+}
+
+function selectedPageProcessing(options = {}) {
+  if (options.selectedPages == null) {
+    if (options.sourcePageCount != null) throw new TypeError('source page count requires selected pages');
+    return null;
+  }
+  if (!Array.isArray(options.selectedPages) || options.selectedPages.length === 0
+    || !Number.isInteger(options.sourcePageCount) || options.sourcePageCount < 1) {
+    throw new TypeError('selected MinerU pages and source page count required');
+  }
+  const pages = [...new Set(options.selectedPages)].sort((left, right) => left - right);
+  if (pages.some((page) => !Number.isInteger(page) || page < 1 || page > options.sourcePageCount)) {
+    throw new TypeError('selected MinerU page is outside the source PDF');
+  }
+  const ranges = [];
+  for (const page of pages) {
+    const zeroBased = page - 1;
+    const last = ranges.at(-1);
+    if (last && last[1] + 1 === zeroBased) last[1] = zeroBased;
+    else ranges.push([zeroBased, zeroBased]);
+  }
+  return Object.freeze({
+    strategy: 'selected_page_ranges',
+    ranges: Object.freeze(ranges.map((range) => Object.freeze(range))),
+    selectedPages: Object.freeze(pages),
+    sourcePageCount: options.sourcePageCount,
+  });
+}
+
+function cacheIndexPath(storageRoot, pdfSha256, expected, selected) {
+  if (expected.legacyCache && !selected) {
+    return join(storageRoot, 'cache', 'mineru-index', `${pdfSha256}.json`);
+  }
+  const signature = sha256(Buffer.from(JSON.stringify({
+    profileId: expected.profileId,
+    selectedPages: selected?.selectedPages ?? null,
+    sourcePageCount: selected?.sourcePageCount ?? null,
+    fallbackTrigger: expected.fallbackTrigger ?? null,
+  })));
+  return join(
+    storageRoot,
+    'cache',
+    'mineru-index-v2',
+    pdfSha256,
+    expected.profileId ?? 'pipeline-auto-v1',
+    `${signature}.json`,
+  );
+}
+
+function artifactBuildOptions(pdfSha256, expected, selected, extra = {}) {
+  return {
+    pdfSha256,
+    parserVersion: expected.parserVersion,
+    modelRevision: expected.modelRevision,
+    ...(expected.profileId ? { profile: expected } : {}),
+    ...(selected ? {
+      processedPages: [...selected.selectedPages],
+      sourcePageCount: selected.sourcePageCount,
+    } : {}),
+    ...(expected.fallbackTrigger ? { fallbackTrigger: expected.fallbackTrigger } : {}),
+    ...extra,
+  };
 }
 
 async function writeImmutable(path, bytes, expectedHash) {
@@ -111,8 +213,8 @@ async function writeImmutable(path, bytes, expectedHash) {
   }
 }
 
-async function inspectCache(storageRoot, pdfSha256, expected) {
-  const indexPath = join(storageRoot, 'cache', 'mineru-index', `${pdfSha256}.json`);
+async function inspectCache(storageRoot, pdfSha256, expected, selected = null) {
+  const indexPath = cacheIndexPath(storageRoot, pdfSha256, expected, selected);
   let indexBytes;
   try {
     indexBytes = await readFile(indexPath);
@@ -123,7 +225,8 @@ async function inspectCache(storageRoot, pdfSha256, expected) {
   if (indexBytes.length > 64 * 1024) throw new Error('MinerU cache integrity failure: index too large');
   let index;
   try { index = JSON.parse(indexBytes); } catch { throw new Error('MinerU cache integrity failure: invalid index'); }
-  if (index?.schemaVersion !== 1 || index.sourcePdfSha256 !== pdfSha256) {
+  if (index?.schemaVersion !== 1 || index.sourcePdfSha256 !== pdfSha256
+    || (expected.profileId && index.profileId !== expected.profileId)) {
     throw new Error('MinerU cache integrity failure: PDF binding mismatch');
   }
   const artifact = index.derivedArtifact;
@@ -147,11 +250,10 @@ async function inspectCache(storageRoot, pdfSha256, expected) {
   }
   let replayed;
   try {
-    replayed = buildMineruDerivedArtifact(jsonBytes, {
-      pdfSha256,
-      parserVersion: expected.parserVersion,
-      modelRevision: expected.modelRevision,
-    });
+    replayed = buildMineruDerivedArtifact(
+      jsonBytes,
+      artifactBuildOptions(pdfSha256, expected, selected),
+    );
   } catch (error) {
     throw new Error(`MinerU cache integrity failure: ${error.message}`);
   }
@@ -159,6 +261,12 @@ async function inspectCache(storageRoot, pdfSha256, expected) {
     throw new Error('MinerU cache integrity failure: artifact metadata mismatch');
   }
   const processing = normalizedProcessing(index.processing, replayed.pageCount);
+  if (processing.strategy === 'page_ranges_with_operational_fallback') {
+    const pages = JSON.parse(jsonBytes.toString('utf8'));
+    if (processing.fallbackPages.some((page) => !Array.isArray(pages[page - 1]) || pages[page - 1].length)) {
+      throw new Error('MinerU cache integrity failure: operational fallback page is not an empty primary gap');
+    }
+  }
   return {
     status: 'indexed',
     sourcePdfSha256: pdfSha256,
@@ -167,29 +275,34 @@ async function inspectCache(storageRoot, pdfSha256, expected) {
     jsonBytes,
     derivedArtifact: replayed,
     processing,
+    ...(processing.fallbackPages ? { operationalFallbackPages: processing.fallbackPages } : {}),
   };
 }
 
-async function readCache(storageRoot, pdfSha256, expected) {
-  const inspection = await inspectCache(storageRoot, pdfSha256, expected);
+async function readCache(storageRoot, pdfSha256, expected, selected = null) {
+  const inspection = await inspectCache(storageRoot, pdfSha256, expected, selected);
   if (inspection.status !== 'indexed') return null;
   return {
     jsonBytes: inspection.jsonBytes,
     derivedArtifact: inspection.derivedArtifact,
     processing: inspection.processing,
+    ...(inspection.operationalFallbackPages
+      ? { operationalFallbackPages: inspection.operationalFallbackPages }
+      : {}),
   };
 }
 
-async function writeCache(storageRoot, result) {
+async function writeCache(storageRoot, result, expected, selected = null) {
   const artifact = result.derivedArtifact;
   const objectPath = resolveStoragePath(storageRoot, artifact.objectPath);
   await writeImmutable(objectPath, result.jsonBytes, artifact.contentSha256);
-  const indexPath = join(storageRoot, 'cache', 'mineru-index', `${artifact.sourcePdfSha256}.json`);
+  const indexPath = cacheIndexPath(storageRoot, artifact.sourcePdfSha256, expected, selected);
   await mkdir(dirname(indexPath), { recursive: true });
   const temporaryPath = `${indexPath}.${process.pid}.${randomUUID()}.tmp`;
   const index = Buffer.from(`${JSON.stringify({
     schemaVersion: 1,
     sourcePdfSha256: artifact.sourcePdfSha256,
+    ...(expected.profileId ? { profileId: expected.profileId } : {}),
     parserVersion: artifact.parserVersion,
     modelRevision: artifact.modelRevision,
     derivedArtifact: artifact,
@@ -206,10 +319,11 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
   );
   if (!options.storageRoot) throw new TypeError('storage root required for MinerU work files');
   const storageRoot = resolve(options.storageRoot);
-  const expected = evidenceSourcePolicy.resolutionPolicy.pdfEvidence;
+  const expected = { ...resolvedProfile(options), fallbackTrigger: options.fallbackTrigger ?? null };
+  const selected = selectedPageProcessing(options);
   const pdfSha256 = sha256(bytes);
   if (options.cache !== false) {
-    const cached = await readCache(storageRoot, pdfSha256, expected);
+    const cached = await readCache(storageRoot, pdfSha256, expected, selected);
     if (cached) return cached;
   }
   const workRoot = join(storageRoot, 'cache', 'work', 'mineru');
@@ -227,11 +341,17 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
       timeout: options.timeoutMs ?? 600000,
       maxBuffer: 4 * 1024 * 1024,
     });
-    const version = parserVersion(versionResult?.stdout);
-    if (version !== expected.parserVersion) {
-      throw new Error(`MinerU version ${version} does not match policy ${expected.parserVersion}`);
-    }
-    const revision = modelRevision(versionResult?.stdout);
+    const toolIdentity = await attestMineruToolIdentity({
+      stdout: versionResult?.stdout,
+      backend: expected.backend,
+      expectedVersion: expected.parserVersion,
+      configPath: options.mineruConfigPath
+        ?? options.env?.MINERU_TOOLS_CONFIG_JSON
+        ?? process.env.MINERU_TOOLS_CONFIG_JSON
+        ?? null,
+    });
+    const version = toolIdentity.version;
+    const revision = toolIdentity.modelRevision;
     if (revision !== expected.modelRevision) {
       throw new Error(`MinerU model revision ${revision} does not match policy ${expected.modelRevision}`);
     }
@@ -257,6 +377,8 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
         '-m', expected.method,
         '-f', 'false',
         '-t', 'true',
+        ...(expected.effort ? ['--effort', expected.effort] : []),
+        ...(expected.imageAnalysis != null ? ['--image-analysis', String(expected.imageAnalysis)] : []),
         ...(range ? ['-s', String(range[0]), '-e', String(range[1])] : []),
       ];
       try {
@@ -273,18 +395,34 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
       if (basename(outputs[0]).startsWith('.')) throw new Error('hidden MinerU output rejected');
       const jsonBytes = await readFile(outputs[0]);
       const expectedPages = range ? range[1] - range[0] + 1 : null;
-      buildMineruDerivedArtifact(jsonBytes, {
-        pdfSha256,
+      buildMineruDerivedArtifact(jsonBytes, artifactBuildOptions(pdfSha256, {
+        ...expected,
         parserVersion: version,
         modelRevision: revision,
-        ...(expectedPages ? { pageCount: expectedPages } : {}),
-      });
+      }, null, expectedPages ? { pageCount: expectedPages } : {}));
       return jsonBytes;
     };
 
     let jsonBytes;
     let processing;
-    try {
+    const operationalFallbackPages = [];
+    if (selected) {
+      const pages = Array.from({ length: selected.sourcePageCount }, () => []);
+      for (const range of selected.ranges) {
+        const parsed = JSON.parse(await invoke(range));
+        if (!Array.isArray(parsed) || parsed.length !== range[1] - range[0] + 1) {
+          throw new Error('MinerU selected page range produced an invalid page count');
+        }
+        parsed.forEach((items, offset) => { pages[range[0] + offset] = items; });
+      }
+      jsonBytes = Buffer.from(JSON.stringify(pages));
+      processing = {
+        strategy: 'selected_page_ranges',
+        ranges: selected.ranges.map((range) => [...range]),
+        selectedPages: [...selected.selectedPages],
+        sourcePageCount: selected.sourcePageCount,
+      };
+    } else try {
       jsonBytes = await invoke();
       processing = { strategy: 'whole_document' };
     } catch (error) {
@@ -304,7 +442,13 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
           successfulRanges.push([start, end]);
           return JSON.parse(rangeBytes);
         } catch (rangeError) {
-          if (rangeError?.code !== 'MINERU_COMMAND_FAILED' || start === end) throw rangeError;
+          if (rangeError?.code !== 'MINERU_COMMAND_FAILED') throw rangeError;
+          if (start === end) {
+            if (options.operationalImageFallback !== true) throw rangeError;
+            operationalFallbackPages.push(start + 1);
+            successfulRanges.push([start, end]);
+            return [[]];
+          }
           const middle = Math.floor((start + end) / 2);
           return [
             ...await parseRange(start, middle),
@@ -319,15 +463,26 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
       if (pages.length !== pageCount) throw new Error('MinerU page-range fallback produced incomplete pages');
       successfulRanges.sort((left, right) => left[0] - right[0]);
       jsonBytes = Buffer.from(JSON.stringify(pages));
-      processing = normalizedProcessing({ strategy: 'page_ranges', ranges: successfulRanges }, pageCount);
+      processing = normalizedProcessing({
+        strategy: operationalFallbackPages.length
+          ? 'page_ranges_with_operational_fallback'
+          : 'page_ranges',
+        ranges: successfulRanges,
+        ...(operationalFallbackPages.length ? { fallbackPages: operationalFallbackPages } : {}),
+      }, pageCount);
     }
-    const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
-      pdfSha256,
-      parserVersion: version,
-      modelRevision: revision,
-    });
-    const result = { jsonBytes, derivedArtifact, processing };
-    if (options.cache !== false) await writeCache(storageRoot, result);
+    const runtimeProfile = { ...expected, parserVersion: version, modelRevision: revision };
+    const derivedArtifact = buildMineruDerivedArtifact(
+      jsonBytes,
+      artifactBuildOptions(pdfSha256, runtimeProfile, selected),
+    );
+    const result = {
+      jsonBytes,
+      derivedArtifact,
+      processing,
+      ...(operationalFallbackPages.length ? { operationalFallbackPages } : {}),
+    };
+    if (options.cache !== false) await writeCache(storageRoot, result, expected, selected);
     return result;
   } finally {
     await rm(workDirectory, { recursive: true, force: true });
@@ -341,10 +496,95 @@ export async function inspectMineruPdfCache(pdfBytes, options = {}) {
   );
   if (!options.storageRoot) throw new TypeError('storage root required for MinerU cache inspection');
   const storageRoot = resolve(options.storageRoot);
-  const expected = evidenceSourcePolicy.resolutionPolicy.pdfEvidence;
-  const inspection = await inspectCache(storageRoot, sha256(bytes), expected);
+  const expected = { ...resolvedProfile(options), fallbackTrigger: options.fallbackTrigger ?? null };
+  const selected = selectedPageProcessing(options);
+  const inspection = await inspectCache(storageRoot, sha256(bytes), expected, selected);
   const { jsonBytes: _jsonBytes, ...metadata } = inspection;
   return freezeResult(metadata);
+}
+
+export async function runMineruPdfWithImageFallback(pdfBytes, options = {}) {
+  const {
+    profileId: _profileId,
+    selectedPages: _selectedPages,
+    sourcePageCount: _sourcePageCount,
+    fallbackTrigger: _fallbackTrigger,
+    operationalImageFallback: _operationalImageFallback,
+    ...baseOptions
+  } = options;
+  const primary = await runMineruPdfToJson(pdfBytes, {
+    ...baseOptions,
+    operationalImageFallback: true,
+  });
+  const imagePages = [...findMineruImageOnlyDimensionPages(primary.jsonBytes)];
+  const operationalPages = new Set(primary.operationalFallbackPages ?? []);
+  const pages = [...new Set([...imagePages, ...operationalPages])]
+    .sort((left, right) => left - right);
+  if (!pages.length) return { ...primary, usedImageFallback: false };
+  const fallbackTrigger = {
+    profileId: 'pipeline-auto-v1',
+    contentSha256: primary.derivedArtifact.contentSha256,
+    objectPath: primary.derivedArtifact.objectPath,
+    pages,
+    ...(operationalPages.size ? {
+      pageReasons: pages.map((page) => operationalPages.has(page) ? {
+        page,
+        reason: 'operational_page_failure',
+        failureCode: 'MINERU_COMMAND_FAILED',
+      } : {
+        page,
+        reason: 'image_dimension_signal',
+      }),
+    } : {}),
+  };
+  const hybrid = await runMineruPdfToJson(pdfBytes, {
+    ...baseOptions,
+    profileId: 'hybrid-image-high-v1',
+    selectedPages: pages,
+    sourcePageCount: primary.derivedArtifact.pageCount,
+    fallbackTrigger,
+  });
+  let primaryPages;
+  let hybridPages;
+  try {
+    primaryPages = JSON.parse(primary.jsonBytes.toString('utf8'));
+    hybridPages = JSON.parse(hybrid.jsonBytes.toString('utf8'));
+  } catch {
+    throw new Error('MinerU image fallback merge received invalid content_list_v2 JSON');
+  }
+  const pageCount = primary.derivedArtifact.pageCount;
+  if (!Array.isArray(primaryPages) || !Array.isArray(hybridPages)
+    || primaryPages.length !== pageCount || hybridPages.length !== pageCount
+    || primaryPages.some((page) => !Array.isArray(page))
+    || hybridPages.some((page) => !Array.isArray(page))) {
+    throw new Error('MinerU image fallback merge page map is incomplete');
+  }
+  const replacementPages = new Set(pages.map((page) => page - 1));
+  const mergedJsonBytes = Buffer.from(JSON.stringify(primaryPages.map((page, index) => (
+    replacementPages.has(index) ? hybridPages[index] : page
+  ))));
+  const selected = selectedPageProcessing({ selectedPages: pages, sourcePageCount: pageCount });
+  const expected = {
+    ...resolvedProfile({ profileId: 'hybrid-image-high-v1' }),
+    fallbackTrigger,
+  };
+  const merged = {
+    jsonBytes: mergedJsonBytes,
+    derivedArtifact: buildMineruDerivedArtifact(
+      mergedJsonBytes,
+      artifactBuildOptions(sha256(Buffer.from(pdfBytes)), expected, selected),
+    ),
+    processing: hybrid.processing,
+  };
+  if (options.cache !== false) {
+    await writeCache(resolve(options.storageRoot), merged, expected, selected);
+  }
+  return {
+    ...merged,
+    usedImageFallback: true,
+    primaryDerivedArtifact: primary.derivedArtifact,
+    primaryJsonBytes: primary.jsonBytes,
+  };
 }
 
 function freezeResult(value) {

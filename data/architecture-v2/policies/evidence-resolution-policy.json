@@ -2,6 +2,10 @@
   "schemaVersion": 1,
   "policyVersion": "2026-07-12.2",
   "receiptSchemaVersion": 2,
+  "supportedReceiptSchemaVersions": [2, 3],
+  "claimSemanticsVersion": 2,
+  "claimSemanticsReceiptSchemaVersion": 3,
+  "claimSemanticsPolicyVersion": "2026-07-13.1",
   "pdfEvidence": {
     "requiredFormat": "content_list_v2",
     "parserName": "MinerU",
@@ -10,6 +14,35 @@
     "backend": "pipeline",
     "method": "auto"
   },
+  "pdfEvidenceProfiles": [
+    {
+      "profileId": "pipeline-auto-v1",
+      "role": "primary",
+      "requiredFormat": "content_list_v2",
+      "parserName": "MinerU",
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "backend": "pipeline",
+      "method": "auto",
+      "tableEnabled": true,
+      "formulaEnabled": false
+    },
+    {
+      "profileId": "hybrid-image-high-v1",
+      "role": "image_dimension_fallback",
+      "requiredFormat": "content_list_v2",
+      "parserName": "MinerU",
+      "parserVersion": "3.4.4",
+      "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+      "backend": "hybrid-engine",
+      "method": "auto",
+      "effort": "high",
+      "imageAnalysis": true,
+      "tableEnabled": true,
+      "formulaEnabled": false,
+      "trigger": "image_only_dimension_pages"
+    }
+  ],
   "maximumRedirects": 5,
   "maximumFutureClockSkewMinutes": 5,
   "releasableQuarantineReasonPatterns": [

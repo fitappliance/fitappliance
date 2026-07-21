@@ -25,6 +25,18 @@ test('builds deterministic canonical products and reversible legacy mappings', (
   assert.match(first.products[0].id, /^fa_prod_[a-f0-9]{24}$/);
 });
 
+test('released registry preserves catalog mapping order when no migration aliases are added', () => {
+  const result = buildCanonicalRegistry({ products: [
+    { id: 'fridge-z', cat: 'fridge', brand: 'Example', model: 'MODEL-A' },
+    { id: 'fridge-a', cat: 'fridge', brand: 'Example', model: 'MODEL-Z' },
+  ] });
+
+  assert.deepEqual(
+    result.identifierMappings.map((row) => row.legacyRuntimeId),
+    ['fridge-z', 'fridge-a'],
+  );
+});
+
 test('quarantines exact manufacturer identity collisions instead of choosing a winner', () => {
   const duplicate = { products: [
     ...catalog.products,
@@ -34,6 +46,22 @@ test('quarantines exact manufacturer identity collisions instead of choosing a w
   assert.equal(result.products.length, 1);
   assert.equal(result.quarantine.length, 2);
   assert.ok(result.quarantine.every((row) => row.reasons.includes('manufacturer_identity_collision')));
+});
+
+test('quarantines catalog models polluted with marketing copy and capacity', () => {
+  const result = buildCanonicalRegistry({ products: [
+    { id: 'dryer-dirty', cat: 'dryer', brand: 'Example', model: 'ABC123 Heat Pump — 8kg' },
+    { id: 'dryer-series', cat: 'dryer', brand: 'Example', model: 'AVDE45 Series' },
+    { id: 'dryer-clean', cat: 'dryer', brand: 'Example', model: 'T208H.W.AU' },
+  ] });
+
+  assert.deepEqual(result.products.map((product) => product.model), ['AVDE45 Series', 'T208H.W.AU']);
+  assert.deepEqual(result.quarantine, [{
+    legacyRuntimeId: 'dryer-dirty',
+    brand: 'Example',
+    model: 'ABC123 Heat Pump — 8kg',
+    reasons: ['marketing_text_in_model_identity'],
+  }]);
 });
 
 test('rejects duplicate legacy IDs and malformed catalog rows', () => {
@@ -96,4 +124,38 @@ test('rejects malformed, duplicate, and non-releasable automated grants', () => 
   assert.throws(() => buildCanonicalRegistry(catalog, {
     releaseGrants: [{ legacyRuntimeId: 'fridge-a1', caseId: '', reason: 'evidence_projection_hold' }],
   }), /case/i);
+});
+
+test('repository publication quarantine excludes Beko stacking kits from the appliance registry', () => {
+  const repositoryCatalog = JSON.parse(readFileSync(
+    new URL('../../data/catalog-final.json', import.meta.url),
+    'utf8',
+  ));
+  const publicationQuarantine = JSON.parse(readFileSync(
+    new URL('../../data/architecture-v2/decisions/canonical-publication-quarantine.json', import.meta.url),
+    'utf8',
+  ));
+  const result = buildCanonicalRegistry(repositoryCatalog, {
+    quarantineEntries: publicationQuarantine.products,
+  });
+  const accessoryIds = ['ao-111095', 'ao-111099'];
+
+  assert.ok(accessoryIds.every((legacyRuntimeId) => (
+    !result.identifierMappings.some((row) => row.legacyRuntimeId === legacyRuntimeId)
+  )));
+  assert.ok(accessoryIds.every((legacyRuntimeId) => result.quarantine.some((row) => (
+    row.legacyRuntimeId === legacyRuntimeId
+      && row.reasons.includes('dryer_stacking_kit_is_not_a_complete_appliance')
+  ))));
+
+  const marketingPollutedIds = ['dr1', 'dr2', 'dr4', 'w3'];
+  assert.ok(marketingPollutedIds.every((legacyRuntimeId) => result.quarantine.some((row) => (
+    row.legacyRuntimeId === legacyRuntimeId
+      && row.reasons.includes('marketing_text_in_model_identity')
+  ))));
+  assert.ok(result.identifierMappings.some((row) => row.legacyRuntimeId === 'dr3'));
+  assert.equal(result.products.find((row) => (
+    result.identifierMappings.some((mapping) => mapping.legacyRuntimeId === 'dr3'
+      && mapping.canonicalProductId === row.id)
+  ))?.model, 'EDH803BEWA');
 });
