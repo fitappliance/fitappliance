@@ -89,6 +89,10 @@ permission, or an explicit PR creation step. An automation job may push only to
 its run-scoped `automation/*` branch and must open a PR against `main`. PR
 validation runs lint, tests, the offline canonical build, this audit, whitespace
 checks, and the generated-output diff gate before the proposal can merge.
+Because a PR opened with `GITHUB_TOKEN` produces an approval-required
+`pull_request` run, publisher workflows also explicitly dispatch
+`pr-validation.yml` after creating the PR and declare `actions: write`. This
+keeps validation unattended without introducing a personal token.
 
 `.github/workflows/data-sync.yml` is a read-only retirement notice. Do not
 re-enable its former schedule or restore its retailer-to-runtime behavior. A
