@@ -43,10 +43,12 @@ async function atomicWrite(path, bytes) {
   await rename(temporaryPath, path);
 }
 
-export async function publishHistoricalReference({ repoRoot }) {
-  const referencePath = resolveArchitectureV2Path(repoRoot, 'historicalApplianceReference');
+export async function publishHistoricalReference({
+  repoRoot,
+  referencePath = resolveArchitectureV2Path(repoRoot, 'historicalApplianceReference'),
+  manifestPath = resolveArchitectureV2Path(repoRoot, 'historicalReferencePublicationManifest'),
+}) {
   const snapshotsPath = resolveArchitectureV2Path(repoRoot, 'officialRegistrySnapshots');
-  const manifestPath = resolveArchitectureV2Path(repoRoot, 'historicalReferencePublicationManifest');
   const [reference, snapshotsDocument] = await Promise.all([
     readFile(referencePath, 'utf8').then(JSON.parse),
     readFile(snapshotsPath, 'utf8').then(JSON.parse),

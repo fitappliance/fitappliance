@@ -60,6 +60,27 @@ test('phase 28 measurement: different dimensions produce different SVG output', 
   assert.notEqual(small, large);
 });
 
+test('phase 28 measurement: vertical dimension labels stay inside every SVG viewBox', () => {
+  const svgHtml = generateMeasurementSvg({
+    widthMm: 600,
+    heightMm: 1800,
+    depthMm: 700
+  });
+
+  const views = [...svgHtml.matchAll(/<svg[^>]+viewBox="0 0 ([\d.]+) [\d.]+"[^>]*>([\s\S]*?)<\/svg>/g)];
+  assert.equal(views.length, 3);
+
+  for (const [, viewBoxWidth, contents] of views) {
+    const label = contents.match(/<text[^>]+class="measurement-label--vertical"[^>]*>/);
+    assert.ok(label, 'expected each view to have a vertical dimension label');
+    assert.match(label[0], /transform="rotate\(-90 [\d.]+ [\d.]+\)"/);
+
+    const x = Number(label[0].match(/\bx="([\d.]+)"/)?.[1]);
+    assert.ok(Number.isFinite(x));
+    assert.ok(Number(viewBoxWidth) - x >= 8, 'vertical label must remain within the right edge');
+  }
+});
+
 test('phase 28 measurement: cavity pages include #measure section with measurement HowTo schema', async () => {
   const cavityPagePath = path.join(repoRoot, 'pages', 'cavity', '600mm-fridge.html');
   const html = await fs.readFile(cavityPagePath, 'utf8');

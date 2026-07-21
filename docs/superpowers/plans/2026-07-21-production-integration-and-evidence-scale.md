@@ -69,9 +69,9 @@ flowchart TD
 | 1 | Merge `origin/main` and regenerate conflicts | 0 | COMPLETED |
 | 2 | Single publication owner and release-complete CI | 1 | COMPLETED |
 | 3 | Release A: merge architecture with baseline unchanged | 2 | COMPLETED |
-| 4 | Isolated lifecycle candidate materialization and QA | 3 | IN_PROGRESS |
-| 5 | Candidate impact decision | 4 | PENDING |
-| 6 | Release B: lifecycle cutover and rollback observation | 5 pass | PENDING |
+| 4 | Isolated lifecycle candidate materialization and QA | 3 | COMPLETED |
+| 5 | Candidate impact decision | 4 | COMPLETED |
+| 6 | Release B: lifecycle cutover and rollback observation | 5 pass | IN_PROGRESS |
 | 7 | Conditional authorized retailer coverage expansion | 5 fail | PENDING |
 | 8 | Repair P0 zero-yield cohort | 6 | PENDING |
 | 9 | Scale current-product W/H/D receipts | 8 | PENDING |
@@ -210,6 +210,8 @@ git diff --check
 **Files:**
 - Create worktree: `.worktrees/retail-lifecycle-cutover-preview`
 <!-- doc-audit: ignore -->
+- Create: `scripts/architecture-v2/build-retail-cutover-preview.mjs`
+<!-- doc-audit: ignore -->
 - Create: `scripts/architecture-v2/audit-retail-cutover-impact.mjs`
 <!-- doc-audit: ignore -->
 - Create: `tests/architecture-v2/retail-cutover-impact.test.mjs`
@@ -220,11 +222,12 @@ git diff --check
 - Consumes: Release A `main` and candidate `retail_lifecycle_release_6c42c754aeb1ff49097b32b4`.
 - Produces: a complete candidate site plus a baseline/candidate route, catalogue, CTA, and sitemap impact report.
 
-- [ ] Create a child branch and worktree from the Release A commit; never materialize in the integration worktree.
-- [ ] Save baseline public data, sitemap, generated-route inventory, and release hashes.
-- [ ] Run `npm run materialize:retail-lifecycle-release-candidate` with the external evidence root explicitly configured.
-- [ ] Run full lint, tests, architecture build, site build, replacement audit, Fit audit, and two deterministic rebuilds.
-- [ ] Add the smallest audit needed to compare:
+- [x] Create a child branch and worktree from the Release A commit; never materialize in the integration worktree.
+- [x] Save baseline public data, sitemap, generated-route inventory, and release hashes.
+- [x] Run `npm run materialize:retail-lifecycle-release-candidate` with the external evidence root explicitly configured.
+- [x] Build the preview from the candidate projection and candidate historical reference through an explicit preview-only entry point. The ordinary `npm run build` must continue to read the released projection and must not be treated as a candidate build.
+- [x] Run full lint, tests, architecture build, site build, replacement audit, Fit audit, and two deterministic rebuilds.
+- [x] Add the smallest audit needed to compare:
   - baseline versus candidate product and current-retail counts;
   - routes added, preserved, redirected, noindexed, or removed;
   - current results by category and brand;
@@ -232,8 +235,8 @@ git diff --check
   - sitemap membership;
   - market-reference commercial leakage;
   - candidate/public/control-plane size boundaries.
-- [ ] Run browser QA at desktop and mobile widths for cavity search, old-appliance matching, zero-result handling, product details, brand pages, comparison pages, and outbound retailer links.
-- [ ] Restore the baseline commit in the worktree and prove the released public projection hash is byte-identical.
+- [x] Run browser QA at desktop and mobile widths for cavity search, old-appliance matching, zero-result handling, product details, brand pages, comparison pages, and outbound retailer links.
+- [x] Restore the baseline commit in the worktree and prove the released public projection hash is byte-identical.
 
 **Acceptance gate:** The actual materialized candidate, not only its JSON manifest, passes the complete build and browser path with a machine-readable impact report and demonstrated rollback.
 
@@ -247,7 +250,7 @@ git diff --check
 - Consumes: Task 4 impact report.
 - Produces: exactly one result, `CUTOVER_ALLOWED` or `RETAIL_COVERAGE_REQUIRED`.
 
-- [ ] Return `RETAIL_COVERAGE_REQUIRED` if any condition holds:
+- [x] Return `RETAIL_COVERAGE_REQUIRED` if any condition holds:
   - a category has zero current-retail products;
   - a top measured search cohort loses all results;
   - an indexed route becomes an unexplained 404;
@@ -255,8 +258,8 @@ git diff --check
   - any Fit/publication audit reports a violation;
   - browser replacement or cavity workflows fail;
   - rollback is not byte-identical.
-- [ ] Otherwise return `CUTOVER_ALLOWED`. A lower count alone cannot force unsafe legacy listings back into current output.
-- [ ] Record category, brand, route, CTA, and high-traffic-query deltas so the decision can be reproduced.
+- [x] Otherwise return `CUTOVER_ALLOWED`. A lower count alone cannot force unsafe legacy listings back into current output.
+- [x] Record category, brand, route, CTA, and high-traffic-query deltas so the decision can be reproduced.
 
 **Acceptance gate:** The decision is data-driven and fail-closed. It does not use a subjective total-product threshold or infer availability from government registration.
 
@@ -457,6 +460,27 @@ git diff --check
 - Production replacement mode returned 247 current washing machines for a 600 x 850 x 600 mm old appliance, rendered 200 cards with 200 dimension-delta notes, and did not call the cavity FitDecision path. Desktop routes and a 390 px mobile viewport completed without horizontal overflow.
 - `Research Popularity Backfill`, `Weekly Growth Pipeline`, `Validate Review Videos`, and `Validate Brand Videos` are active. `Sync Appliance Data (Retired)` remains manually disabled.
 - Result: the acceptance gate passed; production runs the integrated architecture against the unchanged released baseline, and Task 4 started.
+
+### Task 4
+
+- Started and completed: 2026-07-22 Australia/Perth in `.worktrees/retail-lifecycle-cutover-preview` on branch `codex/retail-lifecycle-cutover-preview`, based on Release A commit `4eddde802d2775386a61fab982a989341980de8a`.
+- Materialized release `retail_lifecycle_release_6c42c754aeb1ff49097b32b4` with projection SHA-256 `d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90` and historical-reference SHA-256 `bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882` from `/Volumes/UGREEN-1TB/FitAppliance`.
+- The candidate contains 3,513 catalogue rows: 349 `CURRENT_RETAIL`, 3,087 archived, and 77 non-commercial market references. Every supported category retains at least one current result; commercial leakage is zero.
+- The preview-only build generated 1,738 product pages, 290 brand pages, 140 comparison pages, 61 cavity pages, 31 doorway pages, and a 1,983-URL sitemap. The normal build remains bound to the released projection.
+- Two candidate builds produced byte-identical projection, historical reference, sitemap, generated-page counts, and all 2,401 captured files, including deployed runtime JavaScript. A detached Release A worktree rebuild reproduced the rollback snapshot byte-for-byte.
+- Browser QA passed 13 desktop/mobile checks covering cavity and replacement search, zero results, the standalone checker, product/brand/comparison pages, retailer CTAs, and generated cavity/doorway routes. A mobile-only SVG label escape found during adversarial inspection was reproduced in a test and fixed by keeping rotated vertical labels inside each view box.
+- Full verification passed 2,875 tests and lint. Candidate historical replacement issues and Fit publication violations are both zero.
+- Result: acceptance gate passed; Task 5 started.
+
+### Task 5
+
+- Completed: 2026-07-22 Australia/Perth.
+- The impact report records 3,515 baseline products and 3,513 candidate products, with current retail changing from 1,384 unproven legacy-current rows to 349 evidence-backed rows. Count reduction alone is not a blocker.
+- All 58 removed generated routes have permanent redirects to candidate routes; six newly noindexed routes are recorded; unexplained removals, invalid retailer URLs, and market-reference commercial leakage are zero.
+- The measured GSC cohort manifest covers the ten highest landing routes from 2026-06-22 through 2026-07-19 (259 clicks and 21,904 impressions). Every cohort with baseline results retains results; the Mistral dryer route remains an explicit zero-to-zero `NO_BASELINE_RESULTS` case.
+- Cavity cohort decisions now require exact counts captured from generated page indexes. Missing generated results fail closed instead of invoking a second clearance calculation.
+- `retail-cutover-impact.json` reports `PASS`, zero issues, byte-identical candidate and rollback checks, and the automatic decision `CUTOVER_ALLOWED` with zero blockers.
+- Result: acceptance gate passed; Task 6 started.
 
 ## Final Completion Contract
 

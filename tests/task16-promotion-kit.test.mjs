@@ -48,6 +48,7 @@ test('task 16 promotion-kit: buildPromoKit output includes product count in mark
   const stats = buildPromoStats(appliancesFixture, [{ slug: 'lg-fridge-clearance' }], []);
   const markdown = buildPromoKit(stats, { today: '2026-04-15' });
   assert.match(markdown, /\*\*5 raw appliance spec rows\*\*/);
+  assert.match(markdown, /<!-- RETAILER_METRICS_PROMOTION:START -->[\s\S]*<!-- RETAILER_METRICS_PROMOTION:END -->/);
 });
 
 test('task 16 promotion-kit: buildPromoKit output includes today date in header', async () => {

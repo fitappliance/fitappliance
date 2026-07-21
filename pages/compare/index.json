@@ -185,7 +185,7 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-chiq-fridge-clearance",
     "url": "/compare/fisher-paykel-vs-chiq-fridge-clearance",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 120
   },
   {
@@ -194,8 +194,8 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-haier-fridge-clearance",
     "url": "/compare/fisher-paykel-vs-haier-fridge-clearance",
-    "modelsA": 157,
-    "modelsB": 128
+    "modelsA": 156,
+    "modelsB": 127
   },
   {
     "brandA": "Fisher & Paykel",
@@ -203,7 +203,7 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-hisense-fridge-clearance",
     "url": "/compare/fisher-paykel-vs-hisense-fridge-clearance",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 132
   },
   {
@@ -212,7 +212,7 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-lg-fridge-clearance",
     "url": "/compare/fisher-paykel-vs-lg-fridge-clearance",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 114
   },
   {
@@ -222,7 +222,7 @@
     "slug": "hisense-vs-haier-fridge-clearance",
     "url": "/compare/hisense-vs-haier-fridge-clearance",
     "modelsA": 132,
-    "modelsB": 128
+    "modelsB": 127
   },
   {
     "brandA": "Westinghouse",
@@ -240,7 +240,7 @@
     "slug": "westinghouse-vs-fisher-paykel-fridge-clearance",
     "url": "/compare/westinghouse-vs-fisher-paykel-fridge-clearance",
     "modelsA": 179,
-    "modelsB": 157
+    "modelsB": 156
   },
   {
     "brandA": "Westinghouse",
@@ -249,7 +249,7 @@
     "slug": "westinghouse-vs-haier-fridge-clearance",
     "url": "/compare/westinghouse-vs-haier-fridge-clearance",
     "modelsA": 179,
-    "modelsB": 128
+    "modelsB": 127
   },
   {
     "brandA": "Westinghouse",
@@ -362,36 +362,6 @@
   {
     "kind": "rtings-compare",
     "brandA": "Bosch",
-    "brandB": "ASKO",
-    "cat": "dishwasher",
-    "slug": "bosch-vs-asko-dishwasher",
-    "url": "/compare/bosch-vs-asko-dishwasher",
-    "modelsA": 93,
-    "modelsB": 29
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Bosch",
-    "brandB": "Beko",
-    "cat": "dishwasher",
-    "slug": "bosch-vs-beko-dishwasher",
-    "url": "/compare/bosch-vs-beko-dishwasher",
-    "modelsA": 93,
-    "modelsB": 19
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Bosch",
-    "brandB": "Fisher & Paykel",
-    "cat": "dishwasher",
-    "slug": "bosch-vs-fisher-paykel-dishwasher",
-    "url": "/compare/bosch-vs-fisher-paykel-dishwasher",
-    "modelsA": 93,
-    "modelsB": 61
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Bosch",
     "brandB": "Haier",
     "cat": "dishwasher",
     "slug": "bosch-vs-haier-dishwasher",
@@ -412,42 +382,42 @@
   {
     "kind": "rtings-compare",
     "brandA": "Bosch",
-    "brandB": "Omega",
+    "brandB": "Miele",
     "cat": "dishwasher",
-    "slug": "bosch-vs-omega-dishwasher",
-    "url": "/compare/bosch-vs-omega-dishwasher",
+    "slug": "bosch-vs-miele-dishwasher",
+    "url": "/compare/bosch-vs-miele-dishwasher",
     "modelsA": 93,
-    "modelsB": 31
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Bosch",
-    "brandB": "Smeg",
-    "cat": "dishwasher",
-    "slug": "bosch-vs-smeg-dishwasher",
-    "url": "/compare/bosch-vs-smeg-dishwasher",
-    "modelsA": 93,
-    "modelsB": 60
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Bosch",
-    "brandB": "Westinghouse",
-    "cat": "dishwasher",
-    "slug": "bosch-vs-westinghouse-dishwasher",
-    "url": "/compare/bosch-vs-westinghouse-dishwasher",
-    "modelsA": 93,
-    "modelsB": 22
+    "modelsB": 28
   },
   {
     "kind": "rtings-compare",
     "brandA": "Fisher & Paykel",
-    "brandB": "ASKO",
+    "brandB": "Beko",
     "cat": "dishwasher",
-    "slug": "fisher-paykel-vs-asko-dishwasher",
-    "url": "/compare/fisher-paykel-vs-asko-dishwasher",
+    "slug": "fisher-paykel-vs-beko-dishwasher",
+    "url": "/compare/fisher-paykel-vs-beko-dishwasher",
     "modelsA": 61,
-    "modelsB": 29
+    "modelsB": 19
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Fisher & Paykel",
+    "brandB": "Bosch",
+    "cat": "dishwasher",
+    "slug": "fisher-paykel-vs-bosch-dishwasher",
+    "url": "/compare/fisher-paykel-vs-bosch-dishwasher",
+    "modelsA": 61,
+    "modelsB": 93
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Fisher & Paykel",
+    "brandB": "Electrolux",
+    "cat": "dishwasher",
+    "slug": "fisher-paykel-vs-electrolux-dishwasher",
+    "url": "/compare/fisher-paykel-vs-electrolux-dishwasher",
+    "modelsA": 61,
+    "modelsB": 14
   },
   {
     "kind": "rtings-compare",
@@ -461,73 +431,73 @@
   },
   {
     "kind": "rtings-compare",
-    "brandA": "Haier",
-    "brandB": "ASKO",
-    "cat": "dishwasher",
-    "slug": "haier-vs-asko-dishwasher",
-    "url": "/compare/haier-vs-asko-dishwasher",
-    "modelsA": 29,
-    "modelsB": 29
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Smeg",
-    "brandB": "ASKO",
-    "cat": "dishwasher",
-    "slug": "smeg-vs-asko-dishwasher",
-    "url": "/compare/smeg-vs-asko-dishwasher",
-    "modelsA": 60,
-    "modelsB": 29
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Smeg",
-    "brandB": "Fisher & Paykel",
-    "cat": "dishwasher",
-    "slug": "smeg-vs-fisher-paykel-dishwasher",
-    "url": "/compare/smeg-vs-fisher-paykel-dishwasher",
-    "modelsA": 60,
-    "modelsB": 61
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Smeg",
-    "brandB": "Haier",
-    "cat": "dishwasher",
-    "slug": "smeg-vs-haier-dishwasher",
-    "url": "/compare/smeg-vs-haier-dishwasher",
-    "modelsA": 60,
-    "modelsB": 29
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Beko",
-    "brandB": "Electrolux",
-    "cat": "dryer",
-    "slug": "beko-vs-electrolux-dryer",
-    "url": "/compare/beko-vs-electrolux-dryer",
-    "modelsA": 10,
-    "modelsB": 12
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Beko",
+    "brandA": "Fisher & Paykel",
     "brandB": "LG",
-    "cat": "dryer",
-    "slug": "beko-vs-lg-dryer",
-    "url": "/compare/beko-vs-lg-dryer",
-    "modelsA": 10,
-    "modelsB": 9
+    "cat": "dishwasher",
+    "slug": "fisher-paykel-vs-lg-dishwasher",
+    "url": "/compare/fisher-paykel-vs-lg-dishwasher",
+    "modelsA": 61,
+    "modelsB": 23
   },
   {
     "kind": "rtings-compare",
-    "brandA": "Bosch",
-    "brandB": "Beko",
-    "cat": "dryer",
-    "slug": "bosch-vs-beko-dryer",
-    "url": "/compare/bosch-vs-beko-dryer",
-    "modelsA": 12,
-    "modelsB": 10
+    "brandA": "Fisher & Paykel",
+    "brandB": "Miele",
+    "cat": "dishwasher",
+    "slug": "fisher-paykel-vs-miele-dishwasher",
+    "url": "/compare/fisher-paykel-vs-miele-dishwasher",
+    "modelsA": 61,
+    "modelsB": 28
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Fisher & Paykel",
+    "brandB": "Omega",
+    "cat": "dishwasher",
+    "slug": "fisher-paykel-vs-omega-dishwasher",
+    "url": "/compare/fisher-paykel-vs-omega-dishwasher",
+    "modelsA": 61,
+    "modelsB": 31
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Fisher & Paykel",
+    "brandB": "Smeg",
+    "cat": "dishwasher",
+    "slug": "fisher-paykel-vs-smeg-dishwasher",
+    "url": "/compare/fisher-paykel-vs-smeg-dishwasher",
+    "modelsA": 61,
+    "modelsB": 60
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Haier",
+    "brandB": "LG",
+    "cat": "dishwasher",
+    "slug": "haier-vs-lg-dishwasher",
+    "url": "/compare/haier-vs-lg-dishwasher",
+    "modelsA": 29,
+    "modelsB": 23
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Haier",
+    "brandB": "Miele",
+    "cat": "dishwasher",
+    "slug": "haier-vs-miele-dishwasher",
+    "url": "/compare/haier-vs-miele-dishwasher",
+    "modelsA": 29,
+    "modelsB": 28
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Miele",
+    "brandB": "LG",
+    "cat": "dishwasher",
+    "slug": "miele-vs-lg-dishwasher",
+    "url": "/compare/miele-vs-lg-dishwasher",
+    "modelsA": 28,
+    "modelsB": 23
   },
   {
     "kind": "rtings-compare",
@@ -542,32 +512,42 @@
   {
     "kind": "rtings-compare",
     "brandA": "Bosch",
-    "brandB": "LG",
+    "brandB": "Samsung",
     "cat": "dryer",
-    "slug": "bosch-vs-lg-dryer",
-    "url": "/compare/bosch-vs-lg-dryer",
+    "slug": "bosch-vs-samsung-dryer",
+    "url": "/compare/bosch-vs-samsung-dryer",
     "modelsA": 12,
-    "modelsB": 9
+    "modelsB": 5
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Bosch",
+    "brandB": "Solt",
+    "cat": "dryer",
+    "slug": "bosch-vs-solt-dryer",
+    "url": "/compare/bosch-vs-solt-dryer",
+    "modelsA": 12,
+    "modelsB": 3
   },
   {
     "kind": "rtings-compare",
     "brandA": "Electrolux",
-    "brandB": "LG",
+    "brandB": "Samsung",
     "cat": "dryer",
-    "slug": "electrolux-vs-lg-dryer",
-    "url": "/compare/electrolux-vs-lg-dryer",
+    "slug": "electrolux-vs-samsung-dryer",
+    "url": "/compare/electrolux-vs-samsung-dryer",
     "modelsA": 12,
-    "modelsB": 9
+    "modelsB": 5
   },
   {
     "kind": "rtings-compare",
-    "brandA": "Fisher & Paykel",
-    "brandB": "Beko",
+    "brandA": "Electrolux",
+    "brandB": "Solt",
     "cat": "dryer",
-    "slug": "fisher-paykel-vs-beko-dryer",
-    "url": "/compare/fisher-paykel-vs-beko-dryer",
-    "modelsA": 24,
-    "modelsB": 10
+    "slug": "electrolux-vs-solt-dryer",
+    "url": "/compare/electrolux-vs-solt-dryer",
+    "modelsA": 12,
+    "modelsB": 3
   },
   {
     "kind": "rtings-compare",
@@ -592,42 +572,72 @@
   {
     "kind": "rtings-compare",
     "brandA": "Fisher & Paykel",
-    "brandB": "LG",
+    "brandB": "Samsung",
     "cat": "dryer",
-    "slug": "fisher-paykel-vs-lg-dryer",
-    "url": "/compare/fisher-paykel-vs-lg-dryer",
+    "slug": "fisher-paykel-vs-samsung-dryer",
+    "url": "/compare/fisher-paykel-vs-samsung-dryer",
     "modelsA": 24,
-    "modelsB": 9
+    "modelsB": 5
   },
   {
     "kind": "rtings-compare",
-    "brandA": "Beko",
-    "brandB": "Electrolux",
+    "brandA": "Fisher & Paykel",
+    "brandB": "Solt",
+    "cat": "dryer",
+    "slug": "fisher-paykel-vs-solt-dryer",
+    "url": "/compare/fisher-paykel-vs-solt-dryer",
+    "modelsA": 24,
+    "modelsB": 3
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Samsung",
+    "brandB": "Solt",
+    "cat": "dryer",
+    "slug": "samsung-vs-solt-dryer",
+    "url": "/compare/samsung-vs-solt-dryer",
+    "modelsA": 5,
+    "modelsB": 3
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Bosch",
+    "brandB": "Beko",
     "cat": "fridge",
-    "slug": "beko-vs-electrolux-fridge",
-    "url": "/compare/beko-vs-electrolux-fridge",
-    "modelsA": 40,
-    "modelsB": 34
+    "slug": "bosch-vs-beko-fridge",
+    "url": "/compare/bosch-vs-beko-fridge",
+    "modelsA": 15,
+    "modelsB": 40
   },
   {
     "kind": "rtings-compare",
-    "brandA": "Beko",
+    "brandA": "Bosch",
     "brandB": "Esatto",
     "cat": "fridge",
-    "slug": "beko-vs-esatto-fridge",
-    "url": "/compare/beko-vs-esatto-fridge",
-    "modelsA": 40,
+    "slug": "bosch-vs-esatto-fridge",
+    "url": "/compare/bosch-vs-esatto-fridge",
+    "modelsA": 15,
     "modelsB": 55
   },
   {
     "kind": "rtings-compare",
-    "brandA": "Beko",
-    "brandB": "Midea",
+    "brandA": "Bosch",
+    "brandB": "Smeg",
     "cat": "fridge",
-    "slug": "beko-vs-midea-fridge",
-    "url": "/compare/beko-vs-midea-fridge",
-    "modelsA": 40,
-    "modelsB": 44
+    "slug": "bosch-vs-smeg-fridge",
+    "url": "/compare/bosch-vs-smeg-fridge",
+    "modelsA": 15,
+    "modelsB": 48
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Bosch",
+    "brandB": "TCL",
+    "cat": "fridge",
+    "slug": "bosch-vs-tcl-fridge",
+    "url": "/compare/bosch-vs-tcl-fridge",
+    "modelsA": 15,
+    "modelsB": 26
   },
   {
     "kind": "rtings-compare",
@@ -642,12 +652,12 @@
   {
     "kind": "rtings-compare",
     "brandA": "CHiQ",
-    "brandB": "Electrolux",
+    "brandB": "Bosch",
     "cat": "fridge",
-    "slug": "chiq-vs-electrolux-fridge",
-    "url": "/compare/chiq-vs-electrolux-fridge",
+    "slug": "chiq-vs-bosch-fridge",
+    "url": "/compare/chiq-vs-bosch-fridge",
     "modelsA": 120,
-    "modelsB": 34
+    "modelsB": 15
   },
   {
     "kind": "rtings-compare",
@@ -658,26 +668,6 @@
     "url": "/compare/chiq-vs-esatto-fridge",
     "modelsA": 120,
     "modelsB": 55
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "CHiQ",
-    "brandB": "LG",
-    "cat": "fridge",
-    "slug": "chiq-vs-lg-fridge",
-    "url": "/compare/chiq-vs-lg-fridge",
-    "modelsA": 120,
-    "modelsB": 114
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "CHiQ",
-    "brandB": "Midea",
-    "cat": "fridge",
-    "slug": "chiq-vs-midea-fridge",
-    "url": "/compare/chiq-vs-midea-fridge",
-    "modelsA": 120,
-    "modelsB": 44
   },
   {
     "kind": "rtings-compare",
@@ -701,23 +691,43 @@
   },
   {
     "kind": "rtings-compare",
-    "brandA": "Esatto",
-    "brandB": "Electrolux",
+    "brandA": "CHiQ",
+    "brandB": "TCL",
     "cat": "fridge",
-    "slug": "esatto-vs-electrolux-fridge",
-    "url": "/compare/esatto-vs-electrolux-fridge",
-    "modelsA": 55,
-    "modelsB": 34
+    "slug": "chiq-vs-tcl-fridge",
+    "url": "/compare/chiq-vs-tcl-fridge",
+    "modelsA": 120,
+    "modelsB": 26
   },
   {
     "kind": "rtings-compare",
     "brandA": "Esatto",
-    "brandB": "Midea",
+    "brandB": "Beko",
     "cat": "fridge",
-    "slug": "esatto-vs-midea-fridge",
-    "url": "/compare/esatto-vs-midea-fridge",
+    "slug": "esatto-vs-beko-fridge",
+    "url": "/compare/esatto-vs-beko-fridge",
     "modelsA": 55,
-    "modelsB": 44
+    "modelsB": 40
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Esatto",
+    "brandB": "Smeg",
+    "cat": "fridge",
+    "slug": "esatto-vs-smeg-fridge",
+    "url": "/compare/esatto-vs-smeg-fridge",
+    "modelsA": 55,
+    "modelsB": 48
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Esatto",
+    "brandB": "TCL",
+    "cat": "fridge",
+    "slug": "esatto-vs-tcl-fridge",
+    "url": "/compare/esatto-vs-tcl-fridge",
+    "modelsA": 55,
+    "modelsB": 26
   },
   {
     "kind": "rtings-compare",
@@ -726,8 +736,18 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-beko-fridge",
     "url": "/compare/fisher-paykel-vs-beko-fridge",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 40
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Fisher & Paykel",
+    "brandB": "Bosch",
+    "cat": "fridge",
+    "slug": "fisher-paykel-vs-bosch-fridge",
+    "url": "/compare/fisher-paykel-vs-bosch-fridge",
+    "modelsA": 156,
+    "modelsB": 15
   },
   {
     "kind": "rtings-compare",
@@ -736,18 +756,8 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-chiq-fridge",
     "url": "/compare/fisher-paykel-vs-chiq-fridge",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 120
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Fisher & Paykel",
-    "brandB": "Electrolux",
-    "cat": "fridge",
-    "slug": "fisher-paykel-vs-electrolux-fridge",
-    "url": "/compare/fisher-paykel-vs-electrolux-fridge",
-    "modelsA": 157,
-    "modelsB": 34
   },
   {
     "kind": "rtings-compare",
@@ -756,7 +766,7 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-esatto-fridge",
     "url": "/compare/fisher-paykel-vs-esatto-fridge",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 55
   },
   {
@@ -766,8 +776,8 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-haier-fridge",
     "url": "/compare/fisher-paykel-vs-haier-fridge",
-    "modelsA": 157,
-    "modelsB": 128
+    "modelsA": 156,
+    "modelsB": 127
   },
   {
     "kind": "rtings-compare",
@@ -776,7 +786,7 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-hisense-fridge",
     "url": "/compare/fisher-paykel-vs-hisense-fridge",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 132
   },
   {
@@ -786,18 +796,8 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-lg-fridge",
     "url": "/compare/fisher-paykel-vs-lg-fridge",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 114
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Fisher & Paykel",
-    "brandB": "Midea",
-    "cat": "fridge",
-    "slug": "fisher-paykel-vs-midea-fridge",
-    "url": "/compare/fisher-paykel-vs-midea-fridge",
-    "modelsA": 157,
-    "modelsB": 44
   },
   {
     "kind": "rtings-compare",
@@ -806,7 +806,7 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-samsung-fridge",
     "url": "/compare/fisher-paykel-vs-samsung-fridge",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 48
   },
   {
@@ -816,8 +816,18 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-smeg-fridge",
     "url": "/compare/fisher-paykel-vs-smeg-fridge",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 48
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Fisher & Paykel",
+    "brandB": "TCL",
+    "cat": "fridge",
+    "slug": "fisher-paykel-vs-tcl-fridge",
+    "url": "/compare/fisher-paykel-vs-tcl-fridge",
+    "modelsA": 156,
+    "modelsB": 26
   },
   {
     "kind": "rtings-compare",
@@ -826,7 +836,7 @@
     "cat": "fridge",
     "slug": "fisher-paykel-vs-westinghouse-fridge",
     "url": "/compare/fisher-paykel-vs-westinghouse-fridge",
-    "modelsA": 157,
+    "modelsA": 156,
     "modelsB": 179
   },
   {
@@ -836,8 +846,18 @@
     "cat": "fridge",
     "slug": "haier-vs-beko-fridge",
     "url": "/compare/haier-vs-beko-fridge",
-    "modelsA": 128,
+    "modelsA": 127,
     "modelsB": 40
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Haier",
+    "brandB": "Bosch",
+    "cat": "fridge",
+    "slug": "haier-vs-bosch-fridge",
+    "url": "/compare/haier-vs-bosch-fridge",
+    "modelsA": 127,
+    "modelsB": 15
   },
   {
     "kind": "rtings-compare",
@@ -846,18 +866,8 @@
     "cat": "fridge",
     "slug": "haier-vs-chiq-fridge",
     "url": "/compare/haier-vs-chiq-fridge",
-    "modelsA": 128,
+    "modelsA": 127,
     "modelsB": 120
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Haier",
-    "brandB": "Electrolux",
-    "cat": "fridge",
-    "slug": "haier-vs-electrolux-fridge",
-    "url": "/compare/haier-vs-electrolux-fridge",
-    "modelsA": 128,
-    "modelsB": 34
   },
   {
     "kind": "rtings-compare",
@@ -866,18 +876,8 @@
     "cat": "fridge",
     "slug": "haier-vs-esatto-fridge",
     "url": "/compare/haier-vs-esatto-fridge",
-    "modelsA": 128,
+    "modelsA": 127,
     "modelsB": 55
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Haier",
-    "brandB": "Hisense",
-    "cat": "fridge",
-    "slug": "haier-vs-hisense-fridge",
-    "url": "/compare/haier-vs-hisense-fridge",
-    "modelsA": 128,
-    "modelsB": 132
   },
   {
     "kind": "rtings-compare",
@@ -886,18 +886,8 @@
     "cat": "fridge",
     "slug": "haier-vs-lg-fridge",
     "url": "/compare/haier-vs-lg-fridge",
-    "modelsA": 128,
+    "modelsA": 127,
     "modelsB": 114
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Haier",
-    "brandB": "Midea",
-    "cat": "fridge",
-    "slug": "haier-vs-midea-fridge",
-    "url": "/compare/haier-vs-midea-fridge",
-    "modelsA": 128,
-    "modelsB": 44
   },
   {
     "kind": "rtings-compare",
@@ -906,7 +896,7 @@
     "cat": "fridge",
     "slug": "haier-vs-samsung-fridge",
     "url": "/compare/haier-vs-samsung-fridge",
-    "modelsA": 128,
+    "modelsA": 127,
     "modelsB": 48
   },
   {
@@ -916,8 +906,28 @@
     "cat": "fridge",
     "slug": "haier-vs-smeg-fridge",
     "url": "/compare/haier-vs-smeg-fridge",
-    "modelsA": 128,
+    "modelsA": 127,
     "modelsB": 48
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Haier",
+    "brandB": "TCL",
+    "cat": "fridge",
+    "slug": "haier-vs-tcl-fridge",
+    "url": "/compare/haier-vs-tcl-fridge",
+    "modelsA": 127,
+    "modelsB": 26
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Haier",
+    "brandB": "Westinghouse",
+    "cat": "fridge",
+    "slug": "haier-vs-westinghouse-fridge",
+    "url": "/compare/haier-vs-westinghouse-fridge",
+    "modelsA": 127,
+    "modelsB": 179
   },
   {
     "kind": "rtings-compare",
@@ -932,22 +942,22 @@
   {
     "kind": "rtings-compare",
     "brandA": "Hisense",
+    "brandB": "Bosch",
+    "cat": "fridge",
+    "slug": "hisense-vs-bosch-fridge",
+    "url": "/compare/hisense-vs-bosch-fridge",
+    "modelsA": 132,
+    "modelsB": 15
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Hisense",
     "brandB": "CHiQ",
     "cat": "fridge",
     "slug": "hisense-vs-chiq-fridge",
     "url": "/compare/hisense-vs-chiq-fridge",
     "modelsA": 132,
     "modelsB": 120
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Hisense",
-    "brandB": "Electrolux",
-    "cat": "fridge",
-    "slug": "hisense-vs-electrolux-fridge",
-    "url": "/compare/hisense-vs-electrolux-fridge",
-    "modelsA": 132,
-    "modelsB": 34
   },
   {
     "kind": "rtings-compare",
@@ -962,22 +972,22 @@
   {
     "kind": "rtings-compare",
     "brandA": "Hisense",
+    "brandB": "Haier",
+    "cat": "fridge",
+    "slug": "hisense-vs-haier-fridge",
+    "url": "/compare/hisense-vs-haier-fridge",
+    "modelsA": 132,
+    "modelsB": 127
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Hisense",
     "brandB": "LG",
     "cat": "fridge",
     "slug": "hisense-vs-lg-fridge",
     "url": "/compare/hisense-vs-lg-fridge",
     "modelsA": 132,
     "modelsB": 114
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Hisense",
-    "brandB": "Midea",
-    "cat": "fridge",
-    "slug": "hisense-vs-midea-fridge",
-    "url": "/compare/hisense-vs-midea-fridge",
-    "modelsA": 132,
-    "modelsB": 44
   },
   {
     "kind": "rtings-compare",
@@ -1001,6 +1011,26 @@
   },
   {
     "kind": "rtings-compare",
+    "brandA": "Hisense",
+    "brandB": "TCL",
+    "cat": "fridge",
+    "slug": "hisense-vs-tcl-fridge",
+    "url": "/compare/hisense-vs-tcl-fridge",
+    "modelsA": 132,
+    "modelsB": 26
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Hisense",
+    "brandB": "Westinghouse",
+    "cat": "fridge",
+    "slug": "hisense-vs-westinghouse-fridge",
+    "url": "/compare/hisense-vs-westinghouse-fridge",
+    "modelsA": 132,
+    "modelsB": 179
+  },
+  {
+    "kind": "rtings-compare",
     "brandA": "LG",
     "brandB": "Beko",
     "cat": "fridge",
@@ -1012,12 +1042,22 @@
   {
     "kind": "rtings-compare",
     "brandA": "LG",
-    "brandB": "Electrolux",
+    "brandB": "Bosch",
     "cat": "fridge",
-    "slug": "lg-vs-electrolux-fridge",
-    "url": "/compare/lg-vs-electrolux-fridge",
+    "slug": "lg-vs-bosch-fridge",
+    "url": "/compare/lg-vs-bosch-fridge",
     "modelsA": 114,
-    "modelsB": 34
+    "modelsB": 15
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "LG",
+    "brandB": "CHiQ",
+    "cat": "fridge",
+    "slug": "lg-vs-chiq-fridge",
+    "url": "/compare/lg-vs-chiq-fridge",
+    "modelsA": 114,
+    "modelsB": 120
   },
   {
     "kind": "rtings-compare",
@@ -1028,16 +1068,6 @@
     "url": "/compare/lg-vs-esatto-fridge",
     "modelsA": 114,
     "modelsB": 55
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "LG",
-    "brandB": "Midea",
-    "cat": "fridge",
-    "slug": "lg-vs-midea-fridge",
-    "url": "/compare/lg-vs-midea-fridge",
-    "modelsA": 114,
-    "modelsB": 44
   },
   {
     "kind": "rtings-compare",
@@ -1061,13 +1091,23 @@
   },
   {
     "kind": "rtings-compare",
-    "brandA": "Midea",
-    "brandB": "Electrolux",
+    "brandA": "LG",
+    "brandB": "TCL",
     "cat": "fridge",
-    "slug": "midea-vs-electrolux-fridge",
-    "url": "/compare/midea-vs-electrolux-fridge",
-    "modelsA": 44,
-    "modelsB": 34
+    "slug": "lg-vs-tcl-fridge",
+    "url": "/compare/lg-vs-tcl-fridge",
+    "modelsA": 114,
+    "modelsB": 26
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "LG",
+    "brandB": "Westinghouse",
+    "cat": "fridge",
+    "slug": "lg-vs-westinghouse-fridge",
+    "url": "/compare/lg-vs-westinghouse-fridge",
+    "modelsA": 114,
+    "modelsB": 179
   },
   {
     "kind": "rtings-compare",
@@ -1082,12 +1122,12 @@
   {
     "kind": "rtings-compare",
     "brandA": "Samsung",
-    "brandB": "Electrolux",
+    "brandB": "Bosch",
     "cat": "fridge",
-    "slug": "samsung-vs-electrolux-fridge",
-    "url": "/compare/samsung-vs-electrolux-fridge",
+    "slug": "samsung-vs-bosch-fridge",
+    "url": "/compare/samsung-vs-bosch-fridge",
     "modelsA": 48,
-    "modelsB": 34
+    "modelsB": 15
   },
   {
     "kind": "rtings-compare",
@@ -1102,22 +1142,22 @@
   {
     "kind": "rtings-compare",
     "brandA": "Samsung",
-    "brandB": "Midea",
-    "cat": "fridge",
-    "slug": "samsung-vs-midea-fridge",
-    "url": "/compare/samsung-vs-midea-fridge",
-    "modelsA": 48,
-    "modelsB": 44
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Samsung",
     "brandB": "Smeg",
     "cat": "fridge",
     "slug": "samsung-vs-smeg-fridge",
     "url": "/compare/samsung-vs-smeg-fridge",
     "modelsA": 48,
     "modelsB": 48
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Samsung",
+    "brandB": "TCL",
+    "cat": "fridge",
+    "slug": "samsung-vs-tcl-fridge",
+    "url": "/compare/samsung-vs-tcl-fridge",
+    "modelsA": 48,
+    "modelsB": 26
   },
   {
     "kind": "rtings-compare",
@@ -1132,32 +1172,22 @@
   {
     "kind": "rtings-compare",
     "brandA": "Smeg",
-    "brandB": "Electrolux",
+    "brandB": "TCL",
     "cat": "fridge",
-    "slug": "smeg-vs-electrolux-fridge",
-    "url": "/compare/smeg-vs-electrolux-fridge",
+    "slug": "smeg-vs-tcl-fridge",
+    "url": "/compare/smeg-vs-tcl-fridge",
     "modelsA": 48,
-    "modelsB": 34
+    "modelsB": 26
   },
   {
     "kind": "rtings-compare",
-    "brandA": "Smeg",
-    "brandB": "Esatto",
+    "brandA": "TCL",
+    "brandB": "Beko",
     "cat": "fridge",
-    "slug": "smeg-vs-esatto-fridge",
-    "url": "/compare/smeg-vs-esatto-fridge",
-    "modelsA": 48,
-    "modelsB": 55
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Smeg",
-    "brandB": "Midea",
-    "cat": "fridge",
-    "slug": "smeg-vs-midea-fridge",
-    "url": "/compare/smeg-vs-midea-fridge",
-    "modelsA": 48,
-    "modelsB": 44
+    "slug": "tcl-vs-beko-fridge",
+    "url": "/compare/tcl-vs-beko-fridge",
+    "modelsA": 26,
+    "modelsB": 40
   },
   {
     "kind": "rtings-compare",
@@ -1172,6 +1202,16 @@
   {
     "kind": "rtings-compare",
     "brandA": "Westinghouse",
+    "brandB": "Bosch",
+    "cat": "fridge",
+    "slug": "westinghouse-vs-bosch-fridge",
+    "url": "/compare/westinghouse-vs-bosch-fridge",
+    "modelsA": 179,
+    "modelsB": 15
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Westinghouse",
     "brandB": "CHiQ",
     "cat": "fridge",
     "slug": "westinghouse-vs-chiq-fridge",
@@ -1182,62 +1222,12 @@
   {
     "kind": "rtings-compare",
     "brandA": "Westinghouse",
-    "brandB": "Electrolux",
-    "cat": "fridge",
-    "slug": "westinghouse-vs-electrolux-fridge",
-    "url": "/compare/westinghouse-vs-electrolux-fridge",
-    "modelsA": 179,
-    "modelsB": 34
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Westinghouse",
     "brandB": "Esatto",
     "cat": "fridge",
     "slug": "westinghouse-vs-esatto-fridge",
     "url": "/compare/westinghouse-vs-esatto-fridge",
     "modelsA": 179,
     "modelsB": 55
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Westinghouse",
-    "brandB": "Haier",
-    "cat": "fridge",
-    "slug": "westinghouse-vs-haier-fridge",
-    "url": "/compare/westinghouse-vs-haier-fridge",
-    "modelsA": 179,
-    "modelsB": 128
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Westinghouse",
-    "brandB": "Hisense",
-    "cat": "fridge",
-    "slug": "westinghouse-vs-hisense-fridge",
-    "url": "/compare/westinghouse-vs-hisense-fridge",
-    "modelsA": 179,
-    "modelsB": 132
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Westinghouse",
-    "brandB": "LG",
-    "cat": "fridge",
-    "slug": "westinghouse-vs-lg-fridge",
-    "url": "/compare/westinghouse-vs-lg-fridge",
-    "modelsA": 179,
-    "modelsB": 114
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Westinghouse",
-    "brandB": "Midea",
-    "cat": "fridge",
-    "slug": "westinghouse-vs-midea-fridge",
-    "url": "/compare/westinghouse-vs-midea-fridge",
-    "modelsA": 179,
-    "modelsB": 44
   },
   {
     "kind": "rtings-compare",
@@ -1261,13 +1251,33 @@
   },
   {
     "kind": "rtings-compare",
+    "brandA": "Westinghouse",
+    "brandB": "TCL",
+    "cat": "fridge",
+    "slug": "westinghouse-vs-tcl-fridge",
+    "url": "/compare/westinghouse-vs-tcl-fridge",
+    "modelsA": 179,
+    "modelsB": 26
+  },
+  {
+    "kind": "rtings-compare",
     "brandA": "Bosch",
-    "brandB": "Haier",
+    "brandB": "Hisense",
     "cat": "washing_machine",
-    "slug": "bosch-vs-haier-washing-machine",
-    "url": "/compare/bosch-vs-haier-washing-machine",
+    "slug": "bosch-vs-hisense-washing-machine",
+    "url": "/compare/bosch-vs-hisense-washing-machine",
     "modelsA": 29,
-    "modelsB": 22
+    "modelsB": 26
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Bosch",
+    "brandB": "Solt",
+    "cat": "washing_machine",
+    "slug": "bosch-vs-solt-washing-machine",
+    "url": "/compare/bosch-vs-solt-washing-machine",
+    "modelsA": 29,
+    "modelsB": 14
   },
   {
     "kind": "rtings-compare",
@@ -1282,22 +1292,42 @@
   {
     "kind": "rtings-compare",
     "brandA": "Fisher & Paykel",
-    "brandB": "Haier",
+    "brandB": "Hisense",
     "cat": "washing_machine",
-    "slug": "fisher-paykel-vs-haier-washing-machine",
-    "url": "/compare/fisher-paykel-vs-haier-washing-machine",
+    "slug": "fisher-paykel-vs-hisense-washing-machine",
+    "url": "/compare/fisher-paykel-vs-hisense-washing-machine",
     "modelsA": 47,
-    "modelsB": 22
+    "modelsB": 26
   },
   {
     "kind": "rtings-compare",
     "brandA": "Fisher & Paykel",
-    "brandB": "Samsung",
+    "brandB": "LG",
     "cat": "washing_machine",
-    "slug": "fisher-paykel-vs-samsung-washing-machine",
-    "url": "/compare/fisher-paykel-vs-samsung-washing-machine",
+    "slug": "fisher-paykel-vs-lg-washing-machine",
+    "url": "/compare/fisher-paykel-vs-lg-washing-machine",
     "modelsA": 47,
-    "modelsB": 39
+    "modelsB": 97
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Fisher & Paykel",
+    "brandB": "Solt",
+    "cat": "washing_machine",
+    "slug": "fisher-paykel-vs-solt-washing-machine",
+    "url": "/compare/fisher-paykel-vs-solt-washing-machine",
+    "modelsA": 47,
+    "modelsB": 14
+  },
+  {
+    "kind": "rtings-compare",
+    "brandA": "Hisense",
+    "brandB": "Solt",
+    "cat": "washing_machine",
+    "slug": "hisense-vs-solt-washing-machine",
+    "url": "/compare/hisense-vs-solt-washing-machine",
+    "modelsA": 26,
+    "modelsB": 14
   },
   {
     "kind": "rtings-compare",
@@ -1312,51 +1342,21 @@
   {
     "kind": "rtings-compare",
     "brandA": "LG",
-    "brandB": "Fisher & Paykel",
+    "brandB": "Hisense",
     "cat": "washing_machine",
-    "slug": "lg-vs-fisher-paykel-washing-machine",
-    "url": "/compare/lg-vs-fisher-paykel-washing-machine",
+    "slug": "lg-vs-hisense-washing-machine",
+    "url": "/compare/lg-vs-hisense-washing-machine",
     "modelsA": 97,
-    "modelsB": 47
+    "modelsB": 26
   },
   {
     "kind": "rtings-compare",
     "brandA": "LG",
-    "brandB": "Haier",
+    "brandB": "Solt",
     "cat": "washing_machine",
-    "slug": "lg-vs-haier-washing-machine",
-    "url": "/compare/lg-vs-haier-washing-machine",
+    "slug": "lg-vs-solt-washing-machine",
+    "url": "/compare/lg-vs-solt-washing-machine",
     "modelsA": 97,
-    "modelsB": 22
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "LG",
-    "brandB": "Samsung",
-    "cat": "washing_machine",
-    "slug": "lg-vs-samsung-washing-machine",
-    "url": "/compare/lg-vs-samsung-washing-machine",
-    "modelsA": 97,
-    "modelsB": 39
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Samsung",
-    "brandB": "Bosch",
-    "cat": "washing_machine",
-    "slug": "samsung-vs-bosch-washing-machine",
-    "url": "/compare/samsung-vs-bosch-washing-machine",
-    "modelsA": 39,
-    "modelsB": 29
-  },
-  {
-    "kind": "rtings-compare",
-    "brandA": "Samsung",
-    "brandB": "Haier",
-    "cat": "washing_machine",
-    "slug": "samsung-vs-haier-washing-machine",
-    "url": "/compare/samsung-vs-haier-washing-machine",
-    "modelsA": 39,
-    "modelsB": 22
+    "modelsB": 14
   }
 ]

@@ -43,12 +43,25 @@ test('manual retailer data: HRCD640TBW keeps all verified retailer links side by
   }
 });
 
-test('manual retailer data: enriched fridge catalog exposes all HRCD640TBW retailer choices', () => {
+test('manual retailer data: runtime catalog exposes only lifecycle-authorized HRCD640TBW retailer choices', () => {
   const fridges = readJson('public/data/fridges.json').products;
   const product = fridges.find((item) => item.id === 'fridge-arf3453');
 
   assert.ok(product, 'sample product should exist in fridge catalog');
-  assert.deepEqual(retailerNames(product.retailers).sort(), [...REQUIRED_RETAILERS].sort());
+  if (!product.retailLifecycle) {
+    assert.deepEqual(retailerNames(product.retailers).sort(), [...REQUIRED_RETAILERS].sort());
+    return;
+  }
+  const observations = product.retailLifecycle.latestObservations
+    .filter((observation) => observation.availability === 'available');
+  assert.deepEqual(
+    retailerNames(product.retailers).sort(),
+    observations.map((observation) => observation.retailer).sort(),
+  );
+  assert.deepEqual(
+    product.retailers.map((retailer) => retailer.url).sort(),
+    observations.map((observation) => observation.url).sort(),
+  );
 });
 
 test('manual retailer data: approved retailer links never keep placeholder empty URLs', () => {

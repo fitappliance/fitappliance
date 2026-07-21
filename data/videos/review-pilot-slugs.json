@@ -3,18 +3,6 @@
   "last_updated": "2026-05-20",
   "pilots": [
     {
-      "productId": "ao-62313",
-      "cat": "fridge",
-      "brand": "Esatto",
-      "model": "EBF69S",
-      "modelSlug": "esatto-ebf69s",
-      "brandPageSlug": "esatto-fridge-clearance",
-      "cavityPageSlug": null,
-      "coverageCount": 62,
-      "retailers": 1,
-      "stars": null
-    },
-    {
       "productId": "fridge-arf3598",
       "cat": "fridge",
       "brand": "Haier",
@@ -23,8 +11,32 @@
       "brandPageSlug": "haier-fridge-clearance",
       "cavityPageSlug": "500mm-fridge",
       "coverageCount": 62,
-      "retailers": 2,
+      "retailers": 1,
       "stars": 4
+    },
+    {
+      "productId": "ao-73153",
+      "cat": "fridge",
+      "brand": "Esatto",
+      "model": "EBF91B",
+      "modelSlug": "esatto-ebf91b",
+      "brandPageSlug": "esatto-fridge-clearance",
+      "cavityPageSlug": "510mm-fridge",
+      "coverageCount": 61,
+      "retailers": 1,
+      "stars": null
+    },
+    {
+      "productId": "washing_machine-acw1755",
+      "cat": "washing_machine",
+      "brand": "CHIQ",
+      "model": "WFL100TDW",
+      "modelSlug": "chiq-wfl100tdw",
+      "brandPageSlug": "chiq-washing-machine-clearance",
+      "cavityPageSlug": null,
+      "coverageCount": 1,
+      "retailers": 1,
+      "stars": 5
     },
     {
       "productId": "dryer-acd0788",
@@ -35,32 +47,20 @@
       "brandPageSlug": "electrolux-dryer-clearance",
       "cavityPageSlug": null,
       "coverageCount": 1,
-      "retailers": 3,
+      "retailers": 2,
       "stars": 2
     },
     {
-      "productId": "dishwasher-adw0956",
+      "productId": "ao-153383",
       "cat": "dishwasher",
       "brand": "Fisher & Paykel",
-      "model": "DW60UZT4B2",
-      "modelSlug": "fisher-paykel-dw60uzt4b2",
+      "model": "DD60D4NB9",
+      "modelSlug": "fisher-paykel-dd60d4nb9",
       "brandPageSlug": "fisher-paykel-dishwasher-clearance",
       "cavityPageSlug": null,
       "coverageCount": 1,
-      "retailers": 4,
-      "stars": 5
-    },
-    {
-      "productId": "washing_machine-acw1243",
-      "cat": "washing_machine",
-      "brand": "Westinghouse",
-      "model": "WWF9024M5SA",
-      "modelSlug": "westinghouse-wwf9024m5sa",
-      "brandPageSlug": "westinghouse-washing-machine-clearance",
-      "cavityPageSlug": null,
-      "coverageCount": 1,
-      "retailers": 4,
-      "stars": 4
+      "retailers": 2,
+      "stars": null
     }
   ]
 }
