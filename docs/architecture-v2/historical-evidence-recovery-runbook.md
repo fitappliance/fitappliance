@@ -2335,3 +2335,48 @@ authorized complete release. Commit, deploy and roll back the public projection,
 historical reference, identity migration, lifecycle shadow, audits, controller
 state and documentation together. Never materialize one generated file to make
 the repository appear ready.
+
+## 46. Active retail release and production observation
+
+Production publication is owned by
+`data/architecture-v2/decisions/active-retail-release.json`. A normal build may
+recompute candidates and control-plane reports, but it publishes runtime data
+only from the immutable release directory named by that descriptor. Verify the
+binding without external storage:
+
+```bash
+env -u FITAPPLIANCE_STORAGE_ROOT npm run build
+npm run audit:active-retail-release
+npm run decide:retail-cutover
+```
+
+The active release is
+`retail_lifecycle_release_6c42c754aeb1ff49097b32b4`: 3,513 products, 349
+current-retail products and 8,087 historical references. Production
+`/data/appliances.json` must have semantic SHA-256
+`77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85`.
+Do not substitute a freshly rebuilt candidate for these released bytes.
+
+Before starting an observation window, fetch every route in
+`reports/release-candidate-qa/gsc-top-route-cohorts.json`. Each route must return
+200 directly or one permanent redirect whose destination returns 200. The
+decision gate enforces the same rule from the captured candidate route set and
+the complete configured redirect list. A missing route inventory fails as
+`MEASURED_ROUTE_RESOLUTION_MISSING`; a measured route with no valid resolution
+fails as `MEASURED_ROUTE_UNRESOLVED`.
+
+The current 24-hour window runs from 2026-07-22 02:39 AWST through no earlier
+than 2026-07-23 02:39 AWST. At the initial, intermediate and closing checkpoints,
+verify production hashes, runtime errors, sitemap/service-worker health, all ten
+measured routes, cavity and replacement searches, zero-result guidance, mobile
+overflow, and affiliate CTA semantics. Existing analytics do not expose a
+trustworthy live zero-result rate: `search_submit` runs before result computation
+and the external analytics script is blocked by CSP. Use deterministic measured
+cohort counts and browser zero-result behavior for this release gate; do not
+invent a rate. Add privacy-safe result-outcome telemetry as a separately tested
+observability change before setting a future rate threshold.
+
+Any severity-1 data, route, Fit or CTA failure requires redeploying the complete
+pre-cutover release. Never roll back one generated JSON file, and never delete
+content-addressed evidence. Legacy runtime deletion remains prohibited until
+the closing checkpoint passes.
