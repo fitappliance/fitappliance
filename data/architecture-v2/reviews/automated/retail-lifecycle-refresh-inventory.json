@@ -1,13 +1,13 @@
 {
   "schemaVersion": 3,
   "policyVersion": "retail-lifecycle-refresh-inventory-v3",
-  "releaseEpoch": "retail-lifecycle-shadow-2026-07-20-ledger-4763ee99c574",
-  "asOf": "2026-07-20T19:43:11.969Z",
+  "releaseEpoch": "retail-lifecycle-shadow-2026-07-21-ledger-cd69b1ca73ce",
+  "asOf": "2026-07-21T11:27:07.677Z",
   "sourceBindings": {
-    "shadowSha256": "918a8ff849b30fe4aeb1c3ea27d6d53574da10ae620f61f628443ff76c43a1ea",
-    "shadowSemanticSha256": "0e9c45d6f1057023ab5f54f09dba0b1f8543459d13758d8f0552f69e5b2dae6d",
-    "coverageSha256": "67e3c2095f178802bb7af4d7da4480fbcb608fb78b7800c5bbf8b7bf5a8d308c",
-    "coverageSemanticSha256": "7c66c31dcb8ccdb5603bd624fa2dd739f6885ab49ce05234c6e950ff9adbb000",
+    "shadowSha256": "2a5296d4ca5152a76e693758c856c88e0fea140e46b373e8c90c7e3e5344f28b",
+    "shadowSemanticSha256": "f071aef441f188a11e586114add4921e980fa8cf1a90b2caa8d0c24dfc92e8f4",
+    "coverageSha256": "fa12c3fe9cf87ba2d2b3daad67faef5199a08e7d6b2b4206643ce9693ea0749f",
+    "coverageSemanticSha256": "a77d4991fbe92d1e2b3f8269b64122456801993d92b30c6896984f3a5e2d572f",
     "identityMigrationSha256": "239ca323d082dac786469d9b56c71fe9c0f3c4b3af7796c18a490a46ed896bbe",
     "identityMigrationSemanticSha256": "66d56bf4f5840ed79d8c6af7c6566595594abe1af6458398d3ea4f69c9368a9f"
   },
@@ -2260,6 +2260,6 @@
       "REQUIRES_AUTHORIZED_SOURCE_DISCOVERY": 1
     }
   },
-  "inventoryId": "retail_lifecycle_refresh_a7e8794932811db7f688b0aa",
-  "semanticSha256": "a7e8794932811db7f688b0aad2b46907e680d1ecbf118aaa0bffaa9034cab923"
+  "inventoryId": "retail_lifecycle_refresh_850cf355e6c15d18a89fea3e",
+  "semanticSha256": "850cf355e6c15d18a89fea3e6ff05656949499faa546d1e03e7556838efad865"
 }

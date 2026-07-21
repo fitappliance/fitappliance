@@ -1512,6 +1512,30 @@ Negative/adversarial canaries: `RF730QZUVX1 French Door 726L` cannot merge into 
   SHA-256 `4039d1a4da8055e5724b702cd864b122d63e3e2fd9766639242c644fca248dee`.
   The release unit remains the full Git epoch; rollback never deletes immutable
   external evidence.
+- A later authenticated Partnerize refresh on 2026-07-21 captured a distinct
+  10,490,468-byte feed as immutable object
+  `ef58a517f27452412cfd335bedb52ba3ffb30c60582f02ec89358b5fc4a1ae9d`,
+  bound it to secret-safe acquisition receipt
+  `retailer_acquisition_f04db53525f617055659adf0`, and replayed 233 typed
+  observations with three category-mismatch quarantines. The private feed URL
+  is not stored in Git or the receipt.
+- That refresh exposed a second-epoch planner defect: terminal baseline tasks
+  from the prior complete feed were copied into a new plan and then rejected as
+  outside the current execution mode. The planner now selects only source tasks
+  whose execution state matches the chosen mode while retaining the complete
+  3,515-product catalogue scope. This keeps terminal reconciliations terminal,
+  still detects products newly present in a later complete feed, and preserves
+  the validator as a fail-closed boundary.
+- The advanced shadow epoch now contains 349 `CURRENT_RETAIL`, 3,087
+  `CATALOG_ARCHIVED`, and 79 `UNKNOWN_RETAIL` products. Cutover remains
+  `BLOCKED`: 76 source-policy blocks, one pending atomic identity cutover, one
+  authorised-source discovery, and one exact-model rediscovery remain. No
+  production lifecycle projection was promoted.
+- The refreshed repository passed 1,165 Architecture V2 tests and 2,825 full
+  tests, lint, online replay of 803 historical objects and 21 installation
+  receipts, Fit publication with zero violations, and two byte-identical full
+  offline builds. The new whole-system semantic SHA-256 is
+  `616a0ab000af4257faee821839aa908bd893114af7e0dd467daef9f6a7b02860`.
 - No lifecycle cutover, production deployment, or legacy-runtime deletion was
   attempted. This is the required fail-closed outcome, not a partial release
   labelled complete.

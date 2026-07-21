@@ -76,9 +76,12 @@ function normalizedProjectionIdentity(product) {
   };
 }
 
-function normalizedTarget(item, sourcePolicyId) {
+function normalizedTarget(item, sourcePolicyId, expectedExecutionState) {
   const sourceTasks = (item?.sourceTasks ?? [])
-    .filter((task) => task.sourcePolicyId === sourcePolicyId)
+    .filter((task) => (
+      task.sourcePolicyId === sourcePolicyId
+      && task.executionState === expectedExecutionState
+    ))
     .map((task) => ({
       baselineLinkId: required(task.baselineLinkId, 'refresh baseline link ID'),
       retailer: required(task.retailer, 'refresh retailer'),
@@ -151,6 +154,13 @@ function isExactProductMode(mode) {
   return ['BOUNDED_EXACT_PRODUCT_API_CANARY', 'BOUNDED_EXACT_PRODUCT_API_SCALE'].includes(mode);
 }
 
+function expectedExecutionStateForMode(mode) {
+  if (mode === 'COMPLETE_AFFILIATE_FEED_REPLAY') return 'RUNNABLE_AUTHORIZED_SOURCE';
+  if (mode === 'BOUNDED_EXACT_PRODUCT_API_CANARY') return 'BOUNDED_CANARY_ONLY';
+  if (mode === 'BOUNDED_EXACT_PRODUCT_API_SCALE') return 'RUNNABLE_POLICY_REVIEWED_SOURCE';
+  throw new TypeError(`unsupported retail lifecycle refresh plan mode ${mode}`);
+}
+
 export function validateRetailLifecycleRefreshPlan(document) {
   if (!document || document.schemaVersion !== 1
     || document.planPolicyVersion !== 'retail-lifecycle-refresh-plan-v1'
@@ -212,11 +222,7 @@ export function validateRetailLifecycleRefreshPlan(document) {
       throw new TypeError(`refresh target missing source tasks: ${target.canonicalProductId}`);
     }
     sortedUnique(target.sourceTasks, (task) => required(task.baselineLinkId, 'source task ID'), 'refresh source task');
-    const expectedExecutionState = document.mode === 'COMPLETE_AFFILIATE_FEED_REPLAY'
-      ? 'RUNNABLE_AUTHORIZED_SOURCE'
-      : document.mode === 'BOUNDED_EXACT_PRODUCT_API_CANARY'
-        ? 'BOUNDED_CANARY_ONLY'
-        : 'RUNNABLE_POLICY_REVIEWED_SOURCE';
+    const expectedExecutionState = expectedExecutionStateForMode(document.mode);
     if (target.sourceTasks.some((task) => task.executionState !== expectedExecutionState)) {
       throw new Error(`refresh target contains source task outside plan execution mode: ${target.canonicalProductId}`);
     }
@@ -285,8 +291,11 @@ export function buildRetailLifecycleRefreshPlan({
   if (!completeFeed && !exactProductCanary && !exactProductScale) {
     throw new Error(`retailer source is not approved for a supported refresh mode: ${source.id}`);
   }
+  const mode = completeFeed
+    ? 'COMPLETE_AFFILIATE_FEED_REPLAY'
+    : exactProductCanary ? 'BOUNDED_EXACT_PRODUCT_API_CANARY' : 'BOUNDED_EXACT_PRODUCT_API_SCALE';
   let targets = inventory.items
-    .map((item) => normalizedTarget(item, source.id))
+    .map((item) => normalizedTarget(item, source.id, expectedExecutionStateForMode(mode)))
     .filter(Boolean)
     .sort((left, right) => left.canonicalProductId.localeCompare(right.canonicalProductId));
   sortedUnique(targets, (target) => target.canonicalProductId, 'refresh target canonical product');
@@ -324,9 +333,7 @@ export function buildRetailLifecycleRefreshPlan({
   const document = {
     schemaVersion: 1,
     planPolicyVersion: 'retail-lifecycle-refresh-plan-v1',
-    mode: completeFeed
-      ? 'COMPLETE_AFFILIATE_FEED_REPLAY'
-      : exactProductCanary ? 'BOUNDED_EXACT_PRODUCT_API_CANARY' : 'BOUNDED_EXACT_PRODUCT_API_SCALE',
+    mode,
     observedAt: timestamp(observedAt, 'refresh plan observedAt'),
     sourceBindings: {
       inventorySha256: sha256(inventorySha256, 'refresh inventory SHA-256'),

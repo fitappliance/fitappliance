@@ -206,6 +206,42 @@ test('authorised complete feed plan freezes source, inventory, and full catalogu
   assert.equal(validateRetailLifecycleRefreshPlan(plan).planId, plan.planId);
 });
 
+test('authorised complete feed plan skips terminal baseline tasks but keeps full catalogue scope', () => {
+  const terminalInventory = structuredClone(inventory);
+  terminalInventory.items[0].executionDisposition = 'BLOCKED_BY_SOURCE_POLICY';
+  terminalInventory.items[0].sourceTasks[0] = {
+    ...terminalInventory.items[0].sourceTasks[0],
+    terminalObservationState: 'SOURCE_ABSENT_IN_AUTHORIZED_FEED',
+    action: 'COLLECT_ALTERNATE_AUTHORIZED_RETAIL_SOURCE',
+    executionState: 'BLOCKED_BY_SOURCE_POLICY',
+    collectionMode: 'alternate_authorized_source_required',
+  };
+  terminalInventory.summary = {
+    products: 1,
+    listings: 1,
+    byExecutionDisposition: { BLOCKED_BY_SOURCE_POLICY: 1 },
+    bySourceExecutionState: { BLOCKED_BY_SOURCE_POLICY: 1 },
+  };
+  resignInventory(terminalInventory);
+
+  const plan = buildRetailLifecycleRefreshPlan({
+    inventory: terminalInventory,
+    inventorySha256: canonicalSha256(terminalInventory),
+    publicProjection,
+    publicProjectionSha256: canonicalSha256(publicProjection),
+    sourcePolicy,
+    sourcePolicySha256: canonicalSha256(sourcePolicy),
+    sourcePolicyId: sourcePolicy.sources[0].id,
+    observedAt: OBSERVED_AT,
+  });
+
+  assert.deepEqual(plan.targets, []);
+  assert.deepEqual(plan.catalogScope.map((row) => row.canonicalProductId), [
+    'fa_prod_archived',
+    'fa_prod_one',
+  ]);
+});
+
 test('plan rejects duplicate catalogue identity and collection-blocked policy', () => {
   const duplicateProjection = structuredClone(publicProjection);
   duplicateProjection.products.push(structuredClone(duplicateProjection.products[0]));

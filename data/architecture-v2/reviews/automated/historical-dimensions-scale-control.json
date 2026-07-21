@@ -46,8 +46,8 @@
     "programStatusSha256": "dd48f9357de1a3c88ee438493d3a252aace93e81ecd3eeffb5c3c95db3da1a12",
     "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
     "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
-    "fitPublicationAuditSha256": "e1b69a2462a4b3ebdf173dcbae010b88a0daa99acbcbcc85ce5906950a4093ed",
-    "epochsSha256": "44878cda08cbfb609e293f874619c2de289a85af3270a6bd32144d12aa098230"
+    "fitPublicationAuditSha256": "f7bc76df7f23d88ef2467002a98cd4852478d9ccabdbe136bd4c62cb7a1c9fdf",
+    "epochsSha256": "ea31f1559146f8a3a8e3c0015eefbb5871a268a7ed7cc5749084a64a3ec6b96d"
   },
   "epochs": [
     {
@@ -60,7 +60,7 @@
     },
     {
       "id": "lifecycle-policy",
-      "semanticSha256": "9118af164c49844f0723170a47be42761e7046425dd0cb35f9ea81e4aef9d05d"
+      "semanticSha256": "be8fe74ad0ae2be90d539808cb2b6e78f26b6ed649d85679b2704a85db887c1b"
     },
     {
       "id": "mineru-toolchain",
@@ -186,6 +186,6 @@
     "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
     "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e"
   },
-  "controlId": "historical-dimensions-scale-3ab5f936e449304dc4f9d1ea",
-  "semanticControlSha256": "3ab5f936e449304dc4f9d1eaff77b6f57e3c346c9804b8918ab3adc22f6906e2"
+  "controlId": "historical-dimensions-scale-37e4f648225b49d5a099af2d",
+  "semanticControlSha256": "37e4f648225b49d5a099af2db01c8c76d18e181bd84234e46683b1cb8687cc20"
 }
