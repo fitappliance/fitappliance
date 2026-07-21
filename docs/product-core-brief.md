@@ -987,6 +987,28 @@ runtime data, and documentation. An intermediate task commit is not a supported
 rollback target. Rollback restores the complete pre-cutover release and never
 deletes content-addressed evidence from external storage.
 
+### 9.8 Release A production checkpoint (2026-07-21)
+
+Architecture V2, evidence recovery, and reviewed publication workflows are now
+live on `main` at merge SHA `9c182c64d10d2386fdf6b125e4e0d9506bdad3f8`.
+This was a code and control-plane release, not a lifecycle data cutover. The
+production projection still reports 3,515 released products; the authorized
+3,513-product lifecycle candidate remains isolated and unmaterialized.
+
+Production verification covered the canonical apex-to-`www` redirect, homepage,
+sitemap, service worker, brand, product, comparison, standalone fit-checker, and
+old-appliance replacement routes. The fit checker returned 37 dishwasher matches
+for a 600 x 850 x 600 mm cavity, while replacement mode ranked 247 current
+washing machines against an old 600 x 850 x 600 mm appliance using direct W/H/D
+differences. Browser checks reported no page errors, same-origin request failures,
+or mobile horizontal overflow.
+
+Four converted automation workflows are active and publish only through reviewed
+pull requests. The retired direct-main data-sync workflow remains disabled. The
+next release step is isolated candidate materialization, deterministic rebuild,
+route and sitemap impact analysis, desktop/mobile QA, and byte-identical rollback
+proof. No production lifecycle cutover is authorized until that gate passes.
+
 ## 10. Success Metrics
 
 Track coverage and truth separately:
