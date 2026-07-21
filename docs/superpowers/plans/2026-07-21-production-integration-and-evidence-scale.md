@@ -209,7 +209,9 @@ git diff --check
 
 **Files:**
 - Create worktree: `.worktrees/retail-lifecycle-cutover-preview`
+<!-- doc-audit: ignore -->
 - Create: `scripts/architecture-v2/audit-retail-cutover-impact.mjs`
+<!-- doc-audit: ignore -->
 - Create: `tests/architecture-v2/retail-cutover-impact.test.mjs`
 - Generate: `data/architecture-v2/reviews/automated/retail-cutover-impact.json`
 - Generate: browser screenshots and results under `reports/release-candidate-qa/`
@@ -439,6 +441,14 @@ git diff --check
 - Verification: focused workflow/boundary tests passed 9/9; the complete suite passed 2,851/2,851; lint passed; all 19 workflow YAML files parsed; publication audit reported zero violations; portability reported zero violations; offline canonical build passed; sitemap verification reported 1,990 routes; review-content audit reported zero failures; generated outputs remained clean; `git diff --check` passed.
 - Implementation commit and push: `a87eb4d98` (`ci: require reviewed canonical publication`) advanced the remote branch normally from `1cbdf9e98` without force.
 - Result: acceptance gate passed; Task 3 started.
+
+### Task 3
+
+- Started: 2026-07-21 Australia/Perth.
+- Release A pull request: `#188` (`feat: integrate Architecture V2 evidence recovery`).
+- GitHub diff completeness: local and paginated GitHub API listings both contain 866 files and produce sorted-path SHA-256 `94e8af85fdaebc353fb69939da847fed9c77a9a03a313cedf1b373e119a644bd`.
+- First CI finding: `doc-audit` found 16 missing inline paths. Six were stale `DEVGUIDE.md` UI locations; eight completed-plan references used superseded implementation names; two paths belong to the intentionally unimplemented Task 4 and now carry explicit audit ignores. Focused doc tests pass 4/4 and the repository documentation audit reports zero drift.
+- Remaining gate: push the documentation correction, obtain all green PR checks, merge, verify production, and selectively re-enable converted workflows.
 
 ## Final Completion Contract
 

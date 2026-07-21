@@ -24,7 +24,7 @@
 - Create `src/domain/historical-appliance-reference.mjs`
 - Modify `src/domain/architecture-v2-paths.mjs`
 - Test `tests/architecture-v2/historical-appliance-reference.test.mjs`
-- Test `tests/architecture-v2/architecture-v2-data-layout.test.mjs`
+- Test `tests/architecture-v2/architecture-v2-paths.test.mjs`
 
 - [x] Define lifecycle, evidence and lookup-action enums as separate fields.
 - [x] Validate exact identity groups, complete dimensions, source hashes and allowed state combinations.
@@ -101,7 +101,7 @@
 - Modify `public/scripts/replacement-matcher.mjs`
 - Create `public/scripts/replacement-reference-loader.mjs`
 - Modify `tests/replacement-matcher.test.mjs`
-- Create `tests/replacement-reference-loader.test.mjs`
+- Modify `tests/replacement-matcher.test.mjs`
 
 - [x] Pass old dimensions through unchanged and delete the fixed practical buffer.
 - [x] Resolve exact brand/model or unique exact model automatically.

@@ -287,9 +287,9 @@ identity, axis or scope acceptance.
 ### Task 6: Replay repairable models before any network acquisition
 
 **Files:**
-- Create: `scripts/architecture-v2/build-offline-model-replay-batch.mjs`
+- Create: `scripts/architecture-v2/build-historical-pdf-offline-replay-batch.mjs`
 - Modify: cumulative acceptance bundle only through the existing promotion CLI
-- Test: `tests/architecture-v2/offline-model-replay-batch.test.mjs`
+- Test: `tests/architecture-v2/historical-pdf-offline-replay.test.mjs`
 
 - [ ] Select only `OFFLINE_REPLAY` and repaired `OFFLINE_PARSER_REPAIR` models
   with current immutable objects and exact identity.

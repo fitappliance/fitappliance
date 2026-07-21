@@ -754,7 +754,7 @@ function extractConstLiteral(source, constName) { /* 96 行重复代码 */ }
 
 **目标文件结构**：
 ```
-scripts/ui/
+public/scripts/ui/
 ├── product-card.js   # buildCard(), buildRow(), starsHtml(), warningsHtml()
 ├── freshness.js      # renderFreshnessBanner()
 └── filters.js        # buildBrandOptions(), buildStarsOptions()
@@ -762,19 +762,19 @@ scripts/ui/
 
 **执行步骤**：
 
-1. 新建 `scripts/ui/product-card.js`，将以下函数**原样**从 `index.html` 提取（不改逻辑）：
+1. 新建 `public/scripts/ui/product-card.js`，将以下函数**原样**从 `index.html` 提取（不改逻辑）：
    - `starsHtml(n, total = 6)`
    - `warningsHtml(p)` — **暂不修改逻辑**，Task 6.3 再改
    - `buildCard(p, clearanceMm)`
    - `buildRow(p, clearanceMm)`
    - 导出：`export { starsHtml, warningsHtml, buildCard, buildRow }`
 
-2. 新建 `scripts/ui/freshness.js`，包含 `renderFreshnessBanner(lastUpdated)` 占位函数（实现在 Task 6.2 填充）：
+2. 新建 `public/scripts/ui/freshness.js`，包含 `renderFreshnessBanner(lastUpdated)` 占位函数（实现在 Task 6.2 填充）：
    ```js
    export function renderFreshnessBanner(lastUpdated) { /* Task 6.2 */ }
    ```
 
-3. 新建 `scripts/ui/filters.js`，包含 `buildBrandOptions(products, cat)` 占位函数（实现在 Task 6.4 填充）：
+3. 新建 `public/scripts/ui/filters.js`，包含 `buildBrandOptions(products, cat)` 占位函数（实现在 Task 6.4 填充）：
    ```js
    export function buildBrandOptions(products, cat) { /* Task 6.4 */ }
    ```
@@ -802,7 +802,7 @@ scripts/ui/
 
 **背景**：`appliances.json` 有 `last_updated` 字段，但 UI 从未展示，用户无法知道数据是否过期。
 
-**实现位置**：`scripts/ui/freshness.js` → `renderFreshnessBanner(lastUpdated)`
+**实现位置**：`public/scripts/ui/freshness.js` → `renderFreshnessBanner(lastUpdated)`
 
 **逻辑规范**：
 ```js
@@ -868,7 +868,7 @@ renderFreshnessBanner(appData.last_updated);
 | `0` | 已研究，无需额外空间 | 无 tag（静默） |
 | `400–1200` | 已研究，需预留 N mm | 现有红色警告 tag |
 
-**修改 `warningsHtml(p)`**（位于 `scripts/ui/product-card.js` 提取后）：
+**修改 `warningsHtml(p)`**（位于 `public/scripts/ui/product-card.js` 提取后）：
 ```js
 function warningsHtml(p) {
   const parts = [];
@@ -916,7 +916,7 @@ if (p.door_swing_mm === null) {
 ```
 每次新增品牌都需手动改 HTML。
 
-**实现位置**：`scripts/ui/filters.js` → `buildBrandOptions(products, cat)`
+**实现位置**：`public/scripts/ui/filters.js` → `buildBrandOptions(products, cat)`
 
 **逻辑规范**：
 ```js
