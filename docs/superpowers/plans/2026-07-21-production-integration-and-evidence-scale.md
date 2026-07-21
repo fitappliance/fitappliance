@@ -66,8 +66,8 @@ flowchart TD
 | Task | Scope | Depends on | Status |
 | ---: | --- | --- | --- |
 | 0 | Persist plan and freeze unsafe direct-main workflows | none | COMPLETED |
-| 1 | Merge `origin/main` and regenerate conflicts | 0 | IN_PROGRESS |
-| 2 | Single publication owner and release-complete CI | 1 | PENDING |
+| 1 | Merge `origin/main` and regenerate conflicts | 0 | COMPLETED |
+| 2 | Single publication owner and release-complete CI | 1 | IN_PROGRESS |
 | 3 | Release A: merge architecture with baseline unchanged | 2 | PENDING |
 | 4 | Isolated lifecycle candidate materialization and QA | 3 | PENDING |
 | 5 | Candidate impact decision | 4 | PENDING |
@@ -139,8 +139,8 @@ npm run lint
 git diff --check
 ```
 
-- [ ] Confirm `git rev-list --left-right --count origin/main...HEAD` reports zero main-only commits.
-- [ ] Commit the merge and push without force.
+- [x] Confirm `git rev-list --left-right --count origin/main...HEAD` reports zero main-only commits.
+- [x] Commit the merge and push without force.
 
 **Acceptance gate:** The branch contains current `main`, has no conflict markers, builds offline, and retains candidate authorization and byte-identical rollback proof.
 
@@ -424,7 +424,14 @@ git diff --check
 - Safety metrics: released products 3,515; isolated candidate 3,513 with authorization `READY_FOR_CUTOVER`; historical replacement 8,089 with zero audit issues; receipt-bound dimensions 332; receipt-bound `VERIFIED_FIT` 0; Fit publication violations 0.
 - Rollback proof: pre-merge and regenerated `public/data/catalog-projection.json` SHA-256 are both `9b7fc3d80a5be8287c9e2f3e5e06150d561b708f4f118fff112bde86ebcd9d6e`.
 - Post-regeneration conflict-file hashes match the pre-merge baseline for the comparison page and five public data files. `docs/promotion-kit.md` changed to `c69161896986c901ac8700407165cc9917fb0cea1f0c3fdfad0bcba8279d2431` because the supported-category claim was corrected to 3,512.
-- Merge commit, main ancestry check, and push: pending.
+- Merge commit: `0be5b3ec5` with parents `686c2d236` and `5209825f4`.
+- Ancestry and push: `origin/main...HEAD` reported 0 main-only / 104 branch-only; `origin/main` is an ancestor; normal push advanced the remote branch from `f29b8bd93` to `0be5b3ec5` without force.
+- Result: acceptance gate passed; Task 2 started.
+
+### Task 2
+
+- Started: 2026-07-21 Australia/Perth.
+- Red test and current publication-boundary violations: pending capture.
 
 ## Final Completion Contract
 
