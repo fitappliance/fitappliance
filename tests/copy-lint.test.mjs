@@ -72,6 +72,26 @@ test('copy-lint: passes clean fixture', async () => {
   assert.equal(result.violations.length, 0);
 });
 
+test('copy-lint: accepts a checksum-valid Australian ABN paragraph', async () => {
+  const result = await runAuditWithHtml('<html><body><p>ABN 46 168 974 169</p></body></html>');
+
+  assert.equal(result.exitCode, 0);
+  assert.equal(result.violations.length, 0);
+});
+
+test('copy-lint: does not exempt malformed ABNs or unrelated uppercase leads', async () => {
+  const result = await runAuditWithHtml([
+    '<html><body>',
+    '<p>ABN 46 168 974 168</p>',
+    '<p>API migration is complete.</p>',
+    '</body></html>'
+  ].join(''));
+
+  const uppercaseViolations = result.violations.filter((row) => row.rule === 'uppercase-lead-without-source');
+  assert.equal(result.exitCode, 1);
+  assert.equal(uppercaseViolations.length, 2);
+});
+
 test('copy-lint: ignores repeated phrases inside script style code and pre blocks', async () => {
   const hiddenPhrase = 'quoted phrase repeated';
   const result = await runAuditWithHtml([

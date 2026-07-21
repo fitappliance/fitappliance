@@ -24,6 +24,7 @@ const FORBIDDEN_PHRASES = [
 ];
 const HEADING_EMOJI_RE = /\p{Extended_Pictographic}/u;
 const UPPERCASE_LEAD_RE = /^\s*([A-Z][A-Z&/]{1,}(?:\s+[A-Z&/]{2,})*)\b/;
+const ABN_WEIGHTS = [10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
 const REPEATED_NGRAM_MIN_WORDS = 3;
 const REPEATED_NGRAM_MAX_WORDS = 5;
 const REPEATED_NGRAM_MIN_COUNT = 5;
@@ -71,6 +72,16 @@ function normalizeText(text) {
   return String(text ?? '')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function isValidAbnParagraph(text) {
+  const match = text.match(/^ABN (\d{2}) (\d{3}) (\d{3}) (\d{3})$/);
+  if (!match) return false;
+
+  const digits = match.slice(1).join('').split('').map(Number);
+  digits[0] -= 1;
+  const checksum = digits.reduce((sum, digit, index) => sum + (digit * ABN_WEIGHTS[index]), 0);
+  return checksum % 89 === 0;
 }
 
 function addIssue(target, issue) {
@@ -176,7 +187,10 @@ function collectParagraphViolations({ document, relativePath, violations }) {
     }
 
     const uppercaseLead = text.match(UPPERCASE_LEAD_RE)?.[1] ?? null;
-    if (uppercaseLead && !paragraph.hasAttribute('data-source') && !paragraph.hasAttribute('cite')) {
+    if (uppercaseLead
+      && !isValidAbnParagraph(text)
+      && !paragraph.hasAttribute('data-source')
+      && !paragraph.hasAttribute('cite')) {
       addIssue(violations, {
         rule: 'uppercase-lead-without-source',
         file: relativePath,

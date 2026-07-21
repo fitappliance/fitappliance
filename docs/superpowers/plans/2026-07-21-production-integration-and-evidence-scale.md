@@ -448,6 +448,7 @@ git diff --check
 - Release A pull request: `#188` (`feat: integrate Architecture V2 evidence recovery`).
 - GitHub diff completeness: local and paginated GitHub API listings both contain 866 files and produce sorted-path SHA-256 `94e8af85fdaebc353fb69939da847fed9c77a9a03a313cedf1b373e119a644bd`.
 - First CI finding: `doc-audit` found 16 missing inline paths. Six were stale `DEVGUIDE.md` UI locations; eight completed-plan references used superseded implementation names; two paths belong to the intentionally unimplemented Task 4 and now carry explicit audit ignores. Focused doc tests pass 4/4 and the repository documentation audit reports zero drift.
+- Second CI finding: `copy-lint` treated the checksum-valid legal identifier `ABN 46 168 974 169` as an unsourced acronym lead. The audit now exempts only a fully formatted, checksum-valid Australian ABN; malformed ABNs and unrelated acronym leads remain violations. Focused copy tests pass 11/11 and the full copy audit reports zero violations.
 - Remaining gate: push the documentation correction, obtain all green PR checks, merge, verify production, and selectively re-enable converted workflows.
 
 ## Final Completion Contract
