@@ -68,8 +68,8 @@ flowchart TD
 | 0 | Persist plan and freeze unsafe direct-main workflows | none | COMPLETED |
 | 1 | Merge `origin/main` and regenerate conflicts | 0 | COMPLETED |
 | 2 | Single publication owner and release-complete CI | 1 | COMPLETED |
-| 3 | Release A: merge architecture with baseline unchanged | 2 | IN_PROGRESS |
-| 4 | Isolated lifecycle candidate materialization and QA | 3 | PENDING |
+| 3 | Release A: merge architecture with baseline unchanged | 2 | COMPLETED |
+| 4 | Isolated lifecycle candidate materialization and QA | 3 | IN_PROGRESS |
 | 5 | Candidate impact decision | 4 | PENDING |
 | 6 | Release B: lifecycle cutover and rollback observation | 5 pass | PENDING |
 | 7 | Conditional authorized retailer coverage expansion | 5 fail | PENDING |
@@ -192,16 +192,16 @@ git diff --check
 - Consumes: Task 2 branch and green GitHub checks.
 - Produces: default branch with Architecture V2 and safe automation, still serving the released baseline.
 
-- [ ] Open a pull request from `codex/historical-evidence-recovery-v2` to `main`.
-- [ ] Verify GitHub can account for all machine-generated files even if its visual diff is truncated.
-- [ ] Require green PR validation, portability, tests, lint, canonical build, and publication-boundary audit.
-- [ ] Merge without force-pushing or materializing the lifecycle candidate.
-- [ ] Wait for Vercel production deployment and verify:
+- [x] Open a pull request from `codex/historical-evidence-recovery-v2` to `main`.
+- [x] Verify GitHub can account for all machine-generated files even if its visual diff is truncated.
+- [x] Require green PR validation, portability, tests, lint, canonical build, and publication-boundary audit.
+- [x] Merge without force-pushing or materializing the lifecycle candidate.
+- [x] Wait for Vercel production deployment and verify:
   - canonical host redirect;
   - `/data/catalog-projection.json` reports the released baseline;
   - homepage, fit checker, replacement mode, one brand page, one product page, and one comparison page load;
   - sitemap and service worker return HTTP 200.
-- [ ] Re-enable only the converted PR-based workflows. Keep legacy `data-sync` disabled.
+- [x] Re-enable only the converted PR-based workflows. Keep legacy `data-sync` disabled.
 
 **Acceptance gate:** Production runs the integrated code with the released baseline, no candidate cutover, no direct-main writers, and a proven rollback to the pre-merge deployment.
 
@@ -446,10 +446,17 @@ git diff --check
 
 - Started: 2026-07-21 Australia/Perth.
 - Release A pull request: `#188` (`feat: integrate Architecture V2 evidence recovery`).
-- GitHub diff completeness: local and paginated GitHub API listings both contain 866 files and produce sorted-path SHA-256 `94e8af85fdaebc353fb69939da847fed9c77a9a03a313cedf1b373e119a644bd`.
+- GitHub diff completeness after the CI corrections: local and paginated GitHub API listings both contain 874 files and produce sorted-path SHA-256 `70f20b56c59f2b9557f478cb0ada3f5f80e96e7464fc01abb090a0e670365b72`.
 - First CI finding: `doc-audit` found 16 missing inline paths. Six were stale `DEVGUIDE.md` UI locations; eight completed-plan references used superseded implementation names; two paths belong to the intentionally unimplemented Task 4 and now carry explicit audit ignores. Focused doc tests pass 4/4 and the repository documentation audit reports zero drift.
 - Second CI finding: `copy-lint` treated the checksum-valid legal identifier `ABN 46 168 974 169` as an unsourced acronym lead. The audit now exempts only a fully formatted, checksum-valid Australian ABN; malformed ABNs and unrelated acronym leads remain violations. Focused copy tests pass 11/11 and the full copy audit reports zero violations.
-- Remaining gate: push the documentation correction, obtain all green PR checks, merge, verify production, and selectively re-enable converted workflows.
+- Third CI finding: Node.js 20 does not provide `Object.groupBy` or `Map.groupBy`. Runtime sources now use Node 20-compatible grouping, and `tests/node-runtime-compatibility.test.mjs` prevents their reintroduction. Commit `4ca08b9f8` passed the full Node 20 build, audits, and 2,854 tests.
+- Pull request `#188` passed every required check and merged without force at `ebed3b185a1e796a1e245fcb0c467cf8110cfd1d`. The released public projection remained at 3,515 products; the isolated lifecycle candidate was not materialized.
+- Production HTTP verification confirmed the apex-to-`www` 308 redirect, HTTP 200 for the homepage, sitemap, service worker, one brand route, one product route, and one comparison route, and `activeProjection: v2` with `productCount: 3515` in `/data/catalog-projection.json`.
+- Production Playwright exposed one standalone fit-checker regression: `replacement-match-engine.js` was not loaded before `search-core.js`. Pull request `#189` added the missing dependency and a regression test in commit `a59f1fd4a`; 2,855 tests, lint, the full build, and publication audit passed before merge.
+- Hotfix pull request `#189` passed all required checks and merged at `9c182c64d10d2386fdf6b125e4e0d9506bdad3f8`. The production fit checker then returned 37 matches for a 600 x 850 x 600 mm dishwasher search with zero page errors or same-origin response failures.
+- Production replacement mode returned 247 current washing machines for a 600 x 850 x 600 mm old appliance, rendered 200 cards with 200 dimension-delta notes, and did not call the cavity FitDecision path. Desktop routes and a 390 px mobile viewport completed without horizontal overflow.
+- `Research Popularity Backfill`, `Weekly Growth Pipeline`, `Validate Review Videos`, and `Validate Brand Videos` are active. `Sync Appliance Data (Retired)` remains manually disabled.
+- Result: the acceptance gate passed; production runs the integrated architecture against the unchanged released baseline, and Task 4 started.
 
 ## Final Completion Contract
 
