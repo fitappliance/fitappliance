@@ -88,6 +88,16 @@ test('phase 25 fit-checker: tools page exposes SoftwareApplication and HowTo sch
   assert.match(html, /"@type":\s*"HowTo"/);
 });
 
+test('fit-checker tools page loads replacement matching before search core', () => {
+  const html = fs.readFileSync(path.join(repoRoot, 'pages', 'tools', 'fit-checker.html'), 'utf8');
+  const replacementEngine = html.indexOf('<script src="/scripts/replacement-match-engine.js"></script>');
+  const searchCore = html.indexOf('<script src="/scripts/search-core.js"></script>');
+
+  assert.notEqual(replacementEngine, -1, 'missing replacement match engine');
+  assert.notEqual(searchCore, -1, 'missing search core');
+  assert.ok(replacementEngine < searchCore, 'replacement match engine must load before search core');
+});
+
 test('phase 25 fit-checker: vercel rewrite exists for /tools/:slug', () => {
   const config = JSON.parse(fs.readFileSync(path.join(repoRoot, 'vercel.json'), 'utf8'));
   const rewrite = (config.rewrites ?? []).find((row) => row.source === '/tools/:slug');
