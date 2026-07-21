@@ -65,8 +65,8 @@ flowchart TD
 
 | Task | Scope | Depends on | Status |
 | ---: | --- | --- | --- |
-| 0 | Persist plan and freeze unsafe direct-main workflows | none | IN_PROGRESS |
-| 1 | Merge `origin/main` and regenerate conflicts | 0 | PENDING |
+| 0 | Persist plan and freeze unsafe direct-main workflows | none | COMPLETED |
+| 1 | Merge `origin/main` and regenerate conflicts | 0 | IN_PROGRESS |
 | 2 | Single publication owner and release-complete CI | 1 | PENDING |
 | 3 | Release A: merge architecture with baseline unchanged | 2 | PENDING |
 | 4 | Isolated lifecycle candidate materialization and QA | 3 | PENDING |
@@ -92,9 +92,9 @@ Only one row may be `IN_PROGRESS`. A task is complete only when its acceptance g
 - Consumes: GitHub workflow state and current branch/main divergence.
 - Produces: a durable execution contract and a reversible automation freeze.
 
-- [ ] Commit this plan before changing repository or GitHub state.
-- [ ] Record the current workflow state with `gh workflow list --all`.
-- [ ] Disable only workflows that can push generated files directly to the default branch:
+- [x] Commit this plan before changing repository or GitHub state.
+- [x] Record the current workflow state with `gh workflow list --all`.
+- [x] Disable only workflows that can push generated files directly to the default branch:
 
 ```bash
 gh workflow disable data-sync.yml
@@ -104,9 +104,9 @@ gh workflow disable validate-reviews.yml
 gh workflow disable validate-videos.yml
 ```
 
-- [ ] Leave report-branch and PR-only workflows active, including GSC reports, performance reports, and auto-content PRs.
-- [ ] Verify the five workflows report `disabled_manually` through the GitHub API.
-- [ ] Record the disable time and workflow IDs in the execution log below.
+- [x] Leave report-branch and PR-only workflows active, including GSC reports, performance reports, and auto-content PRs.
+- [x] Verify the five workflows report `disabled_manually` through the GitHub API.
+- [x] Record the disable time and workflow IDs in the execution log below.
 
 **Acceptance gate:** No scheduled workflow capable of writing runtime/generated files directly to `main` remains active. The freeze is reversible with the corresponding `gh workflow enable <file>` command.
 
@@ -396,8 +396,18 @@ git diff --check
 
 - Started: 2026-07-21 Australia/Perth.
 - Plan path: `docs/superpowers/plans/2026-07-21-production-integration-and-evidence-scale.md`.
-- Pre-freeze workflow states: pending capture after the plan commit.
-- Disable receipt: pending execution after the plan commit.
+- Plan commit: `938873ad4` (`docs(plan): sequence production integration and evidence scale`).
+- Pre-freeze workflow states: all five direct-main workflows reported `active` through the GitHub API.
+- Disabled at: `2026-07-21T22:55:56+0800`.
+- Disable receipts: `data-sync.yml` (`260705438`), `weekly-growth.yml` (`262738656`), `research-popularity.yml` (`264691478`), `validate-reviews.yml` (`263613288`), and `validate-videos.yml` (`262781065`) each reported `disabled_manually`.
+- Preserved active boundaries: GSC reports, performance reports, auto-content PRs, PR validation, portability, and non-publishing monitoring workflows.
+- Reversal: `gh workflow enable <file>` for each disabled workflow after its PR-based replacement is released; legacy `data-sync.yml` remains disabled until it emits typed Architecture V2 observations.
+- Result: acceptance gate passed; Task 1 started.
+
+### Task 1
+
+- Started: 2026-07-21 Australia/Perth.
+- Pre-merge hashes and generated-artifact checksums: pending capture immediately before merge.
 
 ## Final Completion Contract
 
