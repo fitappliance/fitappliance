@@ -56,4 +56,8 @@ const output = {
   products: selectedProducts,
 };
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`);
-console.log(JSON.stringify({ products: selectedProducts.length, categories: Object.groupBy(selectedProducts, (row) => row.category) }, (_, value) => Array.isArray(value) ? value.length : value));
+const categoryCounts = selectedProducts.reduce((counts, row) => {
+  counts[row.category] = (counts[row.category] ?? 0) + 1;
+  return counts;
+}, {});
+console.log(JSON.stringify({ products: selectedProducts.length, categories: categoryCounts }));

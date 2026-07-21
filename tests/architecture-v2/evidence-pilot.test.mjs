@@ -53,8 +53,11 @@ test('selects a deterministic category-balanced pilot with bounded brand concent
   for (const category of categories) {
     assert.equal(first.filter((row) => row.category === category).length, 5);
   }
-  const brandCounts = Object.groupBy(first, (row) => row.brand);
-  assert.ok(Object.values(brandCounts).every((rows) => rows.length <= 3));
+  const brandCounts = first.reduce((counts, row) => {
+    counts.set(row.brand, (counts.get(row.brand) ?? 0) + 1);
+    return counts;
+  }, new Map());
+  assert.ok([...brandCounts.values()].every((count) => count <= 3));
 });
 
 test('excludes documents without exact canonical identity and prefers manufacturer transport', () => {
