@@ -125,11 +125,11 @@ gh workflow disable validate-videos.yml
 - Consumes: frozen automation and `origin/main`.
 - Produces: one integration branch containing all main history without rewriting the published 100-commit branch.
 
-- [ ] Fetch `origin/main` and save pre-merge `HEAD`, merge-base, and generated artifact hashes in the execution log.
-- [ ] Merge with `git merge --no-ff origin/main`; do not rebase or force-push the published branch.
-- [ ] Preserve automatically merged source/review changes from `main`.
-- [ ] Resolve the seven derived-file conflicts by regenerating from the merged source state, not by hand-merging generated JSON/HTML.
-- [ ] Run:
+- [x] Fetch `origin/main` and save pre-merge `HEAD`, merge-base, and generated artifact hashes in the execution log.
+- [x] Merge with `git merge --no-ff origin/main`; do not rebase or force-push the published branch.
+- [x] Preserve automatically merged source/review changes from `main`.
+- [x] Resolve the seven derived-file conflicts by regenerating from the merged source state, not by hand-merging generated JSON/HTML.
+- [x] Run:
 
 ```bash
 npm run build
@@ -418,7 +418,13 @@ git diff --check
   - `public/data/dryers.json`: `a2426bb0409694ca6eec4dd5e736d2178919367c51a92490f8f202b648532b46`
   - `public/data/fridges.json`: `b004c09caef5e84de7ebcf1c84c7698402b9364065b931738489eb2a823e367b`
   - `public/data/washing-machines.json`: `1aa5eb3c084a6f49df498dcc4d3c39285b5eae82f1185e409e8d958ca15d9234`
-- Merge and regeneration result: pending.
+- Merge produced exactly the seven predicted generated-file conflicts and no source conflict. The files were seeded from the released branch, then regenerated from the merged source state.
+- The first full test run exposed a stale promotion boundary: three unknown-category records were counted in a four-category claim. A focused test reproduced `6 !== 5`; `buildPromoStats` now filters to the four supported categories, and the two focused test files pass 8/8.
+- Verification: two offline builds produced no second-run diff; promotion generation was stable; the full suite passed 2,846/2,846; lint and both worktree/index `git diff --check` passed.
+- Safety metrics: released products 3,515; isolated candidate 3,513 with authorization `READY_FOR_CUTOVER`; historical replacement 8,089 with zero audit issues; receipt-bound dimensions 332; receipt-bound `VERIFIED_FIT` 0; Fit publication violations 0.
+- Rollback proof: pre-merge and regenerated `public/data/catalog-projection.json` SHA-256 are both `9b7fc3d80a5be8287c9e2f3e5e06150d561b708f4f118fff112bde86ebcd9d6e`.
+- Post-regeneration conflict-file hashes match the pre-merge baseline for the comparison page and five public data files. `docs/promotion-kit.md` changed to `c69161896986c901ac8700407165cc9917fb0cea1f0c3fdfad0bcba8279d2431` because the supported-category claim was corrected to 3,512.
+- Merge commit, main ancestry check, and push: pending.
 
 ## Final Completion Contract
 

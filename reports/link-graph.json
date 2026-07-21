@@ -1,7 +1,7 @@
 {
   "summary": {
-    "totalPages": 2332,
-    "totalEdges": 24390,
+    "totalPages": 2334,
+    "totalEdges": 24408,
     "orphanPages": 0,
     "averageInlinks": 10.46
   },
@@ -11,21 +11,21 @@
       "url": "/",
       "file": "index.html",
       "indexable": true,
-      "inlinks": 2331,
+      "inlinks": 2333,
       "outlinks": 25
     },
     {
       "url": "/about",
       "file": "pages/about.html",
       "indexable": true,
-      "inlinks": 1748,
+      "inlinks": 1750,
       "outlinks": 7
     },
     {
       "url": "/about/editorial-standards",
       "file": "pages/about/editorial-standards.html",
       "indexable": true,
-      "inlinks": 2331,
+      "inlinks": 2333,
       "outlinks": 4
     },
     {
@@ -2223,7 +2223,7 @@
       "url": "/cavity/600mm-fridge",
       "file": "pages/cavity/600mm-fridge.html",
       "indexable": false,
-      "inlinks": 994,
+      "inlinks": 996,
       "outlinks": 33
     },
     {
@@ -3483,7 +3483,7 @@
       "url": "/contact",
       "file": "pages/contact.html",
       "indexable": true,
-      "inlinks": 1746,
+      "inlinks": 1748,
       "outlinks": 7
     },
     {
@@ -4092,7 +4092,7 @@
       "url": "/methodology",
       "file": "pages/methodology.html",
       "indexable": true,
-      "inlinks": 2331,
+      "inlinks": 2333,
       "outlinks": 4
     },
     {
@@ -4106,7 +4106,7 @@
       "url": "/privacy",
       "file": "pages/privacy.html",
       "indexable": true,
-      "inlinks": 1746,
+      "inlinks": 1748,
       "outlinks": 7
     },
     {
@@ -4121,7 +4121,7 @@
       "file": "pages/products.html",
       "indexable": true,
       "inlinks": 1,
-      "outlinks": 1747
+      "outlinks": 1749
     },
     {
       "url": "/products/artusi-adw5009x-dishwasher-adw1249",
@@ -6842,6 +6842,13 @@
     {
       "url": "/products/electrolux-eqe5657ba-fridge-arf2940",
       "file": "pages/products/electrolux-eqe5657ba-fridge-arf2940.html",
+      "indexable": true,
+      "inlinks": 1,
+      "outlinks": 8
+    },
+    {
+      "url": "/products/electrolux-eqe6160ba-fridge-arf2944",
+      "file": "pages/products/electrolux-eqe6160ba-fridge-arf2944.html",
       "indexable": true,
       "inlinks": 1,
       "outlinks": 8
@@ -15429,6 +15436,13 @@
       "outlinks": 8
     },
     {
+      "url": "/products/westinghouse-whe5264sc-fridge-arf3824",
+      "file": "pages/products/westinghouse-whe5264sc-fridge-arf3824.html",
+      "indexable": true,
+      "inlinks": 1,
+      "outlinks": 8
+    },
+    {
       "url": "/products/westinghouse-whe5600sd-fridge-arf3614",
       "file": "pages/products/westinghouse-whe5600sd-fridge-arf3614.html",
       "indexable": true,
@@ -16321,7 +16335,7 @@
       "url": "/terms",
       "file": "pages/terms.html",
       "indexable": true,
-      "inlinks": 1746,
+      "inlinks": 1748,
       "outlinks": 7
     },
     {

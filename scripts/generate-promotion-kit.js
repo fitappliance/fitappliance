@@ -4,6 +4,8 @@ const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
 const { displayBrandName } = require('./utils/brand-utils.js');
 
+const SUPPORTED_CATEGORIES = new Set(['fridge', 'washing_machine', 'dishwasher', 'dryer']);
+
 async function readJson(filePath, fallback = null) {
   try {
     const text = await readFile(filePath, 'utf8');
@@ -48,7 +50,9 @@ function buildTopQueries(products, limit = 10) {
 }
 
 function buildPromoStats(appliancesDoc, brandsIndexRows, compareIndexRows) {
-  const products = Array.isArray(appliancesDoc?.products) ? appliancesDoc.products : [];
+  const products = Array.isArray(appliancesDoc?.products)
+    ? appliancesDoc.products.filter((product) => SUPPORTED_CATEGORIES.has(product?.cat))
+    : [];
   const brands = new Set(products.map((product) => product?.brand).filter(Boolean));
   const doorSwingCovered = products.filter(
     (product) => product?.door_swing_mm !== null && product?.door_swing_mm !== undefined
