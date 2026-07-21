@@ -1,0 +1,112 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import { mkdtemp, mkdir, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const { auditPublicationBoundary } = require('../scripts/audit-publication-boundary.js');
+
+async function createWorkspace(workflow) {
+  const root = await mkdtemp(path.join(tmpdir(), 'fitappliance-publication-boundary-'));
+  const workflowDir = path.join(root, '.github', 'workflows');
+  await mkdir(workflowDir, { recursive: true });
+  await writeFile(path.join(workflowDir, 'candidate.yml'), workflow, 'utf8');
+  return root;
+}
+
+test('publication boundary rejects legacy sync and direct runtime publication to main', async () => {
+  const root = await createWorkspace(`name: Unsafe publisher
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run sync
+      - run: |
+          git add public/data pages/compare public/sitemap.xml
+          git commit -m "publish"
+          git push origin main
+`);
+
+  const result = await auditPublicationBoundary({ repoRoot: root, logger: { log() {}, error() {} } });
+  assert.equal(result.exitCode, 1);
+  assert.deepEqual(
+    new Set(result.violations.map((violation) => violation.rule)),
+    new Set([
+      'legacy-runtime-sync',
+      'direct-default-branch-push',
+      'runtime-update-without-pr',
+      'runtime-update-without-canonical-build',
+      'missing-pull-request-permission'
+    ])
+  );
+  assert.equal(result.violations.every((violation) => violation.file === '.github/workflows/candidate.yml'), true);
+  assert.equal(result.violations.every((violation) => Number.isInteger(violation.line) && violation.line > 0), true);
+});
+
+test('publication boundary accepts canonical build changes opened as a bot-branch PR', async () => {
+  const root = await createWorkspace(`name: Safe publisher
+on: workflow_dispatch
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run build
+      - env:
+          GH_TOKEN: \${{ github.token }}
+        run: |
+          branch="automation/safe-\${GITHUB_RUN_ID}"
+          git switch -c "$branch"
+          git add -A
+          git commit -m "chore: propose generated output"
+          git push -u origin "$branch"
+          gh pr create --base main --head "$branch" --title "Generated output" --body "Review required."
+          gh workflow run pr-validation.yml --ref "$branch"
+`);
+
+  const result = await auditPublicationBoundary({ repoRoot: root, logger: { log() {}, error() {} } });
+  assert.equal(result.exitCode, 0);
+  assert.deepEqual(result.violations, []);
+});
+
+test('publication boundary rejects bot PRs that cannot start unattended validation', async () => {
+  const root = await createWorkspace(`name: Unvalidated publisher
+on: workflow_dispatch
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run build
+      - run: |
+          branch="automation/unvalidated-\${GITHUB_RUN_ID}"
+          git switch -c "$branch"
+          git add -A
+          git commit -m "chore: propose generated output"
+          git push -u origin "$branch"
+          gh pr create --base main --head "$branch" --title "Generated output" --body "Review required."
+`);
+
+  const result = await auditPublicationBoundary({ repoRoot: root, logger: { log() {}, error() {} } });
+  assert.equal(result.exitCode, 1);
+  assert.deepEqual(
+    new Set(result.violations.map((violation) => violation.rule)),
+    new Set(['missing-validation-dispatch', 'missing-actions-permission'])
+  );
+});
+
+test('repository workflows satisfy the publication boundary', async () => {
+  const result = await auditPublicationBoundary({ repoRoot: process.cwd(), logger: { log() {}, error() {} } });
+  assert.equal(result.exitCode, 0, JSON.stringify(result.violations, null, 2));
+  assert.deepEqual(result.violations, []);
+});

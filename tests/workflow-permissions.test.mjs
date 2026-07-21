@@ -9,7 +9,7 @@ const WORKFLOW_DIR = path.join(ROOT, '.github', 'workflows');
 const EXPECTED_PERMISSIONS = {
   'auto-content.yml': { contents: 'write', 'pull-requests': 'write' },
   'copy-lint.yml': { contents: 'read' },
-  'data-sync.yml': { contents: 'write' },
+  'data-sync.yml': { contents: 'read' },
   'doc-audit.yml': { contents: 'read' },
   'error-daily.yml': { contents: 'read', issues: 'write' },
   'gsc-weekly.yml': { contents: 'write' },
@@ -18,14 +18,14 @@ const EXPECTED_PERMISSIONS = {
   'perf-weekly.yml': { contents: 'write', 'pull-requests': 'write' },
   'portability.yml': { contents: 'read' },
   'pr-validation.yml': { contents: 'read' },
-  'research-popularity.yml': { contents: 'write' },
+  'research-popularity.yml': { actions: 'write', contents: 'write', 'pull-requests': 'write' },
   'research-retailers.yml': { contents: 'read' },
   'scraper-run.yml': { contents: 'read' },
   'sentinel.yml': { contents: 'read', issues: 'write' },
   'triage.yml': { contents: 'read', issues: 'write', 'pull-requests': 'write' },
-  'validate-reviews.yml': { contents: 'write' },
-  'validate-videos.yml': { contents: 'write', issues: 'write' },
-  'weekly-growth.yml': { contents: 'write' }
+  'validate-reviews.yml': { actions: 'write', contents: 'write', 'pull-requests': 'write' },
+  'validate-videos.yml': { actions: 'write', contents: 'write', issues: 'write', 'pull-requests': 'write' },
+  'weekly-growth.yml': { actions: 'write', contents: 'write', 'pull-requests': 'write' }
 };
 
 function parseTopLevelPermissions(yamlText) {
@@ -59,7 +59,7 @@ test('phase 43a p2: every workflow declares least-privilege token permissions', 
 });
 
 test('phase 43a p2: read-only validation workflows do not request write scopes', () => {
-  const readOnlyWorkflows = ['copy-lint.yml', 'doc-audit.yml', 'indexnow-on-deploy.yml', 'portability.yml', 'pr-validation.yml', 'research-retailers.yml', 'scraper-run.yml'];
+  const readOnlyWorkflows = ['copy-lint.yml', 'data-sync.yml', 'doc-audit.yml', 'indexnow-on-deploy.yml', 'portability.yml', 'pr-validation.yml', 'research-retailers.yml', 'scraper-run.yml'];
 
   for (const fileName of readOnlyWorkflows) {
     const yaml = fs.readFileSync(path.join(WORKFLOW_DIR, fileName), 'utf8');

@@ -167,6 +167,7 @@
     "audit-compare-links": "node scripts/audit-compare-links.js",
     "audit-link-quality": "node scripts/audit-link-quality.js",
     "audit-adsense-readiness": "node scripts/audit-adsense-readiness.js",
+    "audit:publication-boundary": "node scripts/audit-publication-boundary.js",
     "audit-dimension-axis": "node scripts/audit-dimension-axis.js",
     "audit-geo-schema-eligibility": "node scripts/audit-geo-schema-eligibility.js",
     "audit-data-accuracy": "node scripts/audit-data-accuracy.js",

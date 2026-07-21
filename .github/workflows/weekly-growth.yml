@@ -6,13 +6,17 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
+  pull-requests: write
 
 jobs:
   regenerate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: main
 
       - uses: actions/setup-node@v6
         with:
@@ -21,22 +25,30 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate SEO assets
-        run: npm run generate-all
+      - name: Build canonical release outputs
+        run: env -u FITAPPLIANCE_STORAGE_ROOT npm run build
 
-      - name: Refresh coverage audit timestamp
+      - name: Audit publication boundary
+        run: npm run audit:publication-boundary
+
+      - name: Open regeneration PR if changed
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          node -e "const fs=require('node:fs');const p='docs/coverage-audit.json';const d=JSON.parse(fs.readFileSync(p,'utf8'));d.generated=new Date().toISOString().slice(0,10);fs.writeFileSync(p, JSON.stringify(d,null,2)+'\n');"
-
-      - name: Ping IndexNow
-        run: npm run ping-indexnow
-
-      - name: Commit regenerated outputs
-        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "canonical outputs are current"
+            exit 0
+          fi
+          branch="automation/weekly-growth-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
           git add -A
-          git diff --cached --quiet || git commit -m "chore(auto): weekly regen + IndexNow ping [skip ci]"
-
-      - name: Push if changed
-        run: git push origin main
+          git commit -m "chore(auto): propose weekly canonical regeneration"
+          git push -u origin "$branch"
+          gh pr create \
+            --base main \
+            --head "$branch" \
+            --title "chore(auto): weekly canonical regeneration" \
+            --body "Automated canonical-build drift proposal. Merge only after PR validation passes."
+          gh workflow run pr-validation.yml --ref "$branch"

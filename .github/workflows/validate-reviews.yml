@@ -6,7 +6,9 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
+  pull-requests: write
 
 jobs:
   validate-reviews:
@@ -30,16 +32,33 @@ jobs:
       - name: Run review validation
         run: npm run validate-reviews
 
-      - name: Regenerate review-enabled pages
-        run: npm run generate-all
+      - name: Build canonical release outputs
+        run: env -u FITAPPLIANCE_STORAGE_ROOT npm run build
 
       - name: Audit review content gate
         run: npm run audit-review-content
 
-      - name: Commit refreshed review artifacts
+      - name: Audit publication boundary
+        run: npm run audit:publication-boundary
+
+      - name: Open review validation PR if changed
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "review validation produced no changes"
+            exit 0
+          fi
+          branch="automation/review-validation-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/videos/review-pilot-slugs.json data/videos/review-videos.json reports/review-validation.json reports/review-content-audit.json pages/brands/*.html pages/cavity/*.html public/sitemap.xml public/rss.xml public/image-sitemap.xml reports/link-graph.json reports/schema-validation.json
-          git diff --cached --quiet || git commit -m "chore(review): refresh validation $(date -u +%Y-%m-%d)"
-          git push origin main
+          git switch -c "$branch"
+          git add -A
+          git commit -m "chore(review): propose refreshed validation"
+          git push -u origin "$branch"
+          gh pr create \
+            --base main \
+            --head "$branch" \
+            --title "chore(review): refresh validation" \
+            --body "Automated review-validation candidate. Merge only after canonical build and PR checks pass."
+          gh workflow run pr-validation.yml --ref "$branch"

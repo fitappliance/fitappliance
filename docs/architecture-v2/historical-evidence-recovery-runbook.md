@@ -70,6 +70,32 @@ before changing evidence semantics.
     `--allow-all` selectors are prohibited at the CLI boundary. Acquisition and
     discovery manifests are not interchangeable.
 
+### 1.1 Automation publication boundary
+
+`npm run build` is the only automation entry point that may materialise released
+`public/data`, generated pages, `public/sitemap.xml`, and
+`public/service-worker.js`. It must run with `FITAPPLIANCE_STORAGE_ROOT` unset so
+ordinary release validation cannot depend on the evidence drive.
+
+Every workflow change must pass:
+
+```bash
+npm run audit:publication-boundary
+```
+
+The audit rejects the legacy runtime sync, a bare or explicit default-branch
+push, and any runtime commit that lacks the canonical build, pull-request write
+permission, or an explicit PR creation step. An automation job may push only to
+its run-scoped `automation/*` branch and must open a PR against `main`. PR
+validation runs lint, tests, the offline canonical build, this audit, whitespace
+checks, and the generated-output diff gate before the proposal can merge.
+
+`.github/workflows/data-sync.yml` is a read-only retirement notice. Do not
+re-enable its former schedule or restore its retailer-to-runtime behavior. A
+future retailer job must first persist typed Architecture V2 observations and
+immutable acquisition receipts; it may then regenerate a candidate through the
+same reviewed build path. The local legacy sync command is not a release path.
+
 ## 2. Storage and tool preflight
 
 The evidence root is outside Git:
