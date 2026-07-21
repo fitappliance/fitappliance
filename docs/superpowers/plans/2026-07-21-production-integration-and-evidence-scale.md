@@ -482,6 +482,18 @@ git diff --check
 - `retail-cutover-impact.json` reports `PASS`, zero issues, byte-identical candidate and rollback checks, and the automatic decision `CUTOVER_ALLOWED` with zero blockers.
 - Result: acceptance gate passed; Task 6 started.
 
+### Task 6
+
+- Started: 2026-07-22 Australia/Perth. Cutover commit `ec79f5c4d` opened pull request `#191` with release `retail_lifecycle_release_6c42c754aeb1ff49097b32b4`.
+- The first PR build passed tests, the complete canonical build, publication boundaries, sitemap verification, and content gates, then failed generated-output cleanliness. The normal build still published the 3,515-row legacy projection after materializing the approved 3,513-row candidate, so product pages and runtime data were silently regenerated from different catalogues.
+- The corrective design adds one checked-in active-release pointer and an immutable release directory containing the exact authorized projection, historical reference, and authorization manifest. All three inputs are SHA-256 and semantic-hash bound to the `READY_FOR_CUTOVER` manifest and its byte-identical rollback proof.
+- `publish:catalog`, the compatibility `publish:runtime-catalog` command, and the final build audit now use only `publish-active-retail-release.mjs`. No package or workflow command can invoke the legacy runtime publisher directly. The legacy helper remains private to isolated preview and active-release implementations until Task 12 cleanup.
+- Product-page CLI generation now reads the published active runtime catalogue. This prevents quarantined candidate rows from reappearing and keeps product pages, sitemap, runtime JSON, historical replacement, and Fit publication audits on the same release.
+- Verification before the corrective commit: two full builds produced the same worktree SHA-256 and each generated 1,738 product pages plus a 1,983-URL sitemap. The active release remained at 3,513 products, 349 current-retail rows, and 8,087 historical-reference records, with zero historical replacement issues and zero Fit publication violations.
+- Focused publication, impact, SEO, historical replacement, and Fit tests passed 53/53; the complete suite passed 2,879/2,879; lint, documentation, copy, and portability audits passed with zero violations; the cutover decision remained `CUTOVER_ALLOWED` with zero blockers. Active-release tests also prove that artifact byte drift and out-of-directory paths fail closed.
+- Explicit remaining boundary: the historical scale-control plane still computes its current-product P0 denominator from the 3,515-row legacy Architecture V2 baseline. Do not claim that priority rebasing is complete; perform it after production observation, before Task 8 scaling.
+- Current state: corrective commit, PR CI, production deployment, production hash/browser checks, and the observation window are still required. Legacy deletion remains prohibited.
+
 ## Final Completion Contract
 
 The plan is complete only when Tasks 0-12 are independently accepted. A safe lifecycle cutover does not imply PDF, historical replacement, or Fit evidence completion; those retain separate denominators and acceptance gates.

@@ -153,9 +153,15 @@ test('historical replacement audit rejects conflict dimensions, commercial leaka
 
 test('normal build republishes and audits committed history without requiring external snapshots', () => {
   const scripts = JSON.parse(readFileSync('package.json', 'utf8')).scripts;
+  const activePublisher = readFileSync(
+    'scripts/architecture-v2/publish-active-retail-release.mjs',
+    'utf8',
+  );
   assert.match(scripts['build:architecture-v2'], /publish:historical-reference/);
   assert.match(scripts['build:architecture-v2'], /audit:historical-replacement/);
-  assert.match(scripts.build, /audit:historical-replacement/);
+  assert.match(scripts.build, /audit:active-retail-release/);
+  assert.match(activePublisher, /runHistoricalReplacementAudit/);
+  assert.match(activePublisher, /runFitPublicationAudit/);
   assert.doesNotMatch(scripts['build:architecture-v2'], /build:historical-reference|storage-root|FITAPPLIANCE_STORAGE_ROOT/);
   assert.doesNotMatch(scripts.build, /build:historical-reference|storage-root|FITAPPLIANCE_STORAGE_ROOT/);
   assert.match(scripts['refresh:historical-reference'], /build:historical-reference/);

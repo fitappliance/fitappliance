@@ -10,6 +10,7 @@ export const architectureV2Paths = Object.freeze({
   productDataChannelMatrix: `${base}/policies/product-data-channel-matrix.json`,
   canonicalIdentityDecisions: `${base}/decisions/canonical-identity-decisions.json`,
   canonicalPublicationQuarantine: `${base}/decisions/canonical-publication-quarantine.json`,
+  activeRetailRelease: `${base}/decisions/active-retail-release.json`,
   phase1QuarantineDisposition: `${base}/decisions/phase1-quarantine-disposition.json`,
   retailerIdentityOfficialEvidenceSeeds: `${base}/decisions/retailer-identity-official-evidence-seeds.json`,
   phase08Selection: `${base}/reviews/phase-08/evidence-pilot.json`,

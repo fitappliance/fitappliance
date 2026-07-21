@@ -1023,7 +1023,11 @@ async function generateProductPages({
 }
 
 if (require.main === module) {
-  generateProductPages().catch((error) => {
+  const repoRoot = path.resolve(__dirname, '..');
+  generateProductPages({
+    repoRoot,
+    catalogPath: path.join(repoRoot, 'public', 'data', 'appliances.json')
+  }).catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });
