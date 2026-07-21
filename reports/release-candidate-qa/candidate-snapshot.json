@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "label": "candidate",
-  "capturedAt": "2026-07-21T17:33:37.153Z",
-  "sourceCommit": "4eddde802d2775386a61fab982a989341980de8a",
+  "capturedAt": "2026-07-21T18:30:44.997Z",
+  "sourceCommit": "e58e5ca78f4cc9b3984a7a615ed0dc54a05bf0a4",
   "projection": {
     "path": "data/architecture-v2/generated/public-catalog-release-candidate.json",
     "sha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
@@ -14127,6 +14127,11 @@
     {
       "source": "/compare/hisense-vs-inalto-washing-machine-clearance",
       "destination": "/brands/hisense-washing-machine-clearance",
+      "permanent": true
+    },
+    {
+      "source": "/compare/hisense-vs-chiq-fridge-clearance",
+      "destination": "/compare/hisense-vs-chiq-fridge",
       "permanent": true
     },
     {
@@ -28523,6 +28528,6 @@
   "sizes": {
     "publicDataBytes": 15896360,
     "siteBytes": 42227164,
-    "controlPlaneBytes": 188645653
+    "controlPlaneBytes": 210957977
   }
 }

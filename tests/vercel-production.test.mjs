@@ -171,6 +171,11 @@ test('vercel production config: current GSC 404 examples have durable redirects'
     destination: '/brands/hisense-washing-machine-clearance',
     permanent: true
   });
+  assert.deepEqual(redirects.get('/compare/hisense-vs-chiq-fridge-clearance'), {
+    source: '/compare/hisense-vs-chiq-fridge-clearance',
+    destination: '/compare/hisense-vs-chiq-fridge',
+    permanent: true
+  });
   assert.deepEqual(redirects.get('/products/westinghouse-wtb3400ak-ao-110593'), {
     source: '/products/westinghouse-wtb3400ak-ao-110593',
     destination: '/brands/westinghouse-fridge-clearance',

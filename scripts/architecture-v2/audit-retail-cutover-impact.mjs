@@ -201,6 +201,34 @@ export function applyRetailCutoverDecision({ impact, browserQa, fitAudit, cohort
     if (newlyNoindexed.length > 0) {
       blockers.push({ code: 'MEASURED_ROUTE_NEWLY_NOINDEX', routes: newlyNoindexed });
     }
+
+    const routeEvidence = impact?.routes;
+    if (
+      !Array.isArray(routeEvidence?.added)
+      || !Array.isArray(routeEvidence?.preserved)
+      || !Array.isArray(routeEvidence?.configuredRedirects)
+    ) {
+      blockers.push({ code: 'MEASURED_ROUTE_RESOLUTION_MISSING' });
+    } else {
+      const candidateRoutes = new Set(
+        [...routeEvidence.added, ...routeEvidence.preserved].map(normalizedSitemapRoute)
+      );
+      const permanentRedirects = new Map(
+        routeEvidence.configuredRedirects
+          .filter((redirect) => redirect?.permanent === true)
+          .map((redirect) => [normalizedSitemapRoute(redirect.source), redirect])
+      );
+      const unresolved = cohortDeltas
+        .map((row) => normalizedSitemapRoute(row.route))
+        .filter((route) => {
+          if (candidateRoutes.has(route)) return false;
+          const redirect = permanentRedirects.get(route);
+          return !redirect || !candidateRoutes.has(normalizedSitemapRoute(redirect.destination));
+        });
+      if (unresolved.length > 0) {
+        blockers.push({ code: 'MEASURED_ROUTE_UNRESOLVED', routes: [...new Set(unresolved)].sort() });
+      }
+    }
   }
 
   return {
@@ -480,6 +508,7 @@ export function buildRetailCutoverImpact({ baseline, candidate, candidateRepeat,
       added,
       preserved,
       removed,
+      configuredRedirects: redirectRows,
       redirected,
       invalidRedirects,
       nonPermanentRedirects,

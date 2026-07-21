@@ -38,7 +38,7 @@
     }
   },
   "candidate": {
-    "sourceCommit": "4eddde802d2775386a61fab982a989341980de8a",
+    "sourceCommit": "e58e5ca78f4cc9b3984a7a615ed0dc54a05bf0a4",
     "products": 3513,
     "currentRetailProducts": 349,
     "archivedProducts": 3087,
@@ -2478,6 +2478,398 @@
       "/products/lg-1910bx-discovery-washing-machine-lg-1910bx",
       "/products/lg-1910fgx-discovery-washing-machine-lg-1910fgx"
     ],
+    "configuredRedirects": [
+      {
+        "source": "/:path*",
+        "destination": "https://www.fitappliance.com.au/:path*",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/panasonic-nr-tc221busa-in-800mm-cavity",
+        "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/panasonic-nr-tc221busa-in-700mm-cavity",
+        "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/panasonic-nr-tc221busa-in-620mm-cavity",
+        "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/panasonic-nr-tc221busa-in-600mm-cavity",
+        "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/panasonic-nr-tc221busa-in-580mm-cavity",
+        "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/lg-wtx3-09g-in-620mm-cavity",
+        "destination": "/brands/lg-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/hisense-hcf7s1014b-in-640mm-cavity",
+        "destination": "/brands/hisense-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/cavity",
+        "destination": "/tools/fit-checker",
+        "permanent": true
+      },
+      {
+        "source": "/doorway",
+        "destination": "/tools/fit-checker",
+        "permanent": true
+      },
+      {
+        "source": "/location",
+        "destination": "/tools/fit-checker",
+        "permanent": true
+      },
+      {
+        "source": "/location/:city",
+        "destination": "/location/:city/fridge",
+        "permanent": true
+      },
+      {
+        "source": "/compare/euro-vs-robinhood-dryer-clearance",
+        "destination": "/brands/euro-dryer-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/smeg-vs-miele-dishwasher-clearance",
+        "destination": "/compare/fisher-paykel-vs-miele-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/midea-vs-inalto-washing-machine-clearance",
+        "destination": "/brands/midea-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/midea-vs-beko-washing-machine-clearance",
+        "destination": "/brands/midea-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/hisense-vs-inalto-washing-machine-clearance",
+        "destination": "/brands/hisense-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/hisense-vs-chiq-fridge-clearance",
+        "destination": "/compare/hisense-vs-chiq-fridge",
+        "permanent": true
+      },
+      {
+        "source": "/products/westinghouse-wtb3400ak-ao-110593",
+        "destination": "/brands/westinghouse-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/products/westinghouse-wqe6870ba-ao-88955",
+        "destination": "/brands/westinghouse-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/beko-vs-electrolux-dryer",
+        "destination": "/brands/electrolux-dryer-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/beko-vs-electrolux-fridge",
+        "destination": "/brands/electrolux-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/beko-vs-esatto-fridge",
+        "destination": "/compare/esatto-vs-beko-fridge",
+        "permanent": true
+      },
+      {
+        "source": "/compare/beko-vs-lg-dryer",
+        "destination": "/guides/dryer-ventilation-guide",
+        "permanent": true
+      },
+      {
+        "source": "/compare/beko-vs-midea-fridge",
+        "destination": "/brands/midea-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/bosch-vs-asko-dishwasher",
+        "destination": "/compare/bosch-vs-asko-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/bosch-vs-beko-dishwasher",
+        "destination": "/brands/bosch-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/bosch-vs-beko-dryer",
+        "destination": "/brands/bosch-dryer-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/bosch-vs-fisher-paykel-dishwasher",
+        "destination": "/compare/bosch-vs-fisher-paykel-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/bosch-vs-haier-washing-machine",
+        "destination": "/brands/bosch-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/bosch-vs-lg-dryer",
+        "destination": "/compare/bosch-vs-lg-dryer-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/bosch-vs-omega-dishwasher",
+        "destination": "/compare/bosch-vs-omega-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/bosch-vs-smeg-dishwasher",
+        "destination": "/compare/bosch-vs-smeg-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/bosch-vs-westinghouse-dishwasher",
+        "destination": "/brands/bosch-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/chiq-vs-electrolux-fridge",
+        "destination": "/brands/chiq-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/chiq-vs-lg-fridge",
+        "destination": "/compare/lg-vs-chiq-fridge",
+        "permanent": true
+      },
+      {
+        "source": "/compare/chiq-vs-midea-fridge",
+        "destination": "/brands/chiq-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/electrolux-vs-lg-dryer",
+        "destination": "/brands/electrolux-dryer-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/esatto-vs-electrolux-fridge",
+        "destination": "/brands/esatto-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/esatto-vs-midea-fridge",
+        "destination": "/brands/esatto-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/fisher-paykel-vs-asko-dishwasher",
+        "destination": "/brands/fisher-paykel-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/fisher-paykel-vs-beko-dryer",
+        "destination": "/brands/fisher-paykel-dryer-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/fisher-paykel-vs-electrolux-fridge",
+        "destination": "/brands/fisher-paykel-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/fisher-paykel-vs-haier-washing-machine",
+        "destination": "/brands/fisher-paykel-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/fisher-paykel-vs-lg-dryer",
+        "destination": "/compare/fisher-paykel-vs-lg-dryer-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/fisher-paykel-vs-midea-fridge",
+        "destination": "/brands/fisher-paykel-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/fisher-paykel-vs-samsung-washing-machine",
+        "destination": "/compare/fisher-paykel-vs-samsung-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/haier-vs-asko-dishwasher",
+        "destination": "/brands/haier-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/haier-vs-electrolux-fridge",
+        "destination": "/brands/haier-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/haier-vs-hisense-fridge",
+        "destination": "/compare/hisense-vs-haier-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/haier-vs-midea-fridge",
+        "destination": "/brands/haier-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/hisense-vs-electrolux-fridge",
+        "destination": "/brands/hisense-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/hisense-vs-midea-fridge",
+        "destination": "/brands/hisense-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/lg-vs-electrolux-fridge",
+        "destination": "/brands/lg-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/lg-vs-fisher-paykel-washing-machine",
+        "destination": "/compare/lg-vs-fisher-paykel-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/lg-vs-haier-washing-machine",
+        "destination": "/brands/lg-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/lg-vs-midea-fridge",
+        "destination": "/brands/lg-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/lg-vs-samsung-washing-machine",
+        "destination": "/compare/lg-vs-samsung-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/midea-vs-electrolux-fridge",
+        "destination": "/brands/midea-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/samsung-vs-bosch-washing-machine",
+        "destination": "/compare/samsung-vs-bosch-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/samsung-vs-electrolux-fridge",
+        "destination": "/brands/samsung-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/samsung-vs-haier-washing-machine",
+        "destination": "/brands/samsung-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/samsung-vs-midea-fridge",
+        "destination": "/brands/samsung-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/smeg-vs-asko-dishwasher",
+        "destination": "/brands/smeg-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/smeg-vs-electrolux-fridge",
+        "destination": "/brands/smeg-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/smeg-vs-esatto-fridge",
+        "destination": "/compare/esatto-vs-smeg-fridge",
+        "permanent": true
+      },
+      {
+        "source": "/compare/smeg-vs-fisher-paykel-dishwasher",
+        "destination": "/compare/fisher-paykel-vs-smeg-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/smeg-vs-haier-dishwasher",
+        "destination": "/brands/smeg-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/smeg-vs-midea-fridge",
+        "destination": "/brands/smeg-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/westinghouse-vs-electrolux-fridge",
+        "destination": "/brands/westinghouse-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/westinghouse-vs-haier-fridge",
+        "destination": "/compare/westinghouse-vs-haier-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/westinghouse-vs-hisense-fridge",
+        "destination": "/compare/westinghouse-vs-hisense-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/westinghouse-vs-lg-fridge",
+        "destination": "/compare/westinghouse-vs-lg-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/westinghouse-vs-midea-fridge",
+        "destination": "/brands/westinghouse-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/products/fisher-paykel-rf730qzuvx1-french-door-726l-f3",
+        "destination": "/brands/fisher-paykel-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/products/haier-hrf520bhs-french-door-520l-f7",
+        "destination": "/products/haier-hrf520bhs-ao-62557",
+        "permanent": true
+      },
+      {
+        "source": "/products/lg-1910bx-discovery-washing-machine-lg-1910bx",
+        "destination": "/products/lg-wwt-1910bx-discovery-washing-machine-lg-1910bx",
+        "permanent": true
+      },
+      {
+        "source": "/products/lg-1910fgx-discovery-washing-machine-lg-1910fgx",
+        "destination": "/products/lg-wwt-1910fgx-discovery-washing-machine-lg-1910fgx",
+        "permanent": true
+      }
+    ],
     "redirected": [
       {
         "source": "/compare/beko-vs-electrolux-dryer",
@@ -3338,7 +3730,7 @@
     "candidate": {
       "publicDataBytes": 15896360,
       "siteBytes": 42227164,
-      "controlPlaneBytes": 188645653
+      "controlPlaneBytes": 210957977
     }
   },
   "determinism": {

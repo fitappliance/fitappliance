@@ -147,6 +147,11 @@ test('impact report classifies route changes and proves deterministic candidate 
   assert.equal(report.status, 'PASS');
   assert.deepEqual(report.routes.added, ['/products/new']);
   assert.deepEqual(report.routes.preserved, ['/']);
+  assert.deepEqual(report.routes.configuredRedirects, [{
+    source: '/products/old',
+    destination: '/products/new',
+    permanent: true,
+  }]);
   assert.deepEqual(report.routes.redirected, [{ source: '/products/old', destination: '/products/new' }]);
   assert.deepEqual(report.routes.unexplainedRemoved, []);
   assert.deepEqual(report.routes.newlyNoindexed, []);
@@ -245,7 +250,16 @@ test('measured cavity cohorts fail closed when generated-page results are unavai
 
 test('automatic cutover decision requires impact, browser, Fit and measured cohorts to pass', () => {
   const baseInputs = {
-    impact: { status: 'PASS', issues: [], routes: { newlyNoindexed: [] } },
+    impact: {
+      status: 'PASS',
+      issues: [],
+      routes: {
+        added: [],
+        preserved: ['/'],
+        configuredRedirects: [],
+        newlyNoindexed: [],
+      },
+    },
     browserQa: {
       status: 'PASS',
       checks: [
@@ -292,6 +306,40 @@ test('automatic cutover decision requires impact, browser, Fit and measured coho
 
   const missingFitAudit = applyRetailCutoverDecision({ ...baseInputs, fitAudit: {} });
   assert.ok(missingFitAudit.blockers.some((row) => row.code === 'FIT_PUBLICATION_AUDIT_MISSING'));
+
+  const unresolvedMeasuredRoute = applyRetailCutoverDecision({
+    ...baseInputs,
+    cohortDeltas: [{ route: '/compare/hisense-vs-chiq-fridge-clearance', status: 'PRESERVED', groups: [] }],
+  });
+  assert.ok(unresolvedMeasuredRoute.blockers.some((row) => (
+    row.code === 'MEASURED_ROUTE_UNRESOLVED'
+    && row.routes.includes('/compare/hisense-vs-chiq-fridge-clearance')
+  )));
+
+  const redirectedMeasuredRoute = applyRetailCutoverDecision({
+    ...baseInputs,
+    impact: {
+      ...baseInputs.impact,
+      routes: {
+        added: ['/compare/hisense-vs-chiq-fridge'],
+        preserved: ['/'],
+        configuredRedirects: [{
+          source: '/compare/hisense-vs-chiq-fridge-clearance',
+          destination: '/compare/hisense-vs-chiq-fridge',
+          permanent: true,
+        }],
+        newlyNoindexed: [],
+      },
+    },
+    cohortDeltas: [{ route: '/compare/hisense-vs-chiq-fridge-clearance', status: 'PRESERVED', groups: [] }],
+  });
+  assert.equal(redirectedMeasuredRoute.decision, 'CUTOVER_ALLOWED');
+
+  const missingRouteEvidence = applyRetailCutoverDecision({
+    ...baseInputs,
+    impact: { status: 'PASS', issues: [], routes: { newlyNoindexed: [] } },
+  });
+  assert.ok(missingRouteEvidence.blockers.some((row) => row.code === 'MEASURED_ROUTE_RESOLUTION_MISSING'));
 });
 
 test('impact report fails closed for commercial market-reference leakage and unexplained route removal', () => {
