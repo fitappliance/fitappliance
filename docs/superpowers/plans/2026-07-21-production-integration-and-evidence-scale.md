@@ -407,7 +407,18 @@ git diff --check
 ### Task 1
 
 - Started: 2026-07-21 Australia/Perth.
-- Pre-merge hashes and generated-artifact checksums: pending capture immediately before merge.
+- Pre-merge branch HEAD: `bbf614b2e7f6da6acaa1f4e24f062c617a2976ee`.
+- Fetched `origin/main`: `5209825f44da9eb93da4e652da53d0952d9b50da`.
+- Merge base: `83555ba6a3150489d596a668831dcd7b3c752bfc`; divergence was 3 main-only / 102 branch-only commits.
+- Pre-merge generated-artifact SHA-256:
+  - `docs/promotion-kit.md`: `20b0b7ef0b5159c2a160793dcd82ceebf34f260dc3dce6050630668bfc0515dd`
+  - `pages/compare/electrolux-vs-lg-dryer.html`: `9a2bb16dbc702dcdbb5c127778fbc642dca6d59751a682088fc23062c516eaf6`
+  - `public/data/appliances.json`: `fc3cbafd17160a59961802fd4f5e2f50199bf00cf1e526e85a53590a2fd2db5e`
+  - `public/data/dishwashers.json`: `15620b02f8121db687d2edf675847984d3a10404cfdd7017a01f242be4358abe`
+  - `public/data/dryers.json`: `a2426bb0409694ca6eec4dd5e736d2178919367c51a92490f8f202b648532b46`
+  - `public/data/fridges.json`: `b004c09caef5e84de7ebcf1c84c7698402b9364065b931738489eb2a823e367b`
+  - `public/data/washing-machines.json`: `1aa5eb3c084a6f49df498dcc4d3c39285b5eae82f1185e409e8d958ca15d9234`
+- Merge and regeneration result: pending.
 
 ## Final Completion Contract
 
