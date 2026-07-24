@@ -58,6 +58,16 @@ test('phase 20: lighthouse workflow exists and supports workflow_dispatch', () =
   const workflow = fs.readFileSync(filePath, 'utf8');
   assert.match(workflow, /workflow_dispatch:/);
   assert.match(workflow, /upload-artifact/i);
+  assert.match(
+    workflow,
+    /env -u FITAPPLIANCE_STORAGE_ROOT npm run build/,
+    'Lighthouse must measure the canonical offline production build'
+  );
+  assert.doesNotMatch(
+    workflow,
+    /npm run generate-all/,
+    'Lighthouse must not regenerate pages through the legacy runtime mutation path'
+  );
 });
 
 test('phase 20: OG generator emits WebP alongside PNG outputs', () => {

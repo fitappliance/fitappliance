@@ -105,6 +105,35 @@ jobs:
   );
 });
 
+test('publication boundary rejects legacy runtime mutation commands without a git publish step', async () => {
+  const commands = [
+    'npm run generate-all',
+    'npm run enrich-evidence',
+    'npm run enrich-manual-retailers',
+    'node scripts/architecture-v2/publish-runtime-projection.js'
+  ];
+
+  for (const command of commands) {
+    const root = await createWorkspace(`name: Legacy runtime command
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ${command}
+`);
+    const result = await auditPublicationBoundary({ repoRoot: root, logger: { log() {}, error() {} } });
+    assert.equal(result.exitCode, 1, command);
+    assert.equal(
+      result.violations.some((violation) => violation.rule === 'legacy-runtime-mutation'),
+      true,
+      command
+    );
+  }
+});
+
 test('repository workflows satisfy the publication boundary', async () => {
   const result = await auditPublicationBoundary({ repoRoot: process.cwd(), logger: { log() {}, error() {} } });
   assert.equal(result.exitCode, 0, JSON.stringify(result.violations, null, 2));
