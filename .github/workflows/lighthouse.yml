@@ -22,8 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate static pages
-        run: npm run generate-all
+      - name: Build canonical production pages
+        run: env -u FITAPPLIANCE_STORAGE_ROOT npm run build
 
       - name: Run Lighthouse checks
         run: npm run lighthouse-ci -- --min-score 0.9

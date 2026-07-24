@@ -71,7 +71,7 @@ flowchart TD
 | 3 | Release A: merge architecture with baseline unchanged | 2 | COMPLETED |
 | 4 | Isolated lifecycle candidate materialization and QA | 3 | COMPLETED |
 | 5 | Candidate impact decision | 4 | COMPLETED |
-| 6 | Release B: lifecycle cutover and rollback observation | 5 pass | IN_PROGRESS |
+| 6 | Release B: lifecycle cutover and rollback observation | 5 pass | COMPLETED |
 | 7 | Conditional authorized retailer coverage expansion | 5 fail | PENDING |
 | 8 | Repair P0 zero-yield cohort | 6 | PENDING |
 | 9 | Scale current-product W/H/D receipts | 8 | PENDING |
@@ -278,8 +278,8 @@ git diff --check
 - [x] Open and merge a dedicated cutover PR containing the complete atomic release unit.
 - [x] Deploy and rerun the Task 4 browser paths against production.
 - [x] Compare production marker/catalog hashes to the committed release.
-- [ ] Monitor application errors, deterministic zero-result behavior, outbound CTA behavior, sitemap health, and top GSC landing routes through the bounded 24-hour observation window. Do not claim a live zero-result rate until result-outcome telemetry exists.
-- [ ] Roll back the complete release commit on any severity-1 data, route, Fit, or CTA issue.
+- [x] Monitor application errors, deterministic zero-result behavior, outbound CTA behavior, sitemap health, and top GSC landing routes through the bounded 24-hour observation window. Do not claim a live zero-result rate until result-outcome telemetry exists.
+- [x] Confirm that no severity-1 data, route, Fit, or CTA issue triggered the complete-release rollback.
 - [x] Mark legacy deletion prohibited until the observation window closes.
 
 **Acceptance gate:** Production bytes match the cutover commit, smoke checks pass, and rollback remains immediately deployable.
@@ -503,7 +503,12 @@ git diff --check
 - Production `/data/appliances.json` reports 3,513 products and 349 current-retail rows. Its semantic SHA-256 is `77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85`, exactly matching the active immutable release; replacement-reference metadata totals 8,087 records.
 - Production Playwright followed the historical route to the expected `Hisense vs CHiQ fridges` page, found the expected title and H1, 1,876 characters of rendered text, no horizontal overflow, and no new page error. The previously recorded GTM CSP error is an observability defect, not a failed comparison workflow.
 - Vercel reported no runtime error clusters from deployment readiness through the initial checkpoint. Existing analytics cannot supply a defensible live zero-result rate because the event fires before result calculation and the external analytics script is CSP-blocked. This release uses measured cohort result retention plus tested zero-result UI behavior; future rate thresholds require a separate privacy-safe result-outcome telemetry change.
-- Observation window: start `2026-07-22 02:39 AWST`; earliest close `2026-07-23 02:39 AWST`. Initial checkpoint passed. Intermediate and closing checkpoints remain pending, so Task 6 remains `IN_PROGRESS`; Task 8 and all legacy deletion remain prohibited.
+- Observation window: start `2026-07-22 02:39 AWST`; earliest close `2026-07-23 02:39 AWST`. The closing checkpoint ran at `2026-07-24 23:46 AWST`, after the full bounded window.
+- Vercel reported no runtime error clusters and no production 5xx responses during the observed period. The production deployment remained `READY` on merged main commit `021bd734038a227dd288cf6983bc924689e9e7f0`.
+- All ten measured GSC routes remained reachable: nine direct 200 responses and the expected permanent 308 from `/compare/hisense-vs-chiq-fridge-clearance` to a 200 destination. The sitemap remained valid with 1,983 URLs and `/service-worker.js` returned 200 with revalidation caching.
+- Production remained byte- and meaning-stable at 3,513 catalogue products, 349 `CURRENT_RETAIL` products, and 8,087 historical-reference records. The catalogue semantic SHA-256 remained `77f1a07ef3e62e5b680ea520fce122bf33aaa85ace27d663a29fa0a4c20b9b85`, matching the immutable active release; the release audit reported zero historical-replacement issues and zero Fit publication violations.
+- Closing Playwright checks passed desktop cavity search, deterministic zero-result soft fail, old-appliance replacement ranking, mobile overflow, retailer CTA disclosure and `rel` attributes, product evidence labels, Service Worker control, same-origin data requests, and console errors. Existing analytics still cannot support a defensible live zero-result-rate claim.
+- Result: Task 6 acceptance gate passed and Task 6 is complete. Legacy deletion is no longer blocked by the observation clock, but remains sequenced in Task 12 after Tasks 8-11 and their independent acceptance gates.
 
 ## Final Completion Contract
 

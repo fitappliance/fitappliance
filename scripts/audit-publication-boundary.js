@@ -30,6 +30,16 @@ function auditWorkflow(relativePath, text) {
       ));
     }
 
+    if (/\bnpm\s+run\s+(?:generate-all|enrich-evidence|enrich-manual-retailers)(?:\s|$)/.test(entry.line)
+      || /\bnode\s+scripts\/architecture-v2\/publish-runtime-projection\.js(?:\s|$)/.test(entry.line)) {
+      violations.push(violation(
+        relativePath,
+        entry.lineNumber,
+        'legacy-runtime-mutation',
+        'Workflows must use the canonical build instead of legacy runtime mutation commands.'
+      ));
+    }
+
     if (/\bgit\s+push\s*$/.test(entry.trimmed)
       || /\bgit\s+push\b.*(?:\borigin\s+main\b|refs\/heads\/main\b|HEAD:main\b)/.test(entry.line)) {
       violations.push(violation(
