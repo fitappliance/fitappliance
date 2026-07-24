@@ -130,6 +130,9 @@ function validateCandidateManifest(candidateManifest, acquisitionQueue) {
   }
   const expectedManifestSha256 = canonicalJsonSha256({
     sourceAcquisitionQueueSha256: candidateManifest.sourceAcquisitionQueueSha256,
+    ...(candidateManifest.sourceBindings
+      ? { sourceBindings: candidateManifest.sourceBindings }
+      : {}),
     runBindings: candidateManifest.runBindings,
     candidates: candidateManifest.candidates,
     targets: candidateManifest.targets,
@@ -139,6 +142,11 @@ function validateCandidateManifest(candidateManifest, acquisitionQueue) {
   }
   if (candidateManifest.sourceAcquisitionQueueSha256 !== acquisitionQueue.semanticQueueSha256) {
     throw new Error('candidate manifest acquisition queue binding mismatch');
+  }
+  if (candidateManifest.sourceBindings
+    && canonicalJsonSha256(candidateManifest.sourceBindings)
+      !== canonicalJsonSha256(acquisitionQueue.sourceBindings)) {
+    throw new Error('candidate manifest active-release source binding mismatch');
   }
 
   const recordsByReference = new Map();
@@ -551,6 +559,9 @@ export function buildHistoricalExecutableRecoveryQueue({
     generatedAt: new Date(acquisitionQueue.generatedAt).toISOString(),
     sourceAcquisitionQueueSha256: acquisitionQueue.semanticQueueSha256,
     sourceOfficialCandidateManifestSha256: candidateManifest.semanticManifestSha256,
+    ...(acquisitionQueue.sourceBindings ? {
+      sourceBindings: structuredClone(acquisitionQueue.sourceBindings),
+    } : {}),
     evidenceProcessorEpochs: structuredClone(evidenceProcessorEpochs),
     policy: {
       resolverOnlyTargetsAllowed: false,

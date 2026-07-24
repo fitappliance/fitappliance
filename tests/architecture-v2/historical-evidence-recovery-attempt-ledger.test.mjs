@@ -11,6 +11,7 @@ import {
 } from '../../src/domain/historical-evidence-recovery-attempt-ledger.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from '../../src/domain/beko-product-page-dimensions.mjs';
+import { ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY } from '../../src/domain/mineru-document.mjs';
 
 const SHA = (value) => value.repeat(64);
 
@@ -381,6 +382,73 @@ test('a changed bounded source processor reopens a complete-exhausted resolver t
     ...input,
     evidenceProcessorEpochs: { [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: SHA('2') },
   }).length, 1);
+});
+
+test('an Esatto ProductCard parser epoch reopens only its failed PDF edge and exhausted target', () => {
+  const policySha256 = SHA('b');
+  const productCardUrl = 'https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf';
+  const manualUrl = 'https://esatto.house/s/EDW7CS_UserManual_V30_0223.pdf';
+  const capability = ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY;
+  const sourceAttempt = {
+    attemptId: 'attempt-esatto-product-card',
+    targetId: 'target-esatto',
+    referenceId: 'reference-esatto',
+    brand: 'Esatto',
+    sourceUrl: productCardUrl,
+    contentSha256: SHA('c'),
+    status: 'mineru_failure',
+    failureCode: 'mineru',
+    policySha256,
+    suppressesSamePolicySource: true,
+    processorCapability: capability,
+    evidenceProcessorSha256: SHA('1'),
+  };
+  const ledger = {
+    schemaVersion: 1,
+    entries: [
+      sourceAttempt,
+      {
+        ...sourceAttempt,
+        attemptId: 'attempt-esatto-manual',
+        sourceUrl: manualUrl,
+        contentSha256: SHA('d'),
+        processorCapability: undefined,
+        evidenceProcessorSha256: undefined,
+      },
+    ],
+    targetAttempts: [{
+      targetAttemptId: 'target-attempt-esatto',
+      targetId: 'target-esatto',
+      referenceId: 'reference-esatto',
+      reason: 'complete_exhausted_candidate_inventory',
+      policySha256,
+      suppressesSamePolicyResolverOnly: true,
+      resolvers: [{
+        resolverId: 'esatto-official-discovery',
+        version: '2',
+        scope: 'exact-model',
+        required: true,
+      }],
+    }],
+  };
+  const current = {
+    ledger,
+    targetId: 'target-esatto',
+    referenceId: 'reference-esatto',
+    policySha256,
+    evidenceProcessorEpochs: { [capability]: SHA('2') },
+  };
+
+  assert.deepEqual(
+    activeHistoricalAttemptSuppressions(current).map((entry) => entry.sourceUrl),
+    [manualUrl],
+  );
+  assert.deepEqual(activeHistoricalResolverSuppressions({
+    ...current,
+    resolverContractSha256: historicalResolverContractSha256(
+      ledger.targetAttempts[0].resolvers,
+    ),
+  }), []);
 });
 
 test('missing historical processor binding fails closed instead of creating a retry loop', () => {

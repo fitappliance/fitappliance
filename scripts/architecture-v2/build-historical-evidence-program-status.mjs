@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { dirname, relative, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
+import {
+  loadActiveRetailRelease,
+  loadActiveRetailReleaseAudits,
+} from '../../src/domain/active-retail-release.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import {
   buildHistoricalEvidenceProgramStatus,
@@ -40,6 +44,8 @@ function latestGeneratedAt(artifacts) {
 }
 
 export async function runCli(args = process.argv.slice(2)) {
+  const activeRelease = await loadActiveRetailRelease({ root });
+  const activeAudits = await loadActiveRetailReleaseAudits({ activeRelease });
   const [
     classification,
     knowledge,
@@ -51,8 +57,6 @@ export async function runCli(args = process.argv.slice(2)) {
     targetState,
     mineruBackfillAudit,
     receiptReplayAudit,
-    replacementAudit,
-    fitPublicationAudit,
   ] = await Promise.all([
     readJson('historicalModelEvidenceClassification'),
     readJson('dimensionExpressionObservations'),
@@ -64,9 +68,8 @@ export async function runCli(args = process.argv.slice(2)) {
     readJson('historicalEvidenceTargetState'),
     readJson('historicalMineruBackfillAudit'),
     readJson('historicalAcceptanceReceiptReplayAudit'),
-    readJson('historicalReplacementAudit'),
-    readJson('fitPublicationAudit'),
   ]);
+  const { replacementAudit, fitPublicationAudit } = activeAudits;
   const artifacts = [
     classification,
     knowledge,
@@ -96,6 +99,10 @@ export async function runCli(args = process.argv.slice(2)) {
     receiptReplayAudit,
     replacementAudit,
     fitPublicationAudit,
+    sourceArtifacts: {
+      replacementAudit: relative(root, activeAudits.paths.replacementAudit),
+      fitPublicationAudit: relative(root, activeAudits.paths.fitPublicationAudit),
+    },
   });
   const output = resolve(option(args, '--output')
     ?? resolveArchitectureV2Path(root, 'historicalEvidenceProgramStatus'));

@@ -4,6 +4,10 @@ import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
+import {
+  buildActiveHistoricalEvidenceScope,
+} from '../../src/domain/active-historical-evidence-scope.mjs';
+import { loadActiveRetailRelease } from '../../src/domain/active-retail-release.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { buildHistoricalModelPdfAcquisitionQueue } from '../../src/domain/historical-model-pdf-acquisition.mjs';
@@ -23,17 +27,25 @@ async function atomicJson(path, value) {
 }
 
 export async function runCli() {
-  const [classification, historicalReference, recoveryQueue, offlineReplayQueue,
-    offlineReplayResults, publicProjection, identityResearchQueue, identityMigration] = await Promise.all([
+  const [classification, activeRelease, recoveryQueue, offlineReplayQueue,
+    offlineReplayResults, identityResearchQueue] = await Promise.all([
     readJson('historicalModelEvidenceClassification'),
-    readJson('historicalApplianceReference'),
+    loadActiveRetailRelease({ root }),
     readJson('historicalEvidenceRecoveryQueue'),
     readJson('historicalPdfOfflineReplayQueue'),
     readJson('historicalPdfOfflineReplayResults'),
-    readJson('publicProjection'),
     readJson('identityResearchQueue'),
-    readJson('retailerIdentityMigration'),
   ]);
+  const activeScope = buildActiveHistoricalEvidenceScope(activeRelease);
+  if (canonicalJsonSha256(classification.sourceBindings)
+    !== canonicalJsonSha256(activeScope.sourceBindings)) {
+    throw new Error('classification active-release source binding drift');
+  }
+  const historicalReference = {
+    ...activeRelease.reference,
+    records: activeScope.records,
+  };
+  const publicProjection = activeRelease.catalog;
   const brands = [...new Set(classification.records.map((record) => record.canonicalBrand))];
   const resolverIdsByBrand = new Map(brands.map((brand) => [
     brand.toLowerCase().replace(/[^a-z0-9]+/g, ''),
@@ -47,7 +59,7 @@ export async function runCli() {
     offlineReplayQueue,
     offlineReplayResults,
     identityResearchQueue,
-    identityMigration,
+    identityMigration: null,
     catalogProjectionSemanticSha256: canonicalJsonSha256(publicProjection),
     resolverIdsByBrand,
     generatedAt: classification.generatedAt,

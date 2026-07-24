@@ -257,25 +257,17 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
     'scripts/architecture-v2/build-dimension-expression-knowledge.mjs',
     'utf8',
   );
-  const inputRefresh = 'node scripts/architecture-v2/build-public-projection.mjs'
-      + ' && npm run build:historical-reference'
-      + ' && npm run build:dimension-expression-knowledge'
+  const inputRefresh = 'npm run audit:active-retail-release'
       + ' && npm run build:historical-model-evidence-classification'
       + ' && npm run build:historical-document-family-graph'
       + ' && npm run build:historical-parser-gap-priority'
-      + ' && npm run build:historical-evidence-recovery-queue'
       + ' && npm run build:historical-model-pdf-acquisition-queue'
       + ' && npm run build:historical-official-candidate-manifest'
       + ' && npm run build:historical-executable-recovery-queue'
+      + ' && npm run build:historical-evidence-recovery-batch'
       + ' && npm run build:historical-evidence-family-canaries'
       + ' && npm run build:historical-evidence-target-state'
       + ' && npm run build:historical-evidence-bounded-batches'
-      + ' && npm run build:historical-evidence-recovery-batch'
-      + ' && npm run audit:installation-evidence-receipts'
-      + ' && npm run build:installation-evidence-pipeline'
-      + ' && npm run audit:fit-publication'
-      + ' && npm run publish:historical-reference'
-      + ' && npm run audit:historical-replacement'
       + ' && npm run build:historical-evidence-program-status';
   assert.equal(
     packageJson.scripts['refresh:historical-evidence-recovery:inputs'],
@@ -284,8 +276,10 @@ test('historical recovery refresh rebuilds dependent artifacts in topological or
   assert.equal(
     packageJson.scripts['refresh:historical-evidence-recovery'],
     'npm run refresh:historical-evidence-recovery:inputs'
-      + ' && npm run build:historical-dimensions-scale-control',
+      + ' && npm run build:historical-dimensions-scale-control'
+      + ' && npm run build:historical-evidence-system-contract',
   );
+  assert.doesNotMatch(inputRefresh, /build-public-projection|publish:historical-reference/);
   assert.equal(
     packageJson.scripts['build:dimension-expression-knowledge'],
     'node scripts/architecture-v2/build-dimension-expression-knowledge.mjs --generated-at-from-reference',

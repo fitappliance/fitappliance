@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "profiles": [
+    {
+      "parserProfileId": "esatto-au-dishwasher-product-card-physical-wdh-v1",
+      "familyId": "document_family_2172bd64ca2694450ac3f431",
+      "cases": [
+        {
+          "caseId": "source-edw7cs-product-card-page-1",
+          "expectation": "ACCEPT",
+          "derivation": "SOURCE_FRAGMENT",
+          "source": {
+            "pdfSha256": "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+            "contentSha256": "70fb8b309b1cada71de272fb1f35935bb88304de84ac14fc14afbf63573d6e5e",
+            "page": 1,
+            "fragmentSha256": "e8ef89af04a87572c31e5b7b2f38a7f96637dc5dc6557fb8ce40f0bd706b066a",
+            "fragmentType": "paragraph",
+            "bbox": [664, 257, 778, 277]
+          },
+          "sourceUrls": [
+            "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf",
+            "https://static1.squarespace.com/static/example/Esatto_ProductCard_EDW7CS.pdf"
+          ],
+          "identity": {
+            "category": "dishwasher",
+            "brand": "Esatto",
+            "model": "EDW7CS"
+          },
+          "semanticContext": {
+            "axisOrder": ["width", "depth", "height"],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "EXACT_PRODUCT_CARD_URL_AND_PAGE_HEADER"
+          },
+          "expectedClaims": [
+            { "field": "closedEnvelope.widthMm", "mm": 598 },
+            { "field": "closedEnvelope.heightMm", "mm": 845 },
+            { "field": "closedEnvelope.depthMm", "mm": 610 }
+          ],
+          "rejectedSemantics": [
+            "Packaged 645 x 672 x 871 mm is a delivery envelope",
+            "Depth door open 1175 mm is an operation envelope"
+          ],
+          "contentList": [
+            [
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "Product Dimensions:" }] },
+                "bbox": [664, 152, 775, 174]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "Packaged (w, d, h mm)" }] },
+                "bbox": [664, 178, 778, 200]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "→ 645 × 672 × 871mm" }] },
+                "bbox": [664, 205, 776, 225]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "Physical (w, d, h mm)" }] },
+                "bbox": [664, 230, 771, 252]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "→ 598 × 610 × 845mm" }] },
+                "bbox": [664, 257, 778, 277]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "Depth door open:" }] },
+                "bbox": [664, 282, 755, 304]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "→ 1175mm" }] },
+                "bbox": [664, 307, 722, 329]
+              },
+              {
+                "type": "page_header",
+                "content": { "page_header_content": [{ "type": "text", "content": "EDW7CS" }] },
+                "bbox": [22, 38, 96, 63]
+              }
+            ]
+          ]
+        },
+        {
+          "caseId": "reject-edw7cs-product-card-sibling-header",
+          "expectation": "REJECT",
+          "derivation": "ADVERSARIAL_MUTATION",
+          "source": {
+            "pdfSha256": "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+            "contentSha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "page": 1,
+            "fragmentSha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "fragmentType": "paragraph",
+            "bbox": [664, 257, 778, 277]
+          },
+          "sourceUrls": [
+            "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf"
+          ],
+          "identity": {
+            "category": "dishwasher",
+            "brand": "Esatto",
+            "model": "EDW7CS"
+          },
+          "semanticContext": {
+            "axisOrder": ["width", "depth", "height"],
+            "unit": "mm",
+            "scope": "product_closed",
+            "modelBinding": "EXACT_PRODUCT_CARD_URL_AND_PAGE_HEADER"
+          },
+          "expectedClaims": [],
+          "rejectedSemantics": [
+            "A sibling page header cannot donate the physical-dimensions tuple"
+          ],
+          "contentList": [
+            [
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "Product Dimensions:" }] },
+                "bbox": [664, 152, 775, 174]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "Packaged (w, d, h mm)" }] },
+                "bbox": [664, 178, 778, 200]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "→ 645 × 672 × 871mm" }] },
+                "bbox": [664, 205, 776, 225]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "Physical (w, d, h mm)" }] },
+                "bbox": [664, 230, 771, 252]
+              },
+              {
+                "type": "paragraph",
+                "content": { "paragraph_content": [{ "type": "text", "content": "→ 598 × 610 × 845mm" }] },
+                "bbox": [664, 257, 778, 277]
+              },
+              {
+                "type": "page_header",
+                "content": { "page_header_content": [{ "type": "text", "content": "EDW7CSB" }] },
+                "bbox": [22, 38, 104, 63]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,10 @@ import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
+import {
+  buildActiveHistoricalEvidenceScope,
+} from '../../src/domain/active-historical-evidence-scope.mjs';
+import { loadActiveRetailRelease } from '../../src/domain/active-retail-release.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { registryBrandKey, registryModelKey } from '../../src/domain/energy-rating-registry.mjs';
 import {
@@ -205,9 +209,12 @@ function hybridAuditEvidenceObjectIds(outcome) {
   ];
 }
 
-export function applyHistoricalPdfImageAudit({ links, audit }) {
+export function applyHistoricalPdfImageAudit({ links, audit, allowedReferenceIds = null }) {
   if (!(links instanceof Map) || audit?.schemaVersion !== 1 || !Array.isArray(audit?.outcomes)) {
     throw new TypeError('historical PDF image audit and classification links required');
+  }
+  if (allowedReferenceIds !== null && !(allowedReferenceIds instanceof Set)) {
+    throw new TypeError('historical PDF image audit reference scope must be a set');
   }
   const expectedAuditSha256 = canonicalJsonSha256({
     sourceQueueSha256: audit.sourceQueueSha256,
@@ -221,8 +228,13 @@ export function applyHistoricalPdfImageAudit({ links, audit }) {
   const conflictsByReference = new Map();
   let applied = 0;
   let skippedCurrentReceipts = 0;
+  let skippedOutsideActiveRelease = 0;
   for (const outcome of audit.outcomes) {
     const referenceId = String(outcome.referenceId ?? '');
+    if (allowedReferenceIds && !allowedReferenceIds.has(referenceId)) {
+      skippedOutsideActiveRelease += 1;
+      continue;
+    }
     const documentId = `pdf:${String(outcome.sourcePdfSha256 ?? '')}`;
     const documents = links.get(referenceId);
     const existing = documents?.get(documentId);
@@ -267,7 +279,12 @@ export function applyHistoricalPdfImageAudit({ links, audit }) {
     documents.set(documentId, next);
     applied += 1;
   }
-  return { conflictsByReference, applied, skippedCurrentReceipts };
+  return {
+    conflictsByReference,
+    applied,
+    skippedCurrentReceipts,
+    skippedOutsideActiveRelease,
+  };
 }
 
 export function applyAcceptanceReceiptReplayAudit({ links, audit }) {
@@ -338,6 +355,7 @@ export function deriveHistoricalModelEvidenceClassificationGeneratedAt({
   identityAcceptanceResults,
   imageRepairAudit,
   acceptanceReceiptReplayAudit,
+  activeReleaseActivatedAt,
 }) {
   const values = [
     historicalReference?.generatedAt,
@@ -354,6 +372,7 @@ export function deriveHistoricalModelEvidenceClassificationGeneratedAt({
     imageRepairAudit?.generatedAt,
     acceptanceReceiptReplayAudit?.generatedAt,
     acceptanceReceiptReplayAudit?.auditedAt,
+    activeReleaseActivatedAt,
   ].filter((value) => value != null).map((value) => {
     const timestamp = new Date(value);
     if (!Number.isFinite(timestamp.valueOf())) throw new TypeError('classification input timestamp invalid');
@@ -367,22 +386,27 @@ async function main(args) {
   const outputPath = resolve(option(args, '--output') ?? resolveArchitectureV2Path(root, 'historicalModelEvidenceClassification'));
   const outputMarkdown = resolve(option(args, '--markdown') ?? markdownPath);
   const generatedAtOption = option(args, '--generated-at');
-  const [policyValue, historicalReference, sourceDocumentArtifact, knowledge, legacyAudit,
-    recoveryQueue, acceptanceBundle, publicProjection, pdfAcceptanceResults,
+  const [policyValue, activeRelease, sourceDocumentArtifact, knowledge, legacyAudit,
+    recoveryQueue, acceptanceBundle, pdfAcceptanceResults,
     identityAcceptanceResults, imageRepairAudit, acceptanceReceiptReplayAudit] = await Promise.all([
     readJson(policyPath),
-    readJson(resolveArchitectureV2Path(root, 'historicalApplianceReference')),
+    loadActiveRetailRelease({ root }),
     readJson(resolveArchitectureV2Path(root, 'sourceDocuments')),
     readJson(knowledgePath),
     readJson(resolveArchitectureV2Path(root, 'legacyPdfLibraryAudit')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryQueue')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAcceptanceBundle')),
-    readJson(resolveArchitectureV2Path(root, 'publicProjection')),
     readJson(resolveArchitectureV2Path(root, 'pdfBrandAcceptanceResults')),
     readJson(resolveArchitectureV2Path(root, 'identityRangeRecoveryAcceptanceResults')),
     readJson(resolveArchitectureV2Path(root, 'historicalPdfImageRepairAudit')),
     readJson(resolveArchitectureV2Path(root, 'historicalAcceptanceReceiptReplayAudit')),
   ]);
+  const activeScope = buildActiveHistoricalEvidenceScope(activeRelease);
+  const historicalReference = {
+    ...activeRelease.reference,
+    records: activeScope.records,
+  };
+  const publicProjection = activeRelease.catalog;
   const generatedAt = generatedAtOption ?? deriveHistoricalModelEvidenceClassificationGeneratedAt({
     historicalReference,
     sourceDocumentArtifact,
@@ -395,6 +419,7 @@ async function main(args) {
     identityAcceptanceResults,
     imageRepairAudit,
     acceptanceReceiptReplayAudit,
+    activeReleaseActivatedAt: activeRelease.descriptor.activatedAt,
   });
   const policy = validateHistoricalModelEvidenceClassificationPolicy(policyValue);
   const records = historicalReference.records;
@@ -468,6 +493,7 @@ async function main(args) {
 
   for (const summary of legacyAudit.legacySummaries) {
     for (const referenceId of summary.referenceIds) {
+      if (!referenceById.has(referenceId)) continue;
       mergeDocumentLink(links, referenceId, {
         documentId: `legacy:${summary.relativePath}`,
         ...(summary.sourceUrl ? { sourceUrl: summary.sourceUrl } : {}),
@@ -527,12 +553,17 @@ async function main(args) {
     }
   }
 
-  const imageAuditApplication = applyHistoricalPdfImageAudit({ links, audit: imageRepairAudit });
+  const imageAuditApplication = applyHistoricalPdfImageAudit({
+    links,
+    audit: imageRepairAudit,
+    allowedReferenceIds: new Set(referenceById.keys()),
+  });
   applyAcceptanceReceiptReplayAudit({ links, audit: acceptanceReceiptReplayAudit });
 
   const snapshot = buildHistoricalModelEvidenceClassification({
     generatedAt,
     policy,
+    sourceBindings: activeScope.sourceBindings,
     historicalRecords: records,
     linksByReference: materializeLinks(links),
     groupsByReference: buildGroups(knowledge, referenceByExactKey),

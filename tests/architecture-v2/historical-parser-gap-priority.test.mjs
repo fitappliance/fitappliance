@@ -261,6 +261,9 @@ test('priority queue ranks only repair-ready exact-model gaps and is determinist
   reversed.classification.records.reverse();
   const graphSemantic = {
     schemaVersion: reversed.documentGraph.schemaVersion,
+    ...(reversed.documentGraph.sourceBindings
+      ? { sourceBindings: reversed.documentGraph.sourceBindings }
+      : {}),
     policy: reversed.documentGraph.policy,
     summary: reversed.documentGraph.summary,
     sourceVersions: reversed.documentGraph.sourceVersions,

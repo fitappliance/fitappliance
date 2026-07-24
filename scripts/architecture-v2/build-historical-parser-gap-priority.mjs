@@ -14,6 +14,8 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const defaultFixtureCorpora = [
   'electrolux-washer-total-depth-v1.json',
   'lg-dryer-dimension-diagram-v1.json',
+  'esatto-dishwasher-technical-information-d1-d2-v1.json',
+  'esatto-dishwasher-product-card-physical-wdh-v1.json',
 ].map((name) => resolve(root, 'tests/fixtures/architecture-v2/historical-parser-gaps', name));
 
 function option(args, name) {

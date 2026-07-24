@@ -4,6 +4,10 @@ import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
+import {
+  buildActiveHistoricalEvidenceScope,
+} from '../../src/domain/active-historical-evidence-scope.mjs';
+import { loadActiveRetailRelease } from '../../src/domain/active-retail-release.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import {
   buildEvidenceProcessorEpochs,
@@ -37,16 +41,25 @@ async function atomicJson(path, value) {
 }
 
 export async function runCli() {
-  const [acquisitionQueue, candidateManifest, historicalReference, legacyRecoveryQueue, priorAcceptanceBundle,
+  const [acquisitionQueue, candidateManifest, activeRelease, legacyRecoveryQueue, priorAcceptanceBundle,
     priorAttemptLedger, recoveryPolicy] = await Promise.all([
     readJson('historicalModelPdfAcquisitionQueue'),
     readJson('historicalOfficialCandidateManifest'),
-    readJson('historicalApplianceReference'),
+    loadActiveRetailRelease({ root }),
     readJson('historicalEvidenceRecoveryQueue'),
     readJson('historicalEvidenceRecoveryAcceptanceBundle'),
     readOptionalJson('historicalEvidenceRecoveryAttemptLedger', { schemaVersion: 1, entries: [] }),
     readJson('historicalEvidenceRecoveryPolicy'),
   ]);
+  const activeScope = buildActiveHistoricalEvidenceScope(activeRelease);
+  if (canonicalJsonSha256(acquisitionQueue.sourceBindings)
+    !== canonicalJsonSha256(activeScope.sourceBindings)) {
+    throw new Error('acquisition queue active-release source binding drift');
+  }
+  const historicalReference = {
+    ...activeRelease.reference,
+    records: activeScope.records,
+  };
   const processorPaths = [...new Set(Object.values(EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS).flat())];
   const processorFiles = new Map(await Promise.all(processorPaths.map(async (path) => [
     path,

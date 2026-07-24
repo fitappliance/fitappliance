@@ -620,6 +620,10 @@ const ELECTROLUX_AU_WASHER_PRODUCT_TOTAL_DEPTH_GRAMMAR =
   'electrolux-au-washer-product-total-depth-v1';
 const ESATTO_AU_DISHWASHER_TECHNICAL_D1_D2_GRAMMAR =
   'esatto-au-dishwasher-technical-information-d1-d2-v1';
+const ESATTO_AU_DISHWASHER_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR =
+  'esatto-au-dishwasher-product-card-physical-wdh-v1';
+export const ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY =
+  'esatto_au_dishwasher_product_card_dimensions_v1';
 const LG_AU_DRYER_DIMENSION_DIAGRAM_MODELS = Object.freeze({
   '22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957': Object.freeze([
     'DVH1-08WP',
@@ -3091,6 +3095,103 @@ function esattoAuDishwasherTechnicalDimensionScope(document, caseIdentity, sourc
   } : null;
 }
 
+function esattoProductCardExactModelUrl(sourceUrls, model) {
+  if (!Array.isArray(sourceUrls)) return null;
+  const expectedFileToken = `ESATTOPRODUCTCARD${canonicalModel(model)}PDF`;
+  return sourceUrls.find((value) => {
+    try {
+      const url = new URL(value);
+      const host = url.hostname.toLowerCase();
+      const fileName = decodeURIComponent(url.pathname).split('/').at(-1) ?? '';
+      const fileToken = fileName.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      return url.protocol === 'https:' && !url.username && !url.password
+        && host === 'esatto.house' && fileToken === expectedFileToken;
+    } catch {
+      return false;
+    }
+  }) ?? null;
+}
+
+function esattoProductCardTupleAfterLabel(items, label) {
+  const candidates = items.flatMap((fragment) => {
+    if (fragment.type !== 'paragraph'
+      || Math.abs(fragment.bbox[0] - label.bbox[0]) > 12
+      || fragment.bbox[1] < label.bbox[3]
+      || fragment.bbox[1] - label.bbox[3] > 35) return [];
+    const match = /^(?:→\s*)?(\d+)\s*[x×]\s*(\d+)\s*[x×]\s*(\d+)\s*mm$/i
+      .exec(fragment.text);
+    if (!match) return [];
+    return [{
+      fragment,
+      values: match.slice(1).map(Number),
+    }];
+  });
+  return candidates.length === 1 ? candidates[0] : null;
+}
+
+function esattoAuDishwasherProductCardScope(document, caseIdentity, sourceUrls) {
+  if (canonicalModel(caseIdentity?.brand) !== 'ESATTO'
+    || normalizedText(caseIdentity?.category) !== 'dishwasher') return null;
+  const model = normalizedText(caseIdentity?.model);
+  const exactDocumentUrl = esattoProductCardExactModelUrl(sourceUrls, model);
+  if (!/^EDW[A-Z0-9-]{3,}$/i.test(model) || !exactDocumentUrl
+    || siblingModelCandidates(document, model).length > 0) return null;
+
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    const exactHeaders = items.filter((fragment) => (
+      fragment.type === 'page_header' && canonicalModel(fragment.text) === canonicalModel(model)
+    ));
+    const dimensionTitles = items.filter((fragment) => (
+      fragment.type === 'paragraph' && /^Product Dimensions\s*:$/i.test(fragment.text)
+    ));
+    const packagedLabels = items.filter((fragment) => (
+      fragment.type === 'paragraph'
+        && /^Packaged\s*\(\s*w\s*,\s*d\s*,\s*h\s+mm\s*\)$/i.test(fragment.text)
+    ));
+    const physicalLabels = items.filter((fragment) => (
+      fragment.type === 'paragraph'
+        && /^Physical\s*\(\s*w\s*,\s*d\s*,\s*h\s+mm\s*\)$/i.test(fragment.text)
+    ));
+    if (exactHeaders.length !== 1 || dimensionTitles.length !== 1
+      || packagedLabels.length !== 1 || physicalLabels.length !== 1) return;
+    const [title] = dimensionTitles;
+    const [packagedLabel] = packagedLabels;
+    const [physicalLabel] = physicalLabels;
+    if (Math.abs(title.bbox[0] - packagedLabel.bbox[0]) > 12
+      || Math.abs(title.bbox[0] - physicalLabel.bbox[0]) > 12
+      || !(title.bbox[3] <= packagedLabel.bbox[1]
+        && packagedLabel.bbox[3] <= physicalLabel.bbox[1])) return;
+    const packaged = esattoProductCardTupleAfterLabel(items, packagedLabel);
+    const physical = esattoProductCardTupleAfterLabel(items, physicalLabel);
+    if (!packaged || !physical
+      || packaged.fragment.fragmentSha256 === physical.fragment.fragmentSha256
+      || physical.values.some((value) => !Number.isInteger(value) || value <= 0)
+      || packaged.values.some((value) => !Number.isInteger(value) || value <= 0)
+      || packaged.values.some((value, index) => value < physical.values[index])
+      || packaged.values.every((value, index) => value === physical.values[index])) return;
+
+    const axisOrder = ['width', 'depth', 'height'];
+    matches.push({
+      exactDocumentUrl,
+      header: exactHeaders[0],
+      fragment: physical.fragment,
+      page: pageIndex + 1,
+      rows: [{
+        label: 'Product Dimensions - Physical (W x D x H)',
+        value: `${physical.values.join(' x ')} mm`,
+        quote: `${physicalLabel.text} ${physical.fragment.text}`,
+        axisOrder,
+        grammarProfileId: ESATTO_AU_DISHWASHER_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR,
+      }],
+    });
+  });
+  return matches.length === 1 ? {
+    ...matches[0],
+    grammarProfileId: ESATTO_AU_DISHWASHER_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR,
+  } : null;
+}
+
 function lgAuDryerDimensionDiagramScope(document, caseIdentity, pdfSha256) {
   if (canonicalModel(caseIdentity?.brand) !== 'LG'
     || normalizedText(caseIdentity?.category) !== 'dryer') return null;
@@ -3340,6 +3441,17 @@ export const mineruGrammarProfiles = Object.freeze({
     documentType: 'user_manual',
     detectionSummary: 'An exact-model Esatto EDW manual URL, one exact Model/s cover header, no sibling model, and one Technical Information page containing one Dimensions title, one four-row H/W/D1/D2 millimetre table and the same exact rating-label model.',
     semanticBoundary: 'Height and width are closed product dimensions; D1 is projected only when explicitly qualified as door closed. D2 must be present and explicitly qualified as door opened 90 degrees, but remains an operation envelope and is never projected as closed depth. Missing, duplicate, conflicting, unitless, sibling, cross-brand and cross-category variants fail closed.',
+  }),
+  [ESATTO_AU_DISHWASHER_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR]: Object.freeze({
+    parserProfileId: ESATTO_AU_DISHWASHER_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR,
+    grammarFamilyId: 'esatto_au_edw_dishwasher_product_card_v1',
+    grammarFamilyName: 'Esatto Australia EDW dishwasher product card',
+    variantName: 'Exact-model product card with separate Packaged and Physical W/D/H tuples',
+    brand: 'Esatto',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'An exact-model official Esatto ProductCard PDF URL and unique same-page exact-model header scope one Product Dimensions column with adjacent Packaged and Physical (w, d, h mm) labels and strict three-value tuples.',
+    semanticBoundary: 'Only the Physical W/D/H tuple is projected as closed width, depth and height. The Packaged tuple must be complete and no smaller on any axis but remains a delivery envelope; door-open depth is excluded. Missing, duplicate, unitless, sibling-model, cross-column and malformed variants fail closed.',
   }),
   [SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR]: Object.freeze({
     parserProfileId: SMEG_AU_DISHWASHER_SUFFIX_RANGE_GRAMMAR,
@@ -4137,6 +4249,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const esattoDishwasherDimensionScope = claimSemanticsVersion === 2
     ? esattoAuDishwasherTechnicalDimensionScope(document, caseIdentity, options.sourceUrls)
     : null;
+  const esattoDishwasherProductCardScope = claimSemanticsVersion === 2
+    ? esattoAuDishwasherProductCardScope(document, caseIdentity, options.sourceUrls)
+    : null;
   const boschDimensionSectionScope = claimSemanticsVersion === 2
     ? boschDishwasherDimensionSectionDocumentScope(document, caseIdentity, options.sourceUrls)
     : null;
@@ -4164,6 +4279,10 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const esattoDishwasherDimensionSignals = esattoDishwasherDimensionScope ? [{
     type: 'mineru_esatto_edw_technical_information_exact_model',
     value: `${model}:cover:${esattoDishwasherDimensionScope.coverFragment.fragmentSha256}:page:${esattoDishwasherDimensionScope.page}:identity:${esattoDishwasherDimensionScope.identityFragment.fragmentSha256}:dimensions:${esattoDishwasherDimensionScope.fragment.fragmentSha256}:url:${esattoDishwasherDimensionScope.exactDocumentUrl}`,
+  }] : [];
+  const esattoDishwasherProductCardSignals = esattoDishwasherProductCardScope ? [{
+    type: 'mineru_esatto_edw_product_card_exact_model',
+    value: `${model}:header:${esattoDishwasherProductCardScope.header.fragmentSha256}:page:${esattoDishwasherProductCardScope.page}:physical:${esattoDishwasherProductCardScope.fragment.fragmentSha256}:url:${esattoDishwasherProductCardScope.exactDocumentUrl}`,
   }] : [];
   const lgDryerDimensionDiagramSignals = lgDryerDimensionDiagramScope ? [{
     type: 'mineru_lg_audited_dryer_dimension_diagram',
@@ -4231,6 +4350,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     && !lgDryerDimensionDiagramScope
     && !electroluxWasherDimensionScope
     && !esattoDishwasherDimensionScope
+    && !esattoDishwasherProductCardScope
     && !boschDimensionSectionScope
     && !fisherPaykelDw60Scope
     && !samsungWasherWildcardScope
@@ -4268,6 +4388,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...lgDryerDimensionDiagramSignals,
     ...electroluxWasherDimensionSignals,
     ...esattoDishwasherDimensionSignals,
+    ...esattoDishwasherProductCardSignals,
     ...boschDimensionSectionSignals,
     ...fisherPaykelDw60Signals,
     ...samsungWasherWildcardSignals,
@@ -4343,6 +4464,19 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           claimSemanticsVersion,
         ),
       ];
+      for (const claim of claims) candidates.get(claim.field)?.push(claim);
+    }
+  }
+  if (esattoDishwasherProductCardScope) {
+    appliedGrammarProfiles.add(esattoDishwasherProductCardScope.grammarProfileId);
+    for (const row of esattoDishwasherProductCardScope.rows) {
+      const claims = dimensionClaims(
+        row,
+        esattoDishwasherProductCardScope.fragment,
+        esattoDishwasherProductCardScope.page,
+        fields,
+        category,
+      );
       for (const claim of claims) candidates.get(claim.field)?.push(claim);
     }
   }

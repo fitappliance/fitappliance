@@ -646,6 +646,15 @@ export function promoteHistoricalEvidenceRecovery({
     }
   }
   promotionInputBindings(batch, results, audit, priorBundle);
+  const acceptedOutcomes = results.outcomes.filter((outcome) => (
+    ['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)
+  ));
+  if (priorBundle
+    && priorBundle.policySha256 === results.policySha256
+    && acceptedOutcomes.length === 0
+    && (audit.repairs ?? []).length === 0) {
+    return structuredClone(priorBundle);
+  }
   const auditSha256 = canonicalJsonSha256(audit);
   const batchSha256 = canonicalJsonSha256(batch);
   const resultsSha256 = canonicalJsonSha256(results);

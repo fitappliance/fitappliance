@@ -305,6 +305,29 @@ function linksFor(value, referenceId) {
   return value?.[referenceId] ?? [];
 }
 
+function normalizeSourceBindings(value) {
+  if (value == null) return null;
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('classification source bindings must be an object');
+  }
+  const releaseCandidateId = requireString(
+    value.releaseCandidateId,
+    'classification release candidate ID',
+  );
+  const hashes = Object.fromEntries([
+    ['publicProjectionSha256', value.publicProjectionSha256],
+    ['historicalReferenceSha256', value.historicalReferenceSha256],
+    ['authorizationManifestSha256', value.authorizationManifestSha256],
+  ].map(([key, raw]) => {
+    const hash = String(raw ?? '').trim().toLowerCase();
+    if (!/^[a-f0-9]{64}$/.test(hash)) {
+      throw new TypeError(`classification ${key} invalid`);
+    }
+    return [key, hash];
+  }));
+  return { releaseCandidateId, ...hashes };
+}
+
 function compareClassificationRecords(left, right) {
   return left.category.localeCompare(right.category)
     || left.canonicalBrand.localeCompare(right.canonicalBrand)
@@ -315,6 +338,7 @@ function compareClassificationRecords(left, right) {
 export function buildHistoricalModelEvidenceClassification(input) {
   const generatedAt = new Date(input?.generatedAt ?? '').toISOString();
   const policy = validateHistoricalModelEvidenceClassificationPolicy(input?.policy ?? DEFAULT_CLASSIFICATION_POLICY);
+  const sourceBindings = normalizeSourceBindings(input?.sourceBindings);
   const references = Array.isArray(input?.historicalRecords) ? input.historicalRecords : [];
   if (references.length !== policy.expectedReferenceCount) {
     throw new Error(`historical classification expected ${policy.expectedReferenceCount} records; found ${references.length}`);
@@ -409,6 +433,7 @@ export function buildHistoricalModelEvidenceClassification(input) {
   const semantic = {
     schemaVersion: 1,
     policyVersion: policy.policyVersion,
+    ...(sourceBindings ? { sourceBindings } : {}),
     summary,
     categorySummaries,
     topGaps,
@@ -418,6 +443,7 @@ export function buildHistoricalModelEvidenceClassification(input) {
     schemaVersion: 1,
     generatedAt,
     policyVersion: policy.policyVersion,
+    ...(sourceBindings ? { sourceBindings } : {}),
     semanticClassificationSha256: canonicalJsonSha256(semantic),
     summary,
     categorySummaries,

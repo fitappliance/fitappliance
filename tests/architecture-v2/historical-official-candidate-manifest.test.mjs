@@ -329,6 +329,28 @@ test('builds one inspectable discovery state per queued model without promoting 
   assert.deepEqual(target(manifest, 'manual-gap').candidateEdges, []);
 });
 
+test('propagates active-release bindings into candidate manifest identity', () => {
+  const input = fixture();
+  input.acquisitionQueue.sourceBindings = {
+    releaseCandidateId: 'release_example',
+    publicProjectionSha256: SHA('4'),
+    historicalReferenceSha256: SHA('5'),
+    authorizationManifestSha256: SHA('6'),
+  };
+
+  const manifest = buildHistoricalOfficialCandidateManifest(input);
+  assert.deepEqual(manifest.sourceBindings, input.acquisitionQueue.sourceBindings);
+  const changed = {
+    ...input,
+    acquisitionQueue: structuredClone(input.acquisitionQueue),
+  };
+  changed.acquisitionQueue.sourceBindings.publicProjectionSha256 = SHA('7');
+  assert.notEqual(
+    buildHistoricalOfficialCandidateManifest(changed).semanticManifestSha256,
+    manifest.semanticManifestSha256,
+  );
+});
+
 test('deduplicates one URL within a brand but isolates the same URL across brands', () => {
   const input = fixture();
   input.acquisitionQueue.records.push(acquisitionRecord('beta-1', {

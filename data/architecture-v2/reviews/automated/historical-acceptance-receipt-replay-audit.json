@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-19T19:32:08.439Z",
-  "sourceBundleSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+  "generatedAt": "2026-07-24T17:04:51.280Z",
+  "sourceBundleSha256": "f46f30455de497b17238a88c48fcb96059df877b989613bb9887e5e0aaf52528",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -2758,6 +2758,20 @@
       "contentSha256": "b9775cc51f43fc50e0b41ef63f8884e41744d2c6e3547f973c67cdbb4b1f32a7",
       "receiptBindingSha256": "75c714cffaf106a03c253adc717267681c395c05b74a7d3eae65dfa7c32aa4a3",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/a8/48/a848d5a5a5437572ae210e954cc7c5d7cf21feefa14e9d8c1964f1da2bf3fd35.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_7ceff703d667e94a16a184fb",
+      "referenceId": "fa_ref_f23d4b7888e39e5b296855de",
+      "brand": "Esatto",
+      "model": "EDW7CS",
+      "category": "dishwasher",
+      "sourceUrl": "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf",
+      "sourcePdfSha256": "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+      "contentSha256": "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+      "receiptBindingSha256": "6b1057e1babadb4912d78d37b79ffc4c710d5a8e459a71646bcff75f21575a6f",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/70/fb/70fb8b309b1cada71de272fb1f35935bb88304de84ac14fc14afbf63573d6e5e.json",
       "status": "passed",
       "failureCode": null
     },
@@ -5717,11 +5731,11 @@
     }
   ],
   "summary": {
-    "entries": 382,
-    "sources": 408,
-    "passed": 408,
+    "entries": 383,
+    "sources": 409,
+    "passed": 409,
     "failed": 0
   },
-  "checkedObjects": 803,
-  "semanticAuditSha256": "69a9eea8f543f526fcf311fbc94113a0f42046b1766eee7dba590e348548432d"
+  "checkedObjects": 806,
+  "semanticAuditSha256": "b06f2ee81c47a876a48c8d176c72c4c984c8c2177b1e5db0eea7b3852eda5ef6"
 }

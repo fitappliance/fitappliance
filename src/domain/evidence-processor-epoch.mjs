@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from './beko-product-page-dimensions.mjs';
 import { BEKO_AU_PRODUCT_IDENTITY_CAPABILITY } from './beko-product-page-identity.mjs';
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
+import { ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY } from './mineru-document.mjs';
 import { SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY } from './smeg-pdf-dimensions.mjs';
 
 export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
@@ -11,6 +12,9 @@ export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
   ]),
   [BEKO_AU_PRODUCT_IDENTITY_CAPABILITY]: Object.freeze([
     'src/domain/beko-product-page-identity.mjs',
+  ]),
+  [ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY]: Object.freeze([
+    'src/domain/mineru-document.mjs',
   ]),
   [SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY]: Object.freeze([
     'src/domain/smeg-pdf-dimensions.mjs',
@@ -82,6 +86,16 @@ export function historicalAttemptProcessorCapability({ brand, sourceUrl, failure
     && url.hostname === 'sys.smeg.com.au'
     && /^\/Product\/Techspecs\/[^/]+\.pdf$/i.test(url.pathname)) {
     return SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY;
+  }
+  const host = url.hostname.toLowerCase();
+  if (normalized === 'esatto' && failureCode === 'mineru') {
+    let path;
+    try { path = decodeURIComponent(url.pathname); } catch { return null; }
+    if (url.protocol === 'https:' && !url.username && !url.password
+      && host === 'esatto.house'
+      && /\/Esatto_ProductCard_[^/]+\.pdf$/i.test(path)) {
+      return ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY;
+    }
   }
   return null;
 }

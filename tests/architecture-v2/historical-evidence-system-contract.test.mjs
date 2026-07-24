@@ -10,6 +10,7 @@ import {
 } from '../../src/domain/historical-evidence-system-contract.mjs';
 import {
   buildHistoricalEvidenceSystemContractFromRepository,
+  resolveHistoricalAcceptanceReleaseBinding,
 } from '../../scripts/architecture-v2/build-historical-evidence-system-contract.mjs';
 
 const RELEASE_ID = 'historical-evidence-release-test';
@@ -206,6 +207,56 @@ test('system contract validator rejects contract tampering', () => {
   );
 });
 
+test('acceptance release binding stages a valid bundle that is ahead of the active release', () => {
+  const acceptanceBundle = {
+    bundleId: 'historical-recovery-cumulative-v1',
+    entries: [{ referenceId: 'fa_ref_a' }],
+  };
+  const activeBundle = {
+    bundleId: acceptanceBundle.bundleId,
+    entries: [],
+  };
+  const result = resolveHistoricalAcceptanceReleaseBinding({
+    acceptanceBundle,
+    activeRelease: {
+      reference: {
+        sourceSnapshotHashes: {
+          [`historical-recovery:${acceptanceBundle.bundleId}`]:
+            canonicalJsonSha256(activeBundle),
+        },
+        records: [{ referenceId: 'fa_ref_a' }],
+      },
+    },
+  });
+
+  assert.equal(result.status, 'PENDING_NEXT');
+  assert.equal(result.activeAcceptanceBundleSha256, canonicalJsonSha256(activeBundle));
+  assert.equal(result.currentAcceptanceBundleSha256, canonicalJsonSha256(acceptanceBundle));
+});
+
+test('acceptance release binding rejects entries outside the active denominator', () => {
+  const acceptanceBundle = {
+    bundleId: 'historical-recovery-cumulative-v1',
+    entries: [{ referenceId: 'fa_ref_not_active' }],
+  };
+
+  assert.throws(
+    () => resolveHistoricalAcceptanceReleaseBinding({
+      acceptanceBundle,
+      activeRelease: {
+        reference: {
+          sourceSnapshotHashes: {
+            [`historical-recovery:${acceptanceBundle.bundleId}`]:
+              canonicalJsonSha256({ bundleId: acceptanceBundle.bundleId, entries: [] }),
+          },
+          records: [{ referenceId: 'fa_ref_active' }],
+        },
+      },
+    }),
+    /outside the active historical reference denominator.*fa_ref_not_active/i,
+  );
+});
+
 test('system contract validator rejects a tampered source binding even after re-signing', () => {
   const contract = buildHistoricalEvidenceSystemContract(contractInput());
   contract.stages[1].sourceBindings[0].resolvedSha256 = 'b'.repeat(64);
@@ -268,13 +319,17 @@ test('tracked system contract replays from repository sources without external s
     const bytes = await readFile(path);
     assert.equal(targetState.sourceBindings[binding], createHash('sha256').update(bytes).digest('hex'));
   }
-  assert.equal(first.stages.length, 38);
+  assert.equal(first.stages.length, 39);
   assert.equal(first.epochs.length, 10);
   assert.ok(first.stages.every((stage) => stage.sourceBindings.every((binding) => (
     binding.declaredSha256 === binding.resolvedSha256
   ))));
-  assert.equal(first.baseline.historicalModelReferences, 8089);
-  assert.equal(first.baseline.currentProducts, 3515);
+  assert.equal(first.baseline.historicalModelReferences, 8087);
+  assert.equal(first.baseline.currentProducts, 3513);
+  assert.equal(
+    first.baseline.activeReleaseCandidateId,
+    'retail_lifecycle_release_6c42c754aeb1ff49097b32b4',
+  );
   assert.equal(first.baseline.retailerLinksRequiringObservationMigration, 0);
   assert.equal(first.baseline.retailerObservationBaselineLinks, 1614);
   assert.equal(first.baseline.retailerObservationAccountedLinks, 1614);
@@ -288,6 +343,36 @@ test('tracked system contract replays from repository sources without external s
   const lifecycleShadow = first.stages.find((stage) => stage.id === 'retail-lifecycle-shadow');
   const lifecycleRefresh = first.stages.find((stage) => stage.id === 'retail-lifecycle-refresh');
   const candidateRelease = first.stages.find((stage) => stage.id === 'candidate-release-gate');
+  const activeRelease = first.stages.find((stage) => stage.id === 'active-retail-release');
+  const receiptReconciliation = first.stages.find(
+    (stage) => stage.id === 'receipt-reconciliation',
+  );
+  const classification = first.stages.find((stage) => stage.id === 'classification');
+  const fitPublication = first.stages.find((stage) => stage.id === 'fit-publication');
+  assert.ok(activeRelease);
+  assert.deepEqual(activeRelease.releaseDependencies, []);
+  assert.equal(receiptReconciliation.releaseState, 'PENDING_NEXT');
+  assert.equal(receiptReconciliation.releaseEpoch, 2);
+  assert.equal(classification.releaseState, 'PENDING_NEXT');
+  assert.equal(classification.releaseEpoch, 2);
+  assert.deepEqual(classification.releaseDependencies, [
+    'active-retail-release',
+    'receipt-reconciliation',
+  ]);
+  assert.equal(fitPublication.releaseState, 'RELEASED');
+  assert.equal(fitPublication.releaseEpoch, 1);
+  assert.deepEqual(fitPublication.releaseDependencies, ['active-retail-release']);
+  assert.equal(first.baseline.acceptanceReleaseState, 'PENDING_NEXT');
+  assert.notEqual(
+    first.baseline.currentAcceptanceBundleSha256,
+    first.baseline.activeAcceptanceBundleSha256,
+  );
+  assert.equal(
+    first.baseline.knownContractGaps.some(
+      (gap) => gap.id === 'ACCEPTANCE_BUNDLE_PENDING_ACTIVE_RELEASE',
+    ),
+    true,
+  );
   assert.deepEqual(canonicalIdentity.releaseDependencies, []);
   assert.deepEqual(canonicalIdentity.lifecycleVisibility, ['CURRENT_INPUT', 'HISTORICAL_INPUT']);
   assert.deepEqual(canonicalIdentityCandidate.releaseDependencies, [

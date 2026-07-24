@@ -4,8 +4,13 @@ import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
+import {
+  buildActiveHistoricalEvidenceScope,
+} from '../../src/domain/active-historical-evidence-scope.mjs';
+import { loadActiveRetailRelease } from '../../src/domain/active-retail-release.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { buildHistoricalDocumentFamilyGraph } from '../../src/domain/historical-document-family-graph.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -29,12 +34,21 @@ async function atomicJson(path, value) {
 }
 
 export async function runCli(args = process.argv.slice(2)) {
-  const [historicalReference, dimensionKnowledge, legacyPdfAudit, classification] = await Promise.all([
-    readJson('historicalApplianceReference'),
+  const [activeRelease, dimensionKnowledge, legacyPdfAudit, classification] = await Promise.all([
+    loadActiveRetailRelease({ root }),
     readJson('dimensionExpressionObservations'),
     readJson('legacyPdfLibraryAudit'),
     readJson('historicalModelEvidenceClassification'),
   ]);
+  const activeScope = buildActiveHistoricalEvidenceScope(activeRelease);
+  if (canonicalJsonSha256(classification.sourceBindings)
+    !== canonicalJsonSha256(activeScope.sourceBindings)) {
+    throw new Error('classification active-release source binding drift');
+  }
+  const historicalReference = {
+    ...activeRelease.reference,
+    records: activeScope.records,
+  };
   const generatedAt = option(args, '--generated-at') ?? dimensionKnowledge.generatedAt;
   const graph = buildHistoricalDocumentFamilyGraph({
     generatedAt,

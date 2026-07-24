@@ -38,8 +38,19 @@ test('acquisition queue accounts for every nonterminal model exactly once', () =
     classified('terminal-html', 'OFFICIAL_HTML_ONLY'),
     classified('terminal-none', 'NO_OFFICIAL_SOURCE'),
   ];
+  const sourceBindings = {
+    releaseCandidateId: 'retail_lifecycle_release_1234567890abcdef12345678',
+    publicProjectionSha256: 'b'.repeat(64),
+    historicalReferenceSha256: 'c'.repeat(64),
+    authorizationManifestSha256: 'd'.repeat(64),
+  };
   const queue = buildHistoricalModelPdfAcquisitionQueue({
-    classification: { schemaVersion: 1, semanticClassificationSha256: 'a'.repeat(64), records },
+    classification: {
+      schemaVersion: 1,
+      semanticClassificationSha256: 'a'.repeat(64),
+      sourceBindings,
+      records,
+    },
     historicalReference: { records: records.map((record) => reference(record.referenceId)) },
     catalogProducts: catalogProducts(records),
     recoveryQueue: { targets: [] },
@@ -55,6 +66,7 @@ test('acquisition queue accounts for every nonterminal model exactly once', () =
   assert.deepEqual(queue.summary.excluded, {
     COMPLETE_RECEIPT: 1, OFFICIAL_HTML_ONLY: 1, NO_OFFICIAL_SOURCE: 1,
   });
+  assert.deepEqual(queue.sourceBindings, sourceBindings);
 });
 
 test('shared source is deduplicated without losing model edges or explicit authority', () => {

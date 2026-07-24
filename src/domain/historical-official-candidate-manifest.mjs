@@ -38,6 +38,31 @@ function sha256(value, label) {
   return normalized;
 }
 
+function activeReleaseSourceBindings(value) {
+  if (value == null) return null;
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('candidate manifest active-release source bindings invalid');
+  }
+  return {
+    releaseCandidateId: requiredText(
+      value.releaseCandidateId,
+      'candidate manifest release candidate ID',
+    ),
+    publicProjectionSha256: sha256(
+      value.publicProjectionSha256,
+      'candidate manifest public projection SHA-256',
+    ),
+    historicalReferenceSha256: sha256(
+      value.historicalReferenceSha256,
+      'candidate manifest historical reference SHA-256',
+    ),
+    authorizationManifestSha256: sha256(
+      value.authorizationManifestSha256,
+      'candidate manifest authorization SHA-256',
+    ),
+  };
+}
+
 function timestamp(value, label) {
   const parsed = new Date(value);
   if (Number.isNaN(parsed.valueOf())) throw new TypeError(`${label} invalid`);
@@ -406,6 +431,7 @@ function loadPriorCandidates(priorManifest, records, accumulators, officialCandi
   }
   const expectedManifestSha256 = canonicalJsonSha256({
     sourceAcquisitionQueueSha256: priorManifest.sourceAcquisitionQueueSha256,
+    ...(priorManifest.sourceBindings ? { sourceBindings: priorManifest.sourceBindings } : {}),
     runBindings: priorManifest.runBindings,
     candidates: priorManifest.candidates,
     targets: priorManifest.targets,
@@ -648,6 +674,12 @@ export function buildHistoricalOfficialCandidateManifest(input) {
     throw new Error('acquisition queue target count drift');
   }
   const queueSha256 = sha256(acquisitionQueue.semanticQueueSha256, 'acquisition queue semantic SHA-256');
+  const sourceBindings = activeReleaseSourceBindings(acquisitionQueue.sourceBindings);
+  const priorSourceBindings = activeReleaseSourceBindings(input.priorManifest?.sourceBindings);
+  if (priorSourceBindings && sourceBindings
+    && canonicalJsonSha256(priorSourceBindings) !== canonicalJsonSha256(sourceBindings)) {
+    throw new Error('prior candidate manifest active-release source binding drift');
+  }
   if (!(input.resolverContractsByReference instanceof Map)) {
     throw new TypeError('resolver contracts by reference map required');
   }
@@ -809,6 +841,7 @@ export function buildHistoricalOfficialCandidateManifest(input) {
   })).sort((left, right) => left.candidateId.localeCompare(right.candidateId));
   const semanticPayload = {
     sourceAcquisitionQueueSha256: queueSha256,
+    ...(sourceBindings ? { sourceBindings } : {}),
     runBindings,
     candidates,
     targets,

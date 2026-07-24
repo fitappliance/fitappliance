@@ -147,3 +147,91 @@ export async function loadActiveRetailRelease({
     }),
   });
 }
+
+function nonNegativeInteger(value, label) {
+  if (!Number.isInteger(value) || value < 0) throw new TypeError(`${label} invalid`);
+  return value;
+}
+
+export function validateActiveRetailReleaseAudits({
+  activeRelease,
+  replacementAudit,
+  fitPublicationAudit,
+}) {
+  if (!activeRelease?.descriptor || !Array.isArray(activeRelease.catalog?.products)
+    || !Array.isArray(activeRelease.reference?.records)) {
+    throw new TypeError('loaded active retail release required');
+  }
+  if (replacementAudit?.schemaVersion !== 1 || !Array.isArray(replacementAudit.issues)) {
+    throw new TypeError('active release replacement audit schema v1 required');
+  }
+  if (fitPublicationAudit?.schemaVersion !== 1 || !Array.isArray(fitPublicationAudit.violations)) {
+    throw new TypeError('active release Fit publication audit schema v1 required');
+  }
+  const replacement = replacementAudit.summary ?? {};
+  const fit = fitPublicationAudit.summary ?? {};
+  const referenceCount = activeRelease.reference.records.length;
+  const catalogCount = activeRelease.catalog.products.length;
+  if (nonNegativeInteger(
+    replacement.referenceRecords,
+    'active release replacement reference count',
+  ) !== referenceCount) {
+    throw new Error('active release replacement reference count mismatch');
+  }
+  if (nonNegativeInteger(
+    replacement.publicRecords,
+    'active release replacement public count',
+  ) !== referenceCount) {
+    throw new Error('active release replacement public count mismatch');
+  }
+  if (nonNegativeInteger(
+    replacement.currentCatalogProducts,
+    'active release replacement catalog count',
+  ) !== catalogCount) {
+    throw new Error('active release replacement catalog count mismatch');
+  }
+  if (nonNegativeInteger(replacement.issueCount, 'active release replacement issue count')
+    !== replacementAudit.issues.length) {
+    throw new Error('active release replacement issue accounting mismatch');
+  }
+  if (nonNegativeInteger(fit.products, 'active release Fit product count') !== catalogCount) {
+    throw new Error('active release Fit product count mismatch');
+  }
+  if (nonNegativeInteger(fit.violations, 'active release Fit violation count')
+    !== fitPublicationAudit.violations.length) {
+    throw new Error('active release Fit violation accounting mismatch');
+  }
+  return Object.freeze({ replacementAudit, fitPublicationAudit });
+}
+
+export async function loadActiveRetailReleaseAudits({
+  activeRelease,
+} = {}) {
+  const release = activeRelease ?? await loadActiveRetailRelease();
+  if (!release?.releaseDirectory) throw new TypeError('active release directory required');
+  const replacementPath = resolve(release.releaseDirectory, 'historical-replacement-audit.json');
+  const fitPath = resolve(release.releaseDirectory, 'fit-publication-audit.json');
+  const [replacementBytes, fitBytes] = await Promise.all([
+    readFile(replacementPath),
+    readFile(fitPath),
+  ]);
+  const audits = validateActiveRetailReleaseAudits({
+    activeRelease: release,
+    replacementAudit: JSON.parse(replacementBytes),
+    fitPublicationAudit: JSON.parse(fitBytes),
+  });
+  return Object.freeze({
+    ...audits,
+    paths: Object.freeze({
+      replacementAudit: replacementPath,
+      fitPublicationAudit: fitPath,
+    }),
+    sourceBindings: Object.freeze({
+      releaseCandidateId: release.descriptor.releaseCandidateId,
+      publicProjectionSha256: release.descriptor.artifacts.publicProjection.sha256,
+      historicalReferenceSha256: release.descriptor.artifacts.historicalReference.sha256,
+      replacementAuditSha256: sha256(replacementBytes),
+      fitPublicationAuditSha256: sha256(fitBytes),
+    }),
+  });
+}

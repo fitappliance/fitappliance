@@ -694,7 +694,7 @@ test('legacy repair rejects a different source binding even when raw content is 
   assert.match(audit.violations.join('\n'), /prior object/i);
 });
 
-test('later empty work batch cannot erase a prior accepted canary', async () => {
+test('later empty work batch preserves the accepted bundle byte-for-byte', async () => {
   const first = acceptedFixture();
   const firstAudit = await runAudit(first);
   const priorBundle = promoteHistoricalEvidenceRecovery({
@@ -709,7 +709,7 @@ test('later empty work batch cannot erase a prior accepted canary', async () => 
   });
   assert.equal(cumulative.entries.length, 1);
   assert.deepEqual(cumulative.entries[0], priorBundle.entries[0]);
-  assert.equal(cumulative.lineage.length, 2);
+  assert.deepEqual(cumulative, priorBundle);
 });
 
 test('policy migration requires a passing audit that replays every prior object', async () => {

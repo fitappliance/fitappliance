@@ -156,6 +156,24 @@ function normalizedIdentity(value) {
   return String(value ?? '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '');
 }
 
+function activeReleaseSourceBindings(value) {
+  if (value == null) return null;
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('acquisition active-release source bindings invalid');
+  }
+  const releaseCandidateId = text(value.releaseCandidateId, 'acquisition release candidate ID');
+  const hashes = Object.fromEntries([
+    ['publicProjectionSha256', value.publicProjectionSha256],
+    ['historicalReferenceSha256', value.historicalReferenceSha256],
+    ['authorizationManifestSha256', value.authorizationManifestSha256],
+  ].map(([key, raw]) => {
+    const hash = String(raw ?? '').trim().toLowerCase();
+    if (!/^[a-f0-9]{64}$/.test(hash)) throw new TypeError(`acquisition ${key} invalid`);
+    return [key, hash];
+  }));
+  return { releaseCandidateId, ...hashes };
+}
+
 function autonomousIdentityDiscoveryCases(identityResearchQueue, references, canonicalByRuntimeId) {
   if (identityResearchQueue == null) return new Map();
   if (identityResearchQueue.schemaVersion !== 1 || !Array.isArray(identityResearchQueue.cases)) {
@@ -232,6 +250,7 @@ export function buildHistoricalModelPdfAcquisitionQueue({
   if (!Array.isArray(historicalReference?.records)) throw new TypeError('historical reference records required');
   if (!(resolverIdsByBrand instanceof Map)) throw new TypeError('resolverIdsByBrand map required');
   const timestamp = new Date(generatedAt).toISOString();
+  const sourceBindings = activeReleaseSourceBindings(classification.sourceBindings);
   const references = new Map(historicalReference.records.map((record) => [record.referenceId, record]));
   if (references.size !== historicalReference.records.length) throw new Error('duplicate historical reference ID');
   const canonicalByRuntimeId = catalogCanonicalIdsByRuntimeId(catalogProducts);
@@ -368,6 +387,7 @@ export function buildHistoricalModelPdfAcquisitionQueue({
   const semanticPayload = {
     sourceClassificationSha256: classification.semanticClassificationSha256,
     sourceIdentityMigrationSha256: canonicalMerge.semanticSha256,
+    ...(sourceBindings ? { sourceBindings } : {}),
     records,
     sources: materializedSources,
     excluded,

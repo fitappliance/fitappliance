@@ -20,16 +20,27 @@ const esattoFixtureUrl = new URL(
   '../fixtures/architecture-v2/historical-parser-gaps/esatto-dishwasher-technical-information-d1-d2-v1.json',
   import.meta.url,
 );
+const esattoProductCardFixtureUrl = new URL(
+  '../fixtures/architecture-v2/historical-parser-gaps/esatto-dishwasher-product-card-physical-wdh-v1.json',
+  import.meta.url,
+);
 const electroluxCorpus = JSON.parse(readFileSync(electroluxFixtureUrl, 'utf8'));
 const lgCorpus = JSON.parse(readFileSync(lgFixtureUrl, 'utf8'));
 const esattoCorpus = JSON.parse(readFileSync(esattoFixtureUrl, 'utf8'));
+const esattoProductCardCorpus = JSON.parse(readFileSync(esattoProductCardFixtureUrl, 'utf8'));
 const corpus = {
   schemaVersion: 1,
-  profiles: [...electroluxCorpus.profiles, ...lgCorpus.profiles, ...esattoCorpus.profiles],
+  profiles: [
+    ...electroluxCorpus.profiles,
+    ...lgCorpus.profiles,
+    ...esattoCorpus.profiles,
+    ...esattoProductCardCorpus.profiles,
+  ],
 };
 const profile = electroluxCorpus.profiles[0];
 const lgProfile = lgCorpus.profiles[0];
 const esattoProfile = esattoCorpus.profiles[0];
+const esattoProductCardProfile = esattoProductCardCorpus.profiles[0];
 const fields = [
   'closedEnvelope.widthMm',
   'closedEnvelope.heightMm',
@@ -156,6 +167,90 @@ test('Esatto fixture corpus binds the real EDW456S page-24 table and rejects sib
       () => parseFixture(row),
       /identity|exact-model|evidence|missing|ambiguous|scope/i,
       row.caseId,
+    );
+  }
+});
+
+test('Esatto product-card fixture publishes only the physical W/D/H tuple', () => {
+  validateHistoricalParserFixtureCorpus(corpus);
+  const accepted = esattoProductCardProfile.cases.find((row) => row.expectation === 'ACCEPT');
+  const inspected = inspectMineruContentListV2(Buffer.from(JSON.stringify(accepted.contentList)));
+  assert.ok(inspected.pages[0].fragments.some((fragment) => (
+    fragment.type === accepted.source.fragmentType
+      && fragment.fragmentSha256 === accepted.source.fragmentSha256
+      && JSON.stringify(fragment.bbox) === JSON.stringify(accepted.source.bbox)
+  )));
+
+  const parsed = parseFixture(accepted);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.depthMm': 610,
+    'closedEnvelope.heightMm': 845,
+    'closedEnvelope.widthMm': 598,
+  });
+  assert.deepEqual(parsed.grammarProfileIds, [esattoProductCardProfile.parserProfileId]);
+  assert.ok(parsed.claims.every((claim) => claim.page === 1));
+  assert.ok(parsed.claims.every((claim) => !/645|672|871|1175|packaged|door open/i.test(claim.quote)));
+
+  for (const row of esattoProductCardProfile.cases.filter(
+    (candidate) => candidate.expectation === 'REJECT',
+  )) {
+    assert.throws(
+      () => parseFixture(row),
+      /identity|exact-model|evidence|missing|ambiguous|scope/i,
+      row.caseId,
+    );
+  }
+});
+
+test('Esatto product-card grammar fails closed when its physical tuple contract is weakened', () => {
+  const accepted = esattoProductCardProfile.cases.find((row) => row.expectation === 'ACCEPT');
+  const mutate = (change) => {
+    const row = structuredClone(accepted);
+    change(row);
+    return row;
+  };
+  const setText = (fragment, text) => {
+    fragment.content.paragraph_content[0].content = text;
+  };
+  const cases = [
+    ['axis order changed', mutate((row) => {
+      setText(row.contentList[0][3], 'Physical (h, w, d mm)');
+    })],
+    ['packaged tuple missing', mutate((row) => {
+      row.contentList[0].splice(2, 1);
+    })],
+    ['packaged tuple smaller than physical', mutate((row) => {
+      setText(row.contentList[0][2], '→ 500 × 500 × 500mm');
+    })],
+    ['physical tuple duplicated', mutate((row) => {
+      const duplicate = structuredClone(row.contentList[0][4]);
+      duplicate.bbox = [664, 278, 778, 298];
+      row.contentList[0].splice(5, 0, duplicate);
+    })],
+    ['physical tuple moved to another column', mutate((row) => {
+      row.contentList[0][4].bbox = [744, 257, 858, 277];
+    })],
+    ['source URL is not an exact-model ProductCard', mutate((row) => {
+      row.sourceUrls = ['https://esatto.house/s/EDW7CS_UserManual_V30_0223.pdf'];
+    })],
+    ['source URL names a sibling ProductCard', mutate((row) => {
+      row.sourceUrls = ['https://esatto.house/s/Esatto_ProductCard_EDW7CSB.pdf'];
+    })],
+    ['redirect host lacks the official Esatto source URL', mutate((row) => {
+      row.sourceUrls = [
+        'https://static1.squarespace.com/static/example/Esatto_ProductCard_EDW7CS.pdf',
+      ];
+    })],
+    ['source URL contains credentials', mutate((row) => {
+      row.sourceUrls = ['https://user:secret@esatto.house/s/Esatto_ProductCard_EDW7CS.pdf'];
+    })],
+  ];
+
+  for (const [label, row] of cases) {
+    assert.throws(
+      () => parseFixture(row),
+      /identity|exact-model|evidence|missing|ambiguous|scope/i,
+      label,
     );
   }
 });

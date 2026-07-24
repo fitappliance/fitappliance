@@ -394,20 +394,32 @@ test('committed publication keeps current and archived canaries in their intende
   assert.equal(archivedReference.evidenceState, 'MODEL_RECEIPT');
 });
 
-test('committed historical reference contains every cumulative recovery receipt without flattening ranges', () => {
+test('committed historical reference publishes only release-bound receipts without flattening ranges', () => {
   const publicCatalog = JSON.parse(readFileSync(new URL(
     '../../data/architecture-v2/generated/public-catalog-projection.json', import.meta.url,
   ), 'utf8'));
   const historicalReference = JSON.parse(readFileSync(new URL(
     '../../data/architecture-v2/generated/historical-appliance-reference.json', import.meta.url,
   ), 'utf8'));
+  const systemContract = JSON.parse(readFileSync(new URL(
+    '../../data/architecture-v2/reviews/automated/historical-evidence-system-contract.json',
+    import.meta.url,
+  ), 'utf8'));
   const historicalById = new Map(historicalReference.records.map((record) => [record.referenceId, record]));
+  const pendingEntries = [];
 
   for (const entry of bundle.entries) {
     const expectedDimensions = scalarHistoricalDimensions(entry.geometryProjection);
     const historical = historicalById.get(entry.referenceId);
     assert.ok(historical, `missing historical reference ${entry.referenceId}`);
-    assert.ok(historical.modelReceipts.some((receipt) => receipt.targetId === entry.targetId));
+    const isPublished = (historical.modelReceipts ?? [])
+      .some((receipt) => receipt.targetId === entry.targetId);
+    if (!isPublished) {
+      pendingEntries.push(entry);
+      const current = publicCatalog.products.find((product) => product.id === entry.legacyRuntimeId);
+      assert.notEqual(current?.evidence?.acceptance?.id, entry.targetId);
+      continue;
+    }
 
     if (expectedDimensions) {
       assert.equal(historical.evidenceState, 'MODEL_RECEIPT');
@@ -427,6 +439,26 @@ test('committed historical reference contains every cumulative recovery receipt 
     } else {
       assert.equal(current?.evidence?.acceptance, undefined);
     }
+  }
+
+  const sourceKey = `historical-recovery:${bundle.bundleId}`;
+  assert.equal(
+    historicalReference.sourceSnapshotHashes[sourceKey],
+    systemContract.baseline.activeAcceptanceBundleSha256,
+  );
+  assert.equal(
+    canonicalJsonSha256(bundle),
+    systemContract.baseline.currentAcceptanceBundleSha256,
+  );
+  if (systemContract.baseline.acceptanceReleaseState === 'RELEASED') {
+    assert.deepEqual(pendingEntries, []);
+  } else {
+    assert.equal(systemContract.baseline.acceptanceReleaseState, 'PENDING_NEXT');
+    assert.ok(pendingEntries.length > 0);
+    assert.notEqual(
+      systemContract.baseline.activeAcceptanceBundleSha256,
+      systemContract.baseline.currentAcceptanceBundleSha256,
+    );
   }
 });
 

@@ -9,6 +9,7 @@ import {
 } from '../../src/domain/evidence-processor-epoch.mjs';
 import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from '../../src/domain/beko-product-page-dimensions.mjs';
 import { BEKO_AU_PRODUCT_IDENTITY_CAPABILITY } from '../../src/domain/beko-product-page-identity.mjs';
+import { ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY } from '../../src/domain/mineru-document.mjs';
 import { SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY } from '../../src/domain/smeg-pdf-dimensions.mjs';
 
 const implementationPaths = [...new Set(Object.values(EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS).flat())];
@@ -78,5 +79,50 @@ test('changing the Smeg parser changes only the Smeg processor epoch', () => {
   assert.equal(
     first[BEKO_AU_PRODUCT_IDENTITY_CAPABILITY],
     changed[BEKO_AU_PRODUCT_IDENTITY_CAPABILITY],
+  );
+});
+
+test('Esatto ProductCard capability is exact to the official PDF route and MinerU failures', () => {
+  const sourceUrl = 'https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf';
+  assert.equal(historicalAttemptProcessorCapability({
+    brand: 'Esatto', sourceUrl, failureCode: 'mineru',
+  }), ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY);
+  assert.equal(historicalAttemptProcessorCapability({
+    brand: 'Esatto', sourceUrl, failureCode: 'identity',
+  }), null);
+  assert.equal(historicalAttemptProcessorCapability({
+    brand: 'Other', sourceUrl, failureCode: 'mineru',
+  }), null);
+  assert.equal(historicalAttemptProcessorCapability({
+    brand: 'Esatto',
+    sourceUrl: 'https://esatto.house/s/EDW7CS_UserManual_V30_0223.pdf',
+    failureCode: 'mineru',
+  }), null);
+  assert.equal(historicalAttemptProcessorCapability({
+    brand: 'Esatto',
+    sourceUrl: 'https://static1.squarespace.com/static/example/Esatto_ProductCard_EDW7CS.pdf',
+    failureCode: 'mineru',
+  }), null);
+  assert.equal(historicalAttemptProcessorCapability({
+    brand: 'Esatto',
+    sourceUrl: 'https://esatto.house/s/Esatto_ProductCard_%ZZ.pdf',
+    failureCode: 'mineru',
+  }), null);
+});
+
+test('changing MinerU changes the bounded Esatto ProductCard processor epoch', () => {
+  const files = new Map(implementationPaths.map((path) => [path, `first:${path}`]));
+  const first = buildEvidenceProcessorEpochs(files);
+  const changedFiles = new Map(files);
+  changedFiles.set('src/domain/mineru-document.mjs', 'changed');
+  const changed = buildEvidenceProcessorEpochs(changedFiles);
+
+  assert.notEqual(
+    first[ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY],
+    changed[ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY],
+  );
+  assert.equal(
+    first[BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY],
+    changed[BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY],
   );
 });

@@ -172,9 +172,25 @@ function classificationContentLane(link) {
   return 'UNKNOWN';
 }
 
+function activeReleaseSourceBindings(value) {
+  if (value == null) return null;
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('document graph active-release source bindings invalid');
+  }
+  const releaseCandidateId = text(value.releaseCandidateId);
+  if (!releaseCandidateId) throw new TypeError('document graph release candidate ID required');
+  const hashes = Object.fromEntries([
+    ['publicProjectionSha256', value.publicProjectionSha256],
+    ['historicalReferenceSha256', value.historicalReferenceSha256],
+    ['authorizationManifestSha256', value.authorizationManifestSha256],
+  ].map(([key, raw]) => [key, hash(raw, `document graph ${key}`)]));
+  return { releaseCandidateId, ...hashes };
+}
+
 export function buildHistoricalDocumentFamilyGraph(input) {
   validateInputs(input);
   const generatedAt = new Date(input.generatedAt).toISOString();
+  const sourceBindings = activeReleaseSourceBindings(input.classification.sourceBindings);
   const referencesById = new Map();
   const referencesByExactKey = new Map();
   for (const reference of input.historicalReference.records) {
@@ -536,6 +552,7 @@ export function buildHistoricalDocumentFamilyGraph(input) {
   };
   const semantic = {
     schemaVersion: 1,
+    ...(sourceBindings ? { sourceBindings } : {}),
     policy: {
       contentHashIsDocumentIdentity: true,
       familyMembershipCanAuthoriseExactModel: false,

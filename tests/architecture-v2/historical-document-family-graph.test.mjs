@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
 import test from 'node:test';
+import { fileURLToPath } from 'node:url';
 
+import { buildActiveHistoricalEvidenceScope } from '../../src/domain/active-historical-evidence-scope.mjs';
+import { loadActiveRetailRelease } from '../../src/domain/active-retail-release.mjs';
 import { buildDimensionExpressionKnowledge } from '../../src/domain/dimension-expression-knowledge.mjs';
 import { buildHistoricalDocumentFamilyGraph } from '../../src/domain/historical-document-family-graph.mjs';
 
@@ -256,6 +260,26 @@ test('graph deduplicates physical copies and assigns only evidence-backed model 
   assert.ok(byReference.get('ref_list').proofLocators.some((entry) => entry.type === 'MINERU_MODEL_ROW'));
 });
 
+test('active-release bindings are part of the document graph semantic identity', () => {
+  const input = fixture();
+  input.classification.sourceBindings = {
+    releaseCandidateId: 'release_example',
+    publicProjectionSha256: '4'.repeat(64),
+    historicalReferenceSha256: '5'.repeat(64),
+    authorizationManifestSha256: '6'.repeat(64),
+  };
+
+  const graph = buildHistoricalDocumentFamilyGraph(input);
+  assert.deepEqual(graph.sourceBindings, input.classification.sourceBindings);
+
+  const changed = structuredClone(input);
+  changed.classification.sourceBindings.publicProjectionSha256 = '7'.repeat(64);
+  assert.notEqual(
+    buildHistoricalDocumentFamilyGraph(changed).semanticGraphSha256,
+    graph.semanticGraphSha256,
+  );
+});
+
 test('shared-family membership never fans out exact-model proof', () => {
   const graph = buildHistoricalDocumentFamilyGraph(fixture());
   const edge = graph.documents.find((entry) => entry.pdfSha256 === PDF_A)
@@ -394,20 +418,25 @@ test('non-PDF receipt links stay outside the indexed PDF graph with a typed lane
 });
 
 test('generated graph is a deterministic replay of committed MinerU and model inputs', async () => {
+  const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
   const readJson = async (relativePath) => JSON.parse(await readFile(new URL(
     `../../${relativePath}`,
     import.meta.url,
   ), 'utf8'));
-  const [historicalReference, dimensionKnowledge, legacyPdfAudit, classification, committed] = await Promise.all([
-    readJson('data/architecture-v2/generated/historical-appliance-reference.json'),
+  const [activeRelease, dimensionKnowledge, legacyPdfAudit, classification, committed] = await Promise.all([
+    loadActiveRetailRelease({ root }),
     readJson('data/architecture-v2/generated/dimension-expression-observations.json'),
     readJson('data/architecture-v2/reviews/automated/legacy-pdf-library-audit.json'),
     readJson('data/architecture-v2/generated/historical-model-evidence-classification.json'),
     readJson('data/architecture-v2/generated/historical-document-family-graph.json'),
   ]);
+  const activeScope = buildActiveHistoricalEvidenceScope(activeRelease);
   const replayed = buildHistoricalDocumentFamilyGraph({
     generatedAt: dimensionKnowledge.generatedAt,
-    historicalReference,
+    historicalReference: {
+      ...activeRelease.reference,
+      records: activeScope.records,
+    },
     dimensionKnowledge,
     legacyPdfAudit,
     classification,

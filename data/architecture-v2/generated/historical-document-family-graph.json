@@ -1,5 +1,11 @@
 {
   "schemaVersion": 1,
+  "sourceBindings": {
+    "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
+    "publicProjectionSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
+    "historicalReferenceSha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882",
+    "authorizationManifestSha256": "1289e8ea9fcacdbbc81df305193a28937bfb8d80a0b63b654cb3e04427b78fd1"
+  },
   "policy": {
     "contentHashIsDocumentIdentity": true,
     "familyMembershipCanAuthoriseExactModel": false,
@@ -19,17 +25,17 @@
     "sourceVersions": 1104,
     "conflictingSourceUrls": 1,
     "modelEdges": 3801,
-    "mappedModelEdges": 3761,
+    "mappedModelEdges": 3760,
     "byProofLevel": {
       "EXACT_MODEL_PROVEN": 535,
-      "FAMILY_SCOPE_ONLY": 3213,
+      "FAMILY_SCOPE_ONLY": 3212,
       "MODEL_LIST_PROVEN": 13,
-      "UNMAPPED": 40
+      "UNMAPPED": 41
     },
-    "nonIndexedClassificationLinks": 99,
+    "nonIndexedClassificationLinks": 100,
     "nonIndexedClassificationLinksByLane": {
       "HTML": 86,
-      "JSON": 13
+      "JSON": 14
     }
   },
   "sourceVersions": [
@@ -10663,6 +10669,13 @@
       "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS63M18AU",
       "contentLane": "HTML",
       "documentId": "pdf:31f46d69af5adc23307b8bb60739ae0f0f41e6de238289f1623a550760c800a0"
+    },
+    {
+      "referenceId": "fa_ref_f23d4b7888e39e5b296855de",
+      "contentSha256": "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+      "sourceUrl": "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a"
     }
   ],
   "documents": [
@@ -95694,23 +95707,12 @@
       ],
       "modelEdges": [
         {
-          "referenceId": "fa_ref_83c5f60ac235a30b67ab7701",
-          "proofLevel": "FAMILY_SCOPE_ONLY",
+          "referenceId": null,
+          "proofLevel": "UNMAPPED",
           "proofLocators": [
             {
-              "type": "CLASSIFICATION_ASSOCIATION",
-              "identityScope": "AMBIGUOUS",
-              "receiptState": "NONE"
-            },
-            {
-              "type": "INDEX_IDENTITY_HINT",
+              "type": "INDEX_MAPPING_STATUS",
               "mappingStatus": "MAPPED_TARGET_IDENTITY"
-            },
-            {
-              "type": "KNOWLEDGE_FAMILY_SCOPE",
-              "familyId": "document_family_8c42a202621fac2774045212",
-              "groupType": "parser_family",
-              "groupName": "PDF grammar pdf_grammar_58d08a7f3d6f1923"
             }
           ]
         }
@@ -111960,9 +111962,7 @@
       "grammarProfileIds": [
         "pdf_grammar_58d08a7f3d6f1923"
       ],
-      "referenceIds": [
-        "fa_ref_83c5f60ac235a30b67ab7701"
-      ]
+      "referenceIds": []
     },
     {
       "familyId": "document_family_8c56abed5d684b98cf589d12",
@@ -116867,5 +116867,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "c1c87925b727fedabda2fa3b02be39b54cb4e0e609f9c27a99ea473cd1b6ead8"
+  "semanticGraphSha256": "6b8d6193d120c1f7b29d39e8c618d2a261de7526a8b5e4e92828bbfa6c8a893d"
 }

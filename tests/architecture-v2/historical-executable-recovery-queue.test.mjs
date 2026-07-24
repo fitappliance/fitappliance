@@ -167,6 +167,12 @@ test('materializes acquisition and bounded-discovery targets without fabricating
       schemaVersion: 1,
       generatedAt: '2026-07-14T00:00:00.000Z',
       semanticQueueSha256: 'a'.repeat(64),
+      sourceBindings: {
+        releaseCandidateId: 'retail_lifecycle_release_1234567890abcdef12345678',
+        publicProjectionSha256: 'b'.repeat(64),
+        historicalReferenceSha256: 'c'.repeat(64),
+        authorizationManifestSha256: 'd'.repeat(64),
+      },
       records,
       sources: [{
         sourceId: 'source-official',
@@ -188,6 +194,12 @@ test('materializes acquisition and bounded-discovery targets without fabricating
   });
 
   assert.equal(queue.schemaVersion, 2);
+  assert.deepEqual(queue.sourceBindings, {
+    releaseCandidateId: 'retail_lifecycle_release_1234567890abcdef12345678',
+    publicProjectionSha256: 'b'.repeat(64),
+    historicalReferenceSha256: 'c'.repeat(64),
+    authorizationManifestSha256: 'd'.repeat(64),
+  });
   assert.equal(queue.targets.length, 1);
   assert.equal(queue.discoveryTargets.length, 1);
   assert.equal(queue.jobs.length, 1);

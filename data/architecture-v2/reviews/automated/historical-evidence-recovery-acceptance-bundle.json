@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-19T19:19:53.552Z",
+  "generatedAt": "2026-07-24T17:04:51.280Z",
   "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
   "entries": [
     {
@@ -44945,6 +44945,271 @@
         "supersessionViolations": [],
         "axisPermutationResolution": null,
         "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_7ceff703d667e94a16a184fb",
+      "referenceId": "fa_ref_f23d4b7888e39e5b296855de",
+      "legacyRuntimeId": "ao-57868",
+      "canonicalProductId": "fa_prod_1fc59180f23a9f00f0b5c903",
+      "brand": "Esatto",
+      "model": "EDW7CS",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-8aa342855c1875beba002f63-slice-484ab3045e36",
+      "auditSha256": "dd569237f5ede9745230f8a935af6c79a627a4cf7f62f69427d99b8e011b9a11",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf",
+          "finalUrl": "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/640fe5fece0dee31e0b945cc/1678763518931/Esatto_ProductCard_EDW7CS.pdf",
+          "redirectChain": [
+            "https://static1.squarespace.com/static/60b4343adf3b1702ea34281a/t/640fe5fece0dee31e0b945cc/1678763518931/Esatto_ProductCard_EDW7CS.pdf"
+          ],
+          "retrievedAt": "2026-07-24T17:03:59.369Z",
+          "contentSha256": "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+          "objectPath": "evidence/web/sha256/21/72/2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 221087,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Esatto",
+            "model": "EDW7CS",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Product Dimensions - Physical (W x D x H)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "e8ef89af04a87572c31e5b7b2f38a7f96637dc5dc6557fb8ce40f0bd706b066a",
+              "bbox": [
+                664,
+                257,
+                778,
+                277
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 845
+              },
+              "sourceLabel": "Product Dimensions - Physical (W x D x H)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "e8ef89af04a87572c31e5b7b2f38a7f96637dc5dc6557fb8ce40f0bd706b066a",
+              "bbox": [
+                664,
+                257,
+                778,
+                277
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 610
+              },
+              "sourceLabel": "Product Dimensions - Physical (W x D x H)",
+              "sourceAxisOrder": [
+                "width",
+                "depth",
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "e8ef89af04a87572c31e5b7b2f38a7f96637dc5dc6557fb8ce40f0bd706b066a",
+              "bbox": [
+                664,
+                257,
+                778,
+                277
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_page",
+            "market": "AU",
+            "discoveryUrl": "https://esatto.house/dishwashers/p/60cm-freestanding-dishwasher-with-cutlery-drawer-stainless-steel-edw7cs",
+            "requestedModel": "EDW7CS",
+            "matchedModel": "EDW7CS",
+            "artifactUrl": "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf",
+            "artifactLinkUrl": "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf",
+            "discoveryContentSha256": "70399526daedef0222d3c9672dbaf0fcc97455d1912b01fc57c0940985bcf9df",
+            "discoveryObjectPath": "evidence/web/sha256/70/39/70399526daedef0222d3c9672dbaf0fcc97455d1912b01fc57c0940985bcf9df.html",
+            "discoveryByteSize": 340323
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+            "contentSha256": "70fb8b309b1cada71de272fb1f35935bb88304de84ac14fc14afbf63573d6e5e",
+            "objectPath": "evidence/derived/mineru-json/sha256/70/fb/70fb8b309b1cada71de272fb1f35935bb88304de84ac14fc14afbf63573d6e5e.json",
+            "byteSize": 24469,
+            "pageCount": 1
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "EDW7CS:page:1:959aa94691a3736bb275656ec762b0144ccf766e369bd7721b50fcfd96f5be0d"
+            },
+            {
+              "type": "mineru_esatto_edw_product_card_exact_model",
+              "value": "EDW7CS:header:959aa94691a3736bb275656ec762b0144ccf766e369bd7721b50fcfd96f5be0d:page:1:physical:e8ef89af04a87572c31e5b7b2f38a7f96637dc5dc6557fb8ce40f0bd706b066a:url:https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf"
+            },
+            {
+              "type": "official_product_page_model",
+              "value": "EDW7CS:70399526daedef0222d3c9672dbaf0fcc97455d1912b01fc57c0940985bcf9df:https://esatto.house/dishwashers/p/60cm-freestanding-dishwasher-with-cutlery-drawer-stainless-steel-edw7cs"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-21.1",
+            "discoveryPolicyVersion": "2026-07-16.6",
+            "verifiedAt": "2026-07-24T17:03:59.369Z",
+            "bindingSha256": "6b1057e1babadb4912d78d37b79ffc4c710d5a8e459a71646bcff75f21575a6f"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 845,
+              "maximumMm": 845
+            },
+            "depthMm": 610
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf",
+            "contentSha256": "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+            "receiptBindingSha256": "6b1057e1babadb4912d78d37b79ffc4c710d5a8e459a71646bcff75f21575a6f",
+            "page": 1,
+            "fragmentSha256": "e8ef89af04a87572c31e5b7b2f38a7f96637dc5dc6557fb8ce40f0bd706b066a"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf",
+            "contentSha256": "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+            "receiptBindingSha256": "6b1057e1babadb4912d78d37b79ffc4c710d5a8e459a71646bcff75f21575a6f",
+            "page": 1,
+            "fragmentSha256": "e8ef89af04a87572c31e5b7b2f38a7f96637dc5dc6557fb8ce40f0bd706b066a"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://esatto.house/s/Esatto_ProductCard_EDW7CS.pdf",
+            "contentSha256": "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a",
+            "receiptBindingSha256": "6b1057e1babadb4912d78d37b79ffc4c710d5a8e459a71646bcff75f21575a6f",
+            "page": 1,
+            "fragmentSha256": "e8ef89af04a87572c31e5b7b2f38a7f96637dc5dc6557fb8ce40f0bd706b066a"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "2172bd64ca2694450ac3f43108efe4adbf4003bc1497ee664a7154ac9895179a"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_d436bbb1d5b59ad54b2ea9cf",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 598,
+              "heightMm": 845,
+              "depthMm": 615
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
         "conflictReason": null
       }
     },
@@ -93939,6 +94204,13 @@
       "queueSha256": "78f19f8f386b52b38897126557cb9b13c51d4a53e3b84609b09c20feaa687b51",
       "resultsSha256": "459e6f5088c3214d43cdc6559d0c466c906373fd61ce80442b88f0d28afa7a75",
       "auditSha256": "b4acb18331e55fdafe60d45c33fd6951cf1e153578a12f4c7a0988c0f6ce56c7"
+    },
+    {
+      "batchId": "historical-recovery-8aa342855c1875beba002f63-slice-484ab3045e36",
+      "batchSha256": "df24f2dd57d0e3a1f5612342effc16e215f030c8337dd6d235e0ef4197bf9ae5",
+      "queueSha256": "d7fc276f99dbb6070c93a3fe0e6159bbfc20244361cdf5ecdce0121843c80cb7",
+      "resultsSha256": "b95539084743d5db775c967e163ad6d28c9179d4e5c2a2f19b2aa3b2811f32fc",
+      "auditSha256": "dd569237f5ede9745230f8a935af6c79a627a4cf7f62f69427d99b8e011b9a11"
     },
     {
       "batchId": "historical-recovery-8b8002273745721f725c70c4-slice-9c290ae74150",

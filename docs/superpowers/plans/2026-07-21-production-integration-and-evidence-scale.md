@@ -309,14 +309,21 @@ git diff --check
 - Update corresponding focused fixtures and the scale-control ledger.
 
 **Interfaces:**
-- Consumes: `historical_batch_cd540913d0d888a7ffaa9a0e` and its immutable attempt history.
-- Produces: a typed terminal result for every target and at least one valid receipt before broader P0 execution.
+- Consumes: the active-release P0 discovery manifest `historical_batch_c7ca2b67f0d472cfb2a23986`, immutable failed parser run `task8-p0-esatto-edw7cs-dimensions-20260725-c`, and bounded reopened dimensions manifest `historical_batch_29e0c1564c92dc53f36be211`.
+- Produces: accepted run `task8-p0-esatto-edw7cs-dimensions-20260725-d`, checkpoint `historical-dimensions-checkpoint-fbc97f553c5fb3fd70a70cfb`, and next allowed P0 manifest `historical_batch_fa6ba7aa186d02d81876e5c8`.
 
-- [ ] Replay the selected manifest without broad crawling and classify each target failure by source, identity, document, parser, verifier, or receipt stage.
-- [ ] Write one failing fixture for the dominant repairable failure.
-- [ ] Implement the minimum brand/category grammar or resolver correction.
-- [ ] Re-run the same cohort under a new policy/toolchain epoch.
-- [ ] Stop and choose the next P0 cohort if evidence proves the cohort has no official recoverable source; do not loop on zero yield.
+- [x] Replay the selected manifest without broad crawling and classify each target failure by source, identity, document, parser, verifier, or receipt stage.
+- [x] Write one failing fixture for the dominant repairable failure.
+- [x] Implement the minimum brand/category grammar or resolver correction.
+- [x] Re-run the same cohort under a new policy/toolchain epoch.
+- [x] Stop and choose the next P0 cohort if evidence proves the cohort has no official recoverable source; do not loop on zero yield.
+
+**Execution record (2026-07-25):**
+- The first bounded replay, `task8-p0-esatto-edw7cs-dimensions-20260725-c`, ended terminal at `claims_incomplete/mineru`; its audit passed with zero repairs or violations and was retained as immutable attempt history.
+- A scoped Esatto ProductCard processor epoch reopened only the exact official ProductCard failure. Adversarial fixtures reject changed axis order, missing or smaller package tuples, duplicate physical tuples, wrong-column tuples, and non-ProductCard URLs.
+- The accepted rerun proves Esatto EDW7CS closed W/H/D as `598 x 845 x 610 mm` from the exact-model official PDF and MinerU `content_list_v2`, while retaining the legacy `615 mm` depth only as a lower-authority conflict hint.
+- The receipt remains dimensions-only: installation, operation, and service requirements stay unknown, `verifiedFitEligible` remains false, and the active production release is unchanged.
+- The cumulative acceptance bundle is newer than the active release snapshot and is explicitly staged as `PENDING_NEXT`; released historical replacement and Fit audits remain bound to the active release.
 
 **Acceptance gate:** The cohort is terminal and reproducible. Scaling opens only after a positive receipt canary or a deterministic no-source closure.
 

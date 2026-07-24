@@ -259,6 +259,24 @@ test('builds a grain-safe model, document, parser, source-lane and Fit funnel', 
   )));
 });
 
+test('reports release-scoped publication audit sources when supplied', () => {
+  const input = fixture();
+  input.sourceArtifacts = {
+    replacementAudit: 'data/architecture-v2/releases/release-example/historical-replacement-audit.json',
+    fitPublicationAudit: 'data/architecture-v2/releases/release-example/fit-publication-audit.json',
+  };
+
+  const status = buildHistoricalEvidenceProgramStatus(input);
+  assert.equal(
+    metricById(status, 'model.replacement_auto_fill').sourceArtifact,
+    input.sourceArtifacts.replacementAudit,
+  );
+  assert.equal(
+    metricById(status, 'fit.receipt_bound_dimensions').sourceArtifact,
+    input.sourceArtifacts.fitPublicationAudit,
+  );
+});
+
 test('renders explicit grains and does not merge the two document inventories', () => {
   const markdown = renderHistoricalEvidenceProgramStatusMarkdown(
     buildHistoricalEvidenceProgramStatus(fixture()),

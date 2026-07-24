@@ -2,9 +2,16 @@
 
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { dirname, relative, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
+import {
+  buildActiveHistoricalEvidenceScope,
+} from '../../src/domain/active-historical-evidence-scope.mjs';
+import {
+  loadActiveRetailRelease,
+  loadActiveRetailReleaseAudits,
+} from '../../src/domain/active-retail-release.mjs';
 import {
   architectureV2Paths,
   resolveArchitectureV2Path,
@@ -64,6 +71,7 @@ const ARTIFACT_KEYS = Object.freeze([
   'publicProjectionReleaseCandidate',
   'historicalApplianceReferenceReleaseCandidate',
   'retailLifecycleReleaseCandidate',
+  'activeRetailRelease',
   'officialRegistrySnapshots',
   'canonicalRegistry',
   'canonicalRegistryMigrationCandidate',
@@ -97,6 +105,8 @@ const TARGET_STATE_SOURCE_KEYS = Object.freeze({
   attemptLedgerSha256: 'historicalEvidenceRecoveryAttemptLedger',
 });
 
+const SHA256 = /^[a-f0-9]{64}$/;
+
 function option(args, name) {
   const index = args.indexOf(name);
   if (index < 0) return null;
@@ -115,10 +125,53 @@ function assertEqual(label, actual, expected) {
   if (actual !== expected) throw new Error(`${label} mismatch`);
 }
 
+export function resolveHistoricalAcceptanceReleaseBinding({
+  acceptanceBundle,
+  activeRelease,
+}) {
+  const bundleId = String(acceptanceBundle?.bundleId ?? '').trim();
+  if (!bundleId) throw new TypeError('historical acceptance bundle ID required');
+  if (!Array.isArray(acceptanceBundle?.entries)) {
+    throw new TypeError('historical acceptance bundle entries required');
+  }
+  if (!Array.isArray(activeRelease?.reference?.records)) {
+    throw new TypeError('active historical reference records required');
+  }
+  const sourceKey = `historical-recovery:${bundleId}`;
+  const activeAcceptanceBundleSha256 = String(
+    activeRelease.reference.sourceSnapshotHashes?.[sourceKey] ?? '',
+  ).trim().toLowerCase();
+  if (!SHA256.test(activeAcceptanceBundleSha256)) {
+    throw new TypeError(`active historical reference ${sourceKey} SHA-256 required`);
+  }
+  const activeReferenceIds = new Set(
+    activeRelease.reference.records.map((record) => String(record?.referenceId ?? '').trim()),
+  );
+  const missingReferenceIds = [...new Set(acceptanceBundle.entries
+    .map((entry) => String(entry?.referenceId ?? '').trim())
+    .filter((referenceId) => !referenceId || !activeReferenceIds.has(referenceId)))]
+    .sort((left, right) => left.localeCompare(right));
+  if (missingReferenceIds.length > 0) {
+    throw new Error(
+      `historical acceptance entries outside the active historical reference denominator: ${missingReferenceIds.join(', ')}`,
+    );
+  }
+  const currentAcceptanceBundleSha256 = canonicalJsonSha256(acceptanceBundle);
+  return Object.freeze({
+    status: currentAcceptanceBundleSha256 === activeAcceptanceBundleSha256
+      ? 'RELEASED'
+      : 'PENDING_NEXT',
+    sourceKey,
+    activeAcceptanceBundleSha256,
+    currentAcceptanceBundleSha256,
+  });
+}
+
 function classificationSemantic(value) {
   return {
     schemaVersion: value.schemaVersion,
     policyVersion: value.policyVersion,
+    ...(value.sourceBindings ? { sourceBindings: value.sourceBindings } : {}),
     summary: value.summary,
     categorySummaries: value.categorySummaries,
     topGaps: value.topGaps,
@@ -129,6 +182,7 @@ function classificationSemantic(value) {
 function documentGraphSemantic(value) {
   return {
     schemaVersion: value.schemaVersion,
+    ...(value.sourceBindings ? { sourceBindings: value.sourceBindings } : {}),
     policy: value.policy,
     summary: value.summary,
     sourceVersions: value.sourceVersions,
@@ -142,6 +196,7 @@ function acquisitionQueueSemantic(value) {
   return {
     sourceClassificationSha256: value.sourceClassificationSha256,
     sourceIdentityMigrationSha256: value.sourceIdentityMigrationSha256,
+    ...(value.sourceBindings ? { sourceBindings: value.sourceBindings } : {}),
     records: value.records,
     sources: value.sources,
     excluded: value.excluded,
@@ -151,6 +206,7 @@ function acquisitionQueueSemantic(value) {
 function officialCandidateSemantic(value) {
   return {
     sourceAcquisitionQueueSha256: value.sourceAcquisitionQueueSha256,
+    ...(value.sourceBindings ? { sourceBindings: value.sourceBindings } : {}),
     runBindings: value.runBindings,
     candidates: value.candidates,
     targets: value.targets,
@@ -322,7 +378,28 @@ async function readTargetStateSourceBindings(root) {
     })));
 }
 
-function verifyCurrentReplay(artifacts, epochs, targetStateSourceBindings) {
+function verifyCurrentReplay({
+  artifacts,
+  epochs,
+  targetStateSourceBindings,
+  activeRelease,
+  sourceArtifacts,
+}) {
+  const activeScope = buildActiveHistoricalEvidenceScope(activeRelease);
+  for (const [label, bindings] of [
+    ['classification', artifacts.historicalModelEvidenceClassification.sourceBindings],
+    ['document graph', artifacts.historicalDocumentFamilyGraph.sourceBindings],
+    ['acquisition queue', artifacts.historicalModelPdfAcquisitionQueue.sourceBindings],
+    ['candidate manifest', artifacts.historicalOfficialCandidateManifest.sourceBindings],
+    ['executable queue', artifacts.historicalExecutableEvidenceRecoveryQueue.sourceBindings],
+  ]) {
+    assertCanonicalEqual(`${label} active release binding`, bindings, activeScope.sourceBindings);
+  }
+  assertEqual(
+    'active historical classification denominator',
+    artifacts.historicalModelEvidenceClassification.summary.records,
+    activeScope.summary.historicalReferences,
+  );
   const acceptanceBundle = validateHistoricalEvidenceRecoveryAcceptanceBundle(
     artifacts.historicalEvidenceRecoveryAcceptanceBundle,
   );
@@ -368,6 +445,7 @@ function verifyCurrentReplay(artifacts, epochs, targetStateSourceBindings) {
     receiptReplayAudit: artifacts.historicalAcceptanceReceiptReplayAudit,
     replacementAudit: artifacts.historicalReplacementAudit,
     fitPublicationAudit: artifacts.fitPublicationAudit,
+    sourceArtifacts,
   });
   assertCanonicalEqual('historical evidence programme status', artifacts.historicalEvidenceProgramStatus, status);
 
@@ -418,13 +496,7 @@ function verifyCurrentReplay(artifacts, epochs, targetStateSourceBindings) {
     artifacts.historicalAcceptanceReceiptReplayAudit.sourceBundleSha256,
     canonicalJsonSha256(acceptanceBundle),
   );
-  assertEqual(
-    'acceptance bundle -> historical reference binding',
-    artifacts.historicalApplianceReference.sourceSnapshotHashes[
-      `historical-recovery:${acceptanceBundle.bundleId}`
-    ],
-    canonicalJsonSha256(acceptanceBundle),
-  );
+  return resolveHistoricalAcceptanceReleaseBinding({ acceptanceBundle, activeRelease });
 }
 
 async function fileInputs(root, paths, cache) {
@@ -435,10 +507,28 @@ async function fileInputs(root, paths, cache) {
 }
 
 export async function buildHistoricalEvidenceSystemContractFromRepository({ root = defaultRoot } = {}) {
-  const [artifacts, targetStateSourceBindings] = await Promise.all([
+  const [artifacts, targetStateSourceBindings, activeRelease] = await Promise.all([
     readArtifacts(root),
     readTargetStateSourceBindings(root),
+    loadActiveRetailRelease({ root }),
   ]);
+  const activeAudits = await loadActiveRetailReleaseAudits({ activeRelease });
+  assertCanonicalEqual(
+    'active retail release descriptor',
+    artifacts.activeRetailRelease,
+    activeRelease.descriptor,
+  );
+  artifacts.historicalReplacementAudit = activeAudits.replacementAudit;
+  artifacts.fitPublicationAudit = activeAudits.fitPublicationAudit;
+  const artifactPaths = {
+    ...architectureV2Paths,
+    historicalReplacementAudit: relative(root, activeAudits.paths.replacementAudit),
+    fitPublicationAudit: relative(root, activeAudits.paths.fitPublicationAudit),
+  };
+  const activeAuditSourceArtifacts = {
+    replacementAudit: artifactPaths.historicalReplacementAudit,
+    fitPublicationAudit: artifactPaths.fitPublicationAudit,
+  };
   const [
     projectionBytes,
     ledgerBytes,
@@ -507,7 +597,13 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     inputs,
     semanticSha256: canonicalJsonSha256({ id, owner, inputs }),
   }));
-  verifyCurrentReplay(artifacts, scaleEpochs, targetStateSourceBindings);
+  const acceptanceReleaseBinding = verifyCurrentReplay({
+    artifacts,
+    epochs: scaleEpochs,
+    targetStateSourceBindings,
+    activeRelease,
+    sourceArtifacts: activeAuditSourceArtifacts,
+  });
 
   const definitions = [
     ['retailer-identity-resolution', 'retailerIdentityResolutions', 'scripts/architecture-v2/build-retailer-identity-resolutions.mjs', ['scripts/architecture-v2/build-retailer-identity-resolutions.mjs', 'src/domain/retailer-identity-resolution.mjs', 'src/domain/official-identity-evidence.mjs'], [], ['CONTROL_INPUT']],
@@ -533,22 +629,56 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     ['candidate-current-publication', 'publicProjectionReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'src/domain/retail-lifecycle-shadow.mjs'], [['candidate-publication-base', 'content'], ['candidate-lifecycle-shadow', 'semantic']], ['CURRENT_OUTPUT_CANDIDATE'], 'PENDING_NEXT', 2],
     ['candidate-lifecycle-reduction', 'historicalApplianceReferenceReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'scripts/architecture-v2/build-historical-appliance-reference.mjs', 'src/domain/historical-appliance-reference.mjs'], [['official-registry-snapshots', 'content'], ['candidate-current-publication', 'content'], ['receipt-reconciliation', 'content']], ['HISTORICAL_INPUT_CANDIDATE'], 'PENDING_NEXT', 2],
     ['candidate-release-gate', 'retailLifecycleReleaseCandidate', 'scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', ['scripts/architecture-v2/build-retail-lifecycle-release-candidate.mjs', 'src/domain/retail-lifecycle-release-candidate.mjs'], [['current-publication', 'content'], ['candidate-publication-base', 'content'], ['candidate-current-publication', 'content'], ['candidate-lifecycle-shadow', 'semantic'], ['candidate-lifecycle-reduction', 'content'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY'], 'PENDING_NEXT', 2],
-    ['classification', 'historicalModelEvidenceClassification', 'scripts/architecture-v2/build-historical-model-evidence-classification.mjs', ['scripts/architecture-v2/build-historical-model-evidence-classification.mjs', 'src/domain/historical-model-evidence-classification.mjs', 'data/architecture-v2/policies/historical-model-evidence-classification-policy.json'], [['lifecycle-reduction', 'content']], ['CONTROL_ONLY']],
-    ['document-identity', 'historicalDocumentFamilyGraph', 'scripts/architecture-v2/build-historical-document-family-graph.mjs', ['scripts/architecture-v2/build-historical-document-family-graph.mjs', 'src/domain/historical-document-family-graph.mjs'], [['classification', 'semantic']], ['CONTROL_ONLY']],
-    ['mineru-knowledge', 'dimensionExpressionObservations', 'scripts/architecture-v2/build-dimension-expression-knowledge.mjs', ['scripts/architecture-v2/build-dimension-expression-knowledge.mjs', 'src/domain/mineru-document.mjs', 'src/domain/dimension-expression-knowledge.mjs'], [['lifecycle-reduction', 'content'], ['document-identity', 'semantic']], ['CONTROL_ONLY']],
+    ['active-retail-release', 'activeRetailRelease', 'src/domain/active-retail-release.mjs', ['src/domain/active-retail-release.mjs'], [], ['CURRENT_INPUT', 'HISTORICAL_INPUT', 'CONTROL_INPUT']],
+    ['classification', 'historicalModelEvidenceClassification', 'scripts/architecture-v2/build-historical-model-evidence-classification.mjs', ['scripts/architecture-v2/build-historical-model-evidence-classification.mjs', 'src/domain/active-historical-evidence-scope.mjs', 'src/domain/historical-model-evidence-classification.mjs', 'data/architecture-v2/policies/historical-model-evidence-classification-policy.json'], [['active-retail-release', 'content'], ['receipt-reconciliation', 'content']], ['CONTROL_ONLY']],
+    ['mineru-knowledge', 'dimensionExpressionObservations', 'scripts/architecture-v2/build-dimension-expression-knowledge.mjs', ['scripts/architecture-v2/build-dimension-expression-knowledge.mjs', 'src/domain/mineru-document.mjs', 'src/domain/dimension-expression-knowledge.mjs'], [['lifecycle-reduction', 'content']], ['CONTROL_ONLY']],
+    ['document-identity', 'historicalDocumentFamilyGraph', 'scripts/architecture-v2/build-historical-document-family-graph.mjs', ['scripts/architecture-v2/build-historical-document-family-graph.mjs', 'src/domain/active-historical-evidence-scope.mjs', 'src/domain/historical-document-family-graph.mjs'], [['active-retail-release', 'content'], ['classification', 'semantic'], ['mineru-knowledge', 'content']], ['CONTROL_ONLY']],
     ['mineru-backfill-audit', 'historicalMineruBackfillAudit', 'scripts/architecture-v2/backfill-historical-mineru.mjs', ['scripts/architecture-v2/backfill-historical-mineru.mjs', 'src/domain/historical-mineru-backfill.mjs'], [], ['CONTROL_ONLY']],
-    ['candidate-acquisition-queue', 'historicalModelPdfAcquisitionQueue', 'scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', ['scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', 'src/domain/historical-model-pdf-acquisition.mjs'], [['classification', 'semantic'], ['retailer-identity-migration', 'semantic']], ['CONTROL_ONLY']],
+    ['candidate-acquisition-queue', 'historicalModelPdfAcquisitionQueue', 'scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', ['scripts/architecture-v2/build-historical-model-pdf-acquisition-queue.mjs', 'src/domain/active-historical-evidence-scope.mjs', 'src/domain/historical-model-pdf-acquisition.mjs'], [['active-retail-release', 'content'], ['classification', 'semantic']], ['CONTROL_ONLY']],
     ['candidate-discovery', 'historicalOfficialCandidateManifest', 'scripts/architecture-v2/build-historical-official-candidate-manifest.mjs', ['scripts/architecture-v2/build-historical-official-candidate-manifest.mjs', 'src/domain/historical-official-candidate-manifest.mjs', 'scripts/pdf-pipeline/architecture-v2-resolver-adapters.mjs'], [['candidate-acquisition-queue', 'semantic']], ['CONTROL_ONLY']],
     ['executable-queue', 'historicalExecutableEvidenceRecoveryQueue', 'scripts/architecture-v2/build-historical-executable-recovery-queue.mjs', ['scripts/architecture-v2/build-historical-executable-recovery-queue.mjs', 'src/domain/historical-executable-recovery-queue.mjs'], [['candidate-acquisition-queue', 'semantic'], ['candidate-discovery', 'semantic'], ['receipt-reconciliation', 'content'], ['attempt-ledger', 'content']], ['CONTROL_ONLY']],
     ['family-canary', 'historicalEvidenceFamilyCanaries', 'scripts/architecture-v2/build-historical-evidence-family-canaries.mjs', ['scripts/architecture-v2/build-historical-evidence-family-canaries.mjs', 'src/domain/historical-evidence-family-canary.mjs'], [['document-identity', 'semantic'], ['executable-queue', 'content']], ['CONTROL_ONLY']],
     ['target-state', 'historicalEvidenceTargetState', 'scripts/architecture-v2/build-historical-evidence-target-state.mjs', ['scripts/architecture-v2/build-historical-evidence-target-state.mjs', 'src/domain/historical-evidence-target-state.mjs'], [['classification', 'semantic'], ['candidate-acquisition-queue', 'semantic'], ['executable-queue', 'content'], ['receipt-reconciliation', 'content'], ['attempt-ledger', 'content']], ['CONTROL_ONLY']],
     ['bounded-planner', 'historicalEvidenceNextBatches', 'scripts/architecture-v2/build-historical-evidence-bounded-batches.mjs', ['scripts/architecture-v2/build-historical-evidence-bounded-batches.mjs', 'src/domain/historical-evidence-bounded-batch.mjs'], [['executable-queue', 'content'], ['target-state', 'content'], ['family-canary', 'semantic']], ['CONTROL_ONLY']],
-    ['historical-replacement-publication', 'historicalReplacementAudit', 'scripts/architecture-v2/audit-historical-replacement.mjs', ['scripts/architecture-v2/audit-historical-replacement.mjs', 'src/domain/historical-replacement-audit.mjs', 'src/domain/historical-reference-publication.mjs'], [['lifecycle-reduction', 'content'], ['current-publication', 'content']], ['HISTORICAL_OUTPUT']],
-    ['fit-publication', 'fitPublicationAudit', 'scripts/architecture-v2/audit-fit-publication.mjs', ['scripts/architecture-v2/audit-fit-publication.mjs', 'src/domain/installation-evidence-pipeline.mjs', 'src/domain/fit-v3.mjs'], [['current-publication', 'content'], ['receipt-reconciliation', 'content'], ['receipt-replay', 'content']], ['FIT_GUARD']],
+    ['historical-replacement-publication', 'historicalReplacementAudit', 'scripts/architecture-v2/audit-historical-replacement.mjs', ['scripts/architecture-v2/audit-historical-replacement.mjs', 'src/domain/active-retail-release.mjs', 'src/domain/historical-replacement-audit.mjs', 'src/domain/historical-reference-publication.mjs'], [['active-retail-release', 'content']], ['HISTORICAL_OUTPUT']],
+    ['fit-publication', 'fitPublicationAudit', 'scripts/architecture-v2/audit-fit-publication.mjs', ['scripts/architecture-v2/audit-fit-publication.mjs', 'src/domain/active-retail-release.mjs', 'src/domain/installation-evidence-pipeline.mjs', 'src/domain/fit-v3.mjs'], [['active-retail-release', 'content']], ['FIT_GUARD']],
     ['program-status', 'historicalEvidenceProgramStatus', 'scripts/architecture-v2/build-historical-evidence-program-status.mjs', ['scripts/architecture-v2/build-historical-evidence-program-status.mjs', 'src/domain/historical-evidence-program-status.mjs'], [['classification', 'semantic'], ['mineru-knowledge', 'content'], ['document-identity', 'semantic'], ['candidate-acquisition-queue', 'semantic'], ['executable-queue', 'content'], ['receipt-reconciliation', 'content'], ['attempt-ledger', 'content'], ['target-state', 'content'], ['mineru-backfill-audit', 'content'], ['receipt-replay', 'content'], ['historical-replacement-publication', 'content'], ['fit-publication', 'content']], ['CONTROL_ONLY']],
     ['scale-ledger', 'historicalDimensionsScaleLedger', 'src/domain/historical-dimensions-scale-control.mjs', ['src/domain/historical-dimensions-scale-control.mjs'], [], ['CONTROL_INPUT']],
     ['scale-control', 'historicalDimensionsScaleControl', 'scripts/architecture-v2/build-historical-dimensions-scale-control.mjs', ['scripts/architecture-v2/build-historical-dimensions-scale-control.mjs', 'src/domain/historical-dimensions-scale-control.mjs'], [['scale-ledger', 'content'], ['bounded-planner', 'content'], ['program-status', 'content'], ['receipt-replay', 'content'], ['historical-replacement-publication', 'content'], ['fit-publication', 'content']], ['CONTROL_ONLY']],
   ];
+
+  const releaseMetadataById = new Map(definitions.map((definition) => [
+    definition[0],
+    {
+      releaseState: definition[6] ?? 'RELEASED',
+      releaseEpoch: definition[7] ?? 1,
+      dependencies: definition[4].map(([dependency]) => dependency),
+    },
+  ]));
+  if (acceptanceReleaseBinding.status === 'PENDING_NEXT') {
+    releaseMetadataById.set('receipt-reconciliation', {
+      ...releaseMetadataById.get('receipt-reconciliation'),
+      releaseState: 'PENDING_NEXT',
+      releaseEpoch: 2,
+    });
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (const metadata of releaseMetadataById.values()) {
+        if (metadata.releaseState === 'PENDING_NEXT') continue;
+        const pendingDependencies = metadata.dependencies
+          .map((dependency) => releaseMetadataById.get(dependency))
+          .filter((dependency) => dependency?.releaseState === 'PENDING_NEXT');
+        if (pendingDependencies.length === 0) continue;
+        metadata.releaseState = 'PENDING_NEXT';
+        metadata.releaseEpoch = Math.max(
+          2,
+          ...pendingDependencies.map((dependency) => dependency.releaseEpoch),
+        );
+        changed = true;
+      }
+    }
+  }
 
   const stageById = new Map();
   for (const [
@@ -558,14 +688,18 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     producerPaths,
     dependencies,
     lifecycleVisibility,
-    releaseState = 'RELEASED',
-    releaseEpoch = 1,
+    declaredReleaseState = 'RELEASED',
+    declaredReleaseEpoch = 1,
   ] of definitions) {
+    const {
+      releaseState = declaredReleaseState,
+      releaseEpoch = declaredReleaseEpoch,
+    } = releaseMetadataById.get(id) ?? {};
     const native = nativeSemantic(key, artifacts[key]);
     stageById.set(id, {
       id,
       artifactKey: key,
-      artifactPath: architectureV2Paths[key],
+      artifactPath: artifactPaths[key],
       owner,
       producerInputs: await fileInputs(root, producerPaths, fileCache),
       consumers: [],
@@ -614,6 +748,19 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
     stages: [...stageById.values()],
     epochs,
     baseline: {
+      activeReleaseCandidateId: activeRelease.descriptor.releaseCandidateId,
+      activeReleaseActivatedAt: activeRelease.descriptor.activatedAt,
+      activePublicProjectionSha256:
+        activeRelease.descriptor.artifacts.publicProjection.sha256,
+      activeHistoricalReferenceSha256:
+        activeRelease.descriptor.artifacts.historicalReference.sha256,
+      activeAuthorizationManifestSha256:
+        activeRelease.descriptor.artifacts.authorizationManifest.sha256,
+      acceptanceReleaseState: acceptanceReleaseBinding.status,
+      activeAcceptanceBundleSha256:
+        acceptanceReleaseBinding.activeAcceptanceBundleSha256,
+      currentAcceptanceBundleSha256:
+        acceptanceReleaseBinding.currentAcceptanceBundleSha256,
       historicalModelReferences: artifacts.historicalModelEvidenceClassification.summary.records,
       modelsWithDocumentLinks: artifacts.historicalModelEvidenceClassification.summary.modelsWithDocumentLinks,
       modelsWithCurrentValidReceipts: artifacts.historicalModelEvidenceClassification.summary.byOperationalClass.COMPLETE_RECEIPT,
@@ -683,6 +830,12 @@ export async function buildHistoricalEvidenceSystemContractFromRepository({ root
       p1AssignedTargets: historicalWorkstream.assignedTargets,
       p1EligibleTargets: historicalWorkstream.eligibleTargets,
       knownContractGaps: [
+        ...(acceptanceReleaseBinding.status === 'PENDING_NEXT' ? [{
+          id: 'ACCEPTANCE_BUNDLE_PENDING_ACTIVE_RELEASE',
+          severity: 'INFORMATIONAL',
+          repairTask: 9,
+          detail: 'The evidence control plane contains a validated exact-model receipt that is newer than the active release snapshot. Active replacement and Fit publication remain hash-bound to the released snapshot until a later candidate release is built and authorized.',
+        }] : []),
         ...(artifacts.retailLifecycleShadow.cutover.status === 'BLOCKED' ? [{
           id: 'LIFECYCLE_SHADOW_BLOCKED_FROM_CUTOVER',
           severity: 'INFORMATIONAL',

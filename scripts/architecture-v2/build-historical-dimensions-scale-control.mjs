@@ -5,6 +5,10 @@ import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
+import {
+  loadActiveRetailRelease,
+  loadActiveRetailReleaseAudits,
+} from '../../src/domain/active-retail-release.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import {
   buildHistoricalDimensionsScaleControl,
@@ -88,14 +92,15 @@ async function currentEpochs() {
 
 export async function runCli(args = process.argv.slice(2)) {
   const options = parseArgs(args);
-  const [nextBatches, programStatus, receiptAudit, replacementAudit, fitPublicationAudit, epochs] = await Promise.all([
+  const activeRelease = await loadActiveRetailRelease({ root });
+  const activeAudits = await loadActiveRetailReleaseAudits({ activeRelease });
+  const [nextBatches, programStatus, receiptAudit, epochs] = await Promise.all([
     readJson('historicalEvidenceNextBatches'),
     readJson('historicalEvidenceProgramStatus'),
     readJson('historicalAcceptanceReceiptReplayAudit'),
-    readJson('historicalReplacementAudit'),
-    readJson('fitPublicationAudit'),
     currentEpochs(),
   ]);
+  const { replacementAudit, fitPublicationAudit } = activeAudits;
   const shared = {
     nextBatches, programStatus, receiptAudit, replacementAudit, fitPublicationAudit, epochs,
   };

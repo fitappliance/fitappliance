@@ -116,6 +116,23 @@ function pass(id, label) {
   return { id, label, status: 'PASS' };
 }
 
+function sourceArtifactsFor(value) {
+  if (value == null) return SOURCE_ARTIFACTS;
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('programme source artifacts must be an object');
+  }
+  const result = { ...SOURCE_ARTIFACTS };
+  for (const [key, path] of Object.entries(value)) {
+    if (!Object.hasOwn(result, key)) throw new TypeError(`unknown programme source artifact: ${key}`);
+    if (typeof path !== 'string' || !path.startsWith('data/') || path.includes('..')
+      || path.includes('\\')) {
+      throw new TypeError(`programme source artifact path invalid: ${key}`);
+    }
+    result[key] = path;
+  }
+  return Object.freeze(result);
+}
+
 function assertAccounting({
   classification,
   knowledge,
@@ -426,7 +443,8 @@ export function buildHistoricalEvidenceProgramStatus(input) {
   const inventory = classification.summary.records;
   const acceptedEntries = acceptanceBundle.entries.length;
   const sourceLanes = acceptedSourceLanes(acceptanceBundle.entries);
-  const modelSource = SOURCE_ARTIFACTS.classification;
+  const sourceArtifacts = sourceArtifactsFor(input.sourceArtifacts);
+  const modelSource = sourceArtifacts.classification;
   const metrics = [
     metric({
       id: 'model.inventory_classified', label: 'Inventory classified', grain: 'historical_model_reference',
@@ -448,26 +466,26 @@ export function buildHistoricalEvidenceProgramStatus(input) {
     metric({
       id: 'model.queued_for_acquisition', label: 'Models queued for acquisition', grain: 'historical_model_reference',
       numerator: acquisitionQueue.summary.queuedModels, denominator: inventory,
-      sourceArtifact: SOURCE_ARTIFACTS.acquisitionQueue,
+      sourceArtifact: sourceArtifacts.acquisitionQueue,
     }),
     metric({
       id: 'model.executable_targets', label: 'Executable model targets', grain: 'historical_model_reference',
       numerator: executableQueue.summary.targets, denominator: acquisitionQueue.summary.queuedModels,
-      sourceArtifact: SOURCE_ARTIFACTS.executableQueue,
+      sourceArtifact: sourceArtifacts.executableQueue,
     }),
     metric({
       id: 'model.accepted_recovery_entries', label: 'Models in cumulative recovery acceptance', grain: 'historical_model_reference',
-      numerator: acceptedEntries, denominator: inventory, sourceArtifact: SOURCE_ARTIFACTS.acceptanceBundle,
+      numerator: acceptedEntries, denominator: inventory, sourceArtifact: sourceArtifacts.acceptanceBundle,
     }),
     metric({
       id: 'model.replacement_auto_fill', label: 'Historical models eligible for replacement auto-fill', grain: 'historical_model_reference',
       numerator: replacementAudit.summary.byLookupAction.AUTO_FILL ?? 0,
-      denominator: inventory, sourceArtifact: SOURCE_ARTIFACTS.replacementAudit,
+      denominator: inventory, sourceArtifact: sourceArtifacts.replacementAudit,
     }),
     metric({
       id: 'target_state.actionable', label: 'Models with scheduled evidence work', grain: 'historical_model_reference',
       numerator: targetState.summary.actionable, denominator: inventory,
-      sourceArtifact: SOURCE_ARTIFACTS.targetState,
+      sourceArtifact: sourceArtifacts.targetState,
     }),
     metric({
       id: 'target_state.actionable_blocked_overlap',
@@ -475,41 +493,41 @@ export function buildHistoricalEvidenceProgramStatus(input) {
       grain: 'historical_model_reference',
       numerator: targetState.summary.actionableBlockedOverlap ?? 0,
       denominator: inventory,
-      sourceArtifact: SOURCE_ARTIFACTS.targetState,
+      sourceArtifact: sourceArtifacts.targetState,
     }),
     metric({
       id: 'target_state.completed', label: 'Completed model targets', grain: 'historical_model_reference',
       numerator: targetState.summary.completed, denominator: inventory,
-      sourceArtifact: SOURCE_ARTIFACTS.targetState,
+      sourceArtifact: sourceArtifacts.targetState,
     }),
     metric({
       id: 'target_state.blocked', label: 'Blocked model targets', grain: 'historical_model_reference',
       numerator: targetState.summary.blocked, denominator: inventory,
-      sourceArtifact: SOURCE_ARTIFACTS.targetState,
+      sourceArtifact: sourceArtifacts.targetState,
     }),
     metric({
       id: 'document.unique_pdf_content', label: 'Unique PDF content', grain: 'physical_pdf_file',
       numerator: mineruBackfillAudit.summary.uniqueDocuments,
       denominator: mineruBackfillAudit.summary.physicalFiles,
-      sourceArtifact: SOURCE_ARTIFACTS.mineruBackfillAudit,
+      sourceArtifact: sourceArtifacts.mineruBackfillAudit,
     }),
     metric({
       id: 'document.backfill_unique_indexed', label: 'Unique PDF content indexed', grain: 'unique_pdf_content',
       numerator: mineruBackfillAudit.summary.indexed,
       denominator: mineruBackfillAudit.summary.uniqueDocuments,
-      sourceArtifact: SOURCE_ARTIFACTS.mineruBackfillAudit,
+      sourceArtifact: sourceArtifacts.mineruBackfillAudit,
     }),
     metric({
       id: 'document.graph_indexed_nodes', label: 'Indexed PDF content graph nodes', grain: 'unique_pdf_content',
       numerator: documentGraph.summary.indexedPdfDocuments,
       denominator: documentGraph.summary.indexedPdfDocuments,
-      sourceArtifact: SOURCE_ARTIFACTS.documentGraph,
+      sourceArtifact: sourceArtifacts.documentGraph,
     }),
     metric({
       id: 'document.graph_valid_nodes', label: 'Valid indexed PDF graph nodes', grain: 'unique_pdf_content',
       numerator: documentGraph.summary.validIndexedPdfDocuments,
       denominator: documentGraph.summary.indexedPdfDocuments,
-      sourceArtifact: SOURCE_ARTIFACTS.documentGraph,
+      sourceArtifact: sourceArtifacts.documentGraph,
     }),
     metric({
       id: 'document.graph_proven_model_applicability',
@@ -518,23 +536,23 @@ export function buildHistoricalEvidenceProgramStatus(input) {
       numerator: (documentGraph.summary.byProofLevel.EXACT_MODEL_PROVEN ?? 0)
         + (documentGraph.summary.byProofLevel.MODEL_LIST_PROVEN ?? 0),
       denominator: documentGraph.summary.mappedModelEdges,
-      sourceArtifact: SOURCE_ARTIFACTS.documentGraph,
+      sourceArtifact: sourceArtifacts.documentGraph,
     }),
     metric({
       id: 'document.knowledge_valid', label: 'Valid MinerU knowledge documents', grain: 'mineru_knowledge_document',
       numerator: documentGraph.summary.validIndexedPdfDocuments,
       denominator: documentGraph.summary.indexedPdfDocuments,
-      sourceArtifact: SOURCE_ARTIFACTS.documentGraph,
+      sourceArtifact: sourceArtifacts.documentGraph,
     }),
     metric({
       id: 'document.knowledge_recognized', label: 'MinerU knowledge documents with recognized expressions', grain: 'mineru_knowledge_document',
       numerator: knowledge.summary.documentsWithObservations,
-      denominator: knowledge.summary.validMineruDocuments, sourceArtifact: SOURCE_ARTIFACTS.knowledge,
+      denominator: knowledge.summary.validMineruDocuments, sourceArtifact: sourceArtifacts.knowledge,
     }),
     metric({
       id: 'parser.complete_replays', label: 'Complete parser replays', grain: 'parser_replay',
       numerator: knowledge.summary.completeParserReplays,
-      denominator: knowledge.summary.parserReplays, sourceArtifact: SOURCE_ARTIFACTS.knowledge,
+      denominator: knowledge.summary.parserReplays, sourceArtifact: sourceArtifacts.knowledge,
     }),
     ...[
       ['pdf_only', 'PDF only'],
@@ -548,19 +566,19 @@ export function buildHistoricalEvidenceProgramStatus(input) {
       grain: 'accepted_model_entry',
       numerator: sourceLanes[key],
       denominator: acceptedEntries,
-      sourceArtifact: SOURCE_ARTIFACTS.acceptanceBundle,
+      sourceArtifact: sourceArtifacts.acceptanceBundle,
     })),
     metric({
       id: 'fit.receipt_bound_dimensions', label: 'Current products with receipt-bound dimensions', grain: 'current_catalog_product',
       numerator: fitPublicationAudit.summary.receiptBoundDimensions,
       denominator: fitPublicationAudit.summary.products,
-      sourceArtifact: SOURCE_ARTIFACTS.fitPublicationAudit,
+      sourceArtifact: sourceArtifacts.fitPublicationAudit,
     }),
     metric({
       id: 'fit.receipt_bound_verified', label: 'Current products with receipt-bound Verified Fit', grain: 'current_catalog_product',
       numerator: fitPublicationAudit.summary.receiptBoundVerified,
       denominator: fitPublicationAudit.summary.products,
-      sourceArtifact: SOURCE_ARTIFACTS.fitPublicationAudit,
+      sourceArtifact: sourceArtifacts.fitPublicationAudit,
     }),
   ];
 

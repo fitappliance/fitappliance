@@ -136,7 +136,7 @@ test('committed classification policy is valid and covers every operational clas
     'utf8',
   )));
   assert.equal(policy.policyVersion, 'historical-model-evidence-classification-v2');
-  assert.equal(policy.expectedReferenceCount, 8089);
+  assert.equal(policy.expectedReferenceCount, 8087);
   assert.deepEqual(Object.keys(policy.actions).sort(), [...CLASSIFICATION_ENUMS.operationalClasses].sort());
 });
 
@@ -295,6 +295,12 @@ test('full classification accounts for every model once and renders reconciled c
   const snapshot = buildHistoricalModelEvidenceClassification({
     generatedAt: '2026-07-14T00:00:00.000Z',
     policy,
+    sourceBindings: {
+      releaseCandidateId: 'retail_lifecycle_release_1234567890abcdef12345678',
+      publicProjectionSha256: HASH_A,
+      historicalReferenceSha256: HASH_B,
+      authorizationManifestSha256: 'c'.repeat(64),
+    },
     historicalRecords: [
       reference(),
       reference({
@@ -313,6 +319,30 @@ test('full classification accounts for every model once and renders reconciled c
   assert.equal(snapshot.records.length, 2);
   assert.deepEqual(snapshot.summary.byOperationalClass, { COMPLETE_RECEIPT: 1, OFFICIAL_DISCOVERY: 1 });
   assert.equal(snapshot.records.find((entry) => entry.referenceId === 'fa_ref_one').groups[0].groupName, 'Series A');
+  assert.equal(snapshot.sourceBindings.publicProjectionSha256, HASH_A);
+  const rebound = buildHistoricalModelEvidenceClassification({
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    policy,
+    sourceBindings: {
+      ...snapshot.sourceBindings,
+      publicProjectionSha256: 'd'.repeat(64),
+    },
+    historicalRecords: [
+      reference(),
+      reference({
+        referenceId: 'fa_ref_two', category: 'dishwasher', brand: 'Other', model: 'DW1',
+        lifecycleState: 'REGISTRY_ONLY', evidenceState: 'INTERNAL_CONFLICT',
+      }),
+    ],
+    linksByReference: {
+      fa_ref_one: [link({ receiptState: 'CURRENT_VALID' })],
+      fa_ref_two: [],
+    },
+    groupsByReference: {
+      fa_ref_one: [{ groupType: 'marketing_series', groupName: 'Series A', grammarProfileIds: ['grammar_one'] }],
+    },
+  });
+  assert.notEqual(rebound.semanticClassificationSha256, snapshot.semanticClassificationSha256);
   const markdown = renderHistoricalModelEvidenceClassificationMarkdown(snapshot);
   assert.match(markdown, /Historical Model Evidence Classification|2 \/ 2|Series A/i);
   assert.equal(markdown.endsWith('\n\n'), false);

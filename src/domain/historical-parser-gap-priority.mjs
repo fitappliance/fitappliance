@@ -210,6 +210,7 @@ function validateInputs(input) {
   }
   const graphSemantic = {
     schemaVersion: graph.schemaVersion,
+    ...(graph.sourceBindings ? { sourceBindings: graph.sourceBindings } : {}),
     policy: graph.policy,
     summary: graph.summary,
     sourceVersions: graph.sourceVersions,

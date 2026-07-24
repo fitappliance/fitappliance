@@ -6,7 +6,9 @@ import { join } from 'node:path';
 import test from 'node:test';
 
 import {
+  loadActiveRetailReleaseAudits,
   loadActiveRetailRelease,
+  validateActiveRetailReleaseAudits,
   validateActiveRetailReleaseDescriptor,
 } from '../../src/domain/active-retail-release.mjs';
 
@@ -25,6 +27,37 @@ test('active retail release is bound to the approved candidate and historical re
   assert.equal(
     release.descriptor.artifacts.historicalReference.sha256,
     release.manifest.sourceBindings.historicalReferenceCandidateSha256,
+  );
+});
+
+test('active release audits are loaded from and reconciled to the selected release', async () => {
+  const release = await loadActiveRetailRelease();
+  const audits = await loadActiveRetailReleaseAudits({ activeRelease: release });
+
+  assert.equal(audits.replacementAudit.summary.referenceRecords, 8087);
+  assert.equal(audits.replacementAudit.summary.currentCatalogProducts, 3513);
+  assert.equal(audits.fitPublicationAudit.summary.products, 3513);
+  assert.equal(audits.sourceBindings.releaseCandidateId, release.descriptor.releaseCandidateId);
+});
+
+test('active release audit validation rejects stale top-level denominators', async () => {
+  const activeRelease = await loadActiveRetailRelease();
+  const replacementAudit = JSON.parse(readFileSync(
+    'data/architecture-v2/reviews/automated/historical-replacement-audit.json',
+    'utf8',
+  ));
+  const fitPublicationAudit = JSON.parse(readFileSync(
+    'data/architecture-v2/reviews/automated/fit-publication-audit.json',
+    'utf8',
+  ));
+
+  assert.throws(
+    () => validateActiveRetailReleaseAudits({
+      activeRelease,
+      replacementAudit,
+      fitPublicationAudit,
+    }),
+    /active release replacement reference count mismatch/i,
   );
 });
 
