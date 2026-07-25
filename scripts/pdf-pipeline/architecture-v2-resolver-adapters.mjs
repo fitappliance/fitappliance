@@ -76,6 +76,7 @@ function hasLowerAuthorityDimensionConflict(caseRecord) {
 
 function normalizeDocumentType(value) {
   const text = String(value ?? '').toLowerCase().replace(/[\s-]+/g, '_');
+  if (/product_page|product_detail/.test(text)) return 'product_page';
   if (/structured_product_data|product_api|pim_data/.test(text)) return 'structured_product_data';
   if (/(?:^|_)parts?(?:_|$)|(?:^|_)spare(?:_|$)/.test(text)) return 'parts_manual';
   if (/family/.test(text)) return 'family_manual';
@@ -653,6 +654,14 @@ const ESATTO_OFFICIAL_SOURCE_LANES = Object.freeze([
   Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
 ]);
 
+const MIELE_OFFICIAL_SOURCE_LANES = Object.freeze([
+  Object.freeze({ laneId: 'current_product', required: true, supported: true }),
+  Object.freeze({ laneId: 'discontinued_archive', required: false, supported: false }),
+  Object.freeze({ laneId: 'support_search_api', required: false, supported: false }),
+  Object.freeze({ laneId: 'official_document_cdn', required: true, supported: true }),
+  Object.freeze({ laneId: 'official_product_detail', required: true, supported: true }),
+]);
+
 const LEGACY_RESOLVER_PROFILES = new Map([
   ['asko', { optionKey: 'asko', brandKey: 'asko', resolverId: 'asko-official-manuals-api', finder: findAskoOfficialPdf }],
   ['haier', {
@@ -673,7 +682,15 @@ const LEGACY_RESOLVER_PROFILES = new Map([
     finder: findBekoOfficialPdf,
   }],
   ['hisense', { optionKey: 'hisense', brandKey: 'hisense', resolverId: 'hisense-official-discovery', finder: findHisenseOfficialPdf }],
-  ['miele', { optionKey: 'miele', brandKey: 'miele', resolverId: 'miele-official-discovery', finder: findMieleOfficialPdf }],
+  ['miele', {
+    optionKey: 'miele',
+    brandKey: 'miele',
+    resolverId: 'miele-official-discovery',
+    version: '3',
+    scope: 'miele_au_product_material_bound_specification_and_context_lanes',
+    sourceLanes: MIELE_OFFICIAL_SOURCE_LANES,
+    finder: findMieleOfficialPdf,
+  }],
   ['liebherr', { optionKey: 'liebherr', brandKey: 'liebherr', resolverId: 'liebherr-official-discovery', finder: findLiebherrOfficialPdf }],
   ['midea', { optionKey: 'midea', brandKey: 'midea', resolverId: 'midea-official-discovery', finder: findMideaOfficialPdf }],
   ['chiq', { optionKey: 'chiq', brandKey: 'chiq', resolverId: 'chiq-official-discovery', finder: findChiqOfficialPdf }],

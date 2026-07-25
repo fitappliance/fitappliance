@@ -110,6 +110,7 @@ function optionalDiscoveryProvenance(value) {
     'schemaVersion', 'method', 'market', 'sourceMarket', 'discoveryUrl', 'requestedModel', 'matchedModel',
     'artifactUrl', 'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath',
     'discoveryByteSize', 'discoveryRecordType', 'documentId', 'documentTitleKey', 'originalFileName',
+    'materialNumber',
   ]);
   rejectUnknownKeys(value, keys, 'candidate discovery provenance');
   if (value.schemaVersion !== 1) throw new TypeError('candidate discovery provenance schema invalid');
@@ -127,7 +128,7 @@ function optionalDiscoveryProvenance(value) {
     ...(value.documentId ? { documentId: requiredText(value.documentId, 'candidate discovery document ID') } : {}),
     ...(value.originalFileName ? { originalFileName: requiredText(value.originalFileName, 'candidate discovery filename') } : {}),
   };
-  if (result.method === 'official_product_page') {
+  if (['official_product_page', 'official_product_material'].includes(result.method)) {
     const hash = requiredText(value.discoveryContentSha256, 'candidate discovery content SHA-256');
     if (!/^[a-f0-9]{64}$/.test(hash)) throw new TypeError('candidate discovery content SHA-256 invalid');
     const objectPath = requiredText(value.discoveryObjectPath, 'candidate discovery object path');
@@ -137,12 +138,31 @@ function optionalDiscoveryProvenance(value) {
       throw new TypeError('candidate discovery byte size invalid');
     }
     Object.assign(result, {
-      artifactLinkUrl: canonicalHttpsUrl(value.artifactLinkUrl, 'candidate discovery artifact link URL'),
       discoveryContentSha256: hash,
       discoveryObjectPath: objectPath,
       discoveryByteSize: value.discoveryByteSize,
     });
-    if (value.discoveryRecordType != null || value.documentTitleKey != null) {
+    if (result.method === 'official_product_page') {
+      result.artifactLinkUrl = canonicalHttpsUrl(
+        value.artifactLinkUrl,
+        'candidate discovery artifact link URL',
+      );
+    } else {
+      if (value.artifactLinkUrl != null || value.discoveryRecordType != null
+        || value.documentTitleKey != null || value.documentId != null
+        || value.originalFileName != null) {
+        throw new TypeError('candidate product-material provenance contains unsupported document fields');
+      }
+      result.materialNumber = requiredText(
+        value.materialNumber,
+        'candidate discovery material number',
+      );
+      if (!/^\d{6,14}$/.test(result.materialNumber)) {
+        throw new TypeError('candidate discovery material number invalid');
+      }
+    }
+    if (result.method === 'official_product_page'
+      && (value.discoveryRecordType != null || value.documentTitleKey != null)) {
       if (value.discoveryRecordType !== 'serialized_technical_document_manifest') {
         throw new TypeError('candidate product-page discovery record type invalid');
       }
@@ -183,7 +203,7 @@ function optionalDiscoveryProvenance(value) {
       });
     }
   }
-  if (!['official_product_page', 'official_support_api'].includes(result.method)
+  if (!['official_product_page', 'official_product_material', 'official_support_api'].includes(result.method)
     && (value.discoveryRecordType != null || value.documentTitleKey != null)) {
     throw new TypeError('candidate serialized manifest record requires product-page discovery');
   }

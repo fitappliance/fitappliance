@@ -30,6 +30,10 @@ import {
 } from './mineru-document.mjs';
 import { verifyOfficialProductPageDiscoveryEvidence } from './official-product-page-discovery-evidence.mjs';
 import {
+  officialProductMaterialBoundVariant,
+  verifyOfficialProductMaterialDiscoveryEvidence,
+} from './official-product-material-discovery-evidence.mjs';
+import {
   officialMarketApiBoundExactCoverModel,
   officialMarketApiBoundFamilyModel,
   officialMarketApiBoundSeriesModel,
@@ -398,12 +402,21 @@ function pdfIdentitySignals(
     discoveryArtifactBytes,
     bytes,
   );
-  const boundVariantModel = officialMarketApiBoundVariantModel(
+  const marketVariantModel = officialMarketApiBoundVariantModel(
     source?.discoveryProvenance,
     caseIdentity,
     discoveryArtifactBytes,
     bytes,
   );
+  const productMaterialVariant = officialProductMaterialBoundVariant(
+    source?.discoveryProvenance,
+    caseIdentity,
+    discoveryArtifactBytes,
+  );
+  if (marketVariantModel && productMaterialVariant) {
+    throw new Error('multiple official model variant bindings are not allowed');
+  }
+  const boundVariantModel = marketVariantModel ?? productMaterialVariant?.sourceModel ?? null;
   const boundSupportFamilyModel = officialSupportApiBoundFamilyModel(
     source?.discoveryProvenance,
     caseIdentity,
@@ -426,8 +439,12 @@ function pdfIdentitySignals(
     sourceUrls: [source.sourceUrl, source.finalUrl].filter(Boolean),
     ...(selectedBoundFamilyModel ? { boundFamilyModel: selectedBoundFamilyModel } : {}),
     ...(boundSeriesModel ? { boundSeriesModel } : {}),
-    ...((boundVariantModel || boundExactCoverModel) ? {
-      boundExactCoverModel: boundVariantModel || boundExactCoverModel,
+    ...((marketVariantModel || boundExactCoverModel) ? {
+      boundExactCoverModel: marketVariantModel || boundExactCoverModel,
+    } : {}),
+    ...(productMaterialVariant ? {
+      boundProductMaterialNumber: productMaterialVariant.materialNumber,
+      boundProductFinishLabel: productMaterialVariant.finishLabel,
     } : {}),
     ...(boundSupportFamilyModel ? { boundSupportFamilyModel } : {}),
     ...(derived.fallbackTrigger ? {
@@ -435,7 +452,7 @@ function pdfIdentitySignals(
       identityContextContentSha256: derived.fallbackTrigger.contentSha256,
     } : {}),
   });
-  if (boundSeriesModel || boundExactCoverModel || boundVariantModel) {
+  if (boundSeriesModel || boundExactCoverModel || marketVariantModel) {
     const payload = JSON.parse(Buffer.from(discoveryArtifactBytes).toString('utf8'));
     const pim = officialMarketApiDimensions(
       payload,
@@ -467,7 +484,11 @@ function pdfIdentitySignals(
     ...fallbackIdentitySignals,
   ].map((signal) => [`${signal.type}\0${signal.value}`, signal])).values()];
   if (boundVariantModel) {
-    signals = signals.filter((signal) => signal.type === 'mineru_bound_exact_cover_model');
+    signals = signals.filter((signal) => (
+      marketVariantModel
+        ? signal.type === 'mineru_bound_exact_cover_model'
+        : signal.type === 'mineru_miele_product_material_model'
+    ));
     signals.push({ type: 'canonical_source_model', value: boundVariantModel });
   }
   const exactModelUrl = [...new Set([source.sourceUrl, source.finalUrl])]
@@ -516,6 +537,20 @@ function officialProductPageIdentitySignal(
     type: 'official_product_page_model',
     value: `${caseIdentity.model}:${provenance.discoveryContentSha256}:${provenance.discoveryUrl}`,
   };
+}
+
+function officialProductMaterialIdentitySignals(source, caseIdentity, discoveryArtifactBytes) {
+  const provenance = source?.discoveryProvenance;
+  if (provenance?.method !== 'official_product_material') return [];
+  const binding = verifyOfficialProductMaterialDiscoveryEvidence(
+    provenance,
+    caseIdentity,
+    discoveryArtifactBytes,
+  );
+  return [{
+    type: 'official_product_material_model',
+    value: `${caseIdentity.model}:${binding.sourceModel}:${binding.materialNumber}:${provenance.discoveryContentSha256}:${binding.discoveryUrl}`,
+  }];
 }
 
 function officialMarketApiIdentitySignals(source, caseIdentity, discoveryArtifactBytes) {
@@ -779,6 +814,7 @@ export function verifyAndAttestResolutionArtifact({
   claimSemanticsVersion = 1, discoveryPolicyVersion = undefined,
   manufacturerPolicyVersion = undefined,
   includeOfficialProductPageIdentitySignal = true,
+  includeOfficialProductMaterialIdentitySignal = true,
   includeOfficialMarketApiIdentitySignal = true,
   includeOfficialSupportApiIdentitySignal = true,
 }) {
@@ -807,6 +843,15 @@ export function verifyAndAttestResolutionArtifact({
       identityProof = {
         ...identityProof,
         signals: [...identityProof.signals, discoverySignal],
+      };
+    }
+    const productMaterialSignals = includeOfficialProductMaterialIdentitySignal
+      ? officialProductMaterialIdentitySignals(source, caseIdentity, discoveryArtifactBytes)
+      : [];
+    if (productMaterialSignals.length) {
+      identityProof = {
+        ...identityProof,
+        signals: [...identityProof.signals, ...productMaterialSignals],
       };
     }
     const marketApiSignals = includeOfficialMarketApiIdentitySignal
@@ -888,6 +933,8 @@ export function verifyAttestedResolutionArtifact({
         'official_product_page_model',
         'official_product_page_artifact_relationship',
       ].includes(signal?.type)),
+    includeOfficialProductMaterialIdentitySignal: (source.identitySignals ?? [])
+      .some((signal) => signal?.type === 'official_product_material_model'),
     includeOfficialMarketApiIdentitySignal: (source.identitySignals ?? [])
       .some((signal) => signal?.type === 'official_market_api_model'),
     includeOfficialSupportApiIdentitySignal: (source.identitySignals ?? [])

@@ -5,13 +5,24 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 
 const {
+  buildMieleSearchQueries,
   extractMieleDownloadLinks,
+  extractMieleProductRecords,
   extractMieleProductUrls,
   findMieleOfficialPdf,
   findMielePdf,
   findMieleManualEvidencePdf,
   mieleEvidenceModelMatchesTarget
 } = require('../../scripts/pdf-pipeline/miele-official.js');
+
+test('Miele search queries restore the official spaced model form from compact catalogue IDs', () => {
+  assert.deepEqual(buildMieleSearchQueries({ sku: 'G7130SCCLST' }), [
+    'G 7130 SC CLST',
+    'G7130SCCLST',
+    'G 7130 SC',
+    'G7130SC',
+  ]);
+});
 
 test('Miele manual-evidence finder can use conservative family suffix matches', () => {
   const manualEvidence = {
@@ -110,6 +121,125 @@ test('Miele official finder extracts Product Sheet URLs from Miele shop search a
   assert.ok(seenUrls.some((url) => url.includes('mat=12531620')));
 });
 
+test('Miele official finder binds a finish-suffixed target to one exact product card and persists source lanes', async () => {
+  const exactProductUrl = 'https://shop.miele.com.au/en/kitchen/dishwashers/freestanding-dishwashers/g-7130-sc-front-autodos-zid12531610/';
+  const siblingScuUrl = 'https://shop.miele.com.au/en/kitchen/dishwashers/built-under-dishwashers/g-7130-scu-autodos-zid12531620/';
+  const siblingSciUrl = 'https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7130-sci-autodos-zid12531640/';
+  const productCard = (url, material, title) => `
+    <div class="product-tile" data-tracking-product-sku="${material}">
+      <a class="product-title js-product-click" data-product-sku="${material}" href="${url}">
+        <span>${title}</span>
+      </a>
+    </div>
+  `;
+  const searchHtml = [
+    productCard(exactProductUrl, '12531610', 'G 7130 SC Front AutoDos'),
+    productCard(siblingScuUrl, '12531620', 'G 7130 SCU AutoDos'),
+    productCard(siblingSciUrl, '12531640', 'G 7130 SCi AutoDos'),
+  ].join('');
+  const productHtml = `
+    <html><head><link rel="canonical" href="${exactProductUrl}"></head>
+    <body><h1>G 7130 SC Front AutoDos</h1></body></html>
+  `;
+  const downloadHtml = `
+    <html><body><h1>G 7130 SC Front AutoDos</h1>
+      <table><tr><td>Operating instructions</td><td>pdf</td>
+      <td><a href="https://media.miele.com/manual.pdf">Download</a></td></tr></table>
+    </body></html>
+  `;
+  const objects = new Map();
+
+  assert.deepEqual(extractMieleProductRecords(searchHtml).map((record) => ({
+    materialNumber: record.materialNumber,
+    title: record.title,
+  })), [
+    { materialNumber: '12531610', title: 'G 7130 SC Front AutoDos' },
+    { materialNumber: '12531620', title: 'G 7130 SCU AutoDos' },
+    { materialNumber: '12531640', title: 'G 7130 SCi AutoDos' },
+  ]);
+
+  const found = await findMieleOfficialPdf({
+    brand: 'Miele',
+    sku: 'G7130SCCLST',
+    category: 'dishwasher',
+  }, {
+    writeObject: async (path, bytes) => objects.set(path, Buffer.from(bytes)),
+    fetchImpl: async (url) => {
+      const value = String(url);
+      return {
+        ok: true,
+        text: async () => (
+          value.includes('ViewParametricSearch')
+            ? searchHtml
+            : value.includes('product-details-1995')
+              ? downloadHtml
+              : productHtml
+        ),
+      };
+    },
+  });
+
+  assert.equal(found.materialNumber, '12531610');
+  assert.equal(found.productUrl, exactProductUrl);
+  assert.equal(found.sourceUrl, 'https://www.miele.com.au/media/ex/au/specsheets/12531610.pdf');
+  assert.deepEqual(found.resources.map((resource) => [
+    resource.sourceLaneId,
+    resource.sourceUrl,
+  ]), [
+    ['official_product_detail', exactProductUrl],
+    ['official_document_cdn', 'https://www.miele.com.au/media/ex/au/specsheets/12531610.pdf'],
+  ]);
+  const specification = found.resources.find((resource) => (
+    resource.sourceLaneId === 'official_document_cdn'
+  ));
+  assert.deepEqual(specification.discoveryProvenance, {
+    schemaVersion: 1,
+    method: 'official_product_material',
+    market: 'AU',
+    discoveryUrl: exactProductUrl,
+    requestedModel: 'G7130SCCLST',
+    matchedModel: 'G 7130 SC',
+    artifactUrl: 'https://www.miele.com.au/media/ex/au/specsheets/12531610.pdf',
+    materialNumber: '12531610',
+    discoveryContentSha256: specification.discoveryProvenance.discoveryContentSha256,
+    discoveryObjectPath: specification.discoveryProvenance.discoveryObjectPath,
+    discoveryByteSize: Buffer.byteLength(productHtml),
+  });
+  assert.match(specification.discoveryProvenance.discoveryContentSha256, /^[a-f0-9]{64}$/);
+  assert.equal(found.sourceLanes.find((lane) => lane.laneId === 'current_product').status, 'complete');
+  assert.equal(found.sourceLanes.find((lane) => lane.laneId === 'official_product_detail').status, 'complete');
+  assert.equal(found.sourceLanes.find((lane) => lane.laneId === 'official_document_cdn').status, 'complete');
+  assert.equal(found.sourceLanes.find((lane) => lane.laneId === 'discontinued_archive').status, 'unsupported');
+  assert.ok(objects.size >= 3);
+});
+
+test('Miele official finder fails closed when one model stem maps to multiple materials', async () => {
+  const productCard = (material) => `
+    <div class="product-tile" data-tracking-product-sku="${material}">
+      <a class="product-title" data-product-sku="${material}"
+        href="https://shop.miele.com.au/en/kitchen/dishwashers/g-7130-sc-front-autodos-zid${material}/">
+        <span>G 7130 SC Front AutoDos</span>
+      </a>
+    </div>
+  `;
+  const found = await findMieleOfficialPdf({
+    brand: 'Miele',
+    sku: 'G7130SCCLST',
+    category: 'dishwasher',
+  }, {
+    writeObject: async () => {},
+    fetchImpl: async () => ({
+      ok: true,
+      text: async () => `${productCard('12531610')}${productCard('99999999')}`,
+    }),
+  });
+
+  assert.equal(found.sourceUrl, null);
+  assert.deepEqual(found.resources, []);
+  assert.match(found.reason, /ambiguous/i);
+  assert.equal(found.sourceLanes.find((lane) => lane.laneId === 'current_product').status, 'retryable');
+});
+
 test('Miele PDF finder prefers official Product Sheets over exact manual-evidence URLs without an alias', async () => {
   const productUrl = 'https://shop.miele.com.au/en/kitchen/refrigeration/freezers/fns-7794-e-integrated-freezer-zid11738290/';
   const found = await findMielePdf({
@@ -135,6 +265,6 @@ test('Miele PDF finder prefers official Product Sheets over exact manual-evidenc
   });
 
   assert.equal(found.source, 'miele-official-product-sheet');
-  assert.equal(found.sourceUrl, 'https://media.miele.com/FS_11738290.pdf');
+  assert.equal(found.sourceUrl, 'https://www.miele.com.au/media/ex/au/specsheets/11738290.pdf');
   assert.equal(found.verifiedAlias, 'FNS7794E');
 });

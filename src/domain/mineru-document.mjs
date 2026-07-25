@@ -89,13 +89,24 @@ function requiredModelRevision(value) {
   return revision;
 }
 
-function validateBbox(value, label) {
-  if (!Array.isArray(value) || value.length !== 4
-    || value.some((coordinate) => !Number.isFinite(coordinate) || coordinate < 0 || coordinate > 1000)
-    || value[0] >= value[2] || value[1] >= value[3]) {
+function validateBbox(value, label, options = {}) {
+  if (!Array.isArray(value) || value.length !== 4) {
     throw new TypeError(`${label} bbox invalid`);
   }
-  return value.map(Number);
+  const coordinates = value.map(Number);
+  const roundedImageEdge = options.allowRoundedImageEdge === true;
+  const invalid = coordinates.some((coordinate, index) => (
+    !Number.isFinite(coordinate)
+      || coordinate < 0
+      || coordinate > (roundedImageEdge && index >= 2 ? 1001 : 1000)
+  ));
+  const normalized = coordinates.map((coordinate, index) => (
+    roundedImageEdge && index >= 2 && coordinate === 1001 ? 1000 : coordinate
+  ));
+  if (invalid || normalized[0] >= normalized[2] || normalized[1] >= normalized[3]) {
+    throw new TypeError(`${label} bbox invalid`);
+  }
+  return normalized;
 }
 
 function nestedText(value) {
@@ -227,7 +238,9 @@ function parseDocument(jsonBytes) {
         throw new TypeError(`MinerU item ${pageIndex + 1}:${itemIndex + 1} content invalid`);
       }
       if (isEmptyPageSentinel(item, type)) return null;
-      const bbox = validateBbox(item.bbox, `MinerU item ${pageIndex + 1}:${itemIndex + 1}`);
+      const bbox = validateBbox(item.bbox, `MinerU item ${pageIndex + 1}:${itemIndex + 1}`, {
+        allowRoundedImageEdge: type === 'image',
+      });
       const html = type === 'table' ? String(item.content.html ?? '') : null;
       const captionText = type === 'table'
         ? normalizedText(nestedText(item.content.table_caption ?? []))
@@ -622,6 +635,8 @@ const ESATTO_AU_DISHWASHER_TECHNICAL_D1_D2_GRAMMAR =
   'esatto-au-dishwasher-technical-information-d1-d2-v1';
 const ESATTO_AU_DISHWASHER_PRODUCT_CARD_PHYSICAL_WDH_GRAMMAR =
   'esatto-au-dishwasher-product-card-physical-wdh-v1';
+const MIELE_AU_PRODUCT_MATERIAL_SPECIFICATION_GRAMMAR =
+  'miele-au-product-material-specification-v1';
 export const ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY =
   'esatto_au_dishwasher_product_card_dimensions_v1';
 const LG_AU_DRYER_DIMENSION_DIAGRAM_MODELS = Object.freeze({
@@ -3192,6 +3207,116 @@ function esattoAuDishwasherProductCardScope(document, caseIdentity, sourceUrls) 
   } : null;
 }
 
+function mieleHeadingMatchesSourceModel(value, model) {
+  const parts = normalizedText(model).split(/\s+/).filter(Boolean);
+  if (!parts.length) return false;
+  const expression = parts.map(escapeRegExp).join('\\s+');
+  return new RegExp(`^${expression}(?![A-Z0-9])`, 'i').test(normalizedText(value));
+}
+
+function mieleProductMaterialExactUrl(sourceUrls, materialNumber) {
+  if (!Array.isArray(sourceUrls)) return null;
+  const expectedPath = `/media/ex/au/specsheets/${materialNumber}.pdf`;
+  const matches = sourceUrls.filter((value) => {
+    try {
+      const url = new URL(value);
+      return url.protocol === 'https:' && !url.username && !url.password
+        && url.hostname.toLowerCase() === 'www.miele.com.au'
+        && url.pathname === expectedPath && !url.search && !url.hash;
+    } catch {
+      return false;
+    }
+  });
+  return [...new Set(matches)].length === 1 ? matches[0] : null;
+}
+
+function mieleAuProductMaterialDimensionScope(
+  document,
+  caseIdentity,
+  materialNumber,
+  finishLabel,
+  sourceUrls,
+) {
+  if (canonicalModel(caseIdentity?.brand) !== 'MIELE'
+    || normalizedText(caseIdentity?.category) !== 'dishwasher'
+    || !/^\d{6,14}$/.test(materialNumber)
+    || !finishLabel
+    || !mieleProductMaterialExactUrl(sourceUrls, materialNumber)) return null;
+  const model = normalizedText(caseIdentity?.model);
+  const headingsByPage = document.pages.map((items) => items.filter((fragment) => (
+    ['list', 'title', 'page_header', 'paragraph'].includes(fragment.type)
+      && (
+        mieleHeadingMatchesSourceModel(fragment.text, model)
+        || fragment.listEntries.some((entry) => mieleHeadingMatchesSourceModel(entry, model))
+      )
+  )));
+  if (headingsByPage[0]?.length !== 1) return null;
+
+  const materialMatches = document.pages.flatMap((items, pageIndex) => (
+    items.flatMap((fragment) => [...fragment.text.matchAll(
+      /\bMaterial\s+number\s*:\s*(\d{6,14})\b/gi,
+    )].map((match) => ({ page: pageIndex + 1, value: match[1], fragment })))
+  ));
+  if (!materialMatches.length
+    || new Set(materialMatches.map((match) => match.value)).size !== 1
+    || materialMatches[0].value !== materialNumber) return null;
+
+  const finishRows = document.pages.flatMap((items) => items.flatMap((fragment) => (
+    fragment.type === 'table'
+      ? fragment.rows.filter((row) => /^Control panel colour$/i.test(row.label))
+        .map((row) => ({ row, fragment }))
+      : []
+  )));
+  if (finishRows.length !== 1) return null;
+  const finishExpression = new RegExp(
+    `(?:^|[^A-Z0-9])${escapeRegExp(finishLabel)}(?:[^A-Z0-9]|$)`,
+    'i',
+  );
+  if (!finishExpression.test(finishRows[0].row.value)) return null;
+
+  const axisLabels = new Map([
+    ['Appliance width in mm', 'width'],
+    ['Appliance height in mm', 'height'],
+    ['Appliance depth in mm', 'depth'],
+  ]);
+  const dimensions = [];
+  document.pages.forEach((items, pageIndex) => {
+    items.forEach((fragment) => {
+      if (fragment.type !== 'table') return;
+      const rows = fragment.rows.filter((row) => axisLabels.has(row.label));
+      if (rows.length !== 3 || new Set(rows.map((row) => row.label)).size !== 3) return;
+      const values = rows.map((row) => /^(\d+)$/i.exec(row.value));
+      if (values.some((match) => !match || Number(match[1]) <= 0)) return;
+      dimensions.push({
+        page: pageIndex + 1,
+        fragment,
+        rows: rows.map((row, index) => {
+          const axis = axisLabels.get(row.label);
+          return {
+            label: row.label,
+            value: `${values[index][1]} mm`,
+            quote: `${row.label} ${row.value}`,
+            semanticBasis: 'miele_product_material_explicit_appliance_dimension',
+            axisOrder: [axis],
+            grammarProfileId: MIELE_AU_PRODUCT_MATERIAL_SPECIFICATION_GRAMMAR,
+          };
+        }),
+      });
+    });
+  });
+  if (dimensions.length !== 1) return null;
+  const dimension = dimensions[0];
+  if (headingsByPage[dimension.page - 1]?.length !== 1
+    || !materialMatches.some((match) => match.page === dimension.page)) return null;
+  return {
+    ...dimension,
+    materialNumber,
+    finishLabel,
+    model,
+    grammarProfileId: MIELE_AU_PRODUCT_MATERIAL_SPECIFICATION_GRAMMAR,
+  };
+}
+
 function lgAuDryerDimensionDiagramScope(document, caseIdentity, pdfSha256) {
   if (canonicalModel(caseIdentity?.brand) !== 'LG'
     || normalizedText(caseIdentity?.category) !== 'dryer') return null;
@@ -3255,6 +3380,17 @@ function lgAuDryerDimensionDiagramScope(document, caseIdentity, pdfSha256) {
 }
 
 export const mineruGrammarProfiles = Object.freeze({
+  [MIELE_AU_PRODUCT_MATERIAL_SPECIFICATION_GRAMMAR]: Object.freeze({
+    parserProfileId: MIELE_AU_PRODUCT_MATERIAL_SPECIFICATION_GRAMMAR,
+    grammarFamilyId: 'miele_au_product_material_specification_v1',
+    grammarFamilyName: 'Miele Australia material-bound product specification',
+    variantName: 'Official product material with explicit appliance W/H/D rows',
+    brand: 'Miele',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'A Miele Australia product-page material number and approved finish alias bind one exact official specification URL, repeated exact source-model headings, one material number, one control-panel finish row and one Technical data table with unique Appliance width, height and depth rows.',
+    semanticBoundary: 'Only the closed appliance width, height and depth are projected. Niche dimensions, door-open depth, sibling installation types, unapproved finishes and all installation, service, plumbing and electrical fields are excluded.',
+  }),
   [HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR]: Object.freeze({
     parserProfileId: HAIER_AU_HBM_TECHNICAL_DATA_FAMILY_GRAMMAR,
     grammarFamilyId: 'haier_au_hbm_technical_data_family_v1',
@@ -4103,9 +4239,18 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const boundSeriesModel = normalizedText(options.boundSeriesModel);
   const boundExactCoverModel = normalizedText(options.boundExactCoverModel);
   const boundSupportFamilyModel = normalizedText(options.boundSupportFamilyModel);
-  if ([boundFamilyModel, boundSeriesModel, boundExactCoverModel, boundSupportFamilyModel]
+  const boundProductMaterialNumber = normalizedText(options.boundProductMaterialNumber);
+  const boundProductFinishLabel = normalizedText(options.boundProductFinishLabel);
+  if (Boolean(boundProductMaterialNumber) !== Boolean(boundProductFinishLabel)) {
+    throw new TypeError('bound product material number and finish label must be supplied together');
+  }
+  if (boundProductMaterialNumber && !/^\d{6,14}$/.test(boundProductMaterialNumber)) {
+    throw new TypeError('bound product material number invalid');
+  }
+  if ([boundFamilyModel, boundSeriesModel, boundExactCoverModel, boundSupportFamilyModel,
+    boundProductMaterialNumber]
     .filter(Boolean).length > 1) {
-    throw new TypeError('only one bound family, series, exact cover, or support family model may be supplied');
+    throw new TypeError('only one bound family, series, exact cover, support family, or product material may be supplied');
   }
   let boundFamilySignals = [];
   if (boundFamilyModel) {
@@ -4252,6 +4397,18 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const esattoDishwasherProductCardScope = claimSemanticsVersion === 2
     ? esattoAuDishwasherProductCardScope(document, caseIdentity, options.sourceUrls)
     : null;
+  const mieleProductMaterialScope = claimSemanticsVersion === 2 && boundProductMaterialNumber
+    ? mieleAuProductMaterialDimensionScope(
+      document,
+      caseIdentity,
+      boundProductMaterialNumber,
+      boundProductFinishLabel,
+      options.sourceUrls,
+    )
+    : null;
+  if (boundProductMaterialNumber && !mieleProductMaterialScope) {
+    throw new Error('bound Miele product material, finish, model, or dimension scope not proven');
+  }
   const boschDimensionSectionScope = claimSemanticsVersion === 2
     ? boschDishwasherDimensionSectionDocumentScope(document, caseIdentity, options.sourceUrls)
     : null;
@@ -4283,6 +4440,10 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const esattoDishwasherProductCardSignals = esattoDishwasherProductCardScope ? [{
     type: 'mineru_esatto_edw_product_card_exact_model',
     value: `${model}:header:${esattoDishwasherProductCardScope.header.fragmentSha256}:page:${esattoDishwasherProductCardScope.page}:physical:${esattoDishwasherProductCardScope.fragment.fragmentSha256}:url:${esattoDishwasherProductCardScope.exactDocumentUrl}`,
+  }] : [];
+  const mieleProductMaterialSignals = mieleProductMaterialScope ? [{
+    type: 'mineru_miele_product_material_model',
+    value: `${model}:material:${mieleProductMaterialScope.materialNumber}:finish:${mieleProductMaterialScope.finishLabel}:page:${mieleProductMaterialScope.page}:${mieleProductMaterialScope.fragment.fragmentSha256}`,
   }] : [];
   const lgDryerDimensionDiagramSignals = lgDryerDimensionDiagramScope ? [{
     type: 'mineru_lg_audited_dryer_dimension_diagram',
@@ -4351,6 +4512,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     && !electroluxWasherDimensionScope
     && !esattoDishwasherDimensionScope
     && !esattoDishwasherProductCardScope
+    && !mieleProductMaterialScope
     && !boschDimensionSectionScope
     && !fisherPaykelDw60Scope
     && !samsungWasherWildcardScope
@@ -4389,6 +4551,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...electroluxWasherDimensionSignals,
     ...esattoDishwasherDimensionSignals,
     ...esattoDishwasherProductCardSignals,
+    ...mieleProductMaterialSignals,
     ...boschDimensionSectionSignals,
     ...fisherPaykelDw60Signals,
     ...samsungWasherWildcardSignals,
@@ -4477,6 +4640,29 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         fields,
         category,
       );
+      for (const claim of claims) candidates.get(claim.field)?.push(claim);
+    }
+  }
+  if (mieleProductMaterialScope) {
+    appliedGrammarProfiles.add(mieleProductMaterialScope.grammarProfileId);
+    for (const row of mieleProductMaterialScope.rows) {
+      const claims = [
+        ...dimensionClaims(
+          row,
+          mieleProductMaterialScope.fragment,
+          mieleProductMaterialScope.page,
+          fields,
+          category,
+        ),
+        ...directClaims(
+          row,
+          mieleProductMaterialScope.fragment,
+          mieleProductMaterialScope.page,
+          fields,
+          category,
+          claimSemanticsVersion,
+        ),
+      ];
       for (const claim of claims) candidates.get(claim.field)?.push(claim);
     }
   }

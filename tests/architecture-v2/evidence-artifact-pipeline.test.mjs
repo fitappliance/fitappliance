@@ -612,3 +612,229 @@ test('official ASKO AU product JSON attests only receipt-bound closed-envelope d
     requestedFields: ['closedEnvelope.widthMm', 'installation.rearMm'],
   }), /dimensions only/i);
 });
+
+function mieleMaterialVariantFixture({
+  pageModel = 'G 7130 SC',
+  pdfModel = 'G 7130 SC',
+  materialNumber = '12531610',
+  pageFinish = 'CleanSteel',
+  pdfFinish = 'CleanSteel front',
+} = {}) {
+  const productUrl = `https://shop.miele.com.au/en/kitchen/dishwashers/freestanding-dishwashers/g-7130-sc-front-autodos-zid${materialNumber}/`;
+  const artifactUrl = `https://www.miele.com.au/media/ex/au/specsheets/${materialNumber}.pdf`;
+  const discoveryBytes = Buffer.from(`<!doctype html><html><head>
+    <title>${pageModel} Front AutoDos | Miele Australia</title>
+    <link rel="canonical" href="${productUrl}">
+  </head><body>
+    <h1>${pageModel} Front AutoDos</h1>
+    <div data-product-sku="${materialNumber}">${pageFinish}</div>
+  </body></html>`);
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryObjectPath = `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.html`;
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [
+      {
+        type: 'list',
+        content: {
+          list_type: 'text_list',
+          list_items: [{
+            item_type: 'text',
+            item_content: [{ type: 'text', content: `${pdfModel} Front AutoDos` }],
+          }],
+        },
+        bbox: [112, 153, 699, 204],
+      },
+      {
+        type: 'paragraph',
+        content: {
+          paragraph_content: [{
+            type: 'text',
+            content: `EAN: 4002516785118 / Material number: ${materialNumber}`,
+          }],
+        },
+        bbox: [391, 208, 700, 222],
+      },
+      {
+        type: 'table',
+        content: {
+          table_caption: [],
+          table_footnote: [],
+          html: `<table><tr><td>Control panel colour</td><td>${pdfFinish}</td></tr></table>`,
+        },
+        bbox: [391, 229, 931, 908],
+      },
+    ],
+    [
+      {
+        type: 'list',
+        content: {
+          list_type: 'text_list',
+          list_items: [{
+            item_type: 'text',
+            item_content: [{ type: 'text', content: `${pdfModel} Front AutoDos` }],
+          }],
+        },
+        bbox: [112, 153, 699, 203],
+      },
+      {
+        type: 'paragraph',
+        content: {
+          paragraph_content: [{
+            type: 'text',
+            content: `EAN: 4002516785118 / Material number: ${materialNumber}`,
+          }],
+        },
+        bbox: [391, 208, 700, 222],
+      },
+      {
+        type: 'table',
+        content: {
+          table_caption: [],
+          table_footnote: [],
+          html: `<table>
+            <tr><td>Technical data</td><td></td></tr>
+            <tr><td>Appliance width in mm</td><td>598</td></tr>
+            <tr><td>Appliance height in mm</td><td>845</td></tr>
+            <tr><td>Appliance depth in mm</td><td>600</td></tr>
+            <tr><td>Depth with door open in cm</td><td>119.5</td></tr>
+          </table>`,
+        },
+        bbox: [391, 229, 931, 768],
+      },
+    ],
+  ]));
+  const pdfBytes = Buffer.from('%PDF-1.7\nMiele material-bound product sheet');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  return {
+    targetModel: 'G7130SCCLST',
+    sourceModel: pageModel,
+    materialNumber,
+    productUrl,
+    artifactUrl,
+    discoveryBytes,
+    discoveryObjectPath,
+    jsonBytes,
+    artifact: {
+      authorityMode: 'official',
+      authorityBrand: 'Miele',
+      requestedUrl: artifactUrl,
+      finalUrl: artifactUrl,
+      redirectChain: [],
+      contentType: 'application/pdf',
+      contentSha256: pdfHash,
+      objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+      byteSize: pdfBytes.length,
+      bytes: pdfBytes,
+      derivedArtifactBytes: jsonBytes,
+      derivedArtifact: buildMineruDerivedArtifact(jsonBytes, {
+        pdfSha256: pdfHash,
+        parserVersion: '3.4.4',
+        modelRevision: MODEL_REVISION,
+      }),
+    },
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_product_material',
+      market: 'AU',
+      discoveryUrl: productUrl,
+      requestedModel: 'G7130SCCLST',
+      matchedModel: pageModel,
+      artifactUrl,
+      materialNumber,
+      discoveryContentSha256: discoveryHash,
+      discoveryObjectPath,
+      discoveryByteSize: discoveryBytes.length,
+    },
+  };
+}
+
+test('Miele material-bound official product sheet attests only closed W/H/D as a finish alias', async () => {
+  const fixtureValue = mieleMaterialVariantFixture();
+  const caseValue = {
+    id: `case-${fixtureValue.targetModel}`,
+    brand: 'Miele',
+    model: fixtureValue.targetModel,
+    category: 'dishwasher',
+    sources: [],
+  };
+  const options = {
+    now: '2026-07-25T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    requireRequestedFieldCoverage: true,
+    claimSemanticsVersion: 2,
+    discoveryProvenance: fixtureValue.discoveryProvenance,
+    readObject: async (path) => {
+      assert.equal(path, fixtureValue.discoveryObjectPath);
+      return fixtureValue.discoveryBytes;
+    },
+  };
+
+  const result = await attestEvidenceArtifactForCase(caseValue, fixtureValue.artifact, options);
+  assert.equal(result.source.sourceType, 'official_model_variant_pdf');
+  assert.deepEqual(result.source.identity, {
+    brand: 'Miele',
+    model: fixtureValue.targetModel,
+    category: 'dishwasher',
+    outcome: 'official_marketing_alias',
+    sourceModel: fixtureValue.sourceModel,
+  });
+  assert.deepEqual(result.source.claims.map((claim) => [claim.field, claim.value.mm]), [
+    ['closedEnvelope.widthMm', 598],
+    ['closedEnvelope.heightMm', 845],
+    ['closedEnvelope.depthMm', 600],
+  ]);
+  assert.ok(result.source.identitySignals.some((signal) => (
+    signal.type === 'official_product_material_model'
+  )));
+
+  await assert.rejects(() => attestEvidenceArtifactForCase(caseValue, fixtureValue.artifact, {
+    ...options,
+    requestedFields: ['closedEnvelope.widthMm', 'installation.rearMm'],
+  }), /dimensions only/i);
+});
+
+test('Miele material-bound PDF rejects sibling, material, finish, and discovery mutations', async () => {
+  for (const [label, fixtureValue] of [
+    ['sibling model', mieleMaterialVariantFixture({ pdfModel: 'G 7130 SCU' })],
+    ['PDF finish', mieleMaterialVariantFixture({ pdfFinish: 'Brilliant White' })],
+    ['product finish', mieleMaterialVariantFixture({ pageFinish: 'Brilliant White' })],
+  ]) {
+    await assert.rejects(() => attestEvidenceArtifactForCase({
+      id: `case-${fixtureValue.targetModel}`,
+      brand: 'Miele',
+      model: fixtureValue.targetModel,
+      category: 'dishwasher',
+      sources: [],
+    }, fixtureValue.artifact, {
+      now: '2026-07-25T00:00:00.000Z',
+      requestedFields: [
+        'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+      ],
+      requireRequestedFieldCoverage: true,
+      claimSemanticsVersion: 2,
+      discoveryProvenance: fixtureValue.discoveryProvenance,
+      readObject: async () => fixtureValue.discoveryBytes,
+    }), /identity|material|finish|model|binding|discovery/i, label);
+  }
+
+  const mismatch = mieleMaterialVariantFixture();
+  mismatch.discoveryProvenance.materialNumber = '12531620';
+  await assert.rejects(() => attestEvidenceArtifactForCase({
+    id: `case-${mismatch.targetModel}`,
+    brand: 'Miele',
+    model: mismatch.targetModel,
+    category: 'dishwasher',
+    sources: [],
+  }, mismatch.artifact, {
+    now: '2026-07-25T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    requireRequestedFieldCoverage: true,
+    claimSemanticsVersion: 2,
+    discoveryProvenance: mismatch.discoveryProvenance,
+    readObject: async () => mismatch.discoveryBytes,
+  }), /material|binding|discovery/i);
+});

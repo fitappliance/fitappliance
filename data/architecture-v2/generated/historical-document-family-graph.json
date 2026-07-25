@@ -32,10 +32,10 @@
       "MODEL_LIST_PROVEN": 13,
       "UNMAPPED": 41
     },
-    "nonIndexedClassificationLinks": 100,
+    "nonIndexedClassificationLinks": 101,
     "nonIndexedClassificationLinksByLane": {
       "HTML": 86,
-      "JSON": 14
+      "JSON": 15
     }
   },
   "sourceVersions": [
@@ -10228,6 +10228,13 @@
       "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000d-front-loading-smartthings-ai-energy-mode-a-10-percent-extra-energy-efficiency-9kg-black-ww90dg6u3albsa/",
       "contentLane": "HTML",
       "documentId": "pdf:6b19a37c6c7e96d37c2dd197f9e4aadf93a97e86316003100308865a8720daf9"
+    },
+    {
+      "referenceId": "fa_ref_5ff3b96f4a175d479c616a4b",
+      "contentSha256": "7f412dee16b6bea7e1aa057d52e37067ba37dd54768a47beffe73d71f1a01297",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531610.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:7f412dee16b6bea7e1aa057d52e37067ba37dd54768a47beffe73d71f1a01297"
     },
     {
       "referenceId": "fa_ref_607fe1d41a3f7e653f3d4540",
@@ -116867,5 +116874,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "6b8d6193d120c1f7b29d39e8c618d2a261de7526a8b5e4e92828bbfa6c8a893d"
+  "semanticGraphSha256": "be1988aa71c37b1faedc7218c6eb23792764a0ee89adbf8e1f65b8a56ab37629"
 }

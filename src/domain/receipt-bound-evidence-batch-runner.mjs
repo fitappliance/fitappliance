@@ -150,7 +150,7 @@ export const BATCH_CANDIDATE_RESOLVER_CONTRACT = Object.freeze({
   required: true,
 });
 
-function batchResolver(jobs) {
+function batchResolver(jobs, targetId) {
   const resolver = {
     ...BATCH_CANDIDATE_RESOLVER_CONTRACT,
     async resolve() {
@@ -163,9 +163,12 @@ function batchResolver(jobs) {
         candidates: jobs.map((job) => ({
           sourceUrl: job.sourceUrl,
           authorityMode: job.authorityMode,
-          sourceRole: job.authorityMode === 'official' ? 'manufacturer_document' : 'reference_document',
+          sourceRole: job.sourceRole
+            ?? (job.authorityMode === 'official' ? 'manufacturer_document' : 'reference_document'),
           discoveryMethod: 'recovery_batch',
-          requiredAttempt: true,
+          requiredAttempt: job.requiredTargetIds
+            ? job.requiredTargetIds.includes(targetId)
+            : true,
           batchJobId: job.jobId,
         })),
       };
@@ -314,7 +317,9 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
     return promise;
   };
 
-  const initialJobs = [...batch.artifactJobs].sort((left, right) => left.jobId.localeCompare(right.jobId));
+  const initialJobs = batch.artifactJobs
+    .filter((job) => job.requiredTargetIds === undefined || job.requiredTargetIds.length > 0)
+    .sort((left, right) => left.jobId.localeCompare(right.jobId));
   await Promise.all(initialJobs.map(ensureArtifact));
 
   async function processTarget(target) {
@@ -404,7 +409,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
       inventory = await collectCandidates(caseRecord, {
         batchCandidateJobIds: target.candidateJobIds,
         activeReceiptSources,
-        resolvers: [batchResolver(linkedJobs), ...extraResolvers],
+        resolvers: [batchResolver(linkedJobs, target.targetId), ...extraResolvers],
         scheduleResolver: (task) => networkSemaphore.run(
           `https://${resolverHost}.resolver.fitappliance.invalid/`,
           task,

@@ -311,6 +311,20 @@ function materializeTarget(target, prior, repair, policySha256) {
   };
 }
 
+function batchJobSourceRole(job) {
+  const roles = job.sourceRoles ?? [];
+  if (roles.length === 1) return roles[0];
+  if (job.expectedContentType === 'text/html'
+    && roles.includes('manufacturer_product_page')) {
+    return 'manufacturer_product_page';
+  }
+  if (job.expectedContentType === 'application/json'
+    && roles.includes('manufacturer_structured_data')) {
+    return 'manufacturer_structured_data';
+  }
+  return job.authorityMode === 'official' ? 'manufacturer_document' : 'reference_document';
+}
+
 export function buildHistoricalEvidenceRecoveryBatch({
   queue,
   policy,
@@ -343,18 +357,29 @@ export function buildHistoricalEvidenceRecoveryBatch({
     : { sourcesFor: () => [] };
 
   const targetIds = new Set(selectedTargets.map((target) => target.targetId));
+  const selectedTargetsById = new Map(selectedTargets.map((target) => [target.targetId, target]));
   const selectedJobIds = new Set(selectedTargets.flatMap((target) => target.candidateJobIds));
   const artifactJobs = queue.jobs
     .filter((job) => selectedJobIds.has(job.jobId))
-    .map((job) => ({
-      jobId: job.jobId,
-      sourceUrl: job.sourceUrl,
-      authorityBrand: job.authorityBrand,
-      authorityMode: job.authorityMode,
-      acquisitionRoute: job.acquisitionRoute,
-      priorityClass: job.priorityClass,
-      targetIds: job.targetIds.filter((targetId) => targetIds.has(targetId)),
-    }));
+    .map((job) => {
+      const linkedTargetIds = job.targetIds.filter((targetId) => targetIds.has(targetId));
+      const requiredTargetIds = linkedTargetIds.filter((targetId) => {
+        const target = selectedTargetsById.get(targetId);
+        const edge = target?.candidateEdges?.find((candidate) => candidate.jobId === job.jobId);
+        return edge ? edge.requiredAttempt === true : true;
+      });
+      return {
+        jobId: job.jobId,
+        sourceUrl: job.sourceUrl,
+        authorityBrand: job.authorityBrand,
+        authorityMode: job.authorityMode,
+        sourceRole: batchJobSourceRole(job),
+        requiredTargetIds,
+        acquisitionRoute: job.acquisitionRoute,
+        priorityClass: job.priorityClass,
+        targetIds: linkedTargetIds,
+      };
+    });
   const policySha256 = canonicalJsonSha256(policy);
   const targets = selectedTargets.map((target) => materializeTarget(target, prior, repair, policySha256));
   const candidateEdgeCount = artifactJobs.reduce((count, job) => count + job.targetIds.length, 0);
@@ -367,7 +392,12 @@ export function buildHistoricalEvidenceRecoveryBatch({
     policySha256,
     selection: normalizedSelection,
     targetIds: targets.map((target) => target.targetId),
-    candidateEdges: artifactJobs.map((job) => [job.jobId, job.targetIds]),
+    candidateEdges: artifactJobs.map((job) => [
+      job.jobId,
+      job.targetIds,
+      job.sourceRole,
+      job.requiredTargetIds,
+    ]),
   });
   const batch = {
     schemaVersion: 1,

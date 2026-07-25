@@ -88,7 +88,7 @@ under that task, repair the plan first, and only then resume implementation.
 | 6 | Per-model runs repeat family-level source failures | COMPLETE | 8 domain tests; 27 gate/runner/epoch tests; Architecture V2 929/929; lint/offline build/diff passed; schema-v2 artifact stable |
 | 7 | Generated batches are operationally too broad | COMPLETE | 12 planner tests; 48 lane tests; Architecture V2 942/942; lint/offline build/determinism/real-manifest validation passed |
 | 8 | Parser repairs are not prioritised by reusable family impact | COMPLETE | 216 focused tests; Architecture V2 968/968; lint/offline build/diff passed; full 803-object repair audit and 408/408 receipt replay passed |
-| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Five immutable P0 checkpoints; typed low-yield stop; 982/982 tests; lint/offline build/408-source replay passed |
+| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Controlled P0 checkpoints plus Miele material-bound follow-up; 403 current receipts; 410/410 source replay; 2,915 full tests and zero publication violations |
 | 10 | Full installation/Fit evidence has no separate scale pipeline | COMPLETE | 27 focused tests; Architecture V2 1002/1002; full repository 2659/2659; offline build, lint and diff check passed; external MinerU replay 21/21; publication violations 0 |
 
 ## Ten-Problem Solution Map
@@ -744,6 +744,21 @@ tested official-candidate resolver, document-family identity rule or parser
 repair must establish a reviewed new control epoch before dimensions expansion
 resumes. Task 10 proceeds independently and cannot reinterpret this
 dimensions-only result as Fit evidence.
+
+**Controlled follow-up (2026-07-25):** Miele resolver v3 established a
+hash-bound Australian product-card, material-number and Product Sheet bridge
+for finish-suffixed catalogue identities. One approved P0 Miele dishwasher
+target produced an exact dimensions receipt for `598 x 845 x 600 mm` (W/H/D);
+the full online run audit replayed 809 objects with zero violations. Cumulative
+coverage is now 403 current valid receipts and 410/410 passing sources. The
+active release remains deliberately unchanged at 332 receipt-bound public
+dimensions and zero receipt-bound `VERIFIED_FIT`. The batch contract now keeps
+product pages as lazy optional fallbacks when a required official document
+succeeds. The runbook records the immutable discovery/acquisition IDs,
+checkpoint ordering and exact identity constraints. Acceptance receipt replay
+now derives its default timestamp from the immutable bundle; consecutive
+410/410 replays are byte-identical and no longer invalidate the downstream
+scale-control/system-contract epoch.
 
 **Acceptance:** Coverage increases monotonically, prior receipts replay, and no
 batch can claim progress from downloads or MinerU output alone.

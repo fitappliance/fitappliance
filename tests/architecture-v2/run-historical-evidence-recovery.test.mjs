@@ -11,6 +11,7 @@ import {
   claimParserImplementationIdentity,
   manufacturerDocumentStrategiesIdentity,
   manufacturerSourcePolicyIdentity,
+  officialResolverOptionsForObjectStore,
   officialArtifactFetchOptions,
   parseHistoricalEvidenceRecoveryRunArgs,
   recoveryCandidateResolversForTarget,
@@ -121,6 +122,16 @@ test('recovery fetch options preserve model, category and discovery provenance e
   assert.equal(options.expectedModel, 'W4104C.W');
   assert.equal(options.expectedCategory, 'washing_machine');
   assert.equal(options.discoveryProvenance, discoveryProvenance);
+});
+
+test('discovery and acquisition share content-addressed finder options for every stateful resolver', () => {
+  const writeObject = async () => {};
+  const options = officialResolverOptionsForObjectStore({ writeObject });
+  for (const brand of [
+    'bosch', 'beko', 'haier', 'asko', 'esatto', 'miele', 'fisherPaykel',
+  ]) {
+    assert.equal(options[brand].finderOptions.writeObject, writeObject, brand);
+  }
 });
 
 test('recovery toolchain identity binds the complete manufacturer document strategy policy', () => {

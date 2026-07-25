@@ -9,6 +9,7 @@ import {
   buildEvidenceProcessorEpochs,
   CLAIM_PARSER_IMPLEMENTATION_PATHS,
   claimParserImplementationIdentity,
+  EVIDENCE_TOOLCHAIN_IMPLEMENTATION_PATHS,
 } from '../../src/domain/evidence-processor-epoch.mjs';
 import {
   buildHistoricalEvidenceFamilyCanaries,
@@ -86,8 +87,8 @@ async function atomicJson(path, value) {
   await rename(temporary, path);
 }
 
-async function claimParserFiles() {
-  return new Map(await Promise.all(CLAIM_PARSER_IMPLEMENTATION_PATHS.map(async (path) => [
+async function implementationFiles() {
+  return new Map(await Promise.all(EVIDENCE_TOOLCHAIN_IMPLEMENTATION_PATHS.map(async (path) => [
     path,
     await readFile(resolve(root, path)),
   ])));
@@ -103,7 +104,7 @@ export async function runCli(args = process.argv.slice(2)) {
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryPolicy')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAttemptLedger')),
     readOptionalJson(output),
-    claimParserFiles(),
+    implementationFiles(),
   ]);
   const generatedAt = option(args, '--generated-at')
     ?? deriveHistoricalEvidenceFamilyCanariesGeneratedAt({
@@ -122,7 +123,9 @@ export async function runCli(args = process.argv.slice(2)) {
     executableQueue,
     policy,
     attemptLedger,
-    parserContractSha256: claimParserImplementationIdentity(files),
+    parserContractSha256: claimParserImplementationIdentity(new Map(
+      CLAIM_PARSER_IMPLEMENTATION_PATHS.map((path) => [path, files.get(path)]),
+    )),
     processorEpochs: buildEvidenceProcessorEpochs(files),
     previousCanaries: previousCanaries?.schemaVersion
       === HISTORICAL_EVIDENCE_FAMILY_CANARY_SCHEMA_VERSION

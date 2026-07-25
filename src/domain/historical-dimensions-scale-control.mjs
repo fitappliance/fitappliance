@@ -286,6 +286,19 @@ function sourceHasExactIdentity(source) {
   return source?.identity?.outcome === 'exact';
 }
 
+const RECEIPT_ELIGIBLE_ALIAS_SOURCE_TYPES = new Set([
+  'official_exact_model_product_page',
+  'official_model_variant_api',
+  'official_model_variant_pdf',
+]);
+
+function sourceHasReceiptEligibleIdentity(source) {
+  if (sourceHasExactIdentity(source)) return true;
+  return source?.identity?.outcome === 'official_marketing_alias'
+    && RECEIPT_ELIGIBLE_ALIAS_SOURCE_TYPES.has(source?.sourceType)
+    && HASH.test(String(source?.verificationReceipt?.bindingSha256 ?? ''));
+}
+
 export function buildHistoricalDimensionsRecoveryFunnel(results) {
   if (results?.schemaVersion !== 1) throw new TypeError('historical recovery results schema v1 required');
   const outcomes = requiredArray(results.outcomes, 'historical recovery outcomes');
@@ -295,7 +308,9 @@ export function buildHistoricalDimensionsRecoveryFunnel(results) {
     if (targetHasCandidate(outcome)) funnel.targetsWithOfficialCandidates += 1;
     if (targetWasFetched(outcome)) funnel.fetchedTargets += 1;
     if ((outcome.sources ?? []).some(sourceHasMineru)) funnel.mineruValidTargets += 1;
-    if ((outcome.sources ?? []).some(sourceHasExactIdentity)) funnel.identityProvenTargets += 1;
+    if ((outcome.sources ?? []).some(sourceHasReceiptEligibleIdentity)) {
+      funnel.identityProvenTargets += 1;
+    }
     if (outcome.status === 'accepted') {
       funnel.dimensionsReceipted += 1;
     } else if (outcome.status === 'retryable_failure') {
@@ -449,9 +464,9 @@ export function buildHistoricalDimensionsRecoveryStageMetrics(results, epochs) {
   const eligiblePdfs = attempted.filter(({ candidate }) => candidateHasEligiblePdf(candidate));
   const mineruValid = eligiblePdfs.filter(({ candidate }) => sourceHasMineru(candidate.outcome.source));
   const parsedSources = mineruValid.map(({ candidate }) => candidate.outcome.source);
-  const identityProvenDocuments = parsedSources.filter(sourceHasExactIdentity);
+  const identityProvenDocuments = parsedSources.filter(sourceHasReceiptEligibleIdentity);
   const identityProvenOutcomes = outcomes.filter((outcome) => (
-    (outcome.sources ?? []).some(sourceHasExactIdentity)
+    (outcome.sources ?? []).some(sourceHasReceiptEligibleIdentity)
   ));
   const retryableIdentityOutcomes = identityProvenOutcomes.filter(
     (outcome) => outcome.status === 'retryable_failure',
@@ -473,13 +488,13 @@ export function buildHistoricalDimensionsRecoveryStageMetrics(results, epochs) {
     }, epochs),
     stageMetric({
       stage: 'IDENTITY',
-      metricId: 'exact_model_proof_per_valid_parsed_document',
+      metricId: 'receipt_eligible_identity_proof_per_valid_parsed_document',
       numerator: identityProvenDocuments.length,
       denominator: parsedSources.length,
     }, epochs),
     stageMetric({
       stage: 'DIMENSIONS_RECEIPT',
-      metricId: 'accepted_whd_receipt_per_identity_proven_target',
+      metricId: 'accepted_whd_receipt_per_receipt_eligible_identity_target',
       numerator: receipted.length,
       denominator: identityProvenOutcomes.length,
       retryableUnits: retryableIdentityOutcomes.length,

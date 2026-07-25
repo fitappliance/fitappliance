@@ -12,6 +12,7 @@ import {
   verifyOfficialMarketApiDiscoveryEvidence,
 } from './official-market-api-discovery-evidence.mjs';
 import { officialMarketApiModelVariant } from './official-model-variant-policy.mjs';
+import { officialProductMaterialBoundVariant } from './official-product-material-discovery-evidence.mjs';
 import { officialSupportApiBoundFamilyModel } from './official-support-api-discovery-evidence.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 
@@ -311,12 +312,21 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       discoveryArtifactBytes,
       artifact.derivedArtifactBytes,
     );
-    boundVariantModel = officialMarketApiBoundVariantModel(
+    const marketVariantModel = officialMarketApiBoundVariantModel(
       discoveryProvenance,
       identity,
       discoveryArtifactBytes,
       artifact.derivedArtifactBytes,
     );
+    const productMaterialVariant = officialProductMaterialBoundVariant(
+      discoveryProvenance,
+      identity,
+      discoveryArtifactBytes,
+    );
+    if (marketVariantModel && productMaterialVariant) {
+      throw new Error('multiple official model variant bindings are not allowed');
+    }
+    boundVariantModel = marketVariantModel ?? productMaterialVariant?.sourceModel ?? null;
     const boundSupportFamilyModel = officialSupportApiBoundFamilyModel(
       discoveryProvenance,
       identity,
@@ -340,8 +350,12 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       sourceUrls: [artifact.requestedUrl, artifact.finalUrl].filter(Boolean),
       ...(selectedBoundFamilyModel ? { boundFamilyModel: selectedBoundFamilyModel } : {}),
       ...(boundSeriesModel ? { boundSeriesModel } : {}),
-      ...((boundVariantModel || boundExactCoverModel) ? {
-        boundExactCoverModel: boundVariantModel || boundExactCoverModel,
+      ...((marketVariantModel || boundExactCoverModel) ? {
+        boundExactCoverModel: marketVariantModel || boundExactCoverModel,
+      } : {}),
+      ...(productMaterialVariant ? {
+        boundProductMaterialNumber: productMaterialVariant.materialNumber,
+        boundProductFinishLabel: productMaterialVariant.finishLabel,
       } : {}),
       ...(boundSupportFamilyModel ? { boundSupportFamilyModel } : {}),
       ...(artifact.derivedArtifact.fallbackTrigger ? {

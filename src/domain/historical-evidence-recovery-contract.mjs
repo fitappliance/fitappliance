@@ -250,7 +250,7 @@ function validateArtifactJob(value) {
   exactKeys(value, 'artifact job', [
     'jobId', 'sourceUrl', 'authorityBrand', 'authorityMode', 'acquisitionRoute',
     'priorityClass', 'targetIds',
-  ]);
+  ], ['sourceRole', 'requiredTargetIds']);
   text(value.jobId, 'artifact job ID');
   const sourceUrl = new URL(text(value.sourceUrl, 'artifact source URL'));
   if (sourceUrl.protocol !== 'https:' || sourceUrl.username || sourceUrl.password) {
@@ -260,7 +260,14 @@ function validateArtifactJob(value) {
   oneOf(value.authorityMode, AUTHORITY_MODES, 'artifact authority mode');
   oneOf(value.acquisitionRoute, ROUTES, 'artifact acquisition route');
   oneOf(value.priorityClass, PRIORITIES, 'artifact priority');
-  strings(value.targetIds, 'artifact targetIds', { nonEmpty: true });
+  const targetIds = strings(value.targetIds, 'artifact targetIds', { nonEmpty: true });
+  if (value.sourceRole !== undefined) text(value.sourceRole, 'artifact source role');
+  if (value.requiredTargetIds !== undefined) {
+    const requiredTargetIds = strings(value.requiredTargetIds, 'artifact requiredTargetIds');
+    if (requiredTargetIds.some((targetId) => !targetIds.includes(targetId))) {
+      throw new TypeError('artifact requiredTargetIds must be linked targetIds');
+    }
+  }
 }
 
 function validateActiveReceiptSource(value) {

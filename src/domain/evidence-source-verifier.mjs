@@ -6,16 +6,24 @@ import {
   verifyOfficialProductPageDiscoveryEvidence,
 } from './official-product-page-discovery-evidence.mjs';
 import { verifyOfficialMarketApiDiscoveryEvidence } from './official-market-api-discovery-evidence.mjs';
+import {
+  validateOfficialProductMaterialRelationship,
+  verifyOfficialProductMaterialDiscoveryEvidence,
+} from './official-product-material-discovery-evidence.mjs';
 import { verifyOfficialSupportApiDiscoveryEvidence } from './official-support-api-discovery-evidence.mjs';
 import {
   isStrictOfficialModelVariantApiSource,
   isStrictOfficialModelVariantPdfSource,
   officialMarketApiModelVariant,
+  officialProductMaterialModelVariant,
   strictOfficialModelVariantApiFailure,
   strictOfficialModelVariantPdfFailure,
 } from './official-model-variant-policy.mjs';
 
-export { officialMarketApiModelVariant } from './official-model-variant-policy.mjs';
+export {
+  officialMarketApiModelVariant,
+  officialProductMaterialModelVariant,
+} from './official-model-variant-policy.mjs';
 
 const manufacturerPolicy = JSON.parse(readFileSync(
   new URL('../../data/architecture-v2/policies/manufacturer-source-policy.json', import.meta.url),
@@ -240,6 +248,7 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
     'schemaVersion', 'method', 'market', 'sourceMarket', 'discoveryUrl', 'requestedModel', 'matchedModel',
     'artifactUrl', 'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath',
     'discoveryByteSize', 'discoveryRecordType', 'documentId', 'documentTitleKey', 'originalFileName',
+    'materialNumber',
   ]);
   const unknown = Object.keys(value).filter((key) => !allowed.has(key));
   if (unknown.length) throw new TypeError(`official artifact discovery provenance contains unknown fields: ${unknown.sort().join(', ')}`);
@@ -254,7 +263,12 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
     throw new TypeError('discovery artifact URL does not match requested artifact');
   }
   const method = requiredText(value.method, 'discovery method');
-  if (!['official_market_api', 'official_product_page', 'official_support_api'].includes(method)) {
+  if (![
+    'official_market_api',
+    'official_product_page',
+    'official_product_material',
+    'official_support_api',
+  ].includes(method)) {
     throw new TypeError('unsupported official artifact discovery method');
   }
   if (requiredText(value.market, 'discovery market') !== discoverySeedPolicy.market) {
@@ -268,7 +282,7 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
   }
   const discoveryUrl = method === 'official_market_api'
     ? officialMarketApiUrl(value.discoveryUrl, brand)
-    : method === 'official_product_page'
+    : ['official_product_page', 'official_product_material'].includes(method)
       ? officialProductPageUrl(value.discoveryUrl, brand)
       : officialSupportApiUrl(value.discoveryUrl, brand, sourceMarket);
   const expectedKey = modelKey(expectedModel, 'discovery target model');
@@ -281,7 +295,14 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
       category: context.category,
     }, value.matchedModel)
     : null;
-  if (!requestedMatches || (!matchedMatches && !approvedMarketVariant)) {
+  const approvedMaterialVariant = method === 'official_product_material'
+    ? officialProductMaterialModelVariant({
+      brand,
+      model: expectedModel,
+      category: context.category,
+    }, value.matchedModel)
+    : null;
+  if (!requestedMatches || (!matchedMatches && !approvedMarketVariant && !approvedMaterialVariant)) {
     throw new TypeError('official artifact discovery model does not match target model');
   }
   const result = {
@@ -300,7 +321,36 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
     'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath', 'discoveryByteSize',
     'discoveryRecordType', 'documentTitleKey',
   ];
-  if (method === 'official_product_page') {
+  if (method === 'official_product_material') {
+    if (value.artifactLinkUrl != null || value.discoveryRecordType != null
+      || value.documentTitleKey != null || value.documentId != null
+      || value.originalFileName != null) {
+      throw new TypeError('product-material discovery contains unsupported document fields');
+    }
+    const discoveryContentSha256 = requiredText(value.discoveryContentSha256, 'discovery content SHA-256');
+    if (!/^[a-f0-9]{64}$/.test(discoveryContentSha256)) {
+      throw new TypeError('discovery content SHA-256 invalid');
+    }
+    const discoveryObjectPath = requiredText(value.discoveryObjectPath, 'discovery object path');
+    const expectedPath = `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.html`;
+    if (discoveryObjectPath !== expectedPath) {
+      throw new TypeError('content-addressed discovery object path required');
+    }
+    if (!Number.isInteger(value.discoveryByteSize) || value.discoveryByteSize <= 0) {
+      throw new TypeError('positive discovery byte size required');
+    }
+    Object.assign(result, {
+      materialNumber: requiredText(value.materialNumber, 'Miele material number'),
+      discoveryContentSha256,
+      discoveryObjectPath,
+      discoveryByteSize: value.discoveryByteSize,
+    });
+    validateOfficialProductMaterialRelationship(result, {
+      brand,
+      model: expectedModel,
+      category: context.category,
+    });
+  } else if (method === 'official_product_page') {
     const artifactLinkUrl = canonicalHttpsUrl(value.artifactLinkUrl, 'discovery artifact link URL');
     if (!isOfficialBrandHostUrl(artifactLinkUrl, brand) && !isApprovedGlobalArtifactHost(artifactLinkUrl, brand)) {
       throw new TypeError(`discovery artifact link URL is not an approved official artifact host for ${brand}`);
@@ -908,6 +958,19 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
       { requireExactModel: !relationshipOnly },
     );
   }
+  if (source?.discoveryProvenance?.method === 'official_product_material') {
+    const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
+      brand: caseIdentity?.brand,
+      model: caseIdentity?.model,
+      category: caseIdentity?.category,
+      artifactUrl: source?.sourceUrl,
+    });
+    verifyOfficialProductMaterialDiscoveryEvidence(
+      provenance,
+      caseIdentity,
+      options.discoveryArtifactBytes,
+    );
+  }
   if (source?.discoveryProvenance?.method === 'official_market_api'
     && source.discoveryProvenance.discoveryContentSha256) {
     const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
@@ -1049,6 +1112,20 @@ export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
       caseIdentity,
       options.discoveryArtifactBytes,
       { requireExactModel: !relationshipOnly },
+    );
+  }
+  if (source?.discoveryProvenance?.method === 'official_product_material'
+    && options.discoveryArtifactBytes != null) {
+    const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
+      brand: caseIdentity?.brand,
+      model: caseIdentity?.model,
+      category: caseIdentity?.category,
+      artifactUrl: source?.sourceUrl,
+    });
+    verifyOfficialProductMaterialDiscoveryEvidence(
+      provenance,
+      caseIdentity,
+      options.discoveryArtifactBytes,
     );
   }
   if (source?.discoveryProvenance?.method === 'official_market_api'

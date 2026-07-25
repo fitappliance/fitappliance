@@ -20,6 +20,7 @@ import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recove
 import { recoveryOutcomeSemanticSha256 } from '../../src/domain/receipt-bound-evidence-batch-runner.mjs';
 import { createVerificationReceipt } from '../../src/domain/evidence-source-verifier.mjs';
 import { selectRecoveryQueueSnapshot } from '../../scripts/architecture-v2/audit-historical-evidence-recovery.mjs';
+import { resolveAcceptanceAuditGeneratedAt } from '../../scripts/architecture-v2/audit-historical-acceptance-receipts.mjs';
 import { runPromotionCli } from '../../scripts/architecture-v2/promote-historical-evidence-recovery.mjs';
 
 const QUEUE_SHA = 'a'.repeat(64);
@@ -266,6 +267,18 @@ test('audit queue discovery selects the snapshot bound by the batch SHA', () => 
   assert.throws(() => selectRecoveryQueueSnapshot(batch, [
     { path: '/legacy.json', value: legacyQueue },
   ]), /matching queue snapshot/i);
+});
+
+test('acceptance receipt audit defaults to the immutable bundle timestamp', () => {
+  const bundle = { generatedAt: '2026-07-13T00:05:00.000Z' };
+  assert.equal(resolveAcceptanceAuditGeneratedAt([], bundle), bundle.generatedAt);
+  assert.equal(
+    resolveAcceptanceAuditGeneratedAt(
+      ['--generated-at', '2026-07-13T00:06:00.000Z'],
+      bundle,
+    ),
+    '2026-07-13T00:06:00.000Z',
+  );
 });
 
 test('online audit replays objects, inventory, receipt, semantics and geometry', async () => {

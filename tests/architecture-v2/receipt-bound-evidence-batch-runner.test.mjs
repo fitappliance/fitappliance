@@ -29,7 +29,7 @@ const FIELDS = [
   'closedEnvelope.depthMm',
 ];
 
-function job(jobId, sourceUrl, targetIds) {
+function job(jobId, sourceUrl, targetIds, overrides = {}) {
   return {
     jobId,
     sourceUrl,
@@ -38,6 +38,7 @@ function job(jobId, sourceUrl, targetIds) {
     acquisitionRoute: 'OFFICIAL_RECEIPT_REBUILD',
     priorityClass: 'P0_CURRENT_MISSING_DIMENSIONS',
     targetIds,
+    ...overrides,
   };
 }
 
@@ -215,6 +216,52 @@ test('one target with alternate jobs receives one inventory and exactly one term
     lowerAuthorityResolution: null,
     conflictReason: null,
   });
+});
+
+test('an optional batch product page stays lazy when the required document succeeds', async () => {
+  const requiredJob = job(
+    'a'.repeat(32),
+    'https://official.example.com/primary.pdf',
+    ['target-a'],
+    {
+      sourceRole: 'manufacturer_document',
+      requiredTargetIds: ['target-a'],
+    },
+  );
+  const optionalJob = job(
+    'b'.repeat(32),
+    'https://official.example.com/product/',
+    ['target-a'],
+    {
+      sourceRole: 'manufacturer_product_page',
+      requiredTargetIds: [],
+    },
+  );
+  const input = batch({
+    jobs: [requiredJob, optionalJob],
+    targets: [target('target-a', 'EX100', [requiredJob.jobId, optionalJob.jobId])],
+  });
+  const acquisitions = [];
+  const result = await runReceiptBoundEvidenceBatch(input, dependencies({
+    acquireArtifact: async (artifactJob, context) => {
+      acquisitions.push(artifactJob.jobId);
+      await context.withMineru(async () => {});
+      return {
+        jobId: artifactJob.jobId,
+        sourceUrl: artifactJob.sourceUrl,
+        finalUrl: artifactJob.sourceUrl,
+        contentSha256: 'c'.repeat(64),
+      };
+    },
+  }));
+
+  assert.deepEqual(acquisitions, [requiredJob.jobId]);
+  const optionalCandidate = result.outcomes[0].candidateInventory.candidates
+    .find((candidate) => candidate.sourceUrl === optionalJob.sourceUrl);
+  assert.equal(optionalCandidate.sourceRole, 'manufacturer_product_page');
+  assert.equal(optionalCandidate.requiredAttempt, false);
+  assert.equal(optionalCandidate.outcome.status, 'not_attempted_optional');
+  assert.equal(result.outcomes[0].status, 'accepted');
 });
 
 test('complete inline active receipts replay without a loader and reconcile with a fresh candidate', async () => {

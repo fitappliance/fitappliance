@@ -477,6 +477,74 @@ test('all migration brands route through typed discovery-only adapters', () => {
   }
 });
 
+test('Miele adapter declares schema-v2 lanes and preserves bounded official observations', async () => {
+  const hash = 'b'.repeat(64);
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_site_search',
+    market: 'AU',
+    discoveryUrl: 'https://shop.miele.com.au/search?SearchTerm=G7130SCCLST',
+    requestedModel: 'G7130SCCLST',
+    contentType: 'text/html',
+    contentSha256: hash,
+    objectPath: `evidence/web/sha256/bb/bb/${hash}.html`,
+    byteSize: 500,
+  };
+  const sourceLanes = [
+    {
+      laneId: 'current_product', required: true, supported: true,
+      status: 'complete', candidateCount: 0, provenance: [provenance], reason: null,
+    },
+    {
+      laneId: 'discontinued_archive', required: false, supported: false,
+      status: 'unsupported', candidateCount: 0, provenance: [], reason: 'No bounded archive resolver.',
+    },
+    {
+      laneId: 'support_search_api', required: false, supported: false,
+      status: 'unsupported', candidateCount: 0, provenance: [], reason: 'No bounded support API.',
+    },
+    {
+      laneId: 'official_document_cdn', required: true, supported: true,
+      status: 'complete', candidateCount: 1, provenance: [provenance], reason: null,
+    },
+    {
+      laneId: 'official_product_detail', required: true, supported: true,
+      status: 'complete', candidateCount: 1, provenance: [provenance], reason: null,
+    },
+  ];
+  const documentUrl = 'https://www.miele.com.au/media/ex/au/specsheets/12531610.pdf';
+  const productUrl = 'https://shop.miele.com.au/en/kitchen/dishwashers/g-7130-sc-front-autodos-zid12531610/';
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'Miele', model: 'G7130SCCLST', category: 'dishwasher' },
+    { miele: { finder: async () => ({
+      sourceUrl: documentUrl,
+      sourceLanes,
+      resources: [
+        { sourceUrl: productUrl, resourceType: 'product_page', sourceLaneId: 'official_product_detail' },
+        { sourceUrl: documentUrl, resourceType: 'specification_sheet', sourceLaneId: 'official_document_cdn' },
+      ],
+    }) } },
+  );
+
+  assert.equal(adapter.schemaVersion, 2);
+  assert.equal(adapter.version, '3');
+  const result = await adapter.resolve({
+    brand: 'Miele', model: 'G7130SCCLST', category: 'dishwasher',
+  });
+  assert.equal(result.schemaVersion, 2);
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.sourceLanes, sourceLanes);
+  assert.deepEqual(result.candidates.map((candidate) => candidate.sourceLaneId).sort(), [
+    'official_document_cdn',
+    'official_product_detail',
+  ]);
+  const productPage = result.candidates.find((candidate) => (
+    candidate.sourceLaneId === 'official_product_detail'
+  ));
+  assert.equal(productPage.sourceRole, 'manufacturer_product_page');
+  assert.equal(productPage.requiredAttempt, false);
+});
+
 test('Esatto adapter preserves the schema-v2 source-lane contract and candidate observations', async () => {
   const hash = 'c'.repeat(64);
   const provenance = {

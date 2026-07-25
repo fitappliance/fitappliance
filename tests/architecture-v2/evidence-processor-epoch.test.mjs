@@ -10,6 +10,9 @@ import {
 import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from '../../src/domain/beko-product-page-dimensions.mjs';
 import { BEKO_AU_PRODUCT_IDENTITY_CAPABILITY } from '../../src/domain/beko-product-page-identity.mjs';
 import { ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY } from '../../src/domain/mineru-document.mjs';
+import {
+  MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY,
+} from '../../src/domain/official-product-material-discovery-evidence.mjs';
 import { SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY } from '../../src/domain/smeg-pdf-dimensions.mjs';
 
 const implementationPaths = [...new Set(Object.values(EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS).flat())];
@@ -124,5 +127,52 @@ test('changing MinerU changes the bounded Esatto ProductCard processor epoch', (
   assert.equal(
     first[BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY],
     changed[BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY],
+  );
+});
+
+test('Miele AU material-bound identity capability is exact to the official specs route', () => {
+  const sourceUrl = 'https://www.miele.com.au/media/ex/au/specsheets/12531610.pdf';
+  assert.equal(historicalAttemptProcessorCapability({
+    brand: 'Miele', sourceUrl, failureCode: 'identity',
+  }), MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY);
+  assert.equal(historicalAttemptProcessorCapability({
+    brand: 'Miele', sourceUrl, failureCode: 'mineru',
+  }), null);
+  assert.equal(historicalAttemptProcessorCapability({
+    brand: 'Other', sourceUrl, failureCode: 'identity',
+  }), null);
+  assert.equal(historicalAttemptProcessorCapability({
+    brand: 'Miele',
+    sourceUrl: 'https://shop.miele.com.au/en/kitchen/dishwashers/example/',
+    failureCode: 'identity',
+  }), null);
+});
+
+test('changing the Miele product-material verifier changes only its identity epoch', () => {
+  const files = new Map(implementationPaths.map((path) => [path, `first:${path}`]));
+  const first = buildEvidenceProcessorEpochs(files);
+  const changedFiles = new Map(files);
+  changedFiles.set('src/domain/official-product-material-discovery-evidence.mjs', 'changed');
+  const changed = buildEvidenceProcessorEpochs(changedFiles);
+
+  assert.notEqual(
+    first[MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY],
+    changed[MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY],
+  );
+  assert.equal(
+    first[BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY],
+    changed[BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY],
+  );
+  assert.equal(
+    first[SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY],
+    changed[SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY],
+  );
+
+  const changedMineruFiles = new Map(files);
+  changedMineruFiles.set('src/domain/mineru-document.mjs', 'changed');
+  const changedMineru = buildEvidenceProcessorEpochs(changedMineruFiles);
+  assert.notEqual(
+    first[MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY],
+    changedMineru[MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY],
   );
 });

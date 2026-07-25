@@ -197,6 +197,32 @@ test('batch deterministically selects targets and preserves every alternate cand
   assert.equal(first.targets[0].publicationEligible, false);
 });
 
+test('batch preserves per-target required attempts and candidate source roles', () => {
+  const queue = fixtureQueue();
+  const [primaryJob, optionalJob] = queue.jobs;
+  primaryJob.sourceRoles = ['manufacturer_document'];
+  optionalJob.sourceRoles = ['manufacturer_product_page'];
+  queue.targets[0].candidateEdges = [{
+    jobId: primaryJob.jobId,
+    requiredAttempt: true,
+  }, {
+    jobId: optionalJob.jobId,
+    requiredAttempt: false,
+  }];
+  const result = buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [],
+    selection: { targetIds: [queue.targets[0].targetId] },
+  });
+  const byId = new Map(result.artifactJobs.map((row) => [row.jobId, row]));
+
+  assert.equal(byId.get(primaryJob.jobId).sourceRole, 'manufacturer_document');
+  assert.deepEqual(byId.get(primaryJob.jobId).requiredTargetIds, [queue.targets[0].targetId]);
+  assert.equal(byId.get(optionalJob.jobId).sourceRole, 'manufacturer_product_page');
+  assert.deepEqual(byId.get(optionalJob.jobId).requiredTargetIds, []);
+});
+
 test('batch summary accounts for targets already covered by cumulative acceptance', () => {
   const queue = fixtureQueue();
   const batch = buildHistoricalEvidenceRecoveryBatch({

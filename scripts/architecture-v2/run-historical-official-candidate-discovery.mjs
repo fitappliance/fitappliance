@@ -15,7 +15,10 @@ import {
   verifyEvidenceStorageRoot,
 } from '../../src/domain/evidence-recovery-state-store.mjs';
 import { buildHistoricalOfficialCandidateManifest } from '../../src/domain/historical-official-candidate-manifest.mjs';
-import { recoveryCandidateResolversForTarget } from './run-historical-evidence-recovery.mjs';
+import {
+  officialResolverOptionsForObjectStore,
+  recoveryCandidateResolversForTarget,
+} from './run-historical-evidence-recovery.mjs';
 
 const execFile = promisify(execFileCallback);
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -122,18 +125,6 @@ export function selectHistoricalOfficialCandidateTargets(acquisitionQueue, optio
   const bounded = runnable.slice(0, options.limit);
   if (!bounded.length) throw new TypeError('selection produced no bounded discovery targets');
   return structuredClone(bounded);
-}
-
-function resolverOptions(objectStore) {
-  const finderOptions = { writeObject: objectStore.writeObject };
-  return {
-    bosch: { finderOptions },
-    beko: { finderOptions },
-    haier: { finderOptions },
-    asko: { finderOptions },
-    esatto: { finderOptions },
-    fisherPaykel: { finderOptions },
-  };
 }
 
 function resolversForRecord(record, options = {}) {
@@ -482,7 +473,9 @@ export async function runHistoricalOfficialCandidateDiscovery(argv = process.arg
     const startedAt = now().toISOString();
     const preparedTargets = selected.map((record) => {
       const target = caseRecordFor(record, acquisitionQueue);
-      const resolvers = resolverFactory(record, { resolverOptions: resolverOptions(objectStore) });
+      const resolvers = resolverFactory(record, {
+        resolverOptions: officialResolverOptionsForObjectStore(objectStore),
+      });
       if (!Array.isArray(resolvers) || !resolvers.length) {
         throw new Error(`selected target has no available resolver: ${record.referenceId}`);
       }

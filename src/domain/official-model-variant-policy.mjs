@@ -59,6 +59,29 @@ export function officialMarketApiSearchModels(caseIdentity) {
   return [...new Set(candidates)];
 }
 
+export function officialProductMaterialModelVariant(caseIdentity, sourceModel) {
+  const targetModel = normalizedModel(caseIdentity?.model);
+  const candidateModel = normalizedModel(sourceModel);
+  const category = String(caseIdentity?.category ?? '').trim().toLowerCase();
+  if (!targetModel || !candidateModel || !category || targetModel === candidateModel) return null;
+  const variants = manufacturerPolicy.officialProductMaterialModelVariantSuffixes
+    ?.[brandKey(caseIdentity?.brand)]?.[category];
+  if (!Array.isArray(variants)) return null;
+  const targetKey = alphanumericModel(targetModel);
+  const sourceKey = alphanumericModel(candidateModel);
+  for (const configuration of variants) {
+    const suffix = String(configuration?.suffix ?? '').trim().toUpperCase();
+    const finishLabel = String(configuration?.finishLabel ?? '').trim();
+    if (!suffix || !finishLabel || targetKey !== `${sourceKey}${suffix}`) continue;
+    return {
+      sourceModel: candidateModel,
+      suffix,
+      finishLabel,
+    };
+  }
+  return null;
+}
+
 const VARIANT_DIMENSION_FIELDS = Object.freeze([
   'closedEnvelope.widthMm',
   'closedEnvelope.heightMm',
@@ -92,10 +115,16 @@ export function strictOfficialModelVariantPdfFailure(source, caseIdentity) {
   if (brandKey(source?.identity?.brand) !== brandKey(caseIdentity?.brand)
     || normalizedModel(source?.identity?.model) !== targetModel
     || String(source?.identity?.category ?? caseIdentity?.category) !== String(caseIdentity?.category)) return 'case identity';
-  const variant = officialMarketApiModelVariant(caseIdentity, sourceModel);
-  if (!variant) return 'variant policy';
   const provenance = source?.discoveryProvenance;
-  if (provenance?.method !== 'official_market_api'
+  const marketVariant = officialMarketApiModelVariant(caseIdentity, sourceModel);
+  const materialVariant = officialProductMaterialModelVariant(caseIdentity, sourceModel);
+  const variant = provenance?.method === 'official_market_api'
+    ? marketVariant
+    : provenance?.method === 'official_product_material'
+      ? materialVariant
+      : null;
+  if (!variant) return 'variant policy';
+  if (!['official_market_api', 'official_product_material'].includes(provenance?.method)
     || normalizedModel(provenance.requestedModel) !== targetModel
     || normalizedModel(provenance.matchedModel) !== variant.sourceModel
     || !/^[a-f0-9]{64}$/.test(String(provenance.discoveryContentSha256 ?? ''))) return 'discovery provenance';
@@ -106,6 +135,24 @@ export function strictOfficialModelVariantPdfFailure(source, caseIdentity) {
     || !claims.every((claim) => VARIANT_DIMENSION_FIELDS.includes(claim?.field))) return 'dimension claim set';
 
   const hash = provenance.discoveryContentSha256;
+  if (provenance.method === 'official_product_material') {
+    const materialNumber = String(provenance.materialNumber ?? '');
+    if (!/^\d{6,14}$/.test(materialNumber)) return 'material binding';
+    const materialSignal = signalByType(source, 'mineru_miele_product_material_model');
+    if (!new RegExp(
+      `^${escapedRegex(variant.sourceModel)}:material:${materialNumber}:finish:${escapedRegex(variant.finishLabel)}:page:[1-9]\\d*:[a-f0-9]{64}$`,
+      'i',
+    ).test(materialSignal ?? '')) return 'MinerU material-model signal';
+    if (signalByType(source, 'canonical_source_model') !== variant.sourceModel) {
+      return 'canonical source-model signal';
+    }
+    if (signalByType(source, 'official_product_material_model')
+      !== `${targetModel}:${variant.sourceModel}:${materialNumber}:${hash}:${provenance.discoveryUrl}`) {
+      return 'product-material model signal';
+    }
+    return null;
+  }
+
   const apiDimensions = signalByType(source, 'official_market_api_dimensions');
   const match = new RegExp(`^${escapedRegex(targetModel)}:(\\d+)x(\\d+)x(\\d+):${hash}$`, 'i')
     .exec(apiDimensions ?? '');

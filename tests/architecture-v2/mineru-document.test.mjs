@@ -116,6 +116,29 @@ test('MinerU empty-page sentinel is ignored without relaxing bbox validation for
   assert.throws(() => inspectMineruContentListV2(invalid), /bbox invalid/i);
 });
 
+test('MinerU normalizes its one-unit right-edge rounding without accepting wider overflow', () => {
+  const rounded = Buffer.from(JSON.stringify([[
+    {
+      type: 'image',
+      content: {
+        image_source: { path: 'images/cover.jpg' },
+        image_caption: [],
+        image_footnote: [],
+      },
+      bbox: [1, 117, 1001, 1000],
+    },
+  ]]));
+  const inspected = inspectMineruContentListV2(rounded);
+  assert.deepEqual(inspected.pages[0].fragments[0].bbox, [1, 117, 1000, 1000]);
+
+  const overflow = JSON.parse(rounded);
+  overflow[0][0].bbox = [1, 117, 1002, 1000];
+  assert.throws(
+    () => inspectMineruContentListV2(Buffer.from(JSON.stringify(overflow))),
+    /bbox invalid/i,
+  );
+});
+
 test('MinerU content_list_v2 maps explicit grouped axes without using numeric heuristics', () => {
   const bytes = mineruJson(hisenseTable);
   const parsed = parseMineruContentListV2(bytes, {
@@ -3926,4 +3949,104 @@ test('Esatto EDW technical-information grammar fails closed across identity, qua
   assert.throws(() => parseMineruContentListV2(
     Buffer.from(JSON.stringify(malformed)), esattoEdwOptions,
   ), /bbox invalid/i);
+});
+
+function mieleProductSheet({
+  model = 'G 7130 SC',
+  materialNumber = '12531610',
+  finish = 'CleanSteel front',
+  width = '598',
+  height = '845',
+  depth = '600',
+} = {}) {
+  const heading = structuredListFragment([
+    `${model} Front AutoDos`,
+    'Freestanding dishwasher',
+  ], { bbox: [112, 153, 699, 204] });
+  return Buffer.from(JSON.stringify([
+    [
+      heading,
+      paragraph(`EAN: 4002516785118 / Material number: ${materialNumber}`, [391, 208, 700, 222]),
+      tableFragment(`<table>
+        <tr><td>Control panel colour</td><td>${finish}</td></tr>
+      </table>`),
+    ],
+    [
+      structuredListFragment([
+        `${model} Front AutoDos`,
+        'Freestanding dishwasher',
+      ], { bbox: [112, 153, 699, 203] }),
+      paragraph(`EAN: 4002516785118 / Material number: ${materialNumber}`, [391, 208, 700, 222]),
+      tableFragment(`<table>
+        <tr><td>Technical data</td><td></td></tr>
+        <tr><td>Niche width minimal in mm</td><td>600</td></tr>
+        <tr><td>Niche height maximal in mm</td><td>880</td></tr>
+        <tr><td>Appliance width in mm</td><td>${width}</td></tr>
+        <tr><td>Appliance height in mm</td><td>${height}</td></tr>
+        <tr><td>Appliance depth in mm</td><td>${depth}</td></tr>
+        <tr><td>Depth with door open in cm</td><td>119.5</td></tr>
+      </table>`),
+    ],
+  ]));
+}
+
+const mieleProductSheetOptions = Object.freeze({
+  pdfSha256: '7f412dee16b6bea7e1aa057d52e37067ba37dd54768a47beffe73d71f1a01297',
+  parserVersion: '3.4.4',
+  modelRevision,
+  caseIdentity: { brand: 'Miele', model: 'G 7130 SC', category: 'dishwasher' },
+  claimSemanticsVersion: 2,
+  fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  sourceUrls: ['https://www.miele.com.au/media/ex/au/specsheets/12531610.pdf'],
+  boundProductMaterialNumber: '12531610',
+  boundProductFinishLabel: 'CleanSteel',
+});
+
+test('Miele product-sheet grammar binds appliance W/H/D to an official material and finish', () => {
+  const parsed = parseMineruContentListV2(mieleProductSheet(), mieleProductSheetOptions);
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 600 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 845 },
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+  });
+  assert.ok(parsed.identitySignals.some((signal) => (
+    signal.type === 'mineru_miele_product_material_model'
+      && signal.value.includes('12531610')
+  )));
+  assert.deepEqual(parsed.grammarProfileIds, ['miele-au-product-material-specification-v1']);
+  assert.ok(parsed.claims.every((claim) => claim.page === 2));
+  assert.equal(parsed.claims.some((claim) => /niche|door open/i.test(claim.sourceLabel)), false);
+});
+
+test('Miele product-sheet material grammar fails closed across identity and binding mutations', () => {
+  const cases = [
+    ['sibling source model', mieleProductSheet({ model: 'G 7130 SCU' }), mieleProductSheetOptions],
+    ['wrong material in PDF', mieleProductSheet({ materialNumber: '12531620' }), mieleProductSheetOptions],
+    ['wrong material in URL', mieleProductSheet(), {
+      ...mieleProductSheetOptions,
+      sourceUrls: ['https://www.miele.com.au/media/ex/au/specsheets/12531620.pdf'],
+    }],
+    ['wrong finish', mieleProductSheet({ finish: 'Brilliant White' }), mieleProductSheetOptions],
+    ['wrong brand', mieleProductSheet(), {
+      ...mieleProductSheetOptions,
+      caseIdentity: { ...mieleProductSheetOptions.caseIdentity, brand: 'Other' },
+    }],
+    ['wrong category', mieleProductSheet(), {
+      ...mieleProductSheetOptions,
+      caseIdentity: { ...mieleProductSheetOptions.caseIdentity, category: 'fridge' },
+    }],
+    ['missing material binding', mieleProductSheet(), {
+      ...mieleProductSheetOptions,
+      boundProductMaterialNumber: undefined,
+    }],
+  ];
+
+  for (const [label, bytes, options] of cases) {
+    assert.throws(
+      () => parseMineruContentListV2(bytes, options),
+      /identity|material|finish|model|evidence|scope/i,
+      label,
+    );
+  }
 });

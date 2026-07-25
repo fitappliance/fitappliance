@@ -290,7 +290,7 @@ test('global official artifact is trusted only with receipt-bound Australian dis
   input.verificationReceipt = createVerificationReceipt(input, identity, {
     verifiedAt: '2026-07-11T14:35:00.000Z',
   });
-  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-16.6');
+  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-25.1');
   assert.equal(verifyVerificationReceipt(input, identity, {
     asOf: input.verificationReceipt.verifiedAt,
   }), true);
@@ -682,9 +682,9 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.deepEqual(input.verificationReceipt, {
     schemaVersion: 2,
     policyVersion: '2026-07-12.2',
-    manufacturerPolicyVersion: '2026-07-21.1',
+    manufacturerPolicyVersion: '2026-07-25.1',
     verifiedAt: '2026-07-11T14:35:00.000Z',
-    bindingSha256: '45ea3788e765d351169ac3a737ce0d8e626ab2754b56f0bfb8dae4713b08a8b7',
+    bindingSha256: '5d2ab54ed6f9095ee3043a4e6538d0390308daa740a2201fc3e909f1d8c3b595',
   });
 
   assert.equal(verifyVerificationReceipt(input, caseIdentity, {

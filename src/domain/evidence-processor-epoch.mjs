@@ -4,6 +4,9 @@ import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from './beko-product-page-dimen
 import { BEKO_AU_PRODUCT_IDENTITY_CAPABILITY } from './beko-product-page-identity.mjs';
 import { canonicalJsonSha256 } from './historical-evidence-recovery-contract.mjs';
 import { ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY } from './mineru-document.mjs';
+import {
+  MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY,
+} from './official-product-material-discovery-evidence.mjs';
 import { SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY } from './smeg-pdf-dimensions.mjs';
 
 export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
@@ -19,6 +22,15 @@ export const EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS = Object.freeze({
   [SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY]: Object.freeze([
     'src/domain/smeg-pdf-dimensions.mjs',
     'src/domain/mineru-document.mjs',
+  ]),
+  [MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY]: Object.freeze([
+    'src/domain/evidence-artifact-pipeline.mjs',
+    'src/domain/evidence-artifact-verifier.mjs',
+    'src/domain/evidence-source-adapter-contract.mjs',
+    'src/domain/evidence-source-verifier.mjs',
+    'src/domain/mineru-document.mjs',
+    'src/domain/official-model-variant-policy.mjs',
+    'src/domain/official-product-material-discovery-evidence.mjs',
   ]),
 });
 
@@ -39,6 +51,13 @@ export const CLAIM_PARSER_IMPLEMENTATION_PATHS = Object.freeze([
   'src/domain/official-support-api-discovery-evidence.mjs',
   'src/domain/smeg-pdf-dimensions.mjs',
 ]);
+
+export const EVIDENCE_TOOLCHAIN_IMPLEMENTATION_PATHS = Object.freeze([
+  ...new Set([
+    ...CLAIM_PARSER_IMPLEMENTATION_PATHS,
+    ...Object.values(EVIDENCE_PROCESSOR_IMPLEMENTATION_PATHS).flat(),
+  ]),
+].sort());
 
 function requiredSha256(value, label) {
   const normalized = String(value ?? '').trim().toLowerCase();
@@ -88,6 +107,12 @@ export function historicalAttemptProcessorCapability({ brand, sourceUrl, failure
     return SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY;
   }
   const host = url.hostname.toLowerCase();
+  if (normalized === 'miele' && failureCode === 'identity'
+    && url.protocol === 'https:' && !url.username && !url.password && !url.search
+    && host === 'www.miele.com.au'
+    && /^\/media\/ex\/au\/specsheets\/\d{6,14}\.pdf$/i.test(url.pathname)) {
+    return MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY;
+  }
   if (normalized === 'esatto' && failureCode === 'mineru') {
     let path;
     try { path = decodeURIComponent(url.pathname); } catch { return null; }

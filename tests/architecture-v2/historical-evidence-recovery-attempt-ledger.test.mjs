@@ -12,6 +12,9 @@ import {
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 import { BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY } from '../../src/domain/beko-product-page-dimensions.mjs';
 import { ESATTO_AU_DISHWASHER_PRODUCT_CARD_DIMENSIONS_CAPABILITY } from '../../src/domain/mineru-document.mjs';
+import {
+  MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY,
+} from '../../src/domain/official-product-material-discovery-evidence.mjs';
 
 const SHA = (value) => value.repeat(64);
 
@@ -342,6 +345,30 @@ test('only a changed bounded Beko HTML processor epoch reopens its claim-semanti
     evidenceProcessorEpochs: { [BEKO_AU_PRODUCT_DIMENSIONS_CAPABILITY]: SHA('2') },
   });
   assert.deepEqual(changed.map((entry) => entry.sourceUrl), ['https://www.beko.com/content/manual.pdf']);
+});
+
+test('only a changed Miele material-bound identity epoch reopens its official specs PDF', () => {
+  const policySha256 = SHA('b');
+  const sourceUrl = 'https://www.miele.com.au/media/ex/au/specsheets/12531610.pdf';
+  const ledger = {
+    schemaVersion: 1,
+    entries: [{
+      attemptId: 'attempt-miele-specs', targetId: 'target-miele', referenceId: 'reference-miele',
+      brand: 'Miele', sourceUrl, contentSha256: SHA('c'),
+      status: 'identity_rejected', failureCode: 'identity', policySha256,
+      suppressesSamePolicySource: true,
+      processorCapability: MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY,
+      evidenceProcessorSha256: SHA('1'),
+    }],
+  };
+  assert.equal(activeHistoricalAttemptSuppressions({
+    ledger, targetId: 'target-miele', referenceId: 'reference-miele', policySha256,
+    evidenceProcessorEpochs: { [MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY]: SHA('1') },
+  }).length, 1);
+  assert.deepEqual(activeHistoricalAttemptSuppressions({
+    ledger, targetId: 'target-miele', referenceId: 'reference-miele', policySha256,
+    evidenceProcessorEpochs: { [MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY]: SHA('2') },
+  }), []);
 });
 
 test('a changed bounded source processor reopens a complete-exhausted resolver target but not complete-zero discovery', () => {

@@ -423,7 +423,87 @@ function addCandidateObservation({
   accumulators.edgesByReference.set(target.referenceId, referenceEdges);
 }
 
-function loadPriorCandidates(priorManifest, records, accumulators, officialCandidateValidator) {
+function semanticCorrectionsByReference(runs, resolverContractsByReference) {
+  const corrections = new Map();
+  for (const run of runs) {
+    for (const target of run.targets) {
+      const currentResolverVersions = new Map(
+        (resolverContractsByReference.get(target.referenceId) ?? []).map((contract) => [
+          requiredText(contract.resolverId, 'resolver contract ID'),
+          requiredText(contract.version, 'resolver contract version'),
+        ]),
+      );
+      const byUrl = corrections.get(target.referenceId) ?? new Map();
+      for (const resolver of target.resolvers) {
+        if (resolver.completion !== 'complete') continue;
+        for (const candidate of resolver.candidates) {
+          if (candidate.authorityMode !== 'official') continue;
+          if (currentResolverVersions.get(candidate.resolverId) !== candidate.resolverVersion) {
+            continue;
+          }
+          const sourceUrl = normalizeHistoricalCandidateUrl(candidate.sourceUrl);
+          const rows = byUrl.get(sourceUrl) ?? [];
+          rows.push({
+            resolverId: requiredText(candidate.resolverId, 'candidate resolver ID'),
+            resolverVersion: requiredText(candidate.resolverVersion, 'candidate resolver version'),
+            completedAt: run.completedAt,
+            expectedContentType: expectedContentType(
+              candidate.documentType ?? inferDocumentType(sourceUrl),
+              sourceUrl,
+            ),
+          });
+          byUrl.set(sourceUrl, rows);
+        }
+      }
+      corrections.set(target.referenceId, byUrl);
+    }
+  }
+  return corrections;
+}
+
+function isSupersededCandidateSemantic({
+  referenceId,
+  sourceUrl,
+  priorCandidate,
+  priorEdge,
+  corrections,
+}) {
+  const rows = corrections.get(referenceId)?.get(sourceUrl) ?? [];
+  if (!rows.length) return false;
+  const correctedTypes = new Set(rows.map((row) => row.expectedContentType));
+  if (correctedTypes.size !== 1) return false;
+  const [correctedType] = correctedTypes;
+  if (correctedType === priorCandidate.expectedContentType
+    || correctedType === 'application/octet-stream'
+    || priorCandidate.expectedContentType === 'application/octet-stream') {
+    return false;
+  }
+  return rows.some((row) => {
+    const prefix = `${row.resolverId}@`;
+    const currentEpoch = `${row.resolverId}@${row.resolverVersion}`;
+    const priorEpochs = (priorEdge.discoveryStrategyIds ?? [])
+      .filter((strategyId) => strategyId.startsWith(prefix))
+      .map((strategyId) => strategyId.split(':', 1)[0]);
+    const priorResolverTimes = (priorCandidate.discoveries ?? [])
+      .filter((discovery) => discovery.resolverId === row.resolverId)
+      .map((discovery) => discovery.retrievedAt)
+      .sort();
+    const latestPriorTime = priorResolverTimes.at(-1);
+    return priorEpochs.length > 0
+      && !priorEpochs.includes(currentEpoch)
+      && Boolean(latestPriorTime)
+      && row.completedAt > latestPriorTime;
+  });
+}
+
+function loadPriorCandidates(
+  priorManifest,
+  records,
+  accumulators,
+  officialCandidateValidator,
+  runs,
+  resolverContractsByReference,
+) {
   if (priorManifest == null) return;
   if (priorManifest.schemaVersion !== 1 || !Array.isArray(priorManifest.targets)
     || !Array.isArray(priorManifest.candidates) || !Array.isArray(priorManifest.runBindings)) {
@@ -441,6 +521,7 @@ function loadPriorCandidates(priorManifest, records, accumulators, officialCandi
   }
   const currentByReference = new Map(records.map((record) => [record.referenceId, record]));
   const candidateById = uniqueMap(priorManifest.candidates, 'candidateId', 'prior candidate');
+  const corrections = semanticCorrectionsByReference(runs, resolverContractsByReference);
   for (const priorTarget of priorManifest.targets) {
     const target = currentByReference.get(priorTarget.referenceId);
     if (!target) continue;
@@ -463,6 +544,15 @@ function loadPriorCandidates(priorManifest, records, accumulators, officialCandi
       const documentTypes = edge.documentTypes?.length
         ? edge.documentTypes
         : candidate.documentTypes;
+      if (isSupersededCandidateSemantic({
+        referenceId: target.referenceId,
+        sourceUrl,
+        priorCandidate: candidate,
+        priorEdge: edge,
+        corrections,
+      })) {
+        continue;
+      }
       const sourceModelHints = edge.sourceModelHints?.length ? edge.sourceModelHints : [null];
       const sourceRoles = candidate.sourceRoles?.length
         ? candidate.sourceRoles
@@ -690,7 +780,14 @@ export function buildHistoricalOfficialCandidateManifest(input) {
   const runBindings = normalizeRunBindings(input.priorManifest, runs);
   const accumulators = createAccumulators();
   const records = [...recordsByReference.values()];
-  loadPriorCandidates(input.priorManifest, records, accumulators, officialCandidateValidator);
+  loadPriorCandidates(
+    input.priorManifest,
+    records,
+    accumulators,
+    officialCandidateValidator,
+    runs,
+    input.resolverContractsByReference,
+  );
   for (const run of runs) {
     if (run.sourceAcquisitionQueueSha256 !== queueSha256) {
       throw new Error(`discovery run acquisition queue binding mismatch: ${run.runId}`);

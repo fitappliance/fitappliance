@@ -9,6 +9,10 @@ import { promisify } from 'node:util';
 
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import {
+  loadActiveRetailRelease,
+  loadActiveRetailReleaseAudits,
+} from '../../src/domain/active-retail-release.mjs';
+import {
   createEvidenceObjectStore,
   verifyEvidenceStorageRoot,
 } from '../../src/domain/evidence-recovery-state-store.mjs';
@@ -144,13 +148,13 @@ async function loadDimensionsRun(storageRoot, runId, auditPath) {
   return { run, manifest, audit, storageContentSha256: null };
 }
 
-async function loadCurrentInput(generatedAt) {
-  const [nextBatches, programStatus, receiptAudit, replacementAudit, fitPublicationAudit, epochs] = await Promise.all([
+export async function loadHistoricalDimensionsCheckpointCurrentInput(generatedAt) {
+  const activeRelease = await loadActiveRetailRelease({ root });
+  const activeAudits = await loadActiveRetailReleaseAudits({ activeRelease });
+  const [nextBatches, programStatus, receiptAudit, epochs] = await Promise.all([
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceNextBatches')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceProgramStatus')),
     readJson(resolveArchitectureV2Path(root, 'historicalAcceptanceReceiptReplayAudit')),
-    readJson(resolveArchitectureV2Path(root, 'historicalReplacementAudit')),
-    readJson(resolveArchitectureV2Path(root, 'fitPublicationAudit')),
     Promise.all(HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS.map(async ([id, owner, paths]) => {
       const inputs = (await Promise.all(paths.map(async (path) => ({
         path,
@@ -159,6 +163,7 @@ async function loadCurrentInput(generatedAt) {
       return { id, owner, inputs, semanticSha256: canonicalJsonSha256({ id, owner, inputs }) };
     })),
   ]);
+  const { replacementAudit, fitPublicationAudit } = activeAudits;
   return {
     generatedAt: generatedAt ?? programStatus.generatedAt ?? nextBatches.generatedAt,
     nextBatches,
@@ -204,7 +209,7 @@ export async function runCli(args = process.argv.slice(2)) {
     const [control, ledger, currentInput, candidateManifest] = await Promise.all([
       readJson(options.control),
       readJson(options.ledger),
-      loadCurrentInput(options.generatedAt),
+      loadHistoricalDimensionsCheckpointCurrentInput(options.generatedAt),
       options.stage === 'DISCOVERY'
         ? readJson(resolveArchitectureV2Path(root, 'historicalOfficialCandidateManifest'))
         : Promise.resolve(null),

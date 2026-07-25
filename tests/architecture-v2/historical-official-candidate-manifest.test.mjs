@@ -599,6 +599,93 @@ test('rebuilds idempotently from its prior manifest and rejects tampered run bin
   );
 });
 
+test('a newer complete resolver epoch can correct its own prior candidate content type', () => {
+  const sourceUrl = 'https://manuals.alpha.example/products/no-100/';
+  const initialInput = fixture();
+  const initialResolver = resolverResult({
+    candidates: [{
+      sourceUrl,
+      documentType: 'family_manual',
+      sourceModelHint: 'NO-100',
+    }],
+  });
+  initialResolver.version = '2';
+  initialResolver.candidates[0].resolverVersion = '2';
+  initialInput.discoveryRuns[0].targets[1].resolvers[0] = initialResolver;
+  initialInput.discoveryRuns[0] = rebindDiscoveryRun(initialInput.discoveryRuns[0]);
+  initialInput.resolverContractsByReference.set('no-100', [{
+    resolverId: 'alpha-official',
+    version: '2',
+    scope: 'exact_model_documents',
+    required: true,
+  }]);
+  const priorManifest = buildHistoricalOfficialCandidateManifest(initialInput);
+
+  const correctedResolver = resolverResult({
+    candidates: [{
+      sourceUrl,
+      documentType: 'product_page',
+      sourceModelHint: 'NO-100',
+      sourceRole: 'manufacturer_product_page',
+      requiredAttempt: false,
+    }],
+  });
+  correctedResolver.version = '3';
+  correctedResolver.candidates[0].resolverVersion = '3';
+  const correctedRun = discoveryRun([{
+    referenceId: 'no-100',
+    brand: 'Alpha',
+    model: 'NO-100',
+    category: 'fridge',
+    resolvers: [correctedResolver],
+  }]);
+  correctedRun.runId = 'candidate-content-type-correction-20260725';
+  correctedRun.startedAt = '2026-07-25T01:02:00.000Z';
+  correctedRun.completedAt = '2026-07-25T01:03:00.000Z';
+  const reboundCorrectedRun = rebindDiscoveryRun(correctedRun);
+  const correctedInput = fixture();
+  correctedInput.generatedAt = reboundCorrectedRun.completedAt;
+  correctedInput.discoveryRuns = [reboundCorrectedRun];
+  correctedInput.priorManifest = priorManifest;
+  correctedInput.resolverContractsByReference.set('no-100', [{
+    resolverId: 'alpha-official',
+    version: '3',
+    scope: 'exact_model_documents',
+    required: true,
+  }]);
+
+  const corrected = buildHistoricalOfficialCandidateManifest(correctedInput);
+  const candidate = corrected.candidates.find((row) => row.sourceUrl === sourceUrl);
+  const target = corrected.targets.find((row) => row.referenceId === 'no-100');
+  const edge = target.candidateEdges.find((row) => row.candidateId === candidate.candidateId);
+
+  assert.equal(candidate.expectedContentType, 'text/html');
+  assert.deepEqual(candidate.documentTypes, ['product_page']);
+  assert.deepEqual(candidate.sourceRoles, ['manufacturer_product_page']);
+  assert.deepEqual(edge.documentTypes, ['product_page']);
+  assert.deepEqual(edge.sourceModelHints, ['NO-100']);
+  assert.deepEqual(edge.discoveryStrategyIds, [
+    'alpha-official@3:official_support_index',
+  ]);
+  assert.equal(edge.requiredAttempt, false);
+  assert.equal(corrected.runBindings.length, 2);
+
+  const staleInput = fixture();
+  staleInput.generatedAt = '2026-07-25T01:04:00.000Z';
+  staleInput.discoveryRuns = initialInput.discoveryRuns;
+  staleInput.priorManifest = corrected;
+  staleInput.resolverContractsByReference.set('no-100', [{
+    resolverId: 'alpha-official',
+    version: '3',
+    scope: 'exact_model_documents',
+    required: true,
+  }]);
+  assert.throws(
+    () => buildHistoricalOfficialCandidateManifest(staleInput),
+    /candidate content-type conflict/i,
+  );
+});
+
 test('queue refresh time does not append a duplicate classified-source discovery', () => {
   const firstInput = fixture();
   const first = buildHistoricalOfficialCandidateManifest(firstInput);

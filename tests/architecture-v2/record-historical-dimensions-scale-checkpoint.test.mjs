@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  loadHistoricalDimensionsCheckpointCurrentInput,
   parseHistoricalDimensionsScaleCheckpointArgs,
 } from '../../scripts/architecture-v2/record-historical-dimensions-scale-checkpoint.mjs';
 
@@ -34,4 +35,12 @@ test('discovery checkpoint rejects an audit path while dimensions permits one', 
   ]);
   assert.equal(parsed.stage, 'DIMENSIONS');
   assert.equal(parsed.audit, '/tmp/audit.json');
+});
+
+test('checkpoint input binds Fit and replacement audits to the active retail release', async () => {
+  const input = await loadHistoricalDimensionsCheckpointCurrentInput();
+
+  assert.equal(input.replacementAudit.summary.referenceRecords, 8087);
+  assert.equal(input.replacementAudit.summary.currentCatalogProducts, 3513);
+  assert.equal(input.fitPublicationAudit.summary.products, 3513);
 });

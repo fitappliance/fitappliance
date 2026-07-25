@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-24T17:04:51.280Z",
-  "sourceBundleSha256": "f46f30455de497b17238a88c48fcb96059df877b989613bb9887e5e0aaf52528",
+  "generatedAt": "2026-07-25T15:08:29.076Z",
+  "sourceBundleSha256": "432965be3711406cff9572803d0a9b825de4e0ea4b3a0b846b2bbc321ab756eb",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -5464,6 +5464,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_f0827f1ae03b68ff3da038e7",
+      "referenceId": "fa_ref_5ff3b96f4a175d479c616a4b",
+      "brand": "Miele",
+      "model": "G7130SCCLST",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531610.pdf",
+      "sourcePdfSha256": "7f412dee16b6bea7e1aa057d52e37067ba37dd54768a47beffe73d71f1a01297",
+      "contentSha256": "7f412dee16b6bea7e1aa057d52e37067ba37dd54768a47beffe73d71f1a01297",
+      "receiptBindingSha256": "d43f463e73e0abd31c09ef55f1f3ff0616ca4ed293ca0ceca3ea2ff157bff52b",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/a5/77/a57722133955d2452382786ae9e7fbfd626caaf722582142ab3678ba7eb3e527.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_f0f25efff0137106b674f8fd",
       "referenceId": "fa_ref_1d7d89a4ade9dc5fd523fddf",
       "brand": "Electrolux",
@@ -5731,11 +5745,11 @@
     }
   ],
   "summary": {
-    "entries": 383,
-    "sources": 409,
-    "passed": 409,
+    "entries": 384,
+    "sources": 410,
+    "passed": 410,
     "failed": 0
   },
-  "checkedObjects": 806,
-  "semanticAuditSha256": "b06f2ee81c47a876a48c8d176c72c4c984c8c2177b1e5db0eea7b3852eda5ef6"
+  "checkedObjects": 809,
+  "semanticAuditSha256": "9d0c2e9ffbf317569298e7e16d91bae240b6749566fa368bf2ad49a8c9b34eef"
 }

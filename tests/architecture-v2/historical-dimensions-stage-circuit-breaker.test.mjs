@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import {
   buildHistoricalDimensionsDiscoveryStageMetrics,
+  buildHistoricalDimensionsRecoveryFunnel,
   buildHistoricalDimensionsRecoveryStageMetrics,
   evaluateHistoricalDimensionsStageCircuitBreakers,
   oneSidedWilsonUpperBound,
@@ -156,6 +157,50 @@ test('stage metrics preserve native denominators and keep Fit diagnostic-only', 
     ['DIMENSIONS_RECEIPT', 1, 1, 1, false],
     ['INSTALLATION_FIT', 0, 0, 0, true],
   ]);
+});
+
+test('receipt-bound official marketing aliases count as proven dimensions identities', () => {
+  const source = {
+    authority: 'manufacturer',
+    sourceType: 'official_model_variant_pdf',
+    contentType: 'application/pdf',
+    contentSha256: HASH,
+    objectPath: `evidence/web/${HASH}.pdf`,
+    identity: {
+      outcome: 'official_marketing_alias',
+      model: 'G7130SCCLST',
+      sourceModel: 'G 7130 SC',
+    },
+    derivedArtifact: { parserName: 'MinerU', format: 'content_list_v2' },
+    verificationReceipt: { bindingSha256: 'b'.repeat(64) },
+  };
+  const results = {
+    schemaVersion: 1,
+    outcomes: [{
+      status: 'accepted',
+      candidateInventory: {
+        candidates: [{
+          authorityMode: 'official',
+          requiredAttempt: true,
+          outcome: { status: 'accepted', source },
+        }],
+      },
+      sources: [source],
+    }],
+  };
+
+  assert.equal(buildHistoricalDimensionsRecoveryFunnel(results).identityProvenTargets, 1);
+  const metrics = buildHistoricalDimensionsRecoveryStageMetrics(results, EPOCHS);
+  assert.deepEqual(metrics.slice(2, 4).map((row) => [
+    row.stage, row.metricId, row.numerator, row.denominator,
+  ]), [[
+    'IDENTITY', 'receipt_eligible_identity_proof_per_valid_parsed_document', 1, 1,
+  ], [
+    'DIMENSIONS_RECEIPT',
+    'accepted_whd_receipt_per_receipt_eligible_identity_target',
+    1,
+    1,
+  ]]);
 });
 
 test('five misses cannot halt and retryable units never inflate a conclusive sample', () => {

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-24T17:04:51.280Z",
-  "semanticQueueSha256": "5e05c3641c6d6f1a6bffca9ddf0a4154c99e4b1eff21d4c4b378e292cf30256d",
-  "sourceClassificationSha256": "91bd17bb9c50474bb690ab389376764a3e52c62a6281159b6e090405ffb11a80",
+  "generatedAt": "2026-07-25T15:08:29.076Z",
+  "semanticQueueSha256": "765ca72848c5405bc4caec0fca1d63112b450605e46d887f86e4dd25d3d75e62",
+  "sourceClassificationSha256": "9dcd88fe8a2b952125726c3d46e0f2ceaad5d796e9d28a64b04971347774d8ce",
   "sourceIdentityMigrationSha256": null,
   "sourceBindings": {
     "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
@@ -1162,37 +1162,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_66d3744c75f883a8f99a377d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_9798c6c55f3eddd99b04479b",
-      "referenceId": "fa_ref_5ff3b96f4a175d479c616a4b",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7130SCCLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_e8d542d90d4cc4da10daa250"
-      ],
-      "resolverIds": [
-        "miele-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_f0827f1ae03b68ff3da038e7"
-      ],
-      "legacyRuntimeIds": [
-        "ao-162456"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_8a03825239ae3e515800f2ab"
       ],
       "offlineReplayOutcome": null
     },
@@ -205474,19 +205443,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_e8d542d90d4cc4da10daa250",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/c/4/e/0/c4e0685fe4a6415bc2a224d45cdf7dd65a79ac96_G7130_SC_CLST_12531610.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/G7130SCCLST.json",
-        "source:doc_9b05cb3c7fc3dee028c68d8d"
-      ],
-      "referenceIds": [
-        "fa_ref_5ff3b96f4a175d479c616a4b"
-      ]
-    },
-    {
       "sourceId": "historical_source_e8e904514528363240d19d53",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/b/1/b/5/b1b52048bfc454d909c1a164b2a6b95e627e0231_EWF14933_Electrolux_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -206798,24 +206754,24 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 402,
+    "COMPLETE_RECEIPT": 403,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8087,
-    "queuedModels": 7685,
-    "uniqueReferences": 7685,
-    "candidateSources": 1338,
-    "candidateEdges": 1373,
+    "queuedModels": 7684,
+    "uniqueReferences": 7684,
+    "candidateSources": 1337,
+    "candidateEdges": 1372,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2838,
-      "CURRENT_RETAIL": 236,
+      "CURRENT_RETAIL": 235,
       "REGISTRY_ONLY": 4563,
       "UNKNOWN_RETAIL": 48
     },
     "byCategory": {
-      "dishwasher": 1242,
+      "dishwasher": 1241,
       "dryer": 792,
       "fridge": 4208,
       "washing_machine": 1443
@@ -206824,22 +206780,22 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 132,
       "OFFICIAL_DISCOVERY": 6412,
-      "REFERENCE_REDISCOVERY": 1058
+      "REFERENCE_REDISCOVERY": 1057
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 132,
       "OFFICIAL_DISCOVERY": 6412,
-      "OFFICIAL_REDISCOVERY": 1058
+      "OFFICIAL_REDISCOVERY": 1057
     },
     "byExecutionReadiness": {
       "BOUNDED_READY": 6,
-      "DISCOVERY_READY": 5020,
+      "DISCOVERY_READY": 5019,
       "RESEARCH_REQUIRED": 77,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 402,
+      "COMPLETE_RECEIPT": 403,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

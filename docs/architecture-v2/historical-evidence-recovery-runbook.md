@@ -1966,6 +1966,12 @@ npm run record:historical-dimensions-scale-checkpoint -- \
   --audit "$run_dir/audit-full.json"
 ```
 
+Do not change an epoch-bound parser, source, receipt or policy file between the
+immutable run and its checkpoint. Promotion may update cumulative evidence,
+but the checkpoint must still be recorded under the exact processor and policy
+epochs used by the run. Apply a reviewed implementation change only after that
+checkpoint, then rebuild the control so the next manifest uses the new epoch.
+
 A byte-bound official artifact counts as fetched even if MinerU or exact-model
 identity later fails. It does not count as MinerU-valid, identity-proven or
 dimensions-receipted. Only scalar receipt deltas may increase replacement
@@ -2019,6 +2025,41 @@ while runnable or deferred P0 work remains. Old halts reopen only when a
 relevant lifecycle, resolver, source-authority, parser, MinerU/toolchain,
 receipt-policy, or Fit-policy epoch changes. Queue and manifest hashes are not
 processor epochs.
+
+The 2026-07-25 Miele follow-up established a tested new source and identity
+epoch without bypassing the earlier Esatto result. Miele compact catalogue
+identities such as `G7130SCCLST` are not matched to a family manual by token
+similarity. The resolver must first bind one exact Australian shop product card
+to:
+
+1. the displayed source model (`G 7130 SC`);
+2. one material number (`12531610`);
+3. the finish (`CleanSteel`);
+4. the exact Product Sheet URL; and
+5. the immutable hash of the discovery page.
+
+The Product Sheet must repeat that material/model/finish context in the MinerU
+document before its labelled appliance width, height and depth can attest the
+requested finish SKU. Sibling materials, conflicting product cards, family
+manuals and unbound model stems remain rejected.
+
+The immutable discovery run
+`historical-scale-p0-miele-g7130scclst-discovery-20260725-i` corrected a prior
+product-page/PDF content-type classification under Miele resolver v3 while
+retaining the older run binding for audit. The approved acquisition run
+`historical-scale-p0-miele-g7130scclst-dimensions-20260725-j` then accepted one
+official PDF with page-2 appliance dimensions `598 x 845 x 600 mm` (W/H/D).
+Its full online audit replayed 809 stored objects with zero repairs and zero
+violations. The checkpoint recorded one selected, fetched, MinerU-valid and
+dimensions-receipted target, with no terminal or retryable target.
+
+After promotion, cumulative coverage increased to 403 current valid receipts
+and 410/410 passing receipt sources. The active release remains unchanged at
+332 receipt-bound public dimensions and zero receipt-bound `VERIFIED_FIT`
+because this operational batch did not materialise or publish a new release.
+Future batches preserve product pages as lazy optional fallbacks when the
+required official document succeeds; their source role and per-target required
+status are bound into the batch contract.
 
 Global stops are limited to an explicit safety/audit failure, exhausted
 resource budget, unavailable required online external state, or no runnable
@@ -2222,8 +2263,12 @@ node scripts/architecture-v2/run-retail-lifecycle-refresh.mjs \
 After every applied run, finish all online replay that can update a tracked
 audit before rebuilding downstream control artifacts. Never run an online
 receipt audit in parallel with scale-control or system-contract generation: the
-contract must reject that mixed epoch. Then rebuild strictly in the canonical
-DAG order and inspect the refresh inventory before considering a release:
+contract must reject that mixed epoch. Historical acceptance receipt replay
+defaults its `generatedAt` to the immutable acceptance bundle timestamp, so an
+unchanged bundle and object store must produce byte-identical audit output on
+every rerun. `--generated-at` is reserved for an explicit controlled migration.
+Then rebuild strictly in the canonical DAG order and inspect the refresh
+inventory before considering a release:
 
 ```bash
 FITAPPLIANCE_STORAGE_ROOT=/Volumes/UGREEN-1TB/FitAppliance \

@@ -15,6 +15,10 @@ function option(args, name) {
   return index >= 0 ? args[index + 1] : null;
 }
 
+export function resolveAcceptanceAuditGeneratedAt(args, bundle) {
+  return option(args, '--generated-at') ?? bundle.generatedAt;
+}
+
 async function atomicJson(path, value) {
   await mkdir(dirname(path), { recursive: true });
   const temporary = `${path}.${process.pid}.${Date.now()}.tmp`;
@@ -33,8 +37,8 @@ export async function runCli(args = process.argv.slice(2)) {
     ?? resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAcceptanceBundle'));
   const outputPath = resolve(option(args, '--output')
     ?? resolveArchitectureV2Path(root, 'historicalAcceptanceReceiptReplayAudit'));
-  const generatedAt = option(args, '--generated-at') ?? new Date().toISOString();
   const bundle = JSON.parse(await readFile(bundlePath, 'utf8'));
+  const generatedAt = resolveAcceptanceAuditGeneratedAt(args, bundle);
   const objectStore = createEvidenceObjectStore(storageRoot);
   const report = await auditHistoricalAcceptanceReceipts({
     bundle,

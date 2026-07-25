@@ -14,6 +14,7 @@ import {
   buildEvidenceProcessorEpochs,
   CLAIM_PARSER_IMPLEMENTATION_PATHS,
   claimParserImplementationIdentity as sharedClaimParserImplementationIdentity,
+  EVIDENCE_TOOLCHAIN_IMPLEMENTATION_PATHS,
 } from '../../src/domain/evidence-processor-epoch.mjs';
 import { validateHistoricalEvidenceFamilyCanarySelection } from '../../src/domain/historical-evidence-family-canary.mjs';
 import {
@@ -194,7 +195,13 @@ function selectedBatch(batch, options) {
   const jobIds = new Set(targets.flatMap((target) => target.candidateJobIds));
   const artifactJobs = batch.artifactJobs
     .filter((job) => jobIds.has(job.jobId))
-    .map((job) => ({ ...structuredClone(job), targetIds: job.targetIds.filter((targetId) => targetIds.has(targetId)) }));
+    .map((job) => ({
+      ...structuredClone(job),
+      targetIds: job.targetIds.filter((targetId) => targetIds.has(targetId)),
+      ...(job.requiredTargetIds ? {
+        requiredTargetIds: job.requiredTargetIds.filter((targetId) => targetIds.has(targetId)),
+      } : {}),
+    }));
   const selection = {
     ...structuredClone(batch.selection),
     jobIds: options.jobIds.length ? [...options.jobIds] : [...batch.selection.jobIds],
@@ -288,10 +295,16 @@ async function defaultVerifyTools(policy) {
     repoRoot,
     'data/architecture-v2/policies/manufacturer-source-policy.json',
   ), 'utf8'));
-  const claimParserFiles = new Map(await Promise.all(CLAIM_PARSER_IMPLEMENTATION_PATHS.map(async (path) => [
+  const implementationFiles = new Map(await Promise.all(
+    EVIDENCE_TOOLCHAIN_IMPLEMENTATION_PATHS.map(async (path) => [
+      path,
+      await defaultFs.readFile(resolve(repoRoot, path)),
+    ]),
+  ));
+  const claimParserFiles = new Map(CLAIM_PARSER_IMPLEMENTATION_PATHS.map((path) => [
     path,
-    await defaultFs.readFile(resolve(repoRoot, path)),
-  ])));
+    implementationFiles.get(path),
+  ]));
   return {
     runnerVersion: '4',
     nodeVersion: process.version,
@@ -303,7 +316,7 @@ async function defaultVerifyTools(policy) {
     claimParserImplementationSha256: claimParserImplementationIdentity(claimParserFiles),
     manufacturerDocumentStrategiesSha256: manufacturerDocumentStrategiesIdentity(manufacturerStrategies),
     manufacturerSourcePolicySha256: manufacturerSourcePolicyIdentity(manufacturerSourcePolicy),
-    evidenceProcessorEpochs: buildEvidenceProcessorEpochs(claimParserFiles),
+    evidenceProcessorEpochs: buildEvidenceProcessorEpochs(implementationFiles),
   };
 }
 
@@ -350,6 +363,22 @@ async function fetchWithRetry(url, brand, policy, artifactContext = {}) {
     }
   }
   throw lastError;
+}
+
+export function officialResolverOptionsForObjectStore(objectStore) {
+  if (typeof objectStore?.writeObject !== 'function') {
+    throw new TypeError('content-addressed object-store writer required');
+  }
+  const finderOptions = { writeObject: objectStore.writeObject };
+  return {
+    bosch: { finderOptions },
+    beko: { finderOptions },
+    haier: { finderOptions },
+    asko: { finderOptions },
+    esatto: { finderOptions },
+    miele: { finderOptions },
+    fisherPaykel: { finderOptions },
+  };
 }
 
 function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
@@ -407,14 +436,7 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
     }),
     collectCandidates: collectEvidenceCandidates,
     candidateResolversForTarget: (target) => recoveryCandidateResolversForTarget(target, {
-      resolverOptions: {
-        bosch: { finderOptions: { writeObject: objectStore.writeObject } },
-        beko: { finderOptions: { writeObject: objectStore.writeObject } },
-        haier: { finderOptions: { writeObject: objectStore.writeObject } },
-        asko: { finderOptions: { writeObject: objectStore.writeObject } },
-        esatto: { finderOptions: { writeObject: objectStore.writeObject } },
-        fisherPaykel: { finderOptions: { writeObject: objectStore.writeObject } },
-      },
+      resolverOptions: officialResolverOptionsForObjectStore(objectStore),
     }),
     reconcileClaims: reconcileEvidenceClaims,
     projectGeometry: projectEvidenceGeometry,
