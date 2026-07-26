@@ -88,7 +88,7 @@ under that task, repair the plan first, and only then resume implementation.
 | 6 | Per-model runs repeat family-level source failures | COMPLETE | 8 domain tests; 27 gate/runner/epoch tests; Architecture V2 929/929; lint/offline build/diff passed; schema-v2 artifact stable |
 | 7 | Generated batches are operationally too broad | COMPLETE | 12 planner tests; 48 lane tests; Architecture V2 942/942; lint/offline build/determinism/real-manifest validation passed |
 | 8 | Parser repairs are not prioritised by reusable family impact | COMPLETE | 216 focused tests; Architecture V2 968/968; lint/offline build/diff passed; full 803-object repair audit and 408/408 receipt replay passed |
-| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Controlled P0 checkpoints plus Miele material-bound follow-up; 403 current receipts; 410/410 source replay; 2,915 full tests and zero publication violations |
+| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Controlled P0 checkpoints plus two material-bound Miele variants; 404 current receipts; 411/411 source replay; Architecture V2 1,242/1,242 and full repository 2,919/2,919; zero publication violations |
 | 10 | Full installation/Fit evidence has no separate scale pipeline | COMPLETE | 27 focused tests; Architecture V2 1002/1002; full repository 2659/2659; offline build, lint and diff check passed; external MinerU replay 21/21; publication violations 0 |
 
 ## Ten-Problem Solution Map
@@ -759,6 +759,41 @@ checkpoint ordering and exact identity constraints. Acceptance receipt replay
 now derives its default timestamp from the immutable bundle; consecutive
 410/410 replays are byte-identical and no longer invalidate the downstream
 scale-control/system-contract epoch.
+
+**Integrated-sheet closure (2026-07-26):** The next approved Miele target,
+`G7130SCICLST`, proved why download success and MinerU success are not enough.
+Its exact Australian product card bound material `12531640` to source model
+`G 7130 SCi` and the official Product Sheet. The first acquisition epoch
+persisted both immutable artifacts but failed attestation because MinerU placed
+the page-one material number in the finish table caption while the exact model
+heading first appeared with the appliance-dimension table on page two. That
+failed run and checkpoint remain immutable.
+
+The repair now accepts only either (a) a finish table caption containing the
+same unique material number, or (b) a same-page exact model plus material
+binding. The dimensions page must still contain exactly one source-model
+heading, the same material number and one table with the three explicit
+`Appliance width/height/depth in mm` rows. Niche and door-open values remain
+excluded. Failed attestation preserves its PDF and bounded MinerU binding,
+dimension-scope rejection is classified as `mineru` rather than transport, and
+the recovery funnel counts persisted bytes and valid parsing independently of
+receipt acceptance. A new `scale-metrics` epoch binds the classifier, runner
+and funnel implementation so old and new metric semantics cannot be pooled by
+the circuit breaker.
+
+The succeeding immutable run
+`historical-scale-p0-miele-g7130sciclst-dimensions-20260726-c` accepted exact
+closed W/H/D `598 x 805 x 570 mm`. Online audit
+`historical-recovery-audit-29a794cefd199244458b9157` replayed 812 objects with
+zero repair or violation, and checkpoint
+`historical-dimensions-checkpoint-088298e931bd1b3f118dbec0` recorded a complete
+`1/1` funnel through acquisition, MinerU, identity and dimensions receipt.
+Cumulative coverage is 404 current valid receipts and 411/411 passing sources.
+The active release remains 332 receipt-bound public dimensions and zero
+receipt-bound `VERIFIED_FIT`; the accepted record remains staged evidence only.
+Focused repair tests passed 213/213, Architecture V2 passed 1,242/1,242 and the
+full repository passed 2,919/2,919; lint, system-contract replay and diff checks
+also passed.
 
 **Acceptance:** Coverage increases monotonically, prior receipts replay, and no
 batch can claim progress from downloads or MinerU output alone.

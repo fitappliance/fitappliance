@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-25T15:08:29.076Z",
+  "generatedAt": "2026-07-26T03:19:35.763Z",
   "sourceBindings": {
-    "classificationSha256": "7bf63ba5933de2c4de62dae97b9458b9d328ab0047934576d4ca52aecd597502",
-    "acquisitionQueueSha256": "e33cafce0ee0cb5938d1cb1e6c0d9ea4b32b021dfdd5ccce7946a5a78670a466",
-    "executableQueueSha256": "d1758396f8e7e756691e762b7940bfcc7c42bdc35b582891942d8b59eccade11",
-    "acceptanceBundleSha256": "5c0aad3aa82ec12c366676b77a7d48d3f3e4a2d9002a92b3fe3ce58736d67c6d",
-    "attemptLedgerSha256": "66445944d869c707734485faa6bbfc0e0a22a34ce52f8d11d84667ed13f8d9b7"
+    "classificationSha256": "2db096cadf60adabd8f1cd7506bf22be8f9deae805a577481a3f178bafab9fda",
+    "acquisitionQueueSha256": "00250542099f2584b3285a6db90b2f638b29d87ed75e6c5ff2bd09027968cb2e",
+    "executableQueueSha256": "d8f492697b1eff2a1689b48fec784b0e704b490843fc8b7ba5802a5d04d6bbe2",
+    "acceptanceBundleSha256": "b9f45afd57f732888007245852561867a5c5ec398f0ea9ced1b0e7c8dfb06296",
+    "attemptLedgerSha256": "81349d3773248059d3f46859a1b679049f2044bdef770df06e62ba3de59c0864"
   },
-  "sourceClassificationGeneratedAt": "2026-07-25T15:08:29.076Z",
-  "sourceExecutableQueueGeneratedAt": "2026-07-25T15:08:29.076Z",
+  "sourceClassificationGeneratedAt": "2026-07-26T03:19:35.763Z",
+  "sourceExecutableQueueGeneratedAt": "2026-07-26T03:19:35.763Z",
   "summary": {
     "records": 8087,
-    "actionable": 4990,
+    "actionable": 4989,
     "actionableBlockedOverlap": 6,
     "acquisitionWork": 0,
-    "discoveryWork": 4990,
+    "discoveryWork": 4989,
     "deferred": 2694,
-    "completed": 403,
+    "completed": 404,
     "blocked": 2700,
-    "terminal": 3103,
+    "terminal": 3104,
     "byState": {
       "BLOCKED_SAME_EPOCH": 2,
       "CONFLICT_QUARANTINE": 83,
-      "DIMENSIONS_RECEIPT": 403,
+      "DIMENSIONS_RECEIPT": 404,
       "IDENTITY_RESEARCH": 132,
       "NO_OFFICIAL_SOURCE": 33,
       "RETRYABLE": 10,
-      "SOURCE_DISCOVERY_REQUIRED": 4842,
+      "SOURCE_DISCOVERY_REQUIRED": 4841,
       "UNSEEN": 2582
     },
     "byStateClass": {
-      "ACTIONABLE": 4984,
+      "ACTIONABLE": 4983,
       "BLOCKED": 2700,
-      "COMPLETED": 403
+      "COMPLETED": 404
     }
   },
   "controls": {
@@ -2357,9 +2357,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -2393,9 +2393,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -2429,9 +2429,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -2465,9 +2465,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -2528,9 +2528,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -3916,9 +3916,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -5095,9 +5095,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -5131,9 +5131,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -5167,9 +5167,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -5203,9 +5203,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -5239,9 +5239,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -5275,9 +5275,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -5311,9 +5311,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -5347,9 +5347,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -17577,9 +17577,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -17757,9 +17757,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -17793,9 +17793,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -17949,9 +17949,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -17985,9 +17985,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -18486,9 +18486,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -18573,9 +18573,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -24790,20 +24790,23 @@
       "model": "G7130SCICLST",
       "lifecycleState": "CURRENT_RETAIL",
       "sourceAttemptSummary": {
-        "activeRetryable": 0,
+        "activeRetryable": 1,
         "activeTerminal": 0,
-        "resolved": 0
+        "resolved": 1
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_dd3b9bd51a13b88d018181a9",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:84a0cfec68ec810364dcc162ac2c8ba8627404f2dfa098f07a499c4dcbcc21b6"
+        ],
+        "acceptanceTargetId": "recovery_target_dd3b9bd51a13b88d018181a9",
+        "receiptBindingSha256s": [
+          "84a0cfec68ec810364dcc162ac2c8ba8627404f2dfa098f07a499c4dcbcc21b6"
+        ]
       },
       "reopeningConditions": []
     },
@@ -39586,9 +39589,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -39646,9 +39649,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -40072,9 +40075,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -40108,9 +40111,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -40240,9 +40243,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -40276,9 +40279,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -40312,9 +40315,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -40348,9 +40351,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -44397,9 +44400,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -44508,9 +44511,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -44592,9 +44595,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -44703,9 +44706,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -44766,9 +44769,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [
@@ -97097,9 +97100,9 @@
         "evidenceProcessorEpochs": {
           "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
           "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-          "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-          "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-          "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+          "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+          "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+          "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
         }
       },
       "reopeningConditions": [

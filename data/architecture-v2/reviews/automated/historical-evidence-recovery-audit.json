@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "auditId": "historical-recovery-audit-853441748555cfd468a8d6fb",
-  "generatedAt": "2026-07-21T11:30:32.514Z",
+  "auditId": "historical-recovery-audit-29a794cefd199244458b9157",
+  "generatedAt": "2026-07-26T03:19:14.849Z",
   "mode": "online",
   "status": "passed",
-  "batchId": "historical-recovery-80fb5b96b8bbdf17bf74511e-slice-cb0614910d17",
-  "batchSha256": "8030f9d1c13e944c85c71f90c49845066d002fb7c6ab2526941835651aab9454",
-  "queueSha256": "b3974d0fa1ec43e7b627523aefd37a73901404866a82f4ef4ef237d6b409deee",
+  "batchId": "historical-recovery-25920cd6433c8b4ea3699cff-slice-83eacb4a5d3f",
+  "batchSha256": "237ceee0edc978ec268546a99e8aa02ab086d34e91eb6cc8ad5814e6834c0e52",
+  "queueSha256": "c766384097eba42bbf8e7f73cf4490f8fccb6bafa8e40c27f022a836005450a8",
   "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
-  "resultsSha256": "9c7443f8f59f42b20e7e538916789c841ef5f39518ee5eeacec1fcf2d2bd13bb",
-  "priorBundleSha256": "54dfcfd08192539d915ced1087157bb2874c36ba8fa786e1ddc13d6b6b06fbaf",
+  "resultsSha256": "c95071d8a36c93d798fb053ef1b665041a064ee4de84e09253109deadb1d0396",
+  "priorBundleSha256": "432965be3711406cff9572803d0a9b825de4e0ea4b3a0b846b2bbc321ab756eb",
   "priorObjectsReplayed": true,
   "checkedTargets": 1,
-  "checkedObjects": 803,
+  "checkedObjects": 812,
   "repairs": [],
   "violations": [],
-  "semanticAuditSha256": "853441748555cfd468a8d6fb1b394f16bc0e59c0ab893f2bded0a98e345d2bed"
+  "semanticAuditSha256": "29a794cefd199244458b915715b2463d8542e3ad7b79fd2746ddee555073eca7"
 }

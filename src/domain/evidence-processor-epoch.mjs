@@ -107,7 +107,7 @@ export function historicalAttemptProcessorCapability({ brand, sourceUrl, failure
     return SMEG_AU_TECHSPEC_PDF_DIMENSIONS_CAPABILITY;
   }
   const host = url.hostname.toLowerCase();
-  if (normalized === 'miele' && failureCode === 'identity'
+  if (normalized === 'miele' && ['identity', 'mineru'].includes(failureCode)
     && url.protocol === 'https:' && !url.username && !url.password && !url.search
     && host === 'www.miele.com.au'
     && /^\/media\/ex\/au\/specsheets\/\d{6,14}\.pdf$/i.test(url.pathname)) {

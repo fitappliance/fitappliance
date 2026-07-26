@@ -3250,10 +3250,9 @@ function mieleAuProductMaterialDimensionScope(
         || fragment.listEntries.some((entry) => mieleHeadingMatchesSourceModel(entry, model))
       )
   )));
-  if (headingsByPage[0]?.length !== 1) return null;
 
   const materialMatches = document.pages.flatMap((items, pageIndex) => (
-    items.flatMap((fragment) => [...fragment.text.matchAll(
+    items.flatMap((fragment) => [...fragment.identityText.matchAll(
       /\bMaterial\s+number\s*:\s*(\d{6,14})\b/gi,
     )].map((match) => ({ page: pageIndex + 1, value: match[1], fragment })))
   ));
@@ -3261,10 +3260,10 @@ function mieleAuProductMaterialDimensionScope(
     || new Set(materialMatches.map((match) => match.value)).size !== 1
     || materialMatches[0].value !== materialNumber) return null;
 
-  const finishRows = document.pages.flatMap((items) => items.flatMap((fragment) => (
+  const finishRows = document.pages.flatMap((items, pageIndex) => items.flatMap((fragment) => (
     fragment.type === 'table'
       ? fragment.rows.filter((row) => /^Control panel colour$/i.test(row.label))
-        .map((row) => ({ row, fragment }))
+        .map((row) => ({ row, fragment, page: pageIndex + 1 }))
       : []
   )));
   if (finishRows.length !== 1) return null;
@@ -3273,6 +3272,15 @@ function mieleAuProductMaterialDimensionScope(
     'i',
   );
   if (!finishExpression.test(finishRows[0].row.value)) return null;
+  const finishRow = finishRows[0];
+  const finishHasCaptionMaterial = materialMatches.some((match) => (
+    match.fragment === finishRow.fragment && match.value === materialNumber
+  ));
+  const finishHasPageIdentity = headingsByPage[finishRow.page - 1]?.length === 1
+    && materialMatches.some((match) => (
+      match.page === finishRow.page && match.value === materialNumber
+    ));
+  if (!finishHasCaptionMaterial && !finishHasPageIdentity) return null;
 
   const axisLabels = new Map([
     ['Appliance width in mm', 'width'],

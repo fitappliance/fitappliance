@@ -3958,18 +3958,27 @@ function mieleProductSheet({
   width = '598',
   height = '845',
   depth = '600',
+  firstPageModel = true,
+  firstPageMaterialParagraph = true,
+  finishTableMaterialCaption = false,
 } = {}) {
   const heading = structuredListFragment([
     `${model} Front AutoDos`,
     'Freestanding dishwasher',
   ], { bbox: [112, 153, 699, 204] });
+  const materialText = `EAN: 4002516785118 / Material number: ${materialNumber}`;
+  const finishTable = `<table>
+    <tr><td>Control panel colour</td><td>${finish}</td></tr>
+  </table>`;
   return Buffer.from(JSON.stringify([
     [
-      heading,
-      paragraph(`EAN: 4002516785118 / Material number: ${materialNumber}`, [391, 208, 700, 222]),
-      tableFragment(`<table>
-        <tr><td>Control panel colour</td><td>${finish}</td></tr>
-      </table>`),
+      ...(firstPageModel ? [heading] : []),
+      ...(firstPageMaterialParagraph
+        ? [paragraph(materialText, [391, 208, 700, 222])]
+        : []),
+      finishTableMaterialCaption
+        ? captionedTableFragment(finishTable, materialText)
+        : tableFragment(finishTable),
     ],
     [
       structuredListFragment([
@@ -4019,6 +4028,34 @@ test('Miele product-sheet grammar binds appliance W/H/D to an official material 
   assert.equal(parsed.claims.some((claim) => /niche|door open/i.test(claim.sourceLabel)), false);
 });
 
+test('Miele integrated sheet binds a captioned material on page one to model-scoped W/H/D on page two', () => {
+  const options = {
+    ...mieleProductSheetOptions,
+    caseIdentity: { brand: 'Miele', model: 'G 7130 SCi', category: 'dishwasher' },
+    sourceUrls: ['https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf'],
+    boundProductMaterialNumber: '12531640',
+    boundProductFinishLabel: 'Stainless steel/CleanSteel',
+  };
+  const parsed = parseMineruContentListV2(mieleProductSheet({
+    model: 'G 7130 SCi',
+    materialNumber: '12531640',
+    finish: 'Stainless steel/CleanSteel',
+    width: '598',
+    height: '805',
+    depth: '570',
+    firstPageModel: false,
+    firstPageMaterialParagraph: false,
+    finishTableMaterialCaption: true,
+  }), options);
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 570 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 805 },
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+  });
+  assert.ok(parsed.claims.every((claim) => claim.page === 2));
+});
+
 test('Miele product-sheet material grammar fails closed across identity and binding mutations', () => {
   const cases = [
     ['sibling source model', mieleProductSheet({ model: 'G 7130 SCU' }), mieleProductSheetOptions],
@@ -4040,6 +4077,11 @@ test('Miele product-sheet material grammar fails closed across identity and bind
       ...mieleProductSheetOptions,
       boundProductMaterialNumber: undefined,
     }],
+    ['finish page lacks a model or caption binding', mieleProductSheet({
+      firstPageModel: false,
+      firstPageMaterialParagraph: true,
+      finishTableMaterialCaption: false,
+    }), mieleProductSheetOptions],
   ];
 
   for (const [label, bytes, options] of cases) {

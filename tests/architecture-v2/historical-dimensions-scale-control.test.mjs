@@ -19,7 +19,7 @@ const AT = '2026-07-19T20:00:00.000Z';
 function epochs() {
   return [
     'fit-policy', 'lifecycle-policy', 'mineru-toolchain', 'parser',
-    'receipt-policy', 'resolver-contract', 'source-authority-policy',
+    'receipt-policy', 'resolver-contract', 'scale-metrics', 'source-authority-policy',
   ].map((id, index) => ({ id, semanticSha256: String(index + 1).repeat(64).slice(0, 64) }));
 }
 

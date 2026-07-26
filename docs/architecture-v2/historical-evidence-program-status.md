@@ -1,6 +1,6 @@
 # Historical Evidence Programme Status
 
-Generated: 2026-07-25T15:08:29.076Z
+Generated: 2026-07-26T03:19:35.763Z
 
 > Counts are deliberately separated by grain. A PDF or MinerU document is not a model receipt, and W/H/D is not Verified Fit.
 
@@ -11,19 +11,19 @@ Generated: 2026-07-25T15:08:29.076Z
 | Inventory classified | Historical Model Reference | 8087 | 8087 | 100.00% |
 | Models with document links | Historical Model Reference | 1766 | 8087 | 21.84% |
 | Models without document links | Historical Model Reference | 6321 | 8087 | 78.16% |
-| Models with current valid receipts | Historical Model Reference | 403 | 8087 | 4.98% |
-| Models queued for acquisition | Historical Model Reference | 7684 | 8087 | 95.02% |
-| Executable model targets | Historical Model Reference | 4990 | 7684 | 64.94% |
-| Models in cumulative recovery acceptance | Historical Model Reference | 384 | 8087 | 4.75% |
+| Models with current valid receipts | Historical Model Reference | 404 | 8087 | 5.00% |
+| Models queued for acquisition | Historical Model Reference | 7683 | 8087 | 95.00% |
+| Executable model targets | Historical Model Reference | 4989 | 7683 | 64.94% |
+| Models in cumulative recovery acceptance | Historical Model Reference | 385 | 8087 | 4.76% |
 | Historical models eligible for replacement auto-fill | Historical Model Reference | 321 | 8087 | 3.97% |
 
 ## Target outcome funnel
 
 | Metric | Grain | Count | Denominator | Rate |
 | --- | --- | ---: | ---: | ---: |
-| Models with scheduled evidence work | Historical Model Reference | 4990 | 8087 | 61.70% |
+| Models with scheduled evidence work | Historical Model Reference | 4989 | 8087 | 61.69% |
 | Blocked models with scheduled evidence work | Historical Model Reference | 6 | 8087 | 0.07% |
-| Completed model targets | Historical Model Reference | 403 | 8087 | 4.98% |
+| Completed model targets | Historical Model Reference | 404 | 8087 | 5.00% |
 | Blocked model targets | Historical Model Reference | 2700 | 8087 | 33.39% |
 
 ## Document and parser funnel
@@ -43,11 +43,11 @@ Generated: 2026-07-25T15:08:29.076Z
 
 | Metric | Grain | Count | Denominator | Rate |
 | --- | --- | ---: | ---: | ---: |
-| PDF only | Accepted Model Entry | 293 | 384 | 76.30% |
-| HTML only | Accepted Model Entry | 64 | 384 | 16.67% |
-| JSON/API only | Accepted Model Entry | 13 | 384 | 3.39% |
-| Mixed official source lanes | Accepted Model Entry | 14 | 384 | 3.65% |
-| PDF involved | Accepted Model Entry | 307 | 384 | 79.95% |
+| PDF only | Accepted Model Entry | 294 | 385 | 76.36% |
+| HTML only | Accepted Model Entry | 64 | 385 | 16.62% |
+| JSON/API only | Accepted Model Entry | 13 | 385 | 3.38% |
+| Mixed official source lanes | Accepted Model Entry | 14 | 385 | 3.64% |
+| PDF involved | Accepted Model Entry | 308 | 385 | 80.00% |
 
 ## Fit publication funnel
 

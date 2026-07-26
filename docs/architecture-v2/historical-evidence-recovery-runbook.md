@@ -2061,6 +2061,57 @@ Future batches preserve product pages as lazy optional fallbacks when the
 required official document succeeds; their source role and per-target required
 status are bound into the batch contract.
 
+The 2026-07-26 integrated-sheet follow-up used discovery run
+`historical-scale-p0-miele-g7130sciclst-discovery-20260726-a` to bind compact
+catalogue model `G7130SCICLST`, source model `G 7130 SCi`, material `12531640`,
+the Australian product card and
+`https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf`. The source PDF
+SHA-256 is
+`1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6`;
+its MinerU `content_list_v2` SHA-256 is
+`890c71c34e142a62c830ba381d3acf5e12c431b4d787b025ca49b33525df983d`.
+
+Acquisition run
+`historical-scale-p0-miele-g7130sciclst-dimensions-20260726-b` deliberately
+remains a failed immutable epoch. It exposed three separate control defects:
+
+1. page one bound `Stainless steel/CleanSteel` to the material number in a
+   table caption, while the exact model heading and dimensions were on page two;
+2. the semantic scope rejection was incorrectly classified as transport; and
+3. the failed candidate discarded its valid MinerU binding, causing fetched and
+   parsed funnel counts to report zero.
+
+Do not edit that run or its checkpoint. The tested repair requires a direct
+material-caption binding for a finish row when that page has no exact model;
+otherwise it requires both exact model and material on the finish page. The
+dimensions page still requires one exact source-model heading, the same unique
+material and the explicit `Appliance width`, `Appliance height` and `Appliance
+depth` rows. `Niche width`, `Niche height`, `Niche depth` and `Depth with door
+open` never satisfy the closed envelope.
+
+Run `historical-scale-p0-miele-g7130sciclst-dimensions-20260726-c` accepted
+`598 x 805 x 570 mm` (W/H/D). Full online audit
+`historical-recovery-audit-29a794cefd199244458b9157` checked 812 objects with
+zero repair or violation. Promotion replayed all 411 sources, and checkpoint
+`historical-dimensions-checkpoint-088298e931bd1b3f118dbec0` recorded one
+selected, official-candidate, fetched, MinerU-valid, identity-proven and
+dimensions-receipted target with zero terminal/retryable targets.
+
+Scale checkpoint semantics are now an explicit `scale-metrics` epoch whose
+inputs are `evidence-candidate-inventory.mjs`,
+`receipt-bound-evidence-batch-runner.mjs` and
+`historical-dimensions-scale-control.mjs`. Any change to failure classification,
+artifact-binding retention or funnel accounting changes that epoch; older
+stage samples remain auditable but cannot be combined with the new metric
+definition for a halt decision.
+
+Verification for this closure is 213/213 focused tests, 1,242/1,242
+Architecture V2 tests and 2,919/2,919 full-repository tests. Lint, tracked
+system-contract replay, 411/411 external receipt replay, offline acceptance
+audit, active-release audit, Fit-publication audit and `git diff --check` all
+pass. No normal site build, release materialisation or public-data publication
+is part of this evidence-only operation.
+
 Global stops are limited to an explicit safety/audit failure, exhausted
 resource budget, unavailable required online external state, or no runnable
 manifest. Never edit or delete ledger history to bypass a stop; repair the

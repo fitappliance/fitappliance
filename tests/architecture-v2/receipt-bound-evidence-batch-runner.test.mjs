@@ -493,7 +493,29 @@ test('required PDF identity failure falls back to an exact official product page
     targets: [target('target-a', 'EX100', [artifactJob.jobId])],
   });
   const attempted = [];
+  const derivedArtifact = {
+    parserName: 'MinerU',
+    format: 'content_list_v2',
+    sourcePdfSha256: 'a'.repeat(64),
+    contentSha256: 'b'.repeat(64),
+    objectPath: `evidence/derived/mineru-json/sha256/bb/bb/${'b'.repeat(64)}.json`,
+    byteSize: 2048,
+    pageCount: 2,
+  };
   const result = await runReceiptBoundEvidenceBatch(input, dependencies({
+    acquireArtifact: async (jobRecord, context) => {
+      await context.withMineru(async () => {});
+      return {
+        jobId: jobRecord.jobId,
+        sourceUrl: jobRecord.sourceUrl,
+        finalUrl: jobRecord.sourceUrl,
+        contentSha256: 'a'.repeat(64),
+        objectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.pdf`,
+        contentType: 'application/pdf',
+        byteSize: 1024,
+        derivedArtifact,
+      };
+    },
     candidateResolversForTarget: () => [{
       resolverId: 'official-product-page',
       version: '1',
@@ -551,7 +573,12 @@ test('required PDF identity failure falls back to an exact official product page
   assert.equal(
     outcome.candidateInventory.candidates.find((candidate) => candidate.sourceUrl.endsWith('.pdf'))
       .outcome.artifactBinding.contentSha256,
-    artifactJob.jobId.padEnd(64, '0').slice(0, 64).replace(/[^a-f0-9]/g, 'a'),
+    'a'.repeat(64),
+  );
+  assert.deepEqual(
+    outcome.candidateInventory.candidates.find((candidate) => candidate.sourceUrl.endsWith('.pdf'))
+      .outcome.artifactBinding.derivedArtifact,
+    derivedArtifact,
   );
 });
 

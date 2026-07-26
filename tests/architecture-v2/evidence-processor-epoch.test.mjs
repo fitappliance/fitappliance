@@ -137,7 +137,7 @@ test('Miele AU material-bound identity capability is exact to the official specs
   }), MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY);
   assert.equal(historicalAttemptProcessorCapability({
     brand: 'Miele', sourceUrl, failureCode: 'mineru',
-  }), null);
+  }), MIELE_AU_PRODUCT_MATERIAL_IDENTITY_CAPABILITY);
   assert.equal(historicalAttemptProcessorCapability({
     brand: 'Other', sourceUrl, failureCode: 'identity',
   }), null);

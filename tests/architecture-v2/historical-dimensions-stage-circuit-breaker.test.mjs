@@ -14,7 +14,7 @@ import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recove
 const HASH = 'a'.repeat(64);
 const EPOCHS = Object.freeze([
   'fit-policy', 'lifecycle-policy', 'mineru-toolchain', 'parser',
-  'receipt-policy', 'resolver-contract', 'source-authority-policy',
+  'receipt-policy', 'resolver-contract', 'scale-metrics', 'source-authority-policy',
 ].map((id, index) => ({ id, semanticSha256: String(index + 1).repeat(64).slice(0, 64) })));
 
 function policy() {
@@ -40,12 +40,12 @@ function policy() {
 function epochSha(stage, epochs = EPOCHS) {
   const byId = new Map(epochs.map((row) => [row.id, row.semanticSha256]));
   const ids = {
-    DISCOVERY: ['lifecycle-policy', 'resolver-contract', 'source-authority-policy'],
-    ACQUISITION: ['lifecycle-policy', 'resolver-contract', 'source-authority-policy'],
-    MINERU: ['mineru-toolchain'],
-    IDENTITY: ['parser', 'source-authority-policy'],
-    DIMENSIONS_RECEIPT: ['parser', 'receipt-policy'],
-    INSTALLATION_FIT: ['fit-policy', 'parser', 'receipt-policy'],
+    DISCOVERY: ['lifecycle-policy', 'resolver-contract', 'scale-metrics', 'source-authority-policy'],
+    ACQUISITION: ['lifecycle-policy', 'resolver-contract', 'scale-metrics', 'source-authority-policy'],
+    MINERU: ['mineru-toolchain', 'scale-metrics'],
+    IDENTITY: ['parser', 'scale-metrics', 'source-authority-policy'],
+    DIMENSIONS_RECEIPT: ['parser', 'receipt-policy', 'scale-metrics'],
+    INSTALLATION_FIT: ['fit-policy', 'parser', 'receipt-policy', 'scale-metrics'],
   }[stage];
   return canonicalJsonSha256(ids.map((id) => ({ id, semanticSha256: byId.get(id) })));
 }
@@ -201,6 +201,53 @@ test('receipt-bound official marketing aliases count as proven dimensions identi
     1,
     1,
   ]]);
+});
+
+test('a persisted PDF and MinerU binding count as fetched and parsed after attestation fails', () => {
+  const derivedArtifact = {
+    parserName: 'MinerU',
+    format: 'content_list_v2',
+    sourcePdfSha256: HASH,
+    contentSha256: 'b'.repeat(64),
+    objectPath: `evidence/derived/mineru-json/sha256/bb/bb/${'b'.repeat(64)}.json`,
+    byteSize: 2048,
+    pageCount: 2,
+  };
+  const results = {
+    schemaVersion: 1,
+    outcomes: [{
+      status: 'identity_rejected',
+      candidateInventory: { candidates: [{
+        authorityMode: 'official',
+        requiredAttempt: true,
+        outcome: {
+          status: 'transport_failure',
+          source: null,
+          artifactBinding: {
+            sourceUrl: 'https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf',
+            finalUrl: 'https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf',
+            contentSha256: HASH,
+            objectPath: `evidence/web/sha256/aa/aa/${HASH}.pdf`,
+            contentType: 'application/pdf',
+            byteSize: 1024,
+            derivedArtifact,
+          },
+        },
+      }] },
+      sources: [],
+    }],
+  };
+
+  assert.deepEqual(buildHistoricalDimensionsRecoveryFunnel(results), {
+    selectedTargets: 1,
+    targetsWithOfficialCandidates: 1,
+    fetchedTargets: 1,
+    mineruValidTargets: 1,
+    identityProvenTargets: 0,
+    dimensionsReceipted: 0,
+    terminalTargets: 1,
+    retryableTargets: 0,
+  });
 });
 
 test('five misses cannot halt and retryable units never inflate a conclusive sample', () => {

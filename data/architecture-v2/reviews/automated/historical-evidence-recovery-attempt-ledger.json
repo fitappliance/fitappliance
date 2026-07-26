@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-25T15:08:29.076Z",
+  "generatedAt": "2026-07-26T03:19:35.763Z",
   "processorEpochMigration": {
     "migratedAt": "2026-07-25T15:01:36.199Z",
     "migratedEntries": 1,
@@ -1616,6 +1616,35 @@
       "resultsSha256": "0e1d5e0e1da80a45f4e76f6c44fd5426f3fe79689f1dc10b24c9145a44be809b",
       "auditSha256": "5fae88d6af62564a25715e59bdfe4cb508ae606e35e984c123a5aba0c3a1ebe3",
       "attemptedAt": "2026-07-16T20:11:41.641Z"
+    },
+    {
+      "attemptId": "historical_attempt_23c12c0e7f2b110b329200da",
+      "targetId": "recovery_target_dd3b9bd51a13b88d018181a9",
+      "referenceId": "fa_ref_b842b49790dc41c22c5e7302",
+      "legacyRuntimeId": "ao-162457",
+      "canonicalProductId": "fa_prod_b780b38233ccc022a4132275",
+      "brand": "Miele",
+      "model": "G7130SCICLST",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7130-sci-autodos-zid12531640/",
+      "finalUrl": "https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7130-sci-autodos-zid12531640/",
+      "contentSha256": "d06a212626256fe6b629f5a8066ff41edfbdd8d3c1ad9c1874a11c7039da1d22",
+      "status": "transport_failure",
+      "failureCode": "transport",
+      "reason": "ambiguous extracted values for closedEnvelope.widthMm",
+      "reasonSha256": "7432b9c6c3f989e26867a490aae559048966da2c421887c4bbb3ddd545aa38ce",
+      "disposition": "RETRY_TRANSIENT",
+      "suppressesSamePolicySource": false,
+      "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+      "candidateInventorySha256": "4a0b2f9bbe6143c12bf8a7f1a02d8d0ace6fa3b64f65fd33841943f95da23d59",
+      "semanticOutcomeSha256": "6601cd8acf06be81fa4d7051805332980ff5beb56656685dcf42f7bf013b712a",
+      "batchId": "historical-recovery-156d8de30825e8220d3f7aff-slice-34f712c340ce",
+      "batchSha256": "506a922cc8e8e3d25c7afa1d1d702d86d658a35149e701337ef96ec8c8107c27",
+      "runId": "historical-scale-p0-miele-g7130sciclst-dimensions-20260726-b",
+      "resultsSha256": "73a122762815a4a9b8d5a53167c6f17ed1efaecbd25873aa870838e4c6b93a59",
+      "auditSha256": "b395a47791f7d2d1b4302442bac927f3651844867150f57c8cda21fc78f13621",
+      "attemptedAt": "2026-07-26T03:04:21.011Z"
     },
     {
       "attemptId": "historical_attempt_2420f387c0218a6d55152daa",
@@ -6152,6 +6181,35 @@
       "resultsSha256": "0d96ecf0ebc94fa44ca3beea7c23adbba895eb8c11e793844bc91f7dc861dad7",
       "auditSha256": "46840ef1a95d8705ff07211c5da44a86e0a9e5bce30ebb9ca097ed4a3c5e9081",
       "attemptedAt": "2026-07-16T19:12:17.289Z"
+    },
+    {
+      "attemptId": "historical_attempt_7f73a8cba3f08f807427b9b9",
+      "targetId": "recovery_target_dd3b9bd51a13b88d018181a9",
+      "referenceId": "fa_ref_b842b49790dc41c22c5e7302",
+      "legacyRuntimeId": "ao-162457",
+      "canonicalProductId": "fa_prod_b780b38233ccc022a4132275",
+      "brand": "Miele",
+      "model": "G7130SCICLST",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
+      "finalUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
+      "contentSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
+      "status": "transport_failure",
+      "failureCode": "transport",
+      "reason": "bound Miele product material, finish, model, or dimension scope not proven",
+      "reasonSha256": "05987044a42de1e1e4fb539b4633fee7ba0454e96e5406a7c36d69fa5735a0de",
+      "disposition": "RETRY_TRANSIENT",
+      "suppressesSamePolicySource": false,
+      "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+      "candidateInventorySha256": "4a0b2f9bbe6143c12bf8a7f1a02d8d0ace6fa3b64f65fd33841943f95da23d59",
+      "semanticOutcomeSha256": "6601cd8acf06be81fa4d7051805332980ff5beb56656685dcf42f7bf013b712a",
+      "batchId": "historical-recovery-156d8de30825e8220d3f7aff-slice-34f712c340ce",
+      "batchSha256": "506a922cc8e8e3d25c7afa1d1d702d86d658a35149e701337ef96ec8c8107c27",
+      "runId": "historical-scale-p0-miele-g7130sciclst-dimensions-20260726-b",
+      "resultsSha256": "73a122762815a4a9b8d5a53167c6f17ed1efaecbd25873aa870838e4c6b93a59",
+      "auditSha256": "b395a47791f7d2d1b4302442bac927f3651844867150f57c8cda21fc78f13621",
+      "attemptedAt": "2026-07-26T03:04:21.011Z"
     },
     {
       "attemptId": "historical_attempt_7fa2a56b71e5f8648f69c45b",
@@ -13328,6 +13386,24 @@
       "resolvedAt": "2026-07-25T15:04:13.781Z"
     },
     {
+      "resolutionId": "historical_resolution_ed1d5f9b3233ef354354ccf4",
+      "attemptId": "historical_attempt_7f73a8cba3f08f807427b9b9",
+      "targetId": "recovery_target_dd3b9bd51a13b88d018181a9",
+      "referenceId": "fa_ref_b842b49790dc41c22c5e7302",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
+      "contentSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
+      "status": "accepted",
+      "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+      "candidateInventorySha256": "774de018666dcd5f4ebc342d73a9254e31591f5a14155c86fc6d642aae0dd68a",
+      "semanticOutcomeSha256": "23c83608325de328ccffa4e5ac4c230b73232747f517c1803f53ebae99c6f0d1",
+      "batchId": "historical-recovery-25920cd6433c8b4ea3699cff-slice-83eacb4a5d3f",
+      "batchSha256": "237ceee0edc978ec268546a99e8aa02ab086d34e91eb6cc8ad5814e6834c0e52",
+      "runId": "historical-scale-p0-miele-g7130sciclst-dimensions-20260726-c",
+      "resultsSha256": "c95071d8a36c93d798fb053ef1b665041a064ee4de84e09253109deadb1d0396",
+      "auditSha256": "29a794cefd199244458b915715b2463d8542e3ad7b79fd2746ddee555073eca7",
+      "resolvedAt": "2026-07-26T03:19:01.231Z"
+    },
+    {
       "resolutionId": "historical_resolution_f56a12511f970161c641bf40",
       "attemptId": "historical_attempt_8864684bffa1e4b67db58710",
       "targetId": "recovery_target_2435be3cab48fa695da5851b",
@@ -14895,6 +14971,23 @@
       "resultsSha256": "c5b27b96109cef7363211bc61fcefd00d575c53fd83176776c3a3b281a581e2c",
       "auditSha256": "fd97dd3f736017aa2db5935985a59b1d3e0fa280154616ef38305020d39c6431",
       "acceptedAt": "2026-07-16T17:56:40.928Z"
+    },
+    {
+      "sourceAcceptanceId": "historical_source_acceptance_4a7997dececa2a1b80639975",
+      "targetId": "recovery_target_dd3b9bd51a13b88d018181a9",
+      "referenceId": "fa_ref_b842b49790dc41c22c5e7302",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
+      "contentSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
+      "status": "accepted",
+      "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+      "candidateInventorySha256": "774de018666dcd5f4ebc342d73a9254e31591f5a14155c86fc6d642aae0dd68a",
+      "semanticOutcomeSha256": "23c83608325de328ccffa4e5ac4c230b73232747f517c1803f53ebae99c6f0d1",
+      "batchId": "historical-recovery-25920cd6433c8b4ea3699cff-slice-83eacb4a5d3f",
+      "batchSha256": "237ceee0edc978ec268546a99e8aa02ab086d34e91eb6cc8ad5814e6834c0e52",
+      "runId": "historical-scale-p0-miele-g7130sciclst-dimensions-20260726-c",
+      "resultsSha256": "c95071d8a36c93d798fb053ef1b665041a064ee4de84e09253109deadb1d0396",
+      "auditSha256": "29a794cefd199244458b915715b2463d8542e3ad7b79fd2746ddee555073eca7",
+      "acceptedAt": "2026-07-26T03:19:01.231Z"
     },
     {
       "sourceAcceptanceId": "historical_source_acceptance_4aa74b0bb175cfe92104bb99",
@@ -22690,23 +22783,23 @@
     }
   ],
   "summary": {
-    "entries": 440,
-    "resolutions": 29,
-    "sourceAcceptances": 291,
+    "entries": 442,
+    "resolutions": 30,
+    "sourceAcceptances": 292,
     "suppressions": 340,
     "resolvedSuppressions": 26,
-    "retryable": 74,
+    "retryable": 76,
     "targetAttempts": 85,
     "resolverOnlySuppressions": 85,
     "byStatus": {
       "claims_incomplete": 71,
       "identity_rejected": 201,
       "mineru_failure": 95,
-      "transport_failure": 73
+      "transport_failure": 75
     },
     "byDisposition": {
       "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 95,
-      "RETRY_TRANSIENT": 73,
+      "RETRY_TRANSIENT": 75,
       "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 201,
       "SEEK_EXACT_MODEL_FIELD_SOURCE": 71
     }

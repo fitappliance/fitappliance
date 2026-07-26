@@ -37,12 +37,12 @@ const FUNNEL_FIELDS = Object.freeze([
 ]);
 
 export const HISTORICAL_DIMENSIONS_STAGE_EPOCH_IDS = Object.freeze({
-  DISCOVERY: Object.freeze(['lifecycle-policy', 'resolver-contract', 'source-authority-policy']),
-  ACQUISITION: Object.freeze(['lifecycle-policy', 'resolver-contract', 'source-authority-policy']),
-  MINERU: Object.freeze(['mineru-toolchain']),
-  IDENTITY: Object.freeze(['parser', 'source-authority-policy']),
-  DIMENSIONS_RECEIPT: Object.freeze(['parser', 'receipt-policy']),
-  INSTALLATION_FIT: Object.freeze(['fit-policy', 'parser', 'receipt-policy']),
+  DISCOVERY: Object.freeze(['lifecycle-policy', 'resolver-contract', 'scale-metrics', 'source-authority-policy']),
+  ACQUISITION: Object.freeze(['lifecycle-policy', 'resolver-contract', 'scale-metrics', 'source-authority-policy']),
+  MINERU: Object.freeze(['mineru-toolchain', 'scale-metrics']),
+  IDENTITY: Object.freeze(['parser', 'scale-metrics', 'source-authority-policy']),
+  DIMENSIONS_RECEIPT: Object.freeze(['parser', 'receipt-policy', 'scale-metrics']),
+  INSTALLATION_FIT: Object.freeze(['fit-policy', 'parser', 'receipt-policy', 'scale-metrics']),
 });
 
 const CIRCUIT_STAGES = Object.freeze(Object.keys(HISTORICAL_DIMENSIONS_STAGE_EPOCH_IDS));
@@ -273,7 +273,7 @@ function targetWasFetched(outcome) {
     const status = candidate?.outcome?.status;
     return candidate?.authorityMode === 'official'
       && (candidate?.outcome?.source || candidate?.outcome?.artifactBinding)
-      && !['not_attempted_optional', 'reference_only', 'transport_failure'].includes(status);
+      && !['not_attempted_optional', 'reference_only', 'previous_terminal_suppressed'].includes(status);
   });
 }
 
@@ -307,7 +307,11 @@ export function buildHistoricalDimensionsRecoveryFunnel(results) {
   for (const outcome of outcomes) {
     if (targetHasCandidate(outcome)) funnel.targetsWithOfficialCandidates += 1;
     if (targetWasFetched(outcome)) funnel.fetchedTargets += 1;
-    if ((outcome.sources ?? []).some(sourceHasMineru)) funnel.mineruValidTargets += 1;
+    if ((outcome.sources ?? []).some(sourceHasMineru)
+      || (outcome?.candidateInventory?.candidates ?? []).some((candidate) => (
+        sourceHasMineru(candidate?.outcome?.source)
+          || sourceHasMineru(candidate?.outcome?.artifactBinding)
+      ))) funnel.mineruValidTargets += 1;
     if ((outcome.sources ?? []).some(sourceHasReceiptEligibleIdentity)) {
       funnel.identityProvenTargets += 1;
     }

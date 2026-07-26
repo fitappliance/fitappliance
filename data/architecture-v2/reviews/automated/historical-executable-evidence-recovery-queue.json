@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-25T15:08:29.076Z",
-  "sourceAcquisitionQueueSha256": "765ca72848c5405bc4caec0fca1d63112b450605e46d887f86e4dd25d3d75e62",
-  "sourceOfficialCandidateManifestSha256": "005f47eb90fc4a64b64dc4007e3c3b4ee37c5228c5c45e9467c97f3db137a476",
+  "generatedAt": "2026-07-26T03:19:35.763Z",
+  "sourceAcquisitionQueueSha256": "9ce7d1d74618539d592bb8defeed282d0f8f5ecb76dad1999457b8e21b0f7745",
+  "sourceOfficialCandidateManifestSha256": "55c0c79425e2f251a4484abd3be98c19ad199dc97b2bc7ad92b0d9e87b324548",
   "sourceBindings": {
     "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
     "publicProjectionSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
@@ -12,9 +12,9 @@
   "evidenceProcessorEpochs": {
     "beko_au_product_html_dimensions_v1": "11d75aaaffbeaafac6769a147694504ad9529024eb2602b739d86bec6a641196",
     "beko_au_product_html_identity_v1": "a623b839fb733d45df3bc01dda3ac6e839137b57541150f8268fd915eb84272b",
-    "esatto_au_dishwasher_product_card_dimensions_v1": "f4bafd090c37cd52b72318fd14556b5e52c55342adc1878f85e099803cb90a40",
-    "miele_au_product_material_identity_v1": "9c6423547bf0deb09084bc9adda5edc96de8af6d65fa1389444df3896a3b467b",
-    "smeg_au_techspec_pdf_dimensions_v1": "7862382724051ebea95ed77d0734c56fff573ef867da7062aae186caceb8de3b"
+    "esatto_au_dishwasher_product_card_dimensions_v1": "3a91b0617c831f40dab9676cb183fbdfcd5241f2b1f56e0f1854d05db8b06c5f",
+    "miele_au_product_material_identity_v1": "2c6c32ff57f174d7beb0bb8f380d88f03e09a25ebfb0b06ce9ea965084e067a7",
+    "smeg_au_techspec_pdf_dimensions_v1": "788c4d05cc0692308cb576410c2b4898371d3541b479c936b854211f3316a2f7"
   },
   "policy": {
     "resolverOnlyTargetsAllowed": false,
@@ -24,28 +24,28 @@
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7684,
+    "acquisitionRecords": 7683,
     "fetchJobs": 0,
-    "targets": 4990,
+    "targets": 4989,
     "acquisitionTargets": 0,
-    "discoveryTargets": 4990,
+    "discoveryTargets": 4989,
     "deferredTargets": 2694,
     "resolverOnlyTargets": 0,
     "candidateEdges": 0,
     "observedCandidateEdges": 8,
     "isolatedNonReadyCandidateEdges": 8,
-    "uniqueReferences": 4990,
+    "uniqueReferences": 4989,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 35,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 1861,
-      "CURRENT_RETAIL": 192,
+      "CURRENT_RETAIL": 191,
       "REGISTRY_ONLY": 2893,
       "UNKNOWN_RETAIL": 44
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 46,
+      "P0_CURRENT_MISSING_DIMENSIONS": 45,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1774,
       "P2_CURRENT_CONFIRMATION": 138,
       "P3_HISTORICAL_CONFIRMATION": 2975,
@@ -53,7 +53,7 @@
     },
     "byExecutionLane": {
       "ACQUISITION": 0,
-      "BOUNDED_DISCOVERY": 4990
+      "BOUNDED_DISCOVERY": 4989
     },
     "deferredByReason": {
       "ACTIVE_RESOLVER_SUPPRESSION": 35,
@@ -66,93 +66,6 @@
   "jobs": [],
   "targets": [],
   "discoveryTargets": [
-    {
-      "targetId": "recovery_target_dd3b9bd51a13b88d018181a9",
-      "referenceId": "fa_ref_b842b49790dc41c22c5e7302",
-      "legacyRuntimeId": "ao-162457",
-      "canonicalProductId": "fa_prod_b780b38233ccc022a4132275",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7130SCICLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_ecb4fcb23822e0de29816f9a",
-        "legacy:data/pdf-evidence-raw/G7130SCICLST.json",
-        "source:doc_ecb4fcb23822e0de29816f9a"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_ecb4fcb23822e0de29816f9a",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 805,
-            "depth": 570
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "executionLane": "BOUNDED_DISCOVERY",
-      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "observedCandidateIds": [],
-      "resolverContract": [
-        {
-          "schemaVersion": 1,
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "schemaVersion": 2,
-          "resolverId": "miele-official-discovery",
-          "version": "3",
-          "scope": "miele_au_product_material_bound_specification_and_context_lanes",
-          "required": true,
-          "sourceLanes": [
-            {
-              "laneId": "current_product",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "discontinued_archive",
-              "required": false,
-              "supported": false
-            },
-            {
-              "laneId": "support_search_api",
-              "required": false,
-              "supported": false
-            },
-            {
-              "laneId": "official_document_cdn",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "official_product_detail",
-              "required": true,
-              "supported": true
-            }
-          ]
-        }
-      ],
-      "incompleteResolverIds": [
-        "miele-official-discovery"
-      ]
-    },
     {
       "targetId": "recovery_target_a530631a12a65f9f17f008de",
       "referenceId": "fa_ref_1b57c49fa3b17396b3f7230e",

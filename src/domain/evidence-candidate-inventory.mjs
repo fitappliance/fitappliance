@@ -31,6 +31,41 @@ function artifactBinding(value) {
   }
   const byteSize = Number(value.byteSize);
   if (!Number.isInteger(byteSize) || byteSize < 1) throw new TypeError('failed candidate byte size invalid');
+  let derivedArtifact = null;
+  if (value.derivedArtifact != null) {
+    const derived = value.derivedArtifact;
+    if (!derived || typeof derived !== 'object' || Array.isArray(derived)) {
+      throw new TypeError('failed candidate derived artifact must be an object');
+    }
+    const sourcePdfSha256 = requiredText(
+      derived.sourcePdfSha256,
+      'failed candidate derived source PDF SHA-256',
+    ).toLowerCase();
+    const derivedContentSha256 = requiredText(
+      derived.contentSha256,
+      'failed candidate derived content SHA-256',
+    ).toLowerCase();
+    const derivedByteSize = Number(derived.byteSize);
+    const pageCount = Number(derived.pageCount);
+    if (requiredText(derived.parserName, 'failed candidate derived parser') !== 'MinerU'
+      || requiredText(derived.format, 'failed candidate derived format') !== 'content_list_v2'
+      || !/^[a-f0-9]{64}$/.test(sourcePdfSha256)
+      || sourcePdfSha256 !== contentSha256
+      || !/^[a-f0-9]{64}$/.test(derivedContentSha256)
+      || !Number.isInteger(derivedByteSize) || derivedByteSize < 1
+      || !Number.isInteger(pageCount) || pageCount < 1) {
+      throw new TypeError('failed candidate derived artifact invalid');
+    }
+    derivedArtifact = {
+      parserName: 'MinerU',
+      format: 'content_list_v2',
+      sourcePdfSha256,
+      contentSha256: derivedContentSha256,
+      objectPath: requiredText(derived.objectPath, 'failed candidate derived object path'),
+      byteSize: derivedByteSize,
+      pageCount,
+    };
+  }
   return {
     sourceUrl: normalizedUrl(value.sourceUrl),
     finalUrl: normalizedUrl(value.finalUrl),
@@ -38,6 +73,7 @@ function artifactBinding(value) {
     objectPath: requiredText(value.objectPath, 'failed candidate object path'),
     contentType: requiredText(value.contentType, 'failed candidate content type').toLowerCase(),
     byteSize,
+    ...(derivedArtifact ? { derivedArtifact } : {}),
   };
 }
 
@@ -196,7 +232,7 @@ function classifyAcquisitionFailure(error) {
   if (/authority|official host/.test(haystack)) {
     return { status: 'source_authority_rejected', failureCode: 'source_authority', reason: message };
   }
-  if (/mineru|conversion|parser/.test(haystack)) {
+  if (/mineru|conversion|parser|(?:dimension|model).*scope|bound .*scope not proven/.test(haystack)) {
     return { status: 'mineru_failure', failureCode: 'mineru', reason: message };
   }
   if (/payload|magic byte|content type|maximum bytes/.test(haystack)) {

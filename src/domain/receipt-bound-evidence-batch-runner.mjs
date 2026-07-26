@@ -259,6 +259,9 @@ function failedArtifactBinding(artifact) {
     objectPath: artifact.objectPath,
     contentType: artifact.contentType,
     byteSize: artifact.byteSize,
+    ...(artifact.derivedArtifact ? {
+      derivedArtifact: structuredClone(artifact.derivedArtifact),
+    } : {}),
   };
 }
 

@@ -268,6 +268,21 @@ test('failed attestation retains the immutable artifact binding for retry adjudi
   assert.deepEqual(inventory.candidates[0].outcome.artifactBinding, artifactBinding);
 });
 
+test('a bound PDF dimension-scope rejection is classified as a MinerU failure, not transport', async () => {
+  const url = 'https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf';
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolvers: [resolver({ candidates: [candidate(url)] })],
+    acquireAndAttest: async () => {
+      throw new Error('bound Miele product material, finish, model, or dimension scope not proven');
+    },
+  });
+
+  assert.equal(inventory.candidates[0].outcome.status, 'mineru_failure');
+  assert.equal(inventory.candidates[0].outcome.failureCode, 'mineru');
+});
+
 test('prior terminal source is suppressed while a newly discovered official source remains executable', async () => {
   const oldUrl = 'https://www.westinghouse.com.au/manuals/family.pdf';
   const newUrl = 'https://www.westinghouse.com.au/manuals/exact-model.pdf';

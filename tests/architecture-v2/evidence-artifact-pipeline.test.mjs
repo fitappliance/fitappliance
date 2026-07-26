@@ -614,26 +614,34 @@ test('official ASKO AU product JSON attests only receipt-bound closed-envelope d
 });
 
 function mieleMaterialVariantFixture({
+  targetModel = 'G7130SCCLST',
   pageModel = 'G 7130 SC',
   pdfModel = 'G 7130 SC',
   materialNumber = '12531610',
   pageFinish = 'CleanSteel',
   pdfFinish = 'CleanSteel front',
+  productPath = 'freestanding-dishwashers/g-7130-sc-front-autodos',
+  productTitle = `${pageModel} Front AutoDos`,
+  firstPageModel = true,
+  finishTableMaterialCaption = false,
+  width = 598,
+  height = 845,
+  depth = 600,
 } = {}) {
-  const productUrl = `https://shop.miele.com.au/en/kitchen/dishwashers/freestanding-dishwashers/g-7130-sc-front-autodos-zid${materialNumber}/`;
+  const productUrl = `https://shop.miele.com.au/en/kitchen/dishwashers/${productPath}-zid${materialNumber}/`;
   const artifactUrl = `https://www.miele.com.au/media/ex/au/specsheets/${materialNumber}.pdf`;
   const discoveryBytes = Buffer.from(`<!doctype html><html><head>
-    <title>${pageModel} Front AutoDos | Miele Australia</title>
+    <title>${productTitle} | Miele Australia</title>
     <link rel="canonical" href="${productUrl}">
   </head><body>
-    <h1>${pageModel} Front AutoDos</h1>
+    <h1>${productTitle}</h1>
     <div data-product-sku="${materialNumber}">${pageFinish}</div>
   </body></html>`);
   const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
   const discoveryObjectPath = `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.html`;
   const jsonBytes = Buffer.from(JSON.stringify([
     [
-      {
+      ...(firstPageModel ? [{
         type: 'list',
         content: {
           list_type: 'text_list',
@@ -643,8 +651,8 @@ function mieleMaterialVariantFixture({
           }],
         },
         bbox: [112, 153, 699, 204],
-      },
-      {
+      }] : []),
+      ...(!finishTableMaterialCaption ? [{
         type: 'paragraph',
         content: {
           paragraph_content: [{
@@ -653,11 +661,14 @@ function mieleMaterialVariantFixture({
           }],
         },
         bbox: [391, 208, 700, 222],
-      },
+      }] : []),
       {
         type: 'table',
         content: {
-          table_caption: [],
+          table_caption: finishTableMaterialCaption ? [{
+            type: 'text',
+            content: `EAN: 4002516785118 / Material number: ${materialNumber}`,
+          }] : [],
           table_footnote: [],
           html: `<table><tr><td>Control panel colour</td><td>${pdfFinish}</td></tr></table>`,
         },
@@ -693,9 +704,11 @@ function mieleMaterialVariantFixture({
           table_footnote: [],
           html: `<table>
             <tr><td>Technical data</td><td></td></tr>
-            <tr><td>Appliance width in mm</td><td>598</td></tr>
-            <tr><td>Appliance height in mm</td><td>845</td></tr>
-            <tr><td>Appliance depth in mm</td><td>600</td></tr>
+            <tr><td>Niche width minimal in mm</td><td>600</td></tr>
+            <tr><td>Niche height maximal in mm</td><td>870</td></tr>
+            <tr><td>Appliance width in mm</td><td>${width}</td></tr>
+            <tr><td>Appliance height in mm</td><td>${height}</td></tr>
+            <tr><td>Appliance depth in mm</td><td>${depth}</td></tr>
             <tr><td>Depth with door open in cm</td><td>119.5</td></tr>
           </table>`,
         },
@@ -706,7 +719,7 @@ function mieleMaterialVariantFixture({
   const pdfBytes = Buffer.from('%PDF-1.7\nMiele material-bound product sheet');
   const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
   return {
-    targetModel: 'G7130SCCLST',
+    targetModel,
     sourceModel: pageModel,
     materialNumber,
     productUrl,
@@ -737,7 +750,7 @@ function mieleMaterialVariantFixture({
       method: 'official_product_material',
       market: 'AU',
       discoveryUrl: productUrl,
-      requestedModel: 'G7130SCCLST',
+      requestedModel: targetModel,
       matchedModel: pageModel,
       artifactUrl,
       materialNumber,
@@ -793,6 +806,47 @@ test('Miele material-bound official product sheet attests only closed W/H/D as a
     ...options,
     requestedFields: ['closedEnvelope.widthMm', 'installation.rearMm'],
   }), /dimensions only/i);
+});
+
+test('Miele integrated material sheet attests exact closed W/H/D without flattening niche or door-open dimensions', async () => {
+  const fixtureValue = mieleMaterialVariantFixture({
+    targetModel: 'G7130SCICLST',
+    pageModel: 'G 7130 SCi',
+    pdfModel: 'G 7130 SCi',
+    materialNumber: '12531640',
+    pageFinish: 'Stainless steel/CleanSteel',
+    pdfFinish: 'Stainless steel/CleanSteel',
+    productPath: 'integrated-dishwashers/g-7130-sci-autodos',
+    productTitle: 'G 7130 SCi AutoDos',
+    firstPageModel: false,
+    finishTableMaterialCaption: true,
+    width: 598,
+    height: 805,
+    depth: 570,
+  });
+  const result = await attestEvidenceArtifactForCase({
+    id: `case-${fixtureValue.targetModel}`,
+    brand: 'Miele',
+    model: fixtureValue.targetModel,
+    category: 'dishwasher',
+    sources: [],
+  }, fixtureValue.artifact, {
+    now: '2026-07-26T00:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    requireRequestedFieldCoverage: true,
+    claimSemanticsVersion: 2,
+    discoveryProvenance: fixtureValue.discoveryProvenance,
+    readObject: async () => fixtureValue.discoveryBytes,
+  });
+
+  assert.deepEqual(result.source.claims.map((claim) => [claim.field, claim.value.mm]), [
+    ['closedEnvelope.widthMm', 598],
+    ['closedEnvelope.heightMm', 805],
+    ['closedEnvelope.depthMm', 570],
+  ]);
+  assert.equal(result.source.claims.some((claim) => /niche|door open/i.test(claim.sourceLabel)), false);
 });
 
 test('Miele material-bound PDF rejects sibling, material, finish, and discovery mutations', async () => {

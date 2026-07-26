@@ -320,7 +320,15 @@ test('tracked system contract replays from repository sources without external s
     assert.equal(targetState.sourceBindings[binding], createHash('sha256').update(bytes).digest('hex'));
   }
   assert.equal(first.stages.length, 39);
-  assert.equal(first.epochs.length, 10);
+  assert.equal(first.epochs.length, 11);
+  assert.deepEqual(
+    first.epochs.find((epoch) => epoch.id === 'scale-metrics')?.inputs.map(({ path }) => path),
+    [
+      'src/domain/evidence-candidate-inventory.mjs',
+      'src/domain/historical-dimensions-scale-control.mjs',
+      'src/domain/receipt-bound-evidence-batch-runner.mjs',
+    ],
+  );
   assert.ok(first.stages.every((stage) => stage.sourceBindings.every((binding) => (
     binding.declaredSha256 === binding.resolvedSha256
   ))));

@@ -32,10 +32,10 @@
       "MODEL_LIST_PROVEN": 13,
       "UNMAPPED": 41
     },
-    "nonIndexedClassificationLinks": 101,
+    "nonIndexedClassificationLinks": 102,
     "nonIndexedClassificationLinksByLane": {
       "HTML": 86,
-      "JSON": 15
+      "JSON": 16
     }
   },
   "sourceVersions": [
@@ -10522,6 +10522,13 @@
       "sourceUrl": "https://www.bosch-home.com.au/en/mkt-product/SMS50M22AU",
       "contentLane": "HTML",
       "documentId": "pdf:d7e3b3530556013b4d8c713332f91de7ee3f5d5edca83e96995c86c10a5effa4"
+    },
+    {
+      "referenceId": "fa_ref_b842b49790dc41c22c5e7302",
+      "contentSha256": "1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531640.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:1248777dcb85101fd5bc1d572a984d4bec046f496578a602c4325b5c86e7c8b6"
     },
     {
       "referenceId": "fa_ref_ba76280a1171cb568f94bcfe",
@@ -116874,5 +116881,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "be1988aa71c37b1faedc7218c6eb23792764a0ee89adbf8e1f65b8a56ab37629"
+  "semanticGraphSha256": "0d900e8cdbab61e92678d8a71fe7ed0ce7a808f2ee3f22015d3cc9bd17fc426f"
 }

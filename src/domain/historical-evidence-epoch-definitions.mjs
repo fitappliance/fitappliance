@@ -25,6 +25,11 @@ export const HISTORICAL_EVIDENCE_EPOCH_DEFINITIONS = Object.freeze([
   ['parser', 'src/domain/mineru-document.mjs', [
     'src/domain/mineru-document.mjs', 'src/domain/dimension-expression-knowledge.mjs',
   ]],
+  ['scale-metrics', 'src/domain/historical-dimensions-scale-control.mjs', [
+    'src/domain/evidence-candidate-inventory.mjs',
+    'src/domain/historical-dimensions-scale-control.mjs',
+    'src/domain/receipt-bound-evidence-batch-runner.mjs',
+  ]],
   ['receipt-policy', 'src/domain/historical-evidence-recovery-contract.mjs', [
     'src/domain/historical-evidence-recovery-contract.mjs',
     'data/architecture-v2/policies/historical-evidence-recovery-policy.json',
