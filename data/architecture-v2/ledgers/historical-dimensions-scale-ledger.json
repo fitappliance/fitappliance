@@ -1245,6 +1245,182 @@
         "p1EligibleTargets": 4704
       },
       "semanticCheckpointSha256": "91d8a09427b2d84a106b51c053f6127492aca66a5eb0ab87fe1892a1d5bb40c6"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-8cffdd8748fc1714a991739a",
+      "runId": "historical-scale-p0-miele-g7130scuclst-discovery-20260726-a",
+      "completedAt": "2026-07-26T13:58:02.903Z",
+      "stage": "DISCOVERY",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_b61f5fad316623a719c6b291",
+      "manifestSha256": "b61f5fad316623a719c6b291f4adbbbbf523ef21b7558b6fc0dbc8d43bf2184d",
+      "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "8f275c18860126c167fe79ae0ad889de7e4a94958471cdff06e8251fc5257873",
+        "auditSha256": null,
+        "storageContentSha256": "ada7445c4facaf22477b8985ef47f15e74f81b2ca3799302e1c4489b1cb5455a",
+        "candidateManifestSha256": "8c10aba5e539342fc87ca40655309677e072c3bf7308f19a204267530169f188"
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 1,
+        "fetchedTargets": 0,
+        "mineruValidTargets": 0,
+        "identityProvenTargets": 0,
+        "dimensionsReceipted": 0,
+        "terminalTargets": 0,
+        "retryableTargets": 0
+      },
+      "stageMetrics": [
+        {
+          "stage": "DISCOVERY",
+          "metricId": "authority_candidate_targets_per_selected_target",
+          "numerator": 1,
+          "denominator": 1,
+          "conclusiveNumerator": 1,
+          "conclusiveDenominator": 1,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+        }
+      ],
+      "beforeCounters": {
+        "currentValidReceipts": 404,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 411,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 182,
+        "p0EligibleTargets": 177,
+        "p1AssignedTargets": 4744,
+        "p1EligibleTargets": 4704
+      },
+      "afterCounters": {
+        "currentValidReceipts": 404,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 411,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 182,
+        "p0EligibleTargets": 177,
+        "p1AssignedTargets": 4744,
+        "p1EligibleTargets": 4704
+      },
+      "semanticCheckpointSha256": "8b1bc50fdb91e38c3162fbc8682780a59ac2f0f3a0553dc82d4e222e80d8cd30"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3",
+      "runId": "historical-scale-p0-miele-g7130scuclst-dimensions-20260726-a",
+      "completedAt": "2026-07-26T13:59:39.401Z",
+      "stage": "DIMENSIONS",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_5eedb583582aad504535bb47",
+      "manifestSha256": "5eedb583582aad504535bb47d4bb4c1c2dba2b9c358b838358fb6a3f4fdf66b7",
+      "cohortKey": "historical_cohort_e99b039f48c9cf3af1d628c3",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "5f9eae1a5428cecb39ad1b129010909c03ef1fa0f45e3a7f9a8325540102bbb1",
+        "auditSha256": "56777851dd79d18d2633db632af5fd4beaf8ec2188a3de6bba97a10e34004cb2",
+        "storageContentSha256": null,
+        "candidateManifestSha256": null
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 1,
+        "fetchedTargets": 1,
+        "mineruValidTargets": 1,
+        "identityProvenTargets": 1,
+        "dimensionsReceipted": 1,
+        "terminalTargets": 0,
+        "retryableTargets": 0
+      },
+      "stageMetrics": [
+        {
+          "stage": "ACQUISITION",
+          "metricId": "valid_immutable_authority_objects_per_attempted_candidate_job",
+          "numerator": 1,
+          "denominator": 1,
+          "conclusiveNumerator": 1,
+          "conclusiveDenominator": 1,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+        },
+        {
+          "stage": "MINERU",
+          "metricId": "valid_content_list_v2_per_eligible_fetched_pdf",
+          "numerator": 1,
+          "denominator": 1,
+          "conclusiveNumerator": 1,
+          "conclusiveDenominator": 1,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "25842bf04399b31320394796066d1b34cd15ac9aafc801b6b6afb425aeab42b3"
+        },
+        {
+          "stage": "IDENTITY",
+          "metricId": "receipt_eligible_identity_proof_per_valid_parsed_document",
+          "numerator": 1,
+          "denominator": 1,
+          "conclusiveNumerator": 1,
+          "conclusiveDenominator": 1,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "85174a19403c088577707185a2e6758a273c14f97611418841fcb08154cbd61a"
+        },
+        {
+          "stage": "DIMENSIONS_RECEIPT",
+          "metricId": "accepted_whd_receipt_per_receipt_eligible_identity_target",
+          "numerator": 1,
+          "denominator": 1,
+          "conclusiveNumerator": 1,
+          "conclusiveDenominator": 1,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "830df2e93c9577d78758a8d48d2a05608ee71df3ec2ec94fa5c3d3deb905a26a"
+        },
+        {
+          "stage": "INSTALLATION_FIT",
+          "metricId": "complete_hard_field_set_per_selected_model_field_set",
+          "numerator": 0,
+          "denominator": 0,
+          "conclusiveNumerator": 0,
+          "conclusiveDenominator": 0,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": true,
+          "epochSha256": "c2bca80af3eb5392373ae3127a74f5af5a0c7f0c5bcd1c768d7593f96ffa0a14"
+        }
+      ],
+      "beforeCounters": {
+        "currentValidReceipts": 404,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 411,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 182,
+        "p0EligibleTargets": 177,
+        "p1AssignedTargets": 4744,
+        "p1EligibleTargets": 4704
+      },
+      "afterCounters": {
+        "currentValidReceipts": 405,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 412,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 181,
+        "p0EligibleTargets": 176,
+        "p1AssignedTargets": 4744,
+        "p1EligibleTargets": 4704
+      },
+      "semanticCheckpointSha256": "fab7e717aad638e09eeb37444a62b1d936089b9df63ab6c5d937828cb8db0cb8"
     }
   ],
   "rebaselines": [

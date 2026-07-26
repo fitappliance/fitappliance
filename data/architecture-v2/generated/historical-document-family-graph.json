@@ -32,10 +32,10 @@
       "MODEL_LIST_PROVEN": 13,
       "UNMAPPED": 41
     },
-    "nonIndexedClassificationLinks": 102,
+    "nonIndexedClassificationLinks": 103,
     "nonIndexedClassificationLinksByLane": {
       "HTML": 86,
-      "JSON": 16
+      "JSON": 17
     }
   },
   "sourceVersions": [
@@ -10046,6 +10046,13 @@
       "sourceUrl": "https://hisense.com.au/product/HRCF199/chest-freezer-200l",
       "contentLane": "HTML",
       "documentId": "pdf:1cd7951c4444d957ef7c28d531a7e92da49f5da3ad4431f7d8910fdb23b1956d"
+    },
+    {
+      "referenceId": "fa_ref_1b57c49fa3b17396b3f7230e",
+      "contentSha256": "871e96b43546be0ac01c1f329356532714591dbdfd783320532294e2a35cfcea",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531620.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:871e96b43546be0ac01c1f329356532714591dbdfd783320532294e2a35cfcea"
     },
     {
       "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
@@ -116881,5 +116888,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "0d900e8cdbab61e92678d8a71fe7ed0ce7a808f2ee3f22015d3cc9bd17fc426f"
+  "semanticGraphSha256": "10986748eb8a68f11ce802e722d46ea58e8833fed3a6e27388aaa6c2c5fd9eb6"
 }

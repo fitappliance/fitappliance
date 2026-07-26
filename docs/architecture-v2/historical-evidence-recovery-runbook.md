@@ -2112,6 +2112,39 @@ audit, active-release audit, Fit-publication audit and `git diff --check` all
 pass. No normal site build, release materialisation or public-data publication
 is part of this evidence-only operation.
 
+The next approved singleton, catalogue model `G7130SCUCLST`, used discovery run
+`historical-scale-p0-miele-g7130scuclst-discovery-20260726-a`. It bound source
+model `G 7130 SCU`, material `12531620`, the exact Australian product page and
+`https://www.miele.com.au/media/ex/au/specsheets/12531620.pdf`. The immutable
+discovery object SHA-256 is
+`ada7445c4facaf22477b8985ef47f15e74f81b2ca3799302e1c4489b1cb5455a`;
+checkpoint `historical-dimensions-checkpoint-8cffdd8748fc1714a991739a`
+recorded one selected target and one materialised official candidate.
+
+Acquisition run
+`historical-scale-p0-miele-g7130scuclst-dimensions-20260726-a` accepted closed
+W/H/D `598 x 805 x 570 mm` from the three explicit page-2 appliance rows. The
+official PDF SHA-256 is
+`871e96b43546be0ac01c1f329356532714591dbdfd783320532294e2a35cfcea`;
+its MinerU `content_list_v2` SHA-256 is
+`81bfd12b07d0fc659cef11985118c291adb99bb64310a7e219283d44698236e9`.
+Audit `historical-recovery-audit-85b90560d5074fa321b83240` checked 815 objects
+with zero repair or violation, and dimensions checkpoint
+`historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3` recorded a complete
+`1/1` dimensions funnel. Promotion raised cumulative coverage to 405 current
+valid receipts and 412/412 passing sources. Architecture V2 remains
+1,242/1,242, the full repository remains 2,919/2,919, and lint passes.
+
+For an evidence-only staged batch, the replacement guard is the immutable
+audit loaded through `audit:active-retail-release`. Do not run the standalone
+`audit:historical-replacement` against a newer candidate reference and the
+older active public files: that command is a post-publication consistency gate
+and must follow `publish:historical-reference` inside an authorised release
+pipeline. Staged acceptance remains `PENDING_NEXT`; this run did not build,
+materialise or publish a release. The active release still has 332
+receipt-bound public dimensions, zero receipt-bound `VERIFIED_FIT`, zero
+historical replacement issues and zero Fit-publication violations.
+
 Global stops are limited to an explicit safety/audit failure, exhausted
 resource budget, unavailable required online external state, or no runnable
 manifest. Never edit or delete ledger history to bypass a stop; repair the

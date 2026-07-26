@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T03:19:35.763Z",
-  "sourceBundleSha256": "bd72d4cc94de580dd4398307b3b7fed17b6ea3aa034224e67901ef4303c94223",
+  "generatedAt": "2026-07-26T14:00:31.669Z",
+  "sourceBundleSha256": "0244d07e906830bbaea5d8d121ad90dc5b2bde752fb90222b819477674ab1e44",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -3728,6 +3728,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_a530631a12a65f9f17f008de",
+      "referenceId": "fa_ref_1b57c49fa3b17396b3f7230e",
+      "brand": "Miele",
+      "model": "G7130SCUCLST",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531620.pdf",
+      "sourcePdfSha256": "871e96b43546be0ac01c1f329356532714591dbdfd783320532294e2a35cfcea",
+      "contentSha256": "871e96b43546be0ac01c1f329356532714591dbdfd783320532294e2a35cfcea",
+      "receiptBindingSha256": "061a4bc63d2da4a9b42499c9a440a3c526e5c70e9ae10775524bca66bcbe0bd6",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/81/bf/81bfd12b07d0fc659cef11985118c291adb99bb64310a7e219283d44698236e9.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_a53ffc44471da2f46e9487f8",
       "referenceId": "fa_ref_0b56ecc3c7db223cdadbc4ee",
       "brand": "CHIQ",
@@ -5759,11 +5773,11 @@
     }
   ],
   "summary": {
-    "entries": 385,
-    "sources": 411,
-    "passed": 411,
+    "entries": 386,
+    "sources": 412,
+    "passed": 412,
     "failed": 0
   },
-  "checkedObjects": 812,
-  "semanticAuditSha256": "b1462cd020a16288a31aa6496d8801850135c66902c4df55b2e9a87327012197"
+  "checkedObjects": 815,
+  "semanticAuditSha256": "1214f2fa6b1418890b312e991b09fec45e9cac81e673a394cf001e86798c5785"
 }

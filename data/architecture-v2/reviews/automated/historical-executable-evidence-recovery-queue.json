@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-26T03:19:35.763Z",
-  "sourceAcquisitionQueueSha256": "9ce7d1d74618539d592bb8defeed282d0f8f5ecb76dad1999457b8e21b0f7745",
-  "sourceOfficialCandidateManifestSha256": "55c0c79425e2f251a4484abd3be98c19ad199dc97b2bc7ad92b0d9e87b324548",
+  "generatedAt": "2026-07-26T14:00:31.669Z",
+  "sourceAcquisitionQueueSha256": "b9984e5f5f8a893caed165c5e9e76c3cf54697c4f7b604bdca1c9f706c341364",
+  "sourceOfficialCandidateManifestSha256": "00ed39b3ed30e944cb8fe3d27943199debd63a04e2d25d6723d496d909cbbdd3",
   "sourceBindings": {
     "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
     "publicProjectionSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
@@ -24,28 +24,28 @@
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7683,
+    "acquisitionRecords": 7682,
     "fetchJobs": 0,
-    "targets": 4989,
+    "targets": 4988,
     "acquisitionTargets": 0,
-    "discoveryTargets": 4989,
+    "discoveryTargets": 4988,
     "deferredTargets": 2694,
     "resolverOnlyTargets": 0,
     "candidateEdges": 0,
     "observedCandidateEdges": 8,
     "isolatedNonReadyCandidateEdges": 8,
-    "uniqueReferences": 4989,
+    "uniqueReferences": 4988,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "suppressedPriorResolverOnlyTargets": 35,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 1861,
-      "CURRENT_RETAIL": 191,
+      "CURRENT_RETAIL": 190,
       "REGISTRY_ONLY": 2893,
       "UNKNOWN_RETAIL": 44
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 45,
+      "P0_CURRENT_MISSING_DIMENSIONS": 44,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1774,
       "P2_CURRENT_CONFIRMATION": 138,
       "P3_HISTORICAL_CONFIRMATION": 2975,
@@ -53,7 +53,7 @@
     },
     "byExecutionLane": {
       "ACQUISITION": 0,
-      "BOUNDED_DISCOVERY": 4989
+      "BOUNDED_DISCOVERY": 4988
     },
     "deferredByReason": {
       "ACTIVE_RESOLVER_SUPPRESSION": 35,
@@ -66,93 +66,6 @@
   "jobs": [],
   "targets": [],
   "discoveryTargets": [
-    {
-      "targetId": "recovery_target_a530631a12a65f9f17f008de",
-      "referenceId": "fa_ref_1b57c49fa3b17396b3f7230e",
-      "legacyRuntimeId": "ao-162458",
-      "canonicalProductId": "fa_prod_eec492d7d0d55e92bf7c974e",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7130SCUCLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_183ad52c3a27a9276d29b672",
-        "legacy:data/pdf-evidence-raw/G7130SCUCLST.json",
-        "source:doc_183ad52c3a27a9276d29b672"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_183ad52c3a27a9276d29b672",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 805,
-            "depth": 570
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "repairExistingReceipt": false,
-      "executionLane": "BOUNDED_DISCOVERY",
-      "discoveryReason": "CANDIDATE_MANIFEST_RETRYABLE",
-      "candidateManifestState": "DISCOVERY_RETRYABLE",
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "observedCandidateIds": [],
-      "resolverContract": [
-        {
-          "schemaVersion": 1,
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "schemaVersion": 2,
-          "resolverId": "miele-official-discovery",
-          "version": "3",
-          "scope": "miele_au_product_material_bound_specification_and_context_lanes",
-          "required": true,
-          "sourceLanes": [
-            {
-              "laneId": "current_product",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "discontinued_archive",
-              "required": false,
-              "supported": false
-            },
-            {
-              "laneId": "support_search_api",
-              "required": false,
-              "supported": false
-            },
-            {
-              "laneId": "official_document_cdn",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "official_product_detail",
-              "required": true,
-              "supported": true
-            }
-          ]
-        }
-      ],
-      "incompleteResolverIds": [
-        "miele-official-discovery"
-      ]
-    },
     {
       "targetId": "recovery_target_ef8b30be4717118934672934",
       "referenceId": "fa_ref_9fe799828a1d8a918c5988c5",

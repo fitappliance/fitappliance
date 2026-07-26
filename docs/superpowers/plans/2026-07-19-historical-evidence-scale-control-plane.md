@@ -88,7 +88,7 @@ under that task, repair the plan first, and only then resume implementation.
 | 6 | Per-model runs repeat family-level source failures | COMPLETE | 8 domain tests; 27 gate/runner/epoch tests; Architecture V2 929/929; lint/offline build/diff passed; schema-v2 artifact stable |
 | 7 | Generated batches are operationally too broad | COMPLETE | 12 planner tests; 48 lane tests; Architecture V2 942/942; lint/offline build/determinism/real-manifest validation passed |
 | 8 | Parser repairs are not prioritised by reusable family impact | COMPLETE | 216 focused tests; Architecture V2 968/968; lint/offline build/diff passed; full 803-object repair audit and 408/408 receipt replay passed |
-| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Controlled P0 checkpoints plus two material-bound Miele variants; 404 current receipts; 411/411 source replay; Architecture V2 1,242/1,242 and full repository 2,919/2,919; zero publication violations |
+| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Controlled P0 checkpoints plus three material-bound Miele variants; 405 current receipts; 412/412 source replay; Architecture V2 1,242/1,242 and full repository 2,919/2,919; zero publication violations |
 | 10 | Full installation/Fit evidence has no separate scale pipeline | COMPLETE | 27 focused tests; Architecture V2 1002/1002; full repository 2659/2659; offline build, lint and diff check passed; external MinerU replay 21/21; publication violations 0 |
 
 ## Ten-Problem Solution Map
@@ -794,6 +794,25 @@ receipt-bound `VERIFIED_FIT`; the accepted record remains staged evidence only.
 Focused repair tests passed 213/213, Architecture V2 passed 1,242/1,242 and the
 full repository passed 2,919/2,919; lint, system-contract replay and diff checks
 also passed.
+
+**Built-under follow-up (2026-07-26):** The next controller-authorised
+singleton was `G7130SCUCLST`. Discovery run
+`historical-scale-p0-miele-g7130scuclst-discovery-20260726-a` completed all
+required Miele v3 lanes and bound source model `G 7130 SCU`, material
+`12531620`, the exact Australian product page and official Product Sheet.
+Discovery checkpoint `historical-dimensions-checkpoint-8cffdd8748fc1714a991739a`
+then authorised the acquisition-only manifest.
+
+Acquisition run
+`historical-scale-p0-miele-g7130scuclst-dimensions-20260726-a` accepted page-2
+closed W/H/D `598 x 805 x 570 mm`. Online audit
+`historical-recovery-audit-85b90560d5074fa321b83240` replayed 815 objects with
+zero repair or violation. Dimensions checkpoint
+`historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3` recorded a complete
+`1/1` funnel through candidate, fetch, MinerU, identity and dimensions receipt.
+Cumulative coverage is 405 current valid receipts and 412/412 passing sources;
+the active release remains isolated at 332 receipt-bound public dimensions and
+zero receipt-bound `VERIFIED_FIT`.
 
 **Acceptance:** Coverage increases monotonically, prior receipts replay, and no
 batch can claim progress from downloads or MinerU output alone.

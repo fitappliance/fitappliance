@@ -1,39 +1,39 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-26T03:19:35.763Z",
+  "generatedAt": "2026-07-26T14:00:31.669Z",
   "sourceBindings": {
-    "classificationSha256": "2db096cadf60adabd8f1cd7506bf22be8f9deae805a577481a3f178bafab9fda",
-    "acquisitionQueueSha256": "00250542099f2584b3285a6db90b2f638b29d87ed75e6c5ff2bd09027968cb2e",
-    "executableQueueSha256": "d8f492697b1eff2a1689b48fec784b0e704b490843fc8b7ba5802a5d04d6bbe2",
-    "acceptanceBundleSha256": "b9f45afd57f732888007245852561867a5c5ec398f0ea9ced1b0e7c8dfb06296",
-    "attemptLedgerSha256": "81349d3773248059d3f46859a1b679049f2044bdef770df06e62ba3de59c0864"
+    "classificationSha256": "a1978fed51663c7701026e5ab202dc8f2c29beda9034907c85d4fe78bb063b14",
+    "acquisitionQueueSha256": "72eb3400aa3dbdb0093407f69573d8b4a97f881eceff432be21ea9a6b24c4b2f",
+    "executableQueueSha256": "e9e2f250824df9bd320896e90e9cc89fd1ece61cf54d47a25ee7e9698d8a30a3",
+    "acceptanceBundleSha256": "7b684b65107a8129b0b576c7110153e9ca060bd9e76c60e31afcdc699d2c3627",
+    "attemptLedgerSha256": "20cfa91cc8a1796c57ecf5a33389b09361be7bcbab6194f285927071e9ac08a1"
   },
-  "sourceClassificationGeneratedAt": "2026-07-26T03:19:35.763Z",
-  "sourceExecutableQueueGeneratedAt": "2026-07-26T03:19:35.763Z",
+  "sourceClassificationGeneratedAt": "2026-07-26T14:00:31.669Z",
+  "sourceExecutableQueueGeneratedAt": "2026-07-26T14:00:31.669Z",
   "summary": {
     "records": 8087,
-    "actionable": 4989,
+    "actionable": 4988,
     "actionableBlockedOverlap": 6,
     "acquisitionWork": 0,
-    "discoveryWork": 4989,
+    "discoveryWork": 4988,
     "deferred": 2694,
-    "completed": 404,
+    "completed": 405,
     "blocked": 2700,
-    "terminal": 3104,
+    "terminal": 3105,
     "byState": {
       "BLOCKED_SAME_EPOCH": 2,
       "CONFLICT_QUARANTINE": 83,
-      "DIMENSIONS_RECEIPT": 404,
+      "DIMENSIONS_RECEIPT": 405,
       "IDENTITY_RESEARCH": 132,
       "NO_OFFICIAL_SOURCE": 33,
       "RETRYABLE": 10,
-      "SOURCE_DISCOVERY_REQUIRED": 4841,
+      "SOURCE_DISCOVERY_REQUIRED": 4840,
       "UNSEEN": 2582
     },
     "byStateClass": {
-      "ACTIONABLE": 4983,
+      "ACTIONABLE": 4982,
       "BLOCKED": 2700,
-      "COMPLETED": 404
+      "COMPLETED": 405
     }
   },
   "controls": {
@@ -24821,16 +24821,19 @@
         "activeTerminal": 0,
         "resolved": 0
       },
-      "state": "SOURCE_DISCOVERY_REQUIRED",
-      "stateClass": "ACTIONABLE",
-      "actionable": true,
-      "terminal": false,
+      "state": "DIMENSIONS_RECEIPT",
+      "stateClass": "COMPLETED",
+      "actionable": false,
+      "terminal": true,
       "binding": {
-        "type": "executable_queue",
-        "sourceArtifact": "data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json",
-        "targetId": "recovery_target_a530631a12a65f9f17f008de",
-        "executionLane": "BOUNDED_DISCOVERY",
-        "candidateJobIds": []
+        "type": "receipt",
+        "receiptIds": [
+          "receipt:061a4bc63d2da4a9b42499c9a440a3c526e5c70e9ae10775524bca66bcbe0bd6"
+        ],
+        "acceptanceTargetId": "recovery_target_a530631a12a65f9f17f008de",
+        "receiptBindingSha256s": [
+          "061a4bc63d2da4a9b42499c9a440a3c526e5c70e9ae10775524bca66bcbe0bd6"
+        ]
       },
       "reopeningConditions": []
     },
