@@ -2205,6 +2205,36 @@ release stays at 332 receipt-bound public dimensions and zero receipt-bound
 `VERIFIED_FIT`. The next authorised P0 singleton is `G7609SCUXXLCLST` under
 bounded-discovery manifest `historical_batch_3fe97094996d8d19dcefb6aa`.
 
+Discovery run
+`historical-scale-p0-miele-g7609scuxxlclst-discovery-20260726-a` completed all
+required Miele v4 lanes. It bound source model `G 7609 SCU XXL`, material
+`12531680`, the exact Australian product page and
+`https://www.miele.com.au/media/ex/au/specsheets/12531680.pdf`. The immutable
+discovery object SHA-256 is
+`4d0011aee0068d3bcc04a51b4724d9fa56c7fc6f79aabf35dfd07794f490353c`;
+checkpoint `historical-dimensions-checkpoint-adb38171934d1a2d74c8d5ba`
+recorded one selected target and one official candidate before acquisition.
+
+Acquisition run
+`historical-scale-p0-miele-g7609scuxxlclst-dimensions-20260726-a` accepted
+closed W/H/D `598 x 845 x 570 mm` from the explicit page-2 appliance rows. The
+official PDF SHA-256 is
+`d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170`;
+its MinerU `content_list_v2` SHA-256 is
+`323c4514e4f0b43fa7b35342c5e5ee77ab048d2cb734fdace22cfa058a551282`.
+Audit `historical-recovery-audit-33d1cd72ec7f1596a31a38c1` checked 824 objects
+with zero repair or violation, and dimensions checkpoint
+`historical-dimensions-checkpoint-b8f0314e2cdf4dd8e27d2a79` recorded a complete
+`1/1` funnel. Promotion raised cumulative coverage to 408 current valid
+receipts and 415/415 passing sources.
+
+This receipt remains dimensions-only. Missing installation, operation and
+rear-service requirements keep `verifiedFitEligible` false and the successful
+Fit outcome at `INSUFFICIENT_DATA`. The active release remains unchanged at
+332 receipt-bound public dimensions and zero receipt-bound `VERIFIED_FIT`.
+The next authorised P0 singleton is `G7719SCIXXLOBSW` under bounded-discovery
+manifest `historical_batch_babb9b4f333eb5500b011f49`.
+
 For an evidence-only staged batch, the replacement guard is the immutable
 audit loaded through `audit:active-retail-release`. Do not run the standalone
 `audit:historical-replacement` against a newer candidate reference and the

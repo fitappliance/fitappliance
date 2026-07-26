@@ -32,10 +32,10 @@
       "MODEL_LIST_PROVEN": 13,
       "UNMAPPED": 41
     },
-    "nonIndexedClassificationLinks": 105,
+    "nonIndexedClassificationLinks": 106,
     "nonIndexedClassificationLinksByLane": {
       "HTML": 86,
-      "JSON": 19
+      "JSON": 20
     }
   },
   "sourceVersions": [
@@ -10662,6 +10662,13 @@
       "sourceUrl": "https://www.beko.com/au-en/home-appliances/fridge-freezer/fridge-freezer-freezer-bottom-70-cm-bbm450an",
       "contentLane": "HTML",
       "documentId": "pdf:ea88186c61397b2684db0dda8b68bd0d538fb951b0754f70b07c962f40403f27"
+    },
+    {
+      "referenceId": "fa_ref_eac4af885af2ed000c6acb90",
+      "contentSha256": "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531680.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170"
     },
     {
       "referenceId": "fa_ref_eb8c80dbac9425af4a678d96",
@@ -116902,5 +116909,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "9adedd181897e00d35c3b77648347833de9306f144796e38054f1e30f6d5179f"
+  "semanticGraphSha256": "428c7356b010eac74bc836d13967a9a9b091bd64b73950200ef4f5c457299116"
 }

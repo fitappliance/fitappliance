@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-26T14:30:31.683Z
+Generated: 2026-07-26T14:40:12.165Z
 
 Coverage: **8,087 / 8,087** unique historical models.
 Models with document links: **1,766**; without links: **6,321**.
@@ -11,7 +11,7 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 1121 |
+| dishwasher | 1419 | 94 | 1122 |
 | dryer | 838 | 72 | 275 |
 | fridge | 4334 | 121 | 2303 |
 | washing_machine | 1496 | 88 | 680 |
@@ -20,11 +20,11 @@ This is a research and repair classification. It does not grant publication auth
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 407 |
+| COMPLETE_RECEIPT | 408 |
 | CONFLICT_QUARANTINE | 83 |
 | IDENTITY_RESEARCH | 132 |
 | OFFICIAL_DISCOVERY | 6412 |
-| REFERENCE_REDISCOVERY | 1053 |
+| REFERENCE_REDISCOVERY | 1052 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 

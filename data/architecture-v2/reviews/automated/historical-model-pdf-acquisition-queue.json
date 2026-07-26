@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T14:30:31.683Z",
-  "semanticQueueSha256": "1879b510a350414d64d3ff723951f1c67f3980d42bf0f679666d2779a70a74cf",
-  "sourceClassificationSha256": "52512763eb501198335debda3c025e24c2f55c4530a19e9d5c0458a13b785631",
+  "generatedAt": "2026-07-26T14:40:12.165Z",
+  "semanticQueueSha256": "48d46c37fb62121cd0e46fa9b66f070c23fe53ec831eea723b19c4b7b23d28c9",
+  "sourceClassificationSha256": "1287f671cabbd743b919508441cd9b288f4a2f8322da23e19a491032c7770706",
   "sourceIdentityMigrationSha256": null,
   "sourceBindings": {
     "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
@@ -1193,37 +1193,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_bad81bb681220804908547e7"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_32eaf5680198e6a2ef4172fd",
-      "referenceId": "fa_ref_eac4af885af2ed000c6acb90",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7609SCUXXLCLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_fe17b02f34991853c29ccdea"
-      ],
-      "resolverIds": [
-        "miele-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_565604ed4eb83ec2928204a6"
-      ],
-      "legacyRuntimeIds": [
-        "ao-162463"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_953126750c9f4430a34c44ff"
       ],
       "offlineReplayOutcome": null
     },
@@ -206422,19 +206391,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_fe17b02f34991853c29ccdea",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/7/3/1/97312e90dc990bf3bd6c742f74020974d4dfced1_G7609_SCU_XXL_CLST_12531680.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/G7609SCUXXLCLST.json",
-        "source:doc_1a93c54fa80a3aca63281101"
-      ],
-      "referenceIds": [
-        "fa_ref_eac4af885af2ed000c6acb90"
-      ]
-    },
-    {
       "sourceId": "historical_source_fe2bcd65a1c7519efa8e685e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/7/1/4/9714fb09c88928930dda44aecc75a3ae6cbf3db7_GB_335WL_310820.pdf",
       "sourceAuthority": "REFERENCE",
@@ -206578,24 +206534,24 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 407,
+    "COMPLETE_RECEIPT": 408,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8087,
-    "queuedModels": 7680,
-    "uniqueReferences": 7680,
-    "candidateSources": 1333,
-    "candidateEdges": 1368,
+    "queuedModels": 7679,
+    "uniqueReferences": 7679,
+    "candidateSources": 1332,
+    "candidateEdges": 1367,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2838,
-      "CURRENT_RETAIL": 231,
+      "CURRENT_RETAIL": 230,
       "REGISTRY_ONLY": 4563,
       "UNKNOWN_RETAIL": 48
     },
     "byCategory": {
-      "dishwasher": 1237,
+      "dishwasher": 1236,
       "dryer": 792,
       "fridge": 4208,
       "washing_machine": 1443
@@ -206604,22 +206560,22 @@
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 132,
       "OFFICIAL_DISCOVERY": 6412,
-      "REFERENCE_REDISCOVERY": 1053
+      "REFERENCE_REDISCOVERY": 1052
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 132,
       "OFFICIAL_DISCOVERY": 6412,
-      "OFFICIAL_REDISCOVERY": 1053
+      "OFFICIAL_REDISCOVERY": 1052
     },
     "byExecutionReadiness": {
       "BOUNDED_READY": 6,
-      "DISCOVERY_READY": 5015,
+      "DISCOVERY_READY": 5014,
       "RESEARCH_REQUIRED": 77,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 407,
+      "COMPLETE_RECEIPT": 408,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

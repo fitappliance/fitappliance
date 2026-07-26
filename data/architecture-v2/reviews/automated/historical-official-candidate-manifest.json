@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T14:30:31.683Z",
-  "semanticManifestSha256": "f037d3327ce4015c3142f5fc143a906e5972c920a6a553f4756c63291bb90108",
+  "generatedAt": "2026-07-26T14:40:12.165Z",
+  "semanticManifestSha256": "edb18ac5ba8c9fa2aca7182f7b90c3e836ad2ae843c7b95aa1fb09c793b9d63e",
   "policy": {
     "discoveryOnly": true,
     "candidatesAreNotEvidenceReceipts": true,
@@ -11,7 +11,7 @@
     "candidatesRequireRequiredSourceLanesComplete": true,
     "legacyAggregateCompletionCannotAuthorizeTerminal": true
   },
-  "sourceAcquisitionQueueSha256": "1879b510a350414d64d3ff723951f1c67f3980d42bf0f679666d2779a70a74cf",
+  "sourceAcquisitionQueueSha256": "48d46c37fb62121cd0e46fa9b66f070c23fe53ec831eea723b19c4b7b23d28c9",
   "sourceBindings": {
     "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
     "publicProjectionSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
@@ -341,6 +341,26 @@
         "contentSha256": "3aa2adfb15c5572e655346c9fa89c9e34657ceeb305ba0b8f8a9c4f917d879e4",
         "byteSize": 13969,
         "objectPath": "evidence/discovery/sha256/3a/a2/3aa2adfb15c5572e655346c9fa89c9e34657ceeb305ba0b8f8a9c4f917d879e4.json",
+        "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
+      },
+      "targets": 1
+    },
+    {
+      "runId": "historical-scale-p0-miele-g7609scuxxlclst-discovery-20260726-a",
+      "startedAt": "2026-07-26T14:36:03.787Z",
+      "completedAt": "2026-07-26T14:36:16.191Z",
+      "sourceAcquisitionQueueSha256": "1879b510a350414d64d3ff723951f1c67f3980d42bf0f679666d2779a70a74cf",
+      "selection": {
+        "manifestId": "historical_batch_3fe97094996d8d19dcefb6aa",
+        "semanticManifestSha256": "3fe97094996d8d19dcefb6aa6ee8aa841b2ba18e59bc279e24e823a8b3a44be4",
+        "selectedReferenceIds": [
+          "fa_ref_eac4af885af2ed000c6acb90"
+        ]
+      },
+      "storageObject": {
+        "contentSha256": "4d0011aee0068d3bcc04a51b4724d9fa56c7fc6f79aabf35dfd07794f490353c",
+        "byteSize": 13978,
+        "objectPath": "evidence/discovery/sha256/4d/00/4d0011aee0068d3bcc04a51b4724d9fa56c7fc6f79aabf35dfd07794f490353c.json",
         "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
       },
       "targets": 1
@@ -2299,75 +2319,6 @@
       "lastDiscoveryAt": null,
       "referenceHintSourceIds": [
         "historical_source_64b94b777a8c86f80f39bd79"
-      ],
-      "candidateEdges": []
-    },
-    {
-      "referenceId": "fa_ref_eac4af885af2ed000c6acb90",
-      "acquisitionId": "historical_acquisition_32eaf5680198e6a2ef4172fd",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7609SCUXXLCLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "state": "DISCOVERY_RETRYABLE",
-      "terminal": false,
-      "retryableDiscovery": true,
-      "resolverContract": [
-        {
-          "schemaVersion": 1,
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "schemaVersion": 2,
-          "resolverId": "miele-official-discovery",
-          "version": "4",
-          "scope": "miele_au_product_material_bound_specification_and_context_lanes",
-          "required": true,
-          "sourceLanes": [
-            {
-              "laneId": "current_product",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "discontinued_archive",
-              "required": false,
-              "supported": false
-            },
-            {
-              "laneId": "support_search_api",
-              "required": false,
-              "supported": false
-            },
-            {
-              "laneId": "official_document_cdn",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "official_product_detail",
-              "required": true,
-              "supported": true
-            }
-          ]
-        }
-      ],
-      "resolverResults": [],
-      "incompleteResolverIds": [
-        "miele-official-discovery"
-      ],
-      "incompleteSourceLaneIds": [],
-      "legacyAggregateResolverIds": [],
-      "lastDiscoveryRunId": null,
-      "lastDiscoveryAt": null,
-      "referenceHintSourceIds": [
-        "historical_source_fe17b02f34991853c29ccdea"
       ],
       "candidateEdges": []
     },
@@ -275946,13 +275897,13 @@
     }
   ],
   "summary": {
-    "acquisitionRecords": 7680,
-    "targets": 7680,
+    "acquisitionRecords": 7679,
+    "targets": 7679,
     "candidates": 8,
     "candidateEdges": 8,
-    "runBindings": 16,
+    "runBindings": 17,
     "byState": {
-      "DISCOVERY_RETRYABLE": 5021,
+      "DISCOVERY_RETRYABLE": 5020,
       "RESEARCH_REQUIRED": 2659
     },
     "schemaV2Targets": 0,

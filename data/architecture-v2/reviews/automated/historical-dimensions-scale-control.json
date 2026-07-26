@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-26T14:30:31.683Z",
+  "generatedAt": "2026-07-26T14:40:12.165Z",
   "policy": {
     "schemaVersion": 2,
     "confidence": {
@@ -41,10 +41,10 @@
     "receiptReplayAndZeroPublicationViolationsRequired": true
   },
   "sourceBindings": {
-    "ledgerSha256": "0d0573668262cf5ca750b1b1adc8fd84d8e1104f91963be4c40d6cdb4d1eaf7b",
-    "nextBatchesSha256": "d3f1f4801785944d0fbcfada9a1b8e77b90b8292742dc3f6b764c88a349198e3",
-    "programStatusSha256": "07b8112b329eb556fe657b5a7c9881719607a52e3395944768bcd71781f22e42",
-    "receiptAuditSha256": "94e9ed495d9e85d424347407d2216750731cd6e7b3c0c3f57d4422e2facb60c6",
+    "ledgerSha256": "a257add73103ab25d2adf9dd950423c49ed9409a6c7bc53a81dce3a2260b3d1d",
+    "nextBatchesSha256": "3e7175531dfc95016064d6ad5ebc30a6fe9990531f2bb8234abd878028716128",
+    "programStatusSha256": "701915763b890fdf11c691d52bab46d22f6116f29671e9647b7bbd2ec49af1b7",
+    "receiptAuditSha256": "0315ade295d99ef6e2a80803718b848805cf2cdad47452df6b4e4a9688da6052",
     "replacementAuditSha256": "4668fdb464d8b92874d82f8e1cb12a8211dcab84e85b7738274280af9eb27be9",
     "fitPublicationAuditSha256": "3eddb70948ae8c075fbdf0d54efdc778332b28b7af6ff96b6ad526d9063fb9d2",
     "epochsSha256": "c60b1d4f25d08fcadfcfdb38196ffce48d9a4b256d3f52fdbd2bb3e547b32e82"
@@ -101,17 +101,17 @@
     "onlineExternalState": "NOT_REQUIRED"
   },
   "counters": {
-    "currentValidReceipts": 407,
+    "currentValidReceipts": 408,
     "replacementAutoFill": 321,
-    "receiptSourcesPassed": 414,
+    "receiptSourcesPassed": 415,
     "fitReceiptBoundDimensions": 332,
     "fitReceiptBoundVerified": 0,
-    "p0AssignedTargets": 179,
-    "p0EligibleTargets": 174,
+    "p0AssignedTargets": 178,
+    "p0EligibleTargets": 173,
     "p1AssignedTargets": 4744,
     "p1EligibleTargets": 4704
   },
-  "checkpointCount": 23,
+  "checkpointCount": 25,
   "rebaselineCount": 2,
   "latestRebaseline": {
     "rebaselineId": "historical-dimensions-rebaseline-a437d5de498c6fd68fe79810",
@@ -323,18 +323,20 @@
       "stage": "DISCOVERY",
       "epochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
       "checkpointIds": [
-        "historical-dimensions-checkpoint-9b2c36ed47469072a51932ff"
+        "historical-dimensions-checkpoint-9b2c36ed47469072a51932ff",
+        "historical-dimensions-checkpoint-adb38171934d1a2d74c8d5ba"
       ],
       "manifestIds": [
+        "historical_batch_3fe97094996d8d19dcefb6aa",
         "historical_batch_e22772550b2b4a16133128cf"
       ],
-      "numerator": 1,
-      "denominator": 1,
-      "conclusiveNumerator": 1,
-      "conclusiveDenominator": 1,
+      "numerator": 2,
+      "denominator": 2,
+      "conclusiveNumerator": 2,
+      "conclusiveDenominator": 2,
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
-      "completedManifests": 1,
+      "completedManifests": 2,
       "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     },
     {
@@ -519,18 +521,20 @@
       "stage": "ACQUISITION",
       "epochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
       "checkpointIds": [
-        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38"
+        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38",
+        "historical-dimensions-checkpoint-b8f0314e2cdf4dd8e27d2a79"
       ],
       "manifestIds": [
+        "historical_batch_212e8cc892f79648b3dbb9ef",
         "historical_batch_53a0a21bf526a4b82f07b66e"
       ],
-      "numerator": 1,
-      "denominator": 1,
-      "conclusiveNumerator": 1,
-      "conclusiveDenominator": 1,
+      "numerator": 2,
+      "denominator": 2,
+      "conclusiveNumerator": 2,
+      "conclusiveDenominator": 2,
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
-      "completedManifests": 1,
+      "completedManifests": 2,
       "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     },
     {
@@ -562,21 +566,23 @@
         "historical-dimensions-checkpoint-088298e931bd1b3f118dbec0",
         "historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3",
         "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca",
-        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38"
+        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38",
+        "historical-dimensions-checkpoint-b8f0314e2cdf4dd8e27d2a79"
       ],
       "manifestIds": [
+        "historical_batch_212e8cc892f79648b3dbb9ef",
         "historical_batch_315ba27f89e8b406489ff77a",
         "historical_batch_4994bb33b3339db830f683b5",
         "historical_batch_53a0a21bf526a4b82f07b66e",
         "historical_batch_5eedb583582aad504535bb47"
       ],
-      "numerator": 4,
-      "denominator": 4,
-      "conclusiveNumerator": 4,
-      "conclusiveDenominator": 4,
+      "numerator": 5,
+      "denominator": 5,
+      "conclusiveNumerator": 5,
+      "conclusiveDenominator": 5,
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
-      "completedManifests": 4,
+      "completedManifests": 5,
       "currentEpochSha256": "830df2e93c9577d78758a8d48d2a05608ee71df3ec2ec94fa5c3d3deb905a26a"
     },
     {
@@ -627,21 +633,23 @@
         "historical-dimensions-checkpoint-088298e931bd1b3f118dbec0",
         "historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3",
         "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca",
-        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38"
+        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38",
+        "historical-dimensions-checkpoint-b8f0314e2cdf4dd8e27d2a79"
       ],
       "manifestIds": [
+        "historical_batch_212e8cc892f79648b3dbb9ef",
         "historical_batch_315ba27f89e8b406489ff77a",
         "historical_batch_4994bb33b3339db830f683b5",
         "historical_batch_53a0a21bf526a4b82f07b66e",
         "historical_batch_5eedb583582aad504535bb47"
       ],
-      "numerator": 4,
-      "denominator": 4,
-      "conclusiveNumerator": 4,
-      "conclusiveDenominator": 4,
+      "numerator": 5,
+      "denominator": 5,
+      "conclusiveNumerator": 5,
+      "conclusiveDenominator": 5,
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
-      "completedManifests": 4,
+      "completedManifests": 5,
       "currentEpochSha256": "85174a19403c088577707185a2e6758a273c14f97611418841fcb08154cbd61a"
     },
     {
@@ -732,9 +740,11 @@
         "historical-dimensions-checkpoint-088298e931bd1b3f118dbec0",
         "historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3",
         "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca",
-        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38"
+        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38",
+        "historical-dimensions-checkpoint-b8f0314e2cdf4dd8e27d2a79"
       ],
       "manifestIds": [
+        "historical_batch_212e8cc892f79648b3dbb9ef",
         "historical_batch_315ba27f89e8b406489ff77a",
         "historical_batch_4994bb33b3339db830f683b5",
         "historical_batch_53a0a21bf526a4b82f07b66e",
@@ -746,7 +756,7 @@
       "conclusiveDenominator": 0,
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
-      "completedManifests": 4,
+      "completedManifests": 5,
       "currentEpochSha256": "c2bca80af3eb5392373ae3127a74f5af5a0c7f0c5bcd1c768d7593f96ffa0a14"
     },
     {
@@ -757,21 +767,23 @@
         "historical-dimensions-checkpoint-088298e931bd1b3f118dbec0",
         "historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3",
         "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca",
-        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38"
+        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38",
+        "historical-dimensions-checkpoint-b8f0314e2cdf4dd8e27d2a79"
       ],
       "manifestIds": [
+        "historical_batch_212e8cc892f79648b3dbb9ef",
         "historical_batch_315ba27f89e8b406489ff77a",
         "historical_batch_4994bb33b3339db830f683b5",
         "historical_batch_53a0a21bf526a4b82f07b66e",
         "historical_batch_5eedb583582aad504535bb47"
       ],
-      "numerator": 4,
-      "denominator": 4,
-      "conclusiveNumerator": 4,
-      "conclusiveDenominator": 4,
+      "numerator": 5,
+      "denominator": 5,
+      "conclusiveNumerator": 5,
+      "conclusiveDenominator": 5,
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
-      "completedManifests": 4,
+      "completedManifests": 5,
       "currentEpochSha256": "25842bf04399b31320394796066d1b34cd15ac9aafc801b6b6afb425aeab42b3"
     },
     {
@@ -861,30 +873,30 @@
     },
     {
       "isoWeek": "2026-W30",
-      "completedBatches": 18,
-      "selectedTargets": 18,
-      "targetsWithOfficialCandidates": 15,
-      "dimensionsReceipted": 6,
+      "completedBatches": 20,
+      "selectedTargets": 20,
+      "targetsWithOfficialCandidates": 17,
+      "dimensionsReceipted": 7,
       "terminalTargets": 2,
       "retryableTargets": 3
     }
   ],
   "projection": {
-    "completedDimensionsBatches": 9,
-    "dimensionsReceipted": 6,
-    "receiptedTargetsPerCompletedBatch": 0.6666666666666666,
-    "projectedRemainingP0Batches": 261,
-    "projectedRemainingP1Batches": 7056,
+    "completedDimensionsBatches": 10,
+    "dimensionsReceipted": 7,
+    "receiptedTargetsPerCompletedBatch": 0.7,
+    "projectedRemainingP0Batches": 248,
+    "projectedRemainingP1Batches": 6720,
     "projectionBasis": "OBSERVED_RECEIPTED_TARGETS_PER_COMPLETED_DIMENSIONS_BATCH"
   },
   "decision": {
     "status": "RUN_P0",
-    "allowedManifestId": "historical_batch_3fe97094996d8d19dcefb6aa",
+    "allowedManifestId": "historical_batch_babb9b4f333eb5500b011f49",
     "allowedWorkstreamId": "CURRENT_DIMENSIONS",
     "p1Blocked": true,
     "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
     "cohortKey": "historical_cohort_182abd31da305fbd85c54937"
   },
-  "controlId": "historical-dimensions-scale-7ba6255d45c148ae90b364cb",
-  "semanticControlSha256": "7ba6255d45c148ae90b364cba782912ea87be53e3d4088ec5477765074e79061"
+  "controlId": "historical-dimensions-scale-1a5083a37a810582fee4599a",
+  "semanticControlSha256": "1a5083a37a810582fee4599a2aabdd77de0a740afddc7e6aa37a5735293e490c"
 }

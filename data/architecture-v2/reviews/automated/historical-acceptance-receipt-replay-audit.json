@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T14:30:31.683Z",
-  "sourceBundleSha256": "664087dd2a87f24d41b95429b2a3152051c6e8fb0ead86ff7e498a83e83cec71",
+  "generatedAt": "2026-07-26T14:40:12.165Z",
+  "sourceBundleSha256": "708ea197f9c8bb154385b596c5306610323f853657f468f4301394c6f44fb113",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1862,6 +1862,20 @@
       "contentSha256": "39eabd0522004b1fe10e62611483400d24a51d341d5ad4cf2a11b6aeb6b9c39a",
       "receiptBindingSha256": "b1d9725859852030a68721dc750de0cea41799e24bb7c0d597b6a170a963c238",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/62/60/6260a28b105b198d04102533ba54c8d16571bfd3d1cf950284a6d561d80364da.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_565604ed4eb83ec2928204a6",
+      "referenceId": "fa_ref_eac4af885af2ed000c6acb90",
+      "brand": "Miele",
+      "model": "G7609SCUXXLCLST",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531680.pdf",
+      "sourcePdfSha256": "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170",
+      "contentSha256": "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170",
+      "receiptBindingSha256": "dbb73dd9722389a8ad21afc7c88baf7f75b827482cb280b9ce5ca4990c84e528",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/32/3c/323c4514e4f0b43fa7b35342c5e5ee77ab048d2cb734fdace22cfa058a551282.json",
       "status": "passed",
       "failureCode": null
     },
@@ -5801,11 +5815,11 @@
     }
   ],
   "summary": {
-    "entries": 388,
-    "sources": 414,
-    "passed": 414,
+    "entries": 389,
+    "sources": 415,
+    "passed": 415,
     "failed": 0
   },
-  "checkedObjects": 821,
-  "semanticAuditSha256": "2da2b3e93f59e070c01e3366dff77442bc60af19dd52402785b2639d527dfa71"
+  "checkedObjects": 824,
+  "semanticAuditSha256": "0ad8094309417e1f437a9bc3dac1e9312c7a90f94ed29ec1ea8fb847d70847f3"
 }

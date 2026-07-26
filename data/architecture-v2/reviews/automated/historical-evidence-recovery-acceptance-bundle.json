@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-26T14:30:31.683Z",
+  "generatedAt": "2026-07-26T14:40:12.165Z",
   "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
   "entries": [
     {
@@ -30119,6 +30119,247 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "39eabd0522004b1fe10e62611483400d24a51d341d5ad4cf2a11b6aeb6b9c39a"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_565604ed4eb83ec2928204a6",
+      "referenceId": "fa_ref_eac4af885af2ed000c6acb90",
+      "legacyRuntimeId": "ao-162463",
+      "canonicalProductId": "fa_prod_953126750c9f4430a34c44ff",
+      "brand": "Miele",
+      "model": "G7609SCUXXLCLST",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-55a7e8892f6513e62705dfba-slice-ff804c8f9171",
+      "auditSha256": "d1901600594e3227d432a586475a7ba12f7ea3125bbb0908cdf83144063acc8f",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_pdf",
+          "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531680.pdf",
+          "finalUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531680.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-26T14:39:10.139Z",
+          "contentSha256": "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170",
+          "objectPath": "evidence/web/sha256/d4/61/d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 118833,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Miele",
+            "model": "G7609SCUXXLCLST",
+            "category": "dishwasher",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "G 7609 SCU XXL"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Appliance width in mm",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "813105125e490675ae2d4c2cbe4d997e3c330d1fdc11135a65c5d3365c39ff1a",
+              "bbox": [
+                391,
+                230,
+                931,
+                820
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 845
+              },
+              "sourceLabel": "Appliance height in mm",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "813105125e490675ae2d4c2cbe4d997e3c330d1fdc11135a65c5d3365c39ff1a",
+              "bbox": [
+                391,
+                230,
+                931,
+                820
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 570
+              },
+              "sourceLabel": "Appliance depth in mm",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "813105125e490675ae2d4c2cbe4d997e3c330d1fdc11135a65c5d3365c39ff1a",
+              "bbox": [
+                391,
+                230,
+                931,
+                820
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_material",
+            "market": "AU",
+            "discoveryUrl": "https://shop.miele.com.au/en/kitchen/dishwashers/built-under-dishwashers/g-7609-scu-xxl-autodos-zid12531680/",
+            "requestedModel": "G7609SCUXXLCLST",
+            "matchedModel": "G 7609 SCU XXL",
+            "artifactUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531680.pdf",
+            "discoveryContentSha256": "af8cc9a7574e10ab4b90c9cf4ea7ba59321383e8a5ef10af3f6b9acd6e88ecb4",
+            "discoveryObjectPath": "evidence/web/sha256/af/8c/af8cc9a7574e10ab4b90c9cf4ea7ba59321383e8a5ef10af3f6b9acd6e88ecb4.html",
+            "discoveryByteSize": 418529,
+            "materialNumber": "12531680"
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170",
+            "contentSha256": "323c4514e4f0b43fa7b35342c5e5ee77ab048d2cb734fdace22cfa058a551282",
+            "objectPath": "evidence/derived/mineru-json/sha256/32/3c/323c4514e4f0b43fa7b35342c5e5ee77ab048d2cb734fdace22cfa058a551282.json",
+            "byteSize": 19735,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_miele_product_material_model",
+              "value": "G 7609 SCU XXL:material:12531680:finish:CleanSteel:page:2:813105125e490675ae2d4c2cbe4d997e3c330d1fdc11135a65c5d3365c39ff1a"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "G 7609 SCU XXL"
+            },
+            {
+              "type": "official_product_material_model",
+              "value": "G7609SCUXXLCLST:G 7609 SCU XXL:12531680:af8cc9a7574e10ab4b90c9cf4ea7ba59321383e8a5ef10af3f6b9acd6e88ecb4:https://shop.miele.com.au/en/kitchen/dishwashers/built-under-dishwashers/g-7609-scu-xxl-autodos-zid12531680/"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-25.1",
+            "discoveryPolicyVersion": "2026-07-25.1",
+            "verifiedAt": "2026-07-26T14:39:10.139Z",
+            "bindingSha256": "dbb73dd9722389a8ad21afc7c88baf7f75b827482cb280b9ce5ca4990c84e528"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 845,
+              "maximumMm": 845
+            },
+            "depthMm": 570
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531680.pdf",
+            "contentSha256": "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170",
+            "receiptBindingSha256": "dbb73dd9722389a8ad21afc7c88baf7f75b827482cb280b9ce5ca4990c84e528",
+            "page": 2,
+            "fragmentSha256": "813105125e490675ae2d4c2cbe4d997e3c330d1fdc11135a65c5d3365c39ff1a"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531680.pdf",
+            "contentSha256": "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170",
+            "receiptBindingSha256": "dbb73dd9722389a8ad21afc7c88baf7f75b827482cb280b9ce5ca4990c84e528",
+            "page": 2,
+            "fragmentSha256": "813105125e490675ae2d4c2cbe4d997e3c330d1fdc11135a65c5d3365c39ff1a"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531680.pdf",
+            "contentSha256": "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170",
+            "receiptBindingSha256": "dbb73dd9722389a8ad21afc7c88baf7f75b827482cb280b9ce5ca4990c84e528",
+            "page": 2,
+            "fragmentSha256": "813105125e490675ae2d4c2cbe4d997e3c330d1fdc11135a65c5d3365c39ff1a"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "d4619ed1eb886aacdb67389f2ee21ef2d712787db251918e21df36627a8ff170"
         ]
       },
       "reconciliation": {
@@ -95234,6 +95475,13 @@
       "queueSha256": "f7b228e6ecbab5a7a7fb14aa6f3d28bda740a88c1c1a0d05d23b7ccc6e975636",
       "resultsSha256": "6f9c280c82202990e74fde527503666e07d88767fcaeec020abe0a3b607a3c74",
       "auditSha256": "ab97484be8d953ab3c90415b97d7c5e7c390db2eab7937f0e45fd58d885a0b2d"
+    },
+    {
+      "batchId": "historical-recovery-55a7e8892f6513e62705dfba-slice-ff804c8f9171",
+      "batchSha256": "9e050dd1aec9eb917fe874d13b4f0e6b70f28de11f90fe5c928de17e86ea9dd8",
+      "queueSha256": "9d370214be78f1727340ebb3f3907f4e3e08bc2caf189d1212dace7ba285868f",
+      "resultsSha256": "0180d4d16c29599d0ddc3beb4070a700ef2d7dc2e4e0bf149f84f10e6a6c470f",
+      "auditSha256": "d1901600594e3227d432a586475a7ba12f7ea3125bbb0908cdf83144063acc8f"
     },
     {
       "batchId": "historical-recovery-572a1e42795d212221d3ce44-slice-b9139f93544e",
