@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-26T14:11:44.088Z",
+  "generatedAt": "2026-07-26T14:30:31.683Z",
   "processorEpochMigration": {
     "migratedAt": "2026-07-25T15:01:36.199Z",
     "migratedEntries": 1,
@@ -17013,6 +17013,23 @@
       "acceptedAt": "2026-07-16T05:00:25.867Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_b286652a847b38a895aca8e4",
+      "targetId": "recovery_target_bdaf2f9b5e16cc27f2b8de9d",
+      "referenceId": "fa_ref_c2c2086cfe1bdb0417f836e1",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531690.pdf",
+      "contentSha256": "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+      "status": "accepted",
+      "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
+      "candidateInventorySha256": "4e21b7c63c829cfbdff014e8955ffc85581ec82d504e4bad5c4f40a789bcf705",
+      "semanticOutcomeSha256": "02d701624c10379ca6462b4d72c85ebf4b4cf6a35df0154100d501192c535484",
+      "batchId": "historical-recovery-c3c1050570590a1301470c08-slice-62800e51b835",
+      "batchSha256": "7a78b7d03a3047cdac164230697e33b8620cb351ed7b4d2ce9f3ef240446174c",
+      "runId": "historical-scale-p0-miele-g7609scixxlclst-dimensions-20260726-a",
+      "resultsSha256": "1165ca35f1430612cc87aa1a7fcebc0de79f998eff1df0e7b82b650580c9b152",
+      "auditSha256": "faff5d4ed20fa398321bcf7d6521890d1222aabcb6552240d4ed69a1a47c3910",
+      "acceptedAt": "2026-07-26T14:29:46.071Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_b2f4d7314bc43e079a6bb135",
       "targetId": "recovery_target_0bce49ea1d5ed7f33a36d2db",
       "referenceId": "fa_ref_7c0173090146f9dee997ffc4",
@@ -22819,7 +22836,7 @@
   "summary": {
     "entries": 442,
     "resolutions": 30,
-    "sourceAcceptances": 294,
+    "sourceAcceptances": 295,
     "suppressions": 340,
     "resolvedSuppressions": 26,
     "retryable": 76,

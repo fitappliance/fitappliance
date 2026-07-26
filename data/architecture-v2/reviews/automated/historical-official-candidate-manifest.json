@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T14:11:44.088Z",
-  "semanticManifestSha256": "feb08e0f4a7d476186167ea5e4c9067bd21a2d4c1035bd559449714d0d9c5196",
+  "generatedAt": "2026-07-26T14:30:31.683Z",
+  "semanticManifestSha256": "f037d3327ce4015c3142f5fc143a906e5972c920a6a553f4756c63291bb90108",
   "policy": {
     "discoveryOnly": true,
     "candidatesAreNotEvidenceReceipts": true,
@@ -11,7 +11,7 @@
     "candidatesRequireRequiredSourceLanesComplete": true,
     "legacyAggregateCompletionCannotAuthorizeTerminal": true
   },
-  "sourceAcquisitionQueueSha256": "8e69d15d7ad216d2f8a041fbbf0ce4e4a9bdcb5ac620dcf1fc856f46155b3f68",
+  "sourceAcquisitionQueueSha256": "1879b510a350414d64d3ff723951f1c67f3980d42bf0f679666d2779a70a74cf",
   "sourceBindings": {
     "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
     "publicProjectionSha256": "d29bce5366a3467f9aa4887d26268284681184fb4a1f9097e8f2ed477f66da90",
@@ -301,6 +301,46 @@
         "contentSha256": "e2396712ba3d9cd9fc3de387aad17eecb77ddb391e2ffdbe558ee63c2fb89b0c",
         "byteSize": 13799,
         "objectPath": "evidence/discovery/sha256/e2/39/e2396712ba3d9cd9fc3de387aad17eecb77ddb391e2ffdbe558ee63c2fb89b0c.json",
+        "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
+      },
+      "targets": 1
+    },
+    {
+      "runId": "historical-scale-p0-miele-g7609scixxlclst-discovery-20260726-a",
+      "startedAt": "2026-07-26T14:21:16.886Z",
+      "completedAt": "2026-07-26T14:21:28.387Z",
+      "sourceAcquisitionQueueSha256": "8e69d15d7ad216d2f8a041fbbf0ce4e4a9bdcb5ac620dcf1fc856f46155b3f68",
+      "selection": {
+        "manifestId": "historical_batch_79337f6dfc1e1257821c2ae5",
+        "semanticManifestSha256": "79337f6dfc1e1257821c2ae5551740e6333f5da9fded281bbe107e09fab8c13e",
+        "selectedReferenceIds": [
+          "fa_ref_c2c2086cfe1bdb0417f836e1"
+        ]
+      },
+      "storageObject": {
+        "contentSha256": "62644b687423df6c7485514483ed164eecf48bf0f3d63adcf87068cad01e1c96",
+        "byteSize": 15083,
+        "objectPath": "evidence/discovery/sha256/62/64/62644b687423df6c7485514483ed164eecf48bf0f3d63adcf87068cad01e1c96.json",
+        "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
+      },
+      "targets": 1
+    },
+    {
+      "runId": "historical-scale-p0-miele-g7609scixxlclst-discovery-20260726-b",
+      "startedAt": "2026-07-26T14:27:20.204Z",
+      "completedAt": "2026-07-26T14:27:26.994Z",
+      "sourceAcquisitionQueueSha256": "8e69d15d7ad216d2f8a041fbbf0ce4e4a9bdcb5ac620dcf1fc856f46155b3f68",
+      "selection": {
+        "manifestId": "historical_batch_e22772550b2b4a16133128cf",
+        "semanticManifestSha256": "e22772550b2b4a16133128cf03a5e97d64b83f0379ff0675b0e3184d8264b80a",
+        "selectedReferenceIds": [
+          "fa_ref_c2c2086cfe1bdb0417f836e1"
+        ]
+      },
+      "storageObject": {
+        "contentSha256": "3aa2adfb15c5572e655346c9fa89c9e34657ceeb305ba0b8f8a9c4f917d879e4",
+        "byteSize": 13969,
+        "objectPath": "evidence/discovery/sha256/3a/a2/3aa2adfb15c5572e655346c9fa89c9e34657ceeb305ba0b8f8a9c4f917d879e4.json",
         "markerSha256": "20bb75d256b1c7460a2c2326e78e25898f465309d0b6509ae4b397b004ec34fb"
       },
       "targets": 1
@@ -2217,7 +2257,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -2263,75 +2303,6 @@
       "candidateEdges": []
     },
     {
-      "referenceId": "fa_ref_c2c2086cfe1bdb0417f836e1",
-      "acquisitionId": "historical_acquisition_7ce1d449f113907907d836a9",
-      "category": "dishwasher",
-      "brand": "Miele",
-      "model": "G7609SCIXXLCLST",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "state": "DISCOVERY_RETRYABLE",
-      "terminal": false,
-      "retryableDiscovery": true,
-      "resolverContract": [
-        {
-          "schemaVersion": 1,
-          "resolverId": "architecture-v2-core-official-discovery",
-          "version": "1",
-          "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-          "required": false
-        },
-        {
-          "schemaVersion": 2,
-          "resolverId": "miele-official-discovery",
-          "version": "3",
-          "scope": "miele_au_product_material_bound_specification_and_context_lanes",
-          "required": true,
-          "sourceLanes": [
-            {
-              "laneId": "current_product",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "discontinued_archive",
-              "required": false,
-              "supported": false
-            },
-            {
-              "laneId": "support_search_api",
-              "required": false,
-              "supported": false
-            },
-            {
-              "laneId": "official_document_cdn",
-              "required": true,
-              "supported": true
-            },
-            {
-              "laneId": "official_product_detail",
-              "required": true,
-              "supported": true
-            }
-          ]
-        }
-      ],
-      "resolverResults": [],
-      "incompleteResolverIds": [
-        "miele-official-discovery"
-      ],
-      "incompleteSourceLaneIds": [],
-      "legacyAggregateResolverIds": [],
-      "lastDiscoveryRunId": null,
-      "lastDiscoveryAt": null,
-      "referenceHintSourceIds": [
-        "historical_source_cab6686b638a40c0bfcb6842"
-      ],
-      "candidateEdges": []
-    },
-    {
       "referenceId": "fa_ref_eac4af885af2ed000c6acb90",
       "acquisitionId": "historical_acquisition_32eaf5680198e6a2ef4172fd",
       "category": "dishwasher",
@@ -2355,7 +2326,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -2424,7 +2395,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -2493,7 +2464,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -2562,7 +2533,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -2631,7 +2602,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -3218,7 +3189,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -6982,7 +6953,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -7051,7 +7022,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -7120,7 +7091,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -19354,7 +19325,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -19421,7 +19392,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -19488,7 +19459,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -19555,7 +19526,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -19622,7 +19593,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -19689,7 +19660,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -19756,7 +19727,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -19823,7 +19794,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -19890,7 +19861,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -19957,7 +19928,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -20024,7 +19995,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -20093,7 +20064,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -20162,7 +20133,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -20231,7 +20202,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -20300,7 +20271,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -20367,7 +20338,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -20434,7 +20405,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -28570,7 +28541,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -28639,7 +28610,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -70373,7 +70344,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -70440,7 +70411,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -70509,7 +70480,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -70576,7 +70547,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -70643,7 +70614,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -70710,7 +70681,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -70777,7 +70748,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -70846,7 +70817,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -70915,7 +70886,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -70982,7 +70953,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71049,7 +71020,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71118,7 +71089,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71185,7 +71156,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71252,7 +71223,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71319,7 +71290,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71386,7 +71357,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71453,7 +71424,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71520,7 +71491,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71587,7 +71558,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71654,7 +71625,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71721,7 +71692,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71790,7 +71761,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71859,7 +71830,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71928,7 +71899,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -71997,7 +71968,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -72064,7 +72035,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -72131,7 +72102,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -72198,7 +72169,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -72265,7 +72236,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -72332,7 +72303,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -72401,7 +72372,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -105347,7 +105318,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -105414,7 +105385,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -105481,7 +105452,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -105548,7 +105519,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -105615,7 +105586,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -105682,7 +105653,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -105749,7 +105720,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -105816,7 +105787,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -105883,7 +105854,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -105950,7 +105921,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -106017,7 +105988,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -106084,7 +106055,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -106151,7 +106122,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -106218,7 +106189,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -106285,7 +106256,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -106352,7 +106323,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -106419,7 +106390,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -106486,7 +106457,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -106553,7 +106524,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -106620,7 +106591,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125115,7 +125086,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125182,7 +125153,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125249,7 +125220,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125316,7 +125287,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125383,7 +125354,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125450,7 +125421,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125517,7 +125488,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125584,7 +125555,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125651,7 +125622,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125718,7 +125689,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125785,7 +125756,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125852,7 +125823,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125919,7 +125890,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -125986,7 +125957,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126053,7 +126024,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126120,7 +126091,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126187,7 +126158,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126254,7 +126225,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126321,7 +126292,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126388,7 +126359,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126455,7 +126426,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126522,7 +126493,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126589,7 +126560,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126656,7 +126627,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126723,7 +126694,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126790,7 +126761,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126857,7 +126828,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126924,7 +126895,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -126991,7 +126962,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127058,7 +127029,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127125,7 +127096,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127192,7 +127163,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127259,7 +127230,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127326,7 +127297,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127393,7 +127364,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127460,7 +127431,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127527,7 +127498,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127594,7 +127565,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127661,7 +127632,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127728,7 +127699,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127795,7 +127766,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127862,7 +127833,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127929,7 +127900,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -127996,7 +127967,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -128063,7 +128034,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -128130,7 +128101,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -128197,7 +128168,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -128264,7 +128235,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -128331,7 +128302,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -128398,7 +128369,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -128465,7 +128436,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -128532,7 +128503,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -128599,7 +128570,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -154678,7 +154649,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -154745,7 +154716,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -154812,7 +154783,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -154879,7 +154850,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -154946,7 +154917,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155013,7 +154984,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155080,7 +155051,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155147,7 +155118,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155214,7 +155185,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155281,7 +155252,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155348,7 +155319,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155415,7 +155386,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155482,7 +155453,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155549,7 +155520,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155616,7 +155587,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155683,7 +155654,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155750,7 +155721,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155817,7 +155788,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155884,7 +155855,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -155951,7 +155922,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156018,7 +155989,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156085,7 +156056,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156152,7 +156123,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156219,7 +156190,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156286,7 +156257,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156353,7 +156324,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156420,7 +156391,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156487,7 +156458,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156554,7 +156525,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156621,7 +156592,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156688,7 +156659,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156755,7 +156726,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156822,7 +156793,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156889,7 +156860,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -156956,7 +156927,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -157023,7 +156994,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -157090,7 +157061,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -157157,7 +157128,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -157224,7 +157195,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -157291,7 +157262,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -157358,7 +157329,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -157425,7 +157396,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -157492,7 +157463,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -157559,7 +157530,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -157626,7 +157597,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -217385,7 +217356,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -217452,7 +217423,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -217519,7 +217490,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -217586,7 +217557,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -217653,7 +217624,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -217720,7 +217691,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -263954,7 +263925,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264021,7 +263992,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264088,7 +264059,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264155,7 +264126,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264222,7 +264193,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264289,7 +264260,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264356,7 +264327,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264423,7 +264394,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264490,7 +264461,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264557,7 +264528,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264624,7 +264595,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264691,7 +264662,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264758,7 +264729,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264825,7 +264796,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264892,7 +264863,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -264959,7 +264930,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -265026,7 +264997,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -265093,7 +265064,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -265160,7 +265131,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -265227,7 +265198,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -265294,7 +265265,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -265361,7 +265332,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -265428,7 +265399,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -265495,7 +265466,7 @@
         {
           "schemaVersion": 2,
           "resolverId": "miele-official-discovery",
-          "version": "3",
+          "version": "4",
           "scope": "miele_au_product_material_bound_specification_and_context_lanes",
           "required": true,
           "sourceLanes": [
@@ -275975,13 +275946,13 @@
     }
   ],
   "summary": {
-    "acquisitionRecords": 7681,
-    "targets": 7681,
+    "acquisitionRecords": 7680,
+    "targets": 7680,
     "candidates": 8,
     "candidateEdges": 8,
-    "runBindings": 14,
+    "runBindings": 16,
     "byState": {
-      "DISCOVERY_RETRYABLE": 5022,
+      "DISCOVERY_RETRYABLE": 5021,
       "RESEARCH_REQUIRED": 2659
     },
     "schemaV2Targets": 0,

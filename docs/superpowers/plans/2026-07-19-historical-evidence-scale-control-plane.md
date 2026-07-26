@@ -88,7 +88,7 @@ under that task, repair the plan first, and only then resume implementation.
 | 6 | Per-model runs repeat family-level source failures | COMPLETE | 8 domain tests; 27 gate/runner/epoch tests; Architecture V2 929/929; lint/offline build/diff passed; schema-v2 artifact stable |
 | 7 | Generated batches are operationally too broad | COMPLETE | 12 planner tests; 48 lane tests; Architecture V2 942/942; lint/offline build/determinism/real-manifest validation passed |
 | 8 | Parser repairs are not prioritised by reusable family impact | COMPLETE | 216 focused tests; Architecture V2 968/968; lint/offline build/diff passed; full 803-object repair audit and 408/408 receipt replay passed |
-| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Controlled P0 checkpoints plus four material-bound Miele variants; 406 current receipts; 413/413 source replay; Architecture V2 1,242/1,242 and full repository 2,919/2,919; zero publication violations |
+| 9 | Dimensions recovery lacks a controlled P0/P1 scale loop | COMPLETE | Controlled P0 checkpoints plus five material-bound Miele variants; 407 current receipts; 414/414 source replay; Architecture V2 1,242/1,242 and full repository 2,920/2,920; zero publication violations |
 | 10 | Full installation/Fit evidence has no separate scale pipeline | COMPLETE | 27 focused tests; Architecture V2 1002/1002; full repository 2659/2659; offline build, lint and diff check passed; external MinerU replay 21/21; publication violations 0 |
 
 ## Ten-Problem Solution Map
@@ -833,6 +833,35 @@ public dimensions and zero receipt-bound `VERIFIED_FIT`; installation and
 operation fields remain unknown rather than inferred. The next authorised P0
 singleton is `G7609SCIXXLCLST` under discovery manifest
 `historical_batch_79337f6dfc1e1257821c2ae5`.
+
+**XXL identity closure (2026-07-26):** Initial discovery run
+`historical-scale-p0-miele-g7609scixxlclst-discovery-20260726-a` persisted four
+official search responses but produced no candidate. Checkpoint
+`historical-dimensions-checkpoint-c97113cb6b10414064be1a4c` retained that
+retryable zero-result epoch. Inspection showed the official product card did
+exist: the parser had truncated `G 7609 SCi XXL` to `G 7609 SCi` and therefore
+rejected material `12531690`.
+
+Resolver v4 now preserves only the explicit `XXL` marker immediately following
+an integrated Miele model token; it still rejects the non-XXL sibling and does
+not absorb marketing copy. After focused positive and sibling-rejection tests,
+discovery run `historical-scale-p0-miele-g7609scixxlclst-discovery-20260726-b`
+bound the exact Australian product card and official Product Sheet. Checkpoint
+`historical-dimensions-checkpoint-9b2c36ed47469072a51932ff` authorised the
+single acquisition manifest.
+
+Acquisition run
+`historical-scale-p0-miele-g7609scixxlclst-dimensions-20260726-a` accepted
+closed W/H/D `598 x 845 x 570 mm`. Online audit
+`historical-recovery-audit-faff5d4ed20fa398321bcf7d` replayed 821 objects with
+zero repair or violation, and dimensions checkpoint
+`historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38` recorded a complete
+`1/1` funnel. Cumulative coverage is 407 current valid receipts and 414/414
+passing sources. The active release remains 332 receipt-bound public
+dimensions and zero receipt-bound `VERIFIED_FIT`. Architecture V2 passes
+1,242/1,242, the full repository passes 2,920/2,920, and lint passes. The next
+authorised P0 singleton is `G7609SCUXXLCLST` under discovery manifest
+`historical_batch_3fe97094996d8d19dcefb6aa`.
 
 **Acceptance:** Coverage increases monotonically, prior receipts replay, and no
 batch can claim progress from downloads or MinerU output alone.

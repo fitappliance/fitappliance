@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-26T14:11:44.088Z",
-  "documentGraphSha256": "31839168f574cbb6d63e7ee8afef32d5ee389b7cbcd4295b2bb444bf3d5bbedc",
-  "executableQueueSha256": "1814dc085c7b53a727ad71706619d93a69f4ba2ed5c15c953837f71f9247762e",
+  "generatedAt": "2026-07-26T14:30:31.683Z",
+  "documentGraphSha256": "9adedd181897e00d35c3b77648347833de9306f144796e38054f1e30f6d5179f",
+  "executableQueueSha256": "adefd7e5fc61ccb1229f21ded94617ece6290ea3c27387ce9d22bb91137def44",
   "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
   "parserContractSha256": "a95b1b471ff056a2b04d8cd84dfd27f544a70c37eb302ef26e641be1f73ba3fd",
   "processorEpochs": {
@@ -63865,16 +63865,6 @@
       "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
     },
     {
-      "targetId": "recovery_target_bdaf2f9b5e16cc27f2b8de9d",
-      "referenceId": "fa_ref_c2c2086cfe1bdb0417f836e1",
-      "executionLane": "BOUNDED_DISCOVERY",
-      "familyIds": [],
-      "assignment": "UNSCOPED_SINGLETON",
-      "runnerAllowed": true,
-      "fanoutEligible": false,
-      "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
-    },
-    {
       "targetId": "recovery_target_bdb64cd75f5344838ab44997",
       "referenceId": "fa_ref_0d46913d332159b3a4f211c3",
       "executionLane": "BOUNDED_DISCOVERY",
@@ -77166,10 +77156,10 @@
       "reason": "NO_CANONICAL_DOCUMENT_FAMILY"
     }
   ],
-  "semanticCanarySha256": "f3d0e3e41b13c3d9d509c9da2793e002d37d97684a840e399f33433e1af12001",
+  "semanticCanarySha256": "ed680e96770d5a21513beba8ee46d5ae32d887351cff489a37577e6d12b7ff2e",
   "summary": {
     "families": 511,
-    "targets": 4987,
+    "targets": 4986,
     "byFamilyState": {
       "CANARY_READY": 88,
       "FAILED_IDENTITY": 0,
@@ -77179,9 +77169,9 @@
       "REOPENED": 5,
       "UNTESTED": 418
     },
-    "unscopedSingletonTargets": 4797,
+    "unscopedSingletonTargets": 4796,
     "multiFamilySingletonTargets": 51,
-    "runnerAllowedTargets": 4941,
+    "runnerAllowedTargets": 4940,
     "fanoutEligibleTargets": 0
   }
 }

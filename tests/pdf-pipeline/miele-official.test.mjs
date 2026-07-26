@@ -213,6 +213,57 @@ test('Miele official finder binds a finish-suffixed target to one exact product 
   assert.ok(objects.size >= 3);
 });
 
+test('Miele official finder preserves the XXL marker after an integrated model token', async () => {
+  const exactProductUrl = 'https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7609-sci-xxl-autodos-zid12531690/';
+  const siblingProductUrl = 'https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7609-sci-autodos-zid99999999/';
+  const productCard = (url, material, title) => `
+    <a class="product-title" data-product-sku="${material}" href="${url}">
+      <span>${title}</span>
+    </a>
+  `;
+  const searchHtml = [
+    productCard(exactProductUrl, '12531690', 'G 7609 SCi XXL AutoDos'),
+    productCard(siblingProductUrl, '99999999', 'G 7609 SCi AutoDos'),
+  ].join('');
+  const productHtml = '<h1>G 7609 SCi XXL AutoDos</h1>';
+  const downloadHtml = '<h1>Downloads for G 7609 SCi XXL</h1>';
+  const objects = new Map();
+
+  assert.deepEqual(extractMieleProductRecords(searchHtml).map((record) => ({
+    materialNumber: record.materialNumber,
+    model: record.model,
+    modelLabel: record.modelLabel,
+  })), [
+    { materialNumber: '12531690', model: 'G7609SCIXXL', modelLabel: 'G 7609 SCi XXL' },
+    { materialNumber: '99999999', model: 'G7609SCI', modelLabel: 'G 7609 SCi' },
+  ]);
+
+  const found = await findMieleOfficialPdf({
+    brand: 'Miele',
+    sku: 'G7609SCIXXLCLST',
+    category: 'dishwasher',
+  }, {
+    writeObject: async (path, bytes) => objects.set(path, Buffer.from(bytes)),
+    fetchImpl: async (url) => ({
+      ok: true,
+      text: async () => (
+        String(url).includes('ViewParametricSearch')
+          ? searchHtml
+          : String(url).includes('product-details-1995')
+            ? downloadHtml
+            : productHtml
+      ),
+    }),
+  });
+
+  assert.equal(found.materialNumber, '12531690');
+  assert.equal(found.productUrl, exactProductUrl);
+  assert.equal(found.sourceUrl, 'https://www.miele.com.au/media/ex/au/specsheets/12531690.pdf');
+  assert.equal(found.resources[0].sourceModelHint, 'G 7609 SCi XXL');
+  assert.ok(found.resources.every((resource) => !resource.sourceUrl.includes('99999999')));
+  assert.ok(found.sourceLanes.filter((lane) => lane.required).every((lane) => lane.status === 'complete'));
+});
+
 test('Miele official finder fails closed when one model stem maps to multiple materials', async () => {
   const productCard = (material) => `
     <div class="product-tile" data-tracking-product-sku="${material}">

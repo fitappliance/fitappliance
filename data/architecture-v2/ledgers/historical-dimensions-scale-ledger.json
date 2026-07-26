@@ -1597,6 +1597,246 @@
         "p1EligibleTargets": 4704
       },
       "semanticCheckpointSha256": "bb70e1b55893073ceaa4f455400a9667acdb264917bd45a66fb3acb744486ee1"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-c97113cb6b10414064be1a4c",
+      "runId": "historical-scale-p0-miele-g7609scixxlclst-discovery-20260726-a",
+      "completedAt": "2026-07-26T14:21:28.387Z",
+      "stage": "DISCOVERY",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_79337f6dfc1e1257821c2ae5",
+      "manifestSha256": "79337f6dfc1e1257821c2ae5551740e6333f5da9fded281bbe107e09fab8c13e",
+      "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "65b38cb0c5705f48bb1c5f8703d4d8529dfc64581719e789e5f201e0a7be8e1d",
+        "auditSha256": null,
+        "storageContentSha256": "62644b687423df6c7485514483ed164eecf48bf0f3d63adcf87068cad01e1c96",
+        "candidateManifestSha256": "bf9563a65c9cdd6a16075521f936ada2998bda3e7f02b5bbd9291dcecc610798"
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 0,
+        "fetchedTargets": 0,
+        "mineruValidTargets": 0,
+        "identityProvenTargets": 0,
+        "dimensionsReceipted": 0,
+        "terminalTargets": 0,
+        "retryableTargets": 1
+      },
+      "stageMetrics": [
+        {
+          "stage": "DISCOVERY",
+          "metricId": "authority_candidate_targets_per_selected_target",
+          "numerator": 0,
+          "denominator": 1,
+          "conclusiveNumerator": 0,
+          "conclusiveDenominator": 0,
+          "retryableUnits": 1,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+        }
+      ],
+      "beforeCounters": {
+        "currentValidReceipts": 406,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 413,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 180,
+        "p0EligibleTargets": 175,
+        "p1AssignedTargets": 4744,
+        "p1EligibleTargets": 4704
+      },
+      "afterCounters": {
+        "currentValidReceipts": 406,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 413,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 180,
+        "p0EligibleTargets": 175,
+        "p1AssignedTargets": 4744,
+        "p1EligibleTargets": 4704
+      },
+      "semanticCheckpointSha256": "48a780a9dfbe16c226c3a06e7a720d8b3d95e61c4d2ad2dcc9ad14e5fe27390b"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-9b2c36ed47469072a51932ff",
+      "runId": "historical-scale-p0-miele-g7609scixxlclst-discovery-20260726-b",
+      "completedAt": "2026-07-26T14:27:26.994Z",
+      "stage": "DISCOVERY",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_e22772550b2b4a16133128cf",
+      "manifestSha256": "e22772550b2b4a16133128cf03a5e97d64b83f0379ff0675b0e3184d8264b80a",
+      "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "fc3b42514993b52d934e632d31bd052cb3266715859da75199d385664f13d7d4",
+        "auditSha256": null,
+        "storageContentSha256": "3aa2adfb15c5572e655346c9fa89c9e34657ceeb305ba0b8f8a9c4f917d879e4",
+        "candidateManifestSha256": "15905c4e1e49b6fee519ac09832d3a11843547274240ccfecac2dba2310df95e"
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 1,
+        "fetchedTargets": 0,
+        "mineruValidTargets": 0,
+        "identityProvenTargets": 0,
+        "dimensionsReceipted": 0,
+        "terminalTargets": 0,
+        "retryableTargets": 0
+      },
+      "stageMetrics": [
+        {
+          "stage": "DISCOVERY",
+          "metricId": "authority_candidate_targets_per_selected_target",
+          "numerator": 1,
+          "denominator": 1,
+          "conclusiveNumerator": 1,
+          "conclusiveDenominator": 1,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
+        }
+      ],
+      "beforeCounters": {
+        "currentValidReceipts": 406,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 413,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 180,
+        "p0EligibleTargets": 175,
+        "p1AssignedTargets": 4744,
+        "p1EligibleTargets": 4704
+      },
+      "afterCounters": {
+        "currentValidReceipts": 406,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 413,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 180,
+        "p0EligibleTargets": 175,
+        "p1AssignedTargets": 4744,
+        "p1EligibleTargets": 4704
+      },
+      "semanticCheckpointSha256": "a4985b68f4788ccbc4fd5832d7c1e7bd36a10b8b43ed8b40d96844df472d1aad"
+    },
+    {
+      "checkpointId": "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38",
+      "runId": "historical-scale-p0-miele-g7609scixxlclst-dimensions-20260726-a",
+      "completedAt": "2026-07-26T14:29:46.071Z",
+      "stage": "DIMENSIONS",
+      "workstreamId": "CURRENT_DIMENSIONS",
+      "manifestId": "historical_batch_53a0a21bf526a4b82f07b66e",
+      "manifestSha256": "53a0a21bf526a4b82f07b66e50dcd4e0d8a88d4e346baf14209c40578c6fa5be",
+      "cohortKey": "historical_cohort_e99b039f48c9cf3af1d628c3",
+      "familyId": null,
+      "evidenceBindings": {
+        "runSha256": "1165ca35f1430612cc87aa1a7fcebc0de79f998eff1df0e7b82b650580c9b152",
+        "auditSha256": "31160c5b354434d72b42a0f77ae0018455169df78c573953407605c908054e31",
+        "storageContentSha256": null,
+        "candidateManifestSha256": null
+      },
+      "funnel": {
+        "selectedTargets": 1,
+        "targetsWithOfficialCandidates": 1,
+        "fetchedTargets": 1,
+        "mineruValidTargets": 1,
+        "identityProvenTargets": 1,
+        "dimensionsReceipted": 1,
+        "terminalTargets": 0,
+        "retryableTargets": 0
+      },
+      "stageMetrics": [
+        {
+          "stage": "ACQUISITION",
+          "metricId": "valid_immutable_authority_objects_per_attempted_candidate_job",
+          "numerator": 1,
+          "denominator": 1,
+          "conclusiveNumerator": 1,
+          "conclusiveDenominator": 1,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
+        },
+        {
+          "stage": "MINERU",
+          "metricId": "valid_content_list_v2_per_eligible_fetched_pdf",
+          "numerator": 1,
+          "denominator": 1,
+          "conclusiveNumerator": 1,
+          "conclusiveDenominator": 1,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "25842bf04399b31320394796066d1b34cd15ac9aafc801b6b6afb425aeab42b3"
+        },
+        {
+          "stage": "IDENTITY",
+          "metricId": "receipt_eligible_identity_proof_per_valid_parsed_document",
+          "numerator": 1,
+          "denominator": 1,
+          "conclusiveNumerator": 1,
+          "conclusiveDenominator": 1,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "85174a19403c088577707185a2e6758a273c14f97611418841fcb08154cbd61a"
+        },
+        {
+          "stage": "DIMENSIONS_RECEIPT",
+          "metricId": "accepted_whd_receipt_per_receipt_eligible_identity_target",
+          "numerator": 1,
+          "denominator": 1,
+          "conclusiveNumerator": 1,
+          "conclusiveDenominator": 1,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": false,
+          "epochSha256": "830df2e93c9577d78758a8d48d2a05608ee71df3ec2ec94fa5c3d3deb905a26a"
+        },
+        {
+          "stage": "INSTALLATION_FIT",
+          "metricId": "complete_hard_field_set_per_selected_model_field_set",
+          "numerator": 0,
+          "denominator": 0,
+          "conclusiveNumerator": 0,
+          "conclusiveDenominator": 0,
+          "retryableUnits": 0,
+          "structuralTerminalUnits": 0,
+          "diagnosticOnly": true,
+          "epochSha256": "c2bca80af3eb5392373ae3127a74f5af5a0c7f0c5bcd1c768d7593f96ffa0a14"
+        }
+      ],
+      "beforeCounters": {
+        "currentValidReceipts": 406,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 413,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 180,
+        "p0EligibleTargets": 175,
+        "p1AssignedTargets": 4744,
+        "p1EligibleTargets": 4704
+      },
+      "afterCounters": {
+        "currentValidReceipts": 407,
+        "replacementAutoFill": 321,
+        "receiptSourcesPassed": 414,
+        "fitReceiptBoundDimensions": 332,
+        "fitReceiptBoundVerified": 0,
+        "p0AssignedTargets": 179,
+        "p0EligibleTargets": 174,
+        "p1AssignedTargets": 4744,
+        "p1EligibleTargets": 4704
+      },
+      "semanticCheckpointSha256": "2bf02a0570313c7c8eb0103f71d4c3e9350ded35efb0afaecaa8092be92eff27"
     }
   ],
   "rebaselines": [

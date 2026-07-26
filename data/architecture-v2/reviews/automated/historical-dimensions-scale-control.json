@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-26T14:11:44.088Z",
+  "generatedAt": "2026-07-26T14:30:31.683Z",
   "policy": {
     "schemaVersion": 2,
     "confidence": {
@@ -41,13 +41,13 @@
     "receiptReplayAndZeroPublicationViolationsRequired": true
   },
   "sourceBindings": {
-    "ledgerSha256": "dbd2eb465969d871016740d51de0579e57de32ed5a0b5de77a4482fe613d0e11",
-    "nextBatchesSha256": "22a2484d6ee39bf608a86ae7ece6b270199f63d3101cfb54dd75d2344565e060",
-    "programStatusSha256": "3164838ec091c6ac16c88c0be1521b98550a34fb6d91e6b08133bea1efbc0c20",
-    "receiptAuditSha256": "aeb834ab6aa817f1d55ee7e418508042f72492a3ab767784adb9974afc4d92b9",
+    "ledgerSha256": "0d0573668262cf5ca750b1b1adc8fd84d8e1104f91963be4c40d6cdb4d1eaf7b",
+    "nextBatchesSha256": "d3f1f4801785944d0fbcfada9a1b8e77b90b8292742dc3f6b764c88a349198e3",
+    "programStatusSha256": "07b8112b329eb556fe657b5a7c9881719607a52e3395944768bcd71781f22e42",
+    "receiptAuditSha256": "94e9ed495d9e85d424347407d2216750731cd6e7b3c0c3f57d4422e2facb60c6",
     "replacementAuditSha256": "4668fdb464d8b92874d82f8e1cb12a8211dcab84e85b7738274280af9eb27be9",
     "fitPublicationAuditSha256": "3eddb70948ae8c075fbdf0d54efdc778332b28b7af6ff96b6ad526d9063fb9d2",
-    "epochsSha256": "04cd2cad56e07477acaaf7b3aed06e8dc58a38cd3956eacd2e00e03e4b983dab"
+    "epochsSha256": "c60b1d4f25d08fcadfcfdb38196ffce48d9a4b256d3f52fdbd2bb3e547b32e82"
   },
   "epochs": [
     {
@@ -84,7 +84,7 @@
     },
     {
       "id": "resolver-contract",
-      "semanticSha256": "279a908dd1111bf5a2a43536047c1d500bd7c6674eacf3b8c6710cb9181147a3"
+      "semanticSha256": "5c75980517ea3fe6ff568d824d0259d37f4892f05df5da69fa86db6f5dd46c16"
     },
     {
       "id": "scale-metrics",
@@ -101,17 +101,17 @@
     "onlineExternalState": "NOT_REQUIRED"
   },
   "counters": {
-    "currentValidReceipts": 406,
+    "currentValidReceipts": 407,
     "replacementAutoFill": 321,
-    "receiptSourcesPassed": 413,
+    "receiptSourcesPassed": 414,
     "fitReceiptBoundDimensions": 332,
     "fitReceiptBoundVerified": 0,
-    "p0AssignedTargets": 180,
-    "p0EligibleTargets": 175,
+    "p0AssignedTargets": 179,
+    "p0EligibleTargets": 174,
     "p1AssignedTargets": 4744,
     "p1EligibleTargets": 4704
   },
-  "checkpointCount": 20,
+  "checkpointCount": 23,
   "rebaselineCount": 2,
   "latestRebaseline": {
     "rebaselineId": "historical-dimensions-rebaseline-a437d5de498c6fd68fe79810",
@@ -135,29 +135,36 @@
     {
       "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
       "stage": "DISCOVERY",
+      "priorEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a",
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
+      "reason": "RELEVANT_EPOCH_CHANGED"
+    },
+    {
+      "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
+      "stage": "DISCOVERY",
       "priorEpochSha256": "806e2d1f23e5c9a8a8229c4ea2c4784507c234176cdc707bc0fa72b8b6a1c05f",
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a",
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
       "reason": "RELEVANT_EPOCH_CHANGED"
     },
     {
       "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
       "stage": "DISCOVERY",
       "priorEpochSha256": "a0fd9062c657ed56485cbe689eb57df393b94da5bfc28efed2c9e52c1d5f72da",
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a",
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
       "reason": "RELEVANT_EPOCH_CHANGED"
     },
     {
       "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
       "stage": "DISCOVERY",
       "priorEpochSha256": "b1a1c8706de174405c46272513325d897b08040870f525d450caf7192351adea",
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a",
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
       "reason": "RELEVANT_EPOCH_CHANGED"
     },
     {
       "cohortKey": "historical_cohort_573c77181bcd9c4c2c55bb05",
       "stage": "ACQUISITION",
       "priorEpochSha256": "a0fd9062c657ed56485cbe689eb57df393b94da5bfc28efed2c9e52c1d5f72da",
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a",
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
       "reason": "RELEVANT_EPOCH_CHANGED"
     },
     {
@@ -191,15 +198,22 @@
     {
       "cohortKey": "historical_cohort_e99b039f48c9cf3af1d628c3",
       "stage": "ACQUISITION",
+      "priorEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a",
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
+      "reason": "RELEVANT_EPOCH_CHANGED"
+    },
+    {
+      "cohortKey": "historical_cohort_e99b039f48c9cf3af1d628c3",
+      "stage": "ACQUISITION",
       "priorEpochSha256": "806e2d1f23e5c9a8a8229c4ea2c4784507c234176cdc707bc0fa72b8b6a1c05f",
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a",
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
       "reason": "RELEVANT_EPOCH_CHANGED"
     },
     {
       "cohortKey": "historical_cohort_e99b039f48c9cf3af1d628c3",
       "stage": "ACQUISITION",
       "priorEpochSha256": "b1a1c8706de174405c46272513325d897b08040870f525d450caf7192351adea",
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a",
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
       "reason": "RELEVANT_EPOCH_CHANGED"
     },
     {
@@ -255,7 +269,7 @@
       "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e",
       "stage": "DISCOVERY",
       "priorEpochSha256": "a0fd9062c657ed56485cbe689eb57df393b94da5bfc28efed2c9e52c1d5f72da",
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a",
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
       "reason": "RELEVANT_EPOCH_CHANGED"
     }
   ],
@@ -266,20 +280,22 @@
       "epochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a",
       "checkpointIds": [
         "historical-dimensions-checkpoint-8cffdd8748fc1714a991739a",
-        "historical-dimensions-checkpoint-389d9091e6f063050d0400de"
+        "historical-dimensions-checkpoint-389d9091e6f063050d0400de",
+        "historical-dimensions-checkpoint-c97113cb6b10414064be1a4c"
       ],
       "manifestIds": [
         "historical_batch_199768a088e47c85daaacb26",
+        "historical_batch_79337f6dfc1e1257821c2ae5",
         "historical_batch_b61f5fad316623a719c6b291"
       ],
       "numerator": 2,
-      "denominator": 2,
+      "denominator": 3,
       "conclusiveNumerator": 2,
       "conclusiveDenominator": 2,
-      "retryableUnits": 0,
+      "retryableUnits": 1,
       "structuralTerminalUnits": 0,
-      "completedManifests": 2,
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+      "completedManifests": 3,
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     },
     {
       "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
@@ -300,7 +316,26 @@
       "retryableUnits": 1,
       "structuralTerminalUnits": 0,
       "completedManifests": 2,
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
+    },
+    {
+      "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
+      "stage": "DISCOVERY",
+      "epochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
+      "checkpointIds": [
+        "historical-dimensions-checkpoint-9b2c36ed47469072a51932ff"
+      ],
+      "manifestIds": [
+        "historical_batch_e22772550b2b4a16133128cf"
+      ],
+      "numerator": 1,
+      "denominator": 1,
+      "conclusiveNumerator": 1,
+      "conclusiveDenominator": 1,
+      "retryableUnits": 0,
+      "structuralTerminalUnits": 0,
+      "completedManifests": 1,
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     },
     {
       "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
@@ -319,7 +354,7 @@
       "retryableUnits": 1,
       "structuralTerminalUnits": 0,
       "completedManifests": 1,
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     },
     {
       "cohortKey": "historical_cohort_182abd31da305fbd85c54937",
@@ -340,7 +375,7 @@
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
       "completedManifests": 2,
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     },
     {
       "cohortKey": "historical_cohort_573c77181bcd9c4c2c55bb05",
@@ -359,7 +394,7 @@
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
       "completedManifests": 1,
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     },
     {
       "cohortKey": "historical_cohort_573c77181bcd9c4c2c55bb05",
@@ -458,7 +493,7 @@
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
       "completedManifests": 3,
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     },
     {
       "cohortKey": "historical_cohort_e99b039f48c9cf3af1d628c3",
@@ -477,7 +512,26 @@
       "retryableUnits": 1,
       "structuralTerminalUnits": 1,
       "completedManifests": 1,
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
+    },
+    {
+      "cohortKey": "historical_cohort_e99b039f48c9cf3af1d628c3",
+      "stage": "ACQUISITION",
+      "epochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89",
+      "checkpointIds": [
+        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38"
+      ],
+      "manifestIds": [
+        "historical_batch_53a0a21bf526a4b82f07b66e"
+      ],
+      "numerator": 1,
+      "denominator": 1,
+      "conclusiveNumerator": 1,
+      "conclusiveDenominator": 1,
+      "retryableUnits": 0,
+      "structuralTerminalUnits": 0,
+      "completedManifests": 1,
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     },
     {
       "cohortKey": "historical_cohort_e99b039f48c9cf3af1d628c3",
@@ -498,7 +552,7 @@
       "retryableUnits": 3,
       "structuralTerminalUnits": 0,
       "completedManifests": 2,
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     },
     {
       "cohortKey": "historical_cohort_e99b039f48c9cf3af1d628c3",
@@ -507,20 +561,22 @@
       "checkpointIds": [
         "historical-dimensions-checkpoint-088298e931bd1b3f118dbec0",
         "historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3",
-        "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca"
+        "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca",
+        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38"
       ],
       "manifestIds": [
         "historical_batch_315ba27f89e8b406489ff77a",
         "historical_batch_4994bb33b3339db830f683b5",
+        "historical_batch_53a0a21bf526a4b82f07b66e",
         "historical_batch_5eedb583582aad504535bb47"
       ],
-      "numerator": 3,
-      "denominator": 3,
-      "conclusiveNumerator": 3,
-      "conclusiveDenominator": 3,
+      "numerator": 4,
+      "denominator": 4,
+      "conclusiveNumerator": 4,
+      "conclusiveDenominator": 4,
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
-      "completedManifests": 3,
+      "completedManifests": 4,
       "currentEpochSha256": "830df2e93c9577d78758a8d48d2a05608ee71df3ec2ec94fa5c3d3deb905a26a"
     },
     {
@@ -570,20 +626,22 @@
       "checkpointIds": [
         "historical-dimensions-checkpoint-088298e931bd1b3f118dbec0",
         "historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3",
-        "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca"
+        "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca",
+        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38"
       ],
       "manifestIds": [
         "historical_batch_315ba27f89e8b406489ff77a",
         "historical_batch_4994bb33b3339db830f683b5",
+        "historical_batch_53a0a21bf526a4b82f07b66e",
         "historical_batch_5eedb583582aad504535bb47"
       ],
-      "numerator": 3,
-      "denominator": 3,
-      "conclusiveNumerator": 3,
-      "conclusiveDenominator": 3,
+      "numerator": 4,
+      "denominator": 4,
+      "conclusiveNumerator": 4,
+      "conclusiveDenominator": 4,
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
-      "completedManifests": 3,
+      "completedManifests": 4,
       "currentEpochSha256": "85174a19403c088577707185a2e6758a273c14f97611418841fcb08154cbd61a"
     },
     {
@@ -673,11 +731,13 @@
       "checkpointIds": [
         "historical-dimensions-checkpoint-088298e931bd1b3f118dbec0",
         "historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3",
-        "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca"
+        "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca",
+        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38"
       ],
       "manifestIds": [
         "historical_batch_315ba27f89e8b406489ff77a",
         "historical_batch_4994bb33b3339db830f683b5",
+        "historical_batch_53a0a21bf526a4b82f07b66e",
         "historical_batch_5eedb583582aad504535bb47"
       ],
       "numerator": 0,
@@ -686,7 +746,7 @@
       "conclusiveDenominator": 0,
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
-      "completedManifests": 3,
+      "completedManifests": 4,
       "currentEpochSha256": "c2bca80af3eb5392373ae3127a74f5af5a0c7f0c5bcd1c768d7593f96ffa0a14"
     },
     {
@@ -696,20 +756,22 @@
       "checkpointIds": [
         "historical-dimensions-checkpoint-088298e931bd1b3f118dbec0",
         "historical-dimensions-checkpoint-7836b692f0ec32d3f8b9e0e3",
-        "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca"
+        "historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca",
+        "historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38"
       ],
       "manifestIds": [
         "historical_batch_315ba27f89e8b406489ff77a",
         "historical_batch_4994bb33b3339db830f683b5",
+        "historical_batch_53a0a21bf526a4b82f07b66e",
         "historical_batch_5eedb583582aad504535bb47"
       ],
-      "numerator": 3,
-      "denominator": 3,
-      "conclusiveNumerator": 3,
-      "conclusiveDenominator": 3,
+      "numerator": 4,
+      "denominator": 4,
+      "conclusiveNumerator": 4,
+      "conclusiveDenominator": 4,
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
-      "completedManifests": 3,
+      "completedManifests": 4,
       "currentEpochSha256": "25842bf04399b31320394796066d1b34cd15ac9aafc801b6b6afb425aeab42b3"
     },
     {
@@ -752,7 +814,7 @@
       "retryableUnits": 0,
       "structuralTerminalUnits": 0,
       "completedManifests": 1,
-      "currentEpochSha256": "67f951464cc8fc565042da5906228fe0c1233f7f044449364dba9829adb27d0a"
+      "currentEpochSha256": "934c5393441f22d1e93b5111a16647069b50737956cbe52160e7a6c7da2f8b89"
     }
   ],
   "legacyDiagnostics": [
@@ -799,30 +861,30 @@
     },
     {
       "isoWeek": "2026-W30",
-      "completedBatches": 15,
-      "selectedTargets": 15,
-      "targetsWithOfficialCandidates": 13,
-      "dimensionsReceipted": 5,
+      "completedBatches": 18,
+      "selectedTargets": 18,
+      "targetsWithOfficialCandidates": 15,
+      "dimensionsReceipted": 6,
       "terminalTargets": 2,
-      "retryableTargets": 2
+      "retryableTargets": 3
     }
   ],
   "projection": {
-    "completedDimensionsBatches": 8,
-    "dimensionsReceipted": 5,
-    "receiptedTargetsPerCompletedBatch": 0.625,
-    "projectedRemainingP0Batches": 280,
-    "projectedRemainingP1Batches": 7527,
+    "completedDimensionsBatches": 9,
+    "dimensionsReceipted": 6,
+    "receiptedTargetsPerCompletedBatch": 0.6666666666666666,
+    "projectedRemainingP0Batches": 261,
+    "projectedRemainingP1Batches": 7056,
     "projectionBasis": "OBSERVED_RECEIPTED_TARGETS_PER_COMPLETED_DIMENSIONS_BATCH"
   },
   "decision": {
     "status": "RUN_P0",
-    "allowedManifestId": "historical_batch_79337f6dfc1e1257821c2ae5",
+    "allowedManifestId": "historical_batch_3fe97094996d8d19dcefb6aa",
     "allowedWorkstreamId": "CURRENT_DIMENSIONS",
     "p1Blocked": true,
     "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
     "cohortKey": "historical_cohort_182abd31da305fbd85c54937"
   },
-  "controlId": "historical-dimensions-scale-66e4dd794cb2271c38aa68c9",
-  "semanticControlSha256": "66e4dd794cb2271c38aa68c9495d8623b513802981415a8e8c72fd57f3ea83c4"
+  "controlId": "historical-dimensions-scale-7ba6255d45c148ae90b364cb",
+  "semanticControlSha256": "7ba6255d45c148ae90b364cba782912ea87be53e3d4088ec5477765074e79061"
 }

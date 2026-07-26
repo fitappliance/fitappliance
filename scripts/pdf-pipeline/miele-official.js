@@ -178,7 +178,7 @@ function htmlText(value) {
 
 function extractLeadingMieleModel(value) {
   const match = htmlText(value).match(
-    /^\s*([A-Z]{1,5})\s*(\d{3,5})(?:\s+(SC(?:i|Vi)|[A-Z]{1,5})(?![a-z]))?/
+    /^\s*([A-Z]{1,5})\s*(\d{3,5})(?:\s+(SC(?:i|Vi)|[A-Z]{1,5})(?![a-z]))?(?:\s+(XXL)(?=\s|$))?/
   );
   if (!match) return null;
   const parts = match.slice(1).filter(Boolean);

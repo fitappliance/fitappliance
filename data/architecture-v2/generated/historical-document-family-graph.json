@@ -32,10 +32,10 @@
       "MODEL_LIST_PROVEN": 13,
       "UNMAPPED": 41
     },
-    "nonIndexedClassificationLinks": 104,
+    "nonIndexedClassificationLinks": 105,
     "nonIndexedClassificationLinksByLane": {
       "HTML": 86,
-      "JSON": 18
+      "JSON": 19
     }
   },
   "sourceVersions": [
@@ -10564,6 +10564,13 @@
       "sourceUrl": "https://www.fisherpaykel.com/au/dishwashing/built-under/series-7-contemporary-double-dishdrawer-dishwasher-dd60d2nb9-82879.html",
       "contentLane": "HTML",
       "documentId": "pdf:c464998926e4822596e0758060e2958942e18900735817e45fcfdc27aac530f9"
+    },
+    {
+      "referenceId": "fa_ref_c2c2086cfe1bdb0417f836e1",
+      "contentSha256": "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531690.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57"
     },
     {
       "referenceId": "fa_ref_c47eaade2e638e8e62fe49d3",
@@ -116895,5 +116902,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "31839168f574cbb6d63e7ee8afef32d5ee389b7cbcd4295b2bb444bf3d5bbedc"
+  "semanticGraphSha256": "9adedd181897e00d35c3b77648347833de9306f144796e38054f1e30f6d5179f"
 }

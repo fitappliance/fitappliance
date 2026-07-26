@@ -686,7 +686,7 @@ const LEGACY_RESOLVER_PROFILES = new Map([
     optionKey: 'miele',
     brandKey: 'miele',
     resolverId: 'miele-official-discovery',
-    version: '3',
+    version: '4',
     scope: 'miele_au_product_material_bound_specification_and_context_lanes',
     sourceLanes: MIELE_OFFICIAL_SOURCE_LANES,
     finder: findMieleOfficialPdf,

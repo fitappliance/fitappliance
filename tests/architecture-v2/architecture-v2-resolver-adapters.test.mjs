@@ -527,7 +527,7 @@ test('Miele adapter declares schema-v2 lanes and preserves bounded official obse
   );
 
   assert.equal(adapter.schemaVersion, 2);
-  assert.equal(adapter.version, '3');
+  assert.equal(adapter.version, '4');
   const result = await adapter.resolve({
     brand: 'Miele', model: 'G7130SCCLST', category: 'dishwasher',
   });

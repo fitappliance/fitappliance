@@ -2166,6 +2166,45 @@ receipt-bound public dimensions and zero receipt-bound `VERIFIED_FIT`. The next
 authorised P0 singleton is `G7609SCIXXLCLST` under bounded-discovery manifest
 `historical_batch_79337f6dfc1e1257821c2ae5`.
 
+The first `G7609SCIXXLCLST` discovery run,
+`historical-scale-p0-miele-g7609scixxlclst-discovery-20260726-a`, is an
+immutable retryable failure. Its object SHA-256 is
+`62644b687423df6c7485514483ed164eecf48bf0f3d63adcf87068cad01e1c96`.
+The official responses contained the exact `G 7609 SCi XXL` product card and
+material `12531690`, but the resolver extracted only `G 7609 SCi`. Checkpoint
+`historical-dimensions-checkpoint-c97113cb6b10414064be1a4c` correctly recorded
+zero official candidates and one retryable target.
+
+Miele resolver v4 fixes that exact grammar by retaining `XXL` only when it is
+the explicit token immediately after the leading model suffix. A focused test
+proves `G 7609 SCi XXL` and simultaneously rejects the non-XXL sibling; other
+trailing marketing words remain outside the model. Discovery run
+`historical-scale-p0-miele-g7609scixxlclst-discovery-20260726-b` then completed
+all required lanes. Its immutable object SHA-256 is
+`3aa2adfb15c5572e655346c9fa89c9e34657ceeb305ba0b8f8a9c4f917d879e4`,
+and checkpoint `historical-dimensions-checkpoint-9b2c36ed47469072a51932ff`
+recorded one official candidate with no retryable target.
+
+Acquisition run
+`historical-scale-p0-miele-g7609scixxlclst-dimensions-20260726-a` accepted
+closed W/H/D `598 x 845 x 570 mm` from the explicit page-2 appliance rows. The
+official PDF SHA-256 is
+`77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57`;
+its MinerU `content_list_v2` SHA-256 is
+`2d568188d3da20c2fc3c523e365e74c3ea820443f84adfd39f0e7012ce43c6e9`.
+Audit `historical-recovery-audit-faff5d4ed20fa398321bcf7d` checked 821 objects
+with zero repair or violation, and dimensions checkpoint
+`historical-dimensions-checkpoint-b31920e7aa7484cb2b7eaa38` recorded a complete
+`1/1` funnel. Promotion raised cumulative coverage to 407 current valid
+receipts and 414/414 passing sources. Architecture V2 passes 1,242/1,242, the
+full repository passes 2,920/2,920, and lint passes.
+
+The receipt remains dimensions-only: installation, operation and rear-service
+requirements are unknown, so `verifiedFitEligible` remains false. The active
+release stays at 332 receipt-bound public dimensions and zero receipt-bound
+`VERIFIED_FIT`. The next authorised P0 singleton is `G7609SCUXXLCLST` under
+bounded-discovery manifest `historical_batch_3fe97094996d8d19dcefb6aa`.
+
 For an evidence-only staged batch, the replacement guard is the immutable
 audit loaded through `audit:active-retail-release`. Do not run the standalone
 `audit:historical-replacement` against a newer candidate reference and the

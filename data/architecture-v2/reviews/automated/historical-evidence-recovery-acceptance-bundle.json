@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-26T14:11:44.088Z",
+  "generatedAt": "2026-07-26T14:30:31.683Z",
   "policySha256": "4ad459b535aa3a2193d7c06eafcdf544149074ba1de530fc54dd2d4dae85bce9",
   "entries": [
     {
@@ -69632,6 +69632,247 @@
       }
     },
     {
+      "targetId": "recovery_target_bdaf2f9b5e16cc27f2b8de9d",
+      "referenceId": "fa_ref_c2c2086cfe1bdb0417f836e1",
+      "legacyRuntimeId": "ao-162462",
+      "canonicalProductId": "fa_prod_01ddfa3e27e24a42ca8428fe",
+      "brand": "Miele",
+      "model": "G7609SCIXXLCLST",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-c3c1050570590a1301470c08-slice-62800e51b835",
+      "auditSha256": "31160c5b354434d72b42a0f77ae0018455169df78c573953407605c908054e31",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_model_variant_pdf",
+          "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531690.pdf",
+          "finalUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531690.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-26T14:29:45.888Z",
+          "contentSha256": "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+          "objectPath": "evidence/web/sha256/77/b9/77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 119203,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Miele",
+            "model": "G7609SCIXXLCLST",
+            "category": "dishwasher",
+            "outcome": "official_marketing_alias",
+            "sourceModel": "G 7609 SCI XXL"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Appliance width in mm",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "913de2c998254cb1a85527bd51452575d427c5f9e8af4a01f6192f9687a8d41b",
+              "bbox": [
+                391,
+                230,
+                931,
+                873
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 845
+              },
+              "sourceLabel": "Appliance height in mm",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "913de2c998254cb1a85527bd51452575d427c5f9e8af4a01f6192f9687a8d41b",
+              "bbox": [
+                391,
+                230,
+                931,
+                873
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 570
+              },
+              "sourceLabel": "Appliance depth in mm",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "913de2c998254cb1a85527bd51452575d427c5f9e8af4a01f6192f9687a8d41b",
+              "bbox": [
+                391,
+                230,
+                931,
+                873
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_product_material",
+            "market": "AU",
+            "discoveryUrl": "https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7609-sci-xxl-autodos-zid12531690/",
+            "requestedModel": "G7609SCIXXLCLST",
+            "matchedModel": "G 7609 SCi XXL",
+            "artifactUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531690.pdf",
+            "discoveryContentSha256": "4562d40ee7b1d2ea2b5a1b3bd4cca976a897c2ae200ea93ba91cd0639fe6febf",
+            "discoveryObjectPath": "evidence/web/sha256/45/62/4562d40ee7b1d2ea2b5a1b3bd4cca976a897c2ae200ea93ba91cd0639fe6febf.html",
+            "discoveryByteSize": 412751,
+            "materialNumber": "12531690"
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+            "contentSha256": "2d568188d3da20c2fc3c523e365e74c3ea820443f84adfd39f0e7012ce43c6e9",
+            "objectPath": "evidence/derived/mineru-json/sha256/2d/56/2d568188d3da20c2fc3c523e365e74c3ea820443f84adfd39f0e7012ce43c6e9.json",
+            "byteSize": 21007,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_miele_product_material_model",
+              "value": "G 7609 SCI XXL:material:12531690:finish:CleanSteel:page:2:913de2c998254cb1a85527bd51452575d427c5f9e8af4a01f6192f9687a8d41b"
+            },
+            {
+              "type": "canonical_source_model",
+              "value": "G 7609 SCI XXL"
+            },
+            {
+              "type": "official_product_material_model",
+              "value": "G7609SCIXXLCLST:G 7609 SCI XXL:12531690:4562d40ee7b1d2ea2b5a1b3bd4cca976a897c2ae200ea93ba91cd0639fe6febf:https://shop.miele.com.au/en/kitchen/dishwashers/integrated-dishwashers/g-7609-sci-xxl-autodos-zid12531690/"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-25.1",
+            "discoveryPolicyVersion": "2026-07-25.1",
+            "verifiedAt": "2026-07-26T14:29:45.888Z",
+            "bindingSha256": "d4aa9a458cc968883e8526bebf8e696363d2f3a7349b401fc5b3b2e46c0af14f"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 845,
+              "maximumMm": 845
+            },
+            "depthMm": 570
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531690.pdf",
+            "contentSha256": "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+            "receiptBindingSha256": "d4aa9a458cc968883e8526bebf8e696363d2f3a7349b401fc5b3b2e46c0af14f",
+            "page": 2,
+            "fragmentSha256": "913de2c998254cb1a85527bd51452575d427c5f9e8af4a01f6192f9687a8d41b"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531690.pdf",
+            "contentSha256": "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+            "receiptBindingSha256": "d4aa9a458cc968883e8526bebf8e696363d2f3a7349b401fc5b3b2e46c0af14f",
+            "page": 2,
+            "fragmentSha256": "913de2c998254cb1a85527bd51452575d427c5f9e8af4a01f6192f9687a8d41b"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531690.pdf",
+            "contentSha256": "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+            "receiptBindingSha256": "d4aa9a458cc968883e8526bebf8e696363d2f3a7349b401fc5b3b2e46c0af14f",
+            "page": 2,
+            "fragmentSha256": "913de2c998254cb1a85527bd51452575d427c5f9e8af4a01f6192f9687a8d41b"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_be040e31138e16accc76688d",
       "referenceId": "fa_ref_eb8c80dbac9425af4a678d96",
       "legacyRuntimeId": "fridge-arf2439",
@@ -95336,6 +95577,13 @@
       "queueSha256": "49a59f770acdbb5cf2e5129be628198913b856f5fb246007ae9e2ebc8a062fd3",
       "resultsSha256": "5199619f68aff7982858da31efc3824dce85f96c05e2d12b263c917c0d88502e",
       "auditSha256": "4cf04541a9b4bdbbd49c8bce4a2e7fb828b7c9edd07a0683bcb99297903dd30b"
+    },
+    {
+      "batchId": "historical-recovery-c3c1050570590a1301470c08-slice-62800e51b835",
+      "batchSha256": "7a78b7d03a3047cdac164230697e33b8620cb351ed7b4d2ce9f3ef240446174c",
+      "queueSha256": "2c07b9d61c8417630f325a4866868fa48b5790de1791f0c37a458f2b3fb78bb7",
+      "resultsSha256": "1165ca35f1430612cc87aa1a7fcebc0de79f998eff1df0e7b82b650580c9b152",
+      "auditSha256": "31160c5b354434d72b42a0f77ae0018455169df78c573953407605c908054e31"
     },
     {
       "batchId": "historical-recovery-c3c3409fb0dd830bf96a69d0-slice-14945d193451",

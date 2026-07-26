@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T14:11:44.088Z",
-  "sourceBundleSha256": "103930dd5056f04936f136d86daf48d16f331b100fb86164242300a54769e546",
+  "generatedAt": "2026-07-26T14:30:31.683Z",
+  "sourceBundleSha256": "664087dd2a87f24d41b95429b2a3152051c6e8fb0ead86ff7e498a83e83cec71",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -4260,6 +4260,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_bdaf2f9b5e16cc27f2b8de9d",
+      "referenceId": "fa_ref_c2c2086cfe1bdb0417f836e1",
+      "brand": "Miele",
+      "model": "G7609SCIXXLCLST",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531690.pdf",
+      "sourcePdfSha256": "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+      "contentSha256": "77b9e9c2312ef21139462b1e69b24723a65763c20ead17b2a1320e3ce91c4d57",
+      "receiptBindingSha256": "d4aa9a458cc968883e8526bebf8e696363d2f3a7349b401fc5b3b2e46c0af14f",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/2d/56/2d568188d3da20c2fc3c523e365e74c3ea820443f84adfd39f0e7012ce43c6e9.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_be040e31138e16accc76688d",
       "referenceId": "fa_ref_eb8c80dbac9425af4a678d96",
       "brand": "Westinghouse",
@@ -5787,11 +5801,11 @@
     }
   ],
   "summary": {
-    "entries": 387,
-    "sources": 413,
-    "passed": 413,
+    "entries": 388,
+    "sources": 414,
+    "passed": 414,
     "failed": 0
   },
-  "checkedObjects": 818,
-  "semanticAuditSha256": "fec443aaae4f09bed8b0df5607b68bccce6ad3eed21b311895cfc185118a3bd5"
+  "checkedObjects": 821,
+  "semanticAuditSha256": "2da2b3e93f59e070c01e3366dff77442bc60af19dd52402785b2639d527dfa71"
 }
