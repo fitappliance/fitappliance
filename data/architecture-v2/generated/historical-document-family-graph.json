@@ -32,10 +32,10 @@
       "MODEL_LIST_PROVEN": 13,
       "UNMAPPED": 41
     },
-    "nonIndexedClassificationLinks": 103,
+    "nonIndexedClassificationLinks": 104,
     "nonIndexedClassificationLinksByLane": {
       "HTML": 86,
-      "JSON": 17
+      "JSON": 18
     }
   },
   "sourceVersions": [
@@ -10452,6 +10452,13 @@
       "sourceUrl": "https://hisense.com.au/product/HRCF500/chest-freezer-500l",
       "contentLane": "HTML",
       "documentId": "pdf:1e486aaf63eb6a5076163d062368a947b720392bb27e2c0de5f9164fd3df0f98"
+    },
+    {
+      "referenceId": "fa_ref_9fe799828a1d8a918c5988c5",
+      "contentSha256": "ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531670.pdf",
+      "contentLane": "JSON",
+      "documentId": "pdf:ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e"
     },
     {
       "referenceId": "fa_ref_a6ce7d6da8c03860f80e9554",
@@ -116888,5 +116895,5 @@
     }
   ],
   "generatedAt": "2026-07-12T12:40:00.000Z",
-  "semanticGraphSha256": "10986748eb8a68f11ce802e722d46ea58e8833fed3a6e27388aaa6c2c5fd9eb6"
+  "semanticGraphSha256": "31839168f574cbb6d63e7ee8afef32d5ee389b7cbcd4295b2bb444bf3d5bbedc"
 }

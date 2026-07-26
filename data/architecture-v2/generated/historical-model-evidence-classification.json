@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T14:00:31.669Z",
+  "generatedAt": "2026-07-26T14:11:44.088Z",
   "policyVersion": "historical-model-evidence-classification-v2",
   "sourceBindings": {
     "releaseCandidateId": "retail_lifecycle_release_6c42c754aeb1ff49097b32b4",
@@ -8,11 +8,11 @@
     "historicalReferenceSha256": "bc71b7af5bd3e68ce388ab7897df726cfae8980dc84db961eac531270aabd882",
     "authorizationManifestSha256": "1289e8ea9fcacdbbc81df305193a28937bfb8d80a0b63b654cb3e04427b78fd1"
   },
-  "semanticClassificationSha256": "b74c51e77c59207c1f8d4f71957b0239437743aacf1ad0cc29d60a5fc4fc7f44",
+  "semanticClassificationSha256": "51e7189ee94a57f199b341446ec86ee3991b4d13da78e4dd7c5df6805b23968e",
   "summary": {
     "records": 8087,
     "uniqueReferenceIds": 8087,
-    "documentLinks": 4377,
+    "documentLinks": 4378,
     "modelsWithDocumentLinks": 1766,
     "modelsWithoutDocumentLinks": 6321,
     "byCategory": {
@@ -28,24 +28,24 @@
       "UNKNOWN_RETAIL": 77
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 405,
+      "COMPLETE_RECEIPT": 406,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 132,
       "OFFICIAL_DISCOVERY": 6412,
-      "REFERENCE_REDISCOVERY": 1055
+      "REFERENCE_REDISCOVERY": 1054
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6412,
-      "NO_ACTION": 405,
-      "REDISCOVER_OFFICIAL_SOURCE": 1055,
+      "NO_ACTION": 406,
+      "REDISCOVER_OFFICIAL_SOURCE": 1054,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 132
     },
     "bySourceAuthority": {
-      "MIXED": 249,
+      "MIXED": 250,
       "NONE": 6605,
       "OFFICIAL": 162,
-      "REFERENCE": 1071
+      "REFERENCE": 1070
     },
     "byIdentityScope": {
       "AMBIGUOUS": 169,
@@ -54,8 +54,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 90,
-      "ALL_AXIS_SCALAR": 452,
-      "NOT_PARSED": 7452,
+      "ALL_AXIS_SCALAR": 453,
+      "NOT_PARSED": 7451,
       "PARSER_GAP": 93
     },
     "byConflictState": {
@@ -65,8 +65,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 405,
-      "LEGACY_UNBOUND": 1361,
+      "CURRENT_VALID": 406,
+      "LEGACY_UNBOUND": 1360,
       "NONE": 6321
     }
   },
@@ -75,13 +75,13 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 1119,
+      "documentLinks": 1120,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 180,
+        "COMPLETE_RECEIPT": 181,
         "CONFLICT_QUARANTINE": 22,
         "IDENTITY_RESEARCH": 18,
         "OFFICIAL_DISCOVERY": 1029,
-        "REFERENCE_REDISCOVERY": 170
+        "REFERENCE_REDISCOVERY": 169
       }
     },
     {
@@ -44538,14 +44538,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -44568,6 +44569,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e",
+          "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531670.pdf",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/16/23/16232fbcaac68ad63eec9f9b7022364201c20f00c46c241b20c35d95359b0491.json",
+            "evidence/web/sha256/ac/09/ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e.pdf",
+            "receipt:dac3bd6ab98f028e1d48b202bb99914061501b07a491c5793608f49dbc7f0469"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e"
+        },
+        {
           "documentId": "source:doc_3a8e45adaefe7f08837d372c",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/e/c/e/2/ece28665084e498317576d5625598f4f22ef4286_G7604_SCU_CLST_12531670.pdf",
           "evidenceObjectIds": [
@@ -44583,8 +44603,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Miele"

@@ -2135,6 +2135,37 @@ with zero repair or violation, and dimensions checkpoint
 valid receipts and 412/412 passing sources. Architecture V2 remains
 1,242/1,242, the full repository remains 2,919/2,919, and lint passes.
 
+The following controller-authorised singleton, catalogue model
+`G7604SCUCLST`, used discovery run
+`historical-scale-p0-miele-g7604scuclst-discovery-20260726-a`. It bound source
+model `G 7604 SCU`, material `12531670`, the exact Australian product page and
+`https://www.miele.com.au/media/ex/au/specsheets/12531670.pdf`. The immutable
+discovery object SHA-256 is
+`e2396712ba3d9cd9fc3de387aad17eecb77ddb391e2ffdbe558ee63c2fb89b0c`;
+checkpoint `historical-dimensions-checkpoint-389d9091e6f063050d0400de`
+recorded one selected target and one official candidate before acquisition.
+
+Acquisition run
+`historical-scale-p0-miele-g7604scuclst-dimensions-20260726-a` accepted closed
+W/H/D `598 x 805 x 570 mm` from the three explicit page-2 appliance rows. The
+official PDF SHA-256 is
+`ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e`;
+its MinerU `content_list_v2` SHA-256 is
+`16232fbcaac68ad63eec9f9b7022364201c20f00c46c241b20c35d95359b0491`.
+Audit `historical-recovery-audit-0cd2edc10a93404f0e0290d3` checked 818 objects
+with zero repair or violation, and dimensions checkpoint
+`historical-dimensions-checkpoint-f1c1b840854a2ec87449bdca` recorded a complete
+`1/1` dimensions funnel. Promotion raised cumulative coverage to 406 current
+valid receipts and 413/413 passing sources. Architecture V2 remains
+1,242/1,242, the full repository remains 2,919/2,919, and lint passes.
+
+This receipt has dimensions evidence only. Missing installation, operation and
+rear-service fields keep `verifiedFitEligible` false and the successful Fit
+outcome at `INSUFFICIENT_DATA`. The active release therefore remains at 332
+receipt-bound public dimensions and zero receipt-bound `VERIFIED_FIT`. The next
+authorised P0 singleton is `G7609SCIXXLCLST` under bounded-discovery manifest
+`historical_batch_79337f6dfc1e1257821c2ae5`.
+
 For an evidence-only staged batch, the replacement guard is the immutable
 audit loaded through `audit:active-retail-release`. Do not run the standalone
 `audit:historical-replacement` against a newer candidate reference and the

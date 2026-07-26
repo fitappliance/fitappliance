@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T14:00:31.669Z",
-  "sourceBundleSha256": "0244d07e906830bbaea5d8d121ad90dc5b2bde752fb90222b819477674ab1e44",
+  "generatedAt": "2026-07-26T14:11:44.088Z",
+  "sourceBundleSha256": "103930dd5056f04936f136d86daf48d16f331b100fb86164242300a54769e546",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -5478,6 +5478,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_ef8b30be4717118934672934",
+      "referenceId": "fa_ref_9fe799828a1d8a918c5988c5",
+      "brand": "Miele",
+      "model": "G7604SCUCLST",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12531670.pdf",
+      "sourcePdfSha256": "ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e",
+      "contentSha256": "ac0968b5079732e57e951bf17804b8c0574f3f6752909ab62f0df8c724e6118e",
+      "receiptBindingSha256": "dac3bd6ab98f028e1d48b202bb99914061501b07a491c5793608f49dbc7f0469",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/16/23/16232fbcaac68ad63eec9f9b7022364201c20f00c46c241b20c35d95359b0491.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_efdf552e3bb43ac444d03ce7",
       "referenceId": "fa_ref_cca0e127586860245c4be757",
       "brand": "Westinghouse",
@@ -5773,11 +5787,11 @@
     }
   ],
   "summary": {
-    "entries": 386,
-    "sources": 412,
-    "passed": 412,
+    "entries": 387,
+    "sources": 413,
+    "passed": 413,
     "failed": 0
   },
-  "checkedObjects": 815,
-  "semanticAuditSha256": "1214f2fa6b1418890b312e991b09fec45e9cac81e673a394cf001e86798c5785"
+  "checkedObjects": 818,
+  "semanticAuditSha256": "fec443aaae4f09bed8b0df5607b68bccce6ad3eed21b311895cfc185118a3bd5"
 }
