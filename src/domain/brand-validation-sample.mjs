@@ -223,7 +223,14 @@ export function sha256Text(value) {
 }
 
 function countsBy(rows, field) {
-  return Object.fromEntries([...Map.groupBy(rows, (row) => row[field]).entries()]
+  const grouped = new Map();
+  for (const row of rows) {
+    const key = row[field];
+    const values = grouped.get(key) ?? [];
+    values.push(row);
+    grouped.set(key, values);
+  }
+  return Object.fromEntries([...grouped.entries()]
     .sort(([left], [right]) => String(left).localeCompare(String(right)))
     .map(([key, values]) => [key, values.length]));
 }

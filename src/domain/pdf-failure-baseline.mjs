@@ -167,11 +167,33 @@ function buildIndexes(sourceDocuments, mineruAudit, evidenceObjectIndex) {
   return { sourceById, evidenceByUrl, mineruBySha };
 }
 
+function targetIndex(queue) {
+  const index = new Map();
+  for (const target of queue.targets ?? []) {
+    if (!target?.targetId) throw new TypeError('queue target id required');
+    if (index.has(target.targetId)) throw new TypeError(`duplicate queue target id: ${target.targetId}`);
+    index.set(target.targetId, target);
+  }
+  return index;
+}
+
+function targetsForJob(job, indexedTargets) {
+  if (Array.isArray(job.targetIds)) {
+    return job.targetIds.map((targetId) => {
+      const target = indexedTargets.get(targetId);
+      if (!target) throw new TypeError(`unknown target id for ${job.jobId}: ${targetId}`);
+      return target;
+    });
+  }
+  return Array.isArray(job.targets) ? job.targets : [];
+}
+
 function buildCandidates(queue, indexes) {
   const candidates = [];
+  const indexedTargets = targetIndex(queue);
   for (const job of queue.jobs ?? []) {
     const targetsByCategory = new Map();
-    for (const target of job.targets ?? []) {
+    for (const target of targetsForJob(job, indexedTargets)) {
       const targets = targetsByCategory.get(target.category) ?? [];
       targets.push(target);
       targetsByCategory.set(target.category, targets);

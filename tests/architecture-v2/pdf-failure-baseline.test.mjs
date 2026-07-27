@@ -39,6 +39,29 @@ test('failure classifier stops at exactly the first unclosed pipeline layer', ()
   assert.throws(() => classifyPdfFailure(passedState()), /no failed layer/i);
 });
 
+test('queue graph rejects a job that references an unknown target id', () => {
+  assert.throws(() => buildPdfFailureBaseline({
+    queue: {
+      targets: [],
+      jobs: [{
+        jobId: 'job-missing-target',
+        sourceUrl: 'https://example.com/manual.pdf',
+        targetIds: ['target-missing'],
+      }],
+    },
+    sourceDocuments: { documents: [] },
+    mineruAudit: { entries: [] },
+    evidenceObjectIndex: { documents: [] },
+    inputHashes: {
+      queue: 'a'.repeat(64),
+      sourceDocuments: 'b'.repeat(64),
+      mineruAudit: 'c'.repeat(64),
+      evidenceObjectIndex: 'd'.repeat(64),
+    },
+    perCategory: 1,
+  }), /unknown target id.*target-missing/i);
+});
+
 test('real baseline is deterministic, unique, and stratified to 25 candidates per category', async () => {
   const input = {
     queue: await readJson(INPUTS.queue),
