@@ -1,0 +1,81 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+
+const MATRIX_PATH = 'data/architecture-v2/policies/brand-data-contact-matrix.json';
+
+const EXPECTED_ORGANIZATIONS = [
+  'chiq-australia',
+  'electrolux-home-products',
+  'fisher-paykel-australia',
+  'hisense-australia',
+  'lg-australia',
+  'miele-australia',
+  'residentia-group',
+  'smeg-australia',
+];
+
+const EXPECTED_BRANDS = [
+  'CHiQ',
+  'Electrolux',
+  'Esatto',
+  'Fisher & Paykel',
+  'Haier',
+  'Hisense',
+  'InAlto',
+  'LG',
+  'Miele',
+  'MyKin',
+  'Smeg',
+  'Sôlt',
+  'Westinghouse',
+];
+
+async function readMatrix() {
+  return JSON.parse(await readFile(MATRIX_PATH, 'utf8'));
+}
+
+function assertPublicHttpsUrl(value) {
+  const url = new URL(value);
+  assert.equal(url.protocol, 'https:');
+  assert.ok(url.hostname.includes('.'), `expected an official public hostname: ${value}`);
+}
+
+test('contact matrix covers each target organization and brand exactly once', async () => {
+  const matrix = await readMatrix();
+  assert.equal(matrix.schemaVersion, 1);
+  assert.equal(matrix.researchedOn, '2026-07-27');
+  assert.deepEqual(
+    matrix.organizations.map(({ id }) => id).sort(),
+    EXPECTED_ORGANIZATIONS,
+  );
+  assert.deepEqual(
+    matrix.organizations.flatMap(({ coveredBrands }) => coveredBrands).sort(),
+    EXPECTED_BRANDS.sort(),
+  );
+});
+
+test('contact routes are official, evidence-backed, and contain no inferred addresses', async () => {
+  const matrix = await readMatrix();
+  for (const organization of matrix.organizations) {
+    assert.ok(organization.ownershipSourceUrls.length > 0);
+    organization.ownershipSourceUrls.forEach(assertPublicHttpsUrl);
+    assertPublicHttpsUrl(organization.route.publicSourceUrl);
+    assert.equal(organization.route.discoveryMethod, 'official_published_route');
+    assert.notEqual(organization.route.type, 'inferred_email');
+    assert.ok(['high', 'medium'].includes(organization.confidence));
+    assert.ok(['sent', 'route_verified'].includes(organization.state));
+  }
+
+  const serialized = JSON.stringify(matrix.organizations);
+  assert.doesNotMatch(serialized, /[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/);
+  assert.doesNotMatch(serialized, /recipient|mailbox|contactName/i);
+});
+
+test('only the two already dispatched organization threads are marked sent', async () => {
+  const matrix = await readMatrix();
+  assert.deepEqual(
+    matrix.organizations.filter(({ state }) => state === 'sent').map(({ id }) => id).sort(),
+    ['electrolux-home-products', 'fisher-paykel-australia'],
+  );
+});

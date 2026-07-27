@@ -71,6 +71,7 @@ the Architecture V2 root are rejected by the path-contract test.
 ├── cache/
 │   └── work/v2/              # disposable pipeline working files
 ├── imports/                  # immutable retailer-feed source snapshots
+├── outreach/                 # private messages, provider samples, rights and drafts
 ├── quarantine/               # mismatched or unapproved source documents
 ├── manual-evidence/          # existing legacy evidence pending object migration
 └── backups/                  # dated project-data exports, never the only copy
@@ -88,6 +89,7 @@ new review lifecycle.
 | Provenance index | URL, SHA-256, page, quote, parser version | repository `data/` | tracked |
 | Derived deployment | public projection, category JSON, HTML pages | repository generated paths | tracked until CI publishes independently |
 | Original evidence | manufacturer PDF, retailer source snapshot | external `evidence/` or `imports/` | never |
+| Private outreach evidence | MIME messages, provider samples, rights text and drafts | external `outreach/` | never |
 | Structured PDF evidence | MinerU `content_list_v2.json`, bound to source PDF hash | external `evidence/derived/mineru-json/` | never |
 | Visual review artifact | rendered PDF page, contact sheet | external `evidence/renders/` | never |
 | Disposable work | downloads, OCR scratch, test browser output | external `cache/work/` | never |
