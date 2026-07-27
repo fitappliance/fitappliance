@@ -42,7 +42,7 @@
   },
   "sourceBindings": {
     "ledgerSha256": "7797bb1ee9e848be038a95a962c9ed2d0f1af558ae125aebf733d53f3be172d3",
-    "nextBatchesSha256": "2ddda3e97ee5e57e513ede684ca34a87482ca3d9c397347dab4f0f8046cd7468",
+    "nextBatchesSha256": "2e51ac427383f8ac0eca492ae20721f5326cb056a188e638080b3a3017bb3a84",
     "programStatusSha256": "dd48f9357de1a3c88ee438493d3a252aace93e81ecd3eeffb5c3c95db3da1a12",
     "receiptAuditSha256": "7c64e438a7a5e0f16289cf59ce9ec3e8b09fd0c146076bd2ea911bf2713a8368",
     "replacementAuditSha256": "34f91e984b7a56c36cc4d2a0d26cfdd1555cf3ef55b129fc9a5643e45e591671",
@@ -180,12 +180,12 @@
   },
   "decision": {
     "status": "RUN_P0",
-    "allowedManifestId": "historical_batch_cd540913d0d888a7ffaa9a0e",
+    "allowedManifestId": "historical_batch_7cf4d9ad9d3efdd48f07e3c4",
     "allowedWorkstreamId": "CURRENT_DIMENSIONS",
     "p1Blocked": true,
     "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
     "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e"
   },
-  "controlId": "historical-dimensions-scale-3c6be306349ed07b5ae8fefe",
-  "semanticControlSha256": "3c6be306349ed07b5ae8fefe04c1258597e4524f068f9edfc042ae996cf6b7a7"
+  "controlId": "historical-dimensions-scale-692c81adcdf0a5bba1374834",
+  "semanticControlSha256": "692c81adcdf0a5bba13748347bbdbb5a4e9b08a7f6c9b67dc6951d5ef80fa479"
 }

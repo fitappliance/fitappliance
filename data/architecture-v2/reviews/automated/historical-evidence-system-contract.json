@@ -934,9 +934,9 @@
       ],
       "schemaVersion": 2,
       "generatedAt": "2026-07-20T18:31:28.519Z",
-      "contentSha256": "c238764a9aa584db1a2c3a74e3c77a11542629c0667e9d9eb865ed1274e08378",
-      "semanticSha256": "46060e4e43f2316d707dcf2ddf0b62fbc31c55a50455c4ed09e62c41200f4788",
-      "declaredSemanticSha256": "46060e4e43f2316d707dcf2ddf0b62fbc31c55a50455c4ed09e62c41200f4788",
+      "contentSha256": "4bbbf9cee15cc0d427a625d42d3b962cf844ca80ff94dfe0f3bb2f3e4296294c",
+      "semanticSha256": "5d8c51105612b079bb8ed1c30d32000387449b325b6953e3e69e0533b7233432",
+      "declaredSemanticSha256": "5d8c51105612b079bb8ed1c30d32000387449b325b6953e3e69e0533b7233432",
       "sourceBindings": [
         {
           "sourceStageId": "document-identity",
@@ -1059,9 +1059,9 @@
       ],
       "schemaVersion": 2,
       "generatedAt": "2026-07-19T19:32:08.439Z",
-      "contentSha256": "2ddda3e97ee5e57e513ede684ca34a87482ca3d9c397347dab4f0f8046cd7468",
-      "semanticSha256": "c128d19df463438b8fe869fa3b36f415f70878f3a197d89d2d48926c37897372",
-      "declaredSemanticSha256": "c128d19df463438b8fe869fa3b36f415f70878f3a197d89d2d48926c37897372",
+      "contentSha256": "2e51ac427383f8ac0eca492ae20721f5326cb056a188e638080b3a3017bb3a84",
+      "semanticSha256": "7ee7f2088e74857f7040447cd53d93a5c765871e4098110baba794bdd782af59",
+      "declaredSemanticSha256": "7ee7f2088e74857f7040447cd53d93a5c765871e4098110baba794bdd782af59",
       "sourceBindings": [
         {
           "sourceStageId": "executable-queue",
@@ -1072,8 +1072,8 @@
         {
           "sourceStageId": "family-canary",
           "digestKind": "semantic",
-          "declaredSha256": "46060e4e43f2316d707dcf2ddf0b62fbc31c55a50455c4ed09e62c41200f4788",
-          "resolvedSha256": "46060e4e43f2316d707dcf2ddf0b62fbc31c55a50455c4ed09e62c41200f4788"
+          "declaredSha256": "5d8c51105612b079bb8ed1c30d32000387449b325b6953e3e69e0533b7233432",
+          "resolvedSha256": "5d8c51105612b079bb8ed1c30d32000387449b325b6953e3e69e0533b7233432"
         },
         {
           "sourceStageId": "target-state",
@@ -2312,15 +2312,15 @@
       "consumers": [],
       "schemaVersion": 2,
       "generatedAt": "2026-07-19T19:32:08.439Z",
-      "contentSha256": "2017fe117f0605c1820adeef0dec9eff6c269e45d5e96be389de90bf9339655d",
-      "semanticSha256": "3c6be306349ed07b5ae8fefe04c1258597e4524f068f9edfc042ae996cf6b7a7",
-      "declaredSemanticSha256": "3c6be306349ed07b5ae8fefe04c1258597e4524f068f9edfc042ae996cf6b7a7",
+      "contentSha256": "28bcfa51488cb9c83620edadbb1152d744aa4d0d085957915e46bf6240c7af77",
+      "semanticSha256": "692c81adcdf0a5bba13748347bbdbb5a4e9b08a7f6c9b67dc6951d5ef80fa479",
+      "declaredSemanticSha256": "692c81adcdf0a5bba13748347bbdbb5a4e9b08a7f6c9b67dc6951d5ef80fa479",
       "sourceBindings": [
         {
           "sourceStageId": "bounded-planner",
           "digestKind": "content",
-          "declaredSha256": "2ddda3e97ee5e57e513ede684ca34a87482ca3d9c397347dab4f0f8046cd7468",
-          "resolvedSha256": "2ddda3e97ee5e57e513ede684ca34a87482ca3d9c397347dab4f0f8046cd7468"
+          "declaredSha256": "2e51ac427383f8ac0eca492ae20721f5326cb056a188e638080b3a3017bb3a84",
+          "resolvedSha256": "2e51ac427383f8ac0eca492ae20721f5326cb056a188e638080b3a3017bb3a84"
         },
         {
           "sourceStageId": "fit-publication",
@@ -2833,13 +2833,13 @@
   },
   "controllerDecision": {
     "status": "RUN_P0",
-    "allowedManifestId": "historical_batch_cd540913d0d888a7ffaa9a0e",
+    "allowedManifestId": "historical_batch_7cf4d9ad9d3efdd48f07e3c4",
     "allowedWorkstreamId": "CURRENT_DIMENSIONS",
     "p1Blocked": true,
     "reason": "P0_CURRENT_DIMENSIONS_FIRST_RUNNABLE_COHORT",
     "cohortKey": "historical_cohort_f9c3a8af7d137760377ddf3e",
     "checkpointCount": 5
   },
-  "contractId": "historical_evidence_system_a25990f9af0ee57999c98cb2",
-  "semanticContractSha256": "a25990f9af0ee57999c98cb25fa4d615b566aa0d4fe0c30c2d817938b31fff9d"
+  "contractId": "historical_evidence_system_062d1c75c20f4b3088e0e4cc",
+  "semanticContractSha256": "062d1c75c20f4b3088e0e4cc6e6876938422ac533b2800b7fc9e26c5b92d6e81"
 }
